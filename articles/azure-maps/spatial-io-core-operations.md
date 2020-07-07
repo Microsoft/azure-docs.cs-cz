@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371439"
 ---
 # <a name="core-io-operations"></a>Základní vstupně-výstupní operace
 
 Kromě poskytování nástrojů pro čtení prostorových datových souborů zpřístupňuje modul pro prostorové vstupně-výstupní operace základní knihovny pro čtení a zápis XML a data s oddělovači rychleji a efektivně.
 
-`atlas.io.core` Obor názvů obsahuje dvě třídy nízké úrovně, které můžou rychle číst a zapisovat data CSV a XML. Tyto základní třídy elektricky doplní čtečky prostorových dat a zapisovače v modulu prostorového vstupu/výstupu. Můžete je používat k přidání další podpory pro čtení a zápis souborů CSV nebo XML.
+`atlas.io.core`Obor názvů obsahuje dvě třídy nízké úrovně, které můžou rychle číst a zapisovat data CSV a XML. Tyto základní třídy elektricky doplní čtečky prostorových dat a zapisovače v modulu prostorového vstupu/výstupu. Můžete je používat k přidání další podpory pro čtení a zápis souborů CSV nebo XML.
  
 ## <a name="read-delimited-files"></a>Čtení souborů s oddělovači
 
-`atlas.io.core.CsvReader` Třída čte řetězce, které obsahují s oddělenými datovými sadami. Tato třída poskytuje dvě metody pro čtení dat:
+`atlas.io.core.CsvReader`Třída čte řetězce, které obsahují s oddělenými datovými sadami. Tato třída poskytuje dvě metody pro čtení dat:
 
-- `read` Funkce načte celou datovou sadu a vrátí dvojrozměrné pole řetězců reprezentující všechny buňky sady dat s oddělovači.
-- `getNextRow` Funkce přečte jednotlivé řádky textu v sadě dat s oddělovači a vrátí pole řetězců reprezentující všechny buňky v daném řádku sady dat. Uživatel může řádek zpracovat a uvolnit z tohoto řádku veškerou nepotřebnou paměť před zpracováním dalšího řádku. Funkce je tedy mnohem efektivnější.
+- `read`Funkce načte celou datovou sadu a vrátí dvojrozměrné pole řetězců reprezentující všechny buňky sady dat s oddělovači.
+- `getNextRow`Funkce přečte jednotlivé řádky textu v sadě dat s oddělovači a vrátí pole řetězců reprezentující všechny buňky v daném řádku sady dat. Uživatel může řádek zpracovat a uvolnit z tohoto řádku veškerou nepotřebnou paměť před zpracováním dalšího řádku. Funkce je tedy mnohem efektivnější.
 
-Ve výchozím nastavení čtečka použije jako oddělovač znak čárky. Oddělovač je však možné změnit na libovolný jeden znak nebo nastavit na `'auto'`. Při nastavení na `'auto'`je čtenář analyzovat první řádek textu v řetězci. Pak se v následující tabulce vybere nejběžnější znak, který použijete jako oddělovač.
+Ve výchozím nastavení čtečka použije jako oddělovač znak čárky. Oddělovač je však možné změnit na libovolný jeden znak nebo nastavit na `'auto'` . Při nastavení na `'auto'` je čtenář analyzovat první řádek textu v řetězci. Pak se v následující tabulce vybere nejběžnější znak, který použijete jako oddělovač.
 
 | | |
 | :-- | :-- |
@@ -36,25 +36,25 @@ Ve výchozím nastavení čtečka použije jako oddělovač znak čárky. Odděl
 | Karta | `\t` |
 | Příkazem | `|` |
 
-Tento čtenář také podporuje kvalifikátory textu, které se používají ke zpracování buněk obsahujících znak oddělovače. Znak uvozovky`'"'`() je výchozí kvalifikátor textu, ale může být změněn na libovolný jeden znak.
+Tento čtenář také podporuje kvalifikátory textu, které se používají ke zpracování buněk obsahujících znak oddělovače. Znak uvozovky ( `'"'` ) je výchozí kvalifikátor textu, ale může být změněn na libovolný jeden znak.
 
 ## <a name="write-delimited-files"></a>Zapisovat soubory s oddělovači
 
-`atlas.io.core.CsvWriter` Zapisuje pole objektů jako oddělený řetězec. Libovolný jeden znak lze použít jako oddělovač nebo textový kvalifikátor. Výchozí oddělovač je čárka (`','`) a výchozí kvalifikátor textu je znak uvozovky (`'"'`).
+`atlas.io.core.CsvWriter`Zapisuje pole objektů jako oddělený řetězec. Libovolný jeden znak lze použít jako oddělovač nebo textový kvalifikátor. Výchozí oddělovač je čárka ( `','` ) a výchozí kvalifikátor textu je znak uvozovky ( `'"'` ).
 
 Chcete-li použít tuto třídu, postupujte podle následujících kroků:
 
 - Vytvořte instanci třídy a volitelně nastavte vlastní oddělovač nebo kvalifikátor textu.
-- Zapište do třídy data pomocí `write` funkce nebo `writeRow` funkce. Pro `write` funkci předejte dvojrozměrné pole objektů reprezentujících více řádků a buněk. Chcete-li `writeRow` použít funkci, předejte pole objektů reprezentující řádek dat s více sloupci.
+- Zapište do třídy data pomocí `write` funkce nebo `writeRow` funkce. Pro `write` funkci předejte dvojrozměrné pole objektů reprezentujících více řádků a buněk. Chcete-li použít `writeRow` funkci, předejte pole objektů reprezentující řádek dat s více sloupci.
 - Zavolejte `toString` funkci pro načtení řetězce s oddělovači. 
-- Volitelně volejte `clear` metodu, aby modul pro zápis znovu natlačil a snížil jeho přidělení prostředků, nebo zavolejte `delete` metodu pro uvolnění instance zapisovače.
+- Volitelně volejte metodu, `clear` aby modul pro zápis znovu natlačil a snížil jeho přidělení prostředků, nebo zavolejte `delete` metodu pro uvolnění instance zapisovače.
 
 > [!Note]
 > Počet zapsaných sloupců bude omezen na počet buněk v prvním řádku dat předaných do zapisovače.
 
 ## <a name="read-xml-files"></a>Čtení souborů XML
 
-`atlas.io.core.SimpleXmlReader` Třída je rychlejší při analýze souborů XML než `DOMParser`. `atlas.io.core.SimpleXmlReader` Třída ale vyžaduje, aby soubory XML byly ve správném formátu. Soubory XML, které nejsou ve správném formátu, například chybějící ukončovací značky, budou nejspíš způsobit chybu.
+`atlas.io.core.SimpleXmlReader`Třída je rychlejší při analýze souborů XML než `DOMParser` . `atlas.io.core.SimpleXmlReader`Třída ale vyžaduje, aby soubory XML byly ve správném formátu. Soubory XML, které nejsou ve správném formátu, například chybějící ukončovací značky, budou nejspíš způsobit chybu.
 
 Následující kód ukazuje, jak použít `SimpleXmlReader` třídu k analýze řetězce XML do objektu JSON a jeho serializaci do požadovaného formátu.
 
@@ -80,7 +80,7 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 
 ## <a name="write-xml-files"></a>Zápis souborů XML
 
-`atlas.io.core.SimpleXmlWriter` Třída zapisuje ve správném formátu XML do paměti efektivní způsob.
+`atlas.io.core.SimpleXmlWriter`Třída zapisuje ve správném formátu XML do paměti efektivní způsob.
 
 Následující kód ukazuje, jak použít `SimpleXmlWriter` třídu k vygenerování dobře formátovaného řetězce XML.
 
@@ -145,4 +145,4 @@ Další informace o třídách a metodách, které se používají v tomto člá
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Podrobnosti o podporovaném formátu dat](spatial-io-supported-data-format-details.md)
+> [Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)

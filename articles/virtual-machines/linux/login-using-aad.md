@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
 ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80366494"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
@@ -41,7 +41,7 @@ K přihlášení k virtuálním počítačům se systémem Linux v Azure využí
 
 Během verze Preview této funkce se aktuálně podporují následující distribuce systému Linux:
 
-| Distribuce | Version |
+| Distribuce | Verze |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -63,16 +63,16 @@ Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 
 Pokud chcete povolit ověřování Azure AD pro virtuální počítače se systémem Linux v Azure, musíte zajistit, aby konfigurace sítě virtuálních počítačů povolovala odchozí přístup k následujícím koncovým bodům přes port TCP 443:
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
-* https:\//Device.Login.microsoftonline.com
-* https:\//pas.Windows.NET
+* https: \/ /Device.Login.microsoftonline.com
+* https: \/ /pas.Windows.NET
 * https:\//management.azure.com
-* https:\//Packages.Microsoft.com
+* https: \/ /Packages.Microsoft.com
 
 > [!NOTE]
 > V současné době není možné nakonfigurovat skupiny zabezpečení sítě Azure pro virtuální počítače, které jsou povolené pomocí ověřování Azure AD.
@@ -148,13 +148,13 @@ Nejprve zobrazte veřejnou IP adresu vašeho virtuálního počítače pomocí [
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Přihlaste se k virtuálnímu počítači Azure Linux pomocí svých přihlašovacích údajů Azure AD. `-l` Parametr umožňuje zadat vlastní adresu účtu služby Azure AD. Nahraďte vzorový účet vlastním. Adresy účtu by měly být zadány pouze malými písmeny. Z předchozího příkazu nahraďte ukázkovou IP adresu veřejnou IP adresou vašeho virtuálního počítače.
+Přihlaste se k virtuálnímu počítači Azure Linux pomocí svých přihlašovacích údajů Azure AD. `-l`Parametr umožňuje zadat vlastní adresu účtu služby Azure AD. Nahraďte vzorový účet vlastním. Adresy účtu by měly být zadány pouze malými písmeny. Z předchozího příkazu nahraďte ukázkovou IP adresu veřejnou IP adresou vašeho virtuálního počítače.
 
 ```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-Budete vyzváni k přihlášení ke službě Azure AD s jednorázovým kódem použití na adrese [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Zkopírujte a vložte kód jednorázového použití do přihlašovací stránky zařízení.
+Budete vyzváni k přihlášení ke službě Azure AD s jednorázovým kódem použití na adrese [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) . Zkopírujte a vložte kód jednorázového použití do přihlašovací stránky zařízení.
 
 Po zobrazení výzvy zadejte přihlašovací údaje služby Azure AD přihlašovací údaje na přihlašovací stránce. 
 
@@ -166,7 +166,7 @@ Nyní jste přihlášeni k virtuálnímu počítači Azure Linux s oprávněním
 
 ## <a name="sudo-and-aad-login"></a>Přihlášení sudo a AAD
 
-Při prvním spuštění sudo se zobrazí výzva k ověření druhého času. Pokud se pro spuštění sudo nechcete znovu přihlásit, můžete upravit soubor `/etc/sudoers.d/aad_admins` sudoers a nahradit tento řádek:
+Při prvním spuštění sudo se zobrazí výzva k ověření druhého času. Pokud se pro spuštění sudo nechcete znovu přihlásit, můžete upravit soubor sudoers `/etc/sudoers.d/aad_admins` a nahradit tento řádek:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -200,9 +200,9 @@ Access denied
 
 Pokud jste úspěšně dokončili krok ověřování ve webovém prohlížeči, můžete se okamžitě zobrazit výzva, abyste se znovu přihlásili pomocí nového kódu. Tato chyba je obvykle způsobena neshodou mezi přihlašovacím jménem, které jste zadali v příkazovém řádku SSH, a účtem, ke kterému jste se přihlásili do Azure AD. Chcete-li tento problém vyřešit:
 
-- Ověřte, jestli je přihlašovací jméno, které jste zadali na příkazovém řádku SSH, správné. Překlep v přihlašovacím jméně může způsobit neshodu mezi přihlašovacím jménem, které jste zadali na příkazovém řádku SSH, a účtem, který jste se přihlásili k Azure AD pomocí. Například jste zadali *azuresuer\@contoso.onmicrosoft.com* namísto *azureuser\@contoso.onmicrosoft.com*.
+- Ověřte, jestli je přihlašovací jméno, které jste zadali na příkazovém řádku SSH, správné. Překlep v přihlašovacím jméně může způsobit neshodu mezi přihlašovacím jménem, které jste zadali na příkazovém řádku SSH, a účtem, který jste se přihlásili k Azure AD pomocí. Například jste zadali *azuresuer \@ contoso.onmicrosoft.com* namísto *azureuser \@ contoso.onmicrosoft.com*.
 - Pokud máte víc uživatelských účtů, ujistěte se, že při přihlašování do Azure AD neposkytnete v okně prohlížeče jiný uživatelský účet.
-- Linux je operační systém s rozlišováním velkých a malých písmen. Existuje rozdíl mezi 'Azureuser@contoso.onmicrosoft.com' a 'azureuser@contoso.onmicrosoft.com', což může způsobit neshodu. Ujistěte se, že v příkazovém řádku SSH určíte hlavní název uživatele se správným rozlišováním velkých a malých písmen.
+- Linux je operační systém s rozlišováním velkých a malých písmen. Existuje rozdíl mezi ' Azureuser@contoso.onmicrosoft.com ' a ' azureuser@contoso.onmicrosoft.com ', což může způsobit neshodu. Ujistěte se, že v příkazovém řádku SSH určíte hlavní název uživatele se správným rozlišováním velkých a malých písmen.
 
 ### <a name="other-limitations"></a>Další omezení
 

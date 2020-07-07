@@ -1,5 +1,5 @@
 ---
-title: Integrace Key Vault s certifikační autoritou DigiCert
+title: Integrace služby Key Vault s certifikační autoritou DigiCert
 description: Jak integrovat Key Vault s certifikační autoritou DigiCert
 services: key-vault
 author: msmbaldwin
@@ -10,14 +10,14 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d6cb8d386efbcdaf053f0740d955b249c0e636b4
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84908228"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964494"
 ---
-# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace Key Vault s certifikační autoritou DigiCert
+# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
 
 Azure Key Vault umožňuje snadno zřídit, spravovat a nasazovat digitální certifikáty pro vaši síť a povolit zabezpečenou komunikaci pro aplikace. Digitální certifikát je elektronické přihlašovací údaje, které slouží k vytvoření důkazu identity v elektronické transakci. 
 
@@ -57,7 +57,7 @@ Po shromáždění výše uvedených informací z účtu DigiCert CertCentral te
  ![Vlastnosti certifikátu](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  Na obrazovce **Vytvoření certifikační autority** vyberte následující hodnoty:
     -   **Název**: Přidejte název vystavitele, který chcete identifikovat. Příklad DigicertCA
-    -   **Zadejte**: z nabídky vyberte DigiCert.
+    -   **Zprostředkovatel**: z nabídky vyberte DigiCert.
     -   **ID účtu**: Zadejte ID účtu DigiCert CertCentral.
     -   **Heslo účtu**: Zadejte klíč rozhraní API, který jste vygenerovali v účtu DigiCert CertCentral.
     -   **ID organizace**: zadejte OrgID shromážděné z účtu DigiCert CertCentral 

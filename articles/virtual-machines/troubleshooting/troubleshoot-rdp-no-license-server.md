@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71088519"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Licenční server vzdálené plochy není k dispozici, když se připojíte k virtuálnímu počítači Azure.
@@ -62,7 +62,7 @@ Tento problém vyřešíte tak, [že zazálohujte disk s operačním systémem](
 
     Pokud se k virtuálnímu počítači nemůžete připojit pomocí relace pro správu, můžete k tomuto virtuálnímu [počítači použít sériovou konzolu virtuálních počítačů v Azure](serial-console-windows.md) , a to následujícím způsobem:
 
-    1. Přístup ke konzole sériového portu výběrem možnosti **Podpora & řešení potíží** > **sériová konzola (Preview)**. Pokud je funkce na virtuálním počítači povolená, můžete virtuální počítač úspěšně připojit.
+    1. Přístup ke konzole sériového portu výběrem možnosti **Podpora & řešení potíží**  >  **sériová konzola (Preview)**. Pokud je funkce na virtuálním počítači povolená, můžete virtuální počítač úspěšně připojit.
 
     2. Vytvoří nový kanál pro instanci CMD. Zadáním **příkazu cmd** spusťte kanál a získejte název kanálu.
 

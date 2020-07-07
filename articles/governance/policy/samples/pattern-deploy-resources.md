@@ -3,20 +3,20 @@ title: 'Vzor: nasazení prostředků pomocí definice zásady'
 description: Tento model Azure Policy poskytuje příklad, jak nasadit prostředky pomocí definice zásady.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172671"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970854"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy vzor: nasazení prostředků
 
-[DeployIfNotExists](../concepts/effects.md#deployifnotexists) efekt umožňuje nasadit [šablonu Azure Resource Manager](../../../azure-resource-manager/templates/overview.md) při vytváření nebo aktualizaci prostředku, který nedodržuje předpisy. Tento přístup může být upřednostňován pro použití efektu [zamítnout](../concepts/effects.md#deny) , protože umožňuje vytváření prostředků i nadále, ale zajišťuje, aby byly provedeny změny v souladu s předpisy.
+[DeployIfNotExists](../concepts/effects.md#deployifnotexists) efekt umožňuje nasadit [šablonu Azure Resource Manager](../../../azure-resource-manager/templates/overview.md) (šablonu ARM) při vytváření nebo aktualizaci prostředku, který nedodržuje předpisy. Tento přístup může být upřednostňován pro použití efektu [zamítnout](../concepts/effects.md#deny) , protože umožňuje vytváření prostředků i nadále, ale zajišťuje, aby byly provedeny změny v souladu s předpisy.
 
 ## <a name="sample-policy-definition"></a>Definice ukázkové zásady
 
-Tato definice zásady používá operátor **pole** k vyhodnocení `type` vytvořeného nebo aktualizovaného prostředku. Pokud je tento prostředek _Microsoft. Network/virtualNetworks_, vyhledá zásady sledovací proces sítě v umístění nového nebo aktualizovaného prostředku. Pokud se nezobrazuje vyhovující sledovací proces sítě, je šablona Správce prostředků nasazena za účelem vytvoření chybějícího prostředku.
+Tato definice zásady používá operátor **pole** k vyhodnocení `type` vytvořeného nebo aktualizovaného prostředku. Pokud je tento prostředek _Microsoft. Network/virtualNetworks_, vyhledá zásady sledovací proces sítě v umístění nového nebo aktualizovaného prostředku. Pokud se nezobrazuje vyhovující sledovací proces sítě, nasadí se šablona ARM pro vytvoření chybějícího prostředku.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 
@@ -26,7 +26,7 @@ Tato definice zásady používá operátor **pole** k vyhodnocení `type` vytvo�
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="18-23":::
 
-Blok **Properties. policyRule. then. Details** oznamuje Azure Policy, co hledat v souvislosti s vytvořeným nebo aktualizovaným prostředkem v bloku **Properties. policyRule. if** . V tomto příkladu musí **networkWatcherRG** existovat sledovací proces sítě ve skupině prostředků s **polem** `location` , které se rovná umístění nového nebo aktualizovaného prostředku. Použití `field()` funkce umožňuje **existenceCondition** získat přístup k vlastnostem nového nebo aktualizovaného prostředku, konkrétně k `location` vlastnosti.
+Blok **Properties. policyRule. then. Details** oznamuje Azure Policy, co hledat v souvislosti s vytvořeným nebo aktualizovaným prostředkem v bloku **Properties. policyRule. if** . V tomto příkladu musí **networkWatcherRG** existovat sledovací proces sítě ve skupině prostředků s **polem** , které se `location` rovná umístění nového nebo aktualizovaného prostředku. Použití `field()` funkce umožňuje **existenceCondition** získat přístup k vlastnostem nového nebo aktualizovaného prostředku, konkrétně k `location` Vlastnosti.
 
 #### <a name="roledefinitionids"></a>roleDefinitionIds
 
@@ -44,7 +44,7 @@ Vlastnost **roleDefinitionIds** _Array_ v bloku **Properties. policyRule. then. 
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
   
-- **parametry** – Tato vlastnost definuje parametry, které jsou k dispozici v **šabloně**. Názvy parametrů se musí shodovat s tím, co je definováno v **šabloně**. V tomto příkladu je parametr pojmenován **umístění** , které se má shodovat. Hodnota **umístění** znovu používá `field()` funkci k získání hodnoty vyhodnoceného prostředku, což je virtuální síť v bloku **policyRule. if** .
+- **parametry** – Tato vlastnost definuje parametry, které jsou k dispozici v **šabloně**. Názvy parametrů se musí shodovat s tím, co je definováno v **šabloně**. V tomto příkladu je parametr pojmenován **umístění** , které se má shodovat. Hodnota **umístění** `field()` znovu používá funkci k získání hodnoty vyhodnoceného prostředku, což je virtuální síť v bloku **policyRule. if** .
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::
 

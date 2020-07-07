@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117076"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964800"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Kurz: Vykreslení scény Blenderu pomocí nástroje Batch Explorer
 
@@ -27,9 +27,9 @@ V tomto kurzu se naučíte:
 
 Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. Licencování s platbami za na základě využití není podporováno, když používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.
 
-Potřebujete účet Azure Batch s přidruženým účtem úložiště.  Pokud chcete vytvořit účet Batch, přečtěte si některý z článků Rychlý start pro službu Batch, například [článek věnovaný rozhraní příkazového řádku](https://docs.microsoft.com/azure/batch/quick-create-cli).
+Potřebujete účet Azure Batch s přidruženým účtem úložiště.  Pokud chcete vytvořit účet Batch, přečtěte si některý z článků Rychlý start pro službu Batch, například [článek věnovaný rozhraní příkazového řádku](./quick-create-cli.md).
 
-Velikost a počet virtuálních počítačů uvedené v tomto kurzu vyžadují kvótu pro jádra s nízkou prioritou alespoň 50 jader. Je možné použít výchozí kvótu, ale bude potřeba použít menší velikost virtuálních počítačů, což znamená, že vykreslování obrázků bude trvat déle. Proces pro vyžádání zvýšené kvóty pro jádra je podrobně popsaný v [tomto článku](https://docs.microsoft.com/azure/batch/batch-quota-limit).
+Velikost a počet virtuálních počítačů uvedené v tomto kurzu vyžadují kvótu pro jádra s nízkou prioritou alespoň 50 jader. Je možné použít výchozí kvótu, ale bude potřeba použít menší velikost virtuálních počítačů, což znamená, že vykreslování obrázků bude trvat déle. Proces pro vyžádání zvýšené kvóty pro jádra je podrobně popsaný v [tomto článku](./batch-quota-limit.md).
 
 Také je potřeba mít nainstalovaný nástroj [Batch Explorer](https://azure.github.io/BatchExplorer/), který je k dispozici pro Windows, OSX a Linux. Instalace [Blenderu](https://www.blender.org/download/) je volitelná, ale pokud je nainstalovaný, můžete zobrazit soubor ukázkového modelu.
 
@@ -139,4 +139,4 @@ Po dokončení všech úkolů se úloha označí jako dokončená: ![Dokončená
 ## <a name="next-steps"></a>Další kroky
 * V části Gallery (Galerie) prozkoumejte vykreslovací aplikace, které jsou v nástroji Batch Explorer k dispozici.
 * Pro každou aplikaci je k dispozici několik šablon a jejich počet se časem bude rozšiřovat.  Pro Blender například existují šablony, které rozdělí obrázek na čtverce, aby bylo možné části obrázku vykreslit paralelně.
-* Komplexní popis možností vykreslování najdete v [této](https://docs.microsoft.com/azure/batch/batch-rendering-service) sadě článků.
+* Komplexní popis možností vykreslování najdete v [této](./batch-rendering-service.md) sadě článků.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189458"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
@@ -31,8 +31,8 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>Chyba při spouštění rutin AzureAD v PowerShellu
 
-- **Podrobnosti**: když spustíte rutiny AzureAD, jako `Get-AzureADUser` v Cloud Shell, může se zobrazit chyba: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
-- **Řešení**: Spusťte `Connect-AzureAD` rutinu. Dřív Cloud Shell spustila tuto rutinu automaticky během spouštění PowerShellu. Pokud chcete zrychlit čas spuštění, rutina se už nespustí automaticky. Předchozí chování můžete obnovit tak, že do souboru $PROFILE `Connect-AzureAD` přidáte v prostředí PowerShell.
+- **Podrobnosti**: když spustíte rutiny AzureAD, jako `Get-AzureADUser` v Cloud Shell, může se zobrazit chyba: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` . 
+- **Řešení**: Spusťte `Connect-AzureAD` rutinu. Dřív Cloud Shell spustila tuto rutinu automaticky během spouštění PowerShellu. Pokud chcete zrychlit čas spuštění, rutina se už nespustí automaticky. Předchozí chování můžete obnovit tak, že do `Connect-AzureAD` souboru $Profile přidáte v prostředí PowerShell.
 
 ### <a name="early-timeouts-in-firefox"></a>Včasné vypršení časových limitů v prohlížeči FireFox
 
@@ -41,8 +41,8 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Zakázání Cloud Shell v uzamčeném síťovém prostředí
 
-- **Podrobnosti**: Správci můžou chtít zakázat přístup k Cloud Shell pro své uživatele. Cloud Shell využívá přístup k `ux.console.azure.com` doméně, která může být zamítnutá, zastavuje přístup k přístavám Cloud Shell, včetně portal.azure.com, shell.azure.com, Visual Studio Codeho rozšíření účtu azure a docs.Microsoft.com. V cloudu pro státní správu USA je `ux.console.azure.us`tento vstupní bod; neexistuje žádný odpovídající shell.azure.us.
-- **Řešení**: Omezte přístup k `ux.console.azure.com` nastavení `ux.console.azure.us` sítě nebo prostřednictvím něj do vašeho prostředí. Ikona Cloud Shell bude stále existovat v Azure Portal, ale nebude se k ní úspěšně připojovat.
+- **Podrobnosti**: Správci můžou chtít zakázat přístup k Cloud Shell pro své uživatele. Cloud Shell využívá přístup k `ux.console.azure.com` doméně, která může být zamítnutá, zastavuje přístup k přístavám Cloud Shell, včetně Portal.Azure.com, Shell.Azure.com, Visual Studio Codeho rozšíření účtu Azure a docs.Microsoft.com. V cloudu pro státní správu USA je parametr entryPoint `ux.console.azure.us` ; neexistuje žádný odpovídající Shell.Azure.us.
+- **Řešení**: Omezte přístup k `ux.console.azure.com` `ux.console.azure.us` nastavení sítě nebo prostřednictvím něj do vašeho prostředí. Ikona Cloud Shell bude stále existovat v Azure Portal, ale nebude se k ní úspěšně připojovat.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialog úložiště – chyba: 403 RequestDisallowedByPolicy
 
@@ -54,7 +54,7 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 - **Podrobnosti**: při použití předplatného Azure Active Directory nemůžete vytvořit úložiště.
 - **Řešení**: použijte předplatné Azure, které podporuje vytváření prostředků úložiště. Předplatná Azure AD nemůžou vytvářet prostředky Azure.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Výstup terminálu – Chyba: nepovedlo se připojit terminál: WebSocket se nedá navázat. Znovu `Enter` se připojte stisknutím.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Výstup terminálu – Chyba: nepovedlo se připojit terminál: WebSocket se nedá navázat. `Enter`Znovu se připojte stisknutím.
 - **Podrobnosti**: Cloud Shell vyžaduje, aby bylo možné navázat připojení protokolu WebSocket k Cloud Shell infrastruktuře.
 - **Řešení**: Ověřte, že jste nakonfigurovali nastavení sítě tak, aby umožňovalo posílání požadavků https a požadavků protokolu WebSocket do domén v umístění *. Console.Azure.com.
 
@@ -86,7 +86,7 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`neaktualizuje výsledek na jednotce Azure.
 
 - **Podrobnosti**: ve výchozím nastavení se optimalizuje činnost koncového uživatele a výsledky `dir` se ukládají do mezipaměti v jednotce Azure.
-- **Řešení**: po vytvoření, aktualizaci nebo odebrání prostředku Azure spusťte `dir -force` příkaz a aktualizujte výsledky na jednotce Azure.
+- **Řešení**: po vytvoření, aktualizaci nebo odebrání prostředku Azure spusťte příkaz `dir -force` a aktualizujte výsledky na jednotce Azure.
 
 ## <a name="general-limitations"></a>Obecná omezení
 
@@ -102,9 +102,9 @@ Cloud Shell poskytujeme jako bezplatnou službu a je navržená tak, aby se dala
 
 Počítač, který poskytuje vaši relaci Cloud Shell, je dočasný a bude recyklován po neaktivním spuštění relace po dobu 20 minut. Cloud Shell vyžaduje, aby byla připojena sdílená složka Azure. V důsledku toho musí být vaše předplatné schopné nastavit prostředky úložiště pro přístup k Cloud Shell. Mezi další okolnosti patří:
 
-- V případě připojeného úložiště jsou trvalé pouze `clouddrive` změny v adresáři. V bash je váš `$HOME` adresář také trvale uložený.
+- V případě připojeného úložiště jsou trvalé pouze změny v `clouddrive` adresáři. V bash je váš `$HOME` adresář také trvale uložený.
 - Sdílené složky Azure je možné připojit pouze v rámci [přiřazené oblasti](persisting-shell-storage.md#mount-a-new-clouddrive).
-  - V bash spusťte příkaz `env` a vyhledejte svou sadu oblastí jako `ACC_LOCATION`.
+  - V bash spusťte příkaz `env` a vyhledejte svou sadu oblastí jako `ACC_LOCATION` .
 - Soubory Azure podporují jenom místně redundantní úložiště a geograficky redundantní účty úložiště.
 
 ### <a name="browser-support"></a>Podpora prohlížečů
@@ -140,11 +140,11 @@ Při úpravách. bashrc buďte opatrní. v takovém případě může dojít k n
 
 ### <a name="preview-version-of-azuread-module"></a>Verze Preview modulu AzureAD
 
-`AzureAD.Standard.Preview`V současné době je k dispozici verze Preview modulu založeného na .NET Standard. Tento modul nabízí stejné funkce jako `AzureAD`.
+V současné době `AzureAD.Standard.Preview` je k dispozici verze Preview modulu založeného na .NET Standard. Tento modul nabízí stejné funkce jako `AzureAD` .
 
 ### <a name="sqlserver-module-functionality"></a>`SqlServer`funkce modulu
 
-`SqlServer` Modul zahrnutý v Cloud Shell má pouze předprodejní podporu pro PowerShell Core. Konkrétně `Invoke-SqlCmd` není zatím k dispozici.
+`SqlServer`Modul zahrnutý v Cloud Shell má pouze předprodejní podporu pro PowerShell Core. Konkrétně není `Invoke-SqlCmd` zatím k dispozici.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Výchozí umístění souboru při vytvoření z jednotky Azure
 
@@ -156,11 +156,11 @@ Pokud je PSReadline EditMode uživatele nastaven na hodnotu (Emacs), uživatel s
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Velká mezera po zobrazení indikátoru průběhu
 
-Pokud se na základě příkazu nebo uživatele zobrazí indikátor průběhu, na které se v `Azure:` jednotce dokončuje karta, pak je možné, že se kurzor nenastaví správně a mezera se zobrazí tam, kde byl indikátor průběhu dříve.
+Pokud se na základě příkazu nebo uživatele zobrazí indikátor průběhu, na které se v jednotce dokončuje karta `Azure:` , pak je možné, že se kurzor nenastaví správně a mezera se zobrazí tam, kde byl indikátor průběhu dříve.
 
 ### <a name="random-characters-appear-inline"></a>Náhodné znaky se zobrazí jako vložené
 
-V uživatelském vstupu se například `5;13R`mohou objevit kódy sekvence pozice kurzoru. Znaky lze ručně odebrat.
+V uživatelském vstupu se například mohou objevit kódy sekvence pozice kurzoru `5;13R` . Znaky lze ručně odebrat.
 
 ## <a name="personal-data-in-cloud-shell"></a>Osobní údaje v Cloud Shell
 

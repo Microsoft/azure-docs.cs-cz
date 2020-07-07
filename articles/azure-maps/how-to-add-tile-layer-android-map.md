@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335564"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Přidání vrstvy dlaždice na mapu pomocí Azure Maps Android SDK
@@ -30,9 +30,9 @@ Vrstva dlaždice se načte do dlaždic ze serveru. Tyto obrázky mohou být pře
 
 Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protokolu HTTP/HTTPS pro prostředek TileJSON nebo šablona adresy URL dlaždice, která používá následující parametry: 
 
-* `{x}`-X pozice dlaždice. Také potřebuje `{y}` a `{z}`.
-* `{y}`-Y pozice dlaždice. Také potřebuje `{x}` a `{z}`.
-* `{z}`– Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}`.
+* `{x}`-X pozice dlaždice. Také potřebuje `{y}` a `{z}` .
+* `{y}`-Y pozice dlaždice. Také potřebuje `{x}` a `{z}` .
+* `{z}`– Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}` .
 * `{quadkey}`-Dlaždice quadkey identifikátor založený na konvenci pojmenování systému dlaždice mapy Bing.
 * `{bbox-epsg-3857}`– Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
 * `{subdomain}`– Zástupný symbol pro hodnoty subdomény, pokud je zadána hodnota subdomény.
@@ -48,7 +48,7 @@ Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps 
 
 Na mapu můžete přidat vrstvu dlaždice podle následujících kroků.
 
-1. Upravte **> layout > activity_main. XML** , aby vypadal takto:
+1. Upravte **rozvržení > rozložení > activity_main.xml** tak, jak vypadá níže:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -84,7 +84,7 @@ Na mapu můžete přidat vrstvu dlaždice podle následujících kroků.
     });
     ```
     
-    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří `TileLayer` objekt a předá do `tileUrl` možnosti adresu URL dlaždice **XYZ** s formátováním. Neprůhlednost vrstvy je nastavena na hodnotu a `0.8` vzhledem k tomu, že dlaždice ze použité služby dlaždice jsou 256 pixelů, jsou tyto informace předány do `tileSize` možnosti. Vrstva dlaždice se pak předává do Správce vrstev mapy.
+    Výše uvedený fragment kódu získá Azure Maps instanci ovládacího prvku mapy pomocí zpětného volání metody **Reada ()** . Potom vytvoří `TileLayer` objekt a předá do možnosti adresu URL dlaždice **XYZ** s formátováním `tileUrl` . Neprůhlednost vrstvy je nastavena na hodnotu `0.8` a vzhledem k tomu, že dlaždice ze použité služby dlaždice jsou 256 pixelů, jsou tyto informace předány do `tileSize` Možnosti. Vrstva dlaždice se pak předává do Správce vrstev mapy.
 
     Po přidání výše uvedeného fragmentu kódu `MainActivity.java` by měl vypadat takto:
     

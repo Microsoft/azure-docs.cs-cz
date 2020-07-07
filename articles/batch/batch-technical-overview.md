@@ -3,12 +3,12 @@ title: Azure Batch spouští velké Paralelní úlohy v cloudu
 description: Další informace o používání služby Azure Batch pro rozsáhlé paralelní úlohy a úlohy v prostředí HPC.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779567"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965072"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -18,7 +18,7 @@ Vývojáři můžou službu Batch používat jako službu platformy k sestavová
 
 Za používání služby Batch se neúčtují žádné další poplatky. Platíte jenom za spotřebované základní prostředky, jako jsou virtuální počítače, úložiště a sítě.
 
-Porovnání mezi službou Batch a dalšími možnostmi řešení HPC v Azure najdete v tématu [vysoce výkonné výpočty (HPC) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Porovnání mezi službou Batch a dalšími možnostmi řešení HPC v Azure najdete v tématu [vysoce výkonné výpočty (HPC) v Azure](/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Spouštění paralelních úloh
 Služba Batch pracuje s vnitřně paralelními aplikacemi úlohami (také známé jako „jednoduše paralelně zpracovatelné“). Vnitřně paralelní úlohy jsou ty, u kterých můžou aplikace pracovat odděleně a každá instance odvede určitou část práce. Při provádění můžou aplikace získávat přístup k některým společným datům, ale nekomunikují s jinými instancemi aplikace. Vnitřně paralelní úlohy proto můžou běžet ve velkém měřítku, které závisí na množství výpočetních prostředků dostupných pro souběžné spouštění aplikací.
@@ -34,7 +34,7 @@ Některé příklady vnitřně paralelních úloh, které můžete použít ve s
 * Příjem dat, zpracování a operace extrakce, transformace a načítání (ETL)
 * Provádění testů softwaru
 
-Pomocí služby Batch můžete také [spouštět vysoce provázané úlohy](batch-mpi.md). Jedná se o úlohy, ve kterých spouštěné aplikace neběží nezávisle na sobě, ale potřebují spolu komunikovat. Vysoce provázané aplikace běžně používají rozhraní API MPI (Message Passing Interface). Ve službě Batch můžete spouštět vysoce provázané úlohy s využitím rozhraní [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) nebo Intel MPI. Velikosti virtuálních počítačů specializované pro [vysokovýkonné výpočetní prostředí (HPC)](../virtual-machines/linux/sizes-hpc.md) a [GPU](../virtual-machines/linux/sizes-gpu.md) umožňují zvýšit výkon aplikací.
+Pomocí služby Batch můžete také [spouštět vysoce provázané úlohy](batch-mpi.md). Jedná se o úlohy, ve kterých spouštěné aplikace neběží nezávisle na sobě, ale potřebují spolu komunikovat. Vysoce provázané aplikace běžně používají rozhraní API MPI (Message Passing Interface). Ve službě Batch můžete spouštět vysoce provázané úlohy s využitím rozhraní [Microsoft MPI](/message-passing-interface/microsoft-mpi) nebo Intel MPI. Velikosti virtuálních počítačů specializované pro [vysokovýkonné výpočetní prostředí (HPC)](../virtual-machines/linux/sizes-hpc.md) a [GPU](../virtual-machines/linux/sizes-gpu.md) umožňují zvýšit výkon aplikací.
 
 Některé příklady vysoce propojených úloh:
 * Analýza konečných prvků
@@ -60,7 +60,7 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 ![Podrobný postup řešení Batch](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|Krok  |Description  |
+|Krok  |Popis  |
 |---------|---------|
 |1. nahrání **vstupních souborů** a **aplikací** pro zpracování těchto souborů na účet Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
 |2. na účtu Batch vytvořte **fond** výpočetních uzlů služby Batch, **úlohu** pro spuštění úlohy ve fondu a **úkoly** v úloze.     | Uzly fondu jsou virtuální počítače, které budou provádět vaše úkoly. Zadejte vlastnosti, jako je počet a velikost uzlů, image virtuálních počítačů s Windows nebo Linuxem a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Náklady na fond a jeho velikost můžete omezit použitím [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo [automatického škálování](batch-automatic-scaling.md) počtu uzlů v závislosti na změnách zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |

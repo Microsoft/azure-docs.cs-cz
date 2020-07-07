@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
 ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71056839"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovými virtuálními zařízení v Azure
@@ -135,8 +135,8 @@ Zaznamenejte si souběžnou síťovou trasu na zdrojovém virtuálním počíta�
 
    sudo tcpdump-S0-i eth0-X-w vmtrace. Cap
 
-2. Použijte **PsPing** nebo **nmap** ze zdrojového virtuálního počítače do cílového virtuálního počítače (například: `PsPing 10.0.0.4:80` nebo `Nmap -p 80 10.0.0.4`).
-3. Otevřete trasování sítě z cílového virtuálního počítače pomocí [Sledování sítě](https://www.microsoft.com/download/details.aspx?id=4865) nebo tcpdump. Použijte filtr zobrazení pro IP adresu zdrojového virtuálního počítače, ze kterého jste spustili **PsPing** nebo **nmap** , jako je `IPv4.address==10.0.0.4 (Windows netmon)` například `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` nebo (Linux).
+2. Použijte **PsPing** nebo **nmap** ze zdrojového virtuálního počítače do cílového virtuálního počítače (například: `PsPing 10.0.0.4:80` nebo `Nmap -p 80 10.0.0.4` ).
+3. Otevřete trasování sítě z cílového virtuálního počítače pomocí [Sledování sítě](https://www.microsoft.com/download/details.aspx?id=4865) nebo tcpdump. Použijte filtr zobrazení pro IP adresu zdrojového virtuálního počítače, ze kterého jste spustili **PsPing** nebo **nmap** , jako je například `IPv4.address==10.0.0.4 (Windows netmon)` nebo `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
 
 ### <a name="analyze-traces"></a>Analyzovat trasování
 

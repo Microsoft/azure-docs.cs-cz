@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: Správa dotazů v Azure Portal'
 description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílíte nový dotaz s ostatními uživateli v Azure Portal.
-ms.date: 05/20/2020
+ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148017"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970582"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
-Průzkumník prostředků Azure vám umožňuje uložit dotazy na zdrojové grafy přímo do Azure Portal. Existují dva typy dotazů: _Private_ a _Shared_. Privátní dotaz je uložený v nastaveních Azure Portal. Vzhledem k tomu, že sdílený dotaz je Správce prostředků prostředek, který je možné spravovat pomocí řízení přístupu na základě role (RBAC) a chráněný pomocí zámků prostředků. Oba typy dotazů jsou v klidovém stavu šifrované.
+Průzkumník prostředků Azure vám umožňuje uložit dotazy na zdrojové grafy přímo do Azure Portal. Existují dva typy dotazů: _Private_ a _Shared_. Privátní dotaz je uložený v nastaveních Azure Portal. Vzhledem k tomu, že sdílený dotaz je Azure Resource Manager prostředek, který je možné spravovat pomocí řízení přístupu na základě role (RBAC) a chráněný pomocí zámků prostředků. Oba typy dotazů jsou v klidovém stavu šifrované.
 
 Uložením dotazů v Azure Portal ušetříte čas, který byste jinak strávili hledáním oblíbených nebo běžně používaných dotazů. Když sdílíte dotazy, pomůžete týmu realizovat cíle konzistence a efektivity prostřednictvím opakování.
 
@@ -45,7 +45,6 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
    Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
 
    Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os).
-
 
 1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz**a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
 
@@ -80,8 +79,7 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
 
 1. Vyberte **Uložit** nebo **Uložit jako**.
 
-   
-   ![Uložte nový dotaz pomocí tlačítka Uložit.](../media/create-share-query/save-shared-query-buttons.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-buttons.png" alt-text="Uložte nový dotaz pomocí tlačítka Uložit." border="false":::
 
 1. V podokně **Uložit dotaz** zadejte **počet virtuálních počítačů podle operačního systému** pro název.
 
@@ -91,7 +89,7 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
 
 1. V dolní části podokna **Uložit dotaz** vyberte **Save (Uložit** ). Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**. Při prvním použití skupiny prostředků **dotazování prostředků Resource-Graph** trvá uložení déle, než se očekávalo, protože se vytvořila skupina prostředků.
    
-   ![Uložit nový dotaz jako sdílený dotaz](../media/create-share-query/save-shared-query-window.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Uložit nový dotaz jako sdílený dotaz" border="false":::
 
    > [!NOTE] 
    > Pokud chcete zadat název existující skupiny prostředků, do které se uloží sdílený dotaz, můžete zrušit zaškrtnutí políčka **publikovat do skupiny prostředků dotazy Resource-Query-Query-** Query. Použití výchozí pojmenované skupiny prostředků pro dotazy usnadňuje zjišťování sdílených dotazů. Tím se také poukáže účel této skupiny prostředků. Můžete se ale rozhodnout vybrat existující skupinu prostředků z důvodů zabezpečení na základě stávajících oprávnění.
@@ -100,7 +98,7 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
 
 1. Vyberte **Otevřít dotaz**. Ověřte, že typ je nastavený na **Shared Query** a že kombinace **předplatného** a **skupiny prostředků** odpovídá umístění, kam jste dotaz uložili. Položka s uloženým **počtem virtuálních počítačů podle operačního systému** se teď zobrazí v seznamu **název dotazu** . Vyberte odkaz na název uloženého dotazu, který chcete načíst na novou kartu s názvem tohoto dotazu. Jako sdílený dotaz zobrazuje na kartě vedle názvu ikonu, která označuje, že je sdílená.
 
-   ![Zobrazit sdílený dotaz s ikonou](../media/create-share-query/show-saved-shared-query.png)
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Zobrazit sdílený dotaz s ikonou" border="false":::
 
    > [!NOTE] 
    > Když je uložený dotaz otevřený a na kartě se zobrazuje jeho název, tlačítko **Uložit** ho aktualizuje o všechny změny, které byly provedeny. Pokud chcete vytvořit nový uložený dotaz, vyberte **Uložit jako** a pokračujte, jako kdybyste ušetřili úplně nový dotaz.
@@ -136,6 +134,10 @@ Resources
 | where type == "microsoft.resourcegraph/queries"
 | project name, properties.timeModified, properties.query
 ```
+
+## <a name="run-a-shared-query"></a>Spustit sdílený dotaz
+
+Sdílený dotaz grafu prostředků lze spustit pomocí `{{shared-query-uri}}` syntaxe (Preview). Další informace najdete v tématu [syntaxe sdíleného dotazu](../concepts/query-language.md#shared-query-syntax).
 
 ## <a name="delete-a-shared-query"></a>Odstranit sdílený dotaz
 

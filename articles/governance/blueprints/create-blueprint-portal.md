@@ -3,20 +3,20 @@ title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aac4e13ca0da73f8b7915ea6655343d5cf0b94cb
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381888"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970973"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
-Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat běžné vzory pro vývoj opakovaně použitelných a rychle nasazujíných konfigurací na základě Azure Resource Manager šablon, zásad, zabezpečení a dalších. V tomto kurzu se naučíte používat Azure modrotisky k provádění některých běžných úkolů souvisejících s vytvářením, publikováním a přiřazováním podrobného plánu v rámci vaší organizace. Mezi tyto úlohy patří:
+Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat běžné vzory pro vývoj opakovaně použitelných a rychlých nasazení konfigurací založených na Azure Resource Manager šablonách (šablon ARM), zásadách, zabezpečení a dalších. V tomto kurzu se naučíte používat Azure modrotisky k provádění některých běžných úkolů souvisejících s vytvářením, publikováním a přiřazováním podrobného plánu v rámci vaší organizace. Mezi tyto úlohy patří:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 ## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
 
@@ -85,8 +85,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Vyberte **šablonu Azure Resource Manager** pro **Typ artefaktu**, nastavte **Zobrazovaný název artefaktu** na **StorageAccount**a nechejte **Popis** prázdný.
 
-   1. Na kartu **šablona** v poli editoru, vložte následující šablonu správce prostředků.
-      Po vložení šablony vyberte kartu **parametry** a Všimněte si, že byly zjištěny parametry šablony **storageAccountType** a **Location** . Každý parametr byl automaticky zjištěn a vyplněn, ale nakonfigurován jako dynamický parametr.
+   1. Na kartě **Šablona** v poli Editor vložte následující šablonu ARM. Po vložení šablony vyberte kartu **parametry** a Všimněte si, že byly zjištěny parametry šablony **storageAccountType** a **Location** . Každý parametr byl automaticky zjištěn a vyplněn, ale nakonfigurován jako dynamický parametr.
 
       > [!IMPORTANT]
       > Pokud importujete šablonu, ujistěte se, že je soubor pouze JSON a neobsahuje kód HTML. Když odkazujete na adresu URL na GitHubu, ujistěte se, že jste si vybrali **nezpracované** soubory JSON, a ne ta, která je zabalená do HTML pro zobrazení na GitHubu. Pokud importovaná šablona není čistě JSON, dojde k chybě.
@@ -140,7 +139,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
       }
       ```
 
-   1. Zrušte zaškrtnutí políčka **storageAccountType** a Všimněte si, že rozevírací seznam obsahuje pouze hodnoty obsažené v šabloně správce prostředků v části **allowedValues**. Zaškrtněte políčko pro jeho nastavení zpět na dynamický parametr.
+   1. Zrušte zaškrtnutí políčka **storageAccountType** a Všimněte si, že rozevírací seznam obsahuje jenom hodnoty obsažené v šabloně ARM v části **allowedValues**. Zaškrtněte políčko pro jeho nastavení zpět na dynamický parametr.
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
@@ -249,7 +248,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
    > Pro každý artefakt, který jste přidali do skupiny prostředků během definice podrobného plánu, je tento artefakt odsazený tak, aby se zarovnal se skupinou prostředků nebo objektem, pomocí kterého ho nasadíte.
    > Artefakty, které buď nepřebírají parametry, nebo nemají žádné parametry, které by bylo možné definovat v přiřazení, jsou uvedeny pouze pro kontextové informace.
 
-1. V šabloně Azure Resource Manager **StorageAccount**vyberte pro parametr **storageAccountType** možnost **Standard_GRS** .
+1. V **StorageAccount**šablony ARM vyberte pro parametr **storageAccountType** možnost **Standard_GRS** .
 
 1. Přečtěte si informační pole v dolní části stránky a potom vyberte **přiřadit**.
 

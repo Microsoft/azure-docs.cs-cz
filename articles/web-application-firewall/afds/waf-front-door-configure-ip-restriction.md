@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336071"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro přední dveře Azure
@@ -37,7 +37,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
    |Nastavení  |Hodnota  |
    |---------|---------|
    |Zásady pro     |Globální WAF (přední dvířka)|
-   |Předplatné     |Vyberte své předplatné.|
+   |Předplatné     |Výběr předplatného|
    |Skupina prostředků     |Vyberte skupinu prostředků, ve které je vaše přední dveře.|
    |Název zásad     |Zadejte název zásady.|
    |Stav zásad     |Povoleno|
@@ -64,7 +64,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Vlastní pravidlo":::
 
-   Vyberte **Přidat**.
+   Vyberte možnost **Přidat**.
 6. Vyberte **Další: přidružení**.
 7. Vyberte **Přidat hostitele front-end**.
 8. V případě **hostitele s front-endu**vyberte hostitele front-end a vyberte **Přidat**.
@@ -88,7 +88,7 @@ Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí rozhr
 
 #### <a name="set-up-the-azure-cli-environment"></a>Nastavení prostředí Azure CLI
 1. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli)nebo použijte Azure Cloud Shell. Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. V následujících příkazech rozhraní příkazového řádku vyberte tlačítko **vyzkoušet** a pak se přihlaste ke svému účtu Azure v otevřené relaci Cloud Shell. Po spuštění relace zadejte `az extension add --name front-door` pro přidání rozšíření služby Azure pro front-dveří.
- 2. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste se k Azure `az login`pomocí.
+ 2. Pokud používáte rozhraní příkazového řádku místně v bash, přihlaste se k Azure pomocí `az login` .
 
 #### <a name="create-an-azure-front-door-profile"></a>Vytvoření profilu front-dveří Azure
 Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveří Azure [: vytvoření předních dveří pro globální webovou aplikaci s vysokou dostupností](../../frontdoor/quickstart-create-front-door.md).
@@ -212,7 +212,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ### <a name="configure-a-waf-policy"></a>Konfigurace zásad WAF
-Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří Azure, pomocí `Get-AzResourceGroup`. V dalším kroku nakonfigurujte zásadu WAF s pravidlem IP pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří Azure, pomocí `Get-AzResourceGroup` . V dalším kroku nakonfigurujte zásadu WAF s pravidlem IP pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```azurepowershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `

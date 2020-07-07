@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335654"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
@@ -27,7 +27,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 
 ## <a name="americas"></a>Amerika
 
-| Země/region                                       | Adresní body | Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/oblast                                       | Adresní body | Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktida                                          |                 |                |              |      ✓     |          ✓         |
@@ -88,7 +88,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země/region                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/oblast                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Americká Samoa                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Austrálie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -105,7 +105,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Fidži                                                |                  |                |              |      ✓     |          ✓        |
 | Francouzská Polynésie                                    |                 |                |              |      ✓     |          ✓         |
 | Heardův ostrov a MacDonaldovy ostrovy                   |                 |                |              |      ✓     |          ✓         |
-| Hongkong – zvláštní správní oblast                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Hongkong – zvláštní administrativní oblast                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonésie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indie                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japonsko                                               |                 |                |              |      ✓     |          ✓         |
@@ -139,7 +139,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 | Thajsko                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Tokelau                                             |                 |                |              |      ✓     |          ✓         |
 | Tonga                                               |                 |                |              |      ✓     |          ✓         |
-| Turks a Caicos                            |                 |                |              |      ✓     |          ✓         |
+| Ostrovy Turks a Caicos                            |                 |                |              |      ✓     |          ✓         |
 | Tuvalu                                              |                 |                |              |      ✓     |          ✓         |
 | Vanuatu                                             |                 |                |              |      ✓     |          ✓         |
 | Vietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -147,7 +147,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 
 ## <a name="europe"></a>Evropa
 
-| Země/region                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/oblast                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albánie                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -217,7 +217,7 @@ Schopnost geografického kódu v zemi nebo oblasti je závislá na pokrytí dat 
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-| Země/region                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
+| Země/oblast                                      | Adresní body |Čísla domu | Úroveň ulice | Úroveň města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afghánistán                                         |                 |                |              |      ✓     |          ✓         |
 | Alžírsko                                             |                 |                |       ✓      |      ✓     |          ✓         |

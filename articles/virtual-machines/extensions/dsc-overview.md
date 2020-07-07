@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188531"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření Azure Desired State Configuration
@@ -115,7 +115,7 @@ Důležité informace o rutinách rozšíření DSC Správce prostředků:
 
 Rozšíření Azure DSC může použít konfigurační dokumenty DSC k přímé konfiguraci virtuálních počítačů Azure během nasazování. Tento krok neregistruje uzel do automatizace. Uzel *není centrálně* spravovaný.
 
-Následující příklad ukazuje jednoduchý příklad konfigurace. Místní konfiguraci uložte jako iisInstall. ps1.
+Následující příklad ukazuje jednoduchý příklad konfigurace. Uložte konfiguraci místně jako iisInstall.ps1.
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-Následující příkazy umístí skript iisInstall. ps1 na zadaný virtuální počítač. Příkazy také spustí konfiguraci a následně nahlásí stav zpět na.
+Následující příkazy umístí skript iisInstall.ps1 na zadaný virtuální počítač. Příkazy také spustí konfiguraci a následně nahlásí stav zpět na.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -184,7 +184,7 @@ Portál shromažďuje následující vstup:
 
 - **Moduly nebo skripty konfigurace**: Toto pole je povinné (formulář nebyl aktualizován pro [výchozí konfigurační skript](#default-configuration-script)). Konfigurační moduly a skripty vyžadují soubor. ps1, který má konfigurační skript nebo soubor. zip, který obsahuje konfigurační skript. ps1 v kořenovém adresáři. Použijete-li soubor. zip, musí být všechny závislé prostředky zahrnuty do složek modulů v souboru. zip. Soubor. zip můžete vytvořit pomocí rutiny **Publish-AzureVMDscConfiguration-OutputArchivePath** , která je součástí sady Azure PowerShell SDK. Soubor. zip se nahraje do úložiště objektů BLOB uživatele a zabezpečený tokenem SAS.
 
-- **Modul – kvalifikovaný název konfigurace**: v souboru. ps1 můžete zahrnout více funkcí konfigurace. Zadejte název skriptu Configuration. ps1 následovaný \\ a názvem konfigurační funkce. Pokud například váš skript. ps1 má název Configuration. ps1 a konfigurace je **IisInstall**, zadejte **Configuration. ps1\IisInstall**.
+- **Modul – kvalifikovaný název konfigurace**: v souboru. ps1 můžete zahrnout více funkcí konfigurace. Zadejte název skriptu Configuration. ps1 následovaný \\ a názvem konfigurační funkce. Například pokud má váš skript. ps1 název configuration.ps1 a konfigurace je **IisInstall**, zadejte **configuration.ps1 \iisinstall**.
 
 - **Argumenty konfigurace**: Pokud funkce konfigurace přebírá argumenty, zadejte je tady ve formátu **argumentName1 = Hodnota1, argumentName2 = hodnota2**. Tento formát je jiný formát, ve kterém jsou konfigurační argumenty přijaty v rutinách PowerShellu nebo šablonách Správce prostředků.
 

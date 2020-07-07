@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80350062"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro Průvodce pro aplikace SAP s více SID
@@ -112,18 +112,18 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
   * IP adresa pro NW2:10.3.1.16
   * IP adresa pro NW3:10.3.1.13
 * Porty testu paměti
-  * Port 620<strong>&lt;Nr&gt;</strong>, tedy pro NW1, NW2 a porty sondy NW3 620**00**, 620**10** a 620**20**
+  * Port 620<strong> &lt; Nr &gt; </strong>, tedy pro NW1, NW2 a porty sondy NW3 620**00**, 620**10** a 620**20**
 * Pravidla vyrovnávání zatížení – 
 * Vytvořte jednu pro každou instanci, tj. NW1/ASCS, NW2/ASCS a NW3/ASCS.
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 36<strong>&lt;Nr&gt; </strong> TCP
-    * 39<strong>&lt;Nr&gt; </strong> TCP
-    * 81<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 ### <a name="ers"></a>OLAJÍCÍCH
 
@@ -132,15 +132,15 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
   * IP adresa pro NW2 10.3.1.17
   * IP adresa pro NW3 10.3.1.19
 * Port testu paměti
-  * Port 621<strong>&lt;Nr&gt;</strong>, tedy pro NW1, NW2 a N # porty sondy 621**02**, 621**12** a 621**22**
+  * Port 621<strong> &lt; Nr &gt; </strong>, tedy pro NW1, NW2 a N # porty sondy 621**02**, 621**12** a 621**22**
 * Pravidla vyrovnávání zatížení – pro každou instanci vytvořte jednu z těchto instancí: NW1/OLAJÍCÍCH, NW2/OLAJÍCÍCH a NW3/OLAJÍCÍCH.
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 33<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
@@ -234,12 +234,12 @@ Tato dokumentace předpokládá, že:
 
 4. **[A]** nakonfigurujte `autofs` pro připojení systémů souborů/sapmnt/SID a/usr/SAP/SID/sys pro další systémy SAP, které nasazujete do clusteru. V tomto příkladu **NW2** a **NW3**.  
 
-   Aktualizujte `/etc/auto.direct` soubor pomocí systémů souborů pro další systémy SAP, které nasazujete do clusteru.  
+   Aktualizujte soubor `/etc/auto.direct` pomocí systémů souborů pro další systémy SAP, které nasazujete do clusteru.  
 
    * Pokud používáte souborový server NFS, postupujte [podle pokynů.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation)
    * Pokud používáte Azure NetApp Files, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) . 
 
-   Aby bylo možné nově přidané sdílené `autofs` složky připojit, budete muset službu restartovat.  
+   Aby bylo možné `autofs` nově přidané sdílené složky připojit, budete muset službu restartovat.  
 
 ### <a name="install-ascs--ers"></a>Nainstalovat ASCS/OLAJÍCÍCH
 
@@ -330,7 +330,7 @@ Tato dokumentace předpokládá, že:
 
    Při vytváření prostředků, které můžou být přiřazené k různým uzlům clusteru. Když je rozřadíte do skupin, migrují se na jeden z uzlů clusteru. Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředky.  
 
-   V dalším kroku se ujistěte, že jsou na uzlu clusteru spuštěné prostředky nově vytvořené skupiny OLAJÍCÍCH, a to proti uzlu clusteru, ve kterém je nainstalovaná instance ASCS pro stejný systém SAP.  Pokud jste například nainstalovali NW2 ASCS `slesmsscl1`, ujistěte se, že je skupina NW2 olajících spuštěná. `slesmsscl2`  Skupinu NW2 OLAJÍCÍCH můžete migrovat tak `slesmsscl2` , že spustíte následující příkaz: 
+   V dalším kroku se ujistěte, že jsou na uzlu clusteru spuštěné prostředky nově vytvořené skupiny OLAJÍCÍCH, a to proti uzlu clusteru, ve kterém je nainstalovaná instance ASCS pro stejný systém SAP.  Pokud jste například nainstalovali NW2 ASCS, ujistěte se `slesmsscl1` , že je skupina NW2 olajících spuštěná `slesmsscl2` .  Skupinu NW2 OLAJÍCÍCH můžete migrovat tak, `slesmsscl2` že spustíte následující příkaz: 
 
     ```
       crm resource migrate g-NW2_ERS slesmsscl2 force
@@ -578,7 +578,7 @@ Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se tř
 
 1. Test HAGetFailoverConfig a HACheckFailoverConfig
 
-   Na uzlu, kde je <sapsid>aktuálně spuštěná instance ASCS, spusťte následující příkazy jako ADM. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
+   <sapsid>Na uzlu, kde je aktuálně spuštěná instance ASCS, spusťte následující příkazy jako ADM. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
 
    ```
     slesmsscl1:nw1adm 57> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -857,7 +857,7 @@ Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se tř
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Spusťte následující příkaz jako kořen v uzlu, ve kterém je spuštěná aspoň jedna instance ASCS. V tomto příkladu jsme provedli příkaz na `slesmsscl2`, kde jsou spuštěné instance ASCS pro NW1 a NW3.  
+   Spusťte následující příkaz jako kořen v uzlu, ve kterém je spuštěná aspoň jedna instance ASCS. V tomto příkladu jsme provedli příkaz na `slesmsscl2` , kde jsou spuštěné instance ASCS pro NW1 a NW3.  
 
    ```
     slesmsscl2:~ # echo b > /proc/sysrq-trigger

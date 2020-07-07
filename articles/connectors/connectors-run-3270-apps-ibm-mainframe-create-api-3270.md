@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371109"
 ---
-# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace 3270 aplikací řízených obrazovkou na sálové počítače IBM s Azure pomocí Azure Logic Apps a konektoru IBM 3270
+# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace aplikací ovládaných přes obrazovku emulátoru 3270 na sálových počítačích IBM s Azure s využitím Azure Logic Apps a konektoru IBM 3270
 
 > [!NOTE]
 > Tento konektor je ve [*verzi Public Preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Pomocí Azure Logic Apps a konektoru IBM 3270 můžete používat a spouštět aplikace IBM sálové sami, které obvykle provedete tak, že přejdete na obrazovky emulátoru 3270. Tímto způsobem můžete své aplikace IBM pro sálové počítače integrovat s Azure, Microsoftem a dalšími aplikacemi, službami a systémy tím, že vytvoříte automatizované pracovní postupy s Azure Logic Apps. Konektor komunikuje s sálovými počítače IBM pomocí protokolu TN3270 a je k dispozici ve všech oblastech Azure Logic Apps s výjimkou Azure Government a Azure Čína 21Vianet. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+S využitím Azure Logic Apps a konektoru IBM 3270 můžete přistupovat k mainframovým aplikacím IBM, které obvykle ovládáte prostřednictvím obrazovek emulátoru 3270, a spouštět je. Díky tomu můžete vytvářením automatizovaných pracovních postupů s využitím Azure Logic Apps integrovat své mainframové aplikace IBM s Azure, Microsoftem a dalšími aplikacemi, službami a systémy. Konektor komunikuje se sálovými počítači IBM pomocí protokolu TN3270 a je dostupný ve všech oblastech Azure Logic Apps kromě oblastí Azure Government a Azure China 21Vianet. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 Tento článek popisuje tyto aspekty použití konektoru 3270: 
 
@@ -81,7 +81,7 @@ V aplikaci řízené obrazovkou 3270 jsou obrazovky a datová pole pro vaše sc�
 
 * **Navigace**: v tomto režimu určíte plán nebo cestu, jak procházet obrazovky vaší sálové aplikace pro konkrétní úkol.
 
-* **Metody**: v tomto režimu definujete metodu, například `GetBalance`, která popisuje cestu navigace obrazovky. Můžete také zvolit pole na každé obrazovce, která se stanou vstupními a výstupními parametry metody.
+* **Metody**: v tomto režimu definujete metodu, například `GetBalance` , která popisuje cestu navigace obrazovky. Můžete také zvolit pole na každé obrazovce, která se stanou vstupními a výstupními parametry metody.
 
 ### <a name="unsupported-elements"></a>Nepodporované elementy
 
@@ -151,7 +151,7 @@ Další informace najdete v [příkladu navigační plán](#example-plan) dále 
 
 ## <a name="define-navigation-plans"></a>Definování plánů navigace
 
-V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší aplikace pro konkrétní úlohu. Například může být třeba mít více než jednu cestu, kterou může aplikace převzít, když jedna cesta vytvoří správný výsledek, zatímco druhá cesta vytvoří chybu. Pro každou obrazovku určete stisknutí kláves nutných pro přechod na další obrazovku, jako je například `CICSPROD <enter>`.
+V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší aplikace pro konkrétní úlohu. Například může být třeba mít více než jednu cestu, kterou může aplikace převzít, když jedna cesta vytvoří správný výsledek, zatímco druhá cesta vytvoří chybu. Pro každou obrazovku určete stisknutí kláves nutných pro přechod na další obrazovku, jako je například `CICSPROD <enter>` .
 
 > [!TIP]
 > Pokud automatizujete několik úloh, které používají stejné obrazovky připojení a odpojení, poskytuje nástroj pro návrh speciální typy plánů připojení a odpojení. Při definování těchto plánů je můžete přidat do začátku a koncem svého navigačního plánu.
@@ -184,7 +184,7 @@ V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší ap
 
    | Typ plánu | Popis |
    |-----------|-------------|
-   | **Přihlášení** | Pro samostatné nebo kombinované plány |
+   | **Proces** | Pro samostatné nebo kombinované plány |
    | **Připojit** | Pro plány připojení |
    | **Odpojit** | Pro plány odpojení |
    |||
@@ -292,7 +292,7 @@ V tomto režimu definujete metodu, která je přidružena k vašemu navigačním
    |---------------|-----------------|
    | **Typ dat** | Byte, datum a čas, desetinné číslo, int, Long, Short, řetězec |
    | **Technika vyplňování polí** | Parametry podporují tyto typy výplně a v případě potřeby plní prázdné hodnoty: <p><p>- **Typ**: do pole zadejte znaky postupně. <p>- **Fill (vyplnit**): Nahraďte obsah pole znaky, pokud je to nutné, v případě potřeby vyplňte prázdné. <p>- **EraseEofType**: Vymažte pole a potom do pole zadejte postupně znaky. |
-   | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **DateTime**: řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Datum `06/30/2019` například používá řetězec `MM/dd/yyyy`formátu. <p>- **Decimal**: řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Číslo `100.35` například používá řetězec `999V99`formátu. |
+   | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **DateTime**: řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Datum například `06/30/2019` používá řetězec formátu `MM/dd/yyyy` . <p>- **Decimal**: řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Číslo například `100.35` používá řetězec formátu `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Uložení a zobrazení metadat
@@ -354,7 +354,7 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
    ![Vybrat akci 3270](./media/connectors-create-api-3270/select-3270-action.png)
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Pokud žádné připojení ještě neexistuje, zadejte pro připojení potřebné informace a klikněte na **vytvořit**.
 
@@ -364,9 +364,9 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
    | **ID účtu pro integraci** | Ano | <*Integration-Account-Name*> | Název vašeho účtu pro integraci |
    | **Adresa URL SAS účtu pro integraci** | Ano | <*Integration-Account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. v nabídce účet pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. v pravém podokně Zkopírujte hodnotu **vygenerované adresy URL zpětného volání** . |
    | **Server** | Ano | <*TN3270 – název serveru*> | Název serveru pro vaši službu TN3270 |
-   | **Přístavní** | Ne | <*TN3270-Server – Port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije `23` konektor jako výchozí hodnotu. |
+   | **Přístavní** | Ne | <*TN3270-Server – Port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije konektor `23` jako výchozí hodnotu. |
    | **Typ zařízení** | Ne | <*IBM-Terminal-model*> | Název nebo číslo modelu terminálu IBM pro emulaci. Pokud necháte pole prázdné, použije konektor výchozí hodnoty. |
-   | **Code Page** | Ne | <*číslo stránky kódu*> | Číslo kódové stránky pro hostitele Pokud necháte pole prázdné, použije `37` konektor jako výchozí hodnotu. |
+   | **Code Page** | Ne | <*číslo stránky kódu*> | Číslo kódové stránky pro hostitele Pokud necháte pole prázdné, použije konektor `37` jako výchozí hodnotu. |
    | **Název logické jednotky** | Ne | <*logická jednotka – název*> | Název konkrétní logické jednotky, která se má požadovat od hostitele |
    | **Povolit SSL?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte šifrování TLS. |
    | **Ověřit certifikát SSL hostitele?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte ověřování pro certifikát serveru. |

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419319"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
@@ -68,9 +68,9 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro Azure SQL Data Warehouse propojenou službu.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **AzureSqlDW** . |Ano |
+| typ |Vlastnost Type musí být nastavená na: **AzureSqlDW** . |Ano |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Data Warehouse pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Ano |
 
 > [!IMPORTANT]
@@ -81,7 +81,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro Azure SQL Da
 
 Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro sadu dat typu **AzureSqlDWTable** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | tableName |Název tabulky nebo zobrazení v databázi Azure SQL Data Warehouse, na kterou odkazuje propojená služba |Ano |
 
@@ -96,7 +96,7 @@ V takovém případě se vlastnosti dostupné v části typeProperties v aktivit
 ### <a name="sqldwsource"></a>SqlDWSource
 Pokud je zdroj typu **SqlDWSource**, jsou v oddílu **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |Ne |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
@@ -142,7 +142,7 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Podrobnosti najdete v části s možností [opakování](#repeatability-during-copy). |Příkaz dotazu. |Ne |
 | allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do SQL Data Warehouse.** Omezení a podrobnosti najdete v tématu [použití základu k načtení dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části. |True <br/>False (výchozí) |Ne |
@@ -199,7 +199,7 @@ Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a au
    1. `rowDelimiter`musí být **\n**.
    2. `nullValue`je nastaven na **prázdný řetězec** ("") nebo `treatEmptyAsNull` je nastaven na **hodnotu true**.
    3. `encodingName`je nastavená na **UTF-8**, což je **výchozí** hodnota.
-   4. `escapeChar`nejsou `quoteChar`zadány `firstRowAsHeader`, `skipLineCount` , a.
+   4. `escapeChar`nejsou `quoteChar` `firstRowAsHeader` zadány,, a `skipLineCount` .
    5. `compression`nemůže být **žádná komprese**, **gzip**nebo **Deflate**.
 
       ```JSON
@@ -219,9 +219,9 @@ Pokud nejsou splněny požadavky, Azure Data Factory zkontroluje nastavení a au
       },
       ```
 
-3. V části `skipHeaderLineCount` **BlobSource** nebo **AzureDataLakeStore** není žádné nastavení pro aktivitu kopírování v kanálu.
-4. V rámci `sliceIdentifierColumnName` **SqlDWSink** neexistuje žádné nastavení pro aktivitu kopírování v kanálu. (Základ základů zaručuje, že všechna data jsou aktualizována nebo dokud není v jednom spuštění aktualizována žádná aktualizace. Chcete-li dosáhnout **opakovatelnosti**, můžete `sqlWriterCleanupScript`použít).
-5. V přidružené aktivitě kopírování se nepoužívá žádný `columnMapping` .
+3. `skipHeaderLineCount`V části **BlobSource** nebo **AzureDataLakeStore** není žádné nastavení pro aktivitu kopírování v kanálu.
+4. `sliceIdentifierColumnName`V rámci **SqlDWSink** neexistuje žádné nastavení pro aktivitu kopírování v kanálu. (Základ základů zaručuje, že všechna data jsou aktualizována nebo dokud není v jednom spuštění aktualizována žádná aktualizace. Chcete-li dosáhnout **opakovatelnosti**, můžete použít `sqlWriterCleanupScript` ).
+5. `columnMapping`V přidružené aktivitě kopírování se nepoužívá žádný.
 
 ### <a name="staged-copy-using-polybase"></a>Připravené kopírování pomocí základu
 Pokud zdrojová data nesplňují kritéria zavedená v předchozí části, můžete kopírovat data prostřednictvím dočasné přípravy Blob Storage Azure (nelze Premium Storage). V takovém případě Azure Data Factory automaticky provádí transformace dat, aby splňovaly požadavky na formát dat základu. potom pomocí základů načte data do SQL Data Warehouse a při posledním vyčištění dočasná data z úložiště objektů BLOB. Podrobnosti o tom, jak kopírují data prostřednictvím pracovního objektu Azure Blob, najdete v části [připravené kopírování](data-factory-copy-activity-performance.md#staged-copy) .
@@ -230,7 +230,7 @@ Pokud zdrojová data nesplňují kritéria zavedená v předchozí části, mů�
 > Když kopírujete data z místního úložiště dat do Azure SQL Data Warehouse pomocí základu a přípravy, pokud je verze Správa dat brány pod 2,4, na počítači brány se vyžaduje JRE (Java Runtime Environment), který se používá k transformaci zdrojových dat do správného formátu. Navrhněte, abyste bránu inovovali na nejnovější verzi, abyste se vyhnuli této závislosti.
 >
 
-Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) , která odkazuje na účet Azure Storage s dočasným úložištěm objektů blob, `enableStaging` a pak `stagingSettings` zadejte vlastnosti a aktivity kopírování, jak je znázorněno v následujícím kódu:
+Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) , která odkazuje na účet Azure Storage s dočasným úložištěm objektů blob, a pak zadejte `enableStaging` `stagingSettings` vlastnosti a aktivity kopírování, jak je znázorněno v následujícím kódu:
 
 ```json
 "activities":[
@@ -308,16 +308,16 @@ Data Factory vytvoří tabulku v cílovém úložišti se stejným názvem tabul
 | 40bitového | 40bitového |
 | Desetinné číslo | Desetinné číslo |
 | Numeric | Desetinné číslo |
-| Plovoucí desetinná čárka | Plovoucí desetinná čárka |
+| Float | Float |
 | Peněžní částka | Peněžní částka |
 | Skutečné | Skutečné |
 | SmallMoney | SmallMoney |
-| binární | binární |
+| Binární | Binární |
 | Varbinary | Varbinary (až 8000) |
 | Datum | Datum |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| Čas | Čas |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (až 8000) |
@@ -346,7 +346,7 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | --- | --- |
 | bigint |Int64 |
 | binární |Byte [] |
-| bitové |Logická hodnota |
+| bit |Logická hodnota |
 | char |Řetězec, znak [] |
 | date |DateTime |
 | Datum a čas |DateTime |
@@ -354,7 +354,7 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | DateTimeOffset |DateTimeOffset |
 | Desetinné číslo |Desetinné číslo |
 | Atribut FILESTREAM (varbinary (max)) |Byte [] |
-| Plovoucí desetinná čárka |Double |
+| Float |Double |
 | image |Byte [] |
 | int |Int32 |
 | papír |Desetinné číslo |
@@ -362,7 +362,7 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | ntext |Řetězec, znak [] |
 | numerické |Desetinné číslo |
 | nvarchar |Řetězec, znak [] |
-| real |Single |
+| real |Jeden |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

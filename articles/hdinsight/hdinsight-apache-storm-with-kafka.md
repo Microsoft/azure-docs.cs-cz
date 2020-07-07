@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494351"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963525"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu se systémem Apache Kafka ve službě HDInsight
 
@@ -115,7 +115,7 @@ Následující kód XML je deklarace závislosti v `pom.xml` projektu [Apache Ma
 
 ## <a name="understanding-the-code"></a>Vysvětlení kódu
 
-Kód použitý v tomto dokumentu je k dispozici [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)na adrese.
+Kód použitý v tomto dokumentu je k dispozici na adrese [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) .
 
 V tomto kurzu se využívají dvě topologie:
 
@@ -128,7 +128,7 @@ V tomto kurzu se využívají dvě topologie:
     >
     > Pokud nepoužijete k vytvoření clusteru Storm šablonu v tomto dokumentu, pak musíte akci skriptu použít na cluster ručně.
     >
-    > Akce skriptu je umístěna v [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) umístění a je použita na uzel správce a Nimbus v clusteru s více clustery. Další informace o použití akcí skriptu najdete v dokumentu [Přizpůsobení HDInsightu pomocí akcí skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+    > Akce skriptu je umístěna v umístění [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) a je použita na uzel správce a Nimbus v clusteru s více clustery. Další informace o použití akcí skriptu najdete v dokumentu [Přizpůsobení HDInsightu pomocí akcí skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 Topologie se definují pomocí komponenty [Flux](https://storm.apache.org/releases/current/flux.html). Flux byl uveden ve Stormu 0.10.x a umožňuje oddělení konfigurace topologie od kódu. Pro topologie používající architekturu Flux se topologie definuje v souboru YAML. Soubor YAML je možné zahrnout jako součást topologie. Může to ale být také samostatný soubor, který použijete při odesílání topologie. Flux také podporuje různé substituce za běhu, což se využívá i v tomto příkladu.
 
@@ -144,7 +144,7 @@ Pro tyto topologie jsou za běhu nastaveny následující parametry:
 
 * `${hdfs.write.dir}`: Adresář, do kterého se data zapisují.
 
-Další informace o topologiích toků najdete v [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)tématu.
+Další informace o topologiích toků najdete v tématu [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html) .
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
@@ -372,7 +372,7 @@ Projekt obsahuje soubor s názvem `dev.properties`, který se používá pro př
 | `kafka.broker.hosts` | Hostitelé zprostředkovatelů Kafka (pracovní uzly). |
 | `kafka.topic` | Téma Kafka, které topologie používají. |
 | `hdfs.write.dir` | Adresář, do kterého topologie Kafka-reader zapisuje. |
-| `hdfs.url` | Systém souborů používaný clusterem Storm. Pro účty úložiště Azure Storage použijte hodnotu `wasb://`. Pro Azure Data Lake Storage Gen2 použijte hodnotu `abfs://`. Pro Azure Data Lake Storage Gen1 použijte hodnotu `adl://`. |
+| `hdfs.url` | Systém souborů používaný clusterem Storm. Pro účty úložiště Azure Storage použijte hodnotu `wasb://`. Pro Azure Data Lake Storage Gen2 použijte hodnotu `abfs://` . Pro Azure Data Lake Storage Gen1 použijte hodnotu `adl://` . |
 
 ## <a name="create-the-clusters"></a>Vytvoření clusterů
 
@@ -391,7 +391,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Šablona Azure Resource Manager se nachází na adrese **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**. Vytvoří následující prostředky:
+    Šablona Azure Resource Manager se nachází na adrese **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** . Vytvoří následující prostředky:
 
     * Skupina prostředků Azure
     * Azure Virtual Network
@@ -429,7 +429,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 ## <a name="build-the-topology"></a>Vytvoření topologie
 
-1. Ve svém vývojovém prostředí Stáhněte projekt z [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), otevřete příkazový řádek a změňte adresář na umístění, do kterého jste stáhli projekt.
+1. Ve svém vývojovém prostředí Stáhněte projekt z [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) , otevřete příkazový řádek a změňte adresář na umístění, do kterého jste stáhli projekt.
 
 2. V adresáři **hdinsight-storm-java-kafka** následujícím příkazem zkompilujte projekt a vytvořte balíček pro nasazení:
 
@@ -500,7 +500,9 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
     Vrácená hodnota je obdobná následujícímu textu:
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > Ačkoli máte více než dva uzly Zookeeper, není nutné poskytovat klientům úplný seznam jejich hostitelů. Jeden nebo dva jsou postačující.
@@ -509,12 +511,14 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 3. Upravte soubor `dev.properties` umístěný v kořenovém adresáři projektu. Přidejte informace o hostitelích zprostředkovatelů a Zookeeper pro cluster __Kafka__ do odpovídajících řádků v tomto souboru. Následující příklad je konfigurovaný s použitím hodnot z předchozích kroků:
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
-    > Položka `hdfs.url` je konfigurována pro cluster, který používá účet úložiště Azure Storage. Pokud chcete tuto topologii použít s clusterem s více podmnožinami, který `wasb` používá `adl`Data Lake Storage, změňte tuto hodnotu z na.
+    > Položka `hdfs.url` je konfigurována pro cluster, který používá účet úložiště Azure Storage. Pokud chcete tuto topologii použít s clusterem s více podmnožinami, který používá Data Lake Storage, změňte tuto hodnotu z `wasb` na `adl` .
 
 4. Uložte soubor `dev.properties` a následujícím příkazem ho nahrajte do clusteru **Storm**:
 
@@ -590,11 +594,13 @@ Kafka ukládá data do _tématu_. Téma je třeba vytvořit před spuštěním t
 
     Výstup se bude podobat následujícímu:
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. K zobrazení obsahu souboru použijte následující příkaz. Nahraďte `filename.txt` názvem souboru:
 
@@ -604,13 +610,19 @@ Kafka ukládá data do _tématu_. Téma je třeba vytvořit před spuštěním t
 
     Následující text uvádí příklad obsahu souboru:
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > před čtyřmi a sedmi lety
+    >
+    > sněhová bílá a sedmá Dwarfs
+    >
+    > jsem ve dvou a povaze
+    >
+    > sněhová bílá a sedmá Dwarfs
+    >
+    > jsem ve dvou a povaze
+    >
+    > před čtyřmi a sedmi lety
+    >
+    > Apple a den zachovává lékaře
 
 ## <a name="stop-the-topologies"></a>Zastavení topologií
 

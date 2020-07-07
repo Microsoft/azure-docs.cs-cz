@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428105"
 ---
-# <a name="best-practices-for-long-running-operations"></a>Osvědčené postupy pro dlouhodobě běžící operace
+# <a name="best-practices-for-long-running-operations"></a>Osvědčené postupy pro dlouhotrvající operace
 
 V Azure Analysis Services *uzel* představuje virtuální počítač hostitele, na kterém je spuštěn prostředek serveru. Některé operace, jako je dlouho běžící dotazy, operace aktualizace a synchronizace škálování na více instancí, můžou selhat, pokud se prostředek serveru přesune na jiný uzel. Mezi běžné chybové zprávy v tomto scénáři patří:
 
 - Při pokusu o nalezení dlouho běžící žádosti XMLA došlo k chybě. Je možné, že žádost byla přerušena upgradem služby nebo restartováním serveru.
-- Úloha s ID<guid>pro model<database>se zrušila kvůli chybě služby (neaktivity) se zprávou o zrušení žádosti o aktualizaci, protože se zablokovala bez aktualizací. Jedná se o vnitřní problém služby. Pokud se problém opakuje, odešlete prosím úlohu znovu nebo zajistěte, aby se zobrazila žádost o pomoc. "
+- Úloha s ID <guid> pro model <database> se zrušila kvůli chybě služby (neaktivity) se zprávou o zrušení žádosti o aktualizaci, protože se zablokovala bez aktualizací. Jedná se o vnitřní problém služby. Pokud se problém opakuje, odešlete prosím úlohu znovu nebo zajistěte, aby se zobrazila žádost o pomoc. "
 
 Existuje mnoho důvodů, proč je možné narušit dlouho běžící operace. Například aktualizace v Azure, například: 
 - Opravy operačního systému 
