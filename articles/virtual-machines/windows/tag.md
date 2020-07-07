@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: 6ecf0f047fe353d94ca901118d1f434e33e9c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100562"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Windows v Azure
@@ -39,7 +39,7 @@ Pokud váš virtuální počítač už obsahuje značky, zobrazí se vám všech
 
 Pokud chcete přidat značky přes PowerShell, můžete použít `Set-AzResource` příkaz. Poznámka: při aktualizaci značek prostřednictvím PowerShellu se značky aktualizují jako celek. Takže pokud přidáváte jednu značku k prostředku, který již obsahuje značky, bude nutné zahrnout všechny značky, které chcete umístit do prostředku. Níže je uveden příklad přidání dalších značek k prostředku prostřednictvím rutin prostředí PowerShell.
 
-Tato první rutina nastaví všechny značky, které jsou umístěny v *MyTestVM* , do proměnné *$Tags* pomocí `Get-AzResource` vlastnosti `Tags` a.
+Tato první rutina nastaví všechny značky, které jsou umístěny v *MyTestVM* , do proměnné *$Tags* pomocí `Get-AzResource` `Tags` vlastnosti a.
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 

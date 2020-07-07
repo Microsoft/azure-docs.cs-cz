@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137582"
 ---
 # <a name="liveness-probe"></a>Test živého provozu
@@ -21,7 +21,7 @@ Předtím, než budete pokračovat v tomto článku, se seznamte s [Service Fabr
 > [!NOTE]
 > Sonda živých funkcí je podporovaná jenom pro kontejnery v režimu sítě NAT.
 
-## <a name="semantics"></a>Sémantiku
+## <a name="semantics"></a>Sémantika
 Můžete určit pouze jeden test živého provozu na kontejner a může řídit jeho chování pomocí těchto polí:
 
 * `initialDelaySeconds`: Počáteční zpoždění v sekundách, po kterém se spustí sonda po spuštění kontejneru. Podporovaná hodnota je **int**. Výchozí hodnota je 0 a minimální hodnota je 0.
@@ -40,15 +40,15 @@ Service Fabric navíc vyvolají následující [sestavy o stavu][health-introduc
 
 * `OK`: Sonda se úspěšně nastavila pro hodnotu nastavenou v **successThreshold**.
 
-* `Error`: Test **failureCount** ==  **failureThreshold**před restartováním kontejneru.
+* `Error`: Test **failureCount**  ==   **failureThreshold**před restartováním kontejneru.
 
 * `Warning`: 
-    * Sonda se nezdařila a **failureCount** < **failureThreshold**. Tato sestava stavu zůstane, dokud **failureCount** nedosáhne hodnoty nastavené v **failureThreshold** nebo **successThreshold**.
+    * Sonda se nezdařila a **failureCount**  <  **failureThreshold**. Tato sestava stavu zůstane, dokud **failureCount** nedosáhne hodnoty nastavené v **failureThreshold** nebo **successThreshold**.
     * Po úspěchu po selhání zůstane upozornění, ale s aktualizovanými po sobě jdoucími úspěchy.
 
 ## <a name="specifying-a-liveness-probe"></a>Určení testu živého provozu
 
-Test paměti můžete zadat v souboru souboru ApplicationManifest. XML pod **ServiceManifestImport**.
+Test paměti můžete zadat v souboru ApplicationManifest.xml pod položkou **ServiceManifestImport**.
 
 Sonda může být pro některé z těchto možností:
 

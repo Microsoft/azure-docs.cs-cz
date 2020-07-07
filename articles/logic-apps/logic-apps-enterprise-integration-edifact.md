@@ -9,13 +9,13 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115529"
 ---
-# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange EDIFACT pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
+# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv EDIFACT pro podnikovou integraci B2B v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
 Než budete moct EDIFACT zprávy pro Azure Logic Apps, musíte si vytvořit EDIFACT smlouvu a uložit ji do svého účtu integrace. Tady je postup, jak vytvořit smlouvu EDIFACT.
 
@@ -36,7 +36,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com "portál Azure"). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com "portál Azure"). 
 
 2. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.
 
@@ -63,7 +63,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
    | Vlastnost | Popis |
    | --- | --- |
-   | Název |Název smlouvy |
+   | Name |Název smlouvy |
    | Typ smlouvy | By měl být EDIFACT |
    | Partner hostitele |Smlouva potřebuje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
    | Hostitelská identita |Identifikátor hostitelského partnera |

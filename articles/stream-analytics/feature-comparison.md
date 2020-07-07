@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133504"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Porovnání funkcí Azure Stream Analytics
@@ -43,7 +43,7 @@ Pomocí Azure Stream Analytics můžete vytvářet streamovaná řešení v clou
 |Vlastní vlastnosti zprávy     |Ano         |Ano         |Ne       |
 |Funkce vlastního kódu a deserializace jazyka C#|Režim jen pro čtení|Ano|Ne|
 |JavaScript UDF a UDA     |Ano         |Ano         |Jen ve Windows         |
-|Služba Machine Learning     |Ano        |Ano         |Ne         |
+|Machine Learning Service     |Ano        |Ano         |Ne         |
 |Machine Learning Studio     |Ano, ale dotaz se nedá testovat.        |Ano |Ne         |
 |Úroveň kompatibility     |1.0</br>1.1</br>1,2 (výchozí)         |1.0</br>1.1</br>1,2 (výchozí)           |1.0</br>1.1</br>1,2 (výchozí)           |
 |Integrované funkce detekce anomálií založené na ML     |Ano         |Ano         |Ano         |

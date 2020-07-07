@@ -4,10 +4,10 @@ description: Popisuje, jak nastavit průběžnou integraci v Azure Pipelines pom
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084647"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrace šablon ARM pomocí Azure Pipelines
@@ -16,7 +16,7 @@ Visual Studio poskytuje projekt skupiny prostředků Azure pro vytváření šab
 
 Existují dva způsoby, jak nasadit šablony s Azure Pipelines:
 
-* **Přidejte úlohu, která spouští skript Azure PowerShell**. Tato možnost je výhodou zajištění konzistence během životního cyklu vývoje, protože používáte stejný skript, který je součástí projektu aplikace Visual Studio (Deploy-AzureResourceGroup. ps1). Skript rozhlíží artefakty z vašeho projektu na účet úložiště, ke kterému Správce prostředků získat přístup. Artefakty jsou položky ve vašem projektu, například propojené šablony, skripty a binární soubory aplikace. Skript pak nasadí šablonu.
+* **Přidejte úlohu, která spouští skript Azure PowerShell**. Tato možnost je výhodou zajištění konzistence během životního cyklu vývoje, protože používáte stejný skript, který je součástí projektu aplikace Visual Studio (Deploy-AzureResourceGroup.ps1). Skript rozhlíží artefakty z vašeho projektu na účet úložiště, ke kterému Správce prostředků získat přístup. Artefakty jsou položky ve vašem projektu, například propojené šablony, skripty a binární soubory aplikace. Skript pak nasadí šablonu.
 
 * **Přidejte úkoly pro kopírování a nasazování úloh**. Tato možnost nabízí pohodlný alternativu pro skript projektu. V kanálu můžete nakonfigurovat dva úkoly. Jedna fáze úlohy artefakty a druhá úloha nasadí šablonu.
 
@@ -72,21 +72,21 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Když nastavíte úlohu na `AzurePowerShell@3`, kanál použije k ověření připojení příkazy z modulu AzureRM. Ve výchozím nastavení používá skript prostředí PowerShell v projektu sady Visual Studio modul AzureRM. Pokud jste skript aktualizovali tak, aby používal [modul AZ Module](/powershell/azure/new-azureps-module-az), nastavte úlohu na `AzurePowerShell@4`.
+Když nastavíte úlohu na `AzurePowerShell@3` , kanál použije k ověření připojení příkazy z modulu AzureRM. Ve výchozím nastavení používá skript prostředí PowerShell v projektu sady Visual Studio modul AzureRM. Pokud jste skript aktualizovali tak, aby používal [modul AZ Module](/powershell/azure/new-azureps-module-az), nastavte úlohu na `AzurePowerShell@4` .
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-V `azureSubscription`poli zadejte název připojení služby, které jste vytvořili.
+V `azureSubscription` poli zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Pro `scriptPath`zadejte relativní cestu ze souboru kanálu ke skriptu. Můžete si prohlédnout své úložiště a zobrazit cestu.
+Pro `scriptPath` zadejte relativní cestu ze souboru kanálu ke skriptu. Můžete si prohlédnout své úložiště a zobrazit cestu.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -154,13 +154,13 @@ Následující YAML ukazuje [úlohu kopírování souborů Azure](/azure/devops/
     sasTokenTimeOutInMinutes: '240'
 ```
 
-K revizi vašeho prostředí se používá několik částí této úlohy. `SourcePath` Určuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1` , což byl název projektu.
+K revizi vašeho prostředí se používá několik částí této úlohy. `SourcePath`Určuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1` , což byl název projektu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-V `azureSubscription`poli zadejte název připojení služby, které jste vytvořili.
+V `azureSubscription` poli zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -194,7 +194,7 @@ Následující YAML ukazuje [úlohu nasazení šablony Azure Resource Manager](h
 
 K revizi vašeho prostředí se používá několik částí této úlohy.
 
-- `deploymentScope`: Vyberte rozsah nasazení z možností: `Management Group` `Subscription` a. `Resource Group` V tomto návodu použijte **skupinu prostředků** . Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
+- `deploymentScope`: Vyberte rozsah nasazení z možností: `Management Group` `Subscription` a `Resource Group` . V tomto návodu použijte **skupinu prostředků** . Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
 
 - `ConnectedServiceName`: Zadejte název připojení služby, které jste vytvořili.
 
@@ -204,14 +204,14 @@ K revizi vašeho prostředí se používá několik částí této úlohy.
 
 - `subscriptionName`: Zadejte ID cílového předplatného. Tato vlastnost se vztahuje pouze na rozsah nasazení skupiny prostředků a obor nasazení předplatného.
 
-- `resourceGroupName`a `location`: zadejte název a umístění skupiny prostředků, do které chcete nasadit. Tato úloha vytvoří skupinu prostředků, pokud neexistuje.
+- `resourceGroupName`a `location` : zadejte název a umístění skupiny prostředků, do které chcete nasadit. Tato úloha vytvoří skupinu prostředků, pokud neexistuje.
 
     ```yaml
     resourceGroupName: '<resource-group-name>'
     location: '<location>'
     ```
 
-Úloha nasazení odkazuje na šablonu s názvem `WebSite.json` a soubor parametrů s názvem Web. Parameters. JSON. Použijte názvy šablon a souborů parametrů.
+Úloha nasazení odkazuje na šablonu s názvem `WebSite.json` a soubor parametrů s názvem WebSite.parameters.jsv. Použijte názvy šablon a souborů parametrů.
 
 Teď, když jste se seznámili s vytvářením úloh, Projděte si postup pro úpravu kanálu.
 

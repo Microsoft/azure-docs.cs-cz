@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086568"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
 
 Řada podniků využívá analýzu velkých objemů dat pro Business Insights, která jim usnadňuje rozhodování. Organizace může mít komplexní a regulované prostředí s rostoucím počtem různých uživatelů. Podnik má jistotu, že kritická podniková data se ukládají bezpečněji, se správnou úrovní přístupu uděleným pro jednotlivé uživatele. Azure Data Lake Storage Gen1 je navržena tak, aby pomohla splnit tyto požadavky na zabezpečení. V tomto článku se dozvíte o možnostech zabezpečení Data Lake Storage Gen1, včetně těchto:
 
-* Authentication
+* Ověřování
 * Autorizace
 * Izolace sítě
 * Ochrana dat
@@ -53,7 +53,7 @@ Mějte na paměti, že i když se role přiřazují pro správu účtů, někter
 | Role | Práva pro správu | Přístupová práva k datům | Vysvětlení |
 | --- | --- | --- | --- |
 | Není přiřazená žádná role. |Žádná |Řídí se ACL |Uživatel nemůže pomocí rutin Azure Portal ani Azure PowerShell Procházet Data Lake Storage Gen1. Uživatel může použít jenom nástroje příkazového řádku. |
-| Vlastník |Všechny |Všechny |Role vlastníka je uživatel. Tato role může spravovat vše a má úplný přístup k datům. |
+| Vlastník |Vše |Vše |Role vlastníka je uživatel. Tato role může spravovat vše a má úplný přístup k datům. |
 | Čtenář |Jen pro čtení |Řídí se ACL |Role čtenář si může zobrazit všechno, co se týče správy účtů, například k tomu, ke kterému uživateli je přiřazena role. Role čtenáře nemůže provádět žádné změny. |
 | Přispěvatel |Všechny kromě rolí přidat a odebrat |Řídí se ACL |Role přispěvatele může spravovat některé aspekty účtu, například nasazení a vytváření a správu výstrah. Role přispěvatele nemůže přidávat ani odebírat role. |
 | Správce přístupu uživatelů |Přidání a odebrání rolí |Řídí se ACL |Role správce přístupu uživatelů může spravovat přístup uživatelů k účtům. |
@@ -117,7 +117,7 @@ Podnikoví zákazníci požadují cloudovou platformu pro analýzu dat, která j
 
 Pokud chcete zobrazit nové funkce v Data Lake Storage Gen1, pošlete nám svůj názor na [Data Lake Storage Gen1 Fórum UserVoice](https://feedback.azure.com/forums/327234-data-lake).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Začínáme s Data Lake Storage Gen1](data-lake-store-get-started-portal.md)

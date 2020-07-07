@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
 ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084307"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
@@ -72,11 +72,11 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Balíček `WALinuxAgent-<version>`WALinuxAgent byl vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
+1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Tuto úpravu provedete tak `/boot/grub/menu.lst` , že otevřete v textovém editoru a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Tuto úpravu provedete tak, `/boot/grub/menu.lst` že otevřete v textovém editoru a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -86,7 +86,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     
         rhgb quiet crashkernel=auto
     
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.  Možnost můžete nechat nakonfigurovanou v `crashkernel` případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více. Tato konfigurace může být problematická na menších velikostech virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.  Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více. Tato konfigurace může být problematická na menších velikostech virtuálních počítačů.
 
 
 1. Ujistěte se, že je server Secure Shell (SSH) nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění, což je obvykle výchozí. Upravte/etc/ssh/sshd_config tak, aby zahrnovala následující řádek:
@@ -125,7 +125,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
         # logout
 
-1. Klikněte na **Akce** > **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
+1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače s RHEL 7 pomocí Správce technologie Hyper-V
@@ -158,7 +158,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu `/etc/default/grub` , otevřete v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -166,9 +166,9 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
    
         rhgb quiet crashkernel=auto
    
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat nakonfigurovanou v `crashkernel` případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
-1. Po dokončení úprav `/etc/default/grub`spusťte následující příkaz pro opětovné sestavení konfigurace grub:
+1. Po dokončení úprav `/etc/default/grub` Spusťte následující příkaz pro opětovné sestavení konfigurace grub:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -176,7 +176,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
         ClientAliveInterval 180
 
-1. Balíček `WALinuxAgent-<version>`WALinuxAgent byl vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
+1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -210,7 +210,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
         # logout
 
-1. Klikněte na **Akce** > **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
+1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Příprava virtuálního počítače založeného na Red Hat z KVM
@@ -266,7 +266,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Tuto konfiguraci provedete tak `/boot/grub/menu.lst` , že otevřete v textovém editoru a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Tuto konfiguraci provedete tak, `/boot/grub/menu.lst` že otevřete v textovém editoru a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -276,12 +276,12 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
     
         rhgb quiet crashkernel=auto
     
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat nakonfigurovanou v `crashkernel` případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
 
 1. Přidat moduly technologie Hyper-V do initramfs:  
 
-    Upravte `/etc/dracut.conf`a přidejte následující obsah:
+    Upravte `/etc/dracut.conf` a přidejte následující obsah:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -302,7 +302,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Balíček `WALinuxAgent-<version>`WALinuxAgent byl vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
+1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
@@ -339,7 +339,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 1. Převeďte image QCOW2 na formát VHD.
 
 > [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -412,7 +412,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li tuto konfiguraci provést `/etc/default/grub` , otevřete v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li tuto konfiguraci provést, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -420,9 +420,9 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
    
         rhgb quiet crashkernel=auto
    
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat nakonfigurovanou v `crashkernel` případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
-1. Po dokončení úprav `/etc/default/grub`spusťte následující příkaz pro opětovné sestavení konfigurace grub:
+1. Po dokončení úprav `/etc/default/grub` Spusťte následující příkaz pro opětovné sestavení konfigurace grub:
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -449,7 +449,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Balíček `WALinuxAgent-<version>`WALinuxAgent byl vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
+1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -490,7 +490,7 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 1. Převeďte image QCOW2 na formát VHD.
 
 > [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -558,11 +558,11 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Balíček `WALinuxAgent-<version>`WALinuxAgent byl vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
+1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak `/etc/default/grub` , že otevřete v textovém editoru a upravíte `GRUB_CMDLINE_LINUX` parametr. Příklad:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak, `/etc/default/grub` že otevřete v textovém editoru a upravíte `GRUB_CMDLINE_LINUX` parametr. Příklad:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -570,11 +570,11 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
    
         rhgb quiet crashkernel=auto
    
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat nakonfigurovanou v `crashkernel` případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
 1. Přidat moduly technologie Hyper-V do initramfs:
 
-    Upravte `/etc/dracut.conf`a přidejte následující obsah:
+    Upravte `/etc/dracut.conf` a přidejte následující obsah:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -619,7 +619,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 1. Vypněte virtuální počítač a převeďte soubor VMDK na soubor. VHD.
 
 > [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -670,7 +670,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu `/etc/default/grub` , otevřete v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
+1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -678,15 +678,15 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
    
         rhgb quiet crashkernel=auto
    
-    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat nakonfigurovanou v `crashkernel` případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
-1. Po dokončení úprav `/etc/default/grub`spusťte následující příkaz pro opětovné sestavení konfigurace grub:
+1. Po dokončení úprav `/etc/default/grub` Spusťte následující příkaz pro opětovné sestavení konfigurace grub:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 1. Přidejte moduly technologie Hyper-V do initramfs.
 
-    Upravit `/etc/dracut.conf`, přidat obsah:
+    Upravit `/etc/dracut.conf` , přidat obsah:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -698,7 +698,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
         ClientAliveInterval 180
 
-1. Balíček `WALinuxAgent-<version>`WALinuxAgent byl vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
+1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -735,7 +735,7 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 1. Vypněte virtuální počítač a převeďte soubor VMDK na formát VHD.
 
 > [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -911,7 +911,7 @@ Pokud používáte jiný systém virtualizace (tj. VirtualBox, Xen atd.) k pří
 
 Pokud chcete tento problém vyřešit, přidejte moduly technologie Hyper-V tak, aby se initramfs a znovu sestavily:
 
-Upravte `/etc/dracut.conf`a přidejte následující obsah:
+Upravte `/etc/dracut.conf` a přidejte následující obsah:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 

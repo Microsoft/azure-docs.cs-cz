@@ -9,10 +9,10 @@ ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085140"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
@@ -51,7 +51,7 @@ Podporované jsou následující typy souborů:
 * . sh (použití bash)
 * . php (použití PHP)
 * . py (použití Pythonu)
-* . js (použití Node. js)
+* . js (použití Node.js)
 * . jar (použití jazyka Java)
 
 ## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a>Vytvoření průběžné úlohy WebJob
@@ -78,11 +78,11 @@ when making changes in one don't forget the other two.
    | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
    | **Název** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
-   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
+   | **Nahrání souboru** | ConsoleApp.zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
    | **Typ** | Průběžný | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
    | **Měřítko** | Více instancí | K dispozici pouze pro nepřetržité webové úlohy. Určuje, zda se program nebo skript spouští na všech instancích nebo pouze v jedné instanci. Možnost spuštění na více instancích se nevztahuje na [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Free nebo Shared. | 
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -116,11 +116,11 @@ when making changes in one don't forget the other two.
    | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
    | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
-   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
+   | **Nahrání souboru** | ConsoleApp.zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
    | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Aktivační události** | Ruční | |
+   | **Triggery** | Ruční | |
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -154,12 +154,12 @@ when making changes in one don't forget the other two.
    | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
    | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
-   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
+   | **Nahrání souboru** | ConsoleApp.zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
    | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Aktivační události** | Naplánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
+   | **Triggery** | Naplánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
    | **Výraz CRON** | 0 0/20 * * * * | [Výrazy cron](#ncrontab-expressions) jsou popsány v následující části. |
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 

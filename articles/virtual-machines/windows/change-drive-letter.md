@@ -10,23 +10,23 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083418"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Použití jednotky D: jako datové jednotky na virtuálním počítači s Windows
 Pokud vaše aplikace potřebuje k ukládání dat použít jednotku D, postupujte podle těchto pokynů, abyste pro dočasný disk použili jiné písmeno jednotky. Nikdy nepoužívejte dočasný disk k ukládání dat, která je třeba zachovat.
 
-Při změně velikosti nebo **zastavení (zrušení přidělení)** virtuálního počítače může tato operace aktivovat umístění virtuálního počítače do nového hypervisoru. Toto umístění může také aktivovat plánovaná nebo neplánovaná událost údržby. V tomto scénáři se dočasný disk znovu přiřadí k prvnímu dostupnému písmenu jednotky. Pokud máte aplikaci, která konkrétně vyžaduje jednotku D:, je nutné pomocí následujících kroků dočasně přesunout soubor Pagefile. sys, připojit nový datový disk a přiřadit písmeno D a následně přesunout soubor Pagefile. sys zpátky na dočasné jednotky. Až to bude hotové, Azure se znovu nevrátí, pokud se virtuální počítač přesune do jiného hypervisoru.
+Při změně velikosti nebo **zastavení (zrušení přidělení)** virtuálního počítače může tato operace aktivovat umístění virtuálního počítače do nového hypervisoru. Toto umístění může také aktivovat plánovaná nebo neplánovaná událost údržby. V tomto scénáři se dočasný disk znovu přiřadí k prvnímu dostupnému písmenu jednotky. Pokud máte aplikaci, která konkrétně vyžaduje jednotku D:, je třeba pomocí následujících kroků dočasně přesunout pagefile.sys, připojit nový datový disk a přiřadit mu písmeno D a pak pagefile.sys přesunout zpátky na dočasnou jednotku. Až to bude hotové, Azure se znovu nevrátí, pokud se virtuální počítač přesune do jiného hypervisoru.
 
 Další informace o tom, jak Azure používá dočasný disk, najdete v článku o [objasnění dočasné jednotky na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 ## <a name="attach-the-data-disk"></a>Připojit datový disk
 Nejdřív budete potřebovat připojit datový disk k virtuálnímu počítači. Pokud to chcete provést pomocí portálu, přečtěte si téma [Postup připojení spravovaného datového disku v Azure Portal](attach-managed-disk-portal.md).
 
-## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Dočasné přesunutí souboru Pagefile. sys do jednotky C
+## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Dočasné přesunutí pagefile.sys do jednotky C
 1. Připojte se k virtuálnímu počítači. 
 2. Klikněte pravým tlačítkem myši na nabídku **Start** a vyberte možnost **systém**.
 3. V nabídce na levé straně vyberte **Upřesnit nastavení systému**.
@@ -35,7 +35,7 @@ Nejdřív budete potřebovat připojit datový disk k virtuálnímu počítači.
 6. V části **virtuální paměť** vyberte **změnit**.
 7. Vyberte jednotku **C** a pak klikněte na **Velikost spravovaná systémem** a pak klikněte na **nastavit**.
 8. Vyberte jednotku **D** a pak klikněte na **žádný stránkovací soubor** a pak klikněte na **nastavit**.
-9. Klikněte na použít. Zobrazí se upozornění, že je potřeba restartovat počítač, aby se změny projevily.
+9. Klikněte na Použít. Zobrazí se upozornění, že je potřeba restartovat počítač, aby se změny projevily.
 10. Restartujte virtuální počítač.
 
 ## <a name="change-the-drive-letters"></a>Změna písmen jednotek
@@ -46,7 +46,7 @@ Nejdřív budete potřebovat připojit datový disk k virtuálnímu počítači.
 5. Pravým tlačítkem myši klikněte na datový disk a vyberte možnost **změnit písmeno jednotky a cestu**.
 6. V části písmeno jednotky vyberte jednotka **D** a pak klikněte na **OK**. 
 
-## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Přesunout soubor Pagefile. sys zpátky na dočasnou jednotku úložiště
+## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Přesunout pagefile.sys zpátky na dočasnou jednotku úložiště
 1. Klikněte pravým tlačítkem myši na nabídku **Start** a vyberte možnost **systém** .
 2. V nabídce na levé straně vyberte **Upřesnit nastavení systému**.
 3. V části **výkon** vyberte **Nastavení**.

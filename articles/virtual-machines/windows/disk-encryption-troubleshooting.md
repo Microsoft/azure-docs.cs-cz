@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085684"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure Disk Encryption
@@ -38,8 +38,8 @@ Všechna použitá nastavení skupiny zabezpečení sítě musí stále umožňo
 
 Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-windows-aad.md#), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování se udržují v oddílech 56 a 59 v dokumentaci k [adresám URL a rozsahům IP adres sady Office 365](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
-### <a name="azure-instance-metadata-service"></a>Instance Metadata Service Azure 
-Virtuální počítač musí být schopný získat přístup ke koncovému bodu [služby metadat instance Azure](../windows/instance-metadata-service.md) , který používá známou Nesměrovatelné IP adresy`169.254.169.254`(), ke kterým se dá přistupovat jenom z virtuálního počítače.  Konfigurace proxy serveru, které mění místní přenos HTTP na tuto adresu (například přidání řádku s přesměrováním X), nejsou podporovány.
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
+Virtuální počítač musí být schopný získat přístup ke koncovému bodu [služby metadat instance Azure](../windows/instance-metadata-service.md) , který používá známou Nesměrovatelné IP adresy ( `169.254.169.254` ), ke kterým se dá přistupovat jenom z virtuálního počítače.  Konfigurace proxy serveru, které mění místní přenos HTTP na tuto adresu (například přidání řádku s přesměrováním X), nejsou podporovány.
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Řešení potíží s Windows serverem 2016 Server Core
 

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101446"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Řešení potíží s připojením ke službě Azure Database for MariaDB
@@ -47,7 +47,7 @@ Pokud se aplikace trvale nepřipojí k Azure Database for MariaDB, obvykle se je
 
 * Konfigurace brány firewall: Server Azure Database for MariaDB nebo brána firewall na straně klienta blokuje připojení.
 * Konfigurace sítě na straně klienta: byla přidána nová IP adresa nebo proxy server.
-* Chyba uživatele: například můžete mít chybné typové parametry připojení, jako je název serveru v připojovacím řetězci nebo chybějící * \@* přípona servername v uživatelském jménu.
+* Chyba uživatele: například můžete mít chybné typové parametry připojení, jako je název serveru v připojovacím řetězci nebo chybějící přípona * \@ servername* v uživatelském jménu.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 

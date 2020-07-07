@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098896"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Získání tokenu pro mobilní aplikaci, která volá webová rozhraní API
@@ -28,7 +28,7 @@ Předtím, než aplikace může volat chráněná webová rozhraní API, potřeb
 
 Když vyžádáte token, budete muset definovat obor. Obor určuje, k jakým datům může aplikace přistupovat.
 
-Nejjednodušší způsob, jak definovat rozsah, je zkombinovat požadované webové rozhraní API `App ID URI` s oborem. `.default` Tato definice instruuje platformu Microsoft identity, kterou vaše aplikace vyžaduje pro všechny obory, které jsou nastavené na portálu.
+Nejjednodušší způsob, jak definovat rozsah, je zkombinovat požadované webové rozhraní API `App ID URI` s oborem `.default` . Tato definice instruuje platformu Microsoft identity, kterou vaše aplikace vyžaduje pro všechny obory, které jsou nastavené na portálu.
 
 ### <a name="android"></a>Android
 ```Java
@@ -49,7 +49,7 @@ var scopes = new [] {"https://graph.microsoft.com/.default"};
 
 ### <a name="acquire-tokens-via-msal"></a>Získat tokeny prostřednictvím MSAL
 
-MSAL umožňuje aplikacím získat bez tichého a interaktivního získávání tokenů. Když `AcquireTokenSilent()` zavoláte `AcquireTokenInteractive()`nebo, vrátí MSAL přístupový token pro požadované obory. Správným vzorem je provedení tichého požadavku a následného návratu k interaktivnímu požadavku.
+MSAL umožňuje aplikacím získat bez tichého a interaktivního získávání tokenů. Když zavoláte `AcquireTokenSilent()` nebo `AcquireTokenInteractive()` , vrátí MSAL přístupový token pro požadované obory. Správným vzorem je provedení tichého požadavku a následného návratu k interaktivnímu požadavku.
 
 #### <a name="android"></a>Android
 
@@ -145,7 +145,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-Pokud MSAL vrátí `MSALErrorInteractionRequired`, zkuste získat tokeny interaktivně:
+Pokud MSAL vrátí `MSALErrorInteractionRequired` , zkuste získat tokeny interaktivně:
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
@@ -207,11 +207,11 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>Povinné parametry v MSAL.NET
 
-`AcquireTokenInteractive`má pouze jeden povinný parametr: `scopes`. `scopes` Parametr vytvoří výčet řetězců, které definují obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, můžete najít požadované obory v referenčních informacích k rozhraní API každého Microsoft Graph API. V odkazu přejdete do části Permissions (oprávnění).
+`AcquireTokenInteractive`má pouze jeden povinný parametr: `scopes` . `scopes`Parametr vytvoří výčet řetězců, které definují obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, můžete najít požadované obory v referenčních informacích k rozhraní API každého Microsoft Graph API. V odkazu přejdete do části Permissions (oprávnění).
 
 Pokud například chcete [Zobrazit seznam kontaktů uživatele](https://docs.microsoft.com/graph/api/user-list-contacts), použijte obor "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-V Androidu můžete při vytváření aplikace pomocí nástroje `PublicClientApplicationBuilder`zadat nadřazenou aktivitu. Pokud v daném čase nezadáte nadřazenou aktivitu, můžete ji později zadat pomocí `.WithParentActivityOrWindow` jako v následující části. Pokud zadáte nadřazenou aktivitu, pak se token vrátí do této nadřazené aktivity po interakci. Pokud ho nezadáte, vyvolá `.ExecuteAsync()` volání výjimku.
+V Androidu můžete při vytváření aplikace pomocí nástroje zadat nadřazenou aktivitu `PublicClientApplicationBuilder` . Pokud v daném čase nezadáte nadřazenou aktivitu, můžete ji později zadat pomocí `.WithParentActivityOrWindow` jako v následující části. Pokud zadáte nadřazenou aktivitu, pak se token vrátí do této nadřazené aktivity po interakci. Pokud ho nezadáte, `.ExecuteAsync()` vyvolá volání výjimku.
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>Konkrétní volitelné parametry v MSAL.NET
 
@@ -219,15 +219,15 @@ Následující části vysvětlují volitelné parametry v MSAL.NET.
 
 ##### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()` Parametr řídí interakce s uživatelem zadáním výzvy.
+`WithPrompt()`Parametr řídí interakce s uživatelem zadáním výzvy.
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 Třída definuje následující konstanty:
 
-- `SelectAccount`vynutí službu tokenu zabezpečení (STS) k zobrazení dialogového okna pro výběr účtu. Dialogové okno obsahuje účty, pro které má uživatel relaci. Tuto možnost můžete použít, pokud chcete, aby uživatel mohl zvolit mezi různými identitami. Tato možnost Drives MSAL se `prompt=select_account` pošle poskytovateli identity.
+- `SelectAccount`vynutí službu tokenu zabezpečení (STS) k zobrazení dialogového okna pro výběr účtu. Dialogové okno obsahuje účty, pro které má uživatel relaci. Tuto možnost můžete použít, pokud chcete, aby uživatel mohl zvolit mezi různými identitami. Tato možnost Drives MSAL se pošle `prompt=select_account` poskytovateli identity.
 
-    `SelectAccount` Konstanta je výchozí a efektivně nabízí nejlepší možné prostředí na základě dostupných informací. Dostupné informace můžou zahrnovat účet, přítomnost relace pro uživatele a tak dále. Tuto výchozí hodnotu neměňte, pokud to nemáte dobrý důvod.
+    `SelectAccount`Konstanta je výchozí a efektivně nabízí nejlepší možné prostředí na základě dostupných informací. Dostupné informace můžou zahrnovat účet, přítomnost relace pro uživatele a tak dále. Tuto výchozí hodnotu neměňte, pokud to nemáte dobrý důvod.
 - `Consent`umožňuje uživateli vyzvat k vyjádření souhlasu i v případě, že byl souhlas udělen dříve. V takovém případě MSAL odesílá `prompt=consent` poskytovateli identity.
 
     Můžete chtít použít `Consent` konstantu v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se při každém použití aplikace zobrazilo dialogové okno souhlasu.
@@ -243,7 +243,7 @@ Třída definuje následující konstanty:
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Použijte `WithExtraScopeToConsent` modifikátor v rozšířeném scénáři, kde chcete, aby uživatel poskytoval svůj souhlas s několika prostředky. Tento modifikátor můžete použít, když nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo Microsoft Identity Platform 2,0. Další informace najdete v tématu o tom, že [Uživatel souhlasí s několika prostředky](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
+Použijte `WithExtraScopeToConsent` Modifikátor v rozšířeném scénáři, kde chcete, aby uživatel poskytoval svůj souhlas s několika prostředky. Tento modifikátor můžete použít, když nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo Microsoft Identity Platform 2,0. Další informace najdete v tématu o tom, že [Uživatel souhlasí s několika prostředky](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 Zde je příklad kódu:
 
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>Další nepovinné parametry
 
-Další informace o dalších volitelných parametrech `AcquireTokenInteractive`pro najdete v [referenční dokumentaci pro AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+Další informace o dalších volitelných parametrech pro `AcquireTokenInteractive` najdete v [referenční dokumentaci pro AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
 
 ### <a name="acquire-tokens-via-the-protocol"></a>Získat tokeny prostřednictvím protokolu
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025063"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatická správa zařízení a modulů IoT pomocí Azure Portal
@@ -65,7 +65,7 @@ Existuje pět kroků pro vytvoření konfigurace. V následujících částech s
 
 ### <a name="name-and-label"></a>Název a popisek
 
-1. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
+1. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` .
 
 2. Přidejte popisky, které vám pomůžou sledovat vaše konfigurace. Popisky jsou **názvy**, páry **hodnot** , které popisují vaši konfiguraci. Příkladem je `HostPlatform, Linux` nebo `Version, 3.0.1`.
 
@@ -87,11 +87,11 @@ Můžete například nastavit dvojitou cestu k `properties.desired.chiller-water
 ![Nastavení zdvojené cesty a obsahu](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
 
-Jednotlivá nastavení můžete nastavit také zadáním celé cesty a zadáním hodnoty bez závorek. Například s nazdvojenou cestou `properties.desired.chiller-water.temperature`nastavte obsah na. `66` Pak vytvořte nové nastavení s dvojím nastavením pro vlastnost tlak. 
+Jednotlivá nastavení můžete nastavit také zadáním celé cesty a zadáním hodnoty bez závorek. Například s nazdvojenou cestou `properties.desired.chiller-water.temperature` nastavte obsah na `66` . Pak vytvořte nové nastavení s dvojím nastavením pro vlastnost tlak. 
 
 Pokud dvě nebo více konfigurací cílí na stejnou cestu, bude platit obsah z konfigurace s nejvyšší prioritou (Priorita je definována v kroku 4).
 
-Chcete-li odebrat existující vlastnost, zadejte hodnotu vlastnosti `null`.
+Chcete-li odebrat existující vlastnost, zadejte hodnotu vlastnosti `null` .
 
 Další nastavení můžete přidat tak, že vyberete možnost **Přidat zdvojené zařízení** nebo **Přidat nastavení s dvojitým modulem**.
 
@@ -120,7 +120,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Pokud vytváříte metriku pro vytváření sestav v konfigurovaných modulech `moduleId` , `devices.modules`vyberte z. Příklad:
+Pokud vytváříte metriku pro vytváření sestav v konfigurovaných modulech, vyberte `moduleId` z `devices.modules` . Příklad:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules

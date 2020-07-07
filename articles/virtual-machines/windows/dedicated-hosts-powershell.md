@@ -9,17 +9,17 @@ ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: b90189c6ba5e51a24d0c248b5aa08e9a5e4bbd9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082845"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.8.0 nebo novější a jste přihlášení k účtu Azure v rámci `Connect-AzAccount`. 
+Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.8.0 nebo novější a jste přihlášení k účtu Azure v rámci `Connect-AzAccount` . 
 
 ## <a name="limitations"></a>Omezení
 

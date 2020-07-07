@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085378"
 ---
 # <a name="download-the-template-for-a-vm"></a>Stažení šablony pro virtuální počítač
@@ -26,10 +26,10 @@ Když vytvoříte virtuální počítač v Azure pomocí portálu nebo PowerShel
 5. V nabídce v horní části vyberte **Stáhnout** a uložte soubor. zip do svého místního počítače.
 6. Otevřete soubor. zip a extrahujte soubory do složky. Soubor. zip obsahuje:
    
-   * Parameters. JSON
-   * Template. JSON
+   * parameters.jsna
+   * template.jsna
 
-Soubor Template. JSON je šablona.
+template.jssoubor je šablona.
 
 ## <a name="download-the-template-using-powershell"></a>Stažení šablony pomocí PowerShellu
 Soubor šablony. JSON můžete také stáhnout pomocí rutiny [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) . Pomocí `-path` parametru můžete zadat název souboru a cestu k souboru. JSON. Tento příklad ukazuje, jak stáhnout šablonu pro skupinu prostředků s názvem **myResourceGroup** do složky **C:\users\public\downloads** na místním počítači.

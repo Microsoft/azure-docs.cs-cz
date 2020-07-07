@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084511"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Přesunutí virtuálního počítače s Windows z Amazon Web Services (AWS) na virtuální počítač Azure
@@ -40,7 +40,7 @@ Do Azure můžete nahrát jak generalizované, tak specializované virtuální p
 
 Exportujte instanci EC2 do virtuálního pevného disku v kontejneru Amazon S3. Postupujte podle kroků v článku dokumentace k Amazon [Export instance jako virtuálního počítače pomocí importu/exportu virtuálního počítače](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) a spuštěním příkazu [Create-instance-export-Task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) exportujte instanci EC2 do souboru VHD. 
 
-Exportovaný soubor VHD je uložený v kontejneru Amazon S3, který zadáte. Základní syntaxe pro export virtuálního pevného disku je níže, stačí nahradit zástupný text v \<závorkách> s vašimi informacemi.
+Exportovaný soubor VHD je uložený v kontejneru Amazon S3, který zadáte. Základní syntaxe pro export virtuálního pevného disku je níže, stačí nahradit zástupný text \<brackets> pomocí vašich informací.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \

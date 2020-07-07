@@ -17,13 +17,13 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086126"
 ---
-# <a name="what-sap-software-is-supported-for-azure-deployments"></a>Jaký software SAP je podporován pro nasazení Azure
+# <a name="what-sap-software-is-supported-for-azure-deployments"></a>Který software SAP se podporuje pro nasazení Azure
 Tento článek popisuje, jak zjistit, který software SAP je podporován pro nasazení Azure a jaké jsou nezbytné verze operačního systému nebo verze DBMS.
 
 Vyhodnotili jste aktuální software SAP a informace o tom, jaké verze operačních systémů a systémů DBMS jsou pro váš software SAP v Azure podporované, budete potřebovat přístup k těmto akcím:

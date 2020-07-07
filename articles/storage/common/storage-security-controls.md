@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128019"
 ---
 # <a name="security-controls-for-azure-storage"></a>Ovládací prvky zabezpečení pro Azure Storage
@@ -28,7 +28,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Sto
 |---|---|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano |  |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Viz [šifrování služby Storage použití klíčů spravovaných zákazníkem v Azure Key Vault](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
-| Šifrování na úrovni sloupce (Azure Data Services)| – |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici |  |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Podporuje standardní mechanismy protokolu HTTPS/TLS.  Uživatelé mohou také šifrovat data před jejich přenosem do služby. |
 | Zašifrovaná volání rozhraní API| Ano |  |
 
@@ -38,9 +38,9 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Sto
 |---|---|--|
 | Podpora koncového bodu služby| Ano |  |
 | Podpora značek služeb| Ano | Další informace o značkách služby podporovaných Azure Storage najdete v tématu [Přehled značek služeb Azure](../../virtual-network/service-tags-overview.md) . |
-| Podpora vkládání virtuální sítě| – |  |
+| Podpora vkládání virtuální sítě| Není k dispozici |  |
 | Izolace sítě a podpora brány firewall| Ano | |
-| Podpora vynuceného tunelování| – |  |
+| Podpora vynuceného tunelování| Není k dispozici |  |
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
@@ -54,7 +54,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Sto
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Azure Active Directory, sdílený klíč, sdílený přístupový token. |
+| Ověřování| Ano | Azure Active Directory, sdílený klíč, sdílený přístupový token. |
 | Autorizace| Ano | Podpora autorizace přes RBAC, seznamy ACL v POSIX a tokeny SAS |
 
 ## <a name="configuration-management"></a>Správa konfigurace

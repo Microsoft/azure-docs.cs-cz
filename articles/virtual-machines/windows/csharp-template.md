@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
 ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082913"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí C# a šablony Správce prostředků
@@ -28,14 +28,14 @@ Provedení těchto kroků trvá přibližně 10 minut.
 V tomto kroku se ujistěte, že je nainstalovaná aplikace Visual Studio a Vy vytvoříte konzolovou aplikaci, která se používá k nasazení šablony.
 
 1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj pro desktopy .NET** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že se pro vás automaticky vybraly **.NET Framework nástroje pro vývoj 4-4,6** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu rozhraní .NET pomocí spouštěče sady Visual Studio.
-2. V aplikaci Visual Studio klikněte na **soubor** > **Nový** > **projekt**.
-3. V **šablonách** > **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
+2. V aplikaci Visual Studio klikněte na **soubor**  >  **Nový**  >  **projekt**.
+3. V **šablonách**  >  **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
 ## <a name="install-the-packages"></a>Nainstalovat balíčky
 
 Balíčky NuGet představují nejjednodušší způsob, jak nainstalovat knihovny, které potřebujete k dokončení těchto kroků. Chcete-li získat knihovny, které potřebujete v aplikaci Visual Studio, proveďte tyto kroky:
 
-1. Klikněte na **nástroje** > **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
+1. Klikněte na **nástroje**  >  **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
 2. Do konzoly zadejte tyto příkazy:
 
     ```powershell
@@ -49,7 +49,7 @@ V tomto kroku vytvoříte soubor šablony, který nasadí prostředky a soubor p
 
 ### <a name="create-the-template-file"></a>Vytvoření souboru šablony
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *CreateVMTemplate. JSON*a klikněte na tlačítko **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *CreateVMTemplate.jsv*a pak klikněte na **Přidat**.
 2. Tento kód JSON přidejte do souboru, který jste vytvořili:
 
     ```json
@@ -155,13 +155,13 @@ V tomto kroku vytvoříte soubor šablony, který nasadí prostředky a soubor p
     }
     ```
 
-3. Uložte soubor CreateVMTemplate. JSON.
+3. Uložte CreateVMTemplate.jsdo souboru.
 
 ### <a name="create-the-parameters-file"></a>Vytvoření souboru parametrů
 
 Chcete-li zadat hodnoty parametrů prostředků v šabloně, vytvořte soubor parametrů, který obsahuje hodnoty.
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Zadejte název souboru *Parameters. JSON*a pak klikněte na **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *Parameters.jsv*a pak klikněte na **Přidat**.
 2. Tento kód JSON přidejte do souboru, který jste vytvořili:
 
     ```json
@@ -175,13 +175,13 @@ Chcete-li zadat hodnoty parametrů prostředků v šabloně, vytvořte soubor pa
     }
     ```
 
-4. Uložte soubor Parameters. JSON.
+4. Uložte Parameters.jsdo souboru.
 
 ### <a name="create-the-authorization-file"></a>Vytvoření autorizačního souboru
 
 Než budete moct nasadit šablonu, ujistěte se, že máte přístup k [instančnímu objektu služby Active Directory](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Z instančního objektu získáte token pro ověřování požadavků Azure Resource Manager. Měli byste také zaznamenat ID aplikace, ověřovací klíč a ID tenanta, které v autorizačním souboru potřebujete.
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -195,7 +195,7 @@ Než budete moct nasadit šablonu, ujistěte se, že máte přístup k [instanč
     graphURL=https://graph.microsoft.com/
     ```
 
-    Nahraďte ** &lt;&gt; ID** předplatného identifikátorem vašeho předplatného, ** &lt;ID&gt; aplikace** s identifikátorem aplikace služby Active Directory, ** &lt;&gt; ** klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt;ID&gt; tenanta** s identifikátorem tenanta.
+    Nahraďte ** &lt; ID &gt; ** předplatného identifikátorem vašeho předplatného, ** &lt; ID &gt; aplikace** s identifikátorem aplikace služby Active ** &lt; &gt; ** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt; ID &gt; tenanta** s identifikátorem tenanta.
 
 3. Uložte soubor azureauth. Properties.
 4. Nastavte v systému Windows proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k vytvořenému autorizačnímu souboru, například můžete použít následující příkaz prostředí PowerShell:

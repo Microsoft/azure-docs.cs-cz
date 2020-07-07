@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101582"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Ovládací prvky zabezpečení pro Windows Virtual Machines
@@ -36,13 +36,13 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Windows V
 |---|---|--|
 | Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | [Monitorujte a aktualizujte virtuální počítač s Windows v Azure](tutorial-monitoring.md). |
 | Protokolování a audit roviny řízení a správy| Ano |  |
-| Protokolování a audit roviny dat | No |  |
+| Protokolování a audit roviny dat | Ne |  |
 
 ## <a name="identity"></a>Identita
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano |  |
+| Ověřování| Ano |  |
 | Autorizace| Ano |  |
 
 ## <a name="data-protection"></a>Ochrana dat
@@ -52,7 +52,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Windows V
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Viz [šifrování virtuálních disků na virtuálním počítači s Windows](/azure/virtual-machines/windows/disk-encryption-overview). |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Azure Virtual Machines podporuje šifrování [ExpressRoute](/azure/expressroute) a virtuální sítě. Viz [šifrování v přenosech na virtuálních počítačích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Klíče spravované zákazníkem jsou podporovaným scénářem šifrování Azure; viz [Přehled šifrování Azure](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
 | Zašifrovaná volání rozhraní API| Ano | Přes HTTPS a TLS. |
 
 

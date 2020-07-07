@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
 ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084817"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certifikace a konfigurace SAP běžící na Microsoft Azure
@@ -54,7 +54,7 @@ Odkazy
 | --- | --- | --- | --- |
 | Software SAP Business Suite | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (jenom Windows a Oracle Linux), DB2, pomocného programu SAP |A5 na A11, D11 na D14, DS11 na DS14, DS11_v2 DS15_v2, GS1 na GS5, D2s_v3 D64s_v3 D2as_v4 D64as_v4 E2s_v3 E64s_v3 E2as_v4 E64as_v4 M208s_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,,,,, M208ms_v2, M416s_v2 |
 | SAP Business All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (jenom Windows a Oracle Linux), DB2, pomocného programu SAP |A5 na A11, D11 na D14, DS11 na DS14, DS11_v2 DS15_v2, GS1 na GS5, D2s_v3 D64s_v3 D2as_v4 D64as_v4 E2s_v3 E64s_v3 E2as_v4 E64as_v4 M208s_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,,,,, M208ms_v2, M416s_v2 |
-| SAP BusinessObjects BI | Windows |– |A5 na A11, D11 na D14, DS11 na DS14, DS11_v2 DS15_v2, GS1 na GS5, D2s_v3 D64s_v3 D2as_v4 D64as_v4 E2s_v3 E64s_v3 E2as_v4 E64as_v4 M208s_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,,,,, M208ms_v2, M416s_v2 |
+| SAP BusinessObjects BI | Windows |Není k dispozici |A5 na A11, D11 na D14, DS11 na DS14, DS11_v2 DS15_v2, GS1 na GS5, D2s_v3 D64s_v3 D2as_v4 D64as_v4 E2s_v3 E64s_v3 E2as_v4 E64as_v4 M208s_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,,,,, M208ms_v2, M416s_v2 |
 | SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (jenom Windows a Oracle Linux), DB2, pomocného programu SAP |A5 na A11, D11 na D14, DS11 na DS14, DS11_v2 DS15_v2, GS1 na GS5, D2s_v3 D64s_v3 D2as_v4 D64as_v4 E2s_v3 E64s_v3 E2as_v4 E64as_v4 M208s_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,,,,, M208ms_v2, M416s_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Další úlohy SAP podporované v Azure

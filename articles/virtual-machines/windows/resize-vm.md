@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
 ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099882"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače s Windows
@@ -56,7 +56,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Pokud požadovaná velikost není uvedená, spusťte následující příkazy, čímž zrušíte přidělení virtuálního počítače, jeho velikost a restartujte virtuální počítač. Nahraďte ** \<newVMsize>** velikostí, kterou chcete.
+Pokud požadovaná velikost není uvedená, spusťte následující příkazy, čímž zrušíte přidělení virtuálního počítače, jeho velikost a restartujte virtuální počítač. Nahraďte **\<newVMsize>** velikostí, kterou chcete.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force

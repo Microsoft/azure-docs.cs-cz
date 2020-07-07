@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133779"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Seznámení se základními Azure Storage službami
@@ -22,8 +22,8 @@ Azure Storage platformou je řešení cloudového úložiště Microsoftu pro sc
 - **Odolné a vysoce dostupné:** Redundance zajišťuje, že vaše data budou v případě krátkodobého selhání hardwaru v bezpečí. Můžete se také rozhodnout data replikovat napříč několika datacentry nebo geografickými oblastmi, abyste se ochránili i proti místní pohromě nebo přírodní katastrofě. Data replikovaná tímto způsobem zůstávají v případě nečekaného výpadku vysoce dostupná.
 - **Požadavk.** Všechna data zapsaná do účtu služby Azure Storage jsou službou šifrována. Azure Storage poskytuje jemně odstupňované řízení přístupu k datům.
 - **Škálovatelné:** Azure Storage je navržené pro širokou škálovatelnost, aby splňovalo požadavky dnešních aplikací na datové úložiště a výkon.
-- **Spravované:** Azure zpracovává údržbu, aktualizace a kritické problémy s hardwarem.
-- **Přístupné:** Data ve službě Azure Storage jsou přístupná prostřednictvím protokolu HTTP nebo HTTPS odkudkoli na světě. Microsoft poskytuje klientské knihovny pro Azure Storage v nejrůznějších jazycích, mezi které patří .NET, Java, Node. js, Python, PHP, Ruby, přejít a další, a také vyspělá REST API. Azure Storage podporuje skriptování v Azure PowerShellu nebo Azure CLI. A web Azure Portal a Průzkumník služby Azure Storage nabízí snadná vizuální řešení pro práci s daty.  
+- **Starosti.** Azure zpracovává údržbu, aktualizace a kritické problémy s hardwarem.
+- **Přístupné:** Data ve službě Azure Storage jsou přístupná prostřednictvím protokolu HTTP nebo HTTPS odkudkoli na světě. Microsoft poskytuje klientské knihovny pro Azure Storage v různých jazycích, včetně .NET, Java, Node.js, Pythonu, PHP, Ruby, přechodu a dalších, a také na vyspělé REST API. Azure Storage podporuje skriptování v Azure PowerShellu nebo Azure CLI. A web Azure Portal a Průzkumník služby Azure Storage nabízí snadná vizuální řešení pro práci s daty.  
 
 ## <a name="core-storage-services"></a>Základní služby úložiště
 
@@ -150,7 +150,7 @@ K prostředkům v účtu úložiště můžete přistupovat pomocí libovolného
 - [Rozhraní REST API pro službu Azure Storage](https://docs.microsoft.com/rest/api/storageservices/)
 - [Klientská knihovna Azure Storage pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Klientská knihovna Azure Storage pro Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage klientskou knihovnu pro Node. js](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [Klientská knihovna Azure Storage pro Node.js](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Klientská knihovna Azure Storage pro Python](https://github.com/Azure/azure-storage-python)
 - [Klientská knihovna Azure Storage pro PHP](https://github.com/Azure/azure-storage-php)
 - [Klientská knihovna Azure Storage pro Ruby](https://github.com/Azure/azure-storage-ruby)

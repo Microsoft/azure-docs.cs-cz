@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083270"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Použití klienta Windows v Azure pro scénáře vývoje a testování
@@ -21,8 +21,8 @@ V Azure můžete použít Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) 
 ![Podrobnosti o imagi z Azure Portal](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> Pro image Windows 10 pro a Windows 10 pro N v galerii Azure si prosím přečtěte [článek nasazení Windows 10 v Azure s právy](windows-desktop-multitenant-hosting-deployment.md)
->![pro Image hostování pro víceklientské prostředí z Azure Portal](./media/client-images/windows-client-pro-images.png) 
+> Pro image Windows 10 pro a Windows 10 pro N v galerii Azure si prosím přečtěte [článek nasazení Windows 10 v Azure s právy](windows-desktop-multitenant-hosting-deployment.md) 
+> ![ pro Image hostování pro víceklientské prostředí z Azure Portal](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>Způsobilost pro předplatné

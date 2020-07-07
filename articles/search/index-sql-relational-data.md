@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82117565"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Postup modelování relačních dat SQL pro import a indexování v Azure Kognitivní hledání
@@ -84,7 +84,7 @@ Pro zajištění očekávaného vyhledávacího prostředí by se měla sada dat
     GO
     ```
 
-2. Vytvoří zobrazení složené ze všech polí v nadřazené tabulce (`SELECT * from dbo.Hotels$`) s přidáním nového pole *místností* , které obsahuje výstup vnořeného dotazu. Klauzule **for JSON auto** u `SELECT * from dbo.Rooms$` strukturuje výstup jako JSON. 
+2. Vytvoří zobrazení složené ze všech polí v nadřazené tabulce ( `SELECT * from dbo.Hotels$` ) s přidáním nového pole *místností* , které obsahuje výstup vnořeného dotazu. Klauzule **for JSON auto** u `SELECT * from dbo.Rooms$` strukturuje výstup jako JSON. 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]

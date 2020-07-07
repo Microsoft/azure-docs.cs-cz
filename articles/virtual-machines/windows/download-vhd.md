@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
 ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085361"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Stažení virtuálního pevného disku s Windows z Azure
@@ -29,7 +29,7 @@ Pokud chcete virtuální pevný disk použít jako image k vytvoření dalších
 1. Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com/).
 2. [Připojte se k virtuálnímu počítači](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3. Na virtuálním počítači otevřete okno příkazového řádku jako správce.
-4. Změňte adresář na *%WINDIR%\system32\sysprep* a spusťte nástroj Sysprep. exe.
+4. Změňte adresář na *%WINDIR%\system32\sysprep* a spusťte sysprep.exe.
 5. V dialogovém okně Nástroj pro přípravu systému vyberte možnost **Zadejte systém při spuštění prostředí (OOBE)** a ujistěte se, že je vybraná možnost **generalizace** .
 6. V možnosti vypnutí vyberte **vypnout**a pak klikněte na **OK**. 
 

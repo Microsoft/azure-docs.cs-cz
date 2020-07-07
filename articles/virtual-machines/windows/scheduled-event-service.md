@@ -8,10 +8,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099593"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
@@ -58,7 +58,7 @@ New-AzVm `
 
 Stáhněte si soubor instalace. zip projektu z [GitHubu](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Připojte se k **myCollectorVM** a zkopírujte soubor. zip do virtuálního počítače a Extrahujte všechny soubory. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek PowerShellu. Přesuňte výzvu do složky, která obsahuje `SchService.ps1`, například: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`a nastavte službu.
+Připojte se k **myCollectorVM** a zkopírujte soubor. zip do virtuálního počítače a Extrahujte všechny soubory. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek PowerShellu. Přesuňte výzvu do složky, která obsahuje `SchService.ps1` , například: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>` a nastavte službu.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -78,7 +78,7 @@ Ověřte stav služby a ujistěte se, že je spuštěný.
 .\SchService.ps1 -status  
 ```
 
-Mělo by se `Running`vrátit.
+Mělo by se vrátit `Running` .
 
 Služba se teď začne dotazovat každých 10 sekund na jakékoli naplánované události a schválí události, aby se tato údržba urychlila.  Zablokování, restartování, opětovné nasazení a přerušení jsou události zachycené událostmi plánování. Před schválením události můžete skript roztáhnout, aby se aktivovaly některé zmírnění.
 
@@ -95,7 +95,7 @@ Když služba Event Scheduler zachytí události, přihlásí se do protokolu ud
 >
 > Pro naše nastavení jsme zvolili Windows, ale můžete navrhnout podobné řešení na platformě Linux.
 
-V jakémkoli okamžiku můžete zastavit nebo odebrat naplánovanou službu Event Service pomocí přepínačů `–stop` a. `–remove`
+V jakémkoli okamžiku můžete zastavit nebo odebrat naplánovanou službu Event Service pomocí přepínačů `–stop` a `–remove` .
 
 ## <a name="connect-to-the-workspace"></a>Připojení k pracovnímu prostoru
 
@@ -156,7 +156,7 @@ Po vložení událostí do Log Analytics můžete spustit následující [dotaz]
 
 1. Vyberte **Nové pravidlo upozornění**. 
 1. Na stránce **vytvořit pravidlo** nechejte `collectorworkspace` jako **prostředek**.
-1. V části **Podmínka**vyberte položku *vždy, když je <login undefined>hledání v protokolu zákazníka *. Otevře se stránka **Konfigurovat logiku signálu** .
+1. V části **Podmínka**vyberte položku *vždy, když je <login undefined> hledání v protokolu zákazníka *. Otevře se stránka **Konfigurovat logiku signálu** .
 1. V části **prahová hodnota**zadejte *0* a potom vyberte **Hotovo**.
 1. V části **Akce**vyberte **vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí** .
 1. Do **název skupiny akcí**zadejte *myActionGroup*.

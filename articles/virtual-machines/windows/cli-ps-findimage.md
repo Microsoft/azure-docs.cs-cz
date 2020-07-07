@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083361"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání imagí virtuálních počítačů s Windows na Azure Marketplace pomocí Azure PowerShellu
@@ -30,7 +30,7 @@ K dispozici je také možnost procházení dostupných imagí a nabídek pomocí
 
 Tato tabulka zobrazuje podmnožinu dostupných SKU pro označené vydavatele a nabídky.
 
-| Vydavatel | Nabídka | Skladová jednotka (SKU) |
+| Publisher | Nabídka | Skladová jednotka (SKU) |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019 – Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2019 – Datacenter – jádro |
@@ -170,7 +170,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Nyní můžete zkombinovat vybraného vydavatele, nabídky, SKU a verzi do názvu URN (hodnoty oddělené:). Pokud vytvoříte virtuální počítač pomocí `--image` rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , předejte tento název URN k parametru. Pokud chcete získat nejnovější verzi image, můžete volitelně nahradit číslo verze v názvu URN řetězcem "poslední".
+Nyní můžete zkombinovat vybraného vydavatele, nabídky, SKU a verzi do názvu URN (hodnoty oddělené:). `--image`Pokud vytvoříte virtuální počítač pomocí rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , předejte tento název URN k parametru. Pokud chcete získat nejnovější verzi image, můžete volitelně nahradit číslo verze v názvu URN řetězcem "poslední".
 
 Pokud nasadíte virtuální počítač s Správce prostředků šablonou, nastavte parametry obrázku jednotlivě ve `imageReference` vlastnostech. Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
 
@@ -178,9 +178,9 @@ Pokud nasadíte virtuální počítač s Správce prostředků šablonou, nastav
 
 ### <a name="view-plan-properties"></a>Zobrazit vlastnosti plánu
 
-Chcete-li zobrazit informace o plánu nákupu obrázku, spusťte `Get-AzVMImage` rutinu. Pokud `PurchasePlan` vlastnost ve výstupu není `null`, obrázek obsahuje podmínky, které je třeba přijmout před programovým nasazením.  
+Chcete-li zobrazit informace o plánu nákupu obrázku, spusťte `Get-AzVMImage` rutinu. Pokud `PurchasePlan` vlastnost ve výstupu není `null` , obrázek obsahuje podmínky, které je třeba přijmout před programovým nasazením.  
 
-Například bitová kopie *Windows serveru 2016 Datacenter* neobsahuje další informace, takže tyto `PurchasePlan` informace: `null`
+Například bitová kopie *Windows serveru 2016 Datacenter* neobsahuje další informace, takže tyto `PurchasePlan` informace `null` :
 
 ```powershell
 $version = "2016.127.20170406"
@@ -206,7 +206,7 @@ DataDiskImages   : []
 
 ```
 
-Níže uvedený příklad ukazuje podobný příkaz pro bitovou *kopii data Science Virtual Machine-Windows 2016* , `PurchasePlan` která má následující vlastnosti: `name`, `product`, a. `publisher` Některé obrázky také obsahují `promotion code` vlastnost. Chcete-li nasadit tuto bitovou kopii, v následujících částech přijměte podmínky a povolte programové nasazení.
+Níže uvedený příklad ukazuje podobný příkaz pro bitovou kopii *Data Science Virtual Machine-Windows 2016* , která má následující `PurchasePlan` vlastnosti: `name` , `product` , a `publisher` . Některé obrázky také obsahují `promotion code` vlastnost. Chcete-li nasadit tuto bitovou kopii, v následujících částech přijměte podmínky a povolte programové nasazení.
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -316,7 +316,7 @@ Pak předáte konfiguraci virtuálních počítačů spolu s objekty konfigurace
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak rychle vytvořit virtuální `New-AzVM` počítač pomocí rutiny pomocí základních informací o imagi, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí PowerShellu](quick-create-powershell.md).
+Informace o tom, jak rychle vytvořit virtuální počítač pomocí `New-AzVM` rutiny pomocí základních informací o imagi, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí PowerShellu](quick-create-powershell.md).
 
 
 Pokud chcete [vytvořit plně nakonfigurovaný virtuální počítač](../scripts/virtual-machines-windows-powershell-sample-create-vm.md), podívejte se na příklad skriptu PowerShellu.

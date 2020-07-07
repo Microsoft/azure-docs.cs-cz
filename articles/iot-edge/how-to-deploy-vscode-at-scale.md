@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134361"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Visual Studio Code
@@ -145,7 +145,7 @@ V zařízení nakonfigurujete značky na vlákna. Tady je příklad typu vlákna
 }
 ```
 
-Toto zařízení dostane nasazení, pokud cílová podmínka pro nasazení obsahuje výraz, který odpovídá jedné z hodnot značky, jako je například `tag.location.building = '20'`.
+Toto zařízení dostane nasazení, pokud cílová podmínka pro nasazení obsahuje výraz, který odpovídá jedné z hodnot značky, jako je například `tag.location.building = '20'` .
 
 Pokud chcete cílit na konkrétní zařízení bez ohledu na jeho značky nebo jiné hodnoty, stačí zadat `deviceId` pro cílovou podmínku.
 
@@ -222,8 +222,8 @@ Po dokončení konfigurace manifestu nasazení a nakonfigurované značky v zař
 
   | Parametr | Popis |
   | --- | --- |
-  | ID nasazení | Název nasazení, které se vytvoří ve službě IoT Hub. Dejte vašemu nasazení jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`. |
-  | Cílová podmínka | Zadejte cílovou podmínku pro určení, která zařízení budou cílem tohoto nasazení.Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu.Například `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
+  | ID nasazení | Název nasazení, které se vytvoří ve službě IoT Hub. Dejte vašemu nasazení jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` . |
+  | Cílová podmínka | Zadejte cílovou podmínku pro určení, která zařízení budou cílem tohoto nasazení.Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu.Například `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
   | Priorita |  Kladné celé číslo. Pokud jsou na jednom zařízení cílené dva nebo více nasazení, uplatní se nasazení s nejvyšší číselnou hodnotou priority. |
 
   Po zadání priority by měl terminál zobrazit výstup podobný následujícímu znázornění:

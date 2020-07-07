@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/24/2020
 ms.openlocfilehash: 584748b23f526e6f03b543b8298927e3f202f743
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82139300"
 ---
 # <a name="azure-media-player-demos"></a>Ukázky Azure Media Playeru
@@ -24,15 +24,15 @@ Následující seznam obsahuje odkazy na ukázky Azure Media Player. Všechny [u
 | Základní |
 | Nastavit zdroj | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_setsource.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_setsource.html) |Přehrávání nechráněného obsahu.|
 | Funkce |
-| Vložení VOD AD – obrovské | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_vast_ads_vod.html) | – | Do VOD assetu vložte předem rozdělené reklamy a po ní. |
-| Rychlost přehrávání | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_playback_speed.html)| – | Umožňuje čtenářům řídit, jakou rychlost sleduje video na. |
+| Vložení VOD AD – obrovské | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_vast_ads_vod.html) | Není k dispozici | Do VOD assetu vložte předem rozdělené reklamy a po ní. |
+| Rychlost přehrávání | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_playback_speed.html)| Není k dispozici | Umožňuje čtenářům řídit, jakou rychlost sleduje video na. |
 | Vzhled AMP pro vyprázdnit | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_flush_skin.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_flush_skin.html) | Povolí nový vzhled AMP. **Poznámka:** AMP flush se podporuje jenom ve verzích AMP 2.1.0 +. |
 | Titulky a titulky | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_webvtt.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_webvtt.html) | Přehrávání pomocí titulků WebVTT
-| Titulky Live CEA 708 | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_live_captions.html) | – | Přehrávání s použitím příchozích titulků CEA 708 s titulky zarovnanými vlevo. |
+| Titulky Live CEA 708 | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_live_captions.html) | Není k dispozici | Přehrávání s použitím příchozích titulků CEA 708 s titulky zarovnanými vlevo. |
 | Streamování s progresivními zálohami | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveFallback.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveFallback.html) | Základní nastavení adaptivního přehrávání s Fallback pro progresivní řešení, pokud se na platformě nepodporuje streamování. |
 | MP4 pro progresivní video | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveVideo.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveVideo.html) | Přehrávání typu MP4 progresivního zvuku. |
 | Progresivní zvuk ve formátu MP3 | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveAudio.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveAudio.html) | Přehrávání formátu MP3 progresivního zvuku. |
-| DD + | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_dolbyDigitalPlus.html) | – | Přehrávání obsahu pomocí DD + zvuku. |
+| DD + | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_dolbyDigitalPlus.html) | Není k dispozici | Přehrávání obsahu pomocí DD + zvuku. |
 | Možnosti |
 | Heuristický profil | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_heuristicsProfile.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_heuristicsProfile.html) | Změna profilu heuristiky |
 | Lokalizace | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_localization.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_localization.html) |
@@ -41,9 +41,9 @@ Nastavení lokalizace |
 Možnosti, jak zobrazit nabídku zvukového stopy na výchozím vzhledu. |
 | Klávesové zkratky | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_hotKeys.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_hotKeys.html) | V této ukázce se dozvíte, jak nakonfigurovat, které klávesové zkratky jsou povolené v přehrávači. |
 | Události, protokolování a diagnostika |
-| Registrovat události | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_registerEvents.html) | – | Přehrávání pomocí posluchačů událostí. |
+| Registrovat události | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_registerEvents.html) | Není k dispozici | Přehrávání pomocí posluchačů událostí. |
 | protokolování | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_logging.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_logging.html) | Zapnutí podrobného protokolování do konzoly. |
-| Diagnostika | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_diagnostics.html) | – | Získávají se diagnostická data. Tato ukázka funguje jenom u některých techniků. |
+| Diagnostika | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_diagnostics.html) | Není k dispozici | Získávají se diagnostická data. Tato ukázka funguje jenom u některých techniků. |
 | AES |
 | Bez tokenu AES | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_aes_notoken.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_aes_notoken.html) | Přehrávání obsahu AES bez tokenu |
 | Token AES | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_aes_token.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_aes_token.html) | Přehrávání obsahu AES pomocí tokenu |
@@ -61,9 +61,9 @@ Možnosti, jak zobrazit nabídku zvukového stopy na výchozím vzhledu. |
 | Vyloučení MPEG-POMLČKy v UrlRewriter | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_forceNoDash.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_forceNoDash.html) | Přehrávání nechráněného obsahu jenom pomocí hladkých a HLS protokolů. |
 | Vícenásobné zásady doručování | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_multipleDeliveryPolicy.html) | [Tras](https://amp.azure.net/libs/amp/latest/samples/videotag_multipleDeliveryPolicy.html) | Nastavení zdroje s obsahem s více zásadami doručování od Azure Media Services |
 | Programově výběr |
-| Vybrat textovou stopu | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectTextTrack.html) | – | Výběr záznamu WebVTT ze seznamu stop |
-| Výběr přenosové rychlosti | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectBitrate.html) | – | Výběr přenosové rychlosti ze seznamu přenosové rychlosti. Tato ukázka funguje jenom u některých techniků. |
-| Vybrat zvukový stream | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectAudioStream.html) | – | Výběr zvukového datového proudu ze seznamu dostupných zvukových streamů. Tato ukázka funguje jenom u některých techniků. |
+| Vybrat textovou stopu | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectTextTrack.html) | Není k dispozici | Výběr záznamu WebVTT ze seznamu stop |
+| Výběr přenosové rychlosti | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectBitrate.html) | Není k dispozici | Výběr přenosové rychlosti ze seznamu přenosové rychlosti. Tato ukázka funguje jenom u některých techniků. |
+| Vybrat zvukový stream | [Dynamické](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectAudioStream.html) | Není k dispozici | Výběr zvukového datového proudu ze seznamu dostupných zvukových streamů. Tato ukázka funguje jenom u některých techniků. |
 
 ## <a name="next-steps"></a>Další kroky
 

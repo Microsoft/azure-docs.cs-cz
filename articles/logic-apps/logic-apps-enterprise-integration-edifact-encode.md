@@ -9,16 +9,16 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82106521"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Kódovat zprávy EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 
-Pomocí konektoru zpráv EDIFACT pro kódování můžete ověřit vlastnosti EDI a partner, generovat dokument XML pro každou sadu transakcí a požádat o technickou potvrzení, funkční potvrzení nebo obojí.
-Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
+Pomocí konektoru pro kódování zpráv EDIFACT můžete ověřit vlastnosti specifické pro EDI a partnera, vygenerovat dokument XML pro jednotlivé sady transakcí a požádat o technické potvrzení, funkční potvrzení nebo obojí.
+Pokud chcete tento konektor použít, musíte ho přidat do existující aktivační události v aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -74,7 +74,7 @@ Pokud se rozhodnete zakódovat zprávy EDIFACT podle identity, zadejte identifik
 
 ![Zadejte identity pro odesílatele a přijímače, vyberte zprávu XML ke kódování.](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>EDIFACT kódování podrobností
+## <a name="edifact-encode-details"></a>Podrobnosti kódování EDIFACT
 
 Konektor pro kódování EDIFACT provádí tyto úlohy: 
 

@@ -9,10 +9,10 @@ ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098522"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
-Pokud k vytvoření virtuálního počítače použijete `-ProximityPlacementGroup $ppg.Id` [příkaz New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , ve skupině umístění blízkosti se vytvoří virtuální počítač, který bude odkazovat na ID skupiny umístění blízkosti.
+`-ProximityPlacementGroup $ppg.Id`Pokud k vytvoření virtuálního počítače použijete [příkaz New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , ve skupině umístění blízkosti se vytvoří virtuální počítač, který bude odkazovat na ID skupiny umístění blízkosti.
 
 ```azurepowershell-interactive
 $vmName = "myVM"

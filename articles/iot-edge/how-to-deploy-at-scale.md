@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134413"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Azure Portal
@@ -55,7 +55,7 @@ Existuje pět kroků k vytvoření nasazení. V následujících částech si pr
 
 ### <a name="step-1-name-and-label"></a>Krok 1: název a popisek
 
-1. Dejte vašemu nasazení jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
+1. Dejte vašemu nasazení jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` .
 1. Můžete přidat popisky jako páry klíč-hodnota, které vám pomůžou sledovat vaše nasazení. Například **HostPlatform** , **Linux**nebo **Version** a **3.0.1**.
 1. Vyberte **Další: moduly** , které se mají přesunout na krok 2.
 
@@ -115,7 +115,7 @@ Chcete-li přidat modul z Azure Stream Analytics, postupujte podle následujíc�
 
 Po přidání modulu do nasazení můžete vybrat jeho název a otevřít tak stránku **aktualizovat IoT Edge modul** . Na této stránce můžete upravit nastavení modulu, proměnné prostředí, možnosti vytváření a vlákna v modulu. Pokud jste přidali modul z webu Marketplace, může již mít některé z těchto parametrů vyplněno.
 
-Pokud vytváříte vrstvené nasazení, můžete nakonfigurovat modul, který existuje v jiných nasazeních, která cílí na stejná zařízení. Pokud chcete modul bez přepsání jiných verzí aktualizovat, otevřete kartu nastavení s **dvojitou** přesností. Vytvořte novou **vlastnost s dvojitou** přesností modulu s jedinečným názvem pro dílčí oddíl v rámci požadovaných vlastností nevlákenního modulu `properties.desired.settings`, například. Pokud definujete vlastnosti v rámci pouze `properties.desired` pole, přepíše se požadované vlastnosti pro modul definovaný v libovolném nasazení s nižší prioritou.
+Pokud vytváříte vrstvené nasazení, můžete nakonfigurovat modul, který existuje v jiných nasazeních, která cílí na stejná zařízení. Pokud chcete modul bez přepsání jiných verzí aktualizovat, otevřete kartu nastavení s **dvojitou** přesností. Vytvořte novou **vlastnost s dvojitou** přesností modulu s jedinečným názvem pro dílčí oddíl v rámci požadovaných vlastností nevlákenního modulu, například `properties.desired.settings` . Pokud definujete vlastnosti v rámci pouze `properties.desired` pole, přepíše se požadované vlastnosti pro modul definovaný v libovolném nasazení s nižší prioritou.
 
 ![Nastavit vlastnost s dvojitým modulem pro vrstvené nasazení](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -125,7 +125,7 @@ Jakmile budete mít nakonfigurované všechny moduly pro nasazení, vyberte **Da
 
 ### <a name="step-3-routes"></a>Krok 3: trasy
 
-Trasy definují, jak vzájemně komunikují moduly v rámci nasazení. Průvodce ve výchozím nastavení poskytuje trasu **s názvem** **\* /Messages/do $upstream**, což znamená, že do služby IoT Hub budou odesílány výstupy všech zpráv pomocí libovolných modulů.  
+Trasy definují, jak vzájemně komunikují moduly v rámci nasazení. Průvodce ve výchozím nastavení poskytuje trasu **s názvem** **/Messages/ \* do $upstream**, což znamená, že do služby IoT Hub budou odesílány výstupy všech zpráv pomocí libovolných modulů.  
 
 Přidejte nebo aktualizujte trasy s informacemi z [deklarace směrování](module-composition.md#declare-routes)a pak výběrem **Další** pokračujte do části přezkoumání.
 

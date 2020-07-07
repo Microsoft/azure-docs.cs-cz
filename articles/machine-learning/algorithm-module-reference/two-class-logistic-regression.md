@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137616"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul logistické regrese se dvěma třídami
@@ -55,7 +55,7 @@ Sloupec popisku může být například [hlasovalo] s možnými hodnotami "Ano" 
   
     -   Na rozdíl od je pro data, která nejsou zhuštěná, vhodnější pravidelná navýšení L2.  
   
-     Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, <code>x = L1</code> že <code>y = L2</code>Pokud a <code>ax + by = c</code> , pak definuje lineární rozpětí regulárních podmínek.  
+     Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, že pokud <code>x = L1</code> a <code>y = L2</code> , pak <code>ax + by = c</code> definuje lineární rozpětí regulárních podmínek.  
   
     > [!NOTE]
     >  Chcete získat další informace o L1 a propravidelnosti L2? Následující článek poskytuje diskuzi o tom, jak se v proneuronovéch L1 a L2 liší a jak mají vliv na model, s ukázkami kódu pro logistické regrese a síťové modely: [L1 a L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  

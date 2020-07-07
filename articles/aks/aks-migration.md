@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82129105"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
@@ -94,7 +94,7 @@ Další informace najdete v tématu [omezení předplatného a služeb Azure](ht
 
 Pokud vaše aplikace nemůže zvládnout výpadky, budete muset dodržovat osvědčené postupy pro scénáře migrace s vysokou dostupností.  Osvědčené postupy pro komplexní plánování kontinuity podnikových procesů, zotavení po havárii a maximalizaci doby provozu jsou nad rámec tohoto dokumentu.  Další informace o [osvědčených postupech pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS) získáte v článku o osvědčených postupech](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) .
 
-U složitých aplikací se obvykle provádí migrace v čase, nikoli najednou. To znamená, že stará a nová prostředí můžou potřebovat komunikovat přes síť. Aplikace, které dříve `ClusterIP` používaly služby ke komunikaci, mohou být potřeba zveřejnit `LoadBalancer` jako typ a správně zabezpečit.
+U složitých aplikací se obvykle provádí migrace v čase, nikoli najednou. To znamená, že stará a nová prostředí můžou potřebovat komunikovat přes síť. Aplikace, které dříve používaly `ClusterIP` služby ke komunikaci, mohou být potřeba zveřejnit jako typ `LoadBalancer` a správně zabezpečit.
 
 K dokončení migrace budete chtít klienty nasměrovat na nové služby, které běží na AKS. Pro přesměrování provozu doporučujeme, abyste provedli aktualizaci DNS tak, aby odkazovaly na Load Balancer, která je umístěná před clusterem AKS.
 
@@ -131,7 +131,7 @@ Pokud vaše aplikace může hostovat několik replik, které odkazují na stejno
 * Nasměrujte svůj živý provoz do nového clusteru AKS.
 * Odpojte původní cluster.
 
-Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete k migraci dat použít [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) příkazy.
+Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) k migraci dat použít příkazy.
 
 
 #### <a name="migrating-persistent-volumes"></a>Migrace trvalých svazků

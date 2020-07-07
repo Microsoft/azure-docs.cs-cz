@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085701"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Ukázkové skripty pro službu Azure Disk Encryption 
@@ -69,7 +69,7 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 Níže uvedené části jsou nezbytné k přípravě předem zašifrovaného virtuálního pevného disku s Windows pro nasazení jako šifrovaného virtuálního pevného disku v Azure IaaS. Tyto informace slouží k přípravě a spuštění nového virtuálního počítače s Windows (VHD) v systému Azure Site Recovery nebo Azure. Další informace o tom, jak připravit a nahrát VHD, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nových virtuálních počítačů v Azure](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Aktualizace zásad skupiny pro povolení ochrany operačního systému bez čipu TPM
-Nakonfigurujte nastavení zásady skupiny BitLockeru **Nástroj BitLocker Drive Encryption**, které najdete v části**Konfigurace** > **Administrative Templates** > počítače >  **Zásady místního počítače**šablony pro správu**součásti systému Windows**. Toto nastavení změňte na **jednotky** > s operačním systémem > **vyžadovat při spuštění další ověření**, které**umožňuje BitLocker bez kompatibilního čipu TPM**, jak je znázorněno na následujícím obrázku:
+Nakonfigurujte nastavení zásady skupiny BitLockeru **Nástroj BitLocker Drive Encryption**, které najdete v části konfigurace **počítače zásady místního počítače**  >  **Computer Configuration**  >  **šablony pro správu**  >  **součásti systému Windows**. Toto nastavení změňte na **jednotky s operačním systémem**  >  **vyžadovat při spuštění další ověření**  >  , které**umožňuje BitLocker bez kompatibilního čipu TPM**, jak je znázorněno na následujícím obrázku:
 
 ![Microsoft Antimalware v Azure](../media/disk-encryption/disk-encryption-fig8.png)
 
@@ -139,7 +139,7 @@ K nastavení tajného klíče v trezoru klíčů použijte [set-AzKeyVaultSecret
 ```
 
 
-K `$secretUrl` [připojení disku s operačním systémem bez použití KEK](#without-using-a-kek)použijte v dalším kroku.
+`$secretUrl`K [připojení disku s operačním systémem bez použití KEK](#without-using-a-kek)použijte v dalším kroku.
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Tajný kód šifrování disku zašifrovaný pomocí KEK
 Než nahrajete tajný klíč do trezoru klíčů, můžete ho případně zašifrovat pomocí klíčového šifrovacího klíče. Použijte [rozhraní API](https://msdn.microsoft.com/library/azure/dn878066.aspx) pro zabalení k prvnímu šifrování tajného klíče pomocí klíčového šifrovacího klíče. Výstupem této operace zalamování je řetězec kódovaný v adrese URL Base64, který pak můžete nahrát jako tajný kód pomocí [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) rutiny.
@@ -232,12 +232,12 @@ Než nahrajete tajný klíč do trezoru klíčů, můžete ho případně zašif
     $secretUrl = $response.id
 ```
 
-K `$KeyEncryptionKey` `$secretUrl` [připojení disku s operačním systémem pomocí KEK](#using-a-kek)použijte a v dalším kroku.
+`$KeyEncryptionKey` `$secretUrl` K [připojení disku s operačním systémem pomocí KEK](#using-a-kek)použijte a v dalším kroku.
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Zadejte adresu URL tajného kódu při připojení disku s operačním systémem.
 
 ###  <a name="without-using-a-kek"></a>Bez použití KEK
-Když připojujete disk s operačním systémem, musíte předat `$secretUrl`. Adresa URL byla vygenerována v části "tajný klíč šifrování disku není zašifrovaný pomocí KEK".
+Když připojujete disk s operačním systémem, musíte předat `$secretUrl` . Adresa URL byla vygenerována v části "tajný klíč šifrování disku není zašifrovaný pomocí KEK".
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -250,7 +250,7 @@ Když připojujete disk s operačním systémem, musíte předat `$secretUrl`. A
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>Použití KEK
-Když připojíte disk s operačním systémem, `$KeyEncryptionKey` předejte a `$secretUrl`. Adresa URL se vygenerovala v části tajný klíč šifrování disku zašifrovaný pomocí KEK.
+Když připojíte disk s operačním systémem, předejte `$KeyEncryptionKey` a `$secretUrl` . Adresa URL se vygenerovala v části tajný klíč šifrování disku zašifrovaný pomocí KEK.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
