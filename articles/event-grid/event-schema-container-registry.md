@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393367"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry jako zdroj Event Grid
@@ -164,7 +164,7 @@ Událost má následující data nejvyšší úrovně:
 | Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data události služby Blob Storage. |
+| data | odkazy objektů | Data události služby Blob Storage. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -175,8 +175,8 @@ Datový objekt má následující vlastnosti:
 | id | řetězec | ID události |
 | časové razítko | řetězec | Čas, kdy došlo k události. |
 | action | řetězec | Akce, která zahrnuje poskytnutou událost. |
-| cílové | objekt | Cíl události. |
-| Request | objekt | Požadavek, který vygeneroval událost. |
+| cílové | odkazy objektů | Cíl události. |
+| Request | odkazy objektů | Požadavek, který vygeneroval událost. |
 
 Cílový objekt má následující vlastnosti:
 
@@ -188,12 +188,12 @@ Cílový objekt má následující vlastnosti:
 | length | celé číslo | Počet bajtů obsahu. Stejné jako velikost pole. |
 | úložiště | řetězec | Název úložiště |
 | značka | řetězec | Název značky |
-| jméno | řetězec | Název grafu |
-| version | řetězec | Verze grafu |
+| name | řetězec | Název grafu |
+| verze | řetězec | Verze grafu |
 
 Objekt Request má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | id | řetězec | ID žádosti, která iniciovala událost. |
 | Adresa | řetězec | IP adresa nebo název hostitele a pravděpodobně port připojení klienta, které spustilo událost. Tato hodnota je RemoteAddr ze standardního požadavku HTTP. |

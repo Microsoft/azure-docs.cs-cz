@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru traefik příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 ms.openlocfilehash: fd11b3bbd3f90b75203084ff0753c1485d57a35b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80155425"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru traefik příchozího přenosu dat a konfigurace HTTPS
@@ -47,7 +47,7 @@ Přidejte [oficiální stabilní úložiště Helm][helm-stable-repo], které ob
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Vytvořte Kubernetes obor názvů pro kontroler traefik pro příchozí přenos dat a nainstalujte `helm`ho pomocí.
+Vytvořte Kubernetes obor názvů pro kontroler traefik pro příchozí přenos dat a nainstalujte ho pomocí `helm` .
 
 > [!NOTE]
 > Pokud v clusteru AKS není povolena funkce RBAC, odeberte parametr *--set RBAC. Enabled = true* .
@@ -58,7 +58,7 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 ```
 
 > [!NOTE]
-> Výše uvedený příklad vytvoří veřejný koncový bod pro váš kontroler příchozího přenosu dat. Pokud pro svůj kontroler příchozího přenosu dat potřebujete místo toho použít privátní koncový bod, přidejte *--set Service. anotace. Service\\. beta\\. Kubernetes\\. IO/Azure-Load-vyrovnávání zatížení – interní parametr "= true"* pro příkaz *Helm Install* .
+> Výše uvedený příklad vytvoří veřejný koncový bod pro váš kontroler příchozího přenosu dat. Pokud pro svůj kontroler příchozího přenosu dat potřebujete místo toho použít privátní koncový bod, přidejte *--set Service. anotace. Service \\ . beta \\ . Kubernetes \\ . IO/Azure-Load-vyrovnávání zatížení – interní parametr "= true"* pro příkaz *Helm Install* .
 > ```console
 > helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
@@ -125,13 +125,13 @@ gateway:
 
 Uložte změny a zavřete soubor.
 
-Vytvořte místo pro *vývoj* pomocí ukázkové aplikace `azds space select`.
+Vytvořte místo pro *vývoj* pomocí ukázkové aplikace `azds space select` .
 
 ```console
 azds space select -n dev -y
 ```
 
-Nasaďte ukázkovou aplikaci `helm install`pomocí.
+Nasaďte ukázkovou aplikaci pomocí `helm install` .
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -139,13 +139,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 Výše uvedený příklad nasadí ukázkovou aplikaci do oboru názvů pro *vývoj* .
 
-Zobrazit adresy URL pro přístup k ukázkové aplikaci pomocí `azds list-uris`.
+Zobrazit adresy URL pro přístup k ukázkové aplikaci pomocí `azds list-uris` .
 
 ```console
 azds list-uris
 ```
 
-Níže uvedený výstup ukazuje příklady adres URL z `azds list-uris`.
+Níže uvedený výstup ukazuje příklady adres URL z `azds list-uris` .
 
 ```console
 Uri                                                  Status
@@ -154,7 +154,7 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Přejděte do služby *bikesharingweb* otevřením veřejné adresy URL z `azds list-uris` příkazu. Ve výše uvedeném příkladu je `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`veřejná adresa URL pro službu *bikesharingweb* .
+Přejděte do služby *bikesharingweb* otevřením veřejné adresy URL z `azds list-uris` příkazu. Ve výše uvedeném příkladu je veřejná adresa URL pro službu *bikesharingweb* `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
 > Pokud se místo služby *bikesharingweb* zobrazí chybová stránka, ověřte **, že jste aktualizovali** poznámku *Kubernetes.IO/Ingress.Class* a hostitele v souboru *Values. yaml* .
@@ -175,7 +175,7 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Přejděte ke službě *bikesharingweb* v podřízeném prostoru *azureuser1* pro vývoj otevřením veřejné adresy URL z `azds list-uris` příkazu. Ve výše uvedeném příkladu je `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`veřejná adresa URL služby *bikesharingweb* v podřízeném prostoru *azureuser1* pro vývoj.
+Přejděte ke službě *bikesharingweb* v podřízeném prostoru *azureuser1* pro vývoj otevřením veřejné adresy URL z `azds list-uris` příkazu. Ve výše uvedeném příkladu je veřejná adresa URL služby *bikesharingweb* v podřízeném prostoru *azureuser1* pro vývoj `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Konfigurace kontroleru traefik příchozího přenosu dat na používání protokolu HTTPS
 
@@ -211,13 +211,13 @@ spec:
 > [!NOTE]
 > Pro účely testování je k dispozici také [přípravný Server][letsencrypt-staging-issuer] , který můžete použít pro *ClusterIssuer*.
 
-Použijte `kubectl` k použití `letsencrypt-clusterissuer.yaml`.
+Použijte `kubectl` k použití `letsencrypt-clusterissuer.yaml` .
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Odeberte předchozí *traefik* *ClusterRole* a *ClusterRoleBinding*a potom upgradujte TRAEFIK, aby bylo možné `helm`používat protokol HTTPS pomocí.
+Odeberte předchozí *traefik* *ClusterRole* a *ClusterRoleBinding*a potom upgradujte TRAEFIK, aby bylo možné používat protokol HTTPS pomocí `helm` .
 
 > [!NOTE]
 > Pokud v clusteru AKS není povolena funkce RBAC, odeberte parametr *--set RBAC. Enabled = true* .
@@ -292,7 +292,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-Upgradujte ukázkovou aplikaci `helm`pomocí:
+Upgradujte ukázkovou aplikaci pomocí `helm` :
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
@@ -322,7 +322,7 @@ Pokud chcete tuto chybu opravit, aktualizujte [BikeSharingWeb/azds. yaml][azds-y
 ...
 ```
 
-Aktualizujte [BikeSharingWeb/Package. JSON][package-json] závislostí pro balíček *URL* .
+Aktualizujte [BikeSharingWeb/package.jsna][package-json] se závislostí pro balíček *URL* .
 
 ```json
 {
@@ -334,7 +334,7 @@ Aktualizujte [BikeSharingWeb/Package. JSON][package-json] závislostí pro balí
 ...
 ```
 
-Aktualizujte metodu *getApiHostAsync* v [BikeSharingWeb/lib/helps. js][helpers-js] na použití protokolu https:
+Aktualizujte metodu *getApiHostAsync* v [BikeSharingWeb/lib/helpers.js][helpers-js] tak, aby používala protokol https:
 
 ```javascript
 ...

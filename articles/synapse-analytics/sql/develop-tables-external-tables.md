@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7c795e6077bc5a7b755a388a6f50848ad6094d48
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921803"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -96,13 +96,17 @@ data_source_name
 Určuje uživatelsky definovaný název pro zdroj dat. Název musí být v rámci databáze jedinečný.
 
 #### <a name="location"></a>Umístění
-LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k externímu zdroji dat. Cesta může obsahovat kontejner ve formě `'<prefix>://<path>/container'` a složka ve formě `'<prefix>://<path>/container/folder'` .
+LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k externímu zdroji dat. V umístění lze použít následující vzory:
 
 | Externí zdroj dat        | Předpona umístění | Cesta k umístění                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Storage          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
+|                             | `https`         | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
 | Azure Data Lake Store Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
 | Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+|                             | `https`         | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+
+`https:`prefix umožňuje použít v cestě podsložku.
 
 #### <a name="credential"></a>Přihlašovací údaj
 CREDENTIAL = `<database scoped credential>` je volitelné přihlašovací údaje, které se použijí k ověření v Azure Storage. Externí zdroj dat bez přihlašovacích údajů má přístup ke veřejnému účtu úložiště. 
@@ -124,7 +128,7 @@ Následující příklad vytvoří externí zdroj dat pro Azure Data Lake Gen2 o
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH
   -- Please note the abfss endpoint when your account has secure transfer enabled
-  ( LOCATION = 'abfss://newyorktaxidataset.azuredatalakestore.net' ,
+  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.windows.net' ,
     CREDENTIAL = ADLS_credential ,
     TYPE = HADOOP
   ) ;
@@ -300,7 +304,7 @@ Pokud zadáte umístění složky, dotaz na vyžádání SQL se vybere z extern�
 > [!NOTE]
 > Na rozdíl od Hadoop a báze SQL na vyžádání nevrací podsložky. Vrátí soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
 
-V tomto příkladu, pokud LOCATION = '/WebData/', dotaz na vyžádání SQL, vrátí řádky ze souboru Mojedata. txt a _hidden. txt. Nevrátí mydata2. txt a mydata3. txt, protože jsou umístěné v podsložce.
+V tomto příkladu, pokud LOCATION = '/WebData/', dotaz na vyžádání SQL, vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 
 ![Rekurzivní data pro externí tabulky](./media/develop-tables-external-tables/folder-traversal.png)
 

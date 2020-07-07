@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: d274160cc2ed1102dfc8fd11df358b34e40d9923
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 068af40ed42d0211eed6e1a315016bb8ecc40d05
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "84872555"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954209"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Přidávání dat do protokolů auditu pomocí vlastních hlaviček protokolu HTTP
 
@@ -36,7 +36,7 @@ Vlastní hlavičky můžete použít k zachycení několika typů informací. P�
 > [!IMPORTANT]
 > Mějte na paměti, že informace odesílané ve vlastních hlavičkách jsou uloženy v systému interního protokolování společnosti Microsoft po dobu 30 dnů po jejich zpřístupnění v Azure log monitoring. Před přidáním informací do vlastních hlaviček doporučujeme šifrovat všechny informace. Pomocí zákaznických hlaviček byste neměli předávat žádné informace o FÍ.
 
-Pro hlavičky HTTP je nutné použít následující zásady vytváření názvů: X-MS-AZUREFHIR-AUDIT-AUDIT- \< name>.
+Pro hlavičky HTTP je nutné použít následující zásady vytváření názvů: X-MS-AZUREFHIR-AUDIT-AUDIT- \<name> .
 
 Tyto hlavičky HTTP jsou součástí kontejneru objektů a dat přidaných do protokolu. Příklad:
 
@@ -63,7 +63,7 @@ Po přidání do protokolu jsou hodnoty kombinovány se seznamem odděleným č�
  
 Můžete přidat maximálně 10 jedinečných hlaviček (opakování stejné hlavičky s různými hodnotami se počítají jenom jako jedna). Celková maximální délka hodnoty pro jednu hlavičku je 2048 znaků.
 
-Pokud používáte knihovnu rozhraní API pro spolehlivou C#, kód vypadá nějak takto:
+Pokud používáte knihovnu rozhraní API klienta Firefly C#, kód vypadá nějak takto:
 
 ```C#
 FhirClient client;

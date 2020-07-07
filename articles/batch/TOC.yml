@@ -272,13 +272,13 @@
     - name: Názory na službu Batch
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: Stránka s dotazy ohledně služby Batch na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: Blog
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: Prostředí HPC v Azure
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: Cenová kalkulačka

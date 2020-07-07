@@ -18,19 +18,19 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246513"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
 Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
 
-- **Akce** 
+- **Aktivita** 
     - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - **Protokoly auditu protokoly**auditu poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.[Audit logs](concept-audit-logs.md)  - 
+    - **Protokoly auditu**  -  [Protokoly auditu](concept-audit-logs.md) poskytují informace o aktivitě systému o uživatelích a správě skupin, spravovaných aplikacích a aktivitách adresářů.
 - **Zabezpečení** 
     - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
     - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
@@ -132,7 +132,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 
 - Kraj
 
-- Země/region
+- Země/oblast
 
 
 **Prostředek** – název služby, která se používá pro přihlášení.
@@ -146,7 +146,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 ![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Název|Moderní ověřování|Popis|
+|Name|Moderní ověřování|Popis|
 |---|:-:|---|
 |Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
 |Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
@@ -267,7 +267,7 @@ Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním t
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
-![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Generování sestav")
+![Vytváření sestav](./media/concept-sign-ins/single-app-usage-graph.png "Přehledy")
 
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 

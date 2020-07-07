@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066919"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
@@ -76,9 +76,9 @@ Doporučuje se schéma v 1.1 a nevyžaduje Azure Active Directory (AAD) vlastnos
 
 ### <a name="schema-v01-with-aad"></a>Schéma v 0,1: s AAD 
 
-Schéma 0,1 vyžaduje `AADClientID` a `AADClientSecret` `AADClientCertificate`.
+Schéma 0,1 vyžaduje `AADClientID` a `AADClientSecret` `AADClientCertificate` .
 
-Používá `AADClientSecret`se:
+Používá se `AADClientSecret` :
 
 ```json
 {
@@ -108,7 +108,7 @@ Používá `AADClientSecret`se:
 }
 ```
 
-Používá `AADClientCertificate`se:
+Používá se `AADClientCertificate` :
 
 ```json
 {
@@ -141,11 +141,11 @@ Používá `AADClientCertificate`se:
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft. Azure. Security | řetězec |
-| type | AzureDiskEncryptionForLinux | řetězec |
+| typ | AzureDiskEncryptionForLinux | řetězec |
 | typeHandlerVersion | 1,1, 0,1 | int |
 | (schéma 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (schéma 0,1) AADClientSecret | heslo | řetězec |

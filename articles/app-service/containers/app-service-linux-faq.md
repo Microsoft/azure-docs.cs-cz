@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80245816"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v Linuxu
@@ -32,8 +32,8 @@ Všechny soubory Docker můžete najít na [GitHubu](https://github.com/azure-ap
 
 | Zásobník           | Očekávaná hodnota                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
-| Tomcat          | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
+| Tomcat          | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | konfigurační soubor konfiguračního PM2 nebo soubor skriptu                                |
 | .NET Core       | název zkompilované knihovny DLL jako`dotnet <myapp>.dll`                                 |
 | Ruby            | skript Ruby, se kterým chcete aplikaci inicializovat                     |
@@ -88,9 +88,9 @@ Pokud se nasazení Git nepovede do vaší webové aplikace pro Linux, vyberte je
 
 ## <a name="language-support"></a>Podpora jazyků
 
-**Chci v aplikaci Node. js použít webové sokety, všechna speciální nastavení nebo konfigurace, které se mají nastavit?**
+**Chci v aplikaci Node.js použít webové sokety, všechna speciální nastavení nebo konfigurace, které se mají nastavit?**
 
-Ano, zakázat `perMessageDeflate` v kódu Node. js na straně serveru. Například pokud používáte socket.io, použijte následující kód:
+Ano, zakázat `perMessageDeflate` kód Node.js na straně serveru. Například pokud používáte socket.io, použijte následující kód:
 
 ```nodejs
 const io = require('socket.io')(server,{
@@ -110,19 +110,19 @@ Ano, Kudu by během nasazování Gitu měli zjistit, že nasazujete aplikaci PHP
 
 **Používám vlastní kontejner. Chci, aby platforma připojovat sdílenou složku SMB k `/home/` adresáři.**
 
-Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení není **zadáno** nebo je nastaveno na *hodnotu true*, `/home/` bude adresář **sdílen** napříč instancemi škálování a zapsané soubory **budou uchovány** v rámci restartování. Při explicitním nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *false* se připojení zakáže.
+Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení není **zadáno** nebo je nastaveno na *hodnotu true*, bude `/home/` adresář **sdílen** napříč instancemi škálování a zapsané soubory **budou uchovány** v rámci restartování. Při explicitním nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *false* se připojení zakáže.
 
 **Spuštění vlastního kontejneru trvá dlouhou dobu a platforma restartuje kontejner před tím, než se začne dokončí.**
 
-Můžete nakonfigurovat dobu, po kterou bude platforma čekat, než restartuje váš kontejner. Provedete to tak, `WEBSITES_CONTAINER_START_TIME_LIMIT` že nastavíte nastavení aplikace na požadovanou hodnotu. Výchozí hodnota je 230 sekund a maximální hodnota je 1800 sekund.
+Můžete nakonfigurovat dobu, po kterou bude platforma čekat, než restartuje váš kontejner. Provedete to tak, že nastavíte `WEBSITES_CONTAINER_START_TIME_LIMIT` nastavení aplikace na požadovanou hodnotu. Výchozí hodnota je 230 sekund a maximální hodnota je 1800 sekund.
 
 **Jaký je formát adresy URL serveru privátního registru?**
 
-Zadejte úplnou adresu URL registru, včetně `http://` nebo `https://`.
+Zadejte úplnou adresu URL registru, včetně `http://` nebo `https://` .
 
 **Jaký je formát názvu bitové kopie v možnosti privátního registru?**
 
-Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name`použijte [ `az` nástroj příkazového řádku](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` použijte [ `az` Nástroj příkazového řádku](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Můžu na vlastní imagi kontejneru zobrazit víc než jeden port?**
 
@@ -153,7 +153,7 @@ Aby bylo možné používat ACR s více kontejnery, je nutné, aby **všechny im
 Vytvořte následující nastavení aplikace:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (úplná adresa URL, např `https://<server-name>.azurecr.io`.)
+- DOCKER_REGISTRY_SERVER_URL (úplná adresa URL, např. `https://<server-name>.azurecr.io` )
 - DOCKER_REGISTRY_SERVER_PASSWORD (povolit přístup správce v nastavení ACR)
 
 V konfiguračním souboru, odkazujte na obrázek ACR jako v následujícím příkladu:
@@ -169,7 +169,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 
 Tady jsou pravidla pro určení kontejneru, který je přístupný – v pořadí podle priority:
 
-- Nastavení `WEBSITES_WEB_CONTAINER_NAME` aplikace je nastaveno na název kontejneru
+- Nastavení aplikace `WEBSITES_WEB_CONTAINER_NAME` je nastaveno na název kontejneru
 - První kontejner pro definování portu 80 nebo 8080
 - Pokud žádná z výše uvedených možností není pravdivá, bude první kontejner definovaný v souboru přístupný (vystaveno).
 

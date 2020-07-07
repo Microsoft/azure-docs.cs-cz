@@ -6,10 +6,10 @@ ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787129"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
@@ -30,9 +30,9 @@ Při horizontálním navýšení kapacity se vytvoří nová instance. Nový ná
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Škálování mapy – nastavení nástrojů pro vyrovnávání zatížení na typy uzlů a sady škálování
 
-Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **s&lt;názvem&gt;typu**, který je mimo uzel. Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
+Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **s &lt; názvem &gt; typu**, který je mimo uzel. Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
-![Zdroje a prostředky][Resources]
+![Zdroje][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric rozšíření virtuálního počítače
 
@@ -74,8 +74,8 @@ Níže jsou uvedeny popisy vlastností:
 
 | **Název** | **Povolené hodnoty** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| jméno | řetězec | Jedinečný název pro rozšíření |
-| type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | Identifikuje Service Fabric operačního systému. |
+| name | řetězec | Jedinečný název pro rozšíření |
+| typ | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | Identifikuje Service Fabric operačního systému. |
 | autoUpgradeMinorVersion | true nebo false | Povolit automatický upgrade dílčích verzí SF modulu runtime |
 | vydavatel | Microsoft. Azure. ServiceFabric | Název vydavatele rozšíření Service Fabric |
 | clusterEndpont | řetězec | Identifikátor URI: PORT pro koncový bod správy |

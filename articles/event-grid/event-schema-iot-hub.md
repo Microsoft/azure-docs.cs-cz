@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393331"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub jako zdroj Event Grid
@@ -153,7 +153,7 @@ Všechny události obsahují stejná data nejvyšší úrovně:
 | závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
 | Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| data | objekt | IoT Hub data události.  |
+| data | odkazy objektů | IoT Hub data události.  |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -162,7 +162,7 @@ Pro všechny události IoT Hub datový objekt obsahuje následující vlastnosti
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | hubName | řetězec | Název IoT Hub, kde se zařízení vytvořilo nebo odstranilo |
-| deviceId | řetězec | Jedinečný identifikátor zařízení Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující `- : . + % _ # * ? ! ( ) , = @ ; $ '`speciální znaky:. |
+| deviceId | řetězec | Jedinečný identifikátor zařízení Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 
 Obsah datového objektu se u každého vydavatele události liší. 
 
@@ -170,8 +170,8 @@ Pro události **připojené k zařízení** a **odpojení zařízení** IoT Hub 
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| moduleId | řetězec | Jedinečný identifikátor modulu Toto pole je výstupní jenom pro zařízení modulu. Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující `- : . + % _ # * ? ! ( ) , = @ ; $ '`speciální znaky:. |
-| deviceConnectionStateEventInfo | objekt | Informace o událostech stavu připojení zařízení
+| moduleId | řetězec | Jedinečný identifikátor modulu Toto pole je výstupní jenom pro zařízení modulu. Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
+| deviceConnectionStateEventInfo | odkazy objektů | Informace o událostech stavu připojení zařízení
 | sequenceNumber | řetězec | Číslo, které pomáhá indikovat pořadí připojených zařízení nebo událostí odpojení zařízení. Poslední událost bude mít pořadové číslo, které je vyšší než předchozí událost. Toto číslo se může změnit o více než 1, ale bude se striktně zvyšovat. Podívejte [se, jak použít pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 V případě **telemetrie zařízení** IoT Hub událost obsahuje datový objekt zprávu zařízení-Cloud ve [formátu zprávy služby IoT Hub](../iot-hub/iot-hub-devguide-messages-construct.md) a má následující vlastnosti:
@@ -184,9 +184,9 @@ V případě **telemetrie zařízení** IoT Hub událost obsahuje datový objekt
 
 Pro **zařízení vytvořená** a **odstraněná** IoT Hub události obsahuje datový objekt následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| vyjde | objekt | Informace o dodaném zařízení, což je cloudová reprezentace metadat aplikačních zařízení. | 
+| vyjde | odkazy objektů | Informace o dodaném zařízení, což je cloudová reprezentace metadat aplikačních zařízení. | 
 | deviceID | řetězec | Jedinečný identifikátor vlákna zařízení. | 
 | značk | řetězec | Validátor pro zajištění konzistence aktualizací v zařízení. U každého ETag je zaručeno, že bude jedinečný pro každé zařízení. |  
 | deviceEtag| řetězec | Validátor pro zajištění konzistence aktualizací registru zařízení. Každý deviceEtag je zaručený jako jedinečný v každém registru zařízení. |
@@ -195,13 +195,13 @@ Pro **zařízení vytvořená** a **odstraněná** IoT Hub události obsahuje da
 | Vlastnost ConnectionState | řetězec | Zda je zařízení připojeno nebo odpojeno. | 
 | lastActivityTime | řetězec | ISO8601 časové razítko poslední aktivity. | 
 | cloudToDeviceMessageCount | celé číslo | Počet zpráv z cloudu do zařízení odeslaných do tohoto zařízení | 
-| authenticationType | řetězec | Typ ověřování, který se používá pro toto `SAS`zařízení `SelfSigned`: buď `CertificateAuthority`, nebo. |
+| authenticationType | řetězec | Typ ověřování, který se používá pro toto zařízení: buď `SAS` , `SelfSigned` nebo `CertificateAuthority` . |
 | x509Thumbprint | řetězec | Kryptografický otisk je jedinečná hodnota pro certifikát x509, která se běžně používá k vyhledání konkrétního certifikátu v úložišti certifikátů. Kryptografický otisk se dynamicky generuje pomocí algoritmu SHA1 a v certifikátu fyzicky neexistuje. | 
 | primaryThumbprint | řetězec | Primární kryptografický otisk pro certifikát x509 |
 | secondaryThumbprint | řetězec | Sekundární kryptografický otisk pro certifikát x509 | 
-| version | celé číslo | Celé číslo, které je při každé aktualizaci neinteraktivního zařízení zvětšeno o jedno. |
-| dosažení | objekt | Část vlastností, které lze zapsat pouze back-end aplikací a kterou zařízení čte. | 
-| uvedené | objekt | Část vlastností, které mohou být zapsány pouze zařízením a které jsou čteny back-end aplikací. |
+| verze | celé číslo | Celé číslo, které je při každé aktualizaci neinteraktivního zařízení zvětšeno o jedno. |
+| dosažení | odkazy objektů | Část vlastností, které lze zapsat pouze back-end aplikací a kterou zařízení čte. | 
+| uvedené | odkazy objektů | Část vlastností, které mohou být zapsány pouze zařízením a které jsou čteny back-end aplikací. |
 | lastUpdated | řetězec | ISO8601 časové razítko poslední aktualizace vlastnosti vyzdvojené ze zařízení. | 
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239878"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
@@ -71,7 +71,7 @@ Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu
 
 Pro image RHEL 6. x jsou typy obrázků uvedené v následující tabulce.
 
-|Vydavatel | Nabídka | Hodnota SKU | Version | Podrobnosti
+|Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
 |----------|-------|-----------|---------|--------
 |RedHat | RHEL | Dílčí verze (například 6,9) | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 6.9.2018010506) | Všechny standardní image RHEL 6. x se řídí touto konvencí.
 |RedHat | RHEL – BYOS | RHEL – raw69 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 6.9.20181023) | Tato Image je image RHEL 6,9 BYOS.
@@ -80,12 +80,12 @@ Pro image RHEL 6. x jsou typy obrázků uvedené v následující tabulce.
 
 ## <a name="rhel-7-image-types"></a>RHEL 7 – typy obrázků
 
-Pro image RHEL 7. x existuje několik různých typů obrázků. V následující tabulce jsou uvedeny různé sady imagí, které nabízíme. Úplný seznam zobrazíte pomocí příkazu rozhraní příkazového `az vm image list --publisher redhat --all`řádku Azure CLI.
+Pro image RHEL 7. x existuje několik různých typů obrázků. V následující tabulce jsou uvedeny různé sady imagí, které nabízíme. Úplný seznam zobrazíte pomocí příkazu rozhraní příkazového řádku Azure CLI `az vm image list --publisher redhat --all` .
 
 >[!NOTE]
 > Pokud není uvedeno jinak, všechny image jsou LVM rozdělené do oddílů a připojují se k běžným úložištím RHEL. To znamená, že v úložištích nejsou Rozšířená podpora aktualizací (EUS) a ne služby aktualizace pro SAP (E4S). Až budete přesměrováni na publikování pouze imagí LVM, ale otevře se pro názory na toto rozhodnutí. Další informace o podpoře rozšířených aktualizací a aktualizacích služeb pro SAP najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).
 
-|Vydavatel | Nabídka | Hodnota SKU | Version | Podrobnosti
+|Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | Dílčí verze (například 7,6) | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019102813) | Image publikované před dubna 2019 jsou připojené ke standardním úložištím RHEL. Image publikované po dubna 2019 jsou připojené k úložištím EUS Red Hat, aby bylo možné uzamknout určitou verzi konkrétní dílčí verze. Zákazníci, kteří chtějí pravidelná úložiště, by měli použít image, které v hodnotě SKU obsahují 7 – LVM nebo 7-RAW (podrobnosti následují). RHEL 7,7 a novější obrázky jsou LVM rozdělené na oddíly. Všechny ostatní obrázky v této kategorii jsou nezpracované dělené.
 |RedHat | RHEL | 7 – RAW | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 7.6.2019102813) | Tyto image nejsou rozdělené do oddílů (například nebyly přidány žádné logické svazky).
@@ -102,7 +102,7 @@ Pro image RHEL 7. x existuje několik různých typů obrázků. V následujíc�
 
 Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 
-|Vydavatel | Nabídka | Hodnota SKU | Version | Podrobnosti
+|Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191023) | Tyto image jsou image s RHEL 8 LVM oddíly připojené ke standardním úložištím Red Hat.
 |RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
@@ -147,7 +147,7 @@ Dílčí verze |Příklad obrázku EUS              |Stav EUS                   
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších jsou ve výchozím nastavení EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších jsou EUS ve výchozím nastavení. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky mohou být 2019 a novější EUS ve výchozím nastavení. |
-RHEL 8,0      |–                            | V Red Hat není k dispozici žádný EUS.                               |
+RHEL 8,0      |Není k dispozici                            | V Red Hat není k dispozici žádný EUS.                               |
 
 ### <a name="update-services-for-sap"></a>Aktualizace služeb pro SAP
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066867"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft. Azure. Security. AzureDiskEncryption)
@@ -76,7 +76,7 @@ Schéma v 2.2 se doporučuje pro všechny nové virtuální počítače a nevyž
 
 Schéma 1,1 vyžaduje `aadClientID` a `aadClientSecret` `AADClientCertificate` není doporučeno pro nové virtuální počítače.
 
-Používá `aadClientSecret`se:
+Používá se `aadClientSecret` :
 
 ```json
 {
@@ -106,7 +106,7 @@ Používá `aadClientSecret`se:
 }
 ```
 
-Používá `AADClientCertificate`se:
+Používá se `AADClientCertificate` :
 
 ```json
 {
@@ -139,11 +139,11 @@ Používá `AADClientCertificate`se:
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft. Azure. Security | řetězec |
-| type | AzureDiskEncryption | řetězec |
+| typ | AzureDiskEncryption | řetězec |
 | typeHandlerVersion | 2,2, 1,1 | řetězec |
 | (schéma 1,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (schéma 1,1) AADClientSecret | heslo | řetězec |

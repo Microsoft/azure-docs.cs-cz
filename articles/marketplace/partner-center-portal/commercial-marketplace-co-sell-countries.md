@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80277052"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Kódy zemí a oblastí ve společném prodeji
@@ -125,7 +125,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Haiti                               | HT        |
 | Heardův ostrov a MacDonaldovy ostrovy   | HM        |
 | Honduras                            | HN        |
-| Hongkong – zvláštní správní oblast                       | HK        |
+| Hongkong – zvláštní administrativní oblast                       | HK        |
 | Maďarsko                             | HU        |
 | Island                             | IS        |
 | Indie                               | IN        |
@@ -177,7 +177,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Maroko                             | MA        |
 | Mosambik                          | MZ        |
 | Myanmar                             | MM        |
-| Namibie                             | Není k dispozici        |
+| Namibie                             | NA        |
 | Nauru                               | NR        |
 | Nepál                               | NP        |
 | Nizozemsko                         | NL        |
@@ -254,15 +254,15 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Tunisko                             | TN        |
 | Turecko                              | TR        |
 | Turkmenistán                        | TM        |
-| Turks a Caicos            | TC        |
+| Ostrovy Turks a Caicos            | TC        |
 | Tuvalu                              | TV        |
 | Uganda                              | UG        |
 | Ukrajina                             | UA        |
 | Spojené arabské emiráty                | AE        |
 | Spojené království                      | GB        |
-| Spojené státy                       | USA        |
+| USA                       | USA        |
 | Uruguay                             | UY        |
-| Odlehlé ostrovy USA               | UM        |
+| Menší odlehlé ostrovy USA               | UM        |
 | Americké Panenské ostrovy                 | VI        |
 | Uzbekistán                          | UZ        |
 | Vanuatu                             | VU        |

@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159213"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Připojení a interakce se zařízením IoT technologie Plug and Play Preview
@@ -30,21 +30,21 @@ npm install
 
 ## <a name="run-the-service-samples"></a>Spuštění ukázek služby
 
-Pomocí následujících ukázek můžete prozkoumat možnosti sady SDK služby Node. js. Ujistěte se, že `IOTHUB_CONNECTION_STRING` je proměnná prostředí nastavená v prostředí, které používáte:
+Pomocí následujících ukázek můžete prozkoumat možnosti sady SDK služby Node.js. Ujistěte se, že `IOTHUB_CONNECTION_STRING` je proměnná prostředí nastavená v prostředí, které používáte:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Načtení digitálního vlákna a seznam rozhraní
 
-**get_digital_twin. js** získá digitální vlákna přidružená k vašemu zařízení a vytiskne jeho komponentu na příkazovém řádku. Není nutné, aby byla spuštěná ukázka zařízení úspěšná.
+**get_digital_twin.js** získá digitální vlákna přidružená k vašemu zařízení a vytiskne jeho komponentu na příkazovém řádku. Není nutné, aby byla spuštěná ukázka zařízení úspěšná.
 
-**get_digital_twin_interface_instance. js** získá jednu instanci rozhraní digitálního vlákna přidruženou k vašemu zařízení a vytiskne ji na příkazovém řádku. Nevyžaduje spuštění vzorku zařízení.
+**get_digital_twin_interface_instance.js** získá jednu instanci rozhraní digitálního vlákna přidruženou k vašemu zařízení a vytiskne ji na příkazovém řádku. Nevyžaduje spuštění vzorku zařízení.
 
 ### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Získání a nastavení vlastností pomocí sady SDK služby Node
 
-**update_digital_twin. js** aktualizuje vlastnost s možností zápisu do digitálního vlákna v zařízení pomocí úplné opravy. Pokud chcete, můžete aktualizovat více vlastností u více rozhraní. Aby bylo úspěšné, musí být ukázka zařízení spuštěná ve stejnou dobu. Úspěch vypadá to, že ukázka zařízení tiskne něco o aktualizaci vlastnosti. Ukázka služby tisk aktualizovaného digitálního vlákna v terminálu.
+**update_digital_twin.js** aktualizuje vlastnost s možností zápisu na digitálního vlákna zařízení pomocí úplné opravy. Pokud chcete, můžete aktualizovat více vlastností u více rozhraní. Aby bylo úspěšné, musí být ukázka zařízení spuštěná ve stejnou dobu. Úspěch vypadá to, že ukázka zařízení tiskne něco o aktualizaci vlastnosti. Ukázka služby tisk aktualizovaného digitálního vlákna v terminálu.
 
 ### <a name="send-a-command-and-retrieve-the-response-using-the-node-service-sdk"></a>Odeslání příkazu a načtení odpovědi pomocí sady SDK služby Node
 
-**invoke_command. js** vyvolá synchronní příkaz na svém digitálním vlákna na vašem zařízení. Aby bylo úspěšné, musí být ukázka zařízení spuštěná ve stejnou dobu. Úspěch vypadá to, že ukázka zařízení tiskne něco o potvrzení příkazu a klient služby vytiskl výsledek příkazu v terminálu.
+**invoke_command.js** vyvolá synchronní příkaz z digitálního vlákna vašeho zařízení. Aby bylo úspěšné, musí být ukázka zařízení spuštěná ve stejnou dobu. Úspěch vypadá to, že ukázka zařízení tiskne něco o potvrzení příkazu a klient služby vytiskl výsledek příkazu v terminálu.
 
 ### <a name="connect-to-the-public-repository-and-retrieve-a-model-definition-using-the-node-service-sdk"></a>Připojte se k veřejnému úložišti a načtěte definici modelu pomocí sady SDK služby Node.
 

@@ -1,23 +1,25 @@
 ---
-title: Vytvoření vyhledávací aplikace v Azure Portal
+title: Vytvoření ukázkové aplikace v Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Spusťte Průvodce vytvořením aplikace (Preview) a vygenerujte HTML stránky a skript pro provozní webovou aplikaci. Stránka obsahuje panel hledání, oblast výsledků, postranní panel a podporu typeahead.
+description: Spusťte Průvodce vytvořením ukázkové aplikace (Preview) a vygenerujte HTML stránky a skript pro provozní webovou aplikaci. Stránka obsahuje panel hledání, oblast výsledků, postranní panel a podporu typeahead.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488167"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955688"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: Vytvoření vyhledávací aplikace na portálu (Azure Kognitivní hledání)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: vytvoření ukázkové aplikace na portálu (Azure Kognitivní hledání)
 
-Pomocí průvodce **vytvořením vyhledávací aplikace** Azure Portal můžete vygenerovat webovou aplikaci ve stylu "localhost", která běží v prohlížeči. V závislosti na konfiguraci je vygenerovaná aplikace při prvním použití funkční, s živým připojením ke vzdálenému indexu. Výchozí aplikace může obsahovat panel hledání, oblast výsledků, filtry bočního panelu a podporu typeahead.
+Pomocí průvodce **vytvořením ukázkové aplikace** Azure Portal vygenerujte webovou aplikaci ve stylu "localhost", která běží v prohlížeči. V závislosti na konfiguraci je vygenerovaná aplikace při prvním použití funkční, s živým připojením jen pro čtení ke vzdálenému indexu. Výchozí aplikace může obsahovat panel hledání, oblast výsledků, filtry bočního panelu a podporu typeahead.
+
+Ukázková aplikace vám pomůže vizualizovat, jak bude index fungovat v klientské aplikaci, ale není určený pro produkční scénáře. Klientské aplikace by měly zahrnovat zabezpečení, zpracování chyb a logiku hostování, kterou neposkytuje vygenerovaná stránka HTML. Až budete připraveni vytvořit klientskou aplikaci, přečtěte si téma [Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK](tutorial-csharp-create-first-app.md) pro další kroky.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +47,7 @@ Až bude index připravený k použití, přejděte k dalšímu kroku.
 
 1. V seznamu existujících indexů vyberte *realestate-US-Sample-index* .
 
-1. Na stránce index v horní části vyberte **vytvořit vyhledávací aplikaci (Preview)** a spusťte tak průvodce.
+1. V horní části stránky index vyberte **vytvořit ukázkovou aplikaci (Preview)** a spusťte tak průvodce.
 
 1. Na první stránce průvodce vyberte **Povolit sdílení prostředků mezi zdroji (CORS)** a přidejte do definice indexu podporu CORS. Tento krok je nepovinný, ale vaše místní webová aplikace se nebude bez něj připojovat ke vzdálenému indexu.
 
@@ -85,7 +87,7 @@ Následující snímek obrazovky ukazuje možnosti v průvodci, juxtaposed s vyk
 
 ## <a name="create-download-and-execute"></a>Vytvoření, stažení a spuštění
 
-1. Vyberte **vytvořit vyhledávací aplikaci** pro vygenerování souboru HTML.
+1. Vyberte **vytvořit ukázkovou aplikaci** pro vygenerování souboru HTML.
 
 1. Po zobrazení výzvy vyberte **Stáhnout aplikaci** a Stáhněte si soubor.
 

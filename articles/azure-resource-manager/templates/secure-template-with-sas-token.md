@@ -4,10 +4,10 @@ description: K nasazení prostředků do Azure můžete použít šablonu Azure 
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80156391"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Nasazení privátní šablony ARM pomocí tokenu SAS
@@ -18,7 +18,7 @@ Když se vaše šablona Azure Resource Manager (ARM) nachází v účtu úloži�
 
 Následující skript vytvoří účet úložiště a kontejner s povoleným veřejným přístupem.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -65,7 +65,7 @@ az storage container create \
 
 Nyní jste připraveni odeslat šablonu do účtu úložiště. Zadejte cestu k šabloně, kterou chcete použít.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -93,7 +93,7 @@ Pokud chcete v účtu úložiště nasadit soukromou šablonu, vygenerujte token
 > Objekt BLOB obsahující šablonu je přístupný pouze pro vlastníka účtu. Pokud však vytvoříte token SAS pro objekt blob, je objekt BLOB přístupný komukoli s tímto identifikátorem URI. Pokud identifikátor URI zachytí jiný uživatel, bude mít tento uživatel k šabloně přístup. Token SAS je dobrým způsobem, jak omezit přístup k vašim šablonám, neměli byste ale obsahovat citlivá data, jako jsou hesla přímo v šabloně.
 >
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token

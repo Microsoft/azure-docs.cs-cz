@@ -5,10 +5,10 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80153348"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>Vytváření a nasazování šablon ARM pomocí IntelliJ NÁPADu
@@ -33,13 +33,13 @@ K dokončení tohoto článku potřebujete:
 
 Šablonu nemusíte vytvářet od začátku, ale můžete místo toho otevřít některou [šablonu pro rychlý start Azure](https://azure.microsoft.com/resources/templates/). Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM. Šablona použitá v tomto článku se nazývá [vytvořit účet úložiště úrovně Standard](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/). Definuje prostředek účtu Azure Storage.
 
-1. Klikněte pravým tlačítkem myši a [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) uložte [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) a do místního počítače.
+1. Klikněte pravým tlačítkem myši a uložte [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) a [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) do místního počítače.
 
 1. Pokud je vaše sada Azure Toolkit správně nainstalovaná a přihlášená, měla by se zobrazit v Průzkumníkovi Azure na postranním panelu IntelliJ NÁPADu. Klikněte pravým tlačítkem na **Správa prostředků** a vyberte **vytvořit nasazení**.
 
     ![Správce prostředků šablonu kliknutím pravým tlačítkem myši vytvoříte nasazení.](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Proveďte konfiguraci **názvu nasazení**, **předplatného**, **skupiny prostředků**a **oblasti**. Tady nasadíme šablonu do nové skupiny `testRG`prostředků. Pak vyberte možnost cesta pro **šablonu prostředků** jako `azuredeploy.json` a **parametry** `azuredeploy.parameters.json` prostředku při stažení.
+1. Proveďte konfiguraci **názvu nasazení**, **předplatného**, **skupiny prostředků**a **oblasti**. Tady nasadíme šablonu do nové skupiny prostředků `testRG` . Pak vyberte možnost cesta pro **šablonu prostředků** jako `azuredeploy.json` a **parametry prostředku** při `azuredeploy.parameters.json` stažení.
 
     ![Správce prostředků šablonou vyberte soubory pro vytvoření nasazení.](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -49,7 +49,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="browse-an-existing-deployment"></a>Procházet existující nasazení
 
-1. Po dokončení nasazení uvidíte novou skupinu `testRG` prostředků a nové nasazení se vytvořilo. Klikněte pravým tlačítkem na nasazení a uvidíte seznam možných akcí. Nyní vyberte **Zobrazit vlastnosti**.
+1. Po dokončení nasazení uvidíte novou skupinu prostředků `testRG` a nové nasazení se vytvořilo. Klikněte pravým tlačítkem na nasazení a uvidíte seznam možných akcí. Nyní vyberte **Zobrazit vlastnosti**.
 
     ![Nasazení procházení šablonou Správce prostředků](./media/create-templates-use-intellij/resource-manager-deployment-browse.png)
 
@@ -63,11 +63,11 @@ K dokončení tohoto článku potřebujete:
 
     ![Nasazení úprav šablony Správce prostředků](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. Tyto dva soubory můžete upravovat na této stránce a nasazovat změny do Azure. Zde upravujeme hodnotu **storageAccountType** v souborech parametrů z `Standard_LRS` na. `Standard_GRS` Potom v dolní části klikněte na **aktualizovat nasazení** a potvrďte aktualizaci.
+1. Tyto dva soubory můžete upravovat na této stránce a nasazovat změny do Azure. Zde upravujeme hodnotu **storageAccountType** v souborech parametrů z `Standard_LRS` na `Standard_GRS` . Potom v dolní části klikněte na **aktualizovat nasazení** a potvrďte aktualizaci.
 
     ![Nasazení úprav šablony Správce prostředků](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
-1. Po dokončení nasazení aktualizace můžete na portálu ověřit, jestli je vytvořený účet úložiště změněný `Standard_GRS`.
+1. Po dokončení nasazení aktualizace můžete na portálu ověřit, jestli je vytvořený účet úložiště změněný `Standard_GRS` .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

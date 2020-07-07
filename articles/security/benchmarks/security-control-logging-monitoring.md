@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e58df0997c62a131a3c9987369f8e076a62d6654
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408344"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Řízení zabezpečení: protokolování a sledování
@@ -64,7 +64,7 @@ Povolte nastavení diagnostiky prostředků Azure pro přístup k protokolům au
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.4 | 6,2, 6,3 | Zákazník |
+| 2,4 | 6,2, 6,3 | Zákazník |
 
 Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá za jeho monitorování společnost Microsoft. Pokud je výpočetní prostředek vlastněn vaší organizací, máte zodpovědnost za jeho monitorování. Pomocí Azure Security Center můžete monitorovat operační systém. Data shromažďovaná Security Center z operačního systému zahrnují typ a verzi operačního systému, operační systém (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také shromažďuje soubory s výpisem stavu systému.
 
@@ -142,7 +142,7 @@ Implementujte řešení od jiného výrobce z Azure Marketplace pro řešení pr
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.10 | 8,8 | Zákazník |
+| 2.10 | 8.8 | Zákazník |
 
 Pomocí Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure s Windows Zaprotokolujte událost vytvoření procesu a pole CommandLine.   U podporovaných virtuálních počítačů se systémem Azure Linux můžete ručně nakonfigurovat protokolování konzoly na bázi jednotlivých uzlů a pomocí protokolu syslog ukládat data.  K prohlížení protokolů a provádění dotazů na protokolovaných datech z virtuálních počítačů Azure taky použijte pracovní prostor Azure Monitor Log Analytics. 
 

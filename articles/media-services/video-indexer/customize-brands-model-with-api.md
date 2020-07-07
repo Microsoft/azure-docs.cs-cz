@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127993"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značek pomocí rozhraní Video Indexer API
@@ -34,8 +34,8 @@ Rozhraní API pro [vytvoření značky](https://api-portal.videoindexer.ai/docs/
 
 Některé další parametry, které lze nastavit v těle:
 
-* `referenceUrl` Hodnota může být libovolná referenční webová stránka pro značku, jako je například odkaz na svou Wikipedii stránku.
-* `tags` Hodnota je seznam značek pro značku. Tato značka se zobrazí v poli *kategorie* značky na webu video indexer. Například značka "Azure" může být označená nebo Kategorizovaná jako "Cloud".
+* `referenceUrl`Hodnota může být libovolná referenční webová stránka pro značku, jako je například odkaz na svou Wikipedii stránku.
+* `tags`Hodnota je seznam značek pro značku. Tato značka se zobrazí v poli *kategorie* značky na webu video indexer. Například značka "Azure" může být označená nebo Kategorizovaná jako "Cloud".
 
 ### <a name="response"></a>Odpověď
 
@@ -94,7 +94,7 @@ Odpověď poskytuje informace o značce, kterou jste hledali (pomocí ID značky
 ```
 
 > [!NOTE]
-> `enabled`je nastavené `true` tak, že se tato značka nachází v seznamu *include* pro video indexer rozpoznat a `enabled` že je false znamená, že se značka nachází v seznamu *vyloučení* , takže video indexer ji nerozpozná.
+> `enabled`je nastavené tak `true` , že se tato značka nachází v seznamu *Include* pro video indexer rozpoznat a že je `enabled` false znamená, že se značka nachází v seznamu *vyloučení* , takže video indexer ji nerozpozná.
 
 ## <a name="update-a-specific-brand"></a>Aktualizace konkrétní značky
 
@@ -178,13 +178,13 @@ Odpověď ukazuje, jestli jsou značky Bingu povolené, a to podle formátu ní�
 ```
 
 > [!NOTE]
-> `useBuiltIn`nastavení na hodnotu true představuje, že jsou značky Bingu povolené. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané. `state` Hodnota může být ignorována, protože je zastaralá.
+> `useBuiltIn`nastavení na hodnotu true představuje, že jsou značky Bingu povolené. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané. `state`Hodnota může být ignorována, protože je zastaralá.
 
 ## <a name="update-brands-model-settings"></a>Aktualizace nastavení modelu značek
 
 Rozhraní API pro [aktualizaci značek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) aktualizuje nastavení modelu značky v zadaném účtu. Nastavení modelu značek představuje, zda je povoleno zjišťování z databáze značek Bing. Pokud nejsou značky Bingu povolené, Video Indexer detekuje pouze značky z vlastního modelu značek zadaného účtu.
 
-`useBuiltIn` Příznak nastavený na hodnotu true znamená, že jsou povolené značky Bingu. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané.
+`useBuiltIn`Příznak nastavený na hodnotu true znamená, že jsou povolené značky Bingu. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané.
 
 ### <a name="response"></a>Odpověď
 

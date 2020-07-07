@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4b6331977cc2237801b84647e4edeb5d789cb9e8
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: c251b70d1988be82821f1e133151dae1ac6d1bc9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921302"
 ---
-# <a name="accessing-external-storage-in-synapse-sql"></a>Přístup k externímu úložišti v synapse SQL
+# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
 
-Tento dokument popisuje, jak může uživatel číst data ze souborů uložených na Azure Storage v synapse SQL (na vyžádání a ve fondu). Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
+Tento dokument popisuje, jak může uživatel číst data ze souborů uložených na Azure Storage v synapse SQL (na vyžádání). Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
 
 - Funkce [OpenRowset](develop-openrowset.md) , která umožňuje provádět dotazy ad-hoc přes soubory v Azure Storage.
 - [Externí tabulka](develop-tables-external-tables.md) , která je předdefinovanou datovou strukturou založenou na sadě externích souborů.
@@ -65,9 +65,9 @@ OPENROWSET umožňuje uživateli zadat dotaz na soubory umístěné na některé
 
 ```sql
 SELECT * FROM
- OPENROWSET(BULK 'file/path/*.csv',
+ OPENROWSET(BULK 'file/path/*.parquet',
  DATASOURCE = MyAzureInvoices,
- FORMAT= 'csv') as rows
+ FORMAT= 'parquet') as rows
 ```
 
 Uživatel s oprávněním k řízení databáze by musel vytvořit pověření s ROZSAHem databáze, která budou použita pro přístup k úložišti a EXTERNÍmu zdroji dat, který určuje adresu URL zdroje dat a přihlašovacích údajů, které by měly být použity:
@@ -142,8 +142,8 @@ FROM dbo.DimProductsExternal
 ```
 
 Volající musí mít následující oprávnění pro čtení dat:
-- VYBRAT oprávnění pro externí tabulku
-- ODKAZUJE na přihlašovací údaje v oboru databáze, pokud má zdroj dat přihlašovací údaje.
+- `SELECT`oprávnění pro externí tabulku
+- `REFERENCES DATABASE SCOPED CREDENTIAL`oprávnění, pokud `DATA SOURCE` má`CREDENTIAL`
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -151,13 +151,13 @@ V následující tabulce jsou uvedena požadovaná oprávnění pro výše uvede
 
 | Dotaz | Požadovaná oprávnění|
 | --- | --- |
-| OPENROWSET (BULK) bez DataSource | Správa přihlašování SQL HROMADných SPRÁVCů musí mít odkazy na přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
-| OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | SPRÁVA HROMADNÝCH SPRÁVCŮ |
-| OPENROWSET (hromadné) se zdrojem dat s přihlašovacími údaji | SPRÁVA HROMADNÝCH PŘIHLAŠOVACÍCH ÚDAJŮ S ROZSAHEM DATABÁZE PRO HROMADNÉ SPRÁVCE |
-| VYTVOŘIT EXTERNÍ ZDROJ DAT | ZMĚNA VŠECH EXTERNÍCH ZDROJŮ DAT ODKAZUJE NA PŘIHLAŠOVACÍ ÚDAJE V OBORU DATABÁZE. |
-| VYTVOŘIT EXTERNÍ TABULKU | CREATE TABLE, ZMĚŇTE LIBOVOLNÉ SCHÉMA, ZMĚŇTE LIBOVOLNÝ EXTERNÍ FORMÁT SOUBORU A ZMĚŇTE LIBOVOLNÝ EXTERNÍ ZDROJ DAT. |
-| VYBRAT Z EXTERNÍ TABULKY | VYBRAT TABULKU |
-| CETAS | Pokud chcete vytvořit tabulku – CREATE TABLE změnit libovolné schéma, změňte libovolný zdroj dat a změňte libovolný externí formát souboru. Čtení dat: HROMADná operace Správce + odkazuje na přihlašovací údaje nebo výběr tabulky pro jednotlivé tabulky, zobrazení a funkce v dotazech + R/W oprávnění k úložišti. |
+| OPENROWSET (BULK) bez DataSource | `ADMINISTER BULK ADMIN``ADMINISTER DATABASE BULK ADMIN`přihlašovací údaje, nebo přihlášení SQL musí mít přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
+| OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK ADMIN`nebo `ADMINISTER DATABASE BULK ADMIN` , |
+| OPENROWSET (hromadné) se zdrojem dat s přihlašovacími údaji | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` nebo`REFERENCES DATABASE SCOPED CREDENTIAL` |
+| VYTVOŘIT EXTERNÍ ZDROJ DAT | `ALTER ANY EXTERNAL DATA SOURCE` a `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| VYTVOŘIT EXTERNÍ TABULKU | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` a`ALTER ANY EXTERNAL DATA SOURCE` |
+| VYBRAT Z EXTERNÍ TABULKY | `SELECT TABLE` a `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CETAS | Vytvoření tabulky- `CREATE TABLE` , `ALTER ANY SCHEMA` , a `ALTER ANY DATA SOURCE` `ALTER ANY EXTERNAL FILE FORMAT` . Čtení dat: `ADMIN BULK OPERATIONS` nebo `REFERENCES CREDENTIAL` nebo pro `SELECT TABLE` jednotlivé tabulky, zobrazení nebo funkce v dotazech + R/W v úložišti |
 
 ## <a name="next-steps"></a>Další kroky
 

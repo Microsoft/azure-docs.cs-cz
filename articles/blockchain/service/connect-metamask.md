@@ -4,12 +4,12 @@ description: Připojte se k síti služby Azure blockchain pomocí MetaMask a na
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79205113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920586"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Rychlý Start: použití MetaMask k připojení a nasazení inteligentního kontraktu
 
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete MetaMask k připojení k síti služby Azure 
 
 Pro připojení k síti blockchain potřebujete adresu koncového bodu služby Azure blockchain. Adresa koncového bodu a přístupové klávesy jsou v Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain.
 1. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
@@ -59,7 +59,7 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
 1. V prohlížeči přejděte na adresu `https://remix.ethereum.org`.
 1. Na kartě **Domů** v části **soubor**vyberte **nový soubor** .
 
-    Pojmenujte nový `simple.sol`soubor.
+    Pojmenujte nový soubor `simple.sol` .
 
     ![Vytvořit soubor](./media/connect-metamask/create-file.png)
 
@@ -97,7 +97,7 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
 
 1. Vyberte **jednoduchý** kontrakt a pak **nasazení**.
 
-    ![Nasazení](./media/connect-metamask/deploy.png)
+    ![Nasadit](./media/connect-metamask/deploy.png)
 
 
 1. Oznámení MetaMask upozorní na nedostatečné prostředky k provedení transakce.
@@ -128,9 +128,9 @@ Remix je vývojové prostředí založené na prohlížeči. Pomocí MetaMask a 
 
 Podokno ladění Remix obsahuje podrobnosti o transakcích blockchain:
 
-    ![Debug history](./media/connect-metamask/debug.png)
+![Historie ladění](./media/connect-metamask/debug.png)
 
-    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+Můžete si prohlédnout **jednoduché** Vytvoření kontraktu, transakci pro **jednoduché přidávání**a volání metody **Simple. Get**.
 
 Chcete-li zobrazit historii transakcí v MetaMask, otevřete rozšíření prohlížeče MetaMask a vyhledejte v části **Historie** protokol nasazených kontraktů a transakcí.
 

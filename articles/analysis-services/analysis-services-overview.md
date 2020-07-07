@@ -8,12 +8,12 @@ ms.date: 06/24/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 58ef7704cda88caebcbe49cf75e9a7fc9ecaebdc
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918942"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -132,15 +132,17 @@ Stejně jako u změny úrovně můžete repliky dotazů škálovat na více inst
 
 ## <a name="pricing"></a>Ceny
 
-Celková cena závisí na několika faktorech, například na zvolené oblasti, úrovni, replikách dotazů a pozastavení/obnovení. Ke zjištění ceny obvyklé pro vaši oblast použijte kalkulačku [cen služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). Tento nástroj vypočítá cenu pro instanci jednoho serveru pro jednu oblast. Mějte na paměti, že repliky dotazů se účtují stejně jako server. 
+Celkové náklady závisí na několika faktorech. Například zvolená oblast, úroveň, repliky dotazů a pozastavit/pokračovat. Ke zjištění ceny obvyklé pro vaši oblast použijte kalkulačku [cen služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). Tento nástroj vypočítá cenu pro instanci jednoho serveru pro jednu oblast. Mějte na paměti, že repliky dotazů se účtují stejně jako server. 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Vytvořeno na základě SQL Server Analysis Services
 
 Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](analysis-services-compat-level.md) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Podporují se oddíly, perspektivy, zabezpečení na úrovni řádku, obousměrné relace a překlady \* . V Azure Analysis Services *se* nepodporují multidimenzionální modely a doplněk PowerPivot pro SharePoint.
 
-Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře služeb Azure Service Principal, bezobslužné operace aktualizace s využitím PowerShellu, možnosti, TMSL a REST nabízí flexibilitu při zajištění aktuálnosti dat modelu v aktuálním stavu. 
+Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. 
 
-Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Jsou podporovány extrémně velké datové sady v jednom SQL Server, SQL Server datového skladu, Azure SQL Database, zdrojích dat Azure synapse Analytics (SQL Data Warehouse), Oracle a Teradata. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
+Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře služby Azure Service Principal, bezobslužné operace aktualizace s využitím PowerShellu, možnosti, TMSL a REST nabízí flexibilitu při zajištění aktuálnosti dat modelu v aktuálním stavu. 
+
+Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Jsou podporovány extrémně velké datové sady v jednom SQL Server, SQL Server datového skladu, Azure SQL Database, datových zdrojích Azure synapse Analytics (dříve SQL Data Warehouse), Oracle a Teradata. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 
 \* Dostupnost funkcí závisí na úrovni.
 
@@ -163,7 +165,7 @@ Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Az
 
 Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není ochrana brány firewall pro nové servery povolena. Doporučuje se povolit ochranu brány firewall a pravidla se konfigurují jako součást skriptu zřizování serveru nebo na portálu hned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Ověřování uživatelů zařizuje služba [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Uživatelé používají při přihlašování identitu účtu organizace s přístupem k databázi založeným na roli. Identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server nachází. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
@@ -244,7 +246,7 @@ Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datovýc
 
 ### <a name="contribute"></a>Přispějte!
 
-Dokumentace ke službě Analysis Services, je stejně jako tento článek Open Source. Další informace o tom, jak můžete přispívat, najdete v [příručce pro přispěvatele docs](https://docs.microsoft.com/contribute/). 
+Analysis Services dokumentace, jako je tento článek, je open source. Další informace o tom, jak můžete přispívat, najdete v [příručce pro přispěvatele docs](https://docs.microsoft.com/contribute/). 
 
 Dokumentace ke službě Azure Analysis Services používá také [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) (Potíže GitHubu). Můžete poskytnout zpětnou vazbu týkající se produktu nebo dokumentace. Použijte část **Váš názor** v dolní části článku. V dokumentaci ke sdílenému Analysis Services nejsou povolené problémy GitHubu. 
 

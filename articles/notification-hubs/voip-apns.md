@@ -7,27 +7,27 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80146885"
 ---
 # <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>Použití služby APN VOIP prostřednictvím Notification Hubs (není oficiálně podporováno)
 
 V Azure Notification Hubs je možné používat oznámení APNS VOIP. pro tento scénář však není oficiální podpora k dispozici.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Pokud se přesto rozhodnete odesílat oznámení služby APN VOIP prostřednictvím Notification Hubs, mějte na paměti následující omezení:
 
-- Odeslání oznámení VOIP vyžaduje, `apns-topic` aby se záhlaví nastavilo na ID aplikačního kompletu `.voip` + přípona. Například pro ukázkovou aplikaci s ID `com.microsoft.nhubsample`sady by měla být `apns-topic` záhlaví nastavena na`com.microsoft.nhubsample.voip.`
+- Odeslání oznámení VOIP vyžaduje, aby se `apns-topic` záhlaví nastavilo na ID aplikačního kompletu + `.voip` přípona. Například pro ukázkovou aplikaci s ID sady `com.microsoft.nhubsample` `apns-topic` by měla být záhlaví nastavena na`com.microsoft.nhubsample.voip.`
 
-   Tato metoda dobře spolupracuje se službou Azure Notification Hubs, protože ID sady prostředků aplikace musí být nakonfigurované jako součást přihlašovacích údajů služby APN pro rozbočovač a hodnotu nelze změnit. Notification Hubs také neumožňuje přepsání hodnoty `apns-topic` hlavičky za běhu.
+   Tato metoda dobře spolupracuje se službou Azure Notification Hubs, protože ID sady prostředků aplikace musí být nakonfigurované jako součást přihlašovacích údajů služby APN pro rozbočovač a hodnotu nelze změnit. Notification Hubs také neumožňuje `apns-topic` přepsání hodnoty hlavičky za běhu.
 
-   Pokud chcete odesílat oznámení VOIP, musíte nakonfigurovat samostatné centrum oznámení s ID sady `.voip` prostředků aplikace.
+   Pokud chcete odesílat oznámení VOIP, musíte nakonfigurovat samostatné centrum oznámení s `.voip` ID sady prostředků aplikace.
 
-- Odeslání oznámení VOIP vyžaduje, `apns-push-type` aby se záhlaví nastavilo na hodnotu `voip`.
+- Odeslání oznámení VOIP vyžaduje, aby se `apns-push-type` záhlaví nastavilo na hodnotu `voip` .
 
    Aby zákazníci mohli přejít na iOS 13, Notification Hubs se pokusí odvodit správnou hodnotu `apns-push-type` hlavičky. Logika odvození je záměrně jednoduchá, a přitom je možné vyhnout se neúmyslným standardním oznámením. Tato metoda bohužel způsobuje problémy s oznámeními VOIP, protože Apple zpracovává oznámení VOIP jako zvláštní případ, který nedodržuje stejná pravidla jako standardní oznámení.
 

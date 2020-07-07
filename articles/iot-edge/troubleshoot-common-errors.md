@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82783744"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
@@ -75,7 +75,7 @@ Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti 
 
 **Možnost 1: nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
 
-Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Příklad:
+Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` Určení serveru DNS, který chcete použít. Příklad:
 
 ```json
 {
@@ -149,7 +149,7 @@ Tento problém můžete vyřešit dvěma způsoby:
 
 Pokud zařízení IoT Edge funguje jako zařízení brány, je nutné najít a zastavit proces, který používá port 443, 5671 nebo 8883. Chyba pro port 443 obvykle znamená, že druhý proces je webový server.
 
-Pokud nepotřebujete zařízení IoT Edge používat jako bránu, můžete odebrat vazby portů z možností vytvoření modulu edgeHub. Můžete změnit možnosti vytvoření v Azure Portal nebo přímo v souboru Deployment. JSON.
+Pokud nepotřebujete zařízení IoT Edge používat jako bránu, můžete odebrat vazby portů z možností vytvoření modulu edgeHub. Můžete změnit možnosti vytvoření v Azure Portal nebo přímo v deployment.jsv souboru.
 
 Na webu Azure Portal:
 
@@ -165,11 +165,11 @@ Na webu Azure Portal:
 
 6. Uložte změny a vytvořte nasazení.
 
-V souboru Deployment. JSON:
+V deployment.jssouboru:
 
-1. Otevřete soubor Deployment. JSON, který jste použili na zařízení IoT Edge.
+1. Otevřete deployment.jspro soubor, který jste použili pro IoT Edge zařízení.
 
-2. V části `edgeHub` požadované vlastnosti edgeAgent vyhledejte nastavení:
+2. `edgeHub`V části požadované vlastnosti edgeAgent vyhledejte nastavení:
 
    ```json
    "edgeHub": {
@@ -222,7 +222,7 @@ Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete ná
    ![Konfigurace názvu DNS virtuálního počítače](./media/troubleshoot/configure-dns.png)
 
 3. Zadejte hodnotu **jmenovky názvu DNS** a vyberte **Uložit**.
-4. Zkopírujte nový název DNS, který by měl být ve formátu ** \<DNSnamelabel\>.\< vmlocation\>. cloudapp.Azure.com**.
+4. Zkopírujte nový název DNS, který by měl být ve formátu ** \<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
 5. Ve virtuálním počítači pomocí následujícího příkazu nastavte modul runtime IoT Edge s vaším názvem DNS:
 
    * V systému Linux:
@@ -241,11 +241,11 @@ Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete ná
 
 **Pozorované chování:**
 
-Při použití `Get-WinEvent` ve Windows se zobrazí EventLogException.
+Při použití ve Windows se zobrazí EventLogException `Get-WinEvent` .
 
 **Hlavní příčina:**
 
-Příkaz `Get-WinEvent` prostředí PowerShell spoléhá na přítomnost položky registru, aby bylo možné najít protokoly podle konkrétního `ProviderName`.
+`Get-WinEvent`Příkaz prostředí PowerShell spoléhá na přítomnost položky registru, aby bylo možné najít protokoly podle konkrétního `ProviderName` .
 
 **Rozhodnutí**
 
@@ -276,7 +276,7 @@ Pro Centrum IoT Edge nastavte proměnnou prostředí **OptimizeForPerformance** 
 
 Na webu Azure Portal:
 
-V IoT Hub vyberte své zařízení IoT Edge a na stránce Podrobnosti o zařízení a vyberte **nastavit moduly** > **nastavení modulu runtime**. Vytvořte proměnnou prostředí pro modul IoT Edge hub s názvem *OptimizeForPerformance* , který je nastaven na *hodnotu false*.
+V IoT Hub vyberte své zařízení IoT Edge a na stránce Podrobnosti o zařízení a vyberte **nastavit moduly**  >  **nastavení modulu runtime**. Vytvořte proměnnou prostředí pro modul IoT Edge hub s názvem *OptimizeForPerformance* , který je nastaven na *hodnotu false*.
 
 ![OptimizeForPerformance nastaveno na hodnotu false](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -300,7 +300,7 @@ V manifestu nasazení:
 
 **Pozorované chování:**
 
-Vlastní modul IoT Edge nedokáže odeslat zprávu do centra IoT Edge s chybou 404 `Module not found` . Démon IoT Edge v protokolech vytiskne následující zprávu:
+Vlastní modul IoT Edge nedokáže odeslat zprávu do centra IoT Edge s `Module not found` chybou 404. Démon IoT Edge v protokolech vytiskne následující zprávu:
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -314,7 +314,7 @@ Démon IoT Edge vynutil identifikaci procesu pro všechny moduly, které se při
 
 Od verze 1.0.7 jsou všechny procesy modulů autorizované pro připojení. Další informace najdete v tématu protokol [změn verze 1.0.7](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
-Pokud upgrade na 1.0.7 není možný, proveďte následující kroky. Ujistěte se, že vlastní modul IoT Edge vždy používá stejné ID procesu k posílání zpráv do edgeHub. Například se ujistěte, že `ENTRYPOINT` místo `CMD` příkazu v souboru Docker. `CMD` Příkaz vede k jednomu ID procesu pro modul a jiné ID procesu pro příkaz bash, který spouští hlavní program, ale `ENTRYPOINT` vede k jednomu ID procesu.
+Pokud upgrade na 1.0.7 není možný, proveďte následující kroky. Ujistěte se, že vlastní modul IoT Edge vždy používá stejné ID procesu k posílání zpráv do edgeHub. Například se ujistěte, že `ENTRYPOINT` místo `CMD` příkazu v souboru Docker. `CMD`Příkaz vede k jednomu ID procesu pro modul a jiné ID procesu pro příkaz bash, který spouští hlavní program, ale `ENTRYPOINT` vede k jednomu ID procesu.
 
 ## <a name="iot-edge-module-deploys-successfully-then-disappears-from-device"></a>Nasazení modulu IoT Edge se úspěšně nasazuje ze zařízení.
 

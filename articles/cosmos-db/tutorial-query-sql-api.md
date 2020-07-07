@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: dotazování s SQL v Azure Cosmos DB?'
-description: 'Kurz: Naučte se dotazovat se na dotazy SQL v Azure Cosmos DB pomocí dotazů THW Playground'
+description: 'Kurz: Naučte se dotazovat se na dotazy SQL v Azure Cosmos DB pomocí dotazu Playground'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74870067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921117"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -56,6 +56,7 @@ Dotazy SQL v tomto článku využívají následující ukázkový dokument.
   "isRegistered": false
 }
 ```
+
 ## <a name="where-can-i-run-sql-queries"></a>Kde můžu spouštět dotazy SQL?
 
 Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prostřednictvím [rozhraní REST API a sad SDK](sql-api-sdk-dotnet.md) a dokonce i pomocí [Query Playground](https://www.documentdb.com/sql/demo), kde se spouští dotazy na existující sadu ukázkových dat.
@@ -65,17 +66,19 @@ Další informace o dotazech SQL najdete tady:
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Něco z toho nemáte? Dokončete [pětiminutový rychlý start](create-cosmosdb-resources-portal.md).
+V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Nemáte žádné z těchto prostředků? Dokončete [pětiminutový rychlý start](create-cosmosdb-resources-portal.md).
 
 ## <a name="example-query-1"></a>Příklad dotazu 1
 
-S použitím výše uvedeného dokumentu family (rodina) vrátí následující dotaz SQL dokumenty, jejichž pole ID odpovídá `WakefieldFamily`. Vzhledem k tomu, že se jedná o příkaz `SELECT *`, výstupem dotazu bude celý dokument JSON:
+Podle výše uvedeného dokumentu rodiny vzorků vrátí následující dotaz SQL dokumenty, ve kterých se pole ID shoduje `WakefieldFamily` . Vzhledem k tomu, že se jedná o příkaz `SELECT *`, výstupem dotazu bude celý dokument JSON:
 
 **Dotaz**
 
+```sql
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
+```
 
 **Výsledky**
 
@@ -110,23 +113,34 @@ S použitím výše uvedeného dokumentu family (rodina) vrátí následující 
 
 ## <a name="example-query-2"></a>Příklad dotazu 2
 
-Další dotaz vrátí křestní jména všech dětí v rodině, jejíž ID odpovídá `WakefieldFamily`, seřazená podle ročníku.
+Další dotaz vrátí všechny křestní názvy všech podřízených objektů v rodině, jejichž ID se shoduje se seřazením `WakefieldFamily` podle jejich třídy.
 
 **Dotaz**
 
+```sql
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
+```
 
 **Výsledky**
 
-[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
+```
+[
+    {
+        "givenName": "Jesse"
+    },
+    {
+        "givenName": "Lisa"
+    }
+]
+```
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provedli následující:
+V tomto kurzu jste provedli následující úlohy:
 
 > [!div class="checklist"]
 > * Zjistili jste, jak provádět dotazy pomocí jazyka SQL.  

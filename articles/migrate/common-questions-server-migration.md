@@ -4,10 +4,10 @@ description: Získejte odpovědi na běžné otázky týkající se použití mi
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744325"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
@@ -21,7 +21,7 @@ Tento článek obsahuje odpovědi na běžné dotazy k nástroji Azure Migrate: 
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Jaké geografické oblasti jsou podporovány pro migraci pomocí Azure Migrate?
 
-Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
+Projděte si podporované oblasti pro [veřejný cloud](migrate-support-matrix.md#supported-geographies-public-cloud) a [cloud pro státní správu](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Jak funguje replikace VMware bez agentů?
 
@@ -83,9 +83,9 @@ V současné době můžete migrovat 100 virtuálních počítačů na instanci 
 
 Můžete omezit pomocí NetQosPolicy. Příklad:
 
-AppNamePrefix, který se má použít v NetQosPolicy, je "GatewayWindowsService. exe". Můžete vytvořit zásadu na zařízení Azure Migrate, abyste omezili provoz replikace ze zařízení tím, že vytvoříte zásadu, jako je tato:
+AppNamePrefix pro použití v NetQosPolicy je "GatewayWindowsService.exe". Můžete vytvořit zásadu na zařízení Azure Migrate, abyste omezili provoz replikace ze zařízení tím, že vytvoříte zásadu, jako je tato:
  
-New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService. exe"-ThrottleRateActionBitsPerSecond 1 MB
+New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1 MB
 
 ## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Můžu migrovat virtuální počítače, které už jsou replikované do Azure? 
 

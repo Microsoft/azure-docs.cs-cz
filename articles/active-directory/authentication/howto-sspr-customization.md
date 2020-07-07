@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54a45602b80db965e3cc79d188dd40034a320b79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394251"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Přizpůsobení uživatelského prostředí pro Azure Active Directory Samoobslužné resetování hesla
@@ -56,8 +56,8 @@ Další informace o různých rolích správce a jejich přiřazení najdete v t
 
 Pokud vaše organizace nechce upozornit správce na žádosti o resetování hesla, můžete použít následující možnosti konfigurace:
 
-* Přizpůsobte odkaz na helpdesk, který poskytuje adresu URL webu nebo adresu mailto: adresy, které mohou uživatelé použít k získání pomoci. Tato**Customization** > možnost je v části **resetování** > hesla**vlastní e-mail helpdesku nebo adresa URL**.
-* Povolit Samoobslužné resetování hesla pro všechny uživatele. Tato možnost je v části > **vlastnosti** **resetování hesla**. Pokud nechcete, aby uživatelé obnovili vlastní hesla, můžete nastavit rozsah přístupu do prázdné skupiny. *Tuto možnost nedoporučujeme.*
+* Přizpůsobte odkaz na helpdesk, který poskytuje adresu URL webu nebo adresu mailto: adresy, které mohou uživatelé použít k získání pomoci. Tato možnost je v části **resetování hesla**  >  **Customization**  >  **vlastní e-mail helpdesku nebo adresa URL**.
+* Povolit Samoobslužné resetování hesla pro všechny uživatele. Tato možnost je v části vlastnosti **resetování hesla**  >  **Properties**. Pokud nechcete, aby uživatelé obnovili vlastní hesla, můžete nastavit rozsah přístupu do prázdné skupiny. *Tuto možnost nedoporučujeme.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>Přizpůsobení přihlašovací stránky a přístupového panelu
 
@@ -72,7 +72,7 @@ Obrázek, který zvolíte, se zobrazí v následujících situacích:
 
 ### <a name="directory-name"></a>Název adresáře
 
-Pokud chcete, aby vypadaly lépe uživatelsky přívětivé, můžete změnit název organizace na portálu a v automatizované komunikaci. Chcete-li změnit atribut názvu adresáře v Azure Portal, přejděte do části **Azure Active Directory** > **Properties (vlastnosti**). Tato srozumitelná možnost názvu organizace je nejčastěji viditelná v automatizovaných e-mailech, jako v následujících příkladech:
+Pokud chcete, aby vypadaly lépe uživatelsky přívětivé, můžete změnit název organizace na portálu a v automatizované komunikaci. Chcete-li změnit atribut názvu adresáře v Azure Portal, přejděte do části **Azure Active Directory**  >  **Properties (vlastnosti**). Tato srozumitelná možnost názvu organizace je nejčastěji viditelná v automatizovaných e-mailech, jako v následujících příkladech:
 
 * Popisný název v e-mailu, například*Microsoft jménem ukázky společnosti Contoso*
 * Řádek předmětu v e-mailu, například*kód pro ověření e-mailu s ukázkovým účtem contoso*
@@ -81,7 +81,7 @@ Pokud chcete, aby vypadaly lépe uživatelsky přívětivé, můžete změnit n�
 
 Pokud pro události přihlašování uživatelů používáte Active Directory Federation Services (AD FS) (AD FS), můžete na přihlašovací stránku přidat odkaz pomocí pokynů v článku [Přidání přihlašovací stránky](/windows-server/identity/ad-fs/operations/add-sign-in-page-description).
 
-Poskytněte uživatelům odkaz na stránku, aby mohli zadat pracovní postup SSPR, například *https://passwordreset.microsoftonline.com*. Pokud chcete přidat odkaz na přihlašovací stránku AD FS, použijte na serveru AD FS tento příkaz:
+Poskytněte uživatelům odkaz na stránku, aby mohli zadat pracovní postup SSPR, například *https://passwordreset.microsoftonline.com* . Pokud chcete přidat odkaz na přihlašovací stránku AD FS, použijte na serveru AD FS tento příkaz:
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwordreset.microsoftonline.com' target='_blank'>Can't access your account?</a></p>"

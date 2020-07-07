@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81390207"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
@@ -36,9 +36,9 @@ Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzl�
 
 Při adresování uzlů v clusteru použijte plně kvalifikované názvy domény (FQDN). Plně kvalifikované názvy domény pro různé typy uzlů v clusteru můžete získat pomocí [rozhraní Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-Tyto plně kvalifikované názvy domén budou ve formátu `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`.
+Tyto plně kvalifikované názvy domén budou ve formátu `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` .
 
-Bude HN pro *hn* hlavních, *dolů* pro pracovní uzly a Zn pro uzly Zookeeper. *zn* `<node-type-prefix>`
+`<node-type-prefix>`Bude *HN* pro hlavních, *dolů* pro pracovní uzly a *zn* pro uzly Zookeeper.
 
 Pokud potřebujete jenom název hostitele, použijte jenom první část plně kvalifikovaného názvu domény:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
@@ -71,16 +71,16 @@ V rámci virtuální sítě používané se službou HDInsight se automaticky vy
 
 Ke clusteru HDInsight máte přístup třemi způsoby:
 
-- Koncový bod HTTPS mimo virtuální síť v `CLUSTERNAME.azurehdinsight.net`.
-- Koncový bod SSH pro přímé připojení k hlavnímu uzlu na `CLUSTERNAME-ssh.azurehdinsight.net`.
-- Koncový bod HTTPS v rámci virtuální sítě `CLUSTERNAME-int.azurehdinsight.net`. Všimněte si,`-int`že v této adrese URL je "". Tento koncový bod se přeloží na soukromou IP adresu v této virtuální síti a není přístupný z veřejného Internetu.
+- Koncový bod HTTPS mimo virtuální síť v `CLUSTERNAME.azurehdinsight.net` .
+- Koncový bod SSH pro přímé připojení k hlavnímu uzlu na `CLUSTERNAME-ssh.azurehdinsight.net` .
+- Koncový bod HTTPS v rámci virtuální sítě `CLUSTERNAME-int.azurehdinsight.net` . Všimněte si, že `-int` v této adrese URL je "". Tento koncový bod se přeloží na soukromou IP adresu v této virtuální síti a není přístupný z veřejného Internetu.
 
 K těmto třem koncovým bodům se přiřadí nástroj pro vyrovnávání zatížení.
 
 Veřejné IP adresy se také poskytují ke dvěma koncovým bodům, které umožňují připojení mimo virtuální síť.
 
-1. K nástroji pro vyrovnávání zatížení pro plně kvalifikovaný název domény (FQDN), který se má použít při připojování ke clusteru z Internetu `CLUSTERNAME.azurehdinsight.net`, se přiřadí jedna veřejná IP adresa.
-1. Druhá veřejná IP adresa se používá pouze pro název `CLUSTERNAME-ssh.azurehdinsight.net`domény SSH.
+1. K nástroji pro vyrovnávání zatížení pro plně kvalifikovaný název domény (FQDN), který se má použít při připojování ke clusteru z Internetu, se přiřadí jedna veřejná IP adresa `CLUSTERNAME.azurehdinsight.net` .
+1. Druhá veřejná IP adresa se používá pouze pro název domény SSH `CLUSTERNAME-ssh.azurehdinsight.net` .
 
 ## <a name="next-steps"></a>Další kroky
 

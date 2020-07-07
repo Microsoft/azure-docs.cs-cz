@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80157975"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Přizpůsobení uživatelského rozhraní Azure IoT Central
@@ -49,7 +49,7 @@ Obrázek PNG, který není větší než 32 × 32 pixelů s průhledným pozadí
 
 ### <a name="browser-colors"></a>Barvy v prohlížeči
 
-Můžete změnit barvu záhlaví stránky a barvu použitou pro tlačítka zvýraznění a další světla. Použijte v formátu `##ff6347`šest znaků hexadecimální hodnoty barvy. Další informace o zápisu barev **hexadecimální hodnoty** naleznete v tématu [HTML Colors](https://www.w3schools.com/html/html_colors.asp).
+Můžete změnit barvu záhlaví stránky a barvu použitou pro tlačítka zvýraznění a další světla. Použijte v formátu šest znaků hexadecimální hodnoty barvy `##ff6347` . Další informace o zápisu barev **hexadecimální hodnoty** naleznete v tématu [HTML Colors](https://www.w3schools.com/html/html_colors.asp).
 
 > [!NOTE]
 > Kdykoli se můžete vrátit k výchozím možnostem na stránce **přizpůsobit svoji aplikaci** .

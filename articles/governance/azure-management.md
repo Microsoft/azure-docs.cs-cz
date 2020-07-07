@@ -1,16 +1,16 @@
 ---
 title: Přehled správy Azure – zásady správného řízení Azure
 description: Přehled oblastí správy pro aplikace a prostředky Azure s odkazy na obsah v nástrojích pro správu Azure.
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 00e42f05e07a6aba2fcada973d57c11e0ab98ca7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828143"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956335"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Přehled služeb správy v Azure
+# <a name="what-are-the-azure-management-areas"></a>Co jsou oblasti správy Azure?
 
 Zásady správného řízení v Azure jsou jedním aspektem správy Azure. Tento článek popisuje různé oblasti správy pro nasazení a údržbu vašich prostředků v Azure.
 
@@ -48,7 +48,14 @@ Spravujte zabezpečení svých prostředků a dat. Bezpečnostní program zahrnu
 
 Ochrana znamená, že vaše aplikace a data budou k dispozici, a to i s výpadky, které jsou mimo vaši kontrolu. Ochranu v Azure zajišťují dvě služby. [Azure Backup](../backup/backup-introduction-to-azure-backup.md) zajišťuje zálohování a obnovení vašich dat, a to v cloudu i v místním prostředí. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) zajišťuje kontinuitu podnikových aplikací a okamžité obnovení při havárii.
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 Migrace označuje přenos úloh, které jsou aktuálně spuštěné v místním prostředí, do cloudu Azure.
 [Azure Migrate](../migrate/migrate-overview.md) je služba, která vám pomůže vyhodnotit vhodnost migrace místních virtuálních počítačů do Azure. Azure Site Recovery migruje virtuální počítače [z místního](../site-recovery/migrate-tutorial-on-premises-azure.md) prostředí nebo [z Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Azure Database Migration](../dms/dms-overview.md) vám pomůže při migraci zdrojů databáze na datové platformy Azure.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o správě Azure najdete v těchto článcích:
+
+- Podívejte se na [Centrum zásad správného řízení Azure](./index.yml).
+- Viz zásady [správného řízení v rozhraní cloudu pro přijetí Azure](/azure/cloud-adoption-framework/govern/) .

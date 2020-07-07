@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407459"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Time Series Insights
@@ -54,7 +54,7 @@ Přidání nové skupiny příjemců do centra událostí:
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte existující Time Series Insights prostředí. V nabídce vlevo vyberte **všechny prostředky**a pak vyberte prostředí Time Series Insights.
 
@@ -62,7 +62,7 @@ Přidání nové skupiny příjemců do centra událostí:
 
    [![V části zdroje událostí vyberte tlačítko Přidat.](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
-1. Zadejte hodnotu pro **název zdroje události** , která je jedinečná pro toto Time Series Insights prostředí, například `Contoso-TSI-GA-Event-Hub-ES`.
+1. Zadejte hodnotu pro **název zdroje události** , která je jedinečná pro toto Time Series Insights prostředí, například `Contoso-TSI-GA-Event-Hub-ES` .
 
 1. V případě **zdroje**vyberte **centrum událostí**.
 

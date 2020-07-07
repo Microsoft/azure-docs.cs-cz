@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383890"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Dotazování dat z Azure Time Series Insightsho prostředí GA pomocí jazyka C #
@@ -23,7 +23,7 @@ ms.locfileid: "81383890"
 Tento příklad v jazyce C# ukazuje, jak použít [rozhraní API pro dotazy GA](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) k dotazování dat z Azure Time Series Insights GA prostředí.
 
 > [!TIP]
-> Podívejte se na ukázky kódů GA [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)C# na adrese.
+> Podívejte se na ukázky kódů GA C# na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Souhrn
 
@@ -64,9 +64,9 @@ Doporučuje se použít nejnovější verzi sady Visual Studio:
 Vzorový kód má dvě požadované závislosti:
 
 * Balíček [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
-* Balíček [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1.
+* [Newtonsoft.Jsbalíček on](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1.
 
-Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, že vyberete > možnost**řešení** sestavení sestavení. **Build**
+Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, **Build**že vyberete  >  možnost**řešení** sestavení sestavení.
 
 Případně přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
 

@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154725"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
@@ -71,7 +71,7 @@ V závislosti na tom, jak je váš klient sestavený, může použít jeden (neb
 |[Tok On-Behalf-Of](v1-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
 |[Přihlašovací údaje klienta](v1-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
 
-Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nejsou `groups` ani `wids` deklarace identity. 
+Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment` ).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nejsou `groups` ani `wids` deklarace identity. 
 
 Když teď máte přehled o základech, pokračujte ve čtení, abyste se seznámili s aplikačním modelem identity a rozhraním API, fungováním zřizování v Azure AD a odkazy na podrobné informace o běžných scénářích, které Azure AD podporuje.
 
@@ -132,7 +132,7 @@ Stručný popis každého typu deklarace identity vygenerovaného službou Azure
 | Vystaveno | Zaznamená čas, kdy byl token vystaven, což se často používá pro aktuálnost tokenu. |
 | Vystavitel | Identifikuje službu tokenů zabezpečení, která token vygenerovala, a také tenanta Azure AD. |
 | Příjmení | Poskytuje příjmení uživatele, jak je nastavené v Azure AD. |
-| Název | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. |
+| Name | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. |
 | ID objektu | Obsahuje neměnný a jedinečný identifikátor subjektu v Azure AD. |
 | Role | Obsahuje popisné názvy aplikačních rolí Azure AD, které byly uživateli uděleny. |
 | Rozsah | Určuje oprávnění udělená klientské aplikaci. |
@@ -140,7 +140,7 @@ Stručný popis každého typu deklarace identity vygenerovaného službou Azure
 | ID tenanta | Obsahuje neměnný a jedinečný identifikátor tenanta adresáře, který token vydal. |
 | Živostnost tokenu | Definuje časový interval, ve kterém je token platný. |
 | Hlavní název uživatele | Obsahuje hlavní název uživatele subjektu. |
-| Version | Obsahuje číslo verze tokenu. |
+| Verze | Obsahuje číslo verze tokenu. |
 
 ## <a name="next-steps"></a>Další kroky
 
