@@ -9,10 +9,10 @@ ms.date: 04/21/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176698"
 ---
 # <a name="azure-data-lake-storage-query-acceleration-preview"></a>Akcelerace dotazů Azure Data Lake Storage (Preview)

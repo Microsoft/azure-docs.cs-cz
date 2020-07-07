@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233121"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro přechod pomocí Azure DevOps Starter
@@ -30,7 +30,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím p
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
@@ -64,7 +64,7 @@ DevOps Starter vytvoří úložiště Git v Azure Repos nebo GitHubu. Pokud chce
 
 1. Pokud chcete zobrazit adresu URL pro klonování úložiště, vyberte **klonovat** v pravém horním rohu. Úložiště Git můžete klonovat v rámci svého oblíbeného integrovaného vývojového prostředí (IDE). V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
 
-1. Vlevo klikněte na soubor *views/index.html* a pak vyberte **Upravit**.
+1. Vlevo otevřete soubor *views/index.html* a pak vyberte **Upravit**.
 
 1. Proveďte změnu souboru. Například upravte nějaký text v rámci jedné z značek DIV.
 

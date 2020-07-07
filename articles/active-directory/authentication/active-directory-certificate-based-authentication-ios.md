@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144066"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory ověřování pomocí certifikátů v iOS
@@ -73,7 +73,7 @@ Další informace najdete v tématu [přizpůsobení AD FS přihlašovací strá
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Použití moderního ověřování s aplikacemi Office
 
-Některé aplikace Office s povoleným moderním `prompt=login` ověřováním odesílají do služby Azure AD v jejich žádosti. Ve výchozím nastavení Azure AD překládá `prompt=login` v žádosti na službu AD FS `wauth=usernamepassworduri` (požádá službu AD FS, aby provedou ověřování U `wfresh=0` /P), a (požádá službu ADFS, aby ignorovala stav jednotného přihlašování a provede nové ověřování). Pokud chcete pro tyto aplikace povolit ověřování na základě certifikátů, upravte výchozí chování služby Azure AD.
+Některé aplikace Office s povoleným moderním ověřováním odesílají `prompt=login` do služby Azure AD v jejich žádosti. Ve výchozím nastavení Azure AD překládá `prompt=login` v žádosti na službu AD FS `wauth=usernamepassworduri` (požádá službu AD FS, aby provedou ověřování U/P), a `wfresh=0` (POžádá službu ADFS, aby ignorovala stav jednotného přihlašování a provede nové ověřování). Pokud chcete pro tyto aplikace povolit ověřování na základě certifikátů, upravte výchozí chování služby Azure AD.
 
 Chcete-li aktualizovat výchozí chování, nastavte '*PromptLoginBehavior*' v nastavení federované domény na *disabled*. K provedení této úlohy můžete použít rutinu [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) , jak je znázorněno v následujícím příkladu:
 

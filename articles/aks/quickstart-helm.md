@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
 ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82169564"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím Helm
@@ -94,7 +94,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
-Tento rychlý Start používá ukázkovou [aplikaci Node. js z ukázkového úložiště Azure dev Spaces][example-nodejs]. Naklonujte aplikaci z GitHubu a přejděte `dev-spaces/samples/nodejs/getting-started/webfrontend` do adresáře.
+V tomto rychlém startu [se používá příklad Node.js aplikace z ukázkového úložiště Azure dev Spaces][example-nodejs]. Naklonujte aplikaci z GitHubu a přejděte do `dev-spaces/samples/nodejs/getting-started/webfrontend` adresáře.
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -187,7 +187,7 @@ Použijte `helm install` příkaz k instalaci aplikace pomocí grafu Helm.
 helm install webfrontend webfrontend/
 ```
 
-Vrácení veřejné IP adresy službou může trvat několik minut. Chcete-li monitorovat průběh, `kubectl get service` použijte příkaz s parametrem *Watch* :
+Vrácení veřejné IP adresy službou může trvat několik minut. Chcete-li monitorovat průběh, použijte `kubectl get service` příkaz s parametrem *Watch* :
 
 ```console
 $ kubectl get service --watch
@@ -198,7 +198,7 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Přejděte do nástroje pro vyrovnávání zatížení vaší aplikace v prohlížeči pomocí nástroje `<EXTERNAL-IP>` , aby se zobrazila ukázková aplikace.
+Přejděte do nástroje pro vyrovnávání zatížení vaší aplikace v prohlížeči pomocí nástroje, `<EXTERNAL-IP>` aby se zobrazila ukázková aplikace.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 

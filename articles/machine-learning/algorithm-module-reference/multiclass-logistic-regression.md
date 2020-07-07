@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2c62dd2591ca9ccfc4266862578279573598d0c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137769"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Modul logistické regrese pro více tříd
@@ -48,7 +48,7 @@ V rámci více tříd logistické regrese lze klasifikátor použít k předpov�
 
     Pravidelná metoda představuje způsob, jak zabránit přeložení pomocí postihu modelů s hodnotami extrémního součinitele. Pravidelnou práci můžete provést přidáním pokuty, která je spojená s hodnotami koeficientu, na chybu hypotézy. Přesný model s hodnotami extrémního koeficientu by byl potrestán více, ale méně přesný model s více konzervativními hodnotami by byl méně trestný.
 
-     Pravidelná L1 a L2 mají různé účinky a použití. L1 se dá použít na řídké modely, což je užitečné při práci s vysokými objemy dat. Na rozdíl od je pro data, která nejsou zhuštěná, vhodnější pravidelná navýšení L2.  Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, `x = L1` že `y = L2`Pokud `ax + by = c` a, definuje lineární rozpětí regulárních podmínek.
+     Pravidelná L1 a L2 mají různé účinky a použití. L1 se dá použít na řídké modely, což je užitečné při práci s vysokými objemy dat. Na rozdíl od je pro data, která nejsou zhuštěná, vhodnější pravidelná navýšení L2.  Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, že pokud `x = L1` a `y = L2` , `ax + by = c` definuje lineární rozpětí regulárních podmínek.
 
      Pro logistické regresní modely, jako je [elastická pravidelná](https://wikipedia.org/wiki/Elastic_net_regularization)flexibilita, byly navrženy různé lineární kombinace L1 a L2.
 

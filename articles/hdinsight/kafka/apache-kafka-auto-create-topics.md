@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: 88dc3e4d761f9b4df63dfa07a24298398f7b0187
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82231267"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytváření témat
@@ -29,7 +29,7 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
     ![Obrázek portálu s vybraným řídicím panelem clusteru](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    Po zobrazení výzvy proveďte ověření pomocí přihlašovacích údajů přihlášení (admin) pro cluster. Místo toho se můžete připojit k Amabri přímo z `https://CLUSTERNAME.azurehdinsight.net/` místa `CLUSTERNAME` , kde je název vašeho clusteru Kafka.
+    Po zobrazení výzvy proveďte ověření pomocí přihlašovacích údajů přihlášení (admin) pro cluster. Místo toho se můžete připojit k Amabri přímo z `https://CLUSTERNAME.azurehdinsight.net/` místa, kde `CLUSTERNAME` je název vašeho clusteru Kafka.
 
 1. V seznamu na levé straně stránky vyberte službu Kafka.
 
@@ -39,13 +39,13 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
     ![Karta konfigurace služby Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-1. Do pole Filtr zadejte hodnotu `auto.create`.
+1. Do pole Filtr zadejte hodnotu `auto.create` .
 
     ![Pole vyhledávacího filtru Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     Toto nastavení filtruje seznam vlastností a zobrazí `auto.create.topics.enable` nastavení.
 
-1. Změňte hodnotu `auto.create.topics.enable` na `true`a pak vyberte Save ( **Uložit**). Přidejte poznámku a pak znovu vyberte **Uložit** .
+1. Změňte hodnotu `auto.create.topics.enable` na `true` a pak vyberte **Save (Uložit**). Přidejte poznámku a pak znovu vyberte **Uložit** .
 
     ![Obrázek automatického vytváření. Create. témata. povolit položku](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
@@ -58,7 +58,7 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
-Při vytváření clusteru Kafka pomocí šablony Azure Resource Manager lze přímo nastavit `auto.create.topics.enable` přidáním do. `kafka-broker` Následující fragment kódu JSON ukazuje, jak tuto hodnotu nastavit na `true`:
+Při vytváření clusteru Kafka pomocí šablony Azure Resource Manager lze přímo nastavit `auto.create.topics.enable` přidáním do `kafka-broker` . Následující fragment kódu JSON ukazuje, jak tuto hodnotu nastavit na `true` :
 
 ```json
 "clusterDefinition": {

@@ -4,15 +4,15 @@ description: Tento článek vás provede nasazením aplikace Service Fabric, zm�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195880"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric upgrade aplikace pomocí PowerShellu
 > [!div class="op_single_selector"]
-> * [Prostředí](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
@@ -40,9 +40,9 @@ Nyní můžete použít [Service Fabric Explorer k zobrazení clusteru a aplikac
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: aktualizace ukázky vizuálních objektů
 Můžete si všimnout, že ve verzi, která byla nasazena v kroku 1, se neotáčí vizuální objekty. Pojďme tuto aplikaci upgradovat na jednu, kde se také otočí vizuální objekty.
 
-V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor StatefulVisualObjectActor.cs. V tomto souboru přejděte do metody `MoveObject`, odkomentujte `this.State.Move()`a odkomentujte. `this.State.Move(true)` Tato změna po upgradu služby tyto objekty otočí.
+V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor StatefulVisualObjectActor.cs. V tomto souboru přejděte do metody `MoveObject` , odkomentujte `this.State.Move()` a odkomentujte `this.State.Move(true)` . Tato změna po upgradu služby tyto objekty otočí.
 
-Musíme také aktualizovat soubor *ServiceManifest. XML* (pod PackageRoot) projektu **VisualObjects. ActorService**. Aktualizujte *CodePackage* a verzi služby na 2,0 a odpovídající řádky v souboru *ServiceManifest. XML* .
+Musíme také aktualizovat soubor *ServiceManifest.xml* (pod PackageRoot) projektu **VisualObjects. ActorService**. Aktualizujte *CodePackage* a verzi služby na 2,0 a odpovídající řádky v souboru *ServiceManifest.xml* .
 Po kliknutí pravým tlačítkem na řešení můžete použít možnost *upravit soubory manifestu* aplikace Visual Studio, aby se soubor manifestu změnil.
 
 Po provedení změn by měl manifest vypadat jako následující (zvýrazněné části obsahují změny):
@@ -53,7 +53,7 @@ Po provedení změn by měl manifest vypadat jako následující (zvýrazněné 
 <CodePackageName="Code" Version="2.0">
 ```
 
-Nyní se soubor *souboru ApplicationManifest. XML* (v rámci projektu **VisualObjects** pod řešením **VisualObjects** ) aktualizuje na verzi 2,0 projektu **VisualObjects. ActorService** . Kromě toho je verze aplikace aktualizována na 2.0.0.0 z 1.0.0.0. *Souboru ApplicationManifest. XML* by měl vypadat jako následující fragment kódu:
+Nyní je soubor *ApplicationManifest.xml* (v rámci projektu **VisualObjects** pod řešením **VisualObjects** ) aktualizován na verzi 2,0 projektu **VisualObjects. ActorService** . Kromě toho je verze aplikace aktualizována na 2.0.0.0 z 1.0.0.0. *ApplicationManifest.xml* by měl vypadat jako následující fragment kódu:
 
 ```xml
 <ApplicationManifestxmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -83,7 +83,7 @@ Nyní je aplikace sestavená a připravená k upgradu. Pokud otevřete okno Powe
 
 Balíček aplikace je uložený v následující relativní cestě, do které jste nekomprimovaný Service Fabric SDK – *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*. V adresáři, ve kterém je uložený balíček aplikace, byste měli najít složku "Package". Zkontrolujte časová razítka, abyste měli jistotu, že se jedná o nejnovější sestavení (možná budete muset vhodně upravit i cesty).
 
-Teď nakopírujete aktualizovaný balíček aplikace na Service Fabric úložiště bitových kopií (kde jsou balíčky aplikací uložené pomocí Service Fabric). Parametr *ApplicationPackagePathInImageStore* informuje Service Fabric, kde může najít balíček aplikace. Aktualizovali jsme aplikaci do "VisualObjects\_v2" pomocí následujícího příkazu (možná budete muset znovu upravit cesty).
+Teď nakopírujete aktualizovaný balíček aplikace na Service Fabric úložiště bitových kopií (kde jsou balíčky aplikací uložené pomocí Service Fabric). Parametr *ApplicationPackagePathInImageStore* informuje Service Fabric, kde může najít balíček aplikace. Aktualizovali jsme aplikaci do "VisualObjects \_ v2" pomocí následujícího příkazu (možná budete muset znovu upravit cesty).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
@@ -111,7 +111,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 ```
 
 
-Název aplikace je stejný, jako byl popsán v souboru *souboru ApplicationManifest. XML* . Service Fabric používá tento název k identifikaci aplikace, která se aktualizuje. Pokud nastavíte časový limit na příliš krátký, může se zobrazit zpráva o selhání s informací o problému. Přečtěte si část věnované řešení potíží nebo zvyšte časový limit.
+Název aplikace je stejný, jako byl popsán v souboru *ApplicationManifest.xml* . Service Fabric používá tento název k identifikaci aplikace, která se aktualizuje. Pokud nastavíte časový limit na příliš krátký, může se zobrazit zpráva o selhání s informací o problému. Přečtěte si část věnované řešení potíží nebo zvyšte časový limit.
 
 Teď, když upgrade aplikace pokračuje, můžete ho monitorovat pomocí Service Fabric Explorer nebo pomocí příkazu PowerShellu [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) : 
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: apimpm
 ms.openlocfilehash: c0cabab6f867df918c4ac86d035918c483e12da9
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203164"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Porovnání na základě funkcí API Management vrstev Azure
@@ -26,7 +26,7 @@ Každá API Management [cenová úroveň](https://aka.ms/apimpricing) nabízí s
 > [!IMPORTANT]
 > Všimněte si prosím, že úroveň pro vývojáře je určena pro případy neprodukčního použití a hodnocení. Nenabízí smlouvu SLA.
 
-| Funkce                                                                                      | Využití | Vývojář | Základní | Standard | Premium |
+| Funkce                                                                                      | Využití | Vývojář | Basic | Standard | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Integrace Azure AD<sup>1</sup>                                                             | Ne          | Ano       | Ne    | Ano      | Ano     |
 | Podpora Virtual Network (VNet)                                                               | Ne          | Ano       | Ne    | Ne       | Ano     |

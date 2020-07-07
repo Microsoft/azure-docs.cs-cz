@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232849"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
@@ -29,7 +29,7 @@ V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Am
 
 ## <a name="connectivity"></a>Připojení
 
-Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight `https://CLUSTERNAME.azurehdinsight.net`v umístění `CLUSTERNAME` , kde je název vašeho clusteru.
+Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight v `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
 > [!IMPORTANT]  
 > Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Po zobrazení výzvy k ověření použijte název účtu správce a heslo, které jste zadali při vytvoření clusteru. Pokud se vám nezobrazí výzva k zadání přihlašovacích údajů, zkontrolujte nastavení sítě a potvrďte, že mezi klientem a clustery Azure HDInsight nedochází k potížím s připojením.
@@ -61,7 +61,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="alerts"></a>Výstrahy
 
@@ -162,7 +162,7 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
     |Vypnout režim údržby|Vrátí hostitele do normálního upozorňování.|
     |Zastavit|Zastaví na hostiteli datanode nebo NodeManagers.|
     |Spustit|Spustí na hostiteli datanode nebo NodeManagers.|
-    |Restartování|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
+    |Restartovat|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
     |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
     |Reprovize|Přidá dříve vyřazeného hostitele do clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
 

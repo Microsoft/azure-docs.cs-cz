@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185689"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Použití Azure Application Gateway s virtuálními počítači VMware v prostředí privátního cloudu CloudSimple
@@ -71,7 +71,7 @@ Podrobné pokyny k tomuto postupu jsou k dispozici v tématu [Vytvoření aplika
 
 1. Vytvořte ve svém předplatném a skupině prostředků virtuální síť.
 2. Vytvořte podsíť (která se má použít jako vyhrazená podsíť) v rámci vaší virtuální sítě.
-3. Vytvořit standardní Application Gateway (volitelně povolit WAF): na domovské stránce Azure Portal klikněte na **prostředky** > **Networking** > **Application Gateway** sítě v levém horním rohu stránky. Vyberte standardní SKU a velikost a zadejte předplatné Azure, informace o skupině prostředků a umístění. V případě potřeby vytvořte novou veřejnou IP adresu pro tuto aplikační bránu a zadejte podrobnosti o virtuální síti a vyhrazené podsíti pro aplikační bránu.
+3. Vytvořit standardní Application Gateway (volitelně povolit WAF): na domovské stránce Azure Portal klikněte na **prostředky**  >  **Networking**  >  **Application Gateway** sítě v levém horním rohu stránky. Vyberte standardní SKU a velikost a zadejte předplatné Azure, informace o skupině prostředků a umístění. V případě potřeby vytvořte novou veřejnou IP adresu pro tuto aplikační bránu a zadejte podrobnosti o virtuální síti a vyhrazené podsíti pro aplikační bránu.
 4. Přidejte back-end fond s virtuálními počítači a přidejte ho do aplikační brány.
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. vytvoření a konfigurace fondu virtuálních počítačů webového serveru v privátním cloudu

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87350bae282d9d0dccef9cb2121000f7a0473762
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195481"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hivu prostřednictvím ovladače JDBC v HDInsightu
@@ -49,7 +49,7 @@ Název hostitele CLUSTERNAME.azurehdinsight.net v připojovacím řetězci je st
 
 **Port 443** můžete použít jenom pro připojení ke clusteru z některých míst mimo virtuální síť Azure. HDInsight je spravovaná služba, která znamená, že všechna připojení ke clusteru se spravují přes zabezpečenou bránu. K HiveServer 2 se nemůžete připojit přímo na portech 10001 nebo 10000. Tyto porty nejsou vystavené vně.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Při navazování připojení použijte k ověření název správce clusteru HDInsight a heslo. Z JDBC klientů, jako je SQuirreL SQL, zadejte do nastavení klienta jméno správce a heslo.
 
@@ -104,7 +104,7 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
     |---|---|
     |Název|Podregistr v HDInsight|
     |Ovladač|Pomocí rozevíracího seznamu vyberte ovladač **podregistru** .|
-    |zprostředkovatele identity|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.|
+    |URL|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.|
     |Uživatelské jméno|Název přihlašovacího účtu clusteru pro cluster HDInsight. Výchozí hodnota je **admin (správce**).|
     |Heslo|Heslo pro přihlašovací účet clusteru|
 
@@ -129,7 +129,7 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
 
 ## <a name="connect-from-an-example-java-application"></a>Připojení z ukázkové aplikace Java
 
-Příklad použití klienta Java k dotazování na podregistr v HDInsight je k dispozici [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)na adrese. Podle pokynů v úložišti Sestavte a spusťte ukázku.
+Příklad použití klienta Java k dotazování na podregistr v HDInsight je k dispozici na adrese [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) . Podle pokynů v úložišti Sestavte a spusťte ukázku.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -147,7 +147,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Řešení**: Pokud chcete tuto chybu opravit, použijte následující postup:
 
-1. Ukončete SQuirreL a potom v systému vyhledejte adresář, ve kterém je SQuirreL nainstalovaný, třeba `C:\Program Files\squirrel-sql-4.0.0\lib`. V adresáři SquirreL v `lib` adresáři v adresáři nahraďte existující Commons-Codec. jar jedním staženým z clusteru HDInsight.
+1. Ukončete SQuirreL a potom v systému vyhledejte adresář, ve kterém je SQuirreL nainstalovaný, třeba `C:\Program Files\squirrel-sql-4.0.0\lib` . V adresáři SquirreL v `lib` adresáři v adresáři nahraďte existující Commons-Codec. jar jedním staženým z clusteru HDInsight.
 
 1. Restartujte SQuirreL. Tato chyba by se už neměla vyskytnout při připojování k podregistru v HDInsight.
 

@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160149"
 ---
-# <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Výhody použití Azure NetApp Files pro automatizaci elektronického návrhu
+# <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Výhody použití Azure NetApp Files pro automatizaci elektronických návrhů
 
 Doba uvedení na trh (TTM) je zásadním aspektem pro odvětví návrhu polovodičů a čipu. Obory mají vysokou šířku pásma a nízkou latenci pro úložiště. Tento článek vysvětluje, jak Azure NetApp Files řešení zajišťuje splnění potřeb odvětví. Představuje scénáře testů, které používají standardní oborové srovnávací testy pro automatizaci elektronického návrhu (EDA) pomocí Azure NetApp Files. 
 

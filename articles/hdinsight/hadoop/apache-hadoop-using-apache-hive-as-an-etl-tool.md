@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: c289892246cfce3ffac3f668577073a2af92511f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509546"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hive jako nástroje pro extrakci, transformaci a načítání (ETL)
@@ -75,7 +75,7 @@ Můžete použít podregistr pro výstup dat do různých druhů cílů, včetn�
 * Aplikace nebo služby, které vyžadují zpracování dat do konkrétních formátů nebo jako soubory, které obsahují určité typy informačních struktur.
 * Úložiště dokumentů JSON, jako je Azure Cosmos DB.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Model ETL se obvykle používá, pokud chcete:
 

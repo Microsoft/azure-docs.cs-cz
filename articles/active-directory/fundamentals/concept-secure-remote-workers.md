@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204946"
 ---
-# <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Rychlá reakce na zabezpečené identity pomocí Azure AD
+# <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Rychlá reakce na zabezpečení identit pomocí Azure AD
 
 Může se zdát, že těžké se snaží zabezpečit vaše pracovní procesy v dnešním světě, zejména v případě, že potřebujete rychle reagovat a rychle zajistit přístup k mnoha službám. Tento článek je určený k poskytnutí stručného seznamu všech akcí, které je třeba provést, a pomůže vám identifikovat a stanovit prioritu pro nasazení funkcí služby Azure AD na základě typu licence, kterou vlastníte. Azure AD nabízí spoustu funkcí a poskytuje mnoho vrstev zabezpečení pro vaše identity, což znamená, že se v některých případech může přecházet. Mnoho organizací už je v cloudu nebo se rychle přesouvá do cloudu. Tento dokument je určený k tomu, aby bylo možné rychle nasazovat služby a zabezpečit své identity jako primární aspekt. 
 

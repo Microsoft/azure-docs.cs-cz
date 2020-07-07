@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205128"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurace metrik a protokolů cloudu pro Azure API Management bránu pro samoobslužné hostování
@@ -32,7 +32,7 @@ Funkci lze povolit nebo zakázat pomocí `telemetry.metrics.cloud` klíče v Con
 
 | Pole  | Výchozí | Popis |
 | ------------- | ------------- | ------------- |
-| telemetrie. metriky. Cloud  | `true` | Povolí protokolování prostřednictvím Azure Monitor. Hodnota může být `true`, `false`. |
+| telemetrie. metriky. Cloud  | `true` | Povolí protokolování prostřednictvím Azure Monitor. Hodnota může být `true` , `false` . |
 
 
 Tady je Ukázková konfigurace:
@@ -49,7 +49,7 @@ Tady je Ukázková konfigurace:
 
 Brána pro samoobslužné hostování aktuálně generuje následující metriky prostřednictvím Azure Monitor:
 
-| Metrika  | Popis |
+| Metric  | Popis |
 | ------------- | ------------- |
 | Žádosti  | Počet požadavků na rozhraní API v období |
 | Doba trvání žádostí o bránu | Počet milisekund od chvíle, kdy brána přijala požadavek, do chvíle odeslání úplné odpovědi. |

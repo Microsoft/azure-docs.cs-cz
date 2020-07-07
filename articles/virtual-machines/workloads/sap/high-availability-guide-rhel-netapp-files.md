@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82148224"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
@@ -102,30 +102,30 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP
 * Konfigurace front-endu
   * 192.168.14.9 IP adres
 * Port testu paměti
-  * Port 620<strong>&lt;Nr&gt;</strong>
+  * Port 620<strong> &lt; Nr &gt; </strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
-  * 32<strong>&lt;Nr&gt; </strong> TCP
-  * 36<strong>&lt;Nr&gt; </strong> TCP
-  * 39<strong>&lt;Nr&gt; </strong> TCP
-  * 81<strong>&lt;Nr&gt; </strong> TCP
-  * 5<strong>&lt;Nr&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr&gt;</strong>14 TCP
-  * 5.16 TCP<strong>&lt;&gt;</strong>
+  * 32<strong> &lt; Nr &gt; </strong> TCP
+  * 36<strong> &lt; Nr &gt; </strong> TCP
+  * 39<strong> &lt; Nr &gt; </strong> TCP
+  * 81<strong> &lt; Nr &gt; </strong> TCP
+  * 5<strong> &lt; Nr &gt; </strong>13 TCP
+  * 5<strong> &lt; Nr &gt; </strong>14 TCP
+  * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 ### <a name="ers"></a>OLAJÍCÍCH
 
 * Konfigurace front-endu
   * 192.168.14.10 IP adres
 * Port testu paměti
-  * Port 621<strong>&lt;Nr&gt;</strong>
+  * Port 621<strong> &lt; Nr &gt; </strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
-  * 32<strong>&lt;Nr&gt; </strong> TCP
-  * 33<strong>&lt;Nr&gt; </strong> TCP
-  * 5<strong>&lt;Nr&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr&gt;</strong>14 TCP
-  * 5.16 TCP<strong>&lt;&gt;</strong>
+  * 32<strong> &lt; Nr &gt; </strong> TCP
+  * 33<strong> &lt; Nr &gt; </strong> TCP
+  * 5<strong> &lt; Nr &gt; </strong>13 TCP
+  * 5<strong> &lt; Nr &gt; </strong>14 TCP
+  * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
@@ -263,7 +263,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
 1. Ověřte nastavení domény systému souborů NFS. Ujistěte se, že je doména nakonfigurovaná jako výchozí doména Azure NetApp Files, tj. **`defaultv4iddomain.com`** a mapování je nastavené na **nikdo**.  
 
     > [!IMPORTANT]
-    > Ujistěte se, že jste na virtuálním `/etc/idmapd.conf` počítači nastavili doménu systému souborů NFS, aby odpovídala **`defaultv4iddomain.com`** výchozí konfiguraci domény v Azure NetApp Files:. Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody`.  
+    > Ujistěte se, že jste na virtuálním počítači nastavili doménu systému souborů NFS, `/etc/idmapd.conf` aby odpovídala výchozí konfiguraci domény v Azure NetApp Files: **`defaultv4iddomain.com`** . Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -275,7 +275,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ověřte `nfs4_disable_idmapping`. Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
+4. **[A]** ověřte `nfs4_disable_idmapping` . Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -289,7 +289,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Další podrobnosti o tom, jak změnit `nfs4_disable_idmapping` parametr, https://access.redhat.com/solutions/1749883naleznete v tématu.
+   Další podrobnosti o tom, jak změnit `nfs4_disable_idmapping` parametr, naleznete v tématu https://access.redhat.com/solutions/1749883 .
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -891,7 +891,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 ## <a name="install-database"></a>Instalace databáze
 
-V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instalaci můžete použít každou podporovanou databázi. Další informace o tom, jak nainstalovat SAP HANA v Azure, najdete v tématu [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] .
 
 1. Spusťte instalaci instance databáze SAP.
 
@@ -925,7 +925,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
 
    Aktualizujte SAP HANA zabezpečené úložiště tak, aby odkazovalo na virtuální název nastavení replikace SAP HANA systému.
 
-   Spuštěním následujícího příkazu vypíšete položky jako \<sapsid>ADM.
+   Spusťte následující příkaz, který vypíše položky jako \<sapsid> ADM.
 
    ```
    hdbuserstore List
@@ -1089,7 +1089,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Pokud server pouze jednou zadáte, bude restartován nástrojem `sapstart`. Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
+   Pokud server pouze jednou zadáte, bude restartován nástrojem `sapstart` . Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00

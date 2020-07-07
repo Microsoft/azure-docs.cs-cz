@@ -4,10 +4,10 @@ description: Naučte se vytvářet a nasazovat Service Fabric aplikace pomocí C
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193645"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Vytvoření první aplikace Azure Service Fabric

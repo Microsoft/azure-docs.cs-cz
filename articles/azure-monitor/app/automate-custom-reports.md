@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82161441"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastních sestav pomocí Azure Application Insights dat
@@ -91,11 +91,11 @@ availabilityResults
 
    ![Snímek obrazovky s nastavením funkce](./media/automate-custom-reports/scheduled-digest.png)
 
-6. Vyberte **Function App** > **konfiguraci****funkcí** > platformy.
+6. Vyberte **Function App**  >  **konfiguraci funkcí platformy**  >  **Configuration**.
 
     ![Snímek obrazovky nastavení aplikace Azure Functions](./media/automate-custom-reports/config.png)
 
-7. Vytvořte tři nová nastavení aplikace s odpovídajícími ``AI_APP_ID``odpovídajícími ``AI_APP_KEY``hodnotami, ``SendGridAPI``a. Vyberte **Uložit**.
+7. Vytvořte tři nová nastavení aplikace s odpovídajícími odpovídajícími hodnotami ``AI_APP_ID`` , ``AI_APP_KEY`` a ``SendGridAPI`` . Vyberte **Uložit**.
 
      ![Snímek rozhraní pro integraci funkce](./media/automate-custom-reports/app-settings.png)
     
@@ -136,7 +136,7 @@ Tyto kroky platí pouze v případě, že ještě nemáte nakonfigurovaný úče
 
      ![Snímek obrazovky s nastavením klíče rozhraní API](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. Tím se spustí web SendGrid. Vyberte **Nastavení** > **klíče rozhraní API**.
+3. Tím se spustí web SendGrid. Vyberte **Nastavení**  >  **klíče rozhraní API**.
 
      ![Snímek obrazovky pro vytvoření a zobrazení aplikace klíč rozhraní API](./media/automate-custom-reports/function-app-15.png)
 

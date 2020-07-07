@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205115"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Nasazení do Azure Kubernetes Service

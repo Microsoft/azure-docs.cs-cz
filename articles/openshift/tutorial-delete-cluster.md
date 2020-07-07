@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
 ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232134"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Kurz: odstranění clusteru Azure Red Hat OpenShift 4
@@ -21,7 +21,7 @@ V tomto kurzu, který je třetí částí než tři, se odstraní cluster Azure 
 > * Odstranění clusteru Azure Red Hat OpenShift
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech se vytvořil cluster Azure Red Hat OpenShift a připojil se k používání webové konzole OpenShift. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – Vytvoření clusteru Azure Red Hat OpenShift 4.](tutorial-create-cluster.md)
 
@@ -35,7 +35,7 @@ Pokud používáte Azure CLI místně, spusťte příkaz `az login` pro přihlá
 az login
 ```
 
-Pokud máte přístup k několika předplatným, `az account set -s {subscription ID}` spusťte `{subscription ID}` nahrazení pomocí předplatného, které chcete použít.
+Pokud máte přístup k několika předplatným, spusťte `az account set -s {subscription ID}` nahrazení `{subscription ID}` pomocí předplatného, které chcete použít.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
@@ -52,7 +52,7 @@ Pomocí těchto hodnot odstraňte cluster:
 az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
 ```
 
-Pak se zobrazí výzva k potvrzení, jestli chcete cluster odstranit. Po potvrzení v nástroji `y`bude trvat několik minut, než se cluster odstraní. Po dokončení příkazu se odstraní celá skupina prostředků a všechny prostředky uvnitř ní, včetně clusteru –.
+Pak se zobrazí výzva k potvrzení, jestli chcete cluster odstranit. Po potvrzení v nástroji `y` bude trvat několik minut, než se cluster odstraní. Po dokončení příkazu se odstraní celá skupina prostředků a všechny prostředky uvnitř ní, včetně clusteru –.
 
 ## <a name="next-steps"></a>Další kroky
 

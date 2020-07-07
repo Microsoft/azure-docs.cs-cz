@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176616"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
@@ -27,7 +27,7 @@ Microsoft doporučuje použít Azure Key Vault ke správě přístupových klí�
 
 Přístupové klíče k účtu můžete zobrazit a zkopírovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Azure Portal taky poskytuje připojovací řetězec pro váš účet úložiště, který můžete kopírovat.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo připojovacího řetězce z Azure Portal:
 
@@ -42,7 +42,7 @@ Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo p�
 
 Pokud chcete načíst přístupové klíče k účtu pomocí PowerShellu, zavolejte příkaz [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) .
 
-Následující příklad načte první klíč. Chcete-li načíst druhý klíč, `Value[1]` použijte místo `Value[0]`. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
+Následující příklad načte první klíč. Chcete-li načíst druhý klíč, použijte `Value[1]` místo `Value[0]` . Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```powershell
 $storageAccountKey = `
@@ -83,7 +83,7 @@ Přiřadí se dva přístupové klíče, abyste mohli klíče otáčet. Máte-li
 > [!WARNING]
 > Opětovné generování přístupových klíčů může mít vliv na jakékoli aplikace nebo služby Azure, které jsou závislé na klíči účtu úložiště. Všichni klienti, kteří používají klíč účtu pro přístup k účtu úložiště, se musí aktualizovat tak, aby používali nový klíč, včetně Media Services, cloudu, desktopových a mobilních aplikací a aplikací grafického uživatelského rozhraní pro Azure Storage, jako je například [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 K otočení přístupových klíčů účtu úložiště v Azure Portal:
 
@@ -108,7 +108,7 @@ Postup při otáčení přístupových klíčů k účtu úložiště pomocí Po
     ```
 
 1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
-1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč `key2` , použijte jako název klíče místo `key1`.
+1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč, použijte `key2` jako název klíče místo `key1` .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -125,7 +125,7 @@ K otočení přístupových klíčů účtu úložiště pomocí Azure CLI:
     ```
 
 1. Aktualizujte připojovací řetězce v kódu tak, aby odkazovaly na nový primární přístupový klíč.
-1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč `key2` , použijte jako název klíče místo `key1`.
+1. Stejným způsobem pak opětovně vygenerujte sekundární přístupový klíč. Chcete-li znovu vygenerovat sekundární klíč, použijte `key2` jako název klíče místo `key1` .
 
 ---
 
@@ -137,4 +137,4 @@ Pro otočení přístupových klíčů účtu musí uživatel být buď správce
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled účtu Azure Storage](storage-account-overview.md)
-- [vytvořit účet úložiště](storage-account-create.md)
+- [Vytvoření účtu úložiště](storage-account-create.md)

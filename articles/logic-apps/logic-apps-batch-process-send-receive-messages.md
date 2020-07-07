@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144340"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
@@ -85,7 +85,7 @@ Než budete moci odeslat zprávy do dávky, tato dávková operace musí nejprve
    2. Při filtrování do pole hledání zadejte „odeslat e-mail“.
    Na základě poskytovatele e-mailu vyberte e-mailový konektor.
 
-      Pokud máte například osobní účet, například @outlook.com nebo @hotmail.com, vyberte konektor Outlook.com. V tomto příkladu se používá konektor Office 365 Outlook.
+      Pokud máte například osobní účet, například @outlook.com nebo @hotmail.com , vyberte konektor Outlook.com. V tomto příkladu se používá konektor Office 365 Outlook.
 
    3. Vyberte tuto akci: **Odeslat *poskytovatele* > e-mailu <e** -mailu
 
@@ -180,7 +180,7 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
 
    2. Po zobrazení seznamu dynamický obsah vyberte možnost **výraz**. 
 
-   3. Zadejte výraz `utcnow()`a klikněte na **tlačítko OK**. 
+   3. Zadejte výraz `utcnow()` a klikněte na **tlačítko OK**. 
 
       ![V části obsah zprávy vyberte možnost výraz, zadejte "UtcNow ()" a klikněte na tlačítko OK.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -198,7 +198,7 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
 
    2. V seznamu dynamického obsahu vyberte **Výraz**.
    
-   3. Zadejte výraz `rand(1,6)`a klikněte na **tlačítko OK**.
+   3. Zadejte výraz `rand(1,6)` a klikněte na **tlačítko OK**.
 
       ![Nastavení oddílu pro cílovou dávku](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

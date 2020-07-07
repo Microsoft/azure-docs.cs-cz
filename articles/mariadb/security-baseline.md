@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186165"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MariaDB
@@ -50,7 +50,7 @@ Jak nakonfigurovat Azure Database for MariaDB pravidla brány firewall:https://d
 
 Postup konfigurace privátního odkazu pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -86,7 +86,7 @@ Jak nakonfigurovat DDoS Protection:https://docs.microsoft.com/azure/virtual-netw
 
 **Pokyny**: když je server Azure Database for MariaDB zabezpečený k privátnímu koncovému bodu, můžete virtuální počítače nasadit ve stejné virtuální síti. Pak můžete nakonfigurovat skupinu zabezpečení sítě (NSG), aby se snížilo riziko exfiltrace dat. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+Jak povolit protokoly toku NSG: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Jak povolit a použít Analýza provozu:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -118,7 +118,7 @@ Jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro Azure D
 **Doprovodné**materiály: u prostředků, které potřebují přístup k instancím Azure Database for MariaDB, použijte značky služby virtuální sítě a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. SQL. WestUs) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro odpovídající službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 Poznámka: Azure Database for MariaDB používá značku služby Microsoft. SQL.
 
-Další informace o použití značek služeb: https://docs.microsoft.com/azure/virtual-network/service-tags-overview principy použití značek služby pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+Další informace o použití značek služeb: https://docs.microsoft.com/azure/virtual-network/service-tags-overview Principy použití značek služby pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -190,7 +190,7 @@ Jak zobrazit a načíst události protokolu aktivit Azure: https://docs.microsof
 **Pokyny**: povolení nastavení diagnostiky a protokolů serveru a příjem protokolů pro agregaci dat zabezpečení generovaných vašimi Azure Database for MariaDB instancemi. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé nebo archivní úložiště. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 Konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Jak nakonfigurovat protokoly auditu pro Azure Database for MariaDB a přistupovat k nim https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal : jak připojit k Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Jak nakonfigurovat protokoly auditu pro Azure Database for MariaDB a přistupovat k nim: jak připojit k https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 
@@ -202,7 +202,7 @@ Jak nakonfigurovat protokoly auditu pro Azure Database for MariaDB a přistupova
 
 **Pokyny**: povolení nastavení diagnostiky na vašich instancích Azure Database for MariaDB pro přístup k protokolům auditu, zabezpečení a diagnostiky. Ujistěte se, že jste konkrétně povolili protokol auditu MariaDB. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. Můžete také povolit nastavení diagnostiky protokolů aktivit Azure a odesílat protokoly do stejného Log Analytics pracovního prostoru nebo účtu úložiště.
 
-Postup konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB https://docs.microsoft.com/azure/mariadb/concepts-server-logs : jak nakonfigurovat a přistupovat k protokolům auditu pro https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure Database for MariaDB: jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Postup konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/concepts-server-logs jak nakonfigurovat a přistupovat k protokolům auditu pro Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal jak nakonfigurovat nastavení diagnostiky pro protokol aktivit Azure:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 
 
@@ -896,7 +896,7 @@ Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.m
 
 V případě Azure Virtual Machines nebo webových aplikací běžících na Azure App Service se používá pro přístup k serveru Azure Database for MariaDB použijte Identita spravované služby ve spojení s Azure Key Vault ukládat a načítat přihlašovací údaje pro Azure Database for MariaDB Server.  Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 
-Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu. Postup konfigurace spravovaných identit: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Jak integrovat se spravovanými identitami https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identityAzure:.
+Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou v Azure Active Directory (AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu. Postup konfigurace spravovaných identit: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm . Jak integrovat se spravovanými identitami Azure: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity .
 
 
 

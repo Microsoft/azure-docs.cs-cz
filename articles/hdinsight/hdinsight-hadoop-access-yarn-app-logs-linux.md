@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192497"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight se systémem Linux
@@ -48,17 +48,17 @@ Funkce agregace protokolu usnadňuje přístup k protokolům aplikací. Agreguje
 /app-logs/<user>/logs/<applicationId>
 ```
 
-V cestě `user` je název uživatele, který aplikaci spustil. `applicationId` Je jedinečný identifikátor přiřazený k aplikaci pomocí příze RM.
+V cestě `user` je název uživatele, který aplikaci spustil. `applicationId`Je jedinečný identifikátor přiřazený k aplikaci pomocí příze RM.
 
-Agregované protokoly nejsou přímo čitelné, protože jsou napsány v TFile binárním formátu indexovaném kontejnerem. Pomocí nástrojů pro `ResourceManager` ZÁPISy příze nebo rozhraní příkazového řádku můžete tyto protokoly zobrazit jako prostý text pro aplikace nebo kontejnery, které vás zajímají.
+Agregované protokoly nejsou přímo čitelné, protože jsou napsány v TFile binárním formátu indexovaném kontejnerem. Pomocí `ResourceManager` nástrojů pro zápisy příze nebo rozhraní příkazového řádku můžete tyto protokoly zobrazit jako prostý text pro aplikace nebo kontejnery, které vás zajímají.
 
 ## <a name="yarn-logs-in-an-esp-cluster"></a>Záznamy příze v clusteru ESP
 
-Do vlastní `mapred-site` v Ambari musí být přidány dvě konfigurace.
+Do vlastní v Ambari musí být přidány dvě konfigurace `mapred-site` .
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. V uživatelském rozhraní Ambari přejděte do **MapReduce2** > **config** > **Advanced** > **Custom mapred-site**.
+1. V uživatelském rozhraní Ambari přejděte do **MapReduce2**  >  **config**  >  **Advanced**  >  **Custom mapred-site**.
 
 1. Přidejte *jednu* z následujících sad vlastností:
 
@@ -113,7 +113,7 @@ Do vlastní `mapred-site` v Ambari musí být přidány dvě konfigurace.
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
     ```
 
-    Zadejte> &lt;ApplicationId, &lt;User-Started-the-application>, &lt;containerId> a &lt;Work-Node-Address> informace při spuštění těchto příkazů.
+    Zadejte &lt;> ApplicationId, &lt; User-Started-the-Application>, &lt; containerId> a &lt; Work-Node-Address> informace při spuštění těchto příkazů.
 
 ### <a name="other-sample-commands"></a>Další ukázkové příkazy
 
@@ -147,17 +147,17 @@ Do vlastní `mapred-site` v Ambari musí být přidány dvě konfigurace.
     yarn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-## <a name="yarn-resourcemanager-ui"></a>rozhraní `ResourceManager` příze
+## <a name="yarn-resourcemanager-ui"></a>rozhraní PŘÍZe `ResourceManager`
 
-Uživatelské rozhraní `ResourceManager` příze běží na clusteru hlavnímu uzlu. Je k ní přistupované prostřednictvím webového uživatelského rozhraní Ambari. K zobrazení protokolů PŘÍZe použijte následující postup:
+`ResourceManager`Uživatelské rozhraní příze běží na clusteru hlavnímu uzlu. Je k ní přistupované prostřednictvím webového uživatelského rozhraní Ambari. K zobrazení protokolů PŘÍZe použijte následující postup:
 
-1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte CLUSTERNAME názvem clusteru HDInsight.
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net` . Nahraďte CLUSTERNAME názvem clusteru HDInsight.
 
 2. V seznamu služeb vlevo vyberte možnost **příze**.
 
     ![Je vybraná služba Apache Ambari nitě](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. V rozevíracím seznamu **Rychlé odkazy** vyberte jeden z hlavních uzlů clusteru a pak vyberte **`ResourceManager Log`**.
+3. V rozevíracím seznamu **Rychlé odkazy** vyberte jeden z hlavních uzlů clusteru a pak vyberte **`ResourceManager Log`** .
 
     ![Rychlé odkazy na Ambari nitě Apache](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 

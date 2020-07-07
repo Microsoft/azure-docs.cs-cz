@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188153"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
@@ -38,7 +38,7 @@ Apache Spark má tři umístění konfigurace systému:
 
 * Vlastnosti Sparku řídí většinu parametrů aplikace a lze je nastavit pomocí `SparkConf` objektu nebo pomocí vlastností systému Java.
 * Proměnné prostředí lze použít k nastavení nastavení pro jednotlivé počítače, jako je například IP adresa, prostřednictvím `conf/spark-env.sh` skriptu na každém uzlu.
-* Protokolování lze nakonfigurovat prostřednictvím `log4j.properties`.
+* Protokolování lze nakonfigurovat prostřednictvím `log4j.properties` .
 
 Když vyberete konkrétní verzi Sparku, cluster obsahuje výchozí nastavení konfigurace.  Výchozí hodnoty konfigurace Sparku můžete změnit pomocí vlastního konfiguračního souboru Spark.  Příklad najdete níže.
 
@@ -60,7 +60,7 @@ Než začnete s optimalizací výkonu v clusteru, ověřte aktuální nastavení
 
 Zobrazí se webové uživatelské rozhraní Apache Ambari s řídicím panelem klíčových metrik využití prostředků clusteru.  Na řídicím panelu Ambari se zobrazí konfigurace Apache Spark a další instalované služby. Řídicí panel obsahuje kartu **Historie konfigurace** , kde můžete zobrazit informace o nainstalovaných službách, včetně Sparku.
 
-Pokud chcete zobrazit konfigurační hodnoty pro Apache Spark, vyberte **Historie konfigurace**a pak vyberte **Spark2**.  Vyberte kartu **Konfigurace** a potom v seznamu služba vyberte `Spark` odkaz ( `Spark2`nebo v závislosti na vaší verzi).  Zobrazí se seznam hodnot konfigurace pro váš cluster:
+Pokud chcete zobrazit konfigurační hodnoty pro Apache Spark, vyberte **Historie konfigurace**a pak vyberte **Spark2**.  Vyberte kartu **Konfigurace** a potom `Spark` `Spark2` v seznamu služba vyberte odkaz (nebo v závislosti na vaší verzi).  Zobrazí se seznam hodnot konfigurace pro váš cluster:
 
 ![Konfigurace Sparku](./media/apache-spark-settings/spark-configurations.png)
 
@@ -85,7 +85,7 @@ Následující diagram znázorňuje klíčové objekty Spark: program ovladače 
 
 Úlohy Sparku používají pracovní prostředky, zejména paměť, takže je běžné upravovat hodnoty konfigurace Sparku pro vykonavatele pracovních uzlů.
 
-Tři klíčové parametry, které se často upravují pro optimalizaci konfigurací Sparku pro zlepšení požadavků `spark.executor.instances`aplikací `spark.executor.cores`, jsou `spark.executor.memory`, a. Vykonavatel je proces, který se spustil pro aplikaci Spark. Prováděcí modul běží na pracovním uzlu a zodpovídá za úkoly aplikace. Počet uzlů pracovního procesu a velikost pracovního uzlu určuje počet prováděcích modulů a velikost prováděcích procesů. Tyto hodnoty jsou uloženy v `spark-defaults.conf` uzlech hlavní uzly clusteru.  Tyto hodnoty můžete v běžícím clusteru upravit výběrem možnosti **vlastní Spark-výchozí** ve webovém uživatelském rozhraní Ambari.  Po provedení změn vás uživatelské rozhraní vyzve k **restartování** všech ovlivněných služeb.
+Tři klíčové parametry, které se často upravují pro optimalizaci konfigurací Sparku pro zlepšení požadavků aplikací, jsou, `spark.executor.instances` `spark.executor.cores` a `spark.executor.memory` . Vykonavatel je proces, který se spustil pro aplikaci Spark. Prováděcí modul běží na pracovním uzlu a zodpovídá za úkoly aplikace. Počet uzlů pracovního procesu a velikost pracovního uzlu určuje počet prováděcích modulů a velikost prováděcích procesů. Tyto hodnoty jsou uloženy v `spark-defaults.conf` uzlech hlavní uzly clusteru.  Tyto hodnoty můžete v běžícím clusteru upravit výběrem možnosti **vlastní Spark-výchozí** ve webovém uživatelském rozhraní Ambari.  Po provedení změn vás uživatelské rozhraní vyzve k **restartování** všech ovlivněných služeb.
 
 > [!NOTE]  
 > Tyto tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všechny aplikace, které jsou spuštěny v clusteru) a také jsou určeny pro každou jednotlivou aplikaci.
@@ -112,7 +112,7 @@ V následujícím seznamu jsou uvedeny klíčové parametry paměti pro vykonava
 
 |Parametr |Popis|
 |---|---|
-|Spark. exekutor. Memory|Definuje celkovou velikost paměti, která je k dispozici pro prováděcí modul.|
+|spark.executor. Memory|Definuje celkovou velikost paměti, která je k dispozici pro prováděcí modul.|
 |Spark. Storage. memoryFraction|(výchozí ~ 60%) definuje velikost paměti, která je k dispozici pro uložení trvalých RDD.|
 |Spark. renáhodný. memoryFraction|(výchozí ~ 20%) definuje množství paměti rezervované pro přemístění.|
 |Spark. Storage. unrollFraction a Spark. Storage. safetyFraction|(celková hodnota ~ 30% z celkové paměti) – tyto hodnoty se používají interně Spark a neměly by se měnit.|
@@ -136,7 +136,7 @@ Clustery Spark v HDInsight ve výchozím nastavení zahrnují několik součást
 Pro aplikace spuštěné v poznámkovém bloku Jupyter použijte `%%configure` příkaz, který provede změny konfigurace v rámci samotného poznámkového bloku. Tyto změny konfigurace budou aplikovány na úlohy Spark spouštěné z vaší instance poznámkového bloku. Udělejte tyto změny na začátku aplikace před spuštěním první buňky kódu. Změněná konfigurace se použije pro relaci Livy při jejím vytvoření.
 
 > [!NOTE]  
-> Chcete-li změnit konfiguraci v pozdější fázi aplikace, použijte parametr `-f` (Force). Veškerý průběh aplikace však bude ztracen.
+> Chcete-li změnit konfiguraci v pozdější fázi aplikace, použijte `-f` parametr (Force). Veškerý průběh aplikace však bude ztracen.
 
 Následující kód ukazuje, jak změnit konfiguraci aplikace běžící v Jupyter poznámkovém bloku.
 

@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193118"
 ---
 # <a name="security-control-network-security"></a>Řízení zabezpečení: zabezpečení sítě
@@ -90,7 +90,7 @@ Pomocí Azure Security Center adaptivního posílení zabezpečení sítě dopor
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1,5 | 12,5 | Zákazník |
+| 1.5 | 12,5 | Zákazník |
 
 Povolte zachytávání paketů Network Watcher pro zkoumání aktivit neobvyklé.
 
@@ -130,7 +130,7 @@ Nasaďte Azure Application Gateway pro webové aplikace s povoleným protokolem 
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1.8 | 1,5 | Zákazník |
+| 1.8 | 1.5 | Zákazník |
 
 Pomocí značek Virtual Network služby můžete definovat řízení přístupu k síti pro skupiny zabezpečení sítě nebo Azure Firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 

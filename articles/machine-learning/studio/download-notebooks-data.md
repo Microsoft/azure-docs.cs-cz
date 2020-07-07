@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
 ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208461"
 ---
 # <a name="download-notebookspreview-data"></a>Stáhnout data poznámkových bloků (Preview)
@@ -25,9 +25,9 @@ Tento článek poskytuje podrobné pokyny ke stažení dat poznámkových bloků
     ![Přejděte na kartu poznámkové bloky!](./media/download-notebooks/notebooks-list.png)
 
 1. Vyberte Poznámkový blok, který chcete stáhnout. Otevře se v Jupyter.
-    ![Vyberte Poznámkový blok](./media/download-notebooks/select-notebook.png) , ve kterém stahování více poznámkových bloků najednou není podporované.
+    ![Vyberte Poznámkový blok ](./media/download-notebooks/select-notebook.png) , ve kterém stahování více poznámkových bloků najednou není podporované.
 
-1. Přejít na **soubory** -> **Stáhnout jako**a vyberte možnost formát.
+1. Přejít na **soubory**  ->  **Stáhnout jako**a vyberte možnost formát.
     ![Možnosti stažení poznámkového bloku](./media/download-notebooks/download-options.PNG)
 
 1. Po výběru možnosti se soubor poznámkového bloku začne stahovat. Ignorujte všechny chyby 500 nebo 502, které se zobrazí, nebudou mít vliv na váš soubor ke stažení.

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: nasazení aplikací Node. js využívajících Azure Cosmos DB s využitím Azure DevOps Starter'
-description: Azure DevOps Starter usnadňuje začátek práce v Azure. S DevOps Starter můžete nasadit aplikaci Node. js, která se používá Azure Cosmos DB k webové aplikaci Windows v několika rychlých krocích.
+title: 'Kurz: nasazení aplikací Node.js využívajících Azure Cosmos DB s Azure DevOps Starter'
+description: Azure DevOps Starter usnadňuje začátek práce v Azure. S DevOps Starter můžete nasadit aplikaci Node.js, která se používá Azure Cosmos DB do webové aplikace Windows v několika rychlých krocích.
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 07579cf22738e195e3e4ae7a2aa18ffeb885bbe2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233233"
 ---
-# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Nasazení aplikací Node. js využívajících Azure Cosmos DB s DevOps Starter
+# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Nasazení aplikací Node.js využívajících Azure Cosmos DB s DevOps Starter
 
 Azure DevOps Starter nabízí zjednodušené prostředí, ve kterém můžete vytvořit kanál průběžné integrace (CI) a průběžného nasazování (CD) do Azure. Můžete to provést pomocí stávajícího kódu a úložiště Git (úložiště) nebo výběrem ukázkové aplikace.
 
@@ -28,7 +28,7 @@ DevOps Starter také:
 V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Použití DevOps Starter k nasazení aplikace Node. js, která používá Azure Cosmos DB
+> * Použití DevOps Starter k nasazení aplikace Node.js s využitím Azure Cosmos DB
 > * Konfigurace Azure DevOps a předplatného Azure
 > * Kontrola Azure Cosmos DB
 > * Prozkoumání kanálu CI
@@ -40,23 +40,23 @@ V tomto kurzu provedete následující:
 
 Potřebujete předplatné Azure, které můžete získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) .
 
-## <a name="use-devops-starter-to-deploy-nodejs-app"></a>Použití DevOps Starter k nasazení aplikace Node. js
+## <a name="use-devops-starter-to-deploy-nodejs-app"></a>Použití DevOps Starter k nasazení aplikace Node.js
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure, jako jsou Azure Cosmos DB, Application Insights, App Service a plány App Service, v předplatném Azure dle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Jako modul runtime vyberte **Node. js** a pak vyberte **Další**. V části **zvolte Aplikační architekturu**vyberte **expresní. js**.
+1. Jako modul runtime vyberte **Node.js** a pak vyberte **Další**. V části **zvolte Aplikační architekturu**vyberte **Express.js**.
 
 1. Povolte část **Přidat databázi** pro **Cosmos DB**a pak vyberte **Další**.
 
     ![Přidání databáze](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Azure DevOps Starter podporuje různé aplikační architektury, jako je **Express. js**, **ukázková aplikace Node. js**a **lodní. js**. V tomto kurzu používáme **Express. js**.
+    Azure DevOps Starter podporuje různé aplikační architektury, jako jsou **Express.js**, **ukázkové Node.js aplikace**a **Sail.js**. V tomto kurzu používáme **Express.js**.
 
 1. Vyberte službu Azure pro nasazení aplikace a pak vyberte **Další**. Mezi tyto možnosti patří webová aplikace Windows, služba Azure Kubernetes a Azure Web App for Containers. V tomto kurzu používáme **webovou aplikaci Windows**.
 
@@ -72,7 +72,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
 1. Ukončete oblast konfigurace Azure a potom vyberte **Hotovo**.
 
-1. Proces se dokončí po několika minutách. Ukázková aplikace Node. js je nastavená v úložišti Git ve vaší organizaci Azure DevOps. Pak se vytvoří Azure Cosmos DB, App Service, App Service plán a prostředky Application Insights a také kanál CI/CD. Vaše aplikace se pak nasadí do Azure.
+1. Proces se dokončí po několika minutách. Ukázková Node.js aplikace se nastavuje v úložišti Git ve vaší organizaci Azure DevOps. Pak se vytvoří Azure Cosmos DB, App Service, App Service plán a prostředky Application Insights a také kanál CI/CD. Vaše aplikace se pak nasadí do Azure.
 
    Po dokončení všech těchto procesů se v Azure Portal zobrazí řídicí panel Azure DevOps Starter. Můžete také přejít na řídicí panel DevOps Starter přímo ze **všech prostředků** v Azure Portal.
 
@@ -158,7 +158,7 @@ Odstraňte související prostředky, které jste vytvořili, když už je nepot
 Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Tento vzor CI/CD můžete také použít jako šablonu pro své další kanály. V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Použití DevOps Starter k nasazení aplikace Node. js, která používá Azure Cosmos DB
+> * Použití DevOps Starter k nasazení aplikace Node.js s využitím Azure Cosmos DB
 > * Konfigurace Azure DevOps a předplatného Azure 
 > * Kontrola Azure Cosmos DB
 > * Prozkoumání kanálu CI

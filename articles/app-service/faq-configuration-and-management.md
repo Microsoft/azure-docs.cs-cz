@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159996"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
@@ -105,7 +105,7 @@ Běžnou příčinou selhání zálohování je, že aplikace používá někter
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Návody odebrat hlavičku z odpovědi HTTP?
 
-Chcete-li odebrat hlavičky z odpovědi HTTP, aktualizujte soubor Web. config vašeho webu. Další informace najdete v tématu [Odebrání standardních hlaviček serveru na Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+Chcete-li odebrat hlavičky z odpovědi HTTP, aktualizujte soubor web.config vaší lokality. Další informace najdete v tématu [Odebrání standardních hlaviček serveru na Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Je App Service kompatibilní se standardem PCI 3,0 a 3,1?
 
@@ -125,7 +125,7 @@ Další informace o použití slotů nasazení najdete v tématu [Nastavení př
 
 Kontrola protokolů webové úlohy:
 
-1. Přihlaste se k **webu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+1. Přihlaste se k **webu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
 2. Vyberte webovou úlohu.
 3. Vyberte tlačítko **přepnout výstup** .
 4. Pokud chcete stáhnout výstupní soubor, vyberte odkaz **ke stažení** .
@@ -147,7 +147,7 @@ Výjimka byla způsobena problémem s Správce hybridního připojení, která o
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Návody přidat pravidlo pro přepsání adresy URL?
 
-Chcete-li přidat pravidlo přepsání adresy URL, vytvořte soubor Web. config s příslušnými konfiguračními položkami ve složce **wwwroot** . Další informace najdete v tématu [Azure App Services: principy přepsání adresy URL](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
+Chcete-li přidat pravidlo přepsání adresy URL, vytvořte web.config soubor s odpovídajícími konfiguračními položkami ve složce **wwwroot** . Další informace najdete v tématu [Azure App Services: principy přepsání adresy URL](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Návody řízení příchozího provozu do App Service?
 
@@ -302,7 +302,7 @@ Pokud se žádná z těchto podmínek nepoužije a problém přetrvává, odešl
 
 ## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Návody zapnout kompresi HTTP pro můj obsah?
 
-Chcete-li zapnout kompresi pro statický i dynamický typ obsahu, přidejte do souboru Web. config na úrovni aplikace následující kód:
+Chcete-li zapnout kompresi pro statický i dynamický typ obsahu, přidejte do souboru web.config na úrovni aplikace následující kód:
 
 ```xml
 <system.webServer>

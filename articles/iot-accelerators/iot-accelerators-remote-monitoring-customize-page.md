@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187258"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní stránku do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
@@ -51,11 +51,11 @@ Chcete-li přidat stránku do webového uživatelského rozhraní, je nutné př
 
 Chcete-li začít, složka **Src/názor/komponenty/Pages/šablonou základní stránky** obsahuje čtyři soubory definující jednoduchou stránku:
 
-**Šablonou základní stránky. Container. js**
+**basicPage.container.js**
 
 [!code-javascript[Page container source](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.container.js?name=container "Page container source")]
 
-**Šablonou základní stránky. js**
+**basicPage.js**
 
 [!code-javascript[Basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.js?name=page "Basic page")]
 
@@ -63,7 +63,7 @@ Chcete-li začít, složka **Src/názor/komponenty/Pages/šablonou základní st
 
 [!code-javascript[Page styling](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.scss?name=styles "Page styling")]
 
-**Šablonou základní stránky. test. js**
+**basicPage.test.js**
 
 [!code-javascript[Test code for basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.test.js?name=test "Test code for basic page")]
 
@@ -73,7 +73,7 @@ Vytvoří novou složku **Src/Components/Pages/example** a zkopíruje do ní tyt
 
 Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveďte následující změny existujících souborů:
 
-1. Přidejte nový kontejner stránky do souboru **Src/Components/pages/index. js** :
+1. Přidejte nový kontejner stránky do souboru **Src/Components/Pages/index.js** :
 
     ```js
     export * from './example/basicPage.container';
@@ -81,7 +81,7 @@ Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveď
 
 1. Volitelné  Přidejte ikonu SVG pro novou stránku. Další informace najdete v tématu [WebUI/src/Utilities/Readme. MD](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md). Můžete použít existující soubor SVG.
 
-1. Přidejte název stránky do souboru s překlady, **Public/Locals/EN/překlady. JSON**. Webové uživatelské rozhraní používá [i18next](https://www.i18next.com/) pro mezinárodní účely.
+1. Přidejte název stránky do souboru s překlady, **Public/Locals/EN/translations.json**. Webové uživatelské rozhraní používá [i18next](https://www.i18next.com/) pro mezinárodní účely.
 
     ```json
     "tabs": {
@@ -89,7 +89,7 @@ Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveď
     },
     ```
 
-1. Otevřete soubor **Src/Components/App. js** , který definuje stránku aplikace nejvyšší úrovně. Přidejte novou stránku do seznamu importů:
+1. Otevřete soubor **Src/Components/app.js** , který definuje stránku aplikace nejvyšší úrovně. Přidejte novou stránku do seznamu importů:
 
     ```javascript
     // Page Components
@@ -99,7 +99,7 @@ Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveď
     } from './pages';
     ```
 
-1. Ve stejném souboru přidejte novou stránku do `pagesConfig` pole. Nastavte `to` adresu pro trasu, odkazujte na dříve přidané ikony SVG a překlady a nastavte `component` na kontejner stránky:
+1. Ve stejném souboru přidejte novou stránku do `pagesConfig` pole. Nastavte `to` adresu pro trasu, odkazujte na dříve přidané ikony SVG a překlady a nastavte na `component` kontejner stránky:
 
     ```js
     const pagesConfig = [
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard`.
+Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard` .
 
 Bez připojení místní instance webového uživatelského rozhraní k nasazené instanci akcelerátoru řešení vidíte chyby na řídicím panelu. Tyto chyby neovlivňují vaši možnost testování vaší nové stránky.
 

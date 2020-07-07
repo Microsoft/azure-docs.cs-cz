@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160218"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services koncepty 
@@ -86,12 +86,12 @@ Media Services podporuje dva typy lokátorů: OnDemandOrigin Lokátory, které s
 ### <a name="storage-account"></a>Účet úložiště
 Veškerý přístup k Azure Storage se provádí prostřednictvím účtu úložiště. Účet Media Service může přidružit jeden nebo více účtů úložiště. Účet může obsahovat neomezený počet kontejnerů, pokud je jeho celková velikost pod 500TBem na účet úložiště.  Media Services poskytuje nástroje na úrovni sady SDK, které vám umožní spravovat více účtů úložiště a vyrovnávat zatížení při nahrávání prostředků do těchto účtů na základě metrik nebo náhodné distribuce. Další informace najdete v tématu práce s [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx). 
 
-## <a name="jobs-and-tasks"></a>Úlohy a úlohy
+## <a name="jobs-and-tasks"></a>Úlohy a úkoly
 [Úloha](https://docs.microsoft.com/rest/api/media/operations/job) se obvykle používá ke zpracování jedné prezentace audio/video (například indexování nebo kódování). Pokud zpracováváte více videí, vytvořte úlohu pro kódování každého videa.
 
 Úloha obsahuje metadata o zpracování, která se mají provést. Každá úloha obsahuje jednu nebo více [úloh](https://docs.microsoft.com/rest/api/media/operations/task), které určují úlohu atomické zpracování, její vstupní prostředky, výstupní prostředky, procesor médií a jeho přidružená nastavení. Úlohy v rámci úlohy lze zřetězit společně, kde výstupní prostředek jedné úlohy je uveden jako vstupní Asset pro další úkol. V tomto způsobu může jedna úloha obsahovat veškeré zpracování potřebné pro prezentaci multimédií.
 
-## <a name="encoding"></a><a id="encoding"></a>Kódování
+## <a name="encoding"></a><a id="encoding"></a>Encoding
 Azure Media Services poskytuje více možností pro kódování médií v cloudu.
 
 Když začnete s Media Services, je důležité pochopit rozdíl mezi kodeky a formáty souborů.
@@ -114,7 +114,7 @@ V Azure Media Services kanál představuje kanál pro zpracování obsahu živé
 * On-premises Live Encoder posílá do kanálu RTMP s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4). Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup v reálném čase: Kodér Adobe Flash Live Encoder, [Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision Encoders. Ingestované datové proudy procházejí kanálem bez dalšího překódování a kódování. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 * Datový proud s jednou přenosovou rychlostí (v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4)) se pošle do kanálu, který má povolené kódování v reálném čase pomocí Media Services. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
-### <a name="channel"></a>Channel
+### <a name="channel"></a>Kanál
 V Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s zodpovídá za zpracování obsahu živého streamování. Kanál poskytuje vstupní koncový bod (adresa URL pro příjem), který pak poskytnete pro živý překódování. Kanál přijímá živé vstupní proudy z živého překódování a zpřístupňuje je pro streamování prostřednictvím jednoho nebo více starají. Kanály také poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
 Při vytváření kanálu můžete získat adresu URL pro ingestování a adresu URL náhledu. Aby se tyto adresy URL dostaly, kanál se nemusí nacházet ve stavu spuštěno. Až budete připraveni začít nahrávat data z živého přesílaného do kanálu, je nutné spustit kanál. Jakmile živý převedený kód začne ingestovat data, můžete zobrazit náhled streamu.
@@ -131,7 +131,7 @@ Každý program (událost) je přidružen k Assetu. Pro publikování programu m
 
 Kanál podporuje až tři současně spuštěné programy, takže si můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Požadavek vaší firmy může být například takový, že chcete archivovat 6 hodin programu, ale vysílat jenom posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program nastavíte, aby archivoval 6 hodin události, ale tento program nebudete publikovat. Druhý program nastavíte, aby archivoval 10 minut a tento program budete publikovat.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Práce s kanály, které jsou povolené k provádění Live Encoding s Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md)
@@ -154,7 +154,7 @@ Zásady autorizace klíče obsahu můžou mít jedno nebo víc autorizačních o
 
 Při konfiguraci zásad s omezeným tokenem je nutné zadat primární ověřovací klíč, parametry vystavitele a cílové skupiny. Primární ověřovací klíč obsahuje klíč, se kterým byl token podepsaný, vydavatel je služba zabezpečeného tokenu, která token vydává. Cílová skupina (někdy označovaná jako obor) popisuje účel tokenu nebo prostředku, ke kterému token opravňuje přístup. Služba doručení Media Services Key ověřuje, že se tyto hodnoty v tokenu shodují s hodnotami v šabloně.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 - [Přehled ochrany obsahu](media-services-content-protection-overview.md)
 - [Ochrana pomocí AES-128](media-services-protect-with-aes128.md)
 - [Ochrana pomocí PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
@@ -208,25 +208,25 @@ Následující seznam popisuje různé formáty streamování a nabízí příkl
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
 
 * MPEG DASH
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = MPD-Time-CSF)
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = MPD-Time-CSF)
 
 * Apple HTTP Live Streaming (HLS) v4
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
 
 * Apple HTTP Live Streaming (HLS) V3
 
 {streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = M3U8-AAPL-V3)
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-V3)
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-V3)
 
 ## <a name="additional-notes"></a>Další poznámky
 

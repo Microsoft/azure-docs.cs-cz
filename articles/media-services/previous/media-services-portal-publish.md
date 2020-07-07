@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176817"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Publikování obsahu v Azure Portal  
 > [!div class="op_single_selector"]
-> * [Portál](media-services-portal-publish.md)
+> * [Azure Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > 
@@ -70,10 +70,10 @@ Chcete-li aktualizovat datum vypršení platnosti lokátoru, použijte možnost 
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Postup publikování assetu pomocí portálu
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. Vyberte **Nastavení** > **prostředky**. Vyberte asset, který chcete publikovat.
+2. Vyberte **Nastavení**  >  **prostředky**. Vyberte asset, který chcete publikovat.
 3. Vyberte tlačítko **Publikovat**.
 4. Vyberte typ lokátoru.
-5. Vyberte **Přidat**.
+5. Vyberte možnost **Přidat**.
    
     ![Publikování videa](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

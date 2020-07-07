@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184703"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Základní hodnoty zabezpečení Azure pro Event Hubs
@@ -38,7 +38,7 @@ Obor názvů Azure Event Hubs můžete zabezpečit také pomocí bran firewall. 
 
 Použití koncových bodů služby virtuální sítě s Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-Další informace najdete v tématu Integrace služby Azure Event Hubs s privátním odkazem Azure: https://docs.microsoft.com/azure/event-hubs/private-link-service.
+Další informace najdete v tématu Integrace služby Azure Event Hubs s privátním odkazem Azure: https://docs.microsoft.com/azure/event-hubs/private-link-service .
 
 Povolit integraci virtuálních sítí a brány firewall na Event Hubs oboru názvů:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
 
@@ -335,7 +335,7 @@ Jak používat Azure Policy:https://docs.microsoft.com/azure/governance/policy/t
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Doprovodné**materiály: Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu je https:\//eventhubs.Azure.NET/. Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
+**Doprovodné**materiály: Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu je https: \/ /eventhubs.Azure.NET/. Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
 
 Jak ověřit aplikaci s využitím služby Azure AD pro přístup k prostředkům Event Hubs:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -1078,7 +1078,7 @@ Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps:https://docs.m
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
 
-**Doprovodné**materiály: řiďte se prosím pravidly zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1Microsoftu:.
+**Doprovodné**materiály: řiďte se prosím pravidly zapojení Microsoftu, abyste zajistili, že testy průniku nejsou v rozporu s zásadami Microsoftu: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 .
 Další informace o strategii a provádění testování na základě červeného seskupování a testování průniku na webu pomocí spravované cloudové infrastruktury, služeb a aplikací Microsoftu najdete tady:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Monitorování Azure Security Center**: Ano

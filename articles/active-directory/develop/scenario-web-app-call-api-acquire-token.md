@@ -12,17 +12,17 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181728"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová rozhraní API: Získá token pro aplikaci.
 
 Sestavili jste objekt klientské aplikace. Teď ho použijete k získání tokenu pro volání webového rozhraní API. V ASP.NET nebo ASP.NET Core se volání webového rozhraní API provádí v kontroleru:
 
-- Získání tokenu pro webové rozhraní API pomocí mezipaměti tokenů Chcete-li získat tento token, zavoláte metodu MSAL `AcquireTokenSilent` (nebo ekvivalent v Microsoft. identity. Web).
+- Získání tokenu pro webové rozhraní API pomocí mezipaměti tokenů Chcete-li získat tento token, zavoláte `AcquireTokenSilent` metodu MSAL (nebo ekvivalent v Microsoft. identity. Web).
 - Zavolejte chráněné rozhraní API a předejte mu přístupový token jako parametr.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -45,9 +45,9 @@ public class HomeController : Controller
 }
 ```
 
-`ITokenAcquisition` Služba je vložená pomocí ASP.NET pomocí injektáže závislosti.
+`ITokenAcquisition`Služba je vložená pomocí ASP.NET pomocí injektáže závislosti.
 
-Zde je zjednodušený kód pro akci `HomeController`, která získá token pro volání Microsoft Graph:
+Zde je zjednodušený kód pro akci `HomeController` , která získá token pro volání Microsoft Graph:
 
 ```csharp
 public async Task<IActionResult> Profile()
@@ -76,15 +76,15 @@ Tyto pokročilé kroky jsou uvedené v části 3 kurzu [3-WebApp-multi-API](http
 
 Kód pro ASP.NET je podobný kódu, který je zobrazený pro ASP.NET Core:
 
-- Akce kontroleru chráněná atributem [autorizovat] extrahuje ID tenanta a ID uživatele `ClaimsPrincipal` člena kontroleru. (ASP.NET používá `HttpContext.User`.)
-- Odtud vytvoří objekt MSAL.NET `IConfidentialClientApplication` .
+- Akce kontroleru chráněná atributem [autorizovat] extrahuje ID tenanta a ID uživatele `ClaimsPrincipal` člena kontroleru. (ASP.NET používá `HttpContext.User` .)
+- Odtud vytvoří `IConfidentialClientApplication` objekt MSAL.NET.
 - Nakonec volá `AcquireTokenSilent` metodu důvěrné klientské aplikace.
 
 # <a name="java"></a>[Java](#tab/java)
 
 V ukázce Java je kód, který volá rozhraní API, v metodě getUsersFromGraph v [AuthPageController. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
 
-Metoda se pokusí o volání `getAuthResultBySilentFlow`. Pokud uživatel musí souhlasit s více rozsahy, kód zpracuje `MsalInteractionRequiredException` objekt a požádá uživatele o výzvu.
+Metoda se pokusí o volání `getAuthResultBySilentFlow` . Pokud uživatel musí souhlasit s více rozsahy, kód zpracuje `MsalInteractionRequiredException` objekt a požádá uživatele o výzvu.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")

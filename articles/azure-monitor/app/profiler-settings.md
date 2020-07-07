@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188922"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurace Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>Aktualizovaný agent profileru
-Funkce triggeru fungují jenom s verzí 2,6 nebo novějším agenta profileru. Pokud používáte Azure App Service, Agent se automaticky aktualizuje. Můžete si prohlédnout, jakou verzi agenta používáte, pokud přejdete na adresu URL Kudu webu a připojíte \DiagnosticServices na konec IT, například: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices`. Webová úloha Application Insights Profiler by měla verze 2,6 nebo novější. Upgrade můžete vynutit restartováním webové aplikace. 
+Funkce triggeru fungují jenom s verzí 2,6 nebo novějším agenta profileru. Pokud používáte Azure App Service, Agent se automaticky aktualizuje. Můžete si prohlédnout, jakou verzi agenta používáte, pokud přejdete na adresu URL Kudu webu a připojíte \DiagnosticServices na konec IT, například: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . Webová úloha Application Insights Profiler by měla verze 2,6 nebo novější. Upgrade můžete vynutit restartováním webové aplikace. 
 
 Pokud používáte Profiler na virtuálním počítači nebo cloudové službě, musíte mít nainstalovanou příponu Windows Azure Diagnostics (WAD) verze 16.0.4 nebo novější. Verzi WAD můžete ověřit tak, že se přihlásíte k VIRTUÁLNÍmu počítači a vyhledáte tento adresář: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4.. Název adresáře je verze WAD, která je nainstalována. Agent virtuálního počítače Azure aktualizuje WAD automaticky, když jsou dostupné nové verze.
 
@@ -65,7 +65,7 @@ Název aplikace | Název aplikace, která byla profilace.
 Instance počítače | Název počítače, ve kterém byl spuštěn Agent profileru.
 Časové razítko | Čas, kdy byl profil zachycen.
 Trasovat | Počet trasování, které byly připojeny k jednotlivým požadavkům.
-% využití procesoru | Procento využití procesoru, které bylo používáno během běhu profileru.
+CPU % | Procento využití procesoru, které bylo používáno během běhu profileru.
 Rezident | Procento paměti, která se použila během běhu profileru.
 
 ## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a>Použití testů výkonnosti webu k vygenerování provozu do vaší aplikace
@@ -78,7 +78,7 @@ Následující části znázorňují, jak tento scénář funguje:
 
 Pokud vaše webová aplikace již má příchozí provoz nebo pokud chcete pouze vygenerovat provoz, přeskočte tuto část a pokračujte krokem 2.
 
-1. Na portálu Application Insights vyberte **Konfigurovat** > **testování výkonu**. 
+1. Na portálu Application Insights vyberte **Konfigurovat**  >  **testování výkonu**. 
 
 1. Chcete-li spustit nový test výkonnosti, vyberte tlačítko **Nový** .
 

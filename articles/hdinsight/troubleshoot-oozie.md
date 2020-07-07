@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: 18831832f82cdbc8cec69e368f006f7acd4836c1
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205258"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Řešení potíží s Apache Oozie v Azure HDInsight
@@ -36,7 +36,7 @@ Stav úlohy se změní na **pozastaveno**. Podrobnosti úlohy zobrazují `RunHiv
 
 ### <a name="cause"></a>Příčina
 
-Adresy úložiště objektů BLOB v Azure, které se používají v souboru **Job. XML** , neobsahují kontejner úložiště nebo název účtu úložiště. Formát adresy úložiště BLOB musí být `wasbs://containername@storageaccountname.blob.core.windows.net`.
+Adresy úložiště objektů BLOB v Azure, které se používají v souboru **job.xml** , neobsahují kontejner úložiště nebo název účtu úložiště. Formát adresy úložiště BLOB musí být `wasbs://containername@storageaccountname.blob.core.windows.net` .
 
 ### <a name="resolution"></a>Řešení
 
@@ -44,7 +44,7 @@ Změňte adresu úložiště objektů blob, kterou úloha používá.
 
 ---
 
-## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie nemůže zosobnit &lt;uživatele.&gt;
+## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie nemůže zosobnit &lt; uživatele.&gt;
 
 ### <a name="issue"></a>Problém
 
@@ -81,7 +81,7 @@ Sqoop nemůže načíst ovladač databáze vyžadovaný pro přístup do databá
 
 ### <a name="resolution"></a>Řešení
 
-Při použití Sqoop z úlohy Oozie je nutné zahrnout ovladač databáze s ostatními prostředky, jako je například Workflow. XML, který úloha používá. Také se odkázat na archiv, který obsahuje ovladač databáze z `<sqoop>...</sqoop>` části souboru Workflow. XML.
+Při použití Sqoop z úlohy Oozie je nutné zahrnout ovladač databáze s jinými prostředky, jako je například workflow.xml, úloha používá. V části workflow.xml také odkazovat na archiv, který obsahuje ovladač databáze `<sqoop>...</sqoop>` .
 
 Například pro příklad úlohy [použijte pracovní postupy Hadoop Oozie](hdinsight-use-oozie-linux-mac.md)použijte následující postup:
 
@@ -91,7 +91,7 @@ Například pro příklad úlohy [použijte pracovní postupy Hadoop Oozie](hdin
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
     ```
 
-2. Upravte `workflow.xml` a přidejte následující kód XML na nový řádek výše `</sqoop>`:
+2. Upravte `workflow.xml` a přidejte následující kód XML na nový řádek výše `</sqoop>` :
 
     ```xml
     <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
@@ -103,6 +103,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508121"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Spravovaná aplikace Azure se spravovanou identitou
@@ -46,11 +46,11 @@ Vytvoření spravované aplikace se spravovanou identitou vyžaduje, abyste u pr
 }
 ```
 
-Existují dva běžné způsoby vytvoření spravované aplikace s **identitou**: [CreateUIDefinition. json](./create-uidefinition-overview.md) a [šablony Azure Resource Manager](../templates/template-syntax.md). V případě jednoduchých jednoduchých scénářů vytváření by se měla CreateUIDefinition použít k povolení spravované identity, protože poskytuje bohatší možnosti. Při práci s pokročilými nebo složitými systémy, které vyžadují automatizované nebo vícenásobné nasazení spravovaných aplikací, je ale možné použít šablony.
+Existují dva běžné způsoby, jak vytvořit spravovanou aplikaci s **identitou**: [CreateUIDefinition.jsv](./create-uidefinition-overview.md) [šablonách a Azure Resource Manager](../templates/template-syntax.md). V případě jednoduchých jednoduchých scénářů vytváření by se měla CreateUIDefinition použít k povolení spravované identity, protože poskytuje bohatší možnosti. Při práci s pokročilými nebo složitými systémy, které vyžadují automatizované nebo vícenásobné nasazení spravovaných aplikací, je ale možné použít šablony.
 
 ### <a name="using-createuidefinition"></a>Použití CreateUIDefinition
 
-Spravovaná aplikace se dá nakonfigurovat se spravovanou identitou prostřednictvím [CreateUIDefinition. JSON](./create-uidefinition-overview.md). V [části výstupy](./create-uidefinition-overview.md#outputs)lze klíč `managedIdentity` použít k přepsání vlastnosti identity šablony spravované aplikace. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí CreateUIDefinition elementů, aby požádaly spotřebitele o vstupy. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
+Spravovaná aplikace se dá nakonfigurovat se spravovanou identitou prostřednictvím [CreateUIDefinition.jsv](./create-uidefinition-overview.md). V [části výstupy](./create-uidefinition-overview.md#outputs) `managedIdentity` lze klíč použít k přepsání vlastnosti identity šablony spravované aplikace. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí CreateUIDefinition elementů, aby požádaly spotřebitele o vstupy. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
 
 ```json
 "outputs": {
@@ -130,7 +130,7 @@ CreateUIDefinition podporuje integrovaný [spravovaný ovládací prvek identity
 
 > [!NOTE]
 > Šablony spravované aplikace Marketplace se automaticky generují pro zákazníky, kteří procházejí prostředím Azure Portal vytvořit.
-> V těchto scénářích musí `managedIdentity` být výstupní klíč na CreateUIDefinition použit k povolení identity.
+> V těchto scénářích `managedIdentity` musí být výstupní klíč na CreateUIDefinition použit k povolení identity.
 
 Spravovaná identita se dá povolit taky prostřednictvím šablon Azure Resource Manager. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí parametrů šablony Azure Resource Manager k poskytnutí vstupů. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
 
@@ -260,7 +260,7 @@ Při propojování nasazení spravované aplikace s existujícími prostředky j
 }
 ```
 
-Tento CreateUIDefinition. JSON generuje prostředí pro vytváření uživatelů, které má dvě pole. První pole umožňuje uživateli zadat ID prostředku Azure pro prostředek propojený s nasazením spravované aplikace. Druhým je, aby příjemce zadal ID prostředku Azure **přiřazené identitě uživatele** , který má přístup k propojenému prostředku Azure. Vygenerované prostředí by vypadalo takto:
+Tato CreateUIDefinition.jsv systému generuje prostředí pro vytváření uživatelů, které má dvě pole. První pole umožňuje uživateli zadat ID prostředku Azure pro prostředek propojený s nasazením spravované aplikace. Druhým je, aby příjemce zadal ID prostředku Azure **přiřazené identitě uživatele** , který má přístup k propojenému prostředku Azure. Vygenerované prostředí by vypadalo takto:
 
 ![Ukázka CreateUIDefinition se dvěma vstupy: ID prostředku síťového rozhraní a ID prostředku identity přiřazené uživatelem](./media/publish-managed-identity/network-interface-cuid.png)
 
@@ -325,9 +325,9 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 Parametry textu žádosti:
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
-authorizationAudience | *Ne* | Identifikátor URI ID aplikace cílového prostředku Je to také deklarace `aud` identity (cílová skupina) vydaného tokenu. Výchozí hodnota je "https://management.azure.com/"
+authorizationAudience | *Ne* | Identifikátor URI ID aplikace cílového prostředku Je to také `aud` deklarace identity (cílová skupina) vydaného tokenu. Výchozí hodnota je " https://management.azure.com/ "
 userAssignedIdentities | *Ne* | Seznam uživatelsky přiřazených spravovaných identit, pro které se má načíst token Pokud není zadaný, `listTokens` vrátí token pro spravovanou identitu přiřazenou systémem.
 
 
@@ -360,7 +360,7 @@ access_token | Požadovaný přístupový token
 expires_in | Počet sekund, po který bude přístupový token platný
 expires_on | Časový interval pro přístup k vypršení platnosti přístupového tokenu Tato hodnota je vyjádřena jako počet sekund od epocha.
 not_before | Časové rozpětí, kdy se přístupový token projeví. Tato hodnota je vyjádřena jako počet sekund od epocha.
-authorizationAudience | `aud` (Cílová skupina), pro který přístupový token požádal. To se shoduje s tím, co bylo v `listTokens` žádosti zadáno.
+authorizationAudience | `aud`(Cílová skupina), pro který přístupový token požádal. To se shoduje s tím, co bylo v `listTokens` žádosti zadáno.
 resourceId | ID prostředku Azure pro vydaný token. Toto je buď ID spravované aplikace, nebo ID identity přiřazené uživatelem.
 token_type | Typ tokenu
 

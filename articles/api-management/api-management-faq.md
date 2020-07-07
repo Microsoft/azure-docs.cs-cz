@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233478"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
@@ -49,7 +49,7 @@ Získejte odpovědi na běžné otázky, vzory a osvědčené postupy pro Azure 
 Když je funkce ve verzi Preview, znamená to, že aktivně hledáte zpětnou vazbu o tom, jak funkce funguje. Funkce ve verzi Preview je funkčně dokončená, ale je možné, že v reakci na zpětnou vazbu od zákazníků provedeme zásadní změnu. Doporučujeme, abyste nemuseli záviset na funkci, která je ve verzi Preview v produkčním prostředí.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Jak můžu zabezpečit připojení mezi bránou služby API Management a back-endovými službami?
-Máte několik možností, jak zabezpečit spojení mezi API Management bránou a vašimi back-end službami. Můžete:
+Máte několik možností, jak zabezpečit spojení mezi API Management bránou a vašimi back-end službami. Další možnosti:
 
 * Použijte ověřování HTTP Basic. Další informace najdete v tématu [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 * Vzájemné ověřování TLS použijte, jak je popsáno v tématu [zabezpečení back-endové služby pomocí ověřování klientského certifikátu v Azure API Management](api-management-howto-mutual-certificates.md).
@@ -57,7 +57,7 @@ Máte několik možností, jak zabezpečit spojení mezi API Management bránou 
 * Připojte svoji instanci API Management k Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak můžu zkopírovat instanci služby API Management do nové instance?
-Máte několik možností, pokud chcete zkopírovat instanci API Management do nové instance. Můžete:
+Máte několik možností, pokud chcete zkopírovat instanci API Management do nové instance. Další možnosti:
 
 * Použijte funkci zálohování a obnovení v API Management. Další informace najdete v tématu [implementace zotavení po havárii pomocí zálohování a obnovení služby v Azure API Management](api-management-howto-disaster-recovery-backup-restore.md).
 * Vytvořte vlastní funkci zálohování a obnovení pomocí [REST API API Management](/rest/api/apimanagement/). Použijte REST API k uložení a obnovení entit z instance služby, kterou chcete.
@@ -73,22 +73,22 @@ Ano, API Management můžete spravovat programově pomocí:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak přidám uživatele do skupiny správců?
 Zde je postup, jak můžete přidat uživatele do skupiny Administrators:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejít do skupiny prostředků, která obsahuje instanci API Management, kterou chcete aktualizovat.
 3. V API Management přiřaďte uživateli roli **Přispěvatel služby API Management** .
 
 Nově přidaný Přispěvatel teď může používat [rutiny](https://docs.microsoft.com/powershell/azure/overview)Azure PowerShell. Tady je postup, jak se přihlásit jako správce:
 
 1. Přihlaste se pomocí `Connect-AzAccount` rutiny.
-2. Nastavte kontext na předplatné, které má službu pomocí nástroje `Set-AzContext -SubscriptionID <subscriptionGUID>`.
-3. K získání adresy URL jednotného přihlašování použijte `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
+2. Nastavte kontext na předplatné, které má službu pomocí nástroje `Set-AzContext -SubscriptionID <subscriptionGUID>` .
+3. K získání adresy URL jednotného přihlašování použijte `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` .
 4. Použijte adresu URL pro přístup k portálu pro správu.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Proč je zásada, kterou chci přidat k dispozici v editoru zásad?
 Pokud se zásada, kterou chcete přidat, zobrazuje v editoru zásad šedě nebo je vystínovaná, ujistěte se, že jste ve správném rozsahu pro danou zásadu. Jednotlivé příkazy zásad jsou navržené tak, aby je bylo možné použít v určitých oborech a oddílech zásad. Pokud chcete zkontrolovat oddíly a obory zásad, přečtěte si část použití zásad v tématu [zásady API Management](/azure/api-management/api-management-policies).
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Návody nastavit více prostředí v jednom rozhraní API?
-K nastavení více prostředí, například testovací prostředí a produkční prostředí, v jednom rozhraní API máte dvě možnosti. Můžete:
+K nastavení více prostředí, například testovací prostředí a produkční prostředí, v jednom rozhraní API máte dvě možnosti. Další možnosti:
 
 * Hostování různých rozhraní API na stejném tenantovi.
 * Hostovat stejná rozhraní API v různých klientech.
@@ -109,7 +109,7 @@ Ano. Další informace najdete v tématu šablony rychlý Start pro [službu Azu
 Ano. To se dá udělat prostřednictvím PowerShellu nebo přímo odeslání do rozhraní API. Tím se zakáže ověřování řetězu certifikátů, které vám umožní používat certifikáty podepsané svým držitelem nebo soukromým podpisem při komunikaci od API Management až po služby back-endu.
 
 #### <a name="powershell-method"></a>PowerShell – metoda ####
-Použijte [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (pro nový back-end) nebo [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (pro stávající back-end) rutiny PowerShellu a `-SkipCertificateChainValidation` nastavte parametr `True`na.
+Použijte [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (pro nový back-end) nebo [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (pro stávající back-end) rutiny PowerShellu a nastavte `-SkipCertificateChainValidation` parametr na `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

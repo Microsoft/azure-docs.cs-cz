@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208070"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)
@@ -23,11 +23,11 @@ V tomto článku se dozvíte, jak používat open source [kured (KUbernetes rest
 > [!NOTE]
 > `Kured`je open source projekt od Weaveworks. Podpora pro tento projekt v AKS je poskytována na základě optimálního úsilí. Další podporu najdete v kanálu rezervy #weave-Community.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Principy prostředí aktualizace uzlů AKS
 
@@ -37,7 +37,7 @@ V clusteru AKS se uzly Kubernetes spouštějí jako virtuální počítače Azur
 
 Některé aktualizace zabezpečení, jako jsou například aktualizace jádra, vyžadují k dokončení procesu restart uzlu. Uzel Linux, který vyžaduje restart, vytvoří soubor s názvem */var/run/reboot-Required*. Tento proces restartování neproběhne automaticky.
 
-Můžete použít vlastní pracovní postupy a procesy ke zpracování restartování uzlu nebo `kured` k orchestraci tohoto procesu. V `kured`systému je nasazený [DaemonSet][DaemonSet] , který spouští pod na každém uzlu Linux v clusteru. Tyto lusky v DaemonSet Sledujte existenci souboru */var/run/reboot-Required* a potom zahájí proces restartování uzlů.
+Můžete použít vlastní pracovní postupy a procesy ke zpracování restartování uzlu nebo `kured` k orchestraci tohoto procesu. V systému `kured` je nasazený [DaemonSet][DaemonSet] , který spouští pod na každém uzlu Linux v clusteru. Tyto lusky v DaemonSet Sledujte existenci souboru */var/run/reboot-Required* a potom zahájí proces restartování uzlů.
 
 ### <a name="node-upgrades"></a>Upgrady uzlů
 
@@ -52,7 +52,7 @@ Během události upgradu nemůžete zůstat ve stejné verzi Kubernetes. Je nutn
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Nasazení kured v clusteru AKS
 
-Pokud chcete nasadit `kured` DaemonSet, nainstalujte následující oficiální graf helmu Kured. Tím se vytvoří role a role clusteru, vazby a účet služby a pak se nasadí DaemonSet pomocí `kured`.
+Pokud chcete nasadit `kured` DaemonSet, nainstalujte následující oficiální graf helmu Kured. Tím se vytvoří role a role clusteru, vazby a účet služby a pak se nasadí DaemonSet pomocí `kured` .
 
 ```console
 # Add the stable Helm repository
@@ -68,7 +68,7 @@ kubectl create namespace kured
 helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Můžete také nakonfigurovat další parametry pro `kured`, jako je například integrace s Prometheus nebo časovou rezervou. Další informace o dalších parametrech konfigurace najdete v [grafu Kured Helm][kured-install].
+Můžete také nakonfigurovat další parametry pro `kured` , jako je například integrace s Prometheus nebo časovou rezervou. Další informace o dalších parametrech konfigurace najdete v [grafu Kured Helm][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Aktualizace uzlů clusteru
 
@@ -101,7 +101,7 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek podrobně popisuje, jak `kured` použít k automatickému restartování uzlů Linux v rámci procesu aktualizace zabezpečení. Pokud chcete upgradovat na nejnovější verzi Kubernetes, můžete [upgradovat cluster AKS][aks-upgrade].
+Tento článek podrobně popisuje, jak použít `kured` k automatickému restartování uzlů Linux v rámci procesu aktualizace zabezpečení. Pokud chcete upgradovat na nejnovější verzi Kubernetes, můžete [upgradovat cluster AKS][aks-upgrade].
 
 Clustery AKS, které používají uzly Windows serveru, najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 

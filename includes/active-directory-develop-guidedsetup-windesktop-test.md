@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181527"
 ---
 ## <a name="test-your-code"></a>Testování kódu
@@ -39,7 +39,7 @@ Při prvním přihlášení do aplikace se zobrazí také výzva k poskytnutí s
 
 ### <a name="view-application-results"></a>Zobrazit výsledky aplikace
 
-Po přihlášení byste měli vidět informace o profilu uživatele, které jsou vráceny voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v poli **výsledky volání rozhraní API** . Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenInteractive` nebo `AcquireTokenSilent` , by měly být viditelné v poli **informace o tokenu** . Výsledky obsahují následující vlastnosti:
+Po přihlášení byste měli vidět informace o profilu uživatele, které jsou vráceny voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v poli **výsledky volání rozhraní API** . Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenInteractive` nebo, `AcquireTokenSilent` by měly být viditelné v poli **informace o tokenu** . Výsledky obsahují následující vlastnosti:
 
 |Vlastnost  |Formát  |Popis |
 |---------|---------|---------|

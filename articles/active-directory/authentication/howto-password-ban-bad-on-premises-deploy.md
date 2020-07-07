@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82143223"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
@@ -42,9 +42,9 @@ V rámci fáze auditu mnoho organizací zjistí, že platí následující situa
 * Uživatelé často používají nezabezpečená hesla.
 * Potřebují uživatele informovat o nadcházející změně v vynucování zabezpečení, o možných dopadech na ně a o tom, jak zvolit bezpečnější hesla.
 
-Je taky možné, že se silnější ověřování hesla bude týkat stávající automatizace nasazení řadiče domény služby Active Directory. Doporučujeme, abyste při vyhodnocení období auditů nekryli aspoň jednu povýšení řadiče domény a jedno snížení úrovně řadiče domény, aby bylo možné tyto problémy obejít. Další informace najdete v těchto článcích:
+Je taky možné, že se silnější ověřování hesla bude týkat stávající automatizace nasazení řadiče domény služby Active Directory. Doporučujeme, abyste při vyhodnocení období auditů nekryli aspoň jednu povýšení řadiče domény a jedno snížení úrovně řadiče domény, aby bylo možné tyto problémy obejít. Další informace najdete v následujících článcích:
 
-* [Nástroj Ntdsutil. exe nemůže nastavit slabý stav hesla režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [Ntdsutil.exe není možné nastavit slabé heslo režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [Povýšení repliky řadiče domény se nepovedlo kvůli slabému heslu režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Degradování řadiče domény se nezdařilo kvůli slabému heslu místního správce.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
@@ -140,8 +140,8 @@ Služba aktualizace agenta Microsoft Azure AD Connect je nainstalovaná souběž
 
 Pro místní nasazení ochrany heslem Azure AD jsou k dispozici dvě požadované instalační programy:
 
-* Agent DC pro ochranu heslem služby Azure AD (*AzureADPasswordProtectionDCAgentSetup. msi*)
-* Proxy ochrana heslem Azure AD (*AzureADPasswordProtectionProxySetup. exe*)
+* Agent DC pro ochranu heslem Azure AD (*AzureADPasswordProtectionDCAgentSetup.msi*)
+* Proxy ochrana heslem Azure AD (*AzureADPasswordProtectionProxySetup.exe*)
 
 Stáhnout instalační programy z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071).
 
@@ -160,7 +160,7 @@ Vyberte jeden nebo více serverů, které budou hostovat službu proxy ochrany h
 
 Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte následující kroky:
 
-1. Pokud chcete nainstalovat službu Azure AD Password Protection proxy, spusťte instalační `AzureADPasswordProtectionProxySetup.exe` program softwaru.
+1. Pokud chcete nainstalovat službu Azure AD Password Protection proxy, spusťte `AzureADPasswordProtectionProxySetup.exe` instalační program softwaru.
 
     Instalace softwaru nevyžaduje restart a může být automatizovaná pomocí standardních procedur MSI, jako v následujícím příkladu:
     
@@ -169,13 +169,13 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
     ```
     
     > [!NOTE]
-    > Před instalací `AzureADPasswordProtectionProxySetup.exe` balíčku musí být spuštěná služba Brána Windows Firewall, aby nedošlo k chybě instalace.
+    > Před instalací balíčku musí být spuštěná služba Brána Windows Firewall, aby nedošlo `AzureADPasswordProtectionProxySetup.exe` k chybě instalace.
     >
     > Pokud je konfigurace brány Windows Firewall nakonfigurovaná tak, aby se nespouštěla, je alternativním řešením dočasné povolení a spuštění služby brány firewall během instalace. Po instalaci nemá software proxy žádnou konkrétní závislost na bráně Windows Firewall.
     >
     > Pokud používáte bránu firewall jiného výrobce, musí být stále nakonfigurovaná tak, aby splňovala požadavky na nasazení. Mezi ně patří povolení příchozího přístupu k portu 135 a port serveru proxy RPC. Další informace najdete v předchozí části o požadavcích na [nasazení](#deployment-requirements).
 
-1. Software proxy ochrany heslem Azure AD zahrnuje nový modul PowerShellu, `AzureADPasswordProtection`. V následujících krocích spustíte z tohoto modulu PowerShellu různé rutiny.
+1. Software proxy ochrany heslem Azure AD zahrnuje nový modul PowerShellu, `AzureADPasswordProtection` . V následujících krocích spustíte z tohoto modulu PowerShellu různé rutiny.
 
     Chcete-li použít tento modul, otevřete okno prostředí PowerShell jako správce a importujte nový modul následujícím způsobem:
     
@@ -191,13 +191,13 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
 
     Výsledek by měl zobrazovat **stav** *spuštěno*.
 
-1. Služba proxy je v počítači spuštěná, ale nemá přihlašovací údaje ke komunikaci se službou Azure AD. Pomocí `Register-AzureADPasswordProtectionProxy` rutiny zaregistrujte proxy server ochrany heslem Azure AD pomocí služby Azure AD.
+1. Služba proxy je v počítači spuštěná, ale nemá přihlašovací údaje ke komunikaci se službou Azure AD. Pomocí rutiny Zaregistrujte proxy server ochrany heslem Azure AD pomocí služby Azure AD `Register-AzureADPasswordProtectionProxy` .
 
     Tato rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. V kořenové doméně doménové struktury budete také potřebovat místní oprávnění správce domény služby Active Directory. Tuto rutinu je taky potřeba spustit pomocí účtu s oprávněními místního správce:
 
     Po úspěšném provedení tohoto příkazu pro službu proxy ochrany heslem služby Azure AD je další vyvolání úspěšné, ale nepotřebujeme je.
 
-    `Register-AzureADPasswordProtectionProxy` Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne.
+    `Register-AzureADPasswordProtectionProxy`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne.
 
     > [!TIP]
     > Před dokončením této rutiny pro konkrétního tenanta Azure může nastat znatelné zpoždění. Pokud není nahlášená chyba, nedělejte si starosti s touto prodlevou.
@@ -239,14 +239,14 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
 
     Registrace služby proxy ochrany heslem Azure AD je nutná jenom jednou za dobu života služby. Potom bude služba proxy ochrany heslem Azure AD automaticky provádět jakoukoli další nezbytnou údržbu.
 
-1. Nyní Zaregistrujte místní doménovou strukturu služby Active Directory s potřebnými přihlašovacími údaji ke komunikaci s `Register-AzureADPasswordProtectionForest` Azure pomocí rutiny prostředí PowerShell.
+1. Nyní Zaregistrujte místní doménovou strukturu služby Active Directory s potřebnými přihlašovacími údaji ke komunikaci s Azure pomocí `Register-AzureADPasswordProtectionForest` rutiny prostředí PowerShell.
 
     > [!NOTE]
     > Pokud je ve vašem prostředí nainstalované víc proxy serverů ochrany heslem Azure AD, nezáleží na tom, který proxy server používáte k registraci doménové struktury.
 
     Rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. Tuto rutinu musíte spustit taky pomocí účtu s oprávněními místního správce. Vyžaduje taky místní oprávnění podnikového Správce služby Active Directory. Tento krok se spouští jednou pro každou doménovou strukturu.
 
-    `Register-AzureADPasswordProtectionForest` Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne.
+    `Register-AzureADPasswordProtectionForest`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne.
 
     > [!TIP]
     > Před dokončením této rutiny pro konkrétního tenanta Azure může nastat znatelné zpoždění. Pokud není nahlášená chyba, nedělejte si starosti s touto prodlevou.
@@ -288,13 +288,13 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
 
     Registrace doménové struktury služby Active Directory je pro celou dobu života doménové struktury nutná jenom jednou. Potom agenti řadiče domény Azure AD pro ochranu heslem v doménové struktuře automaticky provedou veškerou potřebnou údržbu. Po `Register-AzureADPasswordProtectionForest` úspěšném spuštění pro doménovou strukturu se další vyvolání rutiny zdaří, ale nepotřebná.
     
-    `Register-AzureADPasswordProtectionForest` Aby bylo úspěšné, musí být alespoň jeden řadič domény se systémem Windows Server 2012 nebo novější dostupný v doméně proxy server ochrany heslem služby Azure AD. Software agenta řadiče domény Azure AD pro ochranu heslem nemusí být nainstalovaný na žádném řadiči domény před tímto krokem.
+    `Register-AzureADPasswordProtectionForest`Aby bylo úspěšné, musí být alespoň jeden řadič domény se systémem Windows Server 2012 nebo novější dostupný v doméně proxy server ochrany heslem služby Azure AD. Software agenta řadiče domény Azure AD pro ochranu heslem nemusí být nainstalovaný na žádném řadiči domény před tímto krokem.
 
 ### <a name="configure-the-proxy-service-to-communicate-through-an-http-proxy"></a>Konfigurace proxy služby pro komunikaci prostřednictvím proxy serveru HTTP
 
 Pokud vaše prostředí vyžaduje ke komunikaci s Azure konkrétní proxy server HTTP, použijte následující postup ke konfiguraci služby ochrany hesel Azure AD.
 
-V této `%ProgramFiles%\Azure AD Password Protection Proxy\Service` složce vytvořte soubor *AzureADPasswordProtectionProxy. exe. config* . Zahrnout následující obsah:
+Ve složce vytvořte soubor *AzureADPasswordProtectionProxy.exe.config* `%ProgramFiles%\Azure AD Password Protection Proxy\Service` . Zahrnout následující obsah:
 
    ```xml
    <configuration>
@@ -324,7 +324,7 @@ V obou případech nahraďte `http://yourhttpproxy.com:8080` adresou a portem ko
 
 Pokud je váš proxy server HTTP nakonfigurovaný tak, aby používal zásady autorizace, musíte udělit přístup k účtu počítače služby Active Directory počítače, který je hostitelem služby proxy, pro ochranu heslem.
 
-Po vytvoření nebo aktualizaci souboru *AzureADPasswordProtectionProxy. exe. config* Doporučujeme zastavit a restartovat službu Azure AD Password Protection proxy.
+Po vytvoření nebo aktualizaci souboru *AzureADPasswordProtectionProxy.exe.config* Doporučujeme zastavit a restartovat službu Azure AD Password Protection proxy.
 
 Proxy služba nepodporuje použití konkrétních přihlašovacích údajů pro připojení k proxy serveru HTTP.
 
@@ -376,7 +376,7 @@ Instalaci softwaru můžete automatizovat pomocí standardních procedur MSI, ja
 msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart
 ```
 
-Příznak `/norestart` lze vynechat, pokud upřednostňujete, aby instalační program automaticky restartoval počítač.
+`/norestart`Příznak lze vynechat, pokud upřednostňujete, aby instalační program automaticky restartoval počítač.
 
 Instalace nebo odinstalace softwaru vyžaduje restart. Důvodem je to, že se knihovny DLL filtru hesel načítají nebo odhrávají jenom po restartování.
 
@@ -389,17 +389,17 @@ Pokud chcete povolit ochranu heslem Prem Azure AD z Azure Portal nebo nakonfigur
 
 ## <a name="upgrading-the-proxy-service"></a>Upgrade služby proxy
 
-Služba proxy ochrany heslem Azure AD podporuje automatický upgrade. Automatický upgrade používá službu Microsoft Azure AD Connect agent aktualizační službu, která je nainstalovaná souběžně se službou proxy serveru. Automatický upgrade je ve výchozím nastavení zapnutý a mohl by být povolený nebo `Set-AzureADPasswordProtectionProxyConfiguration` zakázaný pomocí rutiny.
+Služba proxy ochrany heslem Azure AD podporuje automatický upgrade. Automatický upgrade používá službu Microsoft Azure AD Connect agent aktualizační službu, která je nainstalovaná souběžně se službou proxy serveru. Automatický upgrade je ve výchozím nastavení zapnutý a mohl by být povolený nebo zakázaný pomocí `Set-AzureADPasswordProtectionProxyConfiguration` rutiny.
 
-Pomocí `Get-AzureADPasswordProtectionProxyConfiguration` rutiny se dá zadat dotaz na aktuální nastavení. Doporučujeme, aby nastavení automatického upgradu bylo vždy povolené.
+Pomocí rutiny se dá zadat dotaz na aktuální nastavení `Get-AzureADPasswordProtectionProxyConfiguration` . Doporučujeme, aby nastavení automatického upgradu bylo vždy povolené.
 
-`Get-AzureADPasswordProtectionProxy` Rutina se dá použít k dotazování verze softwaru všech aktuálně nainstalovaných proxy serverů ochrany heslem služby Azure AD v doménové struktuře.
+`Get-AzureADPasswordProtectionProxy`Rutina se dá použít k dotazování verze softwaru všech aktuálně nainstalovaných proxy serverů ochrany heslem služby Azure AD v doménové struktuře.
 
 ### <a name="manual-upgrade-process"></a>Proces ručního upgradu
 
-Ruční upgrade je zajištěn spuštěním nejnovější verze instalačního programu `AzureADPasswordProtectionProxySetup.exe` softwaru. Nejnovější verzi softwaru najdete na [webu služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=57071).
+Ruční upgrade je zajištěn spuštěním nejnovější verze `AzureADPasswordProtectionProxySetup.exe` instalačního programu softwaru. Nejnovější verzi softwaru najdete na [webu služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=57071).
 
-Není nutné odinstalovat aktuální verzi služby proxy ochrany heslem Azure AD – instalační program provede místní upgrade. Při upgradování proxy služby by se neměl vyžadovat restart. Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, jako je například `AzureADPasswordProtectionProxySetup.exe /quiet`.
+Není nutné odinstalovat aktuální verzi služby proxy ochrany heslem Azure AD – instalační program provede místní upgrade. Při upgradování proxy služby by se neměl vyžadovat restart. Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, jako je například `AzureADPasswordProtectionProxySetup.exe /quiet` .
 
 ## <a name="upgrading-the-dc-agent"></a>Upgrade agenta řadiče domény
 
@@ -407,11 +407,11 @@ Pokud je k dispozici novější verze softwaru agenta Azure AD Password Protecti
 
 Není nutné odinstalovat aktuální verzi softwaru agenta DC – instalační program provede místní upgrade. Při upgradu softwaru agenta DC se vždy vyžaduje restart – tento požadavek způsobuje základní chování Windows.
 
-Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, jako je například `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
+Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, jako je například `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart` .
 
-`/norestart` Příznak můžete vynechat, pokud budete chtít, aby instalační program automaticky restartoval počítač.
+Příznak můžete vynechat, `/norestart` Pokud budete chtít, aby instalační program automaticky restartoval počítač.
 
-`Get-AzureADPasswordProtectionDCAgent` Rutina se dá použít k dotazování verze softwaru všech aktuálně nainstalovaných agentů řadiče domény Azure AD s ochranou hesel v doménové struktuře.
+`Get-AzureADPasswordProtectionDCAgent`Rutina se dá použít k dotazování verze softwaru všech aktuálně nainstalovaných agentů řadiče domény Azure AD s ochranou hesel v doménové struktuře.
 
 ## <a name="next-steps"></a>Další kroky
 

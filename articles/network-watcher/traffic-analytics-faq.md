@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189041"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
@@ -330,25 +330,25 @@ Stránka geografického mapování obsahuje dvě hlavní části:
 ### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
     
 - Ve výchozím nastavení je výběr na stránce geografického mapování pro hlavičku "filtr Azure DCss".
-- Chcete-li přejít na jiný filtr, použijte `Tab` buď `Right arrow` klíč, nebo. Chcete-li přejít zpět, použijte `Shift+Tab` buď `Left arrow` klíč, nebo. Přední navigace je ponechána vpravo a následuje shora dolů.
-- Pokud `Enter` chcete použít `Down` vybraný filtr, stiskněte klávesy nebo klávesu šipka. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů pod sekcí map.
-- Chcete-li přepínat mezi hlavičkou `Ctrl+F6`a mapou, stiskněte klávesu.
+- Chcete-li přejít na jiný filtr, použijte buď `Tab` klíč, nebo `Right arrow` . Chcete-li přejít zpět, použijte buď `Shift+Tab` klíč, nebo `Left arrow` . Přední navigace je ponechána vpravo a následuje shora dolů.
+- Pokud `Enter` chcete použít vybraný filtr, stiskněte klávesy nebo klávesu `Down` šipka. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů pod sekcí map.
+- Chcete-li přepínat mezi hlavičkou a mapou, stiskněte klávesu `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-map"></a>Navigace na klávesnici na mapě
     
-- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6`se fokus přesune na jeden ze zvýrazněných uzlů (**datacentrum Azure** nebo **země/oblast**) v zobrazení mapy.
-- Chcete-li přejít na jiné zvýrazněné uzly v mapě, `Tab` použijte buď `Right arrow` klíč, nebo pro pohyb vpřed. Použijte `Shift+Tab` `Left arrow` klíč nebo pro zpětný pohyb.
-- Pokud chcete vybrat libovolný zvýrazněný uzel na mapě, použijte `Enter` klávesu nebo `Down arrow` .
-- Při výběru všech takových uzlů se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko uzavřeno v **poli informační nástroj**. Chcete-li se dále **Box** pohybovat uvnitř zobrazení pole `Right arrow` , `Left arrow` použijte klávesy a a přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
-- Když stisknete klávesu `Tab` , když je fokus v **poli Information Tool**, přesune se fokus do koncových bodů stejného kontinentu jako vybraný uzel. K přesunu těchto koncových bodů použijte klávesy `Right arrow` a `Left arrow` .
-- Chcete-li přejít na jiné koncové body toku nebo kontinenty, použijte `Tab` k `Shift+Tab` přemístění vpřed a k zpětnému přesunu.
-- Pokud je fokus v **clusterech s kontinentem**, `Enter` zvýrazněte `Down` koncové body v rámci clusteru s kontinentem nebo pomocí kláves se šipkami. Chcete-li přejít mezi koncovými body a tlačítkem Zavřít v informačním poli clusteru kontinentů, použijte `Right arrow` buď `Left arrow` klávesu nebo, pro dopředu a zpětnou pohyb v uvedeném pořadí. U libovolného koncového bodu můžete použít `Shift+L` k přepnutí na linku připojení z vybraného uzlu do koncového bodu. Opětovným stisknutím `Shift+L` klávesy můžete přejít na vybraný koncový bod.
+- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6` se fokus přesune na jeden ze zvýrazněných uzlů (**datacentrum Azure** nebo **země/oblast**) v zobrazení mapy.
+- Chcete-li přejít na jiné zvýrazněné uzly v mapě, použijte buď `Tab` klíč, nebo `Right arrow` pro pohyb vpřed. Použijte `Shift+Tab` klíč nebo `Left arrow` pro zpětný pohyb.
+- Pokud chcete vybrat libovolný zvýrazněný uzel na mapě, použijte `Enter` `Down arrow` klávesu nebo.
+- Při výběru všech takových uzlů se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko uzavřeno v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
+- Když stisknete klávesu `Tab` , když je fokus v **poli Information Tool**, přesune se fokus do koncových bodů stejného kontinentu jako vybraný uzel. `Right arrow` `Left arrow` K přesunu těchto koncových bodů použijte klávesy a.
+- Chcete-li přejít na jiné koncové body toku nebo kontinenty, použijte k přemístění `Tab` vpřed a `Shift+Tab` k zpětnému přesunu.
+- Pokud je fokus v **clusterech s kontinentem**, `Enter` `Down` zvýrazněte koncové body v rámci clusteru s kontinentem nebo pomocí kláves se šipkami. Chcete-li přejít mezi koncovými body a tlačítkem Zavřít v informačním poli clusteru kontinentů, použijte `Right arrow` buď `Left arrow` klávesu nebo, pro dopředu a zpětnou pohyb v uvedeném pořadí. U libovolného koncového bodu můžete použít `Shift+L` k přepnutí na linku připojení z vybraného uzlu do koncového bodu. Opětovným stisknutím klávesy můžete `Shift+L` Přejít na vybraný koncový bod.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Navigace na klávesnici v libovolné fázi
     
 - `Esc`sbalí rozbalený výběr.
-- `Up arrow` Klíč provádí stejnou akci jako `Esc`. `Down arrow` Klíč provádí stejnou akci jako `Enter`.
-- Slouží `Shift+Plus` k přiblížení a `Shift+Minus` oddálení.
+- `Up arrow`Klíč provádí stejnou akci jako `Esc` . `Down arrow`Klíč provádí stejnou akci jako `Enter` .
+- Slouží `Shift+Plus` k přiblížení a oddálení `Shift+Minus` .
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Jak můžu přejít pomocí klávesnice v zobrazení topologie virtuální sítě?
 
@@ -360,14 +360,14 @@ Stránka topologie virtuálních sítí obsahuje dvě hlavní části:
 ### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
     
 - Ve výchozím nastavení je výběr na stránce topologie virtuální sítě pro tento proužek filtrem "připojené virtuální sítě".
-- Pokud se chcete přesunout na jiný filtr, `Tab` použijte klávesu pro přesunutí vpřed. Chcete-li přejít zpět, `Shift+Tab` použijte klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
+- Pokud se chcete přesunout na jiný filtr, použijte `Tab` klávesu pro přesunutí vpřed. Chcete-li přejít zpět, použijte `Shift+Tab` klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
 - Kliknutím `Enter` použijete vybraný filtr. Na základě výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (virtuální síť) v části topologie.
-- Chcete-li přepínat mezi hlavičkou a topologií `Ctrl+F6`, stiskněte klávesu.
+- Chcete-li přepínat mezi hlavičkou a topologií, stiskněte klávesu `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Navigace na klávesnici v topologii
     
-- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6`se fokus přesune na jeden ze zvýrazněných uzlů (**VNet**) v zobrazení topologie.
-- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, `Shift+Right arrow` použijte klávesu pro dopředný pohyb. 
+- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6` se fokus přesune na jeden ze zvýrazněných uzlů (**VNet**) v zobrazení topologie.
+- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klávesu pro dopředný pohyb. 
 - Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , `Right arrow` použijte `Left arrow` klávesy a k přesunutí vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
 - Po výběru všech takových uzlů můžete navštívit všechna jeho připojení, a to tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.
     
@@ -382,14 +382,14 @@ Stránka topologie virtuální podsítě obsahuje dvě hlavní části:
 ### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
     
 - Ve výchozím nastavení je výběr na stránce topologie virtuálních podsítí pro tento proužek filtrem "podsítě".
-- Pokud se chcete přesunout na jiný filtr, `Tab` použijte klávesu pro přesunutí vpřed. Chcete-li přejít zpět, `Shift+Tab` použijte klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
+- Pokud se chcete přesunout na jiný filtr, použijte `Tab` klávesu pro přesunutí vpřed. Chcete-li přejít zpět, použijte `Shift+Tab` klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
 - Kliknutím `Enter` použijete vybraný filtr. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (podsíť) v části topologie.
-- Chcete-li přepínat mezi hlavičkou a topologií `Ctrl+F6`, stiskněte klávesu.
+- Chcete-li přepínat mezi hlavičkou a topologií, stiskněte klávesu `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Navigace na klávesnici v topologii
     
-- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6`se fokus přesune do jednoho ze zvýrazněných uzlů (**podsítě**) v zobrazení topologie.
-- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, `Shift+Right arrow` použijte klávesu pro dopředný pohyb. 
-- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále **Box** pohybovat uvnitř zobrazení pole `Right arrow` , `Left arrow` použijte klávesy a a přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
+- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6` se fokus přesune do jednoho ze zvýrazněných uzlů (**podsítě**) v zobrazení topologie.
+- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klávesu pro dopředný pohyb. 
+- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
 - Na výběr všech takových uzlů můžete všechny své připojení navštívit tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.    
 

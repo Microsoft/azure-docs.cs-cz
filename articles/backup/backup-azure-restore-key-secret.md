@@ -4,10 +4,10 @@ description: Naučte se obnovit Key Vault klíč a tajný kód v Azure Backup po
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186817"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení klíče a tajného kódu Key Vault pro šifrované virtuální počítače pomocí Azure Backup
@@ -92,7 +92,7 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * Hodnotu pro $secretname lze získat odkazem na výstup $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl a použitím textu po tajných klíčích/např. adresa URL `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` výstupního tajného kódu je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * Hodnotu pro $secretname lze získat odkazem na výstup $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl a použitím textu po tajných klíčích/např. adresa URL výstupního tajného kódu je `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * Hodnota tagu DiskEncryptionKeyFileName je stejná jako název tajného kódu.
 >
 >
@@ -128,7 +128,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 > [!NOTE]
 >
-> * Hodnotu pro $secretname lze získat odkazem na výstup $rp 1. KeyAndSecretDetails. SecretUrl a používání textu po tajných klíčích, jako je `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` adresa URL výstupního tajného kódu, a název tajného klíče je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * Hodnotu pro $secretname lze získat odkazem na výstup $rp 1. KeyAndSecretDetails. SecretUrl a používání textu po tajných klíčích, jako je adresa URL výstupního tajného kódu `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` , a název tajného klíče je B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * Hodnota DiskEncryptionKeyFileName značky je shodná s názvem tajného kódu.
 > * Hodnota pro DiskEncryptionKeyEncryptionKeyURL se dá získat z trezoru klíčů po obnovení klíčů zpátky a pomocí rutiny [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) .
 >

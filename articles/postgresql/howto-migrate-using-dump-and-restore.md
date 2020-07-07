@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146330"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace databáze PostgreSQL pomocí výpisu a obnovení
@@ -42,7 +42,7 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 Zahrnutím parametru--No-Owner dojde k tomu, že všechny objekty vytvořené během obnovování budou vlastněny uživatelem zadaným parametrem--username. Další informace najdete v oficiální dokumentaci k PostgreSQL na [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
 
 > [!NOTE]
-> Pokud váš server PostgreSQL vyžaduje připojení TLS/SSL (ve výchozím nastavení na serverech Azure Database for PostgreSQL), nastavte proměnnou `PGSSLMODE=require` prostředí tak, aby se nástroj pg_restore připojil k TLS. Bez TLS se chyba může přečíst.`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Pokud váš server PostgreSQL vyžaduje připojení TLS/SSL (ve výchozím nastavení na serverech Azure Database for PostgreSQL), nastavte proměnnou prostředí `PGSSLMODE=require` tak, aby se nástroj pg_restore připojil k TLS. Bez TLS se chyba může přečíst.`FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
 > Na příkazovém řádku Windows spusťte příkaz `SET PGSSLMODE=require` před spuštěním příkazu pg_restore. V systému Linux nebo bash spusťte příkaz `export PGSSLMODE=require` před spuštěním příkazu pg_restore.
 >
@@ -72,7 +72,7 @@ Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby 
 
 - Mělo by být již provedeno ve výchozím nastavení, ale otevřete soubor s výpisem paměti, abyste ověřili, že příkazy CREATE index jsou po vložení dat. Pokud tomu tak není, přesuňte příkazy CREATE index po vložení dat.
 
-- Obnovte s přepínači – FC a- *#* j pro paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit *#* nastavit na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Příklad:
+- Obnovte s přepínači – FC a-j *#* pro paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit *#* nastavit na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Příklad:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump

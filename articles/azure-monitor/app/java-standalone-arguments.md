@@ -4,10 +4,10 @@ description: Monitorování výkonu aplikací pro aplikace Java spuštěné v ja
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508033"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurace samostatného agenta JVM args Java pro Azure Monitor Application Insights
@@ -20,7 +20,7 @@ Nakonfigurujte [App Services](https://docs.microsoft.com/azure/app-service/confi
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Přidejte ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` JVM někam do `-jar`, například:
+Přidejte ARG JVM `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` někam do `-jar` , například:
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
@@ -34,7 +34,7 @@ Pokud používáte formulář *exec* , přidejte parametr `"-javaagent:path/to/a
 ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
 ```
 
-Používáte-li formulář *prostředí* , přidejte ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` JVM někam do `-jar`, například:
+Používáte-li formulář *prostředí* , přidejte ARG JVM `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` někam do, například `-jar` :
 
 ```
 ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
@@ -44,7 +44,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -
 
 ### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat nainstalované prostřednictvím `apt-get` nebo`yum`
 
-Pokud jste nainstalovali Tomcat přes `apt-get` nebo `yum`, měli byste mít soubor `/etc/tomcat8/tomcat8.conf`.  Přidejte tento řádek na konec tohoto souboru:
+Pokud jste nainstalovali Tomcat přes `apt-get` nebo `yum` , měli byste mít soubor `/etc/tomcat8/tomcat8.conf` .  Přidejte tento řádek na konec tohoto souboru:
 
 ```
 JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
@@ -52,20 +52,20 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>Tomcat nainstalované prostřednictvím stažení a rozbalení
 
-Pokud jste nainstalovali Tomcat prostřednictvím stažení a dekomprimovat [https://tomcat.apache.org](https://tomcat.apache.org)z nástroje, měli byste mít soubor `<tomcat>/bin/catalina.sh`.  Vytvořte nový soubor ve stejném adresáři s názvem `<tomcat>/bin/setenv.sh` s následujícím obsahem:
+Pokud jste nainstalovali Tomcat prostřednictvím stažení a dekomprimovat z nástroje [https://tomcat.apache.org](https://tomcat.apache.org) , měli byste mít soubor `<tomcat>/bin/catalina.sh` .  Vytvořte nový soubor ve stejném adresáři `<tomcat>/bin/setenv.sh` s názvem s následujícím obsahem:
 
 ```
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-Pokud soubor `<tomcat>/bin/setenv.sh` již existuje, upravte ho a přidejte `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` do. `CATALINA_OPTS`
+Pokud soubor `<tomcat>/bin/setenv.sh` již existuje, upravte ho a přidejte `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` do `CATALINA_OPTS` .
 
 
 ## <a name="tomcat-8-windows"></a>Tomcat 8 (Windows)
 
 ### <a name="running-tomcat-from-the-command-line"></a>Spuštění Tomcat z příkazového řádku
 
-Vyhledejte soubor `<tomcat>/bin/catalina.bat`.  Vytvořte nový soubor ve stejném adresáři s názvem `<tomcat>/bin/setenv.bat` s následujícím obsahem:
+Vyhledejte soubor `<tomcat>/bin/catalina.bat` .  Vytvořte nový soubor ve stejném adresáři `<tomcat>/bin/setenv.bat` s názvem s následujícím obsahem:
 
 ```
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
@@ -77,11 +77,11 @@ Citace nejsou nutné, ale pokud je chcete zahrnout, správné umístění je:
 set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-Pokud soubor `<tomcat>/bin/setenv.bat` již existuje, stačí ho upravit a přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` do `CATALINA_OPTS`nástroje.
+Pokud soubor `<tomcat>/bin/setenv.bat` již existuje, stačí ho upravit a přidat do nástroje `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `CATALINA_OPTS` .
 
 ### <a name="running-tomcat-as-a-windows-service"></a>Spuštění Tomcat jako služby systému Windows
 
-Vyhledejte soubor `<tomcat>/bin/tomcat8w.exe`.  Spusťte tento spustitelný soubor a `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` přidejte na `Java Options` `Java` kartu pod.
+Vyhledejte soubor `<tomcat>/bin/tomcat8w.exe` .  Spusťte tento spustitelný soubor a přidejte `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` na `Java Options` kartu pod `Java` .
 
 
 ## <a name="jboss-eap-7"></a>JBoss EAP 7
@@ -97,7 +97,7 @@ Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` do exis
 
 ### <a name="domain-server"></a>Doménový server
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` k existujícímu `jvm-options` v `JBOSS_HOME/domain/configuration/host.xml`:
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` k existujícímu `jvm-options` v `JBOSS_HOME/domain/configuration/host.xml` :
 
 ```xml
 ...
@@ -116,7 +116,7 @@ Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` k exist
 ...
 ```
 
-Pokud na jednom hostiteli spouštíte víc spravovaných serverů, budete muset pro každý z `applicationinsights.agent.id` `system-properties` nich `server`přidat:
+Pokud na jednom hostiteli spouštíte víc spravovaných serverů, budete muset `applicationinsights.agent.id` `system-properties` pro každý z nich přidat `server` :
 
 ```xml
 ...
@@ -153,7 +153,7 @@ Přidat tyto řádky do`start.ini`
 
 ## <a name="payara-5"></a>Payara 5
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` k existujícímu `jvm-options` v `glassfish/domains/domain1/config/domain.xml`:
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` k existujícímu `jvm-options` v `glassfish/domains/domain1/config/domain.xml` :
 
 ```xml
 ...
@@ -183,7 +183,7 @@ Potom uložte a znovu spusťte aplikační server.
 
 ## <a name="openliberty-18"></a>OpenLiberty 18
 
-Vytvořte nový soubor `jvm.options` v adresáři serveru (například `<openliberty>/usr/servers/defaultServer`) a přidejte tento řádek:
+Vytvořte nový soubor `jvm.options` v adresáři serveru (například `<openliberty>/usr/servers/defaultServer` ) a přidejte tento řádek:
 ```
 -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
 ```

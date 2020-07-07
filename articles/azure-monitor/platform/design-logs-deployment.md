@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
 ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82165684"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení Azure Monitorch protokolů
@@ -114,7 +114,7 @@ Režimy přístupu jsou shrnuté v následující tabulce:
 
     Toto je výchozí nastavení pro všechny pracovní prostory vytvořené před březen 2019.
 
-* **Použít oprávnění prostředku nebo pracovního prostoru**: Tento režim řízení umožňuje detailní RBAC. Uživatelům se dá udělit přístup jenom k datům přidruženým k prostředkům, které můžou zobrazit, `read` a to přiřazením oprávnění Azure. 
+* **Použít oprávnění prostředku nebo pracovního prostoru**: Tento režim řízení umožňuje detailní RBAC. Uživatelům se dá udělit přístup jenom k datům přidruženým k prostředkům, které můžou zobrazit, a to přiřazením `read` oprávnění Azure. 
 
     Když uživatel přistupuje k pracovnímu prostoru v pracovním prostoru – kontextový režim, platí oprávnění pracovního prostoru. Když uživatel přistupuje k pracovnímu prostoru v režimu v kontextu prostředků, ověřují se jenom oprávnění prostředků a oprávnění pracovního prostoru se ignorují. Povolte RBAC pro uživatele odebráním z oprávnění pracovního prostoru a povolením rozpoznání jejich oprávnění k prostředkům.
 

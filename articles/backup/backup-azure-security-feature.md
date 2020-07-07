@@ -5,10 +5,10 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.openlocfilehash: 24dc108ce4d9c991b1e062c0435b38a63899a249
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186766"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
@@ -89,7 +89,7 @@ V rámci přidání dodatečné úrovně ověřování pro kritické operace bud
 Chcete-li získat tento kód PIN:
 
 1. Přihlaste se k portálu Azure.
-2. Přejděte na **Recovery Services** > **Settings** > **vlastnosti**nastavení trezoru.
+2. Přejděte na **Recovery Services**  >  **Settings**  >  **vlastnosti**nastavení trezoru.
 3. V části **bezpečnostní kód PIN**klikněte na **vygenerovat**. Otevře se okno, které obsahuje PIN kód, který se má zadat v uživatelském rozhraní agenta Azure Recovery Services.
     Tento kód PIN je platný jenom po dobu pěti minut a po uplynutí této doby se vygeneruje automaticky.
 

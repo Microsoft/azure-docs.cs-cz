@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187241"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>Přehled Azure Data Lake Storage Gen1 v HDInsight
@@ -57,7 +57,7 @@ Data Lake Storage Gen1 používá pro ověřování Azure Active Directory a ke 
 
 | **Funkce** | **Popis** |
 | --- | --- |
-| Authentication |Data Lake Storage Gen1 se integruje s Azure Active Directory (Azure AD) pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD. Mezi tyto funkce patří: vícefaktorového ověřování, podmíněný přístup a řízení přístupu na základě role. Také monitorování využití aplikací, monitorování zabezpečení a výstrahy a tak dále. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [ověřování v rámci Azure Data Lake Storage Gen1 pomocí Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
+| Ověřování |Data Lake Storage Gen1 se integruje s Azure Active Directory (Azure AD) pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD. Mezi tyto funkce patří: vícefaktorového ověřování, podmíněný přístup a řízení přístupu na základě role. Také monitorování využití aplikací, monitorování zabezpečení a výstrahy a tak dále. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [ověřování v rámci Azure Data Lake Storage Gen1 pomocí Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | Řízení přístupu |Data Lake Storage Gen1 poskytuje řízení přístupu podporou oprávnění ve stylu POSIX, která jsou vystavená protokolem WebHDFS. Seznamy ACL je možné povolit pro kořenovou složku, podsložky a jednotlivé soubory. Další informace o fungování seznamů ACL v kontextu Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |
 | Šifrování |Data Lake Storage Gen1 taky poskytuje šifrování pro data, která jsou uložená v účtu. Nastavení šifrování určíte při vytváření účtu Data Lake Storage Gen1. Můžete se rozhodnout, že vaše data budou zašifrovaná nebo se můžou rozhodnout bez šifrování. Další informace najdete v tématu [šifrování v Data Lake Storage Gen1](../data-lake-store/data-lake-store-encryption.md). Pokyny k poskytnutí konfigurace související s šifrováním najdete v tématu Začínáme [s Azure Data Lake Storage Gen1 pomocí Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md). |
 
@@ -73,7 +73,7 @@ Data Lake Storage Gen1 je kompatibilní s většinou open source komponent v pro
 
 ## <a name="data-lake-storage-gen1-file-system-adl"></a>Systém souborů Data Lake Storage Gen1 (adl://)
 
-V prostředích Hadoop máte přístup k Data Lake Storage Gen1 pomocí nového systému souborů AzureDataLakeFilesystem (adl://). Výkon aplikací a služeb, které se používají `adl://` , se dají optimalizovat způsobem, který v WebHDFS aktuálně není dostupný. V důsledku toho získáte flexibilitu, abyste mohli využít nejlepší výkon pomocí doporučených adl://. Nebo můžete zachovat existující kód tím, že budete nadále používat rozhraní API pro WebHDFS přímo. Azure HDInsight plně využívá výhod AzureDataLakeFilesystem k zajištění co nejlepšího výkonu pro Data Lake Storage Gen1.
+V prostředích Hadoop máte přístup k Data Lake Storage Gen1 pomocí nového systému souborů AzureDataLakeFilesystem (adl://). Výkon aplikací a služeb, které se používají, `adl://` se dají optimalizovat způsobem, který v WebHDFS aktuálně není dostupný. V důsledku toho získáte flexibilitu, abyste mohli využít nejlepší výkon pomocí doporučených adl://. Nebo můžete zachovat existující kód tím, že budete nadále používat rozhraní API pro WebHDFS přímo. Azure HDInsight plně využívá výhod AzureDataLakeFilesystem k zajištění co nejlepšího výkonu pro Data Lake Storage Gen1.
 
 K datům v Data Lake Storage Gen1 přistupovat pomocí následujícího identifikátoru URI:
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187224"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastního panelu na řídicí panel ve webovém uživatelském rozhraní akcelerátoru řešení vzdáleného monitorování
@@ -43,13 +43,13 @@ Chcete-li přidat panel do webového uživatelského rozhraní, je nutné přida
 
 Chcete-li začít, obsahuje soubor **Src/názor/komponenty, stránky/Řídicí panel/panely/examplePanel** soubory, které definují panel, včetně:
 
-**examplePanel. js**
+**examplePanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
 Zkopírujte **zdroj/návod/komponenty/stránky/Řídicí panel/panely/panely/složka examplePanel** do složky **Src/Components/Pages/paneles/panely** .
 
-Přidejte následující export do souboru **Src/názorného/Components/Pages/Dashboard/paneles/index. js** :
+Přidejte následující export do souboru **Src/názorného/Components/Pages/Dashboard** /paneles/index.js:
 
 ```js
 export * from './examplePanel';
@@ -57,7 +57,7 @@ export * from './examplePanel';
 
 ### <a name="add-the-panel-to-the-dashboard"></a>Přidat panel na řídicí panel
 
-Úpravou **Src/Components/Pages/Dashboard/řídicího panelu. js** přidejte panel.
+Upravte **Src/Components/Pages/Dashboard/dashboard.js** a přidejte panel.
 
 Přidejte panel příkladu do seznamu importů z panelů:
 
@@ -90,7 +90,7 @@ Pokud webové uživatelské rozhraní ještě neběží, spusťte následující
 npm start
 ```
 
-Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard`. Přejděte na stránku **řídicí panel** , abyste zobrazili nový panel.
+Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard` . Přejděte na stránku **řídicí panel** , abyste zobrazili nový panel.
 
 ## <a name="next-steps"></a>Další kroky
 

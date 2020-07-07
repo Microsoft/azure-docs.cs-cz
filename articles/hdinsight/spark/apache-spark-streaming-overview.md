@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 0ccb87017f962650f099d506e1d200ab408316d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195141"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Přehled streamování Apache Spark
 
-[Apache Spark](https://spark.apache.org/) Streamování zajišťuje zpracování datových proudů v clusterech HDInsight Spark. S jistotou, že jakákoli vstupní událost je zpracována přesně jednou, i když dojde k selhání uzlu. Datový proud Spark je dlouhodobá úloha, která přijímá vstupní data z nejrůznějších zdrojů, včetně Azure Event Hubs. Také: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ`RAW TCP Sockets nebo monitorování Apache Hadoop přízové systémy souborů. Na rozdíl od výhradně procesu založeného na událostech vytvoří datový proud Spark vstupní data do časových oken. Například řez o dvou sekundách a následně transformuje každou dávku dat pomocí map, snižování, spojování a extrahování operací. Datový proud Spark pak zapisuje transformovaná data mimo systém souborů, databází, řídicích panelů a konzoly.
+[Apache Spark](https://spark.apache.org/) Streamování zajišťuje zpracování datových proudů v clusterech HDInsight Spark. S jistotou, že jakákoli vstupní událost je zpracována přesně jednou, i když dojde k selhání uzlu. Datový proud Spark je dlouhodobá úloha, která přijímá vstupní data z nejrůznějších zdrojů, včetně Azure Event Hubs. Také: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ` raw TCP Sockets nebo monitorování Apache HADOOP přízové systémy souborů. Na rozdíl od výhradně procesu založeného na událostech vytvoří datový proud Spark vstupní data do časových oken. Například řez o dvou sekundách a následně transformuje každou dávku dat pomocí map, snižování, spojování a extrahování operací. Datový proud Spark pak zapisuje transformovaná data mimo systém souborů, databází, řídicích panelů a konzoly.
 
 ![Zpracování datových proudů pomocí HDInsight a streamování Sparku](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Aplikace Spark streamování musí před odesláním této dávky na zpracování počkat `micro-batch` na zlomek sekundy. Naproti tomu aplikace řízená událostmi zpracovává každou událost okamžitě. Latence streamování Sparku obvykle trvá několik sekund. Výhody mikrodávkového přístupu jsou efektivnější zpracování dat a jednodušší agregační výpočty.
+Aplikace Spark streamování musí `micro-batch` před odesláním této dávky na zpracování počkat na zlomek sekundy. Naproti tomu aplikace řízená událostmi zpracovává každou událost okamžitě. Latence streamování Sparku obvykle trvá několik sekund. Výhody mikrodávkového přístupu jsou efektivnější zpracování dat a jednodušší agregační výpočty.
 
 ## <a name="introducing-the-dstream"></a>Představujeme DStream
 
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 Výsledný výstup vypadá jako následující výstup:
 
-| value | time |
+| hodnota | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -222,7 +222,7 @@ ssc.start()
 
 Po první minutě se v každé z těchto dvou dávek shromážděných v okně nachází 12 záznamů – šest záznamů.
 
-| value | time |
+| hodnota | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158

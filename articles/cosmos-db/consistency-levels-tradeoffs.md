@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82191732"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem
@@ -67,10 +67,10 @@ Následující tabulka definuje vztah mezi modelem konzistence a odolností dat 
 |---------|---------|---------|---------|---------|
 |1|Jedna nebo více hlavních serverů|Jakákoli úroveň konzistence|< 240 minut|<1 týden|
 |>1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
-|>1|Jedna hlavní|Omezená neaktuálnost|*K* & *T*|< 15 minut|
+|>1|Jedna hlavní|Omezená neaktuálnost|*K*  &  *T*|< 15 minut|
 |>1|Jedna hlavní|Silné|0|< 15 minut|
 |>1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
-|>1|Vícenásobný hlavní|Omezená neaktuálnost|*K* & *T*|0|
+|>1|Vícenásobný hlavní|Omezená neaktuálnost|*K*  &  *T*|0|
 
 *K* = počet verzí *"K"* (tj. aktualizace) položky.
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188442"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Řešení potíží se skripty v Azure HDInsight
@@ -25,13 +25,13 @@ Pomocí webového uživatelského rozhraní Apache Ambari můžete zobrazit info
 
 ### <a name="apache-ambari-web-ui"></a>Webové uživatelské rozhraní Apache Ambari
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
 1. Na panelu v horní části stránky vyberte položku **OPS** . V seznamu se zobrazí aktuální a předchozí operace prováděné na clusteru prostřednictvím Ambari.
 
     ![Panel webového uživatelského rozhraní Ambari s vybranou operací Operations](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. Vyhledá položky, které mají ve sloupci **Operations** **customscriptaction běžet\_** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
+1. Vyhledá položky, které mají ve sloupci **Operations** ** \_ customscriptaction běžet** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
 
     ![Operace s akcemi skriptu Apache Ambari](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -41,7 +41,7 @@ Pomocí webového uživatelského rozhraní Apache Ambari můžete zobrazit info
 
 Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchovávají v účtu úložiště clusteru.
 
-* Protokoly úložiště jsou k dispozici `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`na adrese.
+* Protokoly úložiště jsou k dispozici na adrese `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` .
 
     ![Protokoly akcí skriptů](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
@@ -53,7 +53,7 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
     * **Uzel Zookeeper**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* Všechny **stdout** a **stderr** odpovídajícího hostitele se nahrají do účtu úložiště. Pro každou akci skriptu existuje jeden **výstup\*-. txt** a **Errors\*. txt** . Soubor **Output-*. txt** obsahuje informace o identifikátoru URI skriptu, který byl spuštěn na hostiteli. Následující text je příkladem těchto informací:
+* Všechny **stdout** a **stderr** odpovídajícího hostitele se nahrají do účtu úložiště. Pro každou akci skriptu existuje jeden **výstup- \* . txt** a **Errors. \* txt** . Soubor **Output-*. txt** obsahuje informace o identifikátoru URI skriptu, který byl spuštěn na hostiteli. Následující text je příkladem těchto informací:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -84,7 +84,7 @@ ImportError: cannot import name BlobService
 
 __Příčina__: K této chybě dojde, když upgradujete klienta Python Azure Storage, který je součástí clusteru HDInsight. HDInsight očekává Azure Storage 0.20.0 klienta.
 
-__Řešení__. Chcete-li tuto chybu vyřešit, připojte se ručně k jednotlivým uzlům clusteru pomocí nástroje `ssh`. Spusťte následující příkaz, který znovu nainstaluje správnou verzi klienta úložiště:
+__Řešení__. Chcete-li tuto chybu vyřešit, připojte se ručně k jednotlivým uzlům clusteru pomocí nástroje `ssh` . Spusťte následující příkaz, který znovu nainstaluje správnou verzi klienta úložiště:
 
 ```bash
 sudo pip install azure-storage==0.20.0
@@ -112,6 +112,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

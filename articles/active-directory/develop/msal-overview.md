@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 7aa7dea65df507c0bb35a30bf2a68049a7625137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181779"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Přehled knihovny Microsoft Authentication Library (MSAL)
@@ -51,8 +51,8 @@ MSAL se dá použít v mnoha scénářích aplikací, včetně následujících:
 | Knihovna | Podporované platformy a architektury|
 | --- | --- |
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Univerzální platforma Windows|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Rozhraní JavaScript/TypeScript, jako je AngularJS, života. js nebo Durandal. js|
-| [MSAL pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Rozhraní JavaScript/TypeScript, jako je AngularJS, Ember.js nebo Durandal.js|
+| [MSAL pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Telefon|
 | [MSAL pro iOS a MacOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS a macOS|
 | [MSAL v Javě](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows, macOS, Linux|
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows, macOS, Linux|
@@ -61,4 +61,4 @@ MSAL se dá použít v mnoha scénářích aplikací, včetně následujících:
 
 Active Directory Authentication Library (ADAL) se integruje s koncovým bodem Azure AD for Developers (v 1.0), kde MSAL se integruje s koncovým bodem Microsoft Identity Platform (v 2.0). Koncový bod v 1.0 podporuje pracovní účty, ale ne osobní účty. Koncový bod v 2.0 je sjednocením osobních účtů a pracovních účtů společnosti Microsoft do jednoho ověřovacího systému. Navíc můžete pomocí MSAL získat také ověřování pro Azure AD B2C.
 
-Konkrétnější informace najdete v tématu [migrace na MSAL.NET z ADAL.NET](msal-net-migration.md) a [migrace na MSAL. js z ADAL. js](msal-compare-msal-js-and-adal-js.md).
+Podrobnější informace najdete v článku o [migraci na MSAL.NET z ADAL.NET](msal-net-migration.md) a [migrace na MSAL.js z ADAL.js](msal-compare-msal-js-and-adal-js.md).

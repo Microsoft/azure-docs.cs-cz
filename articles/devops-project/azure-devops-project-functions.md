@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233148"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Nasazení do Azure Functions s DevOps Starter
@@ -36,7 +36,7 @@ V tomto kurzu provedete následující:
 >* Potvrďte změny v Gitu a automaticky je nasaďte do Azure.
 >* Vyčištění prostředků
 
-V současné době jsou podporované běhové moduly pro funkce **.NET** a **Node. js**. Používáme. .NET runtime pro tento kurz nasazení na Azure Functions. 
+V současné době jsou podporované běhové moduly pro funkce **.NET** a **Node.js**. Používáme. .NET runtime pro tento kurz nasazení na Azure Functions. 
 
 ## <a name="prerequisites"></a>Požadavky
 

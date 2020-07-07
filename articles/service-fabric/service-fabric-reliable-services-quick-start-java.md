@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184142"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Začínáme s Reliable Services v jazyce Java
@@ -28,7 +28,7 @@ Pokud ho potřebujete nastavit, přečtěte si v článku [Začínáme v počít
 ## <a name="basic-concepts"></a>Základní koncepty
 Abyste mohli začít s Reliable Services, stačí pochopit jenom několik základních konceptů:
 
-* **Typ služby**: Toto je vaše implementace služby. Je definována třídou, kterou napíšete, `StatelessService` která rozšiřuje a jakýkoli jiný kód nebo závislosti, společně s názvem a číslem verze.
+* **Typ služby**: Toto je vaše implementace služby. Je definována třídou, kterou napíšete, která rozšiřuje `StatelessService` a jakýkoli jiný kód nebo závislosti, společně s názvem a číslem verze.
 * **Instance pojmenované služby**: Pokud chcete službu spustit, vytvoříte pojmenované instance typu služby, podobně jako při vytváření instancí objektů typu třídy. Instance služby jsou ve skutečnosti instance objektů vaší třídy služby, kterou píšete.
 * **Hostitel služby**: pojmenované instance služby, které vytvoříte, musí běžet v rámci hostitele. Hostitel služby je jenom proces, ve kterém se můžou spouštět instance služby.
 * **Registrace služby**: registrace přináší všechno dohromady. Typ služby musí být zaregistrován s modulem runtime Service Fabric v hostiteli služby, aby mohl Service Fabric vytvářet instance pro spuštění.  
@@ -40,7 +40,7 @@ Začněte vytvořením aplikace Service Fabric. Sada Service Fabric SDK pro Linu
 $ yo azuresfjava
 ```
 
-Pokud chcete vytvořit **spolehlivou bezstavovou službu**, postupujte podle pokynů. Pro tento kurz pojmenujte aplikaci "HelloWorldApplication" a službu "HelloWorld". Výsledek zahrnuje adresáře pro `HelloWorldApplication` a. `HelloWorld`
+Pokud chcete vytvořit **spolehlivou bezstavovou službu**, postupujte podle pokynů. Pro tento kurz pojmenujte aplikaci "HelloWorldApplication" a službu "HelloWorld". Výsledek zahrnuje adresáře pro `HelloWorldApplication` a `HelloWorld` .
 
 ```bash
 HelloWorldApplication/
@@ -67,7 +67,7 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 ### <a name="service-registration"></a>Registrace služby
-Typy služeb musí být registrovány s modulem runtime Service Fabric. Typ služby je definován v třídě `ServiceManifest.xml` a vaší třídy služby, která implementuje `StatelessService`. Registrace služby se provádí v hlavním vstupním bodě procesu. V tomto příkladu je `HelloWorldServiceHost.java`hlavním vstupním bodem procesu:
+Typy služeb musí být registrovány s modulem runtime Service Fabric. Typ služby je definován v `ServiceManifest.xml` třídě a vaší třídy služby, která implementuje `StatelessService` . Registrace služby se provádí v hlavním vstupním bodě procesu. V tomto příkladu je hlavním vstupním bodem procesu `HelloWorldServiceHost.java` :
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -87,7 +87,7 @@ public static void main(String[] args) throws Exception {
 
 Otevřete **HelloWorldApplication/Hello/src/statelessservice/HelloWorldService. Java**. Tato třída definuje typ služby a může spustit libovolný kód. Rozhraní API služby poskytuje dva vstupní body pro váš kód:
 
-* Otevřená metoda vstupního bodu, která se nazývá `runAsync()`, kde můžete začít spouštět jakékoli úlohy, včetně dlouhotrvajících výpočetních úloh.
+* Otevřená metoda vstupního bodu, která se nazývá `runAsync()` , kde můžete začít spouštět jakékoli úlohy, včetně dlouhotrvajících výpočetních úloh.
 
 ```java
 @Override
@@ -105,7 +105,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Tento kurz se `runAsync()` zaměřuje na metodu vstupního bodu. Tady můžete hned začít s kódem.
+Tento kurz se zaměřuje na `runAsync()` metodu vstupního bodu. Tady můžete hned začít s kódem.
 
 ### <a name="runasync"></a>RunAsync
 Platforma volá tuto metodu, když je umístěna instance služby a je připravena k provedení. U bezstavových služeb to znamená, že když je instance služby otevřená. Token zrušení se poskytuje ke koordinaci, když je potřeba uzavřít instanci služby. V Service Fabric může tento cyklus otevření nebo ukončení instance služby probíhat mnohokrát po celou dobu životnosti služby. K tomu může dojít z různých důvodů, včetně:
@@ -183,7 +183,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()`. Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
+`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním provede další práci vaším jménem `RunAsync()` . Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a správce spolehlivého stavu
 ```java

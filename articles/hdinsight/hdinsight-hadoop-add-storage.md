@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192480"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště do HDInsight
 
-Naučte se používat akce skriptů k přidání dalších *účtů* Azure Storage do HDInsight. Kroky v tomto dokumentu přidávají *účet* úložiště do stávajícího clusteru HDInsight. Tento článek se týká *účtů* úložiště (nikoli výchozího účtu úložiště clusteru) a ne dalšího úložiště, jako je [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) a. [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+Naučte se používat akce skriptů k přidání dalších *účtů* Azure Storage do HDInsight. Kroky v tomto dokumentu přidávají *účet* úložiště do stávajícího clusteru HDInsight. Tento článek se týká *účtů* úložiště (nikoli výchozího účtu úložiště clusteru) a ne dalšího úložiště, jako je [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) a [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
 
 > [!IMPORTANT]  
 > Informace v tomto dokumentu se týkají přidání dalších účtů úložiště do clusteru po jeho vytvoření. Informace o přidávání účtů úložiště během vytváření clusteru najdete v tématu [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md).
@@ -32,13 +32,13 @@ Naučte se používat akce skriptů k přidání dalších *účtů* Azure Stora
 
 Během zpracování skript provede následující akce:
 
-* Pokud účet úložiště již existuje v konfiguraci Core-site. XML pro cluster, skript se ukončí a nebudou provedeny žádné další akce.
+* Pokud účet úložiště již existuje v konfiguraci core-site.xml clusteru, skript se ukončí a nebudou provedeny žádné další akce.
 
 * Ověřuje, že účet úložiště existuje a je k němu možné přihlédnout pomocí klíče.
 
 * Šifruje klíč pomocí pověření clusteru.
 
-* Přidá účet úložiště do souboru Core-site. XML.
+* Přidá účet úložiště do souboru core-site.xml.
 
 * Zastaví a restartuje Apache Oozie, Apache Hadoop nitě Apache Hadoop MapReduce2 a služby Apache Hadoop HDFS. Zastavení a spuštění těchto služeb umožňuje používat nový účet úložiště.
 
@@ -53,11 +53,11 @@ Použijte [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md#script-acti
 |---|---|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
 |Typ (typy) uzlů|Head|
-|Parametry|`ACCOUNTNAME``ACCOUNTKEY` `-p`|
+|Parametry|`ACCOUNTNAME``ACCOUNTKEY` `-p` (volitelné)|
 
 * `ACCOUNTNAME`je název účtu úložiště, který se má přidat do clusteru HDInsight.
-* `ACCOUNTKEY`je přístupový klíč pro `ACCOUNTNAME`.
-* Parametr `-p` je volitelný. Je-li tento parametr zadán, klíč nebude šifrován a je uložen v souboru Core-site. XML jako prostý text.
+* `ACCOUNTKEY`je přístupový klíč pro `ACCOUNTNAME` .
+* Parametr `-p` je volitelný. Je-li tento parametr zadán, klíč nebude šifrován a je uložen v souboru core-site.xml jako prostý text.
 
 ## <a name="verification"></a>Ověření
 
@@ -95,19 +95,19 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="apache-ambari"></a>Apache Ambari
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. Přejděte na stránku **HDFS** > **Konfigurace** > **Upřesnit** > **vlastní jádro-site**.
+1. Přejděte na stránku **HDFS**  >  **Konfigurace**  >  **Upřesnit**  >  **vlastní jádro-site**.
 
-1. Sledujte klíče, které začínají na `fs.azure.account.key`. Název účtu bude součástí klíče, jak je vidět v této ukázkové imagi:
+1. Sledujte klíče, které začínají na `fs.azure.account.key` . Název účtu bude součástí klíče, jak je vidět v této ukázkové imagi:
 
    ![ověření prostřednictvím Apache Ambari](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
 
 ## <a name="remove-storage-account"></a>Odebrat účet úložiště
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. Přejděte na stránku **HDFS** > **Konfigurace** > **Upřesnit** > **vlastní jádro-site**.
+1. Přejděte na stránku **HDFS**  >  **Konfigurace**  >  **Upřesnit**  >  **vlastní jádro-site**.
 
 1. Odeberte následující klíče:
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
@@ -123,7 +123,7 @@ Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran fi
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>Po změně klíče nejde získat přístup k úložišti.
 
-Pokud změníte klíč pro účet úložiště, HDInsight už nebude moct získat přístup k účtu úložiště. HDInsight používá kopii klíče uloženou v mezipaměti Core-site. XML pro cluster. Tuto kopii v mezipaměti je potřeba aktualizovat tak, aby odpovídala novému klíči.
+Pokud změníte klíč pro účet úložiště, HDInsight už nebude moct získat přístup k účtu úložiště. HDInsight používá kopii klíče uloženou v mezipaměti v core-site.xml pro daný cluster. Tuto kopii v mezipaměti je potřeba aktualizovat tak, aby odpovídala novému klíči.
 
 Když **znovu spustíte akci skriptu** , klíč se neaktualizuje, protože skript zkontroluje, jestli už položka pro účet úložiště existuje. Pokud položka již existuje, neprovede žádné změny.
 

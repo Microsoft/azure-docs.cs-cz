@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 4936f765052d6993e5a372bde6336e00b19a24f6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509257"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL
@@ -27,7 +27,7 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 > Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for MySQL nasazeny pro Pro obecné účely a paměťově optimalizované servery.
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)**.
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 

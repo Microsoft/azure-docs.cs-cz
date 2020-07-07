@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 4672a92ceba5dc52c717f76a705d0fa508ab41fd
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515466"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Ověřování šifrování dat pro Azure Database for PostgreSQL
@@ -23,7 +23,7 @@ Tento článek vám pomůže ověřit, že šifrování dat pomocí spravovanéh
 
 1. Pokud chcete ověřit, jestli se klíč zákazníka používá k šifrování, postupujte podle těchto kroků:
 
-    * V Azure Portal přejděte na**klíče** **Azure Key Vault** -> 
+    * V Azure Portal přejděte na **Azure Key Vault**  ->  **klíče** Azure Key Vault
     * Vyberte klíč, který se používá pro šifrování serveru.
     * Nastavte stav **povoleného** klíče na **ne**.
   

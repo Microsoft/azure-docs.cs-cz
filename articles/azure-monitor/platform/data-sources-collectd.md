@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186420"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná v agentech Linux v Azure Monitor
@@ -45,12 +45,12 @@ Kromě toho, pokud použijete verze shromážděné před 5,5, použijte místo 
        </URL>
     </Plugin>
 
-Shromážděná konfigurace používá výchozí`write_http` modul plug-in k odesílání dat metrik výkonu přes port 26000 pro Log Analytics agenta pro Linux. 
+Shromážděná konfigurace používá výchozí `write_http` modul plug-in k odesílání dat metrik výkonu přes port 26000 pro Log Analytics agenta pro Linux. 
 
 > [!NOTE]
 > Tento port můžete v případě potřeby nakonfigurovat na vlastní port definovaný.
 
-Agent Log Analytics pro Linux také naslouchá na portu 26000 pro shromážděné metriky a pak je převede na Azure Monitor metriky schématu. Následuje Log Analytics agenta pro konfiguraci `collectd.conf`systému Linux.
+Agent Log Analytics pro Linux také naslouchá na portu 26000 pro shromážděné metriky a pak je převede na Azure Monitor metriky schématu. Následuje Log Analytics agenta pro konfiguraci systému Linux `collectd.conf` .
 
     <source>
       type http
@@ -79,7 +79,7 @@ Níže jsou uvedené základní kroky ke konfiguraci shromažďování shromáž
 
 ### <a name="configure-collectd-to-forward-data"></a>Konfigurace shromážděná na dopředná data 
 
-1. Aby bylo možné směrovat shromážděná data do agenta Log Analytics pro Linux `oms.conf` , je nutné přidat do adresáře konfigurace ke shromáždění. Cíl tohoto souboru závisí na distribuce Linux vašeho počítače.
+1. Aby bylo možné směrovat shromážděná data do agenta Log Analytics pro Linux, je `oms.conf` nutné přidat do adresáře konfigurace ke shromáždění. Cíl tohoto souboru závisí na distribuce Linux vašeho počítače.
 
     Pokud je váš adresář shromážděné konfigurace umístěný v/etc/collectd.d/:
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186284"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastní mřížky do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
@@ -46,11 +46,11 @@ Chcete-li přidat mřížku do webového uživatelského rozhraní, je nutné p�
 
 Chcete-li začít, složka **Src/názor/komponenty/Pages/pageWithGrid/exampleGrid** obsahuje soubory, které definují mřížku:
 
-**exampleGrid. js**
+**exampleGrid.js**
 
 [!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
 
-**exampleGridConfig. js**
+**exampleGridConfig.js**
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
@@ -58,7 +58,7 @@ Zkopírujte složku **Src/názorného/Components/Pages/pageWithGrid/exampleGrid*
 
 ### <a name="add-the-grid-to-the-page"></a>Přidat mřížku na stránku
 
-Upravte **Src/Components/Pages/example/šablonou základní stránky. Container. js** následujícím způsobem a importujte definice služby:
+Upravte **Src/Components/Pages/example/basicPage.container.js** následujícím způsobem pro import definic služby:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Upravte **Src/Components/Pages/example/šablonou základní stránky. js** následujícím způsobem a přidejte tak mřížku:
+Upravte **Src/Components/Pages/example/basicPage.js** následujícím způsobem přidejte mřížku:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Upravte **Src/Components/Pages/example/šablonou základní stránky. test. js** následujícím způsobem a aktualizujte testy:
+Chcete-li aktualizovat testy, upravte **Src/Components/Pages/example/basicPage.test.js** následujícím způsobem:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -182,7 +182,7 @@ Pokud webové uživatelské rozhraní ještě neběží, spusťte následující
 npm start
 ```
 
-Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard`. Přejděte na stránku s **příkladem** , kde se zobrazí data zobrazení mřížky ze služby.
+Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard` . Přejděte na stránku s **příkladem** , kde se zobrazí data zobrazení mřížky ze služby.
 
 ## <a name="select-rows"></a>Vybrat řádky
 
@@ -247,7 +247,7 @@ Pokud uživatel potřebuje pracovat s více řádky současně, použijte zaškr
 
 Pokud uživatel potřebuje jednat jenom na jednom řádku, nakonfigurujte odkaz na částečný výběr pro jeden nebo více sloupců v **columnDefs**.
 
-1. V **exampleGridConfig. js**přidejte **SoftSelectLinkRenderer** jako **cellRendererFramework** pro **columnDef**.
+1. V **exampleGridConfig.js**přidejte **SoftSelectLinkRenderer** jako **cellRendererFramework** pro **columnDef**.
 
     ```js
     export const exampleColumnDefs = {

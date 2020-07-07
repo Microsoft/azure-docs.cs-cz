@@ -5,13 +5,13 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137701"
 ---
-# <a name="alerts-on-activity-log"></a>Výstrahy na protokol aktivit
+# <a name="alerts-on-activity-log"></a>Upozornění na protokol aktivit
 
 ## <a name="overview"></a>Přehled
 
@@ -48,7 +48,7 @@ Výstrahy protokolu aktivit mají několik běžných možností:
 > [!NOTE]
 > V rámci předplatného můžete vytvořit pravidla výstrah až 100, a to buď na jeden prostředek, všechny prostředky ve skupině prostředků (nebo) na celé úrovni předplatného.
 
-Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Můžete:
+Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Další možnosti:
 
 * V upozornění protokolu aktivit použijte existující skupinu akcí.
 * Vytvořte novou skupinu akcí.

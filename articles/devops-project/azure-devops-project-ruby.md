@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: cde959d8e075b55cb6cbb37479ca49cdd8a8c0c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233733"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro Ruby na železnici pomocí Azure DevOps Starter
@@ -30,7 +30,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím p
 
 Azure DevOps Starter vytvoří kanál CI/CD v Azure Repos. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
@@ -67,7 +67,7 @@ Azure DevOps Starter vytvoří úložiště Git v Azure Pipelines nebo GitHubu. 
 
 1. Pokud chcete zobrazit adresu URL pro klonování úložiště, vyberte **klonovat** v pravém horním rohu. Úložiště Git můžete klonovat v rámci svého oblíbeného integrovaného vývojového prostředí (IDE). V dalších několika krocích můžete k provedení změn kódu a jejich potvrzení přímo do hlavní větve použít webový prohlížeč.
 
-1. Vlevo otevřete soubor *app/views/Pages/Home. html. erb* a pak vyberte **Upravit**.
+1. Vlevo otevřete soubor *app/views/Pages/home.html. erb* a pak vyberte **Upravit**.
 
 1. Proveďte změnu souboru. Například upravte nějaký text v rámci jedné z značek DIV.
 

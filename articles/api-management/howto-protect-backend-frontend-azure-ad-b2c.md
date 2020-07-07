@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202872"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
@@ -68,7 +68,7 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
    * Volitelné Portál pro vývojáře API Management (Pokud nepoužíváte Azure API Management v úrovni spotřeby, další informace v tomto scénáři najdete později).
 1. Nastavte WebApp/Web API pro všechny 3 aplikace a nastavte možnost ' Allow implicitní tok ' na Ano jenom pro klienta front-endu.
 1. Teď nastavte identifikátor URI ID aplikace, vyberte něco jedinečného a důležitého pro vytvářenou službu.
-1. Použijte zástupné symboly pro adresy URL odpovědí https://localhost, pro které teď například aktualizujeme tyto adresy URL později.
+1. Použijte zástupné symboly pro adresy URL odpovědí, pro které teď například https://localhost aktualizujeme tyto adresy URL později.
 1. Klikněte na tlačítko vytvořit a opakujte kroky 2-5 pro každou ze tří výše uvedených aplikací, záznam identifikátoru URI, názvu a ID aplikace pro pozdější použití pro všechny tři aplikace.
 1. Otevřete API Management aplikaci Portál pro vývojáře ze seznamu aplikací a vyberte kartu *klíče* (v části Obecné) a vygenerujte ověřovací klíč kliknutím na vygenerovat klíč.
 1. Když kliknete na Uložit, poznamenejte si klíč někam do trezoru pro pozdější použití – mějte na paměti, že toto místo je jedinou pravděpodobností, abyste se dostali k zobrazení a zkopírování tohoto klíče.
@@ -148,12 +148,12 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
 5. Přepněte zpátky na kartu HttpTrigger1, klikněte na získat adresu URL funkce a potom zkopírujte adresu URL, která se zobrazí.
 
    > [!NOTE]
-   > Vazby, které jste právě vytvořili, jednoduše říkají funkcím, aby odpovídaly anonymním žádostem HTTP GET na adresu URL, kterou jste právě zkopírovali. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) Teď máme škálovatelné rozhraní API HTTPS bez serveru, které dokáže vracet velmi jednoduchou datovou část.
+   > Vazby, které jste právě vytvořili, jednoduše říkají funkcím, aby odpovídaly anonymním žádostem HTTP GET na adresu URL, kterou jste právě zkopírovali. ( `https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey` ) Teď máme škálovatelné rozhraní API HTTPS bez serveru, které dokáže vracet velmi jednoduchou datovou část.
    > Nyní můžete testovat volání tohoto rozhraní API z webového prohlížeče pomocí výše uvedené adresy URL, můžete také přesměrovat "kód = tajná část adresy URL a prokázat, že Azure Functions vrátí chybu 401.
 
 ## <a name="configure-and-secure-the-function-api"></a>Konfigurace a zabezpečení rozhraní API funkcí
 1. Je třeba nakonfigurovat dvě další oblasti v aplikaci Function App (omezení ověření a sítě).
-1. Nejdřív nakonfigurujeme ověřování/autorizaci, takže kliknete na název aplikace Function App (vedle ikony funkce &lt;Z&gt; ) a zobrazí se stránka s přehledem.
+1. Nejdřív nakonfigurujeme ověřování/autorizaci, takže kliknete na název aplikace Function App (vedle &lt; &gt; ikony funkce Z) a zobrazí se stránka s přehledem.
 1. Dále vyberte kartu funkce platformy a vyberte možnost ověřování/autorizace.
 1. Zapněte funkci ověřování App Service.
 1. V části zprostředkovatelé ověřování vyberte možnost Azure Active Directory a v přepínači režim správy vyberte možnost Upřesnit.
@@ -257,12 +257,12 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
 1. Otevřete okno Azure AD B2C a přejděte k registraci aplikace portálu pro vývojáře.
 1. Nastavte položku Adresa URL odpovědi na tu, kterou jste si poznamenali, když jste nakonfigurovali redirect_uri udělení ověřovacího kódu v API Management dříve.
 
-   Když je teď v konzole povolená autorizace uživatele OAuth 2,0 `Echo API`, před VOLÁNÍM rozhraní API získá Konzola pro vývojáře přístupový token pro uživatele.
+   Když je teď v konzole povolená autorizace uživatele OAuth 2,0 `Echo API` , před voláním rozhraní API získá Konzola pro vývojáře přístupový token pro uživatele.
 
-1. Přejděte na libovolnou operaci `Echo API` na portálu pro vývojáře a vyberte **vyzkoušet** , abyste vás mohli přenést do konzoly pro vývojáře.
+1. Přejděte na libovolnou operaci na `Echo API` portálu pro vývojáře a vyberte **vyzkoušet** , abyste vás mohli přenést do konzoly pro vývojáře.
 1. Poznamenejte si novou položku v sekci **autorizace** , která odpovídá autorizačnímu serveru, který jste právě přidali.
 1. V rozevíracím seznamu autorizace vyberte **autorizační kód** a zobrazí se výzva, abyste se přihlásili do TENANTA Azure AD. Pokud jste již k účtu přihlášeni, pravděpodobně nebudete vyzváni.
-1. Po úspěšném přihlášení se do žádosti `Authorization: Bearer` přidá hlavička s přístupovým tokenem z Azure AD B2C kódovaným v kódování Base64. 
+1. Po úspěšném přihlášení se `Authorization: Bearer` do žádosti přidá hlavička s přístupovým tokenem z Azure AD B2C kódovaným v kódování Base64. 
 1. Vyberte **Odeslat** a můžete volat rozhraní API úspěšně.
 
    > [!NOTE]
@@ -283,7 +283,7 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
 ## <a name="build-the-javascript-spa-to-consume-the-api"></a>Sestavení JavaScriptu pro použití rozhraní API
 1. Otevřete okno účty úložiště v Azure Portal 
 1. Vyberte účet, který jste vytvořili, a v části nastavení vyberte okno "statický web" (Pokud nevidíte možnost "statický web"), zkontrolujte, že jste vytvořili účet v2.
-1. Nastavte funkci statického webového hostování na povoleno a nastavte název dokumentu indexu na index. html a pak klikněte na Uložit.
+1. Nastavte funkci statického webového hostování na povoleno a nastavte název dokumentu indexu na ' index.html ' a pak klikněte na Uložit.
 1. Poznamenejte si obsah primárního koncového bodu, jako je to místo, kde se nachází front-end lokalita. 
 
    > [!NOTE]
@@ -291,7 +291,7 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
 
 ## <a name="upload-the-js-spa-sample"></a>Nahrání ukázky pro adresu JS SPA
 1. Pořád v okně účet úložiště vyberte okno objekty BLOB z části Služba BLOB Service a klikněte na kontejner $web, který se zobrazí v pravém podokně.
-1. Níže uvedený kód uložte do souboru místně na počítači jako index. html a potom soubor index. html nahrajte do kontejneru $web.
+1. Níže uvedený kód níže uložte do souboru místně na svém počítači index.html a pak soubor nahrajte index.html do kontejneru $web.
 
    ```html
    <!doctype html>
@@ -415,7 +415,7 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
 
 ## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>Konfigurace zabezpečeného hesla pro Azure AD B2C JS
 1. Teď víme, kde všechno je: můžeme nakonfigurovat zabezpečené ověřování pomocí odpovídající adresy rozhraní API API Management a správné Azure AD B2C ID aplikace/klienta.
-1. Vraťte se do okna úložiště Azure Portal a klikněte na index. html a pak zvolte Upravit objekt BLOB. 
+1. Vraťte se do okna úložiště Azure Portal a klikněte na index.html a pak zvolte Upravit objekt BLOB. 
 1. Aktualizujte podrobnosti ověření tak, aby odpovídaly front-endové aplikaci, kterou jste předtím zaregistrovali v B2C a zaznamenali, že hodnoty "b2cScopes" jsou pro back-end rozhraní API.
 1. Klíč webApi a adresu URL API najdete v API Management testovacím podokně pro operaci rozhraní API.
 1. Vytvořte klíč předplatného APIM podle nadpisu API Management zpátky do okna API Management, vyberte předplatné a pak klikněte na Přidat předplatné a pak záznam uložte. Kliknutím na tlačítko se třemi tečkami (...) vedle vytvořeného řádku umožníte zobrazení klíčů, abyste mohli primární klíč zkopírovat.

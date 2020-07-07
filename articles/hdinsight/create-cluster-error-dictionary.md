@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186630"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
@@ -26,7 +26,7 @@ Tento článek popisuje řešení chyb, ke kterým může dojít při vytvářen
 
 ### <a name="error"></a>Chyba
 
-"Umístění akce skriptu není možné přistupovat\<k identifikátoru\>URI: URL akce skriptu"
+"Umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT ACTION URL\> "
 
 #### <a name="error-message"></a>Chybová zpráva
 
@@ -48,11 +48,11 @@ Služba HDInsight nemá přístup k adrese URL akce skriptu, kterou jste zadali 
 
 ### <a name="error"></a>Chyba
 
-"Umístění akce skriptu není možné přistupovat \<k\>identifikátoru URI: SCRIPT_ACTION_URL"
+"Umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT_ACTION_URL\> "
 
 #### <a name="error-message"></a>Chybová zpráva
 
-"Zadané identifikátory URI \<SCRIPT_URI\> skriptu jsou v adls, ale tento cluster nemá žádný objekt zabezpečení Data Lake Storage".
+"Daný identifikátor URI skriptu \<SCRIPT_URI\> je v adls, ale tento cluster nemá žádný objekt zabezpečení Data Lake Storage".
 
 ### <a name="cause"></a>Příčina
 
@@ -68,7 +68,7 @@ Přidejte odpovídající Azure Data Lake Storage účet 1. generace do clusteru
 
 ### <a name="error"></a>Chyba
 
-\<Velikost virtuálního počítače\>CUSTOMER_SPECIFIED_VM_SIZE zadaná v požadavku je neplatná nebo není podporovaná pro roli\<role.\> Platné hodnoty jsou: \<VALID_VM_SIZE_FOR_ROLE\>. "
+Velikost virtuálního počítače \<CUSTOMER_SPECIFIED_VM_SIZE\> poskytnutá v žádosti je neplatná nebo není podporovaná pro roli \<ROLE\> . Platné hodnoty jsou: \<VALID_VM_SIZE_FOR_ROLE\> . "
 
 ### <a name="cause"></a>Příčina
 
@@ -84,7 +84,7 @@ Chybová zpráva obsahuje seznam platných hodnot pro velikost virtuálního po�
 
 ### <a name="error"></a>Chyba
 
-"VirtualNetworkId není platný. VirtualNetworkId '\<USER_VIRTUALNETWORKID\>' *
+"VirtualNetworkId není platný. VirtualNetworkId \<USER_VIRTUALNETWORKID\> * "*"
 
 ### <a name="cause"></a>Příčina
 
@@ -108,11 +108,11 @@ Tady je příklad ID virtuální sítě:
 
 ### <a name="error"></a>Chyba
 
-Nasazení clusteru se nepovedlo kvůli chybě v akci vlastního skriptu. Neúspěšné akce \<:\>SCRIPT_NAME, přečtěte si prosím uživatelské rozhraní Ambari, abyste mohli dál ladit selhání. "
+Nasazení clusteru se nepovedlo kvůli chybě v akci vlastního skriptu. Neúspěšné akce: \<SCRIPT_NAME\> , přejděte prosím na uživatelské rozhraní Ambari, abyste mohli dál ladit selhání. "
 
 ### <a name="cause"></a>Příčina
 
-Vlastní skript, který jste zadali během žádosti o vytvoření clusteru, se spustí po úspěšném nasazení clusteru. Tento kód chyby označuje, že při provádění vlastního skriptu s názvem \<SCRIPT_NAME\>došlo k chybě.
+Vlastní skript, který jste zadali během žádosti o vytvoření clusteru, se spustí po úspěšném nasazení clusteru. Tento kód chyby označuje, že při provádění vlastního skriptu s názvem došlo k chybě \<SCRIPT_NAME\> .
 
 ### <a name="resolution"></a>Řešení
 
@@ -124,7 +124,7 @@ Vzhledem k tomu, že skript je váš vlastní skript, doporučujeme, abyste prob
 
 ### <a name="error"></a>Chyba
 
-"Verze \<\> \<schématu\> META_STORE_TYPE metastore METASTORE_MAJOR_VERSION v database_name \<\> databáze není kompatibilní s verzí \<clusteru CLUSTER_VERSION"\>
+" \<META_STORE_TYPE\> Verze schématu metastore \<METASTORE_MAJOR_VERSION\> v databázi \<DATABASE_NAME\> není kompatibilní s verzí clusteru. \<CLUSTER_VERSION\> "
 
 ### <a name="cause"></a>Příčina
 
@@ -161,7 +161,7 @@ Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového p
 
 ### <a name="error"></a>Chyba
 
-"Spravovaná identita nemá oprávnění k účtu úložiště. Ověřte prosím, že role vlastníka dat objektů BLOB úložiště je přiřazená k spravované identitě pro účet úložiště. Storage:/subscriptions/ \<\> ID předplatného\< /ResourceGroups/název\> skupiny \<prostředků/Providers/Microsoft.Storage/storageAccounts/název\>účtu úložiště, spravovaná identita \<:/subscriptions/\> ID předplatného/resourceGroups/\> / \<\< název skupiny prostředků/Providers/Microsoft.ManagedIdentity/userAssignedIdentities/\>název spravované identity uživatele.
+"Spravovaná identita nemá oprávnění k účtu úložiště. Ověřte prosím, že role vlastníka dat objektů BLOB úložiště je přiřazená k spravované identitě pro účet úložiště. Storage:/subscriptions/ \<Subscription ID\> /ResourceGroups/ \< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\> , spravovaná identita:/subscriptions/ \<Subscription ID\> /resourceGroups// \< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\> "
 
 ### <a name="cause"></a>Příčina
 
@@ -182,7 +182,7 @@ Další informace najdete v tématu [Nastavení oprávnění pro spravovanou ide
 
 ### <a name="error"></a>Chyba
 
-"Pravidla zabezpečení\<ve skupině zabezpečení sítě/Subscriptions/SubscriptionID\>/ResourceGroups/<název\> skupiny prostředků default/Providers/Microsoft. Network/networkSecurityGroups/\<název\> skupiny zabezpečení sítě nakonfigurovaná s podsítí/Subscriptions/\<SubscriptionId\>/resourceGroups/\<název\> skupiny prostředků RG-westeurope-VNet-TomTom-default/Providers/Microsoft. Network/virtualNetworks\</Virtual Network\>name\</subnets/název\> podsítě nepovoluje požadované příchozí nebo odchozí připojení. Další informace najdete v tématu [plánování virtuální sítě pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), nebo kontaktování podpory.
+"Pravidla zabezpečení ve skupině zabezpečení sítě/Subscriptions/ \<SubscriptionID\> /resourceGroups/<název skupiny prostředků \> Default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> nakonfigurovaná s podsítí/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-VNet-TomTom-default/Providers/Microsoft. Network/virtualNetworks/ \<Virtual Network Name\> /subnets/ \<Subnet Name\> nepovoluje požadované příchozí nebo odchozí připojení. Další informace najdete v tématu [plánování virtuální sítě pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), nebo kontaktování podpory.
 
 ### <a name="cause"></a>Příčina
 
@@ -230,7 +230,7 @@ Pokud používáte vlastní skupinu zabezpečení sítě VNet (skupin zabezpeče
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kód chyby: nasazení selhala kvůli porušení zásad: prostředek<Resource URI>byl zakázán zásadami. Identifikátory zásad: [{"policyAssignment": {"název": "<Policy Name> ", "ID": "/Providers/Microsoft.Management/managementgroups/.<Management Group Name> Providers/Microsoft. Authorization/policyAssignments/<Policy Name>"}, "policyDefinition":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Kód chyby: nasazení selhala kvůli porušení zásad: prostředek <Resource URI> byl zakázán zásadami. Identifikátory zásad: [{"policyAssignment": {"název": " <Policy Name> ", "ID": "/Providers/Microsoft.Management/managementgroups/. <Management Group Name> providers/Microsoft. Authorization/policyAssignments/ <Policy Name> "}, "policyDefinition":<Policy Definition>
 
 ### <a name="cause"></a>Příčina
 

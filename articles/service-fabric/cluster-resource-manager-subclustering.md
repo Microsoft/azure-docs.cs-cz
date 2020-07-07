@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
 ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82183108"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>Vyrovnávání metriky subclusterů
@@ -103,7 +103,7 @@ Chování Správce prostředků o subclusterování se dá upravit úpravou nás
 * SubclusteringEnabled-parametr určuje, zda Správce prostředků při vyrovnávání zatížení převzít subclustery do účtu. Pokud je tento parametr vypnutý, Správce prostředků bude ignorovat subclustery a zkusit dosáhnout optimálního zůstatku na globální úrovni. Výchozí hodnota tohoto parametru je false.
 * SubclusteringReportingPolicy – určuje, jak Správce prostředků budou generovat sestavy o stavu pro hierarchické a částečné překrytí subclustery. Hodnota nula znamená, že zprávy o stavu týkající se subclusterů jsou vypnuté, "1" znamená, že zprávy o stavu budou vytvořeny pro optimální situace subclusterů a hodnota "2" bude vytvářet sestavy o stavu "OK". Výchozí hodnota pro tento parametr je "1".
 
-Manifestem clusteru. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -112,7 +112,7 @@ Manifestem clusteru. XML:
         </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195124"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>Přehled Azure Data Lake Storage Gen2 v HDInsight
@@ -63,7 +63,7 @@ Schéma identifikátoru URI poskytuje přístup šifrovaný protokolem SSL.
 
 `<PATH>`je název cesty HDFS souboru nebo adresáře.
 
-Pokud nejsou zadány hodnoty pro `<FILE_SYSTEM_NAME>` a `<ACCOUNT_NAME>` , použije se výchozí systém souborů. Pro soubory ve výchozím systému souborů použijte relativní cestu nebo absolutní cestu. Například `hadoop-mapreduce-examples.jar` soubor, který je součástí clusterů HDInsight, lze odkazovat pomocí jedné z následujících cest:
+Pokud `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` nejsou zadány hodnoty pro a, použije se výchozí systém souborů. Pro soubory ve výchozím systému souborů použijte relativní cestu nebo absolutní cestu. Například `hadoop-mapreduce-examples.jar` soubor, který je součástí clusterů HDInsight, lze odkazovat pomocí jedné z následujících cest:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -71,7 +71,7 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!NOTE]
-> Název souboru je `hadoop-examples.jar` v clusterech HDInsight verze 2,1 a 1,6. Když pracujete se soubory mimo HDInsight, zjistíte, že většina nástrojů nerozpoznala formát ABFS, ale očekává jako základní formát cesty, například `example/jars/hadoop-mapreduce-examples.jar`.
+> Název souboru je `hadoop-examples.jar` v clusterech HDInsight verze 2,1 a 1,6. Když pracujete se soubory mimo HDInsight, zjistíte, že většina nástrojů nerozpoznala formát ABFS, ale očekává jako základní formát cesty, například `example/jars/hadoop-mapreduce-examples.jar` .
 
 Další informace najdete v tématu [použití identifikátoru URI Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
 

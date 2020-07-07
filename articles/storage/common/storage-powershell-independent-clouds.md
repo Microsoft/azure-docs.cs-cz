@@ -10,10 +10,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176205"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v nezávislých cloudech Azure pomocí PowerShellu
@@ -84,7 +84,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Tento příkaz vrátí následující výsledky.
 
-| Název| StorageEndpointSuffix|
+| Name| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |

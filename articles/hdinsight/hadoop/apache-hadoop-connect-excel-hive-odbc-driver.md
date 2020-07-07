@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: 388f59f5090be43469acfde5197a658942e817f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82182442"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení aplikace Excel k Apache Hadoopu ve službě Azure HDInsight pomocí konektoru Microsoft Hive ODBC Driver
@@ -82,7 +82,7 @@ Následující kroky popisují způsob, jak importovat data z tabulky podregistr
 
 1. V Excelu otevřete nový nebo existující sešit.
 
-2. Na kartě **data** přejděte k části **získání dat** > **z jiných zdrojů** > **z rozhraní ODBC** a spusťte **z okna rozhraní ODBC** .
+2. Na kartě **data** přejděte k části **získání dat**  >  **z jiných zdrojů**  >  **z rozhraní ODBC** a spusťte **z okna rozhraní ODBC** .
 
     ![Průvodce otevřením datového připojení aplikace Excel](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Průvodce otevřením datového připojení aplikace Excel")
 
@@ -90,7 +90,7 @@ Následující kroky popisují způsob, jak importovat data z tabulky podregistr
 
 4. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **Windows** . Pak vyberte **připojit** a otevřete okno **navigátor** .
 
-5. Z **navigátoru**přejděte do **podregistru** > **Default** > **hivesampletable**a pak vyberte **načíst**. Před importováním dat do Excelu trvá chvíli chvilku.
+5. Z **navigátoru**přejděte do **podregistru**  >  **Default**  >  **hivesampletable**a pak vyberte **načíst**. Před importováním dat do Excelu trvá chvíli chvilku.
 
     ![Navigátor aplikace ODBC pro rozhraní HDInsight v Excelu](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Navigátor aplikace ODBC pro rozhraní HDInsight v Excelu")
 

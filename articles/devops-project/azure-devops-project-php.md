@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233784"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro PHP pomocí Azure DevOps Starter

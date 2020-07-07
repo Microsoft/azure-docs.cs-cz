@@ -4,10 +4,10 @@ description: Naučte se, jak pomocí REST API spravovat a monitorovat sdílené 
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184907"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Správa zálohování sdílených složek Azure pomocí REST API
@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Odpověď
 
-Název  | Typ  |  Popis
+Name  | Typ  |  Popis
 --- | --- | ----
 200 OK |  JobResource  | OK
 
@@ -204,7 +204,7 @@ Následující příklad aktivuje operaci zastavení ochrany pro sdílenou slož
 DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Odezvy
+### <a name="responses"></a>Odpovědi
 
 Odstranění ochrany je asynchronní operace. Operace vytvoří další operaci, která musí být sledována samostatně.
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 (obsah) po dokončení této operace.
