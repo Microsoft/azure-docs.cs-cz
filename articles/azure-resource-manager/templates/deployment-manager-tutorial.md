@@ -5,12 +5,11 @@ author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75471985"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056884"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
 
@@ -40,7 +39,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Další prostředky:
 
-* [Reference k Azure Deployment Manager REST API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Reference k Azure Deployment Manager REST API](/rest/api/deploymentmanager/).
 * [Kurz: použití kontroly stavu v Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -52,7 +51,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 K dokončení tohoto článku potřebujete:
 
 * Určité zkušenosti s vývojem [šablon Azure Resource Manageru](overview.md).
-* Azure Powershell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Azure Powershell Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
 * Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/scripting/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete nové okno prostředí PowerShell se zvýšenými oprávněními a použijte tento příkaz:
 
     ```powershell
@@ -105,7 +104,7 @@ Tyto dvě verze (1.0.0.0 a 1.0.0.1) jsou určené k [nasazení revize](#deploy-t
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
-    Tato šablona volá balíček pro nasazení, který obsahuje soubory webové aplikace. V tomto kurzu komprimovaný balíček obsahuje pouze soubor index. html.
+    Tato šablona volá balíček pro nasazení, který obsahuje soubory webové aplikace. V tomto kurzu komprimovaný balíček obsahuje pouze soubor index.html.
 3. Otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace – parametr containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
@@ -186,7 +185,7 @@ V pozdější části kurzu nasadíte uvedení. K provedení akcí nasazení (na
 
 Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigurovat řízení přístupu pro vaše předplatné.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
 4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
@@ -447,9 +446,9 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
 2. Pomocí pole **Filtrovat podle názvu** můžete vyfiltrovat skupiny prostředků vytvořené v tomto kurzu. Měly by být 3 až 4:
 
-    * ProjectName>RG: obsahuje prostředky Deployment Manager. ** &lt;**
-    * ProjectName>ServiceWUSrg: obsahuje prostředky definované pomocí ServiceWUS. ** &lt;**
-    * ProjectName>ServiceEUSrg: obsahuje prostředky definované pomocí ServiceEUS. ** &lt;**
+    * ** &lt; ProjectName>RG**: obsahuje prostředky Deployment Manager.
+    * ** &lt; ProjectName>ServiceWUSrg**: obsahuje prostředky definované pomocí ServiceWUS.
+    * ** &lt; ProjectName>ServiceEUSrg**: obsahuje prostředky definované pomocí ServiceEUS.
     * Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
 3. Vyberte název skupiny prostředků.
 4. V horní nabídce vyberte **Odstranit skupinu prostředků** .

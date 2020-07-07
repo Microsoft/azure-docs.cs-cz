@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 9a490550bf6652186c80268d4a99bff931897fcd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344182"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057003"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
@@ -78,9 +77,9 @@ V této části budete muset v krocích níže nahradit následující parametry
 | **\<resource-group-name>**  | myResourceGroupLBAZ (vyberte existující skupinu prostředků) |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | Západní Evropa      |
-| **\<IPv4-address-space>**   | 10.0.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 10.0.0.0/16          |
 | **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.0.0.0 \ 24          |
+| **\<subnet-address-range>** | 10.0.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -110,7 +109,7 @@ V této části vytvoříte pravidla skupiny zabezpečení sítě, která povol�
     - Jako **Priorita** zadejte *100*.
     - Jako název pravidla nástroje pro vyrovnávání zatížení zadejte *myHTTPRule*.
     - Jako popis pravidla nástroje pro vyrovnávání zatížení zadejte *Povolení protokolu HTTP*.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
  
    ![Vytvoření virtuální sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Zopakováním kroků 2 až 4 vytvořte další pravidlo *myRDPRule*, které povolí příchozí připojení RDP na portu 3389, s použitím následujících hodnot:
@@ -131,7 +130,7 @@ Vytvořte v různých zónách (zóny 1, 2 a 3) pro danou oblast virtuální po�
     - *myVM1* – název virtuálního počítače.        
     - *azureuser* – uživatelské jméno správce.    
     - *myResourceGroupLBAZ* – v části **Skupina prostředků** vyberte **Použít existující** a pak vyberte *myResourceGroupLBAZ*.
-2. Klikněte na tlačítko **OK**.
+2. Klikněte na **OK**.
 3. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 4. Zadejte následující hodnoty nastavení virtuálního počítače:
     - *zone 1* – zóna, do které umístíte virtuální počítač.
@@ -198,7 +197,7 @@ Pokud chcete nástroji pro vyrovnávání zatížení povolit monitorování sta
     - *80* – číslo portu.
     - *15* – **Interval** mezi pokusy o testování v sekundách.
     - *2* – **Prahová hodnota špatného stavu** neboli počet po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    ![Přidání testu](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
 
@@ -215,7 +214,7 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
     - *80* – back-endový port.
     - *myBackendPool* – název backendového fondu.
     - *myHealthProbe* – název sondy stavu.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
     
     
     ![Přidání pravidla vyrovnávání zatížení](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)

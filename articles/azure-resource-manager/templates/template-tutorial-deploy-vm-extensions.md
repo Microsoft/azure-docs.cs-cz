@@ -5,12 +5,11 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d44fb593cda60c8cc556ffeb5cb3b36163c6bcc3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184958"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057887"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM
 
@@ -47,13 +46,13 @@ Můžete použít vložený skript prostředí PowerShell nebo soubor skriptu.  
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Pokud se rozhodnete publikovat soubor ve vlastním umístění, aktualizujte `fileUri` ho v šabloně později v tomto kurzu.
+Pokud se rozhodnete publikovat soubor ve vlastním umístění, aktualizujte ho `fileUri` v šabloně později v tomto kurzu.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony rychlého startu
 
 Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. V Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. V Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
 1. Do pole **název souboru** vložte následující adresu URL:
 
     ```url
@@ -72,7 +71,7 @@ Pokud se rozhodnete publikovat soubor ve vlastním umístění, aktualizujte `fi
 
      Před přizpůsobením šablony je užitečné získat základní informace o této šabloně.
 
-1. Uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON* , a to tak, že vyberete **soubor** > **Uložit jako**.
+1. Uložte kopii souboru do místního počítače s názvem *azuredeploy.js* , a to tak, že vyberete **soubor**  >  **Uložit jako**.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
@@ -102,7 +101,7 @@ Ke stávající šabloně s následujícím obsahem přidejte prostředek rozš�
 }
 ```
 
-Další informace o této definici prostředků najdete v odkazu na [rozšíření](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
+Další informace o této definici prostředků najdete v odkazu na [rozšíření](/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
 
 * **name:** Vzhledem k tomu, že prostředek rozšíření je podřízeným prostředkem objektu virtuálního počítače, musí název obsahovat předponu virtuálního počítače. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md).
 * **dependsOn**: po vytvoření virtuálního počítače vytvořte prostředek rozšíření.
@@ -115,7 +114,7 @@ Pokud chcete použít vložený skript, odeberte **identifikátory URI**a aktual
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Tento vložený skript také aktualizuje obsah soubor Iisstart. html.
+Tento vložený skript také aktualizuje obsah iisstart.html.
 
 Musíte taky otevřít port HTTP, abyste mohli získat přístup k webovému serveru.
 

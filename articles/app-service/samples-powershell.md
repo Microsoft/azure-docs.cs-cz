@@ -4,14 +4,13 @@ description: V některých běžných scénářích App Service najdete ukázky 
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254476"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057904"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Ukázky PowerShellu pro Azure App Service
 
@@ -25,6 +24,7 @@ Následující tabulka obsahuje odkazy na skripty PowerShellu sestavené pomocí
 | [Vytvoření aplikace a nasazení kódu pomocí FTP](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří aplikaci App Service a nahrajte soubory z místního adresáře pomocí FTP. |
 | [Vytvoření aplikace a nasazení kódu z místního úložiště Git](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří aplikaci App Service a nakonfiguruje vložení kódu z místního úložiště Git. |
 | [Vytvoření aplikace a nasazení kódu do přípravného prostředí](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří aplikaci App Service s slotem nasazení pro změny kódu přípravy. |
+|  [Vytvoření aplikace a zpřístupnění aplikace pomocí privátního koncového bodu](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří aplikaci App Service s privátním koncovým bodem. |
 |**Konfigurace aplikace**||
 | [Mapování vlastní domény na aplikaci](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří aplikaci App Service a namapuje na ni vlastní název domény. |
 | [Vytvoření vazby vlastního certifikátu TLS/SSL k aplikaci](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří aplikaci App Service a váže certifikát TLS/SSL vlastního názvu domény. |
