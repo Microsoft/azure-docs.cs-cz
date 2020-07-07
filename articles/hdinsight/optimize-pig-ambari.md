@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 469019eb1e90654d1953156337593d5de99b46c0
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796678"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace pro Apache prasete s Apache Ambari ve službě Azure HDInsight
@@ -35,7 +35,7 @@ Vlastnosti pro Apache prasete se dají upravit z webového uživatelského rozhr
 
 Ke spouštění skriptů prasete jsou k dispozici dva spouštěcí moduly: MapReduce a TEZ. Tez je optimalizovaný modul a je mnohem rychlejší než MapReduce.
 
-1. Chcete-li upravit spouštěcí modul, vyhledejte v podokně **Upřesnit prase – vlastnosti** `exectype`.
+1. Chcete-li upravit spouštěcí modul, vyhledejte v podokně **Upřesnit prase – vlastnosti** `exectype` .
 
 1. Výchozí hodnota je **MapReduce**. Změňte ji na **tez**.
 
@@ -49,11 +49,11 @@ Podobně jako u podregistru se používá místní režim k urychlení úloh s r
 
 ## <a name="copy-user-jar-cache"></a>Kopírovat mezipaměť jar uživatele
 
-Prase kopíruje soubory JAR vyžadované UDF do distribuované mezipaměti a zpřístupňuje je pro uzly úloh. Tyto JAR se často nemění. Pokud je tato `pig.user.cache.enabled` možnost povolená, umožňuje, aby se jar umístil do mezipaměti pro opakované použití pro úlohy spouštěné stejným uživatelem. Výsledkem tohoto nastavení je menší zvýšení výkonu úlohy.
+Prase kopíruje soubory JAR vyžadované UDF do distribuované mezipaměti a zpřístupňuje je pro uzly úloh. Tyto JAR se často nemění. Pokud je tato možnost povolená, umožňuje, aby se `pig.user.cache.enabled` jar umístil do mezipaměti pro opakované použití pro úlohy spouštěné stejným uživatelem. Výsledkem tohoto nastavení je menší zvýšení výkonu úlohy.
 
-1. Pokud ho chcete povolit `pig.user.cache.enabled` , nastavte na true. Výchozí hodnotou je hodnota false.
+1. Pokud ho chcete povolit, nastavte `pig.user.cache.enabled` na true. Výchozí hodnotou je hodnota false.
 
-1. Chcete-li nastavit základní cestu jar uložených v mezipaměti, `pig.user.cache.location` nastavte na základní cestu. Výchozí formát je `/tmp`.
+1. Chcete-li nastavit základní cestu jar uložených v mezipaměti, nastavte `pig.user.cache.location` na základní cestu. Výchozí formát je `/tmp`.
 
 ## <a name="optimize-performance-with-memory-settings"></a>Optimalizace výkonu s nastavením paměti
 
@@ -73,15 +73,15 @@ Při provádění úlohy vygeneruje prase dočasné soubory. Při komprimaci do�
 
 ## <a name="enable-split-combining"></a>Povolit kombinování rozdělení
 
-Pokud je povoleno, malé soubory jsou zkombinovány pro méně úlohy mapy. Toto nastavení zlepšuje efektivitu úloh s mnoha malými soubory. Pokud ho chcete povolit `pig.noSplitCombination` , nastavte na true. Výchozí hodnota je False.
+Pokud je povoleno, malé soubory jsou zkombinovány pro méně úlohy mapy. Toto nastavení zlepšuje efektivitu úloh s mnoha malými soubory. Pokud ho chcete povolit, nastavte `pig.noSplitCombination` na true. Výchozí hodnota je False.
 
 ## <a name="tune-mappers"></a>Ladit mapovače
 
-Počet mapovačů je řízen úpravou vlastnosti `pig.maxCombinedSplitSize`. Tato vlastnost určuje velikost dat, která mají být zpracována jednou mapou úlohy. Výchozí hodnota je výchozí velikost bloku systému souborů. Zvýšení této hodnoty vede k menšímu počtu úloh mapovače.
+Počet mapovačů je řízen úpravou vlastnosti `pig.maxCombinedSplitSize` . Tato vlastnost určuje velikost dat, která mají být zpracována jednou mapou úlohy. Výchozí hodnota je výchozí velikost bloku systému souborů. Zvýšení této hodnoty vede k menšímu počtu úloh mapovače.
 
 ## <a name="tune-reducers"></a>Vyladění reduktorů
 
-Počet reduktorů se vypočítá na základě parametru `pig.exec.reducers.bytes.per.reducer`. Parametr určuje počet zpracovaných bajtů na redukci, ve výchozím nastavení 1 GB. Chcete-li omezit maximální počet reduktorů, nastavte `pig.exec.reducers.max` vlastnost ve výchozím nastavení 999.
+Počet reduktorů se vypočítá na základě parametru `pig.exec.reducers.bytes.per.reducer` . Parametr určuje počet zpracovaných bajtů na redukci, ve výchozím nastavení 1 GB. Chcete-li omezit maximální počet reduktorů, nastavte `pig.exec.reducers.max` vlastnost ve výchozím nastavení 999.
 
 ## <a name="next-steps"></a>Další kroky
 

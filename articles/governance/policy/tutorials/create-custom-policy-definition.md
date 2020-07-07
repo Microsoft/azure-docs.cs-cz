@@ -3,12 +3,12 @@ title: 'Kurz: Vytvoření vlastní definice zásady'
 description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy, která vynutila vlastní obchodní pravidla pro vaše prostředky Azure.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bff5596049a141f06f5c189f2e5673efed1ed6bf
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888145"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970820"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -53,7 +53,7 @@ Na základě obchodních požadavků je prostředek Azure, který se bude audito
 Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se na každou z těchto kurzů:
 
 - Rozšíření Azure Policy pro VS Code
-- Šablony Resource Manageru
+- Šablony Azure Resource Manager (šablony ARM)
   - Exportovat existující prostředek
   - Prostředí pro vytváření
   - Šablony pro rychlý Start (GitHub)
@@ -64,7 +64,7 @@ Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se
 
 [Rozšíření vs Code](../how-to/extension-for-vscode.md#search-for-and-view-resources) lze použít k procházení prostředků ve vašem prostředí a zobrazení vlastností Správce prostředků u každého prostředku.
 
-### <a name="resource-manager-templates"></a>Šablony Resource Manageru
+### <a name="arm-templates"></a>Šablony ARM
 
 Existuje několik způsobů, jak se podívat na [šablonu správce prostředků](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) , která obsahuje vlastnost, kterou chcete spravovat.
 
@@ -144,12 +144,11 @@ Tyto informace nám sdělí typ vlastnosti a také potvrdí, že **supportsHttps
 
 #### <a name="quickstart-templates-on-github"></a>Šablony pro rychlý Start na GitHubu
 
-[Šablony pro rychlý Start Azure](https://github.com/Azure/azure-quickstart-templates) na GitHubu obsahují stovky správce prostředků šablon sestavených pro různé prostředky. Tyto šablony můžou být skvělým způsobem, jak najít vlastnost prostředku, kterou hledáte. Některé vlastnosti se můžou zdát, co hledáte, ale ovládají něco jiného.
+[Šablony pro rychlý Start Azure](https://github.com/Azure/azure-quickstart-templates) na GitHubu obsahují stovky šablon ARM vytvořených pro různé prostředky. Tyto šablony můžou být skvělým způsobem, jak najít vlastnost prostředku, kterou hledáte. Některé vlastnosti se můžou zdát, co hledáte, ale ovládají něco jiného.
 
 #### <a name="resource-reference-docs"></a>Dokumentace k odkazům na prostředky
 
-Pokud chcete ověřit vlastnost **supportsHttpsTrafficOnly** je správná, zkontrolujte odkaz na šablonu správce prostředků [prostředku účtu úložiště](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) ve zprostředkovateli úložiště.
-Objekt Properties obsahuje seznam platných parametrů. Výběr odkazu [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) zobrazí tabulku přijatelných vlastností. k dispozici je **supportsHttpsTrafficOnly** a popis odpovídá tomu, co hledáte pro splnění obchodních požadavků.
+Pokud chcete ověřit vlastnost **supportsHttpsTrafficOnly** je správná, zkontrolujte odkaz na šablonu ARM pro [prostředek účtu úložiště](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) ve zprostředkovateli úložiště. Objekt Properties obsahuje seznam platných parametrů. Výběr odkazu [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) zobrazí tabulku přijatelných vlastností. k dispozici je **supportsHttpsTrafficOnly** a popis odpovídá tomu, co hledáte pro splnění obchodních požadavků.
 
 ### <a name="azure-resource-explorer"></a>Průzkumník prostředků Azure
 
@@ -219,7 +218,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Výsledky vypadají podobně jako v šablonách Správce prostředků a prostřednictvím Azure Resource Explorer. Výsledky grafu prostředků Azure ale můžou taky zahrnovat podrobnosti o [aliasu](../concepts/definition-structure.md#aliases) tím, že projedná _projekt_ s polem _aliasy_ :
+Výsledky vypadají podobně jako v šablonách ARM a prostřednictvím Azure Resource Explorer. Výsledky grafu prostředků Azure ale můžou taky zahrnovat podrobnosti o [aliasu](../concepts/definition-structure.md#aliases) tím, že projedná _projekt_ s polem _aliasy_ :
 
 ```kusto
 Resources

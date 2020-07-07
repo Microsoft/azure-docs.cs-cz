@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit šifrovací certifikát a šifrovat tajné
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583292"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech Windows
@@ -16,13 +16,13 @@ V tomto článku se dozvíte, jak nastavit šifrovací certifikát a použít ho
 [Azure Key Vault][key-vault-get-started] se tady používá jako bezpečné umístění úložiště pro certifikáty a jako způsob, jak získat certifikáty nainstalované v clusterech Service Fabric v Azure. Pokud neprovádíte nasazení do Azure, nemusíte používat Key Vault ke správě tajných kódů v aplikacích Service Fabric. *Používání* tajných klíčů v aplikaci je ale cloudová platforma – nezávislá umožňuje nasazení aplikací do clusteru hostovaného kdekoli. 
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Získání certifikátu pro zakódování dat
-Certifikát zašifrování dat se používá výhradně pro šifrování a dešifrování [parametrů][parameters-link] v nastavení služby. XML a [proměnných prostředí][environment-variables-link] v souboru ServiceManifest. XML služby. Nepoužívá se k ověřování nebo podepisování šifrovacího textu. Certifikát musí splňovat následující požadavky:
+Certifikát zašifrování dat se používá výhradně pro šifrování a dešifrování [parametrů][parameters-link] v Settings.xml služby a [proměnných prostředí][environment-variables-link] v ServiceManifest.xml služby. Nepoužívá se k ověřování nebo podepisování šifrovacího textu. Certifikát musí splňovat následující požadavky:
 
 * Certifikát musí obsahovat privátní klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, který lze exportovat do souboru. pfx (Personal Information Exchange).
 * Použití klíče certifikátu musí zahrnovat zašifrování dat (10) a nemělo by zahrnovat ověřování serveru nebo ověřování klientů. 
   
-  Například při vytváření certifikátu podepsaného svým držitelem pomocí PowerShellu musí být `KeyUsage` příznak nastaven na `DataEncipherment`:
+  Například při vytváření certifikátu podepsaného svým držitelem pomocí PowerShellu `KeyUsage` musí být příznak nastaven na `DataEncipherment` :
   
   ```powershell
   New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'

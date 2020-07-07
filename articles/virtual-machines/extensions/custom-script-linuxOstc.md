@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594708"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 1 s virtuálními počítači se systémem Linux
@@ -120,12 +120,12 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 | Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. OSTCExtensions | řetězec |
-| type | CustomScriptForLinux | řetězec |
-| typeHandlerVersion | 1,5 | int |
+| typ | CustomScriptForLinux | řetězec |
+| typeHandlerVersion | 1.5 | int |
 | Identifikátory URI (např.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | pole |
-| commandToExecute (např.) | Python MyPythonScript.py \<my-param1\> | řetězec |
+| commandToExecute (např.) | Python MyPythonScript.py\<my-param1\> | řetězec |
 | enableInternalDNSCheck | true | Boolean |
 | storageAccountName (např.) | examplestorageacct | řetězec |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | řetězec |

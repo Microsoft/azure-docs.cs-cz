@@ -4,10 +4,10 @@ description: Naučte se zabezpečit tajné hodnoty v Service Fabric aplikaci (Pl
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583230"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Správa šifrovaných tajných kódů v aplikacích Service Fabric
@@ -24,9 +24,9 @@ Nastavení šifrovacího certifikátu a jeho použití k šifrování tajných k
 * [Nastavte šifrovací certifikát a Šifrujte tajné klíče v clusterech se systémem Linux.][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Určení šifrovaných tajných klíčů v aplikaci
-Předchozí krok popisuje, jak šifrovat tajný klíč pomocí certifikátu a vytvořit řetězec s kódováním Base-64 pro použití v aplikaci. Tento řetězec zakódovaný v základní-64 se dá zadat jako zašifrovaný [parametr][parameters-link] v nastavení služby. XML nebo jako zašifrovaná [Proměnná prostředí][environment-variables-link] v souboru ServiceManifest. XML služby.
+Předchozí krok popisuje, jak šifrovat tajný klíč pomocí certifikátu a vytvořit řetězec s kódováním Base-64 pro použití v aplikaci. Tento řetězec s kódováním Base-64 lze zadat jako zašifrovaný [parametr][parameters-link] v Settings.xml služby nebo jako zašifrovanou [proměnnou prostředí][environment-variables-link] v ServiceManifest.xml služby.
 
-V konfiguračním souboru Settings. XML vaší služby zadejte zašifrovaný [parametr][parameters-link] s `IsEncrypted` atributem nastaveným na `true`:
+V konfiguračním souboru Settings.xml služby zadejte zašifrovaný [parametr][parameters-link] s `IsEncrypted` atributem nastaveným na `true` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -36,7 +36,7 @@ V konfiguračním souboru Settings. XML vaší služby zadejte zašifrovaný [pa
   </Section>
 </Settings>
 ```
-V souboru ServiceManifest. XML vaší služby zadejte šifrovanou [proměnnou prostředí][environment-variables-link] s `Type` atributem nastaveným na `Encrypted`:
+V souboru ServiceManifest.xml vaší služby zadejte šifrovanou [proměnnou prostředí][environment-variables-link] s `Type` atributem nastaveným na `Encrypted` :
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -45,7 +45,7 @@ V souboru ServiceManifest. XML vaší služby zadejte šifrovanou [proměnnou pr
 </CodePackage>
 ```
 
-Tajné kódy by měly být zahrnuté i do vaší aplikace Service Fabric zadáním certifikátu v manifestu aplikace. Přidejte do **souboru souboru ApplicationManifest. XML** element **SecretsCertificate** a zahrňte do něj kryptografický otisk požadovaného certifikátu.
+Tajné kódy by měly být zahrnuté i do vaší aplikace Service Fabric zadáním certifikátu v manifestu aplikace. Přidejte element **SecretsCertificate** do **ApplicationManifest.xml** a vložte kryptografický otisk požadovaného certifikátu.
 
 ```xml
 <ApplicationManifest … >
@@ -64,8 +64,8 @@ Tajné kódy by měly být zahrnuté i do vaší aplikace Service Fabric zadán�
 ### <a name="inject-application-secrets-into-application-instances"></a>Vložení tajných kódů aplikace do instancí aplikace
 V ideálním případě by mělo být nasazení do různých prostředí co nejlépe automatizovaně. To lze provést provedením tajného šifrování v prostředí sestavení a zadáním šifrovaných tajných klíčů jako parametrů při vytváření instancí aplikace.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Použití přepisovatelných parametrů v Settings. XML
-Konfigurační soubor Settings. XML umožňuje přepsatelné parametry, které lze zadat v době vytváření aplikace. Místo zadání `MustOverride` hodnoty parametru použijte atribut:
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Použijte v Settings.xml přepsatelné parametry
+Konfigurační soubor Settings.xml umožňuje přepsatelné parametry, které lze zadat v době vytváření aplikace. `MustOverride`Místo zadání hodnoty parametru použijte atribut:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -76,7 +76,7 @@ Konfigurační soubor Settings. XML umožňuje přepsatelné parametry, které l
 </Settings>
 ```
 
-Chcete-li přepsat hodnoty v souboru Settings. XML, deklarujte parametr přepsání pro službu v souboru ApplicationManifest. XML:
+Chcete-li přepsat hodnoty v Settings.xml, deklarujte parametr přepsání pro službu v ApplicationManifest.xml:
 
 ```xml
 <ApplicationManifest ... >
@@ -105,7 +105,7 @@ Pomocí PowerShellu je parametr dodán `New-ServiceFabricApplication` příkazu 
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Pomocí jazyka C# jsou parametry aplikace zadány v `ApplicationDescription` podobě jako `NameValueCollection`:
+Pomocí jazyka C# jsou parametry aplikace zadány v `ApplicationDescription` podobě jako `NameValueCollection` :
 
 ```csharp
 FabricClient fabricClient = new FabricClient();

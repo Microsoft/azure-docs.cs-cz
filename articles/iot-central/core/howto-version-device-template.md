@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583670"
 ---
 # <a name="create-a-new-device-template-version"></a>Vytvořit novou verzi šablony zařízení
@@ -30,7 +30,7 @@ Před použitím operátoru je nutné publikovat všechny změny šablony zaří
 
 ## <a name="versioning-rules"></a>Pravidla správy verzí
 
-Tato část shrnuje pravidla správy verzí, která se vztahují na šablony zařízení. DCMs i rozhraní mají čísla verzí. Následující fragment kódu ukazuje DCM pro zařízení snímače životního prostředí. DCM má dvě rozhraní: **DeviceInformation** a **EnvironmentalSensor**. Na konci`@id` polí můžete zobrazit čísla verzí. Chcete-li zobrazit tyto informace v uživatelském rozhraní IoT Central, vyberte možnost **Zobrazit identitu** v editoru šablon zařízení.
+Tato část shrnuje pravidla správy verzí, která se vztahují na šablony zařízení. DCMs i rozhraní mají čísla verzí. Následující fragment kódu ukazuje DCM pro zařízení snímače životního prostředí. DCM má dvě rozhraní: **DeviceInformation** a **EnvironmentalSensor**. Na konci polí můžete zobrazit čísla verzí `@id` . Chcete-li zobrazit tyto informace v uživatelském rozhraní IoT Central, vyberte možnost **Zobrazit identitu** v editoru šablon zařízení.
 
 ```json
 {

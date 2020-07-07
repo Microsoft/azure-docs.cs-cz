@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594385"
 ---
 # <a name="disk-bursting"></a>Zvládání výkonových špiček disků
@@ -25,7 +25,7 @@ Pro virtuální počítače, které ji podporují, je shluking povolen ve výcho
 
 ## <a name="disk-level-bursting"></a>Roztržení na úrovni disku
 K dispozici je také SSD na úrovni [Premium](disks-types.md#premium-ssd) pro velikosti disků P20 a menší ve všech oblastech. Při nových nasazení velikosti disků, která ho podporují, je rozšíření disku ve výchozím nastavení povolené. Stávající velikosti disků, pokud podporují shlukování disku, mohou umožňovat roztržení pomocí jedné z následujících metod: 
-- **Restartování virtuálního počítače** 
+- **Restartujte virtuální počítač.** 
 - **Odpojení a opětovné připojení disku**
 
 

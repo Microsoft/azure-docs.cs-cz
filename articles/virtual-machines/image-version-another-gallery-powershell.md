@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796925"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Kopírování obrázku z jiné galerie
@@ -21,7 +21,7 @@ ms.locfileid: "82796925"
 Pokud máte ve vaší organizaci více galerií, můžete vytvářet image z imagí uložených v jiných galeriích. Můžete mít například galerii pro vývoj a testování pro vytváření a testování nových imagí. Až budou připravené k použití v produkčním prostředí, můžete je pomocí tohoto příkladu zkopírovat do produkční galerie. Můžete také vytvořit image z obrázku v jiné galerii pomocí [Azure CLI](image-version-another-gallery-cli.md).
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku musíte mít existující galerii zdrojů, definici image a verzi image. Měli byste mít také cílovou galerii. 
 
@@ -39,7 +39,7 @@ Budete potřebovat informace z definice zdrojové image, abyste mohli vytvořit 
 
 Pomocí rutiny [Get-AzResource](/powershell/module/az.resources/get-azresource) uveďte informace o existujících galeriích, definicích imagí a verzích imagí.
 
-Výsledky jsou ve formátu `gallery\image definition\image version`.
+Výsledky jsou ve formátu `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource `
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-Jakmile budete mít všechny potřebné informace, můžete získat ID verze zdrojového obrázku pomocí [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion). V tomto `1.0.0` příkladu získáváme verzi image z `myImageDefinition` definice v galerii `myGallery` zdrojů ve skupině `myResourceGroup` prostředků.
+Jakmile budete mít všechny potřebné informace, můžete získat ID verze zdrojového obrázku pomocí [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion). V tomto příkladu získáváme `1.0.0` verzi image z `myImageDefinition` definice v `myGallery` galerii zdrojů ve `myResourceGroup` skupině prostředků.
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -147,7 +147,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Replikace obrázku do všech cílových oblastí může chvíli trvat, proto jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh úlohy, zadejte `$job.State`.
+Replikace obrázku do všech cílových oblastí může chvíli trvat, proto jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh úlohy, zadejte `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 >
-> Image můžete ukládat do úložiště `-StorageAccountType Premium_LRS`Premiun přidáním nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
+> Image můžete ukládat do úložiště Premiun přidáním `-StorageAccountType Premium_LRS` nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
 >
 
 

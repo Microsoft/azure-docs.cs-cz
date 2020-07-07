@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: e00538d1112492c5b7f9fc0f91c86df6d3500701
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796587"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrace ze spravované image do image galerie sdílených imagí
@@ -25,7 +25,7 @@ Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto p
 - **Verze image** je ta, která se používá k vytvoření virtuálního počítače při použití Galerie sdílených imagí. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Když vytvoříte virtuální počítač, použije se k vytvoření nového disku pro virtuální počítač verze image. Verze bitové kopie lze použít několikrát.
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Chcete-li dokončit tento článek, je nutné mít existující spravovanou bitovou kopii. Pokud spravovaná bitová kopie obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
 
@@ -33,7 +33,7 @@ Při práci s tímto článkem nahraďte názvy skupin prostředků a virtuáln�
 
 ## <a name="get-the-gallery"></a>Získat galerii
 
-Můžete vypsat všechny galerie a definice imagí podle názvu. Výsledky jsou ve formátu `gallery\image definition\image version`.
+Můžete vypsat všechny galerie a definice imagí podle názvu. Výsledky jsou ve formátu `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -52,11 +52,11 @@ $gallery = Get-AzGallery `
 
 Definice obrázků vytvoří logické seskupení obrázků. Používají se ke správě informací o imagi. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
 
-Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Vzhledem k tomu, že se spravované image vždycky zobecněny `-OsState generalized`, měli byste nastavit. 
+Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Vzhledem k tomu, že se spravované image vždycky zobecněny, měli byste nastavit `-OsState generalized` . 
 
 Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
-Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má definice image název *myImageDefinition*a je určena pro zobecněný operační systém Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux`. 
+Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). V tomto příkladu má definice image název *myImageDefinition*a je určena pro zobecněný operační systém Windows. Pokud chcete vytvořit definici imagí pomocí operačního systému Linux, použijte `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>Získat spravovanou bitovou kopii
 
-Seznam imagí, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Jakmile znáte název bitové kopie a její skupinu prostředků, můžete znovu použít `Get-AzImage` k získání objektu image a uložit ho do proměnné pro pozdější použití. Tento příklad načte image s názvem *myImage* ze skupiny prostředků "myResourceGroup" a přiřadí ji k proměnné *$managedImage*. 
+Seznam imagí, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Jakmile znáte název bitové kopie a její skupinu prostředků, můžete `Get-AzImage` znovu použít k získání objektu image a uložit ho do proměnné pro pozdější použití. Tento příklad načte image s názvem *myImage* ze skupiny prostředků "myResourceGroup" a přiřadí ji k proměnné *$managedImage*. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -107,7 +107,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Replikace obrázku do všech cílových oblastí může chvíli trvat, proto jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh, `$job.State`zadejte.
+Replikace obrázku do všech cílových oblastí může chvíli trvat, proto jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh, zadejte `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image. 
 >
-> Image můžete ukládat do úložiště `-StorageAccountType Premium_LRS`Premiun přidáním nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
+> Image můžete ukládat do úložiště Premiun přidáním `-StorageAccountType Premium_LRS` nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
 >
 
 ## <a name="delete-the-managed-image"></a>Odstranit spravovanou bitovou kopii

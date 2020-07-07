@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
 ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791047"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services kódy chyb živé události
@@ -54,7 +54,7 @@ V události [LiveEventEncoderDisconnected](media-services-event-schemas.md#livee
 |Neznámé kódy chyb|Tyto kódy chyb můžou být v rozsahu od chyby paměti až po duplicitní položky v mapě algoritmu hash.|
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Kódy chyb koncového bodu streamování (Origin)](streaming-endpoint-error-codes.md)
 

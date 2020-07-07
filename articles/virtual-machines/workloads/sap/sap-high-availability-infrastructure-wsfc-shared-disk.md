@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594810"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
@@ -194,9 +194,9 @@ _**Obrázek 1:** Nastavení Azure Resource Manager parametrů pro vysokou dostup
   Šablony vytvoří:
 
   * **Virtuální počítače**:
-    * Virtuální počítače SAP aplikačního serveru \<:\>SAPSystemSID-di\<-Number\>
-    * Virtuální počítače s clustery ASCS/ \<SCS\>: SAPSystemSID-\<ASCS-Number\>
-    * Cluster DBMS: \<SAPSystemSID\>-DB-\<Number\>
+    * Virtuální počítače SAP aplikačního serveru: \<SAPSystemSID\> -di-\<Number\>
+    * Virtuální počítače clusteru ASCS/SCS: \<SAPSystemSID\> -ASCS-\<Number\>
+    * Cluster DBMS: \<SAPSystemSID\> -DB-\<Number\>
 
   * **Síťové karty pro všechny virtuální počítače s přidruženými IP adresami**:
     * \<SAPSystemSID\>-nic-di-\<Number\>
@@ -206,16 +206,16 @@ _**Obrázek 1:** Nastavení Azure Resource Manager parametrů pro vysokou dostup
   * **Účty služby Azure Storage (jenom nespravované disky)**:
 
   * **Skupiny dostupnosti** pro:
-    * Virtuální počítače SAP aplikačního serveru \<:\>SAPSystemSID-avset-di
-    * Virtuální počítače s clustery SAP ASCS/ \<SCS\>: SAPSystemSID-avset-ASCS
-    * DBMS clusterové virtuální počítače \<:\>SAPSystemSID-avset-DB
+    * Virtuální počítače SAP aplikačního serveru: \<SAPSystemSID\> -avset-di
+    * Virtuální počítače s clustery SAP ASCS/SCS: \<SAPSystemSID\> -avset-ASCS
+    * Virtuální počítače s clustery DBMS: \<SAPSystemSID\> -avset-DB
 
   * **Interní nástroj pro vyrovnávání zatížení Azure**:
-    * Se všemi porty pro instanci ASCS/SCS a IP adresa \<SAPSystemSID\>-9,1-ASCS
-    * Se všemi porty pro SQL Server DBMS a IP adresou \<SAPSystemSID\>-9,1-dB
+    * Se všemi porty pro instanci ASCS/SCS a IP adresa \<SAPSystemSID\> -disASCS
+    * Se všemi porty pro SQL Server DBMS a IP adresami \<SAPSystemSID\> –---DB
 
-  * **Skupina zabezpečení sítě**: \<SAPSystemSID\>-NSG-ASCS-0  
-    * S otevřeným externím portem protokol RDP (Remote Desktop Protocol) (RDP) \<pro\>virtuální počítač SAPSystemSID-ASCS-0
+  * **Skupina zabezpečení sítě**: \<SAPSystemSID\> -NSG-ASCS-0  
+    * S otevřeným externím portem protokol RDP (Remote Desktop Protocol) (RDP) na \<SAPSystemSID\> virtuální počítač-ASCS-0
 
 > [!NOTE]
 > Všechny IP adresy síťových karet a služeb interního nástroje pro vyrovnávání zatížení Azure jsou ve výchozím nastavení dynamické. Změňte je na statické IP adresy. Popisujeme, jak postupovat později v článku.
@@ -305,7 +305,7 @@ Následující části obsahují další podrobnosti o šablonách a parametrech
 - **Nová nebo existující podsíť**: Nastavte, jestli se má vytvořit nová virtuální síť a podsíť, nebo jestli se má použít stávající podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
 - **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto:
 
-  /Subscriptions/\<ID\>\<předplatného/resourceGroups/název\>skupiny\<prostředků/Providers/Microsoft.Network/virtualNetworks/název\>virtuální\<sítě/subnets/název podsítě\>
+  /Subscriptions/ \<subscription id\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name\> /subnets/\<subnet name\>
 
 Šablona nasadí jednu instanci Azure Load Balancer, která podporuje více systémů SAP:
 
@@ -410,7 +410,7 @@ Na serveru DNS můžete ručně vytvořit další dva názvy virtuálních hosti
 ## <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Nastavení statických IP adres pro virtuální počítače SAP
 Po nasazení virtuálních počítačů, které se mají použít v clusteru, je potřeba nastavit statické IP adresy pro všechny virtuální počítače. Provedete to v konfiguraci Azure Virtual Network, a ne v hostovaném operačním systému.
 
-1. V Azure Portal vyberte možnost **Skupina** > prostředků**Síťová karta** > **Nastavení** > **IP adresa**.
+1. V Azure Portal vyberte možnost **Skupina prostředků**  >  **Síťová karta**  >  **Nastavení**  >  **IP adresa**.
 2. V podokně **IP adresy** v části **přiřazení**vyberte **static**. Do pole **IP adresa** zadejte IP adresu, kterou chcete použít.
 
    > [!NOTE]
@@ -479,15 +479,15 @@ Chcete-li vytvořit požadované koncové body interního vyrovnávání zatíž
 
 | Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (ASCS instance s číslem instance 00) (OLAJÍCÍCH s 10) |
 | --- | --- | --- |
-| Server/ *lbrule3200* fronty |32\<číslo instance\> |3200 |
-| Server zpráv ABAP/ *lbrule3600* |36\<číslo instance\> |3600 |
-| Interní zpráva ABAP/ *lbrule3900* |39\<číslo instance\> |3900 |
-| HTTP/ *Lbrule8100* serveru zpráv |81\<číslo instance\> |8100 |
-| Služba SAP Start Service ASCS HTTP/ *Lbrule50013* |5\<číslo instance\>13 |50013 |
-| Služba SAP Start Service ASCS HTTPS/ *Lbrule50014* |5\<číslo instance\>14 |50014 |
-| Replikace do fronty/ *Lbrule50016* |5\<číslo instance\>16 |50016 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51013* |5\<číslo instance\>13 |51013 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51014* |5\<číslo instance\>14 |51014 |
+| Server/ *lbrule3200* fronty |32\<InstanceNumber\> |3200 |
+| Server zpráv ABAP/ *lbrule3600* |36\<InstanceNumber\> |3600 |
+| Interní zpráva ABAP/ *lbrule3900* |39\<InstanceNumber\> |3900 |
+| HTTP/ *Lbrule8100* serveru zpráv |81\<InstanceNumber\> |8100 |
+| Služba SAP Start Service ASCS HTTP/ *Lbrule50013* |5 \<InstanceNumber\> 13 |50013 |
+| Služba SAP Start Service ASCS HTTPS/ *Lbrule50014* |5 \<InstanceNumber\> 14 |50014 |
+| Replikace do fronty/ *Lbrule50016* |5 \<InstanceNumber\> 16 |50016 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51013* |5 \<InstanceNumber\> 13 |51013 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51014* |5 \<InstanceNumber\> 14 |51014 |
 | Vzdálená správa systému Windows (WinRM) *Lbrule5985* | |5985 |
 | *Lbrule445* sdílení souborů | |445 |
 
@@ -497,15 +497,15 @@ Pak vytvořte tyto koncové body vyrovnávání zatížení pro porty SAP NetWea
 
 | Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (instance SCS s číslem instance 01) (OLAJÍCÍCH s 11) |
 | --- | --- | --- |
-| Server/ *lbrule3201* fronty |32\<číslo instance\> |3201 |
-| Server brány/ *lbrule3301* |33\<číslo instance\> |3301 |
-| Server zpráv Java/ *lbrule3900* |39\<číslo instance\> |3901 |
-| HTTP/ *Lbrule8101* serveru zpráv |81\<číslo instance\> |8101 |
-| Služba SAP Start Service SCS HTTP/ *Lbrule50113* |5\<číslo instance\>13 |50113 |
-| Služba SAP Start Service SCS HTTPS/ *Lbrule50114* |5\<číslo instance\>14 |50114 |
-| Replikace do fronty/ *Lbrule50116* |5\<číslo instance\>16 |50116 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51113* |5\<číslo instance\>13 |51113 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51114* |5\<číslo instance\>14 |51114 |
+| Server/ *lbrule3201* fronty |32\<InstanceNumber\> |3201 |
+| Server brány/ *lbrule3301* |33\<InstanceNumber\> |3301 |
+| Server zpráv Java/ *lbrule3900* |39\<InstanceNumber\> |3901 |
+| HTTP/ *Lbrule8101* serveru zpráv |81\<InstanceNumber\> |8101 |
+| Služba SAP Start Service SCS HTTP/ *Lbrule50113* |5 \<InstanceNumber\> 13 |50113 |
+| Služba SAP Start Service SCS HTTPS/ *Lbrule50114* |5 \<InstanceNumber\> 14 |50114 |
+| Replikace do fronty/ *Lbrule50116* |5 \<InstanceNumber\> 16 |50116 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51113* |5 \<InstanceNumber\> 13 |51113 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51114* |5 \<InstanceNumber\> 14 |51114 |
 | *Lbrule5985* WinRM | |5985 |
 | *Lbrule445* sdílení souborů | |445 |
 
@@ -521,7 +521,7 @@ Nastavte IP adresu nástroje pro vyrovnávání zatížení PR1-9,1-DBMS na IP a
 
 Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musíte změnit názvy a hodnoty jejich portů z výchozích hodnot.
 
-1. V Azure Portal vyberte ** \<\>ASCS** > **pravidla vyrovnávání zatížení pro vyrovnávání**zatížení.
+1. V Azure Portal vyberte-li pravidla vyrovnávání zatížení nástroje pro vyrovnávání zatížení ** \<SID\> ASCS-kg**  >  **Load Balancing Rules**.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
    * Name
@@ -724,7 +724,7 @@ Konfigurace určující sdílené složky clusteru zahrnuje tyto úlohy:
 
    _**Obrázek 26:** Vybrat určující sdílenou složku_
 
-4. Zadejte cestu UNC ke sdílené složce (v našem příkladu \\domcontr-0\FSW). Chcete-li zobrazit seznam změn, které lze provést, vyberte možnost **Další**.
+4. Zadejte cestu UNC ke sdílené složce (v našem příkladu \\ domcontr-0\FSW). Chcete-li zobrazit seznam změn, které lze provést, vyberte možnost **Další**.
 
    ![Obrázek 27: definování umístění sdílené složky pro sdílenou složku s kopií clusteru][sap-ha-guide-figure-3026]
 
@@ -769,7 +769,7 @@ Existují dva způsoby, jak přidat .NET Framework 3,5:
 
   _**Obrázek 30:** Indikátor průběhu instalace při instalaci .NET Framework 3,5 pomocí Průvodce přidáním rolí a funkcí_
 
-- Použijte nástroj příkazového řádku DISM. exe. Pro tento typ instalace budete potřebovat přístup k adresáři SxS na instalačním médiu Windows. Na příkazovém řádku se zvýšenými oprávněními zadejte tento příkaz:
+- Použijte nástroj příkazového řádku dism.exe. Pro tento typ instalace budete potřebovat přístup k adresáři SxS na instalačním médiu Windows. Na příkazovém řádku se zvýšenými oprávněními zadejte tento příkaz:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

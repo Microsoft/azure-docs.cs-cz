@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792135"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Vytvoření galerie sdílených imagí Azure pomocí portálu
@@ -46,7 +46,7 @@ Nyní můžete vytvořit jeden nebo více nových virtuálních počítačů. Te
 1. Do **název virtuálního počítače**zadejte *myVM*.
 1. V **oblasti oblast**vyberte *východní USA*.
 1. U **možností dostupnosti**ponechte výchozí možnost *bez nutnosti redundance infrastruktury*.
-1. Hodnota pro **Image** se automaticky vyplní verzí `latest` image, pokud jste začali ze stránky pro definici image.
+1. Hodnota pro **Image** se automaticky vyplní `latest` verzí image, pokud jste začali ze stránky pro definici image.
 1. Jako **Velikost**zvolte velikost virtuálního počítače ze seznamu dostupných velikostí a pak zvolte **Vybrat**.
 1. V části **účet správce**je v případě, že byla bitová kopie zobecněna, nutné zadat uživatelské jméno, například *azureuser* a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm). Pokud byla vaše image specializovaná, pole uživatelského jména a hesla se zobrazí šedě, protože se používá uživatelské jméno a heslo pro zdrojový virtuální počítač.
 1. Pokud chcete povolit vzdálený přístup k virtuálnímu počítači, vyberte v části **veřejné příchozí porty**možnost **Povolit vybrané porty** a v rozevíracím seznamu vyberte **RDP (3389)** . Pokud nechcete povolit vzdálený přístup k virtuálnímu počítači, nechte **žádné** vybrané pro **veřejné příchozí porty**.

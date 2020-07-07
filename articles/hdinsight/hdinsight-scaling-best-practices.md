@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592056"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
@@ -35,7 +35,7 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 |[Modul Az PowerShellu](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Modul AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
-|[Rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
+|[Azure Classic CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
 ![Možnost clusteru Azure Portal Scale](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
@@ -120,13 +120,13 @@ Aby se předešlo tomu, že spuštěné úlohy selžou během operace horizontá
 Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použít **uživatelské rozhraní příz správce prostředků**následujícím postupem:
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Cluster se otevře na nové stránce portálu.
-2. V hlavním zobrazení přejděte na **řídicí panely** > clusteru**Ambari domů**. Zadejte přihlašovací údaje clusteru.
+2. V hlavním zobrazení přejděte na **řídicí panely clusteru**  >  **Ambari domů**. Zadejte přihlašovací údaje clusteru.
 3. V uživatelském rozhraní Ambari vyberte možnost **příze** v seznamu služeb v nabídce na levé straně.  
 4. Na stránce PŘÍZe vyberte možnost **Rychlé odkazy** a najeďte myší na aktivní hlavní uzel a pak vyberte **Správce prostředků uživatelské rozhraní**.
 
     ![Rychlé odkazy na Apache Ambari Správce prostředků uživatelské rozhraní](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-K uživatelskému rozhraní Správce prostředků můžete přistupovat přímo `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`pomocí.
+K uživatelskému rozhraní Správce prostředků můžete přistupovat přímo pomocí `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 Zobrazí se seznam úloh spolu s jejich aktuálním stavem. Na snímku obrazovky je aktuálně spuštěná jedna úloha:
 
@@ -162,7 +162,7 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-V případě, že se v clusteru změnila `/var/log/hadoop/hdfs/` velikost, můžete zkontrolovat protokoly uzlů názvů z této složky, aby se zjistilo, kdy vstoupila do bezpečného režimu. Soubory protokolu jsou pojmenovány `Hadoop-hdfs-namenode-<active-headnode-name>.*`.
+V případě, že se v clusteru změnila velikost, můžete zkontrolovat protokoly uzlů názvů z této `/var/log/hadoop/hdfs/` složky, aby se zjistilo, kdy vstoupila do bezpečného režimu. Soubory protokolu jsou pojmenovány `Hadoop-hdfs-namenode-<active-headnode-name>.*` .
 
 Hlavní příčinou bylo, že při spouštění dotazů závisí podregistr na dočasné soubory v HDFS. Když HDFS vstoupí do bezpečného režimu, podregistr nemůže spustit dotazy, protože nemůže zapisovat do HDFS. Dočasné soubory v HDFS jsou umístěné na místní jednotce připojené k virtuálním počítačům jednotlivých pracovních uzlů. Soubory jsou replikovány mezi ostatními pracovními uzly ve třech replikách, minimum.
 
@@ -171,7 +171,7 @@ Hlavní příčinou bylo, že při spouštění dotazů závisí podregistr na d
 Existuje několik způsobů, jak zabránit v tom, aby HDInsight zůstalo v bezpečném režimu:
 
 * Před škálováním HDInsight zastavte všechny úlohy podregistru. Případně můžete naplánovat proces horizontálního navýšení kapacity, aby nedocházelo ke konfliktům s běžícími úlohami.
-* Před horizontálním navýšení `tmp` kapacity je nutné ručně vyčistit soubory odkládacího adresáře podregistru v HDFS.
+* Před horizontálním navýšení kapacity je nutné ručně vyčistit soubory odkládacího adresáře podregistru `tmp` v HDFS.
 * Nahorizontální navýšení kapacity HDInsight na tři pracovní uzly, minimální. Vyhněte se nedostatku na jeden pracovní uzel.
 * Spusťte příkaz a v případě potřeby ponechte nouzový režim.
 
@@ -187,7 +187,7 @@ Zastavení úloh podregistru před škálováním pomůže minimalizovat počet 
 
 Pokud podregistr opustí dočasné soubory, můžete tyto soubory před horizontálním škálováním ručně vyčistit a vyhnout se bezpečnému režimu.
 
-1. Podívejte se `hive.exec.scratchdir` na vlastnost konfigurace a ověřte, které umístění se používá pro dočasné soubory podregistru. Tento parametr je nastaven v `/etc/hive/conf/hive-site.xml`rámci:
+1. Podívejte se na vlastnost konfigurace a ověřte, které umístění se používá pro dočasné soubory podregistru `hive.exec.scratchdir` . Tento parametr je nastaven v rámci `/etc/hive/conf/hive-site.xml` :
 
     ```xml
     <property>
@@ -198,7 +198,7 @@ Pokud podregistr opustí dočasné soubory, můžete tyto soubory před horizont
 
 1. Zastavte služby podregistru a ujistěte se, že jsou dokončené všechny dotazy a úlohy.
 
-1. Vypíše obsah pomocného adresáře, který se `hdfs://mycluster/tmp/hive/` našel výše, aby se zjistilo, jestli obsahuje nějaké soubory:
+1. Vypíše obsah pomocného adresáře, který se našel výše, `hdfs://mycluster/tmp/hive/` aby se zjistilo, jestli obsahuje nějaké soubory:
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive

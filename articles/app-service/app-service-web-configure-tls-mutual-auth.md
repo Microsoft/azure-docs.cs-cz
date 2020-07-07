@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592362"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro Azure App Service
@@ -24,7 +24,7 @@ Přístup k aplikaci Azure App Service můžete omezit povolením různých typ�
 
 ## <a name="enable-client-certificates"></a>Povolit klientské certifikáty
 
-Pokud chcete nastavit aplikaci tak, aby vyžadovala klientské certifikáty, můžete přepnout **na** vyžádání příchozího certifikátu tak, že na webu Azure Portal vyberete **Konfigurace** > **Obecné nastavení** , nebo musíte `clientCertEnabled` nastavit nastavení aplikace na `true`. Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
+Pokud chcete nastavit aplikaci tak, aby vyžadovala klientské certifikáty, můžete přepnout **na** vyžádání příchozího certifikátu tak, že na webu Azure Portal vyberete **Konfigurace**  >  **Obecné nastavení** , nebo musíte nastavit `clientCertEnabled` nastavení aplikace na `true` . Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -34,18 +34,18 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 Pokud povolíte vzájemné ověřování pro vaši aplikaci, všechny cesty pod kořenem vaší aplikace budou vyžadovat klientský certifikát pro přístup. Pokud chcete, aby některé cesty zůstaly otevřené pro anonymní přístup, můžete v rámci konfigurace aplikace definovat cesty vyloučení.
 
-Cesty vyloučení se dají nakonfigurovat tak, že vyberete nastavení **Konfigurace** > **Obecné** a definujete cestu vyloučení. V tomto příkladu žádná z `/public` cest k vaší aplikaci nepožaduje klientský certifikát.
+Cesty vyloučení se dají nakonfigurovat tak, že vyberete nastavení **Konfigurace**  >  **Obecné** a definujete cestu vyloučení. V tomto příkladu žádná z `/public` cest k vaší aplikaci nepožaduje klientský certifikát.
 
 ![Cesty vyloučení certifikátu][exclusion-paths]
 
 
 ## <a name="access-client-certificate"></a>Přístup k klientskému certifikátu
 
-V App Service se ukončení žádosti TLS provádí v nástroji pro vyrovnávání zatížení s front-endu. Při předávání žádosti do kódu aplikace s [povolenými klientskými certifikáty](#enable-client-certificates)App Service vloží hlavičku `X-ARR-ClientCert` žádosti s klientským certifikátem. App Service s tímto klientským certifikátem nedělá něco jiného než předání do aplikace. Kód vaší aplikace zodpovídá za ověřování klientského certifikátu.
+V App Service se ukončení žádosti TLS provádí v nástroji pro vyrovnávání zatížení s front-endu. Při předávání žádosti do kódu aplikace s [povolenými klientskými certifikáty](#enable-client-certificates)App Service vloží `X-ARR-ClientCert` hlavičku žádosti s klientským certifikátem. App Service s tímto klientským certifikátem nedělá něco jiného než předání do aplikace. Kód vaší aplikace zodpovídá za ověřování klientského certifikátu.
 
 V případě ASP.NET je certifikát klienta k dispozici prostřednictvím vlastnosti **HttpRequest. ClientCertificate** .
 
-Pro ostatní zásobníky aplikací (Node. js, PHP atd.) je certifikát klienta k dispozici ve vaší aplikaci prostřednictvím hodnoty kódované v kódování Base64 v hlavičce `X-ARR-ClientCert` požadavku.
+Pro jiné zásobníky aplikací (Node.js, PHP atd.) je certifikát klienta k dispozici ve vaší aplikaci prostřednictvím hodnoty kódované v kódování Base64 v `X-ARR-ClientCert` hlavičce požadavku.
 
 ## <a name="aspnet-sample"></a>Ukázka ASP.NET
 
@@ -171,9 +171,9 @@ Pro ostatní zásobníky aplikací (Node. js, PHP atd.) je certifikát klienta k
     }
 ```
 
-## <a name="nodejs-sample"></a>Ukázka Node. js
+## <a name="nodejs-sample"></a>Ukázka Node.js
 
-Následující ukázkový kód Node. js získá `X-ARR-ClientCert` hlavičku a použije [Node-zfalšovat](https://github.com/digitalbazaar/forge) k převodu řetězce PEM kódovaného ve formátu base64 na objekt certifikátu a jeho ověření:
+Následující Node.js ukázkový kód získá `X-ARR-ClientCert` hlavičku a použije [Node-zfalšovat](https://github.com/digitalbazaar/forge) k převodu řetězce PEM kódovaného ve formátu base64 na objekt certifikátu a jeho ověření:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';

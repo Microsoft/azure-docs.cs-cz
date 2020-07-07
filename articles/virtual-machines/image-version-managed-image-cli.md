@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 6f49ece874ea52227e6531193fc53b3bea525702
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796600"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Migrace ze spravované image na verzi Image pomocí Azure CLI
@@ -24,7 +24,7 @@ Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto p
 - **Verze image** je ta, která se používá k vytvoření virtuálního počítače při použití Galerie sdílených imagí. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Když vytvoříte virtuální počítač, použije se k vytvoření nového disku pro virtuální počítač verze image. Verze bitové kopie lze použít několikrát.
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku musíte mít existující [galerii sdílených imagí](shared-images-cli.md). 
 
@@ -36,7 +36,7 @@ Při práci s tímto článkem nahraďte názvy skupin prostředků a virtuáln�
 
 ## <a name="create-an-image-definition"></a>Vytvoření definice obrázku
 
-Vzhledem k tomu, že jsou spravované image vždycky generalizované, vytvoří se definice image s `--os-state generalized` použitím generalizované image.
+Vzhledem k tomu, že jsou spravované image vždycky generalizované, vytvoří se definice image s použitím `--os-state generalized` generalizované image.
 
 Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
 
@@ -44,7 +44,7 @@ Další informace o hodnotách, které můžete zadat pro definici obrázku, naj
 
 Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [zobecněnou](./linux/shared-image-galleries.md#generalized-and-specialized-images) bitovou kopii operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows`. 
+V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [zobecněnou](./linux/shared-image-galleries.md#generalized-and-specialized-images) bitovou kopii operačního systému Linux. Pokud chcete vytvořit definici imagí pomocí operačního systému Windows, použijte `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG

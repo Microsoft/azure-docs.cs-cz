@@ -1,16 +1,16 @@
 ---
 title: Uspořádání prostředků pomocí skupin pro správu – zásady správného řízení Azure
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
-ms.date: 04/15/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773147"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963678"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
+# <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
 Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure představují úroveň rozsahu nad předplatnými. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své zásady správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky, které se na příslušnou skupinu pro správu vztahují. Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.
 Všechna předplatná v rámci jedné skupiny pro správu musí důvěřovat stejnému tenantovi Azure Active Directory.
@@ -89,13 +89,13 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
 | Název role RBAC             | Vytvořit | přejmenování | Pøesunout\*\* | Odstranit | Přiřazení přístupu | Přiřazení zásad | Čtení  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|Vlastník                       | ×      | ×      | ×        | ×      | ×             | ×             | ×     |
-|Přispěvatel                 | ×      | ×      | ×        | ×      |               |               | ×     |
-|G Přispěvatel\*            | ×      | ×      | ×        | ×      |               |               | ×     |
+|Vlastník                       | X      | X      | X        | X      | X             | X             | X     |
+|Přispěvatel                 | X      | X      | X        | X      |               |               | X     |
+|G Přispěvatel\*            | X      | X      | X        | X      |               |               | X     |
 |Čtenář                      |        |        |          |        |               |               | ×     |
 |Čtečka MG\*                 |        |        |          |        |               |               | ×     |
 |Přispěvatel zásad prostředků |        |        |          |        |               | ×             |       |
-|Správce přístupu uživatelů   |        |        |          |        | ×             | ×             |       |
+|Správce přístupu uživatelů   |        |        |          |        | X             | X             |       |
 
 \*: MG čtenář a g Reader umožňují uživatelům provádět tyto akce pouze v oboru skupiny pro správu.  
 \*\*: Přiřazení rolí u kořenové skupiny pro správu se nevyžadují k přesunu předplatného nebo skupiny pro správu do a z ní. Další informace o přesunu položek v rámci hierarchie najdete v tématu věnovaném [správě prostředků s využitím skupin pro správu](manage.md).
@@ -199,6 +199,4 @@ Další informace o řešeních pro správu najdete v následujících tématech
 
 - [Vytváření skupin pro správu pro organizaci prostředků Azure](./create.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](./manage.md)
-- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
-- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
-- [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)
+- Další informace najdete v tématu možnosti [ochrany vaší hierarchie prostředků](./how-to/protect-resource-hierarchy.md) .

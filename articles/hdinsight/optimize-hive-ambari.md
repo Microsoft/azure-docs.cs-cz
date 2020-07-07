@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796366"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
@@ -46,7 +46,7 @@ Pokud chcete zvýšit latenci, zvyšte podle pokynů výkonu oba tyto parametry 
 
 Pokud třeba chcete nastavit čtyři úlohy mapovače pro velikost dat 128 MB, nastavili byste oba parametry na 32 MB každého (33 554 432 bajtů).
 
-1. Chcete-li změnit parametry limitu, přejděte na kartu **Konfigurace** služby TEZ. Rozbalte panel **Obecné** a vyhledejte parametry `tez.grouping.max-size` a `tez.grouping.min-size` .
+1. Chcete-li změnit parametry limitu, přejděte na kartu **Konfigurace** služby TEZ. Rozbalte panel **Obecné** a vyhledejte `tez.grouping.max-size` `tez.grouping.min-size` parametry a.
 
 1. Nastavte oba parametry na **33 554 432** bajtů (32 MB).
 
@@ -58,11 +58,11 @@ Tyto změny mají vliv na všechny úlohy tez napříč serverem. Chcete-li zís
 
 Apache ORC a přichycení nabízí vysoký výkon. Podregistr ale ve výchozím nastavení může mít příliš málo reduktorů, což způsobuje problémová místa.
 
-Řekněme například, že máte velikost vstupních dat 50 GB. Tato data ve formátu ORC s kompresí s přichycením jsou 1 GB. Podregistr odhaduje počet reduktorů potřebných jako: (počet bajtů vstupu na mapovače/ `hive.exec.reducers.bytes.per.reducer`).
+Řekněme například, že máte velikost vstupních dat 50 GB. Tato data ve formátu ORC s kompresí s přichycením jsou 1 GB. Podregistr odhaduje počet reduktorů potřebných jako: (počet bajtů vstupu na mapovače/ `hive.exec.reducers.bytes.per.reducer` ).
 
 Ve výchozím nastavení je v tomto příkladu čtyři reduktorů.
 
-`hive.exec.reducers.bytes.per.reducer` Parametr určuje počet zpracovaných bajtů na zmenšení. Výchozí hodnota je 64 MB. Ladění této hodnoty dolů zvyšuje paralelismus a může zvýšit výkon. Příliš nízké ladění může také způsobit příliš mnoho reduktorů, což potenciálně negativně ovlivní výkon. Tento parametr vychází z vašich konkrétních požadavků na data, nastavení komprese a dalších faktorů prostředí.
+`hive.exec.reducers.bytes.per.reducer`Parametr určuje počet zpracovaných bajtů na zmenšení. Výchozí hodnota je 64 MB. Ladění této hodnoty dolů zvyšuje paralelismus a může zvýšit výkon. Příliš nízké ladění může také způsobit příliš mnoho reduktorů, což potenciálně negativně ovlivní výkon. Tento parametr vychází z vašich konkrétních požadavků na data, nastavení komprese a dalších faktorů prostředí.
 
 1. Chcete-li změnit parametr, přejděte na kartu **Konfigurace** podregistru a na stránce nastavení vyhledejte parametr **data na omezení** .
 
@@ -92,7 +92,7 @@ Podregistr zpracovává řádek data řádku. Rozvektorování směruje podregis
 
 1. Chcete-li povolit vektorové provádění dotazů, přejděte na kartu **Konfigurace** podregistru a vyhledejte `hive.vectorized.execution.enabled` parametr. Výchozí hodnota je true pro podregistr 0.13.0 nebo novější.
 
-1. Chcete-li povolit `hive.vectorized.execution.reduce.enabled` parametrizované spouštění pro možnost zmenšení dotazu, nastavte parametr na hodnotu true. Výchozí hodnota je False.
+1. Chcete-li povolit parametrizované spouštění pro možnost zmenšení dotazu, nastavte `hive.vectorized.execution.reduce.enabled` parametr na hodnotu true. Výchozí hodnota je False.
 
     ![Apache Hive vektorové spuštění](./media/optimize-hive-ambari/hive-vectorized-execution.png)
 
@@ -100,7 +100,7 @@ Podregistr zpracovává řádek data řádku. Rozvektorování směruje podregis
 
 Ve výchozím nastavení používá podregistr sadu pravidel pro vyhledání jednoho optimálního plánu spuštění dotazu. Optimalizace na základě nákladů (CBO) vyhodnocuje více plánů pro spuštění dotazu. A přiřadí každému plánu náklady a pak určí plán nejlevnější pro spuštění dotazu.
 
-Pokud chcete povolit CBO, přejděte na**Nastavení** **Konfigurace** >  **podregistru** > a vyhledejte **optimalizaci na základě nákladů**a pak přepněte přepínací tlačítko na **zapnuto**.
+Pokud chcete povolit CBO, přejděte na nastavení konfigurace **podregistru**  >  **Configs**  >  **Settings** a vyhledejte **optimalizaci na základě nákladů**a pak přepněte přepínací tlačítko na **zapnuto**.
 
 ![Optimalizátor založený na cenách HDInsight](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -108,7 +108,7 @@ Následující dodatečné parametry konfigurace zvyšují výkon dotazů na pod
 
 * `hive.compute.query.using.stats`
 
-    Při nastavení na hodnotu true používá podregistr ve svých metastore statistiku k zodpovězení jednoduchých dotazů `count(*)`, jako je.
+    Při nastavení na hodnotu true používá podregistr ve svých metastore statistiku k zodpovězení jednoduchých dotazů `count(*)` , jako je.
 
     ![Apache Hive výpočetní dotaz s použitím statistik](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
 
@@ -134,10 +134,10 @@ K dispozici jsou tyto typy komprese:
 
 | Formát | Nástroj | Algoritmus | Přípona souboru | Rozdělitelné? |
 | --- | --- | --- | --- | --- |
-| GZIP | GZIP | DEFLATE | `.gz` | No |
+| GZIP | GZIP | DEFLATE | `.gz` | Ne |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | Ano |
 | LZO | `Lzop` | LZO | `.lzo` | Ano, pokud je indexovaný |
-| Snappy | – | Snappy | Snappy | No |
+| Snappy | Není k dispozici | Snappy | Snappy | Ne |
 
 Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, jinak se vytvoří několik mapovačů. Pokud jsou vstupní data text, `bzip2` je to nejlepší možnost. V případě formátu ORC je přichycení nejrychlejší možnost komprese.
 
@@ -148,17 +148,17 @@ Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, 
     > [!NOTE]  
     > Chcete-li zkomprimovat mezilehlé soubory, vyberte Kompresní kodek s nižšími náklady na procesor, a to i v případě, že kodek nemá vysoký kompresní výstup.
 
-1. Chcete-li nastavit pomocný kodek komprese, přidejte do souboru `mapred.map.output.compression.codec` `hive-site.xml` nebo `mapred-site.xml` vlastní vlastnost.
+1. Chcete-li nastavit pomocný kodek komprese, přidejte `mapred.map.output.compression.codec` do `hive-site.xml` souboru nebo vlastní vlastnost `mapred-site.xml` .
 
 1. Přidání vlastního nastavení:
 
-    a. Přejděte ke**konfiguraci** >  **podregistru** > **Upřesnit** > **vlastní podregistr – lokalita**.
+    a. Přejděte ke **konfiguraci podregistru**  >  **Configs**  >  **Upřesnit**  >  **vlastní podregistr – lokalita**.
 
     b. V dolní části podokna vlastní podregistr-web vyberte **Přidat vlastnost...**
 
     c. V okně Přidat vlastnost zadejte `mapred.map.output.compression.codec` jako klíč a `org.apache.hadoop.io.compress.SnappyCodec` jako hodnotu.
 
-    d. Vyberte **Přidat**.
+    d. Vyberte možnost **Přidat**.
 
     ![Přidat vlastní vlastnost Apache Hive](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -191,19 +191,19 @@ Spekulativní provádění by nemělo být zapnuté pro dlouhotrvající MapRedu
 
 Podregistr umožňuje vytvářet dynamické oddíly při vkládání záznamů do tabulky, aniž by bylo nutné předdefinovat každý oddíl. Tato možnost je výkonná funkce. I když může dojít k vytvoření velkého počtu oddílů. A pro každý oddíl je to velký počet souborů.
 
-1. Pro dynamické oddíly v `hive.exec.dynamic.partition` podregistru by měla být hodnota parametru true (výchozí).
+1. Pro dynamické oddíly v podregistru `hive.exec.dynamic.partition` by měla být hodnota parametru true (výchozí).
 
-1. Změňte režim dynamického oddílu na *stricted*. V přísném režimu musí být alespoň jeden oddíl statický. Toto nastavení zabraňuje dotazům bez filtru oddílů v klauzuli WHERE, což znamená, že metoda *Strict* zabraňuje dotazům, které kontrolují všechny oddíly. Přejděte na kartu **Konfigurace** podregistru a nastavte na hodnotu `hive.exec.dynamic.partition.mode` **Strict**. Výchozí hodnota je **nestriktní**.
+1. Změňte režim dynamického oddílu na *stricted*. V přísném režimu musí být alespoň jeden oddíl statický. Toto nastavení zabraňuje dotazům bez filtru oddílů v klauzuli WHERE, což znamená, že metoda *Strict* zabraňuje dotazům, které kontrolují všechny oddíly. Přejděte na kartu **Konfigurace** podregistru a nastavte `hive.exec.dynamic.partition.mode` na hodnotu **Strict**. Výchozí hodnota je **nestriktní**.
 
-1. Chcete-li omezit počet dynamických oddílů, které mají být vytvořeny, `hive.exec.max.dynamic.partitions` upravte parametr. Výchozí hodnota je 5000.
+1. Chcete-li omezit počet dynamických oddílů, které mají být vytvořeny, upravte `hive.exec.max.dynamic.partitions` parametr. Výchozí hodnota je 5000.
 
-1. Chcete-li omezit celkový počet dynamických oddílů na uzel, upravte `hive.exec.max.dynamic.partitions.pernode`. Výchozí hodnota je 2000.
+1. Chcete-li omezit celkový počet dynamických oddílů na uzel, upravte `hive.exec.max.dynamic.partitions.pernode` . Výchozí hodnota je 2000.
 
 ## <a name="enable-local-mode"></a>Povolit místní režim
 
 Místní režim umožňuje podregistru provádět všechny úlohy v jednom počítači. Nebo někdy v jednom procesu. Toto nastavení zlepšuje výkon dotazů, pokud jsou vstupní data malá. A režie při spouštění úloh pro dotazy spotřebovává významné procento z celkového spuštění dotazu.
 
-Chcete-li povolit místní režim, `hive.exec.mode.local.auto` přidejte parametr do panelu vlastní podregistr-site, jak je vysvětleno v kroku 3 oddílu [Povolení mezilehlé komprese](#enable-intermediate-compression) .
+Chcete-li povolit místní režim, přidejte `hive.exec.mode.local.auto` parametr do panelu vlastní podregistr-site, jak je vysvětleno v kroku 3 oddílu [Povolení mezilehlé komprese](#enable-intermediate-compression) .
 
 ![Místní auto v režimu Apache Hive exec](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
 
@@ -211,7 +211,7 @@ Chcete-li povolit místní režim, `hive.exec.mode.local.auto` přidejte paramet
 
 Pokud je tato vlastnost nastavená na hodnotu true, vytvoří se ve více skupinách dotaz s běžnými klíči Group by jedna úloha MapReduce.  
 
-Chcete-li toto chování povolit, `hive.multigroupby.singlereducer` přidejte parametr do podokna vlastní podregistr-site, jak je vysvětleno v kroku 3 oddílu [Povolení mezilehlé komprese](#enable-intermediate-compression) .
+Chcete-li toto chování povolit, přidejte `hive.multigroupby.singlereducer` parametr do podokna vlastní podregistr-site, jak je vysvětleno v kroku 3 oddílu [Povolení mezilehlé komprese](#enable-intermediate-compression) .
 
 ![Jeden MapReduce pro více skupin v podmnožině](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
 

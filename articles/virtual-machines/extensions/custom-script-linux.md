@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
 ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594725"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s linuxovými virtuálními počítači
@@ -112,13 +112,13 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 | Name | Hodnota/příklad | Typ dat | 
 | ---- | ---- | ---- |
-| apiVersion | 2019-03-01 | datum |
+| apiVersion | 2019-03-01 | date |
 | vydavatel | Microsoft. Compute. Extensions | řetězec |
-| type | CustomScript | řetězec |
+| typ | CustomScript | řetězec |
 | typeHandlerVersion | 2.1 | int |
 | Identifikátory URI (např.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | pole |
-| commandToExecute (např.) | Python MyPythonScript.py \<my-param1> | řetězec |
-| . | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | řetězec |
+| commandToExecute (např.) | Python MyPythonScript.py\<my-param1> | řetězec |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | řetězec |
 | skipDos2Unix (např.) | false (nepravda) | Boolean |
 | časové razítko (např.) | 123456789 | 32-bitové celé číslo |
 | storageAccountName (např.) | examplestorageacct | řetězec |
@@ -152,10 +152,10 @@ Veřejné nastavení se odesílá ve formě prostého textu do virtuálního po�
 
 Výchozí hodnota je false, což znamená, že **je** proveden dos2unix převod.
 
-Předchozí verze CustomScript, Microsoft. OSTCExtensions. CustomScriptForLinux, by automaticky převedla soubory DOS na soubory systému UNIX pomocí překladu `\r\n` na `\n`. Tento překlad stále existuje a je ve výchozím nastavení zapnutý. Tento převod se použije na všechny soubory stažené z identifikátorů URI nebo nastavení skriptu na základě některého z následujících kritérií.
+Předchozí verze CustomScript, Microsoft. OSTCExtensions. CustomScriptForLinux, by automaticky převedla soubory DOS na soubory systému UNIX pomocí překladu `\r\n` na `\n` . Tento překlad stále existuje a je ve výchozím nastavení zapnutý. Tento převod se použije na všechny soubory stažené z identifikátorů URI nebo nastavení skriptu na základě některého z následujících kritérií.
 
-* Pokud je rozšíření jedním `.sh`z, `.txt`, `.py`nebo `.pl` bude převedeno. Nastavení skriptu bude vždy odpovídat těmto kritériím, protože se předpokládá, že se jedná o skript spouštěný pomocí/bin/sh a je uložen jako script.sh na virtuálním počítači.
-* Pokud soubor začíná na `#!`.
+* Pokud je rozšíření jedním z `.sh` , `.txt` , `.py` nebo `.pl` bude převedeno. Nastavení skriptu bude vždy odpovídat těmto kritériím, protože se předpokládá, že se jedná o skript spouštěný pomocí/bin/sh a je uložen jako script.sh na virtuálním počítači.
+* Pokud soubor začíná na `#!` .
 
 Konverzi dos2unix lze přeskočit nastavením skipDos2Unix na hodnotu true.
 
@@ -448,7 +448,7 @@ Tady můžete vidět:
 * Rozšíření stahuje soubor a jeho výsledek.
 * Příkaz, který se spouští, a výsledek.
 
-Můžete také načíst stav spuštění rozšíření vlastních skriptů včetně skutečných argumentů předávaných `commandToExecute` pomocí Azure CLI:
+Můžete také načíst stav spuštění rozšíření vlastních skriptů včetně skutečných argumentů předávaných pomocí `commandToExecute` Azure CLI:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM

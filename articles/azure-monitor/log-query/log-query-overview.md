@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82591648"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolu v Azure Monitor
@@ -76,7 +76,7 @@ V tématu Začínáme [s dotazy protokolu v Azure monitor](get-started-queries.m
 
 
 ## <a name="what-is-log-analytics"></a>Co je služba Log Analytics?
-Log Analytics je primárním nástrojem v Azure Portal pro zápis dotazů protokolu a interaktivní analýze jejich výsledků. I v případě, že se dotaz protokolu používá jinde v Azure Monitor, obvykle nejprve zapíšete a otestujete dotaz pomocí Log Analytics.
+Log Analytics je primárním nástrojem na webu Azure Portal pro zápis dotazů na protokoly a interaktivní analýzu jejich výsledků. I v případě, že se dotaz protokolu používá jinde v Azure Monitor, obvykle nejprve zapíšete a otestujete dotaz pomocí Log Analytics.
 
 Můžete začít Log Analytics z několika míst v Azure Portal. Rozsah dat, která jsou k dispozici pro Log Analytics, je určen podle toho, jak je spustíte. Další podrobnosti najdete v [oboru dotazů](scope.md) .
 

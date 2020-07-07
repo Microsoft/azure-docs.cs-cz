@@ -3,16 +3,16 @@ title: 'Kurz: ochrana nových prostředků pomocí zámků'
 description: V tomto kurzu použijete možnosti zámků prostředků Azure modrotisky jen pro čtení a neodstraňujte je k ochraně nově nasazených prostředků.
 ms.date: 05/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: 90ffb0f5b8c1b6d3919b05abf778c5082bfee0dc
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864160"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969636"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
 
-Pomocí [zámků prostředků](../concepts/resource-locking.md)Azure modrotisky můžete chránit nově nasazené prostředky proti poškození, a to i pomocí účtu s rolí _vlastníka_ . Tuto ochranu můžete přidat v definicích podrobného plánu prostředků vytvořených artefaktem šablony Správce prostředků.
+Pomocí [zámků prostředků](../concepts/resource-locking.md)Azure modrotisky můžete chránit nově nasazené prostředky proti poškození, a to i pomocí účtu s rolí _vlastníka_ . Tuto ochranu můžete přidat v definicích podrobného plánu prostředků vytvořených artefaktem šablony Azure Resource Manager (ARM Template).
 
 V tomto kurzu provedete tyto kroky:
 
@@ -25,7 +25,7 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 ## <a name="create-a-blueprint-definition"></a>Vytvořit definici podrobného plánu
 
@@ -55,8 +55,7 @@ Nejprve vytvořte definici podrobného plánu.
 1. Přidejte šablonu do skupiny prostředků:
    1. V položce **RGtoLock** vyberte řádek **Přidat artefakt** .
    1. V části **Typ artefaktu**vyberte **šablonu Azure Resource Manager** , nastavte **Zobrazovaný název artefaktu** na **StorageAccount**a nechejte **Popis** prázdný.
-   1. Na kartě **Šablona** vložte do pole Editor následující šablonu správce prostředků.
-      Po vložení do šablony vyberte **Přidat** a přidejte artefakt do podrobného plánu.
+   1. Na kartě **Šablona** vložte do pole Editor následující šablonu ARM. Po vložení do šablony vyberte **Přidat** a přidejte artefakt do podrobného plánu.
 
    ```json
    {
@@ -166,7 +165,7 @@ Až se zobrazí oznámení na portálu **přiřazení definice** podrobného pl�
 
 ## <a name="inspect-resources-deployed-by-the-assignment"></a>Kontrola prostředků nasazených přiřazením
 
-Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úložiště nasazený artefaktem šablony Správce prostředků. Nová skupina prostředků a vybraný stav uzamčení se zobrazí na stránce Podrobnosti přiřazení.
+Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úložiště nasazený artefaktem šablony ARM. Nová skupina prostředků a vybraný stav uzamčení se zobrazí na stránce Podrobnosti přiřazení.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
@@ -188,7 +187,7 @@ Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úlož
 
 1. Vyberte přiřazení odepřít a na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** **Akce** a, ale umožňuje přístup pro čtení s výjimkou ** \*/Read** prostřednictvím **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s **\*** konfigurací **Akce** a, ale umožňuje přístup pro čtení s výjimkou ** \* /Read** prostřednictvím **NotActions**.
 
 1. V Azure Portal s popisem cesty vyberte **TestingBPLocks-Access Control (IAM)**. Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadáním názvu **TestingBPLocks** potvrďte odstranění a potom v dolní části podokna vyberte **Odstranit** .
 
