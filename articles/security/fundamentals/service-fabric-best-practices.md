@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461646"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
@@ -87,7 +87,7 @@ Chcete-li zadat [certifikát clusteru](../../service-fabric/service-fabric-windo
 
 Kromě toho postupujte podle těchto postupů:
 -   Vytvořte certifikáty pro produkční clustery pomocí správně nakonfigurované služby Certificate Service systému Windows Server. Můžete také získat certifikáty od schválené certifikační autority (CA).
--   Pro produkční clustery nikdy nepoužívejte dočasný nebo testovací certifikát, pokud byl certifikát vytvořen pomocí nástroje MakeCert. exe nebo podobného nástroje.
+-   Pro produkční clustery nikdy nepoužívejte dočasný nebo testovací certifikát, pokud byl certifikát vytvořen pomocí MakeCert.exe nebo podobného nástroje.
 -   Použijte certifikát podepsaný svým držitelem pro testovací clustery, ale ne pro produkční clustery.
 
 Pokud je cluster nezabezpečený, může se kdokoli připojit ke clusteru anonymně a provádět operace správy. Z tohoto důvodu vždy Zabezpečte provozní clustery pomocí certifikátů X. 509 nebo zabezpečení systému Windows.
@@ -99,7 +99,7 @@ Service Fabric také zabezpečují prostředky používané aplikacemi. Prostře
 
 -   Použít skupinu domény nebo uživatele služby Active Directory: Spusťte službu pod pověřeními pro účet uživatele nebo skupiny služby Active Directory. Nezapomeňte použít místní službu Active Directory v rámci vaší domény a neAzure Active Directory. Přístup k dalším prostředkům v doméně, kterým bylo uděleno oprávnění, pomocí uživatele domény nebo skupiny. Například prostředky, jako jsou sdílené soubory.
 
--   Přiřaďte zásadu zabezpečení přístupu pro koncové body HTTP a HTTPS: Určete vlastnost **SecurityAccessPolicy** , která použije zásadu **runas** na službu, když manifest služby deklaruje prostředky koncového bodu pomocí protokolu HTTP. Porty přidělené koncovým bodům HTTP jsou správně řízené seznamy přístupu pro uživatelský účet RunAs, pod kterým služba běží. Pokud zásada není nastavená, k této službě nemá přístup soubor http. sys a můžete získat chyby s voláními z klienta.
+-   Přiřaďte zásadu zabezpečení přístupu pro koncové body HTTP a HTTPS: Určete vlastnost **SecurityAccessPolicy** , která použije zásadu **runas** na službu, když manifest služby deklaruje prostředky koncového bodu pomocí protokolu HTTP. Porty přidělené koncovým bodům HTTP jsou správně řízené seznamy přístupu pro uživatelský účet RunAs, pod kterým služba běží. Když zásada není nastavená, http.sys nemá přístup ke službě, a můžete získat chyby s voláními z klienta.
 
 Informace o tom, jak používat zásady zabezpečení v Service Fabricm clusteru, najdete v tématu [Konfigurace zásad zabezpečení pro vaši aplikaci](../../service-fabric/service-fabric-application-runas-security.md).
 

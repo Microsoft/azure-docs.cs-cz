@@ -4,10 +4,10 @@ description: Popisuje deklarativní syntaxi JSON pro šablony Azure Resource Man
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203824"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxe a výrazy v šablonách Azure Resource Manager
@@ -29,7 +29,7 @@ Azure Resource Manager poskytuje [funkce](template-functions.md) , které může
 },
 ```
 
-Syntaxe `resourceGroup()` v rámci výrazu volá jednu z funkcí, které správce prostředků poskytují pro použití v rámci šablony. V tomto případě je to funkce [Resource](template-functions-resource.md#resourcegroup) . Stejně jako v jazyce JavaScript jsou volání funkcí formátována `functionName(arg1,arg2,arg3)`jako. Syntaxe `.location` načte jednu vlastnost z objektu vráceného touto funkcí.
+Syntaxe v rámci výrazu `resourceGroup()` volá jednu z funkcí, které správce prostředků poskytují pro použití v rámci šablony. V tomto případě je to funkce [Resource](template-functions-resource.md#resourcegroup) . Stejně jako v jazyce JavaScript jsou volání funkcí formátována jako `functionName(arg1,arg2,arg3)` . Syntaxe `.location` načte jednu vlastnost z objektu vráceného touto funkcí.
 
 Funkce šablon a jejich parametry rozlišují velká a malá písmena. Například Správce prostředků vyřeší **proměnné (' var1 ')** a **proměnné (' var1 ')** jako stejné. Je-li tato funkce vyhodnocena, pokud funkce Express nemění velká a malá písmena (například toUpper nebo toLower), funkce zachovává případ. Některé typy prostředků můžou mít požadavky na případy, které jsou oddělené od způsobu, jakým se funkce vyhodnocují.
 
@@ -47,13 +47,13 @@ Většina funkcí funguje stejně, ať už je nasazená do skupiny prostředků,
 
 ## <a name="escape-characters"></a>Řídicí znaky
 
-Chcete-li, aby byl řetězcový literál začínat levou hranatou `[` závorkou `]`a končit pravou závorkou, ale nebyl interpretován jako výraz, přidejte další hranatou závorku, `[[`která zahájí řetězec s. Například proměnná:
+Chcete-li, aby byl řetězcový literál začínat levou hranatou závorkou `[` a končit pravou závorkou `]` , ale nebyl interpretován jako výraz, přidejte další hranatou závorku, která zahájí řetězec s `[[` . Například proměnná:
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-Přeloží `[test value]`na.
+Přeloží na `[test value]` .
 
 Nicméně pokud literální řetězec nekončí závorkou, nezařídí první vymezovač. Například proměnná:
 
@@ -61,7 +61,7 @@ Nicméně pokud literální řetězec nekončí závorkou, nezařídí první vy
 "demoVar2": "[test] value"
 ```
 
-Přeloží `[test] value`na.
+Přeloží na `[test] value` .
 
 Chcete-li ve výrazu, jako je například přidání objektu JSON do šablony, řídicí dvojité uvozovky, použijte zpětné lomítko.
 
@@ -93,7 +93,7 @@ Při předávání hodnot parametrů závisí použití řídicích znaků na m�
 }
 ```
 
-Použijete-li výchozí hodnotu, šablona se vrátí `[test value]`.
+Použijete-li výchozí hodnotu, šablona se vrátí `[test value]` .
 
 Nicméně pokud předáte hodnotu parametru prostřednictvím příkazového řádku, znaky jsou interpretovány doslova. Nasazování předchozí šablony pomocí:
 
@@ -107,7 +107,7 @@ Vrací objekt `[[test value]`. Místo toho použijte:
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
 ```
 
-Stejné formátování platí při předávání hodnot ze souboru parametrů. Znaky jsou interpretovány doslova. Při použití s předchozí šablonou se vrátí `[test value]`následující soubor parametrů:
+Stejné formátování platí při předávání hodnot ze souboru parametrů. Znaky jsou interpretovány doslova. Při použití s předchozí šablonou se vrátí následující soubor parametrů `[test value]` :
 
 ```json
 {

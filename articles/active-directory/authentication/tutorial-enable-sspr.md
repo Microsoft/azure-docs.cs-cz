@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de9abcca8d5b02b58bd5d4550dcb100a90853f7f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505966"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983145"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
@@ -79,6 +79,7 @@ Když uživatelé potřebují odemknout svůj účet nebo resetovat heslo, zobra
     * *E-mail*
     * *Mobilní telefon*
     * *Telefon do kanceláře*
+    * *Bezpečnostní otázky*
 
 1. Chcete-li použít metody ověřování, vyberte možnost **Uložit**.
 
@@ -132,7 +133,7 @@ V následujícím kurzu tohoto seriálu nakonfigurujete zpětný zápis hesla. T
 
 Pokud už nechcete používat funkci SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, nastavte stav SSPR na **none** pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**a potom v nabídce na levé straně zvolte **resetování hesla** .
 1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno*vyberte možnost **žádná**.
 1. Pokud chcete použít změnu SSPR, vyberte **Uložit**.

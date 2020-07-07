@@ -16,10 +16,10 @@ ms.date: 06/11/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85609205"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Jak spravované identity prostředků Azure fungují s virtuálními počítači Azure

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c180b303fc1437f9f0f1763406760545d808c7a5
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 91c48772ae50fd34e822c947687c0366e1d179cc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605612"
+ms.locfileid: "85798736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Kurz: Azure Active Directory integrace s informacemi v maloobchodních prodejích – Správa informací
 
@@ -108,10 +108,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://<company name>.mingle.infor.com
-        http://<company name>.mingledev.infor.com
-        ```
+    ```http
+    https://<company name>.mingle.infor.com
+    http://<company name>.mingledev.infor.com
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.mingle.infor.com/sp/ACS.saml2`
 

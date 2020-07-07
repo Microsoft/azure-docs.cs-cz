@@ -4,10 +4,10 @@ description: Získejte odpovědi na běžné otázky týkající se služby Azur
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81530313"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
@@ -53,7 +53,7 @@ Vyberte si nástroj podle toho, co chcete udělat:
 
 ## <a name="which-geographies-are-supported"></a>Které geografické oblasti jsou podporovány?
 
-Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
+Projděte si podporované oblasti pro [veřejný cloud](migrate-support-matrix.md#supported-geographies-public-cloud) a [cloud pro státní správu](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
 

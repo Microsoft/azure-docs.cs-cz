@@ -1,9 +1,8 @@
 ---
-title: Šablony Azure Resource Manageru
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Šablony Azure Resource Manager – Azure SQL Database & spravované instance SQL
 description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat Azure SQL Database a Azure SQL Managed instance.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,23 +11,23 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 76b9b1301a0aeee24b698b15a3871754de8ca0b9
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718797"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983634"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Šablony Azure Resource Manager pro Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure Resource Manager šablony vám umožní definovat infrastrukturu jako kód a nasadit vaše řešení do cloudu Azure pro Azure SQL Database a Azure SQL Managed instance.
+Šablony Azure Resource Manageru umožňují definovat infrastrukturu jako kód a nasazovat řešení do cloudu Azure pro služby Azure SQL Database a Azure SQL Managed Instance.
 
 ## <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Azure SQL Database.
 
-| |  |
+|Odkaz |Popis|
 |---|---|
 | [SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Tato šablona Azure Resource Manager vytvoří v Azure SQL Database jednu databázi a nakonfiguruje pravidla brány firewall protokolu IP na úrovni serveru. |
 | [Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Tato šablona Azure Resource Manager vytvoří server pro Azure SQL Database. |
@@ -47,7 +46,7 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Az
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro spravovanou instanci Azure SQL.
 
-| |  |
+|Odkaz|Popis|
 |---|---|
 | [Spravovaná instance SQL v nové virtuální síti](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Tato šablona Azure Resource Manager vytvoří ve virtuální síti novou nakonfigurovanou virtuální síť Azure a spravovanou instanci. |
 | [Síťové prostředí pro spravovanou instanci SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Toto nasazení vytvoří nakonfigurovanou virtuální síť Azure se dvěma podsítěmi, jednu, která bude vyhrazená pro vaše spravované instance, a další, kde můžete umístit další prostředky (například virtuální počítače, App Service prostředí atd.). Tato šablona vytvoří správně nakonfigurované síťové prostředí, ve kterém můžete nasadit spravované instance. |

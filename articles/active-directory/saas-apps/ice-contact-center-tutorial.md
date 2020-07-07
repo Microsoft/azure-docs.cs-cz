@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37f06bbc91fef0f0d8c1c646082bd95452c7e518
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9eadaf21705944a5d6aa8ea6d5ca190a21624ee8
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605793"
+ms.locfileid: "85798659"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ice-contact-center"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí centra kontaktů Ice
 
@@ -86,82 +86,82 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-        ```https
-        https://<TENANT>-imrpool.icescape365.com:PORT/identity
-        https://<TENANT>-imrpool.icescape.com:PORT/identity
-        https://<TENANT>-imrpool.iceuc.com:PORT/identity
-        ```
+    ```http
+    https://<TENANT>-imrpool.icescape365.com:PORT/identity
+    https://<TENANT>-imrpool.icescape.com:PORT/identity
+    https://<TENANT>-imrpool.iceuc.com:PORT/identity
+    ```
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-        ```https
-        https://<TENANT>-imrpool.icescape365.com:PORT/identity
-        https://<TENANT>-imrpool.icescape.com:PORT/identity
-        https://<TENANT>-imrpool.iceuc.com:PORT/identity
+    ```http
+    https://<TENANT>-imrpool.icescape365.com:PORT/identity
+    https://<TENANT>-imrpool.icescape.com:PORT/identity
+    https://<TENANT>-imrpool.iceuc.com:PORT/identity
     ```
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign on URL, Identifier and Reply URL. Contact [ice Contact Center Client support team](mailto:support@computer-talk.com) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory kontaktního centra kontaktů Ice](mailto:support@computer-talk.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. On the **Set up single sign-on with SAML** page, In the **SAML Signing Certificate** section, click copy button to copy **App Federation Metadata Url** and save it on your computer.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![The Certificate download link](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
-   1. In the **Name** field, enter `B.Simon`.  
-   1. In the **User name** field, enter the username@companydomain.extension. For example, `B.Simon@contoso.com`.
-   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
-   1. Click **Create**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to ice Contact Center.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k centru kontaktů Ice.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **ice Contact Center**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **ICE Contact Center**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![The "Users and groups" link](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## Configure ice Contact Center SSO
+## <a name="configure-ice-contact-center-sso"></a>Konfigurace služby Ice kontaktní centrum SSO
 
-To configure single sign-on on **ice Contact Center** side, you need to send the **App Federation Metadata Url** to [ice Contact Center support team](mailto:support@computer-talk.com). They set this setting to have the SAML SSO connection set properly on both sides.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **kontaktů Ice** , je nutné poslat [týmu podpory služby kontakt na kontaktní centrum pro zapracování](mailto:support@computer-talk.com) **adresy URL federačních metadat aplikace** . Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### Create ice Contact Center test user
+### <a name="create-ice-contact-center-test-user"></a>Vytvořit testovacího uživatele centra kontaktů Ice
 
-In this section, you create a user called Britta Simon in ice Contact Center. Work with [ice Contact Center support team](mailto:support@computer-talk.com) to add the users in the ice Contact Center platform. Users must be created and activated before you use single sign-on.
+V této části vytvoříte uživatele s názvem Britta Simon v centru kontaktů Ice. Pokud chcete přidat uživatele na platformě kontaktního centra ICE, pracujte s [týmem podpory Ice](mailto:support@computer-talk.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-## Test SSO 
+## <a name="test-sso"></a>Test SSO 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-When you click the ice Contact Center tile in the Access Panel, you should be automatically signed in to the ice Contact Center for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici kontaktního centra ICE na přístupovém panelu byste měli být automaticky přihlášení do centra kontaktů Ice, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## Additional resources
+## <a name="additional-resources"></a>Další zdroje
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try ice Contact Center with Azure AD](https://aad.portal.azure.com/)
+- [Vyzkoušejte si centrum kontaktů Ice pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [What is session control in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [How to protect ice Contact Center with advanced visibility and controls](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit centrum kontaktů Ice pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792049"
 ---
 # <a name="conditional-cognitive-skill"></a>Dovednost podmíněného vnímání
@@ -72,7 +72,7 @@ Následující položky jsou platné hodnoty výrazu:
         "= !true"
     ```
 
--   Výrazy, které používají číselné operátory (+,- \*,,/,%) <br/>
+-   Výrazy, které používají číselné operátory (+,-, \* ,/,%) <br/>
     Příklady: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -87,9 +87,9 @@ Vstupy rozlišují velká a malá písmena.
 
 | Vstup   | Popis |
 |-------------|-------------|
-| pomocné   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje podmínku pro vyhodnocení. Tato podmínka by se měla vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $ (/Document/Language) = =" fr "" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
-| whenTrue    | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena na *hodnotu true*. Řetězcové konstanty by měly být vráceny v jednoduchých uvozovkách (a). <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
-| whenFalse   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena jako *NEPRAVDA*. <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
+| pomocné   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje podmínku pro vyhodnocení. Tato podmínka by se měla vyhodnotit na logickou hodnotu (*true* nebo *false*).   <br/>  Příklady: <br/> "= true" <br/> "= $ (/Document/Language) = =" fr "" <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
+| whenTrue    | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena na *hodnotu true*. Řetězcové konstanty by měly být vráceny v jednoduchých uvozovkách (a). <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |
+| whenFalse   | Tento vstup je [vyhodnoceným polem](#evaluated-fields) , které představuje hodnotu, která se má vrátit, pokud je podmínka vyhodnocena jako *NEPRAVDA*. <br/>Ukázkové hodnoty: <br/> "=" kontrakt ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/>
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 Existuje jeden výstup, který se jednoduše nazývá "výstup". Vrátí hodnotu *whenFalse* , pokud je podmínka false, nebo *whenTrue* , pokud je podmínka pravdivá.

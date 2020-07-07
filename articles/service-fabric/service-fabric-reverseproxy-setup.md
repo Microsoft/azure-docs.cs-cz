@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476667"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
@@ -154,7 +154,7 @@ Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy p
 
 ## <a name="enable-reverse-proxy-on-standalone-clusters"></a>Povolení reverzního proxy serveru na samostatných clusterech
 
-Pro samostatné clustery povolte reverzní proxy server v souboru ClusterConfig. JSON. Můžete povolit reverzní proxy server při vytváření clusteru nebo upgradovat konfiguraci pro existující cluster. Další informace o nastaveních, která jsou k dispozici v souborech ClusterConfig. JSON, najdete v tématu věnovaném [Nastavení samostatného clusteru](./service-fabric-cluster-manifest.md).
+Pro samostatné clustery povolte reverzní proxy v souboru ClusterConfig.js. Můžete povolit reverzní proxy server při vytváření clusteru nebo upgradovat konfiguraci pro existující cluster. Další informace o nastaveních dostupných v ClusterConfig.jssouborů najdete v tématu věnovaném [Nastavení samostatného clusteru](./service-fabric-cluster-manifest.md).
 
 Následující kroky ukazují nastavení, která se použijí pro povolení reverzního proxy serveru a volitelně k zabezpečení reverzního proxy serveru pomocí certifikátu X. 509. 
 
@@ -221,7 +221,7 @@ Následující kroky ukazují nastavení, která se použijí pro povolení reve
 
    Další informace o konfiguraci a správě certifikátů pro samostatný cluster a o dalších podrobnostech o konfiguraci certifikátů používaných k zabezpečení reverzního proxy serveru najdete v tématu [zabezpečení založené na certifikátech x509](./service-fabric-windows-cluster-x509-security.md).
 
-Po úpravě souboru ClusterConfig. JSON pro povolení reverzního proxy postupujte podle pokynů v [části Upgrade konfigurace clusteru](service-fabric-cluster-config-upgrade-windows-server.md) , aby se změny nastavily do clusteru.
+Po úpravě ClusterConfig.jssouboru, aby bylo možné povolit reverzní proxy, postupujte podle pokynů v části [Upgrade konfigurace clusteru](service-fabric-cluster-config-upgrade-windows-server.md) pro vložení změn do clusteru.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Vystavení reverzního proxy serveru na veřejném portu prostřednictvím Azure Load Balancer
@@ -300,7 +300,7 @@ Následující JSON odkazuje na stejnou šablonu, která se používá v [Povole
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Přizpůsobení chování reverzního proxy serveru pomocí nastavení prostředků infrastruktury
 
-Můžete přizpůsobit chování reverzního proxy serveru prostřednictvím nastavení prostředků infrastruktury v šabloně Správce prostředků pro clustery hostované v Azure nebo v souboru ClusterConfig. JSON pro samostatné clustery. Nastavení, které řídí chování reverzního proxy serveru, se nachází v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) v části **fabricSettings** v části věnované **vlastnostem** clusteru. 
+Můžete přizpůsobit chování reverzního proxy serveru prostřednictvím nastavení prostředků infrastruktury v šabloně Správce prostředků pro clustery hostované v Azure nebo v ClusterConfig.jssouborů pro samostatné clustery. Nastavení, které řídí chování reverzního proxy serveru, se nachází v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) v části **fabricSettings** v části věnované **vlastnostem** clusteru. 
 
 Například můžete nastavit hodnotu **DefaultHttpRequestTimeout** , abyste nastavili časový limit pro požadavky na reverzní proxy na 180 sekund, jak je uvedeno v následujícím formátu JSON:
 

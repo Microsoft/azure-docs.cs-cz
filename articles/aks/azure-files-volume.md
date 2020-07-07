@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207662"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se sdílenou složkou Azure ve službě Azure Kubernetes Service (AKS)
@@ -18,11 +18,11 @@ Aplikace založené na kontejnerech často potřebují přístup k datům v exte
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Připojit sdílenou složku jako svazek
 
-Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor `azure-files-pod.yaml` s názvem s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného*klíče. V případě potřeby aktualizujte `mountPath`cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
+Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor `azure-files-pod.yaml` s názvem s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného*klíče. V případě potřeby aktualizujte `mountPath` cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 ```yaml
 apiVersion: v1
@@ -104,7 +104,7 @@ Pomocí `kubectl` příkazu vytvořte pod.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Teď máte spuštěný pod s sdílenou složkou Azure, která je připojená na */mnt/Azure*. K ověření, `kubectl describe pod mypod` zda je sdílená složka úspěšně připojena, můžete použít. Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
+Teď máte spuštěný pod s sdílenou složkou Azure, která je připojená na */mnt/Azure*. `kubectl describe pod mypod`K ověření, zda je sdílená složka úspěšně připojena, můžete použít. Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
 
 ```
 Containers:

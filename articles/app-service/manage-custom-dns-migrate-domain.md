@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535685"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrace aktivního názvu DNS na Azure App Service
@@ -40,9 +40,9 @@ Když nakonec migrujete svůj vlastní název DNS z původního webu do aplikace
 
 ### <a name="create-domain-verification-record"></a>Vytvořit záznam pro ověření domény
 
-Chcete-li ověřit vlastnictví domény, přidejte záznam TXT. Záznam TXT se mapuje z _awverify.&lt;>pro subdoménu_ do _ &lt;AppName>. azurewebsites.NET_. 
+Chcete-li ověřit vlastnictví domény, přidejte záznam TXT. Záznam TXT se mapuje z _awverify. &lt;>pro subdoménu_ do _ &lt; appname>. azurewebsites.NET_. 
 
-Záznam TXT, který potřebujete, závisí na záznamu DNS, který chcete migrovat. Příklady najdete v následující tabulce (`@` obvykle představuje kořenovou doménu):
+Záznam TXT, který potřebujete, závisí na záznamu DNS, který chcete migrovat. Příklady najdete v následující tabulce ( `@` obvykle představuje kořenovou doménu):
 
 | Příklad záznamu DNS | Hostitel TXT | Hodnota TXT |
 | - | - | - |
@@ -53,7 +53,7 @@ Záznam TXT, který potřebujete, závisí na záznamu DNS, který chcete migrov
 Na stránce záznamy DNS si poznamenejte typ záznamu názvu DNS, který chcete migrovat. App Service podporuje mapování ze záznamů CNAME a a.
 
 > [!NOTE]
-> Pro určité poskytovatele, jako je například CloudFlare `awverify.*` , není platný záznam. Použijte `*` pouze místo toho.
+> Pro určité poskytovatele, jako je například CloudFlare, není `awverify.*` platný záznam. Použijte `*` pouze místo toho.
 
 > [!NOTE]
 > Zástupné `*` záznamy neověřují poddomény s existujícím záznamem CNAME. Možná budete muset explicitně vytvořit záznam TXT pro každou subdoménu.
@@ -69,7 +69,7 @@ Na stránce **vlastní domény** vyberte **+** ikonu vedle **Přidat název host
 
 ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam TXT pro, například `www.contoso.com`. V případě domény se zástupnými znaky (například \*. contoso.com) můžete použít libovolný název DNS, který odpovídá zástupné doméně. 
+Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam TXT pro, například `www.contoso.com` . V případě domény se zástupnými znaky (například \* . contoso.com) můžete použít libovolný název DNS, který odpovídá zástupné doméně. 
 
 Vyberte **Ověřit**.
 
@@ -114,7 +114,7 @@ V případě `contoso.com` příkladu kořenové domény přemapujte záznam a n
 | Příklad plně kvalifikovaného názvu domény | Typ záznamu | Hostitel | Hodnota |
 | - | - | - | - |
 | contoso.com (kořen) | A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-| Webová\.contoso.com (sub) | CNAME | `www` | _&lt;AppName>. azurewebsites.net_ |
+| Webová \. contoso.com (sub) | CNAME | `www` | _&lt;AppName>. azurewebsites.net_ |
 | \*. contoso.com (zástupný znak) | CNAME | _\*_ | _&lt;AppName>. azurewebsites.net_ |
 
 Uložte nastavení.
@@ -125,7 +125,7 @@ Dotazy DNS by se měly hned po šíření DNS začít řešit do vaší aplikace
 
 Můžete migrovat aktivní vlastní doménu v Azure, mezi předplatnými nebo v rámci stejného předplatného. Taková migrace ale bez výpadků ale vyžaduje, aby se zdrojová aplikace a cílová aplikace v určitou dobu přiřadily k stejné vlastní doméně. Proto je nutné zajistit, aby tyto dvě aplikace nebyly nasazeny na stejné jednotce nasazení (interně označované jako webový prostor). Název domény se dá přiřadit jenom k jedné aplikaci v každé jednotce nasazení.
 
-Jednotku nasazení pro vaši aplikaci najdete tak, že si vyhledáte název domény adresy URL `<deployment-unit>.ftp.azurewebsites.windows.net`FTP/S. Zkontrolujte a zajistěte, aby se jednotka nasazení v cílové aplikaci lišila od zdrojové aplikace. Jednotka nasazení aplikace je určena [plánem App Service](overview-hosting-plans.md) . Při vytváření plánu ho náhodně vybrala Azure a nedá se změnit. Azure jenom v případě, že je [vytvoříte ve stejné skupině prostředků *a* ve stejné oblasti](app-service-plan-manage.md#create-an-app-service-plan), jsou ve stejné jednotce nasazení pouze dva plány, ale nemá žádnou logiku, která by zajistila, že se plány nacházejí v různých jednotkách nasazení. Jediným způsobem, jak vytvořit plán v jiné jednotce nasazení, je zachovat plán v nové skupině nebo oblasti prostředků, dokud nezískáte jinou jednotku nasazení.
+Jednotku nasazení pro vaši aplikaci najdete tak, že si vyhledáte název domény adresy URL FTP/S `<deployment-unit>.ftp.azurewebsites.windows.net` . Zkontrolujte a zajistěte, aby se jednotka nasazení v cílové aplikaci lišila od zdrojové aplikace. Jednotka nasazení aplikace je určena [plánem App Service](overview-hosting-plans.md) . Při vytváření plánu ho náhodně vybrala Azure a nedá se změnit. Azure jenom v případě, že je [vytvoříte ve stejné skupině prostředků *a* ve stejné oblasti](app-service-plan-manage.md#create-an-app-service-plan), jsou ve stejné jednotce nasazení pouze dva plány, ale nemá žádnou logiku, která by zajistila, že se plány nacházejí v různých jednotkách nasazení. Jediným způsobem, jak vytvořit plán v jiné jednotce nasazení, je zachovat plán v nové skupině nebo oblasti prostředků, dokud nezískáte jinou jednotku nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 

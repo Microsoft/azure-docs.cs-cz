@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
 ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743979"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Rychlý Start: připojení k virtuálnímu počítači pomocí privátní IP adresy a Azure bastionu
 
 Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počítači pomocí privátní IP adresy. Když se připojujete přes bastionu, virtuální počítače nepotřebují veřejnou IP adresu. Kroky v tomto článku vám pomůžou nasadit bastionu do virtuální sítě přes virtuální počítač na portálu. Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti.
 
-## <a name="prerequisites"></a><a name="prereq"></a>Požadavky
+## <a name="prerequisites"></a><a name="prereq"></a>Požadovaný
 
 * Virtuální síť Azure.
 * Virtuální počítač Azure umístěný ve virtuální síti s otevřeným portem 3389.

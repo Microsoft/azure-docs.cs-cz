@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430887"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
@@ -41,11 +41,11 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
   Klíče se vždycky ukládají do cesty/Keys, tajné klíče se vždycky ukládají do cesty/Secrets.  
 
 ## <a name="api-version"></a>Verze rozhraní API  
- Služba Azure Key Vault podporuje správu verzí protokolu, aby poskytovala kompatibilitu s klienty nižší úrovně, i když pro tyto klienty nebudou k dispozici všechny možnosti. Klienti musí použít parametr `api-version` řetězce dotazu k určení verze protokolu, který podporují, protože není k dispozici výchozí hodnota.  
+ Služba Azure Key Vault podporuje správu verzí protokolu, aby poskytovala kompatibilitu s klienty nižší úrovně, i když pro tyto klienty nebudou k dispozici všechny možnosti. Klienti musí použít `api-version` parametr řetězce dotazu k určení verze protokolu, který podporují, protože není k dispozici výchozí hodnota.  
 
  Verze Azure Key Vaultho protokolu následují po schématu číslování dat pomocí {rrrr}. {MM}. Formát {DD}.  
 
-## <a name="request-body"></a>Text žádosti  
+## <a name="request-body"></a>Text požadavku  
  Podle specifikace HTTP nesmí operace GET obsahovat text žádosti a operace POST a PUT musí obsahovat text žádosti. Tělo v rámci operací odstranění je v HTTP volitelné.  
 
  Pokud není uvedeno jinak v popisu operace, musí být typ obsahu textu požadavku Application/JSON a musí obsahovat serializovaný objekt JSON, který odpovídá typu obsahu.  
@@ -88,7 +88,7 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 
 ```  
 
-## <a name="authentication"></a>Authentication  
+## <a name="authentication"></a>Ověřování  
  Všechny požadavky na Azure Key Vault musí být ověřeny. Azure Key Vault podporuje přístupové tokeny Azure Active Directory, které se dají získat pomocí OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
  Další informace o registraci aplikace a ověřování pro použití Azure Key Vault najdete v tématu [registrace klientské aplikace pomocí Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   autorizace: adresa autorizační služby OAuth2, která se dá použít k získání přístupového tokenu pro požadavek.  
 
--   prostředek: název prostředku (`https://vault.azure.net`), který se má použít v žádosti o autorizaci.  
+-   prostředek: název prostředku ( `https://vault.azure.net` ), který se má použít v žádosti o autorizaci.  
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: c5f01a00d70869882d3d3398607ecfebbfd54417
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82209073"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané službou Apache Hadoop Services ve službě HDInsight
@@ -55,7 +55,7 @@ Pro konkrétní typy clusterů jsou k dispozici následující:
 | Storm |443 |HTTPS |Storm |Webové uživatelské rozhraní. Viz [nasazení a Správa topologií Apache Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) . |
 | Kafka REST proxy |443 |HTTPS |Kafka |Kafka REST API. Viz [interakce s clustery Apache Kafka ve službě Azure HDInsight pomocí proxy REST](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Všechny služby veřejně vystavené na internetu musí být ověřené:
 
@@ -170,4 +170,4 @@ Příklady:
 
 Příklady:
 
-* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. V tomto příkladu `10.0.0.11` je IP adresa hlavnímu uzlu, která je hostitelem služby Livy.
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"` . V tomto příkladu `10.0.0.11` je IP adresa hlavnímu uzlu, která je hostitelem služby Livy.

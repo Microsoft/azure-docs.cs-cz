@@ -4,10 +4,10 @@ description: Použití spravovaných identit v Azure Service Fabric kódu aplika
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461561"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure
@@ -52,8 +52,8 @@ kde:
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | Spravovaný koncový bod identity pro aplikace Service Fabric poskytovaný přes proměnnou prostředí IDENTITY_ENDPOINT. |
-| `api-version` | Parametr řetězce dotazu, který určuje verzi rozhraní API spravované služby tokenu identity; v současné době je `2019-07-01-preview`jediná přijatá hodnota a může se změnit. |
-| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Tato akce se projeví jako `aud` deklarace identity (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Key Vault, jehož identifikátor URI ID aplikace je https:\//Vault.Azure.NET/. |
+| `api-version` | Parametr řetězce dotazu, který určuje verzi rozhraní API spravované služby tokenu identity; v současné době je jediná přijatá hodnota `2019-07-01-preview` a může se změnit. |
+| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Tato akce se projeví jako `aud` deklarace identity (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Key Vault, jehož identifikátor URI ID aplikace je https: \/ /Vault.Azure.NET/. |
 | `Secret` | Pole hlavičky požadavku HTTP, které vyžaduje služba Service Fabric Managed identity token Service pro Service Fabric Services k ověření volajícího. Tuto hodnotu poskytuje modul runtime SF prostřednictvím proměnné prostředí IDENTITY_HEADER. |
 
 
@@ -73,9 +73,9 @@ kde:
 | Prvek | Popis |
 | ------- | ----------- |
 | `token_type` | Typ tokenu; v tomto případě se jedná o přístupový token "nosiče", což znamená, že předvádějící ("Bearer") tohoto tokenu je zamýšlený předmět tokenu. |
-| `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do pole hlavička `Authorization` požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
+| `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do `Authorization` pole Hlavička požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
 | `expires_on` | Časové razítko vypršení platnosti přístupového tokenu; reprezentované jako počet sekund od "1970-01-01T0:0: 0Z UTC" a odpovídá `exp` deklaraci identity tokenu. V tomto případě vyprší platnost tokenu v 2019-08-08T06:10:11 + 00:00 (v dokumentu RFC 3339).|
-| `resource` | Prostředek, pro který se přístupový token vystavil, zadaný přes parametr `resource` řetězce dotazu žádosti; odpovídá deklaraci identity AUD tokenu. |
+| `resource` | Prostředek, pro který se přístupový token vystavil, zadaný přes `resource` parametr řetězce dotazu žádosti; odpovídá deklaraci identity AUD tokenu. |
 
 
 ## <a name="acquiring-an-access-token-using-c"></a>Získání přístupového tokenu pomocí jazyka C #
@@ -345,7 +345,7 @@ Ukázková Chyba:
 
 Následuje seznam typických chyb Service Fabric specifických pro spravované identity:
 
-| kód | Zpráva | Popis | 
+| Kód | Zpráva | Popis | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | Tajný kód nebyl nalezen v hlavičce požadavku. | S požadavkem nebyl poskytnut ověřovací kód. | 
 | ManagedIdentityNotFound | Pro zadaného hostitele aplikace se nenašla spravovaná identita. | Aplikace nemá žádnou identitu, nebo je ověřovací kód neznámý. |

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478962"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
@@ -47,7 +47,7 @@ Tabulka shrnuje předpoklady pro nasazení místního počítače konfigurační
 Nejnovější verzi instalačního souboru konfiguračního serveru najdete na portálu Site Recovery. Navíc ho můžete stáhnout přímo z webu [Microsoft Download Center](https://aka.ms/unifiedsetup).
 
 1. Přihlaste se k Azure Portal a přejděte do svého trezoru Recovery Services.
-2. Přejděte na **Site Recovery** > **konfiguračního serveru** infrastruktury (v části pro & fyzické počítače VMware).
+2. Přejděte na **Site Recovery**  >  **konfiguračního serveru** infrastruktury (v části pro & fyzické počítače VMware).
 3. Klikněte na tlačítko **+ servery** .
 4. Na stránce **Přidat server** klikněte na tlačítko Stáhnout a stáhněte registrační klíč. Tento klíč budete potřebovat při instalaci konfiguračního serveru, abyste ho mohli zaregistrovat ve službě Azure Site Recovery.
 5. Kliknutím na odkaz **stáhnout Microsoft Azure Site Recovery Unified Setup** si stáhněte nejnovější verzi konfiguračního serveru.
@@ -87,7 +87,7 @@ Nejnovější verzi instalačního souboru konfiguračního serveru najdete na p
 11. Na stránce **Souhrn** zkontrolujte informace a klikněte na **Nainstalovat**. Po dokončení instalace se vygeneruje heslo. Budete ho potřebovat k povolení replikace, proto si ho zkopírujte a uložte na bezpečném místě.
 
 
-Po dokončení registrace se server zobrazí v okně **Nastavení** > **servery** v trezoru.
+Po dokončení registrace se server zobrazí v okně **Nastavení**  >  **servery** v trezoru.
 
 
 ## <a name="install-from-the-command-line"></a>Instalace z příkazového řádku
@@ -110,20 +110,20 @@ Spusťte instalační soubor následujícím způsobem:
 
 |Název parametru| Typ | Popis| Hodnoty|
 |-|-|-|-|
-| /ServerMode|Požaduje se|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
-|/InstallLocation|Požaduje se|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
-|/MySQLCredsFilePath|Požaduje se|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
-|/VaultCredsFilePath|Požaduje se|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
-|/EnvType|Požaduje se|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
-|/PSIP|Požaduje se|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
-|/CSIP|Požaduje se|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
-|/PassphraseFilePath|Požaduje se|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
-|/BypassProxy|Nepovinné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
-|/ProxySettingsFilePath|Nepovinné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
-|DataTransferSecurePort|Nepovinné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
-|/SkipSpaceCheck|Nepovinné|Přeskočí kontrolu místa na disku mezipaměti.| |
-|/AcceptThirdpartyEULA|Požaduje se|Příznak značí přijetí smlouvy EULA třetích stran| |
-|/ShowThirdpartyEULA|Nepovinné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
+| /ServerMode|Vyžadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
+|/InstallLocation|Vyžadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
+|/MySQLCredsFilePath|Vyžadováno|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
+|/VaultCredsFilePath|Vyžadováno|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
+|/EnvType|Vyžadováno|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
+|/PSIP|Vyžadováno|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
+|/CSIP|Vyžadováno|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
+|/PassphraseFilePath|Vyžadováno|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
+|/BypassProxy|Volitelné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
+|/ProxySettingsFilePath|Volitelné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
+|DataTransferSecurePort|Volitelné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
+|/SkipSpaceCheck|Volitelné|Přeskočí kontrolu místa na disku mezipaměti.| |
+|/AcceptThirdpartyEULA|Vyžadováno|Příznak značí přijetí smlouvy EULA třetích stran| |
+|/ShowThirdpartyEULA|Volitelné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
 
 
 
@@ -151,7 +151,7 @@ ProxyPassword="Password"
 Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravit následujícím způsobem:
 
 1. Přihlaste se ke konfiguračnímu serveru.
-2. Spusťte cspsconfigtool. exe pomocí zástupce na ploše.
+2. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
 3. Klikněte na kartu **registrace trezoru** .
 4. Stáhněte si nový registrační soubor trezoru z portálu a poskytněte ho jako vstup do nástroje.
 
@@ -172,7 +172,7 @@ Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravi
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Opětovná registrace konfiguračního serveru se stejným trezorem
 1. Přihlaste se ke konfiguračnímu serveru.
-2. Spusťte cspsconfigtool. exe pomocí zástupce na ploše.
+2. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
 3. Klikněte na kartu **registrace trezoru** .
 4. Stáhněte si nový registrační soubor z portálu a poskytněte ho jako vstup do nástroje.
       ![Registrace – konfigurace-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
@@ -202,7 +202,7 @@ Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravi
     reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
     net stop dra
     ```
-3. Spusťte cspsconfigtool. exe pomocí zástupce na ploše.
+3. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
 4. Klikněte na kartu **registrace trezoru** .
 5. Stáhněte si nový registrační soubor z portálu a poskytněte ho jako vstup do nástroje.
 6. Zadejte podrobnosti proxy serveru a klikněte na tlačítko **Registrovat** .  
@@ -242,7 +242,7 @@ Proveďte upgrade serveru následujícím způsobem:
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Odstranit konfigurační server z Azure Portal
-1. V Azure Portal přejděte na **Site Recovery** > **konfigurační servery** infrastruktury z nabídky trezor.
+1. V Azure Portal přejděte na **Site Recovery**  >  **konfigurační servery** infrastruktury z nabídky trezor.
 2. Klikněte na konfigurační server, který chcete vyřadit z provozu.
 3. Na stránce podrobností konfiguračního serveru klikněte na tlačítko **Odstranit** .
 4. Kliknutím na **Ano** potvrďte odstranění serveru.
@@ -303,7 +303,7 @@ U nasazení konfiguračního serveru do května 2016 se platnost certifikátu na
 
 ### <a name="renew-the-certificate"></a>Prodloužit platnost certifikátu
 
-1. V trezoru otevřete **Site Recovery** > **konfiguračního serveru**infrastruktury a klikněte na požadovaný konfigurační server.
+1. V trezoru otevřete **Site Recovery**  >  **konfiguračního serveru**infrastruktury a klikněte na požadovaný konfigurační server.
 2. Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru** .
 3. Klikněte na tlačítko **obnovit certifikáty**. 
 

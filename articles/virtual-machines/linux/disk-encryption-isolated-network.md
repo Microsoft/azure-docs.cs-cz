@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460116"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption v izolované síti
@@ -45,9 +45,9 @@ Pokud používáte [Azure Disk Encryption s Azure AD (předchozí verze)](disk-e
 
 Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování se udržují v oddílech 56 a 59 v dokumentaci k [adresám URL a rozsahům IP adres sady Office 365](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
-### <a name="azure-instance-metadata-service"></a>Instance Metadata Service Azure 
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 
-Virtuální počítač musí mít přístup ke koncovému bodu [služby metadat instance Azure](instance-metadata-service.md) , který používá dobře známou IP adresu Nesměrovatelné IP adresy (`169.254.169.254`), ke které se dá přistupovat jenom v rámci virtuálního počítače.  Konfigurace proxy serveru, které mění místní přenos HTTP na tuto adresu (například přidání řádku s přesměrováním X), nejsou podporovány.
+Virtuální počítač musí mít přístup ke koncovému bodu [služby metadat instance Azure](instance-metadata-service.md) , který používá dobře známou IP adresu Nesměrovatelné IP adresy ( `169.254.169.254` ), ke které se dá přistupovat jenom v rámci virtuálního počítače.  Konfigurace proxy serveru, které mění místní přenos HTTP na tuto adresu (například přidání řádku s přesměrováním X), nejsou podporovány.
 
 ## <a name="next-steps"></a>Další kroky
 

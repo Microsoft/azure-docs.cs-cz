@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478817"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
@@ -22,12 +22,12 @@ Jak je vysvětleno v tématu [Historie orchestrace](durable-functions-orchestrat
 
 ## <a name="resetting-and-restarting"></a>Resetování a restartování
 
-Namísto použití nekonečné smyčky, funkce Orchestrator obnoví jejich stav voláním metody `ContinueAsNew` (.NET) nebo `continueAsNew` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger). Tato metoda přijímá jeden parametr s možností serializace JSON, který se stal novým vstupem pro další generování funkce Orchestrator.
+Namísto použití nekonečné smyčky, funkce Orchestrator obnoví jejich stav voláním `ContinueAsNew` metody (.NET) nebo `continueAsNew` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger). Tato metoda přijímá jeden parametr s možností serializace JSON, který se stal novým vstupem pro další generování funkce Orchestrator.
 
 Když `ContinueAsNew` je volána, instance před ukončením zachová zprávy do sebe samé. Zpráva restartuje instanci s novou vstupní hodnotou. Stejné ID instance je zachované, ale historie funkce Orchestrator je ve skutečnosti zkrácená.
 
 > [!NOTE]
-> Prostředí trvalého zpracování úloh udržuje stejné ID instance, ale interně vytvoří nové *ID spuštění* pro funkci Orchestrator, která resetuje `ContinueAsNew`. Toto ID spuštění většinou není vystaveno externě, ale může být užitečné, abyste měli informace o spuštění orchestrace ladění.
+> Prostředí trvalého zpracování úloh udržuje stejné ID instance, ale interně vytvoří nové *ID spuštění* pro funkci Orchestrator, která resetuje `ContinueAsNew` . Toto ID spuštění většinou není vystaveno externě, ale může být užitečné, abyste měli informace o spuštění orchestrace ladění.
 
 ## <a name="periodic-work-example"></a>Příklad periodické práce
 
@@ -51,7 +51,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí příklad v jazyce C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklad v jazyce C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -76,10 +76,10 @@ Rozdíl mezi tímto příkladem a funkcí aktivovanou časovačem je, že doba t
 
 ## <a name="starting-an-eternal-orchestration"></a>Spuštění orchestrace externí
 
-Použijte metodu `StartNewAsync` (.NET) nebo `startNew` (JavaScript) k zahájení orchestrace externí, stejně jako u jakékoli jiné funkce orchestrace.  
+Použijte `StartNewAsync` metodu (.NET) nebo `startNew` (JavaScript) k zahájení orchestrace externí, stejně jako u jakékoli jiné funkce orchestrace.  
 
 > [!NOTE]
-> Pokud potřebujete zajistit, aby orchestrace typu Singleton externí běžela, je důležité při spouštění orchestrace zachovat stejnou `id` instanci. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+> Pokud potřebujete zajistit, aby orchestrace typu Singleton externí běžela, je důležité `id` při spouštění orchestrace zachovat stejnou instanci. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -97,7 +97,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -120,9 +120,9 @@ module.exports = async function (context, req) {
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Ukončení orchestrace externí
 
-Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, *Nevolejte* `ContinueAsNew` vše, co je potřeba udělat, a nechejte funkci ukončit.
+Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, *Nevolejte vše* , co je potřeba udělat, `ContinueAsNew` a nechejte funkci ukončit.
 
-Pokud je funkce Orchestrator v nekonečné smyčce a je potřeba ji zastavit, použijte k zastavení `TerminateAsync` [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) metodu `terminate` (.NET) nebo (JavaScript). Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+Pokud je funkce Orchestrator v nekonečné smyčce a je potřeba ji zastavit, použijte `TerminateAsync` `terminate` k zastavení [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) metodu (.NET) nebo (JavaScript). Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Další kroky
 

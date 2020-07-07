@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519909"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Konfigurace aplikace App Service nebo Azure Functions, aby používala přihlášení k Twitteru
@@ -26,7 +26,7 @@ K dokončení postupu v tomto článku potřebujete účet na Twitteru s ověře
 
 1. Přihlaste se k [Azure Portal] a pokračujte do své aplikace. Zkopírujte **adresu URL**. Použijete ho ke konfiguraci aplikace Twitter.
 1. Přejít na web pro [vývojáře na Twitteru] , přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a vyberte **vytvořit aplikaci**.
-1. Zadejte **název aplikace** a **Popis aplikace** pro novou aplikaci. Vložte **adresu URL** vaší aplikace do pole **Adresa URL webu** . V části **adresy URL zpětného volání** zadejte adresu URL https vaší aplikace App Service a přidejte cestu `/.auth/login/twitter/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. Zadejte **název aplikace** a **Popis aplikace** pro novou aplikaci. Vložte **adresu URL** vaší aplikace do pole **Adresa URL webu** . V části **adresy URL zpětného volání** zadejte adresu URL https vaší aplikace App Service a přidejte cestu `/.auth/login/twitter/callback` . Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
 1. V dolní části stránky zadejte aspoň 100 znaků v části **řekněte nám, jak se tato aplikace bude používat**, a pak vyberte **vytvořit**. V automaticky otevíraném okně klikněte na **vytvořit** znovu. Zobrazí se podrobnosti o aplikaci.
 1. Vyberte kartu **klíče a přístupové tokeny** .
 
@@ -40,9 +40,9 @@ K dokončení postupu v tomto článku potřebujete účet na Twitteru s ověře
 ## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Přidání informací o Twitteru do aplikace
 
 1. V [Azure Portal]přejdete do své aplikace.
-1. Vyberte **Nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. Vyberte **Nastavení**  >  **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
 1. Vyberte **Twitter**.
-1. Vložte hodnoty `API key` a `API secret key` , které jste získali dříve.
+1. Vložte `API key` `API secret key` hodnoty a, které jste získali dříve.
 1. Vyberte **OK**.
 
    ![Snímek obrazovky s nastavením Twitteru mobilní aplikace][1]
@@ -71,5 +71,5 @@ Nyní jste připraveni použít Twitter pro ověřování ve vaší aplikaci.
 
 [Vývojáři na Twitteru]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

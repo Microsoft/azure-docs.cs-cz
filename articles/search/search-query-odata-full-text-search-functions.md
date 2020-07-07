@@ -20,22 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793354"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Funkce fulltextového vyhledávání OData v Azure Kognitivní hledání – `search.ismatch` a`search.ismatchscoring`
 
-Azure Kognitivní hledání podporuje fulltextové vyhledávání v kontextu [výrazů filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím funkcí `search.ismatch` a `search.ismatchscoring` . Tyto funkce umožňují kombinovat fulltextové vyhledávání s přísným filtrováním, které není možné pouze pomocí parametru nejvyšší úrovně `search` [rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Azure Kognitivní hledání podporuje fulltextové vyhledávání v kontextu [výrazů filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `search.ismatch` `search.ismatchscoring` funkcí a. Tyto funkce umožňují kombinovat fulltextové vyhledávání s přísným filtrováním, které není možné pouze pomocí parametru nejvyšší úrovně `search` [rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 > [!NOTE]
-> Funkce `search.ismatch` a `search.ismatchscoring` jsou podporovány pouze ve filtrech v [rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents). Nejsou podporovány v rozhraních API pro [navrhování](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
+> `search.ismatch`Funkce a `search.ismatchscoring` jsou podporovány pouze ve filtrech v [rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents). Nejsou podporovány v rozhraních API pro [navrhování](https://docs.microsoft.com/rest/api/searchservice/suggestions) nebo [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku funkcí `search.ismatch` a: `search.ismatchscoring`
+Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.ismatch` `search.ismatchscoring` funkcí a:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -61,7 +61,7 @@ K dispozici je také diagram interaktivní syntaxe:
 
 ### <a name="searchismatch"></a>Hledat. neshoda
 
-`search.ismatch` Funkce vyhodnocuje fulltextový vyhledávací dotaz jako součást výrazu filtru. V sadě výsledků se vrátí dokumenty, které odpovídají hledanému dotazu. K dispozici jsou následující přetížení této funkce:
+`search.ismatch`Funkce vyhodnocuje fulltextový vyhledávací dotaz jako součást výrazu filtru. V sadě výsledků se vrátí dokumenty, které odpovídají hledanému dotazu. K dispozici jsou následující přetížení této funkce:
 
 - `search.ismatch(search)`
 - `search.ismatch(search, searchFields)`
@@ -73,30 +73,30 @@ Parametry jsou definovány v následující tabulce:
 | --- | --- | --- |
 | `search` | `Edm.String` | Vyhledávací dotaz (buď v [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxi dotazů Lucene). |
 | `searchFields` | `Edm.String` | Čárkami oddělený seznam vyhledávacích polí, ve kterých chcete hledat; Výchozí hodnota pro všechna hledaná pole v indexu. Při použití [vyhledávacího pole](query-lucene-syntax.md#bkmk_fields) v `search` parametru přepíše specifikátory pole v dotazu Lucene všechna pole zadaná v tomto parametru. |
-| `queryType` | `Edm.String` | `'simple'`nebo `'full'`; Výchozí hodnota `'simple'`je. Určuje, který dotazovací jazyk byl použit v `search` parametru. |
-| `searchMode` | `Edm.String` | `'any'`nebo `'all'`, standardně `'any'`. Označuje, zda musí být některé nebo všechny hledané výrazy v `search` parametru porovnány, aby bylo možné dokument počítat jako shodu. Při použití [logických operátorů Lucene](query-lucene-syntax.md#bkmk_boolean) v `search` parametru budou mít přednost před tímto parametrem. |
+| `queryType` | `Edm.String` | `'simple'`nebo `'full'` ; Výchozí hodnota je `'simple'` . Určuje, který dotazovací jazyk byl použit v `search` parametru. |
+| `searchMode` | `Edm.String` | `'any'`nebo `'all'` , standardně `'any'` . Označuje, zda musí být některé nebo všechny hledané výrazy v `search` parametru porovnány, aby bylo možné dokument počítat jako shodu. Při použití [logických operátorů Lucene](query-lucene-syntax.md#bkmk_boolean) v `search` parametru budou mít přednost před tímto parametrem. |
 
 Všechny výše uvedené parametry jsou ekvivalentem odpovídajících [parametrů vyhledávacího požadavku v rozhraní API pro hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-`search.ismatch` Funkce vrátí hodnotu typu `Edm.Boolean`, která umožňuje její sestavení pomocí dalších podvýrazů filtru s použitím logických [logických operátorů](search-query-odata-logical-operators.md).
+`search.ismatch`Funkce vrátí hodnotu typu `Edm.Boolean` , která umožňuje její sestavení pomocí dalších podvýrazů filtru s použitím logických [logických operátorů](search-query-odata-logical-operators.md).
 
 > [!NOTE]
-> Azure Kognitivní hledání nepodporuje použití `search.ismatch` výrazů lambda nebo `search.ismatchscoring` uvnitř nich. To znamená, že není možné zapisovat filtry pro kolekce objektů, které mohou korelovat shody fulltextového vyhledávání s striktními shodami filtru u stejného objektu. Další podrobnosti o tomto omezení a příklady najdete v tématu [řešení potíží s filtry kolekcí v Azure kognitivní hledání](search-query-troubleshoot-collection-filters.md). Podrobné informace o tom, proč toto omezení existuje, najdete v tématu [Principy filtrů kolekcí v Azure kognitivní hledání](search-query-understand-collection-filters.md).
+> Azure Kognitivní hledání nepodporuje použití `search.ismatch` `search.ismatchscoring` výrazů lambda nebo uvnitř nich. To znamená, že není možné zapisovat filtry pro kolekce objektů, které mohou korelovat shody fulltextového vyhledávání s striktními shodami filtru u stejného objektu. Další podrobnosti o tomto omezení a příklady najdete v tématu [řešení potíží s filtry kolekcí v Azure kognitivní hledání](search-query-troubleshoot-collection-filters.md). Podrobné informace o tom, proč toto omezení existuje, najdete v tématu [Principy filtrů kolekcí v Azure kognitivní hledání](search-query-understand-collection-filters.md).
 
 
 ### <a name="searchismatchscoring"></a>Hledat. ismatchscoring
 
-`search.ismatchscoring` Funkce, jako je `search.ismatch` funkce, vrací `true` pro dokumenty, které odpovídají dotazu fulltextového vyhledávání předanému jako parametr. Rozdíl mezi nimi spočívá v tom, že skóre významnosti dokumentů odpovídající `search.ismatchscoring` dotazu bude přispívat k celkovému skóre dokumentu, zatímco v případě `search.ismatch`se skóre dokumentu nemění. Následující přetížení této funkce jsou k dispozici s parametry, které jsou stejné jako u `search.ismatch`:
+`search.ismatchscoring`Funkce, jako je `search.ismatch` funkce, vrací `true` pro dokumenty, které odpovídají dotazu fulltextového vyhledávání předanému jako parametr. Rozdíl mezi nimi spočívá v tom, že skóre významnosti dokumentů odpovídající `search.ismatchscoring` dotazu bude přispívat k celkovému skóre dokumentu, zatímco v případě `search.ismatch` se skóre dokumentu nemění. Následující přetížení této funkce jsou k dispozici s parametry, které jsou stejné jako u `search.ismatch` :
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
 - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
-Funkce `search.ismatch` i `search.ismatchscoring` lze použít ve stejném výrazu filtru.
+`search.ismatch` `search.ismatchscoring` Funkce i lze použít ve stejném výrazu filtru.
 
 ## <a name="examples"></a>Příklady
 
-Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront`.
+Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront` .
 
     search.ismatchscoring('waterfront')
 
@@ -108,7 +108,7 @@ Najde dokumenty bez slova "luxus".
 
     not search.ismatch('luxury')
 
-Vyhledá dokumenty se frází "zobrazení v oceánu" nebo hodnocení rovno 5. `search.ismatchscoring` Dotaz bude proveden pouze proti polím `HotelName` a `Rooms/Description`.
+Vyhledá dokumenty se frází "zobrazení v oceánu" nebo hodnocení rovno 5. `search.ismatchscoring`Dotaz bude proveden pouze proti polím `HotelName` a `Rooms/Description` .
 
 Dokumenty, které odpovídají pouze druhé klauzuli disjunkce, budou vráceny příliš-Hotely s `Rating` hodnotou 5. Aby bylo jasné, že se tyto dokumenty neshodují s žádnou z částí výrazu, budou vráceny výsledek se stejnou hodnotou jako nula.
 

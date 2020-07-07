@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa50257b785af20ea3a351bd5e40885a0c39eba2
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: cee9bb5d3be6bb8fe5defaa91bce766c8a0f5c05
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605721"
+ms.locfileid: "85798917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Kurz: Azure Active Directory integrace s IdeaScale
 
@@ -110,10 +110,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí IdeaScal
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        http://<companyname>.ideascale.com
-        https://<companyname>.ideascale.com
-        ```
+    ```http
+    http://<companyname>.ideascale.com
+    https://<companyname>.ideascale.com
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta IdeaScale](https://support.ideascale.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

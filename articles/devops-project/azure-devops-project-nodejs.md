@@ -14,13 +14,13 @@ ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc
 ms.openlocfilehash: 7db4fa2a780a3a1f53ecd73a40c247583cb6a79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233818"
 ---
-# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD v Azure Pipelines pro Node. js pomocí Azure DevOps Starter
+# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD v Azure Pipelines pro Node.js pomocí Azure DevOps Starter
 
 V tomto rychlém startu vytvoříte NodeJS progresivní webovou aplikaci (PWA) pomocí [GatsbyJS](https://www.gatsbyjs.org/) a zjednodušeným prostředím pro vytváření Azure DevOps Starter. Po dokončení budete mít pro aplikaci PWA v Azure Pipelines kanál průběžné integrace (CI) a průběžného doručování (CD). Azure DevOps Starter nastavuje, co potřebujete pro vývoj, nasazování a monitorování.
 
@@ -45,11 +45,11 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
 1. Vyberte ukázkovou aplikaci v Node.js.   
 
-    ![Výběr ukázky Node. js](_img/azure-devops-project-nodejs/select-nodejs.png) 
+    ![Výběr Node.js ukázka](_img/azure-devops-project-nodejs/select-nodejs.png) 
 
-1. Výchozí architektura ukázky je **Express.js**. Změňte výběr na **jednoduchou aplikaci Node. js** a pak vyberte **Další**. 
+1. Výchozí architektura ukázky je **Express.js**. Změňte výběr na **jednoduchá Node.js aplikace** a pak vyberte **Další**. 
 
-    ![Výběr jednoduché aplikace Node. js](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
+    ![Výběr jednoduché aplikace Node.js](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
 
 1. Cíle nasazení, které jsou k dispozici v tomto kroku, jsou vydány rozhraním Application Framework vybraným v kroku 2. V tomto příkladu je **Webová aplikace Windows** výchozím cílem nasazení. Nechejte **Web App for Containers** sadu a vyberte **Další**.
 
@@ -120,16 +120,16 @@ DevOps Starter vytvoří úložiště Git v Azure Repos nebo GitHubu. Tento př�
         (Use a different starter)
     ```
     
-1. Teď máte složku s názvem `my-gatsby-project`. Přejmenujte `Application` ji na a `Dockerfile` zkopírujte do ní.
+1. Teď máte složku s názvem `my-gatsby-project` . Přejmenujte ji na `Application` a zkopírujte `Dockerfile` do ní.
     
     ```powershell
     mv my-gatsby-project Application
     mv Dockerfile Application
     ```
     
-1. V oblíbeném editoru otevřete souboru Dockerfile a změňte první řádek z `FROM node:8` na. `FROM node:12` Tato změna zajistí, že váš kontejner používá Node. js verze 12. x namísto verze 8. x. GatsbyJS vyžaduje více moderních verzí Node. js.
+1. V oblíbeném editoru otevřete souboru Dockerfile a změňte první řádek z `FROM node:8` na `FROM node:12` . Tato změna zajistí, že váš kontejner používá Node.js verze 12. x namísto verze 8. x. GatsbyJS vyžaduje moderní verze Node.js.
 
-1. Potom otevřete soubor Package. JSON ve složce aplikace a upravte [pole skripty](https://docs.npmjs.com/files/package.json#scripts) , aby se zajistilo, že vývojové a provozní servery budou naslouchat na všech dostupných síťových rozhraních (například 0.0.0.0) a portu 80. Bez těchto nastavení nemůže služba Container App Service směrovat provoz do vaší aplikace Node. js spuštěné v rámci vašeho kontejneru. `scripts` Pole by se mělo podobat následujícímu. Konkrétně je třeba změnit cíle `develop`, `serve`a `start` z jejich výchozího nastavení.
+1. V dalším kroku otevřete package.jsv souboru ve složce aplikace a upravte [pole skripty](https://docs.npmjs.com/files/package.json#scripts) , aby se zajistilo, že vývojové a provozní servery budou sledovat všechna dostupná síťová rozhraní (například 0.0.0.0) a port 80. Bez těchto nastavení nemůže služba Container App Service směrovat provoz do vaší aplikace Node.js spuštěné v rámci vašeho kontejneru. `scripts`Pole by se mělo podobat následujícímu. Konkrétně je třeba změnit `develop` `serve` cíle, a `start` z jejich výchozího nastavení.
 
     ```json
       "scripts": {
@@ -145,9 +145,9 @@ DevOps Starter vytvoří úložiště Git v Azure Repos nebo GitHubu. Tento př�
     
 ## <a name="edit-your-cicd-pipelines"></a>Úprava kanálů CI/CD
 
-1. Před potvrzením kódu v předchozí části udělejte změny v kanálech sestavení a vydání. Upravte kanál sestavení a aktualizujte úlohu uzlu tak, aby používala Node. js verze 12. x. V poli **verze úlohy** nastavte hodnotu 1. x a pole **verze** na hodnotu 12. x.
+1. Před potvrzením kódu v předchozí části udělejte změny v kanálech sestavení a vydání. Upravte kanál sestavení a aktualizujte úlohu uzlu tak, aby používala Node.js verze 12. x. V poli **verze úlohy** nastavte hodnotu 1. x a pole **verze** na hodnotu 12. x.
 
-    ![Aktualizace Node. js na 12. x](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
+    ![Aktualizovat Node.js na 12. x](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
 
 1. V tomto rychlém startu Nevytváříme testy jednotek a tyto kroky v našem kanálu sestavení zakážeme. Při psaní testů můžete tyto kroky znovu povolit. Kliknutím pravým tlačítkem myši vyberte úkoly s popiskem **instalovat testovací závislosti** a **Spusťte testy jednotek** a zakažte je.
 

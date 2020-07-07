@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535090"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
@@ -94,4 +94,4 @@ Longevity ověřování
 7. Zastavit živou událost
 8. Poznamenejte si ID Assetu, publikovanou adresu URL streamování pro živý archiv a nastavení a verzi, která se používá z kodéru Live Encoder.
 
-Nakonec odešlete zaznamenaná nastavení a parametry pro živý archiv do Media Services e-mailem amsstreaming@microsoft.com. Po přijetí Media Services provádí ověřovací testy na ukázkách z kodéru Live Encoder. Media Services můžete kontaktovat s případnými dotazy týkajícími se tohoto procesu.
+Nakonec odešlete zaznamenaná nastavení a parametry pro živý archiv do Media Services e-mailem amsstreaming@microsoft.com . Po přijetí Media Services provádí ověřovací testy na ukázkách z kodéru Live Encoder. Media Services můžete kontaktovat s případnými dotazy týkajícími se tohoto procesu.

@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72299985"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Table Storage a připojenými službami sady Visual Studio (projekty cloudových služeb)
@@ -28,7 +28,7 @@ Tento článek popisuje, jak začít používat službu Azure Table Storage v ap
 
 Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
 
-Abyste mohli začít, musíte nejdřív vytvořit tabulku v účtu úložiště. Ukážeme vám, jak vytvořit tabulku Azure v kódu a také jak provádět základní operace s tabulkami a entitami, jako je přidání, úprava, čtení a čtení entit tabulky. Ukázky jsou napsány v\# kódu jazyka C a používají [Microsoft Azure Storage klientské knihovny pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Abyste mohli začít, musíte nejdřív vytvořit tabulku v účtu úložiště. Ukážeme vám, jak vytvořit tabulku Azure v kódu a také jak provádět základní operace s tabulkami a entitami, jako je přidání, úprava, čtení a čtení entit tabulky. Ukázky jsou napsány v \# kódu jazyka C a používají [Microsoft Azure Storage klientské knihovny pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 **Poznámka:** Některá rozhraní API, která provádějí volání do služby Azure Storage, jsou asynchronní. Další informace najdete v tématu [asynchronní programování pomocí Async a operátoru await](https://msdn.microsoft.com/library/hh191443.aspx) . Níže uvedený kód předpokládá použití asynchronních programovacích metod.
 
@@ -89,7 +89,7 @@ Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuj
         public string PhoneNumber { get; set; }
     }
 
-Operace s tabulkou zahrnující entity se provádí pomocí objektu **cloudu** , který jste vytvořili dříve v části "přístup k tabulkám v kódu". Objekt **TableOperation** představuje operaci, kterou chcete provést. Následující příklad kódu ukazuje, jak vytvořit objekt **cloudu** a objekt **CustomerEntity** . Pro přípravu operace je vytvořen **TableOperation** pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním funkce **Cloud. metody ExecuteAsync**.
+Operace s tabulkou zahrnující entity se provádí pomocí objektu **cloudu** , který jste vytvořili dříve v části "přístup k tabulkám v kódu". Objekt **TableOperation** představuje operaci, kterou chcete provést. Následující příklad kódu ukazuje, jak vytvořit objekt **cloudu** a objekt **CustomerEntity** . Pro přípravu operace je vytvořen **TableOperation** pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním **CloudTable.ExecuteAsync**.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
@@ -104,7 +104,7 @@ Operace s tabulkou zahrnující entity se provádí pomocí objektu **cloudu** ,
 
 
 ## <a name="insert-a-batch-of-entities"></a>Vložení dávky entit
-Do tabulky můžete vložit více entit v rámci jedné operace zápisu. Následující příklad kódu vytvoří dva objekty entity ("Jan Novák" a "Ben Smith"), přidá je do objektu **TableBatchOperation** pomocí metody Insert a poté spustí operaci voláním funkce **Cloud. ExecuteBatchAsync**.
+Do tabulky můžete vložit více entit v rámci jedné operace zápisu. Následující příklad kódu vytvoří dva objekty entity ("Jan Novák" a "Ben Smith"), přidá je do objektu **TableBatchOperation** pomocí metody Insert a poté spustí operaci voláním **CloudTable.ExecuteBatchAsync**.
 
     // Create the batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();

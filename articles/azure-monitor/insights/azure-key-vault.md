@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455440"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitor
@@ -132,10 +132,10 @@ Použití aktualizovaného řešení:
 2. Povolte řešení Azure Key Vault pomocí procesu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md)
 3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy, aby používaly nový datový typ
    + Typ se změní z: trezory klíčů na AzureDiagnostics. Pomocí prostředku ResourceType můžete filtrovat Key Vault protokolů.
-   + Místo: `KeyVaults`, použijte`AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Místo: `KeyVaults` , použijte`AzureDiagnostics | where ResourceType'=="VAULTS"`
    + Pole: (názvy polí rozlišují malá a velká písmena)
-   + Pro každé pole, které má v názvu \_příponu s \_, d nebo \_g, změňte první znak na malá písmena.
-   + Pro každé pole, které má příponu \_o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí. Například hlavní název uživatele volajícího je uložen v poli.`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Pro každé pole, které má \_ v názvu příponu s, \_ d nebo \_ g, změňte první znak na malá písmena.
+   + Pro každé pole, které má příponu \_ o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí. Například hlavní název uživatele volajícího je uložen v poli.`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + CallerIpAddress pole se změnila na CallerIPAddress.
    + Pole RemoteIPCountry už není k dispozici.
 4. Odeberte řešení *Key Vault Analytics (nepoužívané)* . Pokud používáte PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`

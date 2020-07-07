@@ -59,7 +59,7 @@ Ukázka vám ukáže, jak rychle upravit vyhledávací dotaz a projeďte web pro
 
 Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * Odkazy na [vizuální vyhledávání obrázky](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) popisují definice a informace o koncových bodech, hlavičkách požadavků, odpovědích a parametrech dotazů, které můžete použít k vyžádání výsledků hledání na základě bitové kopie.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72886997"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Uživatelské prostředí s Azure AD Identity Protection
@@ -80,7 +80,7 @@ Správci se můžou rozhodnout blokování uživatelů při přihlášení v zá
 
 Pracovníci IT můžou postupovat podle pokynů v části zrušení [blokování uživatelů](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) , aby se uživatelé mohli znovu přihlašovat.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Oprava rizik a odblokování uživatelů](howto-identity-protection-remediate-unblock.md)
 

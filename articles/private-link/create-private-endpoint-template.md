@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817967"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí šablony Azure Resource Manager

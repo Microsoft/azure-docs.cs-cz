@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536297"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Šifrování disků s využitím klíčů spravovaných zákazníky
@@ -35,7 +35,7 @@ K bezpečnému střídání klíčů v trezoru klíčů můžete použít Azure 
 |Typ clusteru |Disk s operačním systémem (spravovaný disk) |Datový disk (spravovaný disk) |Dočasný datový disk (místní SSD) |
 |---|---|---|---|
 |Kafka, HBA s akcelerovanými zápisy|[Šifrování SSE](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|Šifrování SSE + volitelné šifrování CMK|Volitelné šifrování CMK|
-|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|Šifrování SSE|–|Volitelné šifrování CMK|
+|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|Šifrování SSE|Není k dispozici|Volitelné šifrování CMK|
 
 ## <a name="get-started-with-customer-managed-keys"></a>Začínáme s klíčem spravovaným zákazníkem
 
@@ -62,7 +62,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 ## <a name="create-key"></a>Vytvořit klíč
 
-1. V novém trezoru klíčů přejděte na **Nastavení** > **klíče** > **+ Generovat/importovat**.
+1. V novém trezoru klíčů přejděte na **Nastavení**  >  **klíče**  >  **+ Generovat/importovat**.
 
     ![Vygenerovat nový klíč v Azure Key Vault](./media/disk-encryption/create-new-key.png "Vygenerovat nový klíč v Azure Key Vault")
 
@@ -80,7 +80,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 ## <a name="create-access-policy"></a>Vytvořit zásady přístupu
 
-1. V novém trezoru klíčů přejděte na **Nastavení** > **zásady** > přístupu **+ Přidat zásady přístupu**.
+1. V novém trezoru klíčů přejděte na **Nastavení**  >  **zásady přístupu**  >  **+ Přidat zásady přístupu**.
 
     ![Vytvořit nové zásady přístupu Azure Key Vault](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -94,7 +94,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
 1. Vyberte **Uložit**.
 
@@ -153,7 +153,7 @@ New-AzResourceGroupDeployment `
   -managedIdentityName $managedIdentityName
 ```
 
-Obsah šablony správy prostředků `azuredeploy.json`:
+Obsah šablony správy prostředků `azuredeploy.json` :
 
 ```json
 {

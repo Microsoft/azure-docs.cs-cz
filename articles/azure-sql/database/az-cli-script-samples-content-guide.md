@@ -3,7 +3,7 @@ title: Příklady skriptů Azure CLI
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Příklady skriptů Azure CLI pro vytvoření a správu Azure SQL Database a spravované instance Azure SQL
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples, mvc, sqldbrb=2
 ms.devlang: azurecli
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251504"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982743"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Ukázky v Azure CLI pro Azure SQL Database a SQL Managed instance 
  
@@ -35,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro správu databází s jedním a sdruženým fondem v Azure SQL Database. 
 
-| | |
+|Oblast|Popis|
 |---|---|
 |**Vytváření databází v Azure SQL Database**||
 | [Vytvoření izolované databáze a konfigurace pravidla brány firewall](scripts/create-and-configure-database-cli.md) | Vytvoří SQL Database a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
@@ -63,7 +63,7 @@ Přečtěte si další informace o [rozhraní Azure CLI API pro jednu databázi]
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro spravovanou instanci Azure SQL.
 
-| | |
+|Oblast|Popis|
 |---|---|
 | **Vytvoření spravované instance SQL**||
 | [Vytvoření spravované instance SQL](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| Vytvoří spravovanou instanci SQL. |

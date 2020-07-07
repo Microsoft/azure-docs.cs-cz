@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233461"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
@@ -38,8 +38,8 @@ Azure Diagnostics vždy odesílá protokoly a metriky do účtu Azure Storage. M
 
 | Vlastnost | Popis |
 |:---|:---|
-| Název | Popisný název jímky. Používá se v konfiguraci k určení zdrojů dat, které se mají odeslat do jímky. |
-| URL  | Adresa URL centra \<událostí ve tvaru událost-centra – obor názvů\>. ServiceBus.Windows.NET/\<– název\>centra událostí          |
+| Name | Popisný název jímky. Používá se v konfiguraci k určení zdrojů dat, které se mají odeslat do jímky. |
+| URL  | Adresa URL centra událostí ve formátu \<event-hubs-namespace\> . ServiceBus.Windows.NET/ \<event-hub-name\> .          |
 | SharedAccessKeyName | Název zásady sdíleného přístupu pro centrum událostí, která má aspoň autoritu pro **odesílání** . |
 | SharedAccessKey     | Primární nebo sekundární klíč ze zásad sdíleného přístupu pro centrum událostí. |
 

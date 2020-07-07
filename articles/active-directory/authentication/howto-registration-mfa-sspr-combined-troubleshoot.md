@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450934"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Řešení potíží s kombinovanou registrací informací o zabezpečení
@@ -60,7 +60,7 @@ Když uživatel zaregistruje telefonní číslo nebo mobilní aplikaci v novém 
 
 Pokud správce povolí verzi Preview, uživatelé se budou registrovat prostřednictvím nového prostředí a potom správce zakáže verzi Preview, uživatelé se můžou nevědomě zaregistrovat pro Multi-Factor Authentication taky.
 
-Pokud uživatel, který dokončil kombinovanou registraci, přejde na stránku registrace aktuálního samoobslužného resetování hesla (SSPR) na [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)stránce, bude uživatel vyzván k provedení Multi-Factor Authentication předtím, než bude mít přístup k této stránce. Tento krok se očekává z technického hlediska, ale pro uživatele, kteří se dřív zaregistrovali jenom pro SSPR, je nový. I když tento dodatečný krok vylepšuje stav zabezpečení uživatele tím, že poskytuje další úroveň zabezpečení, správci můžou chtít vrátit zpátky své uživatele, aby už nemohli provádět Multi-Factor Authentication.  
+Pokud uživatel, který dokončil kombinovanou registraci, přejde na stránku registrace aktuálního samoobslužného resetování hesla (SSPR) na stránce [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) , bude uživatel vyzván k provedení Multi-Factor Authentication předtím, než bude mít přístup k této stránce. Tento krok se očekává z technického hlediska, ale pro uživatele, kteří se dřív zaregistrovali jenom pro SSPR, je nový. I když tento dodatečný krok vylepšuje stav zabezpečení uživatele tím, že poskytuje další úroveň zabezpečení, správci můžou chtít vrátit zpátky své uživatele, aby už nemohli provádět Multi-Factor Authentication.  
 
 ### <a name="how-to-roll-back-users"></a>Vrácení uživatelů zpět
 
@@ -150,7 +150,7 @@ V okně PowerShellu spusťte následující příkaz, který zadává skript a u
 Chcete-li zakázat aktualizované možnosti pro uživatele, proveďte tyto kroky:
 
 1. Přihlaste se k Azure Portal jako správce uživatele.
-2. Přejděte na **Azure Active Directory** > **uživatelské nastavení** > **Spravovat nastavení pro přístupové panely funkce verze Preview**.
+2. Přejděte na **Azure Active Directory**  >  **uživatelské nastavení**  >  **Spravovat nastavení pro přístupové panely funkce verze Preview**.
 3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě bezpečnostních údajů**, nastavit selektor na **žádný**a pak vybrat **Uložit**.
 
 Uživatelé již nebudou vyzváni k registraci pomocí aktualizovaného prostředí.

@@ -8,22 +8,22 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454233"
 ---
 # <a name="manage-server-administrators"></a>Správa správců serveru
 
 Správci serveru musí být platný uživatel nebo skupina zabezpečení v Azure Active Directory (Azure AD) pro tenanta, ve kterém se server nachází. Správce serverů můžete spravovat pomocí **Analysis Services správci** serveru v Azure Portal, vlastností serveru v SSMS, PowerShellu nebo REST API. 
 
-Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid`.
+Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid` .
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Přidání správců serveru pomocí Azure Portal
 
 1. Na portálu klikněte pro váš server na **Analysis Services správci**.
-2. V ** \<> servername-Analysis Services Admins**klikněte na **Přidat**.
+2. V ** \<servername> Analysis Services správci**klikněte na **Přidat**.
 3. V nástroji **přidat správce serveru**vyberte v Azure AD uživatelské účty nebo Pozvěte externí uživatele podle e-mailové adresy.
 
     ![Správci serveru v Azure Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)

@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793231"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Referenční dokumentace syntaxe výrazu OData pro Azure Kognitivní hledání
 
-Azure Kognitivní hledání jako parametry v rozhraní API používá [výrazy OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) . Obvykle se používají výrazy OData pro parametry `$orderby` a. `$filter` Tyto výrazy mohou být složité, obsahující více klauzulí, funkcí a operátorů. Nicméně i jednoduché výrazy OData, jako jsou cesty k vlastnostem, se používají v mnoha částech REST API Azure Kognitivní hledání. Například výrazy cest slouží k odkazování na podpole komplexních polí všude v rozhraní API, například při výpisu dílčích polí v modulu pro [návrhy](index-add-suggesters.md), [funkci bodování](index-add-scoring-profiles.md), `$select` parametru nebo dokonce [hledání v dotazech na Lucene](query-lucene-syntax.md).
+Azure Kognitivní hledání jako parametry v rozhraní API používá [výrazy OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) . Obvykle se používají výrazy OData pro `$orderby` `$filter` parametry a. Tyto výrazy mohou být složité, obsahující více klauzulí, funkcí a operátorů. Nicméně i jednoduché výrazy OData, jako jsou cesty k vlastnostem, se používají v mnoha částech REST API Azure Kognitivní hledání. Například výrazy cest slouží k odkazování na podpole komplexních polí všude v rozhraní API, například při výpisu dílčích polí v modulu pro [návrhy](index-add-suggesters.md), [funkci bodování](index-add-scoring-profiles.md), `$select` parametru nebo dokonce [hledání v dotazech na Lucene](query-lucene-syntax.md).
 
 Tento článek popisuje všechny tyto formy výrazů OData pomocí formální gramatiky. K dispozici je také [interaktivní diagram](#syntax-diagram) , který usnadňuje vizuální zkoumání gramatiky.
 
@@ -214,7 +214,7 @@ Pokud chcete vizuálně prozkoumat gramatickou gramatiku, kterou podporuje Azure
 > [!div class="nextstepaction"]
 > [Diagram syntaxe OData pro Azure Kognitivní hledání](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Viz také:  
 
 - [Filtry v Azure Kognitivní hledání](search-filters.md)
 - [Hledání dokumentů &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

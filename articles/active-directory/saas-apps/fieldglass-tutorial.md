@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 975e345f4d11ba16b5a74c44645f110110ca8d43
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05a5c405095a3c045a3bf1dd7c62486ffda73825
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607099"
+ms.locfileid: "85798909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Kurz: Azure Active Directory integrace s fieldglass
 
@@ -110,10 +110,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí fieldgla
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://www.fieldglass.net/<company name>
-        https://<company name>.fgvms.com/<company name>
-        ```
+    ```http
+    https://www.fieldglass.net/<company name>
+    https://<company name>.fgvms.com/<company name>
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta fieldglass](https://www.fieldglass.com/customer-support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

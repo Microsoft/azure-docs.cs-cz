@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431472"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnostika potíží s připojením ke službě Azure synapse Studio (Preview) pomocí skriptu PowerShellu
@@ -29,7 +29,7 @@ Azure synapse Studio (Preview) závisí na sadě koncových bodů webového rozh
 
 Klikněte pravým tlačítkem na následující odkaz a klikněte na Uložit cíl jako:
 
-- [Test-AzureSynapse. ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
+- [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Alternativně můžete odkaz otevřít přímo a uložit otevřený soubor skriptu. Neuloží adresu odkazu výše, jak se může v budoucnu změnit.
 
@@ -49,12 +49,12 @@ Na konci se zobrazí souhrn diagnostiky. Pokud se Váš počítač nemůže při
 
 ![Přehled diagnostiky](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
 
-Kromě toho se soubor diagnostického protokolu pro tuto relaci vygeneruje ve stejné složce jako skript pro odstraňování potíží. Jeho umístění se zobrazuje v části Obecné tipy (`D:\TestAzureSynapse_2020....log`). V případě potřeby můžete tento soubor poslat technické podpoře.
+Kromě toho se soubor diagnostického protokolu pro tuto relaci vygeneruje ve stejné složce jako skript pro odstraňování potíží. Jeho umístění se zobrazuje v části Obecné tipy ( `D:\TestAzureSynapse_2020....log` ). V případě potřeby můžete tento soubor poslat technické podpoře.
 
 Pokud jste správcem sítě a vyladěním konfigurace brány firewall pro Azure synapse Studio, může vám pomáhat technické podrobnosti zobrazené výše v části "Souhrn".
 
 * Všechny položky testu (požadavky) označené "Pass" znamenají, že prošly testy připojení bez ohledu na stavový kód HTTP.
- V případě neúspěšných požadavků je důvod zobrazen žlutě, například `NamedResolutionFailure` nebo. `ConnectFailure` Tyto důvody vám pomůžou zjistit, jestli se v síťovém prostředí vyskytly neúspěšné konfigurace.
+ V případě neúspěšných požadavků je důvod zobrazen žlutě, například `NamedResolutionFailure` nebo `ConnectFailure` . Tyto důvody vám pomůžou zjistit, jestli se v síťovém prostředí vyskytly neúspěšné konfigurace.
 
 
 ## <a name="next-steps"></a>Další kroky

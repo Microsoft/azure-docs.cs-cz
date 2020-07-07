@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431914"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – poznámky k verzi a Průvodce migrací
@@ -36,7 +36,7 @@ Key Vault certifikáty spravují certifikáty x509 a podporují následující c
 * **.NET Framework 4.5.2** podporuje verze 2,0 knihovny Azure Key Vault .NET.
 * Verze 2,0 Azure Key Vault knihovny .NET podporuje **.NET Standard 1,4** .
 
-## <a name="namespaces"></a>Jmenné prostory
+## <a name="namespaces"></a>Obory názvů
 
 * Obor názvů pro **modely** se změnil z **Microsoft. Azure. webtrezoru** na **Microsoft. Azure. webtrezor. Models**.
 * **Microsoft. Azure. webtrezor. Internal** obor názvů je vyřazený.
@@ -49,12 +49,12 @@ Key Vault certifikáty spravují certifikáty x509 a podporují následující c
 
 * *Tajný kód* se změnil na *SecretBundle*
 * *Slovník* byl změněn na *IDictionary*
-* *Seznam\<T>, řetězec []* se změnil *na\<IList T>*
+* *List \<T> , String []* změněno na *IList \<T> *
 * *NextList* změněny na *NextPageLink*
 
 ## <a name="return-types"></a>Návratové typy
 
-* **Seznam** a **SecretList** nyní vrátí *IPage\<T>* místo *ListKeysResponseMessage*
+* **Seznam** a **SecretList** nyní vrátí *IPage \<T> * namísto *ListKeysResponseMessage*
 * Vygenerovaná **BackupKeyAsync** nyní vrátí *BackupKeyResult*, který obsahuje *hodnotu* (zálohovaný objekt BLOB). Dříve byla metoda zabalena a vrátila pouze hodnotu.
 
 ## <a name="exceptions"></a>Výjimky

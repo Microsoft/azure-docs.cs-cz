@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak můžete zastavit monitorování clust
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82196189"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3
@@ -22,7 +22,7 @@ Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, p�
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.65 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.65 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Vytvoření šablony
 
@@ -65,7 +65,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     }
     ```
 
-2. Uložte tento soubor jako **OptOutTemplate. JSON** do místní složky.
+2. Uložte tento soubor jako **OptOutTemplate.js** do místní složky.
 
 3. Do souboru vložte následující syntaxi JSON:
 
@@ -88,7 +88,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 
     ![Stránka vlastností kontejneru](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Uložte tento soubor jako **OptOutParam. JSON** do místní složky.
+5. Uložte tento soubor jako **OptOutParam.js** do místní složky.
 
 6. Jste připraveni k nasazení této šablony.
 

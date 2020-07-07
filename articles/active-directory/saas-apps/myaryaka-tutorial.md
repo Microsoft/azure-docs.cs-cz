@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fe7ccf4afea1c7ee359f31660914f21e2ab4e90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c103cfff2593aa4a40f9370d65a1a2f1c38ba5c
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74536299"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798166"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-myaryaka"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s MyAryaka
 
@@ -84,10 +84,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. V textovém poli **Adresa URL pro přihlášení** použijte jeden z následujících vzorů:
 
-    | |
-    |-|
-    | `https://my.aryaka.com/`|
-    | `https://kso.aryaka.com/auth/realms/<CUSTOMERID>`|
+    ```https
+    https://my.aryaka.com/
+    https://kso.aryaka.com/auth/realms/<CUSTOMERID>
+    ```
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://kso.aryaka.com/auth/realms/<CUSTOMERID>`
 
@@ -106,7 +106,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -142,7 +142,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici MyAryaka, měli byste se automaticky přihlásit k MyAryaka, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
