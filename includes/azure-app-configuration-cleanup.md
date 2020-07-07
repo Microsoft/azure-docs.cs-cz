@@ -9,10 +9,10 @@ ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
 ms.openlocfilehash: 3eb77799b1845112e9f7e5ca0b65d790625fd529
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76961566"
 ---
 Pokud máte v plánu pokračovat k dalšímu kurzu, ponechte prostředky, které jste vytvořili v tomto rychlém startu, pro to, abyste je mohli znovu použít.

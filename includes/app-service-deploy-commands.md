@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 7518b03e41b086d8797fad3563f681bf0072a7dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76021190"
 ---
 Pokud chcete nasadit prostředky do Azure, musíte být přihlášení k účtu Azure a používat modul Azure Resource Manager. Další informace o použití Azure Resource Manageru s Azure PowerShellem nebo Azure CLI najdete v tématech:
