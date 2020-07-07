@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 8fef2d7e3afb0cdda3c3c3e2506b39ba542e0760
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675050"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956872"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Akamai
 
@@ -40,7 +40,7 @@ Následující obrázek popisuje, kde Akamai EAA zapadá do širšího scénář
 
 ### <a name="key-authentication-scenarios"></a>Scénáře ověřování klíčů
 
-Kromě Azure Active Directory podpora nativní integrace pro moderní protokoly ověřování, jako je Open ID Connect, SAML a WS-EAA, rozšiřuje zabezpečený přístup pro aplikace založené na starších verzích pro interní i externí přístup s Azure AD a povoluje pro tyto aplikace moderní scénáře (například přístup bez hesla). To zahrnuje:
+Kromě Azure Active Directory podpora nativní integrace pro moderní protokoly ověřování, jako je Open ID Connect, SAML a WS-EAA, rozšiřuje zabezpečený přístup pro aplikace založené na starších verzích pro interní i externí přístup s Azure AD a povoluje pro tyto aplikace moderní scénáře (například přístup bez hesla). Sem patří:
 
 * Ověřovací aplikace založené na hlavičkách
 * Vzdálená plocha
@@ -102,7 +102,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 #### <a name="important"></a>Důležité
 
-Všechna níže uvedená nastavení jsou stejná pro **scénář integrace 1** a **scénář 2**. V případě **scénáře integrace 2** jste v EAA Akamai nastavili jednotlivé IDP a vlastnost URL je potřeba upravit tak, aby odkazovala na adresu URL aplikace.
+Všechna níže uvedená nastavení jsou stejná pro **scénář integrace 1** a **scénář 2**. V případě **scénáře integrace 2** musíte nastavit jednotlivé IDPy ve Akamai EAA a vlastnost URL musí být upravena tak, aby odkazovala na adresu URL aplikace.
 
 ![Důležité](./media/header-akamai-tutorial/important.png)
 
@@ -280,7 +280,7 @@ Akamai ověřování na základě hlaviček
 
     ![Konfigurace Akamai](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 1. Vyberte kartu **ověřování** .
 
@@ -344,7 +344,7 @@ Klikněte na Uložit a přejděte na ověřování.
 
     ![Konfigurace Akamai](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 Klikněte na **Uložit a přejděte na služby**.
 
@@ -406,7 +406,7 @@ Klikněte na **Uložit a přejděte na Upřesnit nastavení**.
 
     e. Zadejte umístění konektoru a zvolte konektor.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 Klikněte na **Uložit a přejděte na služby**.
 

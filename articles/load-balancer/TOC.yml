@@ -103,6 +103,8 @@
           displayName: ARM
     - name: Konfigurace interního nástroje pro vyrovnávání zatížení
       items:
+        - name: portál Azure
+          href: tutorial-load-balancer-standard-internal-portal.md
         - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
@@ -121,8 +123,6 @@
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: Konfigurace portů s vysokou dostupností pro interní nástroj pro vyrovnávání zatížení
-      href: load-balancer-configure-ha-ports.md
     - name: Přesun mezi oblastmi
       items:
         - name: Externí nástroj pro vyrovnávání zatížení – portál

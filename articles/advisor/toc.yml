@@ -11,6 +11,7 @@
         - name: portál Azure
           href: advisor-alerts-portal.md
         - name: Šablona ARM
+          displayName: Resource Manager
           href: advisor-alerts-arm.md
 - name: Kurzy
   items:

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f5d0e9a851c41fa88461ed790ad3fe4e89d0fa21
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563246"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957133"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -57,18 +57,20 @@ Nástroj pro rozpoznávání formulářů také může extrahovat textovou a tab
 
 Pomocí rychlého startu můžete začít extrahovat data z formulářů. Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
 
-* Vlastní analýza modelu na vaše formuláře
-  * Výuka bez popisků
-    * [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou](quickstarts/curl-train-extract.md)
-    * [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem](quickstarts/python-train-extract.md)
-  * Výuka s popisky
-    * [Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků](quickstarts/label-tool.md)
-    * [Výukový model pro rozpoznávání formulářů s popisky pomocí REST API a Pythonu](quickstarts/python-labeled-data.md)
-* Předem připravené příjmy – extrakce dat z prodejních příjmů z USA
-  * [Rychlý Start: extrakce dat příjmu pomocí oblé](quickstarts/curl-receipts.md)
-  * [Rychlý Start: extrakce údajů o příjemcích pomocí Pythonu](quickstarts/python-receipts.md)
-* Rozložení – extrakce textu a struktury tabulky z formulářů
-  * [Rychlý Start: extrakce dat rozložení pomocí Pythonu](quickstarts/python-layout.md)
+* [Rychlý Start knihovny klienta](./quickstarts/client-library.md) (všechny jazyky, více scénářů)
+* Rychlé starty webového uživatelského rozhraní
+  * [Výuka pomocí popisků – vzorový Nástroj pro označování](quickstarts/label-tool.md)
+* Rychlé starty REST
+  * Výuka vlastních modelů a extrahování dat formuláře
+    * [Výuka bez popisků – kudrlinkou](quickstarts/curl-train-extract.md)
+    * [Výuka bez popisků – Python](quickstarts/python-train-extract.md)
+    * [Výuka s popisky – Python](quickstarts/python-labeled-data.md)
+  * Extrakce dat z prodejních příjmů z USA
+    * [Extrahovat data příjmu – kudrlinkou](quickstarts/curl-receipts.md)
+    * [Extrakce dat pro příjem – Python](quickstarts/python-receipts.md)
+  * Extrakce textu a struktury tabulky z formulářů
+    * [Extrakce dat rozložení – Python](quickstarts/python-layout.md)
+
 
 ### <a name="review-the-rest-apis"></a>Kontrola rozhraní REST API
 

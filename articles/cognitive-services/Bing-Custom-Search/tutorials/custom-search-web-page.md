@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921948"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -60,11 +60,11 @@ Vytvoření instance vlastního vyhledávání Bingu:
 
 Pokud chcete zahrnout výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Aktivní**.
 
-1.       Na stránce **Konfigurace** klikněte na kartu **Aktivní** a zadejte adresy URL webů, které chcete do vyhledávání zahrnout.
+1. Na stránce **Konfigurace** klikněte na kartu **Aktivní** a zadejte adresy URL webů, které chcete do vyhledávání zahrnout.
 
     ![Snímek obrazovky editoru definice s kartou Aktivní](../media/customSrchEditor.png)
 
-2.       Pokud chcete ověřit, že vaše instance vrací výsledky, zadejte dotaz do podokna náhledu na pravé straně. Bing vrátí výsledky pouze pro veřejné weby, které indexoval.
+2. Pokud chcete ověřit, že vaše instance vrací výsledky, zadejte dotaz do podokna náhledu na pravé straně. Bing vrátí výsledky pouze pro veřejné weby, které indexoval.
 
 ## <a name="add-blocked-entries"></a>Přidání blokovaných položek
 

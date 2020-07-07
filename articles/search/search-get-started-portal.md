@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 2829f451b90a20c5ad399796b0485c6e533bbb23
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 28eb88a40139352b475851003a1092954a97ef64
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562287"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954311"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -275,4 +275,4 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 Pomocí Průvodce portálem vygenerujte webovou aplikaci připravenou k použití, která běží v prohlížeči. Tento průvodce můžete vyzkoušet na malém indexu, který jste právě vytvořili, nebo můžete použít některou z vestavěných ukázkových datových sad, které vám pomůžou využít rozsáhlejší možnosti vyhledávání.
 
 > [!div class="nextstepaction"]
-> [Vytvoření vyhledávací aplikace na portálu](search-create-app-portal.md)
+> [Vytvoření ukázkové aplikace na portálu](search-create-app-portal.md)

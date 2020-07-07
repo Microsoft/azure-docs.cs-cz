@@ -1,0 +1,101 @@
+---
+title: 'Rychlý Start: Konfigurace vlastností aplikace ve vašem tenantovi Azure Active Directory (Azure AD)'
+description: V tomto rychlém startu se používá Azure Portal ke konfiguraci aplikace, která je zaregistrovaná u svého tenanta Azure Active Directory (Azure AD).
+services: active-directory
+author: kenwith
+manager: celestedg
+ms.service: active-directory
+ms.subservice: app-mgmt
+ms.topic: quickstart
+ms.workload: identity
+ms.date: 10/29/2019
+ms.author: kenwith
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 82a3310f6fc2169a515b4b13d81c88d187bd0f9c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956148"
+---
+# <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: Konfigurace vlastností aplikace ve vašem tenantovi Azure Active Directory (Azure AD)
+
+V předchozím rychlém startu jste přidali aplikaci do svého tenanta služby Azure AD. Když přidáte aplikaci, umožníte tenantovi Azure AD zjistit, že se jedná o poskytovatele identity pro danou aplikaci. Teď nakonfigurujete některé vlastnosti pro aplikaci.
+ 
+## <a name="prerequisites"></a>Požadavky
+
+Pokud chcete nakonfigurovat vlastnosti aplikace v tenantovi Azure AD, budete potřebovat:
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Jedna z následujících rolí: globální správce, správce cloudové aplikace, správce aplikace nebo vlastník instančního objektu.
+- (Volitelné: dokončování [zobrazení vašich aplikací](view-applications-portal.md))
+- (Volitelné: dokončení [Přidání aplikace](add-application-portal.md))
+
+>[!IMPORTANT]
+>K otestování kroků v tomto rychlém startu doporučujeme použít jiné než produkční prostředí.
+
+## <a name="configure-app-properties"></a>Konfigurace vlastností aplikace
+
+Až dokončíte přidávání aplikace do tenanta služby Azure AD, hned se vám zobrazí stránka s přehledem. Pokud konfigurujete aplikaci, která již byla přidána, potom se podívejte na první rychlý Start a provede vás zobrazením aplikací přidaných do tenanta. 
+
+Úprava vlastností aplikace:
+
+1. Na portálu Azure AD vyberte **podnikové aplikace** a pak vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
+2. V části Spravovat vyberte **vlastnosti** a otevřete tak podokno vlastnosti pro úpravy.
+    ![Zobrazí vlastnosti obrazovky a upravitelné vlastnosti aplikace.](media/add-application-portal/edit-properties.png)
+3. Poznáte možnosti, které je možné nakonfigurovat.
+    - **Povolit uživatelům přihlášení?** Určuje, zda se může přihlásit uživatel přiřazený k aplikaci.
+    - Je **vyžadováno přiřazení uživatele?** Určuje, jestli se uživatelé, kteří nejsou přiřazeni k aplikaci, můžou přihlásit.
+    - **Viditelná pro uživatele?** Určuje, jestli se uživatelé přiřazení k aplikaci můžou zobrazit na přístupovém panelu ( https://myapps.microsoft.com) a ve Spouštěči aplikací pro O365 (dlaždice v levé horní části webu Office 365 nebo webu Microsoft 365).
+4. Následující tabulky vám pomůžou zvolit nejvhodnější možnosti pro vaše potřeby.
+
+   - Chování pro **přiřazené** uživatele:
+
+       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro přiřazené uživatele | Prostředí pro přiřazené uživatele |
+       |---|---|---|---|---|
+       | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
+       | ano | ano | ano | ano | ano  |
+       | ano | ano | ne  | ano | ne   |
+       | ano | ne  | ano | ano | ano  |
+       | ano | ne  | ne  | ano | ne   |
+       | ne  | ano | ano | ne  | ne   |
+       | ne  | ano | ne  | ne  | ne   |
+       | ne  | ne  | ano | ne  | ne   |
+       | ne  | ne  | ne  | ne  | ne   |
+
+   - Chování pro **nepřiřazené** uživatele:
+
+       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro nepřiřazené uživatele | Prostředí pro nepřiřazené uživatele |
+       |---|---|---|---|---|
+       | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
+       | ano | ano | ano | ne  | ne   |
+       | ano | ano | ne  | ne  | ne   |
+       | ano | ne  | ano | ano | ne   |
+       | ano | ne  | ne  | ano | ne   |
+       | ne  | ano | ano | ne  | ne   |
+       | ne  | ano | ne  | ne  | ne   |
+       | ne  | ne  | ano | ne  | ne   |
+       | ne  | ne  | ne  | ne  | ne   |
+
+     * Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
+
+## <a name="use-a-custom-logo"></a>Použití vlastního loga
+
+Použití vlastního loga:
+
+1. Vytvořte logo o rozměrech 215 × 215 pixelů a uložte ho ve formátu PNG.
+2. Na portálu Azure AD vyberte **podnikové aplikace** a pak vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
+3. V části Spravovat vyberte **vlastnosti** a otevřete tak podokno vlastnosti pro úpravy. 
+4. Vyberte ikonu pro nahrání loga.
+5. Až budete hotovi, vyberte **Uložit**. 
+    ![Ukazuje, jak změnit logo na stránce vlastností aplikace.](media/add-application-portal/change-logo.png)
+
+   > [!NOTE]
+   > Miniatura zobrazená v tomto podokně **vlastností** není hned aktualizována. Chcete-li zobrazit aktualizovanou ikonu, můžete zavřít a znovu otevřít vlastnosti.
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když jste nakonfigurovali vlastnosti aplikace, můžete pokračovat a nastavit jednotné přihlašování.
+
+- [Nastavení jednotného přihlašování](add-application-portal-setup-sso.md)
+- [Odstranění aplikace](delete-application-portal.md)
