@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79503124"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Konfigurace nastavení proxy služby mobility pro Azure do Azure – zotavení po havárii
@@ -51,7 +51,7 @@ Služba mobility automaticky detekuje nastavení proxy serveru z nastavení pros
 V takovém případě zákazník poskytne nastavení proxy vlastní aplikace v konfiguračním souboru služby mobility ProxyInfo. conf. Tato metoda umožňuje zákazníkům poskytnout proxy jenom pro službu mobility nebo jiný proxy server pro Azure Site Recovery služby mobility, než je proxy server (nebo žádný proxy server) pro zbývající aplikace v počítači.
 
 ## <a name="proxy-template"></a>Šablona proxy
-ProxyInfo. conf obsahuje následující šablonu [proxy] address =http://1.2.3.4 port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, Login. microsoftonline. com, BLOB. Core. Windows. NET. BypassList nepodporuje zástupné znaky, jako je *. windows.net, ale poskytnutí windows.net je dostatečně dobré pro obejití. 
+ProxyInfo. conf obsahuje následující šablonu [proxy] address = http://1.2.3.4 port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, Login. microsoftonline. com, BLOB. Core. Windows. NET. BypassList nepodporuje zástupné znaky, jako je *. windows.net, ale poskytnutí windows.net je dostatečně dobré pro obejití. 
 
 ## <a name="next-steps"></a>Další kroky:
 - Přečtěte si [pokyny k síti](site-recovery-azure-to-azure-networking-guidance.md) pro replikaci virtuálních počítačů Azure.

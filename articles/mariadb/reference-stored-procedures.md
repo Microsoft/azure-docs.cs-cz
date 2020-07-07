@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 2f6d1e20db64cb0c2a64771ea26b971b22031fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529986"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Uložené procedury správy Azure Database for MariaDB
@@ -25,11 +25,11 @@ Následující uložené procedury se používají k nastavení nebo odebrání 
 
 |**Název uložené procedury**|**Vstupní parametry**|**Výstupní parametry**|**Poznámka k použití**|
 |-----|-----|-----|-----|
-|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|–|Chcete-li přenést data s režimem SSL, předejte kontext certifikátu certifikační autority do parametru master_ssl_ca. </br><br>Chcete-li přenést data bez protokolu SSL, předejte do parametru master_ssl_ca prázdný řetězec.|
-|*MySQL. az_replication _start*|–|–|Spustí replikaci.|
-|*MySQL. az_replication _stop*|–|–|Zastaví replikaci.|
-|*MySQL. az_replication _remove_master*|–|–|Odebere vztah replikace mezi hlavním serverem a replikou.|
-|*MySQL. az_replication_skip_counter*|–|–|Přeskočí jednu chybu replikace.|
+|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|Není k dispozici|Chcete-li přenést data s režimem SSL, předejte kontext certifikátu certifikační autority do parametru master_ssl_ca. </br><br>Chcete-li přenést data bez protokolu SSL, předejte do parametru master_ssl_ca prázdný řetězec.|
+|*MySQL. az_replication _start*|Není k dispozici|Není k dispozici|Spustí replikaci.|
+|*MySQL. az_replication _stop*|Není k dispozici|Není k dispozici|Zastaví replikaci.|
+|*MySQL. az_replication _remove_master*|Není k dispozici|Není k dispozici|Odebere vztah replikace mezi hlavním serverem a replikou.|
+|*MySQL. az_replication_skip_counter*|Není k dispozici|Není k dispozici|Přeskočí jednu chybu replikace.|
 
 Chcete-li nastavit Replikace vstupních dat mezi hlavním serverem a replikou v Azure Database for MariaDB, přečtěte si téma [Postup konfigurace replikace vstupních dat](howto-data-in-replication.md).
 
@@ -39,9 +39,9 @@ Následující uložené procedury jsou k dispozici v Azure Database for MariaDB
 
 |**Název uložené procedury**|**Vstupní parametry**|**Výstupní parametry**|**Poznámka k použití**|
 |-----|-----|-----|-----|
-|*MySQL. az_kill*|processlist_id|–|Ekvivalent [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí připojení přidružené k poskytnutému processlist_id po ukončení všech příkazů, které připojení provádí.|
-|*MySQL. az_kill_query*|processlist_id|–|Ekvivalent [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí příkaz, který připojení právě provádí. Ponechá připojení aktivní.|
-|*MySQL. az_load_timezone*|–|–|Načte tabulky časového pásma, které umožňují `time_zone` nastavit parametr na pojmenované hodnoty (např. "US/Tichomoří").|
+|*MySQL. az_kill*|processlist_id|Není k dispozici|Ekvivalent [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí připojení přidružené k poskytnutému processlist_id po ukončení všech příkazů, které připojení provádí.|
+|*MySQL. az_kill_query*|processlist_id|Není k dispozici|Ekvivalent [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí příkaz, který připojení právě provádí. Ponechá připojení aktivní.|
+|*MySQL. az_load_timezone*|Není k dispozici|Není k dispozici|Načte tabulky časového pásma, které umožňují `time_zone` nastavit parametr na pojmenované hodnoty (např. "US/Tichomoří").|
 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se nastavit [replikace vstupních dat](howto-data-in-replication.md)

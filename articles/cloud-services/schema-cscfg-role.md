@@ -10,15 +10,15 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79528417"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Schéma role konfigurace Azure Cloud Services
 
-`Role` Element konfiguračního souboru určuje počet instancí rolí, které mají být nasazeny pro každou roli ve službě, hodnoty nastavení konfigurace a kryptografické otisky pro všechny certifikáty přidružené k roli.
+`Role`Element konfiguračního souboru určuje počet instancí rolí, které mají být nasazeny pro každou roli ve službě, hodnoty nastavení konfigurace a kryptografické otisky pro všechny certifikáty přidružené k roli.
 
 Další informace o schématu konfigurace služby Azure najdete v tématu [schéma konfigurace cloudové služby (Classic)](schema-cscfg-file.md). Další informace o schématu definice služby Azure najdete v tématu [schéma definice cloudové služby (Classic)](schema-csdef-file.md).
 
@@ -43,7 +43,7 @@ Následující tabulka popisuje atributy `Role` prvku.
 
 | Atribut | Popis |
 | --------- | ----------- |
-| jméno   | Povinná hodnota. Určuje název role. Název se musí shodovat s názvem zadaným pro roli v definičním souboru služby.|
+| name   | Povinná hodnota. Určuje název role. Název se musí shodovat s názvem zadaným pro roli v definičním souboru služby.|
 | vmName | Nepovinný parametr. Určuje název DNS pro virtuální počítač. Název nesmí být delší než 10 znaků.|
 
 Následující tabulka popisuje podřízené prvky `Role` elementu.

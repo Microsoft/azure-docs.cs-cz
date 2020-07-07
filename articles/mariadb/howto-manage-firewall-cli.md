@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 898b65f07140bca04bd97ff7314b01920b783914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530627"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure CLI
@@ -42,7 +42,7 @@ Pomocí příkazu **AZ Login** připojte Azure CLI k účtu Azure bezpečně.
    ```
    Tento příkaz vytvoří výstup kódu pro použití v dalším kroku.
 
-2. Pomocí webového prohlížeče otevřete stránku [https://aka.ms/devicelogin](https://aka.ms/devicelogin)a potom zadejte kód.
+2. Pomocí webového prohlížeče otevřete stránku [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a potom zadejte kód.
 
 3. Na příkazovém řádku se přihlaste pomocí svých přihlašovacích údajů Azure.
 

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79527805"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorování výkonu Azure Database for MariaDB s využitím úložiště dotazů
@@ -87,16 +87,16 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Oblasti** |
+| **Parametr** | **Popis** | **Výchozí** | **Oblasti** |
 |---|---|---|---|
-| query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTá, zapnutí query_store_capture_mode zapnete performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | VŠE | ŽÁDNÉ, VŠE |
+| query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTá, zapnutí query_store_capture_mode zapnete performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | ALL | ŽÁDNÉ, VŠE |
 | query_store_capture_interval | Interval zachycení úložiště dotazů je v řádu minut. Umožňuje zadat interval, ve kterém jsou metriky dotazu agregovány. | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Zapnutí nebo vypnutí zaznamenání všech obslužných dotazů, které jsou spuštěny v systému. | NO | ANO, NE |
 | query_store_retention_period_in_days | Časový interval ve dnech, po který se mají uchovávat data v úložišti dotazů | 7 | 1 - 30 |
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Oblasti** |
+| **Parametr** | **Popis** | **Výchozí** | **Oblasti** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Umožňuje zapnout nebo vypnout statistiku čekání. | NTATO | ŽÁDNÉ, VŠE |
 | query_store_wait_sampling_frequency | Mění frekvenci příkazu Wait-vzorkování v sekundách. 5 až 300 sekund. | 30 | 5-300 |
@@ -123,7 +123,7 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 | `timestamp_id` | časové razítko| NO| Časové razítko, ve kterém je dotaz spuštěn. To je založené na konfiguraci query_store_interval|
 | `query_digest_text`| longtext| NO| Normalizovaný text dotazu po odebrání všech literálů|
 | `query_sample_text` | longtext| NO| První vzhled skutečného dotazu s literály|
-| `query_digest_truncated` | bitové| ANO| Určuje, zda byl text dotazu zkrácen. Pokud je dotaz delší než 1 KB, hodnota bude Ano.|
+| `query_digest_truncated` | bit| ANO| Určuje, zda byl text dotazu zkrácen. Pokud je dotaz delší než 1 KB, hodnota bude Ano.|
 | `execution_count` | bigint (20)| NO| Počet spuštění dotazu pro toto ID časového razítka/během nakonfigurovaného časového intervalu|
 | `warning_count` | bigint (20)| NO| Počet upozornění, které tento dotaz vygeneroval během interního|
 | `error_count` | bigint (20)| NO| Počet chyb, které tento dotaz vygeneroval během intervalu|
@@ -172,9 +172,9 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
 - Pokud má server MariaDB parametr `default_transaction_read_only` , úložiště dotazů nemůže zachytit data.
-- Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (\>= 6000 bajtů).
+- Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode ( \> = 6000 bajtů).
 - Doba uchování pro statistiku čekání je 24 hodin.
-- Statistika čekání používá ukázkovou hodnotu ČŘ a zachycuje z nich zlomek událostí. Frekvence se dá upravit pomocí parametru `query_store_wait_sampling_frequency`.
+- Statistika čekání používá ukázkovou hodnotu ČŘ a zachycuje z nich zlomek událostí. Frekvence se dá upravit pomocí parametru `query_store_wait_sampling_frequency` .
 
 ## <a name="next-steps"></a>Další kroky
 

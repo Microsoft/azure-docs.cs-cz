@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502283"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Implementace funkcí na úrovni služby ve službě objektu actor
 
-Jak je popsáno v tématu [vrstvení služby](service-fabric-reliable-actors-platform.md#service-layering), služba actor sama o sobě představuje spolehlivou službu. Můžete napsat vlastní službu, která je odvozena z `ActorService`. Funkce na úrovni služby můžete implementovat také stejným způsobem jako při dědění stavové služby, jako je například:
+Jak je popsáno v tématu [vrstvení služby](service-fabric-reliable-actors-platform.md#service-layering), služba actor sama o sobě představuje spolehlivou službu. Můžete napsat vlastní službu, která je odvozena z `ActorService` . Funkce na úrovni služby můžete implementovat také stejným způsobem jako při dědění stavové služby, jako je například:
 
 - Zálohování a obnovení služby.
 - Sdílená funkce všech objektů Actor, například přerušení okruhů.
@@ -89,12 +89,12 @@ static class Program
 
 ## <a name="actor-service-methods"></a>Metody služby objektu actor
 
-Služba `IActorService` actor implementuje (c#) `ActorService` nebo (Java), která zase implementuje `IService` (c#) nebo `Service` (Java). Toto rozhraní používá Reliable Services vzdálené komunikace, což umožňuje vzdálené volání procedur na metodách služby. Obsahuje metody úrovně služeb, které se dají vzdáleně volat prostřednictvím vzdálené komunikace služby. Můžete ji použít k zobrazení [výčtu](service-fabric-reliable-actors-enumerate.md) a [odstraňování](service-fabric-reliable-actors-delete-actors.md) objektů actor.
+Služba actor implementuje `IActorService` (c#) nebo `ActorService` (Java), která zase implementuje `IService` (c#) nebo `Service` (Java). Toto rozhraní používá Reliable Services vzdálené komunikace, což umožňuje vzdálené volání procedur na metodách služby. Obsahuje metody úrovně služeb, které se dají vzdáleně volat prostřednictvím vzdálené komunikace služby. Můžete ji použít k zobrazení [výčtu](service-fabric-reliable-actors-enumerate.md) a [odstraňování](service-fabric-reliable-actors-delete-actors.md) objektů actor.
 
 
 ## <a name="custom-actor-service"></a>Vlastní služba objektu actor
 
-Pomocí výrazu lambda pro registraci objektu actor můžete zaregistrovat vlastní službu objektu actor, která je odvozena z `ActorService` (C#) a `FabricActorService` (Java). Pak můžete implementovat vlastní funkce na úrovni služby napsáním třídy služby, která dědí `ActorService` (C#) nebo `FabricActorService` (Java). Vlastní služba objektu actor dědí všechny běhové funkce objektu actor `ActorService` z (C#) `FabricActorService` nebo (Java). Dá se použít k implementaci vlastních metod služby.
+Pomocí výrazu lambda pro registraci objektu actor můžete zaregistrovat vlastní službu objektu actor, která je odvozena z `ActorService` (C#) a `FabricActorService` (Java). Pak můžete implementovat vlastní funkce na úrovni služby napsáním třídy služby, která dědí `ActorService` (C#) nebo `FabricActorService` (Java). Vlastní služba objektu actor dědí všechny běhové funkce objektu actor z `ActorService` (C#) nebo `FabricActorService` (Java). Dá se použít k implementaci vlastních metod služby.
 
 ```csharp
 class MyActorService : ActorService
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>Implementace zálohování a obnovení objektu actor
 
-Vlastní služba objektu actor může vystavit metodu pro zálohování dat objektu actor tím, že využívá naslouchací proces vzdálené komunikace, `ActorService`který je již přítomen v nástroji. Příklad najdete v tématu [Backup and Restore Actors](service-fabric-reliable-actors-backup-and-restore.md).
+Vlastní služba objektu actor může vystavit metodu pro zálohování dat objektu actor tím, že využívá naslouchací proces vzdálené komunikace, který je již přítomen v nástroji `ActorService` . Příklad najdete v tématu [Backup and Restore Actors](service-fabric-reliable-actors-backup-and-restore.md).
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Objekt actor, který používá zásobník vzdálené komunikace v2 (rozhraní kompatibilní s rozhraním)
 

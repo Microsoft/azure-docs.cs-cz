@@ -10,10 +10,10 @@ caps.latest.revision: 42
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: dadb50bd0663f47e6a1bf3d58b5187c8b466964d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79528366"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schéma definice Azure Cloud Services (soubor. csdef)
@@ -24,7 +24,7 @@ Ve výchozím nastavení se soubor konfiguračního schématu Azure Diagnostics 
 Výchozí přípona souboru definice služby je. csdef.
 
 ## <a name="basic-service-definition-schema"></a>Základní schéma definice služby
-Definiční soubor služby musí obsahovat jeden `ServiceDefinition` prvek. Definice služby musí obsahovat alespoň jeden element role (`WebRole` nebo `WorkerRole`). Může obsahovat až 25 rolí definovaných v rámci jedné definice a můžete kombinovat typy rolí. Definice služby obsahuje také volitelný `NetworkTrafficRules` prvek, který omezuje, které role mohou komunikovat se zadanými interními koncovými body. Definice služby obsahuje také volitelný `LoadBalancerProbes` prvek, který obsahuje sondy stavu definované zákazníkem koncových bodů.
+Definiční soubor služby musí obsahovat jeden `ServiceDefinition` prvek. Definice služby musí obsahovat alespoň jeden element role ( `WebRole` nebo `WorkerRole` ). Může obsahovat až 25 rolí definovaných v rámci jedné definice a můžete kombinovat typy rolí. Definice služby obsahuje také volitelný prvek, `NetworkTrafficRules` který omezuje, které role mohou komunikovat se zadanými interními koncovými body. Definice služby obsahuje také volitelný prvek, `LoadBalancerProbes` který obsahuje sondy stavu definované zákazníkem koncových bodů.
 
 Základní formát definičního souboru služby je následující.
 
@@ -59,13 +59,13 @@ Schéma popisuje následující témata:
 - [Schéma NetworkTrafficRules](schema-csdef-networktrafficrules.md)
 
 ##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a>Element ServiceDefinition
-`ServiceDefinition` Element je element nejvyšší úrovně v definičním souboru služby.
+`ServiceDefinition`Element je element nejvyšší úrovně v definičním souboru služby.
 
 Následující tabulka popisuje atributy `ServiceDefinition` prvku.
 
 | Atribut               | Popis |
 | ----------------------- | ----------- |
-| jméno                    |Povinná hodnota. Název služby Název musí být v rámci účtu služby jedinečný.|
+| name                    |Povinná hodnota. Název služby Název musí být v rámci účtu služby jedinečný.|
 | topologyChangeDiscovery | Nepovinný parametr. Určuje typ oznámení o změně topologie. Možné hodnoty:<br /><br /> -   `Blast`– Pošle aktualizaci co nejdřív pro všechny instance rolí. Zvolíte-li možnost, role by měla být schopna zpracovat aktualizaci topologie bez restartování.<br />-   `UpgradeDomainWalk`– Pošle aktualizaci do každé instance role sekvenčním způsobem po úspěšném přijetí aktualizace předchozí instance.|
 | schemaVersion           | Nepovinný parametr. Určuje verzi schématu definice služby. Verze schématu umožňuje sadě Visual Studio vybrat správné nástroje sady SDK, které se mají použít při ověřování schématu, pokud je nainstalovaná více než jedna verze sady SDK vedle sebe.|
 | upgradeDomainCount      | Nepovinný parametr. Určuje počet domén upgradu, ve kterých se přidělují role v této službě. Instance rolí jsou přiděleny k upgradovací doméně při nasazení služby. Další informace najdete v tématu [aktualizace role nebo nasazení cloudové služby](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [Správa dostupnosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) a [co je model cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package).<br /><br /> Můžete zadat až 20 upgradovacích domén. Pokud tento parametr nezadáte, výchozí počet domén upgradu je 5.|

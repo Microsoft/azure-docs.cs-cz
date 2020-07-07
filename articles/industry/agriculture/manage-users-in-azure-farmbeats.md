@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502060"
 ---
 # <a name="manage-users"></a>Správa uživatelů
@@ -67,9 +67,9 @@ Odebrání uživatelů ze systému Azure FarmBeats:
 
 Pokud chcete přidat uživatele do Azure AD, postupujte podle pokynů:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. V pravém horním rohu vyberte svůj účet a pak přepněte na tenanta Azure AD, který je přidružený k FarmBeats.
-3. Vyberte **Azure Active Directory** > **Uživatelé**.
+3. Vyberte **Azure Active Directory**  >  **Uživatelé**.
 
     Zobrazí se seznam uživatelů Azure AD.
 

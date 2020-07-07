@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529335"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
@@ -41,7 +41,7 @@ Pokud chcete obejít nedostatku sekundárních indexů, můžete pro každou kop
 Následující dvě kritéria filtru (jedna hledají podle ID zaměstnance a jedna při hledání e-mailové adresy) určují obě dotazy na bod:  
 
 * $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' empid_000223 ')  
-* $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ 'email_jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' email_jonesj@contoso.com ')  
 
 Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese pomocí dotazu na entity s příslušnou předponou v **RowKey**.  
 
@@ -97,7 +97,7 @@ Pokud chcete obejít nedostatku sekundárních indexů, můžete pro každou kop
 Následující dvě kritéria filtru (jedna hledají podle ID zaměstnance a jedna při hledání e-mailové adresy) určují obě dotazy na bod:  
 
 * $filter = (PartitionKey EQ ' empid_Sales ') a (RowKey EQ ' 000223 ')
-* $filter = (PartitionKey EQ ' email_Sales ') a (RowKey EQ 'jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' email_Sales ') a (RowKey EQ ' jonesj@contoso.com ')  
 
 Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese pomocí dotazu na entity s příslušnou předponou v **RowKey**.  
 
@@ -588,7 +588,7 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-Pole zaměstnanci je objekt v cloudu, který implementuje metodu CreateQuery\<ITableEntity> (), která vrací TableQuery\<ITableEntity>. Objekty tohoto typu implementují rozhraní IQueryable a umožňují použití výrazů dotazů LINQ a syntaxe zápisu teček.
+Pole zaměstnanci je objekt v cloudu, který implementuje metodu CreateQuery \<ITableEntity> (), která vrací TableQuery \<ITableEntity> . Objekty tohoto typu implementují rozhraní IQueryable a umožňují použití výrazů dotazů LINQ a syntaxe zápisu teček.
 
 Načítání více entit a jejich dosažení zadáním dotazu s klauzulí **WHERE** . Abyste se vyhnuli prohledávání tabulky, měli byste vždycky do klauzule WHERE zahrnout hodnotu **PartitionKey** a pokud je to možné, **RowKey** hodnotu, abyste se vyhnuli prohledávání tabulek a oddílů. Služba Table Service podporuje omezené sady relačních operátorů (je větší než nebo rovno, menší než, je menší než nebo rovno, rovno a není rovno) pro použití v klauzuli WHERE. 
 
@@ -742,7 +742,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -762,7 +762,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -799,7 +799,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -835,7 +835,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -857,7 +857,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -898,7 +898,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
