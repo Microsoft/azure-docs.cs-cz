@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800164"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985684"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -20,18 +20,18 @@ V tomto kurzu, který je první částí tři, připravíte své prostředí, ab
 > * Nastavení požadavků a vytvoření požadované virtuální sítě a podsítí
 > * Nasazení clusteru
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="verify-your-permissions"></a>Ověření oprávnění
 
-Pokud chcete vytvořit cluster Azure Red Hat OpenShift, ověřte následující oprávnění pro svůj účet Azure a uživatele:
+Pokud chcete vytvořit cluster Azure Red Hat OpenShift, ověřte následující oprávnění k vašemu předplatnému Azure, Azure Active Directory uživateli nebo instančnímu objektu:
 
 |Oprávnění|Skupina prostředků, která obsahuje virtuální síť|Provádění uživatelem`az aro create`|Instanční objekt se předal jako`–client-id`|
 |----|:----:|:----:|:----:|
-|**Správce uživatelského přístupu**|×|×| |
-|**Přispěvatel**|×|×|×|
+|**Správce uživatelského přístupu**|X|X| |
+|**Přispěvatel**|X|X|X|
 
 ### <a name="install-the-az-aro-extension"></a>Nainstalovat `az aro` rozšíření
 `az aro`Rozšíření umožňuje vytvořit, otevřít a odstranit clustery Azure Red Hat OpenShift přímo z příkazového řádku pomocí Azure CLI.

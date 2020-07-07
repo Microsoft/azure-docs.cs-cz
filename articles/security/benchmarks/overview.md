@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82606870"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Přehled srovnávacích testů zabezpečení Azure
@@ -46,7 +46,7 @@ Každé doporučení zahrnuje následující informace:
 - **Zodpovědnost**: zda je zákazník nebo poskytovatel služeb (nebo obojí) zodpovědný za implementaci tohoto doporučení. Bezpečnostní odpovědnost se sdílí ve veřejném cloudu. Některé ovládací prvky zabezpečení jsou dostupné jenom poskytovateli cloudové služby, a proto je poskytovatel zodpovědný za jejich adresování. Jedná se o obecná pozorování – pro některé jednotlivé služby se bude odpovědnost lišit od toho, co je uvedeno v srovnávacím testu zabezpečení Azure. Tyto rozdíly jsou popsané v základních doporučeních pro jednotlivé služby. 
 - **Podrobnosti**: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
 
-Uvítáme vaši podrobnou zpětnou vazbu a aktivní účast v úsilí Azure Security test. Pokud chcete zadat přímý vstup týmu Azure Security test, vyplňte prosím formulář na [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark).
+Uvítáme vaši podrobnou zpětnou vazbu a aktivní účast v úsilí Azure Security test. Pokud chcete zadat přímý vstup týmu Azure Security test, vyplňte prosím formulář na [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) .
 
 ## <a name="next-steps"></a>Další kroky
 

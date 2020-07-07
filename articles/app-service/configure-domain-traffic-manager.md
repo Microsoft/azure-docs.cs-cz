@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610237"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurace vlastního názvu domény v Azure App Service s integrací Traffic Manager
@@ -19,7 +19,7 @@ ms.locfileid: "82610237"
 > [!NOTE]
 > Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name.md).
 
-Když použijete [Azure Traffic Manager](/azure/traffic-manager/) k vyrovnávání zatížení provozu do [Azure App Service](overview.md), App Service aplikaci lze přistupovat pomocí ** \<služby Traffic-Manager-Endpoint>. trafficmanager.NET**. Pomocí aplikace App Service můžete přiřadit vlastní název domény, jako je\.například webová contoso.com, aby bylo možné poskytnout uživatelům lépe rozpoznatelný název domény.
+Když použijete [Azure Traffic Manager](/azure/traffic-manager/) k vyrovnávání zatížení provozu do [Azure App Service](overview.md), App Service aplikaci lze přistupovat pomocí ** \<traffic-manager-endpoint> . trafficmanager.NET**. Pomocí aplikace App Service můžete přiřadit vlastní název domény, jako je například webová \. contoso.com, aby bylo možné poskytnout uživatelům lépe rozpoznatelný název domény.
 
 V tomto článku se dozvíte, jak nakonfigurovat vlastní název domény pomocí aplikace App Service, která je integrovaná s [Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 
@@ -69,7 +69,7 @@ Když je vaše aplikace App Service v podporované cenové úrovni, zobrazí se 
 I když se konkrétní poskytovatelé domény liší, namapujete *from* se z [nekořenového názvu domény](#what-about-root-domains) (například **www.contoso.com**) Traffic Manager *na* název domény (**contoso.trafficmanager.NET**), který je integrovaný do vaší aplikace. 
 
 > [!NOTE]
-> Pokud se záznam už používá a vy k němu potřebujete na něj navazovat vazby, můžete vytvořit další záznam CNAME. Pokud třeba chcete do aplikace bez přerušení navazovat vazby **webové\.contoso.com** , vytvořte záznam CNAME z **awverify. www** do **contoso.trafficmanager.NET**. Pak můžete do aplikace přidat "\.www contoso.com", aniž byste museli měnit "www" záznam CNAME. Další informace najdete v tématu [migrace aktivního názvu DNS na Azure App Service](manage-custom-dns-migrate-domain.md).
+> Pokud se záznam už používá a vy k němu potřebujete na něj navazovat vazby, můžete vytvořit další záznam CNAME. Pokud třeba chcete do aplikace bez přerušení navazovat vazby **webové \. contoso.com** , vytvořte záznam CNAME z **awverify. www** do **contoso.trafficmanager.NET**. Pak můžete do aplikace přidat "www \. contoso.com", aniž byste museli měnit "www" záznam CNAME. Další informace najdete v tématu [migrace aktivního názvu DNS na Azure App Service](manage-custom-dns-migrate-domain.md).
 
 Až dokončíte přidávání nebo úpravu záznamů DNS u svého poskytovatele domény, uložte změny.
 
@@ -83,14 +83,14 @@ V případě scénářů s vysokou dostupností můžete nainstalovat instalaci 
 Po rozšíření záznamů pro název domény pomocí prohlížeče ověřte, že se vlastní název domény přeloží na vaši aplikaci App Service.
 
 > [!NOTE]
-> Může trvat nějakou dobu, než se váš CNAME rozšíří přes systém DNS. Můžete použít službu, jako je, <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> k ověření, že je záznam CNAME k dispozici.
+> Může trvat nějakou dobu, než se váš CNAME rozšíří přes systém DNS. Můžete použít službu, jako <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> je, k ověření, že je záznam CNAME k dispozici.
 > 
 > 
 
 1. Po úspěšném vyřešení domény zpátky na stránku aplikace na webu [Azure Portal](https://portal.azure.com)
-2. V levém navigačním panelu vyberte **vlastní domény** > **Přidat název hostitele**.
+2. V levém navigačním panelu vyberte **vlastní domény**  >  **Přidat název hostitele**.
 4. Zadejte vlastní název domény, který jste namapovali dříve, a vyberte **ověřit**.
-5. Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na **CNAME\.(webová example.com nebo libovolná subdoména)**.
+5. Ujistěte se, že **typ záznamu názvu hostitele** je nastavený na **CNAME (webová \. example.com nebo libovolná subdoména)**.
 
 6. Vzhledem k tomu, že aplikace App Service je teď integrovaná s Traffic Managerm koncovým bodem, měli byste vidět Traffic Manager název domény v části **Konfigurace CNAME**. Vyberte ji a klikněte na **Přidat vlastní doménu**.
 

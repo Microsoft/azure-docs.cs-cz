@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598494"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
@@ -25,7 +25,7 @@ Pomocí [Azure Portal](https://portal.azure.com)můžete spravovat clustery [Apa
 
 Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 
@@ -47,7 +47,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
 |---|---|
 |Přesunout|Přesune cluster do jiné skupiny prostředků nebo do jiného předplatného.|
 |Odstranit|Odstraní cluster. |
-|Obnovení|Aktualizuje zobrazení.|
+|Aktualizovat|Aktualizuje zobrazení.|
 
 **Levá nabídka:**  
 
@@ -60,8 +60,8 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Řízení přístupu (IAM)|Použijte přiřazení rolí.  Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).|
     |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project**a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
-    |Rychlý start|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
-    |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
+    |Rychlé zprovoznění|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
+    |nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka Nastavení**  
 

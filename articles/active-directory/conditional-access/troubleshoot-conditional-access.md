@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610500"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Řešení potíží s přihlašováním pomocí podmíněného přístupu
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Řešení potíží s přihlášením s využitím podmíněného přístupu
 
 Informace v tomto článku se dají použít k řešení neočekávaných přihlašovacích údajů souvisejících s podmíněným přístupem, které využívají chybové zprávy a protokol přihlášení k Azure AD.
 
@@ -41,7 +41,7 @@ Další informace o problému najdete kliknutím na **Další podrobnosti** na �
 Pokud chcete zjistit, které zásady nebo zásady podmíněného přístupu se nastavily, a proč postupujte následovně.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo globální čtecí zařízení.
-1. Přejděte k **Azure Active Directory** > **přihlášení**.
+1. Přejděte k **Azure Active Directory**  >  **přihlášení**.
 1. Najděte událost pro přihlášení, která se má zkontrolovat. Přidejte nebo odeberte filtry a sloupce pro odfiltrování zbytečných informací.
    1. Přidejte filtry pro zúžení rozsahu:
       1. **ID korelace** , pokud máte konkrétní událost k prozkoumání.

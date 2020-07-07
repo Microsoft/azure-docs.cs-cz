@@ -1,70 +1,16 @@
 - name: ACS s DC/OS a Swarmem
   href: ./index.yml
 - name: Přehled
-  items:
-    - name: Služba Container Service
-      href: container-service-intro.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
-  items:
-    - name: Docker Swarm
-      href: container-service-swarm-mode-walkthrough.md
-    - name: DC/OS
-      href: container-service-dcos-quickstart.md
 - name: Kurzy
-  items:
-    - name: 1. Vytvoření a správa clusteru
-      href: container-service-dcos-manage-tutorial.md
-    - name: 2. Vyrovnávání zatížení aplikací
-      href: container-service-load-balancing.md
-    - name: 3. Správa svazků s daty
-      href: container-service-dcos-fileshare.md
-    - name: 4. Integrace s ACR
-      href: container-service-dcos-acr.md
 - name: Koncepty
-  items:
-    - name: Zabezpečené kontejnery
-      href: container-service-security.md
 - name: Návody
   items:
-    - name: Škálování clusteru ACS
-      href: container-service-scale.md
     - name: DC/OS
       items:
-        - name: Správa kontejnerů – uživatelské rozhraní DC/OS
-          href: container-service-mesos-marathon-ui.md
-        - name: Správa kontejnerů – REST API DC/OS
-          href: container-service-mesos-marathon-rest.md
-        - name: Fondy agentů DC/OS
-          href: container-service-dcos-agents.md
-        - name: Povolení veřejného přístupu DC/OS
-          href: container-service-enable-public-access.md
-        - name: Orchestrátor pro konkrétní uživatele/aplikace v DC/OS
-          href: container-service-application-specific-marathon.md
-        - name: Testovací verze s využitím Vampu
-          href: container-service-dcos-vamp-canary-release.md
         - name: Monitorování DC/OS
-          items:
-            - name: Monitorování pomocí ELK
-              href: container-service-monitoring-elk.md
-            - name: Monitorování pomocí OMS
-              href: container-service-monitoring-oms.md
-            - name: Monitorování pomocí služby Datadog
-              href: container-service-monitoring.md
-            - name: Monitorování pomocí služby Sysdig
-              href: container-service-monitoring-sysdig.md
-            - name: Monitorování pomocí služby Dynatrace
-              href: container-service-monitoring-dynatrace.md
     - name: Docker Swarm
-      items:
-        - name: Rychlý start Dockeru CE
-          href: container-service-swarm-mode-walkthrough.md
-        - name: Docker a Docker Compose
-          href: container-service-docker-swarm.md
-        - name: Průběžná integrace a doručování s využitím Dockeru Swarm a Azure DevOps
-          href: container-service-docker-swarm-setup-ci-cd.md
-        - name: Průběžná integrace a doručování s využitím Dockeru Swarm (ACS Engine) a Azure DevOps
-          href: container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -77,8 +23,6 @@
   items:
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Nejčastější dotazy
-      href: container-service-faq.md
     - name: Šablony – modul ACS
       href: 'https://github.com/Azure/acs-engine'
     - name: Ceny

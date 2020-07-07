@@ -8,10 +8,10 @@ ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
 ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82609058"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MySQL pomocí prostředí PowerShell
@@ -26,7 +26,7 @@ K dokončení tohoto průvodce budete potřebovat:
 - [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> I když je modul PowerShell AZ. MySql ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> I když je modul PowerShell AZ. MySql ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Jakmile je modul PowerShellu AZ. MySql všeobecně dostupný, bude součástí budoucna k budoucímu AZ PowerShell Release releases a k dispozici nativně z Azure Cloud Shell.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
@@ -40,7 +40,7 @@ Při vytváření serveru můžete vybrat možnost konfigurace serveru pro míst
 > [!NOTE]
 > Po vytvoření serveru se jeho druh redundance, geograficky redundantní vs místně redundantní nedá změnit.
 
-Při vytváření serveru prostřednictvím `New-AzMySqlServer` příkazu se rozhodne možnost redundance zálohování použít parametr **GeoRedundantBackup** . Pokud je **povoleno**, budou provedeny geograficky redundantní zálohy. Nebo pokud je **zakázaný**, provedou se místně redundantní zálohy.
+Při vytváření serveru prostřednictvím příkazu se `New-AzMySqlServer` rozhodne možnost redundance zálohování použít parametr **GeoRedundantBackup** . Pokud je **povoleno**, budou provedeny geograficky redundantní zálohy. Nebo pokud je **zakázaný**, provedou se místně redundantní zálohy.
 
 Doba uchovávání záloh je nastavená parametrem **BackupRetentionDay** .
 
@@ -60,7 +60,7 @@ Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v �
 
 Server můžete obnovit k předchozímu bodu v čase. Obnovená data se zkopírují na nový server a stávající server zůstane beze změny. Například pokud je tabulka omylem vyřazena, můžete ji obnovit v čase pouhým odhozením. Pak můžete načíst chybějící tabulku a data z obnovené kopie serveru.
 
-K obnovení serveru použijte rutinu `Restore-AzMySqlServer` PowerShellu.
+K obnovení serveru použijte `Restore-AzMySqlServer` rutinu PowerShellu.
 
 ### <a name="run-the-restore-command"></a>Spuštění příkazu RESTORE
 

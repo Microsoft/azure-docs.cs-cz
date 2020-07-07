@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Node. js'
+title: 'Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Node.js'
 titleSuffix: Azure Cognitive Services
 description: Pomocí rozhraní API pro rozpoznávání rukopisu můžete začít rozpoznávat digitální rukopisné tahy v tomto rychlém startu.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: aa16f0cca5e60608518ff914a89a48fa8b8899c5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448130"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980011"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí REST API a JavaScriptu pro rozpoznávání rukopisu
 
@@ -40,7 +40,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. V oblíbeném integrovaném vývojovém prostředí nebo editoru `.html` vytvořte nový soubor. Pak do něj přidejte základní kód HTML pro kód, který přidáte později.
+1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový `.html` soubor. Pak do něj přidejte základní kód HTML pro kód, který přidáte později.
     
     ```html
     <!DOCTYPE html>
@@ -75,9 +75,9 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="load-the-example-json-data"></a>Načtení ukázkových dat JSON
 
-1. V rámci `<script>` značky Vytvořte proměnnou pro sampleJson. Pak vytvořte funkci JavaScriptu s názvem `openFile()` , která otevře Průzkumníka souborů, abyste mohli vybrat soubor JSON. Po kliknutí `Recognize ink` na tlačítko bude tato funkce volána a začít číst soubor.
-2. K asynchronnímu zpracování `onload()` souboru použijte funkci `FileReader` objektu. 
-    1. `\n` Nahraďte `\r` znaky v souboru prázdným řetězcem. 
+1. V rámci `<script>` značky Vytvořte proměnnou pro sampleJson. Pak vytvořte funkci JavaScriptu s názvem `openFile()` , která otevře Průzkumníka souborů, abyste mohli vybrat soubor JSON. Po `Recognize ink` kliknutí na tlačítko bude tato funkce volána a začít číst soubor.
+2. `FileReader` `onload()` K asynchronnímu zpracování souboru použijte funkci objektu. 
+    1. Nahraďte `\n` `\r` znaky v souboru prázdným řetězcem. 
     2. Použijte `JSON.parse()` k převedení textu na platný formát JSON.
     3. Aktualizujte `request` textové pole v aplikaci. Použijte `JSON.stringify()` k formátování řetězce JSON. 
     
@@ -98,7 +98,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="send-a-request-to-the-ink-recognizer-api"></a>Poslat žádost na rozhraní API pro rozpoznávání rukopisu
 
-1. V rámci `<script>` značky vytvořte funkci s názvem `recognizeInk()`. Tato funkce později zavolá rozhraní API a aktualizuje stránku pomocí odpovědi. Do této funkce přidejte kód z následujících kroků. 
+1. V rámci `<script>` značky vytvořte funkci s názvem `recognizeInk()` . Tato funkce později zavolá rozhraní API a aktualizuje stránku pomocí odpovědi. Do této funkce přidejte kód z následujících kroků. 
         
     ```javascript
     function recognizeInk() {
@@ -116,7 +116,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
-    2. Vytvořte pro `XMLHttpRequest` objekt návratovou funkci. Tato funkce bude analyzovat odpověď rozhraní API z úspěšné žádosti a zobrazí ji v aplikaci. 
+    2. Vytvořte pro objekt návratovou funkci `XMLHttpRequest` . Tato funkce bude analyzovat odpověď rozhraní API z úspěšné žádosti a zobrazí ji v aplikaci. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -133,7 +133,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         }
         ```
 
-    4. Vytvořte funkci pro `onreadystatechange` vlastnost objektu Request. Když se změní stav připravenosti objektu žádosti, použijí se výše uvedené návratové a chybové funkce.
+    4. Vytvořte funkci pro vlastnost objektu Request `onreadystatechange` . Když se změní stav připravenosti objektu žádosti, použijí se výše uvedené návratové a chybové funkce.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -147,7 +147,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         };
         ```
     
-    5. Odešlete žádost o rozhraní API. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a nastavte `content-type` na`application/json`
+    5. Odešlete žádost o rozhraní API. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` a nastavte `content-type` na`application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);

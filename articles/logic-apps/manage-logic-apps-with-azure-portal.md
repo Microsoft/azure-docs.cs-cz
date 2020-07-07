@@ -10,10 +10,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598160"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Správa aplikací logiky v Azure Portal
@@ -34,7 +34,7 @@ K vyhledání a otevření aplikace logiky použijte následující postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-1. Na panelu hledání Azure zadejte `logic apps`a vyberte **Logic Apps**.
+1. Na panelu hledání Azure zadejte `logic apps` a vyberte **Logic Apps**.
 
    ![Vyhledejte a vyberte "Logic Apps"](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
@@ -176,7 +176,7 @@ Odstranění vaší aplikace logiky má vliv na instance pracovního postupu v t
 
    ![Odstranění více aplikací logiky](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
-1. Jakmile se zobrazí okno potvrzení, zadejte `yes`a vyberte **Odstranit**.
+1. Jakmile se zobrazí okno potvrzení, zadejte `yes` a vyberte **Odstranit**.
 
    ![Potvrďte odstranění vašich aplikací logiky](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 

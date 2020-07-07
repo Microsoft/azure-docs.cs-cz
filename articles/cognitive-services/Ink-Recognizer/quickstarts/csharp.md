@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: c24d055f1904453d2f512a278f00e23c6fea1d9b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371381"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986070"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a C #
 
@@ -33,7 +33,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 - Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Postup instalace Newtonsoft. JSON jako balíčku NuGet v aplikaci Visual Studio:
+    - Instalace Newtonsoft.Jsjako balíčku NuGet v aplikaci Visual Studio:
         1. Klikněte pravým tlačítkem na **správce řešení** .
         2. Klikněte na **Spravovat balíčky NuGet...**
         3. Vyhledat `Newtonsoft.Json` a nainstalovat balíček
@@ -59,15 +59,15 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 1. Vytvořte novou asynchronní funkci s názvem `Request` , která přijímá proměnné vytvořené výše.
 
-2. Pomocí `HttpClient` objektu nastavte informace o protokolu zabezpečení a hlavičce klienta. Nezapomeňte do `Ocp-Apim-Subscription-Key` hlavičky přidat svůj klíč předplatného. Pak vytvořte `StringContent` objekt pro požadavek.
+2. Pomocí objektu nastavte informace o protokolu zabezpečení a hlavičce klienta `HttpClient` . Nezapomeňte do hlavičky přidat svůj klíč předplatného `Ocp-Apim-Subscription-Key` . Pak vytvořte `StringContent` objekt pro požadavek.
  
-3. Odešlete žádost pomocí `PutAsync()`. Pokud je požadavek úspěšný, vrátí odpověď.  
+3. Odešlete žádost pomocí `PutAsync()` . Pokud je požadavek úspěšný, vrátí odpověď.  
     
     [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Poslat požadavek na rozpoznávání rukopisu
 
-1. Vytvořte novou funkci s názvem `recognizeInk()`. Sestavte požadavek a odešlete ho voláním `Request()` funkce s vaším koncovým bodem, klíčem předplatného, adresou URL pro rozhraní API a datovým tahem digitálního inkoustu.
+1. Vytvořte novou funkci s názvem `recognizeInk()` . Sestavte požadavek a odešlete ho voláním `Request()` funkce s vaším koncovým bodem, klíčem předplatného, adresou URL pro rozhraní API a datovým tahem digitálního inkoustu.
 
 2. Deserializovat objekt JSON a zapsat ho do konzoly. 
     
@@ -75,7 +75,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="load-your-digital-ink-data"></a>Načtení dat digitálního inkoustu
 
-Vytvořte funkci nazvanou `LoadJson()` , která NAČTE soubor JSON pro tisk dat. Pomocí `StreamReader` a `JsonTextReader` vytvořte `JObject` a vraťte ho.
+Vytvořte funkci nazvanou `LoadJson()` , která načte soubor JSON pro tisk dat. Pomocí `StreamReader` a `JsonTextReader` vytvořte `JObject` a vraťte ho.
 
 [!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 

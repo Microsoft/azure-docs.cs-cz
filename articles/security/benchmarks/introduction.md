@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 883042c94576014c3bdeabd38516d9531c8fd3dc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82606853"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Úvod do Azure Security srovnávacích testů
@@ -32,7 +32,7 @@ Dokumentace k bezpečnostnímu testu Azure v dokumentaci určuje bezpečnostní 
 
 Výrazy "Control", "srovnávací" a "základní" jsou často používány v dokumentaci srovnávacích testů zabezpečení Azure a je důležité porozumět tomu, jak Azure tyto výrazy používá. 
 
-| Označení | Popis | Příklad |
+| Pojem | Popis | Příklad |
 |--|--|--|
 | Řízení | **Ovládací prvek** je podrobný popis funkce nebo aktivity, která se musí řešit a která není specifická pro technologii nebo implementaci. | Ochrana dat je jedním z ovládacích prvků zabezpečení. Tento ovládací prvek obsahuje konkrétní akce, které je třeba řešit, aby bylo zajištěno, že dojde k ochraně dat. |
 | Srovnávací test | **Srovnávací test** obsahuje doporučení pro zabezpečení konkrétní technologie, jako je Azure. Doporučení jsou zařazená do kategorie podle ovládacího prvku, ke kterému patří. | Srovnávací test zabezpečení Azure zahrnuje doporučení týkající se zabezpečení, která jsou specifická pro platformu Azure.  |

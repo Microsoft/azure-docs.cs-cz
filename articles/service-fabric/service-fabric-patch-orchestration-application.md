@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82608911"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
@@ -86,7 +86,7 @@ Případně můžete použít [model nasazení Azure Resource Manager](https://d
 
 Pokud chcete službu Repair Manager povolit pomocí [šablony modelu nasazení Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm), udělejte toto:
 
-1. Zkontrolujte, `apiVersion` jestli je u prostředku *Microsoft. ServiceFabric/clusterů* nastavená *verze 2017-07-01-Preview* . Pokud se liší, musíte aktualizovat `apiVersion` na *2017-07-01-Preview* nebo novější:
+1. Zkontrolujte, jestli `apiVersion` je u prostředku *Microsoft. ServiceFabric/clusterů* nastavená *verze 2017-07-01-Preview* . Pokud se liší, musíte aktualizovat `apiVersion` na *2017-07-01-Preview* nebo novější:
 
     ```json
     {
@@ -153,7 +153,7 @@ Chcete-li stáhnout balíček aplikace, navštivte [stránku Release Orchestrati
 
 ## <a name="configure-poa-behavior"></a>Konfigurace chování POA
 
-Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Přepište výchozí hodnoty předáním parametru aplikace při vytváření nebo aktualizaci aplikace. Parametry aplikace můžete zadat zadáním `ApplicationParameter` rutin `Start-ServiceFabricApplicationUpgrade` nebo. `New-ServiceFabricApplication`
+Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Přepište výchozí hodnoty předáním parametru aplikace při vytváření nebo aktualizaci aplikace. Parametry aplikace můžete zadat zadáním `ApplicationParameter` `Start-ServiceFabricApplicationUpgrade` `New-ServiceFabricApplication` rutin nebo.
 
 | Parametr        | Typ                          | Podrobnosti |
 |:-|-|-|
@@ -169,16 +169,16 @@ Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Př
 | AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: *pravda*) | Nastavením tohoto příznaku aplikace přijme licenční smlouvu s koncovým uživatelem pro web Windows Update jménem vlastníka počítače.              |
 
 > [!TIP]
-> Pokud chcete, aby aktualizace systému Windows byly provedeny ihned `WUFrequency` , nastavte relativní čas nasazení aplikace. Předpokládejme například, že máte testovací cluster s pěti uzly a naplánujete nasazení aplikace v přibližně 5:00./odp. UTC. Pokud předpokládáte, že upgrade nebo nasazení aplikace trvá maximálně 30 minut, nastavte WUFrequency jako *denní 17:30:00*.
+> Pokud chcete, aby aktualizace systému Windows byly provedeny ihned, nastavte `WUFrequency` relativní čas nasazení aplikace. Předpokládejme například, že máte testovací cluster s pěti uzly a naplánujete nasazení aplikace v přibližně 5:00./odp. UTC. Pokud předpokládáte, že upgrade nebo nasazení aplikace trvá maximálně 30 minut, nastavte WUFrequency jako *denní 17:30:00*.
 
 ## <a name="deploy-poa"></a>Nasazení POA
 
 1. Dokončete všechny požadované kroky a připravte cluster.
 1. Nasaďte POA jako jakoukoli jinou aplikaci Service Fabric. Pokud ho chcete nasadit pomocí PowerShellu, přečtěte si téma [nasazení a odebrání aplikací pomocí PowerShellu](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-1. Chcete-li nakonfigurovat aplikaci v době nasazení, předejte `ApplicationParameter` `New-ServiceFabricApplication` rutinu do rutiny. Pro usnadnění práce poskytujeme skript Deploy. ps1 spolu s aplikací. Postup použití skriptu:
+1. Chcete-li nakonfigurovat aplikaci v době nasazení, předejte `ApplicationParameter` `New-ServiceFabricApplication` rutinu do rutiny. Pro usnadnění práce jsme zadali skript Deploy.ps1 společně s aplikací. Postup použití skriptu:
 
-    - Připojte se ke clusteru Service Fabric pomocí `Connect-ServiceFabricCluster`.
-    - Spusťte skript prostředí PowerShell Deploy. ps1 s odpovídající `ApplicationParameter` hodnotou.
+    - Připojte se ke clusteru Service Fabric pomocí `Connect-ServiceFabricCluster` .
+    - Spusťte skript prostředí PowerShell Deploy.ps1 s příslušnou `ApplicationParameter` hodnotou.
 
 > [!NOTE]
 > Nechejte skript a složku aplikace *PatchOrchestrationApplication* ve stejném adresáři.
@@ -191,10 +191,10 @@ Pokud chcete upgradovat verzi POA pomocí prostředí PowerShell, postupujte pod
 
 Pokud chcete aplikaci odebrat, postupujte podle pokynů v tématu [nasazení a odebrání aplikací pomocí PowerShellu](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
 
-Pro usnadnění práce poskytujeme skript undeploy. ps1 spolu s aplikací. Postup použití skriptu:
+Pro usnadnění práce jsme zadali Undeploy.ps1 skript spolu s aplikací. Postup použití skriptu:
 
-  - Připojte se ke clusteru Service Fabric pomocí ```Connect-ServiceFabricCluster```.
-  - Spusťte skript PowerShellu undeploy. ps1.
+  - Připojte se ke clusteru Service Fabric pomocí ```Connect-ServiceFabricCluster``` .
+  - Spusťte skript prostředí PowerShell Undeploy.ps1.
 
 > [!NOTE]
 > Nechejte skript a složku aplikace *PatchOrchestrationApplication* ve stejném adresáři.
@@ -248,15 +248,15 @@ HResult | 0 – úspěšné<br> jiné – selhání| Označuje důvod selhání 
 
 Pokud ještě není naplánována žádná aktualizace, je výsledek JSON prázdný.
 
-Přihlaste se ke clusteru a Dotazujte web Windows Update výsledků. Zjistěte IP adresu repliky pro primární adresu služby koordinátora a otevřete následující adresu URL z&lt;prohlížeče: http://replika-IP&gt;:&lt;ApplicationPort/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.&gt;
+Přihlaste se ke clusteru a Dotazujte web Windows Update výsledků. Zjistěte IP adresu repliky pro primární adresu služby koordinátora a otevřete následující adresu URL z prohlížeče: http:// &lt; replika-IP &gt; : &lt; ApplicationPort &gt; /PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
 
-Koncový bod REST pro službu koordinátora má dynamický port. Pokud chcete vyhledat přesnou adresu URL, přečtěte si téma Service Fabric Explorer. Například výsledky jsou k dispozici na adrese *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults*.
+Koncový bod REST pro službu koordinátora má dynamický port. Pokud chcete vyhledat přesnou adresu URL, přečtěte si téma Service Fabric Explorer. Například výsledky jsou k dispozici na adrese *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
 
 ![Obrázek koncového bodu REST](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 Pokud je reverzní proxy server povolený v clusteru, můžete k adrese URL přistupovat mimo cluster i z nich.
 
-Koncový bod, který je třeba stisknout, *je&lt;http://&gt;SERVERURL&lt;:&gt;REVERSEPROXYPORT/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
+Koncový bod, který je třeba stisknout, je *http:// &lt; SERVERURL &gt; : &lt; REVERSEPROXYPORT &gt; /PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
 
 Pokud chcete povolit reverzní proxy server v clusteru, postupujte podle pokynů v [reverzní proxy serveru v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
@@ -277,7 +277,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
 1. NodeAgentNTService běžící na každém uzlu vyhledá dostupné aktualizace Windows v naplánovaném čase. Pokud jsou aktualizace k dispozici, stáhne je na uzel.
 
-1. Po stažení aktualizací agent Node NTService vytvoří odpovídající úlohu opravy pro uzel s názvem *\<POS___ unique_id>*. Tyto úlohy opravy můžete zobrazit pomocí rutiny [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) nebo pomocí SFX v části Podrobnosti uzlu. Po vytvoření úlohy opravy se rychle přesune do [ *přihlášeného* stavu](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Po stažení aktualizací agent Node NTService vytvoří odpovídající úlohu opravy pro uzel s názvem *POS___ \<unique_id> *. Tyto úlohy opravy můžete zobrazit pomocí rutiny [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) nebo pomocí SFX v části Podrobnosti uzlu. Po vytvoření úlohy opravy se rychle přesune do [ *přihlášeného* stavu](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. Služba koordinátora pravidelně hledá úlohy opravy v *deklarovaném* stavu a pak je *aktualizuje na základě* TaskApprovalPolicy. Pokud je TaskApprovalPolicy nakonfigurovaná tak, aby NodeWise, je úloha opravy, která odpovídá uzlu, připravená jenom v případě, že se v současné době neprovádí *Příprava*, *schválení*, *spuštění*nebo *obnovení* stavu žádné jiné úlohy opravy. 
 
@@ -294,7 +294,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
 1. Pokud je úloha opravy v *vykonávajícím* stavu, bude zahájena instalace opravy v tomto uzlu. Po instalaci opravy se uzel může nebo nemusí restartovat v závislosti na opravě. V dalším kroku je úloha opravy přesunuta do stavu *obnovování* , čímž se uzel znovu aktivuje. Úloha opravy je pak označena jako dokončená.
 
-   V části POA verze 1.4.0 a novější můžete zjistit stav aktualizace zobrazením událostí stavu v NodeAgentService s vlastností WUOperationStatus-\<Node>. Zvýrazněné části na následujících obrázcích ukazují stav aktualizací Windows na uzlech *poanode_0* a *poanode_2*:
+   V části POA verze 1.4.0 a novější můžete zjistit stav aktualizace zobrazením událostí stavu v NodeAgentService s vlastností WUOperationStatus- \<NodeName> Property. Zvýrazněné části na následujících obrázcích ukazují stav aktualizací Windows na uzlech *poanode_0* a *poanode_2*:
 
    [![Obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 

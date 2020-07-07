@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 4e7cc969ff2c36415b8fd1cebafa1873f9efd38c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0021548779409272dee40021dc5f56eb76aa7d96
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239054"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985580"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí detektoru anomálií REST API a Java
 
@@ -30,17 +30,18 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
-- Klíč a koncový bod detektoru anomálií
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    - K připojení aplikace k rozhraní API detektoru anomálií budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+- [Java &trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
 - Importovat tyto knihovny z úložiště Maven
     - [JSON v balíčku Java](https://mvnrepository.com/artifact/org.json/json)
     - Balíček [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)
 
 - Soubor JSON, který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
-### <a name="create-an-anomaly-detector-resource"></a>Vytvoření prostředku detektoru anomálií
-
-[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
+[!INCLUDE [anomaly-detector-environment-variables](../includes/environment-variables.md)]
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
@@ -61,15 +62,15 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
 1. Vytvořte novou funkci s názvem `sendRequest()` , která přijímá proměnné vytvořené výše. Pak proveďte následující kroky.
 
-2. Vytvořte `CloseableHttpClient` objekt, který může odesílat požadavky do rozhraní API. Odešlete požadavek do objektu `HttpPost` žádosti kombinací koncového bodu a adresy URL detektoru anomálií.
+2. Vytvořte `CloseableHttpClient` objekt, který může odesílat požadavky do rozhraní API. Odešlete požadavek do `HttpPost` objektu žádosti kombinací koncového bodu a adresy URL detektoru anomálií.
 
-3. Pomocí `setHeader()` funkce Request nastavte `Content-Type` hlavičku na `application/json`a přidejte do `Ocp-Apim-Subscription-Key` hlavičky klíč předplatného.
+3. Pomocí `setHeader()` funkce Request nastavte `Content-Type` hlavičku na `application/json` a přidejte do hlavičky klíč předplatného `Ocp-Apim-Subscription-Key` .
 
 4. Použijte `setEntity()` funkci žádosti na data, která chcete odeslat.
 
 5. Použijte `execute()` funkci klienta k odeslání žádosti a uložte ji do `CloseableHttpResponse` objektu.
 
-6. Vytvořte `HttpEntity` objekt pro uložení obsahu odpovědi. Získejte obsah pomocí `getEntity()`. Pokud odpověď není prázdná, vraťte ji.
+6. Vytvořte `HttpEntity` objekt pro uložení obsahu odpovědi. Získejte obsah pomocí `getEntity()` . Pokud odpověď není prázdná, vraťte ji.
 
     [!code-java[API request method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=request)]
 
@@ -79,7 +80,7 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
 2. Pokud odpověď obsahuje `code` pole, vytiskněte kód chyby a chybovou zprávu.
 
-3. V opačném případě najděte pozice anomálií v datové sadě. `isAnomaly` Pole odpovědi obsahuje logickou hodnotu, která se vztahuje na to, zda je daný datový bod anomálií. Získá pole JSON a projde ho a vytiskne index všech `true` hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
+3. V opačném případě najděte pozice anomálií v datové sadě. `isAnomaly`Pole odpovědi obsahuje logickou hodnotu, která se vztahuje na to, zda je daný datový bod anomálií. Získá pole JSON a projde ho a vytiskne index všech `true` hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
 
     [!code-java[Method for batch detection](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=detectBatch)]
 

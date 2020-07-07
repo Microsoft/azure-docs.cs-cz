@@ -7,15 +7,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598364"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Uživatelsky definované funkce v Azure Stream Analytics
 
-Dotazovací jazyk podobný SQL v Azure Stream Analytics usnadňuje implementaci logiky analýzy v reálném čase pro streamovaná data. Stream Analytics poskytuje další flexibilitu prostřednictvím vlastních funkcí, které jsou vyvolány v dotazu. Následující příklad kódu je volána metoda `sampleFunction` UDF, která přijímá jeden parametr, každý vstupní záznam, který úloha přijímá, a výsledek je zapsán do výstupu jako `sampleResult`.
+Dotazovací jazyk podobný SQL v Azure Stream Analytics usnadňuje implementaci logiky analýzy v reálném čase pro streamovaná data. Stream Analytics poskytuje další flexibilitu prostřednictvím vlastních funkcí, které jsou vyvolány v dotazu. Následující příklad kódu je volána metoda UDF `sampleFunction` , která přijímá jeden parametr, každý vstupní záznam, který úloha přijímá, a výsledek je zapsán do výstupu jako `sampleResult` .
 
 ```sql
 SELECT 
@@ -41,7 +41,7 @@ Tyto funkce můžete použít pro scénáře, jako je například bodování v r
 
 Uživatelsky definované funkce jsou bezstavové a návratová hodnota může být pouze skalární hodnota. Z těchto uživatelsky definovaných funkcí nemůžete volat externí koncové body REST, protože to bude mít pravděpodobně vliv na výkon vaší úlohy. 
 
-Azure Stream Analytics neuchovává záznam o všech voláních funkcí a vrácených výsledcích. Pro zajištění opakovatelnosti – například opětovné spuštění úlohy ze staršího časového razítka vytváří stejné výsledky znovu – nepoužívejte funkce, jako například `Date.GetData()` nebo `Math.random()`, protože tyto funkce nevracejí stejný výsledek pro každé vyvolání.  
+Azure Stream Analytics neuchovává záznam o všech voláních funkcí a vrácených výsledcích. Pro zajištění opakovatelnosti – například opětovné spuštění úlohy ze staršího časového razítka vytváří stejné výsledky znovu – nepoužívejte funkce, jako například `Date.GetData()` nebo `Math.random()` , protože tyto funkce nevracejí stejný výsledek pro každé vyvolání.  
 
 ## <a name="resource-logs"></a>Protokoly prostředků
 
