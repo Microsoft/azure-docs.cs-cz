@@ -8,12 +8,11 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 537dabe09c41012b9e15998ce3af8198dcfb62d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245770"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027711"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
@@ -31,9 +30,9 @@ V tomto rychlém startu použijete Azure App Configuration k centralizaci úlož
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte možnost **Průzkumník** > konfigurace**vytvořit** > **klíč-hodnota** a přidejte následující páry klíč-hodnota:
+6. Vyberte možnost **Průzkumník konfigurace**  >  **vytvořit**  >  **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: BackgroundColor | White |
     | TestApp: nastavení: FontSize | 24 |
@@ -56,14 +55,14 @@ dotnet new mvc --no-https
 
 ## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
 
-Chcete-li použít Správce tajných `UserSecretsId` klíčů, přidejte element do souboru *. csproj* .
+Chcete-li použít Správce tajných klíčů, přidejte `UserSecretsId` element do souboru *. csproj* .
 
 1. Otevřete soubor *. csproj* .
 
 1.  Přidejte `UserSecretsId` element, jak je znázorněno zde. Můžete použít stejný identifikátor GUID, nebo můžete tuto hodnotu nahradit vlastními.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .net Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
     
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
     
@@ -106,7 +105,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na balíček `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
@@ -144,7 +143,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 1. Aktualizujte `CreateWebHostBuilder` metodu pro použití konfigurace aplikace voláním `config.AddAzureAppConfiguration()` metody.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .net Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -175,7 +174,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
     ---
 
-1. Přejděte na * <app root>/views/Home* a otevřete *index. cshtml*. Nahraďte jeho obsah následujícím kódem:
+1. Přejděte na * <app root> /views/Home* a otevřete *index. cshtml*. Nahraďte jeho obsah následujícím kódem:
 
     ```HTML
     @using Microsoft.Extensions.Configuration
@@ -187,14 +186,14 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
         }
         h1 {
             color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"];
+            font-size: @Configuration["TestApp:Settings:FontSize"]px;
         }
     </style>
 
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-1. Přejděte na * <app root>/views/Shared* a otevřete *_Layout. cshtml*. Nahraďte jeho obsah následujícím kódem:
+1. Přejděte na * <app root> /views/Shared* a otevřete *_Layout. cshtml*. Nahraďte jeho obsah následujícím kódem:
 
     ```HTML
     <!DOCTYPE html>
@@ -235,7 +234,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     dotnet run
     ```
 
-1. Pokud pracujete na místním počítači, přejděte k `http://localhost:5000`nástroji pomocí prohlížeče. Toto je výchozí adresa URL webové aplikace hostované na místním počítači.  
+1. Pokud pracujete na místním počítači, přejděte k nástroji pomocí prohlížeče `http://localhost:5000` . Toto je výchozí adresa URL webové aplikace hostované na místním počítači.  
 
 Pokud pracujete na Azure Cloud Shell, klikněte na tlačítko *Náhled webu* a potom na *Konfigurovat*.  
 

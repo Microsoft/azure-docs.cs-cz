@@ -6,7 +6,6 @@ ms.date: 02/19/2020
 ms.author: glenga
 ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191007"
@@ -21,7 +20,7 @@ Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spusti
 
     ![Místní výstup Azure](./media/functions-run-function-test-local-vs-code-ps/functions-vscode-f5.png)
 
-1. Přidejte řetězec `?name=<yourname>` dotazu k této adrese URL a pak pomocí `Invoke-RestMethod` příkazu ve druhém příkazovém řádku prostředí PowerShell spusťte požadavek následujícím způsobem:
+1. Přidejte řetězec dotazu `?name=<yourname>` k této adrese URL a pak pomocí `Invoke-RestMethod` příkazu ve druhém příkazovém řádku prostředí PowerShell spusťte požadavek následujícím způsobem:
 
     ```powershell
     PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
@@ -32,7 +31,7 @@ Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spusti
 
     <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-    Když zavoláte koncový bod HttpTrigger bez předání `name` parametru buď jako parametr dotazu, nebo v těle, funkce vrátí `BadRequest` chybu. Když zkontrolujete kód v běhu. ps1, uvidíte, že k této chybě dochází podle návrhu.
+    Když zavoláte koncový bod HttpTrigger bez předání `name` parametru buď jako parametr dotazu, nebo v těle, funkce vrátí `BadRequest` chybu. Při revizi kódu v run.ps1 vidíte, že k této chybě dochází v rámci návrhu.
 
 1. Informace o žádosti se zobrazí na panelu **terminálu** .
 

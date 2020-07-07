@@ -4,12 +4,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 88d03e5b8090687930f729e3d55be1ece392ec30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: abd34ddf39bd8e64740d3edd4a2bf4f44851c07e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85838915"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035760"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +40,7 @@ Vytvořte ve složce nový soubor `index.html` a otevřete ho v textovém editor
 Pokud chcete webovou stránku hostovat na webovém serveru, můžete pro ukázkovou aplikaci volitelně zadat zdroj tokenu.
 Díky tomu váš klíč předplatného nikdy neopustí váš server a uživatelé budou moct využívat řečové funkce, aniž by sami museli zadávat jakýkoli autorizační kód.
 
-Vytvořte nový soubor s názvem `token.php`. V tomto příkladu předpokládáme, že váš webový server podporuje skriptovací jazyk PHP. Zadejte následující kód:
+Vytvořte nový soubor s názvem `token.php`. V tomto příkladu předpokládáme, že váš webový server podporuje skriptovací jazyk PHP s povoleným kudrlinkou. Zadejte následující kód:
 
 ```php
 <?php
@@ -67,11 +66,11 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>Místní sestavení a spuštění ukázky
 
-Pokud chcete aplikaci spustit, dvakrát klikněte na soubor index.html nebo tento soubor otevřete v oblíbeném webovém prohlížeči. Zobrazí se jednoduché grafické rozhraní, které vám umožní zadat klíč předplatného a jeho [oblast](../../../../regions.md) a aktivovat syntézu vstupního textu.
+Pokud chcete aplikaci spustit, dvakrát klikněte na soubor index.html nebo tento soubor otevřete v oblíbeném webovém prohlížeči. Zobrazí se jednoduché grafické rozhraní (GUI), které vám umožní zadat klíč předplatného [a text a aktivovat](../../../../regions.md) vstupní řeč.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Sestavení a spuštění ukázky pomocí webového serveru
 
-Chcete-li spustit aplikaci, otevřete oblíbený webový prohlížeč a najeďte na něj veřejnou adresu URL, na které je hostitelem složky, zadejte svou [oblast](../../../../regions.md)a aktivujte Shrnutí vstupního textu. Pokud je tak nakonfigurovaná, aplikace získá token z vašeho zdroje tokenu.
+Pokud chcete aplikaci spustit, otevřete oblíbený webový prohlížeč a najeďte ho na veřejnou adresu URL, na které hostuje složku, zadejte svou [oblast](../../../../regions.md)a spusťte text přepisu vstupního řeči. Pokud je tak nakonfigurovaná, aplikace získá token z vašeho zdroje tokenu.
 
 ## <a name="next-steps"></a>Další kroky
 

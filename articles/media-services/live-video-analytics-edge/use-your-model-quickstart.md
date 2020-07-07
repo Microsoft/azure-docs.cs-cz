@@ -3,12 +3,11 @@ title: Analýza živého videa pomocí vlastního modelu – Azure
 description: V tomto rychlém startu použijete počítačovou vizi k analýze živého kanálu videa z (simulované) kamery IP.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 73b8f83b9e3c450612c742a831ac800343b3bbbc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
-ms.translationtype: MT
+ms.openlocfilehash: e19c5bd6b44f9a4dd225f6a849ee9aaf62fa6273
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816686"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027660"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Rychlý Start: Analýza živého videa pomocí vlastního modelu
 
@@ -190,7 +189,7 @@ V následujících zprávách modul Live video Analytics definuje vlastnosti apl
 
 ### <a name="mediasessionestablished-event"></a>Událost MediaSessionEstablished
 
-Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP, který běží na kontejneru rtspsim-live55. Pokud je připojení úspěšné, bude vytištěna následující událost. Typ události je `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+Po vytvoření instance mediálního grafu se zdrojový uzel RTSP pokusí připojit k serveru RTSP, který běží na kontejneru rtspsim-live555. Pokud je připojení úspěšné, bude vytištěna následující událost. Typ události je `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

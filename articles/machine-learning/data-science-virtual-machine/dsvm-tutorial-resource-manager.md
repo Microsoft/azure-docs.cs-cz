@@ -10,29 +10,31 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 7e3e45d96839be06deec238deccdc9873492d68f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.openlocfilehash: 675ddf073393afde6ac8d08a65b40da11d90d3ea
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660245"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026657"
 ---
-# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Rychlý Start: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony Správce prostředků
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Rychlý Start: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony ARM
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto rychlém startu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Virtual Machine pomocí šablony Azure Resource Manager. Data Virtual Machines pro datové vědy jsou cloudové virtuální počítače, které jsou předem nahrané pomocí sady datových vědy a architektur a nástrojů strojového učení. Při nasazení na výpočetní prostředky využívající GPU jsou všechny nástroje a knihovny nakonfigurované tak, aby používaly GPU. 
+V tomto rychlém startu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Virtual Machine pomocí šablony Azure Resource Manager (šablony ARM). Data Virtual Machines pro datové vědy jsou cloudové virtuální počítače, které jsou předem nahrané pomocí sady datových vědy a architektur a nástrojů strojového učení. Při nasazení na výpočetní prostředky využívající GPU jsou všechny nástroje a knihovny nakonfigurované tak, aby používaly GPU. 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-ubuntu-DSVM-GPU-or-CPU%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/services/machine-learning/), ještě než začnete.
 
-* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Úplná šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit úplnou šablonu, přečtěte si téma [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Část definující konkrétní DSVM se zobrazí zde:
 
@@ -42,9 +44,9 @@ V šabloně jsou definované následující prostředky:
 
 * [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Vytvořte cloudový virtuální počítač. V této šabloně je virtuální počítač nakonfigurovaný jako Data Science Virtual Machine se systémem Ubuntu 18,04.
 
-### <a name="deploy-the-template"></a>Nasazení šablony 
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Pokud chcete použít šablonu z Azure CLI, přihlaste se a vyberte předplatné (viz [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)). Potom následujícím příkazem:
+Pokud chcete použít šablonu z Azure CLI, přihlaste se a vyberte předplatné (viz [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli)). Potom následujícím příkazem:
 
 ```azurecli-interactive
 read -p "Enter the name of the resource group to create:" resourceGroupName &&
@@ -54,36 +56,36 @@ read -p "Enter the login name for the administrator account (may not be 'admin')
 read -p "Enter administrator account secure string (value of password or ssh public key):" adminPasswordOrKey &&
 templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" &&
 az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri $templateUri --parameters adminUsername=$adminUsername authenticationType=$authenticationType adminPasswordOrKey=$adminPasswordOrKey && 
+az deployment group create --resource-group $resourceGroupName --template-uri $templateUri --parameters adminUsername=$adminUsername authenticationType=$authenticationType adminPasswordOrKey=$adminPasswordOrKey &&
 echo "Press [ENTER] to continue ..." &&
 read
 ```
 
 Když spustíte výše uvedený příkaz, zadejte:
 
-1. Název skupiny prostředků, kterou chcete vytvořit, aby obsahovala DSVM a přidružené prostředky. 
-1. Umístění Azure, ve kterém chcete provést nasazení
-1. Typ ověřování, který chcete použít (zadejte řetězec `password` nebo `sshPublicKey` )
-1. Přihlašovací jméno účtu správce (Tato hodnota nemusí být `admin` )
-1. Hodnota hesla nebo veřejného klíče SSH pro účet
+1. Název skupiny prostředků, kterou chcete vytvořit, aby obsahovala DSVM a přidružené prostředky.
+1. Umístění Azure, ve kterém chcete provést nasazení.
+1. Typ ověřování, který chcete použít (zadejte řetězec `password` nebo `sshPublicKey` ).
+1. Přihlašovací jméno účtu správce (Tato hodnota nemusí být `admin` ).
+1. Hodnota hesla nebo veřejného klíče SSH pro účet.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
 Postup zobrazení Data Science Virtual Machine:
 
-1. Přejděte na https://portal.azure.com. 
-1. Přihlásit se 
+1. Přejděte do části https://portal.azure.com (Soubor > Nový > Jiné).
+1. Přihlásit se.
 1. Vyberte skupinu prostředků, kterou jste právě vytvořili.
 
-Zobrazí se informace o skupině prostředků: 
+Zobrazí se informace o skupině prostředků:
 
 :::image type="content" source="media/dsvm-tutorial-resource-manager/resource-group-home.png" alt-text="Snímek obrazovky se základní skupinou prostředků obsahující DSVM":::
 
-Klikněte na prostředek virtuálního počítače a přejděte na jeho informační stránku. Tady najdete informace o virtuálním počítači, včetně podrobností o připojení. 
+Klikněte na prostředek virtuálního počítače a přejděte na jeho informační stránku. Tady najdete informace o virtuálním počítači, včetně podrobností o připojení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud tento virtuální počítač nechcete používat, odstraňte ho. Vzhledem k tomu, že DSVM je přidružen k jiným prostředkům, jako je například účet úložiště, pravděpodobně budete chtít odstranit celou vytvořenou skupinu prostředků. Skupinu prostředků můžete odstranit pomocí portálu kliknutím na tlačítko Odstranit a potvrzením. Případně můžete skupinu prostředků z CLI odstranit pomocí: 
+Pokud tento virtuální počítač nechcete používat, odstraňte ho. Vzhledem k tomu, že DSVM je přidružen k jiným prostředkům, jako je například účet úložiště, pravděpodobně budete chtít odstranit celou vytvořenou skupinu prostředků. Skupinu prostředků můžete odstranit pomocí portálu kliknutím na tlačítko **Odstranit** a potvrzením. Případně můžete skupinu prostředků z CLI odstranit pomocí:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -94,7 +96,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Data Science Virtual Machine ze šablony Azure Resource Manager. 
+V tomto rychlém startu jste vytvořili Data Science Virtual Machine ze šablony ARM.
 
 > [!div class="nextstepaction"]
 > [Ukázkové programy & návody ML](dsvm-samples-and-walkthroughs.md)

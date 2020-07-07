@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: fa8bf79c047911ca283bf60261bba0cbdd6816a7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 53cabaec21daafb910b958bb4b573dd033ca6283
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980117"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035735"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro JavaScript pro použití s webovou stránkou.
 
@@ -27,11 +26,12 @@ Vytvořte novou prázdnou složku. Pokud chcete ukázku hostovat na webovém ser
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>Rozbalení sady Speech SDK pro JavaScript do příslušné složky
 
-Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Výsledkem je, že se dobalí čtyři soubory:
+Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. To má za následek pět souborů, které jsou rozbalené:
 * `microsoft.cognitiveservices.speech.sdk.bundle.js`Verze sady Speech SDK pro lidskou čitelnost.
 * `microsoft.cognitiveservices.speech.sdk.bundle.js.map`Soubor mapy používaný pro ladění kódu sady SDK.
 * `microsoft.cognitiveservices.speech.sdk.bundle.d.ts`Definice objektů pro použití s TypeScript
 * `microsoft.cognitiveservices.speech.sdk.bundle-min.js`Minifikovaného verze sady Speech SDK.
+* `speech-processor.js`Kód pro zlepšení výkonu v některých prohlížečích.
 
 ## <a name="create-an-indexhtml-page"></a>Vytvoření stránky index.html
 

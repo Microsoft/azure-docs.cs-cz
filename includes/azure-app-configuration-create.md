@@ -6,7 +6,6 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.openlocfilehash: 089a199da08503e13dbd42518970c3b7ed8a984d
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "77619293"
@@ -19,7 +18,7 @@ ms.locfileid: "77619293"
 
     ![Výběr možnosti Vytvořit](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
 
-1. V podokně > **vytvořit** **konfiguraci aplikace**zadejte následující nastavení:
+1. V podokně **vytvořit konfiguraci aplikace**  >  **Create** zadejte následující nastavení:
 
     | Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|
@@ -33,4 +32,4 @@ ms.locfileid: "77619293"
 
 1. Vyberte **Vytvořit**. Nasazení může trvat několik minut.
 
-1. Po dokončení nasazení vyberte **Nastavení** > **přístupové klíče**. Poznamenejte si primární připojovací řetězec klíče jen pro čtení. Pomocí tohoto připojovacího řetězce později nakonfigurujete aplikaci tak, aby komunikovala s úložištěm konfigurace aplikace, které jste vytvořili.
+1. Po dokončení nasazení vyberte **Nastavení**  >  **přístupové klíče**. Poznamenejte si primární připojovací řetězec klíče jen pro čtení. Pomocí tohoto připojovacího řetězce později nakonfigurujete aplikaci tak, aby komunikovala s úložištěm konfigurace aplikace, které jste vytvořili.
