@@ -4,13 +4,13 @@ description: Naučte se používat Azure Container Instances k provádění úlo
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80131497"
 ---
-# <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerových úloh pomocí zásad restartování
+# <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerizovaných úkolů se zásadami restartování
 
 Nasazení kontejnerů ve službě Azure Container Instances je jednoduché a rychlé. Proto je tato platforma vhodná pro úkoly, které se spouští jen jednou, jako je sestavení, testování nebo vykreslení image v instanci kontejneru.
 
@@ -42,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Příklad spuštění do dokončení
 
-Chcete-li zobrazit zásady restartování v akci, vytvořte instanci kontejneru z image Microsoft [ACI-WORDCOUNT][aci-wordcount-image] a určete zásady `OnFailure` restartování. V tomto ukázkovém kontejneru se spustí skript Pythonu, který ve výchozím nastavení analyzuje text [Hamletu](http://shakespeare.mit.edu/hamlet/full.html)Shakespeare, zapisuje 10 nejčastějších slov do stdout a pak se ukončí.
+Chcete-li zobrazit zásady restartování v akci, vytvořte instanci kontejneru z image Microsoft [ACI-WORDCOUNT][aci-wordcount-image] a určete `OnFailure` zásady restartování. V tomto ukázkovém kontejneru se spustí skript Pythonu, který ve výchozím nastavení analyzuje text [Hamletu](http://shakespeare.mit.edu/hamlet/full.html)Shakespeare, zapisuje 10 nejčastějších slov do stdout a pak se ukončí.
 
 Spusťte vzorový kontejner pomocí následujícího příkazu [AZ Container Create][az-container-create] :
 
@@ -54,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances spustí kontejner a po skončení aplikace (v tomto případě skriptu) ho zastaví. Když Azure Container Instances zastaví kontejner, jehož zásada restartování je `Never` nebo `OnFailure`, stav kontejneru je nastaven na **ukončeno**. Stav kontejneru můžete zjistit pomocí příkazu [AZ Container show][az-container-show] :
+Azure Container Instances spustí kontejner a po skončení aplikace (v tomto případě skriptu) ho zastaví. Když Azure Container Instances zastaví kontejner, jehož zásada restartování je `Never` nebo `OnFailure` , stav kontejneru je nastaven na **ukončeno**. Stav kontejneru můžete zjistit pomocí příkazu [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show \

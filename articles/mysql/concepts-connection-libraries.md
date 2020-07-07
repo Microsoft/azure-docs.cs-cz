@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 5f83f937b8d9ec50ec7dc6ec781bff1f435eb45a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537189"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Knihovny připojení pro Azure Database for MySQL
@@ -35,5 +35,5 @@ MySQL nabízí standardní připojení ovladače databáze pro použití MySQL s
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si tyto rychlé starty, jak se připojit k a dotazovat Azure Database for MySQL pomocí vašeho jazyka podle vlastního výběru:
 
-[PHP](./connect-php.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [Python](./connect-python.md) |  | [Go](./connect-go.md) [.NET (C#)](./connect-csharp.md) | [C++](connect-cpp.md)[Node.JS](./connect-nodejs.md).NET (C#) Python Node. js Ruby C++ přejít |  
+[Php](./connect-php.md)  |  [Jazyk Java](./connect-java.md)  |   [.NET (C#)](./connect-csharp.md)  |  [Python](./connect-python.md)  |  [Node.JS](./connect-nodejs.md)  |  [Ruby](./connect-ruby.md)  |  [Jazyk C++](connect-cpp.md)  |  [Přejít](./connect-go.md)
 

@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80282303"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
@@ -32,7 +32,7 @@ Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python
 | Podporované edice     | Windows (prostředí conda: AzureML), Linux (prostředí conda: py36)    |
 | Typická použití      | Obecná platforma pro strojové učení      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      |  Instalace s podporou GPU   |
-| Jak ji použít nebo spustit      | Jako SDK Pythonu a v Azure CLI. Aktivujte prostředí `AzureML` conda v edici Windows *nebo* `py36` na edici Linux.      |
+| Jak ji použít nebo spustit      | Jako SDK Pythonu a v Azure CLI. Aktivujte prostředí conda `AzureML` v edici Windows *nebo* na `py36` edici Linux.      |
 | Odkaz na ukázky      | Ukázky Jupyter poznámkových bloků jsou součástí `AzureML` adresáře v poznámkových blocích.  |
 | Související nástroje      | Visual Studio Code, Jupyter   |
 
@@ -43,12 +43,12 @@ Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python
 | Co je to?   | Open Source platforma AI podporující v paměti, distribuované, rychlé a škálovatelné strojové učení.  |
 | Podporované verze      | Linux   |
 | Typická použití      | Distribuované a škálovatelné strojové učení pro obecné účely   |
-| Jak je nakonfigurovaná nebo nainstalovaná?      | V `/dsvm/tools/h2o`nástroji je nainstalováno.      |
-| Jak ji použít nebo spustit      | Připojte se k virtuálnímu počítači pomocí X2Go. Spusťte nový terminál a spusťte příkaz `java -jar /dsvm/tools/h2o/current/h2o.jar`. Pak spusťte webový prohlížeč a připojte se k `http://localhost:54321`.      |
-| Odkaz na ukázky      | Ukázky jsou k dispozici na virtuálním počítači v `h2o` Jupyter v adresáři.      |
+| Jak je nakonfigurovaná nebo nainstalovaná?      | V nástroji je nainstalováno `/dsvm/tools/h2o` .      |
+| Jak ji použít nebo spustit      | Připojte se k virtuálnímu počítači pomocí X2Go. Spusťte nový terminál a spusťte příkaz `java -jar /dsvm/tools/h2o/current/h2o.jar` . Pak spusťte webový prohlížeč a připojte se k `http://localhost:54321` .      |
+| Odkaz na ukázky      | Ukázky jsou k dispozici na virtuálním počítači v Jupyter v `h2o` adresáři.      |
 | Související nástroje      | Apache Spark, MXNet, XGBoost, Sparková voda, hluboká voda    |
 
-K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je `scikit-learn` oblíbený balíček, který je součástí distribuce Pythonu Anaconda pro DSVMs. Pokud chcete zjistit seznam balíčků dostupných v Pythonu, R a Helena, spusťte příslušné správce balíčků.
+K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je oblíbený `scikit-learn` balíček, který je součástí distribuce Pythonu Anaconda pro DSVMs. Pokud chcete zjistit seznam balíčků dostupných v Pythonu, R a Helena, spusťte příslušné správce balíčků.
 
 ## <a name="lightgbm"></a>LightGBM
 
@@ -57,7 +57,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Co je to?   | Rychlé a distribuované prostředí s vysokým výkonem (GBDT, GBRT, GBM nebo TRŽIŠTě) založené na algoritmech rozhodovacího stromu. Používá se pro hodnocení, klasifikaci a mnoho dalších úloh strojového učení.    |
 | Podporované verze      | Windows, Linux    |
 | Typická použití      | Architektura pro posilování přechodu na obecné účely      |
-| Jak je nakonfigurovaná nebo nainstalovaná?      | Ve Windows se LightGBM nainstaluje jako balíček Pythonu. V systému Linux je spustitelný soubor příkazového řádku v `/opt/LightGBM/lightgbm`systému, je nainstalován balíček R a jsou nainstalovány balíčky python.     |
+| Jak je nakonfigurovaná nebo nainstalovaná?      | Ve Windows se LightGBM nainstaluje jako balíček Pythonu. V systému Linux je spustitelný soubor příkazového řádku v systému `/opt/LightGBM/lightgbm` , je nainstalován balíček R a jsou nainstalovány balíčky python.     |
 | Odkaz na ukázky      | [Průvodce LightGBM](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
 | Související nástroje      | MXNet, XgBoost  |
 
@@ -67,7 +67,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Co je to?   |   Grafické uživatelské rozhraní pro dolování dat pomocí jazyka R.   |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná data uživatelského rozhraní – nástroj dolování pro R    |
-| Jak ji použít nebo spustit      | Jako nástroj uživatelského rozhraní. V systému Windows spusťte příkazový řádek, spusťte R a potom v jazyce R spusťte `rattle()`příkaz. V systému Linux se připojte pomocí X2Go, spusťte terminál, spusťte R a potom v jazyce R spusťte příkaz `rattle()`. |
+| Jak ji použít nebo spustit      | Jako nástroj uživatelského rozhraní. V systému Windows spusťte příkazový řádek, spusťte R a potom v jazyce R spusťte příkaz `rattle()` . V systému Linux se připojte pomocí X2Go, spusťte terminál, spusťte R a potom v jazyce R spusťte příkaz `rattle()` . |
 | Odkaz na ukázky      | [Rattle](https://togaware.com/onepager/) |
 | Související nástroje      |LightGBM, Weka, XGBoost   |
 
@@ -78,7 +78,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná knihovna strojového učení      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      |  Windows: Instalační program MSI<br/>Linux: apt-get |
-| Jak ji použít nebo spustit      | Jako nástroj příkazového řádku on-Path (`C:\Program Files\VowpalWabbit\vw.exe` ve Windows, `/usr/bin/vw` na Linux)    |
+| Jak ji použít nebo spustit      | Jako nástroj příkazového řádku on-Path ( `C:\Program Files\VowpalWabbit\vw.exe` ve Windows, `/usr/bin/vw` na Linux)    |
 | Odkaz na ukázky      | [Ukázky pro dostupné](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
 | Související nástroje      |LightGBM, MXNet, XGBoost   |
 
@@ -89,7 +89,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Co je to?   |  Kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy mohou být buď aplikovány přímo na sadu dat, nebo volány z vlastního kódu Java. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikaci, regresi, clusteringu, pravidla přidružení a vizualizaci. |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecný nástroj pro strojové učení     |
-| Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace** > **vývoj** > aplikací**weka**. |
+| Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace**  >  **vývoj**aplikací  >  **weka**. |
 | Odkaz na ukázky      | [Ukázky weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Související nástroje      |LightGBM, Rattle, XGBoost   |
 
@@ -100,7 +100,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná knihovna strojového učení      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      |  Instalace s podporou GPU   |
-| Jak ji použít nebo spustit      | Jako knihovna Pythonu (2,7 a 3,5), balíček R a nástroj příkazového řádku na cestě (`C:\dsvm\tools\xgboost\bin\xgboost.exe` pro Windows a `/dsvm/tools/xgboost/xgboost` pro Linux)    |
+| Jak ji použít nebo spustit      | Jako knihovna Pythonu (2,7 a 3,5), balíček R a nástroj příkazového řádku na cestě ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` pro Windows a `/dsvm/tools/xgboost/xgboost` pro Linux)    |
 | Odkazy na ukázky      | Ukázky jsou součástí virtuálních počítačů, v `/dsvm/tools/xgboost/demo` systémech Linux a `C:\dsvm\tools\xgboost\demo` Windows.   |
 | Související nástroje      | LightGBM, MXNet   |
 
@@ -109,7 +109,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | ------------- | ------------- |
 | Co je to?   | Open Source dotazovací modul SQL pro velké objemy dat    |
 | Podporované verze DSVM      | Windows 2019, Linux  |
-| Jak je nakonfigurovaná a nainstalovaná na DSVM?      |  Nainstalováno `/dsvm/tools/drill*` v pouze v integrovaném režimu   |
+| Jak je nakonfigurovaná a nainstalovaná na DSVM?      |  Nainstalováno v `/dsvm/tools/drill*` pouze v integrovaném režimu   |
 | Typická použití      |  Pro průzkum místních dat bez nutnosti extrakce, transformace, načítání (ETL). Dotazování různých zdrojů dat a formátů, včetně sdílených svazků clusteru, formátu JSON, relačních tabulek a Hadoop.     |
 | Jak použít a spustit      | Zástupce na ploše  <br/> [Začínáme s procházením za 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | Související nástroje na DSVM      |   Rattle, weka, SQL Server Management Studio      |

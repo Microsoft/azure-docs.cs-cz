@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235282"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Problémy online migrace & omezení pro Azure DB for MySQL s Azure Database Migration Service
@@ -33,9 +33,9 @@ Známé problémy a omezení související s online migracemi z MySQL na Azure D
   - MySQL Community Edition
   - Modul InnoDB
 - Migrace stejné verze. Migrace MySQL 5,6 na Azure Database for MySQL 5,7 není podporována.
-- Povolit binární protokolování v souboru my. ini (Windows) nebo My. CNF (UNIX)
+- Povolit binární přihlášení my.ini (Windows) nebo My. CNF (UNIX)
   - Nastavte Server_id na libovolné číslo větší nebo rovno 1, například Server_id = 1 (pouze pro MySQL 5,6).
-  - Set log-bin = \<Path> (pouze pro MySQL 5,6)
+  - Nastavení log-bin = \<path> (jenom pro MySQL 5,6)
   - Nastavit binlog_format = řádek
   - Expire_logs_days = 5 (doporučeno – jenom pro MySQL 5,6)
 - Uživatel musí mít roli ReplicationAdmin.
@@ -93,7 +93,7 @@ Sloupce Large Object (LOB) jsou sloupce, které mohou dosáhnout větší veliko
 
 Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MySQL může docházet k následujícím chybám.
 
-- **Chyba:** {0}Databáze má v cíli cizí klíče (y). Opravte cíl a spusťte novou aktivitu migrace dat. Spustit pod skriptem na cíli a vypsat cizí klíč (y)
+- **Chyba:** Databáze {0} má v cíli cizí klíče (y). Opravte cíl a spusťte novou aktivitu migrace dat. Spustit pod skriptem na cíli a vypsat cizí klíč (y)
 
   **Omezení**: Pokud máte ve svém schématu cizí klíče, počáteční zatížení a nepřetržitá synchronizace migrace se nezdaří.
   **Alternativní řešení**: spusťte následující skript v aplikaci MySQL Workbench pro extrakci skriptu cizího klíče a přidejte skript cizího klíče:
@@ -102,7 +102,7 @@ Při pokusu o provedení online migrace z AWS VP MySQL do Azure Database for MyS
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
   ```
 
-- **Chyba:** {0}Databáze na serveru neexistuje. U zadaného zdrojového serveru MySQL se rozlišují malá a velká písmena. Zkontrolujte název databáze.
+- **Chyba:** Databáze {0} na serveru neexistuje. U zadaného zdrojového serveru MySQL se rozlišují malá a velká písmena. Zkontrolujte název databáze.
 
   **Omezení**: při migraci databáze MySQL do Azure pomocí rozhraní příkazového řádku (CLI) můžou uživatelé tuto chybu narazit. Služba nemohla najít databázi na zdrojovém serveru, což může být způsobeno tím, že jste pravděpodobně zadali nesprávný název databáze nebo databáze na uvedeném serveru neexistuje. Poznámka: v názvech databází se rozlišují velká a malá písmena.
 

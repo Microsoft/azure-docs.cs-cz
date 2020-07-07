@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: guybo
 ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066739"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání image OpenBSD disku do Azure
@@ -47,7 +47,7 @@ Na virtuálním počítači, na který jste nainstalovali operační systém Ope
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Ve výchozím nastavení je `root` uživatel na virtuálních počítačích v Azure zakázaný. Uživatelé můžou spouštět příkazy se zvýšenými oprávněními pomocí `doas` příkazu na virtuálním počítači s OpenBSD. DOAs je ve výchozím nastavení povolená. Další informace najdete v tématu [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
+4. Ve výchozím nastavení `root` je uživatel na virtuálních počítačích v Azure zakázaný. Uživatelé můžou spouštět příkazy se zvýšenými oprávněními pomocí `doas` příkazu na virtuálním počítači s OpenBSD. DOAs je ve výchozím nastavení povolená. Další informace najdete v tématu [DOAs. conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Požadavky na agenta Azure nainstalujte a nakonfigurujte následujícím způsobem:
 

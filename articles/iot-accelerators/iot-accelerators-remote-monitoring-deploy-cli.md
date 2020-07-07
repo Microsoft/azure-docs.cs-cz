@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80258290"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování pomocí rozhraní příkazového řádku
@@ -25,7 +25,7 @@ K nasazení akcelerátoru řešení vzdáleného monitorování potřebujete akt
 
 Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-Chcete-li spustit rozhraní příkazového řádku, musíte mít v místním počítači nainstalovaný [Node. js](https://nodejs.org/) .
+Chcete-li spustit rozhraní příkazového řádku, potřebujete [Node.js](https://nodejs.org/) nainstalovat na místním počítači.
 
 ## <a name="install-the-cli"></a>Instalace rozhraní příkazového řádku
 
@@ -51,7 +51,7 @@ Při nasazení akcelerátoru řešení je k dispozici několik možností konfig
 
 | Možnost | Hodnoty | Popis |
 | ------ | ------ | ----------- |
-| Skladová jednotka (SKU)    | `basic`, `standard`, `local` | _Základní_ nasazení je určené pro testování a ukázky, nasadí všechny mikroslužby na jeden virtuální počítač. _Standardní_ nasazení je určené pro produkční prostředí, nasadí mikroslužby na několik virtuálních počítačů. _Místní_ nasazení nakonfiguruje kontejner Docker tak, aby spouštěl mikroslužby na místním počítači a používal Azure Cloud Services, jako je například storage a Cosmos DB. |
+| SKU    | `basic`, `standard`, `local` | _Základní_ nasazení je určené pro testování a ukázky, nasadí všechny mikroslužby na jeden virtuální počítač. _Standardní_ nasazení je určené pro produkční prostředí, nasadí mikroslužby na několik virtuálních počítačů. _Místní_ nasazení nakonfiguruje kontejner Docker tak, aby spouštěl mikroslužby na místním počítači a používal Azure Cloud Services, jako je například storage a Cosmos DB. |
 | Modul runtime | `dotnet`, `java` | Vybere jazykovou implementaci mikroslužeb. |
 
 Informace o tom, jak používat místní možnost nasazení, najdete v části [spuštění řešení vzdáleného monitorování místně](iot-accelerators-remote-monitoring-deploy-local.md).
@@ -70,10 +70,10 @@ Základní nasazení ve vašem předplatném Azure vytvoří následující slu�
 
 | Počet | Prostředek                       | Typ         | Používá se pro |
 |-------|--------------------------------|--------------|----------|
-| 1     | [Virtuální počítač s Linuxem](https://azure.microsoft.com/services/virtual-machines/) | D1 v2 úrovně Standard  | Hostování mikroslužeb |
+| 1     | [Virtuální počítač se systémem Linux](https://azure.microsoft.com/services/virtual-machines/) | D1 v2 úrovně Standard  | Hostování mikroslužeb |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – úroveň Standard | Správa zařízení a komunikace |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Ukládání konfiguračních dat, pravidel, upozornění a dalších chladírenských úložišť |  
-| 1     | [Účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro kontrolní body virtuálního počítače a streamování |
+| 1     | [Účet služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro kontrolní body virtuálního počítače a streamování |
 | 1     | [Webová aplikace](https://azure.microsoft.com/services/app-service/web/)        |                 | Hostování front-endové webové aplikace |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit a zabezpečení uživatelů |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení umístění prostředků |
@@ -103,7 +103,7 @@ Standardní nasazení vytvoří v předplatném Azure následující služby:
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožnění hloubkové analýzy telemetrie podrobně |
 
 > [!NOTE]
-> Informace o cenách pro tyto služby najdete na adrese [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing). Podrobnosti o využití a fakturaci pro vaše předplatné najdete na webu [Azure Portal](https://portal.azure.com/).
+> Informace o cenách pro tyto služby najdete na adrese [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) . Podrobnosti o využití a fakturaci pro vaše předplatné najdete na webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="deploy-the-solution-accelerator"></a>Nasazení akcelerátoru řešení
 
@@ -134,7 +134,7 @@ Po spuštění `pcs` příkazu k nasazení řešení budete požádáni o:
 - Umístění.
 - Přihlašovací údaje pro virtuální počítače, které jsou hostiteli mikroslužeb. Tyto přihlašovací údaje můžete použít pro přístup k virtuálním počítačům pro řešení potíží.
 
-Až se `pcs` příkaz dokončí, zobrazí se adresa URL nového akcelerátoru řešení. `pcs` Příkaz také vytvoří soubor `{deployment-name}-output.json` , který obsahuje informace, jako je název IoT Hub, který vytvořil.
+Až se `pcs` příkaz dokončí, zobrazí se adresa URL nového akcelerátoru řešení. `pcs`Příkaz také vytvoří soubor `{deployment-name}-output.json` , který obsahuje informace, jako je název IoT Hub, který vytvořil.
 
 Další informace o parametrech příkazového řádku získáte spuštěním příkazu:
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239925"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů Apache Hadoop pomocí Azure REST API
@@ -24,13 +24,13 @@ Naučte se vytvořit cluster HDInsight pomocí šablony Azure Resource Manager a
 Azure REST API umožňuje provádět operace správy u služeb hostovaných na platformě Azure, včetně vytváření nových prostředků, jako jsou clustery HDInsight.
 
 > [!NOTE]  
-> Kroky v tomto dokumentu používají ke komunikaci s REST API Azure nástroj [kudrlinkou (https://curl.haxx.se/) ](https://curl.haxx.se/) .
+> Kroky v tomto dokumentu používají ke komunikaci s REST API Azure nástroj [kudrlinkou ( https://curl.haxx.se/) ](https://curl.haxx.se/) .
 
 ## <a name="create-a-template"></a>Vytvoření šablony
 
 Šablony Azure Resource Manager jsou dokumenty JSON, které popisují **skupinu prostředků** a všechny prostředky (například HDInsight). Tento přístup založený na šablonách umožňuje v jedné šabloně definovat prostředky, které potřebujete pro HDInsight.
 
-Následující dokument JSON je fúze šablony a souborů parametrů z [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), která vytvoří cluster se systémem Linux s použitím hesla k zabezpečení uživatelského účtu SSH.
+Následující dokument JSON je fúze šablony a souborů parametrů z [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) , která vytvoří cluster se systémem Linux s použitím hesla k zabezpečení uživatelského účtu SSH.
 
    ```json
    {
@@ -235,10 +235,10 @@ Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](https://d
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Nahraďte hodnoty pro `--display-name`, `--homepage`a `--identifier-uris` vlastními hodnotami. Zadejte heslo pro novou položku služby Active Directory.
+    Nahraďte hodnoty pro `--display-name` , `--homepage` a `--identifier-uris` vlastními hodnotami. Zadejte heslo pro novou položku služby Active Directory.
 
    > [!NOTE]  
-   > Hodnoty `--home-page` a `--identifier-uris` nemusejí odkazovat na vlastní webovou stránku hostovanou na internetu. Musí se jednat o jedinečné identifikátory URI.
+   > `--home-page`Hodnoty a `--identifier-uris` nemusejí odkazovat na vlastní webovou stránku hostovanou na internetu. Musí se jednat o jedinečné identifikátory URI.
 
    Hodnota vrácená z tohoto příkazu je __ID aplikace__ pro novou aplikaci. Uložte tuto hodnotu.
 
@@ -270,7 +270,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Nastavte `$TENANTID`, `$APPID`a `$PASSWORD` na hodnoty získané nebo použité dříve.
+Nastavte `$TENANTID` , `$APPID` a `$PASSWORD` na hodnoty získané nebo použité dříve.
 
 Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON.
 
@@ -304,7 +304,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON obsahující informace o této skupině. `"provisioningState"` Element obsahuje hodnotu `"Succeeded"`.
+Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON obsahující informace o této skupině. `"provisioningState"`Element obsahuje hodnotu `"Succeeded"` .
 
 ## <a name="create-a-deployment"></a>Vytvoření nasazení
 
@@ -320,7 +320,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Pokud jste šablonu uložili do souboru, můžete použít následující příkaz místo `-d "{ template and parameters}"`:
+> Pokud jste šablonu uložili do souboru, můžete použít následující příkaz místo `-d "{ template and parameters}"` :
 >
 > `--data-binary "@/path/to/file.json"`
 
@@ -339,7 +339,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Tento příkaz vrátí dokument JSON obsahující informace o operaci nasazení. `"provisioningState"` Element obsahuje stav nasazení. Pokud tento prvek obsahuje hodnotu `"Succeeded"`, nasazení se úspěšně dokončilo.
+Tento příkaz vrátí dokument JSON obsahující informace o operaci nasazení. `"provisioningState"`Element obsahuje stav nasazení. Pokud tento prvek obsahuje hodnotu `"Succeeded"` , nasazení se úspěšně dokončilo.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

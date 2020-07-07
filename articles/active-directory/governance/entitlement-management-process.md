@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128523"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků
@@ -33,9 +33,9 @@ Uživatel, který potřebuje přístup k přístupovému balíčku, může odesl
 
 ![Diagram procesu schválení](./media/entitlement-management-process/request-process.png)
 
-| Stav | Popis |
+| State | Popis |
 | --- | --- |
-| Submitted (Odesláno) | Uživatel odešle požadavek. |
+| Odesláno | Uživatel odešle požadavek. |
 | Čeká na schválení | Pokud zásada pro balíček pro přístup vyžaduje schválení, požadavek se přesune na čeká na schválení. |
 | Platnost vypršela | Pokud žádný schvalovatel neschválí žádost v rámci časového limitu žádosti o schválení, vyprší platnost žádosti. Chcete-li akci opakovat, bude uživatel muset odeslat žádost znovu. |
 | Denied | Schvalovatel odepře požadavek. |

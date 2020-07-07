@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79535778"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Vzory řešení služby Azure Stream Analytics
@@ -172,7 +172,7 @@ Pro zpětnou zátěž je stále důležité aspoň dočasně zřídit více pros
 |Scénáře  |Restartovat pouze z Now  |Restartování z posledního pozastaveného času |Restartování z Now a zpětná výplň s archivovanými událostmi|
 |---------|---------|---------|---------|
 |**Mnoha**   |Vytvoří mezeru.    |OK pro krátký výpadek    |Použití při dlouhém výpadku |
-|**Zobrazení výstrah**   |Přípustná |OK pro krátký výpadek    |Není nutné |
+|**Upozorňování**   |Přípustná |OK pro krátký výpadek    |Není nutné |
 |**Aplikace pro zdroje událostí** |Přípustná |OK pro krátký výpadek    |Použití při dlouhém výpadku |
 |**Datové sklady**   |Ztráta dat  |Přípustná |Není nutné |
 |**Offline Analýza**  |Ztráta dat  |Přípustná |Není nutné|

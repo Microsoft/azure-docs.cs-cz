@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128068"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Streamování obsahu pomocí integrace CDN
@@ -33,9 +33,9 @@ Pokud se rozhodnete, jestli chcete povolit CDN na [koncovém bodu streamování]
 
 Toto téma popisuje povolení [integrace CDN](#enable-azure-cdn-integration). Vysvětluje také předběžné načítání (aktivní ukládání do mezipaměti) a koncept od počátku do služby [CDN-Assist](#origin-assist-cdn-prefetch) .
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
-* `hostname` [Koncový bod streamování](streaming-endpoint-concept.md) a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
+* [Koncový bod streamování](streaming-endpoint-concept.md) `hostname` a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
 * Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, vytvořte další koncový bod streamování, který není CDN povolený.
 
 ## <a name="enable-azure-cdn-integration"></a>Povolit integraci Azure CDN
@@ -58,7 +58,7 @@ Azure Media Services integrace s Azure CDN je implementovaná na **Azure CDN z V
 
 ## <a name="determine-if-a-dns-change-was-made"></a>Určení, jestli se provedla změna DNS
 
-Můžete určit, jestli se změna DNS provedla u koncového bodu streamování (provoz se směruje na Azure CDN) pomocí <https://www.digwebinterface.com>. Pokud se ve výsledcích zobrazí azureedge.net názvy domén, provoz se teď nasměruje na CDN.
+Můžete určit, jestli se změna DNS provedla u koncového bodu streamování (provoz se směruje na Azure CDN) pomocí <https://www.digwebinterface.com> . Pokud se ve výsledcích zobrazí azureedge.net názvy domén, provoz se teď nasměruje na CDN.
 
 ## <a name="origin-assist-cdn-prefetch"></a>Počátek – pomoc CDN – předběžné načtení
 
@@ -99,7 +99,7 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
 ### <a name="supported-streaming-protocols"></a>Podporované protokoly streamování
 
-`Origin-Assist CDN-Prefetch` Funkce podporuje následující protokoly streamování pro živé streamování a streamování na vyžádání:
+`Origin-Assist CDN-Prefetch`Funkce podporuje následující protokoly streamování pro živé streamování a streamování na vyžádání:
 
 * HLS V3
 * HLS v4
@@ -124,9 +124,9 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
 * V případě živého streamování, co by se stalo s počátkem-Assist, pokud další segment nebo fragment ještě není k dispozici?
 
-    V takovém případě Media Services původ neposkytne `CDN-Origin-Assist-Prefetch-Path` HLAVIČKU ani CDN – předběžné načtení nebude provedeno.
+    V takovém případě Media Services původ neposkytne `CDN-Origin-Assist-Prefetch-Path` hlavičku ani CDN – předběžné načtení nebude provedeno.
 
-* `Origin-Assist CDN-Prefetch` Jak funguje s dynamickými filtry manifestů?
+* Jak funguje `Origin-Assist CDN-Prefetch` s dynamickými filtry manifestů?
 
     Tato funkce funguje nezávisle na filtru manifestu. Když je další fragment mimo okno filtru, jeho adresa URL se bude nacházet tím, že se zobrazí nezpracovaný manifest klienta a potom se vrátí jako hlavička odpovědi předběžného načtení CDN. SÍŤ CDN proto získá adresu URL fragmentu, který je filtrovaný z manifestu POMLČKy/HLS/hladký. Hráč ale nikdy neodešle požadavek GET do sítě CDN k načtení tohoto fragmentu, protože tento fragment není zahrnutý v manifestu POMLČKy/HLS/hladký, který je držený přehrávačem (přehrávač neví, že fragment je existence).
 

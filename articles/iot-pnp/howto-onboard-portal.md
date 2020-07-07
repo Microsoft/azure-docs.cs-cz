@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
 ms.openlocfilehash: 4969c4f10787fa9b2d601d5b12edf823d1987301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159128"
 ---
 # <a name="onboard-to-the-azure-certified-for-iot-portal"></a>Nasazení do portálu Azure Certified for IoT
@@ -23,7 +23,7 @@ ms.locfileid: "80159128"
 - Vyhledá v modelu IoT technologie Plug and Play ve verzi Preview možnosti zařízení. Tyto modely můžete použít k rychlému sestavení zařízení s připraveným pro IoT a jejich integraci s řešeními.
 - Publikujte model schopností zařízení do veřejného úložiště.
 
-## <a name="sign-in"></a>Přihlášení
+## <a name="sign-in"></a>Přihlásit se
 
 Pomocí _pracovního účtu_ Microsoft se přihlaste k portálu [Azure Certified for IoT Portal](https://aka.ms/ACFI) . Když se přihlásíte, portál zkontroluje vaše členství v partnerském centru Microsoftu:
 

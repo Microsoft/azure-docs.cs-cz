@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
 ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066713"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
@@ -42,7 +42,7 @@ K dispozici jsou nástroje pro generování Debian VHD pro Azure, například sk
 ## <a name="manually-prepare-a-debian-vhd"></a>Ruční Příprava virtuálního pevného disku Debian
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 2. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.
-3. Pokud jste operační systém nainstalovali s použitím ISO, pak zakomentujte všechny řádky týkající se`deb cdrom`"" `/etc/apt/source.list`v tématu.
+3. Pokud jste operační systém nainstalovali s použitím ISO, pak zakomentujte všechny řádky týkající se " `deb cdrom` " v tématu `/etc/apt/source.list` .
 
 4. Upravte `/etc/default/grub` soubor a upravte parametr **GRUB_CMDLINE_LINUX** následujícím způsobem, aby se zahrnuly další parametry jádra pro Azure.
    

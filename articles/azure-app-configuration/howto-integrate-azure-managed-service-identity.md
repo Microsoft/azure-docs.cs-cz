@@ -8,10 +8,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056838"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrace se spravovanými identitami Azure
@@ -60,7 +60,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. V [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky** a vyberte úložiště konfigurace aplikace, které jste vytvořili v rychlém startu.
 
-1. Vyberte **řízení přístupu (IAM)**.
+1. Vyberte **Řízení přístupu (IAM)** .
 
 1. Na kartě **kontrolovat přístup** vyberte **Přidat** v uživatelském rozhraní karty **Přidat přiřazení role** .
 
@@ -84,7 +84,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Najděte koncový bod do úložiště konfigurace aplikace. Tato adresa URL je uvedena na kartě **přístupové klíče** pro úložiště v Azure Portal.
 
-1. Otevřete *appSettings. JSON*a přidejte následující skript. Nahraďte * \<service_endpoint>*, včetně závorek, adresou URL vašeho úložiště konfigurace aplikace. 
+1. Otevřete *appsettings.jsna*a přidejte následující skript. Nahraďte *\<service_endpoint>* včetně závorek adresou URL vašeho úložiště konfigurace aplikace. 
 
     ```json
     "AppConfig": {
@@ -92,16 +92,16 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     }
     ```
 
-1. Otevřete *program.cs*a přidejte odkaz na obory názvů `Azure.Identity` a `Microsoft.Azure.Services.AppAuthentication` :
+1. Otevřete *program.cs*a přidejte odkaz na `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` obory názvů a:
 
     ```csharp-interactive
     using Azure.Identity;
     ```
 
-1. Pokud chcete získat přístup pouze k hodnotám uloženým přímo v konfiguraci aplikace, `CreateWebHostBuilder` aktualizujte metodu tak `config.AddAzureAppConfiguration()` , že nahradíte metodu.
+1. Pokud chcete získat přístup pouze k hodnotám uloženým přímo v konfiguraci aplikace, aktualizujte metodu tak, že `CreateWebHostBuilder` nahradíte `config.AddAzureAppConfiguration()` metodu.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .net Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -181,7 +181,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     ```
     ---
 
-    Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije konfiguraci `KeyVaultClient` , kterou jste nakonfigurovali k ověřování, aby Key Vault a načetla hodnotu.
+    Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije `KeyVaultClient` konfiguraci, kterou jste nakonfigurovali k ověřování, aby Key Vault a načetla hodnotu.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -218,7 +218,7 @@ Tento příkaz vám poskytne něco podobného následujícímu výstupu:
 
 ### <a name="deploy-your-project"></a>Nasazení projektu
 
-V _okně místního terminálu_přidejte vzdálené úložiště Azure do místního úložiště Git. _ \<Adresu URL>_ nahraďte adresou URL vzdáleného úložiště Git, kterou jste získali v části [Povolení místního Gitu pomocí Kudu](#enable-local-git-with-kudu).
+V _okně místního terminálu_přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _\<url>_ adresou URL vzdáleného úložiště Git, kterou jste získali v části [Povolení místního Gitu pomocí Kudu](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>
@@ -230,7 +230,7 @@ Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího p�
 git push azure master
 ```
 
-Ve výstupu se může zobrazit automatizace specifická pro modul runtime, jako je například MSBuild pro ASP.NET `npm install` , pro Node. js a `pip install` pro Python.
+Ve výstupu se může zobrazit automatizace specifická pro modul runtime, jako je například MSBuild pro ASP.NET, `npm install` pro Node.js a `pip install` Python.
 
 ### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure
 
@@ -244,7 +244,7 @@ http://<app_name>.azurewebsites.net
 
 Poskytovatelé konfigurace aplikací pro .NET Framework a Java pružiny mají také integrovanou podporu pro spravovanou identitu. Když nakonfigurujete některého z těchto zprostředkovatelů, můžete použít koncový bod adresy URL vašeho obchodu místo jeho úplného připojovacího řetězce. 
 
-Například můžete aktualizovat konzolovou aplikaci .NET Framework vytvořenou v rychlém startu a zadat v souboru *App. config* následující nastavení:
+Například můžete aktualizovat konzolovou aplikaci .NET Framework vytvořenou v rychlém startu a v souboru *App.config* zadat následující nastavení:
 
 ```xml
     <configSections>

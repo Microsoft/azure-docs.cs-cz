@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
 ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127979"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Přizpůsobení jazykového modelu pomocí rozhraní Video Indexer API
@@ -105,7 +105,7 @@ Odpověď poskytuje metadata nově vyučeného jazykového modelu spolu s metada
 }
 ```
 
-`id` Vrácený je jedinečné ID, které se používá k rozlišení mezi jazykovými modely `languageModelId` , zatímco se používá pro [nahrání videa do indexu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) a při [Reindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) rozhraní API pro video ( `linguisticModelId` označované také jako v video indexer nahrávání a přeindexování rozhraní API).
+Vrácený `id` je jedinečné ID, které se používá k rozlišení mezi jazykovými modely, zatímco `languageModelId` se používá pro [nahrání videa do indexu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) a při [Reindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) rozhraní API pro video (označované také jako `linguisticModelId` v video indexer nahrávání a přeindexování rozhraní API).
 
 ## <a name="delete-a-language-model"></a>Odstranění jazykového modelu
 
@@ -157,7 +157,7 @@ Odpověď poskytuje metadata nově vyučeného jazykového modelu spolu s metada
 }
 ```
 
-`id` K stažení obsahu souboru použijte soubory vrácené v odpovědi.
+`id`K stažení obsahu souboru použijte soubory vrácené v odpovědi.
 
 ## <a name="update-a-file-from-a-language-model"></a>Aktualizace souboru z jazykového modelu
 
@@ -177,7 +177,7 @@ Odpověď poskytuje metadata souboru, který jste aktualizovali podle formátu u
 }
 ```
 
-`id` Pomocí souboru vráceného v odpovědi Stáhněte obsah souboru.
+Pomocí `id` souboru vráceného v odpovědi Stáhněte obsah souboru.
 
 ## <a name="get-a-specific-language-model"></a>Získat konkrétní jazykový model
 
@@ -213,7 +213,7 @@ Odpověď poskytuje metadata v zadaném jazykovém modelu spolu s metadaty v ka�
 }
 ```
 
-`id` Pomocí souboru vráceného v odpovědi Stáhněte obsah souboru.
+Pomocí `id` souboru vráceného v odpovědi Stáhněte obsah souboru.
 
 ## <a name="get-all-the-language-models"></a>Získat všechny jazykové modely
 

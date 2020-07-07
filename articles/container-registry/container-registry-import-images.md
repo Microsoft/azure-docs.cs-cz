@@ -4,10 +4,10 @@ description: Naimportujte image kontejneru do služby Azure Container Registry p
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80051924"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
@@ -44,7 +44,7 @@ Pokud chcete naimportovat image do služby Azure Container Registry, musí mít 
 
 ### <a name="import-from-docker-hub"></a>Import z dokovacího centra
 
-Pomocí příkazu [AZ ACR import][az-acr-import] můžete například importovat image s více architekturami `hello-world:latest` z Docker Hub do registru s názvem *myregistry*. Vzhledem `hello-world` k tomu, že se jedná o oficiální image z Docker Hub, je `library` tento obrázek ve výchozím úložišti. Zahrňte název úložiště a volitelně značku v hodnotě parametru `--source` image. (Volitelně můžete identifikovat obrázek pomocí výtahu manifestu namísto značky, který garantuje konkrétní verzi obrázku.)
+Pomocí příkazu [AZ ACR import][az-acr-import] můžete například importovat image s více architekturami `hello-world:latest` z Docker Hub do registru s názvem *myregistry*. Vzhledem k `hello-world` tomu, že se jedná o oficiální image z Docker Hub, je tento obrázek ve výchozím `library` úložišti. Zahrňte název úložiště a volitelně značku v hodnotě `--source` parametru image. (Volitelně můžete identifikovat obrázek pomocí výtahu manifestu namísto značky, který garantuje konkrétní verzi obrázku.)
  
 ```azurecli
 az acr import \
@@ -53,7 +53,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-Spuštěním `az acr repository show-manifests` příkazu můžete ověřit, zda je k této imagi přidruženo více manifestů:
+Spuštěním příkazu můžete ověřit, zda je k této imagi přidruženo více manifestů `az acr repository show-manifests` :
 
 ```azurecli
 az acr repository show-manifests \
@@ -100,7 +100,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-Následující příklad importuje obrázek pomocí algoritmu Digest (SHA-256 hash, který je reprezentován `sha256:...`jako) místo podle značky:
+Následující příklad importuje obrázek pomocí algoritmu Digest (SHA-256 hash, který je reprezentován jako `sha256:...` ) místo podle značky:
 
 ```azurecli
 az acr import \
@@ -110,7 +110,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>Import z registru v jiném předplatném
 
-V následujícím příkladu je *mysourceregistry* v jiném předplatném, než je *myregistry* ve stejném tenantovi Active Directory. Zadejte ID prostředku zdrojového registru s `--registry` parametrem. Všimněte si, `--source` že parametr určuje pouze zdrojové úložiště a značku, nikoli název přihlašovacího serveru registru.
+V následujícím příkladu je *mysourceregistry* v jiném předplatném, než je *myregistry* ve stejném tenantovi Active Directory. Zadejte ID prostředku zdrojového registru s `--registry` parametrem. Všimněte si, že `--source` parametr určuje pouze zdrojové úložiště a značku, nikoli název přihlašovacího serveru registru.
 
 ```azurecli
 az acr import \

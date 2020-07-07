@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055413"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s využitím řešení System Center Operations Manager Health Check (Preview)
@@ -147,13 +147,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 Management Pack System Center Operations Manager Health Check řešení zahrnuje pravidlo s názvem *Microsoft System Center Operations Manager spustit pravidlo kontroly stavu*. Toto pravidlo zodpovídá za spuštění kontroly stavu. Pokud chcete pravidlo Povolit a nakonfigurovat frekvenci, použijte následující postupy.
 
-Ve výchozím nastavení je pravidlo kontroly stavu spouštění Microsoft System Center Operations Manager zakázané. Chcete-li spustit kontrolu stavu, je nutné povolit pravidlo na management server. Použijte k tomu následující postup.
+Ve výchozím nastavení je pravidlo kontroly stavu spouštění Microsoft System Center Operations Manager zakázané. Chcete-li spustit kontrolu stavu, je nutné povolit pravidlo na management server. Postupujte následovně.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Povolení pravidla pro konkrétní server pro správu
 
 1. V pracovním prostoru **vytváření obsahu** konzoly Operations Manager Operations Console vyhledejte pravidlo pravidla *kontroly stavu Microsoft System Center Operations Manager spustit* v podokně **pravidla** .
 2. Ve výsledcích hledání vyberte jednu, která obsahuje *typ text: Server pro správu*.
-3. Klikněte pravým tlačítkem na pravidlo a potom klikněte na **přepsání** > **pro konkrétní objekt třídy: Server pro správu**.
+3. Klikněte pravým tlačítkem na pravidlo a potom klikněte na **přepsání**  >  **pro konkrétní objekt třídy: Server pro správu**.
 4.  V seznamu dostupné servery pro správu vyberte management server, kde se má pravidlo spustit.  Mělo by se jednat o stejný management server, který jste dříve nakonfigurovali pro přidružení účtu Spustit jako k.
 5.  Zajistěte, aby byla hodnota přepsání změněna na hodnotu **true** pro hodnotu **povoleného** parametru.<br><br> ![přepsat parametr](./media/scom-assessment/rule.png)
 
@@ -165,7 +165,7 @@ Vyhodnocení je nakonfigurované tak, aby se ve výchozím nastavení spouštěl
 
 1. V pracovním prostoru **vytváření obsahu** konzoly Operations Manager vyhledejte pravidlo pravidla *kontroly stavu Microsoft System Center Operations Manager spustit* v části **pravidla** .
 2. Ve výsledcích hledání vyberte jednu, která obsahuje *typ text: Server pro správu*.
-3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na **přepsat pravidlo** > **pro všechny objekty třídy: Server pro správu**.
+3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na **přepsat pravidlo**  >  **pro všechny objekty třídy: Server pro správu**.
 4. Změňte hodnotu parametru **interval** na hodnotu požadovaného intervalu. V následujícím příkladu je hodnota nastavena na 1440 minut (jeden den).<br><br> ![parametr intervalu](./media/scom-assessment/interval.png)<br>  
 
     Pokud je hodnota nastavená na méně než 1440 minut, pak se pravidlo spustí na jeden den. V tomto příkladu pravidlo ignoruje hodnotu intervalu a spustí se v frekvence jednoho dne.
@@ -208,7 +208,7 @@ Než budete moct v Log Analytics použít řešení kontroly stavu, musíte mít
 Podívejte se na souhrnná vyhodnocení dodržování předpisů pro vaši infrastrukturu a pak na doporučení pro přechod k podrobnostem.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Chcete-li zobrazit doporučení pro oblast zaměření a provést nápravná opatření
-1. Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
+1. Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 3. V podokně předplatná Log Analytics vyberte pracovní prostor a pak klikněte na položku nabídky **Souhrn pracovního prostoru** .  
 4. Na stránce **Přehled** klikněte na dlaždici **System Center Operations Manager Health Check** .
@@ -237,9 +237,9 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 3. Vyberte doporučení, která chcete ignorovat. V dalším postupu použijete hodnoty pro RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations. txt
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
 
-1. Vytvořte soubor s názvem IgnoreRecommendations. txt.
+1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
 2. Vložte nebo zadejte jednotlivé RecommendationIdy pro každé doporučení, které chcete, Log Analytics ignorovat na samostatném řádku a pak soubor uložte a zavřete.
 3. Uložte soubor do následující složky na každém počítači, na kterém chcete ignorovat doporučení Log Analytics.
 4. Na Operations Manager management server- *systémová_jednotka*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
@@ -258,7 +258,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny soubory IgnoreRecommendations. txt nebo z nich můžete RecommendationIDs odebrat.
+3. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny IgnoreRecommendations.txt soubory nebo z nich můžete odebrat RecommendationIDs.
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>Nejčastější dotazy k řešení System Center Operations Manager Health Check
 
@@ -272,9 +272,9 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 *Pokud je po přidání System Center Operations Manager Health Check řešení zjištěn jiný server, bude zkontrolován?* Ano, po zjištění, že je zjišťování zaškrtnuto, je ve výchozím nastavení každých 7 dní.
 
-*Jaký je název procesu, který provádí shromažďování dat?* AdvisorAssessment. exe
+*Jaký je název procesu, který provádí shromažďování dat?* AdvisorAssessment.exe
 
-*Kde se spouští proces AdvisorAssessment. exe?* AdvisorAssessment. exe běží v procesu HealthService management server, kde je pravidlo kontroly stavu povolené. Pomocí tohoto procesu se dosahuje zjišťování celého prostředí prostřednictvím vzdáleného shromažďování dat.
+*Kde se proces AdvisorAssessment.exe spouští?* AdvisorAssessment.exe běží v rámci procesu HealthService management server, kde je pravidlo kontroly stavu povolené. Pomocí tohoto procesu se dosahuje zjišťování celého prostředí prostřednictvím vzdáleného shromažďování dat.
 
 *Jak dlouho trvá shromažďování dat?* Shromažďování dat na serveru trvá přibližně jednu hodinu. Může trvat déle v prostředích, která mají mnoho instancí Operations Manager nebo databází.
 
@@ -282,7 +282,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 *Jak zjistit, jestli došlo k selhání požadavků?* Pokud při kontrole stavu došlo k chybě, ale nevidíte výsledky, je pravděpodobný, že některé z požadavků pro tuto kontrolu selhaly. Můžete spustit dotazy: `Operation Solution=SCOMAssessment` a `SCOMAssessmentRecommendation FocusArea=Prerequisites` v hledání v protokolu zobrazíte neúspěšné požadavky.
 
-*V případě `Failed to connect to the SQL Instance (….).` selhání požadavků se zobrazí zpráva. Jaký je problém?* AdvisorAssessment. exe proces, který shromažďuje data, běží v procesu HealthService na management server. V rámci kontroly stavu se proces pokusí připojit k SQL Server, kde se nachází databáze Operations Manager. K této chybě může dojít, když pravidla brány firewall zablokují připojení k instanci SQL Server.
+*`Failed to connect to the SQL Instance (….).`V případě selhání požadavků se zobrazí zpráva. Jaký je problém?* AdvisorAssessment.exe proces, který shromažďuje data, běží v procesu HealthService na management server. V rámci kontroly stavu se proces pokusí připojit k SQL Server, kde se nachází databáze Operations Manager. K této chybě může dojít, když pravidla brány firewall zablokují připojení k instanci SQL Server.
 
 *Jaký typ dat se shromáždí?* Shromažďují se tyto typy dat:-data služby WMI data-EventLog – data-Operations Manager data prostřednictvím prostředí Windows PowerShell, dotazy SQL a kolekce informací o souborech.
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537206"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače a nástroje pro správu MySQL kompatibilní s Azure Database for MySQL
@@ -21,12 +21,12 @@ Azure Database for MySQL používá nejoblíbenější komunitní edici Communit
 
 | **Programovací jazyk** | **Ovladač** | **Odkazy** | **Kompatibilní verze** | **Nekompatibilní verze** | **Poznámky** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
-| PHP | MySQL, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | V případě připojení PHP 7,0 k protokolu SSL MySQL přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT do připojovacího řetězce. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Množina CHOP ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` : možnost na false.|
+| PHP | MySQL, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | V případě připojení PHP 7,0 k protokolu SSL MySQL přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT do připojovacího řetězce. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Množina CHOP: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` možnost na false.|
 | .NET | Async MySQL Connector pro .NET | https://github.com/mysql-net/MySqlConnector <br> [Instalační balíček z NuGet](https://www.nuget.org/packages/MySqlConnector/) | 0,27 a za | 0.26.5 a před | |
 | .NET | Konektor MySQL/NET | https://github.com/mysql/mysql-connector-net | 6.6.3, 7,0, 8,0 |  | Chyba kódování může způsobit selhání připojení u některých systémů Windows bez kódování UTF8. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Instalační balíček z NPM:<br> Spustit `npm install mysql` z npm | 2.15 | 2.14.1 a před | |
 | Node.js | uzel – mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
-| Přejít | Přejít na ovladač MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 a před | Použijte `allowNativePasswords=true` v připojovacím řetězci pro verzi 1,3. Verze 1,4 obsahuje opravu a `allowNativePasswords=true` již není nutná. |
+| Go | Přejít na ovladač MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 a před | Použijte `allowNativePasswords=true` v připojovacím řetězci pro verzi 1,3. Verze 1,4 obsahuje opravu a `allowNativePasswords=true` již není nutná. |
 | Python | Konektor MySQL/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2, použití 8.0.16 + s MySQL 8,0  | 1.2.2 a před | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regrese v web2py) | |
 | Java | Konektor MariaDB/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 a před | | 
@@ -45,14 +45,14 @@ Výhoda kompatibility se rozšiřuje i na nástroje pro správu databáze. Stáv
 
 |                                     | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Vytvořit, aktualizovat, číst, zapsat, odstranit | × | × | × |
-| Připojení SSL | × | × | × |
-| Automatické dokončování dotazů SQL | × | × |  |
-| Import a export dat | × | × | × | 
-| Exportovat do více formátů | × | × | × |
+| Vytvořit, aktualizovat, číst, zapsat, odstranit | X | X | X |
+| Připojení SSL | X | X | X |
+| Automatické dokončování dotazů SQL | X | X |  |
+| Import a export dat | X | X | X | 
+| Exportovat do více formátů | X | X | X |
 | Zálohování a obnovení |  | × |  |
-| Zobrazit parametry serveru | × | × | × |
-| Zobrazit klientská připojení | × | × | × |
+| Zobrazit parametry serveru | X | X | X |
+| Zobrazit klientská připojení | X | X | X |
 
 ## <a name="next-steps"></a>Další kroky
 

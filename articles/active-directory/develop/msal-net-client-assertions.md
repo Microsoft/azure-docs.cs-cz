@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050295"
 ---
 # <a name="confidential-client-assertions"></a>Důvěrné kontrolní výrazy klienta
@@ -35,7 +35,7 @@ MSAL.NET má čtyři metody pro poskytnutí přihlašovacích údajů nebo kontr
 - `.WithClientClaims()`
 
 > [!NOTE]
-> I když je možné použít `WithClientAssertion()` rozhraní API k získání tokenů pro důvěrného klienta, nedoporučujeme ho používat ve výchozím nastavení, protože je pokročilejší a je navržený tak, aby zpracovávala velmi konkrétní scénáře, které nejsou běžné. Pomocí `.WithCertificate()` rozhraní API to MSAL.NET umožní. Toto rozhraní API nabízí možnost přizpůsobení žádosti o ověření, pokud je to potřeba, ale pro většinu scénářů ověřování stačí výchozí kontrolní výraz vytvořený nástrojem `.WithCertificate()` . Toto rozhraní API je také možné použít jako alternativní řešení v některých situacích, kdy MSAL.NET nepomůže provést operaci podepisování interně.
+> I když je možné použít `WithClientAssertion()` rozhraní API k získání tokenů pro důvěrného klienta, nedoporučujeme ho používat ve výchozím nastavení, protože je pokročilejší a je navržený tak, aby zpracovávala velmi konkrétní scénáře, které nejsou běžné. Pomocí `.WithCertificate()` rozhraní API to MSAL.NET umožní. Toto rozhraní API nabízí možnost přizpůsobení žádosti o ověření, pokud je to potřeba, ale `.WithCertificate()` pro většinu scénářů ověřování stačí výchozí kontrolní výraz vytvořený nástrojem. Toto rozhraní API je také možné použít jako alternativní řešení v některých situacích, kdy MSAL.NET nepomůže provést operaci podepisování interně.
 
 ### <a name="signed-assertions"></a>Podepsané kontrolní výrazy
 
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternativní metoda
 
-Máte také možnost použít k vytvoření kontrolního výrazu [Microsoft. IdentityModel. objekty JsonWebToken](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) . Kód bude elegantní, jak je znázorněno v následujícím příkladu:
+Máte také možnost použít [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) k vytvoření kontrolního výrazu za vás. Kód bude elegantní, jak je znázorněno v následujícím příkladu:
 
 ```csharp
         string GetSignedClientAssertion()

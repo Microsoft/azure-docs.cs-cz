@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
 ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055115"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Vytvoření datového kanálu pomocí rozhraní API kolekce dat
@@ -61,7 +61,7 @@ Logic Apps dnes nemá integrované možnosti, jak snadno transformovat XML, CSV 
 V tomto příkladu analyzujeme soubor CSV, ale jakýkoli jiný typ souboru se může zpracovat podobně. Jednoduše upravte část deserializace funkce Azure Functions tak, aby odrážela správnou logiku konkrétního datového typu.
 
 1.  Po zobrazení výzvy vytvořte novou funkci Azure pomocí modulu runtime funkce V1 a na základě spotřeby.  Vyberte šablonu **triggeru http** , která cílí na C#, jako výchozí bod, který konfiguruje vaše vazby podle potřeby. 
-2.  Na kartě **Zobrazit soubory** v pravém podokně vytvořte nový soubor s názvem **Project. JSON** a vložte následující kód z balíčků NuGet, které používáme:
+2.  Na kartě **Zobrazit soubory** v pravém podokně vytvořte nový soubor s názvem **project.jsv** a vložte následující kód z balíčků NuGet, které používáme:
 
     ![Azure Functions ukázkový projekt](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     

@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158142"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšiřování IoT Central Azure pomocí vlastních pravidel pomocí Stream Analytics, Azure Functions a SendGrid
@@ -34,7 +34,7 @@ V této příručce se dozvíte, jak:
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
@@ -45,7 +45,7 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 | Cenový tarif | Standard |
 | Šablona aplikace | Analýzy v obchodě – monitorování podmínek |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
-| zprostředkovatele identity | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
+| URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
 | Oblast | Vaše nejbližší oblast |
@@ -144,7 +144,7 @@ Vaše aplikace Function App potřebuje k posílání e-mailových zpráv klíč 
 Toto řešení používá aplikaci Azure Functions k odeslání e-mailového oznámení, když úloha Stream Analytics detekuje zastavené zařízení. Vytvoření aplikace Function App:
 
 1. V Azure Portal přejděte na instanci **App Service** ve skupině prostředků **DetectStoppedDevices** .
-1. Tuto **+** možnost vyberte, pokud chcete vytvořit novou funkci.
+1. Tuto možnost vyberte **+** , pokud chcete vytvořit novou funkci.
 1. Na stránce **Zvolte vývojové prostředí** zvolte **in-Portal** a pak vyberte **pokračovat**.
 1. Na stránce **vytvořit funkci** vyberte **Webhook + API** a pak vyberte **vytvořit**.
 
@@ -159,7 +159,7 @@ Pro posílání e-mailů pomocí SendGrid je nutné nakonfigurovat vazby pro fun
 1. Vyberte možnost **integrace**, zvolte výstup **http ($Return)** a pak vyberte **Odstranit**.
 1. Zvolte **+ Nový výstup**, pak zvolte **SendGrid**a pak zvolte **Vybrat**. Kliknutím na **nainstalovat** nainstalujte rozšíření SendGrid.
 1. Po dokončení instalace vyberte **použít návratovou hodnotu funkce**. Přidejte platnou **adresu pro** příjem e-mailových oznámení.  Přidejte platnou **adresu z adresy** , kterou chcete použít jako odesílatele e-mailu.
-1. V poli **nastavení aplikace klíč rozhraní API pro SendGrid**vyberte **Nový** . Jako klíč zadejte **SendGridAPIKey** a klíč rozhraní SendGrid API, který jste si dříve poznamenali jako hodnotu. Pak vyberte **vytvořit**.
+1. V poli **nastavení aplikace klíč rozhraní API pro SendGrid**vyberte **Nový** . Jako klíč zadejte **SendGridAPIKey** a klíč rozhraní SendGrid API, který jste si dříve poznamenali jako hodnotu. Potom vyberte **Vytvořit**.
 1. Kliknutím na **Uložit** uložte vazby SendGrid pro vaši funkci.
 
 Nastavení integrace vypadají jako na následujícím snímku obrazovky:
@@ -317,12 +317,12 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejd
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Zobrazovaný název | Exportovat do Event Hubs |
-    | Povoleno | Zapnuto |
+    | Povoleno | Zapnout |
     | Obor názvů služby Event Hubs | Název oboru názvů Event Hubs |
     | Centrum událostí | centralexport |
-    | Měření | Zapnuto |
-    | Zařízení | Vypnuto |
-    | Šablony zařízení | Vypnuto |
+    | Měření | Zapnout |
+    | Zařízení | Vypnout |
+    | Šablony zařízení | Vypnout |
 
 ![Konfigurace kontinuálního exportu dat](media/howto-create-custom-rules/cde-configuration.png)
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
 ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055743"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Shromažďování protokolů aktivit Azure do Azure Monitor napříč klienty Azure Active Directory (starší verze)
@@ -51,7 +51,7 @@ Následují požadavky na prostředky Azure použité v tomto scénáři.
 
 <!-- Follow the steps in [how to create an Event Hubs namespace and Event Hub](../../event-hubs/event-hubs-create.md) to create your event hub. -->
 
-1. V Azure Portal vyberte **vytvořit prostředek** > **Internet věcí** > **Event Hubs**.
+1. V Azure Portal vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Event Hubs**.
 
    ![Nové centrum událostí na Marketplace](media/collect-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
@@ -78,7 +78,7 @@ Pokud chcete povolit streamování protokolu aktivit, vyberte obor názvů centr
 
 Můžete použít obor názvů centra událostí, který není ve stejném předplatném, jako je předplatné, které vysílá protokoly, ale obě předplatná musí být ve stejné službě Azure Active Directory. Uživatel, který konfiguruje nastavení, musí mít odpovídající roli RBAC pro přístup k oběma předplatným. 
 
-1. V Azure Portal vyberte **monitorovat** > **Protokol aktivit**.
+1. V Azure Portal vyberte **monitorovat**  >  **Protokol aktivit**.
 3. Klikněte na tlačítko **Exportovat** v horní části stránky.
 
    ![obrázek monitorování azure v navigaci](media/collect-activity-logs-subscriptions/activity-log-blade.png)
@@ -116,7 +116,7 @@ Pokud chcete získat název a připojovací řetězec centra událostí, postupu
 
 ### <a name="create-a-new-blank-logic-app"></a>Vytvoření nové prázdné aplikace logiky
 
-1. V Azure Portal vyberte **vytvořit prostředek** > **Podniková integrace** > **aplikaci logiky**.
+1. V Azure Portal vyberte **vytvořit prostředek**  >  **Podniková integrace**  >  **aplikaci logiky**.
 
     ![nová aplikace logiky na Marketplace](media/collect-activity-logs-subscriptions/marketplace-new-logic-app.png)
 
@@ -126,7 +126,7 @@ Pokud chcete získat název a připojovací řetězec centra událostí, postupu
 
    |Nastavení | Popis  |
    |:---|:---|
-   | Název           | Jedinečný název aplikace logiky. |
+   | Name           | Jedinečný název aplikace logiky. |
    | Předplatné   | Vyberte předplatné Azure, které bude obsahovat aplikaci logiky. |
    | Skupina prostředků | Vyberte některou z existujících skupin prostředků Azure nebo pro aplikaci logiky vytvořte novou. |
    | Umístění       | Vyberte oblast datového centra pro nasazení aplikace logiky. |
@@ -163,7 +163,7 @@ V Návrháři pro Logic Apps se teď zobrazí dostupné konektory a jejich trigg
 
 Výstup z centra událostí obsahuje datovou část JSON s polem záznamů. Akce [analyzovat JSON](../../logic-apps/logic-apps-content-type.md) se používá k extrakci pouze pole záznamů pro odeslání do Log Analytics pracovního prostoru.
 
-1. Klikněte na **Nový krok** > **přidat akci** .
+1. Klikněte na **Nový krok**  >  **přidat akci** .
 2. Do vyhledávacího pole zadejte jako filtr *parsovat json*. Vyberte akci **Operace s daty – Parsovat JSON**.
 
    ![Přidání akce Parsovat JSON ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-add-parse-json-action.png)
@@ -275,7 +275,7 @@ Výstup z centra událostí obsahuje datovou část JSON s polem záznamů. Akce
 ### <a name="add-compose-action"></a>Přidání akce Vytvořit
 Akce [Vytvořit](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) převezme výstup JSON a vytvoří z něj objekt, který je možné použít v akci Log Analytics.
 
-1. Klikněte na **Nový krok** > **přidat akci** .
+1. Klikněte na **Nový krok**  >  **přidat akci** .
 2. Jako filtr zadejte *vytvořit* a pak vyberte akci **Operace s daty – Vytvořit**.
 
     ![Přidání akce Vytvořit](media/collect-activity-logs-subscriptions/logic-apps-add-compose-action.png)
@@ -286,7 +286,7 @@ Akce [Vytvořit](../../logic-apps/logic-apps-workflow-actions-triggers.md#compos
 ### <a name="add-log-analytics-send-data-action"></a>Přidání akce Odeslat data do Log Analytics
 Akce [kolekce dat Azure Log Analytics](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) přebírá objekt z akce psaní a odesílá ho do pracovního prostoru Log Analytics.
 
-1. Klikněte na **Nový krok** > **přidat akci** .
+1. Klikněte na **Nový krok**  >  **přidat akci** .
 2. Jako filtr zadejte *log analytics* a pak vyberte akci **Kolekce dat Azure Log Analytics – Odeslat data**.
 
    ![Přidání akce Odeslat data do analytiky protokolů ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)

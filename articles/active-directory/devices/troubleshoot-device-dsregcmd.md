@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128764"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Řešení potíží se zařízeními pomocí příkazu dsregcmd
@@ -136,7 +136,7 @@ V této části je uveden seznam stavů různých atributů pro uživatele, kter
 - **WorkplaceJoined:** -nastavte na hodnotu Ano, pokud se do zařízení v aktuálním kontextu Ntuser přidaly účty registrované službou Azure AD.
 - **WamDefaultSet:** -nastavte na hodnotu Ano, pokud je pro přihlášeného uživatele vytvořen výchozí účet WAM. V tomto poli se může zobrazit chyba, pokud se dsreg/status spouští z příkazového řádku se zvýšenými oprávněními. 
 - **WamDefaultAuthority:** -pro Azure AD nastavte na "organizace".
-- **WamDefaultId:** – Always "https://login.microsoft.com" pro Azure AD.
+- **WamDefaultId:** – Always " https://login.microsoft.com " pro Azure AD.
 - **WamDefaultGUID:** – GUID poskytovatele WAM (Azure AD/účet Microsoft) pro výchozí webaccount WAM. 
 
 ### <a name="sample-user-state-output"></a>Ukázkový výstup stavu uživatele

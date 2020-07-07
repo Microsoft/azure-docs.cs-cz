@@ -15,10 +15,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: e4a7fb72d40f5db65e8e30264e9d68b2727749e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154402"
 ---
 # <a name="web-apps"></a>Webové aplikace
@@ -42,7 +42,7 @@ Webové aplikace jsou aplikace, které ověřují uživatele ve webovém prohlí
 
 Podívejte se na ukázky kódu pro webový prohlížeč ve scénářích webové aplikace. A pravidelně se podívejte na to, jak se často přidávají nové ukázky.
 
-## <a name="app-registration"></a>Registrace aplikací
+## <a name="app-registration"></a>Registrace aplikace
 
 Pokud chcete zaregistrovat webovou aplikaci, přečtěte si téma [Registrace aplikace](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

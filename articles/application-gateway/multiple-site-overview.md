@@ -8,15 +8,15 @@ ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80257406"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
-Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu brána Application Gateway obsluhuje provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů back-end serverů s názvem fondserverucontoso a fondserverufabrikam.
+Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu brána Application Gateway obsluhuje provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů back-end serverů s názvem Fondserverucontoso a fondserverufabrikam.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 

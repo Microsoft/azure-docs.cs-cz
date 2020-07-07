@@ -4,10 +4,10 @@ description: Tento článek poskytuje obsah popisující podrobnou konfiguraci m
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: 99ea6e96f5a8a486784cb3d633a6e031b60eaad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055703"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Průvodce konfigurací monitorování stavu kontejnerů Azure Monitor
@@ -54,7 +54,7 @@ Azure Monitor for Containers zahrnuje řadu klíčových scénářů monitorová
 
 ### <a name="unit-monitors"></a>Monitory jednotek
 
-|**Název monitorování** | Typ monitorování | **Popis** | **Ukazatele** | **Osa** |
+|**Název monitorování** | Typ monitorování | **Popis** | **Parametr** | **Hodnota** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Využití paměti uzlu |Monitorování jednotky |Toto monitorování vyhodnocuje využití paměti uzlu každou minutu pomocí cadvisor nahlášených dat. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Využití procesoru uzlů |Monitorování jednotky |Toto monitorování zkontroluje využití CPU v uzlu každou minutu pomocí cadvisor nahlášených dat. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

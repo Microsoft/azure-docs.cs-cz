@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532344"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Ovladače a nástroje pro správu MariaDB kompatibilní s Azure Database for MariaDB
@@ -25,7 +25,7 @@ Cílem je podpořit tři nejaktuálnější verze ovladačů MariaDB a snaha s a
 
 **Ovladač** | **Odkazy** | **Kompatibilní verze** | **Nekompatibilní verze** | **Poznámky**
 ---|---|---|---|---
-PHP | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | V případě připojení PHP 7,0 k protokolu SSL MySQL přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT do připojovacího řetězce. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Množina CHOP ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` : možnost na false.
+PHP | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | V případě připojení PHP 7,0 k protokolu SSL MySQL přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT do připojovacího řetězce. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Množina CHOP: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` možnost na false.
 .NET | [MySqlConnector na GitHubu](https://github.com/mysql-net/MySqlConnector) <br> [Instalační balíček z NuGet](https://www.nuget.org/packages/MySqlConnector/) | 0,27 a za | 0.26.5 a před |
 Konektor MySQL/NET | [Konektor MySQL/NET](https://github.com/mysql/mysql-connector-net) | 8,0, 7,0, 6,10 |  | Chyba kódování může způsobit selhání připojení u některých systémů Windows bez kódování UTF8.
 Node.js |  [MySQLjs na GitHubu](https://github.com/mysqljs/mysql/) <br> Instalační balíček z NPM:<br> Spustit `npm install mysql` z npm | 2.15 | 2.14.1 a před
@@ -39,14 +39,14 @@ Výhoda kompatibility se rozšiřuje i na nástroje pro správu databáze. Stáv
 
 | | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více**
 ---|---|---|---
-Vytvořit, aktualizovat, číst, zapsat, odstranit | × | × | ×
-Připojení SSL | × | × | ×
-Automatické dokončování dotazů SQL | × | × |
-Import a export dat | × | × | ×
-Exportovat do více formátů | × | × | ×
+Vytvořit, aktualizovat, číst, zapsat, odstranit | X | X | X
+Připojení SSL | X | X | X
+Automatické dokončování dotazů SQL | X | X |
+Import a export dat | X | X | X
+Exportovat do více formátů | X | X | X
 Zálohování a obnovení |  | × |
-Zobrazit parametry serveru | × | × | ×
-Zobrazit klientská připojení | × | × | ×
+Zobrazit parametry serveru | X | X | X
+Zobrazit klientská připojení | X | X | X
 
 ## <a name="next-steps"></a>Další kroky
 

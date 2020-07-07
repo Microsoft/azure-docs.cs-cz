@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled konfigurace, procesu a hlavních 
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062091"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Informace o komponentách Site Recovery (konfigurace, proces, hlavní cíl)
@@ -18,7 +18,7 @@ Tento článek popisuje konfigurační, procesní a hlavní cílové servery pou
 
 Pro zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů nasaďte místní Site Recovery konfigurační server.
 
-**Nastavení** | **Zobrazí** | **Odkazy**
+**Nastavení** | **Podrobnosti** | **Odkazy**
 --- | --- | ---
 **Komponenty**  | Počítač konfiguračního serveru spouští všechny místní Site Recovery komponenty, mezi které patří konfigurační server, procesový Server a hlavní cílový server.<br/><br/> Při nastavování konfiguračního serveru jsou všechny součásti nainstalovány automaticky. | [Přečtěte](vmware-azure-common-questions.md#configuration-server) si nejčastější dotazy ke konfiguračnímu serveru.
 **Role** | Konfigurační server koordinuje komunikaci mezi místním prostředím a Azure a spravuje replikaci dat. | Přečtěte si další informace o architektuře pro zotavení po havárii [VMware](vmware-azure-architecture.md) a [fyzických serverů](physical-azure-architecture.md) do Azure.
@@ -31,7 +31,7 @@ Pro zotavení po havárii místních virtuálních počítačů VMware a fyzick�
 
 Procesový Server zpracovává replikační data během převzetí služeb při selhání a navrácení služeb po obnovení a nainstaluje službu mobility pro místní virtuální počítače VMware a fyzické servery.
 
-**Nastavení** | **Zobrazí** | **Odkazy**
+**Nastavení** | **Podrobnosti** | **Odkazy**
 --- | --- | ---
 **Nasazení**  | Ve výchozím nastavení platí, že když je konfigurační server nasazen, nainstaluje se procesový Server. <br/><br/> Místní procesový Server je nutný k zotavení po havárii a replikaci místních virtuálních počítačů VMware a fyzických serverů. | [Další informace](vmware-azure-architecture.md#architectural-components).
 **Role (místní**) | Přijímá data replikace z počítačů, které jsou povoleny pro replikaci. <br/><br/> Optimalizuje data replikace pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do Azure Storage. <br/><br/> Provede nabízenou instalaci služby Site Recovery mobility na místních virtuálních počítačích VMware a fyzických serverech, které chcete replikovat. <br/><br/> Provádí automatické zjišťování místních počítačů. | [Další informace](vmware-azure-enable-replication.md).

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
 ms.openlocfilehash: e16531484505f055c1383aff5adb40518719d98a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80054580"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Řešení potíží s rozšířením Log Analytics pro virtuální počítače ve službě Azure Monitor
@@ -18,7 +18,7 @@ Tento článek poskytuje nápovědu k řešení chyb, ke kterým může docháze
 
 Chcete-li ověřit stav rozšíření, proveďte následující kroky z Azure Portal.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **virtuální počítače**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Virtuální počítače**.
 3. V seznamu virtuálních počítačů ho vyhledejte a vyberte.
 3. Na virtuálním počítači klikněte na **rozšíření**.
@@ -53,7 +53,7 @@ Pokud se neinstaluje nebo nehlásí rozšíření *Log Analytics Agent pro Linux
 1. Pokud je stav rozšíření *neznámá* kontrola, jestli je agent virtuálního počítače Azure nainstalovaný a funguje správně, Projděte si soubor protokolu agenta virtuálního počítače.`/var/log/waagent.log`
    * Pokud protokol neexistuje, není nainstalován agent virtuálního počítače.
    * [Instalace agenta virtuálního počítače Azure do virtuálních počítačů se systémem Linux](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. U dalších stavů, které nejsou v pořádku, zkontrolujte soubory protokolů rozšíření Log Analytics agenta pro Linux VM `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` v systému a.`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
+2. U dalších stavů, které nejsou v pořádku, zkontrolujte soubory protokolů rozšíření Log Analytics agenta pro Linux VM v systému `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` a.`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
 3. Pokud je stav rozšíření v pořádku, ale data se neodesílají, zkontrolujte soubory protokolu Log Analytics agenta pro Linux v`/var/opt/microsoft/omsagent/log/omsagent.log`
 
 Další informace najdete v tématu [řešení potíží s rozšířeními pro Linux](../../virtual-machines/extensions/oms-linux.md).

@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80275675"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Podívejte se na stav publikování vaší nabídky na komerčním webu Marketplace.
@@ -25,8 +25,8 @@ U každé nabídky by se mělo zobrazit jeden z následujících indikátorů st
 | **Koncept** | Nabídka se vytvořila, ale není publikovaná. |
 | **Probíhá publikování.** | Nabídka/plán pracuje způsobem, který prochází postupem procesu publikování. |
 | **Nutná pozornost** | Došlo ke zjištění kritického problému během certifikace od společnosti Microsoft nebo některého z kroků publikování. |
-| **Tisk** | Nabídka byla certifikována společností Microsoft a nyní očekává konečné ověření vydavatelem. Výběrem možnosti přejít na Live zajistěte, aby byla nabídka živá. |
-| **Živé** | Nabídka je na webu Marketplace živá a může ji zobrazit a získat zákazníci. |
+| **Preview** | Nabídka byla certifikována společností Microsoft a nyní očekává konečné ověření vydavatelem. Výběrem možnosti přejít na Live zajistěte, aby byla nabídka živá. |
+| **Živě** | Nabídka je na webu Marketplace živá a může ji zobrazit a získat zákazníci. |
 | **Čeká na zastavení prodeje** | Vydavatel v nabídce nebo plánu vybral možnost ukončit prodej, ale akce ještě není dokončená. |
 | **Není k dispozici na webu Marketplace** | Odebrali jsme dříve publikovanou nabídku nebo plán na webu Marketplace. |
 

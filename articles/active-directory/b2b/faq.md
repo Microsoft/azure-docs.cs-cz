@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050824"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
@@ -64,7 +64,7 @@ Pokud uživatel nemá přiřazenou roli omezeného správce, nebudou uživatelé
 Ano! Můžete vytvořit zásadu podmíněného přístupu, která zablokuje všem uživatelům typu Host a externím uživatelům přístup k Azure Portal. Při konfiguraci této zásady buďte opatrní, abyste se vyhnuli nechtěnému blokování přístupu ke členům a správcům.
 
 1. Přihlaste se k vašemu [Azure Portal](https://portal.azure.com/) jako správce zabezpečení nebo správce podmíněného přístupu.
-2. Na portálu Azure Portal vyberte **Azure Active Directory**. 
+2. V Azure Portal vyberte **Azure Active Directory**. 
 3. V části **Spravovat**vyberte **zabezpečení**.
 4. V části **chránit**vyberte **podmíněný přístup**. Vyberte **nové zásady**.
 5. Na **nové** stránce zadejte do textového pole **název** název zásady (například zablokovat hostům přístup k portálu).
@@ -82,8 +82,8 @@ Ano. Služba Multi-Factor Authentication a e-mailové e-mailové účty se podpo
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Podporujete resetování hesla pro uživatele spolupráce Azure AD B2B?
 Pokud je váš tenant služby Azure AD domovským adresářem pro uživatele, můžete [resetovat heslo uživatele](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) z Azure Portal. Nemůžete ale přímo obnovit heslo pro uživatele typu Host, který se přihlásí pomocí účtu spravovaného jiným adresářem služby Azure AD nebo externím zprostředkovatelem identity. Heslo může resetovat jenom uživatel typu Host nebo správce v domovském adresáři uživatele. Tady je několik příkladů, jak funguje resetování hesla pro uživatele typu Host:
  
-* Uživatelé typu Host, kteří se přihlásí pomocí účet Microsoft ( guestuser@live.comnapříklad), mohou resetovat vlastní hesla pomocí účet Microsoft samoobslužného resetování hesla (SSPR). Přečtěte si informace [o resetování hesla účet Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
-* Uživatelé typu Host, kteří se přihlásí pomocí účtu Google nebo jiného externího zprostředkovatele identity, můžou resetovat svoje vlastní hesla pomocí metody SSPR zprostředkovatele identity. Uživatel typu host s účtem guestuser@gmail.com Google může například resetovat heslo podle pokynů v tématu [Změna nebo resetování hesla](https://support.google.com/accounts/answer/41078).
+* Uživatelé typu Host, kteří se přihlásí pomocí účet Microsoft (například guestuser@live.com ), mohou resetovat vlastní hesla pomocí účet Microsoft samoobslužného resetování hesla (SSPR). Přečtěte si informace [o resetování hesla účet Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
+* Uživatelé typu Host, kteří se přihlásí pomocí účtu Google nebo jiného externího zprostředkovatele identity, můžou resetovat svoje vlastní hesla pomocí metody SSPR zprostředkovatele identity. Uživatel typu host s účtem Google guestuser@gmail.com může například resetovat heslo podle pokynů v tématu [Změna nebo resetování hesla](https://support.google.com/accounts/answer/41078).
 * Pokud je tenant identity tenanta JIT (just-in-time) nebo "virová" tenant (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
 
 * Pokud je domovský adresář uživatele typu Host vaším klientem služby Azure AD, můžete resetovat heslo uživatele. Mohli jste například vytvořit uživatele nebo synchronizovat uživatele z místní služby Active Directory a nastavit jejich UserType na hodnotu Host. Vzhledem k tomu, že se tento uživatel nachází v adresáři, můžete resetovat heslo z Azure Portal.

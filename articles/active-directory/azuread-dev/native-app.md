@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9ecf711f5442b6f21de53d2735ad1c94d7cb6223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154793"
 ---
 # <a name="native-apps"></a>Nativní aplikace
@@ -48,7 +48,7 @@ Pokud používáte knihovny ověřování AD, většina podrobností protokolu p
 
 Podívejte se na ukázky kódu pro scénáře nativní aplikace do webového rozhraní API. A znovu se podívejte na časté – přidávajíme nové ukázky často. [Nativní aplikace do webového rozhraní API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api)
 
-## <a name="app-registration"></a>Registrace aplikací
+## <a name="app-registration"></a>Registrace aplikace
 
 Pokud chcete zaregistrovat aplikaci s koncovým bodem Azure AD v 1.0, přečtěte si téma [Registrace aplikace](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

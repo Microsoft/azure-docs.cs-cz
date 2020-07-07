@@ -8,10 +8,10 @@ ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056997"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Použití filtrů funkcí k povolení funkce pro podmnožinu uživatelů
@@ -20,7 +20,7 @@ Příznaky funkcí umožňují aktivovat nebo deaktivovat funkce v aplikaci. Jed
 
 Naproti tomu _příznak podmíněné funkce_ umožňuje, aby byl příznak funkce povolen nebo zakázán dynamicky. Aplikace se může chovat odlišně v závislosti na kritériích příznaků funkcí. Předpokládejme, že chcete novou funkci Zobrazit pro malou podmnožinu uživatelů v prvním. Příznak podmíněné funkce vám umožní povolit příznak funkce pro některé uživatele a zároveň ho zakázat ostatním uživatelům. _Filtry funkcí_ určují stav příznaku funkce pokaždé, když se vyhodnotí.
 
-`Microsoft.FeatureManagement` Knihovna obsahuje dva filtry funkcí:
+`Microsoft.FeatureManagement`Knihovna obsahuje dva filtry funkcí:
 
 - `PercentageFilter`Povolí příznak funkce na základě procenta.
 - `TimeWindowFilter`Povolí příznak funkce během zadaného časového období.
@@ -29,7 +29,7 @@ Můžete také vytvořit vlastní filtr funkcí, který implementuje [rozhraní 
 
 ## <a name="registering-a-feature-filter"></a>Registrace filtru funkcí
 
-Filtr funkcí zaregistrujete voláním `AddFeatureFilter` metody a zadáním názvu filtru funkce. Například následující Registry `PercentageFilter`kódu:
+Filtr funkcí zaregistrujete voláním `AddFeatureFilter` metody a zadáním názvu filtru funkce. Například následující Registry kódu `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -43,7 +43,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Některé filtry funkcí mají další nastavení. Například `PercentageFilter` aktivuje funkci na základě procenta. Má nastavení definující procentuální hodnotu, která se má použít.
 
-Tato nastavení můžete nakonfigurovat pro příznaky funkcí definované v konfiguraci aplikace Azure. Pomocí `PercentageFilter` následujících kroků můžete například povolit příznak funkce pro 50% žádostí na webovou aplikaci:
+Tato nastavení můžete nakonfigurovat pro příznaky funkcí definované v konfiguraci aplikace Azure. Pomocí následujících kroků můžete například `PercentageFilter` Povolit příznak funkce pro 50% žádostí na webovou aplikaci:
 
 1. Postupujte podle pokynů v [rychlém startu: Přidání příznaků funkcí do aplikace ASP.NET Core](./quickstart-feature-flag-aspnet-core.md) pro vytvoření webové aplikace s příznakem funkce.
 

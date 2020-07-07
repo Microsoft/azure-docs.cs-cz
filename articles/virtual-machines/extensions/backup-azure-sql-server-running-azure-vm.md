@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
 ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247380"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup pro SQL Server běžící na virtuálním počítači Azure
@@ -85,7 +85,7 @@ Následující JSON zobrazuje schéma pro rozšíření WorkloadBackup.
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-Název | Hodnota/příklad | Datový typ
+Name | Hodnota/příklad | Datový typ
  --- | --- | ---
 locale | cs-cz  |  řetězec
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | řetězec

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: de6bb3fe0879a69467283e93a04a355876a02cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246683"
 ---
 # <a name="how-to-transfer-a-payload-between-device-and-dps"></a>Jak přenést datovou část mezi zařízením a DPS
@@ -54,7 +54,7 @@ Pokud si Webhook zásady přidělení přeje vrátit některá data do zařízen
    ```
 
 ## <a name="sdk-support"></a>Podpora SDK
-Tato funkce je k dispozici v sadách [SDK klienta](https://docs.microsoft.com/azure/iot-dps/)C, C#, Java a Node. js.  
+Tato funkce je k dispozici v [klientských sadách SDK](https://docs.microsoft.com/azure/iot-dps/)C, C#, JAVA a Node.js.  
 
 ## <a name="next-steps"></a>Další kroky
 * Vývoj s využitím [sady Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) pro Azure IoT Hub a Azure IoT Hub Device Provisioning Service

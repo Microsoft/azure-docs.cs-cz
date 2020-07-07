@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
 ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062860"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Použití Webhooku ke konfiguraci oznámení o stavu pro systémy správy problémů
@@ -33,7 +33,7 @@ Chcete-li nastavit vlastní integraci webhooků, je nutné analyzovat datovou č
 
 Podívejte [se na příklad](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` datové části Webhooku.
 
-Můžete potvrdit, že se jedná o výstrahu o stavu služby, `context.eventSource == "ServiceHealth"`a to tak, že si prohlédněte. Následující vlastnosti jsou nejrelevantnější:
+Můžete potvrdit, že se jedná o výstrahu o stavu služby, a to tak, že si prohlédněte `context.eventSource == "ServiceHealth"` . Následující vlastnosti jsou nejrelevantnější:
 - **data. Context. activityLog. status**
 - **data. Context. activityLog. Level**
 - **data. Context. activityLog. subscriptionId**
@@ -46,17 +46,17 @@ Můžete potvrdit, že se jedná o výstrahu o stavu služby, `context.eventSour
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Vytvoření odkazu na řídicí panel Service Health pro incident
 Můžete vytvořit přímý odkaz na Service Health řídicí panel na počítači nebo mobilním zařízení vygenerováním specializované adresy URL. Použijte *trackingId* a první tři a poslední tři číslice vašeho *SubscriptionId* v tomto formátu:
 
-https<i></i>://App.Azure.com/h/*&lt;trackingId&gt;*/*první tři a poslední tři číslice čísla SubscriptionId&gt; &lt;*
+https <i></i> ://App.Azure.com/h/* &lt; trackingId &gt; * / * &lt; první tři a poslední tři číslice čísla SubscriptionId &gt; *
 
 Pokud je vaše *SubscriptionId* například bba14129-e895-429b-8809-278e836ecdb3 a vaše *trackingId* je 0DET-URB, vaše Service Health adresa URL:
 
-https<i></i>://App.Azure.com/h/0DET-URB/bbadb3
+https <i></i> ://App.Azure.com/h/0DET-URB/bbadb3
 
 ## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>K detekci závažnosti problému použijte úroveň
 Od nejnižší k nejvyšší závažnosti může být vlastnost **Level** v datové části *informativní*, *varovná*, *Chyba*nebo *kritická*.
 
 ## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Analyzujte ovlivněné služby a určete rozsah incidentu.
-Výstrahy Service Health můžou informovat o problémech napříč různými oblastmi a službami. Chcete-li získat podrobné informace, je nutné analyzovat hodnotu `impactedServices`.
+Výstrahy Service Health můžou informovat o problémech napříč různými oblastmi a službami. Chcete-li získat podrobné informace, je nutné analyzovat hodnotu `impactedServices` .
 
 Obsah, který je uvnitř je řídicí řetězec formátu [JSON](https://json.org/) , který v případě neřídicího znaku obsahuje jiný objekt JSON, který lze pravidelně analyzovat. Příklad:
 

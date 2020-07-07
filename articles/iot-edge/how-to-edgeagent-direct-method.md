@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240350"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Komunikace s edgeAgent pomocí integrovaných přímých metod
@@ -34,7 +34,7 @@ Příklad:
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
 ```
 
-V Azure Portal volejte metodu s názvem `ping` metody a prázdnou datovou částí `{}`JSON.
+V Azure Portal volejte metodu s názvem metody `ping` a prázdnou datovou částí JSON `{}` .
 
 ![Vyvolat přímo metodu "příkaz" příkazu "test" v Azure Portal](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
 
@@ -58,7 +58,7 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 '
 ```
 
-V Azure Portal volejte metodu s názvem `RestartModule` metody a následující datovou částí JSON:
+V Azure Portal volejte metodu s názvem metody `RestartModule` a následující datovou částí JSON:
 
 ```json
 {

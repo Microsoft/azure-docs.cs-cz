@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055689"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Řešení Network Performance Monitor: sledování výkonu
@@ -94,7 +94,7 @@ Před zvolením protokolu zvažte následující informace:
 
 Pokud se rozhodnete používat protokol ICMP během nasazení, můžete kdykoli přejít na protokol TCP úpravou výchozího pravidla monitorování.
 
-1. Přejít na **sledování** >> **Configure** **Network Performance** výkonu sítě konfigurace> **monitorování**. Pak vyberte **výchozí pravidlo**. 
+1. Přejít na **sledování výkonu sítě**   >  **Monitor**   >  **Konfigurace**   >  **monitorování**. Pak vyberte **výchozí pravidlo**. 
 2. Přejděte do části **protokol** a vyberte protokol, který chcete použít. 
 3. Vyberte **Uložit** a použijte nastavení. 
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247431"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID
@@ -128,17 +128,17 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
   * IP adresa pro NW3:10.3.1.54
 
 * Porty testu paměti
-  * Port 620<strong>&lt;Nr&gt;</strong>, tedy pro NW1, NW2 a porty sondy NW3 620**00**, 620**10** a 620**20**
+  * Port 620<strong> &lt; Nr &gt; </strong>, tedy pro NW1, NW2 a porty sondy NW3 620**00**, 620**10** a 620**20**
 * Pravidla vyrovnávání zatížení – pro každou instanci vytvořte jednu z těchto instancí: NW1/ASCS, NW2/ASCS a NW3/ASCS.
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 36<strong>&lt;Nr&gt; </strong> TCP
-    * 39<strong>&lt;Nr&gt; </strong> TCP
-    * 81<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 ### <a name="ers"></a>OLAJÍCÍCH
 
@@ -148,15 +148,15 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
   * IP adresa pro NW3 10.3.1.55
 
 * Port testu paměti
-  * Port 621<strong>&lt;Nr&gt;</strong>, tedy pro porty sondy NW1, NW2 a N3 621**02**, 621**12** a 621**22**
+  * Port 621<strong> &lt; Nr &gt; </strong>, tedy pro porty sondy NW1, NW2 a N3 621**02**, 621**12** a 621**22**
 * Pravidla vyrovnávání zatížení – pro každou instanci vytvořte jednu z těchto instancí: NW1/OLAJÍCÍCH, NW2/OLAJÍCÍCH a NW3/OLAJÍCÍCH.
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 33<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
@@ -245,7 +245,7 @@ Tato dokumentace předpokládá, že:
 
 4. **[A]** přidejte položky připojení pro systémy souborů/Sapmnt/SID a/usr/SAP/SID/sys pro další systémy SAP, které nasazujete do clusteru. V tomto příkladu **NW2** a **NW3**.  
 
-   Aktualizujte `/etc/fstab` soubor pomocí systémů souborů pro další systémy SAP, které nasazujete do clusteru.  
+   Aktualizujte soubor `/etc/fstab` pomocí systémů souborů pro další systémy SAP, které nasazujete do clusteru.  
 
    * Pokud používáte Azure NetApp Files, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation) .  
    * Pokud používáte cluster GlusterFS, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation) .  
@@ -326,7 +326,7 @@ Tato dokumentace předpokládá, že:
 
    Ujistěte se, že stav clusteru je OK a že jsou spuštěné všechny prostředky.  
 
-   V dalším kroku se ujistěte, že jsou na uzlu clusteru spuštěné prostředky nově vytvořené skupiny OLAJÍCÍCH, a to proti uzlu clusteru, ve kterém je nainstalovaná instance ASCS pro stejný systém SAP.  Pokud jste například nainstalovali NW2 ASCS `rhelmsscl1`, ujistěte se, že je skupina NW2 olajících spuštěná. `rhelmsscl2`  Skupinu NW2 OLAJÍCÍCH můžete migrovat tak `rhelmsscl2` , že spustíte následující příkaz pro jeden z prostředků clusteru ve skupině: 
+   V dalším kroku se ujistěte, že jsou na uzlu clusteru spuštěné prostředky nově vytvořené skupiny OLAJÍCÍCH, a to proti uzlu clusteru, ve kterém je nainstalovaná instance ASCS pro stejný systém SAP.  Pokud jste například nainstalovali NW2 ASCS, ujistěte se `rhelmsscl1` , že je skupina NW2 olajících spuštěná `rhelmsscl2` .  Skupinu NW2 OLAJÍCÍCH můžete migrovat tak, že `rhelmsscl2` spustíte následující příkaz pro jeden z prostředků clusteru ve skupině: 
 
     ```
       pcs resource move fs_NW2_AERS rhelmsscl2
@@ -612,7 +612,7 @@ Dokončete instalaci SAP pomocí:
 Následující testy jsou podmnožinou testovacích případů v průvodcích osvědčených postupů Red Hat. Jsou zahrnuty pro usnadnění práce. Úplný seznam testů clusteru najdete v následující dokumentaci:
 
 * Pokud používáte Azure NetApp Files svazky NFS, postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NetWeaver v RHEL s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) .
-* Pokud používáte vysoce dostupný `GlusterFS`, postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NetWeaver v RHEL pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).  
+* Pokud používáte vysoce dostupný `GlusterFS` , postupujte podle [vysoké dostupnosti virtuálních počítačů Azure pro SAP NETWEAVER v RHEL pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).  
 
 Vždy si přečtěte Příručky k osvědčeným postupům Red Hat a proveďte všechny další testy, které by mohly být přidané.  
 Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se třemi nainstalovanými systémy SAP.  
@@ -752,7 +752,7 @@ Zobrazené testy jsou ve dvou uzlech, cluster s více identifikátory SID se tř
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl2
    ```
 
-   Spusťte následující příkaz jako kořenový adresář v uzlu, kde je spuštěná alespoň jedna instance ASCS. V tomto příkladu jsme provedli příkaz na `rhelmsscl1`, kde jsou spuštěné instance ASCS pro NW1, NW2 a NW3.  
+   Spusťte následující příkaz jako kořenový adresář v uzlu, kde je spuštěná alespoň jedna instance ASCS. V tomto příkladu jsme provedli příkaz na `rhelmsscl1` , kde jsou spuštěné instance ASCS pro NW1, NW2 a NW3.  
 
    ```
    echo c > /proc/sysrq-trigger

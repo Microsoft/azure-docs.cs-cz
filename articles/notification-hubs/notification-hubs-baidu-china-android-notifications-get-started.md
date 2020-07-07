@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79536985"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
@@ -68,7 +68,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
 2. Zadejte Název aplikace a ověřte, že Minimální požadovaná verze sady SDK je nastavená na API 16: Android 4.1. **Ověřte prosím také, že název vašeho balíčku (应用包名) je stejný jako na portálu nabízených oznámení cloudu Baidu.**
 
-    ![Azure Notification Hubs – Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs-Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs – Baidu min SDK1 ](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![ Azure Notification Hubs-BAIDU min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. Klikněte na Další a pokračujte podle pokynů průvodce, dokud se nezobrazí okno Vytvořit aktivitu. Ujistěte se, že je zvolena možnost Prázdná aktivita, a nakonec vyberte Dokončit a vytvořte novou aplikaci pro Android.
 
@@ -93,7 +93,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
     }
     ```
 
-    Chcete-li se vyhnout konfliktu seznamu, přidejte do `Manifest.xml` souboru projektu následující kód:
+    Chcete-li se vyhnout konfliktu seznamu, přidejte do souboru projektu následující kód `Manifest.xml` :
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -112,11 +112,11 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
     ![Azure Notification Hubs – Knihovny sady Baidu SDK](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. Ve `libs` složce projektu klikněte pravým tlačítkem na `pushervice-x.y.z.jar` soubor; Vyberte **Přidat jako knihovnu** , která zahrnuje tuto knihovnu v projektu.
+7. Ve složce projektu klikněte `libs` pravým tlačítkem na `pushervice-x.y.z.jar` soubor; vyberte **Přidat jako knihovnu** , která zahrnuje tuto knihovnu v projektu.
 
     ![Azure Notification Hubs – Přidání jako knihovny pro Baidu](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Otevřete `AndroidManifest.xml` soubor projektu Android a přidejte oprávnění požadovaná sadou Baidu SDK. **Nahraďte `YOURPACKAGENAME` názvem vašeho balíčku.**
+8. Otevřete soubor projektu Android `AndroidManifest.xml` a přidejte oprávnění požadovaná sadou BAIDU SDK. **Nahraďte `YOURPACKAGENAME` názvem vašeho balíčku.**
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -485,5 +485,5 @@ Pro odeslání testovacího oznámení můžete použít kartu ladění na webu 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

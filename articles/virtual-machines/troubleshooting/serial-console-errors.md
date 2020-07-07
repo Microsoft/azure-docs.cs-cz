@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80060690"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Běžné chyby v konzole sériového prostředí Azure
@@ -36,11 +36,11 @@ Nemáte potřebná oprávnění k použití tohoto virtuálního počítače se 
 Účet úložiště, který se používá pro diagnostiku spouštění na tomto virtuálním počítači, se nepovedlo najít. Ověřte, jestli je pro tento virtuální počítač povolená Diagnostika spouštění, jestli se tento účet úložiště neodstranil a máte k tomuto účtu úložiště přístup. | Dvakrát ověřte, že jste neodstranili účet úložiště diagnostiky spouštění pro váš virtuální počítač nebo sadu škálování virtuálního počítače.
 V připojení k virtuálnímu počítači v sériové konzole došlo k chybě: Chybný požadavek (400) | K tomu může dojít v případě, že identifikátor URI diagnostiky spouštění není správný. Například "http://" bylo použito místo "https://". Identifikátor URI diagnostiky spouštění lze opravit pomocí tohoto příkazu:`az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 Nemáte požadovaná oprávnění k zápisu do účtu úložiště diagnostiky spouštění tohoto virtuálního počítače. Ujistěte se prosím, že máte aspoň oprávnění přispěvatele virtuálních počítačů. | Přístup Sériová konzola vyžaduje přístup na úrovni přispěvatele v účtu úložiště diagnostiky spouštění. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
-Nepovedlo se určit skupinu prostředků pro účet * &lt;&gt;* úložiště diagnostiky spouštění STORAGEACCOUNTNAME. Ověřte, jestli je pro tento virtuální počítač povolená Diagnostika spouštění a máte přístup k tomuto účtu úložiště. | Přístup Sériová konzola vyžaduje přístup na úrovni přispěvatele v účtu úložiště diagnostiky spouštění. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
+Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění * &lt; STORAGEACCOUNTNAME &gt; *. Ověřte, jestli je pro tento virtuální počítač povolená Diagnostika spouštění a máte přístup k tomuto účtu úložiště. | Přístup Sériová konzola vyžaduje přístup na úrovni přispěvatele v účtu úložiště diagnostiky spouštění. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
 Zřizování pro tento virtuální počítač ještě nebylo úspěšné. Ujistěte se prosím, že je virtuální počítač plně nasazený, a zkuste připojení ke sériové konzole znovu. | Virtuální počítač nebo sada škálování virtuálního počítače se pořád můžou zřídit. Chvíli počkejte a pak to zkuste znovu.
-Webový soket je uzavřený nebo ho nejde otevřít. | Je možné, že budete muset přidat přístup `*.console.azure.com`k bráně firewall. Podrobnější, ale delší přístup je povolení přístupu brány firewall k [rozsahům IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653), které se často mění poměrně.
+Webový soket je uzavřený nebo ho nejde otevřít. | Je možné, že budete muset přidat přístup k bráně firewall `*.console.azure.com` . Podrobnější, ale delší přístup je povolení přístupu brány firewall k [rozsahům IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653), které se často mění poměrně.
 Sériová konzola nepracuje s účtem úložiště pomocí Azure Data Lake Storage Gen2 s hierarchickými obory názvů. | Jedná se o známý problém s hierarchickými obory názvů. Pokud chcete zmírnit, ujistěte se, že účet úložiště diagnostiky spouštění virtuálního počítače není vytvořený pomocí Azure Data Lake Storage Gen2. Tuto možnost lze nastavit pouze při vytváření účtu úložiště. Je možné, že budete muset vytvořit samostatný účet úložiště diagnostiky spouštění bez Azure Data Lake Storage Gen2 povoleného pro zmírnění tohoto problému.
-V připojení konzoly sériového portu k virtuálnímu počítači došlo k chybě: "zakázáno" (SubscriptionNotEnabled)-nedefinovaný název \<předplatného, ID předplatného> je v nedefinovaném stavu. | K tomuto problému může dojít, pokud předplatné, které uživatel vytvořil Cloud Shell účet úložiště v nástroji, je zakázané. Chcete-li zmírnit, spusťte Cloud Shell a [proveďte kroky potřebné](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) k opětovnému zřízení účtu záložního úložiště pro Cloud Shell v aktuálním předplatném.
+V připojení k virtuálnímu počítači v sériové konzole došlo k chybě: Forbidden (SubscriptionNotEnabled) – nedefinovaný název předplatného, ID \<subscription id> je v nedefinovaném stavu. | K tomuto problému může dojít, pokud předplatné, které uživatel vytvořil Cloud Shell účet úložiště v nástroji, je zakázané. Chcete-li zmírnit, spusťte Cloud Shell a [proveďte kroky potřebné](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) k opětovnému zřízení účtu záložního úložiště pro Cloud Shell v aktuálním předplatném.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [konzole sériového rozhraní Azure pro virtuální počítače se systémem Linux](./serial-console-linux.md)

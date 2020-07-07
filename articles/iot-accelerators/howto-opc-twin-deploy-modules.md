@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80241062"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Nasazení OPC vyzdvojeného modulu a závislostí od začátku
@@ -111,9 +111,9 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Nasaďte zdvojené [závislosti](howto-opc-twin-deploy-dependencies.md) OPC a získá výsledný `.env` soubor. Poznamenejte si `hub name` nasazenou `PCS_IOTHUBREACT_HUB_NAME` proměnnou ve výsledném `.env` souboru.
+1. Nasaďte zdvojené [závislosti](howto-opc-twin-deploy-dependencies.md) OPC a získá výsledný `.env` soubor. Poznamenejte si nasazenou `hub name` `PCS_IOTHUBREACT_HUB_NAME` proměnnou ve výsledném `.env` souboru.
 
-2. Zaregistrujte a spusťte bránu pro [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) nebo [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge `device id`a poznamenejte si ji.
+2. Zaregistrujte a spusťte bránu pro [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) nebo [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge a poznamenejte si ji `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Nasazení do hraničního zařízení
 
@@ -180,7 +180,7 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
 
 1. Nainstalujte nejnovější verzi [rozhraní příkazového řádku Azure (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) z [tohoto místa](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-### <a name="quickstart"></a>Rychlý start
+### <a name="quickstart"></a>Rychlé zprovoznění
 
 1. Výše uvedený manifest nasazení uložte do `deployment.json` souboru.  
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055901"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorovat stav replikace služby Active Directory pomocí Azure Monitor
@@ -41,10 +41,10 @@ Pokud nechcete, aby se žádné řadiče domény připojovaly přímo k Azure Mo
 
 1. Ověřte, zda je počítač členem domény, kterou chcete monitorovat pomocí řešení AD Replication Status.
 2. [Připojte počítač se systémem Windows, aby se Azure monitor](../../azure-monitor/platform/om-agents.md) , nebo [ho propojte pomocí stávajícího Operations Manager prostředí s Azure monitor](../../azure-monitor/platform/om-agents.md), pokud ještě není připojený.
-3. V tomto počítači nastavte následující klíč registru:<br>Key: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management skupiny\<ManagementGroupName> \solutions\adreplication**<br>Hodnota: **cíl**<br>Údaj hodnoty: **true**
+3. V tomto počítači nastavte následující klíč registru:<br>Klíč: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management skupiny \<ManagementGroupName> \Solutions\ADReplication**<br>Hodnota: **cíl**<br>Údaj hodnoty: **true**
 
    > [!NOTE]
-   > Tyto změny se projeví až po restartování služby Microsoft Monitoring Agent (HealthService. exe).
+   > Tyto změny se projeví až po restartování služby Microsoft Monitoring Agent (HealthService.exe).
    > ### <a name="install-solution"></a>Nainstalovat řešení
    > Postupujte podle kroků popsaných v tématu [instalace řešení monitorování](solutions.md#install-a-monitoring-solution) a přidejte **Active Directory Replication status** řešení do pracovního prostoru Log Analytics. Není nutná žádná další konfigurace.
 
@@ -133,7 +133,7 @@ Odpověď: Ne, je nutné přidat pouze jeden řadič domény. Máte-li v pracovn
 Odpověď: Ano. Můžete nastavit hodnotu klíče registru, abyste ho mohli povolit. Viz [Povolení neřadič domény](#enable-non-domain-controller).
 
 **Otázka: Jaký je název procesu, který provádí shromažďování dat?**
-Odpověď: AdvisorAssessment. exe
+ODPOVĚĎ: AdvisorAssessment.exe
 
 **Otázka: jak dlouho trvá shromažďování dat?**
 Odpověď: čas shromažďování dat závisí na velikosti prostředí služby Active Directory, ale obvykle trvá méně než 15 minut.

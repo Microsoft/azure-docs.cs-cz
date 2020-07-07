@@ -17,17 +17,17 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
 ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80125089"
 ---
 # <a name="threat-modeling-tool-releases"></a>Verze Threat Modeling Tool
 
 Microsoft Threat Modeling Tool je aktuálně vydaný jako bezplatná aplikace [na stažení, kterou lze stáhnout](https://aka.ms/threatmodelingtool) pro Windows. Tento mechanismus doručování nám umožňuje nabídnout zákazníkům při každém otevření nástroje nejnovější vylepšení a opravy chyb.
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 - Podporované operační systémy
   - Microsoft Windows 10 – aktualizace pro výročí nebo novější

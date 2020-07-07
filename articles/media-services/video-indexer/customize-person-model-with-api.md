@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: fa41fca7f8ad96cf507aa6f04059b1254c8c3961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127894"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Přizpůsobení modelu osoby pomocí rozhraní Video Indexer API
@@ -75,7 +75,7 @@ Odpověď obsahuje seznam všech obchodních modelů v účtu (včetně výchoz�
 ]
 ```
 
-Můžete zvolit model, který chcete použít pro video, a to `id` pomocí hodnoty model osoby pro `personModelId` parametr při [nahrávání videa do indexu nebo při](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) [přeindexování videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Můžete zvolit model, který chcete použít pro video, a to pomocí `id` hodnoty model osoby pro `personModelId` parametr při [nahrávání videa do indexu nebo při](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) [přeindexování videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
 ## <a name="update-a-face"></a>Aktualizovat obličej
 

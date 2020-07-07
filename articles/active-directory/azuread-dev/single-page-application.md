@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: adf3c5b5cd40a9ea3f07ba9c92cfc4544ca60f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154742"
 ---
 # <a name="single-page-applications"></a>Jednostránkové aplikace
@@ -26,7 +26,7 @@ ms.locfileid: "80154742"
 
 Jednostránkové aplikace (jednostránkové) jsou obvykle strukturované jako prezentační vrstva JavaScriptu (front-end), která běží v prohlížeči, a back-end webového rozhraní API, který běží na serveru a implementuje obchodní logiku aplikace. Pokud chcete získat další informace o implicitním udělení autorizace a pomůžete se rozhodnout, jestli je to pro váš scénář aplikace správné, přečtěte si téma [Principy OAuth2 implicitního udělení grantu v Azure Active Directory](v1-oauth2-implicit-grant-flow.md).
 
-V tomto scénáři, když se uživatel přihlásí, používá front-end JavaScriptu [Active Directory Authentication Library pro JavaScript (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) a implicitně udělená autorizace pro získání tokenu ID (id_token) z Azure AD. Token se ukládá do mezipaměti a klient ho při volání do back-endu webového rozhraní API připojí k žádosti jako nosný token, který je zabezpečený pomocí middlewaru OWIN.
+V tomto scénáři, když se uživatel přihlásí, používá front-end JavaScript [Active Directory Authentication Library pro JavaScript (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) a implicitní autorizační udělení k získání tokenu ID (id_token) ze služby Azure AD. Token se ukládá do mezipaměti a klient ho při volání do back-endu webového rozhraní API připojí k žádosti jako nosný token, který je zabezpečený pomocí middlewaru OWIN.
 
 ## <a name="diagram"></a>Diagram
 
@@ -47,7 +47,7 @@ V tomto scénáři, když se uživatel přihlásí, používá front-end JavaScr
 
 Podívejte se na [ukázky kódu pro scénáře aplikací s jednou stránkou](sample-v1-code.md#single-page-applications). Nezapomeňte pravidelně kontrolovat, jak se často přidávají nové ukázky.
 
-## <a name="app-registration"></a>Registrace aplikací
+## <a name="app-registration"></a>Registrace aplikace
 
 * Jeden tenant – Pokud vytváříte aplikaci jenom pro vaši organizaci, musí být zaregistrovaná v adresáři vaší společnosti pomocí Azure Portal.
 * Vícenásobný tenant – Pokud vytváříte aplikaci, kterou můžou používat uživatelé mimo vaši organizaci, musí být zaregistrované v adresáři vaší společnosti, ale musí být zaregistrované v adresáři každé organizace, který bude aplikaci používat. Aby vaše aplikace byla ve svém adresáři k dispozici, můžete pro zákazníky zahrnout proces registrace, který jim umožní vyjádřit souhlas s vaší aplikací. Při registraci do aplikace se zobrazí dialogové okno, které zobrazuje oprávnění, která aplikace vyžaduje, a pak možnost souhlasu. V závislosti na požadovaných oprávněních může být vyžadováno poskytnutí souhlasu správce v jiné organizaci. Když uživatel nebo správce souhlasí, aplikace se zaregistruje ve svém adresáři.
@@ -56,12 +56,12 @@ Po registraci aplikace musí být nakonfigurovaná tak, aby používala protokol
 
 ## <a name="token-expiration"></a>Vypršení platnosti tokenu
 
-Použití ADAL. js pomáhá:
+Použití ADAL.js pomáhá:
 
 * Aktualizace tokenu, jehož platnost vypršela
 * Vyžádání přístupového tokenu pro volání prostředku webového rozhraní API
 
-Po úspěšném ověření služba Azure AD zapíše soubor cookie v prohlížeči uživatele, aby navázal relaci. Všimněte si, že relace existuje mezi uživatelem a službou Azure AD (ne mezi uživatelem a webovou aplikací). Po vypršení platnosti tokenu používá ADAL. js tuto relaci k tichému získání jiného tokenu. ADAL. js používá skrytý prvek iFrame k odeslání a přijetí žádosti pomocí protokolu OAuth implicitního udělení. ADAL. js může použít stejný mechanismus i k tichému získání přístupových tokenů pro jiné prostředky webového rozhraní API, které aplikace volá, pokud tyto prostředky podporují sdílení prostředků mezi zdroji (CORS), jsou zaregistrované v adresáři uživatele a při přihlášení se uživateli udělí libovolný požadovaný souhlas.
+Po úspěšném ověření služba Azure AD zapíše soubor cookie v prohlížeči uživatele, aby navázal relaci. Všimněte si, že relace existuje mezi uživatelem a službou Azure AD (ne mezi uživatelem a webovou aplikací). Po vypršení platnosti tokenu ADAL.js používá tuto relaci k tichému získání jiného tokenu. ADAL.js používá skrytý prvek iFrame k odeslání a přijetí žádosti pomocí protokolu OAuth implicitního udělení. ADAL.js může použít stejný mechanismus i k tichému získání přístupových tokenů pro jiné prostředky webového rozhraní API, které aplikace volá, pokud tyto prostředky podporují sdílení prostředků mezi zdroji (CORS), jsou zaregistrované v adresáři uživatele a při přihlášení se uživateli zadal jakýkoli požadovaný souhlas.
 
 ## <a name="next-steps"></a>Další kroky
 

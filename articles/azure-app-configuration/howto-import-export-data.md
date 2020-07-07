@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056869"
 ---
 # <a name="import-or-export-configuration-data"></a>Import nebo export konfiguračních dat
@@ -28,7 +28,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
 1. Přejděte do úložiště konfigurace aplikace a v nabídce **operace** vyberte **Import/export** .
 
-1. Na kartě **Import** vyberte**konfigurační soubor** **zdrojové služby** > .
+1. Na kartě **Import** vyberte konfigurační soubor **zdrojové služby**  >  **Configuration File**.
 
 1. Vyberte možnost **jazyk** a vyberte požadovaný typ vstupu.
 
@@ -52,11 +52,11 @@ Exportujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
 1. Přejděte do úložiště konfigurace aplikace a vyberte **Import/export**.
 
-1. Na kartě **Export** vyberte **cílový** > **konfigurační soubor**služby.
+1. Na kartě **Export** vyberte **cílový**  >  **konfigurační soubor**služby.
 
 1. Volitelně můžete zadat **předponu** a vybrat **popisek** a časový okamžik pro export klíčů.
 
-1. Vyberte oddělovač **typů** > **Separator**souborů.
+1. Vyberte oddělovač **typů souborů**  >  **Separator**.
 
 1. Pro dokončení exportu vyberte **použít** .
 
