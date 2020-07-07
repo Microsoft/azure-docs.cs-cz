@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72794039"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Nedoručené dopisy a zásady opakování
@@ -26,7 +26,7 @@ Chcete-li nastavit umístění nedoručených zpráv, budete potřebovat účet 
 
 > [!NOTE]
 > - Před spuštěním příkazů v tomto článku vytvořte účet úložiště a kontejner objektů BLOB v úložišti.
-> - Služba Event Grid vytvoří objekty BLOB v tomto kontejneru. Názvy objektů BLOB budou mít název předplatného Event Grid se všemi písmeny velkými písmeny. Pokud má například název předplatného hodnotu My-BLOB-Subscription, názvy objektů BLOB s nedoručenými písmeny budou obsahovat MY-BLOB-SUBSCRIPTION (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111 -111111111111. JSON). Toto chování je chráněno proti rozdílům v případě manipulace mezi službami Azure.
+> - Služba Event Grid vytvoří objekty BLOB v tomto kontejneru. Názvy objektů BLOB budou mít název předplatného Event Grid se všemi písmeny velkými písmeny. Pokud má například název předplatného hodnotu My-BLOB-Subscription, názvy objektů BLOB s nedoručenými písmeny budou mít na úrovni MY-BLOB-SUBSCRIPTION (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.js). Toto chování je chráněno proti rozdílům v případě manipulace mezi službami Azure.
 
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -44,7 +44,7 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Pokud chcete vypnout nedoručené zprávy, znovu spusťte příkaz pro vytvoření odběru události, ale nezadávejte hodnotu pro `deadletter-endpoint`. Odběr událostí není nutné odstraňovat.
+Pokud chcete vypnout nedoručené zprávy, znovu spusťte příkaz pro vytvoření odběru události, ale nezadávejte hodnotu pro `deadletter-endpoint` . Odběr událostí není nutné odstraňovat.
 
 > [!NOTE]
 > Pokud na místním počítači používáte rozhraní příkazového řádku Azure CLI, použijte Azure CLI verze 2.0.56 nebo novější. Pokyny k instalaci nejnovější verze rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
@@ -64,7 +64,7 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-Pokud chcete vypnout nedoručené zprávy, znovu spusťte příkaz pro vytvoření odběru události, ale nezadávejte hodnotu pro `DeadLetterEndpoint`. Odběr událostí není nutné odstraňovat.
+Pokud chcete vypnout nedoručené zprávy, znovu spusťte příkaz pro vytvoření odběru události, ale nezadávejte hodnotu pro `DeadLetterEndpoint` . Odběr událostí není nutné odstraňovat.
 
 > [!NOTE]
 > Pokud používáte Azure PowerShell na místním počítači, použijte Azure PowerShell verze 1.1.0 nebo vyšší. Stáhněte si a nainstalujte nejnovější Azure PowerShell ze služby [Azure downloads](https://azure.microsoft.com/downloads/).
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Pokud nastavíte `event-ttl` a `max-deliver-attempts`, Event Grid používá první, aby vyprší jeho doručení, aby bylo možné určit, kdy se má zastavit doručování událostí.
+Pokud nastavíte `event-ttl` a `max-deliver-attempts` , Event Grid používá první, aby vyprší jeho doručení, aby bylo možné určit, kdy se má zastavit doručování událostí.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,7 +127,7 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Pokud nastavíte `EventTtl` a `MaxDeliveryAttempt`, Event Grid používá první, aby vyprší jeho doručení, aby bylo možné určit, kdy se má zastavit doručování událostí.
+Pokud nastavíte `EventTtl` a `MaxDeliveryAttempt` , Event Grid používá první, aby vyprší jeho doručení, aby bylo možné určit, kdy se má zastavit doručování událostí.
 
 ## <a name="next-steps"></a>Další kroky
 

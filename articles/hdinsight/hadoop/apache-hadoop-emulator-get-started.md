@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73044773"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop izolovaným prostorem (sandbox), emulátor na virtuálním počítači
@@ -44,14 +44,14 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 
     ![normální začátek VirtualBox Manageru](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. Otevřete webový prohlížeč a přejděte na zobrazenou adresu URL (obvykle `http://127.0.0.1:8888`).
+1. Otevřete webový prohlížeč a přejděte na zobrazenou adresu URL (obvykle `http://127.0.0.1:8888` ).
 
 ## <a name="set-sandbox-passwords"></a>Nastavit hesla izolovaného prostoru
 
 1. V kroku **Začínáme** na stránce izolovaného prostoru (Hortonworks) vyberte **Zobrazit upřesňující možnosti**. Pomocí informací na této stránce se přihlaste k izolovanému prostoru pomocí SSH. Použijte zadané jméno a heslo.
 
    > [!NOTE]
-   > Pokud nemáte nainstalovaného klienta SSH, můžete použít webový protokol SSH, který je k dispozici na virtuálním počítači v **http://localhost:4200/**.
+   > Pokud nemáte nainstalovaného klienta SSH, můžete použít webový protokol SSH, který je k dispozici na virtuálním počítači v **http://localhost:4200/** .
 
     Při prvním připojení pomocí SSH se zobrazí výzva, abyste změnili heslo pro kořenový účet. Zadejte nové heslo, které použijete při přihlášení pomocí SSH.
 
@@ -69,7 +69,7 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 2. Po spuštění prostředí použijte následující příkaz k zobrazení tabulek, které jsou k dispozici v izolovaném prostoru:
 
         show tables;
-3. K načtení 10 řádků z `sample_07` tabulky použijte následující:
+3. K načtení 10 řádků z tabulky použijte následující `sample_07` :
 
         select * from sample_07 limit 10;
 

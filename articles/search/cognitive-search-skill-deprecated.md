@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792021"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Zastaralé dovednosti při rozpoznávání v Azure Kognitivní hledání
@@ -41,13 +41,13 @@ Místo toho použijte [Microsoft. dovednosti. text. EntityRecognitionSkill](cogn
 Chcete-li provést migraci na [dovednost rozpoznávání entit](cognitive-search-skill-entity-recognition.md), budete muset provést jednu nebo více následujících změn definice dovednosti. Definici dovedností můžete aktualizovat pomocí [rozhraní Update dovednosti API](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
 > [!NOTE]
-> V současné době není hodnocení spolehlivosti v rámci konceptu podporováno. `minimumPrecision` Parametr existuje v `EntityRecognitionSkill` pro budoucí použití a pro zpětnou kompatibilitu.
+> V současné době není hodnocení spolehlivosti v rámci konceptu podporováno. `minimumPrecision`Parametr existuje v `EntityRecognitionSkill` pro budoucí použití a pro zpětnou kompatibilitu.
 
-1. *(Povinné)* Změňte `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` na `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
+1. *(Povinné)* Změňte `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` na `"#Microsoft.Skills.Text.EntityRecognitionSkill"` .
 
-2. *(Volitelné)* Pokud používáte `entities` výstup, použijte `namedEntities` `EntityRecognitionSkill` místo toho komplexní výstup z kolekce. Můžete použít `targetName` v definici dovedností k namapování na poznámku nazvanou `entities`.
+2. *(Volitelné)* Pokud používáte `entities` výstup, použijte `namedEntities` místo toho komplexní výstup z kolekce `EntityRecognitionSkill` . Můžete použít `targetName` v definici dovedností k namapování na poznámku nazvanou `entities` .
 
-3. *(Volitelné)* Pokud explicitně neurčíte `categories`, `EntityRecognitionSkill` může vracet jiný typ kategorií kromě těch, které byly podporovány v. `NamedEntityRecognitionSkill` Pokud je toto chování nežádoucí, nezapomeňte explicitně nastavit `categories` parametr na. `["Person", "Location", "Organization"]`
+3. *(Volitelné)* Pokud explicitně neurčíte `categories` , `EntityRecognitionSkill` může vracet jiný typ kategorií kromě těch, které byly podporovány v `NamedEntityRecognitionSkill` . Pokud je toto chování nežádoucí, nezapomeňte explicitně nastavit `categories` parametr na `["Person", "Location", "Organization"]` .
 
     _Ukázkové definice migrace_
 
@@ -145,7 +145,7 @@ Chcete-li provést migraci na [dovednost rozpoznávání entit](cognitive-search
         }
         ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

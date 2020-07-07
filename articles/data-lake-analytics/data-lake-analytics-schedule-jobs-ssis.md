@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672895"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí služba SSIS (SQL Server Integration Services) (SSIS)
@@ -77,11 +77,11 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
 
 2. Nastavte **složku** ve skupině **Konfigurace enumerátoru** na dočasnou složku, která obsahuje stažené skripty U-SQL.
 
-3. Nastavte **soubory** v `*.usql` **konfiguraci enumerátoru** tak, aby kontejner smyčky zachytává pouze soubory končící na `.usql`.
+3. Nastavte **soubory** v **konfiguraci enumerátoru** tak `*.usql` , aby kontejner smyčky zachytává pouze soubory končící na `.usql` .
 
     ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. Na stránce **mapování proměnných** přidejte uživatelsky definovanou proměnnou pro získání názvu souboru u každého souboru U-SQL. Pro získání názvu souboru nastavte **index** na 0. V tomto příkladu definujte proměnnou s názvem `User::FileName`. Tato proměnná se použije k dynamickému získání připojení souboru skriptu U-SQL a nastavení názvu úlohy U-SQL v Azure Data Lake Analytics úlohy.
+4. Na stránce **mapování proměnných** přidejte uživatelsky definovanou proměnnou pro získání názvu souboru u každého souboru U-SQL. Pro získání názvu souboru nastavte **index** na 0. V tomto příkladu definujte proměnnou s názvem `User::FileName` . Tato proměnná se použije k dynamickému získání připojení souboru skriptu U-SQL a nastavení názvu úlohy U-SQL v Azure Data Lake Analytics úlohy.
 
     ![Konfigurace kontejneru smyčky foreach pro získání názvu souboru](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
@@ -93,14 +93,14 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
     
     Vytvoření tohoto připojení k souboru:
 
-   1. V nastavení připojení \ vyberte ** \<nové připojení... >** .
+   1. Vyberte možnost **\<New Connection...>** v nastavení připojení \.
    2. Nastavte **typ využití** na **existující soubor**a nastavte **soubor** na cestu k souboru existujícímu souboru.
 
        ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. V zobrazení **Správci připojení** klikněte pravým tlačítkem myši na vytvořené připojení k souboru a vyberte možnost **vlastnosti**.
 
-   4. V okně **vlastnosti** rozbalte **výrazy**a nastavte **ConnectionString** na proměnnou definovanou v kontejneru smyčky foreach, například `@[User::FileName]`.
+   4. V okně **vlastnosti** rozbalte **výrazy**a nastavte **ConnectionString** na proměnnou definovanou v kontejneru smyčky foreach, například `@[User::FileName]` .
 
        ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -111,7 +111,7 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
 5. Použijte **výrazy** k dynamickému nastavení názvu úlohy U-SQL:
 
     1. Na stránce **Expressions (výrazy** ) přidejte novou dvojici klíč-hodnota výrazu pro **JobName**.
-    2. Nastavte hodnotu pro JobName na proměnnou definovanou v kontejneru smyčky foreach, například `@[User::FileName]`.
+    2. Nastavte hodnotu pro JobName na proměnnou definovanou v kontejneru smyčky foreach, například `@[User::FileName]` .
     
         ![Konfigurovat výraz SSIS pro název úlohy U-SQL](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
 

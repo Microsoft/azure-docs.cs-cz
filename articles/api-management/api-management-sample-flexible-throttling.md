@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71066752"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Pokročilé omezování požadavků pomocí služby Azure API Management
@@ -30,7 +30,7 @@ Do data jsou možnosti omezování míry omezené, aby byly vymezeny na konkrét
 ## <a name="custom-key-based-throttling"></a>Omezení na základě vlastního klíče
 
 > [!NOTE]
-> Zásady `rate-limit-by-key` a `quota-by-key` nejsou k dispozici, když je ve vrstvě spotřeby API Management Azure. 
+> `rate-limit-by-key`Zásady a `quota-by-key` nejsou k dispozici, když je ve vrstvě spotřeby API Management Azure. 
 
 Nové zásady [sazeb-limit-by-Key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) a [Quota-by-Key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) poskytují pružnější řešení řízení provozu. Tyto nové zásady umožňují definovat výrazy k identifikaci klíčů, které se používají ke sledování využití provozu. Způsob, jak to funguje, je nejjednodušší příklad. 
 

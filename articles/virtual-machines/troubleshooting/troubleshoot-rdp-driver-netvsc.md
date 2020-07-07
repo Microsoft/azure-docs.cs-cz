@@ -1,6 +1,6 @@
 ---
-title: Řešení problému s netvsc. sys při vzdáleném připojení k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure | Microsoft Docs
-description: Naučte se řešit potíže s protokolem RDP související s Netsvc. sys při připojování k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure.
+title: Řešení potíží s netvsc.sys při vzdáleném připojení k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure | Microsoft Docs
+description: Naučte se řešit potíže s protokolem RDP souvisejícím s netsvc.sys, když se připojujete k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057990"
 ---
-# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nejde se vzdáleně připojit k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure kvůli netvsc. sys.
+# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nejde se vzdáleně připojit k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure kvůli netvsc.sys
 
 Tento článek vysvětluje, jak řešit potíže, ke kterým nedochází při připojování k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 Datacenter na hostiteli Hyper-V na serveru 2016, pokud se nepoužívá žádné síťové připojení.
 
@@ -31,7 +31,7 @@ K tomuto problému obvykle dochází v systému Windows [build 14393](https://su
 
 ## <a name="cause"></a>Příčina
 
-K tomuto problému může dojít, pokud je verze nainstalovaného systémového souboru netvsc. sys **10.0.14393.594** nebo **10.0.15063.0**. Tyto verze netvsc. sys můžou zabránit systému v interakci s platformou Azure.
+K tomuto problému může dojít, pokud je verze nainstalovaného netvsc.sysho systémového souboru **10.0.14393.594** nebo **10.0.15063.0**. Tyto verze netvsc.sys můžou zabránit systému v interakci s platformou Azure.
 
 
 ## <a name="solution"></a>Řešení
@@ -54,7 +54,7 @@ Připojte se ke [konzole sériového portu, otevřete instanci prostředí Power
 
 2. Stáhněte si příslušnou aktualizaci na nový nebo existující datový disk, který je připojený k pracovnímu virtuálnímu počítači ze stejné oblasti:
 
-   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo pozdější aktualizace
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   nebo pozdější aktualizace
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo pozdější aktualizace
 
 3. Odpojte disk s nástrojem od pracovního virtuálního počítače a pak ho připojte k poškozenému virtuálnímu počítači.
@@ -77,9 +77,9 @@ Připojte se ke [konzole sériového portu, otevřete instanci prostředí Power
 
 4. Vytvoří kopii složky **\Windows\System32\config** v případě, že je nutné vrátit zpět změny.
 
-5. Na záchranném virtuálním počítači spusťte Editor registru (Regedit. exe).
+5. Na záchranném virtuálním počítači spusťte Editor registru (regedit.exe).
 
-6. Vyberte **HKEY_LOCAL_MACHINE** klíč a potom z nabídky vyberte **File** > **načíst** soubor.
+6. Vyberte **HKEY_LOCAL_MACHINE** klíč a potom z nabídky vyberte **File**  >  **načíst** soubor.
 
 7. Vyhledejte systémový soubor ve složce **\Windows\System32\config** .
 
@@ -97,7 +97,7 @@ Připojte se ke [konzole sériového portu, otevřete instanci prostředí Power
 
 12. Stáhněte si příslušnou aktualizaci:
 
-    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo pozdější aktualizace
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   nebo pozdější aktualizace
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo pozdější aktualizace
 
 13. Připojte systémový disk jako datový disk na záchranném VIRTUÁLNÍm počítači, na kterém si můžete stáhnout aktualizaci.

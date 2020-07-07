@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176904"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Šablony aplikací v Azure API Management
@@ -74,7 +74,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Product list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `Product list`Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -181,7 +181,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Application` Šablona nepovoluje použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ `Application`Šablona nepovoluje použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
  Entita [aplikace](api-management-template-data-model-reference.md#Application)  

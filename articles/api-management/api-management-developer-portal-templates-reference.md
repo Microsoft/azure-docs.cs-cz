@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176787"
 ---
 # <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře
@@ -46,7 +46,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Produkty](api-management-product-templates.md)  
     -   [Seznam produktů](api-management-product-templates.md#ProductList)  
-    -   [Produktu](api-management-product-templates.md#Product)  
+    -   [Product](api-management-product-templates.md#Product) (Produkt)  
 -   [Aplikace](api-management-application-templates.md)  
     -   [Seznam aplikací](api-management-application-templates.md#ProductList)  
     -   [Aplikace](api-management-application-templates.md#Application)  

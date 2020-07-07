@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72801954"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění  
@@ -37,7 +37,7 @@ Mezi ukázkové pracovní postupy, které můžete vytvořit, patří:
 Tento nástroj lze také použít k úpravě kteréhokoli z našich [publikovaných pracovních postupů](media-services-workflow-designer.md#existing_workflows). 
 
 > [!NOTE]
-> Pokud chcete získat kopii Návrhář postupu prováděního nástroje, kontaktujte mepd@microsoft.comprosím.
+> Pokud chcete získat kopii Návrhář postupu prováděního nástroje, kontaktujte prosím mepd@microsoft.com .
 
 Po vytvoření je soubor pracovního postupu možné ho nahrát jako Asset a pak ho použít k Kódování mediálních souborů. Informace o tom, jak kódovat pomocí **Media Encoder Premium Workflow** pomocí **rozhraní .NET**, najdete v tématu [Rozšířené kódování pomocí Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
 

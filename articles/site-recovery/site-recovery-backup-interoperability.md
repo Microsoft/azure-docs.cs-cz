@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: sideeksh
 ms.openlocfilehash: d8c896bc655339fbd7d51f738fb629450e8c12ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72376221"
 ---
 # <a name="support-for-using-site-recovery-with-azure-backup"></a>Podpora použití Site Recovery s Azure Backup
 
 Tento článek shrnuje podporu pro používání [služby Site Recovery](site-recovery-overview.md) společně se [službou Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
 
-**Akce** | **Podpora Site Recovery** | **Zobrazí**
+**Akce** | **Podpora Site Recovery** | **Podrobnosti**
 --- | --- | ---
 **Nasazení služeb společně** | Podporuje se | Služby jsou interoperabilní a dají se nakonfigurovat společně.
 **Zálohování a obnovení souborů** | Podporuje se | Když se pro virtuální počítač povolí zálohování a replikace, dojde k žádnému problému při obnovování souborů na virtuálních počítačích na straně zdroje nebo na skupině virtuálních počítačů. Replikace pokračuje obvyklým způsobem bez změny stavu replikace.

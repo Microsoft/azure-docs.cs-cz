@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058207"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží se změnami názvu zařízení virtuálních počítačů se systémem Linux
@@ -67,7 +67,7 @@ Aplikace používají logické jednotky (LUN) k vyhledání všech připojených
         ├── lun1-part2 -> ../../../sdd2
         └── lun1-part3 -> ../../../sdd3
 
-Informace o logické jednotce (LUN) z účtu hosta `lsscsi` systému Linux jsou načteny pomocí nebo podobného nástroje:
+Informace o logické jednotce (LUN) z účtu hosta systému Linux jsou načteny pomocí `lsscsi` nebo podobného nástroje:
 
       $ sudo lsscsi
 
@@ -81,7 +81,7 @@ Informace o logické jednotce (LUN) z účtu hosta `lsscsi` systému Linux jsou 
 
       [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
 
-Informace o hostované logické jednotce se používají s metadaty předplatného Azure k vyhledání VHD v Azure Storage, který obsahuje data oddílu. Například můžete použít rozhraní `az` příkazového řádku:
+Informace o hostované logické jednotce se používají s metadaty předplatného Azure k vyhledání VHD v Azure Storage, který obsahuje data oddílu. Například můžete použít rozhraní příkazového `az` řádku:
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
@@ -113,7 +113,7 @@ Informace o hostované logické jednotce se používají s metadaty předplatné
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Zjištění identifikátorů UUID systému souborů pomocí blkid
 
-Aplikace a skripty čtou výstup `blkid`(nebo podobné zdroje informací), aby mohli vytvořit symbolické odkazy v cestě/dev. Výstup zobrazuje identifikátory UUID všech disků připojených k virtuálnímu počítači a jejich přidruženému souboru zařízení:
+Aplikace a skripty čtou výstup `blkid` (nebo podobné zdroje informací), aby mohli vytvořit symbolické odkazy v cestě/dev. Výstup zobrazuje identifikátory UUID všech disků připojených k virtuálnímu počítači a jejich přidruženému souboru zařízení:
 
     $ sudo blkid -s UUID
 
@@ -134,7 +134,7 @@ Pravidla udev agenta Azure Linux vytvoří sadu symbolických odkazů pod cestou
 
 Aplikace používají odkazy k identifikaci zařízení spouštěcího disku a prostředku (dočasného) disku. V Azure by měly aplikace Hledat v cestách/dev/disk/Azure/root-part1 nebo/dev/disk/Azure-Resource-part1, aby tyto oddíly zjistili.
 
-Všechny další oddíly ze seznamu `blkid` se nacházejí na datovém disku. Aplikace udržují UUID pro tyto oddíly a používají cestu k vyhledání názvu zařízení za běhu:
+Všechny další oddíly ze `blkid` seznamu se nacházejí na datovém disku. Aplikace udržují UUID pro tyto oddíly a používají cestu k vyhledání názvu zařízení za běhu:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
@@ -148,9 +148,9 @@ Chcete-li získat nejnovější pravidla Azure Storage, spusťte následující 
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Ubuntu: použití UUID](https://help.ubuntu.com/community/UsingUUID)
 - [Red Hat: Trvalé pojmenovávání](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)

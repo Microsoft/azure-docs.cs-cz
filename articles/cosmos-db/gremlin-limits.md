@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: lbosq
 ms.openlocfilehash: 76ad787990c355d29613c05ca9fce31885a2eccc
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72029850"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Omezení Gremlin ve službě Azure Cosmos DB
@@ -26,7 +26,7 @@ Po dosažení limitu Gremlin se přecházení zruší s **x-MS-Status-code** 429
 **Prostředek**    | **Výchozí omezení** | **Vysvětlení**
 --- | --- | ---
 *Délka skriptu* | **64 kB** | Maximální délka skriptu procházení Gremlin na požadavek.
-*Hloubka operátoru* | **400** |  Celkový počet jedinečných kroků v procházení. Například ```g.V().out()``` má operátor počtu 2: v () a out (), má hloubku operátoru 3: V (), opakovat () a out (), ```g.V('label').repeat(out()).times(100)``` protože ```.times(100)``` je parametrem ```.repeat()``` operátoru.
+*Hloubka operátoru* | **400** |  Celkový počet jedinečných kroků v procházení. Například ```g.V().out()``` má operátor počtu 2: v () a out (), ```g.V('label').repeat(out()).times(100)``` má hloubku operátoru 3: V (), opakovat () a out (), protože ```.times(100)``` je parametrem ```.repeat()``` operátoru.
 *Stupeň paralelismu* | **32** | Maximální počet oddílů úložiště dotazovaných v rámci jednoho požadavku na vrstvu úložiště. Toto omezení bude mít vliv na grafy se stovkami oddílů.
 *Omezení opakování* | **32** | Maximální počet iterací, které může provést operátor ```.repeat()```. Každá iterace ```.repeat()``` kroku ve většině případů spouští průchod po šířce, což znamená, že všechny průchody jsou omezeny na nejvíce 32 segmentů směrování mezi vrcholy.
 *Časový limit pro procházení* | **30 sekund** | Pokud překročí tento čas, bude procházení zrušeno. Graf Azure Cosmos DB je databáze OLTP a naprostá většina procházení se dokončí v řádu milisekund. Pokud chcete spouštět dotazy OLAP v Cosmos DB graphu, použijte [Apache Spark](https://azure.microsoft.com/services/cosmos-db/) s [datovými rámečky grafu](https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes) a [Cosmos DB Spark Connector](https://github.com/Azure/azure-cosmosdb-spark).

@@ -10,10 +10,10 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 4689714073047e383a53a04bd0069a8a27afdf9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72966434"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>Správa Azure Data Lake Analytics pomocí zásad účtů
@@ -96,7 +96,7 @@ U každého účtu je nastavená výchozí zásada. Výchozí zásady platí pro
 1. V Azure Portal přejít na účet Data Lake Analytics.
 2. Klikněte na **limity a zásady**.
 3. V části **omezení odesílání úloh**vyhledejte zásadu, kterou chcete upravit.
-4.  Pokud chcete zobrazit možnosti **odstranění** a **úprav** , ve sloupci úplně vpravo v tabulce klikněte na `...`.
+4.  Pokud chcete zobrazit možnosti **odstranění** a **úprav** , ve sloupci úplně vpravo v tabulce klikněte na `...` .
 
 ## <a name="additional-resources-for-job-policies"></a>Další zdroje informací o zásadách úloh
 * [Přehled zásad – Blogový příspěvek](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)

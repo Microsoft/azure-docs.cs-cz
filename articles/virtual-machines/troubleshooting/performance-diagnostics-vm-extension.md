@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057542"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálních počítačů pro Windows pro diagnostiku výkonu Azure
@@ -70,7 +70,7 @@ Následující JSON ukazuje schéma pro rozšíření virtuálního počítače 
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Verze rozhraní API.
 |vydavatel|Microsoft. Azure. Performance. Diagnostics|Obor názvů vydavatele pro rozšíření.
-|type|AzurePerformanceDiagnostics|Typ rozšíření virtuálního počítače
+|typ|AzurePerformanceDiagnostics|Typ rozšíření virtuálního počítače
 |typeHandlerVersion|1.0|Verze obslužné rutiny rozšíření.
 |performanceScenario|Basic|Scénář výkonu, pro který mají být zachycena data. Platné hodnoty jsou: **Basic**, **vmslow**, **azurefiles**a **Custom**.
 |traceDurationInSeconds|300|Doba trvání trasování, pokud je vybrána kterákoli z možností trasování.
@@ -88,7 +88,7 @@ Následující JSON ukazuje schéma pro rozšíření virtuálního počítače 
 
 Pokud chcete nainstalovat rozšíření na virtuální počítače s Windows, postupujte podle těchto pokynů:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač, na který chcete nainstalovat toto rozšíření.
 
     ![Snímek obrazovky Azure Portal s zvýrazněnými virtuálními počítači](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -209,7 +209,7 @@ Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablo
 ```
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
-`Set-AzVMExtension` Příkaz se dá použít k nasazení rozšíření virtuálního počítače Azure Performance Diagnostics do existujícího virtuálního počítače.
+`Set-AzVMExtension`Příkaz se dá použít k nasazení rozšíření virtuálního počítače Azure Performance Diagnostics do existujícího virtuálního počítače.
 
 PowerShell
 
@@ -233,18 +233,18 @@ Nástroj PerfInsights shromažďuje různé protokoly, konfiguraci a diagnostick
 
 ## <a name="view-and-share-the-results"></a>Zobrazení a sdílení výsledků
 
-Výstup z rozšíření najdete v souboru zip, který jste nahráli do účtu úložiště zadaného během instalace a který se sdílí po dobu 30 dnů pomocí [sdílených přístupových podpisů (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Tento soubor zip obsahuje diagnostické protokoly a sestavu s výsledky a doporučeními. Odkaz SAS na výstupní soubor zip najdete v textovém souboru s názvem *zipfilename*_saslink. txt ve složce **\\\<C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics verze>**. Kdokoli, kdo má tento odkaz, může stáhnout soubor zip.
+Výstup z rozšíření najdete v souboru zip, který jste nahráli do účtu úložiště zadaného během instalace a který se sdílí po dobu 30 dnů pomocí [sdílených přístupových podpisů (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Tento soubor zip obsahuje diagnostické protokoly a sestavu s výsledky a doporučeními. Odkaz SAS na výstupní soubor zip najdete v textovém souboru s názvem *zipfilename*_saslink.txt ve složce **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **. Kdokoli, kdo má tento odkaz, může stáhnout soubor zip.
 
 Aby mohl pracovník podpory při práci na lístku podpory pracovat, mohl vám toto propojení SAS využít ke stažení diagnostických dat.
 
-Chcete-li zobrazit sestavu, rozbalte soubor zip a otevřete soubor **PerfInsights Report. html** .
+Chcete-li zobrazit sestavu, rozbalte soubor zip a otevřete soubor **PerfInsights Report.html** .
 
 Soubor zip byste si měli také stáhnout přímo z portálu tak, že vyberete rozšíření.
 
 ![Snímek obrazovky s podrobným stavem diagnostiky výkonu](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> Odkaz SAS zobrazený na portálu nemusí někdy fungovat. To může být způsobeno chybnou adresou URL během operací kódování a dekódování. Místo toho můžete z virtuálního počítače získat odkaz přímo ze souboru * _saslink. txt.
+> Odkaz SAS zobrazený na portálu nemusí někdy fungovat. To může být způsobeno chybnou adresou URL během operací kódování a dekódování. Místo toho můžete získat odkaz přímo ze souboru * _saslink.txt z virtuálního počítače.
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 

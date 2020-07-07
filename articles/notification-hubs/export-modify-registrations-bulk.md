@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212399"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Hromadné export a import registrací Azure Notification Hubs
@@ -31,7 +31,7 @@ Podpora služby Batch je navržená tak, aby podporovala dlouhodobě běžící 
 
 ## <a name="import"></a>Import
 
-### <a name="set-up"></a>Nastavit
+### <a name="set-up"></a>Nastavení
 V této části se předpokládá, že máte následující entity:
 
 - Zřízené centrum oznámení.
@@ -128,7 +128,7 @@ Po dokončení úlohy můžete zkontrolovat výsledky zobrazením následující
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Tyto soubory obsahují seznam úspěšných a neúspěšných operací z dávky. Formát souboru je `.cvs`, ve kterém každý řádek obsahuje číslo řádku původního vstupního souboru a výstup operace (obvykle se jedná o vytvořený nebo aktualizovaný popis registrace).
+Tyto soubory obsahují seznam úspěšných a neúspěšných operací z dávky. Formát souboru je `.cvs` , ve kterém každý řádek obsahuje číslo řádku původního vstupního souboru a výstup operace (obvykle se jedná o vytvořený nebo aktualizovaný popis registrace).
 
 ### <a name="full-sample-code"></a>Úplný ukázkový kód
 Následující vzorový kód importuje registrace do centra oznámení.

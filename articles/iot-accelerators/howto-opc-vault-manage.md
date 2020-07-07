@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71203651"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Správa služby OPC trezor certifikátů
@@ -25,11 +25,11 @@ Po nasazení úložiště OPC je potřeba vytvořit certifikát kořenové certi
 > [!IMPORTANT]
 > K vytvoření nebo obnovení certifikátu certifikační autority vystavitele je nutná role správce.
 
-1. Otevřete svou službu Certificate Service `https://myResourceGroup-app.azurewebsites.net`na adrese a přihlaste se.
+1. Otevřete svou službu Certificate Service na adrese `https://myResourceGroup-app.azurewebsites.net` a přihlaste se.
 2. Přejít na **skupiny certifikátů**.
 3. Je uvedena jedna výchozí skupina certifikátů. Vyberte **Upravit**.
 4. V části **Upravit podrobnosti skupiny certifikátů**můžete upravit název subjektu a dobu života certifikační autority a certifikátů aplikací. Předmět a životnost by se měly nastavit jenom jednou, než se vystaví první certifikát certifikační autority. Změny doby života během operací můžou vést k nekonzistentním životnosti vydaných certifikátů a seznamů CRL.
-5. Zadejte platný předmět (například `CN=My CA Root, O=MyCompany, OU=MyDepartment`).<br>
+5. Zadejte platný předmět (například `CN=My CA Root, O=MyCompany, OU=MyDepartment` ).<br>
    > [!IMPORTANT]
    > Pokud změníte předmět, je nutné obnovit certifikát vystavitele, jinak se služba nepodaří podepsat certifikáty aplikací. Předmět konfigurace se kontroluje v předmětu aktivního certifikátu vystavitele. Pokud se subjekty neshodují, podepsání certifikátu je odmítnuto.
 6. Vyberte **Uložit**.
@@ -51,7 +51,7 @@ V následujícím pracovním postupu se všechny žádosti o certifikát v odstr
 > [!IMPORTANT]
 > K obnovení seznamu CRL vystavitele je nutná role správce.
 
-1. Otevřete svou službu Certificate Service `https://myResourceGroup.azurewebsites.net`na adrese a přihlaste se.
+1. Otevřete svou službu Certificate Service na adrese `https://myResourceGroup.azurewebsites.net` a přihlaste se.
 2. Přejít na stránku **skupiny certifikátů** .
 3. Vyberte **Podrobnosti**. Měla by se zobrazit informace o aktuálním certifikátu a seznamu CRL.
 4. Vyberte **aktualizovat seznam odvolaných certifikátů (CRL)** , aby se vydával aktualizovaný seznam CRL pro všechny aktivní certifikáty vystavitelů v úložišti OPC trezoru.
@@ -66,8 +66,8 @@ Ve výchozím nastavení se ověřený uživatel v tenantovi může ke službě 
 ### <a name="add-user"></a>Přidání uživatele
 
 1. Otevřete web Azure Portal.
-2. Přejít na **Azure Active Directory** > **podnikové aplikace**
-3. Vyberte registraci mikroslužby trezoru OPC (ve výchozím nastavení máte `resourceGroupName-service`).
+2. Přejít na **Azure Active Directory**  >  **podnikové aplikace**
+3. Vyberte registraci mikroslužby trezoru OPC (ve výchozím nastavení máte `resourceGroupName-service` ).
 4. Přejít na **uživatele a skupiny**.
 5. Vyberte **Přidat uživatele**.
 6. Vyberte nebo Pozvěte uživatele k přiřazení ke konkrétní roli.
@@ -78,8 +78,8 @@ Ve výchozím nastavení se ověřený uživatel v tenantovi může ke službě 
 ### <a name="remove-user"></a>Odebrání uživatele
 
 1. Otevřete web Azure Portal.
-2. Přejít na **Azure Active Directory** > **podnikové aplikace**
-3. Vyberte registraci mikroslužby trezoru OPC (ve výchozím nastavení máte `resourceGroupName-service`).
+2. Přejít na **Azure Active Directory**  >  **podnikové aplikace**
+3. Vyberte registraci mikroslužby trezoru OPC (ve výchozím nastavení máte `resourceGroupName-service` ).
 4. Přejít na **uživatele a skupiny**.
 5. Vyberte uživatele s rolí, které chcete odebrat, a pak vyberte **Odebrat**.
 6. U odebraných uživatelů v roli správce nebo schvalovatele je také odeberte ze zásad Azure Key Vault.
@@ -93,8 +93,8 @@ Ve výchozím nastavení má identita služby pouze omezená oprávnění pro p�
 #### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>Pro roli schvalovatele je nutné do Key Vault přidat následující oprávnění.
 
 1. Otevřete web Azure Portal.
-2. Umožňuje přejít do trezoru `resourceGroupName`OPC, který se používá během nasazování.
-3. Přejít na Key Vault `resourceGroupName-xxxxx`.
+2. Umožňuje přejít do trezoru OPC `resourceGroupName` , který se používá během nasazování.
+3. Přejít na Key Vault `resourceGroupName-xxxxx` .
 4. Přejděte na **zásady přístupu**.
 5. Vyberte **Přidat nový**.
 6. Přeskočit šablonu. Neexistuje žádná šablona, která by odpovídala požadavkům.
@@ -107,8 +107,8 @@ Ve výchozím nastavení má identita služby pouze omezená oprávnění pro p�
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>Pro roli správce musí být do Key Vault přidána následující oprávnění.
 
 1. Otevřete web Azure Portal.
-2. Umožňuje přejít do trezoru `resourceGroupName`OPC, který se používá během nasazování.
-3. Přejít na Key Vault `resourceGroupName-xxxxx`.
+2. Umožňuje přejít do trezoru OPC `resourceGroupName` , který se používá během nasazování.
+3. Přejít na Key Vault `resourceGroupName-xxxxx` .
 4. Přejděte na **zásady přístupu**.
 5. Vyberte **Přidat nový**.
 6. Přeskočit šablonu. Neexistuje žádná šablona, která by odpovídala požadavkům.
@@ -121,8 +121,8 @@ Ve výchozím nastavení má identita služby pouze omezená oprávnění pro p�
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Odebrat zásady přístupu uživatele z Azure Key Vault
 
 1. Otevřete web Azure Portal.
-2. Umožňuje přejít do trezoru `resourceGroupName`OPC, který se používá během nasazování.
-3. Přejít na Key Vault `resourceGroupName-xxxxx`.
+2. Umožňuje přejít do trezoru OPC `resourceGroupName` , který se používá během nasazování.
+3. Přejít na Key Vault `resourceGroupName-xxxxx` .
 4. Přejděte na **zásady přístupu**.
 5. Vyhledejte uživatele, který chcete odebrat, a vyberte **Odstranit**.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71937287"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Vytváření a sledování událostí Media Services pomocí Event Grid pomocí Azure CLI
@@ -26,7 +26,7 @@ V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí pro vá
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- Aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete.
 - Nainstalujte a použijte rozhraní příkazového řádku místně. Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
 
     V současné době nejsou v Azure Cloud Shell správné příkazy rozhraní příkazového [řádku Media Services V3](https://aka.ms/ams-v3-cli-ref) . Doporučuje se používat rozhraní příkazového řádku místně.
@@ -61,7 +61,7 @@ az account set --subscription mySubscriptionId
 
 Přihlásíte se k odběru článku, který informuje Event Grid události, které chcete sledovat. V následujícím příkladu se přihlásí k odběru účtu Media Services, který jste vytvořili, a předá adresu URL z webu, který jste vytvořili jako koncový bod pro oznamování událostí. 
 
-Nahraďte `<event_subscription_name>` jedinečným názvem pro odběr události. V `<resource_group_name>` případě `<ams_account_name>`a použijte hodnoty, které jste použili při vytváření účtu Media Services. V `<endpoint_URL>`případě zadejte adresu URL webové aplikace a přidejte `api/updates` ji na domovskou stránku URL. Když při přihlášení k odběru zadáte koncový bod, Event Grid zpracuje směrování událostí do tohoto koncového bodu. 
+Nahraďte `<event_subscription_name>` jedinečným názvem pro odběr události. V případě `<resource_group_name>` a `<ams_account_name>` použijte hodnoty, které jste použili při vytváření účtu Media Services. V případě `<endpoint_URL>` Zadejte adresu URL webové aplikace a přidejte `api/updates` ji na domovskou stránku URL. Když při přihlášení k odběru zadáte koncový bod, Event Grid zpracuje směrování událostí do tohoto koncového bodu. 
 
 1. Získat ID prostředku
 
@@ -99,7 +99,7 @@ Teď spustíme události, které vám pomůžou zjistit, jak Event Grid distribu
 
 Události pro účet Media Services můžete aktivovat spuštěním úlohy kódování. Můžete postupovat podle [tohoto rychlého](stream-files-dotnet-quickstart.md) startu a zakódovat soubor a začít odesílat události. 
 
-Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Koncový bod musí být nastaven `validationResponse` na `validationCode`hodnotu. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](../../event-grid/security-authentication.md). Můžete zobrazit kód webové aplikace, abyste viděli, jak ověřuje předplatné.
+Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Koncový bod musí být nastaven `validationResponse` na hodnotu `validationCode` . Další informace najdete v tématu [Event Grid zabezpečení a ověřování](../../event-grid/security-authentication.md). Můžete zobrazit kód webové aplikace, abyste viděli, jak ověřuje předplatné.
 
 > [!TIP]
 > Vyberte ikonu oka a rozbalte data události. Neaktualizujte stránku, pokud chcete zobrazit všechny události.

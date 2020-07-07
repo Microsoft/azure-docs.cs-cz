@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72753321"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na více oblastí ve službě Azure Cosmos DB
 
-Můžete kdykoli přidat nebo odebrat oblasti pro účet Azure Cosmos. Propustnost, kterou nakonfigurujete pro různé databáze a kontejnery Azure Cosmos, je vyhrazena v každé oblasti přidružené k vašemu účtu. Pokud je propustnost zřízená za hodinu, která je součtem RU/s konfigurovaných napříč všemi databázemi a kontejnery pro váš účet Azure Cosmos, `T` a počtem oblastí Azure přidružených k vašemu databázovému účtu `N`, pak je celková zajištěná propustnost pro váš účet Cosmos, která je pro danou hodinu rovna:
+Můžete kdykoli přidat nebo odebrat oblasti pro účet Azure Cosmos. Propustnost, kterou nakonfigurujete pro různé databáze a kontejnery Azure Cosmos, je vyhrazena v každé oblasti přidružené k vašemu účtu. Pokud je propustnost zřízená za hodinu, která je součtem RU/s konfigurovaných napříč všemi databázemi a kontejnery pro váš účet Azure Cosmos, `T` a počtem oblastí Azure přidružených k vašemu databázovému účtu `N` , pak je celková zajištěná propustnost pro váš účet Cosmos, která je pro danou hodinu rovna:
 
 1. `T x N RU/s`Pokud je váš účet Azure Cosmos nakonfigurovaný s jednou oblastí zápisu. 
 
@@ -25,7 +25,7 @@ Náklady na zřízenou propustnost s jednou oblastí zápisu jsou 0,008 USD za h
 
 ## <a name="costs-for-multiple-write-regions"></a>Náklady na více oblastí zápisu
 
-V systému s více hlavními systémy zvyšuje `N` netto dostupný ru pro operace zápisu časy, kde `N` je počet oblastí pro zápis. Na rozdíl od zápisu jedné oblasti je teď každá oblast zapisovatelná a měla by podporovat řešení konfliktů. Objem úlohy pro zapisovače se zvýšil. V bodě plánování nákladů na pohled, že k provádění `M` ru/s stačí po celém světě, budete muset zřídit M `RUs` na úrovni kontejneru nebo databáze. Pak můžete přidat tolik oblastí, jak byste chtěli, a použít je pro zápisy k provedení `M` ru po celém světě zápisů. 
+V systému s více hlavními systémy zvyšuje netto dostupný ru pro operace zápisu `N` časy, kde `N` je počet oblastí pro zápis. Na rozdíl od zápisu jedné oblasti je teď každá oblast zapisovatelná a měla by podporovat řešení konfliktů. Objem úlohy pro zapisovače se zvýšil. V bodě plánování nákladů na pohled, že k provádění `M` ru/s stačí po celém světě, budete muset zřídit M `RUs` na úrovni kontejneru nebo databáze. Pak můžete přidat tolik oblastí, jak byste chtěli, a použít je pro zápisy k provedení `M` ru po celém světě zápisů. 
 
 ### <a name="example"></a>Příklad
 

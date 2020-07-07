@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: a9b271b5f7d4e53dbf871d03dd43b62b9299aa53
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309929"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Použití databázového projektu U-SQL pro vývoj databáze U-SQL pro Azure Data Lake
@@ -54,7 +54,7 @@ V případě objektu sestavení poskytuje nástroj uživatelsky přívětivý Ed
  
 ## <a name="build-a-u-sql-database-project"></a>Vytvoření databázového projektu U-SQL
 
-Výstup sestavení pro projekt databáze U-SQL je balíček pro nasazení U-SQL Database s názvem s příponou `.usqldbpack`. `.usqldbpack` Balíček je soubor. zip, který obsahuje všechny příkazy DDL v jednom skriptu U-SQL ve složce **DDL** a všechny knihovny DLL a další soubory pro sestavení ve složce **TEMP** .
+Výstup sestavení pro projekt databáze U-SQL je balíček pro nasazení U-SQL Database s názvem s příponou `.usqldbpack` . `.usqldbpack`Balíček je soubor. zip, který obsahuje všechny příkazy DDL v jednom skriptu U-SQL ve složce **DDL** a všechny knihovny DLL a další soubory pro sestavení ve složce **TEMP** .
 
 Přečtěte si další informace o [tom, jak vytvořit projekt databáze U-SQL pomocí příkazového řádku MSBuild a úlohy Azure DevOps Services sestavení](data-lake-analytics-cicd-overview.md).
 
@@ -91,7 +91,7 @@ Databázi U-SQL můžete nasadit prostřednictvím databázového projektu U-SQL
   
 ### <a name="deploy-u-sql-database-by-using-the-sdk"></a>Nasazení databáze U-SQL pomocí sady SDK
 
-`PackageDeploymentTool.exe`poskytuje rozhraní pro programování a příkazový řádek, která usnadňují nasazení databází U-SQL. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který se nachází na `build/runtime/PackageDeploymentTool.exe`adrese.
+`PackageDeploymentTool.exe`poskytuje rozhraní pro programování a příkazový řádek, která usnadňují nasazení databází U-SQL. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který se nachází na adrese `build/runtime/PackageDeploymentTool.exe` .
 
 [Přečtěte si další informace o sadě SDK a nastavení kanálu CI/CD pro nasazení databáze U-SQL](data-lake-analytics-cicd-overview.md).
 

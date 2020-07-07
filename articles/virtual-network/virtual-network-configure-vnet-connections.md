@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71099061"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurace a ověření připojení k virtuální síti nebo k síti VPN
@@ -252,13 +252,13 @@ Povolte protokol BGP v bráně virtuální sítě vytvořením autonomního syst
 
 Kontrola SKU bude trvat 20 až 30 minut výpadků. Jakmile brána obsahuje správnou SKLADOVOU položku, můžete přidat jako číslo pomocí rutiny [set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) prostředí PowerShell rutiny. Po nakonfigurování AS Number bude pro bránu automaticky poskytována IP adresa partnerského uzlu protokolu BGP.
 
-Musíte ručně zadat `LocalNetworkGateway` číslo as a partnerská adresa BGP. Hodnoty `ASN` a `-BgpPeeringAddress` můžete nastavit pomocí rutiny [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) nebo [set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) prostředí PowerShell rutiny. Některá čísla AS jsou vyhrazena pro Azure a nelze je použít, jak je popsáno v [tématu o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq).
+Musíte ručně zadat `LocalNetworkGateway` číslo as a partnerská adresa BGP. Hodnoty a můžete nastavit `ASN` `-BgpPeeringAddress` pomocí rutiny [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) nebo [set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) prostředí PowerShell rutiny. Některá čísla AS jsou vyhrazena pro Azure a nelze je použít, jak je popsáno v [tématu o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq).
 
-Objekt připojení musí mít povolený protokol BGP. `-EnableBGP` Hodnotu můžete nastavit na `$True` pomocí [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) nebo [set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0).
+Objekt připojení musí mít povolený protokol BGP. Hodnotu můžete nastavit `-EnableBGP` na `$True` pomocí [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) nebo [set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0).
 
 ### <a name="validate-the-bgp-configuration"></a>Ověření konfigurace protokolu BGP
 
-Pokud chcete zjistit, jestli je protokol BGP správně nakonfigurovaný, můžete `get-AzureRmVirtualNetworkGateway` spustit `get-AzureRmLocalNetworkGateway` rutinu a rutin. Pak si všimnete výstupu souvisejícího s protokolem BGP `BgpSettingsText` v části. Příklad:
+Pokud chcete zjistit, jestli je protokol BGP správně nakonfigurovaný, můžete spustit rutinu `get-AzureRmVirtualNetworkGateway` a `get-AzureRmLocalNetworkGateway` rutin. Pak si všimnete výstupu souvisejícího s protokolem BGP v `BgpSettingsText` části. Příklad:
 
 ```
 {

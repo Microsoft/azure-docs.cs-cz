@@ -16,10 +16,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73161206"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA a příručka pro správce Confluence pro Azure Active Directory
@@ -95,7 +95,7 @@ Chcete-li nainstalovat modul plug-in, postupujte podle následujících kroků:
 
 2. Otevřete konzolu pro správu JIRA/Confluence a vyberte možnost **Doplňky**.
 
-3. Na webu Microsoft Download Center si Stáhněte modul plug [-in Microsoft SAML SSO pro JIRA](https://www.microsoft.com/download/details.aspx?id=56506)/ [Microsoft SAML SSO pro Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
+3. Na webu Microsoft Download Center si Stáhněte modul plug [-in Microsoft SAML SSO pro JIRA](https://www.microsoft.com/download/details.aspx?id=56506) /  [Microsoft SAML SSO pro Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
 
    Ve výsledcích hledání se zobrazí příslušná verze modulu plug-in.
 
@@ -113,11 +113,11 @@ Následující obrázek znázorňuje konfigurační obrazovku v JIRA i Confluenc
 
 * **Adresa URL metadat**: adresa URL pro získání federačních metadat z Azure AD.
 
-* **Identifikátory**: adresa URL, kterou služba Azure AD používá k ověření zdroje žádosti. Mapuje se na element **identifikátoru** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*\<doménu: port>*/.
+* **Identifikátory**: adresa URL, kterou služba Azure AD používá k ověření zdroje žádosti. Mapuje se na element **identifikátoru** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /.
 
-* **Adresa URL odpovědi**: adresa URL odpovědi ve Vašem zprostředkovateli identity (IDP), která iniciuje přihlášení SAML. Mapuje se na element **adresy URL odpovědi** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*\<doménu: port>*/plugins/servlet/SAML/auth.
+* **Adresa URL odpovědi**: adresa URL odpovědi ve Vašem zprostředkovateli identity (IDP), která iniciuje přihlášení SAML. Mapuje se na element **adresy URL odpovědi** ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /plugins/servlet/SAML/auth..
 
-* **Adresa URL pro přihlášení**: přihlašovací adresa URL v IDP, která iniciuje přihlášení SAML. Mapuje se na element **Signing** v Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*\<doménu: port>*/plugins/servlet/SAML/auth.
+* **Adresa URL pro přihlášení**: přihlašovací adresa URL v IDP, která iniciuje přihlášení SAML. Mapuje se na element **Signing** v Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domain:port>* /plugins/servlet/SAML/auth..
 
 * **ID entity IDP**: ID entity, kterou používá vaše IDP. Toto pole se vyplní, když se vyřeší adresa URL metadat.
 
