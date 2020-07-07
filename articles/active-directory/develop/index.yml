@@ -136,7 +136,7 @@ landingContent:
       url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
     - text: Webové rozhraní API v Javě, které volá Microsoft Graph
       url: https://github.com/Azure-Samples/ms-identity-java-webapi
-- title: Vytvoření desktopové aplikace, které volá webová rozhraní API
+- title: Vytvoření desktopové aplikace, která volá webová rozhraní API
   linkLists:
   - linkListType: get-started
     links:
@@ -158,7 +158,7 @@ landingContent:
     links:
     - text: Ukázky – .NET, .NET Core, Java, Python
       url: sample-v2-code.md#desktop-and-mobile-public-client-apps
-- title: Vytvoření aplikace démona, které volá webová rozhraní API
+- title: Vytvoření aplikace démona, která volá webová rozhraní API
   linkLists:
   - linkListType: get-started
     links:

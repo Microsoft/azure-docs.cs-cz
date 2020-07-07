@@ -8,11 +8,11 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mihansen
-ms.openlocfilehash: 291b2fa696fff6f78c76bdc57d5c90daa78afc17
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 4eb4c10a6c98aa847c9fa6c239aacde891db5aae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871893"
 ---
 # <a name="get-access-token-for-azure-api-for-fhir-using-azure-cli"></a>Získání přístupového tokenu pro Azure API pro FHIR pomocí Azure CLI
@@ -39,7 +39,7 @@ token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azure
 
 ## <a name="use-with-azure-api-for-fhir"></a>Použití s rozhraním Azure API pro FHIR
 
-```console
+```azurecli-interactive
 curl -X GET --header "Authorization: Bearer $token" https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com/Patient
 ```
 

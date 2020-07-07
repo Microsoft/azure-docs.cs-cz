@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: d944ff86cdc11c30142792c6fd15d03e3cfd4fa9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212934"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Rychlý Start: škálování COMPUTE pro synapse fond SQL pomocí Azure Portal
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
