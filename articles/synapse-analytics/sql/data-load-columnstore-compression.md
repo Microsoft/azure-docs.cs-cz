@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431030"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace kvality skupiny řádků pro columnstore
@@ -80,8 +80,8 @@ Trim_reason_desc oznamuje, zda byl skupiny řádků oříznutý (trim_reason_des
 Maximální požadovaná paměť pro komprimaci jednoho skupiny řádků je přibližně
 
 - 72 MB +
-- \#\* \#sloupce \* řádků 8 bajtů +
-- \#řádky \* \#krátkého řetězce – sloupce \* 32 bajtů +
+- \#\* \# sloupce řádků \* 8 bajtů +
+- \#řádky \* \# krátkého řetězce – sloupce \* 32 bajtů +
 - \#Long-String-Columns \* 16 MB pro kompresní slovník
 
 kde krátké řetězcové sloupce používají řetězcové datové typy <= 32 bajtů a dlouhé řetězcové sloupce používají řetězcové datové typy > 32 bajtů.

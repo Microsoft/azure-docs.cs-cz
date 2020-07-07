@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451682"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Ukládat přihlašovací údaje v Azure Key Vault
@@ -42,14 +42,14 @@ Pokud chcete odkazovat na přihlašovací údaje uložené v Azure Key Vault, mu
 
 Pro Azure Key Vault propojenou službu jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **AzureKeyVault**. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **AzureKeyVault**. | Ano |
 | baseUrl | Zadejte adresu URL Azure Key Vault. | Ano |
 
 **Používání uživatelského rozhraní pro vytváření:**
 
-Vyberte **připojení** -> **propojené služby** -> **nové**. V části Nová propojená služba vyhledejte a vyberte "Azure Key Vault":
+Vyberte **připojení**  ->  **propojené služby**  ->  **nové**. V části Nová propojená služba vyhledejte a vyberte "Azure Key Vault":
 
 ![Hledat Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -75,9 +75,9 @@ Vyberte zřízené Azure Key Vault, kde jsou uložené vaše přihlašovací úd
 
 Následující vlastnosti jsou podporované při konfiguraci pole v propojené službě odkazujícího na tajný kód trezoru klíčů:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type pole musí být nastavená na: **AzureKeyVaultSecret**. | Ano |
+| typ | Vlastnost Type pole musí být nastavená na: **AzureKeyVaultSecret**. | Ano |
 | secretName | Název tajného klíče v Azure Key Vault. | Ano |
 | Verzetajnéhoklíče | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| Ne |
 | store | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Ano |

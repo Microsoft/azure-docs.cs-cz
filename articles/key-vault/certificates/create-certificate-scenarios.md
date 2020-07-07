@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430965"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Monitorování a správa vytvoření certifikátu
@@ -42,7 +42,7 @@ Scénáře/operace popsaných v tomto článku jsou:
 
 Následující příklady vyžadují, aby objekt s názvem "mydigicert" byl již k dispozici ve vašem trezoru klíčů s poskytovatelem vystavitele jako DigiCert. Vystavitel certifikátu je entita reprezentovaná v Azure Key Vault (KV) jako prostředek CertificateIssuer. Slouží k poskytnutí informací o zdroji certifikátu KV; název vystavitele, poskytovatel, přihlašovací údaje a další podrobnosti o správě.
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 ```json
 {
@@ -83,7 +83,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
@@ -113,7 +113,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ## <a name="get-pending-request---request-status-is-complete"></a>Žádost o získání žádosti čeká na dokončení.
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 |Metoda|Identifikátor URI žádosti|
 |------------|-----------------|
@@ -145,7 +145,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>Čeká se na vyřízení žádosti – stav žádosti čeká na zrušení nebo chyba.
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 |Metoda|Identifikátor URI žádosti|
 |------------|-----------------|
@@ -189,7 +189,7 @@ Objekt, který čeká na vyřízení, může být odstraněn nebo přepsán oper
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
@@ -227,7 +227,7 @@ Postup při opravě konfliktu:
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 ```json
 {
@@ -264,7 +264,7 @@ Pokud se žádost o vytvoření certifikátu x509 nezdařila nebo se z nějakéh
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 ```json
 {
@@ -293,7 +293,7 @@ Zrušení může být požadováno pouze. Požadavek se může nebo nemusí zru�
 |------------|-----------------|
 |POUŽITA|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 POUŽITA`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
@@ -333,7 +333,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 DSTRANIT`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
@@ -363,7 +363,7 @@ Certifikát vydaný s vámi zvolenou certifikační autoritou můžete vytvořit
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 ```json
 {
@@ -403,7 +403,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
 ```json
 {
@@ -412,9 +412,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|Název elementu|Požaduje se|Typ|Version|Popis|
+|Název elementu|Požaduje se|Typ|Verze|Popis|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Ano|pole|\<Úvod do verze>|Řetěz certifikátů x509 jako základní pole řetězců 64.|
+|x5c|Ano|pole|\<introducing version>|Řetěz certifikátů x509 jako základní pole řetězců 64.|
 
 ### <a name="response"></a>Odpověď
 

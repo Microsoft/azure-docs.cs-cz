@@ -10,14 +10,14 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992558"
 ---
 # <a name="advanced-filtering"></a>Rozšířené filtrování
-Event Grid umožňuje zadat filtry pro libovolnou vlastnost v datové části JSON. Tyto filtry jsou modelovány jako množina `AND` podmínek s každou vnější podmínkou, která má `OR` volitelné vnitřní podmínky. Pro každou `AND` podmínku zadejte následující hodnoty:
+Event Grid umožňuje zadat filtry pro libovolnou vlastnost v datové části JSON. Tyto filtry jsou modelovány jako množina `AND` podmínek s každou vnější podmínkou, která má volitelné vnitřní `OR` podmínky. Pro každou `AND` podmínku zadejte následující hodnoty:
 
 * `OperatorType`– Typ porovnání.
 * `Key`– Cesta JSON k vlastnosti, na které má být filtr použit.
@@ -50,18 +50,18 @@ Event Grid nepodporuje filtrování u pole hodnot dnes. Pokud má příchozí ud
 
 ## <a name="and-or-not-semantics"></a>Sémantika AND – NOT
 
-Všimněte si, že ve výše uvedeném příkladu JSON `AdvancedFilters` je pole. Jednotlivé `AdvancedFilter` prvky pole si můžete představit jako `AND` podmínku.
+Všimněte si, že ve výše uvedeném příkladu JSON `AdvancedFilters` je pole. Jednotlivé prvky pole si můžete představit `AdvancedFilter` jako `AND` podmínku.
 
-Pro operátory, které podporují více hodnot ( `NumberIn`například, `NumberNotIn`, `StringIn`, atd.), je každá hodnota považována za `OR` podmínku. Takže a `StringBeginsWith("a", "b", "c")` bude odpovídat libovolné řetězcové hodnotě, která začíná buď `a` nebo `b` nebo `c`.
+Pro operátory, které podporují více hodnot (například `NumberIn` , `NumberNotIn` , `StringIn` , atd.), je každá hodnota považována za `OR` podmínku. Takže a `StringBeginsWith("a", "b", "c")` bude odpovídat libovolné řetězcové hodnotě, která začíná buď `a` nebo `b` nebo `c` .
 
 > [!CAUTION]
-> Operátory `NumberNotIn` not a se `StringNotIn` chovají jako a podmínky na každé hodnotě zadané v `Values` poli.
+> Operátory NOT a se `NumberNotIn` `StringNotIn` chovají jako a podmínky na každé hodnotě zadané v `Values` poli.
 >
 > Pokud to neprovedete, filtr přijme filtr přijmout – vše a předá účel filtrování.
 
 ## <a name="floating-point-rounding-behavior"></a>Chování zaokrouhlení plovoucí desetinné čárky
 
-Event Grid používá typ `decimal` .NET ke zpracování všech číselných hodnot. Číselné hodnoty zadané v JSON pro odběr událostí nepodléhají chování při zaokrouhlování plovoucí desetinné čárky.
+Event Grid používá `decimal` typ .NET ke zpracování všech číselných hodnot. Číselné hodnoty zadané v JSON pro odběr událostí nepodléhají chování při zaokrouhlování plovoucí desetinné čárky.
 
 ## <a name="case-sensitivity-of-string-filters"></a>Rozlišování velkých a malých písmen u filtrů řetězců
 
@@ -69,7 +69,7 @@ U všech porovnávání řetězců se nerozlišují malá a velká písmena. Nee
 
 ## <a name="allowed-advanced-filter-keys"></a>Povolené klíče rozšířeného filtru
 
-`Key` Vlastnost může být buď dobře známá vlastnost nejvyšší úrovně, nebo může být cesta JSON s více tečkami, kde každá tečka označuje krokování vnořeného objektu JSON.
+`Key`Vlastnost může být buď dobře známá vlastnost nejvyšší úrovně, nebo může být cesta JSON s více tečkami, kde každá tečka označuje krokování vnořeného objektu JSON.
 
 Event Grid nemá žádný zvláštní význam pro `$` znak v klíči, na rozdíl od specifikace JSONPath.
 
@@ -87,7 +87,7 @@ Pro události ve schématu Event Grid:
 
 ### <a name="custom-event-schema"></a>Vlastní schéma událostí
 
-`Key` Ve vlastním schématu událostí neexistuje žádné omezení, protože Event Grid nevynutila žádné schéma obálky v datové části.
+`Key`Ve vlastním schématu událostí neexistuje žádné omezení, protože Event Grid nevynutila žádné schéma obálky v datové části.
 
 ## <a name="numeric-single-value-filter-examples"></a>Příklady číselného filtru s jednou hodnotou
 

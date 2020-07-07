@@ -7,13 +7,13 @@ ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81453519"
 ---
-# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení na Azure Container Instances z Azure Container Registry
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení ze služby Azure Container Registry do služby Azure Container Instances
 
 [Azure Container Registry](../container-registry/container-registry-intro.md) je spravovaná služba registru kontejnerů založená na Azure, která slouží k ukládání privátních imagí kontejneru Docker. Tento článek popisuje, jak načítat image kontejneru uložené v Azure Container Registry při nasazení do Azure Container Instances. Doporučeným způsobem, jak nakonfigurovat přístup k registru, je vytvořit Azure Active Directory instanční objekt a heslo a přihlašovací údaje uložit v trezoru klíčů Azure.
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte trezor ve službě [Azure Key Vault](../key-vault/general/
 
 Aktualizujte `RES_GROUP` proměnnou názvem existující skupiny prostředků, ve které chcete vytvořit Trezor klíčů, a `ACR_NAME` názvem vašeho registru kontejneru. V případě zkrácení se v příkazech v tomto článku předpokládají, že jsou všechny služby registru, trezoru klíčů a instance kontejnerů vytvořené ve stejné skupině prostředků.
 
- Zadejte název nového trezoru klíčů v `AKV_NAME`. Název trezoru musí být v rámci Azure jedinečný a musí mít 3-24 alfanumerických znaků, začínat písmenem, končit písmenem nebo číslicí a nesmí obsahovat po sobě jdoucí spojovníky.
+ Zadejte název nového trezoru klíčů v `AKV_NAME` . Název trezoru musí být v rámci Azure jedinečný a musí mít 3-24 alfanumerických znaků, začínat písmenem, končit písmenem nebo číslicí a nesmí obsahovat po sobě jdoucí spojovníky.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -69,7 +69,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-`--role` Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
+`--role`Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
 
 Dále do trezoru uložte identifikátor *appId* objektu služby, což je **uživatelské jméno** , které jste předali Azure Container Registry k ověřování.
 
@@ -92,7 +92,7 @@ Teď můžete na tyto tajné kódy odkazovat názvem, když vy nebo vaše aplika
 
 Teď, když jsou přihlašovací údaje instančního objektu uložené v Azure Key Vault tajných klíčích, můžou vaše aplikace a služby používat k přístupu k privátnímu registru.
 
-Nejprve pomocí příkazu [AZ ACR show][az-acr-show] načtěte název přihlašovacího serveru registru. Název přihlašovacího serveru je malými písmeny a `myregistry.azurecr.io`podobně jako.
+Nejprve pomocí příkazu [AZ ACR show][az-acr-show] načtěte název přihlašovacího serveru registru. Název přihlašovacího serveru je malými písmeny a podobně jako `myregistry.azurecr.io` .
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
@@ -112,7 +112,7 @@ az container create \
     --query ipAddress.fqdn
 ```
 
-`--dns-name-label` Hodnota musí být v rámci Azure jedinečná, takže předchozí příkaz připojí náhodné číslo k popisku názvu DNS kontejneru. Výstup příkazu zobrazí plně kvalifikovaný název domény kontejneru, například:
+`--dns-name-label`Hodnota musí být v rámci Azure jedinečná, takže předchozí příkaz připojí náhodné číslo k popisku názvu DNS kontejneru. Výstup příkazu zobrazí plně kvalifikovaný název domény kontejneru, například:
 
 ```output
 "aci-demo-25007.eastus.azurecontainer.io"

@@ -3,20 +3,20 @@ title: 'Rychlý Start: vytvoření podrobného plánu pomocí PowerShellu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí PowerShellu.
 ms.date: 05/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b881731dfdcaf9e9e016d1437e51dbd5c1a7488a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864109"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970497"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rychlý Start: definování a přiřazení Azure Blueprint s využitím PowerShellu
 
-Seznamte se s principy vytváření a přiřazování podrobných plánů, abyste mohli definovat běžné vzory a vyvíjet opakovaně použitelné a rychle nasaditelné konfigurace založené na šablonách Resource Manageru, zásadách, zabezpečení a dalších. V tomto kurzu se naučíte používat podrobné plány Azure Blueprint k provádění nejčastějších úloh spojených s vytvářením, publikováním a přiřazením podrobného plánu v organizaci, jako je například:
+Naučíte se vytvářet a přiřazovat podrobné plány a umožňují definici běžných vzorů pro vývoj opakovaně použitelných a rychlých nasazení konfigurací na základě Azure Resource Manager šablon (šablon ARM), zásad, zabezpečení a dalších. V tomto kurzu se naučíte používat podrobné plány Azure Blueprint k provádění nejčastějších úloh spojených s vytvářením, publikováním a přiřazením podrobného plánu v organizaci, jako je například:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 Pokud ještě není nainstalovaná, nainstalujte a ověřte modul **AZ. detail** z Galerie prostředí PowerShell podle pokynů v tématu [Přidání modulu AZ. detail](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) .
 
@@ -24,14 +24,14 @@ Pokud ještě není nainstalovaná, nainstalujte a ověřte modul **AZ. detail**
 
 ## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
 
-Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. Vytvoříme podrobný plán MyBlueprint, který pro předplatné nakonfiguruje přiřazení rolí a zásad. Potom přidáme skupinu prostředků, šablonu Resource Manageru a přiřazení role ke skupině prostředků.
+Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. Vytvoříme podrobný plán MyBlueprint, který pro předplatné nakonfiguruje přiřazení rolí a zásad. Potom do skupiny prostředků přidáme skupinu prostředků, šablonu ARM a přiřazení role.
 
 > [!NOTE]
 > Při použití PowerShellu se _vytvoří nejprve objekt_ podrobného plánu. Pro každý přidávaný _artefakt_, který má parametry, je potřeba předem definovat parametry v počátečním _podrobném plánu_.
 
 1. Vytvořte počáteční objekt _blueprint_. Parametr **BlueprintFile** má soubor JSON, který obsahuje vlastnosti týkající se podrobného plánu, všech skupin prostředků, které se mají vytvořit, a všech parametrů úrovně podrobného plánu. Tyto parametry se nastaví při přiřazení a používají je artefakty přidané v dalších krocích.
 
-   - Soubor JSON – detailed. JSON
+   - Soubor JSON – blueprint.jsna
 
      ```json
      {
@@ -101,14 +101,14 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
      ```
 
      > [!NOTE]
-     > Při vytváření definic podrobných plánů programově použijte název souboru _Details. JSON_ .
+     > Při vytváření definic podrobných plánů programově použijte název souboru _blueprint.js_ .
      > Tento název souboru se používá při volání metody [Import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact).
 
      Ve výchozím nastavení je ve výchozím předplatném vytvořen objekt podrobného plánu. Chcete-li určit skupinu pro správu, použijte parametr **ManagementGroupId**. K určení předplatného použijte parametr **SubscriptionId**.
 
-1. Přidejte do předplatného přiřazení role. **ArtifactFile** definuje _typ_ artefaktu, vlastnosti zarovnané na identifikátor definice role a hlavní identity jsou předány jako pole hodnot. V následujícím příkladu jsou identity instančního objektu s přiřazenou určenou rolí nakonfigurované na parametr nastavený při přiřazení podrobného plánu. V tomto příkladu se používá předdefinovaná role _Přispěvatel_ s identifikátorem GUID `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+1. Přidejte do předplatného přiřazení role. **ArtifactFile** definuje _typ_ artefaktu, vlastnosti zarovnané na identifikátor definice role a hlavní identity jsou předány jako pole hodnot. V následujícím příkladu jsou identity instančního objektu s přiřazenou určenou rolí nakonfigurované na parametr nastavený při přiřazení podrobného plánu. V tomto příkladu se používá předdefinovaná role _Přispěvatel_ s identifikátorem GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
-   - Soubor JSON – \artifacts\roleContributor.json
+   - Soubor JSON – \artifacts\roleContributor.jsna
 
      ```json
      {
@@ -127,9 +127,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'roleContributor' -ArtifactFile .\artifacts\roleContributor.json
      ```
 
-1. Přidejte do předplatného přiřazení zásad. **ArtifactFile** definuje _typ_ artefaktu, vlastnosti, které se zarovnají do definice zásady nebo iniciativy, a nakonfiguruje přiřazení zásady tak, aby se při přiřazení podrobného plánu použily definované parametry podrobného plánu. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Přidejte do předplatného přiřazení zásad. **ArtifactFile** definuje _typ_ artefaktu, vlastnosti, které se zarovnají do definice zásady nebo iniciativy, a nakonfiguruje přiřazení zásady tak, aby se při přiřazení podrobného plánu použily definované parametry podrobného plánu. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
-   - Soubor JSON – \artifacts\policyTags.json
+   - Soubor JSON – \artifacts\policyTags.jsna
 
      ```json
      {
@@ -157,9 +157,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyTags' -ArtifactFile .\artifacts\policyTags.json
      ```
 
-1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
-   - Soubor JSON – \artifacts\policyStorageTags.json
+   - Soubor JSON – \artifacts\policyStorageTags.jsna
 
      ```json
      {
@@ -187,9 +187,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. Přidejte pod skupinu prostředků šablonu. **TemplateFile** pro šablonu správce prostředků obsahuje normální komponentu JSON šablony. Šablona také znovu používá parametry podrobného plánu **storageAccountType**, **tagName** a **tagValue**, které se šabloně předávají. Parametry podrobného plánu jsou k dispozici pro šablonu pomocí parametru **TemplateParameterFile** a uvnitř šablony JSON, kterou používá pár klíč-hodnota k vložení hodnoty. Název parametru podrobného plánu a šablony může být stejný.
+1. Přidejte pod skupinu prostředků šablonu. **TemplateFile** pro šablonu ARM obsahuje normální komponentu JSON šablony. Šablona také znovu používá parametry podrobného plánu **storageAccountType**, **tagName** a **tagValue**, které se šabloně předávají. Parametry podrobného plánu jsou k dispozici pro šablonu pomocí parametru **TemplateParameterFile** a uvnitř šablony JSON, kterou používá pár klíč-hodnota k vložení hodnoty. Název parametru podrobného plánu a šablony může být stejný.
 
-   - Soubor šablony Azure Resource Manager JSON – \artifacts\templateStorage.json
+   - Soubor šablony ARM formátu JSON – \artifacts\templateStorage.jsna
 
      ```json
      {
@@ -243,7 +243,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
      }
      ```
 
-   - Soubor parametrů šablony Azure Resource Manager JSON – \artifacts\templateStorageParams.json
+   - Soubor parametrů šablony ARM formátu JSON – \artifacts\templateStorageParams.js
 
      ```json
      {
@@ -270,9 +270,9 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
      New-AzBlueprintArtifact -Blueprint $blueprint -Type TemplateArtifact -Name 'templateStorage' -TemplateFile .\artifacts\templateStorage.json -TemplateParameterFile .\artifacts\templateStorageParams.json -ResourceGroupName storageRG
      ```
 
-1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr. V tomto příkladu se používá předdefinovaná role _Owner_ s identifikátorem GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
+1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr. V tomto příkladu se používá předdefinovaná role _Owner_ s identifikátorem GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` .
 
-   - Soubor JSON – \artifacts\roleOwner.json
+   - Soubor JSON – \artifacts\roleOwner.jsna
 
      ```json
      {
@@ -309,7 +309,7 @@ Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k
 
 1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Protože parametry **přispěvatelé** a **vlastníci** vyžadují, aby bylo přiřazení role uděleno pole objectID objektů zabezpečení, použijte [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) pro shromáždění identifikátorů objectID pro použití v **AssignmentFile** pro vlastní uživatele, skupiny nebo instanční objekty.
 
-   - Soubor JSON – blueprintAssignment. JSON
+   - Soubor JSON – blueprintAssignment.jsna
 
      ```json
      {
@@ -362,7 +362,7 @@ Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k
    - Spravovaná identita přiřazená uživatelem
 
      Přiřazení podrobného plánu může také používat [uživatelsky přiřazenou spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md).
-     V takovém případě se část **identity** souboru přiřazení JSON mění takto. V `{tenantId}`uvedeném `{subscriptionId}`pořadí `{yourRG}`nahraďte `{userIdentity}` ,, a pomocí tenantId, SubscriptionId, názvu skupiny prostředků a názvu vaší spravované identity přiřazené uživatelem.
+     V takovém případě se část **identity** souboru přiřazení JSON mění takto. V `{tenantId}` uvedeném pořadí nahraďte, `{subscriptionId}` , `{yourRG}` a `{userIdentity}` pomocí tenantId, SubscriptionId, názvu skupiny prostředků a názvu vaší spravované identity přiřazené uživatelem.
 
      ```json
      "identity": {
@@ -383,7 +383,7 @@ Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k
 
 ### <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
 
-Podrobný plán můžete odebrat z předplatného. Odebrání se často provádí v případě, že už nepotřebujete prostředky artefaktů. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Chcete-li odebrat přiřazení podrobného plánu `Remove-AzBlueprintAssignment` , použijte rutinu:
+Podrobný plán můžete odebrat z předplatného. Odebrání se často provádí v případě, že už nepotřebujete prostředky artefaktů. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Chcete-li odebrat přiřazení podrobného plánu, použijte `Remove-AzBlueprintAssignment` rutinu:
 
 assignMyBlueprint
 

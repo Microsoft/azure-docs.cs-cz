@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431290"
 ---
 # <a name="runtocompletion"></a>Spuštění až do konce
@@ -22,7 +22,7 @@ Než budete pokračovat v tomto článku, doporučujeme seznámit se s [Service 
 > Sémantika RunToCompletion se v tuto chvíli nepodporuje u služeb napsaných pomocí programovacího modelu [Reliable Services][reliable-services-link] .
  
 ## <a name="runtocompletion-semantics-and-specification"></a>Sémantika a specifikace RunToCompletion
-Sémantika RunToCompletion může být zadána jako **ExecutionPolicy** při [importu ServiceManifest][application-and-service-manifests-link]. Zadané zásady dědí všechny CodePackages, které tvoří ServiceManifest. Následující fragment kódu souboru ApplicationManifest. XML poskytuje příklad.
+Sémantika RunToCompletion může být zadána jako **ExecutionPolicy** při [importu ServiceManifest][application-and-service-manifests-link]. Zadané zásady dědí všechny CodePackages, které tvoří ServiceManifest. Následující fragment kódu ApplicationManifest.xml poskytuje příklad.
 
 ```xml
 <ServiceManifestImport>
@@ -47,7 +47,7 @@ Pojďme se podívat na kompletní příklad s využitím sémantiky RunToComplet
 >
 > Tento příklad odkazuje na mcr.microsoft.com/windows/nanoserver:1809. Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Následující ServiceManifest. XML popisuje ServicePack, skládající se ze dvou CodePackages, které reprezentují kontejnery. *RunToCompletionCodePackage1* pouze zaznamená zprávu do **stdout** a ukončí. *RunToCompletionCodePackage2* otestuje adresu zpětné smyčky za chvíli a pak ukončí s ukončovacím kódem buď **0**, **1** nebo **2**.
+Následující ServiceManifest.xml popisuje ServicePack, skládající se ze dvou CodePackages, které reprezentují kontejnery. *RunToCompletionCodePackage1* pouze zaznamená zprávu do **stdout** a ukončí. *RunToCompletionCodePackage2* otestuje adresu zpětné smyčky za chvíli a pak ukončí s ukončovacím kódem buď **0**, **1** nebo **2**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ Následující ServiceManifest. XML popisuje ServicePack, skládající se ze dv
 </ServiceManifest>
 ```
 
-Následující souboru ApplicationManifest. XML popisuje aplikaci založenou na souboru ServiceManifest. XML, který je popsán výše. Určuje **RunToCompletion** **ExecutionPolicy** pro *WindowsRunToCompletionServicePackage* se zásadami restartování při **selhání**. Po aktivaci *WindowsRunToCompletionServicePackage*se spustí jeho prvek CodePackages. *RunToCompletionCodePackage1* by se měl úspěšně ukončit při první aktivaci. *RunToCompletionCodePackage2* ale může selhat **(nenulový ukončovací kód)**. v takovém případě se restartuje, protože zásada restartování je **chybná**.
+Následující ApplicationManifest.xml popisuje aplikaci na základě ServiceManifest.xml popsaných výše. Určuje **RunToCompletion** **ExecutionPolicy** pro *WindowsRunToCompletionServicePackage* se zásadami restartování při **selhání**. Po aktivaci *WindowsRunToCompletionServicePackage*se spustí jeho prvek CodePackages. *RunToCompletionCodePackage1* by se měl úspěšně ukončit při první aktivaci. *RunToCompletionCodePackage2* ale může selhat **(nenulový ukončovací kód)**. v takovém případě se restartuje, protože zásada restartování je **chybná**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

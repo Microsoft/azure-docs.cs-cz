@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437700"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Provozní kontinuita a zotavení po havárii pro Azure Logic Apps
@@ -234,7 +234,7 @@ Abyste se vyhnuli opakovanému čtení stejných dat, potřebuje aplikace logiky
 
 * Aplikace logiky, které pracují se serverem, službou nebo stavem na straně systému, používají hodnoty vlastností nebo nastavení, které jsou na straně serveru, služby nebo systému.
 
-  Například Trigger založený na dotazech, který čte řádek z databáze, vyžaduje, aby řádek měl `isRead` sloupec, který je nastaven na `FALSE`hodnotu. Pokaždé, když Trigger Načte řádek, aplikace logiky tento řádek aktualizuje změnou `isRead` sloupce z `FALSE` na. `TRUE`
+  Například Trigger založený na dotazech, který čte řádek z databáze, vyžaduje, aby řádek měl `isRead` sloupec, který je nastaven na hodnotu `FALSE` . Pokaždé, když Trigger Načte řádek, aplikace logiky tento řádek aktualizuje změnou `isRead` sloupce z `FALSE` na `TRUE` .
 
   Tento přístup na straně serveru funguje podobně jako u Service Bus front nebo témat s sémantikou řazení do fronty, kde Trigger může číst a uzamknout zprávu, zatímco aplikace logiky zpracovává zprávu. Když aplikace logiky dokončí zpracování, aktivační událost odstraní zprávu z fronty nebo tématu.
 

@@ -7,10 +7,10 @@ ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72750427"
 ---
 # <a name="legal-notices"></a>Právní upozornění
@@ -19,7 +19,7 @@ Společnost Microsoft a všichni přispěvatelé vám poskytnou licenci na dokum
 
 Microsoft, Windows, Microsoft Azure a ostatní produkty a služby společnosti Microsoft, na které dokumentace odkazuje, mohou být ochranné známky nebo registrované ochranné známky společnosti Microsoft v USA a dalších zemích.
 Licence pro tento projekt vám neuděluje práva k používání názvů, log ani ochranných známek společnosti Microsoft.
-Obecné pokyny pro ochranné známky společnosti Microsoft najdete na [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)adrese.
+Obecné pokyny pro ochranné známky společnosti Microsoft najdete na adrese [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653) .
 
 Informace o ochraně osobních údajů najdete na adrese[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 

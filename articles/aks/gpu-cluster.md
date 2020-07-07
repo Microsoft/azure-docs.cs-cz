@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80383986"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
@@ -20,11 +20,11 @@ Grafické procesory (GPU) se často používají pro úlohy náročné na výpo�
 
 V současné době jsou fondy uzlů s podporou GPU dostupné jenom pro fondy uzlů Linux.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS s uzly, které podporují GPU. Cluster AKS musí běžet v Kubernetes 1,10 nebo novějším. Pokud potřebujete cluster AKS, který splňuje tyto požadavky, Projděte si první část tohoto článku a [vytvořte cluster AKS](#create-an-aks-cluster).
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
@@ -36,7 +36,7 @@ Nejdřív vytvořte skupinu prostředků pro cluster pomocí příkazu [AZ Group
 az group create --name myResourceGroup --location eastus
 ```
 
-Nyní vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Následující příklad vytvoří cluster s jedním uzlem velikosti `Standard_NC6`:
+Nyní vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Následující příklad vytvoří cluster s jedním uzlem velikosti `Standard_NC6` :
 
 ```azurecli-interactive
 az aks create \
@@ -129,7 +129,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Nyní použijte příkaz [kubectl popsat uzel][kubectl-describe] a potvrďte, že GPU jsou plánovatelná. V části *kapacita* by měl grafický procesor vypsat jako `nvidia.com/gpu:  1`.
+Nyní použijte příkaz [kubectl popsat uzel][kubectl-describe] a potvrďte, že GPU jsou plánovatelná. V části *kapacita* by měl grafický procesor vypsat jako `nvidia.com/gpu:  1` .
 
 Následující zhuštěný příklad ukazuje, že grafický procesor je k dispozici na uzlu s názvem *AKS-nodepool1-18821093-0*:
 
@@ -185,7 +185,7 @@ Non-terminated Pods:         (9 in total)
 
 Pokud chcete zobrazit GPU v akci, naplánujte úlohu s povoleným GPU pomocí příslušné žádosti o prostředky. V tomto příkladu spustíme úlohu [Tensorflow](https://www.tensorflow.org/) s [datovou sadou mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/).
 
-Vytvořte soubor s názvem *Samples-TF-mnist ručně zapsaných-demo. yaml* a vložte následující manifest YAML. Následující manifest úlohy zahrnuje omezení prostředků `nvidia.com/gpu: 1`:
+Vytvořte soubor s názvem *Samples-TF-mnist ručně zapsaných-demo. yaml* a vložte následující manifest YAML. Následující manifest úlohy zahrnuje omezení prostředků `nvidia.com/gpu: 1` :
 
 > [!NOTE]
 > Pokud při volání do ovladačů obdržíte chybu neshody verzí, například, verze ovladače CUDA není dostatečná pro verzi CUDA runtime, Projděte si graf kompatibility matice ovladače NVIDIA –[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
@@ -242,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Nyní použijte příkaz [kubectl logs][kubectl-logs] k zobrazení protokolů pod. V následujícím příkladu se v protokolech potvrdí, že se zjistilo příslušné zařízení `Tesla K80`GPU. Zadejte název pro vlastní pod:
+Nyní použijte příkaz [kubectl logs][kubectl-logs] k zobrazení protokolů pod. V následujícím příkladu se v protokolech potvrdí, že se zjistilo příslušné zařízení GPU `Tesla K80` . Zadejte název pro vlastní pod:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6

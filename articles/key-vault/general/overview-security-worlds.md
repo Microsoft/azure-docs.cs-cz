@@ -9,10 +9,10 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
 ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428950"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault světů zabezpečení a geografické hranice
@@ -32,7 +32,7 @@ Například záloha pořízená daným předplatným klíče v trezoru klíčů 
 
 ## <a name="regions-and-products"></a>Oblasti a produkty
 
-- [Oblasti Azure](https://azure.microsoft.com/regions/)
+- [Oblast Azure](https://azure.microsoft.com/regions/)
 - [Produkty společnosti Microsoft podle oblastí](https://azure.microsoft.com/regions/services/)
 
 Oblasti se mapují na světů zabezpečení, které se zobrazují jako hlavní nadpisy v tabulkách:

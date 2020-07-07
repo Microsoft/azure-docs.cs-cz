@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392186"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signály popisné zvukové stopy
@@ -48,7 +48,7 @@ Uvedená funkce provede následující akce:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Pokud potřebujete předat název vytvořeného vstupního prostředku jiným metodám, nezapomeňte použít `Name` vlastnost u objektu assetu vráceného z `CreateInputAssetAsync`, například inputAsset.Name. 
+Pokud potřebujete předat název vytvořeného vstupního prostředku jiným metodám, nezapomeňte použít `Name` vlastnost u objektu assetu vráceného z `CreateInputAssetAsync` , například inputAsset.Name. 
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Vytvořte výstupní prostředek pro uložení výsledku úlohy kódování.
 
@@ -56,9 +56,9 @@ Výstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá v�
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Pokud potřebujete předat název vytvořeného výstupního prostředku jiným metodám, nezapomeňte použít `Name` vlastnost u objektu assetu vráceného z `CreateIOutputAssetAsync`, například outputAsset.Name. 
+Pokud potřebujete předat název vytvořeného výstupního prostředku jiným metodám, nezapomeňte použít `Name` vlastnost u objektu assetu vráceného z `CreateIOutputAssetAsync` , například outputAsset.Name. 
 
-V případě tohoto článku předejte `outputAsset.Name` hodnotu funkcím `SubmitJobAsync` a. `UploadAudioIntoOutputAsset`
+V případě tohoto článku předejte `outputAsset.Name` hodnotu `SubmitJobAsync` `UploadAudioIntoOutputAsset` funkcím a.
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Vytvořit transformaci a úlohu, která zakóduje nahraný soubor
 
@@ -233,7 +233,7 @@ Tento článek používá k otestování streamu přehrávač Azure Media Player
 > [!NOTE]
 > Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
 
-1. Otevřete webový prohlížeč a přejděte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Otevřete webový prohlížeč a přejděte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Do pole **Adresa URL:** vložte jednu z hodnot adresy URL streamování, které jste získali z aplikace. 
  
      Můžete vložit adresu URL ve formátu HLS, pomlčka nebo vyhlazení a Azure Media Player přepnout na příslušný protokol pro streamování pro přehrávání na zařízení automaticky.

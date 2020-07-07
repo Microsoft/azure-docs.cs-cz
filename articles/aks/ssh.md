@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 70ebcb1f340ba28cf80ad3e24a464aad5584b3a4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207152"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí SSH k uzlům clusteru Azure Kubernetes Service (AKS) kvůli údržbě nebo řešení potíží
@@ -17,7 +17,7 @@ V průběhu životního cyklu clusteru Azure Kubernetes Service (AKS) budete mo�
 
 V tomto článku se dozvíte, jak vytvořit připojení SSH s uzlem AKS pomocí svých privátních IP adres.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -25,7 +25,7 @@ Ve výchozím nastavení se klíče SSH získávají nebo generují a pak se do 
 
 Tento článek také předpokládá, že máte klíč SSH. Můžete vytvořit klíč SSH pomocí [MacOS nebo Linux][ssh-nix] nebo [Windows][ssh-windows]. Použijete-li pro vytvoření páru klíčů gen, uložte dvojici klíčů ve formátu OpenSSH, nikoli jako výchozí formát privátního klíče pro výstup pro výstup (soubor. ppk).
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.64 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurace clusterů AKS založených na škálování virtuálních počítačů pro přístup přes SSH
 
@@ -138,7 +138,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 
 Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clusterem AKS. Tato pomocná Nápověda je k dispozici s přístupem SSH do clusteru a dalším přístupem k uzlu SSH. Pokud chcete vytvořit a použít pomocníka pod, proveďte následující kroky:
 
-1. Spusťte image `debian` kontejneru a připojte k ní relaci terminálu. Tento kontejner se dá použít k vytvoření relace SSH s jakýmkoli uzlem v clusteru AKS:
+1. Spusťte `debian` Image kontejneru a připojte k ní relaci terminálu. Tento kontejner se dá použít k vytvoření relace SSH s jakýmkoli uzlem v clusteru AKS:
 
     ```console
     kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
@@ -149,7 +149,7 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Jakmile je relace Terminálové služby připojena ke kontejneru, nainstalujte klienta SSH pomocí nástroje `apt-get`:
+1. Jakmile je relace Terminálové služby připojena ke kontejneru, nainstalujte klienta SSH pomocí nástroje `apt-get` :
 
     ```console
     apt-get update && apt-get install openssh-client -y

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792217"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak spravovat souběžnost v Azure Kognitivní hledání
@@ -20,7 +20,7 @@ ms.locfileid: "72792217"
 Při správě prostředků Azure Kognitivní hledání, jako jsou indexy a zdroje dat, je důležité aktualizovat prostředky bezpečně, zejména v případě, že se k prostředkům přistupoval současně pomocí různých komponent aplikace. Když dva klienti souběžně aktualizují prostředek bez koordinace, jsou možné situace časování. Aby k tomu nedocházelo, Azure Kognitivní hledání nabízí *optimistický model souběžnosti*. U prostředku neexistují žádné zámky. Místo toho je k dispozici značka ETag pro každý prostředek, který identifikuje verzi prostředku, aby bylo možné vytvořit požadavky, které zabrání náhodnému přepsání.
 
 > [!Tip]
-> Koncepční kód v [ukázkovém řešení jazyka C#](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) vysvětluje, jak řízení souběžnosti funguje v Azure kognitivní hledání. Kód vytvoří podmínky, které vyvolávají řízení souběžnosti. Čtení [fragmentu kódu níže](#samplecode) je pravděpodobně dostačující pro většinu vývojářů, ale pokud ho chcete spustit, upravte appSettings. JSON a přidejte název služby a klíč rozhraní API pro správu. Název služby je `myservice`dán adresou `http://myservice.search.windows.net`URL služby.
+> Koncepční kód v [ukázkovém řešení jazyka C#](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) vysvětluje, jak řízení souběžnosti funguje v Azure kognitivní hledání. Kód vytvoří podmínky, které vyvolávají řízení souběžnosti. Čtení [fragmentu kódu níže](#samplecode) je pravděpodobně dostačující pro většinu vývojářů, ale pokud ho chcete spustit, upravte appsettings.jsna a přidejte název služby a klíč rozhraní API pro správu. Název služby je dán adresou URL služby `http://myservice.search.windows.net` `myservice` .
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -31,7 +31,7 @@ Všechny prostředky mají [*značku entity (ETag)*](https://en.wikipedia.org/wi
 + REST API používá [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) v hlavičce požadavku.
 + Sada .NET SDK nastaví značku ETag prostřednictvím objektu accessCondition, nastavení [If-Match | Záhlaví If-Match-None](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) u prostředku Libovolný objekt, který dědí z [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) , má objekt accessCondition.
 
-Pokaždé, když aktualizujete prostředek, jeho značka ETag se automaticky změní. Když implementujete řízení souběžnosti, vše, co provádíte, je předběžnou podmínkou pro žádost o aktualizaci, která vyžaduje, aby vzdálený prostředek měl stejnou značku ETag jako kopie prostředku, který jste změnili v klientovi. Pokud již souběžný proces změnil vzdálený prostředek, značka ETag se neshoduje s podmínkou a požadavek selže s protokolem HTTP 412. Pokud používáte sadu .NET SDK, tento manifest jako `CloudException` metoda `IsAccessConditionFailed()` rozšíření vrátí hodnotu true.
+Pokaždé, když aktualizujete prostředek, jeho značka ETag se automaticky změní. Když implementujete řízení souběžnosti, vše, co provádíte, je předběžnou podmínkou pro žádost o aktualizaci, která vyžaduje, aby vzdálený prostředek měl stejnou značku ETag jako kopie prostředku, který jste změnili v klientovi. Pokud již souběžný proces změnil vzdálený prostředek, značka ETag se neshoduje s podmínkou a požadavek selže s protokolem HTTP 412. Pokud používáte sadu .NET SDK, tento manifest jako `CloudException` `IsAccessConditionFailed()` metoda rozšíření vrátí hodnotu true.
 
 > [!Note]
 > Existuje pouze jeden mechanismus pro souběžnost. Vždycky se používá bez ohledu na to, jaké rozhraní API se používá pro aktualizace prostředků.
@@ -214,8 +214,8 @@ Zkuste upravit některý z následujících vzorků, aby obsahovaly ETag nebo Ac
 + [Ukázka REST API na GitHubu](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [Ukázka .NET SDK na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started). Toto řešení zahrnuje projekt "DotNetEtagsExplainer" obsahující kód uvedený v tomto článku.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-[Běžné požadavky protokolu HTTP a hlavičky](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-odpovědí[http stavové kódy](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[operací index (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Běžné hlavičky](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+ požadavků a odpovědí protokolu http [Stavové kódy http](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
+ [Operace s indexem (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

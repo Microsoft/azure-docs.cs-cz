@@ -4,10 +4,10 @@ description: Souhrn nabídek dodržování předpisů pro Azure Backup
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80423116"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Azure Backup nabídky dodržování předpisů
@@ -35,13 +35,13 @@ Můžete najít níže uvedené nabídky dodržování předpisů pro Azure Back
 * [FedRAMP](https://docs.microsoft.com/microsoft-365/compliance/offering-fedramp)
 * [FIPS 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)
 
-## <a name="industry"></a>Odvětví
+## <a name="industry"></a>Obor
 
 * [HIPAA](https://docs.microsoft.com/microsoft-365/compliance/offering-hipaa-hitech)
 * [HITRUST](https://docs.microsoft.com/microsoft-365/compliance/offering-hitrust)
 * [PCI DSS](https://docs.microsoft.com/microsoft-365/compliance/offering-pci-dss)
 
-## <a name="regional"></a>Oblastní
+## <a name="regional"></a>Regionální
 
 * [CCSL/IRAP (Austrálie)](https://docs.microsoft.com/microsoft-365/compliance/offering-ccsl-irap-australia)
 * [GDPR (EU)](https://www.microsoft.com/trustcenter/privacy/gdpr)

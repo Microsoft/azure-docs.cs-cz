@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
 ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80385074"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
@@ -39,7 +39,7 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Zobrazit výstrahy a pravidla adaptivního posílení zabezpečení sítě
 
-1. V Security Center vyberte **síť** -> **adaptivní posílení zabezpečení sítě**. Síťové virtuální počítače jsou uvedené v části tři samostatné karty:
+1. V Security Center vyberte **síť**  ->  **adaptivní posílení zabezpečení sítě**. Síťové virtuální počítače jsou uvedené v části tři samostatné karty:
    * **Zdroje**, které nejsou v pořádku: virtuální počítače, které mají aktuálně spuštěné doporučení a výstrahy, se spouštějí pomocí algoritmu adaptivního posílení sítě. 
    * **Dobré prostředky**: virtuální počítače bez výstrah a doporučení.
    * **Nekontrolované prostředky**: virtuální počítače, na kterých se algoritmus adaptivního posílení sítě nedá spustit kvůli jednomu z následujících důvodů:
@@ -119,7 +119,7 @@ Můžete přidat pravidlo "Allow", které nedoporučuje Security Center.
 
 1. Klikněte na **Přidat pravidlo** (nachází se v levém horním rohu).
 
-   ![Přidat pravidlo](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
+   ![přidání pravidla](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
 
 1. V okně **nové pravidlo** zadejte podrobnosti a klikněte na **Přidat**.
 

@@ -9,22 +9,22 @@ ms.author: asabbour
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc
 ms.openlocfilehash: 6b6248aac35c22b9ffd2cd95df41e84986356259
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205310"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Konfigurace ověřování Azure Active Directory pro cluster Azure Red Hat OpenShift 4 (portál)
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Vytvořte **adresu URL zpětného volání OAuth** clusteru a poznamenejte si ho. Nezapomeňte nahradit položku **ARO – RG** pomocí názvu skupiny prostředků a **ARO – cluster** s názvem vašeho clusteru.
 
 > [!NOTE]
-> `AAD` Oddíl v adrese URL zpětného volání OAuth by se měl shodovat s názvem zprostředkovatele identity OAuth, který nastavíte později.
+> `AAD`Oddíl v adrese URL zpětného volání OAuth by se měl shodovat s názvem zprostředkovatele identity OAuth, který nastavíte později.
 
 ```azurecli-interactive
 domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
@@ -58,7 +58,7 @@ Volitelné deklarace identity můžete použít k těmto akcím:
 * Změna chování určitých deklarací identity, které Azure AD vrací v tokenech
 * Přidejte a získejte přístup k vlastním deklaracím pro vaši aplikaci.
 
-OpenShift nakonfigurujeme tak, aby `email` používala deklaraci identity `upn` , a vraťte se k nastavení preferovaného `upn` uživatelského jména tak, že přidáte jako součást tokenu ID vráceného Azure Active Directory.
+OpenShift nakonfigurujeme tak, aby používala `email` deklaraci identity, a vraťte se k `upn` nastavení preferovaného uživatelského jména tak, že přidáte `upn` jako součást tokenu ID vráceného Azure Active Directory.
 
 Přejděte na **Konfigurace tokenu (Preview)** a klikněte na **přidat volitelnou deklaraci identity**. Vyberte **ID** a pak zkontrolujte deklarace **e-mailu** a **UPN** .
 
@@ -80,7 +80,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-Následující příklad výstupu ukazuje, že heslo bude v `kubeadminPassword`.
+Následující příklad výstupu ukazuje, že heslo bude v `kubeadminPassword` .
 
 ```json
 {
@@ -98,14 +98,14 @@ Adresu URL konzoly clusteru můžete najít spuštěním následujícího přík
     --query "consoleProfile.url" -o tsv
 ```
 
-V prohlížeči spusťte adresu URL konzoly a přihlaste se `kubeadmin` pomocí přihlašovacích údajů.
+V prohlížeči spusťte adresu URL konzoly a přihlaste se pomocí `kubeadmin` přihlašovacích údajů.
 
 Přejděte do části **Správa**, klikněte na **Nastavení clusteru**a pak vyberte kartu **globální konfigurace** . Posuňte se na výběr **OAuth**.
 
 Posuňte se dolů a vyberte **Přidat** pod **zprostředkovateli identity** a vyberte **OpenID připojit**.
 ![V rozevíracím seznamu zprostředkovatelé identity vyberte OpenID připojit.](media/aro4-oauth-idpdrop.png)
 
-Zadejte název jako **AAD**, **ID klienta** jako **ID aplikace** a **tajný klíč klienta**. **Adresa URL vystavitele** je formátována `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`takto:. Nahraďte zástupný symbol ID tenanta, který jste získali dříve.
+Zadejte název jako **AAD**, **ID klienta** jako **ID aplikace** a **tajný klíč klienta**. **Adresa URL vystavitele** je formátována takto: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Nahraďte zástupný symbol ID tenanta, který jste získali dříve.
 
 ![Vyplnit podrobnosti OAuth](media/aro4-oauth-idp-1.png)
 

@@ -9,15 +9,15 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437132"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 URI
 
-Ovladač [systému Hadoop](https://www.aosabook.org/en/hdfs.html) , který je kompatibilní s Azure Data Lake Storage Gen2, je známý identifikátorem `abfs` schématu (systém souborů Azure BLOB). Ovladače ABFS v souladu s jinými ovladači systému souborů Hadoop využívají formát identifikátoru URI k adresování souborů a adresářů v rámci účtu s možností Data Lake Storage Gen2.
+Ovladač [systému Hadoop](https://www.aosabook.org/en/hdfs.html) , který je kompatibilní s Azure Data Lake Storage Gen2, je známý identifikátorem schématu `abfs` (systém souborů Azure BLOB). Ovladače ABFS v souladu s jinými ovladači systému souborů Hadoop využívají formát identifikátoru URI k adresování souborů a adresářů v rámci účtu s možností Data Lake Storage Gen2.
 
 ## <a name="uri-syntax"></a>Syntaxe identifikátoru URI
 
@@ -33,7 +33,7 @@ Pokud účet s možností Data Lake Storage Gen2, který chcete adresovat, **nen
 
 3. **Název účtu**: název přidělený vašemu účtu úložiště během vytváření.
 
-4. **Cesty**: reprezentace adresářové struktury s lomítkem`/`().
+4. **Cesty**: reprezentace adresářové struktury s lomítkem ( `/` ).
 
 5. **Název souboru**: název jednotlivého souboru. Tento parametr je nepovinný, pokud adresování adresáře.
 
@@ -41,7 +41,7 @@ Pokud je však účet, který chcete adresovat, nastaven jako výchozí systém 
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **Cesta**: reprezentace adresářové struktury s lomítkem`/`().
+1. **Cesta**: reprezentace adresářové struktury s lomítkem ( `/` ).
 
 2. **Název souboru**: název jednotlivého souboru.
 
