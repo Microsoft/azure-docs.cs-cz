@@ -1,0 +1,125 @@
+---
+title: Vytvoření virtuálního počítače s SQL Server (šablona Azure Resource Manager)
+description: Naučte se vytvářet SQL Server na virtuálním počítači Azure pomocí Azure Resource Manager šablony.
+author: MashaMSFT
+ms.topic: quickstart
+ms.custom: subject-armqs
+ms.author: mathoma
+ms.date: 06/29/2020
+ms.service: virtual-machines-sql
+ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852519"
+---
+# <a name="create-sql-server-vm-azure-resource-manager-template"></a>Vytvoření virtuálního počítače s SQL Server (šablona Azure Resource Manager)
+
+Tuto šablonu Azure Resource Manager použijte k nasazení SQL Server na virtuálním počítači Azure (VM). 
+
+[!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+## <a name="prerequisites"></a>Požadavky
+
+Šablona nástroje SQL Server VM ARM vyžaduje následující:
+
+- Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [PowerShellu](/powershell/scripting/install/installing-powershell?view=powershell-7). 
+- Předem nakonfigurovaná [Skupina prostředků](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) s připravenou [virtuální sítí](../../../virtual-network/quick-create-portal.md) a [podsítí](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet).
+- Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+
+## <a name="review-the-template"></a>Kontrola šablony
+
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/).
+
+:::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json" highlight="169-310":::
+
+V šabloně je definováno pět prostředků Azure: 
+
+- [Microsoft. Network/publicIpAddresses](/azure/templates/microsoft.network/publicipaddresses): Vytvoří veřejnou IP adresu. 
+- [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): vytvoří skupinu zabezpečení sítě. 
+- [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces): nakonfiguruje síťové rozhraní. 
+- [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): vytvoří virtuální počítač v Azure. 
+- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): zaregistruje virtuální počítač u poskytovatele prostředků virtuálního počítače SQL. 
+
+Další SQL Server v šablonách virtuálních počítačů Azure najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine).
+
+
+## <a name="deploy-the-template"></a>Nasazení šablony
+
+1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří virtuální počítač, na kterém je nainstalovaná zamýšlená verze SQL Server, a zaregistrované u poskytovatele prostředků virtuálního počítače SQL. 
+
+   [![Nasazení do Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
+
+2. Vyberte nebo zadejte následující hodnoty.
+
+    * **Předplatné**: vyberte předplatné Azure.
+    * **Skupina prostředků**: Skupina prostředků připravená pro váš virtuální počítač SQL Server. 
+    * **Oblast**: Vyberte oblast.  Například **USA – střed**.
+    * **Název virtuálního počítače**: zadejte název pro SQL Server virtuální počítač. 
+    * **Velikost virtuálního počítače**: v rozevíracím seznamu vyberte odpovídající velikost pro virtuální počítač.
+    * **Existující Virtual Network název**: zadejte název připravené virtuální sítě pro váš virtuální počítač s SQL Server. 
+    * **Existující skupina prostředků virtuální**sítě: zadejte skupinu prostředků, ve které byla vaše virtuální síť připravena. 
+    * **Název existující podsítě**: název připravené podsítě. 
+    * **Nabídka Image**: vyberte SQL Server a image Windows serveru, které nejlépe vyhovují vašim obchodním potřebám. 
+    * **SKU SQL**: vyberte edici SQL Server SKU, která nejlépe vyhovuje vašim obchodním potřebám. 
+    * **Uživatelské jméno správce**: uživatelské jméno pro správce virtuálního počítače. 
+    * **Heslo správce**: heslo používané účtem správce virtuálních počítačů. 
+    * **Typ úlohy úložiště**: typ úložiště pro zatížení, které nejlépe odpovídá vašemu podniku. 
+    * **Počet datových disků SQL**: počet disků, které SQL Server používá pro datové soubory.  
+    * **Cesta k datům**: cesta k datovým souborům SQL Server. 
+    * **Počet disků protokolu SQL**: počet disků, které SQL Server používá pro soubory protokolu. 
+    * **Cesta protokolu**: cesta pro soubory protokolu SQL Server. 
+    * **Umístění**: umístění všech prostředků, tato hodnota by měla zůstat ve výchozím nastavení `[resourceGroup().location]` . 
+
+3. Vyberte **Zkontrolovat a vytvořit**. Po úspěšném nasazení SQL Server virtuálního počítače se zobrazí oznámení.
+
+K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít také Azure PowerShell, rozhraní příkazového řádku Azure a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../../../azure-resource-manager/templates/deploy-powershell.md).
+
+## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
+
+K ověření nasazených prostředků můžete použít rozhraní příkazového řádku Azure. 
+
+
+```azurecli-interactive
+echo "Enter the resource group where your SQL Server VM exists:" &&
+read resourcegroupName &&
+az resource list --resource-group $resourcegroupName 
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte skupinu prostředků pomocí Azure CLI nebo Azure PowerShell:
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+---
+
+## <a name="next-steps"></a>Další kroky
+
+Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
+
+> [!div class="nextstepaction"]
+> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+
+Další způsoby nasazení SQL Server virtuálního počítače najdete v těchto tématech: 
+- [Azure Portal](create-sql-vm-portal.md)
+- [PowerShell](create-sql-vm-powershell.md)
+
+Další informace najdete v tématu [přehled SQL Server na virtuálních počítačích Azure](sql-server-on-azure-vm-iaas-what-is-overview.md).

@@ -4,14 +4,16 @@ description: Rychle vytvořte a spusťte Poznámkový blok Jupyter Azure Noteboo
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561091"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832096"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření a sdílení poznámkového bloku v Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový blok Jupyter a potom tento poznámkový blok nasdílíte s ostatními. Jupyter umožňuje snadno zkombinovat Markdownu text, spustitelný kód, trvalá data, grafiku a vizualizace na jednom plátně, poznámkovém bloku. Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci.
 
@@ -19,8 +21,6 @@ V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový 
 Žádné
 
 ## <a name="create-a-new-project-and-notebook"></a>Vytvořit nový projekt a Poznámkový blok
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Přejít na [web Azure Notebooks ( https://notebooks.azure.com) ](https://notebooks.azure.com) a přihlaste se. Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md).
 

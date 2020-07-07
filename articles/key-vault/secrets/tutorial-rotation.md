@@ -1,6 +1,6 @@
 ---
-title: Kurz rotace jednoho uživatele nebo jednoduchého hesla
-description: V tomto kurzu se dozvíte, jak automatizovat rotaci tajného klíče pro prostředky, které používají ověřování jedním uživatelem a jedním heslem.
+title: Kurz rotace pro prostředky s jednou sadou ověřovacích přihlašovacích údajů
+description: V tomto kurzu se dozvíte, jak automatizovat rotaci tajného klíče pro prostředky, které používají jednu sadu přihlašovacích údajů pro ověřování.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183207"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801440"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>Automatizace rotace tajného klíče pro prostředky, které používají ověřování jedním uživatelem a jedním heslem
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které používají jednu sadu ověřovacích přihlašovacích údajů
 
 Nejlepším způsobem, jak ověřit služby Azure, je použití [spravované identity](../general/managed-identity.md), ale v některých případech se nejedná o možnost. V těchto případech se používají přístupové klíče a tajné kódy. Přístupové klíče a tajné kódy byste měli pravidelně střídat.
 
-V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů pro databáze a služby, které používají ověřování jedním uživatelem a jedním heslem. Konkrétně tento kurz otočí SQL Server hesla uložená v Azure Key Vault pomocí funkce aktivované Azure Event Gridm oznámením:
+V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů pro databáze a služby, které používají jednu sadu ověřovacích přihlašovacích údajů. Konkrétně tento kurz otočí SQL Server hesla uložená v Azure Key Vault pomocí funkce aktivované Azure Event Gridm oznámením:
 
 ![Diagram řešení rotace](../media/rotate1.png)
 
@@ -176,7 +176,7 @@ Kompletní kód můžete najít na [GitHubu](https://github.com/jlichwa/azure-ke
 
 1. Stáhněte si soubor zip aplikace Function App z [GitHubu](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip).
 
-1. Nahrajte soubor simplerotationsample-FN. zip do Azure Cloud Shell.
+1. Nahrajte soubor simplerotationsample-fn.zip do Azure Cloud Shell.
 
    ![Nahrání souboru](../media/rotate4.png)
 1. Pomocí tohoto příkazu rozhraní příkazového řádku Azure nasaďte soubor zip do aplikace Function App:
@@ -191,7 +191,7 @@ Po nasazení funkce by se v simplerotation-FN měla zobrazit dvě funkce:
 
 ## <a name="add-an-event-subscription-for-the-secretnearexpiry-event"></a>Přidat odběr události pro událost SecretNearExpiry
 
-Zkopírujte `eventgrid_extension` klíč aplikace Function App:
+Zkopírujte klíč aplikace Function App `eventgrid_extension` :
 
    ![Vybrat nastavení aplikace Function App](../media/rotate6.png)
 
@@ -217,12 +217,12 @@ $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
 az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Simple123" --tags "UserID=azureuser" "DataSource=simplerotation-sql.database.windows.net" --expires $tomorrowDate
 ```
 
-Při vytváření tajného klíče s krátkým datem vypršení platnosti `SecretNearExpiry` se okamžitě publikuje událost, která zase aktivuje funkci pro otočení tajného klíče.
+Při vytváření tajného klíče s krátkým datem vypršení platnosti se okamžitě publikuje `SecretNearExpiry` událost, která zase aktivuje funkci pro otočení tajného klíče.
 
 ## <a name="test-and-verify"></a>Testování a ověření
 Po několika minutách by se `sqluser` měl tajný klíč automaticky otočit.
 
-Chcete-li ověřit, zda byl tajný klíč otočen, použijte **Key Vault** > **tajných klíčů**:
+Chcete-li ověřit, zda byl tajný klíč otočen, použijte **Key Vault**  >  **tajných klíčů**:
 
 ![Přejít k tajným klíčům](../media/rotate8.png)
 
@@ -250,7 +250,7 @@ Zdrojový kód webové aplikace můžete najít na [GitHubu](https://github.com/
 Pokud chcete nasadit webovou aplikaci, proveďte tyto kroky:
 
 1. Stáhněte si soubor zip aplikace Function App z [GitHubu](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip).
-1. Nahrajte soubor simplerotationsample-App. zip do Azure Cloud Shell.
+1. Nahrajte soubor simplerotationsample-app.zip do Azure Cloud Shell.
 1. Pomocí tohoto příkazu rozhraní příkazového řádku Azure nasaďte soubor zip do aplikace Function App:
 
    ```azurecli

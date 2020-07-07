@@ -335,9 +335,6 @@
         - name: Použití vzdálených cílových výpočetních prostředí
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: Definování úloh ML
-          displayName: 'machine learning, task type, automl'
-          href: how-to-define-task-type.md
         - name: Automatické trénování modelu prognóz
           displayName: time series
           href: how-to-auto-train-forecast.md

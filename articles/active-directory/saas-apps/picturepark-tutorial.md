@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57f412f93d9dbe2d9967c5cbc7dc50b1ee8bd61f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73177013"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Kurz: Azure Active Directory integrace s Picturepark
 
@@ -109,12 +109,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
 
-    |  |
-    |--|
-    | `https://<companyname>.current-picturepark.com`|
-    | `https://<companyname>.picturepark.com`|
-    | `https://<companyname>.next-picturepark.com`|
-    | |
+    ```http
+        https://<companyname>.current-picturepark.com
+        https://<companyname>.picturepark.com
+        https://<companyname>.next-picturepark.com
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Picturepark](https://picturepark.com/company/picturepark-customer-support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -148,7 +147,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
 3. Klikněte na **ověřování**a potom klikněte na **Zprostředkovatelé identity**.
    
-    ![Authentication](./media/picturepark-tutorial/ic795063.png "Authentication")
+    ![Ověřování](./media/picturepark-tutorial/ic795063.png "Ověřování")
 
 4. V části **Konfigurace zprostředkovatele identity** proveďte následující kroky:
    
@@ -166,7 +165,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
 5. Klikněte na **JoinDefaultUsersGroup**.
 
-6. Pokud chcete nastavit atribut **EmailAddress** v textovém poli **deklarace identity** , `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` zadejte a klikněte na **Uložit**.
+6. Pokud chcete nastavit atribut **EmailAddress** v textovém poli **deklarace identity** , zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` a klikněte na **Uložit**.
 
       ![Konfigurace](./media/picturepark-tutorial/ic795065.png "Konfigurace")
 
@@ -188,7 +187,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
@@ -240,7 +239,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Picturepark, musí se zřídit
    
     ![Vytvořit uživatele](./media/picturepark-tutorial/ic795069.png "Vytvořit uživatele")
    
-    a. Do textového pole **e-mailová adresa** zadejte **e-mailovou adresu** uživatele `BrittaSimon@contoso.com`.  
+    a. Do textového pole **e-mailová adresa** zadejte **e-mailovou adresu** uživatele `BrittaSimon@contoso.com` .  
    
     b. Do textových polí **heslo** a **potvrzení hesla** zadejte **heslo** BrittaSimon. 
    
@@ -252,7 +251,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Picturepark, musí se zřídit
    
     f. V textovém poli **země** vyberte **zemi nebo oblast** uživatele.
   
-    g. Do textového pole **zip** **Zadejte PSČ města** .
+    například Do textového pole **zip** **Zadejte PSČ města** .
    
     h. Do textového pole **město** zadejte **jméno města** uživatele.
 

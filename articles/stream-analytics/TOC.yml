@@ -13,6 +13,8 @@
       items:
         - name: portál Azure
           href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
         - name: Šablona ARM
           displayName: Resource Manager
           href: quick-create-azure-resource-manager.md

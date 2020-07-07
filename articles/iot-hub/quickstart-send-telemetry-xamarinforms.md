@@ -1,6 +1,6 @@
 ---
 title: Rychlý start k odesílání telemetrických dat do služby Azure IoT Hub | Microsoft Docs
-description: V tomto rychlém startu spustíte ukázkovou aplikaci Xamarin Forms k odeslání simulované telemetrie do služby IoT Hub a ke čtení telemetrie ze služby IoT Hub ke zpracování v cloudu.
+description: V tomto rychlém startu spustíte ukázkovou aplikaci Xamarin. Forms, která odešle simulovanou telemetrii do služby IoT Hub a přečte telemetrii ze služby IoT Hub ke zpracování v cloudu.
 author: cmaneu
 manager: philmea
 ms.author: chmaneu
@@ -10,21 +10,21 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-ms.date: 05/20/2020
-ms.openlocfilehash: d2292a65ef25f6450d6810b50366daa622b92bc8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.date: 07/01/2020
+ms.openlocfilehash: 4178ee38ca179f179824a13130121b997f4f5f14
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802703"
+ms.locfileid: "85807790"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarin-forms"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub (formuláře Xamarin)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarinforms"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub (Xamarin. Forms)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto článku budete do služby IoT Hub odesílat telemetrická data z aplikace simulovaného zařízení. Pak můžete data zobrazit v back-endové aplikaci.
 
-Tento článek používá předem napsanou aplikaci Xamarin Forms k odeslání telemetrie a nástroje CLI ke čtení telemetrie z IoT Hub.
+Tento článek používá předem napsanou aplikaci Xamarin. Forms k odeslání telemetrie a nástroje CLI ke čtení telemetrie z IoT Hub.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 - Stažení vzorového kódu z [ukázek Azure](https://github.com/Azure-Samples/azure-iot-samples-xamarin/archive/master.zip).
 
-- Nejnovější verzi sady [Visual Studio 2019](https://visualstudio.microsoft.com/) nebo [Visual Studio pro Mac](https://visualstudio.microsoft.com/) s nainstalovanou sadou nástrojů Xamarin Forms. Tento rychlý Start byl testován pomocí sady Visual Studio 16.6.0.
+- Nejnovější verzi sady [Visual Studio 2019](https://visualstudio.microsoft.com/) nebo [Visual Studio pro Mac](https://visualstudio.microsoft.com/) s nainstalovaným nástrojem Xamarin. Forms. Tento rychlý Start byl testován pomocí sady Visual Studio 16.6.0.
 
 - Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -116,7 +116,7 @@ Následující snímek obrazovky ukazuje typ telemetrie, který se zobrazí v m�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu nastavíte centrum IoT, zaregistrovali zařízení, odeslali simulovanou telemetrii do centra z aplikace Xamarin Forms a přečetli telemetrii z centra. 
+V tomto rychlém startu nastavíte centrum IoT, zaregistrovali zařízení, odeslali simulovanou telemetrii do centra z aplikace Xamarin. Forms a přečetli telemetrii z centra. 
 
 Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
 

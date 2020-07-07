@@ -3,14 +3,16 @@ title: Export projektu Jupyterového bloku z verze Preview služby Azure Noteboo
 description: Rychle exportujte projekt Jupyter poznámkového bloku.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 31e32a6ebb39429078c7c6747bc6b10f177699ac
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802694"
+ms.locfileid: "85832028"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Rychlý Start: Export projektu poznámkového bloku Jupyter v Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 V tomto rychlém startu stáhnete Azure Notebooks projekt pro použití v jiných řešeních poznámkových bloků Jupyter. 
 
@@ -18,8 +20,6 @@ V tomto rychlém startu stáhnete Azure Notebooks projekt pro použití v jinýc
 Existující projekt Azure Notebooks.
 
 ## <a name="export-an-azure-notebooks-project"></a>Exportovat Azure Notebooks projekt
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md).
 
@@ -36,26 +36,16 @@ Po stažení souborů projektu je můžete použít s jinými řešeními Jupyte
 - [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
 - [Azure Lab Services](#use-azure-lab-services)
-- [GitHubu](#use-github)
+- [GitHub](#use-github)
 
-## <a name="download-the-requirements-file-used-by-azure-notebooks"></a>Stažení souboru požadavků, který používá Azure Notebooks
+## <a name="create-an-environment-for-notebooks"></a>Vytvoření prostředí pro poznámkové bloky
 
-Pokud chcete vytvořit prostředí, které odpovídá Azure Notebooks verze Preview, můžete použít soubor **AzureNotebooksRequirements.txt** poskytovaný v GitHubu.
+Pokud chcete vytvořit prostředí, které odpovídá Azure Notebooks ve verzi Preview, můžete použít soubor skriptu, který je k dispozici na GitHubu.
 
-1. Přejděte do [úložiště GitHub](https://github.com/microsoft/AzureNotebooks) Azure Notebooks, nebo můžete k [souboru získat přímý přístup](https://aka.ms/aznbrequirementstxt).
-1. Stáhněte soubor **AzureNotebooksRequirements.txt** , který obsahuje závislosti balíčku pro prostředí Azure Notebooks. 
-1. Z příkazového řádku přejděte do adresáře, který chcete použít pro vaše projekty, a pomocí souboru požadavků nainstalujte příslušné balíčky.
+1. Přejděte do [úložiště GitHub](https://github.com/microsoft/AzureNotebooks) Azure Notebooks nebo [Získejte přímý přístup ke složce prostředí](https://aka.ms/aznbrequirementstxt).
+1. Z příkazového řádku přejděte do adresáře, který chcete použít pro vaše projekty.
+1. Stáhněte si obsah složky prostředí a podle pokynů v souboru READme nainstalujte Azure Notebooks závislostí balíčku.
 
-    > [!Note]
-    > I když to není nutné, obecně byste chtěli vytvořit nové virtuální prostředí pro instalaci balíčku, jak je znázorněno níže.
-
-    ```bash
-    cd your-project-dir
-    python -m venv .venv
-    python -m pip install -r AzureNotebooksRequirements.txt
-    ```
-
-Další informace o souborech požadavků naleznete v [dokumentaci PIP]( https://pip.pypa.io/en/stable/user_guide/#requirements-files).
 
 ## <a name="use-notebooks-in-visual-studio-code"></a>Použití poznámkových bloků v Visual Studio Code
 
@@ -65,7 +55,7 @@ Další informace o souborech požadavků naleznete v [dokumentaci PIP]( https:/
 
 Po [stažení](#export-an-azure-notebooks-project) souborů projektu je můžete použít s vs Code. Pokyny, jak VS Code s poznámkovým blokům Jupyter, najdete v tématu [práce s poznámkovými bloky Jupyter v Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support) a [v oblasti datové vědy v tématu Visual Studio Code](https://code.visualstudio.com/docs/python/data-science-tutorial) kurzy.
 
-K vytvoření prostředí, které odpovídá Azure Notebooks Preview, můžete použít také [požadavky na Azure Notebooks](#download-the-requirements-file-used-by-azure-notebooks) s Visual Studio Code.
+Pomocí [skriptu Azure Notebooks prostředí](#create-an-environment-for-notebooks) s Visual Studio Code můžete také vytvořit prostředí, které odpovídá Azure Notebooks Preview.
 
 ## <a name="use-notebooks-in-visual-studio-codespaces"></a>Použití poznámkových bloků v aplikaci Visual Studio Codespaces
 
@@ -107,3 +97,11 @@ GitHub poskytuje bezplatný a zálohovaný způsob založený na zdrojovém ří
 1. [Stáhněte](#export-an-azure-notebooks-project) si soubory projektu.
 1. [Vytvořte úložiště GitHub](https://help.github.com/github/getting-started-with-github/create-a-repo) pro ukládání vašich poznámkových bloků. 
 1. [Přidejte své soubory](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) do úložiště.
+
+## <a name="next-steps"></a>Další kroky
+
+- [Informace o Pythonu v Visual Studio Code](https://code.visualstudio.com/docs/python/python-tutorial)
+- [Další informace o Azure Machine Learning a poznámkových blocích Jupyter](../machine-learning/how-to-run-jupyter-notebooks.md)
+- [Další informace o Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)
+- [Informace o Azure Lab Services](https://azure.microsoft.com/services/lab-services/)
+- [Další informace o GitHubu](https://help.github.com/github/getting-started-with-github/)

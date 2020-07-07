@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 35435bd318596ffd0a46e5d272565358c092bc03
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1f0541cd3ae7cf2c78d3cd2bf6844fed930e7968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562686"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833143"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -75,10 +75,10 @@ Pokud chcete přidat připojení ke službě Azure Cosmos DB, vytvořte objekt *
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
-```  
+```
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
-Následující kód vytvoří objekt **TableService** a použije ho k vytvoření nové tabulky. 
+Následující kód vytvoří objekt **TableService** a použije ho k vytvoření nové tabulky.
 
 ```javascript
 var tableSvc = azure.createTableService();
@@ -364,7 +364,7 @@ dc.table.queryEntities(tableName,
 
 Při zkoumání objektu `continuationToken` si můžete všimnout vlastností, jako jsou `nextPartitionKey`, `nextRowKey` a `targetLocation`, které je možné použít k iteraci výsledky.
 
-Můžete také použít `top` společně s nástrojem `continuationToken` k nastavení velikosti stránky. 
+Můžete také použít `top` společně s nástrojem `continuationToken` k nastavení velikosti stránky.
 
 ## <a name="work-with-shared-access-signatures"></a>Práce se sdílenými přístupovými podpisy
 Sdílené přístupové podpisy (SAS) představují bezpečný způsob zajištění podrobného přístupu k tabulkám bez nutnosti zadávat název nebo klíče vašeho účtu služby Storage. SAS se často používá k zajištění omezeného přístupu k datům, jako je například povolení dotazování záznamů pro mobilní aplikaci.
@@ -393,7 +393,7 @@ var host = tableSvc.host;
 
 Všimněte si, že musíte zadat také informace o hostiteli, které se vyžadují při pokusu držitele SAS o přístup k tabulce.
 
-Klientská aplikace pak provádí operace s tabulkou pomocí SAS a metody **TableServiceWithSAS**. Následující příklad se připojí k tabulce a provede dotaz. Informace o formátu tableSAS najdete v článku [udělení omezeného přístupu k prostředkům Azure Storage pomocí článku sdílené přístupové podpisy (SAS)](../storage/common/storage-sas-overview.md) . 
+Klientská aplikace pak provádí operace s tabulkou pomocí SAS a metody **TableServiceWithSAS**. Následující příklad se připojí k tabulce a provede dotaz. Informace o formátu tableSAS najdete v článku [udělení omezeného přístupu k prostředkům Azure Storage pomocí článku sdílené přístupové podpisy (SAS)](../storage/common/storage-sas-overview.md) .
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -458,6 +458,6 @@ Další informace najdete v následujících materiálech.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * Úložiště [sady SDK služby Azure Storage pro Node.js](https://github.com/Azure/azure-storage-node) na GitHubu
-* [Azure pro vývojáře v Node.js](https://docs.microsoft.com/azure/javascript/)
+* [Azure pro vývojáře v Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 * [Vytvoření webové aplikace Node.js v Azure](../app-service/app-service-web-get-started-nodejs.md)
 * [Sestavení a nasazení aplikace Node.js v cloudové službě Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (pomocí Windows PowerShellu)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684213"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833177"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -89,9 +89,11 @@ Pokud chcete směrovat příkazy ping služby Traffic Manager z brány WAF do ap
 ![Website Translations (Překlady webů)][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Zabezpečení provozu do služby App Service Environment pomocí skupin zabezpečení sítě (NSG)
-Podrobnosti o omezení provozu do služby App Service Environment z brány WAF pouze pomocí virtuální IP adresy cloudové služby najdete v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md). Tady je ukázkový příkaz PowerShellu pro provedení této úlohy pro port TCP 80.
+Podrobnosti o omezení provozu do služby App Service Environment z brány WAF pouze pomocí virtuální IP adresy cloudové služby najdete v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md). Zde je ukázkový příkaz prostředí PowerShell pro provádění této úlohy pro port TCP 80.
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 Hodnotu SourceAddressPrefix nahraďte virtuální IP adresou vaší cloudové služby WAF.
 

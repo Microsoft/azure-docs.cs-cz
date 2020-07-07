@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: c25de9a41678af7391fc271b1dc3413c332ce8b6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830345"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Použití identifikátorů URI pro přesměrování s knihovnou Microsoft Authentication Library pro iOS a macOS
 
@@ -36,14 +36,16 @@ V případě pokročilých scénářů ale možná budete muset změnit identifi
 
 Aby mohla platforma Microsoft Identity sdílet tokeny napříč aplikacemi, musí mít každá aplikace stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který jste zadali při registraci aplikace na portálu (ne ID sady prostředků aplikace, které zaregistrujete na aplikaci pomocí Applu).
 
-Identifikátory URI pro přesměrování musí být pro každou aplikaci pro iOS odlišné. To umožňuje službě Microsoft Identity jednoznačně identifikovat různé aplikace, které sdílejí ID aplikace. Každá aplikace může mít v Azure Portal zaregistrováno více identifikátorů URI pro přesměrování. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Například:
+Identifikátory URI pro přesměrování musí být pro každou aplikaci pro iOS odlišné. To umožňuje službě Microsoft Identity jednoznačně identifikovat různé aplikace, které sdílejí ID aplikace. Každá aplikace může mít v Azure Portal zaregistrováno více identifikátorů URI pro přesměrování. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Příklad:
 
 Při následující registraci aplikace v Azure Portal:
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* ID klienta: `ABCDE-12345` (Toto je jediné ID klienta)
+* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` ,`msauth.com.contoso.app3://auth`
 
-App1 používá přesměrování `msauth.com.contoso.app1://auth` app2 používá `msauth.com.contoso.app2://auth` APP3 použití`msauth.com.contoso.app1://auth`
+App1 používá přesměrování `msauth.com.contoso.app1://auth` . \
+App2 používá `msauth.com.contoso.app2://auth` . \
+APP3 používá `msauth.com.contoso.app1://auth` .
 
 ### <a name="migrating-from-adal-to-msal"></a>Migrace z knihovny ADAL na MSAL
 
@@ -70,7 +72,6 @@ Při migraci kódu, který používal knihovnu ověřování Azure AD (ADAL) na 
         </dict>
     </array>
     ```
-    
 
 MSAL ověří, zda identifikátor URI přesměrování správně zaregistruje, a vrátí chybu, pokud není.
     
@@ -78,7 +79,7 @@ MSAL ověří, zda identifikátor URI přesměrování správně zaregistruje, a
 
 ## <a name="use-a-custom-redirect-uri"></a>Použít vlastní identifikátor URI pro přesměrování
 
-Chcete-li použít vlastní identifikátor URI přesměrování, předejte `redirectUri` parametr do `MSALPublicClientApplicationConfig` a předejte tomuto objektu `MSALPublicClientApplication` při inicializaci objektu. Pokud je identifikátor URI přesměrování neplatný, inicializátor vrátí `nil` a nastaví `redirectURIError` Další informace.  Například:
+Chcete-li použít vlastní identifikátor URI přesměrování, předejte `redirectUri` parametr do `MSALPublicClientApplicationConfig` a předejte tomuto objektu `MSALPublicClientApplication` při inicializaci objektu. Pokud je identifikátor URI přesměrování neplatný, inicializátor vrátí `nil` a nastaví `redirectURIError` Další informace.  Příklad:
 
 Cíl-C:
 

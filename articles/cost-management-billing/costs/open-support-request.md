@@ -7,12 +7,12 @@ ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 38efc86d1bdc185f39d3ea502a64d0f3cf7edcc0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 1befd0cc85044097a64b5988e6f763ce89ca3ec9
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849715"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Vytvoření žádosti o podporu pro Cloudyn
 
@@ -38,7 +38,7 @@ Po vytvoření se lístek podpor přidá do fronty podpory. Doba odezvy se liš�
 
 Pokud chcete vytvořit lístek podpory pro fakturaci ve službě Cost Management, v oblasti **Typ problému** vyberte **Azure Cost Management**.
 
-Stav incidentu, který jste zaevidovali, najdete v oblasti [Všechny žádosti o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests).
+Stav incidentu, který jste zaevidovali, najdete v oblasti [Všechny žádosti o podporu](../../azure-portal/supportability/how-to-manage-azure-support-request.md#view-support-requests).
 
 Pokud jste starším uživatelem Cloudynu bez účtu Azure, můžete žádost o podporu otevřít na adrese https://support.microsoft.com/oas/default.aspx?prid=16451.
 

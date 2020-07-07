@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 025b2b66ffd6d9f62de6bf6debf7d4067cd52ab4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 18afd9faf21e5de4831d54d0870b64e79d29cb0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261235"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833295"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node.js
 
@@ -71,9 +71,9 @@ Vytvořte aplikaci JavaScriptu s názvem *BLOB-Start-V12*.
         }
     }
     ```
-    
+
     Pokud chcete, můžete do pole umístit vlastní název `author` .
-   
+
 ### <a name="install-the-package"></a>Instalace balíčku
 
 Ještě pořád v adresáři *objektů BLOB – rychlý Start – V12* nainstalujte knihovnu klienta Azure Blob Storage pro balíček JavaScriptu pomocí `npm install` příkazu. Tento příkaz přečte *package.jsv* souboru a nainstaluje balíček klientské knihovny Azure Blob Storage V12 for JavaScript a všechny knihovny, na kterých závisí.
@@ -95,12 +95,12 @@ Z adresáře projektu:
     ```javascript
     const { BlobServiceClient } = require('@azure/storage-blob');
     const uuidv1 = require('uuid/v1');
-    
+
     async function main() {
         console.log('Azure Blob storage v12 - JavaScript quickstart sample');
         // Quick start code goes here
     }
-    
+
     main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
     ```
 
@@ -309,7 +309,7 @@ V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objek
 Výukové programy, ukázky, rychlé starty a další dokumentaci najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Dokumentace k Azure pro JavaScript](/azure/javascript/)
+> [Dokumentace k Azure pro JavaScript](/azure/developer/javascript/)
 
 * Další informace najdete v tématu [Klientská knihovna pro úložiště objektů BLOB v Azure pro JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).
 * Ukázková aplikace služby Blob Storage najdete v [ukázkách V12 JavaScriptu v klientské knihovně pro úložiště objektů BLOB v Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).

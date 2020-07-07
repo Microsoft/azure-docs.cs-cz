@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d6b445d1e795cfb34452f48bfb5ed375f6a284e1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806846"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření tenanta Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření tenanta Azure AD B2C
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Přihlaste se pomocí účtu Azure, kterému byla přiřazena alespoň role [Přispěvatel](../role-based-access-control/built-in-roles.md) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). Přihlaste se pomocí účtu Azure, kterému byla přiřazena alespoň role [Přispěvatel](../role-based-access-control/built-in-roles.md) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
 
 1. Vyberte adresář, který obsahuje vaše předplatné.
 
@@ -51,8 +51,8 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 1. Na stránce **vytvořit adresář** zadejte následující:
 
-   - **Název organizace** – zadejte název vaší organizace.
-   - **Počáteční název domény** – zadejte název domény. Ve výchozím nastavení se tento název připojí s *příponou. onmicrosoft.com*. Později to můžete změnit přidáním názvu domény, který už vaše organizace používá, jako je například ' contoso.com '.
+   - **Název organizace** – zadejte název vašeho tenanta Azure AD B2C.
+   - **Počáteční název domény** – zadejte název domény pro vašeho tenanta Azure AD B2C.
    - **Země nebo oblast** – ze seznamu vyberte zemi nebo oblast. Tento výběr nelze později změnit.
    - **Předplatné** – ze seznamu vyberte své předplatné.
    - **Skupina prostředků** – vyberte skupinu prostředků, která bude obsahovat tenanta. Nebo vyberte **vytvořit novou**, zadejte **název** skupiny prostředků, vyberte **umístění skupiny prostředků**a pak vyberte **OK**.
@@ -82,7 +82,7 @@ Místo hledání *Azure AD B2C* ve **všech službách** pokaždé, když chcete
 
 Tuto operaci je nutné provést pouze jednou. Před provedením tohoto postupu se ujistěte, že jste přešli do adresáře, který obsahuje Azure AD B2C tenanta, jak je popsáno v předchozí části, a [Vyberte svůj adresář TENANTA B2C](#select-your-b2c-tenant-directory).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce Azure Portal vyberte **všechny služby**.
 1. Ve vyhledávacím poli **všechny služby** vyhledejte **Azure AD B2C**, najeďte myší na výsledek hledání a potom vyberte ikonu hvězdičky v popisku. **Azure AD B2C** se nyní zobrazí v Azure Portal v části **Oblíbené**.
 1. Pokud chcete změnit pozici vaší nové oblíbené položky, přejděte do nabídky Azure Portal, vyberte **Azure AD B2C**a přetáhněte ji nahoru nebo dolů na požadovanou pozici.

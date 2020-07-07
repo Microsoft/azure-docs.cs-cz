@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 59a5308d2c0a1fa2e1f38f2fe3da3a2cc29448be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e3953c56a9acf911c7dc2bbbd453b52b72f9bb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78199780"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833234"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro JavaScript
 
@@ -28,13 +28,13 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro JavaScript:
 * Odstranění zpráv z fronty
 * Odstranění fronty
 
-[Ukázky knihovny dokumentace k](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | rozhraní API balíček[zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [(Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-queue) | [Samples](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+[Referenční dokumentace k](https://docs.microsoft.com/javascript/api/@azure/storage-queue/)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)  |  [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-queue)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Aktuální [Node. js](https://nodejs.org/en/download/) pro váš operační systém.
+* Aktuální [Node.js](https://nodejs.org/en/download/) pro váš operační systém.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -42,7 +42,7 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci Node. js s názvem *Queues-Start-V12*.
+Vytvořte aplikaci Node.js s názvem *Queues-Started-V12*.
 
 1. V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro projekt.
 
@@ -56,7 +56,7 @@ Vytvořte aplikaci Node. js s názvem *Queues-Start-V12*.
     cd queues-quickstart-v12
     ```
 
-1. Vytvořte nový textový soubor s názvem *Package. JSON*. Tento soubor definuje projekt Node. js. Uložte tento soubor v adresáři *Queues-Starter-V12* . Tady je obsah souboru:
+1. Vytvořte nový textový soubor s názvem *package.jsv*. Tento soubor definuje projekt Node.js. Uložte tento soubor v adresáři *Queues-Starter-V12* . Tady je obsah souboru:
 
     ```json
     {
@@ -77,7 +77,7 @@ Vytvořte aplikaci Node. js s názvem *Queues-Start-V12*.
     }
     ```
 
-    Pokud chcete, můžete do `author` pole umístit vlastní název.
+    Pokud chcete, můžete do pole umístit vlastní název `author` .
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
@@ -87,14 +87,14 @@ Ještě pořád v adresáři *fronty – rychlý Start-V12* nainstalujte knihovn
 npm install
 ```
 
- Tento příkaz přečte soubor *Package. JSON* a nainstaluje balíček klientské knihovny Azure Queue Storage V12 for JavaScript a všechny knihovny, na kterých závisí.
+ Tento příkaz přečte *package.jsv* souboru a nainstaluje balíček klientské knihovny Azure Queue Storage V12 for JavaScript a všechny knihovny, na kterých závisí.
 
 ### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
 
 Z adresáře projektu:
 
 1. Otevřít další nový textový soubor v editoru kódu
-1. Přidání `require` volání pro načtení modulů Azure a Node. js
+1. Přidání `require` volání pro načtení modulů Azure a Node.js
 1. Vytvoření struktury pro program, včetně velmi základního zpracování výjimek
 
     Zde je kód:
@@ -112,7 +112,7 @@ Z adresáře projektu:
 
     ```
 
-1. Uložte nový soubor jako *Queues-Quickstart-V12. js* v adresáři *Queues-Starter-V12* .
+1. Uložte nový soubor jako *queues-quickstart-v12.js* v adresáři *Queues-Started-V12* .
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -131,8 +131,8 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 Pro interakci s těmito prostředky použijte následující třídy JavaScriptu:
 
 * [QueueServiceClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient): `QueueClient` třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` třída představuje jednotlivé objekty vracené při volání [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient?view=azure-node-latest#receivemessages-queuereceivemessageoptions-) ve frontě.
+* [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+* [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient?view=azure-node-latest#receivemessages-queuereceivemessageoptions-) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -158,7 +158,7 @@ Přidejte tento kód do `main` funkce:
 // connection string is stored in an environment variable on the machine
 // running the application called AZURE_STORAGE_CONNECTION_STRING. If the
 // environment variable is created after the application is launched in a
-// console or with Visual Studio, the shell or application needs to be 
+// console or with Visual Studio, the shell or application needs to be
 // closed and reloaded to take the environment variable into account.
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
@@ -208,7 +208,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Podívejte se na zprávy ve frontě voláním metody [peekMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) . `peekMessages` Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
+Podívejte se na zprávy ve frontě voláním metody [peekMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) . `peekMessages`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
 
 Přidejte tento kód na konec `main` funkce:
 
@@ -226,7 +226,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [updateMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) . `updateMessage` Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Společně s novým obsahem, předejte `messageId` a `popReceipt` z odpovědi, která byla uložena dříve v kódu. `sendMessageResponse` Vlastnosti určují, která zpráva se má aktualizovat.
+Aktualizujte obsah zprávy voláním metody [updateMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) . `updateMessage`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Společně s novým obsahem, předejte `messageId` a `popReceipt` z odpovědi, která byla uložena dříve v kódu. `sendMessageResponse`Vlastnosti určují, která zpráva se má aktualizovat.
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -298,7 +298,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 Tato aplikace vytvoří a přidá tři zprávy do fronty Azure. Kód vypíše zprávy ve frontě a pak je načte a odstraní před tím, než se nakonec odstraní fronta.
 
-V okně konzoly přejděte do adresáře, který obsahuje soubor *Queues-Quickstart-V12. js* , a poté spusťte následující `node` příkaz pro spuštění aplikace.
+V okně konzoly přejděte do adresáře obsahujícího soubor *queues-quickstart-v12.js* a potom `node` Spusťte následující příkaz pro spuštění aplikace.
 
 ```console
 node queues-quickstart-v12.js
@@ -348,7 +348,7 @@ V tomto rychlém startu jste zjistili, jak vytvořit frontu a přidat do ní zpr
 Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Dokumentace k Azure pro JavaScript](https://docs.microsoft.com/azure/javascript/)
+> [Dokumentace k Azure pro JavaScript](https://docs.microsoft.com/azure/developer/javascript/)
 
 * Další informace najdete v tématu [Klientská knihovna pro Azure Storage Queue pro JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
 * Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte na [ukázky V12 JavaScriptu v klientské knihovně Azure Queue Storage](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).

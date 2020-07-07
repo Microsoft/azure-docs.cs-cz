@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f10bf6a0487ea53bf4e05d0d2d389e2a275e83a
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: ea300148f421577e6f3ace961d06127fc9f2b536
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765523"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801168"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s pymetrics
 
@@ -102,11 +102,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace pymetrics několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name |  |  Zdrojový atribut|
-    | ---------------| --------------- | --------- |
-    | UserFirstName | | User. křestní jméno |
-    | UserLastName | | User. příjmení |
-    | UserEmail | | User. userPrincipalName |
+    | Name | Zdrojový atribut|
+    | --------------- | --------- |
+    | UserFirstName | User. křestní jméno |
+    | UserLastName | User. příjmení |
+    | UserEmail | User. userPrincipalName |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 

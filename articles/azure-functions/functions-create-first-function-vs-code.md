@@ -5,14 +5,14 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter, seo, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: ebb402da5a647d20b669442c05c47a0f1c627471
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 819fdec23d00929db34942434f66a6ffa5d4a1d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559924"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833736"
 ---
-# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce v Azure pomocí Visual Studio Code
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření funkce v Azure s využitím Visual Studio Code
 
 ::: zone pivot="programming-language-csharp"  
 V tomto článku použijete Visual Studio Code k vytvoření funkce založené na knihovně jazyka C#, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. 
@@ -50,11 +50,11 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node. js](https://nodejs.org/), který vyžaduje systém Windows pro npm. Pouze [aktivní LTS a verze LTS údržby](https://nodejs.org/about/releases/). Pomocí `node --version` příkazu ověřte svou verzi.
++ [Node.js](https://nodejs.org/)požadováno systémem Windows pro npm. Pouze [aktivní LTS a verze LTS údržby](https://nodejs.org/about/releases/). Pomocí `node --version` příkazu ověřte svou verzi.
     Nevyžaduje se pro místní vývoj na macOS a Linux.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ LTS verze [Node. js](https://nodejs.org/), Active a Maintenance LTS (Doporučené 10.14.1). Pomocí `node --version` příkazu ověřte svou verzi.
++ [Node.js](https://nodejs.org/), LTS a verze LTS údržby (doporučeno 10.14.1). Pomocí `node --version` příkazu ověřte svou verzi.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
 + [Python 3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [Python 3,6](https://www.python.org/downloads/release/python-368/) jsou podporovány Azure Functions (x64).
@@ -172,7 +172,9 @@ Po ověření, že se funkce na místním počítači spustí správně, je čas
 
 1. Vložte tuto adresu URL pro požadavek HTTP do adresního řádku prohlížeče, přidejte `name` řetězec dotazu `?name=Functions` na konec této adresy URL a potom spusťte požadavek. Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
 
-        http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions 
+    ```http
+    http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
+    ```
         
     Následující příklad ukazuje odpověď v prohlížeči na požadavek Remote GET vracený funkcí: 
 

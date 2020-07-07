@@ -4,20 +4,20 @@ description: Naučte se, jak vytvořit a spustit Poznámkový blok Jupyter v Azu
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561752"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834127"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter pomocí Pythonu
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Tento kurz vás provede procesem použití Azure Notebooks k vytvoření kompletního poznámkového bloku Jupyter, který ukazuje jednoduchou lineární regresi. V průběhu tohoto kurzu se seznámíte s uživatelským rozhraním poznámkového bloku Jupyter, které zahrnuje vytváření různých buněk, spouštění buněk a prezentování poznámkového bloku jako prezentace.
 
 Dokončený Poznámkový blok najdete na [ukázkách Azure Notebooks GitHubu](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Tento kurz ale začíná novým projektem a prázdným poznámkovým blokem, abyste se mohli setkat s jeho vytvořením krok za krokem.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 V tomto kurzu se naučíte:
 
@@ -51,26 +51,26 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-the-data-file"></a>Vytvořit datový soubor
 
-Model lineární regrese, který vytvoříte v poznámkovém bloku, nakreslí data ze souboru v projektu s názvem *cricket_chirps. csv*. Tento soubor můžete vytvořit buď tak, že ho zkopírujete ze [vzorků Azure Notebooks GitHubu](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)nebo přímo zadáním dat. V následujících částech jsou popsány oba přístupy.
+Model lineární regrese, který vytvoříte v poznámkovém bloku, nakreslí data ze souboru v projektu s názvem *cricket_chirps.csv*. Tento soubor můžete vytvořit buď tak, že ho zkopírujete ze [vzorků Azure Notebooks GitHubu](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)nebo přímo zadáním dat. V následujících částech jsou popsány oba přístupy.
 
 ### <a name="upload-the-data-file"></a>Nahrát datový soubor
 
 1. Na řídicím panelu projektu v Azure Notebooks vyberte **Odeslat**  >  **z adresy URL** .
-1. V místní nabídce zadejte do pole **Adresa URL souboru** následující adresu URL a v části **název souboru** *cricket_chirps. csv* a potom vyberte **Hotovo**.
+1. V místní nabídce zadejte do pole **Adresa URL souboru** následující adresu url a *cricket_chirps.csv* v poli **název souboru**a potom vyberte **Hotovo**.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. Soubor *cricket_chirps. csv* by se teď měl zobrazit v seznamu souborů vašeho projektu:
+1. Soubor *cricket_chirps.csv* by se teď měl zobrazit v seznamu souborů vašeho projektu:
 
     ![Nově vytvořený soubor CSV zobrazený v seznamu soubor projektu](media/tutorial/csv-file-in-project.png)
 
 ### <a name="create-a-file-from-scratch"></a>Vytvoření nového souboru
 
 1. Na řídicím panelu projektu v Azure Notebooks vyberte **+ Nový**  >  **prázdný soubor** .
-1. Pole se zobrazí v seznamu souborů projektu. Zadejte *cricket_chirps. csv* a stiskněte klávesu ENTER.
-1. Klikněte pravým tlačítkem na *cricket_chirps. csv* a vyberte **Upravit soubor**.
+1. Pole se zobrazí v seznamu souborů projektu. Zadejte *cricket_chirps.csv* a stiskněte klávesu ENTER.
+1. Klikněte pravým tlačítkem na *cricket_chirps.csv* a vyberte **Upravit soubor**.
 1. V editoru, který se zobrazí, zadejte následující data:
 
     ```csv
@@ -111,12 +111,12 @@ V rámci poznámkového bloku můžete vždy použít příkazy jako `!pip insta
 
 1. Na řídicím panelu projekt vyberte **nastavení projektu**.
 1. V místní nabídce, která se zobrazí, vyberte kartu **prostředí** a pak vyberte **+ Přidat**.
-1. V prvním ovládacím prvku rozevíracího seznamu (operace) v části **nastavení prostředí**vyberte **požadavky. txt**.
-1. V druhém ovládacím prvku rozevírací seznam (název souboru) vyberte soubor *požadavky. txt* (soubor, který jste vytvořili).
+1. V prvním ovládacím prvku rozevíracího seznamu (operace) v části **nastavení prostředí**vyberte možnost **Requirements.txt**.
+1. V druhém ovládacím prvku rozevírací seznam (název souboru) vyberte možnost *requirements.txt* (soubor, který jste vytvořili).
 1. V třetím ovládacím prvku rozevíracího seznamu (verze Pythonu) vyberte **Python verze 3,6**.
 1. Vyberte **Uložit**.
 
-![Karta prostředí nastavení projektu určující soubor požadavků. txt](media/tutorial/tutorial-requirements-txt.png)
+![Karta prostředí nastavení projektu určující soubor requirements.txt](media/tutorial/tutorial-requirements-txt.png)
 
 V tomto kroku nastavení se všechny poznámkové bloky spuštěné v projektu spustí v prostředí, ve kterém jsou tyto balíčky nainstalované.
 
@@ -127,7 +127,7 @@ S připraveným datovým souborem a nastavením prostředí projektu teď může
 1. Na řídicím panelu projekt vyberte **+ Nový**  >  **Poznámkový blok**.
 1. V překryvném okně zadejte *příklad lineární regrese – Cricket chirps. ipynb* pro **položku název položky**, zvolte **Python 3,6** pro jazyk a pak vyberte **Nový**.
 1. Po zobrazení nového poznámkového bloku v seznamu soubor vyberte ho a spusťte Poznámkový blok. Automaticky se otevře nová karta prohlížeče.
-1. Vzhledem k tomu, že máte soubor *. txt s požadavky* v nastavení prostředí, zobrazí se zpráva "čeká se na dokončení přípravy kontejneru". Kliknutím na **tlačítko OK** můžete zprávu Zavřít a pokračovat v práci na poznámkovém bloku. Nemůžete však spouštět buňky kódu, dokud nebude prostředí zcela nastavené.
+1. Vzhledem k tomu, že máte soubor *requirements.txt* v nastavení prostředí, zobrazí se zpráva, že čekáte na dokončení přípravy kontejneru. Kliknutím na **tlačítko OK** můžete zprávu Zavřít a pokračovat v práci na poznámkovém bloku. Nemůžete však spouštět buňky kódu, dokud nebude prostředí zcela nastavené.
 1. Poznámkový blok se otevře v rozhraní Jupyter s jednou prázdnou buňkou kódu jako výchozí.
 
     [![Počáteční zobrazení nového poznámkového bloku v Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
@@ -152,7 +152,7 @@ Jupyter poskytuje vestavěnou prohlídku primárních prvků uživatelského roz
 
 Skupiny příkazů nabídky jsou následující:
 
-| Nabídka | Description |
+| Nabídka | Popis |
 | --- | --- |
 | Soubor | Příkazy pro správu souboru poznámkového bloku, včetně příkazů pro vytváření a kopírování poznámkových bloků, zobrazení náhledu tisku a stažení poznámkového bloku v nejrůznějších formátech. |
 | Upravit | Typické příkazy pro vyjímání, kopírování a vkládání buněk, hledání a nahrazování hodnot, správu příloh buněk a vkládání obrázků.  |

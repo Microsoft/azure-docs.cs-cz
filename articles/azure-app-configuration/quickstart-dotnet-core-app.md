@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7cabe5b0564ec63335800a999bebec67ec970587
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856787"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Core s konfigurací aplikace
 
@@ -27,9 +27,9 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte možnost **Průzkumník** > konfigurace**vytvořit** > **klíč-hodnota** a přidejte následující páry klíč-hodnota:
+6. Vyberte možnost **Průzkumník konfigurace**  >  **vytvořit**  >  **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
@@ -51,7 +51,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na balíček `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Extensions.Configuration.AzureAppConfiguration` balíček NuGet spuštěním následujícího příkazu:
 
     ```dotnetcli
     dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
@@ -99,7 +99,9 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
 
     Pokud používáte macOS nebo Linux, spusťte následující příkaz:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
     Restartováním příkazového řádku umožníte, aby se změna projevila. Vytiskněte hodnotu proměnné prostředí, abyste ověřili, jestli je správně nastavená.
 

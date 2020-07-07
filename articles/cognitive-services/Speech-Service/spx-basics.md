@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 2e75e177c1a5af13c1907b3a1abc9218096e8d45
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800702"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801865"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -70,18 +70,22 @@ spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\spe
 
 Rozpoznaný výstup řeči je zapsán k `speech_output.tsv` použití `--output file` argumentu. Následuje příklad struktury výstupních souborů.
 
-    audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
-    sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
-    sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
+```output
+audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
+sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
+sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
+```
 
 ## <a name="batch-text-to-speech-synthesis"></a>Syntéza textu na řeč dávky
 
 Nejjednodušší způsob, jak spustit dávkový převod textu na řeč, je vytvořit nový `.tsv` soubor (s oddělovači) a použít ho `--foreach` v rozhraní PŘÍKAZového řádku pro rozpoznávání řeči. Vezměte v úvahu následující soubor `text_synthesis.tsv` :
 
-    audio.output    text
-    C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-    C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```output
+audio.output    text
+C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```
 
  Dále spustíte příkaz, který odkazuje na `text_synthesis.tsv` , provede shrnutí jednotlivých `text` polí a zapíše výsledek do odpovídající `audio.output` cesty jako `.wav` soubor. 
 
@@ -97,10 +101,12 @@ Tento příkaz je ekvivalentem běhu `spx synthesize --text Sample text to synth
 
 Nicméně pokud máte `.tsv` soubor podobný následujícímu příkladu se záhlavími sloupců, která **neodpovídají** argumentům příkazového řádku:
 
-    wav_path    str_text
-    C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-    C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-    C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```output
+wav_path    str_text
+C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+```
 
 Tyto názvy polí můžete přepsat na správné argumenty pomocí následující syntaxe ve `--foreach` volání. Toto je stejné volání jako výše.
 

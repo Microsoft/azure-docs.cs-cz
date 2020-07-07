@@ -1,30 +1,23 @@
 ---
-title: Příklady rozhraní příkazového řádku Azure
-description: Příklady Azure CLI pro službu Azure Batch. Naučte se vytvořit účet Batch a přidat aplikaci.
+title: Příklady Azure CLI pro službu Azure Batch
+description: Naučte se vytvořit účet Batch a přidat aplikaci pomocí Azure CLI.
 ms.topic: sample
-ms.date: 01/29/2018
+ms.date: 07/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 59fc944024e2d51b16193db01ff06f2d434ad1e7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ff18043f4d411a70be7ad7f4d373d7c6a8b0e4e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725750"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832266"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Příklady Azure CLI pro službu Azure Batch
 
-Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure Batch.
+Následující příklady ukazují, jak pracovat se službou Batch pomocí Azure CLI.
 
-|  |  |
-|---|---|
-|**Vytvoření účtu Batch**||
-| [Vytvoření účtu Batch v režimu služby Batch](./scripts/batch-cli-sample-create-account.md) | Vytvoří účet Batch ve výchozím režimu a přidruží ho k účtu úložiště. |
-| [Vytvoření účtu Batch v režimu předplatného uživatele](./scripts/batch-cli-sample-create-user-subscription-account.md) | Vytvoří účet Batch v režimu předplatného uživatele. |
-|**Přidání aplikace**||
-| [Přidání aplikace do účtu Batch](./scripts/batch-cli-sample-add-application.md) | Přidá aplikaci a nahraje zabalené binární soubory.|
-|**Vytváření a správa fondů výpočetních uzlů**||
-| [Vytvoření a správa fondu s Linuxem](./scripts/batch-cli-sample-manage-linux-pool.md) | Ukazuje vytvoření, změnu velikosti a správu fondu s Linuxem. |
-| [Vytvoření a správa fondu s Windows](./scripts/batch-cli-sample-manage-windows-pool.md) | Ukazuje vytvoření, změnu velikosti a správu fondu s Windows. |
-|**Spouštění úloh a úkolů**||
-| [Spuštění úlohy a úkolů pomocí služby Batch](./scripts/batch-cli-sample-run-job.md) | Ukazuje spuštění úlohy a přidávání úkolů. |
-
+- [Vytvořte účet Batch ve výchozím režimu a přidružte ho k účtu úložiště.](./scripts/batch-cli-sample-create-account.md)
+- [Vytvoření účtu Batch v režimu předplatného uživatele](./scripts/batch-cli-sample-create-user-subscription-account.md)
+- [Přidání aplikace do účtu Batch a nahrání zabalených binárních souborů](./scripts/batch-cli-sample-add-application.md)
+- [Vytvoření a správa fondu s Linuxem](./scripts/batch-cli-sample-manage-linux-pool.md)
+- [Vytvoření a správa fondu s Windows](./scripts/batch-cli-sample-manage-windows-pool.md)
+- [Spuštění úlohy a úkolů pomocí služby Batch](./scripts/batch-cli-sample-run-job.md)

@@ -7,12 +7,12 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e947864633bf66005a39c89e7d81aef0c96c93e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77083187"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85829580"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití JavaScriptu k vytvoření chatovací místnosti s Azure Functions a službou signalizace
 
@@ -23,10 +23,10 @@ Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reáln�
 - Editor kódu, například [Visual Studio Code](https://code.visualstudio.com/)
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), verze 2 nebo novější. Slouží ke spouštění aplikací Azure Functions místně.
-- [Node. js](https://nodejs.org/en/download/), verze 10. x
+- [Node.js](https://nodejs.org/en/download/), verze 10. x
 
    > [!NOTE]
-   > Příklady by měly fungovat s ostatními verzemi Node. js, další informace najdete v [dokumentaci k verzi Azure Functions runtime](../azure-functions/functions-versions.md#languages) .
+   > Příklady by měly fungovat s jinými verzemi Node.js, další informace najdete v [dokumentaci k verzím modulu runtime Azure Functions](../azure-functions/functions-versions.md#languages) .
 
 > [!NOTE]
 > Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
@@ -79,4 +79,4 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 V tomto rychlém startu jste v VS Code vytvořili a spustili aplikaci bez serveru v reálném čase. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
 
 > [!div class="nextstepaction"]
-> [Nasazení Azure Functions přes VS Code](/azure/javascript/tutorial-vscode-serverless-node-01)
+> [Nasazení Azure Functions přes VS Code](/azure/developer/javascript/tutorial-vscode-serverless-node-01)

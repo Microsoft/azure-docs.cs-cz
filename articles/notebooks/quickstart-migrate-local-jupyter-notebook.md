@@ -3,14 +3,16 @@ title: Migrace místního poznámkového bloku Jupyter do verze Preview Azure No
 description: Jupyter Poznámkový blok můžete rychle přenést do Azure Notebooks Preview z místního počítače nebo z webové adresy URL a pak ho sdílet pro spolupráci.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064321"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832113"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Rychlý Start: migrace místního poznámkového bloku Jupyter v Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 V tomto rychlém startu migrujete Poznámkový blok Jupyter z místního počítače nebo jiné adresy URL přístupového souboru na Azure Notebooks. 
 
@@ -25,8 +27,6 @@ Migrací místních poznámkových bloků nebo notebooků založených na úlož
 ## <a name="create-a-project-on-azure-notebooks"></a>Vytvořit projekt na Azure Notebooks
 
 V tomto rychlém startu se dozvíte, jak migrovat Poznámkový blok z místního počítače nebo jiného přístupného souboru. Postup migrace poznámkových bloků z úložiště GitHub najdete v tématu [rychlý Start: naklonování poznámkového bloku](quickstart-clone-jupyter-notebook.md).
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. (Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
@@ -56,7 +56,7 @@ V tomto rychlém startu se dozvíte, jak migrovat Poznámkový blok z místního
 
      ![Místní nabídka nahrát z adresy URL](media/quickstarts/upload-from-url-popup.png)
 
-1. Otevřete a spusťte nově nahraný Poznámkový blok a ověřte jeho obsah a operaci. Až budete hotovi, vyberte **soubor** > **zastavit a zavřít** pro zavření poznámkového bloku.
+1. Otevřete a spusťte nově nahraný Poznámkový blok a ověřte jeho obsah a operaci. Až budete hotovi, vyberte **soubor**  >  **zastavit a zavřít** pro zavření poznámkového bloku.
 
 1. Chcete-li sdílet odkaz na nahraný Poznámkový blok, klikněte pravým tlačítkem myši na soubor v projektu a vyberte příkaz **Kopírovat odkaz** (Klávesová zkratka: y) a vložte tento odkaz do příslušné zprávy. Alternativně můžete projekt sdílet jako celek pomocí ovládacího prvku pro **sdílení** na stránce projektu.
 

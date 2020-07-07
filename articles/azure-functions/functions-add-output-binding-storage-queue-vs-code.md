@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 68d1e4e7fdf50ef3ec228b7e7ca4e620a47afb05
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849976"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
 
@@ -38,14 +38,14 @@ V tomto článku se předpokládá, že jste už přihlášení k předplatnému
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
-V [předchozím článku rychlý Start](functions-create-first-function-vs-code.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do souboru Local. Settings. JSON. 
+V [předchozím článku rychlý Start](functions-create-first-function-vs-code.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do local.settings.jsv souboru. 
 
 1. Stisknutím klávesy F1 otevřete paletu příkazů a pak vyhledejte a spusťte příkaz `Azure Functions: Download Remote Settings....` . 
 
 1. Vyberte aplikaci funkcí, kterou jste vytvořili v předchozím článku. Vyberte možnost **Ano pro vše** , pokud chcete přepsat stávající místní nastavení. 
 
     > [!IMPORTANT]  
-    > Protože obsahuje tajné kódy, soubor Local. Settings. JSON se nikdy nepublikuje a je vyloučený ze správy zdrojového kódu.
+    > Vzhledem k tomu, že obsahuje tajné kódy, local.settings.jsv souboru nikdy nezveřejňují a jsou vyloučeny ze správy zdrojového kódu.
 
 1. Zkopírujte hodnotu `AzureWebJobsStorage` , což je klíč pro hodnotu připojovacího řetězce účtu úložiště. Pomocí tohoto připojení ověříte, zda výstupní vazba funguje podle očekávání.
 
@@ -57,7 +57,7 @@ Vzhledem k tomu, že používáte výstupní vazbu úložiště front, musíte m
 
 Projekt byl nakonfigurován tak, aby používal [sady rozšíření](functions-bindings-register.md#extension-bundles), které automaticky instalují předdefinované sady přípon balíčků. 
 
-Použití sad rozšíření je povoleno v souboru Host. JSON v kořenovém adresáři projektu, který se zobrazí takto:
+Použití sad rozšíření je povoleno v host.jsv souboru v kořenovém adresáři projektu, který se zobrazí takto:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -68,7 +68,7 @@ Použití sad rozšíření je povoleno v souboru Host. JSON v kořenovém adres
 S výjimkou aktivačních událostí protokolu HTTP a časovače jsou vazby implementovány jako balíčky rozšíření. Spusťte následující příkaz [dotnet přidat balíček](/dotnet/core/tools/dotnet-add-package) v okně terminálu a přidejte do projektu balíček rozšíření úložiště.
 
 ```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 ```
 
 ::: zone-end
@@ -77,7 +77,7 @@ Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-V Functions každý typ vazby vyžaduje `direction` , `type` , a jedinečný, `name` který má být definován v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
+V Functions každý typ vazby vyžaduje `direction` , `type` , a jedinečný, `name` který má být definován v function.jsv souboru. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 

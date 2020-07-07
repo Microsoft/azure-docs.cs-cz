@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80297207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849428"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
 
@@ -34,7 +34,7 @@ Než začnete, ujistěte se, že:
 2. Obdrželi jste Data Box Heavy a stav objednávky na portálu je **Doručeno**.
 3. Zkontrolovali jste [požadavky na systém pro úložiště objektů Blob data box](data-box-system-requirements-rest.md) a znáte podporované verze rozhraní API, sad SDK a nástrojů.
 4. Máte přístup k hostitelskému počítači, který obsahuje data, která chcete zkopírovat do Data Box Heavy. Hostitelský počítač musí splňovat tyto požadavky:
-    - Spusťte [podporovaný operační systém](data-box-system-requirements.md).
+    - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
     - Musí být připojený k vysokorychlostní síti. Největší rychlosti kopírování je možné dosáhnout použitím dvou paralelních připojení 40 GbE (jedno na uzel). Pokud nemáte k dispozici připojení 40 GbE, doporučujeme použít alespoň dvě připojení 10 GbE (jedno na uzel). 
 5. [Stáhněte si AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) na hostitelském počítači. Pomocí AzCopy se zkopírují data do Azure Data Box úložiště objektů BLOB z hostitelského počítače.
 
@@ -92,7 +92,7 @@ K stažení certifikátu použijte Azure Portal.
 
 1. Přihlaste se k portálu Azure Portal.
 2. Přejděte do objednávky Data Box a přejděte na **obecné > informace o zařízení**.
-3. V části **přihlašovací údaje pro zařízení**přejděte na **rozhraní API přístup** k zařízení. Klikněte na tlačítko **Stáhnout**. Tato akce stáhne ** \<název vaší objednávky> souboru certifikátu. cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
+3. V části **přihlašovací údaje pro zařízení**přejděte na **rozhraní API přístup** k zařízení. Klikněte na tlačítko **Stáhnout**. Tato akce stáhne soubor certifikátu ** \<your order name> . cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
 
     ![Stáhnout certifikát v Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -115,7 +115,7 @@ Pomocí následujícího postupu naimportujte `.cer` soubor do kořenového úlo
 
 #### <a name="use-windows-server-ui"></a>Použít uživatelské rozhraní systému Windows Server
 
-1.  Klikněte na `.cer` soubor pravým tlačítkem a vyberte **nainstalovat certifikát**. Tato akce spustí Průvodce importem certifikátu.
+1.  Klikněte na soubor pravým tlačítkem `.cer` a vyberte **nainstalovat certifikát**. Tato akce spustí Průvodce importem certifikátu.
 2.  V poli **umístění úložiště**vyberte **místní počítač**a pak klikněte na **Další**.
 
     ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -137,7 +137,7 @@ Způsob importu certifikátu se liší podle distribuce.
 
 Několik, například Ubuntu a Debian, použijte `update-ca-certificates` příkaz.  
 
-- Přejmenujte soubor certifikátu s kódováním base64 na `.crt` rozšíření a zkopírujte jej do souboru `/usr/local/share/ca-certificates directory`.
+- Přejmenujte soubor certifikátu s kódováním base64 na `.crt` rozšíření a zkopírujte jej do souboru `/usr/local/share/ca-certificates directory` .
 - Spusťte příkaz `update-ca-certificates`.
 
 Poslední verze RHEL, Fedora a CentOS používají `update-ca-trust` příkaz.
@@ -197,20 +197,23 @@ Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště obje
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
-
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 Nahraďte `<key>` klíčem účtu. Klíč účtu získáte tak, že v Azure Portal přejdete do svého účtu úložiště. Přejděte na **nastavení > přístupové klíče**, vyberte klíč a vložte ho do příkazu AzCopy.
 
-Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje. Aktualizujte zdrojovou cestu k adresáři dat a v cílové `data-box-storage-account-name` adrese URL nahraďte názvem účtu úložiště, který je přidružený k vašemu data box.
+Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje. Aktualizujte zdrojovou cestu k adresáři dat a `data-box-storage-account-name` v cílové adrese URL nahraďte názvem účtu úložiště, který je přidružený k vašemu data box.
 
 Pokud chcete obsah zadaného adresáře nahrát do úložiště objektů blob rekurzivně, zadejte možnost `--recursive` (Linux) nebo `/S` (Windows). Když spustíte AzCopy s některou z těchto možností, nahrají se také všechny podsložky a soubory, které obsahují.
 
@@ -221,16 +224,21 @@ Pomocí AzCopy můžete nahrávat soubory na základě času poslední změny. P
 Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli, zadejte v příkazu AzCopy parametry `--exclude-older` i `--exclude-newer` (Linux) nebo `/XO` i `/XN` (Windows). AzCopy nahraje pouze aktualizovaná data na základě jejich časového razítka.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 Pokud během operace připojení nebo kopírování dojde k nějakým chybám, přečtěte si téma [řešení potíží s data box BLOB Storage](data-box-troubleshoot-rest.md).
 

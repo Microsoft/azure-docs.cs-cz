@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670175"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801423"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu v Azure Monitor
 
 > [!NOTE]
-> Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://portal.loganalytics.io/demo), které obsahuje spoustu ukázkových dat.
+> Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://portal.loganalytics.io/demo), které obsahuje spoustu ukázkových dat.  Pokud už víte, jak dotazovat v KQL, ale stačí rychle vytvořit užitečné dotazy založené na typech prostředků, Projděte si [podokno uložené Ukázkové dotazy](saved-queries.md).
 
 V tomto kurzu se naučíte psát dotazy protokolu v Azure Monitor. Naučíte se, jak:
 
@@ -36,12 +36,14 @@ Sledujte níže uvedenou verzi videa v tomto kurzu:
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Zápis nového dotazu
+
 Dotazy mohou začít buď s názvem tabulky, nebo s příkazem *hledání* . Měli byste začít s názvem tabulky, protože definuje pro dotaz jasný rozsah a zvyšuje výkon dotazů a relevanci výsledků.
 
 > [!NOTE]
 > Dotazovací jazyk Kusto používaný službou Azure Monitor rozlišuje velká a malá písmena. Klíčová slova jazyka se obvykle zapisují malými písmeny. Při použití názvů tabulek nebo sloupců v dotazu se ujistěte, že používáte správný případ, jak je znázorněno v podokně schématu.
 
 ### <a name="table-based-queries"></a>Dotazy založené na tabulkách
+
 Azure Monitor uspořádá data protokolu v tabulkách, z nichž každý se skládá z více sloupců. Všechny tabulky a sloupce se zobrazí v podokně schématu v Log Analytics na portálu Analytics. Identifikujte tabulku, na kterou vás zajímáte, a pak se podívejte na bitovou část dat:
 
 ```Kusto
@@ -58,6 +60,7 @@ Výše uvedený dotaz vrátí 10 výsledků z tabulky *SecurityEvent* , a to bez
 Dotaz jsme mohli spustit i bez přidání `| take 10` -, který by byl stále platný, ale může vracet až 10 000 výsledků.
 
 ### <a name="search-queries"></a>Vyhledávací dotazy
+
 Vyhledávací dotazy jsou méně strukturované a obecně se hodí pro hledání záznamů, které obsahují konkrétní hodnotu v některém z jejich sloupců:
 
 ```Kusto
@@ -65,7 +68,7 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Tento dotaz vyhledá v tabulce *SecurityEvent* záznamy, které obsahují frázi "kryptografie". Z těchto záznamů se vrátí a zobrazí 10 záznamů. Pokud tuto `in (SecurityEvent)` část vynecháme a právě `search "Cryptographic"`ji spustíte, bude hledání probíhat na *všech* tabulkách, což by mohlo trvat déle a být méně efektivní.
+Tento dotaz vyhledá v tabulce *SecurityEvent* záznamy, které obsahují frázi "kryptografie". Z těchto záznamů se vrátí a zobrazí 10 záznamů. Pokud tuto část vynecháme `in (SecurityEvent)` a právě ji spustíte `search "Cryptographic"` , bude hledání probíhat na *všech* tabulkách, což by mohlo trvat déle a být méně efektivní.
 
 > [!WARNING]
 > Vyhledávací dotazy jsou obvykle pomalejší než dotazy založené na tabulkách, protože musí zpracovávat více dat. 
@@ -104,7 +107,7 @@ SecurityEvent
 
 Při psaní podmínek filtrování můžete použít následující výrazy:
 
-| Expression | Popis | Příklad |
+| Výraz | Popis | Příklad |
 |:---|:---|:---|
 | == | Kontrolovat rovnost<br>(rozlišuje velká a malá písmena) | `Level == 8` |
 | =~ | Kontrolovat rovnost<br>(nerozlišuje velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -132,12 +135,14 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>Zadejte časový rozsah.
 
 ### <a name="time-picker"></a>Výběr času
+
 Výběr času je vedle tlačítka Spustit a označuje, že dotazuje pouze záznamy za posledních 24 hodin. Toto je výchozí časový rozsah, který se použije u všech dotazů. Chcete-li získat pouze záznamy z poslední hodiny, vyberte možnost _poslední hodina_ a spusťte dotaz znovu.
 
 ![Výběr času](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Filtr času v dotazu
+
 Můžete také definovat svůj vlastní časový rozsah přidáním filtru času do dotazu. Nejvhodnější je umístit filtr času hned za název tabulky: 
 
 ```Kusto
@@ -146,10 +151,11 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-Filtr `ago(30m)` ve výše uvedeném časovém intervalu znamená "před 30 minutami", takže dotaz vrátí pouze záznamy z posledních 30 minut. Mezi další jednotky času patří dny (2D), minuty (25m) a sekundy (desítkách).
+Filtr ve výše uvedeném časovém intervalu `ago(30m)` znamená "před 30 minutami", takže dotaz vrátí pouze záznamy z posledních 30 minut. Mezi další jednotky času patří dny (2D), minuty (25m) a sekundy (desítkách).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt a rozšířené: výběrové a výpočetní sloupce
+
 Pomocí **projektu** můžete vybrat konkrétní sloupce, které chcete zahrnout do výsledků:
 
 ```Kusto

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851740"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Kurz: spouštění skriptů Pythonu pomocí Azure Data Factory pomocí Azure Batch
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Nainstalovaná distribuce [Pythonu](https://www.python.org/downloads/) pro místní testování.
 * Balíček [Azure](https://pypi.org/project/azure/) `pip` .
-* [Sada dat Iris. csv](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
+* [Datová sadairis.csv](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Účet Azure Batch a propojený účet Azure Storage. Další informace o tom, jak vytvořit a propojit účty Batch s účty úložiště, najdete v tématu [Vytvoření účtu Batch](quick-create-portal.md#create-a-batch-account) .
 * Účet Azure Data Factory. Další informace o tom, jak vytvořit datovou továrnu pomocí Azure Portal, najdete v tématu [Vytvoření datové továrny](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) .
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -116,27 +116,27 @@ V této části vytvoříte a ověříte kanál pomocí skriptu Pythonu.
 1. V poli **prostředky továrny** vyberte tlačítko + (plus) a pak vyberte **kanál** .
 1. Na kartě **Obecné** nastavte název kanálu jako "Run Python".
 
-    ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
+    ![Na kartě Obecné nastavte název kanálu jako "Run Python".](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
 1. V poli **aktivity** rozbalte položku **Služba Batch**. Přetáhněte vlastní aktivitu z panelu nástrojů **aktivity** na plochu návrháře kanálu.
 1. Na kartě **Obecné** zadejte **testPipeline** pro název.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    ![Na kartě Obecné zadejte testPipeline pro název.](./media/run-python-batch-azure-data-factory/create-custom-task.png)
 1. Na kartě **Azure Batch** přidejte **účet Batch** , který byl vytvořen v předchozích krocích, a **otestujte připojení** , aby bylo zajištěno, že je úspěšné.
 
-    ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    ![Na kartě Azure Batch přidejte účet Batch, který jste vytvořili v předchozích krocích, a pak otestujte připojení.](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. Na kartě **Nastavení** zadejte příkaz `python main.py` .
 1. Pro **propojenou službu prostředku**přidejte účet úložiště, který jste vytvořili v předchozích krocích. Otestujte připojení, abyste zajistili jeho úspěšnost.
 1. V **cestě ke složce**vyberte název kontejneru **Azure Blob Storage** , který obsahuje skript Pythonu a související vstupy. Tím se stáhnou vybrané soubory z kontejneru do instancí uzlů fondu před spuštěním skriptu Pythonu.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
+    ![V cestě ke složce vyberte název kontejneru Azure Blob Storage.](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete zavřít výstup ověřování, vyberte tlačítko &gt;&gt; (šipky doprava).
 1. Kliknutím na **ladit** otestujete kanál a ujistěte se, že funguje správně.
 1. Kliknutím na **publikovat** publikujte kanál.
 1. Kliknutím na **Trigger (aktivovat** ) spustíte skript Pythonu jako součást dávkového procesu.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
+    ![Klikněte na Trigger a spusťte skript Pythonu jako součást dávkového procesu.](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>Monitorování souborů protokolu
 

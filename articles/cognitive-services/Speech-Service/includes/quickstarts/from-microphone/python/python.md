@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 3613d190ef079d0e477d42b426a224d8e4dda7e6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f26f0ab6da398dcdee307f89b27cca780d08af85
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400693"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85838924"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +34,9 @@ Vytvořte soubor s názvem *quickstart.py* a vložte do něj následující kód
 
 ## <a name="build-and-run-app"></a>Sestavení a spuštění aplikace
 
-Teď jste připraveni aplikaci otestovat a ověřit funkci rozpoznávání řeči pomocí služby Speech.
+Nyní jste připraveni testovat rozpoznávání řeči pomocí služby Speech. 
+
+Pokud tuto službu používáte v macOS a jedná se o první aplikaci v Pythonu, kterou jste sestavili tak, aby používala mikrofon, budete pravděpodobně muset dát terminálovému přístupu k mikrofonu. Otevřete **nastavení systému** a vyberte **zabezpečení & ochrana osobních údajů**. V dalším kroku vyberte možnost **soukromí** a v seznamu vyhledejte možnost **mikrofon** . Nakonec vyberte **terminály** a uložte. 
 
 1. **Spusťte aplikaci** – z příkazového řádku zadejte:
     ```bash
@@ -45,4 +47,3 @@ Teď jste připraveni aplikaci otestovat a ověřit funkci rozpoznávání řeč
 ## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
-

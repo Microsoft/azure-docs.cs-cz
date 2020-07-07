@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 47af78e562329a7221dcba865fc7304543a282df
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856758"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 
@@ -48,7 +48,7 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. Otevřete *program.cs*a aktualizujte `CreateWebHostBuilder` metodu pro použití exportovaného souboru JSON voláním `config.AddJsonFile()` metody.  Přidejte také `System.Reflection` obor názvů.
+1. Otevřete *program.cs*a aktualizujte `CreateWebHostBuilder` metodu pro použití exportovaného souboru JSON voláním `config.AddJsonFile()` metody.  Přidejte `System.Reflection` také obor názvů.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -69,25 +69,35 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
 1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. 
     Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     Pokud používáte macOS nebo Linux, spusťte následující příkaz:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. Pokud chcete aplikaci vytvořit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 3. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
-4. Otevřete okno prohlížeče a v části přejít `http://localhost:5000`na, což je výchozí adresa URL webové aplikace hostované na místním počítači.
+4. Otevřete okno prohlížeče a `http://localhost:5000` v části přejít na, což je výchozí adresa URL webové aplikace hostované na místním počítači.
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-app-launch-local.png)
 

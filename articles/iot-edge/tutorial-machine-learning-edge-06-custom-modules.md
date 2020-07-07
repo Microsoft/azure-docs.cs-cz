@@ -4,32 +4,32 @@ description: V tomto kurzu se dozvíte, jak vytvářet a nasazovat IoT Edge modu
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0726edae7c5f44fae7f573559d561e7ef5773e71
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75772359"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801287"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 
 > [!NOTE]
 > Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
-V tomto článku vytvoříme tři IoT Edge moduly, které přijímají zprávy ze zařízení ze seznamu, spustíte data prostřednictvím modelu strojového učení a pak dodáte přehledy k IoT Hub.
+V tomto článku vytvoříme tři IoT Edge moduly, které přijímají zprávy ze zařízení IoT typu list, spouštíte data prostřednictvím modelu služby Machine Learning a pak dodáte přehledy k IoT Hub.
 
 Centrum IoT Edge usnadňuje komunikaci s modulem. Použití centra IoT Edge jako zprostředkovatele zpráv uchovává moduly nezávislé na sobě. Moduly stačí pouze zadat vstupy, na kterých přijímá zprávy, a výstupy, na které zapisují zprávy.
 
 Chceme, aby zařízení IoT Edge pro nás dosáhlo čtyř věcí:
 
 * Příjem dat z listových zařízení
-* Předpověď zbývající doby životnosti (RUL) pro zařízení, které odesílá data
-* Pošle zprávu jenom RUL, aby se zařízení dalo IoT Hub (Tato funkce se dá upravit tak, aby se zasílaly jenom v případě, že RUL klesne pod určitou úroveň).
-* Uložte data na listovém zařízení do místního souboru na zařízení IoT Edge. Tento datový soubor se pravidelně nahrává do IoT Hub prostřednictvím nahrávání souborů za účelem upřesnění školení modelu Machine Learning. Použití nahrávání souborů místo konstantního streamování zpráv je cenově výhodnější.
+* Předpovídat zbývající dobu životnosti (RUL) pro zařízení, které data odeslalo.
+* Odešlete zprávu s RUL, aby se zařízení IoT Hub. Tuto funkci je možné upravit tak, aby odesílala data pouze v případě, že RUL klesne pod zadanou úroveň.
+* Uložte data na listovém zařízení do místního souboru na zařízení IoT Edge. Tento datový soubor se pravidelně nahraje do IoT Hub pro upřesnění školení modelu Machine Learning. Použití nahrávání souborů místo konstantního streamování zpráv je cenově výhodnější.
 
 K provedení těchto úloh používáme tři vlastní moduly:
 
@@ -56,31 +56,33 @@ Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
 
 ## <a name="create-a-new-iot-edge-solution"></a>Vytvoření nového řešení IoT Edge
 
-Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publikovali image kontejneru obsahující náš model RUL. Azure Machine Learning jako součást procesu vytváření bitové kopie zabalený model, aby bylo možné image nasadit jako modul Azure IoT Edge. V tomto kroku vytvoříme Azure IoT Edge řešení pomocí modulu "Azure Machine Learning" a nasměruje modul na image, kterou jsme publikovali pomocí Azure Notebooks.
+Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publikovali image kontejneru obsahující náš model RUL. Azure Machine Learning jako součást procesu vytváření bitové kopie zabalený model, aby bylo možné image nasadit jako modul Azure IoT Edge.
 
-1. Otevřete na svém vývojovém počítači relaci vzdálené plochy.
+V tomto kroku vytvoříme Azure IoT Edge řešení pomocí modulu "Azure Machine Learning" a nasměruje modul na image, kterou jsme publikovali pomocí Azure Notebooks.
 
-2. Otevřete složku **C:\\source\\IoTEdgeAndMlSample** v Visual Studio Code.
+1. Otevřete relaci vzdálené plochy k VIRTUÁLNÍmu počítači pro vývoj.
 
-3. Klikněte pravým tlačítkem na panel Průzkumník (v prázdném prostoru) a vyberte **nový IoT Edge řešení**.
+1. Otevřete složku **C: \\ source \\ IoTEdgeAndMlSample** v Visual Studio Code.
+
+1. Klikněte pravým tlačítkem na panel Průzkumník (v prázdném prostoru) a vyberte **nový IoT Edge řešení**.
 
     ![Vytvořit nové řešení IoT Edge](media/tutorial-machine-learning-edge-06-custom-modules/new-edge-solution-command.png)
 
-4. Přijměte výchozí název řešení **EdgeSolution**.
+1. Přijměte výchozí název řešení **EdgeSolution**.
 
-5. Jako šablonu modulu vyberte **Azure Machine Learning** .
+1. Jako šablonu modulu vyberte **Azure Machine Learning** .
 
-6. Pojmenujte modul **turbofanRulClassifier**.
+1. Pojmenujte modul **turbofanRulClassifier**.
 
-7. Vyberte pracovní prostor Machine Learning.
+1. Vyberte pracovní prostor Machine Learning. Tento pracovní prostor je pracovní prostor **turboFanDemo** , který jste vytvořili v [kurzu: výuka a nasazení Azure Machine Learningho modelu](tutorial-machine-learning-edge-04-train-model.md)
 
-8. Vyberte bitovou kopii, kterou jste vytvořili při spuštění poznámkového bloku Azure.
+1. Vyberte bitovou kopii, kterou jste vytvořili při spuštění poznámkového bloku Azure.
 
-9. Podívejte se na řešení a Všimněte si souborů, které byly vytvořeny:
+1. Podívejte se na řešení a Všimněte si souborů, které byly vytvořeny:
 
-   * **Deployment. template. JSON:** Tento soubor obsahuje definici každého z modulů v řešení. Existují tři části, které vám umožní věnovat pozornost tomuto souboru:
+   * **deployment.template.js:** Tento soubor obsahuje definici každého z modulů v řešení. Existují tři části, které vám umožní věnovat pozornost tomuto souboru:
 
-     * **Přihlašovací údaje registru:** Definuje sadu vlastních registrů kontejnerů, které používáte ve vašem řešení. V současné době by měl obsahovat registr z pracovního prostoru Machine Learning, ve kterém je uložená image Azure Machine Learning. Můžete mít libovolný počet registrů kontejnerů, ale pro zjednodušení budeme používat tento jeden registr pro všechny moduly.
+     * **Přihlašovací údaje registru:** Definuje sadu vlastních registrů kontejnerů, které používáte ve vašem řešení. V současné době by měl obsahovat registr z pracovního prostoru Machine Learning, ve kterém je uložená image Azure Machine Learning. Můžete mít libovolný počet registrů kontejnerů, ale pro zjednodušení použijeme tento jeden registr pro všechny moduly.
 
        ```json
        "registryCredentials": {
@@ -92,51 +94,40 @@ Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publ
        }
        ```
 
-     * **Moduly:** Tato část obsahuje sadu uživatelsky definovaných modulů, které procházejí tímto řešením. Všimněte si, že v této části jsou aktuálně dva moduly: SimulatedTemperatureSensor a turbofanRulClassifier. SimulatedTemperatureSensor byl nainstalován šablonou Visual Studio Code, ale pro toto řešení ji nepotřebujeme. Definici modulu SimulatedTemperatureSensor můžete z části moduly odstranit. Všimněte si, že definice modulu turbofanRulClassifier odkazuje na Image ve vašem registru kontejneru. Když do řešení přidáte více modulů, zobrazí se v této části.
+     * **Moduly:** Tato část obsahuje sadu uživatelsky definovaných modulů, které procházejí tímto řešením. Definice modulu turbofanRulClassifier odkazuje na bitovou kopii v registru kontejneru. Když do řešení přidáte více modulů, zobrazí se v této části.
 
        ```json
-       "modules": {
-         "SimulatedTemperatureSensor": {
-           "version": "1.0",
-           "type": "docker",
-           "status": "running",
-           "restartPolicy": "always",
-           "settings": {
-             "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
-             "createOptions": {}
-           }
-         },
-         "turbofanRulClassifier": {
-           "version": "1.0",
-           "type": "docker",
-           "status": "running",
-           "restartPolicy": "always",
-           "settings": {
-             "image": "<your registry>.azurecr.io/edgemlsample:1",
-             "createOptions": {}
-           }
-         }
-       }
+        "modules": {
+          "turbofanRulClassifier": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "turbofandemo2cd74296.azurecr.io/edgemlsample:1",
+              "createOptions": {}
+            }
+          }
+        }
        ```
 
-     * **Trasy:** v tomto kurzu budeme pracovat s trasami poměrně v tomto kurzu. Trasy definují, jak spolu vzájemně komunikují moduly. Tyto dvě trasy definované šablonou neodpovídají směrování, které potřebujeme. První trasa pošle všechna data z libovolného výstupu klasifikátoru do IoT Hub ($upstream). Druhá trasa je určena pro SimulatedTemperatureSensor, kterou jsme právě odstranili. Odstraňte dvě výchozí trasy.
+     * **Trasy:** v tomto kurzu budeme pracovat s trasami poměrně v tomto kurzu. Trasy definují, jak spolu vzájemně komunikují moduly. Existující trasa definovaná šablonou neodpovídá směrování, které potřebujeme. Odstraňte `turbofanRulClassifierToIoTHub` trasu.
 
        ```json
-       "$edgeHub": {
-         "properties.desired": {
-           "schemaVersion": "1.0",
-           "routes": {
-             "turbofanRulClassifierToIoTHub": "FROM /messages/modules/turbofanRulClassifier/outputs/\* INTO $upstream",
-             "sensorToturbofanRulClassifier": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\\"/modules/turbofanRulClassifier/inputs/input1\\")"
-           },
-           "storeAndForwardConfiguration": {
-             "timeToLiveSecs": 7200
-           }
-         }
-       }
+        "$edgeHub": {
+          "properties.desired": {
+            "schemaVersion": "1.0",
+            "routes": {
+              "turbofanRulClassifierToIoTHub": "FROM /messages/modules/turbofanRulClassifier/outputs/* INTO $upstream"
+            },
+            "storeAndForwardConfiguration": {
+              "timeToLiveSecs": 7200
+            }
+          }
+        }
        ```
 
-   * **Deployment. Debug. template. JSON:** tento soubor je ladicí verze souboru Deployment. template. JSON. Do tohoto souboru byste měli zrcadlit všechny změny z souboru Deployment. template. JSON.
+   * **deployment.debug.template.js:** tento soubor je ladicí verze deployment.template.jsna. Tento soubor by měl být obvykle synchronizovaný s obsahem deployment.template.jsv souboru, ale v tomto kurzu to není nutné.
 
    * **. env:** v tomto souboru byste měli zadávat uživatelské jméno a heslo pro přístup k vašemu registru.
 
@@ -145,9 +136,9 @@ Během provádění druhé z našich dvou Azure Notebooks jsme vytvořili a publ
       CONTAINER_REGISTRY_PASSWORD_<your registry name>=<ACR password>
       ```
 
-10. V Visual Studio Code Exploreru klikněte pravým tlačítkem na soubor Deployment. template. JSON a vyberte **sestavit IoT Edge řešení**.
+1. Klikněte pravým tlačítkem na deployment.template.jsv souboru v Průzkumníkovi Visual Studio Code a vyberte **sestavit IoT Edge řešení**.
 
-11. Všimněte si, že tento příkaz vytvoří konfigurační složku se souborem Deployment. amd64. JSON. Tento soubor je konkrétní šablonou nasazení pro řešení.
+1. Všimněte si, že tento příkaz vytvoří konfigurační složku s deployment.amd64.jsv souboru. Tento soubor je konkrétní šablonou nasazení pro řešení.
 
 ## <a name="add-router-module"></a>Přidat modul směrovače
 
@@ -158,44 +149,41 @@ V dalším kroku přidáme modul směrovače do našeho řešení. Modul směrov
 * **Posílání zpráv RUL do IoT Hub:** když směrovač přijímá zprávy od klasifikátoru, transformuje zprávu tak, aby obsahovala jenom základní informace, ID zařízení a RUL, a pošle zkrácenou zprávu do služby IoT Hub. Další vylepšení, které jsme tady neudělali, by poslalo zprávy do IoT Hub jenom v případě, že předpověď RUL klesne pod prahovou hodnotu (například když je RUL menší než 100 cyklů). Filtrování tímto způsobem omezuje objem zpráv a snižuje náklady centra IoT.
 * **Poslat zprávu do modulu zapisovače Avro:** Pokud chcete zachovat všechna data odesílaná zařízením pro příjem dat, modul router pošle celou zprávu přijatou z třídění do modulu zapisovače Avro, který zachová a nahraje data pomocí IoT Hubho nahrání souboru.
 
-> [!NOTE]
-> Popis odpovědností modulu může být zpracování sekvenční, ale tok je založen na zprávě nebo události. Důvodem je, že potřebujeme modul orchestrace, jako je náš modul směrovače.
+Modul směrovače je důležitou součástí řešení, které zajišťuje zpracování zpráv ve správném pořadí.
 
-### <a name="create-module-and-copy-files"></a>Vytvořit modul a kopírovat soubory
+### <a name="create-the-module-and-copy-files"></a>Vytvoření modulu a zkopírování souborů
 
 1. Klikněte pravým tlačítkem na složku moduly v Visual Studio Code a vyberte **přidat IoT Edge modul**.
 
-2. Vyberte **modul C#**.
+1. Pro šablonu modulu vyberte **modul C#** .
 
-3. Pojmenujte modul **turbofanRouter**.
+1. Pojmenujte modul **turbofanRouter**.
 
-4. Po zobrazení výzvy pro úložiště imagí Docker použijte registr z pracovního prostoru Machine Learning (registr najdete v uzlu registryCredentials souboru *Deployment. template. JSON* ). Tato hodnota je plně kvalifikovaná adresa registru, ** \<například\>Registry. azurecr.IO/turbofanrouter**.
+1. Po zobrazení výzvy pro úložiště imagí Docker použijte registr z pracovního prostoru Machine Learning (můžete najít registr v uzlu registryCredentials *deployment.template.jsv* souboru). Tato hodnota je plně kvalifikovaná adresa registru, například ** \<your registry\> . azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
-    > V tomto článku používáme Azure Container Registry vytvořeného pracovním prostorem Azure Machine Learning, který jsme použili ke školení a nasazení našeho třídění. To je čistě pro pohodlí. Mohli jsme vytvořit nový registr kontejnerů a publikovat naše moduly tam.
+    > V tomto článku používáme Azure Container Registry, který byl vytvořen Azure Machine Learning pracovním prostorem. To je čistě pro pohodlí. Mohli jsme vytvořit nový registr kontejnerů a publikovat naše moduly tam.
 
-5. Otevřete nové okno terminálu v Visual Studio Code (**zobrazení** > **terminálu**) a zkopírujte soubory z adresáře modulů.
+1. V terminálu pomocí prostředí příkazového řádku zkopírujte soubory z ukázkového modulu do řešení.
 
     ```cmd
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-6. Až se zobrazí výzva k přepsání program.cs `y` , stiskněte a `Enter`pak stiskněte a potom stiskněte.
+1. Přijměte výzvu k přepsání souboru program.cs.
 
 ### <a name="build-router-module"></a>Modul směrovače sestavení
 
-1. V Visual Studio Code vyberte **terminál** > **konfigurovat výchozí úlohu sestavení**.
+1. V Visual Studio Code vyberte **terminál**  >  **konfigurovat výchozí úlohu sestavení**.
 
-2. Klikněte na **vytvořit Tasks. JSON soubor ze šablony**.
+1. Vyberte **vytvořit tasks.jspro soubor ze šablony**.
 
-3. Klikněte na **.NET Core**.
+1. Vyberte **.NET Core**.
 
-4. Když Tasks. JSON otevře, nahradí obsah:
+1. Obsah tasks.jsnahraďte následujícím kódem.
 
     ```json
     {
-      // See https://go.microsoft.com/fwlink/?LinkId=733558
-      // for the documentation about the tasks.json format
       "version": "2.0.0",
       "tasks": [
         {
@@ -219,13 +207,13 @@ V dalším kroku přidáme modul směrovače do našeho řešení. Modul směrov
     }
     ```
 
-5. Uložte a zavřete Tasks. JSON.
+1. Uložte a zavřete tasks.jsna.
 
-6. Spusťte úlohu sestavení `Ctrl + Shift + B` pomocí nebo spuštění sestavení **Terminálové** > **úlohy**.
+1. Spusťte úlohu sestavení pomocí `Ctrl + Shift + B` nebo spuštění sestavení **Terminálové**  >  **úlohy**.
 
 ### <a name="set-up-module-routes"></a>Nastavení směrování modulů
 
-Jak je uvedeno výše, modul runtime IoT Edge používá trasy nakonfigurované v souboru *Deployment. template. JSON* ke správě komunikace mezi volně vázanými moduly. V této části se naučíme, jak nastavit trasy pro modul turbofanRouter. Nejprve pokryjeme vstupní trasy a potom se přesunou na výstupy.
+Jak je uvedeno výše, modul runtime IoT Edge používá trasy nakonfigurované v *deployment.template.js* souboru pro správu komunikace mezi volně vázanými moduly. V této části se naučíme, jak nastavit trasy pro modul turbofanRouter. Nejprve pokryjeme vstupní trasy a potom se přesunou na výstupy.
 
 #### <a name="inputs"></a>Vstupy
 
@@ -236,7 +224,7 @@ Jak je uvedeno výše, modul runtime IoT Edge používá trasy nakonfigurované 
    await ioTHubModuleClient.SetInputMessageHandlerAsync(EndpointNames.FromClassifier, ClassifierCallbackMessageHandler, ioTHubModuleClient);
    ```
 
-2. První zpětné volání naslouchá zprávám odeslaným do jímky **deviceInput** . Z diagramu výše uvidíme, že chceme směrovat zprávy z libovolného listového zařízení do tohoto vstupu. V souboru *Deployment. template. JSON* přidejte trasu, která dává hraničnímu centru pokyn ke směrování všech zpráv přijatých IoT Edge zařízením, které se neodeslaly modulem IoT Edge do vstupu s názvem "deviceInput" v modulu turbofanRouter:
+2. První zpětné volání naslouchá zprávám odeslaným do jímky **deviceInput** . Z diagramu výše uvidíme, že chceme směrovat zprávy z libovolného listového zařízení do tohoto vstupu. V *deployment.template.jsv* souboru přidejte trasu, která dává hraničnímu centru pokyn ke směrování všech zpráv přijatých IoT Edge zařízením, které neodeslal modul IoT Edge, do vstupu s názvem "deviceInput" v modulu turbofanRouter:
 
    ```json
    "leafMessagesToRouter": "FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/deviceInput\")"
@@ -297,12 +285,8 @@ Všechny trasy společně s uzlem "$edgeHub" by měly vypadat jako následujíc�
 }
 ```
 
-> [!NOTE]
-> Přidáním modulu turbofanRouter jste vytvořili následující další trasu: `turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream`. Odeberte tuto trasu a nechte pouze trasy uvedené výše v souboru Deployment. template. JSON.
-
-#### <a name="copy-routes-to-deploymentdebugtemplatejson"></a>Kopírovat trasy do nasazení. Debug. template. JSON
-
-Jako poslední krok, pokud chcete, aby se soubory udržovaly synchronizované, zrcadlí změny, které jste udělali v souboru Deployment. template. JSON v souboru Deployment. Debug. template. JSON.
+  > [!NOTE]
+  > Přidáním modulu turbofanRouter jste vytvořili následující další trasu: `turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream` . Odeberte tuto trasu a nechte jenom trasy uvedené výše v deployment.template.jssouboru.
 
 ## <a name="add-avro-writer-module"></a>Přidat modul Avro Writer
 
@@ -314,21 +298,15 @@ Modul pro zápis Avro má dvě zodpovědnosti v našem řešení, aby bylo možn
 
 ### <a name="create-module-and-copy-files"></a>Vytvořit modul a kopírovat soubory
 
-1. V paletě příkazů vyhledejte a vyberte **Python: vybrat Interpret**.
+1. V Visual Studio Code vyberte **Zobrazit**  >  **paleta příkazů**a pak vyhledejte a vyberte **Python: vybrat Interpret**.
 
-1. Vyberte překladač nalezený v C:\\Python37.
-
-1. Znovu otevřete paletu příkazů a vyhledejte a vyberte **terminál: Vyberte výchozí prostředí**.
-
-1. Po zobrazení výzvy vyberte **příkazový řádek**.
-
-1. Otevřete nové Terminálové prostředí, **terminál** > **Nový**terminál.
+1. Vyberte nainstalovanou Python verze 3,7 nebo novější.
 
 1. Klikněte pravým tlačítkem na složku moduly v Visual Studio Code a vyberte **přidat IoT Edge modul**.
 
 1. Zvolte **Modul Python**.
 
-1. Pojmenujte modul "avroFileWriter".
+1. Pojmenujte modul `avroFileWriter` .
 
 1. Po zobrazení výzvy pro úložiště imagí Docker použijte stejný registr, jako jste použili při přidávání modulu směrovače.
 
@@ -338,7 +316,7 @@ Modul pro zápis Avro má dvě zodpovědnosti v našem řešení, aby bylo možn
    copy C:\source\IoTEdgeAndMlSample\EdgeModules\modules\avroFileWriter\*.py C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avroFileWriter\
    ```
 
-1. Pokud se zobrazí výzva k přepsání main.py `y` , zadejte a `Enter`potom stiskněte.
+1. Přijměte přepsání main.py.
 
 1. Všimněte si, že filemanager.py a schema.py byly přidány do řešení a aktualizace main.py byla aktualizována.
 
@@ -347,29 +325,29 @@ Modul pro zápis Avro má dvě zodpovědnosti v našem řešení, aby bylo možn
 
 ### <a name="bind-mount-for-data-files"></a>Připojení vazby pro datové soubory
 
-Jak je uvedeno v úvodu, modul zapisovače závisí na přítomnosti připojení BIND k zápisu souborů Avro do systému souborů zařízení.
+Jak už bylo zmíněno dříve, modul zapisovače spoléhá na přítomnost připojení BIND k zápisu souborů Avro do systému souborů zařízení.
 
 #### <a name="add-directory-to-device"></a>Přidat adresář do zařízení
 
-1. Připojte se k VIRTUÁLNÍmu počítači s IoT Edge zařízení pomocí SSH.
+1. V Azure Portal spusťte virtuální počítač IoT Edge zařízení, pokud není spuštěný. Připojte se k ní pomocí SSH. Připojení vyžaduje název DNS, který můžete zkopírovat ze stránky přehled pro virtuální počítač v Azure Portal.
 
-   ```bash
-   ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
+   ```cmd
+   ssh -l <user>@<vm name>.<region>.cloudapp.azure.com
    ```
 
-2. Vytvořte adresář, který bude obsahovat uložené zprávy na listovém zařízení.
+1. Po přihlášení vytvořte adresář, ve kterém se budou uchovávat uložené zprávy na listovém zařízení.
 
    ```bash
    sudo mkdir -p /data/avrofiles
    ```
 
-3. Aktualizujte oprávnění adresáře tak, aby kontejner mohl zapisovat.
+1. Aktualizujte oprávnění adresáře tak, aby kontejner mohl zapisovat.
 
    ```bash
    sudo chmod ugo+rw /data/avrofiles
    ```
 
-4. Ověřte, jestli má adresář teď oprávnění zapisovat (w) pro uživatele, skupinu a vlastníka.
+1. Ověřte, jestli má adresář teď oprávnění zapisovat (w) pro uživatele, skupinu a vlastníka.
 
    ```bash
    ls -la /data
@@ -381,9 +359,9 @@ Jak je uvedeno v úvodu, modul zapisovače závisí na přítomnosti připojení
 
 Pro přidání adresáře do kontejneru modulu změníme fázemi přidružené k modulu avroFileWriter. K modulu jsou přidruženy tři fázemi: souboru Dockerfile. AMD64, souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7. Tyto soubory by měly být uchovávány v synchronizaci v případě, že chceme ladit nebo nasazovat na zařízení arm32. V tomto článku se zaměřte jenom na souboru Dockerfile. amd64.
 
-1. Na svém vývojovém počítači otevřete soubor **souboru Dockerfile. amd64** .
+1. Na vývojovém VIRTUÁLNÍm počítači otevřete soubor **C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avoFileWriter\Dockerfile.amd64** .
 
-2. Upravte soubor tak, aby vypadal jako v následujícím příkladu:
+1. Upravte soubor tak, aby vypadal jako v následujícím příkladu:
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -406,15 +384,15 @@ Pro přidání adresáře do kontejneru modulu změníme fázemi přidružené k
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-   Příkazy `mkdir` a `chown` instruují proces sestavení Docker, aby vytvořil v imagi adresář nejvyšší úrovně s názvem/avrofiles a pak moduleuser vlastníka tohoto adresáře. Je důležité, aby tyto příkazy byly vloženy po přidání uživatele modulu do Image pomocí `useradd` příkazu a před přepnutím kontextu do MODULEUSER (User moduleuser).
+   `mkdir`Příkazy a `chown` instruují proces sestavení Docker, aby vytvořil v imagi adresář nejvyšší úrovně s názvem/avrofiles a pak moduleuser vlastníka tohoto adresáře. Je důležité, aby tyto příkazy byly vloženy po přidání uživatele modulu do Image pomocí `useradd` příkazu a před přepnutím kontextu do moduleuser (User moduleuser).
 
-3. Proveďte odpovídající změny v souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7.
+1. V případě potřeby proveďte odpovídající změny v souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7.
 
-#### <a name="update-the-module-configuration"></a>Aktualizovat konfiguraci modulu
+#### <a name="add-bind-configuration-to-the-avrofilewriter"></a>Přidat konfiguraci vazby do avroFileWriter
 
-Posledním krokem při vytváření vazby je aktualizace souborů Deployment. template. JSON (a Deployment. Debug. template. JSON) s informacemi o vazbě.
+Posledním krokem při vytváření vazby je aktualizace deployment.template.jsna souborech (a deployment.debug.template.jszapnutých) s informacemi o vazbě.
 
-1. Otevřete Deployment. template. JSON.
+1. Otevřete deployment.template.js.
 
 2. Upravte definici modulu pro avroFileWriter přidáním `Binds` parametru, který ukazuje adresář kontejneru/avrofiles do místního adresáře na hraničním zařízení. Definice modulu by měla odpovídat následujícímu příkladu:
 
@@ -437,11 +415,9 @@ Posledním krokem při vytváření vazby je aktualizace souborů Deployment. te
    }
    ```
 
-3. Proveďte příslušné změny v nasazení. Debug. template. JSON.
-
 ### <a name="bind-mount-for-access-to-configyaml"></a>Připojení ke svázání pro přístup ke config. yaml
 
-Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato vazba poskytuje modulu přístup ke čtení připojovacího řetězce ze souboru/etc/iotedge/config.yaml na zařízení IoT Edge. K vytvoření IoTHubClient potřebujeme připojovací řetězec, abychom mohli volat asynchronní metodu nahrání\_objektu BLOB\_pro nahrání souborů do služby IoT Hub. Postup pro přidání této vazby je podobný těm, které jsou uvedené v předchozí části.
+Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato vazba poskytuje modulu přístup ke čtení připojovacího řetězce ze souboru/etc/iotedge/config.yaml na zařízení IoT Edge. K vytvoření IoTHubClient potřebujeme připojovací řetězec, abychom mohli volat \_ asynchronní metodu nahrání objektu BLOB \_ pro nahrání souborů do služby IoT Hub. Postup pro přidání této vazby je podobný těm, které jsou uvedené v předchozí části.
 
 #### <a name="update-directory-permission"></a>Aktualizovat oprávnění adresáře
 
@@ -451,25 +427,25 @@ Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato 
    ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
    ```
 
-2. Přidejte do souboru config. yaml oprávnění ke čtení.
+1. Přidejte do souboru config. yaml oprávnění ke čtení.
 
    ```bash
    sudo chmod +r /etc/iotedge/config.yaml
    ```
 
-3. Ověřte, že jsou oprávnění nastavena správně.
+1. Ověřte, že jsou oprávnění nastavena správně.
 
    ```bash
    ls -la /etc/iotedge/
    ```
 
-4. Ujistěte se, že oprávnění pro config. yaml jsou **-r--r--r--**.
+1. Ujistěte se, že oprávnění pro config. yaml jsou **-r--r--r--**.
 
 #### <a name="add-directory-to-module"></a>Přidat adresář do modulu
 
 1. Na svém vývojovém počítači otevřete soubor **souboru Dockerfile. amd64** .
 
-2. Přidejte do souboru další sadu `mkdir` příkazů `chown` a, aby vypadala takto:
+1. Přidejte do souboru další sadu `mkdir` `chown` příkazů a, aby vypadala takto:
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -494,13 +470,13 @@ Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato 
    CMD "python3", "-u", "./main.py"]
    ```
 
-3. Proveďte odpovídající změny v souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7.
+1. Proveďte odpovídající změny v souboru Dockerfile. amd64. Debug a souboru Dockerfile. arm32v7.
 
 #### <a name="update-the-module-configuration"></a>Aktualizovat konfiguraci modulu
 
-1. Otevřete soubor **Deployment. template. JSON** .
+1. Otevřete **deployment.template.jsv** souboru.
 
-2. Upravte definici modulu pro avroFileWriter přidáním druhého řádku do `Binds` parametru, který odkazuje adresář kontejneru (/App/iotconfig) na místní adresář na zařízení (/etc/iotedge).
+1. Upravte definici modulu pro avroFileWriter přidáním druhého řádku do `Binds` parametru, který odkazuje adresář kontejneru (/App/iotconfig) na místní adresář na zařízení (/etc/iotedge).
 
    ```json
    "avroFileWriter": {
@@ -522,7 +498,7 @@ Musíme pro modul zapisovače přidat ještě jednu další datovou vazby. Tato 
    }
    ```
 
-3. Proveďte příslušné změny v nasazení. Debug. template. JSON.
+1. Proveďte příslušné změny deployment.debug.template.jsna.
 
 ## <a name="install-dependencies"></a>Instalace závislostí
 
@@ -530,14 +506,14 @@ Modul zapisovače přebírá závislost na dvou knihovnách Pythonu, fastavro a 
 
 ### <a name="pyyaml"></a>PyYAML
 
-1. Na svém vývojovém počítači otevřete soubor **. txt s požadavky** a přidejte pyyaml.
+1. Na svém vývojovém počítači otevřete `C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avoFileWriter\requirements.txt` soubor a na nový řádek v souboru přidejte "pyyaml".
 
    ```txt
    azure-iothub-device-client~=1.4.3
    pyyaml
    ```
 
-2. Otevřete soubor **souboru Dockerfile. amd64** a přidejte `pip install` příkaz pro upgrade setuptools.
+1. Otevřete soubor **souboru Dockerfile. amd64** a přidejte `pip install` příkaz pro upgrade setuptools.
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -563,9 +539,7 @@ Modul zapisovače přebírá závislost na dvou knihovnách Pythonu, fastavro a 
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-3. Proveďte odpovídající změny souboru Dockerfile. amd64. Debug. <!--may not be necessary. Add 'if needed'?-->
-
-4. Místní instalace pyyaml otevřením terminálu v Visual Studio Code a zadáním
+1. Na příkazovém řádku nainstalujte pyyaml do vývojového počítače.
 
    ```cmd
    pip install pyyaml
@@ -573,7 +547,7 @@ Modul zapisovače přebírá závislost na dvou knihovnách Pythonu, fastavro a 
 
 ### <a name="fastavro"></a>Fastavro
 
-1. V požadavcích. txt přidejte fastavro po pyyaml.
+1. V requirements.txt přidejte fastavro po pyyaml.
 
    ```txt
    azure-iothub-device-client~=1.4.3
@@ -581,7 +555,7 @@ Modul zapisovače přebírá závislost na dvou knihovnách Pythonu, fastavro a 
    fastavro
    ```
 
-2. Nainstalujte fastavro do vývojového počítače pomocí terminálu Visual Studio Code.
+1. Nainstalujte fastavro do vývojového počítače.
 
    ```cmd
    pip install fastavro
@@ -602,31 +576,31 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
 
 1. V Azure Portal přejděte na IoT Hub.
 
-2. V levém navigačním panelu vyberte **směrování zpráv**.
+1. V nabídce v levém podokně v části **zasílání zpráv**vyberte **směrování zpráv**.
 
-3. Vyberte **Přidat**.
+1. Na kartě **trasy** vyberte **Přidat**.
 
-4. Pojmenujte **RulMessageRoute**trasy.
+1. Pojmenujte **RulMessageRoute**trasy.
 
-5. Vyberte **Přidat** vedle možnosti selektor **koncových bodů** a zvolte **úložiště objektů BLOB**.
+1. Vyberte **přidat koncový bod** napravo od výběru **koncového bodu** a zvolte možnost **úložiště**.
 
-6. Ve formuláři **přidat koncový bod úložiště zadejte** název koncového bodu **ruldata**.
+1. Na stránce **přidat koncový bod úložiště zadejte** název koncového bodu **ruldata**.
 
-7. Vyberte vybrat **kontejner**.
+1. Vyberte vybrat **kontejner**.
 
-8. Vyberte účet úložiště, který se používá v celém rámci tohoto kurzu, který se jmenuje jako **iotedgeandml\<Unique přípona\>**.
+1. Na stránce **účty úložiště** Najděte účet úložiště, který používáte v celém rámci tohoto kurzu, který se jmenuje jako **iotedgeandml \<unique suffix\> **.
 
-9. Zvolte kontejner **ruldata** a klikněte na **Vybrat**.
+1. Vyberte kontejner **ruldata** a klikněte na **Vybrat**.
 
-10. Kliknutím na **vytvořit** vytvořte koncový bod úložiště.
+1. Zpátky na stránce **přidat koncový bod úložiště** vyberte **vytvořit** a vytvořte koncový bod úložiště.
 
-11. Pro **dotaz směrování**zadejte následující dotaz:
+1. Zpět na stránce **Přidat trasu** pro **dotaz směrování**nahraďte `true` následujícím dotazem:
 
     ```sql
     IS_DEFINED($body.PredictedRul) AND NOT IS_DEFINED($body.OperationalSetting1)
     ```
 
-12. Rozbalte část **test** a pak část **tělo zprávy** . Nahraďte zprávu tímto příkladem očekávaných zpráv:
+1. Rozbalte část **test** a pak část **tělo zprávy** . Text zprávy nahraďte tímto příkladem očekávaných zpráv:
 
     ```json
     {
@@ -637,25 +611,25 @@ Když je směrovač a klasifikátor zavedený, očekáváme, že budete dostáva
     }
     ```
 
-13. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
+1. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
 
-14. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
-#### <a name="update-turbofandevicetostorage-route"></a>Aktualizovat turbofanDeviceToStorage trasu
+#### <a name="update-turbofandevicedatatostorage-route"></a>Aktualizovat turbofanDeviceDataToStorage trasu
 
 Nechceme směrovat nová data předpovědi do našeho starého umístění úložiště, takže aktualizujte trasu tak, aby se zabránilo.
 
 1. Na stránce **směrování zpráv** IoT Hub vyberte kartu **trasy** .
 
-2. Vyberte **turbofanDeviceDataToStorage**nebo libovolný název, který jste přiřadili k počátečnímu směrování dat zařízení.
+1. Vyberte **turbofanDeviceDataToStorage**nebo libovolný název, který jste přiřadili k počátečnímu směrování dat zařízení.
 
-3. Aktualizovat dotaz směrování na
+1. Aktualizovat dotaz směrování na
 
    ```sql
    IS_DEFINED($body.OperationalSetting1)
    ```
 
-4. Rozbalte část **test** a pak část **tělo zprávy** . Nahraďte zprávu tímto příkladem očekávaných zpráv:
+1. Rozbalte část **test** a pak část **tělo zprávy** . Nahraďte zprávu tímto příkladem očekávaných zpráv:
 
    ```json
    {
@@ -689,34 +663,34 @@ Nechceme směrovat nová data předpovědi do našeho starého umístění úlo�
    }
    ```
 
-5. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
+1. Vyberte možnost **testovací trasa**. Pokud je test úspěšný, zobrazí se zpráva, že dotaz odpovídá dotazu.
 
-6. Vyberte **Uložit**.
+1. Vyberte **Uložit**.
 
 ### <a name="configure-file-upload"></a>Konfigurace odesílání souborů
 
 Nakonfigurujte funkci nahrávání souborů IoT Hub, aby modul zapisovače souborů mohl nahrávat soubory do úložiště.
 
-1. Z levého navigátoru v IoT Hub vyberte **nahrávání souboru**.
+1. V nabídce levého podokna v IoT Hub v části **zasílání zpráv**vyberte **nahrávání souborů**.
 
-2. Vyberte **Azure Storage kontejner**.
+1. Vyberte **Azure Storage kontejner**.
 
-3. V seznamu vyberte svůj účet úložiště.
+1. V seznamu vyberte svůj účet úložiště.
 
-4. Vyberte kontejner **uploadturbofanfiles** a klikněte na **Vybrat**.
+1. Vyberte kontejner, který začíná na **SAS** s připojením k identifikátoru GUID a klikněte na **Vybrat**.
 
-5. Vyberte **Uložit**. Portál vás upozorní, až se uložení dokončí.
+1. Vyberte **Uložit**. Portál vás upozorní, až se uložení dokončí.
 
 > [!Note]
 > Pro tento kurz nezapneme oznámení o nahrání, ale další informace o tom, jak zpracovávat oznámení o nahrávání souborů, najdete v tématu [přijetí oznámení o nahrání souboru](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) .
 
 ## <a name="build-publish-and-deploy-modules"></a>Vytváření, publikování a nasazování modulů
 
-Teď, když jsme udělali změny konfigurace, jsme připraveni sestavit image a publikovat je do našeho služby Azure Container Registry. Proces sestavení používá soubor Deployment. template. JSON k určení, které moduly je třeba sestavit. Nastavení pro každý modul, včetně verze, se nachází v souboru Module. JSON ve složce modul. Proces sestavení nejprve spustí sestavení Docker na fázemi, které odpovídá aktuální konfiguraci nalezené v souboru Module. JSON pro vytvoření image. Pak publikuje image do registru ze souboru Module. JSON se značkou verze, která odpovídá značce v souboru Module. JSON. Nakonec vytvoří manifest nasazení specifický pro konfiguraci (například Deployment. amd64. JSON), který nasadíme do zařízení IoT Edge. Zařízení IoT Edge přečte informace z manifestu nasazení a na základě pokynů bude stahovat moduly, konfigurovat trasy a nastavit požadované vlastnosti. Tato metoda nasazení má dvě vedlejší účinky, o kterých byste měli vědět:
+Teď, když jsme udělali změny konfigurace, jsme připraveni sestavit image a publikovat je do našeho služby Azure Container Registry. Proces sestavení používá deployment.template.jsv souboru k určení, které moduly je třeba sestavit. Nastavení pro každý modul, včetně verze, se nachází v module.jssouboru ve složce modulu. Proces sestavení nejprve spustí sestavení Docker na fázemi, které odpovídá aktuální konfiguraci nalezené v souboru module.jspro vytvoření bitové kopie. Pak tento obrázek publikuje do registru z module.jsv souboru se značkou verze, která se shoduje s verzí v module.jssouboru. Nakonec vytvoří manifest nasazení specifický pro konfiguraci (například deployment.amd64.json), který nasadíme do IoT Edgeho zařízení. Zařízení IoT Edge přečte informace z manifestu nasazení a na základě pokynů bude stahovat moduly, konfigurovat trasy a nastavit požadované vlastnosti. Tato metoda nasazení má dvě vedlejší účinky, o kterých byste měli vědět:
 
 * **Prodleva nasazení:** vzhledem k tomu, že modul runtime IoT Edge musí rozpoznat změnu požadovaných vlastností před tím, než se začne znovu konfigurovat, může trvat i několik času po nasazení modulů, dokud je modul runtime nevybere a začne aktualizovat IoT Edge zařízení.
 
-* **Verze modulu:** Pokud publikujete novou verzi kontejneru modulu do registru kontejneru pomocí stejných značek verze jako předchozí modul, modul runtime nebude stahovat novou verzi modulu. Jedná se o porovnání značky verze místní image a požadované image z manifestu nasazení. Pokud se tyto verze shodují, modul runtime neprovede žádnou akci. Proto je důležité zvýšit verzi modulu pokaždé, když chcete nasadit nové změny. Zvyšte verzi tak, že změníte vlastnost **verze** v souboru Module. JSON pro modul, který měníte, na vlastnost **značka** . Pak Sestavte a publikujte modul.
+* **Verze modulu:** Pokud publikujete novou verzi kontejneru modulu do registru kontejneru pomocí stejných značek verze jako předchozí modul, modul runtime nebude stahovat novou verzi modulu. Jedná se o porovnání značky verze místní image a požadované image z manifestu nasazení. Pokud se tyto verze shodují, modul runtime neprovede žádnou akci. Proto je důležité zvýšit verzi modulu pokaždé, když chcete nasadit nové změny. Zvyšte verzi tak, že změníte vlastnost **verze** ve vlastnosti **tag** v module.jssouboru pro modul, který měníte. Pak Sestavte a publikujte modul.
 
     ```json
     {
@@ -740,27 +714,29 @@ Teď, když jsme udělali změny konfigurace, jsme připraveni sestavit image a 
 
 ### <a name="build-and-publish"></a>Sestavování a publikování
 
-1. V Visual Studio Code na vývojovém VIRTUÁLNÍm počítači otevřete Visual Studio Code okno terminálu a přihlaste se k registru kontejneru.
+1. Na vývojovém VIRTUÁLNÍm počítači spusťte Docker, pokud není spuštěný.
+
+1. V Visual Studio Code spusťte nový terminál s příkazovým řádkem a přihlaste se do služby Azure Container Registry (ACR).
+
+  Požadované hodnoty uživatelského jména, hesla a přihlašovacího serveru můžete najít v Azure Portal. Název registru kontejneru má formát "turbofandemo \<unique id\> ". V nabídce v levém podokně v části **Nastavení**vyberte **přístupové klíče** a zobrazte je.
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-1. V Visual Studio Code klikněte pravým tlačítkem na Deployment. template. JSON a vyberte **sestavení a nabízené IoT Edge řešení**.
+1. V Visual Studio Code klikněte pravým tlačítkem na deployment.template.jsna a vyberte **sestavení a nabízení IoT Edge řešení**.
 
 ### <a name="view-modules-in-the-registry"></a>Zobrazit moduly v registru
 
 Po úspěšném dokončení sestavení budeme moci použít Azure Portal ke kontrole publikovaných modulů.
 
-1. V Azure Portal přejděte do pracovního prostoru Azure Machine Learning a klikněte na hypertextový odkaz pro **registr**.
+1. Otevřete Azure Container Registry pro tento kurz. Název registru kontejneru má formát "turbofandemo \<unique id\> ". 
 
-    ![Přechod k registru z pracovního prostoru služby Machine Learning](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
+1. V nabídce v levém podokně v části **služby**vyberte **úložiště**.
 
-2. Z navigátoru na straně registru vyberte **úložiště**.
+1. Všimněte si, že oba moduly, které jste vytvořili, **avrofilewriter** a **turbofanrouter**, se zobrazí jako úložiště.
 
-3. Všimněte si, že oba moduly, které jste vytvořili, **avrofilewriter** a **turbofanrouter**, se zobrazí jako úložiště.
-
-4. Vyberte **turbofanrouter** a Všimněte si, že jste publikovali jeden obrázek označený jako 0.0.1-amd64.
+1. Vyberte **turbofanrouter** a Všimněte si, že jste publikovali jeden obrázek označený jako 0.0.1-amd64.
 
    ![Zobrazit první označenou verzi turbofanrouter](media/tutorial-machine-learning-edge-06-custom-modules/tagged-image-turbofanrouter-repo.png)
 
@@ -768,15 +744,15 @@ Po úspěšném dokončení sestavení budeme moci použít Azure Portal ke kont
 
 V našem řešení jsme sestavili a nakonfigurovali moduly, teď tyto moduly nasadíme do zařízení IoT Edge.
 
-1. V Visual Studio Code klikněte pravým tlačítkem myši na soubor **Deployment. amd64. JSON** ve složce config.
+1. V Visual Studio Code klikněte pravým tlačítkem na **deployment.amd64.jsv** souboru ve složce config.
 
-2. Vyberte **vytvořit nasazení pro jedno zařízení**.
+1. Vyberte **vytvořit nasazení pro jedno zařízení**.
 
-3. Vyberte zařízení IoT Edge **aaTurboFanEdgeDevice**.
+1. Vyberte zařízení IoT Edge **aaTurboFanEdgeDevice**.
 
-4. Aktualizujte panel zařízení Azure IoT Hub v Průzkumníkovi Visual Studio Code. Měli byste vidět, že jsou nasazené tři nové moduly, ale ještě nejsou spuštěné.
+1. Aktualizujte panel zařízení Azure IoT Hub v Průzkumníkovi Visual Studio Code. Měli byste vidět, že jsou nasazené tři nové moduly, ale ještě nejsou spuštěné.
 
-5. Obnovte se znovu za několik minut a zobrazí se moduly, které jsou spuštěné.
+1. Obnovte se znovu za několik minut a zobrazí se moduly, které jsou spuštěné.
 
    ![Zobrazit spuštěné moduly v Visual Studio Code](media/tutorial-machine-learning-edge-06-custom-modules/view-running-modules-list.png)
 
@@ -795,7 +771,13 @@ V této části sdílíme několik techniků pro porozumění tomu, co se v modu
 
 ### <a name="diagnosing-from-the-device"></a>Diagnostika ze zařízení
 
-Když se přihlásíte do zařízení IoT Edge, získáte přístup k dobrým informacím o stavu modulů. Hlavním mechanismem, který používáme, jsou příkazy Docker, které nám umožňují prošetřit kontejnery a image na zařízení.
+Když se přihlásíte do zařízení IoT Edge (v našem případě se jedná o virtuální počítač se systémem Linux), můžete získat přístup k dobrým informacím o stavu modulů. Hlavním mechanismem, který používáme, jsou příkazy Docker, které nám umožňují prošetřit kontejnery a image na zařízení.
+
+1. Přihlaste se k zařízení IoT Edge:
+
+   ```bash
+   ssh -l <user>@IoTEdge-<extension>.<region>.cloudapp.azure.com
+   ```
 
 1. Vypíše všechny spuštěné kontejnery. Očekáváme, že se pro každý modul zobrazí kontejner s názvem, který odpovídá modulu. Tento příkaz také vypíše přesný obrázek kontejneru, včetně verze, abyste se mohli shodovat s očekáváním. Můžete také zobrazit seznam obrázků nahrazením "image" pro "Container" v příkazu.
 
@@ -803,19 +785,19 @@ Když se přihlásíte do zařízení IoT Edge, získáte přístup k dobrým in
    sudo docker container ls
    ```
 
-2. Získání protokolů pro kontejner. Tento příkaz provede výstup všech zápisů do StdErr a StdOut v kontejneru. Tento příkaz funguje u kontejnerů, které byly spuštěny a poté z nějakého důvodu zemřely. Je také užitečné pochopit, co se děje s kontejnery edgeAgent nebo edgeHub.
+1. Získání protokolů pro kontejner. Tento příkaz provede výstup všech zápisů do StdErr a StdOut v kontejneru. Tento příkaz funguje u kontejnerů, které byly spuštěny a poté z nějakého důvodu zemřely. Je také užitečné pochopit, co se děje s kontejnery edgeAgent nebo edgeHub.
 
    ```bash
-   sudo docker container logs <container name>
+   sudo docker container logs <container id>
    ```
 
-3. Kontrola kontejneru. Tento příkaz poskytuje spoustu informací o imagi. Data je možné filtrovat podle toho, co hledáte. Například pokud chcete zjistit, zda jsou vazby na avroFileWriter správné, můžete použít příkaz:
+1. Kontrola kontejneru. Tento příkaz poskytuje spoustu informací o imagi. Data je možné filtrovat podle toho, co hledáte. Například pokud chcete zjistit, zda jsou vazby na avroFileWriter správné, můžete použít příkaz:
 
    ```bash
    sudo docker container inspect -f "{{ json .Mounts }}" avroFileWriter | python -m json.tool
    ```
 
-4. Připojte se ke spuštěnému kontejneru. Tento příkaz může být užitečný, pokud chcete prošetřit kontejner, když je spuštěný:
+1. Připojte se ke spuštěnému kontejneru. Tento příkaz může být užitečný, pokud chcete prošetřit kontejner, když je spuštěný:
 
    ```bash
    sudo docker exec -it avroFileWriter bash
@@ -823,9 +805,11 @@ Když se přihlásíte do zařízení IoT Edge, získáte přístup k dobrým in
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jsme vytvořili řešení IoT Edge v Visual Studio Code se třemi moduly, klasifikátorem, směrovačem a zapisovačem nebo odesláním souborů. Nastavili jsme trasy, aby mohly moduly vzájemně komunikovat na hraničním zařízení, upravili konfiguraci hraničního zařízení a aktualizovali fázemi pro instalaci závislostí a přidali připojení vazby k kontejnerům modulů. Dále jsme aktualizovali konfiguraci IoT Hub pro směrování našich zpráv na základě typu a pro zpracování nahrávání souborů. Na všech místech jsme nasadili moduly na zařízení IoT Edge a zajistili, že moduly běžely správně.
+V tomto článku jsme vytvořili řešení IoT Edge v Visual Studio Code se třemi moduly: klasifikátor, směrovač a zapisovač nebo odeslání souboru. Nastavíme trasy, které umožní, aby se na hraničním zařízení vzájemně komunikovaly moduly. Změnili jsme konfiguraci hraničního zařízení a aktualizovali fázemi pro instalaci závislostí a přidání připojení vazby k kontejnerům modulů. 
 
-Další informace najdete na následujících stránkách:
+Dále jsme aktualizovali konfiguraci IoT Hub pro směrování našich zpráv na základě typu a pro zpracování nahrávání souborů. Na všech místech jsme nasadili moduly na zařízení IoT Edge a zajistili, že moduly běžely správně.
+
+Další pokyny najdete v následujících článcích:
 
 * [Nasazování modulů a vytváření tras ve službě IoT Edge](module-composition.md)
 * [Syntaxe dotazu směrování zpráv IoT Hubu](../iot-hub/iot-hub-devguide-routing-query-syntax.md)

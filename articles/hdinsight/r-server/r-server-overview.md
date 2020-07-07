@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 1dd716a279f7a09e7d9152ee34ff5c7bdac201dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849911"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
 
@@ -23,7 +23,7 @@ Služba ML Services v HDInsight poskytuje nejnovější funkce pro analýzy zalo
 
 Hraniční uzel nabízí pohodlný místo pro připojení ke clusteru a spouštění skriptů jazyka R. Hraniční uzel umožňuje spuštění paralelních distribuovaných funkcí škálovat napříč jádry serveru. Můžete je také spouštět v uzlech clusteru pomocí zmenšování mapy Hadoop služby škálovat. Můžete také použít Výpočetní kontexty Apache Spark.
 
-Modely nebo předpovědi, které vyplývají z analýzy, se dají stáhnout pro místní použití. Můžou být `operationalized` taky jinde v Azure. Konkrétně prostřednictvím [Azure Machine Learning Studio (Classic)](https://studio.azureml.net)a [webové služby](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
+Modely nebo předpovědi, které vyplývají z analýzy, se dají stáhnout pro místní použití. Můžou být taky `operationalized` jinde v Azure. Konkrétně prostřednictvím [Azure Machine Learning Studio (Classic)](https://studio.azureml.net)a [webové služby](../../machine-learning/studio/deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službami ML v HDInsight
 
@@ -84,7 +84,7 @@ Vaše skripty R můžou používat libovolný z balíčků sady R 8000 + open-so
 
 ## <a name="operationalize-a-model"></a>`Operationalize`model
 
-Po dokončení `operationalize` modelování dat model předpovědi pro nová data z Azure nebo místního prostředí. Tento proces se označuje jako bodování. Bodování se dá udělat v HDInsight, Azure Machine Learning nebo v místním prostředí.
+Po dokončení modelování dat `operationalize` model předpovědi pro nová data z Azure nebo místního prostředí. Tento proces se označuje jako bodování. Bodování se dá udělat v HDInsight, Azure Machine Learning nebo v místním prostředí.
 
 ### <a name="score-in-hdinsight"></a>Skóre v HDInsight
 
@@ -92,7 +92,7 @@ Pokud chcete skóre v HDInsight, napište funkci R. Funkce volá váš model, ab
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Skóre v Azure Machine Learning (AML)
 
-Pokud chcete určit skóre pomocí Azure Machine Learning, použijte Open Source Azure Machine Learning R známý jako [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) k publikování modelu jako webové služby Azure. Pro usnadnění práce je tento balíček předem nainstalován na hraničním uzlu. Dále pomocí zařízení v Azure Machine Learning vytvořte uživatelské rozhraní webové služby a potom zavolejte webovou službu podle potřeby pro vyhodnocování. Pak převeďte objekty modelu nástroje pro horizontální navýšení kapacity na ekvivalentní objekty Open Source modelu pro použití s webovou službou. Pro tento převod použijte funkce pro vynucení `as.randomForest()` škálování, například pro modely založené na kompletech.
+Pokud chcete určit skóre pomocí Azure Machine Learning, použijte Open Source Azure Machine Learning R známý jako [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) k publikování modelu jako webové služby Azure. Pro usnadnění práce je tento balíček předem nainstalován na hraničním uzlu. Dále pomocí zařízení v Azure Machine Learning vytvořte uživatelské rozhraní webové služby a potom zavolejte webovou službu podle potřeby pro vyhodnocování. Pak převeďte objekty modelu nástroje pro horizontální navýšení kapacity na ekvivalentní objekty Open Source modelu pro použití s webovou službou. Pro tento převod použijte funkce pro vynucení škálování, například `as.randomForest()` pro modely založené na kompletech.
 
 ### <a name="score-on-premises"></a>Místní skóre
 
@@ -114,7 +114,9 @@ Dostupná paměť pro služby ML se dá upravit při spuštění úlohy MapReduc
 
 Dostupnou paměť pro služby ML lze změnit pomocí přepínačů Hadoop v volání **RxHadoopMR**:
 
-    hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
+```r
+hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"
+```
 
 ### <a name="scale-your-cluster"></a>Škálování clusteru
 

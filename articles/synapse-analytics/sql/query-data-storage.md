@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 72db484814c0ecf0ab6bb70d12ab088e1ce44ef5
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: e9a90ab7100ae9757f59c80bb8f4738772482f56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85478565"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833651"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
 
@@ -46,7 +46,7 @@ K dotazování na zdrojová data Parquet použijte FORMAT = ' PARQUET '.
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', TYPE = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -58,7 +58,7 @@ K dotazování na zdrojová data Parquet použijte formát = CSV. Schéma soubor
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.csv', TYPE = 'CSV', PARSER_VERSION='2.0') 
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -81,7 +81,7 @@ Chcete-li určit sloupce, které chcete číst, můžete v rámci příkazu zada
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', TYPE = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (
       C1 int, 
       C2 varchar(20),
@@ -101,7 +101,7 @@ Vyvoláním klauzule WITH z `OPENROWSET` příkazu můžete pokyn, aby služba a
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', TYPE = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
 Zajistěte, aby se pro optimální výkon používaly [příslušné odvozené datové typy](best-practices-sql-on-demand.md#check-inferred-data-types) . 
@@ -118,7 +118,7 @@ Platí následující pravidla:
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.parquet', TYPE = 'PARQUET' ) as rows
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
 ```
 
 Příklady použití najdete v tématu [složky dotazů a více souborů](query-folders-multiple-csv-files.md) .
@@ -219,7 +219,7 @@ Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sl
 
 Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkových dotazů.
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
     - Azure synapse Studio (Preview)

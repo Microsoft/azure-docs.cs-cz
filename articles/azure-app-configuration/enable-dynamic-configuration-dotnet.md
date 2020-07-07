@@ -8,16 +8,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7780bdbc92868f62e8d066d171b2a04fe06a981d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b6081e6bad1382ca2b3a8349036234c0c01cb13
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856508"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Framework
 
-Klientská knihovna .NET pro konfiguraci aplikací podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno tak, že nejprve získá `IConfigurationRefresher` instanci z možností pro poskytovatele konfigurace a potom zavolá `Refresh` tuto instanci kdekoli v kódu.
+Klientská knihovna .NET pro konfiguraci aplikací podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. To může být implementováno tak, že nejprve získá instanci `IConfigurationRefresher` z možností pro poskytovatele konfigurace a potom zavolá `Refresh` tuto instanci kdekoli v kódu.
 
 Aby se nastavení zachovalo jako aktualizované a zabránilo se příliš velkému počtu volání do úložiště konfigurace, použije se pro každé nastavení mezipaměť. Dokud neuplyne hodnota nastavení uložené v mezipaměti, operace aktualizace neaktualizuje hodnotu, a to ani v případě, že se hodnota v úložišti konfigurace změnila. Výchozí doba vypršení platnosti každé žádosti je 30 sekund, ale v případě potřeby může být přepsána.
 
@@ -38,9 +38,9 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte možnost **Průzkumník** > konfigurace **+ vytvořit** > **klíč-hodnota** a přidejte následující páry klíč-hodnota:
+6. Vyberte možnost **Průzkumník konfigurace**  >  **+ vytvořit**  >  **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
@@ -50,14 +50,14 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-a-net-framework-console-app"></a>Vytvoření konzolové aplikace .NET Framework
 
-1. Spusťte Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
+1. Spusťte Visual Studio a vyberte **soubor**  >  **Nový**  >  **projekt**.
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Klikněte na **Další**.
 
 1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4.7.1** nebo vyšší. Klikněte na **Vytvořit**.
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
-1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a do svého projektu přidejte balíček NuGet *Microsoft. Extensions. Configuration. AzureAppConfiguration* . Pokud nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
+1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte *Microsoft.Extensions.Configuration. AzureAppConfiguration* balíček NuGet do vašeho projektu. Pokud nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
 
 1. Otevřete *program.cs*a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
 
@@ -95,7 +95,7 @@ V tomto kurzu se naučíte:
         PrintMessage().Wait();
     }
     ```
-    `ConfigureRefresh` Metoda se používá k určení nastavení, která se použijí k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Instance `IConfigurationRefresher` může `GetRefresher` být načtena voláním metody na možnosti poskytované `AddAzureAppConfiguration` metodě a `Refresh` metoda v této instanci může být použita k aktivaci operace aktualizace kdekoli v kódu.
+    `ConfigureRefresh`Metoda se používá k určení nastavení, která se použijí k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Instance `IConfigurationRefresher` může být načtena voláním `GetRefresher` metody na možnosti poskytované `AddAzureAppConfiguration` metodě a `Refresh` metoda v této instanci může být použita k aktivaci operace aktualizace kdekoli v kódu.
 
     > [!NOTE]
     > Výchozí doba vypršení platnosti mezipaměti pro konfigurační nastavení je 30 sekund, ale lze ji přepsat voláním `SetCacheExpiration` metody v inicializátoru možnosti předaného jako argument `ConfigureRefresh` metody.
@@ -119,11 +119,15 @@ V tomto kurzu se naučíte:
 
 1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. Pokud chcete, aby se změna projevila, restartujte Visual Studio. 
 
@@ -131,11 +135,11 @@ V tomto kurzu se naučíte:
 
     ![Místní spuštění aplikace](./media/dotnet-app-run.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure – Aktualizováno |
 
@@ -144,7 +148,7 @@ V tomto kurzu se naučíte:
     ![Místní aktualizace aplikace](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
-    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena `SetCacheExpiration` na 10 sekund pomocí metody při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace tohoto nastavení uplynula alespoň 10 sekund.
+    > Vzhledem k tomu, že doba vypršení platnosti mezipaměti byla nastavena na 10 sekund pomocí `SetCacheExpiration` metody při určování konfigurace pro operaci aktualizace, bude hodnota nastavení konfigurace aktualizována pouze v případě, že od poslední aktualizace tohoto nastavení uplynula alespoň 10 sekund.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

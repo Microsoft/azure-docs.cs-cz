@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace se sítěmi Skyhigh | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Skyhigh sítěmi.
+title: 'Kurz: Azure Active Directory integrace s cloudovou konfigurací jednotného přihlašování služby Azure AD v MVISION | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a MVISION cloudovou konfigurací jednotného přihlašování Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,99 +11,78 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 92f3f101807171e71d40171dfa2bd3f006363ae0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a519ab6558db95ecf86b7595dbbb13a970460043
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090381"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85806801"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Kurz: Azure Active Directory integrace se sítěmi Skyhigh
+# <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Kurz: integrace MVISION cloudového jednotného přihlašování do cloudu Azure AD pomocí Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Skyhigh sítě s Azure Active Directory (Azure AD).
-Integrace Skyhighch sítí s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat konfiguraci MVISION cloudu Azure AD SSO pomocí Azure Active Directory (Azure AD). Když integrujete MVISION cloudovou konfiguraci jednotného přihlašování Azure AD pomocí služby Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Skyhigh sítím.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k sítím Skyhigh (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup k MVISION cloudové konfiguraci jednotného přihlašování služby Azure AD.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k MVISION konfiguraci jednotného přihlašování služby Azure AD pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s Skyhigh sítěmi potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné Skyhigh sítě s povoleným jednotným přihlašováním
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* MVISION cloudové předplatné Azure AD jednotného přihlašování (SSO) s povoleným jednotným přihlašováním.
+
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Skyhigh Networks podporuje jednotné přihlašování (SSO) **a IDP** .
+* Konfigurace jednotného přihlašování v cloudu Azure AD MVISION podporuje **aktualizace SP a IDP** .
+* Jakmile nakonfigurujete Dropbox, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-skyhigh-networks-from-the-gallery"></a>Přidávání sítí Skyhigh z Galerie
+## <a name="adding-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>Přidání konfigurace MVISION cloudového jednotného přihlašování Azure AD z Galerie
 
-Pokud chcete nakonfigurovat integraci Skyhighch sítí do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Skyhigh sítě z galerie.
+Pokud chcete nakonfigurovat integraci MVISION cloudu služby Azure AD SSO do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat MVISION cloudovou konfiguraci služby Azure AD SSO z galerie.
 
-**Chcete-li přidat sítě Skyhigh z Galerie, proveďte následující kroky:**
-
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
-
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
-
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
-
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **Skyhigh Networks**, vyberte **Skyhigh sítě** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
-
-     ![Skyhigh sítě v seznamu výsledků](common/search-new-app.png)
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **MVISION cloudová konfigurace služby Azure AD SSO** .
+1. Na panelu výsledků vyberte **MVISION cloudová konfigurace jednotného přihlašování Azure AD** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Skyhigh sítí na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Skyhigh sítích.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s MVISION cloudovou konfigurací služby Azure AD SSO pomocí testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v konfiguraci služby MVISION cloudu Azure AD SSO.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Skyhigh sítí, musíte dokončit tyto stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s MVISION cloudovou konfigurací jednotného přihlašování služby Azure AD, dokončete následující stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro sítě Skyhigh](#configure-skyhigh-networks-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytváření Skyhigh sítí testovacího uživatele](#create-skyhigh-networks-test-user)** – pro Britta Simon v sítích Skyhigh, které jsou propojené s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+    4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+1. Konfigurace jednotného přihlašování pro konfiguraci jednotného přihlašování v **[MVISION cloudu Azure AD](#configure-mvision-cloud-azure-ad-sso-configuration-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvořte MVISION cloudového testu konfigurace jednotného přihlašování Azure AD](#create-mvision-cloud-azure-ad-sso-configuration-test-user)** , abyste měli protějšek Britta Simon v MVISION cloudové konfiguraci služby Azure AD, která je propojená s reprezentací uživatele Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Skyhigh sítí, proveďte následující kroky:
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **služby Datadog** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Skyhigh Networks** vyberte **jednotné přihlašování**.
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
-
-    ![Skyhigh sítě a adresy URL jednotného přihlašování](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
@@ -111,30 +90,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Skyhigh 
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Skyhigh sítě a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
+    ![MVISION Cloud služby Azure AD SSO konfigurace jednotného přihlašování a adres URL](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pro získání těchto hodnot se obraťte na [tým podpory klientů Skyhigh Networks](mailto:support@skyhighnetworks.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory konfigurace jednotného přihlašování služby Azure AD pro MVISION Cloud](mailto:support@skyhighnetworks.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-7. V části **nastavit sítě Skyhigh** zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V části **Nastavení cloudového oddílu pro konfiguraci služby Azure AD jednotného přihlašování pro MVISION** zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
-### <a name="configure-skyhigh-networks-single-sign-on"></a>Konfigurace jednotného přihlašování sítí Skyhigh
-
-Chcete-li nakonfigurovat jednotné přihlašování na straně **sítě Skyhigh** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory sítí Skyhigh](mailto:support@skyhighnetworks.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -163,15 +133,15 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k sítím Skyhigh.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k MVISION konfiguraci jednotného přihlašování ke cloudu Azure AD.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **sítě Skyhigh**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **MVISION cloudová konfigurace služby Azure AD SSO**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Skyhigh sítě**.
+2. V seznamu aplikace vyberte **MVISION cloudová konfigurace služby Azure AD jednotného přihlašování**.
 
-    ![Odkaz sítě Skyhigh v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na konfiguraci služby Azure AD SSO MVISION cloudu v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
@@ -187,15 +157,21 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-skyhigh-networks-test-user"></a>Vytvořit testovacího uživatele pro sítě Skyhigh
 
-V této části vytvoříte uživatele s názvem Britta Simon v sítích Skyhigh. Pracujte s [týmem podpory sítí Skyhigh](mailto:support@skyhighnetworks.com) a přidejte uživatele do platformy Skyhigh Networks. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+## <a name="configure-mvision-cloud-azure-ad-sso-configuration-sso"></a>Konfigurace jednotného přihlašování k MVISION cloudového jednotného přihlašování služby Azure AD
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+Ke konfiguraci jednotného přihlašování na straně **MVISION cloudové konfigurace jednotného přihlašování služby Azure AD** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [MVISION cloudu podpory konfigurace jednotného přihlašování Azure AD](mailto:support@skyhighnetworks.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+
+
+### <a name="create-mvision-cloud-azure-ad-sso-configuration-test-user"></a>Vytvořit MVISION cloudového testu konfigurace jednotného přihlašování Azure AD
+
+V této části vytvoříte uživatele s názvem B. Simon v konfiguraci služby jednotného přihlašování v MVISION cloudu Azure AD. Pokud chcete přidat uživatele na MVISION cloudovou platformu pro jednotné přihlašování Azure AD, pracujte s [MVISION cloudem podpory konfigurace jednotného přihlašování služby Azure AD](mailto:support@skyhighnetworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+
+### <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici sítě Skyhigh na přístupovém panelu byste měli být automaticky přihlášeni k sítím Skyhigh, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici konfigurace služby MVISION cloud Azure AD SSO, měli byste se automaticky přihlásit ke cloudové konfiguraci služby Azure AD SSO MVISION, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -204,3 +180,7 @@ Po kliknutí na dlaždici sítě Skyhigh na přístupovém panelu byste měli b�
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si MVISION cloudové konfigurace jednotného přihlašování Azure AD pomocí Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

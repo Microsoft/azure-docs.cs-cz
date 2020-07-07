@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 9772ea320ff28325ffdc8cdcb6e35947b182d1b3
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849488"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
 
-Azure Key Vault podporuje vytvoření žádosti o podepsání certifikátu pomocí páru klíčů privátního veřejného klíče a jeho podepsáním kteroukoli certifikační autoritou podle vašeho výběru. Může to být interní podniková CA nebo externí Veřejná certifikační autorita. Žádost o podepsání certifikátu (také zástupce oddělení IT nebo certifikace) je zpráva odeslaná uživatelem do certifikační autority (CA), aby mohla požádat o vystavení digitálního certifikátu.
+Azure Key Vault podporuje ukládání digitálního certifikátu vydaného jakoukoli certifikační autoritou dle vašeho výběru v trezoru klíčů. Podporuje vytvoření žádosti o podepsání certifikátu s dvojicí klíčů privátního veřejného klíče, kterou může podepsat kterákoli vybraná certifikační autorita. Může to být interní podniková CA nebo externí Veřejná certifikační autorita. Žádost o podepsání certifikátu (také zástupce oddělení IT nebo certifikace) je zpráva odeslaná uživatelem do certifikační autority (CA), aby mohla požádat o vystavení digitálního certifikátu.
 
 Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](/azure/key-vault/certificates/about-certificates).
 

@@ -4,18 +4,18 @@ description: Vytvoří nový projekt v Azure Notebooks Preview, který je nakonf
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559753"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832895"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření projektu s vlastním prostředím ve službě Azure Notebooks Preview
 
-Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků, datových souborů, dokumentace, obrázků a tak dále, spolu s prostředím, které lze konfigurovat s konkrétními příkazy instalace. Když definujete prostředí s projektem, všichni uživatelé, kteří naklonují projekt na svůj vlastní Azure Notebooks účet, mají všechny informace, které potřebují k opětovnému vytvoření potřebného prostředí.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků, datových souborů, dokumentace, obrázků a tak dále, spolu s prostředím, které lze konfigurovat s konkrétními příkazy instalace. Když definujete prostředí s projektem, všichni uživatelé, kteří naklonují projekt na svůj vlastní Azure Notebooks účet, mají všechny informace, které potřebují k opětovnému vytvoření potřebného prostředí.
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
@@ -52,9 +52,9 @@ Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků
 
 1. Příkaz **+ Add** vytvoří krok, který je definován operací a cílovým souborem, který je vybrán ze souborů v projektu. Podporují se tyto operace:
 
-   | Operace | Description |
+   | Operace | Popis |
    | --- | --- |
-   | Požadavky. txt | Projekty Pythonu definují své závislosti v souboru. txt požadavků. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a také v rozevíracím seznamu, který se zobrazí, vyberte verzi Pythonu. V případě potřeby vyberte **Zrušit** a vraťte se do projektu, nahrajte nebo vytvořte soubor a pak se vraťte na kartu prostředí **nastavení projektu**  >  **Environment** a vytvořte nový krok. V tomto kroku je spuštěný Poznámkový blok v projektu se automaticky spustí.`pip install -r <file>` |
+   | Requirements.txt | Projekty Pythonu definují své závislosti v souboru requirements.txt. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a také v rozevíracím seznamu, který se zobrazí, vyberte verzi Pythonu. V případě potřeby vyberte **Zrušit** a vraťte se do projektu, nahrajte nebo vytvořte soubor a pak se vraťte na kartu prostředí **nastavení projektu**  >  **Environment** a vytvořte nový krok. V tomto kroku je spuštěný Poznámkový blok v projektu se automaticky spustí.`pip install -r <file>` |
    | Skript prostředí | Použijte k označení skriptu prostředí bash (obvykle souboru s příponou *. sh* ), který obsahuje příkazy, které chcete spustit k inicializaci prostředí. |
    | Environment. yml | Projekt Pythonu, který používá conda ke správě prostředí, používá k popisu závislostí soubor *Environment. yml* . Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu. |
 
@@ -73,4 +73,4 @@ Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků
 > [Správa a konfigurace projektů v Azure Notebooks](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření Jupyter poznámkového bloku pro provádění lineární regrese](tutorial-create-run-jupyter-notebook.md)
+> [Kurz: vytvoření a spuštění poznámkového bloku Jupyter pro lineární regresi](tutorial-create-run-jupyter-notebook.md)

@@ -1,20 +1,20 @@
 ---
-title: List tahák – Azure synapse Analytics (workpaces Preview)
+title: List tahák – Azure synapse Analytics (Preview z pracovních prostorů)
 description: Referenční příručka pro uživatele prostřednictvím Azure synapse Analytics
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 95fa4a0b5761b9d5a17e03c0edf9a727777d3a7f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609348"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807022"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Tabulka tahák analýzy Azure synapse
 

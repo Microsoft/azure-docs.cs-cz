@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 244bd6c270b5845039c1a5cc4d1322cb928a5aa3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.author: trbye
+ms.openlocfilehash: 19c054b72f7aa2ed6108d076a48856919a01462d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806442"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85838697"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -21,7 +21,7 @@ Než začnete:
 
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Pojďme přidat kód, který funguje jako kostra pro náš projekt. Vytvořte soubor index. js a přidejte tento kód.
+Pojďme přidat kód, který funguje jako kostra pro náš projekt. Vytvořte soubor index.js a přidejte tento kód.
 
 Nezapomeňte vyplnit hodnoty pro `subscriptionKey` , `servcieRegion` a `filename` .
 

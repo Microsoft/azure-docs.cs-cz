@@ -3,20 +3,20 @@ title: Přihlášení k Azure Notebooks Preview
 description: Rychle se přihlaste Azure Notebooks Preview a nastavte ID uživatele, které vám umožní přístup k uloženým projektům a sdílení poznámkových bloků s ostatními.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75647012"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830413"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Rychlý Start: přihlášení a nastavení ID uživatele pro Azure Notebooks Preview
 
-I když můžete Azure Notebooks vždy zobrazovat bez přihlašování, musíte se přihlásit, abyste mohli spustit poznámkové bloky, přistupovat k uloženým projektům a poznámkovým blokům a sdílet poznámkové bloky s ostatními.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="sign-in"></a>Přihlášení
+I když můžete Azure Notebooks vždy zobrazovat bez přihlašování, musíte se přihlásit, abyste mohli spustit poznámkové bloky, přistupovat k uloženým projektům a poznámkovým blokům a sdílet poznámkové bloky s ostatními.
+
+## <a name="sign-in"></a>Přihlásit se
 
 1. V pravém horním rohu [Notebooks.Azure.com](https://notebooks.azure.com/)vyberte **Přihlásit** .
 

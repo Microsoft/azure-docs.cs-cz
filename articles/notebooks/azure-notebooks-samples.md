@@ -3,18 +3,18 @@ title: Ukázky Jupyter poznámkových bloků pro Azure Notebooks Preview
 description: Ukázky představují skvělý způsob, jak vyzkoušet Jupyter poznámkové bloky běžící v bezplatné Azure Notebooks cloudové služby.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646309"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833991"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Zjišťování a používání ukázkových poznámkových bloků v Azure Notebooks Preview
 
-Internet má mnoho kolekcí zajímavých a užitečných poznámkových bloků Jupyter, které můžete snadno uvést do Azure Notebooks. Tento článek poskytuje seznam důležitých ukázek.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Internet má mnoho kolekcí zajímavých a užitečných poznámkových bloků Jupyter, které můžete snadno uvést do Azure Notebooks. Tento článek poskytuje seznam důležitých ukázek.
 
 Po identifikaci poznámkového bloku, který byste chtěli prozkoumat, tady najdete několik podrobností, které byste měli pochopit:
 

@@ -3,22 +3,22 @@ title: Přehled Azure Notebooks Preview
 description: Spusťte poznámkové bloky Jupyter v cloudu pomocí bezplatné služby Azure Notebooks Preview, kde není potřeba žádné nastavení nebo konfigurace.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: e40b7056aef7e59759c9e04ba9d98fbfb7d28ca3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647561"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85831399"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Přehled Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je open source projekt, který umožňuje snadno kombinovat Markdownu text, spustitelný kód, trvalá data, grafiky a vizualizace na jediném dostupném plátnu s názvem, který se označuje jako *Poznámkový blok* (obrazový soubor Jupyter.org):
 
 [![Příklady poznámkových bloků Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Z důvodu této výkonné kombinace kódu, grafiky a vysvětlujícího textu se Jupyter stala oblíbená pro spoustu použití, včetně instrukcí pro datové vědy, čištění a transformace dat, numerické simulace, statistického modelování a vývoje modelů strojového učení.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>Bezproblémové prostředí
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a2d0322436bd91e92a7018552c5827e021ee74e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79477761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851517"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý Start: vytvoření Standard Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí rozhraní příkazového řádku Azure
 
@@ -73,7 +73,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) vytvořte veřejný Azure Load Balancer **myLoadBalancer**, který obsahuje front-endový fond **myFrontEnd** a back-endový fond **myBackEndPool** přidružený k veřejné IP adrese **myPublicIP**, kterou jste vytvořili v předchozím kroku. Použijte `--sku basic` k vytvoření základní veřejné IP adresy. Microsoft doporučuje pro produkční úlohy standardní SKU.
+Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) vytvořte veřejný Azure Load Balancer **myLoadBalancer**, který obsahuje front-endový fond **myFrontEnd** a back-endový fond **myBackEndPool** přidružený k veřejné IP adrese **myPublicIP**, kterou jste vytvořili v předchozím kroku. Slouží `--sku basic` k vytvoření základního Load Balancer. Microsoft doporučuje pro produkční úlohy standardní SKU.
 
 ```azurecli-interactive
   az network lb create \

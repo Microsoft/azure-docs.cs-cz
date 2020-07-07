@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1fa270907c96cb341f6ce2cbaeb91dfa323c4431
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855224"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Odeslání e-mailu z runbooku
 
@@ -67,8 +67,8 @@ Další způsoby vytvoření Azure Key Vault a uložení tajného klíče najdet
 
 Pokud chcete použít Azure Key Vault v rámci sady Runbook, musíte do svého účtu Automation importovat následující moduly:
 
-    * [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
-    * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
+* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Pokyny najdete v tématu [Import AZ modules](shared-resources/modules.md#import-az-modules).
 
@@ -79,7 +79,7 @@ Po vytvoření Key Vault a uložení `SendGrid` klíče rozhraní API je čas vy
 1. Přejít na účet Azure Automation.
 2. V části **Automatizace procesu**vyberte **Runbooky**.
 3. V horní části seznamu sad Runbook vyberte **+ vytvořit Runbook**.
-4. Na stránce Přidat sadu Runbook zadejte do pole název sady Runbook **odeslání-GridMailMessage** . Jako typ Runbooku vyberte **PowerShell**. Potom vyberte **Create** (Vytvořit).
+4. Na stránce Přidat sadu Runbook zadejte do pole název sady Runbook **odeslání-GridMailMessage** . Jako typ Runbooku vyberte **PowerShell**. Pak vyberte **vytvořit**.
    ![Vytvořit Runbook](./media/automation-send-email/automation-send-email-runbook.png)
 5. Runbook se vytvoří a otevře se stránka Upravit powershellový runbook.
    ![Upravit Runbook](./media/automation-send-email/automation-send-email-edit.png)

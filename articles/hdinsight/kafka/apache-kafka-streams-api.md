@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064478"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850558"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Kurz: použití rozhraní API streamování Apache Kafka ve službě Azure HDInsight
 
@@ -47,7 +47,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Ukázková aplikace je umístěna [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)v podadresáři `Streaming` v adresáři. Aplikace se skládá ze dvou souborů:
+Ukázková aplikace je umístěna [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) v `Streaming` podadresáři v adresáři. Aplikace se skládá ze dvou souborů:
 
 * `pom.xml`: Tento soubor definuje závislosti projektu, verzi Javy a metody balení.
 * `Stream.java`: Tento soubor implementuje logiku streamování.
@@ -153,7 +153,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Nainstalujte [JQ](https://stedolan.github.io/jq/)procesor JSON pro příkazový řádek. V otevřeném připojení SSH zadejte následující příkaz, který chcete `jq`nainstalovat:
+2. Nainstalujte [JQ](https://stedolan.github.io/jq/)procesor JSON pro příkazový řádek. V otevřeném připojení SSH zadejte následující příkaz, který chcete nainstalovat `jq` :
 
     ```bash
     sudo apt -y install jq
@@ -172,7 +172,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     ```
 
     > [!Note]  
-    > Pokud provádíte tento proces mimo cluster, existuje jiný postup pro uložení názvu clusteru. Získá název clusteru z Azure Portal malými písmeny. Pak `<clustername>` v následujícím příkazu nahraďte název clusteru a spusťte ho: `export clusterName='<clustername>'`.  
+    > Pokud provádíte tento proces mimo cluster, existuje jiný postup pro uložení názvu clusteru. Získá název clusteru z Azure Portal malými písmeny. Pak v následujícím příkazu nahraďte název clusteru `<clustername>` a spusťte ho: `export clusterName='<clustername>'` .  
 
 5. Pokud chcete získat hostitele zprostředkovatele Kafka a hostitele Apache Zookeeper, použijte následující příkazy. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
 
@@ -232,19 +232,21 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
     Výstup se bude podobat následujícímu:
 
-        dwarfs  13635
-        ago     13664
-        snow    13636
-        dwarfs  13636
-        ago     13665
-        a       13803
-        ago     13666
-        a       13804
-        ago     13667
-        ago     13668
-        jumped  13640
-        jumped  13641
-   
+    ```output
+    dwarfs  13635
+    ago     13664
+    snow    13636
+    dwarfs  13636
+    ago     13665
+    a       13803
+    ago     13666
+    a       13804
+    ago     13667
+    ago     13668
+    jumped  13640
+    jumped  13641
+    ```
+
     Parametr `--from-beginning` konfiguruje konzumenta tak, aby začal číst záznamy uložené v tématu od začátku. Počet se zvýší při každém zjištění slova, takže téma obsahuje pro každé slovo několik záznamů s rostoucím počtem.
 
 4. Producenta ukončíte stisknutím __Ctrl+C__. Pokračujte a pomocí __Ctrl + C__ ukončete aplikaci i konzumenta.
