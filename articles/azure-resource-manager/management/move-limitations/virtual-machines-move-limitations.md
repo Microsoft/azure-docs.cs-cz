@@ -4,10 +4,10 @@ description: K přesunutí virtuálních počítačů do nové skupiny prostřed
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744640"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Pokyny pro přesunutí virtuálních počítačů
@@ -37,9 +37,9 @@ Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../
 2. Pokud chcete přesunout virtuální počítače nakonfigurované s Azure Backup, proveďte následující kroky:
 
    1. Najděte umístění virtuálního počítače.
-   2. Vyhledejte skupinu prostředků s následujícím vzorem pojmenování `AzureBackupRG_<location of your VM>_1`:. Například *AzureBackupRG_westus2_1*
+   2. Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` . Například *AzureBackupRG_westus2_1*
    3. V Azure Portal zaškrtnout **Zobrazit skryté typy**.
-   4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor `AzureBackup_<name of your VM that you're trying to move>_###########`pojmenování.
+   4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
    6. Po dokončení operace odstranění můžete virtuální počítač přesunout.
 
@@ -49,7 +49,7 @@ Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../
 ### <a name="powershell"></a>PowerShell
 
 * Najděte umístění virtuálního počítače.
-* Vyhledejte skupinu prostředků s následujícím vzorem pojmenování `AzureBackupRG_<location of your VM>_1` : například AzureBackupRG_westus2_1
+* Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` například AzureBackupRG_westus2_1
 * Pokud používáte prostředí PowerShell, použijte `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutinu.
 * Najít prostředek s typem `Microsoft.Compute/restorePointCollections` , který má vzor pojmenování`AzureBackup_<name of your VM that you're trying to move>_###########`
 * Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
@@ -57,7 +57,7 @@ Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../
 ### <a name="azure-cli"></a>Azure CLI
 
 * Najděte umístění virtuálního počítače.
-* Vyhledejte skupinu prostředků s následujícím vzorem pojmenování `AzureBackupRG_<location of your VM>_1` : například AzureBackupRG_westus2_1
+* Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` například AzureBackupRG_westus2_1
 * Pokud v rozhraní příkazového řádku, použijte`az resource list -g AzureBackupRG_<location of your VM>_1`
 * Najít prostředek s typem `Microsoft.Compute/restorePointCollections` , který má vzor pojmenování`AzureBackup_<name of your VM that you're trying to move>_###########`
 * Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.

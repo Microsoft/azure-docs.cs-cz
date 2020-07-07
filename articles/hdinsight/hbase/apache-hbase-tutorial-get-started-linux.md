@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81390262"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958357"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
 
@@ -93,7 +93,7 @@ V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com
     create 'Contacts', 'Personal', 'Office'
     ```
 
-1. K `list` vypsání všech tabulek v adaptérech HBA použijte příkaz. Zadejte následující příkaz:
+1. `list`K vypsání všech tabulek v adaptérech HBA použijte příkaz. Zadejte následující příkaz:
 
     ```hbase
     list
@@ -108,7 +108,7 @@ V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-1. Pomocí `scan` příkazu naskenujte a vraťte data `Contacts` tabulky. Zadejte následující příkaz:
+1. Pomocí `scan` příkazu naskenujte a vraťte `Contacts` data tabulky. Zadejte následující příkaz:
 
     ```hbase
     scan 'Contacts'
@@ -116,7 +116,7 @@ V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com
 
     ![Prostředí HDInsight Apache Hadoop HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
-1. K `get` načtení obsahu řádku použijte příkaz. Zadejte následující příkaz:
+1. `get`K načtení obsahu řádku použijte příkaz. Zadejte následující příkaz:
 
     ```hbaseshell
     get 'Contacts', '1000'
@@ -138,22 +138,31 @@ HBase obsahuje několik metod načítání dat do tabulek.  Další informace na
 
 Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt`.  Obsah datového souboru je:
 
-    8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
-    16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
-    4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta
-    16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.
-    3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive
-    3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle
-    10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street
-    4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street
-    4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
-    16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
+`8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
+
+`16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz`
+
+`4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta`
+
+`16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.`
+
+`3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive`
+
+`3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle`
+
+`10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street`
+
+`4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street`
+
+`4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.`
+
+`16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive`
 
 Volitelně můžete vytvořit textový soubor a nahrát ho do vlastního účtu úložiště. Pokyny najdete v tématu [nahrání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
 
-Tento postup používá tabulku `Contacts` HBA, kterou jste vytvořili v posledním postupu.
+Tento postup používá `Contacts` tabulku HBA, kterou jste vytvořili v posledním postupu.
 
-1. V otevřeném připojení SSH spusťte následující příkaz, který převede datový soubor na StoreFiles a uloží se do relativní cesty určené pomocí `Dimporttsv.bulk.output`.
+1. V otevřeném připojení SSH spusťte následující příkaz, který převede datový soubor na StoreFiles a uloží se do relativní cesty určené pomocí `Dimporttsv.bulk.output` .
 
     ```bash
     hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
@@ -194,15 +203,15 @@ Pomocí [Apache Hive](https://hive.apache.org/)můžete zadávat dotazy na data 
     SELECT count(rowkey) AS rk_count FROM hbasecontacts;
     ```
 
-1. K ukončení Beeline použijte `!exit`.
+1. K ukončení Beeline použijte `!exit` .
 
-1. K ukončení připojení SSH použijte `exit`.
+1. K ukončení připojení SSH použijte `exit` .
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>Použití rozhraní REST API HBase pomocí Curl
 
 Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky byste vždy měli provádět pomocí protokolu HTTPS (Secure HTTP), čímž pomůžete zajistit, že se přihlašovací údaje budou na server odesílat bezpečně.
 
-1. Nastavte proměnnou prostředí pro snadné použití. Níže uvedené příkazy upravte tak, `MYPASSWORD` že nahradíte heslo pro přihlášení ke clusteru. Nahraďte `MYCLUSTERNAME` názvem vašeho clusteru HBA. Pak zadejte příkazy.
+1. Nastavte proměnnou prostředí pro snadné použití. Níže uvedené příkazy upravte tak, že nahradíte `MYPASSWORD` heslo pro přihlášení ke clusteru. Nahraďte `MYCLUSTERNAME` názvem vašeho clusteru HBA. Pak zadejte příkazy.
 
     ```bash
     export password='MYPASSWORD'
@@ -262,14 +271,14 @@ Další informace o HBase Rest naleznete v tématu [Referenční příručka Apa
 > Thrift není podporovaný HBase v HDInsight.
 >
 > Pokud používáte Curl nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména a hesla pro správce clusteru HDInsight. Název clusteru také musíte použít jako součást identifikátoru URI (Uniform Resource Identifier) sloužícího k odesílání požadavků na server:
-> 
->   
->        curl -u <UserName>:<Password> \
->        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
->   
->    Měla by se zobrazit odpověď podobná následující odpovědi:
->   
->        {"status":"ok","version":"v1"}
+>
+> `curl -u <UserName>:<Password> \`
+>
+> `-G https://<ClusterName>.azurehdinsight.net/templeton/v1/status`
+>
+> Měla by se zobrazit odpověď podobná následující odpovědi:
+>
+> `{"status":"ok","version":"v1"}`
 
 ## <a name="check-cluster-status"></a>Kontrola stavu clusteru
 
@@ -277,7 +286,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 **Přístup k hlavnímu uživatelskému rozhraní HBase**
 
-1. Přihlaste se k webovému `https://CLUSTERNAME.azurehdinsight.net` uživatelskému rozhraní Ambari, kde `CLUSTERNAME` je název vašeho clusteru HBA.
+1. Přihlaste se k webovému uživatelskému rozhraní Ambari, `https://CLUSTERNAME.azurehdinsight.net` kde `CLUSTERNAME` je název vašeho clusteru HBA.
 
 1. V nabídce vlevo vyberte **HBA** .
 
@@ -295,9 +304,9 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz `disable 'Contacts'`HBA. Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
+Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz HBA `disable 'Contacts'` . Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.

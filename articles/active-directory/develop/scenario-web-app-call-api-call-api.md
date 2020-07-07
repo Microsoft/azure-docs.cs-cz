@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 12802ab6dcfbbe5a1c5576ab672ead864dd0b4ae
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559873"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API: volá webové rozhraní API.
@@ -28,7 +28,7 @@ Volání chráněného webového rozhraní API závisí na vašem jazyku a archi
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Zde je zjednodušený kód pro akci `HomeController`. Tento kód získá token pro volání Microsoft Graph. Byl přidán kód, který ukazuje, jak volat Microsoft Graph jako REST API. Adresa URL pro rozhraní API pro Microsoft Graph je k dispozici v souboru appSettings. JSON a je čtena v `webOptions`proměnné s názvem:
+Zde je zjednodušený kód pro akci `HomeController` . Tento kód získá token pro volání Microsoft Graph. Byl přidán kód, který ukazuje, jak volat Microsoft Graph jako REST API. Adresa URL pro rozhraní Microsoft Graph API je k dispozici v appsettings.jssouboru a je čtena v proměnné s názvem `webOptions` :
 
 ```json
 {
@@ -117,4 +117,4 @@ def graphcall():
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přechod k produkčnímu prostředí](scenario-web-app-call-api-production.md)
+> [Přesunout do produkčního prostředí](scenario-web-app-call-api-production.md)

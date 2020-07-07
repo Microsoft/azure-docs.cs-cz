@@ -4,10 +4,10 @@ description: Seznamte se s principy identit a přístupu k řešení Azure VMwar
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82740951"
 ---
 # <a name="azure-vmware-solution-avs-identity-concepts"></a>Koncepty identity řešení Azure VMware (AVS)
@@ -22,17 +22,17 @@ Oprávnění v vCenter jsou k dispozici prostřednictvím skupiny CloudAdmin. Tu
 
 V následující tabulce jsou uvedena oprávnění CloudAdmin a CloudGlobalAdmin.
 
-|  Sada oprávnění           | CloudAdmin | CloudGlobalAdmin | Poznámka |
+|  Sada oprávnění           | CloudAdmin | CloudGlobalAdmin | Komentář |
 | :---                     |    :---:   |       :---:      |   :--:  |
 |  Upozornění                  | CloudAdmin uživatel má všechna alarmová oprávnění pro alarmy ve službě COMPUTE-objektu ResourcePool a virtuálních počítačích.     |          --        |  -- |
 |  Automatické nasazení             |  --  |        --        |  Microsoft provádí správu hostitelů.  |
 |  Certifikáty            |  --  |        --       |  Microsoft provádí správu certifikátů.  |
 |  Knihovna obsahu         | Uživatel CloudAdmin má oprávnění k vytváření a používání souborů v knihovně obsahu.    |         Povoleno s jednotným přihlašováním.         |  Společnost Microsoft bude distribuovat soubory do knihovny obsahu do hostitelů ESXi.  |
 |  Datové centrum              |  --  |        --          |  Microsoft provádí všechna data centra operací.  |
-|  Úložiště dat               | Úložiště dat. AllocateSpace, DataStore. Browse, DataStore. config, DataStore. DeleteFile, DataStore. Management, DataStore. UpdateVirtualMachineMetadata     |    --    |   -- |
+|  Úložiště dat               | Úložiště dat. AllocateSpace, DataStore. Browse, Datastore.Config, DataStore. DeleteFile, DataStore. správy, DataStore. UpdateVirtualMachineMetadata     |    --    |   -- |
 |  Správce agenta ESX       |  --  |         --       |  Společnost Microsoft provádí všechny operace.  |
 |  Složka                  |  CloudAdmin uživatel má všechna oprávnění ke složkám.     |  --  |  --  |
-|  Globální                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global. SystemTag         |                  |    |
+|  Globální                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global.SystemTag         |                  |    |
 |  Hostitel                    |  Host. HBR. HbrManagement      |        --          |  Microsoft provádí všechny ostatní hostitelské operace.  |
 |  InventoryService        |  InventoryService. označování      |        --          |  --  |
 |  Síť                 |  Síť. přiřadit    |                  |  Microsoft provádí všechny ostatní síťové operace.  |

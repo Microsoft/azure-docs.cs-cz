@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561024"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování pro Azure IoT Edge
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak pomocí integrovaných úloh Azure IoT Edge pr
 
 * **Azure IoT Edge – image modulu sestavení** přebírají kód řešení IoT Edge a sestavují image kontejneru.
 * **Image modulu nabízených oznámení Azure IoT Edge** vloží image modulů do registru kontejneru, který jste zadali.
-* **Azure IoT Edge – vygenerovat manifest nasazení** převezme soubor Deployment. template. JSON a proměnné a pak vygeneruje finální soubor manifestu nasazení IoT Edge.
+* **Azure IoT Edge – vygenerovat manifest nasazení** převezme deployment.template.jsv souboru a proměnných a pak vygeneruje konečný IoT Edge soubor manifestu nasazení.
 * **Azure IoT Edge – nasazení do IoT Edge zařízení** pomáhá vytvářet IoT Edge nasazení do jednoho nebo více IoT Edge zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -54,7 +54,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
 >
 >Další informace najdete v tématu [vytvoření kanálu sestavení](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline).
 
-1. Přihlaste se ke svojí organizaci Azure DevOps (**https:\//dev.Azure.com/{Your Organization}/**) a otevřete projekt, který obsahuje úložiště řešení IoT Edge.
+1. Přihlaste se ke svojí organizaci Azure DevOps (**https: \/ /dev.Azure.com/{Your Organization}/**) a otevřete projekt, který obsahuje úložiště řešení IoT Edge.
 
    V tomto článku jsme vytvořili úložiště s názvem **IoTEdgeRepo**. Toto úložiště obsahuje **IoTEdgeSolution** s kódem pro modul s názvem **filtermodule**.
 
@@ -84,7 +84,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
 
      ![Konfigurovat fond agentů sestavení](./media/how-to-ci-cd/configure-env.png)
 
-5. Váš kanál je předem nakonfigurovaný s úlohou s názvem **úloha agenta 1**. Vyberte znaménko plus (**+**), chcete-li přidat tři úkoly do úlohy: **Azure IoT Edge** dvakrát, **zkopírujte soubory** jednou a **publikujte artefakty sestavení** jednou. (Tlačítko **Přidat** můžete zobrazit tak, že najedete myší na název jednotlivých úkolů.)
+5. Váš kanál je předem nakonfigurovaný s úlohou s názvem **úloha agenta 1**. Vyberte znaménko plus ( **+** ), chcete-li přidat tři úkoly do úlohy: **Azure IoT Edge** dvakrát, **zkopírujte soubory** jednou a **publikujte artefakty sestavení** jednou. (Tlačítko **Přidat** můžete zobrazit tak, že najedete myší na název jednotlivých úkolů.)
 
    ![Přidat úlohu Azure IoT Edge](./media/how-to-ci-cd/add-iot-edge-task.png)
 
@@ -96,23 +96,23 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
 
    * **Zobrazovaný název**: přijměte výchozí **Image modulu Azure IoT Edge-Build**.
    * **Akce**: přijměte výchozí **Image modulu buildu**.
-   * **soubor. template. JSON**: vyberte tři tečky (**...**) a přejděte do souboru **Deployment. template. JSON** v úložišti, které obsahuje vaše řešení IoT Edge.
+   * **.template.jsv souboru**: vyberte tři tečky (**...**) a přejděte do **deployment.template.jsv** souboru v úložišti, které obsahuje vaše řešení IoT Edge.
    * **Výchozí platforma**: vyberte příslušnou platformu pro vaše moduly na základě vašeho cílového zařízení IoT Edge.
-   * **Výstupní proměnné**: výstupní proměnné obsahují referenční název, který můžete použít ke konfiguraci cesty k souboru, ve kterém se soubor Deployment. JSON vygeneruje. Nastavte název odkazu na něco, co se zapamatovat jako **Edge**.
+   * **Výstupní proměnné**: výstupní proměnné obsahují referenční název, který můžete použít ke konfiguraci cesty k souboru, kde se vygeneruje deployment.jsv souboru. Nastavte název odkazu na něco, co se zapamatovat jako **Edge**.
 
 
    Tyto konfigurace používají úložiště a značku bitové kopie, které jsou definovány v `module.json` souboru pro pojmenování a označení image modulu. **Image modulu sestavení** také pomáhají nahradit proměnné stejnou hodnotou, kterou definujete v `module.json` souboru. V aplikaci Visual Studio nebo Visual Studio Code zadáváte skutečnou hodnotu v `.env` souboru. V Azure Pipelines nastavte hodnotu na kartě **proměnné kanálu** . Vyberte kartu **proměnné** a nakonfigurujte název a hodnotu následujícím způsobem:
 
     * **ACR_ADDRESS**: vaše Azure Container Registry adresa. 
 
-    Pokud máte v projektu jiné proměnné, můžete na této kartě zadat název a hodnotu. **Image modulu sestavení** rozpoznává pouze proměnné, které jsou ve `${VARIABLE}` formátu. Ujistěte se, že ve svých `**/module.json` souborech používáte tento formát.
+    Pokud máte v projektu jiné proměnné, můžete na této kartě zadat název a hodnotu. **Image modulu sestavení** rozpoznává pouze proměnné, které jsou ve `${VARIABLE}` formátu. Ujistěte se, že ve svých souborech používáte tento formát `**/module.json` .
     
 7. Vyberte druhý úkol **Azure IoT Edge** , který chcete upravit. Tato úloha vloží všechny image modulu do registru kontejneru, který jste vybrali.
 
    * **Zobrazovaný název**: zobrazovaný název se automaticky aktualizuje při změně pole akce.
    * **Akce**: k výběru **imagí modulu push**použijte rozevírací seznam.
    * **Typ registru kontejneru**: Vyberte typ registru kontejneru, který použijete k uložení imagí modulu. V závislosti na zvoleném typu registru se formulář změní. Pokud zvolíte **Azure Container Registry**, pomocí rozevíracích seznamů vyberte předplatné Azure a název vašeho registru kontejneru. Pokud zvolíte **obecné Container Registry**, vyberte **Nový** a vytvořte připojení služby registru.
-   * **soubor. template. JSON**: vyberte tři tečky (**...**) a přejděte do souboru **Deployment. template. JSON** v úložišti, které obsahuje vaše řešení IoT Edge.
+   * **.template.jsv souboru**: vyberte tři tečky (**...**) a přejděte do **deployment.template.jsv** souboru v úložišti, které obsahuje vaše řešení IoT Edge.
    * **Výchozí platforma**: Vyberte stejnou platformu jako vaše sestavené image modulu.
 
    Pokud máte více registrů kontejnerů pro hostování imagí modulu, musíte duplikovat tuto úlohu, vybrat jiný registr kontejnerů a v rozšířených nastaveních používat nepoužívané **moduly** pro obejít tak obrázky, které nejsou pro tento konkrétní registr.
@@ -120,13 +120,13 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
 8. Vyberte úlohu **kopírování souborů** a upravte ji. Pomocí této úlohy můžete kopírovat soubory do pracovního adresáře artefaktu.
 
    * **Zobrazovaný název**: kopírovat soubory do: ukládací složka
-   * **Contents**: vložte dva řádky do této části `deployment.template.json` a. `**/module.json` Tyto dva typy souborů jsou vstupy pro generování manifestu nasazení IoT Edge. Je nutné zkopírovat do pracovní složky artefaktu a publikovat pro kanál vydaných verzí.
-   * **Cílová složka**: vložte proměnnou `$(Build.ArtifactStagingDirectory)`. Informace o popisu najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+   * **Contents**: vložte dva řádky do této části `deployment.template.json` a `**/module.json` . Tyto dva typy souborů jsou vstupy pro generování manifestu nasazení IoT Edge. Je nutné zkopírovat do pracovní složky artefaktu a publikovat pro kanál vydaných verzí.
+   * **Cílová složka**: vložte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
 
 9. Vyberte úlohu **publikování artefaktů sestavení** a upravte ji. Zadejte cestu pracovního adresáře artefaktu k úloze, aby bylo možné cestu publikovat do kanálu uvolnění.
 
    * **Zobrazovaný název**: Publish artefakt: drop.
-   * **Cesta pro publikování**: vložte proměnnou `$(Build.ArtifactStagingDirectory)`. Informace o popisu najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+   * **Cesta pro publikování**: vložte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
    * **Název artefaktu**: drop.
    * **Umístění pro publikování artefaktu**: Azure Pipelines.
 
@@ -172,7 +172,7 @@ Vytvořit nový kanál a přidat novou fázi
 
 8. Ve fázi **vývoje** byste měli vidět výchozí **úlohu agenta**. Můžete nakonfigurovat podrobnosti o úloze agenta, ale úloha nasazení je nezávislá na platformě, takže můžete použít buď **hostované VS2017** nebo **hostované Ubuntu 1604** ve **fondu agentů** (nebo jakýkoli jiný agent, který spravujete sami).
 
-9. Vyberte znaménko plus (**+**) a přidejte dvě úlohy. Vyhledejte a přidejte **Azure IoT Edge** dvakrát.
+9. Vyberte znaménko plus ( **+** ) a přidejte dvě úlohy. Vyhledejte a přidejte **Azure IoT Edge** dvakrát.
 
     ![Přidat úkoly pro vývoj](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -180,11 +180,11 @@ Vytvořit nový kanál a přidat novou fázi
 
     * **Zobrazovaný název**: zobrazovaný název se automaticky aktualizuje při změně pole akce.
     * **Akce**: v rozevíracím seznamu vyberte možnost **Generovat Manifest nasazení**. Změna hodnoty akce také aktualizuje zobrazovaný název úlohy tak, aby odpovídal.
-    * **soubor. template. JSON**: Vložte cestu `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`. Cesta je publikovaná z kanálu sestavení.
+    * **.template.jsv souboru**: zadejte cestu `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json` . Cesta je publikovaná z kanálu sestavení.
     * **Výchozí platforma**: při sestavování imagí modulu vyberte stejnou hodnotu.
-    * **Výstupní cesta**: zadejte cestu `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`. Tato cesta je konečným souborem manifestu nasazení IoT Edge.
+    * **Výstupní cesta**: zadejte cestu `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Tato cesta je konečným souborem manifestu nasazení IoT Edge.
 
-    Tyto konfigurace pomáhají nahradit adresy URL imagí modulu v `deployment.template.json` souboru. **Manifest pro generování nasazení** také pomáhá nahradit proměnné s přesnou hodnotu, kterou jste definovali `deployment.template.json` v souboru. V VS/VS Code zadáváte skutečnou hodnotu v `.env` souboru. V Azure Pipelines nastavte hodnotu na kartě proměnné kanálu uvolnění. přesunout na kartu proměnné a nakonfigurovat název a hodnotu následujícím způsobem.
+    Tyto konfigurace pomáhají nahradit adresy URL imagí modulu v `deployment.template.json` souboru. **Manifest pro generování nasazení** také pomáhá nahradit proměnné s přesnou hodnotu, kterou jste definovali v `deployment.template.json` souboru. V VS/VS Code zadáváte skutečnou hodnotu v `.env` souboru. V Azure Pipelines nastavte hodnotu na kartě proměnné kanálu uvolnění. přesunout na kartu proměnné a nakonfigurovat název a hodnotu následujícím způsobem.
 
     * **ACR_ADDRESS**: vaše Azure Container Registry adresa.
     * **ACR_PASSWORD**: vaše heslo Azure Container Registry.
@@ -203,7 +203,7 @@ Vytvořit nový kanál a přidat novou fázi
     * **Vybrat jedno nebo více zařízení**: vyberte, jestli chcete, aby se kanál verze nasadil do jednoho nebo víc zařízení.
       * Pokud nasadíte do jednoho zařízení, zadejte **ID zařízení IoT Edge**.
       * Pokud nasazujete na více zařízení, zadejte **podmínku cíle**zařízení. Podmínka cíle je filtr, který odpovídá sadě IoT Edge zařízení v IoT Hub. Pokud chcete jako podmínku použít značky zařízení, je potřeba aktualizovat značky odpovídajících zařízení pomocí IoT Hub s dvojitou podmínkou zařízení. Aktualizujte **ID nasazení IoT Edge** a **prioritu nasazení IoT Edge** v rozšířených nastaveních. Další informace o vytváření nasazení pro více zařízení najdete v tématu [principy IoT Edgeho automatického nasazení](module-deployment-monitoring.md).
-    * Rozbalte položku Rozšířená nastavení, vyberte možnost **ID nasazení IoT Edge**a vložte `$(System.TeamProject)-$(Release.EnvironmentName)`proměnnou. Tím se namapuje název projektu a verze s vaším ID nasazení IoT Edge.
+    * Rozbalte položku Rozšířená nastavení, vyberte možnost **ID nasazení IoT Edge**a vložte proměnnou `$(System.TeamProject)-$(Release.EnvironmentName)` . Tím se namapuje název projektu a verze s vaším ID nasazení IoT Edge.
 
 12. Vyberte **Uložit** a uložte změny do nového kanálu vydání. Vraťte se do Zobrazení kanálu výběrem **kanálu** z nabídky.
 

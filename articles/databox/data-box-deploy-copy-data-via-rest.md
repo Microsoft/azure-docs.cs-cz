@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: použití rozhraní REST API ke kopírování do úložiště objektů BLOB'
+title: 'Kurz: kopírování do úložiště objektů BLOB přes rozhraní REST API'
 titleSuffix: Azure Data Box
 description: Naučte se, jak kopírovat data do úložiště objektů blob Azure Data Box přes rozhraní REST API.
 services: databox
@@ -7,16 +7,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/09/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: aa59d2dea4456b977afee92103fa66d6afe9bf31
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 50c4daabe3dc980937f52db7e56cd778890b84d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219143"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960672"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
+# <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Kurz: použití rozhraní REST API ke kopírování dat do Azure Data Boxho úložiště objektů BLOB  
 
 Tento kurz popisuje postupy pro připojení k Azure Data Box BLOB Storage prostřednictvím rozhraní REST API přes *protokol HTTP* nebo *https*. Po připojení jsou popsány také kroky potřebné ke zkopírování dat do úložiště objektů BLOB Data Box a příprava Data Box k odeslání.
 
@@ -32,11 +32,11 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box](data-box-deploy-set-up.md).
+1. Dokončili jste [Kurz: Nastavení Azure Data Boxu](data-box-deploy-set-up.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
 3. Zkontrolovali jste [požadavky na systém pro úložiště objektů Blob data box](data-box-system-requirements-rest.md) a znáte podporované verze rozhraní API, sad SDK a nástrojů.
 4. Máte přístup k hostitelskému počítači, který obsahuje data, která chcete zkopírovat do Data Box. Hostitelský počítač musí splňovat tyto požadavky:
-    * Spusťte [podporovaný operační systém](data-box-system-requirements.md).
+    * Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
     * Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud není připojení k dispozici, je možné použít datové propojení s 1 GbEí, ale bude to mít vliv na rychlost kopírování.
 5. [Stáhněte si AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) na hostitelském počítači. Pomocí AzCopy se zkopírují data do Azure Data Box úložiště objektů BLOB z hostitelského počítače.
 
@@ -153,7 +153,7 @@ Až budete připojeni k úložišti objektů BLOB Data Box, je dalším krokem k
 * Pokud jsou data odesílaná pomocí Data Box souběžně odeslána jinými aplikacemi mimo Data Box, může to vést k selhání úlohy a poškození dat.
 
 > [!IMPORTANT]
-> Zajistěte, abyste zachovali kopii zdrojových dat, dokud nebudete moci potvrdit, že Data Box přenesla vaše data do Azure Storage.
+> Než budete moct potvrdit, že zařízení Data Box převedlo data do Azure Storage, ujistěte se, že si uchováváte kopii zdrojových dat.
 
 V tomto kurzu se AzCopy používá ke kopírování dat do úložiště objektů BLOB Data Box. Můžete také použít Průzkumník služby Azure Storage (Pokud dáváte přednost nástroji založenému na grafickém uživatelském rozhraní) nebo partnerskému softwaru ke zkopírování dat.
 
@@ -186,15 +186,19 @@ Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště obje
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 Nahraďte `<key>` klíčem účtu. Klíč účtu získáte tak, že v Azure Portal přejdete do svého účtu úložiště. Přejděte na **nastavení > přístupové klíče**, vyberte klíč a vložte ho do příkazu AzCopy.
 
@@ -209,16 +213,21 @@ Pomocí AzCopy můžete nahrávat soubory na základě času poslední změny. P
 Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli, zadejte v příkazu AzCopy parametry `--exclude-older` i `--exclude-newer` (Linux) nebo `/XO` i `/XN` (Windows). AzCopy nahraje pouze aktualizovaná data na základě jejich časového razítka.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 Pokud během operace připojení nebo kopírování dojde k nějakým chybám, přečtěte si téma [řešení potíží s data box BLOB Storage](data-box-troubleshoot-rest.md).
 

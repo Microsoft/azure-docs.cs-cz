@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790475"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Postup při nasazení instance služby Azure API Management do několika oblastí Azure
@@ -102,8 +102,8 @@ API Management směruje požadavky na místní _bránu_ na základě [nejnižš�
 
 1. Vytvořte si vlastní [Traffic Manager Azure](https://azure.microsoft.com/services/traffic-manager/).
 1. Pokud používáte vlastní doménu, [použijte ji s Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) namísto služby API Management.
-1. [Nakonfigurujte API Management místní koncové body v Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). Regionální koncové body následují jako vzor adresy `https://<service-name>-<region>-01.regional.azure-api.net`URL, například `https://contoso-westus2-01.regional.azure-api.net`.
-1. [Konfigurace API Managementch koncových bodů regionálního stavu v Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). Místní koncové body stavu se řídí vzorem adresy `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`URL, například `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`.
+1. [Nakonfigurujte API Management místní koncové body v Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). Regionální koncové body následují jako vzor adresy URL `https://<service-name>-<region>-01.regional.azure-api.net` , například `https://contoso-westus2-01.regional.azure-api.net` .
+1. [Konfigurace API Managementch koncových bodů regionálního stavu v Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). Místní koncové body stavu se řídí vzorem adresy URL `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` , například `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef` .
 1. Zadejte [metodu směrování](../traffic-manager/traffic-manager-routing-methods.md) Traffic Manager.
 
 [create an api management service instance]: get-started-create-service-instance.md

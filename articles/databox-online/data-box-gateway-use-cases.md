@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562380"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Případy použití pro Azure Data Box Gateway
@@ -69,7 +69,7 @@ Pomocí těchto kroků zkopírujte data Data Box a nahrajte je do Azure Storage.
 2. [Nastavte data box](/azure/databox/data-box-deploy-set-up).
 3. [Kopírovat data do data box přes protokol SMB](/azure/databox/data-box-deploy-copy-data).
 4. [Vraťte data box a ověřte, že se data nahrávají do Azure](/azure/databox/data-box-deploy-picked-up).
-5. Po dokončení nahrávání dat do Azure se všechna data musí nacházet v kontejnerech úložiště Azure. V účtu úložiště pro Data Box otevřete kontejner objektů BLOB (a File), abyste se ujistili, že se zkopírují všechna data. Poznamenejte si název kontejneru, podle kterého budete tento název používat později. Například na následujícím snímku obrazovky se `databox` kontejner použije pro přírůstkové přenosy.
+5. Po dokončení nahrávání dat do Azure se všechna data musí nacházet v kontejnerech úložiště Azure. V účtu úložiště pro Data Box otevřete kontejner objektů BLOB (a File), abyste se ujistili, že se zkopírují všechna data. Poznamenejte si název kontejneru, podle kterého budete tento název používat později. Například na následujícím snímku obrazovky `databox` se kontejner použije pro přírůstkové přenosy.
 
     ![Kontejner s daty v Data Box](media/data-box-gateway-use-cases/data-container1.png)
 

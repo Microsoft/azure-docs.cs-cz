@@ -3,18 +3,18 @@ title: 'Kurz: předpověď záměrů – LUIS'
 description: Vytvořte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text) v tomto kurzu.
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588928"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959855"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace v LUIS pro určení záměrů uživatele
 
 V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text).
 
-**V tomto kurzu:**
+**V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
 > * Vytvoření nové aplikace
@@ -113,9 +113,8 @@ Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatel
 
     `get a medium vegetarian pizza for delivery`
 
-    To není naprosto stejné jako u příkladu utterance, takže je dobrým testem zjistit, jestli se LUIS může naučit, co by mělo být s tímto záměrem předpověď.
-
-    Poslední parametr řetězce dotazu je `query`, což je **dotaz** promluvy. Tato promluva není stejná jako některá z ukázkových promluv. Jde o vhodný test a jako záměr s nejvyšším skóre by se měl vrátit záměr `OrderPizza`.
+  
+    Parametr řetězce dotazu je `query` , **dotaz** utterance se PŘEdává v identifikátoru URI. Tato promluva není stejná jako některá z ukázkových promluv. To by mělo být dobrý test, který ověří, jestli se LUIS učí, a předpovídá `OrderPizza` záměr jako nejvyšší záměr hodnocení.
 
     ```JSON
     {

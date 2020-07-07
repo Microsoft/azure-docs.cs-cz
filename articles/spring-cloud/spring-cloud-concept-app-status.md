@@ -1,5 +1,5 @@
 ---
-title: Porozumění stavu aplikace v Azure jaře cloudu
+title: Principy stavu aplikací v Azure Spring Cloudu
 description: Seznamte se s kategoriemi stavu aplikací v Azure jaře cloudu
 author: MikeDodaro
 ms.service: spring-cloud
@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.openlocfilehash: 70a9e6392e21422d7513197fbf7a1a75e1f6ab8f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82569001"
 ---
-# <a name="understanding-app-status-in-azure-spring-cloud"></a>Porozumění stavu aplikace v Azure jaře cloudu
+# <a name="understanding-app-status-in-azure-spring-cloud"></a>Principy stavu aplikací v Azure Spring Cloudu
 
 Uživatelské rozhraní pro jarní cloudové prostředí Azure poskytuje informace o stavu spuštěných aplikací.  K dispozici je možnost **aplikace** pro každou skupinu prostředků v rámci předplatného, která zobrazuje obecný stav typů aplikací.  Pro každý typ aplikace jsou zobrazeny **instance aplikace**.
 
@@ -42,7 +42,7 @@ Chcete-li zobrazit celkový stav typu aplikace, vyberte možnost **aplikace** v 
 | Doplnění | Prostředek se aktualizuje. |
 | Úspěch | Úspěšně dodány prostředky a nasazují binární soubor. |
 | Failed | Nepovedlo se dosáhnout cíle *úspěšného* dokončení. |
-| Odstraňuje | Prostředek se odstraňuje. Tím se zabrání operace a prostředek není v tomto stavu k dispozici. |
+| odstraňování | Prostředek se odstraňuje. Tím se zabrání operace a prostředek není v tomto stavu k dispozici. |
 
 ## <a name="app-instances-status"></a>Stav instancí aplikace
 
@@ -70,5 +70,5 @@ Pokud chcete zobrazit stav konkrétní instance nasazené aplikace, klikněte na
 | DOLŮ | Instance aplikace není zaregistrovaná na Eureka nebo je zaregistrovaná, ale nemůže přijímat přenosy. |
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](spring-cloud-tutorial-prepare-app-deployment.md)

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580925"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Pravidla brány firewall v Azure Database for PostgreSQL – Citus (škálování)
@@ -32,7 +32,7 @@ Brána firewall skupiny serverů Citus () určuje, kdo se může připojit k uzl
 
 Když brána firewall blokuje připojení, může způsobit chyby aplikace. Použití ovladače PostgreSQL JDBC například vyvolá chybu podobnou této:
 
-> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá:\_No pg HBA. conf pro hostitele "123.45.67.890", User "citus", Database "citus", SSL
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: No pg \_ HBA. conf pro hostitele "123.45.67.890", "citus", Database "citus", SSL
 
 Informace o tom, jak jsou pravidla definovaná, najdete v tématu [Vytvoření a Správa pravidel brány firewall](howto-hyperscale-manage-firewall-using-portal.md) .
 
@@ -44,7 +44,7 @@ Když se přístup k Microsoft Azure databázi pro službu PostgreSQL-Citus () n
 * **Uživatel nemá oprávnění nebo se použilo nesprávné heslo:** Pokud uživatel nemá na serveru oprávnění nebo je použité heslo nesprávné, připojení k serveru je odepřené. Při vytváření nastavení brány firewall jsou jenom klienti s příležitostí k pokusu o připojení k vašemu serveru. Každý klient musí stále zadat potřebná zabezpečovací pověření.
 
 Například pomocí klienta JDBC se může zobrazit následující chyba.
-> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: ověřování hesla pro uživatele "uživatelské_jméno" se nezdařilo.
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: ověřování heslem pro uživatele "uživatelské_jméno" se nezdařilo.
 
 * **Dynamická IP adresa:** Pokud vaše internetové připojení používá dynamické přidělování IP adres a máte problémy dostat se přes bránu firewall, můžete zkusit jedno z následujících řešení:
 

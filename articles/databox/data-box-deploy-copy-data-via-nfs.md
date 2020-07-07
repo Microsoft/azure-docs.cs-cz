@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219129"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960505"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: kopírování dat do Azure Data Box přes systém souborů NFS
 
@@ -34,7 +34,7 @@ Než začnete, ujistěte se, že:
 1. Dokončili jste [Kurz: Nastavení Azure Data Boxu](data-box-deploy-set-up.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
-    - Spusťte [podporovaný operační systém](data-box-system-requirements.md).
+    - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
     - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud není připojení k dispozici, je možné použít datové propojení s 1 GbEí, ale bude to mít vliv na rychlost kopírování. 
 
 ## <a name="connect-to-data-box"></a>Připojení k Data Boxu
@@ -48,7 +48,7 @@ Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou enti
 
 Následující tabulka uvádí cestu UNC ke sdíleným složkám ve vašem Data Boxu a adresu URL cesty ke službě Azure Storage, ve které jsou data nahraná. Konečnou adresu URL cesty ke službě Azure Storage je možné odvodit z cesty UNC ke sdílené složce.
  
-|                   |                                                            |
+| Typ Azure Storage| Data Box sdílené složky                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Objekty blob bloku Azure | <li>Cesta UNC ke sdíleným složkám: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Objekty blob stránky Azure  | <li>Cesta UNC ke sdíleným složkám: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -58,9 +58,9 @@ Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího p
 
 1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**. 
 
-    ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data/nfs-client-access.png)
+    ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
-2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na tlačítko **OK**.
+2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
 
     ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -96,7 +96,7 @@ Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírován
     Například při kopírování `SampleFile.txt` a `Samplefile.Txt` zachová se v názvu při zkopírování do data box, ale druhý soubor přepíše první soubor, který se považuje za stejný soubor.
 
 > [!IMPORTANT]
-> Zajistěte, abyste zachovali kopii zdrojových dat, dokud nebudete moci potvrdit, že Data Box přenesla vaše data do Azure Storage.
+> Než budete moct potvrdit, že zařízení Data Box převedlo data do Azure Storage, ujistěte se, že si uchováváte kopii zdrojových dat.
 
 Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -139,7 +139,19 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 > [!IMPORTANT]
 > Následující typy souborů systému Linux nejsou podporovány: symbolické odkazy, soubory znaků, blokovat soubory, sokety a kanály. Tyto typy souborů budou mít za následek chyby během **Příprava k odeslání** kroku.
 
-Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
+Pokud dojde k chybám, zobrazí se během procesu kopírování oznámení.
+
+![Stažení a zobrazení chyb při připojení a kopírování](media/data-box-deploy-copy-data/view-errors-1.png)
+
+Vyberte možnost **Stáhnout seznam problémů**.
+
+![Stažení a zobrazení chyb při připojení a kopírování](media/data-box-deploy-copy-data/view-errors-2.png)
+
+Otevřete seznam pro zobrazení podrobností o chybě a vyberte adresu URL řešení pro zobrazení doporučeného řešení.
+
+![Stažení a zobrazení chyb při připojení a kopírování](media/data-box-deploy-copy-data/view-errors-3.png)
+
+Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
 
 Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
 

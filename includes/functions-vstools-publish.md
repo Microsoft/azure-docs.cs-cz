@@ -9,17 +9,17 @@ ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84231596"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
 1. V části **vybrat cíl publikování**použijte možnosti publikování uvedené v následující tabulce: 
 
-    | Možnost      | Description                                |
+    | Možnost      | Popis                                |
     | ------------ |  -------------------------------------------------- |
     | **Plán spotřeby Azure Functions** | Vytvořte aplikaci Function App v cloudovém prostředí Azure, které běží v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan). Když použijete plán spotřeby, platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady. Pokud spustíte v jiném než plánu spotřeby, musíte spravovat [škálování aplikace Function App](../articles/azure-functions/functions-scale.md).| 
     | **Vytvořit nový** | V Azure se vytvoří nová aplikace Function App se souvisejícími prostředky. <br/>Pokud zvolíte **Vybrat existující**, všechny soubory v existující aplikaci Function App v Azure se přepíší soubory z místního projektu. Tuto možnost použijte pouze v případě, že znovu publikujete aktualizace existující aplikace Function App. |

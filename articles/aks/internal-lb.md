@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790605"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service (AKS)
@@ -19,17 +19,17 @@ Pokud chcete omezit přístup k vašim aplikacím ve službě Azure Kubernetes S
 > [!NOTE]
 > Azure Load Balancer je k dispozici ve dvou SKU – *Basic* a *Standard*. Ve výchozím nastavení se standardní SKU používá při vytváření clusteru AKS.  Při vytváření služby s typem jako nástroj pro vyrovnávání zatížení se při zřizování clusteru zobrazí stejný typ. Další informace najdete v tématu [porovnání SKU nástroje pro vyrovnávání zatížení Azure][azure-lb-comparison].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 Pokud použijete existující podsíť nebo skupinu prostředků, instanční objekt služby AKS potřebuje oprávnění ke správě síťových prostředků. Obecně přiřaďte roli *Přispěvatel sítě* k instančnímu objektu u delegovaných prostředků. Místo instančního objektu můžete pro oprávnění použít spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md). Další informace o oprávněních najdete v tématu [delegování přístupu AKS k ostatním prostředkům Azure][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Vytvořte interní nástroj pro vyrovnávání zatížení.
 
-Pokud chcete vytvořit interní nástroj pro vyrovnávání zatížení, vytvořte v `internal-lb.yaml` něm manifest služby s názvem *s typem služby* a službou *Azure-Load Balancer – interní* anotaci, jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit interní nástroj pro vyrovnávání zatížení, vytvořte v něm manifest služby s názvem `internal-lb.yaml` s typem služby a službou *Azure-Load Balancer – interní* anotaci, jak je znázorněno v následujícím příkladu: *LoadBalancer*
 
 ```yaml
 apiVersion: v1
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 V rámci skupiny prostředků uzlu se vytvoří nástroj pro vyrovnávání zatížení Azure, který se připojí ke stejné virtuální síti jako cluster AKS.
 
-Po zobrazení podrobností služby se IP adresa interního nástroje pro vyrovnávání zatížení zobrazí ve sloupci *externí-IP* . V tomto kontextu je *externí* ve vztahu k externímu rozhraní nástroje pro vyrovnávání zatížení, a ne k tomu, že obdrží veřejnou externí IP adresu. Změna IP adresy z * \<nedokončené\> * na skutečnou interní IP adresu může trvat minutu nebo dvě, jak je znázorněno v následujícím příkladu:
+Po zobrazení podrobností služby se IP adresa interního nástroje pro vyrovnávání zatížení zobrazí ve sloupci *externí-IP* . V tomto kontextu je *externí* ve vztahu k externímu rozhraní nástroje pro vyrovnávání zatížení, a ne k tomu, že obdrží veřejnou externí IP adresu. Změna IP adresy z na skutečnou interní IP adresu může trvat minutu nebo dvě *\<pending\>* , jak je znázorněno v následujícím příkladu:
 
 ```
 $ kubectl get service internal-app
@@ -106,7 +106,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Je možné, že bude nutné instančnímu objektu pro cluster AKS udělit roli *Přispěvatel sítě* do skupiny prostředků, ve které jsou nasazené prostředky virtuální sítě Azure. Zobrazte instanční objekt pomocí [AZ AKS show][az-aks-show], například `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Přiřazení role vytvoříte pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] .
+> Je možné, že bude nutné instančnímu objektu pro cluster AKS udělit roli *Přispěvatel sítě* do skupiny prostředků, ve které jsou nasazené prostředky virtuální sítě Azure. Zobrazte instanční objekt pomocí [AZ AKS show][az-aks-show], například `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"` . Přiřazení role vytvoříte pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] .
 
 ## <a name="specify-a-different-subnet"></a>Zadejte jinou podsíť.
 
@@ -132,7 +132,7 @@ spec:
 
 Když se odstraní všechny služby, které používají interní nástroj pro vyrovnávání zatížení, odstraní se taky samotný nástroj pro vyrovnávání zatížení.
 
-Můžete také přímo odstranit službu jako u libovolného prostředku Kubernetes, například `kubectl delete service internal-app`, který pak odstraní základní nástroj pro vyrovnávání zatížení Azure.
+Můžete také přímo odstranit službu jako u libovolného prostředku Kubernetes, například `kubectl delete service internal-app` , který pak odstraní základní nástroj pro vyrovnávání zatížení Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

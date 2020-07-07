@@ -6,22 +6,22 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790843"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgrade konfigurace samostatného clusteru 
 
 Pro všechny moderní systémy je možnost upgradu klíčem na dlouhodobou úspěšnost vašeho produktu. Cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, jak upgradovat nastavení konfigurace samostatného clusteru Service Fabric.
 
-## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>Přizpůsobení nastavení clusteru v souboru ClusterConfig. JSON
-Samostatné clustery jsou nakonfigurovány prostřednictvím souboru *ClusterConfig. JSON* . Další informace o různých nastaveních najdete v tématu [nastavení konfigurace samostatného clusteru Windows](service-fabric-cluster-manifest.md).
+## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>Přizpůsobení nastavení clusteru v ClusterConfig.jssouboru
+Samostatné clustery jsou nakonfigurovány prostřednictvím *ClusterConfig.jsv* souboru. Další informace o různých nastaveních najdete v tématu [nastavení konfigurace samostatného clusteru Windows](service-fabric-cluster-manifest.md).
 
-Můžete přidat, aktualizovat nebo odebrat nastavení v `fabricSettings` části v části [Vlastnosti clusteru](./service-fabric-cluster-manifest.md#cluster-properties) v *ClusterConfig. JSON*. 
+Můžete přidat, aktualizovat nebo odebrat nastavení v části v části `fabricSettings` [Vlastnosti clusteru](./service-fabric-cluster-manifest.md#cluster-properties) v *ClusterConfig.js*. 
 
-Například následující kód JSON přidá nové nastavení *MaxDiskQuotaInMB* do části *Diagnostika* v části `fabricSettings`:
+Například následující kód JSON přidá nové nastavení *MaxDiskQuotaInMB* do části *Diagnostika* v části `fabricSettings` :
 
 ```json
       {
@@ -35,7 +35,7 @@ Například následující kód JSON přidá nové nastavení *MaxDiskQuotaInMB*
       }
 ```
 
-Po úpravě nastavení v souboru ClusterConfig. JSON [otestujte konfiguraci clusteru](#test-the-cluster-configuration) a pak [upgradujte konfiguraci clusteru](#upgrade-the-cluster-configuration) , aby se nastavení projevilo u vašeho clusteru. 
+Po úpravě nastavení v ClusterConfig.jssouboru proveďte [Test konfigurace clusteru](#test-the-cluster-configuration) a pak [upgradujte konfiguraci clusteru](#upgrade-the-cluster-configuration) , aby se nastavení projevilo u vašeho clusteru. 
 
 ## <a name="test-the-cluster-configuration"></a>Test konfigurace clusteru
 Než začnete s upgradem konfigurace, můžete otestovat nový formát JSON konfigurace clusteru spuštěním následujícího skriptu PowerShellu v samostatném balíčku:

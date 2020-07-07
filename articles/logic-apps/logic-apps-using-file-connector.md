@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580633"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
@@ -72,8 +72,8 @@ V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, j
    | -------- | -------- | ----- | ----------- |
    | **Název připojení** | Ano | <*název připojení*> | Název, který chcete pro připojení |
    | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka pro systém souborů, například pokud jste nainstalovali místní bránu dat, jako je například místní složka v počítači, kde je nainstalována místní brána dat, nebo složka sdílené síťové složky, ke které má počítač přístup. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazená složka, která se používá pro relativní cesty ke všem akcím, které se týkají souborů. |
-   | **Typ ověřování** | No | <*typ ověřování*> | Typ ověřování, který používá systém souborů: **Windows** |
-   | **Jmen** | Ano | <*domain*>\\<*uživatelské jméno* domény> <p>-nebo- <p><*local-computer*>\\<*uživatelské jméno* místního počítače> | Uživatelské jméno počítače, kde máte složku systému souborů. <p>Pokud je složka systému souborů ve stejném počítači jako místní brána dat, můžete použít <*uživatelské jméno* *místního počítače*>\\<>. |
+   | **Typ ověřování** | Ne | <*typ ověřování*> | Typ ověřování, který používá systém souborů: **Windows** |
+   | **Jmen** | Ano | <*domain* > \\ Doména < *uživatelské jméno*> <p>-nebo- <p><*místní* > \\ počítač < *uživatelské jméno*> | Uživatelské jméno počítače, kde máte složku systému souborů. <p>Pokud je složka systému souborů ve stejném počítači jako místní brána dat, můžete použít <*local-computer* > \\ < *uživatelské jméno* místního počítače>. |
    | **Heslo** | Ano | <*Vaše heslo*> | Heslo pro počítač, na kterém máte systém souborů |
    | **brány** | Ano | <*instalace – brána – název*> | Název dříve nainstalované brány |
    |||||

@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
 ms.openlocfilehash: c3e0beb9a35b7888787d018b5e3b9c4ceea7e1c9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744536"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
@@ -23,7 +23,7 @@ Místo vytváření a správy aplikací IoT Central na webu [azure IoT Central S
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -65,8 +65,8 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 | ----------------- | ----------- |
 | resource-group    | Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
 | location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království**a **Japonsko** . |
-| jméno              | Název aplikace v Azure Portal. |
-| subdomény         | Subdoména v adrese URL aplikace V tomto příkladu je `https://mysubdomain.azureiotcentral.com`adresa URL aplikace. |
+| name              | Název aplikace v Azure Portal. |
+| subdomény         | Subdoména v adrese URL aplikace V tomto příkladu je adresa URL aplikace `https://mysubdomain.azureiotcentral.com` . |
 | skladové               | V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 | šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce. |
 | zobrazované jméno      | Název aplikace, jak se zobrazuje v uživatelském rozhraní. |

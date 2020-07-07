@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 1aeab1a7dcdf2b12efc268ed0d47834b24d34b87
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82734973"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure Security Center pro IoT
@@ -66,11 +66,11 @@ Azure Security Center pro službu IoT agent poskytuje pro konfiguraci zařízen�
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>Kde můžu získat Azure Security Center pro agenta zabezpečení IoT?
 
-Azure Security Center for IoT Security Agent je open source a dostupný na GitHubu v 32 bitových a 64 verzích Windows a Linux: https://github.com/Azure/Azure-IoT-Security.
+Azure Security Center for IoT Security Agent je open source a dostupný na GitHubu v 32 bitových a 64 verzích Windows a Linux: https://github.com/Azure/Azure-IoT-Security .
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Kde se instaluje Azure Security Center pro agenta IoT?
 
-Podrobné informace o instalaci a nasazení agenta najdete na webu GitHub: https://github.com/Azure/Azure-IoT-Security.
+Podrobné informace o instalaci a nasazení agenta najdete na webu GitHub: https://github.com/Azure/Azure-IoT-Security .
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Jaké jsou závislosti a požadavky agenta?
 

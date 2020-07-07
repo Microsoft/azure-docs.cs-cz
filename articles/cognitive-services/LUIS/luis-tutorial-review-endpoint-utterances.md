@@ -3,13 +3,13 @@ title: 'Kurz: Kontrola koncového bodu projevy-LUIS'
 description: V tomto kurzu Vylepšete předpovědi aplikace tím, že ověříte nebo opravíte projevy, které jste obdrželi prostřednictvím koncového bodu HTTP LUIS, který LUIS nedrží. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 07/02/2020
+ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445916"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959014"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
 V tomto kurzu Vylepšete předpovědi aplikací tím, že ověříte nebo opravíte projevy, přijmete prostřednictvím koncového bodu LUIS HTTPS, který LUIS NEsI nedrží. Měli byste zkontrolovat projevy koncového bodu jako běžnou součást plánované údržby LUIS.
@@ -35,11 +35,16 @@ Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný 
 
 ## <a name="download-json-file-for-app"></a>Stáhnout soubor JSON pro aplikaci
 
-Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) a uložte si ho.
+Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true) a uložte si ho.
 
 ## <a name="import-json-file-for-app"></a>Importovat soubor JSON pro aplikaci
 
-[!INCLUDE [Import app steps](includes/import-app-steps.md)]
+
+1. Na stránce **Moje aplikace** na [portálu Luis](https://www.luis.ai)vyberte **+ Nová aplikace pro konverzaci**a pak **importovat jako JSON**. Vyhledejte uložený soubor JSON z předchozího kroku. Nemusíte měnit název aplikace. Vyberte **Hotovo** .
+
+1. Vyberte **Build** a pak **záměry** , abyste viděli záměry, hlavní stavební kameny aplikace Luis.
+
+    :::image type="content" source="media/luis-tutorial-review-endpoint-utterances/initial-intents-in-app.png" alt-text="Změňte ze stránky verze na stránku záměry.":::
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Výuka aplikace pro použití změn entit v aplikaci
 
@@ -77,15 +82,11 @@ Prohlédněte si projevy koncového bodu pro správné zarovnání záměru. I k
 
 1. V části **Build (sestavení** ) na portálu vyberte **zkontrolovat koncový bod projevy** z levé navigační oblasti. Seznam je filtrovaný pro záměr **ApplyForJob**.
 
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Snímek obrazovky s tlačítkem revize koncového bodu projevy v levém navigačním panelu":::
 
-    Tento utterance, není `I'm looking for a job with Natural Language Processing` ve správném záměru.
+    Tento utterance, není `I'm looking for a job with Natural Language Processing` správného záměru _GetJobInformation_. V důsledku podobnosti názvů úloh a operací v obou záměrech došlo k neočekávanému odhadu _ApplyForJob_ .
 
-1.  Chcete-li tuto utterance zarovnat, vyberte na řádku utterance správný **záměr zarovnání** `GetJobInformation` . Přidejte změněné utterance do aplikace tak, že vyberete značku zaškrtnutí.
-
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+1.  Chcete-li tento utterance zarovnat, vyberte správný **záměr zarovnaný** `GetJobInformation` . Přidejte změněné utterance do aplikace tak, že vyberete značku zaškrtnutí.
 
     Prohlédněte si zbývající projevy tohoto záměru a podle potřeby opravte zarovnaný záměr. K zobrazení zarovnaného záměru použijte úvodní tabulku utterance v tomto kurzu.
 
@@ -110,37 +111,37 @@ Pokud chcete ověřit, že se správně zarovnaný příklad projevy vylepšuje 
             "topIntent": "GetJobInformation",
             "intents": {
                 "GetJobInformation": {
-                    "score": 0.903607249
-                },
-                "EmployeeFeedback": {
-                    "score": 0.0312187821
+                    "score": 0.901367366
                 },
                 "ApplyForJob": {
-                    "score": 0.0230276529
+                    "score": 0.0307973567
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0296942145
                 },
                 "MoveEmployee": {
-                    "score": 0.008322801
-                },
-                "Utilities.Stop": {
-                    "score": 0.004480808
+                    "score": 0.00739785144
                 },
                 "FindForm": {
-                    "score": 0.00425248267
+                    "score": 0.00449316856
+                },
+                "Utilities.Stop": {
+                    "score": 0.00417657848
                 },
                 "Utilities.StartOver": {
-                    "score": 0.004224336
+                    "score": 0.00407167152
                 },
                 "Utilities.Help": {
-                    "score": 0.00373591436
+                    "score": 0.003662492
                 },
                 "None": {
-                    "score": 0.0034621188
+                    "score": 0.00335733569
                 },
                 "Utilities.Cancel": {
-                    "score": 0.00230977475
+                    "score": 0.002225436
                 },
                 "Utilities.Confirm": {
-                    "score": 0.00112078607
+                    "score": 0.00107437756
                 }
             },
             "entities": {
@@ -156,7 +157,7 @@ Pokud chcete ověřit, že se správně zarovnaný příklad projevy vylepšuje 
                                 "timex": "PRESENT_REF",
                                 "resolution": [
                                     {
-                                        "value": "2019-12-05 23:23:53"
+                                        "value": "2020-07-02 21:45:50"
                                     }
                                 ]
                             }

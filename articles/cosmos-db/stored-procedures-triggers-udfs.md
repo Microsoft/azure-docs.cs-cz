@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509665"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
@@ -66,7 +66,7 @@ Transakce jsou nativně integrované do programovacího modelu Azure Cosmos DB J
 Uložené procedury a triggery se vždycky spouštějí na primární replice kontejneru Azure Cosmos. Tato funkce zajišťuje, že čtení z uložených procedur nabízí [silnou konzistenci](consistency-levels-tradeoffs.md). Dotazy využívající uživatelsky definované funkce lze provádět na primární nebo libovolné sekundární replice. Uložené procedury a triggery jsou určené k podpoře transakčních zápisů – zatímco logika jen pro čtení se nejlépe implementuje jako logika na straně aplikace a dotazy pomocí [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md), vám pomůže sytost propustnosti databáze. 
 
 > [!TIP]
-> Dotazy, které byly provedeny v uložené proceduře nebo triggeru, nemusí zobrazit změny v položkách provedených stejnou transakcí skriptu. Tento příkaz se vztahuje na dotazy SQL, jako `getContent().getCollection.queryDocuments()`je například, i na integrované jazykové dotazy, jako je `getContext().getCollection().filter()`.
+> Dotazy, které byly provedeny v uložené proceduře nebo triggeru, nemusí zobrazit změny v položkách provedených stejnou transakcí skriptu. Tento příkaz se vztahuje na dotazy SQL, jako je například, i na `getContent().getCollection.queryDocuments()` integrované jazykové dotazy, jako je `getContext().getCollection().filter()` .
 
 ## <a name="bounded-execution"></a>Omezené spouštění
 
@@ -82,7 +82,7 @@ Azure Cosmos DB podporuje dva typy triggerů:
 
 ### <a name="pre-triggers"></a>Triggery před akcí
 
-Azure Cosmos DB poskytuje triggery, které je možné vyvolat provedením operace s položkou Azure Cosmos. Můžete například určit trigger před akcí vytvoření položky. V tomto případě se trigger před akcí spustí před vytvořením položky. Triggery před akcí nesmí mít žádné vstupní parametry. V případě potřeby je možné k aktualizaci těla dokumentu z původního požadavku použít objekt požadavku. Po zaregistrování triggerů můžou uživatelé určit operace, se kterými se můžou spouštět. Pokud byla aktivační událost vytvořena pomocí `TriggerOperation.Create`, znamená to, že použití triggeru v operaci nahrazení nebude povoleno. Příklady najdete v článku [Jak napsat triggery](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
+Azure Cosmos DB poskytuje triggery, které je možné vyvolat provedením operace s položkou Azure Cosmos. Můžete například určit trigger před akcí vytvoření položky. V tomto případě se trigger před akcí spustí před vytvořením položky. Triggery před akcí nesmí mít žádné vstupní parametry. V případě potřeby je možné k aktualizaci těla dokumentu z původního požadavku použít objekt požadavku. Po zaregistrování triggerů můžou uživatelé určit operace, se kterými se můžou spouštět. Pokud se vytvoří trigger s operací `TriggerOperation.Create`, znamená to, že tento trigger nebude možné použít v operaci nahrazení. Příklady najdete v článku [Jak napsat triggery](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
 
 ### <a name="post-triggers"></a>Triggery po akci
 

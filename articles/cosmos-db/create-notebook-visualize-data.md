@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115274"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961094"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 
@@ -235,7 +235,7 @@ V této části budete spouštět některé dotazy na načtená data.
 
    Výstup zobrazuje mapu světa s různými barvami. Barvy tmavší pro světlejší reprezentují země nebo oblasti s nejvyšším výnosem nejnižším výnosem.
 
-   ![Vizualizace rozvržení výnosů zemí/oblastí](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Vizualizace rozvržení výnosů zemí/oblastí":::
 
 1. Pojďme se podívat na další případ vizualizace dat. Kontejner WebsiteData obsahuje záznam o uživatelích, kteří si prohlíželi položku, přidali do svého košíku a koupili položku. Pojďme vykreslit míru konverze položek, které byly koupeny. Spusťte následující kód v nové buňce pro vizualizaci míry převodu pro každou položku:
 

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: da034479f110607e878a0ed26b9d487e41438e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f93eb55b888c58ad111bd67b2011ba9c996b16bb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666286"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960261"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>Rychlý Start: vytvoření synapse fondu SQL (ve verzi Preview) pomocí synapse studia
 
@@ -41,7 +41,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/)
 1. V seznamu pracovních prostorů zadejte název (nebo část názvu) pracovního prostoru, který chcete otevřít. V tomto příkladu použijeme pracovní prostor s názvem **contosoanalytics**.
 ![Seznam pracovních prostorů synapse filtrovaných k zobrazení těch, které obsahují název contoso.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
-## <a name="launch-synapse-studio"></a>Spustit synapse Studio
+## <a name="launch-synapse-studio"></a>Spuštění funkce Synapse Studio
 
 1. V přehledu pracovního prostoru vyberte **Spustit synapse Studio** a otevřete tak umístění, kde se vytvoří fond SQL. Zadejte název služby nebo název prostředku přímo do panelu hledání.
 ![Azure Portal synapse pracovní prostor – Přehled s zvýrazněnou možností spustit synapse Studio.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)

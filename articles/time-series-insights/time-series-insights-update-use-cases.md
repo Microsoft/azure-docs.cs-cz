@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580677"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití ve verzi Preview pro Azure Time Series Insights
@@ -60,7 +60,7 @@ Existují tři základní způsoby, jak pracovat s daty uloženými v Time Serie
 
   * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Průzkumníkovi ve službě Azure Time Series Insights Preview](time-series-insights-update-explorer.md).
 
-* Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Time Series Insights. Time Series Insights obsahuje `from`dočasné operátory, jako například `to`, `first`, a `last`. Obsahuje agregace a transformace, jako `average`jsou, `min` `max`,, `split by`, `order by`a. `DateHistogram` Má také operátory `has`filtrování, jako jsou, `in`, `and`, `or`, `greater than`a. `REGEX` Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění vizualizací Homegrown pro zjištění anomálií.
+* Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Time Series Insights. Time Series Insights obsahuje dočasné operátory, jako například `from` , `to` , a `first` `last` . Obsahuje agregace a transformace, jako jsou,,, `average` `min` `max` `split by` , `order by` a `DateHistogram` . Má také operátory filtrování `has` , jako jsou, `in` , `and` , `or` , `greater than` a `REGEX` . Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění vizualizací Homegrown pro zjištění anomálií.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Provozní analýza a proces řízení efektivity
 

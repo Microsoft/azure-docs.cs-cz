@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580560"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>Konfigurace TLS v Azure Database for PostgreSQL – Citus (škálování)
@@ -26,10 +26,10 @@ Připojovací řetězce, které jsou předem definované v nastavení "připojov
 Některé aplikační architektury, které používají PostgreSQL pro své databázové služby, během instalace standardně nepovolují protokol TLS. Pokud váš server PostgreSQL vynutil připojení TLS, ale aplikace není nakonfigurovaná pro TLS, aplikace se nemusí podařit připojit k vašemu databázovému serveru. Informace o tom, jak povolit připojení TLS, najdete v dokumentaci k vaší aplikaci.
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Aplikace, které vyžadují ověření certifikátu pro připojení TLS
-V některých případech aplikace vyžadují místní soubor certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (. cer) pro zabezpečené připojení. Certifikát pro připojení k Azure Database for PostgreSQL – Citus (škálování) se nachází na adrese https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem. Stáhněte si soubor certifikátu a uložte ho do svého upřednostňovaného umístění.
+V některých případech aplikace vyžadují místní soubor certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (. cer) pro zabezpečené připojení. Certifikát pro připojení k Azure Database for PostgreSQL – Citus (škálování) se nachází na adrese https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Stáhněte si soubor certifikátu a uložte ho do svého upřednostňovaného umístění.
 
 ### <a name="connect-using-psql"></a>Připojení pomocí psql
-Následující příklad ukazuje, jak se připojit k uzlu koordinátoru Citus (psql) pomocí nástroje příkazového řádku. Pomocí nastavení `sslmode=verify-full` připojovacího řetězce vyvynuťte ověřování certifikátu TLS. Předat do `sslrootcert` parametru cestu k místnímu souboru certifikátu.
+Následující příklad ukazuje, jak se připojit k uzlu koordinátoru Citus (psql) pomocí nástroje příkazového řádku. Pomocí `sslmode=verify-full` nastavení připojovacího řetězce vyvynuťte ověřování certifikátu TLS. Předat do parametru cestu k místnímu souboru certifikátu `sslrootcert` .
 
 Níže je uveden příklad připojovacího řetězce psql:
 ```

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 3d567ec4d760be24fdbb79ff85bd6db0eb4a66c8
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82570067"
 ---
 # <a name="azure-stack-edge-security-and-data-protection"></a>Zabezpečení a ochrana dat v Azure Stack Edge
@@ -56,7 +56,7 @@ Další informace najdete v tématu [získání aktivačního klíče](azure-sta
 
 Hesla zajišťují, že k datům budou mít přístup jenom autorizovaní uživatelé. Azure Stack hraniční zařízení se spouští v uzamčeném stavu.
 
-Můžete:
+Další možnosti:
 
 - Připojte se k místnímu webovému uživatelskému rozhraní zařízení přes prohlížeč a pak zadejte heslo pro přihlášení k zařízení.
 - Vzdáleně se připojte k rozhraní PowerShellu zařízení přes HTTP. Vzdálená správa je ve výchozím nastavení zapnutá. Pak můžete zadat heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [připojení vzdáleně k vašemu Azure Stack hraničnímu zařízení](azure-stack-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).

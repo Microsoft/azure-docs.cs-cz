@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731998"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Monitorovat stav spuštění, zkontrolovat historii triggerů a nastavit výstrahy pro Azure Logic Apps
@@ -24,13 +24,13 @@ Pro monitorování událostí v reálném čase a bohatší ladění nastavte pr
 
 <a name="review-runs-history"></a>
 
-## <a name="review-runs-history"></a>Historie spuštění kontroly
+## <a name="review-runs-history"></a>Kontrola historie spuštění
 
 Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul Logic Apps a spustí samostatnou instanci pracovního postupu pro každou položku nebo událost. Ve výchozím nastavení se každá instance pracovního postupu spouští paralelně, takže žádný pracovní postup nesmí čekat před spuštěním spuštění. Můžete se podívat, co se stalo během tohoto spuštění, včetně stavu každého kroku v pracovním postupu a vstupy a výstupy pro jednotlivé kroky.
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Pokud chcete najít aplikaci logiky, zadejte `logic apps`do hlavního pole Azure Search a pak vyberte **Logic Apps**.
+   Pokud chcete najít aplikaci logiky, zadejte do hlavního pole Azure Search `logic apps` a pak vyberte **Logic Apps**.
 
    ![Vyhledejte a vyberte službu Logic Apps.](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -96,7 +96,7 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-   Pokud chcete najít aplikaci logiky, zadejte `logic apps`do hlavního pole Azure Search a pak vyberte **Logic Apps**.
+   Pokud chcete najít aplikaci logiky, zadejte do hlavního pole Azure Search `logic apps` a pak vyberte **Logic Apps**.
 
    ![Vyhledejte a vyberte službu Logic Apps.](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -120,7 +120,7 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
    |--------|-------------|
    | **Failed** | Došlo k chybě. Pokud chcete zkontrolovat všechny generované chybové zprávy pro aktivační událost, vyberte tuto aktivační událost a zvolte **výstup**. Například můžete najít vstupy, které nejsou platné. |
    | **Přeskočeno** | Aktivační událost kontrolovala koncový bod, ale nenašla žádná data. |
-   | **Úspěch** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav "aktivováno" se obvykle zobrazuje současně s tímto stavem. V takovém případě může být v definici triggeru podmínka `SplitOn` nebo příkaz, který nebyl splněn. <p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. |
+   | **Úspěch** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav "aktivováno" se obvykle zobrazuje současně s tímto stavem. V takovém případě může být v definici triggeru podmínka nebo `SplitOn` příkaz, který nebyl splněn. <p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. |
    |||
 
    > [!TIP]
@@ -140,7 +140,7 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
 
 Pokud chcete dostávat upozornění na základě konkrétních metrik nebo překročení prahových hodnot pro vaši aplikaci logiky, nastavte [výstrahy v Azure monitor](../azure-monitor/platform/alerts-overview.md). Seznamte [se s metrikami v Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). Pokud chcete nastavit výstrahy bez použití [Azure monitor](../log-analytics/log-analytics-overview.md), postupujte podle těchto kroků.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte **výstrahy** > **nové pravidlo výstrahy**.
+1. V nabídce aplikace logiky v části **monitorování**vyberte **výstrahy**  >  **nové pravidlo výstrahy**.
 
    ![Přidání upozornění pro aplikaci logiky](./media/monitor-logic-apps/add-new-alert-rule.png)
 
@@ -162,7 +162,7 @@ Pokud chcete dostávat upozornění na základě konkrétních metrik nebo přek
 
    1. Jako **typ agregace**vyberte **počet**.
 
-   1. V případě **prahové hodnoty**zadejte `1`.
+   1. V případě **prahové hodnoty**zadejte `1` .
 
    1. V části **Preview podmínka**ověřte, že se zobrazuje stav správné.
 
