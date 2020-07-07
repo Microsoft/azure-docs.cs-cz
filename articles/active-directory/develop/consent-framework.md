@@ -14,13 +14,13 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
 ms.openlocfilehash: e706c0eeb848b6cd14a3c14de821ca59a9c52ee9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611360"
 ---
-# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory – rozhraní pro vyjádření souhlasu
+# <a name="azure-active-directory-consent-framework"></a>Architektura Azure AD pro udělování souhlasu
 
 Rozhraní pro vyjádření souhlasu Azure Active Directory (Azure AD) usnadňuje vývoj webových a nativních klientských aplikací pro více tenantů. Tyto aplikace umožňují přihlášení pomocí uživatelských účtů z klienta Azure AD, které se liší od účtu, ve kterém je aplikace zaregistrovaná. Můžou také vyžadovat přístup k webovým rozhraním API, jako je Microsoft Graph API (pro přístup k Azure AD, Intune a službám v Office 365) a dalším rozhraním API služeb Microsoftu, a to i k vašim vlastním webovým rozhraním API.
 
@@ -60,7 +60,7 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací i p
       ![Udělení oprávnění pro explicitní souhlas správce](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > Udělení explicitního souhlasu pomocí tlačítka **udělení oprávnění** je aktuálně vyžadováno pro jednostránkové aplikace (Spa), které používají ADAL. js. V opačném případě dojde k chybě aplikace po vyžádání přístupového tokenu.
+   > Udělení explicitního souhlasu pomocí tlačítka **udělení oprávnění** je aktuálně vyžadováno pro jednostránkové aplikace (Spa), které používají ADAL.js. V opačném případě dojde k chybě aplikace po vyžádání přístupového tokenu.
 
 ## <a name="next-steps"></a>Další kroky
 

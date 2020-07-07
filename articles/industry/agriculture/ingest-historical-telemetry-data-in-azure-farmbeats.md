@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613264"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
@@ -19,7 +19,7 @@ Tento článek popisuje, jak ingestovat historická data ze senzorů do Azure Fa
 
 Běžným scénářem v FarmBeats je příjem historických dat z prostředků Internet věcí (IoT), jako jsou zařízení a senzory. Můžete vytvářet metadata pro zařízení a senzory a následně ingestovat historická data do FarmBeats v kanonickém formátu.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data ze svých zařízení IoT. Musíte taky povolit partnerský přístup, jak je uvedeno v následujících krocích.
 
@@ -27,7 +27,7 @@ Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali F
 
 Musíte povolit integraci partnera s instancí Azure FarmBeats. Tento krok vytvoří klienta, který má přístup k vaší instanci Azure FarmBeats jako partnerovi zařízení a poskytne následující hodnoty, které jsou potřeba v následujících krocích:
 
-- Koncový bod rozhraní API: Jedná se o adresu URL DataHub, například\<https://DataHub>. azurewebsites.NET
+- Koncový bod rozhraní API: Jedná se o adresu URL DataHub, například https:// \<datahub> . azurewebsites.NET.
 - ID tenanta
 - ID klienta
 - Tajný klíč klienta
@@ -42,7 +42,7 @@ Postupujte následovně:
 
 2. **Pokud používáte FarmBeats verze 1.2.7 nebo novější, přeskočte kroky a, b a c a přejděte ke kroku 3.** Verzi FarmBeats můžete ověřit tak, že vyberete ikonu **Nastavení** v pravém horním rohu uživatelského rozhraní FarmBeats.
 
-      a.  Přejít na **Azure Active Directory** > **Registrace aplikací**
+      a.  Přejít na **Azure Active Directory**  >  **Registrace aplikací**
 
       b. Vyberte **registraci aplikace** vytvořenou jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats DataHub.
 
@@ -70,7 +70,7 @@ Postupujte následovně:
 
     ```
 
-7. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze stránky s**přehledem** **Azure Active Directory** > .
+7. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze **Azure Active Directory**  >  stránky s**přehledem** Azure Active Directory.
 
     ```azurepowershell-interactive 
 
@@ -99,7 +99,7 @@ Postupujte následovně:
 |        DeviceModel   |  Návrhy   |
 | ------- | -------             |
 |     Typ (uzel, brána)        |          Typ zařízení – uzel nebo brána      |
-|          Výrobce            |         Název výrobce    |
+|          Manufacturer            |         Název výrobce    |
 |  ProductCode                    |  Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800.  |
 |            Porty          |     Název portu a typ, který je digitální nebo analogový.
 |     Name                 |  Název, který identifikuje prostředek. Například název modelu nebo název produktu.
@@ -116,7 +116,7 @@ Postupujte následovně:
 |     Vlastnosti    |  Další vlastnosti od výrobce.
 |     **SensorModel**        |          |
 |       Typ (analogové, digitální)          |      Typ snímače bez ohledu na to, zda je analogový nebo digitální.       |
-|          Výrobce            |       Výrobce snímače.     |
+|          Manufacturer            |       Výrobce snímače.     |
 |     ProductCode| Kód produktu nebo název modelu nebo číslo. Například RS-CO2-N01. |
 |       Název > SensorMeasures       | Název míry senzoru Podporují se jenom malá písmena. Pro měření z různých hloubek Určete hloubku. Například soil_moisture_15cm. Tento název musí být konzistentní s daty telemetrie.  |
 |          SensorMeasures > datový typ       |Datový typ telemetrie. V současné době je podporována dvojitá přesnost.|
@@ -140,9 +140,9 @@ Další informace o objektech naleznete v [Swagger](https://aka.ms/FarmBeatsData
 
 ### <a name="api-request-to-create-metadata"></a>Požadavek rozhraní API na vytvoření metadat
 
-Chcete-li vytvořit požadavek rozhraní API, můžete zkombinovat metodu HTTP (POST), adresu URL služby API a identifikátor URI k prostředku, který se má dotazovat, odeslat data do, vytvořit nebo odstranit žádost. Pak přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, to znamená DataHub adresa URL (https://\<yourdatahub>. azurewebsites.NET).
+Chcete-li vytvořit požadavek rozhraní API, můžete zkombinovat metodu HTTP (POST), adresu URL služby API a identifikátor URI k prostředku, který se má dotazovat, odeslat data do, vytvořit nebo odstranit žádost. Pak přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, tj. adresa URL DataHub (https:// \<yourdatahub> . azurewebsites.NET).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje vygenerované v předchozí části:
 

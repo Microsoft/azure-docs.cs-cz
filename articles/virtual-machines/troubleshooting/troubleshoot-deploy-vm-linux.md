@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628295"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením linuxového virtuálního počítače v Azure
@@ -31,7 +31,11 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Cluster nepodporuje požadovanou velikost virtuálního počítače.
-\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Opakujte požadavek s menší velikostí virtuálního počítače.
 - Pokud velikost požadovaného virtuálního počítače nejde změnit:
     - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > vaší skupině dostupnosti > **Virtual Machines** > **zastavte**virtuální počítač >.
@@ -40,7 +44,11 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Cluster nemá volné prostředky.
-\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Opakujte požadavek později.
 - Pokud může být nový virtuální počítač součástí jiné skupiny dostupnosti
     - Vytvořte virtuální počítač v jiné skupině dostupnosti (ve stejné oblasti).

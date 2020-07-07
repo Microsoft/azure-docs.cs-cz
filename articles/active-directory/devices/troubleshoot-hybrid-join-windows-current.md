@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s hybridními Azure Active Directory připojenými zařízeními
+title: Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join
 description: Řešení potíží se zařízeními s Windows 10 a Windows serverem 2016, která jsou připojená k hybridní Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611309"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join
 
 Obsah tohoto článku se vztahuje na zařízení s Windows 10 nebo Windows Server 2016.
 
@@ -132,7 +132,7 @@ Pole chybová fáze označuje fázi selhání spojení, zatímco ' Client ErrorC
 
 Pomocí protokolů Prohlížeč událostí vyhledejte fázi a chybový kód pro selhání spojení.
 
-1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím identifikátory EventID rozmezí 304, 305, 307.
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -156,10 +156,10 @@ Možné příčiny selhání:
    - V doménové struktuře služby Active Directory je vyžadován platný objekt SCP, ke kterému patří zařízení, které odkazuje na ověřený název domény ve službě Azure AD.
    - Podrobnosti najdete v části [Konfigurace spojovacího bodu služby](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
 - Nepovedlo se připojit a načíst metadata zjišťování z koncového bodu zjišťování.
-   - Zařízení by mělo mít přístup `https://enterpriseregistration.windows.net`v kontextu systému, aby bylo možné zjistit koncové body registrace a autorizace.
+   - Zařízení by mělo mít přístup `https://enterpriseregistration.windows.net` v kontextu systému, aby bylo možné zjistit koncové body registrace a autorizace.
    - Pokud místní prostředí vyžaduje odchozí proxy server, správce IT musí zajistit, aby počítačový účet zařízení mohl zjišťovat a tiše ověřit u odchozího proxy serveru.
 - Nepovedlo se připojit ke koncovému bodu sféry uživatele a provádět zjišťování sféry. (Jenom Windows 10 verze 1809 a novější)
-   - Zařízení by mělo mít přístup `https://login.microsoftonline.com`v kontextu systému, aby bylo možné provést zjišťování sféry pro ověřenou doménu a určit typ domény (spravované/federované).
+   - Zařízení by mělo mít přístup `https://login.microsoftonline.com` v kontextu systému, aby bylo možné provést zjišťování sféry pro ověřenou doménu a určit typ domény (spravované/federované).
    - Pokud místní prostředí vyžaduje odchozí proxy server, správce IT musí zajistit, aby kontext systému v zařízení mohl zjišťovat a tiše ověřovat na odchozím proxy serveru.
 
 **Běžné kódy chyb:**
@@ -172,7 +172,7 @@ Možné příčiny selhání:
    - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumejte ji.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
    - Důvod: při provádění zjišťování vypršel časový limit operace.
-   - Řešení: Ujistěte se `https://enterpriseregistration.windows.net` , že je přístupná v kontextu systému. Další informace najdete v části požadavky na [připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Řešení: Ujistěte se, že `https://enterpriseregistration.windows.net` je přístupná v kontextu systému. Další informace najdete v části požadavky na [připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
    - Důvod: selhání zjišťování obecných sfér. Nepovedlo se určit typ domény (spravované nebo federované) ze služby STS.
    - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumejte ji.
@@ -207,7 +207,7 @@ V části diagnostická data ve výstupu stavu připojení vyhledejte test DRS D
 
 Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připojení.
 
-1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím identifikátory EventID rozmezí 201
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ Důvody pro selhání:
 
 Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chyby, kódu chyby serveru a chybové zprávy serveru.
 
-1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím ID události 305
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -273,7 +273,7 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
    - Důvod: obecný časový limit sítě.
-   - Řešení: Ujistěte se `https://login.microsoftonline.com` , že je přístupná v kontextu systému. Zajistěte, aby byl místní zprostředkovatel identity přístupný v kontextu systému. Další informace najdete v tématu [požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Řešení: Ujistěte se, že `https://login.microsoftonline.com` je přístupná v kontextu systému. Zajistěte, aby byl místní zprostředkovatel identity přístupný v kontextu systému. Další informace najdete v tématu [požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
    - Důvod: spojení s koncovým bodem ověřování bylo přerušeno.
    - Řešení: zkuste to po nějaké době znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
@@ -282,7 +282,7 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
    - Řešení: Podívejte se na časový posun klienta. Zkuste to za chvíli znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - Důvod: pokus o připojení `https://login.microsoftonline.com` se nezdařil.
-   - Řešení: Ověřte síťové připojení k `https://login.microsoftonline.com`.
+   - Řešení: Ověřte síťové připojení k `https://login.microsoftonline.com` .
 
 ##### <a name="other-errors"></a>Další chyby
 
@@ -327,7 +327,7 @@ Pole registrace typu označuje typ provedeného spojení.
 
 Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připojení.
 
-1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v části **aplikace a služby protokol**  >  **Microsoft**  >  **Windows**  >  **registrace uživatelských zařízení** systému Microsoft Windows
 2. Vyhledejte události s následujícím identifikátory EventID rozmezí 204
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/4.png)
@@ -363,10 +363,10 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 
 - **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
    - Důvod: Celkový časový limit sítě při pokusu o registraci zařízení na DRS
-   - Řešení: Podívejte se na síťové `https://enterpriseregistration.windows.net`připojení k.
+   - Řešení: Podívejte se na síťové připojení k `https://enterpriseregistration.windows.net` .
 - **WININET_E_NAME_NOT_RESOLVED** (0x80072EE7/-2147012889)
    - Důvod: nepovedlo se přeložit název nebo adresu serveru.
-   - Řešení: Podívejte se na síťové `https://enterpriseregistration.windows.net`připojení k. Zajistěte, aby překlad názvů DNS pro název hostitele byl přesný v n/w a na zařízení.
+   - Řešení: Podívejte se na síťové připojení k `https://enterpriseregistration.windows.net` . Zajistěte, aby překlad názvů DNS pro název hostitele byl přesný v n/w a na zařízení.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
    - Důvod: připojení k serveru se neobvykle ukončilo.
    - Řešení: zkuste to po nějaké době znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
@@ -387,9 +387,9 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Krok 5: shromáždění protokolů a kontaktování podpora Microsoftu
 
-Stáhnout soubor auth. zip z[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Stáhnout soubor Auth.zip z[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Rozbalte soubory a přejmenujte zahrnuté soubory **Start-auth. txt** a **stop-auth. txt** na **Start-auth. cmd** a **stop-auth. cmd**.
+1. Rozbalte soubory a přejmenujte zahrnuté soubory **start-auth.txt** a **stop-auth.txt** na **Start-auth. cmd** a **stop-auth. cmd**.
 1. Z příkazového řádku se zvýšenými oprávněními spusťte **Start-auth. cmd**.
 1. Přepínač přepnout účet použijte k přepnutí na jinou relaci s problémem uživatele.
 1. Reprodukujte problém.

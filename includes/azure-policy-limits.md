@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 04/23/2020
 ms.author: dacoulte
 ms.openlocfilehash: e9faea1d5913a19dfdeff662e26992529dc1b22d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466884"
 ---
 Pro každý typ objektu Azure Policy existuje maximální počet. Položka _Scope_ znamená buď předplatné, nebo [skupinu pro správu](../articles/governance/management-groups/overview.md).
@@ -26,4 +26,4 @@ Pro každý typ objektu Azure Policy existuje maximální počet. Položka _Scop
 | Definice iniciativy | Parametry | 100 |
 | Přiřazení zásad nebo iniciativ | Vyloučení (notScopes) | 400 |
 | Pravidlo zásad | Vnořené podmíněné výrazy | 512 |
-| Úloha nápravy | Zdroje a prostředky | 500 |
+| Úloha nápravy | Zdroje | 500 |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb7778ce25fd1ff01cfd7d2e1af7991bb38b1f47
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: d47a70f2e086c5322e8ecd53cbf352c672528ebc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605591"
+ms.locfileid: "85798795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Kurz: Azure Active Directory integrací s informacemi CloudSuite
 
@@ -109,21 +109,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD 
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        http://mingle-sso.inforcloudsuite.com
-        http://mingle-sso.se1.inforcloudsuite.com
-        http://mingle-sso.eu1.inforcloudsuite.com
-        http://mingle-sso.se2.inforcloudsuite.com
-        ```
+    ```http
+    http://mingle-sso.inforcloudsuite.com
+    http://mingle-sso.se1.inforcloudsuite.com
+    http://mingle-sso.eu1.inforcloudsuite.com
+    http://mingle-sso.se2.inforcloudsuite.com
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
-        https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
-        https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
-        https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
-        ```
+    ```http
+    https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
+    ```
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -131,12 +131,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD 
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-        ```https
-        https://mingle-portal.inforcloudsuite.com/Tenant-Name/
-        https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
-        https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
-        https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
-        ```
+    ```http
+    https://mingle-portal.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Kontaktní [informace CloudSuite tým podpory](mailto:support@infor.com) pro získání těchto hodnot. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

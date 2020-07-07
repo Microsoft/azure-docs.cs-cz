@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610781"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
@@ -33,7 +33,7 @@ Následující postup vysvětluje, jak vrátit konfiguraci Windows serveru do p�
 
     ![Obnovení dat](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Chcete-li obnovit data na stejném serveru nebo počítači, vyberte v podokně **Začínáme** možnost **Tento server`<server name>`()** a klikněte na tlačítko **Další**.
+3. Chcete-li obnovit data na stejném serveru nebo počítači, vyberte v podokně **Začínáme** možnost **Tento server ( `<server name>` )** a klikněte na tlačítko **Další**.
 
     ![Zvolením možnosti Server obnovte data do stejného počítače.](./media/backup-azure-restore-system-state/samemachine.png)
 
@@ -89,7 +89,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 6. V podokně vybrat záložní server vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
 7. V podokně vybrat režim obnovení zvolte možnost **stav systému** a klikněte na tlačítko **Další**.
 
-    ![Vyhledávání](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Hledat](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. V kalendáři v podokně **Vybrat svazek a datum** vyberte bod obnovení. Můžete obnovit z libovolného bodu obnovení v čase. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Jakmile vyberete datum, pokud je k dispozici více bodů obnovení, zvolte konkrétní bod obnovení z rozevírací nabídky **čas** .
 
@@ -107,7 +107,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 
     ![Kliknutím na tlačítko Obnovit potvrďte proces obnovení.](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
-12. Zkopírujte adresář *WindowsImageBackup* do nedůležitého svazku serveru (například D:\)). Nepostradatelným svazkem je obvykle svazek operačního systému Windows.
+12. Zkopírujte adresář *WindowsImageBackup* do nedůležitého svazku serveru (například D:) \) . Nepostradatelným svazkem je obvykle svazek operačního systému Windows.
 
 13. K dokončení procesu obnovení použijte následující část k [použití obnovených souborů stavu systému na Windows serveru](#apply-restored-system-state-on-a-windows-server).
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a2fd4a4649b38434d196e8f4203966efdff876
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 21428738873f60d2173df53f5b9f1d108ee5eff4
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606524"
+ms.locfileid: "85798671"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím cloudu
 
@@ -86,32 +86,32 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujících vzorů:
     
-        ```https
-        https://<cluster>.medallia.com/sso/<company>
-        https://<cluster>.medallia.ca/sso/<company>
-        https://<cluster>.medallia.eu/sso/<company>
-        https://<cluster>.medallia.au/sso/<company>
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujících vzorů:
 
-        ```https
-        https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
+    ```
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujících vzorů:
 
-        ```https
-        https://<cluster>.medallia.com/sso/<company>
-        https://<cluster>.medallia.ca/sso/<company>
-        https://<cluster>.medallia.eu/sso/<company>
-        https://<cluster>.medallia.au/sso/<company>
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pro získání těchto hodnot se obraťte na [tým podpory pro cloudového klienta](mailto:support@medallia.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

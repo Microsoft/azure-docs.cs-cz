@@ -9,16 +9,16 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612329"
 ---
-# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytváření a Správa smluv o obchodních partnerech v Azure Logic Apps
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytvoření a správa smluv obchodních partnerů v Azure Logic Apps
 
-[Obchodní Partnerská](../logic-apps/logic-apps-enterprise-integration-partners.md) 
-*smlouva* pomáhá organizacím a firmám vzájemně komunikovat pomocí definování specifického standardního protokolu, který se použije při výměně zpráv B2B (Business-to-Business). Smlouvy poskytují běžné výhody, například:
+[Obchodní Partnerská](../logic-apps/logic-apps-enterprise-integration-partners.md)  
+ *smlouva* pomáhá organizacím a firmám vzájemně komunikovat pomocí definování specifického standardního protokolu, který se použije při výměně zpráv B2B (Business-to-Business). Smlouvy poskytují běžné výhody, například:
 
 * Umožněte organizacím vyměňovat si informace pomocí známého formátu.
 * Zvyšte efektivitu při provádění transakcí B2B.
@@ -40,7 +40,7 @@ Pokud chcete vytvořit smlouvy pro výměnu zpráv RosettaNet, přečtěte si t�
 
 ## <a name="create-agreements"></a>Vytvoření smluv
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
    ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)

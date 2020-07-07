@@ -2,7 +2,7 @@
 title: Příklady skriptu Azure PowerShell
 description: Použijte příklady skriptů Azure PowerShell, které vám pomůžou vytvořit a spravovat Azure SQL Database a prostředky spravované instance Azure SQL.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718542"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987289"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Ukázky Azure PowerShell pro Azure SQL Database a Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použ
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu pro službu Azure SQL Database.
 
-| |  |
+|Odkaz|Popis|
 |---|---|
 |**Vytváření a konfigurace izolovaných databází a elastických fondů**||
 | [Vytvoření jedné databáze a konfigurace pravidla brány firewall na úrovni serveru](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vytvoří izolovanou databázi a nakonfiguruje pravidlo brány firewall protokolu IP na úrovni serveru. |
@@ -64,7 +64,7 @@ Přečtěte si další informace o [rozhraní Azure PowerShell API pro jednu dat
 
 Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure SQL Managed instance.
 
-| |  |
+|Odkaz|Popis|
 |---|---|
 |**Vytvoření a konfigurace spravovaných instancí**||
 | [Vytvoření a Správa spravované instance](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Tento skript PowerShellu ukazuje, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShell. |

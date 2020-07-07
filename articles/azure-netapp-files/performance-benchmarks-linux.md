@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b763a734866dd5fed5bf0500d4d52b9324c92a79
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614587"
 ---
 # <a name="azure-netapp-files-performance-benchmarks-for-linux"></a>Azure NetApp Files srovnávacích testů výkonu pro Linux
@@ -47,13 +47,13 @@ Tento graf znázorňuje snížení v 10% najednou, od čistého čtení po čist
 
 ## <a name="linux-scale-up"></a>Rozšíření pro Linux  
 
-Jádro Linux 5,3 umožňuje sítě pro systém souborů NFS s`nconnect`možností horizontálního navýšení kapacity v jednom klientovi. Grafy v této části ukazují výsledky ověřovacích testů pro možnost připojení na straně klienta pomocí NFSv3. Tato funkce je k dispozici na SUSE (počínaje SLES12SP4) a Ubuntu (počínaje verzí 19,10). Je podobný v konceptu pro rozhraní SMB vícekanálový i Oracle Direct NFS.
+Jádro Linux 5,3 umožňuje sítě pro systém souborů NFS s možností horizontálního navýšení kapacity v jednom klientovi `nconnect` . Grafy v této části ukazují výsledky ověřovacích testů pro možnost připojení na straně klienta pomocí NFSv3. Tato funkce je k dispozici na SUSE (počínaje SLES12SP4) a Ubuntu (počínaje verzí 19,10). Je podobný v konceptu pro rozhraní SMB vícekanálový i Oracle Direct NFS.
 
 Grafy porovnávají výhody nástroje `nconnect` na připojeném svazku, který není připojen. V grafech FIO vygenerovala úlohu z jedné instance D32s_v3 v oblasti Azure US-west2.
 
 ### <a name="linux-read-throughput"></a>Propustnost čtení pro Linux  
 
-Následující grafy znázorňují sekvenční čtení souboru. 3 500 MiB/s `nconnect`, přibližně 2.3 x než.`nconnect`
+Následující grafy znázorňují sekvenční čtení souboru. 3 500 MiB/s `nconnect` , přibližně 2.3 x než `nconnect` .
 
 ![Propustnost čtení pro Linux](../media/azure-netapp-files/performance-benchmarks-linux-read-throughput.png)  
 
@@ -65,13 +65,13 @@ Následující grafy zobrazují sekvenční zápisy. Označují, že `nconnect` 
 
 ### <a name="linux-read-iops"></a>Linux Read IOPS  
 
-Následující grafy ukazují náhodné čtení ~ 200 000 čtení IOPS s `nconnect`, zhruba 3x ne.`nconnect`
+Následující grafy ukazují náhodné čtení ~ 200 000 čtení IOPS s `nconnect` , zhruba 3x ne `nconnect` .
 
 ![Linux Read IOPS](../media/azure-netapp-files/performance-benchmarks-linux-read-iops.png)  
 
 ### <a name="linux-write-iops"></a>Pro Linux zápis IOPS  
 
-Následující grafy ukazují náhodné zápisy ~ 135 000 zápis IOPS s `nconnect`, zhruba 3x ne.`nconnect`
+Následující grafy ukazují náhodné zápisy ~ 135 000 zápis IOPS s `nconnect` , zhruba 3x ne `nconnect` .
 
 ![Pro Linux zápis IOPS](../media/azure-netapp-files/performance-benchmarks-linux-write-iops.png)  
 

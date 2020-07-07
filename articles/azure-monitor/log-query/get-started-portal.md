@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80055433"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798251"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Kurz: Začínáme s Log Analytics dotazy
 
@@ -37,6 +37,7 @@ K dokončení většiny kroků v tomto kurzu můžete použít [toto ukázkové 
 Pokud používáte Azure Monitor ke shromažďování dat protokolu aspoň na jednom prostředku Azure, můžete použít také vlastní prostředí. Chcete-li otevřít pracovní prostor Log Analytics, vyberte v Azure Monitor levém navigačním panelu možnost **protokoly**. 
 
 ## <a name="understand-the-schema"></a>Vysvětlené schématu
+ 
 *Schéma* je kolekce tabulek seskupených pod logickými kategoriemi. Ukázkové schéma má několik kategorií z monitorování řešení. Například kategorie **LogManagement** obsahuje události Windows a syslog, údaje o výkonu a prezenční signály agenta.
 
 Tabulky schématu se zobrazí na kartě **tabulky** v pracovním prostoru Log Analytics. Tabulky obsahují sloupce, z nichž každý má datový typ zobrazený ikonou vedle názvu sloupce. Například tabulka **událostí** obsahuje textové sloupce, jako je například **počítač** a číselné sloupce, například **EventCategory**.
@@ -50,6 +51,7 @@ Log Analytics se otevře s novým prázdným dotazem v **Editoru dotazů**.
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>Napsat dotaz
+
 Azure Monitor dotazy protokolu používají verzi dotazovacího jazyka Kusto. Dotazy mohou být začínat názvem tabulky nebo [vyhledávacím](/azure/kusto/query/searchoperator) příkazem. 
 
 Následující dotaz načte všechny záznamy z tabulky **událostí** :
@@ -86,13 +88,13 @@ Chcete-li použít řízení **časového rozsahu** , vyberte ho v horním panel
 - Pokud dotaz explicitně nastaví filtr pro **TimeGenerated**, ovládací prvek pro výběr času zobrazuje **hodnotu nastavenou v dotazu**a je zakázán, aby nedocházelo ke konfliktu.
 
 ### <a name="run-a-query"></a>Spustit dotaz
-Pokud chcete spustit dotaz, umístěte kurzor někam do dotazu a vyberte **Spustit** na horním panelu nebo stiskněte klávesu **SHIFT**+**ENTER**. Dotaz se spustí, dokud nenajde prázdný řádek.
+Pokud chcete spustit dotaz, umístěte kurzor někam do dotazu a vyberte **Spustit** na horním panelu nebo stiskněte klávesu **SHIFT** + **ENTER**. Dotaz se spustí, dokud nenajde prázdný řádek.
 
 ## <a name="filter-results"></a>Filtrování výsledků
 Log Analytics omezuje výsledky na maximálně 10 000 záznamů. Obecný dotaz jako `Event` vrací příliš mnoho výsledků, aby byly užitečné. Můžete filtrovat výsledky dotazu buď pomocí omezení prvků tabulky v dotazu, nebo explicitním přidáním filtru k výsledkům. Filtrování prostřednictvím prvků tabulky vrací novou sadu výsledků, zatímco explicitní filtr platí pro existující sadu výsledků dotazu.
 
 ### <a name="filter-by-restricting-table-elements"></a>Filtrovat podle omezení elementů tabulky
-Chcete- `Event` li filtrovat výsledky dotazu na **chybové** události omezením prvků tabulky v dotazu:
+Chcete-li filtrovat `Event` výsledky dotazu na **chybové** události omezením prvků tabulky v dotazu:
 
 1. Ve výsledcích dotazu vyberte šipku rozevíracího seznamu vedle libovolného záznamu, který obsahuje **chybu** ve sloupci **EventLevelName** . 
    
@@ -110,7 +112,7 @@ Chcete- `Event` li filtrovat výsledky dotazu na **chybové** události omezení
 1. Vyberte **Spustit** a spusťte nový dotaz.
 
 ### <a name="filter-by-explicitly-filtering-results"></a>Filtrovat podle explicitních výsledků filtrování
-Filtrování výsledků dotazu `Event` pro filtrování výsledků dotazu na **chybové** události:
+Filtrování výsledků dotazu pro filtrování `Event` výsledků dotazu na **chybové** události:
 
 1. V části výsledky dotazu vyberte ikonu **filtru** vedle záhlaví sloupce **EventLevelName**. 
    
@@ -118,7 +120,7 @@ Filtrování výsledků dotazu `Event` pro filtrování výsledků dotazu na **c
    
 1. Vyberte **Filtr**.
    
-   ![Filtr](media/get-started-portal/filter.png)
+   ![Filtrovat](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Řazení, seskupení a výběr sloupců
 Pokud chcete výsledky dotazu seřadit podle konkrétního sloupce, jako je například **TimeGenerated [UTC]**, vyberte záhlaví sloupce. Znovu vyberte záhlaví, které chcete přepínat mezi vzestupném a sestupným pořadím.
@@ -156,6 +158,7 @@ Můžete změnit vlastnosti zobrazení, například osy x a y, nebo seskupení a
 Můžete také nastavit preferované zobrazení v samotném dotazu pomocí operátoru [vykreslení](/azure/kusto/query/renderoperator) .
 
 ## <a name="pin-results-to-a-dashboard"></a>Připnutí výsledků na řídicí panel
+
 Pokud chcete tabulku výsledků nebo graf připnout z Log Analytics na sdílený řídicí panel Azure, vyberte na horním panelu **Připnout na řídicí panel** . 
 
 ![Připnout na řídicí panel](media/get-started-portal/pin-dashboard.png)
@@ -171,9 +174,11 @@ Tabulka nebo graf, které připnete do sdíleného řídicího panelu, mají ná
 - Grafy, které mají mnoho diskrétních kategorií, automaticky seskupí méně vyplněné kategorie do jedné přihrádky **ostatní** .
 
 ## <a name="save-load-or-export-queries"></a>Uložení, načtení nebo export dotazů
+
 Po vytvoření dotazu můžete dotaz nebo výsledky sdílet s ostatními. 
 
 ### <a name="save-queries"></a>Uložení dotazů
+
 Uložení dotazu:
 
 1. Vyberte **Uložit** na horním panelu.

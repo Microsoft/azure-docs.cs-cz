@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82627581"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrace úloh agenta SQL Server do ADF pomocí SSMS
@@ -33,9 +33,9 @@ Obecně platí, že pro vybrané úlohy agenta SQL s použitelnými typy kroků 
 
 |Objekt úlohy agenta SQL  |Prostředek ADF  |Poznámky|
 |---------|---------|---------|
-|Úloha agenta SQL|kanálu     |Název kanálu bude *vygenerován pro \<název úlohy>*. <br> <br> Předdefinované úlohy agenta nejsou k dispozici: <li> Úloha údržby serveru SSIS <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
-|Krok úlohy SSIS|Aktivita provádění balíčku SSIS|<li> Název aktivity bude> název \<kroku. <li> Proxy účet použitý v kroku úlohy bude migrován jako ověřování systému Windows této aktivity. <li> *Možnosti spuštění* s výjimkou *použití 32ho modulu runtime* definovaného v kroku úlohy budou při migraci ignorovány. <li> *Ověřování* definované v kroku úlohy bude při migraci ignorováno.|
-|schedule      |trigger plánu        |Název aktivační události plánovače se *vygeneruje pro \<název plánu>*. <br> <br> Níže uvedené možnosti v plánu úlohy agenta SQL se budou při migraci ignorovat: <li> Interval druhé úrovně. <li> *Spustit automaticky při spuštění agenta SQL Server* <li> *Spustit pokaždé, když se procesory stanou nečinné* <li> den v *týdnu* a *víkend*<time zone> <br> Níže jsou uvedeny rozdíly po migraci plánu úlohy agenta SQL do aktivační události naplánování ADF: <li> Následné spuštění triggeru na základě plánu ADF je nezávisle na stavu spuštění v předchůdci aktivovaném spuštěním. <li> Konfigurace opakování aktivační události plánu ADF se v úloze agenta SQL liší od každodenní frekvence.|
+|Úloha agenta SQL|kanálu     |Název kanálu bude *vygenerován pro \<job name> *. <br> <br> Předdefinované úlohy agenta nejsou k dispozici: <li> Úloha údržby serveru SSIS <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
+|Krok úlohy SSIS|Aktivita provádění balíčku SSIS|<li> Název aktivity bude \<step name> . <li> Proxy účet použitý v kroku úlohy bude migrován jako ověřování systému Windows této aktivity. <li> *Možnosti spuštění* s výjimkou *použití 32ho modulu runtime* definovaného v kroku úlohy budou při migraci ignorovány. <li> *Ověřování* definované v kroku úlohy bude při migraci ignorováno.|
+|schedule      |trigger plánu        |Název aktivační události plánovače, *pro \<schedule name> *kterou bude vytvořen. <br> <br> Níže uvedené možnosti v plánu úlohy agenta SQL se budou při migraci ignorovat: <li> Interval druhé úrovně. <li> *Spustit automaticky při spuštění agenta SQL Server* <li> *Spustit pokaždé, když se procesory stanou nečinné* <li> den v *týdnu* a *víkend*<time zone> <br> Níže jsou uvedeny rozdíly po migraci plánu úlohy agenta SQL do aktivační události naplánování ADF: <li> Následné spuštění triggeru na základě plánu ADF je nezávisle na stavu spuštění v předchůdci aktivovaném spuštěním. <li> Konfigurace opakování aktivační události plánu ADF se v úloze agenta SQL liší od každodenní frekvence.|
 
 - Vygenerujte šablony Azure Resource Manager (ARM) v místní výstupní složce a přímo nebo později nasaďte do objektu pro vytváření dat. Další informace o šablonách ADF Správce prostředků najdete v tématu [typy prostředků Microsoft. DataFactory](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions).
 
@@ -57,8 +57,8 @@ Funkce popsaná v tomto článku vyžaduje SQL Server Management Studio verze 18
     1. Aktualizujte cestu ke zdrojové složce. Platné cesty jsou cesty ke složkám nebo cesty nadřazených složek balíčků.
     1. Aktualizujte cestu k cílové složce. Výchozí hodnota je relativní cesta k výchozímu účtu úložiště, který je vybraný v kroku 1.
     1. Odstraní vybrané mapování prostřednictvím **mapování pro odstranění**.
-![STEP2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![STEP2 – 1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![STEP2 ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ STEP2 – 1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Vyberte příslušné úlohy, které chcete migrovat, a nakonfigurujte nastavení odpovídající *spouštěné aktivity balíčku SSIS*.
 

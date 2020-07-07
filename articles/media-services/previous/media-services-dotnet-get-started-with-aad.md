@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 8fbe8e0cbf2768af973a0ccc9e237fb770b27a74
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612295"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Použití ověřování Azure AD pro přístup k rozhraní API Azure Media Services pomocí .NET
@@ -56,7 +56,7 @@ Máte také možnost nahradit výchozí implementaci **AzureAdTokenProvider** vl
 ## <a name="install-and-configure-azure-media-services-net-sdk"></a>Instalace a konfigurace Azure Media Services .NET SDK
 
 >[!NOTE]
->Pokud chcete používat ověřování Azure AD s Media Services .NET SDK, musíte mít nejnovější balíček [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) . Přidejte také odkaz na sestavení **Microsoft. IdentityModel. clients. Active** . Pokud používáte existující aplikaci, zahrňte sestavení **Microsoft. windowsazure. MediaServices. Client. Common. Authentication. dll** .
+>Pokud chcete používat ověřování Azure AD s Media Services .NET SDK, musíte mít nejnovější balíček [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) . Přidejte také odkaz na sestavení **Microsoft. IdentityModel. clients. Active** . Pokud používáte existující aplikaci, zahrňte **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** sestavení.
 
 1. Vytvořte novou konzolovou aplikaci v jazyce C# v aplikaci Visual Studio.
 2. K instalaci **Azure Media Services .NET SDK**použijte balíček NuGet [windowsazure. MediaServices](https://www.nuget.org/packages/windowsazure.mediaservices) .

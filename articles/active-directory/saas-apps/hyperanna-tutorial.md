@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f1ff2247cb3b8f673f187f688e80bde8559c0a4
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 208a494c98a5f3eb22742b0ba6748efa0dd59e1a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605980"
+ms.locfileid: "85798699"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>Kurz: integrace HyperAnna s Azure Active Directory
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí některého z následujících vzorů:
 
-    ```https
+    ```http
     https://microsoft.hyperanna.com/userservice/auth/saml
     https://anna.hyperanna.com/userservice/auth/saml
     ```
@@ -94,9 +94,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí některého z následujících vzorů:
 
-    ```https
-    `https://microsoft.hyperanna.com/
-    `https://anna.hyperanna.com/
+    ```http
+    https://microsoft.hyperanna.com/
+    https://anna.hyperanna.com/
     ```
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.

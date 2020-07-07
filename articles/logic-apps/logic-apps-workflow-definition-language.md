@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611411"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Referenční příručka schématu pro jazyk definice pracovního postupu v Azure Logic Apps
@@ -35,29 +35,29 @@ Tady je struktura vysoké úrovně pro definici pracovního postupu:
 }
 ```
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 |-----------|----------|-------------|
 | `definition` | Ano | Počáteční element pro definici pracovního postupu |
 | `$schema` | Pouze v případě, že odkaz odkazuje na externě na definici pracovního postupu | Umístění souboru schématu JSON, které popisuje jazykovou verzi definice pracovního postupu, které najdete tady: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| `actions` | No | Definice pro jednu nebo více akcí, které mají být provedeny v modulu runtime pracovního postupu. Další informace najdete v tématu [triggery a akce](#triggers-actions). <p><p>Maximální počet akcí: 250 |
-| `contentVersion` | No | Číslo verze definice pracovního postupu, které je ve výchozím nastavení "1.0.0.0". Chcete-li při nasazování pracovního postupu lépe identifikovat a potvrdit správnou definici, zadejte hodnotu, která se má použít. |
-| `outputs` | No | Definice výstupů, které se mají vrátit z běhu pracovního postupu Další informace najdete v tématu [výstupy](#outputs). <p><p>Maximální počet výstupů: 10 |
-| `parameters` | No | Definice jednoho nebo více parametrů, které předají hodnoty pro použití v modulu runtime vaší aplikace logiky Další informace najdete v tématu [parametry](#parameters). <p><p>Maximální počet parametrů: 50 |
-| `staticResults` | No | Definice pro jednu nebo více statických výsledků vrácených akcemi jako výstupní výstupy, když jsou na těchto akcích povoleny statické výsledky. V každé definici akce `runtimeConfiguration.staticResult.name` atribut odkazuje na odpovídající definici v rámci. `staticResults` Další informace najdete v tématu [statické výsledky](#static-results). |
-| `triggers` | No | Definice pro jednu nebo více triggerů, které vytváří instanci pracovního postupu. Můžete definovat více než jednu Trigger, ale pouze s jazykem definice pracovního postupu, nikoli vizuálně prostřednictvím návrháře Logic Apps. Další informace najdete v tématu [triggery a akce](#triggers-actions). <p><p>Maximální počet aktivačních událostí: 10 |
+| `actions` | Ne | Definice pro jednu nebo více akcí, které mají být provedeny v modulu runtime pracovního postupu. Další informace najdete v tématu [triggery a akce](#triggers-actions). <p><p>Maximální počet akcí: 250 |
+| `contentVersion` | Ne | Číslo verze definice pracovního postupu, které je ve výchozím nastavení "1.0.0.0". Chcete-li při nasazování pracovního postupu lépe identifikovat a potvrdit správnou definici, zadejte hodnotu, která se má použít. |
+| `outputs` | Ne | Definice výstupů, které se mají vrátit z běhu pracovního postupu Další informace najdete v tématu [výstupy](#outputs). <p><p>Maximální počet výstupů: 10 |
+| `parameters` | Ne | Definice jednoho nebo více parametrů, které předají hodnoty pro použití v modulu runtime vaší aplikace logiky Další informace najdete v tématu [parametry](#parameters). <p><p>Maximální počet parametrů: 50 |
+| `staticResults` | Ne | Definice pro jednu nebo více statických výsledků vrácených akcemi jako výstupní výstupy, když jsou na těchto akcích povoleny statické výsledky. V každé definici akce `runtimeConfiguration.staticResult.name` atribut odkazuje na odpovídající definici v rámci `staticResults` . Další informace najdete v tématu [statické výsledky](#static-results). |
+| `triggers` | Ne | Definice pro jednu nebo více triggerů, které vytváří instanci pracovního postupu. Můžete definovat více než jednu Trigger, ale pouze s jazykem definice pracovního postupu, nikoli vizuálně prostřednictvím návrháře Logic Apps. Další informace najdete v tématu [triggery a akce](#triggers-actions). <p><p>Maximální počet aktivačních událostí: 10 |
 ||||
 
 <a name="triggers-actions"></a>
 
 ## <a name="triggers-and-actions"></a>Aktivační události a akce
 
-V definici pracovního postupu definují oddíly `triggers` a `actions` volání, ke kterým dochází během provádění pracovního postupu. Syntaxi a další informace o těchto oddílech najdete v tématu [triggery a akce pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md).
+V definici pracovního postupu `triggers` `actions` definují oddíly a volání, ke kterým dochází během provádění pracovního postupu. Syntaxi a další informace o těchto oddílech najdete v tématu [triggery a akce pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 <a name="parameters"></a>
 
 ## <a name="parameters"></a>Parametry
 
-Životní cyklus nasazení má obvykle různá prostředí pro vývoj, testování, přípravu a produkci. Při nasazování Logic Apps do různých prostředí pravděpodobně budete chtít v závislosti na potřebách nasazení použít jiné hodnoty, například připojovací řetězce. Nebo můžete mít hodnoty, které chcete znovu použít v rámci aplikace logiky bez zakódujeme nebo změny často. V `parameters` části definice pracovního postupu můžete definovat nebo upravit parametry pro hodnoty, které vaše aplikace logiky používá za běhu. Než budete moci odkazovat na tyto parametry jinde v definici pracovního postupu, musíte tyto parametry definovat jako první.
+Životní cyklus nasazení má obvykle různá prostředí pro vývoj, testování, přípravu a produkci. Při nasazování Logic Apps do různých prostředí pravděpodobně budete chtít v závislosti na potřebách nasazení použít jiné hodnoty, například připojovací řetězce. Nebo můžete mít hodnoty, které chcete znovu použít v rámci aplikace logiky bez zakódujeme nebo změny často. V části definice pracovního postupu `parameters` můžete definovat nebo upravit parametry pro hodnoty, které vaše aplikace logiky používá za běhu. Než budete moci odkazovat na tyto parametry jinde v definici pracovního postupu, musíte tyto parametry definovat jako první.
 
 Tady je obecná struktura definice parametru:
 
@@ -74,13 +74,13 @@ Tady je obecná struktura definice parametru:
 },
 ```
 
-| Atribut | Požaduje se | Typ | Popis |
+| Atribut | Požaduje se | Typ | Description |
 |-----------|----------|------|-------------|
 | <*název parametru*> | Ano | Řetězec | Název parametru, který chcete definovat |
-| <*typ parametru*> | Ano | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Poznámka**: pro všechna hesla, klíče a tajné klíče použijte typy `securestring` nebo `secureobject` , protože `GET` operace tyto typy nevrátí. Další informace o zabezpečení parametrů najdete v tématu [doporučení zabezpečení pro parametry akce a vstup](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
-| <*výchozí parametr-hodnota*> | Ano | Stejné jako`type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. `defaultValue` Atribut je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
-| <*pole s parametrem--------Parameter-Values*> | No | Pole | Pole s hodnotami, které může parametr přijmout |
-| <*Parametr-Description*> | No | Objekt JSON | Jakékoli další podrobnosti o parametrech, jako je například popis parametru |
+| <*typ parametru*> | Ano | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Poznámka**: pro všechna hesla, klíče a tajné klíče použijte `securestring` typy nebo, `secureobject` protože `GET` operace tyto typy nevrátí. Další informace o zabezpečení parametrů najdete v tématu [doporučení zabezpečení pro parametry akce a vstup](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
+| <*výchozí parametr-hodnota*> | Ano | Stejné jako`type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. `defaultValue`Atribut je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
+| <*pole s parametrem--------Parameter-Values*> | Ne | Pole | Pole s hodnotami, které může parametr přijmout |
+| <*Parametr-Description*> | Ne | Objekt JSON | Jakékoli další podrobnosti o parametrech, jako je například popis parametru |
 ||||
 
 Dále vytvořte [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) pro definici pracovního postupu, definujte parametry šablony, které přijmou hodnoty, které chcete v nasazení, nahraďte hodnoty pevně zakódované odkazy na šablonu nebo parametry definice pracovního postupu podle potřeby a uložte hodnoty, které chcete použít při nasazení v samostatném [souboru parametrů](../azure-resource-manager/templates/parameter-files.md). Tímto způsobem můžete tyto hodnoty snadno měnit pomocí souboru parametrů, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Pro informace, které jsou citlivé nebo musí být zabezpečené, jako jsou uživatelská jména, hesla a tajné klíče, můžete tyto hodnoty uložit v Azure Key Vault a nechat si soubory parametrů načíst tyto hodnoty z vašeho trezoru klíčů. Další informace a příklady definování parametrů na úrovních definice šablony a pracovního postupu najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
@@ -89,7 +89,7 @@ Dále vytvořte [šablonu Azure Resource Manager](../azure-resource-manager/temp
 
 ## <a name="static-results"></a>Statické výsledky
 
-V `staticResults` atributu definujte prvek akce `outputs` a `status` , který akce vrátí, pokud je zapnuto nastavení statického výsledku akce. V definici akce `runtimeConfiguration.staticResult.name` atribut odkazuje na název statického výsledku definice v rámci `staticResults`. [Pomocí nastavení statických výsledků se dozvíte, jak testovat aplikace logiky pomocí](../logic-apps/test-logic-apps-mock-data-static-results.md)napodobných dat.
+V `staticResults` atributu definujte prvek akce `outputs` a `status` , který akce vrátí, pokud je zapnuto nastavení statického výsledku akce. V definici akce `runtimeConfiguration.staticResult.name` atribut odkazuje na název statického výsledku definice v rámci `staticResults` . [Pomocí nastavení statických výsledků se dozvíte, jak testovat aplikace logiky pomocí](../logic-apps/test-logic-apps-mock-data-static-results.md)napodobných dat.
 
 ```json
 "definition": {
@@ -112,16 +112,16 @@ V `staticResults` atributu definujte prvek akce `outputs` a `status` , který ak
 }
 ```
 
-| Atribut | Požaduje se | Typ | Popis |
+| Atribut | Požaduje se | Typ | Description |
 |-----------|----------|------|-------------|
 | <*statický výsledek – definice – název*> | Ano | Řetězec | Název statické definice výsledku, kterou může definice akce odkazovat prostřednictvím `runtimeConfiguration.staticResult` objektu. Další informace najdete v tématu [nastavení konfigurace modulu runtime](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Můžete použít libovolný jedinečný název, který chcete. Ve výchozím nastavení se tento jedinečný název připojí s číslem, což se zvyšuje podle potřeby. |
-| <*výstupní atributy-a-vrácené hodnoty*> | Ano | Různé | Požadavky na tyto atributy se liší v závislosti na různých podmínkách. Například pokud `status` je `Succeeded`, `outputs` atribut obsahuje atributy a hodnoty vrácené jako výstupní výstupy akcí. `status` Pokud `Failed`je `outputs` , atribut obsahuje `errors` atribut, což je pole s jedním nebo více objekty Error `message` , které obsahují informace o chybě. |
-| <*hodnoty hlaviček*> | No | JSON | Všechny hodnoty hlaviček vracené akcí |
+| <*výstupní atributy-a-vrácené hodnoty*> | Ano | Různé | Požadavky na tyto atributy se liší v závislosti na různých podmínkách. Například pokud `status` je `Succeeded` , `outputs` atribut obsahuje atributy a hodnoty vrácené jako výstupní výstupy akcí. Pokud `status` je `Failed` , `outputs` atribut obsahuje `errors` atribut, což je pole s jedním nebo více `message` objekty Error, které obsahují informace o chybě. |
+| <*hodnoty hlaviček*> | Ne | JSON | Všechny hodnoty hlaviček vracené akcí |
 | <*stav-kód – vráceno*> | Ano | Řetězec | Stavový kód vrácený akcí |
 | <*akce – stav*> | Ano | Řetězec | Stav akce, například `Succeeded` nebo`Failed` |
 |||||
 
-Například v této definici akce HTTP jsou `runtimeConfiguration.staticResult.name` atributy odkazy `HTTP0` v `staticResults` atributu, kde jsou definovány výstupní výstupy pro akci. `runtimeConfiguration.staticResult.staticResultOptions` Atribut určuje, zda je `Enabled` nastavení statického výsledku v akci HTTP.
+Například v této definici akce HTTP `runtimeConfiguration.staticResult.name` jsou atributy odkazy v atributu, `HTTP0` `staticResults` kde jsou definovány výstupní výstupy pro akci. `runtimeConfiguration.staticResult.staticResultOptions`Atribut určuje, zda je nastavení statického výsledku `Enabled` v akci HTTP.
 
 ```json
 "actions": {
@@ -142,7 +142,7 @@ Například v této definici akce HTTP jsou `runtimeConfiguration.staticResult.n
 },
 ```
 
-Akce HTTP vrátí výstupy v `HTTP0` definici uvnitř. `staticResults` V tomto příkladu pro stavový kód je `OK`výstupní výstup. V případě hodnot hlaviček je `"Content-Type": "application/JSON"`výstup výstupu. Pro stav akce je `Succeeded`výstup výstupu.
+Akce HTTP vrátí výstupy v `HTTP0` definici uvnitř `staticResults` . V tomto příkladu pro stavový kód je výstupní výstup `OK` . V případě hodnot hlaviček je výstup výstupu `"Content-Type": "application/JSON"` . Pro stav akce je výstup výstupu `Succeeded` .
 
 ```json
 "definition": {
@@ -178,7 +178,7 @@ Pomocí formátu JSON můžete mít literálové hodnoty, které existují v dob
 "rainbowColorsCount": 7
 ```
 
-Můžete také mít hodnoty, které neexistují, až do doby běhu. Pro reprezentaci těchto hodnot můžete použít *výrazy*, které jsou vyhodnocovány v době běhu. Výraz je sekvence, která může obsahovat jednu nebo více [funkcí](#functions), [operátorů](#operators), [proměnných](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values), explicitních hodnot nebo konstant. V definici pracovního postupu můžete použít výraz kdekoli v hodnotě řetězce JSON tím, že se výraz nastaví na znaménko (\@). Při vyhodnocování výrazu, který představuje hodnotu JSON, je text výrazu extrahován odebráním \@ znaku a vždy vede k jiné hodnotě JSON.
+Můžete také mít hodnoty, které neexistují, až do doby běhu. Pro reprezentaci těchto hodnot můžete použít *výrazy*, které jsou vyhodnocovány v době běhu. Výraz je sekvence, která může obsahovat jednu nebo více [funkcí](#functions), [operátorů](#operators), [proměnných](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values), explicitních hodnot nebo konstant. V definici pracovního postupu můžete použít výraz kdekoli v hodnotě řetězce JSON tím, že se výraz nastaví na znaménko ( \@ ). Při vyhodnocování výrazu, který představuje hodnotu JSON, je text výrazu extrahován odebráním \@ znaku a vždy vede k jiné hodnotě JSON.
 
 Například pro dříve definovanou `customerName` vlastnost můžete získat hodnotu vlastnosti pomocí funkce [Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) ve výrazu a přiřadit tuto hodnotu k `accountName` vlastnosti:
 
@@ -187,7 +187,7 @@ Například pro dříve definovanou `customerName` vlastnost můžete získat ho
 "accountName": "@parameters('customerName')"
 ```
 
-*Interpolace řetězců* také umožňuje použít více výrazů v řetězcích, které jsou zabaleny \@ znakem a složenou závorkou{}(). Tady je syntaxe:
+*Interpolace řetězců* také umožňuje použít více výrazů v řetězcích, které jsou zabaleny \@ znakem a složenou závorkou ( {} ). Tady je syntaxe:
 
 ```json
 @{ "<expression1>", "<expression2>" }
@@ -199,7 +199,7 @@ Výsledkem je vždy řetězec, což znamená, že tato funkce bude podobná `con
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Pokud máte řetězcový literál, který začíná \@ znakem, nahraďte \@ znak jiným \@ znakem jako řídicí znak:\@\@
+Pokud máte řetězcový literál, který začíná \@ znakem, \@ nahraďte znak jiným \@ znakem jako řídicí znak:\@\@
 
 Tyto příklady ukazují, jak jsou výrazy vyhodnocovány:
 
@@ -207,8 +207,8 @@ Tyto příklady ukazují, jak jsou výrazy vyhodnocovány:
 |------------|--------|
 | "Sophia Owen" | Vrátí tyto znaky: ' Sophia Owen ' |
 | Array [1] | Vrátí tyto znaky: Array [1]. |
-| "\@\@" | Vrátí tyto znaky jako řetězec s jedním znakem: '\@' |
-| " \@" | Vrátí tyto znaky jako řetězec se dvěma znaky: ' \@' |
+| "\@\@" | Vrátí tyto znaky jako řetězec s jedním znakem: ' \@ ' |
+| " \@" | Vrátí tyto znaky jako řetězec se dvěma znaky: ' \@ ' |
 |||
 
 Pro tyto příklady Předpokládejme, že definujete "myBirthMonth" rovnající se "lednu" a "myAge" rovnající se číslu 42:
@@ -222,13 +222,13 @@ Tyto příklady ukazují, jak jsou vyhodnocovány následující výrazy:
 
 | Výraz JSON | Výsledek |
 |-----------------|--------|
-| "\@Parameters (' myBirthMonth ')" | Vrátí tento řetězec: leden. |
-| "\@{Parameters (' myBirthMonth ')}" | Vrátí tento řetězec: leden. |
-| "\@Parameters (' myAge ')" | Vrátit toto číslo: 42 |
-| "\@{Parameters (' myAge ')}" | Vrátí toto číslo jako řetězec: "42" |
-| "Má věk \@{Parameters (' myAge ')}" | Vrátí tento řetězec: "moje věk je 42." |
+| " \@ Parameters (' myBirthMonth ')" | Vrátí tento řetězec: leden. |
+| " \@ {Parameters (' myBirthMonth ')}" | Vrátí tento řetězec: leden. |
+| " \@ Parameters (' myAge ')" | Vrátit toto číslo: 42 |
+| " \@ {Parameters (' myAge ')}" | Vrátí toto číslo jako řetězec: "42" |
+| "Má věk \@ {Parameters (' myAge ')}" | Vrátí tento řetězec: "moje věk je 42." |
 | \@Concat (' má stáří je ', řetězec (parametry (' myAge '))) | Vrátí tento řetězec: "moje věk je 42." |
-| "Má věk \@ \@{Parameters (' myAge ')}" | Vrátí tento řetězec, který obsahuje výraz: "moje stáří je \@{Parameters (' myAge ')}. |
+| "Má věk \@ \@ {Parameters (' myAge ')}" | Vrátí tento řetězec, který obsahuje výraz: "moje stáří je \@ {Parameters (' myAge ')}. |
 |||
 
 Při práci vizuálně v Návrháři Logic Apps můžete vytvářet výrazy prostřednictvím Tvůrce výrazů, například:
@@ -262,7 +262,7 @@ Až budete hotovi, výraz se zobrazí pro odpovídající vlastnost v definici p
 V `outputs` části definujte data, která může pracovní postup vracet po dokončení práce. Chcete-li například sledovat konkrétní stav nebo hodnotu z každého spuštění, určete, že výstup pracovního postupu vrací tato data.
 
 > [!NOTE]
-> Při reagování na příchozí žádosti ze REST API služby nepoužívejte `outputs`. Místo toho použijte typ `Response` akce. Další informace najdete v tématu [triggery a akce pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md).
+> Při reagování na příchozí žádosti ze REST API služby nepoužívejte `outputs` . Místo toho použijte `Response` typ akce. Další informace najdete v tématu [triggery a akce pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 Tady je obecná struktura definice výstupu:
 
@@ -292,9 +292,9 @@ Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí ko
 
 | Operátor | Úkol |
 |----------|------|
-| ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze s jednoduchými uvozovkami, `'<myString>'`například. Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Příklad: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Příklad: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
+| ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze s jednoduchými uvozovkami, například `'<myString>'` . Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Příklad: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Příklad: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
 | [] | Pro odkazování na hodnotu na konkrétní pozici (index) v poli použijte hranaté závorky. Například pro získání druhé položky v poli: <p>`myArray[1]` |
-| . | Chcete-li odkazovat na vlastnost v objektu, použijte operátor tečka. Například pro získání `name` vlastnosti pro objekt `customer` JSON: <p>`"@parameters('customer').name"` |
+| . | Chcete-li odkazovat na vlastnost v objektu, použijte operátor tečka. Například pro získání `name` vlastnosti pro `customer` objekt JSON: <p>`"@parameters('customer').name"` |
 | ? | Chcete-li odkazovat na vlastnosti null v objektu bez běhové chyby, použijte operátor otazník. Chcete-li například zpracovat výstupy s hodnotou null z triggeru, můžete použít tento výraz: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 
