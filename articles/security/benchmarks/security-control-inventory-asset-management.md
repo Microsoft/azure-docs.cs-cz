@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408352"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Řízení zabezpečení: inventář a Správa prostředků
@@ -38,7 +38,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 6.2 | 1,5 | Zákazník |
+| 6.2 | 1.5 | Zákazník |
 
 Použijte značky pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 

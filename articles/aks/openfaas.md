@@ -7,10 +7,10 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631477"
 ---
 # <a name="using-openfaas-on-aks"></a>Používání OpenFaaS v AKS
@@ -28,7 +28,7 @@ K provedení kroků v tomto článku budete potřebovat následující.
 
 ## <a name="add-the-openfaas-helm-chart-repo"></a>Přidání úložiště grafu OpenFaaS Helm
 
-[https://shell.azure.com](https://shell.azure.com) V prohlížeči otevřete Azure Cloud Shell.
+[https://shell.azure.com](https://shell.azure.com)V prohlížeči otevřete Azure Cloud Shell.
 
 OpenFaaS udržuje své vlastní Helm grafy, aby se zajistila aktuálnost všech nejnovějších změn.
 
@@ -58,7 +58,7 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-Hodnotu tajného kódu můžete získat pomocí `echo $PASSWORD`.
+Hodnotu tajného kódu můžete získat pomocí `echo $PASSWORD` .
 
 Heslo, které tady vytvoříte, bude používat graf Helm k povolení základního ověřování pro bránu OpenFaaS, která je vystavená Internetu prostřednictvím služby Vyrovnávání zatížení cloudu.
 
@@ -108,7 +108,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Chcete-li otestovat systém OpenFaaS, přejděte `http://52.186.64.52:8080` v tomto příkladu na externí IP adresu na portu 8080. Zobrazí se výzva, abyste se přihlásili. Pokud chcete načíst heslo, zadejte `echo $PASSWORD`.
+Chcete-li otestovat systém OpenFaaS, přejděte v tomto příkladu na externí IP adresu na portu 8080 `http://52.186.64.52:8080` . Zobrazí se výzva, abyste se přihlásili. Pokud chcete načíst heslo, zadejte `echo $PASSWORD` .
 
 ![Uživatelské rozhraní OpenFaaS](media/container-service-serverless/openfaas.png)
 
@@ -162,7 +162,7 @@ Nejprve vytvořte novou skupinu prostředků pro Cosmos DB.
 az group create --name serverless-backing --location eastus
 ```
 
-Nasaďte instanci CosmosDB typu `MongoDB`. Instance potřebuje jedinečný název, ale aktualizuje `openfaas-cosmos` se na něco jedinečného pro vaše prostředí.
+Nasaďte instanci CosmosDB typu `MongoDB` . Instance potřebuje jedinečný název, ale aktualizuje `openfaas-cosmos` se na něco jedinečného pro vaše prostředí.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB

@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394394"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense v Azure Stream Analyticsch nástrojích pro Visual Studio Code
@@ -21,9 +21,9 @@ Technologie IntelliSense je k dispozici pro [Stream Analytics dotazovací jazyk]
 
 ## <a name="intellisense-features"></a>Funkce IntelliSense
 
-Funkce technologie IntelliSense v Stream Analyticsch nástrojích pro VS Code jsou napájené pomocí jazykové služby. Služba jazyka analyzuje váš zdrojový kód a poskytuje inteligentní dokončování kódu na základě sémantiky jazyka. Pokud jazyková služba ví možné dokončení, při psaní se automaticky vymění návrhy IntelliSense. Pokud budete pokračovat v psaní, seznam členů, jako jsou proměnné a metody, je filtrován tak, aby obsahoval pouze členy, které obsahují znaky, které jste zadali. Po stisknutí kláves `Tab` nebo `Enter` vloží technologie IntelliSense vybraný člen.
+Funkce technologie IntelliSense v Stream Analyticsch nástrojích pro VS Code jsou napájené pomocí jazykové služby. Služba jazyka analyzuje váš zdrojový kód a poskytuje inteligentní dokončování kódu na základě sémantiky jazyka. Pokud jazyková služba ví možné dokončení, při psaní se automaticky vymění návrhy IntelliSense. Pokud budete pokračovat v psaní, seznam členů, jako jsou proměnné a metody, je filtrován tak, aby obsahoval pouze členy, které obsahují znaky, které jste zadali. Po stisknutí `Tab` kláves nebo `Enter` vloží technologie IntelliSense vybraný člen.
 
-IntelliSense můžete aktivovat v libovolném okně editoru zadáním znaku triggeru, například znaku `.`tečky.
+IntelliSense můžete aktivovat v libovolném okně editoru zadáním znaku triggeru, například znaku tečky `.` .
 
 ![automatického dokončování IntelliSense](./media/vs-code-intellisense/auto-completion.gif)
 

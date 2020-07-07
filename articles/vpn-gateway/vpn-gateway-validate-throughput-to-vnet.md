@@ -11,10 +11,10 @@ ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631767"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
@@ -67,7 +67,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
  > [!NOTE]
  > Produkty třetích stran, které jsou popsány v tomto článku, jsou vyráběny společnostmi, které jsou nezávislé na společnosti Microsoft. Společnost Microsoft neposkytuje v souvislosti s výkonem a spolehlivostí těchto produktů žádnou záruku, předpokládanou ani jinou.
 
-### <a name="run-iperf-iperf3exe"></a>Spustit iPerf (iperf3. exe)
+### <a name="run-iperf-iperf3exe"></a>Spustit iPerf (iperf3.exe)
 
 1. Povolit NSG/ACL pravidlo umožňující provoz (pro testování veřejné IP adresy na virtuálním počítači Azure)
 
@@ -85,9 +85,9 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Image Azure Linux mají opravňující brány firewall. Pokud je aplikace naslouchá na portu, je povolen přenos prostřednictvím služby. Vlastní image, které jsou zabezpečené, můžou vyžadovat explicitní otevření portů. Mezi běžné brány firewall pro Linux OS patří `iptables`, `ufw`, nebo `firewalld`.
+   **Azure Linux:** Image Azure Linux mají opravňující brány firewall. Pokud je aplikace naslouchá na portu, je povolen přenos prostřednictvím služby. Vlastní image, které jsou zabezpečené, můžou vyžadovat explicitní otevření portů. Mezi běžné brány firewall pro Linux OS patří `iptables` , `ufw` , nebo `firewalld` .
 
-1. V uzlu serveru přejděte do adresáře, kde je extrahována aplikace iperf3. exe. Pak spusťte iPerf v režimu serveru a nastavte ho tak, aby naslouchal na portu 5001 jako následující příkazy:
+1. V uzlu serveru přejděte do adresáře, kde je extrahováno iperf3.exe. Pak spusťte iPerf v režimu serveru a nastavte ho tak, aby naslouchal na portu 5001 jako následující příkazy:
 
    ```CMD
    cd c:\iperf-3.1.2-win65
@@ -123,27 +123,27 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
 
 ## <a name="test-vms-running-windows"></a>Testovací virtuální počítače s Windows
 
-### <a name="load-latteexe-onto-the-vms"></a>Načtení latte. exe do virtuálních počítačů
+### <a name="load-latteexe-onto-the-vms"></a>Načíst Latte.exe do virtuálních počítačů
 
-Stažení nejnovější verze nástroje [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+Stáhněte si nejnovější verzi [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
-Zvažte umístění latte. exe do samostatné složky, například`c:\tools`
+Zvažte vložení Latte.exe do samostatné složky, jako je například`c:\tools`
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>Povolení latte. exe přes bránu Windows Firewall
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Povolení Latte.exe přes bránu Windows Firewall
 
-Na přijímači vytvořte v bráně Windows Firewall pravidlo povolení, které umožní doručení provozu latte. exe. Je nejjednodušší povolit celý program latte. exe podle názvu, nikoli povolit příchozí porty TCP.
+Na přijímači vytvořte v bráně Windows Firewall pravidlo povolení, které umožní doručení Latte.exe provozu. Je nejjednodušší povolit celý Latte.exe program podle názvu, nikoli povolit příchozí porty TCP.
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Povolte latte. exe přes bránu Windows Firewall jako
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Povoli Latte.exe přes bránu Windows Firewall jako
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Pokud jste například zkopírovali latte. exe do složky "c:\Tools", bude to příkaz
+Pokud jste například zkopírovali latte.exe do složky "c:\Tools", bude to příkaz
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Testy latence spuštění
 
-Spusťte latte. exe na PŘIJÍMAČi (spusťte z CMD, nikoli z PowerShellu):
+Spustit latte.exe na PŘIJÍMAČi (spustit z CMD, nikoli z PowerShellu):
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -155,7 +155,7 @@ Pokud má virtuální počítač IP adresu 10.0.0.4, může to vypadat takto.
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Spusťte latte. exe na ODESILATELi (spusťte z CMD, ne z PowerShellu).
+Spustit latte.exe na ODESILATELi (spustit z CMD, ne z PowerShellu)
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -225,7 +225,7 @@ Konkrétně analýza trasování paketů (Wireshark/Sledování sítě) shromá�
 
 I v případě, že celková propustnost vyhodnocená pomocí předchozích kroků (iPERF/NTTTCP/atd.) byla dobrá, může docházet ke zpomalení souboru kopírování při použití Průzkumníka Windows nebo přetahování přes relaci RDP. K tomuto problému obvykle dochází v důsledku jednoho nebo obou následujících faktorů:
 
-* Kopírování souborů aplikace, jako je například Průzkumník Windows nebo RDP, nepoužívají při kopírování souborů více vláken. Pro lepší výkon použijte vícevláknovou aplikaci kopírování souborů, například [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , ke kopírování souborů pomocí 16 nebo 32 vláken. Pokud chcete změnit číslo vlákna pro kopírování souborů v RichCopy, klikněte na **Akce** > kopírovat**Možnosti** > kopírování**souborů**.
+* Kopírování souborů aplikace, jako je například Průzkumník Windows nebo RDP, nepoužívají při kopírování souborů více vláken. Pro lepší výkon použijte vícevláknovou aplikaci kopírování souborů, například [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , ke kopírování souborů pomocí 16 nebo 32 vláken. Pokud chcete změnit číslo vlákna pro kopírování souborů v RichCopy, klikněte na **Akce**kopírovat  >  **Možnosti**kopírování  >  **souborů**.
 
    ![Pomalé problémy při kopírování souborů](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407219"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory
@@ -36,11 +36,11 @@ Pojďme se podívat na několik prvků e-mailu, abyste věděli, jak nejlépe vy
 
 Předmět e-mailu se řídí tímto vzorem:
 
-&lt;uživatelské&gt; jméno vás pozvalo k přístupu k aplikacím v rámci organizace.
+&lt;uživatelské jméno &gt; vás pozvalo k přístupu k aplikacím v rámci organizace.
 
 ### <a name="from-address"></a>Z adresy
 
-Pro adresu od používáme vzor podobný LinkedInu. Tento vzor by měl být jasný, že i když z invites@microsoft.comněj pochází e-mail, ale pozvánka pochází z jiné organizace. Formát <invites@microsoft.com> je: pozvánky Microsoftu nebo pozvánky Microsoftu jménem &lt;tenanta.&gt; <invites@microsoft.com> 
+Pro adresu od používáme vzor podobný LinkedInu. Tento vzor by měl být jasný, že i když z něj pochází e-mail invites@microsoft.com , ale pozvánka pochází z jiné organizace. Formát je: pozvánky Microsoftu  <invites@microsoft.com> nebo pozvánky Microsoftu jménem &lt; tenanta &gt;  <invites@microsoft.com> . 
 
 ### <a name="reply-to"></a>Odpovědět na
 

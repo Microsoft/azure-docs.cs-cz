@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 7504826f267d717f30c5e88621578412c744e5f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383507"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Použití Data Lake nástrojů pro Visual Studio pro připojení k Azure HDInsight a spouštění dotazů Apache Hive
@@ -42,7 +42,7 @@ Postupujte podle příslušných pokynů k instalaci Data Lake nástrojů pro va
 
     Během instalace sady Visual Studio se ujistěte, že jste zahrnuli úlohu **vývoj pro Azure** nebo **úložiště dat a zpracování** .  
 
-    Pro existující instalace sady Visual Studio přejděte na panel nabídek rozhraní IDE a výběrem **Možnosti** > **získat nástroje a funkce** otevřete instalační program pro Visual Studio. Na kartě **úlohy** vyberte aspoň úlohu **vývoj pro Azure** (v části **Web & Cloud**). Nebo vyberte úlohu **ukládání a zpracování dat** (v části **jiné sady nástrojů**).
+    Pro existující instalace sady Visual Studio přejděte na panel nabídek rozhraní IDE a výběrem **Možnosti**  >  **získat nástroje a funkce** otevřete instalační program pro Visual Studio. Na kartě **úlohy** vyberte aspoň úlohu **vývoj pro Azure** (v části **Web & Cloud**). Nebo vyberte úlohu **ukládání a zpracování dat** (v části **jiné sady nástrojů**).
 
   ![Výběr úlohy, Instalační program pro Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
 
@@ -58,7 +58,7 @@ Potom nezapomeňte aktualizovat Data Lake nástroje na nejnovější verzi.
 
 2. V okně **Start** vyberte **pokračovat bez kódu**.
 
-3. V řádku nabídek rozhraní IDE sady Visual Studio vyberte **rozšíření** > **Spravovat rozšíření**.
+3. V řádku nabídek rozhraní IDE sady Visual Studio vyberte **rozšíření**  >  **Spravovat rozšíření**.
 
 4. V dialogovém okně **Spravovat rozšíření** rozbalte uzel **aktualizace** .
 
@@ -88,9 +88,9 @@ Připojení k předplatnému Azure:
 
 2. V okně **Start** vyberte **pokračovat bez kódu**.
 
-3. V panelu nabídek rozhraní IDE vyberte možnost **Zobrazit** > **Průzkumník serveru**.
+3. V panelu nabídek rozhraní IDE vyberte možnost **Zobrazit**  >  **Průzkumník serveru**.
 
-4. V **Průzkumník serveru**klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit se k Microsoft Azure předplatného**a dokončete proces ověřování. V **Průzkumník serveru**rozbalte **Azure** > **HDInsight** a zobrazte seznam existujících clusterů HDInsight.
+4. V **Průzkumník serveru**klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit se k Microsoft Azure předplatného**a dokončete proces ověřování. V **Průzkumník serveru**rozbalte **Azure**  >  **HDInsight** a zobrazte seznam existujících clusterů HDInsight.
 
 5. Pokud nemáte žádné clustery, vytvořte ho pomocí Azure Portal, Azure PowerShell nebo sady SDK HDInsight. Další informace najdete v tématu [Nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -104,7 +104,7 @@ Po připojení k předplatnému Azure můžete provádět následující úlohy.
 
 Připojení k webu Azure Portal ze sady Visual Studio:
 
-1. V **Průzkumník serveru**rozbalte položku **Azure** > **HDInsight** a vyberte svůj cluster.
+1. V **Průzkumník serveru**rozbalte položku **Azure**  >  **HDInsight** a vyberte svůj cluster.
 
 2. Klikněte pravým tlačítkem na cluster HDInsight a **v Azure Portal vyberte Spravovat cluster**.
 
@@ -112,7 +112,7 @@ Připojení k webu Azure Portal ze sady Visual Studio:
 
 Dotazování na dotazy a nebo poskytnutí zpětné vazby ze sady Visual Studio:
 
-1. V Průzkumník serveru vyberte **Azure** > **HDInsight**.
+1. V Průzkumník serveru vyberte **Azure**  >  **HDInsight**.
 
 2. Klikněte pravým tlačítkem na **HDInsight** a vyberte **Fórum MSDN** , kde se budou klást dotazy, nebo **sdělte zpětnou** vazbu, která vám poskytne svůj názor.
 
@@ -125,11 +125,11 @@ Propojení clusteru HDInsight:
 
 1. Klikněte pravým tlačítkem na **HDInsight**a pak vyberte **propojit cluster HDInsight** pro zobrazení dialogového okna **propojit cluster HDInsight** .
 
-2. Do formuláře `https://CLUSTERNAME.azurehdinsight.net`zadejte **adresu URL připojení** . **Název clusteru** se při přechodu na jiné pole automaticky vyplní názvem v části adresy URL clusteru. Pak zadejte **uživatelské jméno** a **heslo**a pak vyberte **Další**.
+2. Do formuláře zadejte **adresu URL připojení** `https://CLUSTERNAME.azurehdinsight.net` . **Název clusteru** se při přechodu na jiné pole automaticky vyplní názvem v části adresy URL clusteru. Pak zadejte **uživatelské jméno** a **heslo**a pak vyberte **Další**.
 
     ![Propojení clusteru, HDInsight, sady Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-3. Vyberte **Finish** (Dokončit). Pokud je propojení clusteru úspěšné, cluster se pak zobrazí v uzlu **HDInsight** .
+3. Vyberte **Dokončit**. Pokud je propojení clusteru úspěšné, cluster se pak zobrazí v uzlu **HDInsight** .
 
 Pokud chcete aktualizovat propojený cluster, klikněte pravým tlačítkem na cluster a vyberte **Upravit**. Pak můžete informace o clusteru aktualizovat.
 
@@ -156,13 +156,13 @@ Klikněte pravým tlačítkem na kontejner a výběrem **Zobrazit kontejner** zo
 
 K zobrazení toho, co se nachází v rámci úlohy podregistru, můžete také použít nástroje Data Lake Tools for Visual Studio. Nástroje Data Lake pro Visual Studio shromažďují a zpřístupňují protokoly Yarn určitých úloh Hive.
 
-V **Průzkumník serveru**vyberte **Azure** > **HDInsight** a vyberte svůj cluster.  Tento uzel je výchozím bodem v **Průzkumník serveru** pro následující oddíly.
+V **Průzkumník serveru**vyberte **Azure**  >  **HDInsight** a vyberte svůj cluster.  Tento uzel je výchozím bodem v **Průzkumník serveru** pro následující oddíly.
 
 ### <a name="view-hivesampletable"></a>Zobrazení tabulky hivesampletable
 
-Všechny clustery HDInsight mají výchozí ukázkovou tabulku podregistru s názvem `hivesampletable`.  
+Všechny clustery HDInsight mají výchozí ukázkovou tabulku podregistru s názvem `hivesampletable` .  
 
-Z clusteru vyberte > možnost **databáze podregistru****výchozí** > **hivesampletable**.
+Z clusteru vyberte možnost **databáze podregistru**  >  **výchozí**  >  **hivesampletable**.
 
 * Postup zobrazení `hivesampletable` schématu:
 
@@ -180,7 +180,7 @@ Z clusteru vyberte > možnost **databáze podregistru****výchozí** > **hivesam
 
 K vytvoření tabulky Hive můžete použít grafické rozhraní (GUI) nebo dotazy Hive. Informace o použití dotazů na podregistry najdete v tématu [Vytvoření a spuštění dotazů na podregistr](#create-and-run-hive-queries).
 
-1. Z clusteru vyberte možnost >  **databáze podregistru****výchozí**.
+1. Z clusteru vyberte možnost **databáze podregistru**  >  **výchozí**.
 
 2. Klikněte pravým tlačítkem na **výchozí**a vyberte **vytvořit tabulku**.
 
@@ -205,7 +205,7 @@ Vytvoření a spuštění dotazu ad-hoc:
 
 2. Zadejte dotaz na podregistr.
 
-    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM`, IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF.
+    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM` , IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF.
 
     ![IntelliSense příklad 1, dotaz ad hoc v podregistru, cluster HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png)
 
@@ -248,7 +248,7 @@ Vytvoření a spuštění dotazu ad-hoc:
 
 Vytvoření a spuštění řešení Hive:
 
-1. Z panelu nabídek vyberte možnost **soubor** > **Nový** > **projekt**.
+1. Z panelu nabídek vyberte možnost **soubor**  >  **Nový**  >  **projekt**.
 
 2. V okně **vytvořit nový projekt** vyberte vyhledávací pole a zadejte **podregistr**. Pak zvolte možnost **aplikace podregistru** a vyberte možnost **Další**.
 
@@ -310,11 +310,11 @@ Zobrazení úloh Hive:
 
 ## <a name="run-apache-pig-scripts"></a>Spustit skripty Apache prasete
 
-1. Z panelu nabídek vyberte možnost **soubor** > **Nový** > **projekt**.
+1. Z panelu nabídek vyberte možnost **soubor**  >  **Nový**  >  **projekt**.
 
 2. V okně **Start** vyberte vyhledávací pole a zadejte **prase**. Pak vyberte **aplikace pro prase** a vyberte **Další**.
 
-3. V okně **Konfigurovat nový projekt** zadejte **název projektu**a vyberte nebo vytvořte **umístění** projektu. Pak vyberte **vytvořit**.
+3. V okně **Konfigurovat nový projekt** zadejte **název projektu**a vyberte nebo vytvořte **umístění** projektu. Potom vyberte **Vytvořit**.
 
 4. V podokně **Průzkumník řešení** IDE poklikejte na **script. prase** a otevře se skript.
 

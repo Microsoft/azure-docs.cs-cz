@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: e41b7222ca89976674973e1eb700d62765b306f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311335"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: konfigurace agentů zabezpečení
@@ -119,7 +119,7 @@ Následující tabulka obsahuje ovladatelné vlastnosti Azure Security Center pr
 
 Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://aka.ms/iot-security-module-default).
 
-| Název| Status | Platné hodnoty| Výchozí hodnoty| Popis |
+| Name| Status | Platné hodnoty| Výchozí hodnoty| Popis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Požadováno: false |Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |lowPriorityMessageFrequency |Požadováno: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před odesláním zpráv s nízkou prioritou.|
@@ -132,7 +132,7 @@ Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://
 
 |Název události| PropertyName | Výchozí hodnota| Událost snímku| Podrobnosti o stavu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnostická událost|eventPriorityDiagnostic| Vypnuto| False| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.|
+|Diagnostická událost|eventPriorityDiagnostic| Vypnout| False| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.|
 |Chyba konfigurace |eventPriorityConfigurationError |Nízká |False |Agentovi se nepovedlo analyzovat konfiguraci. Ověřte konfiguraci oproti schématu.|
 |Statistika vyřazených událostí |eventPriorityDroppedEventsStatistics |Nízká |True|Statistika událostí souvisejících s agenty |
 |Připojený hardware|eventPriorityConnectedHardware |Nízká |True |Snímek veškerého hardwaru připojeného k zařízení.|

@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81007863"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru žádosti o podepsání certifikátu
@@ -186,7 +186,7 @@ Na konci těchto kroků byste měli mít následující informace pro pozdějš�
     5. Vyberte **Pokračovat**.
     6. Stáhněte si vývojový certifikát a zapamatujte si umístění, do kterého se uložilo.
 
-1. Vraťte se na stránku **certifikáty, identifikátory & profily** , v nabídce vlevo vyberte **profily** a pak vyberte **+** vytvoření nového profilu. Zobrazí se obrazovka **registrovat nový profil pro zřizování** .
+1. Vraťte se na stránku **certifikáty, identifikátory & profily** , v nabídce vlevo vyberte **profily** a pak vyberte **+** Vytvoření nového profilu. Zobrazí se obrazovka **registrovat nový profil pro zřizování** .
 
 1. V okně **Vybrat certifikáty** vyberte vývojový certifikát, který jste právě vytvořili. Potom vyberte **Pokračovat**.
 
@@ -237,7 +237,7 @@ V části **Notification Services**vyberte **Apple (APNs)** a pak postupujte pod
     - **ID klíče**
     - **ID sady prostředků**
     - **ID týmu**
-    - **Klíčové** 
+    - **Token** 
 
 1. Zvolit **izolovaný prostor**
 1. Vyberte **Uložit**. 

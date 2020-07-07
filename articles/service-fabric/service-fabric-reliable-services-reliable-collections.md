@@ -4,10 +4,10 @@ description: Service Fabric stavové služby poskytují spolehlivé kolekce, kte
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81398436"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivých kolekcí ve stavových službách Azure Service Fabric
@@ -35,7 +35,7 @@ Aby se zajistila slabší konzistence, můžou aplikace před vrácením asynchr
 Spolehlivé kolekce rozhraní API jsou vývoj souběžných kolekcí rozhraní API (najdete je v oboru názvů **System. Collections. a souběžně** ):
 
 * Asynchronní: vrátí úlohu, protože na rozdíl od souběžných kolekcí se operace replikují a uchovávají.
-* Žádné výstupní parametry: používá `ConditionalValue<T>` pro návrat `bool` a hodnotu namísto parametrů out. `ConditionalValue<T>`je jako `Nullable<T>` , ale nevyžaduje T jako strukturu.
+* Žádné výstupní parametry: používá `ConditionalValue<T>` pro návrat `bool` a hodnotu namísto parametrů out. `ConditionalValue<T>`je jako, `Nullable<T>` ale nevyžaduje T jako strukturu.
 * Transakce: používá transakční objekt k tomu, aby uživatel mohl seskupit akce v několika spolehlivých kolekcích v transakci.
 
 Dnes, **Microsoft. ServiceFabric. data. Collections** obsahuje tři kolekce:

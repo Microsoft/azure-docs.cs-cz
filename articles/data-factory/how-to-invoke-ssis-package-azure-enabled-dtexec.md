@@ -12,10 +12,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414327"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Spouštění balíčků služba SSIS (SQL Server Integration Services) pomocí nástroje DTExec s povoleným Azure
@@ -36,7 +36,7 @@ AzureDTExec je možné nakonfigurovat prostřednictvím SSMS tak, aby používal
 Chcete-li použít AzureDTExec, Stáhněte a nainstalujte nejnovější verzi nástroje SSMS, která je verze 18,3 nebo novější. Stáhněte si ho z [tohoto webu](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
 ## <a name="configure-the-azuredtexec-utility"></a>Konfigurace nástroje AzureDTExec
-Instalace SSMS na místním počítači nainstaluje taky AzureDTExec. Pokud chcete nakonfigurovat jeho nastavení, spusťte SSMS pomocí možnosti **Spustit jako správce** . Pak vyberte **nástroje** > **migrace do Azure** > **Konfigurace dtexec s povoleným Azure**.
+Instalace SSMS na místním počítači nainstaluje taky AzureDTExec. Pokud chcete nakonfigurovat jeho nastavení, spusťte SSMS pomocí možnosti **Spustit jako správce** . Pak vyberte **nástroje**  >  **migrace do Azure**  >  **Konfigurace dtexec s povoleným Azure**.
 
 ![Konfigurace nabídky dtexec s povoleným Azure](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -70,7 +70,7 @@ Aby nedocházelo k zobrazování citlivých hodnot zapsaných v souboru *AzureDT
 ## <a name="invoke-the-azuredtexec-utility"></a>Vyvolat nástroj AzureDTExec
 AzureDTExec můžete vyvolat na příkazovém řádku a zadat relevantní hodnoty pro konkrétní možnosti ve scénáři použití.
 
-Nástroj je nainstalován na adrese `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`. Můžete přidat cestu k proměnné prostředí PATH, aby ji bylo možné vyvolat odkudkoli.
+Nástroj je nainstalován na adrese `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` . Můžete přidat cestu k proměnné prostředí PATH, aby ji bylo možné vyvolat odkudkoli.
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -86,9 +86,9 @@ Vyvolání AzureDTExec nabízí podobné možnosti jako vyvolání DTExec. Dalš
 
 - **/F [soubor]**: načte balíček, který je uložený v systému souborů, v souborové sdílené složce nebo v souborech Azure. Jako hodnotu této možnosti můžete zadat cestu UNC pro soubor balíčku v systému souborů, sdílenou složku nebo soubory Azure s příponou. dtsx. Pokud zadaná cesta UNC obsahuje mezery, vložte kolem celé cesty uvozovky.
 - **/Conf [igFile]**: Určuje konfigurační soubor, ze kterého mají být extrahovány hodnoty. Pomocí této možnosti můžete nastavit konfiguraci za běhu pro balíček, který se liší od toho, který je zadaný v době návrhu. Můžete uložit různá nastavení do konfiguračního souboru XML a pak je načíst před spuštěním balíčku. Další informace najdete v tématu [konfigurace balíčků SSIS](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Pokud chcete zadat hodnotu pro tuto možnost, použijte cestu UNC pro konfigurační soubor v systému souborů, sdílenou složku nebo soubory Azure s jeho rozšířením dtsConfig. Pokud zadaná cesta UNC obsahuje mezery, vložte kolem celé cesty uvozovky.
-- **/Conn [ection]**: Určuje připojovací řetězce pro existující Správce připojení ve vašem balíčku. Pomocí této možnosti můžete nastavit připojovací řetězce pro modul runtime pro existující Správce připojení v balíčku, které se liší od těch, které jsou určeny v době návrhu. Zadejte hodnotu pro tuto možnost následujícím způsobem: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
-- **/Set**: přepíše konfiguraci parametru, proměnné, vlastnosti, kontejneru, zprostředkovatele protokolů, enumerátoru foreach nebo připojení v balíčku. Tuto možnost lze zadat vícekrát. Zadejte hodnotu pro tuto možnost následujícím způsobem: `property_path;value`. Například `\package.variables[counter].Value;1` přepíše hodnotu `counter` proměnné jako 1. Průvodce **konfigurací balíčku** můžete použít k vyhledání, zkopírování a vložení hodnoty `property_path` pro položky v balíčku, jejichž hodnota má být popsána. Další informace najdete v tématu [Průvodce konfigurací balíčku](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
-- **/De [crypt]**: nastaví dešifrovací heslo balíčku, který je nakonfigurovaný s úrovní ochrany EncryptSensitiveWithPassword **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** .
+- **/Conn [ection]**: Určuje připojovací řetězce pro existující Správce připojení ve vašem balíčku. Pomocí této možnosti můžete nastavit připojovací řetězce pro modul runtime pro existující Správce připojení v balíčku, které se liší od těch, které jsou určeny v době návrhu. Zadejte hodnotu pro tuto možnost následujícím způsobem: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` .
+- **/Set**: přepíše konfiguraci parametru, proměnné, vlastnosti, kontejneru, zprostředkovatele protokolů, enumerátoru foreach nebo připojení v balíčku. Tuto možnost lze zadat vícekrát. Zadejte hodnotu pro tuto možnost následujícím způsobem: `property_path;value` . Například `\package.variables[counter].Value;1` přepíše hodnotu `counter` proměnné jako 1. Průvodce **konfigurací balíčku** můžete použít k vyhledání, zkopírování a vložení hodnoty `property_path` pro položky v balíčku, jejichž hodnota má být popsána. Další informace najdete v tématu [Průvodce konfigurací balíčku](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
+- **/De [crypt]**: nastaví dešifrovací heslo balíčku, který je nakonfigurovaný s **EncryptAllWithPassword** / úrovní ochrany**EncryptSensitiveWithPassword** EncryptAllWithPassword.
 
 > [!NOTE]
 > Volání AzureDTExec s novými hodnotami pro své možnosti generuje nový kanál s výjimkou možnosti **/de [pt]**.

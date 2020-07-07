@@ -4,10 +4,10 @@ description: K přesunutí prostředků do nové skupiny prostředků nebo před
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631509"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesun prostředků do nové skupiny prostředků nebo předplatného
@@ -147,7 +147,7 @@ retry-after: 15
 ...
 ```
 
-Stavový kód 202 indikuje, že žádost o ověření byla přijata, ale ještě nebyla určena, pokud operace přesunutí proběhne úspěšně. `location` Hodnota obsahuje adresu URL, kterou použijete ke kontrole stavu dlouhotrvající operace.  
+Stavový kód 202 indikuje, že žádost o ověření byla přijata, ale ještě nebyla určena, pokud operace přesunutí proběhne úspěšně. `location`Hodnota obsahuje adresu URL, kterou použijete ke kontrole stavu dlouhotrvající operace.  
 
 Chcete-li zjistit stav, odešlete následující požadavek:
 
@@ -208,7 +208,7 @@ plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/s
 az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
-Pokud chcete přejít k novému předplatnému `--destination-subscription-id` , zadejte parametr.
+Pokud chcete přejít k novému předplatnému, zadejte `--destination-subscription-id` parametr.
 
 Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného](troubleshoot-move.md).
 

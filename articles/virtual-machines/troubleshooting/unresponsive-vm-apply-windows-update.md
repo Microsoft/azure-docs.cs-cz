@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80633954"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Při použití web Windows Update virtuální počítač neodpovídá chybě "C01A001D"
@@ -81,7 +81,7 @@ Pokud disk ještě není 1 TB, je nutné změnit jeho velikost. Jakmile je disk 
     ```
 3. Zajistěte, aby bylo volné místo na disku s operačním systémem přinejmenším stejné jako velikost paměti virtuálního počítače (RAM).
 
-    Pokud není dostatek místa na disku s operačním systémem, změňte umístění, kde se vytvoří soubor s výpisem paměti, a uveďte ho na datový disk připojený k virtuálnímu počítači a s dostatkem volného místa. Chcete-li změnit umístění, `%SystemRoot%` nahraďte písmeno jednotky (například F:) datového disku v následujících příkazech:
+    Pokud není dostatek místa na disku s operačním systémem, změňte umístění, kde se vytvoří soubor s výpisem paměti, a uveďte ho na datový disk připojený k virtuálnímu počítači a s dostatkem volného místa. Chcete-li změnit umístění, nahraďte `%SystemRoot%` písmeno jednotky (například F:) datového disku v následujících příkazech:
 
     **Povolit navrhovanou konfiguraci výpisu operačního systému:**
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410850"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Značky služby NSG pro Azure HDInsight
@@ -61,7 +61,7 @@ Pokud je váš cluster umístěný v oblasti uvedené v této tabulce, stačí d
 | &nbsp; | Austrálie – střed | HDInsight. AustraliaCentral |
 | Čína | Čína – východ 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Čína – sever 2 | HDInsight. ChinaNorth2 |
-| Spojené státy | USA – středosever | HDInsight. NorthCentralUS |
+| USA | USA – středosever | HDInsight. NorthCentralUS |
 | &nbsp; | USA – západ 2 | HDInsight. WestUS2 |
 | &nbsp; | USA – středozápad | HDInsight. WestCentralUS |
 | Kanada | Kanada – východ | HDInsight. CanadaEast |
@@ -86,9 +86,9 @@ Zbývající oblasti jsou rozdělené do skupin podle toho, které značky regio
 
 #### <a name="group-1"></a>Skupina 1
 
-Pokud je cluster vytvořen v jedné z oblastí v následující tabulce, povolte značky `HDInsight.WestUS` služby a. `HDInsight.EastUS` Také uvedená označení místní služby. Oblasti v této části vyžadují tři značky služeb.
+Pokud je cluster vytvořen v jedné z oblastí v následující tabulce, povolte značky služby `HDInsight.WestUS` a `HDInsight.EastUS` . Také uvedená označení místní služby. Oblasti v této části vyžadují tři značky služeb.
 
-Pokud se například v dané `East US 2` oblasti vytvoří cluster, budete muset do skupiny zabezpečení sítě přidat tyto značky služby:
+Pokud se například v dané oblasti vytvoří cluster, budete `East US 2` muset do skupiny zabezpečení sítě přidat tyto značky služby:
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
@@ -96,7 +96,7 @@ Pokud se například v dané `East US 2` oblasti vytvoří cluster, budete muset
 
 | Země | Oblast | Značka služby |
 | ---- | ---- | ---- |
-| Spojené státy | USA – východ 2 | HDInsight. EastUS2 |
+| USA | USA – východ 2 | HDInsight. EastUS2 |
 | &nbsp; | USA – střed | HDInsight. CentralUS |
 | &nbsp; | NorthCentral nás | HDInsight. NorthCentralUS |
 | &nbsp; | USA – středojih | HDInsight. SouthCentralUS |
@@ -111,15 +111,15 @@ Pokud se například v dané `East US 2` oblasti vytvoří cluster, budete muset
 
 #### <a name="group-2"></a>Skupina 2
 
-Clustery v oblastech *Čína – sever* a *Čína – východ* musí umožňovat dvě značky služeb: `HDInsight.ChinaNorth` a. `HDInsight.ChinaEast`
+Clustery v oblastech *Čína – sever* a *Čína – východ* musí umožňovat dvě značky služeb: `HDInsight.ChinaNorth` a `HDInsight.ChinaEast` .
 
 #### <a name="group-3"></a>Skupina 3
 
-Clustery v oblastech *US gov – Iowa* a *US gov – Virginie* musí umožňovat dvě značky služeb: `HDInsight.USGovIowa` a. `HDInsight.USGovVirginia`
+Clustery v oblastech *US gov – Iowa* a *US gov – Virginie* musí umožňovat dvě značky služeb: `HDInsight.USGovIowa` a `HDInsight.USGovVirginia` .
 
 #### <a name="group-4"></a>Skupina 4
 
-Clustery v oblastech *Německa střední* a *Německo – severovýchod* potřebují umožňovat dvě značky služeb: `HDInsight.GermanyCentral` a. `HDInsight.GermanyNortheast`
+Clustery v oblastech *Německa střední* a *Německo – severovýchod* potřebují umožňovat dvě značky služeb: `HDInsight.GermanyCentral` a `HDInsight.GermanyNortheast` .
 
 ## <a name="next-steps"></a>Další kroky
 

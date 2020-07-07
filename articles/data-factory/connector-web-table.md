@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410220"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z webové tabulky pomocí Azure Data Factory
@@ -57,14 +57,14 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu webové tabulky jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Web** . |Ano |
+| typ | Vlastnost Type musí být nastavená na: **Web** . |Ano |
 | url | Adresa URL webového zdroje |Ano |
 | authenticationType | Povolená hodnota je: **anonymní**. |Ano |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -89,13 +89,13 @@ Pro propojenou službu webové tabulky jsou podporovány následující vlastnos
 
 Chcete-li kopírovat data z webové tabulky, nastavte vlastnost typ datové sady na **webtable**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **webtable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **webtable** . | Ano |
 | cesta |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
 | index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -123,7 +123,7 @@ Chcete-li kopírovat data z webové tabulky, nastavte vlastnost typ datové sady
 
 Pokud chcete kopírovat data z webové tabulky, nastavte typ zdroje v aktivitě kopírování na **websource**, žádné další vlastnosti se nepodporují.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

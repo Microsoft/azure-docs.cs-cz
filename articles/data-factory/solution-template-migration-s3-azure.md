@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414764"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
@@ -50,7 +50,7 @@ Tato šablona (*název šablony: migrace historických dat z AWS S3 na Azure Dat
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Aby šablona zkopírovala změněné soubory pouze ze služby Amazon S3 do Azure Data Lake Storage Gen2
 
-Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure Data Lake Storage Gen2*) používá časposledníúpravy každého souboru ke zkopírování nových nebo aktualizovaných souborů pouze z AWS S3 do Azure. Počítejte s tím, že vaše soubory nebo složky již byly rozděleny na oddíly s timeslice informacemi jako součást názvu souboru nebo složky v AWS S3 (například/yyyy/MM/DD/File.csv), můžete přejít k tomuto [kurzu](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) a získat tak další postup pro přírůstkové načítání nových souborů. Tato šablona předpokládá, že jste v Azure SQL Database vytvořili seznam oddílů v externí tabulce ovládacích prvků. Proto bude používat aktivitu *vyhledávání* k načtení seznamu oddílů z tabulky externích ovládacích prvků, iterovat přes jednotlivé oddíly a vytvořit každou úlohu kopírování ADF v jednom okamžiku kopii jednoho oddílu. Když Každá úloha kopírování začne kopírovat soubory ze AWS S3, spoléhá se na vlastnost Časposledníúpravy, která identifikuje a zkopíruje pouze nové nebo aktualizované soubory. Po dokončení jakékoli úlohy kopírování se pomocí aktivity *uložená procedura* aktualizuje stav kopírování všech oddílů v řídicí tabulce.
+Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure Data Lake Storage Gen2*) používá časposledníúpravy každého souboru ke zkopírování nových nebo aktualizovaných souborů pouze z AWS S3 do Azure. Počítejte s tím, že vaše soubory nebo složky již byly rozděleny s timeslice informacemi jako součást názvu souboru nebo složky v AWS S3 (například/yyyy/MM/DD/file.csv), můžete přejít k tomuto [kurzu](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) a získat tak další postup pro přírůstkové načítání nových souborů. Tato šablona předpokládá, že jste v Azure SQL Database vytvořili seznam oddílů v externí tabulce ovládacích prvků. Proto bude používat aktivitu *vyhledávání* k načtení seznamu oddílů z tabulky externích ovládacích prvků, iterovat přes jednotlivé oddíly a vytvořit každou úlohu kopírování ADF v jednom okamžiku kopii jednoho oddílu. Když Každá úloha kopírování začne kopírovat soubory ze AWS S3, spoléhá se na vlastnost Časposledníúpravy, která identifikuje a zkopíruje pouze nové nebo aktualizované soubory. Po dokončení jakékoli úlohy kopírování se pomocí aktivity *uložená procedura* aktualizuje stav kopírování všech oddílů v řídicí tabulce.
 
 Šablona obsahuje sedm aktivit:
 - **Vyhledávání** načte oddíly z externí tabulky ovládacích prvků. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"vybrat odlišné PartitionPrefix z s3_partition_delta_control_table"*.

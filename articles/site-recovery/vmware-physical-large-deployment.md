@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81409772"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
@@ -64,7 +64,7 @@ Pak spusťte Plánovač následujícím způsobem:
 5. Analyzujte [doporučení k sestavám](site-recovery-vmware-deployment-planner-analyze-report.md) a [odhad nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 >[!NOTE]
-> Ve výchozím nastavení je tento nástroj nakonfigurovaný tak, aby profiloval a vygeneroval sestavu pro až 1000 virtuálních počítačů. Tento limit můžete změnit zvýšením hodnoty klíče MaxVMsSupported v souboru ASRDeploymentPlanner. exe. config.
+> Ve výchozím nastavení je tento nástroj nakonfigurovaný tak, aby profiloval a vygeneroval sestavu pro až 1000 virtuálních počítačů. Tento limit můžete změnit zvýšením hodnoty MaxVMsSupported klíče v souboru ASRDeploymentPlanner.exe.config.
 
 ## <a name="plan-target-azure-requirements-and-capacity"></a>Plánování požadavků a kapacity cílů (Azure)
 
@@ -83,7 +83,7 @@ Tato doporučení můžete použít k plánování prostředků Azure, šířky 
 
 Chceme zajistit, aby dostupné kvóty v cílovém předplatném byly dostatečné pro zpracování převzetí služeb při selhání.
 
-**Úkol** | **Zobrazí** | **Akce**
+**Úkol** | **Podrobnosti** | **Akce**
 --- | --- | ---
 **Kontrolovat jádra** | Pokud se jádra v dostupné kvótě nerovnají nebo překračují celkový počet cílů v době převzetí služeb při selhání, převzetí služeb při selhání se nezdaří. | V případě virtuálních počítačů VMware ověřte, že je v cílovém předplatném dostatek jader, aby splňovaly doporučení Plánovač nasazení Core.<br/><br/> U fyzických serverů ověřte, že Azure Core vyhovují vašim ručním odhadům.<br/><br/> Pokud chcete kontrolovat kvóty, klikněte v **Předplatném**Azure Portal > na **využití + kvóty**.<br/><br/> [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) o zvýšení kvót.
 **Kontrolovat omezení převzetí služeb při selhání** | Počet převzetí služeb při selhání nesmí překračuje Site Recovery limity převzetí služeb při selhání. |  Pokud převzetí služeb při selhání překročilo limity, můžete přidat odběry, převzít služby při selhání na více předplatných nebo zvýšit kvótu pro předplatné. 
@@ -127,7 +127,7 @@ Je důležité, abyste měli dostatek konfiguračních serverů a procesových s
  
 Kapacita konfiguračního serveru je ovlivněná počtem počítačů, které se replikují, a ne podle míry četnosti změn dat. Pokud chcete zjistit, jestli potřebujete další konfigurační servery, použijte tyto definované limity virtuálních počítačů.
 
-**VČETNĚ** | **Rezident** | **Disk mezipaměti** | **Limit replikovaného počítače**
+**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Limit replikovaného počítače**
  --- | --- | --- | ---
 8 vCPU<br> 2 sokety × 4 jádra @ 2,5 GHz | 16 GB | 600 GB | Až 550 počítačů<br> Předpokládá, že každý počítač má tři disky o velikosti 100 GB.
 
@@ -153,7 +153,7 @@ Kapacita procesového serveru je ovlivněná mírami četnosti změn dat, nikoli
 - Doporučujeme přidat server s nejvyšší specifikací. 
 
 
-**VČETNĚ** | **Rezident** | **Disk mezipaměti** | **Míra četnosti změn**
+**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Míra četnosti změn**
  --- | --- | --- | --- 
 12 vCPU<br> 2 sokety × 6 jader @ 2,5 GHz | 24 GB | 1 GB | Až 2 TB za den
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408623"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou Azure Disk Encryption do jiné oblasti Azure
@@ -42,7 +42,7 @@ Aby bylo možné povolit replikaci virtuálních počítačů s povoleným šifr
 
 Pokud chcete spravovat oprávnění, otevřete na portálu prostředek trezoru klíčů. Přidejte požadovaná oprávnění pro uživatele. Následující příklad ukazuje, jak povolit oprávnění k *ContosoWeb2Keyvault*trezoru klíčů, který je ve zdrojové oblasti.
 
-1. Přejděte na **domovské** > **trezory** > klíčů**ContosoWeb2KeyVault > zásady přístupu**.
+1. Přejděte na **domovské**  >  **trezory**klíčů  >  **ContosoWeb2KeyVault > zásady přístupu**.
 
    ![Okno oprávnění trezoru klíčů](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
@@ -60,9 +60,9 @@ Pokud chcete řešit oprávnění, přečtěte si téma [problémy s oprávněn�
 ## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Zkopírování šifrovacích klíčů disku do oblasti DR pomocí skriptu PowerShellu
 
 1. [Otevřete nezpracovaný kód skriptu "CopyKeys"](https://aka.ms/ade-asr-copy-keys-code).
-2. Zkopírujte skript do souboru a pojmenujte ho **copy-Keys. ps1**.
+2. Zkopírujte skript do souboru a pojmenujte ho **Copy-keys.ps1**.
 3. Otevřete aplikaci Windows PowerShell a pokračujte do složky, kam jste soubor uložili.
-4. Spusťte Copy-Keys. ps1.
+4. Spusťte Copy-keys.ps1.
 5. Zadejte přihlašovací údaje Azure pro přihlášení.
 6. Vyberte **předplatné Azure** vašich virtuálních počítačů.
 7. Počkejte, až se skupiny prostředků načtou, a pak vyberte **skupinu prostředků** vašich virtuálních počítačů.
@@ -86,7 +86,7 @@ V tomto příkladu je primární oblast Azure Východní Asie a sekundární obl
     - **Zdrojové předplatné**: předplatné, ke kterému patří vaše zdrojové virtuální počítače. Může to být jakékoli předplatné, které je ve stejném Azure Active Directory tenant jako trezor služby Recovery Services.
     - **Skupina prostředků**: Skupina prostředků, do které patří vaše zdrojové virtuální počítače. V dalším kroku jsou uvedené pro ochranu všechny virtuální počítače ve vybrané skupině prostředků.
 
-3. V **Virtual Machines** > **vyberte virtuální počítače**, vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
+3. V **Virtual Machines**  >  **vyberte virtuální počítače**, vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
 
 4. V **Nastavení**můžete nakonfigurovat následující nastavení cílové lokality.
 
@@ -118,7 +118,7 @@ Pomocí těchto kroků upravíte Site Recovery výchozí nastavení cíle.
    - V případě **trezoru klíčů cílového disku**vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezoru šifrovacího klíče cílového disku.
    - U **trezoru šifrovacího klíče cílového klíče**vyberte v seznamu trezorů klíčů v cílovém umístění předplatného možnost trezor šifrovacího klíče cílového klíče.
 
-3. Vyberte **vytvořit cílový prostředek** > **Povolit replikaci**.
+3. Vyberte **vytvořit cílový prostředek**  >  **Povolit replikaci**.
 4. Po povolení replikace virtuálních počítačů můžete u **replikovaných položek**ověřit stav virtuálních počítačů.
 
 >[!NOTE]
@@ -129,7 +129,7 @@ V následujících scénářích budete muset aktualizovat nastavení šifrován
   - Povolili jste Site Recovery replikaci na virtuálním počítači. Později jste na zdrojovém virtuálním počítači povolili šifrování disku.
   - Povolili jste Site Recovery replikaci na virtuálním počítači. Později jste změnili šifrovací klíč disku nebo šifrovací klíč klíče na zdrojovém virtuálním počítači.
 
-Můžete použít [skript](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) ke zkopírování šifrovacích klíčů do cílové oblasti a potom aktualizovat nastavení cílového šifrování v*replikované položce* > repliky **služby Recovery Services** > **vlastnosti** > **COMPUTE a Network**.
+Můžete použít [skript](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) ke zkopírování šifrovacích klíčů do cílové oblasti a potom aktualizovat nastavení cílového šifrování v replikované položce repliky **služby Recovery Services**  >  *replicated item*  >  **vlastnosti**  >  **COMPUTE a Network**.
 
 ![Dialogové okno aktualizace nastavení ADE](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -141,7 +141,7 @@ Azure Site Recovery vyžaduje aspoň oprávnění ke čtení pro Trezor klíčů
 **Jak opravit:** Bez ohledu na to, jestli jste správce předplatného, nebo ne, je důležité, abyste měli k trezoru klíčů oprávnění získat.
 
 1. Přejděte do trezoru klíčů zdrojové oblasti, který je v tomto příkladu "ContososourceKeyvault" > **zásady přístupu** . 
-2. V části **Vybrat Hlavní** přidejte uživatelské jméno. Příklad: "dradmin@contoso.com"
+2. V části **Vybrat Hlavní** přidejte uživatelské jméno. Příklad: " dradmin@contoso.com "
 3. V části **oprávnění klíče** vyberte získat. 
 4. V části **oprávnění tajného** kódu vyberte získat. 
 5. Uložení zásad přístupu
@@ -153,7 +153,7 @@ Máte všechna oprávnění k trezoru klíčů zdrojové oblasti. Ale během och
 
 Vyžaduje se oprávnění pro [cílový Trezor klíčů](#required-user-permissions) .
 
-**Jak opravit:** Přejděte na **domácí** > **trezory** > klíčů**ContosotargetKeyvault** > **zásady přístupu** a přidejte příslušná oprávnění.
+**Jak opravit:** Přejděte na **domácí**  >  **trezory**klíčů  >  **ContosotargetKeyvault**  >  **zásady přístupu** a přidejte příslušná oprávnění.
 
 ## <a name="next-steps"></a>Další kroky
 
