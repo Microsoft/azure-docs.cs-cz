@@ -1,2 +1,4 @@
-- name: Nastavení materiálů PBR (Physically Based Rendering) v Maya
+- name: Nastavení materiálů PBR (Physically Based Rendering) v řešení Autodesk Maya
   href: maya-material-setup.md
+- name: Nastavení materiálů PBR (Physically Based Rendering) v řešení Autodesk 3DSMax
+  href: 3dsmax-material-setup.md

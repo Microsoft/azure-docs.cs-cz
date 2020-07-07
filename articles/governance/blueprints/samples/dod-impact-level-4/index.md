@@ -1,18 +1,20 @@
 ---
 title: Ukázka podrobného plánu DoD Impact Level 4 – přehled
 description: Přehled ukázky pro DoD Impact Level 4 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly DoD Impact Level 4.
-ms.date: 03/12/2020
+ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 3b032e1a26c4fb5e97b1c7ab4fff65bc1b046f21
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
-ms.translationtype: HT
+ms.openlocfilehash: 1c06cd738b9a63cb7a3ec14ef48bb8ae7c6dd6cb
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517248"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800388"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>Přehled ukázky podrobného plánu DoD Impact Level 4
 
 Ukázka podrobného plánu Defense Impact Level 4 (DoD IL4) poskytuje ochranné mantinely zásad správného řízení s využitím [Azure Policy](../../../policy/overview.md), které pomáhají vyhodnotit specifické kontroly DoD Impact Level 4. Tento podrobný plán pomáhá zákazníkům nasadit základní sadu zásad pro libovolnou architekturu nasazenou v Azure, která musí implementovat kontroly DoD Impact Level 4. Nejnovější informace o tom, které cloudy a služby Azure splňují autorizaci DoD Impact Level 4, najdete v článku věnovaném [službám Azure podle rozsahu auditu pro FedRAMP a DoD CC SRG](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
+
+> [!NOTE]
+> Tato ukázka podrobného plánu je k dispozici ve službě Azure Government.
 
 ## <a name="control-mapping"></a>Mapování kontrol
 

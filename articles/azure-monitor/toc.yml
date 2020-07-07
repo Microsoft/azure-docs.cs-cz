@@ -389,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: Příklady a pokyny
           items:
+            - name: Ukázky dotazů
+              href: log-query/saved-queries.md
             - name: Příklady dotazů na protokol
               href: log-query/examples.md
             - name: Příklady inteligentních analýz
@@ -1125,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: Řídicí panel s využitím dat aplikací
               href: learn/tutorial-app-dashboards.md
+            - name: Upgrade řídicích panelů Log Analytics
+              href: log-query/dashboard-upgrade.md
         - name: Odeslání dat do Grafany
           href: platform/grafana-plugin.md
     - name: Vlastní shromažďování a analýza dat
@@ -1200,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: "Poznámky k\_verzi"
+          items:
+            - name: Rozšíření webové aplikace
+              href: app/web-app-extension-release-notes.md
         - name: Datový model
           items:
             - name: Přehled

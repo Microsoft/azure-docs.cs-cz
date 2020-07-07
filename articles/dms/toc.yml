@@ -7,10 +7,14 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření služby – portál
-      href: quickstart-create-data-migration-service-portal.md
-    - name: Vytvoření služby v hybridním režimu – portál
-      href: quickstart-create-data-migration-service-hybrid-portal.md
+    - name: Vytvoření služby
+      items:
+        - name: Portál
+          href: quickstart-create-data-migration-service-portal.md
+        - name: Šablona ARM
+          href: create-dms-resource-manager-template.md
+        - name: v hybridním režimu (portál)
+          href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Koncepty
   items:
     - name: Požadavky

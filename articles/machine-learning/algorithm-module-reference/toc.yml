@@ -146,6 +146,10 @@
       href: preprocess-text.md
     - name: Model LDA (Latent Dirichlet Allocation)
       href: latent-dirichlet-allocation.md
+    - name: Hodnocení modelu Vowpal Wabbit
+      href: score-vowpal-wabbit-model.md
+    - name: Trénování modelu Vowpal Wabbit
+      href: train-vowpal-wabbit-model.md
 - name: Počítačové zpracování obrazu
   items:
     - name: Použití transformace obrázku

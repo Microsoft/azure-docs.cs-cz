@@ -43,8 +43,8 @@
       items:
         - name: Vytvoření žádosti o podporu Azure
           href: supportability/how-to-create-azure-support-request.md
-        - name: Odeslání souborů pro žádost o podporu
-          href: supportability/how-to-use-file-uploader.md
+        - name: Správa žádosti o podporu Azure
+          href: supportability/how-to-manage-azure-support-request.md
         - name: Žádost o navýšení kvóty
           items:
             - name: Zvýšení limitu virtuálních jader pro služby Compute

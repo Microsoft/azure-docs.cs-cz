@@ -3,5 +3,7 @@
 - name: Nejčastější dotazy
   expanded: true
   items:
+    - name: SRE a kódování
+      href: code.md
     - name: SRE a DevOps
       href: devops.md

@@ -49,7 +49,7 @@
               href: QuickStarts/node-thumb.md
             - name: Python
               href: QuickStarts/python-thumb.md
-        - name: Extrakce textu (Počítačové zpracování obrazu – rozhraní API pro čtení)
+        - name: Extrakce textu (rozhraní API pro čtení)
           items:
             - name: C#
               href: QuickStarts/CSharp-hand-text.md
@@ -59,7 +59,7 @@
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
-        - name: Extrakce tištěného textu (OCR)
+        - name: Extrakce textu (rozhraní API pro OCR)
           items:
             - name: C#
               href: QuickStarts/CSharp-print-text.md
@@ -105,7 +105,7 @@
       href: concept-detecting-color-schemes.md
     - name: Miniatury s inteligentním oříznutím
       href: concept-generating-thumbnails.md
-    - name: Rozpoznávání textu
+    - name: Optické rozpoznávání znaků (OCR)
       href: concept-recognizing-text.md
     - name: Detekce obsahu pro dospělé
       href: concept-detecting-adult-content.md

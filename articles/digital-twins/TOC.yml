@@ -112,6 +112,12 @@
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
             - name: .NET (C#) SDK – zdroj
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
+    - name: CLI služby Digital Twins
+      items:
+        - name: Referenční informace k CLI služby Digital Twins
+          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest
+        - name: Balíček CLI
+          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: DTDL
       items:
         - name: Specifikace DTDL v2
@@ -126,12 +132,6 @@
           href: 'https://github.com/Azure/digital-twin-model-identifier'
     - name: Nástroje Azure
       items:
-        - name: Referenční informace k Azure CLI
-          href: /cli/azure/iot
-        - name: Referenční informace k rozšíření rozhraní příkazového řádku Azure IoT
-          href: /cli/azure/ext/azure-iot/iot?view=azure-cli-latest
-        - name: Vydané verze rozšíření rozhraní příkazového řádku Azure IoT
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
         - name: Azure Cloud Shell
           href: 'https://shell.azure.com'
         - name: Azure PowerShell

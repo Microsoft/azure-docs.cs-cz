@@ -133,6 +133,8 @@
               href: howto-use-app-templates.md
             - name: Monitorování stavu aplikace
               href: howto-monitor-application-health.md
+            - name: Informace o aplikaci
+              href: howto-get-app-info.md
         - name: Správa z jiných míst
           items:
             - name: Správa z webu Azure Portal

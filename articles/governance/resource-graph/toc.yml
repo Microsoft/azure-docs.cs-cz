@@ -17,6 +17,9 @@
     - name: Spuštění prvního dotazu – Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: ./first-query-powershell.md
+    - name: Spuštění prvního dotazu – .NET
+      displayName: 'core, auth, dotnet'
+      href: ./first-query-dotnet.md
     - name: Spuštění prvního dotazu – Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
@@ -26,6 +29,9 @@
     - name: Spuštění prvního dotazu – Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: Spuštění prvního dotazu – REST
+      displayName: 'armclient, postman'
+      href: ./first-query-rest-api.md
     - name: Vytvoření sdíleného dotazu – Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md

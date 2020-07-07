@@ -25,6 +25,8 @@
           href: quickstart-send-telemetry-android.md
         - name: iOS
           href: quickstart-send-telemetry-ios.md
+        - name: Xamarin.Forms
+          href: quickstart-send-telemetry-xamarinforms.md
     - name: Řízení zařízení
       items:
         - name: Node.js
@@ -324,6 +326,8 @@
           href: iot-hub-distributed-tracing.md
         - name: Konfigurace filtrování IP
           href: iot-hub-ip-filtering.md
+        - name: Správa přístupu k veřejné síti
+          href: iot-hub-public-network-access.md
         - name: Automatická správa zařízení ve velkém měřítku
           items:
             - name: Použití webu Azure Portal

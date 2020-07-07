@@ -99,6 +99,10 @@
     - name: Auditování virtuálních počítačů s konfigurací hosta
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení pro srovnávací test zabezpečení Azure
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Návody
   items:
     - name: Rozšíření Azure Policy pro VS Code

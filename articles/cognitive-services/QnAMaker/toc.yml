@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: Koncepty
   items:
+    - name: Plánování znalostní báze
+      href: Concepts/plan.md
     - name: Prostředky Azure
       href: Concepts/azure-resources.md
     - name: Spolupráce s ostatními

@@ -200,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: Chyby při odstraňování klasických prostředků úložiště
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: VHD se nepodporuje při vytváření virtuálního počítače v Azure
+      href: vhd-not-supported-vm-azure.md
     - name: Použití vnořené virtualizace
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: Potíže s výkonem virtuálního počítače

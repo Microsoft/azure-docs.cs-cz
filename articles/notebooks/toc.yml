@@ -16,6 +16,8 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: Použití vlastního prostředí
       href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: Export projektu
+      href: quickstart-export-jupyter-notebook-project.md
 - name: Kurzy
   items:
     - name: Vytvoření a spuštění poznámkového bloku

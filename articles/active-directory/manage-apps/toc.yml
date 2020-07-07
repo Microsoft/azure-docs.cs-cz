@@ -7,10 +7,16 @@
       href: what-is-application-management.md
 - name: Rychlé starty
   items:
-    - name: Zobrazení podnikových aplikací
+    - name: Zobrazení aplikací
       href: view-applications-portal.md
-    - name: Přidání cloudové aplikace z galerie
+    - name: Přidání aplikace
       href: add-application-portal.md
+    - name: Konfigurace aplikace
+      href: add-application-portal-configure.md
+    - name: Nastavení jednotného přihlašování
+      href: add-application-portal-setup-sso.md
+    - name: Odstranění aplikace
+      href: delete-application-portal.md
 - name: Kurzy
   items:
     - name: 'Integrované aplikace v galerii (např. ServiceNow, Salesforce, Dropbox)'

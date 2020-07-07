@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: Spuštění příkazu (exec)
           href: container-instances-exec.md
+        - name: Spuštění kontejneru nastavení (init)
+          href: container-instances-init-container.md
         - name: Použití spravované identity (Preview)
           href: container-instances-managed-identity.md
         - name: Použití prostředků GPU (Preview)

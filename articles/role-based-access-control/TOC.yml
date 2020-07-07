@@ -101,6 +101,8 @@
       href: elevate-access-global-admin.md
     - name: Klasičtí správci
       href: classic-administrators.md
+    - name: Převod předplatného do jiného adresáře (Preview)
+      href: transfer-subscription.md
     - name: Řešení potíží
       href: troubleshooting.md
 - name: Referenční informace

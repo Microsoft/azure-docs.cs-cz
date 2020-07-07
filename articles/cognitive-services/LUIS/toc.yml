@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: Koncepty
   items:
+    - name: Umělá inteligence
+      href: artificial-intelligence.md
     - name: Životní cyklus vývoje
       href: luis-concept-app-iteration.md
     - name: Plánování aplikace

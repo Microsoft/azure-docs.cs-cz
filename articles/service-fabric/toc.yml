@@ -165,7 +165,7 @@
               href: service-fabric-concepts-partitioning.md
             - name: Opětovná konfigurace stavových služeb
               href: service-fabric-concepts-reconfiguration.md
-            - name: 'Životní cyklus Reliable Services – C#'
+            - name: Životní cyklus Reliable Services – C#
               href: service-fabric-reliable-services-lifecycle.md
             - name: Životní cyklus Reliable Services – Java
               href: service-fabric-reliable-services-lifecycle-java.md
@@ -222,6 +222,8 @@
               href: service-fabric-manifest-example-container-app.md
         - name: Model hostingu
           href: service-fabric-hosting-model.md
+        - name: Pokročilá témata týkající se životního cyklu aktivace a deaktivace hostování
+          href: service-fabric-hosting-lifecycle.md
         - name: Zabezpečení aplikací
           href: service-fabric-application-and-service-security.md
         - name: Stav služby
@@ -404,13 +406,13 @@
           href: service-fabric-get-started-containers.md
         - name: Aplikace typu kontejner pro Linux
           href: service-fabric-get-started-containers-linux.md
-        - name: 'Aplikace Reliable Services v C# ve Windows'
+        - name: Aplikace Reliable Services v C# ve Windows
           href: service-fabric-reliable-services-quick-start.md
         - name: Aplikace Reliable Services v Javě v Linuxu
           href: service-fabric-reliable-services-quick-start-java.md
-        - name: 'Aplikace Reliable Services v C# v Linuxu'
+        - name: Aplikace Reliable Services v C# v Linuxu
           href: service-fabric-create-your-first-linux-application-with-csharp.md
-        - name: 'Aplikace Reliable Actors v C# ve Windows'
+        - name: Aplikace Reliable Actors v C# ve Windows
           href: service-fabric-reliable-actors-get-started.md
         - name: Aplikace Reliable Actors v Javě v Linuxu
           href: service-fabric-create-your-first-linux-application-with-java.md
@@ -448,13 +450,13 @@
               items:
                 - name: Komunikace s Reliable Services
                   href: service-fabric-reliable-services-communication.md
-                - name: 'Vzdálená komunikace služby – C#'
+                - name: Vzdálená komunikace služby – C#
                   href: service-fabric-reliable-services-communication-remoting.md
                 - name: Vzdálená komunikace služby – Java
                   href: service-fabric-reliable-services-communication-remoting-java.md
                 - name: WCF
                   href: service-fabric-reliable-services-communication-wcf.md
-                - name: 'Zabezpečená komunikace – C#'
+                - name: Zabezpečená komunikace – C#
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: Zabezpečená komunikace – Java
                   href: service-fabric-reliable-services-secure-communication-java.md
@@ -561,7 +563,7 @@
           items:
             - name: Začínáme s editorem VS Code
               href: service-fabric-get-started-vs-code.md
-            - name: 'Vývoj aplikací Service Fabric v C# s využitím VS Code'
+            - name: Vývoj aplikací Service Fabric v C# s využitím VS Code
               href: service-fabric-develop-csharp-applications-with-vs-code.md
             - name: Vývoj aplikací Service Fabric v Javě s využitím VS Code
               href: service-fabric-develop-java-applications-with-vs-code.md

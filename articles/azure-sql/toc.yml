@@ -208,14 +208,14 @@
       items:
         - name: Co je SQL Database?
           href: database/sql-database-paas-overview.md
+        - name: Co je nového?
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Izolované databáze
           href: database/single-database-overview.md
         - name: Elastické fondy
           href: database/elastic-pool-overview.md
         - name: Logické SQL servery
           href: database/logical-servers.md
-        - name: "Poznámky k\_verzi"
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Úrovně služeb
           items:
             - name: Bez serveru
@@ -654,13 +654,13 @@
       items:
         - name: Co je spravované instance SQL?
           href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: Co je nového?
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
         - name: Fondy instancí
           href: managed-instance/instance-pools-overview.md
         - name: Nejčastější dotazy
           displayName: faq
           href: managed-instance/frequently-asked-questions-faq.md
-        - name: "Poznámky k\_verzi"
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
     - name: Rychlé starty
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -883,92 +883,99 @@
           items:
             - name: Co je virtuální počítač s SQL Serverem?
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: Změny dokumentů
+            - name: Co je nového?
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: Rychlé starty
           items:
-            - name: Vytvoření virtuálního počítače SQL – portál
+            - name: Vytvoření virtuálního počítače SQL
+              items: null
+            - name: Portál
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
-            - name: Vytvoření virtuálního počítače SQL – PowerShell
+            - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+            - name: Šablona ARM
+              href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Koncepty
           items:
-            - name: Osvědčené postupy
-              items:
-                - name: Osvědčené postupy z hlediska výkonu
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
-                - name: Aspekty zabezpečení
-                  href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: Vzory aplikací
-                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Kontinuita podnikových procesů
               items:
-                - name: Možnosti vysoké dostupnosti
+                - name: Přehled
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-                - name: Skupina dostupnosti Always On
-                  href: virtual-machines/windows/availability-group-overview.md
                 - name: Zálohování a obnovení
                   href: virtual-machines/windows/backup-restore.md
-                - name: Automatizovaná záloha pro SQL Server 2014
-                  href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: Automatizovaná záloha pro SQL Server 2016+
-                  href: virtual-machines/windows/automated-backup.md
+                - name: Azure Storage pro zálohování
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: Skupina dostupnosti Always On
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: Instance clusteru s podporou převzetí služeb při selhání
+                  href: virtual-machines/windows/failover-cluster-instance-overview.md
+            - name: Osvědčené postupy
+              items:
+                - name: Výkon
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: Zabezpečení
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: Konfigurace clusteru
+                  href: virtual-machines/windows/hadr-cluster-best-practices.md
+                - name: Vzory aplikací
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Správa
               items:
                 - name: Vyhrazený hostitel
                   href: virtual-machines/windows/dedicated-host.md
-                - name: S využitím webu Azure Portal
-                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: Rozšíření podpory pro SQL 2008 a R2
                   href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
-                - name: Připojení k virtuálnímu počítači
-                  href: virtual-machines/windows/ways-to-connect-to-sql.md
-                - name: Konfigurace úložiště
+        - name: Návody
+          items:
+            - name: Připojení k virtuálnímu počítači s SQL Serverem
+              href: virtual-machines/windows/ways-to-connect-to-sql.md
+            - name: Vytvoření virtuálního počítače s SQL Serverem
+              items:
+                - name: Použití portálu
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: Použití Azure Powershell
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: Spravovat
+              items:
+                - name: S využitím webu Azure Portal
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: Model licencí
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: Edice
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Integrace se službou Azure Key Vault
+                  href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: Registrace s využitím SQL VM RP
+                  displayName: 'resource provider, registration'
+                  items:
+                    - name: Jeden virtuální počítač
+                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                    - name: Hromadná registrace několika virtuálních počítačů
+                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
                 - name: Automatizace úloh správy
                   items:
                     - name: Použití rozšíření agenta SQL Server IaaS
                       href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                     - name: Automatizované opravy
                       href: virtual-machines/windows/automated-patching.md
-                    - name: Integrace se službou Azure Key Vault
-                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
-        - name: Návody
-          items:
-            - name: Vytvoření virtuálního počítače SQL
-              items:
-                - name: Použití portálu
-                  href: virtual-machines/windows/create-sql-vm-portal.md
-                - name: Použití Azure Powershell
-                  href: virtual-machines/windows/create-sql-vm-powershell.md
-            - name: Registrace s využitím SQL VM RP
-              displayName: 'resource provider, registration'
-              items:
-                - name: Jeden virtuální počítač
-                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
-                - name: Hromadná registrace několika virtuálních počítačů
-                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-            - name: Spravovat
-              items:
-                - name: Model licencování
-                  displayName: 'ahb, ahub, payg, change, modify, update'
-                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Edice
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-edition.md
-                - name: Verze
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-version.md
-                - name: Azure Storage pro zálohování a obnovení
-                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: Migrace
               items:
                 - name: Databáze SQL Serveru do virtuálního počítače
                   href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
                 - name: Virtuální počítač do nové oblasti
                   href: virtual-machines/windows/move-sql-vm-different-region.md
-            - name: Konfigurace vysoké dostupnosti
+            - name: Kontinuita podnikových procesů
               items:
+                - name: Zálohování a obnovení
+                  items:
+                    - name: Automatizované zálohování (SQL 2016+)
+                      href: virtual-machines/windows/automated-backup.md
+                    - name: Automatizované zálohování (SQL 2014)
+                      href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Skupina dostupnosti Always On
                   items:
                     - name: Rozhraní Azure SQL VM CLI
@@ -989,12 +996,30 @@
                           href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                         - name: Load Balancer – Azure PowerShell
                           href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                - name: Instance clusteru převzetí služeb při selhání
+                - name: Instance clusteru s podporou převzetí služeb při selhání (FCI)
                   items:
-                    - name: "S využitím prostorů úložiště s\_přímým přístupem"
-                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
-                    - name: S využitím sdílené složky úrovně Premium
-                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: Příprava virtuálního počítače pro FCI
+                      href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
+                    - name: Vytvoření FCI s využitím
+                      items:
+                        - name: Sdílené disky Azure (SQL2019+)
+                          href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
+                        - name: Prostory úložiště s přímým přístupem (Win2016+)
+                          href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                        - name: Sdílená složka úrovně Premium (Win2012+)
+                          href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: Název distribuované sítě (DNN)
+                      items:
+                        - name: Vytvoření DNN pro FCI
+                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
+                        - name: Interoperabilita funkcí s využitím DNN
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                        - name: DNN FCI a funkce SQL Serveru
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                - name: Konfigurace možností připojení
+                  items:
+                    - name: Název virtuální sítě (VNN)
+                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Referenční informace
           items:
             - name: Azure PowerShell
