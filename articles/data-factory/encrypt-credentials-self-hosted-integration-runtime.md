@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
 ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628976"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory
@@ -29,9 +29,9 @@ Můžete šifrovat a ukládat přihlašovací údaje místních úložišť dat 
 Předáte soubor definice JSON s přihlašovacími údaji k <br/>Rutina [**New-AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) k vytvoření výstupního souboru definice JSON s šifrovanými přihlašovacími údaji. Pak pomocí aktualizované definice JSON vytvořte propojené služby.
 
 ## <a name="author-sql-server-linked-service"></a>Vytvořit propojenou službu SQL Server
-V libovolné složce vytvořte soubor JSON s názvem **SqlServerLinkedService. JSON** s následujícím obsahem:  
+Vytvořte soubor JSON s názvem **SqlServerLinkedService.js** v libovolné složce s následujícím obsahem:  
 
-Před `<servername>`uložením `<username>`souboru hodnoty `<password>` , `<databasename>`, a nahraďte hodnotami pro SQL Server. A nahraďte `<integration runtime name>` názvem vašeho prostředí Integration runtime. 
+`<servername>` `<databasename>` `<username>` `<password>` Před uložením souboru hodnoty,, a nahraďte hodnotami pro SQL Server. A nahraďte `<integration runtime name>` názvem vašeho prostředí Integration runtime. 
 
 ```json
 {
@@ -50,7 +50,7 @@ Před `<servername>`uložením `<username>`souboru hodnoty `<password>` , `<data
 ```
 
 ## <a name="encrypt-credentials"></a>Šifrování přihlašovacích údajů
-K šifrování citlivých dat z datové části JSON v místním prostředí Integration runtime, spusťte rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential**a předejte ji do datové části JSON. Tato rutina zajišťuje šifrování přihlašovacích údajů pomocí rozhraní DPAPI a uložených místně v uzlu Integration runtime v místním prostředí. Výstupní datová část obsahující šifrovaný odkaz na přihlašovací údaje může být přesměrovaná na jiný soubor JSON (v tomto případě "encryptedLinkedService. JSON").
+K šifrování citlivých dat z datové části JSON v místním prostředí Integration runtime, spusťte rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential**a předejte ji do datové části JSON. Tato rutina zajišťuje šifrování přihlašovacích údajů pomocí rozhraní DPAPI a uložených místně v uzlu Integration runtime v místním prostředí. Výstupní datová část obsahující šifrovaný odkaz na přihlašovací údaje může být přesměrovaná na jiný soubor JSON (v tomto případě ' encryptedLinkedService.json ').
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

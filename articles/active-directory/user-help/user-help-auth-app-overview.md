@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83741177"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
@@ -69,7 +69,7 @@ V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné p
 
 - **Bez účet Microsoft.** Můžete nastavit dvojúrovňové ověřování pro účty jiných společností než Microsoft (například alain@gmail.com ). Vaše účty jiných společností než Microsoft nemůžou použít termín, dvojúrovňové ověřování, ale měli byste být schopni najít funkci v rámci **zabezpečení** nebo nastavení **přihlášení** . Microsoft Authenticator aplikace funguje se všemi účty, které podporují standardy TOTP. Další informace o přidání účtů jiných společností než Microsoft najdete v tématu [Přidání účtů jiných společností než Microsoft](user-help-auth-app-add-non-ms-account.md).
 
-## <a name="in-this-section"></a>V tomto oddílu
+## <a name="in-this-section"></a>V této části
 
 | Článek | Popis |
 | ------ | ------------ |

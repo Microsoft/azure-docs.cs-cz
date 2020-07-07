@@ -9,10 +9,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628908"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Otevírání a ukládání souborů místně a v Azure s balíčky SSIS nasazenými v Azure
@@ -23,7 +23,7 @@ Tento článek popisuje, jak otevřít a uložit soubory místně a v Azure při
 
 ## <a name="save-temporary-files"></a>Uložit dočasné soubory
 
-Pokud potřebujete uložit a zpracovat dočasné soubory během jednoho spuštění balíčku, mohou balíčky použít aktuální pracovní adresář (`.`) nebo dočasnou složku (`%TEMP%`) Azure-SSIS Integration runtimech uzlů.
+Pokud potřebujete uložit a zpracovat dočasné soubory během jednoho spuštění balíčku, mohou balíčky použít aktuální pracovní adresář ( `.` ) nebo dočasnou složku ( `%TEMP%` ) Azure-SSIS Integration runtimech uzlů.
 
 ## <a name="use-on-premises-file-shares"></a>Použití místních sdílených složek
 
@@ -37,7 +37,7 @@ Pokud chcete i nadále používat místní **sdílené složky** při zvedání 
 
 4. Připojte svůj Azure-SSIS IR k místním sdíleným složkám ve stejné virtuální síti nastavením přihlašovacích údajů pro přístup, které používají ověřování systému Windows. Další informace najdete v tématu [připojení k datům a sdíleným složkám pomocí ověřování systému Windows](ssis-azure-connect-with-windows-auth.md).
 
-5. Aktualizujte cesty k místním souborům v balíčcích na cesty UNC odkazující na místní sdílené složky. Například aktualizujte `C:\abc.txt` na `\\<on-prem-server-name>\<share-name>\abc.txt`.
+5. Aktualizujte cesty k místním souborům v balíčcích na cesty UNC odkazující na místní sdílené složky. Například aktualizujte `C:\abc.txt` na `\\<on-prem-server-name>\<share-name>\abc.txt` .
 
 ## <a name="use-azure-file-shares"></a>Použití sdílených složek Azure
 
@@ -47,7 +47,7 @@ Pokud chcete používat **soubory Azure** při zvedání a posunování balíčk
 
 2. Připojte svůj Azure-SSIS IR k souborům Azure nastavením přihlašovacích údajů pro přístup, které používají ověřování systému Windows. Další informace najdete v tématu [připojení k datům a sdíleným složkám pomocí ověřování systému Windows](ssis-azure-connect-with-windows-auth.md).
 
-3. Aktualizujte cesty k místním souborům v balíčcích na cesty UNC ukazující na soubory Azure. Například aktualizujte `C:\abc.txt` na `\\<storage-account-name>.file.core.windows.net\<share-name>\abc.txt`.
+3. Aktualizujte cesty k místním souborům v balíčcích na cesty UNC ukazující na soubory Azure. Například aktualizujte `C:\abc.txt` na `\\<storage-account-name>.file.core.windows.net\<share-name>\abc.txt` .
 
 ## <a name="next-steps"></a>Další kroky
 

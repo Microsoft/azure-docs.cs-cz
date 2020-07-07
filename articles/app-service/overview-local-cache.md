@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628789"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
@@ -48,7 +48,7 @@ Funkce místní mezipaměti Azure App Service poskytuje zobrazení webové role 
 ## <a name="enable-local-cache-in-app-service"></a>Povolit místní mezipaměť v App Service
 Místní mezipaměť se konfiguruje pomocí kombinace nastavení rezervovaných aplikací. Tato nastavení aplikace můžete nakonfigurovat pomocí následujících metod:
 
-* [portál Azure](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Konfigurace místní mezipaměti pomocí Azure Portal
@@ -83,12 +83,12 @@ Pomocí tohoto nastavení aplikace povolíte místní mezipaměť na základě j
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Změna nastavení velikosti v místní mezipaměti
-Ve výchozím nastavení je velikost místní mezipaměti **1 GB**. To zahrnuje složky site a/siteextensions, které se zkopírují z úložiště obsahu, a také všechny místně vytvořené protokoly a složky dat. Pokud chcete tento limit zvýšit, použijte nastavení `WEBSITE_LOCAL_CACHE_SIZEINMB`aplikace. Velikost můžete zvětšit až na **2 GB** (2000 MB) na jednu aplikaci. Všimněte si, že při zvětšování velikosti bude trvat déle, než se načte místní mezipaměť.
+Ve výchozím nastavení je velikost místní mezipaměti **1 GB**. To zahrnuje složky site a/siteextensions, které se zkopírují z úložiště obsahu, a také všechny místně vytvořené protokoly a složky dat. Pokud chcete tento limit zvýšit, použijte nastavení aplikace `WEBSITE_LOCAL_CACHE_SIZEINMB` . Velikost můžete zvětšit až na **2 GB** (2000 MB) na jednu aplikaci. Všimněte si, že při zvětšování velikosti bude trvat déle, než se načte místní mezipaměť.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Osvědčené postupy pro používání App Service místní mezipaměti
 V kombinaci s funkcí [přípravného prostředí](../app-service/deploy-staging-slots.md) doporučujeme použít místní mezipaměť.
 
-* Přidejte nastavení `WEBSITE_LOCAL_CACHE_OPTION` aplikace v *rychlém* provozu s `Always` hodnotou do **produkčního** slotu. Pokud používáte `WEBSITE_LOCAL_CACHE_SIZEINMB`, přidejte ho také jako rychlé nastavení do produkčního slotu.
+* Přidejte nastavení aplikace v *rychlém* `WEBSITE_LOCAL_CACHE_OPTION` provozu s hodnotou `Always` do **produkčního** slotu. Pokud používáte `WEBSITE_LOCAL_CACHE_SIZEINMB` , přidejte ho také jako rychlé nastavení do produkčního slotu.
 * Vytvoření **přípravného** slotu a publikování do přípravného slotu. Nenastavujete pracovní slot pro použití místní mezipaměti, aby bylo možné bezproblémové životní cyklus Build-Deploy-test pro přípravu, pokud získáte výhody místní mezipaměti pro produkční slot.
 * Otestujte svůj web proti přípravnému slotu.  
 * Až budete připraveni, vydejte [operaci prohození](../app-service/deploy-staging-slots.md#Swap) mezi vašimi pracovními a provozními sloty.  
@@ -100,7 +100,7 @@ V kombinaci s funkcí [přípravného prostředí](../app-service/deploy-staging
 Pokud vaše aplikace potřebuje vysoce výkonné a spolehlivé úložiště obsahu, nepoužívá úložiště obsahu k zápisu důležitých dat za běhu a je méně než 2 GB v celkové velikosti, odpověď je "Ano"! Pokud chcete získat celkovou velikost složek site a/siteextensions, můžete použít rozšíření lokality "Azure Web Apps disk Usage".
 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Jak zjistím, jestli můj web přešl na používání místní mezipaměti?
-Pokud používáte funkci místní mezipaměti s přípravnými prostředími, operace přepnutí není dokončena, dokud nebude zahřívání místní mezipaměť. Pokud chcete zjistit, jestli je web spuštěný proti místní mezipaměti, můžete zaškrtnout proměnnou `WEBSITE_LOCALCACHE_READY`prostředí pracovního procesu. Použijte pokyny na stránce [proměnné prostředí pracovního procesu](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) pro přístup k proměnné prostředí pracovního procesu ve více instancích.  
+Pokud používáte funkci místní mezipaměti s přípravnými prostředími, operace přepnutí není dokončena, dokud nebude zahřívání místní mezipaměť. Pokud chcete zjistit, jestli je web spuštěný proti místní mezipaměti, můžete zaškrtnout proměnnou prostředí pracovního procesu `WEBSITE_LOCALCACHE_READY` . Použijte pokyny na stránce [proměnné prostředí pracovního procesu](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) pro přístup k proměnné prostředí pracovního procesu ve více instancích.  
 
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Právě jsem publikoval nové změny, ale moje aplikace je pravděpodobně nepoužívá. Proč?
 Pokud vaše aplikace používá místní mezipaměť, pak je potřeba restartovat web, aby se získaly nejnovější změny. Nechcete publikovat změny v produkčním webu? Podívejte se na možnosti slotu v předchozí části věnované osvědčeným postupům.

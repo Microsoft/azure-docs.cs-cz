@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629350"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Sada SDK pro zařízení Azure IoT pro jazyk C
@@ -42,7 +42,7 @@ Nejnovější verzi knihoven najdete v **Hlavní** větvi úložiště:
 
   ![Snímek obrazovky hlavní větve úložiště](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
-* Základní implementace sady SDK je ve složce **klienta iothub\_** , která obsahuje implementaci nejnižší vrstvy API v sadě SDK: knihovna **IoTHubClient** . Knihovna **IoTHubClient** obsahuje rozhraní API implementující nezpracované zasílání zpráv pro posílání zpráv IoT Hub a přijímání zpráv z IoT Hub. Při použití této knihovny zodpovídáte za implementaci serializace zprávy, ale budou zpracovávány další podrobnosti o komunikaci s IoT Hub.
+* Základní implementace sady SDK je ve složce ** \_ klienta iothub** , která obsahuje implementaci nejnižší vrstvy API v sadě SDK: knihovna **IoTHubClient** . Knihovna **IoTHubClient** obsahuje rozhraní API implementující nezpracované zasílání zpráv pro posílání zpráv IoT Hub a přijímání zpráv z IoT Hub. Při použití této knihovny zodpovídáte za implementaci serializace zprávy, ale budou zpracovávány další podrobnosti o komunikaci s IoT Hub.
 
 * Složka **serializátoru** obsahuje pomocné funkce a ukázky, které ukazují, jak serializovat data před odesláním do Azure IoT Hub pomocí klientské knihovny. Použití serializátoru není povinné a je poskytované jako pohodlí. Chcete-li použít knihovnu **serializátorů** , definujete model, který určuje data, která mají být odeslána IoT Hub a zprávy, které od něj očekáváte přijmout. Po definování modelu sada SDK poskytuje plochu rozhraní API, která umožňuje snadnou práci se zprávami typu zařízení-Cloud a Cloud-zařízení, aniž byste se museli starat o informace o serializaci. Knihovna závisí na dalších open source knihovnách, které implementují přenos pomocí protokolů, jako jsou MQTT a AMQP.
 
@@ -96,7 +96,7 @@ Pokud nejste obeznámeni s nástrojem Průzkumník zařízení, následující p
 
 1. Do prvního pole zadejte **připojovací řetězec IoT Hub** a klikněte na **aktualizovat**. Tento krok nakonfiguruje nástroj tak, aby mohl komunikovat s IoT Hub. 
 
-**Připojovací řetězec** najdete v části **IoT Hub** > **Nastavení** > **služby zásady** > sdíleného přístupu**iothubowner**.
+**Připojovací řetězec** najdete v části IoT Hub nastavení **služby**  >  **Settings**  >  **zásady sdíleného přístupu**  >  **iothubowner**.
 
 1. Po nakonfigurování připojovacího řetězce IoT Hub klikněte na kartu **Správa** :
 
@@ -114,7 +114,7 @@ Na této kartě můžete spravovat zařízení zaregistrovaná ve službě IoT H
 
 1. Pokud zvolíte **Kopírovat připojovací řetězec pro vybrané zařízení**, je připojovací řetězec zařízení zkopírován do schránky. Ponechte kopii připojovacího řetězce zařízení. Budete ho potřebovat při spouštění ukázkových aplikací popsaných v následujících částech.
 
-Až provedete výše uvedené kroky, jste připraveni začít spouštět nějaký kód. Většina ukázek obsahuje konstantu v horní části hlavního zdrojového souboru, která umožňuje zadat připojovací řetězec. Například odpovídající řádek z **iothub_client\_Samples\_iothub_convenience_sample** aplikace se zobrazí takto.
+Až provedete výše uvedené kroky, jste připraveni začít spouštět nějaký kód. Většina ukázek obsahuje konstantu v horní části hlavního zdrojového souboru, která umožňuje zadat připojovací řetězec. Například odpovídající řádek z **iothub_client \_ samples \_ iothub_convenience_sample** aplikace se zobrazí takto.
 
 ```c
 static const char* connectionString = "[device connection string]";
@@ -122,9 +122,9 @@ static const char* connectionString = "[device connection string]";
 
 ## <a name="use-the-iothubclient-library"></a>Použití knihovny IoTHubClient
 
-Ve složce **klienta\_iothub** v úložišti [Azure-IoT-SDK-c](https://github.com/azure/azure-iot-sdk-c) se nachází složka s **ukázkami** , která obsahuje aplikaci nazvanou **iothub\_Client\_Sample\_MQTT**.
+Ve složce ** \_ klienta iothub** v úložišti [Azure-IoT-SDK-c](https://github.com/azure/azure-iot-sdk-c) se nachází složka s **ukázkami** , která obsahuje aplikaci nazvanou **iothub \_ Client \_ Sample \_ MQTT**.
 
-Verze **\_iothub_client ukázek\_iothub_convenience_sample** aplikace pro Windows zahrnuje následující řešení sady Visual Studio:
+Verze **iothub_client \_ ukázek \_ Iothub_convenience_sample** aplikace pro Windows zahrnuje následující řešení sady Visual Studio:
 
   ![Průzkumník řešení sady Visual Studio](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
@@ -140,14 +140,14 @@ Toto řešení obsahuje jeden projekt. V tomto řešení jsou nainstalované čt
 
 Při práci se sadou SDK vždy potřebujete balíček **Microsoft. Azure. C. SharedUtility** . Tato ukázka používá protokol MQTT, proto musíte zahrnout balíčky **Microsoft. Azure. umqtt** a **Microsoft. Azure. IoTHub. MQTTTRANSPORT** (pro AMQP a HTTPS jsou k dispozici ekvivalentní balíčky). Vzhledem k tomu, že ukázka používá knihovnu **IoTHubClient** , musíte taky do svého řešení zahrnout balíček **Microsoft. Azure. IoTHub. IoTHubClient** .
 
-Implementaci ukázkové aplikace najdete v části **iothub_client\_Samples\_iothub_convenience_sample** zdrojového souboru.
+Implementaci ukázkové aplikace najdete v části **iothub_client \_ samples \_ iothub_convenience_sample** zdrojového souboru.
 
 Následující kroky používají tuto ukázkovou aplikaci k tomu, abyste vás provedli, co je potřeba k používání knihovny **IoTHubClient** .
 
 ### <a name="initialize-the-library"></a>Inicializovat knihovnu
 
 > [!NOTE]
-> Než začnete s knihovnami pracovat, možná budete muset provést nějakou inicializaci specifickou pro konkrétní platformu. Pokud například plánujete používat AMQP v systému Linux, je nutné inicializovat knihovnu OpenSSL. Ukázky v [úložišti GitHub](https://github.com/Azure/azure-iot-sdk-c) volejte funkci **init Platform\_** Functions, když se klient spustí a před ukončením zavolá funkci **deinit platformy\_** . Tyto funkce jsou deklarovány v souboru hlaviček Platform. h. Projděte si definice těchto funkcí pro cílovou platformu v [úložišti](https://github.com/Azure/azure-iot-sdk-c) , abyste zjistili, jestli ve svém klientovi potřebujete zahrnout inicializační kód specifický pro platformu.
+> Než začnete s knihovnami pracovat, možná budete muset provést nějakou inicializaci specifickou pro konkrétní platformu. Pokud například plánujete používat AMQP v systému Linux, je nutné inicializovat knihovnu OpenSSL. Ukázky v [úložišti GitHub](https://github.com/Azure/azure-iot-sdk-c) volejte funkci ** \_ init Platform** Functions, když se klient spustí a před ukončením zavolá funkci ** \_ deinit platformy** . Tyto funkce jsou deklarovány v souboru hlaviček Platform. h. Projděte si definice těchto funkcí pro cílovou platformu v [úložišti](https://github.com/Azure/azure-iot-sdk-c) , abyste zjistili, jestli ve svém klientovi potřebujete zahrnout inicializační kód specifický pro platformu.
 
 Chcete-li začít pracovat s knihovnami, nejprve přidělte IoT Hub popisovač klienta:
 
@@ -164,7 +164,7 @@ else
 
 Do této funkce předáte kopii připojovacího řetězce zařízení, který jste získali z nástroje Průzkumník zařízení. Určíte také komunikační protokol, který se má použít. Tento příklad používá MQTT, ale také možnosti AMQP a HTTPS.
 
-Pokud máte platný **popisovač klienta\_IOTHUB\_**, můžete začít volat rozhraní API pro posílání a přijímání zpráv do a z IoT Hub.
+Pokud máte platný ** \_ \_ popisovač klienta IOTHUB**, můžete začít volat rozhraní API pro posílání a přijímání zpráv do a z IoT Hub.
 
 ### <a name="send-messages"></a>Odesílání zpráv
 
@@ -227,7 +227,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 }
 ```
 
-Poznamenejte si volání funkce **zničení\_IoTHubMessage** po skončení zprávy. Tato funkce uvolní prostředky přidělené při vytvoření zprávy.
+Poznamenejte si volání funkce ** \_ zničení IoTHubMessage** po skončení zprávy. Tato funkce uvolní prostředky přidělené při vytvoření zprávy.
 
 ### <a name="receive-messages"></a>Příjem zpráv
 
@@ -317,7 +317,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Pomocí funkce **IoTHubMessage\_getbytearray** načtěte zprávu, která v tomto příkladu je řetězec.
+Pomocí funkce **IoTHubMessage \_ getbytearray** načtěte zprávu, která v tomto příkladu je řetězec.
 
 ### <a name="uninitialize-the-library"></a>Zrušení inicializace knihovny
 
@@ -327,7 +327,7 @@ Až budete hotovi s odesíláním událostí a přijímáním zpráv, můžete z
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-Toto volání uvolní prostředky dříve přidělené funkcí **IoTHubClient\_CreateFromConnectionString** .
+Toto volání uvolní prostředky dříve přidělené funkcí **IoTHubClient \_ CreateFromConnectionString** .
 
 Jak vidíte, můžete snadno odesílat a přijímat zprávy pomocí knihovny **IoTHubClient** . Knihovna zpracovává podrobnosti o komunikaci s IoT Hub, včetně toho, který protokol se má použít (z perspektivy vývojáře je to jednoduchá možnost konfigurace).
 
@@ -337,7 +337,7 @@ Knihovna **IoTHubClient** také poskytuje přesnou kontrolu nad tím, jak serial
 
 Knihovna **serializátorů** se nachází v koncepčním vrcholu knihovny **IoTHubClient** v sadě SDK. Používá knihovnu **IoTHubClient** pro podkladovou komunikaci s IoT Hub, ale přidává možnosti modelování, které z vývojářů odstraňují zatížení prostřednictvím serializace zprávy. Jak funguje tato knihovna, je nejlépe vyplývat příkladem.
 
-Ve složce **serializátoru** v [úložišti Azure-IoT-SDK-c](https://github.com/Azure/azure-iot-sdk-c)je složka **ukázek** , která obsahuje aplikaci s názvem **SimpleSample\_MQTT**. Verze této ukázky pro Windows zahrnuje následující řešení sady Visual Studio:
+Ve složce **serializátoru** v [úložišti Azure-IoT-SDK-c](https://github.com/Azure/azure-iot-sdk-c)je složka **ukázek** , která obsahuje aplikaci s názvem **SimpleSample \_ MQTT**. Verze této ukázky pro Windows zahrnuje následující řešení sady Visual Studio:
 
   ![Ukázka řešení Visual Studio pro MQTT](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
@@ -354,7 +354,7 @@ Stejně jako u předchozí ukázky obsahuje tato jedna z nich několik balíčk�
 
 V předchozí ukázce jste viděli většinu těchto balíčků, ale **Microsoft. Azure. IoTHub. serializátor** je nový. Tento balíček je vyžadován při použití knihovny **serializátoru** .
 
-Implementaci ukázkové aplikace najdete v souboru **iothub_convenience_sample iothub_client\_Samples\_** .
+Implementaci ukázkové aplikace najdete v souboru ** \_ \_ iothub_convenience_sample iothub_client Samples** .
 
 Následující části vás seznámí s klíčovými částmi této ukázky.
 
@@ -389,13 +389,13 @@ else
 ...
 ```
 
-Volání funkce **init serializátoru\_** je jednorázové volání a inicializuje se podkladová knihovna. Pak zavoláte funkci **IoTHubClient\_ll\_CreateFromConnectionString** , což je stejné rozhraní API jako v ukázce **IoTHubClient** . Toto volání nastaví připojovací řetězec zařízení (Toto volání je také tam, kde zvolíte protokol, který chcete použít). V této ukázce se jako přenos používá MQTT, ale může použít AMQP nebo HTTPS.
+Volání funkce ** \_ init serializátoru** je jednorázové volání a inicializuje se podkladová knihovna. Pak zavoláte funkci **IoTHubClient \_ ll \_ CreateFromConnectionString** , což je stejné rozhraní API jako v ukázce **IoTHubClient** . Toto volání nastaví připojovací řetězec zařízení (Toto volání je také tam, kde zvolíte protokol, který chcete použít). V této ukázce se jako přenos používá MQTT, ale může použít AMQP nebo HTTPS.
 
-Nakonec zavolejte funkci **\_Create model\_instance** . **WeatherStation** je obor názvů modelu a **ContosoAnemometer** je název modelu. Po vytvoření instance modelu ji můžete použít k zahájení odesílání a přijímání zpráv. Je však důležité pochopit, co je model.
+Nakonec zavolejte funkci **Create \_ model \_ instance** . **WeatherStation** je obor názvů modelu a **ContosoAnemometer** je název modelu. Po vytvoření instance modelu ji můžete použít k zahájení odesílání a přijímání zpráv. Je však důležité pochopit, co je model.
 
 ### <a name="define-the-model"></a>Definování modelu
 
-Model v knihovně **serializátoru** definuje zprávy, které může vaše zařízení odeslat IoT Hub a zprávy označované jako *Akce* v jazyku modelování, které může získat. Definujete model pomocí sady maker jazyka C jako v ukázkové aplikaci **iothub_client\_Samples\_iothub_convenience_sample** :
+Model v knihovně **serializátoru** definuje zprávy, které může vaše zařízení odeslat IoT Hub a zprávy označované jako *Akce* v jazyku modelování, které může získat. Definujete model pomocí sady maker jazyka C jako v ukázkové aplikaci **iothub_client \_ samples \_ iothub_convenience_sample** :
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -411,7 +411,7 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Makra **Begin\_Namespace** a **End\_Namespace** přebírají obor názvů modelu jako argument. Očekává se, že cokoli mezi těmito makry je definice modelu nebo modelů a struktury dat, které používají modely.
+Makra **Begin \_ Namespace** a **End \_ Namespace** přebírají obor názvů modelu jako argument. Očekává se, že cokoli mezi těmito makry je definice modelu nebo modelů a struktury dat, které používají modely.
 
 V tomto příkladu je k dispozici jeden model s názvem **ContosoAnemometer**. Tento model definuje dvě data, která může vaše zařízení odeslat IoT Hub: **DeviceID** a **WindSpeed**. Definuje taky tři akce (zprávy), které může vaše zařízení přijímat: **TurnFanOn**, **TurnFanOff**a **SetAirResistance**. Každý datový prvek má typ a každá akce má název (a volitelně také sadu parametrů).
 
@@ -469,7 +469,7 @@ static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsign
 }
 ```
 
-Druhý k poslednímu parametru **\_IoTHubClient ll\_SendEventAsync** je odkaz na funkci zpětného volání, která se volá, když se data úspěšně odešlou. Tady je funkce zpětného volání v ukázce:
+Druhý k poslednímu parametru **IoTHubClient \_ ll \_ SendEventAsync** je odkaz na funkci zpětného volání, která se volá, když se data úspěšně odešlou. Tady je funkce zpětného volání v ukázce:
 
 ```c
 void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
@@ -482,7 +482,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 }
 ```
 
-Druhý parametr je ukazatel na kontext uživatele; stejný ukazatel předaný do **IoTHubClient\_šechny\_SendEventAsync**. V tomto případě je kontext jednoduchým čítačem, ale může to být cokoli, co potřebujete.
+Druhý parametr je ukazatel na kontext uživatele; stejný ukazatel předaný do **IoTHubClient \_ šechny \_ SendEventAsync**. V tomto případě je kontext jednoduchým čítačem, ale může to být cokoli, co potřebujete.
 
 To je všechno, co posílá zprávy ze zařízení do cloudu. Ta, kterou zbývá k pokrytí, je postup příjmu zpráv.
 
@@ -539,7 +539,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-Tento kód je často používaný – pro každé řešení je to stejné. Tato funkce přijme zprávu a postará ji o směrování do příslušné funkce prostřednictvím volání **příkazu Spustit\_**. Funkce volaná v tomto okamžiku závisí na definici akcí v modelu.
+Tento kód je často používaný – pro každé řešení je to stejné. Tato funkce přijme zprávu a postará ji o směrování do příslušné funkce prostřednictvím volání ** \_ příkazu Spustit**. Funkce volaná v tomto okamžiku závisí na definici akcí v modelu.
 
 Při definování akce v modelu je nutné implementovat funkci, která je volána, když vaše zařízení obdrží odpovídající zprávu. Například pokud váš model definuje tuto akci:
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629044"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopírování souborů z více kontejnerů pomocí Azure Data Factory
@@ -37,10 +37,10 @@ Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiš
 - **Kopírovat** zkopíruje každý kontejner ze zdrojového úložiště úložiště do cílového úložiště.
 
 Šablona definuje následující parametry:
-- *SourceFileFolder* je cesta ke složce úložiště zdrojů dat, kde můžete získat seznam kontejnerů. Cesta je kořenový adresář, který obsahuje více složek kontejnerů. Výchozí hodnota tohoto parametru je `sourcefolder`.
-- *SourceFileDirectory* je cesta k podsložce v kořenovém adresáři úložiště zdrojů dat. Výchozí hodnota tohoto parametru je `subfolder`.
-- *DestinationFileFolder* je cesta ke složce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `destinationfolder`.
-- *DestinationFileDirectory* je cesta k podsložce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `subfolder`.
+- *SourceFileFolder* je cesta ke složce úložiště zdrojů dat, kde můžete získat seznam kontejnerů. Cesta je kořenový adresář, který obsahuje více složek kontejnerů. Výchozí hodnota tohoto parametru je `sourcefolder` .
+- *SourceFileDirectory* je cesta k podsložce v kořenovém adresáři úložiště zdrojů dat. Výchozí hodnota tohoto parametru je `subfolder` .
+- *DestinationFileFolder* je cesta ke složce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `destinationfolder` .
+- *DestinationFileDirectory* je cesta k podsložce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `subfolder` .
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 

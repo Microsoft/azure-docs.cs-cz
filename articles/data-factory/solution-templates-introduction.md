@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628942"
 ---
 # <a name="templates"></a>Šablony
@@ -32,7 +32,7 @@ Můžete začít vytvářet Data Factory kanál ze šablony následujícími dv�
 
     ![Otevřít galerii šablon ze stránky přehled](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Na kartě autor v Průzkumník prostředků vyberte možnost **+**, potom **kanál ze šablony** a otevřete galerii šablon.
+1.  Na kartě autor v Průzkumník prostředků vyberte možnost **+** , potom **kanál ze šablony** a otevřete galerii šablon.
 
     ![Otevřete galerii šablon z karty autor.](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -56,7 +56,7 @@ Data Factory používá šablony Azure Resource Manager pro ukládání šablon 
 
     -   [Rozdílová kopie z databáze](solution-template-delta-copy-with-control-table.md)
 
-    -   Kopírovat ze \<zdroje\> do \<cíle\>
+    -   Kopírovat z \<source\> do\<destination\>
 
         -   [Z Amazon S3 do Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 

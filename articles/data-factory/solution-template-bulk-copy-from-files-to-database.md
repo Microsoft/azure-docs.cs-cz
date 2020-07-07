@@ -9,10 +9,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 468bd838237e076aacb9dee0ccacfdcc1ea940af
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629112"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Hromadné kopírování ze souborů do databáze
@@ -70,4 +70,4 @@ V současné době tato šablona podporuje pouze kopírování dat ve formátu *
        
 ## <a name="next-steps"></a>Další kroky
 
-- [Seznámení se službou Azure Data Factory](introduction.md)
+- [Úvod do služby Azure Data Factory](introduction.md)

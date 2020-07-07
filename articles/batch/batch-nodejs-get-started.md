@@ -1,13 +1,13 @@
 ---
-title: Kurz – použití klientské knihovny Azure Batch pro Node. js
+title: Kurz – použití klientské knihovny Azure Batch pro Node.js
 description: Informace o základních konceptech služby Azure Batch a vytvoření jednoduchého řešení pomocí Node.js.
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780180"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js

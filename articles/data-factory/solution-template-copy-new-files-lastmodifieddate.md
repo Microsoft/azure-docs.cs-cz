@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629061"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
@@ -84,12 +84,12 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
     ![Vytvoření triggeru](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 10. Nastavte hodnotu pro **parametry spuštění aktivační události** následujícím způsobem a vyberte **Dokončit**.
-    - **FolderPath_Source** = **SourceFolder**.  Můžete nahradit složkou ve zdrojovém úložišti dat.
-    - **Directory_Source** = **podsložku**.  Můžete nahradit podsložku ve zdrojovém úložišti dat.
-    - **FolderPath_Destination** = **DestinationFolder**.  Můžete nahradit složkou v cílovém úložišti dat.
-    - **Directory_Destination** = **podsložku**.  Můžete nahradit podsložku v cílovém úložišti dat.
-    - **LastModified_From** =  **LastModified_From\@Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
-    - **LastModified_To** = **LastModified_To\@Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
+    - **FolderPath_Source**  =  **SourceFolder**.  Můžete nahradit složkou ve zdrojovém úložišti dat.
+    - **Directory_Source**  =  **podsložky**.  Můžete nahradit podsložku ve zdrojovém úložišti dat.
+    - **FolderPath_Destination**  =  **DestinationFolder**.  Můžete nahradit složkou v cílovém úložišti dat.
+    - **Directory_Destination**  =  **podsložky**.  Můžete nahradit podsložku v cílovém úložišti dat.
+    - **LastModified_From**  =   ** \@ Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
+    - **LastModified_To**  =  ** \@ Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
     
     ![Vstupní parametry](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
@@ -107,4 +107,4 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
     
 ## <a name="next-steps"></a>Další kroky
 
-- [Seznámení se službou Azure Data Factory](introduction.md)
+- [Úvod do služby Azure Data Factory](introduction.md)

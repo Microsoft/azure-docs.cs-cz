@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691729"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnávání Azure Data Lake Storage Gen1 a Azure Blob Storage
@@ -31,10 +31,10 @@ Tabulka v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Az
 | Operace s daty – ověřování |Na základě [Azure Active Directory identit](../active-directory/develop/authentication-scenarios.md) |Na základě sdílených tajných klíčů – klíčů pro [přístup k účtu](../storage/common/storage-account-keys-manage.md) a [klíčů sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Datové operace – protokol ověřování |OAuth 2,0. Volání musí obsahovat platný token JWT (JSON Web Token) vydaný Azure Active Directory |Algoritmus HMAC (hash-based Message Authentication Code). V rámci požadavku HTTP musí volání obsahovat hash SHA-256 s kódováním base64. |
 | Operace s daty – autorizace |Seznam ACL Access Control.  Seznamy řízení přístupu (ACL) na základě Azure Active Directory identit lze nastavit na úrovni souborů a složek. |Pro autorizaci na úrovni účtu – použijte [přístupové klíče účtu](../storage/common/storage-account-keys-manage.md) .<br>Pro účet, kontejner nebo autorizaci objektu BLOB použijte [klíče pro sdílené přístupové podpisy](../storage/common/storage-dotnet-shared-access-signature-part-1.md) . |
-| Operace s daty – auditování |K dispozici. Informace najdete [tady](data-lake-store-diagnostic-logs.md) . |K dispozici. |
+| Operace s daty – auditování |K dispozici. Informace najdete [tady](data-lake-store-diagnostic-logs.md) . |K dispozici |
 | Data šifrování v klidovém umístění |<ul><li>Transparentní, strana serveru</li> <ul><li>Pomocí klíčů spravovaných službou</li><li>Pomocí klíčů spravovaných zákazníkem ve službě Azure webrecovery</li></ul></ul> |<ul><li>Transparentní, strana serveru</li> <ul><li>Pomocí klíčů spravovaných službou</li><li>Pomocí klíčů spravovaných zákazníkem ve službě Azure webrecovery (Preview)</li></ul><li>Šifrování na straně klienta</li></ul> |
 | Operace správy (například vytvoření účtu) |[Řízení přístupu na základě role](../role-based-access-control/overview.md) (RBAC) poskytované Azure pro správu účtů |[Řízení přístupu na základě role](../role-based-access-control/overview.md) (RBAC) poskytované Azure pro správu účtů |
-| Sady SDK pro vývojáře |.NET, Java, Python, Node. js |.NET, Java, Python, Node. js, C++, Ruby, PHP, přejít, Android, iOS |
+| Sady SDK pro vývojáře |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, přejít, Android, iOS |
 | Výkon úloh analýzy |Optimalizovaný výkon pro úlohy paralelní analýzy. Vysoká propustnost a IOPS |Optimalizovaný výkon pro úlohy paralelní analýzy. |
 | Omezení velikosti |Bez omezení velikosti účtů, velikostí souborů nebo počtu souborů |Konkrétní omezení najdete v tématu [cíle škálovatelnosti pro účty úložiště úrovně Standard](../storage/common/scalability-targets-standard-account.md) a [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../storage/blobs/scalability-targets.md). Větší omezení účtu k dispozici kontaktováním [podpory Azure](https://azure.microsoft.com/support/faq/) |
 | Geografická redundance |Místně redundantní (více kopií dat v jedné oblasti Azure) |Místně redundantní (LRS), zóna redundantní (ZRS), globálně redundantní (GRS), globálně redundantní přístup pro čtení (RA-GRS). Další informace najdete [tady](../storage/common/storage-redundancy.md) . |

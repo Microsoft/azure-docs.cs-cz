@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652677"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>Předpoklady pro používání Xamarin Androidu s MSAL.NET
@@ -33,7 +33,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-V MSAL 4,2 a novějších verzích `PublicClientApplication`můžete tuto funkci nastavit také na úrovni. K tomu použijte zpětné volání:
+V MSAL 4,2 a novějších verzích můžete tuto funkci nastavit také na úrovni `PublicClientApplication` . K tomu použijte zpětné volání:
 
 ```csharp
 // Requires MSAL.NET 4.2 or later
@@ -54,7 +54,7 @@ var pca = PublicClientApplicationBuilder
 ```
 
 ## <a name="ensure-that-control-returns-to-msal"></a>Ujistěte se, že se ovládací prvek vrátí do MSAL 
-Až bude interaktivní část toku ověřování ukončena, ujistěte se, že se ovládací prvek vrátí zpět do MSAL. V Androidu přepište `OnActivityResult` metodu `Activity`. Pak zavolejte `SetAuthenticationContinuationEventArgs` metodu třídy `AuthenticationContinuationHelper` MSAL. 
+Až bude interaktivní část toku ověřování ukončena, ujistěte se, že se ovládací prvek vrátí zpět do MSAL. V Androidu přepište `OnActivityResult` metodu `Activity` . Pak zavolejte `SetAuthenticationContinuationEventArgs` metodu `AuthenticationContinuationHelper` třídy MSAL. 
 
 Tady je příklad:
 
@@ -73,7 +73,7 @@ protected override void OnActivityResult(int requestCode,
 Tato čára zajistí, že se ovládací prvek vrátí na MSAL na konci interaktivní části toku ověřování.
 
 ## <a name="update-the-android-manifest"></a>Aktualizace manifestu pro Android
-Soubor *souboru AndroidManifest. XML* by měl obsahovat následující hodnoty:
+Soubor *AndroidManifest.xml* by měl obsahovat následující hodnoty:
 
 <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
 ```
@@ -90,9 +90,9 @@ Soubor *souboru AndroidManifest. XML* by měl obsahovat následující hodnoty:
  </activity>
 ```
 
-Pro tuto `android:host=` hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal. Nahraďte `android:path=` hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal pro hodnotu. Hodnota hash *podpisu by neměla být kódovaná* v adrese URL. Zajistěte, aby se na`/`začátku hodnoty hash podpisu zobrazovalo lomítko ().
+Pro tuto hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal `android:host=` . Nahraďte hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal pro `android:path=` hodnotu. Hodnota hash *podpisu by neměla být kódovaná* v adrese URL. Zajistěte, aby `/` se na začátku hodnoty hash podpisu zobrazovalo lomítko ().
 
-Alternativně [Vytvořte aktivitu v kódu](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) místo ruční úpravy *souboru AndroidManifest. XML*. Chcete-li vytvořit aktivitu v kódu, nejprve vytvořte třídu, která obsahuje `Activity` atribut a `IntentFilter` atribut. 
+Případně můžete místo ruční úpravy *AndroidManifest.xml* [vytvořit aktivitu v kódu](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) . Chcete-li vytvořit aktivitu v kódu, nejprve vytvořte třídu, která obsahuje `Activity` atribut a `IntentFilter` atribut. 
 
 Zde je příklad třídy, která představuje hodnoty souboru XML:
 
@@ -109,7 +109,7 @@ Zde je příklad třídy, která představuje hodnoty souboru XML:
 
 ### <a name="xamarinforms-43x-manifest"></a>Manifest Xamarin. Forms 4.3. X
 
-Xamarin. Forms 4.3. x vygeneruje kód, který `package` nastaví atribut `com.companyname.{appName}` na *souboru AndroidManifest. XML*. Pokud používáte `DataScheme` jako `msal{client_id}`, pak můžete chtít změnit hodnotu tak, aby odpovídala hodnotě `MainActivity.cs` oboru názvů.
+Xamarin. Forms 4.3. x vygeneruje kód, který nastaví `package` atribut na `com.companyname.{appName}` v *AndroidManifest.xml*. Pokud používáte `DataScheme` jako `msal{client_id}` , pak můžete chtít změnit hodnotu tak, aby odpovídala hodnotě `MainActivity.cs` oboru názvů.
 
 ## <a name="use-the-embedded-web-view-optional"></a>Použít vložené webové zobrazení (volitelné)
 
@@ -140,12 +140,12 @@ Ale můžete mít problémy sestavení, pokud upgradujete existující aplikaci 
 - Ověřte, že se Xamarin. Android. support. v4 automaticky aktualizuje na verzi 25.4.0.2. V případě potřeby aktualizujte na verzi 25.4.0.2.
 - Zajistěte, aby všechny balíčky Xamarin. Android. support byly cílovou verzí 25.4.0.2.
 - Vyčistěte nebo znovu sestavte aplikaci.
-- V aplikaci Visual Studio zkuste nastavit maximální počet paralelních sestavení projektu na 1. To uděláte tak, že vyberete **Možnosti** > **projekty a řešení** > **sestavíte a spustíte** > **maximální počet paralelně sestavovaných projektů**.
-- Pokud sestavíte z příkazového řádku a použijete `/m`příkaz, zkuste tento prvek odebrat z příkazu.
+- V aplikaci Visual Studio zkuste nastavit maximální počet paralelních sestavení projektu na 1. To uděláte tak, že vyberete **Možnosti**  >  **projekty a řešení**  >  **sestavíte a spustíte**  >  **maximální počet paralelně sestavovaných projektů**.
+- Pokud sestavíte z příkazového řádku a použijete příkaz `/m` , zkuste tento prvek odebrat z příkazu.
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>Chyba: název AuthenticationContinuationHelper neexistuje v aktuálním kontextu.
 
-Pokud chyba indikuje, že `AuthenticationContinuationHelper` v aktuálním kontextu neexistuje, může Visual Studio nesprávně aktualizovat soubor Android. csproj *. Někdy * \<cestu>* cesta k souboru nesprávně obsahuje *netstandard13* namísto *monoandroid90*.
+Pokud chyba indikuje, že `AuthenticationContinuationHelper` v aktuálním kontextu neexistuje, může Visual Studio nesprávně aktualizovat soubor Android. csproj *. Někdy *\<HintPath>* cesta k souboru obsahuje nesprávně *netstandard13* místo *monoandroid90*.
 
 Tento příklad obsahuje správnou cestu k souboru:
 
