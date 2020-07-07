@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418673"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat pomocí mapování toků dat
@@ -36,14 +36,14 @@ V tomto kurzu provedete následující kroky:
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 
-Soubor, který v tomto kurzu transformuje, je MoviesDB. csv, který najdete [tady](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Pokud chcete načíst soubor z GitHubu, zkopírujte obsah do textového editoru, který si zvolíte, a uložte ho místně jako soubor. csv. Postup nahrání souboru do účtu úložiště najdete v tématu [nahrání objektů BLOB pomocí webu Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Příklady budou odkazovat na kontejner s názvem Sample-data.
+Soubor, který v tomto kurzu transformuje, je MoviesDB.csv, který najdete [tady](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Pokud chcete načíst soubor z GitHubu, zkopírujte obsah do textového editoru, který si zvolíte, a uložte ho místně jako soubor. csv. Postup nahrání souboru do účtu úložiště najdete v tématu [nahrání objektů BLOB pomocí webu Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Příklady budou odkazovat na kontejner s názvem Sample-data.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvoření kanálu v datové továrně.
 
 1. Otevřete **Microsoft Edge** nebo **Google Chrome**. V současné době je Data Factory uživatelské rozhraní podporováno pouze ve webových prohlížečích Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit** > **Analytics** > **Data Factory**analýzy prostředků:
+2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků:
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -87,7 +87,7 @@ V tomto kroku vytvoříte kanál, který obsahuje aktivitu toku dat.
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Sestavení logiky transformace v plátně toku dat
 
-Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku vytvoříte tok dat, který převezme soubor moviesDB. CSV v úložišti ADLS a agreguje Průměrné hodnocení těchto hodnot z 1910 do 2000. Pak tento soubor zapíšete zpátky do úložiště ADLS.
+Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku sestavíte tok dat, který přebírá moviesDB.csv v úložišti ADLS a agreguje Průměrné hodnocení mikrohodnot z 1910 do 2000. Pak tento soubor zapíšete zpátky do úložiště ADLS.
 
 1. V plátně toku dat přidejte zdroj kliknutím do pole **Přidat zdroj** .
 
@@ -107,7 +107,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 1. Na obrazovce pro vytvoření propojené služby pojmenujte ADLS propojené služby Gen2 pro **ADLSGen2** a zadejte metodu ověřování. Pak zadejte přihlašovací údaje pro připojení. V tomto kurzu používáme klíč účtu pro připojení k našemu účtu úložiště. Kliknutím na **Test připojení** můžete ověřit, že vaše přihlašovací údaje byly zadány správně. Po dokončení klikněte na vytvořit.
 
     ![Propojená služba](media/tutorial-data-flow/ls1.png)
-1. Až budete zpátky na obrazovce vytváření datové sady, zadejte, kde se soubor nachází v poli **cesta k souboru** . V tomto kurzu se soubor moviesDB. csv nachází v části Container Sample-data. V případě, že soubor obsahuje záhlaví, zaregistrujte **první řádek jako záhlaví**. Vyberte možnost **z připojení/Store** a importujte schéma hlaviček přímo ze souboru v úložišti. Po dokončení klikněte na OK.
+1. Až budete zpátky na obrazovce vytváření datové sady, zadejte, kde se soubor nachází v poli **cesta k souboru** . V tomto kurzu se soubor moviesDB.csv nachází v části Container Sample-data. V případě, že soubor obsahuje záhlaví, zaregistrujte **první řádek jako záhlaví**. Vyberte možnost **z připojení/Store** a importujte schéma hlaviček přímo ze souboru v úložišti. Po dokončení klikněte na OK.
 
     ![Datové sady](media/tutorial-data-flow/dataset4.png)
 1. Pokud je váš cluster ladění spuštěný, přejděte na kartu **Náhled dat** ve zdrojové transformaci a kliknutím na **aktualizovat** Získejte snímek dat. K ověření, zda je transformace nakonfigurována správně, můžete použít náhled dat.
@@ -118,7 +118,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
     ![Plátno toku dat](media/tutorial-data-flow/dataflow5.png)
 1. Pojmenujte transformaci filtru **FilterYears**. Kliknutím na pole výrazu vedle **filtru** otevřete Tvůrce výrazů. Tady zadáte podmínku filtrování.
 
-    ![Filtr](media/tutorial-data-flow/filter1.png)
+    ![Filtrovat](media/tutorial-data-flow/filter1.png)
 1. Tvůrce výrazů toku dat umožňuje interaktivně vytvářet výrazy pro použití v různých transformacích. Výrazy mohou zahrnovat předdefinované funkce, sloupce ze vstupního schématu a uživatelsky definované parametry. Další informace o tom, jak sestavit výrazy, najdete v tématu [Tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md).
 
     V tomto kurzu chcete filtrovat filmy komedie žánrů, které se nacházely mezi roky 1910 a 2000. Protože rok je aktuálně řetězec, je nutné jej převést na celé číslo pomocí ```toInteger()``` funkce. Použijte operátory větší než nebo rovno (>=) a menší než nebo rovno (<=) pro porovnání s hodnotami literálového roku 1910 a 200-. Sjednotte tyto výrazy spolu s operátorem and (&&). Výraz se vychází takto:
@@ -131,13 +131,13 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 
     Pokud máte aktivní cluster ladění, můžete svoji logiku ověřit kliknutím na **aktualizovat** , aby se zobrazil výstup výrazu v porovnání s použitými vstupy. Existuje více než jedna správná odpověď na to, jak tuto logiku můžete dosáhnout pomocí jazyka výrazů toku dat.
 
-    ![Filtr](media/tutorial-data-flow/filter2.png)
+    ![Filtrovat](media/tutorial-data-flow/filter2.png)
 
     Až budete s vaším výrazem hotovi, klikněte na **Uložit a dokončit** .
 
 1. Načte **Náhled dat** , aby se ověřilo, že filtr funguje správně.
 
-    ![Filtr](media/tutorial-data-flow/filter3.png)
+    ![Filtrovat](media/tutorial-data-flow/filter3.png)
 1. Další transformace, kterou přidáte, je **agregovaná** transformace v rámci **modifikátoru schématu**.
 
     ![Agregace](media/tutorial-data-flow/agg1.png)
@@ -187,10 +187,10 @@ Kanál můžete ladit před jeho publikováním. V tomto kroku budete aktivovat 
     ![Kanál](media/tutorial-data-flow/pipeline2.png)
 1. V podokně monitorování můžete zobrazit počet řádků a čas strávený v každém kroku transformace.
 
-    ![Monitorování](media/tutorial-data-flow/pipeline3.png)
+    ![Sledování](media/tutorial-data-flow/pipeline3.png)
 1. Kliknutím na transformaci získáte podrobné informace o sloupcích a vytváření oddílů dat.
 
-    ![Monitorování](media/tutorial-data-flow/pipeline4.png)
+    ![Sledování](media/tutorial-data-flow/pipeline4.png)
 
 Pokud jste postupovali podle tohoto kurzu správně, měli byste do složky jímky zapsat 83 řádků a 2 sloupce. Správnost dat můžete ověřit kontrolou úložiště objektů BLOB.
 

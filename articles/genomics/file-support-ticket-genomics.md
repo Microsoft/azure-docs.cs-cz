@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72248599"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Kontaktování Microsoft Genomics pro podporu
@@ -22,26 +22,26 @@ Tento přehled popisuje, jak zažádat žádost o podporu pro kontaktování Mic
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>Vytvoření lístku podpory pomocí Azure Portal
-Nejdřív se přihlaste k účtu Azure v Azure Portal. Klikněte na otazník v pravém horním rohu a vyberte `Help + support`.
+Nejdřív se přihlaste k účtu Azure v Azure Portal. Klikněte na otazník v pravém horním rohu a vyberte `Help + support` .
 
 ![Kontaktujte podporu na Azure Portal](./media/file-support-ticket/genomics-contact-support.png "Kontaktujte podporu na Azure Portal") 
 
 
 
-Pak vyberte `New support request`. 
+Pak vyberte `New support request` . 
 
 ![Nová žádost o podporu](./media/file-support-ticket/new-support-request.png "Nová žádost o podporu") 
 
-Vyplňte `Basics`, včetně `Issue type` a. `Subscription` Vyberte, co je `Issue type` pro váš problém relevantní; například `Technical` byl vybrán příklad na obrázku níže. Nezapomeňte vybrat `Microsoft Genomics` jako příslušnou službu.  `Microsoft Genomics`bude uvedeno v `Intelligence and Analytics` kategorii.   Po výběru `Microsoft Genomics`budete také požádáni o zadání `Support plan` typu.
+Vyplňte `Basics` , včetně `Issue type` a `Subscription` . Vyberte, co je `Issue type` pro váš problém relevantní; jako příklad na obrázku níže `Technical` byl vybrán. Nezapomeňte vybrat `Microsoft Genomics` jako příslušnou službu.  `Microsoft Genomics`bude uvedeno v `Intelligence and Analytics` kategorii.   Po výběru `Microsoft Genomics` budete také požádáni o zadání `Support plan` typu.
 
 ![Základy Support request](./media/file-support-ticket/support-request-basics.png "Základy Support request")
 
 
-Dále přidejte podrobnosti o vašem problému. Nástroj pro žádosti se také připojí k existující dokumentaci, která vám může pomoct. V tomto příkladu se problém týká `Genomics keys`, ale k dispozici je také několik dalších možností.
+Dále přidejte podrobnosti o vašem problému. Nástroj pro žádosti se také připojí k existující dokumentaci, která vám může pomoct. V tomto příkladu se problém týká `Genomics keys` , ale k dispozici je také několik dalších možností.
 
 ![Support request problém](./media/file-support-ticket/support-request-problem.png "Support request problém")
 
-Nakonec přidejte své kontaktní informace a vyberte `Create` v dolní části obrazovky, aby bylo možné odeslat žádost o podporu.
+Nakonec přidejte své kontaktní informace a vyberte v `Create` dolní části obrazovky, aby bylo možné odeslat žádost o podporu.
 
 ![Support request kontakt](./media/file-support-ticket/support-request-contact.png "Support request kontakt")
 

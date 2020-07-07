@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422558"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Brána firewall operačního systému hosta virtuálního počítače Azure blokuje příchozí provoz
@@ -53,7 +53,7 @@ Připojte se ke [konzole sériového portu a pak otevřete instanci prostředí 
 
 #### <a name="mitigation-1"></a>Zmírnění 1
 
-1.  Pokud je agent Azure nainstalovaný a na virtuálním počítači funguje správně, můžete použít možnost resetovat jenom konfiguraci v nabídce **Podpora a Poradce při potížích s** > **resetování hesla** v nabídce VM.
+1.  Pokud je agent Azure nainstalovaný a na virtuálním počítači funguje správně, můžete použít možnost resetovat jenom konfiguraci v nabídce **Podpora a Poradce při potížích s**  >  **resetování hesla** v nabídce VM.
 
 2.  Spuštění této možnosti obnovení provede následující akce:
 

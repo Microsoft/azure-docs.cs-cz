@@ -13,10 +13,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72025937"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD&T dev/test Environment v Azure
@@ -62,11 +62,11 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 
 3. Pomocí tlačítka **připojit** získáte přihlašovací údaje SSH zobrazené v okně **Přehled** virtuálního počítače. Vyberte kartu **SSH** a zkopírujte přihlašovací příkaz SSH do schránky.
 
-4. Přihlaste se k [prostředí bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formátu **IP adresa\>\@\<\>ID uživatele\<SSH**. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
+4. Přihlaste se k [prostředí bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formě **SSH \<user id\> \@ \<IP Address\> **. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Zkopírujte instalační soubor na server.
 
-Instalační soubor pro webový server je **ZDT\_Install\_EE\_v 12.0.0.1. tgz**. Je součástí médií dodaných společností IBM. Tento soubor musíte nahrát na virtuální počítač s Ubuntu.
+Instalační soubor pro webový server je **ZDT \_ install \_ EE \_ v 12.0.0.1. tgz**. Je součástí médií dodaných společností IBM. Tento soubor musíte nahrát na virtuální počítač s Ubuntu.
 
 1. V příkazovém řádku zadejte následující příkaz, abyste se ujistili, že je vše v nově vytvořené imagi aktuální:
 
@@ -91,7 +91,7 @@ Instalační soubor pro webový server je **ZDT\_Install\_EE\_v 12.0.0.1. tgz**.
 
 ## <a name="install-the-enterprise-edition"></a>Instalace edice Enterprise
 
-1. Do adresáře ZDT a dekomprimujete soubor ZDT\_Install\_EE\_v 12.0.0.1. tgz pomocí následujících příkazů:
+1. Do adresáře ZDT a dekomprimujete \_ soubor ZDT Install \_ EE \_ v 12.0.0.1. tgz pomocí následujících příkazů:
 
     ```
     cd ZDT

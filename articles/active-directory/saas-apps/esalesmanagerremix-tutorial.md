@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202392"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s E-Remix manažerem E Sales
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat integraci Azure AD s E-Remix Sales managerem, přide
 
     ![Tlačítko Azure Active Directory][1]
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Okno podnikové aplikace][2]
     
@@ -101,9 +101,9 @@ Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jedn
 
     ![E Sales Manager Remix informace o jednotném přihlašování v doméně a adresách URL](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. Do pole **přihlašovací adresa** URL zadejte adresu URL v následujícím formátu: *https://\<server-URL-based-URL>/\<subdomain>/eSales-PC*.
+    a. Do pole **Adresa URL pro přihlášení** zadejte adresu URL v následujícím formátu: *https:// \<Server-Based-URL> / \<sub-domain> /eSales-PC*.
 
-    b. Do pole **identifikátor** zadejte adresu URL v následujícím formátu: *\<https://Server-\<URL-Based-URL>/subdomain>/*.
+    b. Do pole **identifikátor** zadejte adresu URL v následujícím formátu: *https:// \<Server-Based-URL> / \<sub-domain> / *.
 
     c. Poznamenejte si hodnotu **identifikátoru** pro pozdější použití v tomto kurzu.
     
@@ -120,7 +120,7 @@ Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jedn
 
     Otevře se okno **Upravit atribut** .
 
-1. Zkopírujte **obor názvů** a hodnoty **názvu** . Vygenerujte hodnotu v * \<oboru názvů vzoru>/\<název>* a uložte ji pro pozdější použití v tomto kurzu.
+1. Zkopírujte **obor názvů** a hodnoty **názvu** . Vygenerujte hodnotu ve vzoru *\<Namespace>/\<Name>* a uložte ji pro pozdější použití v tomto kurzu.
 
     ![Okno Upravit atribut](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -142,7 +142,7 @@ Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jedn
 
     ![Příkaz "do nabídky Správce"](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. V levém podokně vyberte možnost **Nastavení** > systému**spolupráce s externím systémem**.
+1. V levém podokně vyberte možnost **nastavení systému**  >  **spolupráce s externím systémem**.
 
     ![Odkazy "Systémová nastavení" a "spolupráce s externím systémem"](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -158,7 +158,7 @@ Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jedn
     
     b. V části **položka pro spolupráci** vyberte v rozevíracím seznamu možnost **e-mail**.
 
-    c. Do pole **položka pro spolupráci** vložte hodnotu deklarace identity, kterou jste zkopírovali dříve z Azure Portal (tj. **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
+    c. Do pole **položka pro spolupráci** vložte hodnotu deklarace identity, kterou jste zkopírovali dříve z Azure Portal (tj **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .).
 
     d. Do pole **Vystavitel (ID entity)** vložte hodnotu identifikátoru, kterou jste zkopírovali dříve z části **E Sales Manager Remix doména a adresy URL** v Azure Portal.
 
@@ -166,12 +166,12 @@ Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jedn
 
     f. Do pole **Adresa URL pro přihlášení poskytovatele ID** vložte adresu URL služby jednotného přihlašování SAML, kterou jste zkopírovali dříve v Azure Portal.
 
-    g. V poli **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu URL pro odhlášení, kterou jste zkopírovali dříve v Azure Portal.
+    například V poli **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu URL pro odhlášení, kterou jste zkopírovali dříve v Azure Portal.
 
     h. Vyberte **nastavení dokončeno**.
 
 > [!TIP]
-> Při nastavování aplikace si můžete přečíst stručnou verzi předchozích pokynů v [Azure Portal](https://portal.azure.com). Po přidání aplikace v části **Active Directory** > **Enterprise Applications** vyberte kartu **jednotné přihlašování** a pak přejděte do vložené dokumentace v části **Konfigurace** v dolní části. Další informace o funkci integrované dokumentace najdete v [dokumentaci k Azure AD Embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Při nastavování aplikace si můžete přečíst stručnou verzi předchozích pokynů v [Azure Portal](https://portal.azure.com). Po přidání aplikace v části **Active Directory**  >  **Enterprise Applications** vyberte kartu **jednotné přihlašování** a pak přejděte do vložené dokumentace v části **Konfigurace** v dolní části. Další informace o funkci integrované dokumentace najdete v [dokumentaci k Azure AD Embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
@@ -184,7 +184,7 @@ V této části vytvoříte testovacího uživatele Britta Simon v Azure Portal 
 
     ![Odkaz na Azure Active Directory](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. Chcete-li zobrazit seznam aktuálních uživatelů, vyberte možnost **Uživatelé a skupiny** > **Všichni uživatelé**.
+1. Chcete-li zobrazit seznam aktuálních uživatelů, vyberte možnost **Uživatelé a skupiny**  >  **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -214,7 +214,7 @@ V této části vytvoříte testovacího uživatele Britta Simon v Azure Portal 
 
     ![Remix konfigurace E Sales Manageru](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1.  > Vyberte **nastavení vaší společnosti****Údržba oddělení a zaměstnanci**a pak vyberte **zaregistrované zaměstnance**.
+1. Vyberte **nastavení vaší společnosti**  >  **Údržba oddělení a zaměstnanci**a pak vyberte **zaregistrované zaměstnance**.
 
     ![Karta registrované zaměstnanci](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -240,7 +240,7 @@ V této části povolíte, aby uživatel Britta Simon pomocí jednotného přihl
 
 ![Přiřazení role uživatele][200] 
 
-1. V Azure Portal otevřete zobrazení **aplikace** , do zobrazení **adresář** a pak vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V Azure Portal otevřete zobrazení **aplikace** , do zobrazení **adresář** a pak vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Odkazy "podnikové aplikace" a "všechny aplikace"][201] 
 

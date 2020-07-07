@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190672"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop HDFS s využitím Azure HDInsightu
@@ -62,7 +62,7 @@ Přístup k místnímu HDFS z příkazového řádku a kódu aplikace místo pom
     }
     ```
 
-3. Spusťte zkompilovaný soubor. jar (například soubor s názvem `java-unit-tests-1.0.jar`) v clusteru HDInsight s následujícím příkazem:
+3. Spusťte zkompilovaný soubor. jar (například soubor s názvem `java-unit-tests-1.0.jar` ) v clusteru HDInsight s následujícím příkazem:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -76,7 +76,7 @@ Přístup k místnímu HDFS z příkazového řádku a kódu aplikace místo pom
 
 ### <a name="issue"></a>Problém
 
-Při použití příkazů `hadoop` nebo `hdfs dfs` k zápisu souborů, které jsou na clusteru HBA na 12 GB nebo větší, může docházet k následující chybě:
+Při použití `hadoop` příkazů nebo `hdfs dfs` k zápisu souborů, které jsou na clusteru HBA na 12 GB nebo větší, může docházet k následující chybě:
 
 ```error
 ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
@@ -102,7 +102,7 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 ### <a name="cause"></a>Příčina
 
-HBA v clusterech HDInsight ve výchozím nastavení na velikost bloku 256 KB při zápisu do služby Azure Storage. I když funguje pro adaptéry HBA rozhraní API nebo rozhraní REST API, výsledkem je chyba při použití nástrojů `hadoop` příkazového řádku nebo `hdfs dfs` .
+HBA v clusterech HDInsight ve výchozím nastavení na velikost bloku 256 KB při zápisu do služby Azure Storage. I když funguje pro adaptéry HBA rozhraní API nebo rozhraní REST API, výsledkem je chyba při použití `hadoop` `hdfs dfs` nástrojů příkazového řádku nebo.
 
 ### <a name="resolution"></a>Řešení
 
@@ -114,9 +114,9 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 Můžete také hodnotu `fs.azure.write.request.size` globálně zvýšit pomocí Apache Ambari. Pomocí následujících kroků můžete změnit hodnotu ve webovém uživatelském rozhraní Ambari:
 
-1. V prohlížeči přejdete do webového uživatelského rozhraní Ambari pro váš cluster. Adresa URL je `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru. Po zobrazení výzvy zadejte jméno správce a heslo pro cluster.
+1. V prohlížeči přejdete do webového uživatelského rozhraní Ambari pro váš cluster. Adresa URL je `https://CLUSTERNAME.azurehdinsight.net` , kde `CLUSTERNAME` je název vašeho clusteru. Po zobrazení výzvy zadejte jméno správce a heslo pro cluster.
 2. Na levé straně obrazovky vyberte **HDFS**a pak vyberte kartu **Konfigurace** .
-3. Do pole **Filter...** zadejte `fs.azure.write.request.size`.
+3. Do pole **Filter...** zadejte `fs.azure.write.request.size` .
 4. Změňte hodnotu z 262144 (256 KB) na novou hodnotu. Například 4194304 (4 MB).
 
     ![Obrázek změny hodnoty prostřednictvím webového uživatelského rozhraní Ambari](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
@@ -125,10 +125,10 @@ Další informace o použití Ambari najdete v tématu [Správa clusterů HDInsi
 
 ## <a name="du"></a>du
 
-[`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) Příkaz zobrazí velikosti souborů a adresářů obsažených v daném adresáři nebo délku souboru v případě, že se jedná pouze o soubor.
+[`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du)Příkaz zobrazí velikosti souborů a adresářů obsažených v daném adresáři nebo délku souboru v případě, že se jedná pouze o soubor.
 
-`-s` Možnost vytvoří agregovaný souhrn délek souborů, které se zobrazují.  
-`-h` Možnost formátuje velikosti souborů.
+`-s`Možnost vytvoří agregovaný souhrn délek souborů, které se zobrazují.  
+`-h`Možnost formátuje velikosti souborů.
 
 Příklad:
 
@@ -153,6 +153,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192676"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
@@ -29,7 +29,7 @@ Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v s
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Pokyny najdete v tématu [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters) . Cluster se otevře v novém zobrazení portálu.
 
-1. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru `admin`(výchozí), které jste zadali při vytváření clusteru. Můžete také přejít do `https://CLUSTERNAME.azurehdinsight.net/#/main/views` prohlížeče v prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z **řídicích panelů clusteru**vyberte **zobrazení Ambari**. Po zobrazení výzvy k ověření použijte název a heslo přihlášení clusteru (výchozí `admin` ), které jste zadali při vytváření clusteru. Můžete také přejít do `https://CLUSTERNAME.azurehdinsight.net/#/main/views` prohlížeče v prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru.
 
 1. V seznamu zobrazení vyberte __zobrazení podregistru__.
 
@@ -115,11 +115,11 @@ Na kartě **dotaz** můžete volitelně ukládat dotazy. Po uložení se dotaz d
 ![Karta uložené dotazy v Apache Hive zobrazení](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy můžete najít pod cestou `/user/<username>/hive/scripts`. Tyto soubory jsou uloženy jako soubory ve `.hql` formátu prostého textu.
+> Uložené dotazy jsou uloženy ve výchozím úložišti clusteru. Uložené dotazy můžete najít pod cestou `/user/<username>/hive/scripts` . Tyto soubory jsou uloženy jako soubory ve formátu prostého textu `.hql` .
 >
 > Pokud cluster odstraníte, ale zachováte ho, můžete k načtení dotazů použít nástroj, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nebo data Lake Storage Explorer (na webu [Azure Portal](https://portal.azure.com)).
 
-## <a name="user-defined-functions"></a>Uživatelem definované funkce
+## <a name="user-defined-functions"></a>Uživatelsky definované funkce
 
 Podregistr můžete roztáhnout prostřednictvím uživatelsky definovaných funkcí (UDF). Použijte systém souborů UDF k implementaci funkcí nebo logiky, která není snadno modelována v HiveQL.
 

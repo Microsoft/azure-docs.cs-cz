@@ -4,15 +4,15 @@ description: Tento článek vás provede nasazením aplikace Service Fabric, zm�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195863"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric kurz upgradu aplikací pomocí sady Visual Studio
 > [!div class="op_single_selector"]
-> * [Prostředí](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
@@ -26,18 +26,18 @@ Nejdřív Stáhněte aplikaci [Visual Objects](https://github.com/Azure-Samples/
 
 ![Místní nabídka pro aplikaci Service Fabric][image1]
 
-Po výběru možnosti **publikovat** se zobrazí místní nabídka a **cílový profil** můžete nastavit na **PublishProfiles\Local.XML**. Před kliknutím na tlačítko **publikovat**by okno mělo vypadat takto.
+Když vyberete **publikovat** , zobrazí se místní nabídka a můžete nastavit **cílový profil** na **PublishProfiles\Local.xml**. Před kliknutím na tlačítko **publikovat**by okno mělo vypadat takto.
 
 ![Publikování aplikace Service Fabric][image2]
 
 Nyní můžete v dialogovém okně kliknout na **publikovat** . [K zobrazení clusteru a aplikace](service-fabric-visualizing-your-cluster.md)můžete použít Service Fabric Explorer. Aplikace Visual Objects obsahuje webovou službu, na kterou můžete přejít zadáním `http://localhost:8081/visualobjects/` do adresního řádku v prohlížeči.  Mělo by se zobrazit 10 plovoucích vizuálních objektů, které se pohybují na obrazovce.
 
-**Poznámka:** Pokud se nasazuje do `Cloud.xml` profilu (Azure Service Fabric), měla by být aplikace dostupná na adrese **http://{ServiceFabricName}. { Region}. cloudapp. Azure. com: 8081/visualobjects/**. Ujistěte se, že jste `8081/TCP` nakonfigurovali v Load Balancer (Najděte Load Balancer ve stejné skupině prostředků jako instance Service Fabric).
+**Poznámka:** Pokud se nasazuje do `Cloud.xml` profilu (Azure Service Fabric), měla by být aplikace dostupná na adrese **http://{ServiceFabricName}. { Region}. cloudapp. Azure. com: 8081/visualobjects/**. Ujistěte se, že jste `8081/TCP` nakonfigurovali v Load Balancer (najděte Load Balancer ve stejné skupině prostředků jako instance Service Fabric).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: aktualizace ukázky vizuálních objektů
 Můžete si všimnout, že ve verzi, která byla nasazena v kroku 1, se neotáčí vizuální objekty. Pojďme tuto aplikaci upgradovat na jednu, kde se také otočí vizuální objekty.
 
-V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor **VisualObjectActor.cs** . V tomto souboru přejdete do metody `MoveObject`, nakomentovat `visualObject.Move(false)`a odkomentujte. `visualObject.Move(true)` Tato změna kódu otočí objekty po upgradu služby.  **Nyní můžete sestavit (ne znovu sestavit) řešení**, které vytvoří upravené projekty. Pokud vyberete možnost *znovu sestavit vše*, je nutné aktualizovat verze pro všechny projekty.
+V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor **VisualObjectActor.cs** . V tomto souboru přejdete do metody `MoveObject` , nakomentovat `visualObject.Move(false)` a odkomentujte `visualObject.Move(true)` . Tato změna kódu otočí objekty po upgradu služby.  **Nyní můžete sestavit (ne znovu sestavit) řešení**, které vytvoří upravené projekty. Pokud vyberete možnost *znovu sestavit vše*, je nutné aktualizovat verze pro všechny projekty.
 
 Musíme také poznáte verzi naší aplikace. Chcete-li provést změny verze po kliknutí pravým tlačítkem na projekt **VisualObjects** , můžete použít možnost **Upravit verze manifestu** aplikace Visual Studio. Když vyberete tuto možnost, zobrazí se dialogové okno pro verze edice následujícím způsobem:
 

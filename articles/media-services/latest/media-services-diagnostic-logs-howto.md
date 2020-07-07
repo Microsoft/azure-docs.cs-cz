@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382915"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorování diagnostických protokolů Media Services
@@ -96,7 +96,7 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 
  Teď můžete zobrazit událost JSON, která se uložila do účtu úložiště.
 
-### <a name="examples-of-pt1hjson"></a>Příklady PT1H. JSON
+### <a name="examples-of-pt1hjson"></a>Příklady PT1H.js
 
 #### <a name="clear-key-delivery-log"></a>Vymazat protokol doručení klíčů
 
@@ -178,7 +178,7 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
 * [Protokoly diagnostiky Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)

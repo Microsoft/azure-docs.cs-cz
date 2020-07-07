@@ -10,21 +10,21 @@ ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672734"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Přidání uživatele na webu Azure Portal
 
 ## <a name="start-the-add-user-wizard"></a>Spuštění Průvodce přidáním uživatele
-1. Otevřete Azure Data Lake Analytics prostřednictvím https://portal.azure.com.
+1. Otevřete Azure Data Lake Analytics prostřednictvím https://portal.azure.com .
 2. Klikněte na tlačítko **Průvodce přidáním uživatele**.
 3. V kroku **Vybrat uživatele** vyhledejte uživatele, kterého chcete přidat. Klikněte na **Vybrat**.
 4. v kroku **Vybrat roli** vyberte **Data Lake Analytics vývojář**. Tato role má minimální sadu oprávnění potřebných pro odesílání, monitorování a správu úloh U-SQL. Pokud skupina není určená pro správu služeb Azure, přiřaďte ji k této roli.
 5. V kroku **vybrat oprávnění katalogu** vyberte všechny další databáze, ke kterým bude uživatel potřebovat přístup. K odesílání úloh se vyžaduje přístup pro čtení a zápis k hlavní databázi. Po dokončení klikněte na **OK**.
-6. V posledním kroku s názvem **přiřadit vybraná oprávnění** zkontrolujte změny provedené průvodcem. Klikněte na tlačítko **OK**.
+6. V posledním kroku s názvem **přiřadit vybraná oprávnění** zkontrolujte změny provedené průvodcem. Klikněte na **OK**.
 
 
 ## <a name="configure-acls-for-data-folders"></a>Konfigurace seznamů ACL pro složky dat
@@ -38,12 +38,12 @@ V případě potřeby udělte "R-X" nebo "RWX" ve složkách, které obsahují v
 4.  Vyberte roli Azure RBAC pro přiřazení této skupiny.
 5.  Přiřaďte roli čtenáře. Tato role má minimální sadu oprávnění potřebných pro procházení a správu dat uložených v ADLSGen1. Pokud skupina není určená pro správu služeb Azure, přiřaďte ji k této roli.
 6.  Zadejte název skupiny.
-7.  Klikněte na tlačítko **OK**.
+7.  Klikněte na **OK**.
 
 ## <a name="adding-a-user-using-powershell"></a>Přidání uživatele pomocí prostředí PowerShell
 
 1. Postupujte podle pokynů v této příručce: [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-2. Stáhněte si skript prostředí PowerShell [Add-AdlaJobUser. ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) .
+2. Stáhněte si [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) powershellový skript.
 3. Spusťte PowerShellový skript. 
 
 Vzorový příkaz, který uživateli poskytne přístup k odesílání úloh, zobrazení nových metadat úlohy a zobrazení starých metadat:

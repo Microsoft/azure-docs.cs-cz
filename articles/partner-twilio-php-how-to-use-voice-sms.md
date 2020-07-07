@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80410543"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Použití Twilio pro hlasové funkce a možnosti SMS v PHP
@@ -28,7 +28,7 @@ Twilio vypíná budoucí obchodní komunikaci a umožňuje vývojářům vkláda
 **Twilio Voice** umožňuje vašim aplikacím vytvářet a přijímat telefonní hovory. **TWILIO SMS** umožňuje aplikaci posílat a přijímat textové zprávy. **Klient Twilio** umožňuje volání VoIP z libovolného telefonu, tabletu nebo prohlížeče a podporuje WebRTC.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Ceny Twilio a speciální nabídky
-Zákazníci Azure obdrží [zvláštní nabídku](https://www.twilio.com/azure): bezplatný $10 kredit Twilio při upgradu účtu Twilio. Tento Twilio kredit se dá použít pro jakékoli použití Twilio ($10 kreditový ekvivalent pro odeslání až 1 000 zpráv SMS nebo přijetí až 1000 zpráv o telefonním čísle v závislosti na umístění telefonního čísla a zprávy nebo cíli volání). Uplatněte tento Twilio kredit a začněte na: [https://ahoy.twilio.com/azure](https://ahoy.twilio.com/azure).
+Zákazníci Azure obdrží [zvláštní nabídku](https://www.twilio.com/azure): bezplatný $10 kredit Twilio při upgradu účtu Twilio. Tento Twilio kredit se dá použít pro jakékoli použití Twilio ($10 kreditový ekvivalent pro odeslání až 1 000 zpráv SMS nebo přijetí až 1000 zpráv o telefonním čísle v závislosti na umístění telefonního čísla a zprávy nebo cíli volání). Uplatněte tento Twilio kredit a začněte na: [https://ahoy.twilio.com/azure](https://ahoy.twilio.com/azure) .
 
 Twilio je služba s průběžnými platbami. Neexistují žádné poplatky za nastavení a účet můžete kdykoli zavřít. Další podrobnosti najdete v [Twilio cenách][twilio_pricing].
 
@@ -38,20 +38,20 @@ Rozhraní Twilio API je rozhraní RESTful API, které poskytuje funkce hlasu a S
 Klíčovými aspekty rozhraní Twilio API jsou Twilio příkazy a Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Operace Twilio
-Rozhraní API využívá operace Twilio; Například příkaz ** &lt;vyslovit&gt; ** instruuje Twilio, aby audibly doručení zprávy na volání.
+Rozhraní API využívá operace Twilio; Například příkaz ** &lt; vyslovit &gt; ** instruuje Twilio, aby audibly doručení zprávy na volání.
 
 Následuje seznam operací Twilio. Přečtěte si o dalších příkazech a funkcích prostřednictvím [dokumentace jazyka Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
-* Vytočit: připojí volajícího k jinému telefonu. ** &lt;&gt;**
-* Shromáždit: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu. ** &lt;&gt;**
-* Hangup: ukončí volání. ** &lt;&gt;**
-* Přehrát: přehraje zvukový soubor. ** &lt;&gt;**
-* Pozastavit: netiché čekání po zadaný počet sekund. ** &lt;&gt;**
-* Záznam: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam. ** &lt;&gt;**
-* Přesměrování: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL. ** &lt;&gt;**
-* Odmítnout: odmítne příchozí volání na číslo Twilio bez fakturace. ** &lt;&gt;**
-* Řekněme: převede text na řeč, který se provádí na volání. ** &lt;&gt;**
-* SMS: pošle zprávu SMS. ** &lt;&gt;**
+* ** &lt; Vytočit &gt; **: připojí volajícího k jinému telefonu.
+* ** &lt; Shromáždit &gt; **: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
+* ** &lt; Hangup &gt; **: ukončí volání.
+* ** &lt; Přehrát &gt; **: přehraje zvukový soubor.
+* ** &lt; Pozastavit &gt; **: netiché čekání po zadaný počet sekund.
+* ** &lt; Záznam &gt; **: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* ** &lt; Přesměrování &gt; **: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
+* ** &lt; Odmítnout &gt; **: odmítne příchozí volání na číslo Twilio bez fakturace.
+* ** &lt; Řekněme &gt; **: převede text na řeč, který se provádí na volání.
+* ** &lt; SMS &gt; **: pošle zprávu SMS.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založených na XML, která je založená na příkazech Twilio, které informují Twilio o tom, jak zpracovat volání nebo SMS.
@@ -73,14 +73,14 @@ Až budete připraveni získat účet Twilio, zaregistrujte se do [Twilio try][t
 Při registraci účtu Twilio obdržíte ID účtu a ověřovací token. Pro volání rozhraní API Twilio budou potřeba obojí. Abyste zabránili neoprávněnému přístupu k účtu, udržujte svůj ověřovací token zabezpečený. ID účtu a ověřovací token se mohou zobrazit na [stránce účet Twilio][twilio_account]v polích s popiskem **SID účtu** a **ověřovacím tokenem**v uvedeném pořadí.
 
 ## <a name="create-a-php-application"></a><a id="create_app"></a>Vytvoření aplikace PHP
-Aplikace PHP, která používá službu Twilio a je spuštěná v Azure, se neliší od jakékoli jiné aplikace PHP, která používá službu Twilio. I když jsou služby Twilio založené na REST a můžou se volat z PHP několika způsoby, Tento článek se zaměří na to, jak používat služby Twilio s [Twilio knihovnou pro php z GitHubu][twilio_php]. Další informace o použití knihovny Twilio pro PHP naleznete v tématu [https://www.twilio.com/docs/libraries/php][twilio_lib_docs].
+Aplikace PHP, která používá službu Twilio a je spuštěná v Azure, se neliší od jakékoli jiné aplikace PHP, která používá službu Twilio. I když jsou služby Twilio založené na REST a můžou se volat z PHP několika způsoby, Tento článek se zaměří na to, jak používat služby Twilio s [Twilio knihovnou pro php z GitHubu][twilio_php]. Další informace o použití knihovny Twilio pro PHP naleznete v tématu [https://www.twilio.com/docs/libraries/php][twilio_lib_docs] .
 
 Podrobné pokyny pro sestavování a nasazování aplikace Twilio/PHP do Azure jsou k dispozici v článku [jak uskutečnit telefonní hovor pomocí Twilio v aplikaci php v Azure][howto_phonecall_php].
 
 ## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>Konfigurace aplikace pro použití knihoven Twilio
 Aplikaci můžete nakonfigurovat tak, aby používala knihovnu Twilio pro PHP dvěma způsoby:
 
-1. Stáhněte si knihovnu Twilio pro PHP z GitHubu[https://github.com/twilio/twilio-php][twilio_php]() a přidejte do své aplikace adresář **služby** .
+1. Stáhněte si knihovnu Twilio pro PHP z GitHubu ( [https://github.com/twilio/twilio-php][twilio_php] ) a přidejte do své aplikace adresář **služby** .
    
     - nebo -
 2. Nainstalujte knihovnu Twilio pro PHP jako balíček pro HRUŠKy. Dá se nainstalovat pomocí následujících příkazů:
@@ -92,7 +92,7 @@ Po instalaci knihovny Twilio pro PHP můžete přidat do horní části souborů
 
         require_once 'Services/Twilio.php';
 
-Další informace najdete v tématu [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
+Další informace najdete na webu [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Postupy: provedení odchozího volání
 Následující příklad ukazuje, jak provést odchozí volání pomocí třídy **Services_Twilio** . Tento kód také používá Twilio web k vrácení odpovědi TwiML (Twilio Markup Language). Vysaďte hodnoty pro čísla **z** a **na** telefonní číslo a ujistěte se, že jste před spuštěním kódu ověřili předplatné **z** telefonního čísla účtu Twilio.
@@ -172,7 +172,7 @@ Následující příklad ukazuje, jak odeslat zprávu SMS pomocí třídy **Serv
     }
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Postupy: poskytování odpovědí TwiML z vašeho vlastního webu
-Když vaše aplikace zahájí volání rozhraní Twilio API, Twilio odešle požadavek na adresu URL, která by měla vrátit odpověď TwiML. Výše uvedený příklad používá adresu URL [https://twimlets.com/message][twimlet_message_url]poskytnutou Twilio. (I když je TwiML navržený pro použití v Twilio, můžete ho zobrazit v prohlížeči. Například kliknutím [https://twimlets.com/message][twimlet_message_url] zobrazíte prázdný `<Response>` element. jako další příklad můžete kliknutím [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] zobrazit `<Response>` prvek, který obsahuje `<Say>` prvek.)
+Když vaše aplikace zahájí volání rozhraní Twilio API, Twilio odešle požadavek na adresu URL, která by měla vrátit odpověď TwiML. Výše uvedený příklad používá adresu URL poskytnutou Twilio [https://twimlets.com/message][twimlet_message_url] . (I když je TwiML navržený pro použití v Twilio, můžete ho zobrazit v prohlížeči. Například kliknutím [https://twimlets.com/message][twimlet_message_url] zobrazíte prázdný `<Response>` prvek. jako jiný příklad [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] můžete kliknutím zobrazit `<Response>` prvek, který obsahuje `<Say>` prvek.)
 
 Místo toho, abyste museli spoléhat na adresu URL zadanou v Twilio, můžete vytvořit vlastní web, který bude vracet odpovědi HTTP. Web můžete vytvořit v jakémkoli jazyce, který vrací odpovědi XML; v tomto tématu se předpokládá, že k vytvoření TwiML použijete PHP.
 
@@ -186,7 +186,7 @@ Následující stránka PHP má za následek odpověď TwiML, která říká **H
         <Say>Hello world.</Say>
     </Response>
 
-Jak vidíte z výše uvedeného příkladu, odpověď TwiML je jednoduše dokument XML. Knihovna Twilio pro PHP obsahuje třídy, které budou generovat TwiML za vás. Následující příklad vytvoří ekvivalentní odpověď, jak je uvedeno výše, ale používá třídu **Services\_Twilio\_Twiml** v knihovně Twilio Library pro PHP:
+Jak vidíte z výše uvedeného příkladu, odpověď TwiML je jednoduše dokument XML. Knihovna Twilio pro PHP obsahuje třídy, které budou generovat TwiML za vás. Následující příklad vytvoří ekvivalentní odpověď, jak je uvedeno výše, ale používá třídu **Services \_ Twilio \_ Twiml** v knihovně Twilio Library pro PHP:
 
     require_once('Services/Twilio.php');
 
@@ -194,7 +194,7 @@ Jak vidíte z výše uvedeného příkladu, odpověď TwiML je jednoduše dokume
     $response->say("Hello world.");
     print $response;
 
-Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml][twiml_reference]. 
+Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml][twiml_reference] . 
 
 Jakmile nastavíte stránku PHP tak, aby poskytovala odpovědi TwiML, použijte adresu URL stránky PHP jako adresu URL předanou `Services_Twilio->account->calls->create` metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure a název stránky PHP je **MyTwiML. php**, můžete adresu URL předat **Services_Twilio->>volání – >vytvořit** , jak je znázorněno v následujícím příkladu:
 

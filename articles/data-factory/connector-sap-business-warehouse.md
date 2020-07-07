@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418061"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat ze SAP Business Warehouse pomocí Azure Data Factory
@@ -54,7 +54,7 @@ K použití tohoto konektoru SAP Business Warehouse potřebujete:
 
 >[!TIP]
 >Pokud chcete řešit potíže s připojením SAP BW, ujistěte se, že:
->- Všechny knihovny závislostí extrahované ze sady NetWeaver RFC SDK jsou umístěné ve složce%Windir%\System32. Obvykle má icudt34. dll, icuin34. dll, icuuc34. dll, libicudecnumber. dll, librfc32. dll, libsapucum. dll, sapcrypto. dll, sapcryto_old. dll, sapnwrfc. dll.
+>- Všechny knihovny závislostí extrahované ze sady NetWeaver RFC SDK jsou umístěné ve složce%Windir%\System32. Obvykle má icudt34.dll, icuin34.dll, icuuc34.dll, libicudecnumber.dll, librfc32.dll, libsapucum.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll.
 >- Potřebné porty používané pro připojení k serveru SAP jsou povoleny v místním počítači IR, což jsou obvykle porty 3300 a 3201.
 
 ## <a name="getting-started"></a>Začínáme
@@ -67,9 +67,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu SAP Business Warehouse (ČERNOBÍLe) jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **SapBw** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapBw** . | Ano |
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
 | systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
 | clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
@@ -77,7 +77,7 @@ Pro propojenou službu SAP Business Warehouse (ČERNOBÍLe) jsou podporovány n�
 | heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -108,7 +108,7 @@ Pro propojenou službu SAP Business Warehouse (ČERNOBÍLe) jsou podporovány n�
 
 Chcete-li kopírovat data z SAP BW, nastavte vlastnost Type datové sady na **SapBwCube**. Neexistují žádné vlastnosti specifické pro typ pro SAP BW datovou sadu relačních objektů typu.
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -135,12 +135,12 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Chcete-li kopírovat data z SAP BW, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapBwSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapBwSource** . | Ano |
 | query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Ano |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

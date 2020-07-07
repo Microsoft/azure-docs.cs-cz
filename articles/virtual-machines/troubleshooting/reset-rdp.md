@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058443"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jejího hesla správce ve virtuálním počítači s Windows
@@ -59,7 +59,7 @@ Nejdřív se ujistěte, že máte [nainstalovaný a nakonfigurovaný nejnovějš
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Resetovat heslo účtu místního správce**
 
-- Obnovte heslo nebo uživatelské jméno správce pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell. `typeHandlerVersion` Nastavení musí být 2,0 nebo vyšší, protože verze 1 je zastaralá. 
+- Obnovte heslo nebo uživatelské jméno správce pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell. `typeHandlerVersion`Nastavení musí být 2,0 nebo vyšší, protože verze 1 je zastaralá. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -77,14 +77,14 @@ Nejdřív se ujistěte, že máte [nainstalovaný a nakonfigurovaný nejnovějš
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Resetování konfigurace služby Vzdálená plocha**
 
-1. Obnovte vzdálený přístup k VIRTUÁLNÍmu počítači pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell. V následujícím příkladu se obnoví rozšíření přístupu s názvem `myVMAccess` na virtuálním počítači `myVM` s názvem `myResourceGroup` ve skupině prostředků:
+1. Obnovte vzdálený přístup k VIRTUÁLNÍmu počítači pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell. V následujícím příkladu se obnoví rozšíření přístupu s názvem `myVMAccess` na virtuálním počítači s názvem `myVM` ve `myResourceGroup` skupině prostředků:
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]
-    > Virtuální počítač může mít v jakémkoli okamžiku jenom jeden agent přístupu k virtuálnímu počítači. Pokud chcete nastavit vlastnosti agenta přístupu k virtuálnímu počítači `-ForceRerun` , použijte možnost. Když použijete `-ForceRerun`, ujistěte se, že používáte stejný název pro agenta přístupu k virtuálnímu počítači, který jste mohli použít v jakémkoli z předchozích příkazů.
+    > Virtuální počítač může mít v jakémkoli okamžiku jenom jeden agent přístupu k virtuálnímu počítači. Pokud chcete nastavit vlastnosti agenta přístupu k virtuálnímu počítači, použijte `-ForceRerun` možnost. Když použijete `-ForceRerun` , ujistěte se, že používáte stejný název pro agenta přístupu k virtuálnímu počítači, který jste mohli použít v jakémkoli z předchozích příkazů.
 
 1. Pokud se stále nemůžete vzdáleně připojit k virtuálnímu počítači, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure se systémem Windows](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pokud ztratíte připojení k řadiči domény Windows, budete ho muset obnovit z zálohování řadiče domény.
 

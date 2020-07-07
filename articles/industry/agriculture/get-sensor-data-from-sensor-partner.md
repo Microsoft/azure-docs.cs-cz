@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398231"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
@@ -46,7 +46,7 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 
 2. **Pokud používáte FarmBeats verze 1.2.7 nebo novější, přeskočte kroky a, b a c a přejděte ke kroku 3.** Verzi FarmBeats můžete ověřit tak, že vyberete ikonu **Nastavení** v pravém horním rohu uživatelského rozhraní FarmBeats.
 
-      a.  Přejít na **Azure Active Directory** > **Registrace aplikací**
+      a.  Přejít na **Azure Active Directory**  >  **Registrace aplikací**
 
       b. Vyberte **registraci aplikace** vytvořenou jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats DataHub.
 
@@ -74,7 +74,7 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 
     ```
 
-7. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze stránky s**přehledem** **Azure Active Directory** > .
+7. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze **Azure Active Directory**  >  stránky s**přehledem** Azure Active Directory.
 
     ```azurepowershell-interactive 
 

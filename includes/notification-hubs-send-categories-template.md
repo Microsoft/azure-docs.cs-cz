@@ -9,21 +9,21 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228153"
 ---
 V této části odešlete nejnovější zprávy jako šablonové oznámení se značkami z konzolové aplikace .NET.
 
 1. Ve Visual Studiu vytvořte novou konzolovou aplikaci Visual C#:
-    1. V nabídce vyberte **soubor** > **Nový** > **projekt**.
+    1. V nabídce vyberte **soubor**  >  **Nový**  >  **projekt**.
     1. V části **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** pro C# v seznamu šablon a vyberte **Další**.
     1. Zadejte název aplikace.
     1. Pro **řešení**zvolte možnost **Přidat do řešení**a vyberte **vytvořit** a vytvořte projekt.
 
-1. Vyberte **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků** a pak v okně konzoly spusťte následující příkaz:
+1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** a pak v okně konzoly spusťte následující příkaz:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs

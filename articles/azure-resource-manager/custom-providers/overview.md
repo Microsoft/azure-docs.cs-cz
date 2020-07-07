@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398465"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Vlastní poskytovatelé prostředků Azure – přehled
@@ -53,9 +53,9 @@ Ukázkový koncový bod:
 }
 ```
 
-Vlastnost | Požaduje se | Popis
+Vlastnost | Povinné | Popis
 ---|---|---
-jméno | *Ano* | Název definice koncového bodu. Azure zveřejní tento název prostřednictvím rozhraní API v části/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+name | *Ano* | Název definice koncového bodu. Azure zveřejní tento název prostřednictvím rozhraní API v části/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
 routingType | *Ne* | Určuje typ kontraktu s **koncovým bodem**. Pokud není zadaný, použije se výchozí hodnota "proxy".
 endpoint | *Ano* | Koncový bod, do kterého mají být směrovány požadavky. Tím se zpracuje odpověď i všechny vedlejší účinky žádosti.
 

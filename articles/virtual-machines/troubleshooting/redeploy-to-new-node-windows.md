@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058625"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Opětovné nasazení virtuálního počítače s Windows na nový uzel Azure
@@ -30,7 +30,7 @@ Pokud jste se setkali s řešením potíží s připojením vzdálené plochy (R
 ## <a name="using-azure-powershell"></a>Použití Azure Powershell
 Ujistěte se, že je na vašem počítači nainstalovaný nejnovější Azure PowerShell 1. x. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
-Následující příklad nasadí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
+Následující příklad nasadí virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup` :
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"

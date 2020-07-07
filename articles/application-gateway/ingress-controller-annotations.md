@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335824"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Poznámky pro řadič Application Gateway pro příchozí přenos dat 
@@ -22,7 +22,7 @@ K Kubernetes prostředku příchozího přenosu dat se dá pokomentovat libovoln
 
 ## <a name="list-of-supported-annotations"></a>Seznam podporovaných poznámek
 
-Aby byl prostředek příchozího přenosu dat AGIC, **musí být** v `kubernetes.io/ingress.class: azure/application-gateway`něm Poznámka. V takovém případě bude AGIC pracovat pouze s dotyčným prostředkem příchozího přenosu dat.
+Aby byl prostředek příchozího přenosu dat AGIC, **musí být** v něm Poznámka `kubernetes.io/ingress.class: azure/application-gateway` . V takovém případě bude AGIC pracovat pouze s dotyčným prostředkem příchozího přenosu dat.
 
 | Klíč poznámky | Typ hodnoty | Výchozí hodnota | Povolené hodnoty
 | -- | -- | -- | -- |
@@ -65,14 +65,14 @@ spec:
           serviceName: go-server-service
           servicePort: 80
 ```
-V předchozím příkladu jsme definovali prostředek příchozího přenosu `go-server-ingress-bkprefix` s poznámkou. `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` Poznámka oznamuje službě Application Gateway, aby vytvořila nastavení HTTP, které bude mít pro cestu `/hello` k `/test/`dispozici přepsání předpony cesty.
+V předchozím příkladu jsme definovali prostředek příchozího přenosu `go-server-ingress-bkprefix` s poznámkou `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` . Poznámka oznamuje službě Application Gateway, aby vytvořila nastavení HTTP, které bude mít pro cestu k dispozici přepsání předpony cesty `/hello` `/test/` .
 
 > [!NOTE] 
 > Ve výše uvedeném příkladu máme definováno jenom jedno pravidlo. Poznámky se ale vztahují na celý prostředek příchozího přenosu dat, takže pokud uživatel definoval více pravidel, bude pro každou zadanou cestu nastavená Předpona cesty k back-endu. Proto pokud uživatel chce jiná pravidla s různými předponami cesty (dokonce i pro stejnou službu), musel by definovat různé prostředky příchozího přenosu dat.
 
 ## <a name="tls-redirect"></a>Přesměrování TLS
 
-Application Gateway je [možné nakonfigurovat](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) tak, aby automaticky přesměrovala adresy URL http na jejich protějšky https. Pokud je tato poznámka přítomná a protokol TLS je správně nakonfigurovaný, Kubernetes příchozí řadič vytvoří [pravidlo směrování s konfigurací přesměrování](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) a použije změny v Application Gateway. Vytvořené přesměrování bude HTTP `301 Moved Permanently`.
+Application Gateway je [možné nakonfigurovat](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) tak, aby automaticky přesměrovala adresy URL http na jejich protějšky https. Pokud je tato poznámka přítomná a protokol TLS je správně nakonfigurovaný, Kubernetes příchozí řadič vytvoří [pravidlo směrování s konfigurací přesměrování](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) a použije změny v Application Gateway. Vytvořené přesměrování bude HTTP `301 Moved Permanently` .
 
 ### <a name="usage"></a>Využití
 
@@ -206,8 +206,8 @@ spec:
 Tato poznámka nám umožňuje určit, jestli se má tento koncový bod vystavit na privátní IP adresu Application Gateway.
 
 > [!NOTE]
-> * Application Gateway nepodporuje více IP adres na stejném portu (například: 80/443). Příchozí s anotací `appgw.ingress.kubernetes.io/use-private-ip: "false"` a jinou s `appgw.ingress.kubernetes.io/use-private-ip: "true"` `HTTP` poznámkou způsobí selhání AGIC při aktualizaci Application Gateway.
-> * Pro Application Gateway, které nemají privátní IP adresu, příchozí přenosy se `appgw.ingress.kubernetes.io/use-private-ip: "true"` budou ignorovat. To se projeví v protokolech kontroleru a událostech příchozího přenosu pro tyto příchozí `NoPrivateIP` události s upozorněním.
+> * Application Gateway nepodporuje více IP adres na stejném portu (například: 80/443). Příchozí s anotací `appgw.ingress.kubernetes.io/use-private-ip: "false"` a jinou s poznámkou `appgw.ingress.kubernetes.io/use-private-ip: "true"` `HTTP` způsobí selhání AGIC při aktualizaci Application Gateway.
+> * Pro Application Gateway, které nemají privátní IP adresu, příchozí přenosy se `appgw.ingress.kubernetes.io/use-private-ip: "true"` budou ignorovat. To se projeví v protokolech kontroleru a událostech příchozího přenosu pro tyto příchozí události s `NoPrivateIP` upozorněním.
 
 
 ### <a name="usage"></a>Využití
@@ -237,10 +237,10 @@ spec:
 
 ## <a name="backend-protocol"></a>Back-end protokol
 
-Tato poznámka nám umožňuje zadat protokol, který Application Gateway použít při komunikaci s lusky. Podporované protokoly: `http`,`https`
+Tato poznámka nám umožňuje zadat protokol, který Application Gateway použít při komunikaci s lusky. Podporované protokoly: `http` ,`https`
 
 > [!NOTE]
-> * I když jsou certifikáty podepsané svým držitelem podporovány v Application Gateway, v současné době `https` AGIC podporuje pouze v případě, že lusky používají certifikát podepsaný známou certifikační autoritou.
+> * I když jsou certifikáty podepsané svým držitelem podporovány v Application Gateway, v současné době AGIC podporuje pouze v případě, že `https` lusky používají certifikát podepsaný známou certifikační autoritou.
 > * Ujistěte se, že nepoužíváte port 80 s protokolem HTTPS a port 443 s protokolem HTTP v Luskech.
 
 ### <a name="usage"></a>Využití

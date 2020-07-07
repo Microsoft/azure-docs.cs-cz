@@ -9,10 +9,10 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422413"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
@@ -69,8 +69,8 @@ Než budete moct vyvíjet klienta pro Linux pro virtuální počítače s Window
 
 Projděte si naši dokumentaci pro následující klienty:
 
-- [Klient pro stolní počítače Windows](connect-windows-7-and-10.md)
+- [Desktopový klient Windows](connect-windows-7-and-10.md)
 - [Webový klient](connect-web.md)
 - [Klient pro Android](connect-android.md)
-- [klient macOS](connect-macos.md)
-- [klient iOS](connect-ios.md)
+- [Klient pro macOS](connect-macos.md)
+- [Klient pro iOS](connect-ios.md)

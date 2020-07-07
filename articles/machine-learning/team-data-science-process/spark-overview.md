@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189279"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědeckého zpracování dat pomocí Sparku v Azure HDInsight
@@ -108,7 +108,7 @@ Data NYC taxislužby TRIPS jsou přibližně 20 GB komprimovaných souborů hodn
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Provedli jsme 0,1% vzor těchto souborů a připojili jsme soubory\_cest pro služební\_cestu do jedné datové sady, kterou použijete jako vstupní datovou sadu pro tento návod. Jedinečný klíč pro připojení k datům\_cest a služební\_tarif se skládá z těchto polí: Medallion, licence\_pro napadení\_a data a času vyzvednutí. Každý záznam datové sady obsahuje následující atributy reprezentující cestu NYC taxislužby:
+Provedli jsme 0,1% vzor těchto souborů a připojili jsme soubory cest pro služební cestu \_ \_ do jedné datové sady, kterou použijete jako vstupní datovou sadu pro tento návod. Jedinečný klíč pro připojení k \_ datům cest a služební \_ tarif se skládá z těchto polí: Medallion, licence pro napadení \_ a \_ data a času vyzvednutí. Každý záznam datové sady obsahuje následující atributy reprezentující cestu NYC taxislužby:
 
 | Pole | Stručný popis |
 | --- | --- |
@@ -141,7 +141,7 @@ Provedli jsme 0,1% vzor těchto souborů a připojili jsme soubory\_cest pro slu
 | tip_class |Tip Class (0: $0, 1: $0-5, 2: $6-10, 3: $11-20, 4: > $20) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spouštění kódu z poznámkového bloku Jupyter v clusteru Spark
-Jupyter Notebook můžete spustit z Azure Portal. Ve svém řídicím panelu najděte svůj cluster Spark a kliknutím na něj zadejte stránku správy pro svůj cluster. Pokud chcete otevřít poznámkový blok přidružený ke clusteru Spark, klikněte na **řídicí panely** -> clusteru**Jupyter notebook**.
+Jupyter Notebook můžete spustit z Azure Portal. Ve svém řídicím panelu najděte svůj cluster Spark a kliknutím na něj zadejte stránku správy pro svůj cluster. Pokud chcete otevřít poznámkový blok přidružený ke clusteru Spark, klikněte na **řídicí panely clusteru**  ->  **Jupyter notebook**.
 
 ![Řídicí panely clusteru](./media/spark-overview/spark-jupyter-on-portal.png)
 
@@ -164,7 +164,7 @@ Nyní můžete:
 
 * Přečtěte si kód kliknutím na Poznámkový blok.
 * Každou buňku spustíte stisknutím **klávesy SHIFT + ENTER**.
-* Kliknutím na**Spustit**v **buňce** -> spustíte celý Poznámkový blok.
+* Kliknutím na spustit v **buňce**spustíte celý Poznámkový blok  ->  **Run**.
 * Použijte automatickou vizualizaci dotazů.
 
 > [!TIP]

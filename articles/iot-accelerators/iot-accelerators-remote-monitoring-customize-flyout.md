@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193169"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní informační rámeček do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
@@ -47,11 +47,11 @@ Chcete-li přidat informační rámeček do webového uživatelského rozhraní,
 
 Chcete-li začít, složka **Src/názor/komponenty/Pages/pageWithFlyout/flyouts/exampleFlyout** obsahuje soubory, které definují informační rámeček:
 
-**exampleFlyout. Container. js**
+**exampleFlyout.container.js**
 
 [!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
-**exampleFlyout. js**
+**exampleFlyout.js**
 
 [!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
@@ -59,7 +59,7 @@ Zkopírujte složku **Src/názorného/Components/Pages/pageWithFlyout/flyouts** 
 
 ### <a name="add-the-flyout-to-the-page"></a>Přidání informačního panelu na stránku
 
-Chcete-li přidat informační rámeček, upravte **Src/Components/Pages/example/šablonou základní stránky. js** .
+Chcete-li přidat informační rámeček, upravte **Src/Components/Pages/example/basicPage.js** .
 
 Přidejte **BTN** k importu z **komponent/Shared** a přidejte importy pro **svgs** a **ExampleFlyoutContainer**:
 
@@ -133,7 +133,7 @@ Pokud webové uživatelské rozhraní ještě neběží, spusťte následující
 npm start
 ```
 
-Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard`. Přejděte na **příklad** stránky a klikněte na **otevřít informační rámeček**.
+Předchozí příkaz spustí uživatelské rozhraní lokálně na `http://localhost:3000/dashboard` . Přejděte na **příklad** stránky a klikněte na **otevřít informační rámeček**.
 
 ## <a name="next-steps"></a>Další kroky
 

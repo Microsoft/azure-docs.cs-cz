@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254882"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962131"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby Signal
 
@@ -45,7 +45,9 @@ V této části použijete [rozhraní příkazového řádku .NET Core (CLI)](ht
 
 2. V nové složce spusťte následující příkaz, který vytvoří projekt:
 
-        dotnet new mvc
+    ```dotnetcli
+    dotnet new mvc
+    ```
 
 
 ## <a name="add-secret-manager-to-the-project"></a>Přidání nástroje Secret Manager do projektu
@@ -72,13 +74,17 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Přidání služby Azure SignalR do webové aplikace
 
-1. Přidejte odkaz na balíček `Microsoft.Azure.SignalR` NuGet spuštěním následujícího příkazu:
+1. Přidejte odkaz na `Microsoft.Azure.SignalR` balíček NuGet spuštěním následujícího příkazu:
 
-        dotnet add package Microsoft.Azure.SignalR
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.SignalR
+    ```
 
 2. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. Do nástroje Secret Manager přidejte tajný kód *Azure:SignalR:ConnectionString*. 
 
@@ -86,7 +92,7 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
 
     Tento příkaz musíte spustit ve stejném adresáři jako soubor *. csproj* .
 
-    ```
+    ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
@@ -105,9 +111,9 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
     }
     ```
 
-    Když nepředá parametr do `AddAzureSignalR()`, tento kód použije výchozí konfigurační klíč pro připojovací řetězec prostředků služby Signal. Výchozí konfigurační klíč je *Azure: signaler: ConnectionString*.
+    Když nepředá parametr do `AddAzureSignalR()` , tento kód použije výchozí konfigurační klíč pro připojovací řetězec prostředků služby Signal. Výchozí konfigurační klíč je *Azure: signaler: ConnectionString*.
 
-5. Také v *Startup.cs*aktualizujte `Configure` metodu tak, že nahradíte volání `app.UseStaticFiles()` s následujícím kódem a uložíte soubor, pouze pro ASP.NET Core 2.
+5. Také v *Startup.cs*aktualizujte metodu tak, že `Configure` nahradíte volání `app.UseStaticFiles()` s následujícím kódem a uložíte soubor, pouze pro ASP.NET Core 2.
 
     ```csharp
     app.UseFileServer();
@@ -167,11 +173,11 @@ Obě metody používají `Clients` rozhraní, které poskytuje sada SDK signaliz
 
 ### <a name="add-the-client-interface-for-the-web-app"></a>Přidání rozhraní klienta pro webovou aplikaci
 
-Uživatelské rozhraní klienta pro tuto aplikaci chatovací místnosti se bude skládat z HTML a JavaScriptu v souboru s názvem *index. html* v adresáři *wwwroot* .
+Uživatelské rozhraní klienta pro tuto aplikaci chatovací místnosti se bude skládat z HTML a JavaScriptu v souboru s názvem *index.html* v adresáři *wwwroot* .
 
-Zkopírujte soubor *index. html* , složku *CSS* a složku *skripty* ze složky *wwwroot* v [úložišti ukázek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot). Vložte je do složky *wwwroot* vašeho projektu.
+Zkopírujte soubor *index.htm* , složku *CSS* a složku *skripty* ze složky *wwwroot* v [úložišti ukázek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot). Vložte je do složky *wwwroot* vašeho projektu.
 
-Tady je hlavní kód souboru *index. html*: 
+Tady je hlavní kód *index.html*: 
 
 ```javascript
 var connection = new signalR.HubConnectionBuilder()
@@ -187,7 +193,7 @@ connection.start()
     });
 ```    
 
-Kód v souboru *index. html* volá `HubConnectionBuilder.build()` připojení HTTP k prostředku nástroje Azure Signal.
+Kód v *index.html* volá, `HubConnectionBuilder.build()` aby se provedlo připojení HTTP k prostředku nástroje Azure Signal.
 
 Pokud je připojení úspěšné, předá se do metody `bindConnectionMessage`, která přidá obslužné rutiny událostí pro příchozí nabídky obsahu do klienta. 
 
@@ -199,7 +205,7 @@ V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další infor
 
 1. Vytvořte ve svém projektu složku s názvem *Properties* .
 
-2. Přidejte do složky nový soubor s názvem *launchSettings. JSON* s následujícím obsahem a uložte soubor.
+2. Do složky přidejte nový soubor s názvem *launchSettings.js* s následujícím obsahem a uložte soubor.
 
     ```json
     {
@@ -224,21 +230,27 @@ V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další infor
 
 1. Pokud chcete aplikaci vytvořit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 2. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     Aplikace bude hostována místně na portu 5000, jak je nakonfigurováno v našem profilu vývojového modulu runtime:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Development
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Development
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+    Application started. Press Ctrl+C to shut down.    
+    ```
 
-3. Otevřete dvě okna prohlížeče. V každém prohlížeči přejít na `http://localhost:5000`. Budete vyzváni k zadání jména. Zadejte název klienta pro oba klienty a otestujte obsah zprávy mezi klienty pomocí tlačítka **Odeslat** .
+3. Otevřete dvě okna prohlížeče. V každém prohlížeči přejít na `http://localhost:5000` . Budete vyzváni k zadání jména. Zadejte název klienta pro oba klienty a otestujte obsah zprávy mezi klienty pomocí tlačítka **Odeslat** .
 
     ![Příklad chatu skupiny signalizace v Azure](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 

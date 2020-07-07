@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417994"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
@@ -32,7 +32,7 @@ Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. Největ
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -54,7 +54,7 @@ Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. Největ
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Název | Popis | Typ | Povinné?
+Name | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
 integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
 source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
@@ -70,7 +70,7 @@ firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechn
 
 Výsledek vyhledávání se vrátí v `output` části výsledku spuštění aktivity.
 
-* **Pokud `firstRowOnly` je nastaven na `true` (výchozí)**, je výstupní formát, jak je znázorněno v následujícím kódu. Výsledkem hledání je pevný `firstRow` klíč. Chcete-li použít výsledek v následné aktivitě, použijte vzor `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Pokud `firstRowOnly` je nastaven na `true` (výchozí)**, je výstupní formát, jak je znázorněno v následujícím kódu. Výsledkem hledání je pevný `firstRow` klíč. Chcete-li použít výsledek v následné aktivitě, použijte vzor `@{activity('MyLookupActivity').output.firstRow.TableName}` .
 
     ```json
     {
@@ -82,7 +82,7 @@ Výsledek vyhledávání se vrátí v `output` části výsledku spuštění akt
     }
     ```
 
-* **Pokud `firstRowOnly` je nastaven na `false` **, výstupní formát je znázorněn v následujícím kódu. `count` Pole indikuje, kolik záznamů je vráceno. Podrobné hodnoty se zobrazí pod pevným `value` polem. V takovém případě je aktivita vyhledávání následována [aktivitou foreach](control-flow-for-each-activity.md). Předáte `value` pole aktivity `items` foreach pomocí vzoru. `@activity('MyLookupActivity').output.value` Chcete-li získat přístup `value` k prvkům v poli, použijte `@{activity('lookupActivity').output.value[zero based index].propertyname}`následující syntaxi:. Příklad: `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Pokud `firstRowOnly` je nastaven na `false` **, výstupní formát je znázorněn v následujícím kódu. `count`Pole indikuje, kolik záznamů je vráceno. Podrobné hodnoty se zobrazí pod pevným `value` polem. V takovém případě je aktivita vyhledávání následována [aktivitou foreach](control-flow-for-each-activity.md). Předáte pole `value` aktivity ForEach `items` pomocí vzoru `@activity('MyLookupActivity').output.value` . Chcete-li získat přístup k prvkům v `value` poli, použijte následující syntaxi: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Příklad: `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -166,7 +166,7 @@ Tento kanál obsahuje dvě aktivity: vyhledávání a kopírování.
 ```
 
 ### <a name="lookup-dataset"></a>Vyhledávací datová sada
-**Vyhledávací** datová sada je **zdrojový soubor. json** ve složce Azure Storage vyhledávání určené typem **AzureStorageLinkedService** . 
+**Vyhledávací** datová sada je **sourcetable.jsv** souboru ve složce pro vyhledávání Azure Storage určené typem **AzureStorageLinkedService** . 
 
 ```json
 {
@@ -209,7 +209,7 @@ Tento kanál obsahuje dvě aktivity: vyhledávání a kopírování.
 ```
 
 ### <a name="sink-dataset-for-copy-activity"></a>Datová sada **jímky** pro aktivitu kopírování
-Aktivita kopírování kopíruje data z tabulky SQL do souboru **filebylookup. csv** ve složce **CSV** v Azure Storage. Soubor je určen vlastností **AzureStorageLinkedService** . 
+Aktivita kopírování kopíruje data z tabulky SQL do souboru **filebylookup.csv** ve složce **CSV** v Azure Storage. Soubor je určen vlastností **AzureStorageLinkedService** . 
 
 ```json
 {
@@ -262,7 +262,7 @@ Tato instance Azure SQL Database obsahuje data, která se mají zkopírovat do �
 }
 ```
 
-### <a name="sourcetablejson"></a>Source. JSON
+### <a name="sourcetablejson"></a>sourcetable.jsna
 
 #### <a name="set-of-objects"></a>Sada objektů
 

@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195243"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základní hodnoty zabezpečení Azure pro Cosmos DB
@@ -131,7 +131,7 @@ Další informace o použití značek služeb:https://docs.microsoft.com/azure/v
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky pomocí Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. DocumentDB a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich Azure Cosmos DBch instancí. Můžete také využít integrované definice zásad pro Azure Cosmos DB, například:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky pomocí Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft.DocumentDB a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě instancí služby Azure Cosmos DB. Můžete také využít integrované definice zásad pro Azure Cosmos DB, například:
 
 - Nasazení rozšířené ochrany před internetovými útoky pro účty Cosmos DB
 
@@ -294,7 +294,7 @@ Kromě toho mohou být některé akce v Azure Cosmos DB řízeny pomocí Azure A
 
 Principy řízení přístupu na základě rolí v Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-Pomocí akcí Azure Cosmos DB (obor názvů Microsoft. DocumentDB) Sestavte vlastní role:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
+Sestavujte vlastní role pomocí Azure Cosmos DBch akcí (Microsoft.Docobor názvů umentDB):https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
 Vytvořte novou roli v Azure Active Directory:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
@@ -504,7 +504,7 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Doprovodné**materiály: všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také protokol TLS 1.2. Je možné vyhovět minimální verzi TLS na straně serveru. Pokud to chcete udělat, kontaktujte [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)prosím.
+**Doprovodné**materiály: všechna připojení k Azure Cosmos DB podporují protokol HTTPS. Azure Cosmos DB podporuje také protokol TLS 1.2. Je možné vyhovět minimální verzi TLS na straně serveru. Pokud to chcete udělat, kontaktujte prosím [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .
 
 Přehled zabezpečení Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/database-security
 
@@ -518,7 +518,7 @@ Přehled zabezpečení Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/data
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-Indexovaná data Azure Cosmos DB pomocí Azure Kognitivní hledání https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp:; BC =/Azure/Cosmos-DB/breadcrumb/TOC.JSON
+Index Azure Cosmos DB data pomocí Azure Kognitivní hledání: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp ; BC =/azure/cosmos-db/breadcrumb/toc.jszapnuto
 
 Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -786,7 +786,7 @@ Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resou
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Cosmos DB instance pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. DocumentDB můžete vytvořit vlastní zásady, které budou auditovat nebo vysazovat konfiguraci Cosmos DB instancí. Můžete také využít integrované definice zásad pro Azure Cosmos DB, například:
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro Cosmos DB instance pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft.DocumentDB můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace instancí Cosmos DB. Můžete také využít integrované definice zásad pro Azure Cosmos DB, například:
 
 - Nasazení rozšířené ochrany před internetovými útoky pro účty Cosmos DB
 
@@ -850,7 +850,7 @@ Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?vie
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
 
-**Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DocumentDB můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft.DocumentDB" k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
 Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -868,7 +868,7 @@ Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/gov
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
 
-**Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. DocumentDB můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro vaše Azure Cosmos DB instance a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje]. 
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft.DocumentDB" k vytvoření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro vaše Azure Cosmos DB instance a související prostředky použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje]. 
 
 Jak nakonfigurovat a spravovat Azure Policy:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

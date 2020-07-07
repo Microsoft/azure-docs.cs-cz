@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422893"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolení nebo zakázání pravidla brány firewall na hostovaném operačním systému virtuálního počítače Azure
@@ -97,7 +97,7 @@ Pokud je virtuální počítač online a dá se k němu přistoupit na jiném vi
 
 Pokud je virtuální počítač online a lze k němu přistupovat na jiném virtuálním počítači ve stejné virtuální síti, můžete použít [Vzdálený registr](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) na jiném virtuálním počítači.
 
-1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (Regedit. exe) a pak vyberte **soubor** > **připojit síťový registr**.
+1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (regedit.exe) a pak vyberte **soubor**  >  **připojit síťový registr**.
 
 2.  Otevřete *cílovou větev počítač*\System a zadejte následující hodnoty:
 
@@ -107,7 +107,7 @@ Pokud je virtuální počítač online a lze k němu přistupovat na jiném virt
     
         Pak změňte hodnotu **aktivní = false** na **aktivní = true** v řetězci:
 
-        **v 2.22 | Action = Allow | Aktivní = TRUE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = TRUE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | Aplikace =% SystemRoot% \system32\svchost.exe| SVC = TermService | Název = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
     
     * Pravidlo zakážete otevřením následující hodnoty registru:
     
@@ -115,7 +115,7 @@ Pokud je virtuální počítač online a lze k němu přistupovat na jiném virt
 
         Pak změňte hodnotu **aktivní = true** na **aktivní = false**:
         
-        **v 2.22 | Action = Allow | Aktivní = FALSE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = FALSE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | Aplikace =% SystemRoot% \system32\svchost.exe| SVC = TermService | Název = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
 
 3.  Aby se změny projevily, restartujte virtuální počítač.
 
@@ -133,9 +133,9 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémového dis
 
 4.  Než provedete jakékoli změny, vytvořte kopii složky \Windows\System32\Config v případě, že je nutné vrátit zpět změny.
 
-5.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (Regedit. exe).
+5.  Na virtuálním počítači pro řešení potíží spusťte Editor registru (regedit.exe).
 
-6.  Zvýrazněte **HKEY_LOCAL_MACHINE** klíč a potom z nabídky vyberte možnost**načíst** **soubor** > .
+6.  Zvýrazněte **HKEY_LOCAL_MACHINE** klíč a potom z nabídky vyberte **File**možnost  >  **načíst** soubor.
 
     ![Programu](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
@@ -154,7 +154,7 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémového dis
         
         Pak změňte **hodnotu aktivní = false** na **aktivní = true**.
         
-        **v 2.22 | Action = Allow | Aktivní = TRUE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = TRUE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | Aplikace =% SystemRoot% \system32\svchost.exe| SVC = TermService | Název = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
 
     3.  Pokud chcete pravidlo zakázat, otevřete následující klíč registru:
 
@@ -162,9 +162,9 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémového dis
 
         Pak změňte hodnotu **aktivní = true** na **aktivní = false**.
         
-        **v 2.22 | Action = Allow | Aktivní = FALSE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | App =%SystemRoot%\system32\svchost.exe | SVC = TermService | Název =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | EmbedCtxt =\@FirewallAPI. dll,-28752 |**
+        **v 2.22 | Action = Allow | Aktivní = FALSE | DIR = v | Protokol = 6 | Profil = doména | Profil = privátní | Profile = Public | LPort = 3389 | Aplikace =% SystemRoot% \system32\svchost.exe| SVC = TermService | Název = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
 
-9.  Zvýrazněte **BROKENSYSTEM**a pak z nabídky vyberte **soubor** > **Uvolnit podregistr** .
+9.  Zvýrazněte **BROKENSYSTEM**a pak z nabídky vyberte **soubor**  >  **Uvolnit podregistr** .
 
 10. [Odpojte systémový disk a vytvořte virtuální počítač znovu](troubleshoot-recovery-disks-portal-windows.md).
 

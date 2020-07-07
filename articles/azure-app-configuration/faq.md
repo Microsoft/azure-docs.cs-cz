@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348791"
 ---
 # <a name="azure-app-configuration-faq"></a>Nejčastější dotazy ke konfiguraci aplikací Azure
@@ -103,7 +103,7 @@ Nemůžete downgradovat úložiště z úrovně Standard na úroveň Free. Můž
 
 Úložiště konfigurací v bezplatné úrovni jsou omezená na 1 000 požadavků za den. V úložištích konfigurace na úrovni Standard se může vyskytnout dočasné omezení, pokud rychlost požadavků překročí 20 000 požadavků za hodinu.
 
-Když obchod dosáhne svého limitu, vrátí stavový kód HTTP 429 pro všechny požadavky provedené do vypršení časového období. `retry-after-ms` Hlavička v odpovědi poskytuje navrhovanou čekací dobu (v milisekundách) před opakováním žádosti.
+Když obchod dosáhne svého limitu, vrátí stavový kód HTTP 429 pro všechny požadavky provedené do vypršení časového období. `retry-after-ms`Hlavička v odpovědi poskytuje navrhovanou čekací dobu (v milisekundách) před opakováním žádosti.
 
 Pokud vaše aplikace pravidelně pracuje na odpovědích na stavový kód HTTP 429, zvažte jejich změnu návrhu, aby se snížil počet podaných požadavků. Další informace najdete v tématu [snížení požadavků provedených na konfiguraci aplikace](./howto-best-practices.md#reduce-requests-made-to-app-configuration) .
 

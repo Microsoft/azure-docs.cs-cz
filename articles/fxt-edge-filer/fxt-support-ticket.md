@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72255979"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Otevření lístku podpory pro Azure FXT Edge souborového
@@ -26,7 +26,7 @@ Pomocí Azure Portal otevřete lístek podpory s zákaznickými službami a podp
    ![Snímek obrazovky s prázdným formulářem žádosti o podporu](media/fxt-support-blank.png)
 
 1. Vyplňte formulář žádosti.  
-    1. Na kartě **základy** vyberte **typ** ``Technical``problému. 
+    1. Na kartě **základy** vyberte **typ problému** ``Technical`` . 
     1. Vyberte své předplatné. 
     1. V části **Služba**vyberte **Azure FXT Edge souborového**. Možná budete muset kliknout na ovládací prvek filtru **všechny služby** a najít ho. 
     1. Zadejte **Souhrn** a vyberte **typ problému**. 

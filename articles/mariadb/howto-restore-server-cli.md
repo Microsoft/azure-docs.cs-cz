@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 6faae80c78fe07d33579cc3fb7c76ce668969992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80369273"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
@@ -27,7 +27,7 @@ K dokončení tohoto průvodce budete potřebovat:
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Nastavení konfigurace zálohování
 
@@ -37,9 +37,9 @@ Můžete vybrat konfiguraci serveru pro buď místně redundantní zálohy, nebo
 > Po vytvoření serveru se nedá přepnout druh redundance, který je geograficky redundantní vs místně redundantní.
 >
 
-Při vytváření serveru prostřednictvím `az mariadb server create` příkazu `--geo-redundant-backup` se rozhodne možnost redundance zálohy. Pokud `Enabled`jsou pořízeny geograficky redundantní zálohy. Nebo pokud `Disabled` jsou pořízeny místně redundantní zálohy.
+Při vytváření serveru prostřednictvím příkazu se `az mariadb server create` `--geo-redundant-backup` rozhodne možnost redundance zálohy. Pokud `Enabled` jsou pořízeny geograficky redundantní zálohy. Nebo pokud `Disabled` jsou pořízeny místně redundantní zálohy.
 
-Doba uchovávání záloh je nastavená parametrem `--backup-retention`.
+Doba uchovávání záloh je nastavená parametrem `--backup-retention` .
 
 Další informace o nastavení těchto hodnot během vytváření najdete v tématu [rychlý Start pro Azure Database for MariaDB Server CLI](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
@@ -67,13 +67,13 @@ Server obnovíte tak, že na příkazovém řádku Azure CLI zadáte tento pří
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-`az mariadb server restore` Příkaz vyžaduje následující parametry:
+`az mariadb server restore`Příkaz vyžaduje následující parametry:
 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například `2018-03-13T05:59:00-08:00`. Můžete použít také formát UTC Zulu, například `2018-03-13T13:59:00Z`. |
+| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například `2018-03-13T05:59:00-08:00` . Můžete použít také formát UTC Zulu, například `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 
 WWhen obnovíte Server k dřívějšímu bodu v čase, vytvoří se nový server. Původní server a jeho databáze ze zadaného bodu v čase se zkopírují na nový server.
@@ -82,7 +82,7 @@ Hodnoty umístění a cenové úrovně obnoveného serveru zůstanou stejné jak
 
 Po dokončení procesu obnovení Najděte nový server a ověřte, že se data obnovila podle očekávání. Nový server má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
 
-Nový server vytvořený během obnovy nemá koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server. Obnoví se pravidla brány firewall z původního serveru.
+Nový server vytvořený během obnovy nemá koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně. Obnoví se pravidla brány firewall z původního serveru.
 
 ## <a name="geo-restore"></a>Geografické obnovení
 
@@ -109,12 +109,12 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 ```
 
-`az mariadb server georestore` Příkaz vyžaduje následující parametry:
+`az mariadb server georestore`Příkaz vyžaduje následující parametry:
 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků, do které bude nový server patřit|
-|jméno | mydemoserver – geograficky obnovené | Název nového serveru. |
+|name | mydemoserver – geograficky obnovené | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy jsou používány. |
 |location | eastus | Umístění nového serveru. |
 |sku-name| GP_Gen5_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen5_8 se mapuje na Pro obecné účely, Gen 5 Server s 8 virtuální jádra.|
@@ -123,7 +123,7 @@ Při vytváření nového serveru geografickým obnovením se zdědí stejná ve
 
 Po dokončení procesu obnovení Najděte nový server a ověřte, že se data obnovila podle očekávání. Nový server má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
 
-Nový server vytvořený během obnovy nemá koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server. Obnoví se pravidla brány firewall z původního serveru.
+Nový server vytvořený během obnovy nemá koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně. Obnoví se pravidla brány firewall z původního serveru.
 
 ## <a name="next-steps"></a>Další kroky
 
