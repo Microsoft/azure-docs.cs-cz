@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454199"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
@@ -27,7 +27,7 @@ Oprávnění role zahrnují:
 
 Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v aplikaci Visual Studio s Analysis Services projekty. Při nasazení na server použijte SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) ) k přidání nebo odebrání rolí a členů uživatelů.
 
-Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid`.
+Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid` .
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Přidání nebo Správa rolí a uživatelů v aplikaci Visual Studio  
   
@@ -46,12 +46,12 @@ Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid`.
     |**Žádné**|Členové nemohou číst ani upravovat schéma modelu a nemohou zadávat dotazy na data.|  
     |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
     |**Čtení a zpracování**|Členové mohou zadávat dotazy na data (na základě filtrů na úrovni řádků) a spouštět proces a zpracovávat všechny operace, ale nemohou upravovat schéma modelu.|  
-    |**Přihlášení**|Členové mohou spustit proces a zpracovat všechny operace. Nelze číst ani upravovat schéma modelu a nelze zadávat dotazy na data.|  
+    |**Proces**|Členové mohou spustit proces a zpracovat všechny operace. Nelze číst ani upravovat schéma modelu a nelze zadávat dotazy na data.|  
     |**Správce**|Členové mohou upravit schéma modelu a dotazovat se na všechna data.|   
   
 5.  Pokud role, kterou vytváříte, má oprávnění ke čtení nebo čtení a zpracování, můžete přidat filtry řádků pomocí vzorce DAX. Klikněte na kartu **filtry řádků** a pak vyberte tabulku, klikněte na pole **filtru DAX** a pak zadejte vzorec DAX.
   
-6.  Klikněte na **Členové** > **Přidat externí**.  
+6.  Klikněte na **Členové**  >  **Přidat externí**.  
   
 8.  V rámci **Přidat externí člen**zadejte uživatele nebo skupiny ve vašem TENANTOVI Azure AD podle e-mailové adresy. Po kliknutí na tlačítko OK a zavření správce rolí se role a členové role zobrazí v Průzkumníkovi tabulkových modelů. 
  
@@ -64,7 +64,7 @@ Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid`.
 
 Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být připojeni k serveru jako správce serveru nebo již v roli databáze s oprávněními správce.
 
-1. V části Object Exporer klikněte pravým tlačítkem na **role** > **Nová role**.
+1. V části Object Exporer klikněte pravým tlačítkem na **role**  >  **Nová role**.
 
 2. V nástroji **vytvořit roli**zadejte název a popis role.
 
@@ -136,7 +136,7 @@ Filtry řádků lze definovat pouze pro role s oprávněním pro čtení a čten
   
 Filtry řádků se použijí na zadané řádky a související řádky. Pokud má tabulka více relací, filtry aplikují zabezpečení na aktivní relaci. Filtry řádků se protínají s ostatními filers řádků definovanými pro související tabulky, například:  
   
-|Table|Výraz DAX|  
+|Tabulka|Výraz DAX|  
 |-----------|--------------------|  
 |Oblast|= Region [Země] = "USA"|  
 |ProductCategory|= ProductCategory [název] = "jízdní kola"|  

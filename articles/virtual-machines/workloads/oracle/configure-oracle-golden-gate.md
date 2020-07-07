@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683720"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux 
@@ -82,7 +82,7 @@ az vm availability-set create \
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). 
 
-Následující příklad vytvoří dva virtuální počítače s `myVM1` názvem `myVM2`a. Pokud ve výchozím umístění klíče ještě neexistují, vytvořte klíče SSH. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2` . Pokud ve výchozím umístění klíče ještě neexistují, vytvořte klíče SSH. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 #### <a name="create-myvm1-primary"></a>Vytvořit myVM1 (primární):
 
@@ -96,7 +96,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. (Poznamenejte si to `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.)
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. (Poznamenejte si to `publicIpAddress` . Tato adresa se používá pro přístup k virtuálnímu počítači.)
 
 ```output
 {
@@ -123,7 +123,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Poznamenejte `publicIpAddress` si i poté, co byl vytvořen.
+Poznamenejte si i `publicIpAddress` poté, co byl vytvořen.
 
 ### <a name="open-the-tcp-port-for-connectivity"></a>Otevřete port TCP pro připojení.
 
@@ -354,7 +354,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Stáhnout software Zlaté brány
 Pokud chcete stáhnout a připravit software pro Oracle zlatou bránu, proveďte následující kroky:
 
-1. Stáhněte soubor **fbo_ggs_Linux_x64_shiphome. zip** ze stránky pro [Stažení aplikace Oracle Zlaté brány](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části stažení názvu **Oracle GoldenGate 12. x. x. x pro Oracle Linux X86-64**by měl být k dispozici sada souborů. zip ke stažení.
+1. Stáhněte soubor **fbo_ggs_Linux_x64_shiphome.zip** ze stránky pro [Stažení aplikace Oracle Zlaté brány](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části stažení názvu **Oracle GoldenGate 12. x. x. x pro Oracle Linux X86-64**by měl být k dispozici sada souborů. zip ke stažení.
 
 2. Po stažení souborů zip do klientského počítače použijte protokol SCP (Secure Copy Protocol) ke zkopírování souborů na virtuální počítač:
 
@@ -391,7 +391,7 @@ Toto je volitelný krok. Tento krok můžete přeskočit, pokud používáte kli
    * [Stažení výstupu](https://www.putty.org/)
    * [Stáhnout Xming](https://xming.en.softonic.com/)
 
-2. Po instalaci výstupu do složky pro výstupy (například C:\Program Files\PuTTY) spusťte PuTTYgen. exe (generátor klíčů pro výstup do výstupu).
+2. Po instalaci výstupu do složky pro výstupy (například C:\Program Files\PuTTY) spusťte puttygen.exe (generátor klíčů pro výstupu).
 
 3. Generátor klíčů ve výstupu:
 
@@ -413,14 +413,14 @@ Toto je volitelný krok. Tento krok můžete přeskočit, pokud používáte kli
 5. Vytvořte soubor s názvem **authorized_keys**. Vložte obsah klíče do tohoto souboru a pak soubor uložte.
 
    > [!NOTE]
-   > Klíč musí obsahovat řetězec `ssh-rsa`. Obsah klíče musí být také jeden řádek textu.
+   > Klíč musí obsahovat řetězec `ssh-rsa` . Obsah klíče musí být také jeden řádek textu.
    >  
 
-6. Spusťte PuTTY. V podokně **kategorie** vyberte **připojení** > **SSH** > **ověřování**. V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
+6. Spusťte PuTTY. V podokně **kategorie** vyberte **připojení**  >  **SSH**  >  **ověřování**. V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
 
    ![Snímek obrazovky se stránkou nastavit privátní klíč](./media/oracle-golden-gate/setprivatekey.png)
 
-7. V podokně **kategorie** vyberte **připojení** > **SSH** > **X11**. Pak zaškrtněte políčko **Povolit předávání X11** .
+7. V podokně **kategorie** vyberte **připojení**  >  **SSH**  >  **X11**. Pak zaškrtněte políčko **Povolit předávání X11** .
 
    ![Snímek obrazovky se stránkou povolit X11](./media/oracle-golden-gate/enablex11.png)
 

@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416997"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
@@ -29,11 +29,11 @@ Průzkumník Time Series Insights podporuje parametry dotazu URL pro určení zo
 
 ## <a name="environment-id"></a>ID prostředí
 
-Parametr `environmentId=<guid>` určuje ID cílového prostředí. Je to součást plně kvalifikovaného názvu domény pro přístup k datům a můžete ji najít v pravém horním rohu přehledu prostředí v Azure Portal. Je vše, co předchází `env.timeseries.azure.com`.
+Parametr `environmentId=<guid>` určuje ID cílového prostředí. Je to součást plně kvalifikovaného názvu domény pro přístup k datům a můžete ji najít v pravém horním rohu přehledu prostředí v Azure Portal. Je vše, co předchází `env.timeseries.azure.com` .
 
 Příkladem parametru ID prostředí je `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Čas
 
 V parametrizované adrese URL můžete zadat absolutní nebo relativní časové hodnoty.
 
@@ -49,7 +49,7 @@ Pro absolutní časové hodnoty použijte parametry `from=<integer>` a `to=<inte
 
 ### <a name="relative-time-values"></a>Relativní časové hodnoty
 
-Pro relativní časovou hodnotu použijte `relativeMillis=<value>`, pokud je *hodnota* v jazyce JavaScript milisekund od nejnovějšího časového razítka přijatého z rozhraní API.
+Pro relativní časovou hodnotu použijte `relativeMillis=<value>` , pokud je *hodnota* v jazyce JavaScript milisekund od nejnovějšího časového razítka přijatého z rozhraní API.
 
 Například `&relativeMillis=3600000` zobrazí data za posledních 60 minut.
 
@@ -66,7 +66,7 @@ Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Time 
 
 ### <a name="optional-parameters"></a>Volitelné parametry
 
-`timeSeriesDefinitions=<collection of term objects>` Parametr určuje výrazy predikátu, které se zobrazí v zobrazení Time Series Insights:
+`timeSeriesDefinitions=<collection of term objects>`Parametr určuje výrazy predikátu, které se zobrazí v zobrazení Time Series Insights:
 
 | Parametr | Položka URL | Popis |
 | --- | --- | --- |
@@ -80,16 +80,16 @@ Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Time 
 > Pokud `Events` je vybraná míra **useSum** , ve výchozím nastavení je vybrán počet.  
 > Pokud `Events` políčko není zaškrtnuté, ve výchozím nastavení je vybraná možnost průměr. |
 
-* Pár `multiChartStack=<true/false>` klíč-hodnota umožňuje skládání v grafu.
-* Pár `multiChartSameScale=<true/false>` klíč-hodnota umožňuje stejné škálování osy Y napříč podmínkami v rámci volitelného parametru.  
-* `timeBucketUnit=<Unit>&timeBucketSize=<integer>` Umožňuje upravit posuvník intervalu, aby bylo možné podrobnější nebo hladší a agregované zobrazení grafu.  
+* `multiChartStack=<true/false>`Pár klíč-hodnota umožňuje skládání v grafu.
+* `multiChartSameScale=<true/false>`Pár klíč-hodnota umožňuje stejné škálování osy Y napříč podmínkami v rámci volitelného parametru.  
+* `timeBucketUnit=<Unit>&timeBucketSize=<integer>`Umožňuje upravit posuvník intervalu, aby bylo možné podrobnější nebo hladší a agregované zobrazení grafu.  
 * Tento `timezoneOffset=<integer>` parametr umožňuje nastavit časové pásmo, které se má u grafu zobrazit jako posun na čas UTC.
 
 | Páry | Popis |
 | --- | --- |
-| `multiChartStack=false` | `true`je ve výchozím nastavení povoleno, `false` aby předával zásobníku. |
-| `multiChartStack=false&multiChartSameScale=true` | Pokud chcete ve všech podmínkách použít stejné měřítko osy Y, musíte povolit umísťování do zásobníku.  To je `false` ve výchozím nastavení, takže `true` předávání tuto funkci umožňuje. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Jednotky = `days`, `hours`, `minutes`, `seconds`, `milliseconds`.  Pro jednotku použijte vždy velká písmena. </br> Určete počet jednotek předáním požadovaného celého čísla pro **timeBucketSize**.  |
+| `multiChartStack=false` | `true`je ve výchozím nastavení povoleno, aby předával `false` zásobníku. |
+| `multiChartStack=false&multiChartSameScale=true` | Pokud chcete ve všech podmínkách použít stejné měřítko osy Y, musíte povolit umísťování do zásobníku.  To je `false` ve výchozím nastavení, takže předávání `true` tuto funkci umožňuje. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Jednotky = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Pro jednotku použijte vždy velká písmena. </br> Určete počet jednotek předáním požadovaného celého čísla pro **timeBucketSize**.  |
 | `timezoneOffset=-<integer>` | Celočíselná hodnota je vždy v milisekundách. |
 
 > [!NOTE]

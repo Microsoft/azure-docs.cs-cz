@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: c3f9046bd0cca8cb191397413c09a72c4cc11c55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416811"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopírování dat z cloudu služby Oracle pomocí Azure Data Factory (Preview)
@@ -47,9 +47,9 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Cloud Service Cloud se podporují následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **OracleServiceCloud** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **OracleServiceCloud** . | Ano |
 | host | Adresa URL cloudové instance služby Oracle  | Ano |
 | uživatelské jméno | Uživatelské jméno, které používáte pro přístup k cloudovým serveru služby Oracle.  | Ano |
 | heslo | Heslo odpovídající uživatelskému jménu, které jste zadali v klíči username. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
@@ -57,7 +57,7 @@ Pro propojenou službu Cloud Service Cloud se podporují následující vlastnos
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -86,12 +86,12 @@ Pro propojenou službu Cloud Service Cloud se podporují následující vlastnos
 
 Pokud chcete kopírovat data z cloudu služby Oracle, nastavte vlastnost Type datové sady na **OracleServiceCloudObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **OracleServiceCloudObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **OracleServiceCloudObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -117,12 +117,12 @@ Pokud chcete kopírovat data z cloudu služby Oracle, nastavte vlastnost Type da
 
 Pokud chcete kopírovat data ze služby Oracle Service Cloud, nastavte typ zdroje v aktivitě kopírování na **OracleServiceCloudSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OracleServiceCloudSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OracleServiceCloudSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

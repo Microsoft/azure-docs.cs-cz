@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458245"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault jako zdroj Event Grid
@@ -67,13 +67,13 @@ Následující příklad ukazuje schéma pro **Microsoft. SecretNewVersionCreate
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | ---------- | ----------- |---|
 | id | řetězec | ID objektu, který aktivoval tuto událost |
 | vaultName | řetězec | Název trezoru klíčů u objektu, který aktivoval tuto událost |
 | objectType | řetězec | Typ objektu, který aktivoval tuto událost |
 | objectName | řetězec | Název objektu, který aktivoval tuto událost |
-| version | řetězec | Verze objektu, který aktivoval tuto událost |
+| verze | řetězec | Verze objektu, který aktivoval tuto událost |
 | NBF | číslo | Datum před dnem v sekundách od roku 1970-01-01T00:00:00Z objektu, který aktivoval tuto událost |
 | exp | číslo | Datum vypršení platnosti v sekundách od 1970-01-01T00:00:00Z objektu, který aktivoval tuto událost |
 

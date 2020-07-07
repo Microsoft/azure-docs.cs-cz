@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417908"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Spustit aktivitu čekání v Azure Data Factory
@@ -24,7 +24,7 @@ Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provád
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -39,10 +39,10 @@ Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provád
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-jméno | Název `Wait` aktivity | Řetězec | Ano
-type | Musí být nastavené na **čekání**. | Řetězec | Ano
+name | Název `Wait` aktivity | Řetězec | Ano
+typ | Musí být nastavené na **čekání**. | Řetězec | Ano
 waitTimeInSeconds | Počet sekund, po které bude kanál čekat, než bude pokračovat ve zpracování. | Integer | Ano
 
 ## <a name="example"></a>Příklad
@@ -109,5 +109,5 @@ Podívejte se na další aktivity toku řízení podporované Data Factory:
 - [Aktivita For Each](control-flow-for-each-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Aktivita webu](control-flow-web-activity.md)
+- [Webová aktivita](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

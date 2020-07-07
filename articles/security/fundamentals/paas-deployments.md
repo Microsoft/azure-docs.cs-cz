@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461697"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
@@ -98,9 +98,9 @@ Používejte standardní ověřovací protokoly, jako je OAuth2 a Kerberos. Tyto
 
 V následující tabulce jsou uvedeny hrozby pro rozteč a jejich ukázková omezení, která používají funkce Azure. Tato zmírnění rizika nebudou v každé situaci fungovat.
 
-| Nebezpečí | Vlastnost zabezpečení | Potenciální omezení na platformě Azure |
+| Hrozba | Vlastnost zabezpečení | Potenciální omezení na platformě Azure |
 | --- | --- | --- |
-| Falšování identity | Authentication | Vyžadovat připojení HTTPS. |
+| Falšování identity | Ověřování | Vyžadovat připojení HTTPS. |
 | Falšování | Integrita | Ověřte certifikáty TLS/SSL. |
 | Popírání odpovědnosti | Neodmítnutí | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure. |
 | Zpřístupnění informací | Důvěrnost | Šifrování citlivých dat v klidovém formátu pomocí [certifikátů služby](/rest/api/appservice/certificates). |

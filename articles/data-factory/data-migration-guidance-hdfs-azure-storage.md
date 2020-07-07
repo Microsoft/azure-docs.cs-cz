@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
 ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417131"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory 
@@ -53,7 +53,7 @@ Další informace najdete v tématu [Průvodce výkonem aktivity kopírování](
 
 ## <a name="resilience"></a>Odolnost
 
-V režimu Data Factory DistCp můžete použít různé parametry příkazového řádku DistCp (například `-i`, ignorovat chyby nebo `-update`zapisovat data, když se zdrojový soubor a cílový soubor liší velikost) pro různé úrovně odolnosti.
+V režimu Data Factory DistCp můžete použít různé parametry příkazového řádku DistCp (například `-i` , ignorovat chyby nebo `-update` zapisovat data, když se zdrojový soubor a cílový soubor liší velikost) pro různé úrovně odolnosti.
 
 V režimu Data Factory Native Integration runtime v rámci jedné aktivity kopírování má Data Factory vestavěný mechanismus opakování. Může zpracovávat určitou úroveň přechodných chyb v úložištích dat nebo v podkladové síti. 
 
@@ -108,9 +108,9 @@ Pokud některá z úloh kopírování selže kvůli přechodným problémům se 
 
 ### <a name="delta-data-migration"></a>Migrace rozdílových dat 
 
-V režimu Data Factory DistCp můžete použít parametr `-update`příkazového řádku DistCp, zapsat data, když se zdrojový soubor a cílový soubor liší velikost, pro migraci rozdílových dat.
+V režimu Data Factory DistCp můžete použít parametr příkazového řádku DistCp `-update` , zapsat data, když se zdrojový soubor a cílový soubor liší velikost, pro migraci rozdílových dat.
 
-V režimu Data Factory Native Integration je nejvhodnější způsob, jak identifikovat nové nebo změněné soubory ze HDFS, použít konvenci pojmenování podle časových oddílů. Když jsou data v HDFS v čase rozdělená do oddílů s informacemi o časovém řezu v názvu souboru nebo složky (například */yyyy/MM/DD/File.csv*), váš kanál může snadno určit, které soubory a složky se mají kopírovat přírůstkově.
+V režimu Data Factory Native Integration je nejvhodnější způsob, jak identifikovat nové nebo změněné soubory ze HDFS, použít konvenci pojmenování podle časových oddílů. Když jsou data v HDFS v čase rozdělená na oddíly s informacemi o časovém intervalu v názvu souboru nebo složky (například */yyyy/mm/dd/file.csv*), váš kanál může snadno určit, které soubory a složky se mají kopírovat přírůstkově.
 
 Případně, pokud vaše data v HDFS nebudou rozdělená na oddíly, Data Factory můžou identifikovat nové nebo změněné soubory pomocí jejich hodnoty **LastModifiedDate** . Data Factory kontroluje všechny soubory z HDFS a kopíruje jenom nové a aktualizované soubory, které mají poslední upravená časová razítka, která je větší než nastavená hodnota. 
 

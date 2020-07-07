@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419302"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtěte 1 TB do Azure SQL Data Warehouse za 15 minut s Data Factory
@@ -46,7 +46,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Dat
 
 ## <a name="prerequisites"></a>Požadavky
 * Azure Blob Storage: Tento experiment používá Azure Blob Storage (GRS) pro ukládání testovací datové sady TPC-H.  Pokud nemáte účet úložiště Azure, přečtěte si, [jak vytvořit účet úložiště](../../storage/common/storage-account-create.md).
-* [TPC-h](http://www.tpc.org/tpch/) data: používáme TPC-H jako testovací datovou sadu.  K tomu je nutné použít `dbgen` z TPC-H Toolkit, který vám pomůže vygenerovat datovou sadu.  Můžete si buď stáhnout zdrojový kód `dbgen` z [nástrojů TPC](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) a zkompilovat ho sami, nebo stáhnout zkompilovaný binární soubor z [GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Spusťte dbgen. exe s následujícími příkazy pro vygenerování plochého souboru 1 TB `lineitem` pro rozložení tabulky mezi 10 soubory:
+* [TPC-h](http://www.tpc.org/tpch/) data: používáme TPC-H jako testovací datovou sadu.  K tomu je nutné použít `dbgen` z TPC-H Toolkit, který vám pomůže vygenerovat datovou sadu.  Můžete si buď stáhnout zdrojový kód `dbgen` z [nástrojů TPC](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) a zkompilovat ho sami, nebo stáhnout zkompilovaný binární soubor z [GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Spusťte dbgen.exe s následujícími příkazy pro vygenerování plochého souboru 1 TB pro `lineitem` rozložení tabulky mezi 10 soubory:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -79,7 +79,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do Azure SQL Dat
 
     Tento experiment načte data do Azure SQL Data Warehouse pomocí `xlargerc` třídy prostředků.
 
-    Chcete-li dosáhnout nejlepší možné propustnosti, je třeba provést kopírování pomocí SQL Data Warehouse uživatele, `xlargerc` který patří do třídy prostředků.  Přečtěte si, jak postupovat podle následujícího postupu: [Změna třídy prostředků uživatele](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
+    Chcete-li dosáhnout nejlepší možné propustnosti, je třeba provést kopírování pomocí SQL Data Warehouse uživatele, který patří do `xlargerc` třídy prostředků.  Přečtěte si, jak postupovat podle následujícího postupu: [Změna třídy prostředků uživatele](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
 * Spuštěním následujícího příkazu DDL vytvořte v databázi Azure SQL Data Warehouse schéma cílové tabulky:
 
     ```SQL  
@@ -165,7 +165,7 @@ V této části se dozvíte, jak nakonfigurovat zdroj: Azure BLOB obsahující s
     ![Průvodce kopírováním – nastavení formátu souboru](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>Krok 3: Konfigurace cíle
-V této části se dozvíte, jak nakonfigurovat cíl `lineitem` : tabulka v databázi Azure SQL Data Warehouse.
+V této části se dozvíte, jak nakonfigurovat cíl: `lineitem` tabulka v databázi Azure SQL Data Warehouse.
 
 1. Jako cílové úložiště vyberte **Azure SQL Data Warehouse** a klikněte na **Další**.
 

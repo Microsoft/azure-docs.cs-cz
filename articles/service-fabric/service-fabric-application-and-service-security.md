@@ -4,10 +4,10 @@ description: Přehled, jak bezpečně spouštět aplikace mikroslužeb na Servic
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461425"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric zabezpečení aplikací a služeb
@@ -20,7 +20,7 @@ Tento článek není průvodce zabezpečením mikroslužeb, ale k dispozici je m
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Pro prostředky a rozhraní API vystavené službou je často potřeba omezit na určité důvěryhodné uživatele nebo klienty. Ověřování je proces spolehlivého zjišťování identity uživatele.  Autorizace je proces, který zpřístupňuje rozhraní API nebo služby pro některé ověřené uživatele, ale ne jiné.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 Prvním krokem pro rozhodování o důvěryhodnosti na úrovni rozhraní API je ověřování. Ověřování je proces spolehlivého zjišťování identity uživatele.  Ve scénářích mikroslužeb se ověřování obvykle zpracovává centrálně. Pokud používáte bránu API, můžete na bránu přesměrovat [ověřování](/azure/architecture/patterns/gateway-offloading) . Pokud použijete tento přístup, ujistěte se, že k jednotlivým službám nemůžete získat přímý přístup (bez brány API), pokud se nejedná o další zabezpečení pro ověřování zpráv bez ohledu na to, jestli pocházejí z brány, nebo ne.
 
 Pokud se k službám dají získat přístup přímo, můžete k ověřování uživatelů použít ověřovací službu, jako je Azure Active Directory nebo vyhrazená mikroslužba ověřování, která funguje jako služba tokenů zabezpečení (STS). Rozhodnutí o důvěryhodnosti se sdílí mezi službami s tokeny zabezpečení nebo soubory cookie. 
@@ -42,7 +42,7 @@ API Management se integruje přímo s Service Fabric, což vám umožní publiko
 ## <a name="manage-application-secrets"></a>Správa tajných klíčů aplikací
 Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu. Tento článek používá Azure Key Vault ke správě klíčů a tajných kódů. *Používání* tajných klíčů v aplikaci je ale cloudová platforma – nezávislá umožňuje nasazení aplikací do clusteru hostovaného kdekoli.
 
-Doporučený způsob, jak spravovat nastavení konfigurace služby, je prostřednictvím [balíčků konfigurace služby][config-package]. Konfigurační balíčky mají verzi a lze je aktualizovat prostřednictvím spravovaných postupných upgradů s ověřením stavu a automatického vrácení zpět. Tato možnost je preferována globální konfiguraci, protože snižuje pravděpodobnost výpadku globálních služeb. Šifrované tajné klíče nejsou výjimkou. Service Fabric obsahuje integrované funkce pro šifrování a dešifrování hodnot v souboru. XML s nastavením konfiguračního balíčku pomocí šifrování certifikátu.
+Doporučený způsob, jak spravovat nastavení konfigurace služby, je prostřednictvím [balíčků konfigurace služby][config-package]. Konfigurační balíčky mají verzi a lze je aktualizovat prostřednictvím spravovaných postupných upgradů s ověřením stavu a automatického vrácení zpět. Tato možnost je preferována globální konfiguraci, protože snižuje pravděpodobnost výpadku globálních služeb. Šifrované tajné klíče nejsou výjimkou. Service Fabric obsahuje integrované funkce pro šifrování a dešifrování hodnot v konfiguračním balíčku Settings.xml souboru pomocí šifrování certifikátu.
 
 Následující diagram znázorňuje základní tok pro správu tajných kódů v Service Fabric aplikaci:
 
@@ -52,8 +52,8 @@ Tento tok obsahuje čtyři hlavní kroky:
 
 1. Získejte certifikát pro zakódování dat.
 2. Nainstalujte certifikát do clusteru.
-3. Šifrování tajných hodnot při nasazování aplikace s certifikátem a jejich vložení do konfiguračního souboru. XML služby.
-4. V souboru Settings. XML se šifrují šifrované hodnoty pomocí dešifrování se stejným certifikátem pro zakódování. 
+3. Šifrování tajných hodnot při nasazování aplikace s certifikátem a jejich vložení do konfiguračního souboru Settings.xml služby.
+4. Dešifrování zašifrovaných hodnot z Settings.xml dešifruje se stejným certifikátem pro zakódování. 
 
 [Azure Key Vault][key-vault-get-started] se tady používá jako bezpečné umístění úložiště pro certifikáty a jako způsob, jak získat certifikáty nainstalované v clusterech Service Fabric v Azure. Pokud neprovádíte nasazení do Azure, nemusíte používat Key Vault ke správě tajných kódů v aplikacích Service Fabric.
 
@@ -66,7 +66,7 @@ Manifest aplikace deklaruje objekty zabezpečení (uživatelé a skupiny) vyžad
 
 Při deklarování objektů zabezpečení můžete také definovat a vytvářet skupiny uživatelů, aby bylo možné do každé skupiny přidat jednoho nebo více uživatelů, aby je bylo možné spravovat dohromady. To je užitečné v případě, že existuje více uživatelů pro různé vstupní body služby a potřebují určitá společná oprávnění, která jsou k dispozici na úrovni skupiny.
 
-Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric. exe. Service Fabric taky nabízí možnost spouštět aplikace pod místním uživatelským účtem nebo účtem místního systému, který je zadaný v manifestu aplikace. Další informace najdete v tématu [spuštění služby jako místní uživatelský účet nebo účet místního systému](service-fabric-application-runas-security.md).  [Spouštěcí skript služby můžete také spustit jako místní uživatel nebo systémový účet](service-fabric-run-script-at-service-startup.md).
+Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric.exe. Service Fabric taky nabízí možnost spouštět aplikace pod místním uživatelským účtem nebo účtem místního systému, který je zadaný v manifestu aplikace. Další informace najdete v tématu [spuštění služby jako místní uživatelský účet nebo účet místního systému](service-fabric-application-runas-security.md).  [Spouštěcí skript služby můžete také spustit jako místní uživatel nebo systémový účet](service-fabric-run-script-at-service-startup.md).
 
 Když spouštíte Service Fabric na samostatném clusteru se systémem Windows, můžete spustit službu pod [účtem domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupinovými účty spravované služby](service-fabric-run-service-as-gmsa.md).
 

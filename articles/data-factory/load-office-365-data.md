@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415798"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit** > **Analytics** > **Data Factory**analýzy prostředků: 
+1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků: 
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -79,7 +79,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
     ![Konfigurační tabulka sady Office 365](./media/load-office-365-data/edit-dataset.png)
 
-8. Teď se vraťte na**kartu zdroj** **kanálu** > a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) .
+8. Teď se vraťte na **pipeline**  >  **kartu zdroj** kanálu a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) .
 
 9. Je nutné zvolit jeden z filtrů data a zadat počáteční a koncové hodnoty času.
 
@@ -132,8 +132,8 @@ Pokud se chcete podívat na spuštění aktivit, která souvisí se spuštěním
 
 Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, na jehož cílovém účtu se načítají data a jakou identitu uživatele vytváří požadavek na přístup k datům), zobrazí se stav aktivity kopírování jako probíhající a jenom když kliknete na odkaz Podrobnosti v části **akce, zobrazí**se stav jako **RequesetingConsent**.  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
 
-_Stav jako žádost o souhlas:_
-![podrobnosti spuštění aktivity – souhlas žádosti](./media/load-office-365-data/activity-details-request-consent.png) 
+_Stav jako požadavek souhlasu:_ 
+ ![ Podrobnosti spuštění aktivity – souhlas s žádostí](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Stav při extrakci dat:_
 

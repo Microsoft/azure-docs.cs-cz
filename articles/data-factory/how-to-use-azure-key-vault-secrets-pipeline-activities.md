@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417081"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
@@ -52,9 +52,9 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
     |Vlastnost  |Hodnota  |
     |---------|---------|
     |Zabezpečený výstup     |True         |
-    |zprostředkovatele identity     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
+    |URL     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
     |Metoda     |GET         |
-    |Authentication     |MSI         |
+    |Ověřování     |MSI         |
     |Prostředek        |https://vault.azure.net       |
 
     ![Aktivita webu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
@@ -65,7 +65,7 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
     > [!CAUTION]
     > Nastavte možnost zabezpečený výstup na hodnotu true, pokud chcete zabránit tomu, aby se tajná hodnota přihlásila do prostého textu.  Všechny další aktivity, které tuto hodnotu využívají, by měly mít možnost zabezpečeného vstupu nastavenou na hodnotu true.
 
-5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz ** @activitykódu (' WEB1 '). Output. Value**.
+5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz kódu ** @activity (' WEB1 '). Output. Value**.
 
     ![Výraz kódu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415282"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spustit aktivitu kanálu v Azure Data Factory
@@ -26,7 +26,7 @@ Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný
 
 
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -64,10 +64,10 @@ Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity spustit kanál | Řetězec | Ano
-type | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Ano
+name | Název aktivity spustit kanál | Řetězec | Ano
+typ | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Ano
 kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
 parameters | Parametry, které se mají předat vyvolanému kanálu | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu | Ne
 waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpracování závislého kanálu. Výchozí hodnota je false. | Logická hodnota | Ne
@@ -75,8 +75,8 @@ waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpra
 ## <a name="sample"></a>Ukázka
 Tento scénář má dva kanály:
 
-- **Hlavní kanál** – tento kanál má jednu aktivitu spuštění kanálu, která volá vyvolaný kanál. Hlavní kanál používá dva parametry: `masterSourceBlobContainer`,. `masterSinkBlobContainer`
-- **Vyvolaný kanál** – tento kanál má jednu aktivitu kopírování, která kopíruje data ze zdroje objektů blob Azure do jímky objektů BLOB v Azure. Vyvolaný kanál používá dva parametry: `sourceBlobContainer`, `sinkBlobContainer`.
+- **Hlavní kanál** – tento kanál má jednu aktivitu spuštění kanálu, která volá vyvolaný kanál. Hlavní kanál používá dva parametry: `masterSourceBlobContainer` , `masterSinkBlobContainer` .
+- **Vyvolaný kanál** – tento kanál má jednu aktivitu kopírování, která kopíruje data ze zdroje objektů blob Azure do jímky objektů BLOB v Azure. Vyvolaný kanál používá dva parametry: `sourceBlobContainer` , `sinkBlobContainer` .
 
 ### <a name="master-pipeline-definition"></a>Definice hlavního kanálu
 
@@ -262,4 +262,4 @@ Podívejte se na další aktivity toku řízení podporované Data Factory:
 - [Aktivita For Each](control-flow-for-each-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Aktivita webu](control-flow-web-activity.md)
+- [Webová aktivita](control-flow-web-activity.md)

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417942"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivita v Azure Data Factory
@@ -23,7 +23,7 @@ ms.locfileid: "81417942"
 
 Aktivita Until funguje stejně jako smyčka Do-Until v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -53,13 +53,13 @@ Aktivita Until funguje stejně jako smyčka Do-Until v programovacích jazycích
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-jméno | Název `Until` aktivity | Řetězec | Ano
-type | Musí být nastavené **na do**. | Řetězec | Ano
-výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
-timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `d.hh:mm:ss`ani `hh:mm:ss`. Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | Ne
-Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true`. | Pole aktivit. |  Ano
+name | Název `Until` aktivity | Řetězec | Ano
+typ | Musí být nastavené **na do**. | Řetězec | Ano
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
+timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `d.hh:mm:ss`(nebo) `hh:mm:ss` . Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | Ne
+Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true` . | Pole aktivit. |  Ano
 
 ## <a name="example-1"></a>Příklad 1
 
@@ -120,7 +120,7 @@ V tomto příkladu má kanál dvě aktivity: **do** a **Wait**. Aktivita čekán
 ## <a name="example-2"></a>Příklad 2 
 Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky ve smyčce. Smyčka končí, když je hodnota parametru opakování nastavena na hodnotu false nebo když uplyne časový limit po jedné minutě.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Kanál s až do aktivity (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Kanál s až do aktivity (Adfv2QuickStartPipeline.jszapnuto)
 
 ```json
 {
@@ -193,7 +193,7 @@ Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky 
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.jszapnutá)
 
 ```json
 {
@@ -207,7 +207,7 @@ Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky 
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset.jszapnutá)
 Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
 
 ```json
@@ -234,7 +234,7 @@ Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr *
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters.jszapnuté)
 
 ```json
 {
@@ -295,4 +295,4 @@ Podívejte se na další aktivity toku řízení podporované Data Factory:
 - [Aktivita For Each](control-flow-for-each-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Aktivita webu](control-flow-web-activity.md)
+- [Webová aktivita](control-flow-web-activity.md)

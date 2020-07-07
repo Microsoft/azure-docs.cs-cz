@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: d236b9f8800b644a0aa51597d01df1c1442475ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416779"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopírování dat z Phoenixu pomocí Azure Data Factory 
@@ -48,9 +48,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Phoenix jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Phoenix** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **Phoenix** . | Ano |
 | host | IP adresa nebo název hostitele serveru v Phoenixu. (tj. 192.168.222.160)  | Ano |
 | port | Port TCP, který server Phoenix používá k naslouchání klientským připojením. Výchozí hodnota je 8765. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Ne |
 | httpPath | Částečná adresa URL odpovídající serveru v Phoenixu. (to znamená/Gateway/Sandbox/Phoenix/Version). Určete `/hbasephoenix0` , jestli se má používat cluster HDInsights.  | Ne |
@@ -65,9 +65,9 @@ Pro propojenou službu Phoenix jsou podporovány následující vlastnosti:
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
->Pokud váš cluster nepodporuje rychlou relaci, např. HDInsight, explicitně přidejte index uzlu na konci nastavení cesty http, třeba zadejte `/hbasephoenix0` místo. `/hbasephoenix`
+>Pokud váš cluster nepodporuje rychlou relaci, např. HDInsight, explicitně přidejte index uzlu na konci nastavení cesty http, třeba zadejte `/hbasephoenix0` místo `/hbasephoenix` .
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -95,14 +95,14 @@ Pro propojenou službu Phoenix jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Phoenix, nastavte vlastnost Type datové sady na **PhoenixObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **PhoenixObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **PhoenixObject** . | Ano |
 | XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro `schema` nové `table` zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -127,12 +127,12 @@ Chcete-li kopírovat data z Phoenix, nastavte vlastnost Type datové sady na **P
 
 Pokud chcete kopírovat data z Phoenix, nastavte typ zdroje v aktivitě kopírování na **PhoenixSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PhoenixSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PhoenixSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

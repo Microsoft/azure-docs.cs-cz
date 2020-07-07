@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417183"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach v Azure Data Factory
@@ -23,8 +23,8 @@ ms.locfileid: "81417183"
 
 Aktivita ForEach definuje tok řízení opakování ve vašem kanálu. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
 
-## <a name="syntax"></a>Syntaxe
-Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a každá položka v kolekci je odkazována pomocí příkazu, `@item()` jak je znázorněno v následující syntaxi:  
+## <a name="syntax"></a>Syntax
+Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a každá položka v kolekci je odkazována pomocí příkazu, jak je `@item()` znázorněno v následující syntaxi:  
 
 ```json
 {  
@@ -70,13 +70,13 @@ Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a ka
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity for-each. | Řetězec | Ano
-type | Musí být nastaven na **foreach** | Řetězec | Ano
+name | Název aktivity for-each. | Řetězec | Ano
+typ | Musí být nastaven na **foreach** | Řetězec | Ano
 -Sekvenční | Určuje, zda má být smyčka provedena sekvenčně nebo paralelně.  Maximálně 20 iterací smyčky je možné spustit najednou paralelně. Například pokud máte aktivitu ForEach na iteraci s aktivitou kopírování s 10 různými datovými sadami zdroje a jímky s možností- **sekvenčním** nastavením na hodnotu false, všechny kopie se spustí najednou. Výchozí hodnota je false. <br/><br/> Pokud je "" "-sekvenční" nastaveno na hodnotu false, ujistěte se, že existuje správná konfigurace pro spouštění více spustitelných souborů. V opačném případě by tato vlastnost měla být použita s opatrností, aby nedocházelo ke konfliktům při zápisu. Další informace najdete v části [paralelní spuštění](#parallel-execution) . | Logická hodnota | Ne. Výchozí hodnota je false.
 batchCount | Počet dávek, který se má použít k řízení počtu paralelního spuštění (Pokud je vlastnost-sekvenční nastavená na hodnotu false). Toto je horní limit souběžnosti, ale pro-každou aktivitu se na tomto čísle nespustí vždy. | Celé číslo (maximum 50) | Ne. Výchozí hodnota je 20.
-Items | Výraz, který vrací pole JSON, které se má iterovat. | Výraz (který vrací pole JSON) | Ano
+Položky | Výraz, který vrací pole JSON, které se má iterovat. | Výraz (který vrací pole JSON) | Ano
 Aktivity | Aktivity, které mají být provedeny. | Seznam aktivit | Ano
 
 ## <a name="parallel-execution"></a>Paralelní provádění
@@ -195,7 +195,7 @@ V aktivitě ForEach zadejte pole, které se má iterovat pro **položky**vlastno
 Je možné iterovat více aktivit (například aktivity kopírování a webu) v aktivitě ForEach. V tomto scénáři doporučujeme, abyste do samostatného kanálu vyčerpali více aktivit. Pak můžete použít [aktivitu ExecutePipeline](control-flow-execute-pipeline-activity.md) v kanálu s aktivitou foreach k vyvolání samostatného kanálu s více aktivitami. 
 
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -495,4 +495,4 @@ Podívejte se na další aktivity toku řízení podporované Data Factory:
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Aktivita webu](control-flow-web-activity.md)
+- [Webová aktivita](control-flow-web-activity.md)

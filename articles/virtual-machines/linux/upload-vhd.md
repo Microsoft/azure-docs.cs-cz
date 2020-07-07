@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460422"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
@@ -39,7 +39,7 @@ K provedení následujících kroků budete potřebovat:
 
 - Virtuální počítač se systémem Linux připravený pro použití v Azure. Část [Příprava virtuálního počítače](#prepare-the-vm) v tomto článku popisuje, jak najít informace specifické pro distribuce k instalaci agenta Azure Linux (waagent), který je potřeba pro připojení k virtuálnímu počítači pomocí SSH.
 - Soubor VHD z existující distribuce systému [Linux schváleného službou Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (nebo zobrazit [informace o neschválených distribucích](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) na virtuální disk ve formátu VHD. Existuje několik nástrojů, které slouží k vytvoření virtuálního počítače a virtuálního pevného disku:
-  - Nainstalujte a nakonfigurujte [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](https://www.linux-kvm.org/page/RunningKVM), přičemž se ujistěte, že jako formát obrázku použijete VHD. V případě potřeby můžete [obrázek převést](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí `qemu-img convert`.
+  - Nainstalujte a nakonfigurujte [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](https://www.linux-kvm.org/page/RunningKVM), přičemž se ujistěte, že jako formát obrázku použijete VHD. V případě potřeby můžete [obrázek převést](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí `qemu-img convert` .
   - Můžete také použít Hyper-V [ve Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) nebo [Windows Serveru 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
@@ -50,7 +50,7 @@ K provedení následujících kroků budete potřebovat:
 
 - Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a jste přihlášení k účtu Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
 
-V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami, například `myResourceGroup` `mystorageaccount`, a. `mydisks`
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami, například, `myResourceGroup` `mystorageaccount` a `mydisks` .
 
 <a id="prepimage"> </a>
 

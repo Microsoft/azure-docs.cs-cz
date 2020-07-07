@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455358"
 ---
 # <a name="virtual-appliance-scenario"></a>Scénář virtuálního zařízení
@@ -38,7 +38,7 @@ Toto je standardní hraniční síť (označovaná také jako DMZ) s DMZ a chrá
 
 Řešení níže používá virtuální zařízení brány firewall k implementaci scénáře sítě/Protected hraniční sítě (DMZ).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 Prostředí můžete nasadit v Azure podrobněji pomocí různých funkcí dostupných v současnosti, a to následujícím způsobem.
 
 * **Virtuální síť (VNet)** . Virtuální síť Azure funguje podobně jako místní síť a dá se rozdělit do jedné nebo víc podsítí, aby poskytovala izolaci provozu a oddělení obav.

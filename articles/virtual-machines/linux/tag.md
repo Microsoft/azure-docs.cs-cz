@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: fd4a93f4c0b2f052fe5c9890bee01e5da0dcead2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460949"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Označení virtuálního počítače se systémem Linux v Azure
@@ -35,7 +35,7 @@ Všechny vlastnosti pro daný virtuální počítač, včetně značek, můžete
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Pokud chcete přidat novou značku virtuálního počítače přes rozhraní příkazového řádku Azure, můžete `azure vm update` použít příkaz spolu s parametrem značky **--set**:
+Pokud chcete přidat novou značku virtuálního počítače přes rozhraní příkazového řádku Azure, můžete použít `azure vm update` příkaz spolu s parametrem značky **--set**:
 
 ```azurecli
 az vm update \

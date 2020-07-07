@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
 ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429665"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Ověřování pomocí certifikátu X. 509 v clusterech Service Fabric
@@ -106,8 +106,8 @@ Nejdřív si představte, že výňatk z manifestu clusteru exemplifying oba sty
 ```
 Deklarace odkazují na identity serveru a clusteru, v uvedeném pořadí. deklarace založené na CN mají vlastní oddíly v manifestu clusteru, oddělené od standardního zabezpečení. V obou deklaracích představuje "název" běžný název rozlišujícího subjektu a pole hodnota představuje očekávané vystavitele, a to následujícím způsobem:
 
-- v prvním případě deklarace uvádí, že běžný název elementu rozlišujícího předmětu certifikátu serveru by měl odpovídat řetězci "Server. demo. System. servicefabric. Azure-int"; prázdné pole hodnota označuje, že kořen řetězu certifikátů je důvěryhodný na uzlu nebo počítači, kde je certifikát serveru ověřený. v systému Windows to znamená, že certifikát může řetězit k libovolnému certifikátu nainstalovanému v úložišti Důvěryhodné kořenové certifikační autority.
-- v druhém případě je v případě, že se běžný název certifikátu shoduje s řetězcem "cluster. demo. System. servicefabric. Azure-int", *a* kryptografický otisk přímého vystavitele certifikátu se shoduje s jednou z položek oddělených čárkami v poli hodnota. (Tento typ pravidla se colloquially označuje jako běžný název s připnutím vystavitele.)
+- v prvním případě deklarace uvádí, že běžný název elementu rozlišujícího předmětu certifikátu serveru by měl odpovídat řetězci "server.demo.system. servicefabric. Azure-int"; prázdné pole hodnota označuje, že kořen řetězu certifikátů je důvěryhodný na uzlu nebo počítači, kde je certifikát serveru ověřený. v systému Windows to znamená, že certifikát může řetězit k libovolnému certifikátu nainstalovanému v úložišti Důvěryhodné kořenové certifikační autority.
+- v druhém případě deklarace uvádí, že se jako partnerský uzel v clusteru přijímá jako rovnocenný uzel, pokud se běžný název certifikátu shoduje s řetězcem "cluster.demo.system. servicefabric. Azure-int" *a* kryptografický otisk přímého vystavitele certifikátu odpovídá jedné z položek oddělených čárkami v poli hodnota. (Tento typ pravidla se colloquially označuje jako běžný název s připnutím vystavitele.)
 
 V obou případech je řetězec certifikátu sestavený a očekává se, že bude bez chyb. To znamená, že chyby odvolání, částečný řetěz nebo čas – neplatné chyby důvěryhodnosti se považují za závažné a ověření certifikátu se nezdaří. Připnutím vystavitelů dojde k tomu, že se stav nedůvěryhodných kořenových certifikátů považuje za nezávažnou chybu. bez ohledu na vzhled je to přísnější forma ověřování, protože umožňuje vlastníkovi clusteru omezit sadu autorizovaných a přijímaných vystavitelů na vlastní infrastrukturu veřejných klíčů (PKI).
 
@@ -156,7 +156,7 @@ Z manifestu clusteru můžeme vzít v úvahu následující úryvek:
     </NodeType>
   </NodeTypes>
 ```
-Element ClusterCertificate demonstruje úplné schéma, včetně volitelných parametrů (' X509FindValueSecondary ') nebo těch s příslušnými výchozími hodnotami (' X509StoreName '); ostatní deklarace zobrazují zkrácený tvar. Deklarace certifikátu clusteru výše uvádí, že nastavení zabezpečení uzlů typu nt1vm se inicializuje s certifikátem cc71. 1984 ' jako primární a ' 49e2.. certifikát 19d6 jako sekundární; u obou certifikátů se očekává, že se nacházejí v\'úložišti certifikátů LocalMachine (nebo ekvivalentní cestě Linux, *var/lib/sfcerts*).
+Element ClusterCertificate demonstruje úplné schéma, včetně volitelných parametrů (' X509FindValueSecondary ') nebo těch s příslušnými výchozími hodnotami (' X509StoreName '); ostatní deklarace zobrazují zkrácený tvar. Deklarace certifikátu clusteru výše uvádí, že nastavení zabezpečení uzlů typu nt1vm se inicializuje s certifikátem cc71. 1984 ' jako primární a ' 49e2.. certifikát 19d6 jako sekundární; u obou certifikátů se očekává, že se nacházejí v \' úložišti certifikátů LocalMachine (nebo ekvivalentní cestě Linux, *var/lib/sfcerts*).
 
 #### <a name="common-name-based-certificate-presentation-declarations"></a>Běžné deklarace prezentace certifikátů na základě názvů
 Certifikáty typu uzlu lze také deklarovat pomocí běžného názvu subjektu, jak je uvedeno v následujícím exemplified:

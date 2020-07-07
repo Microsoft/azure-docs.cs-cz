@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416422"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
@@ -94,7 +94,7 @@ Pokud některá z úloh kopírování selže kvůli přechodnému problému se s
 
 ### <a name="delta-data-migration"></a>Migrace rozdílových dat 
 
-Nejpohodlnější způsob, jak identifikovat nové nebo změněné soubory z AWS S3, je použití konvencí pojmenování na oddíly s časovou konvencí – když se data v AWS S3 zaregistrují s informacemi o časovém intervalu v názvu souboru nebo složky (například/yyyy/MM/DD/File.csv), kanál může snadno určit, které soubory/složky se mají kopírovat přírůstkově. 
+Nejpohodlnější způsob, jak identifikovat nové nebo změněné soubory z AWS S3, je použití konvencí pojmenování na oddíly s časovou konvencí – když se data v AWS S3 zaregistrují s informacemi o časovém intervalu v názvu souboru nebo složky (například/yyyy/MM/DD/file.csv), váš kanál může snadno určit, které soubory/složky se mají kopírovat přírůstkově. 
 
 Případně, pokud vaše data v AWS S3 nejsou rozdělená do oddílů, může ADF identifikovat nové nebo změněné soubory podle jejich LastModifiedDate.   To funguje tak, že ADF bude kontrolovat všechny soubory z AWS S3 a kopíruje jenom nový a aktualizovaný soubor, jehož časové razítko poslední změny je větší než určitá hodnota.  Uvědomte si, že pokud máte ve S3 velký počet souborů, může prvotní kontrola souborů trvat dlouhou dobu bez ohledu na to, kolik souborů odpovídá podmínce filtru.  V tomto případě navrhujete nejprve rozdělit data pomocí stejného nastavení ' prefix ' pro počáteční migraci snímku, aby bylo prohledávání souborů souběžně možné.  
 

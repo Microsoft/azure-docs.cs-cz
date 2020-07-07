@@ -4,16 +4,16 @@ description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458296"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Azure Resource Manager 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [portál Azure](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -63,7 +63,7 @@ Použitá šablona je k dispozici v [ukázkách šablon Azure Service Fabric: Š
 Následující příkaz může vytvořit clustery se systémem Windows nebo Linux, a proto je nutné zadat odpovídající operační systém. Příkazy PowerShellu/CLI také výstupují certifikát v zadaném *CertificateOutputFolder*; Ujistěte se však, že je složka s certifikátem již vytvořena. Příkaz používá i jiné parametry, jako je třeba SKU virtuálního počítače.
 
 > [!NOTE]
-> Následující příkaz PowerShell funguje jenom s modulem Azure PowerShell `Az` . Pokud chcete zjistit aktuální verzi Azure Resource Manager PowerShellu, spusťte následující příkaz PowerShellu Get-Module AZ. Pomocí [tohoto odkazu](/powershell/azure/install-Az-ps) můžete upgradovat Azure Resource Manager powershellovou verzi. 
+> Následující příkaz PowerShell funguje jenom s `Az` modulem Azure PowerShell. Pokud chcete zjistit aktuální verzi Azure Resource Manager PowerShellu, spusťte následující příkaz PowerShellu Get-Module AZ. Pomocí [tohoto odkazu](/powershell/azure/install-Az-ps) můžete upgradovat Azure Resource Manager powershellovou verzi. 
 >
 >
 

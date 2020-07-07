@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428755"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Dočasné tabulky v synapse SQL
@@ -33,7 +33,7 @@ V prostředku fondu SQL nabízí dočasné tabulky přínos pro zvýšení výko
 
 ### <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
 
-Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#`příponou.  Příklad:
+Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Příklad:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="dropping-temporary-tables"></a>Vyřazení dočasných tabulek
-Při vytvoření nové relace by neexistovaly žádné dočasné tabulky.  Nicméně pokud voláte stejnou uloženou proceduru, která vytvoří dočasný se stejným názvem, aby bylo zajištěno, že budou `CREATE TABLE` příkazy úspěšné, použijte jednoduchou kontrolu existence pomocí `DROP`: 
+Při vytvoření nové relace by neexistovaly žádné dočasné tabulky.  Nicméně pokud voláte stejnou uloženou proceduru, která vytvoří dočasný se stejným názvem, aby bylo zajištěno, že `CREATE TABLE` budou příkazy úspěšné, použijte jednoduchou kontrolu existence pomocí `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,7 +108,7 @@ BEGIN
 END
 ```
 
-Pro konzistenci kódování je vhodným postupem použít tento model pro tabulky i dočasné tabulky.  Je také vhodné použít k odebrání dočasných tabulek `DROP TABLE` , až je budete mít hotovi.  
+Pro konzistenci kódování je vhodným postupem použít tento model pro tabulky i dočasné tabulky.  Je také vhodné použít `DROP TABLE` k odebrání dočasných tabulek, až je budete mít hotovi.  
 
 V případě vývoje uložených procedur je běžné vidět na konci postupu příkazy drop připojené dohromady, aby se tyto objekty vyčistily.
 
@@ -193,7 +193,7 @@ GO
 
 V této fázi je jediná akce, ke které došlo, vytvořit uloženou proceduru, která generuje #stats_ddl dočasnou tabulku.  Uložená procedura od#stats_ddl, pokud již existuje. Tím zajistíte, že při spuštění více než jednou v rámci relace dojde k chybě.  
 
-Vzhledem k tomu, `DROP TABLE` že po dokončení uložené procedury není na konci uložené procedury, vytvořená tabulka zůstane a lze ji číst mimo uloženou proceduru.  
+Vzhledem k `DROP TABLE` tomu, že po dokončení uložené procedury není na konci uložené procedury, vytvořená tabulka zůstane a lze ji číst mimo uloženou proceduru.  
 
 Na rozdíl od jiných databází SQL Server umožňuje synapse SQL použít dočasnou tabulku mimo postup, který ho vytvořil.  Dočasné tabulky vytvořené prostřednictvím fondu SQL lze použít **kdekoli** v relaci. V důsledku toho budete mít více modulárních a spravovatelných kódů, jak je znázorněno v následující ukázce:
 

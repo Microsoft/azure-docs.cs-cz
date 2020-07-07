@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 07e103c3e1f56e8a46ea24e750d83e719abab3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81457973"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure Portal
@@ -41,7 +41,7 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Nastavení správných oprávnění pro klíčové operace
 
-1. V Key Vault vyberte **zásady** > přístupu**Přidat zásady přístupu**.
+1. V Key Vault vyberte **zásady přístupu**  >  **Přidat zásady přístupu**.
 
    ![Snímek obrazovky Key Vault se zvýrazněnými zásadami přístupu a přidáním zásad přístupu](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
@@ -69,7 +69,7 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
 
 Po zašifrování Azure Database for PostgreSQL jednoho serveru pomocí spravovaného klíče zákazníka uloženého v Key Vault jsou všechny nově vytvořené kopie serveru taky zašifrované. Tuto novou kopii můžete vytvořit buď prostřednictvím operace místního nebo geografického obnovení, nebo prostřednictvím operace repliky (místní/napříč oblastí). Pro zašifrovaný server PostgreSQL můžete například pomocí následujících kroků vytvořit zašifrovaný obnovený server.
 
-1. Na serveru vyberte **Přehled** > **obnovení**.
+1. Na serveru vyberte **Přehled**  >  **obnovení**.
 
    ![Snímek obrazovky Azure Database for PostgreSQL s zvýrazněným přehledem a obnovením](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
@@ -81,7 +81,7 @@ Po zašifrování Azure Database for PostgreSQL jednoho serveru pomocí spravova
 
    ![Snímek obrazovky Azure Database for PostgreSQL s zvýrazněným stavem nepřístupu](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Aby byl server přístupný, znovu ověřte klíč na obnoveném serveru. Vyberte > **klíč znovu ověřit** **šifrování dat**.
+3. Aby byl server přístupný, znovu ověřte klíč na obnoveném serveru. Vyberte klíč znovu ověřit **šifrování dat**  >  **Revalidate key**.
 
    > [!NOTE]
    > První pokus o nové ověření se nezdaří, protože instanční objekt nového serveru musí mít přístup k trezoru klíčů. Chcete-li vygenerovat instanční objekt, vyberte znovu **Ověřit klíč**, čímž se zobrazí chyba, ale vygeneruje se instanční objekt. Potom si přečtěte tento [postup](#set-the-right-permissions-for-key-operations) výše v tomto článku.

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416986"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocí jazyka C #
@@ -23,7 +23,7 @@ ms.locfileid: "81416986"
 Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory, aby programové požadavky rozhraní API [ODKAZOVALy na rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)API Azure Time Series Insights GA Správa dat.
 
 > [!TIP]
-> Podívejte se na ukázky kódů GA [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)C# na adrese.
+> Podívejte se na ukázky kódů GA C# na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Souhrn
 
@@ -46,7 +46,7 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 
    | Název klíče | Typ |
    | --- | --- |
-   | Uuid | Řetězec | 
+   | uuid | Řetězec | 
 
 1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). Použijte `http://localhost:8080/` jako **identifikátor URI přesměrování**.
 
@@ -66,7 +66,7 @@ Doporučuje se použít nejnovější verzi sady Visual Studio a **NETCore. app*
 Vzorový kód má dvě požadované závislosti:
 
 * MSAL.NET balíček [Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -4.7.1.
-* Balíček [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3.
+* [Newtonsoft.Jsbalíček on](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3.
 
 Přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
 

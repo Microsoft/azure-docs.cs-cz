@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416436"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure
@@ -52,7 +52,7 @@ Existují tři klíčové důležité důvody, pokud si vyberete mezi online a o
 
 Předpokládejme například, že plánujete použít Azure Data Factory k dokončení migrace dat do dvou týdnů ( *okna migrace*). Všimněte si růžového nebo modrého vyjmutého řádku v následující tabulce. Nejnižší růžová buňka pro libovolný daný sloupec zobrazuje párování velikosti dat a šířky pásma sítě, jejichž okno migrace je nejblíže, ale méně než dva týdny. (Jakékoli párování velikosti a šířky pásma v modré buňce má okno online migrace delší než dva týdny.) 
 
-![online vs.](media/data-migration-guidance-overview/online-offline.png) Tato tabulka vám pomůže určit, jestli můžete požadované okno migrace splnit prostřednictvím online migrace (Azure Data Factory), a to na základě velikosti vašich dat a dostupné šířky pásma sítě. Pokud je okno online migrace delší než dva týdny, budete chtít použít offline migraci.
+![online vs. ](media/data-migration-guidance-overview/online-offline.png) Tato tabulka vám pomůže určit, jestli můžete požadované okno migrace splnit prostřednictvím online migrace (Azure Data Factory), a to na základě velikosti vašich dat a dostupné šířky pásma sítě. Pokud je okno online migrace delší než dva týdny, budete chtít použít offline migraci.
 
 > [!NOTE]
 > Při použití online migrace můžete pomocí jediného nástroje dosáhnout historických a koncových informačních kanálů od začátku do konce.  Prostřednictvím tohoto přístupu se vaše data dají během celého okna migrace synchronizovat mezi existujícím a novým úložištěm. To znamená, že můžete logiku ETL znovu sestavit v novém úložišti s aktualizovanými daty.

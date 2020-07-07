@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430627"
 ---
 # <a name="initializer-codepackages"></a>Balíčky kódu inicializátoru
@@ -21,7 +21,7 @@ Než budete pokračovat v tomto článku, doporučujeme seznámit se s [Service 
 > [!NOTE]
 > Inicializátor CodePackages se v tuto chvíli nepodporuje u služeb napsaných pomocí programovacího modelu [Reliable Services][reliable-services-link] .
  
-## <a name="semantics"></a>Sémantiku
+## <a name="semantics"></a>Sémantika
 
 Očekává se spuštění inicializátoru CodePackage pro **úspěšné dokončení (ukončovací kód 0)**. Neúspěšný inicializátor CodePackage se restartuje, dokud se úspěšně nedokončí. Více inicializátorů CodePackages je povoleno a jsou spouštěny do **úspěšného dokončení**v **zadaném pořadí** před jiným CodePackages ve službě ServicePack. **sequentially**
 
@@ -52,7 +52,7 @@ Pojďme se podívat na úplný příklad pomocí inicializátoru CodePackages.
 >
 > Tento příklad odkazuje na mcr.microsoft.com/windows/nanoserver:1809. Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Následující ServiceManifest. XML staví na fragmentu ServiceManifest popsané výše. *InitCodePackage0*, *InitCodePackage1* a *WorkloadCodePackage* jsou CodePackages, které představují kontejnery. Při aktivaci se *InitCodePackage0* spustí jako první. Zaznamená zprávu do souboru a ukončí se. V dalším kroku se spustí *InitCodePackage1* , který také zaznamená zprávu do souboru a ukončí. Nakonec *WorkloadCodePackage* zahájí provádění. Zaznamená také zprávu do souboru, vytvoří výstup obsahu souboru do **stdout** a pak se znovu otestuje.
+Následující ServiceManifest.xml jsou vytvořeny na fragmentu ServiceManifest popsané výše. *InitCodePackage0*, *InitCodePackage1* a *WorkloadCodePackage* jsou CodePackages, které představují kontejnery. Při aktivaci se *InitCodePackage0* spustí jako první. Zaznamená zprávu do souboru a ukončí se. V dalším kroku se spustí *InitCodePackage1* , který také zaznamená zprávu do souboru a ukončí. Nakonec *WorkloadCodePackage* zahájí provádění. Zaznamená také zprávu do souboru, vytvoří výstup obsahu souboru do **stdout** a pak se znovu otestuje.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ Následující ServiceManifest. XML staví na fragmentu ServiceManifest popsané
 </ServiceManifest>
 ```
 
-Následující souboru ApplicationManifest. XML popisuje aplikaci založenou na souboru ServiceManifest. XML, který je popsán výše. Všimněte si, že určuje stejné připojení **svazku** pro všechny kontejnery, tj. **C:\WorkspaceOnHost** je připojeno na **C:\WorkspaceOnContainer** na všech třech kontejnerech. Čistý efekt znamená, že všechny kontejnery zapisují do stejného souboru protokolu v pořadí, ve kterém jsou aktivované.
+Následující ApplicationManifest.xml popisuje aplikaci na základě ServiceManifest.xml popsaných výše. Všimněte si, že určuje stejné připojení **svazku** pro všechny kontejnery, tj. **C:\WorkspaceOnHost** je připojeno na **C:\WorkspaceOnContainer** na všech třech kontejnerech. Čistý efekt znamená, že všechny kontejnery zapisují do stejného souboru protokolu v pořadí, ve kterém jsou aktivované.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

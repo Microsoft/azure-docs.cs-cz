@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
 ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415691"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Konfigurace podpory spravované identity v existujícím clusteru Service Fabric
@@ -55,7 +55,7 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
 ```
 
 > [!NOTE]
-> Po úspěšném dokončení upgradu nezapomeňte `forceRestart` nastavení vrátit zpátky, abyste minimalizovali dopad následných upgradů. 
+> Po úspěšném dokončení upgradu nezapomeňte nastavení vrátit zpátky `forceRestart` , abyste minimalizovali dopad následných upgradů. 
 
 ## <a name="errors-and-troubleshooting"></a>Chyby a řešení problémů
 

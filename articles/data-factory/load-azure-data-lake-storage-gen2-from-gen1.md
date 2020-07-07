@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
 ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415827"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Lake Storage Gen2 je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je integrovaná do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md). Můžete ji použít k rozhraní s daty pomocí paradigma systému souborů i úložiště objektů.
+Azure Data Lake Storage Gen2 je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je integrovaná do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md). Můžete ji použít pro připojení k datům pomocí paradigmat systému souborů a úložiště objektů.
 
 Pokud v tuto chvíli používáte Azure Data Lake Storage Gen1, můžete vyhodnotit Azure Data Lake Storage Gen2 kopírováním dat z Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory.
 
@@ -35,13 +35,13 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 * Azure Data Lake Storage Gen1 účet s daty.
 * Azure Storage účet s povoleným Data Lake Storage Gen2em. Pokud nemáte účet úložiště, [vytvořte účet](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**.
+1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory**.
    
    ![Data Factory výběr v novém podokně](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -49,7 +49,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
       
    ![Stránka Nová datová továrna](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
-    * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název \"objektu pro vytváření dat\" LoadADLSDemo není k dispozici", zadejte jiný název pro datovou továrnu. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Vytvořte datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \" LoadADLSDemo \" není k dispozici", zadejte jiný název pro datovou továrnu. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Vytvořte datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
     * **Skupina prostředků**: z rozevíracího seznamu vyberte existující skupinu prostředků. Můžete také vybrat možnost **vytvořit novou** a zadat název skupiny prostředků. Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
     * **Verze**: vyberte **v2**.
@@ -99,7 +99,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 
     ![Zadat výstupní složku](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-8. Na stránce **cílové úložiště dat** vyberte **+ vytvořit nové připojení** > **Azure Data Lake Storage Gen2** > **pokračovat**.
+8. Na stránce **cílové úložiště dat** vyberte **+ vytvořit nové připojení**  >  **Azure Data Lake Storage Gen2**  >  **pokračovat**.
 
     ![Stránka Cílové úložiště dat](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 
@@ -180,6 +180,6 @@ Správná frekvence přírůstkového načítání závisí na celkovém počtu 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přehled](copy-activity-overview.md)
-> aktivit kopírování[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
-> konektor[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) Connector
+> [Přehled](copy-activity-overview.md) 
+>  aktivit kopírování [Konektor Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) 
+>  [Konektor Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)

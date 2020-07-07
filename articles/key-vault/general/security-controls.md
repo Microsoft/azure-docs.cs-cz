@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429860"
 ---
 # <a name="security-controls-for-azure-key-vault"></a>Ovládací prvky zabezpečení pro Azure Key Vault
@@ -42,7 +42,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Key
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Ověřování probíhá prostřednictvím Azure Active Directory. |
+| Ověřování| Ano | Ověřování probíhá prostřednictvím Azure Active Directory. |
 | Autorizace| Ano | Používají se zásady přístupu Key Vault. |
 
 ## <a name="data-protection"></a>Ochrana dat
@@ -51,7 +51,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Key
 |---|---|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Všechny objekty jsou zašifrovány. |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Zákazník řídí všechny klíče v jejich Key Vault. Když jsou zadané klíče v modulu hardwarového zabezpečení (HSM), chrání klíč, certifikát nebo tajný kód úrovně FIPS úrovně 2. |
-| Šifrování na úrovni sloupce (Azure Data Services)| – |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici |  |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Veškerá komunikace probíhá prostřednictvím šifrovaných volání rozhraní API. |
 | Zašifrovaná volání rozhraní API| Ano | Pomocí protokolu HTTPS. |
 

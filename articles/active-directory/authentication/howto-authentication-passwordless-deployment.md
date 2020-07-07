@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451427"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
@@ -65,7 +65,7 @@ Informace o tom, jak vybrat nejlepší metodu pro vaši organizaci, najdete v t�
 
 Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky:
 
-| Požadavek | Aplikace Authenticator | FIDO2 klíče zabezpečení |
+| Požadavek | Ověřovací aplikace | FIDO2 klíče zabezpečení |
 | --- | --- | --- |
 | Je povolená [Kombinovaná registrace pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR)](howto-registration-mfa-sspr-combined.md) . | √ | √ |
 | [Uživatelé můžou provádět ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | √ | √ |
@@ -100,7 +100,7 @@ Následující tabulka popisuje případy použití, které mají být implement
 | **Zásady správného řízení** | Je definováno a sledováno životní cyklus přiřazení uživatelů k příslušné metodě ověřování a přidruženým skupinám. |
 | **Zabezpečení** | Přístup k příslušné metodě ověřování je řízen pomocí přiřazení uživatelů a skupin. <br> Jenom autorizovaní uživatelé můžou používat přihlášení nejenom heslem. |
 | **Výkon** | Časové osy šíření přístupu k přiřazení jsou zdokumentovány a monitorovány. <br> Časy přihlášení se měří pro snadné použití. |
-| **Zkušenosti uživatele** | Uživatelé mají informace o kompatibilitě mobilních zařízení. <br> Uživatelé můžou nakonfigurovat přihlášení k neheslům aplikace ověřovatele. |
+| **Činnost koncového uživatele** | Uživatelé mají informace o kompatibilitě mobilních zařízení. <br> Uživatelé můžou nakonfigurovat přihlášení k neheslům aplikace ověřovatele. |
 | **Podpora** | Uživatelé si vědomi, jak najít podporu pro problémy s přihlašováním bez hesla. |
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
@@ -118,7 +118,7 @@ Vaše komunikace s koncovými uživateli by měla obsahovat tyto informace:
 - [Registrace v aplikaci Microsoft Authenticator](howto-authentication-passwordless-phone.md)
 - [Přihlášení pomocí telefonu](../user-help/user-help-auth-app-sign-in.md)
 
-Společnost Microsoft poskytuje [šablony pro komunikaci](https://aka.ms/mfatemplates)službou Multi-Factor Authentication, [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)pro Samoobslužné resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem komunikace. Můžete odeslat uživatele do [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) , aby se zaregistrovali přímo, a to tak, že na této stránce vyberete odkazy na **informace o zabezpečení** .
+Společnost Microsoft poskytuje [šablony pro komunikaci](https://aka.ms/mfatemplates)službou Multi-Factor Authentication, [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)pro Samoobslužné resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem komunikace. Můžete odeslat uživatele do, [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) aby se zaregistrovali přímo, a to tak, že na této stránce vyberete odkazy na **informace o zabezpečení** .
 
 ### <a name="plan-to-pilot"></a>Plánování pilotního nasazení
 
@@ -172,7 +172,7 @@ Musíte povolit **kompatibilní bezpečnostní klíče FIDO2**. Společnost Micr
 Klíče zabezpečení umožňují přístup k vašim prostředkům a měli byste naplánovat správu těchto fyzických zařízení.
 
 1. **Distribuce klíčů**: Naplánujte způsob zřízení klíčů vaší organizaci. Je možné, že máte centralizovaný proces zřizování nebo pokud chcete, aby koncoví uživatelé koupili klíče kompatibilní s FIDO 2,0.
-1. **Aktivace klíče**: koncoví uživatelé musí klíč zabezpečení sami aktivovat. Koncoví uživatelé zaregistrují své [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) bezpečnostní klíče na a povolí druhý faktor (PIN nebo biometrika) při prvním použití.
+1. **Aktivace klíče**: koncoví uživatelé musí klíč zabezpečení sami aktivovat. Koncoví uživatelé zaregistrují své bezpečnostní klíče na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) a povolí druhý faktor (PIN nebo biometrika) při prvním použití.
 1. **Zakázání klíče**: i když je funkce klíče zabezpečení ve fázi Preview, neexistuje žádný způsob, jak správce odebrat klíč z uživatelského účtu. Uživatel ho musí odebrat. Pokud dojde ke ztrátě nebo odcizení klíče:
    1. Odebere uživatele ze všech skupin povolených pro ověřování bez hesla.
    1. Ověřte, že jste klíč odebrali jako metodu ověřování.
@@ -228,7 +228,7 @@ Následující tabulka uvádí některé příklady typických scénářů vytv�
 
 **Azure AD uchovává většinu dat auditování po dobu 30 dnů** a zpřístupňuje data prostřednictvím portálu pro správu Azure nebo rozhraní API, abyste je mohli stáhnout do svých analytických systémů. Pokud budete potřebovat delší dobu uchovávání, exportujte a využívejte protokoly v nástroji SIEM, jako je například [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk nebo sumo Logic. [Přečtěte si další informace o zobrazení sestav přístupu a využití](../reports-monitoring/overview-reports.md).
 
-Uživatelé můžou zaregistrovat a spravovat svoje přihlašovací údaje tak, že [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)přejde na. Tento odkaz uživatele přesměruje na prostředí pro správu přihlašovacích údajů koncového uživatele, které bylo povoleno prostřednictvím kombinovaného prostředí pro registraci SSPR/Multi-Factor Authentication. Služba Azure AD zaznamená registraci zařízení zabezpečení FIDO2 a změny metod ověřování pro uživatele.
+Uživatelé můžou zaregistrovat a spravovat svoje přihlašovací údaje tak, že přejde na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Tento odkaz uživatele přesměruje na prostředí pro správu přihlašovacích údajů koncového uživatele, které bylo povoleno prostřednictvím kombinovaného prostředí pro registraci SSPR/Multi-Factor Authentication. Služba Azure AD zaznamená registraci zařízení zabezpečení FIDO2 a změny metod ověřování pro uživatele.
 
 ### <a name="plan-security"></a>Plánování zabezpečení
 V rámci tohoto plánu zavedení společnost Microsoft doporučuje, aby u všech privilegovaných účtů správce bylo povoleno ověřování bez hesla.
@@ -324,7 +324,7 @@ Postupujte podle kroků v článku a [Povolte přihlášení klíče zabezpečen
 | **Chybová zpráva**: zjistili jsme, že tento prohlížeč nebo operační systém nepodporuje bezpečnostní klíče FIDO2. | FIDO2á zařízení zabezpečení bez hesla se dají registrovat jenom v podporovaných prohlížečích (Microsoft Edge, Firefox verze 67) ve Windows 10 verze 1809 nebo novější. |
 | **Chybová zpráva**: vaše firemní zásady vyžadují, abyste se přihlásili pomocí jiné metody. | V tenantovi nemusíte mít povolené klíče zabezpečení. |
 | Uživatel nemůže spravovat můj klíč zabezpečení ve Windows 10 verze 1809. | Verze 1809 vyžaduje, abyste používali software pro správu klíčů zabezpečení, který poskytuje dodavatel FIDO2 Key. Pro podporu se obraťte na dodavatele. |
-| Myslím, že můj klíč zabezpečení FIDO2 může být vadný – jak ho můžu otestovat. | Přejděte na [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), zadejte přihlašovací údaje k testovacímu účtu, zapojte podezřelý bezpečnostní klíč, vyberte **+** tlačítko v pravé horní části obrazovky, klikněte na vytvořit a Projděte si proces vytváření. Pokud se tento scénář nepovede, může být zařízení vadné. |
+| Myslím, že můj klíč zabezpečení FIDO2 může být vadný – jak ho můžu otestovat. | Přejděte na [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) , zadejte přihlašovací údaje k testovacímu účtu, zapojte podezřelý bezpečnostní klíč, vyberte **+** tlačítko v pravé horní části obrazovky, klikněte na vytvořit a Projděte si proces vytváření. Pokud se tento scénář nepovede, může být zařízení vadné. |
 
 ## <a name="next-steps"></a>Další kroky
 

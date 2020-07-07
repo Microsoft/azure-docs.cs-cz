@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417211"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivitu v Azure Data Factory
 Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupní pole. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -37,12 +37,12 @@ Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupn
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-jméno | Název `Filter` aktivity | Řetězec | Ano
-type | Musí být nastavené na **Filter**. | Řetězec | Ano
-pomocné | Podmínka, která se má použít pro filtrování vstupu. | Expression | Ano
-položek | Vstupní pole, ve kterém se má použít filtr | Expression | Ano
+name | Název `Filter` aktivity | Řetězec | Ano
+typ | Musí být nastavené na **Filter**. | Řetězec | Ano
+pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Ano
+položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Ano
 
 ## <a name="example"></a>Příklad
 
@@ -120,5 +120,5 @@ Podívejte se na další aktivity toku řízení podporované Data Factory:
 - [Aktivita For Each](control-flow-for-each-activity.md)
 - [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Aktivita webu](control-flow-web-activity.md)
+- [Webová aktivita](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

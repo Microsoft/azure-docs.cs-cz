@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415338"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
@@ -44,10 +44,10 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu ServiceNow jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **ServiceNow** . | Ano |
-| endpoint | Koncový bod serveru ServiceNow (`http://<instance>.service-now.com`).  | Ano |
+| typ | Vlastnost Type musí být nastavená na: **ServiceNow** . | Ano |
+| endpoint | Koncový bod serveru ServiceNow ( `http://<instance>.service-now.com` ).  | Ano |
 | authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Basic**, **OAuth2** | Ano |
 | uživatelské jméno | Uživatelské jméno použité pro připojení k serveru ServiceNow pro ověřování Basic a OAuth2.  | Ano |
 | heslo | Heslo odpovídající uživatelskému jménu pro základní a OAuth2 ověřování. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -57,7 +57,7 @@ Pro propojenou službu ServiceNow jsou podporovány následující vlastnosti:
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -83,12 +83,12 @@ Pro propojenou službu ServiceNow jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z ServiceNow, nastavte vlastnost Type datové sady na **ServiceNowObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **ServiceNowObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **ServiceNowObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -113,21 +113,21 @@ Chcete-li kopírovat data z ServiceNow, nastavte vlastnost Type datové sady na 
 
 Chcete-li kopírovat data z ServiceNow, nastavte typ zdroje v aktivitě kopírování na **ServiceNowSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ServiceNowSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ServiceNowSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Actual.alm_asset"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 Při zadávání schématu a sloupce pro ServiceNow v dotazu Pamatujte na následující **informace a podívejte se na [tipy k výkonu](#performance-tips) při kopírování výkonu**.
 
-- **Schéma:** `Actual` zadejte schéma jako `Display` nebo v dotazu ServiceNow, který můžete při volání `sysparm_display_value` [rozhraní API RESTful ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)použít jako parametr jako true nebo false. 
-- **Column (sloupec):** název sloupce pro skutečnou `Actual` hodnotu ve `[column name]_value`schématu je, zatímco pro zobrazovanou hodnotu v části `Display` schéma je `[column name]_display_value`. Všimněte si, že název sloupce musí být namapován na schéma používané v dotazu.
+- **Schéma:** zadejte schéma jako `Actual` nebo `Display` v dotazu ServiceNow, který můžete `sysparm_display_value` při volání [rozhraní API RESTful ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)použít jako parametr jako true nebo false. 
+- **Column (sloupec):** název sloupce pro skutečnou hodnotu ve `Actual` schématu je `[column name]_value` , zatímco pro zobrazovanou hodnotu v části `Display` schéma je `[column name]_display_value` . Všimněte si, že název sloupce musí být namapován na schéma používané v dotazu.
 
 **Vzorový dotaz:** 
- `SELECT col_value FROM Actual.alm_asset` nebo 
+ `SELECT col_value FROM Actual.alm_asset` ANI 
 `SELECT col_display_value FROM Display.alm_asset`
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

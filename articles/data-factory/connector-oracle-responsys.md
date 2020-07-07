@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: cde0e2d118490801aeee3874e220d298fea24598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416844"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Kopírování dat z Oracle Responsys pomocí Azure Data Factory (Preview)
@@ -47,9 +47,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Oracle Responsys jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Responsys** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **Responsys** . | Ano |
 | endpoint | Koncový bod serveru Respopnsys  | Ano |
 | clientId | ID klienta přidružené k aplikaci Responsys.  | Ano |
 | clientSecret | Tajný kód klienta přidružený k aplikaci Responsys. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
@@ -57,7 +57,7 @@ Pro propojenou službu Oracle Responsys jsou podporovány následující vlastno
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -86,12 +86,12 @@ Pro propojenou službu Oracle Responsys jsou podporovány následující vlastno
 
 Chcete-li kopírovat data z Oracle Responsys, nastavte vlastnost Type datové sady na **ResponsysObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **ResponsysObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **ResponsysObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -117,12 +117,12 @@ Chcete-li kopírovat data z Oracle Responsys, nastavte vlastnost Type datové sa
 
 Pokud chcete kopírovat data z Oracle Responsys, nastavte typ zdroje v aktivitě kopírování na **ResponsysSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ResponsysSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ResponsysSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

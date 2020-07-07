@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 6699178e514f4d25666305f3251e8eaf9d28e6dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417462"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopírování dat z Concur pomocí Azure Data Factory (Preview)
@@ -51,9 +51,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Concur jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Concur** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **Concur** . | Ano |
 | clientId | Aplikace client_id poskytovaná správou aplikací Concur.  | Ano |
 | uživatelské jméno | Uživatelské jméno, které používáte pro přístup ke službě Concur.  | Ano |
 | heslo | Heslo odpovídající uživatelskému jménu, které jste zadali v poli uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -61,7 +61,7 @@ Pro propojenou službu Concur jsou podporovány následující vlastnosti:
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -86,13 +86,13 @@ Pro propojenou službu Concur jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Concur, nastavte vlastnost Type datové sady na **ConcurObject**. V tomto typu datové sady neexistuje žádná další vlastnost specifická pro typ. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **ConcurObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **ConcurObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -117,12 +117,12 @@ Chcete-li kopírovat data z Concur, nastavte vlastnost Type datové sady na **Co
 
 Chcete-li kopírovat data z Concur, nastavte typ zdroje v aktivitě kopírování na **ConcurSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ConcurSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ConcurSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Opportunities where Id = xxx "`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

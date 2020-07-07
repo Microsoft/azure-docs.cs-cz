@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460643"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
@@ -84,7 +84,7 @@ Celkové místo vyžadované na místní úrovni je: 240 GB + 120 GB + 330 GB = 
 Za druhé potřebujeme aspoň tolik místa na místní úrovni jako největší jedinou rezervaci. Tato částka navíc se používá v případě, že potřebujete obnovení z cloudového snímku. V tomto příkladu je největší místní rezervace 330 GB (včetně rezervace pro systém souborů), takže byste je měli přidat do 690 GB: 690 GB + 330 GB = 1020 GB.
 Pokud jsme provedli následné dodatečné obnovení, můžeme vždy uvolnit místo z předchozí operace obnovení.
 
-Třetí, potřebujeme ještě 15% celkového místního prostoru pro ukládání místních snímků, takže je k dispozici jenom 85% z tohoto místa. V tomto příkladu by to představovalo přibližně 1020 GB = 0,85&ast;zřízený datový disk TB. Proto by byl zřízený datový disk (1020&ast;(1/0.85)) = 1200 GB = 1,20 TB ~ 1,25 TB (zaokrouhlení na nejbližší kvartil).
+Třetí, potřebujeme ještě 15% celkového místního prostoru pro ukládání místních snímků, takže je k dispozici jenom 85% z tohoto místa. V tomto příkladu by to představovalo přibližně 1020 GB = 0,85 &ast; zřízený datový disk TB. Proto by byl zřízený datový disk (1020 &ast; (1/0.85)) = 1200 GB = 1,20 TB ~ 1,25 TB (zaokrouhlení na nejbližší kvartil).
 
 V případě neočekávaného nárůstu a nových obnovení byste měli zřídit místní disk o velikosti přibližně 1,25 až 1,5 TB.
 
@@ -107,7 +107,7 @@ Celková velikost požadovaného prostoru na místní úrovni: 240 GB + 330 GB =
 
 Minimální místní prostor potřebný k obnovení je 330 GB.
 
-15% celkového disku se používá k ukládání snímků, takže je k dispozici jenom 0,85. Velikost disku je tedy (900&ast;(1/0.85)) = 1,06 TB ~ 1,25 TB (zaokrouhlení na nejbližší kvartil)
+15% celkového disku se používá k ukládání snímků, takže je k dispozici jenom 0,85. Velikost disku je tedy (900 &ast; (1/0.85)) = 1,06 TB ~ 1,25 TB (zaokrouhlení na nejbližší kvartil)
 
 Faktoring při jakémkoli neočekávaném nárůstu můžete zřídit místní disk 1,25-1,5 TB.
 
@@ -250,7 +250,7 @@ Při deaktivaci virtuálního pole mějte na paměti následující osvědčené
 * Před deaktivací StorSimple virtuálního pole nezapomeňte zastavit nebo odstranit klienty a hostitele, kteří na tomto zařízení závisejí.
 * Odstraňte deaktivované zařízení, pokud už se nepoužíváte, takže se neúčtují poplatky.
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 Aby se zajistilo, že vaše virtuální pole StorSimple je v nepřetržitém stavu, budete muset monitorovat pole a zajistit, aby se zobrazovaly informace ze systému včetně výstrah. Chcete-li monitorovat celkový stav virtuálního pole, implementujte tyto osvědčené postupy:
 
 * Nakonfigurujte monitorování a sledujte využití disku s datovým diskem virtuálního pole i disk s operačním systémem. Pokud používáte Hyper-V, můžete k monitorování hostitelů virtualizace použít kombinaci System Center Virtual Machine Manager (SCVMM) a System Center Operations Manager.
@@ -287,6 +287,6 @@ Pro rostoucí pracovní sadu dat, která by mohla přecházet do cloudu, může 
 * Pokud nasazujete více virtuálních polí, doporučujeme, abyste z perspektivy vyrovnávání zatížení rozšíříte pole napříč různými hostiteli hypervisoru.
 * V oboru názvů systém souborů DFS (Distributed File System) lze nasadit více virtuálních polí (Pokud je nakonfigurovaná jako souborový server nebo server iSCSI). Podrobný postup najdete v [systém souborů DFS (Distributed File System) řešení oboru názvů pomocí Průvodce nasazením hybridního cloudového úložiště](https://www.microsoft.com/download/details.aspx?id=45507). Replikace systém souborů DFS (Distributed File System) se momentálně nedoporučuje pro použití s virtuálním polem. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 Naučte se [spravovat virtuální pole StorSimple](storsimple-virtual-array-manager-service-administration.md) prostřednictvím služby StorSimple Manager.
 

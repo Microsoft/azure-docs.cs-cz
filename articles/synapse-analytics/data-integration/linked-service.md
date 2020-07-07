@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430549"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů 
@@ -49,7 +49,7 @@ Pokud jste v případě testování výše uvedeného připojení nepoužili odk
 1. V části spravovaný privátní koncový bod vyberte **+ Nový** .
 1. V seznamu Vyberte dlaždici Azure Data Lake Storage Gen2 a vyberte **pokračovat**.
 1. Zadejte název účtu úložiště, který jste vytvořili výše.
-1. Vyberte **vytvořit** .
+1. Vyberte **Vytvořit**.
 1. Měli byste vidět, že se po chvíli čekání na vytvoření privátního odkazu vyžaduje schválení.
 
 ## <a name="approval-of-a-private-link"></a>Schválení privátního odkazu

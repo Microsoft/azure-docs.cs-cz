@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: e2c9da9c1a37b087a31d1910094f51a39288c192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416712"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks online pomocí Azure Data Factory (Preview)
@@ -50,9 +50,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **QuickBooks** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **QuickBooks** . | Ano |
 | endpoint | Koncový bod serveru QuickBooks online. (tj. quickbooks.api.intuit.com)  | Ano |
 | companyId | ID společnosti společnosti QuickBooks, která má být autorizována. Informace o tom, jak najít ID společnosti, najdete v tématu [návody najít moje ID společnosti?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ano |
 | consumerKey | Klíč příjemce pro ověřování OAuth 1,0. | Ano |
@@ -61,7 +61,7 @@ Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 | accessTokenSecret | Tajný klíč přístupového tokenu pro ověřování OAuth 1,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -96,12 +96,12 @@ Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z QuickBooks online, nastavte vlastnost Type datové sady na **QuickBooksObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **QuickBooksObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **QuickBooksObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -126,12 +126,12 @@ Chcete-li kopírovat data z QuickBooks online, nastavte vlastnost Type datové s
 
 Chcete-li kopírovat data z QuickBooks online, nastavte typ zdroje v aktivitě kopírování na **QuickBooksSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
 ms.openlocfilehash: ddf752fc78c8c6bb2d7e7a57178b9cf2d719b810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418197"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory"></a>Kopírování dat z JIRA pomocí Azure Data Factory
@@ -45,9 +45,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu JIRA jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **JIRA** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **JIRA** . | Ano |
 | host | IP adresa nebo název hostitele služby JIRA (například jira.example.com)  | Ano |
 | port | Port TCP, který server JIRA používá k naslouchání klientským připojením. Výchozí hodnota je 443, pokud se připojujete prostřednictvím protokolu HTTPS, nebo 8080 při připojování prostřednictvím protokolu HTTP.  | Ne |
 | uživatelské jméno | Uživatelské jméno, které používáte pro přístup ke službě JIRA.  | Ano |
@@ -56,7 +56,7 @@ Pro propojenou službu JIRA jsou podporovány následující vlastnosti:
 | useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -82,12 +82,12 @@ Pro propojenou službu JIRA jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z JIRA, nastavte vlastnost Type datové sady na **JiraObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **JiraObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **JiraObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -112,12 +112,12 @@ Chcete-li kopírovat data z JIRA, nastavte vlastnost Type datové sady na **Jira
 
 Chcete-li kopírovat data z JIRA, nastavte typ zdroje v aktivitě kopírování na **JiraSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **JiraSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **JiraSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

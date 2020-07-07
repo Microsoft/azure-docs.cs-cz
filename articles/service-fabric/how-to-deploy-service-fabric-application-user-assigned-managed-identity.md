@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak nasadit aplikaci Service Fabric s
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415628"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou
@@ -18,7 +18,7 @@ Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být a
 > 
 > Aplikace, které nejsou nasazené jako prostředek Azure, **nemůžou** mít spravované identity. 
 >
-> Nasazení aplikace Service Fabric se spravovanou identitou podporuje verze `"2019-06-01-preview"`rozhraní API. Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
+> Nasazení aplikace Service Fabric se spravovanou identitou podporuje verze rozhraní API `"2019-06-01-preview"` . Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
 >
 
 ## <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
@@ -62,7 +62,7 @@ V předchozím příkladu se jako popisný název spravované identity aplikace 
 
 ### <a name="application-package"></a>Balíček aplikace
 
-1. Pro každou identitu definovanou v `managedIdentities` části šablony Azure Resource Manager přidejte `<ManagedIdentity>` značku v manifestu aplikace v části **objekty zabezpečení** . `Name` Atribut musí odpovídat `name` vlastnosti definované v `managedIdentities` oddílu.
+1. Pro každou identitu definovanou v `managedIdentities` části šablony Azure Resource Manager přidejte `<ManagedIdentity>` značku v manifestu aplikace v části **objekty zabezpečení** . `Name`Atribut musí odpovídat `name` vlastnosti definované v `managedIdentities` oddílu.
 
     **ApplicationManifest.xml**
 
@@ -86,7 +86,7 @@ V předchozím příkladu se jako popisný název spravované identity aplikace 
       </ServiceManifestImport>
     ```
 
-3. Aktualizujte manifest služby, aby přidal **ManagedIdentity** do části **Resources (prostředky** ) s `ServiceIdentityRef` názvem, `IdentityBindingPolicy` který odpovídá názvu v manifestu aplikace:
+3. Aktualizujte manifest služby, aby přidal **ManagedIdentity** do části **Resources (prostředky** ) s názvem, který odpovídá názvu `ServiceIdentityRef` v `IdentityBindingPolicy` manifestu aplikace:
 
     **ServiceManifest.xml**
 

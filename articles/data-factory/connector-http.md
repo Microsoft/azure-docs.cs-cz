@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416942"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
@@ -66,9 +66,9 @@ Následující části obsahují podrobné informace o vlastnostech, které mů�
 
 Pro propojenou službu HTTP jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** musí být nastavena na hodnotu **HttpServer**. | Ano |
+| typ | Vlastnost **Type** musí být nastavena na hodnotu **HttpServer**. | Ano |
 | url | Základní adresa URL webového serveru. | Ano |
 | enableServerCertificateValidation | Určete, jestli se při připojení ke koncovému bodu HTTP má povolit ověřování certifikátu TLS/SSL serveru. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **false**. | Ne<br /> (výchozí hodnota je **true**) |
 | authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech uvedených v této tabulce. | Ano |
@@ -78,12 +78,12 @@ Pro propojenou službu HTTP jsou podporovány následující vlastnosti:
 
 Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**, **Digest**nebo **Windows**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
 | userName | Uživatelské jméno, které se má použít pro přístup ke koncovému bodu HTTP. | Ano |
 | heslo | Heslo pro uživatele (hodnota uživatelského **jména** ). Označte toto pole jako typ **SecureString** a bezpečně ho uložte do Data Factory. Můžete také [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -111,7 +111,7 @@ Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**, **Digest**nebo *
 
 Chcete-li použít ověřování ClientCertificate, nastavte vlastnost **AuthenticationType** na **ClientCertificate**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
 | embeddedCertData | Data certifikátu zakódovaná ve formátu base64. | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
 | certThumbprint | Kryptografický otisk certifikátu, který je nainstalovaný v úložišti certifikátů počítače Integration Runtime v místním prostředí. Platí pouze v případě, že je typ hosta Integration Runtime zadán ve vlastnosti **connectVia** . | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
@@ -120,8 +120,8 @@ Chcete-li použít ověřování ClientCertificate, nastavte vlastnost **Authent
 Pokud pro ověřování používáte **certThumbprint** a certifikát se instaluje do osobního úložiště místního počítače, udělte oprávnění ke čtení Integration Runtimeům v místním prostředí:
 
 1. Otevřete konzolu MMC (Microsoft Management Console). Přidejte modul snap-in **certifikáty** , který cílí na **místní počítač**.
-2. Rozbalte položku **certifikáty** > **osobní**a pak vyberte možnost **certifikáty**.
-3. Pravým tlačítkem myši klikněte na certifikát z osobního úložiště a pak vyberte **všechny úlohy** > **spravovat soukromé klíče**.
+2. Rozbalte položku **certifikáty**  >  **osobní**a pak vyberte možnost **certifikáty**.
+3. Pravým tlačítkem myši klikněte na certifikát z osobního úložiště a pak vyberte **všechny úlohy**  >  **spravovat soukromé klíče**.
 3. Na kartě **zabezpečení** přidejte uživatelský účet, pod kterým je spuštěná služba Integration runtime Host (DIAHostService) s přístupem pro čtení k certifikátu.
 
 **Příklad 1: použití certThumbprint**
@@ -176,15 +176,15 @@ Pokud pro ověřování používáte **certThumbprint** a certifikát se instalu
 
 Následující vlastnosti jsou podporovány pro protokol HTTP v `location` nastavení v datové sadě založené na formátu:
 
-| Vlastnost    | Popis                                                  | Požaduje se |
+| Vlastnost    | Popis                                                  | Vyžadováno |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | Vlastnost Type v rámci `location` datové sady musí být nastavená na **HttpServerLocation**. | Ano      |
-| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Konektor HTTP kopíruje data z kombinované adresy URL: `[URL specified in linked service][relative URL specified in dataset]`.   | Ne       |
+| typ        | Vlastnost Type v rámci `location` datové sady musí být nastavená na **HttpServerLocation**. | Ano      |
+| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Konektor HTTP kopíruje data z kombinované adresy URL: `[URL specified in linked service][relative URL specified in dataset]` .   | Ne       |
 
 > [!NOTE]
 > Podporovaná velikost datové části požadavku HTTP je okolo 500 KB. Pokud je velikost datové části, kterou chcete předat webovému koncovému bodu, větší než 500 KB, zvažte dávkování datové části v menších blocích.
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -222,16 +222,16 @@ V této části najdete seznam vlastností, které zdroj HTTP podporuje.
 
 Následující vlastnosti jsou podporovány pro protokol HTTP v `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
 
-| Vlastnost                 | Popis                                                  | Požaduje se |
+| Vlastnost                 | Popis                                                  | Vyžadováno |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **HttpReadSettings**. | Ano      |
+| typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **HttpReadSettings**. | Ano      |
 | requestMethod            | Metoda HTTP. <br>Povolené hodnoty jsou **Get** (default) a **post**. | Ne       |
 | addtionalHeaders         | Další hlavičky požadavku HTTP                             | Ne       |
 | částmi              | Tělo požadavku HTTP                               | Ne       |
 | httpRequestTimeout           | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
 | maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne       |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -283,9 +283,9 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** datové sady musí být nastavená na **HttpFile**. | Ano |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **HttpFile**. | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud tato vlastnost není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. | Ne |
 | requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** (default) a **post**. | Ne |
 | additionalHeaders | Další hlavičky požadavku HTTP | Ne |
@@ -337,12 +337,12 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ### <a name="legacy-copy-activity-source-model"></a>Starší zdrojový model aktivity kopírování
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **HttpSource**. | Ano |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **HttpSource**. | Ano |
 | httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | Ne |
 
-**Případě**
+**Příklad**
 
 ```json
 "activities":[

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416272"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyvážení clusteru Service Fabric
@@ -33,7 +33,7 @@ Každý z těchto různých typů oprav Správce prostředků clusteru je možn�
 
 Příklady konfigurace upravující tyto časovače jsou následující:
 
-Manifestem clusteru. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -44,7 +44,7 @@ Manifestem clusteru. XML:
         </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [
@@ -83,7 +83,7 @@ Prahová hodnota pro vyrovnávání je hlavním ovládacím prvkem pro aktivaci 
 
 Prahové hodnoty pro vyvážení jsou definovány na základě metriky jako součást definice clusteru. Další informace o metrikách najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md).
 
-Manifestem clusteru. XML
+ClusterManifest.xml
 
 ```xml
     <Section Name="MetricBalancingThresholds">
@@ -92,7 +92,7 @@ Manifestem clusteru. XML
     </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [
@@ -144,7 +144,7 @@ I když jsou uzly relativně nevyvážené, *celkové* množství zatížení v 
 
 Stejně jako prahové hodnoty pro vyvážení jsou prahové hodnoty aktivity definovány na základě metriky prostřednictvím definice clusteru:
 
-Manifestem clusteru. XML
+ClusterManifest.xml
 
 ``` xml
     <Section Name="MetricActivityThresholds">
@@ -152,7 +152,7 @@ Manifestem clusteru. XML
     </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [

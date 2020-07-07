@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432057"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
@@ -55,11 +55,11 @@ Hlavička "Authorization" je přístupový token, který je vyžadován při ka�
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Token nemá přidružený správný prostředek. 
 
-Při vyžádání přístupového tokenu z koncového bodu Azure OAUTH je parametr s názvem "prostředek" povinný. Hodnota je důležitá pro poskytovatele tokenů, protože je v oboru pro zamýšlené použití. Prostředek **pro přístup** k Key Vault je *https\/:/Vault.keyvault.NET* (bez koncového lomítka).
+Při vyžádání přístupového tokenu z koncového bodu Azure OAUTH je parametr s názvem "prostředek" povinný. Hodnota je důležitá pro poskytovatele tokenů, protože je v oboru pro zamýšlené použití. Prostředek **pro přístup** k Key Vault je *https: \/ /Vault.keyvault.NET* (bez koncového lomítka).
 
 ### <a name="the-token-is-expired"></a>Platnost tokenu vypršela.
 
-Tokeny mají kódování Base64 a hodnoty lze dekódovat na webech, jako je například [http://jwt.calebb.net](http://jwt.calebb.net). Toto je dekódování výše uvedeného tokenu:
+Tokeny mají kódování Base64 a hodnoty lze dekódovat na webech, jako je například [http://jwt.calebb.net](http://jwt.calebb.net) . Toto je dekódování výše uvedeného tokenu:
 
 ```
     {
@@ -89,7 +89,7 @@ Tokeny mají kódování Base64 a hodnoty lze dekódovat na webech, jako je nap�
 
 V tomto tokenu jsme viděli spoustu důležitých částí:
 
-- AUD (cílová skupina): prostředek tokenu. Všimněte si, že <https://vault.azure.net>je to. Tento token nebude fungovat pro všechny prostředky, které explicitně neodpovídají této hodnotě, jako je například Graph.
+- AUD (cílová skupina): prostředek tokenu. Všimněte si, že je to <https://vault.azure.net> . Tento token nebude fungovat pro všechny prostředky, které explicitně neodpovídají této hodnotě, jako je například Graph.
 - IAT (vydáno v): počet taktů od začátku epocha při vydání tokenu.
 - NBF (ne dříve): počet taktů od začátku epocha, pokud je tento token platný.
 - EXP (vypršení platnosti): počet taktů od začátku epocha po vypršení platnosti tokenu.
@@ -100,7 +100,7 @@ Je důležité, aby všechny hodnoty správně identifikovaly v tokenu, aby mohl
 
 ### <a name="troubleshooting-401"></a>Řešení potíží 401
 
-401s by se mělo prozkoumat z bodu generování tokenu, než se do trezoru klíčů dovede požadavek. K vyžádání tokenu se používá všeobecně používaný kód. Po přijetí tokenu je předán do žádosti Key Vault. Pokud kód běží lokálně, můžete použít Fiddler k zachycení žádosti nebo odpovědi na `https://login.microsoftonline.com`. Požadavek vypadá takto:
+401s by se mělo prozkoumat z bodu generování tokenu, než se do trezoru klíčů dovede požadavek. K vyžádání tokenu se používá všeobecně používaný kód. Po přijetí tokenu je předán do žádosti Key Vault. Pokud kód běží lokálně, můžete použít Fiddler k zachycení žádosti nebo odpovědi na `https://login.microsoftonline.com` . Požadavek vypadá takto:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1
