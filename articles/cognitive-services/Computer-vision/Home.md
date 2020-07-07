@@ -13,7 +13,6 @@ ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 3e1c67ee91298b9e8d0c3c427988c9966771aeaa
 ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85920560"
@@ -34,7 +33,7 @@ Počítačové zpracování obrazu může výkon mnoha scénářů správy digit
 
 Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 
-| Akce | Popis |
+| Akce | Description |
 | ------ | ----------- |
 |**[Označování vizuálních vlastností](concept-tagging-images.md)**|Identifikujte a označte vizuální funkce na obrázku ze sady tisíců rozpoznatelných objektů, živých věcí, krajin a akcí. Pokud jsou značky dvojznačné nebo nejsou běžné znalosti, poskytuje odpověď rozhraní API nápovědu k objasnění kontextu značky. Označování se neomezuje na hlavní předmět, například postavu v popředí, ale zahrnuje také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.|
 |**[Detekovat objekty](concept-object-detection.md)**| Detekce objektu je podobná označování, ale rozhraní API vrací souřadnice ohraničujícího pole pro každou použitou značku. Pokud například obrázek obsahuje pes, Cat a osobu, operace zjišťování zobrazí tyto objekty spolu s jejich souřadnicemi v obrázku. Tuto funkci můžete použít ke zpracování dalších vztahů mezi objekty v imagi. Také vám umožní zjistit, že je v obrázku více instancí stejné značky.|

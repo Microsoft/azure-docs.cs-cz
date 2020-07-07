@@ -7,12 +7,11 @@ ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
-ms.openlocfilehash: 0fe0c9e41a5787a963920d300cd99ecaf8803019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 74c140f2fa08fb49235c0503ea5812e047185f8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262765"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023495"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Vypršení platnosti dat s využitím rozhraní API služby Azure Cosmos DB pro MongoDB.
 
@@ -74,7 +73,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 Funkci MongoDB pro každý dokument lze aktivovat pomocí rozhraní API Azure Cosmos DB pro.
 
-![Snímek obrazovky s aktivací funkce TTL na základě dokumentů na portálu](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="Snímek obrazovky s aktivací funkce TTL na základě dokumentů na portálu":::
 
 ## <a name="next-steps"></a>Další kroky
 * [Automatické vypršení platnosti dat v Azure Cosmos DB s časem až Live](../cosmos-db/time-to-live.md)

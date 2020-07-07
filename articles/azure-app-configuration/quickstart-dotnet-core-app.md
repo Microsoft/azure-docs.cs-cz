@@ -9,7 +9,6 @@ ms.date: 1/9/2019
 ms.author: lcozzens
 ms.openlocfilehash: 7cabe5b0564ec63335800a999bebec67ec970587
 ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85856787"

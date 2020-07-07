@@ -7,7 +7,6 @@ ms.date: 05/15/2020
 ms.author: v-demjoh
 ms.openlocfilehash: c57187ae15e5f15a601edbc74921b3c879abe715
 ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/22/2020
 ms.locfileid: "83800673"

@@ -10,7 +10,6 @@ services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: b02455c153c6205b87a64a388d5588c3c431e0c9
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85963491"

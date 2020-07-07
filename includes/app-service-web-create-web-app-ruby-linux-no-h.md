@@ -8,16 +8,15 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 01c1c7c0bdf8e55b002b73682407a3e03ee30b8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 95f0e542022f64a5a5bf7d7009c79382e25392df
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085772"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "86035509"
 ---
-Vytvořte [webovou aplikaci](../articles/app-service/containers/app-service-linux-intro.md) v plánu `myAppServicePlan` App Service. 
+Vytvořte [webovou aplikaci](../articles/app-service/containers/app-service-linux-intro.md) v `myAppServicePlan` plánu App Service. 
 
-V Cloud Shell můžete použít [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) příkaz. V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `RUBY|2.3`. Pokud chcete zobrazit všechny podporované moduly runtime, [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)spusťte příkaz. 
+V Cloud Shell můžete použít [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) příkaz. V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `RUBY|2.6.2`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) . 
 
 ```azurecli-interactive
 # Bash

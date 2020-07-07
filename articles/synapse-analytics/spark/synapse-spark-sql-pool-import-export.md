@@ -11,7 +11,6 @@ ms.author: prgomata
 ms.reviewer: euang
 ms.openlocfilehash: ebf948fdb1df76cb7bcb03ee5d85f581d856524f
 ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85918733"

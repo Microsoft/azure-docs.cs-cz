@@ -4,12 +4,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: e0eff35405b0fbd5cd8ec41c9e455393f36d14f8
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: 57db307b1fe5c5112b08fbcffda06e6f24177bff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611457"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035802"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -17,7 +16,7 @@ V tomto článku se předpokládá, že máte účet Azure a předplatné služb
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Předtím, než můžete cokoli udělat, musíte nainstalovat <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. V závislosti na vaší platformě postupujte podle následujících pokynů:
+Předtím, než můžete cokoli udělat, musíte nainstalovat <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">sadu Speech SDK pro JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. V závislosti na vaší platformě postupujte podle následujících pokynů:
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js<span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webový prohlížeč<span class="docon docon-navigate-external x-hidden-focus"></span></a>
@@ -48,9 +47,9 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 Další informace o najdete v `require` tématu <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">co je potřeba? <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 
-# <a name="script"></a>[pravidel](#tab/script)
+# <a name="script"></a>[script](#tab/script)
 
-Stáhněte a extrahujte soubor *microsoft.cognitiveservices.speech.sdk.bundle.js* <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">sady <span class="docon docon-navigate-external x-hidden-focus"></span> Speech Speech pro JavaScript</a> a umístěte ho do složky přístupné pro váš soubor HTML.
+Stáhněte a extrahujte <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">sadu Speech SDK pro <span class="docon docon-navigate-external x-hidden-focus"></span> JavaScript</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* soubor a umístěte ji do složky přístupné pro váš soubor HTML.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;

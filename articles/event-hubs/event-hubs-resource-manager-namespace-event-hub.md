@@ -5,7 +5,6 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 6ddf17030da8b0ff50f10938221b9c1dba08084d
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85964290"

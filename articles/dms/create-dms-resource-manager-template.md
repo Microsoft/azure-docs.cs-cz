@@ -9,7 +9,6 @@ ms.date: 06/29/2020
 ms.service: dms
 ms.openlocfilehash: 9e0d537a948e960c90737cc3f367940a0ffca74c
 ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85852515"

@@ -10,16 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 04/21/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81867452"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023906"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -80,7 +79,7 @@ Privileged Identity Management podporuje následující scénáře:
 
 Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli byste si projít následující výrazy.
 
-| Termín nebo koncept | Kategorie přiřazení role | Popis |
+| Termín nebo koncept | Kategorie přiřazení role | Description |
 | --- | --- | --- |
 | způsobil | Typ | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
 | aktivně | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |

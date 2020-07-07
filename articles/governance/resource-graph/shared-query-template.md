@@ -6,7 +6,6 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
 ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/06/2020
 ms.locfileid: "85969801"

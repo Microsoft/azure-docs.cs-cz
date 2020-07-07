@@ -4,12 +4,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 13f641c2e5baf02cd7f6f200a5b1965ea9a44c55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 4889d9b0f142206bf26a69f275cb60598fba577f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85839004"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035694"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
@@ -245,7 +244,7 @@ Vložte tento kód pod přidání modelu:
 Pokud chcete webovou stránku hostovat na webovém serveru, můžete pro ukázkovou aplikaci volitelně zadat zdroj tokenu.
 Díky tomu váš klíč předplatného nikdy neopustí váš server a uživatelé budou moct využívat řečové funkce, aniž by sami museli zadávat jakýkoli autorizační kód.
 
-Vytvořte nový soubor s názvem `token.php`. V tomto příkladu předpokládáme, že váš webový server podporuje skriptovací jazyk PHP. Zadejte následující kód:
+Vytvořte nový soubor s názvem `token.php`. V tomto příkladu předpokládáme, že váš webový server podporuje skriptovací jazyk PHP s povoleným kudrlinkou. Zadejte následující kód:
 
 ```php
 <?php

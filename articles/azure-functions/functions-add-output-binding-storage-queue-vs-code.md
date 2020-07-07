@@ -7,7 +7,6 @@ ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
 ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
-ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85849976"
