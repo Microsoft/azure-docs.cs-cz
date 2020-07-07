@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74076678"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Návrh pro zajištění vysoké dostupnosti pomocí ExpressRoute
@@ -51,7 +50,7 @@ Další možností je spuštění primárního a sekundárního připojení okru
 
 Partnerský vztah Microsoftu je určený pro komunikaci mezi veřejnými koncovými body. To znamená, že místní privátní koncové body jsou přeložené ze sítě (NATed) s veřejnou IP adresou v síti zákazníka nebo partnera předtím, než budou komunikovat s partnerským vztahem Microsoftu. Za předpokladu, že používáte primární i sekundární připojení v režimu aktivní-aktivní, kde a jak vaše NAT má vliv na to, jak rychle obnovujete po selhání jednoho z ExpressRoute připojení. Na následujícím obrázku jsou znázorněny dvě různé možnosti překladu adres (NAT):
 
-[![1]][3]
+[![3]][3]
 
 V možnosti 1 se překlad adres (NAT) použije po rozdělení provozu mezi primárním a sekundárním připojením ExpressRoute. Aby bylo možné splnit stavové požadavky překladu adres (NAT), používají se nezávislé fondy NAT mezi primárním a sekundárním zařízením, takže návratová přenosová data přicházejí do stejného hraničního zařízení, přes které tok vzdává výstup.
 

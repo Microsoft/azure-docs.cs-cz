@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953183"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Použití Průzkumníka cloudu pro Visual Studio pro správu zařízení IoT Hub Azure
@@ -59,7 +58,7 @@ Součást Průzkumníka cloudu z Instalační program pro Visual Studio pro Visu
 
 ## <a name="sign-in-to-access-your-hub"></a>Přihlaste se, abyste měli přístup ke svému centru.
 
-1. V aplikaci Visual Studio vyberte **Zobrazit** > **Průzkumníka cloudu** a otevřete Průzkumníka cloudu.
+1. V aplikaci Visual Studio vyberte **Zobrazit**  >  **Průzkumníka cloudu** a otevřete Průzkumníka cloudu.
 
 1. Vyberte ikonu Správa účtů a zobrazte si Vaše předplatná.
 
@@ -89,9 +88,9 @@ Chcete-li upravit vlákna zařízení, proveďte následující kroky:
 
 1. Klikněte pravým tlačítkem na zařízení a vyberte **Upravit nevlákenné zařízení**.
 
-   Otevře se soubor **Azure-IoT-Device-zdvojené. JSON** s obsahem vlákna zařízení.
+   Otevře se **azure-iot-device-twin.jsv** souboru s obsahem vlákna zařízení.
 
-1. Udělejte nějaké úpravy **značek** nebo **vlastností. požadovaná** pole se zavedou do souboru **Azure-IoT-Device-zdvojené. JSON** .
+1. Proveďte některé úpravy **značek** nebo **vlastností. požadovaná** pole **azure-iot-device-twin.jsv** souboru.
 
 1. Stisknutím **kombinace kláves CTRL + S** aktualizujte vlákna zařízení.
 

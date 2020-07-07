@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74079935"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Ovládací prvky zabezpečení pro Azure ExpressRoute
@@ -24,42 +23,42 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Exp
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| – |  |
-| Podpora vkládání virtuální sítě| – | |
-| Izolace sítě a podpora brány firewall| Ano | Každý zákazník je obsažen ve své vlastní doméně směrování a je připojen k jeho vlastní virtuální síti. |
-| Podpora vynuceného tunelování| – | Přes Border Gateway Protocol (BGP). |
+| Podpora koncového bodu služby| Není k dispozici |  |
+| Podpora vkládání virtuální sítě| Není k dispozici | |
+| Izolace sítě a podpora brány firewall| Yes | Každý zákazník je obsažen ve své vlastní doméně směrování a je připojen k jeho vlastní virtuální síti. |
+| Podpora vynuceného tunelování| Není k dispozici | Přes Border Gateway Protocol (BGP). |
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz [ExpressRoute monitoring, metriky a výstrahy](expressroute-monitoring-metrics-alerts.md).|
-| Protokolování a audit roviny řízení a správy| Ano |  |
-| Protokolování a audit roviny dat| Ne |   |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Yes | Viz [ExpressRoute monitoring, metriky a výstrahy](expressroute-monitoring-metrics-alerts.md).|
+| Protokolování a audit roviny řízení a správy| Yes |  |
+| Protokolování a audit roviny dat| No |   |
 
 ## <a name="identity"></a>Identita
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověřování| Ano | Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
-| Autorizace|  Ano |Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
+| Authentication| Yes | Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
+| Autorizace|  Yes |Účet služby pro bránu Microsoft (GWM) (Controller); Přístup JIT (just in time) pro vývoj a OP. |
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  – | ExpressRoute neukládá zákaznická data. |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | – |  |
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ne | |
-| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Není k dispozici | ExpressRoute neukládá zákaznická data. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Není k dispozici |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| No | |
+| Zašifrovaná volání rozhraní API| Yes | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |
 
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | Přes poskytovatele síťových prostředků (NRP). |
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Yes | Přes poskytovatele síťových prostředků (NRP). |
 
 ## <a name="next-steps"></a>Další kroky
 

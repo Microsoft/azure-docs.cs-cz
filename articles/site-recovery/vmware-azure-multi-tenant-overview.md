@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083990"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení po havárii VMware do Azure pomocí CSP
@@ -120,7 +119,7 @@ Chcete-li omezit operace zotavení po havárii do režimu pouze pro převzetí s
 
 1. V Azure Portal v trezoru, který jste vytvořili dříve, zaregistrujte vCenter Server na konfigurační server pomocí účtu vCenter, který jste vytvořili.
 2. Dokončete proces "Příprava infrastruktury" pro Site Recovery na běžný proces.
-3. Virtuální počítače jsou teď připravené k replikaci. Ověřte, že se v části **replikovat** > **vybrané virtuální počítače**zobrazují jenom virtuální počítače tenanta.
+3. Virtuální počítače jsou teď připravené k replikaci. Ověřte, že se v části **replikovat**  >  **vybrané virtuální počítače**zobrazují jenom virtuální počítače tenanta.
 
 ## <a name="dedicated-hosting-solution"></a>Vyhrazené řešení hostování
 

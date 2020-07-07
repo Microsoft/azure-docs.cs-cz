@@ -16,10 +16,9 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74073855"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
@@ -46,9 +45,9 @@ Agent Microsoft Azure Linux (waagent) spravuje systémy Linux & FreeBSD a intera
   
   * Spravuje trasy pro zlepšení kompatibility s platformami serverů DHCP.
   * Zajišťuje stabilitu názvu síťového rozhraní.
-* **Kernel**
+* **jádro**
   
-  * Nakonfiguruje virtuální technologii NUMA (zakázat pro `2.6.37`jádro <).
+  * Nakonfiguruje virtuální technologii NUMA (zakázat pro jádro <`2.6.37` ).
   * Spotřebovává entropii technologie Hyper-V pro/dev/random.
   * Konfiguruje časové limity SCSI pro kořenové zařízení (které by mohlo být vzdálené).
 * **Diagnostika**
@@ -170,7 +169,7 @@ Default: y
 To uživateli umožňuje povolit nebo zakázat funkce zřizování v agentovi. Platné hodnoty jsou "y" nebo "n". Pokud je zřizování zakázané, zachovají se klíče hostitele SSH a uživatele v imagi a veškerá konfigurace zadaná v rozhraní API zřizování Azure se ignoruje.
 
 > [!NOTE]
-> `Provisioning.Enabled` Parametr má ve výchozím nastavení hodnotu "n" na Ubuntu cloudových imagí, které pro zřizování používají Cloud-init.
+> `Provisioning.Enabled`Parametr má ve výchozím nastavení hodnotu "n" na Ubuntu cloudových imagí, které pro zřizování používají Cloud-init.
 > 
 > 
 
@@ -195,7 +194,7 @@ Typ šifrování pro nový pár klíčů lze konfigurovat pomocí položky zřiz
 Type: String  
 Default: rsa
 ```
-To může být nastaveno na typ šifrovacího algoritmu, který je podporován démonem SSH na virtuálním počítači. Obvykle jsou podporované hodnoty "RSA", "DSA" a "ECDsa". "soubor. exe" ve Windows nepodporuje "ECDsa". Pokud tedy máte v úmyslu použít k připojení k nasazení Linux soubor. exe v systému Windows, použijte "RSA" nebo "DSA".
+To může být nastaveno na typ šifrovacího algoritmu, který je podporován démonem SSH na virtuálním počítači. Obvykle jsou podporované hodnoty "RSA", "DSA" a "ECDsa". "putty.exe" ve Windows nepodporuje "ECDsa". Pokud tedy chcete použít putty.exe ve Windows pro připojení k nasazení Linux, použijte šifrování RSA nebo DSA.
 
 **Zřizování. MonitorHostName:**  
 ```
@@ -211,7 +210,7 @@ Default: n
 ```
 Pokud je nastaveno, waagent dekódování CustomData z base64.
 
-**Zřizování. ExecuteCustomData**  
+**Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n

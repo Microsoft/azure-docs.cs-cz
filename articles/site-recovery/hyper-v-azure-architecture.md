@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082669"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Hyper-V do Azure
@@ -27,7 +26,7 @@ Hostitele Hyper-V můžete volitelně spravovat v privátních cloudech System C
 
 Následující tabulka a grafika obsahují podrobný pohled na součásti používané pro replikaci Hyper-V do Azure, když nejsou hostitelé Hyper-V spravováni nástrojem VMM.
 
-**Komponenta** | **Požadavek** | **Zobrazí**
+**Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
 **Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních úloh virtuálních počítačů se ukládají v účtu úložiště. Virtuální počítače Azure se vytvářejí s daty replikovaných úloh, když dojde k převzetí služeb při selhání z vaší místní lokality.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
 **Technologie Hyper-V** | Během nasazení Site Recovery shromažďujete hostitele a clustery Hyper-V do lokalit technologie Hyper-V. Na každého samostatného hostitele Hyper-V nebo na každém uzlu clusteru Hyper-V nainstalujete poskytovatele Azure Site Recovery a agenta Recovery Services. | Zprostředkovatel orchestruje replikaci pomocí služby Site Recovery přes internet. Agent Recovery Services se stará o replikaci dat.<br/><br/> Komunikace z poskytovatele i agenta je zabezpečená a šifrovaná. Šifrují se rovněž replikovaná data v úložišti Azure.
@@ -43,7 +42,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 Následující tabulka a grafika obsahují podrobný pohled na součásti používané pro replikaci Hyper-V do Azure, když jsou hostitelé Hyper-V spravováni v cloudech VMM.
 
-**Komponenta** | **Požadavek** | **Zobrazí**
+**Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---
 **Azure** | Předplatné Azure, účet úložiště Azure a síť Azure. | Replikovaná data z místních úloh virtuálních počítačů se ukládají v účtu úložiště. Když dojde k převzetí služeb při selhání z místního webu, vytvoří se virtuální počítače Azure s replikovanými daty.<br/><br/> Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření.
 **Server VMM** | Server VMM obsahuje jeden nebo více cloudů s hostiteli Hyper-V. | Na server VMM nainstalujete poskytovatele Site Recovery, pro orchestraci replikace pomocí Site Recovery a registraci serveru v trezoru služby Recovery Services.
@@ -69,7 +68,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 1. Po povolení ochrany pro virtuální počítače Hyper-V (na webu Azure Portal nebo místně) se spustí **Povolení ochrany**.
 2. Úloha zkontroluje, zda počítač splňuje požadavky, a potom vyvolá metodu [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx), která nastaví replikaci s nastavením, které jste nakonfigurovali.
 3. Úloha spustí počáteční replikaci vyvoláním metody [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), která zahájí úplnou replikaci virtuálního počítače a odešle virtuální disky virtuálního počítače do Azure.
-4. Úlohu můžete sledovat na kartě **úlohy** .      ![](media/hyper-v-azure-architecture/image1.png) Seznam ![úloh – zapnutí ochrany v podrobnostech](media/hyper-v-azure-architecture/image2.png)
+4. Úlohu můžete sledovat na kartě **úlohy** .      ![ ](media/hyper-v-azure-architecture/image1.png) Seznam ![ úloh Zapnout přecházení k ochraně](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Počáteční replikace dat
@@ -113,7 +112,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 Pokud dojde k chybě replikace, je předdefinován opakovaný pokus. Opakování je klasifikované tak, jak je popsáno v tabulce.
 
-**Kategorie** | **Zobrazí**
+**Kategorie** | **Podrobnosti**
 --- | ---
 **Neopravitelné chyby** | Pokus se nebude opakovat. Stav virtuálního počítače bude **Kritický** a bude nutný zásah správce.<br/><br/> Mezi příklady těchto chyb patří poškozený řetězec VHD, neplatný stav pro virtuální počítač repliky, chyby ověřování v síti, chyby autorizace a Chyby nenalezení virtuálních počítačů (pro samostatné servery Hyper-V.
 **Opravitelné chyby** | Pokusy se budou opakovat v každém intervalu replikace a pomocí exponenciální regrese se bude od počátku prvního pokusu zvětšovat interval opakování o 1, 2, 4, 8 a 10 minut. Pokud chyba přetrvává, bude se pokus opakovat každých 30 minut. Mezi tyto příklady patří chyby sítě, chybové zprávy s nízkým diskem a nedostatečné paměťové podmínky.

@@ -11,10 +11,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73667655"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
@@ -25,7 +24,7 @@ Tento článek poskytuje informace o funkcích a proměnných, které podporuje 
 
 ## <a name="data-factory-system-variables"></a>Data Factory systémových proměnných
 
-| Název proměnné | Popis | Rozsah objektu | Rozsah JSON a případy použití |
+| Název proměnné | Description | Rozsah objektu | Rozsah JSON a případy použití |
 | --- | --- | --- | --- |
 | WindowStart |Začátek časového intervalu pro aktuální okno spuštění aktivit |aktivita |<ol><li>Zadejte dotazy pro výběr dat. Viz články o konektorech, na které se odkazuje v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) .</li> |
 | WindowEnd |Konec časového intervalu pro aktuální okno spuštění aktivit |aktivita |stejné jako WindowStart. |
@@ -56,7 +55,7 @@ Funkce v datové továrně můžete použít spolu se systémovými proměnnými
 
 1. Zadání dotazů na výběr dat (viz články konektoru, na které odkazují [aktivity přesunu dat](data-factory-data-movement-activities.md) .
    
-   Syntaxe pro vyvolání funkce Data Factory je: ** $$ \<>funkcí** pro dotazy na výběr dat a další vlastnosti v aktivitě a datových sadách.  
+   Syntaxe vyvolání funkce Data Factory je: **$$\<function>** pro dotazy na výběr dat a další vlastnosti v aktivitě a datových sadách.  
 2. Určení vstupních závislostí s funkcemi objektu pro vytváření dat v kolekci vstupů aktivit.
    
     $ $ není potřeba pro zadání výrazů vstupních závislostí.     
@@ -75,11 +74,11 @@ Viz téma [vlastní formátovací řetězce pro datum a čas](https://msdn.micro
 ### <a name="functions"></a>Functions
 V následujících tabulkách jsou uvedeny všechny funkce v Azure Data Factory:
 
-| Kategorie | Funkce | Parametry | Popis |
+| Kategorie | Funkce | Parametry | Description |
 | --- | --- | --- | --- |
-| Time |AddHours (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y hodiny do daného času X. <br/><br/>Příklad: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y minuty do X.<br/><br/>Příklad: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour (X) |X: datum a čas |Získá počáteční čas hodiny reprezentované hodinovou komponentou X. <br/><br/>Příklad: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Čas |AddHours (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y hodiny do daného času X. <br/><br/>Příklad: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Čas |AddMinutes (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y minuty do X.<br/><br/>Příklad: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Čas |StartOfHour (X) |X: datum a čas |Získá počáteční čas hodiny reprezentované hodinovou komponentou X. <br/><br/>Příklad: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Datum |AddDays (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y dní do X. <br/><br/>Příklad: 9/15/2013 12:00:00 PM + 2 dny = 9/17/2013 12:00:00 odp.<br/><br/>Můžete také odečíst dny zadáním Y jako záporného čísla.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Datum |AddMonths (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y měsíců do X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Zadáním hodnoty Y jako záporné číslo můžete odečíst i měsíc.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Datum |AddQuarters (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y * 3 měsíce do X.<br/><br/>Příklad: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -97,10 +96,10 @@ V následujících tabulkách jsou uvedeny všechny funkce v Azure Data Factory:
 | Text |Formát (X) |X: řetězcová proměnná |Zformátuje text (použijte `\\'` kombinaci pro řídicí `'` znak).|
 
 > [!IMPORTANT]
-> Při použití funkce v jiné funkci není nutné pro vnitřní funkci použít **$$** předponu. Například: \\$ $text. Format (' PartitionKey eq ' my_pkey_filter_value\\' a RowKey GE \\' {0: RRRR-MM-DD hh: mm: ss}\\' ', Time. AddHours (vlastnosti slicestart,-6)). V tomto příkladu si všimněte, **$$** že se pro funkci **time. AddHours** nepoužívá předpona. 
+> Při použití funkce v jiné funkci není nutné **$$** pro vnitřní funkci použít předponu. Například: $ $Text. Format (' PartitionKey EQ \\ ' my_pkey_filter_value \\ ' a RowKey GE \\ ' {0: RRRR-MM-DD hh: mm: ss} \\ ' ', Time. AddHours (vlastnosti slicestart,-6)). V tomto příkladu si všimněte, že **$$** se pro funkci **time. AddHours** nepoužívá předpona. 
 
 #### <a name="example"></a>Příklad
-V následujícím příkladu jsou vstupní a výstupní parametry aktivity podregistru určeny pomocí systémové proměnné `Text.Format` Function a vlastnosti slicestart. 
+V následujícím příkladu jsou vstupní a výstupní parametry aktivity podregistru určeny pomocí `Text.Format` systémové proměnné Function a vlastnosti slicestart. 
 
 ```json  
 {

@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113099"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Syntaxe $select OData v Azure Kognitivní hledání
 
  Pomocí [parametru OData **$Select** ](query-odata-filter-orderby-syntax.md) můžete zvolit, která pole se mají zahrnout do výsledků hledání z Azure kognitivní hledání. V tomto článku se podrobně popisuje syntaxe **$Select** . Obecnější informace o tom, jak používat **$Select** při prezentaci výsledků hledání, najdete v tématu [jak pracovat s výsledky hledání v Azure kognitivní hledání](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Parametr **$Select** určuje, která pole pro každý dokument jsou vrácena v sadě výsledků dotazu. Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro parametr **$Select** :
 
@@ -52,16 +51,16 @@ K dispozici je také diagram interaktivní syntaxe:
 
 Parametr **$Select** se vyskytuje ve dvou formách:
 
-1. Jedna hvězdička (`*`), která označuje, že by měla být vrácena všechna pole k dispozici, nebo
+1. Jedna hvězdička ( `*` ), která označuje, že by měla být vrácena všechna pole k dispozici, nebo
 1. Čárkami oddělený seznam cest polí a určení, která pole se mají vrátit
 
 Při použití druhého formuláře můžete v seznamu zadat jenom pole, která lze načíst.
 
-Pokud vypíšete komplexní pole bez explicitního určení jeho dílčích polí, budou do sady výsledků dotazu zahrnuty všechna průchozí dílčí pole. Předpokládejme například `Address` , že váš index obsahuje pole s `Street`, `City`a `Country` podpole, která lze načíst. Pokud zadáte `Address` v **$Select**, budou výsledky dotazu zahrnovat všechna tři dílčí pole.
+Pokud vypíšete komplexní pole bez explicitního určení jeho dílčích polí, budou do sady výsledků dotazu zahrnuty všechna průchozí dílčí pole. Předpokládejme například, že váš index obsahuje `Address` pole s `Street` , `City` a `Country` podpole, která lze načíst. Pokud zadáte `Address` v **$Select**, budou výsledky dotazu zahrnovat všechna tři dílčí pole.
 
 ## <a name="examples"></a>Příklady
 
-Do výsledků `HotelId`uveďte `HotelName`pole, `Rating` a nejvyšší úrovně a také `City` dílčí pole pro: `Address`
+`HotelId` `HotelName` `Rating` Do výsledků uveďte pole, a nejvyšší úrovně a také `City` dílčí pole pro `Address` :
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +77,7 @@ Příklad výsledku může vypadat takto:
 }
 ```
 
-Do výsledků `HotelName` zahrňte pole nejvyšší úrovně a také všechna dílčí `Address`pole a `Type` a `BaseRate` dílčí pole jednotlivých objektů v `Rooms` kolekci:
+Do výsledků zahrňte `HotelName` pole nejvyšší úrovně a také všechna dílčí pole a `Address` `Type` a `BaseRate` dílčí pole jednotlivých objektů v `Rooms` kolekci:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

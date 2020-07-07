@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888868"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Připojení zařízení IoT DevKit k akcelerátoru řešení vzdáleného monitorování
@@ -24,7 +23,7 @@ V této příručce se dozvíte, jak spustit ukázkovou aplikaci na zařízení 
 
 [MXChip IoT DevKit](https://aka.ms/iot-devkit) je vše v Arduino kompatibilní vývěsce s bohatými periferními zařízeními a snímači. Můžete ji vyvíjet pro IT pomocí [Azure IoT Device Workbench](https://aka.ms/iot-workbench) nebo rozšíření sady [nástrojů Azure iot Tools](https://aka.ms/azure-iot-tools) v Visual Studio Code. [Katalog projektů](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) obsahuje ukázkové aplikace, které vám pomůžou prototypovat řešení IoT.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto kurzu nejdříve proveďte následující úlohy:
 
@@ -51,7 +50,7 @@ Konfigurace IoT Hubho připojovacího řetězce zařízení na zařízení DevKi
     * Podržte tlačítko **A**.
     * Vložení a uvolnění tlačítka **obnovit**
 
-1. Na obrazovce se zobrazí ID DevKit a `Configuration`.
+1. Na obrazovce se zobrazí ID DevKit a `Configuration` .
 
     ![Konfigurační režim IoT DevKit](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 

@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73824123"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC vlákna do existujícího projektu
@@ -52,7 +51,7 @@ cd azure-iiot-components
 
    Výstup zahrnuje adresu URL veřejného koncového bodu. 
 
-3. Po úspěšném dokončení skriptu vyberte, zda chcete `.env` soubor uložit.  Soubor `.env` prostředí budete potřebovat, pokud se chcete připojit ke koncovému bodu cloudu pomocí nástrojů, jako je konzola nebo nasazení modulů pro vývoj a ladění.
+3. Po úspěšném dokončení skriptu vyberte, zda chcete `.env` soubor uložit.  Soubor prostředí budete potřebovat, `.env` Pokud se chcete připojit ke koncovému bodu cloudu pomocí nástrojů, jako je konzola nebo nasazení modulů pro vývoj a ladění.
 
 ## <a name="troubleshooting-deployment-failures"></a>Řešení potíží se selháním nasazení
 

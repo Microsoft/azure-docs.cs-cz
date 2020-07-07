@@ -10,17 +10,16 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73622432"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Urychlené používání sítě pomocí zotavení po havárii virtuálních počítačů Azure
 
 Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což výrazně zlepšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z DataPath, snižuje latenci, kolísání a využití CPU a používá se u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dvěma virtuálními počítači s a bez urychlení sítě:
 
-![Srovnání](./media/azure-vm-disaster-recovery-with-accelerated-networking/accelerated-networking-benefit.png)
+![Porovnání](./media/azure-vm-disaster-recovery-with-accelerated-networking/accelerated-networking-benefit.png)
 
 Azure Site Recovery vám umožní využívat výhody akcelerované sítě pro virtuální počítače Azure, u kterých došlo k převzetí služeb při selhání do jiné oblasti Azure. Tento článek popisuje, jak můžete povolit akcelerované síťové služby pro virtuální počítače Azure replikované pomocí Azure Site Recovery.
 

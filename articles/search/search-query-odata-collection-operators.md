@@ -20,19 +20,18 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113234"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Operátory kolekce OData v Azure Kognitivní hledání – `any` a`all`
 
-Při psaní [výrazu filtru OData](query-odata-filter-orderby-syntax.md) pro použití s Azure kognitivní hledání je často užitečné filtrovat pole kolekcí. Můžete to dosáhnout pomocí operátorů `any` a `all` .
+Při psaní [výrazu filtru OData](query-odata-filter-orderby-syntax.md) pro použití s Azure kognitivní hledání je často užitečné filtrovat pole kolekcí. Můžete to dosáhnout pomocí `any` `all` operátorů a.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá `any` nebo. `all`
+Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá `any` nebo `all` .
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -58,7 +57,7 @@ Existují tři formy výrazů, které filtrují kolekce.
 - První dvě iterování v rámci pole kolekce s použitím predikátu, který je uveden ve formě výrazu lambda pro každý prvek kolekce.
   - Výraz using `all` vrátí `true` , zda je predikát true pro každý prvek kolekce.
   - Výraz using `any` vrátí `true` , zda je predikát true pro alespoň jeden prvek kolekce.
-- Třetí forma filtru kolekce používá `any` bez výrazu lambda k otestování, zda je pole kolekce prázdné. Pokud kolekce obsahuje nějaké prvky, vrátí `true`. Pokud je kolekce prázdná, vrátí `false`se.
+- Třetí forma filtru kolekce používá `any` bez výrazu lambda k otestování, zda je pole kolekce prázdné. Pokud kolekce obsahuje nějaké prvky, vrátí `true` . Pokud je kolekce prázdná, vrátí se `false` .
 
 **Výraz lambda** v filtru kolekce je jako tělo smyčky v programovacím jazyce. Definuje proměnnou, která se nazývá **Proměnná rozsahu**, která obsahuje aktuální prvek kolekce během iterace. Definuje také další logický výraz, který je kritérium filtru, které má být použito pro proměnnou rozsahu pro každý prvek kolekce.
 
@@ -68,7 +67,7 @@ Porovná dokumenty `tags` , jejichž pole obsahuje přesně řetězec "WiFi":
 
     tags/any(t: t eq 'wifi')
 
-Porovnává dokumenty, kde každý prvek `ratings` v poli spadá mezi 3 a 5 včetně:
+Porovnává dokumenty, kde každý prvek v `ratings` poli spadá mezi 3 a 5 včetně:
 
     ratings/all(r: r ge 3 and r le 5)
 
@@ -76,11 +75,11 @@ Porovnává dokumenty, kde jsou některé geografické souřadnice v `locations`
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
-Odpovídá dokumentům, `rooms` kde je pole prázdné:
+Odpovídá dokumentům, kde `rooms` je pole prázdné:
 
     not rooms/any()
 
-Porovnává dokumenty, kde jsou všechny místnosti `rooms/amenities` , pole obsahuje "TV" `rooms/baseRate` a je menší než 100:
+Porovnává dokumenty, kde jsou všechny místnosti, `rooms/amenities` pole obsahuje "TV" a `rooms/baseRate` je menší než 100:
 
     rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
 

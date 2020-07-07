@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73648438"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Vysvětlení rozdílů mezi datovými formáty U-SQL a Spark
@@ -43,7 +42,7 @@ Po této transformaci můžete zkopírovat data, jak je popsáno v kapitole [př
 - Sémantika dat při kopírování souborů dojde k kopírování na úrovni bajtů. Takže by se stejná data měla zobrazovat v účtu [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) . Poznámka: Spark ale může interpretovat některé znaky odlišně. Například může použít jinou výchozí hodnotu pro oddělovač řádků v souboru CSV.
     Kromě toho, pokud kopírujete zadaná data (z tabulek), pak Parquet a Spark mohou mít různou přesnost a měřítko pro některé ze zadaných hodnot (například float) a mohou považovat hodnoty null jinak. Například U-SQL má sémantiku jazyka C# pro hodnoty null, zatímco Spark má pro hodnoty null logiku se třemi hodnotami.
 
-- Datové organizace (dělení) tabulek U-SQL poskytují dva oddíly na úrovni. Vnější úroveň (`PARTITIONED BY`) je podle hodnoty a mapuje se většinou do schématu dělení na oddíly/Spark pomocí hierarchií složek. Bude nutné zajistit, aby hodnoty null byly namapovány na správnou složku. Vnitřní úroveň (`DISTRIBUTED BY`) v u-SQL nabízí 4 distribuční schémata: kruhové dotazování, rozsah, hodnota hash a přímá hodnota hash.
+- Datové organizace (dělení) tabulek U-SQL poskytují dva oddíly na úrovni. Vnější úroveň ( `PARTITIONED BY` ) je podle hodnoty a mapuje se většinou do schématu dělení na oddíly/Spark pomocí hierarchií složek. Bude nutné zajistit, aby hodnoty null byly namapovány na správnou složku. Vnitřní úroveň ( `DISTRIBUTED BY` ) v u-SQL nabízí 4 distribuční schémata: kruhové dotazování, rozsah, hodnota hash a přímá hodnota hash.
     Tabulky podregistru/Spark podporují pouze dělení hodnot nebo dělení hodnot hash s použitím jiné funkce hash než U-SQL. Když vytváříte výstup dat tabulky U-SQL, pravděpodobně bude možné mapovat pouze na dělení hodnoty pro Spark a může být nutné provést další ladění rozložení dat v závislosti na finálních dotazech Sparku.
 
 ## <a name="next-steps"></a>Další kroky

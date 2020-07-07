@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74159108"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
@@ -45,7 +44,7 @@ Pokud používáte verzi služby Site Recovery mobility starší než 9.7.0.0 ne
 #### <a name="validate-the-installation"></a>Ověření instalace
 Chcete-li ověřit, zda je agent nainstalován:
 
-1. Na virtuálním počítači Azure ve složce C:\WindowsAzure\Packages by se měl zobrazit soubor WaAppAgent. exe.
+1. Na virtuálním počítači Azure ve složce C:\WindowsAzure\Packages by se měl zobrazit soubor WaAppAgent.exe.
 2. Klikněte na soubor pravým tlačítkem a v okně **vlastnosti**vyberte kartu **Podrobnosti** .
 3. Ověřte, že se v poli **verze produktu** zobrazuje 2.6.1198.718 nebo vyšší.
 

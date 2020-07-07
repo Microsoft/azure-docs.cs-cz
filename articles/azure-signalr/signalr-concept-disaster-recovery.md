@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73747642"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
@@ -51,7 +50,7 @@ Můžete to provést dvěma způsoby:
 
 ### <a name="through-config"></a>Prostřednictvím konfigurace
 
-Už byste měli znát, jak nastavit připojovací řetězec služby signalizace prostřednictvím proměnných prostředí/nastavení aplikace/Web. cofig v konfigurační položce s názvem `Azure:SignalR:ConnectionString`.
+Už byste měli znát, jak nastavit připojovací řetězec služby signalizace prostřednictvím proměnných prostředí/nastavení aplikace/Web. cofig v konfigurační položce s názvem `Azure:SignalR:ConnectionString` .
 Pokud máte více koncových bodů, můžete je nastavit v několika položkách konfigurace, každý v následujícím formátu:
 
 ```
@@ -106,11 +105,11 @@ Tady se stane, co se stane, když primární instance nefunguje (a po nějaké d
 
 Níže uvedené diagramy znázorňují, jak se převzetí služeb při selhání provádí ve službě signalizace:
 
-Obrázek 1 před převzetím ![služeb při selhání před selháním](media/signalr-concept-disaster-recovery/before-failover.png)
+Obrázek 1 před převzetím služeb při selhání ![ před selháním](media/signalr-concept-disaster-recovery/before-failover.png)
 
-Obrázek. 2 po ![převzetí služeb při selhání](media/signalr-concept-disaster-recovery/after-failover.png)
+Obrázek. 2 po převzetí služeb při ![ selhání](media/signalr-concept-disaster-recovery/after-failover.png)
 
-Obrázek. 3 krátká doba po primárním obnovování ![po primárním obnovování](media/signalr-concept-disaster-recovery/after-recover.png)
+Obrázek. 3 krátká doba po primárním obnovování po primárním obnovování ![](media/signalr-concept-disaster-recovery/after-recover.png)
 
 V normálním případě je možné zobrazit pouze primární server aplikací a služba signálu, které mají online provoz (modře).
 Po převzetí služeb při selhání se sekundární aplikační server a služba Signal aktivují také jako aktivní.

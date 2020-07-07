@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74122186"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Převzetí služeb při selhání a opravy pro Azure cache pro Redis
@@ -65,7 +64,7 @@ Vždy, když dojde k převzetí služeb při selhání, musí mezipaměť Standa
 
 Počet chyb, které klientská aplikace zobrazuje, závisí na tom, kolik operací čekalo na tomto připojení v době převzetí služeb při selhání. Všechna připojení, která jsou směrována přes uzel, který zavřel připojení, uvidí chyby. Mnoho klientských knihoven může při přerušení připojení vyvolat různé typy chyb, včetně výjimek vypršení platnosti, výjimek připojení nebo výjimek soketu. Počet a typ výjimek závisí na tom, kde v cestě kódu je požadavek v případě, že mezipaměť ukončí své připojení. Například operace, která odesílá požadavek, ale neobdržela odpověď, když dojde k převzetí služeb při selhání, může obdržet výjimku časového limitu. Nové požadavky na uzavřený objekt připojení obdrží výjimky připojení, dokud se znovu neproběhne opětovné připojení.
 
-Většina klientských knihoven se pokusí o opětovné připojení k mezipaměti, pokud jsou nakonfigurované. Avšak nepředvídatelné chyby mohou občas umístit objekty knihovny do neobnovitelné stavu. Pokud jsou chyby trvalé po dobu delší, než je předem nakonfigurované množství času, je nutné znovu vytvořit objekt připojení. V Microsoft.NET a dalších objektově orientovaných jazycích je možné znovu vytvořit připojení bez restartování aplikace, a to pomocí [vzoru opožděného\<T\> ](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
+Většina klientských knihoven se pokusí o opětovné připojení k mezipaměti, pokud jsou nakonfigurované. Avšak nepředvídatelné chyby mohou občas umístit objekty knihovny do neobnovitelné stavu. Pokud jsou chyby trvalé po dobu delší, než je předem nakonfigurované množství času, je nutné znovu vytvořit objekt připojení. V Microsoft.NET a dalších objektově orientovaných jazycích je možné znovu vytvořit připojení bez restartování aplikace, a to pomocí [opožděného \<T\> vzoru](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
 
 ### <a name="how-do-i-make-my-application-resilient"></a>Návody nastavit moji aplikaci jako odolnou?
 

@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890893"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Místní nasazení akcelerátoru řešení vzdáleného monitorování – Visual Studio
@@ -37,7 +36,7 @@ K dokončení místního nasazení potřebujete na svém místním vývojovém p
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node. js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node. js v10 za účelem.
+* [Node.js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node.js v10 za účelem.
 
 > [!NOTE]
 > Visual Studio je k dispozici pro Windows a Mac.
@@ -96,7 +95,7 @@ npm install
 npm start
 ```
 
-Po dokončení spuštění v prohlížeči se zobrazí stránka **http:\//localhost: 3000/řídicí panel**. Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující krok.
+Po dokončení spuštění v prohlížeči se zobrazí stránka **http: \/ /localhost: 3000/řídicí panel**. Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující krok.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurace a spuštění NGINX
 
@@ -109,7 +108,7 @@ Další informace o spuštění **Nginx**najdete v tématu [Nginx for Windows](h
 
 ### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 
-Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak, že\/v prohlížeči přejdete na http:/localhost: 9000.
+Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak, že v prohlížeči přejdete na http: \/ /localhost: 9000.
 
 ## <a name="clean-up"></a>Vyčištění
 

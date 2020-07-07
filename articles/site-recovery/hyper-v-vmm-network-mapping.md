@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082559"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Příprava mapování sítě pro zotavení po havárii virtuálního počítače Hyper-V do Azure
@@ -73,8 +72,8 @@ Tady je postup nastavení cloudů VMM v naší ukázkové organizaci a logické 
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
-SilverCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
+GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
+SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>Nastavení logické sítě a sítě virtuálních počítačů
 
@@ -88,12 +87,12 @@ Chicago | LogicalNetwork1 – Chicago | VMNetwork1 – Chicago
 
 Když v závislosti na těchto nastaveních vyberete cílovou síť virtuálních počítačů, v následující tabulce jsou uvedeny možnosti, které budou k dispozici.
 
-**Vybrat** | **Chráněný Cloud** | **Ochrana cloudu** | **Cílová síť k dispozici**
+**Výběr** | **Chráněný Cloud** | **Ochrana cloudu** | **Cílová síť k dispozici**
 ---|---|---|---
-VMNetwork1 – Chicago | SilverCloud1 | SilverCloud2 | K dispozici.
- | GoldCloud1 | GoldCloud2 | K dispozici.
-VMNetwork2 – Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici.
- | GoldCloud1 | GoldCloud2 | K dispozici.
+VMNetwork1 – Chicago | SilverCloud1 | SilverCloud2 | K dispozici
+ | GoldCloud1 | GoldCloud2 | K dispozici
+VMNetwork2 – Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici
+ | GoldCloud1 | GoldCloud2 | K dispozici
 
 
 Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, ve které je umístěný zdrojový virtuální počítač, pak se virtuální počítač repliky po převzetí služeb při selhání připojí k této cílové podsíti. Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se virtuální počítač k první podsíti v síti.

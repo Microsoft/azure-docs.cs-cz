@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73663178"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testů pro replikaci Hyper-V do sekundární lokality
@@ -175,10 +174,10 @@ Tabulka shrnuje metriky výkonu a čítače, které byly v nasazení měřeny.
 | Procesor |\Processor(_Total)\% Processor Time |
 | Dostupná paměť |\Memory\Available MB |
 | IOPS |\PhysicalDisk (_Total) \ přenosy za sekundu |
-| Operace čtení z virtuálního počítače (IOPS) za sekundu |Operace \Read virtuálního úložného\<zařízení \Hyper-V (VHD>) za sekundu |
-| Operace zápisu do virtuálního počítače (IOPS) za sekundu |\Hyper-V \Write operací virtuálního úložného zařízení (\<VHD>) |
-| Propustnost čtení virtuálního počítače |\Hyper-V virtuálního úložného zařízení\<(VHD>) \Read bajty/s |
-| Propustnost zápisu virtuálních počítačů |\Hyper-V virtuálního úložného zařízení\<(VHD>) \Write bajty/s |
+| Operace čtení z virtuálního počítače (IOPS) za sekundu |Operace \Read virtuálního úložného zařízení ( \<VHD> ) \Hyper-V/s |
+| Operace zápisu do virtuálního počítače (IOPS) za sekundu |Operace \Write virtuálního úložného zařízení ( \<VHD> ) \Hyper-V/S |
+| Propustnost čtení virtuálního počítače |\Hyper-V virtuálního úložného zařízení ( \<VHD> ) \Read bajty/s |
+| Propustnost zápisu virtuálních počítačů |\Hyper-V virtuálního úložného zařízení ( \<VHD> ) \Write bajty/s |
 
 ## <a name="next-steps"></a>Další kroky
 

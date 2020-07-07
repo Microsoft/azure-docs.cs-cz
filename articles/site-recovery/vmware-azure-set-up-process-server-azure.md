@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083958"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavení procesového serveru v Azure pro účely navrácení služeb po obnovení
@@ -28,7 +27,7 @@ Přečtěte [si další](vmware-azure-reprotect.md) informace o procesu [překlo
 
 ## <a name="deploy-a-process-server-in-azure"></a>Nasazení procesového serveru v Azure
 
-1. V trezoru > **Site Recovery infrastruktura**> **Spravovat** > **konfigurační servery**, vyberte konfigurační server.
+1. V trezoru > **Site Recovery infrastruktura** >  **Spravovat**  >  **konfigurační servery**, vyberte konfigurační server.
 2. Na stránce Server klikněte na **+ procesový Server** .
 3. Na stránce **Přidat procesový Server** a vyberte možnost nasazení procesového serveru v Azure.
 4. Zadejte nastavení Azure, včetně předplatného používaného pro převzetí služeb při selhání, skupiny prostředků, oblasti Azure, která se používá pro převzetí služeb při selhání, a virtuální sítě, ve které jsou umístěné virtuální počítače Azure. Pokud jste použili více sítí Azure, budete potřebovat procesový Server v každém z nich.

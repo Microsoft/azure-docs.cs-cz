@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74186631"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurace zásad brány firewall webových aplikací pomocí Azure PowerShell
@@ -19,7 +18,7 @@ ms.locfileid: "74186631"
 Zásady brány firewall webových aplikací (WAF) Azure definují kontroly vyžadované při doručení žádosti do Frontních dveří.
 V tomto článku se dozvíte, jak nakonfigurovat zásady WAF, které se skládají z některých vlastních pravidel a s povolenou výchozí sadou pravidel spravované v Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -86,7 +85,7 @@ $managedRules =  New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Versi
 ```
 ## <a name="configure-a-security-policy"></a>Konfigurace zásad zabezpečení
 
-Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří pomocí `Get-AzResourceGroup`. Dále nakonfigurujte zásadu zabezpečení s vytvořenými pravidly v předchozích krocích pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, která obsahuje profil front-dveří.
+Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří pomocí `Get-AzResourceGroup` . Dále nakonfigurujte zásadu zabezpečení s vytvořenými pravidly v předchozích krocích pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, která obsahuje profil front-dveří.
 
 ```powershell-interactive
 $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention

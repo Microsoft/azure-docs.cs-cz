@@ -8,10 +8,9 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74184254"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Nejčastější dotazy k Azure Internet Analyzer (Preview)
@@ -22,7 +21,7 @@ Toto jsou nejčastější dotazy ke službě Azure Internet Analyzer – Pokud m
 
 K dispozici je verze Preview pro výběr zákazníků. Pokud vás zajímá připojení k verzi Preview, udělejte prosím toto:
 
-1. Přihlaste se k webu [Azure Portal](https://ms.portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://ms.portal.azure.com).
 2. Přejděte na stránku **předplatná** .
 3. Klikněte na předplatné Azure, u kterého plánujete používat Internet Analyzer.
 4. Přejít na nastavení **poskytovatelé prostředků** pro předplatné.
@@ -64,7 +63,7 @@ Každý test, který vytvoříte v nástroji Internet Analyzer, se skládá ze d
 * Dva [vlastní koncové body](internet-analyzer-custom-endpoint.md) (jeden vlastní koncový bod se musí nacházet v Azure).
 
 Během verze Preview jsou k dispozici následující předem nakonfigurované koncové body:
-* **Oblasti Azure**
+* **Oblast Azure**
     * Brazílie – jih
     * Indie – střed
     * USA – střed

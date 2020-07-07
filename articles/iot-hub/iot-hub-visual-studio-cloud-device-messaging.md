@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74079481"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití Průzkumníka cloudu pro Visual Studio k posílání a přijímání zpráv mezi zařízením a IoT Hub
@@ -54,7 +53,7 @@ Součást Průzkumníka cloudu z Instalační program pro Visual Studio pro Visu
 
 Chcete-li získat přístup k centru, postupujte podle následujících kroků:
 
-1. V aplikaci Visual Studio vyberte **Zobrazit** > **Průzkumníka cloudu** a otevřete Průzkumníka cloudu.
+1. V aplikaci Visual Studio vyberte **Zobrazit**  >  **Průzkumníka cloudu** a otevřete Průzkumníka cloudu.
 
 1. Vyberte ikonu Správa účtů a zobrazte si Vaše předplatná.
 

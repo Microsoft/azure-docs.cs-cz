@@ -14,10 +14,9 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68934874"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Nasazení zabezpečených aplikací v Azure
@@ -25,10 +24,10 @@ V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které
 
 V tomto článku jsou uvedené tyto fáze SDL:
 
-- Vydat
+- Vydaná verze
 - Odpověď
 
-## <a name="release"></a>Vydat
+## <a name="release"></a>Vydaná verze
 Fáze vydané verze je připravená na projekt pro veřejnou verzi.
 To zahrnuje způsoby plánování, které umožňují efektivně provádět úlohy údržby po vydaných verzích a řešit bezpečnostní chyby zabezpečení, ke kterým může dojít později.
 

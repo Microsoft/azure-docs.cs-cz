@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73827417"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
@@ -53,7 +52,7 @@ V akcelerátoru řešení je simulované zařízení modulem letadla. Řešení 
 
 Simulovaná zařízení mohou v řešení zpracovávat následující příkazy odeslané ze služby IoT Hub:
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 | StartTelemetry |Řídí stav simulace.<br/>Spustí odesílání telemetrických dat ze zařízení |
 | StopTelemetry |Řídí stav simulace.<br/>Zastaví odesílání telemetrických dat ze zařízení |
@@ -73,11 +72,11 @@ Služba IoT Hub zajišťuje potvrzení příkazu zařízení.
 ## <a name="machine-learning"></a>Machine Learning
 Součást Machine Learning používá model odvozený z dat shromážděných z reálných leteckých motorů. Do pracovního prostoru Machine Learning můžete přejít na dlaždici vašeho řešení na stránce [azureiotsolutions.com][lnk-azureiotsolutions] . Tato dlaždice je k dispozici v případě, že je řešení ve stavu **Připraveno**.
 
-Model Machine Learning je k dispozici jako šablona, která ukazuje, jak pracovat se telemetrie shromážděnými prostřednictvím služeb akcelerátoru řešení IoT. Společnost Microsoft vytvořila [regresní model][lnk_regression_model] leteckého motoru na základě veřejně dostupných dat<sup>\[1\]</sup>a podrobné pokyny k použití modelu.
+Model Machine Learning je k dispozici jako šablona, která ukazuje, jak pracovat se telemetrie shromážděnými prostřednictvím služeb akcelerátoru řešení IoT. Společnost Microsoft vytvořila [regresní model][lnk_regression_model] leteckého motoru na základě veřejně dostupných dat<sup> \[ 1 \] </sup>a podrobné pokyny k použití modelu.
 
 Akcelerátor řešení prediktivní údržby Azure IoT používá regresní model vytvořený z této šablony. Model se nasadí do vašeho předplatného Azure a zpřístupní se prostřednictvím automaticky generovaného rozhraní API. Řešení zahrnuje podmnožinu testovacích dat pro 4 (z celkem 100) modulů a 4 (z celkem 21) datových proudů senzorů. Tato data jsou dostatečná pro poskytování přesných výsledků z trénovaného modelu.
 
-*\[1\] a. Saxena a K. Goebel (2008). "Sada dat simulace degradace modulu Turbofan", úložiště dat NASA Ames Prognostics (https://c3.nasa.gov/dashlink/resources/139/), NASA Ames Research Center, Moffett Field pole, CA*
+*\[1 a \] . Saxena a K. Goebel (2008). "Sada dat simulace degradace modulu Turbofan", úložiště dat NASA Ames Prognostics ( https://c3.nasa.gov/dashlink/resources/139/) , NASA Ames Research Center, Moffett Field pole, CA*
 
 ## <a name="next-steps"></a>Další kroky
 Když jste se seznámili s klíčovými součástmi akcelerátoru řešení prediktivní údržby, můžete si jej přizpůsobit.

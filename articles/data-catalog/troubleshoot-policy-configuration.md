@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68879543"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Řešení potíží se službou Azure Data Catalog
@@ -21,7 +20,7 @@ Tento článek popisuje běžné otázky týkající se řešení potíží s Az
 
 Při použití Azure Data Catalog jsou omezené následující funkce:
 
-- Účty s **rolí typu Host** se nepodporují. Účty hostů nemůžete přidat jako uživatele Azure Data Catalog a uživatelé typu Host nemůžou portál používat na [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com).
+- Účty s **rolí typu Host** se nepodporují. Účty hostů nemůžete přidat jako uživatele Azure Data Catalog a uživatelé typu Host nemůžou portál používat na [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) .
 
 - Vytváření Azure Data Catalogch prostředků pomocí šablon Azure Resource Manager nebo Azure PowerShellch příkazů se nepodporuje.
 

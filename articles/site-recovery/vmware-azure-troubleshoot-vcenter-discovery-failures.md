@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74091239"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter Server
@@ -20,7 +19,7 @@ Tento článek vám pomůže při řešení problémů, ke kterým dochází kv�
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Jiné než číselné hodnoty ve vlastnosti maxSnapShots
 
-Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu pro vlastnost Property `snapshot.maxSnapShots` na virtuálním počítači.
+Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu pro `snapshot.maxSnapShots` vlastnost Property na virtuálním počítači.
 
 Tento problém je identifikovaný ID chyby 95126.
 
@@ -30,7 +29,7 @@ Tento problém je identifikovaný ID chyby 95126.
        at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
        at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
     
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 - Identifikujte virtuální počítač a nastavte hodnotu na číselnou hodnotu (upravit nastavení virtuálního počítače v vCenter).
 
@@ -46,11 +45,11 @@ Obecně platí, že se proxy server používá ke komunikaci s veřejnými sít�
 
 Při výskytu tohoto problému dojde k následujícím situacím:
 
-- > vCenter Server \<vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: (503) Server není k dispozici.
-- > vCenter Server \<vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: Nepodařilo se připojit ke vzdálenému serveru.
+- Server vCenter není \<vCenter> dosažitelný kvůli chybě: vzdálený server vrátil chybu: (503) Server není k dispozici.
+- Server vCenter není \<vCenter> dosažitelný kvůli chybě: vzdálený server vrátil chybu: Nepodařilo se připojit ke vzdálenému serveru.
 - Nepovedlo se připojit k serveru vCenter/ESXi.
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 Stáhněte si [Nástroj PsExec](https://aka.ms/PsExec). 
 
@@ -73,7 +72,7 @@ Pro konfiguraci proxy serveru DRA:
 
 3. Z příkazového řádku spusťte následující příkaz.
    
-   **DRCONFIGURATOR. EXE/Configure/AddBypassUrls [IP adresa/plně kvalifikovaný název domény vCenter Server poskytované v době přidání vCenter]**
+   **DRCONFIGURATOR.EXE/Configure/AddBypassUrls [IP adresa/plně kvalifikovaný název domény vCenter Server poskytnutý v době přidání vCenter]**
 
 4. Restartujte službu zprostředkovatele DRA.
 

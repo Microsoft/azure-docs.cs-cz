@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083356"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Požadavky ExpressRoute a kontrolní seznam
@@ -28,7 +27,7 @@ Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby Exp
 * Abyste se připojili ke cloudu Microsoftu, můžete spolupracovat s [partnerem připojení ExpressRoute](expressroute-locations.md#partners). Připojení mezi místní sítí a Microsoftem můžete vytvořit [třemi způsoby](expressroute-introduction.md)
 * Pokud váš poskytovatel není partnerem připojení ExpressRoute, můžete se pořád připojit ke cloudu Microsoftu prostřednictvím [poskytovatele cloudové výměny](expressroute-locations.md#connectivity-through-exchange-providers).
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 * **Redundance v každém umístění partnerského vztahu**: Microsoft vyžaduje, aby byly v každém okruhu ExpressRoute nastaveny redundantní relace protokolu BGP mezi směrovači Microsoftu a směrovači partnerského vztahu na každém okruhu (i když máte jenom [jedno fyzické připojení ke cloudu Exchange](expressroute-faqs.md#onep2plink)).
 * **Redundance při zotavení po havárii**: Microsoft důrazně doporučuje nastavit alespoň dva okruhy ExpressRoute v různých umístěních partnerských vztahů, aby nedocházelo k jedinému bodu selhání.
 * **Směrování**: v závislosti na tom, jak se připojíte k Microsoft Cloud, budete vy nebo váš poskytovatel potřebovat nastavit a spravovat relace protokolu BGP pro [domény směrování](expressroute-circuit-peerings.md). Někteří poskytovatelé připojení k síti Ethernet nebo poskytovatelé cloudového serveru můžou nabízet správu protokolu BGP jako službu pro přidání hodnoty.

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74084542"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>nastavení zotavení po havárii pro multi-vrstvou Citrix XenApp a XenDesktop Deployment
@@ -56,9 +55,9 @@ Pro účely tohoto článku se k nastavení zotavení po havárii použila nasaz
 
 **Scénář** | **Do sekundární lokality** | **Do Azure**
 --- | --- | ---
-**Technologie Hyper-V** | Není v oboru | Ano
-**Hostiteli** | Není v oboru | Ano
-**Fyzický server** | Není v oboru | Ano
+**Technologie Hyper-V** | Není v oboru | Yes
+**Hostiteli** | Není v oboru | Yes
+**Fyzický server** | Není v oboru | Yes
 
 ### <a name="versions"></a>Verze
 Zákazníci můžou nasazovat komponenty XenApp jako Virtual Machines spuštěné v Hyper-V nebo VMware nebo jako fyzické servery. Azure Site Recovery může chránit jak fyzické, tak i virtuální nasazení v Azure.

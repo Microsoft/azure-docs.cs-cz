@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70883923"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu
@@ -62,7 +61,7 @@ Až budete v režimu jednoho uživatele, přidejte nového uživatele s oprávn�
 Pokud se RHEL nemůže spustit normálně, bude se automaticky přehlédnout do režimu jednoho uživatele. Pokud jste ale nenastavili kořenový přístup pro režim jednoho uživatele, nemáte kořenové heslo a nebudete se moct přihlásit. K dispozici je alternativní řešení (viz oddíl ruční zadání režimu jednoho uživatele v RHEL), ale doporučujeme, abyste nejdřív nastavili root Access.
 
 ### <a name="grub-access-in-rhel"></a>Přístup k GRUB v RHEL
-RHEL se dodává s povoleným GRUBem. Pokud chcete zadat GRUB, restartujte virtuální počítač spuštěním `sudo reboot`a pak stiskněte libovolnou klávesu. Mělo by se zobrazit podokno GRUB. Pokud ne, ujistěte se, že v souboru GRUB (`/etc/default/grub`) jsou k dispozici následující řádky:
+RHEL se dodává s povoleným GRUBem. Pokud chcete zadat GRUB, restartujte virtuální počítač spuštěním `sudo reboot` a pak stiskněte libovolnou klávesu. Mělo by se zobrazit podokno GRUB. Pokud ne, ujistěte se, že v souboru GRUB () jsou k dispozici následující řádky `/etc/default/grub` :
 
 **Pro RHEL 8**
 
@@ -91,8 +90,8 @@ Uživatel root je ve výchozím nastavení zakázaný. Režim jednoho uživatele
 1. Pomocí následujícího postupu povolte heslo pro kořenového uživatele:
     * Spusťte `passwd root` (nastavte silné kořenové heslo).
 1. Zajistěte, aby se uživatel root mohl přihlásit jenom přes ttyS0, a to následujícím způsobem:  
-    a. Spusťte `edit /etc/ssh/sshd_config`příkaz a ujistěte se, že je PermitRootLogIn `no`nastaveno na.  
-    b. Spusťte `edit /etc/securetty file` příkaz pro povolení přihlášení pouze přes ttyS0.
+    a. Spusťte `edit /etc/ssh/sshd_config` příkaz a ujistěte se, že je PermitRootLogIn nastaveno na `no` .  
+    b. Spusťte příkaz `edit /etc/securetty file` pro povolení přihlášení pouze přes ttyS0.
 
 Když se teď systém spustí do režimu jednoho uživatele, můžete se přihlásit pomocí kořenového hesla.
 
@@ -127,26 +126,26 @@ Pokud jste nepovolili kořenového uživatele podle předchozích pokynů, můž
 1. Najděte řádek jádra. V Azure začíná na *linux16*.
 1. Na konci řádku přidejte *Rd. Break* na konec řádku. Ponechte mezeru mezi řádkem jádra a *Rd. Break*.
 
-    Tato akce přeruší proces spouštění před předáním řízení z `initramfs` do `systemd`, jak je popsáno v dokumentaci k [Red Hat](https://aka.ms/rhel7rootpassword).
+    Tato akce přeruší proces spouštění před předáním řízení z `initramfs` do `systemd` , jak je popsáno v [dokumentaci k Red Hat](https://aka.ms/rhel7rootpassword).
 1. Stisknutím kombinace kláves CTRL + X ukončete a restartujte s použitým nastavením.
 
    Po restartování počítače se systémem souborů, který je jen pro čtení, přestanete do nouzového režimu. 
    
 1. V prostředí zadejte pro opětovné `mount -o remount,rw /sysroot` připojení kořenového systému souborů s oprávněním ke čtení a zápisu.
-1. Po spuštění do režimu `chroot /sysroot` jednoho uživatele přepněte do `sysroot` jailbreaku.
-1. Teď jste v kořenovém adresáři. Můžete resetovat své kořenové heslo tak, `passwd` že zadáte a potom použijete předchozí pokyny k zadání režimu jednoho uživatele. 
-1. Až budete hotovi, zadejte `reboot -f` příkaz k restartování.
+1. Po spuštění do režimu jednoho uživatele `chroot /sysroot` Přepněte do `sysroot` jailbreaku.
+1. Teď jste v kořenovém adresáři. Můžete resetovat své kořenové heslo tak, že zadáte `passwd` a potom použijete předchozí pokyny k zadání režimu jednoho uživatele. 
+1. Až budete hotovi, zadejte příkaz `reboot -f` k restartování.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
-> V předchozích pokynech se vám povedete do nouzového prostředí, abyste mohli provádět i úlohy, jako `fstab`je například úpravy. Doporučujeme ale obvykle, abyste obnovili své kořenové heslo a použili ho k zadání režimu pro jeden uživatel.
+> V předchozích pokynech se vám povedete do nouzového prostředí, abyste mohli provádět i úlohy, jako je například úpravy `fstab` . Doporučujeme ale obvykle, abyste obnovili své kořenové heslo a použili ho k zadání režimu pro jeden uživatel.
 
 ## <a name="access-for-centos"></a>Přístup pro CentOS
 Podobně jako Red Hat Enterprise Linux, režim jednoho uživatele v CentOS vyžaduje GRUB a kořenový uživatel, který se má povolit.
 
 ### <a name="grub-access-in-centos"></a>Přístup k GRUB v CentOS
-CentOS se dodává s povoleným GRUBem. Pokud chcete zadat GRUB, restartujte virtuální počítač tak `sudo reboot`, že zadáte a potom stisknete libovolnou klávesu. Tato akce zobrazí podokno GRUB.
+CentOS se dodává s povoleným GRUBem. Pokud chcete zadat GRUB, restartujte virtuální počítač tak, že zadáte `sudo reboot` a potom stisknete libovolnou klávesu. Tato akce zobrazí podokno GRUB.
 
 ### <a name="single-user-mode-in-centos"></a>Režim jednoho uživatele v CentOS
 Pokud chcete povolit režim pro jednoho uživatele v CentOS, postupujte podle předchozích pokynů pro RHEL.
@@ -163,7 +162,7 @@ Ve výchozím nastavení nemusí Ubuntu obrázky automaticky zobrazovat podokno 
 1. Změňte `GRUB_TIMEOUT` hodnotu na nenulovou hodnotu.
 1. V textovém editoru otevřete */etc/default/grub*.
 1. Odkomentujte `GRUB_HIDDEN_TIMEOUT=1` řádek.
-1. Zajistěte, aby `GRUB_TIMEOUT_STYLE=menu` byl řádek.
+1. Zajistěte, aby byl `GRUB_TIMEOUT_STYLE=menu` řádek.
 1. Spusťte `sudo update-grub`.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Režim jednoho uživatele v Ubuntu
@@ -206,7 +205,7 @@ Novější obrázky z SLES 12 SP3 + povolují přístup přes konzolu sériovéh
 ### <a name="grub-access-in-suse-sles"></a>GRUB přístup v SUSE SLES
 Přístup GRUB v SLES vyžaduje konfiguraci zaváděcího programu pro spouštění prostřednictvím YaST. Chcete-li vytvořit konfiguraci, postupujte následovně:
 
-1. Pomocí SSH se přihlaste ke svému VIRTUÁLNÍmu počítači s SLES `sudo yast bootloader`a pak spusťte. Stiskněte klávesu TAB, stiskněte klávesu ENTER a potom v nabídce přejděte pomocí kláves se šipkami.
+1. Pomocí SSH se přihlaste ke svému VIRTUÁLNÍmu počítači s SLES a pak spusťte `sudo yast bootloader` . Stiskněte klávesu TAB, stiskněte klávesu ENTER a potom v nabídce přejděte pomocí kláves se šipkami.
 
 1. Přejít na **parametry jádra**a zaškrtněte políčko **použít konzolu sériového portu** .
 1. Přidejte `serial --unit=0 --speed=9600 --parity=no` do argumentů **konzoly** .
@@ -227,13 +226,13 @@ Pokud se SLES nedá spustit normálně, automaticky se přejdou do nouzového pr
 1. Stisknutím kombinace kláves CTRL + X restartujte s tímto nastavením a zadejte nouzové prostředí.
 
    > [!NOTE]
-   > Tato akce vás zavede do nouzového prostředí pomocí systému souborů určeného jen pro čtení. Chcete-li upravit všechny soubory, znovu připojte systém souborů s oprávněním pro čtení i zápis. Provedete to tak `mount -o remount,rw /` , že v prostředí zadáte.
+   > Tato akce vás zavede do nouzového prostředí pomocí systému souborů určeného jen pro čtení. Chcete-li upravit všechny soubory, znovu připojte systém souborů s oprávněním pro čtení i zápis. Provedete to tak, `mount -o remount,rw /` že v prostředí zadáte.
 
 ## <a name="access-for-oracle-linux"></a>Přístup pro Oracle Linux
 Podobně jako Red Hat Enterprise Linux, režim jednoho uživatele v Oracle Linux vyžaduje GRUB a kořenový uživatel, který se má povolit.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB přístup v Oracle Linux
-Oracle Linux se dodává s GRUB, které jsou povolené. Pokud chcete zadat GRUB, restartujte virtuální počítač spuštěním `sudo reboot`a pak stiskněte klávesu ESC. Tato akce zobrazí podokno GRUB. Pokud se nezobrazuje podokno GRUB, ujistěte se, že hodnota `GRUB_TERMINAL` řádku obsahuje *sériovou konzoli* (tj. `GRUB_TERMINAL="serial console"`). Sestavte GRUB `grub2-mkconfig -o /boot/grub/grub.cfg`pomocí.
+Oracle Linux se dodává s GRUB, které jsou povolené. Pokud chcete zadat GRUB, restartujte virtuální počítač spuštěním `sudo reboot` a pak stiskněte klávesu ESC. Tato akce zobrazí podokno GRUB. Pokud se nezobrazuje podokno GRUB, ujistěte se, že hodnota `GRUB_TERMINAL` řádku obsahuje *sériovou konzoli* (tj `GRUB_TERMINAL="serial console"` .). Sestavte GRUB pomocí `grub2-mkconfig -o /boot/grub/grub.cfg` .
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Režim jednoho uživatele v Oracle Linux
 Pokud chcete povolit režim jednoho uživatele v Oracle Linux, postupujte podle předchozích pokynů pro RHEL.

@@ -9,10 +9,9 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74158189"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Reakce na události služby Azure SignalR Service
@@ -29,7 +28,7 @@ Události služby Azure Signal se aktivují jenom v případě, že jsou připoj
 ## <a name="available-azure-signalr-service-events"></a>Dostupné události služby signalizace Azure
 Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Odběry událostí služby signalizace Azure podporují dva typy událostí:  
 
-|Název události|Popis|
+|Název události|Description|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|Je aktivována, když je připojení klienta připojeno.|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|Je aktivována, když je připojení klienta odpojeno.|
@@ -63,5 +62,5 @@ Další informace najdete v tématu [schéma událostí služby signalizace](../
 Přečtěte si další informace o Event Grid a poskytněte události služby Azure Signal Service a vyzkoušejte:
 
 > [!div class="nextstepaction"]
-> [Vyzkoušejte si ukázku Event Grid integrací se službou Azure Signal Service](./signalr-howto-event-grid-integration.md)
-> [o Event Grid](../event-grid/overview.md)
+> [Vyzkoušejte si ukázku Event Grid integrací se službou Azure Signal Service](./signalr-howto-event-grid-integration.md) 
+>  [O Event Grid](../event-grid/overview.md)

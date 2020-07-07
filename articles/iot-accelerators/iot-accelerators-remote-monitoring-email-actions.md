@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74168361"
 ---
 # <a name="add-an-email-action"></a>Přidat akci e-mailu
@@ -160,9 +159,9 @@ Následující kroky ukazují, jak upravit šablonu e-mailu HTML. Můžete např
 
     Například v kódu Java:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. Parametry v šabloně mají formu `${...}`. Chcete-li odstranit parametr, odstraňte požadovaný řádek. Chcete-li přidat parametr, přidejte řádek s hodnotou, která má být vložena.
+1. Parametry v šabloně mají formu `${...}` . Chcete-li odstranit parametr, odstraňte požadovaný řádek. Chcete-li přidat parametr, přidejte řádek s hodnotou, která má být vložena.
 
-1. Chcete-li přidat obrázky nebo vlastní text, aktualizujte soubor EmailTemplate. HTML přímo.
+1. Chcete-li přidat obrázky nebo vlastní text, aktualizujte soubor EmailTemplate.HTML přímo.
 
 ## <a name="throttling"></a>Throttling
 

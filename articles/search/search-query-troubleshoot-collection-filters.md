@@ -20,15 +20,14 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113090"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Řešení potíží s filtry kolekce OData v Azure Kognitivní hledání
 
-Chcete-li [filtrovat](query-odata-filter-orderby-syntax.md) pole kolekce v Azure kognitivní hledání, můžete použít [ `any` operátory a `all` ](search-query-odata-collection-operators.md) společně s **lambda výrazy**. Výraz lambda je dílčí filtr, který je použit pro každý prvek kolekce.
+Chcete-li [filtrovat](query-odata-filter-orderby-syntax.md) pole kolekce v Azure kognitivní hledání, můžete použít [ `any` `all` operátory a](search-query-odata-collection-operators.md) společně s **lambda výrazy**. Výraz lambda je dílčí filtr, který je použit pro každý prvek kolekce.
 
 V rámci výrazu lambda nejsou k dispozici všechny funkce výrazů filtru. Které funkce jsou k dispozici, se liší v závislosti na typu dat pole kolekce, které chcete filtrovat. To může mít za následek chybu, pokud se pokusíte použít funkci ve výrazu lambda, který není v tomto kontextu podporován. Pokud se setkáte s takovými chybami při pokusu o zápis složitého filtru přes pole kolekce, Tento článek vám pomůže tento problém vyřešit.
 
@@ -40,7 +39,7 @@ V následující tabulce jsou uvedeny chyby, se kterými se můžete setkat při
 | --- | --- | --- |
 | Funkce ' matchd ' nemá žádné parametry svázané s proměnnou rozsahu ' '. Uvnitř výrazů lambda (any nebo All) jsou podporovány pouze odkazy vázané na pole. Změňte prosím svůj filtr tak, aby byla funkce ' matchd ' mimo výraz lambda a akci opakujte. | Použití `search.ismatch` nebo `search.ismatchscoring` uvnitř výrazu lambda | [Pravidla pro filtrování složitých kolekcí](#bkmk_complex) |
 | Neplatný výraz lambda Byl nalezen test rovnosti nebo nerovnosti, kde byl očekáván opak ve výrazu lambda, který se opakuje nad polem typu Collection (EDM. String). Pro Any použijte prosím výrazy ve formátu ' x EQ y ' nebo ' search.in (...) '. Pro All použijte prosím výrazy ve formátu ' x ne y ', ' not (x EQ y) ' nebo ' not search.in (...) '. | Filtrování na poli typu`Collection(Edm.String)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) |
-| Neplatný výraz lambda Našla se Nepodporovaná forma komplexního logického výrazu. Pro klíčové slovo any použijte výrazy, které jsou "ORs of and", označované také jako Disjunctive Normal Form. Například: "(a a b) nebo (c a d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy rovnosti. Pro All použijte výrazy, které jsou "and of ORs", označované také jako conjunctive Normal Form. Například: "(a nebo b) a (c nebo d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy nerovnosti. Příklady výrazů porovnání: ' x gt 5 ', ' x Le 2 '. Příklad výrazu rovnosti: ' x EQ 5 '. Příklad výrazu nerovnosti: ' x ne 5 '. | Filtrování polí typu `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`, nebo `Collection(Edm.Int32)``Collection(Edm.Int64)` | [Pravidla pro filtrování srovnatelných kolekcí](#bkmk_comparables) |
+| Neplatný výraz lambda Našla se Nepodporovaná forma komplexního logického výrazu. Pro klíčové slovo any použijte výrazy, které jsou "ORs of and", označované také jako Disjunctive Normal Form. Například: "(a a b) nebo (c a d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy rovnosti. Pro All použijte výrazy, které jsou "and of ORs", označované také jako conjunctive Normal Form. Například: "(a nebo b) a (c nebo d)", kde a, b, c a d, jsou porovnání nebo dílčí výrazy nerovnosti. Příklady výrazů porovnání: ' x gt 5 ', ' x Le 2 '. Příklad výrazu rovnosti: ' x EQ 5 '. Příklad výrazu nerovnosti: ' x ne 5 '. | Filtrování polí typu `Collection(Edm.DateTimeOffset)` , `Collection(Edm.Double)` , `Collection(Edm.Int32)` nebo`Collection(Edm.Int64)` | [Pravidla pro filtrování srovnatelných kolekcí](#bkmk_comparables) |
 | Neplatný výraz lambda Bylo nalezeno nepodporované použití geografické. Distance () nebo Geo. intersects () ve výrazu lambda, který projde polem typu Collection (EDM. GeographyPoint). U ' Any ' se ujistěte, že porovnáte geografické. Distance () pomocí operátorů ' lt ' nebo ' Le ' a ujistěte se, že jakékoliv použití geo. intersects () není typu negace. Pro All se ujistěte, že porovnáte geografické. Distance () pomocí operátorů gt nebo GE a zajistěte, aby jakékoli použití geograficky. intersects () bylo typu negace. | Filtrování na poli typu`Collection(Edm.GeographyPoint)` | [Pravidla pro filtrování kolekcí GeographyPoint](#bkmk_geopoints) |
 | Neplatný výraz lambda Komplexní logické výrazy nejsou podporovány ve výrazech lambda, které se iterují nad poli kolekce typu (EDM. GeographyPoint). Pro klíčové slovo any připojte dílčí výrazy pomocí operátoru OR. a se nepodporuje. Pro možnost All se připojte k dílčím výrazům a. ' or ' není podporován. | Filtrování polí typu `Collection(Edm.String)` nebo`Collection(Edm.GeographyPoint)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) <br/><br/> [Pravidla pro filtrování kolekcí GeographyPoint](#bkmk_geopoints) |
 | Neplatný výraz lambda Byl nalezen relační operátor (jedna z ' lt ', ' Le ', ' gt ' nebo ' GE '). Ve výrazech lambda, které se iterují nad poli typu Collection (EDM. String), jsou povoleny pouze operátory rovnosti. Pro Any použijte prosím výrazy ve formátu x EQ y. Pro All použijte prosím výrazy ve formátu x ne y nebo not (x EQ y). | Filtrování na poli typu`Collection(Edm.String)` | [Pravidla pro filtrování kolekcí řetězců](#bkmk_strings) |
@@ -61,14 +60,14 @@ Pravidla pro zápis platných filtrů kolekcí jsou pro každý datový typ odli
 
 ## <a name="rules-for-filtering-string-collections"></a>Pravidla pro filtrování kolekcí řetězců
 
-Uvnitř výrazů lambda pro kolekce řetězců lze použít pouze operátory porovnání, které mohou být použity `eq` a `ne`.
+Uvnitř výrazů lambda pro kolekce řetězců lze použít pouze operátory porovnání, které mohou být použity `eq` a `ne` .
 
 > [!NOTE]
-> Azure `lt` / `le` / kognitivní hledání `gt` nepodporuje / operátory pro řetězce, ať už uvnitř nebo vně výrazu `ge` lambda.
+> Azure kognitivní hledání nepodporuje `lt` / `le` / `gt` / `ge` operátory pro řetězce, ať už uvnitř nebo vně výrazu lambda.
 
 Tělo `any` může testovat pouze v případě rovnosti, zatímco tělo `all` může pouze testovat nerovnost.
 
-Je také možné zkombinovat `or` více výrazů prostřednictvím v těle a `any`, a to prostřednictvím `and` v těle. `all` Vzhledem k `search.in` tomu, že je funkce ekvivalentní ke kombinování kontrol rovnosti s `or`, je také povolena v `any`těle. Naopak, `not search.in` je povolený v těle `all`.
+Je také možné zkombinovat více výrazů prostřednictvím `or` v těle `any` a, a to prostřednictvím `and` v těle `all` . Vzhledem `search.in` k tomu, že je funkce ekvivalentní ke kombinování kontrol rovnosti s `or` , je také povolena v těle `any` . Naopak, `not search.in` je povolený v těle `all` .
 
 Například tyto výrazy jsou povoleny:
 
@@ -93,7 +92,7 @@ i když tyto výrazy nejsou povoleny:
 
 ## <a name="rules-for-filtering-boolean-collections"></a>Pravidla pro filtrování logických kolekcí
 
-Typ `Edm.Boolean` podporuje pouze operátory `eq` a. `ne` V takovém případě nezáleží na tom, že umožňuje kombinovat takové klauzule, které kontrolují stejnou proměnnou `and` / `or` rozsahu, protože by to mělo vždycky na tautologies nebo v rozporu.
+Typ `Edm.Boolean` podporuje pouze `eq` `ne` operátory a. V takovém případě nezáleží na tom, že umožňuje kombinovat takové klauzule, které kontrolují stejnou proměnnou rozsahu, `and` / `or` protože by to mělo vždycky na tautologies nebo v rozporu.
 
 Tady je několik příkladů filtrů na logických kolekcích, které jsou povolené:
 
@@ -104,7 +103,7 @@ Tady je několik příkladů filtrů na logických kolekcích, které jsou povol
 - `flags/all(f: not f)`
 - `flags/all(f: not (f eq true))`
 
-Na rozdíl od kolekcí řetězců nemají logické kolekce žádná omezení, které operátor lze použít pro typ výrazu lambda. `eq` A `ne` lze použít v těle `any` nebo. `all`
+Na rozdíl od kolekcí řetězců nemají logické kolekce žádná omezení, které operátor lze použít pro typ výrazu lambda. `eq`A `ne` lze použít v těle `any` nebo `all` .
 
 Pro logické kolekce nejsou povoleny výrazy, jako jsou následující:
 
@@ -117,13 +116,13 @@ Pro logické kolekce nejsou povoleny výrazy, jako jsou následující:
 
 ## <a name="rules-for-filtering-geographypoint-collections"></a>Pravidla pro filtrování kolekcí GeographyPoint
 
-Hodnoty typu `Edm.GeographyPoint` v kolekci nelze porovnat přímo. Místo toho je nutné použít jako parametry pro funkce `geo.distance` a. `geo.intersects` `geo.distance` Funkce je zase nutné porovnat s hodnotou vzdálenosti pomocí jednoho z relačních `lt`operátorů, `le`, `gt`nebo. `ge` Tato pravidla platí také pro pole typu EDM. GeographyPoint, která nejsou kolekcí.
+Hodnoty typu `Edm.GeographyPoint` v kolekci nelze porovnat přímo. Místo toho je nutné použít jako parametry pro `geo.distance` `geo.intersects` funkce a. `geo.distance`Funkce je zase nutné porovnat s hodnotou vzdálenosti pomocí jednoho z relačních operátorů `lt` , `le` , `gt` nebo `ge` . Tato pravidla platí také pro pole typu EDM. GeographyPoint, která nejsou kolekcí.
 
-Podobně jako u kolekcí `Edm.GeographyPoint` řetězců mají kolekce některá pravidla pro použití geograficky funkčních funkcí a jejich kombinování v různých typech výrazů lambda:
+Podobně jako u kolekcí řetězců `Edm.GeographyPoint` mají kolekce některá pravidla pro použití geograficky funkčních funkcí a jejich kombinování v různých typech výrazů lambda:
 
-- Které operátory porovnání můžete použít s `geo.distance` funkcí závisí na typu výrazu lambda. Pro `any`můžete použít pouze `lt` nebo `le`. Pro `all`můžete použít pouze `gt` nebo `ge`. Můžete mít výrazy, které zahrnují `geo.distance`, ale budete muset změnit operátor porovnání`geo.distance(...) lt x` (stane `not (geo.distance(...) ge x)` se a `geo.distance(...) le x` stane se `not (geo.distance(...) gt x)`mu).
-- V těle prvku `all`musí být `geo.intersects` funkce negace. Naopak v těle prvku `any`nesmí být `geo.intersects` funkce negace.
-- V těle `any`a lze výrazy geografické prostorů kombinovat pomocí `or`. V těle `all`může být takové výrazy kombinovány pomocí `and`.
+- Které operátory porovnání můžete použít s `geo.distance` funkcí závisí na typu výrazu lambda. Pro můžete `any` použít pouze `lt` nebo `le` . Pro můžete `all` použít pouze `gt` nebo `ge` . Můžete mít výrazy, které zahrnují `geo.distance` , ale budete muset změnit operátor porovnání ( `geo.distance(...) lt x` stane se `not (geo.distance(...) ge x)` a `geo.distance(...) le x` stane se mu `not (geo.distance(...) gt x)` ).
+- V těle prvku `all` `geo.intersects` musí být funkce negace. Naopak v těle prvku `any` `geo.intersects` nesmí být funkce negace.
+- V těle `any` a lze výrazy geografické prostorů kombinovat pomocí `or` . V těle `all` může být takové výrazy kombinovány pomocí `and` .
 
 Výše uvedená omezení existují v podobných důvodech jako omezení rovnosti a nerovnosti u kolekcí řetězců. Podrobnější informace najdete v těchto důvodech v tématu [porozumění filtrům kolekce OData v Azure kognitivní hledání](search-query-understand-collection-filters.md) .
 
@@ -133,7 +132,7 @@ Tady jsou některé příklady filtrů pro `Edm.GeographyPoint` kolekce, které 
 - `locations/any(l: not (geo.distance(l, geography'POINT(-122 49)') ge 10) or geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 - `locations/all(l: geo.distance(l, geography'POINT(-122 49)') ge 10 and not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 
-Pro `Edm.GeographyPoint` kolekce nejsou povoleny výrazy, jako jsou následující:
+Pro kolekce nejsou povoleny výrazy, jako jsou následující `Edm.GeographyPoint` :
 
 - `locations/any(l: l eq geography'POINT(-122 49)')`
 - `locations/any(l: not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
@@ -154,7 +153,7 @@ Tato část se vztahuje na všechny následující typy dat:
 - `Collection(Edm.Int32)`
 - `Collection(Edm.Int64)`
 
-Typy jako `Edm.Int32` a `Edm.DateTimeOffset` podporují všechny šest z relačních operátorů: `eq`, `ne`, `lt`, `le`, `gt`a. `ge` Výrazy lambda nad kolekcí těchto typů mohou obsahovat jednoduché výrazy pomocí kteréhokoli z těchto operátorů. To platí pro `any` i `all`. Například tyto filtry jsou povolené:
+Typy jako `Edm.Int32` a `Edm.DateTimeOffset` podporují všechny šest z relačních operátorů: `eq` , `ne` , `lt` , `le` , a `gt` `ge` . Výrazy lambda nad kolekcí těchto typů mohou obsahovat jednoduché výrazy pomocí kteréhokoli z těchto operátorů. To platí pro i `any` `all` . Například tyto filtry jsou povolené:
 
 - `ratings/any(r: r ne 5)`
 - `dates/any(d: d gt 2017-08-24T00:00:00Z)`
@@ -162,7 +161,7 @@ Typy jako `Edm.Int32` a `Edm.DateTimeOffset` podporují všechny šest z relačn
 
 Existují však omezení, jak mohou být takové výrazy porovnání kombinovány do složitějších výrazů uvnitř výrazu lambda:
 
-- Pravidla pro `any`:
+- Pravidla pro `any` :
   - Jednoduché výrazy nerovnosti nelze využít v kombinaci s jinými výrazy. Například tento výraz je povolen:
     - `ratings/any(r: r ne 5)`
 
@@ -171,12 +170,12 @@ Existují však omezení, jak mohou být takové výrazy porovnání kombinován
 
     i když je tento výraz povolený, není užitečný, protože se podmínky překrývají:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - Jednoduché výrazy porovnání zahrnující `eq`, `lt`, `le` `gt`, nebo `ge` mohou být kombinovány s `and` / `or`. Příklad:
+  - Jednoduché výrazy porovnání zahrnující `eq` , `lt` , `le` , `gt` nebo `ge` mohou být kombinovány s `and` / `or` . Příklad:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - Výrazy porovnání kombinované s `and` (spojení) lze dále kombinovat pomocí `or`. Tento formulář je známý v logické logice jako "[Disjunctive Normal Form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Příklad:
+  - Výrazy porovnání kombinované s `and` (spojení) lze dále kombinovat pomocí `or` . Tento formulář je známý v logické logice jako "[Disjunctive Normal Form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF). Příklad:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
-- Pravidla pro `all`:
+- Pravidla pro `all` :
   - Jednoduché výrazy rovnosti nelze využít v kombinaci s jinými výrazy. Například tento výraz je povolen:
     - `ratings/all(r: r eq 5)`
 
@@ -185,10 +184,10 @@ Existují však omezení, jak mohou být takové výrazy porovnání kombinován
 
     i když je tento výraz povolený, není užitečný, protože se podmínky překrývají:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - Jednoduché výrazy porovnání zahrnující `ne`, `lt`, `le` `gt`, nebo `ge` mohou být kombinovány s `and` / `or`. Příklad:
+  - Jednoduché výrazy porovnání zahrnující `ne` , `lt` , `le` , `gt` nebo `ge` mohou být kombinovány s `and` / `or` . Příklad:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - Výrazy porovnání kombinované s `or` (disjunkes) lze dále kombinovat pomocí `and`. Tento formulář je známý v logické logice jako "[conjunctive Normal Form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF). Příklad:
+  - Výrazy porovnání kombinované s `or` (disjunkes) lze dále kombinovat pomocí `and` . Tento formulář je známý v logické logice jako "[conjunctive Normal Form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (CNF). Příklad:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
@@ -204,9 +203,9 @@ Druhý odkazující na pole, která nejsou *svázána* s proměnnou rozsahu (ted
 1. `stores/any(s: s/amenities/any(a: a eq 'parking')) and details/margin gt 0.5`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and details/margin gt 0.5))`
 
-První výraz bude povolen, zatímco druhý formulář bude odmítnut, protože `details/margin` není vázán na proměnnou `s`rozsahu.
+První výraz bude povolen, zatímco druhý formulář bude odmítnut, protože `details/margin` není vázán na proměnnou rozsahu `s` .
 
-Toto pravidlo také rozšiřuje na výrazy, které mají proměnné svázané ve vnějším oboru. Tyto proměnné jsou zdarma s ohledem na rozsah, ve kterém jsou uvedeny. Například první výraz je povolen, zatímco druhý ekvivalentní výraz není povolen, protože je zadarmo `s/name` vzhledem k oboru proměnné `a`rozsahu:
+Toto pravidlo také rozšiřuje na výrazy, které mají proměnné svázané ve vnějším oboru. Tyto proměnné jsou zdarma s ohledem na rozsah, ve kterém jsou uvedeny. Například první výraz je povolen, zatímco druhý ekvivalentní výraz není povolen, protože `s/name` je zadarmo vzhledem k oboru proměnné rozsahu `a` :
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking') and s/name ne 'Flagship')`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and s/name ne 'Flagship'))`

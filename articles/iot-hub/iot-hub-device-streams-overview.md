@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890457"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Datové proudy zařízení IoT Hub (Preview)
@@ -82,7 +81,7 @@ Zařízení i strany datového proudu zařízení musí být schopné vytvořit 
 
 !["Koncové body streamu zařízení"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Alternativně lze informace o koncových bodech načíst pomocí rozhraní příkazového řádku Azure CLI v části vlastnosti rozbočovače, konkrétně `property.hostname` i `property.deviceStreams` v klíčích.
+Alternativně lze informace o koncových bodech načíst pomocí rozhraní příkazového řádku Azure CLI v části vlastnosti rozbočovače, konkrétně `property.hostname` i v `property.deviceStreams` klíčích.
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
@@ -106,7 +105,7 @@ Výstupem je objekt JSON všech koncových bodů, ke kterým se musí zařízen�
 
 Jak je uvedeno na začátku tohoto článku, vaše zařízení vytvoří odchozí připojení k IoT Hub koncový bod streamování během procesu inicializace datových proudů zařízení. Brány firewall na zařízení nebo v jeho síti musí umožňovat odchozí připojení k bráně streamování přes port 443 (Všimněte si, že komunikace probíhá přes připojení protokolu WebSocket šifrované pomocí protokolu TLS).
 
-Název hostitele koncového bodu streamování zařízení najdete na portálu Azure IoT Hub na kartě Přehled. !["koncové body datového proudu zařízení"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+Název hostitele koncového bodu streamování zařízení najdete na portálu Azure IoT Hub na kartě ![ Přehled. Koncové body streamu zařízení](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 Případně můžete tyto informace najít pomocí Azure CLI:
 
@@ -132,7 +131,7 @@ Pomocí následujících kroků Nakonfigurujte protokoly Azure Monitor pro aktiv
 
     ![Povolit protokoly datových proudů zařízení](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. Teď máte přístup k protokolům datových proudů zařízení na kartě *protokoly* na portálu IoT Hub. Protokoly aktivit datových proudů zařízení se zobrazí `AzureDiagnostics` v tabulce a `Category=DeviceStreams`mají.
+3. Teď máte přístup k protokolům datových proudů zařízení na kartě *protokoly* na portálu IoT Hub. Protokoly aktivit datových proudů zařízení se zobrazí v `AzureDiagnostics` tabulce a mají `Category=DeviceStreams` .
 
    Jak vidíte níže, identita cílového zařízení a výsledek operace je také k dispozici v protokolech.
 
@@ -168,7 +167,7 @@ Tady jsou ukázky ozvěny:
 
 * [Služba a program služby C#](quickstart-device-streams-echo-csharp.md)
 
-* [Program služby Node. js](quickstart-device-streams-echo-nodejs.md)
+* [Program službyNode.js](quickstart-device-streams-echo-nodejs.md)
 
 * [Program zařízení v jazyce C](quickstart-device-streams-echo-c.md)
 
@@ -204,7 +203,7 @@ Použijte odkazy níže, kde najdete pokyny ke spuštění místních proxy prog
 
 * [Služba a program služby C#](quickstart-device-streams-proxy-csharp.md)
 
-* [Program služby Node. js](quickstart-device-streams-proxy-nodejs.md)
+* [Program službyNode.js](quickstart-device-streams-proxy-nodejs.md)
 
 * [Program zařízení v jazyce C](quickstart-device-streams-proxy-c.md)
 

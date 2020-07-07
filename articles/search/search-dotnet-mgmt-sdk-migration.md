@@ -10,10 +10,9 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73847533"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade verzí sady Azure Search .NET Management SDK
@@ -33,16 +32,16 @@ Verze 2 sady Azure Search .NET Management SDK cílí na stejnou obecně dostupno
 
 * `Services.CreateOrUpdate`a jeho asynchronní verze nyní automaticky dotazují zřizování `SearchService` a nevrátí se do dokončení zřizování služby. Tím ušetříte, abyste si tento kód cyklického dotazování sami napsali sami.
 * Pokud přesto chcete, aby se zřizování služby dotazoval ručně, můžete použít novou `Services.BeginCreateOrUpdate` metodu nebo jednu z jejích asynchronních verzí.
-* Nové metody `Services.Update` a její asynchronní verze byly přidány do sady SDK. Tyto metody používají opravu HTTP k podpoře přírůstkové aktualizace služby. Můžete například nyní škálovat službu předáním `SearchService` instance těmto metodám, které obsahují pouze požadované `partitionCount` vlastnosti a. `replicaCount` Starý způsob volání `Services.Get`, úpravy vráceného `SearchService`a jeho předání na `Services.CreateOrUpdate` je stále podporován, ale již není nutný. 
+* Nové metody `Services.Update` a její asynchronní verze byly přidány do sady SDK. Tyto metody používají opravu HTTP k podpoře přírůstkové aktualizace služby. Můžete například nyní škálovat službu předáním `SearchService` instance těmto metodám, které obsahují pouze požadované `partitionCount` `replicaCount` vlastnosti a. Starý způsob volání `Services.Get` , úpravy vráceného `SearchService` a jeho předání na `Services.CreateOrUpdate` je stále podporován, ale již není nutný. 
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Postup upgradu
-Nejdřív aktualizujte svůj odkaz na NuGet `Microsoft.Azure.Management.Search` pro použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+Nejdřív aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Management.Search` použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
 Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. V závislosti na tom, jak je kód strukturovaný, se může úspěšně znovu sestavit. Pokud ano, jste připraveni!
 
-Pokud sestavení selhalo, může to být způsobeno tím, že jste implementovali některá rozhraní sady SDK (například pro účely testování částí), které se změnily. Chcete-li tento problém vyřešit, budete muset implementovat nové metody, jako `BeginCreateOrUpdateWithHttpMessagesAsync`je například.
+Pokud sestavení selhalo, může to být způsobeno tím, že jste implementovali některá rozhraní sady SDK (například pro účely testování částí), které se změnily. Chcete-li tento problém vyřešit, budete muset implementovat nové metody, jako je například `BeginCreateOrUpdateWithHttpMessagesAsync` .
 
 Jakmile opravíte jakékoli chyby sestavení, můžete v aplikaci provádět změny, abyste mohli využít nové funkce, pokud chcete. Nové funkce v sadě SDK jsou podrobně popsané v části [co je nového ve verzi 2](#WhatsNew).
 

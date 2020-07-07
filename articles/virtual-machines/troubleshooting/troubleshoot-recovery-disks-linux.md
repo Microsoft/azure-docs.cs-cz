@@ -14,10 +14,9 @@ ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
 ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73620567"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI
@@ -39,22 +38,22 @@ K provedení těchto kroků při odstraňování potíží budete potřebovat na
 > [!Important]
 > Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [spravovaný disk](../linux/managed-disks-overview.md). 
 
-V následujících příkladech nahraďte názvy parametrů vlastními hodnotami, například `myResourceGroup` a. `myVM`
+V následujících příkladech nahraďte názvy parametrů vlastními hodnotami, například `myResourceGroup` a `myVM` .
 
 ## <a name="determine-boot-issues"></a>Určení problémů se spouštěním
-Zkontrolujte sériový výstup a určete, proč se váš virtuální počítač nemůže správně spustit. Běžným příkladem je neplatná položka v `/etc/fstab`, nebo se odstraní nebo přesune základní virtuální pevný disk.
+Zkontrolujte sériový výstup a určete, proč se váš virtuální počítač nemůže správně spustit. Běžným příkladem je neplatná položka v `/etc/fstab` , nebo se odstraní nebo přesune základní virtuální pevný disk.
 
-Protokoly spouštění získáte pomocí [protokolu AZ VM Boot-Diagnostics Get-Boot-log](/cli/azure/vm/boot-diagnostics). Následující příklad získá sériový výstup z virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem: `myResourceGroup`
+Protokoly spouštění získáte pomocí [protokolu AZ VM Boot-Diagnostics Get-Boot-log](/cli/azure/vm/boot-diagnostics). Následující příklad získá sériový výstup z virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup` :
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ```
 
-Přečtěte si sériový výstup a určete, proč se virtuální počítač nedaří spustit. Pokud sériový výstup neposkytuje žádné informace, možná budete muset zkontrolovat soubory protokolu v `/var/log` nástroji, když máte virtuální pevný disk PŘIPOJENÝ k virtuálnímu počítači pro řešení potíží.
+Přečtěte si sériový výstup a určete, proč se virtuální počítač nedaří spustit. Pokud sériový výstup neposkytuje žádné informace, možná budete muset zkontrolovat soubory protokolu v nástroji, `/var/log` když máte virtuální pevný disk připojený k virtuálnímu počítači pro řešení potíží.
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Následující příklad zastaví virtuální počítač pojmenovaný `myVM` ze skupiny prostředků s názvem: `myResourceGroup`
+Následující příklad zastaví virtuální počítač pojmenovaný `myVM` ze skupiny prostředků s názvem `myResourceGroup` :
 
 ```azurecli
 az vm stop --resource-group MyResourceGroup --name MyVm
@@ -72,7 +71,7 @@ az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --n
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>Vytvoření disku ze snímku
 
-Tento skript vytvoří spravovaný disk s názvem `myOSDisk` z snímku s názvem. `mySnapshot`  
+Tento skript vytvoří spravovaný disk s názvem `myOSDisk` z snímku s názvem `mySnapshot` .  
 
 ```azurecli
 #Provide the name of your resource group
@@ -105,14 +104,14 @@ az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType
 
 ```
 
-Pokud skupina prostředků a zdrojový snímek nejsou ve stejné oblasti, zobrazí se při spuštění `az disk create`chyba "prostředek nebyl nalezen". V takovém případě musíte určit `--location <region>` , že se má disk vytvořit ve stejné oblasti jako zdrojový snímek.
+Pokud skupina prostředků a zdrojový snímek nejsou ve stejné oblasti, zobrazí se při spuštění chyba "prostředek nebyl nalezen" `az disk create` . V takovém případě musíte určit, že se má `--location <region>` disk vytvořit ve stejné oblasti jako zdrojový snímek.
 
 Teď máte kopii původního disku s operačním systémem. Tento nový disk můžete připojit k jinému virtuálnímu počítači s Windows pro účely řešení potíží.
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>Připojit nový virtuální pevný disk k jinému virtuálnímu počítači
 V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. Disk k tomuto virtuálnímu počítači pro odstraňování potíží připojíte, abyste mohli procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby konfigurace nebo zkontrolovat další soubory protokolu aplikace nebo systému.
 
-Tento skript připojí disk `myNewOSDisk` k virtuálnímu počítači `MyTroubleshootVM`:
+Tento skript připojí disk `myNewOSDisk` k virtuálnímu počítači `MyTroubleshootVM` :
 
 ```azurecli
 # Get ID of the OS disk that you just created.
@@ -126,7 +125,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
 > [!NOTE]
 > Následující příklady podrobně popisují kroky vyžadované na virtuálním počítači s Ubuntu. Pokud používáte jiný distribuce pro Linux, například Red Hat Enterprise Linux nebo SUSE, umístění souborů protokolu a `mount` příkazy se můžou trochu lišit. Příslušné změny v příkazech najdete v dokumentaci pro konkrétní distribuce.
 
-1. SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží pomocí příslušných přihlašovacích údajů. Pokud je tento disk prvním datovým diskem připojeným k vašemu VIRTUÁLNÍmu počítači pro řešení potíží, `/dev/sdc`disk je nejspíš připojený k. Použijte `dmesg` k zobrazení připojených disků:
+1. SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží pomocí příslušných přihlašovacích údajů. Pokud je tento disk prvním datovým diskem připojeným k vašemu VIRTUÁLNÍmu počítači pro řešení potíží, disk je nejspíš připojený k `/dev/sdc` . Použijte `dmesg` k zobrazení připojených disků:
 
     ```bash
     dmesg | grep SCSI
@@ -142,15 +141,15 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    V předchozím příkladu je disk s operačním systémem `/dev/sda` a dočasný disk poskytnutý pro každý virtuální počítač je v. `/dev/sdb` Pokud jste měli více datových disků, měly by být v `/dev/sdd`, `/dev/sde`a tak dále.
+    V předchozím příkladu je disk s operačním systémem `/dev/sda` a dočasný disk poskytnutý pro každý virtuální počítač je v `/dev/sdb` . Pokud jste měli více datových disků, měly by být v `/dev/sdd` , `/dev/sde` a tak dále.
 
-2. Vytvořte adresář pro připojení stávajícího virtuálního pevného disku. Následující příklad vytvoří adresář s názvem `troubleshootingdisk`:
+2. Vytvořte adresář pro připojení stávajícího virtuálního pevného disku. Následující příklad vytvoří adresář s názvem `troubleshootingdisk` :
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Pokud máte na svém stávajícím virtuálním pevném disku více oddílů, připojte požadovaný oddíl. Následující příklad připojí první primární oddíl na `/dev/sdc1`:
+3. Pokud máte na svém stávajícím virtuálním pevném disku více oddílů, připojte požadovaný oddíl. Následující příklad připojí první primární oddíl na `/dev/sdc1` :
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
@@ -173,7 +172,7 @@ Po vyřešení chyb odpojte a odpojte stávající virtuální pevný disk od vi
     cd /
     ```
 
-    Nyní odpojte stávající virtuální pevný disk. Následující příklad odpojí zařízení v `/dev/sdc1`:
+    Nyní odpojte stávající virtuální pevný disk. Následující příklad odpojí zařízení v `/dev/sdc1` :
 
     ```bash
     sudo umount /dev/sdc1
@@ -189,7 +188,7 @@ Po vyřešení chyb odpojte a odpojte stávající virtuální pevný disk od vi
 
 K prohození disků s operačním systémem můžete použít rozhraní příkazového řádku Azure. Nemusíte odstranit a znovu vytvořit virtuální počítač.
 
-V tomto příkladu se zastaví virtuální `myVM` počítač s názvem a přiřadí se disk s názvem jako nový disk s `myNewOSDisk` operačním systémem.
+V tomto příkladu se zastaví virtuální počítač s názvem `myVM` a přiřadí se disk s názvem `myNewOSDisk` jako nový disk s operačním systémem.
 
 ```azurecli
 # Stop the affected VM

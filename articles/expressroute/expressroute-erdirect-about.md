@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083605"
 ---
 # <a name="about-expressroute-direct"></a>O službě ExpressRoute Direct
@@ -26,7 +25,7 @@ K dispozici jsou klíčové funkce, které ExpressRoute Direct poskytuje, ale ne
 
 ## <a name="onboard-to-expressroute-direct"></a>Připojit k ExpressRoute Direct
 
-Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, pošlete E-mail <ExpressRouteDirect@microsoft.com> na adresu s vaším ID předplatného, včetně následujících podrobností:
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, pošlete E-mail na adresu <ExpressRouteDirect@microsoft.com> s vaším ID předplatného, včetně následujících podrobností:
 
 * Scénáře, které se chystáte provést s **přímým přístupem ExpressRoute**
 * Předvolby umístění – v části [partneři a umístění partnerských vztahů](expressroute-locations-providers.md) najdete úplný seznam všech umístění.
@@ -39,7 +38,7 @@ Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat sv
 | --- | --- |
 | Využívá poskytovatele služeb k umožnění rychlé registrace a připojení do stávající infrastruktury. | Vyžaduje infrastrukturu s 100 GB/s/10 GB/s a úplnou správu všech vrstev.
 | Se integruje se stovkami poskytovatelů, včetně ethernetových a MPLS | Přímá a vyhrazená kapacita pro regulované odvětví a obrovské přijímání dat |
-| SKU okruhů od 50 do 10 GB/s | Zákazník může vybrat kombinaci následujících SKU okruhů v 100 GB/s ExpressRoute Direct: <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 GB/s</li><li>100 Gb/s</li></ul> Zákazník může vybrat kombinaci následujících SKU okruhu na 10 GB/s ExpressRoute Direct:<ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
+| SKU okruhů od 50 do 10 GB/s | Zákazník může vybrat kombinaci následujících SKU okruhů v 100 GB/s ExpressRoute Direct: <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 Gb/s</li><li>100 Gb/s</li></ul> Zákazník může vybrat kombinaci následujících SKU okruhu na 10 GB/s ExpressRoute Direct:<ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
 | Optimalizováno pro jednoho tenanta | Optimalizováno pro jednoho tenanta s více obchodními jednotkami a několika pracovními prostředími
 
 ## <a name="expressroute-direct-circuits"></a>Přímé okruhy ExpressRoute
@@ -57,7 +56,7 @@ ExpressRoute Direct podporuje rozsáhlé scénáře přijímání dat do služby
 | **100 GB/s ExpressRoute Direct** | **10 GB/s ExpressRoute Direct** | 
 | --- | --- |
 | **Předplacená šířka pásma**: 200 GB/s | **Přihlášená šířka pásma**: 20 GB/s |
-| <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 GB/s</li><li>100 Gb/s</li></ul> | <ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
+| <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 Gb/s</li><li>100 Gb/s</li></ul> | <ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
 
 ## <a name="technical-requirements"></a>Technické požadavky
 

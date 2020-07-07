@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74173420"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Vytvoření trezoru služby Azure Recovery Services pomocí REST API
@@ -23,7 +22,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Vytvoření žádosti
 
-Chcete-li vytvořit požadavek *Put* , `{subscription-id}` je vyžadován parametr. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Nadefinujete `{resourceGroupName}` a `{vaultName}` pro své prostředky spolu s `api-version` parametrem. Tento článek používá `api-version=2016-06-01`.
+Chcete-li vytvořit požadavek *Put* , `{subscription-id}` je vyžadován parametr. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Nadefinujete `{resourceGroupName}` a `{vaultName}` pro své prostředky spolu s `api-version` parametrem. Tento článek používá `api-version=2016-06-01` .
 
 Jsou vyžadovány následující hlavičky:
 
@@ -38,7 +37,7 @@ Další informace o tom, jak vytvořit žádost, najdete v tématu [komponenty R
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Description  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
@@ -62,11 +61,11 @@ Následující vzorový text se používá k vytvoření trezoru v "Západní US
 }
 ```
 
-## <a name="responses"></a>Odezvy
+## <a name="responses"></a>Odpovědi
 
 Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat Recovery Services trezoru:
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |   [Hesel](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 vytvořeno     | [Hesel](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Vytvořeno      |

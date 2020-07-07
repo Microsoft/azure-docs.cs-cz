@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73826239"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení vzdáleného monitorování
@@ -40,13 +39,13 @@ Další informace najdete v tématu [upgrade mapového klíče pro zobrazení za
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování?
 
-Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
 
 ### <a name="next-steps"></a>Další kroky
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
 * [Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
-* [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
+* [Přehled akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
 * [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)

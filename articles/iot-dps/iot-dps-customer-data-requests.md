@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890657"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Shrnutí funkcí žádosti o data zákazníků
+# <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí pro žádosti o data zákazníků
 
 Azure IoT Hub Device Provisioning Service je cloudová služba založená na REST API, která je zacílená na podnikové zákazníky, která umožňuje bezproblémové automatizované zřizování zařízení do Azure IoT Hub se zabezpečením, které začíná na zařízení a končí v cloudu.
 
@@ -62,6 +61,6 @@ Je také možné provádět operace exportu pro registrace a registrační zázn
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 
-Úplná dokumentace k rozhraním API služby Device Provisioning [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)se nachází na adrese.
+Úplná dokumentace k rozhraním API služby Device Provisioning se nachází na adrese [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps) .
 
 Funkce pro [žádosti o data zákazníků](../iot-hub/iot-hub-customer-data-requests.md)v Azure IoT Hub.

@@ -4,10 +4,9 @@ description: K tiché instalaci Azure Backup Server v2 použijte skript prostře
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172247"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Spuštění bezobslužné instalace Azure Backup Server
@@ -18,9 +17,9 @@ Tyto kroky neplatí, pokud instalujete Azure Backup Server v1.
 
 ## <a name="install-backup-server"></a>Nainstalovat záložní server
 
-1. Na serveru, který je hostitelem Azure Backup Server v2 nebo novějším, vytvořte textový soubor. (Soubor můžete vytvořit v programu Poznámkový blok nebo jiném textovém editoru.) Uložte soubor jako MABSSetup. ini.
+1. Na serveru, který je hostitelem Azure Backup Server v2 nebo novějším, vytvořte textový soubor. (Soubor můžete vytvořit v programu Poznámkový blok nebo jiném textovém editoru.) Uložte soubor jako MABSSetup.ini.
 
-2. Vložte následující kód do souboru MABSSetup. ini. Text v závorkách (\< \>) nahraďte hodnotami z vašeho prostředí. Následující text je příklad:
+2. Do souboru MABSSetup.ini vložte následující kód. Text v závorkách () nahraďte \< \> hodnotami z vašeho prostředí. Následující text je příklad:
 
    ```text
    [OPTIONS]

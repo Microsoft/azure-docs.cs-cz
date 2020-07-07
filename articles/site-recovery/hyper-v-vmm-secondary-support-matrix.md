@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74132961"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
@@ -24,7 +23,7 @@ Tento článek shrnuje, co je podporováno při používání služby [Azure Sit
 
 ## <a name="host-servers"></a>Hostitelské servery
 
-**Operační systém** | **Zobrazí**
+**Operační systém** | **Podrobnosti**
 --- | ---
 Windows Server 2012 R2 | Na serverech musí běžet nejnovější aktualizace.
 Windows Server 2016 |  V současnosti se nepodporují cloudy VMM 2016 se směsí Windows Server 2016 a 2012 hostitelé R2.<br/><br/> Nasazení, která se upgradují z System Center 2012 R2 VMM 2012 R2 na System Center 2016, se v tuto chvíli nepodporují.
@@ -53,14 +52,14 @@ Replikovat se dají jenom počítače se systémem Linux s následujícím úlo�
 
 **Konfigurace** | **Doložen**  
 --- | --- 
-Seskupování síťových adaptérů hosta | Ano 
-Hostitel-síť VLAN | Ano 
-Hostitel – IPv4 | Ano 
-Hostitel – IPv6 | Ne 
-Virtuální počítač hosta – seskupování síťových adaptérů | Ne
-Virtuální počítač hosta – IPv4 | Ano
-Virtuální počítač hosta – IPv6 | Ne
-Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
+Seskupování síťových adaptérů hosta | Yes 
+Hostitel-síť VLAN | Yes 
+Hostitel – IPv4 | Yes 
+Hostitel – IPv6 | No 
+Virtuální počítač hosta – seskupování síťových adaptérů | No
+Virtuální počítač hosta – IPv4 | Yes
+Virtuální počítač hosta – IPv6 | No
+Virtuální počítač hosta – Windows/Linux – statická IP adresa | Yes
 Virtuální počítač hosta – více síťových karet | Ano
 
 
@@ -70,43 +69,43 @@ Virtuální počítač hosta – více síťových karet | Ano
 
 **Úložiště (hostitel)** | **Doložen**
 --- | --- 
-NFS | –
-SMB 3.0 |  Ano
-SÍŤ SAN (ISCSI) | Ano
-Multipath (multi-Path) | Ano
+NFS | Není k dispozici
+SMB 3.0 |  Yes
+SÍŤ SAN (ISCSI) | Yes
+Multipath (multi-Path) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Úložiště hostů nebo fyzických serverů
 
 **Konfigurace** | **Doložen**
 --- | --- | 
-FORMÁTU |  –
+FORMÁTU |  Není k dispozici
 VHD/VHDX | Ano (až 16 disků)
-Virtuální počítač 2. generace | Ano
-Disk sdíleného clusteru | Ne
-Zašifrovaný disk | Ne
-UEFI| –
-NFS | Ne
-SMB 3.0 | Ne
-RDM | –
-Disk > 1 TB | Ano
-Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
-Prostory úložiště | Ano
-Hot Add/Remove disk | Ne
-Vyloučení disku | Ano
-Multipath (multi-Path) | Ano
+Virtuální počítač 2. generace | Yes
+Disk sdíleného clusteru | No
+Zašifrovaný disk | No
+UEFI| Není k dispozici
+NFS | No
+SMB 3.0 | No
+RDM | Není k dispozici
+Disk > 1 TB | Yes
+Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Yes
+Prostory úložiště | Yes
+Hot Add/Remove disk | No
+Vyloučení disku | Yes
+Multipath (multi-Path) | Yes
 
 ## <a name="vaults"></a>Trezory
 
 **Akce** | **Doložen**
 --- | --- 
-Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) |  Ne
-Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | Ne
+Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) |  No
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | No
 
 ## <a name="azure-site-recovery-provider"></a>Poskytovatel Azure Site Recovery
 
 Poskytovatel koordinuje komunikaci mezi servery VMM. 
 
-**Nejnovější** | **Aktualizace**
+**Latest (Nejnovější)** | **Aktualizace**
 --- | --- 
 5.1.19 ([k dispozici z portálu](https://aka.ms/downloaddra) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
 

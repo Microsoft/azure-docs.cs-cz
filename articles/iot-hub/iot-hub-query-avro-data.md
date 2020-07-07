@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73605622"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Dotazování na data Avro pomocí Azure Data Lake Analytics
@@ -56,7 +55,7 @@ V této části se dotazuje na data Avro a exportují je do souboru CSV v úlož
 
 6. V aplikaci Visual Studio vytvořte projekt U-SQL.
 
-   ! Vytvoření projektu U-SQL] (./Media/IoT-Hub-Query-Avro-data/Query-Avro-data-6.png)
+   ! Vytvoření projektu U-SQL] (./Media/IoT-Hub-Query-Avro-data/query-avro-data-6.png)
 
 7. Vložte obsah následujícího skriptu do nově vytvořeného souboru. Upravte tři zvýrazněné oddíly: účet Data Lake Analytics, přidružené cesty k souborům DLL a správnou cestu k vašemu účtu úložiště.
 

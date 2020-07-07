@@ -4,10 +4,9 @@ description: Seznamte se s novými funkcemi v Azure Backup Server. Tento článe
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172379"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
@@ -36,7 +35,7 @@ Záložní server v2 nebo novější akceptuje svazky úložiště. Když přid�
 
 Používání služby Backup Server v2 nebo novější se svazky jako diskové úložiště vám může pomoci udržet si kontrolu nad úložištěm. Svazek může být jeden disk. Pokud ale chcete úložiště v budoucnu zvětšit, vytvořte svazek z disku vytvořeného pomocí prostorů úložiště. To může být užitečné, pokud chcete rozšířit svazek pro úložiště zálohování. Tato část nabízí osvědčené postupy pro vytvoření svazku s tímto nastavením.
 
-1. V správce serveru vyberte souborové**Volumes** > **fondy úložiště** **souborové služby a služby** > úložiště. V části **fyzické disky**vyberte **Nový fond úložiště**.
+1. V správce serveru vyberte souborové fondy úložiště **souborové služby a služby úložiště**  >  **Volumes**  >  **Storage Pools**. V části **fyzické disky**vyberte **Nový fond úložiště**.
 
     ![Vytvořit nový fond úložiště](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -105,7 +104,7 @@ Aktualizace skupin ochrany na používání moderního úložiště záloh je vo
 
    ![Zastavení ochrany člena](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. V dialogovém okně **Odebrat ze skupiny** zkontrolujte využité místo na disku a dostupné volné místo pro fond úložiště. Výchozím postupem je nechat body obnovení na disku a umožnit jim vypršení platnosti podle přidružené zásady uchovávání. Klikněte na tlačítko **OK**.
+2. V dialogovém okně **Odebrat ze skupiny** zkontrolujte využité místo na disku a dostupné volné místo pro fond úložiště. Výchozím postupem je nechat body obnovení na disku a umožnit jim vypršení platnosti podle přidružené zásady uchovávání. Klikněte na **OK**.
 
    Pokud chcete hned vrátit využité místo na disku do fondu volných úložišť, zaškrtněte políčko **Odstranit repliku na disku** , chcete-li odstranit data zálohy (a body obnovení) přidružené k tomuto členu.
 
@@ -119,7 +118,7 @@ Pokud chcete používat starší verze úložiště se záložním serverem, mo�
 
 Přidání diskového úložiště:
 
-1. V konzole pro správu vyberte **Správa** > **Disk Storage** > **Přidat**.
+1. V konzole pro správu vyberte **Správa**  >  **Disk Storage**  >  **Přidat**.
 
     ![Přidat Disk Storage – dialogové okno](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 

@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73839172"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Použití editoru Video Indexer k vytváření projektů
@@ -57,7 +56,7 @@ Tento článek ukazuje, jak vytvořit projekt od začátku a také jak vytvořit
 
     ![Filtr](./media/video-indexer-view-edit/visual-text.png)
 
-    Do dotazu můžete převrstvit více filtrů. **+** / Pomocí **-** tlačítek můžete přidat nebo odebrat filtry. Pomocí **Vymazat filtry** odeberte všechny filtry.
+    Do dotazu můžete převrstvit více filtrů. Pomocí **+** / **-** tlačítek můžete přidat nebo odebrat filtry. Pomocí **Vymazat filtry** odeberte všechny filtry.
 1. Pokud chcete přidat videa, vyberte je a pak vyberte **Přidat**.
 1. Teď se zobrazí všechna videa, která jste zvolili. Jedná se o videa, ze kterých se chystáte vybrat klipy pro svůj projekt.
 

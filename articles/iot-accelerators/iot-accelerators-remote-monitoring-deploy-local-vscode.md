@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890963"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Nasaďte místně Visual Studio Code akcelerátor řešení vzdáleného monitorování.
@@ -37,7 +36,7 @@ K dokončení místního nasazení potřebujete na svém místním vývojovém p
 * [Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Rozšíření C# VS Code](https://code.visualstudio.com/docs/languages/csharp)
-* [Node. js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node. js v10 za účelem
+* [Node.js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívat Node.js v10 za účelem
 
 > [!NOTE]
 > Visual Studio Code je k dispozici pro Windows, Mac a Ubuntu.
@@ -64,7 +63,7 @@ Následující kroky ukazují, jak spustit mikroslužby vzdáleného monitorová
 1. Spusťte editor Visual Studio Code.
 1. V VS Code otevřete složku **Azure-IoT-PC-Remote-Monitoring-dotnet** .
 1. Ve složce **Azure-IoT-PC-Remote-Monitoring-dotnet** vytvořte novou složku s názvem **. VSCode** .
-1. Zkopírujte soubory **Launch. JSON** a **Tasks. JSON** z services\scripts\local\launch\idesettings\vscode do složky **. VSCode** , kterou jste právě vytvořili.
+1. Zkopírujte soubory **launch.jsna** a **tasks.js** z services\scripts\local\launch\idesettings\vscode do složky **. VSCode** , kterou jste právě vytvořili.
 1. Otevřete **panel ladění** v vs Code a spusťte konfiguraci **spuštění všech mikroslužeb** . Tato konfigurace spustí mikroslužbu simulace zařízení v Docker a spustí další mikroslužby v ladicím programu.
 
 Výstup ze spuštěných **běhů spustit všechny microsoervices** v konzole ladění vypadá následovně:
@@ -80,7 +79,7 @@ npm install
 npm start
 ```
 
-Po dokončení spuštění v prohlížeči se zobrazí stránka **http:\//localhost: 3000/řídicí panel**. Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující krok.
+Po dokončení spuštění v prohlížeči se zobrazí stránka **http: \/ /localhost: 3000/řídicí panel**. Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující krok.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurace a spuštění NGINX
 
@@ -93,7 +92,7 @@ Další informace o spuštění **Nginx**najdete v tématu [Nginx for Windows](h
 
 ### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 
-Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak, že\/v prohlížeči přejdete na http:/localhost: 9000.
+Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak, že v prohlížeči přejdete na http: \/ /localhost: 9000.
 
 ## <a name="clean-up"></a>Vyčištění
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889349"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení
@@ -21,7 +20,7 @@ Akcelerátor řešení pro simulaci zařízení umožňuje generovat telemetrii 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Postup v tomto průvodci předpokládá, že jste do svého předplatného Azure nasadili akcelerátor řešení pro simulaci zařízení. Pokud jste nenainstalovali akcelerátor řešení, postupujte podle kroků v části [nasazení a spuštění cloudového řešení simulace zařízení](quickstart-device-simulation-deploy.md) .
 
@@ -55,9 +54,9 @@ Následující kroky používají rozhraní příkazového řádku Azure CLI v A
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) je plně spravovaná služba pro analýzy, ukládání a vizualizace, která slouží ke správě dat časových řad ve službě IoT-Scale v cloudu. Vytvoření nového prostředí Time Series Insights:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Vyberte **vytvořit prostředek** > **Internet věcí** > **Time Series Insights**:
+1. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Time Series Insights**:
 
     ![Nový Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 

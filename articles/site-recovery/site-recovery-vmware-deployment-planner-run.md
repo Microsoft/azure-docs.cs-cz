@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953280"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>Spuštění Plánovač nasazení pro zotavení po havárii VMware
@@ -65,7 +64,7 @@ Jakmile budete mít seznam virtuálních počítačů určených k profilaci, m�
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Název parametru | Popis |
+| Název parametru | Description |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | Plně kvalifikovaný název domény nebo IP adresa serveru vCenter nebo hostitele vSphere ESXi, které obsahují virtuální počítače určené k profilaci.|
@@ -95,7 +94,7 @@ Ve výchozím nastavení je tento nástroj nakonfigurovaný tak, aby profiloval 
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Pokud chcete s výchozím nastavením profilovat řekněme 1 500 virtuálních počítačů, vytvořte dva soubory VMList.txt. Jeden s 1000 virtuálních počítačů a druhý se seznamem 500 virtuálních počítačů. Spusťte dvě instance Plánovač nasazení služby Azure Site Recovery, jednu s VMList1. txt a další s VMList2. txt. K uložení profilovaných dat virtuálních počítačů z obou seznamů VMList můžete použít stejnou adresářovou cestu.
+Pokud chcete s výchozím nastavením profilovat řekněme 1 500 virtuálních počítačů, vytvořte dva soubory VMList.txt. Jeden s 1000 virtuálních počítačů a druhý se seznamem 500 virtuálních počítačů. Spusťte dvě instance Plánovač nasazení služby Azure Site Recovery, jednu s VMList1.txt a další s VMList2.txt. K uložení profilovaných dat virtuálních počítačů z obou seznamů VMList můžete použít stejnou adresářovou cestu.
 
 Viděli jsme, že na základě konfigurace hardwaru, zejména velikosti RAM na serveru, ze kterého se spouští nástroj pro vygenerování sestavy, může operace selhat z důvodu nedostatku paměti. Pokud máte kvalitní hardware, můžete změnit MaxVMsSupported na libovolnou vyšší hodnotu.  
 
@@ -145,7 +144,7 @@ Po dokončení profilace můžete nástroj spustit v režimu generování sestav
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|Název parametru | Popis |
+|Název parametru | Description |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  Plně kvalifikovaný název domény nebo IP adresa serveru vCenter nebo vSphere (použijte stejný název nebo IP adresu, jako jste použili při profilaci), na němž jsou umístěné profilované virtuální počítače, pro které se má vygenerovat sestava. Všimněte si, že pokud jste při profilaci použili server vCenter, nemůžete pro generování sestav použít server vSphere a naopak.|
@@ -257,7 +256,7 @@ Otevřete konzolu příkazového řádku a přejděte do složky nástroje pro p
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|Název parametru | Popis |
+|Název parametru | Description |
 |-|-|
 | -Operation | GetThroughput |
 |-Virtualization|Určuje typ virtualizace (VMware nebo Hyper-V).|

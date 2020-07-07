@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082604"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Převzetí služeb při selhání a obnovení záložních virtuálních počítačů Hyper-V replikovaných do sekundární místní lokality
@@ -52,8 +51,8 @@ Pro virtuální počítače Hyper-V můžete spustit běžné nebo plánované p
   Tento postup popisuje, jak spustit normální převzetí služeb při selhání.
 
 
-1. V části **Nastavení** > **replikované položky** klikněte na virtuální počítač > **převzetí služeb při selhání**.
-1. Před spuštěním **převzetí služeb při selhání vyberte vypnout počítač** , pokud se chcete Site Recovery pokusit před aktivací převzetí služeb při selhání provést vypnutí zdrojových virtuálních počítačů. Site Recovery se taky pokusí synchronizovat místní data, která se ještě neposlala do sekundární lokality, před aktivací převzetí služeb při selhání. Všimněte si, že převzetí služeb při selhání pokračuje i v případě selhání vypnutí. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+1. V části **Nastavení**  >  **replikované položky** klikněte na virtuální počítač > **převzetí služeb při selhání**.
+1. Před spuštěním **převzetí služeb při selhání vyberte vypnout počítač** , pokud se chcete Site Recovery pokusit před aktivací převzetí služeb při selhání provést vypnutí zdrojových virtuálních počítačů. Site Recovery se taky pokusí synchronizovat místní data, která se ještě neposlala do sekundární lokality, před aktivací převzetí služeb při selhání. Všimněte si, že převzetí služeb při selhání pokračuje i v případě selhání vypnutí. Průběh převzetí služeb při selhání můžete sledovat na stránce **úlohy** .
 2. Nyní byste měli být schopni zobrazit virtuální počítač v sekundárním cloudu VMM.
 3. Po ověření virtuálního počítače **potvrďte** převzetí služeb při selhání. Tím se odstraní všechny dostupné body obnovení.
 

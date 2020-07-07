@@ -20,13 +20,12 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113218"
 ---
-# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Relační operátory OData v Azure kognitivní hledání- `eq`, `ne`, `gt` `lt` `ge`,, a`le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Relační operátory OData v Azure kognitivní hledání- `eq` , `ne` ,,, `gt` `lt` `ge` a`le`
 
 Nejzákladnější operace ve [výrazu filtru OData](query-odata-filter-orderby-syntax.md) v Azure kognitivní hledání slouží k porovnání pole s danou hodnotou. Dva typy porovnání jsou možné – porovnání rovnosti a porovnání rozsahu. K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
@@ -45,9 +44,9 @@ Operátory rozsahu:
 Operátory rozsahu v kombinaci s [logickými operátory](search-query-odata-logical-operators.md) můžete použít k otestování, zda je pole v určitém rozsahu hodnot. Podívejte se na [Příklady](#examples) dále v tomto článku.
 
 > [!NOTE]
-> Pokud dáváte přednost, můžete vložit konstantní hodnotu na levou stranu operátoru a název pole na pravé straně. Pro operátory rozsahu je význam porovnání obrácený. Například pokud je konstantní hodnota na levé straně, `gt` bude testována, zda je konstantní hodnota větší než pole. Operátory porovnání můžete použít také k porovnání výsledku funkce, jako `geo.distance`je například, s hodnotou. Pro logické funkce `search.ismatch`, jako je například, porovnání výsledku `true` s `false` nebo je volitelné.
+> Pokud dáváte přednost, můžete vložit konstantní hodnotu na levou stranu operátoru a název pole na pravé straně. Pro operátory rozsahu je význam porovnání obrácený. Například pokud je konstantní hodnota na levé straně, `gt` bude testována, zda je konstantní hodnota větší než pole. Operátory porovnání můžete použít také k porovnání výsledku funkce, jako `geo.distance` je například, s hodnotou. Pro logické funkce, jako `search.ismatch` je například, porovnání výsledku s `true` nebo `false` je volitelné.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá operátory porovnání.
 
@@ -75,21 +74,21 @@ Existují dvě formy srovnávacích výrazů. Jediný rozdíl mezi nimi spočív
 
 ## <a name="data-types-for-comparisons"></a>Datové typy pro porovnání
 
-Datové typy na obou stranách relačního operátoru musí být kompatibilní. Například pokud je levá strana pole typu `Edm.DateTimeOffset`, pak musí být pravá strana konstanta data a času. Numerické datové typy jsou flexibilnější. Můžete porovnat proměnné a funkce libovolného číselného typu s konstantami libovolného jiného číselného typu s několika omezeními, jak je popsáno v následující tabulce.
+Datové typy na obou stranách relačního operátoru musí být kompatibilní. Například pokud je levá strana pole typu `Edm.DateTimeOffset` , pak musí být pravá strana konstanta data a času. Numerické datové typy jsou flexibilnější. Můžete porovnat proměnné a funkce libovolného číselného typu s konstantami libovolného jiného číselného typu s několika omezeními, jak je popsáno v následující tabulce.
 
 | Typ proměnné nebo funkce | Typ hodnoty konstanty | Omezení |
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Pro porovnání se vztahují [zvláštní pravidla pro `NaN` ](#special-case-nan) |
-| `Edm.Double` | `Edm.Int64` | Konstanta je převedena na `Edm.Double`, což vede ke ztrátě přesnosti pro hodnoty velké velikosti. |
-| `Edm.Double` | `Edm.Int32` | neuvedeno |
-| `Edm.Int64` | `Edm.Double` | Porovnání s `NaN`, `-INF`, nebo `INF` nejsou povolena. |
-| `Edm.Int64` | `Edm.Int64` | neuvedeno |
-| `Edm.Int64` | `Edm.Int32` | Konstanta je převedena na `Edm.Int64` před porovnáním |
-| `Edm.Int32` | `Edm.Double` | Porovnání s `NaN`, `-INF`, nebo `INF` nejsou povolena. |
-| `Edm.Int32` | `Edm.Int64` | neuvedeno |
-| `Edm.Int32` | `Edm.Int32` | neuvedeno |
+| `Edm.Double` | `Edm.Int64` | Konstanta je převedena na `Edm.Double` , což vede ke ztrátě přesnosti pro hodnoty velké velikosti. |
+| `Edm.Double` | `Edm.Int32` | Není k dispozici |
+| `Edm.Int64` | `Edm.Double` | Porovnání s `NaN` , `-INF` , nebo `INF` nejsou povolena. |
+| `Edm.Int64` | `Edm.Int64` | Není k dispozici |
+| `Edm.Int64` | `Edm.Int32` | Konstanta je převedena na `Edm.Int64` Před porovnáním |
+| `Edm.Int32` | `Edm.Double` | Porovnání s `NaN` , `-INF` , nebo `INF` nejsou povolena. |
+| `Edm.Int32` | `Edm.Int64` | Není k dispozici |
+| `Edm.Int32` | `Edm.Int32` | Není k dispozici |
 
-Pro porovnávání, které nejsou povoleny, jako je například porovnání pole typu `Edm.Int64` do `NaN`, REST API Azure Kognitivní hledání vrátí chybu HTTP 400: Bad Request.
+Pro porovnávání, které nejsou povoleny, jako je například porovnání pole typu `Edm.Int64` do `NaN` , REST API Azure kognitivní hledání vrátí chybu HTTP 400: Bad Request.
 
 > [!IMPORTANT]
 > I když je porovnávání číselných typů flexibilní, důrazně doporučujeme zapsat porovnávání ve filtrech tak, aby konstantní hodnota byla stejného datového typu jako proměnná nebo funkce, na kterou je porovnávána. To je obzvláště důležité při kombinování plovoucí desetinné čárky a celočíselných hodnot, kde je možné implicitní převody, které ztratí přesnost.
@@ -98,7 +97,7 @@ Pro porovnávání, které nejsou povoleny, jako je například porovnání pole
 
 ### <a name="special-cases-for-null-and-nan"></a>Zvláštní případy pro `null` a`NaN`
 
-Při použití relačních operátorů je důležité si uvědomit, že všechna pole, která nejsou v kolekci v Azure Kognitivní hledání `null`, můžou být potenciálně. Následující tabulka uvádí všechny možné výsledky pro výraz porovnání, kde může být `null`jedna strana:
+Při použití relačních operátorů je důležité si uvědomit, že všechna pole, která nejsou v kolekci v Azure Kognitivní hledání, můžou být potenciálně `null` . Následující tabulka uvádí všechny možné výsledky pro výraz porovnání, kde může být jedna strana `null` :
 
 | Operátor | Výsledek, pokud je pouze pole nebo proměnná`null` | Výsledek, pokud je pouze konstanta`null` | Výsledek, pokud pole nebo proměnná i konstanta jsou`null` |
 | --- | --- | --- | --- |
@@ -109,7 +108,7 @@ Při použití relačních operátorů je důležité si uvědomit, že všechna
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 
-Souhrnně `null` se rovná pouze sobě a není menší nebo rovno jiné hodnotě.
+Souhrnně se `null` rovná pouze sobě a není menší nebo rovno jiné hodnotě.
 
 Pokud má váš index pole typu `Edm.Double` a nahráváte `NaN` do těchto polí hodnoty, budete se muset při psaní filtrů brát v úvahu. Azure Kognitivní hledání implementuje standard IEEE 754 pro zpracování `NaN` hodnot a porovnání s těmito hodnotami produkuje Nezřejmé výsledky, jak je znázorněno v následující tabulce.
 
@@ -126,27 +125,27 @@ Souhrnně `NaN` se nerovná žádné hodnotě, včetně sebe samé.
 
 ### <a name="comparing-geo-spatial-data"></a>Porovnávání geograficky geografických dat
 
-Nemůžete přímo porovnat pole typu `Edm.GeographyPoint` s konstantní hodnotou, ale můžete použít `geo.distance` funkci. Tato funkce vrací hodnotu typu `Edm.Double`, takže ji můžete porovnat s číselnou konstantou pro filtrování na základě vzdálenosti od konstantních geografických souřadnic. Podívejte se na následující [Příklady](#examples) .
+Nemůžete přímo porovnat pole typu `Edm.GeographyPoint` s konstantní hodnotou, ale můžete použít `geo.distance` funkci. Tato funkce vrací hodnotu typu `Edm.Double` , takže ji můžete porovnat s číselnou konstantou pro filtrování na základě vzdálenosti od konstantních geografických souřadnic. Podívejte se na následující [Příklady](#examples) .
 
 ### <a name="comparing-string-data"></a>Porovnávání řetězcových dat
 
-Řetězce lze porovnat v filtrech pro přesné shody pomocí `eq` operátorů `ne` a. U těchto porovnávání se rozlišují malá a velká písmena.
+Řetězce lze porovnat v filtrech pro přesné shody pomocí `eq` `ne` operátorů a. U těchto porovnávání se rozlišují malá a velká písmena.
 
 ## <a name="examples"></a>Příklady
 
-Porovnává dokumenty, `Rating` kde je pole mezi 3 a 5 včetně:
+Porovnává dokumenty `Rating` , kde je pole mezi 3 a 5 včetně:
 
     Rating ge 3 and Rating le 5
 
-Porovnává dokumenty, `Location` kde je pole menší než 2 kilometry od dané zeměpisné šířky a délky:
+Porovnává dokumenty, kde `Location` je pole menší než 2 kilometry od dané zeměpisné šířky a délky:
 
     geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
 
-Porovná dokumenty, `LastRenovationDate` kde je pole větší nebo rovno 1. ledna 2015, půlnoci UTC:
+Porovná dokumenty, kde `LastRenovationDate` je pole větší nebo rovno 1. ledna 2015, půlnoci UTC:
 
     LastRenovationDate ge 2015-01-01T00:00:00.000Z
 
-Porovnává dokumenty, `Details/Sku` kde pole není `null`:
+Porovnává dokumenty, kde `Details/Sku` pole není `null` :
 
     Details/Sku ne null
 

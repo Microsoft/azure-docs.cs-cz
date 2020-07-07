@@ -9,10 +9,9 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954408"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Upgrade Windows Server serveru/System Center 2012 R2 VMM na Windows Server/VMM 2016 
@@ -42,10 +41,10 @@ Před upgradem Vezměte na vědomí následující: –
 
 - Pokud používáte System Center 2012 R2 VMM, 
 
-    - Podívejte se na informace o databázi v nástroji VMM:**Nastavení** ->  **konzoly** -> VMM**Obecné** -> **připojení k databázi**
+    - Podívejte se na informace o databázi v nástroji VMM: nastavení **konzoly VMM**  ->  **settings**  ->  **Obecné**  ->  **připojení k databázi**
     - Ověřte účty služeb používané pro System Center Virtual Machine Manager službu agenta.
     - Ujistěte se, že máte zálohu databáze VMM.
-    - Poznamenejte si název databáze zapojených serverů SCVMM. To se dá udělat tak, že přejdete na -> **Nastavení** ->  **konzoly VMM****Obecné** -> **připojení k databázi** .
+    - Poznamenejte si název databáze zapojených serverů SCVMM. To se dá udělat tak, že přejdete na nastavení **konzoly VMM**  ->  **Settings**  ->  **Obecné**  ->  **připojení k databázi** .
     - Poznamenejte si ID služby VMM primárního serveru 2012R2 i serveru VMM pro obnovení. ID VMM můžete najít v registru "HKLM: \ SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup".
     - Ujistěte se, že nový SCVMMs, který přidáte do clusteru, má stejné názvy jako předtím. 
 
@@ -75,7 +74,7 @@ Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradov
 
 1.  Odinstalujte poskytovatele ASR tak, že přejdete na ovládací panel > programy-> programy a funkce – >Microsoft Azure Site Recovery a kliknete na odinstalovat.
 2. [Uchování databáze SCVMM a upgrade operačního systému](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. V panelu **Přidat nebo odebrat programy**vyberte možnost**odinstalovat** **Nástroj VMM** > . b. Vyberte **Odebrat funkce**a pak vyberte V**mm Server pro správu a konzolu VMM**. c. V **Možnosti databáze**vyberte **Zachovat databázi**. d. Zkontrolujte souhrn a klikněte na **odinstalovat**.
+3. V panelu **Přidat nebo odebrat programy**vyberte možnost odinstalovat **Nástroj VMM**  >  **Uninstall**. b. Vyberte **Odebrat funkce**a pak vyberte V**mm Server pro správu a konzolu VMM**. c. V **Možnosti databáze**vyberte **Zachovat databázi**. d. Zkontrolujte souhrn a klikněte na **odinstalovat**.
 
 4. [Instalace nástroje VMM 2016](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Spusťte SCVMM a zaškrtněte na kartě **prostředky infrastruktury** stav pro každého hostitele. Kliknutím na **aktualizovat** získáte nejnovější stav. Měl by se zobrazit stav "vyžaduje pozornost". 

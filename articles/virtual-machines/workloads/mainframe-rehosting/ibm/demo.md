@@ -13,10 +13,9 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68841389"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1
@@ -83,7 +82,7 @@ Teď, když máte balíčky, musíte je nahrát do svého virtuálního počíta
 6. Inicializujte nahrání do vytvořeného adresáře virtuálních počítačů Azure, který se bude nacházet jako úložiště imagí pro zD&T.
 
     > [!NOTE]
-    > Ujistěte se, že **ADCDTOOLS. KÓD XML** je součástí nahrávání do adresáře **Home/MYUSERID/ZDT/adcd/nov2017** . Budete ho potřebovat později.
+    > Ujistěte se, že je v umístění pro odesílání do adresáře **Home/MyUserID/ZDT/adcd/nov2017** zahrnutá tato **ADCDTOOLS.XML** . Budete ho potřebovat později.
 
 7. Počkejte na nahrání souborů, což může v závislosti na připojení k Azure trvat delší dobu.
 
@@ -105,7 +104,7 @@ Dalším krokem je konfigurace zD&T, aby se používaly nahrané balíčky. Proc
         /opt/ibm/zDT/bin/startServer
     ```
 2. Poznamenejte si výstup adresy URL příkazem a použijte tuto adresu URL pro přístup k webovému serveru. Vypadá nějak takto:
-     > https://(název virtuálního počítače nebo IP adresa): 9443/ZDTMC/index. html
+     > https://(název nebo IP adresa virtuálního počítače): 9443/ZDTMC/index.html
      >
      > Mějte na paměti, že váš webový přístup používá port 9443. Použijte k přihlášení k webovému serveru. ID uživatele pro ZD&T je **zdtadmin** a heslo je **heslo**.
 
@@ -184,13 +183,13 @@ Image se teď může nasadit a je připravená k připojení emulátoru terminá
 > [!NOTE]
 > Pokud se zobrazí chyba s informací, že nemáte dostatek místa na disku, je třeba si uvědomit, že oblast vyžaduje 151 GB.
 
-Blahopřejeme! Nyní používáte sálové prostředí IBM v Azure.
+Gratulujeme! Nyní používáte sálové prostředí IBM v Azure.
 
 ## <a name="learn-more"></a>Další informace
 
 - [Migrace sálového počítače: mýty a fakta](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2 pureScale v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [Odstraňování potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Řešení potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

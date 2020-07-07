@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888605"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Odeslání souborů do účtu Azure Media Services pomocí REST  
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
-> * [Portál](media-services-portal-upload-files.md)
+> * [Azure Portal](media-services-portal-upload-files.md)
 > 
 
 Ve službě Media Services můžete digitální soubory nahrát do assetu. Entita [assetu](https://docs.microsoft.com/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Po nahrání souborů do assetu je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování. 
@@ -35,20 +34,20 @@ V tomto kurzu se dozvíte, jak nahrát soubor a další operaci s ním spojenou:
 > * Nastavit post pro všechny operace odeslání
 > * Připojení ke službě Media Services 
 > * Vytvoření zásady přístupu s oprávněním k zápisu
-> * Vytvoření assetu
+> * Vytvoření prostředku
 > * Vytvořit Lokátor SAS a vytvořit adresu URL pro odeslání
 > * Nahrání souboru do úložiště objektů BLOB pomocí adresy URL pro nahrání
 > * V assetu vytvořte metadata pro mediální soubor, který jste nahráli.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete.
 - [Vytvořte účet Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
 - Přečtěte si článek [Přehled přístupu k rozhraní Azure Media Services API pomocí ověřování AAD](media-services-use-aad-auth-to-access-ams-api.md) .
 - Další informace najdete také v tématu [použití ověřování Azure AD pro přístup k rozhraní Media Services API pomocí REST](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) .
 - Nakonfigurujte **metodu post** , jak je popsáno v tématu [Configure the post for Media Services REST API Calls](media-rest-apis-with-postman.md).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Při použití Media Services REST API platí následující předpoklady:
  
@@ -72,8 +71,8 @@ Postup pro nastavení post pro tento kurz najdete v tématu [Configure a post](m
     ![Nahrání souboru](./media/media-services-rest-upload-files/postman-import-env.png)
 2. Zadejte hodnotu pro proměnnou prostředí **MediaFileName** .
 
-    Zadejte název souboru média, které hodláte odeslat. V tomto příkladu budeme nahrávat BigBuckBunny. MP4. 
-3. Projděte si soubor **AzureMediaServices. postman_environment. JSON** . Uvidíte, že téměř všechny operace v kolekci spouštějí skript "test". Skripty přebírají některé hodnoty vrácené odpovědí a nastavily příslušné proměnné prostředí.
+    Zadejte název souboru média, které hodláte odeslat. V tomto příkladu budeme nahrávat BigBuckBunny.mp4. 
+3. Prověřte **AzureMediaServices.postman_environment.jsv** souboru. Uvidíte, že téměř všechny operace v kolekci spouštějí skript "test". Skripty přebírají některé hodnoty vrácené odpovědí a nastavily příslušné proměnné prostředí.
 
     Například první operace načte přístupový token a nastaví ji na proměnnou prostředí **AccessToken** , která se používá ve všech ostatních operacích.
 
@@ -87,7 +86,7 @@ Postup pro nastavení post pro tento kurz najdete v tématu [Configure a post](m
         ]
     }
     ```
-4. Vlevo od okna **po** klikněte na **1. Získejte** -> **token služby AAD pro ověření tokenu služby Azure AD pro instanční objekt**.
+4. Vlevo od okna **po** klikněte na **1. Získejte**token služby AAD pro ověření tokenu  ->  **služby Azure AD pro instanční objekt**.
 
     Část adresy URL je vyplněna proměnnou prostředí **AzureADSTSEndpoint** (dříve v tomto kurzu jste nastavili hodnoty proměnných prostředí, které podporují kolekci).
 
@@ -110,14 +109,14 @@ Před nahráním jakýchkoli souborů do úložiště objektů BLOB nastavte pr�
 
 ### <a name="create-an-access-policy"></a>Vytvoření zásady přístupu
 
-1. Vyberte **AccessPolicy** -> **vytvořit AccessPolicy pro nahrání**.
+1. Vyberte **AccessPolicy**  ->  **vytvořit AccessPolicy pro nahrání**.
 2. Stiskněte **Odeslat**.
 
     ![Nahrání souboru](./media/media-services-rest-upload-files/postman-access-policy.png)
 
     Skript test získá ID AccessPolicy a nastaví příslušnou proměnnou prostředí.
 
-## <a name="create-an-asset"></a>Vytvoření assetu
+## <a name="create-an-asset"></a>Vytvoření prostředku
 
 ### <a name="overview"></a>Přehled
 
@@ -129,9 +128,9 @@ Pokud je váš Asset zašifrovaný, musíte vytvořit **ContentKey** a propojit 
 
 V tomto příkladu vytváříme nešifrovaný prostředek. 
 
-### <a name="create-an-asset"></a>Vytvoření assetu
+### <a name="create-an-asset"></a>Vytvoření prostředku
 
-1. Vyberte **prostředky** -> **vytvořit Asset**.
+1. Vyberte **prostředky**  ->  **vytvořit Asset**.
 2. Stiskněte **Odeslat**.
 
     ![Nahrání souboru](./media/media-services-rest-upload-files/postman-create-asset.png)
@@ -152,7 +151,7 @@ Adresa URL SAS má následující formát:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 Musí být splněny určité předpoklady:
 
@@ -162,7 +161,7 @@ Musí být splněny určité předpoklady:
 
 ### <a name="create-a-sas-locator"></a>Vytvoření lokátoru SAS
 
-1. Vyberte **Lokátor** -> **vytvořit Lokátor SAS**.
+1. Vyberte **Lokátor**  ->  **vytvořit Lokátor SAS**.
 2. Stiskněte **Odeslat**.
 
     Skript "test" vytvoří adresu URL pro odeslání na základě zadaného názvu mediálního souboru a informací lokátoru SAS a nastaví příslušnou proměnnou prostředí.
@@ -173,7 +172,7 @@ Musí být splněny určité předpoklady:
 
 ### <a name="overview"></a>Přehled
 
-Teď, když máte adresu URL pro nahrání, je potřeba napsat nějaký kód s využitím rozhraní API Azure Blob přímo k nahrání souboru do kontejneru SAS. Další informace najdete v těchto článcích:
+Teď, když máte adresu URL pro nahrání, je potřeba napsat nějaký kód s využitím rozhraní API Azure Blob přímo k nahrání souboru do kontejneru SAS. Další informace najdete v následujících článcích:
 
 - [Použití rozhraní REST API pro službu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [VLOŽENÍ objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/put-blob)
@@ -186,7 +185,7 @@ Jako příklad používáme příkaz post k nahrání malého souboru. MP4. Mů�
 Požadavek na nahrání není součástí kolekce **AzureMedia** . 
 
 Vytvořit a nastavit novou žádost:
-1. Stisknutím **+** klávesy vytvořte novou kartu žádosti.
+1. Stisknutím klávesy **+** vytvořte novou kartu žádosti.
 2. Vyberte operaci **Put** a v adrese URL vložte **{{UploadURL}}** .
 2. Kartu **autorizace** nechte beze změny (nenastavte ji na **token nosiče**).
 3. Na kartě **hlavičky** zadejte: **klíč**: "x-MS-BLOB-Type" a **Value**: "BlockBlob".
@@ -200,7 +199,7 @@ Vytvořit a nastavit novou žádost:
 
 Po nahrání souboru budete muset v assetu vytvořit metadata pro mediální soubor, který jste nahráli do úložiště objektů BLOB přidružených k vašemu prostředku.
 
-1. Vyberte **AssetFiles** -> **CreateFileInfos**.
+1. Vyberte **AssetFiles**  ->  **CreateFileInfos**.
 2. Stiskněte **Odeslat**.
 
     ![Nahrání souboru](./media/media-services-rest-upload-files/postman-create-file-info.png)
@@ -211,7 +210,7 @@ Soubor by měl být nahrán a jeho sada metadat.
 
 Pokud chcete ověřit, jestli se soubor úspěšně nahrál, možná budete chtít zadat dotaz na [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) a porovnat **ContentFileSize** (nebo jiné podrobnosti) na to, co očekáváte, aby se v novém assetu zobrazil. 
 
-Například následující operace **Get** přinese souborová data pro soubor assetu (v případě souboru BigBuckBunny. mp4). Dotaz používá [proměnné prostředí](postman-environment.md) , které jste nastavili dříve.
+Následující operace **Get** například přináší data souborů pro soubor assetu (v případě BigBuckBunny.mp4 souboru). Dotaz používá [proměnné prostředí](postman-environment.md) , které jste nastavili dříve.
 
     {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
 

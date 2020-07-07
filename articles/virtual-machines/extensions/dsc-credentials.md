@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: f7edbd0fd8791829a2d9ffaa4e7c0ee0e561cc5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73748968"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Předání přihlašovacích údajů obslužné rutině Azure DSCExtension
@@ -83,7 +82,7 @@ $vm | Update-AzVM
 
 Po spuštění tohoto kódu se zobrazí výzva k zadání přihlašovacích údajů. Po zadání přihlašovacích údajů se krátce uloží do paměti. Při publikování přihlašovacích údajů pomocí rutiny **set-AzVMDscExtension** se přihlašovací údaje přenáší přes HTTPS do virtuálního počítače. V tomto virtuálním počítači Azure ukládá přihlašovací údaje šifrované na disk pomocí certifikátu místního virtuálního počítače. Přihlašovací údaje se krátce dešifrují v paměti a pak se znovu zašifrují, aby je bylo možné předat DSC.
 
-Tento proces se liší od [použití zabezpečených konfigurací bez obslužné rutiny rozšíření](/powershell/scripting/dsc/pull-server/securemof). Prostředí Azure nabízí způsob, jak bezpečně přenášet konfigurační data prostřednictvím certifikátů. Když použijete obslužnou rutinu rozšíření DSC, nemusíte zadávat **$CertificatePath** ani **$CertificateID**/ **$Thumbprint** záznam v **ConfigurationData**.
+Tento proces se liší od [použití zabezpečených konfigurací bez obslužné rutiny rozšíření](/powershell/scripting/dsc/pull-server/securemof). Prostředí Azure nabízí způsob, jak bezpečně přenášet konfigurační data prostřednictvím certifikátů. Když použijete obslužnou rutinu rozšíření DSC, nemusíte zadávat **$CertificatePath** ani **$CertificateID** /  **$Thumbprint** záznam v **ConfigurationData**.
 
 ## <a name="next-steps"></a>Další kroky
 

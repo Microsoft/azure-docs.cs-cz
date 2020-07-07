@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73666966"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
@@ -46,7 +45,7 @@ Pomocí Azure Portal můžete:
 Tato část také popisuje, jak se řez datové sady přechází z jednoho stavu do jiného.   
 
 ### <a name="navigate-to-your-data-factory"></a>Přejděte do objektu pro vytváření dat.
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce na levé straně klikněte na **Datové továrny** . Pokud ho nevidíte, klikněte na **Další služby >** a potom klikněte na **Datové továrny** v kategorii **Intelligence + Analytics** .
 
    ![Procházet všechny > datové továrny](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -87,7 +86,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Popis</th>
+    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
@@ -105,7 +104,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>ActivityResume</td><td>Aktivita je pozastavena a nemůže tyto řezy spustit, dokud nebude aktivita obnovena.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Probíhá opakování provádění aktivity.</td>
+<td>Zkusit znovu</td><td>Probíhá opakování provádění aktivity.</td>
 </tr>
 <tr>
 <td>Ověřování</td><td>Ověřování ještě nebylo zahájeno.</td>
@@ -290,7 +289,7 @@ V případě neúspěšného ověření řezu v důsledku selhání zásady (nap
 ### <a name="use-azure-powershell"></a>Použití Azure Powershell
 Selhání můžete znovu spustit pomocí rutiny **set-AzDataFactorySliceStatus** . Syntaxe a další podrobnosti o rutině najdete v tématu [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) .
 
-**Případě**
+**Příklad:**
 
 Následující příklad nastaví stav všech řezů pro tabulku ' DAWikiAggregatedData ' na ' wait ' v Azure Data Factory ' WikiADF '.
 

@@ -10,10 +10,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73682208"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight
@@ -38,7 +37,7 @@ Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikost
 
 Rodiny virtuálních počítačů v Azure jsou optimalizované tak, aby vyhovovaly různým případům použití. V níže uvedené tabulce najdete některé z nejoblíbenějších případů použití a rodin virtuálních počítačů, které se na ně shodují.
 
-| Typ                     | Velikosti           |    Popis       |
+| Typ                     | Velikosti           |    Description       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Vstupní úroveň](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Pro úlohy vstupní úrovně, jako je vývoj a testování, se nejlépe hodí konfigurace výkonu a paměti procesoru. Je to ekonomicky výhodná možnost, která vám umožní začít s Azure. |
 | [Obecné účely](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Poměr vyrovnaných PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
@@ -53,12 +52,12 @@ Pokud máte požadavky na zpracování světla, může být [Řada F-Series](htt
 
 Následující tabulka popisuje typy clusterů a typy uzlů, které lze vytvořit pomocí virtuálních počítačů Fsv2-Series.
 
-| Typ clusteru | Version | Pracovní uzel | Hlavní uzel | Uzel Zookeeper |
+| Typ clusteru | Verze | Pracovní uzel | Hlavní uzel | Uzel Zookeeper |
 |---|---|---|---|---|
-| Spark | Všechny | F4 a vyšší | ne | ne |
-| Hadoop | Všechny | F4 a vyšší | ne | ne |
-| Kafka | Všechny | F4 a vyšší | ne | ne |
-| HBase | Všechny | F4 a vyšší | ne | ne |
+| Spark | Vše | F4 a vyšší | ne | ne |
+| Hadoop | Vše | F4 a vyšší | ne | ne |
+| Kafka | Vše | F4 a vyšší | ne | ne |
+| HBase | Vše | F4 a vyšší | ne | ne |
 | LLAP | zakázaný | ne | ne | ne |
 | Storm | zakázaný | ne | ne | ne |
 | Služba ML | JENOM HDI 3,6 | F4 a vyšší | ne | ne |

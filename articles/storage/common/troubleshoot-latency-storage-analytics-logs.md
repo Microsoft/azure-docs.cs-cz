@@ -11,10 +11,9 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74196508"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Řešení potíží s latencí s využitím protokolů Analýzy úložiště
@@ -99,10 +98,10 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
    |   |Stavem žádosti =<br>Úspěch|Stavem žádosti =<br>VEDE NetworkError|Doporučení|
    |---|---|---|---|
-   |GetBlob|Ano|Ne|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
-   |GetBlob|Ne|Ano|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Ano|Ne|[**Operace Put:** Stavem žádosti = úspěch](#put-operation-requeststatus--success)|
-   |PutBlob|Ne|Ano|[**Operace Put:** Stavem žádosti = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Ano|No|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
+   |GetBlob|No|Ano|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Ano|No|[**Operace Put:** Stavem žádosti = úspěch](#put-operation-requeststatus--success)|
+   |PutBlob|No|Ano|[**Operace Put:** Stavem žádosti = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Výsledky stavu
 

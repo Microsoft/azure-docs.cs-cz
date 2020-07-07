@@ -8,10 +8,9 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73516861"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Konfigurace ochrany bot pro Firewall webových aplikací v Azure Application Gateway (Preview)
@@ -21,7 +20,7 @@ V tomto článku se dozvíte, jak nakonfigurovat pravidlo ochrany robota v brán
 Můžete povolit sadu pravidel spravované ochrany robotů pro WAF k blokování nebo protokolování požadavků ze známých škodlivých IP adres. IP adresy se naúčtují z informačního kanálu Microsoft Threat Intelligence. Intelligent Security Graph využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
 
 > [!NOTE]
-> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)   .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +30,7 @@ Pomocí pokynů popsaných v tématu [Vytvoření zásad firewallu webových a
 
 1. Na stránce **základní** zásady, kterou jste vytvořili dříve, v části **Nastavení**vyberte **pravidla**.  
 
-2. Na stránce podrobností v části **Spravovat pravidla** v rozevírací nabídce zaškrtněte políčko pro pravidlo ochrany robota a pak vyberte **Uložit**.
+2. Na stránce podrobností v části **Spravovat pravidla**v   rozevírací nabídce zaškrtněte políčko pro pravidlo ochrany robota a pak vyberte **Uložit**.
 
 > [!div class="mx-imgBorder"]
 > ![Ochrana před roboty](../media/bot-protection/bot-protection.png)

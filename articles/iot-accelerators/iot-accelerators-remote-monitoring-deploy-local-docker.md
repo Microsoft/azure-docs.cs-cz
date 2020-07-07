@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888839"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Nasaďte místně Docker akcelerátor řešení vzdáleného monitorování
@@ -36,7 +35,7 @@ K dokončení místního nasazení potřebujete na svém místním vývojovém p
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/) – Pokud plánujete provádět změny mikroslužeb.
-* [Node. js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node. js v10 za účelem.
+* [Node.js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node.js v10 za účelem.
 
 > [!NOTE]
 > Tyto nástroje jsou k dispozici na mnoha platformách, včetně systémů Windows, Linux a iOS.
@@ -63,14 +62,14 @@ Mikroslužby běžící v místních kontejnerech Docker potřebují přístup k
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Chcete-li spustit akcelerátor řešení, přejděte do **místní\\složky\\skripty služby** v prostředí příkazového řádku a spusťte následující příkaz:
+Chcete-li spustit akcelerátor řešení, přejděte do ** \\ \\ místní složky skripty služby** v prostředí příkazového řádku a spusťte následující příkaz:
 
 ```cmd/sh
 docker-compose up
 ```
 
 > [!NOTE] 
-> Před spuštěním `docker-compose up`se ujistěte, že jste [nasdíleli místní jednotku](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) s Docker.
+> Před spuštěním se ujistěte, že jste [nasdíleli místní jednotku](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) s Docker `docker-compose up` .
 
 Při prvním spuštění tohoto příkazu Docker stáhne image mikroslužeb z dokovacího centra a vytvoří kontejnery místně. V následujících spuštěních Docker spouští kontejnery hned.
 
@@ -96,7 +95,7 @@ Pomocí následujících kroků spusťte úlohu Stream Analytics:
 
 ### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 
-Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak `http://localhost:8080` , že v prohlížeči přejdete na. Teď můžete použít webové uživatelské rozhraní a místní mikroslužby.
+Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak, že v prohlížeči přejdete na `http://localhost:8080` . Teď můžete použít webové uživatelské rozhraní a místní mikroslužby.
 
 ## <a name="clean-up"></a>Vyčištění
 

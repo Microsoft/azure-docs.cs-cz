@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890850"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementace chování modelu zařízení
@@ -61,7 +60,7 @@ Následující příklad ukazuje definici objektu stavu zařízení pro simulova
 }
 ```
 
-Stav simulovaného zařízení, jak je definováno v `InitialState` oddílu, je uchováván v paměti službou simulace. Informace o stavu jsou předány jako vstup do `main` funkce definované v **Chiller-01-State. js**. V tomto příkladu služba simulace spouští soubor **Chiller-01-State. js** každých pět sekund. Skript může změnit stav simulovaného zařízení.
+Stav simulovaného zařízení, jak je definováno v `InitialState` oddílu, je uchováván v paměti službou simulace. Informace o stavu jsou předány jako vstup do `main` funkce definované v **chiller-01-state.js**. V tomto příkladu služba simulace spouští soubor **chiller-01-state.js** každých pět sekund. Skript může změnit stav simulovaného zařízení.
 
 Následující příklad ukazuje osnovu typické `main` funkce:
 
@@ -76,13 +75,13 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametr má následující vlastnosti:
+`context`Parametr má následující vlastnosti:
 
 - `currentTime`jako řetězec ve formátu`yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`například`Simulated.Chiller.123`
 - `deviceModel`například`Chiller`
 
-`state` Parametr obsahuje stav zařízení, které udržuje služba pro simulaci zařízení. Tato hodnota je `state` objekt vrácený předchozím voláním metody `main`.
+`state`Parametr obsahuje stav zařízení, které udržuje služba pro simulaci zařízení. Tato hodnota je `state` objekt vrácený předchozím voláním metody `main` .
 
 Následující příklad ukazuje typickou implementaci `main` metody pro zpracování stavu zařízení spravovaného službou simulace:
 
@@ -156,7 +155,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-Kompletní [Chiller-01-State. js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) si můžete prohlédnout na GitHubu.
+Kompletní [chiller-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) můžete zobrazit na GitHubu.
 
 ## <a name="method-behavior"></a>Chování metody
 
@@ -197,15 +196,15 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametr má následující vlastnosti:
+`context`Parametr má následující vlastnosti:
 
 - `currentTime`jako řetězec ve formátu`yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`například`Simulated.Chiller.123`
 - `deviceModel`například`Chiller`
 
-`state` Parametr obsahuje stav zařízení, které udržuje služba pro simulaci zařízení.
+`state`Parametr obsahuje stav zařízení, které udržuje služba pro simulaci zařízení.
 
-`properties` Parametr obsahuje vlastnosti zařízení, které jsou zapsány jako hlášené vlastnosti, do vlákna IoT Hub zařízení.
+`properties`Parametr obsahuje vlastnosti zařízení, které jsou zapsány jako hlášené vlastnosti, do vlákna IoT Hub zařízení.
 
 Existují tři globální funkce, které lze použít pro usnadnění implementace chování metody:
 
@@ -213,7 +212,7 @@ Existují tři globální funkce, které lze použít pro usnadnění implementa
 - `updateProperty`Chcete-li aktualizovat jednu vlastnost zařízení.
 - `sleep`pozastavení provádění za účelem simulace dlouhotrvající úlohy.
 
-Následující příklad ukazuje zkrácenou verzi skriptu **IncreasePressure-Method. js** používané simulovanými zařízeními chladicího zařízení:
+Následující příklad ukazuje zkrácenou verzi **IncreasePressure-method.js** skriptu používaném simulovanými chladicími zařízeními:
 
 ```javascript
 function main(context, previousState, previousProperties) {

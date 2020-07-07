@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74196369"
 ---
 # <a name="scale-migration-of-vms"></a>Škálování migrace virtuálních počítačů 
@@ -54,15 +53,15 @@ Jakmile je sdílený svazek clusteru připravený, můžete provést následují
 
 **Krok #** | **Název skriptu** | **Popis**
 --- | --- | ---
-1 | asr_startmigration. ps1 | Povolí replikaci pro všechny virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač.
-2 | asr_replicationstatus. ps1 | Zkontroluje stav replikace. skript vytvoří sdílený svazek clusteru se stavem pro každý virtuální počítač.
-3 | asr_updateproperties. ps1 | Po replikaci nebo ochraně virtuálních počítačů můžete pomocí tohoto skriptu aktualizovat cílové vlastnosti virtuálního počítače (vlastnosti výpočtů a sítě).
-4 | asr_propertiescheck. ps1 | Ověřte, jestli jsou vlastnosti vhodně aktualizované.
-5 | asr_testmigration. ps1 |  Spusťte testovací převzetí služeb při selhání virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač.
-6 | asr_cleanuptestmigration. ps1 | Po manuálním ověření virtuálních počítačů, u kterých došlo k převzetí služeb při selhání, můžete pomocí tohoto skriptu vyčistit virtuální počítače testovacího převzetí služeb při selhání.
-7 | asr_migration. ps1 | Proveďte neplánované převzetí služeb při selhání u virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač. Skript před aktivací převzetí služeb při selhání neukončí místní virtuální počítače. kvůli konzistenci aplikací doporučujeme, abyste virtuální počítače před spuštěním skriptu ručně vypnuli.
-8 | asr_completemigration. ps1 | Proveďte operaci potvrzení u virtuálních počítačů a odstraňte entity Azure Site Recovery.
-9 | asr_postmigration. ps1 | Pokud plánujete přiřadit skupiny zabezpečení sítě k síťovým kartám po převzetí služeb při selhání, můžete k tomu použít tento skript. Přiřadí NSG k libovolnému síťovému rozhraní v cílovém virtuálním počítači.
+1 | asr_startmigration.ps1 | Povolí replikaci pro všechny virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač.
+2 | asr_replicationstatus.ps1 | Zkontroluje stav replikace. skript vytvoří sdílený svazek clusteru se stavem pro každý virtuální počítač.
+3 | asr_updateproperties.ps1 | Po replikaci nebo ochraně virtuálních počítačů můžete pomocí tohoto skriptu aktualizovat cílové vlastnosti virtuálního počítače (vlastnosti výpočtů a sítě).
+4 | asr_propertiescheck.ps1 | Ověřte, jestli jsou vlastnosti vhodně aktualizované.
+5 | asr_testmigration.ps1 |  Spusťte testovací převzetí služeb při selhání virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač.
+6 | asr_cleanuptestmigration.ps1 | Po manuálním ověření virtuálních počítačů, u kterých došlo k převzetí služeb při selhání, můžete pomocí tohoto skriptu vyčistit virtuální počítače testovacího převzetí služeb při selhání.
+7 | asr_migration.ps1 | Proveďte neplánované převzetí služeb při selhání u virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstup sdíleného svazku clusteru s podrobnostmi o úloze pro každý virtuální počítač. Skript před aktivací převzetí služeb při selhání neukončí místní virtuální počítače. kvůli konzistenci aplikací doporučujeme, abyste virtuální počítače před spuštěním skriptu ručně vypnuli.
+8 | asr_completemigration.ps1 | Proveďte operaci potvrzení u virtuálních počítačů a odstraňte entity Azure Site Recovery.
+9 | asr_postmigration.ps1 | Pokud plánujete přiřadit skupiny zabezpečení sítě k síťovým kartám po převzetí služeb při selhání, můžete k tomu použít tento skript. Přiřadí NSG k libovolnému síťovému rozhraní v cílovém virtuálním počítači.
 
 ## <a name="how-to-migrate-to-managed-disks"></a>Jak migrovat na Managed disks?
 Ve výchozím nastavení skript migruje virtuální počítače na spravované disky v Azure. Pokud je zadaný cílový účet úložiště účet Premium Storage, Služba Managed disks úrovně Premium se vytvoří po migraci. Účet úložiště mezipaměti může být stále standardní účet. Pokud je cílový účet úložiště standardní účet úložiště, vytvoří se na standardní disky migrace po migraci. 

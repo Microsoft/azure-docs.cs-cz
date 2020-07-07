@@ -15,15 +15,14 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74033960"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Povolení transparentní šifrování dat (TDE) pro Stretch Database v Azure (Transact-SQL)
 > [!div class="op_single_selector"]
-> * [portál Azure](sql-server-stretch-database-encryption-tde.md)
+> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
@@ -66,10 +65,10 @@ FROM
     sys.databases;
 ```
 
-Výsledek ```1``` označuje šifrovanou databázi, ```0``` která označuje nešifrovanou databázi.
+Výsledek ```1``` označuje šifrovanou databázi, která ```0``` označuje nešifrovanou databázi.
 
 <!--Anchors-->
-[Transparentní šifrování dat (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparentní šifrování dat]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73820116"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení propojené továrny
@@ -29,7 +28,7 @@ Každý továrna Contoso má výrobní linky, které se skládají ze tří stan
 * Testovací stanice
 * Balírna
 
-Tyto servery OPC UA mají uzly OPC UA a [Vydavatel OPC](overview-opc-publisher.md) odesílá hodnoty těchto uzlů do propojené továrny. To zahrnuje:
+Tyto servery OPC UA mají uzly OPC UA a [Vydavatel OPC](overview-opc-publisher.md) odesílá hodnoty těchto uzlů do propojené továrny. Sem patří:
 
 * Aktuální provozní stav, jako je aktuální spotřeba energie.
 * Produkční informace, jako je počet vyrobených produktů.
@@ -61,7 +60,7 @@ Každý uzel v topologii má společnou sadu vlastností, které definují:
 
 ## <a name="topology-configuration-file"></a>Konfigurační soubor topologie
 
-K nakonfigurování vlastností uvedených v předchozí části používá řešení připojené továrny konfigurační soubor s názvem [ContosoTopologyDescription. JSON](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+K nakonfigurování vlastností uvedených v předchozí části používá řešení připojené továrny konfigurační soubor s názvem [ContosoTopologyDescription.js](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
 Tento soubor najdete ve zdrojovém kódu řešení ve `WebApp/Contoso/Topology` složce.
 
@@ -85,7 +84,7 @@ Následující fragment kódu ukazuje osnovu `ContosoTopologyDescription.json` k
 }
 ```
 
-Společné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`a `<station_configuration>` jsou:
+Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` jsou:
 
 * **Název** (typ řetězce)
 
@@ -99,11 +98,11 @@ Společné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<pr
 
   Cesta k obrázku v řešení WebApp, která se zobrazí, když se na řídicím panelu zobrazí informace o uzlu topologie.
 
-* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (typ `<performance_definition>`)
+* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (typ `<performance_definition>` )
 
   Tyto vlastnosti definují minimální, cílové a maximální hodnoty provozního obrázku používaného ke generování výstrah. Tyto vlastnosti také definují akce, které se mají provést, pokud je zjištěna výstraha.
 
-Položky `<factory_configuration>` a `<production_line_configuration>` mají vlastnost:
+`<factory_configuration>`Položky a `<production_line_configuration>` mají vlastnost:
 
 * **GUID** (typ řetězce)
 
@@ -111,7 +110,7 @@ Položky `<factory_configuration>` a `<production_line_configuration>` mají vla
 
 `<factory_configuration>`má vlastnost:
 
-* **Umístění** (typ `<location_definition>`)
+* **Umístění** (typ `<location_definition>` )
 
   Určuje, kde se nachází objekt pro vytváření.
 
@@ -122,7 +121,7 @@ Položky `<factory_configuration>` a `<production_line_configuration>` mají vla
   Tato vlastnost musí být nastavená na identifikátor URI aplikace OPC UA serveru OPC UA.
   Vzhledem k tomu, že musí být globálně jedinečný pomocí specifikace OPC UA, tato vlastnost slouží k identifikaci uzlu topologie stanice.
 
-* **OpcNodes**, což jsou pole uzlů OPC UA (typ `<opc_node_description>`)
+* **OpcNodes**, což jsou pole uzlů OPC UA (typ `<opc_node_description>` )
 
 `<location_definition>`má vlastnosti:
 
@@ -156,11 +155,11 @@ Položky `<factory_configuration>` a `<production_line_configuration>` mají vla
 
   Horní prahová hodnota, kterou může tato hodnota dosáhnout. Pokud je aktuální hodnota nad rámec této prahové hodnoty, vygeneruje se výstraha.
 
-* **MinimumAlertActions** (typ `<alert_action>`)
+* **MinimumAlertActions** (typ `<alert_action>` )
 
   Definuje sadu akcí, které lze provést jako odpověď na minimální výstrahu.
 
-* **MaximumAlertActions** (typ `<alert_action>`)
+* **MaximumAlertActions** (typ `<alert_action>` )
 
   Definuje sadu akcí, které lze provést jako reakci na maximální výstrahu.
 
@@ -246,11 +245,11 @@ Položky `<factory_configuration>` a `<production_line_configuration>` mají vla
 
   Pokud aktuální hodnota vyvolá tuto hodnotu, bude vygenerována maximální výstraha.
 
-* **MinimumAlertActions** (typ `<alert_action>`)
+* **MinimumAlertActions** (typ `<alert_action>` )
 
   Definuje sadu akcí, které lze provést jako odpověď na minimální výstrahu.
 
-* **MaximumAlertActions** (typ `<alert_action>`)
+* **MaximumAlertActions** (typ `<alert_action>` )
 
   Definuje sadu akcí, které lze provést jako reakci na maximální výstrahu.
 
@@ -262,10 +261,10 @@ Všechny vlastnosti použité v konfiguračním souboru lze seskupit do různýc
 
 ### <a name="visual-appearance"></a>Vzhled vizuálu
 
-Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Příklady obsahují:
+Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Mezi příklady patří:
 
-* Název
-* Popis
+* Name
+* Description
 * Image
 * Umístění
 * Jednotky
@@ -282,7 +281,7 @@ Hodnoty celkové efektivity zařízení/KPI pro simulaci propojené továrny jso
 * Hodnoty uzlu OPC UA, které mají být zahrnuty do výpočtu.
 * Jak je vypočítána hodnota z hodnot telemetrie.
 
-Propojená továrna používá vzorce celkové efektivity zařízení jako publikované [http://www.oeefoundation.org](http://www.oeefoundation.org).
+Propojená továrna používá vzorce celkové efektivity zařízení jako publikované [http://www.oeefoundation.org](http://www.oeefoundation.org) .
 
 Objekty uzlu UA OPC ve stanicích umožňují tagování pro použití při výpočtu celkové efektivity zařízení/KPI. Vlastnost **relevance** určuje, pro který celkové efektivity zařízení/klíčový ukazatel výkonu má být použita hodnota uzlu OPC UA. Vlastnost **opcode** definuje, jak je hodnota obsažena v výpočtu.
 
@@ -313,7 +312,7 @@ Další informace o tom, jak se data telemetrie ingestují do propojené továrn
 
 Konfigurace v `ContosoTopologyDescription.json` souboru řídí, jak se počítají hodnoty celkové efektivity zařízení/KPI. Následující příklad ukazuje, jak vlastnosti v tomto souboru řídí výpočet KPI1.
 
-V části propojená továrna KPI1 se používá k měření počtu úspěšně vyráběných produktů za poslední hodinu. Každá stanice (Server OPC UA) v simulaci propojené továrny poskytuje uzel OPC UA (`NodeId: "ns=2;i=385"`), který poskytuje telemetrii k výpočtu tohoto klíčového ukazatele výkonu.
+V části propojená továrna KPI1 se používá k měření počtu úspěšně vyráběných produktů za poslední hodinu. Každá stanice (Server OPC UA) v simulaci propojené továrny poskytuje uzel OPC UA ( `NodeId: "ns=2;i=385"` ), který poskytuje telemetrii k výpočtu tohoto klíčového ukazatele výkonu.
 
 Konfigurace pro tento uzel OPC UA vypadá jako následující fragment kódu:
 

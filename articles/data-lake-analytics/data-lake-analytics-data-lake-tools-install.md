@@ -10,10 +10,9 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70914096"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Data Lake Tools pro Visual Studio
@@ -48,7 +47,7 @@ Povolte úlohu **vývoj pro Azure** , jak je znázorněno na následujícím obr
 
 Stáhněte a nainstalujte [Microsoft Azure Data Lake a Stream Analytics nástrojů pro Visual Studio ](https://aka.ms/adltoolsvs). Po instalaci aplikace Visual Studio obsahuje následující změny:
 
-* **Průzkumník serveru** > uzel**Azure** obsahuje uzel **Data Lake Analytics** .
+* **Průzkumník serveru**  >  uzel**Azure** obsahuje uzel **Data Lake Analytics** .
 * Nabídka **Nástroje** obsahuje položku **Data Lake**.
 
 ## <a name="next-steps"></a>Další kroky

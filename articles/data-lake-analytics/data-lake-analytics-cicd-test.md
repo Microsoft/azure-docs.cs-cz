@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70913962"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testování kódu Azure Data Lake Analytics
@@ -45,17 +44,17 @@ Při volání `Initialize()` rozhraní v sadě SDK testu U-SQL se vytvoří doč
 
 ### <a name="manage-the-database-environment-for-testing"></a>Správa databázového prostředí pro testování
 
-Pokud vaše skripty U-SQL používají nebo se dotazují s objekty databáze U-SQL, je nutné před spuštěním testovacích případů U-SQL inicializovat prostředí databáze. Tento přístup může být nutný při volání uložených procedur. `Initialize()` Rozhraní v sadě SDK testu u-SQL vám pomůže nasadit všechny databáze, na které se odkazuje v projektu u-SQL, do dočasné místní složky místních dat v pracovním adresáři testovacího projektu.
+Pokud vaše skripty U-SQL používají nebo se dotazují s objekty databáze U-SQL, je nutné před spuštěním testovacích případů U-SQL inicializovat prostředí databáze. Tento přístup může být nutný při volání uložených procedur. `Initialize()`Rozhraní v sadě SDK testu u-SQL vám pomůže nasadit všechny databáze, na které se odkazuje v projektu u-SQL, do dočasné místní složky místních dat v pracovním adresáři testovacího projektu.
 
 Další informace o tom, jak spravovat odkazy na projekt U-SQL Database pro projekt U-SQL, najdete v tématu [Referenční dokumentace k databázovému projektu u](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)-SQL.
 
 ### <a name="verify-test-results"></a>Ověřit výsledky testu
 
-`Run()` Rozhraní vrátí výsledek provedení úlohy. *0* znamená úspěch a *1* znamená selhání. K ověření výstupů můžete použít také funkce kontrolního výrazu jazyka C#.
+`Run()`Rozhraní vrátí výsledek provedení úlohy. *0* znamená úspěch a *1* znamená selhání. K ověření výstupů můžete použít také funkce kontrolního výrazu jazyka C#.
 
 ### <a name="run-test-cases-in-visual-studio"></a>Spuštění testovacích případů v aplikaci Visual Studio
 
-Projekt testů skriptu U-SQL je postaven nad rámec testovacího rozhraní jednotek jazyka C#. Po sestavení projektu vyberte **test** > **Windows** > **Test Explorer**. Testovací případy lze spustit z **Průzkumníka testů**. Případně klikněte pravým tlačítkem myši na soubor. cs v testu jednotek a vyberte **Spustit testy**.
+Projekt testů skriptu U-SQL je postaven nad rámec testovacího rozhraní jednotek jazyka C#. Po sestavení projektu vyberte **test**  >  **Windows**  >  **Test Explorer**. Testovací případy lze spustit z **Průzkumníka testů**. Případně klikněte pravým tlačítkem myši na soubor. cs v testu jednotek a vyberte **Spustit testy**.
 
 ## <a name="test-c-udos"></a>Test C# Udo
 
@@ -108,7 +107,7 @@ Po volání funkcí UDO můžete ověřit výsledky prostřednictvím schématu 
 
 ### <a name="run-test-cases-in-visual-studio"></a>Spuštění testovacích případů v aplikaci Visual Studio
 
-Po sestavení projektu vyberte **test** > **Windows** > **Test Explorer**. Testovací případy lze spustit z **Průzkumníka testů**. Případně klikněte pravým tlačítkem myši na soubor. cs v testu jednotek a vyberte **Spustit testy**.
+Po sestavení projektu vyberte **test**  >  **Windows**  >  **Test Explorer**. Testovací případy lze spustit z **Průzkumníka testů**. Případně klikněte pravým tlačítkem myši na soubor. cs v testu jednotek a vyberte **Spustit testy**.
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Spuštění testovacích případů v Azure Pipelines<a name="run-test-cases-in-azure-devops"></a>
 
@@ -116,7 +115,7 @@ Projekty testů **skriptu U-SQL** a **projekty Udo v jazyce c#** dědí projekty
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Spuštění testovacích případů U-SQL v Azure Pipelines
 
-U testu U-SQL Zajistěte, aby se `CPPSDK` načetly do počítače sestavení, a pak `CPPSDK` předejte `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`cestu k.
+U testu U-SQL Zajistěte, aby se načetly do `CPPSDK` počítače sestavení, a pak předejte `CPPSDK` cestu k `USqlScriptTestRunner(cppSdkFolderFullPath: @"")` .
 
 #### <a name="what-is-cppsdk"></a>Co je CPPSDK?
 

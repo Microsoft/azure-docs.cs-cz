@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73936045"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálního počítače Hyper-V 
@@ -101,7 +100,7 @@ Nástroj můžete spustit ve dvou režimech:
 
    f. V části **využití kapacity disku (%)** zadejte průměrné využití.
 
-   g. V části **denní četnost změn dat (%)** zadejte denní četnost změn dat na zdrojovém serveru.
+   například V části **denní četnost změn dat (%)** zadejte denní četnost změn dat na zdrojovém serveru.
 
    h. V části **mapování velikosti virtuálního počítače Azure**zadejte velikost virtuálního počítače Azure, kterou chcete namapovat. Pokud to nechcete provést ručně, vyberte **COMPUTE IaaS virtuální počítače**. Pokud zadáte ruční nastavení a pak vyberete **výpočetní virtuální počítače IaaS**, může být ruční nastavení přepsáno. Výpočetní proces automaticky identifikuje nejlepší shodu velikosti virtuálního počítače Azure.
 
