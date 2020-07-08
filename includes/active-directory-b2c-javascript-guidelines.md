@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: mimart
 ms.openlocfilehash: ef08f1adc15475cd5dd38548ed39dc57532c0ef5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78185827"
 ---
 ## <a name="guidelines-for-using-javascript"></a>Pokyny pro používání JavaScriptu
@@ -28,6 +28,6 @@ Pokud přizpůsobíte rozhraní aplikace pomocí JavaScriptu, postupujte podle t
     - Azure AD B2C používá specifickou verzi jQuery. Nezahrnujte jinou verzi jQuery. Používání více než jedné verze na stejné stránce způsobuje problémy.
     - Použití RequireJS se nepodporuje.
     - Azure AD B2C nepodporuje většinu platforem JavaScript.
-- Nastavení Azure AD B2C lze číst voláním `window.SETTINGS`, `window.CONTENT` objektů, jako je aktuální jazyk uživatelského rozhraní. Neměňte hodnotu těchto objektů.
+- Nastavení Azure AD B2C lze číst voláním `window.SETTINGS` , `window.CONTENT` objektů, jako je aktuální jazyk uživatelského rozhraní. Neměňte hodnotu těchto objektů.
 - Pokud chcete přizpůsobit chybovou zprávu Azure AD B2C, použijte lokalizaci v zásadě.
 - Pokud se dá cokoli dosáhnout pomocí zásad, obvykle se jedná o doporučený způsob.

@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83343316"
 ---
 Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysokou úroveň izolace od jiných zákazníků pro úlohy zahrnující prvky, jako jsou dodržování předpisů a zákonné požadavky.  Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
@@ -86,9 +86,9 @@ Odpověď **: služba se**zakoupila do 18. listopadu 2019 automaticky rozšíř�
 
 | RI |  Flexibilita velikosti instance | Nárok na zvýhodnění |   
 | --- | --- | --- |
-|   D15_v2  |   Vypnuto     |   D15_v2 a D15i_v2 |    
-|   D15_v2  |   Zapnuto  |   Výhody D15_v2 řady a D15i_v2 získají výhodu rezervované instance. |    
-|   D14_v2  |   Zapnuto  |   Výhody D15_v2 řady a D15i_v2 získají výhodu rezervované instance. |    
+|   D15_v2  |   Vypnout     |   D15_v2 a D15i_v2 |    
+|   D15_v2  |   Zapnout  |   Výhody D15_v2 řady a D15i_v2 získají výhodu rezervované instance. |    
+|   D14_v2  |   Zapnout  |   Výhody D15_v2 řady a D15i_v2 získají výhodu rezervované instance. |    
  
 Podobně jako u řady Dsv2.
  
@@ -97,10 +97,10 @@ Odpověď **: všechny**rezervované instance zakoupené po 18. listopadu 2019 m
 
 | RI |  Flexibilita velikosti instance | Nárok na zvýhodnění |   
 | --- | --- | --- |
-| D15_v2 |  Vypnuto |   Pouze D15_v2  
-| D15_v2 |  Zapnuto |    Řada D15_v2 obdrží výhodu rezervované instance. Nový D15i_v2 nebude mít nárok na zvýhodnění rezervované instance z tohoto typu. | 
-| D15i_v2 |     Vypnuto | Pouze D15i_v2 |  
-| D15i_v2 |     Zapnuto  | Pouze D15i_v2 | 
+| D15_v2 |  Vypnout |   Pouze D15_v2  
+| D15_v2 |  Zapnout |    Řada D15_v2 obdrží výhodu rezervované instance. Nový D15i_v2 nebude mít nárok na zvýhodnění rezervované instance z tohoto typu. | 
+| D15i_v2 |     Vypnout | Pouze D15i_v2 |  
+| D15i_v2 |     Zapnout  | Pouze D15i_v2 | 
  
 Flexibilita velikosti instance se nedá použít pro použití na jiné velikosti, jako je D2_v2, D4_v2 nebo D15_v2. Podobně pro Dsv2 Series.  
  

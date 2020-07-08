@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 2604a1608f21d7239db755027e15b8198fb3f9f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81791627"
 ---
-### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
+### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
 
 ```json
 {
@@ -28,14 +28,14 @@ ms.locfileid: "81791627"
 }  
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |maxBatchSize|10|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
-|prefetchCount|300|Výchozí počet předběžného načtení, který používá základní `EventProcessorHost`.|
+|prefetchCount|300|Výchozí počet předběžného načtení, který používá základní `EventProcessorHost` .|
 |batchCheckpointFrequency|1|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|
 
 > [!NOTE]
-> Odkaz na Host. JSON ve Azure Functions 2. x a novějších verzích najdete v tématu [reference Host. JSON pro Azure Functions](../articles/azure-functions/functions-host-json.md).
+> Odkaz na host.jsv v Azure Functions 2. x a novějších verzích najdete v části [host.jsna referenčních údajích pro Azure Functions](../articles/azure-functions/functions-host-json.md).
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -49,12 +49,12 @@ ms.locfileid: "81791627"
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |maxBatchSize|64|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
-|prefetchCount|neuvedeno|Výchozí předběžné načtení, které bude používat základní `EventProcessorHost`.| 
+|prefetchCount|Není k dispozici|Výchozí předběžné načtení, které bude používat základní `EventProcessorHost` .| 
 |batchCheckpointFrequency|1|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.| 
 
 > [!NOTE]
-> Odkaz na Host. JSON v Azure Functions 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](../articles/azure-functions/functions-host-json-v1.md).
+> Odkaz na host.jsv v Azure Functions 1. x najdete v části [host.jsna odkaz pro Azure Functions 1. x](../articles/azure-functions/functions-host-json-v1.md).
 

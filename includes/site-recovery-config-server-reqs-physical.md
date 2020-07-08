@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175233"
 ---
 **Požadavky na konfigurační server a procesový Server pro replikaci fyzických serverů**
@@ -36,15 +36,15 @@ IIS | -Žádný stávající výchozí web <br> -Žádný existující web nebo 
 Typ IP adresy | Static 
 | 
 **NASTAVENÍ PŘÍSTUPU** | 
-MYSQL | MySQL by měl být nainstalovaný na konfiguračním serveru. Instalaci můžete provést ručně, nebo ji Site Recovery můžete nainstalovat během nasazování. Pokud chcete Site Recovery nainstalovat, ověřte, že počítač má přístup http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi.
-Adresy URL | Konfigurační server potřebuje přístup k těmto adresám URL (přímo nebo prostřednictvím proxy serveru):<br/><br/> Azure AD: `login.microsoftonline.com`; `login.microsoftonline.us`;`*.accesscontrol.windows.net`<br/><br/> Přenos replikačních dat `*.backup.windowsazure.com`:;`*.backup.windowsazure.us`<br/><br/> Správa replikace: `*.hypervrecoverymanager.windowsazure.com`; `*.hypervrecoverymanager.windowsazure.us`; `https://management.azure.com`;`*.services.visualstudio.com`<br/><br/> Přístup k úložišti `*.blob.core.windows.net`:;`*.blob.core.usgovcloudapi.net`<br/><br/> Synchronizace času: `time.nist.gov`;`time.windows.com`<br/><br/> Telemetrie (volitelné):`dc.services.visualstudio.com`
+MYSQL | MySQL by měl být nainstalovaný na konfiguračním serveru. Instalaci můžete provést ručně, nebo ji Site Recovery můžete nainstalovat během nasazování. Pokud chcete Site Recovery nainstalovat, ověřte, že počítač má přístup http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi .
+Adresy URL | Konfigurační server potřebuje přístup k těmto adresám URL (přímo nebo prostřednictvím proxy serveru):<br/><br/> Azure AD: `login.microsoftonline.com` ; `login.microsoftonline.us` ;`*.accesscontrol.windows.net`<br/><br/> Přenos replikačních dat: `*.backup.windowsazure.com` ;`*.backup.windowsazure.us`<br/><br/> Správa replikace: `*.hypervrecoverymanager.windowsazure.com` ; `*.hypervrecoverymanager.windowsazure.us` ;; `https://management.azure.com``*.services.visualstudio.com`<br/><br/> Přístup k úložišti: `*.blob.core.windows.net` ;`*.blob.core.usgovcloudapi.net`<br/><br/> Synchronizace času: `time.nist.gov` ;`time.windows.com`<br/><br/> Telemetrie (volitelné):`dc.services.visualstudio.com`
 Brána firewall | Pravidla brány firewall založená na IP adrese by měla umožňovat komunikaci s adresami URL Azure. Pro zjednodušení a omezení rozsahu IP adres doporučujeme použít filtrování adres URL.<br/><br/>**Pro komerční IP adresy:**<br/><br/>– Povolte [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)a port HTTPS (443).<br/><br/> – Povoluje rozsahy IP adres pro Západní USA (používá se pro Access Control a správu identit).<br/><br/> – Povolte rozsahy IP adres pro oblast Azure svého předplatného, aby se podporovaly adresy URL, které jsou potřeba pro Azure Active Directory, zálohování, replikaci a úložiště.<br/><br/> **Pro státní IP adresy:**<br/><br/> – Povolí Azure Government rozsahy IP adres datového centra a port HTTPS (443).<br/><br/> – Povoluje rozsahy IP adres pro všechny oblasti US Gov () – Virginia, Texas, Arizona a Iowa), aby podporovaly adresy URL, které jsou potřeba pro Azure Active Directory, zálohování, replikaci a úložiště.
 Porty | Povolení 443 (orchestrace řídicích kanálů)<br/><br/> Povolení 9443 (přenos dat) 
 
 
 **Požadavky na velikost konfiguračního a procesového serveru**
 
-**VČETNĚ** | **Rezident** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
+**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 sokety × 4 jádra \@ 2,5 GHz | 16GB | 300 GB | 500 GB nebo méně | Počítače s < 100
 12 vCPU<br/><br/> 2 SOCKS * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů

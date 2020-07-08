@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175220"
 ---
 ## <a name="deleting-personal-information"></a>Odstraňují se osobní údaje.
@@ -23,7 +23,7 @@ Osobní údaje jsou relevantní pro službu import/export (prostřednictvím por
 
 - Jméno kontaktu
 - Telefonní číslo
-- E-mailu
+- E-mail
 - Ulice a číslo
 - Město
 - PSČ
@@ -40,8 +40,8 @@ Osobní kontaktní údaje mohou být odstraněny následujícími způsoby:
 - Data uložená pomocí úlohy se odstraní s úlohou. Uživatelé můžou úlohy odstraňovat ručně a dokončené úlohy se automaticky odstraní po 90 dnech. Úlohy můžete ručně odstranit pomocí REST API nebo Azure Portal. Pokud chcete úlohu odstranit v Azure Portal, přejděte do úlohy import/export a na panelu příkazů klikněte na *Odstranit* . Podrobnosti o tom, jak odstranit úlohu importu/exportu prostřednictvím REST API, najdete v tématu [odstranění úlohy importu/exportu](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md).
 
 - Kontaktní informace uložené v nastavení portálu je možné odebrat odstraněním nastavení portálu. Nastavení portálu můžete odstranit pomocí následujících kroků:
-  - Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-  - Klikněte na ![ikonu *Nastavení* ikona nastavení Azure.](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
+  - Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+  - Klikněte na ikonu *Nastavení* ![ ikona nastavení Azure.](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
   - Klikněte na *exportovat všechna nastavení* (a uložte aktuální nastavení do `.json` souboru).
   - Kliknutím na *Odstranit všechna nastavení a privátní řídicí panely* odstraňte všechna nastavení včetně uložených kontaktních údajů.
 

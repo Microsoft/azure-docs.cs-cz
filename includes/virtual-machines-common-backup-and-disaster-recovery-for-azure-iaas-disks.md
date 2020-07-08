@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84124300"
 ---
 Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii (DR) virtuálních počítačů s IaaS (VM) a disků v Azure. Tento dokument pokrývá spravované i nespravované disky.
@@ -233,7 +233,7 @@ U virtuálních počítačů s více disky je nutné zkopírovat všechny snímk
 
 SQL Server běžící na virtuálním počítači má své vlastní integrované funkce pro zálohování databáze SQL Server do úložiště objektů BLOB v Azure nebo do sdílené složky. Pokud je účet úložiště geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení, můžete k těmto zálohám přistupovat v sekundárním datovém centru účtu úložiště v případě havárie se stejnými omezeními, jak je popsáno výše. Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve virtuálních počítačích Azure](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). Kromě zálohování a obnovení můžou [SQL Server skupiny dostupnosti AlwaysOn](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) uchovávat sekundární repliky databází. Tato možnost značně zkracuje dobu zotavení po havárii.
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 
 Tento článek popisuje, jak zálohovat nebo pořizovat snímky virtuálních počítačů a jejich disků pro podporu zotavení po havárii a jak tyto zálohy nebo snímky použít k obnovení dat. S modelem Azure Resource Manager používá mnoho lidí šablony k vytváření virtuálních počítačů a dalších infrastruktur v Azure. Pomocí šablony můžete vytvořit virtuální počítač, který má stejnou konfiguraci pokaždé, když. Pokud používáte vlastní image pro vytváření virtuálních počítačů, musíte se také ujistit, že jsou vaše image chráněné pomocí účtu geograficky redundantního úložiště s přístupem pro čtení, aby je bylo možné ukládat.
 

@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371718"
 ---
 Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněny následující požadavky:
@@ -28,7 +28,7 @@ Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněn
 
 Po nakonfigurování brány virtuální sítě a instalaci klientského certifikátu v úložišti místního počítače na klientovi Windows 10 použijte následující příklady ke konfiguraci tunelu klientského zařízení:
 
-1. Zkopírujte následující text a uložte ho jako ***devicecert. ps1***.
+1. Zkopírujte následující text a uložte ho jako ***devicecert.ps1***.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Zkopírujte následující text a uložte ho jako ***VPNProfile. XML*** ve stejné složce jako **devicecert. ps1**. Upravte následující text tak, aby odpovídal vašemu prostředí.
+1. Zkopírujte následující text a uložte ho jako ***VPNProfile.xml*** do stejné složky jako **devicecert.ps1**. Upravte následující text tak, aby odpovídal vašemu prostředí.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -124,7 +124,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ```
 
    ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
-1. V PowerShellu přejděte do složky, kde se nachází **devicecert. ps1** a **VPNProfile. XML** , a spusťte následující příkaz:
+1. V PowerShellu přejděte do složky, kde jsou umístěné **devicecert.ps1** a **VPNProfile.xml** a spusťte následující příkaz:
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest

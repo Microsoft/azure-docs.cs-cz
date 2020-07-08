@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b4c3fcb86fb098263840accc561785a40b767952
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175195"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Instalace aktualizací prostřednictvím webu Azure Portal
@@ -33,7 +33,7 @@ ms.locfileid: "67175195"
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate6m.png)
 
-5. V okně **nové aktualizace** si přečtěte poznámky k verzi. Všimněte si také, že po stažení aktualizací je nutné potvrdit instalaci. Klikněte na tlačítko **OK**.
+5. V okně **nové aktualizace** si přečtěte poznámky k verzi. Všimněte si také, že po stažení aktualizací je nutné potvrdit instalaci. Klikněte na **OK**.
 
     ![aktualizace zařízení](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate7m.png)
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 35f506235f698fbcf42308e6f0b0f400e925df29
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68361541"
 ---
 ### <a name="bastion-tier"></a>Bastionu úroveň
@@ -23,4 +23,4 @@ Tady je příklad předávání agenta:
 ssh -A -t user@BASTION_SERVER_IP ssh -A root@TARGET_SERVER_IP`
 ```
 
-Tento příkaz se připojí k bastionu a okamžitě se spustí `ssh` , takže získáte terminál na cílové instanci. Pokud je váš cluster nakonfigurovaný odlišně, možná budete muset zadat jiného uživatele než root v cílové instanci. `-A` Argument přepošle připojení agenta, aby se váš privátní klíč na místním počítači automaticky použil. Všimněte si, že přesměrování agenta je řetěz, takže druhý `ssh` příkaz také obsahuje `-A` , aby všechny následné připojení SSH iniciované z cílové instance také používalo místní privátní klíč.
+Tento příkaz se připojí k bastionu a okamžitě se spustí `ssh` , takže získáte terminál na cílové instanci. Pokud je váš cluster nakonfigurovaný odlišně, možná budete muset zadat jiného uživatele než root v cílové instanci. `-A`Argument přepošle připojení agenta, aby se váš privátní klíč na místním počítači automaticky použil. Všimněte si, že přesměrování agenta je řetěz, takže druhý `ssh` příkaz také obsahuje, aby `-A` všechny následné připojení SSH iniciované z cílové instance také používalo místní privátní klíč.

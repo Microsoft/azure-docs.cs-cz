@@ -15,15 +15,15 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76308949"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>Vlastnosti AuthenticationResult v MSAL.NET
 
-Metody získání tokenů pro vrácení `AuthenticationResult`. Pro asynchronní metody `Task<AuthenticationResult>` vrátí.
+Metody získání tokenů pro vrácení `AuthenticationResult` . Pro asynchronní metody `Task<AuthenticationResult>` vrátí.
 
 V MSAL.NET `AuthenticationResult` zpřístupňuje:
 
@@ -32,7 +32,7 @@ V MSAL.NET `AuthenticationResult` zpřístupňuje:
 - `ExpiresOn`Určuje datum a čas, kdy vyprší platnost tokenu.
 - `TenantId`obsahuje tenanta, ve kterém se uživatel našel. Pro uživatele typu Host ve scénářích Azure Active Directory (Azure AD) B2B se ID tenanta hostuje jako tenant, nikoli jedinečný tenant.
 Když se token doručí uživateli, `AuthenticationResult` obsahuje taky informace o tomto uživateli. U důvěrných toků klienta, kde jsou požadovány tokeny bez uživatele pro aplikaci, jsou informace o uživateli null.
-- `Scopes` Pro který byl token vydán.
+- `Scopes`Pro který byl token vydán.
 - Jedinečné ID uživatele
 
 ### <a name="iaccount"></a>IAccount
@@ -42,7 +42,7 @@ Následující diagram znázorňuje strukturu `IAccount` rozhraní.
 
 ![Struktura rozhraní IAccount](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)
 
-`AccountId` Třída identifikuje účet v konkrétním tenantovi s vlastnostmi, které jsou uvedeny v následující tabulce.
+`AccountId`Třída identifikuje účet v konkrétním tenantovi s vlastnostmi, které jsou uvedeny v následující tabulce.
 
 | Vlastnost | Popis |
 |----------|-------------|
@@ -50,17 +50,17 @@ Následující diagram znázorňuje strukturu `IAccount` rozhraní.
 | `ObjectId` | Řetězcová reprezentace pro identifikátor GUID, což je ID uživatele, který je vlastníkem účtu v tenantovi. |
 | `Identifier` | Jedinečný identifikátor účtu `Identifier`je zřetězení `ObjectId` a `TenantId` oddělené čárkou. Nejsou zakódované v kódování Base 64. |
 
-`IAccount` Rozhraní představuje informace o jednom účtu. Stejný uživatel může být přítomen v různých klientech, což znamená, že uživatel může mít více účtů. Její členové jsou uvedeni v následující tabulce.
+`IAccount`Rozhraní představuje informace o jednom účtu. Stejný uživatel může být přítomen v různých klientech, což znamená, že uživatel může mít více účtů. Její členové jsou uvedeni v následující tabulce.
 
 | Vlastnost | Popis |
 |----------|-------------|
-| `Username` | Řetězec, který obsahuje zobrazitelnou hodnotu ve formátu UserPrincipalName (UPN), například john.doe@contoso.com. Tento řetězec může mít hodnotu null, na rozdíl od HomeAccountId a HomeAccountId. Identifier, což nebude mít hodnotu null. Tato vlastnost nahrazuje `DisplayableId` vlastnost `IUser` v předchozích verzích MSAL.NET. |
-| `Environment` | Řetězec, který obsahuje zprostředkovatele identity pro tento účet, například `login.microsoftonline.com`. Tato vlastnost nahrazuje `IdentityProvider` vlastnost třídy `IUser`, kromě toho, `IdentityProvider` že kromě cloudového prostředí obsahovala také informace o tenantovi. Zde je hodnota pouze hostitel. |
+| `Username` | Řetězec, který obsahuje zobrazitelnou hodnotu ve formátu UserPrincipalName (UPN), například john.doe@contoso.com . Tento řetězec může mít hodnotu null, na rozdíl od HomeAccountId a HomeAccountId. Identifier, což nebude mít hodnotu null. Tato vlastnost nahrazuje `DisplayableId` vlastnost `IUser` v předchozích verzích MSAL.NET. |
+| `Environment` | Řetězec, který obsahuje zprostředkovatele identity pro tento účet, například `login.microsoftonline.com` . Tato vlastnost nahrazuje `IdentityProvider` vlastnost třídy `IUser` , kromě toho, že `IdentityProvider` kromě cloudového prostředí obsahovala také informace o tenantovi. Zde je hodnota pouze hostitel. |
 | `HomeAccountId` | ID účtu domovského účtu uživatele Tato vlastnost jednoznačně identifikuje uživatele napříč klienty Azure AD. |
 
 ### <a name="use-the-token-to-call-a-protected-api"></a>Použití tokenu k volání chráněného rozhraní API
 
-Poté `AuthenticationResult` , co se vrátí pomocí `result`MSAL v, přidejte ho do hlavičky Authorization protokolu HTTP a potom zajistěte, aby bylo volání přístupu k CHRÁNĚNÉMU webovému rozhraní API.
+Poté `AuthenticationResult` , co se vrátí pomocí MSAL v `result` , přidejte ho do hlavičky Authorization protokolu HTTP a potom zajistěte, aby bylo volání přístupu k chráněnému webovému rozhraní API.
 
 ```csharp
 httpClient = new HttpClient();

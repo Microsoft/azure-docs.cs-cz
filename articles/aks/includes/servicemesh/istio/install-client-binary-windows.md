@@ -4,10 +4,10 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: e26a2c214a03243d6507296c1e981706be8c56db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81736806"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Stažení a instalace binárního souboru klienta Istio istioctl
@@ -24,7 +24,7 @@ $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
 
-Binární `istioctl` soubor klienta běží na klientském počítači a umožňuje interakci s sítí služby Istio. Pomocí následujících příkazů nainstalujte binární soubor klienta Istio `istioctl` do prostředí založeného na prostředí PowerShell ve Windows. Tyto příkazy kopírují `istioctl` binární soubor klienta do složky Istio a pak ho hned hned (v aktuálním prostředí) a trvale (v rámci restartování prostředí) `PATH`. Ke spuštění těchto příkazů nepotřebujete oprávnění vyšší úrovně (správce) a nemusíte restartovat prostředí.
+`istioctl`Binární soubor klienta běží na klientském počítači a umožňuje interakci s sítí služby Istio. Pomocí následujících příkazů nainstalujte `istioctl` binární soubor klienta Istio do prostředí založeného na prostředí PowerShell ve Windows. Tyto příkazy kopírují `istioctl` binární soubor klienta do složky Istio a pak ho hned hned (v aktuálním prostředí) a trvale (v rámci restartování prostředí) `PATH` . Ke spuštění těchto příkazů nepotřebujete oprávnění vyšší úrovně (správce) a nemusíte restartovat prostředí.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio

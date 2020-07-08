@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 007c19a10db5e000770c8c80189453d4a80edec2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204441"
 ---
 V následující tabulce jsou uvedené limity spojené s různými úrovněmi služeb S1, S2, S3 a F1. Informace o nákladech na každou *jednotku* v každé úrovni najdete v tématu [ceny za Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
