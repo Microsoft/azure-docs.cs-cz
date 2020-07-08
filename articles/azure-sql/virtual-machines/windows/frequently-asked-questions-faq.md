@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c0302c8bac483979211b2ec7cb91c8a70b69cb9b
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669015"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955671"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy týkající se SQL Serveru na virtuálních počítačích s Windows v Azure
+# <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Nejčastější dotazy k SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](frequently-asked-questions-faq.md)
 > * [Linux](../linux/frequently-asked-questions-faq.md)
 
-Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se spuštění [SQL Server na Windows Virtual Machines (virtuálních počítačích) v Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/).
+Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se spuštění [SQL Server na Windows Azure Virtual Machines (VM)](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -85,7 +85,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
    Nejdřív vytvořte virtuální počítač Azure s instancí SQL Server. Pak migrujte své místní databáze do této instance. Informace o strategiích migrace dat najdete v tématu [migrace databáze SQL Server pro SQL Server na virtuálním počítači Azure](migrate-to-vm-from-sql-server.md).
 
-## <a name="licensing"></a>Licensing
+## <a name="licensing"></a>Licencování
 
 1. **Jak můžu na virtuální počítač Azure nainstalovat licencovanou kopii SQL Serveru?**
 
@@ -225,7 +225,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    
     Ano. Místní služba DTC je podporovaná pro SQL Server 2016 SP2 a vyšší. Avšak aplikace musí být testovány při použití skupin dostupnosti Always On, protože transakce probíhající během převzetí služeb při selhání se nezdaří a musí se opakovat. Služba DTC (CLUSTERED DTC) je dostupná od Windows serveru 2019. 
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 **Virtuální počítače s Windows**:
 

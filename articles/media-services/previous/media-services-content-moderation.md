@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914309"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954700"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Použití Azure Media Content Moderator k detekci možného obsahu pro dospělé a pikantní 
 
@@ -47,9 +47,9 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="root-json-elements"></a>Kořenové elementy JSON
 
-| Prvek | Popis |
+| Prvek | Description |
 | --- | --- |
-| version |Verze Content Moderator. |
+| verze |Verze Content Moderator. |
 | měřítk |"Takty" za sekundu videa. |
 | posun |Posun času pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. Tato hodnota se může v budoucnu změnit. |
 | snímků |Počet snímků ve videu za sekundu. |
@@ -60,7 +60,7 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="fragments-json-elements"></a>Fragmenty – elementy JSON
 
-|Prvek|Popis|
+|Prvek|Description|
 |---|---|
 | start |Čas zahájení první události v "taktech". |
 | doba trvání |Délka fragmentu v "taktech". |
@@ -69,9 +69,9 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="events-json-elements"></a>Události – elementy JSON
 
-|Prvek|Popis|
+|Prvek|Description|
 |---|---|
-| reviewRecommended | `true`nebo `false` v závislosti na tom, zda **adultScore** nebo **racyScore** překročí vnitřní prahové hodnoty. |
+| reviewRecommended | `true`nebo `false` v závislosti na tom, zda **AdultScore** nebo **racyScore** překročí vnitřní prahové hodnoty. |
 | adultScore | Hodnocení spolehlivosti pro možný obsah pro dospělé, na škále 0,00 až 0,99. |
 | racyScore | Hodnocení spolehlivosti možného obsahu pikantní na škále 0,00 až 0,99. |
 | index | index rámce na stupnici od prvního indexu snímku až po poslední index snímku. |
@@ -84,9 +84,11 @@ Výstupní JSON obsahuje následující prvky:
 ### <a name="task-configuration-preset"></a>Konfigurace úlohy (předvolba)
 Při vytváření úlohy pomocí **Azure Media Content moderator**musíte zadat předvolby konfigurace. Následující předvolba konfigurace je jenom pro moderování obsahu.
 
-    {
-      "version":"2.0"
-    }
+```json
+{
+    "version":"2.0"
+}
+```
 
 ### <a name="net-code-sample"></a>Ukázka kódu .NET
 
@@ -95,81 +97,83 @@ Následující ukázka kódu .NET používá sadu Media Services .NET SDK ke spu
 
 
 ```csharp
-    /// <summary>
-    /// Run the Content Moderator job on the designated Asset from local file or blob storage
-    /// </summary>
-    /// <param name="asset"></param>
-    static void RunContentModeratorJob(IAsset asset)
+/// <summary>
+/// Run the Content Moderator job on the designated Asset from local file or blob storage
+/// </summary>
+/// <param name="asset"></param>
+static void RunContentModeratorJob(IAsset asset)
+{
+    // Grab the presets
+    string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
+
+    // grab instance of Azure Media Content Moderator MP
+    IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
+
+    // create Job with Content Moderator task
+    IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
+               asset.AssetFiles.First() + "_" + Guid.NewGuid()));
+
+    ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
+                                                  mp, configuration,
+                                                  TaskOptions.None);
+    contentModeratorTask.InputAssets.Add(asset);
+    contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
+                                             AssetCreationOptions.None);
+
+    job.Submit();
+
+
+    // Create progress printing and querying tasks
+    Task progressPrintTask = new Task(() =>
     {
-        // Grab the presets
-        string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
-
-        // grab instance of Azure Media Content Moderator MP
-        IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
-
-        // create Job with Content Moderator task
-        IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
-                asset.AssetFiles.First() + "_" + Guid.NewGuid()));
-
-        ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
-                mp, configuration,
-                TaskOptions.None);
-        contentModeratorTask.InputAssets.Add(asset);
-        contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
-            AssetCreationOptions.None);
-
-        job.Submit();
-
-
-        // Create progress printing and querying tasks
-        Task progressPrintTask = new Task(() =>
+        IJob jobQuery = null;
+        do
         {
-            IJob jobQuery = null;
-            do
-            {
-                var progressContext = _context;
-                jobQuery = progressContext.Jobs
+            var progressContext = _context;
+            jobQuery = progressContext.Jobs
                 .Where(j => j.Id == job.Id)
-                    .First();
-                    Console.WriteLine(string.Format("{0}\t{1}",
-                    DateTime.Now,
-                    jobQuery.State));
-                    Thread.Sleep(10000);
-             }
-             while (jobQuery.State != JobState.Finished &&
-             jobQuery.State != JobState.Error &&
-             jobQuery.State != JobState.Canceled);
-        });
-        progressPrintTask.Start();
-
-        Task progressJobTask = job.GetExecutionProgressTask(
-        CancellationToken.None);
-        progressJobTask.Wait();
-
-        // If job state is Error, the event handling 
-        // method for job progress should log errors.  Here we check 
-        // for error state and exit if needed.
-        if (job.State == JobState.Error)
-        {
-            ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-            Console.WriteLine(string.Format("Error: {0}. {1}",
-            error.Code,
-            error.Message));
+                .First();
+            Console.WriteLine(string.Format("{0}\t{1}",
+                                            DateTime.Now,
+                                            jobQuery.State));
+            Thread.Sleep(10000);
         }
+        while (jobQuery.State != JobState.Finished &&
+               jobQuery.State != JobState.Error &&
+               jobQuery.State != JobState.Canceled);
+    });
+    progressPrintTask.Start();
 
-        DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+    Task progressJobTask = job.GetExecutionProgressTask(
+                           CancellationToken.None);
+    progressJobTask.Wait();
+
+    // If job state is Error, the event handling 
+    // method for job progress should log errors.  Here we check 
+    // for error state and exit if needed.
+    if (job.State == JobState.Error)
+    {
+        ErrorDetail error = job.Tasks.First().ErrorDetails.First();
+        Console.WriteLine(string.Format("Error: {0}. {1}",
+                          error.Code,
+                          error.Message));
     }
 
-For the full source code and the Visual Studio project, check out the [Content Moderator video quickstart](../../cognitive-services/Content-Moderator/video-moderation-api.md).
+    DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+}
+```
 
-### JSON output
+Úplný zdrojový kód a projekt sady Visual Studio najdete v části [rychlý Start pro Content moderator video](../../cognitive-services/Content-Moderator/video-moderation-api.md).
 
-The following example of a Content Moderator JSON output was truncated.
+### <a name="json-output"></a>Výstup JSON
+
+Následující příklad výstupu Content Moderator JSON byl zkrácen.
 
 > [!NOTE]
-> Location of a keyframe in seconds = timestamp/timescale
+> Umístění klíčového snímku v sekundách = časové razítko nebo časová osa
 
-    {
+```json
+{
     "version": 2,
     "timescale": 90000,
     "offset": 0,
@@ -178,46 +182,46 @@ The following example of a Content Moderator JSON output was truncated.
     "height": 720,
     "totalDuration": 18696321,
     "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
-      ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
-      ]
-    }
+        {
+            "start": 0,
+            "duration": 18000
+        },
+        {
+            "start": 18000,
+            "duration": 3600,
+            "interval": 3600,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": false,
+                        "adultScore": 0.00001,
+                        "racyScore": 0.03077,
+                        "index": 5,
+                        "timestamp": 18000,
+                        "shotIndex": 0
+                    }
+                ]
+            ]
+        },
+        {
+            "start": 18386372,
+            "duration": 119149,
+            "interval": 119149,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": true,
+                        "adultScore": 0.00000,
+                        "racyScore": 0.91902,
+                        "index": 5085,
+                        "timestamp": 18386372,
+                        "shotIndex": 62
+                    }
+                ]
+            ]
+        }
     ]
-    }
+}
 ```
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services

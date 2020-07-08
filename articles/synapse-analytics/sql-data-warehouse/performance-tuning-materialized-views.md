@@ -1,5 +1,5 @@
 ---
-title: Ladění výkonu s využitím materializovaných zobrazení
+title: Optimalizace výkonu s využitím materializovaná zobrazení
 description: Doporučení a důležité informace, které byste měli znát při použití materializovaná zobrazení ke zlepšení výkonu dotazů.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d33c9af2c66f04bc981ce92c6283e9d836f3f199
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204570"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956385"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
+# <a name="performance-tune-with-materialized-views"></a>Optimalizace výkonu s využitím materializovaná zobrazení
 
 Materializovaná zobrazení v synapse fondu SQL poskytují metodu údržby pro složité analytické dotazy, aby se zajistil rychlý výkon bez jakýchkoli změn dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
 
@@ -31,13 +31,13 @@ Materializované zobrazení předběžně počítá, ukládá a udržuje data ve
 
 Většina požadavků na standardní zobrazení se stále vztahuje na materializované zobrazení. Podrobnosti o syntaxi materializované zobrazení a dalších požadavcích najdete v tématu [Vytvoření materializované zobrazení jako SELECT.](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-| Porovnání                     | Zobrazení                                         | Materialized View
+| Porovnání                     | Zobrazit                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Zobrazení definice                 | Uloženo ve fondu SQL.              | Uloženo ve fondu SQL.
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Během vytváření zobrazení se předem zpracoval a uloží ve fondu SQL. Aktualizováno při přidání dat do podkladových tabulek.
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno
 |Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalé                                         | Světl  
-|Dodatečné úložiště                   | Ne                                           | Ano
+|Dodatečné úložiště                   | No                                           | Ano
 |Syntax                          | VYTVOŘIT ZOBRAZENÍ                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
 
 ## <a name="benefits-of-using-materialized-views"></a>Výhody použití materializovaná zobrazení

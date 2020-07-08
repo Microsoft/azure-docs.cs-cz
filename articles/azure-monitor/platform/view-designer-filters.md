@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658570"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955951"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filtry v zobrazeních Azure Monitor
 **Filtr** v [zobrazení Azure monitor](view-designer.md) umožňuje uživatelům filtrovat data v zobrazení podle hodnoty určité vlastnosti beze změny zobrazení.  Můžete například uživatelům zobrazení dovolit filtrovat zobrazení dat pouze z konkrétního počítače nebo sady počítačů.  V jednom zobrazení můžete vytvořit více filtrů, které umožní uživatelům filtrovat podle více vlastností.  Tento článek popisuje, jak použít filtr a přidat ho do vlastního zobrazení.
@@ -21,7 +21,7 @@ Kliknutím na rozsah data a času v horní části zobrazení otevřete rozevír
 
 ![Příklad filtru](media/view-designer-filters/filters-example-time.png)
 
-**+** Kliknutím na přidejte filtr pomocí vlastních filtrů, které jsou definovány pro zobrazení. Buď vyberte hodnotu pro filtr z rozevíracího seznamu, nebo zadejte hodnotu. Pokračujte přidáním filtrů kliknutím na **+**. 
+Kliknutím na **+** přidejte filtr pomocí vlastních filtrů, které jsou definovány pro zobrazení. Buď vyberte hodnotu pro filtr z rozevíracího seznamu, nebo zadejte hodnotu. Pokračujte přidáním filtrů kliknutím na **+** . 
 
 
 ![Příklad filtru](media/view-designer-filters/filters-example-custom.png)
@@ -37,7 +37,7 @@ Při [úpravách zobrazení](view-designer.md)vytvořte filtr na kartě **filtry
 
 Následující tabulka popisuje nastavení pro filtr.
 
-| Nastavení | Popis |
+| Nastavení | Description |
 |:---|:---|
 | Název pole | Název pole, které se používá pro filtrování  Toto pole se musí shodovat s polem Shrnutí v **dotazu pro hodnoty**. |
 | Dotaz na hodnoty | Dotaz pro spuštění, který naplní rozevírací seznam filtru pro uživatele.  Tento dotaz musí k zadání jedinečných hodnot pro určité pole použít [Souhrn](/azure/kusto/query/summarizeoperator) nebo [jedinečnou](/azure/kusto/query/distinctoperator) hodnotu a musí se shodovat s **názvem pole**.  K řazení hodnot zobrazených uživateli můžete použít [řazení](/azure/kusto/query/sortoperator) . |
@@ -61,15 +61,19 @@ Aby měl filtr nějaký vliv, musíte upravit všechny dotazy v zobrazení a fil
 
 Syntaxe pro použití hodnoty filtru v dotazu je: 
 
-    where ${filter name}  
+`where ${filter name}`  
 
 Pokud například zobrazení obsahuje dotaz, který vrací události a používá filtr nazvaný _Computers_, můžete použít následující dotaz.
 
-    Event | where ${Computers} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | summarize count() by EventLevelName
+```
 
 Pokud jste přidali další filtr s názvem závažnost, můžete použít následující dotaz pro použití obou filtrů.
 
-    Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [částech vizualizace](view-designer-parts.md) , které můžete přidat do vlastního zobrazení.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251242"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956706"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení přednastavených Media Encoder Standard  
 
@@ -36,11 +36,11 @@ V tomto článku se dozvíte, jak přizpůsobit předvolbu pomocí přednastaven
 
 ### <a name="original-preset"></a>Původní předvolba
 
-Uložte JSON definovaný v článku [H264 s více přenosovými přenosovými 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) v souboru s příponou. JSON. Například **CustomPreset_JSON. JSON**.
+Uložte JSON definovaný v článku [H264 s více přenosovými přenosovými 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) v souboru s příponou. JSON. Například **CustomPreset_JSON.jsna**.
 
 ### <a name="customized-preset"></a>Přizpůsobená předvolba
 
-Otevřete soubor **CustomPreset_JSON. JSON** a odeberte první tři vrstvy z **H264Layers** , aby váš soubor vypadal.
+Otevřete **CustomPreset_JSON.jsv** souboru a odeberte první tři vrstvy z **H264Layers** , aby soubor vypadal.
 
 ```json 
     {  
@@ -120,9 +120,11 @@ Následující příklad kódu používá sadu Media Services .NET SDK k provád
 - Vytvořte úlohu kódování.
 - Získejte odkaz na kodér Media Encoder Standard.
 - Načtěte vlastní přednastavení JSON, které jste vytvořili v předchozí části. 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - Přidejte úlohu kódování do úlohy. 
 - Určete vstupní Asset, který se má zakódovat.

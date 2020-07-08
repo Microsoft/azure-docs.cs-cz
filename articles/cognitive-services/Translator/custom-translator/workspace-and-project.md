@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: b6d43ff535fd45c73a80290442102dd8034d3903
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 659ecbc7f6c2a5627824ff09af5f30ef503c9e16
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997022"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954532"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co je vlastní pracovní prostor překladatele?
 
@@ -39,7 +39,7 @@ Ve stejném pracovním prostoru můžete vytvořit projekty pro stejnou dvojici 
 
 Vlastní Překladatel umožňuje přiřadit k projektu popisek projektu. Popisek projektu rozlišuje mezi několika projekty se stejnou dvojicí a kategorií jazyka. Jako osvědčený postup nepoužívejte popisky projektu, pokud je to nutné.
 
-Popisek projektu je použit jako součást KódKategorie. Pokud je popisek projektu ponechán Nenastaveno na stejné hodnotě v rámci projektů, projekty se stejnou kategorií a *různými* jazykovými páry budou sdílet stejnou hodnotu KódKategorie. Tato metoda je výhodná, protože vám nebo vašemu zákazníkovi umožňuje přepínat mezi jazyky při použití překladatele, aniž byste se museli starat o KódKategorie, který je jedinečný pro každý projekt.
+Popisek projektu je použit jako součást KódKategorie. Pokud je popisek projektu ponechán Nenastaveno na stejné hodnotě v rámci projektů, projekty se stejnou kategorií a *různými* jazykovými páry budou sdílet stejnou hodnotu KódKategorie. Tento přístup je výhodná, protože vám nebo vašemu zákazníkovi umožňuje přepínat mezi jazyky při použití překladatele bez obav o KódKategorie, který je jedinečný pro každý projekt.
 
 Pokud se například chtělo povolit překlady v produkční doméně z angličtiny do francouzštiny a ze francouzštiny do angličtiny, vytvoří jsem dva projekty: jeden pro angličtinu – \> francouzština a druhý pro francouzštinu – \> angličtina. Zadám stejnou kategorii (technologie) pro obojí a ponechání popisku projektu prázdné. CategoryID pro oba projekty by odpovídaly, takže se můžu dotázat na rozhraní API pro angličtinu i francouzštinu, aniž byste museli upravovat své KódKategorie.
 

@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/9/2020
-ms.openlocfilehash: 95891e35d2f30bfceb6282c6d9b3f9e7e21b3df8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660874"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954190"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 
 Server Azure Database for MariaDB můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jednu nebo více databází.
 
-|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Prostředek | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 5 |Gen 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
@@ -43,7 +43,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for MariaDB. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru MariaDB. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
-|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Atributy úložiště   | Základní | Pro obecné účely | Optimalizováno pro paměť |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
@@ -63,7 +63,7 @@ Spotřebu vstupu a výstupu můžete monitorovat v Azure Portal nebo pomocí př
 
 Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově optimalizovaných úrovních. Nově vytvořené servery, které se přihlašují k verzi Preview, můžou zřídit až 16 TB úložiště. Škálování IOPS v 3:1 poměr až 20 000 IOPS. Stejně jako u aktuálního všeobecně dostupného úložiště můžete po vytvoření serveru přidat další úložnou kapacitu a nechat systém automaticky rozšiřovat úložiště na základě využití úložiště vašich úloh.
 
-|              | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Atributy úložiště | Pro obecné účely | Optimalizováno pro paměť |
 |:-------------|:--------------------|:---------------------|
 | Typ úložiště | Premium Storage Azure | Premium Storage Azure |
 | Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |

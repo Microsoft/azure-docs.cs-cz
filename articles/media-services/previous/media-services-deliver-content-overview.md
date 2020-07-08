@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476737"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956589"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 Při doručování obsahu streamování nebo videa na vyžádání zákazníkům je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách.
@@ -92,22 +92,22 @@ Streamování přes TLS můžete odeslat jenom v případě, že koncový bod st
 ### <a name="mpeg-dash-format"></a>Formát pro MPEG-SPOJOVNÍK
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = MPD-Time-CSF)
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = MPD-Time-CSF)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Formát Apple HTTP Live Streaming (HLS) v4
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Formát Apple HTTP Live Streaming (HLS) V3
 {streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = M3U8-AAPL-V3)
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-V3)
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-V3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Formát Apple HTTP Live Streaming (HLS) s filtrem pouze zvuku
 Ve výchozím nastavení jsou v manifestu HLS zahrnuty pouze zvukové stopy. To je vyžadováno pro certifikaci Apple Store pro mobilní sítě. V takovém případě, pokud klient nemá dostatečnou šířku pásma nebo je připojený přes připojení 2G, přehrávání přepíná jenom na zvuk. To pomáhá udržet streamování obsahu bez ukládání do vyrovnávací paměti, ale nejedná se o video. V některých scénářích se ukládání do vyrovnávací paměti přehrávače může upřednostnit jenom přes zvuk. Pokud chcete zvuk, který chcete sledovat, odebrat jenom **zvuk = false** , přidejte ho k adrese URL.
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-V3; pouze audio = false)
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-V3; pouze audio = false)
 
 Další informace najdete v tématu [Podpora dynamického skládání manifestu a HLS výstup dalších funkcí](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
@@ -116,21 +116,21 @@ Další informace najdete v tématu [Podpora dynamického skládání manifestu 
 
 Příklad:
 
-http:\//testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
+http: \/ /testendpoint-testaccount.Streaming.MediaServices.Windows.NET/fecebb23-46F6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
 
 ### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Manifest Smooth Streaming 2,0 (starší manifest)
 Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují značku r. Klienti s těmito hráči můžou používat formát, který zakazuje značku r:
 
 {streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = FMP4-V20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)`
 
 ## <a name="progressive-download"></a>Progresivní stahování
 Při progresivním stahování můžete začít přehrávat média před stažením celého souboru. Nemůžete postupně stahovat soubory. ISM * (ISMV, ISMA, ismt nebo ISMC).
 
 Chcete-li postupně stahovat obsah, použijte OnDemandOrigin typ lokátoru. Následující příklad ukazuje adresu URL, která je založena na OnDemandOrigin typu lokátoru:
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 Je nutné dešifrovat všechny prostředky šifrované v úložišti, které chcete streamovat ze služby Origin Service pro progresivní stahování.
 
@@ -139,7 +139,7 @@ Chcete-li stáhnout obsah do klientského zařízení, je nutné vytvořit Loká
 
 Následující příklad ukazuje adresu URL, která je založena na lokátoru SAS:
 
-    https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
+`https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D`
 
 Platí následující důležité informace:
 
@@ -157,27 +157,30 @@ Koncový bod streamování představuje službu streamování, která může dor
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Změny verze manifestu Smooth Streaming
 Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Příklad:
 
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" n="0" />
-            <c d="2000" />
-            <c d="2000" />
-            <c d="2000" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" n="0" />
+        <c d="2000" />
+        <c d="2000" />
+        <c d="2000" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Příklad:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" r="4" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" r="4" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Někteří starší klienti Smooth Streaming nemusí podporovat opakované značky a načtení manifestu se nezdaří. Pro zmírnění tohoto problému můžete použít starý parametr formátu manifestu **(Format = FMP4-V20)** nebo aktualizovat klienta na nejnovější verzi, která podporuje značky opakování. Další informace najdete v tématu [Smooth Streaming 2,0](media-services-deliver-content-overview.md#fmp4_v20).
 

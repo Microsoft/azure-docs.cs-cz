@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f911b36d4f38d9b769cf34e4e2326ed1cb52da80
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022807"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956368"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Několik front-endu pro Azure Load Balancer
 
@@ -102,20 +102,31 @@ Pro každý virtuální počítač ve fondu back-end spusťte na příkazovém �
 
 Pokud chcete získat seznam názvů rozhraní, které máte na svém VIRTUÁLNÍm počítači, zadejte tento příkaz:
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 Pro síťovou kartu virtuálního počítače (Azure Managed) zadejte tento příkaz:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   (nahraďte název rozhraní názvem tohoto rozhraní)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+(nahraďte název rozhraní názvem tohoto rozhraní)
 
 Pro každé přidané rozhraní zpětné smyčky opakujte tyto příkazy:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   (Nahraďte parametr InterfaceName názvem tohoto rozhraní zpětné smyčky.)
-     
-    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   (Nahraďte parametr InterfaceName názvem tohoto rozhraní zpětné smyčky.)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+(Nahraďte parametr InterfaceName názvem tohoto rozhraní zpětné smyčky.)
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+(Nahraďte parametr InterfaceName názvem tohoto rozhraní zpětné smyčky.)
 
 > [!IMPORTANT]
 > Konfigurace rozhraní zpětné smyčky se provádí v hostovaném operačním systému. Tuto konfiguraci neprovádí ani nespravuje Azure. Bez této konfigurace nebudou pravidla fungovat. Definice sondy stavu používají DIP virtuální počítač místo rozhraní zpětné smyčky představujícího front-endu DSR. Proto musí vaše služba poskytovat odezvy sondy na portu DIP, který odráží stav služby nabízené na rozhraní zpětné smyčky, které představuje front-endu DSR.

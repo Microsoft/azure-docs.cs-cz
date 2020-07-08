@@ -1,7 +1,7 @@
 ---
-title: Přečíst text z obrázků a dokumentů – Počítačové zpracování obrazu
+title: Optické rozpoznávání znaků (OCR) – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty týkající se optického rozpoznávání znaků (OCR) a textu z obrázků a dokumentů pro tisk a text psaný rukou pomocí rozhraní API pro počítačové zpracování obrazu.
+description: Koncepty týkající se optického rozpoznávání znaků (OCR) z obrázků a dokumentů s tištěným a ručně psaným textem pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560798"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954736"
 ---
-# <a name="read-text-from-images-and-documents"></a>Čtení textu z obrázků a dokumentů
+# <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
 Počítačové zpracování obrazu zahrnují nové funkce optického rozpoznávání znaků (OCR) založené na hloubkovém učení, které extrahují vytištěný nebo rukou psaný text z obrázků a dokumentů PDF. Počítačové zpracování obrazu extrahuje text z obou obdobných dokumentů (obrázky, naskenované dokumenty) a dokumentů s více číslicemi. Můžete extrahovat text z obrázků v nevolném formátu, například fotografie z licenčních desek nebo kontejnerů se sériovými čísly a také z dokumentů – faktury, Bill, finanční sestavy, články a další. Tato funkce OCR je dostupná jako součást spravované služby v cloudu nebo v místním prostředí (kontejnery). Také podporuje virtuální sítě a soukromé koncové body, aby splňovaly požadavky na dodržování předpisů a ochranu osobních údajů vaší organizace.
 

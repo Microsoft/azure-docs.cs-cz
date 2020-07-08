@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023b731216605746e838306ce1ab69ebe8c6c6fd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137820"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955773"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Posílený rozhodovací strom s několika třídami
 
@@ -40,21 +40,21 @@ Tento typ modelu můžete vyškolit pomocí [modelu vlakové soupravy](././train
 
 1. **Maximální počet ponechání na stromovou strukturu** omezuje maximální počet uzlů terminálů (opustí), které je možné vytvořit v jakémkoli stromu.
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+    Zvýšením této hodnoty můžete zvýšit velikost stromu a dosáhnout vyšší přesnosti, a to na riziko přebudování a delší dobu školení.
   
 1. **Minimální počet vzorků na uzel na list** určuje počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (list) ve stromu.  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+    Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.
 
 1. **Studijní frekvence** definuje velikost kroku při učení. Zadejte číslo od 0 do 1.
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+    Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku moc velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
 
 1. **Počet vytvořených stromů** označuje celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se zvýší.
 
 1. **Náhodné číslo semen** volitelně nastaví nezáporné celé číslo, které se použije jako hodnota náhodného základu. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+    Náhodné osazení je ve výchozím nastavení nastaveno na 42. Po sobě jdoucí běhy s různými náhodnými osivy můžou mít různé výsledky.
 
 1. Výukové modely:
 

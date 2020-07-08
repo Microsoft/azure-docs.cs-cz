@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76514217"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954685"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Změna protokolu SSTR (MS-) pro HEVC Smooth Streaming 
 
@@ -242,10 +242,12 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 > 
 >   Syntaxe polí definovaných v této části, určená v ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) je následující:
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **Poznámka**: značky kompatibility ' ccff ' a ' ISO8 ' označují, že fragmenty odpovídají "Common File Format" a Common Encryption [ISO/IEC 23001-7] a ISO Base Media Format File Format Edition 4 [ISO/IEC 14496-12].
 
@@ -288,14 +290,18 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 > 
 >   Prezentace obsahující proudy HEVC musí být nastavené na:
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0 (Poznámka: nepoužívané rámečky)
 > 
 >   JE také potřeba nastavit prezentace:
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   Kolekce datových proudů: kolekce datových elementů s popisem datového proudu, jak je uvedeno v oddílu *3.1.1.1.2*.
 > 

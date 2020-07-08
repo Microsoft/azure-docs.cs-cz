@@ -3,12 +3,12 @@ title: Podpora pro posouzení fyzického serveru v Azure Migrate
 description: Další informace o podpoře pro posouzení fyzického serveru pomocí Azure Migrateho posouzení serveru
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: e60dc12b1f710fe771b90352872eb7113951a65d
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 1ceea394bd46f6ca239393f0e8367a028cd578f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080504"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955348"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -34,8 +34,8 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt Azure Migrate a přidej
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Nasazení fyzického serveru**       | Fyzický server může být samostatný nebo nasazený v clusteru. |
-| **Oprávnění**           | **Windows:** Musíte být správcem domény nebo místním správcem na všech serverech Windows, které chcete zjišťovat. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené správy, sledování výkonu a uživatelé protokolu výkonu. <br/><br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. |
-| **Operační systém** | Pro migraci se dají zhodnotit všechny operační systémy. |
+| **Oprávnění**           | **Windows:** Musíte být správcem domény na všech serverech Windows, které chcete zjišťovat. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené správy, sledování výkonu a uživatelé protokolu výkonu. <br/><br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. |
+| **Operační systém** | Pro migraci se dají posoudit všechny operační systémy s výjimkou systémů Windows Server 2003 a SUSE Linux. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate

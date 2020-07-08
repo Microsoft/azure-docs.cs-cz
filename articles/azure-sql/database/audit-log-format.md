@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 760720d133dc382ba7af4aa5f0519d4d918e93cd
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322205"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954107"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
@@ -31,7 +31,7 @@ Protokoly auditu uložené v Azure Blob Storage se ukládají do kontejneru s n�
 
 Například pro databázi `Database1` v následujícím příkladu `Server1` je možnou platnou cestou:
 
-    Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
+`Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel`
 
 Protokoly auditu [replik jen pro čtení](read-scale-out.md) se ukládají do stejného kontejneru. Hierarchie adresáře v rámci kontejneru má formu `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . Název souboru objektu BLOB sdílí stejný formát. Protokoly auditu replik jen pro čtení jsou uloženy ve stejném kontejneru.
 
@@ -49,30 +49,30 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Description | Typ objektu blob | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID akce | varchar (4) | řetězec |
-| action_name | action_name_s | Název akce | – | řetězec |
+| action_name | action_name_s | Název akce | Není k dispozici | řetězec |
 | additional_information | additional_information_s | Jakékoli další informace o události uložené jako XML | nvarchar (4000) | řetězec |
 | affected_rows | affected_rows_d | Počet řádků ovlivněných dotazem | bigint | int |
 | application_name | application_name_s| Název klientské aplikace | nvarchar (128) | řetězec |
 | audit_schema_version | audit_schema_version_d | Vždycky 1 | int | int |
 | class_type | class_type_s | Typ auditované entity, na které probíhá audit | varchar (2) | řetězec |
-| class_type_desc | class_type_description_s | Popis auditované entity, na které probíhá audit | – | řetězec |
+| class_type_desc | class_type_description_s | Popis auditované entity, na které probíhá audit | Není k dispozici | řetězec |
 | client_ip | client_ip_s | Zdrojová IP adresa klientské aplikace | nvarchar (128) | řetězec |
-| connection_id | – | ID připojení na serveru | Identifikátor GUID | – |
+| connection_id | Není k dispozici | ID připojení na serveru | Identifikátor GUID | Není k dispozici |
 | data_sensitivity_information | data_sensitivity_information_s | Typy informací a popisky citlivosti vrácené auditovaným dotazem v závislosti na klasifikovaných sloupcích v databázi. Další informace o [Azure SQL Database zjišťování a klasifikace dat](data-discovery-and-classification-overview.md) | nvarchar (4000) | řetězec |
 | database_name | database_name_s | Kontext databáze, ve kterém došlo k akci | musí | řetězec |
 | database_principal_id | database_principal_id_d | ID kontextu uživatele databáze, ve kterém se akce provádí | int | int |
 | database_principal_name | database_principal_name_s | Název kontextu uživatele databáze, ve kterém se akce provádí | musí | řetězec |
 | duration_milliseconds | duration_milliseconds_d | Doba spuštění dotazu v milisekundách | bigint | int |
 | event_time | event_time_t | Datum a čas, kdy se aktivuje akce auditování | datetime2 | datetime |
-| host_name | – | Název hostitele klienta | řetězec | – |
+| host_name | Není k dispozici | Název hostitele klienta | řetězec | Není k dispozici |
 | is_column_permission | is_column_permission_s | Příznak označující, zda se jedná o oprávnění na úrovni sloupce 1 = true, 0 = false | bit | řetězec |
-| – | is_server_level_audit_s | Příznak označující, jestli je tento audit na úrovni serveru | – | řetězec |
+| Není k dispozici | is_server_level_audit_s | Příznak označující, jestli je tento audit na úrovni serveru | Není k dispozici | řetězec |
 | ID object_ | object_id_d | ID entity, na které došlo k auditu. To zahrnuje: objekty serveru, databáze, databázové objekty a objekty schématu. 0, pokud je entita samotný server nebo pokud audit není proveden na úrovni objektu | int | int |
 | object_name | object_name_s | Název entity, na které došlo k auditu. To zahrnuje: objekty serveru, databáze, databázové objekty a objekty schématu. 0, pokud je entita samotný server nebo pokud audit není proveden na úrovni objektu | musí | řetězec |
 | permission_bitmask | permission_bitmask_s | V případě potřeby se zobrazí oprávnění udělená, zamítnutá nebo odvolaná. | varbinary (16) | řetězec |
 | response_rows | response_rows_d | Počet řádků vrácených v sadě výsledků dotazu | bigint | int |
 | schema_name | schema_name_s | Kontext schématu, ve kterém došlo k akci. Hodnota NULL pro audity, ke kterým došlo mimo schéma | musí | řetězec |
-| – | securable_class_type_s | Zabezpečitelné objekty, které se mapují na class_type auditovány | – | řetězec |
+| Není k dispozici | securable_class_type_s | Zabezpečitelné objekty, které se mapují na class_type auditovány | Není k dispozici | řetězec |
 | sequence_group_id | sequence_group_id_g | Jedinečný identifikátor | varbinary | Identifikátor GUID |
 | sequence_number | sequence_number_d | Sleduje sekvenci záznamů v rámci jednoho záznamu auditu, který byl příliš velký, aby se vešel do vyrovnávací paměti pro zápis pro audity. | int | int |
 | server_instance_name | server_instance_name_s | Název instance serveru, ve které došlo k auditu | musí | řetězec |

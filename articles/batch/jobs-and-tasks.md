@@ -3,12 +3,12 @@ title: Úlohy a úlohy v Azure Batch
 description: Přečtěte si o úlohách a úlohách a způsobu jejich použití v Azure Batchovém pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: aeffd05a26066675ca320ab4b3c3c09e6807e6df
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791075"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955365"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Úlohy a úlohy v Azure Batch
 
@@ -22,7 +22,7 @@ V Azure Batch *úkol* představuje jednotku výpočtu. *Úloha* je kolekcí těc
 
 ### <a name="job-priority"></a>Priorita úloh
 
-Úlohám, které vytvoříte, můžete přiřadit volitelnou prioritu úlohy. Hodnotu priority úlohy používá služba Batch k určení pořadí úlohy v rámci účtu (nezaměňovat s [naplánovanou úlohou](#scheduled-jobs)). Hodnoty priority se pohybují v rozsahu -1000 až 1000, kdy -1000 znamená nejnižší prioritu a 1000 nejvyšší. Prioritu úlohy je možné aktualizovat zavoláním operace [Aktualizovat vlastnosti úlohy](https://docs.microsoft.com/rest/api/batchservice/job/update) (Batch REST) nebo úpravou vlastnosti [CloudJob.Priority](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET).
+Úlohám, které vytvoříte, můžete přiřadit volitelnou prioritu úlohy. Hodnotu priority úlohy používá služba Batch k určení pořadí úlohy v rámci účtu (nezaměňovat s [naplánovanou úlohou](#scheduled-jobs)). Hodnoty priority se pohybují v rozsahu -1000 až 1000, kdy -1000 znamená nejnižší prioritu a 1000 nejvyšší. Prioritu úlohy je možné aktualizovat zavoláním operace [Aktualizovat vlastnosti úlohy](/rest/api/batchservice/job/update) (Batch REST) nebo úpravou vlastnosti [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET).
 
 V rámci stejného účtu mají úlohy s vyšší prioritou přednost při plánování před úlohami s nižší prioritou. Úloha s vyšší hodnotou priority v jednom účtu nemá přednost při plánování před jinou úlohou s nižší hodnotou priority v jiném účtu. Úkoly v rámci úloh s nižší prioritou, které jsou již spuštěny, se neruší.
 
@@ -39,13 +39,13 @@ Můžete použít omezení úlohy k zadání určitých omezení pro úlohy.
 
 Klientská aplikace si může přidat úkoly do úlohy, nebo můžete zadat [úkol správce úloh](#job-manager-task). Úkol správce úloh obsahuje informace potřebné k vytvoření požadovaných úkolů pro úlohu, přičemž úkol správce úloh běží na jednom výpočetním uzlu v rámci fondu. Úkol správce úloh je zpracováván konkrétně dávkou. je zařazená do fronty, jakmile se úloha vytvoří a restartuje se, pokud se nezdařila. Úkol správce úloh je vyžadován pro úlohy, které jsou vytvořeny [plánem úlohy](#scheduled-jobs), protože se jedná o jediný způsob, jak definovat úkoly před vytvořením instance úlohy.
 
-Ve výchozím nastavení zůstanou úlohy v aktivním stavu po dokončení všech úkolů v rámci úlohy. Toto chování můžete změnit tak, aby se úlohy automaticky ukončily po dokončení všech úkolů v úloze. Pokud chcete automaticky ukončovat úlohy poté, co všechny jejich úkoly budou v dokončeném stavu, nastavte vlastnost úlohy **onAllTasksComplete** ([OnAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) v Batch .NET) na *terminatejob*.
+Ve výchozím nastavení zůstanou úlohy v aktivním stavu po dokončení všech úkolů v rámci úlohy. Toto chování můžete změnit tak, aby se úlohy automaticky ukončily po dokončení všech úkolů v úloze. Pokud chcete automaticky ukončovat úlohy poté, co všechny jejich úkoly budou v dokončeném stavu, nastavte vlastnost úlohy **onAllTasksComplete** ([OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob) v Batch .NET) na *terminatejob*.
 
 Služba Batch posuzuje úlohu, která nemá *žádné* úkoly na dokončení všech jejích úkolů. Tato možnost se proto nejčastěji používá pro [úkoly správce úloh](#job-manager-task). Pokud chcete použít automatické ukončování úloh bez správce úloh, měli byste na začátku nastavit pro novou úlohu vlastnost **onAllTasksComplete** na *noaction* a na hodnotu *terminatejob* ji nastavit až poté, až dokončíte přidávání úkolů do úlohy.
 
 ### <a name="scheduled-jobs"></a>Naplánované úlohy
 
-[Plány úloh](https://docs.microsoft.com/rest/api/batchservice/jobschedule) umožňují vytvořit opakované úlohy v rámci služby Batch. Plán úloh určuje, kdy spustit úlohy a obsahuje specifikace pro úlohy, které mají být spuštěny. Můžete zadat dobu trvání plánu (jak dlouho a kdy je plán v platnosti) a jak často se úlohy vytvářejí během naplánovaného období.
+[Plány úloh](/rest/api/batchservice/jobschedule) umožňují vytvořit opakované úlohy v rámci služby Batch. Plán úloh určuje, kdy spustit úlohy a obsahuje specifikace pro úlohy, které mají být spuštěny. Můžete zadat dobu trvání plánu (jak dlouho a kdy je plán v platnosti) a jak často se úlohy vytvářejí během naplánovaného období.
 
 ## <a name="tasks"></a>Úlohy
 
@@ -153,11 +153,11 @@ Další podrobnosti najdete v tématu [závislosti úloh v Azure Batch](batch-ta
 
 ### <a name="environment-settings-for-tasks"></a>Nastavení prostředí pro úlohy
 
-Každý úkol prováděný službou Batch má přístup k proměnným prostředí, které nastaví na výpočetních uzlech. To zahrnuje proměnné prostředí[definované službou Batch (a](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) vlastní proměnné prostředí, které můžete definovat pro vaše úkoly). Aplikace a skripty zpracovávané vašimi úkoly mají během zpracování přístup k těmto proměnným prostředí.
+Každý úkol prováděný službou Batch má přístup k proměnným prostředí, které nastaví na výpočetních uzlech. To zahrnuje proměnné prostředí[definované službou Batch (a](./batch-compute-node-environment-variables.md) vlastní proměnné prostředí, které můžete definovat pro vaše úkoly). Aplikace a skripty zpracovávané vašimi úkoly mají během zpracování přístup k těmto proměnným prostředí.
 
-Vlastní proměnné prostředí můžete nastavit na úrovni úkolů či úloh tím, že vyplníte vlastnost *nastavení prostředí* pro tyto entity. Další podrobnosti najdete v tématu věnovaném operaci [Přidání úlohy do úlohy](https://docs.microsoft.com/rest/api/batchservice/task/add?)] (Batch REST API), nebo vlastností [CloudTask. EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) a [vlastnosti cloudjob. CommonEnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) v dávce .NET.
+Vlastní proměnné prostředí můžete nastavit na úrovni úkolů či úloh tím, že vyplníte vlastnost *nastavení prostředí* pro tyto entity. Další podrobnosti najdete v tématu věnovaném operaci [Přidání úlohy do úlohy](/rest/api/batchservice/task/add?)] (Batch REST API), nebo vlastností [CloudTask. EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) a [vlastnosti cloudjob. CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) v dávce .NET.
 
-Vaše klientská aplikace nebo služba může získat službou i uživatelem definované proměnné prostředí úkolu pomocí operace [Získat informace o úkolu](https://docs.microsoft.com/rest/api/batchservice/task/get) (Batch REST) nebo přístupem k vlastnosti [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) (Batch .NET). Procesy prováděné na výpočetním uzlu mohou také přistupovat k těmto i ostatním proměnným prostředí na uzlu například pomocí známé syntaxe `%VARIABLE_NAME%` (Windows) nebo `$VARIABLE_NAME` (Linux).
+Vaše klientská aplikace nebo služba může získat službou i uživatelem definované proměnné prostředí úkolu pomocí operace [Získat informace o úkolu](/rest/api/batchservice/task/get) (Batch REST) nebo přístupem k vlastnosti [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) (Batch .NET). Procesy prováděné na výpočetním uzlu mohou také přistupovat k těmto i ostatním proměnným prostředí na uzlu například pomocí známé syntaxe `%VARIABLE_NAME%` (Windows) nebo `$VARIABLE_NAME` (Linux).
 
 Úplný seznam všech proměnných prostředí definovaných službou najdete v článku [Proměnné prostředí výpočetního uzlu](batch-compute-node-environment-variables.md).
 

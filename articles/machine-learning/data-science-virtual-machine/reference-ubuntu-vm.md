@@ -9,12 +9,12 @@ ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 4c4ac1d332c4348941963b90d25aefb4fdf30ce4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560226"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955535"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenční informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -255,7 +255,7 @@ Informace o tom, jak nasadit modely v R a Pythonu do Azure Machine Learning, naj
 
 ## <a name="machine-learning-tools"></a>Nástroje pro strojové učení
 
-Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Zde jsou některé z nich:
+Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Tady jsou některé z nich:
 
 * **Pro dostupné**: rychlý online algoritmus pro učení.
 * **xgboost**: nástroj, který poskytuje optimalizované a zesílené stromové algoritmy.
@@ -263,8 +263,10 @@ Tento virtuální počítač přináší nástroje Machine Learning a algoritmy,
 * **Python**: Anaconda Python přichází do sady s algoritmy strojového učení s knihovnami, jako je Scikit – učení. Další knihovny můžete nainstalovat pomocí `pip install` příkazu.
 * **LightGBM**: rychlé, distribuované a vysoce výkonné přechodové prostředí s vysokým výkonem na základě algoritmů rozhodovacího stromu.
 * **R**: rozsáhlá knihovna funkcí strojového učení je k dispozici pro R. předem nainstalované knihovny zahrnují LM, GLM, randomForest a rpart. Další knihovny můžete nainstalovat spuštěním tohoto příkazu:
-  
-        install.packages(<lib name>)
+
+    ```r
+    install.packages(<lib name>)
+    ```
 
 Tady je několik dalších informací o prvních třech nástrojích strojového učení v seznamu.
 

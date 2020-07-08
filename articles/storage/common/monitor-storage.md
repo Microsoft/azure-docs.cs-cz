@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267609"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955161"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage monitorování
 
@@ -78,11 +78,13 @@ Všechny ostatní neúspěšné anonymní požadavky nejsou protokolovány. Úpl
 
 Metriky platforem a protokol aktivit jsou shromažďovány automaticky, ale je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. Postup vytvoření nastavení diagnostiky pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../../azure-monitor/platform/diagnostic-settings.md).
 
-Při vytváření nastavení diagnostiky vyberte typ úložiště, pro které chcete povolit protokoly, jako je například objekt blob, fronta, tabulka nebo soubor. Pokud vytvoříte nastavení diagnostiky v Azure Portal, můžete prostředek vybrat ze seznamu. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure, musíte použít ID prostředku typu úložiště. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
+Při vytváření nastavení diagnostiky vyberte typ úložiště, pro které chcete povolit protokoly, jako je například objekt blob, fronta, tabulka nebo soubor. Data Lake Storage Gen2 se nezobrazuje jako typ úložiště. Důvodem je to, že Data Lake Storage Gen2 sadu funkcí dostupných pro úložiště objektů BLOB. 
+
+Pokud vytvoříte nastavení diagnostiky v Azure Portal, můžete prostředek vybrat ze seznamu. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure, musíte použít ID prostředku typu úložiště. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
 
 Musíte také zadat kategorie operací, pro které chcete shromažďovat protokoly. Kategorie pro Azure Storage jsou uvedeny v této tabulce.
 
-| Kategorie | Popis |
+| Kategorie | Description |
 |:---|:---|
 | StorageRead | Operace čtení objektů BLOB. |
 | StorageWrite | Operace zápisu objektů BLOB |
@@ -344,6 +346,8 @@ Data jsou uložena v těchto tabulkách.
 |StorageQueueLogs | Protokoly, které popisují aktivity ve frontách.|
 |StorageTableLogs| Protokoly, které popisují aktivity v tabulkách.|
 
+Protokoly pro Data Lake Storage Gen2 se neobjevují ve vyhrazené tabulce. Důvodem je, že Data Lake Storage Gen2 není služba. Jde o sadu funkcí, které můžete povolit v účtu služby Blob Storage. Pokud jste tyto možnosti povolili, protokoly se budou dál zobrazovat v tabulce StorageBlobLogs. 
+
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Storage Log Analytics dotazy v Azure Monitor
 
 Tady jsou některé dotazy, které můžete zadat do panelu **hledání protokolu** , abyste mohli monitorovat účty Azure Storage. Tyto dotazy fungují s [novým jazykem](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
@@ -400,7 +404,7 @@ Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
 
 **Podporuje Azure Storage metriky pro Managed Disks nebo nespravované disky?**
 
-No. Azure COMPUTE podporuje metriky na discích. Další informace najdete v tématu [metriky jednotlivých disků pro spravované a nespravované disky](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
+Ne. Azure COMPUTE podporuje metriky na discích. Další informace najdete v tématu [metriky jednotlivých disků pro spravované a nespravované disky](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
 ## <a name="next-steps"></a>Další kroky
 
