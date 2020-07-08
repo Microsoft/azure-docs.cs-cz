@@ -13,17 +13,17 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cab29fbe9e33cc12336fa1b81ed4aa37f91a7f5f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387299"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Přidání uživatelů typu Host pro spolupráci B2B bez odkazu na pozvánku nebo e-mailu
 
 Nyní můžete pozvat uživatele typu Host odesláním přímého odkazu na sdílenou aplikaci. Pomocí této metody už uživatelé typu host již nepotřebují používat e-mail s pozvánkou, s výjimkou některých zvláštních případů. Uživatel typu Host klikne na odkaz aplikace, zkontroluje a přijme podmínky ochrany osobních údajů a pak bezproblémově přistupuje k aplikaci. Další informace najdete v tématu věnovaném [uplatnění pozvánky B2B na spolupráci](redemption-experience.md).   
 
-Před tím, než byla tato nová metoda k dispozici, můžete pozvat uživatele typu Host bez vyžadování e-mailu s pozvánkou přidáním pozvánky (z vaší organizace nebo z partnerské organizace) do role adresáře **pozvání hosta** a poté, co uživatel přizvaní přidá uživatele typu Host do adresáře, skupiny nebo aplikace prostřednictvím uživatelského rozhraní nebo prostřednictvím prostředí PowerShell. (Pokud používáte PowerShell, můžete úplně potlačit e-mail s pozvánkou). Například:
+Před tím, než byla tato nová metoda k dispozici, můžete pozvat uživatele typu Host bez vyžadování e-mailu s pozvánkou přidáním pozvánky (z vaší organizace nebo z partnerské organizace) do role adresáře **pozvání hosta** a poté, co uživatel přizvaní přidá uživatele typu Host do adresáře, skupiny nebo aplikace prostřednictvím uživatelského rozhraní nebo prostřednictvím prostředí PowerShell. (Pokud používáte PowerShell, můžete úplně potlačit e-mail s pozvánkou). Příklad:
 
 1. Uživatel v organizaci hostitele (například WoodGrove) vyzývá jednoho uživatele z partnerské organizace (například Sam@litware.com ) jako host.
 2. Správce v organizaci hostitele [nastavuje zásady](delegate-invitations.md) , které umožňují Sam identifikovat a přidat další uživatele z partnerské organizace (Litware). (Do role **pozvat hosta** musí být přidán účet Sam.)

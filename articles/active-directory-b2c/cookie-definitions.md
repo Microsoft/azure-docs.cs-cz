@@ -12,10 +12,10 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85389339"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Definice souborů cookie pro Azure AD B2C
@@ -30,7 +30,7 @@ Aby bylo možné chránit přístup k webům, budou webové prohlížeče zavád
 
 `SameSite=None`Aby mohli vývojáři určit soubory cookie pro přístup k více lokalitám, musí použít nové nastavení souborů cookie. Pokud `SameSite=None` je přítomen atribut, je `Secure` nutné použít další atribut, aby soubory cookie mezi weby byly dostupné pouze prostřednictvím připojení HTTPS. Ověří a otestuje všechny vaše aplikace, včetně aplikací, které používají Azure AD B2C.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Zpracování změn souborů cookie SameSite v prohlížeči Chrome](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
 * [Vliv na zákaznické weby a služby a produkty Microsoftu v Chrome verze 80 nebo novější](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)

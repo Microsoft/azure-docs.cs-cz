@@ -4,10 +4,10 @@ description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, 
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: f9e51521e9bd35c6afb3dbe7cafb1e56e847756a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390121"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
@@ -103,7 +103,7 @@ Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.co
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Například:
+    Příklad:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 

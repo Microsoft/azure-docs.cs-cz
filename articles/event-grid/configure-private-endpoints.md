@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390461"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurace privátních koncových bodů pro Azure Event Grid témata nebo domény
@@ -47,7 +47,7 @@ V této části se dozvíte, jak použít Azure Portal k vytvoření privátníh
 
             ![Privátní koncový bod – stránka prostředků](./media/configure-private-endpoints/resource-page.png)
     2. Pokud vyberete **připojit k prostředku pomocí ID prostředku nebo aliasu**, postupujte podle následujících kroků:
-        1. Zadejte ID prostředku. Příklad: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
+        1. Zadejte ID prostředku. Například: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Jako **prostředek**zadejte **téma** nebo **doména**. 
         3. volitelné Přidejte zprávu požadavku. 
         4. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
@@ -81,7 +81,7 @@ Existují čtyři stavy zřizování:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Jak spravovat připojení privátního koncového bodu
 V následujících částech se dozvíte, jak schválit nebo odmítnout připojení privátního koncového bodu. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Na panelu hledání zadejte **Event Grid témata** nebo **Event Grid domény**.
 1. Vyberte **téma** nebo **doménu** , kterou chcete spravovat.
 1. Vyberte kartu **síť** .

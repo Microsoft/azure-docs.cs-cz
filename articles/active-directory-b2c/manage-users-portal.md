@@ -11,10 +11,10 @@ ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387520"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Použití Azure Portal k vytváření a odstraňování uživatelů spotřebitelů v Azure AD B2C
@@ -31,13 +31,13 @@ Jak je popsáno v tématu [Přehled uživatelských účtů v Azure AD B2C](user
 
 * Práce
 * Host
-* Sdílených
+* Příjemce
 
 Tento článek se zaměřuje na práci s **uživatelskými účty** v Azure Portal. Informace o vytváření a odstraňování pracovních a hostovaných účtů najdete v tématu [Přidání nebo odstranění uživatelů pomocí Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="create-a-consumer-user"></a>Vytvoření uživatele spotřebitele
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat** vyberte **Uživatelé**.

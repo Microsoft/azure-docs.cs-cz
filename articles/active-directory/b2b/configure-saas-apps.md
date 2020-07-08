@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387346"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
@@ -32,7 +32,7 @@ Než se podíváte na pokyny specifické pro danou aplikaci, tady je několik pr
 * Chcete-li v uživatelských atributech zmírnit problémy s pozměněným diskem s profilem uživatele (UPD) v uživatelích typu Host, vždy nastavte **identifikátor uživatele** na hodnotu **User. mail**.
 
 
-## <a name="dropbox-business"></a>Obchodní Dropbox
+## <a name="dropbox-business"></a>Dropbox Business
 
 Pokud chcete uživatelům povolit, aby se přihlásili pomocí svého účtu organizace, musíte ručně nakonfigurovat společnost Dropbox na použití Azure AD jako zprostředkovatele identity Security Assertion Markup Language (SAML). Pokud společnost pro Dropbox není nakonfigurovaná tak, aby to provedla, nemůže se uživatelům dotázat nebo jinak povolit přihlášení pomocí Azure AD.
 

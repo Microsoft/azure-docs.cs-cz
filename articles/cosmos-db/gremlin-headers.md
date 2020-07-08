@@ -8,10 +8,10 @@ ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
 ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390852"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Hlavičky odpovědi serveru Azure Cosmos DB Gremlin
@@ -36,7 +36,7 @@ Mějte na paměti, že při použití závislosti na těchto hlavičkách omezuj
 
 Níže jsou uvedené nejběžnější stavové kódy vrácené serverem.
 
-| Stav | Vysvětlení |
+| Status | Vysvětlení |
 | --- | --- |
 | **401** | Chybová zpráva `"Unauthorized: Invalid credentials provided"` se vrátí, když heslo ověřování neodpovídá Cosmos DB klíč účtu. V Azure Portal přejděte na účet Cosmos DB Gremlin a zkontrolujte, jestli je klíč správný.|
 | **404** | Souběžné operace, které se pokoušejí současně odstranit a aktualizovat stejný okraj nebo vrchol. Chybová zpráva `"Owner resource does not exist"` značí, že v parametrech připojení je nesprávně zadaná databáze nebo kolekce ve formátu `/dbs/<database name>/colls/<collection or graph name>`.|

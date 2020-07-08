@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390597"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Sledování Event Grid doručování zpráv 
@@ -42,7 +42,7 @@ V případě předplatných jsou zde uvedeny některé metriky:
 
 Pokud jste publikovali vlastní téma, můžete si Zobrazit metriky pro ni. 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. Do panelu hledání v tématu zadejte **Event Grid témata**a v rozevíracím seznamu vyberte **Event Grid témata** . 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
@@ -81,7 +81,7 @@ Podívejte se například na graf metriky pro metriku **publikovaných událost�
 
 ## <a name="view-system-topic-metrics"></a>Zobrazit metriky tématu systému
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. Do panelu hledání v tématu zadejte **Event Grid systémová témata**a v rozevíracím seznamu vyberte **Event Grid systémová témata** . 
 
     :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Vyhledat a vybrat Event Grid systémová témata":::

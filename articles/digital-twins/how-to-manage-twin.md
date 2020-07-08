@@ -1,5 +1,5 @@
 ---
-title: Správa digitálních vláken
+title: Správa digitálních dvojčat
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak načíst, aktualizovat a odstranit jednotlivé vlákna a relace.
 author: baanders
@@ -8,13 +8,13 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390512"
 ---
-# <a name="manage-digital-twins"></a>Správa digitálních vláken
+# <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
 Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md), [sadu .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
 
@@ -146,14 +146,14 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
 
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
-* Další vlastnosti v `$metadata` oddílu. To zahrnuje:
+* Další vlastnosti v `$metadata` oddílu. Sem patří:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
 
 Můžete analyzovat vrácený formát JSON pro vlákna pomocí knihovny analýzy JSON dle vašeho výběru, například `System.Text.Json` .
 
-Můžete také použít třídu pomocníka serializace `BasicDigitalTwin` , která je součástí sady SDK, což vrátí základní a vlastnosti ve formě předem analyzovaných formulářů. Tady je příklad:
+Můžete také použít třídu pomocníka serializace `BasicDigitalTwin` , která je součástí sady SDK, což vrátí základní a vlastnosti ve formě předem analyzovaných formulářů. Zde naleznete příklad:
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
