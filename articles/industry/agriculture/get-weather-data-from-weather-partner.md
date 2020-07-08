@@ -5,12 +5,11 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 4ab42509930e76989a67f45deb33e370e6e9adf4
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
-ms.translationtype: MT
+ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800643"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
@@ -140,10 +139,7 @@ Pokud chcete začít získávat data o počasí v datovém centru FarmBeats, pos
 
 ## <a name="query-ingested-weather-data"></a>Dotázat se na data ingestovaná počasí
 
-Po dokončení úloh počasí můžete zadávat dotazy na ingestovaná data o počasí k sestavování modelů nebo užitečných přehledů. Existují dva způsoby, jak získat přístup k datům počasí z FarmBeats a dotazovat se na ně:
-
-- Rozhraní API a
-- Time Series Insights (TSI).
+Po dokončení úloh počasí můžete pomocí rozhraní REST API pro FarmBeats DataHub zadávat dotazy na ingestovaná data o počasí k vytváření modelů nebo přehledy, které lze zpracovat.
 
 ### <a name="query-using-rest-api"></a>Dotaz pomocí REST API
 
@@ -208,20 +204,6 @@ Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupuj
    ```
 
 V předchozím příkladu má odpověď data pro dvě časová razítka spolu s názvem míry ("teplota") a hodnotami hlášených povětrnostních dat ve dvou časových razítkech. Pro interpretaci typu a jednotky hlášených hodnot budete potřebovat odkaz na přidružený datový model počasí (jak je popsáno v kroku 2 výše).
-
-### <a name="query-using-azure-time-series-insights-tsi"></a>Dotaz pomocí Azure Time Series Insights (TSI)
-
-FarmBeats používá [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) k ingestování, ukládání, dotazování a vizualizaci dat v IoT Scale – data, která jsou s vysokou mírou kontextu a optimalizovaná pro časové řady.
-
-Data o počasí se přijímají na EventHub a pak se do prostředí TSI v rámci skupiny prostředků FarmBeats. Data pak mohou být přímo dotazována z TSI. Další informace najdete v [dokumentaci k TSI](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
-
-Podle postupu Vizualizujte data v TSI:
-
-1. Přejděte do **Azure portal**  >  **skupiny prostředků Azure Portal FarmBeats DataHub** > vyberte **Time Series Insights** prostředí (TSI-xxxx) > **zásady přístupu k datům**. Přidejte uživatele s přístupem Čtenář nebo Přispěvatel.
-
-2. Přejít na stránku **Přehled** prostředí **Time Series Insights** (TSI-xxxx) a vyberte **adresu URL aplikace Time Series Insights Explorer**. Teď můžete vizualizovat data ingestovaná počasí.
-
-Kromě ukládání, dotazování a vizualizace dat počasí, TSI taky umožňuje integraci do řídicího panelu Power BI. Další informace najdete v tématu [vizualizace dat z Time Series Insights v Power BI](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
 
 ## <a name="appendix"></a>Příloha
 

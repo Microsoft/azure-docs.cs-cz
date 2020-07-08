@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 ms.date: 06/16/2020
-ms.openlocfilehash: dcf687a369b32b2055f579f2599a0c3097f9f9f3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: MT
+ms.openlocfilehash: 7bd3f1a5b242ee5196e92456cb3fc8c97f8f5b27
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977671"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958527"
 ---
 # <a name="virtual-machine-certification---issues-and-solutions"></a>Certifikace virtuálních počítačů – problémy a řešení
 
@@ -31,8 +30,8 @@ K této chybě dojde, pokud jste použili základní image, která patří jiné
 
 Pokud chcete tento problém vyřešit, načtěte nejnovější image z Azure Marketplace a proveďte v této imagi změny. Pro zobrazení schválených základních imagí, kde můžete vyhledat svou image, se podívejte na tyto informace:
 
-- [Linux – image](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows – Image](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base)
+- [Linux – image](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
+- [Windows-images](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base))
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
@@ -55,11 +54,11 @@ Ověřte, jestli jsou rozšíření virtuálních počítačů správně aktivov
 
    ![Zřizování bylo úspěšné.](./media/vm-certification-issues-solutions-2.png)
 
-   Pokud se rozšíření virtuálního počítače nepovede, [pomocí diagnostického rozšíření pro Linux monitorujte metriky a protokoly](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux) , abyste je povolili. Pokud nechcete, aby bylo rozšíření virtuálního počítače povolené, obraťte se na tým podpory a požádejte ho, aby rozšíření zakázal.
+   Pokud se rozšíření virtuálního počítače nepovede, [pomocí diagnostického rozšíření pro Linux monitorujte metriky a protokoly](../../virtual-machines/extensions/diagnostics-linux.md) , abyste je povolili. Pokud nechcete, aby bylo rozšíření virtuálního počítače povolené, obraťte se na tým podpory a požádejte ho, aby rozšíření zakázal.
 
 ## <a name="virtual-machine-provisioning-issue"></a>Problém zřizování virtuálních počítačů
 
-Před odesláním vaší nabídky ověřte, zda je proces zřizování pro virtuální počítač striktně následován. Pokud chcete zobrazit formát JSON pro zřizování virtuálního počítače, přečtěte si [certifikát na virtuálním počítači Azure (VM) image](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template).
+Před odesláním vaší nabídky ověřte, zda je proces zřizování pro virtuální počítač striktně následován. Pokud chcete zobrazit formát JSON pro zřizování virtuálního počítače, přečtěte si [certifikát na virtuálním počítači Azure (VM) image](azure-vm-image-certification.md).
 
 Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 
@@ -71,8 +70,8 @@ Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 
 > [!NOTE]
 > Pro dokumentaci týkající se generalizace virtuálních počítačů použijte tyto odkazy:
-> - [Linux](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-configure-vm#generalize-the-image)
-> - [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
+> - [Linux](create-azure-vm-technical-asset.md#generalize-the-image))
+> - [Systém Windows](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep))
 
 ## <a name="software-compliance-for-windows"></a>Kompatibilita softwaru pro Windows
 
@@ -82,13 +81,13 @@ Nevytvářejte vlastní image Windows s nainstalovaným SQL serverem. Místo toh
 
 Pokud se pokoušíte nainstalovat sadu Visual Studio nebo libovolný produkt licencovaný na Office, obraťte se na tým podpory, který vám poskytne předchozí schválení.
 
-Další informace najdete na stránce [Vytvoření technických prostředků virtuálního počítače Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base) a výběr schválené základní třídy.
+Další informace najdete v podrobnějších informacích o tom, jak si můžete vybrat schválený základ pro [Vytvoření technických prostředků virtuálních počítačů Azure](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
 
 ## <a name="tool-kit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo
 
 Sada nástrojů Microsoft Certification Toolkit vám pomůže provést testovací případy a ověřit, jestli je váš virtuální pevný disk nebo Image kompatibilní s prostředím Azure.
 
-Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
+Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-certification.md).
 
 ## <a name="linux-test-cases"></a>Testovací případy pro Linux
 
@@ -249,7 +248,7 @@ Pokud bitová kopie není nainstalovaná s některou z následujících verzí j
 
 Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na více než 1 MB. Pokud váš virtuální pevný disk neodpovídá doporučené virtuální velikosti, váš požadavek může být zamítnutý.
 
-Při převodu z nezpracovaného disku na virtuální pevný disk postupujte podle pokynů a je nutné zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v tématu [informace o neschválených distribucích](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) .
+Při převodu z nezpracovaného disku na virtuální pevný disk postupujte podle pokynů a je nutné zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v tématu [informace o neschválených distribucích](../../virtual-machines/linux/create-upload-generic.md) .
 
 ## <a name="vm-access-denied"></a>Přístup k virtuálnímu počítači byl odepřen
 

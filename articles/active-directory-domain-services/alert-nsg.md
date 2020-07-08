@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/19/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6d0cde3d3615350658a06cf118ff38cebf8952c9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735009"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040448"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
 
-Aby aplikace a služby správně komunikovaly s Azure Active Directory Domain Services (Azure služba AD DS), musí být otevřené konkrétní síťové porty, aby bylo možné tok dat povolit. V Azure řídíte tok provozu pomocí skupin zabezpečení sítě. Stav spravované domény Azure služba AD DS zobrazuje výstrahu, pokud nejsou nastavená požadovaná pravidla skupiny zabezpečení sítě.
+Aby mohly aplikace a služby správně komunikovat se spravovanou doménou Azure Active Directory Domain Services (Azure služba AD DS), musí být pro povolení toku provozu určité síťové porty otevřené. V Azure řídíte tok provozu pomocí skupin zabezpečení sítě. Stav spravované domény Azure služba AD DS zobrazuje výstrahu, pokud nejsou nastavená požadovaná pravidla skupiny zabezpečení sítě.
 
 Tento článek vám pomůže pochopit a vyřešit běžné výstrahy týkající se problémů s konfigurací skupiny zabezpečení sítě.
 
@@ -34,7 +33,7 @@ Neplatná pravidla skupiny zabezpečení sítě jsou nejběžnější příčino
 
 ## <a name="default-security-rules"></a>Výchozí pravidla zabezpečení
 
-Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následující výchozí pravidla pro příchozí a odchozí zabezpečení. Tato pravidla zachovají Azure služba AD DS zabezpečená a umožňují platformě Azure monitorovat, spravovat a aktualizovat spravovanou doménu. Je také možné, že máte další pravidlo, které povolí příchozí provoz, pokud [konfigurujete zabezpečený protokol LDAP][configure-ldaps].
+Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následující výchozí pravidla pro příchozí a odchozí zabezpečení. Tato pravidla zachovají Azure služba AD DS zabezpečená a umožňují platformě Azure monitorovat, spravovat a aktualizovat spravovanou doménu.
 
 ### <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
@@ -46,6 +45,9 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 | 65000    | AllVnetInBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerInBound | Všechny | Všechny | AzureLoadBalancer | Všechny | Povolit |
 | 65500    | DenyAllInBound | Všechny | Všechny | Všechny | Všechny | Odepřít |
+
+> [!NOTE]
+> Je také možné, že máte další pravidlo, které povolí příchozí provoz, pokud [konfigurujete zabezpečený protokol LDAP][configure-ldaps]. Toto dodatečné pravidlo je vyžadováno pro správné komunikace LDAPs.
 
 ### <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 

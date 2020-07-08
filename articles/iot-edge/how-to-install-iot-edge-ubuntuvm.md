@@ -7,14 +7,13 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 64e2787aa282e75893fa34e6de1373e6afed09fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349602"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800558"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spuštění Azure IoT Edge v Ubuntu Virtual Machines
 
@@ -63,7 +62,7 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
 
     Po vyplnění všech polí zaškrtněte políčko v dolní části stránky, aby se podmínky přijaly, a výběrem **koupit** zahájíte nasazení.
 
-1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000`. Také si poznamenejte přidružený **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>`. `<location>`. cloudapp.Azure.com.
+1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000` . Také si poznamenejte přidružený **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>` . `<location>` . cloudapp.azure.com.
 
     **Název DNS** se dá získat z oddílu **Přehled** nově nasazeného virtuálního počítače v rámci Azure Portal.
 
@@ -108,11 +107,10 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
 
 1. Vytvořit nový virtuální počítač:
 
-    Pokud chcete použít **AuthenticationType** `password`, přečtěte si níže uvedený příklad:
+    Pokud chcete použít **AuthenticationType** `password` , přečtěte si níže uvedený příklad:
 
    ```azurecli-interactive
-   az group deployment create \
-   --name edgeVm \
+   az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -122,15 +120,14 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
    --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-    Chcete-li provést ověření pomocí klíče SSH, můžete tak učinit zadáním **AuthenticationType** `sshPublicKey`a pak v parametru **adminPasswordOrKey** zadat hodnotu klíče SSH.  Příklad najdete níže.
+    Chcete-li provést ověření pomocí klíče SSH, můžete tak učinit zadáním **AuthenticationType** `sshPublicKey` a pak v parametru **ADMINPASSWORDORKEY** zadat hodnotu klíče SSH.  Příklad najdete níže.
 
     ```azurecli-interactive
     #Generate the SSH Key
     ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
 
     #Create a VM using the iotedge-vm-deploy script
-    az group deployment create \
-    --name edgeVm \
+    az deployment group create \
     --resource-group IoTEdgeResources \
     --template-uri "https://aka.ms/iotedge-vm-deploy" \
     --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -138,10 +135,9 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
     --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
     --parameters authenticationType='sshPublicKey' \
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
-     
     ```
 
-1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000`. Také si poznamenejte přidružený **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>`. `<location>`. cloudapp.Azure.com.
+1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000` . Také si poznamenejte přidružený **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>` . `<location>` . cloudapp.azure.com.
 
     **Název DNS** se dá získat z výstupu z předchozího kroku ve formátu JSON, v části **výstupy** jako součást **veřejné položky SSH** .  Hodnotu této položky lze použít pro SSH do nově nasazeného počítače.
 

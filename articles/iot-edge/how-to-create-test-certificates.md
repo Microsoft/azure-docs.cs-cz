@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84430664"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení
@@ -53,11 +52,11 @@ K vytvoření ukázkových certifikátů na zařízení s Windows je potřeba na
 #### <a name="install-openssl"></a>Nainstalovat OpenSSL
 
 Nainstalujte OpenSSL pro Windows na počítači, který používáte k vygenerování certifikátů.
-Pokud jste již na zařízení s Windows nainstalovali OpenSSL, můžete tento krok přeskočit, ale zajistěte, aby byl v proměnné prostředí PATH k dispozici OpenSSL. exe.
+Pokud jste na zařízení s Windows už OpenSSL nainstalované, můžete tento krok přeskočit, ale zajistěte, aby byla v proměnné prostředí PATH dostupná openssl.exe.
 
 Existuje několik způsobů, jak nainstalovat OpenSSL, včetně následujících možností:
 
-* **Jednodušší:** Stáhněte si a nainstalujte všechny [binární soubory OpenSSL třetích stran](https://wiki.openssl.org/index.php/Binaries), například z [OpenSSL v sourceforge](https://sourceforge.net/projects/openssl/). Přidejte úplnou cestu k souboru OpenSSL. exe do proměnné prostředí PATH.
+* **Jednodušší:** Stáhněte si a nainstalujte všechny [binární soubory OpenSSL třetích stran](https://wiki.openssl.org/index.php/Binaries), například z [OpenSSL v sourceforge](https://sourceforge.net/projects/openssl/). Přidejte úplnou cestu k openssl.exe do proměnné prostředí PATH.
 
 * **Doporučené:** Stáhněte si zdrojový kód OpenSSL a sestavte binární soubory na svém počítači sami nebo prostřednictvím [vcpkg](https://github.com/Microsoft/vcpkg). Níže uvedené pokyny používají vcpkg ke stažení zdrojového kódu, kompilaci a instalaci OpenSSL na počítači s Windows pomocí jednoduchých kroků.
 
@@ -69,7 +68,7 @@ Existuje několik způsobů, jak nainstalovat OpenSSL, včetně následujících
       .\vcpkg install openssl:x64-windows
       ```
 
-   3. Přidejte `<vcpkg path>\installed\x64-windows\tools\openssl` do proměnné prostředí PATH, aby byl soubor OpenSSL. exe k dispozici pro vyvolání.
+   3. Přidejte `<vcpkg path>\installed\x64-windows\tools\openssl` do proměnné prostředí PATH, aby byl soubor openssl.exe k dispozici pro vyvolání.
 
 #### <a name="prepare-scripts-in-powershell"></a>Příprava skriptů v PowerShellu
 

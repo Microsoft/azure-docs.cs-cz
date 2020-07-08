@@ -10,12 +10,11 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81271059"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040703"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co je Azure Time Series Insights ve verzi Preview?
 
@@ -78,12 +77,12 @@ Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Time S
 
 | | |
 | ---| ---|
-| Vícevrstvé úložiště pro data časových řad IoT-Scale | Pomocí sdíleného kanálu zpracování dat pro ingestování dat můžete ingestovat data do teplého i mrazírenského úložiště. Používejte záložní úložiště pro interaktivní dotazy a chladírenské úložiště pro ukládání velkých objemů dat. Další informace o tom, jak využít výhod vysoce výkonných dotazů založených na prostředcích, najdete v tématu [dotazy](./time-series-insights-update-tsq.md). |
-| Model časové řady pro dátí nezpracované telemetrie a odvození přehledů na základě assetů | Model časové řady můžete použít k vytvoření instancí, hierarchií, typů a proměnných pro data časových řad. Další informace o modelu časových řad najdete v tématu [model časových řad](./time-series-insights-update-tsm.md).  |
-| Plynulá a kontinuální integrace s jinými datovými řešeními | Data v Time Series Insights chladírenských skladů se [ukládají](./time-series-insights-update-storage-ingress.md) do souborů Apache Parquet v otevřeném zdroji. To umožňuje integraci dat s jinými datovými řešeními, 1. nebo třetí stranou, pro scénáře, které zahrnují business intelligence, pokročilé Machine Learning a prediktivní analýzy. |
+| Vícevrstvé úložiště pro data časových řad IoT-Scale | Pomocí sdíleného kanálu zpracování dat pro ingestování dat můžete ingestovat data do teplého i mrazírenského úložiště. Používejte záložní úložiště pro interaktivní dotazy a chladírenské úložiště pro ukládání velkých objemů dat. Další informace o tom, jak využít výhod vysoce výkonných dotazů založených na prostředcích, najdete v tématu [dotazy](./concepts-query-overview.md). |
+| Model časové řady pro dátí nezpracované telemetrie a odvození přehledů na základě assetů | Model časové řady můžete použít k vytvoření instancí, hierarchií, typů a proměnných pro data časových řad. Další informace o modelu časových řad najdete v tématu [model časových řad](./concepts-model-overview.md).  |
+| Plynulá a kontinuální integrace s jinými datovými řešeními | Data v Time Series Insights chladírenských skladů se [ukládají](concepts-storage.md) do souborů Apache Parquet v otevřeném zdroji. To umožňuje integraci dat s jinými datovými řešeními, 1. nebo třetí stranou, pro scénáře, které zahrnují business intelligence, pokročilé Machine Learning a prediktivní analýzy. |
 | Zkoumání dat téměř v reálném čase | Prostředí [Preview aplikace Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) poskytuje vizualizaci pro všechna streamování dat prostřednictvím kanálu přijímání. Po připojení zdroje událostí můžete zobrazit, prozkoumat a dotazovat data událostí. Tímto způsobem můžete ověřit, jestli zařízení vysílá data podle očekávání. Můžete také monitorovat prostředek IoT pro stav, produktivitu a celkovou efektivitu. | 
 | Rozšiřitelnost a integrace | Integrace konektoru Azure Time Series Insights Power BI je k dispozici přímo v uživatelském prostředí Průzkumníka časových řad prostřednictvím možnosti **exportovat** , což zákazníkům umožňuje exportovat dotazy časových řad, které vytvářejí v uživatelském prostředí, přímo do Power BI plochy a zobrazovat grafy časových řad spolu s dalšími analýzami BI. Tím se otevře dvířka nové třídy scénářů pro podniky IoT v průmyslu, které investovaly do Power BI tím, že v různých zdrojích dat, včetně časových řad IoT, poskytneme jedno podokno ze skleněných zdrojů. | 
-| Vlastní aplikace založené na Time Series Insights platformě | Time Series Insights podporuje [sadu JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Sada SDK poskytuje bohatý ovládací prvky a zjednodušený přístup k dotazům. Pomocí sady SDK můžete sestavovat vlastní aplikace IoT nad Time Series Insights tak, aby vyhovovaly vašim obchodním potřebám. [Rozhraní API pro Time Series Insights dotazování](./time-series-insights-update-tsq.md) můžete použít také přímo k pohonu dat do vlastních aplikací IoT. |
+| Vlastní aplikace založené na Time Series Insights platformě | Time Series Insights podporuje [sadu JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Sada SDK poskytuje bohatý ovládací prvky a zjednodušený přístup k dotazům. Pomocí sady SDK můžete sestavovat vlastní aplikace IoT nad Time Series Insights tak, aby vyhovovaly vašim obchodním potřebám. [Rozhraní API pro Time Series Insights dotazování](./concepts-query-overview.md) můžete použít také přímo k pohonu dat do vlastních aplikací IoT. |
 
 ## <a name="next-steps"></a>Další kroky
 

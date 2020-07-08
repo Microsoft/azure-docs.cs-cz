@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
 ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249648"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Mapování schématu a datového typu v aktivitě kopírování
@@ -49,18 +48,18 @@ Můžete nakonfigurovat mapování Data Factory vytváření uživatelského roz
 
 | Vlastnost | Popis                                                  | Vyžadováno |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | Název sloupce/pole zdroje nebo jímky. Platí pro tabelární zdroj a jímku. | Ano      |
-| řadový  | Index sloupce. Začněte od 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | Ne       |
-| cesta     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchické zdroje a jímky, například Cosmos DB, MongoDB nebo konektory REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem `$` ; pro pole v poli, které je zvoleno `collectionReference` vlastností, cesta JSON začíná z prvku pole bez `$` . | Ne       |
-| typ     | Data Factory pomocný datový typ sloupce zdroj nebo jímka. Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | Ne       |
-| jazyková verze  | Jazyková verze zdroje nebo sloupce jímky. Použijte, pokud je typ `Datetime` nebo `Datetimeoffset` . Výchozí formát je `en-us`.<br>Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | Ne       |
-| formát   | Řetězec formátu, který se má použít, pokud je typ `Datetime` nebo `Datetimeoffset` . Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | Ne       |
+| name     | Název sloupce/pole zdroje nebo jímky. Platí pro tabelární zdroj a jímku. | Yes      |
+| řadový  | Index sloupce. Začněte od 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | No       |
+| cesta     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchické zdroje a jímky, například Cosmos DB, MongoDB nebo konektory REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem `$` ; pro pole v poli, které je zvoleno `collectionReference` vlastností, cesta JSON začíná z prvku pole bez `$` . | No       |
+| typ     | Data Factory pomocný datový typ sloupce zdroj nebo jímka. Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | No       |
+| jazyková verze  | Jazyková verze zdroje nebo sloupce jímky. Použijte, pokud je typ `Datetime` nebo `Datetimeoffset` . Výchozí formát je `en-us`.<br>Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | No       |
+| formát   | Řetězec formátu, který se má použít, pokud je typ `Datetime` nebo `Datetimeoffset` . Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | No       |
 
 Následující vlastnosti jsou podporovány v nástroji `translator` kromě následujících `mappings` :
 
 | Vlastnost            | Popis                                                  | Vyžadováno |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | Použijte při kopírování dat z hierarchického zdroje, například Cosmos DB, MongoDB nebo konektory REST.<br>Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. | Ne       |
+| collectionReference | Použijte při kopírování dat z hierarchického zdroje, například Cosmos DB, MongoDB nebo konektory REST.<br>Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. | No       |
 
 #### <a name="tabular-source-to-tabular-sink"></a>Tabulkový zdroj do tabulkové jímky
 
@@ -309,17 +308,17 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování pro převo
 
 | Vlastnost                         | Popis                                                  | Vyžadováno |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| typeConversion                   | Povolte nové prostředí pro konverzi datových typů. <br>Výchozí hodnota je false z důvodu zpětné kompatibility.<br><br>Pro nové aktivity kopírování vytvořené prostřednictvím Data Factory vytváření uživatelského rozhraní od 12. června 2020 je tento převod datového typu ve výchozím nastavení povolený pro dosažení optimálního prostředí a u příslušných scénářů můžete zobrazit následující nastavení převodu typů na kartě aktivity kopírování – > mapování. <br>Chcete-li vytvořit kanál programově, je nutné explicitně nastavit `typeConversion` vlastnost na hodnotu true, chcete-li ji povolit.<br>Pro existující aktivity kopírování vytvořené před vydáním této funkce se nezobrazí možnosti konverze typu na Data Factory vytváření uživatelského rozhraní pro zpětnou kompatibilitu. | Ne       |
-| typeConversionSettings           | Skupina nastavení převodu typů. Použijte, pokud `typeConversion` je nastavená na `true` . V rámci této skupiny jsou všechny níže uvedené vlastnosti. | Ne       |
+| typeConversion                   | Povolte nové prostředí pro konverzi datových typů. <br>Výchozí hodnota je false z důvodu zpětné kompatibility.<br><br>Pro nové aktivity kopírování vytvořené prostřednictvím Data Factory vytváření uživatelského rozhraní od 12. června 2020 je tento převod datového typu ve výchozím nastavení povolený pro dosažení optimálního prostředí a u příslušných scénářů můžete zobrazit následující nastavení převodu typů na kartě aktivity kopírování – > mapování. <br>Chcete-li vytvořit kanál programově, je nutné explicitně nastavit `typeConversion` vlastnost na hodnotu true, chcete-li ji povolit.<br>Pro existující aktivity kopírování vytvořené před vydáním této funkce se nezobrazí možnosti konverze typu na Data Factory vytváření uživatelského rozhraní pro zpětnou kompatibilitu. | No       |
+| typeConversionSettings           | Skupina nastavení převodu typů. Použijte, pokud `typeConversion` je nastavená na `true` . V rámci této skupiny jsou všechny níže uvedené vlastnosti. | No       |
 | *Položk`typeConversionSettings`* |                                                              |          |
-| allowDataTruncation              | Povolí zkracování dat při převodu zdrojových dat na jímku s jiným typem během kopírování, například z desítkového čísla na celé číslo od DatetimeOffset do data a času. <br>Výchozí hodnota je true (pravda). | Ne       |
-| treatBooleanAsNumber             | Považovat logické hodnoty jako čísla, například true jako 1.<br>Výchozí hodnota je false. | Ne       |
-| dateTimeFormat                   | Formátovací řetězec při konverzi mezi daty bez posunutí a řetězce časového pásma, například `yyyy-MM-dd HH:mm:ss.fff` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne       |
-| dateTimeOffsetFormat             | Formátovací řetězec při konverzi mezi daty pomocí posunutí a řetězců časového pásma, například `yyyy-MM-dd HH:mm:ss.fff zzz` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne       |
-| timeSpanFormat                   | Řetězec formátu při převodu mezi časovými obdobími a řetězci, například `dd\.hh\:mm` . Podrobné informace najdete v tématu [Vlastní řetězce formátu TimeSpan](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) . | Ne       |
-| jazyková verze                          | Informace o jazykové verzi, která má být použita při převodu typů, například `en-us` nebo `fr-fr` . | Ne       |
+| allowDataTruncation              | Povolí zkracování dat při převodu zdrojových dat na jímku s jiným typem během kopírování, například z desítkového čísla na celé číslo od DatetimeOffset do data a času. <br>Výchozí hodnota je true (pravda). | No       |
+| treatBooleanAsNumber             | Považovat logické hodnoty jako čísla, například true jako 1.<br>Výchozí hodnota je false. | No       |
+| dateTimeFormat                   | Formátovací řetězec při konverzi mezi daty bez posunutí a řetězce časového pásma, například `yyyy-MM-dd HH:mm:ss.fff` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | No       |
+| dateTimeOffsetFormat             | Formátovací řetězec při konverzi mezi daty pomocí posunutí a řetězců časového pásma, například `yyyy-MM-dd HH:mm:ss.fff zzz` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | No       |
+| timeSpanFormat                   | Řetězec formátu při převodu mezi časovými obdobími a řetězci, například `dd\.hh\:mm` . Podrobné informace najdete v tématu [Vlastní řetězce formátu TimeSpan](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) . | No       |
+| jazyková verze                          | Informace o jazykové verzi, která má být použita při převodu typů, například `en-us` nebo `fr-fr` . | No       |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -454,9 +453,9 @@ Můžete určit aktivitu kopírování – > `translator`  ->  `schemaMapping` k
 
 | Vlastnost            | Popis                                                  | Vyžadováno |
 | :------------------ | :----------------------------------------------------------- | :------- |
-| typ                | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** . | Ano      |
-| schemaMapping       | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje**zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Hodnota:** reprezentuje jímku. Pro **tabulkovou jímku**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky**zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je zvoleno `collectionReference` vlastností, začíná cesta JSON od elementu pole. | Ano      |
-| collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. Tato vlastnost je podporována pouze v případě, že jsou hierarchická data zdrojem. | Ne       |
+| typ                | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** . | Yes      |
+| schemaMapping       | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje**zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Hodnota:** reprezentuje jímku. Pro **tabulkovou jímku**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky**zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je zvoleno `collectionReference` vlastností, začíná cesta JSON od elementu pole. | Yes      |
+| collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. Tato vlastnost je podporována pouze v případě, že jsou hierarchická data zdrojem. | No       |
 
 **Příklad: kopírování z MongoDB do Oracle:**
 

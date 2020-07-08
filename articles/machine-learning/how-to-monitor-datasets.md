@@ -11,10 +11,9 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
 ms.openlocfilehash: 15cfa56f718290af3ae5fb87aadab70016cc8594
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84430238"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
@@ -131,12 +130,12 @@ Tato tabulka obsahuje základní nastavení použitá pro monitorování datový
 
 | Nastavení | Description | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- | 
-| Name | Název monitorování datové sady | | Ne |
-| Základní datová sada | Tabulková datová sada, která bude použita jako základ pro porovnání cílové datové sady v průběhu času. | Základní datová sada musí mít funkce společné s cílovou datovou sadou. Obecně platí, že by měl být standardní hodnota nastavena na školicí datovou sadu modelu nebo na řez cílové datové sady. | Ne |
-| Cílová datová sada | Sada tabulkových dat se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat | Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datová sada, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data. | Ne | 
-| Frekvence | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
-| Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nezahrnují funkce, které se přirozeně mění v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Ano | 
-| Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Ano | 
+| Name | Název monitorování datové sady | | No |
+| Základní datová sada | Tabulková datová sada, která bude použita jako základ pro porovnání cílové datové sady v průběhu času. | Základní datová sada musí mít funkce společné s cílovou datovou sadou. Obecně platí, že by měl být standardní hodnota nastavena na školicí datovou sadu modelu nebo na řez cílové datové sady. | No |
+| Cílová datová sada | Sada tabulkových dat se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat | Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datová sada, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data. | No | 
+| Frekvence | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | No | 
+| Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nezahrnují funkce, které se přirozeně mění v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Yes | 
+| Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Yes | 
 
 ### <a name="monitor-settings"></a>Nastavení monitorování
 
@@ -144,10 +143,10 @@ Tato nastavení se dají vytvořit v případě naplánovaných kanálů monitor
 
 | Nastavení | Description | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- |
-| Povolit | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
-| Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
-| E-mailové adresy | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
-| Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
+| Povolit | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Yes | 
+| Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | No | 
+| E-mailové adresy | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Yes | 
+| Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Yes | 
 
 ### <a name="backfill-settings"></a>Nastavení zpětných výplní
 

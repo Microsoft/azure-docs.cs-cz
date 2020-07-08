@@ -4,13 +4,12 @@ description: Vytvořte výstrahu pomocí Azure Portal, která vás upozorní, kd
 ms.topic: conceptual
 ms.date: 6/23/2020
 ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85217995"
 ---
-# <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurace upozornění na stav prostředků pomocí Azure Portal
+# <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurace upozornění na stav prostředků s využitím webu Azure Portal
 
 V tomto článku se dozvíte, jak nastavit výstrahy protokolu aktivit pro oznámení o stavu prostředků pomocí Azure Portal.
 
@@ -77,4 +76,4 @@ Vytvořit výstrahy Service Health:
 
 * [Konfigurace upozornění pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
 * [Schéma událostí protokolu aktivit Azure](../azure-monitor/platform/activity-log-schema.md)
-* [Konfigurace upozornění na stav prostředků pomocí šablon Správce prostředků](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Konfigurace upozornění na stav prostředků s využitím šablon Resource Manageru](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)

@@ -4,12 +4,11 @@ description: Zjistěte, jak upgradovat cluster Azure Kubernetes Service (AKS), a
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 5f0391c10a99173e7a2d87c1dd08a36852fc0450
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800490"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
@@ -53,6 +52,8 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 
 > [!Important]
 > Pro každou operaci upgradu se u uzlů přepětí vyžaduje kvóta předplatného pro požadovaný maximální počet přepětí. Například cluster s pěti fondy uzlů, každý s počtem 4 uzly, má celkem 20 uzlů. Pokud má každý fond uzlů hodnotu maximálního nárůstu 50%, pro dokončení upgradu se vyžaduje další výpočetní a IP kvóta 10 uzlů (2 uzly * 5 fondů).
+>
+> Pokud používáte Azure CNI, ověřte, že jsou v podsíti dostupné IP adresy, a také [požadavky na IP adresu Azure CNI](configure-azure-cni.md).
 
 Ve výchozím nastavení AKS konfiguruje upgrady na přepětí s jedním dalším uzlem. Výchozí hodnota jednoho pro nastavení maximálního přepětí umožňuje AKS minimalizovat narušení úlohy vytvořením dalšího uzlu předtím, než Cordon/vyprázdní stávající aplikace nahradí starší uzel se správou verzí. Hodnota maximálního přepětí může být přizpůsobená pro každý fond uzlů, aby bylo možné kompromis mezi rychlostí upgradu a přerušením upgradu. Zvýšením maximální hodnoty přepětí dojde k rychlejšímu dokončení procesu upgradu, ale nastavení vysoké hodnoty pro maximální nárůst může způsobit přerušení během procesu upgradu. 
 

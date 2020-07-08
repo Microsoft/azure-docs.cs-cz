@@ -4,10 +4,9 @@ description: V tomto článku se dozvíte, jak nakonfigurovat Microsoft Azure Ba
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84192985"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Zálohování SQL Server v Azure Stack

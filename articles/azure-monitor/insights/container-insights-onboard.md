@@ -2,13 +2,12 @@
 title: Povolit Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolit a nakonfigurovat Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 519238837831a67714894ee44f4694321fb999d4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800626"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Povolit Azure Monitor pro kontejnery
 
@@ -55,6 +54,8 @@ Než začnete, ujistěte se, že jste splnili následující požadavky:
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
+- Chcete-li zobrazit data monitorování, je nutné mít v pracovním prostoru Log Analytics [*Log Analytics roli Čtenář*](../platform/manage-access.md#manage-access-using-azure-permissions) , nakonfigurovanou pomocí Azure monitor for Containers.
+
 - Metriky Prometheus nejsou ve výchozím nastavení shromažďovány. Předtím, než [nakonfigurujete agenta](container-insights-prometheus-integration.md) tak, aby shromáždil metriky, je důležité si projít [dokumentaci k Prometheus](https://prometheus.io/) , která vám pomůže pochopit, jaká data se dají vyřadit a jaké metody se podporují.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
@@ -78,7 +79,7 @@ V následující tabulce jsou uvedeny informace o konfiguraci proxy serveru a br
 
 V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a brány firewall pro Azure Čína 21Vianet:
 
-|Prostředek agenta|Port |Popis | 
+|Prostředek agenta|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.cn` | 443 | Připojování OMS |
@@ -86,7 +87,7 @@ V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a b
 
 Následující tabulka uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA:
 
-|Prostředek agenta|Port |Popis | 
+|Prostředek agenta|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.us` | 443 | Připojování OMS |
@@ -110,7 +111,7 @@ Po vydání nové verze agenta se automaticky upgraduje na spravované clustery 
 
 Pokud chcete povolit Azure Monitor pro kontejnery, použijte jednu z metod, která je popsaná v následující tabulce:
 
-| Stav nasazení | Metoda | Popis |
+| Stav nasazení | Metoda | Description |
 |------------------|--------|-------------|
 | Nový cluster Kubernetes | [Vytvoření clusteru AKS pomocí Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Monitorování můžete povolit pro nový cluster AKS, který vytvoříte pomocí Azure CLI. |
 | | [Vytvoření clusteru AKS pomocí Terraformu](container-insights-enable-new-cluster.md#enable-using-terraform)| Monitorování můžete povolit pro nový cluster AKS, který vytvoříte pomocí nástroje Open Source Tool Terraformu. |

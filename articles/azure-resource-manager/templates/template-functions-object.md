@@ -4,10 +4,9 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84676790"
 ---
 # <a name="object-functions-for-arm-templates"></a>Funkce objektů pro šablony ARM
@@ -29,7 +28,7 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč, nebo řetězec ob
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | kontejner |Yes |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
 | itemToFind |Yes |řetězec nebo int |Hodnota, která se má najít |
@@ -110,7 +109,7 @@ Určuje, zda je pole, objekt nebo řetězec prázdný.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Yes |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
 
@@ -175,7 +174,7 @@ Vrátí jedno pole nebo objekt se společnými prvky z parametrů.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |pole nebo objekt |První hodnota, která má být použita pro hledání běžných prvků. |
 | arg2 |Yes |pole nebo objekt |Druhá hodnota, která má být použita pro vyhledání běžných prvků. |
@@ -241,7 +240,7 @@ Vrátí objekt JSON.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |řetězec |Hodnota, která má být převedena do formátu JSON. |
 
@@ -310,7 +309,7 @@ Vrátí počet prvků v poli, znaky v řetězci nebo vlastnosti na kořenové ú
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
 
@@ -386,7 +385,7 @@ Vrátí jedno pole nebo objekt se všemi prvky z parametrů. Duplicitní hodnoty
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |pole nebo objekt |První hodnota, která se má použít pro spojování prvků. |
 | arg2 |Yes |pole nebo objekt |Druhá hodnota, která se má použít pro spojování prvků. |

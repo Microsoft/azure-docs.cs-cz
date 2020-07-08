@@ -4,10 +4,9 @@ description: K nasazení prostředků do Azure použijte Azure Resource Manager 
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: a2a1c1fe63d0a841f57407ed5402d7ddca3fcea4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84432076"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
@@ -145,7 +144,7 @@ az deployment group create \
 
 Získání hodnoty parametru ze souboru je užitečné v případě, že potřebujete zadat konfigurační hodnoty. Můžete například zadat [hodnoty Cloud-init pro virtuální počítač se systémem Linux](../../virtual-machines/linux/using-cloud-init.md).
 
-Formát arrayContent. JSON je:
+arrayContent.jsve formátu:
 
 ```json
 [
@@ -160,7 +159,7 @@ Místo předání parametrů jako vložených hodnot do skriptu může být snaz
 
 Další informace o souboru parametrů naleznete v tématu [Create správce prostředků Parameter File](parameter-files.md).
 
-Chcete-li předat místní soubor parametrů, použijte `@` k určení místního souboru s názvem Storage. Parameters. JSON.
+Chcete-li předat místní soubor parametrů, použijte `@` k určení místního souboru s názvem storage.parameters.jsv.
 
 ```azurecli-interactive
 az deployment group create \

@@ -4,10 +4,9 @@ description: Tento článek popisuje funkce zabezpečení sítě, jako jsou zna�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341133"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Zabezpečení sítě pro Azure Service Bus 
@@ -30,7 +29,7 @@ Pomocí značek služeb můžete definovat řízení přístupu k síti pro [sku
 
 
 > [!NOTE]
-> Značky služeb můžete použít jenom pro obory názvů úrovně **Premium** . Pokud používáte **standardní** obor názvů, použijte IP adresu, kterou vidíte při spuštění následujícího příkazu: `nslookup <host name for the namespace>` . Příklad: `nslookup contosons.servicebus.windows.net`. 
+> Značky služeb můžete použít jenom pro obory názvů úrovně **Premium** . Pokud používáte **standardní** obor názvů, použijte IP adresu, kterou vidíte při spuštění následujícího příkazu: `nslookup <host name for the namespace>` . Například: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
 Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .

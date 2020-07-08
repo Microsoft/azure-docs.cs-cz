@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856728"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958578"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Příprava technických prostředků IoT Edge modulu
 
@@ -22,8 +21,8 @@ Tento článek popisuje požadavky, které musí váš modul pro Internet věcí
 
 Modul IoT Edge je kontejner kompatibilní s Docker, který běží na zařízení IoT Edge.
 
-- Další informace o IoT Edgech modulech najdete v tématu [principy Azure IoT Edgech modulů](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
-- Chcete-li začít s vývojem modulu IoT Edge, přečtěte si téma [vývoj vlastních modulů IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-development).
+- Další informace o IoT Edgech modulech najdete v tématu [principy Azure IoT Edgech modulů](../../iot-edge/iot-edge-modules.md).
+- Chcete-li začít s vývojem modulu IoT Edge, přečtěte si téma [vývoj vlastních modulů IoT Edge](../../iot-edge/module-development.md).
 
 ## <a name="technical-requirements"></a>Technické požadavky
 
@@ -35,7 +34,7 @@ Váš modul IoT Edge musí podporovat jednu z následujících možností platfo
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>Platformy vrstvy 1 podporované nástrojem IoT Edge
 
-Váš modul musí podporovat všechny platformy vrstvy 1 podporované aplikací IoT Edge (jak je uvedeno v [Azure IoT Edge podpoře](https://docs.microsoft.com/azure/iot-edge/support)). Tuto možnost doporučujeme, protože poskytuje lepší prostředí pro zákazníky. Budou se prezentovat moduly, které splňují tato kritéria. Modul používající tuto možnost platformy musí:
+Váš modul musí podporovat všechny platformy vrstvy 1 podporované aplikací IoT Edge (jak je uvedeno v [Azure IoT Edge podpoře](../../iot-edge/support.md)). Tuto možnost doporučujeme, protože poskytuje lepší prostředí pro zákazníky. Budou se prezentovat moduly, které splňují tato kritéria. Modul používající tuto možnost platformy musí:
 
 - Poskytněte nejnovější značku a značku verze (například 1.0.1), které jsou značky manifestu sestavené pomocí [nástroje GitHub Manifest-Tool](https://github.com/estesp/manifest-tool).
 
@@ -43,7 +42,7 @@ Váš modul musí podporovat všechny platformy vrstvy 1 podporované aplikací 
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Podmnožina platforem vrstvy 1, kterou podporuje IoT Edge
 
-Váš modul musí podporovat podmnožinu (alespoň jednu) platforem vrstvy 1, kterou podporuje IoT Edge (jak je uvedeno v [Azure IoT Edge podpoře](https://docs.microsoft.com/azure/iot-edge/support)). Modul používající tuto možnost platformy musí:
+Váš modul musí podporovat podmnožinu (alespoň jednu) platforem vrstvy 1, kterou podporuje IoT Edge (jak je uvedeno v [Azure IoT Edge podpoře](../../iot-edge/support.md)). Modul používající tuto možnost platformy musí:
 
 - Poskytněte nejnovější značku a značku verze (například 1.0.1), které jsou značky manifestu sestavené s [manifestem](https://github.com/estesp/manifest-tool) GitHubu, pokud je podporovaná víc než jedna platforma. Značky manifestu jsou volitelné jenom v případě, že je podporovaná jedna platforma.
 - V [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace) použijte kartu seznam nabídek a přidejte odkaz v části **užitečné odkazy** na alespoň jeden IoT Edge zařízení z [katalogu zařízení Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/).
@@ -107,7 +106,7 @@ Moduly používající sadu SDK modulu IoT musí pro účely telemetrie nastavit
 
 Použijte jednu z následujících metod ze sady SDK modulu IoT a nastavte ProductInfo na tento identifikátor:
 
-- [R #](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
 - [R](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
@@ -139,8 +138,8 @@ Vaše nabídka se taky ověří, pokud ji aktualizujete, třeba přidáním nov�
 
 ## <a name="host-module-in-azure-container-registry"></a>Modul hostitele v Azure Container Registry
 
-Pokud chcete nahrát modul IoT Edge do Azure Marketplace, musíte ho nejdřív hostovat v [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). Modul musí obsahovat všechny značky, které chcete publikovat, včetně značek obrázků, na které odkazuje značka manifestu. Další informace najdete v kurzu [Vytvoření služby Azure Container registry a vložení image kontejneru](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr).
+Pokud chcete nahrát modul IoT Edge do Azure Marketplace, musíte ho nejdřív hostovat v [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). Modul musí obsahovat všechny značky, které chcete publikovat, včetně značek obrázků, na které odkazuje značka manifestu. Další informace najdete v kurzu [Vytvoření služby Azure Container registry a vložení image kontejneru](../../container-instances/container-instances-tutorial-prepare-acr.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření nabídky modulu IoT Edge](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [Vytvoření nabídky modulu IoT Edge](azure-iot-edge-module-creation.md)

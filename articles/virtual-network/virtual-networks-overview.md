@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 0577b61cd30ef0f8fd5fc8ef1593d210c00bb25c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.openlocfilehash: 3fd958ba1ef4ec4b8a198bcd5da497dc191be73d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300080"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040601"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -52,7 +51,7 @@ Všechny prostředky ve virtuální síti můžou ve výchozím nastavení komun
 Prostředky Azure mezi sebou zabezpečeně komunikují jedním z následujících způsobů:
 
 - **Prostřednictvím virtuální sítě:** Do virtuální sítě můžete nasadit virtuální počítače a několik dalších typů prostředků Azure, jako jsou služby Azure App Service Environment, Azure Kubernetes Service (AKS) a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](virtual-network-for-azure-services.md).
-- **Prostřednictvím koncového bodu služby pro virtuální síť**: Privátní adresní prostor a identitu virtuální sítě můžete přes přímé připojení rozšířit na prostředky služeb Azure, jako jsou účty Azure Storage a databáze Azure SQL. Koncové body služeb umožňují svázat vaše důležité prostředky služeb Azure pouze s virtuální sítí. Další informace najdete v tématu [Přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md).
+- **Prostřednictvím koncového bodu služby virtuální sítě**: svůj privátní adresní prostor virtuální sítě a identitu vaší virtuální sítě do prostředků služby Azure, jako jsou Azure Storage účty a Azure SQL Database, přes přímé připojení. Koncové body služeb umožňují svázat vaše důležité prostředky služeb Azure pouze s virtuální sítí. Další informace najdete v tématu [Přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md).
 - **Prostřednictvím partnerského vztahu**virtuálních sítí: můžete vzájemně propojit virtuální sítě a povolit komunikaci prostředků v obou virtuálních sítích pomocí partnerského vztahu virtuálních sítí. Propojené virtuální sítě se můžou nacházet ve stejné oblasti Azure nebo v různých oblastech. Další informace najdete v tématu [Partnerský vztah virtuálních sítí](virtual-network-peering-overview.md).
 
 ## <a name="communicate-with-on-premises-resources"></a>Komunikace s místními prostředky

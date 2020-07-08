@@ -10,10 +10,9 @@ ms.author: lle
 author: lle
 ms.date: 04/14/2020
 ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84191069"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL
@@ -105,12 +104,12 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 ## <a name="cancel-ssis-package-execution"></a>Zrušit provádění balíčku SSIS
 Chcete-li zrušit spuštění balíčku z úlohy agenta spravované instance SQL, proveďte následující kroky místo přímého zastavení úlohy agenta:
 
-1. Najděte svůj Agent SQL **jobId** z **msdb. dbo. tabulka sysjobs**.
+1. Najděte svůj Agent SQL **jobId** z **msdb.dbo.sysúloh**.
 1. Pomocí tohoto dotazu Najděte odpovídající **EXECUTIONID** SSIS na základě ID úlohy:
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   Pokud jsou balíčky SSIS v SSISDB, pak použijte **SSISDB. Internal. execution_parameter_values** jako tabulku pro provádění úloh. Pokud jsou balíčky SSIS v systému souborů, použijte **SSISDB. Internal. execution_parameter_values_noncatalog**.
+   Pokud jsou balíčky SSIS v SSISDB, použijte jako tabulku pro provádění úloh **ssisdb.internal.execution_parameter_values** . Pokud jsou balíčky SSIS v systému souborů, použijte **ssisdb.internal.execution_parameter_values_noncatalog**.
 1. Klikněte pravým tlačítkem na katalog SSISDB a pak vyberte **aktivní operace**.
 
    !["Aktivní operace" v místní nabídce katalogu SSISDB](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

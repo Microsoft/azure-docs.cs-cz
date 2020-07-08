@@ -7,18 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 6e889fef16d8ad80d52810207f0328a765ca9cfe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982679"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958493"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
 Tento článek popisuje typy nabídek, které jsou k dispozici na komerčním webu Marketplace. *Typ nabídky* definuje strukturu nabídky, která zahrnuje metadata, artefakty a další obsah, který se používá k prezentaci nabídky na webu Marketplace.
 
-Předtím, než budete moci vytvořit nabídku, a poté, co se [rozhodnete pro možnost publikování](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), je nutné zvolit typ nabídky, který bude použit k prezentaci vaší nabídky. Typ nabídky bude odpovídat typu řešení, aplikace nebo nabídky služeb, které chcete publikovat, a také jeho zarovnání na produkty a služby společnosti Microsoft.
+Předtím, než budete moci vytvořit nabídku, a poté, co se [rozhodnete pro možnost publikování](determine-your-listing-type.md), je nutné zvolit typ nabídky, který bude použit k prezentaci vaší nabídky. Typ nabídky bude odpovídat typu řešení, aplikace nebo nabídky služeb, které chcete publikovat, a také jeho zarovnání na produkty a služby společnosti Microsoft.
 
 Jeden typ nabídky se dá nakonfigurovat různými způsoby, aby se povolily různé možnosti publikování, volání, zřizování nebo ceny. Možnost publikování a konfigurace typu nabídky také odpovídají nárokům na nabídku a technické požadavky.
 

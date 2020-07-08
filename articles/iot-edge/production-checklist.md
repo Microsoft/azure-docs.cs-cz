@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84431926"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
@@ -28,7 +27,7 @@ Informace uvedené v tomto článku nejsou stejné. Pro pomoc s určením priori
 
 IoT Edge zařízení mohou být od maliny PI až po přenosný počítač na virtuální počítač běžící na serveru. Je možné, že budete mít přístup k zařízení buď fyzicky, nebo prostřednictvím virtuálního připojení, nebo může být izolovaný po delší dobu. V obou případech se chcete ujistit, že je správně nakonfigurovaný tak, aby fungoval.
 
-* **Důležité**
+* **Důležité upozornění**
   * Instalace produkčních certifikátů
   * Máte plán správy zařízení
   * Použití Moby jako modulu kontejneru
@@ -133,7 +132,7 @@ Při přechodu z testovacích scénářů do produkčních scénářů nezapome�
 
 ## <a name="container-management"></a>Správa kontejnerů
 
-* **Důležité**
+* **Důležité upozornění**
   * Správa přístupu k registru kontejneru
   * Použití značek ke správě verzí
 * **Případech**
@@ -181,7 +180,7 @@ Získejte Image pomocí příkazu Docker Pull k umístění do privátního regi
 | [Agent Azure IoT Edge](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Centrum Azure IoT Edge](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-Dále nezapomeňte aktualizovat odkazy na image v souboru Deployment. template. JSON pro systémové moduly edgeAgent a edgeHub. Nahraďte `mcr.microsoft.com` názvem a serverem registru pro oba moduly.
+Dále nezapomeňte aktualizovat odkazy na image v deployment.template.jssouboru pro systémové moduly edgeAgent a edgeHub. Nahraďte `mcr.microsoft.com` názvem a serverem registru pro oba moduly.
 
 * edgeAgent:
 
