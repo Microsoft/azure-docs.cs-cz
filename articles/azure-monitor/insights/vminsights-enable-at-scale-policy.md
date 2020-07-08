@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
 ms.openlocfilehash: 7d3c4e0f4bd34f996bb39426af39a692a6f79c5c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507173"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
@@ -82,7 +82,7 @@ Další informace o přiřazování Azure Policy naleznete v tématu [Azure Poli
 
 Definice zásad pro virtuální počítač Azure jsou uvedené v následující tabulce.
 
-|Název |Popis |Typ |
+|Name |Description |Typ |
 |-----|------------|-----|
 |Povolit Azure Monitor pro virtuální počítače |Povolí Azure Monitor pro virtuální počítače v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr převezme Log Analytics pracovní prostor. |Dávat |
 |Nasazení agenta závislostí auditu – image virtuálního počítače (OS) není v seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
@@ -97,7 +97,7 @@ Definice zásad pro virtuální počítač Azure jsou uvedené v následující 
 
 Definice zásad pro hybridní počítače Azure ARC jsou uvedené v následující tabulce.
 
-|Název |Popis |Typ |
+|Name |Description |Typ |
 |-----|------------|-----|
 | [Preview]: Agent Log Analytics by měl být nainstalovaný na vašich počítačích ARC pro Linux Azure. |Sestavuje hybridní počítače Azure ARC jako nedodržující předpisy pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
 | [Preview]: Agent Log Analytics by měl být nainstalovaný na vašich počítačích ARC Windows Azure. |Sestavuje hybridní počítače Azure ARC jako nevyhovující pro virtuální počítače s Windows, pokud je v seznamu definovaná image virtuálního počítače a Agent není nainstalovaný. |Zásada |
@@ -111,7 +111,7 @@ Definice zásad pro hybridní počítače Azure ARC jsou uvedené v následujíc
 
 Definice zásad pro sadu škálování virtuálního počítače Azure jsou uvedené v následující tabulce.
 
-|Název |Popis |Typ |
+|Name |Description |Typ |
 |-----|------------|-----|
 |Povolit Azure Monitor pro Virtual Machine Scale Sets |Povolte Azure Monitor pro sadu škálování virtuálního počítače v zadaném oboru (skupina pro správu, předplatné nebo skupinu prostředků). Jako parametr převezme Log Analytics pracovní prostor. Poznámka: Pokud je vaše zásada upgradu sady škálování nastavená na ruční, použijte rozšíření na všechny virtuální počítače v sadě voláním upgradu. V rozhraní příkazového řádku je to `az vmss update-instances` . |Dávat |
 |Auditování nasazení agenta závislostí ve virtuálních počítačích Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
@@ -123,7 +123,7 @@ Definice zásad pro sadu škálování virtuálního počítače Azure jsou uved
 
 Samostatné zásady (nezahrnuté v iniciativě) jsou popsané tady:
 
-|Název |Popis |Typ |
+|Name |Description |Typ |
 |-----|------------|-----|
 |Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestavy |Vykázat virtuální počítače jako nedodržující předpisy, pokud se neprotokolují do Log Analyticsho pracovního prostoru zadaného v přiřazení zásady nebo iniciativy. |Zásada |
 
@@ -133,7 +133,7 @@ Pokud chcete vytvořit přiřazení zásad na stránce **Azure monitor pro virtu
 
 Když přiřadíte zásadu nebo iniciativu, může být obor vybraný v přiřazení oborem uvedeným zde nebo podmnožinou. Například jste mohli vytvořit přiřazení pro předplatné (rozsah zásad), nikoli skupinu pro správu (rozsah pokrytí). V takovém případě procento pokrytí by znamenalo, že virtuální počítače v oboru zásad nebo iniciativy jsou dělené virtuálními počítači v oboru pokrytí. V jiném případě jste možná vyloučili některé virtuální počítače nebo skupiny prostředků nebo předplatné z oboru zásad. Pokud je prázdný, znamená to, že buď zásada nebo podnět neexistuje, nebo nemáte oprávnění. Informace jsou k dispozici v části **stav přiřazení**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyberte **monitorovat**. 
 
@@ -163,7 +163,7 @@ Po vytvoření přiřazení aktualizuje stránka **pokrytí zásad Azure monitor
 
 Následující matice mapuje všechny možné stavy dodržování předpisů pro iniciativu.  
 
-| Stav dodržování předpisů | Popis | 
+| Stav dodržování předpisů | Description | 
 |------------------|-------------|
 | **Odpovídající** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
 | **Nedodržující předpisy** | Ne všechny virtuální počítače v oboru nemají Log Analytics a v nich jsou nasazeni agenti závislostí a mohou vyžadovat nápravu.|
@@ -175,7 +175,7 @@ Následující matice mapuje všechny možné stavy dodržování předpisů pro
 
 Následující tabulka namapuje všechny možné stavy přiřazení pro iniciativu.
 
-| Stav přiřazení | Popis | 
+| Stav přiřazení | Description | 
 |------------------|-------------|
 | **Nástup** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
 | **Upozornění** | Předplatné není ve skupině pro správu.|
@@ -215,7 +215,7 @@ Na základě výsledků zásad, které jsou součástí iniciativy, se virtuáln
 Kdykoli poté, co přiřadíte iniciativu ke skupině nebo předplatnému pro správu, můžete ji upravit a upravit následující vlastnosti:
 
 - Název přiřazení
-- Popis
+- Description
 - Přiřadil
 - Pracovní prostor služby Log Analytics
 - Výjimky

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
 ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507071"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
@@ -69,7 +69,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 Pokud nemáte pracovní prostor Log Analytics, můžete ho vytvořit pomocí jednoho z prostředků:
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [portál Azure](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Pracovní prostor můžete také vytvořit, když povolíte monitorování pro jeden virtuální počítač Azure nebo sadu škálování virtuálního počítače v Azure Portal.
@@ -171,7 +171,7 @@ V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat r
 
 Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje v hybridním prostředí.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporuje se | Description |
 |:--|:--|:--|
 | Agenti systému Windows | Yes | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Agenti systému Linux | Yes | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
@@ -194,7 +194,7 @@ Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analyt
 
 Povolte Azure Monitor pro virtuální počítače pomocí jedné z metod popsaných v této tabulce:
 
-| Stav nasazení | Metoda | Popis |
+| Stav nasazení | Metoda | Description |
 |------------------|--------|-------------|
 | Jeden virtuální počítač Azure, Azure VMSS nebo počítač ARC Azure | [Povolit z portálu](vminsights-enable-single-vm.md) | Vyberte si **přehledy** přímo z nabídky v Azure Portal. |
 | Několik virtuálních počítačů Azure, Azure VMSS nebo počítače s obloukem Azure | [Povolit prostřednictvím Azure Policy](vminsights-enable-at-scale-policy.md) | Při vytvoření virtuálního počítače nebo VMSS použijte Azure Policy k automatickému povolení. |

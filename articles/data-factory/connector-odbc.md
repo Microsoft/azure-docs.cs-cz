@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: jingwang
 ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506527"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do datových úložišť rozhraní ODBC pomocí Azure Data Factory
@@ -154,9 +154,9 @@ Pokud chcete kopírovat data z úložiště dat kompatibilního s rozhraním ODB
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OdbcSource** . | Yes |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -204,7 +204,7 @@ Chcete-li kopírovat data do úložiště dat kompatibilního s rozhraním ODBC,
 > [!NOTE]
 > Pokud je "writeBatchSize", pokud není nastavené (automaticky se zjistilo), aktivita kopírování nejprve zjistí, jestli ovladač podporuje operace dávkového zpracování, a nastavte ho 10000 na 1, pokud tomu tak je, nebo ho nastavte na 1, pokud ne. Pokud jste explicitně nastavili jinou hodnotu než 0, aktivita kopírování tuto hodnotu respektuje a za běhu se nezdařila, pokud ovladač nepodporuje operace dávkového zpracování.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
 ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506969"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
@@ -74,7 +74,7 @@ Každý datový bod odeslaný do Azure Monitor musí být označený pomocí ča
 ### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí
@@ -231,7 +231,7 @@ Aktivní časová řada je definovaná jako jakákoli jedinečná kombinace metr
 
 ## <a name="next-steps"></a>Další kroky
 Použijte vlastní metriky z různých služeb: 
- - [Virtuální počítače](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Škálovací sada virtuálních počítačů](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Virtual Machines Azure (Classic)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuální počítač se systémem Linux pomocí agenta telegraf](collect-custom-metrics-linux-telegraf.md)

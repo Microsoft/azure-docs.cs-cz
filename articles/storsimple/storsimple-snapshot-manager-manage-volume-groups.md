@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 97bb232f726dada5241242e4a1d90e120c07e38c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85506255"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Použití Snapshot Manager StorSimple k vytváření a správě skupin svazků
@@ -48,9 +48,9 @@ Všechny tyto akce jsou také k dispozici v podokně **Akce** .
 ## <a name="view-volume-groups"></a>Zobrazit skupiny svazků
 Pokud kliknete na uzel **skupiny svazků** , v podokně **výsledků** se zobrazí následující informace o každé skupině svazků v závislosti na výběrech sloupců, které provedete. (Sloupce v podokně **výsledků** se dají konfigurovat. Klikněte pravým tlačítkem myši na uzel **svazky** , vyberte možnost **zobrazení**a pak vyberte možnost **Přidat nebo odebrat sloupce**.)
 
-| Sloupec výsledků | Popis |
+| Sloupec výsledků | Description |
 |:--- |:--- |
-| Název |Sloupec **název** obsahuje název skupiny svazků. |
+| Name |Sloupec **název** obsahuje název skupiny svazků. |
 | Aplikace |Sloupec **aplikace** zobrazuje počet zapisovačů VSS aktuálně nainstalovaných a spuštěných na hostiteli Windows. |
 | Vybráno |**Vybraný** sloupec zobrazuje počet svazků, které jsou obsaženy ve skupině svazků. Nula (0) znamená, že ke svazkům ve skupině svazků není přidružena žádná aplikace. |
 | Dovážel |**Importovaný** sloupec zobrazuje počet importovaných svazků. Když se nastaví na **true**, v tomto sloupci se zobrazí zpráva o tom, že skupina svazků byla naimportována z Azure Portal a nebyla vytvořena v Snapshot Manager StorSimple. |
