@@ -14,10 +14,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fef9059700e2bd94029c40bb819870a7174e0812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74930117"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním Azure Data Factory
@@ -74,7 +73,7 @@ Předpokládejme, že máte vstupní složky v následujícím formátu:
     2016/03/01/03
     ...
 
-Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte jednu z těchto složek (například 2016->03->01->02) a klikněte na **zvolit**. Mělo by se `2016/03/01/02` zobrazit v textovém poli. Nyní nahraďte **2016** **řetězcem** **{year}**, **03** a **{month}**, **01** s **{Day}** a **02** a stiskněte klávesu **TAB** . Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
+Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte jednu z těchto složek (například 2016->03->01->02) a klikněte na **zvolit**. Mělo by se zobrazit `2016/03/01/02` v textovém poli. Nyní nahraďte **2016** **řetězcem** **{year}**, **03** a **{month}**, **01** s **{Day}** a **02** a stiskněte klávesu **TAB** . Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
 
 ![Použití systémových proměnných](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 

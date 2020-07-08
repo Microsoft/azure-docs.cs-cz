@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75426641"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Vzdálená komunikace služby v jazyce Java s Reliable Services
@@ -67,7 +66,7 @@ class MyServiceImpl extends StatelessService implements MyService {
 >
 
 ## <a name="call-remote-service-methods"></a>Volání metod vzdálené služby
-Volání metod na službu pomocí zásobníku vzdálené komunikace se provádí pomocí místního proxy serveru přes `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` třídu. `ServiceProxyBase` Metoda vytvoří místní proxy server pomocí stejného rozhraní, které služba implementuje. Pomocí tohoto proxy serveru můžete jednoduše volat metody na rozhraní vzdáleně.
+Volání metod na službu pomocí zásobníku vzdálené komunikace se provádí pomocí místního proxy serveru přes `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` třídu. `ServiceProxyBase`Metoda vytvoří místní proxy server pomocí stejného rozhraní, které služba implementuje. Pomocí tohoto proxy serveru můžete jednoduše volat metody na rozhraní vzdáleně.
 
 ```java
 
@@ -80,13 +79,13 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 Rozhraní vzdálené komunikace šíří výjimky vyvolané ve službě klientovi. Proto logika zpracování výjimek v klientovi pomocí `ServiceProxyBase` může přímo zpracovat výjimky, které služba vyvolá.
 
 ## <a name="service-proxy-lifetime"></a>Doba života proxy služby
-Vytváření ServiceProxy je odlehčená operace, takže můžete vytvořit tolik, kolik potřebujete. Instance proxy služby se dají znovu použít, pokud jsou potřeba. Pokud vzdálené volání procedury vyvolá výjimku, můžete přesto použít stejnou instanci proxy. Každý ServiceProxy obsahuje komunikačního klienta, který slouží k posílání zpráv přes drát. Při vyvolání vzdálených volání se provádí interní kontroly, které určují, jestli je komunikační klient platný. V závislosti na výsledcích těchto kontrol se komunikační klient v případě potřeby znovu vytvoří. Proto pokud dojde k výjimce, není nutné znovu vytvořit `ServiceProxy`.
+Vytváření ServiceProxy je odlehčená operace, takže můžete vytvořit tolik, kolik potřebujete. Instance proxy služby se dají znovu použít, pokud jsou potřeba. Pokud vzdálené volání procedury vyvolá výjimku, můžete přesto použít stejnou instanci proxy. Každý ServiceProxy obsahuje komunikačního klienta, který slouží k posílání zpráv přes drát. Při vyvolání vzdálených volání se provádí interní kontroly, které určují, jestli je komunikační klient platný. V závislosti na výsledcích těchto kontrol se komunikační klient v případě potřeby znovu vytvoří. Proto pokud dojde k výjimce, není nutné znovu vytvořit `ServiceProxy` .
 
 ### <a name="serviceproxyfactory-lifetime"></a>Doba života ServiceProxyFactory
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) je objekt pro vytváření, který vytváří proxy pro různá rozhraní pro vzdálenou komunikaci. Pokud používáte rozhraní API `ServiceProxyBase.create` pro vytvoření proxy serveru, pak rozhraní vytvoří `FabricServiceProxyFactory`.
+[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) je objekt pro vytváření, který vytváří proxy pro různá rozhraní pro vzdálenou komunikaci. Pokud používáte rozhraní API `ServiceProxyBase.create` pro vytvoření proxy serveru, pak rozhraní vytvoří `FabricServiceProxyFactory` .
 Je vhodné ho vytvořit ručně, když potřebujete přepsat vlastnosti [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) .
 Továrna je náročná operace. `FabricServiceProxyFactory`udržuje mezipaměť komunikačních klientů.
-Osvědčeným postupem je ukládání `FabricServiceProxyFactory` do mezipaměti, pokud je to možné.
+Osvědčeným postupem je ukládání do mezipaměti `FabricServiceProxyFactory` , pokud je to možné.
 
 ## <a name="remoting-exception-handling"></a>Zpracování výjimek vzdálené komunikace
 Veškerá vzdálená výjimka vyvolaná rozhraním API služby se pošle zpátky klientovi buď jako RuntimeException – nebo FabricException.

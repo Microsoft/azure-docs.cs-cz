@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c7511279e66ab598e4ae3c26f053915b7393b39d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74978386"
 ---
 # <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine 
@@ -27,7 +26,7 @@ K nakonfigurování a vyžádání licencí Google Widevine můžete použít Az
 Žádost o licenci Widevine je naformátovaná jako zpráva JSON.  
 
 >[!NOTE]
-> Můžete vytvořit prázdnou zprávu bez hodnot, stačí "{}." Pak se vytvoří šablona licence s výchozími hodnotami. Výchozí hodnota funguje ve většině případů. Scénáře pro doručování licencí založené na Microsoftu by měly vždycky používat výchozí hodnoty. Pokud potřebujete nastavit hodnoty "Provider" a "content_id", poskytovatel musí odpovídat přihlašovacím údajům Widevine.
+> Můžete vytvořit prázdnou zprávu bez hodnot, stačí " {} ." Pak se vytvoří šablona licence s výchozími hodnotami. Výchozí hodnota funguje ve většině případů. Scénáře pro doručování licencí založené na Microsoftu by měly vždycky používat výchozí hodnoty. Pokud potřebujete nastavit hodnoty "Provider" a "content_id", poskytovatel musí odpovídat přihlašovacím údajům Widevine.
 
     {  
        "payload": "<license challenge>",
@@ -59,7 +58,7 @@ K nakonfigurování a vyžádání licencí Google Widevine můžete použít Az
     }
 
 ## <a name="json-message"></a>Zpráva JSON
-| Název | Hodnota | Popis |
+| Name | Hodnota | Description |
 | --- | --- | --- |
 | payload |Řetězec s kódováním base64 |Žádost o licenci odeslanou klientem |
 | content_id |Řetězec s kódováním base64 |Identifikátor použitý k odvození ID klíče a klíče obsahu pro každý content_key_specs. track_type |
@@ -77,7 +76,7 @@ Pokud existují existující zásady, není nutné zadávat žádné hodnoty ve 
 
 Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohledu na možnost use_policy_overrides_exclusively. 
 
-| Název | Hodnota | Popis |
+| Name | Hodnota | Description |
 | --- | --- | --- |
 | content_key_specs. track_type |řetězec |Název typu stopy. Je-li v žádosti o licenci zadán content_key_specs, nezapomeňte explicitně zadat všechny typy sledování. V důsledku tohoto selhání dojde k selhání při přehrání posledních 10 sekund. |
 | content_key_specs  <br/> security_level |UInt32 |Definuje požadavky na odolnost klienta pro přehrávání. <br/> – Vyžaduje se softwarově vycházející kryptografický modul s prázdným polem. <br/> – Vyžaduje se softwarová kryptografie a zakódováný dekodér. <br/> – Operace klíčového materiálu a kryptografie se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním. <br/> – Kryptografie a dekódování obsahu se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním.  <br/> – Kryptografie, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) se musí zpracovat v rámci důvěryhodného spouštěcího prostředí pro hardware. |
@@ -86,7 +85,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | content_key_specs. key_id |Binární soubor řetězce kódovaný v kódování Base64, 16 bajtů |Jedinečný identifikátor pro klíč |
 
 ## <a name="policy-overrides"></a>Přepsání zásad
-| Název | Hodnota | Popis |
+| Name | Hodnota | Description |
 | --- | --- | --- |
 | policy_overrides. can_play |Logická hodnota, true nebo false |Indikuje, že přehrávání obsahu je povolené. Výchozí hodnota je false. |
 | policy_overrides. can_persist |Logická hodnota, true nebo false |Označuje, že licence může být trvalá pro nestálé úložiště pro použití v offline režimu. Výchozí hodnota je false. |
@@ -101,7 +100,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | policy_overrides. renew_with_usage |Logická hodnota, true nebo false |Indikuje, že licence se posílá k obnovení při zahájení používání. Toto pole se používá pouze v případě, že je can_renew true. |
 
 ## <a name="session-initialization"></a>Inicializace relace
-| Název | Hodnota | Popis |
+| Name | Hodnota | Description |
 | --- | --- | --- |
 | provider_session_token |Řetězec s kódováním base64 |Tento token relace se předává zpátky v licenci a existuje v následných obnoveních. Token relace není po relacích zachován. |
 | provider_client_token |Řetězec s kódováním base64 |Token klienta k odeslání zpět v odpovědi na licenci Pokud žádost o licenci obsahuje token klienta, tato hodnota se ignoruje. Token klienta přetrvá nad rámec licenčních relací. |

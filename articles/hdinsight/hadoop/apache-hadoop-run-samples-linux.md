@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435753"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Spuštění příkladů MapReduce obsažených v HDInsight
@@ -29,11 +28,11 @@ Naučte se spouštět příklady MapReduceů, které jsou součástí Apache Had
 
 ## <a name="the-mapreduce-examples"></a>Příklady MapReduce
 
-Ukázky se nacházejí v clusteru HDInsight na adrese `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`. Zdrojový kód pro tyto ukázky je součástí clusteru HDInsight na adrese `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+Ukázky se nacházejí v clusteru HDInsight na adrese `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` . Zdrojový kód pro tyto ukázky je součástí clusteru HDInsight na adrese `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` .
 
 V tomto archivu jsou uvedené následující ukázky:
 
-|Ukázka |Popis |
+|Ukázka |Description |
 |---|---|
 |aggregatewordcount|Spočítá slova ve vstupních souborech.|
 |aggregatewordhist|Vypočítá histogram slov ve vstupních souborech.|
@@ -94,10 +93,10 @@ V tomto archivu jsou uvedené následující ukázky:
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    Vstup pro tuto úlohu je načtený `/example/data/gutenberg/davinci.txt`z. Výstup v tomto příkladu je uložen v `/example/data/davinciwordcount`. Obě cesty se nacházejí ve výchozím úložišti pro cluster, nikoli v místním systému souborů.
+    Vstup pro tuto úlohu je načtený z `/example/data/gutenberg/davinci.txt` . Výstup v tomto příkladu je uložen v `/example/data/davinciwordcount` . Obě cesty se nacházejí ve výchozím úložišti pro cluster, nikoli v místním systému souborů.
 
    > [!NOTE]  
-   > Jak je uvedeno v nápovědě ke ukázce WORDCOUNT, můžete také zadat více vstupních souborů. Například `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` by bylo třeba spočítat slova v DaVinci. txt i Ulysses. txt.
+   > Jak je uvedeno v nápovědě ke ukázce WORDCOUNT, můžete také zadat více vstupních souborů. Například `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` by bylo třeba spočítat slova v davinci.txt i ulysses.txt.
 
 5. Po dokončení úlohy použijte následující příkaz k zobrazení výstupu:
 
@@ -184,13 +183,13 @@ Tato ukázka používá tři sady MapReduce programů:
 
 Pomocí následujících kroků vygenerujte data, seřaďte je a pak ověřte výstup:
 
-1. Vygenerujte 10 GB dat, která se ukládají do výchozího úložiště clusteru HDInsight v `/example/data/10GB-sort-input`:
+1. Vygenerujte 10 GB dat, která se ukládají do výchozího úložiště clusteru HDInsight v `/example/data/10GB-sort-input` :
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    Instruuje, `-Dmapred.map.tasks` kolik úloh mapování se má pro tuto úlohu použít. Poslední dva parametry instruují úlohu, aby vytvořila 10 GB dat a ukládal ji na `/example/data/10GB-sort-input`.
+    `-Dmapred.map.tasks`Instruuje, kolik úloh mapování se má pro tuto úlohu použít. Poslední dva parametry instruují úlohu, aby vytvořila 10 GB dat a ukládal ji na `/example/data/10GB-sort-input` .
 
 2. Data seřaďte pomocí následujícího příkazu:
 
@@ -198,7 +197,7 @@ Pomocí následujících kroků vygenerujte data, seřaďte je a pak ověřte v�
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    V `-Dmapred.reduce.tasks` této části jsou informace o počtu úloh, které se mají u úlohy používat. Poslední dva parametry jsou pouze vstupní a výstupní umístění pro data.
+    V této části jsou `-Dmapred.reduce.tasks` informace o počtu úloh, které se mají u úlohy používat. Poslední dva parametry jsou pouze vstupní a výstupní umístění pro data.
 
 3. K ověření dat generovaných řazením použijte následující:
 

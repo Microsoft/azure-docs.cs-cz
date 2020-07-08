@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975665"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Výběr distribučních sloupců v Azure Database for PostgreSQL – Citus (škálování)
@@ -28,18 +27,18 @@ Architektura s více klienty používá formu hierarchického modelování datab
 
 Citus () kontroluje dotazy, aby se zobrazilo, které ID tenanta zahrnuje a vyhledá vyhovující tabulku horizontálních oddílů. Směruje dotaz na jeden pracovní uzel, který obsahuje horizontálních oddílů. Spuštění dotazu se všemi relevantními daty umístěnými na stejném uzlu se nazývá společné umístění.
 
-Následující diagram znázorňuje společné umístění v datovém modelu s více klienty. Obsahuje dvě tabulky, účty a kampaně, z `account_id`nichž každý distribuuje. Šedivá pole reprezentují horizontálních oddílů. Zelený horizontálních oddílů je uložen společně na jednom pracovním uzlu a modrý horizontálních oddílů je uložený na jiném pracovním uzlu. Všimněte si, jak dotaz spojení mezi účty a kampaněmi obsahuje všechna data potřebná na jednom uzlu, pokud jsou obě tabulky omezené na stejné ID\_účtu.
+Následující diagram znázorňuje společné umístění v datovém modelu s více klienty. Obsahuje dvě tabulky, účty a kampaně, z nichž každý distribuuje `account_id` . Šedivá pole reprezentují horizontálních oddílů. Zelený horizontálních oddílů je uložen společně na jednom pracovním uzlu a modrý horizontálních oddílů je uložený na jiném pracovním uzlu. Všimněte si, jak dotaz spojení mezi účty a kampaněmi obsahuje všechna data potřebná na jednom uzlu, pokud jsou obě tabulky omezené na stejné \_ ID účtu.
 
 ![Souběžné umístění pro více tenantů](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Chcete-li tento návrh použít ve vašem vlastním schématu, určete, co v aplikaci znamená klienta. Mezi běžné instance patří společnost, účet, organizace nebo zákazník. Název sloupce bude něco podobného `company_id` nebo. `customer_id` Prověřte jednotlivé dotazy a položte si je, kdyby fungovaly, pokud měly další klauzule WHERE k omezení všech tabulek zahrnutých do řádků se stejným ID tenanta?
+Chcete-li tento návrh použít ve vašem vlastním schématu, určete, co v aplikaci znamená klienta. Mezi běžné instance patří společnost, účet, organizace nebo zákazník. Název sloupce bude něco podobného `company_id` nebo `customer_id` . Prověřte jednotlivé dotazy a položte si je, kdyby fungovaly, pokud měly další klauzule WHERE k omezení všech tabulek zahrnutých do řádků se stejným ID tenanta?
 Dotazy v modelu víceklientské architektury jsou vymezeny na tenanta. Například dotazy na prodej nebo inventář jsou vymezeny v rámci určitého úložiště.
 
 #### <a name="best-practices"></a>Osvědčené postupy
 
--   **Rozdělení distribuovaných tabulek pomocí společného sloupce\_ID tenanta** Například v aplikaci SaaS, kde jsou vzdálení klienti, se ID tenanta\_pravděpodobně považuje za ID společnosti\_.
+-   **Rozdělení distribuovaných tabulek pomocí společného \_ sloupce ID tenanta** Například v aplikaci SaaS, kde jsou vzdálení klienti, se ID tenanta \_ pravděpodobně považuje za \_ ID společnosti.
 -   **Převod malých tabulek pro více tenantů na referenční tabulky.** Pokud více klientů sdílí malou tabulku informací, distribuujte ji jako referenční tabulku.
--   **Omezí filtrování všech dotazů aplikace podle ID\_tenanta.** Každý dotaz by měl požadovat informace pro jednoho klienta v jednom okamžiku.
+-   **Omezí filtrování všech dotazů aplikace podle \_ ID tenanta.** Každý dotaz by měl požadovat informace pro jednoho klienta v jednom okamžiku.
 
 Příklad, jak tento druh aplikace sestavit, najdete v [kurzu pro více tenantů](./tutorial-design-database-hyperscale-multi-tenant.md) .
 

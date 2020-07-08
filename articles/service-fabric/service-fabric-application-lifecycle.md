@@ -4,10 +4,9 @@ description: Popisuje vývoj, nasazení, testování, upgrade, údržbu a odebí
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: beeb1f1512cf94582dd561fa768f2e8e6649d686
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378000"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric

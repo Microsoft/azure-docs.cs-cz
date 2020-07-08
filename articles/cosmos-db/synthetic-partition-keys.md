@@ -7,10 +7,9 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75441220"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Vytvoření syntetického klíče oddílu
@@ -19,7 +18,7 @@ Osvědčeným postupem je klíč oddílu s velkým množstvím různých hodnot,
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Zřetězení více vlastností položky
 
-Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jediné umělé `partitionKey` vlastnosti. Tyto klíče se označují jako syntetické klíče. Zvažte například následující příklad dokumentu:
+Klíč oddílu můžete vytvořit zřetězením více hodnot vlastností do jediné umělé `partitionKey` Vlastnosti. Tyto klíče se označují jako syntetické klíče. Zvažte například následující příklad dokumentu:
 
 ```JavaScript
 {
@@ -44,15 +43,15 @@ V případě scénářů v reálném čase můžete mít v databázi tisíce pol
 
 Další možnou strategií pro distribuci úloh je, že se na konci hodnoty klíče oddílu připojí náhodné číslo. Při distribuci položek tímto způsobem můžete provádět paralelní operace zápisu napříč oddíly.
 
-Příkladem je, že klíč oddílu představuje datum. Můžete zvolit náhodné číslo mezi 1 a 400 a zřetězit ho jako příponu k datu. Tato metoda má za následek hodnoty klíče oddílu `2018-08-09.1`jako`2018-08-09.2`, a tak dále `2018-08-09.400`. Vzhledem k tomu, že je klíč oddílu náhodně, operace zápisu na kontejneru v každém dni jsou rovnoměrně rozloženy mezi několik oddílů. Výsledkem této metody je lepší paralelismus a celková vyšší propustnost.
+Příkladem je, že klíč oddílu představuje datum. Můžete zvolit náhodné číslo mezi 1 a 400 a zřetězit ho jako příponu k datu. Tato metoda má za následek hodnoty klíče oddílu jako  `2018-08-09.1` , `2018-08-09.2` a tak dále  `2018-08-09.400` . Vzhledem k tomu, že je klíč oddílu náhodně, operace zápisu na kontejneru v každém dni jsou rovnoměrně rozloženy mezi několik oddílů. Výsledkem této metody je lepší paralelismus a celková vyšší propustnost.
 
 ## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Použít klíč oddílu s předem vypočítanými příponami 
 
 Strategie náhodné přípony může významně zlepšit propustnost zápisu, ale je obtížné si přečíst konkrétní položku. Neznáte hodnotu přípony, která se použila při zapsání položky. Aby bylo snazší číst jednotlivé položky, použijte strategii předběžně vypočítaných přípon. Místo použití náhodného čísla k distribuci položek mezi oddíly použijte číslo, které se vypočítá na základě něčeho, co chcete dotazovat.
 
-Vezměte v úvahu předchozí příklad, kde kontejner používá jako klíč oddílu datum. Nyní předpokládejme, že každá položka má `Vehicle-Identification-Number` atribut`VIN`(), ke kterému chceme získat přístup. Dále Předpokládejme, že často spouštíte dotazy pro hledání položek podle `VIN`data. Předtím, než aplikace zapíše položku do kontejneru, může vypočítat příponu hash založenou na kódu VIN a připojit ji k datu klíče oddílu. Výpočet může vygenerovat číslo mezi 1 a 400, které je rovnoměrně distribuováno. Tento výsledek je podobný výsledkům, které vytvořila metoda strategie náhodné přípony. Hodnota klíče oddílu je pak datum zřetězení s vypočítaným výsledkem.
+Vezměte v úvahu předchozí příklad, kde kontejner používá jako klíč oddílu datum. Nyní předpokládejme, že každá položka má  `Vehicle-Identification-Number` `VIN` atribut (), ke kterému chceme získat přístup. Dále Předpokládejme, že často spouštíte dotazy pro hledání položek podle `VIN` data. Předtím, než aplikace zapíše položku do kontejneru, může vypočítat příponu hash založenou na kódu VIN a připojit ji k datu klíče oddílu. Výpočet může vygenerovat číslo mezi 1 a 400, které je rovnoměrně distribuováno. Tento výsledek je podobný výsledkům, které vytvořila metoda strategie náhodné přípony. Hodnota klíče oddílu je pak datum zřetězení s vypočítaným výsledkem.
 
-V této strategii jsou zápisy rovnoměrně rozloženy mezi hodnoty klíčů oddílu a mezi oddíly. Můžete snadno přečíst konkrétní položku a datum, protože můžete vypočítat hodnotu klíče oddílu pro konkrétní `Vehicle-Identification-Number`. Výhodou této metody je, že se můžete vyhnout vytváření jediného aktivního klíče oddílu, tj. klíč oddílu, který přebírá všechny úlohy. 
+V této strategii jsou zápisy rovnoměrně rozloženy mezi hodnoty klíčů oddílu a mezi oddíly. Můžete snadno přečíst konkrétní položku a datum, protože můžete vypočítat hodnotu klíče oddílu pro konkrétní `Vehicle-Identification-Number` . Výhodou této metody je, že se můžete vyhnout vytváření jediného aktivního klíče oddílu, tj. klíč oddílu, který přebírá všechny úlohy. 
 
 ## <a name="next-steps"></a>Další kroky
 

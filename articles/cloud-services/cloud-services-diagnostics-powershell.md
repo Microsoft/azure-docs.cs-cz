@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
 ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386540"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Povolení diagnostiky v Azure Cloud Services s využitím PowerShellu
@@ -80,7 +79,7 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online používá podobný přístup pro automatizované nasazení Cloud Services s diagnostickým rozšířením. Úplný příklad naleznete v tématu [Publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) .
+Visual Studio Online používá podobný přístup pro automatizované nasazení Cloud Services s diagnostickým rozšířením. Úplný příklad najdete v tématu [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) .
 
 Pokud se `StorageAccount` v konfiguraci diagnostiky nezadal žádný, pak musíte rutinu předat parametr *StorageAccountName* . Je-li zadán parametr *StorageAccountName* , rutina vždy použije účet úložiště, který je zadán v parametru, a nikoli ten, který je zadán v konfiguračním souboru diagnostiky.
 

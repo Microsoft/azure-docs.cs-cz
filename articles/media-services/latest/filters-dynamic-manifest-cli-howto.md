@@ -15,10 +15,9 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896072"
 ---
 # <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku 
@@ -104,7 +103,7 @@ Podívejte se také na [Příklady JSON pro filtry](https://docs.microsoft.com/r
 
 Můžete určit seznam filtrů Asset nebo Account, které se vztahují na Lokátor streamování. [Dynamický balíček (koncový bod streamování)](dynamic-packaging-overview.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-overview.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. Tuto funkci doporučujeme používat, pokud chcete použít filtry, ale nechcete vystavit názvy filtrů v adrese URL.
 
-Následující kód CLI ukazuje, jak vytvořit Lokátor streamování a zadat `filters`. Toto je volitelná vlastnost, která přijímá seznam názvů filtrů assetů oddělených mezerami nebo názvy filtrů účtů.
+Následující kód CLI ukazuje, jak vytvořit Lokátor streamování a zadat `filters` . Toto je volitelná vlastnost, která přijímá seznam názvů filtrů assetů oddělených mezerami nebo názvy filtrů účtů.
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \

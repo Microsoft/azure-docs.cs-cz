@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434740"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientské architektury 
@@ -304,7 +303,7 @@ Vzorový kód simuluje spouštěcí sekvenci zařízení, která odesílá poža
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Otevřete **~/Azure-IoT-SDK-c/Provisioning\_Client/Samples/\_prov\_dev\_Client Sample/\_prov\_dev\_Client Sample. c** pro úpravy na obou virtuálních počítačích.
+1. Otevřete **~/Azure-IoT-SDK-c/Provisioning \_ Client/Samples/prov \_ dev \_ Client \_ Sample/prov \_ dev \_ Client \_ Sample. c** pro úpravy na obou virtuálních počítačích.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -316,7 +315,7 @@ Vzorový kód simuluje spouštěcí sekvenci zařízení, která odesílá poža
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Ve stejném souboru vyhledejte definici funkce `main()`. Ujistěte se, `hsm_type` že je proměnná nastavená tak `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` , jak je uvedeno níže, aby odpovídala metodě ověření skupiny registrací. 
+1. Ve stejném souboru vyhledejte definici funkce `main()`. Ujistěte se, že `hsm_type` je proměnná nastavená tak `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` , jak je uvedeno níže, aby odpovídala metodě ověření skupiny registrací. 
 
     Uložte změny do souborů na obou virtuálních počítačích.
 
@@ -327,7 +326,7 @@ Vzorový kód simuluje spouštěcí sekvenci zařízení, která odesílá poža
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. Na obou virtuálních počítačích Najděte `prov_dev_set_symmetric_key_info()` volání v části **prov\_dev\_Client\_Sample. c** , který je zakomentován.
+1. Na obou virtuálních počítačích Najděte volání v části `prov_dev_set_symmetric_key_info()` **prov \_ dev \_ Client \_ Sample. c** , který je zakomentován.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -357,7 +356,7 @@ Vzorový kód simuluje spouštěcí sekvenci zařízení, která odesílá poža
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Po úspěšném sestavení spusťte na obou virtuálních počítačích příkaz **prov\_dev\_Client\_Sample. exe** , abyste mohli simulovat klientské zařízení z každé oblasti. Všimněte si, že každé zařízení je přiděleno ke službě IoT Hub tenanta nejbližší k oblastem simulovaného zařízení.
+1. Po úspěšném sestavení spusťte příkaz **prov \_ dev \_ Client \_sample.exe** na obou virtuálních počítačích pro simulaci zařízení tenanta z každé oblasti. Všimněte si, že každé zařízení je přiděleno ke službě IoT Hub tenanta nejbližší k oblastem simulovaného zařízení.
 
     Spusťte simulaci:
     ```bash

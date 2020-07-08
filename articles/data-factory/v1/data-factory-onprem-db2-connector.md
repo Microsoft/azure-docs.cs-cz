@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74931786"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesunutí dat z DB2 pomocí aktivity kopírování Azure Data Factory
@@ -78,32 +77,32 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="db2-linked-service-properties"></a>Vlastnosti propojené služby DB2
 V následující tabulce jsou uvedeny vlastnosti JSON, které jsou specifické pro propojenou službu DB2.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| **textový** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
-| **WebServer** |Název serveru DB2. |Ano |
-| **databáze** |Název databáze DB2. |Ano |
-| **XSD** |Název schématu v databázi DB2. Tato vlastnost rozlišuje velká a malá písmena. |Ne |
-| **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
-| **jmen** |Název uživatelského účtu, pokud použijete základní ověřování nebo ověřování systému Windows. |Ne |
-| **heslo** |Heslo pro uživatelský účet. |Ne |
-| **gatewayName** |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
+| **textový** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Yes |
+| **WebServer** |Název serveru DB2. |Yes |
+| **databáze** |Název databáze DB2. |Yes |
+| **XSD** |Název schématu v databázi DB2. Tato vlastnost rozlišuje velká a malá písmena. |No |
+| **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a Windows. |Yes |
+| **jmen** |Název uživatelského účtu, pokud použijete základní ověřování nebo ověřování systému Windows. |No |
+| **heslo** |Heslo pro uživatelský účet. |No |
+| **gatewayName** |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi DB2. |Yes |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, například **Struktura**, **dostupnost**a **zásady** pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob Storage, Azure Table Storage atd.).
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu **relačních**typů, která zahrnuje datovou sadu DB2, má následující vlastnost:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| **Tabulky** |Název tabulky instance databáze DB2, na kterou odkazuje propojená služba. Tato vlastnost rozlišuje velká a malá písmena. |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
+| **tableName** |Název tabulky instance databáze DB2, na kterou odkazuje propojená služba. Tato vlastnost rozlišuje velká a malá písmena. |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit kopírování, najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Vlastnosti aktivity kopírování, jako je **název**, **Popis**, **vstupy** , tabulka **výstupů** a **zásady**, jsou dostupné pro všechny typy aktivit. Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se liší pro každý typ aktivity. V případě aktivity kopírování se vlastnosti liší v závislosti na typech zdrojů dat a jímky.
 
 V případě aktivity kopírování, pokud je zdrojem typu **RelationalSource** (který zahrnuje DB2), jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | **zadávání** |K načtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 
@@ -310,21 +309,21 @@ Následující mapování se používají, když aktivita kopírování převede
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Single |
+| Skutečné |Jeden |
 | Double |Double |
-| Plovoucí desetinná čárka |Double |
+| Float |Double |
 | Desetinné číslo |Desetinné číslo |
 | DecimalFloat |Desetinné číslo |
 | Numeric |Desetinné číslo |
 | Datum |DateTime |
-| Time |TimeSpan |
+| Čas |TimeSpan |
 | Časové razítko |DateTime |
 | XML |Byte [] |
 | Char |Řetězec |
 | VarChar |Řetězec |
 | LongVarChar |Řetězec |
 | DB2DynArray |Řetězec |
-| binární |Byte [] |
+| Binární |Byte [] |
 | VarBinary |Byte [] |
 | LongVarBinary |Byte [] |
 | Objekty |Řetězec |
@@ -336,14 +335,14 @@ Následující mapování se používají, když aktivita kopírování převede
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Single |
+| Skutečné |Jeden |
 | Double |Double |
-| Plovoucí desetinná čárka |Double |
+| Float |Double |
 | Desetinné číslo |Desetinné číslo |
 | DecimalFloat |Desetinné číslo |
 | Numeric |Desetinné číslo |
 | Datum |DateTime |
-| Time |TimeSpan |
+| Čas |TimeSpan |
 | Časové razítko |DateTime |
 | XML |Byte [] |
 | Char |Řetězec |

@@ -16,10 +16,9 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74969135"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí castLabs 
@@ -68,7 +67,7 @@ Následující tabulka popisuje token JWT v AMS.
 
 Následující tabulka popisuje token JWT v castLabs. 
 
-| Název | Popis |
+| Name | Description |
 | --- | --- |
 | optData |Řetězec JSON obsahující informace o vás. |
 | promítací |Řetězec JSON obsahující informace o assetu, licenční informace a práva k přehrávání. |
@@ -84,7 +83,7 @@ Následující tabulka popisuje token JWT v castLabs.
 
 Použití konzolové aplikace:
 
-1. Změňte soubor App. config a nastavte přihlašovací údaje AMS, castLabs přihlašovací údaje, konfiguraci STS a sdílený klíč.
+1. Změňte app.config pro nastavení přihlašovacích údajů AMS, přihlašovacích údajů castLabs, konfigurace STS a sdíleného klíče.
 2. Nahrajte Asset do AMS.
 3. Získat UUID z nahraného Assetu a změnit řádek 32 v souboru Program.cs:
    
@@ -96,7 +95,7 @@ Použití konzolové aplikace:
 
 Použití webové aplikace (STS):
 
-1. Změnou souboru Web. config nastavte castlabs obchodní ID, konfiguraci služby STS a sdílený klíč.
+1. Změňte web.config, aby se castlabs nastavení obchodního ID, konfigurace služby STS a sdíleného klíče.
 2. Nasazení na Azure websites.
 3. Přejděte na web.
 

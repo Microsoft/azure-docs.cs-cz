@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360340"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak aktualizovat cloudovou službu
@@ -53,7 +52,7 @@ V následující tabulce jsou uvedeny povolené změny služby během aktualizac
 | Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Ano |Ano |
 | Přidání nebo odebrání rolí ve službě |Ano |Ano |Ano |
 | Počet instancí konkrétní role |Ano |Ano |Ano |
-| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |Ne |Ano |
+| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Yes |
 | Názvy a hodnoty nastavení konfigurace |Ano |Ano |Ano |
 | Hodnoty (ale ne názvy) nastavení konfigurace |Ano |Ano |Ano |
 | Přidat nové certifikáty |Ano |Ano |Ano |
@@ -124,7 +123,7 @@ Azure poskytuje flexibilitu při správě služeb během aktualizace tím, že v
 Vrácení probíhající aktualizace má na nasazení následující důsledky:
 
 * Jakékoli instance rolí, které ještě nebyly aktualizovány nebo upgradovány na novou verzi, nejsou aktualizovány ani upgradovány, protože tyto instance jsou již spuštěny cílovou verzí služby.
-* Všechny instance rolí, které již byly aktualizovány nebo upgradovány na novou verzi souboru balíčku služby (\*. cspkg) nebo soubor konfigurace služby (\*. cscfg), jsou vráceny na verzi předběžného upgradu těchto souborů.
+* Všechny instance rolí, které již byly aktualizovány nebo upgradovány na novou verzi souboru balíčku služby ( \* . cspkg) nebo soubor konfigurace služby ( \* . cscfg), jsou vráceny na verzi předběžného upgradu těchto souborů.
 
 Tato funkce je poskytována následujícími funkcemi:
 

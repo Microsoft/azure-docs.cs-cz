@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349307"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors serializaci typu
 Argumenty všech metod, výsledné typy úloh vrácených každou metodou v rozhraní objektu actor a objekty uložené ve Správci stavu objektu actor musí být [serializovatelné kontraktu dat](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí také pro argumenty metod definovaných v [rozhraních událostí objektu actor](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu actor vždy vracejí typ void.)
 
 ## <a name="custom-data-types"></a>Vlastní datové typy
-V tomto příkladu následující rozhraní objektu actor definuje metodu, která vrací vlastní datový typ s názvem `VoicemailBox`:
+V tomto příkladu následující rozhraní objektu actor definuje metodu, která vrací vlastní datový typ s názvem `VoicemailBox` :
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -68,7 +67,7 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-V tomto příkladu je `VoicemailBox` objekt serializován v těchto případech:
+V tomto příkladu `VoicemailBox` je objekt serializován v těchto případech:
 
 * Objekt je přenášen mezi instancí objektu actor a volajícím.
 * Objekt je uložen ve Správci stavu, kde je trvalý na disk a replikován do jiných uzlů.

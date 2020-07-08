@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348920"
 ---
 # <a name="reliable-actors-state-management"></a>Správa stavu Reliable Actors
@@ -72,9 +71,9 @@ class MyActorImpl extends FabricActor implements MyActor
 Toto nastavení používá zprostředkovatele stavu pouze v paměti a nastavuje počet replik na hodnotu 1.
 
 ### <a name="defaults-and-generated-settings"></a>Výchozí a vygenerovaná nastavení
-Při použití `StatePersistence` atributu je poskytovatel stavu automaticky vybrán za běhu při spuštění služby objektu actor. Počet replik je však nastaven v době kompilace pomocí nástrojů sestavení actor sady Visual Studio. Nástroje pro sestavení automaticky generují *výchozí službu* pro službu objektu actor v souboru ApplicationManifest. XML. Jsou vytvořeny parametry pro **minimální velikost sady replik** a **Velikost cílové sady replik**.
+Při použití `StatePersistence` atributu je poskytovatel stavu automaticky vybrán za běhu při spuštění služby objektu actor. Počet replik je však nastaven v době kompilace pomocí nástrojů sestavení actor sady Visual Studio. Nástroje pro sestavení automaticky generují *výchozí službu* pro službu objektu actor v ApplicationManifest.xml. Jsou vytvořeny parametry pro **minimální velikost sady replik** a **Velikost cílové sady replik**.
 
-Tyto parametry můžete změnit ručně. Ale pokaždé, `StatePersistence` když je atribut změněn, jsou parametry nastaveny na výchozí hodnoty velikosti sady replik pro vybraný `StatePersistence` atribut a přepsaly všechny předchozí hodnoty. Jinými slovy hodnoty, které jste nastavili v souboru ServiceManifest. XML, budou přepsány *pouze* při sestavení v `StatePersistence` době, kdy změníte hodnotu atributu.
+Tyto parametry můžete změnit ručně. Ale pokaždé `StatePersistence` , když je atribut změněn, jsou parametry nastaveny na výchozí hodnoty velikosti sady replik pro vybraný `StatePersistence` atribut a přepsaly všechny předchozí hodnoty. Jinými slovy hodnoty, které jste nastavili v ServiceManifest.xml jsou přepsány *pouze* při sestavení při změně `StatePersistence` hodnoty atributu.
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">

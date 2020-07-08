@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75426228"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do Stream Analytics geoprostorové funkce
@@ -30,7 +29,7 @@ Jazyk Stream Analytics dotazů má sedm integrovaných geoprostorovéch funkcí:
 
 ## <a name="createlinestring"></a>CreateLineString
 
-`CreateLineString` Funkce akceptuje body a vrátí LineString pro inline JSON, který lze vykreslit jako čáru na mapě. Abyste mohli vytvořit LineString, musíte mít aspoň dva body. Body LineString budou připojené v daném pořadí.
+`CreateLineString`Funkce akceptuje body a vrátí LineString pro inline JSON, který lze vykreslit jako čáru na mapě. Abyste mohli vytvořit LineString, musíte mít aspoň dva body. Body LineString budou připojené v daném pořadí.
 
 Následující dotaz slouží `CreateLineString` k vytvoření LineString pomocí tří bodů. První bod je vytvořen ze streamování vstupních dat, zatímco ostatní dva jsou vytvořeny ručně.
 
@@ -57,7 +56,7 @@ Další informace najdete v referenčních informacích k [CreateLineString](htt
 
 ## <a name="createpoint"></a>CreatePoint
 
-`CreatePoint` Funkce přijímá zeměpisnou šířku a délku a vrací bodový bod JSON, který lze vykreslit na mapě. Vaše Latitudes a zeměpisná délka musí být typu **float** .
+`CreatePoint`Funkce přijímá zeměpisnou šířku a délku a vrací bodový bod JSON, který lze vykreslit na mapě. Vaše Latitudes a zeměpisná délka musí být typu **float** .
 
 Následující příklad dotazu používá `CreatePoint` k vytvoření bodu pomocí Latitudes a délky ze streamování vstupních dat.
 
@@ -84,7 +83,7 @@ Další informace najdete v referenčních informacích k [CreatePoint](https://
 
 ## <a name="createpolygon"></a>CreatePolygon
 
-`CreatePolygon` Funkce akceptuje body a vrátí záznam mnohoúhelníku pro injson. Pořadí bodů musí následovat po orientaci na pravé straně nebo proti směru hodinových ručiček. Představte si procházení od jednoho bodu k druhému v pořadí, ve kterém byly deklarovány. Střed mnohoúhelníku by byl pro celý čas.
+`CreatePolygon`Funkce akceptuje body a vrátí záznam mnohoúhelníku pro injson. Pořadí bodů musí následovat po orientaci na pravé straně nebo proti směru hodinových ručiček. Představte si procházení od jednoho bodu k druhému v pořadí, ve kterém byly deklarovány. Střed mnohoúhelníku by byl pro celý čas.
 
 Následující příklad dotazu používá `CreatePolygon` k vytvoření mnohoúhelníku ze tří bodů. První dva body jsou vytvořeny ručně a poslední bod je vytvořen ze vstupních dat.
 
@@ -111,9 +110,9 @@ Další informace najdete v referenčních informacích k [CreatePolygon](https:
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE` Funkce vrací vzdálenost mezi dvěma body v metrech. 
+`ST_DISTANCE`Funkce vrací vzdálenost mezi dvěma body v metrech. 
 
-Následující dotaz vygeneruje `ST_DISTANCE` událost, když je čerpací stanice menší než 10 km od auta.
+Následující dotaz `ST_DISTANCE` vygeneruje událost, když je čerpací stanice menší než 10 km od auta.
 
 ```SQL
 SELECT Cars.Location, Station.Location 
@@ -124,9 +123,9 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 Další informace najdete v referenčních informacích k [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) .
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS` Funkce porovná dva mnohoúhelníky. Pokud se mnohoúhelníky překrývají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se mnohoúhelníky nepřekrývají. 
+`ST_OVERLAPS`Funkce porovná dva mnohoúhelníky. Pokud se mnohoúhelníky překrývají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se mnohoúhelníky nepřekrývají. 
 
-Následující dotaz vygeneruje `ST_OVERLAPS` událost, když je budova v rámci možné zóny zahlcení.
+Následující dotaz `ST_OVERLAPS` vygeneruje událost, když je budova v rámci možné zóny zahlcení.
 
 ```SQL
 SELECT Building.Polygon, Building.Polygon 
@@ -145,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 Další informace najdete v referenčních informacích k [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) .
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS` Funkce porovná dvě LineString. Pokud se LineString protínají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se LineString neprotínají.
+`ST_INTERSECTS`Funkce porovná dvě LineString. Pokud se LineString protínají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se LineString neprotínají.
 
 Následující příklad dotazu používá `ST_INTERSECTS` k určení, jestli se pavedá cesta překládá na nečistotě.
 
@@ -171,7 +170,7 @@ FROM input
 Další informace najdete v referenčních informacích k [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) .
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN` Funkce určuje, zda je bod nebo mnohoúhelník v rámci mnohoúhelníku. Pokud mnohoúhelník obsahuje bod nebo mnohoúhelník, funkce vrátí hodnotu 1. Funkce vrátí 0, pokud se bod nebo mnohoúhelník nenachází v deklarovaném mnohoúhelníku.
+`ST_WITHIN`Funkce určuje, zda je bod nebo mnohoúhelník v rámci mnohoúhelníku. Pokud mnohoúhelník obsahuje bod nebo mnohoúhelník, funkce vrátí hodnotu 1. Funkce vrátí 0, pokud se bod nebo mnohoúhelník nenachází v deklarovaném mnohoúhelníku.
 
 Následující příklad dotazu používá `ST_WITHIN` k určení, zda je cílový bod doručení v rámci daného mnohoúhelníku datového skladu.
 

@@ -11,15 +11,14 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 3a06db1afd130d936af868d0d20632c3ec4fbfd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75358522"
 ---
 # <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Řešení neočekávaných restartování virtuálních počítačů s připojenými virtuálními pevnými disky
 
-Pokud má virtuální počítač Azure velký počet připojených virtuálních pevných disků, které jsou ve stejném účtu úložiště, můžete překročit cíle škálovatelnosti pro jednotlivé účty úložiště, což způsobí neočekávané restartování virtuálního počítače. Podívejte se na minuty pro účet úložiště (**TotalRequests**/**totalbillablerequests**/**TotalEgress**) pro špičky, které překračují cíle škálovatelnosti pro účet úložiště. V tématu [metriky](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#metrics-show-an-increase-in-PercentThrottlingError) se dozvíte, jak na základě vašeho účtu úložiště získat pomoc při určování, jestli došlo k omezení PercentThrottlingError.
+Pokud má virtuální počítač Azure velký počet připojených virtuálních pevných disků, které jsou ve stejném účtu úložiště, můžete překročit cíle škálovatelnosti pro jednotlivé účty úložiště, což způsobí neočekávané restartování virtuálního počítače. Podívejte se na minuty pro účet úložiště (**TotalRequests** / **totalbillablerequests** / **TotalEgress**) pro špičky, které překračují cíle škálovatelnosti pro účet úložiště. V tématu [metriky](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#metrics-show-an-increase-in-PercentThrottlingError) se dozvíte, jak na základě vašeho účtu úložiště získat pomoc při určování, jestli došlo k omezení PercentThrottlingError.
 
 Obecně platí, že každá jednotlivá operace vstupu a výstupu na virtuálním pevném disku z virtuálního počítače překládá operace **získání stránky** nebo **vložení operací stránkování** na podkladový objekt blob stránky. Proto můžete použít odhadované IOPS pro vaše prostředí, abyste nastavili počet virtuálních pevných disků, které můžete mít v jednom účtu úložiště na základě konkrétního chování vaší aplikace. Microsoft doporučuje mít v jednom účtu úložiště 40 nebo méně disků. Další informace o cílech škálovatelnosti pro účty úložiště úrovně Standard najdete v tématu [cíle škálovatelnosti pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md). Další informace o cílech škálovatelnosti pro účty úložiště blob stránky úrovně Premium najdete v tématu [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](../../storage/blobs/scalability-targets-premium-page-blobs.md).
 

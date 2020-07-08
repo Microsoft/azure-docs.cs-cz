@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443581"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Smyčka restartování Windows na virtuálním počítači Azure
@@ -62,7 +61,7 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systéme
 
 4. Na záchranném virtuálním počítači otevřete Editor registru systému Windows (Regedit).
 
-5. Vyberte **HKEY_LOCAL_MACHINE** klíč a v nabídce vyberte možnost**načíst** **soubor** > .
+5. Vyberte **HKEY_LOCAL_MACHINE** klíč a v nabídce vyberte **File**možnost  >  **načíst** soubor.
 
 6. Přejděte k SYSTÉMOVÉmu souboru ve složce **\Windows\System32\config** .
 
@@ -86,7 +85,7 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systéme
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Vyberte klíč **BROKENSYSTEM** a pak z nabídky vyberte **soubor** > **Uvolnit podregistr** .
+13. Vyberte klíč **BROKENSYSTEM** a pak z nabídky vyberte **soubor**  >  **Uvolnit podregistr** .
 
 14. Odpojte disk s operačním systémem od virtuálního počítače pro řešení potíží.
 
@@ -94,7 +93,7 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systéme
 
 16. [Vytvořte nový virtuální počítač z disku s operačním systémem](../windows/create-vm-specialized.md).
 
-17. Pokud je problém vyřešen, bude pravděpodobně nutné přeinstalovat [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent. exe).
+17. Pokud je problém vyřešen, bude pravděpodobně nutné přeinstalovat [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe).
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 

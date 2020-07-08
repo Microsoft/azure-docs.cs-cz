@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435617"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hive a Apache Hadoop v HDInsight
@@ -28,7 +27,7 @@ Twitter umožňuje načíst data pro každý disk ve formátu. v podobě dokumen
 
 ### <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
-1. Z webového prohlížeče se přihlaste [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/). Pokud nemáte účet na Twitteru, vyberte odkaz **registrace nyní** .
+1. Z webového prohlížeče se přihlaste [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Pokud nemáte účet na Twitteru, vyberte odkaz **registrace nyní** .
 
 2. Vyberte **vytvořit novou aplikaci**.
 
@@ -37,7 +36,7 @@ Twitter umožňuje načíst data pro každý disk ve formátu. v podobě dokumen
    | Pole | Hodnota |
    |--- |--- |
    | Název |MyHDInsightApp |
-   | Popis |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | Web |`https://www.myhdinsightapp.com` |
 
 4. Vyberte **Ano,** souhlasím a pak vyberte **vytvořit aplikaci Twitter**.
@@ -54,7 +53,7 @@ Twitter umožňuje načíst data pro každý disk ve formátu. v podobě dokumen
 
 ### <a name="download-tweets"></a>Stáhnout tweety
 
-Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do souboru s názvem **tweety. txt**.
+Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do souboru s názvem **tweets.txt**.
 
 > [!NOTE]  
 > Následující kroky se provádějí v clusteru HDInsight, protože Python je už nainstalovaný.
@@ -84,7 +83,7 @@ Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do sou
    nano gettweets.py
    ```
 
-1. Níže uvedený kód nahraďte `Your consumer secret`nahrazením `Your consumer key`, `Your access token`, a `Your access token secret` s příslušnými informacemi z vaší aplikace Twitter. Pak vložte upravený kód jako obsah souboru **gettweets.py** .
+1. Níže uvedený kód nahraďte nahrazením `Your consumer secret` , `Your consumer key` , a `Your access token` `Your access token secret` s příslušnými informacemi z vaší aplikace Twitter. Pak vložte upravený kód jako obsah souboru **gettweets.py** .
 
    ```python
    #!/usr/bin/python

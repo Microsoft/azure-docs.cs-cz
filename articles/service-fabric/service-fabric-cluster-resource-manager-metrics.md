@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452001"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a načítání v Service Fabric se metrikami
@@ -27,7 +26,7 @@ Příklady metrik se týkají například paměti, disku a využití procesoru. 
 | Metrika | Bezstavová zátěžová instance | Stavové sekundární zatížení | Stavové primární zatížení | Hmotnost |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Vysoká |
-| ReplicaCount |0 |1 |1 |Střednědobé používání |
+| ReplicaCount |0 |1 |1 |Střední |
 | Počet |1 |1 |1 |Nízká |
 
 
@@ -183,7 +182,7 @@ Seznam metrik přidružených ke službě a vlastnosti těchto metrik se dají d
   - povolení nové metriky až poté, co byl kód již nasazen a ověřen prostřednictvím jiných mechanismů
   - Změna výchozího zatížení služby na základě pozorovaného chování a spotřeby
 
-Hlavní rozhraní API pro změnu konfigurace metriky `FabricClient.ServiceManagementClient.UpdateServiceAsync` jsou v jazyce `Update-ServiceFabricService` C# a v prostředí PowerShell. Jakékoli informace, které zadáte pomocí těchto rozhraní API, nahradí okamžitě existující informace metriky pro službu. 
+Hlavní rozhraní API pro změnu konfigurace metriky jsou `FabricClient.ServiceManagementClient.UpdateServiceAsync` v jazyce C# a `Update-ServiceFabricService` v prostředí PowerShell. Jakékoli informace, které zadáte pomocí těchto rozhraní API, nahradí okamžitě existující informace metriky pro službu. 
 
 ## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Kombinování výchozích hodnot zatížení a sestav dynamického načtení
 Pro stejnou službu lze použít výchozí zatížení a dynamické načtení. Když služba využívá výchozí zatížení a dynamické sestavy zatížení, slouží jako odhad výchozí zatížení, dokud se nezobrazují dynamické sestavy. Výchozí zatížení je dobré, protože zajišťuje, aby cluster Správce prostředků něco. Výchozí zatížení umožňuje, aby cluster Správce prostředků umístit objekty služby do dobrých umístění při jejich vytvoření. Pokud nejsou k dispozici žádné výchozí informace o načtení, umístění služeb je efektivně náhodné. Když budou načteny sestavy později, počáteční náhodné umístění je často chybné a cluster Správce prostředků musí přesunout služby.

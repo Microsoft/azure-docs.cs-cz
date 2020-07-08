@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422943"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Přehled Azure Active Directory obecné provozní příručky
@@ -127,7 +126,7 @@ Pokud vaše organizace aktuálně nemá žádný program k monitorování změn 
 
 Společnost Microsoft pošle e-mailem komunikaci správcům, aby upozornila na různé změny ve službě, potřebné aktualizace konfigurace a chyby, které vyžadují zásah správce. Je důležité, aby zákazníci nastavili e-mailové adresy pro oznámení, aby se oznámení odesílala řádným členům týmu, kteří můžou potvrdit a reagovat na všechna oznámení. Doporučujeme přidat do [centra zpráv Office 365](https://docs.microsoft.com/office365/admin/manage/message-center) několik příjemců a požádat o oznámení (včetně oznámení o Azure AD Connect Health) do distribučního seznamu nebo do sdílené poštovní schránky. Pokud máte jenom jeden globální účet správce s e-mailovou adresou, nezapomeňte nakonfigurovat aspoň dva účty s podporou e-mailu.
 
-Existují dva adresy "z", které používá služba Azure AD <o365mc@email2.microsoft.com>:, která odesílá oznámení centra zpráv Office 365. a <azure-noreply@microsoft.com>, který odesílá oznámení související s:
+Existují dva adresy "z", které používá služba Azure AD: <o365mc@email2.microsoft.com> , která odesílá oznámení centra zpráv Office 365 a <azure-noreply@microsoft.com> odesílá oznámení související s:
 
 - [Kontroly přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
@@ -166,9 +165,9 @@ Model vrstvy správy služby Active Directory byl navržený tak, aby chránil s
 
 [Model vrstev](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) se skládá ze tří úrovní a zahrnuje pouze účty pro správu, nikoli standardní uživatelské účty.
 
-- **Vrstva 0** – přímá kontrola podnikových identit v prostředí. Vrstva 0 zahrnuje účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménovou strukturou služby Active Directory, doménami nebo řadiči domén a všemi prostředky v nich. Citlivost všech prostředků ve vrstvě 0 je rovnocenná, protože se všechny účinně navzájem kontrolují.
-- **Vrstva 1** – řízení podnikových serverů a aplikací. Prostředky vrstvy 1 zahrnují serverové operační systémy, cloudové služby a podnikové aplikace. Účty správců vrstvy 1 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako běžný příklad role je možné uvést správce serveru, kteří udržují tyto operační systémy, které můžou ovlivnit všechny podnikové služby.
-- **Vrstva 2** – řízení pracovních stanic a zařízení uživatele. Účty správců vrstvy 2 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako příklad můžeme uvést správce technické podpory a podpory pro počítače, protože ty můžou mít vliv na integritu téměř jakýchkoli uživatelských dat.
+- **Vrstva 0**   – Přímé řízení podnikových identit v prostředí. Vrstva 0 zahrnuje účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménovou strukturou služby Active Directory, doménami nebo řadiči domén a všemi prostředky v nich. Citlivost všech prostředků ve vrstvě 0 je rovnocenná, protože se všechny účinně navzájem kontrolují.
+- **Vrstva 1**   Řízení podnikových serverů a aplikací. Prostředky vrstvy 1 zahrnují serverové operační systémy, cloudové služby a podnikové aplikace. Účty správců vrstvy 1 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako běžný příklad role je možné uvést správce serveru, kteří udržují tyto operační systémy, které můžou ovlivnit všechny podnikové služby.
+- **Úroveň 2**   – Řízení pracovních stanic a zařízení uživatele. Účty správců vrstvy 2 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako příklad můžeme uvést správce technické podpory a podpory pro počítače, protože ty můžou mít vliv na integritu téměř jakýchkoli uživatelských dat.
 
 Přístup k místním komponentám identity, jako jsou Azure AD Connect, AD FS a SQL Services, můžete uzamknout stejným způsobem jako u řadičů domény.
 

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360833"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu na portálu
@@ -21,7 +20,7 @@ Můžete nastavit podmínky pro roli pracovního procesu cloudové služby, kter
 > [!NOTE]
 > Tento článek se zaměřuje na webové role a role pracovních procesů cloudové služby. Když vytváříte virtuální počítač (Classic) přímo, je hostovaný v cloudové službě. Standardní virtuální počítač můžete škálovat tak, že ho přidružíte ke [skupině dostupnosti](../virtual-machines/windows/classic/configure-availability-classic.md) , a ručně je zapnout nebo vypnout.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 Před konfigurací škálování pro aplikaci byste měli zvážit následující informace:
 
 * Škálování je ovlivněné základní spotřebou.

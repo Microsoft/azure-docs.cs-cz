@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348925"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorfismus v rozhraní Reliable Actors Framework
@@ -21,7 +20,7 @@ Rozhraní Reliable Actors Framework vyžaduje, abyste definovali aspoň jedno ro
 ![Hierarchie rozhraní pro objekty actor obrazce][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Typy
-Můžete také vytvořit hierarchii typů objektů Actor, které jsou odvozeny ze základní třídy Actor, která je poskytována platformou. V případě tvarů je možné, že máte typ Base `Shape`(C#) nebo `ShapeImpl`(Java):
+Můžete také vytvořit hierarchii typů objektů Actor, které jsou odvozeny ze základní třídy Actor, která je poskytována platformou. V případě tvarů je možné, že máte `Shape` typ Base (C#) nebo `ShapeImpl` (Java):
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,7 +39,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-Podtypy `Shape`(C#) nebo `ShapeImpl`(Java) mohou přepsat metody ze základní třídy.
+Podtypy `Shape` (C#) nebo `ShapeImpl` (Java) mohou přepsat metody ze základní třídy.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -83,7 +82,7 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Poznamenejte `ActorService` si atribut typu objektu actor. Tento atribut oznamuje rozhraní Reliable Actor, že by měl automaticky vytvořit službu pro hostování aktérů tohoto typu. V některých případech můžete chtít vytvořit základní typ, který je určen výhradně pro sdílení funkcí s podtypy a nebude nikdy použit k vytvoření instance konkrétních aktérů. V těchto případech byste měli použít `abstract` klíčové slovo k označení, že nikdy nevytvoříte objekt actor na základě tohoto typu.
+Poznamenejte si `ActorService` atribut typu objektu actor. Tento atribut oznamuje rozhraní Reliable Actor, že by měl automaticky vytvořit službu pro hostování aktérů tohoto typu. V některých případech můžete chtít vytvořit základní typ, který je určen výhradně pro sdílení funkcí s podtypy a nebude nikdy použit k vytvoření instance konkrétních aktérů. V těchto případech byste měli použít `abstract` klíčové slovo k označení, že nikdy nevytvoříte objekt actor na základě tohoto typu.
 
 ## <a name="next-steps"></a>Další kroky
 * Podívejte se, [jak Reliable Actors Framework využívá Service Fabric platformu](service-fabric-reliable-actors-platform.md) k zajištění spolehlivosti, škálovatelnosti a konzistentního stavu.

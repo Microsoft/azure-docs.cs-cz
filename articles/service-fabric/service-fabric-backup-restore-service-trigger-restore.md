@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377901"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovování zálohy v Azure Service Fabric
@@ -34,7 +33,7 @@ Můžete například nakonfigurovat službu, která bude zálohovat svá data a 
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Před provedením libovolné žádosti o konfiguraci pomocí `Connect-SFCluster` modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
+- `Connect-SFCluster`Před provedením libovolné žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
 
 ```powershell
 
@@ -152,7 +151,7 @@ Pro rozhraní API pro obnovení musíte zadat podrobnosti _BackupId_ a _BackupLo
 
 Také je nutné zvolit cílový oddíl v alternativním clusteru, jak je popsáno ve [schématu oddílu](service-fabric-concepts-partitioning.md#get-started-with-partitioning). Alternativní záloha clusteru se obnoví do oddílu zadaného ve schématu oddílu z původního ztraceného clusteru.
 
-Pokud je `1c42c47f-439e-4e09-98b9-88b8f60800c6`ID oddílu na alternativním clusteru, můžete ho namapovat na původní ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` oddílu clusteru porovnáním horního klíče a nízkého klíče pro _škálované dělení (UniformInt64Partition)_.
+Pokud je ID oddílu na alternativním clusteru `1c42c47f-439e-4e09-98b9-88b8f60800c6` , můžete ho namapovat na původní ID oddílu clusteru `974bd92a-b395-4631-8a7f-53bd4ae9cf22` porovnáním horního klíče a nízkého klíče pro _škálované dělení (UniformInt64Partition)_.
 
 U _pojmenovaných oddílů_se hodnota název porovnává s určením cílového oddílu v alternativním clusteru.
 
@@ -201,7 +200,7 @@ Můžete aktivovat obnovení z Service Fabric Explorer. Ujistěte se, že je v n
 
     ![Spouštěcí sdílená složka pro obnovení oddílu][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Obnovení dat pro_ztrátu dat_ _poškození dat_/
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Obnovení dat pro _data corruption_ / _ztrátu dat_ poškození dat
 
 V případě _ztráty dat_ nebo _poškození dat_můžete zálohovat oddíly pro spolehlivou stavovou službu a Reliable Actors oddíly obnovit do některého z vybraných záloh.
 
@@ -209,7 +208,7 @@ Následující příklad je pokračování v [Povolení pravidelného zálohová
 
 Vyberte zálohu z výstupu [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). V tomto scénáři je záloha vygenerována ze stejného clusteru jako dříve.
 
-Chcete-li spustit obnovení, vyberte ze seznamu zálohu. U aktuálního/_poškození dat_ _ztráty dat_vyberte následující zálohu:
+Chcete-li spustit obnovení, vyberte ze seznamu zálohu. U aktuálního _data loss_ / _poškození dat_ztráty dat vyberte následující zálohu:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -317,7 +316,7 @@ Požadavek na obnovení bude postupovat v následujícím pořadí:
 
 ## <a name="automatic-restore"></a>Automatické obnovení
 
-Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je `AutoRestore` nastavena na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace naleznete v tématu:
+Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je nastavena `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace naleznete v tématech:
 
 - [Povolení automatického obnovení v zásadách zálohování](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [Reference k rozhraní API RestorePartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)

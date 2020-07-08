@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451669"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Klientská rozhraní API pro Azure Service Fabric Java
@@ -62,7 +61,7 @@ Použijte následující postup, chcete-li vygenerovat Service Fabric kód klien
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Následující příkaz přebírá ``servicefabric.json`` soubor specifikace jako vstup a generuje kód klienta Java ve ``java-rest-api-     code`` složce a uzavře kód v ``servicefabricrest`` oboru názvů. Po provedení tohoto kroku najdete dvě ``models``složky ``implementation`` a dva soubory ``ServiceFabricClientAPIs.java`` a ``package-info.java`` vygenerované ve ``java-rest-api-code`` složce.
+   Následující příkaz přebírá ``servicefabric.json`` soubor specifikace jako vstup a generuje kód klienta Java ve ``java-rest-api-     code`` složce a uzavře kód v ``servicefabricrest`` oboru názvů. Po provedení tohoto kroku najdete dvě složky a ``models`` ``implementation`` dva soubory ``ServiceFabricClientAPIs.java`` a ``package-info.java`` vygenerované ve ``java-rest-api-code`` složce.
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>Zahrnutí a použití vygenerovaného klienta v projektu
@@ -114,14 +113,14 @@ Použijte následující postup, chcete-li vygenerovat Service Fabric kód klien
         ```
 
 ## <a name="understanding-the-generated-code"></a>Princip vygenerovaného kódu
-Pro každé rozhraní API najdete čtyři přetížení implementace. Pokud jsou k dispozici volitelné parametry, najdete čtyři další variace včetně těchto volitelných parametrů. Podívejte se například na rozhraní ``removeReplica``API.
+Pro každé rozhraní API najdete čtyři přetížení implementace. Pokud jsou k dispozici volitelné parametry, najdete čtyři další variace včetně těchto volitelných parametrů. Podívejte se například na rozhraní API ``removeReplica`` .
  1. **Public void removeReplica (řetězcový uzel, UUID, identifikátor UUID, identifikátor replicaId řetězce, Boolean forceRemove, dlouhý časový limit)**
     * Toto je synchronní varianta volání rozhraní removeReplica API.
- 2. **Public ServiceFuture\<void> RemoveReplicaAsync (řetězec Node, UUID, identifikátor UUID, identifikátor replicaId řetězce, Boolean ForceRemove, dlouhý časový limit\<, konečné ServiceCallback void> ServiceCallback)**
+ 2. **Public ServiceFuture \<Void> removeReplicaAsync (String Node, UUID, identifikátor ReplicaID řetězce, logická forceRemove, dlouhý časový limit, finální ServiceCallback \<Void> ServiceCallback)**
     * Tato varianta volání rozhraní API se dá použít, pokud chcete použít budoucí asynchronní programování a používat zpětná volání.
- 3. **Veřejná pozorování typu\<void> RemoveReplicaAsync (řetězec Node, UUID, identifikátor replicaId řetězce)**
+ 3. **Veřejná pozorovatelná \<Void> removeReplicaAsync (řetězec Node, UUID, identifikátor ReplicaID řetězce)**
     * Tato varianta volání rozhraní API se dá použít, pokud chcete použít reaktivní asynchronní programování.
- 4. **Veřejná pozorovatelná\<ServiceResponse\<void>> removeReplicaWithServiceResponseAsync (řetězec Node, UUID, identifikátor replicaId řetězce)**
+ 4. **Veřejná pozorovatelná \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (řetězec Node, UUID, identifikátor ReplicaID řetězce)**
     * Tato varianta volání rozhraní API se dá použít, pokud chcete použít reaktivní asynchronní programování a pracovat s nezpracovanými odpověďmi REST.
 
 ## <a name="next-steps"></a>Další kroky

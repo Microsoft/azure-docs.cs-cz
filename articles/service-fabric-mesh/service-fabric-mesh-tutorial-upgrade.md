@@ -7,10 +7,9 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75351718"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Kurz: informace o tom, jak upgradovat Service Fabric aplikaci pomocí sady Visual Studio
@@ -45,27 +44,27 @@ V tomto článku se dozvíte, jak upgradovat mikroslužbu v rámci aplikace. V t
 
 Když vytvoříte aplikaci Service Fabric mřížka, Visual Studio přidá soubor **Parameters. yaml** pro každé prostředí nasazení (Cloud a místní). V těchto souborech můžete definovat parametry a jejich hodnoty, na které se pak můžete odkazovat z vaší sítě * soubory YAML, jako je Service. YAML nebo Network. yaml.  Visual Studio poskytuje některé proměnné za vás, například kolik CPU může služba využívat.
 
-Aktualizujeme `WebFrontEnd_cpu` parametr a aktualizujeme prostředky procesoru na, aby `1.5` se předpokládalo, že se služba **webendu** bude intenzivně používat.
+Aktualizujeme `WebFrontEnd_cpu` parametr a aktualizujeme prostředky procesoru na, aby se `1.5` předpokládalo, že se služba **webendu** bude intenzivně používat.
 
-1. V projektu **todolistapp** v části **prostředí** > **cloudu**otevřete soubor **Parameters. yaml** . `WebFrontEnd_cpu`Změňte hodnotu na `1.5`. Název parametru je před názvem `WebFrontEnd_` služby doporučený postup pro odlišení od parametrů stejného názvu, které se vztahují k různým službám.
+1. V projektu **todolistapp** v části **prostředí**  >  **cloudu**otevřete soubor **Parameters. yaml** . Změňte `WebFrontEnd_cpu` hodnotu na `1.5` . Název parametru je před názvem služby `WebFrontEnd_` doporučený postup pro odlišení od parametrů stejného názvu, které se vztahují k různým službám.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Otevřete soubor **Service. yaml** projektu **webendu** v části**prostředky služby** **webendu** > .
+2. Otevřete soubor **Service. yaml** projektu **webendu** v části **WebFrontEnd**  >  **prostředky služby**webendu.
 
-    Všimněte si, že `resources:` v části `cpu:` v je nastavena `"[parameters('WebFrontEnd_cpu')]"`na. Pokud projekt sestavíte pro Cloud `'WebFrontEnd_cpu` , hodnota pro bude provedena z**cloudových** > **parametrů prostředí** **Environments** > . yaml soubor a bude. `1.5` Pokud je projekt sestaven tak, aby běžel místně, hodnota bude provedena z **prostředí** > **místních** > **parametrů. yaml** a bude "0,5".
+    Všimněte si, že v `resources:` části v `cpu:` je nastavena na `"[parameters('WebFrontEnd_cpu')]"` . Pokud projekt sestavíte pro Cloud, hodnota pro `'WebFrontEnd_cpu` bude provedena z **Environments**  >  **cloudových**  >  **parametrů prostředí. yaml** soubor a bude `1.5` . Pokud je projekt sestaven tak, aby běžel místně, hodnota bude provedena z **prostředí**  >  **místních**  >  **parametrů. yaml** a bude "0,5".
 
 > [!Tip]
 > Ve výchozím nastavení se soubor parametrů, který je partnerským souborem profilu. yaml, použije k zadání hodnot pro tento soubor Profile. yaml.
 > Například prostředí > cloudových > Parameters. yaml poskytuje hodnoty parametrů pro prostředí > cloudového > Profile. yaml.
 >
-> To můžete přepsat přidáním následujícího do souboru Profile. yaml,`parametersFilePath=”relative or full path to the parameters file”` `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` například nebo.`parametersFilePath=”..\CommonParameters.yaml”`
+> To můžete přepsat přidáním následujícího do souboru Profile. yaml `parametersFilePath=”relative or full path to the parameters file”` , například `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` nebo.`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Úprava modelu
 
-Chcete-li zavést změnu kódu, přidejte `Category` do `ToDoItem` třídy v `ToDoItem.cs` souboru vlastnost.
+Chcete-li zavést změnu kódu, přidejte do `Category` `ToDoItem` třídy v `ToDoItem.cs` souboru vlastnost.
 
 ```csharp
 public class ToDoItem
@@ -93,7 +92,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>Úprava služby
 
-`WebFrontEnd` Projekt je ASP.NET Core aplikace s webovou stránkou, která zobrazuje položky seznamu úkolů. V `WebFrontEnd` projektu otevřete `Index.cshtml` a přidejte následující dva řádky, které jsou uvedeny níže, aby se zobrazila Kategorie úkolu:
+`WebFrontEnd`Projekt je ASP.NET Core aplikace s webovou stránkou, která zobrazuje položky seznamu úkolů. V `WebFrontEnd` projektu otevřete `Index.cshtml` a přidejte následující dva řádky, které jsou uvedeny níže, aby se zobrazila Kategorie úkolu:
 
 ```HTML
 <div>

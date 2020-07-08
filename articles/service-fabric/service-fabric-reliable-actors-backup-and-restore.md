@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75370455"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Implementace Reliable Actors zálohování a obnovení
@@ -18,7 +17,7 @@ ms.locfileid: "75370455"
 > Společnost Microsoft doporučuje používat pro konfiguraci zálohování spolehlivých stavových služeb a Reliable Actors [pravidelné zálohování a obnovování](service-fabric-backuprestoreservice-quickstart-azurecluster.md) dat. 
 > 
 
-V následujícím příkladu zpřístupňuje služba vlastního objektu actor metodu zálohování dat objektu actor využitím naslouchacího procesu vzdálené komunikace, který je již přítomen v `ActorService`nástroji:
+V následujícím příkladu zpřístupňuje služba vlastního objektu actor metodu zálohování dat objektu actor využitím naslouchacího procesu vzdálené komunikace, který je již přítomen v nástroji `ActorService` :
 
 ```csharp
 public interface IMyActorService : IService
@@ -94,7 +93,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-`IMyActorService` V tomto příkladu je kontraktem vzdálené komunikace, který `IService` implementuje (C#) `Service` a (Java) a poté je implementován pomocí `MyActorService`. Přidáním této smlouvy vzdálené komunikace `IMyActorService` jsou nyní k dispozici i metody pro klienta vytvořením proxy vzdálené komunikace prostřednictvím: `ActorServiceProxy`
+V tomto příkladu `IMyActorService` je kontraktem vzdálené komunikace, který implementuje `IService` (C#) a `Service` (Java) a poté je implementován pomocí `MyActorService` . Přidáním této smlouvy vzdálené komunikace `IMyActorService` jsou nyní k dispozici i metody pro klienta vytvořením proxy vzdálené komunikace prostřednictvím `ActorServiceProxy` :
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(

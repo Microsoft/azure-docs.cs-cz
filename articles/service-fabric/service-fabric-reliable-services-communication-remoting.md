@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
 ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75433873"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s Reliable Services
@@ -27,10 +26,10 @@ Pro služby, které nejsou vázané na konkrétní komunikační protokol ani z�
 Vzdálenou komunikaci pro službu můžete nastavit ve dvou jednoduchých krocích:
 
 1. Vytvořte rozhraní pro implementaci služby. Toto rozhraní definuje metody, které jsou k dispozici pro vzdálené volání procedur ve vaší službě. Metody musí být asynchronní metody vracející úlohy. Rozhraní musí implementovat `Microsoft.ServiceFabric.Services.Remoting.IService` k signalizaci, že služba má rozhraní vzdálené komunikace.
-2. V rámci služby použijte naslouchací proces vzdálené komunikace. Naslouchací proces vzdálené komunikace je `ICommunicationListener` implementace, která poskytuje možnosti vzdálené komunikace. `Microsoft.ServiceFabric.Services.Remoting.Runtime` Obor názvů obsahuje metodu `CreateServiceRemotingInstanceListeners` rozšíření pro bezstavové a stavové služby, které se dají použít k vytvoření naslouchacího procesu vzdálené komunikace pomocí výchozího přenosového protokolu pro vzdálenou komunikaci.
+2. V rámci služby použijte naslouchací proces vzdálené komunikace. Naslouchací proces vzdálené komunikace je `ICommunicationListener` implementace, která poskytuje možnosti vzdálené komunikace. `Microsoft.ServiceFabric.Services.Remoting.Runtime`Obor názvů obsahuje metodu rozšíření `CreateServiceRemotingInstanceListeners` pro bezstavové a stavové služby, které se dají použít k vytvoření naslouchacího procesu vzdálené komunikace pomocí výchozího přenosového protokolu pro vzdálenou komunikaci.
 
 >[!NOTE]
->`Remoting` Obor názvů je k dispozici jako samostatný balíček NuGet `Microsoft.ServiceFabric.Services.Remoting`s názvem.
+>`Remoting`Obor názvů je k dispozici jako samostatný balíček NuGet s názvem `Microsoft.ServiceFabric.Services.Remoting` .
 
 Například následující Bezstavová služba zpřístupňuje jedinou metodu pro získání "Hello World" prostřednictvím vzdáleného volání procedury.
 
@@ -71,7 +70,7 @@ class MyService : StatelessService, IMyService
 
 ## <a name="call-remote-service-methods"></a>Volání metod vzdálené služby
 
-Volání metod na službu pomocí zásobníku vzdálené komunikace se provádí pomocí místního proxy serveru přes `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` třídu. `ServiceProxy` Metoda vytvoří místní proxy server pomocí stejného rozhraní, které služba implementuje. Pomocí tohoto proxy serveru můžete volat metody na rozhraní vzdáleně.
+Volání metod na službu pomocí zásobníku vzdálené komunikace se provádí pomocí místního proxy serveru přes `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` třídu. `ServiceProxy`Metoda vytvoří místní proxy server pomocí stejného rozhraní, které služba implementuje. Pomocí tohoto proxy serveru můžete volat metody na rozhraní vzdáleně.
 
 ```csharp
 
@@ -81,15 +80,15 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-Rozhraní vzdálené komunikace šíří výjimky vyvolané službou klientovi. V důsledku `ServiceProxy`toho je klient zodpovědný za zpracování výjimek vyvolaných službou.
+Rozhraní vzdálené komunikace šíří výjimky vyvolané službou klientovi. V důsledku toho `ServiceProxy` je klient zodpovědný za zpracování výjimek vyvolaných službou.
 
 ## <a name="service-proxy-lifetime"></a>Doba života proxy služby
 
-Vytvoření proxy služby je jednoduchá operace, takže můžete vytvořit tolik, kolik potřebujete. Instance proxy služby se dají znovu použít po dobu potřebnou k jejich použití. Pokud vzdálené volání procedury vyvolá výjimku, můžete přesto použít stejnou instanci proxy. Každý proxy server služby obsahuje komunikačního klienta, který slouží k posílání zpráv přes drát. Při vyvolání vzdálených volání se provádí interní kontroly, které určují, jestli je komunikační klient platný. Na základě výsledků těchto kontrol se komunikační klient v případě potřeby znovu vytvoří. Proto pokud dojde k výjimce, není nutné znovu vytvářet `ServiceProxy`.
+Vytvoření proxy služby je jednoduchá operace, takže můžete vytvořit tolik, kolik potřebujete. Instance proxy služby se dají znovu použít po dobu potřebnou k jejich použití. Pokud vzdálené volání procedury vyvolá výjimku, můžete přesto použít stejnou instanci proxy. Každý proxy server služby obsahuje komunikačního klienta, který slouží k posílání zpráv přes drát. Při vyvolání vzdálených volání se provádí interní kontroly, které určují, jestli je komunikační klient platný. Na základě výsledků těchto kontrol se komunikační klient v případě potřeby znovu vytvoří. Proto pokud dojde k výjimce, není nutné znovu vytvářet `ServiceProxy` .
 
 ### <a name="service-proxy-factory-lifetime"></a>Doba života objektu proxy služby
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je továrna, která vytváří proxy instance pro různá rozhraní vzdálené komunikace. Pokud k vytvoření proxy serveru `ServiceProxyFactory.CreateServiceProxy` použijete rozhraní API, rozhraní vytvoří proxy služby s jedním objektem.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je továrna, která vytváří proxy instance pro různá rozhraní vzdálené komunikace. Pokud `ServiceProxyFactory.CreateServiceProxy` k vytvoření proxy serveru použijete rozhraní API, rozhraní vytvoří proxy služby s jedním objektem.
 Je vhodné ho vytvořit ručně, když potřebujete přepsat vlastnosti [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) .
 Vytváření továrny je náročná operace. Objekt pro vytváření proxy služby udržuje interní mezipaměť komunikačního klienta.
 Osvědčeným postupem je, aby objekt pro vytváření objektů proxy služby byl co nejkratší.
@@ -117,7 +116,7 @@ Pro povolení zásobníku v2 jsou k dispozici následující přístupy.
 
 Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí atributu Assembly.
 
-1. Změňte prostředek koncového bodu `"ServiceEndpoint"` z `"ServiceEndpointV2"` na na v manifestu služby.
+1. Změňte prostředek koncového bodu z `"ServiceEndpoint"` na na `"ServiceEndpointV2"` v manifestu služby.
 
    ```xml
    <Resources>
@@ -127,7 +126,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí atributu As
    </Resources>
    ```
 
-2. Pomocí metody `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` rozšíření vytvořte naslouchací procesy vzdálené komunikace (stejné pro V1 a v2).
+2. Pomocí `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` metody rozšíření vytvořte naslouchací procesy vzdálené komunikace (stejné pro V1 a v2).
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -151,7 +150,7 @@ Jako alternativu k použití atributu sestavení může být zásobník v2 také
 
 Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí explicitních tříd v2.
 
-1. Změňte prostředek koncového bodu `"ServiceEndpoint"` z `"ServiceEndpointV2"` na na v manifestu služby.
+1. Změňte prostředek koncového bodu z `"ServiceEndpoint"` na na `"ServiceEndpointV2"` v manifestu služby.
 
    ```xml
    <Resources>
@@ -177,7 +176,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí explicitní
     }
    ```
 
-3. Pro [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) vytváření klientů použijte `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` FabricTransportServiceRemotingClientFactory z oboru názvů.
+3. Pro vytváření klientů použijte [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` oboru názvů.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -313,7 +312,7 @@ Postupujte následovně:
 Aby bylo možné upgradovat z verze V1 na v2 (rozhraní kompatibilní se systémem, označované jako V2_1), jsou vyžadovány dva kroky upgradu. Postupujte podle kroků v této sekvenci.
 
 > [!NOTE]
-> Při upgradu z verze V1 na v2 se ujistěte `Remoting` , že je obor názvů aktualizovaný, aby používal v2. Příklad: Microsoft. ServiceFabric. Services. Vzdálená komunikace. v2. FabricTransport. Client
+> Při upgradu z verze V1 na v2 se ujistěte, že `Remoting` je obor názvů aktualizovaný, aby používal v2. Příklad: Microsoft. ServiceFabric. Services. Vzdálená komunikace. v2. FabricTransport. Client
 >
 >
 
@@ -537,7 +536,7 @@ Postupujte následovně:
    }
    ```
 
-3. `JsonSerializationProvider` Pro objekt pro vytváření klientů vzdálené komunikace přepište výchozího zprostředkovatele serializace.
+3. `JsonSerializationProvider`Pro objekt pro vytváření klientů vzdálené komunikace přepište výchozího zprostředkovatele serializace.
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>

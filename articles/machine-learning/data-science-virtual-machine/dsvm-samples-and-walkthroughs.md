@@ -11,10 +11,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900050"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Ukázky Virtual Machines pro datové vědy v Azure
@@ -28,7 +27,7 @@ Azure Data věda Virtual Machines (DSVMs) zahrnuje komplexní sadu vzorového k�
 Aby bylo možné tyto ukázky spustit, musíte mít zřízenou Data Science Virtual Machine. Podívejte se na rychlé starty pro [Windows](./provision-vm.md) a [Ubuntu](./dsvm-ubuntu-intro.md).
 
 ## <a name="available-samples"></a>Dostupné ukázky
-| Kategorie ukázek | Popis | Umístění |
+| Kategorie ukázek | Description | Umístění |
 | ------------- | ------------- | ------------- |
 | Jazyk R  | Ukázky ilustrují scénáře, jako je například připojení k úložištím cloudových dat založených na Azure a postup porovnání Open Source R a Microsoft Machine Learning Server. Také vysvětlují, jak zprovoznění modely na Microsoft Machine Learning Server a SQL Server. <br/> [Jazyk R](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Jazyk Python  | Ukázky popisují scénáře, jak se připojit k úložištím cloudových dat založenými na Azure a jak pracovat s Azure Machine Learning.  <br/> [Jazyk Python](#python-language) | <br/>`~notebooks` <br/><br/>|
@@ -46,7 +45,7 @@ Aby bylo možné tyto ukázky spustit, musíte mít zřízenou Data Science Virt
 
 ## <a name="access-jupyter"></a>Přístup k Jupyter 
 
-Pro přístup k Jupyter vyberte v nabídce plocha nebo aplikace ikonu **Jupyter** . Můžete také přistupovat k Jupyter na edici DSVM systému Linux. Pokud chcete vzdáleně přistupovat z webového prohlížeče, přejděte na `https://<Full Domain Name or IP Address of the DSVM>:8000` web na webu Ubuntu.
+Pro přístup k Jupyter vyberte v nabídce plocha nebo aplikace ikonu **Jupyter** . Můžete také přistupovat k Jupyter na edici DSVM systému Linux. Pokud chcete vzdáleně přistupovat z webového prohlížeče, přejděte na web `https://<Full Domain Name or IP Address of the DSVM>:8000` na webu Ubuntu.
 
 Chcete-li přidat výjimky a zpřístupnit Jupyter k dispozici prostřednictvím prohlížeče, použijte následující pokyny:
 

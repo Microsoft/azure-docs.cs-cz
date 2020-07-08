@@ -12,10 +12,9 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74926154"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnosti proti chybám v aktivitě kopírování přeskočením nekompatibilních řádků
@@ -69,19 +68,19 @@ Následující příklad poskytuje definici JSON pro konfiguraci přeskočení n
 }
 ```
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | True<br/>False (výchozí) | Ne |
-| **redirectIncompatibleRowSettings** | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | Ne |
-| **linkedServiceName** | Propojená služba Azure Storage k uložení protokolu, který obsahuje vynechané řádky. | Název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou chcete použít k uložení souboru protokolu. | Ne |
-| **dílčí** | Cesta k souboru protokolu, který obsahuje vynechané řádky. | Zadejte cestu k úložišti objektů blob, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne |
+| **enableSkipIncompatibleRow** | Povolit přeskočení nekompatibilních řádků během kopírování nebo ne. | True<br/>False (výchozí) | No |
+| **redirectIncompatibleRowSettings** | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | No |
+| **linkedServiceName** | Propojená služba Azure Storage k uložení protokolu, který obsahuje vynechané řádky. | Název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou chcete použít k uložení souboru protokolu. | No |
+| **dílčí** | Cesta k souboru protokolu, který obsahuje vynechané řádky. | Zadejte cestu k úložišti objektů blob, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | No |
 
 ## <a name="monitoring"></a>Monitorování
 Po dokončení aktivity kopírování můžete v části monitorování zobrazit počet vynechaných řádků:
 
 ![Monitorování přeskočilo nekompatibilní řádky.](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
 
-Pokud nakonfigurujete, aby protokoloval nekompatibilní řádky, můžete najít soubor protokolu v této cestě `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` : v souboru protokolu můžete zobrazit řádky, které se přeskočily, a původní příčinu nekompatibility.
+Pokud nakonfigurujete, aby protokoloval nekompatibilní řádky, můžete najít soubor protokolu v této cestě: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` v souboru protokolu můžete zobrazit řádky, které se přeskočily, a původní příčinu nekompatibility.
 
 Původní data a odpovídající chyba jsou protokolovány v souboru. Příkladem obsahu souboru protokolu je následující:
 ```

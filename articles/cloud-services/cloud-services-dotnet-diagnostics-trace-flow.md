@@ -11,17 +11,16 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: tagore
 ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386506"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Trasování toku Cloud Services aplikace pomocí Azure Diagnostics
 Trasování je způsob, jak můžete monitorovat provádění aplikace, když je spuštěná. Třídy [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. Debug](/dotnet/api/system.diagnostics.debug)a [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) můžete použít k zaznamenání informací o chybách a spouštění aplikací v protokolech, textových souborech nebo jiných zařízeních pro pozdější analýzu. Další informace o trasování najdete v tématu [trasování a instrumentace aplikací](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
 
 ## <a name="use-trace-statements-and-trace-switches"></a>Použití příkazů trasování a přepínačů trasování
-Implementujte trasování do aplikace Cloud Services přidáním [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) do konfigurace aplikace a provedením volání System. Diagnostics. Trace nebo System. Diagnostics. Debug v kódu aplikace. Použijte konfigurační soubor *App. config* pro role pracovního procesu a *Web. config* pro webové role. Když vytváříte novou hostovanou službu pomocí šablony sady Visual Studio, Azure Diagnostics je automaticky přidáno do projektu a DiagnosticMonitorTraceListener se přidá do příslušného konfiguračního souboru pro role, které přidáte.
+Implementujte trasování do aplikace Cloud Services přidáním [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) do konfigurace aplikace a provedením volání System. Diagnostics. Trace nebo System. Diagnostics. Debug v kódu aplikace. Použijte konfigurační soubor *app.config* pro role pracovního procesu a *web.config* pro webové role. Když vytváříte novou hostovanou službu pomocí šablony sady Visual Studio, Azure Diagnostics je automaticky přidáno do projektu a DiagnosticMonitorTraceListener se přidá do příslušného konfiguračního souboru pro role, které přidáte.
 
 Informace o umístění příkazů trasování naleznete v tématu [How to: Add Trace Statements to Application Code](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 
@@ -35,7 +34,7 @@ Než dokončíte následující postup, musíte inicializovat diagnostické moni
 Všimněte si, že pokud použijete šablony, které jsou k dispozici v aplikaci Visual Studio, konfigurace naslouchacího procesu se přidá automaticky.
 
 ### <a name="add-a-trace-listener"></a>Přidání naslouchacího procesu trasování
-1. Otevřete soubor Web. config nebo App. config pro vaši roli.
+1. Otevřete web.config nebo app.config soubor pro vaši roli.
 2. Do souboru přidejte následující kód. Změňte atribut verze tak, aby používal číslo verze sestavení, na které odkazujete. Verze sestavení se nemusí nutně měnit u každé verze sady Azure SDK, pokud k ní neexistují žádné aktualizace.
    
     ```
@@ -65,7 +64,7 @@ Další informace o posluchačích naleznete v tématu [Trace Listeners](/dotnet
 Po dokončení kroků pro přidání naslouchacího procesu můžete do kódu přidat příkazy TRACE.
 
 ### <a name="to-add-trace-statement-to-your-code"></a>Přidání příkazu trace do kódu
-1. Otevřete zdrojový soubor pro aplikaci. Například soubor \<roleName>. cs pro roli pracovního procesu nebo webovou roli.
+1. Otevřete zdrojový soubor pro aplikaci. Například \<RoleName> soubor. cs pro roli pracovního procesu nebo webovou roli.
 2. Přidejte následující direktivu using, pokud ještě nebyla přidána:
     ```
         using System.Diagnostics;

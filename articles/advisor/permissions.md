@@ -4,10 +4,9 @@ description: Oprávnění služby Advisor a jejich způsob, jak můžou zablokov
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422321"
 ---
 # <a name="permissions-in-azure-advisor"></a>Oprávnění v Azure Advisor
@@ -20,15 +19,15 @@ Následující tabulka definuje role a přístup, které mají v rámci služby 
 
 | **Role** | **Zobrazení doporučení** | **Upravit pravidla** | **Upravit konfiguraci předplatného** | **Upravit konfiguraci skupiny prostředků**| **Přeskočit a odložit doporučení**|
 |---|:---:|:---:|:---:|:---:|:---:|
-|Vlastník předplatného|**×**|**×**|**×**|**×**|**×**|
-|Přispěvatel předplatného|**×**|**×**|**×**|**×**|**×**|
-|Čtečka předplatných|**×**|--|--|--|--|
-|Vlastník skupiny prostředků|**×**|--|--|**×**|**×**|
-|Přispěvatel skupiny prostředků|**×**|--|--|**×**|**×**|
-|Čtenář skupiny prostředků|**×**|--|--|--|--|
-|Vlastník prostředku|**×**|--|--|--|**×**|
-|Přispěvatel prostředků|**×**|--|--|--|**×**|
-|Čtečka prostředků|**×**|--|--|--|--|
+|Vlastník předplatného|**Znak**|**Znak**|**Znak**|**Znak**|**Znak**|
+|Přispěvatel předplatného|**Znak**|**Znak**|**Znak**|**Znak**|**Znak**|
+|Čtečka předplatných|**Znak**|--|--|--|--|
+|Vlastník skupiny prostředků|**Znak**|--|--|**Znak**|**Znak**|
+|Přispěvatel skupiny prostředků|**Znak**|--|--|**Znak**|**Znak**|
+|Čtenář skupiny prostředků|**Znak**|--|--|--|--|
+|Vlastník prostředku|**Znak**|--|--|--|**Znak**|
+|Přispěvatel prostředků|**Znak**|--|--|--|**Znak**|
+|Čtečka prostředků|**Znak**|--|--|--|--|
 
 > [!NOTE]
 > Přístup k doporučením pro zobrazení je závislý na vašem přístupu k ovlivněnému prostředku doporučení.

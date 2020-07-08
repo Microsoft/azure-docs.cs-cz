@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
 ms.openlocfilehash: e45de5c12f0d93645a0b1253acf8300527cafdbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75374637"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal
@@ -37,7 +36,7 @@ Proces řešení potíží je následující:
 > Tento článek se nevztahuje na virtuální počítač s nespravovaným diskem.
 
 ## <a name="determine-boot-issues"></a>Určení problémů se spouštěním
-Zkontrolujte diagnostiku spouštění a snímek obrazovky virtuálního počítače, abyste zjistili, proč se váš virtuální počítač nemůže správně spustit. Běžným příkladem může být neplatná položka v `/etc/fstab`nástroji, nebo odstranění nebo přesunutí základního virtuálního pevného disku.
+Zkontrolujte diagnostiku spouštění a snímek obrazovky virtuálního počítače, abyste zjistili, proč se váš virtuální počítač nemůže správně spustit. Běžným příkladem může být neplatná položka v nástroji `/etc/fstab` , nebo odstranění nebo přesunutí základního virtuálního pevného disku.
 
 Na portálu vyberte svůj virtuální počítač a pak přejděte dolů k části **Podpora a řešení potíží** . Kliknutím na **Diagnostika spouštění** zobrazíte zprávy konzoly streamované z virtuálního počítače. Projděte si protokoly konzoly a zjistěte, jestli můžete určit, proč má virtuální počítač narazit na problém. Následující příklad ukazuje, že se virtuální počítač zablokuje v režimu údržby, který vyžaduje ruční interakci:
 
@@ -107,7 +106,7 @@ V následujících několika krocích použijete pro účely odstraňování pot
 > [!NOTE]
 > Následující příklady podrobně popisují kroky vyžadované na virtuálním počítači s Ubuntu. Pokud používáte jiný distribuce pro Linux, například Red Hat Enterprise Linux nebo SUSE, umístění souborů protokolu a `mount` příkazy se můžou trochu lišit. Příslušné změny v příkazech najdete v dokumentaci pro konkrétní distribuce.
 
-1. SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží pomocí příslušných přihlašovacích údajů. Pokud je tento disk prvním datovým diskem připojeným k vašemu VIRTUÁLNÍmu počítači pro řešení potíží `/dev/sdc`, je nejspíš připojený k. Použijte `dmseg` k vypsání připojených disků:
+1. SSH k vašemu VIRTUÁLNÍmu počítači pro řešení potíží pomocí příslušných přihlašovacích údajů. Pokud je tento disk prvním datovým diskem připojeným k vašemu VIRTUÁLNÍmu počítači pro řešení potíží, je nejspíš připojený k `/dev/sdc` . Použijte `dmseg` k vypsání připojených disků:
 
     ```bash
     dmesg | grep SCSI
@@ -122,15 +121,15 @@ V následujících několika krocích použijete pro účely odstraňování pot
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    V předchozím příkladu je disk s operačním systémem `/dev/sda` a dočasný disk poskytnutý pro každý virtuální počítač je v. `/dev/sdb` Pokud jste měli více datových disků, měly by být v `/dev/sdd`, `/dev/sde`a tak dále.
+    V předchozím příkladu je disk s operačním systémem `/dev/sda` a dočasný disk poskytnutý pro každý virtuální počítač je v `/dev/sdb` . Pokud jste měli více datových disků, měly by být v `/dev/sdd` , `/dev/sde` a tak dále.
 
-2. Vytvořte adresář pro připojení stávajícího virtuálního pevného disku. Následující příklad vytvoří adresář s názvem `troubleshootingdisk`:
+2. Vytvořte adresář pro připojení stávajícího virtuálního pevného disku. Následující příklad vytvoří adresář s názvem `troubleshootingdisk` :
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Pokud máte na svém stávajícím virtuálním pevném disku více oddílů, připojte požadovaný oddíl. Následující příklad připojí první primární oddíl na `/dev/sdc1`:
+3. Pokud máte na svém stávajícím virtuálním pevném disku více oddílů, připojte požadovaný oddíl. Následující příklad připojí první primární oddíl na `/dev/sdc1` :
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
@@ -152,7 +151,7 @@ Po vyřešení chyb odpojte stávající virtuální pevný disk od virtuálníh
     cd /
     ```
 
-    Nyní odpojte stávající virtuální pevný disk. Následující příklad odpojí zařízení v `/dev/sdc1`:
+    Nyní odpojte stávající virtuální pevný disk. Následující příklad odpojí zařízení v `/dev/sdc1` :
 
     ```bash
     sudo umount /dev/sdc1

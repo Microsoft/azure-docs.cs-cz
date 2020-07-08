@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434713"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
@@ -73,7 +72,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
+4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z adresáře spusťte následující příkazy `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -201,7 +200,7 @@ Zařízení použije odvozený klíč zařízení s jedinečným ID registrace a
 
 ## <a name="create-a-device-image-to-provision"></a>Vytvoření image zařízení pro zřízení
 
-V této části budete aktualizovat ukázku zřizování s názvem **prov\_\_dev Client\_Sample** v sadě Azure IoT C SDK, kterou jste si nastavili dříve. 
+V této části budete aktualizovat ukázku zřizování s názvem **prov \_ dev \_ Client \_ Sample** v sadě Azure IoT C SDK, kterou jste si nastavili dříve. 
 
 Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesílá požadavek na zřízení do instance služby Device Provisioning. Spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí ke službě IoT Hub, kterou jste nakonfigurovali ve skupině pro registraci.
 
@@ -232,7 +231,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. `prov_dev_set_symmetric_key_info()` Vyhledejte volání v části **prov\_dev\_Client\_Sample. c** , který je zakomentován.
+6. Vyhledejte volání v části `prov_dev_set_symmetric_key_info()` **prov \_ dev \_ Client \_ Sample. c** , který je zakomentován.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -250,7 +249,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
 
 7. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
 
-8. V nabídce sady Visual Studio vyberte **ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy ke znovusestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
+8. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy ke znovusestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
 
     Následující výstup je příkladem úspěšného spuštění simulovaného zařízení a připojení k instanci služby zřizování pro přiřazení k IoT Hubu:
 

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74932050"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skript PowerShellu – transformace dat v cloudu pomocí Azure Data Factory
@@ -54,7 +53,7 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
     if __name__ == "__main__":
         main()
     ```
-2. Nahraďte ** &lt;storageAccountName&gt; ** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
+2. Nahraďte ** &lt; storageAccountName &gt; ** názvem vašeho účtu Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje. 
 4. Vytvořte složku **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
@@ -63,7 +62,7 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru
 1. Vytvořte soubor **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
-2. Vytvořte podsložku s `inputfiles` názvem ve `spark` složce kontejneru objektů BLOB. 
+2. Vytvořte podsložku s názvem `inputfiles` ve `spark` složce kontejneru objektů BLOB. 
 3. Do podsložky `inputfiles` uložte soubor `minecraftstory.txt`. 
 
 ## <a name="sample-script"></a>Ukázkový skript

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435397"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
@@ -49,7 +48,7 @@ Existují výhody pro oddělení technologií. Kafka je například technologie 
 
 ### <a name="scale-the-stream-buffering-layer"></a>Škálování vrstvy vyrovnávací paměti streamu
 
-Technologie ukládání do vyrovnávací paměti datového proudu Event Hubs a Kafka používají oddíly a spotřebitelé si z těchto oddílů čtou. Škálování vstupní propustnosti vyžaduje škálování počtu oddílů a přidání oddílů poskytuje rostoucí paralelismus. V Event Hubs se po nasazení nedá změnit počet oddílů, takže je důležité začít s cílovým škálováním. Pomocí Kafka je možné [Přidat oddíly](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)i v případě, že Kafka zpracovává data. Kafka poskytuje nástroj k opětovnému přiřazení oddílů `kafka-reassign-partitions.sh`. HDInsight poskytuje [Nástroj pro vyrovnávání repliky oddílů](https://github.com/hdinsight/hdinsight-kafka-tools) `rebalance_rackaware.py`. Tento nástroj pro opětovné vyrovnávání zatížení zavolá `kafka-reassign-partitions.sh` nástroj takovým způsobem, že každá replika je v samostatné doméně selhání a aktualizační doméně, což Kafka zablokuje a zvyšuje odolnost proti chybám.
+Technologie ukládání do vyrovnávací paměti datového proudu Event Hubs a Kafka používají oddíly a spotřebitelé si z těchto oddílů čtou. Škálování vstupní propustnosti vyžaduje škálování počtu oddílů a přidání oddílů poskytuje rostoucí paralelismus. V Event Hubs se po nasazení nedá změnit počet oddílů, takže je důležité začít s cílovým škálováním. Pomocí Kafka je možné [Přidat oddíly](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)i v případě, že Kafka zpracovává data. Kafka poskytuje nástroj k opětovnému přiřazení oddílů `kafka-reassign-partitions.sh` . HDInsight poskytuje [Nástroj pro vyrovnávání repliky oddílů](https://github.com/hdinsight/hdinsight-kafka-tools) `rebalance_rackaware.py` . Tento nástroj pro opětovné vyrovnávání zatížení zavolá `kafka-reassign-partitions.sh` Nástroj takovým způsobem, že každá replika je v samostatné doméně selhání a aktualizační doméně, což Kafka zablokuje a zvyšuje odolnost proti chybám.
 
 ### <a name="scale-the-stream-processing-layer"></a>Škálování vrstvy zpracování datového proudu
 
@@ -57,7 +56,7 @@ Datové proudy Apache Storm i Spark podporují přidávání pracovních uzlů d
 
 Chcete-li využít výhody nových uzlů přidaných pomocí škálování na více verzí, je nutné znovu vyvážit všechny topologie zatížení spuštěné před zvýšením velikosti clusteru. Toto nové vyrovnávání se dá udělat pomocí webového uživatelského rozhraní systému, nebo jeho CLI. Další informace najdete v dokumentaci k [Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-Apache Spark používá tři klíčové parametry pro konfiguraci svého prostředí v závislosti na požadavcích aplikace: `spark.executor.instances`, `spark.executor.cores`a. `spark.executor.memory` *Vykonavatel* je proces, který se spustí pro aplikaci Spark. Prováděcí modul běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikost prováděcího modulu pro každý cluster se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tato čísla se ukládají do `spark-defaults.conf`souboru na každém hlavním uzlu clusteru.
+Apache Spark používá tři klíčové parametry pro konfiguraci svého prostředí v závislosti na požadavcích aplikace: `spark.executor.instances` , `spark.executor.cores` a `spark.executor.memory` . *Vykonavatel* je proces, který se spustí pro aplikaci Spark. Prováděcí modul běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikost prováděcího modulu pro každý cluster se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tato čísla se ukládají do `spark-defaults.conf` souboru na každém hlavním uzlu clusteru.
 
 Tyto tři parametry lze nakonfigurovat na úrovni clusteru, pro všechny aplikace, které jsou spuštěny v clusteru, a lze je také zadat pro každou jednotlivou aplikaci. Další informace najdete v tématu [Správa prostředků pro Apache Spark clustery](spark/apache-spark-resource-manager.md).
 

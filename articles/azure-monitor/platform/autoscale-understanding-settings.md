@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364301"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
@@ -85,14 +84,14 @@ Pro ilustraci schématu nastavení automatického škálování se používá n�
 }
 ```
 
-| Sekce | Název elementu | Popis |
+| Sekce | Název elementu | Description |
 | --- | --- | --- |
 | Nastavení | ID | ID prostředku nastavení automatického škálování. Nastavení automatického škálování je Azure Resource Manager prostředek. |
-| Nastavení | jméno | Název nastavení automatického škálování. |
+| Nastavení | name | Název nastavení automatického škálování. |
 | Nastavení | location | Umístění nastavení automatického škálování. Toto umístění se může lišit od umístění prostředku, který se škáluje. |
 | properties | targetResourceUri | ID prostředku pro škálování prostředku Pro každý prostředek můžete mít jenom jedno nastavení automatického škálování. |
 | properties | uživatelů | Nastavení automatického škálování se skládá z jednoho nebo více profilů. Pokaždé, když je spuštěný modul automatického škálování, se spustí jeden profil. |
-| profil | jméno | Název profilu. Můžete si vybrat libovolný název, který vám pomůže tento profil identifikovat. |
+| profil | name | Název profilu. Můžete si vybrat libovolný název, který vám pomůže tento profil identifikovat. |
 | profil | Kapacita. maximum | Maximální povolená kapacita. Zajišťuje, aby při spuštění tohoto profilu se při automatickém škálování nezměnila velikost prostředků nad tímto číslem. |
 | profil | Kapacita. minimum | Minimální povolená kapacita. Zajišťuje automatické škálování při spouštění tohoto profilu, ale neumožňuje škálovat prostředky pod tímto číslem. |
 | profil | Kapacita. výchozí | Pokud dojde k potížím při čtení metriky prostředků (v tomto případě CPU "vmss1") a aktuální kapacita je nižší než výchozí, automatické škálování se škáluje na výchozí. To zajistí dostupnost prostředku. Pokud je aktuální kapacita již vyšší, než je výchozí kapacita, automatické škálování se neškáluje. |
@@ -106,7 +105,7 @@ Pro ilustraci schématu nastavení automatického škálování se používá n�
 | metricTrigger | timeAggregation | Agregační metoda sloužící k agregaci vzorků metrik. Například **TimeAggregation = "Average"** by měl agregovat vzorkování metriky tím, že přijímá průměr. V předchozím případě Vezměte deset ukázek a průměrně. |
 | pravidlo | scaleAction | Akce, která se má provést, když se aktivuje metricTrigger pravidla |
 | scaleAction | směr | "Zvětšit" pro horizontální navýšení kapacity nebo "zmenšení" pro horizontální navýšení kapacity.|
-| scaleAction | value | Kolik se má zvýšit nebo snížit kapacita prostředku. |
+| scaleAction | hodnota | Kolik se má zvýšit nebo snížit kapacita prostředku. |
 | scaleAction | cooldown | Doba, po kterou se má počkat po operaci škálování, než se znovu změní velikost Například pokud **cooldown = "PT10M"**, automatické škálování se znovu nepokouší o horizontální navýšení kapacity po dobu dalších 10 minut. Cooldown je, aby bylo možné metriky stabilizovat po přidání nebo odebrání instancí. |
 
 ## <a name="autoscale-profiles"></a>Profily automatického škálování

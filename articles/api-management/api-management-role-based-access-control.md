@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: ed0cd51fc686735f2d9c110ce46d5904107cafc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430619"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Použití řízení přístupu na základě role ve službě API Management
@@ -32,7 +31,7 @@ API Management v současné době nabízí tři předdefinované role a v blízk
 
 Následující tabulka uvádí stručný popis předdefinovaných rolí. Tyto role můžete přiřadit pomocí Azure Portal nebo jiných nástrojů, včetně Azure [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)a [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Podrobnosti o tom, jak přiřadit předdefinované role, najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
-| Role          | Přístup pro čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření, odstranění, škálování, síť VPN a konfigurace vlastní domény služby | Přístup k staršímu portálu vydavatele | Popis
+| Role          | Přístup pro čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření, odstranění, škálování, síť VPN a konfigurace vlastní domény služby | Přístup k staršímu portálu vydavatele | Description
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | Přispěvatel API Management služby | ✓ | ✓ | ✓ | ✓ | Super uživatel. Má úplný přístup CRUD k API Management službám a entitám (například rozhraní API a zásady). Má přístup k webu starší verze portálu vydavatele. |
 | Čtecí modul API Management služby | ✓ | | || Má přístup jen pro čtení k API Management službám a entitám. |

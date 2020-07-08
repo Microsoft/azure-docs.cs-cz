@@ -4,16 +4,15 @@ description: Pomocí rozhraní FabricClient API můžete nasazovat a odebírat a
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75376966"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
 > [!div class="op_single_selector"]
 > * [Resource Manager](service-fabric-application-arm-resource.md)
-> * [Prostředí](service-fabric-deploy-remove-applications.md)
+> * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 > * [Rozhraní API FabricClient](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
@@ -44,7 +43,7 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Nahrání balíčku aplikace
-Předpokládejme, že sestavíte a zabalíte aplikaci s názvem *MyApplication* v aplikaci Visual Studio. Ve výchozím nastavení je název typu aplikace uvedený v souboru souboru ApplicationManifest. XML "MyApplicationType".  Balíček aplikace, který obsahuje nezbytný manifest aplikace, manifesty služeb a balíčky Code/config/data, se nachází v části *\&C:\Users lt; UserName&gt;\Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*.
+Předpokládejme, že sestavíte a zabalíte aplikaci s názvem *MyApplication* v aplikaci Visual Studio. Ve výchozím nastavení je název typu aplikace uvedený v ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, který obsahuje nezbytný manifest aplikace, manifesty služeb a balíčky Code/config/data, se nachází v části *C:\Users \& lt; UserName &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*.
 
 Nahráním balíčku aplikace se umístí do umístění, které je přístupné pro interní Service Fabric komponenty. Service Fabric ověří balíček aplikace při registraci balíčku aplikace. Pokud však chcete ověřit balíček aplikace místně (tj. před odesláním), použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
 
@@ -131,7 +130,7 @@ Pokud je klientský počítač v jiné oblasti než cluster, zvažte použití k
 Problém: nahrání balíčku se úspěšně dokončilo, ale vyprší časový limit rozhraní [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API. Zkuste
 - Před kopírováním do úložiště imagí [balíček Zkomprimujte](service-fabric-package-apps.md#compress-a-package) .
 Komprese zmenšuje velikost a počet souborů. tím se snižuje objem provozu a Service Fabric musí probíhat. Operace nahrávání může být pomalejší (obzvláště pokud zahrnete dobu komprimace), ale registraci a zrušení registrace typu aplikace jsou rychlejší.
-- Zadejte větší časový limit pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) rozhraní API ProvisionApplicationAsync `timeout` s parametrem.
+- Zadejte větší časový limit pro rozhraní API [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) s `timeout` parametrem.
 
 ### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s mnoha soubory
 Problém: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) časový limit pro balíček aplikace s mnoha soubory (pořadí tisíců).

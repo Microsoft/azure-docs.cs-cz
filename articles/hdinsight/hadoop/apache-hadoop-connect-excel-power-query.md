@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: e643c7fe7b18eed30843e7cab3977036435d2112
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435805"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Připojení Excelu k Apache Hadoop pomocí Power Query
@@ -43,27 +42,27 @@ Doplněk Power Query pro Excel usnadňuje import dat z clusteru HDInsight do Exc
 
    * Excel 2016
 
-     * Vyberte > **data** > **získat data** > **z Azure** > **z Azure HDInsight (HDFS)**.
+     * Vyberte > **data**  >  **získat data**  >  **z Azure**  >  **z Azure HDInsight (HDFS)**.
 
        ![HDI. PowerQuery. SelectHdiSource. 2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
 
    * Excel 2013/2010
 
-     * **Z Microsoft Azure HDInsight**vyberte **Power Query** > **z Azure** > .
+     * Z Microsoft Azure HDInsight vyberte **Power Query**  >  **z Azure**  >  **From Microsoft Azure HDInsight**.
 
        ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
 
-       **Poznámka:** Pokud nevidíte nabídku **Power Query** , přejděte na**Možnosti** >  **souborů** > **Doplňky**a v rozevíracím seznamu **Spravovat** v dolní části stránky vyberte **Doplňky modelu COM** . Vyberte tlačítko **Přejít do...** a ověřte, že je zaškrtnuté políčko pro doplněk Power Query pro Excel.
+       **Poznámka:** Pokud nevidíte nabídku **Power Query** , přejděte na možnosti **souborů**  >  **Options**  >  **Doplňky**a v rozevíracím seznamu **Spravovat** v dolní části stránky vyberte **Doplňky modelu COM** . Vyberte tlačítko **Přejít do...** a ověřte, že je zaškrtnuté políčko pro doplněk Power Query pro Excel.
 
        **Poznámka:** Power Query také umožňuje importovat data ze HDFS výběrem **z jiných zdrojů**.
 
-1. V dialogovém okně **Azure HDInsight (HDFS)** zadejte do textového pole **název účtu nebo adresa URL** název účtu úložiště objektů BLOB v Azure, který je přidružený k vašemu clusteru. Pak vyberte **OK**. Tento účet může být výchozí účet úložiště nebo propojený účet úložiště.  Formát je `https://StorageAccountName.blob.core.windows.net/`.
+1. V dialogovém okně **Azure HDInsight (HDFS)** zadejte do textového pole **název účtu nebo adresa URL** název účtu úložiště objektů BLOB v Azure, který je přidružený k vašemu clusteru. Pak vyberte **OK**. Tento účet může být výchozí účet úložiště nebo propojený účet úložiště.  Formát je `https://StorageAccountName.blob.core.windows.net/` .
 
 1. V poli **klíč účtu**zadejte klíč pro účet úložiště objektů BLOB a pak vyberte **připojit**. (Musíte zadat informace o účtu jenom při prvním přístupu k tomuto úložišti.)
 
 1. V podokně **navigátor** na levé straně editoru dotazů poklikejte na název kontejneru úložiště objektů BLOB přidružený k vašemu clusteru. Ve výchozím nastavení má název kontejneru stejný název jako název clusteru.
 
-1. Ve sloupci **název** vyhledejte **HiveSampleData. txt** (cesta ke složce je **.. /Hive/Warehouse/hivesampletable/**) a pak vyberte **binární soubor** na levé straně souboru HiveSampleData. txt. HiveSampleData. txt se dodává se všemi clustery. Volitelně můžete použít vlastní soubor.
+1. Vyhledejte **HiveSampleData.txt** ve sloupci **název** (cesta ke složce je **.. /Hive/Warehouse/hivesampletable/**) a potom vyberte **binární soubor** vlevo od HiveSampleData.txt. HiveSampleData.txt se dodává se všemi clustery. Volitelně můžete použít vlastní soubor.
 
     ![Data importování Power Query v HDI Excelu](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
 

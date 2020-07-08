@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435648"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
@@ -28,7 +27,7 @@ Pokud jste to ještě neudělali, postupujte podle [těchto pokynů](./domain-jo
 
 ## <a name="access-the-ambari-management-page"></a>Přístup ke stránce správy Ambari
 
-Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelském rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte `https://CLUSTERNAME.azurehdinsight.net`na adresu. Zadejte uživatelské jméno a heslo správce clusteru, které jste definovali při vytváření clusteru. Pak z řídicího panelu Ambari vyberte **Spravovat Ambari** pod nabídkou **správce** :
+Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelském rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte na adresu `https://CLUSTERNAME.azurehdinsight.net` . Zadejte uživatelské jméno a heslo správce clusteru, které jste definovali při vytváření clusteru. Pak z řídicího panelu Ambari vyberte **Spravovat Ambari** pod nabídkou **správce** :
 
 ![Správa řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -46,7 +45,7 @@ Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelské
 
 ### <a name="add-users-through-powershell"></a>Přidávání uživatelů přes PowerShell
 
-Níže uvedené proměnné upravte tak, `CLUSTERNAME`že `NEWUSER`nahradíte `PASSWORD` hodnoty, a s příslušnými hodnotami.
+Níže uvedené proměnné upravte tak, že nahradíte `CLUSTERNAME` `NEWUSER` hodnoty, a `PASSWORD` s příslušnými hodnotami.
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +134,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>Přidat uživatele prostřednictvím oblé
 
-Níže uvedené proměnné upravte nahrazením `CLUSTERNAME`, `ADMINPASSWORD`, `NEWUSER` `USERPASSWORD` a příslušnými hodnotami. Skript je navržený tak, aby se spustil s bash. Pro příkazový řádek systému Windows by byly potřeba drobné úpravy.
+Níže uvedené proměnné upravte nahrazením `CLUSTERNAME` , `ADMINPASSWORD` , a `NEWUSER` `USERPASSWORD` příslušnými hodnotami. Skript je navržený tak, aby se spustil s bash. Pro příkazový řádek systému Windows by byly potřeba drobné úpravy.
 
 ```bash
 export clusterName="CLUSTERNAME"
@@ -179,9 +178,9 @@ Ambari obsahuje instance zobrazení pro [Apache Hive](https://hive.apache.org/) 
 
 3. Posuňte se k dolnímu okraji stránky zobrazení. V části *oprávnění* máte dvě možnosti, jak udělit uživatelům domény oprávnění k zobrazení:
 
-**Udělení oprávnění těmto** ![uživatelům udělit oprávnění těmto uživatelům](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+**Udělení oprávnění těmto uživatelům** ![ Udělení oprávnění těmto uživatelům](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
-**Udělit oprávnění těmto skupinám** ![udělit oprávnění těmto skupinám](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+**Udělit oprávnění těmto skupinám** ![ Udělit oprávnění těmto skupinám](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
 1. Chcete-li přidat uživatele, vyberte tlačítko **Přidat uživatele** .
 

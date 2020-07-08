@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74974168"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Kurz: šifrování videa pomocí AES-128 a používání služby pro doručování klíčů
@@ -30,7 +29,7 @@ Media Services můžete použít k doručování HTTP Live Streaming (HLS), MPEG
 
 Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl. Viz také [jak chránit pomocí DRM](protect-with-drm.md).
 
-Výstup z ukázky tohoto článku obsahuje adresu URL Azure Media Player, adresu URL manifestu a token AES potřebný k přehrání obsahu. Ukázka nastaví vypršení platnosti tokenu JSON Web Token (JWT) na 1 hodinu. Můžete otevřít prohlížeč a vložit výslednou adresu URL pro spuštění ukázkové stránky Azure Media Player s adresou URL a tokenem, který jste vyplnili již v následujícím formátu: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
+Výstup z ukázky tohoto článku obsahuje adresu URL Azure Media Player, adresu URL manifestu a token AES potřebný k přehrání obsahu. Ukázka nastaví vypršení platnosti tokenu JSON Web Token (JWT) na 1 hodinu. Můžete otevřít prohlížeč a vložit výslednou adresu URL pro spuštění ukázkové stránky Azure Media Player s adresou URL a tokenem, který jste vyplnili již v následujícím formátu: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}``` .
 
 V tomto kurzu získáte informace o následujících postupech:
 

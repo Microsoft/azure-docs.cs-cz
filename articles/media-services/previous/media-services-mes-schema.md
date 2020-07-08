@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 622f14beabb1f2f109dff5d28c1591ffdd5aa000
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74901440"
 ---
 # <a name="media-encoder-standard-schema"></a>Schéma Media Encoderu Standard
@@ -28,24 +27,24 @@ Definuje přednastavení kódování.
 
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
-| **Kódování** |[Kódování](media-services-mes-schema.md#Encoding) |Kořenový element označuje, že vstupní zdroje mají být kódovány. |
+| **Encoding** |[Encoding](media-services-mes-schema.md#Encoding) |Kořenový element označuje, že vstupní zdroje mají být kódovány. |
 | **Výstupy** |[Výstupy](media-services-mes-schema.md#Output) |Kolekce požadovaných výstupních souborů. |
 | **StretchMode**<br/>minOccurs = "0"<br/>default = "AutoSize|xs: String|Řízení velikosti snímku, odsazení, pixelů nebo zobrazení poměru stran výstupní videa. **StretchMode** může být jedna z následujících hodnot: **none**, **AutoSize** (default) nebo **autopřizpůsob**.<br/><br/>**Žádné**: striktní postupovat podle rozlišení výstupu (například **šířky** a **výšky** v předvolbě) bez zvážení poměru stran obrazových bodů nebo zobrazení poměru stran pro vstupní video. Doporučuje se ve scénářích, jako je například [ořezávání](media-services-crop-video.md), kde výstupní video má v porovnání se vstupem jiný poměr stran. <br/><br/>**AutoSize**: rozlišení výstupu se vejde do okna (šířka × výška) zadané v přednastaveném. Kodér však vytvoří výstupní video, které má čtvercový poměr stran (1:1) pixelů. Proto je možné přepsat šířku výstupu nebo výstupní výšku, aby se shodoval poměr stran zobrazení vstupu, bez odsazení. Například pokud je vstup 1080 a předvolby kódování požádá o 1280x1280, pak hodnota výšky v předdefinovaném je přepsána a výstup bude na 1280 × 720, který bude udržovat poměr stran vstupních hodnot 16:9. <br/><br/>**Automatické přizpůsobení**: Pokud je to potřeba, nasadíte výstupní video (s Letterbox nebo pillarbox), aby se zajistilo požadované výstupní řešení, zatímco aktivní oblast videa ve výstupu má stejný poměr stran jako vstup. Předpokládejme například, že vstup je 1080 a předvolby kódování požádá o 1280x1280. Výstupní video se pak bude nacházet na 1280x1280, ale bude obsahovat vnitřní 1280 × 720 obdélník aktivního videa s poměrem stran 16:9 a Letterbox oblasti 280 pixelů v horní a dolní části. Další příklad, pokud je vstup 1440x1080 a předvolby kódování požádá o 1280 × 720, pak bude výstup na 1280 × 720, který obsahuje vnitřní obdélník 960x720 v poměru stran 4:3 a oblasti pole pilíře 160 pixelů ve světě vlevo a vpravo. 
 
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
-| **Verze**<br/><br/> Požaduje se |**xs: Decimal** |Přednastavená verze Platí následující omezení: xs: fractionDigits value = "1" a xs: minInclusive value = "1", například **Version = "1.0"**. |
+| **Verze**<br/><br/> Vyžadováno |**xs: Decimal** |Přednastavená verze Platí následující omezení: xs: fractionDigits value = "1" a xs: minInclusive value = "1", například **Version = "1.0"**. |
 
 ## <a name="encoding"></a><a name="Encoding"></a>Kódování
 Obsahuje sekvenci následujících prvků:  
 
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |Nastavení pro H. 264 kódování videa |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |Nastavení pro kódování AAC zvuk. |
@@ -56,7 +55,7 @@ Obsahuje sekvenci následujících prvků:
 ## <a name="h264video"></a><a name="H264Video"></a>H264Video
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs = "0" |**xs: Boolean** |V současné době je podporováno pouze kódování s jedním průchodem. |
 | **KeyFrameInterval**<br/><br/> minOccurs = "0"<br/><br/> **Výchozí = "00:00:02"** |**xs: Time** |Určuje pevné mezery mezi IDR snímky v jednotkách sekund. Také se označuje jako skupinu GOP doba trvání. Informace o tom, jestli se kodér může odchylovat od této hodnoty, najdete v tématu **SceneChangeDetection** . |
@@ -67,7 +66,7 @@ Obsahuje sekvenci následujících prvků:
 
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Podmínka** |**xs: String** | Pokud vstup nemá žádné video, možná budete chtít, aby kodér vynutil vložení monochromatického videa. Uděláte to tak, že použijete Condition = "InsertBlackIfNoVideoBottomLayerOnly" (pro vložení videa pouze s nejnižší přenosovou rychlostí) nebo Condition = "InsertBlackIfNoVideo" (pro vložení videa do všech výstupních přenosů). Další informace najdete v [tomto](media-services-advanced-encoding-with-mes.md#no_video) článku.|
 
@@ -77,7 +76,7 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
               
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs = "0" maxOccurs = "Unbounded" |[H264Layer](media-services-mes-schema.md#H264Layer) |Kolekce H264 vrstev. |
 
@@ -89,10 +88,10 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
 
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "auto" |**xs: String** |Může to být jedna z následujících hodnot typu **xs:** **auto**, **směrný plán**, **hlavní**, **Vysoká**. |
-| **Úroveň**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "auto" |**xs: String** | |
+| **Obsah**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "auto" |**xs: String** | |
 | **Rychlostí**<br/><br/> minOccurs = "0" |**xs: int** |Přenosová rychlost použitá pro tuto vrstvu videa zadaná v KB/s. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**xs: int** |Maximální přenosová rychlost použitá pro tuto vrstvu videa zadaná v KB/s. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> Výchozí = "00:00:05" |**xs: Time** |Délka vyrovnávací paměti videa |
@@ -112,19 +111,19 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
 
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: String** |Může to být jedna z následujících hodnot: **AACLC**, **HEAACV1**nebo **HEAACV2**. |
 
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Podmínka** |**xs: String** |Chcete-li vynutit, aby kodér vytvořil Asset, který obsahuje tichou zvukovou stopu, když vstup nemá žádný zvuk, zadejte hodnotu "InsertSilenceIfNoAudio".<br/><br/> Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který obsahuje pouze video, a žádný zvuk, pak výstupní prostředek obsahuje soubory, které obsahují pouze data videa. Někteří hráči nemusí být schopni tyto výstupní proudy zpracovat. Toto nastavení můžete použít k vynucení, aby kodér mohl do výstupu v tomto scénáři přidat tichou zvukovou stopu. |
 
 ### <a name="groups"></a>Skupiny
 
-| Referenční informace | Popis |
+| Referenční informace | Description |
 | --- | --- |
 | [Zvuk](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs = "0" |Podívejte se na popis skupiny [zvuků](media-services-mes-schema.md#AudioGroup) a zjistěte odpovídající počet kanálů, vzorkovací frekvenci a přenosovou rychlost, kterou je možné nastavit pro jednotlivé profily. |
 
@@ -133,7 +132,7 @@ Podrobnosti o tom, jaké hodnoty jsou pro každý profil platné, najdete v tabu
 
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Kanály**<br/><br/> minOccurs = "0" |**xs: int** |Počet zakódovaných zvukových kanálů. Níže jsou uvedené platné možnosti: 1, 2, 5, 6, 8.<br/><br/> Výchozí hodnota: 2. |
 | **SamplingRate**<br/><br/> minOccurs = "0" |**xs: int** |Vzorkovací frekvence zvuku zadaná v Hz. |
@@ -143,14 +142,14 @@ Podrobnosti o tom, jaké hodnoty jsou pro každý profil platné, najdete v tabu
 
 Zvukový kodek|Podrobnosti  
 -----------------|---  
-**AACLC** |1:<br/><br/> -11025:8 &lt;= přenosová rychlost &lt; 16<br/><br/> -12000:8 &lt;= přenosová rychlost &lt; 16<br/><br/> -16000:8 &lt;= přenosová rychlost &lt;32<br/><br/>-22050:24 &lt;= přenosová rychlost &lt; 32<br/><br/> -24000:24 &lt;= přenosová rychlost &lt; 32<br/><br/> -32000:32 &lt;= přenosová rychlost &lt;= 192<br/><br/> -44100:56 &lt;= přenosová rychlost &lt;= 288<br/><br/> -48000:56 &lt;= přenosová rychlost &lt;= 288<br/><br/> -88200:128 &lt;= přenosová rychlost &lt;= 288<br/><br/> -96000:128 &lt;= přenosová rychlost &lt;= 288<br/><br/> 2:<br/><br/> -11025:16 &lt;= přenosová rychlost &lt; 24<br/><br/> -12000:16 &lt;= přenosová rychlost &lt; 24<br/><br/> -16000:16 &lt;= přenosová rychlost &lt; 40<br/><br/> -22050:32 &lt;= přenosová rychlost &lt; 40<br/><br/> -24000:32 &lt;= přenosová rychlost &lt; 40<br/><br/> -32000:40 &lt;= přenosová rychlost &lt;= 384<br/><br/> -44100:96 &lt;= přenosová rychlost &lt;= 576<br/><br/> -48000:96 &lt;= přenosová rychlost &lt;= 576<br/><br/> -88200:256 &lt;= přenosová rychlost &lt;= 576<br/><br/> -96000:256 &lt;= přenosová rychlost &lt;= 576<br/><br/> 5/6:<br/><br/> -32000:160 &lt;= přenosová rychlost &lt;= 896<br/><br/> -44100:240 &lt;= přenosová rychlost &lt;= 1024<br/><br/> -48000:240 &lt;= přenosová rychlost &lt;= 1024<br/><br/> -88200:640 &lt;= přenosová rychlost &lt;= 1024<br/><br/> -96000:640 &lt;= přenosová rychlost &lt;= 1024<br/><br/> 8:<br/><br/> -32000:224 &lt;= přenosová rychlost &lt;= 1024<br/><br/> -44100:384 &lt;= přenosová rychlost &lt;= 1024<br/><br/> -48000:384 &lt;= přenosová rychlost &lt;= 1024<br/><br/> -88200:896 &lt;= přenosová rychlost &lt;= 1024<br/><br/> -96000:896 &lt;= přenosová rychlost &lt;= 1024  
-**HEAACV1** |1:<br/><br/> -22050: přenosová rychlost = 8<br/><br/> -24000:8 &lt;= přenosová rychlost &lt;= 10<br/><br/> -32000:12 &lt;= přenosová rychlost &lt;= 64<br/><br/> -44100:20 &lt;= přenosová rychlost &lt;= 64<br/><br/> -48000:20 &lt;= přenosová rychlost &lt;= 64<br/><br/> -88200: přenosová rychlost = 64<br/><br/> 2:<br/><br/> -32000:16 &lt;= přenosová rychlost &lt;= 128<br/><br/> -44100:16 &lt;= přenosová rychlost &lt;= 128<br/><br/> -48000:16 &lt;= přenosová rychlost &lt;= 128<br/><br/> -88200:96 &lt;= přenosová rychlost &lt;= 128<br/><br/> -96000:96 &lt;= přenosová rychlost &lt;= 128<br/><br/> 5/6:<br/><br/> -32000:64 &lt;= přenosová rychlost &lt;= 320<br/><br/> -44100:64 &lt;= přenosová rychlost &lt;= 320<br/><br/> -48000:64 &lt;= přenosová rychlost &lt;= 320<br/><br/> -88200:256 &lt;= přenosová rychlost &lt;= 320<br/><br/> -96000:256 &lt;= přenosová rychlost &lt;= 320<br/><br/> 8:<br/><br/> -32000:96 &lt;= přenosová rychlost &lt;= 448<br/><br/> -44100:96 &lt;= přenosová rychlost &lt;= 448<br/><br/> -48000:96 &lt;= přenosová rychlost &lt;= 448<br/><br/> -88200:384 &lt;= přenosová rychlost &lt;= 448<br/><br/> -96000:384 &lt;= přenosová rychlost &lt;= 448  
-**HEAACV2** |2:<br/><br/> -22050:8 &lt;= přenosová rychlost &lt;= 10<br/><br/> -24000:8 &lt;= přenosová rychlost &lt;= 10<br/><br/> -32000:12 &lt;= přenosová rychlost &lt;= 64<br/><br/> -44100:20 &lt;= přenosová rychlost &lt;= 64<br/><br/> -48000:20 &lt;= přenosová rychlost &lt;= 64<br/><br/> -88200:64 &lt;= přenosová rychlost &lt;= 64  
+**AACLC** |1:<br/><br/> -11025:8 &lt; = přenosová rychlost &lt; 16<br/><br/> -12000:8 &lt; = přenosová rychlost &lt; 16<br/><br/> -16000:8 &lt; = přenosová rychlost &lt; 32<br/><br/>-22050:24 &lt; = přenosová rychlost &lt; 32<br/><br/> -24000:24 &lt; = přenosová rychlost &lt; 32<br/><br/> -32000:32 &lt; = přenosová rychlost &lt; = 192<br/><br/> -44100:56 &lt; = přenosová rychlost &lt; = 288<br/><br/> -48000:56 &lt; = přenosová rychlost &lt; = 288<br/><br/> -88200:128 &lt; = přenosová rychlost &lt; = 288<br/><br/> -96000:128 &lt; = přenosová rychlost &lt; = 288<br/><br/> 2:<br/><br/> -11025:16 &lt; = přenosová rychlost &lt; 24<br/><br/> -12000:16 &lt; = přenosová rychlost &lt; 24<br/><br/> -16000:16 &lt; = přenosová rychlost &lt; 40<br/><br/> -22050:32 &lt; = přenosová rychlost &lt; 40<br/><br/> -24000:32 &lt; = přenosová rychlost &lt; 40<br/><br/> -32000:40 &lt; = přenosová rychlost &lt; = 384<br/><br/> -44100:96 &lt; = přenosová rychlost &lt; = 576<br/><br/> -48000:96 &lt; = přenosová rychlost &lt; = 576<br/><br/> -88200:256 &lt; = přenosová rychlost &lt; = 576<br/><br/> -96000:256 &lt; = přenosová rychlost &lt; = 576<br/><br/> 5/6:<br/><br/> -32000:160 &lt; = přenosová rychlost &lt; = 896<br/><br/> -44100:240 &lt; = přenosová rychlost &lt; = 1024<br/><br/> -48000:240 &lt; = přenosová rychlost &lt; = 1024<br/><br/> -88200:640 &lt; = přenosová rychlost &lt; = 1024<br/><br/> -96000:640 &lt; = přenosová rychlost &lt; = 1024<br/><br/> 8:<br/><br/> -32000:224 &lt; = přenosová rychlost &lt; = 1024<br/><br/> -44100:384 &lt; = přenosová rychlost &lt; = 1024<br/><br/> -48000:384 &lt; = přenosová rychlost &lt; = 1024<br/><br/> -88200:896 &lt; = přenosová rychlost &lt; = 1024<br/><br/> -96000:896 &lt; = přenosová rychlost &lt; = 1024  
+**HEAACV1** |1:<br/><br/> -22050: přenosová rychlost = 8<br/><br/> -24000:8 &lt; = přenosová rychlost &lt; = 10<br/><br/> -32000:12 &lt; = přenosová rychlost &lt; = 64<br/><br/> -44100:20 &lt; = přenosová rychlost &lt; = 64<br/><br/> -48000:20 &lt; = přenosová rychlost &lt; = 64<br/><br/> -88200: přenosová rychlost = 64<br/><br/> 2:<br/><br/> -32000:16 &lt; = přenosová rychlost &lt; = 128<br/><br/> -44100:16 &lt; = přenosová rychlost &lt; = 128<br/><br/> -48000:16 &lt; = přenosová rychlost &lt; = 128<br/><br/> -88200:96 &lt; = přenosová rychlost &lt; = 128<br/><br/> -96000:96 &lt; = přenosová rychlost &lt; = 128<br/><br/> 5/6:<br/><br/> -32000:64 &lt; = přenosová rychlost &lt; = 320<br/><br/> -44100:64 &lt; = přenosová rychlost &lt; = 320<br/><br/> -48000:64 &lt; = přenosová rychlost &lt; = 320<br/><br/> -88200:256 &lt; = přenosová rychlost &lt; = 320<br/><br/> -96000:256 &lt; = přenosová rychlost &lt; = 320<br/><br/> 8:<br/><br/> -32000:96 &lt; = přenosová rychlost &lt; = 448<br/><br/> -44100:96 &lt; = přenosová rychlost &lt; = 448<br/><br/> -48000:96 &lt; = přenosová rychlost &lt; = 448<br/><br/> -88200:384 &lt; = přenosová rychlost &lt; = 448<br/><br/> -96000:384 &lt; = přenosová rychlost &lt; = 448  
+**HEAACV2** |2:<br/><br/> -22050:8 &lt; = přenosová rychlost &lt; = 10<br/><br/> -24000:8 &lt; = přenosová rychlost &lt; = 10<br/><br/> -32000:12 &lt; = přenosová rychlost &lt; = 64<br/><br/> -44100:20 &lt; = přenosová rychlost &lt; = 64<br/><br/> -48000:20 &lt; = přenosová rychlost &lt; = 64<br/><br/> -88200:64 &lt; = přenosová rychlost &lt; = 64  
   
 ## <a name="clip"></a><a name="Clip"></a>Sady
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Spuštění** |**xs: Duration** |Určuje počáteční čas prezentace. Hodnota StartTime musí odpovídat absolutním časovým razítkem vstupního videa. Například pokud má první snímek vstupního videa časové razítko 12:00:10.000, pak StartTime by měl být aspoň 12:00:10.000 nebo vyšší. |
 | **Doba trvání** |**xs: Duration** |Určuje dobu trvání prezentace (například vzhled překrytí ve videu). |
@@ -158,15 +157,15 @@ Zvukový kodek|Podrobnosti
 ## <a name="output"></a><a name="Output"></a>Výkonem
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Bitmap** |**xs: String** |Název výstupního souboru<br/><br/> Pomocí maker popsaných v následující tabulce můžete sestavovat názvy výstupních souborů. Příklad:<br/><br/> **"Výstupy": [{"FileName": "{Base.}*{Solution}*{přenos}. mp4", "Format": {"Type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makra
 
-| Podokně | Popis |
+| Podokně | Description |
 | --- | --- |
-| **BaseName** |Pokud provádíte kódování VoD, je {Baseer} první 32 znaky vlastnosti AssetFile.Name primárního souboru ve vstupním prostředku.<br/><br/> Pokud je vstupním prostředkem živý archiv, pak je {Baseer} odvozený od atributů stop v manifestu serveru. Pokud odesíláte úlohu dílčího klipu pomocí TopBitrate, jako v: "<VideoStream\>TopBitrate</videostream\>" a výstupní soubor obsahuje video, pak je {Base} první 32 znaků stopy vrstvy videa s nejvyšší přenosovou rychlostí.<br/><br/> Pokud místo toho odesíláte úlohu dílčího klipu pomocí všech vstupních přenosů, jako je například "<VideoStream\>* </videostream\>" a výstupní soubor obsahuje video, je {Base} první 32 znaků stopy odpovídající vrstvy videa. |
+| **BaseName** |Pokud provádíte kódování VoD, je {Baseer} první 32 znaky vlastnosti AssetFile.Name primárního souboru ve vstupním prostředku.<br/><br/> Pokud je vstupním prostředkem živý archiv, pak je {Baseer} odvozený od atributů stop v manifestu serveru. Pokud odesíláte úlohu dílčího klipu pomocí TopBitrate, jako v: "<VideoStream \> TopBitrate</videostream \> " a výstupní soubor obsahuje video, pak je {Base} první 32 znaků stopy vrstvy videa s nejvyšší přenosovou rychlostí.<br/><br/> Pokud místo toho odesíláte úlohu dílčího klipu pomocí všech vstupních přenosů, jako je například "<VideoStream \> * </videostream \> " a výstupní soubor obsahuje video, je {Base} první 32 znaků stopy odpovídající vrstvy videa. |
 | **Kodek** |Mapuje se na video a AAC pro zvuk na "H264". |
 | **Rychlostí** |Cílová přenosová rychlost videa, pokud výstupní soubor obsahuje video a zvuk nebo cílovou přenosovou rychlostí, pokud výstupní soubor obsahuje jenom zvuk. Použitá hodnota je přenosová rychlost v KB/s. |
 | **Kanál** |Počet zvukových kanálů, pokud soubor obsahuje zvuk. |
@@ -178,7 +177,7 @@ Zvukový kodek|Podrobnosti
 ## <a name="video-complex-type-inherits-from-codec"></a><a name="Video"></a>Video (komplexní typ dědí z kodeku)
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Zahájení** |**xs: String** | |
 | **Krok** |**xs: String** | |
@@ -203,7 +202,7 @@ Alternativně můžete použít příznak **PreserveResolutionAfterRotation** a 
 ## <a name="formatgroup-group"></a><a name="FormatGroup"></a>Format Group (skupina)
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
@@ -212,35 +211,35 @@ Alternativně můžete použít příznak **PreserveResolutionAfterRotation** a 
 ## <a name="bmplayer"></a><a name="BmpLayer"></a>BmpLayer
 ### <a name="element"></a>Prvek
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **impulzu**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Podmínka** |**xs: String** | |
 
 ## <a name="pnglayer"></a><a name="PngLayer"></a>PngLayer
 ### <a name="element"></a>Prvek
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **impulzu**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Podmínka** |**xs: String** | |
 
 ## <a name="jpglayer"></a><a name="JpgLayer"></a>JpgLayer
 ### <a name="element"></a>Prvek
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **impulzu**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
@@ -248,49 +247,49 @@ Alternativně můžete použít příznak **PreserveResolutionAfterRotation** a 
 
 ### <a name="attributes"></a>Atributy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **Podmínka** |**xs: String** | |
 
 ## <a name="pnglayers"></a><a name="PngLayers"></a>PngLayers
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs = "0" maxOccurs = "Unbounded" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="bmplayers"></a><a name="BmpLayers"></a>BmpLayers
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs = "0" maxOccurs = "Unbounded" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="jpglayers"></a><a name="JpgLayers"></a>JpgLayers
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs = "0" maxOccurs = "Unbounded" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a>BmpImage (komplexní typ dědí z videa)
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Vrstvy png |
 
 ## <a name="jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a>JpgImage (komplexní typ dědí z videa)
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Vrstvy png |
 
 ## <a name="pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a>PngImage (komplexní typ dědí z videa)
 ### <a name="elements"></a>Elementy
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Vrstvy png |
 

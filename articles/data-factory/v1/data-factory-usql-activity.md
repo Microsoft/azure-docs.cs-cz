@@ -13,10 +13,9 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74927906"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat spuštěním skriptů U-SQL v Azure Data Lake Analytics 
@@ -45,11 +44,11 @@ Vytvoříte propojenou službu **Azure Data Lake Analytics** pro propojení Azur
 
 Následující tabulka uvádí popisy obecných vlastností použitých v definici JSON. Můžete si vybrat mezi instančním objektem a ověřením přihlašovacích údajů uživatele.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| **textový** |Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. |Ano |
-| **accountName** |Azure Data Lake Analytics název účtu. |Ano |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics identifikátor URI. |Ne |
+| **textový** |Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. |Yes |
+| **accountName** |Azure Data Lake Analytics název účtu. |Yes |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics identifikátor URI. |No |
 | **subscriptionId** |ID předplatného Azure |Ne (Pokud není zadaný, použije se předplatné datové továrny). |
 | **resourceGroupName** |Název skupiny prostředků Azure |Ne (Pokud není zadaný, použije se skupina prostředků objektu pro vytváření dat). |
 
@@ -61,11 +60,11 @@ Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu 
 
 Použijte ověřování instančního objektu zadáním následujících vlastností:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Zadejte ID klienta aplikace. | Ano |
-| **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **tenant** | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano |
+| **servicePrincipalId** | Zadejte ID klienta aplikace. | Yes |
+| **servicePrincipalKey** | Zadejte klíč aplikace. | Yes |
+| **tenant** | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Yes |
 
 **Příklad: ověřování instančního objektu**
 ```json
@@ -89,10 +88,10 @@ Použijte ověřování instančního objektu zadáním následujících vlastno
 ### <a name="user-credential-authentication"></a>Ověřování přihlašovacích údajů uživatele
 Alternativně můžete použít ověření přihlašovacích údajů uživatele pro Data Lake Analytics zadáním následujících vlastností:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| **udělován** | V editoru Data Factory klikněte na tlačítko **autorizovat** a zadejte přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Ano |
-| **sessionId** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Ano |
+| **udělován** | V editoru Data Factory klikněte na tlačítko **autorizovat** a zadejte přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Yes |
+| **sessionId** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Yes |
 
 **Příklad: ověření přihlašovacích údajů uživatele**
 ```json
@@ -117,7 +116,7 @@ Autorizační kód, který jste vygenerovali pomocí tlačítka **autorizovat** 
 
 | Typ uživatele | Platnost vyprší po |
 |:--- |:--- |
-| Uživatelské účty nespravované pomocí Azure Active Directory (@hotmail.com, @live.comatd.) |12 hodin |
+| Uživatelské účty nespravované pomocí Azure Active Directory ( @hotmail.com , @live.com atd.) |12 hodin |
 | Uživatelské účty spravované pomocí Azure Active Directory (AAD) |14 dní po posledním spuštění řezu. <br/><br/>90 dnů, pokud je řez založený na propojené službě založené na protokolu OAuth spuštěn nejméně jednou za 14 dní. |
 
 Pokud chcete tuto chybu předejít, znovu autorizovat pomocí tlačítka **autorizovat** po **vypršení platnosti tokenu** a znovu nasaďte propojenou službu. Hodnoty pro **identifikátor SessionID** a vlastnosti **autorizace** můžete také generovat programově pomocí kódu následujícím způsobem:
@@ -147,7 +146,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Podrobnosti o třídách Data Factory používaných v kódu naleznete v tématech [Třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), třída [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)a [AuthorizationSessionGetResponse třídy](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) . Přidejte odkaz na: Microsoft. IdentityModel. clients. Active. WindowsForms. dll pro třídu WindowsFormsWebAuthenticationDialog. 
+Podrobnosti o třídách Data Factory používaných v kódu naleznete v tématech [Třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), třída [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)a [AuthorizationSessionGetResponse třídy](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) . Přidejte odkaz na: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll pro třídu WindowsFormsWebAuthenticationDialog. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita U-SQL služby Data Lake Analytics
 Následující fragment kódu JSON definuje kanál s aktivitou Data Lake Analytics U-SQL. Definice aktivity obsahuje odkaz na propojenou službu Azure Data Lake Analytics, kterou jste vytvořili dříve.   
@@ -205,20 +204,20 @@ Následující fragment kódu JSON definuje kanál s aktivitou Data Lake Analyti
 
 V následující tabulce jsou popsány názvy a popisy vlastností, které jsou specifické pro tuto aktivitu. 
 
-| Vlastnost            | Popis                              | Požaduje se                                 |
+| Vlastnost            | Popis                              | Vyžadováno                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | Vlastnost Type musí být nastavená na **DataLakeAnalyticsU-SQL**. | Ano                                      |
-| linkedServiceName   | Odkaz na Azure Data Lake Analytics zaregistrovaný jako propojená služba v Data Factory | Ano                                      |
+| typ                | Vlastnost Type musí být nastavená na **DataLakeAnalyticsU-SQL**. | Yes                                      |
+| linkedServiceName   | Odkaz na Azure Data Lake Analytics zaregistrovaný jako propojená služba v Data Factory | Yes                                      |
 | scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru rozlišuje velká a malá písmena. | Ne (Pokud používáte skript)                   |
 | scriptLinkedService | Propojená služba, která propojuje úložiště obsahující skript s datovou továrnou | Ne (Pokud používáte skript)                   |
-| .              | Místo zadání scriptPath a scriptLinkedService zadejte vložený skript. Například: `"script": "CREATE DATABASE test"`. | Ne (Pokud používáte scriptPath a scriptLinkedService) |
-| degreeOfParallelism | Maximální počet uzlů současně použitých ke spuštění úlohy. | Ne                                       |
-| upřednostněn            | Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. | Ne                                       |
-| parameters          | Parametry pro skript U-SQL          | Ne                                       |
-| runtimeVersion      | Verze modulu runtime pro modul U-SQL, který se má použít | Ne                                       |
-| CompilationMode nastavena     | <p>Režim kompilace U-SQL Musí se jednat o jednu z těchto hodnot:</p> <ul><li>**Sémantika:** Provádět pouze sémantické kontroly a nezbytné správnosti kontroly.</li><li>**Úplné:** Proveďte úplnou kompilaci, včetně kontroly syntaxe, optimalizace, generování kódu atd.</li><li>**SingleBox:** Proveďte úplnou kompilaci s nastavením TargetType na SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určí optimální režim kompilace. </p> | Ne                                       |
+| script              | Místo zadání scriptPath a scriptLinkedService zadejte vložený skript. Například: `"script": "CREATE DATABASE test"`. | Ne (Pokud používáte scriptPath a scriptLinkedService) |
+| degreeOfParallelism | Maximální počet uzlů současně použitých ke spuštění úlohy. | No                                       |
+| upřednostněn            | Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. | No                                       |
+| parameters          | Parametry pro skript U-SQL          | No                                       |
+| runtimeVersion      | Verze modulu runtime pro modul U-SQL, který se má použít | No                                       |
+| CompilationMode nastavena     | <p>Režim kompilace U-SQL Musí se jednat o jednu z těchto hodnot:</p> <ul><li>**Sémantika:** Provádět pouze sémantické kontroly a nezbytné správnosti kontroly.</li><li>**Úplné:** Proveďte úplnou kompilaci, včetně kontroly syntaxe, optimalizace, generování kódu atd.</li><li>**SingleBox:** Proveďte úplnou kompilaci s nastavením TargetType na SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určí optimální režim kompilace. </p> | No                                       |
 
-Definici skriptu najdete v tématu [definice skriptu SearchLogProcessing. txt](#sample-u-sql-script) . 
+Definice skriptu najdete v tématu [SearchLogProcessing.txt definice skriptu](#sample-u-sql-script) . 
 
 ## <a name="sample-input-and-output-datasets"></a>Ukázkové vstupní a výstupní datové sady
 ### <a name="input-dataset"></a>Vstupní datová sada
@@ -316,7 +315,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Hodnoty parametrů ** \@in** a ** \@out** ve skriptu U-SQL se dynamicky předávají pomocí ADF pomocí oddílu Parameters. Viz část Parameters (parametry) v definici kanálu.
+Hodnoty parametrů ** \@ in** a ** \@ out** ve skriptu U-SQL se dynamicky předávají pomocí ADF pomocí oddílu Parameters. Viz část Parameters (parametry) v definici kanálu.
 
 Můžete určit další vlastnosti, jako je například degreeOfParallelism a priority, i v definici kanálu pro úlohy, které jsou spouštěny ve službě Azure Data Lake Analytics.
 

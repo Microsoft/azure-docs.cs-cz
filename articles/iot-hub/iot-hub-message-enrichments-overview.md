@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429123"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub
@@ -29,7 +28,7 @@ Rozšíření zprávy má tři klíčové prvky:
 
 * Jeden nebo více [koncových bodů](iot-hub-devguide-endpoints.md) , pro které by mělo být rozšíření použito.
 
-**Klíč** je řetězec. Klíč může obsahovat jenom alfanumerické znaky nebo tyto speciální znaky: spojovník (`-`), podtržítko (`_`) a perioda (`.`).
+**Klíč** je řetězec. Klíč může obsahovat jenom alfanumerické znaky nebo tyto speciální znaky: spojovník ( `-` ), podtržítko ( `_` ) a perioda ( `.` ).
 
 **Hodnota** může být libovolná z následujících příkladů:
 
@@ -62,7 +61,7 @@ Rozšíření lze konfigurovat pomocí následujících metod:
 
 | **Metoda** | **Příkaz** |
 | ----- | -----| 
-| Portál | [portál Azure](https://portal.azure.com) | Viz [kurz pro rozšíření zpráv](tutorial-message-enrichments.md) . | 
+| Portál | [Azure Portal](https://portal.azure.com) | Viz [kurz pro rozšíření zpráv](tutorial-message-enrichments.md) . | 
 | Azure CLI   | [AZ IoT Hub Message-obohacení](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 

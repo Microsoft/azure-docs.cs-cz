@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7652ab72fb972230d98913c2d7e2601737982532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74924354"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Přesunutí dat z místního HDFS pomocí Azure Data Factory
@@ -64,15 +63,15 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte propojenou službu typu **HDFS** a propojíte místní HDFS s vaší datovou továrnou. Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu HDFS.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **HDFS** . |Ano |
-| url |Adresa URL k HDFS |Ano |
-| authenticationType |Anonymní nebo Windows. <br><br> Pokud chcete pro konektor HDFS použít **ověřování pomocí protokolu Kerberos** , v [této části](#use-kerberos-authentication-for-hdfs-connector) si odpovídajícím způsobem nastavte místní prostředí. |Ano |
-| userName |Uživatelské jméno pro ověřování systému Windows. Pro ověřování protokolem Kerberos `<username>@<domain>.com`zadejte. |Ano (pro ověřování systému Windows) |
+| typ |Vlastnost Type musí být nastavená na: **HDFS** . |Yes |
+| url |Adresa URL k HDFS |Yes |
+| authenticationType |Anonymní nebo Windows. <br><br> Pokud chcete pro konektor HDFS použít **ověřování pomocí protokolu Kerberos** , v [této části](#use-kerberos-authentication-for-hdfs-connector) si odpovídajícím způsobem nastavte místní prostředí. |Yes |
+| userName |Uživatelské jméno pro ověřování systému Windows. Pro ověřování protokolem Kerberos zadejte `<username>@<domain>.com` . |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování systému Windows. |Ano (pro ověřování systému Windows) |
-| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení ke HDFS. |Ano |
-| encryptedCredential |Výstup [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) přihlašovacích údajů pro přístup |Ne |
+| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení ke HDFS. |Yes |
+| encryptedCredential |Výstup [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) přihlašovacích údajů pro přístup |No |
 
 ### <a name="using-anonymous-authentication"></a>Použití anonymního ověřování
 
@@ -117,13 +116,13 @@ Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte p
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **Shared** (zahrnující datovou sadu HDFS) má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| folderPath |Cesta ke složce Příklad: `myfolder`<br/><br/>Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Například: pro folder\subfolder, zadejte podsložek složky\\\\a pro d:\samplefolder zadejte d:\\\\samplefolder.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Ano |
-| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud pro výstupní datovou sadu není zadán název souboru, bude název vygenerovaného souboru v následujícím formátu: <br/><br/>`Data.<Guid>.txt`(například: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Ne |
-| partitionedBy |partitionedBy lze použít k zadání dynamického názvu souboru folderPath pro data časové řady. Příklad: folderPath parametrizované pro každou hodinu dat. |Ne |
-| formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |Ne |
-| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| folderPath |Cesta ke složce Příklad: `myfolder`<br/><br/>Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Například: pro folder\subfolder, zadejte podsložek složky \\ \\ a pro d:\samplefolder zadejte d: \\ \\ samplefolder.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Yes |
+| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud pro výstupní datovou sadu není zadán název souboru, bude název vygenerovaného souboru v následujícím formátu: <br/><br/>`Data.<Guid>.txt`(například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| partitionedBy |partitionedBy lze použít k zadání dynamického názvu souboru folderPath pro data časové řady. Příklad: folderPath parametrizované pro každou hodinu dat. |No |
+| formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |No |
+| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 > [!NOTE]
 > filename a FileFilter nelze použít současně.
@@ -168,9 +167,9 @@ Pro aktivitu kopírování, pokud je zdroj typu **FileSystemSource** , jsou v od
 
 **FileSystemSource** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| zahrnout |Určuje, zda mají být data rekurzivně čtena z dílčích složek nebo pouze ze zadané složky. |True, false (výchozí) |Ne |
+| zahrnout |Určuje, zda mají být data rekurzivně čtena z dílčích složek nebo pouze ze zadané složky. |True, false (výchozí) |No |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
 Podrobnosti najdete v článku o [formátech souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) .
@@ -434,11 +433,11 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
 
    Po dokončení konfigurace **restartujte** službu KDC.
 
-2. Připravte objekt zabezpečení s názvem **KRBTGT/REALM.\@com AD.com** na serveru KDC pomocí následujícího příkazu:
+2. Připravte objekt zabezpečení s názvem **KRBTGT/REALM. COM \@ AD.com** na serveru KDC pomocí následujícího příkazu:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. Do konfiguračního souboru služby **Hadoop. Security. auth_to_local** HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
+3. Do konfiguračního souboru služby **Hadoop. Security. auth_to_local** HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
 
 **Na řadiči domény:**
 
@@ -447,7 +446,7 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Vytvořte vztah důvěryhodnosti mezi doménou systému Windows a sférou protokolu Kerberos. [heslo] je heslo pro objekt zabezpečení **KRBTGT/REALM.\@com AD.com**.
+2.  Vytvořte vztah důvěryhodnosti mezi doménou systému Windows a sférou protokolu Kerberos. [heslo] je heslo pro objekt zabezpečení **KRBTGT/REALM. COM \@ AD.com**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
@@ -469,7 +468,7 @@ Existují dvě možnosti nastavení místního prostředí, aby se používalo o
 
     1. Spusťte nástroje pro správu > **Uživatelé a počítače služby Active Directory**.
 
-    2. Nakonfigurujete pokročilé funkce kliknutím na **Zobrazit** > **Pokročilé funkce**.
+    2. Nakonfigurujete pokročilé funkce kliknutím na **Zobrazit**  >  **Pokročilé funkce**.
 
     3. Vyhledejte účet, pro který chcete vytvořit mapování, a kliknutím pravým tlačítkem zobrazte **mapování názvů** > klikněte na kartu **názvy protokolu Kerberos** .
 

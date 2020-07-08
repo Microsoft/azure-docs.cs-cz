@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75374128"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure PowerShell
@@ -51,7 +50,7 @@ Connect-AzAccount
 V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. 
 
 ## <a name="determine-boot-issues"></a>Určení problémů se spouštěním
-Můžete si Zobrazit snímek obrazovky virtuálního počítače v Azure, který vám umožní řešit problémy se spouštěním. Tento snímek obrazovky vám může přispět k identifikaci příčin, proč se virtuální počítač nepodaří spustit. Následující příklad získá snímek obrazovky z virtuálního počítače s `myVM` Windows ve skupině prostředků s názvem: `myResourceGroup`
+Můžete si Zobrazit snímek obrazovky virtuálního počítače v Azure, který vám umožní řešit problémy se spouštěním. Tento snímek obrazovky vám může přispět k identifikaci příčin, proč se virtuální počítač nepodaří spustit. Následující příklad získá snímek obrazovky z virtuálního počítače s Windows `myVM` ve skupině prostředků s názvem `myResourceGroup` :
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
@@ -62,7 +61,7 @@ Zkontrolujte snímek obrazovky, abyste zjistili, proč se virtuální počítač
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Následující příklad zastaví virtuální počítač pojmenovaný `myVM` ze skupiny prostředků s názvem: `myResourceGroup`
+Následující příklad zastaví virtuální počítač pojmenovaný `myVM` ze skupiny prostředků s názvem `myResourceGroup` :
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -103,7 +102,7 @@ Snímek je plná kopie VHD, která je jen pro čtení. Nedá se připojit k virt
 
 ## <a name="create-a-disk-from-the-snapshot"></a>Vytvoření disku ze snímku
 
-Tento skript vytvoří spravovaný disk s názvem `newOSDisk` z snímku s názvem. `mysnapshot`  
+Tento skript vytvoří spravovaný disk s názvem `newOSDisk` z snímku s názvem `mysnapshot` .  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -144,7 +143,7 @@ Teď máte kopii původního disku s operačním systémem. Tento disk můžete 
 
 ## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Připojte disk k jinému virtuálnímu počítači s Windows pro řešení potíží.
 
-Nyní připojíme kopii původního disku s operačním systémem k virtuálnímu počítači jako datový disk. Tento proces umožňuje opravit chyby v konfiguraci nebo zkontrolovat soubory protokolů aplikace nebo systému na disku. Následující příklad připojí disk s `newOSDisk` názvem k virtuálnímu počítači s názvem `RecoveryVM`.
+Nyní připojíme kopii původního disku s operačním systémem k virtuálnímu počítači jako datový disk. Tento proces umožňuje opravit chyby v konfiguraci nebo zkontrolovat soubory protokolů aplikace nebo systému na disku. Následující příklad připojí disk s názvem `newOSDisk` k virtuálnímu počítači s názvem `RecoveryVM` .
 
 > [!NOTE]
 > Aby bylo možné připojit disk, kopie původního disku s operačním systémem a virtuálního počítače pro obnovení musí být ve stejném umístění.
@@ -165,7 +164,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Připojte se k virtuálnímu počítači pro obnovení a opravte problémy s připojeným diskem.
 
-1. RDP na virtuální počítač pro obnovení pomocí příslušných přihlašovacích údajů. Následující příklad stáhne soubor připojení RDP pro virtuální počítač `RecoveryVM` ve skupině prostředků s názvem `myResourceGroup`a stáhne ho do `C:\Users\ops\Documents`: "
+1. RDP na virtuální počítač pro obnovení pomocí příslušných přihlašovacích údajů. Následující příklad stáhne soubor připojení RDP pro virtuální počítač `RecoveryVM` ve skupině prostředků s názvem `myResourceGroup` a stáhne ho do: `C:\Users\ops\Documents` "
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
@@ -194,13 +193,13 @@ Po připojení kopie původního disku s operačním systémem můžete podle po
 ## <a name="unmount-and-detach-original-os-disk"></a>Odpojte a odpojte původní disk s operačním systémem
 Po vyřešení chyb odpojte a odpojte stávající disk od virtuálního počítače pro obnovení. Disk nemůžete použít s žádným jiným virtuálním počítačem, dokud se neuvolní zapůjčení disku k virtuálnímu počítači pro obnovení.
 
-1. V rámci relace RDP odpojte datový disk na VIRTUÁLNÍm počítači pro obnovení. Z předchozí `Get-Disk` rutiny budete potřebovat číslo disku. Pak použijte `Set-Disk` k nastavení disku jako offline:
+1. V rámci relace RDP odpojte datový disk na VIRTUÁLNÍm počítači pro obnovení. Z předchozí rutiny budete potřebovat číslo disku `Get-Disk` . Pak použijte `Set-Disk` k nastavení disku jako offline:
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
     ```
 
-    Potvrďte, že je disk teď nastavený jako `Get-Disk` offline, a to pomocí znovu. Následující příklad výstupu ukazuje, že disk je nyní nastaven jako offline:
+    Potvrďte, že je disk teď nastavený jako offline, a `Get-Disk` to pomocí znovu. Následující příklad výstupu ukazuje, že disk je nyní nastaven jako offline:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -223,7 +222,7 @@ Po vyřešení chyb odpojte a odpojte stávající disk od virtuálního počít
 
 K prohození disků s operačním systémem můžete použít Azure PowerShell. Nemusíte odstranit a znovu vytvořit virtuální počítač.
 
-V tomto příkladu se zastaví virtuální `myVM` počítač s názvem a přiřadí se disk s názvem jako nový disk s `newOSDisk` operačním systémem. 
+V tomto příkladu se zastaví virtuální počítač s názvem `myVM` a přiřadí se disk s názvem `newOSDisk` jako nový disk s operačním systémem. 
 
 ```powershell
 # Get the VM 
@@ -247,7 +246,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Ověření a povolení diagnostiky spouštění
 
-Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s `myVMDeployed` názvem ve skupině prostředků s `myResourceGroup`názvem:
+Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s názvem `myVMDeployed` ve skupině prostředků s názvem `myResourceGroup` :
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"

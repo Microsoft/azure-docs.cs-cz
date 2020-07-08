@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro Node. js a řešení potíží
-description: Seznamte se s osvědčenými postupy a kroky pro řešení potíží pro aplikace Node. js běžící v Azure App Service.
+title: Node.js osvědčené postupy a řešení potíží
+description: Seznamte se s osvědčenými postupy a kroky pro řešení potíží pro Node.js aplikace běžící v Azure App Service.
 author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
@@ -9,10 +9,9 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430564"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
@@ -29,38 +28,38 @@ Tento [soubor schématu](https://github.com/Azure/iisnode/blob/master/src/config
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Toto nastavení řídí počet procesů uzlů, které se spustí v rámci aplikace IIS. Výchozí hodnota je 1. Můžete spustit libovolný počet Node. exe jako vCPU počet virtuálních počítačů, a to tak, že změníte hodnotu na 0. Doporučená hodnota je 0 pro většinu aplikací, takže můžete na svém počítači použít všechny vCPU. Node. exe je jedním vláknem, takže jeden Node. exe spotřebovává maximálně 1 vCPU. Chcete-li získat maximální výkon u vaší aplikace uzlu, budete chtít použít všechny vCPU.
+Toto nastavení řídí počet procesů uzlů, které se spustí v rámci aplikace IIS. Výchozí hodnota je 1. Můžete spustit tolik node.exes jako vCPU počet virtuálních počítačů, a to tak, že změníte hodnotu na 0. Doporučená hodnota je 0 pro většinu aplikací, takže můžete na svém počítači použít všechny vCPU. Node.exe jediným vláknem, takže jeden node.exe spotřebovává maximálně 1 vCPU. Chcete-li získat maximální výkon u vaší aplikace uzlu, budete chtít použít všechny vCPU.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
-Toto nastavení řídí cestu k Node. exe. Tuto hodnotu můžete nastavit tak, aby odkazovala na verzi Node. exe.
+Toto nastavení řídí cestu k node.exe. Tuto hodnotu můžete nastavit tak, aby odkazovala na verzi node.exe.
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-Toto nastavení určuje maximální počet souběžných požadavků odeslaných serverem iisnode na každý Node. exe. V Azure App Service je výchozí hodnota nekonečno. Tuto hodnotu můžete nakonfigurovat v závislosti na počtu požadavků, které vaše aplikace přijme, a na tom, jak rychle vaše aplikace zpracovává jednotlivé požadavky.
+Toto nastavení určuje maximální počet souběžných požadavků, které iisnode odesílá každému node.exe. V Azure App Service je výchozí hodnota nekonečno. Tuto hodnotu můžete nakonfigurovat v závislosti na počtu požadavků, které vaše aplikace přijme, a na tom, jak rychle vaše aplikace zpracovává jednotlivé požadavky.
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-Toto nastavení určuje maximální počet pokusů, kolikrát se iisnode pokusy o připojení k pojmenovanému kanálu a odeslání požadavků do Node. exe. Toto nastavení v kombinaci s namedPipeConnectionRetryDelay určuje celkový časový limit každého požadavku v rámci iisnode. Výchozí hodnota je 200 na Azure App Service. Celkový časový limit v sekundách = ( \* maxNamedPipeConnectionRetry namedPipeConnectionRetryDelay)/1000
+Toto nastavení určuje maximální počet pokusů, kolikrát iisnode pokusy o připojení k pojmenovanému kanálu, aby odesílaly požadavky na node.exe. Toto nastavení v kombinaci s namedPipeConnectionRetryDelay určuje celkový časový limit každého požadavku v rámci iisnode. Výchozí hodnota je 200 na Azure App Service. Celkový časový limit v sekundách = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
-Toto nastavení určuje, jak dlouho (v MS) iisnode počká mezi jednotlivými pokusy o odeslání požadavku do Node. exe přes pojmenovaný kanál. Výchozí hodnota je 250 ms.
-Celkový časový limit v sekundách = ( \* maxNamedPipeConnectionRetry namedPipeConnectionRetryDelay)/1000
+Toto nastavení určuje dobu (v MS), po kterou iisnode počká mezi jednotlivými pokusy o odeslání žádosti o node.exe přes pojmenovaný kanál. Výchozí hodnota je 250 ms.
+Celkový časový limit v sekundách = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000
 
-Ve výchozím nastavení je celkový časový limit v iisnode v Azure App Service 200 \* 250 ms = 50 sekund.
+Ve výchozím nastavení je celkový časový limit v iisnode v Azure App Service 200 \* 250 MS = 50 sekund.
 
 ### <a name="logdirectory"></a>logDirectory
 
-Toto nastavení řídí adresář, ve kterém se iisnode protokoly stdout/stderr. Výchozí hodnota je iisnode, která je relativní vzhledem k adresáři hlavního skriptu (adresář, ve kterém je přítomen hlavní server. js).
+Toto nastavení řídí adresář, ve kterém se iisnode protokoly stdout/stderr. Výchozí hodnota je iisnode, která je relativní vzhledem k adresáři hlavního skriptu (adresář, ve kterém je k dispozici hlavní server.js).
 
 ### <a name="debuggerextensiondll"></a>debuggerExtensionDll
 
-Toto nastavení určuje, jakou verzi iisnodea Node-Inspector používá při ladění aplikace uzlu. V současné době jsou pro toto nastavení jediným ze dvou platných hodnot iisnode-Inspector-0.7.3. dll a iisnode-Inspector. dll. Výchozí hodnota je iisnode-Inspector-0.7.3. dll. Verze iisnode-Inspector-0.7.3. dll používá rozhraní Node-Inspector-0.7.3 a používá webové sokety. Povolte webové sokety ve službě Azure WebApp, abyste mohli používat tuto verzi. Další <https://ranjithblogs.azurewebsites.net/?p=98> podrobnosti o tom, jak nakonfigurovat iisnode pro použití nového nástroje Node-Inspector, najdete v tématu.
+Toto nastavení určuje, jakou verzi iisnodea Node-Inspector používá při ladění aplikace uzlu. V současné době jsou pro toto nastavení jediným ze dvou platných hodnot iisnode-inspector-0.7.3.dll a iisnode-inspector.dll. Výchozí hodnota je iisnode-inspector-0.7.3.dll. Verze iisnode-inspector-0.7.3.dll používá Node-Inspector-0.7.3 a používá webové sokety. Povolte webové sokety ve službě Azure WebApp, abyste mohli používat tuto verzi. <https://ranjithblogs.azurewebsites.net/?p=98>Další podrobnosti o tom, jak nakonfigurovat iisnode pro použití nového nástroje Node-Inspector, najdete v tématu.
 
 ### <a name="flushresponse"></a>flushResponse
 
-Výchozím chováním služby IIS je, že před vyprázdněním ukládá data odpovědí až do velikosti 4 MB, nebo do konce odpovědi, podle toho, co nastane dřív. iisnode nabízí nastavení konfigurace pro přepsání tohoto chování: Chcete-li vyprázdnit fragment textu entity odpovědi, jakmile ho iisnode obdrží od Node. exe, je nutné nastavit iisnode/@flushResponse atribut v souboru Web. config na hodnotu true:
+Výchozím chováním služby IIS je, že před vyprázdněním ukládá data odpovědí až do velikosti 4 MB, nebo do konce odpovědi, podle toho, co nastane dřív. iisnode nabízí nastavení konfigurace pro přepsání tohoto chování: Chcete-li vyprázdnit fragment textu entity odpovědi, jakmile ho iisnode obdrží od node.exe, je nutné nastavit iisnode/@flushResponse atribut v web.config na hodnotu ' true ':
 
 ```xml
 <configuration>
@@ -71,7 +70,7 @@ Výchozím chováním služby IIS je, že před vyprázdněním ukládá data od
 </configuration>
 ```
 
-Povolit vyprázdnění každého fragmentu textu entity odpovědi přidá režijní náklady na výkon, které snižují propustnost systému pomocí ~ 5% (na 0.1.13). Nejvhodnější je určit nastavení oboru pouze pro koncové body, které vyžadují streamování odpovědí (například pomocí `<location>` elementu v souboru Web. config).
+Povolit vyprázdnění každého fragmentu textu entity odpovědi přidá režijní náklady na výkon, které snižují propustnost systému pomocí ~ 5% (na 0.1.13). Nejvhodnější je určit nastavení oboru pouze pro koncové body, které vyžadují streamování odpovědí (například pomocí `<location>` elementu v web.config)
 
 Kromě toho je třeba pro streamování aplikací nastavit také responseBufferLimit své obslužné rutiny iisnode na hodnotu 0.
 
@@ -87,7 +86,7 @@ Středníkem oddělený seznam souborů, které jsou sledovány pro změny. Při
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Výchozí hodnota je False. Pokud je povoleno, vaše aplikace uzlů se může připojit k pojmenovanému kanálu (proměnná\_prostředí\_IISNODE řídicí kanál) a odeslat zprávu "recyklovat". Tím dojde k řádnému recyklování W3wp.
+Výchozí hodnota je False. Pokud je povoleno, vaše aplikace uzlů se může připojit k pojmenovanému kanálu (proměnná prostředí IISNODE \_ řídicí \_ kanál) a odeslat zprávu "recyklovat". Tím dojde k řádnému recyklování W3wp.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -99,7 +98,7 @@ Výchozí hodnota je 0, což znamená, že tato funkce je zakázaná. Pokud je h
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Výchozí hodnota je False. Pokud je nastavená hodnota true, iisnode přidá hlavičku `iisnode-debug` odpovědi HTTP do každé odpovědi HTTP, kterou `iisnode-debug` pošle. hodnota hlavičky je adresa URL. Jednotlivé části diagnostických informací lze získat tak, že si prohlížíte fragment adresy URL. vizualizace je však k dispozici otevřením adresy URL v prohlížeči.
+Výchozí hodnota je False. Pokud je nastavená hodnota true, iisnode přidá hlavičku odpovědi HTTP `iisnode-debug` do každé odpovědi HTTP, kterou pošle `iisnode-debug` . hodnota hlavičky je adresa URL. Jednotlivé části diagnostických informací lze získat tak, že si prohlížíte fragment adresy URL. vizualizace je však k dispozici otevřením adresy URL v prohlížeči.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -111,9 +110,9 @@ Výchozí hodnota je False. Když se nastaví na true, iisnode zobrazí stavový
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (Nepovolit pro živý produkční Web)
 
-Toto nastavení řídí funkci ladění. Iisnode je integrován s nástrojem Node-Inspector. Povolením tohoto nastavení povolíte ladění aplikace uzlu. Po povolení tohoto nastavení iisnode vytvoří v adresáři debuggerVirtualDir soubory pro kontrolu uzlů v prvním požadavku na ladění pro vaši aplikaci Node. Můžete načíst kontrolora uzlu odesláním žádosti do `http://yoursite/server.js/debug`. Segment adresy URL pro ladění můžete řídit pomocí nastavení "debuggerPathSegment". Ve výchozím nastavení je to debuggerPathSegment = ' ladit '. Můžete nastavit `debuggerPathSegment` na identifikátor GUID, například tak, aby bylo více obtížné zjistit jiné.
+Toto nastavení řídí funkci ladění. Iisnode je integrován s nástrojem Node-Inspector. Povolením tohoto nastavení povolíte ladění aplikace uzlu. Po povolení tohoto nastavení iisnode vytvoří v adresáři debuggerVirtualDir soubory pro kontrolu uzlů v prvním požadavku na ladění pro vaši aplikaci Node. Můžete načíst kontrolora uzlu odesláním žádosti do `http://yoursite/server.js/debug` . Segment adresy URL pro ladění můžete řídit pomocí nastavení "debuggerPathSegment". Ve výchozím nastavení je to debuggerPathSegment = ' ladit '. Můžete nastavit `debuggerPathSegment` na identifikátor GUID, například tak, aby bylo více obtížné zjistit jiné.
 
-Další informace o ladění naleznete [v tématu ladění aplikací Node. js v systému Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) .
+Další podrobnosti o ladění najdete [v tématu ladění aplikací node.js v systému Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) .
 
 ## <a name="scenarios-and-recommendationstroubleshooting"></a>Scénáře a doporučení/řešení potíží
 
@@ -121,7 +120,7 @@ Další informace o ladění naleznete [v tématu ladění aplikací Node. js v 
 
 Mnohé aplikace by chtěli v rámci své běžné operace vytvořit odchozí připojení. Například když je požadavek v, vaše aplikace Node by chtěla kontaktovat REST API jinde a získat nějaké informace pro zpracování žádosti. Při provádění volání http nebo https byste chtěli použít agenta Keep Alive. Při provádění těchto odchozích volání můžete použít modul agentkeepalive jako svého agenta Keep Alive.
 
-Modul agentkeepalive zajišťuje, že se na VIRTUÁLNÍm počítači Azure WebApp znovu používají sokety. Vytvořením nového soketu u každé odchozí žádosti přidáte do své aplikace režii. Když vaše aplikace znovu používá soket pro odchozí požadavky, zajistí, že vaše aplikace nebude přesáhnout maxSockets, které jsou přiděleny na virtuální počítač. Doporučením na Azure App Service je nastavení hodnoty maxSockets agentKeepAlive na celkem (4 instance Node. exe \* 40 maxSockets/instance) 160 soketů na virtuální počítač.
+Modul agentkeepalive zajišťuje, že se na VIRTUÁLNÍm počítači Azure WebApp znovu používají sokety. Vytvořením nového soketu u každé odchozí žádosti přidáte do své aplikace režii. Když vaše aplikace znovu používá soket pro odchozí požadavky, zajistí, že vaše aplikace nebude přesáhnout maxSockets, které jsou přiděleny na virtuální počítač. Doporučením na Azure App Service je nastavení hodnoty maxSockets agentKeepAlive na celkem (4 instance node.exe \* 40 maxSockets/instance) 160 soketů na virtuální počítač.
 
 Příklad konfigurace [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) :
 
@@ -135,7 +134,7 @@ let keepaliveAgent = new Agent({
 ```
 
 > [!IMPORTANT]
-> V tomto příkladu se předpokládá, že na vašem VIRTUÁLNÍm počítači běží 4 Node. exe. Pokud máte na virtuálním počítači spuštěný jiný počet Node. exe, musíte odpovídajícím způsobem upravit nastavení maxSockets.
+> V tomto příkladu se předpokládá, že ve vašem VIRTUÁLNÍm počítači běží 4 node.exe. Pokud je na virtuálním počítači spuštěný jiný počet node.exe, musíte odpovídajícím způsobem upravit nastavení maxSockets.
 >
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Moje aplikace Node spotřebovává příliš mnoho CPU.
@@ -174,8 +173,8 @@ Přejdete do adresáře site/Wwwroot. Zobrazí se příkazový řádek, jak je z
 
 Spusťte příkaz `npm install v8-profiler`.
 
-Tento příkaz nainstaluje V8-Profiler do adresáře modulů\_uzlů a všech jeho závislostí.
-Nyní upravte Server. js k profilaci vaší aplikace.
+Tento příkaz nainstaluje V8-Profiler do \_ adresáře modulů uzlů a všech jeho závislostí.
+Nyní upravte server.js pro profilaci vaší aplikace.
 
 ```nodejs
 const http = require('http');
@@ -215,25 +214,25 @@ Pomocí funkce WriteConsoleLog můžete zjistit, že 95% času bylo spotřebová
 
 Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí se na portálu oznámení o vysoké spotřebě paměti Azure App Service na portálu. Můžete nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Když kontrolujete využití paměti na [řídicím panelu webu Azure Portal](../azure-monitor/app/web-monitor-performance.md), zkontrolujte maximální hodnoty paměti, abyste nemuseli přijít na nejvyšší hodnoty.
 
-#### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Detekce nevracení a rozdíl haldy pro Node. js
+#### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Detekce nevracení a rozdíl haldy pro node.js
 
 Můžete použít [Node-memwatch](https://github.com/lloyd/node-memwatch) , které vám pomůžou identifikovat nevracení paměti.
 Můžete nainstalovat `memwatch` stejně jako V8-Profiler a upravit kód pro zachycení a rozdílové haldy k identifikaci nevracení paměti ve vaší aplikaci.
 
-### <a name="my-nodeexes-are-getting-killed-randomly"></a>Můj Node. exe se náhodně spouští.
+### <a name="my-nodeexes-are-getting-killed-randomly"></a>Moje node.exe se náhodně ukončily.
 
-Existuje několik důvodů, proč se Node. exe náhodně vypne:
+Existuje několik důvodů, proč se node.exe náhodně vypíná:
 
-1. Vaše aplikace vyvolává nezachycené výjimky – check d:\\Home\\LogFiles\\Application\\Logging-Errors. txt pro podrobnosti o vyvolané výjimce. Tento soubor má trasování zásobníku, které vám umožní ladit a opravovat vaši aplikaci.
-2. Vaše aplikace spotřebovává příliš mnoho paměti, což má vliv na další procesy od začátku. Pokud je celková paměť virtuálního počítače blízko 100%, může správce procesů ukončit váš Node. exe. Správce procesů ukončuje některé procesy, aby bylo možné jiné procesy získat možnost udělat si nějakou práci. Chcete-li tento problém vyřešit, profilujte aplikaci pro nevracení paměti. Pokud vaše aplikace vyžaduje velké množství paměti, narůstá kapacitu na větší virtuální počítač (což zvyšuje velikost paměti RAM dostupné pro virtuální počítač).
+1. Vaše aplikace vyvolala nevyzachycené výjimky – ověřte, zda \\ \\ \\logging-errors.txt soubor aplikace Home LogFiles \\ pro podrobnosti o vyvolané výjimce. Tento soubor má trasování zásobníku, které vám umožní ladit a opravovat vaši aplikaci.
+2. Vaše aplikace spotřebovává příliš mnoho paměti, což má vliv na další procesy od začátku. Pokud je celková paměť virtuálních počítačů blízko 100%, mohl by být node.exe ukončen správcem procesů. Správce procesů ukončuje některé procesy, aby bylo možné jiné procesy získat možnost udělat si nějakou práci. Chcete-li tento problém vyřešit, profilujte aplikaci pro nevracení paměti. Pokud vaše aplikace vyžaduje velké množství paměti, narůstá kapacitu na větší virtuální počítač (což zvyšuje velikost paměti RAM dostupné pro virtuální počítač).
 
 ### <a name="my-node-application-does-not-start"></a>Moje aplikace uzlu se nespustí
 
 Pokud aplikace při spuštění vrací chyby 500, může to být několik důvodů:
 
-1. Uzel. exe není přítomen ve správném umístění. Ověřte nastavení nodeProcessCommandLine.
-2. Hlavní soubor skriptu se nenachází ve správném umístění. Zkontrolujte soubor Web. config a ujistěte se, že název hlavního souboru skriptu v oddílu obslužné rutiny odpovídá hlavnímu souboru skriptu.
-3. Konfigurace souboru Web. config není správná – ověřte názvy a hodnoty nastavení.
+1. Node.exe není k dispozici ve správném umístění. Ověřte nastavení nodeProcessCommandLine.
+2. Hlavní soubor skriptu se nenachází ve správném umístění. Zaškrtněte web.config a ujistěte se, že název hlavního souboru skriptu v oddílu obslužné rutiny odpovídá hlavnímu souboru skriptu.
+3. Konfigurace Web.config není správná – ověřte názvy a hodnoty nastavení.
 4. Studená Start – spuštění vaší aplikace trvá příliš dlouho. Pokud vaše aplikace trvá déle než (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000 sekund, iisnode vrátí chybu 500. Zvyšte hodnoty těchto nastavení tak, aby odpovídaly času spuštění vaší aplikace, aby nedošlo k vypršení časového limitu iisnode a vrácení chyby 500.
 
 ### <a name="my-node-application-crashed"></a>V mé aplikaci uzlu došlo k chybě.
@@ -242,12 +241,12 @@ Vaše aplikace vyvolává nezachycené výjimky – kontrolní `d:\\home\\LogFil
 
 ### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>Spuštění aplikace na mém uzlu trvá příliš dlouho (studený start)
 
-Běžnou příčinou dlouhých časů spuštění aplikace je vysoký počet souborů v modulech uzlů\_. Aplikace se pokusí načíst většinu těchto souborů při spuštění. Ve výchozím nastavení, protože soubory jsou uloženy ve sdílené síťové složce v Azure App Service, načítání mnoha souborů může trvat déle.
+Běžnou příčinou dlouhých časů spuštění aplikace je vysoký počet souborů v \_ modulech uzlů. Aplikace se pokusí načíst většinu těchto souborů při spuštění. Ve výchozím nastavení, protože soubory jsou uloženy ve sdílené síťové složce v Azure App Service, načítání mnoha souborů může trvat déle.
 Některá řešení pro zajištění rychlejšího tohoto procesu:
 
 1. Ujistěte se, že máte strukturu ploché závislosti a žádné duplicitní závislosti pomocí npm3 k instalaci modulů.
-2. Pokuste se o opožděné načtení\_modulů uzlů a nenačte všechny moduly při spuštění aplikace. Do modulů opožděného načtení by volání vyžadovat (' Module ') mělo být provedeno, pokud skutečně potřebujete modul v rámci funkce před prvním spuštěním kódu modulu.
-3. Azure App Service nabízí funkci s názvem místní mezipaměť. Tato funkce zkopíruje obsah ze sdílené síťové složky na místní disk ve VIRTUÁLNÍm počítači. Vzhledem k tomu, že jsou soubory místní, je doba\_načítání modulů uzlů mnohem rychlejší.
+2. Pokuste se o opožděné načtení \_ modulů uzlů a nenačte všechny moduly při spuštění aplikace. Do modulů opožděného načtení by volání vyžadovat (' Module ') mělo být provedeno, pokud skutečně potřebujete modul v rámci funkce před prvním spuštěním kódu modulu.
+3. Azure App Service nabízí funkci s názvem místní mezipaměť. Tato funkce zkopíruje obsah ze sdílené síťové složky na místní disk ve VIRTUÁLNÍm počítači. Vzhledem k tomu, že jsou soubory místní, je doba načítání \_ modulů uzlů mnohem rychlejší.
 
 ## <a name="iisnode-http-status-and-substatus"></a>Stav IISNODE http a dílčí stav
 
@@ -257,21 +256,21 @@ Povolte FREB pro vaši aplikaci, aby se zobrazil kód chyby Win32 (je třeba pov
 
 | Stav http | Podřízený stav http | Možný důvod? |
 | --- | --- | --- |
-| 500 |1000 |Došlo k nějakému problému s odesláním požadavku do IISNODE – ověřte, jestli se Node. exe spustil. Při spuštění došlo k chybě Node. exe. Ověřte chyby v konfiguraci souboru Web. config. |
-| 500 |1001 |-Win32Error 0x2-aplikace nereaguje na adresu URL. Ověřte pravidla pro přepis adres URL nebo ověřte, jestli má aplikace Express definované správné trasy. -Win32Error 0x6d – pojmenovaný kanál je zaneprázdněný – Node. exe nepřijímá požadavky, protože kanál je zaneprázdněný. Ověřte vysoké využití procesoru. -Jiné chyby – ověřte, zda došlo k chybě Node. exe. |
-| 500 |1002 |Došlo k chybě Node. exe – ověřte d\\:\\Home LogFiles\\Logging-Errors. txt pro trasování zásobníku. |
+| 500 |1000 |Při odesílání požadavku do IISNODE došlo k nějakému problému – ověřte, jestli node.exe spuštěný. Při spuštění došlo k chybě Node.exe. Ověřte chyby v konfiguraci web.config. |
+| 500 |1001 |-Win32Error 0x2-aplikace nereaguje na adresu URL. Ověřte pravidla pro přepis adres URL nebo ověřte, jestli má aplikace Express definované správné trasy. -Win32Error 0x6d – pojmenovaný kanál je zaneprázdněný – Node.exe nepřijímá požadavky, protože kanál je zaneprázdněný. Ověřte vysoké využití procesoru. – Jiné chyby – ověřte, zda node.exe selhat. |
+| 500 |1002 |Node.exe došlo k chybě – \\ \\ \\ pro trasování zásobníku ověřtelogging-errors.txt domovské soubory. |
 | 500 |1003 |Problém s konfigurací kanálu – konfigurace pojmenovaného kanálu je nesprávná. |
-| 500 |1004-1018 |Při odesílání požadavku nebo zpracování odpovědi na soubor Node. exe došlo k chybě. Ověřte, zda došlo k chybě Node. exe. Podívejte se na\\d\\: Home\\LogFiles Logging-Errors. txt pro trasování zásobníku. |
+| 500 |1004-1018 |Při odesílání požadavku nebo zpracování odpovědi do nebo z node.exe došlo k chybě. Ověřte, zda node.exe došlo k chybě. \\ \\ \\ pro trasování zásobníku ověřtelogging-errors.txt domovské soubory. |
 | 503 |1000 |Pro přidělení více pojmenovaných připojení kanálu není dostatek paměti. Podívejte se, proč vaše aplikace spotřebovává spoustu paměti. Ověřte hodnotu nastavení maxConcurrentRequestsPerProcess. Pokud není nekonečné a máte hodně požadavků, zvyšte tuto hodnotu, aby se zabránilo této chybě. |
-| 503 |1001 |Požadavek nebylo možné odeslat do Node. exe, protože aplikace se recykluje. Po recyklaci aplikace by měly být požadavky obsluhovány normálně. |
-| 503 |1002 |Ověřte kód chyby Win32 ze skutečného důvodu – požadavek nebylo možné odeslat do Node. exe. |
-| 503 |1003 |Pojmenovaný kanál je moc zaneprázdněný – ověřte, jestli Node. exe spotřebovává nadměrný procesor. |
+| 503 |1001 |Požadavek nebylo možné odeslat do node.exe, protože aplikace se recykluje. Po recyklaci aplikace by měly být požadavky obsluhovány normálně. |
+| 503 |1002 |Ověřte kód chyby Win32 ze skutečného důvodu – požadavek nebylo možné odeslat do node.exe. |
+| 503 |1003 |Pojmenovaný kanál je moc zaneprázdněný – ověřte, jestli node.exe spotřebovává nadměrný procesor. |
 
-NODE. exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES`. V Azure App Service je tato hodnota nastavená na 5000. To znamená, že Node. exe může přijmout 5000 požadavků v čase u pojmenovaného kanálu. Tato hodnota by měla být dostatečná pro většinu aplikací uzlů běžících na Azure App Service. Nemělo by se zobrazovat 503,1003 Azure App Service v důsledku vysoké hodnoty pro`NODE_PENDING_PIPE_INSTANCES`
+NODE.exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES` . V Azure App Service je tato hodnota nastavená na 5000. To znamená, že node.exe může přijmout 5000 požadavků v čase u pojmenovaného kanálu. Tato hodnota by měla být dostatečná pro většinu aplikací uzlů běžících na Azure App Service. Nemělo by se zobrazovat 503,1003 Azure App Service v důsledku vysoké hodnoty pro`NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-Pomocí těchto odkazů se dozvíte více o aplikacích Node. js v Azure App Service.
+Pomocí těchto odkazů se dozvíte více o node.js aplikacích v Azure App Service.
 
 * [Začínáme s webovými aplikacemi Node.js ve službě Azure App Service](app-service-web-get-started-nodejs.md)
 * [Postup ladění webové aplikace Node.js ve službě Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)

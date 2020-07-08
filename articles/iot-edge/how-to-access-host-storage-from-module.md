@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434527"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Udělení přístupu k místnímu úložišti zařízení pro moduly
@@ -70,9 +69,9 @@ Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení
 }
 ```
 
-`<HostStoragePath>` Nahraďte `<ModuleStoragePath>` a svým hostitelem a cestou úložiště modulu; obě hodnoty musí být absolutní cesta.
+Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` cestou k úložišti hostitele a modulu; obě hodnoty musí být absolutní cesta.
 
-Například v systému Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že je adresář **/etc/iotedge/Storage** v hostitelském systému namapován na adresář **/iotedge/Storage/** v kontejneru. V systému Windows se jako jiný příklad `"Binds":["C:\\temp:C:\\contemp"]` označuje, že adresář **c:\\Temp** v hostitelském systému je namapován na adresář **c:\\** v kontejneru.
+Například v systému Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že je adresář **/etc/iotedge/Storage** v hostitelském systému namapován na adresář **/iotedge/Storage/** v kontejneru. V systému Windows se jako jiný příklad označuje, `"Binds":["C:\\temp:C:\\contemp"]` že adresář **c: \\ TEMP** v hostitelském systému je namapován na adresář **c: \\ ** v kontejneru.
 
 Na zařízeních se systémem Linux se navíc ujistěte, že má uživatelský profil pro váš modul potřebná oprávnění ke čtení, zápisu a spouštění pro adresář hostitelského systému. Když se vrátíte na předchozí příklad povolení IoT Edge centra pro ukládání zpráv do místního úložiště vašeho zařízení, musíte udělit oprávnění k profilu uživatele, UID 1000. (Agent IoT Edge funguje jako kořenový, takže nepotřebuje další oprávnění.) Existuje několik způsobů, jak spravovat oprávnění adresářů v systémech Linux, včetně použití `chown` ke změně vlastníka adresáře a `chmod` ke změně oprávnění, jako například:
 

@@ -7,10 +7,9 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75428710"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
@@ -113,17 +112,17 @@ Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
 
      ![Vybrat šablonu pro existující aplikaci Function App](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. V podokně **aktivační událost fronty Azure Service Bus** zadejte název triggeru a nastavte **připojení Service Bus** pro frontu, která používá naslouchací proces sady SDK `OnMessageReceive()` Azure Service Bus a vyberte **vytvořit**.
+1. V podokně **aktivační událost fronty Azure Service Bus** zadejte název triggeru a nastavte **připojení Service Bus** pro frontu, která používá naslouchací proces sady SDK Azure Service Bus `OnMessageReceive()` a vyberte **vytvořit**.
 
 1. Napište základní funkci pro volání dříve vytvořeného koncového bodu aplikace logiky pomocí zprávy Queue jako triggeru. Před psaním funkce si Projděte tyto požadavky:
 
-   * V `application/json` tomto příkladu se používá typ obsahu zprávy, ale tento typ můžete podle potřeby změnit.
+   * V tomto příkladu se používá `application/json` typ obsahu zprávy, ale tento typ můžete podle potřeby změnit.
    
    * Z důvodu možného souběžného spouštění funkcí, velkých objemů nebo těžkých zátěží se vyhnete vytvoření instance [třídy HTTPClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) pomocí `using` příkazu a přímému vytváření instancí HTTPClient na požadavek. Další informace najdete v tématu [použití HttpClientFactory k implementaci odolných požadavků HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
    
    * Pokud je to možné, znovu použijte instanci klientů protokolu HTTP. Další informace najdete v tématu [Správa připojení v Azure Functions](../azure-functions/manage-connections.md).
 
-   V tomto příkladu se [ `Task.Run` používá metoda](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) v [asynchronním](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) režimu. Další informace naleznete v tématu [asynchronní programování s Async a await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
+   V tomto příkladu se používá [ `Task.Run` Metoda](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) v [asynchronním](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) režimu. Další informace naleznete v tématu [asynchronní programování s Async a await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
 
    ```csharp
    using System;

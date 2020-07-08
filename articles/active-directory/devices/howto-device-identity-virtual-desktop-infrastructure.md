@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900377"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
@@ -43,20 +42,20 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 
 | Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporuje se |
 | --- | --- | --- | --- | --- |
-| k hybridní službě Azure AD. | Federované | Aktuální Windows * * * * a Windows nižší úrovně * * * * | Trvalý | Ano |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
-|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
-|   | Spravované * * | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
-|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
-| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
-|   | Spravovaní | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
-| Registrováno v Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
-|   | Spravovaní | Aktuální Windows | Trvalý | Ne |
-|   |   |   | Bez trvalého přihlášení | Ne |
+| k hybridní službě Azure AD. | Federované | Aktuální Windows * * * * a Windows nižší úrovně * * * * | Trvalý | Yes |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Yes |
+|   | Spravované * * | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Yes |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
+|   | Spravované | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
+| Registrováno v Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
+|   | Spravované | Aktuální Windows | Trvalý | No |
+|   |   |   | Bez trvalého přihlášení | No |
 
 \***Federované** prostředí infrastruktury identit představuje prostředí s poskytovatelem identity, jako je AD FS nebo jiné IDP třetí strany.
 
@@ -73,7 +72,7 @@ Správci by měli na základě infrastruktury identit odkazovat na následujíc�
 - [Konfigurace služby Hybrid Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)
 - [Konfigurace hybridního Azure Active Directory JOIN pro spravované prostředí](hybrid-azuread-join-managed-domains.md)
 
-Pokud se spoléháte na nástroj pro přípravu systému (Sysprep. exe) a pokud pro instalaci používáte bitovou kopii Pre-Windows 10 1809, ujistěte se, že image nepochází ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojené k hybridní službě Azure AD.
+Pokud se spoléháte na nástroj pro přípravu systému (sysprep.exe) a pokud pro instalaci používáte image starší než Windows 10 1809, ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojené k hybridní službě Azure AD.
 
 Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
 
@@ -81,7 +80,7 @@ Při nasazování netrvalé infrastruktury virtuálních počítačů by správc
 
 - Vytvořte a použijte předponu pro zobrazované jméno počítače, který označuje plochu jako na bázi VDI.
 - Jako součást skriptu pro odhlášení implementujte následující příkaz. Tento příkaz aktivuje nejlepší úsilí ve službě Azure AD za účelem odstranění tohoto zařízení.
-   - Zařízení Windows nižší úrovně – autopracoviště. exe/Leave
+   - Zařízení Windows nižší úrovně – autoworkplace.exe/Leave
 - Definujte a implementujte proces pro [správu zastaralých zařízení](manage-stale-devices.md).
    - Jakmile budete mít strategii, jak identifikovat netrvalá hybridní zařízení připojená k Azure AD, můžete být více agresivní na vyčištění těchto zařízení, abyste se ujistili, že se váš adresář nespotřebovává s velkým počtem zastaralých zařízení.
  

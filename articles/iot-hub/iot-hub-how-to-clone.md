@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429158"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak klonovat službu Azure IoT Hub do jiné oblasti
@@ -107,7 +106,7 @@ V této části najdete konkrétní pokyny pro migraci centra.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Najděte původní centrum a exportujte ho do šablony prostředků.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 
 1. Přejděte do **skupiny prostředků** a vyberte skupinu prostředků obsahující rozbočovač, který chcete přesunout. Můžete také přejít na **prostředky** a najít centrum. Vyberte centrum.
 
@@ -121,7 +120,7 @@ V této části najdete konkrétní pokyny pro migraci centra.
 
 ### <a name="view-the-template"></a>Zobrazení šablony 
 
-1. Přejít do složky Stažené soubory (nebo do jakékoli složky, kterou jste použili při exportu šablony) a vyhledejte soubor zip. Otevřete soubor zip a vyhledejte soubor s názvem `template.json`. Vyberte ji a potom vyberte CTRL + C a zkopírujte šablonu. Přejít do jiné složky, která není v souboru zip, a vložte soubor (CTRL + V). Teď ho můžete upravit.
+1. Přejít do složky Stažené soubory (nebo do jakékoli složky, kterou jste použili při exportu šablony) a vyhledejte soubor zip. Otevřete soubor zip a vyhledejte soubor s názvem `template.json` . Vyberte ji a potom vyberte CTRL + C a zkopírujte šablonu. Přejít do jiné složky, která není v souboru zip, a vložte soubor (CTRL + V). Teď ho můžete upravit.
  
     Následující příklad slouží pro obecné rozbočovače bez konfigurace směrování. Je to rozbočovač vrstev S1 (s 1 jednotkou) nazvaný **ContosoTestHub29358** v oblasti **westus**. Zde je vyexportovaná šablona.
 
@@ -310,7 +309,7 @@ Když exportujete šablonu Správce prostředků pro rozbočovač s nakonfigurov
 
 1. Po načtení klíče účtu pro účet úložiště ho uložte do šablony v klauzuli `AccountKey=****` místo hvězdičky. 
 
-1. V případě front Service Bus Získejte sdílený přístupový klíč, který odpovídá SharedAccessKeyName. Tady je klíč a `SharedAccessKeyName` ve formátu JSON:
+1. V případě front Service Bus Získejte sdílený přístupový klíč, který odpovídá SharedAccessKeyName. Tady je klíč a ve formátu `SharedAccessKeyName` JSON:
 
    ```json
    "connectionString": "Endpoint=sb://fabrikamsbnamespace1234.servicebus.windows.net:5671/;
@@ -347,7 +346,7 @@ Teď máte šablonu, která vytvoří nové centrum, které vypadá téměř př
 
 Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prostředky směrování, které se budou přesouvat, prostředky by se měly nastavit v novém umístění a odkazy v šabloně se budou aktualizovat tak, aby odpovídaly. Pokud nepřesouváte prostředky směrování, měly by být v šabloně s aktualizovanými klíči.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Vytvořit prostředek**. 
 
@@ -549,7 +548,7 @@ Můžete zobrazit zařízení v [Azure Portal](https://portal.azure.com) a ově�
 
 1. Přejít na nové centrum pomocí [Azure Portal](https://portal.azure.com). Vyberte své centrum a pak vyberte **zařízení IoT**. Zobrazí se zařízení, která jste právě zkopírovali ze starého centra, do klonovaného centra. Můžete také zobrazit vlastnosti naklonovaného centra. 
 
-1. Podívejte se na účet služby Azure Storage v [Azure Portal](https://portal.azure.com) a Prohlédněte si chyby importu a exportu a podívejte se `devicefiles` do kontejneru pro `ImportErrors.log`. Pokud je tento soubor prázdný (velikost je 0), nedošlo k chybám. Pokud se pokusíte naimportovat stejné zařízení více než jednou, zařízení podruhé odmítne a přidá do souboru protokolu chybovou zprávu.
+1. Podívejte se na účet služby Azure Storage v [Azure Portal](https://portal.azure.com) a Prohlédněte si chyby importu a exportu a podívejte se do `devicefiles` kontejneru pro `ImportErrors.log` . Pokud je tento soubor prázdný (velikost je 0), nedošlo k chybám. Pokud se pokusíte naimportovat stejné zařízení více než jednou, zařízení podruhé odmítne a přidá do souboru protokolu chybovou zprávu.
 
 ### <a name="committing-the-changes"></a>Potvrzování změn 
 

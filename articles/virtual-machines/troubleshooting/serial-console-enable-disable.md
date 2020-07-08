@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451304"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Povolení a zakázání konzole sériového úložiště Azure
@@ -34,7 +33,7 @@ Sériová konzola se dá zakázat pro konkrétní virtuální počítač nebo sa
 ## <a name="subscription-level-enabledisable"></a>Povolit/zakázat na úrovni předplatného
 
 > [!NOTE]
-> Před spuštěním tohoto příkazu se ujistěte, že jste v pravém cloudu (veřejný cloud Azure, Azure USA). Můžete se `az cloud list` podívat na a nastavit Cloud pomocí `az cloud set -n <Name of cloud>`.
+> Před spuštěním tohoto příkazu se ujistěte, že jste v pravém cloudu (veřejný cloud Azure, Azure USA). Můžete se podívat `az cloud list` na a nastavit Cloud pomocí `az cloud set -n <Name of cloud>` .
 
 ### <a name="azure-cli"></a>Azure CLI
 

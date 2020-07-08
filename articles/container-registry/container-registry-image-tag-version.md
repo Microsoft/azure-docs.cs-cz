@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445740"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a naznačení verzí imagí kontejneru
@@ -53,11 +52,11 @@ Jedinečné označení jednoduše znamená, že každý obrázek, který byl vlo
 * **Výtah manifestu** – každá image kontejneru vložená do registru kontejneru je přidružená k manifestu, který je identifikovaný jedinečnou hodnotou hash SHA-256 nebo hodnotou Digest. I když je jedinečný, je výtah dlouhý, obtížně čitelný a nekoreluje s vaším prostředím sestavení.
 * **ID buildu** – Tato možnost může být nejlepší, protože je pravděpodobně přírůstková a umožňuje provést korelaci zpět k určitému sestavení a vyhledat všechny artefakty a protokoly. Podobně jako u výtahu manifestu ale může být obtížné číst člověka.
 
-  Pokud má vaše organizace několik systémů sestavení, Předpona značky s názvem systému sestavení je variací této možnosti: `<build-system>-<build-id>`. Můžete například odlišit buildy ze systému sestavení Jenkinse týmu rozhraní API a webového týmu Azure Pipelines systém sestavení.
+  Pokud má vaše organizace několik systémů sestavení, Předpona značky s názvem systému sestavení je variací této možnosti: `<build-system>-<build-id>` . Můžete například odlišit buildy ze systému sestavení Jenkinse týmu rozhraní API a webového týmu Azure Pipelines systém sestavení.
 
 ### <a name="lock-deployed-image-tags"></a>Zamknout značky nasazené bitové kopie
 
-Jako osvědčený postup doporučujeme, abyste zavedli [uzamknutí](container-registry-image-lock.md) všech nasazených značek bitové kopie nastavením `write-enabled` jejího atributu `false`na. Tímto postupem zabráníte nechtěnému odebrání image z registru a případnému přerušení nasazení. Krok zamykání můžete zahrnout do svého kanálu pro vydávání verzí.
+Jako osvědčený postup doporučujeme, abyste zavedli [uzamknutí](container-registry-image-lock.md) všech nasazených značek bitové kopie nastavením jejího `write-enabled` atributu na `false` . Tímto postupem zabráníte nechtěnému odebrání image z registru a případnému přerušení nasazení. Krok zamykání můžete zahrnout do svého kanálu pro vydávání verzí.
 
 Uzamykání nasazené image vám pořád umožňuje odebrat jiné, nenasazené image z registru, a to pomocí funkcí Azure Container Registry k údržbě registru. Můžete například [automaticky vyprázdnit](container-registry-auto-purge.md) netagované manifesty nebo odemknuté obrázky starší než zadaná doba trvání nebo nastavit [zásady uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty.
 

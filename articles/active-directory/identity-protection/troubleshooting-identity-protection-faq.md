@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443578"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
@@ -24,7 +23,7 @@ ms.locfileid: "75443578"
 
 Zrušení **rizika uživatele** v rámci klasické Identity Protection nastaví objekt actor v historii rizik uživatele v části Identity Protection na **službu Azure AD**.
 
-Zrušení **rizika uživatele** v aplikaci Identity Protection nastaví objekt actor v historii rizik uživatele v nástroji Identity Protection na ** \<jméno správce pomocí hypertextového odkazu, který odkazuje na okno\>uživatele**.
+Zrušení **rizika uživatele** v ochraně identity nastaví objekt actor v historii rizik uživatele v ochraně identity na **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Existuje aktuální známý problém, který způsobil latenci v toku neúspěšných rizik uživatele. Pokud máte zásady rizik uživatelů, tato zásada se přestane používat pro uživatele v řádu minut po kliknutí na Zavřít riziko uživatele. Existují však známé prodlevy při aktualizaci uživatelského prostředí pro neúspěšné uživatele. Alternativním řešením je aktualizovat stránku na úrovni prohlížeče, aby se zobrazil nejnovější stav "rizika" uživatele.
 
@@ -85,7 +84,7 @@ Všechna zjišťování rizik jsou popsána v článku [co je to riziko](concept
 
 **Potvrzení zabezpečení** (při přihlášení) – informuje Azure AD Identity Protection, že se přihlásilo od vlastníka identity a neindikuje kompromis.
 
-- Po přijetí této zpětné vazby přesuneme nerizikový stav přihlášení (nikoli uživatele) na **potvrzené zabezpečení** a úroveň rizika pro **-**.
+- Po přijetí této zpětné vazby přesuneme nerizikový stav přihlášení (nikoli uživatele) na **potvrzené zabezpečení** a úroveň rizika pro **-** .
 
 - Kromě toho poskytujeme informace pro naše systémy strojového učení pro budoucí vylepšení posuzování rizik.
 

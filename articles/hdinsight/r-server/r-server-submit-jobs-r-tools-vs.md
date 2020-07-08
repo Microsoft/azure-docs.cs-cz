@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435258"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
@@ -32,7 +31,7 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 3. Pro ověřování SSH musíte mít veřejné a privátní klíče.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Nainstalujte na svém počítači [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server poskytuje funkce [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) a `RxSpark` .
+4. Nainstalujte na svém počítači [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server poskytuje [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) funkce a `RxSpark` .
 
 5. Nainstalujte si výstup, který poskytuje výpočetní [kontext pro spouštění](https://www.putty.org/) `RevoScaleR` funkcí z místního klienta do vašeho clusteru HDInsight.
 
@@ -52,7 +51,7 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 2. Nainstalujte [rozšíření RTVS](https://docs.microsoft.com/visualstudio/rtvs/installation).
 3. Stáhněte si [soubor zip s ukázkami](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
 4. Otevřete `examples/Examples.sln` pro spuštění řešení v aplikaci Visual Studio.
-5. Otevřete `1-Getting Started with R.R` soubor ve složce `A first look at R` řešení.
+5. Otevřete `1-Getting Started with R.R` soubor ve `A first look at R` složce řešení.
 6. V horní části souboru stiskněte kombinaci kláves CTRL + ENTER pro odeslání každého řádku, a to po jednom, do okna Interaktivní R. Některé řádky můžou při instalaci balíčků chvíli trvat.
     * Případně můžete vybrat všechny řádky v souboru R (CTRL + A), pak buď provést vše (CTRL + ENTER), nebo na panelu nástrojů vybrat ikonu spustit interaktivní.
 
@@ -66,7 +65,7 @@ RTVS vylepšuje pracovní postup R tím, že nabízí nástroje, jako je napří
 
 Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybaveného pro výstupy můžete vytvořit výpočetní kontext, který spustí distribuované `RevoScaleR` funkce z místního klienta do vašeho clusteru HDInsight. Použijte `RxSpark` k vytvoření výpočetního kontextu, zadání uživatelského jména, hraničního uzlu Apache Hadoopového uzlu, přepínačů SSH a tak dále.
 
-1. Adresa hraničního uzlu služby ML v HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net` tam `CLUSTERNAME` , kde je název clusteru služeb ml.
+1. Adresa hraničního uzlu služby ML v HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net` tam, kde `CLUSTERNAME` je název clusteru služeb ml.
 
 1. Vložte následující kód do okna Interaktivní R v aplikaci Visual Studio a změňte hodnoty proměnných nastavení tak, aby odpovídaly vašemu prostředí.
 
@@ -108,8 +107,8 @@ Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybavené
 
     Zobrazený výstup by měl vypadat přibližně takto:
 
-    ![Úspěšné provedení](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) příkazu RX a
-1. Ověřte, že `rxHadoopCopy` se `people.json` soubor úspěšně zkopíroval z ukázkové složky dat do nově vytvořené `/user/RevoShare/newUser` složky:
+    ![Úspěšné provedení příkazu RX ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) a
+1. Ověřte, že se `rxHadoopCopy` soubor úspěšně zkopíroval `people.json` z ukázkové složky dat do nově vytvořené `/user/RevoShare/newUser` složky:
 
     1. Z podokna clusteru služby HDInsight ML v Azure v nabídce vlevo vyberte **účty úložiště** .
 
@@ -121,7 +120,7 @@ Pomocí Microsoft ML Server/Microsoft R Client z počítače s Windows vybavené
 
         ![Kontejnery Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Vyberte název kontejneru vašeho clusteru, přejděte do složky **uživatele** (možná budete muset kliknout na *načíst další* v dolní části seznamu) a pak vyberte *RevoShare*a **nový_uživatel**. `people.json` Soubor by měl být zobrazen ve `newUser` složce.
+    4. Vyberte název kontejneru vašeho clusteru, přejděte do složky **uživatele** (možná budete muset kliknout na *načíst další* v dolní části seznamu) a pak vyberte *RevoShare*a **nový_uživatel**. `people.json`Soubor by měl být zobrazen ve `newUser` složce.
 
         ![HDInsight zkopíroval umístění složky souborů](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

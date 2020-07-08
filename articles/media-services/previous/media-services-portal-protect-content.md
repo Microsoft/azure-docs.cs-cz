@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74978198"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí Azure Portal
@@ -38,7 +37,7 @@ Pokud chcete použít portál ke konfiguraci globální ochrany obsahu pomocí �
 
 1. Na [portálu](https://portal.azure.com/)vyberte svůj účet Media Services.
 
-1. Vyberte **Nastavení** > **Ochrana obsahu**.
+1. Vyberte **Nastavení**  >  **Ochrana obsahu**.
 
     ![Ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -76,7 +75,7 @@ Pokud licenci nakonfigurujete jako trvalou, uloží se do trvalého úložiště
 ### <a name="basic"></a>Základní
 Když vyberete **základní**, vytvoří se šablona se všemi výchozími hodnotami.
 
-### <a name="advanced"></a>Upřesnit
+### <a name="advanced"></a>Pokročilý
 Další informace o šabloně Widevine Rights najdete v tématu [Přehled šablon licencí Widevine](media-services-widevine-license-template-overview.md).
 
 ![Pokročilá ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)
@@ -90,7 +89,7 @@ Pokud chcete povolit šifrování FairPlay, vyberte **Konfigurace Fairplay**. Pa
 Pokud chcete využít výhod dynamického šifrování, zakódujte zdrojový soubor do sady souborů MP4 s adaptivní přenosovou rychlostí.
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>Vyberte prostředek, který chcete zašifrovat.
-Pokud chcete zobrazit všechny prostředky, vyberte **Nastavení** > **prostředky**.
+Pokud chcete zobrazit všechny prostředky, vyberte **Nastavení**  >  **prostředky**.
 
 ![Možnost assetů](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 

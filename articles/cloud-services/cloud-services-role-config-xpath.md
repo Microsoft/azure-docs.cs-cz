@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386081"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Vystavit nastavení konfigurace role jako proměnnou prostředí pomocí XPath
@@ -24,96 +23,96 @@ Indikuje, že aplikace běží v emulátoru.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/Deployment/@emulated" |
-| kód |var x = RoleEnvironment. Emulation; |
+| XPath |XPath = " /RoleEnvironment/Deployment/@emulated " |
+| Kód |var x = RoleEnvironment. Emulation; |
 
 ## <a name="deployment-id"></a>ID nasazení
 Načte ID nasazení instance.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/Deployment/@id" |
-| kód |var deploymentId = RoleEnvironment. DeploymentId; |
+| XPath |XPath = " /RoleEnvironment/Deployment/@id " |
+| Kód |var deploymentId = RoleEnvironment. DeploymentId; |
 
 ## <a name="role-id"></a>ID role
 Načte aktuální ID role pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@id" |
-| kód |var ID = RoleEnvironment.CurrentRoleInstance.Id; |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@id " |
+| Kód |var ID = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## <a name="update-domain"></a>Aktualizace domény
 Načte aktualizační doménu instance.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@updateDomain" |
-| kód |var ud = RoleEnvironment. CurrentRoleInstance. UpdateDomain; |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@updateDomain " |
+| Kód |var ud = RoleEnvironment. CurrentRoleInstance. UpdateDomain; |
 
 ## <a name="fault-domain"></a>Doména selhání
 Načte doménu selhání instance.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@faultDomain" |
-| kód |var FD = RoleEnvironment. CurrentRoleInstance. FaultDomain; |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@faultDomain " |
+| Kód |var FD = RoleEnvironment. CurrentRoleInstance. FaultDomain; |
 
 ## <a name="role-name"></a>Název role
 Načte název role instancí.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@roleName" |
-| kód |var RNAME = RoleEnvironment.CurrentRoleInstance.Role.Name; |
+| XPath |XPath = " /RoleEnvironment/CurrentInstance/@roleName " |
+| Kód |var RNAME = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Nastavení konfigurace
 Načte hodnotu zadaného nastavení konfigurace.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting [@name= ' Setting1 ']/@value" |
-| kód |var – nastavení = RoleEnvironment. GetConfigurationSettingValue ("Setting1"); |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting [ @name = ' Setting1 '] /@value " |
+| Kód |var – nastavení = RoleEnvironment. GetConfigurationSettingValue ("Setting1"); |
 
 ## <a name="local-storage-path"></a>Cesta k místnímu úložišti
 Načte cestu místního úložiště pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= ' LocalStore1 ']/@path" |
-| kód |var localResourcePath = RoleEnvironment. GetLocalResource ("LocalStore1"). RootPath |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [ @name = ' LocalStore1 '] /@path " |
+| Kód |var localResourcePath = RoleEnvironment. GetLocalResource ("LocalStore1"). RootPath |
 
 ## <a name="local-storage-size"></a>Velikost místního úložiště
 Načte velikost místního úložiště pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name= ' LocalStore1 ']/@sizeInMB" |
-| kód |var localResourceSizeInMB = RoleEnvironment. GetLocalResource ("LocalStore1"). MaximumSizeInMegabytes; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [ @name = ' LocalStore1 '] /@sizeInMB " |
+| Kód |var localResourceSizeInMB = RoleEnvironment. GetLocalResource ("LocalStore1"). MaximumSizeInMegabytes; |
 
 ## <a name="endpoint-protocol"></a>Protokol koncového bodu
 Načte protokol koncového bodu pro instanci.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@protocol" |
-| kód |var prot = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. Protokol |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [ @name = ' Endpoint1 '] /@protocol " |
+| Kód |var prot = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. Protokol |
 
 ## <a name="endpoint-ip"></a>IP adresa koncového bodu
 Získá IP adresu zadaného koncového bodu.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@address" |
-| kód |var Address = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. Address |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [ @name = ' Endpoint1 '] /@address " |
+| Kód |var Address = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. Address |
 
 ## <a name="endpoint-port"></a>Port koncového bodu
 Načte pro instanci port koncového bodu.
 
 | Typ | Příklad |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@port" |
-| kód |var port = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. port; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [ @name = ' Endpoint1 '] /@port " |
+| Kód |var port = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. port; |
 
 ## <a name="example"></a>Příklad
 Tady je příklad role pracovního procesu, která vytvoří úlohu po spuštění s proměnnou prostředí s názvem `TestIsEmulated` nastavenou na [ @emulated hodnotu XPath](#app-running-in-emulator). 

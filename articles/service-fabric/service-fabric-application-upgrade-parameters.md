@@ -4,10 +4,9 @@ description: Popisuje parametry týkající se upgradu aplikace Service Fabric, 
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377969"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry upgradu aplikace
@@ -33,7 +32,7 @@ Parametry upgradu aplikace Visual Studio Service Fabric se nastavují prostředn
 ### <a name="required-parameters"></a>Požadované parametry
 (PS = PowerShell, VS = Visual Studio)
 
-| Parametr | Platí pro | Popis |
+| Parametr | Platí pro | Description |
 | --- | --- | --- |
 ApplicationName |PS| Název aplikace, která se upgraduje Příklady: Fabric:/VisualObjects, Fabric:/ClusterMonitor. |
 ApplicationTypeVersion|PS|Verze typu aplikace, na kterou se upgrade zaměřuje |
@@ -45,10 +44,10 @@ UnmonitoredManual | PS | Indikuje, že režim upgradu není monitorovaný ručn�
 
 ### <a name="optional-parameters"></a>Volitelné parametry
 
-Parametry vyhodnocení stavu jsou volitelné. Pokud kritéria hodnocení stavu nejsou určena při spuštění upgradu, Service Fabric používá zásady stavu aplikace zadané v souboru ApplicationManifest. XML instance aplikace.
+Parametry vyhodnocení stavu jsou volitelné. Pokud kritéria hodnocení stavu nejsou určena při spuštění upgradu, Service Fabric používá zásady stavu aplikace zadané v ApplicationManifest.xml instance aplikace.
 
 > [!div class="mx-tdBreakAll"]
-> | Parametr | Platí pro | Popis |
+> | Parametr | Platí pro | Description |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Určuje přepsání parametrů aplikace.<br>Parametry aplikace PowerShell jsou zadány jako páry název/hodnota zatřiďovací tabulky. Například @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Parametry aplikace Visual Studio lze zadat v dialogovém okně Publikovat Service Fabric aplikaci v poli **soubor parametrů aplikace** .
 > | Confirm |PS| Povolené hodnoty jsou **true** a **false**. Před spuštěním rutiny zobrazí výzvu k potvrzení. |
@@ -80,7 +79,7 @@ Service Fabric upgrady aplikací pomocí rozhraní příkazového řádku Servic
 
 | Parametr | Popis |
 | --- | --- |
-| ID aplikace  |ID aplikace, která se upgraduje <br> Většinou se jedná o úplný název aplikace bez schématu URI Fabric:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny\~znakem. Například pokud je název aplikace "Fabric:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích.|
+| ID aplikace  |ID aplikace, která se upgraduje <br> Většinou se jedná o úplný název aplikace bez schématu URI Fabric:. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem. Například pokud je název aplikace "Fabric:/MyApp/app1", identita aplikace by byla "MyApp \~ app1" v 6.0 + a "MyApp/app1" v předchozích verzích.|
 verze aplikace |Verze typu aplikace, na kterou se upgrade zaměřuje|
 parameters  |Seznam přepsání parametrů aplikace, který se má použít při upgradu aplikace, je zakódovaný do formátu JSON.|
 

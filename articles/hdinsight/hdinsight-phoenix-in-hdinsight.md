@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435502"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix ve službě Azure HDInsight
@@ -31,7 +30,7 @@ Apache Phoenix přidává do HBA dotazy několik vylepšení výkonu a funkcí.
 
 HBA mají jeden index, který je lexikograficky seřazený podle primárního klíče řádku. K těmto záznamům lze přistupovat pouze prostřednictvím klíče řádku. Přístup k záznamům přes libovolný jiný sloupec, než je klíč řádku, vyžaduje při použití požadovaného filtru kontrolu všech dat. V sekundárním indexu jsou sloupce nebo výrazy indexované na klíč alternativního řádku a umožňují vyhledávání a prohledávání rozsahu tohoto indexu.
 
-Pomocí `CREATE INDEX` příkazu vytvořte sekundární index:
+Pomocí příkazu vytvořte sekundární index `CREATE INDEX` :
 
 ```sql
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
@@ -64,13 +63,13 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-Chcete-li přidat další sloupce později, `ALTER VIEW` použijte příkaz.
+Chcete-li přidat další sloupce později, použijte `ALTER VIEW` příkaz.
 
 ### <a name="skip-scan"></a>Přeskočit kontrolu
 
 Funkce Přeskočit kontrolu používá jeden nebo více sloupců složeného indexu k vyhledání jedinečných hodnot. Na rozdíl od prohledávání rozsahu je přeskočení kontroly implementovat kontrolu uvnitř řádku a výsledkem je [vyšší výkon](https://phoenix.apache.org/performance.html#Skip-Scan). Při kontrole se první odpovídající hodnota přeskočí spolu s indexem, dokud se nenajde další hodnota.
 
-Přeskočení vyhledávání používá `SEEK_NEXT_USING_HINT` výčet filtru HBA. Pomocí `SEEK_NEXT_USING_HINT`funkce Přeskočit kontrolu uchovává informace o tom, která sada klíčů nebo rozsahy klíčů je prohledávána v jednotlivých sloupcích. Přeskočení vyhledávání pak převezme klíč, který byl předán během vyhodnocování filtru, a určí, zda se jedná o jednu z kombinací. V takovém případě vyhledávání Skip vyhodnocuje další nejvyšší klíč, na který se má přejít.
+Přeskočení vyhledávání používá `SEEK_NEXT_USING_HINT` výčet filtru HBA. Pomocí funkce `SEEK_NEXT_USING_HINT` Přeskočit kontrolu uchovává informace o tom, která sada klíčů nebo rozsahy klíčů je prohledávána v jednotlivých sloupcích. Přeskočení vyhledávání pak převezme klíč, který byl předán během vyhodnocování filtru, a určí, zda se jedná o jednu z kombinací. V takovém případě vyhledávání Skip vyhodnocuje další nejvyšší klíč, na který se má přejít.
 
 ### <a name="transactions"></a>Transakce
 
@@ -80,7 +79,7 @@ Stejně jako u tradičních transakcí SQL vám transakce poskytované prostřed
 
 Pokud chcete povolit transakce v Phoenixu, přečtěte si [dokumentaci Apache Phoenix transakce](https://phoenix.apache.org/transactions.html).
 
-Chcete-li vytvořit novou tabulku s povolenými transakcemi `TRANSACTIONAL` , nastavte `true` vlastnost na `CREATE` hodnotu v příkazu:
+Chcete-li vytvořit novou tabulku s povolenými transakcemi, nastavte `TRANSACTIONAL` vlastnost na hodnotu `true` v `CREATE` příkazu:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
@@ -99,7 +98,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 *Oblast serveru hotspotting* může nastat při zápisu záznamů s sekvenčními klíči do adaptérů HBA. I když máte ve vašem clusteru více serverů oblastí, budou se všechny zápisy objevovat pouze v jednom z nich. Tato koncentrace vytvoří problém hotspotting, kdy se místo úlohy zápisu do všech dostupných serverů oblastí zpracovává zatížení jenom jednou. Vzhledem k tomu, že každá oblast má předdefinovanou maximální velikost, když oblast dosáhne omezení velikosti, rozdělí se na dvě malé oblasti. Pokud k tomu dojde, jedna z těchto nových oblastí vezme všechny nové záznamy, stane se nové hotspoty.
 
-Pro zmírnění tohoto problému a dosažení lepšího výkonu, předem rozdělené tabulky, aby se všechny servery oblastí používaly stejně. Phoenix poskytuje *nasolené tabulky*, transparentně přidávají dvoubajtové bajty do klíče řádku pro konkrétní tabulku. Tabulka je předem rozdělena na hranice bajtových bajtů, aby bylo zajištěno stejné rozdělení zatížení mezi servery oblastí během počáteční fáze tabulky. Tento přístup distribuuje zátěž pro zápis napříč všemi dostupnými servery oblastí a zlepšuje výkon při zápisu a čtení. Chcete-li nasoleit tabulku `SALT_BUCKETS` , určete vlastnost Table při vytvoření tabulky:
+Pro zmírnění tohoto problému a dosažení lepšího výkonu, předem rozdělené tabulky, aby se všechny servery oblastí používaly stejně. Phoenix poskytuje *nasolené tabulky*, transparentně přidávají dvoubajtové bajty do klíče řádku pro konkrétní tabulku. Tabulka je předem rozdělena na hranice bajtových bajtů, aby bylo zajištěno stejné rozdělení zatížení mezi servery oblastí během počáteční fáze tabulky. Tento přístup distribuuje zátěž pro zápis napříč všemi dostupnými servery oblastí a zlepšuje výkon při zápisu a čtení. Chcete-li nasoleit tabulku, určete `SALT_BUCKETS` vlastnost Table při vytvoření tabulky:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -124,7 +123,7 @@ CREATE TABLE Saltedweblogs (
 
 Cluster An HDInsight HBA zahrnuje [uživatelské rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) pro provádění změn konfigurace.
 
-1. Pokud chcete povolit nebo zakázat Phoenix a řídit nastavení časového limitu dotazů v Phoenixu, přihlaste se k webovému`https://YOUR_CLUSTER_NAME.azurehdinsight.net`uživatelskému rozhraní Ambari () pomocí vašich uživatelských přihlašovacích údajů Hadoop.
+1. Pokud chcete povolit nebo zakázat Phoenix a řídit nastavení časového limitu dotazů v Phoenixu, přihlaste se k webovému uživatelskému rozhraní Ambari ( `https://YOUR_CLUSTER_NAME.azurehdinsight.net` ) pomocí vašich uživatelských přihlašovacích údajů Hadoop.
 
 2. V seznamu služeb v nabídce na levé straně vyberte **HBA** a pak vyberte kartu **Konfigurace** .
 

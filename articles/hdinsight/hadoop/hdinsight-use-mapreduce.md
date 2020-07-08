@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435709"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce v Apache Hadoopu ve službě HDInsight
@@ -21,11 +20,11 @@ Naučte se spouštět úlohy MapReduce v clusterech HDInsight.
 
 ## <a name="example-data"></a>Příklad dat
 
-HDInsight poskytuje různé příklady datových sad, které jsou uložené v adresáři `/example/data` a `/HdiSamples` . Tyto adresáře jsou ve výchozím úložišti pro váš cluster. V tomto dokumentu používáme `/example/data/gutenberg/davinci.txt` soubor. Tento soubor obsahuje poznámkové bloky Leonardo da Vinci.
+HDInsight poskytuje různé příklady datových sad, které jsou uložené v `/example/data` adresáři a `/HdiSamples` . Tyto adresáře jsou ve výchozím úložišti pro váš cluster. V tomto dokumentu používáme `/example/data/gutenberg/davinci.txt` soubor. Tento soubor obsahuje poznámkové bloky Leonardo da Vinci.
 
 ## <a name="example-mapreduce"></a>Příklad MapReduce
 
-Cluster HDInsight obsahuje příklad aplikace MapReduce počet slov. Tento příklad se nachází `/example/jars/hadoop-mapreduce-examples.jar` ve výchozím úložišti pro váš cluster.
+Cluster HDInsight obsahuje příklad aplikace MapReduce počet slov. Tento příklad se nachází ve `/example/jars/hadoop-mapreduce-examples.jar` výchozím úložišti pro váš cluster.
 
 Následující kód Java je zdrojem aplikace MapReduce obsažené v `hadoop-mapreduce-examples.jar` souboru:
 

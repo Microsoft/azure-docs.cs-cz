@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430679"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management
@@ -50,7 +49,7 @@ V této příručce se dozvíte, jak nakonfigurovat instanci služby API Managem
     > [!NOTE]
     > Tato pole se používají k identifikaci autorizačního serveru OAuth 2,0 v rámci aktuální instance služby API Management a jejich hodnoty nepocházejí ze serveru OAuth 2,0.
 
-3. Zadejte **adresu URL stránky pro registraci klienta**. Na této stránce můžou uživatelé vytvářet a spravovat svoje účty a liší se v závislosti na použitém poskytovateli OAuth 2,0. **Adresa URL stránky pro registraci klientů** odkazuje na stránku, kterou mohou uživatelé použít k vytvoření a konfiguraci vlastních účtů pro poskytovatele OAuth 2,0, kteří podporují správu uživatelských účtů. Některé organizace tuto funkci nekonfigurují ani nepoužívají, i když je poskytovatel OAuth 2,0 podporuje. Pokud váš poskytovatel OAuth 2,0 nemá nakonfigurovanou správu uživatelských účtů, zadejte sem adresu URL zástupného symbolu, například adresu URL vaší společnosti, nebo adresu URL, jako je například `https://placeholder.contoso.com`.
+3. Zadejte **adresu URL stránky pro registraci klienta**. Na této stránce můžou uživatelé vytvářet a spravovat svoje účty a liší se v závislosti na použitém poskytovateli OAuth 2,0. **Adresa URL stránky pro registraci klientů** odkazuje na stránku, kterou mohou uživatelé použít k vytvoření a konfiguraci vlastních účtů pro poskytovatele OAuth 2,0, kteří podporují správu uživatelských účtů. Některé organizace tuto funkci nekonfigurují ani nepoužívají, i když je poskytovatel OAuth 2,0 podporuje. Pokud váš poskytovatel OAuth 2,0 nemá nakonfigurovanou správu uživatelských účtů, zadejte sem adresu URL zástupného symbolu, například adresu URL vaší společnosti, nebo adresu URL, jako je například `https://placeholder.contoso.com` .
 
     ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -58,7 +57,7 @@ V této příručce se dozvíte, jak nakonfigurovat instanci služby API Managem
 
     Určete **typy udělení autorizace** kontrolou požadovaných typů. Ve výchozím nastavení je zadán **autorizační kód** .
 
-    Zadejte **adresu URL koncového bodu autorizace**. V případě Azure Active Directory bude tato adresa URL podobná následující adrese URL, kde `<tenant_id>` se nahradí ID vašeho TENANTA Azure AD.
+    Zadejte **adresu URL koncového bodu autorizace**. V případě Azure Active Directory bude tato adresa URL podobná následující adrese URL, kde `<tenant_id>` se nahradí ID vašeho tenanta Azure AD.
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
@@ -68,7 +67,7 @@ V této příručce se dozvíte, jak nakonfigurovat instanci služby API Managem
 
     ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-03.png)
 
-    U Azure Active Directory serveru OAuth 2,0 bude **Adresa URL koncového bodu tokenu** mít následující formát, kde `<TenantID>` má formát `yourapp.onmicrosoft.com`.
+    U Azure Active Directory serveru OAuth 2,0 bude **Adresa URL koncového bodu tokenu** mít následující formát, kde `<TenantID>` má formát `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
@@ -118,7 +117,7 @@ Když je vybraný **autorizační kód** , zobrazí se automaticky otevírané o
 > [!NOTE]
 > Pokud jste automaticky otevíraná okna zakázali, budete vyzváni, abyste je povolili v prohlížeči. Jakmile je povolíte, znovu vyberte **autorizační kód** a zobrazí se formulář pro přihlášení.
 
-![Přihlášení][api-management-oauth2-signin]
+![Přihlásit se][api-management-oauth2-signin]
 
 Jakmile se přihlásíte, **hlavičky žádosti** se naplní `Authorization : Bearer` hlavičkou, která žádost autorizuje.
 

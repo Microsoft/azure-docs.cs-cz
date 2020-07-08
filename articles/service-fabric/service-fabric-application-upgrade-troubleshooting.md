@@ -4,10 +4,9 @@ description: Tento článek se zabývá některými běžnými problémy při up
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377918"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Řešení potíží s upgrady aplikací
@@ -190,7 +189,7 @@ Upgrade bude pokračovat z upgradovací domény, ve které byl naposledy pozasta
 
 Možná příčina 1:
 
-Service Fabric překládá všechny procentní podíly na skutečný počet entit (například repliky, oddíly a služby) pro hodnocení stavu a vždy zaokrouhluje na celé entity. Pokud je například maximální *MaxPercentUnhealthyReplicasPerPartition* 21% a existuje pět replik, pak Service Fabric umožňuje až dvě repliky, které nejsou v`Math.Ceiling (5*0.21)`pořádku (tj.). Proto by se měly zásady stavu nastavit odpovídajícím způsobem.
+Service Fabric překládá všechny procentní podíly na skutečný počet entit (například repliky, oddíly a služby) pro hodnocení stavu a vždy zaokrouhluje na celé entity. Pokud je například maximální *MaxPercentUnhealthyReplicasPerPartition* 21% a existuje pět replik, pak Service Fabric umožňuje až dvě repliky, které nejsou v pořádku (tj `Math.Ceiling (5*0.21)` .). Proto by se měly zásady stavu nastavit odpovídajícím způsobem.
 
 Možná příčina 2:
 
@@ -200,7 +199,7 @@ Během upgradu se ale v případě, že C přestane nastavovat, může stát v p
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nezadal (a) jsem zásady stavu pro upgrade aplikace, ale upgrade se u některých časových limitů, které jsem nezadal, pořád neprojde.
 
-Pokud nejsou požadavky na upgrade poskytovány zásady stavu, jsou pořízeny z *souboru ApplicationManifest. XML* aktuální verze aplikace. Pokud například provádíte upgrade aplikace X z verze 1,0 na verzi 2,0, jsou použity zásady stavu aplikace zadané pro verzi 1,0. Pokud se má pro upgrade použít jiné zásady stavu, pak je potřeba tuto zásadu zadat v rámci volání rozhraní API pro upgrade aplikace. Zásady zadané jako součást volání rozhraní API platí pouze během upgradu. Po dokončení upgradu se použijí zásady zadané v *souboru souboru ApplicationManifest. XML* .
+Pokud nejsou požadavky na upgrade poskytovány zásady stavu, jsou pořízeny z *ApplicationManifest.xml* aktuální verze aplikace. Pokud například provádíte upgrade aplikace X z verze 1,0 na verzi 2,0, jsou použity zásady stavu aplikace zadané pro verzi 1,0. Pokud se má pro upgrade použít jiné zásady stavu, pak je potřeba tuto zásadu zadat v rámci volání rozhraní API pro upgrade aplikace. Zásady zadané jako součást volání rozhraní API platí pouze během upgradu. Po dokončení upgradu se použijí zásady zadané v *ApplicationManifest.xml* .
 
 ### <a name="incorrect-time-outs-are-specified"></a>Jsou zadané nesprávné časové limity.
 
@@ -212,9 +211,9 @@ Možná jste se přemýšlelii, co se stane, když časové limity nastavíte ne
 
 Tady je rychlý aktualizační program, jak časové limity pracují s časy upgradu:
 
-Upgrady pro upgradovací doménu nelze dokončit rychleji než *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+Upgrady pro upgradovací doménu nelze dokončit rychleji než *HealthCheckWaitDuration*  +  *HealthCheckStableDuration*.
 
-Selhání upgradu nemůže být rychlejší než *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+Selhání upgradu nemůže být rychlejší než *HealthCheckWaitDuration*  +  *HealthCheckRetryTimeout*.
 
 Doba upgradu pro upgradovací doménu je omezená nástrojem *UpgradeDomainTimeout*.  Pokud jsou *HealthCheckRetryTimeout* a *HealthCheckStableDuration* v nenulovém stavu a stav aplikace se přepíná, pak upgrade nakonec vyprší v *UpgradeDomainTimeout*. *UpgradeDomainTimeout* začne počítat po zahájení upgradu pro aktuální upgradovací doménu.
 

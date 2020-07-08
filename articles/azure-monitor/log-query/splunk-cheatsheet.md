@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75397744"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Dotaz Splunk na Azure Monitor protokolu
@@ -21,12 +20,12 @@ Tento článek je určený pro pomoc uživatelům, kteří jsou obeznámeni s Sp
 
 Následující tabulka porovnává koncepty a datové struktury mezi protokoly Splunk a Azure Monitor.
 
- | Koncept  | Splunk | Azure Monitor |  Poznámka
+ | Koncepce  | Splunk | Azure Monitor |  Komentář
  | --- | --- | --- | ---
  | Jednotka nasazení  | cluster |  cluster |  Azure Monitor umožňuje libovolné dotazy mezi clustery. Splunk není. |
  | Mezipaměti dat |  intervalů  |  Ukládání do mezipaměti a zásady uchovávání informací |  Řídí období a úroveň ukládání dat do mezipaměti. Toto nastavení má přímý vliv na výkon dotazů a nákladů na nasazení. |
  | Logický oddíl dat  |  index  |  database  |  Umožňuje logické oddělení dat. Obě implementace umožňují sjednocení a spojování mezi těmito oddíly. |
- | Metadata strukturovaných událostí | – | tabulka |  Splunk nemá k dispozici koncept hledaného jazyka metadat události. Protokoly Azure Monitor mají koncept tabulky, která obsahuje sloupce. Každá instance události je namapována na řádek. |
+ | Metadata strukturovaných událostí | Není k dispozici | tabulka |  Splunk nemá k dispozici koncept hledaného jazyka metadat události. Protokoly Azure Monitor mají koncept tabulky, která obsahuje sloupce. Každá instance události je namapována na řádek. |
  | Záznam dat | event | řadě |  Pouze změny terminologie. |
  | Atribut záznamu dat | pole |  sloupec |  V Azure Monitor je tato předdefinovaná jako součást struktury tabulky. V Splunk každá událost má svou vlastní sadu polí. |
  | Typy | programátor |  programátor |  Azure Monitor DataTypes jsou lépe explicitní, jak jsou nastaveny na sloupcích. Obě mají schopnost pracovat dynamicky s datovými typy a přibližně ekvivalentní sadou datových typů, včetně podpory JSON. |
@@ -37,14 +36,14 @@ Následující tabulka porovnává koncepty a datové struktury mezi protokoly S
 
 Následující tabulka uvádí funkce v Azure Monitor, které jsou ekvivalentní funkcím Splunk.
 
-|Splunk | Azure Monitor |Poznámka
+|Splunk | Azure Monitor |Komentář
 |---|---|---
 |strcat | strcat()| první |
 |split  | split() | první |
 |if     | Pokud ()   | první |
 |tonumber | todouble()<br>tolong()<br>toint() | první |
 |umístit<br>malým |toupper()<br>tolower()|první |
-| náhrady | replace() | první<br> Všimněte si také, `replace()` že při přebírání obou parametrů v obou produktech se parametry liší. |
+| náhrady | replace() | první<br> Všimněte si také, že při `replace()` přebírání obou parametrů v obou produktech se parametry liší. |
 | substr – | substring() | první<br>Všimněte si také, že Splunk používá indexy založené na jednom. Azure Monitor poznámky založené na nule. |
 | ToLower |  tolower() | první |
 | ToUpper | toupper() | první |
@@ -53,9 +52,9 @@ Následující tabulka uvádí funkce v Azure Monitor, které jsou ekvivalentní
 | searchmatch | == | V Splunk `searchmatch` umožňuje vyhledávání přesný řetězec.
 | vybraných | rand()<br>Rand (n) | Funkce Splunk vrací číslo od nuly do 2<sup>31</sup>-1. Azure Monitor ' vrátí číslo mezi 0,0 a 1,0, nebo pokud byl zadán parametr, mezi 0 a n-1.
 | nyní | now() | první
-| relative_time | totimespan() | první<br>V Azure Monitor ekvivalent relative_time (datetimeVal, offsetVal) z Splunk je datetimeVal + ToTimeSpan (offsetVal).<br>Například <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> se bude <code>...  &#124; extend myTime = now() - totimespan("1d")</code>jednat o.
+| relative_time | totimespan() | první<br>V Azure Monitor ekvivalent relative_time (datetimeVal, offsetVal) z Splunk je datetimeVal + ToTimeSpan (offsetVal).<br>Například <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> se bude jednat o <code>...  &#124; extend myTime = now() - totimespan("1d")</code> .
 
-(1) v Splunk je funkce vyvolána s `eval` operátorem. V Azure Monitor slouží jako součást `extend` nebo. `project`<br>(2) v Splunk je funkce vyvolána s `eval` operátorem. V Azure Monitor lze použít s `where` operátorem.
+(1) v Splunk je funkce vyvolána s `eval` operátorem. V Azure Monitor slouží jako součást `extend` nebo `project` .<br>(2) v Splunk je funkce vyvolána s `eval` operátorem. V Azure Monitor lze použít s `where` operátorem.
 
 
 ## <a name="operators"></a>Operátory
@@ -66,7 +65,7 @@ V následujících oddílech jsou uvedeny příklady použití různých operát
 > Pro účely následujícího příkladu se _pravidlo_ pole Splunk mapuje na tabulku v Azure monitor a výchozí časové razítko Splunk se mapuje na sloupec log Analytics _ingestion_time ()_ .
 
 ### <a name="search"></a>Search
-V Splunk můžete `search` klíčové slovo vynechat a zadat řetězec, který není v uvozovkách. V Azure Monitor musíte spustit každý dotaz s `find`, řetězec bez uvozovek je název sloupce a hodnota vyhledávání musí být řetězec v uvozovkách. 
+V Splunk můžete `search` klíčové slovo vynechat a zadat řetězec, který není v uvozovkách. V Azure Monitor musíte spustit každý dotaz s `find` , řetězec bez uvozovek je název sloupce a hodnota vyhledávání musí být řetězec v uvozovkách. 
 
 | |  | |
 |:---|:---|:---|
@@ -75,7 +74,7 @@ V Splunk můžete `search` klíčové slovo vynechat a zadat řetězec, který n
 | | |
 
 ### <a name="filter"></a>Filtr
-Azure Monitor dotazy protokolu začínají z tabulkové sady výsledků, kde filtr. V Splunk je filtrování výchozí operací na aktuálním indexu. V Splunk můžete také `where` použít operátor, ale nedoporučuje se.
+Azure Monitor dotazy protokolu začínají z tabulkové sady výsledků, kde filtr. V Splunk je filtrování výchozí operací na aktuálním indexu. V Splunk můžete také použít `where` operátor, ale nedoporučuje se.
 
 | |  | |
 |:---|:---|:---|
@@ -85,7 +84,7 @@ Azure Monitor dotazy protokolu začínají z tabulkové sady výsledků, kde fil
 
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>Získání n událostí/řádků pro kontrolu 
-Azure Monitor dotazy protokolu také podporují `take` jako alias pro `limit`. V Splunk se při objednání `head` výsledků vrátí prvních n výsledků. V Azure Monitor limit není uspořádaný, ale vrací prvních n řádků, které jsou nalezeny.
+Azure Monitor dotazy protokolu také podporují `take` jako alias pro `limit` . V Splunk se při objednání výsledků `head` vrátí prvních n výsledků. V Azure Monitor limit není uspořádaný, ale vrací prvních n řádků, které jsou nalezeny.
 
 | |  | |
 |:---|:---|:---|
@@ -96,7 +95,7 @@ Azure Monitor dotazy protokolu také podporují `take` jako alias pro `limit`. V
 
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>Získání prvních n událostí/řádků seřazených podle pole nebo sloupce
-V případě dolních výsledků ve Splunk, `tail`které používáte. V Azure Monitor můžete určit směr řazení pomocí `asc`.
+V případě dolních výsledků ve Splunk, které používáte `tail` . V Azure Monitor můžete určit směr řazení pomocí `asc` .
 
 | |  | |
 |:---|:---|:---|
@@ -108,7 +107,7 @@ V případě dolních výsledků ve Splunk, `tail`které používáte. V Azure M
 
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>Rozšíření sady výsledků s novými poli/sloupci
-Splunk má také `eval` funkci, kterou není možné porovnat s `eval` operátorem. `eval` Operátor v Splunk i `extend` operátor v Azure monitor podporují pouze skalární funkce a aritmetické operátory.
+Splunk má také `eval` funkci, kterou není možné porovnat s `eval` operátorem. `eval`Operátor v Splunk i `extend` operátor v Azure monitor podporují pouze skalární funkce a aritmetické operátory.
 
 | |  | |
 |:---|:---|:---|
@@ -130,7 +129,7 @@ Azure Monitor používá `project-rename` operátor k přejmenování pole. `pro
 
 
 ### <a name="format-resultsprojection"></a>Formátování výsledků/projekce
-Splunk zřejmě nemá operátor podobný `project-away`. Pomocí uživatelského rozhraní můžete vyfiltrovat pole pryč.
+Splunk zřejmě nemá operátor podobný `project-away` . Pomocí uživatelského rozhraní můžete vyfiltrovat pole pryč.
 
 | |  | |
 |:---|:---|:---|
@@ -145,7 +144,7 @@ Podívejte se na [agregace v Azure monitor dotazy protokolu](aggregations.md) pr
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **statistické** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| Splunk | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
 | Azure Monitor | **Souhrn** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 | | |
 
@@ -163,7 +162,7 @@ Spojení v Splunk má významná omezení. Poddotaz má omezení 10000 výsledk�
 
 
 ### <a name="sort"></a>Seřadit
-Chcete-li v Splunk seřadit ve vzestupném pořadí, je nutné `reverse` použít operátor. Azure Monitor také podporuje definování umístění, kam mají být vloženy hodnoty null, na začátku nebo na konci.
+Chcete-li v Splunk seřadit ve vzestupném pořadí, je nutné použít `reverse` operátor. Azure Monitor také podporuje definování umístění, kam mají být vloženy hodnoty null, na začátku nebo na konci.
 
 | |  | |
 |:---|:---|:---|
@@ -198,7 +197,7 @@ V Log Analytics v Azure Portal se zveřejňuje jenom první sloupec. Všechny sl
 
 
 ### <a name="de-duplicate"></a>De-duplikovat
-`summarize arg_min()` Místo toho můžete změnit pořadí, v jakém se má záznam vybrat.
+`summarize arg_min()`Místo toho můžete změnit pořadí, v jakém se má záznam vybrat.
 
 | |  | |
 |:---|:---|:---|

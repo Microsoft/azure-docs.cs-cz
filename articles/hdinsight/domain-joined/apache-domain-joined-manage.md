@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 93880269edd72477f3aa85b2dbdc9d9f3ec8ef25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435879"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight pomocí Balíček zabezpečení podniku
@@ -21,7 +20,7 @@ Seznamte se s uživateli a rolemi v HDInsight Balíček zabezpečení podniku (E
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí VSCode
 
-Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Apache Ambari, taky propojit cluster Apache Hadoop zabezpečení pomocí uživatelského jména domény (například: `user1@contoso.com`).
+Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Apache Ambari, taky propojit cluster Apache Hadoop zabezpečení pomocí uživatelského jména domény (například: `user1@contoso.com` ).
 
 1. Otevřete [Visual Studio Code](https://code.visualstudio.com/). Ujistěte se, že je nainstalované rozšíření [nástrojů pro podregistr Spark &](../hdinsight-for-vscode.md) .
 
@@ -29,7 +28,7 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí IntelliJ
 
-Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com`).
+Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com` ).
 
 1. Otevřete IntelliJ IDEA. Ujistěte se, že jsou splněné všechny [požadavky](../spark/apache-spark-intellij-tool-plugin.md#prerequisites) .
 
@@ -37,7 +36,7 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí Eclipse
 
-Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com`).
+Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com` ).
 
 1. Otevřete Eclipse. Ujistěte se, že jsou splněné všechny [požadavky](../spark/apache-spark-eclipse-tool-plugin.md#prerequisites) .
 
@@ -87,7 +86,7 @@ K vyhledání plně kvalifikovaného názvu domény hlavnímu uzlu použijte inf
 
 Cluster HDInsight bez protokolu ESP má dva uživatelské účty, které se vytvoří během vytváření clusteru:
 
-- **Správce Ambari**: Tento účet je také známý jako uživatel *Hadoop* nebo *uživatel http*. Tento účet se dá použít k přihlášení k Ambari na `https://CLUSTERNAME.azurehdinsight.net`. Dá se také použít ke spouštění dotazů v zobrazeních Ambari, spouštění úloh prostřednictvím externích nástrojů (například PowerShell, Templeton, Visual Studio) a k ověření pomocí ovladače rozhraní ODBC pro podregistr a nástrojů BI (například Excel, Power BI nebo Tableau).
+- **Správce Ambari**: Tento účet je také známý jako uživatel *Hadoop* nebo *uživatel http*. Tento účet se dá použít k přihlášení k Ambari na `https://CLUSTERNAME.azurehdinsight.net` . Dá se také použít ke spouštění dotazů v zobrazeních Ambari, spouštění úloh prostřednictvím externích nástrojů (například PowerShell, Templeton, Visual Studio) a k ověření pomocí ovladače rozhraní ODBC pro podregistr a nástrojů BI (například Excel, Power BI nebo Tableau).
 
 Cluster HDInsight s protokolem ESP má kromě správce Ambari tři nové uživatele.
 

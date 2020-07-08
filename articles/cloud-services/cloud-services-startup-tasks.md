@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360306"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu
@@ -27,7 +26,7 @@ ms.locfileid: "75360306"
 
 Proměnné prostředí předávají informace do spouštěcí úlohy a pomocí místního úložiště je možné předávat informace z úlohy po spuštění. Například proměnná prostředí může určovat cestu k programu, který chcete nainstalovat, a do místního úložiště je možné zapisovat soubory, které pak můžou později číst vaše role.
 
-Úloha po spuštění může protokolovat informace a chyby do adresáře určeného proměnnou prostředí **TEMP** . V průběhu úlohy po spuštění se proměnná prostředí **TEMP** přeloží na *C:\\Resources\\Temp\\[GUID]. [ roleName]\\RoleTemp* adresář při spuštění v cloudu.
+Úloha po spuštění může protokolovat informace a chyby do adresáře určeného proměnnou prostředí **TEMP** . V průběhu úlohy po spuštění se proměnná prostředí **TEMP** přeloží na *C: \\ Resources \\ TEMP \\ [GUID]. [ roleName] \\ RoleTemp* adresář při spuštění v cloudu.
 
 Úlohy po spuštění je také možné provádět několikrát mezi restartováními. Úlohu po spuštění je například možné spustit při každé recyklaci role a ty nemusí vždy zahrnovat restartování. Úlohy po spuštění by měly být zapsány způsobem, který jim umožní běžet několikrát bez problémů.
 
@@ -68,7 +67,7 @@ V tomto příkladu je pro úlohu po spuštění vytvořena proměnná prostřed�
 </Startup>
 ```
 
-V následujícím příkladu vytvoří dávkový soubor **Startup. cmd** řádek "aktuální verze je 1.0.0.0" do souboru StartupLog. txt v adresáři určeném PROMĚNNOU prostředí TEMP. Na `EXIT /B 0` řádku se zaručí, že úloha po spuštění skončí s hodnotou **errorlevel** nula.
+V následujícím příkladu vytvoří dávkový soubor **Startup. cmd** řádek "aktuální verze je 1.0.0.0" do souboru StartupLog.txt v adresáři určeném PROMĚNNOU prostředí TEMP. Na `EXIT /B 0` řádku se zaručí, že úloha po spuštění skončí s hodnotou **errorlevel** nula.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,7 +75,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> V sadě Visual Studio by měla být vlastnost **Kopírovat do výstupního adresáře** pro spouštěcí dávkový soubor nastavená na hodnotu **vždy kopírovat** , aby bylo zajištěno, že váš spouštěcí dávkový soubor bude správně nasazen do projektu v Azure (**AppRoot\\bin** pro webové role a **AppRoot** pro role pracovního procesu).
+> V sadě Visual Studio by měla být vlastnost **Kopírovat do výstupního adresáře** pro spouštěcí dávkový soubor nastavená na hodnotu **vždy kopírovat** , aby bylo zajištěno, že váš spouštěcí dávkový soubor bude správně nasazen do projektu v Azure (**AppRoot \\ bin** pro webové role a **AppRoot** pro role pracovního procesu).
 > 
 > 
 
@@ -87,7 +86,7 @@ Následující popis popisuje atributy elementu **Task** v souboru [ServiceDefin
 
 * Příkaz s nepovinnými parametry příkazového řádku, které začínají úlohu po spuštění.
 * Často se jedná o název souboru dávkového souboru. cmd nebo. bat.
-* Úkol je relativní vzhledem ke složce AppRoot\\bin pro nasazení. Proměnné prostředí nejsou roztažené při určování cesty a souboru úlohy. Pokud je nutné rozšíření prostředí, můžete vytvořit malý skript. cmd, který bude volat úlohu po spuštění.
+* Úkol je relativní vzhledem ke složce AppRoot \\ bin pro nasazení. Proměnné prostředí nejsou roztažené při určování cesty a souboru úlohy. Pokud je nutné rozšíření prostředí, můžete vytvořit malý skript. cmd, který bude volat úlohu po spuštění.
 * Může se jednat o konzolovou aplikaci nebo dávkový soubor, který spouští [powershellový skript](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task).
 
 **ExecutionContext** – určuje úroveň oprávnění pro úlohu po spuštění. Úroveň oprávnění může být omezená nebo zvýšená:
@@ -113,7 +112,7 @@ Následující popis popisuje atributy elementu **Task** v souboru [ServiceDefin
   > 
   
     Aby se zajistilo, že dávkový soubor skončí **errorlevel** s hodnotou nula, spusťte příkaz `EXIT /B 0` na konci procesu dávkového souboru.
-* **pozadí**  
+* **background**  
   Úlohy jsou spouštěny asynchronně, paralelně s spuštěním role.
 * **zachovat**  
   Úlohy jsou spouštěny asynchronně, paralelně s spuštěním role. Klíčovým rozdílem mezi **popředí** a úlohou na **pozadí** je, že úloha na **popředí** brání roli v recyklaci nebo vypnutí, dokud se úloha neukončí. Úlohy na **pozadí** nemají toto omezení.

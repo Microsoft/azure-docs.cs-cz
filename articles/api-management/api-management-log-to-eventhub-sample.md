@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75442527"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorování rozhraní API pomocí API Management Azure, Event Hubs a Moesif
@@ -46,7 +45,7 @@ Event Hubs má možnost streamovat události do více skupin příjemců. To umo
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>Zásada pro posílání zpráv aplikace/http
 Centrum událostí přijímá data události jako jednoduchý řetězec. Obsah tohoto řetězce je až na vás. Aby bylo možné zabalit požadavek HTTP a poslat ho do Event Hubs, musíme řetězec naformátovat pomocí informací o požadavku nebo odpovědi. V takových situacích, pokud existuje existující formát, který můžeme znovu použít, nemusí být nutné psát náš kód pro analýzu. Zpočátku jsem považoval za použití [Har](http://www.softwareishard.com/blog/har-12-spec/) pro posílání požadavků a odpovědí HTTP. Tento formát je však optimalizován pro ukládání sekvence požadavků HTTP ve formátu založeném na formátu JSON. Obsahovala řadu povinných prvků, které přidávají zbytečné složitosti pro scénář předávání zprávy HTTP přes kabel.
 
-Alternativní možností bylo použít typ `application/http` média, jak je popsáno v tématu specifikace HTTP [RFC 7230](https://tools.ietf.org/html/rfc7230). Tento typ média používá přesný formát, který se používá ke skutečnému posílání zpráv HTTP prostřednictvím sítě, ale celá zpráva může být vložena do těla jiné žádosti HTTP. V našem případě budeme k odeslání do Event Hubs použít text jako naši zprávu. Pohodlně existuje analyzátor, který existuje v [Microsoft ASP.NET klientské knihovny webového rozhraní API 2,2](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) , které mohou analyzovat tento formát a převést jej na nativní `HttpRequestMessage` a `HttpResponseMessage` objekty.
+Alternativní možností bylo použít `application/http` typ média, jak je popsáno v tématu Specifikace http [RFC 7230](https://tools.ietf.org/html/rfc7230). Tento typ média používá přesný formát, který se používá ke skutečnému posílání zpráv HTTP prostřednictvím sítě, ale celá zpráva může být vložena do těla jiné žádosti HTTP. V našem případě budeme k odeslání do Event Hubs použít text jako naši zprávu. Pohodlně existuje analyzátor, který existuje v [Microsoft ASP.NET klientské knihovny webového rozhraní API 2,2](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) , které mohou analyzovat tento formát a převést jej na nativní `HttpRequestMessage` a `HttpResponseMessage` objekty.
 
 Abychom mohli vytvořit tuto zprávu, musíme využít výhod [výrazů zásad](/azure/api-management/api-management-policy-expressions) založených na jazyce C# v Azure API Management. Tady je zásada, která odešle zprávu požadavku HTTP do Azure Event Hubs.
 
@@ -83,7 +82,7 @@ Existuje několik konkrétních věcí, které se týkají tohoto výrazu zásad
 Aby bylo zajištěno doručení našich zpráv spotřebitelům v daném pořadí a využití funkcí distribuce zatížení oddílů, jsem se rozhodli odeslat zprávy požadavku HTTP do jednoho oddílu a zprávy s odpovědí HTTP do druhého oddílu. Tím se zajistí rovnoměrné rozložení zatížení a můžeme zaručit, že všechny požadavky budou využity v daném pořadí a všechny odpovědi budou využity v daném pořadí. Je možné, aby odpověď byla spotřebována před odpovídajícím požadavkem, ale stejně jako to není problém, protože máme jiný mechanismus pro korelaci požadavků na odpovědi a víme, že požadavky jsou vždy před odpověďmi.
 
 ### <a name="http-payloads"></a>Datové části HTTP
-Po vytvoření se `requestLine`zkontroluje, jestli by text požadavku měl být oříznutý. Text žádosti se zkrátí jenom na 1024. To se dá zvýšit, ale jednotlivé zprávy centra událostí jsou omezené na 256 KB, takže je možné, že některé tělo zprávy HTTP se nevejdou do jedné zprávy. Při protokolování a analýze významného množství informací se může odvozovat jenom z řádku požadavku HTTP a z hlavičky. Mnoho požadavků rozhraní API také vrací jenom malé body, takže ztráta hodnoty informací zkrácením velkých subjektů je poměrně minimální v porovnání s snížením nákladů na přenos, zpracování a ukládání, aby se zachoval obsah těla. Jednu poslední poznámku ke zpracování těla je, že musíme předat `true` `As<string>()` metodě, protože čteme obsah těla, ale měl by také jít o rozhraní back-end, aby bylo možné tělo přečíst. Předáním hodnoty true této metodě způsobíme, že tělo bude uloženo do vyrovnávací paměti tak, aby bylo možné ho přečíst podruhé. To je důležité vědět, pokud máte rozhraní API, které odesílá velké soubory nebo používá dlouhé cyklické dotazování. V těchto případech by bylo vhodné se vyhnout čtení těla.
+Po vytvoření se `requestLine` zkontroluje, jestli by text požadavku měl být oříznutý. Text žádosti se zkrátí jenom na 1024. To se dá zvýšit, ale jednotlivé zprávy centra událostí jsou omezené na 256 KB, takže je možné, že některé tělo zprávy HTTP se nevejdou do jedné zprávy. Při protokolování a analýze významného množství informací se může odvozovat jenom z řádku požadavku HTTP a z hlavičky. Mnoho požadavků rozhraní API také vrací jenom malé body, takže ztráta hodnoty informací zkrácením velkých subjektů je poměrně minimální v porovnání s snížením nákladů na přenos, zpracování a ukládání, aby se zachoval obsah těla. Jednu poslední poznámku ke zpracování těla je, že musíme předat `true` `As<string>()` metodě, protože čteme obsah těla, ale měl by také jít o rozhraní back-end, aby bylo možné tělo přečíst. Předáním hodnoty true této metodě způsobíme, že tělo bude uloženo do vyrovnávací paměti tak, aby bylo možné ho přečíst podruhé. To je důležité vědět, pokud máte rozhraní API, které odesílá velké soubory nebo používá dlouhé cyklické dotazování. V těchto případech by bylo vhodné se vyhnout čtení těla.
 
 ### <a name="http-headers"></a>Hlavičky protokolu HTTP
 Hlavičky HTTP se dají přenést do formátu zprávy ve formátu jednoduché dvojice klíč/hodnota. Rozhodli jsme se vykládat určitá pole citlivých na zabezpečení, aby nedocházelo k zbytečnému úniku informací o přihlašovacích údajích. Je pravděpodobné, že klíče rozhraní API a další přihlašovací údaje by se použily pro účely analýzy. Pokud chceme provést analýzu u uživatele a konkrétního produktu, který používají, můžeme to z `context` objektu získat a přidat ho do zprávy.
@@ -157,16 +156,16 @@ Zásada pro odeslání zprávy HTTP odpovědi vypadá podobně jako požadavek, 
 </policies>
 ```
 
-`set-variable` Zásada vytvoří hodnotu, která je přístupná ze `log-to-eventhub` zásad v `<inbound>` části i v `<outbound>` části.
+`set-variable`Zásada vytvoří hodnotu, která je přístupná ze `log-to-eventhub` zásad v `<inbound>` části i v `<outbound>` části.
 
 ## <a name="receiving-events-from-event-hubs"></a>Příjem událostí z Event Hubs
-Události z centra událostí Azure se přijímají pomocí [protokolu AMQP](https://www.amqp.org/). Tým Microsoft Service Bus provedl klientské knihovny, aby bylo možné snadněji spotřebovávat náročné události. Existují dva různé přístupy, jeden je *přímý spotřebitel* a druhý používá `EventProcessorHost` třídu. Příklady těchto dvou přístupů najdete v [Průvodci programováním v Event Hubs](../event-hubs/event-hubs-programming-guide.md). Krátká verze rozdílů je, poskytuje úplnou `Direct Consumer` kontrolu a `EventProcessorHost` provede některé pracovní postupy, které vám pomohou při zpracování těchto událostí.
+Události z centra událostí Azure se přijímají pomocí [protokolu AMQP](https://www.amqp.org/). Tým Microsoft Service Bus provedl klientské knihovny, aby bylo možné snadněji spotřebovávat náročné události. Existují dva různé přístupy, jeden je *přímý spotřebitel* a druhý používá `EventProcessorHost` třídu. Příklady těchto dvou přístupů najdete v [Průvodci programováním v Event Hubs](../event-hubs/event-hubs-programming-guide.md). Krátká verze rozdílů je, `Direct Consumer` poskytuje úplnou kontrolu a `EventProcessorHost` provede některé pracovní postupy, které vám pomohou při zpracování těchto událostí.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 V této ukázce používáme `EventProcessorHost` pro jednoduchost, ale to ale nemusí být pro tento konkrétní scénář nejlepší volbou. `EventProcessorHost`nemusíte mít jistotu, že se nemusíte starat o problémy s vlákny v rámci konkrétní třídy procesoru událostí. V našem scénáři ale jednoduše převádíme zprávu na jiný formát a projdeme ji do jiné služby pomocí asynchronní metody. Není potřeba aktualizovat sdílený stav, a proto nehrozí žádné riziko problémů s vlákny. Ve většině scénářů `EventProcessorHost` je pravděpodobně nejlepší volbou a ta je určitě jednodušší.
 
 ### <a name="ieventprocessor"></a>IEventProcessor
-Centrální koncept při použití `EventProcessorHost` je vytvořit implementaci `IEventProcessor` rozhraní, které obsahuje metodu. `ProcessEventAsync` Podstata této metody je znázorněna zde:
+Centrální koncept při použití `EventProcessorHost` je vytvořit implementaci `IEventProcessor` rozhraní, které obsahuje metodu `ProcessEventAsync` . Podstata této metody je znázorněna zde:
 
 ```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
@@ -193,7 +192,7 @@ async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumera
 Do metody se předává seznam objektů EventData a my se na tento seznam opakuje. Bajty každé metody jsou analyzovány do objektu HttpMessage a tento objekt je předán instanci IHttpMessageProcessor.
 
 ### <a name="httpmessage"></a>HttpMessage
-`HttpMessage` Instance obsahuje tři části dat:
+`HttpMessage`Instance obsahuje tři části dat:
 
 ```csharp
 public class HttpMessage
@@ -208,15 +207,15 @@ public class HttpMessage
 }
 ```
 
-`HttpMessage` Instance obsahuje `MessageId` identifikátor GUID, který nám umožňuje připojit požadavek HTTP k odpovídající odpovědi HTTP a logickou hodnotu, která identifikuje, zda objekt obsahuje instanci třídy zprávy HttpRequestMessage a HttpResponseMessage. Pomocí integrovaných tříd HTTP z `System.Net.Http`, jsem dokázal využít `application/http` analýzu kódu, který je součástí. `System.Net.Http.Formatting`  
+`HttpMessage`Instance obsahuje `MessageId` identifikátor GUID, který nám umožňuje připojit požadavek HTTP k odpovídající odpovědi HTTP a logickou hodnotu, která identifikuje, zda objekt obsahuje instanci třídy zprávy HttpRequestMessage a HttpResponseMessage. Pomocí integrovaných tříd HTTP z `System.Net.Http` , jsem dokázal využít `application/http` analýzu kódu, který je součástí `System.Net.Http.Formatting` .  
 
 ### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-`HttpMessage` Instance se pak přepošle do implementace `IHttpMessageProcessor`, což je rozhraní, které jsem vytvořil, aby se odložilo přijímání a interpretace události z centra událostí Azure a jejich skutečné zpracování.
+`HttpMessage`Instance se pak přepošle do implementace `IHttpMessageProcessor` , což je rozhraní, které jsem vytvořil, aby se odložilo přijímání a interpretace události z centra událostí Azure a jejich skutečné zpracování.
 
 ## <a name="forwarding-the-http-message"></a>Předávání zprávy HTTP
 V této ukázce jsme se rozhodli, že byste do služby [MOESIF API Analytics](https://www.moesif.com)mohli odeslat požadavek HTTP. Moesif je cloudová služba, která se specializuje na službu HTTP Analytics a ladění. Mají bezplatnou úroveň, takže se snadno pokusíte a můžeme zobrazit požadavky HTTP v toku v reálném čase prostřednictvím naší služby API Management.
 
-`IHttpMessageProcessor` Implementace vypadá takto.
+`IHttpMessageProcessor`Implementace vypadá takto.
 
 ```csharp
 public class MoesifHttpMessageProcessor : IHttpMessageProcessor
@@ -294,7 +293,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` Využívá [knihovnu rozhraní C# API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje vkládání dat událostí http do služby. Aby bylo možné odesílat data HTTP do rozhraní API Moesif collector, potřebujete účet a ID aplikace. ID aplikace Moesif získáte vytvořením účtu na [webu Moesif](https://www.moesif.com) a následným přechodem k -> _nastavení aplikace_v _pravém horním_rohu.
+Využívá `MoesifHttpMessageProcessor` [knihovnu rozhraní C# API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje vkládání dat událostí http do služby. Aby bylo možné odesílat data HTTP do rozhraní API Moesif collector, potřebujete účet a ID aplikace. ID aplikace Moesif získáte vytvořením účtu na [webu Moesif](https://www.moesif.com) a následným přechodem k nastavení aplikace v _pravém horním_rohu  ->  _App Setup_.
 
 ## <a name="complete-sample"></a>Kompletní ukázka
 [Zdrojový kód](https://github.com/dgilling/ApimEventProcessor) a testy pro ukázku jsou na GitHubu. Potřebujete [službu API Management](get-started-create-service-instance.md), [připojené centrum událostí](api-management-howto-log-event-hubs.md)a [účet úložiště](../storage/common/storage-create-storage-account.md) , abyste mohli ukázku spustit sami.   
