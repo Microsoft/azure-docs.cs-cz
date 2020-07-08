@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: ramakk
 ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797437"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
@@ -27,7 +26,7 @@ Plánování síťové architektury je klíčovým prvkem návrhu jakékoli apli
 
 Azure NetApp Files svazky jsou navržené tak, aby se obsahovaly v podsíti pro zvláštní účely označované jako [delegovaná podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) v rámci Azure Virtual Network. Proto můžete ke svazkům přistupovat přímo z vaší virtuální sítě, ze virtuální sítě partnerských uzlů ve stejné oblasti nebo z místní sítě přes bránu Virtual Network (ExpressRoute nebo VPN Gateway) podle potřeby. Podsíť je vyhrazená pro Azure NetApp Files a neexistuje žádné připojení k ostatním službám Azure nebo Internetu.
 
-## <a name="considerations"></a>Požadavky  
+## <a name="considerations"></a>Důležité informace  
 
 Při plánování Azure NetApp Files sítě byste měli pochopit několik důležitých informací.
 
@@ -57,7 +56,7 @@ Následující tabulka popisuje síťové topologie podporované nástrojem Azur
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Připojení ke svazku v místní síti VNet    |    Yes    |         |
 |    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Yes    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    No    |    Žádné    |
+|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    No    |    Žádná    |
 |    Připojení ke svazku přes ExpressRoute bránu    |    Yes    |         |
 |    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Yes    |        |
 |    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Yes    |         |
@@ -132,4 +131,4 @@ V topologii zobrazené výše je místní síť připojená k virtuální síti 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Delegování podsítě do Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+[Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

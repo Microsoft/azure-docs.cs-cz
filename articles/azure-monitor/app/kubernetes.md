@@ -6,17 +6,16 @@ author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
 ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797890"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Nula monitorování aplikace instrumentace pro aplikace hostované v Kubernetes s Istio – zastaralé
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně zastaralá a již nebude podporována po 1. srpnu 2020.
-> V současné době se monitorování bez kódu dá povolit jenom pro [Java prostřednictvím samostatného agenta](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). Pro jiné jazyky použijte sady SDK k monitorování aplikací na AKS: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)a [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+> V současné době se monitorování bez kódu dá povolit jenom pro [Java prostřednictvím samostatného agenta](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). Pro jiné jazyky použijte sady SDK k monitorování aplikací na AKS: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)a [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
 Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](../../azure-monitor/app/app-map.md) , můžete modelovat závislosti [Live Metrics Stream](../../azure-monitor/app/live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](../../azure-monitor/app/overview-dashboard.md), [průzkumníkem](../../azure-monitor/platform/metrics-getting-started.md)a [sešity](../../azure-monitor/platform/workbooks-overview.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
 

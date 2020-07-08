@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828878"
 ---
 # <a name="use-source-control-integration"></a>Použití integrace správy zdrojového kódu
@@ -22,7 +21,7 @@ ms.locfileid: "83828878"
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 
-* GitHub
+* GitHubu
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
@@ -62,7 +61,7 @@ Pomocí tohoto postupu můžete nakonfigurovat správu zdrojového kódu pomocí
     |Cesta ke složce     | Složka, která obsahuje Runbooky, které se mají synchronizovat, například **/runbooks**. Synchronizovány jsou pouze Runbooky v zadané složce. Rekurze není podporována.        |
     |Automatická synchronizace<sup>1</sup>     | Nastavení, které zapne nebo vypne automatickou synchronizaci při provedení potvrzení v úložišti správy zdrojů.        |
     |Publikování Runbooku     | Nastavení zapnuto, pokud jsou Runbooky automaticky publikovány po synchronizaci ze správy zdrojového kódu a mimo jiné.           |
-    |Popis     | Text určující další podrobnosti o správě zdrojového kódu.        |
+    |Description     | Text určující další podrobnosti o správě zdrojového kódu.        |
 
     <sup>1</sup> Chcete-li povolit automatickou synchronizaci při konfiguraci integrace správy zdrojového kódu pomocí Azure Repos, musíte být správcem projektu.
 
@@ -111,7 +110,7 @@ Správa zdrojového kódu vyžaduje minimální oprávnění pro PATs. Následuj
 
 Následující tabulka definuje minimální oprávnění PAT potřebná pro GitHub. Další informace o vytvoření PAT v GitHubu najdete v tématu [Vytvoření osobního přístupového tokenu pro příkazový řádek](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Rozsah  |Popis  |
+|Rozsah  |Description  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | Stav potvrzení přístupu         |

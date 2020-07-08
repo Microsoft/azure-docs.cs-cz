@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
 ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800603"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
@@ -40,7 +39,7 @@ Přehled programu integrovaných řešení najdete v části [video s přehledem
     * Integrace aplikací
     * Správa životního cyklu aplikací
     * Cloudová platforma
-    * Analýza dat
+    * Datové analýzy
     * Datové centrum
     * Datová platforma
     * DevOps
@@ -65,7 +64,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Cílové zákazníky
     * Pozice hodnoty
     * Ceny
-    * Licensing
+    * Licencování
     * podmínky a ujednání
     * Přístup k podpoře
     * Marketingové aktivity

@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828929"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Použití integrace správy zdrojového kódu v Azure Automation – starší verze
@@ -38,7 +37,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 
 2. Otevře se stránka Správa zdrojového kódu, kde můžete nakonfigurovat podrobnosti o svém účtu GitHubu. Níže je uvedený seznam parametrů ke konfiguraci:  
 
-   | **Ukazatele** | **Popis** |
+   | **Parametr** | **Popis** |
    |:--- |:--- |
    | Zvolit zdroj |Vyberte zdroj. V současné době se podporuje jenom **GitHub** . |
    | Autorizace |Kliknutím na tlačítko **autorizovat** udělíte Azure Automation přístup k úložišti GitHub. Pokud jste už přihlášení k účtu GitHub v jiném okně, použijí se přihlašovací údaje tohoto účtu. Po úspěšném ověření se na stránce v části **vlastnost autorizace**zobrazí uživatelské jméno GitHubu. |
@@ -60,15 +59,15 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 
    * Proměnná **Microsoft. Azure. Automation. SourceControl. Connection** obsahuje hodnoty připojovacího řetězce, jak je znázorněno níže.  
 
-     | **Ukazatele** | **Hodnota** |
+     | **Parametr** | **Hodnota** |
      |:--- |:--- |
      | `Name`  |Microsoft. Azure. Automation. SourceControl. Connection |
-     | `Type`  |String |
-     | `Value` |{"Větev": \< *Název vaší větve*>, "RunbookFolderPath": \< *cesta ke složce sady Runbook*>, "ProviderType": \< *má hodnotu 1 pro> GitHubu* , "úložiště": \< *název> úložiště* "username": \< *uživatelské jméno GitHubu*>} |
+     | `Type`  |Řetězec |
+     | `Value` |{"Větev": \<*Your branch name*> , "RunbookFolderPath": \<*Runbook folder path*> , "ProviderType": \<*has a value 1 for GitHub*> , "úložiště": \<*Name of your repository*> , "username": \<*Your GitHub user name*> } |
 
    * Proměnná **Microsoft. Azure. Automation. SourceControl. OAuthToken**obsahuje zabezpečenou šifrovanou hodnotu vašeho OAuthToken.  
 
-     |**Ukazatele**            |**Hodnota** |
+     |**Parametr**            |**Hodnota** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |

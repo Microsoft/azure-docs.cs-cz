@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83815991"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
@@ -133,7 +132,7 @@ Následuje příklad šablony, která vytváří fond virtuálních počítačů
 }
 ```
 
-Pokud se soubor šablony jmenoval jako _Pool-ffmpeg. JSON_, pak tuto šablonu vyvolejte následujícím způsobem:
+Pokud se soubor šablony jmenoval _pool-ffmpeg.jsv_, vyvolejte šablonu následujícím způsobem:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -152,7 +151,7 @@ Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` `nodeCoun
 }
 ```
 
-Pokud se soubor JSON s parametry jmenoval jako *Pool-Parameters. JSON*, pak šablonu vyvolejte takto:
+Pokud byl soubor JSON s parametry pojmenován *pool-parameters.jsv*, vyvolejte šablonu následujícím způsobem:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -242,7 +241,7 @@ Následuje příklad šablony, která vytvoří úlohu pro překódování video
 }
 ```
 
-Pokud má soubor šablony název _Job-ffmpeg. JSON_, pak tuto šablonu vyvolejte následujícím způsobem:
+Pokud se soubor šablony jmenoval _job-ffmpeg.jsv_, vyvolejte šablonu následujícím způsobem:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829779"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro účely navrácení služeb po obnovení
@@ -244,7 +243,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 
     ![ID více cest](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/s \< více>. **
+3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/ \<Retention disk's multipath id> **.
     
     ![Systém souborů](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +260,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
     
     Vyberte **Vložit** a začněte upravovat soubor. Vytvořte nový řádek a vložte následující text. Upravte na základě zvýrazněného IDENTIFIKÁTORu Multipath z předchozího příkazu více než na disku.
 
-    **/dev/Mapper/pro \< uchovávání informací – Multipath id>/mnt/retention ext4 rw 0 0**
+    **/dev/Mapper/ \<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
     Vyberte **ESC**a potom zadejte **: WQ** (Write and quit), čímž zavřete okno editoru.
 
@@ -274,7 +273,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 > [!NOTE]
 > Než nainstalujete hlavní cílový server, ověřte, že soubor **/etc/hosts** ve virtuálním počítači obsahuje položky, které mapují místní název hostitele na IP adresy, které jsou přidružené ke všem síťovým adaptérům.
 
-1. Zkopírujte heslo z **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** na konfiguračním serveru. Pak ho uložte ve stejném místním adresáři jako **heslo. txt** , a to spuštěním následujícího příkazu:
+1. Zkopírujte heslo z **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** na konfiguračním serveru. Pak ho uložte jako **passphrase.txt** do stejného místního adresáře spuštěním následujícího příkazu:
 
     `echo <passphrase> >passphrase.txt`
 

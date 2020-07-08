@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831569"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
@@ -61,7 +60,7 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
 
    1. Pokud ještě nemáte připojení ke službě Mapy Bing, budete požádáni o vytvoření připojení.
 
-      | Nastavení | Hodnota | Popis |
+      | Nastavení | Hodnota | Description |
       | ------- | ----- | ----------- |
       | **Název připojení** | PřipojeníMapyBing | Zadejte název připojení. | 
       | **Klíč rozhraní API** | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. | 
@@ -73,16 +72,16 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
 
       Další informace o těchto parametrech najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx).
 
-      | Nastavení | Hodnota | Popis |
+      | Nastavení | Hodnota | Description |
       | ------- | ----- | ----------- |
       | **Bod na trase 1** | <*Čína*> | Zadejte původ trasy. | 
       | **Bod na trase 2** | <*účelu*> | Zadejte cíl trasy. | 
-      | **Vyloučit** | Žádné | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Vyloučit** | Žádná | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizace** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše preference*> | Zadejte jednotku ke vzdálenosti pro výpočet trasy. V tomto příkladu se používá tato hodnota: km. | 
       | **Způsob cestování** | Autem | Zadejte režim cesty pro trasu. V tomto příkladu se používá tato hodnota "jízda". | 
-      | **Datum a čas přejezdu** | Žádné | Platí jenom pro režim přenosu. | 
-      | **Typ data přenosu – typ typu** | Žádné | Platí jenom pro režim přenosu. | 
+      | **Datum a čas přejezdu** | Žádná | Platí jenom pro režim přenosu. | 
+      | **Typ data přenosu – typ typu** | Žádná | Platí jenom pro režim přenosu. | 
       ||||  
 
 1. [Přidejte podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální doba trvání cesty s provozem přesáhne zadaný čas. 
@@ -386,7 +385,7 @@ Pokud pracujete v zobrazení kódu, můžete místo toho definovat strukturu obo
 },
 ```
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).

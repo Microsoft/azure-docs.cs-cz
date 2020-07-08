@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
 ms.openlocfilehash: f46b17fdffc870e6afc5f3b0711169db8270a540
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800442"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Centrum událostí jako obslužná rutina události pro Azure Event Grid události
@@ -30,7 +29,7 @@ Podívejte se na následující příklady:
 ## <a name="message-properties"></a>Vlastnosti zprávy
 Pokud používáte **centrum událostí** jako obslužnou rutinu události pro události z Event Grid, nastavte následující záhlaví zpráv: 
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | ------------- | ----------- | 
 | AEG-Subscription-Name | Název odběru události |
 | AEG – počet doručení | <p>Počet pokusů o provedení události.</p> <p>Příklad: "1"</p> |

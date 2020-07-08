@@ -6,10 +6,9 @@ ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830765"
 ---
 # <a name="query-update-management-logs"></a>Dotazování na protokoly Update Managementu
@@ -40,7 +39,7 @@ Vytvoří se záznam s typem `RequiredUpdate` , který představuje aktualizace 
 | TimeGenerated | Datum a čas vytvoření záznamu | 
 | Typ | *Aktualizace* | 
 | UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Jiné* |
-| UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité*<br> *Pokročilé*<br> *Nízká* |
+| UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Pokročilé*<br> *Nízká* |
 | UpdateTitle | Název aktualizace|
 
 ### <a name="query-update-record"></a>Záznam aktualizace dotazu

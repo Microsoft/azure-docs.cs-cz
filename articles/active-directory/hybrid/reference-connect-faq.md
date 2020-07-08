@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827144"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
@@ -52,7 +51,7 @@ Instalace Azure AD Connect se podporuje jenom v případě, že použijete Prův
 Od buildu únor 2016 je tento scénář podporován.
 
 **Otázka: umožňuje Agent stavu Azure Active Directory Domain Services (Azure služba AD DS) pracovat v jádru serveru?**  
-Yes. Po instalaci agenta můžete dokončit proces registrace pomocí následující rutiny prostředí PowerShell: 
+Ano. Po instalaci agenta můžete dokončit proces registrace pomocí následující rutiny prostředí PowerShell: 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
@@ -88,7 +87,7 @@ Tady je informační dokument, který představuje některé z osvědčených po
     - Méně složitosti
     - Je potřeba určit prostředky do SQL a vyhradit režii pro Azure AD Connect a operační systém.
 - Nepoužívat proxy server, pokud je to možné, pokud nemůžete proxy obejít, musíte zajistit, aby byla hodnota časového limitu větší než 5 minut.
-- Pokud je vyžadován proxy server, je nutné přidat proxy server do souboru Machine. config.
+- Pokud je vyžadován proxy server, je nutné přidat proxy server do souboru machine.config
 - Mějte na paměti, že místní úlohy a údržba SQL a jak budou mít dopad na Azure AD Connect – zejména opětovné indexování
 - Zajistěte, aby se služba DNS mohla přeložit externě.
 - Zajistěte, aby byly [specifikace serveru](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) na doporučení bez ohledu na to, jestli používáte fyzické nebo virtuální servery.
@@ -117,7 +116,7 @@ Tady je informační dokument, který představuje některé z osvědčených po
 - Udržování konzistence verzí mezi Azure AD Connect servery co nejvíce 
 
 **Otázka: můžu Azure AD Connect vytvořit účet konektoru Azure AD na počítači pracovní skupiny?**
-No.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
+Ne.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
 
 ## <a name="network"></a>Síť
 **Otázka: Mám bránu firewall, síťové zařízení nebo něco jiného, co omezuje dobu, po kterou mohou připojení zůstat otevřená v síti. Co má prahová hodnota časového limitu na straně klienta při použití Azure AD Connect?**  
@@ -147,10 +146,10 @@ Postupujte podle pokynů uvedených v článku [obnovení certifikátů](how-to-
 
 ## <a name="environment"></a>Prostředí
 **Otázka: je podporováno přejmenování serveru po instalaci nástroje Azure AD Connect?**  
-No. Změna názvu serveru vykresluje synchronizační modul se nemůže připojit k instanci databáze SQL a službu nelze spustit.
+Ne. Změna názvu serveru vykresluje synchronizační modul se nemůže připojit k instanci databáze SQL a službu nelze spustit.
 
 **Otázka: jsou podporovaná pravidla synchronizace služby NGC (Next Generation Cryptographic) podporovaná na počítači s podporou standardu FIPS?**  
-No.  Není to podporováno.
+Ne.  Není to podporováno.
 
 **Otázka. Pokud je v Azure Portal zakázané synchronizované zařízení (například: HAADJ), proč je znovu povolená?**<br>
 Synchronizovaná zařízení můžou být vytvořená nebo spravovaná místně. Pokud je synchronizované zařízení povolené místně, může se v Azure Portal znovu povolit, i když ho správce předtím zakázal. Pokud chcete zakázat synchronizované zařízení, použijte k zakázání účtu počítače místní službu Active Directory.
@@ -178,7 +177,7 @@ Ne, ručně nastavovat atribut ImmutableId u stávající skupiny Azure AD nebo 
 S výjimkou rutin, které jsou popsány v tomto webu, jiné rutiny prostředí PowerShell nalezené v Azure AD Connect nejsou podporovány pro použití zákazníkem.
 
 **Otázka: je možné použít možnost Import serveru/import serveru, která se nachází v Synchronization Service Manager pro přesunutí konfigurace mezi servery?**  
-No. Tato možnost nenačte všechna nastavení konfigurace a neměla by se používat. Místo toho použijte průvodce k vytvoření základní konfigurace na druhém serveru a pomocí editoru pravidla synchronizace vygenerujte skripty PowerShellu pro přesunutí libovolného vlastního pravidla mezi servery. Další informace najdete v tématu věnovaném [migraci](how-to-upgrade-previous-version.md#swing-migration).
+Ne. Tato možnost nenačte všechna nastavení konfigurace a neměla by se používat. Místo toho použijte průvodce k vytvoření základní konfigurace na druhém serveru a pomocí editoru pravidla synchronizace vygenerujte skripty PowerShellu pro přesunutí libovolného vlastního pravidla mezi servery. Další informace najdete v tématu věnovaném [migraci](how-to-upgrade-previous-version.md#swing-migration).
 
 **Otázka: je možné ukládat hesla do mezipaměti pro přihlašovací stránku Azure a může být ukládání do mezipaměti znemožněno, protože obsahuje element vstupu hesla s atributem *AutoComplete = "false"* ?**  
 V současné době není podporována změna atributů HTML pole **heslo** , včetně značky automatického dokončování. V současné době pracujeme na funkci, která umožňuje vlastní JavaScript, který umožňuje přidat libovolný atribut do pole **heslo** .
@@ -187,7 +186,7 @@ V současné době není podporována změna atributů HTML pole **heslo** , vč
 V současné době není podporována změna atributů HTML pole pro zadání **hesla** , včetně značky automatického dokončování. V současné době pracujeme na funkci, která umožňuje vlastní JavaScript, který umožňuje přidat libovolný atribut do pole **heslo** .
 
 **Otázka: existuje způsob, jak zabránit souběžným relacím?**  
-No.
+Ne.
 
 ## <a name="auto-upgrade"></a>Automatický upgrade
 
@@ -203,7 +202,7 @@ Minulý rok jsme vydali verzi Azure AD Connect, že za určitých okolností mů
 
 Pokud chcete spustit skript PowerShellu, [Stáhněte si skript](https://aka.ms/repairaadconnect) a spusťte ho na serveru Azure AD Connect v okně pro správu prostředí PowerShell. Pokud se chcete dozvědět, jak skript spustit, podívejte se na [Toto krátké video](https://aka.ms/repairaadcau).
 
-Chcete-li provést ruční upgrade, je nutné stáhnout a spustit nejnovější verzi souboru AADConnect. msi.
+Chcete-li provést ruční upgrade, je nutné stáhnout a spustit nejnovější verzi AADConnect.msi souboru.
  
 -  Pokud je aktuální verze starší než 1.1.750.0, [Stáhněte a upgradujte na nejnovější verzi](https://www.microsoft.com/download/details.aspx?id=47594).
 - Pokud je vaše verze Azure AD Connect 1.1.750.0 nebo novější, nevyžaduje se žádná další akce. Už používáte verzi, která obsahuje opravu automatického upgradu. 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826277"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Přidání skriptu VMM do plánu obnovení
@@ -60,9 +59,9 @@ V plánech obnovení můžete použít skripty prostředí PowerShell. Aby bylo 
 
 Pokud máte zdrojovou lokalitu VMM, můžete vytvořit skript na serveru VMM. Pak do svého plánu obnovení zahrňte skript.
 
-1. Ve sdílené složce knihovny vytvořte novou složku. Například \< název serveru VMM> \msscvmmlibrary\rpscripts. Umístěte složku na zdrojový a cílový server VMM.
+1. Ve sdílené složce knihovny vytvořte novou složku. Například \<VMM server name> \MSSCVMMLibrary\RPScripts. Umístěte složku na zdrojový a cílový server VMM.
 1. Vytvořte skript. Například název skriptu RPScript. Ověřte, že skript funguje podle očekávání.
-1. Umístěte skript do \< názvu serveru vmm> složce \msscvmmlibrary na zdrojovém a cílovém serveru VMM.
+1. Umístěte skript do \<VMM server name> složky \MSSCVMMLibrary na zdrojovém a cílovém serveru VMM.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Přidání skriptu do plánu obnovení
 
@@ -71,7 +70,7 @@ Po přidání virtuálních počítačů nebo skupin replikace do plánu obnoven
 1. Otevřete plán obnovení.
 1. V seznamu **Krok** vyberte položku. Pak vyberte buď **skript** , nebo **Ruční akce**.
 1. Určete, zda se má přidat skript nebo akce před nebo za vybranou položkou. Chcete-li přesunout pozici skriptu nahoru nebo **dolů, vyberte tlačítko** nahoru **a dolů** .
-1. Pokud přidáte skript VMM, vyberte **převzetí služeb při selhání do skriptu VMM**. Do pole **cesta ke skriptu**zadejte relativní cestu ke sdílené složce. Zadejte například **\RPScripts\RPScript.ps1**.
+1. Pokud přidáte skript VMM, vyberte **převzetí služeb při selhání do skriptu VMM**. Do pole **cesta ke skriptu**zadejte relativní cestu ke sdílené složce. Zadejte například **\RPScripts\RPScript.PS1**.
 1. Pokud přidáte Azure Automation Runbook, zadejte účet Automation, ve kterém se sada Runbook nachází. Pak vyberte skript Azure Runbook, který chcete použít.
 1. Chcete-li zajistit, že skript funguje podle očekávání, proveďte test převzetí služeb při selhání plánu obnovení.
 

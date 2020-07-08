@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 05/21/2020
 ms.author: radeltch
 ms.openlocfilehash: ed53b77587e307926689b2c20d7223212f3394d4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800261"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
@@ -108,7 +107,7 @@ K nasazení šablony použijte následující postup:
     * **Velikost systému SAP**: zadejte počet SAP, který bude nový systém poskytovat. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
     * **Dostupnost systému**: vyberte **ha**.
     * **Uživatelské jméno správce, heslo správce nebo klíč SSH**: vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
-    * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako ** \< ID předplatného/Subscriptions/>/ResourceGroups/název \< skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název \< virtuální sítě>/subnets/ \< název podsítě>**. Pokud chcete vytvořit novou virtuální síť, ponechejte tuto položku prázdnou.
+    * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **. Pokud chcete vytvořit novou virtuální síť, ponechejte tuto položku prázdnou.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
@@ -139,7 +138,7 @@ K nasazení šablony použijte následující postup:
       1. Vyberte **Přidat virtuální počítač**.
       1. Vyberte * * virtuální počítač * *.
       1. Vyberte virtuální počítače SAP HANA clusteru a jejich IP adresy.
-      1. Vyberte **Přidat**.
+      1. Vyberte možnost **Přidat**.
 
    1. Potom vytvořte sondu stavu:
 

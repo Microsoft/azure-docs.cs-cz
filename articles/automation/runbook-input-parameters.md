@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830034"
 ---
 # <a name="configure-runbook-input-parameters"></a>Vstupní parametry runbooku
@@ -277,7 +276,7 @@ V této části se používá příklad, ve kterém skript PowerShellu volá rut
 
 ### <a name="create-the-json-file"></a>Vytvoření souboru JSON
 
-Do textového souboru zadejte následující kód a uložte ho jako soubor **test. JSON** někam do místního počítače.
+Zadejte následující kód do textového souboru a uložte ho jako **test.jsna** někde na místním počítači.
 
 ```json
 {

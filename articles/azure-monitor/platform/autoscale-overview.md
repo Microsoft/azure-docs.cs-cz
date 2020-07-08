@@ -5,10 +5,9 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828980"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Přehled automatického škálování v Microsoft Azure
@@ -38,7 +37,7 @@ Služba Virtual Machine Scale Sets používá data telemetrie z agentů Azure Di
 ## <a name="custom-metrics"></a>Vlastní metriky
 Můžete také využít vlastní metriky, které mohou vaše aplikace vysílat. Pokud jste nakonfigurovali své aplikace pro posílání metrik pro Application Insights můžete tyto metriky využít k rozhodování o tom, jestli se má škálovat nebo ne.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Čas
 Pravidla založená na plánu jsou založená na standardu UTC. Při nastavování pravidel musíte nastavit časové pásmo správně.  
 
 ## <a name="rules"></a>Pravidla
@@ -89,7 +88,7 @@ Naopak svislé škálování se liší. Udržuje stejný počet virtuálních po
 ## <a name="methods-of-access"></a>Metody přístupu
 Automatické škálování můžete nastavit přes
 
-* [portál Azure](autoscale-get-started.md)
+* [Azure Portal](autoscale-get-started.md)
 * [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Rozhraní příkazového řádku (CLI) pro různé platformy](../samples/cli-samples.md#autoscale)
 * [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)

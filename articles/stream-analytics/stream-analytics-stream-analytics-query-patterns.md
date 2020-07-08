@@ -9,10 +9,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83832958"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
@@ -35,14 +34,14 @@ Pomocí jednoduchého předávacího dotazu můžete zkopírovat data vstupního
 
 **Vstup**:
 
-| Značka | Time | Hmotnost |
+| Značka | Čas | Hmotnost |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Výstup**:
 
-| Značka | Time | Hmotnost |
+| Značka | Čas | Hmotnost |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
@@ -60,7 +59,7 @@ Dotaz **Select** * vyprojektech všechna pole příchozí události a odesílá 
 
 **Vstup**:
 
-| Značka | Time | Hmotnost |
+| Značka | Čas | Hmotnost |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -68,7 +67,7 @@ Dotaz **Select** * vyprojektech všechna pole příchozí události a odesílá 
 
 **Výstup**:
 
-| Značka | Time |
+| Značka | Čas |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -88,7 +87,7 @@ Chcete-li vypočítat informace v časovém intervalu, lze data agregovat dohrom
 
 **Vstup**:
 
-| Značka | Time | Hmotnost |
+| Značka | Čas | Hmotnost |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -126,7 +125,7 @@ Data je možné přetypovat v reálném čase pomocí metody **cast** . Napřík
 
 **Vstup**:
 
-| Značka | Time | Hmotnost |
+| Značka | Čas | Hmotnost |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
@@ -160,7 +159,7 @@ Další informace o [funkcích pro převod dat](/stream-analytics-query/conversi
 
 **Vstup**:
 
-| Značka | License_plate | Time |
+| Značka | License_plate | Čas |
 | --- | --- | --- |
 | Make1 |ABC – 123 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -168,7 +167,7 @@ Další informace o [funkcích pro převod dat](/stream-analytics-query/conversi
 
 **Výstup**:
 
-| Značka | License_plate | Time |
+| Značka | License_plate | Čas |
 | --- | --- | --- |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC – 369 |2015-01-01T00:00:03.0000000 Z |
@@ -192,7 +191,7 @@ Příkazy **case** můžou poskytovat různé výpočty pro různá pole na zák
 
 **Vstup**:
 
-| Značka | Time |
+| Značka | Čas |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
@@ -200,7 +199,7 @@ Příkazy **case** můžou poskytovat různé výpočty pro různá pole na zák
 
 **Výstup**:
 
-| Značka |Dispatch_to_lane | Time |
+| Značka |Dispatch_to_lane | Čas |
 | --- | --- | --- |
 | Make1 |Určitého |2015-01-01T00:00:01.0000000 Z |
 | Make2 |B |2015-01-01T00:00:02.0000000 Z |
@@ -229,7 +228,7 @@ Pro výstup dat do různých výstupních umyvadel lze použít vícenásobné p
 
 **Vstup**:
 
-| Značka | Time |
+| Značka | Čas |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -239,7 +238,7 @@ Pro výstup dat do různých výstupních umyvadel lze použít vícenásobné p
 
 **Výstupní ArchiveOutput**:
 
-| Značka | Time |
+| Značka | Čas |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -249,7 +248,7 @@ Pro výstup dat do různých výstupních umyvadel lze použít vícenásobné p
 
 **Výstupní AlertOutput**:
 
-| Značka | Time | Počet |
+| Značka | Čas | Počet |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -314,7 +313,7 @@ Další informace najdete [ **v tématu s klauzulí with** ](/stream-analytics-q
 
 **Vstup**:
 
-| Značka | Time |
+| Značka | Čas |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -324,7 +323,7 @@ Další informace najdete [ **v tématu s klauzulí with** ](/stream-analytics-q
 
 **Výkonem**
 
-| Count_make | Time |
+| Count_make | Čas |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
@@ -349,14 +348,14 @@ Funkci **Lag** lze použít k zobrazení minulých událostí v časovém interv
 
 **Vstup**:
 
-| Značka | Time |
+| Značka | Čas |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
 **Výstup**:
 
-| Značka | Time |
+| Značka | Čas |
 | --- | --- |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
@@ -382,7 +381,7 @@ Možnost- **First** se dá použít k načtení první události v časovém int
 
 **Vstup**:
 
-| License_plate | Značka | Time |
+| License_plate | Značka | Čas |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015 – 07 – 27T00:02:17.0000000 Z |
@@ -394,7 +393,7 @@ Možnost- **First** se dá použít k načtení první události v časovém int
 
 **Výstup**:
 
-| License_plate | Značka | Time |
+| License_plate | Značka | Čas |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
 | QYF 9358 |Make1 |2015 – 07 – 27T00:12:02.0000000 Z |
@@ -416,7 +415,7 @@ WHERE
 
 **Výstup**:
 
-| License_plate | Značka | Time |
+| License_plate | Značka | Čas |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015 – 07 – 27T00:02:17.0000000 Z |
@@ -445,7 +444,7 @@ Když systém spotřebovává události v reálném čase, není k dispozici ž�
 
 **Vstup**:
 
-| License_plate | Značka | Time |
+| License_plate | Značka | Čas |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015 – 07 – 27T00:02:17.0000000 Z |
@@ -457,7 +456,7 @@ Když systém spotřebovává události v reálném čase, není k dispozici ž�
 
 **Výstup**:
 
-| License_plate | Značka | Time |
+| License_plate | Značka | Čas |
 | --- | --- | --- |
 | VFE 1616 |Make2 |2015 – 07 – 27T00:09:31.0000000 Z |
 | MDR 6128 |Make4 |2015 – 07 – 27T00:13:45.0000000 Z |
@@ -499,7 +498,7 @@ Korelace událostí ve stejném datovém proudu se dá udělat tak, že si prohl
 
 **Vstup**:
 
-| Značka | License_plate | Time |
+| Značka | License_plate | Čas |
 | --- | --- | --- |
 | Make1 |ABC – 123 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -508,7 +507,7 @@ Korelace událostí ve stejném datovém proudu se dá udělat tak, že si prohl
 
 **Výstup**:
 
-| Značka | Time | Current_car_license_plate | First_car_license_plate | First_car_time |
+| Značka | Čas | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
 | Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC – 123 |2015-01-01T00:00:01.0000000 Z |
 
@@ -537,7 +536,7 @@ Dobu trvání události lze vypočítat vyhledáním poslední události spušt�
 
 **Vstup**:  
 
-| Uživatel | Funkce | Událost | Time |
+| Uživatel | Funkce | Událost | Čas |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
@@ -571,7 +570,7 @@ Pro podmínky, které jsou v rozsahu více událostmi, lze funkci **Lag** použ�
 
 **Vstup**:
 
-| Značka | Time | Hmotnost |
+| Značka | Čas | Hmotnost |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:02.0000000 Z |250 000 |
@@ -618,7 +617,7 @@ V případě nepravidelných nebo chybějících událostí lze výstup pravidel
 
 **Vstup**:
 
-| Time | Hodnota |
+| Čas | Hodnota |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -665,7 +664,7 @@ Například hodiny zařízení pro *TollID* 2 jsou pět sekund za *TollID* 1 a h
 
 **Vstup**:
 
-| LicensePlate | Značka | Time | TollID |
+| LicensePlate | Značka | Čas | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Make1 |2015 – 07 – 27T00:00:01.0000000 Z | 1 |
 | YHN 6970 |Make2 |2015 – 07 – 27T00:00:05.0000000 Z | 1 |
@@ -708,7 +707,7 @@ Při provádění operace, jako je výpočet průměru pro události v daném č
 
 **Vstup**:  
 
-| DeviceId | Time | Atribut | Hodnota |
+| DeviceId | Čas | Atribut | Hodnota |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000 Z |Teplota |50 |
 | 1 |2018-07-27T00:00:01.0000000 Z |Teplota |50 |
@@ -759,7 +758,7 @@ Uživatel například komunikuje s webovou stránkou, kde je zaznamenán počet 
 
 **Vstup**:
 
-| User_id | Time | URL |
+| User_id | Čas | URL |
 | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | "www.example.com/a.html" |
 | 0 | 2017-01-26T00:00:20.0000000 Z | "www.example.com/b.html" |
@@ -845,7 +844,7 @@ Například v reálném čase je sledování sítě ATM v reálném čase k selh
 
 **Vstup**:
 
-| ATM_id | Operation_id | Return_Code | Time |
+| ATM_id | Operation_id | Return_Code | Čas |
 | --- | --- | --- | --- |
 | 1 | "Zadávání kódu PIN" | Nástup | 2017-01-26T00:10:00.0000000 Z |
 | 2 | "Otevření měnové přihrádky" | Nástup | 2017-01-26T00:10:07.0000000 Z |
@@ -892,7 +891,7 @@ Výroba by mohla sledovat umístění těchto počítačů a zobrazovat výstrah
 
 **Vstup**:
 
-| Equipment_id | Equipment_current_location | Time |
+| Equipment_id | Equipment_current_location | Čas |
 | --- | --- | --- |
 | 1 | "POINT (-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000 Z |
 | 1 | "POINT (-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000 Z |
@@ -907,7 +906,7 @@ Výroba by mohla sledovat umístění těchto počítačů a zobrazovat výstrah
 
 **Výstup**:
 
-| Equipment_id | Equipment_alert_location | Time |
+| Equipment_id | Equipment_alert_location | Čas |
 | --- | --- | --- |
 | 1 | "POINT (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 

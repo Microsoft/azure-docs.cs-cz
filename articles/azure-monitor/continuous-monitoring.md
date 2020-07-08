@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797602"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
@@ -28,7 +27,7 @@ Aby bylo možné získat pozor v celém prostředí, je nutné povolit monitorov
 - [Azure DevOps Projects](../devops-project/overview.md) poskytují zjednodušené prostředí s existujícím kódem a úložištěm Git nebo si můžete vybrat některou z ukázkových aplikací a vytvořit tak kanál průběžné integrace (CI) a průběžného doručování (CD) do Azure.
 - [Nepřetržité monitorování kanálu vydání DevOps](../azure-monitor/app/continuous-monitoring.md) vám umožní bránu nebo vrátit zpět nasazení na základě dat monitorování.
 - [Monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md) umožňuje instrumentovat živou aplikaci .NET ve Windows pomocí Azure Application Insights, aniž byste museli upravovat nebo znovu nasazovat kód.
-- Máte-li přístup k kódu pro aplikaci, pak povolte úplné monitorování pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md) instalací sady Azure monitor Application Insights SDK pro [rozhraní .NET](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node. js](../azure-monitor/learn/nodejs-quick-start.md)nebo [jakékoli jiné programovací jazyky](../azure-monitor/app/platforms.md). Díky tomu můžete zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaši firmu.
+- Máte-li přístup k kódu pro vaši aplikaci, povolte úplné monitorování pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md) instalací sady Azure monitor Application Insights SDK pro [rozhraní .NET](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md)nebo [jakékoli jiné programovací jazyky](../azure-monitor/app/platforms.md). Díky tomu můžete zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaši firmu.
 
 
 

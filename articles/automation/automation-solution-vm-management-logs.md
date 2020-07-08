@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827552"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Protokoly dotazů z funkce Start/Stop VMs during off-hours
@@ -35,7 +34,7 @@ Azure Automation přepošle dva typy záznamů do propojeného pracovního prost
 |SourceSystem | Určuje zdrojový systém pro odeslaná data. Pro automatizaci je hodnota OpsManager|
 |StreamType | Určuje typ události. Možné hodnoty:<br>- Podrobné<br>- Výstup<br>- Chyba<br>- Varování|
 |SubscriptionId | Určuje ID předplatného úlohy.
-|Time | Datum a čas provedení úlohy runbooku.|
+|Čas | Datum a čas provedení úlohy runbooku.|
 
 ## <a name="job-streams"></a>Datové proudy úlohy
 
@@ -54,7 +53,7 @@ Azure Automation přepošle dva typy záznamů do propojeného pracovního prost
 |RunbookName | Název runbooku.|
 |SourceSystem | Určuje zdrojový systém pro odeslaná data. Pro automatizaci je hodnota OpsManager.|
 |StreamType | Typ datového proudu úlohy. Možné hodnoty:<br>– Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné|
-|Time | Datum a čas provedení úlohy runbooku.|
+|Čas | Datum a čas provedení úlohy runbooku.|
 
 Když provedete jakékoli prohledávání protokolů, které vrátí záznamy kategorie **JobLogs** nebo **JobStreams**, můžete vybrat zobrazení **JobLogs** nebo **JobStreams** , které zobrazí sadu dlaždic shrnujících aktualizace vrácené hledáním.
 
@@ -62,7 +61,7 @@ Když provedete jakékoli prohledávání protokolů, které vrátí záznamy ka
 
 V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy úloh shromážděné nástrojem Start/Stop VMs during off-hours.
 
-|Dotaz | Popis|
+|Dotaz | Description|
 |----------|----------|
 |Najde úlohy pro Runbook ScheduledStartStop_Parent, které byly úspěšně dokončeny. | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Najde úlohy pro Runbook ScheduledStartStop_Parent, které nebyly úspěšně dokončeny. | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

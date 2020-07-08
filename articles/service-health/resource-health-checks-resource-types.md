@@ -4,10 +4,9 @@ description: Podporované typy prostředků prostřednictvím služby Azure Reso
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83816094"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
@@ -23,7 +22,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Je služba API Management zapnutá a spuštěná?</li></ul>|
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |Provedené kontroly|
 |---|
 |<ul><li>Je účet Batch zapnutý a spuštěný?</li><li>Překročila se kvóta fondu pro tento účet Batch?</li></ul>|
@@ -104,7 +103,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Je centrum IoT v provozu?</li></ul>|
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Provedené kontroly|
 |---|
 |<ul><li>Nějaké žádosti o databázi nebo kolekci nesloužily kvůli nedostupnosti Azure Cosmos DB služby?</li><li>Nedošlo k nedoručení požadavků na dokument kvůli nedostupnosti Azure Cosmos DB služby?</li></ul>|

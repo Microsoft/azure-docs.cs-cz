@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827960"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžícího na Windows Serveru
@@ -55,9 +54,9 @@ Cluster vytvořený v tomto článku je nezabezpečený.  Každý se může anon
 ### <a name="step-1-create-the-cluster"></a>Krok 1: Vytvoření clusteru
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Scénář A: vytvoření nezabezpečeného místního vývojového clusteru
-Service Fabric lze nasadit do vývojového clusteru v jednom počítači pomocí souboru *ClusterConfig. DevCluster. JSON* , který je součástí [ukázek](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Service Fabric lze nasadit do vývojového clusteru v jednom počítači pomocí *ClusterConfig.Unsecure.DevCluster.jsv* souboru zahrnutém v [ukázkách](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
-Rozbalení samostatného balíčku do počítače, zkopírujte Ukázkový konfigurační soubor do místního počítače a potom spusťte skript *CreateServiceFabricCluster. ps1* prostřednictvím relace prostředí PowerShell správce ze samostatné složky balíčku.
+Rozbalení samostatného balíčku do počítače, zkopírujte Ukázkový konfigurační soubor do místního počítače a potom spusťte skript *CreateServiceFabricCluster.ps1* pomocí relace PowerShellu Správce ze samostatné složky balíčku.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
@@ -97,7 +96,7 @@ Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslu�
     Passed                     : True
     ```
 
-2. Vytvoření clusteru: spuštěním skriptu *CreateServiceFabricCluster. ps1* nasaďte cluster Service Fabric v každém počítači v konfiguraci. 
+2. Vytvoření clusteru: spuštěním skriptu *CreateServiceFabricCluster.ps1* nasaďte Service Fabric cluster napříč jednotlivými počítači v konfiguraci. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -115,7 +114,7 @@ Balíček modulu runtime lze stáhnout samostatně, z jiného počítače připo
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-*.\ClusterConfig.JSON* a *.\MicrosoftAzureServiceFabric.cab* jsou cesty ke konfiguraci clusteru a souboru runtime. cab v uvedeném pořadí.
+*.\ClusterConfig.jsv* a *.\MicrosoftAzureServiceFabric.cab* jsou cesty ke konfiguraci clusteru a souboru runtime. cab v uvedeném pořadí.
 
 ### <a name="step-2-connect-to-the-cluster"></a>Krok 2: připojení ke clusteru
 Připojte se ke clusteru a ověřte, jestli je cluster spuštěný a dostupný. Modul PowerShell ServiceFabric se instaluje spolu s modulem runtime.  Ke clusteru se můžete připojit z jednoho z uzlů clusteru nebo ze vzdáleného počítače s modulem runtime Service Fabric.  Rutina [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) vytvoří připojení ke clusteru.

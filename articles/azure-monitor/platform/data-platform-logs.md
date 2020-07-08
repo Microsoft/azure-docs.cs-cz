@@ -10,10 +10,9 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: dae72454cd9c0b3cb7370873619595840b770ed3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83799980"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
@@ -74,14 +73,14 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 
 ### <a name="azure-tenant-and-subscription"></a>Tenant a předplatné Azure
 
-| Data | Popis |
+| Data | Description |
 |:---|:---|
 | Protokoly auditu Azure Active Directory | Nakonfigurováno prostřednictvím nastavení diagnostiky pro každý adresář. Viz [integrace protokolů služby Azure AD s protokoly Azure monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).  |
 | Protokoly aktivit | Ukládá se samostatně ve výchozím nastavení a dá se použít pro výstrahy téměř v reálném čase. Nainstalujte řešení aktivity Log Analytics pro zápis do pracovního prostoru Log Analytics. Viz [shromáždění a analýza protokolů aktivit Azure v Log Analytics](activity-log-collect.md). |
 
 ### <a name="azure-resources"></a>Prostředky Azure
 
-| Data | Popis |
+| Data | Description |
 |:---|:---|
 | Diagnostika prostředků | Nakonfigurujte nastavení diagnostiky pro zápis do diagnostických dat, včetně metriky do pracovního prostoru Log Analytics. Další Log Analytics najdete v tématu [streamování protokolů prostředků Azure](resource-logs-collect-workspace.md). |
 | Řešení monitorování | Řešení monitorování zapisují data, která shromažďuje do svého Log Analytics pracovního prostoru. Seznam řešení najdete v tématu [Podrobnosti shromažďování dat pro řešení pro správu v Azure](../insights/solutions-inventory.md) . Podrobnosti o instalaci a používání řešení najdete v tématu [monitorování řešení v Azure monitor](../insights/solutions.md) . |
@@ -90,7 +89,7 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 
 ### <a name="virtual-machines"></a>Virtual Machines
 
-| Data | Popis |
+| Data | Description |
 |:---|:---|
 |  Zdroje dat agenta | Zdroje dat shromažďované z agentů [Windows](agent-windows.md) a [Linux](../learn/quick-collect-linux-computer.md) zahrnují události, údaje o výkonu a vlastní protokoly. Seznam zdrojů dat a podrobnosti o konfiguraci najdete [v tématu zdroje dat agenta v Azure monitor](data-sources.md) . |
 | Řešení monitorování | Řešení monitorování zapisují data, která shromažďují z agentů do svého pracovního prostoru Log Analytics. Seznam řešení najdete v tématu [Podrobnosti shromažďování dat pro řešení pro správu v Azure](../insights/solutions-inventory.md) . Podrobnosti o instalaci a používání řešení najdete v tématu [monitorování řešení v Azure monitor](../insights/solutions.md) . |
@@ -99,7 +98,7 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 
 ### <a name="applications"></a>Aplikace
 
-| Data | Popis |
+| Data | Description |
 |:---|:---|
 | Žádosti a výjimky | Podrobná data o požadavcích aplikace a výjimkách jsou v tabulkách _požadavků_, _pageViews_a _Exceptions_ . Volání [externích komponent](../app/asp-net-dependencies.md) jsou v tabulce _závislosti_ . |
 | Využití a výkon | Výkon aplikace je k dispozici v tabulkách _požadavky_, _browserTimings_ a _čítače výkonu_ . Data pro [vlastní metriky](../app/api-custom-events-metrics.md#trackevent) jsou v tabulce _customMetrics_ .|
@@ -108,21 +107,21 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 
 ### <a name="insights"></a>Insights
 
-| Data | Popis |
+| Data | Description |
 |:---|:---|
 | Azure Monitor pro kontejnery | Data inventáře a výkonu shromážděná [Azure monitor pro kontejnery](../insights/container-insights-overview.md). Seznam tabulek najdete v tématu [Podrobnosti o kolekci dat kontejneru](../insights/container-insights-log-search.md#container-records) . |
 | Azure Monitor pro virtuální počítače | Data o mapě a výkonu shromažďovaná nástrojem [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md). Podrobnosti o dotazování na tato data najdete v tématu [Postup dotazování protokolů z Azure monitor pro virtuální počítače](../insights/vminsights-log-search.md) . |
 
 ### <a name="custom"></a>Vlastní 
 
-| Data | Popis |
+| Data | Description |
 |:---|:---|
 | REST API | Zápis dat do Log Analytics pracovního prostoru z libovolného klienta REST. Podrobnosti najdete v tématu [odeslání dat protokolu do Azure monitor pomocí rozhraní API kolekce dat http](data-collector-api.md) .
 | Aplikace logiky | Pomocí akce **shromažďování dat pro Azure Log Analytics** zapište do Log Analytics pracovního prostoru jakákoli data z pracovního postupu aplikace logiky. |
 
 ### <a name="security"></a>Zabezpečení
 
-| Data | Popis |
+| Data | Description |
 |:---|:---|
 | Azure Security Center | [Azure Security Center](/azure/security-center/) ukládá data, která shromažďuje v pracovním prostoru Log Analytics, kde je lze analyzovat pomocí jiných dat protokolu. Podrobnosti o konfiguraci pracovního prostoru najdete [v tématu shromažďování dat v Azure Security Center](../../security-center/security-center-enable-data-collection.md) . |
 | Azure Sentinel | [Sentinel v Azure](/azure/sentinel/) ukládá data ze zdrojů dat do pracovního prostoru Log Analytics. Viz [propojení zdrojů dat](/azure/sentinel/connect-data-sources).  |

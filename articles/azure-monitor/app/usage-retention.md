@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797736"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analýza uchovávání informací uživatelů pro webové aplikace pomocí Application Insights
@@ -42,7 +41,7 @@ Chcete-li získat nejužitečnější analýzu uchovávání informací, změřt
 
 Mnoho uživatelů může například v aplikaci otevřít stránku bez hraní hry, kterou zobrazuje. Sledování pouze zobrazení stránky by proto poskytovalo nepřesný odhad počtu osob, které se po jejich opětovném využití vrátí k přehrání hry. Pokud chcete získat jasný přehled o vracení přehrávačů, vaše aplikace by měla odeslat vlastní událost, když uživatel skutečně přehraje.  
 
-Dobrým zvykem je zakódovat vlastní události, které reprezentují klíčové obchodní akce, a využít je k analýze uchovávání informací. Chcete-li zachytit výsledek hry, je nutné napsat řádek kódu k odeslání vlastní události do Application Insights. Pokud jej píšete v kódu webové stránky nebo v Node. JS, vypadá to jako:
+Dobrým zvykem je zakódovat vlastní události, které reprezentují klíčové obchodní akce, a využít je k analýze uchovávání informací. Chcete-li zachytit výsledek hry, je nutné napsat řádek kódu k odeslání vlastní události do Application Insights. Pokud ho píšete v kódu webové stránky nebo v Node.JS, vypadá to jako:
 
 ```JavaScript
     appinsights.trackEvent("won game");

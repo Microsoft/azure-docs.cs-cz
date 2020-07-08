@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831921"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
@@ -145,7 +144,7 @@ Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nespl�
 
 Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Volání HTTP + Swagger vrátí tyto informace:
 
-| Název vlastnosti | Typ | Popis |
+| Název vlastnosti | Typ | Description |
 |---------------|------|-------------|
 | záhlaví | odkazy objektů | Hlavičky z požadavku |
 | text | odkazy objektů | Objekt JSON | Objekt s obsahem textu z požadavku |

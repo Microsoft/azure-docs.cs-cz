@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834522"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Vytvořte příkazy Switch, které spouštějí akce pracovního postupu na základě konkrétních hodnot v Azure Logic Apps
@@ -67,7 +66,7 @@ Předpokládejme například, že chcete, aby aplikace logiky, která provede r�
    |--------|--------------------|--------|
    | Případ 1 | **Schválení** | Přidání **e-mailové akce Odeslat e-mail** pro odeslání podrobností o položce RSS pouze v případě, že schvalovatel zvolil **schválení**. |
    | Případ 2 | **Odmítnout** | Přidání **e-mailové akce Odeslat e-mail** pro upozorňování dalších schvalovatelů, že položka RSS byla odmítnuta. |
-   | Výchozí | Žádné | Žádná akce není nutná. V tomto příkladu je **výchozí** případ prázdný, protože **SelectedOption** má jenom dvě možnosti. |
+   | Výchozí | Žádná | Žádná akce není nutná. V tomto příkladu je **výchozí** případ prázdný, protože **SelectedOption** má jenom dvě možnosti. |
    |||
 
    ![Dokončený příkaz switch](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -110,7 +109,7 @@ Teď, když jste vytvořili aplikaci logiky pomocí příkazu switch, se podíve
 }
 ```
 
-| Popisek | Popis |
+| Popisek | Description |
 |-------|-------------|
 | `"Switch"`         | Název příkazu switch, který lze přejmenovat pro čitelnost |
 | `"type": "Switch"` | Určuje, že akce je příkaz switch. |
@@ -119,7 +118,7 @@ Teď, když jste vytvořili aplikaci logiky pomocí příkazu switch, se podíve
 | `"case"` | Určuje hodnotu případu, která musí být konstantou a jedinečnou hodnotou, kterou příkaz switch používá pro porovnání. Pokud se ve výsledku výrazu Switch neshodují žádné případy, akce v `"default"` části se spustí. | 
 | | | 
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Chcete-li odeslat nebo hlasovat o funkcích nebo návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).

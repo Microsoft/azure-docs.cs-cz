@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826600"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postupy: povolení resetování hesla z přihlašovací obrazovky Windows
@@ -39,7 +38,7 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
     - DontDisplayLastUserName je nastavené na povoleno nebo 1.
     - NoLockScreen je nastavené na povoleno nebo 1.
     - EnableLostMode je nastavené na zařízení.
-    - Explorer. exe se nahradí vlastním prostředím.
+    - Explorer.exe se nahradí vlastním prostředím.
 - Tato funkce může způsobit, že tato funkce nefunguje v kombinaci následujících tří nastavení.
     - Interaktivní přihlašování: Nevyžadovat CTRL + ALT + DEL = zakázáno
     - DisableLockScreenAppNotifications = 1 nebo povoleno
@@ -128,8 +127,8 @@ Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Win
 
 #### <a name="silent-installation"></a>Bezobslužná instalace
 
-- Pro tichou instalaci použijte příkaz "msiexec/i SsprWindowsLogon. PROD. msi/Qn"
-- Pro tichou odinstalaci použijte příkaz "msiexec/x SsprWindowsLogon. PROD. msi/Qn"
+- Pro tichou instalaci použijte příkaz "msiexec/i SsprWindowsLogon.PROD.msi/Qn"
+- Pro tichou odinstalaci použijte příkaz "msiexec/x SsprWindowsLogon.PROD.msi/Qn"
 
 #### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Řešení potíží s resetováním hesla pro Windows 7, 8 a 8,1
 
