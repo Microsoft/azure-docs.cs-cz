@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 292ceccd5a3687488c0e8b03f4a8cd351d611dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564902"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Ladit uživatelsky definovaný kód C# pro nezdařené úlohy U-SQL
 
@@ -80,7 +80,7 @@ Pokud kód uživatele není zahrnutý v souboru kódu na pozadí nebo jste nezar
 
 2. Získejte cestu ke složce projektu pro projekt **FailedVertexDebugHost** . 
 
-3. Klikněte pravým tlačítkem myši na **přidaný projekt zdrojového kódu sestavení > vlastnosti**, vyberte kartu **sestavení** vlevo a vložte zkopírovanou cestu končící na \Bin\debug jako **výstupní > výstupní cestu**. Poslední výstupní cesta je jako `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
+3. Klikněte pravým tlačítkem myši na **přidaný projekt zdrojového kódu sestavení > vlastnosti**, vyberte kartu **sestavení** vlevo a vložte zkopírovanou cestu končící na \Bin\debug jako **výstupní > výstupní cestu**. Poslední výstupní cesta je jako `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Azure Data Lake Analytics nastavení ladění U-SQL nastavte cestu PDB](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -93,13 +93,13 @@ Po těchto nastaveních spusťte ladění pomocí **F5** a zarážek. K řešen�
 
 Po ladění, pokud se projekt úspěšně dokončí, zobrazí se v okně výstup následující zpráva:
 
-    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+`The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).`
 
 ![Úspěšné ladění U-SQL Azure Data Lake Analytics](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
 Opětovné odeslání neúspěšné úlohy:
 
-1. Pro úlohy s řešeními s kódem na pozadí zkopírujte kód jazyka C# do zdrojového souboru kódu na pozadí (obvykle `Script.usql.cs`).
+1. Pro úlohy s řešeními s kódem na pozadí zkopírujte kód jazyka C# do zdrojového souboru kódu na pozadí (obvykle `Script.usql.cs` ).
 
 2. Pro úlohy se sestavením klikněte pravým tlačítkem na projekt zdrojového kódu sestavení v řešení ladění a zaregistrujte aktualizované sestavení. dll do katalogu Azure Data Lake.
 

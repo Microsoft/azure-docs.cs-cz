@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
-ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22a15750a353b88d5a9bbff96f9ed080116792db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71672848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564190"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Začínáme s katalogem U-SQL v Azure Data Lake Analytics
 
@@ -24,7 +24,7 @@ V předchozím skriptu U-SQL se pokusíte použít EXTRAKCi pro čtení ze stejn
 
 Následující skript vytvoří TVF s názvem `Searchlog()` ve výchozí databázi a schématu:
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +55,7 @@ END;
 
 Následující skript vám ukáže, jak používat TVF, které jste definovali v předchozím skriptu:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -76,7 +76,7 @@ Pokud máte jeden výraz dotazu místo TVF, můžete k zapouzdření tohoto výr
 
 Následující skript vytvoří zobrazení nazvané `SearchlogView` ve výchozí databázi a schématu:
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +93,7 @@ USING Extractors.Tsv();
 
 Následující skript demonstruje použití definovaného zobrazení:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +113,7 @@ Stejně jako u tabulek relačních databází můžete pomocí U-SQL vytvořit t
 
 Pomocí následujícího skriptu vytvořte databázi a dvě tabulky:
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +147,7 @@ Můžete zadávat dotazy na tabulky, například ty, které byly vytvořeny v p�
 
 Chcete-li číst z tabulek, upravte transformační skript, který jste použili dříve:
 
-```
+```usql
 @rs1 =
     SELECT
         Region,

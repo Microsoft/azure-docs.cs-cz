@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfff2a1278bc31dc9bc130941985aed2cfb74362
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562342"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
 
@@ -35,7 +35,7 @@ Verze 9 sady Azure Search .NET SDK obsahuje mnoho změn z dřívějších verzí
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>Co je nového ve verzi 9
-Verze 9 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API, konkrétně 2019-05-06. Díky tomu je možné využít nové funkce Azure Search z aplikace .NET, včetně následujících:
+Verze 9 Azure Search .NET SDK cílí na verzi 2019-05-06 Azure Search REST API s následujícími funkcemi:
 
 * [Obohacení AI](cognitive-search-concept-intro.md) je schopnost extrahovat text z obrázků, objektů BLOB a dalších nestrukturovaných zdrojů dat – vylepšuje obsah, aby bylo lépe prohledávatelné Azure Search indexu.
 * Podpora [komplexních typů](search-howto-complex-data-types.md) umožňuje modelovat skoro všechny vnořené struktury JSON v indexu Azure Search.

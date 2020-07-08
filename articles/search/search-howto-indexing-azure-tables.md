@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6e32a0a876928e9430f9127299e6b7e657d7743c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563140"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indexování tabulek z Azure Table Storage pomocí Azure Kognitivní hledání
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak pomocí služby Azure Kognitivní hledání indexov
 
 Indexer služby Azure Table Storage můžete nastavit pomocí těchto prostředků:
 
-* [portál Azure](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) kognitivní hledání Azure
 * Sada Azure Kognitivní hledání [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -49,7 +49,7 @@ Pro indexování tabulek musí mít zdroj dat následující vlastnosti:
 
 Vytvoření zdroje dat:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ Index určuje pole v dokumentu, atributy a další konstrukce, které prohledaj�
 
 Vytvoření indexu:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Indexer připojuje zdroj dat k cílovému vyhledávacímu indexu a poskytuje pl�
 
 Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -135,7 +135,7 @@ Když nastavíte indexer tabulky tak, aby se spouštěl podle plánu, přeindexu
 
 Chcete-li určit, že některé dokumenty musí být z indexu odebrány, můžete použít strategii obnovitelného odstranění. Místo odstranění řádku přidejte vlastnost, která označuje, že je odstraněna, a nastavte zásady Detekce tichého odstranění pro zdroj dat. Následující zásada například předpokládá, že řádek bude odstraněn, pokud má řádek vlastnost `IsDeleted` s hodnotou `"true"` :
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

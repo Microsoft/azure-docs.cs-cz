@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 196562d376b8268ecf47f8133a5b1c8a122c38c5
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052274"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564426"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Obohacení AI v Azure Kognitivní hledání
 
@@ -83,7 +83,7 @@ Kanál interně vytvoří kolekci obohacených dokumentů. Můžete určit, kter
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Přidat element knowledgeStore pro uložení obohacení
 
-[Search REST API-Version = 2019-05 -06-Preview](search-api-preview.md) rozšiřuje dovednosti s `knowledgeStore` definicí, která poskytuje připojení a projekce úložiště Azure, které popisují, jak jsou rozšíření uložená. To je navíc k vašemu indexu. V standardním kanálu AI jsou obohacené dokumenty přechodné, používané jenom při indexování a pak se zahodí. Díky znalostnímu obchodu jsou rozšířené dokumenty zachované. Další informace najdete v [článku znalostní báze Knowledge Store (Preview)](knowledge-store-concept-intro.md).
+[Search REST API-Version = 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) rozšiřuje dovednosti s `knowledgeStore` definicí, která poskytuje připojení a projekce úložiště Azure, které popisují, jak jsou rozšíření uložená. To je navíc k vašemu indexu. V standardním kanálu AI jsou obohacené dokumenty přechodné, používané jenom při indexování a pak se zahodí. Díky znalostnímu obchodu jsou rozšířené dokumenty zachované. Další informace najdete v [článku znalostní báze Knowledge Store](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: hledání indexu a přístupu na základě dotazů
 
@@ -121,6 +121,6 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 + [Příklad: Vytvoření vlastní dovednosti pro rozšíření AI (C#)](cognitive-search-create-custom-skill-example.md)
 + [Rychlý Start: Vyzkoušejte obohacení AI na portálu procházením](cognitive-search-quickstart-blob.md)
 + [Kurz: informace o rozhraních API pro obohacení AI](cognitive-search-tutorial-blob.md)
-+ [Knowledge Store (Preview)](knowledge-store-concept-intro.md)
++ [Knowledge Store](knowledge-store-concept-intro.md)
 + [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md)
 + [Tipy pro řešení potíží](cognitive-search-concept-troubleshooting.md)

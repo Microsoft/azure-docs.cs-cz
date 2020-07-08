@@ -10,12 +10,12 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 34b3801d32720b8512f056ad16e3b3e3a979ee4b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 055d43c4df2b642c55f58ba16eaf7cba02b36bdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564708"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics pomocí Pythonu
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -40,7 +40,7 @@ Nainstalujte následující moduly:
 
 Nejdřív zajistěte, abyste měli nejnovější verzi spuštěním tohoto `pip` příkazu:
 
-```
+```console
 python -m pip install --upgrade pip
 ```
 
@@ -48,7 +48,7 @@ Tento dokument byl napsán pomocí `pip version 9.0.1` .
 
 Pomocí následujících `pip` příkazů nainstalujte moduly z příkazového řádku:
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-datalake-store
 pip install azure-mgmt-datalake-store
@@ -98,7 +98,7 @@ import time
 
 Spusťte tento skript a ověřte, zda lze moduly importovat.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktivní ověřování uživatelů pomocí automaticky otevíraného okna
 

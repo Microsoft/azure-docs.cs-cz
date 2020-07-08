@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 69b6c4e81446cf6a922fe9a1d0da8452e5ec164d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564282"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Výměna hardwarové součásti na zařízení řady StorSimple 8000
 
@@ -28,10 +28,10 @@ ms.locfileid: "85513204"
 Kurzy k výměně hardwarových součástí popisují hardwarové součásti zařízení Microsoft Azure StorSimple 8000 Series a kroky nutné k jejich odebrání a nahrazení. Tento článek popisuje bezpečnostní ikony, poskytuje odkazy na podrobné kurzy a uvádí součásti, které lze nahradit.
 
 > [!IMPORTANT]
-> Před pokusem o odebrání nebo nahrazení jakékoli součásti StorSimple se ujistěte, že jste provedli kontrolu [bezpečnostních ikon](#safety-icon-conventions) a další [bezpečnostní opatření](storsimple-safety.md).
-
+> Před pokusem o odebrání nebo nahrazení jakékoli součásti StorSimple se ujistěte, že jste provedli kontrolu [bezpečnostních ikon](#safety-icon-conventions) a další [bezpečnostní opatření](storsimple-8000-safety.md).
 
 ### <a name="safety-icon-conventions"></a>Bezpečnostní konvence ikon
+
 V následující tabulce jsou popsány bezpečnostní ikony používané v těchto kurzech. Pokud provedete kroky pro odebrání a nahrazení součástí zařízení, Věnujte jim pozor na tyto bezpečnostní ikony.
 
 | Ikona | Text | Další informace |
@@ -47,7 +47,8 @@ V následující tabulce jsou popsány bezpečnostní ikony používané v těch
 | ![Ikona nebezpečí tipu](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Nebezpečí špičky** | |
 
 ### <a name="before-you-begin"></a>Než začnete
-Seznamte se s bezpečnostními informacemi o zařízení a bezpečnostních ikonách, které se používají v tomto kurzu. Pro úplné informace použijte pro [bezpečnou instalaci a provoz zařízení StorSimple](storsimple-safety.md) . Nezapomeňte si projít [bezpečnostní opatření](storsimple-safety.md#handling-precautions) před zpracováním zařízení StorSimple.
+
+Seznamte se s bezpečnostními informacemi o zařízení a bezpečnostních ikonách, které se používají v tomto kurzu. Pro úplné informace použijte pro [bezpečnou instalaci a provoz zařízení StorSimple](storsimple-8000-safety.md) . Nezapomeňte si projít [bezpečnostní opatření](storsimple-8000-safety.md#handling-precautions) před zpracováním zařízení StorSimple.
 
 Před pokusem o nahrazení komponenty Vezměte v úvahu následující informace.
 
@@ -61,6 +62,7 @@ Před pokusem o nahrazení komponenty Vezměte v úvahu následující informace
 Když nahradíte modul, **nikdy nenechávejte prázdné místo na zadní části skříně**. Před odebráním části problému Získejte náhradní nebo prázdný modul.
 
 ## <a name="hardware-component-replacement-procedures"></a>Postup nahrazení hardwarových součástí
+
 Zařízení řady StorSimple 8000 se skládá z několika modulů plug-in v primárních nebo EBOD skříních. 8100 má jedinou primární skříň, zatímco 8600 je zařízení se dvěma skříněmi s primární skříní a EBOD skříňkou.
 
 Hlavní součásti hardwaru v zařízení jsou shrnuté v následujících tabulkách. Kliknutím na odkaz ve sloupci **postup nahrazení** přejdete k přidruženému kurzu.
@@ -92,7 +94,7 @@ Moduly plug-in v zařízení jsou zvýrazněné v následujících front a zadn�
 
 **Obrázek 1** Před zařízením
 
-| Popisek | Popis |
+| Popisek | Description |
 |:--- |:--- |
 | 0 - 11 |Diskové jednotky (celkem 12) |
 
@@ -102,7 +104,7 @@ Primární skříň i skříň EBOD mají moduly nosných jednotek. Diskové jed
 
 **Obrázek 2** Zpět primární skříň
 
-| Popisek | Popis |
+| Popisek | Description |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -113,7 +115,7 @@ Primární skříň i skříň EBOD mají moduly nosných jednotek. Diskové jed
 
 **Obrázek 3** Zpátky skříň EBOD
 
-| Popisek | Popis |
+| Popisek | Description |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -121,6 +123,7 @@ Primární skříň i skříň EBOD mají moduly nosných jednotek. Diskové jed
 | 4 |EBOD řadič 1 |
 
 ## <a name="field-replaceable-units"></a>Nahraditelné jednotky pole
+
 Pro vaše zařízení StorSimple jsou k dispozici následující volné jednotky (FRUs):
 
 * Skříň (včetně panelu integrovaných operací)
@@ -135,5 +138,5 @@ Pro vaše zařízení StorSimple jsou k dispozici následující volné jednotky
 [Kontaktujte prosím podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) pro objednání kterékoli z těchto náhradních jednotek.
 
 ## <a name="next-steps"></a>Další kroky
-Před pokusem o nahrazení hardwarové komponenty StorSimple zkontrolujte všechny [bezpečnostní údaje](storsimple-safety.md) .
 
+Před pokusem o nahrazení hardwarové komponenty StorSimple zkontrolujte všechny [bezpečnostní údaje](storsimple-8000-safety.md) .

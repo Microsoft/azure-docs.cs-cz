@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565883"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář IoT Hubch podmínek
 
@@ -222,7 +222,7 @@ IoT Hub je plně spravovaná služba Azure, která umožňuje spolehlivou a zabe
 
 ## <a name="iot-hub-query-language"></a>Dotazovací jazyk IoT Hub
 
-[Dotazovací jazyk IoT Hub](iot-hub-devguide-query-language.md) je jazyk podobný jazyku SQL, který umožňuje dotazovat se [](#job) na vlákna a zařízení.
+[Dotazovací jazyk IoT Hub](iot-hub-devguide-query-language.md) je jazyk podobný SQL, který umožňuje dotazovat se na vaše [úlohy](#job) a vlákna zařízení.
 
 ## <a name="iot-hub-resource-rest-api"></a>REST API prostředků IoT Hub
 
@@ -343,7 +343,7 @@ Službu tokenů můžete použít k implementaci mechanismu ověřování pro va
 
 ## <a name="twin-queries"></a>Zdvojené dotazy
 
-Nenáročné [dotazy na zařízení a moduly](iot-hub-devguide-query-language.md) používají dotazovací jazyk, který se používá IoT Hub SQL k načítání informací z vašich vláken zařízení nebo vláken modulu. Pomocí stejného dotazovacího jazyka IoT Hub můžete načíst informace o [](#job) běhu ve službě IoT Hub.
+Nenáročné [dotazy na zařízení a moduly](iot-hub-devguide-query-language.md) používají dotazovací jazyk, který se používá IoT Hub SQL k načítání informací z vašich vláken zařízení nebo vláken modulu. Pomocí stejného dotazovacího jazyka IoT Hub můžete načíst informace o [úloze](#job) běžící ve službě IoT Hub.
 
 ## <a name="twin-synchronization"></a>Dvojitá synchronizace
 

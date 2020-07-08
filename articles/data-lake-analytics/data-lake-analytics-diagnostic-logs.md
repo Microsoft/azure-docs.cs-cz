@@ -5,15 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: ba0311da88f1fe0cbc0bf885197785db10b1bac2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60616487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564846"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
 
@@ -60,32 +59,34 @@ Protokolování diagnostiky umožňuje shromažďovat záznamy pro audit příst
 
 2. V kontejnerech jsou protokoly uloženy v následující struktuře souborů:
 
-        resourceId=/
-          SUBSCRIPTIONS/
-            <<SUBSCRIPTION_ID>>/
-              RESOURCEGROUPS/
-                <<RESOURCE_GRP_NAME>>/
-                  PROVIDERS/
-                    MICROSOFT.DATALAKEANALYTICS/
-                      ACCOUNTS/
-                        <DATA_LAKE_ANALYTICS_NAME>>/
-                          y=####/
-                            m=##/
-                              d=##/
-                                h=##/
-                                  m=00/
-                                    PT1H.json
+   ```text
+   resourceId=/
+     SUBSCRIPTIONS/
+       <<SUBSCRIPTION_ID>>/
+         RESOURCEGROUPS/
+           <<RESOURCE_GRP_NAME>>/
+             PROVIDERS/
+               MICROSOFT.DATALAKEANALYTICS/
+                 ACCOUNTS/
+                   <DATA_LAKE_ANALYTICS_NAME>>/
+                     y=####/
+                       m=##/
+                         d=##/
+                           h=##/
+                             m=00/
+                               PT1H.json
+   ```
 
    > [!NOTE]
-   > `##` Položky v cestě obsahují rok, měsíc, den a hodinu, v nichž byl protokol vytvořen. Data Lake Analytics každou hodinu vytvoří jeden soubor, takže `m=` vždycky obsahuje hodnotu `00`.
+   > `##`Položky v cestě obsahují rok, měsíc, den a hodinu, v nichž byl protokol vytvořen. Data Lake Analytics každou hodinu vytvoří jeden soubor, takže `m=` vždycky obsahuje hodnotu `00` .
 
     Úplná cesta k protokolu auditu může být například:
 
-        https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
 
     Podobně platí, že úplná cesta k protokolu žádostí může být:
 
-        https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="log-structure"></a>Struktura protokolu
 
@@ -95,37 +96,39 @@ Protokoly auditu a žádosti jsou ve strukturovaném formátu JSON.
 
 Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznam** , který obsahuje pole objektů log.
 
+```json
+{
+"records":
+  [
+    . . . .
+    ,
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
-             "category": "Requests",
-             "operationName": "GetAggregatedJobHistory",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {
-                 "HttpMethod":"POST",
-                 "Path":"/JobAggregatedHistory",
-                 "RequestContentLength":122,
-                 "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
-                 "StartTime":"2016-07-07T21:02:52.472Z",
-                 "EndTime":"2016-07-07T21:02:53.456Z"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-07T21:02:53.456Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
+         "category": "Requests",
+         "operationName": "GetAggregatedJobHistory",
+         "resultType": "200",
+         "callerIpAddress": "::ffff:1.1.1.1",
+         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+         "properties": {
+             "HttpMethod":"POST",
+             "Path":"/JobAggregatedHistory",
+             "RequestContentLength":122,
+             "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
+             "StartTime":"2016-07-07T21:02:52.472Z",
+             "EndTime":"2016-07-07T21:02:53.456Z"
+             }
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -139,7 +142,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -152,32 +155,30 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznam** , který obsahuje pole objektů log.
 
+```json
+{
+"records":
+  [
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-28T19:15:16.245Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
-             "category": "Audit",
-             "operationName": "JobSubmitted",
-             "identity": "user@somewhere.com",
-             "properties": {
-                 "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
-                 "JobName": "New Job",
-                 "JobRuntimeName": "default",
-                 "SubmitTime": "7/28/2016 7:14:57 PM"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-28T19:15:16.245Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
+         "category": "Audit",
+         "operationName": "JobSubmitted",
+         "identity": "user@somewhere.com",
+         "properties": {
+             "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
+             "JobName": "New Job",
+             "JobRuntimeName": "default",
+             "SubmitTime": "7/28/2016 7:14:57 PM"
+             }
     }
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -195,7 +196,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | JobId |Řetězec |ID přiřazené k úloze |
 | JobName |Řetězec |Název, který byl zadán pro úlohu |
@@ -210,7 +211,8 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 ## <a name="process-the-log-data"></a>Zpracování dat protokolu
 
-Azure Data Lake Analytics poskytuje ukázku, jak zpracovávat a analyzovat data protokolu. Ukázku najdete na adrese [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+Azure Data Lake Analytics poskytuje ukázku, jak zpracovávat a analyzovat data protokolu. Ukázku najdete na adrese [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) .
 
 ## <a name="next-steps"></a>Další kroky
-* [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md)
+
+[Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md)

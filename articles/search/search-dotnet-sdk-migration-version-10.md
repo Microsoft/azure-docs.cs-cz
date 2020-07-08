@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 32d77b82b30411bd5b423f903c25392fd8e09e44
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562376"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 10
 
@@ -22,7 +22,7 @@ Pokud používáte verzi [.NET SDK](https://docs.microsoft.com/dotnet/api/overvi
 
 Azure Search se přejmenuje na Azure Kognitivní hledání ve verzi 10, ale obory názvů a názvy balíčků se nemění. Předchozí verze sady SDK (9,0 a starší) nadále používají dřívější název. Další informace o používání sady SDK, včetně příkladů, najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](search-howto-dotnet-sdk.md).
 
-Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úroveň funkčnosti jako poslední verze REST API verze `2019-05-06` . V případech, kdy změna přeruší existující kód, Vás provedeme [kroky potřebnými k vyřešení tohoto problému](#UpgradeSteps).
+Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úroveň funkčnosti jako verze REST API `2019-05-06` . V případech, kdy změna přeruší existující kód, Vás provedeme [kroky potřebnými k vyřešení tohoto problému](#UpgradeSteps).
 
 > [!NOTE]
 > Pokud používáte verzi 8,0-Preview nebo starší, měli byste nejdřív upgradovat na verzi 9 a pak upgradovat na verzi 10. Pokyny najdete v tématu [upgrade na sadu Azure Search .NET SDK verze 9](search-dotnet-sdk-migration-version-9.md) .
@@ -32,7 +32,7 @@ Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úr
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Co je nového ve verzi 10
-Verze 10 sady Azure Kognitivní hledání .NET SDK cílí na nejnovější všeobecně dostupnou verzi REST API ( `2019-05-06` ) s těmito aktualizacemi:
+REST API cílů Azure Kognitivní hledání .NET SDK je verze 10 pro `2019-05-06` tyto aktualizace:
 
 * Seznámení se dvěma novými dovednostmi – [podmíněná](cognitive-search-skill-conditional.md) dovednost a [dovednost překladu textu](cognitive-search-skill-text-translation.md)
 * [Shapery odbornosti](cognitive-search-skill-shaper.md) byly restrukturované, aby vyhovovaly konsolidaci z vnořených kontextů. Další informace najdete v tomto [příkladu definice JSON](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).

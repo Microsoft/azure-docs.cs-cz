@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c78889c8d910edb5111c18b9cbb77387d2693f87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564776"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Začínáme s Azure Data Lake Analytics na webu Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -29,7 +29,7 @@ Než začnete tento kurz, musíte mít **předplatné Azure**. Viz [Získání b
 Nyní vytvoříte Data Lake Analytics a účet Azure Data Lake Storage Gen1 ve stejnou dobu.  Tento krok je jednoduchý a trvá jen asi 60 vteřin.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. Klikněte na **vytvořit prostředek** >  **data a analýzy** > **Data Lake Analytics**.
+2. Klikněte na **vytvořit prostředek**  >   **data a analýzy**  >  **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky:
    * **Název:** Pojmenujte svůj účet Data Lake Analytics (povolena jsou pouze malá písmena a číslice).
    * **Předplatné**: Zvolte předplatné Azure použité pro účet Analytics.
@@ -42,9 +42,9 @@ Nyní vytvoříte Data Lake Analytics a účet Azure Data Lake Storage Gen1 ve s
 
 ## <a name="your-first-u-sql-script"></a>Váš první skript U-SQL
 
-Následující text je velmi jednoduchý skript U-SQL. Vše je v rámci skriptu definováno malým objektem DataSet a pak tuto datovou sadu vypíše jako výchozí Data Lake Storage Gen1 účet jako soubor s názvem `/data.csv`.
+Následující text je velmi jednoduchý skript U-SQL. Vše je v rámci skriptu definováno malým objektem DataSet a pak tuto datovou sadu vypíše jako výchozí Data Lake Storage Gen1 účet jako soubor s názvem `/data.csv` .
 
-```
+```usql
 @a  = 
     SELECT * FROM 
         (VALUES

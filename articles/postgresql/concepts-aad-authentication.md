@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 737587ccf46d4af292dc11d37567249c13260f51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565490"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
 
@@ -66,8 +66,11 @@ Ověřování Azure Active Directory podporuje následující metody připojení
 - Azure Active Directory integrovaný
 - Azure Active Directory univerzální s MFA
 - Používání certifikátů aplikací služby Active Directory nebo klientských tajných klíčů
+- [Spravovaná identita](howto-connect-with-managed-identity.md)
 
 Po ověření vůči službě Active Directory načtěte token. Tento token je vaším heslem pro přihlášení.
+
+Mějte na paměti, že operace správy, jako je přidání nových uživatelů, jsou v tuto chvíli podporované jenom pro role uživatelů Azure AD.
 
 > [!NOTE]
 > Další podrobnosti o tom, jak se připojit k tokenu služby Active Directory, najdete v tématu [Konfigurace a přihlášení pomocí Azure AD pro Azure Database for PostgreSQL](howto-configure-sign-in-aad-authentication.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 34a02181632c301f443ce48ade0de2013e2ae86c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564238"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Výměna EBOD kontroleru na zařízení StorSimple
 
@@ -35,7 +35,7 @@ Než začnete, vezměte v úvahu následující informace:
 * Kontroler EBOD je horká a může být odebraný nebo nahrazený. Neodstraňujte modul, který selhal, dokud nebudete mít náhradu. Když zahájíte proces nahrazení, musíte ho dokončit do 10 minut.
 
 > [!IMPORTANT]
-> Před pokusem o odebrání nebo nahrazení jakékoli součásti StorSimple se ujistěte, že jste provedli kontrolu [bezpečnostních ikon](storsimple-safety.md#safety-icon-conventions) a další [bezpečnostní opatření](storsimple-safety.md).
+> Před pokusem o odebrání nebo nahrazení jakékoli součásti StorSimple se ujistěte, že jste provedli kontrolu [bezpečnostních ikon](storsimple-8000-safety.md#safety-icon-conventions) a další [bezpečnostní opatření](storsimple-8000-safety.md).
 
 ## <a name="remove-an-ebod-controller"></a>Odebrání kontroleru EBOD
 Než v zařízení StorSimple nahradíte modul neúspěšného EBOD kontroleru, ujistěte se, že je aktivní a spuštěný modul EBOD Controller. Následující postup a tabulka vysvětlují, jak odebrat modul EBOD Controller.
@@ -54,7 +54,7 @@ Než v zařízení StorSimple nahradíte modul neúspěšného EBOD kontroleru, 
    
      **Obrázek 1** Zpět modul EBOD
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |INDIKÁTOR chyby |
    | 2 |Indikátor napájení |
@@ -86,7 +86,7 @@ Následující postup a tabulka vysvětlují, jak nainstalovat modul EBOD Contro
    
     **Obrázek 4**. Opětovné připojování kabelů
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Primární skříň |
    | 2 |PCM 0 |

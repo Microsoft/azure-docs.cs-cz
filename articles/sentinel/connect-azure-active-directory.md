@@ -1,6 +1,6 @@
 ---
 title: Připojit Azure Active Directory dat ke službě Azure Sentinel | Microsoft Docs
-description: Přečtěte si, jak připojit Azure Active Directory dat ke službě Azure Sentinel.
+description: Naučte se shromažďovat data z Azure Active Directory a streamovat protokoly přihlášení do Azure AD a auditovat protokoly do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5ec8a37a0c782a5426b87f785af2d047ca35aa22
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 37106517c47c86f4a4a562eebd6d120e31e22334
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564518"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Připojení dat z Azure Active Directory (Azure AD)
 

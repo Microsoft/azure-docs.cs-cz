@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565465"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Nastavení Remote Renderingu pro Unity
 
@@ -18,7 +18,7 @@ Pro povolení služby Azure Remote rendering (ARR) v Unity poskytujeme vyhrazen�
 
 ## <a name="startup-and-shutdown"></a>Spuštění a vypnutí
 
-Chcete-li inicializovat vzdálené vykreslování `RemoteManagerUnity`, použijte. Tato třída volá do obecného `RemoteManager` , ale už pro vás implementuje podrobnosti specifické pro Unity. Například Unity používá určitý systém souřadnic. Při volání `RemoteManagerUnity.Initialize`se nastaví správná konvence. Volání také vyžaduje, abyste zadali kameru Unity, která se má použít k zobrazení vzdáleně vykresleného obsahu.
+Chcete-li inicializovat vzdálené vykreslování, použijte `RemoteManagerUnity` . Tato třída volá do obecného, `RemoteManager` ale už pro vás implementuje podrobnosti specifické pro Unity. Například Unity používá určitý systém souřadnic. Při volání se `RemoteManagerUnity.Initialize` Nastaví správná konvence. Volání také vyžaduje, abyste zadali kameru Unity, která se má použít k zobrazení vzdáleně vykresleného obsahu.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -27,9 +27,9 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 ```
 
-Pro vypnutí vzdáleného vykreslování zavolejte `RemoteManagerStatic.ShutdownRemoteRendering()`.
+Pro vypnutí vzdáleného vykreslování zavolejte `RemoteManagerStatic.ShutdownRemoteRendering()` .
 
-`AzureSession` Po vytvoření a vybrání jako primární relace vykreslování musí být zaregistrována v `RemoteManagerUnity`:
+Po `AzureSession` Vytvoření a vybrání jako primární relace vykreslování musí být zaregistrována v `RemoteManagerUnity` :
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
@@ -72,11 +72,11 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 `ARRServiceUnity`je volitelnou komponentou pro zjednodušení nastavení a správy relace. Obsahuje možnosti automatického zastavení jeho relace při ukončení aplikace nebo ukončení režimu přehrávání v editoru a také automatické prodloužení zapůjčení relace v případě potřeby. Ukládá data do mezipaměti, jako jsou vlastnosti relace (viz její `LastProperties` proměnná), a zpřístupňuje události pro změny stavu relace a chyby relací.
 
-`ARRServiceUnity` V jednom okamžiku nemůže existovat více než jedna instance. Slouží k tomu, aby bylo možné rychleji začít s implementací některých běžných funkcí. U větší aplikace může být vhodnější provádět tyto věci sami, ale.
+V jednom okamžiku nemůže existovat více než jedna instance `ARRServiceUnity` . Slouží k tomu, aby bylo možné rychleji začít s implementací některých běžných funkcí. U větší aplikace může být vhodnější provádět tyto věci sami, ale.
 
-Příklad nastavení a používání `ARRServiceUnity` najdete v tématu [kurz: nastavení projektu Unity od začátku](../../tutorials/unity/project-setup.md).
+Příklad nastavení a použití `ARRServiceUnity` najdete v tématu [kurz: zobrazení vzdáleně generovaných modelů](../../tutorials/unity/view-remote-models/view-remote-models.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Instalace balíčku Remote Renderingu pro Unity](install-remote-rendering-unity-package.md)
-* [Kurz: vytvoření projektu Unity od začátku](../../tutorials/unity/project-setup.md)
+* [Kurz: zobrazení vzdáleně generovaných modelů](../../tutorials/unity/view-remote-models/view-remote-models.md)

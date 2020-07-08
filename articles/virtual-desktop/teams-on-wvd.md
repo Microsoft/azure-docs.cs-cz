@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564457"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -135,7 +135,7 @@ Použití týmů ve virtualizovaném prostředí se liší od použití týmů v
 
 Pro týmy známé problémy, které nesouvisejí s virtualizovanými prostředími, najdete informace v tématu [Podpora týmů ve vaší organizaci](/microsoftteams/known-issues/) .
 
-## <a name="feedback"></a>Váš názor
+## <a name="uservoice-site"></a>Web UserVoice
 
 Poskytněte zpětnou vazbu pro Microsoft Teams na virtuální ploše Windows na webu Teams [UserVoice](https://microsoftteams.uservoice.com/).
 

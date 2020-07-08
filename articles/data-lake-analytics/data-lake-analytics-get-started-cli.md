@@ -7,25 +7,25 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8de36cca8386ed2a8ddba5782b7b48f248192e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474505"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564825"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Začínáme s Azure Data Lake Analytics s využitím rozhraní Azure CLI
+
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Tento článek popisuje, jak pomocí rozhraní příkazového řádku Azure CLI vytvářet účty Azure Data Lake Analytics, odesílat úlohy USQL a katalogy. Tato úloha načte soubor hodnot oddělených tabulátory (TSV) a převede ho na soubor hodnot oddělených čárkami (CSV). 
+Tento článek popisuje, jak pomocí rozhraní příkazového řádku Azure CLI vytvářet účty Azure Data Lake Analytics, odesílat úlohy USQL a katalogy. Tato úloha načte soubor hodnot oddělených tabulátory (TSV) a převede ho na soubor hodnot oddělených čárkami (CSV).
 
 ## <a name="prerequisites"></a>Požadavky
+
 Než začnete, budete potřebovat tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Tento článek vyžaduje, abyste spustili Azure CLI verze 2,0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
-
-
+* Tento článek vyžaduje, abyste spustili Azure CLI verze 2,0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -46,6 +46,7 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>Vytvoření účtu Data Lake Analytics
+
 Je nutné, abyste před spuštěním jakékoli úlohy měli účet Data Lake Analytics. Pokud chcete vytvořit účet Data Lake Analytics, je nutné zadat následující položky:
 
 * **Skupina prostředků Azure**. Účet Data Lake Analytics se musí vytvořit v rámci Skupiny prostředků Azure. [Azure Resource Manager](../azure-resource-manager/management/overview.md) vám umožní pracovat s prostředky v aplikaci jako se skupinou. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace.  
@@ -88,10 +89,11 @@ Po vytvoření účtu můžete použít následující příkazy k vypsání sez
 
 ```azurecli
 az dla account list
-az dla account show --account "<Data Lake Analytics Account Name>"            
+az dla account show --account "<Data Lake Analytics Account Name>"
 ```
 
 ## <a name="upload-data-to-data-lake-store"></a>Nahrání dat do Data Lake Store
+
 V tomto kurzu zpracujete několik protokolů hledání.  Protokol hledání se dá uložit buď do úložiště Data Lake Store, nebo do úložiště objektů Azure Blob.
 
 Azure Portal poskytuje uživatelské rozhraní pro kopírování některých ukázkových datových souborů (včetně souboru protokolu hledání) do výchozího účtu Data Lake Store. Pokud chcete nahrát data do výchozího účtu Data Lake Store, informace najdete v části [Příprava zdrojových dat](data-lake-analytics-get-started-portal.md).
@@ -106,19 +108,20 @@ az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 Data Lake Analytics má také přístup k úložišti objektů Azure Blob.  Pokud chcete nahrát data do úložiště objektů Azure Blob, informace najdete v tématu [Použití rozhraní příkazového řádku Azure s Azure Storage](../storage/common/storage-azure-cli.md).
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Odesílání úloh Data Lake Analytics
+
 Úlohy Data Lake Analytics se píšou v jazyce U-SQL. Další informace o U-SQL najdete v tématu [Začínáme s jazykem U-SQL](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](https://docs.microsoft.com/u-sql/).
 
-**Postup vytvoření skriptu úlohy Data Lake Analytics**
+### <a name="to-create-a-data-lake-analytics-job-script"></a>Postup vytvoření skriptu úlohy Data Lake Analytics
 
 Vytvořte textový soubor s následujícím skriptem U-SQL a uložte ho do pracovní stanice:
 
-```
-@a  = 
-    SELECT * FROM 
+```usql
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
-        ) AS 
+        ) AS
               D( customer, amount );
 OUTPUT @a
     TO "/data.csv"
@@ -131,22 +134,22 @@ Pokud zdrojový soubor nekopírujete do jiného umístění, tyto dvě cesty neu
 
 U souborů uložených ve výchozích účtech Data Lake Store je jednodušší použít relativní cesty. Můžete také použít absolutní cesty.  Příklad:
 
-```
+```usql
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
 ```
 
 Pro přístup k souborům v propojených účtech Storage je nutné použít absolutní cesty.  V případě souborů uložených v propojeném účtu Azure Storage je syntaxe následující:
 
-```
+```usql
 wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 ```
 
 > [!NOTE]
-> Kontejner Azure Blob s veřejnými objekty blob není podporován.      
-> Kontejner Azure Blob s veřejnými kontejnery není podporován.      
+> Kontejner Azure Blob s veřejnými objekty blob není podporován.
+> Kontejner Azure Blob s veřejnými kontejnery není podporován.
 >
 
-**Odesílání úloh**
+### <a name="to-submit-jobs"></a>Odesílání úloh
 
 Při odeslání úlohy použijte následující syntaxi.
 
@@ -160,14 +163,14 @@ Příklad:
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
-**Seznam úloh a zobrazení podrobností o úloze**
+### <a name="to-list-jobs-and-show-job-details"></a>Seznam úloh a zobrazení podrobností o úloze
 
 ```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-**Zrušení úloh**
+### <a name="to-cancel-jobs"></a>Zrušení úloh
 
 ```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"

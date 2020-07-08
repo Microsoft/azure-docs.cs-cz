@@ -1,6 +1,6 @@
 ---
 title: Připojení dat Symantec ICDx ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Symantec ICDx ke službě Azure Sentinel.
+description: Naučte se používat konektor Symantec ICDx ke snadnému připojení všech protokolů řešení zabezpečení od Symantecu k Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564913"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Připojení zařízení Symantec ICDx 
 
@@ -50,7 +50,7 @@ Symantec ICDx může integrovat a exportovat protokoly přímo do Azure Sentinel
       > [!NOTE]
       > Archivy přijímače ICDx jsou uvedeny samostatně podle názvu. 
  
-    - **Filtr**: přidejte filtr, který určuje podmnožinu událostí, které mají být předány. Proveďte jednu z těchto akcí:
+    - **Filtr**: přidejte filtr, který určuje podmnožinu událostí, které mají být předány. Proveďte jednu z následujících akcí:
         - Pokud chcete vybrat podmínku filtru, klikněte na typ, atribut, operátor a hodnotu. 
         - V poli filtr Zkontrolujte podmínku filtru. Můžete ho přímo v poli Upravit nebo ho podle potřeby odstranit.
         - Kliknutím na a nebo nebo přidejte do podmínky filtru.

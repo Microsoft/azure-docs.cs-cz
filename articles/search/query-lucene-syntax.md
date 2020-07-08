@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: efef4a5e3fd846b06d73211bc6cf63a8ecf24438
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3bf9dc0e69707eaed8c2a844f6ed3169e65a5342
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564080"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazů Lucene v Azure Kognitivní hledání
 
@@ -46,13 +46,13 @@ Následující příklad vyhledá dokumenty v indexu pomocí syntaxe dotazů Luc
 `searchMode=all`Parametr je v tomto příkladu relevantní. Vždy, když jsou operátory na dotazu, je obecně nutné nastavit, aby bylo `searchMode=all` zajištěno, že *všechna* kritéria jsou shodná.
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
 ```
 
  Alternativně můžete použít POST:  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",

@@ -1,6 +1,6 @@
 ---
 title: Připojení dat Azure AD Identity Protection k Azure Sentinel
-description: Přečtěte si, jak připojit Azure AD Identity Protection dat ke službě Azure Sentinel.
+description: Naučte se streamovat protokoly a výstrahy z Azure AD Identity Protection do Azure Sentinel a zobrazovat řídicí panely, vytvářet vlastní výstrahy a vylepšit šetření.
 author: yelevin
 manager: rkarlin
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 0f85e543c83413e840354c053a1f4cb0925fc271
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 69ab76bf213653ea10db8dfd181b615a7e0f47b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564471"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Připojení dat z Azure Active Directory (Azure AD) Identity Protection
 

@@ -1,6 +1,6 @@
 ---
 title: Připojení dat o aktivitě Azure ke službě Azure Sentinel | Microsoft Docs
-description: Přečtěte si, jak propojit data o aktivitách Azure s Sentinel Azure.
+description: Zasílat streamování protokolů aktivit Azure do Azure Sentinel jediným kliknutím. Protokol aktivit zaznamenává a zobrazuje události na úrovni předplatného v rámci Azure.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564489"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Připojit data z protokolu aktivit Azure
 
@@ -41,7 +41,7 @@ Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log]
 
 4. V podokně odběr, který se otevře vpravo, klikněte na **připojit**.
 
-5. Pokud chcete použít příslušné schéma v Log Analytics pro upozornění na aktivitu Azure, `AzureActivity` zadejte do okna dotazu.
+5. Pokud chcete použít příslušné schéma v Log Analytics pro upozornění na aktivitu Azure, zadejte `AzureActivity` do okna dotazu.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit protokol aktivit Azure ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

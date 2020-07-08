@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: c47016d0b82a4e4ed084f5d82394d91fd2b46be1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8916f4b9824f88361fdeb9d866f84adb71e8138e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563798"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Změna modelu vyžádání obsahu kanálu v Azure Cosmos DB
 
@@ -164,13 +164,13 @@ Měli byste zvážit použití modelu vyžádání obsahu v těchto scénáříc
 
 Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pull:
 
-|  | Procesor kanálu změn| Model vyžádání |
+|Funkce  | Procesor kanálu změn| Model vyžádání |
 | --- | --- | --- |
 | Udržování přehledu o aktuálním bodu ve zpracování kanálu změn | Zapůjčení (uložené v kontejneru Azure Cosmos DB) | Token pro pokračování (uložený v paměti nebo ručně trvalý) |
 | Možnost Přehrát minulé změny | Ano, s modelem push | Ano, s modelem pull|
 | Cyklické dotazování pro budoucí změny | Automaticky kontroluje změny na základě zadaného uživatele.`WithPollInterval` | Ruční |
 | Zpracovat změny z celého kontejneru | Ano a automaticky paralelně napříč několika vlákny nebo počítači, které jsou náročné ze stejného kontejneru| Ano a ručně paralelně s využitím FeedTokens |
-| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporuje se | Ano|
+| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporuje se | Yes|
 | Úroveň podpory | Obecná dostupnost | Preview |
 
 ## <a name="next-steps"></a>Další kroky

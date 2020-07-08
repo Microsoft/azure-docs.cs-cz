@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: c7bc818133a0bd708f9f850f0ad258dccc6c02cc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a4faab9ac6d5e1c39c1120e09dae792b95892d60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564414"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -58,6 +58,9 @@ Po skončení **provozní** fáze vyčká cluster dalších 20% pracovních uzl�
  
 ### <a name="create-new-service-principal-through-hdinsight"></a>Vytvoření nového instančního objektu prostřednictvím služby HDInsight
 Při vytváření clusteru mohli zákazníci v minulosti vytvořit nový instanční objekt pro přístup k připojenému účtu ADLS fin 1 v rámci služby Azure Portal. Od června 15 2020 nemůže zákazníci vytvořit nový instanční objekt ve službě HDInsight pro vytváření pracovních postupů, podporuje se jenom existující instanční objekt. Viz téma [Vytvoření instančního objektu a certifikátů pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+### <a name="time-out-for-script-actions-with-cluster-creation"></a>Časový limit pro akce skriptu s vytvořením clusteru
+HDInsight podporuje spouštění akcí skriptů s vytvářením clusteru. Z této verze musí být všechny akce skriptů s vytvořením clusteru dokončeny během **60 minut**nebo vypršel časový limit. Akce skriptu odeslané na spuštěné clustery neovlivní. Další podrobnosti najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process).
  
 ## <a name="upcoming-changes"></a>Nadcházející změny
 Žádné nadcházející nepotřebné změny, ke kterým byste měli věnovat pozornost.
@@ -77,3 +80,7 @@ Verze Kafka je upgradována z verze 2.1.0 na verzi 2.1.1.
  
 V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) najdete aktuální verze komponent pro HDInsight 4,0 ad HDInsight 3,6.
 
+## <a name="known-issues"></a>Známé problémy
+
+### <a name="hive-warehouse-connector-issue"></a>Problém s konektorem skladu z podregistru
+V této verzi se vyskytl problém s konektorem datového skladu pro podregistr. Oprava bude zahrnutá v další verzi. Existující clustery vytvořené před touto verzí nebudou ovlivněny. Pokud je to možné, vyhněte se vyřazení a opětovnému vytvoření clusteru. Pokud potřebujete další pomoc, otevřete prosím lístek podpory.

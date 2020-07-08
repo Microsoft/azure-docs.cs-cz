@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: e56da52823de169ccb1fc28a0bd7f3ac7efacf49
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 2f3641bf540b188ce3d2333ccd6bcf4a926ba130
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565101"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
@@ -40,7 +40,7 @@ Někteří partneři pro připojení můžou automatizovat automatizaci, aby zah
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Následující partneři se plánované na náš plán pro blízké budoucnost: 128 technologie, Arista, Aruba HPE, Cisco Systems, F5 Networks, Open Systems, Oracle SD-WAN a SharpLink.
+Následující partneři jsou plánované pro náš budoucí plán: 128 technologie, Arista, Aruba HPE, Cisco Systems (Viptela), F5 Networks, Open Systems, Oracle SD-WAN a SharpLink.
 
 ## <a name="locations"></a><a name="locations"></a>Umístění
 

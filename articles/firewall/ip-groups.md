@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757158"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565538"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>Skupiny IP adres (Preview) v Azure Firewall
-
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="ip-groups-in-azure-firewall"></a>Skupiny IP adres v Azure Firewall
 
 Skupiny IP adres umožňují seskupit a spravovat IP adresy pro Azure Firewall pravidla následujícími způsoby:
 
@@ -40,7 +37,7 @@ Následující příklady formátu IPv4 adres jsou platné pro použití ve skup
 
 ## <a name="create-an-ip-group"></a>Vytvoření skupiny IP adres
 
-Skupina IP adres se dá vytvořit pomocí Azure Portal, Azure CLI nebo REST API. Další informace najdete v tématu [Vytvoření skupiny IP adres (Preview)](create-ip-group.md).
+Skupina IP adres se dá vytvořit pomocí Azure Portal, Azure CLI nebo REST API. Další informace najdete v tématu [Vytvoření skupiny IP adres](create-ip-group.md).
 
 ## <a name="browse-ip-groups"></a>Procházet skupiny IP adres
 1. Na panelu hledání Azure Portal zadejte **skupiny IP adres** a vyberte je. Můžete zobrazit seznam skupin IP adres, nebo můžete vybrat **Přidat** a vytvořit novou skupinu IP adres.
@@ -64,9 +61,6 @@ Všechny IP adresy můžete zobrazit ve skupině IP adres a podle pravidel nebo 
 ## <a name="use-an-ip-group"></a>Použití skupiny IP adres
 
 Při vytváření Azure Firewallch DNAT, aplikací nebo síťových pravidel teď můžete vybrat možnost **Skupina IP** adres jako **typ zdroje** nebo **cílový typ** pro IP adresu (y).
-
-> [!NOTE]
-> Skupiny IP adres nejsou v zásadách brány firewall podporovány. V současné době se podporuje jenom s tradičními pravidly brány firewall.
 
 ![Skupiny IP adres v bráně firewall](media/ip-groups/fw-ipgroup.png)
 

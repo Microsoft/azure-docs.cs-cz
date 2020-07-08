@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cf997cbe16f7ff4bfe75f90d3797ec97e7d5069
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563261"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -152,7 +152,7 @@ Pokud vykreslený obrázek vypadá takto: ![ šachovnice ](../reference/media/ch
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Vykreslený obraz v Unity je souběžný
 
-Nezapomeňte postupovat přesně podle [Průvodce nastavením projektu](../tutorials/unity/project-setup.md) . Obrázek na více stranách indikuje, že Unity je nutný k vytvoření cíle vykreslování mimo obrazovku. Toto chování se v současné době nepodporuje a na HoloLens 2 vytváří velký dopad na výkon.
+Nezapomeňte postupovat podle [kurzu Unity: Prohlédněte si přesně vzdálené modely](../tutorials/unity/view-remote-models/view-remote-models.md) . Obrázek na více stranách indikuje, že Unity je nutný k vytvoření cíle vykreslování mimo obrazovku. Toto chování se v současné době nepodporuje a na HoloLens 2 vytváří velký dopad na výkon.
 
 Důvodem pro tento problém může být MSAA, HDR nebo povolení následného zpracování. Ujistěte se, že je vybraný profil nízké kvality a v Unity nastavte jako výchozí. Provedete to tak, že přejdete na *upravit > nastavení projektu... > kvalitu*.
 

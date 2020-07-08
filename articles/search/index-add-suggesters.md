@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565326"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
@@ -41,7 +41,7 @@ Chcete-li vytvořit modul pro návrh, přidejte ho do [schématu indexu](https:/
 
 + Použít pouze pole řetězců
 
-+ Použijte výchozí standardní analyzátor Lucene (`"analyzer": null`) nebo [analyzátor jazyka](index-add-language-analyzers.md) (například `"analyzer": "en.Microsoft"`) v poli.
++ Použijte výchozí standardní analyzátor Lucene ( `"analyzer": null` ) nebo [analyzátor jazyka](index-add-language-analyzers.md) (například `"analyzer": "en.Microsoft"` ) v poli.
 
 ### <a name="choose-fields"></a>Zvolit pole
 
@@ -136,8 +136,8 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |Vlastnost      |Popis      |
 |--------------|-----------------|
 |`name`        |Název modulu pro návrhy.|
-|`searchMode`  |Strategie použitá pro hledání kandidátských frází. Jediným aktuálně podporovaným režimem `analyzingInfixMatching`je, který aktuálně odpovídá začátku období.|
-|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a. `Collection(Edm.String)` Je-li v poli analyzátor určen, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) (nikoli vlastní analyzátor).<p/> Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
+|`searchMode`  |Strategie použitá pro hledání kandidátských frází. Jediným aktuálně podporovaným režimem je `analyzingInfixMatching` , který aktuálně odpovídá začátku období.|
+|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)` . Je-li v poli analyzátor určen, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) (nikoli vlastní analyzátor).<p/> Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -155,7 +155,7 @@ V aplikaci vyhledávání by měl klientský kód využít knihovnu, jako je nap
 Použití rozhraní API je znázorněno v následujícím volání REST API automatického dokončování. Existují dva poznatky z tohoto příkladu. Jako první, stejně jako u všech dotazů, se operace týká kolekce dokumentů indexu a dotaz obsahuje parametr **hledání** , který v tomto případě poskytuje částečný dotaz. Za druhé musíte do žádosti přidat **suggesterName** . Pokud není v indexu definován modul pro návrh, volání automatického dokončování nebo návrhů se nezdaří.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

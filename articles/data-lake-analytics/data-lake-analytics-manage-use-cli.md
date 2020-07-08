@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 090945a8bedad4a3d39f3f7fb16cae83f4e3f5bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564803"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -22,7 +22,7 @@ ms.locfileid: "79454359"
 Naučte se spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure CLI. Pokud chcete zobrazit témata správy pomocí jiných nástrojů, klikněte na kartu nahoře.
 
 
-**Požadavky**
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento kurz, musíte mít následující prostředky:
 
@@ -30,7 +30,7 @@ Než začnete tento kurz, musíte mít následující prostředky:
 
 * Rozhraní příkazového řádku Azure Viz téma [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-   * Pokud chcete absolvovat tuto ukázku, stáhněte a nainstalujte **předběžnou verzi** [nástrojů příkazového řádku Azure](https://github.com/MicrosoftBigData/AzureDataLake/releases).
+  * Pokud chcete absolvovat tuto ukázku, stáhněte a nainstalujte **předběžnou verzi** [nástrojů příkazového řádku Azure](https://github.com/MicrosoftBigData/AzureDataLake/releases).
 
 * Proveďte ověření pomocí `az login` příkazu a vyberte předplatné, které chcete použít. Další informace týkající se ověřování pomocí pracovního nebo školního účtu najdete v tématu [Připojení k předplatnému Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli).
 
@@ -111,7 +111,7 @@ Výchozí účet Data Lake Store, který se používá, můžete zobrazit spušt
 
 > [!NOTE]
 > Podporovány jsou pouze krátké názvy služby Blob Storage. Nepoužívejte plně kvalifikovaný název domény, například "myblob.blob.core.windows.net".
-> 
+>
 
 ### <a name="add-additional-data-lake-store-accounts"></a>Přidat další účty Data Lake Store
 
@@ -146,6 +146,7 @@ Výpis účtu úložiště objektů BLOB:
 ![Zdroj dat seznamu Data Lake Analytics](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>Odstranit zdroje dat:
+
 Odstranění účtu Data Lake Store:
 
    ```azurecli
@@ -159,6 +160,7 @@ Postup odstranění účtu úložiště BLOB:
    ```
 
 ## <a name="manage-jobs"></a>Správa úloh
+
 Než budete moct vytvořit úlohu, musíte mít účet Data Lake Analytics.  Další informace najdete v tématu [Správa účtů Data Lake Analytics](#manage-accounts).
 
 ### <a name="list-jobs"></a>Vypsat úlohy
@@ -179,7 +181,7 @@ Než budete moct vytvořit úlohu, musíte mít účet Data Lake Analytics.  Dal
 
 > [!NOTE]
 > Výchozí priorita úlohy je 1000 a výchozí stupeň paralelismu pro úlohu je 1.
-> 
+>
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
@@ -193,7 +195,7 @@ Pomocí příkazu list Najděte ID úlohy a pak pomocí tlačítka Zrušit úloh
 
 ## <a name="pipelines-and-recurrences"></a>Kanály a opakování
 
-**Získání informací o kanálech a opakováních**
+### <a name="get-information-about-pipelines-and-recurrences"></a>Získání informací o kanálech a opakováních
 
 Pomocí příkazů `az dla job pipeline` můžete zobrazit informace o kanálu dříve odeslaných úloh.
 
@@ -211,9 +213,8 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Začínáme s Data Lake Analytics pomocí Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Správa Azure Data Lake Analytics pomocí Azure Portal](data-lake-analytics-manage-use-portal.md)
 * [Monitorování úloh Azure Data Lake Analytics a odstraňování potíží pomocí webu Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-

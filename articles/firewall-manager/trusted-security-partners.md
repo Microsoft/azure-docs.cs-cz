@@ -1,31 +1,28 @@
 ---
-title: Co jsou poskytovatelé partnerů zabezpečení Azure Firewall Manageru (Preview)
+title: Co jsou poskytovatelé partnerů zabezpečení Azure Firewall Manageru?
 description: Další informace o poskytovatelích partnerů zabezpečení Azure Firewall Manageru
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 3d430deae191fbc9f9ab5bbbc2b83ee4640dd831
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791505"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563610"
 ---
-# <a name="what-are-security-partner-providers-preview"></a>Co jsou poskytovatelé partnera zabezpečení (Preview)?
+# <a name="what-are-security-partner-providers"></a>Kdo jsou poskytovatelé partnerů pro zabezpečení?
 
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+*Poskytovatelé zabezpečení* v nástroji Azure firewall Manager vám umožňují používat vaše známé nabídky zabezpečení jako služby (SECaaS) třetích stran k ochraně internetového přístupu pro vaše uživatele.
 
-*Poskytovatelé zabezpečení (Preview)* v Azure firewall Manageru vám umožní využít vaše známé nabídky zabezpečení jako služby (SECaaS) od jiných výrobců k ochraně internetového přístupu pro vaše uživatele.
-
-S rychlou konfigurací můžete zabezpečit centrum s podporovaným partnerem zabezpečení a směrovat a filtrovat internetový provoz z virtuálních sítí (virtuální sítě) nebo umístění větví v rámci jedné oblasti. To se provádí pomocí automatizované správy směrování, aniž byste nastavili a spravovali trasy definované uživatelem (udr).
+S rychlou konfigurací můžete zabezpečit centrum s podporovaným partnerem zabezpečení a směrovat a filtrovat internetový provoz z virtuálních sítí (virtuální sítě) nebo umístění větví v rámci jedné oblasti. Můžete to provést pomocí automatizované správy směrování, aniž byste nastavili a spravovali trasy definované uživatelem (udr).
 
 Můžete nasadit zabezpečená centra nakonfigurovaná s partnerem zabezpečení podle vašeho výběru ve více oblastech Azure, abyste získali připojení a zabezpečení pro uživatele kdekoli na celém světě v těchto oblastech. Díky možnosti použít nabídku partnera zabezpečení pro provoz aplikace Internet/SaaS a Azure Firewall privátních přenosů v zabezpečených centrech teď můžete začít sestavovat hraniční zabezpečení v Azure, které je blízko globálně distribuovaných uživatelů a aplikací.
 
-V této verzi Preview jsou podporovaným partnerem zabezpečení **ZScaler**, **Check Point**a **iboss**. Podporované oblasti jsou WestCentralUS, NorthCentralUS, WestUS, WestUS2 a EastUS.
+Podporovaní partneři zabezpečení jsou **ZScaler**, **Check Point** (Preview) a **iboss** (Preview).
 
 ![Poskytovatelé partnerů pro zabezpečení](media/trusted-security-partners/trusted-security-partners.png)
 
@@ -42,18 +39,8 @@ Pomocí partnerů zabezpečení můžete filtrovat internetový provoz v násled
    Využijte možnosti připojení a globální distribuce Azure a jednoduše přidejte NSaaS filtrování třetích stran pro scénáře sítě Internet. Pomocí Azure Virtual WAN můžete vytvořit globální tranzitní síť a hraniční zabezpečení.
 
 Podporovány jsou následující scénáře:
--   Síť VNet přes Internet prostřednictvím partnerské nabídky třetí strany.
--   Z větvení na Internet prostřednictvím partnerské nabídky třetí strany.
--   Z větvení na Internet prostřednictvím partnerské nabídky třetí strany, zbývajícího privátního provozu (paprsky, paprsky, paprsky, větvení a paprsků) prostřednictvím Azure Firewall.
-
-Následující scénář není podporován:
-
-- Virtuální síť k Internetu prostřednictvím partnerské nabídky se nedá kombinovat s Azure Firewall pro privátní provoz. Podívejte se na následující omezení.
-
-## <a name="current-limitations"></a>Aktuální omezení
-
-- Pro virtuální síť a Internet nemůžete přimíchat Azure Firewall pro privátní provoz a partnerskou nabídku pro internetový provoz. V zabezpečeném virtuálním centru můžete buď Odeslat internetový provoz do Azure Firewall nebo nabídku zabezpečení třetí strany, ale ne obojí. 
-- Na jedno virtuální centrum můžete nasadit maximálně jednoho partnera zabezpečení. Pokud potřebujete poskytovatele změnit, je nutné odebrat existujícího partnera a přidat nového.
+- Síť VNet/větev k Internetu prostřednictvím poskytovatele zabezpečení a dalšího přenosu dat (paprsky až paprsky, paprsky do větve, větvení na paprsky) prostřednictvím Azure Firewall.
+- Virtuální síť/větev k Internetu prostřednictvím poskytovatele zabezpečení partnera
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Osvědčené postupy pro filtrování internetového provozu na zabezpečených virtuálních rozbočovačích
 
@@ -75,8 +62,7 @@ V případě systému Office 365 jsou latence sítě a výkon zásadní pro úsp
 
 [Principy připojení k síti office 365](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) volání síťových připojení sady Office 365 k místnímu směrování z uživatelské větve nebo mobilního zařízení a přímo přes Internet do nejbližšího síťového bodu Microsoftu.
 
-Připojení k Office 365 jsou navíc silně šifrovaná pro ochranu osobních údajů a využívají efektivní a proprietární protokoly z důvodů výkonu. To je nepraktické a mělo by to mít vliv na to, aby se tato připojení mohla vztahovat na tradiční řešení zabezpečení na úrovni sítě. Z těchto důvodů důrazně doporučujeme, aby zákazníci odesílali provoz Office 365 přímo z větví, a to ještě před odesláním zbytku dat prostřednictvím Azure. Microsoft spolupracuje s několika poskytovateli řešení SD-WAN, kteří se integrují s Azure a Office 365, a usnadňuje zákazníkům možnost Povolit sadu Office 365 Direct a Local Internet užitečných. Podrobnosti najdete v tématu [návody nastavení zásad O365 přes virtuální síť WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
-
+Kromě toho jsou připojení k Office 365 zašifrovaná z hlediska ochrany osobních údajů a využívají efektivní a proprietární protokoly z důvodů výkonu. To je nepraktické a mělo by to mít vliv na to, aby se tato připojení mohla vztahovat na tradiční řešení zabezpečení na úrovni sítě. Z těchto důvodů důrazně doporučujeme, aby zákazníci odesílali provoz Office 365 přímo z větví, a to ještě před odesláním zbytku dat prostřednictvím Azure. Microsoft spolupracuje s několika poskytovateli řešení SD-WAN, kteří se integrují s Azure a Office 365, a usnadňuje zákazníkům možnost Povolit sadu Office 365 Direct a Local Internet užitečných. Podrobnosti najdete v tématu [návody nastavení zásad O365 přes virtuální síť WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0b7ca2654fb8b7bdcca6dcb5f2fd354a138f2fcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564364"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -60,7 +60,7 @@ Například následující obrázek představuje porovnání výsledků ze dvou 
 
 Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou jiné než v porovnání s výsledky ze dvou regresních modelů nebo porovnáním dvou modelů klasifikace. Ale celková prezentace je stejná. 
 
-## <a name="metrics"></a>Průzkumník
+## <a name="metrics"></a>Metriky
 
 Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
 
@@ -122,7 +122,7 @@ Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
   
      Pokud je počet datových bodů přiřazených ke clusterům menší, než je celkový počet dostupných datových bodů, znamená to, že datové body nelze přiřadit ke clusteru.  
   
--   Skóre ve sloupci, **maximální vzdálenost do centra clusterů**, představuje součet vzdálenosti mezi každým bodem a těžištěem clusteru daného bodu.  
+-   Skóre ve sloupci, **maximální vzdálenost do centra clusterů**, představuje maximální vzdálenost mezi každým bodem a těžištěem clusteru daného bodu.  
   
      Pokud je toto číslo vysoké, může to znamenat, že cluster je výrazně rozptýlený. Tuto statistiku byste měli projít společně s **průměrnou vzdáleností do centra clusterů** k určení rozprostření clusteru.   
 

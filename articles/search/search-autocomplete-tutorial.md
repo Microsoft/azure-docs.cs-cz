@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 004f1ea55bcda68485d8b11ed472b6cab2ca7545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562478"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
 
@@ -34,7 +34,7 @@ Zbývající část tohoto článku se zaměřuje na dotazy a kód klienta. K il
 Mezi prvky požadavku patří jedno z rozhraní API pro hledání podle typu, částečný dotaz a modul pro návrhy. Následující skript ilustruje komponenty požadavku pomocí automatického dokončování REST API jako příklad.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"
@@ -68,10 +68,10 @@ V případě návrhů byste měli dál vylepšit odpověď, aby nedocházelo k d
 
 | Parametr | Využití |
 |-----------|-------|
-| **$select** | Máte-li v nástroji pro návrh více **sourceFields** , pomocí **$Select** vyberte, které pole přispívá k hodnotám (`$select=GameTitle`). |
+| **$select** | Máte-li v nástroji pro návrh více **sourceFields** , pomocí **$Select** vyberte, které pole přispívá k hodnotám ( `$select=GameTitle` ). |
 | **searchFields** | Omezí dotaz na konkrétní pole. |
-| **$filter** | Použijte kritéria shody pro sadu výsledků dotazu (`$filter=Category eq 'ActionAdventure'`). |
-| **$top** | Omezí výsledky na konkrétní číslo (`$top=5`).|
+| **$filter** | Použijte kritéria shody pro sadu výsledků dotazu ( `$filter=Category eq 'ActionAdventure'` ). |
+| **$top** | Omezí výsledky na konkrétní číslo ( `$top=5` ).|
 
 ## <a name="add-user-interaction-code"></a>Přidat kód interakce uživatele
 
@@ -140,7 +140,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě DocumentsOperationsExtensions. navrhuje](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
-`InitSearch` Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+`InitSearch`Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)

@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565288"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Algoritmus hodnocení v Azure Kognitivní hledání
 
 > [!IMPORTANT]
 > Od 15. července 2020 nově vytvořené vyhledávací služby použijí funkci hodnocení BM25 automaticky, která se ve většině případů osvědčila pro poskytování vyhledávacích výsledků, které se lépe rovnají se očekáváním uživatelů, než je aktuální výchozí hodnocení. Kromě vynikajícího hodnocení umožňuje BM25 také možnosti konfigurace pro optimalizaci výsledků na základě faktorů, jako je například velikost dokumentu.  
 >
-> V této změně se pravděpodobně v pořadí výsledků hledání zobrazí mírné změny. Pro ty, kteří chtějí otestovat dopad této změny, je BM25 algoritmus dostupný v rozhraní API verze 2019-05-06-Preview.  
+> V této změně se pravděpodobně v pořadí výsledků hledání zobrazí mírné změny. Pro ty, kteří chtějí otestovat dopad této změny, je BM25 algoritmus dostupný v rozhraní API verze 2019-05-06-Preview a v 2020-06-30.  
 
 Tento článek popisuje, jak můžete použít nový algoritmus řazení BM25 pro existující vyhledávací služby pro vytváření nových indexů a dotazování pomocí rozhraní API pro verzi Preview.
 
@@ -30,7 +30,7 @@ V koncepční podobě se starším algoritmem podobnosti BM25 převezme svůj ko
 
 ## <a name="how-to-test-bm25-today"></a>Postup testování BM25 ještě dnes
 
-Při vytváření nového indexu můžete nastavit vlastnost **podobnosti** a zadat algoritmus. Budete muset použít `api-version=2019-05-06-Preview`, jak je znázorněno níže.
+Při vytváření nového indexu můžete nastavit vlastnost **podobnosti** a zadat algoritmus. Můžete použít `api-version=2019-05-06-Preview` , jak je znázorněno níže, nebo `api-version=2020-06-30` .
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -65,7 +65,7 @@ Vlastnost **podobnost** je užitečná v tomto přechodném období, pokud jsou 
 |----------|-------------|
 | podobnosti | Nepovinný parametr. Platné hodnoty zahrnují *"#Microsoft. Azure. Search. ClassicSimilarity"* nebo *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> Vyžaduje `api-version=2019-05-06-Preview` nebo novější na vyhledávací službě vytvořenou před 15. července 2020. |
 
-Pro nové služby vytvořené po 15. červenci 2020 se BM25 používá automaticky a je jediným algoritmem podobnosti. Pokud se pokusíte nastavit **podobnost** `ClassicSimilarity` na novou službu, bude vrácena chyba 400, protože tento algoritmus není podporován v nové službě.
+Pro nové služby vytvořené po 15. červenci 2020 se BM25 používá automaticky a je jediným algoritmem podobnosti. Pokud se pokusíte nastavit **podobnost** na `ClassicSimilarity` novou službu, bude vrácena chyba 400, protože tento algoritmus není podporován v nové službě.
 
 Pro existující služby vytvořené před 15. července 2020 zůstane u klasické podobnosti výchozí algoritmus. Pokud je vlastnost **podobnosti** vynechána nebo je nastavena na hodnotu null, index používá klasický algoritmus. Pokud chcete použít nový algoritmus, budete muset nastavit **podobnost** , jak je popsáno výše.
 

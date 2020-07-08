@@ -3,14 +3,14 @@ title: Ladění vykreslování
 description: Přehled efektů vykreslování ladění na straně serveru
 author: jumeder
 ms.author: jumeder
-ms.date: 04/09/2020
+ms.date: 06/15/2020
 ms.topic: article
-ms.openlocfilehash: dc07b20340b852eadeb7c93e5cef2ed2092b3641
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: aa6e6dced3dfd32896489db2ed76704304dbc745
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565440"
 ---
 # <a name="debug-rendering"></a>Ladění vykreslování
 
@@ -18,7 +18,7 @@ Rozhraní API pro vykreslování ladění poskytuje řadu globálních možnost�
 
 ## <a name="available-debug-rendering-effects"></a>Dostupné efekty vykreslování ladění
 
-|Nastavení                          | Účinek                               |
+|Nastavení                          | Efekt                               |
 |---------------------------------|:-------------------------------------|
 |Čítač rámců                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuální ID rámce na straně serveru, které se průběžně zvětšuje podle toho, jak vykreslování pokračuje. |
 |Počet mnohoúhelníků                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuálně vykreslené množství mnohoúhelníků, stejnou hodnotu jako dotazování dotazů na výkon na [straně serveru](performance-queries.md) .| 

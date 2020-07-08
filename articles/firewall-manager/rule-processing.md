@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74e58c316651a1604984ac14c70a3a65d46d6d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70026173d1cb932d30a59ea2b876ef22217a81bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73518200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563679"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování pravidel Azure Firewall
 
@@ -20,7 +20,7 @@ Azure Firewall obsahuje pravidla překladu adres (NAT), pravidla sítě a aplika
 
 ## <a name="network-rules-and-applications-rules"></a>Pravidla sítě a pravidla pro aplikace
 
-Nejdřív se aplikují Síťová pravidla a pak pravidla aplikace. Pravidla se ukončí. Takže pokud se v síťových pravidlech najde shoda, pravidla aplikací se nezpracují.  Pokud se nenajde shoda s žádným pravidlem sítě a protokol paketu je HTTP nebo HTTPS, paket se vyhodnotí podle pravidel aplikace. Pokud se pořád nenajde žádná shoda, vyhodnotí se paket na základě kolekce pravidel infrastruktury. Pokud se stále nenajde žádná shoda, ve výchozím nastavení se paket odepře.
+Nejdřív se aplikují Síťová pravidla a pak pravidla aplikace. Pravidla se ukončí. Pokud se tedy v síťových pravidlech najde shoda, pravidla aplikace se nezpracují.  Pokud se neshoduje žádné pravidlo sítě a protokol paketů je HTTP/HTTPS, paket se pak vyhodnotí podle pravidel aplikace. Pokud se pořád nenajde žádná shoda, vyhodnotí se paket na základě kolekce pravidel infrastruktury. Pokud se ještě neshodují, pak je ve výchozím nastavení povolený paket.
 
 ## <a name="nat-rules"></a>Pravidla překladu adres (NAT)
 
@@ -30,8 +30,8 @@ Příchozí připojení je možné povolit konfigurací překladu cílové sít�
 
 Kolekce pravidel sítě zděděné z nadřazené zásady mají vždycky přednost před kolekcemi pravidel sítě, které jsou definované jako součást vašich nových zásad. Stejná logika platí také pro kolekce pravidel aplikace. Kolekce pravidel sítě se ale vždycky zpracovávají před kolekcemi pravidel aplikace bez ohledu na dědičnost.
 
-Ve výchozím nastavení vaše zásada zdědí režim analýzy hrozeb v nadřazené zásadě. To můžete přepsat nastavením režimu analýzy hrozeb na jinou hodnotu na stránce nastavení zásad. Lze přepsat pouze přísnější hodnotou. Například pokud máte nadřazenou zásadu nastavenou na *výstrahu*, můžete tuto místní zásadu nakonfigurovat na možnost *výstrahy a odepřít*, ale nemůžete ji vypnout.
+Ve výchozím nastavení zdědí vaše zásady svůj nadřazený režim analýzy hrozeb. To můžete přepsat nastavením režimu analýzy hrozeb na jinou hodnotu na stránce nastavení zásad. Je možné ji přepsat pouze přísnější hodnotou. Například pokud máte nadřazenou zásadu nastavenou na *výstrahu*, můžete tuto místní zásadu nakonfigurovat na možnost *výstrahy a odepřít*, ale nemůžete ji vypnout.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace o nástroji Azure Firewall Manager Preview](overview.md)
+- [Další informace o Azure Firewall Manageru](overview.md)

@@ -1,6 +1,6 @@
 ---
 title: Prozkoumat incidenty pomocí služby Azure Sentinel | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak prozkoumat incidenty pomocí služby Azure Sentinel.
+description: V tomto kurzu se dozvíte, jak pomocí funkce Azure Sentinel vytvořit Pokročilá pravidla výstrah, která generují incidenty, které můžete přiřadit a prozkoumat.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: c4118ef8de6d9289b67dd76c710fc11758768262
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565241"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 

@@ -1,6 +1,6 @@
 ---
 title: Připojit AWS CloudTrail ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data AWS CloudTrail k Azure Sentinel.
+description: Pomocí konektoru AWS můžete delegovat přístup Azure Sentinel k protokolům prostředků AWS a vytvořit vztah důvěryhodnosti mezi AWS CloudTrail a Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 6f4b5713aed6bae574c30f555ef7f63307138a96
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564585"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Připojení Azure Sentinel k AWS CloudTrail
 

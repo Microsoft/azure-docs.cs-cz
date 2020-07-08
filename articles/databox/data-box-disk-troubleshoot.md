@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 48a23c483ab4338492a407b60f3a5dfc95c0e680
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565003"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Řešení potíží s ověřováním v Azure Data Box Disk pomocí protokolů
 
@@ -21,7 +21,7 @@ Tento článek se týká Microsoft Azure Data Box Disk. Tento článek popisuje,
 
 ## <a name="validation-tool-log-files"></a>Soubory protokolu nástroje pro ověření
 
-Když ověříte data na discích pomocí [Nástroje pro ověření](data-box-disk-deploy-copy-data.md#validate-data), vytvoří se *Chyba. XML* pro protokolování chyb. Soubor protokolu je umístěný ve `Drive:\DataBoxDiskImport\logs` složce vaší jednotky. Odkaz na protokol chyb je k dispozici při spuštění ověřování.
+Když ověříte data na discích pomocí [Nástroje pro ověření](data-box-disk-deploy-copy-data.md#validate-data), vygeneruje se *error.xml* pro protokolování chyb. Soubor protokolu je umístěný ve `Drive:\DataBoxDiskImport\logs` složce vaší jednotky. Odkaz na protokol chyb je k dispozici při spuštění ověřování.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -71,9 +71,9 @@ Pokud spustíte více relací pro ověření, je pro každou relaci vygenerován
 
 ## <a name="validation-tool-errors"></a>Chyby nástroje pro ověření
 
-Chyby obsažené v *souboru Error. XML* s odpovídajícími doporučenými akcemi jsou shrnuty v následující tabulce.
+Chyby obsažené v *error.xml* s odpovídajícími doporučenými akcemi jsou shrnuty v následující tabulce.
 
-| Kód chyby| Popis                       | Doporučené akce               |
+| Kód chyby| Description                       | Doporučené akce               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Data byla úspěšně ověřena. | Nevyžaduje se žádná akce. |
 | `InvalidXmlCharsInPath` |Nelze vytvořit soubor manifestu, protože cesta k souboru obsahuje neplatné znaky. | Chcete-li pokračovat, odeberte tyto znaky.  |

@@ -1,24 +1,21 @@
 ---
-title: Připojení k znalostnímu obchodu (Preview) pomocí Power BI
+title: Připojení k znalostnímu obchodu pomocí Power BI
 titleSuffix: Azure Cognitive Search
-description: Připojte si Azure Kognitivní hledání Knowledge Store (Preview) s Power BI pro analýzu a průzkum.
+description: Připojte si Azure Kognitivní hledání Knowledge Store pomocí Power BI pro analýzu a průzkum.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/30/2020
+ms.openlocfilehash: 438d8cbc4bf03fa9e03d0d2e1920522768ba9127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565344"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
-
-> [!IMPORTANT] 
-> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 V tomto článku se dozvíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Power Query v aplikaci Power BI Desktop. Můžete začít rychleji pracovat se šablonami nebo si vytvořit vlastní řídicí panel úplně od začátku. Toto krátké video demonstruje, jak můžete rozšířit možnosti práce s daty pomocí Azure Kognitivní hledání v kombinaci s Power BI.
 

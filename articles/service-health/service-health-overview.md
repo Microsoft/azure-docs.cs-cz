@@ -3,12 +3,12 @@ title: Přehled Service Health | Microsoft Docs
 description: Individuální informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy a údržbou služeb Azure.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563372"
 ---
 # <a name="service-health-overview"></a>Přehled Service Health
 
@@ -21,7 +21,7 @@ Service Health sleduje čtyři typy událostí stavu, které mohou mít vliv na 
 1. **Problémy se službou** – problémy ve službách Azure, které vás v tuto chvíli ovlivňují. 
 2. **Plánovaná údržba** – nadcházející údržba, která může ovlivnit dostupnost vašich služeb v budoucnu.  
 3. **Poradce pro stav** – změny ve službách Azure, které vyžadují vaši pozornost. Příklady zahrnují vyřazení funkcí Azure nebo požadavků na upgrade (například upgrade na podporované rozhraní PHP).
-4. **Informační zpravodaje zabezpečení (Preview)** – oznámení související se zabezpečením, která mohou mít vliv na dostupnost služeb Azure.
+4. **Bezpečnostní zpravodaje** – oznámení týkající se zabezpečení a porušení zabezpečení, která mohou mít vliv na dostupnost služeb Azure.
 
 > [!NOTE]
 > Chcete-li zobrazit Service Health události, musí být uživatelům [udělena role čtenář](../role-based-access-control/role-assignments-portal.md) v rámci předplatného.
@@ -36,11 +36,11 @@ Service Health sleduje čtyři typy událostí stavu, které mohou mít vliv na 
 
 Zobrazení **problémy se službou** zobrazuje všechny probíhající problémy ve službách Azure, které mají vliv na vaše prostředky. Můžete pochopit, kdy problém začal a jaké služby a oblasti budou ovlivněny. Můžete si také přečíst nejnovější aktualizaci, abyste zjistili, co Azure dělá k vyřešení tohoto problému. 
 
-![Správa problému se službou](./media/service-health-overview/azure-service-health-overview-2.png)
+[![Správa problému se službou](./media/service-health-overview/azure-service-health-overview-2.png)](./media/service-health-overview/azure-service-health-overview-2.png#lightbox)
 
 Kliknutím na kartu **potenciální dopad** můžete zobrazit konkrétní seznam prostředků, které vlastníte, což může být ovlivněno problémem. Seznam sdílených svazků clusteru můžete stáhnout a sdílet je s týmem.
 
-![Správa problému se službou – dopad](./media/service-health-overview/azure-service-health-overview-4.png)
+[![Správa problému se službou – dopad](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>Podívejte se na vznikající problémy, které můžou mít vliv na vaše služby.
 
@@ -52,7 +52,7 @@ V některých situacích se může stát, že se na [stránku stavu Azure](https
 
 Můžete získat odkaz na problém, který se má použít v systému pro správu problémů. Soubory PDF a soubory CSV si můžete stáhnout a sdílet je s lidmi, kteří nemají přístup k Azure Portal.   
 
-![Správa problému se službou – Správa problémů](./media/service-health-overview/azure-service-health-overview-3.png)
+[![Správa problému se službou – Správa problémů](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
 ## <a name="get-support-from-microsoft"></a>Získat podporu od Microsoftu
 
@@ -62,7 +62,7 @@ Pokud je váš prostředek ponechán v nesprávném stavu i po vyřešení probl
 
 Filtrovat Service Health pro zobrazení předplatných, oblastí a typů prostředků, které jsou důležité pro vaši firmu Uložte filtr a připněte si přizpůsobenou mapu světa se stavem služeb na řídicí panel portálu. 
 
-![Filtrovat přizpůsobenou mapu stavu](./media/service-health-overview/azure-service-health-overview-6a.png)
+[![Filtrovat přizpůsobenou mapu stavu](./media/service-health-overview/azure-service-health-overview-6a.png)](./media/service-health-overview/azure-service-health-overview-6a.png#lightbox)
 
 ![Připnout přizpůsobenou mapu stavu](./media/service-health-overview/azure-service-health-overview-6b.png)
 

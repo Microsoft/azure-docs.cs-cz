@@ -1,24 +1,21 @@
 ---
-title: Koncepty projekce (Preview)
+title: Koncepce projekce
 titleSuffix: Azure Cognitive Search
-description: Uložte obohacená data z kanálu indexování pro rozšíření AI do úložiště znalostí pro použití ve scénářích, které nejsou fulltextovým vyhledáváním. Znalostní databáze je aktuálně ve verzi Public Preview.
+description: Uložte obohacená data z kanálu indexování pro rozšíření AI do úložiště znalostí pro použití ve scénářích, které nejsou fulltextovým vyhledáváním.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 894fc6efc99eb7fcc17f2199270c08bc3cee8e8e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565183"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Projekce ve znalostní bázi ve službě Azure Kognitivní hledání
-
-> [!IMPORTANT] 
-> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Azure Kognitivní hledání v rámci indexování umožňuje rozšíření obsahu prostřednictvím integrovaných schopností rozpoznávání a vlastní dovednosti. Obohacení vytvoří nové informace tam, kde už dříve neexistovaly: extrakce informací z obrázků, detekce mínění, klíčových slov a entit z textu, na několik názvů. Rozšíření také přidává strukturu na nerozlišený text. Výsledkem všech těchto procesů jsou dokumenty, které usnadňují vyhledávání fulltextového vyhledávání. V mnoha instancích jsou obohacené dokumenty užitečné pro jiné scénáře, než je hledání, například pro dolování znalostí.
 

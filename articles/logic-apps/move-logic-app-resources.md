@@ -1,17 +1,17 @@
 ---
-title: Migrace aplikací logiky v rámci předplatných, skupin prostředků nebo oblastí
+title: Přesuňte aplikace logiky napříč předplatnými, skupinami prostředků nebo oblastmi.
 description: Migrace aplikací logiky nebo integračních účtů do jiných předplatných Azure, skupin prostředků nebo umístění (oblastí)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564265"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Přesunutí prostředků aplikace logiky do jiných skupin prostředků Azure, oblastí nebo předplatných
 
@@ -86,7 +86,7 @@ Další informace o šablonách nasazení pro Logic Apps najdete v těchto téma
 * [Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Hledání, otevření a stažení aplikace logiky z Azure Portal do sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Vytvoření šablon Azure Resource Manager pro Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Nasazení šablon Azure Resource Manager pro Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Nasazování šablon Azure Resource Manageru pro Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
 ### <a name="related-resources"></a>Související prostředky
 

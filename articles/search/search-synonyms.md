@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23c7913fbe9b3943559d36f5cbf2a21d7ed63dbe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78194338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563449"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Kognitivní hledání
 
@@ -51,7 +51,7 @@ Mapy synonym musí být ve formátu Apache Solr, který je vysvětlen níže. Po
 
 Novou mapu synonym můžete vytvořit pomocí HTTP POST, jak je znázorněno v následujícím příkladu:
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -64,7 +64,7 @@ Novou mapu synonym můžete vytvořit pomocí HTTP POST, jak je znázorněno v n
 
 Alternativně můžete použít PUT a zadat název mapy synonym na identifikátoru URI. Pokud mapování synonym neexistuje, vytvoří se.
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -90,24 +90,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>Vypíše mapy synonym v rámci vaší služby.
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>Získejte mapu synonym v rámci vaší služby.
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>Odstraňte mapu synonym v rámci vaší služby.
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Nakonfigurujte prohledávatelné pole tak, aby v definici indexu bylo použito mapování synonym.
 
 Novou vlastnost pole **synonymMaps** lze použít k určení mapy synonym, která se má použít pro pole, které chcete prohledávat. Mapy synonym jsou prostředky na úrovni služby a můžou na ně odkazovat libovolné pole indexu v rámci služby.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -152,7 +152,7 @@ Funkce synonym se vztahuje na vyhledávací dotazy a nevztahuje se na filtry neb
 
 Rozšíření synonym neplatí pro výrazy vyhledávání se zástupnými znaky; výrazy s předponou, přibližnými a regulárními výrazy nejsou rozbaleny.
 
-Pokud potřebujete provést jeden dotaz, který používá rozšíření synonym a zástupné znaky, regulární výrazy nebo přibližné vyhledávání, můžete kombinovat dotazy pomocí syntaxe nebo. Například pro kombinování synonym se zástupnými znaky pro jednoduchou syntaxi dotazu by byl termín `<query> | <query>*`.
+Pokud potřebujete provést jeden dotaz, který používá rozšíření synonym a zástupné znaky, regulární výrazy nebo přibližné vyhledávání, můžete kombinovat dotazy pomocí syntaxe nebo. Například pro kombinování synonym se zástupnými znaky pro jednoduchou syntaxi dotazu by byl termín `<query> | <query>*` .
 
 Pokud máte ve vývojovém (neprodukčním) prostředí existující index, Experimentujte s malým slovníkem, abyste viděli, jak Přidání synonym mění možnosti hledání, včetně dopadu na profily vyhodnocování, zvýrazňování přístupů a návrhy.
 

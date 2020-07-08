@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563120"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -16,10 +16,10 @@ Tento článek popisuje, jak odstranit [Azure Backup](backup-overview.md) trezor
 
 ## <a name="before-you-start"></a>Než začnete
 
-Trezor Recovery Services nelze odstranit pomocí žádné z následujících závislostí:
+Nemůžete odstranit trezor služby Recovery Services s některou z následujících závislostí:
 
 - Nemůžete odstranit trezor, který obsahuje chráněné zdroje dat (například virtuální počítače s IaaS, databáze SQL, sdílené složky Azure atd.).  
-- Trezor, který obsahuje data zálohy, nelze odstranit. Po odstranění zálohovaná data přejde do stavu tiché odstranění.
+- Trezor, který obsahuje data zálohy, nelze odstranit. Zálohovaná data po odstranění přejdou do stavu obnovitelného odstranění.
 - Trezor, který obsahuje zálohovaná data, nelze odstranit ve stavu tichého odstranění.
 - Trezor, který má registrované účty úložiště, se nedá odstranit.
 
@@ -90,7 +90,7 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 
       - Pro MABS nebo DPM vyberte **záložní servery pro správu**. Pak vyberte server, který chcete odstranit.
 
-          ![V případě MABS vyberte svůj trezor a otevřete jeho řídicí panel.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![V případě MABS nebo DPM vyberte svůj trezor a otevřete jeho řídicí panel.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. Otevře se podokno **Odstranit** se zprávou upozornění.
 
@@ -114,7 +114,7 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly pro správu:
 
 - [Odstranit zálohované položky z konzoly pro správu MARS](#delete-backup-items-from-the-mars-management-console)
-- [Odstranit zálohované položky z konzoly pro správu MABS](#delete-backup-items-from-the-mabs-management-console)
+- [Odstranění zálohových položek z konzoly pro správu MABS nebo DPM](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Odstranit zálohované položky z konzoly pro správu MARS
 
@@ -142,12 +142,12 @@ Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly
 
 Po odstranění místních zálohových položek postupujte podle dalších kroků na portálu.
 
-### <a name="delete-backup-items-from-the-mabs-management-console"></a>Odstranit zálohované položky z konzoly pro správu MABS
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>Odstranění zálohových položek z konzoly pro správu MABS nebo DPM
 
 >[!NOTE]
 >Pokud jste zdrojový počítač odstranili nebo ztratili bez zastavení zálohování, další naplánované zálohování se nezdaří. Původní bod obnovení vyprší podle zásad, ale poslední jeden bod obnovení se vždy zachová, dokud neukončíte zálohování a neodstraníte data. To můžete provést podle kroků v [této části](#delete-protected-items-on-premises).
 
-Existují dvě metody, které můžete použít k odstranění zálohovaných položek z konzoly pro správu MABS.
+Existují dvě metody, které můžete použít k odstranění zálohovaných položek z konzoly pro správu aplikace MABS nebo DPM.
 
 #### <a name="method-1"></a>Metoda 1
 
@@ -171,7 +171,7 @@ Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kr
 
 #### <a name="method-2"></a>Metoda 2
 
-Otevřete konzolu **pro správu MABS** . V části **Vybrat způsob ochrany dat**zrušte zaškrtnutí políčka **Chci online ochranu** .
+Otevřete konzolu pro správu **MABS** nebo **DPM** . V části **Vybrat způsob ochrany dat**zrušte zaškrtnutí políčka **Chci online ochranu** .
 
   ![Vyberte metodu ochrany dat.](./media/backup-azure-delete-vault/data-protection-method.png)
 

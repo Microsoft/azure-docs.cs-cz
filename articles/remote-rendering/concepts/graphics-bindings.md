@@ -9,12 +9,12 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564991"
 ---
 # <a name="graphics-binding"></a>Grafika – vazba
 
@@ -27,7 +27,7 @@ Po nastavení vám vazba grafiky poskytne přístup k různým funkcím, které 
 V Unity je celá vazba zpracována pomocí `RemoteUnityClientInit` předané struktury `RemoteManagerUnity.InitializeManager` . Chcete-li nastavit režim grafiky, musí `GraphicsApiType` být pole nastaveno na zvolenou vazbu. Pole se vyplní automaticky v závislosti na tom, jestli je k dispozici XRDevice. Chování se dá ručně přepsat pomocí následujícího chování:
 
 * **HoloLens 2**: je vždycky používána vazba grafiky [Windows Mixed reality](#windows-mixed-reality) .
-* **Plochá desktopová aplikace UWP**: [simulace](#simulation) se vždycky používá. Pokud chcete použít tento režim, nezapomeňte postupovat podle kroků v části [kurz: nastavení projektu Unity od začátku](../tutorials/unity/project-setup.md).
+* **Plochá desktopová aplikace UWP**: [simulace](#simulation) se vždycky používá.
 * **Editor Unity**: [simulace](#simulation) se vždycky používá, pokud se nepřipojí náhlavní souprava WMR VR. v takovém případě se zakáže, aby bylo možné ladit části aplikace související s nezávislou na Arr. Viz také [holografická Vzdálená komunikace](../how-tos/unity/holographic-remoting.md).
 
 Jediná jiná relevantní část pro Unity přistupuje k [základní vazbě](#access). všechny ostatní níže uvedené oddíly lze vynechat.
@@ -233,4 +233,4 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: vytvoření projektu Unity od začátku](../tutorials/unity/project-setup.md)
+* [Kurz: zobrazení vzdáleně generovaných modelů](../tutorials/unity/view-remote-models/view-remote-models.md)
