@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 47e9e37676a4afa9ec29393bf970c368f3f9e5be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77586120"
 ---
 ## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
 
-### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
+### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
 
 Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 
