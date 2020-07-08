@@ -3,12 +3,12 @@ title: Aktualizace existujícího přiřazení z portálu
 description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení podrobného plánu z portálu v Azure Modrotiskys.
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381793"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969460"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -50,18 +50,18 @@ Nasazení aktualizovaných přiřazení následuje několik důležitých pravid
   - Pokud se změní definice přiřazení zásady, vytvoří se nové přiřazení zásady.
     Přiřazení zásad nasazené dříve jsou ponechány na svém místě.
   - Pokud se artefakt přiřazení zásad odebere z podrobného plánu, nasadí se nasazená přiřazení zásad.
-- Šablony Azure Resource Manageru
+- Šablony Azure Resource Manager (šablony ARM)
   - Šablona je zpracována prostřednictvím Správce prostředků jako **Put**. Vzhledem k tomu, že každý typ prostředku zpracovává tuto akci odlišně, prostudujte si dokumentaci ke všem zahrnutým prostředkům, abyste zjistili dopad této akce při spuštění pomocí modrotisky.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Možné chyby při aktualizaci přiřazení
 
-Při aktualizaci přiřazení je možné provést změny, které se při spuštění přeruší. Příkladem je změna umístění skupiny prostředků poté, co již byla nasazena. Všechny změny, které jsou podporovány nástrojem [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) , mohou být provedeny, ale všechny změny, které by způsobily chybu prostřednictvím Azure Resource Manager, budou také mít za následek selhání přiřazení.
+Při aktualizaci přiřazení je možné provést změny, které se při spuštění přeruší. Příkladem je změna umístění skupiny prostředků poté, co již byla nasazena. Všechny změny, které jsou podporovány nástrojem [Správce prostředků](../../../azure-resource-manager/management/overview.md) , mohou být provedeny, ale všechny změny, které by způsobily chybu prostřednictvím Správce prostředků, budou také mít za následek selhání přiřazení.
 
 Neexistuje žádné omezení počtu, kolikrát může být přiřazení aktualizováno. Pokud dojde k chybě, určete chybu a proveďte další aktualizaci přiřazení.  Příklady scénářů chyb:
 
 - Chybný parametr
 - Již existující objekt
-- Změna není podporována nástrojem Azure Resource Manager
+- Změna není podporována nástrojem Správce prostředků
 
 ## <a name="next-steps"></a>Další kroky
 

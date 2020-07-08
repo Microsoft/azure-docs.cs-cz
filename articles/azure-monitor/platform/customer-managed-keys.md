@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 06/11/2020
-ms.openlocfilehash: 6e3a4b61c86d476a9e5c5a0392c51a72f06f048d
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.date: 07/05/2020
+ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84761327"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969598"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -208,13 +208,10 @@ Tato operace je asynchronní a její dokončení může chvíli trvat.
 > [!IMPORTANT]
 > Zkopírujte a uložte odpověď, protože budete potřebovat podrobnosti v části Další kroky.
 > 
-**PowerShell**
 
 ```powershell
-New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} 
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
 ```
-
-**REST**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -303,13 +300,9 @@ Aktualizujte prostředek *clusteru* KeyVaultProperties s podrobnostmi identifik�
 
 Tato operace je asynchronní při aktualizaci podrobností identifikátoru klíče a její dokončení může chvíli trvat. Při aktualizaci hodnoty kapacity je synchronní.
 
-**PowerShell**
-
 ```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -KeyVaultUri {key-uri} -KeyName {key-name} -KeyVersion {key-version}
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
-
-**REST**
 
 > [!NOTE]
 > Pomocí opravy můžete aktualizovat *SKU*prostředků *clusteru* , *keyVaultProperties* nebo *billingType* .
@@ -391,14 +384,10 @@ K provedení této operace musíte mít oprávnění Write pro váš pracovní p
 
 Tato operace je asynchronní a její dokončení může chvíli trvat.
 
-**PowerShell**
-
 ```powershell
-$clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}).id
-Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId
+$clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name").id
+Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId
 ```
-
-**REST**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
@@ -472,17 +461,84 @@ Rotace CMK vyžaduje explicitní aktualizaci prostředku *clusteru* s novou verz
 
 Všechna vaše data zůstanou po operaci střídání klíčů přístupná, protože data vždycky zašifrovaná pomocí šifrovacího klíče účtu (AEK), zatímco AEK se teď šifruje pomocí nového klíče KEK (Key Encryption Key) v Key Vault.
 
-## <a name="cmk-manage"></a>Správa CMK
+## <a name="saving-queries-protected-with-cmk"></a>Ukládání dotazů chráněných pomocí CMK
+
+Dotazovací jazyk používaný v Log Analytics je výrazná a může obsahovat citlivé informace v komentářích přidaných do dotazů nebo v syntaxi dotazu. Některé organizace vyžadují, aby tyto informace byly chráněny jako součást zásad CMK a vy budete potřebovat ukládat dotazy zašifrované s vaším klíčem. Azure Monitor vám umožní ukládat *uložená hledání* a dotazy na *výstrahy protokolu* ve vlastním účtu úložiště, který se připojujete k vašemu pracovnímu prostoru. 
+
+> Poznámka CMK pro dotazy použité v sešitech a řídicích panelech Azure se zatím nepodporují. Tyto dotazy zůstanou šifrované pomocí klíče Microsoft.  
+
+S využitím vlastního úložiště (BYOS) odesílá služba dotazy do účtu úložiště, který ovládáte. To znamená, že [zásady šifrování na](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) místě můžete řídit buď pomocí stejného klíče, který používáte k šifrování dat v log Analyticsm clusteru, nebo v jiném klíči. Budete ale odpovědní za náklady spojené s tímto účtem úložiště. 
+
+**Otázky před nastavením CMK pro dotazy**
+* Musíte mít oprávnění Write k vašemu pracovnímu prostoru i účtu úložiště.
+* Ujistěte se, že jste svůj účet úložiště vytvořili ve stejné oblasti, ve které se nachází Log Analytics pracovní prostor.
+* *Uložení hledání* v úložišti se považuje za artefakty služby a jejich formát se může změnit.
+* Existující *hledání* budou odebrána z pracovního prostoru. Zkopírujte a všechna *hledání* , která budete potřebovat před konfigurací. *Uložená hledání* můžete zobrazit pomocí tohoto [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0) .
+* Historie dotazů není podporovaná a nebudete moct zobrazit dotazy, které jste spustili.
+* Pro účely ukládání dotazů můžete přidružit jeden účet úložiště k pracovnímu prostoru, ale je možné ho použít jak v *uložených hledání* , tak i v dotazech *na protokolování výstrah* .
+* Připnutí na řídicí panel se nepodporuje.
+
+**Konfigurace BYOS pro dotazy**
+
+Přidružte k vašemu pracovnímu prostoru účet úložiště s *dotazem* DataSourceType. 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Query", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+Po dokončení konfigurace budou všechny nové *uložené vyhledávací* dotazy uloženy v úložišti.
+
+**Konfigurace BYOS pro protokol – výstrahy**
+
+Přidružte účet úložiště ke službě *výstrahy* DataSourceType k vašemu pracovnímu prostoru. 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Alerts", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do úložiště.
+
+## <a name="cmk-management"></a>Správa CMK
 
 - **Získá všechny prostředky *clusteru* pro skupinu prostředků.**
   
-  **PowerShell**
-
   ```powershell
-  Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name}
+  Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
-
-  **REST**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -526,13 +582,9 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
 
 - **Získá všechny prostředky *clusteru* pro předplatné.**
   
-  **PowerShell**
-
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
-
-  **REST**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -547,14 +599,10 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
 
   Když se datový svazek, ke kterému se přiřadí vaše přidružené pracovní prostory, mění v čase a chcete patřičně aktualizovat úroveň rezervace kapacity. Postupujte podle kroků [aktualizace prostředku *clusteru* ](#update-cluster-resource-with-key-identifier-details) a zadejte novou hodnotu kapacity. Může být v rozsahu 1 000 až 2 000 GB za den a v krocích po 100. Pro zajištění vyšší úrovně než 2 000 GB za den kontaktujte kontakt Microsoftu, abyste ho povolili. Všimněte si, že nemusíte zadávat úplný text žádosti REST a měla by obsahovat SKU:
 
-  **PowerShell**
-
   ```powershell
-  Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -SkuCapacity {daily-ingestion-gigabyte}
+  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
   ```
 
-  **REST**
-   
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
@@ -594,13 +642,9 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
 
   Tato operace je asynchronní a její dokončení může chvíli trvat.
 
-  **PowerShell**
-
   ```powershell
-  Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -Name {workspace-name} -LinkedServiceName cluster
+  Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
-
-  **REST**
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
@@ -616,12 +660,12 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
   1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
   2. Odeslání [pracovních prostorů – Získejte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. nepřidružený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
-- **Zkontroluje stav přidružení pracovního prostoru** . Provede operaci get v pracovním prostoru a ověří, zda se v odpovědi nachází *clusterId* . Přidružený pracovní prostor bude mít vlastnost *clusterId* .
-
-  **PowerShell**
+- **Zkontroluje stav přidružení pracovního prostoru.**
+  
+  V pracovním prostoru proveďte operaci get a sledujte, zda je v odpovědi v části *funkce*přítomna vlastnost *clusterResourceId* . Přidružený pracovní prostor bude mít vlastnost *clusterResourceId* .
 
   ```powershell
-  Get-AzOperationalInsightsWorkspace -ResourceGroupName {resource-group-name} -Name {workspace-name}
+  Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
   ```
 
 - **Odstranění prostředku *clusteru***
@@ -630,14 +674,10 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
   
   Operace, která je odasociována z pracovních prostorů, je asynchronní a dokončení může trvat až 90 minut.
 
-  **PowerShell**
-
   ```powershell
-  Remove-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
 
-  **REST**
-  
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
@@ -674,7 +714,7 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
 
 – Přidružení pracovního prostoru ke zdroji *clusteru*   selže, pokud je      přidruženo k jinému prostředku *clusteru*   .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.
@@ -689,8 +729,6 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
 
 - Pokud aktualizujete existující prostředek *clusteru* s KeyVaultProperties a zásada přístupu pro klíč "Get" v Key Vault chybí, operace se nezdaří.
 
-- Pokud se pokusíte odstranit prostředek *clusteru* , který je přidružen k pracovnímu prostoru, operace odstranění selže.
-
 - Pokud při vytváření prostředku *clusteru* dojde k chybě, může to být tím, že jste v posledních 14 dnech odstranili prostředek *clusteru* a je v období obnovitelného odstranění. Název prostředku *clusteru* zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby dočasného odstranění, kdy se prostředek *clusteru* trvale odstraní.
 
 - Pokud provedete aktualizaci prostředku *clusteru* , zatímco probíhá operace, operace se nezdaří.
@@ -698,5 +736,9 @@ Všechna vaše data zůstanou po operaci střídání klíčů přístupná, pro
 - Pokud se vám nepodaří nasadit prostředek *clusteru* , ověřte, že Azure Key Vault, prostředek *clusteru*   a přidružené Log Analytics pracovní prostory jsou ve stejné oblasti. Může být v různých předplatných.
 
 - Pokud aktualizujete verzi klíče v Key Vault a neaktualizujete nové podrobnosti identifikátoru klíče v prostředku *clusteru* , cluster Log Analytics bude dál používat předchozí klíč a vaše data nebudou dostupná. Aktualizujte nové podrobnosti identifikátoru klíče v prostředku *clusteru* , aby se obnovil příjem dat a možnost dotazování na data.
+
+- Některé operace jsou dlouhé a jejich dokončení může chvíli trvat – jedná se o vytvoření *clusteru* , aktualizaci klíčů *clusteru* a odstranění *clusteru* . Stav operace můžete zjistit dvěma způsoby:
+  1. Při použití REST zkopírujte z odpovědi hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+  2. Odešlete požadavek GET do *clusteru* nebo pracovního prostoru a sledujte odpověď. Například nepřidružený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
 - Pro podporu a nápovědu týkající se spravovaného klíče zákazníka použijte své kontakty do Microsoftu.

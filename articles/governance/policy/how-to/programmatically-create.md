@@ -3,12 +3,12 @@ title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682121"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969885"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -40,7 +40,7 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
 
 ### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Vytvoření a přiřazení definice zásady pomocí PowerShellu
 
-1. Pomocí následujícího fragmentu kódu JSON vytvořte soubor JSON s názvem AuditStorageAccounts. JSON.
+1. Pomocí následujícího fragmentu kódu JSON vytvořte soubor JSON s názvem AuditStorageAccounts.jsv.
 
    ```json
    {
@@ -63,7 +63,7 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
 
    Další informace o vytváření definice zásad najdete v tématu [Azure Policy struktura definice](../concepts/definition-structure.md).
 
-1. Spuštěním následujícího příkazu vytvořte definici zásady pomocí souboru AuditStorageAccounts. JSON.
+1. Spuštěním následujícího příkazu vytvořte definici zásady pomocí AuditStorageAccounts.jsv souboru.
 
    ```azurepowershell-interactive
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
@@ -95,7 +95,7 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
    - Formě`/subscriptions/{subId}/`
    - Skupina pro správu –`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Další informace o správě zásad prostředků pomocí modulu Azure Resource Manager PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policies).
+Další informace o správě zásad prostředků pomocí modulu Správce prostředků PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policies).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Vytvoření a přiřazení definice zásady pomocí ARMClient
 

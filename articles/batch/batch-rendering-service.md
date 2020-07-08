@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: fc779d6caba2b896b869440ad523291bc3c9a9b2
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726430"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965276"
 ---
 # <a name="rendering-using-azure"></a>Vykreslování s využitím Azure
 
@@ -48,7 +48,7 @@ K dispozici je řada možností Azure, které se dají použít pro vykreslován
 
 Nejběžnějším případem je, že se má jednat o existující místní farmu vykreslování, kterou spravuje aplikace pro správu vykreslování, jako je PipelineFX Qube, Královská Render nebo Thinkbox konečný termín.  Požadavek slouží k prodloužení kapacity místní vykreslovací farmy pomocí virtuálních počítačů Azure.
 
-Software pro správu vykreslování buď má vestavěnou podporu Azure, nebo zpřístupňuje dostupné moduly plug-in, které přidávají podporu Azure. Další informace o podporovaných správcech a funkcích vykreslování najdete v článku o [používání správců vykreslování](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers).
+Software pro správu vykreslování buď má vestavěnou podporu Azure, nebo zpřístupňuje dostupné moduly plug-in, které přidávají podporu Azure. Další informace o podporovaných správcech a funkcích vykreslování najdete v článku o [používání správců vykreslování](./batch-rendering-render-managers.md).
 
 ### <a name="custom-rendering-workflow"></a>Pracovní postup vlastního vykreslování
 
@@ -77,9 +77,9 @@ Azure Batch se používá pro mnoho úloh, ale k dispozici jsou následující m
 Existuje několik způsobů, jak použít Azure Batch, všechny, které platí také pro Azure Batch vykreslování.
 
 * Rozhraní API:
-  * Pište kód pomocí rozhraní [REST](https://docs.microsoft.com/rest/api/batchservice), [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch), [Python](https://docs.microsoft.com/python/api/overview/azure/batch), [Java](https://docs.microsoft.com/java/api/overview/azure/batch)nebo dalších podporovaných rozhraní API.  Vývojáři mohou integrovat Azure Batch možností do svých stávajících aplikací nebo pracovních postupů, ať už v cloudu, nebo na základě místního prostředí.  Například [modul plug-in Autodesk Maya](https://github.com/Azure/azure-batch-maya) využívá rozhraní API služby Batch pro Python k vyvolání služby Batch, vytváření a správě fondů, odesílání úloh a úloh a stav monitorování.
+  * Pište kód pomocí rozhraní [REST](/rest/api/batchservice), [.NET](/dotnet/api/overview/azure/batch), [Python](/python/api/overview/azure/batch), [Java](/java/api/overview/azure/batch)nebo dalších podporovaných rozhraní API.  Vývojáři mohou integrovat Azure Batch možností do svých stávajících aplikací nebo pracovních postupů, ať už v cloudu, nebo na základě místního prostředí.  Například [modul plug-in Autodesk Maya](https://github.com/Azure/azure-batch-maya) využívá rozhraní API služby Batch pro Python k vyvolání služby Batch, vytváření a správě fondů, odesílání úloh a úloh a stav monitorování.
 * Nástroje příkazového řádku:
-  * Ke skriptování dávkového použití lze použít [příkazový řádek Azure](https://docs.microsoft.com/cli/azure/) nebo [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
+  * Ke skriptování dávkového použití lze použít [příkazový řádek Azure](/cli/azure/) nebo [Azure PowerShell](/powershell/azure/overview) .
   * Konkrétně Podpora šablon Batch CLI zjednodušuje vytváření fondů a odesílání úloh.
 * Uživatelská rozhraní
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) je klientský nástroj pro různé platformy, který umožňuje spravovat a monitorovat účty Batch, ale poskytuje některé bohatší funkce v porovnání s uživatelským rozhraním Azure Portal.  K dispozici je sada šablon fondů a úloh, které jsou upraveny pro každou podporovanou aplikaci a lze je použít ke snadnému vytváření fondů a k odesílání úloh.
@@ -95,9 +95,9 @@ Existuje několik způsobů, jak použít Azure Batch, všechny, které platí t
 
 V následujících úvodních kurzech se můžete pokusit Azure Batch vykreslování:
 
-* [Vykreslení scény v Blendu pomocí Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [Použití dávkového rozhraní příkazového řádku pro vykreslení maximální scény aplikace Autodesk 3ds](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Vykreslení scény v Blendu pomocí Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)
+* [Použití dávkového rozhraní příkazového řádku pro vykreslení maximální scény aplikace Autodesk 3ds](./tutorial-rendering-cli.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Určení seznamu aplikací a verzí pro vykreslování obsažených v Azure Marketplace imagí virtuálních počítačů v [tomto článku](https://docs.microsoft.com/azure/batch/batch-rendering-applications).
+Určení seznamu aplikací a verzí pro vykreslování obsažených v Azure Marketplace imagí virtuálních počítačů v [tomto článku](./batch-rendering-applications.md).
