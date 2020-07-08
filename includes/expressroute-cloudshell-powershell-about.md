@@ -9,10 +9,10 @@ ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ff5a42150140035105298802a7ce8b4d0e25959c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75436950"
 ---
 Ke spuštění většiny rutin PowerShellu a příkazů rozhraní příkazového řádku můžete použít Azure Cloud Shell a nemusíte místně instalovat Azure PowerShell nebo rozhraní příkazového řádku. Azure Cloud Shell je bezplatné interaktivní prostředí, které má předinstalované běžné nástroje Azure a je nakonfigurované pro použití s vaším účtem.
