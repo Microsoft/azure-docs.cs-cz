@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844581"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Kurz: publikování, přihlášení k odběru událostí v cloudu
@@ -67,7 +66,7 @@ V nové funkci vyberte v pravém horním rohu **získat adresu URL funkce** , vy
 
 Jako vydavatel události je třeba vytvořit téma Event Grid. Téma odkazuje na koncový bod, do kterého mohou vydavatelé odesílat události.
 
-1. Vytvořte topic2. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte topic2.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
     ```json
          {
@@ -110,7 +109,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Vytvořte subscription2. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte subscription2.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
     ```json
         {
@@ -159,7 +158,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 
 ## <a name="publish-an-event"></a>Publikování události
 
-1. Vytvořte event2. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte event2.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
     ```json
         [

@@ -4,10 +4,9 @@ description: Naučte se konfigurovat sondu, aby kontejnery v Azure Container Ins
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935682"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurace testů připravenosti
@@ -73,9 +72,9 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>Připravenost – příkaz
 
-Tento soubor YAML definuje, `readinessProbe` který podporuje příkaz `exec` připravenosti, který funguje jako kontrolu připravenosti. Tento příklad testuje příkazy připravenosti pro existenci `ready` souboru v `/tmp` adresáři.
+Tento soubor YAML definuje `readinessProbe` , který podporuje `exec` příkaz připravenosti, který funguje jako kontrolu připravenosti. Tento příklad testuje příkazy připravenosti pro existenci `ready` souboru v `/tmp` adresáři.
 
-Pokud `ready` soubor neexistuje, příkaz připravenosti se ukončí s nenulovou hodnotou; kontejner pokračuje v běhu, ale není k němu mít k dispozici. Po úspěšném ukončení příkazu s ukončovacím kódem 0 je kontejner připravený k otevření. 
+Pokud `ready` soubor neexistuje, příkaz připravenosti se ukončí s nenulovou hodnotou. kontejner pokračuje v běhu, ale není k němu možné mít k dispozici. Po úspěšném ukončení příkazu s ukončovacím kódem 0 je kontejner připravený k otevření. 
 
 Tato `periodSeconds` vlastnost určuje, že příkaz připravenosti by se měl spouštět každých 5 sekund. Test připravenosti se spustí po dobu života skupiny kontejnerů.
 
@@ -89,7 +88,7 @@ az container create --resource-group myResourceGroup --file readiness-probe.yaml
 
 ## <a name="view-readiness-checks"></a>Zobrazit kontroly připravenosti
 
-V tomto příkladu se během prvních 240 sekund příkaz Readiness (připravenost) po kontrole existence `ready` souboru nezdařil. Stavový kód vrátil signál, že kontejner není připravený.
+V tomto příkladu se během prvních 240 sekund příkaz Readiness (připravenost) po kontrole `ready` existence souboru nezdařil. Stavový kód vrátil signál, že kontejner není připravený.
 
 Tyto události se dají zobrazit z Azure Portal nebo pomocí Azure CLI. Například portál zobrazuje události typu `Unhealthy` , které jsou aktivovány při selhání příkazu připravenosti. 
 

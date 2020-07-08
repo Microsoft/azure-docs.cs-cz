@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76757964"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Správa prostředků databáze IBM Informix pomocí Azure Logic Apps
@@ -39,7 +38,7 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
 
 1. V kroku, kam chcete přidat akci Informix, vyberte **Nový krok**.
 
-   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte `informix` jako filtr. V seznamu akce vyberte akci, kterou chcete, například:
 
@@ -48,7 +47,7 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
    Konektor poskytuje tyto akce, které spouštějí příslušné databázové operace:
 
    * Získat tabulky – vypíše tabulky databáze pomocí `CALL` příkazu.
-   * Získá řádky – načte všechny řádky pomocí `SELECT *` příkazu.
+   * Získá řádky – načte všechny řádky pomocí příkazu. `SELECT *`
    * Získat řádek a načíst řádek pomocí `SELECT WHERE` příkazu
    * Přidání řádku pomocí `INSERT` příkazu
    * Úprava řádku pomocí `UPDATE` příkazu
@@ -58,14 +57,14 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
 
 1. Zadejte informace pro vybranou akci:
 
-   | Akce | Popis | Vlastnosti a popisy |
+   | Akce | Description | Vlastnosti a popisy |
    |--------|-------------|-----------------------------|
    | **Získat tabulky** | Vypíše tabulky databáze spuštěním příkazu Informix. | Žádná |
-   | **Získat řádky** | Načte všechny řádky v zadané tabulce spuštěním příkazu Informix `SELECT *` . | **Název tabulky**: název tabulky Informix, kterou chcete <p><p>Chcete-li do této akce přidat další vlastnosti, vyberte je ze seznamu **Přidat nový parametr** . Další informace naleznete v [tématu reference ke konektoru](/connectors/informix/). |
-   | **Získat řádek** | Načte řádek ze zadané tabulky spuštěním příkazu Informix `SELECT WHERE` . | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, například`9999` |
-   | **Vložení řádku** | Spuštěním příkazu Informix `INSERT` přidejte řádek do zadané tabulky Informix. | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **položka**: řádek s hodnotami, které se mají přidat |
-   | **Aktualizovat řádek** | Spuštěním příkazu Informix `UPDATE` změňte řádek v zadané tabulce Informix. | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, který se má aktualizovat, například`9999` <br>- **Řádek**: řádek s aktualizovanými hodnotami, například`102` |
-   | **Odstranit řádek** | Odebere řádek ze zadané tabulky Informix spuštěním příkazu Informix `DELETE` . | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, který se má odstranit, například`9999` |
+   | **Získat řádky** | Načte všechny řádky v zadané tabulce spuštěním `SELECT *` příkazu Informix. | **Název tabulky**: název tabulky Informix, kterou chcete <p><p>Chcete-li do této akce přidat další vlastnosti, vyberte je ze seznamu **Přidat nový parametr** . Další informace naleznete v [tématu reference ke konektoru](/connectors/informix/). |
+   | **Získat řádek** | Načte řádek ze zadané tabulky spuštěním `SELECT WHERE` příkazu Informix. | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, například`9999` |
+   | **Vložení řádku** | Spuštěním příkazu Informix přidejte řádek do zadané tabulky Informix `INSERT` . | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **položka**: řádek s hodnotami, které se mají přidat |
+   | **Aktualizovat řádek** | Spuštěním příkazu Informix změňte řádek v zadané tabulce Informix `UPDATE` . | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, který se má aktualizovat, například`9999` <br>- **Řádek**: řádek s aktualizovanými hodnotami, například`102` |
+   | **Odstranit řádek** | Odebere řádek ze zadané tabulky Informix spuštěním `DELETE` příkazu Informix. | - **Název tabulky**: název tabulky Informix, kterou chcete <br>- **ID řádku**: jedinečné ID řádku, který se má odstranit, například`9999` |
    ||||
 
 1. Uložte svou aplikaci logiky. Nyní buď [otestujte aplikaci logiky](#test-logic-app) , nebo pokračujte v sestavování aplikace logiky.
@@ -78,14 +77,14 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
 
 1. Zadejte tyto informace o připojení a pak vyberte **vytvořit**.
 
-   | Vlastnost | Vlastnost JSON | Požaduje se | Příklad hodnoty | Popis |
+   | Vlastnost | Vlastnost JSON | Vyžadováno | Příklad hodnoty | Description |
    |----------|---------------|----------|---------------|-------------|
-   | Název připojení | `name` | Ano | `informix-demo-connection` | Název, který se má použít pro připojení k databázi Informix |
-   | Server | `server` | Ano | Cloudu`informixdemo.cloudapp.net:9089` <br>– Místní:`informixdemo:9089` | Adresa TCP/IP nebo alias, který je ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP |
-   | databáze | `database` | Ano | `nwind` | Název relační databáze DRDA (RDBNAM) nebo název databáze Informix (dbname). Informix akceptuje řetězec 128 bajtů. |
+   | Název připojení | `name` | Yes | `informix-demo-connection` | Název, který se má použít pro připojení k databázi Informix |
+   | Server | `server` | Yes | Cloudu`informixdemo.cloudapp.net:9089` <br>– Místní:`informixdemo:9089` | Adresa TCP/IP nebo alias, který je ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP |
+   | databáze | `database` | Yes | `nwind` | Název relační databáze DRDA (RDBNAM) nebo název databáze Informix (dbname). Informix akceptuje řetězec 128 bajtů. |
    | Authentication | `authentication` | Pouze místní | **Basic** nebo **Windows** (Kerberos) | Typ ověřování, který požaduje vaše databáze Informix. Tato vlastnost se zobrazí jenom v případě, že vyberete **připojit přes místní bránu dat**. |
-   | Uživatelské jméno | `username` | Ne | <*databáze – uživatelské jméno*> | Uživatelské jméno pro databázi |
-   | Heslo | `password` | Ne | <*databáze – heslo*> | Heslo pro databázi |
+   | Uživatelské jméno | `username` | No | <*databáze – uživatelské jméno*> | Uživatelské jméno pro databázi |
+   | Heslo | `password` | No | <*databáze – heslo*> | Heslo pro databázi |
    | brána | `gateway` | Pouze místní | -<*Azure – předplatné*> <br>-<*Azure-on-premises-data-Gateway-Resource*> | Předplatné Azure a název prostředku Azure pro místní bránu dat, kterou jste vytvořili v Azure Portal. Vlastnost **brány** a dílčí vlastnosti se zobrazí jenom v případě, že vyberete **připojit přes místní bránu dat**. |
    ||||||
 
@@ -107,7 +106,7 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
 
 1. Na panelu nástrojů návrháře aplikace logiky vyberte **Spustit**. Po spuštění aplikace logiky můžete zobrazit výstupy z tohoto spuštění.
 
-1. V nabídce vaší aplikace logiky vyberte **Přehled**. V podokně Přehled v části **Souhrnná** > **historie spuštění**vyberte poslední spuštění.
+1. V nabídce vaší aplikace logiky vyberte **Přehled**. V podokně Přehled v části **Souhrnná**  >  **historie spuštění**vyberte poslední spuštění.
 
 1. V části **spuštění aplikace logiky**vyberte **Spustit podrobnosti**.
 

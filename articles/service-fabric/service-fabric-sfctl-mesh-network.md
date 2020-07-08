@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 9aa0b6795508cb94200c486df092b867c1086316
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905992"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
@@ -17,7 +16,7 @@ Získat a odstranit síťové prostředky sítě.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Popis|
+|Příkaz|Description|
 | --- | --- |
 | delete | Odstraní síťový prostředek. |
 | list | Zobrazí seznam všech síťových prostředků. |
@@ -28,20 +27,20 @@ Odstraní síťový prostředek.
 
 Odstraní síťový prostředek identifikovaný názvem.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název sítě. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty \: : JSON, jsonc, Table, TSV.  Výchozí \: JSON. |
+| --dotaz | Řetězec dotazu JMESPath \:Další informace a příklady najdete v tématu http//jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-mesh-network-list"></a>seznam sítí sítě sfctl
@@ -51,12 +50,12 @@ Načte informace o všech síťových prostředcích v dané skupině prostředk
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty \: : JSON, jsonc, Table, TSV.  Výchozí \: JSON. |
+| --dotaz | Řetězec dotazu JMESPath \:Další informace a příklady najdete v tématu http//jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-mesh-network-show"></a>sfctl síť sítě – zobrazení
@@ -64,20 +63,20 @@ Získá síťový prostředek s daným názvem.
 
 Načte informace o síťovém prostředku s daným názvem. Tyto informace zahrnují popis a další vlastnosti sítě.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Name-n [povinné] | Název sítě. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty \: : JSON, jsonc, Table, TSV.  Výchozí \: JSON. |
+| --dotaz | Řetězec dotazu JMESPath \:Další informace a příklady najdete v tématu http//jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844696"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Kurz: přeposílání událostí do IoTHub
@@ -40,7 +39,7 @@ Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 Jako vydavatel události je třeba vytvořit téma Event Grid. Téma odkazuje na koncový bod, do kterého mohou vydavatelé Odeslat události.
 
-1. Vytvořte topic4. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte topic4.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
    ```json
     {
@@ -84,7 +83,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. A
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Vytvořte subscription4. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Pomocí níže uvedeného obsahu vytvořte subscription4.js. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
    ```json
     {
@@ -100,7 +99,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. A
    ```
 
    >[!NOTE]
-   > `endpointType` Určuje, že je `edgeHub`předplatitel. `outputName` Určuje výstup, ve kterém bude modul Event Grid směrovat události, které odpovídají tomuto předplatnému edgeHub. Například události, které se shodují s výše uvedeným předplatným `/messages/modules/eventgridmodule/outputs/sampleSub4`, budou zapsány do.
+   > `endpointType`Určuje, že je předplatitel `edgeHub` . `outputName`Určuje výstup, ve kterém bude modul Event Grid směrovat události, které odpovídají tomuto předplatnému edgeHub. Například události, které se shodují s výše uvedeným předplatným, budou zapsány do `/messages/modules/eventgridmodule/outputs/sampleSub4` .
 2. Spuštěním následujícího příkazu vytvořte odběr. Měl by se vrátit stavový kód HTTP 200 OK.
 
     ```sh
@@ -147,7 +146,7 @@ Aktualizujte trasu hraničního centra pro přeposílání událostí odběru ud
   "fromEventGridToIoTHub":"FROM /messages/modules/eventgridmodule/outputs/sampleSub4 INTO $upstream"
   ```
 
-  Například:
+  Třeba
 
   ```json
   {
@@ -168,7 +167,7 @@ V [kurzu IoT Hub směrování](../../iot-hub/tutorial-routing.md) můžete nasta
 
 ## <a name="publish-an-event"></a>Publikování události
 
-1. Vytvořte event4. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte event4.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
     ```json
         [

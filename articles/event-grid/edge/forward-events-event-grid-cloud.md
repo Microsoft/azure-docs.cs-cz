@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844713"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Kurz: přeposílání událostí do cloudu Event Grid
@@ -34,7 +33,7 @@ Aby bylo možné dokončit tento kurz, budete potřebovat:
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Vytvoření tématu a odběru Event gridu v cloudu
 
-Pomocí [tohoto kurzu](../custom-event-quickstart-portal.md)vytvořte v cloudu téma a odběr služby Event Grid. Poznamenejte si `topicName` z nově vytvořeného tématu, které použijete později v tomto kurzu. `topicURL` `sasKey`
+Pomocí [tohoto kurzu](../custom-event-quickstart-portal.md)vytvořte v cloudu téma a odběr služby Event Grid. Poznamenejte `topicURL` si `sasKey` `topicName` z nově vytvořeného tématu, které použijete později v tomto kurzu.
 
 Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní USA, budou hodnoty vypadat přibližně takto:
 
@@ -44,7 +43,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Vytvoření tématu Event gridu na hraničních zařízeních
 
-1. Vytvořte topic3. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte topic3.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
     ```json
         {
@@ -85,7 +84,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Vytvořte subscription3. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte subscription3.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
    ```json
         {
@@ -105,7 +104,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní
    >[!NOTE]
    > **EndpointUrl** určuje, že adresa URL tématu Event Grid v cloudu. **SasKey** odkazuje na klíč tématu Event Grid cloudu. Hodnota v **části** prokládá se použije k označení všech odchozích událostí, které se mají Event Grid. To může být užitečné při odeslání do tématu Event Grid domény. Další informace o Event Grid doméně najdete v tématu věnovaném [doménám událostí](../event-domains.md) .
 
-    Například:
+    Třeba
   
     ```json
         {
@@ -157,7 +156,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní
 
 ## <a name="publish-an-event-at-the-edge"></a>Publikování události na hraničních zařízeních
 
-1. Vytvořte event3. JSON s následujícím obsahem. Podrobnosti o datové části najdete v [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte event3.jss následujícím obsahem. Podrobnosti o datové části najdete v [dokumentaci k rozhraní API](api.md) .
 
     ```json
         [

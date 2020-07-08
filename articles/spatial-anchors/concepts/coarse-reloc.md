@@ -9,10 +9,9 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844390"
 ---
 # <a name="coarse-relocalization"></a>Přibližná relokalizace
@@ -123,9 +122,9 @@ V dalším kroku se budete muset rozhodnout, jaké senzory chcete použít pro h
 
 |             | Nedvířka | Otevřené |
 |-------------|---------|----------|
-| GPS         | Vypnuto | Zapnuto |
-| WiFi        | Zapnuto | Zapnuto (volitelné) |
-| Majáky v/v | Zapnuto (volitelné s upozorněními, viz níže) | Vypnuto |
+| GPS         | Vypnout | Zapnout |
+| WiFi        | Zapnout | Zapnuto (volitelné) |
+| Majáky v/v | Zapnuto (volitelné s upozorněními, viz níže) | Vypnout |
 
 
 ### <a name="enabling-gps"></a>Povolení GPS
@@ -592,7 +591,7 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-`DistanceInMeters` Parametr určuje, jak daleko bude prozkoumat graf ukotvení k načtení obsahu. Předpokládejme například, že jste nastavili nějaké místo s kotvami s konstantní hustotou 2 každý měřič. Kromě toho fotoaparát na vašem zařízení pozoruje jedno ukotvení a služba ho úspěšně nastavila. S největší pravděpodobně máte zájem načíst všechny kotvy, které jste umístili do blízkosti, nikoli na jedno ukotveno, které právě sledujete. Za předpokladu, že kotvy, které jste umístili, jsou propojeny v grafu, služba může získat všechny okolní kotvy za vás podle hran v grafu. Množství procházeného grafu je řízeno nástrojem `DistanceInMeters`; budou se vám předávat všechny kotvy připojené k vašemu umístění, které je bližší než `DistanceInMeters`.
+`DistanceInMeters`Parametr určuje, jak daleko bude prozkoumat graf ukotvení k načtení obsahu. Předpokládejme například, že jste nastavili nějaké místo s kotvami s konstantní hustotou 2 každý měřič. Kromě toho fotoaparát na vašem zařízení pozoruje jedno ukotvení a služba ho úspěšně nastavila. S největší pravděpodobně máte zájem načíst všechny kotvy, které jste umístili do blízkosti, nikoli na jedno ukotveno, které právě sledujete. Za předpokladu, že kotvy, které jste umístili, jsou propojeny v grafu, služba může získat všechny okolní kotvy za vás podle hran v grafu. Množství průchodu grafu, které jste dokončili, je řízeno nástrojem `DistanceInMeters` . budou se vám dát všechny kotvy připojené k tomu, co jste umístili a jsou bližší než `DistanceInMeters` .
 
 Pamatujte, že velké hodnoty pro `MaxResultCount` může negativně ovlivnit výkon. Nastavte ji na hodnotu rozumné pro vaši aplikaci.
 
@@ -661,7 +660,7 @@ Následující tabulka shrnuje data senzorů shromážděná na jednotlivých po
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | – | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
+| GPS         | Není k dispozici | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
 | WiFi        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
 | Majáky v/v | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] |
 

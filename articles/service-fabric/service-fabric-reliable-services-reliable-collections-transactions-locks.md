@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938910"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a režimy zámků ve službě Azure Service Fabric Reliable Collections
@@ -43,7 +42,7 @@ Následuje tabulka, která znázorňuje výchozí hodnoty úrovně izolace pro s
 | Výčet, počet |Snímek |Snímek |
 
 > [!NOTE]
-> Běžné příklady operací s `IReliableDictionary.TryGetValueAsync` `IReliableQueue.TryPeekAsync`jednou entitou jsou.
+> Běžné příklady operací s jednou entitou `IReliableDictionary.TryGetValueAsync` jsou `IReliableQueue.TryPeekAsync` .
 > 
 
 Spolehlivý slovník i spolehlivá fronta podporují *čtení zápisů*.
@@ -55,8 +54,8 @@ Ve spolehlivých kolekcích všechny transakce implementují přísné dva zámk
 
 Spolehlivý slovník používá uzamykání na úrovni řádků pro všechny operace s jednou entitou.
 Spolehlivá fronta se zařadí do souběžnosti pro striktní transakční vlastnost FIFO.
-Spolehlivá fronta používá zámky na úrovni operace, takže `TryPeekAsync` `EnqueueAsync` v jednom okamžiku `TryDequeueAsync` umožňuje jednu transakci s a/nebo a jednou transakcí.
-Uvědomte si, že pokud chcete zachovat `TryPeekAsync` FIFO `TryDequeueAsync` , pokud v nebo někdy znamená, že je spolehlivá fronta prázdná, `EnqueueAsync`taky se uzamkne.
+Spolehlivá fronta používá zámky na úrovni operace, takže v jednom okamžiku umožňuje jednu transakci s `TryPeekAsync` a/nebo `TryDequeueAsync` a jednou transakcí `EnqueueAsync` .
+Uvědomte si, že pokud chcete zachovat FIFO, pokud v `TryPeekAsync` nebo `TryDequeueAsync` někdy znamená, že je spolehlivá fronta prázdná, taky se uzamkne `EnqueueAsync` .
 
 Operace zápisu vždy berou exkluzivní zámky.
 Pro operace čtení závisí uzamykání na několika faktorech:

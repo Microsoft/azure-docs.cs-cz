@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76722097"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj projektů pro datové vědy
@@ -39,10 +38,10 @@ V architektuře plánování sprintu TDSP existují čtyři často používané 
 
 Tady jsou definice pro typy pracovních položek:
 
-- **Funkce**: funkce odpovídá zapojení projektu. Různé zapojení s klientem jsou různé funkce a je vhodné zvážit různé fáze projektu jako jiné funkce. Pokud zvolíte schéma, jako je například název * \<klienta>-\<Engagement>* k pojmenování funkcí, můžete snadno rozpoznat kontext projektu a zapojení z názvů samotných.
+- **Funkce**: funkce odpovídá zapojení projektu. Různé zapojení s klientem jsou různé funkce a je vhodné zvážit různé fáze projektu jako jiné funkce. Pokud zvolíte schéma, jako je například *\<ClientName>-\<EngagementName>* pro pojmenování funkcí, můžete snadno rozpoznat kontext projektu a zapojení z názvů samotných.
   
 - **Uživatelský scénář**: uživatelské scénáře jsou pracovními položkami, které jsou potřeba k dokončení funkce na konci. Mezi příklady uživatelských scénářů patří:
-  - Získání dat 
+  - Získat data 
   - Zkoumání dat 
   - Generování funkcí
   - Sestavení modelů
@@ -72,7 +71,7 @@ Další informace o plánování sprintu v Azure Boards naleznete v tématu [př
 
 Po vytvoření projektu a úložiště kódu projektu můžete přidat funkci do nevyřízených položek, které představují práci pro váš projekt.
 
-1. Na stránce **projektu vyberte v** > levém navigačním panelu položku**neprotokoly** . 
+1. Na stránce **projektu vyberte**  >  v levém navigačním panelu položku**neprotokoly** . 
    
 1. Pokud **je typ**pracovní položky na horním panelu na kartě **backlogu** , rozevírací seznam a výběr **funkcí**. Pak vyberte **nová pracovní položka.**
    
@@ -183,7 +182,7 @@ Po dokončení tohoto postupu by úrovně backlogu měly vypadat takto:
    
    ![Vytvoření projektu TDSP](./media/agile-development/15-newproject.png)
    
-1. V nově vytvořeném **projektu vyberte v** > levém navigačním panelu položku**neprotokoly** .
+1. V nově vytvořeném **projektu vyberte v**  >  levém navigačním panelu položku**neprotokoly** .
    
 1. Pokud chcete, aby se projekty TDSP zobrazovaly, vyberte ikonu **Konfigurovat nastavení týmu** . Na obrazovce **Nastavení** zaškrtněte políčko **projekty TDSP** a pak vyberte **Uložit a zavřít**.
    

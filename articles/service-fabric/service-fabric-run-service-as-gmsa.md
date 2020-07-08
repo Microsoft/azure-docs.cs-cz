@@ -7,15 +7,14 @@ ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
 ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988392"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Spuštění služby jako skupinový účet spravované služby
 
-V samostatném clusteru se systémem Windows Server můžete službu spustit jako *skupinový účet spravované služby* (gMSA) pomocí zásad *runas* .  Ve výchozím nastavení Service Fabric aplikace spouštěny pod účtem, pod `Fabric.exe` kterým proces běží. Spouštění aplikací v rámci různých účtů, i ve sdíleném hostovaném prostředí, je mezi sebou bezpečnější. Pomocí gMSA není v manifestu aplikace uloženo žádné heslo ani šifrované heslo.  Službu můžete spustit také jako [uživatel nebo skupina služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md).
+V samostatném clusteru se systémem Windows Server můžete službu spustit jako *skupinový účet spravované služby* (gMSA) pomocí zásad *runas* .  Ve výchozím nastavení Service Fabric aplikace spouštěny pod účtem, `Fabric.exe` pod kterým proces běží. Spouštění aplikací v rámci různých účtů, i ve sdíleném hostovaném prostředí, je mezi sebou bezpečnější. Pomocí gMSA není v manifestu aplikace uloženo žádné heslo ani šifrované heslo.  Službu můžete spustit také jako [uživatel nebo skupina služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md).
 
 Následující příklad ukazuje, jak vytvořit účet gMSA s názvem *svc-test $*, jak nasadit tento účet spravované služby na uzly clusteru a jak nakonfigurovat objekt zabezpečení uživatele.
 
@@ -27,13 +26,13 @@ Požadavky:
 - Doména potřebuje kořenový klíč KDS.
 - V doméně musí být alespoň jeden řadič domény se systémem Windows Server 2012 (nebo R2).
 
-1. Správce domény služby Active Directory vytvoří pomocí `New-ADServiceAccount` rutiny účet spravované služby skupiny a zajistěte, aby `PrincipalsAllowedToRetrieveManagedPassword` zahrnoval všechny uzly Service Fabric clusteru. `AccountName`, `DnsHostName`, a `ServicePrincipalName` musí být jedinečné.
+1. Správce domény služby Active Directory vytvoří pomocí rutiny účet spravované služby skupiny `New-ADServiceAccount` a zajistěte, aby `PrincipalsAllowedToRetrieveManagedPassword` zahrnoval všechny uzly Service Fabric clusteru. `AccountName`, `DnsHostName` , a `ServicePrincipalName` musí být jedinečné.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
     ```
 
-2. Na všech uzlech Service Fabric clusteru (například `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`) nainstalujte a otestujte gMSA.
+2. Na všech uzlech Service Fabric clusteru (například `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$` ) nainstalujte a otestujte gMSA.
     
     ```powershell
     Add-WindowsFeature RSAT-AD-PowerShell

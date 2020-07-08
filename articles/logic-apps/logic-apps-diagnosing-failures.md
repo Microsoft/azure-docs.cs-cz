@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905104"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Řešení potíží s chybami pracovního postupu a jejich diagnostika v Azure Logic Apps
@@ -31,7 +30,7 @@ Každá aplikace logiky se spustí s pokusy o aktivaci, takže pokud se Trigger 
 
    Vstupy triggerů zahrnují data, která Trigger očekává, a vyžaduje spuštění pracovního postupu. Tyto vstupy vám pomohou určit, zda jsou vstupy triggeru správné a zda byla podmínka splněna, aby mohl pracovní postup pokračovat.
 
-   `feedUrl` Vlastnost tady má například nesprávnou hodnotu informačního kanálu RSS:
+   `feedUrl`Vlastnost tady má například nesprávnou hodnotu informačního kanálu RSS:
 
    ![Zkontrolovat vstupy triggeru pro chyby](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 
@@ -62,7 +61,7 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
 
 1. Projděte si podrobnosti o jednotlivých krocích konkrétního spuštění. V části **historie spuštění**vyberte běh, který chcete prošetřit.
 
-   ![Historie spuštění kontroly](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
+   ![Kontrola historie spuštění](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![Zobrazení podrobností o spuštění aplikace logiky](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 

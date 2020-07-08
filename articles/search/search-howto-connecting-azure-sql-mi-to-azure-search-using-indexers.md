@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76964885"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer na spravovanou instanci SQL
@@ -25,7 +24,7 @@ Vytvořte spravovanou instanci SQL pomocí vybrané možnosti **Povolit veřejn�
    ![Povolit veřejný koncový bod](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Povolit veřejný koncový bod")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Povolit veřejný koncový bod spravované instance Azure SQL
-V existující spravované instanci SQL můžete povolit také veřejný koncový bod v části **zabezpečení** > **Povolit****veřejný koncový bod** > **virtuální sítě** > .
+V existující spravované instanci SQL můžete povolit také veřejný koncový bod v části **zabezpečení**  >  **Virtual network**  >  **Povolit veřejný koncový bod**virtuální sítě  >  **Enable**.
 
    ![Povolit veřejný koncový bod](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Povolit veřejný koncový bod")
 
@@ -36,13 +35,13 @@ Ověřte, že skupina zabezpečení sítě má správná **příchozí pravidla 
 
 > [!NOTE]
 > Indexery stále vyžadují, aby byla nakonfigurovaná instance SQL nakonfigurovaná s veřejným koncovým bodem, aby bylo možné číst data.
-> Můžete ale omezit příchozí přístup k tomuto veřejnému koncovému bodu tím, že nahradíte aktuální pravidlo (`public_endpoint_inbound`) následujícími 2 pravidly:
+> Můžete ale omezit příchozí přístup k tomuto veřejnému koncovému bodu tím, že nahradíte aktuální pravidlo ( `public_endpoint_inbound` ) následujícími 2 pravidly:
 >
-> * Povolení příchozího přístupu ze `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("zdroj" = `AzureCognitiveSearch`"název" = `cognitive_search_inbound`)
+> * Povolení příchozího přístupu ze `AzureCognitiveSearch` [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("zdroj" = " `AzureCognitiveSearch` název" = `cognitive_search_inbound` )
 >
-> * Povolení příchozího přístupu z IP adresy služby vyhledávání, která se dá získat pomocí příkazového testu pro plně kvalifikovaný název domény (např., `<your-search-service-name>.search.windows.net`). ("zdroj" = `IP address`"Name" = `search_service_inbound`)
+> * Povolení příchozího přístupu z IP adresy služby vyhledávání, která se dá získat pomocí příkazového testu pro plně kvalifikovaný název domény (např., `<your-search-service-name>.search.windows.net` ). ("zdroj" = `IP address` "Name" = `search_service_inbound` )
 >
-> U každého z těchto 2 pravidel nastavte "PORT" = `3342`, "protokol" = `TCP`, "cíl" = `Any`, "Action" =`Allow`
+> U každého z těchto 2 pravidel nastavte "PORT" = `3342` , "protokol" = `TCP` , "cíl" = `Any` , "Action" =`Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>Získat připojovací řetězec veřejného koncového bodu
 Ujistěte se, že používáte připojovací řetězec pro **veřejný koncový bod** (port 3342, ne port 1433).

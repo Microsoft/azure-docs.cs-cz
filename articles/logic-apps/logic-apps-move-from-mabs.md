@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905435"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrace aplikací a řešení z BizTalk Services na Azure Logic Apps
@@ -99,7 +98,7 @@ Logic Apps poskytuje sofistikované možnosti logiky a pokročilý tok řízení
 
 ### <a name="enrich"></a>Rozšiřování
 
-Při zpracování BizTalk Services přidá fáze obohacení vlastnosti do kontextu zprávy přidruženého k přijímaným datům. Například zvýšení úrovně vlastnosti pro použití při směrování z vyhledávání databáze nebo extrakcí hodnoty pomocí výrazu XPath. Logic Apps poskytuje přístup ke všem datovým výstupům kontextových dat z předchozích akcí, takže je snadné replikovat stejné chování. Například pomocí akce připojení `Get Row` SQL vrátíte data z databáze SQL Server a použijete data v rozhodovací akci pro směrování. Stejně tak vlastnosti příchozích Service Bus zpráv ve frontě pomocí triggeru jsou adresovatelné a také XPath pomocí výrazu jazyka definice pracovního postupu XPath.
+Při zpracování BizTalk Services přidá fáze obohacení vlastnosti do kontextu zprávy přidruženého k přijímaným datům. Například zvýšení úrovně vlastnosti pro použití při směrování z vyhledávání databáze nebo extrakcí hodnoty pomocí výrazu XPath. Logic Apps poskytuje přístup ke všem datovým výstupům kontextových dat z předchozích akcí, takže je snadné replikovat stejné chování. Například pomocí `Get Row` akce připojení SQL vrátíte data z databáze SQL Server a použijete data v rozhodovací akci pro směrování. Stejně tak vlastnosti příchozích Service Bus zpráv ve frontě pomocí triggeru jsou adresovatelné a také XPath pomocí výrazu jazyka definice pracovního postupu XPath.
 
 ### <a name="run-custom-code"></a>Spustit vlastní kód
 

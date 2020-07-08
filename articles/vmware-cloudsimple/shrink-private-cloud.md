@@ -9,17 +9,16 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014262"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Zmenšení privátního cloudu CloudSimple
 
 CloudSimple poskytuje flexibilitu pro dynamické zmenšování privátního cloudu.  Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů. Při zmenšování privátního cloudu odeberete uzel z existujícího clusteru nebo odstraníte celý cluster. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pro zmenšení privátního cloudu musí být splněné následující podmínky.  Cluster pro správu (první cluster) vytvořený při vytvoření privátního cloudu nelze odstranit.
 

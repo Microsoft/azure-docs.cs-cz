@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76961124"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>Povolit serverům DNS privátního cloudu CloudSimple přesměrování vyhledávání místních prostředků DNS na servery DNS
@@ -27,7 +26,7 @@ Předávání vyhledávání DNS pro místní server DNS vám umožní používa
 * Použití místní služby Active Directory jako zdroje identity pro privátní cloud vSphere
 * Použití HCX pro migraci virtuálních počítačů z místního do privátního cloudu
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Aby předávání DNS fungovalo, musí být síťové připojení k vaší místní síti přítomné z vaší privátní cloudové sítě.  Připojení k síti můžete nastavit pomocí:
 

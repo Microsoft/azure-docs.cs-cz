@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d256f417fb3bacbf3f363fc2a9f8701a1bb49d71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773630"
 ---
 # <a name="create-content-keys-with-rest"></a>Vytváření klíčů obsahu pomocí REST
@@ -179,7 +178,7 @@ Jedna z hodnot, které je třeba nastavit při vytváření klíče obsahu, je t
 
 Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** sadou pro šifrování úložiště ("1") a **ProtectionKeyType** nastavenou na "0", která označuje, že ID klíče ochrany je kryptografický otisk certifikátu X. 509.  
 
-Request
+Žádost
 
     POST https://media.windows.net/api/ContentKeys HTTP/1.1
     Content-Type: application/json

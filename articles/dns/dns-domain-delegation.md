@@ -8,10 +8,9 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76939052"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegování zón DNS s využitím Azure DNS
@@ -55,11 +54,11 @@ Následující obrázek ukazuje příklad dotazu DNS. Contoso.net a partners.con
 2. Místní server DNS záznam nemá, proto vytvoří požadavek na svůj kořenový názvový server.
 3. Kořenový názvový server záznam nemá, ale zná adresu názvového serveru `.net`, kterou poskytne serveru DNS.
 4. Místní server DNS odešle požadavek na `.net` názvový server.
-5. `.net` Názvový server nemá záznam, ale zná adresu `contoso.net` názvového serveru. V takovém případě odpoví adresou názvového serveru pro zónu DNS hostovanou v Azure DNS.
+5. `.net`Názvový server nemá záznam, ale zná adresu `contoso.net` názvového serveru. V takovém případě odpoví adresou názvového serveru pro zónu DNS hostovanou v Azure DNS.
 6. Místní server DNS odešle požadavek na názvový server pro `contoso.net` zónu hostovanou ve službě Azure DNS.
-7. Zóna `contoso.net` neobsahuje záznam, ale zná názvový server pro `partners.contoso.net` a reaguje na adresu. V tomto případě je to zóna DNS hostovaná v Azure DNS.
+7. Zóna neobsahuje `contoso.net` záznam, ale zná názvový server pro `partners.contoso.net` a reaguje na adresu. V tomto případě je to zóna DNS hostovaná v Azure DNS.
 8. Místní server DNS odešle požadavek do názvového serveru pro danou `partners.contoso.net` zónu.
-9. `partners.contoso.net` Zóna obsahuje záznam a, který odpovídá IP adrese.
+9. `partners.contoso.net`Zóna obsahuje záznam a, který odpovídá IP adrese.
 10. Místní server DNS poskytuje IP adresu klientovi.
 11. Klient se připojí k webu `www.partners.contoso.net`.
 

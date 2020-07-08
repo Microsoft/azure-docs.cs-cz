@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965122"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Série StorSimple 8000: řešení hybridního cloudového úložiště
@@ -208,12 +207,12 @@ Odstranění duplicitních dat snižuje celkové množství uložených dat odst
 ## <a name="storsimple-workload-summary"></a>Souhrn úlohy StorSimple
 Souhrn podporovaných úloh StorSimple je v tabulce.
 
-| Scénář | Úloha | Podporuje se | Omezení | Version |
+| Scénář | Úloha | Podporuje se | Omezení | Verze |
 | --- | --- | --- | --- | --- |
-| Spolupráce |Sdílení souborů |Ano | |Všechny verze |
-| Spolupráce |Sdílení distribuovaných souborů |Ano | |Všechny verze |
+| Spolupráce |Sdílení souborů |Yes | |Všechny verze |
+| Spolupráce |Sdílení distribuovaných souborů |Yes | |Všechny verze |
 | Spolupráce |SharePoint |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
-| Archivace |Jednoduché archivace souborů |Ano | |Všechny verze |
+| Archivace |Jednoduché archivace souborů |Yes | |Všechny verze |
 | Virtualizace |Virtuální počítače |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
 | databáze |SQL |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
 | Střežení kamerami |Střežení kamerami |Ano* |Podporováno, pokud je zařízení StorSimple vyhrazené jenom pro tuto úlohu. |Aktualizace 2 a novější |
@@ -235,9 +234,9 @@ Zařízení řady StorSimple 8000 nepodporují následující úlohy. Při nasaz
 
 Níže je seznam podporovaných komponent infrastruktury StorSimple.
 
-| Scénář | Úloha | Podporuje se | Omezení | Version |
+| Scénář | Úloha | Podporuje se | Omezení | Verze |
 | --- | --- | --- | --- | --- |
-| Obecné |ExpressRoute |Ano | |Všechny verze |
+| Obecné |Express Route |Yes | |Všechny verze |
 | Obecné |DataCore FC |Ano* |Podporováno s DataCore SANsymphony |Všechny verze |
 | Obecné |DFSR |Ano* |Podporováno pouze s místně připnuté svazky |Všechny verze |
 | Obecné |Indexování |Ano* |Pro vrstvené svazky se podporují jenom indexování metadat (žádná data).<br>Pro místně připojené svazky se podporuje kompletní indexování. |Všechny verze |
@@ -258,7 +257,7 @@ Následuje seznam jiného softwaru, který se používá s StorSimple k vytvář
 Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si následující pojmy a definice.
 
 ### <a name="key-terms-and-definitions"></a>Klíčové pojmy a definice
-| Výraz (akronym nebo zkratka) | Popis |
+| Výraz (akronym nebo zkratka) | Description |
 | --- | --- |
 | záznam řízení přístupu (ACR) |Záznam přidružený ke svazku na vašem zařízení Microsoft Azure StorSimple, který určuje, kteří hostitelé se k němu mohou připojit. Stanovení vychází z kvalifikovaného názvu iSCSI (IQN) hostitelů (obsažených v ACR), které se připojují k vašemu zařízení StorSimple. |
 | AES-256 |Algoritmus 256 standard AES (Advanced Encryption Standard) (AES) pro šifrování dat při jejich přesunu do cloudu a z něj. |

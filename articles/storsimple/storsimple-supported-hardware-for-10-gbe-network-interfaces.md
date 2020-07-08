@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965019"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Podporovaný hardware pro síťová rozhraní 10 GbE na zařízení StorSimple
@@ -37,7 +36,7 @@ Společnost Microsoft testovala následující malé vysílače, kabely a přep�
 | Cisco |SFP – 10G – SR |
 
 ### <a name="cables"></a>Kabely
-| Sér. Ne. | Značka | Model |
+| USA: Ne. | Značka | Model |
 | --- | --- | --- |
 | 1. |Cisco |SFP – H10GB – CU1M |
 | 2. |Cisco |SFP – H10GB – CU2M |
@@ -45,7 +44,7 @@ Společnost Microsoft testovala následující malé vysílače, kabely a přep�
 | 4. |Tripp – Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>Přepínače
-| Sér. Ne. | Značka | Model |
+| USA: Ne. | Značka | Model |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -73,7 +72,7 @@ Mellanox testoval následující malé přijímače, kabely a přepínače, aby 
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Kabely a moduly podporované Mellanox
 V následující tabulce jsou uvedeny kabely a moduly, které podporuje Mellanox. Tyto testy nebyly testovány společností Microsoft, ale pravděpodobně budou pracovat se zařízením StorSimple.
 
-| Sér. Ne. | Rychlost | Model | Popis | Značka |
+| USA: Ne. | Rychlost | Model | Description | Značka |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1 1M |pasivní dráty Copper – kabel + 10 GB/s 1m |Arista |
 | 2. |10 GbE |CAB – SFP – SFP – 2 MIN |pasivní kabel Copper kabelové SFP + 10 GB/s 2 min |Arista |
@@ -114,7 +113,7 @@ V následující tabulce jsou uvedeny kabely a moduly, které podporuje Mellanox
 ### <a name="switches-supported-by-mellanox"></a>Přepínače podporované Mellanox
 V následující tabulce jsou uvedeny přepínače podporované nástrojem Mellanox. Tyto testy nebyly testovány společností Microsoft, ale pravděpodobně budou pracovat se zařízením StorSimple.
 
-| Sér. Ne. | Rychlost | Model | Popis | Značka |
+| USA: Ne. | Rychlost | Model | Description | Značka |
 | --- | --- | --- | --- | --- |
 | 1. |10GbE |516733 – B21 |Přepínač HP prozatáčka 6120XG 10GbE Ethernet Switch |EMULEX |
 | 2. |10GbE |538113 – B21 |Modul Pass-through HP 10GbE (PTM) |EMULEX |

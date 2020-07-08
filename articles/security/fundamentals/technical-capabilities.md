@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845342"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
@@ -410,7 +409,7 @@ Tato metoda umožňuje konsolidovat data z nejrůznějších zdrojů, takže mů
 
 Služba Security Center analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Seznam doporučení vás provede procesem konfigurace potřebných kontrol.
 
-Příklady obsahují:
+Mezi příklady patří:
 
 - Zřizování antimalwaru, aby se pomohl identifikovat a odebrat škodlivý software
 
@@ -438,7 +437,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 Cloudové aplikace jsou komplexní s mnoha pohybujícími se částmi. Monitorování poskytuje data, která zajistí, že vaše aplikace zůstane v dobrém stavu. Také vám pomůže nastavovat potenciální problémy nebo řešit potíže s předchozími.
 
-![Azure Monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) navíc můžete použít data monitorování a získat tak podrobné informace o vaší aplikaci. Tato znalostní báze vám může pomoci zvýšit výkon a udržovatelnost aplikace nebo automatizovat akce, které by jinak vyžadovaly ruční zásah.
+![Azure Monitor ](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) navíc můžete použít data monitorování a získat tak podrobné informace o vaší aplikaci. Tato znalostní báze vám může pomoci zvýšit výkon a udržovatelnost aplikace nebo automatizovat akce, které by jinak vyžadovaly ruční zásah.
 
 Auditování zabezpečení sítě je důležité pro detekci ohrožení zabezpečení sítě a zajištění souladu s vaším modelem zabezpečení IT a dodržováním předpisů. Pomocí zobrazení skupiny zabezpečení můžete načíst nakonfigurovanou skupinu zabezpečení sítě a pravidla zabezpečení a také platná pravidla zabezpečení. Pomocí seznamu použitých pravidel můžete určit porty, které jsou otevřené a SS ohrožení zabezpečení sítě.
 
@@ -452,7 +451,7 @@ Auditování zabezpečení sítě je důležité pro detekci ohrožení zabezpe�
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js a Java EE, hostované místně nebo v cloudu. Integruje se s vaším procesem devOps a má spojovací body k různým vývojářským nástrojům.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako je .NET, Node.js a Java EE, hostované místně nebo v cloudu. Integruje se s vaším procesem devOps a má spojovací body k různým vývojářským nástrojům.
 
 Monitoruje tyto parametry:
 

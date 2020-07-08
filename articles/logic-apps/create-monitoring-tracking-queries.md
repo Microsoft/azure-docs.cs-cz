@@ -7,10 +7,9 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908069"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Zobrazení a vytváření dotazů pro monitorování a sledování v protokolech Azure Monitor pro Azure Logic Apps
@@ -53,7 +52,7 @@ Pokud chcete výsledky najít nebo filtrovat na základě konkrétních vlastnos
 
 1. Začněte od prázdného dotazu nebo všech dostupných existujících dotazů.
 
-   * Chcete-li ověřit, zda jsou k dispozici nějaké existující dotazy, vyberte na panelu nástrojů dotaz**historii** **dotazů** > , které zobrazují dotazy z předchozích spuštěných dotazů, nebo vyberte možnost **Průzkumník dotazů**, který zobrazuje předem připravené dotazy.
+   * Chcete-li ověřit, zda jsou k dispozici nějaké existující dotazy, vyberte na **Samples queries**panelu nástrojů dotaz  >  **historii**dotazů, které zobrazují dotazy z předchozích spuštěných dotazů, nebo vyberte možnost **Průzkumník dotazů**, který zobrazuje předem připravené dotazy.
 
      Například řešení Logic Apps B2B poskytuje tyto předem sestavené dotazy:
 

@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 66461b23432a3e8b7ae4ad1fdc078fba9ca05646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76960760"
 ---
 # <a name="412002-devicemessagelocklost"></a>412002 DeviceMessageLockLost
@@ -25,7 +24,7 @@ Když se pokusíte odeslat zprávu typu cloud-zařízení, požadavek se nezdař
 
 ## <a name="cause"></a>Příčina
 
-Když zařízení obdrží zprávu typu cloud-zařízení z fronty (například pomocí [`ReceiveAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)), zpráva se zamkne IoT Hub po dobu vypršení časového limitu zámku 1 minuty. Pokud se zařízení pokusí dokončit zprávu po vypršení časového limitu zámku, IoT Hub vyvolá tuto výjimku.
+Když zařízení obdrží zprávu typu cloud-zařízení z fronty (například pomocí [`ReceiveAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) ), zpráva se zamkne IoT Hub po dobu vypršení časového limitu zámku 1 minuty. Pokud se zařízení pokusí dokončit zprávu po vypršení časového limitu zámku, IoT Hub vyvolá tuto výjimku.
 
 ## <a name="solution"></a>Řešení
 

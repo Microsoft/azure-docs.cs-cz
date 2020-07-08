@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: f7861ae4980f13fbd87780ab2d26fa3376f33532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76776193"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Scénář: nejde číst protokol Apache nitě v Azure HDInsight.
@@ -32,13 +31,13 @@ Protokol Apache nitě je agregovaný do `IndexFile` formátu, který analyzátor
 
 ## <a name="resolution"></a>Řešení
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. V uživatelském rozhraní Ambari přejděte do**Konfigurace** >  **příze** > **Upřesnit** > Upřesnit**nitě-site**.
+1. V uživatelském rozhraní Ambari přejděte do **Konfigurace příze**  >  **Configs**  >  **Upřesnit**Upřesnit  >  **nitě-site**.
 
-1. Pro úložiště WASB: výchozí hodnota pro `yarn.log-aggregation.file-formats` je. `IndexedFormat,TFile` Změňte hodnotu na `TFile`.
+1. Pro úložiště WASB: výchozí hodnota pro `yarn.log-aggregation.file-formats` je `IndexedFormat,TFile` . Změňte hodnotu na `TFile` .
 
-1. Pro úložiště ADLS: výchozí hodnota pro `yarn.nodemanager.log-aggregation.compression-type` je. `gz` Změňte hodnotu na `none`.
+1. Pro úložiště ADLS: výchozí hodnota pro `yarn.nodemanager.log-aggregation.compression-type` je `gz` . Změňte hodnotu na `none` .
 
 1. Uložte změnu a restartujte všechny ovlivněné služby.
 
@@ -48,6 +47,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

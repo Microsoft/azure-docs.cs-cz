@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2b9f16062b02d7a1a3403d396643a7989b8976b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905921"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
@@ -17,7 +16,7 @@ Získejte podrobnosti o službě a seznam služeb prostředku aplikace.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Popis|
+|Příkaz|Description|
 | --- | --- |
 | list | Zobrazí seznam všech prostředků služby. |
 | show | Získá prostředek služby se zadaným názvem. |
@@ -27,20 +26,20 @@ Zobrazí seznam všech prostředků služby.
 
 Získá informace o všech službách prostředku aplikace. Tyto informace zahrnují popis a další vlastnosti služby.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --App-Name--název aplikace [povinné] | Název aplikace |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty \: : JSON, jsonc, Table, TSV.  Výchozí \: JSON. |
+| --dotaz | Řetězec dotazu JMESPath \:Další informace a příklady najdete v tématu http//jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-mesh-service-show"></a>sfctl síť – zobrazení služby
@@ -48,21 +47,21 @@ Získá prostředek služby se zadaným názvem.
 
 Načte informace o prostředku služby s daným názvem. Tyto informace zahrnují popis a další vlastnosti služby.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --App-Name--název aplikace [povinné] | Název aplikace |
 | --Name-n [povinné] | Název služby |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty \: : JSON, jsonc, Table, TSV.  Výchozí \: JSON. |
+| --dotaz | Řetězec dotazu JMESPath \:Další informace a příklady najdete v tématu http//jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 

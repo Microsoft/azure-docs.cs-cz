@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988783"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
@@ -29,7 +28,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Aplikace klasické pracovní plochy
+## <a name="desktop"></a>Plocha
 
 Sada Azure Maps Web SDK podporuje následující desktopové prohlížeče:
 
@@ -57,9 +56,9 @@ Sada Azure Maps Web SDK podporuje následující mobilní prohlížeče:
 
 ## <a name="nodejs"></a>Node.js
 
-V Node. js jsou podporovány také následující moduly web SDK:
+V Node.js jsou podporovány také následující moduly web SDK:
 
-- Modul služby ([documentation](how-to-use-services-module.md) | [npm](https://www.npmjs.com/package/azure-maps-rest)dokumentace – modul)
+- Modul služby (npm[dokumentace](how-to-use-services-module.md)–  |  [modul](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cílové starší verze prohlížečů
 
@@ -68,7 +67,7 @@ Můžete chtít cílit na starší prohlížeče, které nepodporují WebGL, neb
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + leták" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + leták</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + leták</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

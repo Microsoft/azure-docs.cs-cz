@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841825"
 ---
 # <a name="rest-api"></a>REST API
@@ -164,7 +163,7 @@ Všechna rozhraní API vrací chybu s následující datovou částí:
 **Odpověď**: http 200, prázdná datová část
 
 ## <a name="manage-event-subscriptions"></a>Správa odběrů událostí
-Ukázky v tomto oddílu používají `EndpointType=Webhook;`. Ukázky JSON pro `EndpointType=EdgeHub / EndpointType=EventGrid` jsou v následující části. 
+Ukázky v tomto oddílu používají `EndpointType=Webhook;` . Ukázky JSON pro `EndpointType=EdgeHub / EndpointType=EventGrid` jsou v následující části. 
 
 ### <a name="put-event-subscription-create--update"></a>Vložit odběr události (vytvořit nebo aktualizovat)
 
@@ -572,7 +571,7 @@ Nastaví téma pro vyžadování událostí, které budou publikovány v **event
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>Nastavení tématu s vlastním schématem
-Nastaví téma pro vyžadování událostí, které mají být publikovány v `customschema`nástroji.
+Nastaví téma pro vyžadování událostí, které mají být publikovány v nástroji `customschema` .
 
 ```json
     {
@@ -585,7 +584,7 @@ Nastaví téma pro vyžadování událostí, které mají být publikovány v `c
 ```
 
 ### <a name="set-up-topic-with-cloud-event-schema"></a>Nastavení tématu se schématem cloudové události
-Nastaví téma pro vyžadování událostí, které mají být publikovány v `cloudeventschema`nástroji.
+Nastaví téma pro vyžadování událostí, které mají být publikovány v nástroji `cloudeventschema` .
 
 ```json
     {
@@ -690,7 +689,7 @@ Téma:
 
 ## <a name="set-up-event-hubs-as-a-destination"></a>Nastavit Event Hubs jako cíl
 
-Pokud chcete publikovat do centra událostí, nastavte `endpointType` na `eventHub` a poskytnutí:
+Pokud chcete publikovat do centra událostí, nastavte na `endpointType` `eventHub` a poskytnutí:
 
 * connectionString: připojovací řetězec pro konkrétní centrum událostí, které cílíte vygenerovat prostřednictvím zásad sdíleného přístupu.
 

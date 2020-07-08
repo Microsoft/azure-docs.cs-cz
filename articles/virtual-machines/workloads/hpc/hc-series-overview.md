@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906743"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Základní informace o virtuálním počítači řady HC-Series
@@ -58,7 +57,7 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 | Další architektury       | Unified Communications X, libfabric, PGAS |
 | Podpora Azure Storage       | STD + Premium (max. 4 disky) |
 | Podpora operačního systému pro SRIOV RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 + |
-| Podpora Azure CycleCloud    | Ano                         |
+| Podpora Azure CycleCloud    | Yes                         |
 | Podpora Azure Batch         | Ano                         |
 
 ## <a name="next-steps"></a>Další kroky

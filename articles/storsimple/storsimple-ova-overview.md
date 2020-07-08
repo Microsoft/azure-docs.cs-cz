@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76273872"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Seznámení s virtuálním polem StorSimple
@@ -71,8 +70,8 @@ Souhrn podporovaných úloh StorSimple je v tabulce.
 
 |Scénář     |Úloha     |Podporuje se      |Omezení               | Použitelné verze|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Vzdálená kancelář nebo pobočka (ROBO)  |Sdílení souborů     |Ano      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
-|Archivace v cloudu  |Sdílení souborů archivu     |Ano      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
+|Vzdálená kancelář nebo pobočka (ROBO)  |Sdílení souborů     |Yes      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
+|Archivace v cloudu  |Sdílení souborů archivu     |Yes      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
 
 Virtuální pole StorSimple je nejvhodnější pro zřídka používaná data. I když má virtuální pole místní mezipaměť, aby zvýšila výkon, uživatelé by měli předpokládat, že soubory služeb zařízení jsou v nejnižší úrovni úložiště (Cloud). Každé virtuální pole může zapisovat a číst do úložiště Azure s přibližně 100 MB/s. Tento odkaz se sdílí mezi všemi požadavky přicházející do zařízení a může se stát kritickým bodem, jak je znázorněno na následujícím obrázku.
 

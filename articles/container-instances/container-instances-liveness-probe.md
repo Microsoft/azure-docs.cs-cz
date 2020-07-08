@@ -4,10 +4,9 @@ description: Naučte se konfigurovat sondy živého provozu pro restartování p
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934160"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurace testů aktivity
@@ -73,21 +72,21 @@ Nejprve spustí relaci bash a vytvoří soubor s názvem `healthy` v `/tmp` adre
 
 ### <a name="liveness-command"></a>Živý příkaz
 
-Toto nasazení definuje `livenessProbe` , které podporuje příkaz `exec` živého provozu, který funguje jako provozní kontroly. Pokud se tento příkaz ukončí s nenulovou hodnotou, kontejner se ukončí a restartuje, protože se nepovedlo najít signál k `healthy` souboru. Pokud se tento příkaz ukončí úspěšně s ukončovacím kódem 0, není provedena žádná akce.
+Toto nasazení definuje `livenessProbe` , které podporuje `exec` příkaz živého provozu, který funguje jako provozní kontroly. Pokud se tento příkaz ukončí s nenulovou hodnotou, kontejner se ukončí a restartuje, protože se `healthy` nepovedlo najít signál k souboru. Pokud se tento příkaz ukončí úspěšně s ukončovacím kódem 0, není provedena žádná akce.
 
-`periodSeconds` Vlastnost určuje, že se má příkaz ' živý ' spustit každých 5 sekund.
+`periodSeconds`Vlastnost určuje, že se má příkaz ' živý ' spustit každých 5 sekund.
 
 ## <a name="verify-liveness-output"></a>Ověřit výstup živého provozu
 
-Během prvních 30 sekund `healthy` soubor vytvořený pomocí spouštěcího příkazu existuje. Když příkaz živá funkce kontroluje existenci `healthy` souboru, vrátí stavový kód 0, signalizaci úspěšné, takže nedojde k restartování.
+Během prvních 30 sekund `healthy` soubor vytvořený pomocí spouštěcího příkazu existuje. Když příkaz živá `healthy` funkce kontroluje existenci souboru, vrátí stavový kód 0, signalizaci úspěšné, takže nedojde k restartování.
 
-Po 30 sekundách se příkaz `cat /tmp/healthy` začne zdařit, což způsobí, že dojde k chybám a ukončování událostí.
+Po 30 sekundách se `cat /tmp/healthy` příkaz začne zdařit, což způsobí, že dojde k chybám a ukončování událostí.
 
 Tyto události se dají zobrazit z Azure Portal nebo pomocí Azure CLI.
 
 ![Událost chybného portálu][portal-unhealthy]
 
-Zobrazením událostí v Azure Portal se události typu `Unhealthy` aktivují při selhání příkazu pro živý provoz. Následná událost je typu `Killing`a označuje odstranění kontejneru, aby bylo možné spustit restart. Počet restartování pro kontejner se zvýší pokaždé, když dojde k této události.
+Zobrazením událostí v Azure Portal se události typu `Unhealthy` aktivují při selhání příkazu pro živý provoz. Následná událost je typu `Killing` a označuje odstranění kontejneru, aby bylo možné spustit restart. Počet restartování pro kontejner se zvýší pokaždé, když dojde k této události.
 
 Restarty jsou dokončeny na místě, takže se zachovají prostředky, jako jsou veřejné IP adresy a obsah specifický pro uzel.
 
@@ -97,7 +96,7 @@ Pokud se test živého provozu nepřetržitě nezdařil a vyvolá příliš mnoh
 
 ## <a name="liveness-probes-and-restart-policies"></a>Provozní sondy a zásady restartování
 
-Zásady restartování nahrazují chování při restartování aktivované sondami živého provozu. Pokud jste například nastavili `restartPolicy = Never` *a a* živý test, skupina kontejnerů se nerestartuje z důvodu neúspěšné kontroly živých. Skupina kontejnerů místo toho dodržuje zásady restartování skupiny kontejnerů `Never`.
+Zásady restartování nahrazují chování při restartování aktivované sondami živého provozu. Pokud jste například nastavili `restartPolicy = Never` *a a* živý test, skupina kontejnerů se nerestartuje z důvodu neúspěšné kontroly živých. Skupina kontejnerů místo toho dodržuje zásady restartování skupiny kontejnerů `Never` .
 
 ## <a name="next-steps"></a>Další kroky
 

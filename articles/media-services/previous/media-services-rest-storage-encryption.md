@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773589"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování obsahu pomocí šifrování úložiště 
@@ -38,7 +37,7 @@ Tento článek poskytuje přehled šifrování úložiště AMS a ukazuje, jak n
 * Propojte klíč obsahu s Assetem.  
 * Nastavte parametry související s šifrováním v entitách AssetFile.
 
-## <a name="considerations"></a>Požadavky 
+## <a name="considerations"></a>Důležité informace 
 
 Pokud chcete doručovat šifrovaný prostředek úložiště, musíte nakonfigurovat zásady doručování prostředků. Předtím, než bude možné Asset streamovat, server streamování odstraní šifrování úložiště a streamuje obsah pomocí zadaných zásad doručování. Další informace najdete v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -46,7 +45,7 @@ Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a 
 
 ### <a name="storage-side-encryption"></a>Šifrování na straně úložiště
 
-|Možnost šifrování|Popis|Media Services v2|Media Services v3|
+|Možnost šifrování|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services šifrování úložiště|Šifrování AES-256, Správa klíčů pomocí Media Services|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč, který spravuje Azure nebo zákazník|Podporuje se|Podporuje se|
@@ -113,9 +112,9 @@ Níže jsou uvedené obecné kroky pro generování klíčů obsahu, které při
 
     Pro šifrování úložiště by měly být v textu požadavku zahrnuty následující vlastnosti.
 
-    Vlastnost textu žádosti    | Popis
+    Vlastnost textu žádosti    | Description
     ---|---
-    ID | ID ContentKey se generuje pomocí následujícího formátu: "NB: Kid: UUID:\<NEW GUID>".
+    ID | ID ContentKey se generuje pomocí následujícího formátu: "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | Typ klíče obsahu je celé číslo, které definuje klíč. Pro formát šifrování úložiště je tato hodnota 1.
     EncryptedContentKey | Vytvoříme novou hodnotu klíče obsahu, která je 256 hodnota (32 bajtů). Klíč se šifruje pomocí certifikátu X. 509 šifrování úložiště, který načteme z Microsoft Azure Media Services spuštěním požadavku HTTP GET pro metody GetProtectionKeyId a GetProtectionKey. Příklad naleznete v následujícím kódu .NET: [zde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definovaná metoda **EncryptSymmetricKeyData** .
     ProtectionKeyId | Toto je ID klíče ochrany pro certifikát X. 509 šifrování úložiště, který se použil k zašifrování našeho klíče obsahu.
@@ -195,7 +194,7 @@ Jedna z hodnot, které je třeba nastavit při vytváření klíče obsahu, je t
 
 Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** sadou pro šifrování úložiště ("1") a **ProtectionKeyType** nastavenou na "0", která označuje, že ID klíče ochrany je kryptografický otisk certifikátu X. 509.  
 
-Request
+Žádost
 
     POST https://media.windows.net/api/ContentKeys HTTP/1.1
     Content-Type: application/json
@@ -242,7 +241,7 @@ Odpověď:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="create-an-asset"></a>Vytvoření assetu
+## <a name="create-an-asset"></a>Vytvoření prostředku
 Následující příklad ukazuje, jak vytvořit Asset.
 
 **Požadavek HTTP**

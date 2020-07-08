@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906037"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
@@ -17,28 +16,28 @@ Vytvořte Service Fabric prostředky sítě.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Popis|
+|Příkaz|Description|
 | --- | --- |
 | vytvoření | Vytvoří nasazení Service Fabricch prostředků sítě. |
 
 ## <a name="sfctl-mesh-deployment-create"></a>vytvoření nasazení sítě sfctl
 Vytvoří nasazení Service Fabricch prostředků sítě.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Input-YAML-Files [povinné] | Relativní nebo absolutní cesty k souborům YAML nebo relativní nebo absolutní cesta k adresáři (rekurzivní), který obsahuje soubory YAML, oddělených čárkami. |
 | --parametry | Relativní nebo absolutní cesta k souboru YAML nebo objektu JSON, který obsahuje parametry, které je třeba přepsat. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
-| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
-| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty \: : JSON, jsonc, Table, TSV.  Výchozí \: JSON. |
+| --dotaz | Řetězec dotazu JMESPath \:Další informace a příklady najdete v tématu http//jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ### <a name="examples"></a>Příklady

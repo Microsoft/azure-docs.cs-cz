@@ -14,10 +14,9 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76990500"
 ---
 # <a name="manage-multiple-tenants"></a>Správa několika klientů
@@ -34,7 +33,7 @@ Při použití této architektury se pro každého tenanta vytvoří účet Vide
 
 ![Video Indexer účet na tenanta](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Zákazníci nesdílejí účty úložiště (Pokud je ručně nenakonfiguroval zákazník).
 * Zákazníci nesdílejí výpočetní výkon (rezervované jednotky) a neovlivňují zpracování úloh navzájem.
@@ -57,7 +56,7 @@ Díky této možnosti mohou být modely přizpůsobení (osoba, jazyk a značky)
 
 Při [nahrávání videí](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)můžete pro každého tenanta zadat jiný atribut oddílu. To umožní izolaci v [rozhraní API pro hledání](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Zadáním atributu partition v rozhraní API pro hledání získáte jenom výsledky zadaného oddílu. 
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Možnost sdílet obsah a přizpůsobit modely mezi klienty.
 * Jeden tenant má dopad na výkon jiných tenantů.
@@ -72,7 +71,7 @@ Když použijete tuto architekturu, bude mít každý tenant vlastní předplatn
 
 ![Předplatné Azure na tenanta](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Toto je jediná možnost, která umožňuje oddělení fakturace.
 * Tato integrace má větší nároky na správu než Video Indexer účet na tenanta. Pokud fakturace není požadavkem, doporučuje se použít jednu z dalších možností popsaných v tomto článku.

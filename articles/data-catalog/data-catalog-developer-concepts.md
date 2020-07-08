@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68976833"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog koncepce pro vývojáře
@@ -76,7 +75,7 @@ UŽIVATELSKÉ prostředí pak může zvolit, jak se má kombinace zobrazit. Exis
 Jak je uvedeno v části klíčové koncepty, model **Azure Data Catalogho** objektu obsahuje položky, které mohou být prostředky nebo anotace. Položky mají vlastnosti, které mohou být volitelné nebo povinné. Některé vlastnosti se vztahují na všechny položky. Některé vlastnosti se vztahují na všechny prostředky. Některé vlastnosti se vztahují pouze na konkrétní typy prostředků.
 
 ### <a name="system-properties"></a>Systémové vlastnosti
-<table><tr><td><b>Název vlastnosti</b></td><td><b>Typ dat</b></td><td><b>Komentáře</b></td></tr><tr><td>časové razítko</td><td>DateTime</td><td>Čas poslední změny položky Toto pole je generováno serverem při vložení položky a pokaždé, když je položka aktualizována. Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>id</td><td>Identifikátor URI</td><td>Absolutní adresa URL položky (jen pro čtení) Jedná se o jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>type</td><td>Řetězec</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>značk</td><td>Řetězec</td><td>Řetězec odpovídající verzi položky, kterou lze použít pro optimistické řízení souběžnosti při provádění operací, které aktualizují položky v katalogu. "*" lze použít k vyhledání libovolné hodnoty.</td></tr></table>
+<table><tr><td><b>Název vlastnosti</b></td><td><b>Typ dat</b></td><td><b>Komentáře</b></td></tr><tr><td>časové razítko</td><td>DateTime</td><td>Čas poslední změny položky Toto pole je generováno serverem při vložení položky a pokaždé, když je položka aktualizována. Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>id</td><td>Identifikátor URI</td><td>Absolutní adresa URL položky (jen pro čtení) Jedná se o jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>typ</td><td>Řetězec</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>značk</td><td>Řetězec</td><td>Řetězec odpovídající verzi položky, kterou lze použít pro optimistické řízení souběžnosti při provádění operací, které aktualizují položky v katalogu. "*" lze použít k vyhledání libovolné hodnoty.</td></tr></table>
 
 ### <a name="common-properties"></a>Společné vlastnosti
 Tyto vlastnosti se vztahují na všechny typy kořenového prostředku a všechny typy poznámek.
@@ -90,7 +89,7 @@ Tyto vlastnosti se vztahují na všechny typy kořenového prostředku a všechn
 <p>
 Tyto vlastnosti se vztahují na všechny typy kořenových prostředků.
 
-<table><tr><td><b>Název vlastnosti</b></td><td><b>Typ dat</b></td><td><b>Komentáře</b></td></tr><tr><td>jméno</td><td>Řetězec</td><td>Název odvozený z informací o umístění zdroje dat</td></tr><tr><td>pevná</td><td>DataSourceLocation</td><td>Jedinečně popisuje zdroj dat a je jedním z identifikátorů pro daný prostředek. (Viz oddíl Dual identity).  Struktura DSL se liší podle protokolu a typu zdroje.</td></tr><tr><td>Datového</td><td>DataSourceInfo</td><td>Další podrobnosti o typu assetu.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Popisuje uživatele, který tento Asset naposledy zaregistroval.  Obsahuje jedinečné ID pro uživatele (UPN) a zobrazované jméno (lastName a firstName).</td></tr><tr><td>containerId</td><td>Řetězec</td><td>ID prostředku kontejneru pro zdroj dat Tato vlastnost není pro typ kontejneru podporována.</td></tr></table>
+<table><tr><td><b>Název vlastnosti</b></td><td><b>Typ dat</b></td><td><b>Komentáře</b></td></tr><tr><td>name</td><td>Řetězec</td><td>Název odvozený z informací o umístění zdroje dat</td></tr><tr><td>pevná</td><td>DataSourceLocation</td><td>Jedinečně popisuje zdroj dat a je jedním z identifikátorů pro daný prostředek. (Viz oddíl Dual identity).  Struktura DSL se liší podle protokolu a typu zdroje.</td></tr><tr><td>Datového</td><td>DataSourceInfo</td><td>Další podrobnosti o typu assetu.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Popisuje uživatele, který tento Asset naposledy zaregistroval.  Obsahuje jedinečné ID pro uživatele (UPN) a zobrazované jméno (lastName a firstName).</td></tr><tr><td>containerId</td><td>Řetězec</td><td>ID prostředku kontejneru pro zdroj dat Tato vlastnost není pro typ kontejneru podporována.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Běžné vlastnosti anotace nesouvisející s jedním prvkem
 Tyto vlastnosti se vztahují na všechny typy poznámek bez typu Singleton (poznámky, které mohou být pro jednotlivé prostředky povoleny více).
@@ -103,8 +102,8 @@ Tyto vlastnosti se vztahují na všechny typy poznámek bez typu Singleton (pozn
 ### <a name="root-asset-types"></a>Typy kořenového prostředku
 Typy kořenového prostředku jsou tyto typy, které představují různé typy datových assetů, které mohou být registrovány v katalogu. U každého kořenového typu existuje zobrazení, které popisuje prostředky a poznámky, které jsou zahrnuty v zobrazení. Při publikování assetu pomocí REST API by měl být v odpovídajícím segmentu adresy URL {view_name} použit název zobrazení.
 
-<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Typ dat</b></td><td><b>Povolené poznámky</b></td><td><b>Komentáře</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje jakákoli tabulková data.  Například: tabulka SQL, zobrazení SQL, Analysis Services tabulková tabulka, Analysis Services multidimenzionální dimenze, tabulka Oracle atd.   </td></tr><tr><td>Measure ("míry")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje míru Analysis Services.</td></tr><tr><td></td><td>měrné</td><td>Sloupec</td><td></td><td>Metadata popisující míru</td></tr><tr><td></td><td>-Počítané </td><td>Logická hodnota</td><td></td><td>Určuje, zda je míra vypočítána.</td></tr><tr><td></td><td>Skupina</td><td>Řetězec</td><td></td><td>Fyzický kontejner pro měření</td></tr><td>Klíčový ukazatel výkonu (KPI)</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>Skupina</td><td>Řetězec</td><td></td><td>Fyzický kontejner pro měření</td></tr><tr><td></td><td>goalExpression</td><td>Řetězec</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrací cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>Řetězec</td><td></td><td>Číselný výraz MDX, který vrací skutečnou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>Řetězec</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu v určeném časovém okamžiku.</td></tr><tr><td></td><td>trendExpression</td><td>Řetězec</td><td></td><td>Výraz MDX, který vyhodnocuje hodnotu klíčového ukazatele výkonu v čase. Trend může být libovolné kritérium založené na čase, které je užitečné v konkrétním obchodním kontextu.</td>
-<tr><td>Sestava ("sestavy")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje sestavu SQL Server Reporting Services. </td></tr><tr><td></td><td>assetCreatedDate</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Řetězec</td><td></td><td></td></tr><tr><td>Kontejner ("kontejnery")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje kontejner dalších prostředků, jako je SQL Database, kontejner objektů blob Azure nebo model Analysis Services.</td></tr></table>
+<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Typ dat</b></td><td><b>Povolené poznámky</b></td><td><b>Komentáře</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje jakákoli tabulková data.  Například: tabulka SQL, zobrazení SQL, Analysis Services tabulková tabulka, Analysis Services multidimenzionální dimenze, tabulka Oracle atd.   </td></tr><tr><td>Measure ("míry")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje míru Analysis Services.</td></tr><tr><td></td><td>měrné</td><td>Sloupec</td><td></td><td>Metadata popisující míru</td></tr><tr><td></td><td>-Počítané </td><td>Logická hodnota</td><td></td><td>Určuje, zda je míra vypočítána.</td></tr><tr><td></td><td>Skupina</td><td>Řetězec</td><td></td><td>Fyzický kontejner pro měření</td></tr><td>Klíčový ukazatel výkonu (KPI)</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>Skupina</td><td>Řetězec</td><td></td><td>Fyzický kontejner pro měření</td></tr><tr><td></td><td>goalExpression</td><td>Řetězec</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrací cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>Řetězec</td><td></td><td>Číselný výraz MDX, který vrací skutečnou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>Řetězec</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu v určeném časovém okamžiku.</td></tr><tr><td></td><td>trendExpression</td><td>Řetězec</td><td></td><td>Výraz MDX, který vyhodnocuje hodnotu klíčového ukazatele výkonu v čase. Trend může být libovolné kritérium založené na čase, které je užitečné v konkrétním obchodním kontextu.</td>
+<tr><td>Sestava ("sestavy")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje sestavu SQL Server Reporting Services. </td></tr><tr><td></td><td>assetCreatedDate</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Řetězec</td><td></td><td></td></tr><tr><td>Kontejner ("kontejnery")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje kontejner dalších prostředků, jako je SQL Database, kontejner objektů blob Azure nebo model Analysis Services.</td></tr></table>
 
 ### <a name="annotation-types"></a>Typy poznámek
 Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným typům v rámci katalogu.
@@ -140,7 +139,7 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 
 <tr><td>AccessInstruction ("accessInstructions")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>mimeType</td><td>řetězec</td><td>Typ MIME obsahu</td></tr>
-<tr><td></td><td>content</td><td>řetězec</td><td>Pokyny, jak získat přístup k tomuto datovému assetu. Obsahem může být adresa URL, e-mailová adresa nebo sada instrukcí.</td></tr>
+<tr><td></td><td>obsah</td><td>řetězec</td><td>Pokyny, jak získat přístup k tomuto datovému assetu. Obsahem může být adresa URL, e-mailová adresa nebo sada instrukcí.</td></tr>
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>Počet řádků v sadě dat</td></tr>
@@ -157,7 +156,7 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 
 <tr><td>Dokumentace ("dokumentace")</td><td></td><td></td><td>K danému prostředku může být přidružena pouze jedna dokumentace.</td></tr>
 <tr><td></td><td>mimeType</td><td>řetězec</td><td>Typ MIME obsahu</td></tr>
-<tr><td></td><td>content</td><td>řetězec</td><td>Obsah dokumentace</td></tr>
+<tr><td></td><td>obsah</td><td>řetězec</td><td>Obsah dokumentace</td></tr>
 
 </table>
 
@@ -172,9 +171,9 @@ Společné typy lze použít jako typy pro vlastnosti, ale nejsou položkami.
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>protokol</td><td>řetězec</td><td>Povinná hodnota. Popisuje protokol, který se používá ke komunikaci se zdrojem dat. Příklad: "TDS" pro SQl Server, Oracle pro Oracle atd. Seznam aktuálně podporovaných protokolů najdete v tématu <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">specifikace odkazu na zdroj dat – struktura DSL</a> .</td></tr>
-<tr><td></td><td>adresa</td><td>Řetězec&lt;slovníku, objekt&gt;</td><td>Povinná hodnota. Adresa je sada dat specifických pro protokol, který se používá k identifikaci odkazovaného zdroje dat. Data adresy jsou v oboru pro určitý protokol, což znamená, že nemají žádný význam.</td></tr>
+<tr><td></td><td>adresa</td><td>&lt;Řetězec slovníku, objekt&gt;</td><td>Povinná hodnota. Adresa je sada dat specifických pro protokol, který se používá k identifikaci odkazovaného zdroje dat. Data adresy jsou v oboru pro určitý protokol, což znamená, že nemají žádný význam.</td></tr>
 <tr><td></td><td>ověřování</td><td>řetězec</td><td>Nepovinný parametr. Schéma ověřování používané ke komunikaci se zdrojem dat. Například: Windows, OAuth atd.</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Řetězec&lt;slovníku, objekt&gt;</td><td>Nepovinný parametr. Další informace o tom, jak se připojit ke zdroji dat</td></tr>
+<tr><td></td><td>connectionProperties</td><td>&lt;Řetězec slovníku, objekt&gt;</td><td>Nepovinný parametr. Další informace o tom, jak se připojit ke zdroji dat</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Back-end neprovádí během publikování žádné ověření poskytovaných vlastností proti AAD.</td></tr>
 <tr><td></td><td>názvu</td><td>řetězec</td><td>Jedinečná e-mailová adresa uživatele Je nutné zadat, pokud není zadáno objectId nebo v kontextu vlastnosti "lastRegisteredBy", jinak volitelné.</td></tr>
@@ -183,16 +182,16 @@ Společné typy lze použít jako typy pro vlastnosti, ale nejsou položkami.
 <tr><td></td><td>lastName</td><td>řetězec</td><td>Poslední jméno uživatele (pro účely zobrazení). Nepovinný parametr. Platné pouze v kontextu vlastnosti "lastRegisteredBy". Nelze zadat při poskytování objektu zabezpečení pro role, oprávnění a odborníky.</td></tr>
 
 <tr><td>Sloupec</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>jméno</td><td>řetězec</td><td>Název sloupce nebo atributu</td></tr>
-<tr><td></td><td>type</td><td>řetězec</td><td>datový typ sloupce nebo atributu Povolené typy závisí na datovém sourceType prostředku.  Je podporována pouze podmnožina typů.</td></tr>
+<tr><td></td><td>name</td><td>řetězec</td><td>Název sloupce nebo atributu</td></tr>
+<tr><td></td><td>typ</td><td>řetězec</td><td>datový typ sloupce nebo atributu Povolené typy závisí na datovém sourceType prostředku.  Je podporována pouze podmnožina typů.</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>Maximální povolená délka sloupce nebo atributu. Odvozeno ze zdroje dat. Platí pouze pro některé typy zdrojů.</td></tr>
 <tr><td></td><td>číslic</td><td>byte</td><td>Přesnost sloupce nebo atributu Odvozeno ze zdroje dat. Platí pouze pro některé typy zdrojů.</td></tr>
 <tr><td></td><td>isNullable</td><td>Logická hodnota</td><td>Určuje, zda má sloupec povolenou hodnotu null. Odvozeno ze zdroje dat. Platí pouze pro některé typy zdrojů.</td></tr>
-<tr><td></td><td>výraz</td><td>řetězec</td><td>Pokud je hodnotou počítaný sloupec, obsahuje toto pole výraz, který hodnotu vyjadřuje. Odvozeno ze zdroje dat. Platí pouze pro některé typy zdrojů.</td></tr>
+<tr><td></td><td>expression</td><td>řetězec</td><td>Pokud je hodnotou počítaný sloupec, obsahuje toto pole výraz, který hodnotu vyjadřuje. Odvozeno ze zdroje dat. Platí pouze pro některé typy zdrojů.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName </td><td>řetězec</td><td>Název sloupce</td></tr>
-<tr><td></td><td>type </td><td>řetězec</td><td>Typ sloupce</td></tr>
+<tr><td></td><td>typ </td><td>řetězec</td><td>Typ sloupce</td></tr>
 <tr><td></td><td>min </td><td>řetězec</td><td>Minimální hodnota v sadě dat</td></tr>
 <tr><td></td><td>max </td><td>řetězec</td><td>Maximální hodnota v sadě dat</td></tr>
 <tr><td></td><td>volání </td><td>double</td><td>Průměrná hodnota v sadě dat</td></tr>
@@ -215,18 +214,18 @@ Sadu podporovaných protokolů lze programově rozšířit (viz odkaz Data Catal
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>namespace</td><td>řetězec</td><td>Obor názvů protokolu. Obor názvů musí být dlouhý 1 až 255 znaků a musí obsahovat jednu nebo více neprázdných částí oddělených tečkou (.). Každá část musí mít délku 1 až 255 znaků. začínat písmenem a obsahovat jenom písmena a číslice.</td></tr>
-<tr><td></td><td>jméno</td><td>řetězec</td><td>Název protokolu. Název musí mít délku 1 až 255 znaků a nesmí začínat písmenem a obsahovat jenom písmena, číslice a spojovníky (-).</td></tr>
+<tr><td></td><td>name</td><td>řetězec</td><td>Název protokolu. Název musí mít délku 1 až 255 znaků a nesmí začínat písmenem a obsahovat jenom písmena, číslice a spojovníky (-).</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>Seznam vlastností identity musí obsahovat aspoň jednu, ale ne víc než 20 vlastností. Například: "Server", "Database", "Schema", "Object" jsou vlastnosti identity protokolu "TDS".</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>Seznam sad identit Definuje sady vlastností identity, které reprezentují platnou identitu prostředku. Musí obsahovat alespoň jeden, ale ne více než 20 sad. Například: {"Server", "Database", "Schema" a "Object"} je identita nastavená pro protokol "TDS", který definuje identitu assetu tabulky SQL serveru.</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>jméno</td><td>řetězec</td><td>Název vlastnosti Název musí mít délku 1 až 100 znaků a nesmí obsahovat jenom písmena a číslice.</td></tr>
-<tr><td></td><td>type</td><td>řetězec</td><td>Typ proměnné Podporované hodnoty: "bool", Boolean "," byte "," GUID "," int "," Integer "," Long "," String "," URL "</td></tr>
+<tr><td></td><td>name</td><td>řetězec</td><td>Název vlastnosti Název musí mít délku 1 až 100 znaků a nesmí obsahovat jenom písmena a číslice.</td></tr>
+<tr><td></td><td>typ</td><td>řetězec</td><td>Typ proměnné Podporované hodnoty: "bool", Boolean "," byte "," GUID "," int "," Integer "," Long "," String "," URL "</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>Určuje, zda má být při použití hodnoty vlastnosti ignorována velikost písmen. Dá se zadat jenom pro vlastnosti typu řetězec. Výchozí hodnota je false.</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool []</td><td>Označuje, zda má být pro každý segment cesty adresy URL ignorována velikost písmen. Lze zadat pouze pro vlastnosti typu "URL". Výchozí hodnota je [FALSE].</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>jméno</td><td>řetězec</td><td>Název sady identity</td></tr>
+<tr><td></td><td>name</td><td>řetězec</td><td>Název sady identity</td></tr>
 <tr><td></td><td>properties</td><td>řetězec []</td><td>Seznam vlastností identity zahrnutých do této sady identit Nemůže obsahovat duplicity. Každá vlastnost, na kterou odkazuje sada identity, musí být definovaná v seznamu "identityProperties" protokolu.</td></tr>
 
 </table>
@@ -271,14 +270,14 @@ Ve výchozím nastavení má každý ověřený uživatel právo **číst** pro 
 > 
 > Role **vlastníka** platí pouze pro kořenovou položku.
 > 
-> Ve výchozím nastavení, když je v katalogu vytvořena položka **Přispěvatel** je nastavena na aktuálně ověřeného uživatele. Pokud by měla být položka aktualizovatelná všemi uživateli, **Přispěvatel** by měl být &lt;nastaven&gt; na hodnotu Everyone speciální objekt zabezpečení ve vlastnosti **role** při prvním publikování položky (viz následující příklad). **Přispěvatel** nemůže být změněn a zůstane stejný během životního času položky ( **správce** nebo **vlastník** nemá právo změnit **přispěvatele**). Jediná hodnota podporovaná explicitním nastavením **přispěvatele** je &lt;Everyone&gt;: **Přispěvatel** může být pouze uživatel, který vytvořil položku nebo &lt;kdokoli.&gt;
+> Ve výchozím nastavení, když je v katalogu vytvořena položka **Přispěvatel** je nastavena na aktuálně ověřeného uživatele. Pokud by měla být položka aktualizovatelná všemi uživateli, **Přispěvatel** by měl být nastaven na hodnotu &lt; Everyone &gt; speciální objekt zabezpečení ve vlastnosti **role** při prvním publikování položky (viz následující příklad). **Přispěvatel** nemůže být změněn a zůstane stejný během životního času položky ( **správce** nebo **vlastník** nemá právo změnit **přispěvatele**). Jediná hodnota podporovaná explicitním nastavením **přispěvatele** je &lt; Everyone &gt; : **Přispěvatel** může být pouze uživatel, který vytvořil položku nebo &lt; kdokoli &gt; .
 > 
 > 
 
 ### <a name="examples"></a>Příklady
-**Nastavit přispěvatele &lt;pro&gt; všechny při publikování položky**
-Speciální objekt &lt;zabezpečení Everyone&gt; má objectID "00000000-0000-0000-0000-000000000201".
-  **Post** https:\//API.azuredatacatalog.com/catalogs/default/views/Tables/?API-Version=2016-03-30
+**Nastavit přispěvatele pro &lt; všechny &gt; při publikování položky**
+Speciální objekt zabezpečení &lt; Everyone &gt; má objectId "00000000-0000-0000-0000-000000000201".
+  **Post** https: \/ /API.azuredatacatalog.com/catalogs/default/views/Tables/?API-Version=2016-03-30
 
 > [!NOTE]
 > Některé implementace klienta protokolu HTTP mohou automaticky vystavovat požadavky v reakci na server 302 ze serveru, obvykle ale z požadavku odstranit autorizační hlavičky. Vzhledem k tomu, že se autorizační hlavička vyžaduje k tomu, aby byly požadavky na Azure Data Catalog, je nutné zajistit, aby byla při opětovném vystavování žádosti na umístění přesměrování určeném Azure Data Catalog stále k dispozici autorizační hlavička. Následující vzorový kód demonstruje použití objektu .NET HttpWebRequest.
@@ -301,7 +300,7 @@ Speciální objekt &lt;zabezpečení Everyone&gt; má objectID "00000000-0000-00
     }
 ```
 
-  **Přiřazení vlastníků a omezení viditelnosti pro existující kořenovou položku**: **Put** https:\//API.azuredatacatalog.com/catalogs/default/views/Tables/042297b0...1be45ecd462a?API-Version=2016-03-30
+  **Přiřazení vlastníků a omezení viditelnosti pro existující kořenovou položku**: **Put** https: \/ /API.azuredatacatalog.com/catalogs/default/views/Tables/042297b0...1be45ecd462a?API-Version=2016-03-30
 
 ```json
     {

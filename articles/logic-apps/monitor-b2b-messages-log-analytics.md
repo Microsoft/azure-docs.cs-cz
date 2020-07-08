@@ -7,13 +7,12 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76907978"
 ---
-# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro zprávy B2B v Azure Logic Apps
+# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Nastavení protokolů služby Azure Monitor a shromažďování diagnostických dat o zprávách B2B v Azure Logic Apps
 
 Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace mohou tito partneři vyměňovat zprávy pomocí protokolů, jako jsou AS2, X12 a EDIFACT. Pokud chcete ověřit, že tato komunikace funguje očekávaným způsobem, můžete nastavit [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) pro svůj účet pro integraci. [Azure monitor](../azure-monitor/overview.md) vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete zaznamenávat a ukládat data o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v [pracovním prostoru Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md). V případě zpráv se v protokolování také shromažďují informace, jako například:
 
@@ -44,7 +43,7 @@ Tento článek popisuje, jak povolit protokolování Azure Monitor pro účet pr
 
 Předtím, než protokoly Azure Monitor můžou sledovat zprávy B2B pro vaši aplikaci logiky, přidejte řešení **Logic Apps B2B** do pracovního prostoru Log Analytics.
 
-1. Do vyhledávacího pole [Azure Portal](https://portal.azure.com)zadejte `log analytics workspaces`a potom vyberte **Log Analytics pracovní prostory**.
+1. Do vyhledávacího pole [Azure Portal](https://portal.azure.com)zadejte `log analytics workspaces` a potom vyberte **Log Analytics pracovní prostory**.
 
    ![Vyberte Log Analytics pracovní prostory.](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -52,7 +51,7 @@ Předtím, než protokoly Azure Monitor můžou sledovat zprávy B2B pro vaši a
 
    ![Vyberte svůj pracovní prostor Log Analytics](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. V podokně Přehled v části Začínáme **s Log Analytics** > **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
+1. V podokně Přehled v části Začínáme **s Log Analytics**  >  **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
 
    ![V podokně s přehledem vyberte možnost Zobrazit řešení.](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
@@ -60,7 +59,7 @@ Předtím, než protokoly Azure Monitor můžou sledovat zprávy B2B pro vaši a
 
    ![V podokně s přehledem přidejte nové řešení.](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
 
-1. Po otevření **Marketplace** do vyhledávacího pole zadejte `logic apps b2b`a vyberte **Logic Apps B2B**.
+1. Po otevření **Marketplace** do vyhledávacího pole zadejte `logic apps b2b` a vyberte **Logic Apps B2B**.
 
    ![Z Marketplace vyberte Logic Apps Management.](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
 
@@ -116,7 +115,7 @@ Po spuštění aplikace logiky můžete zobrazit stav a data o těchto zprávác
 
 1. Do vyhledávacího pole [Azure Portal](https://portal.azure.com) vyhledejte a otevřete Log Analytics pracovní prostor.
 
-1. V nabídce pracovního prostoru vyberte možnost **Souhrn** > **Logic Apps B2B**pracovního prostoru.
+1. V nabídce pracovního prostoru vyberte možnost **Souhrn Logic Apps B2B pracovního prostoru**  >  **Logic Apps B2B**.
 
    ![Podokno souhrnu pracovního prostoru](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 

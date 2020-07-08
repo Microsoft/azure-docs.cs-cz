@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76932301"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Přehled reverzních DNS a podpory v Azure
@@ -42,9 +41,9 @@ Když je organizaci přiřazen blok IP adres, získá taky právo spravovat odpo
 
 ### <a name="ipv4"></a>IPv4
 
-Název zóny zpětného vyhledávání IPv4 by měl být v následujícím formátu: `<IPv4 network prefix in reverse order>.in-addr.arpa`.
+Název zóny zpětného vyhledávání IPv4 by měl být v následujícím formátu: `<IPv4 network prefix in reverse order>.in-addr.arpa` .
 
-Například při vytváření reverzní zóny k záznamům hostitelů pro hostitele s IP adresami, které jsou v předponě 192.0.2.0/24, se název zóny vytvoří tak, že se zaizoluje síťová předpona adresy (192.0.2) a pak se přesměruje objednávka (2.0.192) a přidání `.in-addr.arpa`přípony.
+Například při vytváření reverzní zóny k záznamům hostitelů pro hostitele s IP adresami, které jsou v předponě 192.0.2.0/24, se název zóny vytvoří tak, že se zaizoluje síťová předpona adresy (192.0.2) a pak se přesměruje objednávka (2.0.192) a přidání přípony `.in-addr.arpa` .
 
 |Třída podsítě|Předpona sítě  |Předpona reverzní sítě  |Standardní přípona  |Název reverzní zóny |
 |-------|----------------|------------|-----------------|---------------------------|
@@ -54,7 +53,7 @@ Například při vytváření reverzní zóny k záznamům hostitelů pro hostit
 
 ### <a name="classless-ipv4-delegation"></a>Delegování beztřídou IPv4
 
-V některých případech je rozsah IP adres přidělený organizaci menší než rozsah třídy C (/24). V takovém případě rozsah IP adres nespadají do hranice zóny v rámci hierarchie `.in-addr.arpa` zóny, a proto nemůže být delegovaný jako podřízená zóna.
+V některých případech je rozsah IP adres přidělený organizaci menší než rozsah třídy C (/24). V takovém případě rozsah IP adres nespadají do hranice zóny v rámci `.in-addr.arpa` hierarchie zóny, a proto nemůže být delegovaný jako podřízená zóna.
 
 Místo toho se k přenosu řízení jednotlivých záznamů zpětného vyhledávání (PTR) do vyhrazené zóny DNS používá jiný mechanismus. Tento mechanismus deleguje podřízenou zónu pro každý rozsah IP adres a pak mapuje každou IP adresu v rozsahu individuálně na tuto podřízenou zónu pomocí záznamů CNAME.
 
@@ -89,7 +88,7 @@ Zpětné vyhledávání pro dotaz 192.0.2.129 IP adresy pro záznam PTR s názve
 
 Název zóny zpětného vyhledávání IPv6 by měl být v následujícím tvaru:`<IPv6 network prefix in reverse order>.ip6.arpa`
 
-Například. Při vytváření reverzní zóny k záznamům hostitelů pro hostitele s IP adresami, které jsou v předponě 2001: db8:1000: ABDC::/64, se vytvoří název zóny tak, že izoluje předponu sítě adresy (2001: db8: ABDC::). Dále rozbalte předponu sítě IPv6 pro odebrání [nulové komprese](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud se použila k zkrácení předpony adresy IPv6 (2001:0db8: ABDC: 0000::). Obrátí pořadí a pomocí tečky jako oddělovače mezi každým šestnáctkovým číslem v předponě vytvořte reverzní předponu sítě (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) a přidejte příponu. `.ip6.arpa`
+Například. Při vytváření reverzní zóny k záznamům hostitelů pro hostitele s IP adresami, které jsou v předponě 2001: db8:1000: ABDC::/64, se vytvoří název zóny tak, že izoluje předponu sítě adresy (2001: db8: ABDC::). Dále rozbalte předponu sítě IPv6 pro odebrání [nulové komprese](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud se použila k zkrácení předpony adresy IPv6 (2001:0db8: ABDC: 0000::). Obrátí pořadí a pomocí tečky jako oddělovače mezi každým šestnáctkovým číslem v předponě vytvořte reverzní předponu sítě ( `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2` ) a přidejte příponu `.ip6.arpa` .
 
 
 |Předpona sítě  |Rozšířená a obrácená předpona sítě |Standardní přípona |Název reverzní zóny  |

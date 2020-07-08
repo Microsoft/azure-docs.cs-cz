@@ -17,10 +17,9 @@ ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76897035"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
@@ -109,7 +108,7 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
   1. Oprava hotfix pro správu paměti agenta a související výstrahy specificky pro 3.0.244.0 verze
 
 
-## <a name="may-2018"></a>Květen 2018
+## <a name="may-2018"></a>May 2018
 **Aktualizace agenta:**
 * Agent Azure AD Connect Health pro služba AD DS (verze 3.0.244.0)
   1. Vylepšení ochrany osobních údajů agenta  

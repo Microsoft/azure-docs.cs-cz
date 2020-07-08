@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845563"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatické škálování běžných metrik
@@ -22,7 +21,7 @@ Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machi
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Výpočetní metriky pro virtuální počítače založené na Správce prostředků
 Ve výchozím nastavení Správce prostředků Virtual Machines a Virtual Machine Scale Sets emitují metriky Basic (na úrovni hostitele). Kromě toho, když konfigurujete shromažďování dat diagnostiky pro virtuální počítač Azure a VMSS, rozhraní pro diagnostiku Azure také generuje čítače výkonu host-OS (obvykle označované jako metriky host-OS).  Všechny tyto metriky použijete v pravidlech automatického škálování.
 
-Pomocí `Get MetricDefinitions` rozhraní API/Posh/CLI můžete zobrazit metriky, které jsou k dispozici pro váš prostředek VMSS.
+Pomocí `Get MetricDefinitions` rozhraní API/PoSH/CLI můžete zobrazit metriky, které jsou k dispozici pro váš prostředek VMSS.
 
 Pokud používáte službu VM Scale Sets a v seznamu není uvedena konkrétní metrika, je pravděpodobně *zakázána* v diagnostickém rozšíření.
 
@@ -50,21 +49,21 @@ Můžete vytvořit výstrahu pro následující metriky:
 | Název metriky | Jednotka |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Procento |
-| \Processor (_Total)\% privilegovaný čas |Procento |
-| Čas uživatele \Processor (\% _Total) |Procento |
+| \Processor (_Total) \% privilegovaný čas |Procento |
+| Čas uživatele \Processor (_Total) \% |Procento |
 | \Processor – informace o frekvenci \Processor (_Total) |Počet |
 | \System\Processes |Počet |
 | \Process (_Total) \Thread počet |Počet |
 | \Process (_Total) \Handle počet |Počet |
-| \Memory\% potvrzené používané bajty |Procento |
+| \Memory \% potvrzené používané bajty |Procento |
 | \Memory\Available Bytes |Bajty |
 | \Memory\Committed bajty |Bajty |
 | \Memory\Commit limit |Bajty |
 | Bajty stránkovaného \Memory\Pool |Bajty |
 | \Memory\Pool nestránkované bajty |Bajty |
-| \PhysicalDisk (_Total)\% čas disku |Procento |
-| \PhysicalDisk (_Total)\% doba čtení disku |Procento |
-| \PhysicalDisk (_Total)\% čas zápisu na disk |Procento |
+| \PhysicalDisk (_Total) \% čas disku |Procento |
+| \PhysicalDisk (_Total) \% doba čtení disku |Procento |
+| \PhysicalDisk (_Total) \% čas zápisu na disk |Procento |
 | \PhysicalDisk (_Total) \ přenosy za sekundu |CountPerSecond |
 | \PhysicalDisk (_Total) \ čtení za sekundu |CountPerSecond |
 | \PhysicalDisk (_Total) \ zápisy na/s |CountPerSecond |
@@ -74,7 +73,7 @@ Můžete vytvořit výstrahu pro následující metriky:
 | \PhysicalDisk (_Total) \ prům délka fronty disku |Počet |
 | \PhysicalDisk (_Total) \ prům délka fronty čtení disku |Počet |
 | \PhysicalDisk (_Total) \ prům délka fronty zápisu na disk |Počet |
-| \ Logický disk (_Total)\% volného místa |Procento |
+| \ Logický disk (_Total) \% volného místa |Procento |
 | \ Logický disk (_Total) \ volné megabajtů |Počet |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Virtuální počítače s metrikami hostovaného operačního systému Linux

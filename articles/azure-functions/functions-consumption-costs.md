@@ -4,17 +4,16 @@ description: Naučte se, jak lépe odhadnout náklady, které vám mohou vznikno
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76963984"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
 Existují tři typy hostujících plánů pro aplikaci, která běží v Azure Functions, přičemž každý plán má svůj vlastní cenový model: 
 
-| Plánování | Popis |
+| Plánování | Description |
 | ---- | ----------- |
 | [**Nároky**](functions-scale.md#consumption-plan) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
 | [**Premium**](functions-scale.md#premium-plan) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
@@ -30,7 +29,7 @@ Durable Functions může také běžet v plánu spotřeby. Další informace o n
 
 *Náklady* na spuštění jediného spuštění funkce se měří v *GB-s*. Náklady na spuštění jsou vypočítány kombinací využití paměti s dobou spuštění. Funkce, která se spouští s delšími náklady, jako funkce, která spotřebovává více paměti. 
 
-Vezměte v úvahu případ, kdy velikost paměti, kterou funkce používá, zůstane konstantní. V tomto případě je výpočet nákladů jednoduchý násobení. Řekněme například, že funkce spotřebovaná 0,5 GB po dobu 3 sekund. Náklady na spuštění jsou `0.5GB * 3s = 1.5 GB-seconds`pak. 
+Vezměte v úvahu případ, kdy velikost paměti, kterou funkce používá, zůstane konstantní. V tomto případě je výpočet nákladů jednoduchý násobení. Řekněme například, že funkce spotřebovaná 0,5 GB po dobu 3 sekund. Náklady na spuštění jsou pak `0.5GB * 3s = 1.5 GB-seconds` . 
 
 Vzhledem k tomu, že se využití paměti mění v čase, výpočet je v podstatě celočíselné využití paměti v průběhu času.  Systém provede tento výpočet vzorkováním využití paměti procesem (spolu s podřízenými procesy) v pravidelných intervalech. Jak je uvedeno na [stránce s cenami], využití paměti se zaokrouhluje na nejbližší 128 MB kontejneru. Když váš proces používá 160 MB, bude se vám účtovat 256 MB. Výpočet vezme v úvahu souběžnost, což je více souběžných spuštění funkcí v rámci stejného procesu.
 
@@ -45,7 +44,7 @@ V případě funkcí spuštěných v plánu spotřeby jsou celkové náklady ná
 
 Při odhadování celkových nákladů na vaši aplikaci Function App a související služby použijte [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator/?service=functions). 
 
-| Související náklady | Popis |
+| Související náklady | Description |
 | ------------ | ----------- |
 | **Účet úložiště** | Každá aplikace Function App vyžaduje, abyste měli přidružený [účet Pro obecné účely Azure Storage](../storage/common/storage-introduction.md#types-of-storage-accounts), který se [fakturuje zvlášť](https://azure.microsoft.com/pricing/details/storage/). Tento účet se používá interně modulem runtime Functions, ale můžete ho použít i pro triggery a vazby úložiště. Pokud nemáte účet úložiště, vytvoří se pro vás při vytváření aplikace Function App. Další informace najdete v tématu [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).|
 | **Application Insights** | Funkce spoléhá na [Application Insights](../azure-monitor/app/app-insights-overview.md) , aby poskytovala vysoce výkonné prostředí pro monitorování aplikací Function App. I když to není nutné, měli byste [Povolit integraci Application Insights](functions-monitoring.md#enable-application-insights-integration). K dispozici je bezplatný grant dat telemetrie každý měsíc. Další informace najdete [na stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). |
@@ -57,7 +56,7 @@ Doba spuštění může ovlivnit následující chování vašich funkcí:
 
 + **Triggery a vazby**: doba potřebná ke čtení vstupu z a zápis výstupu do vašich [vazeb funkcí](functions-triggers-bindings.md) se počítá jako doba provádění. Pokud například funkce používá výstupní vazbu k zápisu zprávy do fronty služby Azure Storage, doba provádění zahrnuje dobu trvání zápisu zprávy do fronty, která je zahrnuta ve výpočtu nákladů na funkci. 
 
-+ **Asynchronní spuštění**: doba, kterou vaše funkce čeká na výsledky asynchronního požadavku (`await` v jazyce C#), se počítá jako doba provádění. Výpočet GB druhé je založen na počátečním a koncovém času funkce a využití paměti v tomto období. Co se v této době děje z důvodu aktivity procesoru, se do výpočtu nepočítá. Během asynchronních operací může být možné snížit náklady pomocí [Durable Functions](durable/durable-functions-overview.md). Neúčtuje se vám čas strávený za await ve funkcích Orchestrator.
++ **Asynchronní spuštění**: doba, kterou vaše funkce čeká na výsledky asynchronního požadavku ( `await` v jazyce C#), se počítá jako doba provádění. Výpočet GB druhé je založen na počátečním a koncovém času funkce a využití paměti v tomto období. Co se v této době děje z důvodu aktivity procesoru, se do výpočtu nepočítá. Během asynchronních operací může být možné snížit náklady pomocí [Durable Functions](durable/durable-functions-overview.md). Neúčtuje se vám čas strávený za await ve funkcích Orchestrator.
 
 ## <a name="view-execution-data"></a>Zobrazit data spuštění
 
@@ -71,7 +70,7 @@ Pomocí [Azure monitor Průzkumníku metrik](../azure-monitor/platform/metrics-g
 
 1. V horní části [Azure Portal] v části **Hledat služby, prostředky a hledání dokumentů** vyhledejte `monitor` a v části **služby**vyberte **monitor** .
 
-1. Na levé straně vyberte **metriky** > **Vybrat prostředek**a pak pomocí nastavení pod imagí zvolte aplikaci Function App.
+1. Na levé straně vyberte **metriky**  >  **Vybrat prostředek**a pak pomocí nastavení pod imagí zvolte aplikaci Function App.
 
     ![Výběr prostředku Function App](media/functions-consumption-costing/select-a-resource.png)
 
@@ -188,7 +187,7 @@ Tento příkaz vrátí datovou část JSON, která vypadá jako v následující
   ]
 }
 ```
-Tato konkrétní odezva ukazuje, `2019-09-11T21:46` že `2019-09-11T23:18`z aplikace do jste vypnuli 1110000000 MB – milisekund (1083,98 GB-s).
+Tato konkrétní odezva ukazuje, že z aplikace do jste vypnuli `2019-09-11T21:46` `2019-09-11T23:18` 1110000000 MB – milisekund (1083,98 GB-s).
 
 ## <a name="determine-memory-usage"></a>Určení využití paměti
 
@@ -206,14 +205,14 @@ performanceCounters
 
 Výsledky vypadají jako v následujícím příkladu:
 
-| časové \[razítko UTC\]          | jméno          | value       |
+| časové razítko \[ UTC\]          | name          | hodnota       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 am | Soukromé bajty | 209 932 288 |
-| 9/12/2019, 1:06:14\.994 am | Soukromé bajty | 212 189 184 |
-| 9/12/2019, 1:06:30\.010 am | Soukromé bajty | 231 714 816 |
-| 9/12/2019, 1:07:15\.040 am | Soukromé bajty | 210 591 744 |
-| 9/12/2019, 1:12:16\.285 am | Soukromé bajty | 216 285 184 |
-| 9/12/2019, 1:12:31\.376 am | Soukromé bajty | 235 806 720 |
+| 9/12/2019, 1:05:14 \. 947 am | Soukromé bajty | 209 932 288 |
+| 9/12/2019, 1:06:14 \. 994 am | Soukromé bajty | 212 189 184 |
+| 9/12/2019, 1:06:30 \. 010 am | Soukromé bajty | 231 714 816 |
+| 9/12/2019, 1:07:15 \. 040 am | Soukromé bajty | 210 591 744 |
+| 9/12/2019, 1:12:16 \. 285 am | Soukromé bajty | 216 285 184 |
+| 9/12/2019, 1:12:31 \. 376 am | Soukromé bajty | 235 806 720 |
 
 ## <a name="function-level-metrics"></a>Metriky na úrovni funkcí
 
@@ -226,11 +225,11 @@ customMetrics
 | summarize averageDurationMilliseconds=avg(averageDuration) by name
 ```
 
-| jméno                       | averageDurationMilliseconds |
+| name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087                     |
-| QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522                      |
+| QueueTrigger AvgDurationMs | 16 \. 087                     |
+| QueueTrigger MaxDurationMs | 90 \. 249                     |
+| QueueTrigger MinDurationMs | 8 \. 522                      |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -238,4 +237,4 @@ customMetrics
 > [Další informace o monitorování aplikací Function App](functions-monitoring.md)
 
 [Stránka s cenami]:https://azure.microsoft.com/pricing/details/functions/
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76963848"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
@@ -23,13 +22,13 @@ Pokud chcete vytvořit nebo aktualizovat zásady Azure Backup, použijte násled
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-`{policyName}` A `{vaultName}` jsou k dispozici v identifikátoru URI. Další informace jsou k dispozici v textu žádosti.
+`{policyName}`A `{vaultName}` jsou k dispozici v identifikátoru URI. Další informace jsou k dispozici v textu žádosti.
 
 ## <a name="create-the-request-body"></a>Vytvoření textu žádosti
 
 Pokud například chcete vytvořit zásadu pro zálohování virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Description  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
 |tags     |         | Objekt        |  Značky prostředků       |
@@ -131,16 +130,16 @@ Zásada uvádí:
 > [!IMPORTANT]
 > Formáty času pro plán a uchování podporují pouze datum a čas. Nepodporují pouze formát času.
 
-## <a name="responses"></a>Odezvy
+## <a name="responses"></a>Odpovědi
 
 Vytvoření nebo aktualizace zásad zálohování je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace pak 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |    [PolicyResource ochrany](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 přijato     |         |     Accepted    |
+|202 přijato     |         |     Přijato    |
 
 ### <a name="example-responses"></a>Příklady odpovědí
 

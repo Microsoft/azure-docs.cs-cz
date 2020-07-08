@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76838254"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích obohacení AI
@@ -29,7 +28,7 @@ V rámci odhalující dokumentu je k dispozici nová sada konfiguračních param
 
 Normalizaci imagí nelze vypnout. Dovednosti, které iterují na obrázky, očekávají normalizované obrázky. Povolení normalizace imagí u indexeru vyžaduje, aby k tomuto indexeru byl připojen dovednosti.
 
-| Konfigurační parametr | Popis |
+| Konfigurační parametr | Description |
 |--------------------|-------------|
 | imageAction   | Nastavte na None, pokud by se při výskytu vložených obrázků nebo souborů obrázků neměla dělat žádná akce. <br/>Nastavte na "generateNormalizedImages", aby se vygenerovalo pole normalizovaných imagí jako součást odhalujícího dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage", chcete-li generovat pole normalizovaných imagí, kde pro soubory PDF ve zdroji dat jsou jednotlivé stránky vykresleny do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů, které nejsou ve formátu PDF.<br/>V případě jakékoli možnosti, která není "none", budou obrázky zobrazeny v poli *normalized_images* . <br/>Výchozí hodnota je None. Tato konfigurace je relevantní pouze pro zdroje dat objektů blob, pokud je "dataToExtract" nastaven na "contentAndMetadata". <br/>Z daného dokumentu bude extrahováno maximálně 1000 imagí. Pokud je v dokumentu více než 1000 obrázků, bude extrahován první 1000 a bude vygenerováno upozornění. |
 |  normalizedImageMaxWidth | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. Maximální povolená hodnota je 10000. | 
@@ -38,7 +37,7 @@ Normalizaci imagí nelze vypnout. Dovednosti, které iterují na obrázky, oček
 > [!NOTE]
 > Pokud nastavíte vlastnost *imageAction* na jinou hodnotu než None, nebudete moci nastavit vlastnost *parsingMode* na jinou hodnotu než "default".  V konfiguraci indexeru můžete nastavit jenom jednu z těchto dvou vlastností na jinou než výchozí hodnotu.
 
-Nastavte parametr **parsingMode** na `json` (Chcete-li indexovat každý objekt BLOB jako jeden dokument `jsonArray` ) nebo (Pokud objekty blob obsahují pole JSON a potřebujete, aby každý prvek pole byl považován za samostatný dokument).
+Nastavte parametr **parsingMode** na `json` (Chcete-li indexovat každý objekt BLOB jako jeden dokument) nebo `jsonArray` (Pokud objekty blob obsahují pole JSON a potřebujete, aby každý prvek pole byl považován za samostatný dokument).
 
 Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). [Dovednost optického rozpoznávání znaků](cognitive-search-skill-ocr.md) podporuje maximální šířku a výšku 4200 pro jiné než anglické jazyky a 10000 pro angličtinu.  Pokud zvýšíte maximální limity, zpracování na větších obrázcích může selhat v závislosti na definici dovednosti a jazyku dokumentů. 
 
@@ -60,7 +59,7 @@ ImageAction v [definici indexeru](https://docs.microsoft.com/rest/api/searchserv
 
 Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normalized_images* bude obsahovat pole obrázků. Každý obrázek je komplexní typ, který má následující členy:
 
-| Člen obrázku       | Popis                             |
+| Člen obrázku       | Description                             |
 |--------------------|-----------------------------------------|
 | data               | Řetězec s kódováním BASE64 normalizovaného obrázku ve formátu JPEG.   |
 | šířka              | Šířka normalizované image v pixelech |
@@ -91,7 +90,7 @@ Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normali
 
 K dispozici jsou dva integrované příhlasné dovednosti, které přijímají obrázky jako vstup: analýza [OCR](cognitive-search-skill-ocr.md) a [obrázku](cognitive-search-skill-image-analysis.md). 
 
-V současné době tyto dovednosti fungují jenom s obrázky generovanými z kroku pro trhliny dokumentů. V takovém případě je `"/document/normalized_images"`jediným podporovaným vstupem.
+V současné době tyto dovednosti fungují jenom s obrázky generovanými z kroku pro trhliny dokumentů. V takovém případě je jediným podporovaným vstupem `"/document/normalized_images"` .
 
 ### <a name="image-analysis-skill"></a>Dovednost analýzy obrázků
 
@@ -106,7 +105,7 @@ V současné době tyto dovednosti fungují jenom s obrázky generovanými z kro
 Běžný scénář zahrnuje vytvoření jednoho řetězce obsahujícího celý obsah souboru, textu textu i obrázku, a to provedením následujících kroků:  
 
 1. [Extrahovat normalized_images](#get-normalized-images)
-1. Spustit dovednosti optického rozpoznávání `"/document/normalized_images"` znaků pomocí as Input
+1. Spustit dovednosti optického rozpoznávání znaků pomocí `"/document/normalized_images"` as Input
 1. Sloučí text reprezentující obrázky s nezpracovaným textem extrahovaným ze souboru. Dovednost [sloučení textu](cognitive-search-skill-textmerger.md) můžete použít k sloučení obou textových bloků do jednoho velkého řetězce.
 
 Následující příklad dovednosti vytvoří pole *merged_text* obsahující textový obsah dokumentu. Zahrnuje také text OCRed z každého vloženého obrázku. 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774866"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurace telemetrie Azure Media Services s využitím REST
@@ -34,7 +33,7 @@ Postup popsaný v tomto tématu:
 - Získávání koncových bodů oznámení
 - Vytváření koncového bodu oznámení pro monitorování. 
 
-    Pokud chcete vytvořit koncový bod oznámení, nastavte EndPointType na Azure (2) a endPontAddress nastavte na tabulku úložiště (například https:\//telemetryvalidationstore.Table.Core.Windows.NET/).
+    Pokud chcete vytvořit koncový bod oznámení, nastavte EndPointType na Azure (2) a endPontAddress nastavte na tabulku úložiště (například https: \/ /telemetryvalidationstore.Table.Core.Windows.NET/).
   
 - Získat konfigurace monitorování
 
@@ -46,7 +45,7 @@ Postup popsaný v tomto tématu:
  
 ## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Získání účtu úložiště přidruženého k Media Services účtu
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
     x-ms-version: 2.19
@@ -74,7 +73,7 @@ Postup popsaný v tomto tématu:
 
 ## <a name="get-the-notification-endpoints"></a>Získání koncových bodů oznámení
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.19
@@ -107,7 +106,7 @@ Postup popsaný v tomto tématu:
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>Vytvoření koncového bodu oznámení pro monitorování
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.19
@@ -126,7 +125,7 @@ Postup popsaný v tomto tématu:
     }
 
 > [!NOTE]
-> Nezapomeňte změnit hodnotu https:\//telemetryvalidationstore.Table.Core.Windows.NET na váš účet úložiště.
+> Nezapomeňte změnit hodnotu https: \/ /telemetryvalidationstore.Table.Core.Windows.NET na váš účet úložiště.
 
 ### <a name="response"></a>Odpověď
 
@@ -149,7 +148,7 @@ Postup popsaný v tomto tématu:
  
 ## <a name="get-the-monitoring-configurations"></a>Získat konfigurace monitorování
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.19
@@ -179,7 +178,7 @@ Postup popsaný v tomto tématu:
 
 ## <a name="add-a-monitoring-configuration"></a>Přidat konfiguraci monitorování
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.19
@@ -222,7 +221,7 @@ Postup popsaný v tomto tématu:
 
 ## <a name="stop-telemetry"></a>Zastavení telemetrie
 
-### <a name="request"></a>Request
+### <a name="request"></a>Žádost
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
     x-ms-version: 2.19

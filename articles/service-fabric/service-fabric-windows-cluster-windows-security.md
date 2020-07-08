@@ -6,14 +6,13 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
 ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774449"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpečení samostatného clusteru ve Windows pomocí zabezpečení systému Windows
-Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musíte zabezpečit cluster. Zabezpečení je obzvláště důležité, když cluster spouští produkční úlohy. Tento článek popisuje, jak nakonfigurovat zabezpečení mezi uzly a klientem a uzlem pomocí zabezpečení systému Windows v souboru *ClusterConfig. JSON* .  Proces odpovídá kroku konfigurace zabezpečení [vytvoření samostatného clusteru běžícího v systému Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení systému Windows, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
+Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musíte zabezpečit cluster. Zabezpečení je obzvláště důležité, když cluster spouští produkční úlohy. Tento článek popisuje, jak nakonfigurovat zabezpečení mezi uzly a klientem a uzlem pomocí zabezpečení systému Windows v *ClusterConfig.JSv* souboru.  Proces odpovídá kroku konfigurace zabezpečení [vytvoření samostatného clusteru běžícího v systému Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení systému Windows, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
 
 > [!NOTE]
 > Měli byste pečlivě zvážit výběr zabezpečení mezi uzly, protože neprobíhá upgrade clusteru z jedné volby zabezpečení na jinou. Chcete-li změnit výběr zabezpečení, je nutné znovu sestavit úplný cluster.
@@ -21,7 +20,7 @@ Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musít
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Konfigurace zabezpečení Windows pomocí gMSA  
-Ukázkový konfigurační soubor *ClusterConfig. gMSA. Windows. s více Machine. JSON* stažený pomocí [Microsoft. Azure. ServiceFabric. windowsserver\< balíček samostatného clusteru Version>. zip](https://go.microsoft.com/fwlink/?LinkId=730690) obsahuje šablonu pro konfiguraci zabezpečení systému Windows pomocí [skupinového účtu spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows pomocí [skupinového účtu spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
 ```
 "security": {
@@ -52,7 +51,7 @@ Ukázkový konfigurační soubor *ClusterConfig. gMSA. Windows. s více Machine.
 | Správce |Nastavte na hodnotu true, pokud chcete, aby měl uživatel domény oprávnění správce pro přístup klienta k uživateli nebo false. |
 
 > [!NOTE]
-> Hodnota ClustergMSAIdentity musí být ve formátu "mysfgmsa@mydomain".
+> Hodnota ClustergMSAIdentity musí být ve formátu " mysfgmsa@mydomain ".
 
 [Zabezpečení uzlů na uzel](service-fabric-cluster-security.md#node-to-node-security) je nakonfigurované nastavením **ClustergMSAIdentity** , když Service Fabric potřebuje běžet pod gMSA. Aby bylo možné sestavovat vztahy důvěryhodnosti mezi uzly, je nutné, aby si je navzájem věděli. Toho lze dosáhnout dvěma různými způsoby: Určete skupinový účet spravované služby, který zahrnuje všechny uzly v clusteru, nebo zadejte skupinu počítačů, která zahrnuje všechny uzly v clusteru. Důrazně doporučujeme používat přístup [skupinového účtu spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) , zvláště u větších clusterů (více než 10 uzlů) nebo u clusterů, které se nejspíš zvětšují nebo zmenšují.  
 Tento přístup nevyžaduje vytvoření skupiny domén, pro kterou se správcům clusteru udělila přístupová práva k přidávání a odebírání členů. Tyto účty jsou užitečné také pro automatickou správu hesel. Další informace najdete v tématu [Začínáme se skupinovými účty spravované služby](https://technet.microsoft.com/library/jj128431.aspx).  
@@ -77,7 +76,7 @@ Následující příklad oddílu **zabezpečení** nakonfiguruje zabezpečení s
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurace zabezpečení systému Windows pomocí skupiny počítačů  
-Tento model je zastaralý. Doporučujeme použít gMSA, jak je popsáno výše. Ukázkový konfigurační soubor *ClusterConfig. Windows. s více Machine. JSON* stažený pomocí [Microsoft. Azure. ServiceFabric. windowsserver\< samostatný clusterový balíček verze>. zip](https://go.microsoft.com/fwlink/?LinkId=730690) obsahuje šablonu pro konfiguraci zabezpečení systému Windows.  Zabezpečení systému Windows je konfigurováno v části **Properties (vlastnosti** ): 
+Tento model je zastaralý. Doporučujeme použít gMSA, jak je popsáno výše. Ukázka *ClusterConfig.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows.  Zabezpečení systému Windows je konfigurováno v části **Properties (vlastnosti** ): 
 
 ```
 "security": {
@@ -129,12 +128,12 @@ Následující příklad oddílu **zabezpečení** nakonfiguruje zabezpečení s
 ```
 
 > [!NOTE]
-> Service Fabric by se neměla nasadit na řadič domény. Ujistěte se, že ClusterConfig. JSON nezahrnuje IP adresu řadiče domény při použití skupiny počítačů nebo skupinového účtu spravované služby (gMSA).
+> Service Fabric by se neměla nasadit na řadič domény. Ujistěte se, že ClusterConfig.json nezahrnuje IP adresu řadiče domény při použití skupiny počítačů nebo skupinového účtu spravované služby (gMSA).
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-Po nakonfigurování zabezpečení systému Windows v souboru *ClusterConfig. JSON* pokračujte v procesu vytváření clusteru v části [vytvoření samostatného clusteru se systémem Windows](service-fabric-cluster-creation-for-windows-server.md).
+Po nakonfigurování zabezpečení systému Windows v *ClusterConfig.JSv* souboru pokračujte v procesu vytváření clusteru v části [vytvoření samostatného clusteru se systémem Windows](service-fabric-cluster-creation-for-windows-server.md).
 
 Další informace o tom, jak zabezpečení mezi uzly, zabezpečení mezi uzly a řízení přístupu na základě rolí, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
 

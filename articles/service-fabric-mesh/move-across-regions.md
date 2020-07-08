@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908160"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Přesunutí aplikace Service Fabric sítě do jiné oblasti Azure
@@ -22,7 +21,7 @@ Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její p
 ## <a name="prerequisites"></a>Požadavky
 
 * Řadič příchozího přenosu dat (například [Application Gateway](https://docs.microsoft.com/azure/application-gateway/)), který slouží jako prostředník pro směrování provozu mezi klienty a aplikací Service Fabric sítě
-* Dostupnost Service Fabric sítě (Preview) v cílové oblasti Azure (`westus`, `eastus`nebo) `westeurope`
+* Dostupnost Service Fabric sítě (Preview) v cílové oblasti Azure ( `westus` , `eastus` nebo `westeurope` )
 
 ## <a name="prepare"></a>Příprava
 

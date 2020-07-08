@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68987943"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretace schématu protokolů auditu Azure AD v Azure Monitor (Preview)
@@ -147,7 +146,7 @@ Tento článek popisuje schéma protokolu auditu Azure Active Directory (Azure A
 
 ## <a name="field-and-property-descriptions"></a>Popisy polí a vlastností
 
-| Název pole | Popis |
+| Název pole | Description |
 |------------|-------------|
 | time       | Datum a čas (UTC). |
 | operationName | Název operace. |
@@ -161,13 +160,13 @@ Tento článek popisuje schéma protokolu auditu Azure Active Directory (Azure A
 | callerIpAddress | IP adresa klienta, který odeslal požadavek. | 
 | correlationId | Volitelný identifikátor GUID, který je předán klientem. Může pomoct sladit operace na straně klienta s operacemi na straně serveru, které jsou užitečné při sledování protokolů, které zahrnují služby. |
 | identity | Identita z tokenu, který byl předložen při podání žádosti. Identitou může být uživatelský účet, systémový účet nebo instanční objekt. |
-| level | Typ zprávy Pro protokoly auditu je úroveň vždy *informativní*. |
+| úroveň | Typ zprávy Pro protokoly auditu je úroveň vždy *informativní*. |
 | location | Umístění datacentra. |
 | properties | Zobrazuje seznam podporovaných vlastností, které se vztahují k protokolu auditu. Další informace najdete v další tabulce. | 
 
 <br>
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 |---------------|-------------|
 | AuditEventCategory | Typ události auditu. Může to být *Správa uživatelů*, *Správa aplikací*nebo jiný typ.|
 | Typ identity | Typ může být *aplikace* nebo *uživatel*. |
@@ -179,5 +178,5 @@ Tento článek popisuje schéma protokolu auditu Azure Active Directory (Azure A
 ## <a name="next-steps"></a>Další kroky
 
 * [Interpretace schématu protokolů přihlášení ve službě Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md)
-* [Protokoly diagnostiky Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Nejčastější dotazy a známé problémy](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

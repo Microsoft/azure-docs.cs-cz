@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841859"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
@@ -63,7 +62,7 @@ Služba API Management v interní virtuální síti je hostovaná za [interním 
 
 4. Vyberte **Uložit**.
 
-Po úspěšném nasazení by se v okně Přehled měla zobrazit **privátní** virtuální IP adresa a **Veřejná** virtuální ip adresa vaší služby API Management. **Privátní** virtuální IP adresa je IP adresa s vyrovnáváním zatížení z API Management delegované podsítě, přes kterou `gateway`je `portal`možné `management` přistupovat k koncovým bodům, a `scm` . **Veřejná** virtuální IP adresa se používá **jenom** pro přenosy řídicích objektů do `management` koncového bodu přes port 3443 a je možné ji uzamknout na [ApiManagement][ServiceTags] servicetag.
+Po úspěšném nasazení by se v okně Přehled měla zobrazit **privátní** virtuální IP adresa a **Veřejná** virtuální ip adresa vaší služby API Management. **Privátní** virtuální IP adresa je IP adresa s vyrovnáváním zatížení z API Management delegované podsítě, přes kterou `gateway` je `portal` `management` `scm` možné přistupovat k koncovým bodům, a. **Veřejná** virtuální IP adresa se používá **jenom** pro přenosy řídicích objektů do `management` koncového bodu přes port 3443 a je možné ji uzamknout na [ApiManagement][ServiceTags] servicetag.
 
 ![Řídicí panel API Management s nakonfigurovanou interní virtuální sítí][api-management-internal-vnet-dashboard]
 
