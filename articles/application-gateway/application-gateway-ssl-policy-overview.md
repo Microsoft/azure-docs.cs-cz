@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253626"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>Přehled zásad Application Gateway TLS

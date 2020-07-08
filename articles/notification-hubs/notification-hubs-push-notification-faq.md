@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255122"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
@@ -200,7 +200,7 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 > [!NOTE]
 > Úspěšná oznámení znamenají jednoduše, že nabízená oznámení byla doručena externímu PNS (například APNs pro iOS a macOS nebo FCM pro zařízení s Androidem). PNS je zodpovědný za doručování oznámení na cílová zařízení. PNS obvykle nevystavuje metriky doručení třetím stranám.  
 
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Ceny Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Rozhraní REST API pro Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx

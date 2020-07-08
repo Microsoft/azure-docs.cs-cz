@@ -11,10 +11,10 @@ ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
 ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254034"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Přehled vývoje aplikací – SQL Database & spravované instance SQL
@@ -29,7 +29,7 @@ K připojení a dotazování Azure SQL Database můžete použít různé [progr
 
 Můžete využít Open Source nástroje, jako je [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Můžete také využít Azure Portal, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Přístup k Azure SQL Database je chráněný pomocí přihlašovacích údajů a bran firewall. Azure SQL Database podporuje uživatele a přihlašovací údaje ověřování SQL Server a [Azure Active Directory](authentication-aad-overview.md) . Přihlášení Azure Active Directory jsou k dispozici pouze ve spravované instanci SQL. 
 

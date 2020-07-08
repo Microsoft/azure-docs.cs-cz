@@ -14,10 +14,10 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253490"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect

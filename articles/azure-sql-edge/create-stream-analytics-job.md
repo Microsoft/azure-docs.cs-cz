@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255411"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Vytvoření úlohy Azure Stream Analytics v Azure SQL Edge (Preview) 
@@ -42,7 +42,7 @@ Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy 
 | Typ zdroje dat | Vstup | Výstup | Description |
 |------------------|-------|--------|------------------|
 | Centrum Azure IoT Edge | Ano | Ano | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Database | N | Ano | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| Databáze SQL | N | Ano | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
 | Azure Blob Storage | N | Ano | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
 | Kafka | Ano | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je v tuto chvíli dostupný jenom pro verze Intel nebo AMD serveru Azure SQL Edge. Není k dispozici pro verzi ARM64 serveru Azure SQL Edge.|
 

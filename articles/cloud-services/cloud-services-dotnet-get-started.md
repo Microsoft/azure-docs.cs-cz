@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255224"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
@@ -739,7 +739,7 @@ Tento kód čte databázi, aby získal adresu URL obrázku, převede obrázek na
 >
 >
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud by vám při procházení kurzem něco nefungovalo, následuje přehled běžných chyb a jejich řešení.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException

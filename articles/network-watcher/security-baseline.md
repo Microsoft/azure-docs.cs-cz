@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255922"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Základní hodnoty zabezpečení Azure pro Network Watcher

@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
 ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255309"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Kurz: Přidání Azure SQL Database do skupiny převzetí služeb při selhání

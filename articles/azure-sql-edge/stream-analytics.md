@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254068"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Použití úloh Azure Stream Analytics s okrajem SQL
@@ -56,7 +56,7 @@ Azure SQL Edge má nativní implementaci modulu Stream Analytics runtime. Tato i
     |Název serveru | Název (nebo IP adresa) a podrobnosti o číslech portů pro instanci SQL. Pro nasazení SQL Edge můžete pro název serveru použít **TCP:., 1433** .|
     |Uživatelské jméno | Přihlašovací účet SQL, který má čtečku dat a přístup k datům zapisovače dat k databázi, kterou jste zadali dříve.|
     |Heslo | Heslo pro přihlašovací účet SQL, který jste zadali dříve.|
-    |Table | Název tabulky, která bude výstupem pro úlohu streamování.|
+    |Tabulka | Název tabulky, která bude výstupem pro úlohu streamování.|
     |Zdědit dělení| Povoluje dědění schématu dělení předchozího kroku dotazu nebo vstupu. Když je tato možnost povolená, můžete očekávat lepší propustnost při psaní do tabulky založené na disku a mít plně paralelní topologii pro vaši úlohu.|
     |Velikost dávky| Maximální počet záznamů, které jsou odeslány při každé transakci hromadného vložení.|
 

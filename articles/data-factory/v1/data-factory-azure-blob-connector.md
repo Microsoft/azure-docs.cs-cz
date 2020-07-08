@@ -13,10 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c7f91285b393734bce83785dde62fd573e94ac0f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254510"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Blob Storage pomocí Azure Data Factory
@@ -83,11 +83,11 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| folderPath |Cesta ke kontejneru a složce v úložišti objektů BLOB. Příklad: myblobcontainer\myblobfolder\ |Ano |
-| fileName |Název objektu BLOB Název souboru je nepovinný a rozlišuje velká a malá písmena.<br/><br/>Pokud zadáte název souboru, bude aktivita (včetně kopírování) fungovat na konkrétním objektu BLOB.<br/><br/>Pokud není zadán název souboru, příkaz Kopírovat zahrnuje všechny objekty BLOB v folderPath pro vstupní datovou sadu.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru by byl v následujícím formátu: `Data.<Guid>.txt` (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
-| partitionedBy |partitionedBy je volitelná vlastnost. Můžete ji použít k určení dynamického folderPath a názvu souboru pro data časových řad. Například folderPath může být Parametrizovaná za každou hodinu dat. Podrobnosti a příklady najdete v [části použití vlastnosti partitionedBy](#using-partitionedby-property) . |Ne |
-| formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |Ne |
-| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| folderPath |Cesta ke kontejneru a složce v úložišti objektů BLOB. Příklad: myblobcontainer\myblobfolder\ |Yes |
+| fileName |Název objektu BLOB Název souboru je nepovinný a rozlišuje velká a malá písmena.<br/><br/>Pokud zadáte název souboru, bude aktivita (včetně kopírování) fungovat na konkrétním objektu BLOB.<br/><br/>Pokud není zadán název souboru, příkaz Kopírovat zahrnuje všechny objekty BLOB v folderPath pro vstupní datovou sadu.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru by byl v následujícím formátu: `Data.<Guid>.txt` (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| partitionedBy |partitionedBy je volitelná vlastnost. Můžete ji použít k určení dynamického folderPath a názvu souboru pro data časových řad. Například folderPath může být Parametrizovaná za každou hodinu dat. Podrobnosti a příklady najdete v [části použití vlastnosti partitionedBy](#using-partitionedby-property) . |No |
+| formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |No |
+| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 ### <a name="using-partitionedby-property"></a>Použití vlastnosti partitionedBy
 Jak je uvedeno v předchozí části, můžete zadat dynamický folderPath a filename pro data časových řad pomocí vlastnosti **partitionedBy** , [Data Factory funkcí a systémových proměnných](data-factory-functions-variables.md).
@@ -129,13 +129,13 @@ V tomto příkladu jsou extrahovány roky, měsíc, den a čas vlastnosti slices
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| zahrnout |Určuje, zda mají být data rekurzivně čtena z dílčích složek nebo pouze ze zadané složky. |True (výchozí hodnota), false |Ne |
+| zahrnout |Určuje, zda mají být data rekurzivně čtena z dílčích složek nebo pouze ze zadané složky. |True (výchozí hodnota), false |No |
 
 **BlobSink** podporuje následující vlastnosti oddílu **typeProperties** :
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |<b>PreserveHierarchy</b>: zachová hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generovaný název. <br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo objektu blob, bude název sloučeného souboru zadaný název. jinak by byl automaticky vygenerovaný název souboru. |Ne |
+| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |<b>PreserveHierarchy</b>: zachová hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generovaný název. <br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo objektu blob, bude název sloučeného souboru zadaný název. jinak by byl automaticky vygenerovaný název souboru. |No |
 
 **BlobSource** také podporuje tyto dvě vlastnosti kvůli zpětné kompatibilitě.
 
@@ -184,7 +184,7 @@ Pojďme se podívat, jak rychle kopírovat data do nebo z úložiště objektů 
     ```
 
 ### <a name="create-the-data-factory"></a>Vytvoření datové továrny
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V levém horním rohu klikněte na **vytvořit prostředek** , klikněte na **Intelligence + Analytics**a pak klikněte na **Data Factory**.
 3. V podokně **Nová datová továrna** :  
     1. Jako **název**zadejte **ADFBlobConnectorDF** . Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: `*Data factory name “ADFBlobConnectorDF” is not available` , změňte název datové továrny (například na yournameADFBlobConnectorDF) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.

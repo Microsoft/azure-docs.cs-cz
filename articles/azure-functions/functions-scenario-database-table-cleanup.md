@@ -5,10 +5,10 @@ ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254272"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Připojení k Azure SQL Database pomocí Azure Functions
@@ -29,7 +29,7 @@ Pokud se jedná o vaše první prostředí při práci s funkcemi jazyka C#, mě
 
 Pro databázi, kterou jste vytvořili po dokončení [vytváření databáze v Azure SQL Database pomocí Azure Portal](../azure-sql/database/single-database-create-quickstart.md), je třeba získat připojovací řetězec.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte svou databázi.
 

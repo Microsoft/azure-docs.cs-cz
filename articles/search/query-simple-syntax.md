@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 5b585a903267386358552154228705c1921df619
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255326"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Jednoduchá syntaxe dotazů v Azure Kognitivní hledání

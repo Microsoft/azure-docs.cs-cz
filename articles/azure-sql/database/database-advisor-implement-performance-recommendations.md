@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254935"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor doporučení k výkonu pro Azure SQL Database
@@ -40,10 +40,10 @@ Možnosti pro doporučení výkonu dostupné v Azure SQL Database jsou:
 
 | Doporučení pro výkon | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :----------------------------- | ----- | ----- |
-| **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Ano | Ne |
-| **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | Ne |
-| **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucené Parametrizace v případech, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Ano | Ne |
-| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují ve vaší databázi. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Ano | Ne |
+| **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Ano | No |
+| **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | No |
+| **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucené Parametrizace v případech, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Ano | No |
+| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují ve vaší databázi. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Ano | No |
 
 ![Doporučení k výkonu pro Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 

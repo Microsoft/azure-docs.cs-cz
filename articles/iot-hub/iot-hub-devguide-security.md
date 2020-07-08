@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252130"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
@@ -60,7 +60,7 @@ Například v typickém řešení IoT:
 > [!NOTE]
 > Podrobné informace najdete v tématu [oprávnění](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
 

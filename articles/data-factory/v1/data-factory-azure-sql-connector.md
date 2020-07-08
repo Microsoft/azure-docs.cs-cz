@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254867"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database pomocí Azure Data Factory
@@ -64,8 +64,8 @@ Odkazy propojené služby Azure SQL Azure SQL Database do vaší datové továrn
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **AzureSqlDatabase** . |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **AzureSqlDatabase** . |Yes |
+| připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Yes |
 
 > [!IMPORTANT]
 > Nakonfigurujte [Azure SQL Database brány firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) databázového serveru, aby měly [služby Azure přístup k serveru](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Pokud navíc kopírujete data Azure SQL Database mimo Azure, včetně z místních zdrojů dat pomocí brány služby Data Factory, nakonfigurujte odpovídající rozsah IP adres pro počítač, který odesílá data do Azure SQL Database.
@@ -79,7 +79,7 @@ Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informa
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| tableName |Název tabulky nebo zobrazení v instanci Azure SQL Database, na kterou odkazuje propojená služba. |Ano |
+| tableName |Název tabulky nebo zobrazení v instanci Azure SQL Database, na kterou odkazuje propojená služba. |Yes |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
@@ -96,9 +96,9 @@ V aktivitě kopírování je-li zdrojem typu **SqlSource**, jsou v části **typ
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Ne |
-| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |No |
+| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |No |
+| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |No |
 
 Pokud je pro SqlSource určena **sqlReaderQuery** , aktivita kopírování spustí tento dotaz proti zdroji Azure SQL Database, aby získala data. Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přijímá parametry).
 
@@ -146,13 +146,13 @@ GO
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |timespan<br/><br/> Příklad: "00:30:00" (30 minut). |Ne |
+| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |timespan<br/><br/> Příklad: "00:30:00" (30 minut). |No |
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL. |Integer (počet řádků) |Ne (výchozí: 10000) |
-| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Další informace najdete v tématu [opakované kopírování](#repeatable-copy). |Příkaz dotazu. |Ne |
-| sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu, který se použije k vyčištění dat určitého řezu při opakovaném spuštění. Další informace najdete v tématu [opakované kopírování](#repeatable-copy). |Název sloupce sloupce s datovým typem Binary (32). |Ne |
-| sqlWriterStoredProcedureName |Název uložené procedury definující, jak se mají použít zdrojová data na cílovou tabulku, například upsertuje nebo transformaci pomocí vlastní obchodní logiky. <br/><br/>Poznámka: Tato uložená procedura se **vyvolá na každou dávku**. Pokud chcete provést operaci, která se spustí pouze jednou a nemá nic ke zdroji dat, např. Delete/zkrácení, použijte `sqlWriterCleanupScript` vlastnost. |Název uložené procedury |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
-| sqlWriterTableType |Zadejte název typu tabulky, který se použije v uložené proceduře. Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data zkopírovaná se stávajícími daty. |Název typu tabulky |Ne |
+| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Další informace najdete v tématu [opakované kopírování](#repeatable-copy). |Příkaz dotazu. |No |
+| sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu, který se použije k vyčištění dat určitého řezu při opakovaném spuštění. Další informace najdete v tématu [opakované kopírování](#repeatable-copy). |Název sloupce sloupce s datovým typem Binary (32). |No |
+| sqlWriterStoredProcedureName |Název uložené procedury definující, jak se mají použít zdrojová data na cílovou tabulku, například upsertuje nebo transformaci pomocí vlastní obchodní logiky. <br/><br/>Poznámka: Tato uložená procedura se **vyvolá na každou dávku**. Pokud chcete provést operaci, která se spustí pouze jednou a nemá nic ke zdroji dat, např. Delete/zkrácení, použijte `sqlWriterCleanupScript` vlastnost. |Název uložené procedury |No |
+| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |No |
+| sqlWriterTableType |Zadejte název typu tabulky, který se použije v uložené proceduře. Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data zkopírovaná se stávajícími daty. |Název typu tabulky |No |
 
 #### <a name="sqlsink-example"></a>Příklad SqlSink
 
@@ -362,7 +362,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 ```
 V příkladu je **sqlReaderQuery** určena pro SqlSource. Aktivita kopírování spustí tento dotaz proti zdroji Azure SQL Database, aby získala data. Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přijímá parametry).
 
-Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu pro spuštění proti Azure SQL Database. Příklad: `select column1, column2 from mytable`. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
+Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu pro spuštění proti Azure SQL Database. Například: `select column1, column2 from mytable`. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
 
 Seznam vlastností podporovaných SqlSource a BlobSink najdete v části [zdroje SQL](#sqlsource) a v [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) .
 

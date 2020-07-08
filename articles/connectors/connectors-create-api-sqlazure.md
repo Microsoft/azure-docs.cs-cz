@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
 ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255496"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro databázi SQL pomocí Azure Logic Apps
@@ -71,7 +71,7 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
 1. Jako **typ ověřování**vyberte požadované a povolené ověřování ve vaší databázi v Azure SQL Database nebo spravované instanci SQL Azure:
 
-   | Ověřování | Description |
+   | Authentication | Description |
    |----------------|-------------|
    | [**Integrovaná služba Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platnou identitu v Azure Active Directory (Azure AD), která má přístup k vaší databázi. <p>Další informace najdete v těchto tématech: <p>- [Přehled zabezpečení Azure SQL – ověřování](../azure-sql/database/security-overview.md#authentication) <br>- [Autorizace přístupu k databázi do Azure SQL – ověřování a autorizace](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – integrované ověřování Azure AD](../azure-sql/database/authentication-aad-overview.md) |
    | [**Ověřování SQL Serveru**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platné uživatelské jméno a silné heslo, které se vytvoří a uloží do vaší databáze. <p>Další informace najdete v těchto tématech: <p>- [Přehled zabezpečení Azure SQL – ověřování](../azure-sql/database/security-overview.md#authentication) <br>- [Autorizace přístupu k databázi do Azure SQL – ověřování a autorizace](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
@@ -87,9 +87,9 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název serveru** | Ano | Adresa pro váš SQL Server, například`Fabrikam-Azure-SQL.database.windows.net` |
-   | **Název databáze** | Ano | Název vaší databáze SQL, například`Fabrikam-Azure-SQL-DB` |
-   | **Název tabulky** | Ano | Tabulka, kterou chcete použít, například`SalesLT.Customer` |
+   | **Název serveru** | Yes | Adresa pro váš SQL Server, například`Fabrikam-Azure-SQL.database.windows.net` |
+   | **Název databáze** | Yes | Název vaší databáze SQL, například`Fabrikam-Azure-SQL-DB` |
+   | **Název tabulky** | Yes | Tabulka, kterou chcete použít, například`SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -115,7 +115,7 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
 1. Jako **typ ověřování**vyberte požadované a povolené ověřování v SQL Server:
 
-   | Ověřování | Description |
+   | Authentication | Description |
    |----------------|-------------|
    | [**Ověřování systému Windows**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Podporuje jenom konektor non-ISE SQL Server, který vyžaduje prostředek brány dat, který se dřív vytvořil v Azure pro vaše připojení, bez ohledu na to, jestli používáte víceklientské prostředí Azure nebo ISE. <p><p>– Vyžaduje platné uživatelské jméno a heslo systému Windows k potvrzení vaší identity prostřednictvím účtu systému Windows. <p>Další informace najdete v tématu [ověřování systému Windows](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) . |
    | [**Ověřování SQL Serveru**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platné uživatelské jméno a silné heslo, které se vytvoří a uloží do SQL Server. <p>Další informace najdete v tématu [ověřování SQL Server](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
@@ -129,10 +129,10 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název systému SQL Server** | Ano | Adresa pro váš SQL Server, například`Fabrikam-Azure-SQL.database.windows.net` |
-   | **Název databáze SQL** | Ano | Název databáze SQL Server, například`Fabrikam-Azure-SQL-DB` |
-   | **Jmen** | Ano | Vaše uživatelské jméno pro SQL Server a databázi |
-   | **Heslo** | Ano | Heslo pro SQL Server a databázi |
+   | **Název systému SQL Server** | Yes | Adresa pro váš SQL Server, například`Fabrikam-Azure-SQL.database.windows.net` |
+   | **Název databáze SQL** | Yes | Název databáze SQL Server, například`Fabrikam-Azure-SQL-DB` |
+   | **Jmen** | Yes | Vaše uživatelské jméno pro SQL Server a databázi |
+   | **Heslo** | Yes | Heslo pro SQL Server a databázi |
    | **Předplatné** |  Ano, pro ověřování systému Windows | Předplatné Azure pro prostředek brány dat, který jste dříve vytvořili v Azure |
    | **Brána připojení** | Ano, pro ověřování systému Windows | Název prostředku brány dat, který jste dříve vytvořili v Azure <p><p>**Tip**: Pokud se brána v seznamu nezobrazí, ověřte, že jste správně [nastavili bránu](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). |
    |||
