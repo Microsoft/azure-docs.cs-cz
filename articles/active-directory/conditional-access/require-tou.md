@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74380107"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039819"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití
 
@@ -29,7 +29,7 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásadu podmíněného 
 
 ![Vytvoření zásad](./media/require-tou/5555.png)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,7 +54,7 @@ V této části najdete postup vytvoření ukázkové podmínky použití. Při 
 **Vytvoření podmínek použití:**
 
 1. V aplikaci Microsoft Word vytvořte nový dokument.
-1. Zadejte **Moje podmínkami použití**a pak dokument uložte do počítače jako **mytou. PDF**.
+1. Zadejte **Moje podmínkami použití**a pak dokument uložte do počítače jako **mytou.pdf**.
 1. Přihlaste se ke svému [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. V Azure Portal klikněte v levém navigačním panelu na možnost **Azure Active Directory**.
 
@@ -105,7 +105,7 @@ V zásadách nastavte:
 
 1. Na **nové** stránce zadejte do textového pole **název** text **vyžadovat podmínky použití pro Isabella**.
 
-   ![Název](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. V části **přiřazení** klikněte na **Uživatelé a skupiny**.
 
@@ -139,7 +139,7 @@ V zásadách nastavte:
 
    ![Oprávnění](./media/require-tou/111.png)
 
-   1. Vyberte **udělit přístup**.
+   1. Vyberte **Udělit přístup**.
    1. Vyberte **Moje podmínky použití**.
    1. Klikněte na **Vybrat**.
 1. V části **Povolit zásady** klikněte **na zapnuto**.
@@ -209,5 +209,4 @@ Pokud už je nepotřebujete, odstraňte testovacího uživatele a zásadu podmí
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vyžadovat MFA pro konkrétní aplikace](app-based-mfa.md)
-> [blokovat přístup, když se zjistí riziko relace](app-sign-in-risk.md)
+> [Vyžadování MFA pro specifické aplikace](app-based-mfa.md)

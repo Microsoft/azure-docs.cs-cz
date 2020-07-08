@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250514"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042114"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -85,7 +85,7 @@ Pomocí následujících metod lze spustit rozšíření pro existující virtu�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který se má\/spustit (https:/RAW.githubusercontent.com/me/Project/Hello.sh), s vašimi vlastními informacemi. 
+Rozšíření virtuálních počítačů Azure je možné spustit s existujícím virtuálním počítačem pomocí příkazu [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) . Následující příklad spustí rozšíření vlastních skriptů na virtuálním počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*. Nahraďte ukázkový název skupiny prostředků, název virtuálního počítače a skript, který se má spustit (https: \/ /raw.githubusercontent.com/me/Project/Hello.sh), s vašimi vlastními informacemi. 
 
 ```azurecli
 az vm extension set `
@@ -115,7 +115,7 @@ Na následujícím obrázku vidíte instalaci rozšíření vlastních skriptů 
 
 ### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. Když nasadíte rozšíření s šablonou, můžete vytvořit plně nakonfigurovaná nasazení Azure. Například následující JSON se převezme z Správce prostředků šablony, která nasadí sadu virtuálních počítačů s vyrovnáváním zatížení a Azure SQL Database, a pak na každý virtuální počítač nainstaluje aplikaci .NET Core. Rozšíření virtuálního počítače má za starosti instalaci softwaru.
+Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. Když nasadíte rozšíření s šablonou, můžete vytvořit plně nakonfigurovaná nasazení Azure. Například následující JSON se převezme z Správce prostředků šablony, která nasadí sadu virtuálních počítačů s vyrovnáváním zatížení a Azure SQL Database a potom do každého virtuálního počítače nainstaluje aplikaci .NET Core. Rozšíření virtuálního počítače má za starosti instalaci softwaru.
 
 Další informace najdete v tématu úplná [Správce prostředků šablona](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
@@ -241,7 +241,7 @@ Při instalaci agenta se vytvoří nadřazený démon. Tato nadřazená položka
 
 Nadřazený proces nelze automaticky aktualizovat. Nadřazenou položku lze aktualizovat pouze pomocí aktualizace balíčku distribuce.
 
-Pokud chcete zjistit, jakou verzi máte spuštěnou, `waagent` Podívejte se na následující:
+Pokud chcete zjistit, jakou verzi máte spuštěnou, podívejte se na `waagent` následující:
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 1. Pokud chcete zkontrolovat protokol agenta pro Linux, podívejte se na aktivitu při zřizování rozšíření v */var/log/waagent.log* .
 
-2. Další podrobnosti najdete v protokolech *rozšíření/var/log/azure/\<>*
+2. Další podrobnosti najdete v protokolech aktuálních rozšíření */var/log/Azure/ \<extensionName> * .
 
 3. Podívejte se na oddíly řešení potíží v dokumentaci ke konkrétnímu rozšíření pro kódy chyb, známé problémy atd.
 
@@ -403,7 +403,7 @@ Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
 
 ## <a name="common-vm-extension-reference"></a>Obecné odkazy na rozšíření virtuálních počítačů
 
-| Název rozšíření | Popis | Další informace |
+| Název rozšíření | Description | Další informace |
 | --- | --- | --- |
 | Rozšíření vlastních skriptů pro Linux |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro Linux](custom-script-linux.md) |
 | Rozšíření přístupu virtuálních počítačů |Opětovné získání přístupu k virtuálnímu počítači Azure |[Rozšíření přístupu virtuálních počítačů](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

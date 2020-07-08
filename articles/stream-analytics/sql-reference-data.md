@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021683"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039292"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Použití referenčních dat z SQL Database pro úlohu Azure Stream Analytics
 
@@ -69,7 +69,7 @@ Pomocí následujících kroků přidejte Azure SQL Database jako vstupní zdroj
 
 ### <a name="create-a-sql-database-table"></a>Vytvoření tabulky SQL Database
 
-Pomocí SQL Server Management Studio můžete vytvořit tabulku, do které se budou ukládat referenční data. Podrobnosti najdete v tématu [Návrh první databáze SQL Azure s využitím SSMS](../azure-sql/database/design-first-database-tutorial.md) .
+Pomocí SQL Server Management Studio můžete vytvořit tabulku, do které se budou ukládat referenční data. Podrobnosti najdete v tématu [Návrh první Azure SQL Database s využitím SSMS](../azure-sql/database/design-first-database-tutorial.md) .
 
 Ukázková tabulka použitá v následujícím příkladu se vytvořila z následujícího příkazu:
 
@@ -99,13 +99,13 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Nový vstup Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. Dvakrát klikněte na **input. JSON** v **Průzkumník řešení**.
+2. Dvakrát klikněte na **Input.js** v **Průzkumník řešení**.
 
 3. Vyplňte **konfiguraci Stream Analyticsho vstupu**. Vyberte název databáze, název serveru, typ aktualizace a obnovovací frekvenci. Zadejte obnovovací frekvenci ve formátu `DD:HH:MM` .
 
    ![Konfigurace vstupu Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
-   Pokud zvolíte možnost spustit pouze jednou nebo spustit pravidelně, jeden soubor CodeBehind SQL s názvem **[vstupní alias]. Snapshot. SQL** se vygeneruje v projektu pod uzlem soubor **input. JSON** .
+   Pokud zvolíte možnost spustit pouze jednou nebo spustit pravidelně, jeden soubor CodeBehind SQL s názvem **[vstupní alias]. Snapshot. SQL** se vygeneruje v projektu pod **Input.jsv** uzlu File (soubor).
 
    ![Vstupní kód na pozadí v aplikaci Visual Studio](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
@@ -115,11 +115,11 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. Otevřete soubor SQL v editoru a napište dotaz SQL.
 
-5. Pokud používáte Visual Studio 2019 a máte nainstalované nástroje SQL Server Data Tools, můžete otestovat dotaz kliknutím na **Spustit**. Otevře se okno průvodce, které vám pomůže se připojit k databázi SQL a výsledek dotazu se zobrazí v dolní části okna.
+5. Pokud používáte Visual Studio 2019 a máte nainstalované nástroje SQL Server Data Tools, můžete otestovat dotaz kliknutím na **Spustit**. Automaticky se otevře okno průvodce, které vám pomůže se připojit k SQL Database a výsledek dotazu se zobrazí v dolní části okna.
 
 ### <a name="specify-storage-account"></a>Zadat účet úložiště
 
-Otevřete **JobConfig. JSON** a určete účet úložiště pro ukládání snímků odkazů SQL.
+Otevřete **JobConfig.jsv** a určete účet úložiště pro ukládání snímků odkazů SQL.
 
    ![Konfigurace úlohy Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-job-config.png)
 
@@ -147,7 +147,7 @@ Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure 
    ```
 2. Vytvořte snímek dotazu. 
 
-   Pomocí parametru ** \@ snapshotTime** instruujte modul runtime Stream Analytics, aby získal referenční datovou sadu z dočasné tabulky SQL Database platné v systémovém čase. Pokud tento parametr nezadáte, riskujete získat nepřesnou datovou sadu základních referenčních dat z důvodu zešikmení hodin. Příklad úplného dotazu na snímek je uveden níže:
+   Pomocí parametru ** \@ snapshotTime** instruujte modul runtime Stream Analytics, aby získal referenční datovou sadu z SQL Database dočasná tabulka platná v systémovém čase. Pokud tento parametr nezadáte, riskujete získat nepřesnou datovou sadu základních referenčních dat z důvodu zešikmení hodin. Příklad úplného dotazu na snímek je uveden níže:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,7 +156,7 @@ Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure 
  
 2. Vytvořte rozdílový dotaz. 
    
-   Tento dotaz načte všechny řádky ve vaší databázi SQL, které byly vložené nebo odstraněné v čase zahájení, ** \@ deltaStartTime**a čase ukončení ** \@ deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako dotaz snímku a také **_operaci_** sloupce. Tento sloupec definuje, jestli se řádek vloží nebo odstraní mezi ** \@ deltaStartTime** a ** \@ deltaEndTime**. Výsledné řádky jsou označeny jako **1** , pokud byly záznamy vloženy, nebo **2** , pokud byly odstraněny. Dotaz musí také přidat **vodoznak** ze strany SQL Server, aby bylo zajištěno, že všechny aktualizace v období rozdílů jsou správně zachyceny. Použití rozdílového dotazu bez **meze** může mít za následek nesprávnou datovou sadu reference.  
+   Tento dotaz načte všechny řádky ve SQL Database, které byly vloženy nebo odstraněny v čase zahájení, v ** \@ deltaStartTime**a čase ukončení ** \@ deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako dotaz snímku a také **_operaci_** sloupce. Tento sloupec definuje, jestli se řádek vloží nebo odstraní mezi ** \@ deltaStartTime** a ** \@ deltaEndTime**. Výsledné řádky jsou označeny jako **1** , pokud byly záznamy vloženy, nebo **2** , pokud byly odstraněny. Dotaz musí také přidat **vodoznak** ze strany SQL Server, aby bylo zajištěno, že všechny aktualizace v období rozdílů jsou správně zachyceny. Použití rozdílového dotazu bez **meze** může mít za následek nesprávnou datovou sadu reference.  
 
    U záznamů, které byly aktualizovány, dočasná tabulka provádí účetnictví zachycením operace vložení a odstranění. Modul runtime Stream Analytics pak použije výsledky rozdílového dotazu na předchozí snímek, aby byla referenční data v aktuálním stavu. Příkladem rozdílového dotazu je znázorněno níže:
 
@@ -183,12 +183,12 @@ V úloze Stream Analytics se neúčtují žádné další [náklady na jednotku 
 
 **Návody informace o snímku referenčních dat se dotazuje z databáze SQL a používá se v úloze Azure Stream Analytics?**
 
-Existují dvě metriky filtrované podle logického názvu (v rámci metriky Azure Portal), pomocí kterých můžete monitorovat stav vstupu referenčních dat databáze SQL.
+Existují dvě metriky filtrované podle logického názvu (v rámci metrik Azure Portal), které můžete použít k monitorování stavu SQL Database referenčních dat.
 
-   * InputEvents: Tato metrika měří počet záznamů načtených z referenční sady dat SQL Database.
+   * InputEvents: Tato metrika měří počet záznamů načtených z SQL Database referenční datovou sadou.
    * InputEventBytes: Tato metrika měří velikost snímku referenčních dat načteného v paměti Stream Analytics úlohy. 
 
-Kombinaci obou těchto metrik lze použít k odvození, pokud se úloha dotazuje databáze SQL, aby načetla referenční datovou sadu a pak ji načetla do paměti.
+Kombinaci obou těchto metrik lze použít k odvození, pokud se úloha dotazuje SQL Database načíst referenční datovou sadu a následně ji načíst do paměti.
 
 **Vyžaduje se zvláštní typ Azure SQL Database?**
 

@@ -5,15 +5,15 @@ author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 731cb79096de4af2864060e7a665ac54b6581418
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306900"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042067"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Začnete hlouběji do cloudu – init
 Pokud se chcete dozvědět víc o [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) nebo je vyřešit na hlubší úrovni, potřebujete pochopit, jak to funguje. Tento dokument popisuje důležité části a vysvětluje konkrétní informace o Azure.
@@ -26,9 +26,9 @@ Pokud konfigurujete virtuální počítač, který se má spustit na platformě,
 
 Některé konfigurace se už vloženými do Azure Marketplace imagí, které jsou součástí nástroje Cloud-init, například:
 
-* cloudový zdroj dat – Cloud-init obsahuje kód, který může komunikovat s Cloud platformami, se nazývají "zdroje dat". Když se v [Azure](https://cloudinit.readthedocs.io/en/latest/topics/datasources/azure.html#azure)vytvoří virtuální počítač z image s inicializací cloudu, Cloud-init načte zdroj dat Azure, který bude komunikovat s koncovými body Azure metadata a získá konfiguraci specifickou pro virtuální počítače.
-* Image config (/etc/Cloud)
-* Běhová konfigurace (/Run/Cloud-init), `/etc/cloud/cloud.cfg` například `/etc/cloud/cloud.cfg.d/*.cfg` . Příklad toho, kde se používá v Azure, je běžné, že image operačního systému Linux s Cloud-init mají mít direktivu zdroje dat Azure, která oznamuje Cloud-init, který by měl používat, tím šetří čas Cloud-Init:
+1. **Cloudový zdroj dat** – Cloud-init obsahuje kód, který může komunikovat s Cloud platformami, se nazývají zdroje dat. Když se virtuální počítač vytvoří z image Cloud-init v [Azure](https://cloudinit.readthedocs.io/en/latest/topics/datasources/azure.html#azure), Cloud-init načte zdroj dat Azure, který bude komunikovat s koncovými body Azure metadata a získá konfiguraci specifickou pro virtuální počítače.
+2. **Konfigurace modulu runtime** (/Run/Cloud-init)
+3. **Image config** (/etc/Cloud), jako `/etc/cloud/cloud.cfg` je například `/etc/cloud/cloud.cfg.d/*.cfg` . Příklad toho, kde se používá v Azure, je běžné, že image operačního systému Linux s Cloud-init mají mít direktivu zdroje dat Azure, která oznamuje Cloud-init, který by měl používat, tím šetří čas Cloud-Init:
 
    ```bash
    /etc/cloud/cloud.cfg.d# cat 90_dpkg.cfg
@@ -41,26 +41,28 @@ Některé konfigurace se už vloženými do Azure Marketplace imagí, které jso
 
 Při zřizování pomocí Cloud-init je k dispozici 5 fází spouštění, konfigurace procesu a zobrazení v protokolech.
 
-1. [Fáze generátoru](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#generator): spustí se generátor Cloud-init System a určí, že by se měl zahrnout Cloud-init do spouštěcích cílů, a pokud ano, povolí Cloud-init. Pokud třeba chcete zakázat Cloud-init, můžete tento soubor vytvořit `/etc/cloud/cloud-init.disabled` .
+1. [Fáze generátoru](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#generator): spustí se generátor Cloud-init System a určí, že by se měl zahrnout Cloud-init do spouštěcích cílů, a pokud ano, povolí Cloud-init. 
 
 2. [Místní fáze Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#local): Cloud-init vyhledá místní zdroj dat "Azure", který umožní použití Cloud-init pro rozhraní s Azure a použije konfiguraci sítě, včetně Fallback.
 
 3. [Fáze inicializace pro Cloud-init (síť)](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#network): síť by měla být online a měla by se vygenerovat informace o síťové kartě a tabulce směrování. V této fázi se spustí moduly uvedené v `cloud_init_modules` v/etc/Cloud/Cloud.cfg. Virtuální počítač v Azure se připojí, dočasný disk se naformátuje, název hostitele se nastaví společně s dalšími úkoly.
 
-   Toto jsou některé z cloud_init_modules:
-   - `migrator`
-   - `seed_random`
-   - `bootcmd`
-   - `write-files`
-   - `growpart`
-   - `resizefs`
-   - `disk_setup`
-   - `mounts`
-   - `set_hostname`
-   - `update_hostname`
-   - `ssh`
-
-
+   Tady jsou některé z těchto `cloud_init_modules` :
+   
+   ```bash
+   - migrator
+   - seed_random
+   - bootcmd
+   - write-files
+   - growpart
+   - resizefs
+   - disk_setup
+   - mounts
+   - set_hostname
+   - update_hostname
+   - ssh
+   ```
+   
    Po této fázi se Cloud-init pošle na platformu Azure, že se virtuální počítač úspěšně zřídil. Některé moduly se možná nezdařily, a ne všechny chyby modulu způsobí selhání zřizování.
 
 4. [Fáze konfigurace Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#config): v této fázi `cloud_config_modules` se spustí moduly definované a uvedené v/etc/Cloud/Cloud.cfg.

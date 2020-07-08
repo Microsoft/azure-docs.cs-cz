@@ -8,35 +8,37 @@ ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 6f0d5f084c5cd48abf399e351c627d64951ce719
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4dd7906ed32faa630ba074cb29e7987a64205cb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697442"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042097"
 ---
-# <a name="quickstart-create-a-server---azure-resource-manager-template"></a>Rychlý Start: Vytvoření šablony serveru Azure Resource Manager
+# <a name="quickstart-create-a-server---arm-template"></a>Rychlý Start: Vytvoření šablony serveru – ARM
 
-V tomto rychlém startu se dozvíte, jak ve svém předplatném Azure vytvořit prostředek Analysis Services serveru pomocí Správce prostředků šablony.
+V tomto rychlém startu se dozvíte, jak vytvořit prostředek serveru Analysis Services v předplatném Azure pomocí šablony Azure Resource Manager (šablona ARM).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 * **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
-## <a name="create-a-server"></a>Vytvoření serveru
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-analysis-services-create/).
 
 :::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
 
-V šabloně je definován jeden prostředek [Microsoft. AnalysisServices/Servers](https://docs.microsoft.com/azure/templates/microsoft.analysisservices/2017-08-01/servers) s pravidlem brány firewall. 
+V šabloně je definován jeden prostředek [Microsoft. AnalysisServices/Servers](/azure/templates/microsoft.analysisservices/servers) s pravidlem brány firewall.
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující odkaz nasazení do Azure, abyste se přihlásili do Azure a otevřeli šablonu. Šablona se používá k vytvoření prostředku serveru Analysis Services a určení požadovaných a volitelných vlastností.
 
@@ -60,7 +62,7 @@ V šabloně je definován jeden prostředek [Microsoft. AnalysisServices/Servers
 
 3. Vyberte **Koupit**. Po úspěšném nasazení serveru obdržíte oznámení:
 
-   ![Šablona Správce prostředků, nasazení oznámení portálu](./media/analysis-services-create-template/notification.png)
+   ![Šablona ARM, nasazení oznámení na portálu](./media/analysis-services-create-template/notification.png)
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
@@ -101,7 +103,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili šablonu Azure Resource Manager k vytvoření nové skupiny prostředků a prostředku serveru Azure Analysis Services. Po vytvoření prostředku serveru pomocí šablony Vezměte v úvahu následující skutečnosti:
+V tomto rychlém startu jste použili šablonu ARM k vytvoření nové skupiny prostředků a prostředku serveru Azure Analysis Services. Po vytvoření prostředku serveru pomocí šablony Vezměte v úvahu následující skutečnosti:
+
 - [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)
 - [Přidání ukázkového modelu z portálu](analysis-services-create-sample-model.md)
 - [Konfigurace správce serveru a uživatelských rolí](tutorials/analysis-services-tutorial-roles.md)

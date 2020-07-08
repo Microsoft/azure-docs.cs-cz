@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ea8492ff5a25eb72b0a842c4da82ed78c89863f8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 7642a32ce69dbbbb5ddebbe56b74f3202b2e6422
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733819"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039564"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Běžné chyby a kroky při řešení potíží pro Azure Active Directory Domain Services
 
@@ -28,7 +28,7 @@ Tento článek popisuje kroky pro řešení běžných problémů v Azure služb
 
 Pokud máte problémy s povolením služby Azure služba AD DS, přečtěte si následující běžné chyby a kroky k jejich vyřešení:
 
-| **Ukázková chybová zpráva** | **Rozhodnutí** |
+| **Ukázková chybová zpráva** | **Rozlišení** |
 | --- |:--- |
 | *Název aaddscontoso.com se již v této síti používá. Zadejte název, který se nepoužívá.* |[Konflikt názvů domén ve virtuální síti](troubleshoot.md#domain-name-conflict) |
 | *V tomto tenantovi Azure AD nešlo povolit doménové služby. Služba nemá dostatečná oprávnění k aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikaci nazvanou Azure AD Domain Services Sync a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.* |[Služba Domain Services nemá dostatečná oprávnění k aplikaci Azure AD Domain Services Sync.](troubleshoot.md#inadequate-permissions) |
@@ -41,7 +41,7 @@ Pokud máte problémy s povolením služby Azure služba AD DS, přečtěte si n
 
 *Název aaddscontoso.com se již v této síti používá. Zadejte název, který se nepoužívá.*
 
-**Rozhodnutí**
+**Rozlišení**
 
 Ověřte, že nemáte existující prostředí služba AD DS se stejným názvem domény, nebo s partnerským vztahem, virtuální síť. Můžete mít například doménu služba AD DS s názvem *aaddscontoso.com* , která běží na virtuálních počítačích Azure. Když se pokusíte povolit spravovanou doménu Azure služba AD DS se stejným názvem domény *aaddscontoso.com* ve virtuální síti, požadovaná operace se nezdařila.
 
@@ -53,7 +53,7 @@ Příčinou tohoto selhání je konflikty názvů pro název domény ve virtuál
 
 *V tomto tenantovi Azure AD nešlo povolit doménové služby. Služba nemá dostatečná oprávnění k aplikaci s názvem Azure AD Domain Services Sync. Odstraňte aplikaci nazvanou Azure AD Domain Services Sync a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.*
 
-**Rozhodnutí**
+**Rozlišení**
 
 Ověřte, jestli existuje aplikace s názvem *Azure AD Domain Services synchronizovat* v adresáři služby Azure AD. Pokud tato aplikace existuje, odstraňte ji a zkuste to znovu, abyste mohli Azure služba AD DS povolit. Chcete-li vyhledat existující aplikaci a v případě potřeby ji odstranit, proveďte následující kroky:
 
@@ -68,7 +68,7 @@ Ověřte, jestli existuje aplikace s názvem *Azure AD Domain Services synchroni
 
 *V tomto tenantovi Azure AD nešlo povolit doménové služby. Aplikace Domain Services ve vašem tenantovi Azure AD nemá požadovaná oprávnění k povolení doménových služeb. Odstraňte aplikaci s identifikátorem aplikace d87dcbc6-a371-462e-88e3-28ad15ec4e64 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.*
 
-**Rozhodnutí**
+**Rozlišení**
 
 Ověřte, jestli máte v adresáři Azure AD existující aplikaci s názvem *AzureActiveDirectoryDomainControllerServices* s identifikátorem aplikace *d87dcbc6-a371-462e-88e3-28ad15ec4e64* . Pokud tato aplikace existuje, odstraňte ji a zkuste to znovu, abyste mohli Azure služba AD DS povolit.
 
@@ -112,7 +112,7 @@ if ($sp -ne $null)
 
 *V tomto tenantovi Azure AD nešlo povolit doménové služby. Aplikace Microsoft Azure AD je v tenantovi Azure AD zakázaná. Povolte aplikaci s identifikátorem aplikace 00000002-0000-0000-C000-000000000000 a potom se pokuste pro vašeho tenanta Azure AD povolit Domain Services.*
 
-**Rozhodnutí**
+**Rozlišení**
 
 Ověřte, zda jste zakázali aplikaci s identifikátorem *00000002-0000-0000-C000-000000000000*. Tato aplikace je Microsoft Azure AD aplikace a poskytuje Graph API přístup k vašemu tenantovi služby Azure AD. Aby bylo možné synchronizovat tenanta Azure AD, musí být tato aplikace povolená.
 
@@ -137,15 +137,15 @@ Pokud se jeden nebo více uživatelů v tenantovi Azure AD nemůže přihlásit 
     
       * Nasadili jste nebo aktualizovali [nejnovější doporučenou verzi Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
       * Nakonfigurovali jste Azure AD Connect k [provedení úplné synchronizace][hybrid-phs].
-      * V závislosti na velikosti adresáře může trvat nějakou dobu, než jsou uživatelské účty a hodnoty hash přihlašovacích údajů dostupné v Azure služba AD DS. Před pokusem o ověření vůči spravované doméně nezapomeňte počkat dostatečně dlouho.
-      * Pokud potíže potrvají po ověření předchozích kroků, zkuste restartovat *službu Microsoft Azure AD Sync*. Z vašeho serveru Azure AD Connect otevřete příkazový řádek a spusťte následující příkazy:
+      * V závislosti na velikosti adresáře může trvat nějakou dobu, než se uživatelské účty a hodnoty hash přihlašovacích údajů zpřístupní ve spravované doméně. Před pokusem o ověření vůči spravované doméně nezapomeňte počkat dostatečně dlouho.
+      * Pokud potíže potrvají po ověření předchozích kroků, zkuste restartovat *službu Microsoft Azure AD Sync*. Na serveru Azure AD Connect otevřete příkazový řádek a spusťte následující příkazy:
     
         ```console
         net stop 'Microsoft Azure AD Sync'
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **Pouze cloudové účty**: Pokud je ovlivněný uživatelský účet pouze cloudový uživatelský účet, ujistěte se, že [uživatel změnil heslo po povolení služby Azure služba AD DS][cloud-only-passwords]. Toto resetování hesla způsobí vygenerování požadovaných hodnot hash přihlašovacích údajů pro Azure AD Domain Services.
+    * **Pouze cloudové účty**: Pokud je ovlivněný uživatelský účet pouze cloudový uživatelský účet, ujistěte se, že [uživatel změnil heslo po povolení služby Azure služba AD DS][cloud-only-passwords]. Toto resetování hesla způsobí vygenerování požadovaných hodnot hash přihlašovacích údajů pro spravovanou doménu.
 
 * **Ověřte, zda je uživatelský účet aktivní**: ve výchozím nastavení pět neplatných pokusů o zadání hesla během 2 minut ve spravované doméně způsobí, že se uživatelský účet zamkne po dobu 30 minut. Uživatel se nemůže přihlásit, pokud je účet uzamčen. Po 30 minutách se uživatelský účet automaticky odemkne.
   * Neplatné pokusy o zadání hesla ve spravované doméně nezamkne uživatelský účet ve službě Azure AD. Uživatelský účet je uzamčen pouze ve spravované doméně. Podívejte se na stav uživatelského účtu v *konzole pro správu služby Active Directory (ADAC)* pomocí [virtuálního počítače pro správu][management-vm], nikoli v Azure AD.

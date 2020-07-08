@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: d48c5f94de7aa663f618401e13fdc19777d42095
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733955"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039649"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Řešení potíží s přihlašováním k účtu pomocí spravované domény Azure Active Directory Domain Services
 
@@ -30,7 +30,7 @@ Nejběžnějšími důvody pro uživatelský účet, který se nemůže přihlá
 
 ## <a name="account-isnt-synchronized-into-azure-ad-ds-yet"></a>Účet se zatím nesynchronizoval do Azure služba AD DS
 
-V závislosti na velikosti adresáře může trvat nějakou dobu, než jsou uživatelské účty a hodnoty hash přihlašovacích údajů dostupné v Azure služba AD DS. U rozsáhlých adresářů může tato počáteční synchronizace z Azure AD trvat několik hodin a až jeden den nebo dvě. Před opakovaným pokusem o ověření se ujistěte, že jste čekali dostatečně dlouho.
+V závislosti na velikosti adresáře může trvat nějakou dobu, než se uživatelské účty a hodnoty hash přihlašovacích údajů zpřístupní ve spravované doméně. U rozsáhlých adresářů může tato počáteční synchronizace z Azure AD trvat několik hodin a až jeden den nebo dvě. Před opakovaným pokusem o ověření se ujistěte, že jste čekali dostatečně dlouho.
 
 Pro hybridní prostředí, která uživatel Azure AD Connect k synchronizaci místních adresářových dat do Azure AD, se ujistěte, že používáte nejnovější verzi Azure AD Connect a máte [nakonfigurovanou Azure AD Connect k provedení úplné synchronizace po povolení služba AD DS Azure][azure-ad-connect-phs]. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
 
@@ -47,7 +47,7 @@ Azure AD negeneruje nebo ukládá hodnoty hash hesel ve formátu, který je vyž
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hybridní prostředí s místní synchronizací
 
-Pro hybridní prostředí, která používají Azure AD Connect k synchronizaci z místního prostředí služba AD DS můžete v Azure AD místně vygenerovat a synchronizovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Po vytvoření spravované domény [Povolte synchronizaci hodnot hash hesel na Azure Active Directory Domain Services][azure-ad-connect-phs]. Bez dokončení kroku synchronizace hodnoty hash hesla se nemůžete přihlásit k účtu pomocí Azure služba AD DS. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
+Pro hybridní prostředí, která používají Azure AD Connect k synchronizaci z místního prostředí služba AD DS můžete v Azure AD místně vygenerovat a synchronizovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Po vytvoření spravované domény [Povolte synchronizaci hodnot hash hesel na Azure Active Directory Domain Services][azure-ad-connect-phs]. Bez dokončení kroku synchronizace hodnoty hash hesla se nemůžete přihlásit k účtu pomocí spravované domény. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
 
 Další informace najdete v tématu [Jak funguje synchronizace hodnot hash hesel pro Azure služba AD DS][phs-process].
 
@@ -64,7 +64,7 @@ Spravované domény bez místní synchronizace: pro účty ve službě Azure AD 
 
 ## <a name="the-account-is-locked-out"></a>Účet je uzamčený.
 
-Uživatelský účet v Azure služba AD DS je uzamčený, když byla splněna definovaná prahová hodnota pro neúspěšné pokusy o přihlášení. Toto chování uzamčení účtu je navrženo tak, aby vás chránilo před opakovanými pokusy o přihlašování hrubou silou, které můžou znamenat automatizovaný digitální útok.
+Uživatelský účet ve spravované doméně je uzamčen, pokud byla splněna definovaná prahová hodnota pro neúspěšné pokusy o přihlášení. Toto chování uzamčení účtu je navrženo tak, aby vás chránilo před opakovanými pokusy o přihlašování hrubou silou, které můžou znamenat automatizovaný digitální útok.
 
 Ve výchozím nastavení platí, že pokud se v 2 minutách vyskytne 5 špatný počet pokusů o zadání hesla, účet se zablokuje na 30 minut.
 

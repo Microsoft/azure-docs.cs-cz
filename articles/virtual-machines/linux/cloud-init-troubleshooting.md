@@ -5,15 +5,15 @@ author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: troubleshooting
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 92c878497f16162f46f4da34501885b73ff85dfc
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306873"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042066"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Řešení potíží se zřizováním virtuálních počítačů pomocí cloudu – init
 
@@ -27,13 +27,13 @@ Některé příklady problémů se zřizováním:
 - Sítě nejsou správně nastavené.
 - Záměna selhání souboru nebo oddílu
 
-Tento článek popisuje, jak řešit potíže s Cloud-init. Další podrobné informace najdete v tématu [Jak funguje Cloud-init](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive).
+Tento článek popisuje, jak řešit potíže s Cloud-init. Podrobnější informace najdete v článku [Cloud-init hluboké podrobně](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive).
 
 ## <a name="step-1-test-the-deployment-without-customdata"></a>Krok 1: testování nasazení bez customData
 
 Cloud-init může přijmout customData, který se předává do něj, když se vytvoří virtuální počítač. Nejdřív byste měli zajistit, že nezpůsobují žádné problémy s nasazeními. Zkuste zřídit virtuální počítač bez předání jakékoli konfigurace. Pokud zjistíte, že se virtuální počítač nepovede zřídit, pokračujte v následujících krocích, pokud najdete konfiguraci, kterou jste provedli. Projděte si [Krok 4](). 
 
-## <a name="step-2-review-image-requirements-are-satisfied"></a>Krok 2: Kontrola požadavků na Image je splněné
+## <a name="step-2-review-image-requirements"></a>Krok 2: Kontrola požadavků na Image
 Hlavní příčinou selhání zřizování virtuálních počítačů je, že image operačního systému nesplňuje požadavky na spuštění v Azure. Před tím, než se pokusíte zřídit v Azure, ujistěte se, že jsou vaše image správně připravené. 
 
 
@@ -59,22 +59,16 @@ I když je virtuální počítač spuštěný, budete potřebovat protokoly z vi
 
 - Před vytvořením virtuálního počítače [Povolte diagnostiku spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) a pak je [Zobrazte](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) během spouštění.
 
-- [Ruční připojení a připojení disku s operačním](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux) systémem ke spuštěnému virtuálnímu počítači pro extrakci protokolů – oprava virtuálního počítače Azure
-
-Shromažďovat tyto protokoly:
+- [Spuštěním AZ VM oprava](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands) připojte a připojte disk s operačním systémem, který vám umožní shromáždit tyto protokoly:
 ```bash
+/var/log/cloud-init*
 /var/log/waagent*
 /var/log/syslog*
 /var/log/rsyslog*
 /var/log/messages*
 /var/log/kern*
 /var/log/dmesg*
-/var/log/dpkg*
-/var/log/yum*
-/var/log/cloud-init*
 /var/log/boot*
-/var/log/auth*
-/var/log/secure*
 ```
 Pokud chcete začít s počátečním řešením potíží, začněte s protokoly Cloud-init a zjistěte, kde k selhání došlo, a pak použijte další protokoly pro rozsáhlou podrobně a poskytněte další přehledy. 
 * /var/log/cloud-init.log
@@ -138,4 +132,4 @@ Nejedná se o každé selhání v Cloud-init, které způsobí závažné selhá
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud stále nemůžete izolovat, proč Cloud-init nespouštěla konfiguraci, je nutné pozorovat přesněji na to, co se děje v každé fázi Cloud-init a kdy se moduly spouštějí. Další informace najdete v tématu [začnete hlouběji do konfigurace Cloud-init](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive) . 
+Pokud stále nemůžete izolovat, proč Cloud-init nespouštěla konfiguraci, je nutné pozorovat přesněji na to, co se děje v každé fázi Cloud-init a kdy se moduly spouštějí. Další informace najdete v tématu [začnete hlouběji do konfigurace Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive) . 

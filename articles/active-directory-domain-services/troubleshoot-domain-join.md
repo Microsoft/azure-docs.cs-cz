@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 07006de016ba956c02cbd5f527417df3bdc2f723
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4a472f0d1e31faea6b62eec004543b42e6add4fe
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734040"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039683"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Řešení potíží s připojením k doméně pomocí spravované domény Azure Active Directory Domain Services
 
@@ -30,16 +30,16 @@ Když se pokusíte připojit k virtuálnímu počítači nebo připojit aplikaci
 
 Pokud virtuální počítač nemůže najít spravovanou doménu, obvykle se jedná o síťové připojení nebo problém s konfigurací. Pokud chcete tento problém najít a vyřešit, přečtěte si následující postup pro řešení potíží:
 
-1. Ujistěte se, že je virtuální počítač připojený ke stejné nebo partnerské virtuální síti, která je povolená pro Azure služba AD DS. V takovém případě se virtuální počítač nemůže k doméně najít a připojit se, aby se mohl připojit.
+1. Zajistěte, aby byl virtuální počítač připojený ke stejné nebo partnerské virtuální síti jako spravovaná doména. V takovém případě se virtuální počítač nemůže k doméně najít a připojit se, aby se mohl připojit.
     * Pokud virtuální počítač není připojený ke stejné virtuální síti, zkontrolujte, jestli je *aktivní* nebo *připojené* připojení VPN peering nebo VPN, aby se mohl správně Flow provozovat.
 1. Zkuste použít příkaz k otestování domény pomocí názvu domény spravované domény, například `ping aaddscontoso.com` .
     * Pokud se odpověď protokolu příkazového testu nezdařila, zkuste provést příkaz k otestování adresy IP pro doménu zobrazenou na stránce Přehled na portálu spravované domény, například `ping 10.0.0.4` .
-    * Pokud můžete úspěšně odeslat příkaz k otestování IP adresy, ale ne k doméně, je možné, že je služba DNS nesprávně nakonfigurovaná. Ujistěte se, že jste nakonfigurovali servery DNS spravované domény pro virtuální síť.
+    * Pokud můžete úspěšně odeslat příkaz k otestování IP adresy, ale ne k doméně, je možné, že je služba DNS nesprávně nakonfigurovaná. Ujistěte se, že jste [nakonfigurovali servery DNS spravované domény pro virtuální síť][configure-dns].
 1. Zkuste vyprázdnit mezipaměť překladače DNS na virtuálním počítači, třeba `ipconfig /flushdns` .
 
 ### <a name="network-security-group-nsg-configuration"></a>Konfigurace skupiny zabezpečení sítě (NSG)
 
-Při vytváření spravované domény se vytvoří také skupina zabezpečení sítě s příslušnými pravidly pro úspěšnou operaci domény. Pokud upravíte nebo vytvoříte další pravidla skupiny zabezpečení sítě, možná nebudete mít k dispozici neúmyslné blokování portů, které služba Azure služba AD DS potřebuje k poskytování služeb připojení a ověřování. Tato pravidla skupiny zabezpečení sítě mohou způsobit problémy, jako je například synchronizace hesel není dokončená, uživatelé se nebudou moci přihlásit ani problémy s připojením k doméně.
+Při vytváření spravované domény se vytvoří také skupina zabezpečení sítě s příslušnými pravidly pro úspěšnou operaci domény. Pokud upravujete nebo vytváříte další pravidla skupiny zabezpečení sítě, možná nebudete záměrně blokovat porty požadované pro Azure služba AD DS k poskytování služeb připojení a ověřování. Tato pravidla skupiny zabezpečení sítě mohou způsobit problémy, jako je například synchronizace hesel není dokončená, uživatelé se nebudou moci přihlásit ani problémy s připojením k doméně.
 
 Pokud budete mít i nadále problémy s připojením, přečtěte si následující postup pro řešení potíží:
 
@@ -53,7 +53,7 @@ Pokud se zobrazí dialogové okno s výzvou k zadání přihlašovacích údajů
 
 Pokud chcete řešit problémy související s přihlašovacími údaji, přečtěte si následující postup pro řešení potíží:
 
-1. Zkuste zadat přihlašovací údaje pomocí formátu UPN, například `dee@aaddscontoso.onmicrosoft.com` . Ujistěte se, že je tento hlavní název uživatele ve službě Azure AD správně nakonfigurovaný.
+1. Zkuste zadat přihlašovací údaje pomocí formátu UPN, například `dee@contoso.onmicrosoft.com` . Ujistěte se, že je tento hlavní název uživatele ve službě Azure AD správně nakonfigurovaný.
     * Pokud má váš tenant více uživatelů se stejnou předponou hlavního názvu uživatele (UPN), nebo pokud je předpona hlavního názvu uživatele delší, je možné, že se *sAMAccountName* pro váš účet vygeneruje automaticky. Proto se formát *sAMAccountName* pro váš účet může lišit od toho, co očekáváte nebo používáte ve vaší místní doméně.
 1. Zkuste použít přihlašovací údaje pro uživatelský účet, který je součástí spravované domény pro připojení virtuálních počítačů ke spravované doméně.
 1. Ujistěte se, že jste [povolili synchronizaci hesel][enable-password-sync] a pro dokončení počáteční synchronizace hesla čekaly dostatečně dlouho.
@@ -68,6 +68,7 @@ Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači ke sprav
 [enable-password-sync]: tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds
 [network-ports]: network-considerations.md#network-security-groups-and-required-ports
 [azure-ad-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-dns]: tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network
 
 <!-- EXTERNAL LINKS -->
 [join-authentication-issues]: /previous-versions/windows/it-pro/windows-2000-server/cc961817(v=technet.10)

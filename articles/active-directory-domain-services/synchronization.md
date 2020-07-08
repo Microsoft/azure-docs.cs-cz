@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a1a652c19d624d6faf941de84bcf74dd8613152
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734245"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039836"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Způsob synchronizace objektů a přihlašovacích údajů ve spravované doméně Azure Active Directory Domain Services
 
@@ -61,15 +61,17 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské ob
 |:--- |:--- |
 | accountEnabled |stav skupiny (nastavení nebo vymazání bitu ACCOUNT_DISABLED) |
 | city |l |
-| country |společném |
+| country |co |
 | Oddělení |Oddělení |
 | displayName |displayName |
+| employeedId |Zaměstnance |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |title |
 | pošta |pošta |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (někdy může být generováno automaticky) |
+| manager |manager |
 | mobil |mobil |
 | objektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Čísel |
@@ -77,6 +79,7 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské ob
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | Ovládacím |Ovládacím |
 | preferredLanguage |preferredLanguage |
+| proxyAddresses | proxyAddresses |
 | state |st |
 | streetAddress |streetAddress |
 | surname |sn |
@@ -95,6 +98,7 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro objekty skupin v
 | mailNickname |msDS-AzureADMailNickname |
 | objektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Čísel |
+| proxyAddresses | proxyAddresses |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Synchronizace z místního služba AD DS do Azure AD a Azure služba AD DS

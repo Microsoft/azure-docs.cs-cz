@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 30c4838dd5a6f4e8b08d3619588ee3ae746349ef
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891690"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042131"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Sestavování a optimalizace tabulek pro rychlý paralelní import dat do SQL Server na virtuálním počítači Azure
 
-Tento článek popisuje, jak vytvořit dělené tabulky pro rychlé paralelní hromadné importy dat do databáze SQL Server. Pro načítání a přenos velkých objemů dat do SQL Database je možné data importovat do databáze SQL DB a následné dotazy zlepšit pomocí *dělených tabulek a zobrazení*. 
+Tento článek popisuje, jak vytvořit dělené tabulky pro rychlé paralelní hromadné importy dat do databáze SQL Server. Pro načítání a přenos velkých objemů dat do SQL Database je možné data importovat do databáze SQL a následné dotazy zlepšit pomocí *dělených tabulek a zobrazení*. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Vytvoření nové databáze a sady skupin souborů
 * [Vytvořte novou databázi](https://technet.microsoft.com/library/ms176061.aspx), pokud již neexistuje.
@@ -35,13 +35,14 @@ Tento článek popisuje, jak vytvořit dělené tabulky pro rychlé paralelní h
 
 Následující příklad vytvoří novou databázi se třemi skupinami souborů kromě primární skupiny a skupin protokolů, které obsahují jeden fyzický soubor v každém z nich. Soubory databáze jsou vytvořeny ve výchozí složce SQL Server dat, jak je nakonfigurováno v instanci SQL Server. Další informace o výchozích umístěních souborů naleznete v tématu [umístění souborů pro výchozí a pojmenované instance SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
 
-    DECLARE @data_path nvarchar(256);
-    SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
+```sql
+   DECLARE @data_path nvarchar(256);
+   SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
       FROM master.sys.master_files
       WHERE database_id = 1 AND file_id = 1);
 
-    EXECUTE ('
-        CREATE DATABASE <database_name>
+   EXECUTE ('
+      CREATE DATABASE <database_name>
          ON  PRIMARY 
         ( NAME = ''Primary'', FILENAME = ''' + @data_path + '<primary_file_name>.mdf'', SIZE = 4096KB , FILEGROWTH = 1024KB ), 
          FILEGROUP [filegroup_1] 
@@ -53,43 +54,52 @@ Následující příklad vytvoří novou databázi se třemi skupinami souborů 
          LOG ON 
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
+```
 
 ## <a name="create-a-partitioned-table"></a>Vytvoření dělené tabulky
 Chcete-li vytvořit dělené tabulky podle schématu dat, namapovaného na skupiny souborů databáze vytvořené v předchozím kroku, je nutné nejprve vytvořit funkci oddílu a schéma. Při hromadném importu dat do dělených tabulek se záznamy rozdělují mezi skupiny souborů podle schématu oddílu, jak je popsáno níže.
 
 ### <a name="1-create-a-partition-function"></a>1. vytvoření funkce oddílu
-[Vytvoření funkce oddílu](https://msdn.microsoft.com/library/ms187802.aspx) Tato funkce definuje rozsah hodnot nebo hranic, které mají být zahrnuty do jednotlivých tabulek oddílů, například pro omezení oddílů podle měsíce (některé\_pole DateTime\_) v roce 2013:
+[Vytvoření funkce oddílu](https://msdn.microsoft.com/library/ms187802.aspx) Tato funkce definuje rozsah hodnot nebo hranic, které mají být zahrnuty do jednotlivých tabulek oddílů, například pro omezení oddílů podle měsíce (některé \_ \_ pole DateTime) v roce 2013:
   
-        CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
-        AS RANGE RIGHT FOR VALUES (
-            '20130201', '20130301', '20130401',
-            '20130501', '20130601', '20130701', '20130801',
-            '20130901', '20131001', '20131101', '20131201' )
+```sql
+   CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
+      AS RANGE RIGHT FOR VALUES (
+         '20130201', '20130301', '20130401',
+         '20130501', '20130601', '20130701', '20130801',
+         '20130901', '20131001', '20131101', '20131201' )
+```
 
 ### <a name="2-create-a-partition-scheme"></a>2. vytvoření schématu oddílu
 [Vytvořte schéma oddílu](https://msdn.microsoft.com/library/ms179854.aspx). Toto schéma mapuje každý rozsah oddílů ve funkci oddílu na fyzickou skupinu souborů, například:
   
-        CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
+```sql
+      CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
         <filegroup_1>, <filegroup_2>, <filegroup_3>, <filegroup_4>,
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
+```
+ 
+Pokud chcete v každém oddílu ověřit rozsahy v závislosti na funkci nebo schématu, spusťte následující dotaz:
   
-  Pokud chcete v každém oddílu ověřit rozsahy v závislosti na funkci nebo schématu, spusťte následující dotaz:
-  
-        SELECT psch.name as PartitionScheme,
+```sql
+   SELECT psch.name as PartitionScheme,
             prng.value AS PartitionValue,
             prng.boundary_id AS BoundaryID
-        FROM sys.partition_functions AS pfun
-        INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
-        INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
-        WHERE pfun.name = <DatetimeFieldPFN>
+   FROM sys.partition_functions AS pfun
+   INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
+   INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
+   WHERE pfun.name = <DatetimeFieldPFN>
+```
 
 ### <a name="3-create-a-partition-table"></a>3. vytvoření tabulky oddílů
 [Vytvořte dělené tabulky](https://msdn.microsoft.com/library/ms174979.aspx)podle schématu dat a určete pole schéma oddílu a omezení použité k dělení tabulky, například:
   
-        CREATE TABLE <table_name> ( [include schema definition here] )
+```sql
+   CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
+```
 
 Další informace najdete v tématu [vytváření dělených tabulek a indexů](https://msdn.microsoft.com/library/ms188730.aspx).
 
@@ -98,11 +108,14 @@ Další informace najdete v tématu [vytváření dělených tabulek a indexů](
 * Můžete použít BCP, BULK INSERT nebo jiné metody, jako je například [Průvodce migrací SQL Server](https://sqlazuremw.codeplex.com/). Uvedený příklad používá metodu BCP.
 * Změnou [databáze](https://msdn.microsoft.com/library/bb522682.aspx) na změnu schématu protokolování transakcí BULK_LOGGEDte, aby se minimalizovala režie protokolování, například:
   
-        ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
+   ```sql
+      ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
+   ```
 * Pro urychlení načítání dat spusťte paralelní operace hromadného importu. Tipy k urychlení hromadného importu velkých objemů dat do SQL Server databází najdete [v tématu Load 1 TB za méně než 1 hodinu](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour).
 
 Následující skript prostředí PowerShell je příkladem paralelního načítání dat pomocí BCP.
 
+```powershell
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
     # The example assumes the partitioned data files are named as <base_file_name>_<partition_number>.csv
@@ -163,19 +176,21 @@ Následující skript prostředí PowerShell je příkladem paralelního načít
     date
     While (Get-Job -State "Running") { Start-Sleep 10 }
     date
-
+```
 
 ## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Vytváření indexů pro optimalizaci spojení a výkonu dotazů
 * Pokud extrahujete data pro modelování z více tabulek, vytvořte indexy na klíčích JOIN pro zlepšení výkonu připojení.
 * [Vytváření indexů](https://technet.microsoft.com/library/ms188783.aspx) (clusterovaných nebo neclusterovaných) cílících na stejnou skupinu souborů pro každý oddíl, například:
   
-        CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
+```sql
+   CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  ani
+--  or,
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  
+ ```
+ 
   > [!NOTE]
   > Před hromadným importem dat se můžete rozhodnout vytvořit indexy. Vytvoření indexu před hromadným importem zpomaluje načítání dat.
   > 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322135"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039275"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování obsahu Azure SQL pomocí indexeru Azure Kognitivní hledání
 
@@ -62,7 +62,7 @@ V závislosti na několika faktorech týkajících se vašich dat může být po
 1. Vytvoření zdroje dat:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
+    POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,8 +80,8 @@ V závislosti na několika faktorech týkajících se vašich dat může být po
 
 3. Vytvořte indexer tak, že mu udělíte název a odkazujete na zdroj dat a cílový index:
 
-    ```
-    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
+   ```
+    POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -90,12 +90,14 @@ V závislosti na několika faktorech týkajících se vašich dat může být po
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
-    ```
+   ```
 
 Indexer vytvořený tímto způsobem nemá plán. Automaticky se spustí při vytvoření. Můžete ji kdykoli znovu spustit pomocí žádosti **indexeru Run** :
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
+```
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
+```
 
 Můžete přizpůsobit několik aspektů chování indexeru, jako je velikost dávky, a počet dokumentů, které je možné přeskočit předtím, než se spuštění indexeru nezdařilo. Další informace najdete v tématu [Vytvoření rozhraní API pro indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
@@ -103,11 +105,14 @@ Možná budete muset službě Azure dovolit připojení k vaší databázi. Poky
 
 Pokud chcete monitorovat stav indexeru a historii spouštění (počet položek indexovaných, selhání atd.), použijte požadavek na **stav indexeru** :
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
+```
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
+```
 
 Odpověď by měla vypadat nějak takto:
 
+```
     {
         "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
@@ -138,6 +143,7 @@ Odpověď by měla vypadat nějak takto:
             ... earlier history items
         ]
     }
+```
 
 Historie spouštění obsahuje až 50 posledních dokončených provedení, která jsou seřazena v obráceném chronologickém pořadí (takže se poslední spuštění v odpovědi zařadí jako první).
 Další informace o odpovědi najdete v části [získání stavu indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) .
@@ -145,7 +151,8 @@ Další informace o odpovědi najdete v části [získání stavu indexeru](http
 ## <a name="run-indexers-on-a-schedule"></a>Spustit indexery podle plánu
 Indexer je také možné uspořádat tak, aby běžel pravidelně podle plánu. Chcete-li to provést, přidejte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** . Následující příklad ukazuje požadavek PUT na aktualizaci indexeru:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+```
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -154,6 +161,7 @@ Indexer je také možné uspořádat tak, aby běžel pravidelně podle plánu. 
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 Parametr **interval** je povinný. Tento interval odkazuje na čas mezi začátkem dvou po sobě jdoucích spuštění indexeru. Nejmenší povolený interval je 5 minut. nejdelší je jeden den. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Vzor pro tuto hodnotu je: `P(nD)(T(nH)(nM))` . Příklady: `PT15M` každých 15 minut každé `PT2H` 2 hodiny.
 
@@ -181,6 +189,7 @@ Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.c
 
 Chcete-li použít tuto zásadu, vytvořte nebo aktualizujte zdroj dat takto:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -190,6 +199,7 @@ Chcete-li použít tuto zásadu, vytvořte nebo aktualizujte zdroj dat takto:
            "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy"
       }
     }
+```
 
 Pokud používáte zásady pro sledování změn integrované v SQL, nezadávejte samostatné zásady zjišťování odstranění dat – tato zásada má integrovanou podporu pro identifikaci odstraněných řádků. Aby se ale u odstranění zjistila možnost automagic, klíč dokumentu v indexu hledání musí být stejný jako primární klíč v tabulce SQL. 
 
@@ -216,6 +226,7 @@ Tato zásada detekce změn spoléhá na sloupec horní meze, ve kterém se zachy
 
 Chcete-li použít zásady vysoké značky, vytvořte nebo aktualizujte zdroj dat takto:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -226,6 +237,7 @@ Chcete-li použít zásady vysoké značky, vytvořte nebo aktualizujte zdroj da
            "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
+```
 
 > [!WARNING]
 > Pokud zdrojová tabulka neobsahuje index ve sloupci horních značek, můžou vyprší časový limit dotazů používaných indexerem SQL. Konkrétně `ORDER BY [High Water Mark Column]` klauzule vyžaduje, aby se rejstřík spouštěl efektivně, pokud tabulka obsahuje mnoho řádků.
@@ -243,11 +255,13 @@ Pokud používáte datový typ [rowversion](https://docs.microsoft.com/sql/t-sql
 
 Pokud chcete tuto funkci povolit, vytvořte nebo aktualizujte indexer s následující konfigurací:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
     }
+```
 
 <a name="queryTimeout"></a>
 
@@ -255,11 +269,13 @@ Pokud chcete tuto funkci povolit, vytvořte nebo aktualizujte indexer s následu
 
 Pokud dojde k chybám časového limitu, můžete použít `queryTimeout` nastavení konfigurace indexeru k nastavení časového limitu dotazu na hodnotu vyšší, než je výchozí časový limit 5 minut. Chcete-li například nastavit časový limit na 10 minut, vytvořte nebo aktualizujte indexer s následující konfigurací:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 <a name="disableOrderByHighWaterMarkColumn"></a>
 
@@ -267,11 +283,13 @@ Pokud dojde k chybám časového limitu, můžete použít `queryTimeout` nastav
 
 Můžete také zakázat `ORDER BY [High Water Mark Column]` klauzuli. Nicméně to nedoporučujeme, protože pokud je provádění indexeru přerušeno chybou, indexer musí znovu zpracovat všechny řádky, pokud se spustí později – a to i v případě, že indexer již zpracoval téměř všechny řádky v době přerušení. K zakázání této `ORDER BY` klauzule použijte `disableOrderByHighWaterMarkColumn` nastavení v definici indexeru:  
 
+```
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
+```
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>Zásady detekce nepodmíněného odstranění sloupce
 Pokud jsou řádky odstraněny ze zdrojové tabulky, pravděpodobně budete chtít odstranit tyto řádky i z indexu vyhledávání. Pokud používáte zásady pro sledování změn integrovaného se systémem SQL, je to pro vás velmi důležité. Zásady pro sledování změn s vysokou vodou ale neumožňují odstraňovat řádky. Co dělat?
@@ -280,6 +298,7 @@ Pokud jsou řádky fyzicky odebrány z tabulky, Azure Kognitivní hledání nem�
 
 Při použití techniky obnovitelného odstranění můžete při vytváření nebo aktualizaci zdroje dat určit zásady obnovitelného odstranění následujícím způsobem:
 
+```
     {
         …,
         "dataDeletionDetectionPolicy" : {
@@ -288,6 +307,7 @@ Při použití techniky obnovitelného odstranění můžete při vytváření n
            "softDeleteMarkerValue" : "[the value that indicates that a row is deleted]"
         }
     }
+```
 
 **SoftDeleteMarkerValue** musí být řetězec – použijte řetězcovou reprezentaci vaší skutečné hodnoty. Například pokud máte sloupec s celými čísly, kde jsou odstraněné řádky označeny hodnotou 1, použijte `"1"` . Pokud máte BITOVÝ sloupec, ve kterém jsou odstraněné řádky označeny logickou hodnotou true, použijte řetězcový literál `True` nebo `true` nezáleží na velikosti písmen.
 
@@ -305,8 +325,8 @@ Při použití techniky obnovitelného odstranění můžete při vytváření n
 | smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
 | uniqueidentifer |Edm.String | |
 | geografické |Edm.GeographyPoint |Podporují se jenom geografické instance typu POINT s SRID 4326 (což je výchozí nastavení). |
-| rowversion |– |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
-| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |– |Nepodporuje se |
+| rowversion |Není k dispozici |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
+| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |Není k dispozici |Nepodporuje se |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 SQL indexer zpřístupňuje několik nastavení konfigurace:
@@ -318,11 +338,13 @@ SQL indexer zpřístupňuje několik nastavení konfigurace:
 
 Tato nastavení se používají v `parameters.configuration` objektu v definici indexeru. Chcete-li například nastavit časový limit dotazu na 10 minut, vytvořte nebo aktualizujte indexer s následující konfigurací:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 ## <a name="faq"></a>Nejčastější dotazy
 
@@ -352,13 +374,13 @@ To závisí na okolnostech. Pro úplné indexování tabulky nebo zobrazení mů
 
 Pro přírůstkové indexování podporuje Azure Kognitivní hledání dvě zásady detekce změn: integrované sledování změn SQL a horní mez.
 
-V replikách jen pro čtení nepodporuje funkce SQL Database integrované sledování změn. Proto je nutné použít zásady vysokého měřítka. 
+V replikách jen pro čtení SQL Database nepodporuje integrované sledování změn. Proto je nutné použít zásady vysokého měřítka. 
 
 Naše standardní doporučení je použití datového typu rowversion pro sloupec horních značek. Použití rowversion ale spoléhá na `MIN_ACTIVE_ROWVERSION` funkci, která není podporovaná v replikách jen pro čtení. Proto je nutné, aby indexer naodkazoval na primární repliku, pokud používáte rowversion.
 
 Pokud se pokusíte použít rowversion v replice, která je jen pro čtení, zobrazí se následující chyba: 
 
-    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+"Použití sloupce rowversion pro sledování změn není podporováno u sekundárních replik dostupnosti (jen pro čtení). Aktualizujte zdroj dat a zadejte připojení k primární replice dostupnosti. Vlastnost ' aktualizovatelné ' aktuální databáze je ' READ_ONLY '.
 
 **Otázka: mohu použít alternativní sloupec, který není rowversion pro sledování změn ve vysokém měřítku?**
 

@@ -8,8 +8,6 @@
   items:
     - name: Vyžadování přijetí podmínek použití
       href: require-tou.md
-    - name: 'Blokování přístupu, pokud se zjistí riziko relace'
-      href: app-sign-in-risk.md
 - name: Kurzy
   items:
     - name: Vyžadování služby Azure Multi-Factor Authentication
@@ -68,8 +66,10 @@
           href: howto-conditional-access-policy-azure-management.md
         - name: Vyžadování MFA pro všechny uživatele
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Podmíněný přístup podle rizika
+        - name: Podmíněný přístup podle rizika přihlašování
           href: howto-conditional-access-policy-risk.md
+        - name: Podmíněný přístup podle rizika uživatelů
+          href: howto-conditional-access-policy-risk-user.md
         - name: Zabezpečení registrace bezpečnostních údajů
           href: howto-conditional-access-policy-registration.md
         - name: Blokování přístupu podle umístění

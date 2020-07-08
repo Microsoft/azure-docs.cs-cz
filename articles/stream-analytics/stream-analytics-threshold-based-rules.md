@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak pomocí referenčních dat dosáhnout 
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75369707"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039037"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Zpracování konfigurovatelných pravidel na základě prahových hodnot v Azure Stream Analytics
 Tento článek popisuje, jak pomocí referenčních dat dosáhnout řešení upozornění, které používá konfigurovatelné pravidla na základě prahové hodnoty v Azure Stream Analytics.
@@ -39,10 +39,10 @@ Předpokládejme například, že je k dispozici Stream Analytics úloha, která
 ## <a name="reference-data"></a>Referenční data
 Tento příklad referenčních dat ukazuje, jak je možné znázornit pravidlo na základě prahové hodnoty. Soubor JSON obsahuje referenční data a ukládá se do úložiště objektů BLOB v Azure a tento kontejner úložiště objektů BLOB se používá jako referenční datový vstup s názvem **rules**. Tento soubor JSON můžete přepsat a nahradit konfiguraci pravidla na čas, aniž byste museli zastavit nebo spustit úlohu streamování.
 
-- Ukázkové pravidlo se používá k reprezentaci nastavitelného upozornění při překročení procesoru (průměr je větší než nebo rovno) `90` hodnota Percent. `value` Pole lze podle potřeby konfigurovat.
-- Všimněte si, že pravidlo má pole **operátoru** , které je dynamicky interpretováno v syntaxi dotazu `AVGGREATEROREQUAL`později. 
-- Pravidlo filtruje data na určitém klíči `2` dimenze s hodnotou. `C1` Další pole jsou prázdné řetězce, což značí, že se vstupním datovým proudem nefiltrují tato pole události. Můžete nastavit další pravidla procesoru pro filtrování dalších vyhovujících polí podle potřeby.
-- Do výstupní události výstrahy nejsou zahrnuty všechny sloupce. V takovém případě `includedDim` je klíčové `2` číslo zapnuté `TRUE` , aby představovalo, že pole číslo 2 dat události v datovém proudu bude zahrnuto do vykvalifikačních výstupních událostí. Ostatní pole nejsou součástí výstupu výstrahy, ale seznam polí lze upravit.
+- Ukázkové pravidlo se používá k reprezentaci nastavitelného upozornění při překročení procesoru (průměr je větší než nebo rovno) hodnota `90` Percent. `value`Pole lze podle potřeby konfigurovat.
+- Všimněte si, že pravidlo má pole **operátoru** , které je dynamicky interpretováno v syntaxi dotazu později `AVGGREATEROREQUAL` . 
+- Pravidlo filtruje data na určitém klíči dimenze `2` s hodnotou `C1` . Další pole jsou prázdné řetězce, což značí, že se vstupním datovým proudem nefiltrují tato pole události. Můžete nastavit další pravidla procesoru pro filtrování dalších vyhovujících polí podle potřeby.
+- Do výstupní události výstrahy nejsou zahrnuty všechny sloupce. V takovém případě `includedDim` je klíčové číslo `2` zapnuté, `TRUE` aby představovalo, že pole číslo 2 dat události v datovém proudu bude zahrnuto do vykvalifikačních výstupních událostí. Ostatní pole nejsou součástí výstupu výstrahy, ale seznam polí lze upravit.
 
 
 ```json
@@ -134,11 +134,11 @@ HAVING
 ## <a name="example-streaming-input-event-data"></a>Příklad streamování vstupních dat událostí
 Tato ukázková data JSON představují vstupní data **metrik** , která se používají ve výše uvedeném dotazu streamování. 
 
-- Tři ukázkové události jsou uvedeny v rozmezí 1 – minuty, hodnota `T14:50`. 
-- Všechny tři mají stejnou `deviceId` hodnotu. `978648`
-- Hodnoty metrik CPU se v každé události `98` `95`, v `80` uvedeném pořadí liší. Pouze první dvě ukázkové události překračují pravidlo upozornění procesoru, které je v pravidle navázáno.
-- Pole includeDim v pravidle výstrahy bylo číslo klíče 2. Odpovídající pole klíče 2 v vzorových událostech je pojmenováno `NodeName`. Tři ukázkové události mají hodnoty `N024`, `N024`a. `N014` Ve výstupu se zobrazí jenom uzel `N024` , který je jediná data, která odpovídají kritériím výstrahy pro vysoký procesor. `N014`nesplňuje maximální prahovou hodnotu procesoru.
-- Pravidlo výstrahy je konfigurováno `filter` pouze s klíčem číslo 2, který odpovídá `cluster` poli v vzorových událostech. Tři ukázkové události mají hodnotu `C1` a odpovídají kritériím filtru.
+- Tři ukázkové události jsou uvedeny v rozmezí 1 – minuty, hodnota `T14:50` . 
+- Všechny tři mají stejnou `deviceId` hodnotu `978648` .
+- Hodnoty metrik CPU se v každé události, v `98` `95` `80` uvedeném pořadí liší. Pouze první dvě ukázkové události překračují pravidlo upozornění procesoru, které je v pravidle navázáno.
+- Pole includeDim v pravidle výstrahy bylo číslo klíče 2. Odpovídající pole klíče 2 v vzorových událostech je pojmenováno `NodeName` . Tři ukázkové události mají hodnoty `N024` , `N024` a `N014` . Ve výstupu se zobrazí jenom uzel `N024` , který je jediná data, která odpovídají kritériím výstrahy pro vysoký procesor. `N014`nesplňuje maximální prahovou hodnotu procesoru.
+- Pravidlo výstrahy je konfigurováno pouze s `filter` klíčem číslo 2, který odpovídá `cluster` poli v vzorových událostech. Tři ukázkové události mají hodnotu `C1` a odpovídají kritériím filtru.
 
 ```json
 {
@@ -282,7 +282,7 @@ Tato ukázková data JSON představují vstupní data **metrik** , která se pou
 ```
 
 ## <a name="example-output"></a>Příklad výstupu
-V tomto příkladu jsou výstupní data JSON, která vygenerovala jednu událost výstrahy na základě pravidla prahové hodnoty CPU definované v referenčních datech. Výstupní událost obsahuje název výstrahy a také agregované (průměr, minimum, maximum) uvažovaného pole. Výstupní data události obsahují hodnotu `NodeName` `N024` klíče pole číslo 2 z důvodu konfigurace pravidla. (Kód JSON byl změněn tak, aby zobrazoval konce řádků pro čitelnost.)
+V tomto příkladu jsou výstupní data JSON, která vygenerovala jednu událost výstrahy na základě pravidla prahové hodnoty CPU definované v referenčních datech. Výstupní událost obsahuje název výstrahy a také agregované (průměr, minimum, maximum) uvažovaného pole. Výstupní data události obsahují hodnotu klíče pole číslo 2 `NodeName` `N024` z důvodu konfigurace pravidla. (Kód JSON byl změněn tak, aby zobrazoval konce řádků pro čitelnost.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",
