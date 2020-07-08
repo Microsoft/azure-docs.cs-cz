@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803378"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy ve službě Azure Kubernetes (AKS)
@@ -18,11 +17,11 @@ Ve výchozím nastavení je odchozí IP adresa z clusteru Azure Kubernetes Servi
 
 V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP adresu pro použití s odchozími přenosy v clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="egress-traffic-overview"></a>Přehled odchozího provozu
 
@@ -32,7 +31,7 @@ Jakmile se vytvoří služba Kubernetes typu `LoadBalancer` , přidají se uzly 
 
 ## <a name="create-a-static-public-ip"></a>Vytvoření statické veřejné IP adresy
 
-Název skupiny prostředků získáte pomocí příkazu [AZ AKS show][az-aks-show] a přidejte parametr `--query nodeResourceGroup` dotazu. Následující příklad načte skupinu prostředků uzlu pro název clusteru AKS *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
+Název skupiny prostředků získáte pomocí příkazu [AZ AKS show][az-aks-show] a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad načte skupinu prostředků uzlu pro název clusteru AKS *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -73,7 +72,7 @@ $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 ## <a name="create-a-service-with-the-static-ip"></a>Vytvoření služby se statickou IP adresou
 
-Chcete-li vytvořit službu se statickou veřejnou IP adresou, přidejte do `loadBalancerIP` manifestu YAML vlastnost a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `egress-service.yaml` a zkopírujte ho na následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku.
+Chcete-li vytvořit službu se statickou veřejnou IP adresou, přidejte do `loadBalancerIP` MANIFESTU YAML vlastnost a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `egress-service.yaml` a zkopírujte ho na následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku.
 
 ```yaml
 apiVersion: v1
@@ -87,7 +86,7 @@ spec:
   - port: 80
 ```
 
-Pomocí `kubectl apply` příkazu vytvořte službu a nasazení.
+Pomocí příkazu vytvořte službu a nasazení `kubectl apply` .
 
 ```console
 kubectl apply -f egress-service.yaml
@@ -97,7 +96,7 @@ Tato služba konfiguruje novou front-end IP adresu na Azure Load Balancer. Pokud
 
 ## <a name="verify-egress-address"></a>Ověřit výstupní adresu
 
-Pokud chcete ověřit, že se používá statická veřejná IP adresa, můžete použít službu vyhledávání DNS, jako je například `checkip.dyndns.org`.
+Pokud chcete ověřit, že se používá statická veřejná IP adresa, můžete použít službu vyhledávání DNS, jako je například `checkip.dyndns.org` .
 
 Začněte a připojte se k základnímu *Debian* pod:
 
@@ -105,7 +104,7 @@ Začněte a připojte se k základnímu *Debian* pod:
 kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 ```
 
-Chcete-li získat přístup k webu z kontejneru, použijte `apt-get` příkaz pro `curl` instalaci do kontejneru.
+Chcete-li získat přístup k webu z kontejneru, použijte příkaz `apt-get` pro instalaci `curl` do kontejneru.
 
 ```console
 apt-get update && apt-get install curl -y

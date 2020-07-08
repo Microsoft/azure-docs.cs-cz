@@ -6,20 +6,19 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680021"
 ---
 # <a name="texconv---texture-conversion-tool"></a>Nástroj pro převod textury TexConv
 
 TexConv je nástroj příkazového řádku pro zpracování textur z typických vstupních formátů, jako jsou PNG, TGA, JPEG a DDS, do optimalizovaných formátů pro spotřebu za běhu.
-I když je nejběžnějším scénářem převod jednoho vstupního souboru `A.xxx` do optimalizovaného formátu `B.yyy`, nástroj má mnoho dalších možností pro pokročilé použití.
+I když je nejběžnějším scénářem převod jednoho vstupního souboru `A.xxx` do optimalizovaného formátu `B.yyy` , nástroj má mnoho dalších možností pro pokročilé použití.
 
 ## <a name="command-line-help"></a>Help příkazového řádku
 
-Když spustíte TexConv. exe s `--help` parametrem, zobrazí se seznam všech dostupných možností. TexConv také při spuštění vytiskne použité možnosti, které vám pomohou pochopit, co dělá. Podrobnosti najdete v tomto výstupu.
+Spuštění TexConv.exe s `--help` parametrem zobrazí seznam všech dostupných možností. TexConv také při spuštění vytiskne použité možnosti, které vám pomohou pochopit, co dělá. Podrobnosti najdete v tomto výstupu.
 
 ## <a name="general-usage"></a>Obecné použití
 
@@ -37,13 +36,13 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="multiple-input-files"></a>Více vstupních souborů
 
-Chcete-li sestavit výstup z více vstupních souborů, zadejte každý vstupní soubor pomocí `-in` možnosti s rostoucím číslem:
+Chcete-li sestavit výstup z více vstupních souborů, zadejte každý vstupní soubor pomocí `-in` Možnosti s rostoucím číslem:
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-Při sestavování cubemap z 2D textury může `-right`jeden použít také, `-left`, `-top` `-bottom`,, `-front`, `-back` nebo `-px`, `-nx`, `-py`, `-ny`, `-pz`, `-nz`.
+Při sestavování cubemap z 2D textury může jeden použít také,,,, `-right` `-left` `-top` `-bottom` `-front` , `-back` nebo `-px` , `-nx` , `-py` , `-ny` , `-pz` , `-nz` .
 
 Aby bylo možné tyto vstupy namapovat do výstupního souboru, je třeba provést správné mapování kanálu.
 
@@ -67,7 +66,7 @@ Určování mapování pro každý kanál samostatně poskytuje největší flex
 
 K dispozici jsou následující možnosti mapování kanálů:
 
-- `-r`, `-g`, `-b`, `-a` : Tyto určují přiřazení jednoho kanálu.
+- `-r`, `-g` , `-b` , `-a` : Tyto určují přiřazení jednoho kanálu.
 - `-rg`: Zadejte přiřazení červeného a zeleného kanálu.
 - `-rgb`: Zadejte červené, zelené a modré přiřazení kanálu.
 - `-rgba`: Určuje všechna čtyři přiřazení kanálu.
@@ -89,7 +88,7 @@ Jedním z nich může být také vyplňování kanálů buď černou, nebo bílo
 
 ## <a name="common-options"></a>Společné možnosti
 
-Nejzajímavější možnosti jsou uvedeny níže. Další možnosti jsou uvedeny v `TexConv --help`.
+Nejzajímavější možnosti jsou uvedeny níže. Další možnosti jsou uvedeny v `TexConv --help` .
 
 ### <a name="output-type"></a>Typ výstupu
 
@@ -111,7 +110,7 @@ Ve výchozím nastavení TexConv generuje mipmapy, když ho podporuje formát v�
 
 ### <a name="usage-srgb--gamma-correction"></a>Použití (korekce sRGB/Gamma)
 
-`-usage` Možnost určuje účel výstupu, a proto oznamuje TexConv, zda má být pro vstupní a výstupní soubory použita korekce gama. Použití má vliv pouze na kanály RGB. Kanál alfa se vždycky považuje za "lineární" hodnoty. Pokud není určeno použití, pokusí se režim auto zjistit využití z formátu a názvu první vstupní image. Například výstupní formáty Single a Dual Channel jsou vždy lineární. Podívejte se na výstup a zjistěte, jaké rozhodnutí TexConv.
+`-usage`Možnost určuje účel výstupu, a proto oznamuje TexConv, zda má být pro vstupní a výstupní soubory použita korekce gama. Použití má vliv pouze na kanály RGB. Kanál alfa se vždycky považuje za "lineární" hodnoty. Pokud není určeno použití, pokusí se režim auto zjistit využití z formátu a názvu první vstupní image. Například výstupní formáty Single a Dual Channel jsou vždy lineární. Podívejte se na výstup a zjistěte, jaké rozhodnutí TexConv.
 
 - `-usage Linear`: Výstupní obrázek obsahuje hodnoty, které nepředstavuje barvy. To je obvykle případ pro kovové a hrubou texturu a také pro všechny druhy masek.
 

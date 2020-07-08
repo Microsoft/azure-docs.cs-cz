@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804550"
 ---
 # <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
@@ -29,7 +28,7 @@ Můžete použít Heat mapy v mnoha různých scénářích, mezi které patří
 - **GPS Trace**: zahrnuje rychlost jako mapu s váženou výškou, kde je intenzita jednotlivých datových bodů založena na rychlosti. Tato funkce například poskytuje způsob, jak zjistit, kde bylo vozidlo urychleno.
 
 > [!TIP]
-> Vrstvy Heat mapy ve výchozím nastavení vykreslují souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu, `filter` nastavte vlastnost vrstvy na `['==', ['geometry-type'], 'Point']`. Pokud chcete zahrnout i funkce systému MultiPoint, nastavte `filter` vlastnost vrstvy na. `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`
+> Vrstvy Heat mapy ve výchozím nastavení vykreslují souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu, nastavte `filter` vlastnost vrstvy na `['==', ['geometry-type'], 'Point']` . Pokud chcete zahrnout i funkce systému MultiPoint, nastavte `filter` vlastnost vrstvy na `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` .
 
 <br/>
 
@@ -60,7 +59,7 @@ Zde je ukázka kompletního běžícího kódu předchozího kódu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Jednoduchá vrstva Heat mapy' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>vrstvu jednoduchá Heat mapa</a> pera podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Jednoduchá vrstva Heat mapy' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>vrstvu jednoduchá Heat mapa</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>Přizpůsobení vrstvy Heat mapy
@@ -76,20 +75,20 @@ Předchozí příklad upravil Heat mapu nastavením možnosti poloměr a krytí.
 
   | Výraz barvy interpolace | Výraz se zvýrazněnou barvou | 
   |--------------------------------|--------------------------|
-  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' interpolovat ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' lineární '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmapu-hustota\]',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "transparentní",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "fialová",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, ' #00c3ff '<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Step ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmapu-hustota\]',<br/>&nbsp;&nbsp;&nbsp;&nbsp;' transparentní ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' námořnická modrá ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, zelená,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "žlutá",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, Red<br/>\] |   
+  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' interpolovat ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' lineární ' \] ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmapu-hustota ' \] ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "transparentní",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "fialová",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, ' #00c3ff '<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Step ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmapu-hustota ' \] ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;' transparentní ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' námořnická modrá ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, zelená,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "žlutá",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, Red<br/>\] |   
 
 - `opacity`: Určuje, jak je vrstva Heat mapy neprůhledná nebo průhledná.
 - `intensity`: Aplikuje násobitel na váhu každého datového bodu pro zvýšení celkové intenzity heatmapu. Způsobuje rozdíl v hmotnosti datových bodů, což usnadňuje vizualizaci.
 - `weight`: Ve výchozím nastavení mají všechny datové body váhu 1 a mají stejnou váhu. Možnost váhy funguje jako násobitel a můžete ji nastavit jako číslo nebo výraz. Pokud je číslo nastavené jako váha, je rovnocenným umístěním jednotlivých datových bodů na mapě dvakrát. Pokud je například váha 2, hustota se zdvojnásobí. Nastavení možnosti váhy na číslo vykreslí Heat mapu podobným způsobem, jak použít možnost intenzita. 
 
   Pokud však použijete výraz, může být váha každého datového bodu založena na vlastnostech jednotlivých datových bodů. Předpokládejme například, že každý datový bod představuje objekt zemětřesení. Hodnota velikosti byla důležitou metrikou pro každý datový bod zemětřesení. K zemětřesení dochází po celou dobu, ale většina má nízkou velikost a nevšimla se. Pomocí hodnoty velikost ve výrazu přiřaďte váhu každému datovému bodu. Když použijete hodnotu velikost pro přiřazení váhy, získáte lepší reprezentaci významnosti zemětřesení v rámci Heat mapy.
-- `source`a `source-layer`: umožňují aktualizovat zdroj dat.
+- `source`a `source-layer` : umožňují aktualizovat zdroj dat.
 
 Zde je nástroj pro otestování různých možností vrstvy Heat mapy.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti vrstvy tepelné mapy' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Možnosti vrstvy Heat mapy</a> pera podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy tepelné mapy' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Možnosti vrstvy Heat mapy</a> pera podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>Konzistentní Heat mapa s přiblížením
@@ -98,12 +97,12 @@ Ve výchozím nastavení mají poloměry datových bodů vykreslených v vrstvě
 
 Použijte `zoom` výraz pro horizontální navýšení kapacity poloměru pro každou úroveň přiblížení, takže každý datový bod pokrývá stejnou fyzickou oblast mapy. Tento výraz vytvoří vrstvu Heat mapy, která vypadá spolehlivě a je konzistentní. Každá úroveň přiblížení mapy má dvakrát a vodorovně tolik pixelů jako předchozí úroveň přiblížení. 
 
-Škálování poloměru tak, aby dvojnásobek každé úrovně přiblížení vytvoří Heat mapu, která vypadá konzistentně na všech úrovních přiblížení. Chcete-li použít toto škálování `zoom` , použijte se výrazem základní 2 `exponential interpolation` s poloměrem, který je nastavený pro minimální úroveň přiblížení, a s poloměrem na škálované poloměr pro `2 * Math.pow(2, minZoom - maxZoom)` maximální úroveň přiblížení, jak je znázorněno v následující ukázce. Přiblížením mapy zjistíte, jak se Heat mapa škáluje s úrovní přiblížení.
+Škálování poloměru tak, aby dvojnásobek každé úrovně přiblížení vytvoří Heat mapu, která vypadá konzistentně na všech úrovních přiblížení. Chcete-li použít toto škálování, použijte `zoom` se `exponential interpolation` výrazem základní 2 s poloměrem, který je nastavený pro minimální úroveň přiblížení, a s poloměrem na škálované poloměr pro maximální úroveň přiblížení, jak je `2 * Math.pow(2, minZoom - maxZoom)` znázorněno v následující ukázce. Přiblížením mapy zjistíte, jak se Heat mapa škáluje s úrovní přiblížení.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Konzistentní Heat mapa s přiblížením" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) s Azure Maps použitím <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>lupy s přiblížením na vyměnitelné Heat mapy</a> na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na CodePen () s Azure Maps použitím <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>lupy s přiblížením na vyměnitelné Heat mapy</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]

@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803565"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role a Azure Active Directory identit ve službě Azure Kubernetes
@@ -18,7 +17,7 @@ Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ov
 
 Tento článek popisuje, jak pomocí členství ve skupině Azure AD řídit přístup k oborům názvů a prostředkům clusteru pomocí Kubernetes RBAC v clusteru AKS. Ukázkové skupiny a uživatelé se vytvářejí ve službě Azure AD a pak se v clusteru AKS vytvoří role a RoleBindings, které jim udělí příslušná oprávnění k vytváření a zobrazování prostředků.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte povolený existující cluster AKS s integrací služby Azure AD. Pokud potřebujete cluster AKS, přečtěte si téma věnované [integraci Azure Active Directory s AKS][azure-ad-aks-cli].
 
@@ -60,7 +59,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Pokud se zobrazí chyba `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.`, třeba, počkejte několik sekund, než se ID objektu skupiny Azure AD rozšíří přes adresář, a potom zkuste `az role assignment create` příkaz zopakovat.
+> Pokud se zobrazí chyba `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.` , třeba, počkejte několik sekund, než se ID objektu skupiny Azure AD rozšíří přes adresář, a potom zkuste `az role assignment create` příkaz zopakovat.
 
 Vytvořte druhou příklad skupiny, který pro SREs s názvem *opssre*:
 
@@ -83,7 +82,7 @@ Pomocí dvou ukázkových skupin vytvořených ve službě Azure AD pro naše v�
 
 Vytvořte první uživatelský účet ve službě Azure AD pomocí příkazu [AZ AD User Create][az-ad-user-create] .
 
-Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS dev* a hlavním názvem uživatele (UPN) `aksdev@contoso.com`. Aktualizujte hlavní název uživatele tak, aby zahrnoval ověřenou doménu pro vašeho tenanta Azure AD (nahraďte *contoso.com* vlastní doménou) a zadejte `--password` vlastní zabezpečené přihlašovací údaje:
+Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS dev* a hlavním názvem uživatele (UPN) `aksdev@contoso.com` . Aktualizujte hlavní název uživatele tak, aby zahrnoval ověřenou doménu pro vašeho tenanta Azure AD (nahraďte *contoso.com* vlastní doménou) a zadejte vlastní zabezpečené `--password` přihlašovací údaje:
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
@@ -99,7 +98,7 @@ Nyní přidejte uživatele do skupiny *appdev* vytvořené v předchozí části
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-Vytvořte druhý uživatelský účet. Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS SRE* a hlavním názvem uživatele (UPN) `akssre@contoso.com`. Znovu aktualizujte hlavní název uživatele tak, aby zahrnoval ověřenou doménu pro vašeho tenanta Azure AD (nahraďte *contoso.com* vlastní doménou) a zadejte vlastní `--password` zabezpečené přihlašovací údaje:
+Vytvořte druhý uživatelský účet. Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS SRE* a hlavním názvem uživatele (UPN) `akssre@contoso.com` . Znovu aktualizujte hlavní název uživatele tak, aby zahrnoval ověřenou doménu pro vašeho tenanta Azure AD (nahraďte *contoso.com* vlastní doménou) a zadejte vlastní zabezpečené `--password` přihlašovací údaje:
 
 ```azurecli-interactive
 # Create a user for the SRE role
@@ -296,7 +295,7 @@ nginx-dev   1/1     Running   0          4m
 
 ### <a name="create-and-view-cluster-resources-outside-of-the-assigned-namespace"></a>Vytváření a zobrazování prostředků clusteru mimo přiřazený obor názvů
 
-Nyní se pokuste zobrazit lusky mimo obor názvů pro *vývoj* . Znovu použijte příkaz [kubectl získat lusky][kubectl-get] , tentokrát se podívejte `--all-namespaces` na následující:
+Nyní se pokuste zobrazit lusky mimo obor názvů pro *vývoj* . Znovu použijte příkaz [kubectl získat lusky][kubectl-get] , tentokrát se podívejte na `--all-namespaces` následující:
 
 ```console
 kubectl get pods --all-namespaces
@@ -328,7 +327,7 @@ Obnovte kontext *kubeconfig* pomocí příkazu [AZ AKS Get-Credentials][az-aks-g
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-Zkuste naplánovat a zobrazit lusky v přiřazeném oboru názvů *SRE* . Po zobrazení výzvy se přihlaste s `opssre@contoso.com` vlastními přihlašovacími údaji vytvořenými na začátku článku:
+Zkuste naplánovat a zobrazit lusky v přiřazeném oboru názvů *SRE* . Po zobrazení výzvy se přihlaste s vlastními `opssre@contoso.com` přihlašovacími údaji vytvořenými na začátku článku:
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre

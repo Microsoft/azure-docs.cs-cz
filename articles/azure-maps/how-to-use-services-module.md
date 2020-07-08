@@ -9,15 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: 6e9d1f35d021c3381f9c2887dfb1c150bb720871
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804652"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Použití modulu služby Azure Maps Services
 
-Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná knihovna, která usnadňuje používání služby Azure Maps REST v aplikacích web nebo Node. js pomocí JavaScriptu nebo TypeScript.
+Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná knihovna usnadňující použití Azure Maps služby REST ve webových nebo Node.js aplikacích pomocí JavaScriptu nebo TypeScript.
 
 ## <a name="use-the-services-module-in-a-webpage"></a>Použití modulu služby na webové stránce
 
@@ -160,7 +159,7 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Použití modulu služby" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>pomocí modulu služby</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>pomocí modulu služby</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
@@ -183,7 +182,7 @@ Při použití modulu služeb musí být při vytváření instance koncového b
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL `atlas.azure.us`na. Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na. `https://atlas.azure.us/search/`
+Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL na `atlas.azure.us` . Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/` .
 
 ## <a name="next-steps"></a>Další kroky
 

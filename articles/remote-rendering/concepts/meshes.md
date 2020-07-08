@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: b800272a538243d39a89e4eed64bc5cbc2d53ad8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681763"
 ---
 # <a name="meshes"></a>Sítě
@@ -20,7 +19,7 @@ Sítě jsou neměnný [sdílený prostředek](../concepts/lifetime.md), který l
 
 ### <a name="mesh-resource-properties"></a>Vlastnosti prostředku sítě
 
-Vlastnosti `Mesh` třídy jsou:
+`Mesh`Vlastnosti třídy jsou:
 
 * **Materiály:** Pole materiálů. Každý materiál se používá v různých podsítích. Více položek v poli může odkazovat na stejný [materiál](materials.md). Tato data nelze upravovat za běhu.
 
@@ -28,7 +27,7 @@ Vlastnosti `Mesh` třídy jsou:
 
 ## <a name="meshcomponent"></a>MeshComponent
 
-`MeshComponent` Třída se používá k umístění instance objektu sítě. Každý MeshComponent odkazuje na jednu síť. Může potlačit, které materiály se použijí pro vykreslení každé podsítě.
+`MeshComponent`Třída se používá k umístění instance objektu sítě. Každý MeshComponent odkazuje na jednu síť. Může potlačit, které materiály se použijí pro vykreslení každé podsítě.
 
 ### <a name="meshcomponent-properties"></a>Vlastnosti MeshComponent
 

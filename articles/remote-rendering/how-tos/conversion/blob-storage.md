@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681646"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Použití služby Azure Blob Storage pro převod modelů
@@ -27,7 +26,7 @@ Služba [převodu modelů](model-conversion.md) vyžaduje přístup k úložišt
 
 Vytváření účtů úložiště a kontejnerů objektů BLOB se dá udělat jedním z následujících nástrojů:
 
-- [portál Azure](https://portal.azure.com)
+- [Azure Portal](https://portal.azure.com)
 - [AZ Command line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - Sady SDK (C#, Python...)
@@ -57,7 +56,7 @@ Identifikátor URI SAS může být vygenerován pomocí jednoho z těchto:
   - Klikněte pravým tlačítkem na kontejner získat sdílený přístupový podpis (číst, vypsat přístup pro vstupní kontejner, oprávnění k zápisu pro kontejner výstupu).
 - Sady SDK (C#, Python...)
 
-Příklad použití sdílených přístupových podpisů v převodu assetu se zobrazuje v části Conversion. ps1 [ukázkových skriptů PowerShellu](../../samples/powershell-example-scripts.md#script-conversionps1).
+Příklad použití sdílených přístupových podpisů v převodu assetu se zobrazuje v Conversion.ps1 [ukázkových skriptech PowerShellu](../../samples/powershell-example-scripts.md#script-conversionps1).
 
 ## <a name="upload-an-input-model"></a>Nahrát vstupní model
 
@@ -70,7 +69,7 @@ Chcete-li začít s převodem modelu, je nutné jej nahrát pomocí jedné z ná
 - [Používání sady SDK pro úložiště (Python, C#...)](https://docs.microsoft.com/azure/storage/)
 - [Použití rozhraní REST API pro Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-Příklad, jak nahrát data pro převod, odkazuje na převod. ps1 [ukázkových skriptů PowerShellu](../../samples/powershell-example-scripts.md#script-conversionps1).
+Příklad, jak nahrát data pro převod, najdete v tématu Conversion.ps1 [ukázkových skriptů PowerShellu](../../samples/powershell-example-scripts.md#script-conversionps1).
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>Získat identifikátor URI SAS pro převedený model
 

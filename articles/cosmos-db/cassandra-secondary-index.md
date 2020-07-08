@@ -8,10 +8,9 @@ ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
 ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80758024"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Sekundární indexování v Azure Cosmos DB rozhraní API Cassandra
@@ -51,7 +50,7 @@ insert into sampleks.t1(user_id,lastname) values (8, 'Theo');
 insert into sampleks.t1(user_id,lastname) values (9, 'jagan');
 ```
 
-Pokud se pokusíte spustit následující příkaz, dojde k chybě, která vás vyzve k použití `ALLOW FILTERING`: 
+Pokud se pokusíte spustit následující příkaz, dojde k chybě, která vás vyzve k použití `ALLOW FILTERING` : 
 
 ```shell
 select user_id, lastname from sampleks.t1 where lastname='nishu';
@@ -62,10 +61,10 @@ I když rozhraní API Cassandra podporuje filtrování, jak je uvedeno v předch
 ```shell
 CREATE INDEX ON sampleks.t1 (lastname);
 ```
-Po vytvoření indexu v poli "LastName" teď můžete úspěšně spustit předchozí dotaz. U rozhraní API Cassandra v Azure Cosmos DB není nutné zadávat název indexu. Použije se výchozí index s `tablename_columnname_idx` formátem. Například ` t1_lastname_idx` je název indexu pro předchozí tabulku.
+Po vytvoření indexu v poli "LastName" teď můžete úspěšně spustit předchozí dotaz. U rozhraní API Cassandra v Azure Cosmos DB není nutné zadávat název indexu. Použije se výchozí index s formátem `tablename_columnname_idx` . Například ` t1_lastname_idx` je název indexu pro předchozí tabulku.
 
 ## <a name="dropping-the-index"></a>Vyřazení indexu 
-Musíte znát, co má název indexu k vyřazení indexu. Spusťte `desc schema` příkaz, který získá popis tabulky. Výstup tohoto příkazu zahrnuje název indexu ve formátu `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)`. Pak můžete použít název indexu k vyřazení indexu, jak je znázorněno v následujícím příkladu:
+Musíte znát, co má název indexu k vyřazení indexu. Spusťte `desc schema` příkaz, který získá popis tabulky. Výstup tohoto příkazu zahrnuje název indexu ve formátu `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)` . Pak můžete použít název indexu k vyřazení indexu, jak je znázorněno v následujícím příkladu:
 
 ```shell
 drop index sampleks.t1_lastname_idx;

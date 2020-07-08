@@ -4,10 +4,9 @@ description: Naučte se používat Azure CLI k obnovení zálohovaných sdílen�
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757091"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Obnovení sdílených složek Azure pomocí Azure CLI
@@ -138,7 +137,7 @@ Zadejte následující parametry pro položky, které chcete obnovit:
 
 Pomocí rutiny [AZ Backup Restore-azurefiles](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) s režimem obnovení nastavenou na *originallocation* obnovte konkrétní soubory nebo složky do jejich původního umístění.
 
-Následující příklad obnoví soubor *RestoreTest. txt* v původním umístění: sdílená složka *azurefiles* .
+Následující příklad obnoví soubor *RestoreTest.txt* v původním umístění: sdílená složka *azurefiles* .
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
@@ -160,7 +159,7 @@ Chcete-li obnovit konkrétní soubory nebo složky do alternativního umístěn�
 * **--target-File-Share**: sdílená složka v rámci cílového účtu úložiště, do kterého se obnovil zálohovaný obsah.
 * **--target-Folder**: složka ve sdílené složce, do které se mají obnovit data. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnotu cílové složky jako prázdný řetězec.
 
-Následující příklad obnoví soubor *RestoreTest. txt* původně přítomný ve sdílené složce *azurefiles* do alternativního umístění: složka *restoredata* ve sdílené složce *azurefiles1* hostovaná v účtu úložiště *afaccount1* .
+Následující příklad obnoví *RestoreTest.txt* soubor původně přítomný ve sdílené složce *azurefiles* do alternativního umístění: složka *restoredata* ve sdílené složce *azurefiles1* hostovaná v účtu úložiště *afaccount1* .
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
@@ -178,7 +177,7 @@ Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba
 
 Chcete-li provést obnovení více položek, předejte hodnotu parametru **Source-File-Path** jako cestu **oddělenou mezerou** pro všechny soubory nebo složky, které chcete obnovit.
 
-V následujícím příkladu se obnoví soubor *Restore. txt* a *testování AFS. docx* v původním umístění.
+Následující příklad obnoví *Restore.txt* a *testování AFS Report.docx* soubory v původním umístění.
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table

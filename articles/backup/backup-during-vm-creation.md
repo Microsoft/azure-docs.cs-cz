@@ -4,10 +4,9 @@ description: Popisuje, jak povolit zálohování při vytváření virtuálního
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672813"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
@@ -50,12 +49,12 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup skupiny prostředků pro Virtual Machines
 
-Služba Backup vytvoří samostatnou skupinu prostředků (RG), která se liší od skupiny prostředků virtuálního počítače k uložení kolekce bodů obnovení (RPC). Vzdálené volání procedur slouží jako body rychlého obnovení spravovaných virtuálních počítačů. Výchozím formátem názvů pro skupinu prostředků vytvořenou službou zálohování je: `AzureBackupRG_<Geo>_<number>`. Například: *AzureBackupRG_northeurope_1*. Nyní můžete přizpůsobit název skupiny prostředků vytvořený pomocí Azure Backup.
+Služba Backup vytvoří samostatnou skupinu prostředků (RG), která se liší od skupiny prostředků virtuálního počítače k uložení kolekce bodů obnovení (RPC). Vzdálené volání procedur slouží jako body rychlého obnovení spravovaných virtuálních počítačů. Výchozím formátem názvů pro skupinu prostředků vytvořenou službou zálohování je: `AzureBackupRG_<Geo>_<number>` . Například: *AzureBackupRG_northeurope_1*. Nyní můžete přizpůsobit název skupiny prostředků vytvořený pomocí Azure Backup.
 
 Ukazuje na poznámku:
 
 1. Můžete buď použít výchozí název RG, nebo ho upravit podle požadavků vaší společnosti.
-2. Při vytváření zásady zálohování virtuálního počítače zadáváte vzor názvu RG jako vstup. Název RG by měl být v následujícím formátu: `<alpha-numeric string>* n <alpha-numeric string>`. ' n ' je nahrazen celým číslem (od 1) a slouží k horizontálnímu navýšení kapacity, pokud je první RG plný. Jedna RG může mít maximálně 600 vzdálených volání procedur (RPC).
+2. Při vytváření zásady zálohování virtuálního počítače zadáváte vzor názvu RG jako vstup. Název RG by měl být v následujícím formátu: `<alpha-numeric string>* n <alpha-numeric string>` . ' n ' je nahrazen celým číslem (od 1) a slouží k horizontálnímu navýšení kapacity, pokud je první RG plný. Jedna RG může mít maximálně 600 vzdálených volání procedur (RPC).
               ![Při vytváření zásad zvolit název](./media/backup-during-vm-creation/create-policy.png)
 3. Vzor by měl splňovat pravidla pojmenování RG a celková délka by neměla překročit maximální povolenou délku RG názvu.
     1. V názvech skupin prostředků jsou povolené jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Nemohou končit tečkou.

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80754396"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
@@ -75,8 +74,8 @@ Při plánování síťové infrastruktury clusteru avere vFXT postupujte podle 
   |----------|-----------|----------|
   | Skupina prostředků | Ano, je-li prázdné | Musí být prázdné|
   | Účet úložiště | **Ano** , pokud se po vytvoření clusteru připojí existující kontejner objektů BLOB <br/>  **Ne** při vytváření nového kontejneru objektů BLOB během vytváření clusteru | Existující kontejner objektů BLOB musí být prázdný. <br/> &nbsp; |
-  | Virtuální síť | Ano | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
-  | Podsíť | Ano | Nemůže obsahovat jiné prostředky. |
+  | Virtuální síť | Yes | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
+  | Podsíť | Yes | Nemůže obsahovat jiné prostředky. |
 
 ## <a name="ip-address-requirements"></a>Požadavky na IP adresu
 

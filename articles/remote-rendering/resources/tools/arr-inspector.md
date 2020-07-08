@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680073"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Kontrolní nástroj ArrInspector
@@ -20,20 +19,20 @@ ArrInspector je webový nástroj, který slouží ke kontrole spuštěné relace
 
 ## <a name="connecting-to-the-arrinspector"></a>Připojení k ArrInspector
 
-Jakmile obdržíte název hostitele (končícího `mixedreality.azure.com`) vašeho serveru ARR, připojte se pomocí [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector). Tato funkce vytvoří `StartArrInspector.html` na zařízení, na kterém je aplikace spuštěná. Pokud chcete spustit ArrInspector, otevřete tento soubor v počítači přes prohlížeč (Edge, Firefox nebo Chrome). Soubor je platný pouze po dobu 24 hodin.
+Jakmile obdržíte název hostitele (končícího `mixedreality.azure.com` ) vašeho serveru ARR, připojte se pomocí [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector). Tato funkce vytvoří `StartArrInspector.html` na zařízení, na kterém je aplikace spuštěná. Pokud chcete spustit ArrInspector, otevřete tento soubor v počítači přes prohlížeč (Edge, Firefox nebo Chrome). Soubor je platný pouze po dobu 24 hodin.
 
-Pokud aplikace, která volá `ConnectToArrInspectorAsync` , je už na počítači spuštěná:
+Pokud aplikace, která volá, `ConnectToArrInspectorAsync` je už na počítači spuštěná:
 
 * Pokud používáte integraci Unity, může se vám automaticky spustit.
-* V opačném případě najdete soubor ve *\\složkách uživatele localappdata\\[your_app]\\AC\\tempo*.
+* V opačném případě najdete soubor ve *složkách uživatele \\ LocalAppData \\ [your_app] \\ AC \\ tempo*.
 
 Pokud aplikace běží na HoloLens:
 
 1. Přístup k HoloLens pomocí [portálu zařízení s Windows](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
 1. Přejít do *systémového > Průzkumník souborů*.
-1. Přejděte do *\\složky uživatele localappdata\\[your_app]\\AC\\Temp*.
-1. Uložte *StartArrInspector. html* do počítače.
-1. Otevřete *StartArrInspector. html* a načtěte ArrInspector relace.
+1. Přejděte do *složky uživatele \\ LocalAppData \\ [your_app] \\ AC \\ TEMP*.
+1. Uložte *StartArrInspector.html* do počítače.
+1. Otevřete *StartArrInspector.html* a načtěte ArrInspector relace.
 
 ## <a name="the-performance-panel"></a>Panel výkonu
 
@@ -57,14 +56,14 @@ Svislá oblast je ve výchozím nastavení vypočítána na základě aktuálně
 
 Na panelu protokol se zobrazuje seznam zpráv protokolu generovaných na straně serveru. Při připojení se zobrazí až 200 předchozích zpráv protokolu a vytisknou se nové zprávy, když k nim dojde.
 
-Seznam můžete filtrovat podle typu `[Error/Warning/Info/Debug]` protokolu pomocí tlačítek v horní části.
+Seznam můžete filtrovat podle typu protokolu `[Error/Warning/Info/Debug]` pomocí tlačítek v horní části.
 ![Tlačítka filtru protokolu](./media/log-filter.png)
 
 ## <a name="the-timing-data-capture-panel"></a>Panel pro zachycení časových dat
 
 ![Zachycení dat časování](./media/timing-data-capture.png)
 
-Tento panel slouží k zaznamenání informací o časování ze serveru a jeho stažení. Soubor používá [formát JSON pro trasování Chrome](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit). Chcete-li zkontrolovat data, otevřete v adrese URL `Chrome://tracing` Chrome a přetáhněte stažený soubor na stránku. Data časování se průběžně shromažďují v kruhové paměti s pevnou velikostí. Po zapsání zaznamená zachytávání jenom informace o bezprostředním minulosti, což znamená několik sekund až pár minut.
+Tento panel slouží k zaznamenání informací o časování ze serveru a jeho stažení. Soubor používá [formát JSON pro trasování Chrome](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit). Chcete-li zkontrolovat data, otevřete v adrese URL Chrome `Chrome://tracing` a přetáhněte stažený soubor na stránku. Data časování se průběžně shromažďují v kruhové paměti s pevnou velikostí. Po zapsání zaznamená zachytávání jenom informace o bezprostředním minulosti, což znamená několik sekund až pár minut.
 
 ## <a name="the-scene-inspection-panel"></a>Panel pro kontrolu scény
 
@@ -113,7 +112,7 @@ Při opětovném povolení živé aktualizace se resetují všechny panely.
 
 Ve výchozím nastavení se nástroj připojí k serveru ARR, na kterém je spuštěný na stejném hostiteli, který obsluhuje ArrInspector. Můžete ji ale nakonfigurovat tak, aby zkontrolovala jiný server, za předpokladu, že je spuštěná instance ARR s otevřeným portem nástrojů.
 
-Provedete to tak, že získáte přístup k hlavní nabídce nalevo od záhlaví a vyberete *Konfigurace hostitele*. Klikněte na **Přidat nového hostitele**a zadejte název a název hostitele. Pro *název hostitele* použijte pouze název hostitele končící `.mixedreality.azure.com`na, Nezahrnovat `http://` ani port.
+Provedete to tak, že získáte přístup k hlavní nabídce nalevo od záhlaví a vyberete *Konfigurace hostitele*. Klikněte na **Přidat nového hostitele**a zadejte název a název hostitele. Pro *název hostitele* použijte pouze název hostitele končící na `.mixedreality.azure.com` , Nezahrnovat `http://` ani port.
 
 ![Konfigurace hostitele](./media/host-configuration.png)
 

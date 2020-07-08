@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
 ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803462"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku serveru NFS (Network File System) se systémem Linux pomocí služby Azure Kubernetes Service (AKS)
@@ -20,7 +19,7 @@ I když jsou soubory Azure možnosti, vytvoření serveru NFS na virtuálním po
 
 Tento článek vám ukáže, jak vytvořit server NFS na virtuálním počítači s Ubuntu. A také udělte vašim kontejnerům AKS přístup k tomuto sdílenému systému souborů.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
 Váš cluster AKS bude muset být živý ve stejných nebo partnerských virtuálních sítích jako server NFS. Cluster se musí vytvořit v existující virtuální síti, což může být stejná virtuální síť jako virtuální počítač.

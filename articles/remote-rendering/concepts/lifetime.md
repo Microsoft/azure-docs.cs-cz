@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681867"
 ---
 # <a name="object-and-resource-lifetime"></a>Životnost objektů a prostředků
@@ -32,7 +31,7 @@ Mnoho prostředků je neměnné, a to pro [sítě](meshes.md) a [textury](textur
 
 ### <a name="built-in-resources"></a>Integrované prostředky
 
-Vzdálené vykreslování Azure obsahuje některé integrované prostředky, které je možné načíst pomocí předpřipravenosti jejich příslušného identifikátoru v `builtin://` průběhu volání `AzureSession.Actions.LoadXYZAsync()`. Dostupné integrované prostředky jsou uvedeny v dokumentaci pro každou příslušnou funkci. Například [Kapitola nebe](../overview/features/sky.md) uvádí vestavěné textury nebe.
+Vzdálené vykreslování Azure obsahuje některé integrované prostředky, které je možné načíst pomocí předpřipravenosti jejich příslušného identifikátoru v `builtin://` průběhu volání `AzureSession.Actions.LoadXYZAsync()` . Dostupné integrované prostředky jsou uvedeny v dokumentaci pro každou příslušnou funkci. Například [Kapitola nebe](../overview/features/sky.md) uvádí vestavěné textury nebe.
 
 ## <a name="general-lifetime"></a>Obecná doba platnosti
 

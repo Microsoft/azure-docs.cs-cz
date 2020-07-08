@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681698"
 ---
 # <a name="rendering-modes"></a>Režimy vykreslování
@@ -38,7 +37,7 @@ V režimu **DepthBasedComposition** se každý procesor GPU vykreslí při rozli
 
 Každý samostatný grafický procesor používá MSAA k vyhlazení místního obsahu. Mezi hranami z různých procesorů GPU ale může docházet z vlastního aliasu. Tím se snižuje dopad postprocessing finální image, ale kvalita rozhraní MSAA je stále horší než v režimu **TileBasedComposition** .
 
-Artefakty rozhraní MSAA jsou znázorněné na následujícím obrázku ![: MSAA v DepthBasedComposition](./media/service-render-mode-balanced.png)
+Artefakty rozhraní MSAA jsou znázorněné na následujícím obrázku: ![ MSAA v DepthBasedComposition](./media/service-render-mode-balanced.png)
 
 Antialiasing funguje správně mezi Sculpture a zákulisí, protože obě části jsou vykresleny na stejném GPU. Na druhé straně hrana mezi zákulisí a stěnou zobrazuje některé aliasy, protože tyto dvě části se skládají z různých procesorů GPU.
 
@@ -50,7 +49,7 @@ Charakteristiky výkonu pro oba režimy se liší v závislosti na případu pou
 
 ## <a name="setting-the-render-mode"></a>Nastavení režimu vykreslování
 
-Režim vykreslování použitý na virtuálním počítači pro vzdálené vykreslování je určený `AzureSession.ConnectToRuntime` prostřednictvím `ConnectToRuntimeParams`.
+Režim vykreslování použitý na virtuálním počítači pro vzdálené vykreslování je určený `AzureSession.ConnectToRuntime` prostřednictvím `ConnectToRuntimeParams` .
 
 ```cs
 async void ExampleConnect(AzureSession session)

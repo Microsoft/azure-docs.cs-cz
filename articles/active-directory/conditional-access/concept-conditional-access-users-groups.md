@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80755251"
 ---
 # <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: uživatelé a skupiny
@@ -36,7 +35,7 @@ Při vytváření zásad podmíněného přístupu jsou k dispozici následujíc
    - Všichni uživatelé, kteří existují v adresáři včetně hostů v B2B.
 - Výběr uživatelů a skupin
    - Všichni uživatelé typu Host a externí uživatelé
-      - Tento výběr zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s `user type` atributem nastaveným `guest`na. Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
+      - Tento výběr zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s `user type` atributem nastaveným na `guest` . Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
    - Role adresáře
       - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce.
    - Uživatelé a skupiny
@@ -52,7 +51,7 @@ Pokud organizace zahrnují a vylučují uživatele nebo skupinu, uživatel nebo 
 Při vytváření zásad podmíněného přístupu je k dispozici možnost vyloučit následující možnosti.
 
 - Všichni uživatelé typu Host a externí uživatelé
-   - Tento výběr zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s `user type` atributem nastaveným `guest`na. Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
+   - Tento výběr zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s `user type` atributem nastaveným na `guest` . Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
 - Role adresáře
    - Umožňuje správcům vybrat konkrétní role adresáře Azure AD, které se používají k určení přiřazení. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce.
 - Uživatelé a skupiny

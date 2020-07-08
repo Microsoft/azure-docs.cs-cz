@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
 ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757257"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
@@ -40,7 +39,7 @@ Pokud chcete nakonfigurovat monitorování koncového bodu, musíte v profilu Tr
 
 ## <a name="how-endpoint-monitoring-works"></a>Jak funguje monitorování koncových bodů
 
-Pokud je monitorovací protokol nastavený jako HTTP nebo HTTPS, agent Traffic Managerho zjišťování vytvoří požadavek GET na koncový bod pomocí zadaného protokolu, portu a relativní cesty. Pokud se vrátí odpověď 200-OK nebo kterákoli z odpovědí nakonfigurovaných v **rozsahu očekávaného stavového kódu \***, pak je tento koncový bod považován za dobrý. Pokud je odpověď jinou hodnotou, nebo pokud se v zadaném časovém limitu nepřijme žádná odpověď, pak se agent Traffic Manager pro zjišťování pokusí znovu pokusit v závislosti na nastavení Tolerováného počtu selhání (Pokud je toto nastavení 0), pokusí se znovu pokusy o vyhodnocování. Pokud je počet po sobě jdoucích selhání vyšší než nastavení tolerovat počet selhání, pak je tento koncový bod označený jako není v pořádku. 
+Pokud je monitorovací protokol nastavený jako HTTP nebo HTTPS, agent Traffic Managerho zjišťování vytvoří požadavek GET na koncový bod pomocí zadaného protokolu, portu a relativní cesty. Pokud se vrátí odpověď 200-OK nebo kterákoli z odpovědí nakonfigurovaných v ** \* rozsahu očekávaného stavového kódu**, pak je tento koncový bod považován za dobrý. Pokud je odpověď jinou hodnotou, nebo pokud se v zadaném časovém limitu nepřijme žádná odpověď, pak se agent Traffic Manager pro zjišťování pokusí znovu pokusit v závislosti na nastavení Tolerováného počtu selhání (Pokud je toto nastavení 0), pokusí se znovu pokusy o vyhodnocování. Pokud je počet po sobě jdoucích selhání vyšší než nastavení tolerovat počet selhání, pak je tento koncový bod označený jako není v pořádku. 
 
 Pokud je monitorovací protokol TCP, agent Traffic Manager probingu inicializuje požadavek na připojení TCP pomocí zadaného portu. Pokud koncový bod odpoví na požadavek s odezvou na navázání připojení, bude tato kontrolu stavu označena jako úspěšná a Agent Traffic Manager agenta pro zjišťování obnoví připojení TCP. Pokud je odpověď jinou hodnotou nebo pokud se nepřijme žádná odpověď v rámci zadaného časového limitu, agent Traffic Managerho zjišťování se pokusí znovu pokusit o nastavení Tolerovatho počtu chyb, pokud je toto nastavení 0). Pokud je počet po sobě jdoucích selhání vyšší než nastavení tolerovat počet selhání, pak je tento koncový bod označen jako není v pořádku.
 
@@ -87,7 +86,7 @@ Stav monitorování profilu je kombinace nakonfigurovaného stavu profilu a hodn
 
 | Stav profilu (jak je nakonfigurováno) | Stav monitorování koncového bodu | Stav monitorování profilu | Poznámky |
 | --- | --- | --- | --- |
-| Zakázáno |&lt;libovolný&gt; nebo profil bez definovaných koncových bodů. |Zakázáno |Profil byl zakázán. |
+| Zakázáno |&lt;libovolný &gt; nebo profil bez definovaných koncových bodů. |Zakázáno |Profil byl zakázán. |
 | Povoleno |Stav nejméně jednoho koncového bodu je degradován. |Snížený výkon |Zkontrolujte hodnoty stavu jednotlivých koncových bodů a určete, které koncové body vyžadují další pozornost. |
 | Povoleno |Stav aspoň jednoho koncového bodu je online. Žádné koncové body nemají stav snížené úrovně. |Online |Služba přijímá provoz. Nevyžaduje se žádná další akce. |
 | Povoleno |Stav nejméně jednoho koncového bodu je CheckingEndpoint. Žádné koncové body nejsou v režimu online nebo snížený stav. |CheckingEndpoints |K tomuto stavu přechodu dojde, pokud je profil vytvořen nebo povolen. Stav koncového bodu je kontrolován při prvním spuštění. |

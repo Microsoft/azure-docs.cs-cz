@@ -6,17 +6,16 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681243"
 ---
 # <a name="use-the-session-management-rest-api"></a>Použití rozhraní REST API pro správu relací
 
 Pokud chcete používat funkci vzdáleného vykreslování Azure, musíte vytvořit *relaci*. Každá relace odpovídá virtuálnímu počítači, který se přiřazuje v Azure, a čeká na připojení klientského zařízení. Když se zařízení připojí, virtuální počítač vykreslí požadovaná data a zachová výsledek jako datový proud videa. Během vytváření relace jste zvolili druh serveru, na kterém chcete běžet, což určuje ceny. Jakmile již relace není potřebná, měla by být zastavena. Pokud se nezastaví ručně, automaticky se ukončí, až vyprší *doba zapůjčení* relace.
 
-Poskytujeme skript prostředí PowerShell v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering) ve složce *Scripts* s názvem *RenderingSession. ps1*, která demonstruje použití naší služby. Skript a jeho konfigurace jsou popsané tady: [Příklady skriptů PowerShellu](../samples/powershell-example-scripts.md)
+Ve složce *Scripts* poskytujeme skript prostředí PowerShell *RenderingSession.ps1*, který ukazuje použití naší služby v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering) . Skript a jeho konfigurace jsou popsané tady: [Příklady skriptů PowerShellu](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > Příkazy PowerShellu uvedené na této stránce jsou určeny k tomu, aby je bylo možné doplnit. Pokud všechny skripty spouštíte v rámci stejného příkazového řádku PowerShellu, sestaví se na sebe navzájem.
@@ -46,7 +45,7 @@ $accountKey = "*******************************************="
 
 ## <a name="common-request-headers"></a>Běžné hlavičky požadavků
 
-* *Autorizační* hlavička musí mít hodnotu`Bearer TOKEN`, kde`TOKEN`je ověřovací token [vrácený službou tokenu zabezpečení](tokens.md).
+* *Autorizační* hlavička musí mít hodnotu `Bearer TOKEN` , kde `TOKEN` je ověřovací token [vrácený službou tokenu zabezpečení](tokens.md).
 
 ### <a name="example-script-request-a-token"></a>Příklad skriptu: vyžádání tokenu
 
@@ -77,7 +76,7 @@ Tento příkaz vytvoří relaci. Vrátí ID nové relace. Budete potřebovat ID 
 
 **Požadavků**
 
-| Kód stavu | Datová část JSON | Komentáře |
+| Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 202 | -sessionId: GUID | Úspěch |
 
@@ -134,7 +133,7 @@ Tento příkaz aktualizuje parametry relace. V současné době můžete pouze r
 
 **Požadavků**
 
-| Kód stavu | Datová část JSON | Komentáře |
+| Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 200 | | Úspěch |
 
@@ -170,7 +169,7 @@ Tento příkaz vrátí seznam aktivních relací.
 
 **Požadavků**
 
-| Kód stavu | Datová část JSON | Komentáře |
+| Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 200 | -Sessions: pole vlastností relace | Popis vlastností relace najdete v části získání vlastností relace. |
 
@@ -213,7 +212,7 @@ Tento příkaz vrátí informace o relaci, jako je název hostitele virtuálníh
 
 **Požadavků**
 
-| Kód stavu | Datová část JSON | Komentáře |
+| Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 200 | -Message: řetězec<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: String<br/>-sessionId: String<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: Enum<br/>-sessionStatus: Enum | vyčíslení výčtu sessionStatus {Start, Read, Stopped, Stopped, vypršela platnost, chyba}<br/>Pokud je stav "Error" nebo "vypršela", zpráva bude obsahovat další informace |
 
@@ -256,7 +255,7 @@ Tento příkaz zastaví relaci. Přidělený virtuální počítač se po uplynu
 
 **Požadavků**
 
-| Kód stavu | Datová část JSON | Komentáře |
+| Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 204 | | Úspěch |
 

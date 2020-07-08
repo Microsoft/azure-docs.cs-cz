@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681477"
 ---
 # <a name="override-materials-during-model-conversion"></a>Potlačení materiálů během převodu modelů
@@ -22,7 +21,7 @@ Když je model převeden pro použití ve vzdáleném vykreslování Azure, mů�
 ## <a name="the-override-file-used-during-conversion"></a>Soubor přepsání použitý při převodu
 
 Jednoduchým příkladem je řekněme, že krabicový model má jeden materiál s názvem default. Barva albedo musí být upravena pro použití v ARR.
-V takovém případě lze `box_materials_override.json` soubor vytvořit takto:
+V takovém případě `box_materials_override.json` lze soubor vytvořit takto:
 
 ```json
 [
@@ -38,7 +37,7 @@ V takovém případě lze `box_materials_override.json` soubor vytvořit takto:
 ]
 ```
 
-`box_materials_override.json` Soubor je umístěn ve vstupním kontejneru a přidá `ConversionSettings.json` se vedle `box.fbx`, který oznamuje převod, kde najít soubor přepsání (viz [konfigurace převodu modelu](configure-model-conversion.md)):
+`box_materials_override.json`Soubor je umístěn ve vstupním kontejneru a `ConversionSettings.json` přidá se vedle `box.fbx` , který oznamuje převod, kde najít soubor přepsání (viz [konfigurace převodu modelu](configure-model-conversion.md)):
 
 ```json
 {
@@ -52,7 +51,7 @@ Při převodu modelu se použijí nová nastavení.
 
 [Barevný materiálový](../../overview/features/color-materials.md) model popisuje nepřetržitě stínovaný povrch, který je nezávislý na osvětlení.
 To je užitečné pro prostředky vytvořené pomocí Photogrammetry algoritmů, například.
-V souborech přepsání materiálu může být materiál deklarovaný jako barevný materiál nastavením `unlit` na. `true`
+V souborech přepsání materiálu může být materiál deklarovaný jako barevný materiál nastavením `unlit` na `true` .
 
 ```json
 [
@@ -86,7 +85,7 @@ Princip je jednoduchý. Stačí přidat vlastnost s názvem `ignoreTextureMaps` 
 
 ## <a name="json-schema"></a>Schéma JSON
 
-Úplné schéma JSON pro soubory materiálů je uvedeno zde. S výjimkou `unlit` a `ignoreTextureMaps`jsou dostupné vlastnosti podmnožinou vlastností popsaných v oddílech v [materiálech](../../overview/features/pbr-materials.md) s [barevným materiálem](../../overview/features/color-materials.md) a modelu PBR.
+Úplné schéma JSON pro soubory materiálů je uvedeno zde. S výjimkou `unlit` a `ignoreTextureMaps` jsou dostupné vlastnosti podmnožinou vlastností popsaných v oddílech v [materiálech](../../overview/features/pbr-materials.md) s [barevným materiálem](../../overview/features/color-materials.md) a modelu PBR.
 
 ```json
 {
