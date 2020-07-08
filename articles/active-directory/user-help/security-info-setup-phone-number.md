@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 7500b6b146a627dcdebacd9d2e2c7c61bc43c105
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744453"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>Nastavení telefonního čísla jako metody ověřování
@@ -37,7 +37,7 @@ Metody bezpečnostních údajů se používají pro ověřování dvou faktorů 
 
 | Metoda | Použití |
 | ------ | -------- |
-| Aplikace Authenticator | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |

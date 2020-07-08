@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744438"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Nastavení bezpečnostních otázek jako metody ověřování
@@ -33,7 +33,7 @@ Metody bezpečnostních údajů se používají pro ověřování dvou faktorů 
 
 | Metoda | Použití |
 | ------ | -------- |
-| Aplikace Authenticator | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |

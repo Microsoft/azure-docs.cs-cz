@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414109"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorování v Azure Database for MySQL
@@ -22,7 +22,7 @@ Všechny metriky Azure mají četnost jednosměrných minut a každá metrika po
 ### <a name="list-of-metrics"></a>Seznam metrik
 Tyto metriky jsou k dispozici pro Azure Database for MySQL:
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
+|Metrika|Zobrazovaný název metriky|Jednotka|Description|
 |---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|

@@ -9,10 +9,10 @@ ms.author: jasondel
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc
 ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83727638"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Vytvoření privátního clusteru Azure Red Hat OpenShift 4
@@ -25,7 +25,7 @@ V tomto článku připravíte své prostředí, aby se vytvořily privátní clu
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 ### <a name="install-the-az-aro-extension"></a>Instalace rozšíření AZ ARO
 `az aro`Rozšíření umožňuje vytvořit, otevřít a odstranit clustery Azure Red Hat OpenShift přímo z příkazového řádku pomocí Azure CLI.
@@ -262,7 +262,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 >[!IMPORTANT]
 > Abyste se mohli připojit k privátnímu clusteru Azure Red Hat OpenShift, budete muset provést následující krok z hostitele, který je buď ve Virtual Network, který jste vytvořili, nebo v Virtual Network s [partnerským vztahem](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Virtual Network byl nasazen cluster.
 
-Přihlaste se k serveru rozhraní API OpenShift clusteru pomocí následujícího příkazu. Nahraďte ** \< kubeadmin hesla>** heslem, které jste právě načetli.
+Přihlaste se k serveru rozhraní API OpenShift clusteru pomocí následujícího příkazu. Nahraďte **\<kubeadmin password>** heslem, které jste právě načetli.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
