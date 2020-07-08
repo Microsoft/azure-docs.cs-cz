@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74451463"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Nasazení šablony ze služby Cloud Shell
 
 K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). Pokud chcete nasadit externí šablonu, zadejte identifikátor URI šablony přesně stejně jako u jakéhokoli externího nasazení. Pokud chcete nasadit místní šablonu, musíte nejdřív načíst šablonu do účtu úložiště pro vaši Cloud Shell. Tato část popisuje, jak načíst šablonu do účtu Cloud Shell a jak ji nasadit jako místní soubor. Pokud jste nepoužili Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](../articles/cloud-shell/overview.md) , kde najdete informace o jeho nastavení.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyberte vaši skupinu prostředků služby Cloud Shell. Vzor názvů je `cloud-shell-storage-<region>`.
 
@@ -41,7 +41,7 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
    ![Vybrat nový kontejner](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. Vyberte **nahrát**.
+1. Vyberte **Nahrát**.
 
    ![Nahrát objekt BLOB](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

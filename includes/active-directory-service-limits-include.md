@@ -9,10 +9,10 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
 ms.openlocfilehash: d906a3dd072770a05b818fd3ca8de359b8427728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80986723"
 ---
 Tady jsou omezení využití a další omezení služby Azure Active Directory (Azure AD).
@@ -26,7 +26,7 @@ Tady jsou omezení využití a další omezení služby Azure Active Directory (
 | Aplikace |Vlastníky jedné aplikace může být maximálně 100 uživatelů. |
 |Manifest aplikace |V manifestu aplikace lze přidat maximálně 1200 položek. |
 | Skupiny |<ul><li>Uživatel může v organizaci Azure AD vytvořit maximálně 250 skupin.</li><li>Organizace Azure AD může mít maximálně 5000 dynamických skupin.<li>Vlastníky jedné skupiny může být maximálně 100 uživatelů.</li><li>Libovolný počet prostředků Azure AD může být členem jedné skupiny.</li><li>Uživatel může být členem libovolného počtu skupin.</li><li>Počet členů ve skupině, které můžete synchronizovat z místní služby Active Directory do Azure Active Directory pomocí služby Azure AD Connect, je omezený na 50 000.</li><li>Vnořené skupiny v Azure AD se ve všech scénářích nepodporují.</li></ul><br/> V tomto okamžiku jsou podporovány následující scénáře s vnořenými skupinami.<ul><li> Jednu skupinu lze přidat jako člena jiné skupiny a můžete dosáhnout vnořování skupin.</li><li> Deklarace členství ve skupině (Pokud je aplikace nakonfigurovaná tak, aby přijímala deklarace členství ve skupině v tokenu, jsou zahrnuté vnořené skupiny, kterých je přihlášený uživatel členem.)</li><li>Podmíněný přístup (při určení oboru zásad podmíněného přístupu pro skupinu)</li><li>Omezení přístupu k samoobslužnému resetování hesla</li><li>Omezení, kteří uživatelé můžou provádět připojení k Azure AD a registraci zařízení</li></ul><br/>Následující scénáře nepodporují vnořené skupiny:<ul><li> Přiřazení role aplikace (přiřazování skupin k aplikaci se podporuje, ale skupiny vnořené v rámci přímo přiřazené skupiny nebudou mít přístup), a to jak pro přístup, tak pro zřizování.</li><li>Licencování na základě skupin (automatické přiřazení licence všem členům skupiny)</li><li>Skupiny sady Office 365.</li></ul> |
-| Proxy soubory aplikace | <ul><li>Maximálně 500 transakcí za sekundu na aplikaci proxy aplikace</li><li>Maximálně 750 transakcí za sekundu pro organizaci Azure AD</li></ul><br/>Transakce je definována jako jedna žádost HTTP a odpověď pro jedinečný prostředek. Když se omezí, klienti obdrží odpověď 429 (příliš mnoho požadavků). |
+| Proxy aplikací | <ul><li>Maximálně 500 transakcí za sekundu na aplikaci proxy aplikace</li><li>Maximálně 750 transakcí za sekundu pro organizaci Azure AD</li></ul><br/>Transakce je definována jako jedna žádost HTTP a odpověď pro jedinečný prostředek. Když se omezí, klienti obdrží odpověď 429 (příliš mnoho požadavků). |
 | Přístupový panel |<ul><li>Počet aplikací, které se zobrazí na přístupovém panelu pro jednoho uživatele, není nijak omezený. To platí pro uživatele s přiřazenými licencemi pro Azure AD Premium nebo Enterprise Mobility Suite.</li><li>Jednotliví uživatelé mohou na přístupovém panelu zobrazit maximálně 10 dlaždic aplikací. Toto omezení platí pro uživatele, kteří mají přiřazené licence k plánu licencí Azure AD Free. Příklady dlaždic aplikací zahrnují Box, Salesforce nebo Dropbox. Toto omezení se nevztahuje na účty správců.</li></ul> |
 | Sestavy | V jednotlivých sestavách je možné zobrazit nebo stáhnout maximálně 1 000 řádků. Veškerá další data se oříznou. |
 | Jednotky pro správu | Prostředek služby Azure AD může být členem maximálně 30 jednotek pro správu. |

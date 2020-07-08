@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80986687"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Klienti Windows
@@ -25,12 +25,12 @@ ms.locfileid: "80986687"
    * Pokyny pro [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)
    
    * Pokyny pro [virtuální síť WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport)
-5. Extrahujte privátní klíč a kryptografický otisk Base64 z formátu *. pfx*. To lze provést několika způsoby. Použití OpenSSL na vašem počítači je jedním ze způsobů. Soubor *ProfileInfo. txt* obsahuje privátní klíč a kryptografický otisk pro certifikační autoritu a klientský certifikát. Nezapomeňte použít kryptografický otisk klientského certifikátu.
+5. Extrahujte privátní klíč a kryptografický otisk Base64 z formátu *. pfx*. To lze provést několika způsoby. Použití OpenSSL na vašem počítači je jedním ze způsobů. *profileinfo.txt* soubor obsahuje privátní klíč a kryptografický otisk pro certifikační autoritu a klientský certifikát. Nezapomeňte použít kryptografický otisk klientského certifikátu.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
    ```
-6. Otevřete v programu Poznámkový blok *ProfileInfo. txt* . Chcete-li získat kryptografický otisk certifikátu klienta (podřízeného), vyberte text (včetně a mezi) "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" pro podřízený certifikát a zkopírujte jej. Podřízený certifikát můžete identifikovat tak, že prohlížíte předmět =/řádek.
+6. Otevřete *profileinfo.txt* v programu Poznámkový blok. Chcete-li získat kryptografický otisk certifikátu klienta (podřízeného), vyberte text (včetně a mezi) "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" pro podřízený certifikát a zkopírujte jej. Podřízený certifikát můžete identifikovat tak, že prohlížíte předmět =/řádek.
 7. V kroku 3 Přepněte na soubor *vpnconfig. ovpn* , který jste otevřeli v programu Poznámkový blok. Najděte níže uvedenou část a nahraďte vše mezi "CERT" a "/CERT".
 
    ```
@@ -40,7 +40,7 @@ ms.locfileid: "80986687"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Otevřete v programu Poznámkový blok *ProfileInfo. txt* . Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "-----zahájit privátní klíč-----" a "-----konec PRIVÁTNÍho klíče-----" a zkopírujte ho.
+8. Otevřete *profileinfo.txt* v programu Poznámkový blok. Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "-----zahájit privátní klíč-----" a "-----konec PRIVÁTNÍho klíče-----" a zkopírujte ho.
 9. V programu Poznámkový blok vraťte se do souboru vpnconfig. ovpn a najděte tuto část. Vložte privátní klíč, který nahrazuje vše mezi a "klíč" a "/Key".
 
    ```
@@ -132,9 +132,9 @@ ms.locfileid: "80986687"
     ```
     openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-   Soubor *ProfileInfo. txt* bude obsahovat privátní klíč a kryptografický otisk pro certifikační autoritu a klientský certifikát. Nezapomeňte použít kryptografický otisk klientského certifikátu.
+   Soubor *profileinfo.txt* bude obsahovat privátní klíč a kryptografický otisk pro certifikační autoritu a klientský certifikát. Nezapomeňte použít kryptografický otisk klientského certifikátu.
 
-6. Otevřete *ProfileInfo. txt* v textovém editoru. Chcete-li získat kryptografický otisk certifikátu klienta (podřízeného), vyberte text včetně a mezi "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" pro podřízený certifikát a zkopírujte jej. Podřízený certifikát můžete identifikovat tak, že prohlížíte předmět =/řádek.
+6. Otevřete *profileinfo.txt* v textovém editoru. Chcete-li získat kryptografický otisk certifikátu klienta (podřízeného), vyberte text včetně a mezi "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" pro podřízený certifikát a zkopírujte jej. Podřízený certifikát můžete identifikovat tak, že prohlížíte předmět =/řádek.
 
 7. Otevřete soubor *vpnconfig. ovpn* a vyhledejte část uvedenou níže. Nahraďte vše mezi hodnotami a "CERT" a "/CERT".
 
@@ -145,7 +145,7 @@ ms.locfileid: "80986687"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Otevřete ProfileInfo. txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text včetně a mezi "-----zahájit-----PRIVÁTNÍho klíče" a "-----konec PRIVÁTNÍho klíče-----" a zkopírujte ho.
+8. Otevřete profileinfo.txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text včetně a mezi "-----zahájit-----PRIVÁTNÍho klíče" a "-----konec PRIVÁTNÍho klíče-----" a zkopírujte ho.
 
 9. V textovém editoru otevřete soubor vpnconfig. ovpn a vyhledejte tento oddíl. Vložte privátní klíč, který nahrazuje vše mezi a "klíč" a "/Key".
 
