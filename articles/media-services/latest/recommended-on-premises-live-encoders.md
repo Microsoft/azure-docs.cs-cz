@@ -10,10 +10,10 @@ ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 53d68a18c5904b8b7e2f6145ae26221e99395a82
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84749934"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ověřená místní kodéry živého streamování

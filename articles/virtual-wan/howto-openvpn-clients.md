@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: cherylmc
 ms.openlocfilehash: f955b5347bc5a2c0fe1fd8a93e14badab1f354c8
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84753279"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>Konfigurace klienta OpenVPN pro Azure Virtual WAN

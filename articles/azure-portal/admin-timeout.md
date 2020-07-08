@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 2efee29ba709607e1e7935215ca7689a39966de1
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764158"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Nastavit časový limit pro nečinnost na úrovni adresáře
@@ -24,7 +24,7 @@ Nastavení časového limitu nečinnosti pomáhá chránit vaše prostředky př
 
 Pokud jste globální správce a chcete vyhodnotit nastavení časového limitu nečinnosti pro všechny uživatele Azure Portal, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V záhlaví globální stránky vyberte **Nastavení** .
 3. Vyberte text odkazu **konfigurace časového limitu na úrovni adresáře**.
 

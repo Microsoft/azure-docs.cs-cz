@@ -12,10 +12,10 @@ ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84759925"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Pochopení a řešení potíží s Proxy aplikací služby Azure Active Directory CORS

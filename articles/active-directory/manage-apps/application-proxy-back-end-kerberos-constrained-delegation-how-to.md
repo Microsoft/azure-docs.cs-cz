@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84760435"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s konfigurací vynuceného delegování protokolu Kerberos pro proxy aplikací
@@ -62,7 +62,7 @@ Co zobrazuje KCD problém? Existuje několik běžných indikací, které KCD SS
 
 Oba tyto obrázky zobrazují stejný příznak: selhání jednotného přihlašování. Přístup uživatele k aplikaci byl odepřen.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Způsob řešení potíží závisí na problému a symptomech, které sledujete. Než začnete, Projděte si následující články. Poskytují užitečné informace pro řešení potíží:
 

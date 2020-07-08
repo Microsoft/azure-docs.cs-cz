@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
 ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84804395"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
@@ -25,7 +25,7 @@ Migrace probíhá ve dvou fázích:
 
 Tento článek popisuje migraci konfigurace. Migrace provozu klientů se liší v závislosti na konkrétním prostředí. [Jsou však k dispozici](#migrate-client-traffic)některá obecná doporučení.
 
-## <a name="migration-overview"></a>Přehled migrace
+## <a name="migration-overview"></a>Migrace – přehled
 
 K dispozici je skript Azure PowerShell, který provede následující akce:
 
