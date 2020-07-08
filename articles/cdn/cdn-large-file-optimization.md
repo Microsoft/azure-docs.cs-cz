@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887653"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace stahování velkých souborů pomocí Azure CDN
@@ -111,7 +111,7 @@ Optimalizace velkých souborů používá jiné výchozí doby vypršení platno
 |    | Obecné webové | Optimalizace velkých souborů 
 --- | --- | --- 
 Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
-Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádné | 1 sekunda 
+Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda 
 
 ### <a name="deal-with-origin-failure"></a>Zabývat se selháním původu
 

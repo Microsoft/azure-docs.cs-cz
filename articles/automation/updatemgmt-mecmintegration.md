@@ -8,10 +8,10 @@ ms.author: magoedte
 ms.date: 06/16/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2bcf2518ab7f4e5a3648b508e42868fd5bb1a863
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817211"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Integrace Update Management s koncovým bodem Windows Configuration Manager

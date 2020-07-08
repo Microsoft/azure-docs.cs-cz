@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
 ms.openlocfilehash: 948ca03b5bf503c884df5df56c61951b381874a9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871698"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v rozhraní Azure API pro FHIR®

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887901"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Obecné informace o podnikovém zabezpečení a pokyny v Azure HDInsight
@@ -149,7 +149,7 @@ Každý cluster je přidružen k jedné organizační jednotce. Interní uživat
 
 Postup instalace nástrojů pro správu služby Active Directory na virtuální počítač s Windows serverem najdete v tématu [Instalace nástrojů pro správu](../../active-directory-domain-services/tutorial-create-management-vm.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="cluster-creation-fails-repeatedly"></a>Opakované vytvoření clusteru se nezdařilo.
 

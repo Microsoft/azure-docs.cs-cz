@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: spelluru
 ms.openlocfilehash: 190c6ccb13a0853913c96ac5d2d3f5faf4594433
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887915"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systémová témata v Azure Event Grid

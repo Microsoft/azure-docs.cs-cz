@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73935889"
 ---
 **Poslední aktualizace dokumentu**: 12. listopadu 2019 10:00 AM PST.
@@ -74,7 +74,7 @@ Aby bylo možné tyto další funkce zabezpečení povolit, musí být cílový 
 
 **Krok 1: zakázání prostředí Hyper-Threading na virtuálním** počítači – zákazníci, kteří spouštějí nedůvěryhodný kód na virtuálním počítači s vlákny s technologií Hyper-thread, budou muset zakázat technologii Hyper-Threading nebo přejít na velikost virtuálního počítače bez technologie Hyper-thread. Odkaz na [Tento dokument](https://docs.microsoft.com/azure/virtual-machines/windows/acu) pro seznam velikostí virtuálních počítačů s vlákny typu Hyper (kde poměr VCPU až Core je 2:1). Pokud chcete zjistit, jestli má virtuální počítač povolený technologii Hyper-Threading, přečtěte si níže uvedený skript pomocí příkazového řádku Windows v rámci virtuálního počítače.
 
-Zadejte `wmic` , chcete-li zadat interaktivní rozhraní. Potom zadejte níže pro zobrazení množství fyzických a logických procesorů na virtuálním počítači.
+Zadejte, `wmic` Chcete-li zadat interaktivní rozhraní. Potom zadejte níže pro zobrazení množství fyzických a logických procesorů na virtuálním počítači.
 
 ```console
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
@@ -101,17 +101,17 @@ Windows OS support for MDS mitigation is enabled: True
 Windows OS support for TAA mitigation is enabled: True
 ```
 
-Pokud se zobrazí `MDS mitigation is enabled: False`výstup, [Požádejte prosím podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) o dostupné možnosti zmírnění.
+Pokud se zobrazí výstup `MDS mitigation is enabled: False` , [Požádejte prosím podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) o dostupné možnosti zmírnění.
 
 
 
-**Krok 3**: Pokud chcete povolit podporu pro vytváření stínových adres (KVAS) a BTI (větvení Target) pro operační systém, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) pro povolení ochrany `Session Manager` pomocí klíčů registru. Vyžaduje se restartování.
+**Krok 3**: Pokud chcete povolit podporu pro vytváření stínových adres (KVAS) a BTI (větvení Target) pro operační systém, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) pro povolení ochrany pomocí `Session Manager` klíčů registru. Vyžaduje se restartování.
 
 
 **Krok 4**: u nasazení, která používají [vnořené virtualizaci](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (jenom D3 a E3): tyto pokyny platí v rámci virtuálního počítače, který používáte jako hostitele Hyper-V.
 
-1.  Pokud chcete povolit ochranu [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) pomocí klíčů `MinVmVersionForCpuBasedMitigations` registru, postupujte podle pokynů v KB4072698.
-2.  Nastavte typ plánovače hypervisoru `Core` na podle pokynů uvedených [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
+1.  Pokud chcete povolit ochranu pomocí klíčů registru, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) `MinVmVersionForCpuBasedMitigations` .
+2.  Nastavte typ plánovače hypervisoru na `Core` podle pokynů uvedených [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types).
 
 
 ### <a name="linux"></a>Linux
@@ -121,9 +121,9 @@ Pokud se zobrazí `MDS mitigation is enabled: False`výstup, [Požádejte prosí
 
 **Krok 1: zakázání prostředí Hyper-Threading na virtuálním** počítači – zákazníci, kteří spouštějí nedůvěryhodný kód na virtuálním počítači s vlákny s technologií Hyper-thread, budou muset zakázat technologii Hyper-Threading nebo přejít na virtuální počítač bez technologie Hyper-thread.  Odkaz na [Tento dokument](https://docs.microsoft.com/azure/virtual-machines/linux/acu) pro seznam velikostí virtuálních počítačů s vlákny typu Hyper (kde poměr VCPU až Core je 2:1). Pokud chcete zjistit, jestli používáte virtuální počítač s vlákny s technologií Hyper- `lscpu` v, spusťte příkaz na virtuálním počítači se systémem Linux. 
 
-Pokud `Thread(s) per core = 2`je, je povolený Hyper-Threading. 
+Pokud je `Thread(s) per core = 2` , je povolený Hyper-Threading. 
 
-Pokud `Thread(s) per core = 1`je, je Hyper-Threading zakázaný. 
+Pokud `Thread(s) per core = 1` je, je Hyper-Threading zakázaný. 
 
  
 Ukázkový výstup pro virtuální počítač s povolenou technologií Hyper-Threading: 

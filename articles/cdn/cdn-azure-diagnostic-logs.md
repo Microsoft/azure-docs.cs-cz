@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
 ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84883992"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
@@ -51,7 +51,7 @@ Další informace o diagnostických protokolech najdete v tématu [diagnostické
 
 Postupujte podle těchto kroků a povolte protokolování pomocí sítě CDN Core Analytics:
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud jste ještě nepovolili CDN pro svůj pracovní postup, vytvořte před pokračováním [Azure CDN profil a koncový bod](cdn-create-new-endpoint.md) .
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud jste ještě nepovolili CDN pro svůj pracovní postup, vytvořte před pokračováním [Azure CDN profil a koncový bod](cdn-create-new-endpoint.md) .
 
 1. V Azure Portal přejděte do **profilu CDN**.
 
@@ -331,27 +331,27 @@ Následující tabulka obsahuje seznam metrik dostupných v základních protoko
 | RequestCountHttpStatus4xx | Počet všech požadavků, které vedly k 4xx kódu HTTP (například 400, 404). | Ano | Ano |Ano |
 | RequestCountHttpStatus5xx | Počet všech požadavků, které vedly k 5xx kódu HTTP (například 500, 504). | Ano | Ano |Ano |
 | RequestCountHttpStatusOthers | Počet všech ostatních kódů HTTP (mimo 2xx-5xx). | Ano | Ano |Ano |
-| RequestCountHttpStatus200 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 200. | Ano | Ne  |Ano |
-| RequestCountHttpStatus206 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 206. | Ano | Ne  |Ano |
-| RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 302. | Ano | Ne  |Ano |
-| RequestCountHttpStatus304 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 304. | Ano | Ne  |Ano |
-| RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 404. | Ano | Ne  |Ano |
-| RequestCountCacheHit | Počet všech požadavků, jejichž výsledkem byl úspěšný přístup do mezipaměti. Asset byl obsluhován přímo z místního klienta. | Ano | Ano | Ne  |
-| RequestCountCacheMiss | Počet všech požadavků, které způsobily Neúspěšné přístupy do mezipaměti. Při neúspěšném ukládání do mezipaměti znamená, že se Asset nenajde na bodu POP, který je nejblíže klientovi, a proto byl načten ze zdroje. | Ano | Ano | Ne |
-| RequestCountCacheNoCache | Počet všech požadavků na prostředek, jejichž ukládání do mezipaměti brání v důsledku konfigurace uživatele na hraničních zařízeních. | Ano | Ano | Ne |
-| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nemohou být ukládány do mezipaměti pomocí hlaviček pro řízení mezipaměti a vypršení platnosti assetu, což znamená, že by neměl být uložen do mezipaměti v případě POP nebo pomocí klienta HTTP. | Ano | Ano | Ne |
-| RequestCountCacheOthers | Počet všech požadavků s mezipamětí, na které se nevztahuje stav mezipaměti. | Ne | Ano | Ne  |
+| RequestCountHttpStatus200 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 200. | Yes | No  |Yes |
+| RequestCountHttpStatus206 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 206. | Yes | No  |Yes |
+| RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 302. | Yes | No  |Yes |
+| RequestCountHttpStatus304 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 304. | Yes | No  |Yes |
+| RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 404. | Yes | No  |Yes |
+| RequestCountCacheHit | Počet všech požadavků, jejichž výsledkem byl úspěšný přístup do mezipaměti. Asset byl obsluhován přímo z místního klienta. | Ano | Ano | No  |
+| RequestCountCacheMiss | Počet všech požadavků, které způsobily Neúspěšné přístupy do mezipaměti. Při neúspěšném ukládání do mezipaměti znamená, že se Asset nenajde na bodu POP, který je nejblíže klientovi, a proto byl načten ze zdroje. | Ano | Ano | No |
+| RequestCountCacheNoCache | Počet všech požadavků na prostředek, jejichž ukládání do mezipaměti brání v důsledku konfigurace uživatele na hraničních zařízeních. | Ano | Ano | No |
+| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nemohou být ukládány do mezipaměti pomocí hlaviček pro řízení mezipaměti a vypršení platnosti assetu, což znamená, že by neměl být uložen do mezipaměti v případě POP nebo pomocí klienta HTTP. | Ano | Ano | No |
+| RequestCountCacheOthers | Počet všech požadavků s mezipamětí, na které se nevztahuje stav mezipaměti. | No | Yes | No  |
 | EgressTotal | Přenos odchozích dat v GB | Ano |Ano |Ano |
-| EgressHttpStatus2xx | Přenos odchozích dat * pro odpovědi se stavovým kódem HTTP 2xx v GB. | Ano | Ano | Ne  |
-| EgressHttpStatus3xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 3xx v GB. | Ano | Ano | Ne  |
-| EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 4xx v GB. | Ano | Ano | Ne  |
-| EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 5xx v GB. | Ano | Ano | Ne |
-| EgressHttpStatusOthers | Přenos odchozích dat pro odpovědi s dalšími kódy stavu HTTP v GB. | Ano | Ano | Ne  |
-| EgressCacheHit | Přenos odchozích dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na pokusůch pop a hran CDN. | Ano | Ano | Ne |
-| EgressCacheMiss. | Odchozí přenos dat pro odpovědi, které nebyly nalezeny na nejbližším serveru POP a načteny ze zdrojového serveru. | Ano | Ano | Ne |
-| EgressCacheNoCache | Přenos odchozích dat pro prostředky, jejichž ukládání do mezipaměti brání z důvodu konfigurace uživatele na hraničních zařízeních. | Ano | Ano | Ne |
-| EgressCacheUncacheable | Přenos odchozích dat pro prostředky, které brání v ukládání do mezipaměti pomocí hlaviček pro řízení mezipaměti a/nebo vypršení platnosti assetu. Určuje, že by neměl být uložen do mezipaměti pro POP nebo klienta HTTP. | Ano | Ano | Ne |
-| EgressCacheOthers | Přenosy odchozích dat pro jiné scénáře mezipaměti. | Ne | Ano | Ne |
+| EgressHttpStatus2xx | Přenos odchozích dat * pro odpovědi se stavovým kódem HTTP 2xx v GB. | Ano | Ano | No  |
+| EgressHttpStatus3xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 3xx v GB. | Ano | Ano | No  |
+| EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 4xx v GB. | Ano | Ano | No  |
+| EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 5xx v GB. | Ano | Ano | No |
+| EgressHttpStatusOthers | Přenos odchozích dat pro odpovědi s dalšími kódy stavu HTTP v GB. | Ano | Ano | No  |
+| EgressCacheHit | Přenos odchozích dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na pokusůch pop a hran CDN. | Ano | Ano | No |
+| EgressCacheMiss. | Odchozí přenos dat pro odpovědi, které nebyly nalezeny na nejbližším serveru POP a načteny ze zdrojového serveru. | Ano | Ano | No |
+| EgressCacheNoCache | Přenos odchozích dat pro prostředky, jejichž ukládání do mezipaměti brání z důvodu konfigurace uživatele na hraničních zařízeních. | Ano | Ano | No |
+| EgressCacheUncacheable | Přenos odchozích dat pro prostředky, které brání v ukládání do mezipaměti pomocí hlaviček pro řízení mezipaměti a/nebo vypršení platnosti assetu. Určuje, že by neměl být uložen do mezipaměti pro POP nebo klienta HTTP. | Ano | Ano | No |
+| EgressCacheOthers | Přenosy odchozích dat pro jiné scénáře mezipaměti. | No | Yes | No |
 
 * Přenos odchozích dat odkazuje na provoz doručený ze serverů POP CDN klientovi.
 
@@ -445,7 +445,7 @@ Příklad vlastností:
 
 * [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýzy prostřednictvím Azure CDN doplňkového portálu](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Protokoly služby Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Protokoly Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [REST API Log Analytics Azure](https://docs.microsoft.com/rest/api/loganalytics)
 
 

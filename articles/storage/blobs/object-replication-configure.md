@@ -10,10 +10,10 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888118"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Konfigurace replikace objektů pro objekty blob bloku (Preview)
@@ -36,7 +36,7 @@ Než začnete, ujistěte se, že jste se zaregistrovali v následujících náhl
 - [Správa verzí objektů BLOB (Preview)](versioning-overview.md)
 - [Změna podpory kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Před konfigurací replikace objektů v Azure Portal vytvořte zdrojové a cílové kontejnery v příslušných účtech úložiště, pokud ještě neexistují. Také povolte správu verzí objektů BLOB a kanál změn ve zdrojovém účtu a povolte správu verzí objektů BLOB v cílovém účtu.
 
@@ -234,7 +234,7 @@ az storage account or-policy show --resource-group <resource-group> \
 
 Pokud chcete odebrat zásadu replikace a její přidružená pravidla, použijte Azure Portal, PowerShell nebo rozhraní příkazového řádku.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Pokud chcete odebrat zásadu replikace v Azure Portal, postupujte takto:
 

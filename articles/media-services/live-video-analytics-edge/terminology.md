@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled živé analýzy videí na IoT Edg
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84816523"
 ---
 # <a name="terminology"></a>Terminologie

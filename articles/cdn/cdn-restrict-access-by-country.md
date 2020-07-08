@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
 ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887021"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Omezení obsahu Azure CDN podle země nebo oblasti
@@ -98,7 +98,7 @@ Pro **Azure CDN Premium od profilů Verizon** se uživatelské rozhraní pro vyt
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 V tabulce pravidla filtrování země nebo oblasti vyberte ikonu Odstranit vedle pravidla, které chcete odstranit, nebo ikonu Upravit a upravte ji.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 * Změny v konfiguraci geografického filtrování se neprojeví okamžitě:
    * U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
    * V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 

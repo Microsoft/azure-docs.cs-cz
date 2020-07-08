@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74085231"
 ---
 Diagnostikování problémů s Microsoft Azure cloudovou službou vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích, když dojde k těmto potížím. Rozšíření AzureLogCollector můžete použít na vyžádání a provádět jednorázovou kolekci protokolů z jednoho nebo více virtuálních počítačů cloudových služeb (z webových rolí a rolí pracovních procesů) a přenést shromážděné soubory do účtu služby Azure Storage – to vše bez vzdáleného přihlášení k žádnému virtuálnímu počítači.
@@ -33,7 +33,7 @@ V obou režimech kolekce lze zadat další složky shromažďování dat pomocí
 
 * **Name (název**): název kolekce, který se používá jako název podsložky v souboru zip s shromážděnými soubory.
 * **Location (umístění**): cesta ke složce ve virtuálním počítači, kde jsou umístěny soubory, které mají být shromažďovány.
-* **SearchPattern**: vzor názvů souborů, které mají být shromážděny. Výchozí hodnota je\*""
+* **SearchPattern**: vzor názvů souborů, které mají být shromážděny. Výchozí hodnota je " \* "
 * **Rekurzivní**: Pokud se soubory, které se mají shromažďovat, rekurzivně nacházejí v zadaném umístění.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -129,7 +129,7 @@ Pomocí jednoho ze dvou následujících kroků můžete přidat AzureLogCollect
    ```
 
    > [!NOTE]
-   > Pomocí tokenu `%roleroot%` můžete zadat kořenovou jednotku role, protože nepoužívá pevnou jednotku.
+   > Pomocí tokenu můžete `%roleroot%` zadat kořenovou jednotku role, protože nepoužívá pevnou jednotku.
    > 
    > 
 4. Zadejte název a klíč účtu úložiště Azure, do kterého se nahrají shromážděné soubory.
@@ -139,7 +139,7 @@ Pomocí jednoho ze dvou následujících kroků můžete přidat AzureLogCollect
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Následujícím způsobem zavolejte SetAzureServiceLogCollector. ps1 (na konci článku) a povolte rozšíření AzureLogCollector pro cloudovou službu. Po dokončení spuštění můžete nahraného souboru najít v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Následujícím způsobem zavolejte SetAzureServiceLogCollector.ps1 (na konci článku) a povolte rozšíření AzureLogCollector pro cloudovou službu. Po dokončení spuštění můžete nahraného souboru najít v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -231,7 +231,7 @@ Podle pokynů připojte Azure PowerShell k vašemu předplatnému.
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Následujícím způsobem zavolejte SetAzureVMLogCollector. ps1 (na konci článku) a povolte rozšíření AzureLogCollector pro cloudovou službu. Po dokončení spuštění můžete nahraného souboru najít v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Následujícím způsobem zavolejte SetAzureVMLogCollector.ps1 (na konci článku) a povolte rozšíření AzureLogCollector pro cloudovou službu. Po dokončení spuštění můžete nahraného souboru najít v části`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Níže je definice parametrů předaných skriptu. (Tato kopie je také zkopírovaná.)
 
@@ -276,7 +276,7 @@ param (
   ```
 
 ## <a name="extention-powershell-script-files"></a>Rozsah souborů skriptu PowerShellu
-### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector. ps1
+### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -385,7 +385,7 @@ $SasUri = $SasUri + "&restype=container&comp=list"
 Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
 ```
 
-### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector. ps1
+### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]

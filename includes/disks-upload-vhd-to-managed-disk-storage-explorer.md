@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74013776"
 ---
 Průzkumník služby Storage 1.10.0 umožňuje uživatelům nahrávat, stahovat a kopírovat spravované disky a také vytvářet snímky. Z důvodu těchto dalších možností můžete pomocí Průzkumník služby Storage migrovat data z místního prostředí do Azure a migrovat data mezi oblastmi Azure.
@@ -42,7 +42,7 @@ Pokud váš Průzkumník služby Storage není připojený k Azure, nebudete ho 
 
 1. Vyberte ze seznamu své předplatné a klikněte na **Použít**.
 
-    ![Vyberte své předplatné.](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
+    ![Výběr předplatného](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
 
 ## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>Nahrání spravovaného disku z virtuálního pevného disku s Prem
 
@@ -50,7 +50,7 @@ Pokud váš Průzkumník služby Storage není připojený k Azure, nebudete ho 
 
     ![Vybrat skupinu prostředků 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. Vyberte **nahrát**.
+1. Vyberte **Nahrát**.
 
     ![Výběr nahrání](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 
@@ -120,7 +120,7 @@ Pomocí Průzkumník služby Storage můžete kopírovat spravovaných disk v r�
 
     ![Vytvoření snímku](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. V části **vytvořit snímek**zadejte název snímku a skupinu prostředků, ve které chcete vytvořit. Pak vyberte **vytvořit**.
+1. V části **vytvořit snímek**zadejte název snímku a skupinu prostředků, ve které chcete vytvořit. Potom vyberte **Vytvořit**.
 
     ![Dialog vytvořit snímek](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

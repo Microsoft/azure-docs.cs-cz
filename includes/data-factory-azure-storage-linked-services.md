@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75468626"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
@@ -21,7 +21,7 @@ ms.locfileid: "75468626"
 
 Informace o tom, jak načíst přístupové klíče účtu úložiště, najdete v tématu [Správa přístupových](../articles/storage/common/storage-account-keys-manage.md)klíčů účtu úložiště.
 
-**Případě**  
+**Příklad:**  
 
 ```json
 {
@@ -52,7 +52,7 @@ Propojená služba Azure Storage SAS umožňuje propojit účet Azure Storage s 
 | typ |Vlastnost Type musí být nastavená na: **AzureStorageSas** . |Yes |
 | sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům Azure Storage, jako je například objekt blob, kontejner nebo tabulka.  |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463571"
 ---
 Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Tyto 25 000 bezplatných měsíčních e-mailů vám umožní přístup k pokročilým vytváření sestav a analýzám a [všem rozhraním API][all APIs] (web, SMTP, Event, Analyze a další). Informace o dalších službách, které SendGrid poskytuje, najdete na stránce [SendGrid Solutions][SendGrid Solutions] (Řešení SendGrid).
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Registrace účtu SendGrid
-1. Přihlaste se k webu [Azure Portal][Azure portal].
+1. Přihlaste se k [portálu Azure Portal][Azure portal].
 2. V nabídce Azure Portal nebo na domovské stránce vyberte **vytvořit prostředek**.
 
     ![command-bar-new][command-bar-new]
@@ -46,7 +46,7 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 
     Pokud chcete upravit plán předplatného nebo zobrazit nastavení kontaktů SendGridu, kliknutím na název vaší služby SendGrid otevřete řídicí panel SendGrid na Marketplace.
 
-    ![settings][settings]
+    ![nastavení][settings]
 
     Abyste mohli odesílat e-maily pomocí SendGridu, musíte zadat klíč rozhraní API.
 

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84886105"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
@@ -241,19 +241,19 @@ Před implementací řešení Privileged Identity Management je vhodné koncepty
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Nastavení Privileged Identity Management pro role Azure AD
 
-| Role | Vyžadování MFA | Oznámení | Lístek incidentu | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Trvalý správce |
+| Role | Vyžadování MFA | Oznámení | Lístek incidentu | Vyžadovat schválení | Uživatelem | Doba trvání aktivace | Trvalý správce |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globální správce | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Jiní globální správci | 1 hodina | Účty pro nouzový přístup |
-| Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | znak | znak | Žádné | 2 hodiny | Žádné |
-| Správce helpdesku | znak | znak | :heavy_check_mark: | znak | Žádné | 8 hodin | Žádné |
+| Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | znak | znak | Žádná | 2 hodiny | Žádná |
+| Správce helpdesku | znak | znak | :heavy_check_mark: | znak | Žádná | 8 hodin | Žádná |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Nastavení Privileged Identity Management pro role prostředků Azure
 
-| Role | Vyžadování MFA | Oznámení | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Aktivní správce | Aktivní doba platnosti | Nárok na vypršení platnosti |
+| Role | Vyžadování MFA | Oznámení | Vyžadovat schválení | Uživatelem | Doba trvání aktivace | Aktivní správce | Aktivní doba platnosti | Nárok na vypršení platnosti |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Vlastník kritických předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníci předplatného | 1 hodina | Žádné | Není k dispozici | 3 měsíce |
-| Správce přístupu uživatele s méně důležitými předplatnými | :heavy_check_mark: | :heavy_check_mark: | znak | Žádné | 1 hodina | Žádné | Není k dispozici | 3 měsíce |
-| Přispěvatel virtuálních počítačů | znak | :heavy_check_mark: | znak | Žádné | 3 hodiny | Žádné | Není k dispozici | 6 měsíců |
+| Vlastník kritických předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníci předplatného | 1 hodina | Žádná | Není k dispozici | 3 měsíce |
+| Správce přístupu uživatele s méně důležitými předplatnými | :heavy_check_mark: | :heavy_check_mark: | znak | Žádná | 1 hodina | Žádná | Není k dispozici | 3 měsíce |
+| Přispěvatel virtuálních počítačů | znak | :heavy_check_mark: | znak | Žádná | 3 hodiny | Žádná | Není k dispozici | 6 měsíců |
 
 V následující tabulce jsou popsána jednotlivá nastavení.
 
@@ -264,7 +264,7 @@ V následující tabulce jsou popsána jednotlivá nastavení.
 | Oznámení | Pokud je nastavená hodnota true, globální správce, správce privilegovaných rolí a správce zabezpečení v organizaci dostane e-mailové oznámení, když je role oprávněným uživatelem aktivována.<br/><br/>**Poznámka:** Některé organizace nemají e-mailovou adresu vázanou na účty správců. Pokud chcete získat tato e-mailová oznámení, měli byste nastavit alternativní e-mailovou adresu, aby správci dostali tyto e-maily. |
 | Lístek incidentu | Zda oprávněný uživatel musí při aktivaci své role zaznamenat číslo lístku incidentu. Toto nastavení pomáhá organizaci identifikovat každou aktivaci pomocí interního čísla incidentu a zmírnit tak nechtěné aktivace.<br/><br/> : heavy_check_mark: **Společnost Microsoft doporučuje** využít výhod čísel lístků incidentů k propojení Privileged Identity Management do interního systému. To je užitečné hlavně pro schvalovatele, kteří potřebují kontext pro aktivaci. |
 | Vyžadovat schválení | Zda oprávněný uživatel potřebuje získat souhlas s aktivací role.<br/><br/> : heavy_check_mark: **Microsoft doporučuje** , abyste si nastavili schválení pro role s nejvyšším oprávněním. V závislosti na vzorcích použití všech zákazníků Privileged Identity Management, globální správce, Správce uživatelů, správce Exchange, správce zabezpečení a správce hesel jsou nejběžnějšími rolemi s nastavením schvalování. |
-| Schvalovatel | Pokud se schválení vyžaduje k aktivaci oprávněné role, uveďte uživatele, kteří by měli žádost schválit. Ve výchozím nastavení Privileged Identity Management nastaví schvalovatele na všechny uživatele, kteří jsou správce privilegované role, jestli jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud má uživatel nárok na roli Azure AD a na schvalovatele této role, nebude možné schválit samy sebe.<br/><br/> : heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele jako ty, kteří jsou nejvíce znalost konkrétní role a Nejčastějšími uživateli, nikoli globální správce. |
+| Uživatelem | Pokud se schválení vyžaduje k aktivaci oprávněné role, uveďte uživatele, kteří by měli žádost schválit. Ve výchozím nastavení Privileged Identity Management nastaví schvalovatele na všechny uživatele, kteří jsou správce privilegované role, jestli jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud má uživatel nárok na roli Azure AD a na schvalovatele této role, nebude možné schválit samy sebe.<br/><br/> : heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele jako ty, kteří jsou nejvíce znalost konkrétní role a Nejčastějšími uživateli, nikoli globální správce. |
 | Doba trvání aktivace | Doba, po kterou bude uživatel v roli aktivován, než vyprší jeho platnost. |
 | Trvalý správce | Seznam uživatelů, kteří budou mít pro roli trvalého správce (nikdy se nemusí aktivovat)<br/><br/> : heavy_check_mark: **Společnost Microsoft doporučuje** , abyste měli žádného stálého správce pro všechny role s výjimkou globálních správců. Přečtěte si další informace o tom, kdo by měl mít nárok a kdo by měl být trvale aktivní oddíl tohoto plánu. |
 | Aktivní správce | U prostředků Azure je aktivním správcem seznam uživatelů, kteří se nikdy nebudou muset k použití této role aktivovat. Nejedná se o trvalého správce jako v rolích služby Azure AD, protože můžete nastavit dobu vypršení platnosti, kdy uživatel ztratí tuto roli. |
@@ -351,7 +351,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-ad-roles"></a>Role Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **role Azure AD** a potom klikněte na **role**.
 1. U každé role, kterou jste nakonfigurovali, klikněte na tři tečky (**...**) pro všechny uživatele s oprávněným přiřazením.
@@ -359,7 +359,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-resource-roles"></a>Role prostředků Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **prostředky Azure** a pak klikněte na předplatné nebo prostředek, který chcete vrátit zpět.
 1. Klikněte na **role**.
@@ -374,7 +374,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 K lepší ochraně vaší organizace byste měli využívat funkci integrovaného upozorňování Privileged Identity Management. Další informace najdete v tématu [výstrahy zabezpečení](pim-how-to-configure-security-alerts.md#security-alerts). Mezi tyto výstrahy patří: Správci nepoužívají privilegované role, role se přiřazují mimo Privileged Identity Management a role se aktivují příliš často a častěji. K zajištění plné ochrany vaší organizace byste měli pravidelně procházet seznam výstrah a opravovat problémy. Výstrahy můžete zobrazit a opravit následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **role Azure AD** a pak na **výstrahy**.
 

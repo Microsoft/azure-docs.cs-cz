@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
 ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817985"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
@@ -606,11 +606,11 @@ Následující tabulka popisuje různé stavy služby:
 
 | Stav WebService | Description | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | Ne |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
-| Failed | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
-| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
+| Přechod | Služba je v procesu nasazení. | No |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
+| Failed | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Yes |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Yes |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Webová služba COMPUTE instance (vývoj/testování)
 

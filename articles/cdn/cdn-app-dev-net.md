@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 20db31b63a82431b7dd59c6c5c92a1fb756c5c06
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888423"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
@@ -156,7 +156,7 @@ Pojďme získat základní strukturu našeho programu napsaného.
 
 Teď, když je napsaná základní struktura našeho programu, bychom měli vytvořit metody, které metoda volá `Main` .
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 Než budeme moct použít knihovnu pro správu Azure CDN, musíme ověřit náš instanční objekt a získat ověřovací token.  Tato metoda načte token pomocí ADAL.
 
 ```csharp

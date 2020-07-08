@@ -9,10 +9,10 @@ ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74566237"
 ---
 Akcelerátor zápisu je schopnost disku pro procesory řady M-Series Virtual Machines (VM) v Premium Storage se výhradně Managed Disks Azure. Jako název uvádíme účel funkce ke zvýšení latence zápisu zápisů do služby Azure Premium Storage v/v. Akcelerátor zápisu je ideálně vhodným způsobem, kdy se aktualizace souboru protokolu vyžadují k uchování na disku vysoce výkonném způsobem pro moderní databáze.
@@ -112,7 +112,7 @@ Pomocí dvou hlavních scénářů se dá skriptovat, jak je znázorněno v nás
 
 Tento skript můžete použít k přidání nového disku do virtuálního počítače. Disk vytvořený pomocí tohoto skriptu používá Akcelerátor zápisu.
 
-`myVM`Nahraďte `myWAVMs`, `log001`,, velikost disku a LunID disku hodnotami vhodnými pro konkrétní nasazení.
+Nahraďte `myVM` , `myWAVMs` , `log001` , velikost disku a LunID disku hodnotami vhodnými pro konkrétní nasazení.
 
 ```powershell
 # Specify your VM Name
@@ -135,7 +135,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Povolení Akcelerátor zápisu na stávajícím disku Azure pomocí PowerShellu
 
-Tento skript můžete použít k povolení Akcelerátor zápisu na stávajícím disku. Hodnoty `myVM`, `myWAVMs`a `test-log001` nahraďte odpovídajícími hodnotami pro konkrétní nasazení. Skript přidá Akcelerátor zápisu na existující disk, na kterém je hodnota pro **$newstatus** nastavená na $true. Použití hodnoty ' $false ' zakáže Akcelerátor zápisu na daném disku.
+Tento skript můžete použít k povolení Akcelerátor zápisu na stávajícím disku. `myVM`Hodnoty, `myWAVMs` a nahraďte `test-log001` odpovídajícími hodnotami pro konkrétní nasazení. Skript přidá Akcelerátor zápisu na existující disk, na kterém je hodnota pro **$newstatus** nastavená na $true. Použití hodnoty ' $false ' zakáže Akcelerátor zápisu na daném disku.
 
 ```powershell
 #Specify your VM Name
@@ -179,13 +179,13 @@ K nasazení prostřednictvím rozhraní Azure REST API je potřeba nainstalovat 
 
 ### <a name="install-armclient"></a>Nainstalovat armclient
 
-Chcete-li spustit armclient, je nutné jej nainstalovat prostřednictvím čokolády. Můžete ji nainstalovat pomocí programu Cmd. exe nebo PowerShell. Použijte zvýšená práva pro tyto příkazy ("spustit jako správce").
+Chcete-li spustit armclient, je nutné jej nainstalovat prostřednictvím čokolády. Můžete ji nainstalovat pomocí cmd.exe nebo PowerShellu. Použijte zvýšená práva pro tyto příkazy ("spustit jako správce").
 
-Pomocí programu Cmd. exe spusťte následující příkaz:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+Pomocí cmd.exe spusťte následující příkaz:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 
 Pomocí Power shellu spusťte následující příkaz:`Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
-Nyní můžete nainstalovat armclient pomocí následujícího příkazu v programu Cmd. exe nebo PowerShell.`choco install armclient`
+Nyní můžete nainstalovat armclient pomocí následujícího příkazu v buď cmd.exe nebo PowerShellu.`choco install armclient`
 
 ### <a name="getting-your-current-vm-configuration"></a>Získává se aktuální konfigurace virtuálních počítačů.
 

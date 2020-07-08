@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887706"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
@@ -134,7 +134,7 @@ Tento řídicí panel se skládá z těchto:
 | Zabezpečené přístupy |Označuje počet požadavků HTTPS na obsah CDN. |
 | Zabezpečené bajty odchozích bajtů |Označuje počet přenosů HTTPS (v bajtech), které byly doručeny ze sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
 
-## <a name="reports"></a>sestavy
+## <a name="reports"></a>Sestavy
 Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pásma a provozu pro různé typy metrik (například stavové kódy HTTP, stavové kódy mezipaměti, adresa URL požadavku atd.). Tyto informace se dají využít k hlubšímu zvyšování způsobu poskytování obsahu klientům a k doladění chování CDN, aby se zlepšil výkon při doručování dat.
 
 ### <a name="accessing-the-edge-performance-reports"></a>Přístup k sestavám výkonnosti Edge
