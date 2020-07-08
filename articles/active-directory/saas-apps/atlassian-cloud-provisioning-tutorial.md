@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 95455d389669b89075ca0ea8583cc7858bb532f0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317613"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Atlassian cloudu pro Automatické zřizování uživatelů
@@ -34,7 +34,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Atlassian c
 > * Zřizování skupin a členství ve skupinách v Atlassian cloudu
 > * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/atlassian-cloud-tutorial) do Atlassian cloudu (doporučeno)
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -124,7 +124,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
       |---|---|
       |displayName|Řetězec|
       |externalId|Řetězec|
-      |členy|Reference|
+      |členy|Referenční informace|
 
 12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

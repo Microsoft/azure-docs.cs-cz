@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317227"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Kognitivní hledáníu (FAQ)
@@ -105,4 +105,4 @@ Máte dotaz ohledně chybějící funkce nebo funkce? Vyžádejte si funkci na w
 
  [StackOverflow: Azure Kognitivní hledání](https://stackoverflow.com/questions/tagged/azure-search)   
  [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)  
- [Co je kognitivní hledání Azure?](search-what-is-azure-search.md)
+ [Co je Azure Kognitivní hledání?](search-what-is-azure-search.md)

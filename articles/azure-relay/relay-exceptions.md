@@ -4,10 +4,10 @@ description: Seznam výjimek Azure Relay a navrhovaných akcí, které můžete 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 0bc8a399173331525d62b25929f65ad189ed219b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316879"
 ---
 # <a name="azure-relay-exceptions"></a>Výjimky Azure Relay

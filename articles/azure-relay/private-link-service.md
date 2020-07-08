@@ -4,10 +4,10 @@ description: Naučte se integrovat Azure Relay se službou Azure Private Link.
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317307"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrace Azure Relay s privátním odkazem Azure (Preview)
@@ -24,7 +24,7 @@ ms.locfileid: "85317307"
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
-### <a name="prerequisites"></a>Požadované součásti
+### <a name="prerequisites"></a>Požadavky
 Pokud chcete integrovat obor názvů Azure Relay pomocí privátního propojení Azure (Preview), budete potřebovat následující entity nebo oprávnění:
 
 - Azure Relay obor názvů.
@@ -39,7 +39,7 @@ Váš privátní koncový bod používá privátní IP adresu ve vaší virtuál
 ### <a name="steps"></a>Kroky
 Podrobné pokyny k vytvoření nového oboru názvů Azure Relay a entit v této části najdete v tématu [Vytvoření oboru názvů Azure Relay pomocí Azure Portal](relay-create-namespace-portal.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Do vyhledávacího panelu zadejte text **Relay**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .
@@ -158,7 +158,7 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
+| Akce služby | Stav privátního koncového bodu příjemce služby | Description |
 |--|--|--|
 | Žádná | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení od Azure Relay vlastníka oboru názvů. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
