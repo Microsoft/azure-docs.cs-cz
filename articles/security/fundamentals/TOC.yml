@@ -60,8 +60,6 @@
       href: ddos-best-practices.md
     - name: Visící záznam DNS a převzetí subdomény
       href: subdomain-takeover.md
-    - name: Standardní hodnoty zabezpečení pro DDoS Protection
-      href: ddos-protection-security-baseline.md
     - name: Zabezpečení hybridní síťové architektury
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: Zabezpečení IaaS

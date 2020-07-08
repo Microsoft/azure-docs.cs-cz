@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: f477def85db2d3def30f732dd5a7f8af49eda4b3
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 18c6e9aac220d7e76a82a2abded6840db931f2d1
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483750"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057717"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programové vytváření předplatných Azure (Preview)
 
@@ -150,7 +150,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
+| Název prvku  | Požaduje se | Typ   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
 | `offerType`   | Yes      | Řetězec | Nabídka předplatného. Dvě možnosti pro EA jsou [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční použití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování), které je potřeba [zapnout pomocí portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -168,7 +168,7 @@ Spusťte následující příkaz [New-AzSubscription](/powershell/module/az.subs
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
+| Název prvku  | Požaduje se | Typ   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
 | `OfferType`   | Yes      | Řetězec | Nabídka předplatného. Dvě možnosti pro EA jsou [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční použití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování), které je potřeba [zapnout pomocí portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -189,7 +189,7 @@ Spusťte příkaz [AZ Account Create](/cli/azure/ext/subscription/account?view=a
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
+| Název prvku  | Požaduje se | Typ   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
 | `offer-type`   | Yes      | Řetězec | Nabídka předplatného. Dvě možnosti pro EA jsou [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční použití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování), které je potřeba [zapnout pomocí portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -340,7 +340,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
+| Název prvku  | Požaduje se | Typ   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Yes      | Řetězec | Zobrazovaný název předplatného.|
 | `billingProfileId`   | Yes      | Řetězec | ID fakturačního profilu, který se bude účtovat za poplatky za předplatné  |
@@ -355,7 +355,7 @@ V odpovědi se vrátí `subscriptionCreationResult` objekt pro monitorování. P
 
 ### <a name="prerequisites"></a>Požadavky
 
-Abyste mohli vytvořit předplatné pro fakturační účet, musíte mít roli globálního správce nebo agenta správce v účtu poskytovatele Cloud Solution Provider vaší organizace. Další informace najdete v tématu [partner Center – přiřazení rolí a oprávnění uživatele](https://docs.microsoft.com/partner-center/permissions-overview).
+Abyste mohli vytvořit předplatné pro fakturační účet, musíte mít roli globálního správce nebo agenta správce v účtu poskytovatele Cloud Solution Provider vaší organizace. Další informace najdete v tématu [partner Center – přiřazení rolí a oprávnění uživatele](/partner-center/permissions-overview).
 
 Níže uvedený příklad používá rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
 
@@ -505,7 +505,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
+| Název prvku  | Požaduje se | Typ   | Description                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Yes      | Řetězec | Zobrazovaný název předplatného.|
 | `skuId` | Yes      | Řetězec | ID SKU plánu Azure. Pro předplatná typu Microsoft Azureho plánu použijte *0001* . |

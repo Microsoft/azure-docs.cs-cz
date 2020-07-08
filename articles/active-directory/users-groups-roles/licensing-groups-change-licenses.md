@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 07/07/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47546ae5ae964d1ed915ee42b1a2cafec58a805a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 94c0d1efa83af53804be89a9e86f4cafd5bc0ae0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727632"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057751"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Změna přiřazení licencí pro uživatele nebo skupinu v Azure Active Directory
 
@@ -49,7 +49,7 @@ Pokud vidíte, že některá zaškrtávací políčka nejsou k dispozici, na str
 1. Vyberte **Azure Active Directory**  >  **Uživatelé**a potom otevřete stránku **profil** pro uživatele.
 1. Vyberte **licence**.
 1. Vyberte **přiřazení** pro úpravu přiřazení licence pro uživatele nebo skupinu. Na stránce **přiřazení** můžete vyřešit konflikty přiřazení licencí.
-1. Zaškrtněte políčko pro Office 366 E3 a ujistěte se, že je vybrána možnost minimálně všechny služby E1, které jsou přiřazeny uživateli.
+1. Zaškrtněte políčko pro Office 365 E3 a ujistěte se, že je vybrána možnost minimálně všechny služby E1, které jsou přiřazeny uživateli.
 1. Zrušte zaškrtnutí políčka pro Office 365 E1.
 
     ![Stránka přiřazení licencí pro uživatele, který uvádí, že sada Office 365 E1 byla vymazána a sada Office 365 E3 vybrána](media/licensing-groups-change-licenses/update-user-license-assignments.png)
@@ -64,7 +64,7 @@ Azure AD použije nové licence a současně odebere staré licence, aby bylo mo
 1. Vyberte **Azure Active Directory**  >  **skupiny**a potom otevřete stránku **Přehled** pro skupinu.
 1. Vyberte **licence**.
 1. Vyberte příkaz **přiřazení** pro úpravu přiřazení licence pro uživatele nebo skupinu.
-1. Zaškrtněte políčko pro Office 366 E3. Aby se zachovala kontinuita provozu, ujistěte se, že jste vybrali všechny služby E1, které jsou už k tomuto uživateli přiřazené.
+1. Zaškrtněte políčko pro Office 365 E3. Aby se zachovala kontinuita provozu, ujistěte se, že jste vybrali všechny služby E1, které jsou už k tomuto uživateli přiřazené.
 1. Zrušte zaškrtnutí políčka pro Office 365 E1.
 
     ![Výběr příkazu přiřazení na stránce licence uživatele nebo skupiny](media/licensing-groups-change-licenses/update-group-license-assignments.png)

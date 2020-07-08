@@ -3,12 +3,12 @@ title: Exportovat šablonu v Azure Portal
 description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Manager z prostředků v rámci vašeho předplatného.
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273732"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057700"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -72,7 +72,7 @@ Export jednoho nebo více prostředků ze skupiny prostředků:
 
    Ve výchozím nastavení je vybraná možnost **zahrnout parametry** .  Pokud je tato možnost vybrána, budou všechny parametry šablony zahrnuty při generování šablony. Pokud chcete vytvořit vlastní parametry, přepněte toto zaškrtávací políčko na nezahrnuté.
 
-## <a name="export-template-from-a-resource"></a>Exportovat šablonu z prostředku
+## <a name="export-template-from-a-resource"></a>Export šablony z prostředku
 
 Export jednoho prostředku:
 
@@ -121,5 +121,5 @@ Můžete exportovat šablonu, která byla použita k nasazení existujících pr
 
 - Naučte se exportovat šablony pomocí [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)nebo [REST API](/rest/api/resources/resourcegroups/exporttemplate).
 - Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](template-syntax.md).
-- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
+- Další informace o vývoji šablon najdete v [podrobných kurzech](../index.yml).
 - Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

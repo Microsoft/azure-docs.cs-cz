@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712424"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057462"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Pokročilé kurzy k Media Encoderu Premium Workflow
 ## <a name="overview"></a>Přehled
@@ -187,7 +187,7 @@ Pokud chcete, aby pracovní postup automaticky určil vlastnost název výstupn�
 
 Editor výrazů umožňuje zadat libovolnou hodnotu literálu, smíšenou s jednou nebo více proměnnými. Proměnné začínají znakem dolaru. Při stisknutí klávesy $ se v editoru zobrazí rozevírací seznam s možností dostupných proměnných. V našem případě použijeme kombinaci proměnné výstupní adresář a proměnnou názvu základního vstupního souboru:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![Vyplněný Editor výrazů](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +265,16 @@ Do výstupního prostředku je přidaný více než jeden jeden soubor. To zaji�
 
 Názvy výstupů souborů lze ovládat pomocí výrazů v návrháři. Otevřete podokno vlastností pro jednu ze součástí výstupního souboru a otevřete Editor výrazů pro vlastnost soubor. Náš první výstupní soubor byl nakonfigurován pomocí následujícího výrazu (Další informace najdete v kurzu přechodu z [MXF na výstup MP4 s jednou přenosovou rychlostí](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 To znamená, že název souboru je určen dvěma proměnnými: výstupní adresář, do kterého se má zapisovat, a základní název zdrojového souboru. Bývalé je zveřejněné jako vlastnost v kořenovém adresáři pracovního postupu a druhá je určena příchozím souborem. Výstupní adresář je to, co používáte pro místní testování; Tato vlastnost bude přepsána modulem pracovních postupů v případě, že je pracovní postup spuštěn pomocí cloudového mediálního procesoru v systému Azure Media Services.
 Chcete-li, aby oba výstupní soubory odpovídaly konzistentnímu výstupnímu názvu, změňte první výraz pro pojmenovávání souborů na:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 a druhý pro:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Spusťte zprostředkující testovací běh, aby se zajistilo, že oba výstupní soubory MP4 budou správně vygenerovány.
 
@@ -287,7 +287,7 @@ Jakmile se později vygenerujeme soubor. ISM, který se dá použít pro naše v
 
 Vytvořte třetí komponentu výstupu souboru pro výstup odchozího datového proudu z muxer a nakonfigurujte výraz pro pojmenovávání souborů jako:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![Audio muxer vytváření výstupu souboru](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +319,7 @@ Generování souboru manifestu pro naši sadu MP4's lze provést prostřednictv�
 
 Stejně jako u našich dalších součástí výstupů souborů nakonfigurujte název výstupního souboru. ISM pomocí výrazu:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 Náš dokončený pracovní postup vypadá následovně:
 
@@ -342,11 +342,11 @@ V předchozím pracovním postupu jsme jako základ pro generování názvů vý
 
 Například součást výstup souboru pro první videosoubor je nakonfigurována s tímto výrazem:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 Pro druhé výstupní video máme výraz, jako je:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Nebylo by to čisticí, méně náchylné k chybám a pohodlnější, pokud bychom mohli některé z těchto duplicit odebrat a místo toho je dělat konfigurovatelný? Donovanovo můžeme: možnosti výrazů návrháře v kombinaci s možností vytvořit vlastní vlastnosti v našem kořenovém adresáři pracovního postupu poskytují přidanou vrstvu pohodlí.
 
@@ -391,7 +391,7 @@ Změna kterékoli z těchto tří hodnot také překonfiguruje a změní hodnoty
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>Vygenerované názvy výstupních souborů spoléhají na hodnoty publikovaných vlastností.
 Místo toho, abychom vygenerovali názvy souborů, teď můžete ve všech komponentách pro výstup souborů změnit náš název souboru tak, aby se spoléhaly na vlastnosti přenosové rychlosti publikované v kořenovém adresáři grafu. Počínaje naším prvním výstupem souboru Najděte vlastnost File a upravte výraz takto:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 K různým parametrům v tomto výrazu lze přistoupit a zadat ho stisknutím klávesy dolaru na klávesnici v okně výrazu. Jedním z dostupných parametrů je naše vlastnost video1bitrate, kterou jsme publikovali dříve.
 
@@ -401,11 +401,11 @@ K různým parametrům v tomto výrazu lze přistoupit a zadat ho stisknutím kl
 
 Pro výstup souboru pro náš druhý videozáznam proveďte stejný postup:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 a pro výstup pouze zvukového souboru:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 Pokud teď změníme přenos pro některé z videosouborů nebo zvukových souborů, příslušný kodér se překonfiguruje a konvence názvů souborů na základě přenosové rychlosti se bude akceptovat automaticky.
 
@@ -462,11 +462,11 @@ V případě, že se liší od našeho videa MP4, komponenta kodéru JPG vyprodu
 
 *Představujeme zapisovač souborů JPG pro hledání scény*
 
-Nakonfigurujte vlastnost Cesta k výstupní složce s výrazem: $ {ROOT_outputWriteDirectory}.
+Nakonfigurujte vlastnost Cesta výstupní složky pomocí výrazu:`${ROOT_outputWriteDirectory}`
 
 a vlastnost Prefix názvu souboru s:
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 Předpona určuje, jak se pojmenují miniatury souborů. Mají příponu s číslem udávajícím pozici jezdce v datovém proudu.
 
@@ -551,11 +551,11 @@ Nyní otevřete ořezávání vlastností ze zvukového ořezávání a nakonfig
 
 Pro čas zahájení oříznutí zvuku:
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 a pro svůj koncový čas:
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>Dokončený pracovní postup
 ![Dokončený pracovní postup](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +591,7 @@ Skripty jsou napsané v aplikaci Groove, dynamicky kompilovaný skriptovací jaz
 
 Pojďme do kontextu našeho realizeScript napsat jednoduchý skript Groove Hello World. V editoru zadejte následující:
 
-    node.log("hello world");
+`node.log("hello world");`
 
 Nyní spusťte místní testovací běh. Po tomto spuštění zkontrolujte (prostřednictvím karty systém v komponentě skriptu) vlastnost Logs.
 

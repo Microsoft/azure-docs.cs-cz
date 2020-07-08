@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 67c7955316d4c9670509affb478813df0768f261
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 73b24de0e66ca8fbe2097f7da39b64aaea8b1ac4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832550"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057989"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V2
 
@@ -66,18 +66,20 @@ Otázka: Jak můžu otočit video během procesu kódování?
 
 Odpověď: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) podporuje rotaci pomocí úhlů 90/180/270. Výchozí chování je "auto", kde se pokusí rozpoznat metadata otočení ve vstupním souboru MP4/MOV a kompenzovat pro něj. Zahrňte následující **zdrojový** element do jednoho [ze zadaných přednastavení JSON:](media-services-mes-presets-overview.md)
 
-    "Version": 1.0,
-    "Sources": [
-    {
-      "Streams": [],
-      "Filters": {
-        "Rotation": "90"
-      }
-    }
-    ],
-    "Codecs": [
+```json
+"Version": 1.0,
+"Sources": [
+{
+  "Streams": [],
+  "Filters": {
+    "Rotation": "90"
+  }
+}
+],
+"Codecs": [
 
-    ...
+...
+```
 
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services

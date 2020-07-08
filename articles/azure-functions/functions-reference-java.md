@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v jazyce Java pro Azure Function
 description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: b3404920dda9225b289d82013d29c35a1297ec32
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340330"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057598"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
 
-## <a name="create-kotlin-functions-preview"></a>Vytváření Kotlinch funkcí (Preview)
-
-K dispozici je také Maven Archetype pro generování Kotlin funkcí. Tato Archetype, která je aktuálně ve verzi Preview, je publikovaná v rámci následujícího _identifikátoru GroupID_:_artifactId_: [com. Microsoft. Azure: Azure-Functions-Kotlin-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
-
-Následující příkaz vytvoří nový projekt funkce jazyka Java pomocí tohoto archetype:
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-Pokud chcete začít s tímto Archetype, přečtěte si téma [rychlý Start Kotlin](functions-create-first-kotlin-maven.md).
-
 ## <a name="folder-structure"></a>Struktura složek
 
 Tady je struktura složek Azure Functionsho projektu Java:
@@ -90,9 +76,7 @@ FunctionsProject
  | - pom.xml
 ```
 
-_* Projekt Kotlin vypadá velmi podobně, protože je stále Maven_
-
-Ke konfiguraci aplikace Function App můžete použít sdílený soubor [Host. JSON](functions-host-json.md) . Každá funkce má svůj vlastní soubor kódu (. Java) a konfigurační soubor vazby (Function. JSON).
+Ke konfiguraci aplikace Function App můžete použít sdílenou [host.js](functions-host-json.md) souboru. Každá funkce má svůj vlastní soubor kódu (. Java) a konfigurační soubor vazby (function.json).
 
 Do projektu lze umístit více než jednu funkci. Vyhněte se vkládání funkcí do samostatných jar. V `FunctionApp` cílovém adresáři je to, co se nasadí do vaší aplikace Function App v Azure.
 
@@ -103,7 +87,7 @@ Do projektu lze umístit více než jednu funkci. Vyhněte se vkládání funkc�
 Použijte poznámky Java obsažené v balíčku [com. Microsoft. Azure. Functions. Annotation. *](/java/api/com.microsoft.azure.functions.annotation) pro svázání vstupu a výstupů s vašimi metodami. Další informace najdete v [referenční dokumentaci Java](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Musíte nakonfigurovat účet Azure Storage v [místním. Settings. JSON](/azure/azure-functions/functions-run-local#local-settings-file) pro spuštění služby Azure Blob Storage, úložiště Azure Queue Storage nebo služby Azure Table Storage místně.
+> Musíte nakonfigurovat účet Azure Storage v [local.settings.jsna](/azure/azure-functions/functions-run-local#local-settings-file) pro spuštění služby Azure Blob Storage, úložiště Azure Queue Storage nebo služby Azure Table Storage místně.
 
 Příklad:
 
@@ -162,7 +146,7 @@ Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS` . D
 > [!IMPORTANT]  
 > V plánu spotřeby musíte také přidat nastavení WEBSITE_USE_PLACEHOLDER s hodnotou 0, aby přizpůsobení fungovalo. Toto nastavení zvyšuje dobu studeného startu pro funkce jazyka Java.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V [Azure Portal](https://portal.azure.com)přidejte nastavení pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` .
 
@@ -203,7 +187,7 @@ Pro převod vstupních dat na POJO [Azure-Functions-Java-Work](https://github.co
 
 ### <a name="binary-data"></a>Binární data
 
-Vytvořte vazby na binární vstupy nebo výstupy na `byte[]` , nastavením `dataType` pole v souboru Function. JSON na `binary` :
+Navázání binárních vstupů nebo výstupů do `byte[]` , nastavením `dataType` pole v function.jsna `binary` :
 
 ```java
    @FunctionName("BlobTrigger")

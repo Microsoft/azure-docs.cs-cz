@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 07/07/2020
 ms.author: memildin
-ms.openlocfilehash: 47a731507c102e2e44c3b139ea576151bd7a6236
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: f12a137d4cf182837e2f2212923b97cb7dc5f34a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85268988"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057768"
 ---
 # <a name="reference-list-of-azure-domains-not-comprehensive"></a>Odkaz na seznam domén Azure (není vyčerpávající)
 
@@ -27,27 +27,26 @@ Tato stránka je částečný seznam domén Azure, které se používají. Někt
 
 |Služba  |Subdoména  |
 |---------|---------|
-|Cloud Services/Virtual Machines|*. cloudapp.net|
-|Azure websites|*. azurewebsites.net|
-|Blob Storage|*.blob.core.windows.net|
-|Table Storage|*. table.core.windows.net|
-|Služba front|*. queue.core.windows.net|
-|SQL Database|*. database.windows.net|
-|Access Control Service|*.accesscontrol.windows.net|
-|Service Bus|*.servicebus.windows.net|
-|Azure Active Directory|*. graph.windows.net|
-|Souborová služba|*. file.core.windows.net|
-|Mobile Services|*. azure-mobile.net|
-|Media Services|*. origin.mediaservices.windows.net|
-|Visual Studio Codespaces|*.visualstudio.com|
-|BizTalk Services|*. biztalk.windows.net|
-|CDN|*. vo.msecnd.net|
-|API Management|*. azure-api.net|
-|Traffic Manager|*. trafficmanager.net|
-|Active Directory|*. onmicrosoft.com|
-|Služby správy|*. management.core.windows.net|
-|Traffic Manager|*. Trafficmanager.net|
-|Azure IoT Edge|*. Azureedge.net|
-|Cloud Services|*. Cloudapp.azure.com|
-|Služby front-dveří Azure|*. Azurefd.net|
-|Služba Azure Container Services|*. Azurecontainer.io|
+|[Azure Access Control Service](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/) (vyřazeno)|*.accesscontrol.windows.net|
+|[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)|*. graph.windows.net/*. onmicrosoft.com|
+|[Azure API Management](https://azure.microsoft.com/services/api-management/)|*. azure-api.net|
+|[Azure BizTalk Services](https://azure.microsoft.com/pricing/details/biztalk-services/) (vyřazeno)|*. biztalk.windows.net|
+|[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)|*.blob.core.windows.net|
+|[Azure Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) a [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/)|*. cloudapp.net|
+|[Azure Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)|*. cloudapp.azure.com|
+|[Azure Container Registry](https://azure.microsoft.com/services/container-registry/)|*. azurecr.io|
+|Azure Container Service (ACS) (zastaralé)|*. azurecontainer.io|
+|[Azure Content Delivery Network (CDN)](https://azure.microsoft.com/services/cdn/)|*. vo.msecnd.net|
+|[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)|*. file.core.windows.net|
+|[Azure Front Door](https://azure.microsoft.com/services/frontdoor/)|*. azurefd.net|
+|Služby správy Azure|*. management.core.windows.net|
+|[Azure Media Services](https://azure.microsoft.com/services/media-services/)|*. origin.mediaservices.windows.net|
+|[Azure Mobile Apps](https://azure.microsoft.com/services/app-service/mobile/)|*. azure-mobile.net|
+|[Azure Queue Storage](https://azure.microsoft.com/services/storage/queues/)|*. queue.core.windows.net|
+|[Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview)|*.servicebus.windows.net|
+|[Azure SQL Database](https://azure.microsoft.com/services/sql-database/)|*. database.windows.net|
+|[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)|*.azureedge.net|
+|[Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)|*. table.core.windows.net|
+|[Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)|*. trafficmanager.net|
+|[Azure websites](https://azure.microsoft.com/resources/videos/playlists/websites/)|*. azurewebsites.net|
+|[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualstudio.com|

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 0f01da074423a45b30e6c386852e88798e55938b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888801"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057547"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure Portal
 
@@ -32,7 +32,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Výběr **skupin prostředků**
 
     ![Přidat skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -52,7 +52,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit seznam skupin prostředků, vyberte **skupiny prostředků** .
 
     ![Procházet skupiny prostředků](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -61,7 +61,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="open-resource-groups"></a>Otevření skupin prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **Skupiny prostředků**.
 3. Vyberte skupinu prostředků, kterou chcete otevřít.
 
@@ -111,5 +111,5 @@ Informace o exportu šablon najdete v tématu [Export jednoho a více prostředk
 
 - Informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](overview.md).
 - Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../templates/template-syntax.md).
-- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
+- Další informace o vývoji šablon najdete v [podrobných kurzech](../index.yml).
 - Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

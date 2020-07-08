@@ -3,12 +3,12 @@ title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: e9591c8b32808c3b11eb478b7f52a171cefc587d
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7fe735cf523758f51fd9d6751de8507b2af46737
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975601"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057581"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -226,22 +226,26 @@ az lock delete --ids $lockid
 
 ## <a name="rest-api"></a>REST API
 
-Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](https://docs.microsoft.com/rest/api/resources/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
+Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](/rest/api/resources/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
 
 Chcete-li vytvořit zámek, spusťte příkaz:
 
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```http
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
+```
 
 Rozsahem může být předplatné, skupina prostředků nebo prostředek. Název zámku je bez ohledu na to, kam chcete volat zámek. V případě verze API-Version použijte **2016-09-01**.
 
 V žádosti zahrňte objekt JSON, který určuje vlastnosti zámku.
 
-    {
-      "properties": {
-        "level": "CanNotDelete",
-        "notes": "Optional text notes."
-      }
-    }
+```json
+{
+  "properties": {
+  "level": "CanNotDelete",
+  "notes": "Optional text notes."
+  }
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

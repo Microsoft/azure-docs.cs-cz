@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 25e001927d5c06b4a7e5639faaa054ae18b12bb7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f18eea697e875cc926e8fbaa0f61cf2d4639be0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706490"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057513"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure PowerShell
 
@@ -74,7 +74,7 @@ Další informace o tom, jak Azure Resource Manager objednává odstranění pro
 
 Viz [nasazení prostředků do existující skupiny prostředků](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group).
 
-Pokud chcete ověřit nasazení skupiny prostředků, přečtěte si téma [test-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0).
+Pokud chcete ověřit nasazení skupiny prostředků, přečtěte si téma [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0).
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Nasazení skupiny prostředků a prostředků
 
@@ -223,5 +223,5 @@ Další informace najdete v tématu [Export jednoho a více prostředků do šab
 
 - Informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](overview.md).
 - Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../templates/template-syntax.md).
-- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
+- Další informace o vývoji šablon najdete v [podrobných kurzech](../index.yml).
 - Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74900306"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058006"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redigování ploch pomocí Azure Media Analytics 
 ## <a name="overview"></a>Přehled
@@ -38,7 +38,7 @@ Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MOV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' kombinované '}} |
-| Výstupní Asset |foo_redacted. MP4 |Video s použitím rozostření |
+| Výstupní Asset |foo_redacted.mp4 |Video s použitím rozostření |
 
 #### <a name="input-example"></a>Příklad vstupu:
 [Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
@@ -53,8 +53,8 @@ Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' Analyze '}} |
-| Výstupní Asset |foo_annotations. JSON |Data poznámek pro umístění obličeje ve formátu JSON. Tuto možnost může upravit uživatel, aby bylo možné upravovat rozmazaný ohraničovací rámečky. Viz ukázka níže. |
-| Výstupní Asset |foo_thumb %0 6 d. jpg [foo_thumb000001. jpg, foo_thumb000002. jpg] |Oříznutý jpg každé zjištěné plochy, kde číslo označuje labelId obličej |
+| Výstupní Asset |foo_annotations.jsna |Data poznámek pro umístění obličeje ve formátu JSON. Tuto možnost může upravit uživatel, aby bylo možné upravovat rozmazaný ohraničovací rámečky. Viz ukázka níže. |
+| Výstupní Asset |foo_thumb% 06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Oříznutý jpg každé zjištěné plochy, kde číslo označuje labelId obličej |
 
 #### <a name="output-example"></a>Příklad výstupu:
 
@@ -117,21 +117,23 @@ Výstup z průchodu Analyze nezahrnuje původní video. Video se musí nahrát d
 | Krok | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4. Stejné video jako v kroku 1. |
-| Vstupní Asset |foo_annotations. JSON |poznámky soubor metadat z fáze One, s volitelnými úpravami. |
-| Vstupní Asset |foo_IDList. txt (volitelné) |Nepovinný nový řádek oddělený seznam ID tváře k redigování Pokud pole necháte prázdné, rozostří všechny plošky. |
+| Vstupní Asset |foo_annotations.jsna |poznámky soubor metadat z fáze One, s volitelnými úpravami. |
+| Vstupní Asset |foo_IDList.txt (volitelné) |Nepovinný nový řádek oddělený seznam ID tváře k redigování Pokud pole necháte prázdné, rozostří všechny plošky. |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' redigování}} |
-| Výstupní Asset |foo_redacted. MP4 |Video s rozostřením aplikovaným na základě poznámek |
+| Výstupní Asset |foo_redacted.mp4 |Video s rozostřením aplikovaným na základě poznámek |
 
 #### <a name="example-output"></a>Příklad výstupu
 Toto je výstup z IDList s jedním vybraným ID.
 
 [Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
-Příklad foo_IDList. txt
+Příklad foo_IDList.txt
  
-     1
-     2
-     3
+```output
+1
+2
+3
+```
 
 ## <a name="blur-types"></a>Typy rozostření
 

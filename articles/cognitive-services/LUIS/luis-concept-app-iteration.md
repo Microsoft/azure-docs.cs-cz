@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: diberry
-ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683108"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057870"
 ---
 # <a name="iterative-app-design-for-luis"></a>Návrh iterační aplikace pro LUIS
 
 Aplikace Language Understanding (LUIS) se učí a efektivně funguje s iterací. Tady je typický cyklus iterace:
 
 * Vytvořit novou verzi
-* Úprava schématu aplikace LUIS To zahrnuje:
+* Úprava schématu aplikace LUIS Sem patří:
     * Záměry s příkladem projevy
     * Entity
     * Funkce
@@ -107,11 +107,22 @@ Můžete publikovat na buď fázi, nebo produkční sloty. Každá patice může
 
 Školené verze nejsou automaticky dostupné na [koncovém bodu](luis-glossary.md#endpoint)aplikace Luis. Pokud chcete, aby byla verze dostupná na koncovém bodu aplikace LUIS, musíte [publikovat](luis-how-to-publish-app.md) nebo znovu publikovat verzi. Můžete publikovat do **přípravy** a **výroby**a poskytnout tak dvě verze aplikace, které jsou k dispozici na koncovém bodu. Pokud je potřeba, aby byly v koncovém bodě dostupné další verze aplikace, měli byste verzi exportovat a znovu ji naimportovat do nové aplikace. Nová aplikace má jiné ID aplikace.
 
-### <a name="import-and-export-a-version"></a>Import a export verze
+### <a name="import-a-version"></a>Import verze
 
-Verzi je možné importovat na úrovni aplikace. Tato verze se stala aktivní verzí a používá ID verze ve `versionId` vlastnosti souboru aplikace. Můžete také importovat do existující aplikace na úrovni verze. Nová verze se zobrazí jako aktivní verze.
+Verzi je možné **importovat** jako novou:
+* Aplikace s novým ID aplikace
+* Verze existující aplikace
 
-Verzi je možné exportovat také na úrovni aplikace nebo verze. Jediným rozdílem je, že vyexportovaná verze na úrovni aplikace je aktuálně aktivní verze, zatímco na úrovni verze můžete na stránce **[Nastavení](luis-how-to-manage-versions.md)** zvolit libovolnou verzi, kterou chcete exportovat.
+Tato verze se stala aktivní verzí a používá ID verze ve `versionId` vlastnosti souboru aplikace.
+
+### <a name="export-a-version"></a>Exportovat verzi
+
+Verzi je možné **exportovat** z portálu Luis buď na úrovni aplikace, nebo na úrovni verze:
+
+* Úroveň aplikace – vyberte aplikace na stránce **Moje aplikace** a pak vyberte **exportovat** .
+* Úroveň verze – vyberte odkaz aplikace na stránce **Moje aplikace** , vyberte **Spravovat**, vybrat **verze** .
+
+Jediným rozdílem je, že vyexportovaná verze na úrovni aplikace je aktuálně aktivní verze, zatímco na úrovni verze, můžete na stránce **[Nastavení](luis-how-to-manage-versions.md)** zvolit libovolnou verzi, kterou chcete exportovat.
 
 Exportovaný **soubor neobsahuje** :
 
@@ -132,7 +143,7 @@ Začněte [klonací](luis-how-to-manage-versions.md#clone-a-version) ze základn
 
 Každý autor provádí změny ve své vlastní verzi aplikace. Když je autor spokojeni s modelem, exportujte nové verze do souborů JSON.
 
-U exportovaných aplikací, souborů JSON nebo. lu se dají porovnat změny. Zkombinujte soubory a vytvořte jeden soubor nové verze. Změňte `versionId` vlastnost tak, aby signalizuje novou sloučenou verzi. Importujte tuto verzi do původní aplikace.
+Exportované aplikace `.json` nebo `.lu` soubory lze porovnat se změnami. Zkombinujte soubory a vytvořte jeden soubor nové verze. Změňte `versionId` vlastnost tak, aby signalizuje novou sloučenou verzi. Importujte tuto verzi do původní aplikace.
 
 Tato metoda umožňuje mít jednu aktivní verzi, jednu verzi fáze a jednu publikovanou verzi. Výsledky aktivní verze můžete porovnat s publikovanou verzí (fáze nebo produkce) v [podokně interaktivní testování](luis-interactive-test.md).
 
@@ -150,4 +161,4 @@ Až budete s cyklem iterace hotovi, můžete postup opakovat. Začněte s [reviz
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s koncepty [spolupráce](luis-concept-keys.md).
+Seznamte se s koncepty [spolupráce](luis-how-to-azure-subscription.md).
