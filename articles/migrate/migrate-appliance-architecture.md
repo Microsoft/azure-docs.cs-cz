@@ -4,10 +4,9 @@ description: Poskytuje přehled zařízení Azure Migrate používaných při po
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770896"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate

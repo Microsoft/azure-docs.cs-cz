@@ -4,10 +4,9 @@ description: Nejčastější dotazy v Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701953"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
@@ -74,7 +73,7 @@ Některé body ke zvážení:
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatná telemetrie z různých verzí
 
 * Více rolí v aplikaci: použijte jeden prostředek Application Insights a filtrujte [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* Oddělení vývoje, testování a verzí vydání: použijte jiné prostředky Application Insights. Vyzvedněte klíče instrumentace ze souboru Web. config. [Další informace](../../azure-monitor/app/separate-resources.md)
+* Oddělení vývoje, testování a verzí vydání: použijte jiné prostředky Application Insights. Z web.config si vyzvedněte klíče instrumentace. [Další informace](../../azure-monitor/app/separate-resources.md)
 * Verze sestavení pro vytváření sestav: přidejte vlastnost pomocí inicializátoru telemetrie. [Další informace](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Monitorování back-end serverů a aplikací klasické pracovní plochy
@@ -118,7 +117,7 @@ Pokud chcete zobrazit seznam uživatelů s daty, například které stránky se 
 * Pokud máte pouze malý počet uživatelů, odešlete vlastní události nebo metriky pomocí dat o hodnotě metriky nebo názvu události a nastavte ID uživatele jako vlastnost. Chcete-li analyzovat zobrazení stránky, nahraďte standardní volání trackPageView JavaScriptu. K analýze telemetrie na straně serveru použijte inicializátor telemetrie k přidání ID uživatele do telemetrie všech serverů. Pak můžete filtrovat a segmentovat metriky a vyhledat ID uživatele.
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Snížit provoz z aplikace do Application Insights
-* V [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)zakažte všechny moduly, které nepotřebujete, například kolektor čítače výkonu.
+* V [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)zakažte všechny moduly, které nepotřebujete, například kolektor čítače výkonu.
 * Použijte [vzorkování a filtrování](../../azure-monitor/app/api-filtering-sampling.md) v sadě SDK.
 * Na webových stránkách omezte počet volání AJAX hlášených pro každé zobrazení stránky. Ve fragmentu skriptu po `instrumentationKey:...` vložte: `,maxAjaxCallsPerView:3` (nebo vhodné číslo).
 * Pokud používáte [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), před odesláním výsledku COMPUTE agreguje dávky hodnot metriky. Existuje přetížení TrackMetric (), které to poskytuje.
@@ -145,7 +144,7 @@ Pro aplikace ASP.NET Core můžete k `TelemetryConfiguration` instanci přistupo
 ## <a name="disable-selected-standard-collectors"></a>Zakázat vybrané standardní sběrače
 Můžete zakázat standardní sběrače (například čítače výkonu, požadavky HTTP nebo závislosti).
 
-* **ASP.NET aplikace** – odstraňte nebo zakomentujte příslušné řádky v [souboru ApplicationInsights. config.](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
+* **ASP.NET aplikace** – odstraňte nebo Odkomentujte příslušné řádky v [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
 * **ASP.NET Core aplikace** – v ApplicationInsights se řiďte možnostmi konfigurace modulů telemetrie [ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>Zobrazit čítače výkonu systému

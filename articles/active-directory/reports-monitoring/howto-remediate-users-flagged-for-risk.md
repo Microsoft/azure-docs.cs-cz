@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608921"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -32,7 +31,7 @@ Pokud se zjistí neobvyklé aktivity, které můžou označovat neoprávněný p
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Zpřístupnění sestavy uživatelů označených příznakem rizika
 
-Můžete zkontrolovat uživatele označené příznakem rizika prostřednictvím [sestavy rizika pro uživatele](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) v Azure Portal. Pokud službu Azure AD nemáte, můžete se zdarma zaregistrovat na adrese [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD). 
+Můžete zkontrolovat uživatele označené příznakem rizika prostřednictvím [sestavy rizika pro uživatele](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) v Azure Portal. Pokud službu Azure AD nemáte, můžete se zdarma zaregistrovat na adrese [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) . 
 
 V sestavě uživatelů označených příznakem rizika můžete pro každého uživatele provést následující akce:
 
@@ -75,7 +74,7 @@ Provedení následujících akcí vám pomůže napravit ovlivněné účty a za
 
     f. Nastavit vysokou složitost hesla účtu.
 
-    g. Povolit auditování poštovní schránky.
+    například Povolit auditování poštovní schránky.
 
     h. Vytvořte protokol auditu, který správce může zkontrolovat.
 

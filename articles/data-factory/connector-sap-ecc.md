@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 4bdcb2b4008f54ff0d84594e6f3b5a7b76944e65
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987021"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
@@ -74,11 +73,11 @@ Pro propojenou službu SAP ECC jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| `type` | `type`Vlastnost musí být nastavena na hodnotu `SapEcc` . | Ano |
-| `url` | Adresa URL služby SAP ECC OData. | Ano |
-| `username` | Uživatelské jméno použité pro připojení k SAP ECC. | Ne |
-| `password` | Heslo ve formátu prostého textu používané pro připojení k SAP ECC. | Ne |
-| `connectVia` | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud nezadáte modul runtime, použije se výchozí prostředí Azure Integration runtime. | Ne |
+| `type` | `type`Vlastnost musí být nastavena na hodnotu `SapEcc` . | Yes |
+| `url` | Adresa URL služby SAP ECC OData. | Yes |
+| `username` | Uživatelské jméno použité pro připojení k SAP ECC. | No |
+| `password` | Heslo ve formátu prostého textu používané pro připojení k SAP ECC. | No |
+| `connectVia` | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud nezadáte modul runtime, použije se výchozí prostředí Azure Integration runtime. | No |
 
 ### <a name="example"></a>Příklad
 
@@ -113,7 +112,7 @@ Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| `path` | Cesta k entitě SAP ECC OData | Ano |
+| `path` | Cesta k entitě SAP ECC OData | Yes |
 
 ### <a name="example"></a>Příklad
 
@@ -146,9 +145,9 @@ V části aktivity kopírování jsou podporovány následující vlastnosti `so
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| `type` | `type`Vlastnost oddílu aktivity kopírování `source` musí být nastavena na hodnotu `SapEccSource` . | Ano |
-| `query` | Možnosti dotazu OData pro filtrování dat Příklad:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC kopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
-| `httpRequestTimeout` | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | Ne |
+| `type` | `type`Vlastnost oddílu aktivity kopírování `source` musí být nastavena na hodnotu `SapEccSource` . | Yes |
+| `query` | Možnosti dotazu OData pro filtrování dat Příklad:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC kopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| `httpRequestTimeout` | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | No |
 
 ### <a name="example"></a>Příklad
 

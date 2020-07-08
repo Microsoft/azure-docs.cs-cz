@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 04c541dc10b2e25aa1e24ef704b4d939243f23ca
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513727"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení potíží s nasazením zařízení StorSimple
@@ -139,7 +138,7 @@ K registraci zařízení použijete službu StorSimple Device Manager spuštěno
 | 9 |Upozornění: nepovedlo se aktivovat zařízení. Hesla správce zařízení a StorSimple Snapshot Manager hesla se nezměnila. |Pokud se registrace nepovede, hesla správce zařízení a StorSimple Snapshot Manager se nezmění. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Nástroje pro řešení potíží s nasazeními StorSimple
-StorSimple zahrnuje několik nástrojů, které můžete použít k řešení potíží s řešením StorSimple. Zde jsou některé z nich:
+StorSimple zahrnuje několik nástrojů, které můžete použít k řešení potíží s řešením StorSimple. Tady jsou některé z nich:
 
 * Podporuje balíčky a protokoly zařízení.
 * Rutiny navržené speciálně pro řešení potíží.

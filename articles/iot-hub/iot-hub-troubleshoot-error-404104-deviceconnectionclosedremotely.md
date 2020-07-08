@@ -10,10 +10,9 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758724"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
@@ -48,7 +47,7 @@ Mezi možnosti patří:
 
 - Zařízení ztratilo základní síťové připojení déle než [MQTT Keep-Alive](iot-hub-mqtt-support.md#default-keep-alive-timeout), což má za následek časový limit vzdálené nečinnosti. Nastavení udržování otevřených připojení MQTT může být odlišné podle zařízení.
 
-- Zařízení odeslalo resetování na úrovni protokolu TCP/IP, ale neposlalo na `MQTT DISCONNECT`úrovni aplikace. Zařízení v podstatě zavřelo základní připojení soketu. Tento problém je někdy způsoben chybami ve starších verzích sady Azure IoT SDK.
+- Zařízení odeslalo resetování na úrovni protokolu TCP/IP, ale neposlalo na úrovni aplikace `MQTT DISCONNECT` . Zařízení v podstatě zavřelo základní připojení soketu. Tento problém je někdy způsoben chybami ve starších verzích sady Azure IoT SDK.
 
 - Došlo k chybě aplikace na straně zařízení.
 

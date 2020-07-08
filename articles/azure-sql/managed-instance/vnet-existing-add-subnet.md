@@ -13,13 +13,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 5d91fc0d5dd51ea5ef766f23519f38202b24a337
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711302"
 ---
-# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Konfigurace existující virtuální sítě pro spravovanou instanci SQL Azure
+# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Konfigurace stávající virtuální sítě pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Spravovaná instance Azure SQL musí být nasazená v rámci [virtuální sítě](../../virtual-network/virtual-networks-overview.md) Azure a podsíť vyhrazená jenom pro spravované instance. Existující virtuální síť a podsíť můžete použít, pokud jsou nakonfigurované podle [požadavků virtuální sítě spravované instance SQL](connectivity-architecture-overview.md#network-requirements).

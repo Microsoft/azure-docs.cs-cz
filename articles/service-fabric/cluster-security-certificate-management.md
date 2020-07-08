@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
 ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324738"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Správa certifikátů v Service Fabric clusterech
@@ -69,7 +68,7 @@ Pro naše účely jsou první dva kroky v pořadí výše nesouvisející; jedin
 
 Tyto kroky jsou popsané níže. Všimněte si rozdílů mezi zřizováním certifikátů deklarovaných pomocí kryptografického otisku a společného názvu v uvedeném pořadí.
 
-*Obrázek. 1.* Postup vystavování a zřizování certifikátů deklarovaných pomocí kryptografického otisku
+*Obrázek 1.* Postup vystavování a zřizování certifikátů deklarovaných pomocí kryptografického otisku
 ![Zřizování certifikátů deklarovaných pomocí kryptografického otisku][Image1]
 
 *Obrázek. 2.* Postup vystavování a zřizování certifikátů deklarovaných běžným názvem subjektu

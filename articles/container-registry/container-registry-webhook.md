@@ -4,10 +4,9 @@ description: Naučte se, jak pomocí webhooků aktivovat události, když se akc
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83685032"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
@@ -29,7 +28,7 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 1. Na panelu nástrojů Webhooku vyberte **Přidat** .
 1. Vyplňte formulář *vytvořit Webhook* s následujícími informacemi:
 
-| Hodnota | Popis |
+| Hodnota | Description |
 |---|---|
 | Název Webhooku | Název, který chcete předat Webhooku. Může obsahovat jenom písmena a číslice a musí mít délku 5-50 znaků. |
 | Umístění | V případě [geograficky replikovaného](container-registry-geo-replication.md) registru zadejte oblast Azure repliky registru. 

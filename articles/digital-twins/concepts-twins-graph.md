@@ -7,12 +7,11 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c4cdfc35d39be827109c56a16d68f6e51b56ef43
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
-ms.translationtype: MT
+ms.openlocfilehash: 6b6da2a15441564ef0b67e76ee5a0e0c85839a63
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609312"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -95,7 +94,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního*vlákna (v* *souladu*s nevyhovujícími, *Neznámý*) |
@@ -160,7 +159,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$relationshipId` | Uživatelem zadaný řetězec představující ID tohoto vztahu. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `relationshipId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$sourceId` | ID zdrojového digitálního vlákna |
@@ -175,8 +174,8 @@ Tady je příklad vztahu naformátovaného jako objekt JSON:
   "$relationshipId": "relationship-01",
   "$etag": "W/\"506e8391-2b21-4ac9-bca3-53e6620f6a90\"",
   "$sourceId": "GroundFloor",
-  "$relationshipName": "contains",
   "$targetId": "Cafe",
+  "$relationshipName": "contains",
   "startDate": "2020-02-04"
 }
 ```

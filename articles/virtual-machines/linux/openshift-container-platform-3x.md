@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757896"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Nasazení OpenShift kontejneru platformy 3,11 v Azure
@@ -25,7 +24,7 @@ K nasazení OpenShift kontejneru Platform 3,11 v Azure můžete použít někter
 - Další možností je použití [nabídky Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy).
 
 Pro všechny možnosti se vyžaduje předplatné Red Hat. Během nasazování je instance Red Hat Enterprise Linux zaregistrovaná v rámci předplatného Red Hat a připojená k ID fondu, které obsahuje nároky na OpenShift kontejnerové platformy.
-Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu pro Red Hat Subscription Manager (RHSM). Můžete použít aktivační klíč, ID organizace a ID fondu. Tyto informace můžete ověřit tak, že se přihlásíte k https://access.redhat.com.
+Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu pro Red Hat Subscription Manager (RHSM). Můžete použít aktivační klíč, ID organizace a ID fondu. Tyto informace můžete ověřit tak, že se přihlásíte k https://access.redhat.com .
 
 
 ## <a name="deploy-using-the-openshift-container-platform-resource-manager-311-template"></a>Nasazení pomocí šablony OpenShift Container Platform Správce prostředků 3,11
@@ -46,17 +45,17 @@ Chcete-li nasadit pomocí šablony Správce prostředků, použijte soubor param
 
 Mezi běžné možnosti přizpůsobení patří, ale nejsou omezené na:
 
-- Velikost virtuálního počítače bastionu (proměnná v azuredeploy. JSON)
-- Zásady vytváření názvů (proměnné v azuredeploy. JSON)
+- Velikost virtuálního počítače bastionu (proměnná v azuredeploy.jszapnutá)
+- Zásady vytváření názvů (proměnné v azuredeploy.jszapnuté)
 - OpenShift konkrétní clustery, upravené prostřednictvím souboru Hosts (deployOpenShift.sh)
 
 ### <a name="configure-the-parameters-file"></a>Konfigurace souboru parametrů
 
 [Šablona platformy kontejnerů OpenShift](https://github.com/Microsoft/openshift-container-platform) má k dispozici více větví pro různé verze kontejnerové platformy OpenShift.  Na základě vašich potřeb můžete nasadit přímo z úložiště nebo můžete rozvětvit úložiště a před nasazením vytvořit vlastní změny v šablonách nebo skriptech.
 
-Pro `aadClientId` parametr `appId` použijte hodnotu z instančního objektu, který jste vytvořili dříve.
+`appId`Pro parametr použijte hodnotu z instančního objektu, který jste vytvořili dříve `aadClientId` .
 
-Následující příklad ukazuje soubor parametrů s názvem azuredeploy. Parameters. JSON se všemi požadovanými vstupy.
+Následující příklad ukazuje soubor parametrů s názvem azuredeploy.parameters.jspro všechny požadované vstupy.
 
 ```json
 {
@@ -241,16 +240,16 @@ Nahraďte parametry konkrétními informacemi.
 
 Různé verze mohou mít různé parametry, takže ověřují parametry potřebné pro větev, kterou používáte.
 
-### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. Vysvětlení souboru Parameters. JSON
+### <a name="azuredeployparametersjson-file-explained"></a>Vysvětlení azuredeploy.Parameters.jssouboru
 
 | Vlastnost | Popis | Platné možnosti | Výchozí hodnota |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | Adresa URL artefaktů (JSON, skripty atd.) |  |  https:\//RAW.githubusercontent.com/Microsoft/OpenShift-Container-Platform/Master  |
+| `_artifactsLocation`  | Adresa URL artefaktů (JSON, skripty atd.) |  |  https: \/ /raw.githubusercontent.com/Microsoft/OpenShift-Container-Platform/Master  |
 | `location` | Oblast Azure, do které se nasazují prostředky |  |  |
-| `masterVmSize` | Velikost hlavního virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_E2s_v3 |
-| `infraVmSize` | Velikost infračerveného virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_D4s_v3 |
-| `nodeVmSize` | Velikost virtuálního počítače uzlu aplikace Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_D4s_v3 |
-| `cnsVmSize` | Velikost virtuálního počítače uzlu pro nativní úložiště kontejnerů (CNS). Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_E4s_v3 |
+| `masterVmSize` | Velikost hlavního virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů uvedených v azuredeploy.jssouboru. |  | Standard_E2s_v3 |
+| `infraVmSize` | Velikost infračerveného virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů uvedených v azuredeploy.jssouboru. |  | Standard_D4s_v3 |
+| `nodeVmSize` | Velikost virtuálního počítače uzlu aplikace Vyberte jednu z povolených velikostí virtuálních počítačů uvedených v azuredeploy.jssouboru. |  | Standard_D4s_v3 |
+| `cnsVmSize` | Velikost virtuálního počítače uzlu pro nativní úložiště kontejnerů (CNS). Vyberte jednu z povolených velikostí virtuálních počítačů uvedených v azuredeploy.jssouboru. |  | Standard_E4s_v3 |
 | `osImageType` | Obrázek RHEL, který se má použít defaultgallery: na vyžádání; Marketplace: obrázek třetí strany | defaultgallery <br> marketplace | defaultgallery |
 | `marketplaceOsImage` | Pokud `osImageType` je Marketplace, zadejte odpovídající hodnoty pro ' Publish ', ' nabídka ', ' SKU ', ' verze ' nabídky Marketplace. Tento parametr je typ objektu. |  |  |
 | `storageKind` | Typ úložiště, který se má použít  | starosti<br> spravovateln | starosti |
@@ -276,10 +275,10 @@ Různé verze mohou mít různé parametry, takže ověřují parametry potřebn
 | `keyVaultName` | Název Key Vault, který jste vytvořili |  |  |
 | `enableAzure` | Povolit Azure Cloud Provider | true <br> false (nepravda) | true |
 | `aadClientId` | ID klienta Azure Active Directory také označované jako ID aplikace pro instanční objekt |  |  |
-| `domainName` | Název vlastního názvu domény, který se má použít (Pokud je k dispozici) Pokud není nasazen plně soukromý cluster, nastavte na hodnotu None. |  | Žádná |
-| `masterClusterDnsType` | Typ domény pro webovou konzolu OpenShift klíčové slovo Default bude používat označení DNS pro veřejnou IP adresu hlavního infračerveného provozu. možnost vlastní umožňuje definovat vlastní název. | default <br> custom | default |
+| `domainName` | Název vlastního názvu domény, který se má použít (Pokud je k dispozici) Pokud není nasazen plně soukromý cluster, nastavte na hodnotu None. |  | žádné |
+| `masterClusterDnsType` | Typ domény pro webovou konzolu OpenShift klíčové slovo Default bude používat označení DNS pro veřejnou IP adresu hlavního infračerveného provozu. možnost vlastní umožňuje definovat vlastní název. | default <br> vlastní | default |
 | `masterClusterDns` | Vlastní název DNS, který se použije pro přístup k webové konzoli OpenShift, pokud jste vybrali možnost Custom (vlastní) pro`masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | Pokud je nastavená na ' nipio `routingSubDomain` ', použije NIP.IO.  Pokud máte vlastní doménu, kterou chcete použít pro směrování, použijte možnost vlastní. | nipio <br> custom | nipio |
+| `routingSubDomainType` | Pokud je nastavená na ' nipio ', použije `routingSubDomain` NIP.IO.  Pokud máte vlastní doménu, kterou chcete použít pro směrování, použijte možnost vlastní. | nipio <br> vlastní | nipio |
 | `routingSubDomain` | Název DNS se zástupnými znaky, který chcete použít pro směrování, pokud jste vybrali možnost vlastní pro`routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Vyberte, zda chcete použít existující Virtual Network nebo vytvořit nový Virtual Network | stávající <br> new | new |
 | `virtualNetworkResourceGroupName` | Název skupiny prostředků pro nový Virtual Network, pokud jste vybrali možnost Nový pro`virtualNetworkNewOrExisting` |  | resourceName (). Name |
@@ -299,17 +298,17 @@ Různé verze mohou mít různé parametry, takže ověřují parametry potřebn
 | `masterPrivateClusterIp` | Pokud jsou vybrány privátní hlavní uzly, musí být zadána privátní IP adresa pro použití interním nástrojem pro vyrovnávání zatížení pro hlavní uzly. Tato statická IP adresa musí být v bloku CIDR pro hlavní podsíť a ještě se nepoužívá. Pokud jsou vybrané veřejné hlavní uzly, tato hodnota se nepoužije, ale musí se zadat i dál. |  | 10.1.0.200 |
 | `routerClusterType` | Určete, jestli cluster používá soukromé nebo veřejné infračervené uzly. Pokud je zvolená možnost privátní, nebudou se uzly v síti Internet zveřejnit prostřednictvím veřejné IP adresy. Místo toho použije privátní IP adresu uvedenou v`routerPrivateClusterIp` | public <br> private | public |
 | `routerPrivateClusterIp` | Pokud jsou vybrány privátní infračervené uzly, musí být zadána privátní IP adresa pro použití interním nástrojem pro vyrovnávání zatížení pro infračervené uzly. Tato statická IP adresa musí být v rámci bloku CIDR pro podsíť, která se už nepoužívá. Pokud je vybraná možnost veřejné infračervené uzly, tato hodnota se nebude používat, ale musí se dál zadat. |  | 10.2.0.200 |
-| `routingCertType` | Použijte vlastní certifikát pro doménu směrování nebo výchozí certifikát podepsaný svým držitelem – postupujte podle pokynů v části **vlastní certifikáty** . | selfsigned <br> custom | selfsigned |
-| `masterCertType` | Použijte vlastní certifikát pro hlavní doménu nebo výchozí certifikát podepsaný svým držitelem – postupujte podle pokynů v části **vlastní certifikáty** . | selfsigned <br> custom | selfsigned |
+| `routingCertType` | Použijte vlastní certifikát pro doménu směrování nebo výchozí certifikát podepsaný svým držitelem – postupujte podle pokynů v části **vlastní certifikáty** . | selfsigned <br> vlastní | selfsigned |
+| `masterCertType` | Použijte vlastní certifikát pro hlavní doménu nebo výchozí certifikát podepsaný svým držitelem – postupujte podle pokynů v části **vlastní certifikáty** . | selfsigned <br> vlastní | selfsigned |
 
 <br>
 
 ### <a name="deploy-using-azure-cli"></a>Nasazení s využitím rozhraní příkazového řádku Azure
 
 > [!NOTE] 
-> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní `az --version` příkazového řádku můžete ověřit pomocí příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní příkazového řádku můžete ověřit pomocí `az --version` příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
-Následující příklad nasadí cluster OpenShift a všechny související prostředky do skupiny prostředků s názvem openshiftrg s názvem nasazení myOpenShiftCluster. Na šablonu se odkazuje přímo z úložiště GitHubu a používá se soubor místních parametrů s názvem azuredeploy. Parameters. JSON.
+Následující příklad nasadí cluster OpenShift a všechny související prostředky do skupiny prostředků s názvem openshiftrg s názvem nasazení myOpenShiftCluster. Na šablonu se odkazuje přímo z úložiště GitHubu a používá se soubor místních parametrů s názvem azuredeploy.parameters.jsv souboru.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \

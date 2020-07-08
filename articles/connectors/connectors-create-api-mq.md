@@ -9,12 +9,11 @@ ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609499"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Připojení k serveru IBM MQ z Azure Logic Apps
 
@@ -71,7 +70,7 @@ Pokud ještě nemáte připojení MQ, když přidáte akci MQ, budete vyzváni k
 
    1. V seznamu **Brána připojení** vyberte prostředek brány Azure, který chcete použít.
 
-1. Až to budete mít, vyberte **Vytvořit**.
+1. Po dokončení vyberte **Vytvořit**.
 
 <a name="connection-problems"></a>
 
@@ -94,7 +93,7 @@ Když se aplikace logiky pokusí připojit k místnímu serveru MQ, může se zo
      > [!IMPORTANT]
      > Ujistěte se, že jste nainstalovali certifikát do **Certificates - Local Computer**  >  úložiště**Důvěryhodné kořenové certifikační autority** počítače místní počítač.
 
-* Server MQ vyžaduje, abyste definovali specifikaci šifrování, kterou chcete použít pro připojení SSL. SsLStream v rozhraní .NET ale neumožňuje zadat pořadí pro specifikace šifry. Pokud chcete toto omezení obejít, můžete změnit konfiguraci serveru MQ tak, aby odpovídala první specifikaci šifry v sadě, kterou konektor odesílá při vyjednávání SSL.
+* Server MQ vyžaduje, abyste definovali specifikaci šifrování, kterou chcete použít pro připojení TLS/SSL. SslStream v rozhraní .NET ale neumožňuje zadat pořadí pro specifikace šifry. Pokud chcete toto omezení obejít, můžete změnit konfiguraci serveru MQ tak, aby odpovídala první specifikaci šifry v sadě, kterou konektor odesílá při vyjednávání TLS/SSL.
 
   Když se pokusíte o připojení, server MQ zaznamená zprávu události, která indikuje, že připojení selhalo, protože druhý konec použil nesprávnou specifikaci šifry. Zpráva o události obsahuje specifikace šifry, která se v seznamu zobrazuje jako první. Aktualizujte specifikaci šifry v konfiguraci kanálu tak, aby odpovídala specifikaci šifry ve zprávě události.
 
@@ -115,10 +114,10 @@ Když se aplikace logiky pokusí připojit k místnímu serveru MQ, může se zo
    | **Fronta** | Pokud se liší od fronty zadané v rámci připojení, zadejte tuto frontu. |
    | **MessageID**, **ID korelace**, **identifikátor skupiny**a další vlastnosti | Vyhledat zprávu, která je založena na různých vlastnostech zprávy MQ |
    | **IncludeInfo** | Pokud chcete do výstupu zahrnout další informace o zprávě, vyberte **true**. Pokud chcete ve výstupu vynechat další informace o zprávě, vyberte **false (NEPRAVDA**). |
-   | **Prodlev** | Zadejte hodnotu, která určuje, jak dlouho se má čekat na doručení zprávy do prázdné fronty. Pokud nezadáte žádnou hodnotu, načte se první zpráva ve frontě a nestrávená doba čekání na zobrazení zprávy. |
+   | **Časový limit** | Zadejte hodnotu, která určuje, jak dlouho se má čekat na doručení zprávy do prázdné fronty. Pokud nezadáte žádnou hodnotu, načte se první zpráva ve frontě a nestrávená doba čekání na zobrazení zprávy. |
    |||
 
-   Například:
+   Příklad:
 
    ![Vlastnosti pro akci procházet zprávu](media/connectors-create-api-mq/browse-message-properties.png)
 

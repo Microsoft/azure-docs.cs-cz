@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9e29d91aa3b146a8aacdccec01b67506d5e45bb3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75548832"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037915"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Přehled strukturovaného streamování Apache Spark
 
@@ -62,11 +61,13 @@ Ne všechny dotazy používající režim úplného režimu způsobí, že se ta
 
 Jednoduchý vzorový dotaz může sumarizovat čtení z teploty po hodinách dlouhých oknech. V tomto případě se data ukládají do souborů JSON v Azure Storage (připojí se jako výchozí úložiště pro cluster HDInsight):
 
-    {"time":1469501107,"temp":"95"}
-    {"time":1469501147,"temp":"95"}
-    {"time":1469501202,"temp":"95"}
-    {"time":1469501219,"temp":"95"}
-    {"time":1469501225,"temp":"95"}
+```json
+{"time":1469501107,"temp":"95"}
+{"time":1469501147,"temp":"95"}
+{"time":1469501202,"temp":"95"}
+{"time":1469501219,"temp":"95"}
+{"time":1469501225,"temp":"95"}
+```
 
 Tyto soubory JSON jsou uložené v `temps` podsložce pod kontejnerem clusteru HDInsight.
 
@@ -74,41 +75,51 @@ Tyto soubory JSON jsou uložené v `temps` podsložce pod kontejnerem clusteru H
 
 Nejprve nakonfigurujte datový rámec, který popisuje zdroj dat a všechna nastavení požadovaná tímto zdrojem. Tento příklad kreslí ze souborů JSON v Azure Storage a v době čtení aplikuje schéma na tyto soubory.
 
-    import org.apache.spark.sql.types._
-    import org.apache.spark.sql.functions._
+```sql
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
-    //Cluster-local path to the folder containing the JSON files
-    val inputPath = "/temps/" 
+//Cluster-local path to the folder containing the JSON files
+val inputPath = "/temps/" 
 
-    //Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
-    val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
+//Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
+val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
 
-    //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
-    val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
+//Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
+val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
+``` 
 
 #### <a name="apply-the-query"></a>Použít dotaz
 
 Dále použijte dotaz, který obsahuje požadované operace proti datovému snímku streamování. V tomto případě agregace seskupí všechny řádky do oken o velikosti 1 hodiny a pak vypočítá minimální, průměrnou a maximální teplotu v tomto okně.
 
-    val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```sql
+val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```
 
 ### <a name="define-the-output-sink"></a>Definování výstupní jímky
 
-Dále definujte cíl pro řádky, které jsou přidány do tabulky výsledků v rámci každého intervalu triggeru. V tomto příkladu se jenom vytvoří výstup všech řádků do tabulky `temps` v paměti, kde se později můžete dotazovat na SparkSQL. Úplný režim výstupu zajistí, že všechny řádky pro všechna okna budou ve výstupu pokaždé.
+Dále definujte cíl pro řádky, které jsou přidány do tabulky výsledků v rámci každého intervalu triggeru. V tomto příkladu se jenom vytvoří výstup všech řádků do tabulky v paměti `temps` , kde se později můžete dotazovat na SparkSQL. Úplný režim výstupu zajistí, že všechny řádky pro všechna okna budou ve výstupu pokaždé.
 
-    val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
+```sql
+val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
+``` 
 
 ### <a name="start-the-query"></a>Spustit dotaz
 
 Spusťte dotaz streamování a spusťte příkaz, dokud se nepřijme signál ukončení.
 
-    val query = streamingOutDF.start()  
+```sql
+val query = streamingOutDF.start() 
+``` 
 
 ### <a name="view-the-results"></a>Zobrazení výsledků
 
 Když je dotaz spuštěný, můžete ve stejném SparkSession spustit dotaz SparkSQL na `temps` tabulku, ve které jsou uložené výsledky dotazu.
 
-    select * from temps
+```sql
+select * from temps
+```
 
 Tento dotaz vrací výsledky podobné následujícímu:
 

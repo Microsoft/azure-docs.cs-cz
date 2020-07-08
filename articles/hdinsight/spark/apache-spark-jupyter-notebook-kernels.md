@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: f7f460b01674359847427296e4526fc5771658f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c222ab15ba2ad2d06667b8549f4fb3e7cc8d216
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191953"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037932"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Poznámkový blok Jupyter na clusterech s Apache Spark ve službě Azure HDInsight
 
@@ -59,54 +58,58 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
 
     Takže **nemusíte při** nastavování kontextů provádět příkazy, jako je následující:
 
-         sc = SparkContext('yarn-client')
-         sqlContext = HiveContext(sc)
+    ```sql
+    sc = SparkContext('yarn-client')
+    sqlContext = HiveContext(sc)
+    ```
 
     Místo toho můžete přímo použít předdefinované kontexty ve vaší aplikaci.
 
-- **Buňky Magic**. Jádro PySpark poskytuje některé předdefinované "Magic", což jsou speciální příkazy, které můžete volat pomocí `%%` (například `%%MAGIC` `<args>`). Příkaz Magic musí být první slovo v buňce kódu a povoluje se více řádků obsahu. Slovo Magic by mělo být první slovo v buňce. Přidání cokoli před Magic, včetně komentářů, způsobí chybu.     Další informace o Magic najdete [tady](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Buňky Magic**. Jádro PySpark poskytuje některé předdefinované "Magic", což jsou speciální příkazy, které můžete volat pomocí `%%` (například `%%MAGIC` `<args>` ). Příkaz Magic musí být první slovo v buňce kódu a povoluje se více řádků obsahu. Slovo Magic by mělo být první slovo v buňce. Přidání cokoli před Magic, včetně komentářů, způsobí chybu.     Další informace o Magic najdete [tady](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
 
     V následující tabulce jsou uvedeny různé Magic dostupné prostřednictvím jader.
 
-   | Paket | Příklad | Popis |
+   | Paket | Příklad | Description |
    | --- | --- | --- |
    | Nápověda |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
    | příjemce |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
-   | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force (`-f`) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
-   | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz na podregistr pro kontext SqlContext. Pokud je `-o` předán parametr, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
-   | local |`%%local`<br>`a=1` |Veškerý kód v pozdějších řádcích se spustí místně. Kód musí být platný kód Python2 bez ohledu na to, kterou jádro používáte. Takže i když jste při vytváření poznámkového bloku vybrali jádro **PySpark3** nebo **Spark** , v případě, že `%%local` jste v buňce použili Magic, musí mít tato buňka platný Python2 kód. |
+   | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force ( `-f` ) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
+   | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz na podregistr pro kontext SqlContext. Pokud `-o` je předán parametr, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
+   | local |`%%local`<br>`a=1` |Veškerý kód v pozdějších řádcích se spustí místně. Kód musí být platný kód Python2 bez ohledu na to, kterou jádro používáte. Takže i když jste při vytváření poznámkového bloku vybrali jádro **PySpark3** nebo **Spark** , v případě, `%%local` že jste v buňce použili Magic, musí mít tato buňka platný Python2 kód. |
    | Protokoly |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
    | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je spuštěná pro samotný jádro. |
    | Vyčištění |`%%cleanup -f` |Odstraní všechny relace pro aktuální koncový bod Livy, včetně relace tohoto poznámkového bloku. Příznak Force-f je povinný. |
 
    > [!NOTE]  
-   > Kromě Magic přidaných jádrem PySpark můžete také použít [integrované IPython Magic](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), včetně `%%sh`. Pomocí `%%sh` Magic můžete spouštět skripty a bloky kódu v clusteru hlavnímu uzlu.
+   > Kromě Magic přidaných jádrem PySpark můžete také použít [integrované IPython Magic](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), včetně `%%sh` . Pomocí `%%sh` Magic můžete spouštět skripty a bloky kódu v clusteru hlavnímu uzlu.
 
 - **Automatická vizualizace**. Jádro Pyspark automaticky vizualizuje výstup dotazů v podregistru a SQL. Můžete si vybrat mezi několika různými typy vizualizací, mezi které patří tabulka, výsečový, spojnicový, plošný a pruhový.
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>Parametry podporované s%% SQL Magic
 
-`%%sql` Magic podporuje různé parametry, které lze použít k řízení typu výstupu, který se zobrazí při spouštění dotazů. V následující tabulce je uveden výstup.
+`%%sql`Magic podporuje různé parametry, které lze použít k řízení typu výstupu, který se zobrazí při spouštění dotazů. V následující tabulce je uveden výstup.
 
-| Parametr | Příklad | Popis |
+| Parametr | Příklad | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledku dotazu v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. Název proměnné datového rámce je název proměnné, kterou zadáte. |
-| -q |`-q` |Pomocí tohoto parametru můžete pro buňku vypnout vizualizace. Pokud nechcete, aby se obsah buňky využíval, a chcete ji pouze zachytit jako datový rámec, použijte `-q -o <VARIABLE>`. Pokud chcete vypnout vizualizace bez zachycení výsledků (například pro spuštění dotazu SQL, jako je `CREATE TABLE` například příkaz), použijte `-q` bez zadání `-o` argumentu. |
-| -m |`-m <METHOD>` |Kde **Metoda** je buď buď **převzít** , nebo **vzorek** (výchozí **nastavení je)**. Pokud je **`take`** metoda, jádro vybere prvky z horní části sady výsledků dat určené v MAXROWS (popsané dále v této tabulce). Pokud je metoda **ukázková**, jádro náhodně vypíše prvky datové sady podle `-r` parametru popsaného dále v této tabulce. |
-| -r |`-r <FRACTION>` |Pro **zlomek** je číslo s plovoucí desetinnou čárkou v rozsahu od 0,0 do 1,0. Pokud je `sample`ukázkovou metodou pro dotaz SQL, pak jádro náhodně vyvzorkuje zadaný zlomek prvků sady výsledků. Například pokud spustíte dotaz SQL s argumenty `-m sample -r 0.01`, pak je 1% řádků výsledků náhodně vzorkovat. |
+| -q |`-q` |Pomocí tohoto parametru můžete pro buňku vypnout vizualizace. Pokud nechcete, aby se obsah buňky využíval, a chcete ji pouze zachytit jako datový rámec, použijte `-q -o <VARIABLE>` . Pokud chcete vypnout vizualizace bez zachycení výsledků (například pro spuštění dotazu SQL, jako je například `CREATE TABLE` příkaz), použijte `-q` bez zadání `-o` argumentu. |
+| -m |`-m <METHOD>` |Kde **Metoda** je buď buď **převzít** , nebo **vzorek** (výchozí **nastavení je)**. Pokud je metoda **`take`** , jádro vybere prvky z horní části sady výsledků dat určené v MAXROWS (popsané dále v této tabulce). Pokud je metoda **ukázková**, jádro náhodně vypíše prvky datové sady podle `-r` parametru popsaného dále v této tabulce. |
+| -r |`-r <FRACTION>` |Pro **zlomek** je číslo s plovoucí desetinnou čárkou v rozsahu od 0,0 do 1,0. Pokud je ukázkovou metodou pro dotaz SQL `sample` , pak jádro náhodně vyvzorkuje zadaný zlomek prvků sady výsledků. Například pokud spustíte dotaz SQL s argumenty `-m sample -r 0.01` , pak je 1% řádků výsledků náhodně vzorkovat. |
 | -n |`-n <MAXROWS>` |**MAXROWS** je celočíselná hodnota. Jádro omezuje počet výstupních řádků na **MAXROWS**. Pokud je **MAXROWS** záporné číslo, jako je hodnota **-1**, počet řádků v sadě výsledků není omezený. |
 
-**Případě**
+**Příklad:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2
-    SELECT * FROM hivesampletable
+```sql
+%%sql -q -m sample -r 0.1 -n 500 -o query2
+SELECT * FROM hivesampletable
+```
 
 Výše uvedený příkaz provede následující akce:
 
 - Vybere všechny záznamy z **hivesampletable**.
 - Protože používáme-q, vypne se vizuálně.
-- Protože používáme `-m sample -r 0.1 -n 500`, náhodně vyvzorkuje 10% řádků v hivesampletable a omezí velikost sady výsledků na 500 řádků.
-- Nakonec, protože jsme ho `-o query2` použili také k uložení výstupu do dataframe s názvem **query2**.
+- Protože používáme `-m sample -r 0.1 -n 500` , náhodně vyvzorkuje 10% řádků v hivesampletable a omezí velikost sady výsledků na 500 řádků.
+- Nakonec, protože jsme `-o query2` ho použili také k uložení výstupu do dataframe s názvem **query2**.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Předpoklady při používání nových jader
 
@@ -114,24 +117,26 @@ Bez ohledu na to, kterou jádro použijete, ponechání poznámkových bloků se
 
 ## <a name="where-are-the-notebooks-stored"></a>Kde jsou poznámkové bloky uložené?
 
-Pokud váš cluster používá Azure Storage jako výchozí účet úložiště, poznámkové bloky Jupyter se uloží do účtu úložiště ve složce **/HdiNotebooks** .  Poznámkové bloky, textové soubory a složky, které vytvoříte v rámci Jupyter, jsou přístupné z účtu úložiště.  Pokud například použijete Jupyter k vytvoření složky **`myfolder`** a poznámkového bloku **myFolder/MyNotebook. ipynb**, získáte přístup k tomuto poznámkovému bloku v `/HdiNotebooks/myfolder/mynotebook.ipynb` rámci účtu úložiště.  To znamená, že Pokud nahrajete Poznámkový blok přímo na účet úložiště v `/HdiNotebooks/mynotebook1.ipynb`, Poznámkový blok se také zobrazí z Jupyter.  Poznámkové bloky zůstávají v účtu úložiště i po odstranění clusteru.
+Pokud váš cluster používá Azure Storage jako výchozí účet úložiště, poznámkové bloky Jupyter se uloží do účtu úložiště ve složce **/HdiNotebooks** .  Poznámkové bloky, textové soubory a složky, které vytvoříte v rámci Jupyter, jsou přístupné z účtu úložiště.  Pokud například použijete Jupyter k vytvoření složky **`myfolder`** a poznámkového bloku **myFolder/MyNotebook. ipynb**, získáte přístup k tomuto poznámkovému bloku v `/HdiNotebooks/myfolder/mynotebook.ipynb` rámci účtu úložiště.  To znamená, že Pokud nahrajete Poznámkový blok přímo na účet úložiště v `/HdiNotebooks/mynotebook1.ipynb` , Poznámkový blok se také zobrazí z Jupyter.  Poznámkové bloky zůstávají v účtu úložiště i po odstranění clusteru.
 
 > [!NOTE]  
 > Clustery HDInsight s Azure Data Lake Storage jako výchozí úložiště neukládají poznámkové bloky do přidruženého úložiště.
 
 Způsob ukládání poznámkových bloků do účtu úložiště je kompatibilní s [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Pokud ke clusteru použijete SSH, můžete použít příkazy pro správu souborů:
 
-    hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it's visible from Jupyter
+| Příkaz | Description |
+|---------|-------------|
+| `hdfs dfs -ls /HdiNotebooks` | # Seznam všeho v kořenovém adresáři – všechno, co je v tomto adresáři viditelné, se Jupyter z domovské stránky. |
+| `hdfs dfs –copyToLocal /HdiNotebooks` | # Stažení obsahu složky HdiNotebooks|
+| `hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks` | # Nahrajte příklad poznámkového bloku. ipynb do kořenové složky tak, aby byl viditelný z Jupyter |
 
-Bez ohledu na to, jestli cluster používá jako výchozí účet úložiště Azure Storage nebo Azure Data Lake Storage, poznámkové bloky se také ukládají do `/var/lib/jupyter`hlavnímu uzlu clusteru v.
+Bez ohledu na to, jestli cluster používá jako výchozí účet úložiště Azure Storage nebo Azure Data Lake Storage, poznámkové bloky se také ukládají do hlavnímu uzlu clusteru v `/var/lib/jupyter` .
 
 ## <a name="supported-browser"></a>Podporovaný prohlížeč
 
 Jupyter poznámkové bloky v clusterech Spark HDInsight jsou podporované jenom na Google Chrome.
 
-## <a name="feedback"></a>Váš názor
+## <a name="suggestions"></a>Návrhy
 
 Nové jádra jsou v rozvíjející se fázi a budou v průběhu času. Rozhraní API se tak můžou v případě vyspělých jader změnit. Vyhodnotili jsme jakoukoli zpětnou vazbu, kterou máte při používání těchto nových jader. Zpětná vazba je užitečná při vytváření finální verze těchto jader. Komentáře a připomínky můžete opustit v části **Zpětná vazba** v dolní části tohoto článku.
 

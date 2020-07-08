@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
 ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84325129"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
@@ -74,8 +73,8 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
-   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
+   | **ADRESA URL PRO POST HTTP** | nTato | Yes | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
+   | **Schéma JSON pro tělo požadavku** | `schema` | No | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
 1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo v příchozím požadavku, například:
@@ -181,8 +180,8 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Metoda** | `method` | Ne | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
-   | **Relativní cesta** | `relativePath` | Ne | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
+   | **Metoda** | `method` | No | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
+   | **Relativní cesta** | `relativePath` | No | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
    |||||
 
    Tento příklad přidá vlastnost **metody** :
@@ -275,9 +274,9 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
-   | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
-   | **Text** | `body` | Ne | Tělo odpovědi |
+   | **Stavový kód** | `statusCode` | Yes | Stavový kód, který se má vrátit v odpovědi |
+   | **Hlavičky** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
+   | **Text** | `body` | No | Tělo odpovědi |
    |||||
 
 1. Chcete-li zadat další vlastnosti, jako je například schéma JSON pro tělo odpovědi, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.

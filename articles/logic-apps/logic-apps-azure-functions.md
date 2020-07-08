@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714572"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Volání služby Azure Functions z Azure Logic Apps
+# <a name="call-azure-functions-from-azure-logic-apps"></a>Volání funkcí Azure Functions z Azure Logic Apps
 
-Pokud chcete spustit kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkci pomocí [Azure Functions](../azure-functions/functions-overview.md). Tato služba vám pomůže vytvořit funkce Node. js, C# a F #, takže nemusíte sestavovat kompletní aplikaci nebo infrastrukturu pro spuštění kódu. [V rámci služby Azure Functions můžete také volat Logic Apps](#call-logic-app). Azure Functions poskytuje výpočetní prostředí bez serveru v cloudu a je užitečné pro provádění úloh, jako jsou tyto příklady:
+Pokud chcete spustit kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkci pomocí [Azure Functions](../azure-functions/functions-overview.md). Tato služba pomáhá vytvářet funkce Node.js, C# a F#, takže nemusíte vytvářet kompletní aplikaci nebo infrastrukturu pro spouštění kódu. [V rámci služby Azure Functions můžete také volat Logic Apps](#call-logic-app). Azure Functions poskytuje výpočetní prostředí bez serveru v cloudu a je užitečné pro provádění úloh, jako jsou tyto příklady:
 
-* Pomocí funkcí v Node. js nebo C# rozšíříte chování aplikace logiky.
+* Rozšíří chování aplikace logiky pomocí funkcí v Node.js nebo C#.
 * V pracovním postupu aplikace logiky proveďte výpočty.
 * Použijte Rozšířené formátování nebo výpočetní pole ve vašich aplikacích logiky.
 
@@ -125,7 +124,7 @@ Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už m�
 
    1. Do pole **název funkce** zadejte název funkce.
 
-   1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Až to budete mít, vyberte **Vytvořit**.
+   1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Po dokončení vyberte **Vytvořit**.
 
    Příklad:
 
@@ -200,7 +199,7 @@ Pokud chcete aktivovat aplikaci logiky z funkce Azure Functions, musí aplikace 
 
 ## <a name="enable-authentication-for-azure-functions"></a>Povolení ověřování pro službu Azure Functions
 
-Abyste mohli snadno ověřit přístup k jiným prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD), aniž byste se museli přihlašovat a poskytovat přihlašovací údaje nebo tajné kódy, může vaše aplikace logiky používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovanou jako identita spravované služby nebo MSI). Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Abyste mohli snadno ověřit přístup k jiným prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD), aniž byste se museli přihlašovat a poskytovat přihlašovací údaje nebo tajné kódy, může vaše aplikace logiky používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovanou jako identita spravované služby nebo MSI). Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Pokud nastavíte aplikaci logiky tak, aby používala identitu přiřazenou systémem, nebo ručně vytvořenou identitu uživatele, funkce Azure ve vaší aplikaci logiky může stejnou identitu použít i pro ověřování. Další informace o podpoře ověřování pro službu Azure Functions v Logic Apps najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -235,7 +234,7 @@ Pokud chcete ve funkci Azure Functions používat spravovanou identitu vaší ap
 
 1. Otevřete `function.json` soubor pro úpravy.
 
-   ![Klikněte na upravit pro soubor Function. JSON.](./media/logic-apps-azure-functions/edit-function-json-file.png)
+   ![Pro soubor function.json klikněte na Upravit.](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
 1. V `bindings` objektu ověřte, zda `authLevel` vlastnost existuje. Pokud vlastnost existuje, nastavte hodnotu vlastnosti na `anonymous` . V opačném případě přidejte tuto vlastnost a nastavte hodnotu.
 

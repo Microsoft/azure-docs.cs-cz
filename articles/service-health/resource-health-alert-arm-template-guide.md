@@ -4,13 +4,12 @@ description: Vytvářejte výstrahy programově, které vás upozorní, když va
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759013"
 ---
-# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků pomocí šablon Správce prostředků
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků s využitím šablon Resource Manageru
 
 V tomto článku se dozvíte, jak pomocí šablon Azure Resource Manager a Azure PowerShell vytvářet výstrahy protokolu aktivit Resource Health programově.
 
@@ -144,7 +143,7 @@ Výstrahy Resource Health lze nakonfigurovat pro monitorování událostí ve t�
  * Úroveň skupiny prostředků
  * Úroveň prostředků
 
-Šablona výstrahy je nakonfigurovaná na úrovni předplatného, ale pokud chcete, aby se vaše výstraha nakonfigurovala tak, aby vás upozornila jenom na určité prostředky, nebo prostředky v určité skupině prostředků, stačí `scopes` změnit část výše uvedené šablony.
+Šablona výstrahy je nakonfigurovaná na úrovni předplatného, ale pokud chcete, aby se vaše výstraha nakonfigurovala tak, aby vás upozornila jenom na určité prostředky, nebo prostředky v určité skupině prostředků, stačí změnit `scopes` část výše uvedené šablony.
 
 V případě oboru na úrovni skupiny prostředků by měl oddíl rozsahy vypadat takto:
 ```json
@@ -192,12 +191,12 @@ Výstrahy na úrovni předplatného nebo skupiny prostředků mohou mít různé
 },
 ```
 
-V `anyOf` tomto příkladu použijeme obálku, která umožňuje, aby výstraha o stavu prostředků odpovídala některé z podmínek, které zadáte, a umožňuje upozornění, která cílí na konkrétní typy prostředků.
+V tomto příkladu použijeme `anyOf` obálku, která umožňuje, aby výstraha o stavu prostředků odpovídala některé z podmínek, které zadáte, a umožňuje upozornění, která cílí na konkrétní typy prostředků.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Úprava Resource Healthch událostí, které vás upozorňují
-Když se prostředky dostanou události stavu, mohou projít řadou fází, které představují stav události stavu `Active`:, `In Progress`, `Updated`a. `Resolved`
+Když se prostředky dostanou události stavu, mohou projít řadou fází, které představují stav události stavu: `Active` , `In Progress` , `Updated` a `Resolved` .
 
-Je možné, že budete chtít být upozorněni pouze v případě, že prostředek není v pořádku. v takovém případě budete chtít výstrahu nakonfigurovat tak `status` , `Active`aby upozornila pouze v případě, že je. Pokud ale chcete být také informováni o dalších fázích, můžete tyto podrobnosti přidat, například:
+Je možné, že budete chtít být upozorněni pouze v případě, že prostředek není v pořádku. v takovém případě budete chtít výstrahu nakonfigurovat tak, aby upozornila pouze v případě, že `status` je `Active` . Pokud ale chcete být také informováni o dalších fázích, můžete tyto podrobnosti přidat, například:
 
 ```json
 "condition": {
