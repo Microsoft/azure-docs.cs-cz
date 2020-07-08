@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
 ms.openlocfilehash: 302ba583f11b15be98832316b1ea05c7f9be931f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75530659"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Příklad Apache Storm topologií a komponent pro Apache Storm ve službě HDInsight
 
 Následuje seznam příkladů vytvořených a spravovaných společností Microsoft pro použití s [Apache Storm](https://storm.apache.org/) v HDInsight. Tyto příklady se týkají nejrůznějších témat, od vytvoření základních topologií C# a Java pro práci se službami Azure, jako jsou Event Hubs, Cosmos DB, SQL Database, [Apache HBA](https://hbase.apache.org/) v HDInsight a Azure Storage. Některé příklady také ukazují, jak pracovat s jinými technologiemi než Azure nebo i jinými technologiemi, jako je například Signal a Socket.IO.
 
-| Popis | Demonstruje | Jazyk/rozhraní |
+| Description | Demonstruje | Jazyk/rozhraní |
 |:--- |:--- |:--- |
 | [Zápis do Azure Data Lake Storage z Apache Storm](apache-storm-write-data-lake-store.md) |Zápis do Azure Data Lake Storage |Java |
 | [Spout a zdroj šroubů centra událostí](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Zdroj pro Spout a šroub centra událostí |Java |

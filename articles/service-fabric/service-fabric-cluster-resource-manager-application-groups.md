@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452156"
 ---
 # <a name="introduction-to-application-groups"></a>Seznámení se skupinami aplikací
@@ -184,7 +183,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 
 ```
 
-Tento příkaz odebere všechny parametry správy kapacity aplikace z instance aplikace. To zahrnuje MinimumNodes, MaximumNodes a metriky aplikace, pokud existují. Účinek příkazu je okamžitý. Po dokončení tohoto příkazu cluster Správce prostředků použije výchozí chování pro správu aplikací. Parametry kapacity aplikace lze zadat znovu prostřednictvím `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
+Tento příkaz odebere všechny parametry správy kapacity aplikace z instance aplikace. To zahrnuje MinimumNodes, MaximumNodes a metriky aplikace, pokud existují. Účinek příkazu je okamžitý. Po dokončení tohoto příkazu cluster Správce prostředků použije výchozí chování pro správu aplikací. Parametry kapacity aplikace lze zadat znovu prostřednictvím `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()` .
 
 ### <a name="restrictions-on-application-capacity"></a>Omezení pro kapacitu aplikace
 Existují několik omezení pro parametry kapacity aplikace, které musí být respektovány. Pokud dojde k chybám ověření, probíhají žádné změny.

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465560"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric scénáře testování: komunikace se službou
@@ -79,7 +78,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-V tomto příkladu jsme `QuorumLossMode` nastavili `QuorumReplicas` , aby označoval, že chceme vyvolat ztrátu kvora bez nutnosti pořizovat všechny repliky. Tímto způsobem jsou operace čtení stále možné. Chcete-li otestovat situaci, kdy není k dispozici celý oddíl, můžete nastavit tento `AllReplicas`přepínač na.
+V tomto příkladu jsme nastavili `QuorumLossMode` `QuorumReplicas` , aby označoval, že chceme vyvolat ztrátu kvora bez nutnosti pořizovat všechny repliky. Tímto způsobem jsou operace čtení stále možné. Chcete-li otestovat situaci, kdy není k dispozici celý oddíl, můžete nastavit tento přepínač na `AllReplicas` .
 
 ## <a name="next-steps"></a>Další kroky
 [Další informace o akcích testování](service-fabric-testability-actions.md)

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464737"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analýza a vizualizace událostí pomocí protokolů Azure Monitor
@@ -34,9 +33,9 @@ Po přijetí dat pomocí protokolů Azure Monitor má Azure několik *řešení 
 
 Na webu [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics.
 
-Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>**.
+Vyberte **ServiceFabric \<nameOfOMSWorkspace\> **prostředku.
 
-V `Summary`nástroji se zobrazí dlaždice ve formě grafu pro každé povolené řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
+V nástroji `Summary` se zobrazí dlaždice ve formě grafu pro každé povolené řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
 
 ![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
@@ -82,7 +81,7 @@ Kliknutím na **seznam** zobrazíte události v seznamu. Tady vidíte události 
 
 ![Reliable Services dotazů](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Spolehlivé události objektu actor lze zobrazit podobným způsobem. Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, je nutné `scheduledTransferKeywordFilter` změnit v konfiguraci diagnostického rozšíření (viz níže). Podrobnosti o hodnotách pro tyto položky jsou uvedeny v referenčních informacích o [událostech Reliable Actors](service-fabric-reliable-actors-diagnostics.md#keywords).
+Spolehlivé události objektu actor lze zobrazit podobným způsobem. Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, je nutné změnit `scheduledTransferKeywordFilter` v konfiguraci diagnostického rozšíření (viz níže). Podrobnosti o hodnotách pro tyto položky jsou uvedeny v referenčních informacích o [událostech Reliable Actors](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [

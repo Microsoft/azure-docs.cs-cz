@@ -4,10 +4,9 @@ description: Popisuje, jak Azure Resource Manager zpracovává žádosti o ově�
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478822"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Ověřování žádostí napříč klienty
@@ -18,10 +17,10 @@ Při vytváření víceklientské aplikace možná budete muset zpracovat žádo
 
 Požadavek má následující hodnoty hlaviček ověřování:
 
-| Název hlavičky | Popis | Příklad hodnoty |
+| Název hlavičky | Description | Příklad hodnoty |
 | ----------- | ----------- | ------------ |
 | Autorizace | Primární token | &lt;Primární token nosiče&gt; |
-| x-MS-Authorization – pomocná | Pomocné tokeny | Nosič &lt;pomocná – token1&gt;, EncryptedBearer &lt;AUX-token2&gt;, nosič &lt;pomoc – token3&gt; |
+| x-MS-Authorization – pomocná | Pomocné tokeny | Nosič &lt; pomocná – token1 &gt; , EncryptedBearer &lt; AUX-token2 &gt; , nosič &lt; pomoc – token3&gt; |
 
 Pomocné záhlaví může obsahovat až tři pomocné tokeny. 
 

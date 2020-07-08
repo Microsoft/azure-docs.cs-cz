@@ -6,24 +6,23 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458374"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace samostatného clusteru Windows
-Tento článek popisuje nastavení konfigurace samostatného clusteru Azure Service Fabric, který je možné nastavit v souboru *ClusterConfig. JSON* . Tento soubor použijete k zadání informací o uzlech clusteru, konfiguracích zabezpečení a topologii sítě z hlediska selhání a upgradovacích domén.  Po změně nebo přidání nastavení konfigurace můžete buď [vytvořit samostatný cluster](service-fabric-cluster-creation-for-windows-server.md) , nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
+Tento článek popisuje nastavení konfigurace samostatného clusteru Azure Service Fabric, který je možné nastavit v *ClusterConfig.jsv* souboru. Tento soubor použijete k zadání informací o uzlech clusteru, konfiguracích zabezpečení a topologii sítě z hlediska selhání a upgradovacích domén.  Po změně nebo přidání nastavení konfigurace můžete buď [vytvořit samostatný cluster](service-fabric-cluster-creation-for-windows-server.md) , nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
 
-Po [stažení samostatného balíčku Service Fabric](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)jsou k dispozici také ukázky ClusterConfig. JSON. Ukázky, které mají v názvech "DevCluster", vytvoří cluster se všemi třemi uzly na stejném počítači pomocí logických uzlů. Z těchto uzlů musí být alespoň jeden označený jako primární uzel. Tento typ clusteru je užitečný pro vývojová nebo testovací prostředí. Nepodporuje se jako produkční cluster. Ukázky s "více počítači" v jejich názvech vám pomůžou vytvářet clustery produkčních stupňů s každým uzlem v samostatném počítači. Počet primárních uzlů pro tyto clustery je založený na [úrovni spolehlivosti](#reliability)clusteru. Ve verzi 5,7 rozhraní API verze 05-2017 jsme odebrali vlastnost na úrovni spolehlivosti. Místo toho náš kód vypočítá optimalizovanou úroveň spolehlivosti pro váš cluster. Nepokoušejte se nastavit hodnotu pro tuto vlastnost ve verzích 5,7 a vyšší.
+Když [si stáhnete samostatný balíček Service Fabric](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), jsou zahrnuté i ClusterConfig.jsna ukázkách. Ukázky, které mají v názvech "DevCluster", vytvoří cluster se všemi třemi uzly na stejném počítači pomocí logických uzlů. Z těchto uzlů musí být alespoň jeden označený jako primární uzel. Tento typ clusteru je užitečný pro vývojová nebo testovací prostředí. Nepodporuje se jako produkční cluster. Ukázky s "více počítači" v jejich názvech vám pomůžou vytvářet clustery produkčních stupňů s každým uzlem v samostatném počítači. Počet primárních uzlů pro tyto clustery je založený na [úrovni spolehlivosti](#reliability)clusteru. Ve verzi 5,7 rozhraní API verze 05-2017 jsme odebrali vlastnost na úrovni spolehlivosti. Místo toho náš kód vypočítá optimalizovanou úroveň spolehlivosti pro váš cluster. Nepokoušejte se nastavit hodnotu pro tuto vlastnost ve verzích 5,7 a vyšší.
 
-* ClusterConfig. Unsecure. DevCluster. JSON a ClusterConfig. Unsecure.. JSON ukazují, jak vytvořit nezabezpečený testovací nebo produkční cluster v uvedeném pořadí.
+* ClusterConfig.Unsecure.DevCluster.jsv a ClusterConfig.Unsecure.MultiMachine.jsna ukazuje, jak vytvořit nezabezpečený testovací nebo produkční cluster.
 
-* ClusterConfig. Windows. DevCluster. JSON a ClusterConfig. Windows.. JSON ukazují, jak vytvořit testovací nebo produkční clustery, které jsou zabezpečené pomocí [zabezpečení systému Windows](service-fabric-windows-cluster-windows-security.md).
+* ClusterConfig.Windows.DevCluster.jsna a ClusterConfig.Windows.MultiMachine.jsna ukazuje, jak vytvořit testovací nebo produkční clustery, které jsou zabezpečené pomocí [zabezpečení systému Windows](service-fabric-windows-cluster-windows-security.md).
 
-* ClusterConfig. X509. DevCluster. JSON a ClusterConfig. X509. s více Machine. JSON ukazují, jak vytvořit testovací nebo produkční clustery, které jsou zabezpečené pomocí [zabezpečení založeného na certifikátech x509](service-fabric-windows-cluster-x509-security.md).
+* ClusterConfig.X509.DevCluster.jsna a ClusterConfig.X509.MultiMachine.jsna ukazuje, jak vytvořit testovací nebo produkční clustery, které jsou zabezpečené pomocí [zabezpečení založeného na certifikátech x509](service-fabric-windows-cluster-x509-security.md).
 
-Teď se podíváme na různé části souboru ClusterConfig. JSON.
+Teď se podívejme na různé části ClusterConfig.jsv souboru.
 
 ## <a name="general-cluster-configurations"></a>Obecné konfigurace clusteru
 Obecné konfigurace clusteru se týkají rozsáhlých konfigurací specifických pro cluster, jak je znázorněno v následujícím fragmentu kódu JSON:
@@ -65,13 +64,13 @@ Cluster Service Fabric musí obsahovat aspoň tři uzly. Do této části může
 | **Konfigurace uzlů** | **Popis** |
 | --- | --- |
 | nodeName |Uzlu můžete zadat nějaký popisný název. |
-| Adresa |Zjistěte IP adresu vašeho uzlu otevřením okna příkazového řádku a zadáním `ipconfig`příkazu. Poznamenejte si adresu IPV4 a přiřaďte ji k proměnné iPAddress. |
+| Adresa |Zjistěte IP adresu vašeho uzlu otevřením okna příkazového řádku a zadáním příkazu `ipconfig` . Poznamenejte si adresu IPV4 a přiřaďte ji k proměnné iPAddress. |
 | nodeTypeRef |Každému uzlu je možné přiřadit jiný typ uzlu. [Typy uzlů](#node-types) jsou definovány v následující části. |
 | faultDomain |Doména selhání umožňuje správcům clusterů definovat fyzické uzly, které se mohou v současné době selhat v důsledku sdílených fyzických závislostí. |
 | upgradeDomain |Upgradovací domény popisují sady uzlů, které jsou vypnuté pro Service Fabric upgrady ve stejnou dobu. Můžete zvolit, které uzly se mají přiřadit k doménám upgradu, protože nejsou omezeny žádnými fyzickými požadavky. |
 
 ## <a name="cluster-properties"></a>Vlastnosti clusteru
-Oddíl Properties v ClusterConfig. JSON se používá ke konfiguraci clusteru, jak je znázorněno níže:
+Oddíl Properties v ClusterConfig.jsv se používá ke konfiguraci clusteru, jak je znázorněno níže:
 
 ### <a name="reliability"></a>Spolehlivost
 Pojem reliabilityLevel definuje počet replik nebo instancí systémových služeb Service Fabric, které mohou běžet v primárních uzlech clusteru. Určuje spolehlivost těchto služeb a tudíž i cluster. Hodnota se vypočítává systémem při vytváření clusteru a při upgradu.
@@ -147,7 +146,7 @@ Název je popisný název tohoto konkrétního typu uzlu. Chcete-li vytvořit uz
 * leaseDriverEndpointPort je port používaný ovladačem zapůjčení clusteru k zjištění, zda jsou uzly stále aktivní. 
 * serviceConnectionEndpointPort je port používaný aplikacemi a službami nasazenými na uzlu ke komunikaci s klientem Service Fabric v tomto konkrétním uzlu.
 * httpGatewayEndpointPort je port používaný Service Fabric Explorer pro připojení ke clusteru.
-* ephemeralPorts přepíše [dynamické porty používané operačním systémem](https://support.microsoft.com/kb/929851). Service Fabric používá součást těchto portů jako aplikační porty a zbývající jsou k dispozici pro operační systém. Tento rozsah je také namapován na stávající rozsah, který je přítomný v operačním systému, takže pro všechny účely můžete použít rozsahy uvedené v ukázkových souborech JSON. Zajistěte, aby byl rozdíl mezi počátečním a koncovým portem minimálně 255. V případě, že je tento rozdíl příliš nízký, můžete spustit konflikty, protože tento rozsah je sdílen s operačním systémem. Chcete-li zobrazit nakonfigurovaný rozsah dynamických portů, `netsh int ipv4 show dynamicport tcp`spusťte příkaz.
+* ephemeralPorts přepíše [dynamické porty používané operačním systémem](https://support.microsoft.com/kb/929851). Service Fabric používá součást těchto portů jako aplikační porty a zbývající jsou k dispozici pro operační systém. Tento rozsah je také namapován na stávající rozsah, který je přítomný v operačním systému, takže pro všechny účely můžete použít rozsahy uvedené v ukázkových souborech JSON. Zajistěte, aby byl rozdíl mezi počátečním a koncovým portem minimálně 255. V případě, že je tento rozdíl příliš nízký, můžete spustit konflikty, protože tento rozsah je sdílen s operačním systémem. Chcete-li zobrazit nakonfigurovaný rozsah dynamických portů, spusťte příkaz `netsh int ipv4 show dynamicport tcp` .
 * applicationPorts jsou porty používané aplikacemi Service Fabric. Rozsah portů aplikace by měl být dostatečně velký, aby pokryl požadavky vašich aplikací na koncový bod. Tento rozsah by měl být exkluzivní z rozsahu dynamických portů v počítači, to znamená ephemeralPorts rozsah nastavený v konfiguraci. Service Fabric tyto porty používá vždy, když jsou vyžadovány nové porty a postará se o otevření brány firewall pro tyto porty. 
 * reverseProxyEndpointPort je volitelný koncový bod reverzního proxy serveru. Další informace najdete v tématu [Service Fabric reverzní proxy](service-fabric-reverseproxy.md). 
 
@@ -199,7 +198,7 @@ Všechny dostupné funkce doplňku se dají zobrazit v [odkazu Service Fabric RE
 Pokud chcete povolit podporu kontejnerů pro kontejnery Windows serveru i pro kontejnery Hyper-V pro samostatné clustery, musí být povolená funkce doplňku služba DNSservice.
 
 ## <a name="next-steps"></a>Další kroky
-Až budete mít úplný soubor *ClusterConfig. JSON* nakonfigurovaný podle vašeho samostatného nastavení clusteru, můžete nasadit svůj cluster. Postupujte podle kroků v části [vytvoření samostatného Service Fabricho clusteru](service-fabric-cluster-creation-for-windows-server.md). 
+PoClusterConfig.jsdokončení nastavení souboru *na* základě samostatné instalace clusteru můžete nasadit svůj cluster. Postupujte podle kroků v části [vytvoření samostatného Service Fabricho clusteru](service-fabric-cluster-creation-for-windows-server.md). 
 
 Pokud máte nasazen samostatný cluster, můžete také [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md). 
 

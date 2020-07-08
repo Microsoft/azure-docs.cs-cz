@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452161"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Omezování Service Fabric clusteru Správce prostředků
@@ -46,7 +45,7 @@ Když zadáte procento omezení, zadáte 5% jako 0,05. Interval, ve kterém se t
 </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [

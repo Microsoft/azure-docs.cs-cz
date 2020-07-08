@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650393"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Přidání vlastních akcí do Azure REST API
@@ -18,7 +17,7 @@ Tento článek prochází požadavky a osvědčenými postupy pro vytváření k
 
 ## <a name="how-to-define-an-action-endpoint"></a>Definování koncového bodu akce
 
-**Koncový bod** je adresa URL, která odkazuje na službu, která implementuje základní smlouvu mezi IT a Azure. Koncový bod je definovaný ve vlastním poskytovateli prostředků a může být libovolná veřejně přístupná adresa URL. Následující ukázka má **akci** volanou `myCustomAction` implementací `endpointURL`.
+**Koncový bod** je adresa URL, která odkazuje na službu, která implementuje základní smlouvu mezi IT a Azure. Koncový bod je definovaný ve vlastním poskytovateli prostředků a může být libovolná veřejně přístupná adresa URL. Následující ukázka má **akci** volanou `myCustomAction` implementací `endpointURL` .
 
 Vzorový **ResourceProvider**:
 
@@ -81,7 +80,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
 
 - Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- `Content-Type` Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
+- `Content-Type`Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -130,7 +129,7 @@ az resource invoke-action --action {actionName} \
                             }'
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 action | *Ano* | Název akce definované v **ResourceProvider**.
 identifikační | *Ano* | ID prostředku **ResourceProvider**.
@@ -184,7 +183,7 @@ Ukázka šablony Azure Resource Manager:
 }
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 resourceIdentifier | *Ano* | ID prostředku **ResourceProvider**.
 apiVersion | *Ano* | Verze rozhraní API modulu runtime prostředků Tato možnost by měla být vždy "2018-09-01-Preview".

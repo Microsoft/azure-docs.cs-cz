@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609855"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Jak zadat číslo portu služby pomocí parametrů v Service Fabric
@@ -23,10 +22,10 @@ V tomto příkladu nastavíte číslo portu webového rozhraní API asp.net Core
 1. Otevřete Visual Studio a vytvořte novou Service Fabric aplikaci.
 1. Vyberte šablonu nestavové ASP.NET Core.
 1. Vyberte webové rozhraní API.
-1. Otevřete soubor ServiceManifest. XML.
+1. Otevřete soubor ServiceManifest.xml.
 1. Poznamenejte si název koncového bodu určeného pro vaši službu. Výchozí je `ServiceEndpoint`.
-1. Otevřete soubor souboru ApplicationManifest. XML.
-1. V `ServiceManifestImport` elementu přidejte nový `RessourceOverrides` element s odkazem na koncový bod v souboru ServiceManifest. XML.
+1. Otevřít soubor ApplicationManifest.xml
+1. V `ServiceManifestImport` elementu přidejte nový `RessourceOverrides` element s odkazem na koncový bod v souboru ServiceManifest.xml.
 
     ```xml
       <ServiceManifestImport>
@@ -54,7 +53,7 @@ V tomto příkladu nastavíte číslo portu webového rozhraní API asp.net Core
       </ServiceManifestImport>
     ```
 
-1. Pořád v souboru souboru ApplicationManifest. XML určíte parametr v `Parameters` elementu.
+1. Pořád v souboru ApplicationManifest.xml pak určíte parametr v `Parameters` elementu.
 
     ```xml
       <Parameters>
@@ -79,7 +78,7 @@ V tomto příkladu nastavíte číslo portu webového rozhraní API asp.net Core
       </Parameters>
     ```
 
-Při publikování aplikace ze sady Visual Studio pomocí publikačního profilu Cloud. XML je vaše služba nakonfigurovaná tak, aby používala port 80. Pokud nasadíte aplikaci bez zadání parametru MyWebAPI_PortNumber, služba používá port 8080.
+Při publikování aplikace ze sady Visual Studio pomocí Cloud.xml publikační profil, je vaše služba nakonfigurovaná tak, aby používala port 80. Pokud nasadíte aplikaci bez zadání parametru MyWebAPI_PortNumber, služba používá port 8080.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o některých základních konceptech, které jsou popsány v tomto článku, najdete v [článcích o správě aplikací pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md).

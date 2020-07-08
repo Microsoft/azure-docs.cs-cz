@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552589"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštění dotazů Apache Hive pomocí PowerShellu
@@ -42,11 +41,11 @@ Při spouštění dotazů na podregistr ve vzdáleném clusteru HDInsight se pou
 * `Wait-AzHDInsightJob`: Používá objekt úlohy ke kontrole stavu úlohy. Čeká na dokončení úlohy nebo překročení doby čekání.
 * `Get-AzHDInsightJobOutput`: Používá se k načtení výstupu úlohy.
 * `Invoke-AzHDInsightHiveJob`: Používá se ke spouštění příkazů HiveQL. Tato rutina zablokuje dotaz na dokončeno a pak vrátí výsledky.
-* `Use-AzHDInsightCluster`: Nastaví aktuální cluster, který se má použít `Invoke-AzHDInsightHiveJob` pro příkaz.
+* `Use-AzHDInsightCluster`: Nastaví aktuální cluster, který se má použít pro `Invoke-AzHDInsightHiveJob` příkaz.
 
 Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v clusteru HDInsight:
 
-1. Pomocí editoru uložte následující kód jako `hivejob.ps1`.
+1. Pomocí editoru uložte následující kód jako `hivejob.ps1` .
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
@@ -63,7 +62,7 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
         2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
         2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
 
-4. Jak bylo zmíněno `Invoke-Hive` dříve, lze použít ke spuštění dotazu a čekání na odpověď. Pomocí následujícího skriptu můžete zjistit, jak funguje příkaz Invoke-podregistr:
+4. Jak bylo zmíněno dříve, `Invoke-Hive` lze použít ke spuštění dotazu a čekání na odpověď. Pomocí následujícího skriptu můžete zjistit, jak funguje příkaz Invoke-podregistr:
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 

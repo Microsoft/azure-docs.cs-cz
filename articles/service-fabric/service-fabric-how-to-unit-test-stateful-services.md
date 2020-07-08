@@ -4,10 +4,9 @@ description: Přečtěte si o testování částí v Azure Service Fabric pro st
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639832"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Vytváření testů jednotek pro stavové služby
@@ -22,15 +21,15 @@ V tomto článku se předpokládá, že jste si přečetli [stavové služby tes
 ## <a name="the-servicefabricmocks-library"></a>Knihovna ServiceFabric. makety
 Od verze 3.3.0 poskytuje [ServiceFabric. makety](https://www.nuget.org/packages/ServiceFabric.Mocks/) rozhraní API pro napodobování orchestrace replik a správy stavů. Tato akce bude použita v příkladech.
 
-[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[GitHub](https://github.com/loekd/ServiceFabric.Mocks) NuGet
+[NuGet](https://www.nuget.org/packages/ServiceFabric.Mocks/) 
+ [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
 *ServiceFabric. makety nejsou vlastněny nebo spravovány společností Microsoft. Tato služba je však v současnosti doporučenou knihovnou pro stavové služby testování částí.*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>Nastavení modelu a orchestrace a stavu
-V rámci uspořádání v rámci testu se vytvoří podobná sada replik a stavový správce. Sada replik pak bude vlastnit vytvoření instance testované služby pro každou repliku. Bude také vlastnit události životního cyklu, jako `OnChangeRole` je `RunAsync`a. Správce státních stavů zajistí, že všechny operace provedené proti správci stavu jsou spuštěny a udržovány jako skutečný správce stavu.
+V rámci uspořádání v rámci testu se vytvoří podobná sada replik a stavový správce. Sada replik pak bude vlastnit vytvoření instance testované služby pro každou repliku. Bude také vlastnit události životního cyklu, jako je `OnChangeRole` a `RunAsync` . Správce státních stavů zajistí, že všechny operace provedené proti správci stavu jsou spuštěny a udržovány jako skutečný správce stavu.
 
-1. Vytvořte delegáta továrny služby, který vytvoří instanci testované služby. To by mělo být podobné nebo stejné jako zpětné volání služby Service Factory obvykle `Program.cs` nalezeno v nástroji Service Fabric služby nebo objektu actor. Mělo by následovat následující signatura:
+1. Vytvořte delegáta továrny služby, který vytvoří instanci testované služby. To by mělo být podobné nebo stejné jako zpětné volání služby Service Factory obvykle nalezeno v nástroji `Program.cs` Service Fabric služby nebo objektu actor. Mělo by následovat následující signatura:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
@@ -90,7 +89,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
-Následující test znázorňuje nastavení sady replik tří uzlů a ověření, že data jsou k dispozici ze sekundárního po změně role. Typický problém, který může být zachycen, je v případě, `InsertAsync` že data přidaná během byla uložena do paměti nebo do spolehlivé kolekce bez spuštění `CommitAsync`. V obou případech by sekundární databáze nebyla synchronizovaná s primární. To by mohlo vést k nekonzistentním odpovědím po přesunu služby.
+Následující test znázorňuje nastavení sady replik tří uzlů a ověření, že data jsou k dispozici ze sekundárního po změně role. Typický problém, který může být zachycen, je v případě, že data přidaná během `InsertAsync` byla uložena do paměti nebo do spolehlivé kolekce bez spuštění `CommitAsync` . V obou případech by sekundární databáze nebyla synchronizovaná s primární. To by mohlo vést k nekonzistentním odpovědím po přesunu služby.
 
 ```csharp
 [TestMethod]

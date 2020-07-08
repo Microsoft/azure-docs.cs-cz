@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/19/2019
 ms.author: memildin
 ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552861"
 ---
 # <a name="protect-azure-data-and-storage-services"></a>Ochrana Azure data a služeb úložiště

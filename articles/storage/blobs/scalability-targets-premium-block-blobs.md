@@ -10,10 +10,9 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 948b0f411e64fadc1e4e48c08f427e5ce4b2229d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75486024"
 ---
 # <a name="scalability-targets-for-premium-block-blob-storage-accounts"></a>Cíle škálovatelnosti pro účty úložiště objektů blob bloku úrovně Premium

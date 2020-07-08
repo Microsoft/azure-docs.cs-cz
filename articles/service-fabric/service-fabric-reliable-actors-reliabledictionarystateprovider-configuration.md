@@ -6,19 +6,18 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609736"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors--ReliableDictionaryActorStateProvider
-Můžete upravit výchozí konfiguraci ReliableDictionaryActorStateProvider změnou souboru Settings. XML vygenerovaného v kořenovém adresáři balíčku sady Visual Studio v konfigurační složce pro zadaný objekt actor.
+Můžete upravit výchozí konfiguraci ReliableDictionaryActorStateProvider změnou souboru settings.xml generovaného v kořenové složce balíčku sady Visual Studio v konfigurační složce pro zadaný objekt actor.
 
-Modul runtime Azure Service Fabric vyhledá předdefinované názvy oddílů v souboru Settings. XML a při vytváření podkladových komponent modulu runtime spotřebovává konfigurační hodnoty.
+Modul runtime služby Azure Service Fabric hledá v souboru settings.xml předdefinované názvy oddílů a při vytváření podkladových komponent modulu runtime tyto hodnoty spotřebovává.
 
 > [!NOTE]
-> **Neodstraňujte** ani neměňte názvy oddílů následujících konfigurací v souboru Settings. XML, který je generován v řešení sady Visual Studio.
+> **Neodstraňujte** ani neměňte názvy oddílů následujících konfigurací v souboru settings.xml, který je generován v řešení sady Visual Studio.
 > 
 > 
 
@@ -27,14 +26,14 @@ Existují také globální nastavení, která mají vliv na konfiguraci Reliable
 ## <a name="global-configuration"></a>Globální konfigurace
 Globální konfigurace je určena v manifestu clusteru pro cluster v části KtlLogger. Umožňuje konfiguraci umístění a velikosti sdíleného protokolu a také omezení globální paměti používané protokolovacím nástrojem. Všimněte si, že změny v manifestu clusteru mají vliv na všechny služby, které používají ReliableDictionaryActorStateProvider a spolehlivé stavové služby.
 
-Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Soubor se obvykle nazývá manifestem clusteru. XML. Manifest clusteru pro cluster můžete zobrazit pomocí příkazu Get-ServiceFabricClusterManifest prostředí PowerShell.
+Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Tento soubor se obvykle označuje jako ClusterManifest.xml. Manifest clusteru pro cluster můžete zobrazit pomocí příkazu Get-ServiceFabricClusterManifest prostředí PowerShell.
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet KB pro přidělení v režimu jádra pro fond paměti vyrovnávací paměti zápisu pro protokolovací nástroj. Tento fond paměti se používá k ukládání informací o stavu do mezipaměti před zápisem na disk. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost, do které může růst fondu paměti zápisu pro zápis protokolovacího nástroje. |
-| SharedLogId |GUID |"" |Určuje jedinečný identifikátor GUID, který se použije pro identifikaci výchozího sdíleného souboru protokolu používaného všemi spolehlivými službami na všech uzlech v clusteru, které neurčují SharedLogId v konfiguraci specifické pro danou službu. Je-li zadán parametr SharedLogId, musí být také zadán parametr SharedLogPath. |
+| SharedLogId |Identifikátor GUID |"" |Určuje jedinečný identifikátor GUID, který se použije pro identifikaci výchozího sdíleného souboru protokolu používaného všemi spolehlivými službami na všech uzlech v clusteru, které neurčují SharedLogId v konfiguraci specifické pro danou službu. Je-li zadán parametr SharedLogId, musí být také zadán parametr SharedLogPath. |
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde se sdílený soubor protokolu používaný všemi spolehlivými službami na všech uzlech v clusteru nespecifikuje SharedLogPath v konfiguraci specifické pro danou službu. Pokud je však zadán parametr SharedLogPath, musí být také zadán parametr SharedLogId. |
 | SharedLogSizeInMB |Megabajty |8192 |Určuje počet MB místa na disku, které se staticky přidělí pro sdílený protokol. Hodnota musí být 2048 nebo větší. |
 
@@ -52,7 +51,7 @@ Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace,
 ### <a name="remarks"></a>Poznámky
 Protokolovací nástroj má Globální fond paměti přidělený z nestránkované paměti jádra, který je dostupný pro všechny spolehlivé služby na uzlu pro ukládání dat stavu do mezipaměti, než se zapíše do vyhrazeného protokolu přidruženého k spolehlivé replice služby. Velikost fondu je řízena nastavením WriteBufferMemoryPoolMinimumInKB a WriteBufferMemoryPoolMaximumInKB. WriteBufferMemoryPoolMinimumInKB Určuje počáteční velikost tohoto fondu paměti a nejnižší velikost, se kterou se může fond paměti zmenšit. WriteBufferMemoryPoolMaximumInKB je nejvyšší velikost, na kterou může fond paměti růst. Každá otevřená replika spolehlivé služby může zvětšit velikost fondu paměti podle zjištěného množství systému až do WriteBufferMemoryPoolMaximumInKB. Pokud je paměť z fondu paměti větší, než je k dispozici, požadavky na paměť budou zpožděny, dokud nebude k dispozici paměť. Pokud je fond paměti pro vyrovnávací paměť pro zápis příliš malý pro určitou konfiguraci, může dojít ke zhoršení výkonu.
 
-Nastavení SharedLogId a SharedLogPath se vždycky používají společně k definování identifikátoru GUID a umístění pro výchozí sdílený protokol pro všechny uzly v clusteru. Výchozí sdílený protokol se používá pro všechny spolehlivé služby, které neurčují nastavení v souboru Settings. XML pro konkrétní službu. Pro dosažení co nejlepších výsledků by se měly soubory sdíleného protokolu umístit na disky, které se používají výhradně pro sdílený soubor protokolu pro snížení kolizí.
+Nastavení SharedLogId a SharedLogPath se vždycky používají společně k definování identifikátoru GUID a umístění pro výchozí sdílený protokol pro všechny uzly v clusteru. Výchozí sdílený protokol se používá pro všechny spolehlivé služby, které neurčují nastavení v settings.xml pro konkrétní službu. Pro dosažení co nejlepších výsledků by se měly soubory sdíleného protokolu umístit na disky, které se používají výhradně pro sdílený soubor protokolu pro snížení kolizí.
 
 SharedLogSizeInMB určuje velikost místa na disku, které se má předem přidělit pro výchozí sdílený protokol na všech uzlech.  SharedLogId a SharedLogPath není nutné zadávat, aby bylo možné zadat SharedLogSizeInMB.
 
@@ -65,20 +64,20 @@ Ve výchozím nastavení se v prázdném oddílu konfigurace zabezpečení zabr�
 > 
 
 ### <a name="section-name"></a>Název oddílu
-&lt;Jméno objektu&gt;actor ServiceReplicatorSecurityConfig
+&lt;Jméno objektu actor &gt; ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Konfigurace replikátoru
 Konfigurace replikátoru slouží ke konfiguraci replikátoru, který zodpovídá za to, aby byl stav poskytovatele stavu objektu actor vysoce spolehlivý díky replikaci a trvalému zachování stavu.
 Výchozí konfigurace je generována šablonou sady Visual Studio a měla by stačit. Tato část pojednává o dalších konfiguracích, které jsou k dispozici pro optimalizaci replikátoru.
 
 ### <a name="section-name"></a>Název oddílu
-&lt;Jméno objektu&gt;actor ServiceReplicatorConfig
+&lt;Jméno objektu actor &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
-| ReplicatorEndpoint |– |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| ReplicatorEndpoint |Není k dispozici |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
 | MaxReplicationMessageSize |Bajty |50 MB |Maximální velikost replikačních dat, která se dají přenést v jedné zprávě |
 | MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
 | MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací v sekundární frontě. Po zajištění vysoké dostupnosti stavu prostřednictvím trvalosti se operace uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |

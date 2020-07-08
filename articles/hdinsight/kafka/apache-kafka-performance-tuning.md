@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494924"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Optimalizace výkonu pro clustery Apache Kafka HDInsight
@@ -44,13 +43,13 @@ Apache Kafka výrobci sestavují skupiny zpráv (nazývaných dávky), které se
 
 ### <a name="producer-required-acknowledgments"></a>Potvrzování požadovaných výrobců
 
-Požadovaná `acks` konfigurace producent určí počet potvrzování vyžadovaných vedoucím oddílu před tím, než se žádost o zápis považuje za dokončenou. Toto nastavení ovlivňuje spolehlivost dat a přebírá hodnoty `0`, `1`nebo. `-1` Hodnota `-1` znamená, že před dokončením zápisu musí být přijato potvrzení ze všech replik. Nastavení `acks = -1` poskytuje silnější záruky před ztrátou dat, ale také má za následek vyšší latenci a nižší propustnost. Pokud požadavky vaší aplikace vyžadují vyšší propustnost, zkuste nastavit `acks = 0` nebo `acks = 1`. Pamatujte na to, že nepotvrzující všechny repliky můžou snížit spolehlivost dat.
+Požadovaná konfigurace producent `acks` určí počet potvrzování vyžadovaných vedoucím oddílu před tím, než se žádost o zápis považuje za dokončenou. Toto nastavení ovlivňuje spolehlivost dat a přebírá hodnoty `0` , `1` nebo `-1` . Hodnota `-1` znamená, že před dokončením zápisu musí být přijato potvrzení ze všech replik. Nastavení `acks = -1` poskytuje silnější záruky před ztrátou dat, ale také má za následek vyšší latenci a nižší propustnost. Pokud požadavky vaší aplikace vyžadují vyšší propustnost, zkuste nastavit `acks = 0` nebo `acks = 1` . Pamatujte na to, že nepotvrzující všechny repliky můžou snížit spolehlivost dat.
 
 ### <a name="compression"></a>Komprese
 
-Kafka výrobce je možné nakonfigurovat tak, aby před odesláním do zprostředkovatelů mohli Komprimovat zprávy. `compression.type` Nastavení určuje Kompresní kodek, který se má použít. Podporované kompresní kodeky jsou "gzip", "přichyceno" a "LZ4". Komprese je prospěšná a měla by se brát v úvahu, pokud dojde k omezení kapacity disku.
+Kafka výrobce je možné nakonfigurovat tak, aby před odesláním do zprostředkovatelů mohli Komprimovat zprávy. `compression.type`Nastavení určuje Kompresní kodek, který se má použít. Podporované kompresní kodeky jsou "gzip", "přichyceno" a "LZ4". Komprese je prospěšná a měla by se brát v úvahu, pokud dojde k omezení kapacity disku.
 
-Mezi dvěma běžně používanými kompresními `gzip` kodeky `snappy`a `gzip` má vyšší kompresní poměr, což vede ke snížení využití disku za cenu vyššího zatížení procesoru. `snappy` Kodek poskytuje méně komprese s nižšími nároky na výkon procesoru. Podle toho, který kodek se má použít, můžete rozhodnout na základě omezení na disku nebo procesoru zprostředkovatele. `gzip`může komprimovat data v poměru pěti krát větší než `snappy`.
+Mezi dvěma běžně používanými kompresními kodeky `gzip` a `snappy` `gzip` má vyšší kompresní poměr, což vede ke snížení využití disku za cenu vyššího zatížení procesoru. `snappy`Kodek poskytuje méně komprese s nižšími nároky na výkon procesoru. Podle toho, který kodek se má použít, můžete rozhodnout na základě omezení na disku nebo procesoru zprostředkovatele. `gzip`může komprimovat data v poměru pěti krát větší než `snappy` .
 
 Při použití komprese dat se zvýší počet záznamů, které lze uložit na disk. Může taky zvýšit nároky na procesor v případech, kdy dojde ke neshodě mezi formáty komprese používanými producentem a zprostředkovatelem. protože před zpracováním je nutné data zkomprimovat a pak je dekomprimovat.
 

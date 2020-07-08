@@ -7,10 +7,9 @@ ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
 ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75495369"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Vyloučení disků z replikace virtuálních počítačů VMware do Azure
@@ -42,7 +41,7 @@ Než vyloučíte disky z replikace:
 
 ## <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 
-1. Pokud [povolíte replikaci](site-recovery-hyper-v-site-to-azure.md) pro virtuální počítač VMware, po výběru virtuálních počítačů, které chcete replikovat, na stránce **Povolit** > **vlastnosti** > replikace**Konfigurovat vlastnosti** zkontrolujte sloupec disky, které chcete **replikovat** . Ve výchozím nastavení jsou pro replikaci vybrány všechny disky.
+1. Pokud [povolíte replikaci](site-recovery-hyper-v-site-to-azure.md) pro virtuální počítač VMware, po výběru virtuálních počítačů, které chcete replikovat, na stránce **Povolit**  >  **vlastnosti**replikace  >  **Konfigurovat vlastnosti** zkontrolujte sloupec disky, které chcete **replikovat** . Ve výchozím nastavení jsou pro replikaci vybrány všechny disky.
 2. Pokud nechcete replikovat určitý disk, na **discích pro replikaci** zrušte výběr pro všechny disky, které chcete vyloučit. 
 
     ![Vyloučení disků z replikace](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)

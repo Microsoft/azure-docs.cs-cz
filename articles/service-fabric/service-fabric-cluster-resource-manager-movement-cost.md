@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563339"
 ---
 # <a name="service-movement-cost"></a>Náklady na přesun služeb
@@ -94,7 +93,7 @@ Cenazapřesun vám pomůže najít řešení, která způsobují nejmenší pře
 Aby bylo možné podrobnější MoveCosts vzít v úvahu, musí být ve vašem clusteru povolený Cenazapřesun. Bez tohoto nastavení se pro výpočet Cenazapřesun používá výchozí režim počítání přesunů a sestavy Cenazapřesun se ignorují.
 
 
-Manifestem clusteru. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -102,7 +101,7 @@ Manifestem clusteru. XML:
         </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [

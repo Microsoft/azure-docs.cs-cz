@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
 ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75561333"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky ve službě Azure Container Instances
@@ -55,7 +54,7 @@ K připojení sdílené složky Azure jako svazku ve službě Azure Container In
   echo $ACI_PERS_STORAGE_ACCOUNT_NAME
   ```
 
-* **Název sdílené složky** – tato hodnota je už známá (definovaná `acishare` jako v předchozím skriptu).
+* **Název sdílené složky** – tato hodnota je už známá (definovaná jako `acishare` v předchozím skriptu).
 
 * **Klíč účtu úložiště** – tato hodnota se dá najít pomocí následujícího příkazu:
 
@@ -81,7 +80,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` Hodnota musí být jedinečná v rámci oblasti Azure, ve které vytvoříte instanci kontejneru. Pokud se při spuštění příkazu zobrazí chybová zpráva **popisku názvu DNS** , aktualizujte hodnotu v předchozím příkazu.
+`--dns-name-label`Hodnota musí být jedinečná v rámci oblasti Azure, ve které vytvoříte instanci kontejneru. Pokud se při spuštění příkazu zobrazí chybová zpráva **popisku názvu DNS** , aktualizujte hodnotu v předchozím příkazu.
 
 ## <a name="manage-files-in-mounted-volume"></a>Správa souborů na připojeném svazku
 
@@ -100,7 +99,7 @@ Můžete také nasadit skupinu kontejnerů a připojit svazek do kontejneru pomo
 
 Následující šablona YAML definuje skupinu kontejnerů s jedním kontejnerem vytvořeným s `aci-hellofiles` imagí. Kontejner připojí sdílenou složku Azure *acishare* , která byla dříve vytvořena jako svazek. Tam, kde je uvedeno, zadejte název a klíč úložiště pro účet úložiště, který hostuje sdílenou složku. 
 
-Stejně jako v příkladu rozhraní příkazového `dnsNameLabel` řádku musí být hodnota jedinečná v rámci oblasti Azure, kde vytvoříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v souboru YAML.
+Stejně jako v příkladu rozhraní příkazového řádku `dnsNameLabel` musí být hodnota jedinečná v rámci oblasti Azure, kde vytvoříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v souboru YAML.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -138,7 +137,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-K nasazení se šablonou YAML uložte předchozí YAML do souboru s názvem `deploy-aci.yaml`a potom spusťte příkaz [AZ Container Create][az-container-create] s `--file` parametrem:
+K nasazení se šablonou YAML uložte předchozí YAML do souboru s názvem `deploy-aci.yaml` a potom spusťte příkaz [AZ Container Create][az-container-create] s `--file` parametrem:
 
 ```azurecli
 # Deploy with YAML template
@@ -148,13 +147,13 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 Kromě nasazení CLI a YAML můžete nasadit skupinu kontejnerů a připojit svazek do kontejneru pomocí [šablony Azure správce prostředků](/azure/templates/microsoft.containerinstance/containergroups).
 
-Nejdřív naplňte `volumes` pole do části skupina `properties` kontejnerů v šabloně. 
+Nejdřív naplňte `volumes` pole do části Skupina kontejnerů v `properties` šabloně. 
 
 Pak u každého kontejneru, do kterého chcete svazek připojit, naplňte `volumeMounts` pole v `properties` části definice kontejneru.
 
 Následující šablona Správce prostředků definuje skupinu kontejnerů s jedním kontejnerem vytvořeným s `aci-hellofiles` imagí. Kontejner připojí sdílenou složku Azure *acishare* , která byla dříve vytvořena jako svazek. Tam, kde je uvedeno, zadejte název a klíč úložiště pro účet úložiště, který hostuje sdílenou složku. 
 
-Stejně jako v předchozích příkladech musí `dnsNameLabel` být hodnota jedinečná v rámci oblasti Azure, kde vytvoříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v šabloně.
+Stejně jako v předchozích příkladech `dnsNameLabel` musí být hodnota jedinečná v rámci oblasti Azure, kde vytvoříte instanci kontejneru. V případě potřeby aktualizujte hodnotu v šabloně.
 
 ```JSON
 {
@@ -223,7 +222,7 @@ Stejně jako v předchozích příkladech musí `dnsNameLabel` být hodnota jedi
 }
 ```
 
-Pokud chcete nasadit šablonu Správce prostředků, uložte předchozí JSON do souboru s názvem `deploy-aci.json`a pak spusťte příkaz [AZ Group Deployment Create][az-group-deployment-create] s `--template-file` parametrem:
+Pokud chcete nasadit šablonu Správce prostředků, uložte předchozí JSON do souboru s názvem `deploy-aci.json` a pak spusťte příkaz [AZ Group Deployment Create][az-group-deployment-create] s `--template-file` parametrem:
 
 ```azurecli
 # Deploy with Resource Manager template

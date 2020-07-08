@@ -4,14 +4,13 @@ description: Naučte se přiřazovat zásady zabezpečení přístupu k koncový
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614651"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Přiřazení zásad zabezpečení přístupu pro koncové body HTTP a HTTPS
-Použijete-li zásadu Run-as a manifest služby deklaruje prostředky koncového bodu HTTP, je nutné zadat **SecurityAccessPolicy**.  **SecurityAccessPolicy** zajišťuje, aby porty přidělené těmto koncovým bodům byly správně omezeny na uživatelský účet, ve kterém je služba spuštěna. V opačném případě **ovladač HTTP. sys** nemá k této službě přístup a při volání z klienta se zobrazí chyby. Následující příklad aplikuje účet Customer1 na koncový bod s názvem **koncového bodu**, který poskytuje úplná přístupová práva.
+Použijete-li zásadu Run-as a manifest služby deklaruje prostředky koncového bodu HTTP, je nutné zadat **SecurityAccessPolicy**.  **SecurityAccessPolicy** zajišťuje, aby porty přidělené těmto koncovým bodům byly správně omezeny na uživatelský účet, ve kterém je služba spuštěna. V opačném případě **http.sys** nemá přístup ke službě a získáte chyby s voláními z klienta. Následující příklad aplikuje účet Customer1 na koncový bod s názvem **koncového bodu**, který poskytuje úplná přístupová práva.
 
 ```xml
 <Policies>

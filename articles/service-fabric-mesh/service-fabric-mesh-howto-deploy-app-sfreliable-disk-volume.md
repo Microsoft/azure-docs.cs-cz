@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497966"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Připojení vysoce dostupného Service Fabric spolehlivého svazku založeného na disku v aplikaci Service Fabric sítě 
@@ -21,11 +20,11 @@ Service Fabric Reliable disk poskytuje svazky pro místní čtení s zápisy rep
 
 V tomto příkladu má aplikace čítače ASP.NET Core službu s webovou stránkou, která v prohlížeči zobrazuje hodnotu čítače.
 
-`counterService` Pravidelně čte hodnotu čítače ze souboru, zvětšuje ho a zapisuje ho zpátky do souboru. Soubor je uložený ve složce, která je připojená na svazek, který je zálohovaný Service Fabric spolehlivým diskem.
+`counterService`Pravidelně čte hodnotu čítače ze souboru, zvětšuje ho a zapisuje ho zpátky do souboru. Soubor je uložený ve složce, která je připojená na svazek, který je zálohovaný Service Fabric spolehlivým diskem.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení této úlohy můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure CLI. Pokud chcete používat Azure CLI s tímto článkem, ujistěte se `az --version` , že se `azure-cli (2.0.43)`vrátí aspoň.  Pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md)nainstalujte (nebo aktualizujte) modul rozšíření CLI pro Azure Service Fabric.
+K dokončení této úlohy můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure CLI. Pokud chcete používat Azure CLI s tímto článkem, ujistěte se, že se `az --version` vrátí aspoň `azure-cli (2.0.43)` .  Pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md)nainstalujte (nebo aktualizujte) modul rozšíření CLI pro Azure Service Fabric.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -46,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Následující příkaz nasadí aplikaci pro Linux pomocí [šablony Counter. sfreliablevolume. Linux. JSON](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). K nasazení aplikace pro Windows použijte [šablonu Counter. sfreliablevolume. Windows. JSON](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Mějte na paměti, že nasazení větších imagí kontejneru může trvat delší dobu.
+Následující příkaz nasadí aplikaci pro Linux pomocí [counter.sfreliablevolume.linux.jsv šabloně](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). K nasazení aplikace pro Windows použijte [counter.sfreliablevolume.windows.jsv šabloně](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Mějte na paměti, že nasazení větších imagí kontejneru může trvat delší dobu.
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/counter/counter.sfreliablevolume.linux.json
@@ -58,7 +57,7 @@ Stav nasazení můžete zobrazit také pomocí příkazu.
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Všimněte si názvu prostředku brány, který má typ prostředku `Microsoft.ServiceFabricMesh/gateways`. Použije se při získávání veřejné IP adresy aplikace.
+Všimněte si názvu prostředku brány, který má typ prostředku `Microsoft.ServiceFabricMesh/gateways` . Použije se při získávání veřejné IP adresy aplikace.
 
 ## <a name="open-the-application"></a>Otevření aplikace
 
@@ -67,11 +66,11 @@ Po úspěšném nasazení aplikace Získejte adresu ipAddress prostředku brány
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-Výstup by měl mít vlastnost `ipAddress` , která je veřejnou IP adresou pro koncový bod služby. Otevřete ho z prohlížeče. Zobrazí se webová stránka s hodnotou čítače, která se aktualizuje každou sekundu.
+Výstup by měl mít vlastnost, `ipAddress` která je veřejnou IP adresou pro koncový bod služby. Otevřete ho z prohlížeče. Zobrazí se webová stránka s hodnotou čítače, která se aktualizuje každou sekundu.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Ověřte, že aplikace dokáže použít svazek.
 
-Aplikace vytvoří ve složce Volume umístěný `counter.txt` `counter/counterService` soubor s názvem. Obsah tohoto souboru je hodnota čítače zobrazená na webové stránce.
+Aplikace vytvoří `counter.txt` ve složce Volume umístěný soubor s názvem `counter/counterService` . Obsah tohoto souboru je hodnota čítače zobrazená na webové stránce.
 
 ## <a name="delete-the-resources"></a>Odstranit prostředky
 

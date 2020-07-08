@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75453938"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak používat vlastní zásady přidělování
@@ -99,7 +98,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
 V této části vytvoříte funkci Azure, která implementuje vaše vlastní zásady přidělování. Tato funkce určuje, ke kterému centru IoT Hub má být zařízení zaregistrováno na základě toho, zda ID registrace obsahuje řetězec **-Contoso-tstrsd-007** nebo **-Contoso-hpsd-088**. Také nastaví počáteční stav vlákna zařízení na základě toho, zda je zařízení informační nebo tepelné čerpadlo.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
 
 2. Do vyhledávacího pole *Hledat na Marketplace* zadejte "Function App". V rozevíracím seznamu vyberte **Function App**a pak vyberte **vytvořit**.
 
@@ -122,7 +121,7 @@ V této části vytvoříte funkci Azure, která implementuje vaše vlastní zá
 
 4. Na stránce **Souhrn** vyberte **vytvořit** a vytvořte aplikaci Function App. Nasazení může trvat několik minut. Až se dokončí, vyberte **Přejít k prostředku**.
 
-5. V levém podokně na stránce **Přehled** aplikace Function App vyberte **+** další funkce a přidejte **Functions** novou funkci.
+5. V levém podokně na stránce **Přehled** aplikace Function App vyberte další funkce **+** a přidejte **Functions** novou funkci.
 
     ![Přidání funkce do Function App](./media/how-to-use-custom-allocation-policies/create-function.png)
 
@@ -423,7 +422,7 @@ Tato část se orientuje k pracovní stanici založené na systému Windows. Př
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
+4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z adresáře spusťte následující příkazy `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -436,7 +435,7 @@ Tato část se orientuje k pracovní stanici založené na systému Windows. Př
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    Pokud `cmake` nenajde kompilátor jazyka C++, může při spuštění příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste spustit příkaz v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Pokud nenajde `cmake` kompilátor jazyka C++, může při spuštění příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste spustit příkaz v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -456,7 +455,7 @@ Tato část se orientuje k pracovní stanici založené na systému Windows. Př
 
 ## <a name="simulate-the-devices"></a>Simulace zařízení
 
-V této části aktualizujete ukázku zřizování s názvem **prov\_\_dev Client\_Sample** v sadě Azure IoT C SDK, kterou jste si nastavili dříve.
+V této části aktualizujete ukázku zřizování s názvem **prov \_ dev \_ Client \_ Sample** v sadě Azure IoT C SDK, kterou jste si nastavili dříve.
 
 Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesílá požadavek na zřízení do instance služby Device Provisioning. Sekvence spouštění způsobí, že zařízení informačního zařízení bude rozpoznáno a přiřazeno ke službě IoT Hub pomocí vlastních zásad přidělování.
 
@@ -491,7 +490,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
 
 ### <a name="simulate-the-contoso-toaster-device"></a>Simulace zařízení s informačními zprávami společnosti Contoso
 
-1. Chcete-li simulovat zařízení informačního zařízení, vyhledejte `prov_dev_set_symmetric_key_info()` volání v části **prov\_dev\_Client\_Sample. c** , který je přidán do komentáře.
+1. Chcete-li simulovat zařízení informačního zařízení, vyhledejte volání `prov_dev_set_symmetric_key_info()` v části **prov \_ dev \_ Client \_ Sample. c** , který je přidán do komentáře.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -507,7 +506,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
 
     Uložte soubor.
 
-2. V nabídce sady Visual Studio vyberte **ladit** > **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano**a znovu sestavte projekt před spuštěním.
+2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano**a znovu sestavte projekt před spuštěním.
 
     Následující výstup je příkladem simulovaného zařízení, které se úspěšně spouští a připojuje k instanci služby zřizování, která má být přiřazena ke službě IoT Hub pro vlastní zásady přidělování:
 
@@ -527,7 +526,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
 
 ### <a name="simulate-the-contoso-heat-pump-device"></a>Simulace zařízení tepelného čerpadla contoso
 
-1. Chcete-li simulovat zařízení tepelného čerpadla, aktualizujte volání `prov_dev_set_symmetric_key_info()` v **nástroji\_prov\_dev\_Client Sample. c** znovu s ID registrace tepelného čerpadla a odvozeným klíčem zařízení, který jste dříve vygenerovali. Hodnota klíče **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** zobrazená níže je také uvedena jako příklad.
+1. Chcete-li simulovat zařízení tepelného čerpadla, aktualizujte volání `prov_dev_set_symmetric_key_info()` v nástroji **prov \_ dev \_ Client \_ Sample. c** znovu s ID registrace tepelného čerpadla a odvozeným klíčem zařízení, který jste dříve vygenerovali. Hodnota klíče **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** zobrazená níže je také uvedena jako příklad.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -536,7 +535,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
 
     Uložte soubor.
 
-2. V nabídce sady Visual Studio vyberte **ladit** > **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** pro opětovné sestavení projektu před spuštěním.
+2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** pro opětovné sestavení projektu před spuštěním.
 
     Následující výstup je příkladem simulovaného tepelného zařízení, které se úspěšně spouští a připojuje k instanci služby zřizování, která je přiřazená k službě IoT Hub v zařízeních společnosti Contoso pomocí vlastních zásad přidělování:
 

@@ -4,10 +4,9 @@ description: Použijte cluster Azure Service Fabric k hostování existující a
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614838"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
@@ -43,10 +42,10 @@ Pojmenujte službu **MyGuestService** a nastavte možnosti na pravé straně na 
 
 | Nastavení                   | Hodnota |
 | ------------------------- | ------ |
-| Složka balíčku kódu       | _&lt;Složka v aplikaci Node. js&gt;_ |
+| Složka balíčku kódu       | _&lt;Složka s vaší aplikací Node.js&gt;_ |
 | Chování balíčku kódu     | Zkopírujte obsah složky do projektu |
 | Program                   | node.exe |
-| Argumenty                 | server.js |
+| Arguments                 | server.js |
 | Pracovní složka            | CodePackage |
 
 Stiskněte **OK**.
@@ -97,13 +96,13 @@ Vyberte cílový profil **PublishProfiles\Cloud.xml**.
 
 Pokud jste to neudělali dříve, zvolte účet Azure, do kterého se má nasazení provést. Pokud ještě žádný nemáte, [zaregistrujte si bezplatný účet][create-account].
 
-V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud ho nemáte, vyberte ** &lt;vytvořit nový cluster... &gt; ** otevře se okno webového prohlížeče s Azure Portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud ho ještě nemáte, vyberte ** &lt; vytvořit nový cluster... &gt; ** tím se otevře okno webového prohlížeče s Azure Portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Při vytváření clusteru Service Fabric nezapomeňte nastavit nastavení **Vlastní koncové body** na hodnotu **80**.
 
 ![Konfigurace typu uzlu Service Fabric s vlastním koncovým bodem][custom-endpoint]
 
-Dokončení vytvoření nového clusteru Service Fabric nějakou dobu trvá. Jakmile se vytvoří, vraťte se do dialogového okna publikovat a vyberte ** &lt;aktualizovat&gt;**. Nový cluster bude uveden v rozevíracím seznamu, vyberte ho.
+Dokončení vytvoření nového clusteru Service Fabric nějakou dobu trvá. Jakmile se vytvoří, vraťte se do dialogového okna publikovat a vyberte ** &lt; aktualizovat &gt; **. Nový cluster bude uveden v rozevíracím seznamu, vyberte ho.
 
 Stiskněte **Publikovat** a počkejte na dokončení nasazení.
 

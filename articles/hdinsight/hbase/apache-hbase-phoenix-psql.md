@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 845c4a62aee04a8acdc645ba4c41f1f5496537c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552606"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Hromadné načtení dat do Apache Phoenixu s využitím psql
@@ -21,19 +20,19 @@ ms.locfileid: "75552606"
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Hromadné načítání pomocí Apache Phoenix
 
-Existuje několik způsobů, jak získat data do adaptérů HBA, včetně použití klientských rozhraní API, úlohy MapReduce s TableOutputFormat, nebo vložení dat ručně pomocí prostředí HBA. Phoenix poskytuje dvě metody pro načítání dat CSV do tabulek Phoenix: Nástroj pro načítání klientů s `psql`názvem a nástroj pro hromadné načítání založené na MapReduce.
+Existuje několik způsobů, jak získat data do adaptérů HBA, včetně použití klientských rozhraní API, úlohy MapReduce s TableOutputFormat, nebo vložení dat ručně pomocí prostředí HBA. Phoenix poskytuje dvě metody pro načítání dat CSV do tabulek Phoenix: Nástroj pro načítání klientů s názvem `psql` a nástroj pro hromadné načítání založené na MapReduce.
 
-Tento `psql` nástroj je založený na jednom vlákně a je nejvhodnější pro načítání megabajtů a gigabajtů dat. Všechny soubory CSV, které mají být načteny, musí mít příponu souboru. csv.  Soubory skriptu SQL můžete zadat také na `psql` příkazovém řádku s příponou souboru. SQL.
+Tento `psql` Nástroj je založený na jednom vlákně a je nejvhodnější pro načítání megabajtů a gigabajtů dat. Všechny soubory CSV, které mají být načteny, musí mít příponu souboru. csv.  Soubory skriptu SQL můžete zadat také na `psql` příkazovém řádku s příponou souboru. SQL.
 
 Hromadné načítání pomocí MapReduce se používá pro mnohem větší objemy dat, obvykle v produkčních scénářích, protože MapReduce používá více vláken.
 
-Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a že nastavení časového limitu dotazu jsou očekávaná.  Přejděte na řídicí panel [Apache Ambari](https://ambari.apache.org/) clusteru HDInsight, vyberte adaptéry HBA a pak kartu konfigurace.  Posuňte se dolů a ověřte, že Apache Phoenix `enabled` je nastavená na jak je znázorněno níže:
+Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a že nastavení časového limitu dotazu jsou očekávaná.  Přejděte na řídicí panel [Apache Ambari](https://ambari.apache.org/) clusteru HDInsight, vyberte adaptéry HBA a pak kartu konfigurace.  Posuňte se dolů a ověřte, že Apache Phoenix je nastavená na `enabled` jak je znázorněno níže:
 
 ![Apache Phoenix nastavení clusteru HDInsight](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Použít `psql` k hromadnému načítání tabulek
 
-1. Vytvořte soubor s názvem `createCustomersTable.sql`a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `createCustomersTable.sql` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,13 +43,13 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
         Country varchar);
     ```
 
-1. Vytvořte soubor s názvem `listCustomers.sql`a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `listCustomers.sql` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
 
     ```sql
     SELECT * from Customers;
     ```
 
-1. Vytvořte soubor s názvem `customers.csv`a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `customers.csv` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
 
     ```txt
     1,Samantha,260000.0,18,US
@@ -58,7 +57,7 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
     3,Anton,550150.0,42,Norway
     ```
 
-1. Vytvořte soubor s názvem `customers2.csv`a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
+1. Vytvořte soubor s názvem `customers2.csv` a zkopírujte níže uvedený kód do souboru. Pak tento soubor uložte a zavřete.
 
     ```txt
     4,Nicolle,180000.0,22,US
@@ -90,7 +89,7 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
     python psql.py /tmp/createCustomersTable.sql /tmp/customers.csv
     ```
 
-    Po dokončení `psql` operace by se měla zobrazit zpráva podobná následující:
+    Po `psql` dokončení operace by se měla zobrazit zpráva podobná následující:
 
     ```output
     csv columns from database.
@@ -98,7 +97,7 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
     Time: 0.081 sec(s)
     ```
 
-1. Můžete pokračovat v používání `psql` k zobrazení obsahu tabulky Customers. Spusťte následující kód:
+1. Můžete pokračovat `psql` v používání k zobrazení obsahu tabulky Customers. Spusťte následující kód:
 
     ```bash
     python psql.py /tmp/listCustomers.sql
@@ -116,7 +115,7 @@ Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a ž
 
 Pro nahrání vyšší propustnosti distribuované přes cluster použijte nástroj pro načtení MapReduce. Tento zavaděč nejprve převede všechna data na HFiles a potom poskytne vytvořenou HFiles pro adaptéry HBA.
 
-1. Tato část pokračuje v relaci SSH a objekty, které jste vytvořili dříve. Vytvořte tabulku **Customers** a **Customers. csv** podle toho, co potřebujete, podle výše uvedeného postupu. V případě potřeby znovu vytvořte připojení SSH.
+1. Tato část pokračuje v relaci SSH a objekty, které jste vytvořili dříve. Vytvořte tabulku **Customers** a **customers.csv** soubor podle potřeby pomocí výše uvedeného postupu. V případě potřeby znovu vytvořte připojení SSH.
 
 1. Ořízne obsah tabulky **Customers** . V otevřené relaci SSH spusťte následující příkazy:
 
@@ -155,7 +154,7 @@ Pro nahrání vyšší propustnosti distribuované přes cluster použijte nást
     19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Removing output directory /tmp/50254426-aba6-400e-88eb-8086d3dddb6
     ```
 
-1. Pokud chcete použít MapReduce s Azure Data Lake Storage, vyhledejte Data Lake Storage kořenový adresář, což je `hbase.rootdir` hodnota v. `hbase-site.xml` V následujícím příkazu je `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`Data Lake Storage kořenový adresář. V tomto příkazu zadejte vstupní a výstupní složky Data Lake Storage jako parametry:
+1. Pokud chcete použít MapReduce s Azure Data Lake Storage, vyhledejte Data Lake Storage kořenový adresář, což je `hbase.rootdir` hodnota v `hbase-site.xml` . V následujícím příkazu je Data Lake Storage kořenový adresář `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1` . V tomto příkazu zadejte vstupní a výstupní složky Data Lake Storage jako parametry:
 
     ```bash
     cd /usr/hdp/current/phoenix-client

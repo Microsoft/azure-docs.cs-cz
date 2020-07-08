@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652135"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. Compute. CredentialsCombo – element uživatelského rozhraní
@@ -100,7 +99,7 @@ Pokud `osPlatform` je **systém Windows**nebo `osPlatform` se systémem **Linux*
 }
 ```
 
-Pokud `osPlatform` je systém **Linux** a uživatel zadal veřejný klíč SSH, vrátí ovládací prvek následující výstup:
+Pokud `osPlatform` je systém **Linux** a uživatel ZADAL veřejný klíč SSH, vrátí ovládací prvek následující výstup:
 
 ```json
 {
@@ -114,8 +113,8 @@ Pokud `osPlatform` je systém **Linux** a uživatel zadal veřejný klíč SSH, 
 - `osPlatform`musí být zadáno a může být buď **Windows** , nebo **Linux**.
 - Pokud `constraints.required` je nastavená na **hodnotu true**, musí být v textových polích heslo nebo veřejný klíč SSH hodnoty k úspěšnému ověření. Výchozí hodnota je **true (pravda**).
 - Pokud `options.hideConfirmation` je nastaveno na **hodnotu true**, pak je skryté druhé textové pole pro potvrzení hesla uživatele. Výchozí hodnota je **false** (nepravda).
-- Pokud `options.hidePassword` je parametr nastaven na **hodnotu true**, možnost použití ověřování heslem je skrytá. Dá se použít jenom v případě `osPlatform` , že je **Linux**. Výchozí hodnota je **false** (nepravda).
-- Další omezení povolených hesel lze implementovat pomocí `customPasswordRegex` vlastnosti. Řetězec v `customValidationMessage` se zobrazí, když se heslo nezdařilo vlastní ověření. Výchozí hodnota pro obě vlastnosti je **null**.
+- Pokud `options.hidePassword` je parametr nastaven na **hodnotu true**, možnost použití ověřování heslem je skrytá. Dá se použít jenom v případě, že `osPlatform` je **Linux**. Výchozí hodnota je **false** (nepravda).
+- Další omezení povolených hesel lze implementovat pomocí `customPasswordRegex` Vlastnosti. Řetězec v `customValidationMessage` se zobrazí, když se heslo nezdařilo vlastní ověření. Výchozí hodnota pro obě vlastnosti je **null**.
 
 ## <a name="next-steps"></a>Další kroky
 

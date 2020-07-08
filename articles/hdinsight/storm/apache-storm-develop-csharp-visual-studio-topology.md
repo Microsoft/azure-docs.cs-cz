@@ -9,10 +9,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75612287"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologií v jazyce C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
@@ -21,7 +20,7 @@ Naučte se, jak vytvořit topologii Apache Storm v jazyce C# pomocí nástrojů 
 
 Naučíte se také, jak vytvořit hybridní topologie, které používají komponenty C# a Java.
 
-Topologie C# používají .NET 4,5 a ke spuštění v clusteru HDInsight použijte mono. Informace o možných nekompatibilitách najdete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/). Chcete-li použít topologii jazyka C#, je `Microsoft.SCP.Net.SDK` nutné aktualizovat balíček NuGet používaný projektem na verzi 0.10.0.6 nebo novější. Verze balíčku se zároveň musí shodovat s hlavní verzí Stormu nainstalovanou ve službě HDInsight.
+Topologie C# používají .NET 4,5 a ke spuštění v clusteru HDInsight použijte mono. Informace o možných nekompatibilitách najdete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/). Chcete-li použít topologii jazyka C#, je nutné aktualizovat `Microsoft.SCP.Net.SDK` balíček NuGet používaný projektem na verzi 0.10.0.6 nebo novější. Verze balíčku se zároveň musí shodovat s hlavní verzí Stormu nainstalovanou ve službě HDInsight.
 
 | Verze HDInsight | Verze Apache Storm | Verze SCP.NET | Výchozí verze mono |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
@@ -47,9 +46,9 @@ Při odeslání topologie negenerovaného toku ze sady Visual Studio vygeneruje 
 
 1. Do vývojového prostředí nainstalujte sadu Java Developer Kit (JDK) 7 nebo novější. Oracle JDK můžete získat od [Oracle](https://openjdk.java.net/). Můžete také použít [jiné distribuce Java](/java/azure/jdk/).
 
-2. Nastavte proměnnou `JAVA_HOME` prostředí na adresář, který obsahuje Java.
+2. Nastavte `JAVA_HOME` proměnnou prostředí na adresář, který obsahuje Java.
 
-3. Nastavte proměnnou `PATH` prostředí tak, aby zahrnovala `%JAVA_HOME%\bin` adresář.
+3. Nastavte `PATH` proměnnou prostředí tak, aby zahrnovala `%JAVA_HOME%\bin` adresář.
 
 Můžete sestavit a spustit následující konzolovou aplikaci v jazyce C# a ověřit, zda jsou správně nainstalovány jazyky Java a JDK:
 
@@ -154,7 +153,7 @@ Dále přidejte kód pro Spout, který se používá ke čtení dat v topologii 
 
    * `Fail`(pouze transakční topologie): zpracovává řazené kolekce členů, které zpracovávají selhání jiných komponent v topologii. Implementace `Fail` metody umožňuje znovu vygenerovat řazenou kolekci členů, aby ji bylo možné znovu zpracovat.
 
-2. Obsah `Spout` třídy nahraďte následujícím textem:
+2. Obsah třídy nahraďte `Spout` následujícím textem:
 
     ```csharp
     private Context ctx;
@@ -220,7 +219,7 @@ Nyní v tomto příkladu vytvořte dvě šrouby:
 
 1. Odstraňte existující soubor *Bolt.cs* z projektu.
 
-2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat** > **novou položku**. V seznamu vyberte možnost **přešroubování**a jako název zadejte *Splitter.cs* . V kódu nového souboru změňte název oboru názvů na `WordCount`. Pak tento postup opakujte, abyste vytvořili druhý šroub s názvem *Counter.cs*.
+2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. V seznamu vyberte možnost **přešroubování**a jako název zadejte *Splitter.cs* . V kódu nového souboru změňte název oboru názvů na `WordCount` . Pak tento postup opakujte, abyste vytvořili druhý šroub s názvem *Counter.cs*.
 
    * *Splitter.cs*: implementuje šroub, který rozdělí věty na jednotlivá slova a vygeneruje nový proud slov.
 
@@ -229,9 +228,9 @@ Nyní v tomto příkladu vytvořte dvě šrouby:
      > [!NOTE]  
      > Tyto šrouby čtou a zapisují do datových proudů, ale můžete také použít šroub ke komunikaci se zdroji, jako je databáze nebo služba.
 
-3. Otevřete *Splitter.cs*. Ve výchozím nastavení má pouze jednu metodu: `Execute`. Metoda `Execute` je volána, když šroub obdrží řazenou kolekci členů ke zpracování. Tady můžete číst a zpracovávat příchozí řazené kolekce členů a generovat odchozí řazené kolekce členů.
+3. Otevřete *Splitter.cs*. Ve výchozím nastavení má pouze jednu metodu: `Execute` . `Execute`Metoda je volána, když šroub obdrží řazenou kolekci členů ke zpracování. Tady můžete číst a zpracovávat příchozí řazené kolekce členů a generovat odchozí řazené kolekce členů.
 
-4. Obsah `Splitter` třídy nahraďte následujícím kódem:
+4. Obsah třídy nahraďte `Splitter` následujícím kódem:
 
     ```csharp
     private Context ctx;
@@ -341,7 +340,7 @@ Spout vygeneruje věty, které jsou distribuovány do instancí rozdělovače. �
 
 Vzhledem k tomu, že instance čítače obsahuje počet slov místně, chcete zajistit, aby určitá slova byla v toku ke stejné instanci šroubu čítače. Každá instance uchovává záznam o konkrétních slovech. Vzhledem k tomu, že rozdělovač oddělovače udržuje žádný stav, nezáleží na tom, která instance rozdělovače obdrží tuto větu.
 
-Otevřete *program.cs*. Důležitou metodou je `GetTopologyBuilder`, která se používá k definování topologie, která je odeslána do přeplavení. Nahraďte obsah `GetTopologyBuilder` následujícím kódem pro implementaci výše popsané topologie:
+Otevřete *program.cs*. Důležitou metodou je `GetTopologyBuilder` , která se používá k definování topologie, která je odeslána do přeplavení. Nahraďte obsah `GetTopologyBuilder` následujícím kódem pro implementaci výše popsané topologie:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -405,7 +404,7 @@ return topologyBuilder;
 
 Nyní jste připraveni odeslat topologii do clusteru HDInsight.
 
-1. Přejděte k **zobrazení** > **Průzkumník serveru**.
+1. Přejděte k **zobrazení**  >  **Průzkumník serveru**.
 
 1. Klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit k Microsoft Azure předplatnému...** a dokončete proces přihlašování.
 
@@ -418,7 +417,7 @@ Nyní jste připraveni odeslat topologii do clusteru HDInsight.
     ![Okno zobrazení topologie navýšení, cluster HDInsight, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > **Topologie** **přePrůzkumník serveru**můžete zobrazit také z. Rozbalte **Azure** > **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak zvolte **Zobrazit topologie**přeplavování.
+    > **Topologie** **přePrůzkumník serveru**můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak zvolte **Zobrazit topologie**přeplavování.
 
     Chcete-li zobrazit informace o součástech v topologii, vyberte součást v diagramu.
 
@@ -435,15 +434,15 @@ Transakční topologie implementují následující, aby podporovaly přehrává
 
 * **Ukládání metadat do mezipaměti**: Spout musí ukládat metadata o vysílaných datech, aby se data mohla načíst a emitovat znovu, pokud dojde k selhání. Vzhledem k tomu, že data vygenerovaná ukázkou jsou malá, jsou nezpracovaná data pro každou řazenou kolekci členů uložena ve slovníku pro opětovné přehrání.
 
-* **ACK**: každé pole topologie může volat `this.ctx.Ack(tuple)` , aby bylo možné potvrdit, že úspěšně zpracovalo řazenou kolekci členů. Když všechny šrouby potvrdí řazenou kolekci členů, vyvolá se `Ack` metoda Spout. `Ack` Metoda umožňuje Spout odebrat data, která byla uložena do mezipaměti pro opětovné přehrání.
+* **ACK**: každé pole topologie může volat `this.ctx.Ack(tuple)` , aby bylo možné potvrdit, že úspěšně zpracovalo řazenou kolekci členů. Když všechny šrouby potvrdí řazenou kolekci členů, `Ack` vyvolá se metoda Spout. `Ack`Metoda umožňuje Spout odebrat data, která byla uložena do mezipaměti pro opětovné přehrání.
 
-* **Selhání**: každé šroubové volání `this.ctx.Fail(tuple)` může signalizovat, že zpracování pro řazené kolekce členů selhalo. Selhání se šíří do `Fail` metody Spout, kde je možné znovu přehrát řazenou kolekci členů pomocí metadat uložených v mezipaměti.
+* **Selhání**: každé šroubové volání může `this.ctx.Fail(tuple)` signalizovat, že zpracování pro řazené kolekce členů selhalo. Selhání se šíří do `Fail` metody Spout, kde je možné znovu přehrát řazenou kolekci členů pomocí metadat uložených v mezipaměti.
 
-* **ID sekvence**: při generování řazené kolekce členů lze zadat jedinečné ID sekvence. Tato hodnota určuje řazenou kolekci členů pro zpracování`Ack` opětovného přehrání (a `Fail`). Například Spout v projektu s **ukázkovým** zaplavení používá při vygenerování dat následující volání metody:
+* **ID sekvence**: při generování řazené kolekce členů lze zadat jedinečné ID sekvence. Tato hodnota určuje řazenou kolekci členů pro zpracování opětovného přehrání ( `Ack` a `Fail` ). Například Spout v projektu s **ukázkovým** zaplavení používá při vygenerování dat následující volání metody:
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  Tento kód vygeneruje řazenou kolekci členů, která obsahuje větu k výchozímu datovému proudu s hodnotou ID sekvence `lastSeqId`obsaženou v. V tomto příkladu `lastSeqId` se zvyšuje pro každou vydanou řazenou kolekci členů.
+  Tento kód vygeneruje řazenou kolekci členů, která obsahuje větu k výchozímu datovému proudu s hodnotou ID sekvence obsaženou v `lastSeqId` . V tomto příkladu `lastSeqId` se zvyšuje pro každou vydanou řazenou kolekci členů.
 
 Jak je znázorněno v projektu **ukázkového** navýšení, zda je součást transakční, lze nastavit za běhu na základě konfigurace.
 
@@ -486,7 +485,7 @@ SCP.NET verze 0.9.4.203 zavádí novou třídu a metodu specificky pro práci s 
 * `TopologyBuilder.SetEventHubSpout`Metoda: přidá do topologie komponentu Spout centra událostí.
 
 > [!NOTE]  
-> `CustomizedInteropJSONSerializer` Ke serializaci dat vytvořených v Spout je nutné stále použít.
+> `CustomizedInteropJSONSerializer`Ke serializaci dat vytvořených v Spout je nutné stále použít.
 
 ## <a name="use-configurationmanager"></a>Použití ConfigurationManager
 
@@ -517,7 +516,7 @@ public class MyComponent : ISCPBolt
 }
 ```
 
-Použijete-li `Get` metodu pro vrácení instance komponenty, je nutné zajistit, aby do konstruktoru předala parametry `Context` a. `Dictionary<string, Object>` Následující příklad je základní `Get` metoda, která správně předává tyto hodnoty:
+Použijete-li `Get` metodu pro vrácení instance komponenty, je nutné zajistit, aby `Context` `Dictionary<string, Object>` do konstruktoru předala parametry a. Následující příklad je základní `Get` metoda, která správně předává tyto hodnoty:
 
 ```csharp
 public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
@@ -574,7 +573,7 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
    > [!NOTE]
    > Nezapomeňte změnit **Typ výstupu** zpátky do **knihovny tříd** před nasazením topologie do clusteru.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat** > **novou položku**. Vyberte **Třída**a jako název třídy zadejte *LocalTest.cs* . Nakonec vyberte **Přidat**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. Vyberte **Třída**a jako název třídy zadejte *LocalTest.cs* . Nakonec vyberte **Přidat**.
 
 1. Otevřete *LocalTest.cs*a přidejte následující `using` příkaz v horní části:
 
@@ -582,7 +581,7 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
     using Microsoft.SCP;
     ```
 
-1. Jako obsah `LocalTest` třídy použijte následující kód:
+1. Jako obsah třídy použijte následující kód `LocalTest` :
 
     ```csharp
     // Drives the topology components
@@ -663,7 +662,7 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
 
     Věnujte si chvilku, abyste si přečetli komentáře ke kódu. Tento kód používá `LocalContext` ke spuštění komponent ve vývojovém prostředí. Ukládá datový proud mezi součástmi do textových souborů na místním disku.
 
-1. Otevřete *program.cs*a do `Main` metody přidejte následující kód:
+1. Otevřete *program.cs*a do metody přidejte následující kód `Main` :
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -684,19 +683,19 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
     Console.ReadKey();
     ```
 
-1. Uložte změny a pak vyberte **F5** nebo zvolte **ladění** > **Spustit ladění** a spusťte tak projekt. Mělo by se zobrazit okno konzoly a log status jako průběh testů. Když `Tests finished` se zobrazí, vyberte libovolnou klávesu pro zavření okna.
+1. Uložte změny a pak vyberte **F5** nebo zvolte **ladění**  >  **Spustit ladění** a spusťte tak projekt. Mělo by se zobrazit okno konzoly a log status jako průběh testů. Když `Tests finished` se zobrazí, vyberte libovolnou klávesu pro zavření okna.
 
-1. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. (Například: *C\\: Users\\\<your_user_name \\>zdrojové\\\\úložiště\\WORDCOUNT*.) Pak v tomto adresáři otevřete *přihrádku*a potom vyberte *ladit*. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: *věty. txt*, *Counter. txt*a *rozdělovač. txt*. Otevřete každý textový soubor a zkontrolujte data.
+1. Pomocí **Průzkumníka Windows** vyhledejte adresář, který obsahuje váš projekt. (Například: *C: \\ Users \\ \<your_user_name> \\ source \\ úložišť \\ WORDCOUNT \\ WORDCOUNT*.) Pak v tomto adresáři otevřete *přihrádku*a potom vyberte *ladit*. Měli byste vidět textové soubory, které byly vytvořeny při spuštění testů: *sentences.txt*, *counter.txt*a *splitter.txt*. Otevřete každý textový soubor a zkontrolujte data.
 
    > [!NOTE]  
-   > Řetězcová data v těchto souborech přetrvají jako pole desítkových hodnot. Například `[[97,103,111]]` v souboru **rozdělovače. txt** představuje *před*slovem text.
+   > Řetězcová data v těchto souborech přetrvají jako pole desítkových hodnot. Například `[[97,103,111]]` v souboru **splitter.txt** představuje *před*slovem.
 
 > [!NOTE]  
 > Nezapomeňte nastavit **typ projektu** zpět na **knihovnu tříd** ve vlastnostech projektu před nasazením na šíření v clusteru HDInsight.
 
 ### <a name="log-information"></a>Informace protokolu
 
-Informace ze svých komponent topologie můžete snadno protokolovat pomocí `Context.Logger`. Například následující příkaz vytvoří informační položku protokolu:
+Informace ze svých komponent topologie můžete snadno protokolovat pomocí `Context.Logger` . Například následující příkaz vytvoří informační položku protokolu:
 
 `Context.Logger.Info("Component started");`
 
@@ -734,7 +733,7 @@ Odesílání může selhat z několika důvodů:
 * Závislosti jsou nekompatibilní.
 * Názvy topologie jsou duplicitní.
 
-Pokud soubor protokolu *HDInsight-scpwebapi. out* obsahuje výjimku `FileNotFoundException`, může být výjimka způsobena následujícími podmínkami:
+Pokud soubor protokolu *HDInsight-scpwebapi. out* obsahuje `FileNotFoundException` výjimku, může být výjimka způsobena následujícími podmínkami:
 
 * JDK není v cestě k vývojovému prostředí. Ověřte, že je JDK nainstalovaný ve vývojovém prostředí a že `%JAVA_HOME%/bin` je v cestě.
 * Chybí závislost Java. Ujistěte se, že jako součást odeslání budete zahrnovat všechny požadované soubory. jar.

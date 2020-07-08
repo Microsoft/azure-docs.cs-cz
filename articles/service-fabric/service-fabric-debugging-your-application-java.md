@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614481"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Ladění aplikace Service Fabric Java pomocí zatmění
@@ -20,7 +19,7 @@ ms.locfileid: "75614481"
 
 1. Spusťte místní vývojový cluster podle kroků uvedených v části [Nastavení vývojového prostředí Service Fabric](service-fabric-get-started-linux.md).
 
-2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, aby se spouštěl proces Java s parametry vzdáleného ladění. Tento soubor najdete v následujícím umístění: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. V tomto příkladu je pro ladění nastavený port 8001.
+2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, aby se spouštěl proces Java s parametry vzdáleného ladění. Tento soubor najdete v následujícím umístění: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh` . V tomto příkladu je pro ladění nastavený port 8001.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
@@ -37,7 +36,7 @@ ms.locfileid: "75614481"
    ```
 6.  Nastavte zarážky v požadovaných bodech a proveďte ladění aplikace.
 
-Pokud dojde k chybě aplikace, můžete také povolit coredumps. Spustí `ulimit -c` se v prostředí a pokud vrátí hodnotu 0, pak coredumps nejsou povolené. Pokud chcete povolit neomezený coredumps, spusťte následující příkaz `ulimit -c unlimited`:. Stav můžete také ověřit pomocí příkazu `ulimit -a`.  Pokud jste chtěli aktualizovat cestu generování coredump, spusťte `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
+Pokud dojde k chybě aplikace, můžete také povolit coredumps. Spustí se `ulimit -c` v prostředí a pokud vrátí hodnotu 0, pak coredumps nejsou povolené. Pokud chcete povolit neomezený coredumps, spusťte následující příkaz: `ulimit -c unlimited` . Stav můžete také ověřit pomocí příkazu `ulimit -a` .  Pokud jste chtěli aktualizovat cestu generování coredump, spusťte `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` . 
 
 ### <a name="next-steps"></a>Další kroky
 

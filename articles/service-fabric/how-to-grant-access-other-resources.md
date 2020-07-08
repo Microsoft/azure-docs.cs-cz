@@ -4,10 +4,9 @@ description: V tomto článku se dozvíte, jak udělit přístup k aplikaci Serv
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614789"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure (Preview)
@@ -24,7 +23,7 @@ Pomocí spravované identity aplikace Service Fabric (v tomto případě uživat
 3. volitelné Kontrola existujícího přístupu: v ovládacím prvku najít vyberte spravovanou identitu přiřazenou systémem nebo uživatelem. Vyberte příslušnou identitu ze seznamu výsledných výsledků.
 4. Kliknutím na + přidat přiřazení role v horní části stránky přidejte nové přiřazení role pro identitu aplikace.
 V části role v rozevíracím seznamu vyberte čtečka dat objektů BLOB úložiště.
-5. V dalším rozevíracím seznamu v části přiřadit přístup k vyberte `User assigned managed identity`.
+5. V dalším rozevíracím seznamu v části přiřadit přístup k vyberte `User assigned managed identity` .
 6. Potom se ujistěte, že v rozevíracím seznamu Předplatné je správné předplatné, a nastavte Skupinu prostředků na Všechny skupiny prostředků.
 7. V části Vybrat zvolte UAI odpovídající aplikaci Service Fabric a pak klikněte na Uložit.
 

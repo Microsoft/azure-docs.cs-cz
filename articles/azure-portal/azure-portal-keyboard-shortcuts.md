@@ -16,13 +16,12 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75641329"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky v Azure Portal
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
 
 Tento článek obsahuje seznam klávesových zkratek, které fungují všude v Azure Portal. Jednotlivé služby mohou mít své vlastní klávesové zkratky.
 

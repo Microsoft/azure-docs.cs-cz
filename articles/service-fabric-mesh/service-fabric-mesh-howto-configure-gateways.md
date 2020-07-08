@@ -7,10 +7,9 @@ ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461964"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány na požadavky směrování
@@ -55,7 +54,7 @@ Oddíl Properties (vlastnosti) slouží k definování sítí, mezi kterými br�
 
 #### <a name="source-and-destination-network"></a>Zdrojová a cílová síť 
 
-Každá brána vyžaduje `sourceNetwork` a `destinationNetwork`. Zdrojová síť je definovaná jako síť, ze které vaše aplikace bude přijímat příchozí požadavky. Vlastnost Name by měla být vždycky nastavená na Open (otevřít). Cílová síť je síť, na kterou požadavky cílí. Hodnota tohoto názvu by měla být nastavená na název prostředku místní sítě vaší aplikace (musí obsahovat úplný odkaz na prostředek). Níže najdete ukázku konfigurace toho, co vypadá jako nasazení v síti s názvem "myNetwork".
+Každá brána vyžaduje `sourceNetwork` a `destinationNetwork` . Zdrojová síť je definovaná jako síť, ze které vaše aplikace bude přijímat příchozí požadavky. Vlastnost Name by měla být vždycky nastavená na Open (otevřít). Cílová síť je síť, na kterou požadavky cílí. Hodnota tohoto názvu by měla být nastavená na název prostředku místní sítě vaší aplikace (musí obsahovat úplný odkaz na prostředek). Níže najdete ukázku konfigurace toho, co vypadá jako nasazení v síti s názvem "myNetwork".
 
 ```json 
 "properties": {
@@ -81,7 +80,7 @@ Pravidla směrování se zadává na základě jednotlivých portů. Každý por
 Pravidlo směrování TCP se skládá z následujících vlastností: 
 * `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
 * `port`– port, na kterém se má naslouchat příchozím žádostem 
-* `destination`– specifikace koncového bodu `applicationName`, `serviceName`která zahrnuje `endpointName`, a, kde je potřeba směrovat požadavky na
+* `destination`– specifikace koncového bodu, která zahrnuje `applicationName` , `serviceName` a `endpointName` , kde je potřeba směrovat požadavky na
 
 Tady je příklad pravidla směrování TCP:
 
@@ -114,10 +113,10 @@ Pravidlo směrování protokolu HTTP se skládá z následujících vlastností:
         * `match`– specifikace příchozí struktury požadavků pro toto pravidlo, které se má použít, na základě`path`
             * `path`-obsahuje `value` (příchozí identifikátor URI) `rewrite` (jak chcete přesměrovat požadavek) a `type` (může aktuálně být jenom "prefix").
             * `header`– je volitelná hodnota pole hlaviček, která se má shodovat s hlavičkou požadavku, pokud požadavek odpovídá specifikaci cesty (výše).
-              * Každá položka obsahuje `name` (název řetězce záhlaví, který se má shodovat) `value` , (Řetězcová hodnota hlavičky v žádosti) a a `type` (aktuálně může být pouze "přesný").
-        * `destination`– Pokud požadavek odpovídá, bude směrován do tohoto cíle, který je určen pomocí `applicationName`, `serviceName`a.`endpointName`
+              * Každá položka obsahuje `name` (název řetězce záhlaví, který se má shodovat), `value` (Řetězcová hodnota hlavičky v žádosti) a a `type` (aktuálně může být pouze "přesný").
+        * `destination`– Pokud požadavek odpovídá, bude směrován do tohoto cíle, který je určen pomocí `applicationName` , `serviceName` a.`endpointName`
 
-Tady je příklad pravidla směrování protokolu HTTP, které se vztahuje na žádosti přicházející na port 80 na všechny hostitele obsluhované aplikacemi v této síti. Má-li adresa URL požadavku strukturu, která odpovídá specifikaci cesty, tj. `<IPAddress>:80/pickme/<requestContent>`, pak bude přesměrována do `myListener` koncového bodu.  
+Tady je příklad pravidla směrování protokolu HTTP, které se vztahuje na žádosti přicházející na port 80 na všechny hostitele obsluhované aplikacemi v této síti. Má-li adresa URL požadavku strukturu, která odpovídá specifikaci cesty, tj., `<IPAddress>:80/pickme/<requestContent>` pak bude přesměrována do `myListener` koncového bodu.  
 
 ```json
 "properties": {
@@ -219,8 +218,8 @@ Tady je postup, jak vypadá úplná konfigurace prostředku brány (Tato akce je
 ```
 
 Tato brána je nakonfigurovaná pro aplikaci pro Linux, "meshAppLinux", která se skládá z aspoň dvou služeb, "helloWorldService" a "counterService", která naslouchá na portu 80. V závislosti na struktuře adresy URL příchozího požadavku bude požadavek směrovat na jednu z těchto služeb. 
-* "\<IPAddress>:80/helloWorld/\<Request\>" by způsobil přesměrování požadavku na "helloWorldListener" v helloWorldService. 
-* "\<IPAddress>:80/Counter/\<Request\>" by způsobil přesměrování požadavku na "counterListener" v counterService. 
+* " \<IPAddress> : 80/helloWorld/ \<request\> " by způsobil přesměrování požadavku na "helloWorldListener" v helloWorldService. 
+* " \<IPAddress> : 80/Counter/ \<request\> " by způsobilo, že bude požadavek směrován na "counterListener" v counterService. 
 
 ## <a name="next-steps"></a>Další kroky
 * Nasazením [ukázky](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) příchozího přenosu dat zobrazíte brány v akci.

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610042"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Service Fabric Java pomocí Visual Studio Code
@@ -57,11 +56,11 @@ Po vytvoření aplikace ji můžete nasadit do místního clusteru.
 
    ![Příkaz nasadit aplikaci v VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
-4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: `http://localhost:19080/Explorer`. Měli byste vidět, že aplikace běží. To může nějakou dobu trvat, tedy pacient. 
+4. Po dokončení nasazení spusťte prohlížeč a otevřete Service Fabric Explorer: `http://localhost:19080/Explorer` . Měli byste vidět, že aplikace běží. To může nějakou dobu trvat, tedy pacient. 
 
    ![Hlasovací aplikace v Service Fabric Explorer](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
 
-4. Po ověření, že je aplikace spuštěná, spusťte prohlížeč a otevřete tuto stránku: `http://localhost:8080`. Toto je webový front-end aplikace. Můžete přidat položky a kliknout na ně, abyste mohli hlasovat.
+4. Po ověření, že je aplikace spuštěná, spusťte prohlížeč a otevřete tuto stránku: `http://localhost:8080` . Toto je webový front-end aplikace. Můžete přidat položky a kliknout na ně, abyste mohli hlasovat.
 
    ![Hlasovací aplikace v prohlížeči](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
@@ -82,19 +81,19 @@ Přidejte komentář na řádek 6 (použijte ' # ') a přidejte do dolní část
    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingDataService.jar
    ```
 
-2. Aktualizujte soubor *hlasovacího/VotingApplication/souboru ApplicationManifest. XML* . V elementu **StatefulService** nastavte atributy **MinReplicaSetSize** a **TargetReplicaSetSize** na hodnotu "1":
+2. Aktualizujte soubor *hlasovacího/VotingApplication/ApplicationManifest.xml* . V elementu **StatefulService** nastavte atributy **MinReplicaSetSize** a **TargetReplicaSetSize** na hodnotu "1":
    
    ```xml
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">
    ```
 
-3. Kliknutím na ikonu ladění na **řádku aktivity** otevřete zobrazení ladicího programu v vs Code. V horní části zobrazení ladicího programu klikněte na ikonu ozubeného kolečka a v nabídce rozevíracího prostředí vyberte **Java** . Otevře se soubor Launch. JSON. 
+3. Kliknutím na ikonu ladění na **řádku aktivity** otevřete zobrazení ladicího programu v vs Code. V horní části zobrazení ladicího programu klikněte na ikonu ozubeného kolečka a v nabídce rozevíracího prostředí vyberte **Java** . Otevře se launch.jsv souboru. 
 
    ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. V souboru Launch. JSON nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Uložte soubor.
+3. V launch.jsv souboru nastavte hodnotu portu v konfiguraci s názvem **Debug (připojit)** na **8001**. Uložte soubor.
 
-   ![Konfigurace ladění pro Launch. JSON](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
+   ![Konfigurace ladění pro launch.jsv](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
 4. Nasaďte aplikaci do místního clusteru pomocí příkazu **Service Fabric: nasadit aplikaci (localhost)** . Ověřte, zda je aplikace spuštěna v Service Fabric Explorer. Vaše aplikace je teď připravená k ladění.
 
@@ -105,7 +104,7 @@ Chcete-li nastavit zarážku, proveďte následující kroky:
    ![Nastavit zarážku ve službě hlasovacích dat](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
 
    > [!IMPORTANT]
-   > Ujistěte se, že jste nastavili zarážky na spustitelných řádcích kódu. Například zarážky nastavené v deklaracích metod `try` , příkazy nebo `catch` příkazy budou vynechány ladicím programem.
+   > Ujistěte se, že jste nastavili zarážky na spustitelných řádcích kódu. Například zarážky nastavené v deklaracích metod, `try` příkazy nebo `catch` příkazy budou vynechány ladicím programem.
 2. Ladění spustíte tak, že kliknete na ikonu ladění na **řádku aktivity**, vyberete konfiguraci **ladění (připojit)** z nabídky ladění a kliknete na tlačítko spustit (zelená šipka).
 
    ![Ladit (připojit) konfiguraci](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)

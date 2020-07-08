@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609617"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Zabezpečená komunikace vzdálené služby ve službě C#
@@ -23,7 +22,7 @@ Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní 
 
 Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace služby se službami C#, postupujte takto:
 
-1. Vytvořte rozhraní `IHelloWorldStateful`, které definuje metody, které budou k dispozici pro vzdálené volání procedur ve vaší službě. Vaše služba bude používat `FabricTransportServiceRemotingListener`, která je deklarována v `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` oboru názvů. Toto je `ICommunicationListener` implementace, která poskytuje možnosti vzdálené komunikace.
+1. Vytvořte rozhraní, `IHelloWorldStateful` které definuje metody, které budou k dispozici pro vzdálené volání procedur ve vaší službě. Vaše služba bude používat `FabricTransportServiceRemotingListener` , která je deklarována v `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` oboru názvů. Toto je `ICommunicationListener` implementace, která poskytuje možnosti vzdálené komunikace.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -90,7 +89,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
        ```
    2. Poskytněte je pomocí [konfiguračního balíčku](service-fabric-application-and-service-manifests.md):
 
-       Přidejte pojmenovaný `TransportSettings` oddíl do souboru Settings. XML.
+       Přidejte do `TransportSettings` souboru settings.xml pojmenovaný oddíl.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -106,7 +105,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
        </Section>
        ```
 
-       V tomto případě bude `CreateServiceReplicaListeners` metoda vypadat takto:
+       V tomto případě `CreateServiceReplicaListeners` bude metoda vypadat takto:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -120,7 +119,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
        }
        ```
 
-        Pokud přidáte `TransportSettings` oddíl do souboru Settings. XML, `FabricTransportRemotingListenerSettings` bude ve výchozím nastavení načteno všechna nastavení z této části.
+        Pokud přidáte do `TransportSettings` souboru settings.xml oddíl, `FabricTransportRemotingListenerSettings` všechna nastavení z této části se ve výchozím nastavení načtou.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -128,7 +127,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
             ...
         </Section>
         ```
-        V tomto případě bude `CreateServiceReplicaListeners` metoda vypadat takto:
+        V tomto případě `CreateServiceReplicaListeners` bude metoda vypadat takto:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -141,7 +140,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
             };
         }
         ```
-3. Při volání metod v zabezpečené službě pomocí zásobníku vzdálené komunikace namísto použití `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` třídy k vytvoření proxy služby použijte. `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` Předat do `FabricTransportRemotingSettings`, který obsahuje `SecurityCredentials`.
+3. Při volání metod v zabezpečené službě pomocí zásobníku vzdálené komunikace namísto použití `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` třídy k vytvoření proxy služby použijte `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` . Předat do `FabricTransportRemotingSettings` , který obsahuje `SecurityCredentials` .
 
     ```csharp
 
@@ -171,7 +170,7 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
 
     ```
 
-    Pokud je klientský kód spuštěn jako součást služby, můžete načíst `FabricTransportRemotingSettings` ze souboru Settings. XML. Vytvořte část HelloWorldClientTransportSettings, která je podobná kódu služby, jak je uvedeno výše. Proveďte následující změny kódu klienta:
+    Pokud je klientský kód spuštěn jako součást služby, můžete načíst `FabricTransportRemotingSettings` ze souboru settings.xml. Vytvořte část HelloWorldClientTransportSettings, která je podobná kódu služby, jak je uvedeno výše. Proveďte následující změny kódu klienta:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -184,9 +183,9 @@ Chcete-li zajistit zabezpečení služby při použití vzdálené komunikace sl
 
     ```
 
-    Pokud klient neběží jako součást služby, můžete vytvořit soubor client_name. Settings. XML ve stejném umístění, kde je client_name. exe. Pak vytvořte v tomto souboru oddíl TransportSettings.
+    Pokud klient neběží jako součást služby, můžete vytvořit soubor client_name.settings.xml ve stejném umístění, kde je client_name.exe. Pak vytvořte v tomto souboru oddíl TransportSettings.
 
-    Podobně jako u služby, pokud přidáte `TransportSettings` oddíl do nastavení klienta. xml/CLIENT_NAME. Settings. XML, `FabricTransportRemotingSettings` ve výchozím nastavení načte všechna nastavení z této části.
+    Podobně jako u služby se při přidání `TransportSettings` části do klienta settings.xml/client_name.settings.xml `FabricTransportRemotingSettings` načte všechna nastavení z této části ve výchozím nastavení.
 
     V takovém případě je dřívější kód ještě dále zjednodušený:  
 

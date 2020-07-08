@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464722"
 ---
 # <a name="application-logging"></a>Protokolování aplikací
@@ -26,7 +25,7 @@ Application Insights má bohatou integraci s Service Fabric vycházejícími z b
 
 ## <a name="eventsource"></a>EventSource
 
-Při vytváření řešení Service Fabric ze šablony v aplikaci Visual Studio je vygenerována třída odvozená od objektu **EventSource**(**ServiceEventSource** nebo **ActorEventSource**). Vytvoří se šablona, do které můžete přidat události pro svou aplikaci nebo službu. Název **EventSource** **musí** být jedinečný a měl by být přejmenován z výchozí šablony řetězce společnost –&lt;řešení.&gt;-&lt;&gt; Pokud máte více definic **EventSource** , které používají stejný název, způsobí problém v době běhu. Každá definovaná událost musí mít jedinečný identifikátor. Pokud identifikátor není jedinečný, dojde k chybě modulu runtime. Některé organizace předřadí rozsah hodnot pro identifikátory, aby nedocházelo ke konfliktům mezi samostatnými vývojovými týmy. Další informace najdete v [blogu Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) nebo v [dokumentaci MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Při vytváření řešení Service Fabric ze šablony v aplikaci Visual Studio je vygenerována třída odvozená od objektu **EventSource**(**ServiceEventSource** nebo **ActorEventSource**). Vytvoří se šablona, do které můžete přidat události pro svou aplikaci nebo službu. Název **EventSource** **musí** být jedinečný a měl by být přejmenován z výchozí šablony řetězce společnost – &lt; řešení &gt; - &lt; &gt; . Pokud máte více definic **EventSource** , které používají stejný název, způsobí problém v době běhu. Každá definovaná událost musí mít jedinečný identifikátor. Pokud identifikátor není jedinečný, dojde k chybě modulu runtime. Některé organizace předřadí rozsah hodnot pro identifikátory, aby nedocházelo ke konfliktům mezi samostatnými vývojovými týmy. Další informace najdete v [blogu Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) nebo v [dokumentaci MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 
 ## <a name="aspnet-core-logging"></a>Protokolování ASP.NET Core
 

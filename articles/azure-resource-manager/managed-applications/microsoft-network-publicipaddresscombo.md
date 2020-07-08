@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651914"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. PublicIpAddressCombo – element uživatelského rozhraní
@@ -81,7 +80,7 @@ Pokud uživatel vybere novou nebo existující IP adresu, vrátí ovládací prv
 ```
 
 - Pokud `options.hideNone` je zadána hodnota **true**, `newOrExistingOrNone` bude mít pouze hodnotu **New** nebo **existující**.
-- Je `options.hideDomainNameLabel` -li parametr zadán jako `domainNameLabel` **true**, je nedeklarovaný.
+- `options.hideDomainNameLabel`Je-li parametr zadán jako **true**, `domainNameLabel` je nedeklarovaný.
 
 ## <a name="remarks"></a>Poznámky
 
@@ -89,7 +88,7 @@ Pokud uživatel vybere novou nebo existující IP adresu, vrátí ovládací prv
 - Pokud `options.hideNone` je parametr nastaven na **hodnotu true**, možnost pro volbu **žádná** pro veřejnou IP adresu nebude skrytá. Výchozí hodnota je **false** (nepravda).
 - Pokud `options.hideDomainNameLabel` je nastaveno na **hodnotu true**, bude textové pole pro popisek názvu domény skryté. Výchozí hodnota je **false** (nepravda).
 - Pokud `options.hideExisting` je hodnota true, pak uživatel nebude moci zvolit stávající veřejnou IP adresu. Výchozí hodnota je **false** (nepravda).
-- Pro `zone`jsou k dispozici pouze veřejné IP adresy pro zadanou zónu nebo odolné veřejné IP adresy.
+- Pro jsou `zone` k dispozici pouze veřejné IP adresy pro zadanou zónu nebo odolné veřejné IP adresy.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,24 +1,23 @@
 ---
 title: Odkaz na artefakty definice zobrazení
-description: Poskytuje příklad artefaktu definice zobrazení pro Azure Managed Applications. Název souboru je položku galerie. JSON.
+description: Poskytuje příklad artefaktu definice zobrazení pro Azure Managed Applications. Název souboru je viewDefinition.js.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651199"
 ---
 # <a name="reference-view-definition-artifact"></a>Reference: artefakt definice zobrazení
 
-Tento článek je odkazem na artefakt *položku galerie. JSON* v Azure Managed Applications. Další informace o konfiguraci zobrazení pro vytváření obsahu najdete v tématu [artefakt definice zobrazení](concepts-view-definition.md).
+Tento článek je odkazem na *viewDefinition.js* artefaktu v Azure Managed Applications. Další informace o konfiguraci zobrazení pro vytváření obsahu najdete v tématu [artefakt definice zobrazení](concepts-view-definition.md).
 
 ## <a name="view-definition"></a>Zobrazení definice
 
-Následující JSON ukazuje příklad souboru *položku galerie. JSON* pro Azure Managed Applications:
+Následující JSON ukazuje příklad *viewDefinition.js* souboru pro Azure Managed Applications:
 
 ```json
 {

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551688"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Přehled architektury cluster Resource Manageru
@@ -25,7 +24,7 @@ Pro správu prostředků v clusteru musí mít Service Fabric Správce prostřed
 
 Spotřeba prostředků dané služby se může v průběhu času měnit a služby obvykle zajímají více než jeden typ prostředku. U různých služeb se můžou měřit reálné fyzické i fyzické prostředky. Služby mohou sledovat fyzické metriky, jako je paměť a využití disku. Častěji se služby můžou zajímat o logické metriky – například "WorkQueueDepth" nebo "TotalRequests". Ve stejném clusteru se dají použít logické i fyzické metriky. Metriky se dají sdílet napříč celou řadou služeb nebo být specifické pro konkrétní službu.
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 Vlastníci a operátoři clusteru se mohou lišit od autorů služeb a aplikací, nebo na minimum jsou stejnými lidmi, kteří využívají různé Hats. Když vyvíjíte aplikaci, znáte pár věcí, o čem to vyžaduje. Máte odhad prostředků, které bude využívat a jakým způsobem by měly být nasazeny různé služby. Například webová vrstva musí být spuštěna na uzlech, které jsou zpřístupněny pro Internet, zatímco databázové služby by neměly. Dalším příkladem je, že webové služby jsou pravděpodobně omezené pomocí procesoru a sítě, zatímco služby datové vrstvy se podrobněji týkají spotřeby paměti a disku. Osoba, která zpracovává živý incident pro tuto službu v produkčním prostředí, nebo která spravuje upgrade na službu, má ale jinou úlohu a vyžaduje jiné nástroje. 
 
 Cluster i služby jsou dynamické:

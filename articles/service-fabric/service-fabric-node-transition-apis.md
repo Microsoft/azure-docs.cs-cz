@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609787"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Nahrazení počátečního uzlu a zastavení rozhraní API uzlu pomocí rozhraní API pro přechod uzlů
@@ -31,9 +30,9 @@ Doba, po kterou je uzel zastaven, je také "nekonečné", dokud není vyvoláno 
 
 Tyto problémy jsme vyřešili v nové sadě rozhraní API.  Rozhraní API pro přechod k novému uzlu (spravované: [StartNodeTransitionAsync ()][snt]) se dá použít k převedení Service Fabric uzlu do stavu *Zastaveno* nebo k jeho přechodu ze stavu *Zastaveno* do normálního stavu.  Všimněte si prosím, že "Start" v názvu rozhraní API neodkazuje na spuštění uzlu.  Odkazuje na zahájení asynchronní operace, kterou systém provede, aby přešl uzel do stavu *Zastaveno* nebo spuštěno.
 
-**Využívání**
+**Použití**
 
-Pokud rozhraní API pro přechod uzlů nevyvolá výjimku při vyvolání, systém přijal asynchronní operaci a provede ji.  Úspěšné volání neznamená, že operace ještě skončila.  Chcete-li získat informace o aktuálním stavu operace, zavolejte rozhraní API průběhu přechodu na uzel (spravované: [GetNodeTransitionProgressAsync ()][gntp]) s identifikátorem GUID použitým při vyvolání rozhraní API pro přechod uzlů pro tuto operaci.  Rozhraní API průběhu přechodu na uzel vrací objekt NodeTransitionProgress.  Vlastnost State tohoto objektu určuje aktuální stav operace.  Pokud je stav "spuštěno", operace je prováděna.  Pokud je dokončená, operace se dokončila bez chyby.  Pokud dojde k chybě, při provádění operace došlo k potížím.  Vlastnost Result vlastnosti Exception indikuje, co byl problém.  Další https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate informace o vlastnosti State naleznete v části "ukázkové použití" níže v tématu Příklady kódu.
+Pokud rozhraní API pro přechod uzlů nevyvolá výjimku při vyvolání, systém přijal asynchronní operaci a provede ji.  Úspěšné volání neznamená, že operace ještě skončila.  Chcete-li získat informace o aktuálním stavu operace, zavolejte rozhraní API průběhu přechodu na uzel (spravované: [GetNodeTransitionProgressAsync ()][gntp]) s identifikátorem GUID použitým při vyvolání rozhraní API pro přechod uzlů pro tuto operaci.  Rozhraní API průběhu přechodu na uzel vrací objekt NodeTransitionProgress.  Vlastnost State tohoto objektu určuje aktuální stav operace.  Pokud je stav "spuštěno", operace je prováděna.  Pokud je dokončená, operace se dokončila bez chyby.  Pokud dojde k chybě, při provádění operace došlo k potížím.  Vlastnost Result vlastnosti Exception indikuje, co byl problém.  https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstateDalší informace o vlastnosti State naleznete v části "ukázkové použití" níže v tématu Příklady kódu.
 
 
 **Rozlišit mezi zastaveným uzlem a uzlem dolů** Pokud se uzel *zastavil* pomocí rozhraní API pro přechod uzlů, výstup dotazu na uzel (spravovaný: [GetNodeListAsync ()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) zobrazí, že má tento uzel *hodnotu vlastnosti hodnotu* true.  Všimněte si, že se liší od hodnoty vlastnosti *NodeStatus* , která bude *vyslovovat*.  Pokud má vlastnost *NodeStatus* hodnotu *Down*, ale hodnota *Stopped* je false, uzel nebyl zastaven pomocí rozhraní API pro přechod uzlů a z jiného důvodu je *mimo provoz* .  Pokud má vlastnost *Stopped* hodnotu true a vlastnost *NodeStatus* je *mimo provoz*, bylo zastaveno pomocí rozhraní API pro přechod uzlů.

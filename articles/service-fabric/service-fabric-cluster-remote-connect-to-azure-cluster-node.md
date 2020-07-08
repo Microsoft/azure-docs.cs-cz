@@ -4,10 +4,9 @@ description: Naučte se vzdáleně připojit k instanci sady škálování (Serv
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458317"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci sady škálování virtuálního počítače nebo uzlu clusteru
@@ -19,7 +18,7 @@ Pokud chcete najít IP adresu a port, které můžete použít ke vzdálenému p
 
     Každý typ uzlu definovaný v clusteru má obvykle vlastní virtuální IP adresu a vyhrazený Nástroj pro vyrovnávání zatížení. Ve výchozím nastavení má nástroj pro vyrovnávání zatížení pro typ uzlu název v následujícím formátu: *9,1-{cluster-Name}-{Node-Type}*; například: *9,1-mycluster-front-endu*. 
     
-    Na stránce nástroje pro vyrovnávání zatížení v Azure Portal vyberte **Nastavení** > **pravidla příchozího překladu adres (NAT)**: 
+    Na stránce nástroje pro vyrovnávání zatížení v Azure Portal vyberte **Nastavení**  >  **pravidla příchozího překladu adres (NAT)**: 
 
     ![Příchozí pravidla NAT pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -29,7 +28,7 @@ Pokud chcete najít IP adresu a port, které můžete použít ke vzdálenému p
 
     Pro každý uzel se IP adresa zobrazí ve sloupci **cíl** , **cílový** sloupec vytvoří instanci sady škálování a sloupec **služby** poskytne číslo portu. Pro vzdálené připojení se porty přiřazují každému uzlu ve vzestupném pořadí počínaje portem 3389.
 
-    Pravidla příchozího překladu adres (NAT) najdete taky `Microsoft.Network/loadBalancers` v části šablony Správce prostředků pro svůj cluster.
+    Pravidla příchozího překladu adres (NAT) najdete taky v `Microsoft.Network/loadBalancers` části šablony Správce prostředků pro svůj cluster.
     
 2. Pokud chcete potvrdit příchozí port pro mapování portu pro uzel, můžete kliknout na jeho pravidlo a podívat se na hodnotu **cílového portu** . Následující snímek obrazovky ukazuje pravidlo příchozího překladu adres (NAT) pro uzel **front-end (instance 1)** v předchozím kroku. Všimněte si, že i když je číslo portu (příchozí) 3390, je cílový port namapován na port 3389 a port pro službu RDP v cíli.  
 

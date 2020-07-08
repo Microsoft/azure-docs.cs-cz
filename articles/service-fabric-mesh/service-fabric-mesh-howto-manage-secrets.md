@@ -4,10 +4,9 @@ description: Spravujte tajné klíče aplikace, abyste mohli bezpečně vytvoři
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461931"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů pro aplikace Service Fabric sítě
@@ -95,7 +94,7 @@ Následuje příklad, jak deklarovat prostředky pro tajné klíče sítě v sou
 ## <a name="declare-mesh-secretsvalues-resources"></a>Deklarovat informace o prostředcích a hodnotách sítě
 Zdroje informací o prostředcích a hodnotách sítě mají závislost na prostředcích tajných klíčů definovaných v předchozím kroku.
 
-Informace o vztahu mezi "prostředky" v části "hodnota" a "název:" pole: Druhá část řetězce "název:", která je oddělena dvojtečkou, je číslo verze používané pro tajný kód a název před dvojtečkou musí odpovídat hodnotě v tajnosti sítě, pro kterou má závislost. Například pro element ```name: mysecret:1.0```je číslo verze 1,0 a název ```mysecret``` musí odpovídat dříve definovanému. ```"value": "mysecret"```
+Informace o vztahu mezi "prostředky" v části "hodnota" a "název:" pole: Druhá část řetězce "název:", která je oddělena dvojtečkou, je číslo verze používané pro tajný kód a název před dvojtečkou musí odpovídat hodnotě v tajnosti sítě, pro kterou má závislost. Například pro element je ```name: mysecret:1.0``` číslo verze 1,0 a název ```mysecret``` musí odpovídat dříve definovanému ```"value": "mysecret"``` .
 
 >
 Následuje příklad, jak deklarovat informace o prostředcích a hodnotách sítě v souboru JSON:
@@ -201,8 +200,8 @@ az mesh deployment create –-<template-file> or --<template-uri>
 Předejte buď **Template-File** , nebo **template-URI** (ale ne obojí).
 
 Příklad:
-- AZ Mesh Deployment create--c:\MyMeshTemplates\SecretTemplate1.txt
-- AZ Mesh Deployment Create--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- AZ Mesh Deployment Create --c:\MyMeshTemplates\SecretTemplate1.txt
+- AZ oky Deployment Create--https: \/ /www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Zobrazit tajný kód
 Vrátí popis tajného kódu (ale ne hodnoty).

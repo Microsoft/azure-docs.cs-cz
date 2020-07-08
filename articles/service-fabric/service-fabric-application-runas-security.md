@@ -4,14 +4,13 @@ description: Naučte se, jak spustit aplikaci Service Fabric v části účty Sy
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610113"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Spusťte službu jako místní uživatelský účet nebo účet místního systému.
-Pomocí Azure Service Fabric můžete zabezpečit aplikace spuštěné v clusteru v rámci různých uživatelských účtů. Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric. exe. Service Fabric taky nabízí možnost spouštět aplikace pod účtem místního uživatele nebo systému. Podporovány jsou typy místních systémových účtů **LocalUser**, **NetworkService**, **LocalService**a **LocalSystem**.  Pokud používáte Service Fabric v samostatném clusteru se systémem Windows, můžete spustit službu pod [účtem domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupinovými účty spravované služby](service-fabric-run-service-as-gmsa.md).
+Pomocí Azure Service Fabric můžete zabezpečit aplikace spuštěné v clusteru v rámci různých uživatelských účtů. Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric.exe. Service Fabric taky nabízí možnost spouštět aplikace pod účtem místního uživatele nebo systému. Podporovány jsou typy místních systémových účtů **LocalUser**, **NetworkService**, **LocalService**a **LocalSystem**.  Pokud používáte Service Fabric v samostatném clusteru se systémem Windows, můžete spustit službu pod [účtem domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupinovými účty spravované služby](service-fabric-run-service-as-gmsa.md).
 
 V manifestu aplikace definujete uživatelské účty potřebné ke spouštění služeb nebo zabezpečených prostředků v oddílu **objekty zabezpečení** . Můžete také definovat a vytvářet skupiny uživatelů, aby bylo možné spravovat jednoho nebo více uživatelů současně. To je užitečné v případě, že existuje více uživatelů pro různé vstupní body služby a potřebují společná oprávnění, která jsou k dispozici na úrovni skupiny.  Na tyto uživatele se pak odkazuje v zásadách RunAs, které se aplikují na konkrétní službu nebo všechny služby v aplikaci. 
 

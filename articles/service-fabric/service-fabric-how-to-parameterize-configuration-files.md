@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644626"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v Service Fabric
@@ -20,7 +19,7 @@ V tomto článku se dozvíte, jak parametrizovat konfigurační soubor v Service
 
 V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve vašem nasazení aplikace.
 
-1. V projektu služby otevřete soubor * \<mojesluzba> \packageroot\config\settings.XML* .
+1. Otevřete * \<MyService>\PackageRoot\Config\Settings.xml* soubor v projektu služby.
 1. Přidáním následujícího kódu XML nastavte název a hodnotu konfiguračního parametru, například velikost mezipaměti rovnou 25.
 
    ```xml
@@ -30,15 +29,15 @@ V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve va�
    ```
 
 1. Uložte soubor a zavřete ho.
-1. Otevřete soubor * \<MyApplication> \applicationpackageroot\applicationmanifest.XML* .
-1. V souboru souboru ApplicationManifest. XML deklarujte parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
+1. Otevřete soubor * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* .
+1. V souboru ApplicationManifest.xml deklarujte parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. V `ServiceManifestImport` části souboru souboru ApplicationManifest. xml přidejte element `ConfigOverrides` and `ConfigOverride` , který odkazuje na konfigurační balíček, část a parametr.
+1. V `ServiceManifestImport` části ApplicationManifest.xml souboru přidejte `ConfigOverrides` `ConfigOverride` element and, odkazování na konfigurační balíček, část a parametr.
 
    ```xml
     <ConfigOverrides>

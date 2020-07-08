@@ -6,19 +6,18 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651459"
 ---
 # <a name="reference-deployment-template-artifact"></a>Referenční dokumentace: artefakt šablony nasazení
 
-Tento článek je odkazem na artefakt *mainTemplate. JSON* v Azure Managed Applications. Další informace o vytváření šablon nasazení najdete v tématu [šablony Azure Resource Manager](../templates/template-syntax.md).
+Tento článek je odkazem na *mainTemplate.js* artefaktu v Azure Managed Applications. Další informace o vytváření šablon nasazení najdete v tématu [šablony Azure Resource Manager](../templates/template-syntax.md).
 
 ## <a name="deployment-template"></a>Šablona nasazení
 
-Následující JSON ukazuje příklad souboru *mainTemplate. JSON* pro Azure Managed Applications:
+Následující JSON ukazuje příklad *mainTemplate.js* souboru pro Azure Managed Applications:
 
 ```json
 {

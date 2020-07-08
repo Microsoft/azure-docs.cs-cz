@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551790"
 ---
 # <a name="networking"></a>Sítě
@@ -51,7 +50,7 @@ Aby bylo možné zrychlit síťové služby v existujícím clusteru, je potřeb
 
 * Clustery Service Fabric můžete nasadit do existující virtuální sítě podle postupu popsaného v článku [vzory Service Fabric sítě](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking).
 
-* Skupiny zabezpečení sítě (skupin zabezpečení sítě) se doporučují pro typy uzlů, které omezují příchozí a odchozí provoz do jejich clusteru. Ujistěte se, že jsou v NSG otevřené potřebné porty. Příklad: ![Service Fabric NSG pravidla][NSGSetup]
+* Skupiny zabezpečení sítě (skupin zabezpečení sítě) se doporučují pro typy uzlů, které omezují příchozí a odchozí provoz do jejich clusteru. Ujistěte se, že jsou v NSG otevřené potřebné porty. Příklad: ![ Service Fabric NSG pravidla][NSGSetup]
 
 * Typ primárního uzlu, který obsahuje Service Fabric systémové služby, nemusí být vystavený přes externí nástroj pro vyrovnávání zatížení a může být vystavený [interním nástrojem pro vyrovnávání zatížení](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer) .
 

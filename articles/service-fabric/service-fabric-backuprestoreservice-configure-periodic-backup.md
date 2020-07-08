@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
 ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610144"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Princip pravidelné konfigurace zálohování v Azure Service Fabric
@@ -45,7 +44,7 @@ Zásady zálohování se skládají z následujících konfigurací:
         ```
 
     2. **Plán zálohování na základě času**: Tento typ plánu by měl být použit v případě, že je potřeba provést zálohování dat v určitých časech dne nebo týdne. Typ frekvence plánu může být buď každý den, nebo každý týden.
-        1. ** _Denní_ plán zálohování na základě času**: Tento typ plánu by měl být použit v případě, že ID potřebný k zálohování dat v určitém čase v daném dni. Chcete-li tuto hodnotu `ScheduleFrequencyType` určit, nastavte na _denně_; a nastavené `RunTimes` na seznam požadovaného času během dne ve formátu ISO8601, datum zadané společně s časem bude ignorováno. Například `0001-01-01T18:00:00` reprezentuje _6:00_ . den a ignoruje se datum – část _0001-01-01_. Následující příklad ilustruje konfiguraci pro aktivaci každodenního zálohování v _9:00_ a _6:00 odp_ .
+        1. ** _Denní_ plán zálohování na základě času**: Tento typ plánu by měl být použit v případě, že ID potřebný k zálohování dat v určitém čase v daném dni. Chcete-li tuto hodnotu určit, nastavte `ScheduleFrequencyType` na hodnotu _denně_a `RunTimes` v poli Formát ISO8601 nastavte na seznam požadovaného času a bude se ignorovat datum zadané společně s časem. Například `0001-01-01T18:00:00` reprezentuje _6:00_ . den a ignoruje se datum – část _0001-01-01_. Následující příklad ilustruje konfiguraci pro aktivaci každodenního zálohování v _9:00_ a _6:00 odp_ .
 
             ```json
             {
@@ -58,7 +57,7 @@ Zásady zálohování se skládají z následujících konfigurací:
             }
             ```
 
-        2. ** _Týdenní_ plán zálohování založený na čase**: Tento typ plánu by měl být použit v případě, že ID potřebné k provedení zálohování dat v určitých časech dne. Chcete-li tuto hodnotu `ScheduleFrequencyType` určit, nastavte na _týdně_; nastaví `RunDays` se na seznam dnů v týdnu, kdy se musí spustit zálohování a že se v `RunTimes` poli Formát ISO8601 nastaví na seznam požadované doby, datum zadané společně s časem se bude ignorovat. Seznam dnů v týdnu, kdy se má aktivovat pravidelná záloha Následující příklad ilustruje konfiguraci pro aktivaci každodenního zálohování v _9:00_ a _6:00 odpoledne_ během pondělí do pátku.
+        2. ** _Týdenní_ plán zálohování založený na čase**: Tento typ plánu by měl být použit v případě, že ID potřebné k provedení zálohování dat v určitých časech dne. Pokud to chcete určit, nastavte `ScheduleFrequencyType` na _týdně_; nastavit `RunDays` na seznam dnů v týdnu, kdy se má spustit zálohování a nastavit `RunTimes` na seznam požadovaného času během dne ve formátu ISO8601, datum zadané společně s časem se bude ignorovat. Seznam dnů v týdnu, kdy se má aktivovat pravidelná záloha Následující příklad ilustruje konfiguraci pro aktivaci každodenního zálohování v _9:00_ a _6:00 odpoledne_ během pondělí do pátku.
 
             ```json
             {
@@ -119,7 +118,7 @@ Zásady zálohování se skládají z následujících konfigurací:
 >
 
 * **Zásady uchovávání informací**: Určuje zásadu pro uchovávání záloh v nakonfigurovaném úložišti. Podporují se jenom základní zásady uchovávání informací.
-    1. **Základní zásady uchovávání informací**: tyto zásady uchovávání informací umožňují zajistit optimální využití úložiště odebráním záložních souborů, které nejsou potřeba. `RetentionDuration`dá se zadat, chcete-li nastavit časový rozsah, pro který se musí zálohy uchovávat v úložišti. `MinimumNumberOfBackups`je volitelný parametr, který se dá určit, aby se zajistilo, že zadaný počet záloh vždycky zůstane bez ohledu na `RetentionDuration`. Následující příklad ilustruje konfiguraci pro uchovávání záloh po dobu _10_ dnů a nepovoluje počet záloh, které se budou nacházet pod _20_.
+    1. **Základní zásady uchovávání informací**: tyto zásady uchovávání informací umožňují zajistit optimální využití úložiště odebráním záložních souborů, které nejsou potřeba. `RetentionDuration`dá se zadat, chcete-li nastavit časový rozsah, pro který se musí zálohy uchovávat v úložišti. `MinimumNumberOfBackups`je volitelný parametr, který se dá určit, aby se zajistilo, že zadaný počet záloh vždycky zůstane bez ohledu na `RetentionDuration` . Následující příklad ilustruje konfiguraci pro uchovávání záloh po dobu _10_ dnů a nepovoluje počet záloh, které se budou nacházet pod _20_.
 
         ```json
         {
@@ -140,7 +139,7 @@ Může se jednat o situaci, kdy je pro všechny služby aplikace vyžadováno z�
 
 ### <a name="example"></a>Příklad
 
-V tomto příkladu se používá instalační program se dvěma aplikacemi, _MyApp_A_ a _MyApp_B_. Aplikace _MyApp_A_ obsahuje dvě spolehlivé stavové služby, _SvcA1_ & _SvcA3_a jednu službu Reliable Actor, _ActorA2_. _SvcA1_ obsahuje tři oddíly, zatímco _ActorA2_ a _SvcA3_ obsahují dva oddíly.  Aplikace _MyApp_B_ obsahuje tři spolehlivé stavové služby, _SvcB1_, _SvcB2_a _SvcB3_. _SvcB1_ a _SvcB2_ obsahují dva oddíly, zatímco _SvcB3_ obsahuje tři oddíly.
+V tomto příkladu se používá instalační program se dvěma aplikacemi, _MyApp_A_ a _MyApp_B_. Aplikace _MyApp_A_ obsahuje dvě spolehlivé stavové služby, _SvcA1_  &  _SvcA3_a jednu službu Reliable Actor, _ActorA2_. _SvcA1_ obsahuje tři oddíly, zatímco _ActorA2_ a _SvcA3_ obsahují dva oddíly.  Aplikace _MyApp_B_ obsahuje tři spolehlivé stavové služby, _SvcB1_, _SvcB2_a _SvcB3_. _SvcB1_ a _SvcB2_ obsahují dva oddíly, zatímco _SvcB3_ obsahuje tři oddíly.
 
 Předpokládejme, že tyto aplikace tyto požadavky na zálohování dat jsou následující.
 
@@ -182,7 +181,7 @@ Zásady zálohování je možné zakázat, pokud není nutné data zálohovat. Z
 
 * Zakázání zásad zálohování pro _oddíl_ zastaví všechna pravidelná zálohování dat, která se děje v důsledku zásad zálohování v oddílu.
 
-* Při zakázání zálohování entity (aplikace/služby/oddílu) je možné nastavit `CleanBackup` na _hodnotu true_ , aby se odstranily všechny zálohy v nakonfigurovaném úložišti.
+* Při zakázání zálohování entity (aplikace/služby/oddílu) je `CleanBackup` možné nastavit na _hodnotu true_ , aby se odstranily všechny zálohy v nakonfigurovaném úložišti.
     ```json
     {
         "CleanBackup": true 
@@ -214,7 +213,7 @@ I když se možnost zakázat dá vyvolávat jenom na úrovni, která byla dřív
 ## <a name="auto-restore-on-data-loss"></a>Automatické obnovení při ztrátě dat
 Oddíl služby může přijít o data z důvodu neočekávané chyby. Například disk pro dvě z následujících replik pro oddíl (včetně primární repliky) je poškozený nebo smazáný.
 
-Pokud Service Fabric zjistí, že se oddíl nachází v případě ztráty dat, vyvolá `OnDataLossAsync` metodu rozhraní v oddílu a očekává, že oddíl provede požadovanou akci, aby mohla přijít o ztrátu dat. V takovém případě platí, že pokud má `AutoRestoreOnDataLoss` zásada účinnosti zálohování v oddílu nastavenou `true` hodnotu, bude obnovení automaticky aktivováno pomocí nejnovější dostupné zálohy pro tento oddíl.
+Pokud Service Fabric zjistí, že se oddíl nachází v případě ztráty dat, vyvolá `OnDataLossAsync` metodu rozhraní v oddílu a očekává, že oddíl provede požadovanou akci, aby mohla přijít o ztrátu dat. V takovém případě platí, že pokud má zásada účinnosti zálohování v oddílu `AutoRestoreOnDataLoss` nastavenou hodnotu, bude `true` obnovení automaticky aktivováno pomocí nejnovější dostupné zálohy pro tento oddíl.
 
 ## <a name="get-backup-configuration"></a>Získat konfiguraci zálohování
 K dispozici jsou samostatná rozhraní API pro získání informací o konfiguraci zálohování v oboru _aplikací_, _služeb_a _oddílu_ . [Získat informace o konfiguraci zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [získat informace o konfiguraci zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)a [získat informace o konfiguraci zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) jsou tato rozhraní API v uvedeném pořadí. Hlavně tato rozhraní API vracejí příslušné zásady zálohování, rozsah, ve kterém jsou zásady zálohování použity, a podrobnosti o pozastavení zálohování. Následuje stručný popis vrácených výsledků těchto rozhraní API.

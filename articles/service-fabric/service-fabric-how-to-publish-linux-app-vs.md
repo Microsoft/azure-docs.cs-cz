@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614345"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Použití sady Visual Studio k vytváření a publikování aplikací .Net Core cílících na vzdálený Service Fabric clusteru se systémem Linux
@@ -38,7 +37,7 @@ Pomocí nástrojů sady Visual Studio můžete vyvíjet a publikovat Service Fab
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```
 > [!Note]
-> Nastavení UpdateServiceFabricManifestEnabled na hodnotu false zakáže aktualizace souboru ServiceManifest. XML během sestavení. Jakékoli změny, jako je například přidání, odebrání nebo přejmenování služby, se neprojeví v souboru ServiceManifest. XML. Pokud jste provedli nějaké změny, musíte buď aktualizovat ServiceManifest ručně, nebo dočasně nastavit UpdateServiceFabricManifestEnabled na hodnotu true, a sestavit službu, která aktualizuje ServiceManifest. XML a vrátí ji zpět na false.
+> Nastavením UpdateServiceFabricManifestEnabled na hodnotu false dojde k zakázání aktualizací ServiceManifest.xml během sestavení. Jakékoli změny, jako je například přidání, odebrání nebo přejmenování služby, se v ServiceManifest.xml neprojeví. Pokud jsou provedeny nějaké změny, musíte buď aktualizovat ServiceManifest ručně, nebo dočasně nastavit UpdateServiceFabricManifestEnabled na hodnotu true, a sestavit službu, která aktualizuje ServiceManifest.xml a pak ji vrátit zpět na false.
 >
 
 4. Aktualizujte RuntimeIndetifier z Win7-x64 na cílovou platformu v projektu služby.

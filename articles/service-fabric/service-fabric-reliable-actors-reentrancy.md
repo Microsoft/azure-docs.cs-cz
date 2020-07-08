@@ -6,16 +6,15 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645527"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors Vícenásobný přístup
 Modul runtime Reliable Actors ve výchozím nastavení umožňuje logický volání Vícenásobný přístup na základě kontextu. To umožňuje, aby se aktéri znovu zavolaly, pokud jsou ve stejném řetězci kontextu volání. Například objekt actor A pošle zprávu objektu actor B, který pošle zprávu objektu actor C. V rámci zpracování zprávy, pokud objekt actor C volá objekt actor A, je zpráva znovu zavolána, takže bude povolena. Všechny ostatní zprávy, které jsou součástí jiného kontextu volání, budou blokovány u objektu actor A do doby, než dokončí zpracování.
 
-Existují dvě možnosti, které jsou pro objekt actor Vícenásobný přístup definovány `ActorReentrancyMode` ve výčtu:
+Existují dvě možnosti, které jsou pro objekt actor Vícenásobný přístup definovány ve `ActorReentrancyMode` výčtu:
 
 * `LogicalCallContext`(výchozí chování)
 * `Disallowed`– zakáže Vícenásobný přístup
@@ -34,9 +33,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Vícenásobný přístup se dá nakonfigurovat v `ActorService`nastaveních během registrace. Nastavení platí pro všechny instance objektu actor vytvořené ve službě objektu actor.
+Vícenásobný přístup se dá nakonfigurovat v `ActorService` nastaveních během registrace. Nastavení platí pro všechny instance objektu actor vytvořené ve službě objektu actor.
 
-Následující příklad ukazuje službu objektu actor, která nastaví režim Vícenásobný přístup na `ActorReentrancyMode.Disallowed`. V tomto případě, pokud objekt actor odešle zprávu o předanému jinému objektu actor, vyvolá se výjimka `FabricException` typu.
+Následující příklad ukazuje službu objektu actor, která nastaví režim Vícenásobný přístup na `ActorReentrancyMode.Disallowed` . V tomto případě, pokud objekt actor odešle zprávu o předanému jinému objektu actor, vyvolá se výjimka typu `FabricException` .
 
 ```csharp
 static class Program

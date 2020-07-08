@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614362"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Přidání protokolování do aplikace Service Fabric
@@ -126,7 +125,7 @@ Protokolování ASP.NET Core ([balíček NuGet Microsoft. Extensions. Logging](h
 Někteří poskytovatelé třetích stran používají přístup popsaný v předchozí části, včetně [Serilog](https://serilog.net/), [nLOG](https://nlog-project.org/)a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Každé z nich můžete připojit k ASP.NET Core protokolování, nebo je můžete použít samostatně. Serilog má funkci, která rozšiřuje všechny zprávy odesílané z protokolovacího nástroje. Tato funkce může být užitečná pro výstup názvu služby, typu a informací o oddílu. Pokud chcete tuto funkci použít v infrastruktuře ASP.NET Core, proveďte tyto kroky:
 
 1. Přidejte rozhraní **Serilog**, **Serilog. Extensions. Logging**, **Serilog. umyvadla. přepisy**a **Serilog. sinks. pozorovatelované** balíčky NuGet do projektu. 
-2. Vytvořte instanci `LoggerConfiguration` protokolovacího nástroje a.
+2. Vytvořte `LoggerConfiguration` instanci protokolovacího nástroje a.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
@@ -161,7 +160,7 @@ Někteří poskytovatelé třetích stran používají přístup popsaný v pře
 5. Instrumentujte kód stejně, jako kdybyste používali ASP.NET Core bez Serilog.
 
    >[!NOTE]
-   >Doporučujeme, abyste v předchozím příkladu *nepoužívali* static `Log.Logger` . Service Fabric může hostovat více instancí stejného typu služby v rámci jednoho procesu. Použijete-li statickou `Log.Logger`, bude poslední zapisovač rozšíření vlastností zobrazovat hodnoty pro všechny instance, které jsou spuštěny. Toto je jeden z důvodů, proč je proměnná _logger privátní členskou proměnnou třídy služby. Také je nutné zpřístupnit `_logger` běžný kód, který může být použit napříč službami.
+   >Doporučujeme, abyste v předchozím příkladu *nepoužívali* static `Log.Logger` . Service Fabric může hostovat více instancí stejného typu služby v rámci jednoho procesu. Použijete-li statickou `Log.Logger` , bude poslední zapisovač rozšíření vlastností zobrazovat hodnoty pro všechny instance, které jsou spuštěny. Toto je jeden z důvodů, proč je proměnná _logger privátní členskou proměnnou třídy služby. Také je nutné zpřístupnit `_logger` běžný kód, který může být použit napříč službami.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75530727"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Zabezpečená nabízená oznámení z Azure Notification Hubs
@@ -79,7 +78,7 @@ Tento kurz zabezpečeného nabízeného oznámení ukazuje, jak bezpečně odesl
         }
     }
     ```
-3. Do horní části `using` souboru App.XAML.cs přidejte následující příkazy:
+3. Do `using` horní části souboru App.XAML.cs přidejte následující příkazy:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -95,8 +94,8 @@ Dalším krokem je vytvoření komponenty na pozadí push.
 2. Rozbalte položku **aplikace pro Store**, klikněte na **Windows Phone aplikace**a pak klikněte na **součást prostředí Windows Runtime (Windows Phone)**. Pojmenujte projekt **PushBackgroundComponent**a kliknutím na tlačítko **OK** vytvořte projekt.
 
     ![][12]
-3. V Průzkumník řešení klikněte pravým tlačítkem na projekt **PushBackgroundComponent (Windows Phone 8,1)** , pak klikněte na **Přidat**a pak na **Třída**. Pojmenujte novou `PushBackgroundTask.cs`třídu. Pro vygenerování třídy klikněte na tlačítko **Přidat** .
-4. Celý obsah definice `PushBackgroundComponent` oboru názvů nahraďte následujícím kódem a nahraďte zástupný symbol `{back-end endpoint}` koncovým bodem back-end, který byl získán při nasazení back-endu:
+3. V Průzkumník řešení klikněte pravým tlačítkem na projekt **PushBackgroundComponent (Windows Phone 8,1)** , pak klikněte na **Přidat**a pak na **Třída**. Pojmenujte novou třídu `PushBackgroundTask.cs` . Pro vygenerování třídy klikněte na tlačítko **Přidat** .
+4. Celý obsah `PushBackgroundComponent` definice oboru názvů nahraďte následujícím kódem a nahraďte zástupný symbol koncovým `{back-end endpoint}` bodem back-end, který byl získán při nasazení back-endu:
 
     ```csharp
     public sealed class Notification
@@ -147,7 +146,7 @@ Dalším krokem je vytvoření komponenty na pozadí push.
 7. Do pole **Hledat** zadejte **Http Client**.
 8. V seznamu výsledků klikněte na **klientské knihovny Microsoft http**a pak klikněte na **nainstalovat**. Dokončete instalaci.
 9. Vraťte se do pole **Hledat** pro balíčky NuGet a zadejte **Json.net**. Nainstalujte balíček **JSON.NET** a pak zavřete okno Správce balíčků NuGet.
-10. Na začátek `PushBackgroundTask.cs` souboru `using` přidejte následující příkazy:
+10. `using`Na začátek souboru přidejte následující příkazy `PushBackgroundTask.cs` :
 
     ```csharp
     using Windows.ApplicationModel.Background;

@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645017"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Spuštění vlastních programů MapReduce
 
 Apache Hadoop systémy velkých objemů dat, jako je HDInsight, umožňují zpracování dat pomocí široké škály nástrojů a technologií. Následující tabulka popisuje hlavní výhody a požadavky pro každé z nich.
 
-| Mechanismus dotazů | Výhody | Požadavky |
+| Mechanismus dotazů | Výhody | Důležité informace |
 | --- | --- | --- |
 | **Apache Hive pomocí HiveQL** | <ul><li>Skvělé řešení pro dávkové zpracování a analýzu velkých objemů neproměnlivých dat, pro shrnutí dat a pro dotazování na vyžádání. Používá známou syntaxi jako SQL.</li><li>Dá se použít k vytvoření trvalých tabulek dat, které je možné snadno rozdělit a indexovat.</li><li>Pro stejná data lze vytvořit více externích tabulek a zobrazení.</li><li>Podporuje jednoduchou implementaci datového skladu, která poskytuje rozsáhlé možnosti škálování na více instancí a odolnost proti chybám pro ukládání a zpracování dat.</li></ul> | <ul><li>Vyžaduje, aby zdrojová data měla aspoň určitou identifikovatelnou strukturu.</li><li>Není vhodný pro dotazy a aktualizace na úrovni řádků v reálném čase. Je nejvhodnější pro dávkové úlohy pro velké sady dat.</li><li>Nemusí být schopni provést některé typy složitých úloh zpracování.</li></ul> |
 | **Apache vepřové prase s latinkou** | <ul><li>Vynikající řešení pro manipulaci s daty jako sady, sloučení a filtrování datových sad, použití funkcí u záznamů nebo skupin záznamů a pro restrukturalizaci dat definováním sloupců, seskupením hodnot nebo převodem sloupců na řádky.</li><li>Může použít přístup na základě pracovního postupu jako posloupnost operací s daty.</li></ul> | <ul><li>Uživatelé SQL můžou najít pro vepřové prostředí latinku méně obeznámené a obtížnější je používat než HiveQL.</li><li>Výchozím výstupem je obvykle textový soubor a proto může být obtížné ho použít s nástroji vizualizace, jako je Excel. Obvykle budete navrstvit tabulku podregistru na výstup.</li></ul> |
@@ -68,7 +67,7 @@ Nejběžnější programy MapReduce jsou napsané v jazyce Java a kompilovány d
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Tento příkaz odešle úlohu MapReduce do PŘÍZe. Vstupní soubor je `/example/data/sample.log`a výstupní adresář je `/example/data/logoutput`. Vstupní soubor a všechny výstupní soubory jsou uloženy do výchozího úložiště pro cluster.
+    Tento příkaz odešle úlohu MapReduce do PŘÍZe. Vstupní soubor je `/example/data/sample.log` a výstupní adresář je `/example/data/logoutput` . Vstupní soubor a všechny výstupní soubory jsou uloženy do výchozího úložiště pro cluster.
 
 ## <a name="next-steps"></a>Další kroky
 

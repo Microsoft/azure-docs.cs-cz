@@ -6,10 +6,9 @@ ms.author: dekapur
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 40c4e9972a3d83a5dd8247bacac12e9d67a15f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497977"
 ---
 # <a name="optimize-visual-studio-performance-for-service-fabric-mesh-projects"></a>Optimalizace výkonu sady Visual Studio pro projekty Service Fabricch mřížek
@@ -18,7 +17,7 @@ V tomto článku se dozvíte, jak optimalizovat výkon sady Visual Studio pro Se
 
 ## <a name="change-visual-studio-settings"></a>Změnit nastavení sady Visual Studio
  
-V aplikaci Visual Studio můžete v nabídce **nástroje** > **Možnosti**  > **Service Fabric nástroje** > sítě**Obecné**upravit následující nastavení:
+V aplikaci Visual Studio můžete v nabídce **nástroje**  >  **Možnosti**   >  **Service Fabric nástroje sítě**  >  **Obecné**upravit následující nastavení:
 
 - **Vyžádané obrázky Docker v otevřeném projektu** usnadňují první spuštění ladění (F5) tím, že se spustí proces stahování obrazu během načítání projektu.  
 - **Nasazení aplikace v otevřeném projektu** může urychlit první ladění (F5) tím, že se spustí proces nasazení po otevření projektu.  

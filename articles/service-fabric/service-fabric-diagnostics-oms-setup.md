@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609923"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Nastavení protokolů Azure Monitor pro cluster
@@ -47,17 +46,17 @@ Pokud používáte Windows, pokračujte podle následujících pokynů a připoj
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Připojení pracovního prostoru Log Analytics k vašemu clusteru 
 
-1. Pracovní prostor musí být připojený ke diagnostická data, která přicházejí z vašeho clusteru. Přejít do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric\<nameOfWorkspace\> ** a přejdete na jeho stránku s přehledem. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a získat přístup k pracovnímu prostoru Log Analytics.
+1. Pracovní prostor musí být připojený ke diagnostická data, která přicházejí z vašeho clusteru. Přejít do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric \<nameOfWorkspace\> ** a přejít na jeho stránku s přehledem. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a získat přístup k pracovnímu prostoru Log Analytics.
 
 2. V levé navigační nabídce v části **zdroje dat pracovního prostoru**vyberte **protokoly účtů úložiště**.
 
 3. Na stránce **protokoly účtu úložiště** vyberte **Přidat** v horní části a přidejte do pracovního prostoru protokoly vašeho clusteru.
 
-4. Vyberte **účet úložiště** a přidejte příslušný účet vytvořený v clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg\<resourceGroupName\>**. Můžete to také ověřit pomocí šablony Azure Resource Manager používané k nasazení clusteru, a to tak, že zkontrolujete hodnotu použitou pro **applicationDiagnosticsStorageAccountName**. Pokud se název nezobrazuje, posuňte se dolů a vyberte **načíst další**. Vyberte název účtu úložiště.
+4. Vyberte **účet úložiště** a přidejte příslušný účet vytvořený v clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg \<resourceGroupName\> **. Můžete to také ověřit pomocí šablony Azure Resource Manager používané k nasazení clusteru, a to tak, že zkontrolujete hodnotu použitou pro **applicationDiagnosticsStorageAccountName**. Pokud se název nezobrazuje, posuňte se dolů a vyberte **načíst další**. Vyberte název účtu úložiště.
 
 5. Zadejte datový typ. Nastavte ji na **Service Fabric události**.
 
-6. Zajistěte, aby byl zdroj automaticky nastaven na **WADServiceFabricou\*událost**.
+6. Zajistěte, aby byl zdroj automaticky nastaven na **WADServiceFabricou \* událost**.
 
 7. Vyberte **OK** a připojte svůj pracovní prostor k protokolům vašeho clusteru.
 

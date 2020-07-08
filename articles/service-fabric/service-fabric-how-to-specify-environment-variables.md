@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614311"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Určení proměnných prostředí pro služby v Service Fabric
@@ -20,7 +19,7 @@ V tomto článku se dozvíte, jak zadat proměnné prostředí pro službu nebo 
 
 V tomto příkladu nastavíte proměnnou prostředí pro kontejner. Článek předpokládá, že již máte manifest aplikace a služby.
 
-1. Otevřete soubor ServiceManifest. XML.
+1. Otevřete soubor ServiceManifest.xml.
 2. V `CodePackage` elementu přidejte nový `EnvironmentVariables` element a `EnvironmentVariable` element pro každou proměnnou prostředí.
 
     ```xml

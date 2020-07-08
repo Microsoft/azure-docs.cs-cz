@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463091"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Agregace a shromažďování událostí pomocí využitím eventflow
@@ -18,7 +17,7 @@ ms.locfileid: "75463091"
 
 ## <a name="set-up-eventflow"></a>Nastavení využitím eventflow
 
-Binární soubory využitím eventflow jsou k dispozici jako sada balíčků NuGet. Chcete-li přidat využitím eventflow do projektu služby Service Fabric, klikněte pravým tlačítkem myši na projekt v Průzkumník řešení a vyberte možnost spravovat balíčky NuGet. Přepněte na kartu Procházet a vyhledejte "`Diagnostics.EventFlow`":
+Binární soubory využitím eventflow jsou k dispozici jako sada balíčků NuGet. Chcete-li přidat využitím eventflow do projektu služby Service Fabric, klikněte pravým tlačítkem myši na projekt v Průzkumník řešení a vyberte možnost spravovat balíčky NuGet. Přepněte na kartu Procházet a vyhledejte " `Diagnostics.EventFlow` ":
 
 ![Využitím eventflow balíčky NuGet v uživatelském rozhraní Správce balíčků NuGet sady Visual Studio](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
@@ -34,12 +33,12 @@ Zobrazí se seznam různých balíčků, které jsou označené "vstupy" a "výs
 Po instalaci všech balíčků je dalším krokem konfigurace a povolení využitím eventflow ve službě.
 
 ## <a name="configure-and-enable-log-collection"></a>Konfigurace a povolení shromažďování protokolů
-Kanál využitím eventflow zodpovědný za odeslání protokolů se vytvoří ze specifikace uložené v konfiguračním souboru. `Microsoft.Diagnostics.EventFlow.ServiceFabric` Balíček nainstaluje spouštěcí konfigurační soubor využitím eventflow ve `PackageRoot\Config` složce řešení s názvem `eventFlowConfig.json`. Tento konfigurační soubor se musí upravit, aby zachytával data z výchozí třídy `EventSource` služby a všech dalších vstupů, které chcete nakonfigurovat, a odesílat data na příslušné místo.
+Kanál využitím eventflow zodpovědný za odeslání protokolů se vytvoří ze specifikace uložené v konfiguračním souboru. `Microsoft.Diagnostics.EventFlow.ServiceFabric`Balíček nainstaluje spouštěcí konfigurační soubor využitím eventflow ve `PackageRoot\Config` složce řešení s názvem `eventFlowConfig.json` . Tento konfigurační soubor se musí upravit, aby zachytával data z výchozí `EventSource` třídy služby a všech dalších vstupů, které chcete nakonfigurovat, a odesílat data na příslušné místo.
 
 >[!NOTE]
->Pokud soubor projektu má formát VisualStudio 2017, `eventFlowConfig.json` soubor se nepřidá automaticky. Chcete-li tento problém vyřešit, vytvořte `Config` soubor ve složce a nastavte akci sestavení `Copy if newer`na. 
+>Pokud soubor projektu má formát VisualStudio 2017, `eventFlowConfig.json` soubor se nepřidá automaticky. Chcete-li tento problém vyřešit, vytvořte soubor ve `Config` složce a nastavte akci sestavení na `Copy if newer` . 
 
-Tady je ukázkový soubor *eventFlowConfig. JSON* na základě balíčků NuGet uvedených výše:
+Tady je ukázka *eventFlowConfig.jsna* základě balíčků NuGet uvedených výše:
 ```json
 {
   "inputs": [
@@ -80,7 +79,7 @@ internal sealed class ServiceEventSource : EventSource
 }
 ```
 
-Všimněte si `eventFlowConfig.json` , že soubor je součástí konfiguračního balíčku služby. Změny v tomto souboru můžete zahrnout do upgradu služby na základě úplného nebo pouze konfigurace, pokud dojde k selhání upgradu, Service Fabric upgradovat kontroly stavu a automatické vrácení zpět. Další informace naleznete v tématu [Service Fabric upgrade aplikace](service-fabric-application-upgrade.md).
+Všimněte si, že `eventFlowConfig.json` soubor je součástí konfiguračního balíčku služby. Změny v tomto souboru můžete zahrnout do upgradu služby na základě úplného nebo pouze konfigurace, pokud dojde k selhání upgradu, Service Fabric upgradovat kontroly stavu a automatické vrácení zpět. Další informace naleznete v tématu [Service Fabric upgrade aplikace](service-fabric-application-upgrade.md).
 
 Oddíl *filtry* v konfiguraci umožňuje dále přizpůsobit informace, které se procházejí kanálem využitím eventflow, do výstupů, což vám umožní vyřadit nebo zahrnout určité informace nebo změnit strukturu dat událostí. Další informace o filtrování najdete v tématu [využitím eventflow Filters](https://github.com/Azure/diagnostics-eventflow#filters).
 
@@ -139,7 +138,7 @@ Využitím eventflow podporuje konfiguraci nastavení využitím eventflow pomoc
 servicefabric:/<section-name>/<setting-name>
 ```
 
-`<section-name>`je název konfiguračního oddílu Service Fabric a `<setting-name>` jedná se o nastavení konfigurace, které poskytuje hodnotu, která se použije ke konfiguraci nastavení využitím eventflow. Další informace o tom, jak to provést, najdete v článku [Podpora nastavení Service Fabric a parametrů aplikace](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
+`<section-name>`je název konfiguračního oddílu Service Fabric a jedná se o `<setting-name>` nastavení konfigurace, které poskytuje hodnotu, která se použije ke konfiguraci nastavení využitím eventflow. Další informace o tom, jak to provést, najdete v článku [Podpora nastavení Service Fabric a parametrů aplikace](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
 
 ## <a name="verification"></a>Ověření
 

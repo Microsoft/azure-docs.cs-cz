@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482566"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generovat heatmapu vlhkosti půdy
@@ -22,7 +21,7 @@ Tento článek popisuje proces generování heatmapu vlhkosti v půdě pro vaši
 - [Přiřazení senzorů ke farmám](#get-soil-moisture-sensor-data-from-partner)
 - [Generovat heatmapu vlhkosti půdy](#generate-soil-moisture-heatmap)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Zajistěte, aby:  
 
@@ -51,7 +50,7 @@ Po zadání přihlašovacích údajů a výběru **Odeslat** na partnerských ap
 Po propojení účtu snímače se službou Azure FarmBeats je potřeba přiřadit senzory vlhkosti v půdě do farmy zájmu.
 
 1.  Na stránce domů v nabídce vyberte možnost **farmy** a zobrazí se stránka seznam **farmy** .
-2.  Vyberte **MyFarm** > **Přidat zařízení**.
+2.  Vyberte **MyFarm**  >  **Přidat zařízení**.
 3.  Zobrazí se okno **Přidat zařízení** . Vyberte jakékoli zařízení, které je propojené s senzory vlhkosti v půdě pro vaši farmu.
 
     ![Beats farmy projektu](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)

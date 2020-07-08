@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650523"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Přidání vlastních prostředků do Azure REST API
@@ -18,7 +17,7 @@ Tento článek prochází požadavky a osvědčenými postupy pro vytváření k
 
 ## <a name="how-to-define-a-resource-endpoint"></a>Definování koncového bodu prostředku
 
-**Koncový bod** je adresa URL, která odkazuje na službu, která implementuje základní smlouvu mezi IT a Azure. Koncový bod je definovaný ve vlastním poskytovateli prostředků a může být libovolná veřejně přístupná adresa URL. Následující ukázka má typ `endpointURL` **ResourceType** , který `myCustomResource` se nazývá implementováno.
+**Koncový bod** je adresa URL, která odkazuje na službu, která implementuje základní smlouvu mezi IT a Azure. Koncový bod je definovaný ve vlastním poskytovateli prostředků a může být libovolná veřejně přístupná adresa URL. Následující ukázka má typ **ResourceType** , který se nazývá `myCustomResource` implementováno `endpointURL` .
 
 Vzorový **ResourceProvider**:
 
@@ -42,39 +41,39 @@ Vzorový **ResourceProvider**:
 
 ## <a name="building-a-resource-endpoint"></a>Sestavení koncového bodu prostředku
 
-**Koncový bod** , který implementuje **ResourceType** , musí zpracovat požadavek a odpověď na nové rozhraní API v Azure. Když **se vytvoří** vlastní poskytovatel prostředků s prostředky, vytvoří se v Azure nová sada rozhraní API. V takovém případě **ResourceType** vygeneruje nové rozhraní API prostředků Azure `PUT`pro, `GET`a k provedení `DELETE` CRUD na jednom prostředku a také `GET` k načtení všech existujících prostředků:
+**Koncový bod** , který implementuje **ResourceType** , musí zpracovat požadavek a odpověď na nové rozhraní API v Azure. Když **se vytvoří** vlastní poskytovatel prostředků s prostředky, vytvoří se v Azure nová sada rozhraní API. V takovém případě **ResourceType** vygeneruje nové rozhraní API prostředků Azure pro `PUT` , `GET` a `DELETE` k provedení CRUD na jednom prostředku a také `GET` k načtení všech existujících prostředků:
 
-Manipulace s jedním prostředkem`PUT`( `GET`, a `DELETE`):
+Manipulace s jedním prostředkem ( `PUT` , a `GET` `DELETE` ):
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource/{myCustomResourceName}
 ```
 
-Načíst všechny prostředky (`GET`):
+Načíst všechny prostředky ( `GET` ):
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource
 ```
 
-U vlastních prostředků nabízí vlastní poskytovatelé prostředků dva typy **routingTypes**: "`Proxy`" a "`Proxy, Cache`".
+U vlastních prostředků nabízí vlastní poskytovatelé prostředků dva typy **routingTypes**: " `Proxy` " a " `Proxy, Cache` ".
 
 ### <a name="proxy-routing-type"></a>typ směrování proxy
 
-`Proxy` **RoutingType** proxy všechny metody žádosti na **koncový bod** zadaný ve vlastním poskytovateli prostředků. Kdy použít "`Proxy`":
+`Proxy` **RoutingType** proxy všechny metody žádosti na **koncový bod** zadaný ve vlastním poskytovateli prostředků. Kdy použít " `Proxy` ":
 
 - Je potřeba mít plnou kontrolu nad odpovědí.
 - Integrace systémů se stávajícími prostředky.
 
-Další informace o`Proxy`prostředcích najdete v tématu [Reference k vlastnímu proxy prostředku](proxy-resource-endpoint-reference.md) .
+Další informace o `Proxy` prostředcích najdete v tématu [Reference k vlastnímu proxy prostředku](proxy-resource-endpoint-reference.md) .
 
 ### <a name="proxy-cache-routing-type"></a>typ směrování mezipaměti proxy
 
-`Proxy, Cache`Pouze `PUT` proxy `DELETE` servery **routingType** a požadavky na **koncový bod** zadané ve vlastním poskytovateli prostředků. Vlastní poskytovatel prostředků automaticky vrátí `GET` žádosti na základě toho, co v mezipaměti ukládá. Pokud je vlastní prostředek označený jako mezipaměť, vlastní poskytovatel prostředků také přidá/přepíše pole v odpovědi, aby rozhraní API splňovala požadavky na Azure. Kdy použít "`Proxy, Cache`":
+`Proxy, Cache`Pouze proxy servery **routingType** `PUT` a `DELETE` požadavky na **koncový bod** zadané ve vlastním poskytovateli prostředků. Vlastní poskytovatel prostředků automaticky vrátí `GET` žádosti na základě toho, co v mezipaměti ukládá. Pokud je vlastní prostředek označený jako mezipaměť, vlastní poskytovatel prostředků také přidá/přepíše pole v odpovědi, aby rozhraní API splňovala požadavky na Azure. Kdy použít " `Proxy, Cache` ":
 
 - Vytvoření nového systému, který nemá žádné existující prostředky.
 - Pracujte se stávajícím ekosystémem Azure.
 
-Další informace o`Proxy, Cache`prostředcích najdete v referenčních informacích k [vlastní mezipaměti prostředků](proxy-cache-resource-endpoint-reference.md) .
+Další informace o `Proxy, Cache` prostředcích najdete v referenčních informacích k [vlastní mezipaměti prostředků](proxy-cache-resource-endpoint-reference.md) .
 
 ## <a name="creating-a-custom-resource"></a>Vytvoření vlastního prostředku
 
@@ -102,7 +101,7 @@ az resource create --is-full-object \
                     }'
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 je-full-Object | *Ano* | Označuje, že objekt Properties obsahuje další možnosti, jako je umístění, značky, SKU a/nebo plán.
 id | *Ano* | ID prostředku vlastního prostředku To by mělo být mimo **ResourceProvider**
@@ -114,7 +113,7 @@ Odstranění vlastního prostředku Azure:
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 id | *Ano* | ID prostředku vlastního prostředku To by mělo být mimo **ResourceProvider**.
 
@@ -124,16 +123,16 @@ Načtení vlastního prostředku Azure:
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 id | *Ano* | ID prostředku vlastního prostředku To by mělo být mimo **ResourceProvider**
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
 > [!NOTE]
-> Prostředky vyžadují, aby odpověď obsahovala odpovídající `id`, `name`a `type` z **koncového bodu**.
+> Prostředky vyžadují, aby odpověď obsahovala odpovídající `id` , `name` a `type` z **koncového bodu**.
 
-Šablony Azure Resource Manager vyžadují, `id`aby `name`byly, `type` a správně vráceny z koncového bodu pro příjem dat. Vrácená odpověď prostředku by měla být ve tvaru:
+Šablony Azure Resource Manager vyžadují, `id` aby `name` byly, a `type` správně vráceny z koncového bodu pro příjem dat. Vrácená odpověď prostředku by měla být ve tvaru:
 
 Ukázková odpověď **koncového bodu** :
 
@@ -174,7 +173,7 @@ Ukázka šablony Azure Resource Manager:
 }
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 Typ prostředku | *Ano* | **Název** elementu **ResourceType** definovaného ve vlastním zprostředkovateli.
 resourceProviderName | *Ano* | Název instance vlastního poskytovatele prostředků.

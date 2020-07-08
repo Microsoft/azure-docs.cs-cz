@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651966"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo – element uživatelského rozhraní
@@ -105,12 +104,12 @@ Když uživatel vybere existující virtuální síť, musí namapovat každou p
 
 ## <a name="remarks"></a>Poznámky
 
-- `defaultValue.addressPrefixSize` Je-li tento parametr zadán, je první překrývající se předpona adresy určena automaticky v závislosti na stávajících virtuálních sítích v rámci předplatného uživatele.
+- Je-li tento parametr zadán, je první překrývající se předpona adresy `defaultValue.addressPrefixSize` určena automaticky v závislosti na stávajících virtuálních sítích v rámci předplatného uživatele.
 - Výchozí hodnota pro `defaultValue.name` a `defaultValue.addressPrefixSize` je **null**.
 - `constraints.minAddressPrefixSize`je nutné zadat. Všechny existující virtuální sítě s adresním prostorem menším než zadaná hodnota nejsou k dispozici pro výběr.
 - `subnets`musí se zadat a `constraints.minAddressPrefixSize` musí se zadat pro každou podsíť.
-- Při vytváření nové virtuální sítě se předpona adresy každé podsítě počítá automaticky na základě předpony adresy virtuální sítě a příslušné `addressPrefixSize`.
-- Při použití existující virtuální sítě nejsou pro výběr k dispozici žádné podsítě, `constraints.minAddressPrefixSize` které jsou menší než příslušné. Pokud je tato možnost zadána, nebudou pro výběr k dispozici `minAddressCount` podsítě, které nemají alespoň dostupné adresy. Výchozí hodnota je **0**. Chcete-li zajistit, aby byly dostupné adresy souvislé, zadejte `requireContiguousAddresses` **hodnotu true** pro. Výchozí hodnota je **true (pravda**).
+- Při vytváření nové virtuální sítě se předpona adresy každé podsítě počítá automaticky na základě předpony adresy virtuální sítě a příslušné `addressPrefixSize` .
+- Při použití existující virtuální sítě `constraints.minAddressPrefixSize` nejsou pro výběr k dispozici žádné podsítě, které jsou menší než příslušné. Pokud je tato možnost zadána, `minAddressCount` nebudou pro výběr k dispozici podsítě, které nemají alespoň dostupné adresy. Výchozí hodnota je **0**. Chcete-li zajistit, aby byly dostupné adresy souvislé, zadejte **hodnotu true** pro `requireContiguousAddresses` . Výchozí hodnota je **true (pravda**).
 - Vytváření podsítí v existující virtuální síti se nepodporuje.
 - Pokud `options.hideExisting` má **hodnotu true**, uživatel nemůže zvolit existující virtuální síť. Výchozí hodnota je **false** (nepravda).
 

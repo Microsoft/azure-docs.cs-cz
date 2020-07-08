@@ -6,19 +6,18 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609770"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurace Reliable Actors--KVSActorStateProvider
-Výchozí konfiguraci KVSActorStateProvider můžete upravit změnou souboru Settings. XML, který je vygenerovaný v kořenovém adresáři balíčku Microsoft Visual Studio v konfigurační složce pro zadaný objekt actor.
+Výchozí konfiguraci KVSActorStateProvider můžete upravit tak, že změníte soubor settings.xml, který je vygenerovaný v kořenovém adresáři balíčku Microsoft Visual Studio v konfigurační složce pro zadaný objekt actor.
 
-Modul runtime Azure Service Fabric vyhledá předdefinované názvy oddílů v souboru Settings. XML a při vytváření podkladových komponent modulu runtime spotřebovává konfigurační hodnoty.
+Modul runtime služby Azure Service Fabric hledá v souboru settings.xml předdefinované názvy oddílů a při vytváření podkladových komponent modulu runtime tyto hodnoty spotřebovává.
 
 > [!NOTE]
-> **Neodstraňujte** ani neměňte názvy oddílů následujících konfigurací v souboru Settings. XML, který je generován v řešení sady Visual Studio.
+> **Neodstraňujte** ani neměňte názvy oddílů následujících konfigurací v souboru settings.xml, který je generován v řešení sady Visual Studio.
 > 
 > 
 
@@ -31,20 +30,20 @@ Ve výchozím nastavení se v prázdném oddílu konfigurace zabezpečení zabr�
 > 
 
 ### <a name="section-name"></a>Název oddílu
-&lt;Jméno objektu&gt;actor ServiceReplicatorSecurityConfig
+&lt;Jméno objektu actor &gt; ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Konfigurace replikátoru
 Konfigurace replikátoru konfigurují Replikátor, který zodpovídá za vysoce spolehlivý stav poskytovatele stavu objektu actor.
 Výchozí konfigurace je generována šablonou sady Visual Studio a měla by stačit. Tato část pojednává o dalších konfiguracích, které jsou k dispozici pro optimalizaci replikátoru.
 
 ### <a name="section-name"></a>Název oddílu
-&lt;Jméno objektu&gt;actor ServiceReplicatorConfig
+&lt;Jméno objektu actor &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
-| ReplicatorEndpoint |– |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| ReplicatorEndpoint |Není k dispozici |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
 | RetryInterval |Sekundy |5 |Časové období, po kterém Replikátor znovu přenáší zprávu, pokud neobdrží potvrzení operace. |
 | MaxReplicationMessageSize |Bajty |50 MB |Maximální velikost replikačních dat, která se dají přenést v jedné zprávě |
 | MaxPrimaryReplicationQueueSize |Počet operací |1024 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
@@ -55,10 +54,10 @@ Konfigurace úložiště se používají ke konfiguraci místního úložiště,
 Výchozí konfigurace je generována šablonou sady Visual Studio a měla by stačit. Tato část pojednává o dalších konfiguracích, které jsou k dispozici pro optimalizaci místního úložiště.
 
 ### <a name="section-name"></a>Název oddílu
-&lt;Jméno objektu&gt;actor ServiceLocalStoreConfig
+&lt;Jméno objektu actor &gt; ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Milisekund |200 |Nastaví maximální interval dávkování pro potvrzení trvalého místního úložiště. |
 | MaxVerPages |Počet stránek |16384 |Maximální počet stránek verze v místní databázi úložiště Určuje maximální počet nezpracovaných transakcí. |

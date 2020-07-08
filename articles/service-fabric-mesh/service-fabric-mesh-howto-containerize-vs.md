@@ -6,10 +6,9 @@ ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75462050"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Kontejnerizace stávající aplikace v .NET pro Service Fabric Mesh
@@ -45,7 +44,7 @@ Po stažení v aplikaci Visual Studio 2017 Open **ContainersSFLab\eShopLegacyWeb
  
 Přidejte podporu orchestrace kontejnerů do existujícího projektu ASP.NET nebo konzole pomocí Service Fabricch nástrojů pro mřížku, jak je znázorněno níže:
 
-V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem myši na název projektu (v příkladu **eShopLegacyWebForms**) a pak zvolte **Přidat** > **podporu kontejneru Orchestrator**.
+V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem myši na název projektu (v příkladu **eShopLegacyWebForms**) a pak zvolte **Přidat**  >  **podporu kontejneru Orchestrator**.
 Zobrazí se dialogové okno **Přidat podporu produktu Orchestrator pro kontejner** .
 
 ![Dialogové okno Přidat kontejner nástroje Orchestrator pro Visual Studio](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)

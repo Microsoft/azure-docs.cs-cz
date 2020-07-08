@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465535"
 ---
 # <a name="testability-scenarios"></a>Scénáře testování
@@ -124,7 +123,7 @@ class Test
 
 PowerShell
 
-Modul Service Fabric PowerShell obsahuje dva způsoby, jak začít scénář chaos. `Invoke-ServiceFabricChaosTestScenario`je založen na klientech a pokud je klientský počítač vypínán prostřednictvím testu, nebudou zavedeny žádné další chyby. Alternativně je k dispozici sada příkazů, které mají za následek, že je test spuštěn v případě vypnutí počítače. `Start-ServiceFabricChaos`používá stavovou a spolehlivou systémovou službu nazvanou FaultAnalysisService a zajišťuje, že chyby zůstanou zavedeny až do chvíle, kdy TimeToRun nebude. `Stop-ServiceFabricChaos`dá se použít k ručnímu zastavení scénáře a `Get-ServiceFabricChaosReport` obdrží sestavu. Další informace najdete v tématu [Reference k Azure Service Fabric PowerShellu](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) a vystavování [chaos řízených v clusterech Service Fabric](service-fabric-controlled-chaos.md).
+Modul Service Fabric PowerShell obsahuje dva způsoby, jak začít scénář chaos. `Invoke-ServiceFabricChaosTestScenario`je založen na klientech a pokud je klientský počítač vypínán prostřednictvím testu, nebudou zavedeny žádné další chyby. Alternativně je k dispozici sada příkazů, které mají za následek, že je test spuštěn v případě vypnutí počítače. `Start-ServiceFabricChaos`používá stavovou a spolehlivou systémovou službu nazvanou FaultAnalysisService a zajišťuje, že chyby zůstanou zavedeny až do chvíle, kdy TimeToRun nebude. `Stop-ServiceFabricChaos`dá se použít k ručnímu zastavení scénáře a obdrží `Get-ServiceFabricChaosReport` sestavu. Další informace najdete v tématu [Reference k Azure Service Fabric PowerShellu](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) a vystavování [chaos řízených v clusterech Service Fabric](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"

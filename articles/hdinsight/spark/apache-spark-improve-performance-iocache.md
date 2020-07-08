@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/23/2019
 ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494984"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
@@ -28,13 +27,13 @@ Většina SSD poskytuje více než 1 GByte za sekundu šířky pásma. Tato ší
 
 Použití vstupně-výstupní mezipaměti zajišťuje zvýšení výkonu pro úlohy, které čtou data z Azure Blob Storage.
 
-Nemusíte dělat žádné změny v úlohách Sparku, abyste viděli zvýšení výkonu při použití vstupně-výstupní mezipaměti. Pokud je vstupně-výstupní mezipaměť zakázaná, bude tento kód Spark číst data vzdáleně z `spark.read.load('wasbs:///myfolder/data.parquet').count()`Azure Blob Storage:. Pokud je povolena vstupně-výstupní mezipaměť, stejný řádek kódu způsobí, že je mezipaměť čtena do mezipaměti v/v. V následujících čteních se data čtou místně z SSD. Pracovní uzly v clusteru HDInsight jsou vybavené místně připojenými vyhrazenými jednotkami SSD. Mezipaměť v/v služby HDInsight používá tyto místní SSD pro ukládání do mezipaměti, což poskytuje nejnižší úroveň latence a maximalizuje šířku pásma.
+Nemusíte dělat žádné změny v úlohách Sparku, abyste viděli zvýšení výkonu při použití vstupně-výstupní mezipaměti. Pokud je vstupně-výstupní mezipaměť zakázaná, bude tento kód Spark číst data vzdáleně z Azure Blob Storage: `spark.read.load('wasbs:///myfolder/data.parquet').count()` . Pokud je povolena vstupně-výstupní mezipaměť, stejný řádek kódu způsobí, že je mezipaměť čtena do mezipaměti v/v. V následujících čteních se data čtou místně z SSD. Pracovní uzly v clusteru HDInsight jsou vybavené místně připojenými vyhrazenými jednotkami SSD. Mezipaměť v/v služby HDInsight používá tyto místní SSD pro ukládání do mezipaměti, což poskytuje nejnižší úroveň latence a maximalizuje šířku pásma.
 
 ## <a name="getting-started"></a>Začínáme
 
 Služba Azure HDInsight IO cache je ve výchozím nastavení deaktivována ve verzi Preview. Mezipaměť v/v je dostupná v clusterech Azure HDInsight 3.6 + Spark, které spouštějí Apache Spark 2,3.  Pokud chcete aktivovat vstupně-výstupní mezipaměť ve službě HDInsight 4,0, proveďte následující kroky:
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
 1. Na levé straně vyberte službu **mezipaměti v/** v.
 
@@ -67,7 +66,7 @@ Po povolení vstupně-výstupních operací můžete získat chyby místa na dis
 
 1. V pravém horním rohu vyberte **Uložit** .
 
-1. Vyberte **znovu** > restartovat**všechny ovlivněné**.
+1. Vyberte **znovu**restartovat  >  **všechny ovlivněné**.
 
     ![Apache Ambari restartuje všechny ovlivněné](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
 

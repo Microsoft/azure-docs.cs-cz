@@ -4,10 +4,9 @@ description: Popisuje definování proměnných v šabloně Azure Resource Manag
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75483814"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Proměnné v šabloně Azure Resource Manager
@@ -85,7 +84,7 @@ Chcete-li načíst nastavení pro zadané prostředí, použijte proměnnou a pa
 
 Následující příklady ukazují scénáře použití proměnných.
 
-|Šablona  |Popis  |
+|Šablona  |Description  |
 |---------|---------|
 | [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé typy proměnných. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
 | [konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné definující konfigurační hodnoty. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |

@@ -8,10 +8,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552113"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
@@ -41,7 +40,7 @@ Prostředí je podobné ostatním produktům společnosti Microsoft. Pojďme si 
 
 | Popisek                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **Soubor** | <ul><li>Otevření, uložení a zavření souborů</li><li>Přihlaste se a odhlaste se z účtů OneDrive.</li><li>Sdílet odkazy (Zobrazit a upravit).</li><li>Zobrazit informace o souboru.</li><li>Použijte novou šablonu pro existující modely.</li></ul> |
+| **File** | <ul><li>Otevření, uložení a zavření souborů</li><li>Přihlaste se a odhlaste se z účtů OneDrive.</li><li>Sdílet odkazy (Zobrazit a upravit).</li><li>Zobrazit informace o souboru.</li><li>Použijte novou šablonu pro existující modely.</li></ul> |
 | **Upravit** | Akce zpět a znovu a také kopírovat, vložit a odstranit. |
 | **Zobrazit** | <ul><li>Přepínání mezi zobrazeními pro **analýzu** a **Návrh**</li><li>Otevřete uzavřená okna (například vzorníky, vlastnosti prvku a zprávy).</li><li>Obnovit rozložení na výchozí nastavení.</li></ul> |
 | **Diagram** | Přidejte a odstraňte diagramy a přejděte na karty diagramů. |
@@ -61,7 +60,7 @@ Symboly jsou zkratky pro nabídky nejvyšší úrovně:
 | **Kopírování, vyjmutí a vložení** | Kopie, řezy a minulé prvky. |
 | **Vrátit zpět/znovu** | Vrátí akce a provede akci znovu. |
 | **Přiblížení/oddálení** | Přiblížení a oddálení diagramu pro lepší zobrazení. |
-| **Váš názor** | Otevře Fórum MSDN. |
+| **Zpětná vazba** | Otevře Fórum MSDN. |
 
 ### <a name="canvas"></a>Plátno
 
@@ -81,7 +80,7 @@ Na základě vámi vybrané šablony můžete najít všechny vzorníky, které 
 
 | Název vzorníku                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **Přihlášení** | Aplikace, moduly plug-in prohlížeče, vlákna, virtuální počítače |
+| **Proces** | Aplikace, moduly plug-in prohlížeče, vlákna, virtuální počítače |
 | **Externí interakce** | Poskytovatelé ověřování, prohlížeče, uživatelé, webové aplikace |
 | **Úložiště dat** | Mezipaměť, úložiště, konfigurační soubory, databáze, Registry |
 | **Tok dat** | Binární, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, pojmenovaný kanál, RPC/DCOM, SMB, UDP |
@@ -194,11 +193,11 @@ Jak je vidět na předchozím obrázku, můžete změnit informace vygenerované
 
 ## <a name="reports"></a>Sestavy
 
-Až dokončíte měnící se priority a aktualizujete stav každé vygenerované hrozby, můžete soubor uložit nebo vytisknout sestavu. Přejít na **sestavu** > **vytvořit úplnou sestavu**. Pojmenujte sestavu a měli byste vidět něco podobného jako na následujícím obrázku:
+Až dokončíte měnící se priority a aktualizujete stav každé vygenerované hrozby, můžete soubor uložit nebo vytisknout sestavu. Přejít na **sestavu**  >  **vytvořit úplnou sestavu**. Pojmenujte sestavu a měli byste vidět něco podobného jako na následujícím obrázku:
 
 ![Sestava](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pošlete své dotazy, komentáře a obavy do tmtextsupport@microsoft.com. Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
+- Pošlete své dotazy, komentáře a obavy do tmtextsupport@microsoft.com . Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
 - Pokud chcete přispívat šablonu pro komunitu, podívejte se na naši stránku [GitHub](https://github.com/Microsoft/threat-modeling-templates) .

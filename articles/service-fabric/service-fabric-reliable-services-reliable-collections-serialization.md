@@ -4,10 +4,9 @@ description: Přečtěte si o Azure Service Fabric serializaci objektů služby 
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639543"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializace objektu spolehlivé kolekce v Azure Service Fabric
@@ -44,7 +43,7 @@ Správce Reliable State má vestavěný serializátor pro následující typy:
 
 Vlastní koserializátory se běžně používají ke zvýšení výkonu nebo k šifrování dat po drátě a na disku. Mimo jiné důvody jsou vlastní serializace obvykle efektivnější než obecné serializátor, protože nepotřebují serializaci informací o typu. 
 
-[IReliableStateManager. TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) slouží k registraci vlastního serializátoru pro daný typ T. Tato registrace by se měla proběhnout při vytváření StatefulServiceBase, aby se zajistilo, že před zahájením obnovení mají všechny spolehlivé kolekce přístup k příslušnému serializátoru, aby mohli číst trvalá data.
+[IReliableStateManager. TryAddStateSerializer \<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) slouží k registraci vlastního serializátoru pro daný typ T. Tato registrace by se měla proběhnout při vytváření StatefulServiceBase, aby se zajistilo, že před zahájením obnovení mají všechny spolehlivé kolekce přístup k příslušnému serializátoru, aby mohli číst trvalá data.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -62,10 +61,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Implementace vlastního serializátoru
 
-Vlastní serializátor musí implementovat rozhraní [\<IStateSerializer T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) .
+Vlastní serializátor musí implementovat rozhraní [IStateSerializer \<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) .
 
 > [!NOTE]
-> IStateSerializer\<T> zahrnuje přetížení pro zápis a čtení, která přebírají v další T volané základní hodnotě. Toto rozhraní API je pro rozdílovou serializaci. Funkce rozdílové serializace není k dispozici. Proto tato dvě přetížení nejsou volána, dokud není k dispozici rozdílové serializace a povolena.
+> IStateSerializer \<T> zahrnuje přetížení pro zápis a čtení, která přebírají v další hodnotě T nazvané Base. Toto rozhraní API je pro rozdílovou serializaci. Funkce rozdílové serializace není k dispozici. Proto tato dvě přetížení nejsou volána, dokud není k dispozici rozdílové serializace a povolena.
 
 Následuje příklad vlastního typu s názvem OrderKey, který obsahuje čtyři vlastnosti.
 
@@ -85,7 +84,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Následuje příklad implementace IStateSerializer\<OrderKey>.
+Následuje příklad implementace IStateSerializer \<OrderKey> .
 Všimněte si, že přetížení čtení a zápisu, která přebírají v baseValue, volají jejich příslušné přetížení pro zajištění kompatibility s přesměrováním.
 
 ```csharp

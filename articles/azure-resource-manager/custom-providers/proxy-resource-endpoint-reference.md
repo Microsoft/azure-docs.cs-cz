@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650458"
 ---
 # <a name="custom-resource-proxy-reference"></a>Odkaz na vlastní proxy prostředky
@@ -42,10 +41,10 @@ Ukázkový vlastní poskytovatel prostředků:
 
 ## <a name="building-proxy-resource-endpoint"></a>Vytváření koncového bodu prostředku proxy serveru
 
-**Koncový bod** , který implementuje **koncový bod** prostředku proxy, musí zpracovat požadavek a odpověď na nové rozhraní API v Azure. V takovém případě **ResourceType** vygeneruje nové rozhraní API prostředků Azure `PUT`pro, `GET`a `DELETE` k provedení CRUD na jednom prostředku a také `GET` k načtení všech existujících prostředků.
+**Koncový bod** , který implementuje **koncový bod** prostředku proxy, musí zpracovat požadavek a odpověď na nové rozhraní API v Azure. V takovém případě **ResourceType** vygeneruje nové rozhraní API prostředků Azure pro `PUT` , `GET` a `DELETE` k provedení CRUD na jednom prostředku a také `GET` k načtení všech existujících prostředků.
 
 > [!NOTE]
-> Pole `id`, `name`a `type` se nevyžadují, ale jsou nutná k integraci vlastního prostředku se stávajícím ekosystémem Azure.
+> `id`Pole, `name` a se `type` nevyžadují, ale jsou nutná k integraci vlastního prostředku se stávajícím ekosystémem Azure.
 
 Ukázkový prostředek:
 
@@ -65,10 +64,10 @@ Ukázkový prostředek:
 
 Odkaz na parametr:
 
-Vlastnost | Ukázka | Popis
+Vlastnost | Ukázka | Description
 ---|---|---
-jméno | '{myCustomResourceName}' | Název vlastního prostředku.
-type | Microsoft. CustomProviders/resourceProviders/{ResourceType} | Obor názvů typu prostředku.
+name | '{myCustomResourceName}' | Název vlastního prostředku.
+typ | Microsoft. CustomProviders/resourceProviders/{ResourceType} | Obor názvů typu prostředku.
 id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>Zprostředkovatelé/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | ID prostředku.
 
 ### <a name="create-a-custom-resource"></a>Vytvoření vlastního prostředku
@@ -110,7 +109,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
 
 - Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- `Content-Type` Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
+- `Content-Type`Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
 
 **Koncový bod** Základě
 
@@ -171,7 +170,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Podobně odpověď z **koncového bodu** je pak zpětně postoupena zákazníkovi. Odpověď z koncového bodu by měla vracet:
 
 - Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- `Content-Type` Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
+- `Content-Type`Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
 
 **Koncový bod** Základě
 
@@ -208,7 +207,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
 
 - Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- `Content-Type` Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
+- `Content-Type`Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
 
 **Koncový bod** Základě
 
@@ -269,7 +268,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
 
 - Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- `Content-Type` Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
+- `Content-Type`Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
 - Seznam prostředků by měl být umístěn pod vlastností nejvyšší úrovně `value` .
 
 **Koncový bod** Základě

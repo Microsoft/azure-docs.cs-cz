@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652044"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft. Compute. SizeSelector – element uživatelského rozhraní
@@ -69,11 +68,11 @@ Po výběru ovládacího prvku se uživateli zobrazí rozšířené zobrazení d
 
 - `recommendedSizes`musí mít aspoň jednu velikost. První doporučená velikost se používá jako výchozí. Seznam dostupných velikostí není seřazen podle doporučeného stavu. Uživatel může vybrat tento sloupec pro řazení podle doporučeného stavu.
 - Pokud není doporučená velikost ve vybraném umístění dostupná, velikost se automaticky přeskočí. Místo toho se použije další doporučená velikost.
-- `constraints.allowedSizes`a `constraints.excludedSizes` jsou zároveň volitelné, ale nelze je použít současně. Seznam dostupných velikostí lze určit voláním [seznamu dostupné velikosti virtuálních počítačů pro předplatné](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). Libovolná velikost, která `constraints.allowedSizes` není určená v, je skrytá a zobrazí se libovolná velikost, která není určená v. `constraints.excludedSizes`
+- `constraints.allowedSizes`a `constraints.excludedSizes` jsou zároveň volitelné, ale nelze je použít současně. Seznam dostupných velikostí lze určit voláním [seznamu dostupné velikosti virtuálních počítačů pro předplatné](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). Libovolná velikost, která není určená v, `constraints.allowedSizes` je skrytá a zobrazí se libovolná velikost, která není určená v `constraints.excludedSizes` .
 - `osPlatform`musí být zadáno a může být buď **Windows** , nebo **Linux**. Slouží k určení nákladů na hardware pro virtuální počítače.
 - `imageReference`je vynechán pro bitové kopie první strany, ale je k dispozici pro Image třetích stran. Slouží k určení nákladů na software virtuálních počítačů.
-- `count`slouží k nastavení vhodného násobitele pro element. Podporuje statickou hodnotu, například **2**, nebo dynamickou hodnotu z jiného elementu, například `[steps('step1').vmCount]`. Výchozí hodnota je **1**.
-- `numAvailabilityZonesRequired` Může být 1, 2 nebo 3.
+- `count`slouží k nastavení vhodného násobitele pro element. Podporuje statickou hodnotu, například **2**, nebo dynamickou hodnotu z jiného elementu, například `[steps('step1').vmCount]` . Výchozí hodnota je **1**.
+- `numAvailabilityZonesRequired`Může být 1, 2 nebo 3.
 - Ve výchozím nastavení `hideDiskTypeFilter` má **hodnotu false**. Filtr typ disku umožňuje uživateli zobrazit všechny typy disků nebo pouze SSD.
 
 ## <a name="next-steps"></a>Další kroky

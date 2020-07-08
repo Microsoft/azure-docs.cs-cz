@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614413"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Vytvoření kontejneru Service Fabric, na kterém běží Apache Tomcat Server v systému Linux
@@ -58,7 +57,7 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
    docker build . -t tomcattest
    ```
 
-   Tento příkaz sestaví novou image pomocí instrukcí v souboru Dockerfile, pojmenovávání (-t označování) obrázku `tomcattest`. Pokud chcete vytvořit image kontejneru, nejdřív se z dokovacího centra stáhne základní image a do ní se přidá aplikace. 
+   Tento příkaz sestaví novou image pomocí instrukcí v souboru Dockerfile, pojmenovávání (-t označování) obrázku `tomcattest` . Pokud chcete vytvořit image kontejneru, nejdřív se z dokovacího centra stáhne základní image a do ní se přidá aplikace. 
 
    Po dokončení příkazu pro sestavení spusťte příkaz `docker images` a zobrazte informace o nové imagi:
 
@@ -79,7 +78,7 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
    * `-p`Určuje mapování portů mezi kontejnerem a hostitelským operačním systémem. 
 
    > [!Note]
-   > Port, který otevřete s `-p` parametrem, by měl být port, na kterém vaše aplikace Tomcat naslouchá požadavkům. V aktuálním příkladu je konektor nakonfigurovaný v souboru *ApacheTomcat/conf/server. XML* , aby naslouchal na portu 8080 pro požadavky HTTP. Tento port je namapován na port 8080 na hostiteli. 
+   > Port, který otevřete s `-p` parametrem, by měl být port, na kterém vaše aplikace Tomcat naslouchá požadavkům. V aktuálním příkladu je v souboru *ApacheTomcat/conf/server.xml* nakonfigurovaný konektor, který naslouchá požadavkům HTTP na portu 8080. Tento port je namapován na port 8080 na hostiteli. 
 
    Další informace o dalších parametrech najdete v [dokumentaci k Docker Run](https://docs.docker.com/engine/reference/commandline/run/).
 
@@ -139,7 +138,7 @@ Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavi
 
    ![Generátor Service Fabric Yeoman pro kontejnery](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
-10. V manifestu služby (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest. XML*) přidejte následující kód XML pod značku root **ServiceManfest** pro otevření portu, na kterém aplikace naslouchá požadavky. Značka **koncového bodu** deklaruje protokol a port pro koncový bod. Pro tento článek naslouchá služba kontejnerů na portu 8080: 
+10. V manifestu služby (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml*) přidejte do kořenové značky **ServiceManfest** následující kód XML, který otevře port, na kterém aplikace naslouchá požadavky. Značka **koncového bodu** deklaruje protokol a port pro koncový bod. Pro tento článek naslouchá služba kontejnerů na portu 8080: 
 
    ```xml
    <Resources>
@@ -152,7 +151,7 @@ Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavi
    </Resources>
    ```
 
-11. V manifestu aplikace (*ServiceFabricTomcat/ServiceFabricTomcat/souboru ApplicationManifest. XML*) pod značkou **ServiceManifestImport** přidejte následující kód XML. Nahraďte název **účtu** a **heslo** v tagu **RepositoryCredentials** názvem vašeho registru kontejneru a heslem, které se vyžaduje pro přihlášení.
+11. V manifestu aplikace (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) pod značkou **ServiceManifestImport** přidejte následující kód XML. Nahraďte název **účtu** a **heslo** v tagu **RepositoryCredentials** názvem vašeho registru kontejneru a heslem, které se vyžaduje pro přihlášení.
 
    ```xml
    <Policies>
@@ -202,7 +201,7 @@ Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavi
    Po spuštění instalačního skriptu otevřete prohlížeč a přejděte na Service Fabric Explorer:
     
    * V místním clusteru použijte `http://localhost:19080/Explorer` (nahraďte *localhost* privátní IP adresou virtuálního počítače, pokud používáte Vagrant na Mac OS X).
-   * V zabezpečeném clusteru Azure použijte `https://PublicIPorFQDN:19080/Explorer`. 
+   * V zabezpečeném clusteru Azure použijte `https://PublicIPorFQDN:19080/Explorer` . 
     
    Rozbalte uzel **aplikace** a Všimněte si, že teď existuje položka pro typ aplikace, **ServiceFabricTomcatType**a další pro první instanci tohoto typu. Může trvat několik minut, než se aplikace plně nasadí, tedy pacient.
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651381"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Povolení a vyžádat přístup za běhu pro Azure Managed Applications
@@ -34,9 +33,9 @@ Tento článek se zaměřuje na akce, které vydavatelé akcí využívají k po
 
 ## <a name="add-jit-access-step-to-ui"></a>Přidat krok přístupu JIT do uživatelského rozhraní
 
-Soubor CreateUiDefinition. JSON se shoduje se stejným způsobem jako soubor uživatelského rozhraní, který vytvoříte pro trvalý přístup, s výjimkou, že musíte zahrnout krok, který umožňuje uživatelům povolit přístup JIT. Další informace o publikování první nabídky spravovaných aplikací v Azure Marketplace najdete v tématu [Azure Managed Applications na webu Marketplace](publish-marketplace-app.md).
+Váš CreateUiDefinition.jsv souboru je přesně stejný jako soubor uživatelského rozhraní, který vytvoříte pro trvalý přístup, s výjimkou toho, že musíte zahrnout krok, který umožňuje uživatelům povolit přístup JIT. Další informace o publikování první nabídky spravovaných aplikací v Azure Marketplace najdete v tématu [Azure Managed Applications na webu Marketplace](publish-marketplace-app.md).
 
-Pro podporu schopnosti JIT pro vaši nabídku přidejte do souboru CreateUiDefinition. JSON následující obsah:
+Pro podporu schopnosti JIT pro vaši nabídku přidejte do CreateUiDefinition.jsdo souboru následující obsah:
 
 V "krocích":
 
@@ -80,7 +79,7 @@ Při definování vaší nabídky na webu Marketplace se ujistěte, že jste pov
 
 Přidali jste do svého uživatelského rozhraní krok konfigurace JIT a v nabídce Marketplace jste povolili přístup JIT. Když si uživatelé nasadí spravovanou aplikaci, můžou [zapnout přístup JIT ke své instanci](approve-just-in-time-access.md#enable-during-deployment).
 
-## <a name="request-access"></a>Vyžádání přístup
+## <a name="request-access"></a>Vyžádání přístupu
 
 Pokud potřebujete přístup ke spravovaným prostředkům uživatele, pošlete žádost o konkrétní roli, dobu a dobu trvání. Příjemce pak musí žádost schválit.
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75500071"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
@@ -29,7 +28,7 @@ Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalost
 
 ## <a name="the-airline-and-weather-datasets"></a>Letecké a počasí datové sady
 
-Letová data jsou dostupná z [archivů státní správy USA](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako PSČ z [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
+Letová data jsou dostupná z [archivů státní správy USA](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako PSČ z [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
 Data o počasí je možné stáhnout jako soubory zip v nezpracované podobě po měsících z [národního úložiště pro správu oceán a atmosféry](https://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu si stáhněte data pro květen 2007 – prosinec 2012. Použijte hodinové datové soubory a `YYYYMMMstation.txt` soubor v rámci jednotlivých zips.
 

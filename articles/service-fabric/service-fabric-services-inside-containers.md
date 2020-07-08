@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
 ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75466183"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Kontejnerizace služeb Reliable Actors a Reliable Services služby Service Fabric ve Windows
@@ -47,7 +46,7 @@ Tento dokument poskytuje pokyny k tomu, abyste mohli spustit službu v kontejner
 
 4. Sestavte a [zabalite](service-fabric-package-apps.md#Package-App) svůj projekt. Chcete-li sestavit a vytvořit balíček, klikněte pravým tlačítkem na projekt aplikace v Průzkumník řešení a vyberte příkaz **balíček** .
 
-5. Pro každý balíček kódu, který potřebujete kontejnerizace, spusťte PowerShellový skript [CreateDockerPackage. ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). Použití je následující:
+5. Pro každý balíček kódu, který potřebujete kontejnerizace, spusťte PowerShellový skript [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). Použití je následující:
 
     Plné rozhraní .NET
       ```powershell
@@ -67,7 +66,7 @@ Tento dokument poskytuje pokyny k tomu, abyste mohli spustit službu v kontejner
 
 6. Dál je potřeba [sestavit](service-fabric-get-started-containers.md#Build-Containers) a [Vložit](service-fabric-get-started-containers.md#Push-Containers) balíček kontejneru Docker do úložiště.
 
-7. Upravte soubor souboru ApplicationManifest. XML a ServiceManifest. XML a přidejte tak image kontejneru, informace o úložišti, ověřování v registru a mapování portů na hostitele. Informace o úpravách manifestů najdete v tématu [Vytvoření aplikace Azure Service Fabric Container](service-fabric-get-started-containers.md). Definice balíčku kódu v manifestu služby musí být nahrazena odpovídající imagí kontejneru. Ujistěte se, že jste vstupní bod změnili na ContainerHost typ.
+7. Upravte ApplicationManifest.xml a ServiceManifest.xml a přidejte tak image kontejneru, informace o úložišti, ověřování v registru a mapování portů na hostitele. Informace o úpravách manifestů najdete v tématu [Vytvoření aplikace Azure Service Fabric Container](service-fabric-get-started-containers.md). Definice balíčku kódu v manifestu služby musí být nahrazena odpovídající imagí kontejneru. Ujistěte se, že jste vstupní bod změnili na ContainerHost typ.
 
    ```xml
    <!-- Code package is your service executable. -->

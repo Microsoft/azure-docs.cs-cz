@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75454197"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Použití služby správy certifikátů trezoru OPC
@@ -36,7 +35,7 @@ Pokud jste to ještě neudělali, vytvořte certifikát certifikační autority 
 > [!IMPORTANT]
 > K registraci aplikace je nutná role zapisovače.
 
-1. Otevřete svou službu Certificate Service `https://myResourceGroup-app.azurewebsites.net`na adrese a přihlaste se.
+1. Otevřete svou službu Certificate Service na adrese `https://myResourceGroup-app.azurewebsites.net` a přihlaste se.
 2. Přejít na **zaregistrovat nové**. Pro registraci aplikace musí mít uživatel alespoň přiřazenou roli zapisovače.
 2. Formulář pro zadávání názvů řídí konvence pojmenování v OPC UA. Například na následujícím snímku obrazovky se zobrazí nastavení pro ukázku [referenčního serveru OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) v OPC UA .NET Standard stack:
 
@@ -71,7 +70,7 @@ Zabezpečte svou aplikaci OPC UA vyvoláním podepsaného certifikátu na zákla
 8. Po stažení a bezpečném uložení privátního klíče můžete vybrat **Odstranit privátní klíč**. Certifikát s veřejným klíčem zůstane k dispozici pro budoucí použití.
 9. Vzhledem k použití certifikátu podepsaného certifikační autoritou se tady musí stáhnout certifikát certifikační autority a seznam odvolaných certifikátů (CRL).
 
-Nyní závisí na zařízení OPC UA, jak použít nový pár klíčů. Certifikát certifikační autority a seznam CRL se většinou zkopírují `trusted` do složky, zatímco veřejné a privátní klíče certifikátu aplikace se aplikují na `own` složku v úložišti certifikátů. Některá zařízení už můžou podporovat nabízení serveru pro aktualizace certifikátů. Přečtěte si dokumentaci zařízení OPC UA.
+Nyní závisí na zařízení OPC UA, jak použít nový pár klíčů. Certifikát certifikační autority a seznam CRL se většinou zkopírují do `trusted` složky, zatímco veřejné a privátní klíče certifikátu aplikace se aplikují na `own` složku v úložišti certifikátů. Některá zařízení už můžou podporovat nabízení serveru pro aktualizace certifikátů. Přečtěte si dokumentaci zařízení OPC UA.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Vyžádání nového certifikátu pomocí CSR 
 
@@ -96,7 +95,7 @@ Nyní závisí na zařízení OPC UA, jak použít nový pár klíčů. Certifik
 10. Po stažení a bezpečném uložení certifikátu můžete vybrat **Odstranit certifikát**.
 11. Vzhledem k použití certifikátu podepsaného certifikační autority by se tady měl také stáhnout certifikát certifikační autority a seznam CRL.
 
-Nyní závisí na zařízení OPC UA, jak použít nový certifikát. Certifikát certifikační autority a seznam CRL se většinou zkopírují `trusted` do složky, zatímco se certifikát aplikace používá pro `own` složku v úložišti certifikátů. Některá zařízení už můžou podporovat nabízení serveru pro aktualizace certifikátů. Přečtěte si dokumentaci zařízení OPC UA.
+Nyní závisí na zařízení OPC UA, jak použít nový certifikát. Certifikát certifikační autority a seznam CRL se většinou zkopírují do `trusted` složky, zatímco se certifikát aplikace používá pro `own` složku v úložišti certifikátů. Některá zařízení už můžou podporovat nabízení serveru pro aktualizace certifikátů. Přečtěte si dokumentaci zařízení OPC UA.
 
 ### <a name="step-3-device-secured"></a>Krok 3: zabezpečené zařízení
 

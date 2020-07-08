@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464699"
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
@@ -71,7 +70,7 @@ Pokud nasazujete služby .NET do clusteru, shromážděte následující číta�
 
 Service Fabric generuje podstatné množství vlastních čítačů výkonu. Pokud sadu SDK máte nainstalovanou, můžete na počítači s Windows v aplikaci sledování výkonu Zobrazit úplný seznam (spustit > sledování výkonu). 
 
-Pokud používáte Reliable Actors v aplikacích, které nasazujete do vašeho clusteru, přidejte čítače z `Service Fabric Actor` kategorie a `Service Fabric Actor Method` (viz [Diagnostika Service Fabric Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
+Pokud používáte Reliable Actors v aplikacích, které nasazujete do vašeho clusteru, přidejte čítače z `Service Fabric Actor` `Service Fabric Actor Method` kategorie a (viz [Diagnostika Service Fabric Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
 
 Pokud používáte službu Reliable Services nebo vzdálenou komunikaci služby, máme `Service Fabric Service` podobně `Service Fabric Service Method` kategorie čítače, ze kterých byste měli shromažďovat čítače, a to v tématu monitorování s [čítači výkonu](service-fabric-reliable-services-diagnostics.md#performance-counters) [vzdálené komunikace služeb](service-fabric-reliable-serviceremoting-diagnostics.md) a spolehlivé služby. 
 

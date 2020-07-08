@@ -6,21 +6,20 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551807"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
 V produkčním scénáři Vytvořte clustery Azure Service Fabric pomocí šablon Správce prostředků. Šablony Správce prostředků poskytují větší kontrolu nad vlastnostmi prostředku a zajišťují, že máte konzistentní model prostředků.
 
-Ukázkové šablony Správce prostředků jsou k dispozici pro Windows a Linux v [ukázkách Azure na GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablonu clusteru. `azuredeploy.parameters.json` Stáhněte si `azuredeploy.json` je a upravte je tak, aby splňovaly vaše vlastní požadavky.
+Ukázkové šablony Správce prostředků jsou k dispozici pro Windows a Linux v [ukázkách Azure na GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablonu clusteru. Stáhněte `azuredeploy.json` si `azuredeploy.parameters.json` je a upravte je tak, aby splňovaly vaše vlastní požadavky.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud chcete nasadit `azuredeploy.json` šablony `azuredeploy.parameters.json` a, které jste si stáhli, použijte následující příkazy rozhraní příkazového řádku Azure:
+Pokud chcete nasadit `azuredeploy.json` šablony a, `azuredeploy.parameters.json` které jste si stáhli, použijte následující příkazy rozhraní příkazového řádku Azure:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"

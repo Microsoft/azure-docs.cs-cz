@@ -4,10 +4,9 @@ description: Naučte se vytvořit cluster Service Fabric s využitím běžného
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614549"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Nasazení clusteru Service Fabric, který místo kryptografického otisku používá běžný název certifikátu
@@ -65,10 +64,10 @@ Write-Host "Common Name              :"  $CommName
 ```
 
 ## <a name="download-and-update-a-sample-template"></a>Stažení a aktualizace ukázkové šablony
-Tento článek používá příklad šablony a parametrů šablony [zabezpečeného clusteru s pěti uzly](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) . Stáhněte do svého počítače soubory *azuredeploy. JSON* a *azuredeploy. Parameters. JSON* .
+Tento článek používá příklad šablony a parametrů šablony [zabezpečeného clusteru s pěti uzly](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) . Stáhněte si *azuredeploy.js* a *azuredeploy.parameters.js* soubory do počítače.
 
 ### <a name="update-parameters-file"></a>Aktualizovat soubor parametrů
-Nejprve v textovém editoru otevřete soubor *azuredeploy. Parameters. JSON* a přidejte následující hodnotu parametru:
+Nejprve otevřete *azuredeploy.parameters.js* v souboru v textovém editoru a přidejte následující hodnotu parametru:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -95,7 +94,7 @@ Dále nastavte hodnoty parametru *certificateCommonName*, *sourceVaultValue*a *c
 ```
 
 ### <a name="update-the-template-file"></a>Aktualizace souboru šablony
-Potom v textovém editoru otevřete soubor *azuredeploy. JSON* a proveďte tři aktualizace, aby podporovaly běžný název certifikátu.
+V dalším kroku otevřete *azuredeploy.js* v souboru v textovém editoru a proveďte tři aktualizace, aby podporovaly běžný název certifikátu.
 
 1. Do části **Parameters (parametry** ) přidejte parametr *certificateCommonName* :
     ```json
@@ -120,14 +119,14 @@ Potom v textovém editoru otevřete soubor *azuredeploy. JSON* a proveďte tři 
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. V prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** aktualizujte rozšíření virtuálního počítače tak, aby místo kryptografického otisku používalo běžný název v nastavení certifikátu.  V **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**nastavení->virtualMachineProfile extensionProfile rozšíření – vlastnosti**certifikátu**– přidat 
+3. V prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** aktualizujte rozšíření virtuálního počítače tak, aby místo kryptografického otisku používalo běžný název v nastavení certifikátu.  V **Nastavení virtualMachineProfile** -> **extensionProfile** -> **rozšíření**– -> **vlastnosti** -> **settings** -> **certifikátu**– přidat 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
        ],
     ```
 
-    a odeberte `"thumbprint": "[parameters('certificateThumbprint')]",`.
+    a odeberte `"thumbprint": "[parameters('certificateThumbprint')]",` .
 
     ```json
     "virtualMachineProfile": {

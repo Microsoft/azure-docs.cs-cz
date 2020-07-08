@@ -5,17 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457492"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Vliv serializace dat na upgrade aplikace
 V rámci [upgradu aplikace](service-fabric-application-upgrade.md)se upgrade aplikuje na podmnožinu uzlů, jednu upgradovací doménu v jednom okamžiku. Během tohoto procesu se některé domény upgradu nacházejí v novější verzi aplikace a některé domény upgradu se nacházejí ve starší verzi aplikace. Při zavedení musí být v nové verzi aplikace možné číst starou verzi vašich dat a stará verze vaší aplikace musí být schopná přečíst si novou verzi vašich dat. Pokud formát dat není předáván dál a zpětně kompatibilní, upgrade může selhat nebo může dojít ke ztrátě nebo poškození dat. Tento článek popisuje, co znamená váš formát dat, a nabízí osvědčené postupy pro zajištění, že vaše data jsou předávána a zpětně kompatibilní.
 
 ## <a name="what-makes-up-your-data-format"></a>Čím je váš formát dat?
-V Azure Service Fabric data, která jsou trvalá a replikovaná, pocházejí z vašich tříd C#. Pro aplikace, které používají [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), jsou tato data objekty ve spolehlivých slovnících a frontách. Pro aplikace, které používají [Reliable Actors](service-fabric-reliable-actors-introduction.md), je to stav zálohování objektu actor. Aby bylo možné tyto třídy jazyka C# zachovat a replikovat, musí být serializovatelné. Proto je formát dat definován pomocí polí a vlastností, které jsou serializovány, a také způsobem jejich serializace. Například v `IReliableDictionary<int, MyClass>` datech jsou serializovaná `int` a serializovaná. `MyClass`
+V Azure Service Fabric data, která jsou trvalá a replikovaná, pocházejí z vašich tříd C#. Pro aplikace, které používají [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), jsou tato data objekty ve spolehlivých slovnících a frontách. Pro aplikace, které používají [Reliable Actors](service-fabric-reliable-actors-introduction.md), je to stav zálohování objektu actor. Aby bylo možné tyto třídy jazyka C# zachovat a replikovat, musí být serializovatelné. Proto je formát dat definován pomocí polí a vlastností, které jsou serializovány, a také způsobem jejich serializace. Například v `IReliableDictionary<int, MyClass>` datech jsou serializovaná `int` a serializovaná `MyClass` .
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>Změny kódu, které mají za následek změnu formátu dat
 Vzhledem k tomu, že formát dat je určen třídami jazyka C#, mohou změny v třídách způsobit změnu formátu dat. Je nutné dbát na to, aby se změny formátu dat mohly zpracovávat v rámci postupného upgradu. Příklady, které mohou způsobit změny formátu dat:

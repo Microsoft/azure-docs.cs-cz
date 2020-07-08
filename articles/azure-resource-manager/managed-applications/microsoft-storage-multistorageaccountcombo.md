@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 06412a1f08f1f242a3f3bd9be17b795ee09fcf9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651875"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft. Storage. MultiStorageAccountCombo – element uživatelského rozhraní
@@ -61,10 +60,10 @@ Skupina ovládacích prvků pro vytváření několika účtů úložiště s n�
 ## <a name="remarks"></a>Poznámky
 
 - Hodnota pro `defaultValue.prefix` je zřetězena s jedním nebo více celými čísly, aby bylo možné vytvořit posloupnost názvů účtů úložiště. Například pokud `defaultValue.prefix` je **SA** a `count` **2**, vygenerují se názvy účtů úložiště **SA1** a **SA2** . Vygenerované názvy účtů úložiště mají automatické ověření jedinečnosti.
-- Názvy účtů úložiště se generují lexikograficky na základě `count`. Pokud `count` je například 10, pak názvy účtů úložiště končí dvěma číslicemi (01, 02, 03).
+- Názvy účtů úložiště se generují lexikograficky na základě `count` . Pokud `count` je například 10, pak názvy účtů úložiště končí dvěma číslicemi (01, 02, 03).
 - Výchozí hodnota pro `defaultValue.prefix` je **null**a pro `defaultValue.type` je **Premium_LRS**.
-- Libovolný typ, který není `constraints.allowedTypes` zadán v, je skrytý a je zobrazen libovolný `constraints.excludedTypes` typ, který není zadán v. `constraints.allowedTypes`a `constraints.excludedTypes` jsou zároveň volitelné, ale nelze je použít současně.
-- Kromě generování názvů účtů úložiště `count` se používá k nastavení vhodného násobitele pro element. Podporuje statickou hodnotu, například **2**, nebo dynamickou hodnotu z jiného elementu, například `[steps('step1').storageAccountCount]`. Výchozí hodnota je **1**.
+- Libovolný typ, který není zadán v `constraints.allowedTypes` , je skrytý a je zobrazen libovolný typ, který není zadán v `constraints.excludedTypes` . `constraints.allowedTypes`a `constraints.excludedTypes` jsou zároveň volitelné, ale nelze je použít současně.
+- Kromě generování názvů účtů úložiště `count` se používá k nastavení vhodného násobitele pro element. Podporuje statickou hodnotu, například **2**, nebo dynamickou hodnotu z jiného elementu, například `[steps('step1').storageAccountCount]` . Výchozí hodnota je **1**.
 
 ## <a name="next-steps"></a>Další kroky
 

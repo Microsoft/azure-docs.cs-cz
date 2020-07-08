@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650380"
 ---
 # <a name="custom-resource-cache-reference"></a>Vlastní odkaz na mezipaměť prostředků
@@ -42,11 +41,11 @@ Ukázkový vlastní poskytovatel prostředků:
 
 ## <a name="building-proxy-resource-endpoint"></a>Vytváření koncového bodu prostředku proxy serveru
 
-**Koncový** bod, který implementuje "proxy server, mezipaměť" **, musí zpracovat** požadavek a odpověď na nové rozhraní API v Azure. V takovém případě **ResourceType** vygeneruje nové rozhraní API prostředků Azure `PUT`pro, `GET`a `DELETE` k provedení CRUD na jednom prostředku a také `GET` k načtení všech existujících prostředků:
+**Koncový** bod, který implementuje "proxy server, mezipaměť" **, musí zpracovat** požadavek a odpověď na nové rozhraní API v Azure. V takovém případě **ResourceType** vygeneruje nové rozhraní API prostředků Azure pro `PUT` , `GET` a `DELETE` k provedení CRUD na jednom prostředku a také `GET` k načtení všech existujících prostředků:
 
 > [!NOTE]
-> Rozhraní API `PUT`Azure vygeneruje metody požadavku, `GET`a `DELETE`, ale **koncový bod** mezipaměti potřebuje zpracovat `PUT` a. `DELETE`
-> Doporučujeme, aby **koncový bod** taky implementoval `GET`.
+> Rozhraní API Azure vygeneruje metody požadavku `PUT` , `GET` a `DELETE` , ale **koncový bod** mezipaměti potřebuje zpracovat `PUT` a `DELETE` .
+> Doporučujeme, aby **koncový bod** taky implementoval `GET` .
 
 ### <a name="create-a-custom-resource"></a>Vytvoření vlastního prostředku
 
@@ -87,8 +86,8 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
 
 - Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- `Content-Type` Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
-- Vlastní poskytovatel prostředků přepíše pole `name`, `type`a `id` pro požadavek.
+- `Content-Type`Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
+- Vlastní poskytovatel prostředků přepíše `name` `type` pole, a `id` pro požadavek.
 - Vlastní poskytovatel prostředků vrátí pouze pole v rámci `properties` objektu pro koncový bod mezipaměti.
 
 **Koncový bod** Základě
@@ -107,7 +106,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Pole `name`, `id`a `type` budou automaticky vygenerována pro vlastní prostředek vlastním poskytovatelem prostředků.
+`name`Pole, `id` a `type` budou automaticky vygenerována pro vlastní prostředek vlastním poskytovatelem prostředků.
 
 Odpověď zprostředkovatele vlastního prostředku Azure:
 
@@ -149,7 +148,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 Podobně odpověď z **koncového bodu** se pak přepošle zpátky zákazníkovi. Odpověď z koncového bodu by měla vracet:
 
 - Platný dokument objektu JSON. Všechna pole a řetězce by měly být vnořeny do objektu nejvyšší úrovně.
-- `Content-Type` Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
+- `Content-Type`Hlavička by měla být nastavená na "Application/JSON; charset = UTF-8.
 - Poskytovatel vlastního prostředku Azure odstraní jenom položku ze své mezipaměti, pokud se vrátí odpověď na úrovni 200. I v případě, že prostředek neexistuje, **koncový bod** by měl vrátit 204.
 
 **Koncový bod** Základě

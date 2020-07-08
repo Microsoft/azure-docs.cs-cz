@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458414"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Zálohování na vyžádání v Azure Service Fabric
 
 Můžete zálohovat data spolehlivých stavových služeb a Reliable Actors řešit scénáře týkající se havárie nebo ztráty dat.
 
-Azure Service Fabric obsahuje funkce pro [pravidelné zálohování dat](service-fabric-backuprestoreservice-quickstart-azurecluster.md) a zálohování dat podle potřeby. Zálohování na vyžádání je užitečné, protože chrání před/_poškozením dat_ _ztráty dat_z důvodu plánovaných změn v základní službě nebo jejím prostředí.
+Azure Service Fabric obsahuje funkce pro [pravidelné zálohování dat](service-fabric-backuprestoreservice-quickstart-azurecluster.md) a zálohování dat podle potřeby. Zálohování na vyžádání je užitečné, protože chrání před _data loss_ / _poškozením dat_ ztráty dat z důvodu plánovaných změn v základní službě nebo jejím prostředí.
 
 Funkce zálohování na vyžádání jsou užitečné pro zaznamenání stavu služeb před ruční aktivací operace služby nebo služby Service Environment. Například pokud provedete změnu v binárních souborech služby při upgradu nebo downgrade služby. V takovém případě může zálohování na vyžádání pomáhat chránit data před poškozením chyb kódu aplikace.
 ## <a name="prerequisites"></a>Požadavky
@@ -27,7 +26,7 @@ Funkce zálohování na vyžádání jsou užitečné pro zaznamenání stavu sl
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Před provedením libovolné žádosti o konfiguraci pomocí `Connect-SFCluster` modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
+- `Connect-SFCluster`Před provedením libovolné žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
 
 ```powershell
 
@@ -56,7 +55,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
-K nastavení [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) aktivace pro zálohování na vyžádání pro ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22`oddílu použijte rozhraní BackupPartition API.
+K nastavení aktivace pro zálohování na vyžádání pro ID oddílu použijte rozhraní [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -81,7 +80,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
-K nastavení [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) aktivace pro zálohování na vyžádání pro ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22`oddílu použijte rozhraní BackupPartition API. Zahrnout následující informace o Azure Storage:
+K nastavení aktivace pro zálohování na vyžádání pro ID oddílu použijte rozhraní [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . Zahrnout následující informace o Azure Storage:
 
 ```powershell
 $StorageInfo = @{

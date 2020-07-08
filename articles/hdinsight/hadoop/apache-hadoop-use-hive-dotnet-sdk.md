@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: a9d71c8aebb9cc4a0adbd461aead6e2612bd13bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552487"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Apache Hive pomocí sady HDInsight .NET SDK
@@ -45,7 +44,7 @@ Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, které usnadňují p
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-1. Upravte kód níže pro inicializaci hodnot proměnných: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`. Pak použijte revidovaný kód jako celý obsah **program.cs** v aplikaci Visual Studio.
+1. Upravte kód níže pro inicializaci hodnot proměnných: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName` . Pak použijte revidovaný kód jako celý obsah **program.cs** v aplikaci Visual Studio.
 
     ```csharp
     using System.Collections.Generic;

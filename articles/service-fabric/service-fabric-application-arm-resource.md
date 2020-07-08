@@ -4,10 +4,9 @@ description: Naučte se, jak nasadit aplikace a služby do clusteru Service Fabr
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610246"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Správa aplikací a služeb jako Azure Resource Managerch prostředků
@@ -244,7 +243,7 @@ Následující fragment kódu ukazuje různé druhy prostředků, které lze spr
    ```
 
    > [!NOTE] 
-   > *ApiVersion* musí být nastavená na `"2019-03-01"`. Tuto šablonu lze také nasadit nezávisle na clusteru, pokud již byl nasazen cluster.
+   > *ApiVersion* musí být nastavená na `"2019-03-01"` . Tuto šablonu lze také nasadit nezávisle na clusteru, pokud již byl nasazen cluster.
 
 5. Nasazení! 
 

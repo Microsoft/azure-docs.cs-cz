@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563356"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentace metrik a načítání v Service Fabric
@@ -58,7 +57,7 @@ K určení přesné konfigurace je nutné experimentovat. Než povolíte metriky
 ## <a name="configuring-defragmentation-metrics"></a>Konfigurace metrik defragmentace
 Konfigurace metrik defragmentace je globální rozhodnutí v clusteru a jednotlivé metriky je možné vybrat k defragmentaci. Následující fragmenty kódu konfigurace ukazují, jak nakonfigurovat metriky pro defragmentaci. V tomto případě je "Metric1" nakonfigurovaný jako metrika defragmentace, zatímco "Metric2" bude i nadále vyvážené normálně. 
 
-Manifestem clusteru. XML:
+ClusterManifest.xml:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -67,7 +66,7 @@ Manifestem clusteru. XML:
 </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [

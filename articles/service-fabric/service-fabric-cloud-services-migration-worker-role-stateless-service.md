@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463338"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodem webových rolí a rolí pracovních procesů na Service Fabric bezstavových služeb
@@ -32,10 +31,10 @@ Podobně jako role pracovního procesu představuje webová role také nestavov�
 
 | **Aplikace** | **Doložen** | **Cesta migrace** |
 | --- | --- | --- |
-| ASP.NET – webové formuláře |Ne |Převést na ASP.NET Core 1 MVC |
+| ASP.NET – webové formuláře |No |Převést na ASP.NET Core 1 MVC |
 | ASP.NET MVC |S migrací |Upgrade na ASP.NET Core 1 MVC |
-| Webové rozhraní API ASP.NET |S migrací |Použití samoobslužného serveru nebo ASP.NET Core 1 |
-| ASP.NET Core 1 |Ano |– |
+| Rozhraní API pro ASP.NET Web |S migrací |Použití samoobslužného serveru nebo ASP.NET Core 1 |
+| ASP.NET Core 1 |Yes |Není k dispozici |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Rozhraní API a životní cyklus vstupního bodu
 Role pracovního procesu a rozhraní API služby Service Fabric nabízejí podobné vstupní body: 
@@ -43,9 +42,9 @@ Role pracovního procesu a rozhraní API služby Service Fabric nabízejí podob
 | **Vstupní bod** | **Role pracovního procesu** | **Služba Service Fabric** |
 | --- | --- | --- |
 | Zpracování |`Run()` |`RunAsync()` |
-| Spuštění virtuálního počítače |`OnStart()` |– |
-| Zastavení virtuálního počítače |`OnStop()` |– |
-| Otevřít naslouchací proces pro požadavky klientů |– |<ul><li> `CreateServiceInstanceListener()`pro bezstavové</li><li>`CreateServiceReplicaListener()`pro stav</li></ul> |
+| Spuštění virtuálního počítače |`OnStart()` |Není k dispozici |
+| Zastavení virtuálního počítače |`OnStop()` |Není k dispozici |
+| Otevřít naslouchací proces pro požadavky klientů |Není k dispozici |<ul><li> `CreateServiceInstanceListener()`pro bezstavové</li><li>`CreateServiceReplicaListener()`pro stav</li></ul> |
 
 ### <a name="worker-role"></a>Role pracovního procesu
 ```csharp
@@ -97,12 +96,12 @@ namespace Stateless1
 
 ```
 
-Obě mají při zahájení zpracování primární přepsání "spustit". Služby Service Fabric Services `Run`kombinují `Start`, a `Stop` do jediného vstupního bodu `RunAsync`. Vaše služba by měla začít pracovat `RunAsync` , když se spustí, a měla by `RunAsync` přestat fungovat, když je CancellationToken metoda signalizována. 
+Obě mají při zahájení zpracování primární přepsání "spustit". Služby Service Fabric Services kombinují `Run` , `Start` a `Stop` do jediného vstupního bodu `RunAsync` . Vaše služba by měla začít pracovat `RunAsync` , když se spustí, a měla by přestat fungovat, když `RunAsync` je CancellationToken metoda signalizována. 
 
 Existuje několik klíčových rozdílů mezi životním cyklem a životností rolí pracovních procesů a Service Fabricch služeb:
 
 * **Životní cyklus:** Největší rozdíl spočívá v tom, že role pracovního procesu je virtuální počítač, a proto je jeho životní cyklus svázán s virtuálním počítačem, což zahrnuje události při spuštění a zastavení virtuálního počítače. Služba Service Fabric má životní cyklus, který je oddělený od životního cyklu virtuálního počítače, takže nezahrnuje události pro dobu, kdy se virtuální počítač hostitele nebo počítač spouští a zastavuje, protože nesouvisí.
-* **Doba života:** Instance role pracovního procesu se recykluje, `Run` Pokud se metoda ukončí. `RunAsync` Metoda ve službě Service Fabric může ale běžet až po dokončení a instance služby zůstane v provozu. 
+* **Doba života:** Instance role pracovního procesu se recykluje, pokud se `Run` Metoda ukončí. `RunAsync`Metoda ve službě Service Fabric může ale běžet až po dokončení a instance služby zůstane v provozu. 
 
 Service Fabric poskytuje volitelnou vstupní bod nastavení komunikace pro služby, které naslouchají požadavkům klientů. Vstupní bod RunAsync i komunikace jsou volitelné přepsání ve službě Service Fabric Services – vaše služba se může rozhodnout, že bude naslouchat pouze na požadavky klientů, nebo spustit pouze výpočetní smyčku, nebo oboje, což znamená, že metoda RunAsync je povolena, aniž by bylo nutné restartovat instanci služby, protože může nadále naslouchat žádostem klienta.
 
@@ -114,8 +113,8 @@ Rozhraní Cloud Services API prostředí poskytuje informace a funkce pro aktuá
 | Nastavení konfigurace a oznámení o změně |`RoleEnvironment` |`CodePackageActivationContext` |
 | Místní úložiště |`RoleEnvironment` |`CodePackageActivationContext` |
 | Informace o koncovém bodu |`RoleInstance` <ul><li>Aktuální instance:`RoleEnvironment.CurrentRoleInstance`</li><li>Další role a instance:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`pro aktuální adresu uzlu</li><li>`FabricClient`a `ServicePartitionResolver` pro zjišťování koncových bodů služby</li> |
-| Emulace prostředí |`RoleEnvironment.IsEmulated` |– |
-| Současná událost změny |`RoleEnvironment` |– |
+| Emulace prostředí |`RoleEnvironment.IsEmulated` |Není k dispozici |
+| Současná událost změny |`RoleEnvironment` |Není k dispozici |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 Nastavení konfigurace v Cloud Services jsou nastavena pro roli virtuálního počítače a platí pro všechny instance této role virtuálního počítače. Tato nastavení jsou páry klíč-hodnota nastavené v souborech ServiceConfiguration. *. cscfg a dají se získat přímo prostřednictvím RoleEnvironment. V Service Fabric se nastavení aplikují jednotlivě na každou službu a na každou aplikaci, nikoli na virtuální počítač, protože virtuální počítač může hostovat několik služeb a aplikací. Služba se skládá ze tří balíčků:
@@ -124,11 +123,11 @@ Nastavení konfigurace v Cloud Services jsou nastavena pro roli virtuálního po
 * **Config:** všechny konfigurační soubory a nastavení pro službu.
 * **Data:** statické datové soubory přidružené ke službě.
 
-Každý z těchto balíčků může být nezávisle a upgradován. Podobně jako u Cloud Services se k konfiguračnímu balíčku dá získat přístup prostřednictvím rozhraní API a události, které upozorní službu změny konfiguračního balíčku. Soubor Settings. XML lze použít pro konfiguraci klíč-hodnota a programový přístup podobně jako oddíl nastavení aplikace v souboru App. config. Na rozdíl od Cloud Services konfigurační balíček Service Fabric může obsahovat libovolné konfigurační soubory v libovolném formátu, ať už se jedná o soubor XML, JSON, YAML nebo vlastní binární formát. 
+Každý z těchto balíčků může být nezávisle a upgradován. Podobně jako u Cloud Services se k konfiguračnímu balíčku dá získat přístup prostřednictvím rozhraní API a události, které upozorní službu změny konfiguračního balíčku. Soubor Settings.xml lze použít pro konfiguraci klíč-hodnota a programový přístup podobně jako oddíl nastavení aplikace v App.config souboru. Na rozdíl od Cloud Services konfigurační balíček Service Fabric může obsahovat libovolné konfigurační soubory v libovolném formátu, ať už se jedná o soubor XML, JSON, YAML nebo vlastní binární formát. 
 
 ### <a name="accessing-configuration"></a>Přístup ke konfiguraci
 #### <a name="cloud-services"></a>Cloud Services
-K nastavení konfigurace z ServiceConfiguration. *. cscfg se dá dostat `RoleEnvironment`prostřednictvím. Tato nastavení jsou globálně dostupná pro všechny instance rolí ve stejném nasazení cloudové služby.
+K nastavení konfigurace z ServiceConfiguration. *. cscfg se dá dostat prostřednictvím `RoleEnvironment` . Tato nastavení jsou globálně dostupná pro všechny instance rolí ve stejném nasazení cloudové služby.
 
 ```csharp
 
@@ -137,9 +136,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Každá služba má vlastní jednotlivé konfigurační balíčky. Neexistuje žádný integrovaný mechanismus pro nastavení globálních konfigurací, který je přístupný pro všechny aplikace v clusteru. Při použití speciálního konfiguračního souboru. XML Service Fabric v rámci konfiguračního balíčku můžou být hodnoty v Settings. XML přepsány na úrovni aplikace, což umožňuje nastavení konfigurace na úrovni aplikace.
+Každá služba má vlastní jednotlivé konfigurační balíčky. Neexistuje žádný integrovaný mechanismus pro nastavení globálních konfigurací, který je přístupný pro všechny aplikace v clusteru. Při použití speciálního konfiguračního souboru Settings.xml Service Fabric v rámci konfiguračního balíčku se hodnoty v Settings.xml mohou přepsat na úrovni aplikace, což umožňuje nastavení konfigurace na úrovni aplikace.
 
-Konfigurační nastavení jsou přístupná v rámci jednotlivých instancí služby prostřednictvím služby `CodePackageActivationContext`.
+Konfigurační nastavení jsou přístupná v rámci jednotlivých instancí služby prostřednictvím služby `CodePackageActivationContext` .
 
 ```csharp
 
@@ -160,7 +159,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 
 ### <a name="configuration-update-events"></a>Události aktualizace konfigurace
 #### <a name="cloud-services"></a>Cloud Services
-`RoleEnvironment.Changed` Událost se používá k oznamování všech instancí rolí, když dojde ke změně v prostředí, jako je například změna konfigurace. Tato funkce se používá ke zpracování aktualizací konfigurace bez recyklace instancí rolí nebo restartování pracovního procesu.
+`RoleEnvironment.Changed`Událost se používá k oznamování všech instancí rolí, když dojde ke změně v prostředí, jako je například změna konfigurace. Tato funkce se používá ke zpracování aktualizací konfigurace bez recyklace instancí rolí nebo restartování pracovního procesu.
 
 ```csharp
 
@@ -224,7 +223,7 @@ V Cloud Services je pro každou roli v ServiceDefinition. csdef nakonfigurovaný
 ```
 
 ### <a name="service-fabric"></a>Service Fabric
-V Service Fabric je v ServiceManifest. XML nakonfigurovaný vstupní bod spouštění na jednu službu:
+V Service Fabric je pro každou službu v ServiceManifest.xml nakonfigurovaný vstupní bod spouštění:
 
 ```xml
 
