@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84704376"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí PowerShellu
@@ -351,11 +351,11 @@ K ochraně zjištěného virtuálního počítače budete potřebovat následuj�
 Teď replikujte následující virtuální počítače pomocí nastavení zadaných v této tabulce.
 
 
-|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásady           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
+|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásada           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |–| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
+|CentOSVM1       |ConfigurationServer   |Není k dispozici| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
 |Win2K12VM1       |Škálování – ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Není k dispozici                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
 
 
 ```azurepowershell

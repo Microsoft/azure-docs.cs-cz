@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84717796"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Ověřování zařízení pomocí certifikátů webu X.509

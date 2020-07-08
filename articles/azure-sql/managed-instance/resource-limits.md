@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
 ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708413"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738545"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Vizualizace protokolů toku skupin zabezpečení sítě pomocí Power BI

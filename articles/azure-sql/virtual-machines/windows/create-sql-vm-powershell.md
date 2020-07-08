@@ -15,10 +15,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2c5ef71059fd3ba96299624818a13ebe1ae0929b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737848"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Jak pomocí Azure PowerShell zřídit SQL Server v Azure Virtual Machines
@@ -462,5 +462,5 @@ Po vytvoření virtuálního počítače můžete:
 - Nakonfigurujte nastavení SQL Server na portálu pro svůj virtuální počítač, včetně těchto:
    - [Nastavení úložiště](storage-configuration.md) 
    - [Automatizované úlohy správy](sql-server-iaas-agent-extension-automate-management.md)
-- [Konfigurace připojení](ways-to-connect-to-sql.md)
+- [Konfigurace možností připojení](ways-to-connect-to-sql.md)
 - Připojit klienty a aplikace k nové instanci SQL Server

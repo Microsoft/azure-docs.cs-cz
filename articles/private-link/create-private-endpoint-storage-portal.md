@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 1ccbb685ceb406fd7a52edf793b53d9e1c32630b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737321"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privátní připojení k účtu úložiště s využitím privátního koncového bodu Azure

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
 ms.openlocfilehash: cb6ebdcae837216efac5b9333789dee032219251
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738086"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>Použití S2S VPN jako zálohy privátního partnerského vztahu ExpressRoute

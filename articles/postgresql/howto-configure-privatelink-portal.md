@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 40e30d4011a52342c6fb610b19f70c8523a0331f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84736709"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL pro jeden server pomocí portálu
@@ -23,7 +23,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL jeden server podporuje Pro obecné účely a paměťově optimalizované cenové úrovně.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-vm"></a>Vytvoření virtuálního počítače Azure
 

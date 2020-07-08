@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737372"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
@@ -212,7 +212,7 @@ mstsc /v:<publicIpAddress>
     | Název serveru | myserver.database.windows.net |
     | Uživatelské jméno | Zadejte uživatelské jméno, které jste zadali při vytváření. |
     | Heslo | Zadejte heslo, které jste zadali při vytváření. |
-    | Zapamatovat heslo | Ano |
+    | Zapamatovat heslo | Yes |
     
 5. Vyberte **Připojit**.
 6. V nabídce vlevo vyberte **databáze** . 

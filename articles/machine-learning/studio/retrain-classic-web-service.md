@@ -11,10 +11,10 @@ ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
 ms.openlocfilehash: 659011a13be310512ace68d2e020eaebff9a10ee
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706031"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Přeučení a nasazení webové služby klasického studia (Classic)
@@ -118,7 +118,7 @@ Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation*, *Re
 
 Hodnota parametru *Name* v *prostředcích* by měla odpovídat názvu prostředku uloženého výukového modelu v prediktivním experimentu. Získání názvu prostředku:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo klikněte na **Machine Learning**.
 1. V části název klikněte na pracovní prostor a pak klikněte na **webové služby**.
 1. Pod položkou Název klikněte na položku **model sčítání [prediktivní EXP.]**.

@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706354"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL
@@ -33,7 +33,7 @@ Tento rychlý Start používá prostředky vytvořené v části [Vytvoření sp
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-new-subnet-vnet"></a>Vytvořit novou virtuální síť podsítě
 
@@ -53,10 +53,10 @@ Následující kroky vytvoří novou podsíť ve virtuální síti spravované i
    | ---------------- | ----------------- | ----------- |
    | **Název** | Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    | **Rozsah adres (blok CIDR)** | Platný rozsah | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Skupina zabezpečení sítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Tabulka směrování** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Skupina zabezpečení sítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Tabulka směrování** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Koncové body služby** | Vybráno: 0 | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Delegování podsítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Delegování podsítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
 
    ![Nová podsíť spravované instance SQL pro virtuální počítač klienta](./media/connect-vm-instance-configure/new-subnet.png)
 

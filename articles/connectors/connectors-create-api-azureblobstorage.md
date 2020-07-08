@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711285"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Vytváření a správa objektů BLOB v Azure Blob Storage pomocí Azure Logic Apps
@@ -123,8 +123,8 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
    | Vlastnost | Požaduje se | Hodnota | Description |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | **Účet úložiště** | Ano | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
+   | **Název připojení** | Yes | <*název připojení*> | Název, který se má pro připojení vytvořit |
+   | **Účet úložiště** | Yes | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
    ||||
 
    Příklad:

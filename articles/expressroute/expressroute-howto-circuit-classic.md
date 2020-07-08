@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 11/05/2019
 ms.author: cherylmc
 ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84736318"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (Classic)
 
 > [!div class="op_single_selector"]
-> * [portál Azure](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
@@ -123,7 +123,7 @@ Váš okruh teď bude mít povolené funkce doplňku ExpressRoute Premium. Jakmi
 >
 >
 
-#### <a name="considerations"></a>Požadavky
+#### <a name="considerations"></a>Důležité informace
 
 * Před přechodem na úroveň Premium na Standard se ujistěte, že je počet virtuálních sítí propojených s okruhem menší než 10. Pokud to neuděláte, žádost o aktualizaci se nezdařila a účtují se poplatky za prémii.
 * Je nutné odpojit všechny virtuální sítě v jiných geopolitických oblastech. Pokud to neuděláte, vaše žádost o aktualizaci se nezdařila a účtují se poplatky za prémii.
@@ -191,7 +191,7 @@ At line:1 char:1
 
 ## <a name="deprovision-and-delete-a-circuit"></a>Zrušení zřízení a odstranění okruhu
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Aby tato operace proběhla úspěšně, je nutné odpojit všechny virtuální sítě od okruhu ExpressRoute. Zkontrolujte, zda máte žádné virtuální sítě, které jsou propojeny se okruhem, pokud tato operace není úspěšná.
 * Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizování** nebo **zřízené** , musíte s vaším poskytovatelem služeb spolupracovat a zrušit zřízení okruhu na jejich straně. I nadále vyhradíme prostředky a účtujeme vám, dokud poskytovatel služeb nedokončí zrušení zřízení okruhu a pošle nám upozornění.

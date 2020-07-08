@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706167"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
@@ -36,7 +36,7 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
 1. Klikněte na **Vytvořit**.
@@ -51,7 +51,7 @@ Další informace o tom, jak spravované identity fungují ve službě Azure HDI
 
 Vytvořte účet úložiště Azure Data Lake Storage Gen2.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
 1. Klikněte na **Vytvořit**.

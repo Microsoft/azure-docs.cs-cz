@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738052"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
@@ -148,7 +148,7 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
     ![Soubory PowerShellu][functions7]
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Chcete-li použít rutiny prostředí PowerShell, je nutné provést ověření. Ověřování nakonfigurujete v aplikaci Function App. Pokud chcete nakonfigurovat ověřování, musíte nakonfigurovat proměnné prostředí a nahrát do aplikace Function app soubor se zašifrovaným klíčem.
 

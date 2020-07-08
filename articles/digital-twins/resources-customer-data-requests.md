@@ -8,17 +8,14 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 9e8cd41f54871cf88e9f4d0fc207289b66b7e38c
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9822044de53f5f74df302e05e0e6c5cd06f3eb92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737151"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí pro žádosti o data zákazníků
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Digitální vlákna Azure je vývojářská platforma pro vytváření zabezpečených digitálních reprezentace podnikového prostředí. Reprezentace jsou řízena živými daty o stavu ze zdrojů dat vybraných uživateli.
 

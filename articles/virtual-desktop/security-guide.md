@@ -9,10 +9,10 @@ ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84736668"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
@@ -31,16 +31,16 @@ Tady jsou požadavky na zabezpečení, na které zodpovídáte při nasazení vi
 
 | Nutnost zabezpečení | Je zákazník zodpovědný za to? |
 |---------------|:-------------------------:|
-|Identita|Ano|
-|Zařízení uživatelů (mobilní zařízení a počítač)|Ano|
-|Zabezpečení aplikací|Ano|
-|Operační systém hostitele relace|Ano|
-|Konfigurace nasazení|Ano|
-|Správa sítě|Ano|
-|Rovina řízení virtualizace|Ne|
-|Fyzičtí hostitelé|Ne|
-|Fyzická síť|Ne|
-|Fyzické datacentrum|Ne|
+|Identita|Yes|
+|Zařízení uživatelů (mobilní zařízení a počítač)|Yes|
+|Zabezpečení aplikací|Yes|
+|Operační systém hostitele relace|Yes|
+|Konfigurace nasazení|Yes|
+|Správa sítě|Yes|
+|Rovina řízení virtualizace|No|
+|Fyzičtí hostitelé|No|
+|Fyzická síť|No|
+|Fyzické datacentrum|No|
 
 Zabezpečení vyžaduje, aby zákazník nezodpovědný za zpracování Microsoftem.
 

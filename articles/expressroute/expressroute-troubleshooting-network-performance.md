@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738239"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
@@ -97,7 +97,7 @@ Existují tři základní kroky pro použití této sady nástrojů pro testová
 
     Podrobné výsledky testů iPerf a PSPing jsou v jednotlivých textových souborech v adresáři nástrojů AzureCT na adrese "C:\ACTTools.".
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud test výkonnosti nedává očekávané výsledky, zjistíte, proč by měl být progresivní postup krok za krokem. V případě, že je v cestě k dispozici určitý počet komponent, systematický přístup poskytuje rychlejší cestu k řešení, než je přechod a potenciálně zbytečně provádění stejného testování několikrát.
 
 >[!NOTE]

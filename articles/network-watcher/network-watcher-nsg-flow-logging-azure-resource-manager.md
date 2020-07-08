@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
 ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738137"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Konfigurace protokolů toku NSG ze šablony Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> - [portál Azure](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)

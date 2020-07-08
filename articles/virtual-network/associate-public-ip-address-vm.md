@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms.openlocfilehash: cc09cec1e6df9ec671fa98ae35562a639dce4cd8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707612"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Přidružení veřejné IP adresy k virtuálnímu počítači
@@ -28,7 +28,7 @@ K virtuálnímu počítači můžete přidružit veřejnou IP adresu pomocí [Az
 
 ## <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyhledejte virtuální počítač, do kterého chcete přidat veřejnou IP adresu, nebo ho vyhledejte a vyberte.
 3. V části **Nastavení**vyberte **sítě**a pak vyberte síťové rozhraní, do kterého chcete přidat veřejnou IP adresu, jak je znázorněno na následujícím obrázku:
 

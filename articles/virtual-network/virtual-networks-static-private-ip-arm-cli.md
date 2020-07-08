@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: allensu
 ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708157"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurace privátních IP adres pro virtuální počítač pomocí Azure CLI

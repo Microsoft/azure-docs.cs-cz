@@ -13,10 +13,10 @@ ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
 ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708735"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services ve spravované instanci Azure SQL (Preview)
@@ -24,7 +24,7 @@ ms.locfileid: "84708735"
 Machine Learning Services je funkce spravované instance Azure SQL (Preview), která poskytuje Machine Learning v databázi, a podporuje skripty Python i R. Tato funkce zahrnuje balíčky Microsoft Pythonu a R pro vysoce výkonné prediktivní analýzy a strojové učení. Relační data lze použít ve skriptech prostřednictvím uložených procedur, skriptu T-SQL obsahujícím příkazy jazyka Python nebo R nebo kódu Python nebo R obsahujícího T-SQL.
 
 > [!IMPORTANT]
-> Machine Learning Services je funkce spravované instance Azure SQL, která je aktuálně ve verzi Public Preview.
+> Machine Learning Services je funkce služby Azure SQL Managed Instance, která je aktuálně ve verzi Public Preview.
 > Tato funkce ve verzi Preview je zpočátku k dispozici v omezeném počtu oblastí v USA, Asie a Austrálii s dalšími oblastmi, které se přidávají později.
 >
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
@@ -52,11 +52,11 @@ Základní distribuce Pythonu a R jsou součástí Machine Learning Services. Kr
 
 Tato omezená verze Public Preview podléhá [podmínkám Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Pokud se zajímáte o připojení k programu verze Preview a přijmout tyto podmínky, můžete požádat o registraci vytvořením lístku podpory Azure na adrese [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . U možnosti "typ problému" vyberte "Technical", "služba" vyberte "SQL Database Managed instance" a pro "typ problému" vyberte "jiné". Ve vaší žádosti uveďte stav, který chcete zaregistrovat do omezené verze Public Preview Machine Learning pro spravovanou instanci SQL s těmito podrobnostmi: název logického serveru, oblast a ID předplatného.
+Pokud se zajímáte o připojení k programu verze Preview a přijmout tyto podmínky, můžete požádat o registraci vytvořením lístku podpory Azure na adrese [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . U možnosti "typ problému" vyberte "Technical", "služba" vyberte "SQL Database Managed instance" a pro "typ problému" vyberte "jiné". Ve vaší žádosti uveďte, že si chcete zaregistrovat omezenou verzi Public Preview služby Machine Learning pro službu SQL Managed Instance a tyto podrobnosti: název logického serveru, oblast a ID předplatného.
 
-Po registraci v programu se Microsoft připojí k veřejné verzi Preview a povolí Machine Learning Services pro vaši stávající nebo novou databázi.
+Po registraci do programu vás Microsoft připojí k verzi Public Preview a povolí službu Machine Learning Services pro vaši stávající nebo novou databázi.
 
-Machine Learning Services ve spravované instanci SQL se nedoporučuje pro produkční úlohy ve verzi Public Preview.
+Ve verzi Public Preview se služba Machine Learning Services ve službě SQL Managed Instance nedoporučuje pro produkční úlohy.
 
 ## <a name="next-steps"></a>Další kroky
 

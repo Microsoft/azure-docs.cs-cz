@@ -13,13 +13,13 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706201"
 ---
-# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro spravovanou instanci Azure SQL
+# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek vysvětluje komunikaci ve spravované instanci Azure SQL. Také popisuje architekturu připojení a způsob, jakým součásti směrují provoz do spravované instance.  

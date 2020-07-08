@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
 ms.openlocfilehash: 84f34c9441805352422215fcbac300bd900024d0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737950"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Odstranit objekty blob úložiště protokolu toku skupiny zabezpečení sítě v Network Watcher

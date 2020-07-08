@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
 ms.openlocfilehash: 2f6b3ec93498ab58ba67a2ca08199feaa2da73ef
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738358"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesun veřejného partnerského vztahu do partnerskému vztahu Microsoftu
@@ -62,7 +62,7 @@ Podrobné pokyny k povolení partnerského vztahu Microsoftu najdete v následuj
 
 Ověřte, že je povolen partnerský vztah Microsoftu a že inzerované veřejné předpony jsou v nakonfigurovaném stavu.
 
-* [portál Azure](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
+* [Azure Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure CLI](howto-routing-cli.md#getmsft)
 

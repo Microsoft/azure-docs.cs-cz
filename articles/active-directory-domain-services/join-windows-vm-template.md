@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 1e725fb483afed0f126248737c2e9121ce823a45
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84734686"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Připojení virtuálního počítače s Windows serverem k Azure Active Directory Domain Services spravované doméně pomocí šablony Správce prostředků

@@ -10,10 +10,10 @@ ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84736998"
 ---
 # <a name="orchestration-modes-preview"></a>Režimy orchestrace (Preview)
@@ -44,7 +44,7 @@ Sada škálování virtuálních počítačů bude podporovat 2 odlišné režim
 
 |                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| Model konfigurace virtuálních počítačů      | Žádné                                       | Vyžadováno |
+| Model konfigurace virtuálních počítačů      | Žádná                                       | Vyžadováno |
 | Přidání nového virtuálního počítače do sady škálování  | Virtuální počítače se při vytvoření virtuálního počítače explicitně přidávají do sady škálování. | Virtuální počítače se implicitně vytvoří a přidají do sady škálování na základě modelu konfigurace virtuálního počítače, počtu instancí a pravidel automatického škálování. | |
 | Odstranění virtuálního počítače                   | Virtuální počítače se musí odstranit jednotlivě, sada škálování se neodstraní, pokud obsahuje nějaké virtuální počítače. | Virtuální počítače se dají odstranit jednotlivě a odstraněním sady škálování se odstraní všechny instance virtuálních počítačů.  |
 | Připojení a odpojení virtuálních počítačů           | Nepodporuje se                              | Nepodporuje se |

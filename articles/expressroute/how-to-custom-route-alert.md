@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: cherylmc
 ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738477"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
@@ -102,7 +102,7 @@ Aby bylo možné spouštět rutiny prostředí PowerShell v Azure Automation Run
 
 2. Vyberte **vytvořit** a vytvořte sadu Runbook.
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Vyberte Vytvořit.":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="Vyberte vytvořit.":::
 
 3. Vyberte nově vytvořenou sadu Runbook a pak vyberte **Upravit**.
 

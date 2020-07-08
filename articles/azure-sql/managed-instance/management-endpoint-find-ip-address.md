@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 40a44fe46cf38c633380c4c353960cc4e11f2f3d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708718"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>Určení IP adresy koncového bodu správy – spravovaná instance Azure SQL 

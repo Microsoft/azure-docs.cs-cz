@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710996"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
@@ -54,10 +54,10 @@ K síťovému rozhraní můžete podle potřeby přidat tolik [privátních](#pr
 
    |Nastavení|Povinné?|Podrobnosti|
    |---|---|---|
-   |Name|Ano|Musí být pro síťové rozhraní jedinečné.|
-   |Typ|Ano|Vzhledem k tomu, že přidáváte konfiguraci IP adres do stávajícího síťového rozhraní a každé síťové rozhraní musí mít konfiguraci [primárního](#primary) protokolu IP, je vaše jediná možnost **sekundární**.|
-   |Metoda přiřazování privátních IP adres|Ano|[**Dynamické**](#dynamic): Azure přiřadí další dostupnou adresu pro rozsah adres podsítě, ve kterém je síťové rozhraní nasazené. [**Statické**](#static): přiřadíte nepoužitou adresu rozsahu adres podsítě, ve kterém je síťové rozhraní nasazeno.|
-   |Veřejná IP adresa|Ne|**Zakázáno:** K této konfiguraci protokolu IP není aktuálně přidružen žádný prostředek veřejné IP adresy. **Povoleno:** Vyberte existující veřejnou IP adresu IPv4 nebo vytvořte novou. Pokud se chcete dozvědět, jak vytvořit veřejnou IP adresu, přečtěte si článek o [veřejných IP adresách](virtual-network-public-ip-address.md#create-a-public-ip-address) .|
+   |Name|Yes|Musí být pro síťové rozhraní jedinečné.|
+   |Typ|Yes|Vzhledem k tomu, že přidáváte konfiguraci IP adres do stávajícího síťového rozhraní a každé síťové rozhraní musí mít konfiguraci [primárního](#primary) protokolu IP, je vaše jediná možnost **sekundární**.|
+   |Metoda přiřazování privátních IP adres|Yes|[**Dynamické**](#dynamic): Azure přiřadí další dostupnou adresu pro rozsah adres podsítě, ve kterém je síťové rozhraní nasazené. [**Statické**](#static): přiřadíte nepoužitou adresu rozsahu adres podsítě, ve kterém je síťové rozhraní nasazeno.|
+   |Veřejná IP adresa|No|**Zakázáno:** K této konfiguraci protokolu IP není aktuálně přidružen žádný prostředek veřejné IP adresy. **Povoleno:** Vyberte existující veřejnou IP adresu IPv4 nebo vytvořte novou. Pokud se chcete dozvědět, jak vytvořit veřejnou IP adresu, přečtěte si článek o [veřejných IP adresách](virtual-network-public-ip-address.md#create-a-public-ip-address) .|
 6. Ručním přidáním sekundárních privátních IP adres do operačního systému virtuálního počítače dokončete pokyny v článku [přiřazení více IP adres k operačním systémům virtuálních počítačů](virtual-network-multiple-ip-addresses-portal.md#os-config) . Zvláštní informace najdete v tématu [soukromé](#private) IP adresy, které se týkají ručního přidávání IP adres do operačního systému virtuálního počítače. Do operačního systému virtuálního počítače nepřidávejte žádné veřejné IP adresy.
 
 **Příkazy**

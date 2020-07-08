@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 05/28/2020
 ms.openlocfilehash: 7a6a672cef42eb15cbd8f2f254207e0a9d96ee33
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84736199"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Součásti a verze Apache dostupné pro Azure HDInsight
@@ -99,7 +99,7 @@ Tato tabulka obsahuje seznam verzí HDInsight, které nejsou k dispozici v Azure
 | HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Yes |No |
 | HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Yes |No |
 | HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Yes |No |
-| HDInsight 1,6 |HDP 1,1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
+| HDInsight 1,6 |HDP 1,1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |No |No |
 
 > [!NOTE]
 > Clustery s vysokou dostupností se dvěma hlavními uzly se ve výchozím nastavení nasazují pro HDInsight verze 2,1 a novější. Nejsou k dispozici pro clustery HDInsight verze 1,6.

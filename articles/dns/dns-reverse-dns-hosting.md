@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709194"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS
@@ -28,7 +28,7 @@ Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS zpě
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Vytvoření zóny DNS zpětného vyhledávání
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce **centra** vyberte **Nový**  >  **síť**a pak vyberte **zóna DNS**.
 
    ![Výběr zóny DNS](./media/dns-reverse-dns-hosting/figure1.png)

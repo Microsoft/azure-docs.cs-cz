@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.openlocfilehash: d5ea44e7059ae01204dbafd454c187e10f85e4e8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707544"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Konfigurace předvolby směrování pro virtuální počítač pomocí Azure CLI

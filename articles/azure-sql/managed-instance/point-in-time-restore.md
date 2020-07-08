@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708631"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze ve spravované instanci Azure SQL k předchozímu bodu v čase
@@ -46,8 +46,8 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovení existující databáze na stejnou instanci spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
 |:----------|:----------|:----------|:----------|:----------|
-|**portál Azure**| Yes|No |Yes|No|
-|**Azure CLI**|Ano |Ano |Ne|Ne|
+|**Azure Portal**| Yes|No |Yes|No|
+|**Azure CLI**|Ano |Ano |No|No|
 |**PowerShell**| Ano|Ano |Ano|Ano|
 
 ## <a name="restore-an-existing-database"></a>Obnovení existující databáze
@@ -56,7 +56,7 @@ Obnovte stávající databázi na stejnou spravovanou instanci SQL pomocí Azure
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Přejít do spravované instance SQL a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 

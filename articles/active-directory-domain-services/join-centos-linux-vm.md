@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: iainfou
 ms.openlocfilehash: 062150c5d19a97a13fdd5567c2875bc69c839639
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84734754"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače se systémem CentOS Linux k Azure Active Directory Domain Services spravované doméně
@@ -42,7 +42,7 @@ Pokud máte v Azure existující virtuální počítač s CentOS Linux, připojt
 
 Pokud potřebujete vytvořit virtuální počítač s CentOS Linux nebo chcete vytvořit testovací virtuální počítač pro použití s tímto článkem, můžete použít jednu z následujících metod:
 
-* [portál Azure](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 

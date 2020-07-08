@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738375"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
@@ -71,7 +71,7 @@ Vytvořte pracovní prostor v předplatném, který má odkaz virtuální sítě
      >Okruh ExpressRoute může být kdekoli na světě. Nemusí být ve stejné oblasti jako pracovní prostor.
      >
   
-     ![Pracovní prostor](./media/how-to-npm/4.png)<br><br>
+     ![pracovní prostor](./media/how-to-npm/4.png)<br><br>
 4. Kliknutím na tlačítko **OK** uložte a nasaďte šablonu nastavení. Až se šablona ověří, kliknutím na **vytvořit** nasadíte pracovní prostor.
 5. Po nasazení pracovního prostoru přejděte na prostředek **NetworkMonitoring (název)** , který jste vytvořili. Ověřte nastavení a pak klikněte na **řešení vyžaduje další konfiguraci**.
 

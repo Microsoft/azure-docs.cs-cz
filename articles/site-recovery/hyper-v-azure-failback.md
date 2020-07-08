@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710248"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Spuštění navrácení služeb po obnovení pro virtuální počítače Hyper-V
@@ -29,7 +29,7 @@ Tento článek popisuje, jak navrátit služby po obnovení virtuálních počí
 2. Zajistěte, aby virtuální počítače Azure používaly účet úložiště, a ne spravované disky. Navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných pomocí spravovaných disků se nepodporuje.
 3. Ověřte, jestli je místní Hostitel Hyper-V (nebo server VMM System Center, pokud používáte s Site Recovery) spuštěný a připojený k Azure. 
 4. Ujistěte se, že jsou pro virtuální počítače dokončené převzetí služeb při selhání a potvrzení. Nemusíte nastavovat žádné konkrétní součásti Site Recovery pro navrácení služeb po obnovení virtuálních počítačů Hyper-V z Azure.
-5. Čas potřebný k dokončení synchronizace dat a spuštění místního virtuálního počítače bude záviset na řadě faktorů. Chcete-li urychlit stahování dat, můžete nakonfigurovat agenta Microsoft Recovery Services, aby používal více vláken k paralelizovat stahování. [Přečtěte si další informace](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
+5. Čas potřebný k dokončení synchronizace dat a spuštění místního virtuálního počítače bude záviset na řadě faktorů. Chcete-li urychlit stahování dat, můžete nakonfigurovat agenta Microsoft Recovery Services, aby používal více vláken k paralelizovat stahování. [Další informace](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
 ## <a name="fail-back-to-the-original-location"></a>Navrácení služeb po obnovení do původního umístění

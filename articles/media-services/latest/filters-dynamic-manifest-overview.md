@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
 ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84705198"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrování manifestů pomocí dynamického balíčku

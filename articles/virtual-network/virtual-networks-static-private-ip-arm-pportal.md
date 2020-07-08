@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707850"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Konfigurace privátní IP adresy pro virtuální počítač pomocí Azure Portal
@@ -56,7 +56,7 @@ Pokud chcete vytvořit virtuální počítač s názvem *DNS01* v podsíti *fron
     | **Předplatné** | Vaše aktuální předplatné |
     | **Skupina prostředků** | **TestRG** (výběr z rozevíracího seznamu) |
     | **Název virtuálního počítače** | *DNS01* |
-    | **Oblast** | **VYLEPŠENÍ Východní USA** |
+    | **Věřitel** | **VYLEPŠENÍ Východní USA** |
     | **Image** | **Windows Server 2019 Datacenter** |
     | **Velikost** | **Velikost virtuálního počítače** **B1ls**, **Nabídka** **Standard** |
     | **Jmen** | Uživatelské jméno účtu správce |
