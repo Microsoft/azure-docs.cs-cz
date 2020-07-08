@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514586"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Výměna napájecího a chladicího modulu na zařízení StorSimple
@@ -61,7 +60,7 @@ Postupujte podle těchto pokynů, pokud jste připraveni odebrat modul Power and
    
      **Obrázek 1** Přední panel zařízení  
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Tlačítko pro ztlumení |
    | 2 |Výkon systému |
@@ -74,7 +73,7 @@ Postupujte podle těchto pokynů, pokud jste připraveni odebrat modul Power and
    
      **Obrázek 2** Zpět PCM s indikátorem LED diod
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Výpadek napájení elektrické sítě |
    | 2 |Selhání ventilátoru |
@@ -88,7 +87,7 @@ Postupujte podle těchto pokynů, pokud jste připraveni odebrat modul Power and
    
      **Obrázek 3** Vrácení zařízení s modulem plug-in 
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |

@@ -10,10 +10,9 @@ ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
 ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84346042"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Centrum správy v Azure Data Factory
@@ -46,7 +45,7 @@ Zobrazení a úprava nakonfigurovaných nastavení úložiště Git v centru pro
 
 ### <a name="parameterization-template"></a>Šablona Parametrizace
 
-Chcete-li při publikování z větve spolupráce přepsat vygenerované parametry šablony Správce prostředků, můžete vytvořit nebo upravit soubor vlastního parametru. Další informace získáte [v tématu použití vlastních parametrů v šabloně správce prostředků](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template). Šablona parametrizace je k dispozici pouze při práci v úložišti Git. Pokud soubor *ARM-Template-Parameters-definition. JSON* v pracovní větvi neexistuje, vygeneruje se při úpravách výchozí šablony.
+Chcete-li při publikování z větve spolupráce přepsat vygenerované parametry šablony Správce prostředků, můžete vytvořit nebo upravit soubor vlastního parametru. Další informace získáte [v tématu použití vlastních parametrů v šabloně správce prostředků](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template). Šablona parametrizace je k dispozici pouze při práci v úložišti Git. Pokud *arm-template-parameters-definition.jsv* souboru v pracovní větvi neexistují, bude tato úprava vygenerována úpravou výchozí šablony.
 
 ![Správa vlastních parametrů](media/author-management-hub/management-hub-custom-parameters.png)
 

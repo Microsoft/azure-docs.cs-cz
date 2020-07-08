@@ -13,10 +13,9 @@ ms.workload: tbd
 ms.date: 6/3/2020
 ms.author: yohaddad
 ms.openlocfilehash: 2d4e6054b1e5626b42bb662ac57fc0323d190aa8
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343961"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
@@ -108,7 +107,7 @@ Hostovaný operační systém v říjnu vydal.
 ###### <a name="october-12-2018"></a>**12. října 2018**
 Hostovaný operační systém v září vydal.
 
-## <a name="releases"></a>Vydání
+## <a name="releases"></a>Verze
 
 ## <a name="family-6-releases"></a>Vydání řady 6
 **Windows Server 2019**

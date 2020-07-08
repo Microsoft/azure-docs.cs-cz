@@ -12,10 +12,9 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84415975"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů k účtu pomocí aplikace Microsoft Authenticator

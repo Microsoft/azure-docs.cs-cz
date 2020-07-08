@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343145"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
@@ -142,7 +141,7 @@ V následujících tabulkách:
 | Algoritmy šifrování a hash |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Životnost SA (čas)            |3 600 sekund  |27 000 sekund                               |
 | Životnost SA (bajty)           |102 400 000 kB |102 400 000 kB                               |
-| Metoda Perfect Forward Secrecy (PFS) |Ne             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
+| Metoda Perfect Forward Secrecy (PFS) |No             |[Nabídky RouteBased QM SA](#RouteBasedOffers) |
 | Detekce mrtvých partnerských zařízení (DPD)     |Nepodporuje se  |Podporuje se                                    |
 
 
@@ -154,24 +153,24 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 
 |-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Žádné         |
-| 2 |AES256        |SHA1              |Žádné         |
-| 3 |3DES          |SHA1              |Žádné         |
-| 4 |AES256        |SHA256            |Žádné         |
-| 5 |AES128        |SHA1              |Žádné         |
-| 6 |3DES          |SHA256            |Žádné         |
+| 1 |GCM AES256    |GCM (AES256)      |Žádná         |
+| 2 |AES256        |SHA1              |Žádná         |
+| 3 |3DES          |SHA1              |Žádná         |
+| 4 |AES256        |SHA256            |Žádná         |
+| 5 |AES128        |SHA1              |Žádná         |
+| 6 |3DES          |SHA256            |Žádná         |
 
 #### <a name="azure-gateway-as-responder"></a>Služba Azure Gateway jako respondér
 
 |-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Žádné         |
-| 2 |AES256        |SHA1              |Žádné         |
-| 3 |3DES          |SHA1              |Žádné         |
-| 4 |AES256        |SHA256            |Žádné         |
-| 5 |AES128        |SHA1              |Žádné         |
-| 6 |3DES          |SHA256            |Žádné         |
-| 7 |DES           |SHA1              |Žádné         |
+| 1 |GCM AES256    |GCM (AES256)      |Žádná         |
+| 2 |AES256        |SHA1              |Žádná         |
+| 3 |3DES          |SHA1              |Žádná         |
+| 4 |AES256        |SHA256            |Žádná         |
+| 5 |AES128        |SHA1              |Žádná         |
+| 6 |3DES          |SHA256            |Žádná         |
+| 7 |DES           |SHA1              |Žádná         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -186,7 +185,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Žádné         |
+| 22|AES128        |SHA256            |Žádná         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

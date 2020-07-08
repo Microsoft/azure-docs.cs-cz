@@ -16,10 +16,9 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ce5d96d3ca65efb69bf322cf4a5f5563b83d8ce
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84727870"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin v Azure Active Directory 
@@ -33,7 +32,7 @@ Když se v Azure Portal nebo pomocí Azure AD PowerShellu vytvoří skupiny zabe
 Skupiny vytvořené v | Výchozí chování skupiny zabezpečení | Výchozí chování skupiny Office 365
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Členy můžou přidávat jenom vlastníci.<br>Viditelná, ale není dostupná pro připojení na přístupovém panelu | Otevřít pro připojení pro všechny uživatele
-[portál Azure](https://portal.azure.com) | Členy můžou přidávat jenom vlastníci.<br>Viditelná, ale není dostupná pro připojení na přístupovém panelu<br>Vlastník není automaticky přiřazen při vytváření skupiny. | Otevřít pro připojení pro všechny uživatele
+[Azure Portal](https://portal.azure.com) | Členy můžou přidávat jenom vlastníci.<br>Viditelná, ale není dostupná pro připojení na přístupovém panelu<br>Vlastník není automaticky přiřazen při vytváření skupiny. | Otevřít pro připojení pro všechny uživatele
 [Přístupový panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Otevřít pro připojení pro všechny uživatele<br>Možnosti členství lze změnit při vytvoření skupiny. | Otevřít pro připojení pro všechny uživatele<br>Možnosti členství lze změnit při vytvoření skupiny.
 
 ## <a name="self-service-group-management-scenarios"></a>Scénáře správy skupin samoobslužných služeb

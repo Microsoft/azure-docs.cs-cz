@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
 ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84726958"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory

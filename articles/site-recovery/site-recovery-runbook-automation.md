@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345134"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
@@ -115,7 +114,7 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 ## <a name="customize-the-recovery-plan"></a>Přizpůsobení plánu obnovení
 
 1. V trezoru vyberte **plány obnovení (Site Recovery)** .
-2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Přečtěte si další informace](site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
+2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Další informace](site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
 3. Na stránce plán obnovení klikněte na **přizpůsobit**.
 
     ![Klikněte na tlačítko přizpůsobit.](media/site-recovery-runbook-automation-new/custom-rp.png)

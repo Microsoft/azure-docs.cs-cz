@@ -4,10 +4,9 @@ description: Tento článek popisuje, jak připravit Azure Migrate pro práci s 
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770369"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Příprava na práci s nástrojem ISV nebo jeho stěhovací pracovníky

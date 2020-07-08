@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84771015"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
@@ -107,20 +106,20 @@ Pro propojenou službu SAP Business Warehouse se podporují následující vlast
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Ano |
-| server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
-| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
-| messageServer | Název hostitele serveru zpráv SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| messageServerService | Název služby nebo číslo portu serveru zpráv.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| systemId | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| přihlášená | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
-| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Yes |
+| server | Název serveru, na kterém se nachází instance SAP BW. | Yes |
+| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Yes |
+| messageServer | Název hostitele serveru zpráv SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| messageServerService | Název služby nebo číslo portu serveru zpráv.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| systemId | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| přihlášená | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
+| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes |
 | language | Jazyk používaný systémem SAP. | Ne (výchozí hodnota je **EN**)|
-| userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
+| userName | Jméno uživatele, který má přístup k serveru SAP. | Yes |
+| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -153,12 +152,12 @@ Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Ty
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
-| openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Ano |
+| typ | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Yes |
+| openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Yes |
 
 Pokud jste nacházeli `excludeLastRequest` a `baseRequestId` v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použít nový model ve zdroji aktivity.
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -187,16 +186,16 @@ Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** akt
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Yes |
 | excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
-| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | Ne |
+| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | No |
 
 >[!TIP]
 >Pokud otevřená tabulka centra obsahuje jenom data generovaná IDENTIFIKÁTORem jediného požadavku, například vždy stačí úplné načtení a přepsat stávající data v tabulce, nebo když pro test spustíte jenom DTP, nezapomeňte zrušit kontrolu možnosti excludeLastRequest, aby se data zkopírovala.
 
 Pro urychlení načítání dat můžete [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) u aktivity kopírování nastavit, aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies` . Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

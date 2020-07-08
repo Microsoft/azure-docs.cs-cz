@@ -15,10 +15,9 @@ ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b72e894b7280a2d3e0fa978125e53ae79b2d20e3
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669354"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On u SQL Server v Azure Virtual Machines
@@ -89,7 +88,7 @@ Vytvoření virtuální sítě v Azure Portal:
    | --- | --- |
    | **Název** |autoHAVNET |
    | **Adresní prostor** |10.33.0.0/24 |
-   | **Název podsítě** |správce |
+   | **Název podsítě** |Správce |
    | **Rozsah adres podsítě** |10.33.0.0/29 |
    | **Předplatné** |Zadejte předplatné, které chcete použít. Pokud máte pouze jedno předplatné, je **předplatné** prázdné. |
    | **Skupina prostředků** |Zvolte **použít existující** a vyberte název skupiny prostředků. |

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
 ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84424461"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) v Azure Monitor
@@ -56,10 +55,10 @@ Protože si ale prohlížíte metadata, nemusí být užitečná při řešení 
 
 | **Připojený zdroj** | **Doložen** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro systém Windows](../platform/agent-windows.md)vyžadují agenti systému Windows agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](vminsights-enable-overview.md#supported-operating-systems). |
-| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě agentů [Log Analytics pro Linux](../learn/quick-collect-linux-computer.md)musí mít agenti pro Linux od společnosti Microsoft agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](vminsights-enable-overview.md#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../platform/om-agents.md). <br><br> Je požadováno přímé připojení z System Center Operations Manager počítače agenta k Azure Monitor. |
-| Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
+| Agenti systému Windows | Yes | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro systém Windows](../platform/agent-windows.md)vyžadují agenti systému Windows agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](vminsights-enable-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Yes | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě agentů [Log Analytics pro Linux](../learn/quick-collect-linux-computer.md)musí mít agenti pro Linux od společnosti Microsoft agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](vminsights-enable-overview.md#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Yes | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../platform/om-agents.md). <br><br> Je požadováno přímé připojení z System Center Operations Manager počítače agenta k Azure Monitor. |
+| Účet služby Azure Storage | No | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
 V systému Windows se Microsoft Monitoring Agent (MMA) používá v System Center Operations Manager a Azure Monitor ke shromažďování a posílání dat. V závislosti na kontextu se agent nazývá Agent System Center Operations Manager, Log Analytics agent, MMA nebo Direct agent. System Center Operations Manager a Azure Monitor poskytují mírně odlišnou verzi MMA. Tyto verze mohou jednotlivé sestavy System Center Operations Manager, Azure Monitor nebo obojí.
 
@@ -99,10 +98,10 @@ V následujících částech najdete seznam podporovaných operačních systém�
 #### <a name="windows-desktop"></a>Plocha Windows
 
 - Systém Windows 10 1803
-- Windows 10
+- Windows 10
 - Windows 8.1
 - Windows 8
-- Windows 7
+- Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
 V následujících částech najdete seznam podporovaných operačních systémů pro agenta závislostí v systému Linux.  
@@ -178,7 +177,7 @@ Při konfiguraci řešení Wire Data pro vaše pracovní prostory použijte nás
 
 K instalaci a odinstalaci tohoto agenta se vyžadují oprávnění správce.
 
-Agent závislostí je nainstalován na počítačích se systémem Windows prostřednictvím InstallDependencyAgent-Windows. exe. Pokud tento spustitelný soubor spustíte bez jakýchkoli parametrů, spustí se průvodce interaktivní instalací.
+Agent závislostí je nainstalován na počítačích se systémem Windows prostřednictvím InstallDependencyAgent-Windows.exe. Pokud tento spustitelný soubor spustíte bez jakýchkoli parametrů, spustí se průvodce interaktivní instalací.
 
 K instalaci agenta závislostí do každého počítače se systémem Windows použijte následující postup:
 
@@ -321,7 +320,7 @@ Následující části vám pomůžou odebrat agenta závislostí.
 
 Správce může odinstalovat agenta závislostí pro systém Windows prostřednictvím ovládacích panelů.
 
-Správce může k odinstalaci agenta závislostí také spustit Agent\Uninstall.exe Dependency Dependency.
+Správce může také spustit závislost%Programfiles%\Microsoft Agent\Uninstall.exe pro odinstalaci agenta závislostí.
 
 #### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalace agenta závislostí v systému Linux
 

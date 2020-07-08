@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84344607"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>Získání požadovaných hodnot pro ověření aplikace pro přístup k Azure SQL Database z kódu

@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848006"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957337"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
 
@@ -26,11 +25,11 @@ Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketpl
 
     1. V levém panelu nabídek vyberte **+ vytvořit prostředek** . **Nové** podokno se zobrazí vpravo.
     1. V podokně **Nový** vyberte **úložiště** . Na pravé straně se zobrazí **vybraný** seznam.
-    1. Vyberte **účet úložiště** a začněte vytvářet účet. Postupujte podle pokynů v části [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    1. Vyberte **účet úložiště** a začněte vytvářet účet. Postupujte podle pokynů v části [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
         ![Postup vytvoření účtu úložiště Azure](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        Další informace o účtech úložiště najdete v [kurzu rychlý Start](https://docs.microsoft.com/azure/storage/). Další informace o cenách služby Storage najdete v tématu [ceny služby Storage](https://azure.microsoft.com/pricing/details/storage/).
+        Další informace o účtech úložiště najdete v [kurzu rychlý Start](../../storage/index.yml). Další informace o cenách služby Storage najdete v tématu [ceny služby Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 1. Počkejte, než se zřídí účet úložiště. Tento proces obvykle trvá několik minut. 
 
@@ -107,7 +106,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
    Po výběru položky **vytvořit**se zobrazí okno **získat entity** . Tady vyberte **Zobrazit upřesňující možnosti**a zadejte informace pro následující pole:
 
-   * **Tabulka**: vyberte název tabulky (z části [vytvořit tabulku](#create-a-table-in-your-storage-account)). Následující obrázek ukazuje výzvu, když je pro tento příklad vybrána tabulka "marketplaceleads".
+   * **Tabulka**: vyberte název tabulky (z části [vytvořit tabulku](#create-a-table-in-your-storage-account)). Následující obrázek ukazuje výzvu, když `marketplaceleads` je pro tento příklad vybrána tabulka.
 
      ![Získat okno s entitami](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

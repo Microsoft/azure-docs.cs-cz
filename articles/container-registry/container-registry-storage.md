@@ -4,10 +4,9 @@ description: Podrobnosti o tom, jak jsou image kontejnerů Docker uložené v Az
 ms.topic: article
 ms.date: 06/18/2020
 ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85214056"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Úložiště imagí kontejneru v Azure Container Registry

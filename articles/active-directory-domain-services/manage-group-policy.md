@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e48c9ae3ff9697faa6c652794df78deb52e94a73
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734652"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040074"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure Active Directory Domain Services
 
@@ -24,8 +23,6 @@ Nastavení pro objekty uživatelů a počítačů v Azure Active Directory Domai
 V hybridním prostředí se zásady skupiny nakonfigurované v místních služba AD DS prostředí nesynchronizují s Azure služba AD DS. Pokud chcete definovat nastavení konfigurace pro uživatele nebo počítače v Azure služba AD DS, upravte jeden z výchozích objektů zásad skupiny nebo vytvořte vlastní objekt zásad skupiny.
 
 V tomto článku se dozvíte, jak nainstalovat nástroje pro správu Zásady skupiny a pak upravit předdefinované objekty zásad skupiny a vytvořit vlastní objekty zásad skupiny.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 

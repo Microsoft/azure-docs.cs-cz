@@ -4,10 +4,9 @@ description: Přečtěte si o podpoře migrace virtuálních počítačů VMware
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: c4184628739b6c47b35263fe99285b05b9e0a190
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84769723"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
@@ -168,7 +167,7 @@ Sdílený virtuální pevný disk | Není podporováno.
 Disk FC | Není podporováno. 
 BitLocker | Není podporováno.<br/><br/> Před migrací počítače je třeba zakázat nástroj BitLocker.
 název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. 
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači.<br/><br/> Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/> Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](prepare-for-migration.md).
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači.<br/><br/> Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/> Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md).
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/><br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/><br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený.<br/><br/> Kromě toho přidejte veřejnou IP adresu pro virtuální počítač.  
 
 

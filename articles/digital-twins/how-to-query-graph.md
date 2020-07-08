@@ -7,17 +7,13 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 8788dcc1ec09580aa0da7c68665433dfe4a1d563
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84725580"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Tento článek podrobně popisuje použití [jazyka úložiště dotazů digitálních vláken Azure](concepts-query-language.md) k dotazování na [nevlákenný graf](concepts-twins-graph.md) pro informace. Dotazy můžete spouštět v grafu pomocí [**rozhraní API pro dotazování**](how-to-use-apis-sdks.md)digitálních vláken Azure.
 

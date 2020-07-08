@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e79156e6e9f1283dfc7b8801820e3335f31afa9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: c86f98fb20af2cd5ac969867cabfdc5dcb62db54
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734295"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039887"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
@@ -29,7 +28,7 @@ Události můžete archivovat do služby Azure Storage a streamovat události do
 
 ## <a name="security-audit-destinations"></a>Cíle auditu zabezpečení
 
-Jako cílový prostředek pro audity zabezpečení Azure služba AD DS můžete použít Azure Storage, Azure Event Hubs nebo Azure Log Analytics pracovní prostory. Tyto cíle lze kombinovat. Můžete například použít Azure Storage pro archivaci událostí auditu zabezpečení, ale pracovní prostor Azure Log Analytics k analýze a hlášení informací v krátkodobém období.
+Jako cílový prostředek pro audity zabezpečení Azure služba AD DS můžete použít Azure Storage, Azure Event Hubs nebo Azure Log Analytics pracovní prostory. Tyto cíle lze kombinovat. Můžete například použít Azure Storage pro archivaci událostí auditu zabezpečení, ale pracovní prostor Azure Log Analytics k analýze a hlášení informací v krátkém období.
 
 Následující tabulka obsahuje přehled scénářů pro každý typ cílového prostředku.
 
@@ -159,11 +158,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Vzorový dotaz 2
 
-Zobrazit všechny události uzamčení účtu (*4740*) mezi 3. února 2020 v 9:00 a 10. února 2020 o půlnoci seřazený vzestupně podle data a času:
+Zobrazit všechny události uzamčení účtu (*4740*) od 3. června 2020 v 9:00 a od 10. června 2020, seřazené vzestupně podle data a času:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
@@ -237,10 +236,10 @@ K dispozici jsou následující kategorie událostí auditu:
 |:---|:---|
 |Zabezpečení přihlášení k účtu|4767, 4774, 4775, 4776, 4777|
 |Zabezpečení správy účtů|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377,|
-|Zabezpečení sledování podrobností|Žádné|
+|Zabezpečení sledování podrobností|Žádná|
 |Zabezpečení přístupu DS|5136, 5137, 5138, 5139, 5141|
 |Zabezpečení při odhlašování|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Zabezpečení přístupu k objektům|Žádné|
+|Zabezpečení přístupu k objektům|Žádná|
 |Zabezpečení změny zásad|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Zabezpečení použití oprávnění|4985|
 |Zabezpečení systému|4612, 4621|

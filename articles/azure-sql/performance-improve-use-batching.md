@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343825"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Jak používat dávkování ke zlepšování Azure SQL Database a výkonu aplikací spravované instance Azure SQL
@@ -212,7 +211,7 @@ Další informace o parametrech s hodnotou tabulky najdete v tématu [parametry 
 
 ### <a name="sql-bulk-copy"></a>Hromadné kopírování SQL
 
-Hromadné kopírování SQL je dalším způsobem, jak vložit velké objemy dat do cílové databáze. Aplikace .NET můžou k provádění hromadných operací vložení použít třídu **SqlBulkCopy** . **SqlBulkCopy** je podobný funkci jako nástroj příkazového řádku, **BCP. exe**nebo příkaz Transact-SQL **Bulk INSERT**. Následující příklad kódu ukazuje, jak hromadně zkopírovat řádky ve zdrojovém **objektu DataTable**, tabulce, do cílové tabulky myTable.
+Hromadné kopírování SQL je dalším způsobem, jak vložit velké objemy dat do cílové databáze. Aplikace .NET můžou k provádění hromadných operací vložení použít třídu **SqlBulkCopy** . **SqlBulkCopy** je obdobou funkcí nástroje příkazového řádku, **Bcp.exe**nebo příkazu jazyka Transact-SQL **Bulk INSERT**. Následující příklad kódu ukazuje, jak hromadně zkopírovat řádky ve zdrojovém **objektu DataTable**, tabulce, do cílové tabulky myTable.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))

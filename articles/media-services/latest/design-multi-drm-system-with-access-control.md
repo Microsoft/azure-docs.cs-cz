@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161779"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957371"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu 
 
@@ -193,7 +192,7 @@ Implementace zahrnuje následující kroky:
    * Install-Package Microsoft. Azure. Active. GraphClient
    * Install-Package Microsoft. Owin. Security. OpenIdConnect
    * Install-Package Microsoft. Owin. Security. cookies
-   * Install-Package Microsoft. Owin. Host. SystemWeb
+   * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft. IdentityModel. clients. Active
 
 8. Vytvořte přehrávač pomocí [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Pomocí [rozhraní Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) určete, která technologie DRM se má používat na různých platformách DRM.
@@ -222,8 +221,10 @@ Pro pomoc s problémy s implementací použijte následující informace pro ře
 
 * Adresa URL vystavitele musí končit znakem "/". Cílovou skupinou musí být ID klienta aplikace aktéra. Na konec adresy URL vystavitele také přidejte znak "/".
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     V [dekodéru JWT](http://jwt.calebb.net/)vidíte **AUD** a **ISS**, jak je znázorněno v tokenu JWT:
 
@@ -235,11 +236,15 @@ Pro pomoc s problémy s implementací použijte následující informace pro ře
 
 * Při nastavování dynamické ochrany CENC použijte správný Vystavitel.
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     Následující nefunguje:
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     Identifikátor GUID je ID tenanta Azure AD. Identifikátor GUID lze nalézt v místní nabídce **koncových bodů** v Azure Portal.
 
@@ -249,7 +254,7 @@ Pro pomoc s problémy s implementací použijte následující informace pro ře
 
 * Nastavte správné typ TokenType při vytváření požadavků na omezení.
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    `objTokenRestrictionTemplate.TokenType = TokenType.JWT;`
 
     Protože kromě služby SWT (ACS) přidáte podporu pro token JWT (Azure AD), výchozí typ TokenType je typ TokenType. JWT. Pokud používáte SWT/ACS, musíte nastavit token na typ TokenType. SWT.
 
@@ -276,7 +281,7 @@ I když Azure byl původně povolený jenom pomocí účet Microsoft uživatelů
 
 Vzhledem k tomu, že Azure AD důvěřuje účet Microsoft doméně, můžete do vlastního tenanta Azure AD přidat libovolné účty z následujících domén a použít účet pro přihlášení:
 
-| **Název domény** | **Domain** |
+| **Název domény** | **Domain (Doména)** |
 | --- | --- |
 | **Vlastní doména tenanta Azure AD** |somename.onmicrosoft.com |
 | **Firemní doména** |microsoft.com |

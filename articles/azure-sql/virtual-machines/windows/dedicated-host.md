@@ -14,10 +14,9 @@ ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669099"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Spuštění SQL Server virtuálního počítače na vyhrazeném hostiteli Azure 
@@ -33,7 +32,7 @@ Tento článek podrobně popisuje konkrétní informace o použití SQL Serverho
 - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
 - Podporují se tyto řady virtuálních počítačů: DSv3 a ESv3. 
 
-## <a name="licensing"></a>Licensing
+## <a name="licensing"></a>Licencování
 
 Při umísťování SQL Server virtuálního počítače do vyhrazeného hostitele Azure si můžete vybrat mezi dvěma různými možnostmi licencování. 
 
@@ -65,7 +64,7 @@ Jednou z výhod vyhrazeného hostitele je neomezená virtualizace. Například m
 
 Vzhledem k tomu, že je to váš hostitel, máte nárok na nastavení virtualizace s poměrem 1:2. 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka: jak Zvýhodněné hybridní využití Azure fungují pro licence Windows Server/SQL Server na vyhrazeném hostiteli Azure?**
 

@@ -8,10 +8,9 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413378"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
@@ -97,7 +96,7 @@ Tělo může vypadat takto:
 
 Určení parametrů není vyžadováno. Použije se výchozí hodnota.
 
-| Název             | Typ  | Popis  |Výchozí  |
+| Name             | Typ  | Description  |Výchozí  |
 |------------------|-------|--------------|---------|
 | `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   automatická      |
 | `CommitMode`     | Výčet  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze v případě, že jsou dokončeny. Mezi režimy patří: Default, Transaction, partialBatch.  |  doručen       |
@@ -112,7 +111,7 @@ CommitMode se rovná partialBatch. Používá se při počátečním zatížení
 
 ### <a name="status-values"></a>Hodnoty stavu
 
-|Hodnota stavu  |Popis  |
+|Hodnota stavu  |Description  |
 |---------|---------|
 |`notStarted`    |   Operace se ještě nespustila.      |
 |`inProgress`     |   Probíhá operace.      |

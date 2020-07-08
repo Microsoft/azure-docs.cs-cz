@@ -11,10 +11,9 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
 ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343105"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vytváření vizuálů v Azure Data Factory

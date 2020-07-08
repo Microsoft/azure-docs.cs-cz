@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
 ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711676"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Povolení protokolování prostředků v Azure Traffic Manager
@@ -54,7 +53,7 @@ Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://she
       Zajistěte, aby se všechny kategorie protokolů přidružené k prostředku profilu Traffic Manager zobrazovaly jako povolené. Ověřte také, že je účet úložiště správně nastavený.
 
 ## <a name="access-log-files"></a>Přístup k souborům protokolu
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Na portálu přejděte na účet Azure Storage.
 2. Na stránce **Přehled** účtu úložiště Azure v části **služby** vyberte **objekty blob**.
 3. V části **kontejnery**vyberte **Insights-logs-probehealthstatusevents**a přejděte dolů na PT1H.jsv souboru a kliknutím na **Stáhnout** Stáhněte a uložte kopii tohoto souboru protokolu.

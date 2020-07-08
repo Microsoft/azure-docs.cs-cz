@@ -11,10 +11,9 @@ ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5dfcb4abc7a6859955bc36fad2cee893a78c79cd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84726561"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows 

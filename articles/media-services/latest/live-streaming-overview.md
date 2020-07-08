@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
 ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418139"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
@@ -80,7 +79,7 @@ Pokud používáte kódování cloudu s Media Services, nakonfigurujete svůj m�
 Abyste pochopili pracovní postup živého streamování v Media Services V3, musíte si nejdřív projít a porozumět následujícím koncepcím: 
 
 - [Koncové body streamování](streaming-endpoint-concept.md)
-- [Živé události a živé výstupy](live-events-outputs-concept.md)
+- [Živé události a výstupy](live-events-outputs-concept.md)
 - [Lokátory streamování](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Obecné kroky

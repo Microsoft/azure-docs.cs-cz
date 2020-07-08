@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
 ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987234"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
@@ -119,7 +118,7 @@ Správným přístupem je použití služby Secure token Service. V závislosti 
 
 Použijte rozhraní API pro Azure Media Services ke konfiguraci poskytování licencí/klíčů a šifrování prostředků (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 - [Přehled ochrany obsahu](content-protection-overview.md)
 - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)

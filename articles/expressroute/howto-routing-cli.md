@@ -9,10 +9,9 @@ ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: cbde41bd79409255e1ebf5145548ea260ac8581d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84727037"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí rozhraní příkazového řádku
@@ -20,7 +19,7 @@ ms.locfileid: "84727037"
 Tento článek vám pomůže vytvořit a spravovat konfiguraci směrování/partnerský vztah pro okruh ExpressRoute v modelu nasazení Správce prostředků pomocí rozhraní příkazového řádku (CLI). Můžete také kontrolovat stav, aktualizovat nebo odstranit a zrušit zřízení partnerských vztahů pro okruh ExpressRoute. Pokud chcete pro práci s okruhem použít jinou metodu, vyberte článek z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [portál Azure](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Veřejné partnerské vztahy](about-public-peering.md)

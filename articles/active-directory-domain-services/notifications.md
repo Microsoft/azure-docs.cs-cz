@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 4dc1cdd760c3d370c31b5c77db56df7df3ab6c1d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734567"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039989"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurace e-mailových oznámení pro problémy v Azure Active Directory Domain Services
 
@@ -74,7 +73,7 @@ Pokud se výstraha vyřeší, výstraha se z Azure Portal nevymaže. Nejpravděp
 
 ### <a name="why-can-i-not-edit-the-notification-settings"></a>Proč není možné upravovat nastavení oznámení?
 
-Pokud nemůžete získat přístup k stránce nastavení oznámení v Azure Portal, nemáte oprávnění k úpravám spravované domény. Abyste mohli získat oprávnění k úpravám prostředku Azure služba AD DS nebo ho odebrat ze seznamu příjemců, musíte se obrátit na globálního správce.
+Pokud nemůžete získat přístup k stránce nastavení oznámení v Azure Portal, nemáte oprávnění k úpravám spravované domény. Kontaktujte globálního správce, který získá oprávnění k úpravám prostředku Azure služba AD DS nebo ho odeberte ze seznamu příjemců.
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Zdá se, že nepřijímám e-mailová oznámení, i když mi Mám e-mailovou adresu. Proč?
 

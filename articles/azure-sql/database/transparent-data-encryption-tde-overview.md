@@ -13,10 +13,9 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
 ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84986967"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparentní šifrování dat pro SQL Database, spravovanou instanci SQL a Azure synapse Analytics

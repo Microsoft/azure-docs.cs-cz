@@ -8,12 +8,11 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799261"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -87,7 +86,7 @@ Tato latence může mít několik příčin:
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portů Azure SNAT (PAT)
 
-Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adresy](../load-balancer/load-balancer-outbound-connections.md#defaultsnat), ve výchozím nastavení [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Tato situace může vést k omezení připojení, ukončení připojení nebo výše uvedeným [časovým limitům požadavků](#request-timeouts).
+Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adresy](../load-balancer/load-balancer-outbound-connections.md), ve výchozím nastavení [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Tato situace může vést k omezení připojení, ukončení připojení nebo výše uvedeným [časovým limitům požadavků](#request-timeouts).
 
  Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu, která se připojuje k veřejné IP adrese. Omezení Azure SNAT (za předpokladu, že už v celé aplikaci používáte jednu instanci klienta) se vyhnete dvěma řešením:
 
@@ -109,16 +108,16 @@ Jinak čelíte problémům s připojením.
 * Pokud je back-endové dotaz pomalý, zkuste [optimalizovat dotaz](optimize-cost-queries.md) a podívat se na aktuální [zásady indexování](index-overview.md) . 
 
 ### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: podpis MAC nalezený v požadavku HTTP není stejný jako vypočítaný podpis.
-Pokud se vám zobrazila následující chybová zpráva 401: "podpis MAC nalezený v požadavku HTTP není stejný jako vypočítaný podpis." může to být způsobeno následujícími scénáři.
+Pokud se vám zobrazila následující chybová zpráva 401: Podpis MAC v požadavku HTTP neodpovídá vypočítanému podpisu, může to být způsobeno následujícími scénáři.
 
-1. Klíč se otočí a nedodržuje [osvědčené postupy](secure-access-to-data.md#key-rotation). To je obvykle případ. Cosmos DB střídání klíčů účtu může trvat několik sekund, než je možné dny v závislosti na velikosti účtu Cosmos DB.
-   1. 401 signatura MAC se krátce po rotaci klíčů a nakonec zastaví bez jakýchkoli změn. 
-1. Klíč je nesprávně nakonfigurovaný v aplikaci, takže se klíč neshoduje s účtem.
-   1. 401 problém s podpisem MAC bude konzistentní a stane se pro všechna volání.
+1. Došlo k obměně klíče, která se neřídila [osvědčenými postupy](secure-access-to-data.md#key-rotation). Toto je obvyklá příčina. Obměna klíčů účtu Cosmos DB může v závislosti na velikosti účtu Cosmos DB trvat od několika sekund až po několik dnů.
+   1. K chybě 401 kvůli podpisu MAC dochází krátce po obměně klíčů a nakonec k ní přestane docházet bez nutnosti provádět jakékoli změny. 
+1. Klíč je v aplikaci chybně nakonfigurovaný, takže neodpovídá účtu.
+   1. K problému s chybou 401 kvůli podpisu MAC bude docházet konzistentně u všech volání.
 1. Aplikace používá [klíče jen pro čtení](secure-access-to-data.md#master-keys) pro operace zápisu.
-   1. 401 k problémům s podpisem MAC se stane jenom v případě, že aplikace provede požadavky na zápis, ale žádosti o čtení budou úspěšné.
-1. Existuje konflikt časování s vytvořením kontejneru. Instance aplikace se pokouší o přístup k kontejneru před dokončením vytváření kontejneru. Nejběžnější scénář pro tuto situaci, pokud je aplikace spuštěná a kontejner se odstraní a znovu vytvoří se stejným názvem, i když je aplikace spuštěná. Sada SDK se pokusí použít nový kontejner, ale vytvoření kontejneru stále probíhá, takže nemá klíče.
-   1. 401 problém s podpisem MAC se krátce po vytvoření kontejneru zobrazuje a k tomu dojde, jenom dokud se nedokončí vytváření kontejneru.
+   1. K problému s chybou 401 kvůli podpisu MAC dojde pouze tehdy, když aplikace bude odesílat požadavky na zápis, ale požadavky na čtení proběhnou úspěšně.
+1. Při vytváření kontejneru dochází ke konfliktu časování. Instance aplikace se pokouší získat přístup ke kontejneru před dokončením jeho vytváření. Nejběžnějším scénářem je, když je aplikace spuštěná a přitom dojde k odstranění kontejneru a jeho opětovnému vytvoření se stejným názvem. Sada SDK se pokusí použít nový kontejner, ale vytváření kontejneru stále probíhá, takže nemá klíče.
+   1. K problému s chybou 401 kvůli podpisu MAC dochází krátce po vytvoření kontejneru a trvá pouze do dokončení vytváření kontejneru.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>Chyba protokolu HTTP 400. Velikost hlaviček požadavku je příliš dlouhá.
  Velikost záhlaví se zvětšila na velkou a překračuje maximální povolenou velikost. Vždycky se doporučuje použít nejnovější sadu SDK. Ujistěte se, že používáte aspoň verzi [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) nebo [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md), která do zprávy výjimky přidá trasování velikosti hlavičky.

@@ -14,10 +14,9 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84727190"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení k účtu LinkedIn v Azure Active Directory

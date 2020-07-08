@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84417935"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadný import a export identit zařízení služby IoT Hub
@@ -133,7 +132,7 @@ while(true)
 }
 ```
 
-Úloha ukládá svůj výstup do poskytnutého kontejneru objektů BLOB jako objekt blob bloku s názvem **Devices. txt**. Výstupní data obsahují data serializovaných zařízení JSON s jedním zařízením na jeden řádek.
+Úloha ukládá svůj výstup do poskytnutého kontejneru objektů BLOB jako objekt blob bloku s názvem **devices.txt**. Výstupní data obsahují data serializovaných zařízení JSON s jedním zařízením na jeden řádek.
 
 Následující příklad ukazuje výstupní data:
 
@@ -219,7 +218,7 @@ Pomocí metody **ImportDevicesAsync** se postarat, protože kromě zřizování 
 
 Metoda **ImportDevicesAsync** přijímá dva parametry:
 
-* *Řetězec* , který obsahuje identifikátor URI [Azure Storage](../storage/index.yml) kontejneru objektů blob, který se má použít jako *vstup* do úlohy. Tento identifikátor URI musí obsahovat token SAS, který uděluje přístup pro čtení kontejneru. Tento kontejner musí obsahovat objekt BLOB s názvem **Devices. txt** , který obsahuje Serializovaná data zařízení pro import do vašeho registru identity. Data importu musí obsahovat informace o zařízení ve stejném formátu JSON, který úloha **ExportImportDevice** používá při vytváření objektu BLOB **zařízení. txt** . Token SAS musí zahrnovat tato oprávnění:
+* *Řetězec* , který obsahuje identifikátor URI [Azure Storage](../storage/index.yml) kontejneru objektů blob, který se má použít jako *vstup* do úlohy. Tento identifikátor URI musí obsahovat token SAS, který uděluje přístup pro čtení kontejneru. Tento kontejner musí obsahovat objekt BLOB s názvem **devices.txt** , který obsahuje Serializovaná data zařízení pro import do vašeho registru identity. Data importu musí obsahovat informace o zařízení ve stejném formátu JSON, který úloha **ExportImportDevice** používá při vytváření objektu BLOB **devices.txt** . Token SAS musí zahrnovat tato oprávnění:
 
    ```csharp
    SharedAccessBlobPermissions.Read

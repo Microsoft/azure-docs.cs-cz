@@ -12,10 +12,9 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345270"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
@@ -25,7 +24,7 @@ Technologie v paměti v Azure SQL Database umožňují zvýšit výkon aplikace 
 
 V tomto článku se zobrazí dvě ukázky, které ilustrují použití OLTP v paměti a také indexy columnstore v Azure SQL Database.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 - [Přehled OLTP v paměti a scénáře použití](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (zahrnuje odkazy na případové studie zákazníků a informace o tom, jak začít)
 - [Dokumentace k OLTP v paměti](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
@@ -49,7 +48,7 @@ Další zjednodušený, ale vizuální odvolání výkonu pro OLTP v paměti, na
 
 1. V [Azure Portal](https://portal.azure.com/)vytvořte databázi Premium nebo pro důležité obchodní informace na serveru. Nastavte **zdroj** na ukázkovou databázi AdventureWorksLT. Podrobné pokyny najdete v tématu [Vytvoření první databáze v Azure SQL Database](database/single-database-create-quickstart.md).
 
-2. Připojte se k databázi pomocí SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx).
+2. Připojte se k databázi pomocí SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 3. Zkopírujte [skript Transact-SQL OLTP v paměti](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří nezbytné objekty v paměti v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
 
@@ -109,18 +108,18 @@ Jediným rozdílem mezi těmito dvěma *uloženými postupy* je, že první post
 - Tabulky SalesLT **.** usp_InsertSalesOrder **_inmem**
 - Tabulky SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
-V této části se naučíte, jak pomocí praktického nástroje **OSTRESS. exe** spouštět dva uložené procedury na úrovních stresující. Můžete porovnat, jak dlouho trvá dokončení dvou zátěžových testů.
+V této části zjistíte, jak pomocí užitečného nástroje **ostress.exe** spustit dva uložené procedury na úrovních stresující. Můžete porovnat, jak dlouho trvá dokončení dvou zátěžových testů.
 
-Při spuštění OSTRESS. exe doporučujeme předat hodnoty parametrů navržené pro obě následující položky:
+Když spustíte ostress.exe, doporučujeme předat hodnoty parametrů navržené pro obě následující položky:
 
 - Spusťte velký počet souběžných připojení pomocí-N100.
 - Vykonání všech cyklů připojení se stovky časů pomocí-R500.
 
 Můžete ale chtít začít s mnohem menšími hodnotami jako-N10 a-R50, abyste zajistili, že všechno funguje.
 
-### <a name="script-for-ostressexe"></a>Skript pro OSTRESS. exe
+### <a name="script-for-ostressexe"></a>Skript pro ostress.exe
 
-V této části se zobrazuje skript T-SQL, který je vložený v našem příkazovém řádku OSTRESS. exe. Skript používá položky, které byly vytvořeny pomocí skriptu T-SQL, který jste nainstalovali dříve.
+V této části se zobrazuje skript T-SQL, který je vložený do našeho ostress.exe příkazového řádku. Skript používá položky, které byly vytvořeny pomocí skriptu T-SQL, který jste nainstalovali dříve.
 
 Následující skript vloží ukázkovou prodejní objednávku s pěti položkami řádků do následujících paměťově optimalizovaných *tabulek*:
 
@@ -150,19 +149,19 @@ begin;
 end
 ```
 
-Chcete-li nastavit *_ondisk* verzi předchozího skriptu T-SQL pro OSTRESS. exe, měli byste nahradit oba výskyty podřetězce *_inmem* *_ondisk*. Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
+Chcete-li nastavit *_ondisk* verzi předchozího skriptu T-SQL pro ostress.exe, nahraďte oba výskyty *_inmem* dílčího řetězce *_ondisk*. Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
 
 #### <a name="install-rml-utilities-and-ostress"></a>Instalace RML nástrojů a`ostress`
 
-V ideálním případě byste měli v úmyslu spustit OSTRESS. exe na virtuálním počítači Azure (VM). Vytvořili jste [virtuální počítač Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) ve stejné geografické oblasti Azure, kde se nachází vaše databáze AdventureWorksLT. Místo toho ale můžete spustit OSTRESS. exe na svém přenosném počítači.
+V ideálním případě byste měli naplánovat spuštění ostress.exe na virtuálním počítači Azure (VM). Vytvořili jste [virtuální počítač Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) ve stejné geografické oblasti Azure, kde se nachází vaše databáze AdventureWorksLT. Ale můžete místo toho spustit ostress.exe na svém přenosném počítači.
 
-Na virtuálním počítači nebo na jakémkoli zvoleném hostiteli nainstalujte nástroje RML (replay Markup Language). Mezi tyto nástroje patří OSTRESS. exe.
+Na virtuálním počítači nebo na jakémkoli zvoleném hostiteli nainstalujte nástroje RML (replay Markup Language). Mezi tyto nástroje patří ostress.exe.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
-- Diskuze OSTRESS. exe v [ukázkové databázi pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
+- ostress.exe diskuzi v [ukázkové databázi pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Ukázková databáze pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx)
-- [Blog pro instalaci OSTRESS. exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
+- [Blog pro instalaci ostress.exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
 dn511655.aspx is for SQL 2014,
@@ -176,7 +175,7 @@ whereas for SQL 2016+
 
 #### <a name="run-the-_inmem-stress-workload-first"></a>Nejdřív spusťte úlohu *_inmem* zátěže.
 
-Pomocí okna příkazového řádku *RML cmd* můžete spustit náš příkazový řádek OSTRESS. exe. Parametry příkazového řádku přímo `ostress` na:
+Pomocí okna příkazového řádku *RML cmd* můžete spustit náš ostress.exe příkazový řádek. Parametry příkazového řádku přímo `ostress` na:
 
 - Spouštějte připojení 100 souběžně (-N100).
 - U každého připojení spusťte skript T-SQL 50 časy (-R50).
@@ -185,7 +184,7 @@ Pomocí okna příkazového řádku *RML cmd* můžete spustit náš příkazov�
 ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password> -d<database> -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem, @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() * 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()* 10000; INSERT INTO @od SELECT OrderQty, ProductID FROM Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int); WHILE (@i < 20) begin; EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od; set @i += 1; end"
 ```
 
-Spuštění předchozího příkazového řádku OSTRESS. exe:
+Spuštění předchozího příkazového řádku ostress.exe:
 
 1. Obnovte obsah databázových dat spuštěním následujícího příkazu v SSMS, abyste odstranili všechna data, která byla vložena v předchozích spuštěních:
 
@@ -193,7 +192,7 @@ Spuštění předchozího příkazového řádku OSTRESS. exe:
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. Zkopírujte text předchozího příkazového řádku OSTRESS. exe do schránky.
+2. Zkopírujte text předchozího ostress.exe příkazového řádku do schránky.
 
 3. Nahraďte `<placeholders>` parametrem-S-U-P-d správnými skutečnými hodnotami.
 
@@ -215,9 +214,9 @@ Po dokončení spuštění *_inmem* proveďte následující kroky pro *_ondisk*
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Úpravou příkazového řádku OSTRESS. exe nahraďte *_inmem* všechny _inmem *_ondisk*.
+2. Úpravou ostress.exe příkazového řádku nahraďte *_inmem* všechny _inmem *_ondisk*.
 
-3. Spusťte OSTRESS. exe podruhé a zachyťte výsledek trvání.
+3. Spusťte znovu ostress.exe pro druhý čas a zachyťte výsledek trvání.
 
 4. Znovu obnovte databázi (pro zodpovědnou odstranění toho, co může být velké množství testovacích dat).
 
@@ -365,7 +364,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 #### <a name="tools"></a>nástroje
 
-- [portál Azure](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

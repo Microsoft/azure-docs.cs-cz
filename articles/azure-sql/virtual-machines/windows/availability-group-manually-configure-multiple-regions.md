@@ -15,10 +15,9 @@ ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8ab62a93546719e172eec34168a0692daccf281a
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669303"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurace skupiny dostupnosti Always On SQL Server napříč různými oblastmi Azure
@@ -199,7 +198,7 @@ Další informace najdete v následujících tématech:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Skupiny dostupnosti Always On](https://msdn.microsoft.com/library/hh510230.aspx)
+* [Skupiny dostupnosti AlwaysOn](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Nástroje pro vyrovnávání zatížení Azure](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Skupiny dostupnosti Azure](../../../virtual-machines/linux/manage-availability.md)

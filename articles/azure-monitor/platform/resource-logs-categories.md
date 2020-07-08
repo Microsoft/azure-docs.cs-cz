@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
 ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418761"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
@@ -67,14 +66,14 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |DscNodeStatus|Stav uzlu DSC|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
 |ServiceLog|Protokoly služby|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft. BatchAI/pracovní prostory
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/Workspaces
 
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
@@ -173,7 +172,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |záleží|Tajné kódy datacihlů|
 |sqlPermissions|Datacihly SQLPermissions|
 |protokoly|SSH datacihlů|
-|Pracovní prostor|Pracovní prostor datacihly|
+|pracovní prostor|Pracovní prostor datacihly|
 
 
 ## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft. datacatalog/datacatalogs
@@ -297,7 +296,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |ServiceOperations|Operace služby|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|

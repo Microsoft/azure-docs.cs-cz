@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 68d41e14806a74dfc0b6e58cec9629704bad928c
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: ba4761a2b7893fd894f62b7e2252005d7afd1c91
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734482"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039972"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Běžné případy použití a scénáře pro Azure Active Directory Domain Services
 
@@ -32,16 +31,18 @@ Virtuální počítače, které jsou připojené ke spravované doméně, se daj
 
 ![Zjednodušená správa virtuálních počítačů Azure](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-Pojďme se podívat na běžný ukázkový scénář. Protože servery a jiná infrastruktura dosahují konce životnosti, chce společnost Contoso přesunout aplikace, které jsou aktuálně hostované místně, do cloudu. Jejich aktuální standardní mandát pro IT servery, které hostují podnikové aplikace, musí být připojené k doméně a musí se spravovat pomocí zásad skupiny. Správce IT společnosti Contoso má přednost před virtuálními počítači, které jsou nasazené v Azure, a usnadňuje tak správu, protože se uživatelé můžou přihlašovat pomocí svých podnikových přihlašovacích údajů. Když se připojíte k doméně, můžou se virtuální počítače nakonfigurovat taky tak, aby splňovaly požadované standardní hodnoty zabezpečení pomocí objektů zásad skupiny (GPO). Společnost Contoso nechce v Azure nasazovat, monitorovat a spravovat vlastní řadiče domény.
+Pojďme se podívat na běžný ukázkový scénář. Protože servery a jiná infrastruktura dosahují konce životnosti, chce společnost Contoso přesunout aplikace, které jsou aktuálně hostované místně, do cloudu. Jejich aktuální standardní mandát pro IT servery, které hostují podnikové aplikace, musí být připojené k doméně a musí se spravovat pomocí zásad skupiny.
 
-Azure služba AD DS je skvělým přizpůsobením tohoto případu použití. Spravovaná doména vám umožní připojit virtuální počítače k doméně, použít jedinou sadu přihlašovacích údajů a použít zásady skupiny. Jako spravovaná doména nemusíte konfigurovat a spravovat řadiče domény sami.
+Správce IT společnosti Contoso má přednost před virtuálními počítači, které jsou nasazené v Azure, a usnadňuje tak správu, protože se uživatelé můžou přihlašovat pomocí svých podnikových přihlašovacích údajů. Když se připojíte k doméně, můžou se virtuální počítače nakonfigurovat taky tak, aby splňovaly požadované standardní hodnoty zabezpečení pomocí objektů zásad skupiny (GPO). Společnost Contoso nechce v Azure nasazovat, monitorovat a spravovat vlastní řadiče domény.
+
+Azure služba AD DS je skvělým přizpůsobením tohoto případu použití. Spravovaná doména vám umožní připojit virtuální počítače k doméně, použít jedinou sadu přihlašovacích údajů a použít zásady skupiny. A vzhledem k tomu, že se jedná o spravovanou doménu, nemusíte konfigurovat a spravovat řadiče domény sami.
 
 ### <a name="deployment-notes"></a>Poznámky k nasazení
 
 Následující pokyny k nasazení se vztahují na tento příklad případu použití:
 
-* Spravované domény ve výchozím nastavení používají jednu strukturovanou strukturu organizační jednotky (OU). Všechny virtuální počítače připojené k doméně jsou v jedné organizační jednotce. V případě potřeby můžete vytvořit vlastní organizační jednotky.
-* Azure služba AD DS používá integrovaný objekt zásad skupiny pro kontejnery uživatelů a počítačů. Pro další kontrolu můžete vytvořit vlastní objekty zásad skupiny a zaměřit je na vlastní organizační jednotky.
+* Spravované domény ve výchozím nastavení používají jednu strukturovanou strukturu organizační jednotky (OU). Všechny virtuální počítače připojené k doméně jsou v jedné organizační jednotce. V případě potřeby můžete vytvořit [vlastní organizační jednotky][custom-ou].
+* Azure služba AD DS používá integrovaný objekt zásad skupiny pro kontejnery uživatelů a počítačů. Pro další kontrolu můžete [vytvořit vlastní objekty zásad skupiny][create-gpo] a zaměřit je na vlastní organizační jednotky.
 * Azure služba AD DS podporuje základní schéma objektu počítače AD. Nemůžete rozšiřuje schéma objektu počítače.
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-bind-authentication"></a>Místní aplikace navýšení a posunutí, které používají ověřování pomocí vazeb LDAP
@@ -59,7 +60,7 @@ V tomto scénáři Azure služba AD DS umožňuje aplikacím provádět vazby LD
 Následující pokyny k nasazení se vztahují na tento příklad případu použití:
 
 * Ujistěte se, že aplikace nepotřebuje upravovat ani zapisovat do adresáře. Přístup pro zápis protokolu LDAP do spravované domény není podporován.
-* Nemůžete měnit hesla přímo proti spravované doméně. Koncoví uživatelé můžou změnit heslo buď pomocí mechanismu změny hesla samoobslužné služby Azure AD, nebo v místním adresáři. Tyto změny jsou pak automaticky synchronizovány a k dispozici ve spravované doméně.
+* Nemůžete měnit hesla přímo proti spravované doméně. Koncoví uživatelé můžou změnit heslo buď pomocí [mechanismu změny hesla samoobslužné služby Azure AD][sspr] , nebo v místním adresáři. Tyto změny jsou pak automaticky synchronizovány a k dispozici ve spravované doméně.
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>Místní aplikace přenesené a posunutí, které pro přístup k adresáři používají protokol LDAP
 
@@ -91,11 +92,13 @@ V tomto scénáři se servery hostující webový front-end, SQL Server a server
 Následující pokyny k nasazení se vztahují na tento příklad případu použití:
 
 * Ujistěte se, že aplikace pro ověřování používají uživatelské jméno a heslo. Služba Azure služba AD DS nepodporuje certifikát nebo ověřování pomocí čipové karty.
-* Nemůžete měnit hesla přímo proti spravované doméně. Koncoví uživatelé můžou změnit heslo buď pomocí mechanismu změny hesla samoobslužné služby Azure AD, nebo v místním adresáři. Tyto změny jsou pak automaticky synchronizovány a k dispozici ve spravované doméně.
+* Nemůžete měnit hesla přímo proti spravované doméně. Koncoví uživatelé můžou změnit heslo buď pomocí [mechanismu změny hesla samoobslužné služby Azure AD][sspr] , nebo v místním adresáři. Tyto změny jsou pak automaticky synchronizovány a k dispozici ve spravované doméně.
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Nasazení služby Vzdálená plocha systému Windows Server v Azure
 
-Pomocí Azure služba AD DS můžete poskytovat spravované doménové služby na servery vzdálené plochy nasazené v Azure. Další informace o tomto scénáři nasazení najdete v tématu věnovaném [integraci Azure AD Domain Services s nasazením služby Vzdálená][windows-rds]plocha.
+Pomocí Azure služba AD DS můžete poskytovat spravované doménové služby na servery vzdálené plochy nasazené v Azure.
+
+Další informace o tomto scénáři nasazení najdete v tématu věnovaném [integraci Azure AD Domain Services s nasazením služby Vzdálená][windows-rds]plocha.
 
 ## <a name="domain-joined-hdinsight-clusters"></a>Clustery HDInsight připojené k doméně
 
@@ -105,11 +108,14 @@ Další informace o tomto scénáři nasazení najdete v tématu [konfigurace cl
 
 ## <a name="next-steps"></a>Další kroky
 
-Začněte tím, [že vytvoříte a nakonfigurujete Azure Active Directory Domain Services spravovanou doménu][tutorial-create-instance] .
+Začněte tím, [že vytvoříte a nakonfigurujete Azure Active Directory Domain Services spravovanou doménu][tutorial-create-instance].
 
 <!-- INTERNAL LINKS -->
 [hdinsight]: ../hdinsight/domain-joined/apache-domain-joined-configure.md
 [tutorial-create-instance]: tutorial-create-instance.md
+[custom-ou]: create-ou.md
+[create-gpo]: manage-group-policy.md
+[sspr]: ../active-directory/authentication/overview-authentication.md#self-service-password-reset
 
 <!-- EXTERNAL LINKS -->
 [windows-rds]: /windows-server/remote/remote-desktop-services/rds-azure-adds

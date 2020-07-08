@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84344573"
 ---
 # <a name="performing-disaster-recovery-drills"></a>Probíhají podrobné analýzy zotavení po havárii.

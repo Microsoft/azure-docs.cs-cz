@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fa94b7461907a2337ba448a91d67fe93c5ab2f8f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75612253"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957558"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Sada SDK REST sady Apache Phoenix dotazů serveru
 
@@ -27,11 +26,13 @@ Další informace najdete v referenčních informacích o [vyrovnávací paměti
 
 Ovladač Microsoft .NET pro Apache Phoenix dotazový Server je k dispozici jako balíček NuGet, který se dá nainstalovat z **konzoly Správce balíčků NuGet** sady Visual Studio pomocí následujícího příkazu:
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Vytvoření instance nového objektu PhoenixClient
 
-Pokud chcete začít používat knihovnu, vytvořte instanci nového `PhoenixClient` objektu a předejte `ClusterCredentials` ji `Uri` do svého clusteru a Apache Hadoop uživatelské jméno a heslo v clusteru.
+Pokud chcete začít používat knihovnu, vytvořte instanci nového `PhoenixClient` objektu a předejte ji `ClusterCredentials` `Uri` do svého clusteru a Apache Hadoop uživatelské jméno a heslo v clusteru.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,11 +49,11 @@ Chcete-li odeslat jednu nebo více požadavků na PQS, je třeba zahrnout jedine
 string connId = Guid.NewGuid().ToString();
 ```
 
-Každý příklad nejprve provede volání `OpenConnectionRequestAsync` metody a předání jedinečného identifikátoru připojení. Dále definujte `ConnectionProperties` a `RequestOptions`předejte tyto objekty a generovaný identifikátor připojení k `ConnectionSyncRequestAsync` metodě. `ConnectionSyncRequest` Objekt PQS pomáhá zajistit, aby měl klient i server konzistentní zobrazení vlastností databáze.
+Každý příklad nejprve provede volání `OpenConnectionRequestAsync` metody a předání jedinečného identifikátoru připojení. Dále definujte `ConnectionProperties` a `RequestOptions` předejte tyto objekty a generovaný identifikátor připojení k `ConnectionSyncRequestAsync` metodě. Objekt PQS `ConnectionSyncRequest` pomáhá zajistit, aby měl klient i server konzistentní zobrazení vlastností databáze.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest a jeho ConnectionProperties
 
-Pro volání `ConnectionSyncRequestAsync`, předání `ConnectionProperties` objektu.
+Pro volání `ConnectionSyncRequestAsync` , předání `ConnectionProperties` objektu.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -73,7 +74,7 @@ Tady jsou některé vlastnosti, které vás zajímají:
 
 | Vlastnost | Popis |
 | -- | -- |
-| Automatický zápis | Logická hodnota, která označuje `autoCommit` , jestli je pro transakce v Phoenixu povolený. |
+| Automatický zápis | Logická hodnota, která označuje, jestli `autoCommit` je pro transakce v Phoenixu povolený. |
 | ReadOnly | Logická hodnota, která označuje, zda je připojení jen pro čtení. |
 | TransactionIsolation | Celé číslo, které označuje úroveň izolace transakce podle specifikace JDBC – viz následující tabulka.|
 | Katalog | Název katalogu, který se má použít při načítání vlastností připojení. |
@@ -82,7 +83,7 @@ Tady jsou některé vlastnosti, které vás zajímají:
 
 Tady jsou `TransactionIsolation` hodnoty:
 
-| Hodnota izolace | Popis |
+| Hodnota izolace | Description |
 | -- | -- |
 | 0 | Transakce nejsou podporovány. |
 | 1 | Může dojít k nezměněnému čtení, čtení bez opakování a k fiktivnímu čtení. |
@@ -160,17 +161,17 @@ finally
 }
 ```
 
-Předchozí příklad vytvoří novou tabulku s názvem `Customers` pomocí `IF NOT EXISTS` možnosti. `CreateStatementRequestAsync` Volání vytvoří nový příkaz na serveru AVITICA (PQS). `finally` Blok ukončí vrácenou `CreateStatementResponse` a `OpenConnectionResponse` objekty.
+Předchozí příklad vytvoří novou tabulku s názvem `Customers` pomocí `IF NOT EXISTS` Možnosti. `CreateStatementRequestAsync`Volání vytvoří nový příkaz na serveru Avitica (PQS). `finally`Blok ukončí vrácenou `CreateStatementResponse` a `OpenConnectionResponse` objekty.
 
 ## <a name="insert-data-individually"></a>Vkládat data jednotlivě
 
-V tomto příkladu se zobrazuje jednotlivá data vložení, odkazování `List<string>` na kolekci zkratek států a oblastí:
+V tomto příkladu se zobrazuje jednotlivá data vložení, odkazování na `List<string>` kolekci zkratek států a oblastí:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-Hodnota `StateProvince` sloupce tabulky bude použita v pozdější operaci výběru.
+`StateProvince`Hodnota sloupce tabulky bude použita v pozdější operaci výběru.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -281,7 +282,7 @@ Struktura pro provedení příkazu INSERT je podobná vytvoření nové tabulky.
 
 ## <a name="batch-insert-data"></a>Dávková vložení dat
 
-Následující kód je téměř totožný s kódem pro vkládání dat jednotlivě. V tomto příkladu se `UpdateBatch` použije objekt ve volání na `ExecuteBatchRequestAsync`místo opakovaného volání `ExecuteRequestAsync` s připraveným příkazem.
+Následující kód je téměř totožný s kódem pro vkládání dat jednotlivě. V tomto příkladu se použije `UpdateBatch` objekt ve volání na `ExecuteBatchRequestAsync` místo opakovaného volání `ExecuteRequestAsync` s připraveným příkazem.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -494,7 +495,7 @@ finally
 
 Výstup `select` příkazů by měl být následující výsledek:
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84712407"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST  
@@ -36,7 +35,7 @@ V tomto tématu se dozvíte, jak spravovat Azure Media Services entit pomocí RE
 >[!NOTE]
 > Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 31. prosince 2016. Pokud potřebujete archivovat informace o úloze nebo úloze, můžete použít kód popsaný v tomto tématu.
 
-## <a name="considerations"></a>Požadavky  
+## <a name="considerations"></a>Důležité informace  
 
 Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 

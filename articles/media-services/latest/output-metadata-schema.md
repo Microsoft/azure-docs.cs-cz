@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
 ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418712"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
@@ -26,7 +25,7 @@ ms.locfileid: "84418712"
 
 Media Services neprovádí prověřování vstupních assetů za účelem generování metadat. Vstupní metadata se generují jako artefakt, když se v úloze zpracuje vstupní Asset. Proto je tento artefakt zapsán do výstupního prostředku. Pro generování metadat pro vstupní prostředky a výstupní prostředky se používají různé nástroje. Vstupní metadata proto mají trochu jiné schéma než výstupní metadata.
 
-Tento článek pojednává o prvcích a typech schématu JSON, na kterých je založená výstupní metadata ( &lt; source_file_name &gt; _manifest. JSON). <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
+Tento článek popisuje prvky a typy schémat JSON, na kterých je založena výstupní metadata ( &lt; source_file_name &gt;_manifest.json). <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
 
 Úplný příklad kódu schématu a formátu JSON najdete na konci tohoto článku.  
 

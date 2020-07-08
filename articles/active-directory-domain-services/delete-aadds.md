@@ -9,21 +9,23 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5844fca371680ce02e6628d9cacbf50ebe4c8ed0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: bece22fa0b9d41f29f8829d47a26f4ae2075feac
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734822"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040108"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Odstranění Azure Active Directory Domain Services spravované domény pomocí Azure Portal
 
-Pokud už spravovanou doménu nepotřebujete, můžete ji odstranit Azure Active Directory Domain Services (Azure služba AD DS) spravované domény. Neexistuje možnost vypnout nebo dočasně zakázat spravovanou doménu Azure služba AD DS. Odstranění spravované domény neodstraní nebo jinak nepříznivě ovlivní tenanta Azure AD. V tomto článku se dozvíte, jak pomocí Azure Portal odstranit spravovanou doménu.
+Pokud už nepotřebujete spravovanou doménu Azure Active Directory Domain Services (Azure služba AD DS), můžete ji odstranit. Neexistuje možnost vypnout nebo dočasně zakázat spravovanou doménu Azure služba AD DS. Odstranění spravované domény neodstraní nebo jinak nepříznivě ovlivní tenanta Azure AD.
+
+V tomto článku se dozvíte, jak pomocí Azure Portal odstranit spravovanou doménu.
 
 > [!WARNING]
 > **Odstranění je trvalé a nelze je vrátit zpět.**
+> 
 > Při odstranění spravované domény dojde k následujícím krokům:
 >   * Řadiče domény pro spravovanou doménu se zruší a odeberou se z této virtuální sítě.
 >   * Data ve spravované doméně se trvale odstraní. Tato data zahrnují vlastní organizační jednotky, objekty zásad skupiny, vlastní záznamy DNS, instanční objekty, účty gMSA atd., které jste vytvořili.
