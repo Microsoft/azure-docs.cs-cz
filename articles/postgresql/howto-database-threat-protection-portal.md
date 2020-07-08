@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74776139"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL – jeden server
@@ -27,7 +26,7 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 > Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for PostgreSQL nasazeny pro Pro obecné účely a paměťově optimalizované servery.
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 2. Přejděte na stránku konfigurace serveru Azure Database for PostgreSQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)**.
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 

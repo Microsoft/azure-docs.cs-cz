@@ -4,10 +4,9 @@ description: Přečtěte si, jak Durable Functions testování částí.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231230"
 ---
 # <a name="durable-functions-unit-testing"></a>Testování částí Durable Functions
@@ -39,7 +38,7 @@ Napodobování se podporuje prostřednictvím tří abstraktních tříd v Durab
 
 * `DurableActivityContextBase`
 
-Tyto třídy jsou základní třídy pro `DurableOrchestrationClient`, `DurableOrchestrationContext`a `DurableActivityContext` , které definují orchestraci klienta, nástroje Orchestrator a metody aktivity. Modely nastaví očekávané chování pro metody základní třídy, aby test jednotek mohl ověřit obchodní logiku. Pro testování částí obchodní logiky v klientu Orchestration a Orchestrator je k dispozici dva kroky.
+Tyto třídy jsou základní třídy pro `DurableOrchestrationClient` , `DurableOrchestrationContext` a, `DurableActivityContext` které definují orchestraci klienta, nástroje Orchestrator a metody aktivity. Modely nastaví očekávané chování pro metody základní třídy, aby test jednotek mohl ověřit obchodní logiku. Pro testování částí obchodní logiky v klientu Orchestration a Orchestrator je k dispozici dva kroky.
 
 1. Použijte základní třídy namísto konkrétní implementace při definování signatury funkcí klienta a nástroje Orchestrator.
 2. V testování částí je chování základních tříd a ověření obchodní logiky.
@@ -52,9 +51,9 @@ V této části test jednotek ověří logiku následující funkce triggeru HTT
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Úkol testování částí bude ověřovat hodnotu `Retry-After` hlavičky, kterou jste zadali v datové části odpovědi. Test jednotek tak bude napsaný některé z `DurableOrchestrationClientBase` metod, aby bylo zajištěno předvídatelné chování.
+Úkol testování částí bude ověřovat hodnotu hlavičky, kterou jste `Retry-After` zadali v datové části odpovědi. Test jednotek tak bude napsaný některé z `DurableOrchestrationClientBase` metod, aby bylo zajištěno předvídatelné chování.
 
-Nejprve je vyžadován druh základní třídy, `DurableOrchestrationClientBase`. Přípravou může být nová třída, která implementuje `DurableOrchestrationClientBase`. Nicméně použití napodobované architektury, jako je [MOQ](https://github.com/moq/moq4) , zjednodušuje proces:
+Nejprve je vyžadován druh základní třídy, `DurableOrchestrationClientBase` . Přípravou může být nová třída, která implementuje `DurableOrchestrationClientBase` . Nicméně použití napodobované architektury, jako je [MOQ](https://github.com/moq/moq4) , zjednodušuje proces:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -70,7 +69,7 @@ Pak `StartNewAsync` je metoda napodobná, aby vracela ID známé instance.
         ReturnsAsync(instanceId);
 ```
 
-Další `CreateCheckStatusResponse` je napodobná, aby vždycky vracela prázdnou odpověď HTTP 200.
+Další je napodobná `CreateCheckStatusResponse` , aby vždycky vracela prázdnou odpověď HTTP 200.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -94,7 +93,7 @@ Další `CreateCheckStatusResponse` je napodobná, aby vždycky vracela prázdno
     var loggerMock = new Mock<ILogger>();
 ```  
 
-Nyní je `Run` metoda volána z testu jednotky:
+Nyní `Run` je metoda volána z testu jednotky:
 
 ```csharp
     // Call Orchestration trigger function
@@ -127,7 +126,7 @@ Po zkombinování všech kroků bude test jednotky obsahovat následující kód
 
 Funkce nástroje Orchestrator jsou ještě zajímavější pro testování částí, protože obvykle mají mnohem více obchodních logik.
 
-V této části testy jednotek ověřují výstup funkce `E1_HelloSequence` Orchestrator:
+V této části testy jednotek ověřují výstup `E1_HelloSequence` funkce Orchestrator:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
@@ -168,7 +167,7 @@ Po zkombinování všech kroků bude test jednotky obsahovat následující kód
 
 Funkce aktivity mohou být testovány jednotky stejným způsobem jako netrvanlivé funkce.
 
-V této části testování částí ověří chování funkce `E1_SayHello` aktivity:
+V této části testování částí ověří chování `E1_SayHello` funkce aktivity:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 

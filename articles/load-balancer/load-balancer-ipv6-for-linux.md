@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74225322"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurace protokolu DHCPv6 pro virtuální počítače se systémem Linux
@@ -64,7 +63,7 @@ Pro každé rozhraní sítě Ethernet ve vaší konfiguraci uveďte příkaz *dh
             eno1:
               dhcp6: true
 
-Během předčasného spuštění netplan "Nástroj pro vyřízení sítě" zapisuje konfiguraci do programu/Run, aby bylo možné předat řízení zařízení zadanému síťovému démonu pro https://netplan.io/referencereferenční informace o netplan najdete v tématu.
+Během předčasného spuštění netplan "Nástroj pro vyřízení sítě" zapisuje konfiguraci do programu/Run, aby bylo možné předat řízení zařízení zadanému síťovému démonu pro referenční informace o NETPLAN najdete v tématu https://netplan.io/reference .
  
 ## <a name="debian"></a>Debian
 

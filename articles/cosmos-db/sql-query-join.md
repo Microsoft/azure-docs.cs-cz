@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74871138"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Spojení v Azure Cosmos DB
@@ -19,19 +18,19 @@ V relační databázi jsou spojení mezi tabulkami logickým Corollary návrhu n
 
 Výsledkem interního spojení je kompletní meziproduktová sada, která se účastní spojení. Výsledkem N-Way připojení je sada N-elementů N-elementů, kde každá hodnota v řazené kolekci členů je přidružena k nastavenému aliasu účasti v JOIN a je možné k nim přistoupit odkazem na tento alias v jiných klauzulích.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
-Jazyk podporuje syntaxi `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`. Tento dotaz vrací sadu řazených kolekcí členů s `N` hodnotami. Každá řazená kolekce členů má hodnoty vytvořené iterací všech aliasů kontejnerů přes jejich příslušné sady. 
+Jazyk podporuje syntaxi `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` . Tento dotaz vrací sadu řazených kolekcí členů s `N` hodnotami. Každá řazená kolekce členů má hodnoty vytvořené iterací všech aliasů kontejnerů přes jejich příslušné sady. 
 
 Pojďme se podívat na následující klauzuli FROM:`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Umožňuje každému zdroji definovat `input_alias1, input_alias2, …, input_aliasN`. Tato klauzule FROM vrací sadu N-tice (řazené kolekce členů s N hodnotami). Každá řazená kolekce členů má hodnoty vytvořené iterací všech aliasů kontejnerů přes jejich příslušné sady.  
+ Umožňuje každému zdroji definovat `input_alias1, input_alias2, …, input_aliasN` . Tato klauzule FROM vrací sadu N-tice (řazené kolekce členů s N hodnotami). Každá řazená kolekce členů má hodnoty vytvořené iterací všech aliasů kontejnerů přes jejich příslušné sady.  
   
 **Příklad 1** – 2 zdroje  
   
 - Umožňuje `<from_source1>` nastavit rozsah kontejneru a reprezentovat sadu {A, B, C}.  
   
-- Umožní `<from_source2>` vám odkazování na rozsah dokumentu input_alias1 a reprezentovat sady:  
+- Umožní vám `<from_source2>` odkazování na rozsah dokumentu input_alias1 a reprezentovat sady:  
   
     {1, 2} pro`input_alias1 = A,`  
   
@@ -39,7 +38,7 @@ Pojďme se podívat na následující klauzuli FROM:`<from_source1> JOIN <from_s
   
     {4, 5} pro`input_alias1 = C,`  
   
-- Klauzule `<from_source1> JOIN <from_source2>` from má za následek následující řazené kolekce členů:  
+- Klauzule FROM má `<from_source1> JOIN <from_source2>` za následek následující řazené kolekce členů:  
   
     (`input_alias1, input_alias2`):  
   
@@ -63,14 +62,14 @@ Pojďme se podívat na následující klauzuli FROM:`<from_source1> JOIN <from_s
   
     {300}for`input_alias2 = 3,`  
   
-- Klauzule `<from_source1> JOIN <from_source2> JOIN <from_source3>` from má za následek následující řazené kolekce členů:  
+- Klauzule FROM má `<from_source1> JOIN <from_source2> JOIN <from_source3>` za následek následující řazené kolekce členů:  
   
     (input_alias1, input_alias2, input_alias3):  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
   > [!NOTE]
-  > Nedostatek řazených kolekcí členů pro jiné hodnoty `input_alias1`, `input_alias2`, pro které `<from_source3>` nevrátily žádné hodnoty.  
+  > Nedostatek řazených kolekcí členů pro jiné hodnoty `input_alias1` , `input_alias2` , pro které `<from_source3>` nevrátily žádné hodnoty.  
   
 **Příklad 3** – 3 zdroje  
   
@@ -92,14 +91,14 @@ Pojďme se podívat na následující klauzuli FROM:`<from_source1> JOIN <from_s
   
     {300}for`input_alias2 = C,`  
   
-- Klauzule `<from_source1> JOIN <from_source2> JOIN <from_source3>` from má za následek následující řazené kolekce členů:  
+- Klauzule FROM má `<from_source1> JOIN <from_source2> JOIN <from_source3>` za následek následující řazené kolekce členů:  
   
     (`input_alias1, input_alias2, input_alias3`):  
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300), (C, 5, 300)  
   
   > [!NOTE]
-  > Výsledkem je mezi `<from_source2>` produktem a `<from_source3>` vzhledem k tomu, že obě jsou vymezeny na `<from_source1>`stejné.  Výsledkem je, že řazené kolekce členů 4 (2x2) mají hodnotu A, 0 n-tice mají hodnoty B (1x0) a 2 (2x1) řazené kolekce členů s hodnotou C.  
+  > Výsledkem je mezi produktem `<from_source2>` a `<from_source3>` vzhledem k tomu, že obě jsou vymezeny na stejné `<from_source1>` .  Výsledkem je, že řazené kolekce členů 4 (2x2) mají hodnotu A, 0 n-tice mají hodnoty B (1x0) a 2 (2x1) řazené kolekce členů s hodnotou C.  
   
 ## <a name="examples"></a>Příklady
 
@@ -118,7 +117,7 @@ Výsledek je následující:
     }]
 ```
 
-V následujícím příkladu je spojení smíšeným produktem mezi dvěma objekty JSON, kořenem `id` položky a `children` podkořenem. Skutečnost, že `children` pole není v JOIN platné, protože se zabývá jediným kořenem, který je `children` pole. Výsledek obsahuje jenom dva výsledky, protože u různých produktů každé položky s polem je přesně jenom jedna položka.
+V následujícím příkladu je spojení smíšeným produktem mezi dvěma objekty JSON, kořenem položky `id` a `children` podkořenem. Skutečnost, že `children` pole není v JOIN platné, protože se zabývá jediným kořenem, který je `children` pole. Výsledek obsahuje jenom dva výsledky, protože u různých produktů každé položky s polem je přesně jenom jedna položka.
 
 ```sql
     SELECT f.id
@@ -165,11 +164,11 @@ Výsledky jsou následující:
 
 Zdrojem od klauzule JOIN je iterátor. Proto tok v předchozím příkladu:  
 
-1. Rozbalíte všechny `c` podřízené prvky v poli.
-2. U každého podřízeného prvku `f` `c` , u kterého je první krok sloučený, použijte pro různé produkty s kořenem položky.
+1. Rozbalíte všechny podřízené prvky `c` v poli.
+2. U `f` každého podřízeného prvku `c` , u kterého je první krok sloučený, použijte pro různé produkty s kořenem položky.
 3. Nakonec naprojektujte vlastnost kořenového objektu `f` `id` samostatně.
 
-První položka, `AndersenFamily`, obsahuje pouze jeden `children` prvek, takže sada výsledků obsahuje pouze jeden objekt. Druhá položka, `WakefieldFamily`, obsahuje dva `children`, takže mezi produkty vznikne dva objekty, jeden pro každý `children` prvek. Kořenová pole v obou těchto položkách jsou stejná, stejně jako byste očekávali v různých produktech.
+První položka, `AndersenFamily` , obsahuje pouze jeden `children` prvek, takže sada výsledků obsahuje pouze jeden objekt. Druhá položka, `WakefieldFamily` , obsahuje dva `children` , takže mezi produkty vznikne dva objekty, jeden pro každý `children` prvek. Kořenová pole v obou těchto položkách jsou stejná, stejně jako byste očekávali v různých produktech.
 
 Skutečným nástrojem klauzule JOIN je vytvořit řazené kolekce členů z různých produktů v obrazci, který je jinak obtížné projektovat. Níže uvedený příklad filtruje kombinaci řazené kolekce členů, která umožňuje uživateli zvolit stav splněný celkovými řazenými kolekcemi členů.
 
@@ -224,9 +223,9 @@ Následující přípona v předchozím příkladu provádí dvojité spojení. 
     }
 ```
 
-`AndersenFamily`má jednu podřízenou položku, která má jednu PET, takže mezi produkty patří jeden řádek\*(\*1 1) z této rodiny. `WakefieldFamily`má dvě podřízené položky, jenom jeden z nich má domácí položku, ale má dvě domácí. Smíšený produkt pro tuto rodinu poskytuje 1\*1\*2 = 2 řádky.
+`AndersenFamily`má jednu podřízenou položku, která má jednu PET, takže mezi produkty patří jeden řádek (1 1 \* \* ) z této rodiny. `WakefieldFamily`má dvě podřízené položky, jenom jeden z nich má domácí položku, ale má dvě domácí. Smíšený produkt pro tuto rodinu poskytuje 1 \* 1 \* 2 = 2 řádky.
 
-V následujícím příkladu je k dispozici dodatečný filtr `pet`, který vylučuje všechny řazené kolekce členů, kde název PET není. `Shadow` Můžete sestavovat řazené kolekce členů z polí, filtrovat na libovolný prvek řazené kolekce členů a projektovat libovolnou kombinaci prvků.
+V následujícím příkladu je k dispozici dodatečný filtr `pet` , který vylučuje všechny řazené kolekce členů, kde název PET není `Shadow` . Můžete sestavovat řazené kolekce členů z polí, filtrovat na libovolný prvek řazené kolekce členů a projektovat libovolnou kombinaci prvků.
 
 ```sql
     SELECT 

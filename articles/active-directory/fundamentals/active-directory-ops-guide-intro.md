@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535311"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Referenční příručka k operacím s Azure Active Directory
@@ -36,7 +35,7 @@ Některá doporučení se nemusí vztahovat na prostředí všech zákazníků, 
 
 V každé části tohoto referenčního průvodce se doporučuje přiřadit zúčastněné strany k úspěšnému naplánování a implementaci klíčových úloh. Následující tabulka obsahuje seznam všech zúčastněných účastníků v této příručce:
 
-| Účastník | Popis |
+| Účastník | Description |
 | :- | :- |
 | Provozní tým IAM | Tento tým zpracovává každodenní provoz systému správy identit a přístupu denně. |
 | Tým pro produktivitu | Tento tým je vlastníkem a spravuje aplikace produktivity, jako je e-mail, sdílení souborů a spolupráce, rychlé zasílání zpráv a konference. |

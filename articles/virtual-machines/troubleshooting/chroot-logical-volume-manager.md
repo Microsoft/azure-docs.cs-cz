@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74684132"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
@@ -143,7 +142,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 Příkazy lze použít k instalaci, odebrání a aktualizaci softwaru. Pokud chcete opravit chyby, vyřešte problémy s virtuálními počítači.
 
 
-Spusťte příkaz lsblk a/Rescue je nyní/a/Rescue/Boot je/Boot ![Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+Spusťte příkaz lsblk a/Rescue je nyní/a/Rescue/Boot je/Boot ![ Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Provést opravy
 
@@ -171,13 +170,13 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 Příkaz **grep** vypíše seznam jader, na které **grub. cfg** ví.
 ![Jádra](./media/chroot-logical-volume-manager/kernels.png)
 
-**seznam grub2-editenv** zobrazuje, které jádro se načte při výchozím nastavení ![dalších spouštěcích jader.](./media/chroot-logical-volume-manager/kernel-default.png)
+**seznam grub2-editenv** zobrazuje, které jádro se načte při výchozím nastavení dalších spouštěcích ![ jader.](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**grub2-set-default** se používá ke změně na jinou sadu ![grub2 jádra.](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**grub2-set-default** se používá ke změně na jinou ![ sadu grub2 jádra.](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-seznam **grub2-editenv** zobrazuje, které jádro se načte při příštím spuštění ![nového jádra.](./media/chroot-logical-volume-manager/kernel-new.png)
+seznam **grub2-editenv** zobrazuje, které jádro se načte při příštím spuštění ![ nového jádra.](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**grub2-mkconfig** znovu sestaví grub. cfg pomocí požadovaných ![verzí grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**grub2-mkconfig** znovu sestaví grub. cfg pomocí požadovaných verzí ![ grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
@@ -190,7 +189,7 @@ Spuštěním příkazu **LVS** ověřte, které **LVS** jsou k dispozici pro př
 
 Ukončení prostředí **chroot** připojit požadované **LV**
 
-![Upřesnit](./media/chroot-logical-volume-manager/advanced.png)
+![Pokročilý](./media/chroot-logical-volume-manager/advanced.png)
 
 Teď znovu přihlaste k prostředí **chroot** spuštěním
 
@@ -198,14 +197,14 @@ Teď znovu přihlaste k prostředí **chroot** spuštěním
 
 Všechny LVs musí být viditelné jako připojené oddíly.
 
-![Upřesnit](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Pokročilý](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Dotaz na nainstalované **jádro**
 
-![Upřesnit](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Pokročilý](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-V případě potřeby odebrat nebo upgradovat pokročilé **jádro**
-![](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+V případě potřeby odebrat nebo upgradovat **kernel** 
+ ![ Pokročilé jádro](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>Příklad 3 – povolení sériové konzoly
@@ -252,15 +251,15 @@ umount /rescue
 
 Odpojte disk od záchranného virtuálního počítače a proveďte prohození disku.
 
-Vyberte virtuální počítač z **disků** na portálu a vyberte **Odpojit**
-![disk odpojit.](./media/chroot-logical-volume-manager/detach-disk.png) 
+Vyberte virtuální počítač z **disků** na portálu a vyberte **Odpojit** 
+ ![ disk odpojit.](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-Uložení změn ![Uložit odpojit](./media/chroot-logical-volume-manager/save-detach.png) 
+Uložení změn ![ Uložit odpojit](./media/chroot-logical-volume-manager/save-detach.png) 
 
 Disk bude nyní k dispozici, takže ho bude možné vyměnit s původním diskem s operačním systémem ovlivněného virtuálního počítače.
 
-Přejděte v Azure Portal k neúspěšnému virtuálnímu počítači a vyberte **disky** -> odkládací disk s**operačním systémem**
-![.](./media/chroot-logical-volume-manager/swap-disk.png) 
+Přejděte v Azure Portal k neúspěšnému virtuálnímu počítači a vyberte **disky**odkládací  ->  disk s**operačním systémem**. 
+ ![](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 Dokončete pole, na kterých je vybraný **disk** , je snímkový disk, který je právě odpojený v předchozím kroku. Vyžaduje se taky název virtuálního počítače, který se týká daného virtuálního počítače, a pak vyberte **OK** .
 

@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74775687"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Postup zálohování a obnovení serveru na serveru Azure Database for PostgreSQL pomocí Azure CLI
@@ -27,7 +26,7 @@ K dokončení tohoto průvodce budete potřebovat:
  
 
 > [!IMPORTANT]
-> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že v příkazovém řádku Azure CLI zadáte `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Nastavení konfigurace zálohování
 
@@ -37,9 +36,9 @@ Můžete vybrat konfiguraci serveru pro buď místně redundantní zálohy, nebo
 > Po vytvoření serveru se nedá přepnout druh redundance, který je geograficky redundantní vs místně redundantní.
 >
 
-Při vytváření serveru prostřednictvím `az postgres server create` příkazu `--geo-redundant-backup` se rozhodne možnost redundance zálohy. Pokud `Enabled`jsou pořízeny geograficky redundantní zálohy. Nebo pokud `Disabled` jsou pořízeny místně redundantní zálohy. 
+Při vytváření serveru prostřednictvím příkazu se `az postgres server create` `--geo-redundant-backup` rozhodne možnost redundance zálohy. Pokud `Enabled` jsou pořízeny geograficky redundantní zálohy. Nebo pokud `Disabled` jsou pořízeny místně redundantní zálohy. 
 
-Doba uchovávání záloh je nastavená parametrem `--backup-retention-days`. 
+Doba uchovávání záloh je nastavená parametrem `--backup-retention-days` . 
 
 Další informace o nastavení těchto hodnot během vytváření najdete v tématu [rychlý Start pro Azure Database for PostgreSQL Server CLI](quickstart-create-server-database-azure-cli.md).
 
@@ -66,13 +65,13 @@ Server obnovíte tak, že na příkazovém řádku Azure CLI zadáte tento pří
 az postgres server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-`az postgres server restore` Příkaz vyžaduje následující parametry:
+`az postgres server restore`Příkaz vyžaduje následující parametry:
 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například `2018-03-13T05:59:00-08:00`. Můžete použít také formát UTC Zulu, například `2018-03-13T13:59:00Z`. |
+| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například `2018-03-13T05:59:00-08:00` . Můžete použít také formát UTC Zulu, například `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 
 Když obnovíte Server do dřívějšího bodu v čase, vytvoří se nový server. Původní server a jeho databáze ze zadaného bodu v čase se zkopírují na nový server.
@@ -81,7 +80,7 @@ Hodnoty umístění a cenové úrovně obnoveného serveru zůstanou stejné jak
 
 Po dokončení procesu obnovení Najděte nový server a ověřte, že se data obnovila podle očekávání. Nový server má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
 
-Nový server vytvořený během obnovy nemá pravidla brány firewall nebo koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server.
+Nový server vytvořený během obnovování neobsahuje pravidla brány firewall nebo koncové body služeb virtuální sítě, které byly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně.
 
 ## <a name="geo-restore"></a>Geografické obnovení
 Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete vytvořit nový server ze zálohy stávajícího serveru. Tento nový server se dá vytvořit v libovolné oblasti, kterou Azure Database for PostgreSQL k dispozici.  
@@ -106,12 +105,12 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 ```
 
-`az postgres server georestore` Příkaz vyžaduje následující parametry:
+`az postgres server georestore`Příkaz vyžaduje následující parametry:
 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků, do které bude nový server patřit|
-|jméno | mydemoserver – geograficky obnovené | Název nového serveru. |
+|name | mydemoserver – geograficky obnovené | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy jsou používány. |
 |location | eastus | Umístění nového serveru. |
 |sku-name| GP_Gen4_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen4_8 se mapuje na server s Pro obecné účely a gen 4 s 8 virtuální jádra.|
@@ -120,7 +119,7 @@ Při vytváření nového serveru geografickým obnovením se zdědí stejná ve
 
 Po dokončení procesu obnovení Najděte nový server a ověřte, že se data obnovila podle očekávání. Nový server má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
 
-Nový server vytvořený během obnovy nemá pravidla brány firewall nebo koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server.
+Nový server vytvořený během obnovování neobsahuje pravidla brány firewall nebo koncové body služeb virtuální sítě, které byly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně.
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [zálohování](concepts-backup.md) služby

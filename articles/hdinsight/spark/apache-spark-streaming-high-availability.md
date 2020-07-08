@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74807149"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytváření úloh streamování s vysokou dostupností Apache Spark s využitím PŘÍZe
@@ -71,8 +70,8 @@ Pokud ale **ovladač** selže, všechny jeho přidružené vykonavatele selžou 
 
 Postup obnovení ovladačů pomocí kontrolního bodu DStream:
 
-* Nakonfigurujte automatické restartování ovladače u PŘÍZe s nastavením `yarn.resourcemanager.am.max-attempts`konfigurace.
-* Nastavte adresář kontrolního bodu v systému souborů kompatibilním s HDFS `streamingContext.checkpoint(hdfsDirectory)`pomocí.
+* Nakonfigurujte automatické restartování ovladače u PŘÍZe s nastavením konfigurace `yarn.resourcemanager.am.max-attempts` .
+* Nastavte adresář kontrolního bodu v systému souborů kompatibilním s HDFS pomocí `streamingContext.checkpoint(hdfsDirectory)` .
 * Restrukturalizujte zdrojový kód, aby se pro obnovení používaly kontrolní body, například:
 
     ```scala
@@ -88,7 +87,7 @@ Postup obnovení ovladačů pomocí kontrolního bodu DStream:
         context.start()
     ```
 
-* Nakonfigurujte ztracené obnovení dat tak, že povolíte Protokol WAL (Write-to `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`-před) s a zakážete replikaci v paměti pro `StorageLevel.MEMORY_AND_DISK_SER`vstupní DStreams s.
+* Nakonfigurujte ztracené obnovení dat tak, že povolíte Protokol WAL (Write-to-před) s `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")` a zakážete replikaci v paměti pro vstupní DStreams s `StorageLevel.MEMORY_AND_DISK_SER` .
 
 Pokud chcete vytvořit souhrn pomocí kontrolního bodu a spolehlivých přijímačů + WAL +, budete moct doručovat "nejméně jednou" obnovení dat:
 

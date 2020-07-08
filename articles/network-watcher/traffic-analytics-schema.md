@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666371"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schématu a dat v Analýza provozu
@@ -117,7 +116,7 @@ Níže jsou uvedené pole ve schématu a co značí.
 | FlowDirection_s | * I = příchozí<br> * O = odchozí | Směr toku v/v NSG podle protokolu na jeden tok |
 | FlowStatus_s  | * A = povoleno pravidlem NSG <br> * D = zamítnuto podle NSG pravidla  | Stav toku povolených/nblockedch podle NSG na protokol toku |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Skupina zabezpečení sítě (NSG) přidružená k toku |
-| NSGRules_s | \<Hodnota indexu 0) >\| \<NSG_RULENAME>\| \<směr toku>\| \<stav toku>\| \<FlowCount ProcessedByRule> |  Pravidlo NSG, které povoluje nebo zakázalo tento tok |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  Pravidlo NSG, které povoluje nebo zakázalo tento tok |
 | NSGRule_s | NSG_RULENAME |  Pravidlo NSG, které povoluje nebo zakázalo tento tok |
 | NSGRuleType_s | * Definováno uživatelem * výchozí |   Typ pravidla NSG používaného tokem |
 | MACAddress_s | Adresa MAC | Adresa MAC síťového adaptéru, na kterém byl tok zachycen |
@@ -127,15 +126,15 @@ Níže jsou uvedené pole ve schématu a co značí.
 | Region_s | Oblast Azure virtuální sítě/síťové rozhraní/virtuální počítač, ke kterému patří IP adresa v toku | Platí jenom pro typy toků FlowType = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow a UnknownPrivate (typy toků, kde je jenom jedna strana Azure). |
 | Region1_s | Oblast Azure | Oblast Azure virtuální sítě/síťové rozhraní/virtuální počítač, ke kterému patří zdrojová IP adresa v toku |
 | Region2_s | Oblast Azure | Oblast Azure virtuální sítě, do které patří cílová IP adresa v toku |
-| NIC_s | \<resourcegroup_Name>\/ \<NetworkInterfaceName> |  Síťová karta přidružená k virtuálnímu počítači odesílajícího nebo přijímaného provozu |
+| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  Síťová karta přidružená k virtuálnímu počítači odesílajícího nebo přijímaného provozu |
 | NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | Síťové rozhraní přidružené ke zdrojové IP adrese v toku |
 | NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | Síťové rozhraní přidružené k cílové IP adrese v toku |
-| VM_s | <resourcegroup_Name>\/ \<NetworkInterfaceName> | Virtuální počítač přidružený k síťovému rozhraní NIC_s |
+| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | Virtuální počítač přidružený k síťovému rozhraní NIC_s |
 | VM1_s | <resourcegroup_Name>/\<VirtualMachineName> | Virtuální počítač přidružený ke zdrojové IP adrese v toku |
 | VM2_s | <resourcegroup_Name>/\<VirtualMachineName> | Virtuální počítač přidružený k cílové IP adrese v toku |
-| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<Subnet> | Podsíť přidružená k NIC_s |
-| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<Subnet> | Podsíť přidružená ke zdrojové IP adrese v toku |
-| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<Subnet>    | Podsíť přidružená k cílové IP adrese v toku |
+| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsíť přidružená k NIC_s |
+| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Podsíť přidružená ke zdrojové IP adrese v toku |
+| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Podsíť přidružená k cílové IP adrese v toku |
 | ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Aplikační brána přidružená ke zdrojové IP adrese v toku |
 | ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | Application Gateway přidružená k cílové IP adrese v toku |
 | LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | Nástroj pro vyrovnávání zatížení přidružený ke zdrojové IP adrese v toku |
@@ -143,7 +142,7 @@ Níže jsou uvedené pole ve schématu a co značí.
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brána místní sítě přidružená ke zdrojové IP adrese v toku |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | Brána místní sítě přidružená k cílové IP adrese v toku |
 | ConnectionType_s | Možné hodnoty jsou VNetPeering, VpnGateway a ExpressRoute. |    Typ připojení |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<connectionName> | Název připojení Pro flowtype P2S se bude formátovat jako <gateway name>_.<VPN Client IP> |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Název připojení Pro flowtype P2S se bude formátovat jako _. <gateway name><VPN Client IP> |
 | ConnectingVNets_s | Prostor oddělený seznam názvů virtuálních sítí | V případě topologie centra a paprsků se tady naplní virtuální sítě rozbočovačů. |
 | Country_s | Dvoumístné číslo země (ISO 3166-1 alpha-2) | Bylo vyplněno pro typ toku ExternalPublic. Všechny IP adresy v poli PublicIPs_s budou sdílet stejný kód země. |
 | AzureRegion_s | Umístění oblastí Azure | Bylo vyplněno pro typ toku AzurePublic. Všechny IP adresy v poli PublicIPs_s budou sdílet oblast Azure. |
@@ -157,9 +156,9 @@ Níže jsou uvedené pole ve schématu a co značí.
 | InboundBytes_d |  Počet přijatých bajtů zaznamenaných v síťovém rozhraní, kde bylo použito pravidlo NSG | Tento údaj se naplní jenom na verzi 2 schématu protokolu toku NSG. |
 | OutboundBytes_d | Počet odeslaných bajtů zaznamenaných v síťovém rozhraní, kde bylo použito pravidlo NSG | Tento údaj se naplní jenom na verzi 2 schématu protokolu toku NSG. |
 | CompletedFlows_d  |  | Tato hodnota se vyplní nenulovou hodnotou jenom pro schéma protokolu NSG Flow verze 2. |
-| PublicIPs_s | <PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Položky oddělené řádky |
-| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Položky oddělené řádky |
-| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Položky oddělené řádky |
+| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Položky oddělené řádky |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Položky oddělené řádky |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Položky oddělené řádky |
 
 ### <a name="notes"></a>Poznámky
 
@@ -174,7 +173,7 @@ Níže jsou uvedené pole ve schématu a co značí.
 1. MaliciousFlow – jedna z IP adres patří do služby Azure Virtual Network, zatímco druhá IP adresa je veřejná IP adresa, která není v Azure, a v informačních kanálech ASC je nahlášená jako škodlivá, která Analýza provozu spotřebovává interval zpracování mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t".
 1. UnknownPrivate – jedna z IP adres patří do Azure Virtual Network a druhá IP adresa patří do rozsahu privátních IP adres, jak je definováno v dokumentu RFC 1918 a nelze ji namapovat pomocí Analýza provozu na web vlastněné zákazníkem nebo na Azure Virtual Network.
 1. Neznámé – nepovedlo se namapovat jednu z IP adres v tocích s topologií zákazníka v Azure i v místním prostředí (Web).
-1. Některé názvy polí jsou doplněny s \_nebo \_d. Tyto hodnoty neznamenají zdroj a cíl, ale označují datový typ String a Decimal.
+1. Některé názvy polí jsou doplněny s \_ nebo \_ d. Tyto hodnoty neznamenají zdroj a cíl, ale označují datový typ String a Decimal.
 
 ### <a name="next-steps"></a>Další kroky
 Odpovědi na nejčastější dotazy najdete v tématu [Nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) a zobrazení podrobností o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md) .

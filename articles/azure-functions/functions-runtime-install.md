@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74226726"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat Modul runtime služby Azure Functions Preview 2
@@ -91,7 +90,7 @@ Chcete-li dokončit instalaci Modul runtime služby Azure Functions, je nutné d
 
     ![Dokončení konfigurace Modul runtime služby Azure Functions Preview][12]
 
-1. Přejděte na **portál modul runtime služby Azure Functions** jako `https://<machinename>.<domain>/`.
+1. Přejděte na **portál modul runtime služby Azure Functions** jako `https://<machinename>.<domain>/` .
 
     ![Portál Preview Modul runtime služby Azure Functions][13]
 
@@ -99,7 +98,7 @@ Chcete-li dokončit instalaci Modul runtime služby Azure Functions, je nutné d
 
 Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
-1. Přejděte na **portál modul runtime služby Azure Functions** , `https://<machinename>.<domain>` například `https://mycomputer.mydomain.com`.
+1. Přejděte na **portál modul runtime služby Azure Functions** , například `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` .
 
 1. Zobrazí se výzva k **přihlášení**, pokud je nasazená v doméně, použijte uživatelské jméno a heslo účtu domény, jinak se přihlaste k portálu pomocí uživatelského jména a hesla místního účtu.
 

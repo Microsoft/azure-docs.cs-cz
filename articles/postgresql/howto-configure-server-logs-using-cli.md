@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74763568"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí Azure CLI
@@ -25,7 +24,7 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Server můžete nakonfigurovat tak, aby měl přístup k protokolům dotazů a protokolům chyb. Protokoly chyb můžou mít informace o automatickém vaku, připojení a kontrolním bodu.
 1. Zapněte protokolování.
-2. Pokud chcete povolit protokolování dotazů, aktualizujte **příkaz protokolu\_** a proveďte **příkaz\_log min\_Duration\_**.
+2. Pokud chcete povolit protokolování dotazů, aktualizujte ** \_ příkaz protokolu** a proveďte ** \_ \_ \_ příkaz log min Duration**.
 3. Aktualizovat dobu uchování.
 
 Další informace najdete v tématu [přizpůsobení parametrů konfigurace serveru](howto-configure-server-parameters-using-cli.md).
@@ -33,7 +32,7 @@ Další informace najdete v tématu [přizpůsobení parametrů konfigurace serv
 ## <a name="list-logs"></a>Výpis protokolů
 Chcete-li zobrazit seznam dostupných souborů protokolu pro váš server, spusťte příkaz [AZ Postgres Server-logs list](/cli/azure/postgres/server-logs) .
 
-Soubory protokolu pro server **mydemoserver.Postgres.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **soubory\_\_protokolu list. txt**.
+Soubory protokolu pro server **mydemoserver.Postgres.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem ** \_ soubory protokolu \_list.txt**.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

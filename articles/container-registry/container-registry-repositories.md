@@ -4,10 +4,9 @@ description: Pomocí Azure Portal můžete zobrazit Azure Container Registry úl
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456289"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Zobrazení úložišť registru kontejnerů v Azure Portal
@@ -24,7 +23,7 @@ Azure Container Registry umožňuje ukládat image kontejneru Docker v úložiš
 
 V Azure Portal můžete zobrazit seznam úložišť, která jsou hostitelem imagí, a také značky obrázků.
 
-Pokud jste postupovali podle kroků v části [push a pull image](container-registry-get-started-docker-cli.md) (a následně image neodstraníte), měli byste mít Nginx image ve vašem registru kontejneru. V pokynech v tomto článku jste určili, že obrázek označíte pomocí oboru názvů, "Samples `/samples/nginx`" v. Jako aktualizační program, příkaz [Docker push][docker-push] uvedený v tomto článku:
+Pokud jste postupovali podle kroků v části [push a pull image](container-registry-get-started-docker-cli.md) (a následně image neodstraníte), měli byste mít Nginx image ve vašem registru kontejneru. V pokynech v tomto článku jste určili, že obrázek označíte pomocí oboru názvů, "Samples" v `/samples/nginx` . Jako aktualizační program, příkaz [Docker push][docker-push] uvedený v tomto článku:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx

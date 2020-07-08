@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74267323"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
@@ -51,9 +50,9 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
 
 - **Produktivita** – v upřednostňovaném vývojovém prostředí můžete použít různé nástroje pro Hadoop a Spark.
 
-- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) z místa na trhu Azure.
+- **Rozšiřitelnost pomocí vlastních nástrojů nebo aplikací třetích stran** – clustery HDInsight se dají rozšířit o nainstalované komponenty a dají se také integrovat s dalšími řešeními pro velké objemy dat pomocí nasazení [jedním kliknutím](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)   z místa na trhu Azure.
 
-- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly](../hdinsight-hadoop-oms-log-analytics-tutorial.md) Azure monitor a poskytuje tak jediné rozhraní, se kterým můžete monitorovat všechny clustery.
+- **Snadná správa, Správa a monitorování** – Azure HDInsight se integruje s [protokoly Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md)   a poskytuje tak jediné rozhraní, se kterým můžete monitorovat všechny clustery.
 
 - **Integrace s dalšími službami Azure** – HDInsight je možné snadno integrovat s dalšími oblíbenými službami Azure, jako jsou tyto:
 
@@ -87,7 +86,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 
 ### <a name="on-premises-deployment-questionnaire"></a>Dotazník místního nasazení
 
-| **Daná** | **Případě** | **Zodpovědět** |
+| **Otázka** | **Příklad** | **Odpověď** |
 |---|---|---|
 |**Téma**: **prostředí**|||
 |Verze distribuce clusteru|HDP 2.6.5, CDH – 5,7|
@@ -101,7 +100,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Konfigurace hlavního uzlu|m/y, CPU, disk atd.|
 |Konfigurace datových uzlů|m/y, CPU, disk atd.|
 |Konfigurace hraničních uzlů|m/y, CPU, disk atd.|
-|Šifrování HDFS?|Ano|
+|Šifrování HDFS?|Yes|
 |Vysoká dostupnost|HDFS HA, metastore HA|
 |Zotavení po havárii/zálohování|Zálohovat cluster?|  
 |Systémy, které jsou závislé na clusteru|SQL Server, Teradata, Power BI, MongoDB|
@@ -119,7 +118,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 
 ### <a name="project-details-questionnaire"></a>Dotazník podrobností projektu
 
-|**Daná**|**Případě**|**Zodpovědět**|
+|**Otázka**|**Příklad**|**Odpověď**|
 |---|---|---|
 |**Téma**: **úlohy a frekvence**|||
 |MapReduce úlohy|10 úloh – dvakrát denně||
@@ -165,10 +164,10 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 
 |**Téma**: **infrastruktura** |||
 |---|---|---|
-|**Daná**|**Případě**|**Zodpovědět**|
+|**Otázka**|**Příklad**|**Odpověď**|
 | Upřednostňovaná oblast|USA – východ||
-|Upřednostňovaná virtuální síť?|Ano||
-|Je potřeba HA/DR?|Ano||
+|Upřednostňovaná virtuální síť?|Yes||
+|Je potřeba HA/DR?|Yes||
 |Integraci s dalšími Cloud Services?|ADF, CosmosDB||
 |**Téma**: **přesun dat**  |||
 |Předvolba počátečního zatížení|DistCp, data box, ADF, WANDisco||
@@ -177,27 +176,27 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |**Téma**: **monitorování výstrah &** |||
 |Použití monitorování Azure & upozorňování a integrace monitorování třetích stran|Použití upozorňování & monitorování Azure||
 |**Téma**: **Předvolby zabezpečení** |||
-|Privátní a chráněný datový kanál?|Ano||
-|Cluster připojený k doméně (ESP)?|     Ano||
-|Místní AD Sync ke cloudu?|     Ano||
+|Privátní a chráněný datový kanál?|Yes||
+|Cluster připojený k doméně (ESP)?|     Yes||
+|Místní AD Sync ke cloudu?|     Yes||
 |Počet uživatelů služby AD, které se mají synchronizovat?|          100||
-|Chcete synchronizovat hesla do cloudu?|    Ano||
-|Jenom uživatelé cloudu?|                 Ano||
-|Je potřeba MFA?|                       Ne|| 
-|Požadavky na autorizaci dat?|  Ano||
-|Access Control na základě rolí?|        Ano||
-|Je vyžadováno auditování?|                  Ano||
-|Šifrování dat v klidovém umístění?|          Ano||
-|Šifrování dat při přenosu?|       Ano||
+|Chcete synchronizovat hesla do cloudu?|    Yes||
+|Jenom uživatelé cloudu?|                 Yes||
+|Je potřeba MFA?|                       No|| 
+|Požadavky na autorizaci dat?|  Yes||
+|Access Control na základě rolí?|        Yes||
+|Je vyžadováno auditování?|                  Yes||
+|Šifrování dat v klidovém umístění?|          Yes||
+|Šifrování dat při přenosu?|       Yes||
 |**Téma**: **Předvolby opětovné architektury** |||
 |Jeden cluster vs konkrétní typy clusterů|Konkrétní typy clusterů||
 |Společně umístěné úložiště vs – vzdálené úložiště?|Vzdálené úložiště||
 |Menší velikost clusteru jako data se ukládají vzdáleně?|Menší velikost clusteru||
 |Použít více menších clusterů místo jednoho velkého clusteru?|Použití více menších clusterů||
-|Používáte vzdálenou metastore?|Ano||
-|Sdílet metaúložiště mezi různými clustery?|Ano||
+|Používáte vzdálenou metastore?|Yes||
+|Sdílet metaúložiště mezi různými clustery?|Yes||
 |Dekonstruovat úlohy?|Výměna úloh podregistru pomocí úloh Spark||
-|Chcete použít ADF pro orchestraci dat?|Ne||
+|Chcete použít ADF pro orchestraci dat?|No||
 
 ## <a name="next-steps"></a>Další kroky
 

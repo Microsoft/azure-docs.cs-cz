@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870560"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Příklady poddotazů SQL pro Azure Cosmos DB
@@ -109,7 +108,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-Přístup není omezený na UDF. Platí pro jakýkoliv potenciálně nákladný výraz. Můžete například využít stejný přístup k matematické funkci `avg`:
+Přístup není omezený na UDF. Platí pro jakýkoliv potenciálně nákladný výraz. Můžete například využít stejný přístup k matematické funkci `avg` :
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -366,7 +365,7 @@ Pokud je klíčové slovo VALUE v předchozím poddotazu vynecháno, dotaz se vy
 SELECT EXISTS (SELECT undefined) 
 ```
 
-Poddotaz vloží seznam hodnot do vybraného seznamu v objektu. Pokud vybraný seznam neobsahuje žádné hodnoty, bude poddotaz vracet jedinou hodnotu{}' '. Tato hodnota je definována, takže EXISTS je vyhodnocena jako true.
+Poddotaz vloží seznam hodnot do vybraného seznamu v objektu. Pokud vybraný seznam neobsahuje žádné hodnoty, bude poddotaz vracet jedinou hodnotu {} ' '. Tato hodnota je definována, takže EXISTS je vyhodnocena jako true.
 
 ### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Příklad: přepis ARRAY_CONTAINS a JOIN jako existující
 
@@ -388,7 +387,7 @@ WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 
 Kromě toho ARRAY_CONTAINS možné zaškrtnout pouze v případě, že je hodnota rovna libovolnému prvku v poli. Pokud k vlastnostem pole potřebujete komplexnější filtry, použijte příkaz JOIN.
 
-Vezměte v úvahu následující dotaz, který filtruje na základě jednotek `nutritionValue` a vlastností v poli: 
+Vezměte v úvahu následující dotaz, který filtruje na základě jednotek a `nutritionValue` vlastností v poli: 
 
 ```sql
 SELECT VALUE c.description

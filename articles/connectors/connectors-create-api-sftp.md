@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789269"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí Azure Logic Apps
@@ -57,8 +56,8 @@ Služba SFTP spouští dotazování systému souborů SFTP a hledání všech so
 
 | Klient SFTP | Akce |
 |-------------|--------|
-| WinSCP | Přejít na **Možnosti** > **Předvolby** > **přenos** > **Edit**upravit > **zachovat časové razítko** > **Zakázat** |
-| FileZilly | Přejít na **přenos** > – zachovat**zablokovaná** **Časová razítka přenesených souborů** >  |
+| WinSCP | Přejít na **Možnosti**  >  **Předvolby**  >  **přenos**  >  **Upravit**  >  **zachovat časové razítko**  >  **Zakázat** |
+| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná**Časová razítka přenesených souborů**  >  **Disable** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
@@ -75,7 +74,7 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
    Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. Do vyhledávacího pole zadejte "SFTP" jako filtr. V seznamu akce vyberte akci, kterou chcete.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Zadejte potřebné informace pro vaše připojení.
 
@@ -84,13 +83,13 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
    > Když zadáte privátní klíč SSH do vlastnosti **privátního klíče SSH** , postupujte podle těchto dalších kroků, které vám pomůžou zajistit, aby byla pro tuto vlastnost k dispozici úplná a správná hodnota. 
    > Neplatný klíč způsobí selhání připojení.
 
-   I když můžete použít libovolný textový editor, tady je ukázkový postup, který ukazuje, jak správně zkopírovat a vložit klíč pomocí programu Notepad. exe jako příklad.
+   I když můžete použít libovolný textový editor, tady je ukázkový postup, který ukazuje, jak správně zkopírovat a vložit klíč pomocí Notepad.exe jako příklad.
 
    1. V textovém editoru otevřete soubor privátního klíče SSH. Tyto kroky používají jako příklad program Poznámkový blok.
 
    1. V nabídce **Úpravy** poznámkového bloku vyberte **Vybrat vše**.
 
-   1. Vyberte **Upravit** > **kopii**.
+   1. Vyberte **Upravit**  >  **kopii**.
 
    1. V triggeru nebo aktivované akci SFTP vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků. ***Nezapomeňte klíč vložit*** . ***Klíč nezadejte ručně ani neupravujte***.
 

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74885598"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Průvodce řešením potíží s živým streamováním  
@@ -30,7 +29,7 @@ V této části najdete návrhy, jak řešit problémy související s místním
 ### <a name="problem-would-like-to-see-logs"></a>Problém: Chci zobrazit protokoly
 * **Možný problém**: nepovedlo se najít protokoly kodéru, které by mohly pomáhat při ladění problémů.
   
-  * **Wirecast proudu**: obvykle můžete najít protokoly v části C:\Users\{username} \AppData\Roaming\Wirecast\ 
+  * **Wirecast proudu**: obvykle můžete najít protokoly v části C:\Users \{ username} \AppData\Roaming\Wirecast\ 
   * **Element-Live**: můžete najít odkazy na protokoly na portálu pro správu. Klikněte na **Statistika**a pak na **protokoly**. Na stránce **soubory protokolu** se zobrazí seznam protokolů pro všechny položky Livestream. Vyberte jednu vyhovující vaší aktuální relaci. 
   * **Live Encoder Flash Media**: **adresář protokolu** můžete najít tak, že přejdete na kartu **protokol kódování** .
 

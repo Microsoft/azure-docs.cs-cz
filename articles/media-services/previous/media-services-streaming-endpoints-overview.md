@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74885615"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování  
@@ -33,7 +32,7 @@ Azure Media Services do entity koncového bodu streamování se přidaly násled
 Když vytvoříte účet Azure Media Services výchozí koncový bod streamování Standard se vytvoří v **zastaveném** stavu. Nemůžete odstranit výchozí koncový bod streamování. V závislosti na dostupnosti Azure CDN v cílové oblasti ve výchozím nastavení nově vytvořený výchozí koncový bod streamování zahrnuje taky integraci poskytovatele CDN "StandardVerizon". 
                 
 > [!NOTE]
-> Před spuštěním koncového bodu streamování je možné zakázat integraci Azure CDN. Adresa `hostname` URL streamování a adresa URL pro streamování zůstane stejné, ať už povolíte CDN.
+> Před spuštěním koncového bodu streamování je možné zakázat integraci Azure CDN. `hostname`Adresa URL streamování a adresa URL pro streamování zůstane stejné, ať už povolíte CDN.
 
 Toto téma obsahuje přehled hlavních funkcí poskytovaných koncovými body streamování.
 
@@ -50,7 +49,7 @@ Pro všechny další koncové body:`{EndpointName}-{AccountName}.streaming.media
 Od verze Media Services od ledna 2017 jsou k dispozici dva typy streamování: **Standard** (Preview) a **Premium**. Tyto typy jsou součástí koncového bodu streamování verze "2,0".
 
 
-|Typ|Popis|
+|Typ|Description|
 |--------|--------|  
 |**Standard**|Výchozí koncový bod streamování je **standardní** typ, dá se změnit na typ Premium úpravou jednotek streamování.|
 |**Premium** |Tato možnost je vhodná pro profesionální scénáře, které vyžadují vyšší škálu nebo řízení. Přesunete se na typ **Premium** úpravou jednotek streamování.<br/>Vyhrazené koncové body streamování živě v izolovaném prostředí a nesoutěží o prostředky.|
@@ -77,10 +76,10 @@ Pokud má koncový bod streamování **verze "1,0"** >= 1 prémiové jednotky st
 
 |Typ|StreamingEndpointVersion|ScaleUnits|CDN|Fakturace|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Classic|1.0|0|Není k dispozici|Free|
-|Koncový bod streamování Standard (Preview)|2.0|0|Ano|Hrazen|
-|Jednotky streamování na úrovni Premium|1.0|> 0|Ano|Hrazen|
-|Jednotky streamování na úrovni Premium|2.0|> 0|Ano|Hrazen|
+|Klasický|1.0|0|NA|Free|
+|Koncový bod streamování Standard (Preview)|2.0|0|Yes|Hrazen|
+|Jednotky streamování na úrovni Premium|1.0|> 0|Yes|Hrazen|
+|Jednotky streamování na úrovni Premium|2.0|> 0|Yes|Hrazen|
 
 ### <a name="features"></a>Funkce
 
@@ -88,7 +87,7 @@ Funkce|Standard|Premium
 ---|---|---
 Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
 CDN|Azure CDN, CDN třetí strany nebo síť CDN.|Azure CDN, CDN třetí strany nebo síť CDN.
-Fakturuje se poměrná hodnota| denně|denně
+Fakturuje se poměrná hodnota| Každý den|Každý den
 Dynamické šifrování|Ano|Ano
 Dynamické balení|Ano|Ano
 Měřítko|Automatické škálování až na cílovou propustnost.|Další jednotky streamování.
@@ -105,8 +104,8 @@ Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.m
 From | Akce | Akce
 ---|---|---
 Classic|Standard|Musíte se přihlásit
-Classic|Premium| Škálování (další jednotky streamování)
-Standard/Premium|Classic|Není k dispozici (Pokud je verze koncového bodu streamování 1,0. Může se změnit na klasický s nastavením scaleunits na hodnotu 0).
+Klasický|Premium| Škálování (další jednotky streamování)
+Standard/Premium|Klasický|Není k dispozici (Pokud je verze koncového bodu streamování 1,0. Může se změnit na klasický s nastavením scaleunits na hodnotu 0).
 Standard (s/bez CDN)|Premium se stejnými konfiguracemi|Povoleno v **počátečním** stavu. (prostřednictvím Azure Portal)
 Premium (s/bez CDN)|Standard se stejnými konfiguracemi|Povoleno v **počátečním** stavu (prostřednictvím Azure Portal)
 Standard (s/bez CDN)|Premium s jinou konfigurací|Povoleno ve stavu **Zastaveno** (prostřednictvím Azure Portal). Není povoleno ve stavu spuštěno.

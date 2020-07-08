@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74689250"
 ---
 # <a name="restore-an-app-in-azure"></a>Obnovení aplikace v Azure
@@ -50,7 +49,7 @@ Obnovení ze zálohy je k dispozici pro aplikace běžící na úrovni **Standar
    
     Můžete vybrat **existující aplikaci** a obnovit zálohu aplikace do jiné aplikace ve stejné skupině prostředků. Předtím, než použijete tuto možnost, byste už měli mít ve skupině prostředků vytvořenou jinou aplikaci s konfigurací databáze zrcadlení, která je definovaná v záloze aplikace. Můžete také vytvořit **novou** aplikaci pro obnovení obsahu.
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
 <a name="StorageAccount"></a>
 
@@ -82,7 +81,7 @@ Správu zálohování můžete automatizovat pomocí skriptů pomocí rozhraní 
 Ukázky najdete v těchto tématech:
 
 - [Ukázky Azure CLI](samples-cli.md)
-- [Ukázky Azure PowerShell](samples-powershell.md)
+- [Ukázky Azure PowerShellu](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

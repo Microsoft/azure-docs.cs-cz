@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74847845"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Historie verzí agenta ochrany hesel Azure AD
@@ -42,9 +41,9 @@ Datum vydání: 3/13/2019
   * V systémech jádra serveru může být nutné předat příznak/q instalačnímu programu .NET 4,7 a získat tak jeho úspěšnost.
 * Služba proxy teď podporuje automatický upgrade. Automatický upgrade používá službu aktualizace agenta Microsoft Azure AD Connect, která je nainstalovaná souběžně s proxy službou. Automatický upgrade je ve výchozím nastavení zapnutý.
 * Automatický upgrade lze povolit nebo zakázat pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration se dá zadat dotaz na aktuální nastavení.
-* Binární soubor služby pro službu agenta řadiče domény byl přejmenován na AzureADPasswordProtectionDCAgent. exe.
-* Binární soubor služby pro proxy službu byl přejmenován na AzureADPasswordProtectionProxy. exe. Pokud používáte bránu firewall jiného výrobce, může být nutné změnit pravidla brány firewall.
-  * Poznámka: Pokud se konfigurační soubor proxy serveru HTTP používá v předchozí instalaci proxy serveru, bude nutné po tomto upgradu přejmenovat (z *proxyservice. exe. config* na *AzureADPasswordProtectionProxy. exe. config*).
+* Binární soubor služby agenta řadiče domény byl přejmenován na AzureADPasswordProtectionDCAgent.exe.
+* Binární soubor služby pro proxy službu byl přejmenován na AzureADPasswordProtectionProxy.exe. Pokud používáte bránu firewall jiného výrobce, může být nutné změnit pravidla brány firewall.
+  * Poznámka: Pokud se konfigurační soubor proxy serveru HTTP používá v předchozí instalaci proxy serveru, bude nutné po tomto upgradu přejmenovat (od *proxyservice.exe.config* do *AzureADPasswordProtectionProxy.exe.config*).
 * Všechny kontroly funkcí s časovým omezením byly odebrány z agenta řadiče domény.
 * Drobné opravy chyb a vylepšení protokolování.
 

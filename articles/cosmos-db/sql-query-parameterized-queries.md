@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
 ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870815"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Parametrizované dotazy v Azure Cosmos DB
@@ -19,7 +18,7 @@ Cosmos DB podporuje dotazy s parametry vyjádřenými známým znakem @ Notation
 
 ## <a name="examples"></a>Příklady
 
-Můžete například napsat dotaz, který `lastName` přebírá a `address.state` jako parametry a provede ho pro různé hodnoty `lastName` a `address.state` na základě vstupu uživatele.
+Můžete například napsat dotaz, který přebírá `lastName` a `address.state` jako parametry a provede ho pro různé hodnoty `lastName` a `address.state` na základě vstupu uživatele.
 
 ```sql
     SELECT *

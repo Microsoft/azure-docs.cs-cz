@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232761"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
@@ -35,7 +34,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Tato funkce zjednodušený přijímá výsledky **foo** a předává je do **pruhů**. Řekněme, že potřebujeme změnit vrácenou hodnotu **foo** z `bool` na `int` na, aby podporovala širší škálu výsledných hodnot. Výsledek bude vypadat takto:
+Tato funkce zjednodušený přijímá výsledky **foo** a předává je do **pruhů**. Řekněme, že potřebujeme změnit vrácenou hodnotu **foo** z na na `bool` `int` , aby podporovala širší škálu výsledných hodnot. Výsledek bude vypadat takto:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -47,9 +46,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Předchozí příklady C# Target Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklady C# Target Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-Tato změna funguje pro všechny nové instance funkce Orchestrator, ale přerušuje jakékoli služby v letadle. Zvažte například případ, kdy instance orchestrace volá funkci s názvem `Foo`, vrátí zpět logickou hodnotu a pak kontrolní body. Pokud je změna podpisu nasazena v tomto okamžiku, kontrolní instance selže okamžitě po obnovení a znovu spustí volání `context.CallActivityAsync<int>("Foo")`. K této chybě dochází, protože výsledek v tabulce historie je `bool` ale nový kód se pokusí ho deserializovat na `int`.
+Tato změna funguje pro všechny nové instance funkce Orchestrator, ale přerušuje jakékoli služby v letadle. Zvažte například případ, kdy instance orchestrace volá funkci s názvem `Foo` , vrátí zpět logickou hodnotu a pak kontrolní body. Pokud je změna podpisu nasazena v tomto okamžiku, kontrolní instance selže okamžitě po obnovení a znovu spustí volání `context.CallActivityAsync<int>("Foo")` . K této chybě dochází, protože výsledek v tabulce historie je `bool` ale nový kód se pokusí ho deserializovat na `int` .
 
 Tento příklad je jedním z mnoha různých způsobů, kterými změna podpisu může přerušit existující instance. Obecně platí, že pokud nástroj Orchestrator potřebuje změnit způsob, jakým volá funkci, pak změna bude pravděpodobně problematická.
 
@@ -85,9 +84,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> Předchozí příklady C# Target Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklady C# Target Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud se vrátí **Foo** `true`původní volání foo, pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification**, které není v historii spuštění. Výsledkem je, že rozhraní odolného úlohy se nezdařila s a `NonDeterministicOrchestrationException` , protože při očekávaném volání na **panel**se objevilo volání **SendNotification** . Stejný typ problému může nastat při přidávání jakýchkoli volání do "trvanlivého" rozhraní API, včetně `CreateTimer`, `WaitForExternalEvent`atd.
+Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud se vrátí původní volání **foo** `true` , pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification**, které není v historii spuštění. Výsledkem je, že rozhraní odolného úlohy se nezdařila s a, `NonDeterministicOrchestrationException` protože při očekávaném volání na **panel**se objevilo volání **SendNotification** . Stejný typ problému může nastat při přidávání jakýchkoli volání do "trvanlivého" rozhraní API, včetně `CreateTimer` , `WaitForExternalEvent` atd.
 
 ## <a name="mitigation-strategies"></a>Strategie zmírňování
 
@@ -120,7 +119,7 @@ Nejpravděpodobnější způsob, jak zajistit, aby se změny v bezpečném nasaz
 
 ### <a name="how-to-change-task-hub-name"></a>Postup změny názvu centra úloh
 
-Centrum úloh lze v souboru *Host. JSON* nakonfigurovat následujícím způsobem:
+Centrum úloh lze nakonfigurovat v *host.js* souboru následujícím způsobem:
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -144,9 +143,9 @@ Centrum úloh lze v souboru *Host. JSON* nakonfigurovat následujícím způsobe
 }
 ```
 
-Výchozí hodnota pro Durable Functions v1. x je `DurableFunctionsHub`. Počínaje Durable Functions v 2.0 je výchozí název centra úloh stejný jako název aplikace Function App v Azure nebo `TestHubName` Pokud je spuštěný mimo Azure.
+Výchozí hodnota pro Durable Functions v1. x je `DurableFunctionsHub` . Počínaje Durable Functions v 2.0 je výchozí název centra úloh stejný jako název aplikace Function App v Azure nebo `TestHubName` Pokud je spuštěný mimo Azure.
 
-Všechny entity Azure Storage jsou pojmenovány na `hubName` základě hodnoty konfigurace. Když zadáte novému centru úkolů nový název, zajistíte, aby se pro novou verzi vaší aplikace vytvořily samostatné fronty a tabulky historie. Aplikace Function App ale zastaví zpracování událostí pro orchestraci nebo entity vytvořené v předchozím názvu centra úloh.
+Všechny entity Azure Storage jsou pojmenovány na základě `hubName` hodnoty konfigurace. Když zadáte novému centru úkolů nový název, zajistíte, aby se pro novou verzi vaší aplikace vytvořily samostatné fronty a tabulky historie. Aplikace Function App ale zastaví zpracování událostí pro orchestraci nebo entity vytvořené v předchozím názvu centra úloh.
 
 Doporučujeme nasadit novou verzi aplikace Function App do nového [slotu pro nasazení](../functions-deployment-slots.md). Sloty nasazení umožňují souběžně spustit více kopií aplikace Function App s jedním z nich, jako je aktivní *produkční* slot. Až budete připraveni vystavit novou logiku orchestrace pro stávající infrastrukturu, může to být jednoduché jako záměna nové verze do produkčního slotu.
 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74895781"
 ---
 # <a name="azure-media-services-telemetry"></a>Telemetrie Azure Media Services  
@@ -78,9 +77,9 @@ Vlastnost|Hodnota|Příklady/poznámky
 ---|---|---
 PartitionKey|{ID účtu} _ {ID entity}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>ID účtu je součástí klíče oddílu, aby se zjednodušily pracovní postupy, ve kterých se do stejného účtu úložiště zapisují více účtů Media Services.
 RowKey|{sekund až půlnoc} _ {Random Value}|01688_00199<br/><br/>Klíč řádku začíná počtem sekund až půlnoci, aby bylo možné v rámci oddílu použít dotazy na horní n-Style. Další informace najdete v [tomto](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) článku. 
-Časové razítko|Datum/Čas|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
+Časové razítko|Datum/čas|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ entity poskytující data telemetrie|Kanál/StreamingEndpoint/archiv<br/><br/>Typ události je pouze hodnota řetězce.
-Název|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Čas výskytu události telemetrie (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>Zjištěný čas je poskytován entitou odesílající telemetrii (například kanál). Může dojít k problémům při synchronizaci mezi komponentami, aby tato hodnota byla přibližná.
 Idslužby|{ID služby}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Vlastnosti specifické pro entitu|Podle definice události|Datový proud: stream1, přenosová rychlost 10123,...<br/><br/>Zbývající vlastnosti jsou definovány pro daný typ události. Obsah tabulky Azure je páry klíč-hodnota.  (to znamená, že různé řádky v tabulce mají různé sady vlastností).
@@ -101,7 +100,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Časové razítko|Časové razítko|Automatické časové razítko z Azure Table 2016 – 09-09T22:43:42.241 Z
 Typ|Typ|StreamingEndpoint
-Název|Název|StreamingEndpointRequestLog
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|Název hostitele koncového bodu|builddemoserver.origin.mediaservices.windows.net
@@ -119,8 +118,8 @@ Vlastnost|Hodnota|Příklady/poznámky
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Časové razítko|Časové razítko|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
-Typ|Typ|Channel
-Název|Název|ChannelHeartbeat
+Typ|Typ|Kanál
+Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Typ videa, zvuk/text sledování|Video/zvuk
@@ -145,7 +144,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Časové razítko|Časové razítko|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ|Archiv
-Název|Název|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Manifest|Adresa URL programu|Asset – eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba. ISM

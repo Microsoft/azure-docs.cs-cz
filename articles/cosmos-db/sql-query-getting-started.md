@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
 ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873331"
 ---
 # <a name="getting-started-with-sql-queries"></a>Začínáme s dotazy SQL
@@ -23,7 +22,7 @@ Azure Cosmos DB účty rozhraní SQL API podporují dotazování položek pomoc�
 
 ## <a name="upload-sample-data"></a>Nahrání ukázkových dat
 
-Ve vašem účtu Cosmos DB API SQL vytvořte kontejner s názvem `Families`. Vytvořte v kontejneru dvě jednoduché položky JSON. Většinu ukázkových dotazů můžete spustit v Azure Cosmos DB dotazů na dokumenty pomocí této datové sady.
+Ve vašem účtu Cosmos DB API SQL vytvořte kontejner s názvem `Families` . Vytvořte v kontejneru dvě jednoduché položky JSON. Většinu ukázkových dotazů můžete spustit v Azure Cosmos DB dotazů na dokumenty pomocí této datové sady.
 
 ### <a name="create-json-items"></a>Vytvoření položek JSON
 
@@ -52,7 +51,7 @@ Následující kód vytvoří dvě jednoduché položky JSON o rodinách. K jedn
 }
 ```
 
-`givenName` Druhá položka používá `familyName` a místo `firstName` a. `lastName`
+Druhá položka používá `givenName` a `familyName` místo `firstName` a `lastName` .
 
 ```json
 {
@@ -88,7 +87,7 @@ Následující kód vytvoří dvě jednoduché položky JSON o rodinách. K jedn
 
 Vyzkoušejte několik dotazů na data JSON, abyste se seznámili s některými klíčovými aspekty dotazovacího jazyka SQL v Azure Cosmos DB.
 
-Následující dotaz vrátí položky, kde se `id` pole shoduje. `AndersenFamily` Vzhledem k tomu, `SELECT *` že se jedná o dotaz, je výstupem dotazu úplná položka JSON. Další informace o syntaxi výběru naleznete v tématu [Select Statement](sql-query-select.md). 
+Následující dotaz vrátí položky, kde se `id` pole shoduje `AndersenFamily` . Vzhledem k tomu, že se jedná o `SELECT *` dotaz, je výstupem dotazu úplná položka JSON. Další informace o syntaxi výběru naleznete v tématu [Select Statement](sql-query-select.md). 
 
 ```sql
     SELECT *
@@ -118,7 +117,7 @@ Výsledky dotazu jsou:
     }]
 ```
 
-Následující dotaz přeformátuje výstup JSON na jiný tvar. Dotaz vychází z nového objektu `Family` JSON se dvěma vybranými poli `Name` a `City`v případě, že adresa města je stejná jako stav. "NY" NY "odpovídá tomuto případu.
+Následující dotaz přeformátuje výstup JSON na jiný tvar. Dotaz vychází z nového `Family` objektu JSON se dvěma vybranými poli `Name` a v `City` případě, že adresa města je stejná jako stav. "NY" NY "odpovídá tomuto případu.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -137,7 +136,7 @@ Výsledky dotazu jsou:
     }]
 ```
 
-Následující dotaz vrátí všechny křestní názvy podřízených objektů v rodině, jejichž `id` shoda `WakefieldFamily`je seřazena podle města.
+Následující dotaz vrátí všechny křestní názvy podřízených objektů v rodině `id` , jejichž shoda `WakefieldFamily` je seřazena podle města.
 
 ```sql
     SELECT c.givenName
@@ -160,7 +159,7 @@ Výsledky jsou následující:
 
 Předchozí příklady ukazují několik aspektů Cosmos DB dotazovacího jazyka:  
 
-* Vzhledem k tomu, že rozhraní SQL API funguje na hodnotách JSON, pracuje s entitami ve tvaru stromu namísto řádků a sloupců. Můžete odkazovat na uzly stromu libovolné hloubky, například `Node1.Node2.Node3…..Nodem`, podobně jako na odkaz na dvě části `<table>.<column>` v ANSI SQL.
+* Vzhledem k tomu, že rozhraní SQL API funguje na hodnotách JSON, pracuje s entitami ve tvaru stromu namísto řádků a sloupců. Můžete odkazovat na uzly stromu libovolné hloubky, například `Node1.Node2.Node3…..Nodem` , podobně jako na odkaz na dvě části `<table>.<column>` v ANSI SQL.
 
 * Vzhledem k tomu, že dotazovací jazyk pracuje s daty bez schématu, musí být systém typů svázán dynamicky. Stejný výraz může vracet různé typy v různých položkách. Výsledek dotazu je platná hodnota JSON, ale nezaručujeme, že by mělo být pevně dané schéma.  
 

@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74871257"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB provádění dotazů SQL
 
-Libovolný jazyk schopný provádět požadavky HTTP/HTTPS může volat Cosmos DB REST API. Cosmos DB také nabízí programovací knihovny pro programovací jazyky .NET, Node. js, JavaScript a Python. REST API a knihovny podporují dotazování prostřednictvím SQL a sada .NET SDK také podporuje [dotazování LINQ](sql-query-linq-to-sql.md).
+Libovolný jazyk schopný provádět požadavky HTTP/HTTPS může volat Cosmos DB REST API. Cosmos DB také nabízí programovací knihovny pro programovací jazyky .NET, Node.js, JavaScript a Python. REST API a knihovny podporují dotazování prostřednictvím SQL a sada .NET SDK také podporuje [dotazování LINQ](sql-query-linq-to-sql.md).
 
 Následující příklady ukazují, jak vytvořit dotaz a odeslat ho proti Cosmos databázovému účtu.
 
@@ -23,9 +22,9 @@ Následující příklady ukazují, jak vytvořit dotaz a odeslat ho proti Cosmo
 
 Cosmos DB nabízí otevřený programovací model RESTful přes protokol HTTP. Model prostředků se skládá ze sady prostředků v rámci databázového účtu, který obsahuje podmínky pro předplatné Azure. Databázový účet se skládá ze sady *databází*, z nichž každá může obsahovat více *kontejnerů*, které zase obsahují *položky*, UDF a další typy prostředků. Každý prostředek Cosmos DB je adresovatelný pomocí logického a stabilního identifikátoru URI. Sada prostředků se nazývá *informační kanál*. 
 
-Základní model interakce s těmito prostředky je prostřednictvím operací `GET`http, `PUT`, `POST`a `DELETE`, s jejich standardními interpretací. Použijte `POST` k vytvoření nového prostředku, spuštění uložené procedury nebo vystavení dotazu Cosmos DB. Dotazy jsou vždy operace jen pro čtení bez vedlejších účinků.
+Základní model interakce s těmito prostředky je prostřednictvím operací HTTP `GET` , `PUT` , `POST` a `DELETE` , s jejich standardními interpretací. Použijte `POST` k vytvoření nového prostředku, spuštění uložené procedury nebo vystavení dotazu Cosmos DB. Dotazy jsou vždy operace jen pro čtení bez vedlejších účinků.
 
-Následující příklady znázorňují `POST` dotaz rozhraní SQL API proti ukázkovým položkám. Dotaz má jednoduchý filtr na vlastnost JSON `name` . `x-ms-documentdb-isquery` Typ Content-Type: `application/query+json` Headers označuje, že operace je dotaz. Nahraďte `mysqlapicosmosdb.documents.azure.com:443` identifikátorem URI pro váš Cosmos DB účet.
+Následující příklady znázorňují `POST` dotaz rozhraní SQL API proti ukázkovým položkám. Dotaz má jednoduchý filtr na `name` vlastnost JSON. `x-ms-documentdb-isquery`Typ Content-Type: `application/query+json` Headers označuje, že operace je dotaz. Nahraďte `mysqlapicosmosdb.documents.azure.com:443` identifikátorem URI pro váš Cosmos DB účet.
 
 ```json
     POST https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -143,15 +142,15 @@ Výsledky jsou následující:
     }
 ```
 
-Pokud se výsledky dotazu nevejdou na jednu stránku, REST API vrátí token pokračování v hlavičce `x-ms-continuation-token` odpovědi. Klienti mohou stránkování výsledků zahrnutím hlavičky do následujících výsledků. Můžete také řídit počet výsledků na stránce přes hlavičku `x-ms-max-item-count` čísla.
+Pokud se výsledky dotazu nevejdou na jednu stránku, REST API vrátí token pokračování v `x-ms-continuation-token` hlavičce odpovědi. Klienti mohou stránkování výsledků zahrnutím hlavičky do následujících výsledků. Můžete také řídit počet výsledků na stránce přes `x-ms-max-item-count` hlavičku čísla.
 
 Pokud má dotaz agregační funkci, jako je počet, stránka dotazu může vracet částečně agregovanou hodnotu jenom na jedné stránce výsledků. Klienti musí pomocí těchto výsledků provádět agregaci druhé úrovně, aby bylo možné vytvořit konečné výsledky. Například součet počtu vrácených na jednotlivých stránkách vrátí celkový počet.
 
-Chcete-li spravovat zásady konzistence dat pro dotazy, `x-ms-consistency-level` použijte záhlaví jako ve všech požadavcích REST API. Konzistence relace také vyžaduje, aby se `x-ms-session-token` v žádosti o dotaz navracelo poslední záhlaví souboru cookie. Zásada indexování dotazovaného kontejneru může mít také vliv na konzistenci výsledků dotazu. S výchozími nastaveními zásad indexování pro kontejnery je index vždy aktuální s obsahem položky a výsledky dotazu odpovídají konzistenci zvolené pro data. Další informace najdete v tématu [Azure Cosmos DB úrovně konzistence] [úrovně konzistence].
+Chcete-li spravovat zásady konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví jako ve všech požadavcích REST API. Konzistence relace také vyžaduje, aby se `x-ms-session-token` v žádosti o dotaz navracelo poslední záhlaví souboru cookie. Zásada indexování dotazovaného kontejneru může mít také vliv na konzistenci výsledků dotazu. S výchozími nastaveními zásad indexování pro kontejnery je index vždy aktuální s obsahem položky a výsledky dotazu odpovídají konzistenci zvolené pro data. Další informace najdete v tématu [Azure Cosmos DB úrovně konzistence] [úrovně konzistence].
 
 Pokud nakonfigurované zásady indexování na kontejneru nepodporují zadaný dotaz, Azure Cosmos DB server vrátí 400 "Chybný požadavek". Tato chybová zpráva vrátí dotazy s cestami výslovně vyloučenými z indexování. Můžete zadat `x-ms-documentdb-query-enable-scan` hlavičku, která umožní dotazu provést kontrolu, pokud není k dispozici index.
 
-Podrobné metriky pro provádění dotazů můžete získat nastavením `x-ms-documentdb-populatequerymetrics` záhlaví na. `true` Další informace najdete v tématu [metriky dotazů SQL pro Azure Cosmos DB](sql-api-query-metrics.md).
+Podrobné metriky pro provádění dotazů můžete získat nastavením `x-ms-documentdb-populatequerymetrics` záhlaví na `true` . Další informace najdete v tématu [metriky dotazů SQL pro Azure Cosmos DB](sql-api-query-metrics.md).
 
 ## <a name="c-net-sdk"></a>C# (.NET SDK)
 
@@ -217,7 +216,7 @@ Následující příklad porovnává dvě vlastnosti pro rovnost v rámci každ�
     }
 ```
 
-Následující příklad ukazuje spojení vyjádřená pomocí LINQ `SelectMany`.
+Následující příklad ukazuje spojení vyjádřená pomocí LINQ `SelectMany` .
 
 ```csharp
     foreach (var pet in client.CreateDocumentQuery(containerLink,
@@ -241,9 +240,9 @@ Následující příklad ukazuje spojení vyjádřená pomocí LINQ `SelectMany`
     }
 ```
 
-Klient rozhraní .NET automaticky projde všechny stránky výsledků dotazu v `foreach` blocích, jak je znázorněno v předchozím příkladu. Možnosti dotazu představené v části [REST API](#REST-API) jsou také k dispozici v sadě .NET SDK pomocí tříd `FeedOptions` a `FeedResponse` v `CreateDocumentQuery` metodě. Počet stránek můžete řídit pomocí `MaxItemCount` nastavení.
+Klient rozhraní .NET automaticky projde všechny stránky výsledků dotazu v `foreach` blocích, jak je znázorněno v předchozím příkladu. Možnosti dotazu představené v části [REST API](#REST-API) jsou také k dispozici v sadě .NET SDK pomocí `FeedOptions` tříd a `FeedResponse` v `CreateDocumentQuery` metodě. Počet stránek můžete řídit pomocí `MaxItemCount` nastavení.
 
-Můžete také explicitně řídit `IDocumentQueryable` stránkování vytvořením pomocí `IQueryable` objektu a potom přečtením `ResponseContinuationToken` hodnot a jejich předáním zpátky jako `RequestContinuationToken` v. `FeedOptions` Můžete nastavit `EnableScanInQuery` , aby se povolily kontroly, když není dotaz podporovaný nakonfigurovanou zásadou indexování. V případě kontejnerů rozdělených do oddílů `PartitionKey` můžete použít ke spuštění dotazu na jeden oddíl, i když ho Azure Cosmos DB může automaticky extrahovat z textu dotazu. Můžete použít `EnableCrossPartitionQuery` ke spouštění dotazů proti více oddílům.
+Můžete také explicitně řídit stránkování vytvořením `IDocumentQueryable` pomocí objektu a `IQueryable` potom přečtením `ResponseContinuationToken` hodnot a jejich předáním zpátky jako `RequestContinuationToken` v `FeedOptions` . Můžete nastavit `EnableScanInQuery` , aby se povolily kontroly, když není dotaz podporovaný nakonfigurovanou zásadou indexování. V případě kontejnerů rozdělených do oddílů můžete použít `PartitionKey` ke spuštění dotazu na jeden oddíl, i když ho Azure Cosmos DB může automaticky extrahovat z textu dotazu. Můžete použít `EnableCrossPartitionQuery` ke spouštění dotazů proti více oddílům.
 
 Další ukázky .NET s dotazy najdete v [ukázkách Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3) v GitHubu.
 

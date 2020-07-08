@@ -15,14 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74887013"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
-`Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [Předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Toto téma ukazuje `H264 Multiple Bitrate 4K` Předvolby ve formátu XML a JSON.  
   
@@ -32,7 +31,7 @@ ms.locfileid: "74887013"
 >  Měli byste získat typ rezervované jednotky Premium s kódováním 4K. Další informace najdete v tématu [Jak škálovat kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
   
 > [!NOTE]
->  Při úpravách `Width` hodnot `Height` a v rámci vrstev se ujistěte, že poměr stran zůstává konzistentní. Příklad: 1080, 1280 × 720, 1080x576, 640x360. Neměli byste používat kombinaci poměrů stran, například: 1280 × 720, 720x480, 640x360.  
+>  Při úpravách `Width` hodnot a v `Height` rámci vrstev se ujistěte, že poměr stran zůstává konzistentní. Příklad: 1080, 1280 × 720, 1080x576, 640x360. Neměli byste používat kombinaci poměrů stran, například: 1280 × 720, 720x480, 640x360.  
   
  XML  
   

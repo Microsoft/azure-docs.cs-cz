@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74462615"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Analýza médií pomocí Azure Portal 
@@ -131,7 +130,7 @@ Tento procesor pomáhá detekovat potenciální obsah pro dospělé a pikantní 
 
 ![Střední videa](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>Version 
+### <a name="version"></a>Verze 
 Použijte "2,0".
 
 ### <a name="mode"></a>Mode

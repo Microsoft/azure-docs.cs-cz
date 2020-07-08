@@ -4,10 +4,9 @@ description: Využijte řízení přístupu na základě role (RBAC) Azure a spr
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74893480"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
@@ -16,10 +15,10 @@ Služba Azure Container Registry podporuje sadu [integrovaných rolí Azure](../
 
 | Role/oprávnění       | [Přístup Správce prostředků](#access-resource-manager) | [Vytvořit nebo odstranit registr](#create-and-delete-registry) | [Obrázek push](#push-image) | [Obrázek pro vyžádání obsahu](#pull-image) | [Odstranit data obrázku](#delete-image-data) | [Změnit zásady](#change-policies) |   [Podepsat obrázky](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| Vlastník | × | × | × | × | × | × |  |  
-| Přispěvatel | × | × | × |  × | × | × |  |  
-| Čtenář | × |  |  | × |  |  |  |
-| AcrPush |  |  | × | × | |  |  |  
+| Vlastník | X | X | X | X | X | X |  |  
+| Přispěvatel | X | X | X |  X | X | X |  |  
+| Čtenář | X |  |  | X |  |  |  |
+| AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | × |  |  |  |  
 | AcrDelete |  |  |  |  | × |  |  |
 | AcrImageSigner |  |  |  |  |  |  | × |
@@ -30,7 +29,7 @@ Pokaždé, když se uplatní oprávnění, osvědčeným postupem je poskytnout 
 
 ### <a name="cicd-solutions"></a>Řešení CI/CD
 
-Při automatizaci `docker build` příkazů z řešení CI/CD potřebujete `docker push` možnosti. Pro tyto scénáře bezpostupné služby doporučujeme přiřadit roli **AcrPush** . Tato role na rozdíl od širší role **přispěvatele** zabraňuje účtu v provádění jiných operací registru nebo přístupu k Azure Resource Manager.
+Při automatizaci `docker build` příkazů z řešení CI/CD potřebujete `docker push` Možnosti. Pro tyto scénáře bezpostupné služby doporučujeme přiřadit roli **AcrPush** . Tato role na rozdíl od širší role **přispěvatele** zabraňuje účtu v provádění jiných operací registru nebo přístupu k Azure Resource Manager.
 
 ### <a name="container-host-nodes"></a>Uzly hostitele kontejneru
 
@@ -38,7 +37,7 @@ Podobně uzly se spuštěnými kontejnery potřebují roli **AcrPull** , ale nem
 
 ### <a name="visual-studio-code-docker-extension"></a>Rozšíření Docker Visual Studio Code
 
-Pro nástroje, jako je [rozšíření docker](https://code.visualstudio.com/docs/azure/docker)Visual Studio Code, je pro výpis dostupných registrů kontejnerů Azure potřeba další přístup od poskytovatele prostředků. V takovém případě Poskytněte uživatelům přístup k roli **Čtenář** nebo **Přispěvatel** . Tyto role umožňují `docker pull`, `docker push`, `az acr list`, `az acr build`a další funkce. 
+Pro nástroje, jako je [rozšíření docker](https://code.visualstudio.com/docs/azure/docker)Visual Studio Code, je pro výpis dostupných registrů kontejnerů Azure potřeba další přístup od poskytovatele prostředků. V takovém případě Poskytněte uživatelům přístup k roli **Čtenář** nebo **Přispěvatel** . Tyto role umožňují `docker pull` , `docker push` , `az acr list` , a `az acr build` Další funkce. 
 
 ## <a name="access-resource-manager"></a>Přístup Správce prostředků
 

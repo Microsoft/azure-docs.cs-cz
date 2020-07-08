@@ -9,13 +9,12 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792160"
 ---
-# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověření XML pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověřování XML pro podnikovou integraci B2B v Azure Logic Apps pomocí Enterprise Integration Packu
 
 Ve scénářích B2B se často musí obchodní partneři v rámci smlouvy ujistit, že jsou zprávy, které vyměňují, platné předtím, než může začít jakékoli zpracování dat. Dokumenty můžete v předdefinovaném schématu ověřit pomocí akce ověřování XML, která je k dispozici ve Enterprise Integration Pack.
 
@@ -31,11 +30,11 @@ Ve scénářích B2B se často musí obchodní partneři v rámci smlouvy ujisti
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. Pokud máte prázdnou aplikaci logiky, v návrháři aplikace logiky zadejte `HTTP request` do vyhledávacího pole jako filtr a vyberte, **když se přijme požadavek HTTP** . V opačném případě pokračujte k dalšímu kroku.
+1. Pokud máte prázdnou aplikaci logiky, v návrháři aplikace logiky zadejte do vyhledávacího pole `HTTP request` jako filtr a vyberte, **když se přijme požadavek HTTP** . V opačném případě pokračujte k dalšímu kroku.
 
 1. V posledním kroku pracovního postupu vyberte **Nový krok**.
 
-   Chcete-li přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku, která spojuje tyto kroky, aby se zobrazilo znaménko plus (**+**). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku, která spojuje tyto kroky, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
 1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `xml validation` jako filtr. V seznamu akce vyberte **ověřování XML**.
 

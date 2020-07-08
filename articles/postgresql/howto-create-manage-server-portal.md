@@ -7,17 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: bcddd64afca29ac9fdd5d284fc8f809ff9e2477d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535688"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Správa serveru Azure Database for PostgreSQL pomocí Azure Portal
 V tomto článku se dozvíte, jak spravovat servery Azure Database for PostgreSQL. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
 
-## <a name="sign-in"></a>Přihlášení
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+## <a name="sign-in"></a>Přihlásit se
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 Další informace o tom, jak vytvořit a začít s Azure Database for PostgreSQL serverem, najdete v [rychlém](quickstart-create-server-database-portal.md) startu.

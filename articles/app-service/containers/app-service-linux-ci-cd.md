@@ -9,10 +9,9 @@ ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687633"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování pomocí služby Web App for Containers
@@ -23,7 +22,7 @@ V tomto kurzu nakonfigurujete průběžné nasazování pro vlastní image konte
 
 ![Snímek Webhooku ACR](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na levé straně stránky vyberte možnost **App Service** .
 3. Vyberte název aplikace, pro kterou chcete nakonfigurovat průběžné nasazování.
 4. Na stránce **nastavení kontejneru** vyberte **jeden kontejner** .
@@ -41,7 +40,7 @@ V Container Registry kliknutím na Webhooky zobrazíte aktuální Webhooky.
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Povolit průběžné nasazování pomocí Docker Hub (volitelné)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na levé straně stránky vyberte možnost **App Service** .
 3. Vyberte název aplikace, pro kterou chcete nakonfigurovat průběžné nasazování.
 4. Na stránce **nastavení kontejneru** vyberte **jeden kontejner** .

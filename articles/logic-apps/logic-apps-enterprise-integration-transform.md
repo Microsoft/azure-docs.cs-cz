@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792394"
 ---
-# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Vytvořit mapy, které transformují XML mezi formáty v Azure Logic Apps pomocí Enterprise Integration Pack
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Vytváření map transformujících XML mezi formáty v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
-Převod Enterprise Integration Connector převede data z jednoho formátu do jiného formátu. Například můžete mít příchozí zprávu, která obsahuje aktuální datum ve formátu YearMonthDay. K přeformátování data na formát MonthDayYear můžete použít transformaci.
+Konektor pro transformace podnikové integrace převádí data z jednoho formátu do jiného. Například můžete mít příchozí zprávu, která obsahuje aktuální datum ve formátu rok-měsíc-den. Pomocí transformace můžete toto datum převést do formátu měsíc-den-rok.
 
 ## <a name="what-does-a-transform-do"></a>Co dělá transformace?
 Transformace, která se také označuje jako mapa, se skládá ze zdrojového schématu XML (Input) a cílového schématu XML (výstup). Můžete použít různé integrované funkce pro usnadnění manipulace s daty nebo jejich řízení, včetně manipulace s řetězci, podmíněného přiřazení, aritmetických výrazů, formátovacích modulů data a času a dokonce i konstrukcí smyček.
@@ -111,7 +110,7 @@ Akce Transform podporuje také mapy nebo transformace s odkazem na externí sest
 
 
 ### <a name="byte-order-mark"></a>Znak pořadí bajtů
-Ve výchozím nastavení se odpověď z transformace začíná znakem pořadí bajtů (BOM). K této funkci můžete přistupovat pouze při práci v editoru zobrazení kódu. Chcete-li tuto funkci zakázat `disableByteOrderMark` , zadejte `transformOptions` pro vlastnost:
+Ve výchozím nastavení se odpověď z transformace začíná znakem pořadí bajtů (BOM). K této funkci můžete přistupovat pouze při práci v editoru zobrazení kódu. Chcete-li tuto funkci zakázat, zadejte `disableByteOrderMark` pro `transformOptions` vlastnost:
 
 ```json
 "Transform_XML": {

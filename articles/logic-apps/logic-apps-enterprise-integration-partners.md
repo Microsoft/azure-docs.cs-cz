@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792443"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Přidání obchodních partnerů do integračních účtů pro Azure Logic Apps
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Přidání obchodních partnerů do účtů integrace pro Azure Logic Apps
 
-V [Azure Logic Apps](../logic-apps/logic-apps-overview.md)můžete vytvářet automatizované pracovní postupy integrace B2B (Business-to-Business) pomocí [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) s vašimi Logic Apps. Pro reprezentaci vaší organizace a dalších uživatelů můžete vytvořit a přidat obchodní partnery jako artefakty do účtu pro integraci. Partneři jsou entity, které se účastní transakcí B2B a zprávy Exchange.
+V [Azure Logic Apps](../logic-apps/logic-apps-overview.md)můžete vytvářet automatizované pracovní postupy integrace B2B (Business-to-Business) pomocí [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) s vašimi Logic Apps. Pro reprezentaci vaší organizace a dalších uživatelů můžete vytvořit a přidat obchodní partnery jako artefakty do účtu pro integraci. Partneři jsou entity, které se podílejí na transakcích B2B a vyměňují si mezi sebou zprávy.
 
 Před vytvořením těchto partnerů nezapomeňte diskutovat a sdílet informace s vašimi partnery o tom, jak identifikovat a ověřit zprávy, které druhý odesílá. Jakmile souhlasíte s těmito podrobnostmi, jste připraveni vytvořit partnery v účtu pro integraci.
 
@@ -35,7 +34,7 @@ V rámci smlouvy zadáte podrobnosti pro zpracování příchozích a odchozích
 
 ## <a name="create-partner"></a>Vytvořit partnera
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a vyberte **účty pro integraci**.
 
@@ -53,11 +52,11 @@ V rámci smlouvy zadáte podrobnosti pro zpracování příchozích a odchozích
 
    ![Klikněte na tlačítko Přidat a zadejte podrobnosti o partnerovi.](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název** | Ano | Název partnera |
-   | **Kvalifikátor** | Ano | Ověřovací text, který poskytuje organizacím jedinečné obchodní identity, například **D-U-N-S (Dun & Bradstreet)**. <p>Partneři se můžou rozhodnout pro vzájemně definovanou obchodní identitu. U těchto scénářů vyberte možnost **vzájemně definované** pro EDIFACT nebo **vzájemně definované (X12)** pro X12. <p>Pro RosettaNet vyberte pouze **Duns**, což je standard. |
-   | **Osa** | Ano | Hodnota, která identifikuje dokumenty, které vaše aplikace logiky obdrží. <p>Pro RosettaNet musí být tato hodnota devět číslic, které odpovídají číslu DUNS. |
+   | **Název** | Yes | Název partnera |
+   | **Kvalifikátor** | Yes | Ověřovací text, který poskytuje organizacím jedinečné obchodní identity, například **D-U-N-S (Dun & Bradstreet)**. <p>Partneři se můžou rozhodnout pro vzájemně definovanou obchodní identitu. U těchto scénářů vyberte možnost **vzájemně definované** pro EDIFACT nebo **vzájemně definované (X12)** pro X12. <p>Pro RosettaNet vyberte pouze **Duns**, což je standard. |
+   | **Hodnota** | Yes | Hodnota, která identifikuje dokumenty, které vaše aplikace logiky obdrží. <p>Pro RosettaNet musí být tato hodnota devět číslic, které odpovídají číslu DUNS. |
    ||||
 
    > [!NOTE]
@@ -84,14 +83,14 @@ Vyberte dlaždici **partneři** .
 
    V případě RosettaNet můžete v části **vlastnosti partnerů RosettaNet**zadat tyto další informace:
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Klasifikace partnerů** | Ne | Typ organizace partnera |
-   | **Kód dodavatelského řetězce** | Ne | Kód dodavatelského řetězce partnera, například "informační technologie" nebo "elektronické součásti" |
-   | **Kontaktní osoba** | Ne | Jméno kontaktní osoby partnera |
-   | **E-mailu** | Ne | E-mailová adresa partnera |
-   | **Fax** | Ne | Faxové číslo partnera |
-   | **Telephone** | Ne | Telefonní číslo partnera |
+   | **Klasifikace partnerů** | No | Typ organizace partnera |
+   | **Kód dodavatelského řetězce** | No | Kód dodavatelského řetězce partnera, například "informační technologie" nebo "elektronické součásti" |
+   | **Kontaktní osoba** | No | Jméno kontaktní osoby partnera |
+   | **E-mail** | No | E-mailová adresa partnera |
+   | **Fax** | No | Faxové číslo partnera |
+   | **Telephone** | No | Telefonní číslo partnera |
    ||||
 
 1. Až budete hotovi, uložte změny kliknutím na **tlačítko OK** .

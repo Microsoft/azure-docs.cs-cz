@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687800"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Apache Hivu pomocí Nástrojů Data Lake pro Visual Studio
@@ -58,7 +57,7 @@ Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** re�
 
     ![Odeslat dotaz na podregistr Batch, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM`, IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF. IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
+    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte `SELECT * FROM` , IntelliSense zobrazí seznam všech navržených názvů tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF. IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
 
 7. Na panelu nástrojů dotazu (oblast pod kartou dotaz a nad textem dotazu) vyberte **Odeslat**nebo vyberte šipku rozevírací vedle možnosti **Odeslat** a zvolte možnost **Upřesnit** v seznamu rozevírací. Pokud vyberete možnost druhé,
 
@@ -104,7 +103,7 @@ Chcete-li spustit dotaz na podregistr vytvořením aplikace podregistru, postupu
 
     * `STORED AS TEXTFILE LOCATION`: Říká podregistru, že data jsou uložená v *příkladu nebo v datovém* adresáři a že se ukládají jako text.
 
-    * `SELECT`: Vybere počet všech řádků, ve kterých sloupec `t4` obsahuje hodnotu `[ERROR]`. Tento příkaz vrátí hodnotu `3`, protože tři řádky obsahují tuto hodnotu.
+    * `SELECT`: Vybere počet všech řádků, ve kterých sloupec `t4` obsahuje hodnotu `[ERROR]` . Tento příkaz vrátí hodnotu `3` , protože tři řádky obsahují tuto hodnotu.
 
     * `INPUT__FILE__NAME LIKE '%.log'`: Oznamuje podregistru, aby vracel pouze data ze souborů končících log. log. Tato klauzule omezí hledání na soubor *Sample. log* , který obsahuje data.
 
@@ -114,7 +113,7 @@ Chcete-li spustit dotaz na podregistr vytvořením aplikace podregistru, postupu
 
    ![Dokončená souhrn úlohy podregistru, aplikace pro podregistr, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-7. Vyberte **výstup úlohy** a zobrazte výstup této úlohy. Zobrazuje `[ERROR] 3`se hodnota vrácená tímto dotazem.
+7. Vyberte **výstup úlohy** a zobrazte výstup této úlohy. Zobrazuje `[ERROR] 3` se hodnota vrácená tímto dotazem.
 
 ### <a name="additional-example"></a>Další příklad
 
@@ -135,15 +134,15 @@ Následující příklad závisí na `log4jLogs` tabulce vytvořené v předchoz
     * `CREATE TABLE IF NOT EXISTS`: Vytvoří tabulku, pokud ještě neexistuje. Protože `EXTERNAL` klíčové slovo není použito, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uloženy v datovém skladu podregistru a jsou spravovány podregistru.
 
         > [!NOTE]  
-        > Na rozdíl `EXTERNAL` od tabulek vyřazení interní tabulky také odstraní podkladová data.
+        > Na rozdíl od `EXTERNAL` tabulek vyřazení interní tabulky také odstraní podkladová data.
 
     * `STORED AS ORC`: Ukládá data ve formátu *optimalizovaného řádku* (Orc). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
 
-    * `INSERT OVERWRITE ... SELECT`: Vybere řádky z `log4jLogs` tabulky, která obsahuje `[ERROR]`, a pak vloží data do `errorLogs` tabulky.
+    * `INSERT OVERWRITE ... SELECT`: Vybere řádky z `log4jLogs` tabulky, která obsahuje `[ERROR]` , a pak vloží data do `errorLogs` tabulky.
 
 3. V případě potřeby změňte **Interactive** na **Batch** a pak vyberte **Odeslat**.
 
-4. Pokud chcete ověřit, že úloha vytvořila tabulku, přejít na **Průzkumník serveru** a rozšířit **Azure** > **HDInsight**. Rozbalte svůj cluster HDInsight a pak rozbalte > položku **databáze podregistru****výchozí**. Zobrazí **se tabulka chyb a** tabulka **log4jLogs** .
+4. Pokud chcete ověřit, že úloha vytvořila tabulku, přejít na **Průzkumník serveru** a rozšířit **Azure**  >  **HDInsight**. Rozbalte svůj cluster HDInsight a pak rozbalte položku **databáze podregistru**  >  **výchozí**. Zobrazí **se tabulka chyb a** tabulka **log4jLogs** .
 
 ## <a name="next-steps"></a>Další kroky
 

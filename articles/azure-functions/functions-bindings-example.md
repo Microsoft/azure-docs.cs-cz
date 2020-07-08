@@ -1,24 +1,23 @@
 ---
-title: Příklad triggeru Azure Functions a vazeb
+title: Příklad triggerů a vazeb Azure Functions.
 description: Naučte se konfigurovat vazby funkcí Azure
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74227249"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Příklad triggeru Azure Functions a vazeb
+# <a name="azure-functions-trigger-and-binding-example"></a>Příklad triggerů a vazeb Azure Functions.
 
 Tento článek ukazuje, jak nakonfigurovat [Trigger a vazby](./functions-triggers-bindings.md) ve funkci Azure Functions.
 
 Předpokládejme, že chcete zapsat nový řádek do služby Azure Table Storage pokaždé, když se ve službě Azure Queue Storage zobrazí nová zpráva. Tento scénář je možné implementovat pomocí aktivační události Azure Queue Storage a výstupní vazby Azure Table Storage. 
 
-Zde je soubor *Function. JSON* pro tento scénář. 
+V tomto scénáři je *function.js* pro soubor. 
 
 ```json
 {
@@ -41,18 +40,18 @@ Zde je soubor *Function. JSON* pro tento scénář.
 }
 ```
 
-Prvním prvkem v `bindings` poli je Trigger úložiště Queue. Vlastnosti `type` a `direction` identifikují Trigger. `name` Vlastnost identifikuje parametr funkce, který přijímá obsah zprávy ve frontě. Název fronty, která se má monitorovat, `queueName`je v a připojovací řetězec je v nastavení aplikace, které `connection`identifikuje.
+Prvním prvkem v `bindings` poli je Trigger úložiště Queue. `type`Vlastnosti a `direction` identifikují Trigger. `name`Vlastnost identifikuje parametr funkce, který přijímá obsah zprávy ve frontě. Název fronty, která se má monitorovat, je v `queueName` a připojovací řetězec je v nastavení aplikace, které identifikuje `connection` .
 
-Druhým prvkem v `bindings` poli je výstupní vazba Azure Table Storage. Vlastnosti `type` a `direction` identifikují vazbu. `name` Vlastnost určuje způsob, jakým funkce poskytuje nový řádek tabulky, v tomto případě pomocí návratové hodnoty funkce. Název tabulky je v `tableName`a připojovací řetězec je v nastavení aplikace, které `connection`identifikuje.
+Druhým prvkem v `bindings` poli je výstupní vazba Azure Table Storage. `type`Vlastnosti a `direction` identifikují vazbu. `name`Vlastnost určuje způsob, jakým funkce poskytuje nový řádek tabulky, v tomto případě pomocí návratové hodnoty funkce. Název tabulky je v `tableName` a připojovací řetězec je v nastavení aplikace, které identifikuje `connection` .
 
-Pokud chcete zobrazit a upravit obsah *Function. JSON* v Azure Portal, klikněte na možnost **Rozšířený editor** na kartě **integrace** vaší funkce.
+Pokud chcete zobrazit a upravit obsah *function.js* v Azure Portal, klikněte na možnost **Rozšířený editor** na kartě **integrace** funkce.
 
 > [!NOTE]
-> Hodnota `connection` je název nastavení aplikace, které obsahuje připojovací řetězec, nikoli samotný připojovací řetězec. Vazby používají připojovací řetězce uložené v nastavení aplikace k vykonání osvědčených postupů, které *Function. JSON* neobsahuje tajné klíče služby.
+> Hodnota `connection` je název nastavení aplikace, které obsahuje připojovací řetězec, nikoli samotný připojovací řetězec. Vazby používají připojovací řetězce uložené v nastavení aplikace k vykonání osvědčených postupů, které *function.json* neobsahuje tajné klíče služby.
 
 ## <a name="c-script-example"></a>Příklad skriptu C#
 
-Tady je kód skriptu C#, který funguje s touto triggerem a vazbou. Všimněte si, že název parametru, který poskytuje obsah zprávy ve frontě `order`, je. Tento název je povinný, `name` protože hodnota vlastnosti v *Function. JSON* je`order` 
+Tady je kód skriptu C#, který funguje s touto triggerem a vazbou. Všimněte si, že název parametru, který poskytuje obsah zprávy ve frontě, je `order` . Tento název je vyžadován, protože `name` hodnota vlastnosti v *function.js* je`order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -82,7 +81,7 @@ public class Person
 
 ## <a name="javascript-example"></a>Příklad JavaScriptu
 
-Stejný soubor *Functions. JSON* lze použít s funkcí JavaScriptu:
+Stejné *function.jsv* souboru lze použít s funkcí JavaScriptu:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -102,7 +101,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>Příklad knihovny tříd
 
-V knihovně tříd jsou stejné triggery a informace o &mdash; vazbě a názvech tabulek, účty úložiště, parametry funkce pro vstup a &mdash; výstup, a to pouze pomocí atributů namísto souboru Function. JSON. Tady je příklad:
+V knihovně tříd jsou stejné triggery a informace o vazbě a &mdash; názvy tabulek, účty úložiště, parametry funkce pro vstup a výstup, &mdash; ale atributy namísto function.jsv souboru. Tady je příklad:
 
 ```csharp
 public static class QueueTriggerTableOutput

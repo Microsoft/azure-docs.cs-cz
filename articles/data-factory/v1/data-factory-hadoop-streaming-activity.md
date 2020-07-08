@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703370"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
@@ -44,7 +43,7 @@ Aktivita streamování HDInsight v [kanálu](data-factory-create-pipelines.md) D
 > Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
 
 ## <a name="json-sample"></a>Ukázka JSON
-Cluster HDInsight se automaticky vyplní pomocí ukázkových programů (WC. exe a Cat. exe) a dat (DaVinci. txt). Ve výchozím nastavení je název kontejneru, který je používán clusterem HDInsight, názvem samotného clusteru. Pokud je název clusteru například myhdicluster, je název přidruženého kontejneru objektů BLOB myhdicluster. 
+Cluster HDInsight se automaticky vyplní příklady programů (wc.exe a cat.exe) a dat (davinci.txt). Ve výchozím nastavení je název kontejneru, který je používán clusterem HDInsight, názvem samotného clusteru. Pokud je název clusteru například myhdicluster, je název přidruženého kontejneru objektů BLOB myhdicluster. 
 
 ```JSON
 {
@@ -96,11 +95,11 @@ Je třeba počítat s následujícím:
 
 1. Nastavte **linkedServiceName** na název propojené služby, která odkazuje na cluster HDInsight, na kterém je spuštěná úloha streamování MapReduce.
 2. Nastavte typ aktivity na **HDInsightStreaming**.
-3. Pro vlastnost **Mapper** zadejte název spustitelného souboru mapovače. V tomto příkladu je soubor Cat. exe spustitelným souborem mapovače.
-4. V poli vlastnost pro **snížení** zadejte název spustitelného souboru pro zmenšení. V tomto příkladu je WC. exe spustitelný soubor pro snížení.
-5. Pro vlastnost typ **vstupu** zadejte vstupní soubor (včetně umístění) pro mapovač. V příkladu: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample je kontejnerem objektů blob, příkladem/data/Gutenberg je složka a DaVinci. txt je objekt BLOB.
+3. Pro vlastnost **Mapper** zadejte název spustitelného souboru mapovače. V tomto příkladu cat.exe je spustitelný soubor mapovače.
+4. V poli vlastnost pro **snížení** zadejte název spustitelného souboru pro zmenšení. V tomto příkladu je wc.exe spustitelný soubor pro snížení.
+5. Pro vlastnost typ **vstupu** zadejte vstupní soubor (včetně umístění) pro mapovač. V příkladu: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` : adfsample je kontejnerem objektů blob, příkladem/data/Gutenberg je složka a davinci.txt je objekt BLOB.
 6. Pro vlastnost typ **výstupu** zadejte výstupní soubor (včetně umístění) pro redukci. Výstup úlohy služby streamování Hadoop se zapisuje do umístění zadaného pro tuto vlastnost.
-7. V části **cesty** souborů zadejte cesty pro soubory Mapper a zmenšení. V příkladu: "adfsample/example/Apps/WC. exe", adfsample je kontejnerem objektů blob, příkladem/aplikacemi je složka a WC. exe je spustitelný soubor.
+7. V části **cesty** souborů zadejte cesty pro soubory Mapper a zmenšení. V příkladu: "adfsample/example/Apps/wc.exe", adfsample je kontejnerem objektů blob, příkladem/aplikacemi je složka a wc.exe je spustitelný soubor.
 8. Pro vlastnost **fileLinkedService** určete propojenou službu Azure Storage, která představuje úložiště Azure, které obsahuje soubory zadané v části cesty souborů.
 9. Pro vlastnost **arguments (argumenty** ) zadejte argumenty pro úlohu streamování.
 10. Vlastnost **GetDebugInfo –** je volitelný element. Pokud je nastavená chyba, protokoly se stáhnou pouze při selhání. Pokud je nastavené na vždycky, protokoly se stáhnou vždycky bez ohledu na stav spuštění.
@@ -176,7 +175,7 @@ Kanál v tomto příkladu nepřijímá žádné vstupy. Pro aktivitu streamován
 ### <a name="pipeline"></a>Kanál
 Kanál v tomto příkladu má pouze jednu aktivitu typu: **HDInsightStreaming**. 
 
-Cluster HDInsight se automaticky vyplní pomocí ukázkových programů (WC. exe a Cat. exe) a dat (DaVinci. txt). Ve výchozím nastavení je název kontejneru, který je používán clusterem HDInsight, názvem samotného clusteru. Pokud je název clusteru například myhdicluster, je název přidruženého kontejneru objektů BLOB myhdicluster.  
+Cluster HDInsight se automaticky vyplní příklady programů (wc.exe a cat.exe) a dat (davinci.txt). Ve výchozím nastavení je název kontejneru, který je používán clusterem HDInsight, názvem samotného clusteru. Pokud je název clusteru například myhdicluster, je název přidruženého kontejneru objektů BLOB myhdicluster.  
 
 ```JSON
 {

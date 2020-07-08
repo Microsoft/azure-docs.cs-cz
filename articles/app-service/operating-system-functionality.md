@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74671615"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému na Azure App Service
@@ -33,7 +32,7 @@ Vzhledem k tomu, že App Service podporuje bezproblémové škálování mezi r�
 ## <a name="development-frameworks"></a>Vývojové architektury
 App Service cenové úrovně řídí množství výpočetních prostředků (CPU, diskového úložiště, paměti a odchozího přenosu v síti) dostupných pro aplikace. Šířka funkcí architektury dostupných pro aplikace však zůstává stejná bez ohledu na úroveň škálování.
 
-App Service podporuje celou řadu vývojářských architektur, včetně ASP.NET, klasických prostředí ASP, Node. js, PHP a Pythonu – všechna spouštění rozšíření v rámci služby IIS. Aby bylo možné zjednodušit a normalizovat konfiguraci zabezpečení, aplikace App Service obvykle spouští různé vývojové architektury s jejich výchozími nastaveními. Jedním z přístupů ke konfiguraci aplikací bylo, že by bylo možné přizpůsobit oblast a funkčnost rozhraní API pro jednotlivé vývojové platformy. App Service místo toho získá obecnější přístup tím, že umožní běžné standardní hodnoty funkcí operačního systému bez ohledu na vývojové rozhraní aplikace.
+App Service podporuje různé vývojové platformy, včetně ASP.NET, klasických prostředí ASP, node.js, PHP a Pythonu – všechna spuštění jako rozšíření v rámci služby IIS. Aby bylo možné zjednodušit a normalizovat konfiguraci zabezpečení, aplikace App Service obvykle spouští různé vývojové architektury s jejich výchozími nastaveními. Jedním z přístupů ke konfiguraci aplikací bylo, že by bylo možné přizpůsobit oblast a funkčnost rozhraní API pro jednotlivé vývojové platformy. App Service místo toho získá obecnější přístup tím, že umožní běžné standardní hodnoty funkcí operačního systému bez ohledu na vývojové rozhraní aplikace.
 
 V následujících částech najdete souhrn obecných druhů funkcí operačního systému, které jsou dostupné pro App Service aplikace.
 
@@ -45,7 +44,7 @@ V App Service existují různé jednotky, včetně místních jednotek a síťov
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Místní jednotky
-App Service je služba, která běží nad infrastrukturou Azure PaaS (platforma jako služba). V důsledku toho jsou místní jednotky připojené k virtuálnímu počítači stejné typy jednotek, které jsou k dispozici pro všechny role pracovního procesu spuštěné v Azure. To zahrnuje:
+App Service je služba, která běží nad infrastrukturou Azure PaaS (platforma jako služba). V důsledku toho jsou místní jednotky připojené k virtuálnímu počítači stejné typy jednotek, které jsou k dispozici pro všechny role pracovního procesu spuštěné v Azure. Sem patří:
 
 - Jednotka operačního systému (D:\ disky
 - Jednotka aplikace, která obsahuje soubory cspkg balíčku Azure, používané výhradně App Service (a nepřístupné pro zákazníky)
@@ -55,7 +54,7 @@ Při zvětšování vaší aplikace je důležité monitorovat využití disku. 
 
 - Aplikace může vyvolat chybu oznamující, že na disku není dostatek místa.
 - Při procházení konzoly Kudu se může zobrazit chyba disku.
-- Nasazení z Azure DevOps nebo Visual studia může selhat s `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
+- Nasazení z Azure DevOps nebo Visual studia může selhat s `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` .
 - Vaše aplikace může zpomalit výkon.
 
 <a id="NetworkDrives"></a>
@@ -76,7 +75,7 @@ Na místních jednotkách připojených k virtuálnímu počítači, na kterém 
 
 Dva příklady, jak App Service používá dočasné místní úložiště, jsou adresářem pro dočasné soubory ASP.NET a adresář pro komprimované soubory IIS. Systém kompilace ASP.NET využívá dočasný adresář ASP.NET Files jako dočasné umístění mezipaměti kompilace. Služba IIS pomocí adresáře "dočasné komprimované soubory služby IIS" ukládá komprimovaný výstup odpovědi. Oba tyto typy použití souborů (stejně jako ostatní) jsou přemapovány v App Service na dočasné místní úložiště pro aplikaci. Toto přemapování zajišťuje, že funkčnost bude pokračovat podle očekávání.
 
-Každá aplikace v App Service běží jako náhodná jedinečná identita pracovního procesu s nízkými oprávněními označovaná jako identita fondu aplikací, která je popsána [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)dále:. Kód aplikace používá tuto identitu pro základní přístup jen pro čtení k jednotce operačního systému (D:\ jednotka). To znamená, že kód aplikace může vypsat společné adresářové struktury a číst běžné soubory na jednotce operačního systému. I když se to může zdát poněkud široká úroveň přístupu, stejné adresáře a soubory jsou přístupné při zřizování role pracovního procesu v hostované službě Azure a čtení obsahu jednotky. 
+Každá aplikace v App Service běží jako náhodná jedinečná identita pracovního procesu s nízkými oprávněními označovaná jako identita fondu aplikací, která je popsána dále: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) . Kód aplikace používá tuto identitu pro základní přístup jen pro čtení k jednotce operačního systému (D:\ jednotka). To znamená, že kód aplikace může vypsat společné adresářové struktury a číst běžné soubory na jednotce operačního systému. I když se to může zdát poněkud široká úroveň přístupu, stejné adresáře a soubory jsou přístupné při zřizování role pracovního procesu v hostované službě Azure a čtení obsahu jednotky. 
 
 <a name="multipleinstances"></a>
 
@@ -115,7 +114,7 @@ Oblasti protokolování a trasování diagnostiky, které nejsou k dispozici pro
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Přístup k registru
-Aplikace mají přístup jen pro čtení k mnoha (ale ne všem) registru virtuálního počítače, na kterém běží. V praxi to znamená, že aplikace budou mít k dispozici klíče registru, které umožňují přístup jen pro čtení k místní skupině uživatelů. Jedna oblast registru, která se v tuto chvíli nepodporuje pro přístup pro čtení nebo zápis, je HKEY\_aktuálním\_podregistrem uživatele.
+Aplikace mají přístup jen pro čtení k mnoha (ale ne všem) registru virtuálního počítače, na kterém běží. V praxi to znamená, že aplikace budou mít k dispozici klíče registru, které umožňují přístup jen pro čtení k místní skupině uživatelů. Jedna oblast registru, která se v tuto chvíli nepodporuje pro přístup pro čtení nebo zápis, je HKEY \_ aktuálním \_ podregistrem uživatele.
 
 Přístup pro zápis do registru je zablokovaný, včetně přístupu k jakýmkoli klíčům registru pro jednotlivé uživatele. Z pohledu aplikace by se v prostředí Azure nikdy neměl spoléhat na přístup k zápisu do registru, protože aplikace se můžou (a dělat) migrovat mezi různými virtuálními počítači. Jediným trvalým úložištěm, které může být závislé na aplikaci, je struktura adresáře obsahu pro aplikaci uloženou ve sdílených složkách App Service UNC. 
 

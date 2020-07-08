@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789443"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Začínáme s konektorem OneDrivu pro firmy
@@ -22,9 +21,9 @@ Můžete začít vytvořením aplikace logiky hned teď v tématu [Vytvoření a
 ## <a name="create-a-connection-to-onedrive-for-business"></a>Vytvoření připojení k OneDrivu pro firmy
 Pokud chcete vytvořit Logic Apps s OneDrivem pro firmy, musíte nejdřív vytvořit **připojení** a pak zadat podrobnosti pro následující vlastnosti:
 
-| Vlastnost | Požaduje se | Popis |
+| Vlastnost | Povinné | Popis |
 | --- | --- | --- |
-| Podpisový |Ano |Zadat přihlašovací údaje pro OneDrive pro firmy |
+| Token |Yes |Zadat přihlašovací údaje pro OneDrive pro firmy |
 
 Jakmile vytvoříte připojení, můžete ho použít ke spuštění akcí a naslouchat aktivačním událostem popsaným v tomto článku.
 

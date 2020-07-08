@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74483530"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
@@ -72,7 +71,7 @@ Je důležité pochopit několik konceptů služby DNS, které jsou široce pou�
 
 Předpoklady pro řešení jsou:
 - Primární i sekundární koncové body mají statické IP adresy, které se nemění často. Řekněme, že je primární lokalita, že je IP adresa 100.168.124.44 a IP adresa pro sekundární lokalitu je 100.168.124.43.
-- Zóna Azure DNS existuje jak pro primární, tak pro sekundární lokalitu. Řekněme, že je primární lokalita, že je koncový bod prod.contoso.com a lokalita zálohování je dr.contoso.com. Záznam DNS pro hlavní aplikaci, který se označuje jako\.contoso.com, existuje taky.   
+- Zóna Azure DNS existuje jak pro primární, tak pro sekundární lokalitu. Řekněme, že je primární lokalita, že je koncový bod prod.contoso.com a lokalita zálohování je dr.contoso.com. Záznam DNS pro hlavní aplikaci, který se označuje jako \. contoso.com, existuje taky.   
 - Hodnota TTL je pod nebo pod RTO smlouvou SLA nastavenou v organizaci. Pokud například podnik nastaví RTO odpovědi na havárie aplikace na 60 minut, hodnota TTL by měla být menší než 60 minut, přednostně čím méně lepší. 
   Azure DNS můžete nastavit pro manuální převzetí služeb při selhání následujícím způsobem:
 - Vytvoření zóny DNS
@@ -80,7 +79,7 @@ Předpoklady pro řešení jsou:
 - Aktualizovat záznam CNAME
 
 ### <a name="step-1-create-a-dns"></a>Krok 1: vytvoření DNS
-Vytvořte zónu DNS (například www\.contoso.com), jak je znázorněno níže:
+Vytvořte zónu DNS (například www \. contoso.com), jak je znázorněno níže:
 
 ![Vytvoření zóny DNS v Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -88,13 +87,13 @@ Vytvořte zónu DNS (například www\.contoso.com), jak je znázorněno níže:
 
 ### <a name="step-2-create-dns-zone-records"></a>Krok 2: vytvoření záznamů zóny DNS
 
-V rámci této zóny vytvořte tři záznamy (například www\.contoso.com, prod.contoso.com a Dr.consoto.com), jak je uvedeno níže.
+V rámci této zóny vytvořte tři záznamy (například www \. contoso.com, Prod.contoso.com a Dr.consoto.com), jak je uvedeno níže.
 
 ![Vytvoření záznamů zóny DNS](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 *Obrázek – vytvoření záznamů zóny DNS v Azure*
 
-V tomto scénáři má web na webu\.contoso.com hodnotu TTL 30 minut, což je dobře pod uvedeným RTO a odkazuje na produkční web prod.contoso.com. Tato konfigurace je během normálních obchodních operací. Hodnota TTL pro prod.contoso.com a dr.contoso.com byla nastavena na 300 sekund nebo 5 minut. Můžete použít službu monitorování Azure, jako je Azure Monitor nebo Azure App Insights, nebo jakákoli řešení monitorování partnerů, jako je dynaTrace, můžete dokonce použít domácí vypěstovaná řešení, která můžou monitorovat nebo detekovat selhání na úrovni aplikace nebo virtuální infrastruktury.
+V tomto scénáři má web na webu \. contoso.com hodnotu TTL 30 minut, což je dobře pod uvedeným RTO a odkazuje na produkční web prod.contoso.com. Tato konfigurace je během normálních obchodních operací. Hodnota TTL pro prod.contoso.com a dr.contoso.com byla nastavena na 300 sekund nebo 5 minut. Můžete použít službu monitorování Azure, jako je Azure Monitor nebo Azure App Insights, nebo jakákoli řešení monitorování partnerů, jako je dynaTrace, můžete dokonce použít domácí vypěstovaná řešení, která můžou monitorovat nebo detekovat selhání na úrovni aplikace nebo virtuální infrastruktury.
 
 ### <a name="step-3-update-the-cname-record"></a>Krok 3: aktualizace záznamu CNAME
 
@@ -104,7 +103,7 @@ Po zjištění selhání změňte hodnotu záznamu tak, aby odkazovala na dr.con
 
 *Obrázek – aktualizace záznamu CNAME v Azure*
 
-Do 30 minut, během kterých většina překladačů aktualizuje soubor zóny v mezipaměti, bude každý dotaz na webovou\.contoso.com přesměrován na Dr.contoso.com.
+Do 30 minut, během kterých většina překladačů aktualizuje soubor zóny v mezipaměti, bude každý dotaz na webovou \. contoso.com přesměrován na Dr.contoso.com.
 Pokud chcete změnit hodnotu CNAME, můžete taky spustit následující příkaz Azure CLI:
  ```azurecli
    az network dns record-set cname set-record \

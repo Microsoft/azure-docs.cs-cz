@@ -12,17 +12,16 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74273191"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Mapování deklarací identity uživatelů spolupráce B2B v Azure Active Directory
 
 Azure Active Directory (Azure AD) podporuje přizpůsobení deklarací identity vystavených v tokenu SAML pro uživatele spolupráce B2B. Když se uživatel do aplikace ověří, služba Azure AD vydá token SAML pro aplikaci, která obsahuje informace (nebo deklarace identity) o uživateli, který je jednoznačně identifikuje. Ve výchozím nastavení sem patří uživatelské jméno, e-mailová adresa, jméno a příjmení.
 
-V [Azure Portal](https://portal.azure.com)můžete zobrazit nebo upravit deklarace identity, které se odesílají v tokenu SAML do aplikace. Pro přístup k nastavení vyberte **Azure Active Directory** > **podnikové aplikace** > aplikaci, která je nakonfigurovaná pro jednotné přihlašování > **jednotné přihlašování**. Viz nastavení tokenu SAML v části **atributy uživatele** .
+V [Azure Portal](https://portal.azure.com)můžete zobrazit nebo upravit deklarace identity, které se odesílají v tokenu SAML do aplikace. Pro přístup k nastavení vyberte **Azure Active Directory**  >  **podnikové aplikace** > aplikaci, která je nakonfigurovaná pro jednotné přihlašování > **jednotné přihlašování**. Viz nastavení tokenu SAML v části **atributy uživatele** .
 
 ![Zobrazuje atributy tokenu SAML v uživatelském rozhraní.](media/claims-mapping/view-claims-in-saml-token.png)
 

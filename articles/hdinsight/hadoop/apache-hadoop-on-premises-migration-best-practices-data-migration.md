@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74665997"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy pro migraci dat
@@ -73,15 +72,15 @@ Pokud existuje malý počet velkých souborů, zvažte jejich rozdělení na blo
 
 ### <a name="use-the-strategy-command-line-parameter"></a>Použijte parametr příkazového řádku strategie.
 
-Zvažte použití `strategy = dynamic` parametru v příkazovém řádku. Výchozí hodnota `strategy` parametru je `uniform size`, v takovém případě Každá mapa kopíruje přibližně stejný počet bajtů. Když se tento parametr změní na `dynamic`, soubor výpisu se rozdělí do několika "bloků souborů". Počet souborů bloku je násobek počtu map. Každé úloze mapování se přiřadí jeden ze souborů bloku. Po zpracování všech cest v bloku dat se odstraní aktuální blok a získá se nový blok. Proces pokračuje, dokud nebudou k dispozici žádné další bloky. Tento "dynamický" přístup umožňuje rychlejší mapování – úlohy pro využívání více cest než pomalejších, čímž se celková rychlost DistCp úlohy.
+Zvažte použití `strategy = dynamic` parametru v příkazovém řádku. Výchozí hodnota `strategy` parametru je `uniform size` , v takovém případě Každá mapa kopíruje přibližně stejný počet bajtů. Když se tento parametr změní na `dynamic` , soubor výpisu se rozdělí do několika "bloků souborů". Počet souborů bloku je násobek počtu map. Každé úloze mapování se přiřadí jeden ze souborů bloku. Po zpracování všech cest v bloku dat se odstraní aktuální blok a získá se nový blok. Proces pokračuje, dokud nebudou k dispozici žádné další bloky. Tento "dynamický" přístup umožňuje rychlejší mapování – úlohy pro využívání více cest než pomalejších, čímž se celková rychlost DistCp úlohy.
 
 ### <a name="increase-the-number-of-threads"></a>Zvýšení počtu vláken
 
-Podívejte se `-numListstatusThreads` , jestli zvýšením parametru zlepšíte výkon. Tento parametr řídí počet vláken, která se mají použít pro sestavování seznamu souborů, a 40 je maximální hodnota.
+Podívejte se, jestli zvýšením `-numListstatusThreads` parametru zlepšíte výkon. Tento parametr řídí počet vláken, která se mají použít pro sestavování seznamu souborů, a 40 je maximální hodnota.
 
 ### <a name="use-the-output-committer-algorithm"></a>Použití algoritmu výstupního potvrzení
 
-Podívejte se, jestli předání `-Dmapreduce.fileoutputcommitter.algorithm.version=2` parametru vylepšuje DistCp výkon. Tento algoritmus vypisování výstupu obsahuje optimalizace pro zápis výstupních souborů do cíle. Následující příkaz je příklad, který ukazuje použití různých parametrů:
+Podívejte se, jestli předání parametru `-Dmapreduce.fileoutputcommitter.algorithm.version=2` vylepšuje DistCp výkon. Tento algoritmus vypisování výstupu obsahuje optimalizace pro zápis výstupních souborů do cíle. Následující příkaz je příklad, který ukazuje použití různých parametrů:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/

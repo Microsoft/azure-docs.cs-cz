@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231261"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovou dobou výpadku pro Durable Functions
@@ -54,17 +53,17 @@ Tento scénář nastavíte pomocí následujícího postupu.
 
 1. U každého slotu nastavte [nastavení aplikace AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) na připojovací řetězec sdíleného účtu úložiště. Tento připojovací řetězec účtu úložiště používá modul runtime Azure Functions. Tento účet je používán modulem runtime Azure Functions a spravuje klíče funkce.
 
-1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage`. Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](durable-functions-checkpointing-and-replay.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
+1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage` . Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](durable-functions-checkpointing-and-replay.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
 
-1. V [části durableTask souboru Host. JSON](durable-functions-bindings.md#hostjson-settings)aplikace Function App zadejte `azureStorageConnectionStringName` název nastavení aplikace, které jste vytvořili v kroku 3.
+1. V částihost.jsaplikace Function App [na durableTask souboru](durable-functions-bindings.md#hostjson-settings)zadejte `azureStorageConnectionStringName` název nastavení aplikace, které jste vytvořili v kroku 3.
 
 Následující diagram znázorňuje popsanou konfiguraci slotů pro nasazení a účtů úložiště. V tomto potenciálním scénáři přednasazení je verze 2 aplikace Function App spuštěná v produkčním slotu, zatímco verze 1 zůstává v přípravném slotu.
 
 ![Sloty nasazení a účty úložiště](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>Příklady Host. JSON
+### <a name="hostjson-examples"></a>host.jsv příkladech
 
-Následující fragmenty JSON jsou příklady nastavení připojovacího řetězce v souboru *Host. JSON* .
+Následující fragmenty JSON jsou příklady nastavení připojovacího řetězce v *host.jsv* souboru.
 
 #### <a name="functions-20"></a>Funkce 2,0
 
@@ -164,7 +163,7 @@ Směrovač monitoruje stav orchestrací ve verzi 1.0.1 a odebírá aplikace po d
 
 ### <a name="tracking-store-settings"></a>Nastavení úložiště sledování
 
-Každá aplikace Function app by měla používat samostatné fronty plánování, případně samostatné účty úložiště. Pokud chcete zadat dotaz na všechny instance orchestrace napříč všemi verzemi vaší aplikace, můžete sdílet tabulky instancí a historie napříč vašimi aplikacemi Function App. Tabulky můžete sdílet tak, že nakonfigurujete nastavení `trackingStoreConnectionStringName` a `trackingStoreNamePrefix` v souboru [Nastavení Host. JSON](durable-functions-bindings.md#host-json) tak, aby všechny používaly stejné hodnoty.
+Každá aplikace Function app by měla používat samostatné fronty plánování, případně samostatné účty úložiště. Pokud chcete zadat dotaz na všechny instance orchestrace napříč všemi verzemi vaší aplikace, můžete sdílet tabulky instancí a historie napříč vašimi aplikacemi Function App. Tabulky můžete sdílet nakonfigurováním `trackingStoreConnectionStringName` `trackingStoreNamePrefix` nastavení a v souboru [host.jsv nastavení](durable-functions-bindings.md#host-json) tak, aby všechny používaly stejné hodnoty.
 
 Další informace najdete v tématu [Správa instancí v Durable Functions v Azure](durable-functions-instance-management.md).
 

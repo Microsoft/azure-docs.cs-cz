@@ -4,10 +4,9 @@ description: Naučte se, jak poskytnout přístup k obrázkům v privátním reg
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456516"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Ověřování pomocí Azure Container Registry z Azure Container Instances
@@ -28,7 +27,7 @@ Instanční objekty by se měly používat i v případě, že je [uživatel spr
 
 ## <a name="authenticate-using-the-service-principal"></a>Ověřování pomocí instančního objektu
 
-Pokud chcete spustit kontejner v Azure Container Instances pomocí instančního objektu, zadejte jeho ID pro `--registry-username`a heslo pro `--registry-password`.
+Pokud chcete spustit kontejner v Azure Container Instances pomocí instančního objektu, zadejte jeho ID pro `--registry-username` a heslo pro `--registry-password` .
 
 ```azurecli-interactive
 az container create \

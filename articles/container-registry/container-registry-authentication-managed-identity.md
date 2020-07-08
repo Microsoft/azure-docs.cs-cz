@@ -4,10 +4,9 @@ description: Poskytněte přístup k obrázkům v soukromém registru kontejneru
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456492"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
@@ -49,7 +48,7 @@ Pak použijte identitu k ověření pro libovolnou [službu, která podporuje ov
 
 Pokud ještě nemáte službu Azure Container Registry, vytvořte registr a nahrajte do něj ukázkovou image kontejneru. Postup najdete v tématu [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
-V tomto článku se předpokládá, `aci-helloworld:v1` že máte image kontejneru uloženou v registru. V příkladech se používá název registru pro *myContainerRegistry*. Nahraďte vlastními názvy registru a imagí v pozdějších krocích.
+V tomto článku se předpokládá, že máte `aci-helloworld:v1` Image kontejneru uloženou v registru. V příkladech se používá název registru pro *myContainerRegistry*. Nahraďte vlastními názvy registru a imagí v pozdějších krocích.
 
 ## <a name="create-a-docker-enabled-vm"></a>Vytvoření virtuálního počítače s podporou Docker
 
@@ -166,13 +165,13 @@ Nejdřív pomocí identity, kterou jste nakonfigurovali na VIRTUÁLNÍm počíta
 az login --identity --username <userID>
 ```
 
-Pak proveďte ověření v registru pomocí [AZ ACR Login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory, který byl `az login` vytvořen při bezproblémovém ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení virtuálního počítače možná budete muset spustit tento příkaz a příkazy Docker s `sudo`.)
+Pak proveďte ověření v registru pomocí [AZ ACR Login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory, který byl vytvořen při `az login` bezproblémovém ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení virtuálního počítače možná budete muset spustit tento příkaz a příkazy Docker s `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` příkazy bez zadání přihlašovacích údajů. Například spusťte [Docker Pull][docker-pull] pro načtení `aci-helloworld:v1` obrázku a zadáním názvu přihlašovacího serveru vašeho registru. Název přihlašovacího serveru se skládá z názvu registru kontejneru (všechna malá písmena) následovaných `.azurecr.io` například. `mycontainerregistry.azurecr.io`
+Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` příkazy bez zadání přihlašovacích údajů. Například spusťte [Docker Pull][docker-pull] pro načtení `aci-helloworld:v1` obrázku a zadáním názvu přihlašovacího serveru vašeho registru. Název přihlašovacího serveru se skládá z názvu registru kontejneru (všechna malá písmena) následovaných `.azurecr.io` například `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -218,13 +217,13 @@ Nejdřív ověřte Azure CLI pomocí [AZ Login][az-login]a na virtuálním poč�
 az login --identity
 ```
 
-Pak proveďte ověření v registru pomocí [AZ ACR Login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory, který byl `az login` vytvořen při bezproblémovém ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení virtuálního počítače možná budete muset spustit tento příkaz a příkazy Docker s `sudo`.)
+Pak proveďte ověření v registru pomocí [AZ ACR Login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory, který byl vytvořen při `az login` bezproblémovém ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení virtuálního počítače možná budete muset spustit tento příkaz a příkazy Docker s `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` příkazy bez zadání přihlašovacích údajů. Například spusťte [Docker Pull][docker-pull] pro načtení `aci-helloworld:v1` obrázku a zadáním názvu přihlašovacího serveru vašeho registru. Název přihlašovacího serveru se skládá z názvu registru kontejneru (všechna malá písmena) následovaných `.azurecr.io` například. `mycontainerregistry.azurecr.io`
+Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` příkazy bez zadání přihlašovacích údajů. Například spusťte [Docker Pull][docker-pull] pro načtení `aci-helloworld:v1` obrázku a zadáním názvu přihlašovacího serveru vašeho registru. Název přihlašovacího serveru se skládá z názvu registru kontejneru (všechna malá písmena) následovaných `.azurecr.io` například `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1

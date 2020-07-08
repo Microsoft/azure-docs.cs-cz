@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.openlocfilehash: ee4f9b84e822cb370e5fe3d55fcceb9c8a9f2ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228976"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytváření úloh Apache Spark streamování s právě jedním zpracováním událostí
@@ -49,7 +48,7 @@ Ve streamování Spark mají zdroje, jako je Event Hubs a Kafka, *spolehlivé p�
 
 ### <a name="use-the-write-ahead-log"></a>Použijte protokol zápisu předem.
 
-Služba Spark streamování podporuje použití protokolu pro zápis do paměti, kdy každá přijatá událost je nejdřív zapsaná do adresáře kontrolního bodu Sparku v úložišti odolném proti chybám a pak se uloží do odolné distribuované datové sady (RDD). V Azure je úložiště odolné proti chybám HDFS v Azure Storage nebo Azure Data Lake Storage. V aplikaci pro streamování Sparku je protokol pro zápis k dispozici pro všechny příjemce nastavením nastavení `spark.streaming.receiver.writeAheadLog.enable` konfigurace na. `true` Protokol zápisu vpřed poskytuje odolnost proti chybám při selhání ovladače i prováděcích modulů.
+Služba Spark streamování podporuje použití protokolu pro zápis do paměti, kdy každá přijatá událost je nejdřív zapsaná do adresáře kontrolního bodu Sparku v úložišti odolném proti chybám a pak se uloží do odolné distribuované datové sady (RDD). V Azure je úložiště odolné proti chybám HDFS v Azure Storage nebo Azure Data Lake Storage. V aplikaci pro streamování Sparku je protokol pro zápis k dispozici pro všechny příjemce nastavením `spark.streaming.receiver.writeAheadLog.enable` nastavení konfigurace na `true` . Protokol zápisu vpřed poskytuje odolnost proti chybám při selhání ovladače i prováděcích modulů.
 
 Pro pracovníky, kteří spouštějí úlohy s daty události, je každá RDD podle definice replikovaná i distribuovaná napříč více procesy. Pokud úloha selže, protože v pracovním procesu došlo k chybě, úloha bude restartována v jiném pracovním procesu, který má repliku dat události, takže dojde ke ztrátě události.
 

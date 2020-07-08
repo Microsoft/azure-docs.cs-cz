@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74768159"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Jeden server
@@ -39,7 +38,7 @@ Následující prvky vám pomůžou zajistit bezpečný přístup k vaší datab
 |||
 |:--|:--|
 | **Ověřování a autorizace** | Server Azure Database for PostgreSQL podporuje nativní ověřování PostgreSQL. Můžete se připojit a ověřit na serveru přihlašovacími údaji správce serveru. |
-| **Protokol** | Služba podporuje protokol založený na zprávách, který používá PostgreSQL. |
+| **Protocol (Protokol)** | Služba podporuje protokol založený na zprávách, který používá PostgreSQL. |
 | **TCP/IP** | Protokol je podporován přes protokol TCP/IP a prostřednictvím soketů systému UNIX-doména. |
 | **Brána firewall** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu serveru a jeho databázím, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for PostgreSQL](concepts-firewall-rules.md). |
 

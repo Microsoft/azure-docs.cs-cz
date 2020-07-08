@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792371"
 ---
-# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódovat zprávy X12 v Azure Logic Apps pomocí Enterprise Integration Pack
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódování zpráv X12 v Azure Logic Apps pomocí Enterprise Integration Packu
 
-S dekódovaným konektorem zpráv X12 můžete tuto obálku ověřit proti smlouvě s obchodním partnerem, ověřit vlastnosti EDI a konkrétního partnera, rozdělit vzájemnou změnu na sady transakcí nebo zachovat celá propojení a generovat potvrzení pro zpracované transakce. Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
+Pomocí konektoru pro dekódování zpráv X12 můžete ověřit obálku vůči smlouvě s obchodním partnerem, ověřit vlastnosti specifické pro EDI a partnera, rozdělit výměnu na sady transakcí nebo zachovat celé výměny a generovat potvrzení pro zpracované transakce. Pokud chcete tento konektor použít, musíte ho přidat do existujícího triggeru v aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -88,13 +87,13 @@ Konektor dekódování X12 provádí tyto úlohy:
   * Kontroluje kontrolní číslo sady transakcí s jinými čísly řízení sady transakcí v této skupině.
 * Rozdělí výměnu na sady transakcí nebo zachová celý výměnu:
   * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: rozdělí výměnu na sady transakcí a analyzuje každou sadu transakcí. 
-  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou `badMessages`při ověřování, a výstup zbývajících transakcí nastaví `goodMessages`na.
+  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
   * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: rozděluje výměnu do sad transakcí a analyzuje každou sadu transakcí. 
-  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`.
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages` .
   * Zachovat výměnu – pozastavit sady transakcí při chybě: zachovejte výměnu a zpracujte celý dávkový vydaný výměnný. 
-  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou `badMessages`při ověřování, a výstup zbývajících transakcí nastaví `goodMessages`na.
+  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
   * Zachovat výměnu – pozastavit výměnu při chybě: zachovejte výměnu a zpracujte celý dávkový výměnný. 
-  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`. 
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages` . 
 * Generuje technické nebo funkční potvrzení (Pokud je nakonfigurováno).
   * Technické potvrzení vygeneruje výsledek ověřování hlaviček. Technické potvrzení oznamuje stav zpracování záhlaví a přípojného vozidla pro přijímač adres.
   * Funkční potvrzení generuje výsledek ověření těla. Funkční potvrzení oznamuje každou chybu, ke které došlo při zpracování přijatého dokumentu.

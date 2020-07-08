@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74806520"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Řízení optimistické souběžnosti a transakce
@@ -47,15 +46,15 @@ Uložené procedury, triggery, UDF a slučovací procedury založené na jazyce 
 
 Schopnost spustit JavaScript přímo v rámci databázového stroje poskytuje výkon a transakční provádění operací databáze proti položkám kontejneru. Vzhledem k tomu, že Azure Cosmos Database Engine nativně podporuje JSON a JavaScript, nedochází k neshodě mezi systémy typů aplikace a databáze.
 
-## <a name="optimistic-concurrency-control"></a>Optimistické řízení souběžnosti
+## <a name="optimistic-concurrency-control"></a>Řízení optimistické souběžnosti
 
 Optimistické řízení souběžnosti umožňuje zabránit ztrátě aktualizací a odstraňování. Souběžné a konfliktní operace se vztahují na běžné pesimistické zamykání databázového stroje hostovaného logickým oddílem, který tuto položku vlastní. Když se dvě souběžné operace pokusí aktualizovat nejnovější verzi položky v rámci logického oddílu, jedna z nich se podaří a druhá se nezdaří. Pokud však jedna nebo dvě operace, které se pokoušejí současně aktualizovat stejnou položku, dříve přečetly starší hodnotu položky, databáze neví, zda byla dříve přečtena buď konfliktní operace, nebo jak v obou konfliktních operacích byla skutečně aktuální hodnota položky. Naštěstí tuto situaci lze zjistit pomocí **optimistického řízení souběžnosti (OCC)** předtím, než umožníte dvěma operacím zadat hranici transakce uvnitř databázového stroje. OCC chrání vaše data před náhodným přepsáním změn provedených ostatními. Zabrání taky ostatním v neúmyslném přepsání vašich změn.
 
 Souběžné aktualizace položky podléhají OCC vrstvě komunikačního protokolu Azure Cosmos DB. Azure Cosmos Database zajišťuje, že verze položky na straně klienta, kterou aktualizujete (nebo odstraňujete), je stejná jako verze položky v kontejneru Azure Cosmos. To zaručuje, že vaše zápisy jsou před náhodným zápisem přepsány zápisy ostatních a naopak. V prostředí s více uživateli vám optimistické řízení souběžnosti chrání před náhodným odstraněním nebo aktualizací nesprávné verze položky. V takovém případě jsou položky chráněny proti problémům s inFamous "ztráty aktualizace" nebo "ztráty odstranění".
 
-Každá položka uložená v kontejneru Azure Cosmos má vlastnost definovanou `_etag` systémem. Hodnota `_etag` je automaticky generována a aktualizována serverem při každém aktualizaci položky. `_etag`dá se použít spolu s hlavičkou `if-match` žádosti, která je součástí klienta, aby mohl server rozhodnout, jestli může být položka podmíněně aktualizována. Hodnota `if-match` hlavičky odpovídá hodnotě na `_etag` serveru, položka se pak aktualizuje. Pokud hodnota hlavičky `if-match` požadavku již není aktuální, server odmítne operaci se zprávou odpovědi "selhání předběžné podmínky HTTP 412". Klient pak může znovu načíst položku k získání aktuální verze položky na serveru nebo přepsat verzi položky na serveru vlastní `_etag` hodnotou položky. Kromě toho `_etag` lze použít s `if-none-match` hlavičkou k určení, zda je nutné znovu načíst prostředek.
+Každá položka uložená v kontejneru Azure Cosmos má vlastnost definovanou systémem `_etag` . Hodnota `_etag` je automaticky generována a aktualizována serverem při každém aktualizaci položky. `_etag`dá se použít spolu s `if-match` hlavičkou žádosti, která je součástí klienta, aby mohl server rozhodnout, jestli může být položka podmíněně aktualizována. Hodnota `if-match` hlavičky odpovídá hodnotě na `_etag` serveru, položka se pak aktualizuje. Pokud hodnota `if-match` hlavičky požadavku již není aktuální, server odmítne operaci se zprávou odpovědi "selhání předběžné podmínky HTTP 412". Klient pak může znovu načíst položku k získání aktuální verze položky na serveru nebo přepsat verzi položky na serveru vlastní `_etag` hodnotou položky. Kromě toho `_etag` lze použít s `if-none-match` hlavičkou k určení, zda je nutné znovu načíst prostředek.
 
-`_etag` Hodnota položky se změní pokaždé, když je položka aktualizována. V případě operací nahradit položku `if-match` musí být explicitně vyjádřena jako součást možností žádosti. Příklad najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674). `_etag`hodnoty jsou implicitně kontrolovány u všech zapsaných položek, které jsou v rámci uložené procedury změněny. Pokud je zjištěn nějaký konflikt, uložená procedura vrátí transakci zpět a vyvolá výjimku. Pomocí této metody se v rámci uložené procedury nepoužívají buď všechny, nebo žádné zápisy. Toto je signál k aplikaci pro opětovné použití aktualizací a původní požadavek klienta.
+Hodnota položky se `_etag` změní pokaždé, když je položka aktualizována. V případě operací nahradit položku `if-match` musí být explicitně vyjádřena jako součást možností žádosti. Příklad najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674). `_etag`hodnoty jsou implicitně kontrolovány u všech zapsaných položek, které jsou v rámci uložené procedury změněny. Pokud je zjištěn nějaký konflikt, uložená procedura vrátí transakci zpět a vyvolá výjimku. Pomocí této metody se v rámci uložené procedury nepoužívají buď všechny, nebo žádné zápisy. Toto je signál k aplikaci pro opětovné použití aktualizací a původní požadavek klienta.
 
 ## <a name="next-steps"></a>Další kroky
 

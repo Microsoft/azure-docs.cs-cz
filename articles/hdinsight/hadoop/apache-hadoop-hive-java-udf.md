@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74327196"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použití Java UDF s Apache Hive v HDInsight
@@ -24,7 +23,7 @@ Naučte se vytvořit uživatelsky definovanou funkci (UDF) založenou na jazyce 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To je wasb://pro Azure Storage, abfs://pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 * Textový editor nebo Java IDE
 
@@ -50,7 +49,7 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Tento příkaz vytvoří adresář s názvem `exampleudf`, který obsahuje projekt Maven.
+    Tento příkaz vytvoří adresář s názvem `exampleudf` , který obsahuje projekt Maven.
 
 2. Po vytvoření projektu odstraňte `exampleudf/src/test` adresář, který byl vytvořen jako součást projektu, zadáním následujícího příkazu:
 
@@ -59,13 +58,13 @@ cd C:\HDI
     rmdir /S /Q "src/test"
     ```
 
-3. Otevřete `pom.xml` zadáním následujícího příkazu:
+3. Otevřete zadáním `pom.xml` následujícího příkazu:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Pak existující `<dependencies>` položku nahraďte následujícím kódem XML:
+    Pak existující položku nahraďte `<dependencies>` následujícím kódem XML:
 
     ```xml
     <dependencies>
@@ -144,7 +143,7 @@ cd C:\HDI
 
     Až změny provedete, soubor uložte.
 
-4. Zadáním následujícího příkazu vytvořte a otevřete nový soubor `ExampleUDF.java`:
+4. Zadáním následujícího příkazu vytvořte a otevřete nový soubor `ExampleUDF.java` :
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
@@ -189,7 +188,7 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
     mvn compile package
     ```
 
-    Tento příkaz sestaví a zabalí systém `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` souborů UDF do souboru.
+    Tento příkaz sestaví a zabalí systém souborů UDF do `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` souboru.
 
 2. Pomocí `scp` příkazu zkopírujte soubor do clusteru HDInsight zadáním následujícího příkazu:
 
@@ -219,7 +218,7 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
 
     Tento příkaz předpokládá, že jste pro svůj cluster použili výchozí účet **správce** .
 
-2. Až se `jdbc:hive2://localhost:10001/>` zobrazí výzva, zadejte následující příkaz pro přidání systému souborů UDF do podregistru a jeho vystavení jako funkce.
+2. Až se zobrazí `jdbc:hive2://localhost:10001/>` výzva, zadejte následující příkaz pro přidání systému souborů UDF do podregistru a jeho vystavení jako funkce.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;

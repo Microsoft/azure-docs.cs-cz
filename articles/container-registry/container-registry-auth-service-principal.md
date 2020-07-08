@@ -4,15 +4,14 @@ description: Poskytněte přístup k obrázkům v soukromém registru kontejneru
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74455401"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry ověřování pomocí instančních objektů
 
-Pomocí instančního objektu služby Azure Active Directory (Azure AD) můžete poskytnout image `docker push` kontejneru a `pull` přístup k registru kontejneru. Pomocí instančního objektu můžete poskytnout přístup k nebezobslužným službám a aplikacím.
+Pomocí instančního objektu služby Azure Active Directory (Azure AD) můžete poskytnout image kontejneru `docker push` a `pull` přístup k registru kontejneru. Pomocí instančního objektu můžete poskytnout přístup k nebezobslužným službám a aplikacím.
 
 ## <a name="what-is-a-service-principal"></a>Co je instanční objekt?
 
@@ -24,7 +23,7 @@ V souvislosti s Azure Container Registry můžete vytvořit instanční objekt s
 
 Pomocí instančního objektu služby Azure AD můžete poskytnout vymezený přístup k privátnímu registru kontejnerů. Pro každou aplikaci nebo služby vytvořte různé instanční objekty, z nichž každá má přizpůsobená přístupová práva k vašemu registru. A vzhledem k tomu, že se můžete vyhnout přihlašovacím údajům pro sdílení mezi službami a aplikacemi, můžete své přihlašovací údaje otočit nebo odvolat přístup jenom pro instanční objekt (a tedy pro aplikaci), který zvolíte.
 
-Například nakonfigurujte webovou aplikaci tak, aby používala instanční objekt, který poskytuje přístup pouze k `pull` bitové kopii, zatímco systém sestavení používá instanční objekt, který jim poskytuje `push` `pull` přístup i k. Pokud vývoj vaší aplikace se změní na ruce, můžete otočit své přihlašovací údaje instančního objektu, aniž by to ovlivnilo systém sestavení.
+Například nakonfigurujte webovou aplikaci tak, aby používala instanční objekt, který poskytuje `pull` přístup pouze k bitové kopii, zatímco systém sestavení používá instanční objekt, který jim poskytuje `push` přístup i `pull` k. Pokud vývoj vaší aplikace se změní na ruce, můžete otočit své přihlašovací údaje instančního objektu, aniž by to ovlivnilo systém sestavení.
 
 ## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt
 
@@ -52,7 +51,7 @@ Jakmile budete mít instanční objekt, kterému jste udělili přístup k regis
 * **Uživatelské jméno** – ID aplikace instančního objektu (označuje se také jako *ID klienta*)
 * **Heslo – Hlavní** heslo služby (označuje se taky jako *tajný klíč klienta*)
 
-Každá hodnota je identifikátor GUID formuláře `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
+Každá hodnota je identifikátor GUID formuláře `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
 
 > [!TIP]
 > Heslo instančního objektu můžete znovu vygenerovat spuštěním příkazu [AZ AD SP Reset-Credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) .
@@ -66,7 +65,7 @@ Použijte například přihlašovací údaje k načtení obrázku z služby Azur
 
 ### <a name="use-with-docker-login"></a>Použít s přihlášením Docker
 
-Můžete spustit `docker login` pomocí instančního objektu. V následujícím příkladu je ID aplikace instančního objektu předáno do proměnné `$SP_APP_ID`prostředí a heslo v proměnné. `$SP_PASSWD` Osvědčené postupy pro správu přihlašovacích údajů Docker najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
+Můžete spustit `docker login` pomocí instančního objektu. V následujícím příkladu je ID aplikace instančního objektu předáno do proměnné prostředí `$SP_APP_ID` a heslo v proměnné `$SP_PASSWD` . Osvědčené postupy pro správu přihlašovacích údajů Docker najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -81,7 +80,7 @@ Pokud jste přidali certifikát k instančnímu objektu, můžete se přihlásit
 
 Certifikát podepsaný svým držitelem se dá vytvořit při [vytváření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli). Nebo přidejte jeden nebo více certifikátů k existujícímu instančnímu objektu. Pokud například použijete jeden z skriptů v tomto článku k vytvoření nebo aktualizaci instančního objektu s právy pro vyžádání nebo vložení imagí z registru, přidejte certifikát pomocí příkazu [AZ AD SP Credential Reset][az-ad-sp-credential-reset] .
 
-Pokud chcete k [přihlášení do Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)použít instanční objekt s certifikátem, musí být certifikát ve formátu PEM a musí obsahovat privátní klíč. Pokud váš certifikát nemá požadovaný formát, použijte nástroj `openssl` , jako je třeba ho převést. Pokud spustíte příkaz [AZ Login][az-login] pro přihlášení k rozhraní příkazového řádku pomocí instančního objektu, zadejte také ID aplikace instančního objektu a ID tenanta služby Active Directory. Následující příklad zobrazuje tyto hodnoty jako proměnné prostředí:
+Pokud chcete k [přihlášení do Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)použít instanční objekt s certifikátem, musí být certifikát ve formátu PEM a musí obsahovat privátní klíč. Pokud váš certifikát nemá požadovaný formát, použijte nástroj, jako `openssl` je třeba ho převést. Pokud spustíte příkaz [AZ Login][az-login] pro přihlášení k rozhraní příkazového řádku pomocí instančního objektu, zadejte také ID aplikace instančního objektu a ID tenanta služby Active Directory. Následující příklad zobrazuje tyto hodnoty jako proměnné prostředí:
 
 ```azurecli
 az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file

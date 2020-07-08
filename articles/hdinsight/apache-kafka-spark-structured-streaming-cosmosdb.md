@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74406159"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití strukturovaného streamování Apache Spark s Apache Kafka a Azure Cosmos DB
@@ -47,7 +46,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    Šablona Azure Resource Manager se nachází v úložišti GitHub pro tento projekt ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
+    Šablona Azure Resource Manager se nachází v úložišti GitHub pro tento projekt ( [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) ).
 
     Tato šablona vytvoří následující prostředky:
 
@@ -86,7 +85,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
 Projekt použitý v tomto dokumentu ukládá data v Cosmos DB. Před spuštěním kódu musíte nejprve vytvořit _databázi_ a _kolekci_ v instanci Cosmos DB. Také je nutné načíst koncový bod dokumentu a _klíč_ , který slouží k ověření požadavků na Cosmos DB.
 
-Jedním ze způsobů, jak to provést, je použití rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). V následujícím skriptu se vytvoří databáze s názvem `kafkadata` a kolekcí s názvem `kafkacollection`. Pak vrátí primární klíč.
+Jedním ze způsobů, jak to provést, je použití rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). V následujícím skriptu se vytvoří databáze s názvem `kafkadata` a kolekcí s názvem `kafkacollection` . Pak vrátí primární klíč.
 
 ```azurecli
 #!/bin/bash
@@ -128,7 +127,7 @@ Informace o koncovém bodu dokumentu a primárním klíči jsou podobné násled
 
 ## <a name="get-the-notebooks"></a>Získat poznámkové bloky
 
-Kód pro příklad popsaný v tomto dokumentu je k dispozici [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)na adrese.
+Kód pro příklad popsaný v tomto dokumentu je k dispozici na adrese [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) .
 
 ## <a name="upload-the-notebooks"></a>Nahrání poznámkových bloků
 

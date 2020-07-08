@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74888491"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
@@ -33,7 +32,7 @@ V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
    - JDK
    - Apache Maven
    - Balíček rozšíření Java
-- Ujistěte se, že `JAVA_HOME` jste `PATH` nastavili a proměnné prostředí.
+- Ujistěte se, že jste nastavili `JAVA_HOME` a `PATH` proměnné prostředí.
 - [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 - Postupujte podle kroků v tématu [rozhraní API pro přístup](access-api-cli-how-to.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný kód) a ID tenanta, které budete potřebovat v pozdějším kroku.
 
@@ -53,7 +52,7 @@ Otevřete nástroj příkazového řádku a `cd` v adresáři, ve kterém chcete
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-Při spuštění příkazu se vytvoří soubory `pom.xml`, `App.java`a. 
+Při spuštění příkazu se `pom.xml` `App.java` vytvoří soubory, a. 
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
@@ -81,7 +80,7 @@ Při spuštění příkazu se vytvoří soubory `pom.xml`, `App.java`a.
 
 ## <a name="connect-to-the-java-client"></a>Připojení k klientovi Java
 
-1. Otevřete `App.java` soubor pod `src\main\java\com\azure\ams` a ujistěte se, že je balíček zahrnutý v horní části:
+1. Otevřete `App.java` soubor pod a ujistěte se, `src\main\java\com\azure\ams` že je balíček zahrnutý v horní části:
 
     ```java
     package com.azure.ams;

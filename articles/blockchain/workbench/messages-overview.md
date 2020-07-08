@@ -5,10 +5,9 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74324509"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integrace zasílání zpráv v Azure blockchain Workbench
@@ -110,7 +109,7 @@ Požadavek vyžaduje následující pole:
 | Identifikátor            | Identifikátor GUID zadaného klienta |
 | userChainIdentifier  | Adresa uživatele, který byl vytvořen v blockchain síti. V Ethereem je tato adresa adresou **řetězce** uživatele. |
 | applicationName      | Název aplikace |
-| version              | Verze aplikace Vyžaduje se, pokud máte povoleno více verzí aplikace. V opačném případě je verze volitelná. Další informace o používání verzí aplikací najdete v tématu [Správa verzí aplikací v Azure blockchain Workbench](version-app.md). |
+| verze              | Verze aplikace Vyžaduje se, pokud máte povoleno více verzí aplikace. V opačném případě je verze volitelná. Další informace o používání verzí aplikací najdete v tématu [Správa verzí aplikací v Azure blockchain Workbench](version-app.md). |
 | workflowName         | Název pracovního postupu |
 | parameters           | Vstupní parametry pro vytvoření kontraktu |
 | connectionId         | Jedinečný identifikátor pro připojení blockchain |
@@ -214,7 +213,7 @@ Požadavek vyžaduje následující pole:
 | Identifikátor                | Identifikátor GUID zadaného klienta |
 | userChainIdentifier      | Adresa uživatele, který byl vytvořen v blockchain síti. V Ethereem je tato adresa adresou **řetězce** uživatele. |
 | contractLedgerIdentifier | Adresa smlouvy v hlavní knize |
-| version                  | Verze aplikace Vyžaduje se, pokud máte povoleno více verzí aplikace. V opačném případě je verze volitelná. Další informace o používání verzí aplikací najdete v tématu [Správa verzí aplikací v Azure blockchain Workbench](version-app.md). |
+| verze                  | Verze aplikace Vyžaduje se, pokud máte povoleno více verzí aplikace. V opačném případě je verze volitelná. Další informace o používání verzí aplikací najdete v tématu [Správa verzí aplikací v Azure blockchain Workbench](version-app.md). |
 | workflowFunctionName     | Název funkce pracovního postupu |
 | parameters               | Vstupní parametry pro vytvoření kontraktu |
 | connectionId             | Jedinečný identifikátor pro připojení blockchain |
@@ -375,7 +374,7 @@ V závislosti na tom **, že zprávy s**oznámením mají jeden z následující
 
 Obsahuje informace o jednotlivých blocích. *BlockMessage* obsahuje oddíl s informacemi na úrovni bloku a oddíl s informacemi o transakcích.
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | blokovat | Obsahuje [informace o bloku](#block-information) |
 | transactions | Obsahuje [informace o transakci](#transaction-information) kolekce pro blok. |
@@ -386,7 +385,7 @@ Obsahuje informace o jednotlivých blocích. *BlockMessage* obsahuje oddíl s in
 
 #### <a name="block-information"></a>Informace o blokování
 
-| Název              | Popis |
+| Name              | Description |
 |-------------------|-------------|
 | blockId           | Jedinečný identifikátor pro blok uvnitř Azure blockchain Workbench |
 | blockNumber       | Jedinečný identifikátor bloku v hlavní knize |
@@ -396,7 +395,7 @@ Obsahuje informace o jednotlivých blocích. *BlockMessage* obsahuje oddíl s in
 
 #### <a name="transaction-information"></a>Informace o transakcích
 
-| Název               | Popis |
+| Name               | Description |
 |--------------------|-------------|
 | transactionId      | Jedinečný identifikátor transakce v rámci Azure blockchain Workbench |
 | transactionHash    | Hodnota hash transakce v hlavní knize |
@@ -442,7 +441,7 @@ Příklad *BlockMessage* z blockchain Workbench:
 
 Obsahuje informace o kontraktu. Zpráva obsahuje oddíl s vlastnostmi kontraktu a oddílem s informacemi o transakcích. Všechny transakce, které změnily kontrakt pro konkrétní blok, jsou zahrnuty v části transakce.
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | blockId | Jedinečný identifikátor pro blok uvnitř Azure blockchain Workbench |
 | blockHash | Hodnota hash bloku |
@@ -458,7 +457,7 @@ Obsahuje informace o kontraktu. Zpráva obsahuje oddíl s vlastnostmi kontraktu 
 
 #### <a name="modifying-transaction-information"></a>Úprava informací o transakci
 
-| Název               | Popis |
+| Name               | Description |
 |--------------------|-------------|
 | transactionId | Jedinečný identifikátor transakce v rámci Azure blockchain Workbench |
 | transactionHash | Hodnota hash transakce v hlavní knize |
@@ -467,11 +466,11 @@ Obsahuje informace o kontraktu. Zpráva obsahuje oddíl s vlastnostmi kontraktu 
 
 #### <a name="contract-properties"></a>Vlastnosti kontraktu
 
-| Název               | Popis |
+| Name               | Description |
 |--------------------|-------------|
 | workflowPropertyId | Jedinečný identifikátor pro vlastnost workflow v rámci Azure blockchain Workbench |
-| jméno | Název vlastnosti pracovního postupu |
-| value | Hodnota vlastnosti Workflow |
+| name | Název vlastnosti pracovního postupu |
+| hodnota | Hodnota vlastnosti Workflow |
 
 Příklad *ContractMessage* z blockchain Workbench:
 
@@ -554,7 +553,7 @@ Příklad *ContractMessage* z blockchain Workbench:
 
 Obsahuje informace o vyvolání funkce kontraktu, jako je název funkce, vstup parametrů a volající funkce.
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
 | volající                      | [Informace o volajícím](#caller-information) |
@@ -571,22 +570,22 @@ Obsahuje informace o vyvolání funkce kontraktu, jako je název funkce, vstup p
 
 #### <a name="caller-information"></a>Informace o volajícím
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
-| type | Typ volajícího, jako je uživatel nebo kontrakt |
+| typ | Typ volajícího, jako je uživatel nebo kontrakt |
 | id | Jedinečný identifikátor volajícího v rámci Azure blockchain Workbench |
 | ledgerIdentifier | Jedinečný identifikátor volajícího v hlavní knize |
 
 #### <a name="parameter-information"></a>Informace o parametrech
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
-| jméno | Název parametru |
-| value | Hodnota parametru |
+| name | Název parametru |
+| hodnota | Hodnota parametru |
 
 #### <a name="event-message-transaction-information"></a>Informace o transakcích zprávy o událostech
 
-| Název               | Popis |
+| Name               | Description |
 |--------------------|-------------|
 | transactionId      | Jedinečný identifikátor transakce v rámci Azure blockchain Workbench |
 | transactionHash    | Hodnota hash transakce v hlavní knize |
@@ -634,7 +633,7 @@ Příklad *EventMessage ContractFunctionInvocation* z blockchain Workbench:
 
 Obsahuje informace o tom, kdy se aplikace nahrává do aplikace Workbench, jako je například název a verze nahrané aplikace.
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | eventName | **ApplicationIngestion** |
 | applicationId | Jedinečný identifikátor pro aplikaci v rámci Azure blockchain Workbench |
@@ -652,7 +651,7 @@ Obsahuje informace o tom, kdy se aplikace nahrává do aplikace Workbench, jako 
 
 #### <a name="contract-code-information"></a>Informace o kódu kontraktu
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor souboru kódu kontraktu v Azure blockchain Workbench |
 | ledgerId | Jedinečný identifikátor pro hlavní knihu v rámci Azure blockchain Workbench |
@@ -660,17 +659,17 @@ Obsahuje informace o tom, kdy se aplikace nahrává do aplikace Workbench, jako 
 
 #### <a name="application-role-information"></a>Informace o aplikační roli
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor aplikační role v rámci Azure blockchain Workbench |
-| jméno | Název aplikační role |
+| name | Název aplikační role |
 
 #### <a name="application-workflow-information"></a>Informace o pracovním postupu aplikace
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor pracovního postupu aplikace v rámci služby Azure blockchain Workbench |
-| jméno | Název pracovního postupu aplikace |
+| name | Název pracovního postupu aplikace |
 | displayName | Zobrazovaný název pracovního postupu aplikace |
 |  – funkce | Kolekce [funkcí pro pracovní postup aplikace](#workflow-function-information)|
 | státem | Kolekce [stavů pro pracovní postup aplikace](#workflow-state-information) |
@@ -678,27 +677,27 @@ Obsahuje informace o tom, kdy se aplikace nahrává do aplikace Workbench, jako 
 
 ##### <a name="workflow-function-information"></a>Informace o funkci pracovního postupu
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor funkce pracovního postupu aplikace v rámci služby Azure blockchain Workbench |
-| jméno | Název funkce |
+| name | Název funkce |
 | parameters | Parametry pro funkci |
 
 ##### <a name="workflow-state-information"></a>Informace o stavu pracovního postupu
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
-| jméno | Název stavu |
+| name | Název stavu |
 | displayName | Zobrazovaný název stavu |
-|  – styl | Styl stavu (úspěch nebo neúspěch) |
+| style | Styl stavu (úspěch nebo neúspěch) |
 
 ##### <a name="workflow-property-information"></a>Informace o vlastnostech pracovního postupu
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor pro vlastnost pracovního postupu aplikace v rámci služby Azure blockchain Workbench |
-| jméno | Název vlastnosti |
-| type | Typ vlastnosti |
+| name | Název vlastnosti |
+| typ | Typ vlastnosti |
 
 Příklad *EventMessage ApplicationIngestion* z blockchain Workbench:
 
@@ -828,7 +827,7 @@ Příklad *EventMessage ApplicationIngestion* z blockchain Workbench:
 
 Obsahuje informace o tom, kdy je uživateli přiřazena role v aplikaci Workbench, jako je například osoba, která provedla přiřazení role, a název role a odpovídající aplikace.
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | eventName | **RoleAssignment** |
 | applicationId | Jedinečný identifikátor pro aplikaci v rámci Azure blockchain Workbench |
@@ -845,25 +844,25 @@ Obsahuje informace o tom, kdy je uživateli přiřazena role v aplikaci Workbenc
 
 #### <a name="roleassignment-application-role"></a>Role aplikace RoleAssignment
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor aplikační role v rámci Azure blockchain Workbench |
-| jméno | Název aplikační role |
+| name | Název aplikační role |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment přiřazení
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor uživatele v rámci Azure blockchain Workbench |
-| type | Typ přiřazení |
+| typ | Typ přiřazení |
 | chainIdentifier | Jedinečný identifikátor uživatele v hlavní knize |
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment zmocněnec
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | id | Jedinečný identifikátor uživatele v rámci Azure blockchain Workbench |
-| type | Typ pověřené osoby |
+| typ | Typ pověřené osoby |
 | chainIdentifier | Jedinečný identifikátor uživatele v hlavní knize |
 
 Příklad *EventMessage RoleAssignment* z blockchain Workbench:

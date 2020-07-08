@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 2305a02e5b094ec9e98f39363ddbd0c39221ab0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74768890"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Knihovny připojení pro Azure Database for PostgreSQL – jeden server
@@ -22,12 +21,12 @@ Většina jazykových klientských knihoven používaných pro připojení k ser
 | **Jazyk** | **Rozhraní klienta** | **Další informace** | **Stáhnout** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
 | Python | [psycopg](http://initd.org/psycopg/) | DB API 2,0 – kompatibilní | [Stáhnout](http://initd.org/psycopg/download/) |
-| PHP | [php – PgSQL](https://secure.php.net/manual/en/book.pgsql.php) | Rozšíření databáze | [Nainstalovat](https://secure.php.net/manual/en/pgsql.installation.php) |
-| Node.js | [Balíček pg npm](https://www.npmjs.com/package/pg) | Čistý JavaScript bez blokování klienta | [Nainstalovat](https://www.npmjs.com/package/pg) |
+| PHP | [php – PgSQL](https://secure.php.net/manual/en/book.pgsql.php) | Rozšíření databáze | [Instalace](https://secure.php.net/manual/en/pgsql.installation.php) |
+| Node.js | [Balíček pg npm](https://www.npmjs.com/package/pg) | Čistý JavaScript bez blokování klienta | [Instalace](https://www.npmjs.com/package/pg) |
 | Java | [JDBC](https://jdbc.postgresql.org/) | Typ 4 ovladač JDBC | [Stáhnout](https://jdbc.postgresql.org/download.html)  |
 | Ruby | [PG Gem](https://deveiate.org/code/pg/) | Rozhraní Ruby | [Stáhnout](https://rubygems.org/downloads/pg-0.20.0.gem) |
-| Přejít | [PQ balíčku](https://godoc.org/github.com/lib/pq) | Ovladač čistého přechodu na Postgres | [Nainstalovat](https://github.com/lib/pq/blob/master/README.md) |
-| C\#/.NET | [Npgsql](https://www.npgsql.org/) | ADO.NET Zprostředkovatel dat | [Stáhnout](https://www.microsoft.com/net/) |
+| Přejít | [PQ balíčku](https://godoc.org/github.com/lib/pq) | Ovladač čistého přechodu na Postgres | [Instalace](https://github.com/lib/pq/blob/master/README.md) |
+| C \# /.NET | [Npgsql](https://www.npgsql.org/) | ADO.NET Zprostředkovatel dat | [Stáhnout](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | Ovladač ODBC | [Stáhnout](https://www.postgresql.org/ftp/odbc/versions/) |
 | C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | Primární rozhraní jazyka C | Zahrnuje |
 | C++ | [libpqxx](http://pqxx.org/) | Rozhraní C++ pro nové styly | [Stáhnout](http://pqxx.org/download/software/) |
@@ -35,4 +34,4 @@ Většina jazykových klientských knihoven používaných pro připojení k ser
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si tyto rychlé starty, jak se připojit k a dotazovat Azure Database for PostgreSQL pomocí vašeho jazyka podle vlastního výběru:
 
-[Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) |  | [Go](./connect-go.md) [PHP](./connect-php.md)php .NET[(C#) – přejít](./connect-csharp.md) | 
+[Python](./connect-python.md)  |  [Node.JS](./connect-nodejs.md)  |  [Jazyk Java](./connect-java.md)  |  [Ruby](./connect-ruby.md)  |  [Php](./connect-php.md)  |  [.NET (C#)](./connect-csharp.md)  |  [Přejít](./connect-go.md)

@@ -8,10 +8,9 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74672353"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Vysoká hustota hostování na Azure App Service pomocí škálování podle aplikace
@@ -65,7 +64,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`se liší od `$newapp.MaxNumberOfWorkers`. Škálování podle aplikace používá `$newapp.SiteConfig.NumberOfWorkers` k určení charakteristik měřítka aplikace.
+> `$newapp.SiteConfig.NumberOfWorkers`se liší od `$newapp.MaxNumberOfWorkers` . Škálování podle aplikace používá `$newapp.SiteConfig.NumberOfWorkers` k určení charakteristik měřítka aplikace.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Škálování podle aplikace pomocí Azure Resource Manager
 
@@ -74,7 +73,7 @@ Následující šablona Azure Resource Manager vytvoří:
 - Plán App Service, který se škáluje na 10 instancí
 - aplikace, která je nakonfigurovaná tak, aby se mohla škálovat na maximálně pět instancí.
 
-App Service plán nastavuje vlastnost **PerSiteScaling** na hodnotu true `"perSiteScaling": true`. Aplikace nastavuje **počet pracovních procesů** , které se mají použít na 5 `"properties": { "numberOfWorkers": "5" }`.
+App Service plán nastavuje vlastnost **PerSiteScaling** na hodnotu true `"perSiteScaling": true` . Aplikace nastavuje **počet pracovních procesů** , které se mají použít na 5 `"properties": { "numberOfWorkers": "5" }` .
 
 ```json
 {

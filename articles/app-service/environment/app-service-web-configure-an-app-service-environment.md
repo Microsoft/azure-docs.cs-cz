@@ -8,10 +8,9 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687261"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
@@ -125,13 +124,13 @@ V pomocném mechanismu řízení jsou všechny plány App Service vyhrazené App
 ### <a name="settings"></a>Nastavení
 V okně pomocného mechanismu se nachází oddíl **Nastavení** , který obsahuje několik důležitých možností:
 
-**Settings** > **Vlastnosti**nastavení: okno **Nastavení** se automaticky otevře při otevření okna pomocného mechanismu. V horní části jsou **vlastnosti**. Tady je několik položek, které jsou redundantní na to, co vidíte v **Essentials**, ale to je velmi užitečné pro **virtuální IP adresu**i pro **odchozí IP adresy**.
+**Nastavení**  >  **Vlastnosti**: okno **Nastavení** se automaticky otevře při otevření okna pomocného mechanismu. V horní části jsou **vlastnosti**. Tady je několik položek, které jsou redundantní na to, co vidíte v **Essentials**, ale to je velmi užitečné pro **virtuální IP adresu**i pro **odchozí IP adresy**.
 
 ![Okno nastavení a vlastnosti][4]
 
-**Nastavení** > **IP adres**: když v pomocném mechanismu služby vytvoříte aplikaci SSL (Secure Sockets Layer) protokolu IP, budete potřebovat IP SSL adresu. Abyste si ho mohli opatřit, vaše pomocného mechanismu potřebuje IP SSL adres, které vlastní, a dá se přidělit. Při vytvoření pomocného mechanismu pro tento účel má jednu IP SSL adresu, ale můžete přidat další. Pro další IP SSL adresy se účtuje poplatek, jak je uvedeno v článku o [cenách App Service][AppServicePricing] (v části o připojeních SSL). Další cenou je IP SSL cena.
+**Nastavení**  >  **IP adresy**: když v pomocném mechanismu služby vytvoříte aplikaci SSL (Secure Sockets Layer) protokolu IP, budete potřebovat IP SSL adresu. Abyste si ho mohli opatřit, vaše pomocného mechanismu potřebuje IP SSL adres, které vlastní, a dá se přidělit. Při vytvoření pomocného mechanismu pro tento účel má jednu IP SSL adresu, ale můžete přidat další. Pro další IP SSL adresy se účtuje poplatek, jak je uvedeno v článku o [cenách App Service][AppServicePricing] (v části o připojeních SSL). Další cenou je IP SSL cena.
 
-**Nastavení** >  / **fondy pracovních procesů****fondu front-end**: každá z těchto skupin fondů prostředků nabízí možnost zobrazovat informace pouze v tomto fondu zdrojů a poskytovat tak ovládací prvky pro kompletní škálování fondu zdrojů.  
+**Nastavení**  >  Fond front- **Endu**  /  **Fondy pracovních procesů**: každá z těchto skupin fondů prostředků nabízí možnost zobrazovat informace pouze v tomto fondu zdrojů a poskytovat tak ovládací prvky pro kompletní škálování fondu zdrojů.  
 
 Základní okno pro každý fond zdrojů poskytuje graf s metrikami pro daný fond zdrojů. Stejně jako u grafů z okna pomocného mechanismu můžete přejít do grafu a nastavit výstrahy podle potřeby. Nastavení výstrahy z okna pomocného mechanismu řízení pro určitý fond zdrojů má stejný stav jako z fondu zdrojů. V okně **Nastavení** fondu pracovních procesů máte přístup ke všem aplikacím nebo App Servicem plánům, které jsou spuštěné v tomto fondu pracovních procesů.
 
@@ -154,7 +153,7 @@ Pokud chcete použít operaci škálování v okně pomocného mechanismu říze
 
 ![Škálování uživatelského rozhraní][6]
 
-Pokud chcete používat funkce ručního nebo automatického škálování v konkrétním fondu zdrojů, v případě potřeby použijte možnost **Nastavení** >  / **fondy pracovních procesů** **fondu front-endu**. Pak otevřete fond, který chcete změnit. Přejít na **Nastavení** > **horizontální** **navýšení kapacity nebo navýšení kapacity** **Nastavení** > . Okno **horizontálního** navýšení kapacity umožňuje řídit množství instancí. **Horizontální navýšení kapacity** umožňuje řídit velikost prostředků.  
+Pokud chcete používat funkce ručního nebo automatického škálování v konkrétním fondu zdrojů, v případě potřeby použijte možnost **Nastavení**  >  **Front End Pool**  /  **fondy pracovních procesů** fondu front-endu. Pak otevřete fond, který chcete změnit. Přejít na **Nastavení**  >  **horizontální** **Settings**  >  **navýšení kapacity nebo navýšení kapacity**nastavení. Okno **horizontálního** navýšení kapacity umožňuje řídit množství instancí. **Horizontální navýšení kapacity** umožňuje řídit velikost prostředků.  
 
 ![Uživatelské rozhraní nastavení škálování][7]
 

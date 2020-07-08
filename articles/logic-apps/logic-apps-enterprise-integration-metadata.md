@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792468"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Správa metadat artefaktů v integračních účtech pomocí Azure Logic Apps a Enterprise Integration Pack
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Správa metadat artefaktů v účtech integrace pomocí Azure Logic Apps a rozšíření Enterprise Integration Pack
 
-Můžete definovat vlastní metadata pro artefakty v integračních účtech a získat tato metadata za běhu, která má vaše aplikace logiky použít. Můžete například zadat metadata pro artefakty, jako jsou partneři, smlouvy, schémata a mapy – všechna metadata úložiště se používají páry klíč-hodnota. 
+Vlastní metadata můžete definovat pro artefakty v účtech integrace a získat tato metadata za běhu, aby je mohly používat vaše aplikace logiky. Můžete například zadat metadata pro artefakty, jako jsou partneři, smlouvy, schémata a mapy – všechna metadata úložiště se používají páry klíč-hodnota. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +52,7 @@ Můžete definovat vlastní metadata pro artefakty v integračních účtech a z
 
 1. V Azure Portal otevřete aplikaci logiky, která je propojená s účtem pro integraci, který chcete. 
 
-1. Pokud přidáváte krok pro získávání metadat v rámci triggeru nebo poslední akce v pracovním postupu v návrháři aplikace logiky, vyberte **Nový krok** > **přidat akci**. 
+1. Pokud přidáváte krok pro získávání metadat v rámci triggeru nebo poslední akce v pracovním postupu v návrháři aplikace logiky, vyberte **Nový krok**  >  **přidat akci**. 
 
 1. Do vyhledávacího pole zadejte "účet pro integraci". V poli Hledat vyberte možnost **vše**. V seznamu akce vyberte tuto akci: **vyhledávání artefaktů účtu integrace – účet pro integraci**
 
@@ -61,10 +60,10 @@ Můžete definovat vlastní metadata pro artefakty v integračních účtech a z
 
 1. Zadejte tyto informace pro artefakt, který chcete najít:
 
-   | Vlastnost | Požaduje se | Hodnota | Popis | 
+   | Vlastnost | Požaduje se | Hodnota | Description | 
    |----------|---------|-------|-------------| 
-   | **Typ artefaktu** | Ano | **Schéma**, **Mapa**, **partner**, **smlouva**nebo vlastní typ | Typ artefaktu, který chcete | 
-   | **Název artefaktu** | Ano | <*název artefaktu*> | Název artefaktu, který chcete | 
+   | **Typ artefaktu** | Yes | **Schéma**, **Mapa**, **partner**, **smlouva**nebo vlastní typ | Typ artefaktu, který chcete | 
+   | **Název artefaktu** | Yes | <*název artefaktu*> | Název artefaktu, který chcete | 
    ||| 
 
    Předpokládejme například, že chcete získat metadata pro artefakt obchodního partnera:
@@ -83,12 +82,12 @@ Můžete definovat vlastní metadata pro artefakty v integračních účtech a z
 
       Předpokládejme například, že chcete získat `routingUrl` metadata, která jsou přidána dříve v tomto tématu. Tady jsou hodnoty vlastností, které můžete zadat: 
 
-      | Vlastnost | Požaduje se | Hodnota | Popis | 
+      | Vlastnost | Požaduje se | Hodnota | Description | 
       |----------|----------|-------|-------------| 
-      | **Metoda** | Ano | <*operace na spuštění*> | Operace HTTP, která se má spustit na artefaktu Tato akce HTTP například používá metodu **Get** . | 
-      | **Identifikátor URI** | Ano | <*metadata – umístění*> | Chcete-li `routingUrl` získat přístup k hodnotě metadat z artefaktu, který jste načetli, můžete použít výraz, například: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Hlavičky** | Ne | <*hodnoty hlaviček*> | Všechny výstupy hlaviček z triggeru, které chcete předat akci HTTP. Například pro předání hodnoty `headers` vlastnosti triggeru: můžete použít výraz, například: <p>`@triggeroutputs()['headers']` | 
-      | **Text** | Ne | <*text obsahu*> | Jakýkoli další obsah, který chcete předat prostřednictvím `body` vlastnosti akce http. Tento příklad předá `properties` hodnoty artefaktu do akce http: <p>1. klikněte do vlastnosti **body** , aby se zobrazil seznam dynamického obsahu. Pokud se nezobrazí žádné vlastnosti, klikněte na **Zobrazit další**. <br>2. v seznamu dynamického obsahu v části **vyhledávání artefaktů účtu integrace**vyberte **vlastnosti**. | 
+      | **Metoda** | Yes | <*operace na spuštění*> | Operace HTTP, která se má spustit na artefaktu Tato akce HTTP například používá metodu **Get** . | 
+      | **Identifikátor URI** | Yes | <*metadata – umístění*> | Chcete-li získat přístup k `routingUrl` hodnotě metadat z artefaktu, který jste načetli, můžete použít výraz, například: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Hlavičky** | No | <*hodnoty hlaviček*> | Všechny výstupy hlaviček z triggeru, které chcete předat akci HTTP. Například pro předání `headers` hodnoty vlastnosti triggeru: můžete použít výraz, například: <p>`@triggeroutputs()['headers']` | 
+      | **Text** | No | <*text obsahu*> | Jakýkoli další obsah, který chcete předat prostřednictvím vlastnosti akce HTTP `body` . Tento příklad předá hodnoty artefaktu `properties` do akce http: <p>1. klikněte do vlastnosti **body** , aby se zobrazil seznam dynamického obsahu. Pokud se nezobrazí žádné vlastnosti, klikněte na **Zobrazit další**. <br>2. v seznamu dynamického obsahu v části **vyhledávání artefaktů účtu integrace**vyberte **vlastnosti**. | 
       |||| 
 
       Příklad:

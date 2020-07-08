@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792879"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro Azure Logic Apps – 1. června 2016
@@ -21,7 +20,7 @@ ms.locfileid: "74792879"
 
 * [Obory](#scopes) umožňují seskupit nebo vnořovat akce jako kolekci akcí.
 * [Podmínky a smyčky](#conditions-loops) jsou nyní akce první třídy.
-* Přesnější řazení pro spouštění akcí s vlastností `runAfter` , která nahrazuje`dependsOn`
+* Přesnější řazení pro spouštění akcí s `runAfter` vlastností, která nahrazuje`dependsOn`
 
 Pokud chcete upgradovat aplikace logiky ze schématu verze 1, 2015 Preview na schéma 1. června 2016, [Podívejte se do části Upgrade](#upgrade-your-schema).
 
@@ -85,7 +84,7 @@ V předchozích verzích schématu byly podmínky a smyčky parametry přidruže
 
 ## <a name="runafter-property"></a>vlastnost ' Runafter šablonové '
 
-`runAfter` Vlastnost nahrazuje `dependsOn`a poskytuje větší přesnost při zadání pořadí spouštění pro akce na základě stavu předchozích akcí. `dependsOn` Vlastnost ukázala, zda "akce běžela a byla úspěšná" na základě toho, zda předchozí akce proběhla úspěšně, selhala nebo jako vynechána, nikoli počet pokusů, kolikrát jste chtěli akci spustit. `runAfter` Vlastnost poskytuje flexibilitu jako objekt, který určuje všechny názvy akcí, po kterých se objekt spustí. Tato vlastnost také definuje pole stavů, které jsou přijatelné jako triggery. Například pokud chcete, aby akce běžela po úspěšném provedení akce a také po úspěšném nebo neúspěšném provedení akce B, nastavte tuto `runAfter` vlastnost:
+`runAfter`Vlastnost nahrazuje `dependsOn` a poskytuje větší přesnost při zadání pořadí spouštění pro akce na základě stavu předchozích akcí. `dependsOn`Vlastnost ukázala, zda "akce běžela a byla úspěšná" na základě toho, zda předchozí akce proběhla úspěšně, selhala nebo jako vynechána, nikoli počet pokusů, kolikrát jste chtěli akci spustit. `runAfter`Vlastnost poskytuje flexibilitu jako objekt, který určuje všechny názvy akcí, po kterých se objekt spustí. Tato vlastnost také definuje pole stavů, které jsou přijatelné jako triggery. Například pokud chcete, aby akce běžela po úspěšném provedení akce a také po úspěšném nebo neúspěšném provedení akce B, nastavte tuto `runAfter` vlastnost:
 
 ```json
 {
@@ -141,7 +140,7 @@ Po upgradu se značky prostředků odeberou, takže je musíte obnovit pro upgra
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>Aktivační událost Manual se přejmenovala na Trigger Request.
 
-Typ `manual` triggeru byl zastaralý a přejmenován na `request` typ `http`. Tato změna vytvoří větší konzistenci pro druh vzoru, který je použit k sestavení triggeru.
+`manual`Typ triggeru byl zastaralý a přejmenován na `request` typ `http` . Tato změna vytvoří větší konzistenci pro druh vzoru, který je použit k sestavení triggeru.
 
 ### <a name="new-filter-action"></a>Nová akce Filter
 
@@ -149,11 +148,11 @@ Chcete-li filtrovat velké pole dolů na menší sadu položek, je nový `filter
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Omezení pro akce foreach a ne
 
-`foreach` Smyčka `until` and je omezená jenom na jednu akci.
+`foreach` `until` Smyčka and je omezená jenom na jednu akci.
 
 ### <a name="new-trackedproperties-for-actions"></a>New ' trackedProperties ' pro akce
 
-Akce teď můžou mít navolanou `trackedProperties`další vlastnost, která je stejná jako `runAfter` u `type` vlastností a. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Příklad:
+Akce teď můžou mít navolanou další vlastnost `trackedProperties` , která je stejná jako `runAfter` u `type` vlastností a. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Příklad:
 
 ``` json
 {

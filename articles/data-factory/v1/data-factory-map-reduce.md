@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703154"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolat programy MapReduce z Data Factory
@@ -183,11 +182,11 @@ Kanál v tomto příkladu má pouze jednu aktivitu typu: HDInsightMapReduce. Mez
 
 | Vlastnost | Poznámky |
 |:--- |:--- |
-| type |Typ musí být nastaven na **HDInsightMapReduce**. |
+| typ |Typ musí být nastaven na **HDInsightMapReduce**. |
 | NázevTřídy |Název třídy je: **WORDCOUNT** |
 | jarFilePath |Cesta k souboru jar obsahujícímu třídu Pokud zkopírujete/vložíte následující kód, nezapomeňte změnit název clusteru. |
 | jarLinkedService |Azure Storage propojená služba, která obsahuje soubor JAR. Tato propojená služba odkazuje na úložiště, které je přidružené ke clusteru HDInsight. |
-| náhodné |Program WORDCOUNT přijímá dva argumenty, vstup a výstup. Vstupním souborem je soubor DaVinci. txt. |
+| náhodné |Program WORDCOUNT přijímá dva argumenty, vstup a výstup. Vstupním souborem je davinci.txt soubor. |
 | frequency/interval |Hodnoty těchto vlastností se shodují s výstupní datovou sadou. |
 | linkedServiceName |odkazuje na propojenou službu HDInsight, kterou jste vytvořili dříve. |
 

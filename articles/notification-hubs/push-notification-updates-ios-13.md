@@ -9,10 +9,9 @@ ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228141"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Aktualizace služby Azure Notification Hubs pro iOS 13
@@ -23,7 +22,7 @@ Společnost Apple nedávno provedla některé změny své veřejné nabízené s
 
 ### <a name="apns-push-type"></a>Typ push APNS
 
-Společnost Apple teď vyžaduje, aby vývojáři identifikovali oznámení jako výstrahu nebo oznámení na `apns-push-type` pozadí prostřednictvím nové hlavičky v rozhraní API služby APN. Podle [Dokumentace společnosti Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "hodnota této hlavičky musí přesně odrážet obsah datové části oznámení. Pokud dojde k neshodě, nebo pokud chybí hlavička v požadovaných systémech, může APNs vrátit chybu, zpozdit doručení oznámení nebo ho úplně odstranit. "
+Společnost Apple teď vyžaduje, aby vývojáři identifikovali oznámení jako výstrahu nebo oznámení na pozadí prostřednictvím nové `apns-push-type` hlavičky v rozhraní API služby APN. Podle [Dokumentace společnosti Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "hodnota této hlavičky musí přesně odrážet obsah datové části oznámení. Pokud dojde k neshodě, nebo pokud chybí hlavička v požadovaných systémech, může APNs vrátit chybu, zpozdit doručení oznámení nebo ho úplně odstranit. "
 
 Vývojáři musí nyní tuto hlavičku nastavit v aplikacích, které odesílají oznámení prostřednictvím služby Azure Notification Hubs. Z důvodu technického omezení musí zákazníci používat ověřování na základě tokenů pro přihlašovací údaje APNS s požadavky, které obsahují tento atribut. Pokud pro přihlašovací údaje APNS používáte ověřování na základě certifikátů, musíte přepnout na použití ověřování založeného na tokenech.
 
@@ -58,11 +57,11 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Pokud vám Azure Notification Hubs detekuje oznámení, které nemá `apns-push-type` nastavenou hodnotu, bude tento přechod v průběhu tohoto přechodu vyvodit z požadavku na oznámení typ push a automaticky nastaví hodnotu. Pamatujte, že je nutné nakonfigurovat Azure Notification Hubs pro použití ověřování založeného na tokenech k nastavení požadované hlavičky; Další informace najdete v tématu [ověřování založené na tokenech (http/2) pro služby APN](notification-hubs-push-notification-http2-token-authentification.md).
+Pokud vám Azure Notification Hubs detekuje oznámení, které nemá nastavenou hodnotu, bude tento přechod v průběhu tohoto přechodu `apns-push-type` vyvodit z požadavku na oznámení typ push a automaticky nastaví hodnotu. Pamatujte, že je nutné nakonfigurovat Azure Notification Hubs pro použití ověřování založeného na tokenech k nastavení požadované hlavičky; Další informace najdete v tématu [ověřování založené na tokenech (http/2) pro služby APN](notification-hubs-push-notification-http2-token-authentification.md).
 
 ## <a name="apns-priority"></a>Priorita služby APN
 
-Další menší změna, ale ta, která vyžaduje změnu aplikace back-end, která odesílá oznámení, je požadavek na to, aby oznámení `apns-priority` na pozadí, která má záhlaví obsahovat, byla teď nastavená na 5. Řada aplikací nastavuje `apns-priority` hlavičku na 10 (indikuje okamžité doručení), nebo ji nenastaví a získá výchozí hodnotu (což je také 10).
+Další menší změna, ale ta, která vyžaduje změnu aplikace back-end, která odesílá oznámení, je požadavek na to, aby oznámení na pozadí, která má `apns-priority` záhlaví obsahovat, byla teď nastavená na 5. Řada aplikací nastavuje `apns-priority` hlavičku na 10 (indikuje okamžité doručení), nebo ji nenastaví a získá výchozí hodnotu (což je také 10).
 
 Nastavení této hodnoty na hodnotu 10 již není povoleno pro oznámení na pozadí a je nutné nastavit hodnotu pro každý požadavek. Pokud tato hodnota chybí, Apple nebude doručovat oznámení na pozadí. Příklad:
 

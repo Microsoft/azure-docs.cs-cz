@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870730"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalární výrazy v Azure Cosmos DBch dotazech SQL
@@ -54,7 +53,7 @@ ms.locfileid: "74870730"
   
 - `input_alias`  
   
-   Představuje hodnotu definovanou `input_alias` `FROM` klauzulí představenou v klauzuli.  
+   Představuje hodnotu definovanou `input_alias` klauzulí představenou v `FROM` klauzuli.  
   Tato hodnota se garantuje jako **nedefinovaná** –**nedefinované** hodnoty ve vstupu se přeskočí.  
   
 - `<scalar_expression>.property_name`  
@@ -95,7 +94,7 @@ ms.locfileid: "74870730"
   
 - `parameter_name`  
   
-   Představuje hodnotu zadaného názvu parametru. Názvy parametrů musí mít jako první \@ znak jedinou hodnotu.  
+   Představuje hodnotu zadaného názvu parametru. Názvy parametrů musí mít \@ jako první znak jedinou hodnotu.  
   
 ## <a name="remarks"></a>Poznámky
   

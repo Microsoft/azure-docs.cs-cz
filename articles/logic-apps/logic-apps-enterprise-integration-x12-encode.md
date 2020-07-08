@@ -9,16 +9,15 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792344"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kódování zpráv X12 v Azure Logic Apps pomocí Enterprise Integration Pack
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kódování zpráv X12 v Azure Logic Apps pomocí Enterprise Integration Packu
 
-Pomocí konektoru zpráv pro kódování X12 můžete ověřit vlastnosti EDI a partner, převést zprávy kódované XML na sady transakcí EDI ve výměně a požádat o technickou potvrzení, funkční potvrzení nebo obojí.
-Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
+Pomocí konektoru pro kódování zpráv X12 můžete ověřit vlastnosti specifické pro EDI a partnera, převést zprávy kódované XML na sady transakcí EDI ve výměně a požádat o technické potvrzení, funkční potvrzení nebo obojí.
+Pokud chcete tento konektor použít, musíte ho přidat do existujícího triggeru v aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -70,7 +69,7 @@ Pokud se rozhodnete zakódovat zprávy X12 podle identity, zadejte identifikáto
    
 ![Zadejte identity pro odesílatele a přijímače, vyberte zprávu XML ke kódování.](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
-## <a name="x12-encode-details"></a>X12 kódování podrobností
+## <a name="x12-encode-details"></a>Podrobnosti kódování X12
 
 Konektor X12 encode provádí tyto úlohy:
 

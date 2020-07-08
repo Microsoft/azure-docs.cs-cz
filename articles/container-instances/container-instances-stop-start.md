@@ -4,13 +4,12 @@ description: Přečtěte si, jak ručně zastavit nebo spustit skupinu kontejner
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74533425"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ruční zastavení nebo spuštění kontejnerů v Azure Container Instances
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ruční zastavení nebo spuštění kontejnerů ve službě Azure Container Instances
 
 Nastavení [zásad restartování](container-instances-restart-policy.md) skupiny kontejnerů určuje, jak se ve výchozím nastavení spouštějí a zastavují instance kontejnerů. Výchozí nastavení můžete přepsat ručním zastavením nebo spuštěním skupiny kontejnerů.
 
@@ -34,7 +33,7 @@ Tato akce spustí všechny kontejnery ve skupině kontejnerů. Ve skupině nemů
 
 Po ručním spuštění nebo restartování skupiny kontejnerů se skupina kontejnerů spustí podle nakonfigurovaných zásad restartování.
   
-## <a name="restart"></a>Restartování
+## <a name="restart"></a>Restartovat
 
 Skupinu kontejnerů můžete restartovat, pokud je spuštěná – například pomocí příkazu [AZ Container restart][az-container-restart] . Tato akce restartuje všechny kontejnery ve skupině kontejnerů. Pokud se aktualizuje image kontejneru pro libovolný kontejner, načte se nový obrázek. 
 

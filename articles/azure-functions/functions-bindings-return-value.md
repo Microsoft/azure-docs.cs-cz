@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74480572"
 ---
 # <a name="using-the-azure-function-return-value"></a>Použití návratové hodnoty funkce Azure Functions
@@ -20,7 +19,7 @@ V jazycích, které mají vrácenou hodnotu, můžete svázat [výstupní vazbu]
 
 * V knihovně tříd C# použijte výstupní vazbu atributu pro návratovou hodnotu metody.
 * V jazyce Java použijte výstupní vazbu poznámky k metodě Function.
-* V jiných jazycích nastavte `name` vlastnost v *Function. JSON* na. `$return`
+* V jiných jazycích nastavte `name` vlastnost v *function.jsna* `$return` .
 
 Pokud existuje více výstupních vazeb, použijte vrácenou hodnotu pouze pro jednu z nich.
 
@@ -54,7 +53,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Tady je výstupní vazba v *function.js* souboru:
 
 ```json
 {
@@ -87,7 +86,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="f"></a>[F#](#tab/fsharp)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Tady je výstupní vazba v *function.js* souboru:
 
 ```json
 {
@@ -109,7 +108,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Tady je výstupní vazba v *function.js* souboru:
 
 ```json
 {
@@ -120,7 +119,7 @@ Tady je výstupní vazba v souboru *Function. JSON* :
 }
 ```
 
-V jazyce JavaScript návratová hodnota přechází do druhého parametru pro `context.done`:
+V jazyce JavaScript návratová hodnota přechází do druhého parametru pro `context.done` :
 
 ```javascript
 module.exports = function (context, input) {
@@ -132,7 +131,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Tady je výstupní vazba v souboru *Function. JSON* :
+Tady je výstupní vazba v *function.js* souboru:
 
 ```json
 {

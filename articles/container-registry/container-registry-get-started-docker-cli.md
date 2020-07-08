@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456354"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
@@ -36,7 +35,7 @@ Můžete se také přihlásit pomocí [přihlášení k Docker](https://docs.doc
 docker login myregistry.azurecr.io
 ```
 
-Oba příkazy se `Login Succeeded` vrátí po dokončení.
+Oba příkazy se vrátí `Login Succeeded` po dokončení.
 
 > [!TIP]
 > Při použití `docker login` a při označování obrázků pro doručování do registru vždy zadejte plně kvalifikovaný název registru (všechna malá písmena). V příkladech v tomto článku je plně kvalifikovaný název *myregistry.azurecr.IO*.
@@ -51,7 +50,7 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>Místní spuštění kontejneru
 
-Spusťte následující příkaz [Docker Run](https://docs.docker.com/engine/reference/run/) , který spustí místní instanci Nginx kontejneru interaktivně (`-it`) na portu 8080. `--rm` Argument určuje, zda má být kontejner při zastavení odebrán.
+Spusťte následující příkaz [Docker Run](https://docs.docker.com/engine/reference/run/) , který spustí místní instanci Nginx kontejneru interaktivně ( `-it` ) na portu 8080. `--rm`Argument určuje, zda má být kontejner při zastavení odebrán.
 
 ```
 docker run -it --rm -p 8080:80 nginx
@@ -61,9 +60,9 @@ Přejděte k `http://localhost:8080` zobrazení výchozí webové stránky, kter
 
 ![Server Nginx na místním počítači](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Vzhledem k tomu `-it`, že jste kontejner spustili interaktivně, můžete na příkazovém řádku zobrazit výstup serveru Nginx po přechodu do něj v prohlížeči.
+Vzhledem k tomu, že jste kontejner spustili interaktivně `-it` , můžete na příkazovém řádku zobrazit výstup serveru Nginx po přechodu do něj v prohlížeči.
 
-Chcete-li zastavit a odebrat kontejner, `Control` + `C`stiskněte klávesu.
+Chcete-li zastavit a odebrat kontejner, stiskněte klávesu `Control` + `C` .
 
 ## <a name="create-an-alias-of-the-image"></a>Vytvoření aliasu obrázku
 
@@ -101,7 +100,7 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 
 Přejděte k `http://localhost:8080` zobrazení běžícího kontejneru.
 
-Chcete-li zastavit a odebrat kontejner, `Control` + `C`stiskněte klávesu.
+Chcete-li zastavit a odebrat kontejner, stiskněte klávesu `Control` + `C` .
 
 ## <a name="remove-the-image-optional"></a>Odebrat bitovou kopii (volitelné)
 
