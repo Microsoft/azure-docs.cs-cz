@@ -13,10 +13,9 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a57173311278c5e3e0304aeb12d4d6999379eb5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84692321"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Použití Microsoft Authenticator nebo Portál společnosti Intune v aplikacích Xamarin
@@ -235,7 +234,7 @@ Aby mohl zprostředkované ověřování fungovat, musíte nastavit aktivitu tak
 
 K tomu je nutné zadat aktivitu (obvykle MainActivity) pro `WithParentActivityOrWindow(object parent)` nadřazený objekt. 
 
-**Například:**
+**Příklad:**
 
 V volání metody získání tokenu:
 

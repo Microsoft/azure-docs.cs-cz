@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689983"
 ---
 # <a name="azure-api-management-template-resources"></a>Prostředky šablony Azure API Management
@@ -353,7 +352,7 @@ Podporovány jsou následující možnosti lokalizace:
   
 |Name|Text|  
 |----------|----------|  
-|WebIssuesIndexTitle|Problémy|  
+|WebIssuesIndexTitle|Issues (Problémy)|  
 |WebIssuesNoActiveSubscriptions|Nemáte žádná aktivní předplatná. Abyste mohli ohlásit problém, musíte se přihlásit k odběru produktu.|  
 |WebIssuesNotSignin|Nejste přihlášení. {0}Oznamte problém nebo odešlete komentář.|  
 |WebIssuesReportIssueButton|Nahlásit problém|  
@@ -535,7 +534,7 @@ Podporovány jsou následující možnosti lokalizace:
 |----------|----------|  
 |SubscriptionCancelConfirmation|Opravdu chcete zrušit toto předplatné?|  
 |SubscriptionRenewConfirmation|Opravdu chcete obnovit toto předplatné?|  
-|WebDevelopersManageSubscriptions|Správa předplatných|  
+|WebDevelopersManageSubscriptions|Spravovat předplatná|  
 |WebDevelopersPrimaryKey|Primární klíč|  
 |WebDevelopersRegenerateLink|Znovu vytvořit|  
 |WebDevelopersSecondaryKey|Sekundární klíč|  

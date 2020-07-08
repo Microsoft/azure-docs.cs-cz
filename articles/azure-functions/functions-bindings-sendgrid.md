@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697353"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
@@ -356,14 +355,14 @@ V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou 
 
 | *function.js* vlastnost | Atribut nebo vlastnost anotace | Description | Volitelné |
 |--------------------------|-------------------------------|-------------|----------|
-| typ |Není k dispozici| Musí být nastaven na hodnotu `sendGrid` .| Ne |
-| směr |Není k dispozici| Musí být nastaven na hodnotu `out` .| Ne |
-| name |Není k dispozici| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | Ne |
-| apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
-| na| Akce | E-mailová adresa příjemce | Ano |
-| Výsledkem| From | E-mailová adresa odesílatele |  Ano |
-| závislosti| Subjekt | Předmět e-mailu. | Ano |
-| text| Text | Obsah e-mailu | Ano |
+| typ |Není k dispozici| Musí být nastaven na hodnotu `sendGrid` .| No |
+| směr |Není k dispozici| Musí být nastaven na hodnotu `out` .| No |
+| name |Není k dispozici| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | No |
+| apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| No |
+| na| Akce | E-mailová adresa příjemce | Yes |
+| Výsledkem| From | E-mailová adresa odesílatele |  Yes |
+| závislosti| Subjekt | Předmět e-mailu. | Yes |
+| text| Text | Obsah e-mailu | Yes |
 
 Volitelné vlastnosti mohou mít ve vazbě definovány výchozí hodnoty a buď přidány nebo přepsány programově.
 

@@ -4,10 +4,9 @@ description: Použijte operaci kopírování v šabloně Azure Resource Manager 
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678439"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Iterace proměnných v šablonách ARM
@@ -16,7 +15,7 @@ V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro proměn
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [vlastnosti v prostředku](copy-properties.md)a [výstupy](copy-outputs.md).
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Element Copy má následující obecný formát:
 
@@ -314,7 +313,7 @@ Následující příklad ukazuje různé způsoby, jak můžete použít kopíro
 
 Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné hodnoty pro proměnnou.
 
-|Šablona  |Popis  |
+|Šablona  |Description  |
 |---------|---------|
 |[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
 |[Více pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr viz [více souborů parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |

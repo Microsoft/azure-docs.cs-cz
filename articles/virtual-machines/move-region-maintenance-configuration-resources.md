@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84676887"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Přesunutí prostředků v konfiguraci řízení údržby do jiné oblasti
@@ -40,7 +39,7 @@ Než začnete přesouvat prostředky spojené s konfigurací řízení údržby:
 
 1. Než začnete, definujte tyto proměnné. Poskytujeme příklad pro každý.
 
-    **Proměnná** | **Zobrazí** | **Příklad**
+    **Proměnná** | **Podrobnosti** | **Příklad**
     --- | ---
     $subId | ID pro předplatné obsahující konfigurace údržby | Naše-Subscription-ID
     $rsrcGroupName | Název skupiny prostředků (virtuální počítač Azure) | "VMResourceGroup"

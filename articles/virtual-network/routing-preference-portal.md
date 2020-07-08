@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.openlocfilehash: 7db8dcc87606e5c58ddac8f609d1538989af5ed7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689295"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Konfigurace předvolby směrování pro veřejnou IP adresu pomocí Azure Portal
@@ -45,7 +44,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderN
 ```
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Vytvoření veřejné IP adresy s prioritou směrování
-1. Přihlaste se k webu [Azure Portal](https://preview.portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://preview.portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 3. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.

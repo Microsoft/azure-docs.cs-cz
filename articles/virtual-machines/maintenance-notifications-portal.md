@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678728"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Zpracování oznámení o plánované údržbě pomocí portálu
@@ -32,7 +31,7 @@ Můžete použít Azure Portal a vyhledat virtuální počítače s naplánovano
 
    **Stav údržby**: zobrazuje stav údržby pro virtuální počítač. Možné hodnoty jsou následující:
       
-      | Hodnota | Popis |
+      | Hodnota | Description |
       |-------|-------------|
       | Spustit teď | Virtuální počítač je v okně samoobslužné údržby, které umožňuje zahájit údržbu sami. Níže najdete informace o tom, jak na VIRTUÁLNÍm počítači spustit údržbu. | 
       | Naplánované | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. Okno údržby můžete zjistit tak, že v tomto zobrazení vyberete okno naplánované údržby nebo kliknutím na virtuální počítač. | 

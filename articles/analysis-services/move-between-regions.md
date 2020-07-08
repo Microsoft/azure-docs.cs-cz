@@ -8,10 +8,9 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699426"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Přesunout Analysis Services do jiné oblasti
@@ -68,9 +67,9 @@ Pokud jsou nakonfigurovaná nastavení úložiště, pomocí kroků v části [z
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Export šablony pomocí Azure Portal:
+Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky**a potom vyberte Server Analysis Services.
 
@@ -190,13 +189,13 @@ K nasazení nového prostředku serveru v jiné oblasti použijete **template.js
 
 1. Na portálu vyberte **vytvořit prostředek**.
 
-2. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
+2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
 
-3. Vyberte **Template deployment**.
+3. Vyberte **template Deployment**.
 
 4. Vyberte **Vytvořit**.
 
-5. Vyberte **Vytvořit vlastní šablonu v editoru**.
+5. **V editoru vyberte vytvořit vlastní šablonu**.
 
 6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** soubor, který jste exportovali a upravili.
 

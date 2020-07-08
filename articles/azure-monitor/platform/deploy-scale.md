@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678694"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
@@ -24,7 +23,7 @@ Pomocí Azure Policy můžete zadat požadavky na konfiguraci pro všechny vytvo
 
 Azure Policy se skládá z objektů v následující tabulce. Podrobnější vysvětlení jednotlivých objektů naleznete v tématu [Azure Policy objekty](../../governance/policy/overview.md#azure-policy-objects) .
 
-| Položka | Popis |
+| Položka | Description |
 |:---|:---|
 | Definice zásady | Popisuje podmínky dodržování předpisů a postup, který se má provést, pokud je splněna podmínka. Může se jednat o všechny prostředky určitého typu nebo pouze prostředky, které odpovídají určitým vlastnostem. Efekt může být jednoduše označovat, že prostředek má splňovat předpisy nebo nasadit související prostředek. Definice zásad jsou napsány pomocí formátu JSON, jak je popsáno v tématu [Struktura definice Azure Policy](../../governance/policy/concepts/definition-structure.md). Účinky jsou popsány v tématu [principy Azure Policych efektů](../../governance/policy/concepts/effects.md).
 | Iniciativa zásad | Skupina definic zásad, které by se měly použít společně. Například můžete mít jednu definici zásady pro posílání protokolů prostředků do pracovního prostoru Log Analytics a další pro posílání protokolů prostředků do Center událostí. Vytvořte iniciativu, která zahrnuje definice zásad, a místo definice jednotlivých zásad aplikujte iniciativu na prostředky. Iniciativy jsou zapisovány pomocí formátu JSON, jak je popsáno v tématu [struktura Azure Policy iniciativ](../../governance/policy/concepts/initiative-definition-structure.md). |

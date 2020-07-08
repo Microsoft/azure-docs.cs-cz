@@ -6,13 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84687646"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions triggery a koncepty vazeb
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Koncepty triggerů a vazeb Azure Functions.
 
 V tomto článku se seznámíte s koncepty a možnostmi triggerů funkcí a vazeb na nejvyšší úrovni.
 
@@ -29,7 +28,7 @@ Vezměte v úvahu následující příklady, jak můžete implementovat různé 
 | Ukázkový scénář | Trigger | Vstupní vazba | Výstupní vazba |
 |-------------|---------|---------------|----------------|
 | Dojde k doručení nové zprávy fronty, která spustí funkci pro zápis do jiné fronty. | Provedených<sup>*</sup> | *Žádné* | Provedených<sup>*</sup> |
-|Naplánovaná úloha načte Blob Storage obsah a vytvoří nový dokument Cosmos DB. | Časovač | Blob Storage | Cosmos DB |
+|Naplánovaná úloha načte Blob Storage obsah a vytvoří nový dokument Cosmos DB. | Časovač | Blob Storage | Databáze Cosmos |
 |Event Grid slouží ke čtení obrázku z Blob Storage a dokumentu z Cosmos DB k odeslání e-mailu. | Event Grid | Blob Storage a Cosmos DB | SendGrid |
 | Webhook, který používá Microsoft Graph k aktualizaci excelového listu. | HTTP | *Žádné* | Microsoft Graph |
 
@@ -79,7 +78,7 @@ Použijete-li [atributy v knihovně tříd](functions-dotnet-class-library.md) k
 
 Informace o tom, které vazby jsou ve verzi Preview nebo které jsou schválené pro použití v produkčním prostředí, najdete v tématu [podporované jazyky](supported-languages.md).
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 - [Výrazy a vzory vazby](./functions-bindings-expressions-patterns.md)
 - [Použití návratové hodnoty funkce Azure Functions](./functions-bindings-return-value.md)
 - [Postup registrace výrazu vazby](./functions-bindings-register.md)

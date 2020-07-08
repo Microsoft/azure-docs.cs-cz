@@ -13,10 +13,9 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689754"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje webové tabulky pomocí Azure Data Factory
@@ -72,9 +71,9 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **Web** . |Ano |
-| URL |Adresa URL webového zdroje |Ano |
-| authenticationType |Anonymous. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **Web** . |Yes |
+| URL |Adresa URL webového zdroje |Yes |
+| authenticationType |Anonymous. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Použití anonymního ověřování
 
@@ -100,11 +99,11 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ |Typ datové sady musí být nastavené na **Webtable** . |Ano |
+| typ |Typ datové sady musí být nastavené na **Webtable** . |Yes |
 | cesta |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
-| index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
+| index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
