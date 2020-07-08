@@ -9,13 +9,13 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, snímač, SDK, tělo, sledování, společné
 ms.openlocfilehash: 1b62022242144d5db51455a32ac04b67c3e5dd7a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277214"
 ---
-# <a name="get-body-tracking-results"></a>Získat výsledky sledování textu
+# <a name="get-body-tracking-results"></a>Získání výsledků sledování pohybu těla
 
 Sada SDK pro sledování textu používá objekt sledování textu ke zpracování Azure Kinect DK zachycuje a generuje výsledky sledování textu. Udržuje taky globální stav sledování, zpracování front a výstupní fronty. Existují tři kroky při použití sledování textu:
 
@@ -131,4 +131,4 @@ k4abt_frame_release(body_frame); // Remember to release the body frame once you 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Přístup k datům v těle rámce](access-data-body-frame.md)
+>[Přístup k datům ve snímku těla](access-data-body-frame.md)

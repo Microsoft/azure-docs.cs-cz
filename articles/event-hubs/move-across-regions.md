@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak přesunout obor názvů Azure Eve
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312969"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
@@ -16,17 +16,17 @@ Existují různé scénáře, ve kterých byste chtěli přesunout existující 
 > [!NOTE]
 > V tomto článku se dozvíte, jak exportovat šablonu Azure Resource Manager pro existující obor názvů Event Hubs a potom použít šablonu k vytvoření oboru názvů se stejným nastavením konfigurace v jiné oblasti. Tento proces však nepřesouvá události, které ještě nebyly zpracovány. Před odstraněním je třeba zpracovat události z původního oboru názvů.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-- Zajistěte, aby služby a funkce používané vaším účtem byly podporovány v cílové oblasti.
-- V případě funkcí verze Preview se ujistěte, že je vaše předplatné na seznamu povolených pro cílovou oblast.
+- Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
+- V případě funkcí Preview se ujistěte, že je vaše předplatné v cílové oblasti uvedené na seznamu povolených.
 - Pokud jste povolili **funkci zachycení** pro centra událostí v oboru názvů, přesuňte účty [Azure Storage nebo Azure Data Lake Store gen 2](../storage/common/storage-account-move.md) nebo [Azure Data Lake Store 1.1](../data-lake-store/data-lake-store-migration-cross-region.md) . teprve potom přesuňte obor názvů Event Hubs. Můžete také přesunout skupinu prostředků, která obsahuje obory názvů úložiště i Event Hubs do jiné oblasti, a to pomocí následujících kroků, které jsou podobné těm, které jsou popsané v tomto článku. 
 - Pokud je obor názvů Event Hubs v **clusteru Event Hubs**, vytvořte před provedením kroků v tomto článku [vyhrazený cluster](event-hubs-dedicated-cluster-create-portal.md) v **cílové oblasti** . Pomocí šablony pro rychlé zprovoznění [na GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/) můžete také vytvořit cluster Event Hubs. V šabloně odeberte část s oborem názvů JSON, aby se vytvořil pouze cluster. 
 
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona obsahuje nastavení, která popisují váš obor názvů Event Hubs.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj obor názvů Event Hubs.
 
@@ -46,15 +46,15 @@ Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona 
 Nasaďte šablonu pro vytvoření oboru názvů Event Hubs v cílové oblasti. 
 
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
+1. V Azure Portal vyberte **vytvořit prostředek**.
 
-2. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
+2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
 
-3. Vyberte **Template deployment**.
+3. Vyberte **template Deployment**.
 
 4. Vyberte **Vytvořit**.
 
-5. Vyberte **Vytvořit vlastní šablonu v editoru**.
+5. **V editoru vyberte vytvořit vlastní šablonu**.
 
 6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 
@@ -88,7 +88,7 @@ Nasaďte šablonu pro vytvoření oboru názvů Event Hubs v cílové oblasti.
     
     6. Teď vyberte **Vybrat nákup** a zahajte proces nasazení. 
 
-## <a name="discard-or-clean-up"></a>Zahodit nebo vyčistit
+## <a name="discard-or-clean-up"></a>Zahození nebo vyčištění
 Pokud po nasazení chcete začít znovu, můžete **cílový obor názvů Event Hubs**odstranit a postup opakovat postupem popsaným v části [Příprava](#prepare) a [Přesun](#move) v tomto článku.
 
 Chcete-li potvrdit změny a dokončit přesun Event Hubs oboru názvů, odstraňte **zdrojový obor názvů Event Hubs**. Ujistěte se, že jste všechny události v oboru názvů před odstraněním oboru názvů zpracovali. 

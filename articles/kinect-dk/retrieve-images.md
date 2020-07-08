@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, načtení, senzor, kamera, sada SDK, Hloubka, RGB, obrázky, barva, zachycení, rozlišení, vyrovnávací paměť
 ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277141"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Načtení dat imagí Kinect Azure
@@ -123,7 +123,7 @@ k4a_capture_release(capture);
 Nyní víte, jak zachytit a koordinovat image kamer mezi barevou a hloubkou pomocí zařízení Azure Kinect. Můžete také:
 
 >[!div class="nextstepaction"]
->[Načíst ukázky IMU](retrieve-imu-samples.md)
+>[Načtení ukázek IMU](retrieve-imu-samples.md)
 
 >[!div class="nextstepaction"]
 >[Přístup k mikrotelefonům](access-mics.md)

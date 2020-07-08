@@ -4,10 +4,10 @@ description: Tento článek poskytuje kontrolní seznam kontrol zabezpečení pr
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: da20778f1e24372e445d635e675df6484905f195
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85315397"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Řízení zabezpečení pro Azure Event Hubs
@@ -46,7 +46,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Eve
 |---|---|--|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Yes | |  |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano. K dispozici pro vyhrazené clustery. | Klíč spravovaný zákazníkem ve službě Azure Key trezor se dá použít k šifrování dat v centru událostí v klidovém formátu. | [Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal](configure-customer-managed-key.md) |
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |  |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Yes | |  |
 | Zašifrovaná volání rozhraní API| Yes |  |  |
 

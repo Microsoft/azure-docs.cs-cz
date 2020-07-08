@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262663"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault 
@@ -33,7 +33,7 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).  
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).  
 2. Vyberte **vytvořit prostředek > > zabezpečení Key Vault**.  
 3. V části **Vytvořit trezor klíčů** zadejte následující informace:  
    * **Název:** Zadejte jedinečný název Key Vault.  

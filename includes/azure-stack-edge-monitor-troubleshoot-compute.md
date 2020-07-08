@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85313194"
 ---
 V Azure Stack hraniční zařízení, které má nakonfigurovanou výpočetní roli, je k dispozici podmnožina příkazů Docker pro sledování nebo odstraňování potíží s moduly. Pokud chcete zobrazit seznam dostupných příkazů, [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface) a použijte `dkrdbe` funkci.
@@ -37,7 +37,7 @@ Commands:
 ```
 Následující tabulka obsahuje stručný popis příkazů, které jsou k dispozici pro `dkrdbe` :
 
-|command  |Popis |
+|command  |Description |
 |---------|---------|
 |`image`     | Správa imagí. K odebrání nepoužívaných imagí použijte:`dkrdbe image prune -a -f`       |
 |`images`     | Zobrazit obrázky         |

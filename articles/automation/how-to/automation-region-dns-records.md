@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 44d70db195850b3f87806c69755095b521078b2e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85298306"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Záznamy DNS pro oblasti Azure používané Azure Automation
@@ -30,7 +30,7 @@ Následující tabulka uvádí záznam DNS pro každou oblast.
 >[!NOTE]
 >I když seznam záznamů DNS služby Automation, které jsou zde uvedené, jsou vyřazené, stále funkční, aby bylo možné migrovat na nové záznamy uvedené v části [Podpora privátního propojení](#support-for-private-link) a zabránit chybám v procesech automatizace.
 
-| **Oblast** | **Záznam DNS** |
+| **Věřitel** | **Záznam DNS** |
 | --- | --- |
 | Austrálie – střed |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
 | Austrálie – východ |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
@@ -52,7 +52,7 @@ Následující tabulka uvádí záznam DNS pro každou oblast.
 
 Pro podporu [privátního odkazu](../../private-link/private-link-overview.md) v Azure Automation byly aktualizovány záznamy DNS pro všechna podporovaná datacentra. Místo adres URL specifických pro jednotlivé oblasti jsou adresy URL specifické pro účet Automation.
 
-| **Oblast** | **Záznam DNS** |
+| **Věřitel** | **Záznam DNS** |
 | --- | --- |
 | USA – středozápad |`https://<accountId>.webhook.wcus.azure-automation.net`<br>`https://<accountId>.agentsvc.wcus.azure-automation.net`<br>`https://<accountId>.jrds.wcus.azure-automation.net` |
 | USA – západ |`https://<accountId>.webhook.wus.azure-automation.net`<br>`https://<accountId>.agentsvc.wus.azure-automation.net`<br>`https://<accountId>.jrds.wus.azure-automation.net` |

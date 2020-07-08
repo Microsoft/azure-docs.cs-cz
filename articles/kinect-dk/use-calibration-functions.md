@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, senzor, SDK, systém souřadnic, kalibrace, funkce, kamera, vnitřní, extrinsic, projekt, neprojekt, transformace, RGB-d, Point Cloud
 ms.openlocfilehash: a501765222154bde4ed35e878a9d18042893fca2
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277152"
 ---
 # <a name="use-azure-kinect-calibration-functions"></a>Použití funkcí kalibrace Azure Kinect
@@ -58,7 +58,7 @@ Funkce [k4a_calibration_2d_to_2d ()](https://microsoft.github.io/Azure-Kinect-Se
 
 Nyní víte o kalibracích kamery. můžete se také seznámit s tím, jak
 >[!div class="nextstepaction"]
->[Zaznamenat synchronizaci zařízení](capture-device-synchronization.md)
+>[Zachycení synchronizace zařízení](capture-device-synchronization.md)
 
 Můžete také zkontrolovat
 

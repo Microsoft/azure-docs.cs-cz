@@ -4,10 +4,10 @@ description: Tento článek popisuje interakce na straně klienta s Hybrid Conne
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316658"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Protokol Azure Relay Hybrid Connections
@@ -137,12 +137,12 @@ Parametry řetězce dotazu jsou následující.
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Yes      | Pro roli naslouchacího procesu musí být parametr **SB-HC-Action = Listen** .
 | `{path}`         | Yes      | Cesta oboru názvů zakódovaného URL předkonfigurovaného hybridního připojení k registraci tohoto naslouchacího procesu. Tento výraz je připojen k části s pevnou `$hc/` cestou.
-| `sb-hc-token`    | Ano\*    | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo na **naslouchání** .
+| `sb-hc-token`    | Yes\*    | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo na **naslouchání** .
 | `sb-hc-id`       | No       | Toto volitelné ID pro klienta poskytuje kompletní trasování diagnostiky.
 
 Pokud se připojení protokolu WebSocket nepovede kvůli registraci cesty k hybridnímu připojení nebo neplatnému nebo chybějícímu tokenu nebo nějaké jiné chybě, je k dispozici zpětná vazba k chybě pomocí běžného modelu zpětné vazby stavu HTTP 1,1. Popis stavu obsahuje ID sledování chyb, které může být sděleno pracovníkům podpory Azure:
 
-| Kód | Chyba          | Popis
+| Kód | Chyba          | Description
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nenalezeno      | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
 | 401  | Neautorizováno   | Token zabezpečení chybí nebo je neplatný nebo neplatný.
@@ -151,7 +151,7 @@ Pokud se připojení protokolu WebSocket nepovede kvůli registraci cesty k hybr
 
 Pokud se připojení protokolu WebSocket úmyslně vypíná službou po jeho počátečním nastavení, je důvod k tomu sdělen pomocí vhodného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která také obsahuje ID sledování. Služba nevypne řídicí kanál bez výskytu chybové podmínky. Jakékoli čisté vypnutí je řízeno klientem.
 
-| Stav WS | Popis
+| Stav WS | Description
 | --------- | -------------------------------------------------------------------------------
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.
 | 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace.
@@ -208,14 +208,14 @@ Další informace najdete v části "odesilatel protokolu".
 
 Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
-| Kód | Chyba          | Popis
+| Kód | Chyba          | Description
 | ---- | -------------- | -----------------------------------
 | 403  | Forbidden      | Adresa URL není platná.
 | 500  | Vnitřní chyba | Ve službě se něco pokazilo.
 
  Po navázání připojení server vypne WebSocket při vypnutí WebSocket odesílatele nebo s následujícím stavem:
 
-| Stav WS | Popis                                                                     |
+| Stav WS | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Klient odesilatele ukončí připojení.                                    |
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.                        |
@@ -239,7 +239,7 @@ Výsledný identifikátor URI se pak použije k navázání připojení protokol
 
 Při správném dokončení se tato metoda handshake úmyslně nezdařila s kódem chyby HTTP 410, protože nebyl vytvořen žádný WebSocket. Pokud dojde k nějaké chybě, popíše následující kódy chybu:
 
-| Kód | Chyba          | Popis                          |
+| Kód | Chyba          | Description                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Forbidden      | Adresa URL není platná.                |
 | 500  | Vnitřní chyba | Ve službě se něco pokazilo. |
@@ -371,7 +371,7 @@ Pro odpovědi, které překračují 64 kB, musí být odpověď doručena přes 
 
 Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
-| Kód | Chyba           | Popis
+| Kód | Chyba           | Description
 | ---- | --------------- | -----------------------------------
 | 400  | Neplatný požadavek | Nerozpoznaná akce nebo adresa URL je neplatná.
 | 403  | Forbidden       | Platnost adresy URL vypršela.
@@ -379,7 +379,7 @@ Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
  Po navázání připojení server vypne WebSocket, když se soket HTTP klienta ukončí nebo s následujícím stavem:
 
-| Stav WS | Popis                                                                     |
+| Stav WS | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Klient odesilatele ukončí připojení.                                    |
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.                        |
@@ -404,7 +404,7 @@ Až vyprší platnost tokenu naslouchacího procesu, může ho nahradit odeslán
 
 Pokud se ověření tokenu nepovede, přístup se odepře a cloudová služba uzavře WebSocket řídicího kanálu s chybou. V opačném případě neexistuje žádná odpověď.
 
-| Stav WS | Popis                                                                     |
+| Stav WS | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace. |
 
@@ -423,11 +423,11 @@ Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, vč
 
 Možnosti parametru řetězce dotazu jsou následující:
 
-| Param          | Povinné? | Popis
+| Param          | Povinné? | Description
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Yes       | V případě role odesílatele musí být parametr `sb-hc-action=connect` .
 | `{path}`       | Yes       | (viz následující odstavec)
-| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
+| `sb-hc-token`  | Yes\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
 | `sb-hc-id`     | No        | Volitelné ID, které umožňuje kompletní diagnostické trasování a zpřístupnění posluchači během metody Accept handshake.
 
  `{path}`Je cesta oboru názvů zakódovaného URL předkonfigurovaného hybridního připojení, na které se má tento naslouchací proces zaregistrovat. `path`Výraz lze rozšířit s příponou a výrazem řetězce dotazu pro další komunikaci. Pokud je hybridní připojení registrováno pod cestou `hyco` , `path` za výraz může `hyco/suffix?param=value&...` následovat parametry řetězce dotazu, které jsou zde definovány. Úplný výraz může být následující:
@@ -440,7 +440,7 @@ wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id
 
 Pokud se připojení protokolu WebSocket nepovede z důvodu registrace cesty k hybridnímu připojení, neplatného nebo chybějícího tokenu nebo nějaké jiné chyby, je k dispozici zpětná vazba k chybě pomocí běžného modelu zpětné vazby stavu HTTP 1,1. Popis stavu obsahuje ID sledování chyb, které se dá sdělit pracovníkům podpory Azure:
 
-| Kód | Chyba          | Popis
+| Kód | Chyba          | Description
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nenalezeno      | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
 | 401  | Neautorizováno   | Token zabezpečení chybí nebo je neplatný nebo neplatný.
@@ -449,7 +449,7 @@ Pokud se připojení protokolu WebSocket nepovede z důvodu registrace cesty k h
 
 Pokud se připojení protokolu WebSocket úmyslně ukončí službou po počátečním nastavování, je důvod k tomu sdělen pomocí vhodného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která také obsahuje ID sledování.
 
-| Stav WS | Popis
+| Stav WS | Description
 | --------- | ------------------------------------------------------------------------------- 
 | 1000      | Naslouchací proces vypnul soket.
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.
@@ -471,9 +471,9 @@ Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, vč
 
 Možnosti parametru řetězce dotazu jsou následující:
 
-| Param          | Povinné? | Popis
+| Param          | Povinné? | Description
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
+| `sb-hc-token`  | Yes\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
 
 Token se dá také přenést buď v hlavičce, `ServiceBusAuthorization` nebo v `Authorization` hlavičce HTTP. Token se dá vynechat, pokud je hybridní připojení nakonfigurované tak, aby povolovalo anonymní požadavky.
 
@@ -487,7 +487,7 @@ Služba přidá název hostitele oboru názvů Relay do `Via` .
 
 Pokud dojde k chybě, může služba odpovědět následujícím způsobem. Zda je odpověď pocházející ze služby nebo naslouchacího procesu, může být identifikována prostřednictvím přítomnosti `Via` hlavičky. Pokud je hlavička přítomna, odpověď je od naslouchacího procesu.
 
-| Kód | Chyba           | Popis
+| Kód | Chyba           | Description
 | ---- | --------------- |--------- |
 | 404  | Nenalezeno       | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
 | 401  | Neautorizováno    | Token zabezpečení chybí nebo je neplatný nebo neplatný.

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, firmware, aktualizace, obnovení
 ms.openlocfilehash: eb60003a4233110cb33208bcb8e9784737bb2a8b
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277206"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>Aktualizovat firmware Azure Kinect DK
@@ -72,7 +72,7 @@ Current Firmware Versions:
 
 4. Po aktualizaci firmwaru můžete spustit [Azure Kinect Viewer](azure-kinect-viewer.md) a ověřit, jestli všechny senzory fungují podle očekávání.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Aktualizace firmwaru mohou selhat z několika důvodů. Při neúspěšné aktualizaci firmwaru vyzkoušejte následující kroky pro zmírnění rizika:
 
@@ -87,4 +87,4 @@ Všechny další problémy najdete na [stránkách podpory Microsoftu](https://a
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Azure Kinect Firmware Tool](azure-kinect-firmware-tool.md)
+>[Nástroj pro firmware Azure Kinect](azure-kinect-firmware-tool.md)

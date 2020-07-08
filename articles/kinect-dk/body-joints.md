@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, přenos, tělo, sledování, společné, hierarchie, kosti, připojení
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277204"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Spoje sledování textu v Azure Kinect
@@ -77,4 +77,4 @@ V následující tabulce je uveden výčet standardních společných připojen�
 
 ## <a name="next-steps"></a>Další kroky
 
-[Mapa indexu sledování textu](body-index-map.md)
+[Indexová mapa sledování pohybu těla](body-index-map.md)

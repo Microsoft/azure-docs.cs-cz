@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
 ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85297864"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace Azure SQL Database z modelu založeného na DTU do modelu založeného na vCore
@@ -169,12 +169,12 @@ Následující tabulka poskytuje pokyny pro konkrétní scénáře migrace:
 |---|---|---|---|
 |Standard|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
 |Premium|Důležité pro podnikání|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
-|Standard|Důležité pro podnikání|Upgradovat|Nejprve je třeba migrovat sekundární|
+|Standard|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
 |Důležité pro podnikání|Standard|Downgrade|Nejprve je třeba migrovat primární|
 |Premium|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
-|Obecné účely|Premium|Upgradovat|Nejprve je třeba migrovat sekundární|
+|Obecné účely|Premium|Upgrade|Nejprve je třeba migrovat sekundární|
 |Důležité pro podnikání|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
-|Obecné účely|Důležité pro podnikání|Upgradovat|Nejprve je třeba migrovat sekundární|
+|Obecné účely|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
 ||||
 
 ## <a name="migrate-failover-groups"></a>Migrace skupin převzetí služeb při selhání

@@ -4,10 +4,10 @@ description: V tomto článku najdete seznam předdefinovaných ovládacích prv
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 64abee031bb20e2bdb10bf1cc3cd77e135713550
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316622"
 ---
 # <a name="security-controls-for-azure-relay"></a>Ovládací prvky zabezpečení pro Azure Relay
@@ -22,7 +22,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Rel
 |---|---|--|--|
 | Podpora koncového bodu služby| No |  |   |
 | Izolace sítě a podpora brány firewall| No |  |   |
-| Podpora vynuceného tunelování| – | Relay je tunelové propojení TLS  |   |
+| Podpora vynuceného tunelování| Není k dispozici | Relay je tunelové propojení TLS  |   |
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
@@ -43,9 +43,9 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Rel
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
-| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  – | Relay je webový soket a neuchovává data. |   |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Není k dispozici | Relay je webový soket a neuchovává data. |   |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | No | Používá pouze certifikáty Microsoft TLS.  |   |
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |   |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |   |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Yes | Služba vyžaduje protokol TLS. |   |
 | Zašifrovaná volání rozhraní API| Yes | HTTPS. |
 

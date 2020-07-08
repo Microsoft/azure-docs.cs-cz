@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled všech protokolů aktivit a diagn
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314898"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Povolit protokoly diagnostiky pro Azure Relay Hybrid Connections
@@ -52,7 +52,7 @@ Nové nastavení se projeví přibližně po 10 minutách. Protokoly se zobrazí
 ## <a name="schema-for-hybrid-connections-events"></a>Schéma pro události hybridních připojení
 Řetězce JSON protokolu událostí Hybrid Connections obsahují prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Name | Description |
 | ------- | ------- |
 | ResourceId | ID prostředku Azure Resource Manager |
 | ActivityId | Interní ID, které slouží k identifikaci zadané operace. Může být také známé jako "TrackingId" |
@@ -80,7 +80,7 @@ Tady je ukázka události hybridních připojení ve formátu JSON.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>Události a operace zaznamenané v diagnostických protokolech
 
-| Operace | Popis | 
+| Operace | Description | 
 | --------- | ----------- | 
 | AuthorizationFailed | Autorizace se nezdařila.|
 | InvalidSasToken | Neplatný token SAS | 

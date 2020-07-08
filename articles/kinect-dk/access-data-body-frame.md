@@ -9,13 +9,13 @@ ms.date: 06/26/2019
 ms.topic: how-to
 keywords: tělo, rámec, Azure, Kinect, tělo, sledování, tipy
 ms.openlocfilehash: be44f59cb84e99129bf526575293eee69ca64598
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277216"
 ---
-# <a name="access-data-in-body-frame"></a>Přístup k datům v těle rámce
+# <a name="access-data-in-body-frame"></a>Přístup k datům ve snímku těla
 
 Tento článek popisuje data obsažená v rámci textového rámce a funkce pro přístup k těmto datům.
 
@@ -76,4 +76,4 @@ k4a_capture_release(input_capture);
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Sada SDK pro sledování textu v Azure Kinect](https://microsoft.github.io/Azure-Kinect-Body-Tracking/)
+>[Sada Azure Kinect Body Tracking SDK](https://microsoft.github.io/Azure-Kinect-Body-Tracking/)

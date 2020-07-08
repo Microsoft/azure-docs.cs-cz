@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.openlocfilehash: 90ae7951196d424b59d3780469cb7e01519c51f9
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85263574"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn

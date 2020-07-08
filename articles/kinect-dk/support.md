@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, nahrávání, senzor, SDK, přístup, Hloubka, video, fotoaparát, imu, pohyb, senzor, zvuk, mikrofon, Matroska, sada senzorů, stažení, tělo, sledování, podpora
 ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277232"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Možnosti a prostředky podpory Azure Kinect
@@ -59,4 +59,4 @@ Další informace o nabídkách podpory najdete v podrobnějších informacích 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Řešení potíží s Azure Kinect](troubleshooting.md)
+[Řešení potíží s Azure Kinectem](troubleshooting.md)

@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o knihovně, kterou můžete pou
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312985"
 ---
 # <a name="event-hubs-management-libraries"></a>Knihovny pro správu Event Hubs
@@ -20,7 +20,7 @@ Knihovny pro správu služby Azure Event Hubs můžete použít k dynamickému z
 * Vytvoření, aktualizace, odstranění Event Hubs
 * Vytvoření, aktualizace, odstranění skupiny uživatelů
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít používat Event Hubs knihovny pro správu, je třeba ověřit pomocí Azure Active Directory (AAD). Služba AAD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 
