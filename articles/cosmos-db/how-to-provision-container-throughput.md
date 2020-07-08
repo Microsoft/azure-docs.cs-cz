@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: e6b4126d3d1c2a7413a43779e0da0cd3f5347a5a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 9167df9c763f4004324a3435ba1a2b0fd0171ac4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851677"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Zřízení standardní (ruční) propustnosti v kontejneru Azure Cosmos
 
@@ -19,7 +19,7 @@ Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost na ko
 
 ## <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
@@ -99,7 +99,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a name="mongodb-api"></a><a id="dotnet-cassandra"></a>Rozhraní MongoDB API
+### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>Rozhraní MongoDB API
 
 ```csharp
 // refer to MongoDB .NET Driver

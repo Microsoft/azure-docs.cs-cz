@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 14c5413939deeedfd7c4e894b1919031062bf13a
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849185"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Řešení potíží s kopírováním dat v Azure Data Box Disk
 
@@ -32,11 +32,13 @@ Důvodem může být nečistý systém souborů.
 
 Pokud se jednotka znovu připojí jako čtení i zápis, nefunguje s Data Box disky. Tento scénář se nepodporuje u jednotek dešifrovaných pomocí Weblock. Mohli jste úspěšně znovu připojit zařízení pomocí následujícího příkazu:
 
-    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
+```
+# mount -o remount, rw /mnt/DataBoxDisk/mountVol1
+```
 
 I když opětovné připojení proběhlo úspěšně, data se nezachovají.
 
-**Rozhodnutí**
+**Rozlišení**
 
 V systému Linux proveďte následující kroky:
 
@@ -76,7 +78,7 @@ V systému Linux proveďte následující kroky:
 
 Pokud zjistíte, že vaše jednotka nemá data po odpojení (i když do ní byla zkopírována data), je možné, že jste po připojení jednotky jako jen pro čtení znovu připojili jednotku jako pro čtení i zápis.
 
-**Rozhodnutí**
+**Rozlišení**
  
 Pokud se jedná o tento případ, přečtěte si téma řešení pro jednotky, které se [připravují jako jen pro čtení](#issue-drive-getting-mounted-as-read-only).
 
@@ -91,7 +93,7 @@ Problémy, které se zobrazují při použití nástroje pro rozdělené kopíro
 |---------|---------|
 |Příjemce Načítá se heslo nástroje BitLocker pro svazek: m. <br>Chyba Při načítání klíče nástroje BitLocker pro svazek m byla zachycena výjimka:<br> Sekvence neobsahuje žádné prvky.|Tato chyba je vyvolána, pokud je cílový Data Box Disk offline. <br> Používejte nástroj `diskmgmt.msc` na disky, které jsou online.|
 |[Chyba] Došlo k výjimce: Operace WMI selhala:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=Formát poskytnutého hesla pro obnovení je neplatný. <br>Hesla pro obnovení nástroje BitLocker mají 48 číslic. <br>Zkontrolujte, jestli je heslo pro obnovení ve správném formátu, a pak to zkuste znovu.|Pomocí odemykacího nástroje Data Box Disku nejdřív disk odemkněte a pak zkuste příkaz znovu. Další informace najdete v článcích <li> [Odemknutí Data Box Disku pro klienty Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [Odemknutí Data Box Disku pro klienty Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
-|[Chyba] Došlo k výjimce: Na cílové jednotce existuje soubor DriveManifest.xml. <br> To signalizuje, že cílový disk mohl být připraven s jiným souborem deníku. <br>Pokud chcete přidat další data na stejnou jednotku, použijte předchozí soubor deníku. Chcete-li odstranit stávající data a znovu použít cílovou jednotku pro novou úlohu importu, odstraňte na jednotce *soubor DriveManifest. XML* . Spusťte tento příkaz znovu s novým souborem deníku.| Tato chyba se zobrazí, když se pokusíte použít stejnou sadu jednotek pro více relací importu. <br> Používejte jednu sadu jednotek jenom pro jednu relaci rozdělení a kopírování.|
+|[Chyba] Došlo k výjimce: Na cílové jednotce existuje soubor DriveManifest.xml. <br> To signalizuje, že cílový disk mohl být připraven s jiným souborem deníku. <br>Pokud chcete přidat další data na stejnou jednotku, použijte předchozí soubor deníku. Chcete-li odstranit stávající data a znovu použít cílovou jednotku pro novou úlohu importu, odstraňte *DriveManifest.xml* na disku. Spusťte tento příkaz znovu s novým souborem deníku.| Tato chyba se zobrazí, když se pokusíte použít stejnou sadu jednotek pro více relací importu. <br> Používejte jednu sadu jednotek jenom pro jednu relaci rozdělení a kopírování.|
 |[Chyba] Došlo k výjimce: CopySessionId importdata-sept-test-1 odkazuje na předchozí relace kopírování a nejde znovu použít pro novou relaci kopírování.|Tato chyba se zobrazí, když se pokusíte použít pro novou úlohu stejný název jako měla předchozí úspěšně dokončená úloha.<br> Přiřaďte nové úloze jedinečný název.|
 |[Info] Název cílového souboru nebo adresáře překračuje limit délky platný v systému souborů NTFS. |Tato zpráva je nahlášena, když byl cílový soubor přejmenován z důvodu příliš dlouhé cesty.<br> Toto chování můžete řídit úpravou možnosti disposition v souboru `config.json`.|
 |[Chyba] Došlo k výjimce: Chybná řídicí sekvence JSON. |Tato zpráva je nahlášena, když má soubor config.json neplatný formát. <br> Před uložením ověřte platnost souboru `config.json` pomocí nástroje [JSONlint](https://jsonlint.com/).|

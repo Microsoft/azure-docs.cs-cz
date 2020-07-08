@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bc65e34fa16312b54fc8a346c561ab128424ab26
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851806"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Přesunutí virtuálního počítače s SQL Server do jiné oblasti v rámci Azure pomocí Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ Připravte zdrojový virtuální počítač SQL Server i cílovou oblast pro př
     - Azure Site Recovery automaticky zjistí a vytvoří virtuální síť, když povolíte replikaci pro zdrojový virtuální počítač. Můžete také předem vytvořit síť a přiřadit ji k virtuálnímu počítači v toku uživatele pro povolení replikace. V cílové oblasti musíte ručně vytvořit všechny další prostředky.
 - Pokud chcete vytvořit nejčastěji používané síťové prostředky, které jsou relevantní pro vás na základě konfigurace zdrojového virtuálního počítače, přečtěte si následující dokumentaci: 
     - [Skupiny zabezpečení sítě](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Load Balancer](../../../load-balancer/tutorial-load-balancer-basic-internal-portal.md)
+    - [Load Balancer](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
     - [Veřejná IP adresa](../../../virtual-network/virtual-network-public-ip-address.md)
     - Další síťové součásti najdete v [dokumentaci k síti](../../../virtual-network/virtual-networks-overview.md).
 - Ruční vytvoření neprodukční sítě v cílové oblasti, pokud chcete otestovat konfiguraci před provedením finálního přesunu do cílové oblasti. Tento krok doporučujeme, protože zajišťuje minimální interferenci s produkční sítí. 

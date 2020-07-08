@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 961e5a0febc0212b8a747b052b3fd6f696689351
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850444"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -38,13 +38,13 @@ Většina velikostí virtuálních počítačů HPC (HBv2, Get, HC, H16r, H16mr,
 Toto rozhraní umožňuje, aby instance s podporou RDMA komunikovaly přes síť InfiniBand (IB), která pracuje s sazbami HDR pro HBv2, EDR sazbami pro FDR, H16r a virtuálními počítači řady N-Series s podporou RDMA a s H16MR sazbami pro virtuální počítače A8 a c. Tyto možnosti RDMA můžou zvýšit škálovatelnost a výkon určitých aplikací MPI (Message Passing Interface). Další informace o rychlosti najdete v podrobnostech v tabulkách na této stránce.
 
 > [!NOTE]
-> V prostředí Azure HPC existují dvě třídy virtuálních počítačů v závislosti na tom, jestli mají rozhraní SR-IOV povolené pro InfiniBand. V současné době je rozhraní SR-IOV pro virtuální počítače s povolenou InfiniBand: HBv2,, HC a NCv3. Zbývající virtuální počítače s povolenou InfiniBand nemají povolený SR-IOV.
+> V prostředí Azure HPC existují dvě třídy virtuálních počítačů v závislosti na tom, jestli mají rozhraní SR-IOV povolené pro InfiniBand. V současné době je rozhraní SR-IOV pro virtuální počítače s povolenou InfiniBand: HBv2,, HC, NCv3 a NDv2. Zbývající virtuální počítače s povolenou InfiniBand nemají povolený SR-IOV.
 > U všech virtuálních počítačů podporujících RDMA je podpora RDMA přes IB podporovaná.
 > IP přes IB se podporuje jenom na virtuálních počítačích s povolenou SR-IOV.
 
-- **Operační systém** – Linux je velmi dobře podporovaný pro virtuální počítače HPC, distribuce, jako je CentOS, RHEL, Ubuntu a SUSE, jsou společné. V souvislosti s podporou Windows je Windows Server 2016 podporovaný na všech virtuálních počítačích řady HPC. Windows Server 2012 R2, Windows Server 2012 se podporuje taky na virtuálních počítačích, které nepodporují SR-IOV.
+- **Operační systém** – Linux je velmi dobře podporovaný pro virtuální počítače HPC; distribuce, jako je CentOS, RHEL, Ubuntu, SUSE, se běžně používají. Týkající se podpory Windows je podpora Windows serveru 2016 a novějších verzí na všech virtuálních počítačích řady HPC. Windows Server 2012 R2, Windows Server 2012 se podporuje taky na virtuálních počítačích s povolenou instancí nevyužívajících SR-IOV (H16r, H16mr, A8 a c \ c). Upozorňujeme, že [systém Windows Server 2012 R2 není podporován na HBv2 a dalších virtuálních počítačích s více než 64 (virtuálními nebo fyzickými) jádry](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
-- **MPI** – velikosti virtuálních počítačů s povoleným rozhraním SR-IOV v Azure (HBv2,, HC, NCv3) umožňují pro použití s Mellanox OFED skoro jakýkoliv charakter MPI.
+- **MPI** – velikosti virtuálních počítačů s povoleným rozhraním SR-IOV v Azure (HBv2,, HC, NCv3, NDv2) umožňují téměř jakýkoli charakter MPI pro použití s Mellanox OFED.
 V případě virtuálních počítačů s podporou SR-IOV podporované implementace MPI používají ke komunikaci mezi virtuálními počítači rozhraní Microsoft Network Direct (ND). Proto jsou podporovány pouze verze Microsoft MPI (MS-MPI) 2012 R2 nebo novější a Intel MPI 5. x. Novější verze (2017, 2018) běhové knihovny Intel MPI mohou nebo nemusí být kompatibilní s ovladači Azure RDMA.
 
 - **InfiniBandDriver<Linux | Rozšíření Windows> VM** – na virtuálních počítačích s podporou RDMA přidejte InfiniBandDriver<Linux | Rozšíření Windows> pro povolení InfiniBand V systému Linux rozšíření virtuálního počítače InfiniBandDriverLinux nainstaluje ovladače Mellanox OFED (na virtuálních počítačích SR-IOV) pro připojení RDMA. V systému Windows rozšíření virtuálního počítače InfiniBandDriverWindows nainstaluje ovladače síťové technologie Windows (na virtuálních počítačích bez SR-IOV) nebo ovladače Mellanox OFED (na virtuálních počítačích s SR-IOV) pro připojení RDMA.

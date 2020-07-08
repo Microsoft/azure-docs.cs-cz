@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10e6d3a419bdf8b14675f0edabd63ed4b4f4b86f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849963"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 
@@ -31,7 +31,7 @@ Tento dokument vás provede procesem instalace a konfigurace agentů služby Azu
 
 Následující tabulka představuje seznam požadavků pro používání služby Azure AD Connect Health.
 
-| Požadavek | Popis |
+| Požadavek | Description |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health je funkcí služby Azure AD Premium a vyžaduje Azure AD Premium. <br /><br />Další informace najdete v tématu [Začínáme s Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) . <br />Pokud chcete začít používat bezplatnou 30denní zkušební verzi, přečtěte si článek o tom, jak [začít se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/). |
 | Abyste mohli Azure AD Connect Health začít používat, musíte být globálním správcem služby Azure AD.  |Ve výchozím nastavení můžou agenty stavu instalovat a konfigurovat jenom globální správci. Bez nich agenty nespustíte, nebudete mít přístup na portál ani nebudete moct v rámci Azure AD Connect Health provádět jakékoli operace. Další informace najdete v článku o [správě adresáře Azure AD](../fundamentals/active-directory-administer.md). <br /><br /> Pomocí řízení přístupu na základě rolí můžete povolit přístup k Azure AD Connect Health i ostatním uživatelům z vaší organizace. Další informace najdete v tématu [Access Control na základě rolí pro Azure AD Connect Health.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Důležité:** Účet, který jste použili při instalaci agentů, musí být pracovním nebo školním účtem. Nemůže to být účet Microsoft. Další informace najdete v článku o [registraci do Azure jako organizace](../fundamentals/sign-up-organization.md). |
@@ -329,19 +329,25 @@ Při konfiguraci agenta Azure AD Connect Health k používání proxy serveru HT
 
 Nastavení proxy serveru HTTP z Internet Exploreru je možné importovat, aby je agenti Azure AD Connect Health mohli používat. Na všech serverech se spuštěným agentem Health spusťte následující příkaz prostředí PowerShell:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```
 
 ##### <a name="import-from-winhttp"></a>Import ze služby WinHTTP
 
 Nastavení proxy serveru ze služby WinHTTP je možné importovat, aby je agenti Azure AD Connect Health mohli používat. Na všech serverech se spuštěným agentem Health spusťte následující příkaz prostředí PowerShell:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```
 
 #### <a name="specify-proxy-addresses-manually"></a>Ruční zadání adres proxy serverů
 
 Na všech serverech se spuštěným agentem Health můžete ručně určit proxy server spuštěním následujícího příkazu prostředí PowerShell:
 
-    Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```powershell
+Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```
 
 Příklad: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443*
 
@@ -352,15 +358,17 @@ Příklad: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserv
 
 Existující konfiguraci proxy serveru můžete vymazat spuštěním následujícího příkazu:
 
-    Set-AzureAdConnectHealthProxySettings -NoProxy
-
+```powershell
+Set-AzureAdConnectHealthProxySettings -NoProxy
+```
 
 ### <a name="read-current-proxy-settings"></a>Čtení aktuálního nastavení proxy serveru
 
 Nastavení aktuálně nakonfigurovaného proxy serveru můžete přečíst spuštěním následujícího příkazu:
 
-    Get-AzureAdConnectHealthProxySettings
-
+```powershell
+Get-AzureAdConnectHealthProxySettings
+```
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>Test připojení ke službě Azure AD Connect Health
 
@@ -368,7 +376,9 @@ Při provozu může dojít k potížím, které způsobí, že agent Azure AD Co
 
 Pokud agent nemůže odesílat data do služby Azure AD Connect Health po dobu delší než dvě hodiny, zobrazí se na portálu následující výstraha: „Data služby Health Service nejsou aktuální.“ Ověřit, zda ovlivněný agent Azure AD Connect Health může odesílat data do služby Azure AD Connect Health, můžete spuštěním následujícího příkazu prostředí PowerShell:
 
-    Test-AzureADConnectHealthConnectivity -Role ADFS
+```powershell
+Test-AzureADConnectHealthConnectivity -Role ADFS
+```
 
 Parametr „role“ v současnosti přijímá následující hodnoty:
 

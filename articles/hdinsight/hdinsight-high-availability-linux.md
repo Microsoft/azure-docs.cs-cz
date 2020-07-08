@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849667"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight
 
@@ -64,7 +64,7 @@ Přístup ke clusteru přes Internet se poskytuje prostřednictvím veřejné br
 
 Přístup přes veřejnou bránu je omezený na porty 443 (HTTPS), 22 a 23.
 
-|Port |Popis |
+|Port |Description |
 |---|---|
 |443|Slouží k přístupu k Ambari a dalším webovým uživatelským rozhraním nebo rozhraním API REST hostovaným na hlavních uzlech.|
 |22|Slouží k přístupu k primárnímu hlavnímu uzlu nebo hraničnímu uzlu pomocí SSH.|
@@ -97,7 +97,7 @@ Další informace o práci s Ambari REST API najdete v tématu [monitorování a
 
 K uzlům, které nejsou přímo přístupné přes Internet, se můžete připojit pomocí následujících metod:
 
-|Metoda |Popis |
+|Metoda |Description |
 |---|---|
 |SSH|Po připojení k hlavnímu uzlu pomocí SSH můžete pomocí SSH z hlavního uzlu se připojit k ostatním uzlům v clusteru. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Tunel SSH|Pokud potřebujete přístup k webové službě hostované na jednom z uzlů, které nejsou přístupné pro Internet, musíte použít tunel SSH. Další informace najdete v tématu [použití tunelu SSH](hdinsight-linux-ambari-ssh-tunnel.md) v dokumentu HDInsight.|
@@ -109,7 +109,7 @@ Chcete-li zjistit stav služeb, které jsou spuštěny na hlavních uzlech, pou�
 
 ### <a name="ambari-web-ui"></a>Webové uživatelské rozhraní Ambari
 
-Webové uživatelské rozhraní Ambari je možné zobrazit `https://CLUSTERNAME.azurehdinsight.net`na adrese. Nahraďte **CLUSTERNAME** názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte přihlašovací údaje uživatele HTTP pro váš cluster. Výchozí uživatelské jméno HTTP je **admin** a heslo je heslo, které jste zadali při vytváření clusteru.
+Webové uživatelské rozhraní Ambari je možné zobrazit na adrese `https://CLUSTERNAME.azurehdinsight.net` . Nahraďte **CLUSTERNAME** názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte přihlašovací údaje uživatele HTTP pro váš cluster. Výchozí uživatelské jméno HTTP je **admin** a heslo je heslo, které jste zadali při vytváření clusteru.
 
 Po přijetí na stránku Ambari jsou nainstalované služby uvedeny na levé straně stránky.
 
@@ -119,7 +119,7 @@ Pro indikaci stavu se může zobrazit řada ikon, které se mohou objevit vedle 
 
 Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 
-| Název výstrahy                               | Popis                                                                                                                                                                                  |
+| Název výstrahy                               | Description                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav monitorování metriky                    | Tato výstraha indikuje stav procesu monitorování metrik, jak je určený skriptem stavu monitorování.                                                                                   |
 | Prezenční signál agenta Ambari                   | Tato výstraha se aktivuje, pokud server ztratil kontakt s agentem.                                                                                                                        |
@@ -129,7 +129,7 @@ Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 | Server Spark2 Thrift                     | Tato výstraha na úrovni hostitele se aktivuje, pokud server Thrift Spark2 nejde určit jako.                                                                                                |
 | Proces serveru historie                   | Tato výstraha na úrovni hostitele se aktivuje, pokud se proces serveru historie nedá navázat a naslouchat v síti.                                                                |
 | Webové uživatelské rozhraní serveru historie                    | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní serveru historie nedosažitelné.                                                                                                              |
-| `ResourceManager`Webové uživatelské rozhraní                   | Tato výstraha na `ResourceManager` úrovni hostitele se aktivuje, pokud webové uživatelské rozhraní není dostupné.                                                                                                             |
+| `ResourceManager`Webové uživatelské rozhraní                   | Tato výstraha na úrovni hostitele se aktivuje, pokud `ResourceManager` webové uživatelské rozhraní není dostupné.                                                                                                             |
 | Shrnutí stavu NodeManager               | Tato výstraha na úrovni služby se aktivuje, pokud není v pořádku NodeManagers                                                                                                                    |
 | Webové uživatelské rozhraní časové osy aplikace                      | Tato výstraha na úrovni hostitele se aktivuje, pokud je webové uživatelské rozhraní serveru časové osy aplikace nedosažitelné.                                                                                                         |
 | Shrnutí stavu datauzel                  | Tato výstraha na úrovni služby se aktivuje, pokud existují chybné datauzly.                                                                                                                       |
@@ -139,7 +139,7 @@ Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 | Stav serveru Oozie                      | Tato výstraha na úrovni hostitele se aktivuje, pokud se server Oozie nedá zjistit a reagovat na požadavky klientů.                                                                      |
 | Proces metastore podregistru                   | Tato výstraha na úrovni hostitele se aktivuje, pokud se proces metastore podregistru nedá určit a naslouchat v síti.                                                                 |
 | HiveServer2 proces                      | Tato výstraha na úrovni hostitele se aktivuje, pokud HiveServer nejde zjistit a reagovat na požadavky klientů.                                                                        |
-| Stav serveru WebHCat                    | Tato výstraha na `templeton` úrovni hostitele se aktivuje, pokud stav serveru není v pořádku.                                                                                                            |
+| Stav serveru WebHCat                    | Tato výstraha na úrovni hostitele se aktivuje, pokud `templeton` stav serveru není v pořádku.                                                                                                            |
 | Procento dostupných serverů ZooKeeper      | Tato výstraha se aktivuje, pokud je počet ZooKeeper serverů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesu ZooKeeper.     |
 | Server Spark2 Livy                       | Tato výstraha na úrovni hostitele se aktivuje, pokud se server Livy2 nedá zjistit.                                                                                                        |
 | Server historie Spark2                    | Tato výstraha na úrovni hostitele se aktivuje, pokud se server historie Spark2 nedá zjistit.                                                                                               |
@@ -245,8 +245,10 @@ Podobně jako při připojování ke clusteru použijte klienta SSH, musíte zad
 
 Po připojení se zobrazí `sftp>` výzva. Z této výzvy můžete měnit adresáře, nahrávat a stahovat soubory. Například následující příkazy mění adresáře do adresáře **/var/log/Hadoop/HDFS** a pak stáhnou všechny soubory v adresáři.
 
-    cd /var/log/hadoop/hdfs
-    get *
+```bash
+cd /var/log/hadoop/hdfs
+get *
+```
 
 Seznam dostupných příkazů zobrazíte zadáním `help` na `sftp>` příkazovém řádku.
 
@@ -272,9 +274,9 @@ Při vytváření clusteru můžete určit velikost uzlů. Následující inform
 
     ![Obrázek Průvodce vytvořením clusteru s výběrem velikosti uzlu](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure CLI**: [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) při použití příkazu můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí `--headnode-size`parametrů, `--workernode-size`a. `--zookeepernode-size`
+* **Azure CLI**: při použití [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) příkazu můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí `--headnode-size` `--workernode-size` parametrů, a `--zookeepernode-size` .
 
-* **Azure PowerShell**: při použití rutiny [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí parametrů `-HeadNodeSize`, `-WorkerNodeSize`a. `-ZookeeperNodeSize`
+* **Azure PowerShell**: při použití rutiny [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí `-HeadNodeSize` `-WorkerNodeSize` parametrů, a `-ZookeeperNodeSize` .
 
 ## <a name="next-steps"></a>Další kroky
 

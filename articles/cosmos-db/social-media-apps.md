@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: df48be038635799c08be409f7f1600e324cd8380
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850701"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
 
@@ -39,22 +39,24 @@ Můžete použít obrovský instanci SQL s dostatečnou silou pro řešení tis�
 
 Tento článek vás provede jednotlivými modelováním dat na sociálních platformách pomocí Azure NoSQL [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) Database a efektivně. Také se dozvíte, jak používat jiné funkce Azure Cosmos DB, jako je [GREMLIN API](../cosmos-db/graph-introduction.md). S využitím přístupu [NoSQL](https://en.wikipedia.org/wiki/NoSQL) , ukládání dat ve formátu JSON a použití [denormalizace](https://en.wikipedia.org/wiki/Denormalization), se dřív komplikovaný příspěvek dá transformovat do jednoho [dokumentu](https://en.wikipedia.org/wiki/Document-oriented_database):
 
-    {
-        "id":"ew12-res2-234e-544f",
-        "title":"post title",
-        "date":"2016-01-01",
-        "body":"this is an awesome post stored on NoSQL",
-        "createdBy":User,
-        "images":["https://myfirstimage.png","https://mysecondimage.png"],
-        "videos":[
-            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
-        ],
-        "audios":[
-            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
-        ]
-    }
+```json
+{
+    "id":"ew12-res2-234e-544f",
+    "title":"post title",
+    "date":"2016-01-01",
+    "body":"this is an awesome post stored on NoSQL",
+    "createdBy":User,
+    "images":["https://myfirstimage.png","https://mysecondimage.png"],
+    "videos":[
+        {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+        {"url":"https://mysecondvideo.mp4", "title":"The second video"}
+    ],
+    "audios":[
+        {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+        {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
+    ]
+}
+```
 
 A k tomu může dojít s jediným dotazem a bez spojení. Tento dotaz je mnohem jednoduchý a jasný a je z rozpočtu potřeba méně prostředků, aby bylo dosaženo lepšího výsledku.
 
@@ -62,39 +64,45 @@ Azure Cosmos DB zajistí, aby byly všechny vlastnosti indexovány pomocí autom
 
 Komentáře na příspěvku lze považovat za jiné příspěvky s nadřazenou vlastností. (Tento postup zjednodušuje mapování objektů.)
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":User2,
-        "parent":"ew12-res2-234e-544f"
-    }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":User2,
+    "parent":"ew12-res2-234e-544f"
+}
 
-    {
-        "id":"asd2-fee4-23gc-jh67",
-        "title":"Ditto!",
-        "date":"2016-01-03",
-        "createdBy":User3,
-        "parent":"ew12-res2-234e-544f"
-    }
+{
+    "id":"asd2-fee4-23gc-jh67",
+    "title":"Ditto!",
+    "date":"2016-01-03",
+    "createdBy":User3,
+    "parent":"ew12-res2-234e-544f"
+}
+```
 
 A všechny sociální interakce mohou být uloženy na samostatném objektu jako čítače:
 
-    {
-        "id":"dfe3-thf5-232s-dse4",
-        "post":"ew12-res2-234e-544f",
-        "comments":2,
-        "likes":10,
-        "points":200
-    }
+```json
+{
+    "id":"dfe3-thf5-232s-dse4",
+    "post":"ew12-res2-234e-544f",
+    "comments":2,
+    "likes":10,
+    "points":200
+}
+```
 
 Vytváření informačních kanálů je jenom věcí k vytváření dokumentů, které můžou obsahovat seznam ID příspěvků s daným pořadím významnosti:
 
-    [
-        {"relevance":9, "post":"ew12-res2-234e-544f"},
-        {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
-        {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
-    ]
+```json
+[
+    {"relevance":9, "post":"ew12-res2-234e-544f"},
+    {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
+    {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
+]
+```
 
 Můžete mít "poslední" datový proud s příspěvky seřazenými podle data vytvoření. Nebo můžete mít datový proud "nejžhavějších" s těmito příspěvky většími než za posledních 24 hodin. Můžete dokonce implementovat vlastní datový proud pro každého uživatele na základě logiky, jako je sledující a zájmy. Stále se jedná o seznam příspěvků. Je to způsob, jak tyto seznamy sestavit, ale výkon čtení zůstává nerušený. Po získání jednoho z těchto seznamů vydáte jeden dotaz, který Cosmos DB pomocí [klíčového slova in](sql-query-keywords.md#in) získat stránky příspěvků.
 
@@ -104,28 +112,32 @@ Body a jako v příspěvku lze zpracovat odvoditelné způsobem pomocí stejné 
 
 Sledující jsou trickier. Cosmos DB má omezení velikosti dokumentu a čtení a zápis velkých dokumentů může mít vliv na škálovatelnost vaší aplikace. Můžete tedy zvážit ukládání sledujících dokumentů jako dokumentu s touto strukturou:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "followersOf": "dse4-qwe2-ert4-aad2",
-        "followers":[
-            "ewr5-232d-tyrg-iuo2",
-            "qejh-2345-sdf1-ytg5",
-            //...
-            "uie0-4tyg-3456-rwjh"
-        ]
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "followersOf": "dse4-qwe2-ert4-aad2",
+    "followers":[
+        "ewr5-232d-tyrg-iuo2",
+        "qejh-2345-sdf1-ytg5",
+        //...
+        "uie0-4tyg-3456-rwjh"
+    ]
+}
+```
 
 Tato struktura může fungovat pro uživatele s několika tisíci sledujícími. Pokud se celebrit spojí s pořadím, ale tento přístup povede k velké velikosti dokumentu a může nakonec dosáhnout limitu velikosti dokumentu.
 
 Chcete-li tento problém vyřešit, můžete použít smíšený přístup. V rámci dokumentu statistiky uživatele můžete ukládat Počet sledujících:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "user": "dse4-qwe2-ert4-aad2",
-        "followers":55230,
-        "totalPosts":452,
-        "totalPoints":11342
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "user": "dse4-qwe2-ert4-aad2",
+    "followers":55230,
+    "totalPosts":452,
+    "totalPoints":11342
+}
+```
 
 Můžete si uložit skutečný graf sledující pomocí Azure Cosmos DB [rozhraní Gremlin API](../cosmos-db/graph-introduction.md) k vytváření [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) pro každého uživatele a [hrany](http://mathworld.wolfram.com/GraphEdge.html) , které udržují relace "A" za B ". Pomocí rozhraní Gremlin API můžete získat sledující konkrétního uživatele a vytvořit složitější dotazy pro návrh lidí. Pokud přidáte do grafu kategorie obsahu, které lidé chtějí nebo chtějí využít, můžete začít tkaní prostředí, která zahrnují inteligentní zjišťování obsahu, navrhovat obsah, který sledují lidé, jako je, nebo najít lidi, které mohou být v podstatě běžné.
 
@@ -141,19 +153,21 @@ Chystáte se ho vyřešit určením klíčových atributů uživatele, který zo
 
 Pojďme získat informace o uživateli jako příklad:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "address":"742 Evergreen Terrace",
-        "birthday":"1983-05-07",
-        "email":"john@doe.com",
-        "twitterHandle":"\@john",
-        "username":"johndoe",
-        "password":"some_encrypted_phrase",
-        "totalPoints":100,
-        "totalPosts":24
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "address":"742 Evergreen Terrace",
+    "birthday":"1983-05-07",
+    "email":"john@doe.com",
+    "twitterHandle":"\@john",
+    "username":"johndoe",
+    "password":"some_encrypted_phrase",
+    "totalPoints":100,
+    "totalPosts":24
+}
+```
 
 Když si tyto informace prohlížíte, můžete rychle zjistit, které z nich jsou důležité a které nejsou, takže se vytvoří "žebřík":
 
@@ -167,26 +181,30 @@ Největší je rozšířený uživatel. Obsahuje důležité informace o uživat
 
 Proč byste mohli uživatele rozdělit a dokonce uložit tyto informace na různých místech? Vzhledem k tomu, že se z hlediska výkonu zobrazuje větší počet dokumentů, costlier dotazy. Udržujte si dokumenty na tenké straně se správnými informacemi, abyste mohli provádět všechny dotazy závislé na výkonu pro vaši sociální síť. Ukládejte Další Další informace pro případné scénáře, jako jsou úplné úpravy profilů, přihlášení a dolování dat pro účely analýzy využití a testování velkých objemů dat. Nezáleží na tom, jestli je shromažďování dat pro dolování dat pomalejší, protože běží na Azure SQL Database. Máte obavy, že uživatelé mají rychlý a tenký zážitek. Uživatel uložený v Cosmos DB by vypadal jako tento kód:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "username":"johndoe"
-        "email":"john@doe.com",
-        "twitterHandle":"\@john"
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "username":"johndoe"
+    "email":"john@doe.com",
+    "twitterHandle":"\@john"
+}
+```
 
 A příspěvek by vypadal jako:
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":{
-            "id":"dse4-qwe2-ert4-aad2",
-            "username":"johndoe"
-        }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":{
+        "id":"dse4-qwe2-ert4-aad2",
+        "username":"johndoe"
     }
+}
+```
 
 Když dojde k úpravě, kde je ovlivněn atribut bloku dat, můžete snadno najít ovlivněné dokumenty. Stačí použít dotazy, které odkazují na indexované atributy, jako například `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` , a poté aktualizovat bloky dat.
 
@@ -212,7 +230,7 @@ Ale k čemu se můžete dozvědět? Mezi jednoduché příklady patří [Analýz
 
 Teď, když jste se připojili, pravděpodobně budete potřebovat některé PhD v matematické oblasti pro extrakci těchto vzorků a informací z jednoduchých databází a souborů, ale je to ale chybné.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), součást [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), je plně spravovaná cloudová služba, která umožňuje vytvářet pracovní postupy pomocí algoritmů v jednoduchém rozhraní přetažení, kódovat vlastní algoritmy v jazyce [R](https://en.wikipedia.org/wiki/R_\(programming_language\))nebo použít některé z již sestavených a připravených k používání rozhraní API, například: [Analýza textu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content moderator nebo [doporučení](https://gallery.azure.ai/Solution/Recommendations-Solution).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), která je součástí [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), je plně spravovaná cloudová služba, která umožňuje vytvářet pracovní postupy pomocí algoritmů v jednoduchém rozhraní přetažení, kódovat vlastní algoritmy v jazyce [R](https://en.wikipedia.org/wiki/R_\(programming_language\))nebo použít některé z již sestavených a připravených k používání rozhraní api, jako jsou například: [Analýza textu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), Content moderator nebo [doporučení](https://gallery.azure.ai/Solution/Recommendations-Solution).
 
 Chcete-li dosáhnout některého z těchto scénářů Machine Learning, můžete použít [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) k ingestování informací z různých zdrojů. Můžete také použít [u-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) ke zpracování informací a vygenerování výstupu, který lze zpracovat pomocí Azure Machine Learning.
 

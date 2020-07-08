@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850964"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: Reference prostředí PowerShell ADSyncConfig
 Následující dokumentace obsahuje referenční informace pro modul ADSyncConfig. psm1 PowerShell, který je součástí nástroje Azure AD Connect.
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
@@ -452,7 +452,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
@@ -614,7 +614,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
@@ -775,7 +775,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
@@ -896,7 +896,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
@@ -1061,7 +1061,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1080,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>POPIS
 Funkce Set-ADSyncRestrictedPermissions bude sestavovat oprávnění po přečtení poskytnutého účtu.
 Oprávnění k zpřísnění zahrnuje následující kroky:
-1.
-Zakázat dědění pro zadaný objekt
-2.
-Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe.
+1. Zakázat dědění pro zadaný objekt
+2. Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe.
 Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
-3.
-Přiřaďte tato konkrétní oprávnění:
+3. Přiřaďte tato konkrétní oprávnění:
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | Typ | Name | Access | Platí pro |
+   |------|------|--------|------------|
+   | Povolit | SYSTEM | Úplné řízení | Tento objekt |
+   | Povolit | Enterprise Admins | Úplné řízení | Tento objekt |
+   | Povolit | Domain Admins | Úplné řízení | Tento objekt | 
+   | Povolit | Administrators | Úplné řízení | Tento objekt |
+   | Povolit | Podnikové řadiče domény | Vypsat obsah <br> Číst všechny vlastnosti <br> Oprávnění ke čtení | Tento objekt |
+   | Povolit | Authenticated Users | Vypsat obsah <br> Číst všechny vlastnosti <br> Oprávnění ke čtení | Tento objekt |
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -1192,7 +1183,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
@@ -1354,7 +1345,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="show-adsyncadobjectpermissions"></a>Zobrazit – ADSyncADObjectPermissions
 
@@ -1397,4 +1388,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .

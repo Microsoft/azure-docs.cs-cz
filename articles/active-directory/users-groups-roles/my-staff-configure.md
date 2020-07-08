@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850896"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -71,9 +71,10 @@ Důrazně doporučujeme chránit své pracovníky pomocí [zásad podmíněného
 1. Nainstalujte [rutiny Microsoft Graph beta prostředí PowerShell](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
 1. Spusťte následující příkazy:
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. Vytvořte zásady podmíněného přístupu, které se vztahují na cloudovou aplikaci moje zaměstnanci.
 
     ![Vytvoření zásady podmíněného přístupu pro aplikaci My personál](media/my-staff-configure/conditional-access.png)
@@ -118,7 +119,7 @@ Chcete-li spravovat telefonní číslo uživatele, je nutné přiřadit jednu z 
 - [Správce privilegovaného ověřování](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globální správce](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Hledat
+## <a name="search"></a>Search
 
 V organizaci můžete hledat oddělení Austrálie a uživatele ve vaší organizaci pomocí panelu hledání v části Moji zaměstnanci. Můžete vyhledávat ve všech centrech a uživatelích ve vaší organizaci, ale můžete provádět změny jenom pro uživatele, kteří jsou ve AU, přes který jste měli oprávnění správce.
 

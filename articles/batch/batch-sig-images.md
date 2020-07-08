@@ -1,19 +1,19 @@
 ---
-title: Vytvoření vlastního fondu pomocí Galerie sdílených imagí
-description: Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
+title: Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
+description: Vlastní fondy imagí představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 8e81d0954d391210563641531b4c572325ae946f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851723"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených imagí
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
-Když vytváříte fond Azure Batch s použitím konfigurace virtuálního počítače, zadáte image virtuálního počítače, která poskytuje operační systém pro každý výpočetní uzel ve fondu. Můžete vytvořit fond virtuálních počítačů s podporovaným Azure Marketplace imagí nebo vytvořit vlastní image pomocí [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md).
+Když vytváříte fond Azure Batch s použitím konfigurace virtuálního počítače, zadáte image virtuálního počítače, která poskytuje operační systém pro každý výpočetní uzel ve fondu. Můžete vytvořit fond virtuálních počítačů s podporovaným Azure Marketplace imagí nebo vytvořit vlastní image s [obrázkem Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md).
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Výhody Galerie sdílených imagí
 
@@ -30,7 +30,7 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Před instalací aplikací.** Předinstalace aplikací na disk s operačním systémem je efektivnější a méně náchylná k chybám než instalace aplikací po zřízení výpočetních uzlů s počátečním úkolem.
 - **Kopírování velkých objemů dat jednou.** Nastavte statickou datovou část spravované sdílené image tak, že ji zkopírujete do datových disků spravované image. To je nutné provést pouze jednou a zpřístupnit data pro každý uzel fondu.
 - **Rozšiřte fondy na větší velikosti.** Pomocí Galerie sdílených imagí můžete vytvořit větší fondy s přizpůsobenými imagemi společně s více replikami sdílených imagí.
-- **Lepší výkon než vlastní image.** Při použití sdílených imagí je čas potřebný k dosažení stabilního stavu až o 25% rychlejší a latence nečinnosti virtuálního počítače je kratší než 30%.
+- **Lepší výkon než použití jenom spravované Image jako vlastní image.** Pro vlastní fond imagí sdílené Image je čas na dosažení stabilního stavu až 25% fasterm a latence nečinnosti virtuálního počítače je kratší než 30%.
 - **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -47,9 +47,9 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 
 Pokud k vytvoření vlastního fondu imagí s imagí Galerie sdílených imagí použijete aplikaci Azure AD, musí být této aplikaci udělená [předdefinovaná role Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) , která mu umožní přístup ke sdílené imagi. Tento přístup můžete udělit v Azure Portal tak, že přejdete ke sdílené imagi, vyberete **řízení přístupu (IAM)** a přidáte přiřazení role pro aplikaci.
 
-## <a name="prepare-a-custom-image"></a>Příprava vlastní image
+## <a name="prepare-a-shared-image"></a>Příprava sdílené image
 
-V Azure můžete připravit vlastní image z:
+V Azure můžete připravit sdílenou image ze spravované image, která se dá vytvořit z:
 
 - Snímky operačního systému a datových disků virtuálního počítače Azure
 - Zobecněný virtuální počítač Azure se spravovanými disky

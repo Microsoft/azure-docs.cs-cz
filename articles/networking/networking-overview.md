@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 7d3fff80dcae3f97ca947504390ebc4a824e5f0d
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255088"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851653"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled služby Azure Networking Services
 
@@ -142,9 +142,9 @@ Tato část popisuje síťové služby v Azure, které vám pomůžou doručovat
 |Služba|Proč použít?|Scénář|
 |---|---|---|
 |[Content Delivery Network](#cdn)|Poskytuje uživatelům obsah s vysokou šířkou pásma. Sítě CDN ukládat obsah uložený v mezipaměti na hraničních serverech, které jsou blízko koncovým uživatelům, aby se minimalizovala latence|<p>[Přidání CDN do webové aplikace](../cdn/cdn-add-to-web-app.md)</p> <p>[– Přístup k objektům blob úložiště pomocí Azure CDN vlastní domény přes HTTPS](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Přidání vlastní domény do koncového bodu Azure CDN](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[Konfigurace HTTPS pro vlastní doménu Azure CDN](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
-|[Azure Front Door Service](#frontdoor)|Umožňuje definovat, spravovat a monitorovat globální směrování pro webový provoz optimalizací pro nejlepší výkon a rychlé globální převzetí služeb při selhání pro zajištění vysoké dostupnosti.|<p>[Přidání vlastní domény do služby Azure Front Door Service](../frontdoor/front-door-custom-domain.md)</p> <p>[Konfigurace HTTPS pro vlastní doménu přední dveře](../frontdoor/front-door-custom-domain-https.md)</p><p>[Nastavení zásad brány firewall webových aplikací geografického filtrování](../frontdoor/front-door-tutorial-geo-filtering.md)|
+|[Azure Front Door Service](#frontdoor)|Umožňuje definovat, spravovat a monitorovat globální směrování pro webový provoz optimalizací pro nejlepší výkon a rychlé globální převzetí služeb při selhání pro zajištění vysoké dostupnosti.|<p>[Přidání vlastní domény do služby Azure Front Door Service](../frontdoor/front-door-custom-domain.md)</p> <p>[Konfigurace HTTPS pro vlastní doménu služby Front Door](../frontdoor/front-door-custom-domain-https.md)</p><p>[Nastavení zásad brány firewall webových aplikací geografického filtrování](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[Traffic Manager](#trafficmanager)|Distribuuje provoz na základě DNS do služeb napříč globálními oblastmi Azure a zajišťuje vysokou dostupnost a rychlost odezvy.|<p> [Směrování provozu pro zajištění nízké latence](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Směrování provozu do prioritního koncového bodu](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Řízení provozu s váženými koncovými body](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Směrování provozu na základě geografického umístění koncového bodu](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Směrování provozu na základě podsítě uživatele](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[Load Balancer](#loadbalancer)|Zajišťuje regionální vyrovnávání zatížení díky směrování provozu napříč zónami dostupnosti a do virtuální sítě. Poskytuje interní vyrovnávání zatížení díky směrování provozu mezi prostředky a mezi nimi a k sestavení vaší místní aplikace.|<p> [Vyrovnávání zatížení internetového provozu do virtuálních počítačů](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Vyrovnávání zatížení napříč virtuálními počítači uvnitř virtuální sítě](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[Přeposílání provozu na konkrétní port na konkrétní virtuální počítače](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Konfigurace vyrovnávání zatížení a odchozích pravidel](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Load Balancer](#loadbalancer)|Zajišťuje regionální vyrovnávání zatížení díky směrování provozu napříč zónami dostupnosti a do virtuální sítě. Poskytuje interní vyrovnávání zatížení díky směrování provozu mezi prostředky a mezi nimi a k sestavení vaší místní aplikace.|<p> [Vyrovnávání zatížení internetového provozu do virtuálních počítačů](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Vyrovnávání zatížení napříč virtuálními počítači uvnitř virtuální sítě](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[Přeposílání provozu na konkrétní port na konkrétní virtuální počítače](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Konfigurace vyrovnávání zatížení a odchozích pravidel](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
 |[Application Gateway](#applicationgateway)|Azure Application Gateway je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací.|<p>[Přímý webový provoz s využitím služby Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Kurz: Konfigurace aplikační brány s ukončením TLS pomocí Azure Portal](../application-gateway/create-ssl-portal.md)</p><p>[Vytvoření aplikační brány se směrováním založeným na cestě URL](../application-gateway/create-url-route-portal.md) </p>|
 |
 

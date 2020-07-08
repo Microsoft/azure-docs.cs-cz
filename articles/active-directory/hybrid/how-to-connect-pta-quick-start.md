@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61e772d7a55577c263edc83ccface31932f5b2dd
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85358357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849887"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -153,13 +153,17 @@ Za druhé můžete vytvořit a spustit skript bezobslužného nasazení. To je u
 1. Spusťte následující příkaz pro instalaci ověřovacího agenta: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` .
 2. Ověřovacího agenta můžete v rámci služby zaregistrovat pomocí prostředí Windows PowerShell. Vytvořte objekt přihlašovacích údajů prostředí PowerShell `$cred` , který obsahuje uživatelské jméno a heslo globálního správce pro vašeho tenanta. Spusťte následující příkaz a nahraďte *\<username\>* a *\<password\>* :
 
-        $User = "<username>"
-        $PlainPassword = '<password>'
-        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
-        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```powershell
+  $User = "<username>"
+  $PlainPassword = '<password>'
+  $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```
 3. Do složky **C:\Program Files\Microsoft Azure AD Connect Authentication agent** a spusťte následující skript pomocí `$cred` objektu, který jste vytvořili:
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```powershell
+  RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```
 
 >[!IMPORTANT]
 >Pokud je na virtuálním počítači nainstalovaný agent ověřování, nemůžete naklonovat virtuální počítač a nastavit jiného ověřovacího agenta. Tato metoda není **podporována**.

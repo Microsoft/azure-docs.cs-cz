@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: ce0bc73fd21210e7cd5cd48c8134abd5f014b026
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850261"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
 > [!div class="op_single_selector"]
-> * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
-> * [Sada .NET SDK v2](performance-tips.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > * [Sada Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Sada Async Java SDK v2](performance-tips-async-java.md)
 > * [Sada Sync Java SDK v2](performance-tips-java.md)
@@ -201,7 +201,7 @@ Podívejte [se na téma zvýšení počtu vláken/úloh](#increase-threads) v č
 
 ## <a name="indexing-policy"></a>Zásady indexování
  
-**Vyloučit nepoužívané cesty z indexování pro rychlejší zápis**
+**Vyloučení nepoužívaných cest z indexování za účelem zrychlení zápisu**
 
 Zásada indexování Azure Cosmos DB také umožňuje určit, které cesty dokumentů zahrnout nebo vyloučit z indexování pomocí cest indexování (IndexingPolicy. IncludedPaths a IndexingPolicy. ExcludedPaths). Indexování pouze těch cest, které potřebujete, může vylepšit výkon zápisu, snížit náklady na zápis a snížit kapacitu úložiště pro scénáře, ve kterých jsou vzorce dotazů známy předem. Důvodem je to, že se náklady na indexování nevztahují přímo na počet indexovaných jedinečných cest. Tento kód například ukazuje, jak vyloučit celý oddíl dokumentů (podstrom) z indexování pomocí zástupného znaku "*":
 
@@ -247,9 +247,11 @@ Poplatek za požadavek vrácený v této hlavičce je zlomek zřízené propustn
 
 Když se klient pokusí překročit rezervovanou propustnost účtu, neexistují žádné snížení výkonu na serveru a žádné využití kapacity propustnosti mimo rezervovanou úroveň. Server bude žádost bez jakýchkoli požadavků RequestRateTooLarge (kód stavu HTTP 429). Vrátí záhlaví [x-MS-Retry-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) , které indikuje množství času (v milisekundách), po který uživatel musí čekat, než bude požadavek znovu proveden.
 
+```xml
     HTTP Status 429,
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
+```
 
 Sady SDK mají implicitně zachytit tuto odpověď, a to v souladu s hlavičkou, která je určená serverem, a zkuste žádost zopakovat. Pokud k účtu nepoužíváte souběžně více klientů, další pokus bude úspěšný.
 

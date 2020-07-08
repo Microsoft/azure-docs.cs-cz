@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fc0af331dc6cb604847be9173c836e0b46ca40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851372"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Přehled Azure Storage v HDInsight
 
@@ -31,11 +31,11 @@ Následující diagram nabízí abstraktní zobrazení architektury HDInsight Az
 
 Služba HDInsight poskytuje přístup do systému souborů DFS, který je místně připojen k výpočetním uzlům. Tento systém souborů je přístupný pomocí plně kvalifikovaného identifikátoru URI, například:
 
-    hdfs://<namenodehost>/<path>
+`hdfs://<namenodehost>/<path>`
 
 Prostřednictvím HDInsight můžete také přistupovat k datům v Azure Storage. Syntaxe je následující:
 
-    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasb://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 Při použití účtu Azure Storage s clustery HDInsight Vezměte v úvahu následující principy:
 
@@ -48,11 +48,11 @@ Při použití účtu Azure Storage s clustery HDInsight Vezměte v úvahu násl
 
 * **Privátní kontejnery v účtech úložiště, které nejsou připojené ke clusteru:** Nemůžete získat přístup k objektům blob v kontejnerech, pokud nedefinujete účet úložiště při odeslání úloh WebHCat.
 
-Účty úložiště, které se definují v procesu vytváření a jejich klíče jsou uloženy v %HADOOP_HOME%/conf/core-site.xml na uzlech clusteru. Ve výchozím nastavení používá HDInsight účty úložiště definované v souboru Core-site. XML. Toto nastavení můžete upravit pomocí [Apache Ambari](./hdinsight-hadoop-manage-ambari.md).
+Účty úložiště, které se definují v procesu vytváření a jejich klíče jsou uloženy v %HADOOP_HOME%/conf/core-site.xml na uzlech clusteru. Ve výchozím nastavení používá HDInsight účty úložiště definované v souboru core-site.xml. Toto nastavení můžete upravit pomocí [Apache Ambari](./hdinsight-hadoop-manage-ambari.md).
 
 Několik úloh WebHCat, včetně Apache Hive. MapReduce, Apache Hadoop streamování a Apache prasete, obsahují popis účtů úložiště a metadat. (Tento aspekt je aktuálně true pro prasete s účty úložiště, ale ne pro metadata.) Další informace najdete v tématu [použití clusteru HDInsight s alternativním účtem úložiště a metaúložiště](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
-Objekty blob lze použít pro strukturovaná i nestrukturovaná data. Kontejnery objektů BLOB ukládají data jako páry klíč/hodnota a nemají žádnou hierarchii adresářů. Název klíče ale může obsahovat lomítko (/), aby se zobrazil jako při uložení souboru do adresářové struktury. Klíč objektu BLOB může být `input/log1.txt`například. Neexistuje žádný `input` skutečný adresář, ale z důvodu znaku lomítka v názvu klíče vypadá klíč jako cesta k souboru.
+Objekty blob lze použít pro strukturovaná i nestrukturovaná data. Kontejnery objektů BLOB ukládají data jako páry klíč/hodnota a nemají žádnou hierarchii adresářů. Název klíče ale může obsahovat lomítko (/), aby se zobrazil jako při uložení souboru do adresářové struktury. Klíč objektu BLOB může být například `input/log1.txt` . Neexistuje žádný skutečný `input` adresář, ale z důvodu znaku lomítka v názvu klíče vypadá klíč jako cesta k souboru.
 
 ## <a name="benefits-of-azure-storage"></a>Výhody služby Azure Storage
 
@@ -73,7 +73,7 @@ Když ukládáte data v Azure Storage místo HDFS, získáte několik výhod:
 Některé úlohy a balíčky MapReduce můžou vytvořit mezilehlé výsledky, které byste nemuseli ukládat v Azure Storage. V takovém případě se můžete rozhodnout ukládat data do místního HDFS. HDInsight používá DFS pro několik těchto mezilehlých výsledků v úlohách podregistru a dalších procesech.
 
 > [!NOTE]  
-> Většina příkazů HDFS (například `ls` `copyFromLocal`,, a `mkdir`) pracuje podle očekávání v Azure Storage. Pouze příkazy, které jsou specifické pro nativní implementaci HDFS (což se označuje jako DFS), jako například `fschk` a `dfsadmin`, zobrazují v Azure Storage různé chování.
+> Většina příkazů HDFS (například,, `ls` `copyFromLocal` a `mkdir` ) pracuje podle očekávání v Azure Storage. Pouze příkazy, které jsou specifické pro nativní implementaci HDFS (což se označuje jako DFS), jako například `fschk` a `dfsadmin` , zobrazují v Azure Storage různé chování.
 
 ## <a name="next-steps"></a>Další kroky
 

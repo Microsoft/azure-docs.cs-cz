@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f289d1467528bdb38e05e6a8de28ae9fe526592
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c8d0e8301fe5443e548dd35a6b6058e8c7a409d0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849898"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Vytvoření federace několika instancí Azure AD s jednou instancí AD FS
 
@@ -58,10 +58,14 @@ Vystavitel v nastavení federace domény se změní na http \: //contoso.com/ADF
  
 V relaci prostředí Azure AD PowerShell proveďte následující kroky: Připojte se ke službě Azure Active Directory, která obsahuje doménu fabrikam.com.
 
-    Connect-MsolService
+```powershell
+Connect-MsolService
+```
 Převeďte spravovanou doménu fabrikam.com na federovanou:
 
-    Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```powershell
+Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```
  
 Uvedená operace vytvoří federaci domény fabrikam.com se stejnou službou AD FS. Nastavení domény můžete ověřit pomocí příkazu Get-MsolDomainFederationSettings pro obě domény.
 

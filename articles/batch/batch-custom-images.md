@@ -1,21 +1,23 @@
 ---
-title: Zřízení vlastního fondu ze spravované image
-description: Vytvořte fond služby Batch z prostředku spravovaného obrazu a zřídíte výpočetní uzly se softwarem a daty pro vaši aplikaci.
+title: Vytvoření vlastního fondu imagí pomocí spravované image
+description: Vytvořte vlastní fond imagí dávky ze spravované image a zřídíte výpočetní uzly se softwarem a daty pro vaši aplikaci.
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851287"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Vytvoření fondu virtuálních počítačů pomocí spravované image
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí spravované image
 
-Pokud chcete vytvořit vlastní image pro virtuální počítače (VM) fondu služby Batch, můžete k vytvoření [Galerie sdílených imagí](batch-sig-images.md)použít spravovanou bitovou kopii. Podporuje se taky jenom spravovaná image, ale jenom pro verze rozhraní API, a to včetně 2019-08-01.
+Pokud chcete vytvořit vlastní fond imagí pro virtuální počítače ve fondu Batch, můžete k vytvoření [Image Galerie sdílených imagí](batch-sig-images.md)použít spravovanou bitovou kopii. Podporuje se taky jenom spravovaná image, ale jenom pro verze rozhraní API, a to včetně 2019-08-01. 
 
 > [!IMPORTANT]
 > Ve většině případů byste měli vytvořit vlastní image pomocí Galerie sdílených imagí. Pomocí Galerie sdílených imagí můžete vytvořit fondy rychleji, škálovat větší množství virtuálních počítačů a zvýšit spolehlivost při zřizování virtuálních počítačů. Další informace najdete v tématu [použití Galerie sdílených imagí k vytvoření vlastního fondu](batch-sig-images.md).
+
+V tomto tématu se dozvíte, jak vytvořit vlastní fond imagí jenom pomocí spravované image.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +28,7 @@ Pokud chcete vytvořit vlastní image pro virtuální počítače (VM) fondu slu
 
 - **Ověřování Azure Active Directory (Azure AD)**. Klientské rozhraní API služby Batch musí používat ověřování Azure AD. Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 
-## <a name="prepare-a-custom-image"></a>Příprava vlastní image
+## <a name="prepare-a-managed-image"></a>Příprava spravované image
 
 V Azure můžete připravit spravovanou bitovou kopii z těchto:
 
@@ -57,7 +59,7 @@ Snímek je plná kopie VHD, která je jen pro čtení. Pokud chcete vytvořit sn
 
 Pokud chcete vytvořit spravovanou image ze snímku, použijte nástroje příkazového řádku Azure, jako je příkaz [AZ image Create](/cli/azure/image) . Můžete vytvořit image zadáním snímku disku s operačním systémem a volitelně jednoho nebo více snímků datových disků.
 
-## <a name="create-a-pool-from-a-custom-image"></a>Vytvoření fondu z vlastní image
+## <a name="create-a-pool-from-a-managed-image"></a>Vytvoření fondu ze spravované image
 
 Po nalezení ID prostředku spravované image vytvořte z této image vlastní fond imagí. Následující kroky ukazují, jak vytvořit vlastní fond imagí pomocí služby Batch nebo služby Batch Management.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0f0b3488bd34a31002449b9b7635064d5d835072
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851275"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
@@ -81,6 +81,8 @@ Pokud objekty blob pojmenujte pomocí oddělovače, můžete si vybrat možnost 
 Ve výchozím nastavení operace výpisu vrací objekty BLOB v nestrukturovaném seznamu. V nestrukturovaném seznamu nejsou objekty blob uspořádány pomocí virtuálního adresáře.
 
 Následující příklad vypíše seznam objektů BLOB v zadaném kontejneru pomocí plochého seznamu, který má zadanou volitelnou velikost segmentu, a zapíše název objektu blob do okna konzoly.
+
+Pokud jste na svém účtu povolili funkci hierarchického oboru názvů, adresáře nejsou virtuální. Místo toho se jedná o konkrétní, nezávislé objekty. Proto se adresáře zobrazí v seznamu jako objekty BLOB s nulovou délkou.
 
 # <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
 

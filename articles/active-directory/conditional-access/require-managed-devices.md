@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690582638451f1691b2ed7a4d0d4d6a7880fd80a
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849925"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -95,6 +95,28 @@ U zařízení, které je označeno jako vyhovující, můžete předpokládat, �
 - Mobilní aplikace, které vaše zaměstnanci používají, se spravují.
 - Vaše firemní informace jsou chráněné tím, že pomáhají řídit způsob, jakým vaše zaměstnanci přistupují a sdílí je.
 - Zařízení a jeho aplikace vyhovují požadavkům na zabezpečení společnosti.
+
+### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Scénář: vyžadování registrace zařízení pro zařízení s iOS a Androidem
+
+V tomto scénáři společnost Contoso rozhodla, že veškerý mobilní přístup k prostředkům sady Office 365 musí používat zaregistrované zařízení. Všichni uživatelé už přihlásili pomocí přihlašovacích údajů Azure AD a mají přiřazené licence, které zahrnují Azure AD Premium P1 nebo P2 a Microsoft Intune.
+
+Organizace musí provést následující kroky, aby vyžadovaly použití zaregistrovaného mobilního zařízení.
+
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyberte **nové zásady**.
+1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
+1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
+   1. Vyberte **Done** (Hotovo).
+1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 (Preview)**.
+1. V části **podmínky**vyberte **platformy zařízení**.
+   1. Nastavte **Konfigurovat** na **Ano**.
+   1. Zahrňte **Android** a **iOS**.
+1. V části **řízení přístupu**  >  **udělení**přístupu vyberte následující možnosti:
+   - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
+1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
+1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
 ### <a name="known-behavior"></a>Známé chování
 

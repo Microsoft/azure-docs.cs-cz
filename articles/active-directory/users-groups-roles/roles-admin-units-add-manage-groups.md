@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4ad55a98f3f4f38601d2eac54c30f2e5e9a8831
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850917"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotkách pro správu v Azure Active Directory
 
@@ -47,27 +47,33 @@ Ve verzi Preview můžete přiřadit skupiny pouze jednotlivě do jednotky pro s
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
+```powershell
+$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
+Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
+```
 
 V tomto příkladu rutina Add-AzureADAdministrativeUnitMember slouží k přidání skupiny do jednotky pro správu. ID objektu jednotky pro správu a ID objektu skupiny, která se má přidat, se považují za argument. Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostředí.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{Admin Unit id}/members/$ref
+```http
+Http request
+POST /administrativeUnits/{Admin Unit id}/members/$ref
 
-    Request body
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/groups/{id}"
-    }
+Request body
+{
+"@odata.id":"https://graph.microsoft.com/beta/groups/{id}"
+}
+```
 
 Příklad:
 
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/groups/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
-    }
+```http
+{
+"@odata.id":"https://graph.microsoft.com/beta/groups/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
+}
+```
 
 ## <a name="list-groups-in-an-au"></a>Seznam skupin v AU
 
@@ -79,25 +85,30 @@ Na portálu můžete přejít na **jednotky pro správu Azure AD >** . Vyberte j
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
+```powershell
+$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
+```
 
 To vám pomůže získat všechny členy jednotky pro správu. Pokud chcete zobrazit všechny skupiny, které jsou členy jednotky pro správu, můžete použít následující fragment kódu:
 
-    foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
-    {
-    if($member.ObjectType -eq "Group")
-    {
-    Get-AzureADGroup -ObjectId $member.ObjectId
-    }
-    }
-
+```http
+foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
+{
+if($member.ObjectType -eq "Group")
+{
+Get-AzureADGroup -ObjectId $member.ObjectId
+}
+}
+```
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    HTTP request
-    GET /administrativeUnits/{Admin id}/members/$/microsoft.graph.group
-    Request body
-    {}
+```http
+HTTP request
+GET /administrativeUnits/{Admin id}/members/$/microsoft.graph.group
+Request body
+{}
+```
 
 ## <a name="list-aus-for-a-group"></a>Seznam jednotek Austrálie pro skupinu
 
@@ -109,11 +120,15 @@ Na portálu Azure AD můžete otevřít podrobnosti skupiny otevřením **skupin
 
 ### <a name="powershell"></a>PowerShell
 
-    Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
+```powershell
+Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
+```http
+https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
+```
 
 ## <a name="remove-a-group-from-an-au"></a>Odebrání skupiny z AU
 
@@ -131,11 +146,15 @@ Případně můžete přejít na **Azure AD**  >  **jednotky pro správu** Azure
 
 ### <a name="powershell"></a>PowerShell
 
-    Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
+```powershell
+Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<group-id>/$ref
+```http
+https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<group-id>/$ref
+```
 
 ## <a name="next-steps"></a>Další kroky
 

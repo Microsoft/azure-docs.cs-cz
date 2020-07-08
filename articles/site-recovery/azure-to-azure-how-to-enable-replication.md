@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75973690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851174"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -113,12 +113,13 @@ Můžete upravit výchozí nastavení cíle, které používá Site Recovery.
     - Pokud chcete, aby virtuální počítače se systémem Linux byly součástí replikační skupiny, zajistěte ruční otevření odchozího provozu na portu 20004 podle pokynů pro konkrétní verzi systému Linux.
 ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. Klikněte na **vytvořit cílový prostředek** > **Povolit replikaci**.
+5. Klikněte na **vytvořit cílový prostředek**  >  **Povolit replikaci**.
 6. Po povolení replikace virtuálních počítačů můžete ověřit stav stavu virtuálního počítače v části **replikované položky** .
 
 >[!NOTE]
->Během počáteční replikace může aktualizace stavu trvat delší dobu, aniž by došlo k jejímu pokroku. Chcete-li získat nejnovější stav, klikněte na tlačítko **aktualizovat** .
 >
+> - Během počáteční replikace může aktualizace stavu trvat delší dobu, aniž by došlo k jejímu pokroku. Chcete-li získat nejnovější stav, klikněte na tlačítko **aktualizovat** .
+> - Pokud bod obnovení nebyl za posledních 60 minut vygenerován, stav replikace virtuálního počítače se stane kritickým.
 
 ## <a name="next-steps"></a>Další kroky
 

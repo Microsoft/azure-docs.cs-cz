@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f252eac53f3aab2263f2019c9d4b13b0f68dce
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85358884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849951"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Podpora více domén pro federaci s Azure AD
 Následující dokumentace poskytuje pokyny k používání více domén nejvyšší úrovně a subdomén při federováníí s doménami Office 365 nebo Azure AD.
@@ -73,7 +73,9 @@ Pokud je například hlavní název uživatele (UPN) bsimon@bmcontoso.com , elem
 
 Následuje vlastní pravidlo deklarace identity, které implementuje tuto logiku:
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
 
 
 > [!IMPORTANT]
@@ -144,7 +146,9 @@ Chcete-li tento problém obejít, je nutné aktualizovat AD FS vztah důvěryhod
 
 Tato deklarace se provede tímto způsobem:
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```    
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```
 
 [!NOTE]
 Poslední číslo v sadě regulárních výrazů je počet nadřazených domén, které jsou v kořenové doméně. Zde se používá bmcontoso.com, takže jsou nutné dvě nadřazené domény. Pokud by se měly zachovat tři nadřazené domény (například: corp.bmcontoso.com), pak se toto číslo zaznamenalo tři. V takovém případě lze určit rozsah, přičemž shoda bude vždy provedena tak, aby odpovídala maximálnímu počtu domén. " {2,3} " bude odpovídat dvěma až třem doménám (tj.: bmfabrikam.com a Corp.bmcontoso.com).
@@ -156,11 +160,14 @@ Pomocí následujících kroků přidejte vlastní deklaraci identity pro podpor
 3. Vyberte třetí pravidlo deklarace identity a nahraďte ![ Upravit deklaraci identity.](./media/how-to-connect-install-multiple-domains/sub1.png)
 4. Nahradit aktuální deklaraci identity:
 
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+    with
 
-       with
-
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
 
     ![Nahradit deklaraci identity](./media/how-to-connect-install-multiple-domains/sub2.png)
 
