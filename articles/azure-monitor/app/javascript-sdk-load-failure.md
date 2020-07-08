@@ -6,10 +6,9 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84451064"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Řešení potíží s načtením sady SDK pro webové aplikace v jazyce JavaScript
@@ -101,7 +100,7 @@ Následující části obsahují různé možnosti vytváření sestav, doporuč
 
 Nejprve umožňuje vyhledat výjimky JavaScriptu pomocí prohlížeče, který podporuje nástroje pro vývojáře (F12), načíst stránku a zkontrolovat, zda došlo k výjimkám.
 
-Pokud jsou ve skriptu sady SDK hlášeny výjimky (například AI. 2. min.), může to znamenat, že konfigurace předaná do sady SDK obsahuje neočekávanou nebo chybějící požadovanou konfiguraci nebo byla do sítě CDN nasazena vadná verze.
+Pokud jsou v rámci skriptu sady SDK hlášeny výjimky (například ai.2.min.js), může to znamenat, že konfigurace předaná do sady SDK obsahuje neočekávanou nebo chybějící požadovanou konfiguraci nebo byla do sítě CDN nasazena vadná verze.
 
 Chcete-li zjistit chybnou konfiguraci, změňte konfiguraci předanou do fragmentu (Pokud ještě není), aby obsahovala pouze klíč instrumentace jako řetězcovou hodnotu.
 
@@ -128,7 +127,7 @@ Za předpokladu, že nejsou vyvolány žádné výjimky, je dalším krokem povo
 > [!NOTE]
 > Během inicializace sada SDK provádí některé základní kontroly známých hlavních závislostí. Pokud nejsou poskytovány aktuálním modulem runtime, nahlásí selhání do konzoly jako varovné zprávy, ale pouze v případě, že `loggingLevelConsole` je hodnota větší než nula.
 
-Pokud se ještě nedaří inicializovat, zkuste povolit ```enableDebug``` nastavení konfigurace. Tím dojde k vyvolání všech vnitřních chyb jako výjimky (což způsobí ztrátu telemetrie). Vzhledem k tomu, že se jedná o nastavení jenom pro vývojáře, bude pravděpodobně mít problémy s výjimkami, které se vyvolají jako součást některých interních kontrol, takže budete muset zkontrolovat každou výjimku, abyste zjistili, který problém způsobuje selhání sady SDK. Použijte verzi skriptu bez minifikovaného (Všimněte si níže uvedeného rozšíření ". js", nikoli ". min. js"), jinak výjimky nebudou možné číst.
+Pokud se ještě nedaří inicializovat, zkuste povolit ```enableDebug``` nastavení konfigurace. Tím dojde k vyvolání všech vnitřních chyb jako výjimky (což způsobí ztrátu telemetrie). Vzhledem k tomu, že se jedná o nastavení jenom pro vývojáře, bude pravděpodobně mít problémy s výjimkami, které se vyvolají jako součást některých interních kontrol, takže budete muset zkontrolovat každou výjimku, abyste zjistili, který problém způsobuje selhání sady SDK. Použijte verzi skriptu bez minifikovaného (Všimněte si, že rozšíření je ". js" a nikoli ".min.js") jinak budou výjimky nečitelná.
 
 > [!WARNING]
 > Toto je nastavení jenom pro vývojáře a nikdy by nemělo být povolené v plném provozním prostředí, protože ztratíte telemetrii.
@@ -194,7 +193,7 @@ Pokud se koncoví uživatelé nacházejí v podnikové síti, je nejpravděpodob
 
 #### <a name="host-the-sdk-on-your-own-cdn"></a>Hostování sady SDK na vlastní síti CDN
 
- Místo toho, aby vaši koncoví uživatelé stáhli sadu Application Insights SDK z veřejné sítě CDN, mohli byste sadu Application Insights SDK hostovat z vlastního koncového bodu CDN. Doporučuje se používat konkrétní verzi (AI. 2. #. #. min. js), aby bylo snazší zjistit, kterou verzi používáte. Také pravidelně aktualizujte na aktuální verzi (AI. 2. min. js), abyste mohli využít jakékoli opravy chyb a nové funkce, které jsou k dispozici.
+ Místo toho, aby vaši koncoví uživatelé stáhli sadu Application Insights SDK z veřejné sítě CDN, mohli byste sadu Application Insights SDK hostovat z vlastního koncového bodu CDN. Doporučuje se používat konkrétní verzi (AI. 2. #. # .min.js), aby bylo snazší zjistit, kterou verzi používáte. Také pravidelně aktualizujte na aktuální verzi (ai.2.min.js), abyste mohli využívat jakékoli opravy chyb a nové funkce, které jsou k dispozici.
 
 #### <a name="use-npm-packages-to-embed-the-application-insight-sdk"></a>Použití balíčků NPM k vložení sady Application Insights SDK
 

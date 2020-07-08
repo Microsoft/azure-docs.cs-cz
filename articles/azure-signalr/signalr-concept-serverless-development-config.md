@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457129"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service
@@ -215,7 +214,7 @@ Klient jazyka JavaScript/TypeScript zpřístupňuje vyjednávání připojení p
 
 #### <a name="localhost"></a>Místního
 
-Při spuštění aplikace Function App na místním počítači můžete přidat `Host` oddíl do *Local. Settings. JSON* a povolit CORS. V `Host` části přidejte dvě vlastnosti:
+Při spuštění aplikace Function App na místním počítači můžete přidat `Host` část, do které se *local.settings.js* pro povolení CORS. V `Host` části přidejte dvě vlastnosti:
 
 * `CORS`-Zadejte základní adresu URL, která je zdrojem klientské aplikace.
 * `CORSCredentials`– nastavte ho tak, aby `true` povoloval žádosti "withCredentials".

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
 ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457231"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Vytváření, zobrazování a Správa systémových témat Event Grid v Azure Portal
@@ -23,7 +22,7 @@ Můžete vytvořit systémové téma pro prostředek Azure (účet úložiště,
 - Použijte stránku **události** prostředku, například účet úložiště nebo obor názvů Event Hubs. Když použijete stránku **události** v Azure Portal k vytvoření odběru událostí pro událost vyvolanou zdrojem Azure (například účet Azure Storage), portál vytvoří systémové téma pro prostředek Azure a pak vytvoří odběr pro systémové téma. Pokud vytváříte odběr událostí v prostředku Azure poprvé, zadejte název systémového tématu. Od druhé výše se v režimu jen pro čtení zobrazí název tématu systému. Podrobné pokyny najdete v tématu [rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage) .
 - Použití stránky **témata Event Grid systému** . Následující postup slouží pro vytváření systémových témat pomocí stránky **Event Grid systému** . 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Do vyhledávacího pole v horní části zadejte **Event Grid systémová témata**a potom stiskněte klávesu **ENTER**. 
 
     ![Vyhledat systémová témata](./media/create-view-manage-system-topics/search-system-topics.png)
@@ -53,7 +52,7 @@ Můžete vytvořit systémové téma pro prostředek Azure (účet úložiště,
 ## <a name="view-all-system-topics"></a>Zobrazit všechna systémová témata
 Pomocí těchto kroků zobrazíte všechna existující Event Grid systémová témata. 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Do vyhledávacího pole v horní části zadejte **Event Grid systémová témata**a potom stiskněte klávesu **ENTER**. 
 
     ![Vyhledat systémová témata](./media/create-view-manage-system-topics/search-system-topics.png)

@@ -1,5 +1,5 @@
 ---
-title: Model obrázku skóre
+title: Model určení skóre obrázků
 titleSuffix: Azure Machine Learning
 description: Naučte se používat modul pro model image skóre v Azure Machine Learning k vygenerování předpovědi pomocí modelu vyškolených imagí.
 services: machine-learning
@@ -10,13 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: 021572aef673cf88f7744a0a210ef794c739448b
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450714"
 ---
-# <a name="score-image-model"></a>Model obrázku skóre
+# <a name="score-image-model"></a>Model určení skóre obrázků
 
 Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 

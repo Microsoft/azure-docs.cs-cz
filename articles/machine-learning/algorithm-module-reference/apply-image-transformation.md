@@ -1,5 +1,5 @@
 ---
-title: Použít transformaci obrázku
+title: Použití transformace obrázku
 titleSuffix: Azure Machine Learning
 description: Naučte se používat modul transformace bitové kopie k použití transformace obrázku na adresář obrázků.
 services: machine-learning
@@ -10,13 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: 7ff135911742c49c2c52ce30d1dca00bc89b3a56
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450721"
 ---
-# <a name="apply-image-transformation"></a>Použít transformaci obrázku 
+# <a name="apply-image-transformation"></a>Použití transformace obrázku 
 
 Tento článek popisuje, jak použít modul transformace bitové kopie v Návrháři Azure Machine Learning (Preview) pro úpravu adresáře vstupní bitové kopie na základě dříve zadané transformace obrázku.  
 

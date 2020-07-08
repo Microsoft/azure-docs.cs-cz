@@ -1,5 +1,5 @@
 ---
-title: Pytorch model výuky
+title: Trénování modelu PyTorch
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak proškolit model pytorch od začátku nebo ho finetune.
 services: machine-learning
@@ -10,13 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450658"
 ---
-# <a name="train-pytorch-model"></a>Pytorch model výuky
+# <a name="train-pytorch-model"></a>Trénování modelu PyTorch
 
 Tento článek popisuje, jak pomocí modulu **Pytorch** designer (Azure Machine Learning ve verzi Preview) v Návrháři (Preview) proškolit Pytorch modely, jako je DenseNet. Školení probíhá po definování modelu a nastavení jeho parametrů a vyžaduje data s popisky. 
 
