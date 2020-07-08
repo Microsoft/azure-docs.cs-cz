@@ -11,10 +11,9 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927033"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C relace
@@ -37,7 +36,7 @@ Integrace s Azure AD B2C zahrnuje tři typy relací jednotného přihlašování
 
 ### <a name="azure-ad-b2c-sso"></a>Azure AD B2C jednotného přihlašování 
 
-Když se uživatel úspěšně ověřuje pomocí místního nebo sociálního účtu, Azure AD B2C ukládá relaci založenou na souborech cookie v prohlížeči uživatele. Soubor cookie je uložen pod názvem Azure AD B2C domény klienta, například `https://contoso.b2clogin.com`.
+Když se uživatel úspěšně ověřuje pomocí místního nebo sociálního účtu, Azure AD B2C ukládá relaci založenou na souborech cookie v prohlížeči uživatele. Soubor cookie je uložen pod názvem Azure AD B2C domény klienta, například `https://contoso.b2clogin.com` .
 
 Pokud se uživatel poprvé přihlásí pomocí federovaného účtu a v časovém intervalu relace (Time-to-Live nebo TTL) se přihlásí ke stejné aplikaci nebo jiné aplikaci, Azure AD B2C se pokusí získat nový přístupový token od zprostředkovatele federovaných identit. Pokud vypršela platnost relace federovaného zprostředkovatele identity nebo je neplatný, vyzve se k zadání přihlašovacích údajů k uživateli federovaný zprostředkovatel identity. Pokud je relace stále aktivní (nebo pokud se uživatel přihlásil pomocí místního účtu místo federovaného účtu), Azure AD B2C autorizuje uživatele a eliminuje další výzvy.
 
@@ -45,7 +44,7 @@ Můžete nakonfigurovat chování relace, včetně TTL relace a způsobu, jakým
 
 ### <a name="federated-identity-provider-sso"></a>Jednotné přihlašování pro federované identity provider
 
-Poskytovatel identity pro sociální sítě nebo organizace spravuje svou vlastní relaci. Soubor cookie je uložen pod názvem domény poskytovatele identity, například `https://login.salesforce.com`. Azure AD B2C neřídí relaci federovaného zprostředkovatele identity. Místo toho se chování relace určuje podle federovaného zprostředkovatele identity. 
+Poskytovatel identity pro sociální sítě nebo organizace spravuje svou vlastní relaci. Soubor cookie je uložen pod názvem domény poskytovatele identity, například `https://login.salesforce.com` . Azure AD B2C neřídí relaci federovaného zprostředkovatele identity. Místo toho se chování relace určuje podle federovaného zprostředkovatele identity. 
 
 Představte si následující scénář:
 
@@ -57,7 +56,7 @@ Představte si následující scénář:
 
 Aplikaci pro web, mobilní nebo jednoduchou stránku lze chránit pomocí přístupu OAuth, tokeny ID nebo tokeny SAML. Když se uživatel pokusí o přístup k chráněnému prostředku v aplikaci, aplikace zkontroluje, jestli je na straně aplikace aktivní relace. Pokud nedošlo k žádné relaci aplikace nebo vypršela platnost relace, aplikace převezme uživatele, aby Azure AD B2C přihlašovací stránku.
 
-Relace aplikace může být relace založená na souborech cookie uložená v názvu domény aplikace, jako je například `https://contoso.com`. Mobilní aplikace můžou relaci ukládat jiným způsobem, ale s podobným přístupem.
+Relace aplikace může být relace založená na souborech cookie uložená v názvu domény aplikace, jako je například `https://contoso.com` . Mobilní aplikace můžou relaci ukládat jiným způsobem, ale s podobným přístupem.
 
 ## <a name="azure-ad-b2c-session-configuration"></a>Konfigurace relace Azure AD B2C
 
@@ -107,7 +106,7 @@ Odhlášení vymaže stav jednotného přihlašování uživatele s Azure AD B2C
 > [!NOTE]
 > Tato funkce je omezená na [vlastní zásady](custom-policy-overview.md).
 
-Když uživatele přesměrujete na koncový bod Azure AD B2Cho odhlašování (pro protokoly OAuth2 i SAML), Azure AD B2C vymaže relaci uživatele z prohlížeče. Uživatel se však může stále přihlašovat k jiným aplikacím, které používají Azure AD B2C pro ověřování. Pokud chcete těmto aplikacím povolit, aby si vypnuli uživatele současně, Azure AD B2C odešle požadavek HTTP GET na `LogoutUrl` zaregistrované všechny aplikace, ke kterým je uživatel aktuálně přihlášený.
+Když uživatele přesměrujete na koncový bod Azure AD B2Cho odhlašování (pro protokoly OAuth2 i SAML), Azure AD B2C vymaže relaci uživatele z prohlížeče. Uživatel se však může stále přihlašovat k jiným aplikacím, které používají Azure AD B2C pro ověřování. Pokud chcete těmto aplikacím povolit, aby si vypnuli uživatele současně, Azure AD B2C odešle požadavek HTTP GET na zaregistrované `LogoutUrl` všechny aplikace, ke kterým je uživatel aktuálně přihlášený.
 
 
 Aplikace musí na tuto žádost reagovat vymazáním jakékoli relace, která uživatele identifikuje a vrátí `200` odpověď. Pokud chcete v aplikaci podporovat jednotné přihlašování, musíte implementovat `LogoutUrl` v kódu vaší aplikace. 

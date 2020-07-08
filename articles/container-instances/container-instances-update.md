@@ -4,10 +4,9 @@ description: Naučte se aktualizovat spuštěné kontejnery ve vašich Azure Con
 ms.topic: article
 ms.date: 04/17/2020
 ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928716"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizace kontejnerů ve službě Azure Container Instances
@@ -84,7 +83,7 @@ V tomto článku je uvedeno několik případů, kde je **Skupina kontejnerů**.
 
 [Nasazení skupiny více kontejnerů](container-instances-multi-container-group.md)
 
-[Ruční zastavení nebo spuštění kontejnerů v Azure Container Instances](container-instances-stop-start.md)
+[Ruční zastavení nebo spuštění kontejnerů ve službě Azure Container Instances](container-instances-stop-start.md)
 
 <!-- LINKS - External -->
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/06/2020
 ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982645"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Změna transformace řádku v toku dat mapování
@@ -73,7 +72,7 @@ Zde jsou způsoby, jak tuto situaci opravit:
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

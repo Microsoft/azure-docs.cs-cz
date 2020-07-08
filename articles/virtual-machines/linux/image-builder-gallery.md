@@ -9,10 +9,9 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: ccb622f786e6df5271684cf2aabba36cd2f5184f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82930688"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření image pro Linux a její distribuce do galerie sdílených imagí 
@@ -20,7 +19,7 @@ ms.locfileid: "82930688"
 V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure a rozhraní příkazového řádku Azure vytvořit verzi image v [galerii sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)a pak tuto image distribuovat globálně. Můžete to provést také pomocí [Azure PowerShell](../windows/image-builder-gallery.md).
 
 
-K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIG. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIG.js](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
 Pro distribuci image do galerie sdílených imagí šablona používá [sharedImage](image-builder-json.md#distribute-sharedimage) jako hodnotu pro `distribute` oddíl šablony.
 

@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982237"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
@@ -76,11 +75,11 @@ namespace WarmupSample
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
 
-Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která se spustí na každé nové instanci při přidání do aplikace.
+Následující příklad ukazuje Trigger zahřívání v souboru *vfunction.js* a [funkce skriptu jazyka C#](functions-reference-csharp.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
 
 Vaše funkce musí být pojmenována ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat pouze jedna zahřívání funkce.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -107,11 +106,11 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která se spustí na každé nové instanci při přidání do aplikace.
+Následující příklad ukazuje Trigger zahřívání v souboru *function.js* a [funkce JavaScriptu](functions-reference-node.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
 
 Vaše funkce musí být pojmenovaná ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat jenom jedna zahřívání funkce.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -137,11 +136,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
+Následující příklad ukazuje Trigger zahřívání v souboru *function.js* a [funkce jazyka Python](functions-reference-python.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
 
 Vaše funkce musí být pojmenovaná ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat jenom jedna zahřívání funkce.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -224,9 +223,9 @@ Aktivační událost zahřívání není v jazyce Java podporována jako atribut
 
 ## <a name="trigger---configuration"></a>Aktivační událost – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `WarmupTrigger` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `WarmupTrigger` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 | **textový** | Není k dispozici| Požadováno – musí být nastavené na `warmupTrigger` . |
 | **direction** | Není k dispozici| Požadováno – musí být nastavené na `in` . |

@@ -4,10 +4,9 @@ description: Kódy chyb a možná řešení problémů nalezené spuštěním p�
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978310"
 ---
 # <a name="health-check-error-reference"></a>Informace o chybě kontroly stavu
@@ -22,13 +21,13 @@ Tato chyba znamená, že se nepovedlo najít klienta Docker pro rozhraní přík
 
 ## <a name="docker_daemon_error"></a>DOCKER_DAEMON_ERROR
 
-Tato chyba znamená, že stav démona Docker není k dispozici nebo že k němu nelze získat přístup pomocí rozhraní příkazového řádku. V důsledku toho nejsou k dispozici operace Docker `docker login` ( `docker pull`například a) prostřednictvím rozhraní příkazového řádku.
+Tato chyba znamená, že stav démona Docker není k dispozici nebo že k němu nelze získat přístup pomocí rozhraní příkazového řádku. V důsledku toho nejsou k dispozici operace Docker (například `docker login` a `docker pull` ) prostřednictvím rozhraní příkazového řádku.
 
 *Potenciální řešení*: Restartujte démona Docker nebo ověřte, že je správně nainstalovaný.
 
 ## <a name="docker_version_error"></a>DOCKER_VERSION_ERROR
 
-Tato chyba znamená, že rozhraní příkazového řádku (CLI) `docker --version`nemohlo spustit příkaz.
+Tato chyba znamená, že rozhraní příkazového řádku (CLI) nemohlo spustit příkaz `docker --version` .
 
 *Potenciální řešení*: Zkuste spustit příkaz ručně, ujistěte se, že máte nejnovější verzi rozhraní příkazového řádku, a prozkoumejte chybovou zprávu.
 
@@ -58,7 +57,7 @@ Tato chyba znamená, že DNS pro daný přihlašovací server registru byl testo
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Tato chyba znamená, že koncový bod výzvy pro daný registr odpověděl s 403 zakázaným stavem protokolu HTTP. Tato chyba znamená, že uživatelé nemají přístup k registru, pravděpodobně kvůli konfiguraci virtuální sítě nebo protože přístup k veřejnému koncovému bodu registru není povolen. Chcete-li zobrazit aktuálně konfigurovaná pravidla brány firewall `az acr show --query networkRuleSet --name <registry>`, spusťte příkaz.
+Tato chyba znamená, že koncový bod výzvy pro daný registr odpověděl s 403 zakázaným stavem protokolu HTTP. Tato chyba znamená, že uživatelé nemají přístup k registru, pravděpodobně kvůli konfiguraci virtuální sítě nebo protože přístup k veřejnému koncovému bodu registru není povolen. Chcete-li zobrazit aktuálně konfigurovaná pravidla brány firewall, spusťte příkaz `az acr show --query networkRuleSet --name <registry>` .
 
 *Potenciální řešení*: odebrat pravidla virtuální sítě nebo přidat aktuální IP adresu klienta do seznamu povolených.
 
@@ -66,25 +65,25 @@ Tato chyba znamená, že koncový bod výzvy pro daný registr odpověděl s 403
 
 Tato chyba znamená, že koncový bod výzvy cílového registru nevydal výzvu.
 
-*Potenciální řešení*: zkuste to za chvíli znovu. Pokud chyba přetrvává, otevřete problém na adrese https://aka.ms/acr/issues.
+*Potenciální řešení*: zkuste to za chvíli znovu. Pokud chyba přetrvává, otevřete problém na adrese https://aka.ms/acr/issues .
 
 ## <a name="connectivity_aad_login_error"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
 Tato chyba znamená, že koncový bod výzvy cílového registru vystavil výzvu, ale registr nepodporuje Azure Active Directory ověřování.
 
-*Potenciální řešení*: Vyzkoušejte jiný způsob ověřování, například s přihlašovacími údaji správce. Pokud se uživatelé potřebují ověřit pomocí Azure Active Directory, otevřete problém na adrese https://aka.ms/acr/issues.
+*Potenciální řešení*: Vyzkoušejte jiný způsob ověřování, například s přihlašovacími údaji správce. Pokud se uživatelé potřebují ověřit pomocí Azure Active Directory, otevřete problém na adrese https://aka.ms/acr/issues .
 
 ## <a name="connectivity_refresh_token_error"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
 Tato chyba znamená, že přihlašovací server registru neodpověděl s tokenem pro obnovení, takže přístup k cílovému registru byl odepřen. K této chybě může dojít, pokud uživatel nemá správná oprávnění k registru nebo pokud jsou přihlašovací údaje uživatele pro rozhraní příkazového řádku Azure zastaralé.
 
-*Potenciální řešení*: Ověřte, jestli má uživatel správná oprávnění k registru. Spusťte `az login` příkaz k aktualizaci oprávnění, tokenů a přihlašovacích údajů.
+*Potenciální řešení*: Ověřte, jestli má uživatel správná oprávnění k registru. Spusťte příkaz `az login` k aktualizaci oprávnění, tokenů a přihlašovacích údajů.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
 Tato chyba znamená, že přihlašovací server registru neodpověděl pomocí přístupového tokenu, aby byl odepřen přístup k cílovému registru. K této chybě může dojít, pokud uživatel nemá správná oprávnění k registru nebo pokud jsou přihlašovací údaje uživatele pro rozhraní příkazového řádku Azure zastaralé.
 
-*Potenciální řešení*: Ověřte, jestli má uživatel správná oprávnění k registru. Spusťte `az login` příkaz k aktualizaci oprávnění, tokenů a přihlašovacích údajů.
+*Potenciální řešení*: Ověřte, jestli má uživatel správná oprávnění k registru. Spusťte příkaz `az login` k aktualizaci oprávnění, tokenů a přihlašovacích údajů.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
@@ -100,7 +99,7 @@ Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo najít 
 
 ## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
 
-Tato chyba znamená, že rozhraní příkazového řádku není kompatibilní s aktuálně nainstalovanou verzí Docker/notáře. Vyzkoušejte downgrade vaší verze souboru notář. exe na verzi starší než 0.6.0, a to tak, že tento problém vyřešíte tak, že ručně nahradíte svého správce notáře instalace Docker.
+Tato chyba znamená, že rozhraní příkazového řádku není kompatibilní s aktuálně nainstalovanou verzí Docker/notáře. Vyřešte tento problém tak, že vyřešíte downgrade notary.exe verze na verzi starší než 0.6.0 nahrazením klienta notář instalace Docker.
 
 ## <a name="next-steps"></a>Další kroky
 

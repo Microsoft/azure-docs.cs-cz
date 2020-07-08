@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82926226"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Přehled záznamů aliasů Azure DNS

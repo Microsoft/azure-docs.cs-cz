@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927135"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Nastavte jednu IP adresu pro jedno nebo více prostředí integrační služby v Azure Logic Apps
@@ -31,7 +30,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
    ![Vybrat směrovací tabulku s pravidlem pro přesměrování odchozího provozu](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
 
-1. Chcete-li [Přidat novou trasu](../virtual-network/manage-route-table.md#create-a-route), vyberte v nabídce směrovací tabulka možnost **trasy** > **Přidat**.
+1. Chcete-li [Přidat novou trasu](../virtual-network/manage-route-table.md#create-a-route), vyberte v nabídce směrovací tabulka možnost **trasy**  >  **Přidat**.
 
    ![Přidat trasu pro přesměrování odchozího provozu](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
@@ -49,7 +48,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
    ![Nastavení pravidla pro směrování odchozího provozu](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Vlastnost | Hodnota | Popis |
+   | Vlastnost | Hodnota | Description |
    |----------|-------|-------------|
    | **Název trasy** | <*jedinečný název směrování*> | Jedinečný název trasy v tabulce směrování |
    | **Předpona adresy** | <*Cílová adresa*> | Předpona adresy pro cílový systém, ve kterém chcete odchozí provoz přejít. Ujistěte se, že pro tuto adresu používáte [zápis CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . V tomto příkladu je tato předpona adresy určena pro server SFTP, který je popsaný v části [Nastavení síťového pravidla](#set-up-network-rule). |
@@ -61,13 +60,13 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
 ## <a name="set-up-network-rule"></a>Nastavit síťové pravidlo
 
-1. V Azure Portal vyhledejte a vyberte bránu firewall. V nabídce brána firewall v části **Nastavení**vyberte **pravidla**. V podokně pravidla vyberte >  **kolekce pravidel sítě****přidat kolekci pravidel sítě**.
+1. V Azure Portal vyhledejte a vyberte bránu firewall. V nabídce brána firewall v části **Nastavení**vyberte **pravidla**. V podokně pravidla vyberte **kolekce pravidel sítě**  >  **přidat kolekci pravidel sítě**.
 
    ![Přidat kolekci pravidel sítě do brány firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
 
 1. V kolekci přidejte pravidlo, které povoluje provoz do cílového systému.
 
-   Předpokládejme například, že máte aplikaci logiky, která běží na ISE a potřebuje komunikovat se serverem SFTP. Vytvoříte kolekci síťových pravidel s názvem `LogicApp_ISE_SFTP_Outbound`, která obsahuje síťové pravidlo s názvem. `ISE_SFTP_Outbound` Toto pravidlo povoluje přenos z IP adresy jakékoli podsítě, ve které vaše ISE běží ve vaší virtuální síti, do cílového serveru SFTP pomocí privátní IP adresy brány firewall.
+   Předpokládejme například, že máte aplikaci logiky, která běží na ISE a potřebuje komunikovat se serverem SFTP. Vytvoříte kolekci síťových pravidel s názvem `LogicApp_ISE_SFTP_Outbound` , která obsahuje síťové pravidlo s názvem `ISE_SFTP_Outbound` . Toto pravidlo povoluje přenos z IP adresy jakékoli podsítě, ve které vaše ISE běží ve vaší virtuální síti, do cílového serveru SFTP pomocí privátní IP adresy brány firewall.
 
    ![Nastavit síťové pravidlo pro bránu firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -85,7 +84,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Název** | <*síťové pravidlo – název*> | Název síťového pravidla |
-   | **Protokol** | <*připojení – protokoly*> | Protokoly připojení, které se mají použít. Pokud například používáte pravidla NSG, vyberte **TCP** i **UDP**, nejen **TCP**. |
+   | **Protocol (Protokol)** | <*připojení – protokoly*> | Protokoly připojení, které se mají použít. Pokud například používáte pravidla NSG, vyberte **TCP** i **UDP**, nejen **TCP**. |
    | **Zdrojové adresy** | <*ISE – adresy podsítí*> | IP adresy podsítě, kde vaše ISE běží a kam pochází přenos z vaší aplikace logiky |
    | **Cílové adresy** | <*cíl-IP adresa*> | IP adresa pro cílový systém, kde chcete odchozí provoz přejít. V tomto příkladu je tato IP adresa pro server SFTP. |
    | **Cílové porty** | <*cíl – porty*> | Všechny porty, které cílový systém používá pro příchozí komunikaci |

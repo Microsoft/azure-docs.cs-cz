@@ -8,19 +8,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927900"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
 
-Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé metody shromažďování vlastních metrik, `TrackMetric()`a. `GetMetric()` Klíčový rozdíl mezi těmito dvěma metodami je místní agregace. `TrackMetric()`neobsahuje předagregaci, zatímco `GetMetric()` má předagregaci. Doporučený postup je použít agregaci, proto už `TrackMetric()` není upřednostňovanou metodou shromažďování vlastních metrik. Tento článek vás provede použitím metody getmetric () a některých z odůvodnění, jak to funguje.
+Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé metody shromažďování vlastních metrik, `TrackMetric()` a `GetMetric()` . Klíčový rozdíl mezi těmito dvěma metodami je místní agregace. `TrackMetric()`neobsahuje předagregaci, zatímco `GetMetric()` má předagregaci. Doporučený postup je použít agregaci, proto už `TrackMetric()` není upřednostňovanou metodou shromažďování vlastních metrik. Tento článek vás provede použitím metody getmetric () a některých z odůvodnění, jak to funguje.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus getmetric
 
-`TrackMetric()`odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()`je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním KANÁLEM sady SDK inicializátorů telemetrie a procesorů. Na rozdíl `TrackMetric()`od `GetMetric()` , zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
+`TrackMetric()`odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()`je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním kanálem sady SDK inicializátorů telemetrie a procesorů. Na rozdíl od `TrackMetric()` , `GetMetric()` zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
 
 V Application Insights vlastní metriky shromažďované přes `TrackMetric()` a `GetMetric()` nepodléhají [vzorkování](https://docs.microsoft.com/azure/azure-monitor/app/sampling). Vzorkování důležitých metrik může vést k situacím, kdy upozornění, která jste mohli vygenerovat kolem těchto metrik, by mohla být nespolehlivá. Když si vaše vlastní metriky nikdy nevzorkování, můžete si obecně být jistí, že když dojde k porušení prahových hodnot upozornění, aktivuje se výstraha.  Ale vzhledem k tomu, že vlastní metriky nejsou vzorkované, existují potenciální obavy.
 
@@ -30,12 +29,12 @@ Pokud potřebujete sledovat trendy v metrikě každou sekundu, nebo v podrobněj
 - Zvýšení zátěže sítě/režie výkonu. (V některých případech to může mít náklady na výkon peněžních i aplikačních aplikací.)
 - Riziko přijímání omezení příjmu. (Služba Azure Monitor vyřazuje datové body ("omezení"), když vaše aplikace pošle velmi vysokou míru telemetrie v krátkém časovém intervalu.)
 
-Omezování je obzvláště důležité v takovém případě, jako je vzorkování, omezování může vést k chybějícím výstrahám, protože podmínka pro aktivaci výstrahy může probíhat místně a pak se vynechá na koncovém bodu ingestování kvůli příliš velkému počtu odesílaných dat. To je důvod, proč rozhraní .NET a .NET Core nedoporučujeme používat `TrackMetric()` , pokud jste neimplementovali vlastní místní logiku agregace. Pokud se snažíte sledovat každou instanci, ke které dojde v daném časovém období, může se stát, [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) že se to lépe hodí. I když mějte na paměti, že na rozdíl od vlastních metrik se vlastní události vztahují k odběru vzorků. Samozřejmě můžete kurz stále používat `TrackMetric()` i bez psaní vlastní místní předběžné agregace, ale pokud to uděláte, budete mít na nástrah vědět.
+Omezování je obzvláště důležité v takovém případě, jako je vzorkování, omezování může vést k chybějícím výstrahám, protože podmínka pro aktivaci výstrahy může probíhat místně a pak se vynechá na koncovém bodu ingestování kvůli příliš velkému počtu odesílaných dat. To je důvod, proč rozhraní .NET a .NET Core nedoporučujeme používat, `TrackMetric()` Pokud jste neimplementovali vlastní místní logiku agregace. Pokud se snažíte sledovat každou instanci, ke které dojde v daném časovém období, může se stát, že [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) se to lépe hodí. I když mějte na paměti, že na rozdíl od vlastních metrik se vlastní události vztahují k odběru vzorků. Samozřejmě můžete kurz stále používat `TrackMetric()` i bez psaní vlastní místní předběžné agregace, ale pokud to uděláte, budete mít na nástrah vědět.
 
 V souhrnu `GetMetric()` je doporučený přístup, protože se používá před agregací, shromažďuje hodnoty ze všech volání stop () a odesílá souhrn nebo agregaci jednou za minutu. To může významně snížit náklady a režii na výkon tím, že posílá méně datových bodů a stále shromažďuje všechny relevantní informace.
 
 > [!NOTE]
-> Pouze sady SDK .NET a .NET Core mají metodu getmetric (). Pokud používáte Java, můžete použít [metriky mikroměřiče](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) nebo `TrackMetric()`. V případě Pythonu můžete k posílání vlastních metrik používat [OpenCensus. stat](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) . Pro JavaScript a Node. js byste pořád používali `TrackMetric()`, ale mějte na paměti upozornění, která byla popsaný v předchozí části.
+> Pouze sady SDK .NET a .NET Core mají metodu getmetric (). Pokud používáte Java, můžete použít [metriky mikroměřiče](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) nebo `TrackMetric()` . V případě Pythonu můžete k posílání vlastních metrik používat [OpenCensus. stat](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) . Pro JavaScript a Node.js, které byste pořád používali `TrackMetric()` , ale mějte na paměti upozornění, která byla popsaných v předchozí části.
 
 ## <a name="getting-started-with-getmetric"></a>Začínáme se službou getmetric
 
@@ -43,7 +42,7 @@ V našich příkladech budeme používat základní aplikaci pracovní služby p
 
 ### <a name="sending-metrics"></a>Odesílají se metriky.
 
-Obsah `worker.cs` souboru nahraďte následujícím:
+Obsah souboru nahraďte `worker.cs` následujícím:
 
 ```csharp
 using System;
@@ -109,7 +108,7 @@ Pokud prověříme náš Application Insights prostředek v prostředí log (Ana
 ![Zobrazení dotazu Log Analytics](./media/get-metric/log-analytics.png)
 
 > [!NOTE]
-> I když nezpracovaná položka telemetrie neobsahovala explicitní vlastnost Sum nebo pole, vytvoříme pro vás jednu. V tomto případě představuje vlastnost `value` i `valueSum` stejnou věc.
+> I když nezpracovaná položka telemetrie neobsahovala explicitní vlastnost Sum nebo pole, vytvoříme pro vás jednu. V tomto případě `value` `valueSum` představuje vlastnost i stejnou věc.
 
 K vlastní telemetrii metriky můžete také přistupovat v části [_metriky_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) na portálu. Jak v závislosti na protokolu, tak i ve [vlastní metrikě](pre-aggregated-metrics-log-metrics.md). (Na snímku obrazovky níže je příklad založený na protokolu.) ![Zobrazení Průzkumníka metrik](./media/get-metric/metrics-explorer.png)
 
@@ -140,7 +139,7 @@ V tomto případě příklad provedl vyhledávání pro popisovač metriky "Comp
 
 ```
 
-Kromě ukládání popisovače metrik do mezipaměti je výše uvedený příklad také snížen `Task.Delay` na 50 milisekund, aby smyčka prováděla častěji v důsledku 772 `TrackValue()` vyvolání.
+Kromě ukládání popisovače metrik do mezipaměti je výše uvedený příklad také snížen na `Task.Delay` 50 milisekund, aby smyčka prováděla častěji v důsledku 772 `TrackValue()` vyvolání.
 
 ## <a name="multi-dimensional-metrics"></a>Multidimenzionální metriky
 
@@ -190,7 +189,7 @@ Ve výchozím nastavení se multidimenzionální metriky v prostředí metrické
 
 ### <a name="enable-multi-dimensional-metrics"></a>Zapnout multidimenzionální metriky
 
-Pokud chcete pro prostředek Application Insights povolit multidimenzionální metriky, vyberte **využití a odhadované náklady** > .**vlastní metriky** > **umožňují upozorňování na vlastní dimenze** > metriky**OK**. Další podrobnosti najdete [tady](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+Pokud chcete pro prostředek Application Insights povolit multidimenzionální metriky, vyberte **využití a odhadované náklady**.  >  **vlastní metriky**  >  **umožňují upozorňování na vlastní dimenze metriky**  >  **OK**. Další podrobnosti najdete [tady](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
 Po provedení této změny a odeslání nové multidimenzionální telemetrie budete moci **použít rozdělení**.
 
@@ -205,7 +204,7 @@ A zobrazte agregace metrik pro každou dimenzi _FormFactor_ :
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>Jak používat MetricIdentifier, pokud existuje více než tři dimenze
 
-V současné době je dostupná 10 dimenzí, ale více než tři dimenze vyžaduje použití `MetricIdentifier`:
+V současné době je dostupná 10 dimenzí, ale více než tři dimenze vyžaduje použití `MetricIdentifier` :
 
 ```csharp
 // Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
@@ -221,9 +220,9 @@ Pokud chcete změnit konfiguraci metriky, musíte to udělat v místě, kde je m
 
 ### <a name="special-dimension-names"></a>Speciální názvy dimenzí
 
-Metriky nepoužívají kontext telemetrie pro `TelemetryClient` použití pro přístup k nim, speciální názvy dimenzí, které jsou k dispozici `MetricDimensionNames` jako konstanty ve třídě, jsou nejlepším řešením pro toto omezení.
+Metriky nepoužívají kontext telemetrie pro `TelemetryClient` použití pro přístup k nim, speciální názvy dimenzí, které jsou k dispozici jako konstanty ve `MetricDimensionNames` třídě, jsou nejlepším řešením pro toto omezení.
 
-Agregace metrik odesílané níže "velikost požadavku na speciální operaci" – metrika **nebude mít** `Context.Operation.Name` nastavenou hodnotu "speciální operace". Vzhledem `TrackMetric()` k tomu, že nebo jakýkoli jiný TrackXXX `OperationName` () bude správně nastaven na "speciální operace".
+Agregace metrik odesílané níže "velikost požadavku na speciální operaci" – metrika **nebude mít** `Context.Operation.Name` nastavenou hodnotu "speciální operace". Vzhledem k tomu, že `TrackMetric()` nebo jakýkoli jiný TrackXXX () bude `OperationName` správně nastaven na "speciální operace".
 
 ``` csharp
         //...
@@ -248,15 +247,15 @@ Agregace metrik odesílané níže "velikost požadavku na speciální operaci" 
         }
 ```
 
-V takovém případě použijte názvy zvláštních dimenzí uvedené ve `MetricDimensionNames` třídě, aby bylo možné zadat `TelemetryContext` hodnoty.
+V takovém případě použijte názvy zvláštních dimenzí uvedené ve třídě, aby `MetricDimensionNames` bylo možné zadat `TelemetryContext` hodnoty.
 
-Například při odeslání agregované metriky z dalšího příkazu do koncového bodu Application Insights cloudu bude jeho `Context.Operation.Name` datové pole nastaveno na "speciální operace":
+Například při odeslání agregované metriky z dalšího příkazu do koncového bodu Application Insights cloudu `Context.Operation.Name` bude jeho datové pole nastaveno na "speciální operace":
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation");
 ```
 
-Hodnoty této speciální dimenze budou zkopírovány do objektu `TelemetryContext` a nebudou použity jako dimenze ' Normal '. Pokud chcete také zachovat dimenzi operace pro normální zkoumání metriky, musíte pro tento účel vytvořit samostatnou dimenzi:
+Hodnoty této speciální dimenze budou zkopírovány do objektu a nebudou `TelemetryContext` použity jako dimenze ' Normal '. Pokud chcete také zachovat dimenzi operace pro normální zkoumání metriky, musíte pro tento účel vytvořit samostatnou dimenzi:
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation", "Special Operation");
@@ -266,9 +265,9 @@ _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionName
 
  Pokud nechcete, aby subsystém telemetrie omylem používal vaše prostředky, můžete řídit maximální počet datových řad na metriku. Výchozí omezení nejsou na více než 1000 celkových datových řad na jednu metriku a maximálně 100 různých hodnot na dimenzi.
 
- V kontextu dimenzí a časových řad capping používáme `Metric.TrackValue(..)` k zajištění dodržování limitů. Pokud jsou limity již dosaženy, `Metric.TrackValue(..)` vrátí hodnotu false a hodnota nebude sledována. V opačném případě vrátí "true". To je užitečné, pokud data metriky pocházejí ze vstupu uživatele.
+ V kontextu dimenzí a časových řad capping používáme k zajištění `Metric.TrackValue(..)` dodržování limitů. Pokud jsou limity již dosaženy, `Metric.TrackValue(..)` vrátí hodnotu false a hodnota nebude sledována. V opačném případě vrátí "true". To je užitečné, pokud data metriky pocházejí ze vstupu uživatele.
 
-`MetricConfiguration` Konstruktor přebírá některé možnosti pro správu různých řad v rámci příslušné metriky a objektu, který implementuje `IMetricSeriesConfiguration` třídu, která určuje chování agregace pro každou jednotlivou sérii metriky:
+`MetricConfiguration`Konstruktor přebírá některé možnosti pro správu různých řad v rámci příslušné metriky a objektu `IMetricSeriesConfiguration` , který implementuje třídu, která určuje chování agregace pro každou jednotlivou sérii metriky:
 
 ``` csharp
 var metConfig = new MetricConfiguration(seriesCountLimit: 100, valuesPerDimensionLimit:2,
@@ -285,7 +284,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu volání `TrackValue()`.
+* `seriesCountLimit`je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu volání `TrackValue()` .
 * `valuesPerDimensionLimit`podobným způsobem omezuje počet jedinečných hodnot na dimenzi.
 * `restrictToUInt32Values`Určuje, zda mají být sledovány pouze nezáporné celočíselné hodnoty.
 

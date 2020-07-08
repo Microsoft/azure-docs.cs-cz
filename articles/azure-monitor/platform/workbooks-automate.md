@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
 ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982135"
 ---
 # <a name="programmatically-manage-workbooks"></a>Správa sešitů prostřednictvím kódu programu

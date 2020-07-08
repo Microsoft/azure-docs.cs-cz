@@ -13,17 +13,16 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: ryanwi
 ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82926676"
 ---
 # <a name="how-to-discover-endpoints"></a>Postup zjišťování koncových bodů
 
 Koncové body ověřování pro vaši aplikaci najdete v [Azure Portal](https://portal.azure.com).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory**.
 1. V části **Spravovat**vyberte **Registrace aplikací**a potom v horní nabídce vyberte **koncové body** .
 

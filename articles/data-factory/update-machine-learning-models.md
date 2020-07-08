@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927390"
 ---
 # <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>Aktualizace modelů ML Studio (Classic) v pomocí aktivity aktualizovat prostředek
@@ -33,7 +32,7 @@ Rekurze se může vyskytnout často. S aktivitou spuštění služby Batch a akt
 
 Následující obrázek znázorňuje vztah mezi školicími a prediktivními webovými službami.
 
-![Webové služby](./media/update-machine-learning-models/web-services.png)
+![webové služby](./media/update-machine-learning-models/web-services.png)
 
 ## <a name="ml-studio-classic-update-resource-activity"></a>Aktivita aktualizace prostředku ML Studio (Classic)
 
@@ -59,15 +58,15 @@ Následující fragment kódu JSON definuje aktivitu spuštění dávky ML Studi
 }
 ```
 
-| Vlastnost                      | Popis                              | Požaduje se |
+| Vlastnost                      | Popis                              | Vyžadováno |
 | :---------------------------- | :--------------------------------------- | :------- |
-| jméno                          | Název aktivity v kanálu     | Ano      |
+| name                          | Název aktivity v kanálu     | Yes      |
 | description                   | Text popisující, co aktivita dělá.  | No       |
-| type                          | U Azure Machine Learning aktivita aktualizace prostředku je typ aktivity **povinná**. | Ano      |
-| linkedServiceName             | Azure Machine Learning propojená služba, která obsahuje vlastnost updateResourceEndpoint. | Ano      |
-| trainedModelName              | Název modulu trained model v experimentu webové služby, který se má aktualizovat | Ano      |
-| trainedModelLinkedServiceName | Název propojené služby Azure Storage, která uchovává soubor ilearner, který je nahraný operací Update | Ano      |
-| trainedModelFilePath          | Relativní cesta k souboru v trainedModelLinkedService, která představuje soubor ilearner, který je nahraný operací Update | Ano      |
+| typ                          | U Azure Machine Learning aktivita aktualizace prostředku je typ aktivity **povinná**. | Yes      |
+| linkedServiceName             | Azure Machine Learning propojená služba, která obsahuje vlastnost updateResourceEndpoint. | Yes      |
+| trainedModelName              | Název modulu trained model v experimentu webové služby, který se má aktualizovat | Yes      |
+| trainedModelLinkedServiceName | Název propojené služby Azure Storage, která uchovává soubor ilearner, který je nahraný operací Update | Yes      |
+| trainedModelFilePath          | Relativní cesta k souboru v trainedModelLinkedService, která představuje soubor ilearner, který je nahraný operací Update | Yes      |
 
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
 

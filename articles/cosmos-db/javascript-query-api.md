@@ -8,10 +8,9 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 785c430347bc62a00eee80c977f2d6ce440c08db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982271"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
@@ -49,7 +48,7 @@ Další informace najdete v dokumentaci k [JavaScriptu na straně serveru Cosmos
 Následující tabulka uvádí různé dotazy SQL a odpovídající dotazy JavaScriptu. Stejně jako u dotazů SQL jsou u vlastností (například item.id) rozlišována malá a velká písmena.
 
 > [!NOTE]
-> `__`(dvojité podtržítko) je alias pro při použití `getContext().getCollection()` rozhraní API pro dotazování jazyka JavaScript.
+> `__`(dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazování jazyka JavaScript.
 
 |**SQL**|**Rozhraní API pro dotazy jazyka JavaScript**|**Popis**|
 |---|---|---|

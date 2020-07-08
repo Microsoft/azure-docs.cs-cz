@@ -4,10 +4,9 @@ description: Zařazení spuštění úlohy ACR do fronty pro sestavení Image po
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927764"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Spouštění úloh ACR pomocí šablon Správce prostředků
@@ -16,7 +15,7 @@ ms.locfileid: "82927764"
 
 V tomto článku se dozvíte, Azure Resource Manager příklady šablon pro zařazení rychlého spuštění úlohy do fronty, podobně jako v tématu, který můžete vytvořit ručně pomocí příkazu [AZ ACR Build][az-acr-build] .
 
-Správce prostředků šablona pro zařazení spuštění úlohy do fronty je užitečná ve scénářích automatizace a rozšiřuje funkce nástroje `az acr build`. Příklad:
+Správce prostředků šablona pro zařazení spuštění úlohy do fronty je užitečná ve scénářích automatizace a rozšiřuje funkce nástroje `az acr build` . Příklad:
 
 * Použití šablony k vytvoření registru kontejneru a okamžitému zařazování spuštění úlohy do fronty pro sestavení a vložení image kontejneru
 * Umožňuje vytvořit nebo povolit další prostředky, které můžete použít v rychlém spuštění úlohy, jako je spravovaná identita pro prostředky Azure.
@@ -28,8 +27,8 @@ Správce prostředků šablona pro zařazení spuštění úlohy do fronty je u�
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Účet GitHub** – vytvořte účet, https://github.com Pokud ho ještě nemáte. 
-* **Rozvětvení ukázkové úložiště** – pro příklady úloh, které jsou tady uvedené, použijte uživatelské rozhraní GitHubu k rozvětvení následujícího ukázkového úložiště do svého účtu GitHubu: https://github.com/Azure-Samples/acr-build-helloworld-node. Toto úložiště obsahuje vzorový fázemi a zdrojový kód pro vytváření malých imagí kontejneru.
+* **Účet GitHub** – vytvořte účet https://github.com , pokud ho ještě nemáte. 
+* **Rozvětvení ukázkové úložiště** – pro příklady úloh, které jsou tady uvedené, použijte uživatelské rozhraní GitHubu k rozvětvení následujícího ukázkového úložiště do svého účtu GitHubu: https://github.com/Azure-Samples/acr-build-helloworld-node . Toto úložiště obsahuje vzorový fázemi a zdrojový kód pro vytváření malých imagí kontejneru.
 
 ## <a name="example-create-registry-and-queue-task-run"></a>Příklad: vytvoření registru a spuštění úlohy ve frontě
 
@@ -44,7 +43,7 @@ V tomto příkladu zadejte hodnoty pro následující parametry šablony:
 |registr     |Jedinečný název vytvořeného registru         |
 |úložiště     |Cílové úložiště pro úlohu sestavení        |
 |taskRunName     |Název spuštění úlohy, který určuje značku obrázku |
-|sourceLocation     |Vzdálený kontext pro úlohu sestavení, například https://github.com/Azure-Samples/acr-build-helloworld-node. Souboru Dockerfile v kořenovém adresáři úložiště sestaví image kontejneru pro malou webovou aplikaci Node. js. V případě potřeby použijte jako kontext sestavení své rozvětvení úložiště.         |
+|sourceLocation     |Vzdálený kontext pro úlohu sestavení, například https://github.com/Azure-Samples/acr-build-helloworld-node . Souboru Dockerfile v kořenovém adresáři úložiště vytvoří image kontejneru pro malou Node.js webovou aplikaci. V případě potřeby použijte jako kontext sestavení své rozvětvení úložiště.         |
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -112,7 +111,7 @@ Výstup zobrazuje protokol spuštění úlohy.
 Můžete také zobrazit protokol spuštění úlohy v Azure Portal. 
 
 1. Přejděte do registru kontejneru.
-2. V **části služby**vyberte možnost**spuštěné** **úlohy** > .
+2. V části **služby**vyberte **Tasks**možnost  >  **spuštěné**úlohy.
 3. V tomto případě *CA1*vyberte ID běhu. 
 
 Portál zobrazuje protokol spuštění úlohy.
@@ -125,7 +124,7 @@ Tento scénář je podobný [ověřování mezi registry v úloze ACR pomocí id
 
 ### <a name="prepare-base-registry"></a>Příprava základního registru
 
-Pro demonstrační účely Vytvořte samostatný registr kontejnerů jako základní registr a nahrajte základní image Node. js získanou z Docker Hub.
+Pro demonstrační účely Vytvořte samostatný registr kontejnerů jako základní registr a vložte Node.js základní image získanou z Docker Hub.
 
 1. Vytvořte druhý registr kontejnerů, například *mybaseregistry*, a uložte základní image.
 1. Nahrajte `node:9-alpine` image z Docker Hub, označte ji pro svůj základní registr a nahrajte ji do základního registru:
@@ -139,7 +138,7 @@ Pro demonstrační účely Vytvořte samostatný registr kontejnerů jako zákla
 
 ### <a name="create-new-dockerfile"></a>Vytvořit nové souboru Dockerfile
 
-Vytvořte souboru Dockerfile, který načte základní image ze základního registru. V místním rozvětvení úložiště GitHub proveďte následující kroky, například `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
+Vytvořte souboru Dockerfile, který načte základní image ze základního registru. V místním rozvětvení úložiště GitHub proveďte následující kroky, například `https://github.com/myGitHubID/acr-build-helloworld-node.git` .
 
 1. V uživatelském rozhraní GitHubu vyberte **vytvořit nový soubor**.
 1. Pojmenujte soubor *souboru Dockerfile-test* a vložte následující obsah. Nahraďte název registru pro *mybaseregistry*.
@@ -187,7 +186,7 @@ V tomto příkladu zadejte hodnoty pro následující parametry šablony:
 |userAssignedIdentity |ID prostředku povoleného uživatelem přiřazené identity v úloze|
 |customRegistryIdentity | ID klienta povolené identity přiřazené uživatelem v úloze, která se používá k ověřování pomocí vlastního registru |
 |customRegistry |Název přihlašovacího serveru vlastního registru, ke kterému v úloze přistupoval, například *mybaseregistry.azurecr.IO*|
-|sourceLocation     |Vzdálený kontext pro úlohu sestavení, například * https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node.* |
+|sourceLocation     |Vzdálený kontext pro úlohu sestavení, například * https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
 |dockerFilePath | Cesta k souboru Dockerfile ve vzdáleném kontextu, která se používá k sestavení image. |
 
 ### <a name="deploy-the-template"></a>Nasazení šablony

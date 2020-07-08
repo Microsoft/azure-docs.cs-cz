@@ -14,10 +14,9 @@ ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82901381"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
@@ -112,12 +111,12 @@ Aby se zajistilo, že se skript snímku úspěšně spustí, ujistěte se, že j
 
 Pokud chcete nastavit snímky úložiště s velkými instancemi HANA, postupujte podle těchto kroků.
 1. Ujistěte se, že je v operačním systému Linux na serveru velkých instancí HANA nainstalovaný jazyk Perl.
-1. Úpravou konfigurace\_/etc/ssh/ssh přidejte řádek _Mac HMAC-SHA1_.
+1. Úpravou \_ konfigurace/etc/ssh/ssh přidejte řádek _Mac HMAC-SHA1_.
 1. Pro každou spuštěnou instanci SAP HANA a v případě potřeby vytvořte účet uživatele SAP HANA Backup na hlavním uzlu.
 1. Nainstalujte klienta SAP HANA HDB na všechny servery Velké instance SAP HANA.
 1. Na prvním Velké instance SAP HANA serveru každé oblasti vytvořte veřejný klíč pro přístup k základní infrastruktuře úložiště, která řídí vytváření snímků.
 1. Zkopírujte skripty a konfigurační soubor z [GitHubu](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) do umístění **hdbsql** v instalaci SAP HANA.
-1. Podle potřeby upravte soubor *HANABackupDetails. txt* pro příslušné specifikace zákazníka.
+1. Upravte soubor *HANABackupDetails.txt* podle potřeby pro příslušné specifikace zákazníka.
 
 Získejte nejnovější skripty snímků a dokumentaci z [GitHubu](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md). Postup uvedený výše najdete v tématu [Microsoft Snapshot Tools for SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
@@ -131,7 +130,7 @@ Operační systém Linux nainstalovaný na SAP HANA v Azure (velké instance) ob
 
 Je vaší zodpovědností nainstalovat klienta SAP HANA HDB do jednotek velkých instancí HANA při instalaci SAP HANA.
 
-### <a name="step-2-change-the-etcsshssh_config"></a>Krok 2: Změna konfigurace/etc/ssh/ssh\_
+### <a name="step-2-change-the-etcsshssh_config"></a>Krok 2: Změna konfigurace/etc/ssh/ssh \_
 
 Tento krok je popsaný v tématu povolení komunikace s úložištěm v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
@@ -154,7 +153,7 @@ Pokud chcete nastavit a používat uživatelský účet, přečtěte si téma po
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>Krok 5: ověření účtu SAP HANAho uživatele
 
-V tomto kroku autorizujete SAP HANA uživatelský účet, který jste vytvořili, aby skripty nemusely odesílat hesla za běhu. Příkaz `hdbuserstore` SAP HANA umožňuje vytvoření klíče uživatele SAP HANA. Klíč je uložen na jednom nebo více SAP HANA uzlech. Klíč uživatele umožňuje uživateli přístup SAP HANA bez nutnosti spravovat hesla v rámci procesu skriptování. Postup skriptování je popsán dále v tomto článku.
+V tomto kroku autorizujete SAP HANA uživatelský účet, který jste vytvořili, aby skripty nemusely odesílat hesla za běhu. Příkaz SAP HANA `hdbuserstore` umožňuje vytvoření klíče uživatele SAP HANA. Klíč je uložen na jednom nebo více SAP HANA uzlech. Klíč uživatele umožňuje uživateli přístup SAP HANA bez nutnosti spravovat hesla v rámci procesu skriptování. Postup skriptování je popsán dále v tomto článku.
 
 >[!IMPORTANT]
 >Spusťte tyto příkazy konfigurace se stejným uživatelským kontextem, ve kterém jsou spuštěny příkazy snímku. V opačném případě nebudou příkazy snímku správně fungovat.
@@ -174,17 +173,17 @@ Nezapomeňte spustit kroky popsané v tématu "kompletní nastavení nástrojů 
 
 Před konfigurací nástrojů pro snímky se ujistěte, že jste správně nakonfigurovali taky záložní umístění a nastavení pro zálohování HANA. Další informace najdete v části "konfigurace SAP HANA" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
-Konfigurace sady nástrojů Snapshot je popsaná v části "config File-HANABackupCustomerDetails. txt" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
+Konfigurace sady nástrojů Snapshot je popsána v části config File-HANABackupCustomerDetails.txt v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 #### <a name="test-connectivity-with-sap-hana"></a>Test připojení pomocí SAP HANA
 
-Po vložení všech konfiguračních dat do souboru *HANABackupCustomerDetails. txt* ověřte, zda jsou konfigurace pro data instance Hana správné. Použijte skript `testHANAConnection`, který je nezávisle na SAP HANA konfiguraci škálování nebo škálování na více instancí.
+Až všechna konfigurační data vložíte do souboru *HANABackupCustomerDetails.txt* , ověřte, jestli jsou konfigurace pro data instance Hana správné. Použijte skript `testHANAConnection` , který je nezávisle na SAP HANA konfiguraci škálování nebo škálování na více instancí.
 
 Další informace najdete v části "zjištění připojení pomocí SAP HANA-testHANAConnection" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 #### <a name="test-storage-connectivity"></a>Test připojení úložiště
 
-Dalším krokem testu je zkontrolovat připojení k úložišti na základě dat, která jste umístili do konfiguračního souboru *HANABackupCustomerDetails. txt* . Pak spusťte testovací snímek. Před spuštěním `azure_hana_backup` příkazu je nutné spustit tento test. Posloupnost příkazů pro tento test najdete v části "Kontrola připojení pomocí úložiště – testStorageSnapshotConnection" "v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
+Dalším krokem testu je zkontrolovat připojení k úložišti na základě dat, která jste umístili do konfiguračního souboru *HANABackupCustomerDetails.txt* . Pak spusťte testovací snímek. Před spuštěním příkazu je `azure_hana_backup` nutné spustit tento test. Posloupnost příkazů pro tento test najdete v části "Kontrola připojení pomocí úložiště – testStorageSnapshotConnection" "v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 Po úspěšném přihlášení k rozhraní virtuálního počítače úložiště skript pokračuje ve fázi 2 a vytvoří testovací snímek. Výstup se tady zobrazuje pro konfiguraci SAP HANA škálování na více uzlů.
 
@@ -197,7 +196,7 @@ Po dokončení přípravných kroků můžete začít konfigurovat a naplánovat
 
 Přesný syntax a funkčnost příkazu najdete v části "provedení zálohování snímků azure_hana_backup" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
 
-Po spuštění skriptu `azure_hana_backup` se vytvoří snímek úložiště v následujících třech fázích:
+Po spuštění skriptu se `azure_hana_backup` vytvoří snímek úložiště v následujících třech fázích:
 
 1. Spustí SAP HANA snímek.
 1. Spustí snímek úložiště.
@@ -286,7 +285,7 @@ Po prvním úspěšném spuštění snímků úložiště odstraňte snímek tes
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>Monitorování počtu a velikosti snímků na svazku disku
 
-Na konkrétním svazku úložiště můžete monitorovat počet snímků a spotřebu úložiště těchto snímků. `ls` Příkaz nezobrazuje adresář snímků ani soubory. Příkaz `du` Linux OS zobrazuje podrobnosti o těchto snímcích úložiště, protože jsou uložené na stejných svazcích. Použijte příkaz s následujícími možnostmi:
+Na konkrétním svazku úložiště můžete monitorovat počet snímků a spotřebu úložiště těchto snímků. `ls`Příkaz nezobrazuje adresář snímků ani soubory. Příkaz Linux OS `du` zobrazuje podrobnosti o těchto snímcích úložiště, protože jsou uložené na stejných svazcích. Použijte příkaz s následujícími možnostmi:
 
 - `du –sh .snapshot`: Tato možnost poskytuje celkový počet všech snímků v adresáři snímků.
 - `du –sh --max-depth=1`: Tato možnost vypíše všechny snímky uložené ve složce **. Snapshot** a velikost každého snímku.
@@ -298,7 +297,7 @@ Pomocí těchto příkazů se ujistěte, že se snímky, které se zabírají a 
 >Snímky spouštěcí logické jednotky nejsou viditelné s předchozími příkazy.
 
 ### <a name="get-details-of-snapshots"></a>Získat podrobnosti o snímcích
-Pokud chcete získat další informace o snímcích, použijte `azure_hana_snapshot_details`skript. Pokud je v umístění pro zotavení po havárii aktivní server, můžete tento skript spustit v libovolném umístění. Skript poskytuje následující výstup rozepsaný podle jednotlivých svazků, které obsahují snímky: 
+Pokud chcete získat další informace o snímcích, použijte skript `azure_hana_snapshot_details` . Pokud je v umístění pro zotavení po havárii aktivní server, můžete tento skript spustit v libovolném umístění. Skript poskytuje následující výstup rozepsaný podle jednotlivých svazků, které obsahují snímky: 
    * Velikost celkového počtu snímků ve svazku
    * Následující podrobnosti v každém snímku tohoto svazku: 
       - Název snímku 
@@ -332,7 +331,7 @@ Pokud spustíte skript s tímto nastavením, bude počet snímků, který obsahu
 
 Pokud již nechcete uchovávat sadu snímků s předponou zálohy **dailyhana** v příkladech syntaxe, spusťte skript s **0** jako číslo uchování. Odeberou se všechny snímky, které odpovídají danému popisku. Odebrání všech snímků může mít vliv na funkce zotavení po havárii velkých instancí HANA.
 
-Druhou možností, jak odstranit konkrétní snímky, je použít skript `azure_hana_snapshot_delete`. Tento skript je navržený tak, aby odstranil snímek nebo sadu snímků buď pomocí ID zálohy HANA, jak se nachází v HANA Studio, nebo prostřednictvím samotného názvu snímku. V současné době je ID zálohy svázáno pouze se snímky vytvořenými pro typ snímku **Hana** . Zálohování snímků **protokolů** typu a **spuštění** neprovádí SAP HANA snímek, takže pro tyto snímky není k dispozici žádné ID zálohy. Pokud je zadaný název snímku, vyhledá všechny snímky na různých svazcích, které odpovídají zadanému názvu snímku. 
+Druhou možností, jak odstranit konkrétní snímky, je použít skript `azure_hana_snapshot_delete` . Tento skript je navržený tak, aby odstranil snímek nebo sadu snímků buď pomocí ID zálohy HANA, jak se nachází v HANA Studio, nebo prostřednictvím samotného názvu snímku. V současné době je ID zálohy svázáno pouze se snímky vytvořenými pro typ snímku **Hana** . Zálohování snímků **protokolů** typu a **spuštění** neprovádí SAP HANA snímek, takže pro tyto snímky není k dispozici žádné ID zálohy. Pokud je zadaný název snímku, vyhledá všechny snímky na různých svazcích, které odpovídají zadanému názvu snímku. 
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 

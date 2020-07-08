@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/06/2020
 tags: connectors
 ms.openlocfilehash: 66971d754d5cd524750fccaa6f89a2cdca138f2a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82925911"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitorování a Správa Wunderlistu pomocí Azure Logic Apps

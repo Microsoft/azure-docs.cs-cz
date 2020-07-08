@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82900313"
 ---
 # <a name="single-page-application-move-to-production"></a>Jednostránkové aplikace: Přesun do produkčního prostředí
@@ -32,17 +31,17 @@ Otestujte integraci podle [kontrolního seznamu integrace Microsoft Identity Pla
 
 ## <a name="next-steps"></a>Další kroky
 
-Hluboká podrobně ukázky pro rychlý Start, která vysvětluje kód pro přihlášení uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph pomocí MSAL. js:
+Důkladná podrobně ukázky pro rychlý Start, která vysvětluje kód pro přihlášení uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph pomocí MSAL.js:
 
 > [!div class="nextstepaction"]
 > [Kurz pro JavaScript SPA](./tutorial-v2-javascript-spa.md)
 
-Ukázka, která ukazuje, jak získat tokeny pro vlastní back-endové webové rozhraní API pomocí MSAL. js:
+Ukázka, která ukazuje, jak získat tokeny pro vlastní back-endové webové rozhraní API pomocí MSAL.js:
 
 > [!div class="nextstepaction"]
 > [SPA s back-end ASP.NET](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
-Ukázka, která ukazuje, jak pomocí MSAL. js přihlašovat uživatele v aplikaci, která je zaregistrovaná ve službě Azure Active Directory B2C (Azure AD B2C):
+Ukázka, která ukazuje použití MSAL.js k přihlášení uživatelů v aplikaci registrované v Azure Active Directory B2C (Azure AD B2C):
 
 > [!div class="nextstepaction"]
 > [SPA s Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928869"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning jako zdroj Event Grid
@@ -24,7 +23,7 @@ Tento článek poskytuje informace o vlastnostech a schématu pro události prac
 
 Azure Machine Learning emituje následující typy událostí:
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | Microsoft. MachineLearningServices. ModelRegistered | Vyvolá se v případě, že byl úspěšně registrován nový model nebo verze modelu. |
 | Microsoft. MachineLearningServices. ModelDeployed | Vyvolá se při úspěšném nasazení modelů do koncového bodu. |
@@ -190,35 +189,35 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| téma | odkazy řetězců | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | odkazy řetězců | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | odkazy řetězců | Jeden z registrovaných typů události pro tento zdroj události. |
-| eventTime | odkazy řetězců | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| id | odkazy řetězců | Jedinečný identifikátor události |
+| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | řetězec | Jedinečný identifikátor události |
 | data | odkazy objektů | Data události služby Blob Storage. |
-| dataVersion | odkazy řetězců | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
-| metadataVersion | odkazy řetězců | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
+| dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má pro každý typ události následující vlastnosti:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| ModelName | odkazy řetězců | Název modelu, který byl zaregistrován. |
-| ModelVersion | odkazy řetězců | Verze modelu, který byl zaregistrován. |
+| ModelName | řetězec | Název modelu, který byl zaregistrován. |
+| ModelVersion | řetězec | Verze modelu, který byl zaregistrován. |
 | ModelTags | odkazy objektů | Značky modelu, který byl zaregistrován. |
 | ModelProperties | odkazy objektů | Vlastnosti modelu, který byl zaregistrován. |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| ServiceName | odkazy řetězců | Název nasazené služby. |
-| ServiceComputeType | odkazy řetězců | Výpočetní typ (např. ACI, AKS) nasazené služby. |
-  | ModelIds | odkazy řetězců | Čárkami oddělený seznam ID modelů. ID modelů nasazených ve službě. |
+| ServiceName | řetězec | Název nasazené služby. |
+| ServiceComputeType | řetězec | Výpočetní typ (např. ACI, AKS) nasazené služby. |
+  | ModelIds | řetězec | Čárkami oddělený seznam ID modelů. ID modelů nasazených ve službě. |
 | ServiceTags | odkazy objektů | Značky nasazené služby. |
 | ServiceProperties | odkazy objektů | Vlastnosti nasazené služby. |
 
@@ -226,10 +225,10 @@ Datový objekt má pro každý typ události následující vlastnosti:
 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | odkazy řetězců | ID experimentu, do kterého daný běh patří. |
-| Experiment | odkazy řetězců | Název experimentu, do kterého daný běh patří. |
-| RunId | odkazy řetězců | ID běhu, které bylo dokončeno. |
-| RunType | odkazy řetězců | Typ spuštění dokončeného běhu. |
+| ExperimentId | řetězec | ID experimentu, do kterého daný běh patří. |
+| Experiment | řetězec | Název experimentu, do kterého daný běh patří. |
+| RunId | řetězec | ID běhu, které bylo dokončeno. |
+| RunType | řetězec | Typ spuštění dokončeného běhu. |
 | RunTags | odkazy objektů | Značky dokončeného spuštění. |
 | RunProperties | odkazy objektů | Vlastnosti dokončeného běhu |
 
@@ -237,11 +236,11 @@ Datový objekt má pro každý typ události následující vlastnosti:
 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| DataDriftId | odkazy řetězců | ID monitoru pro posunování dat, který spustil událost |
-| Datatenatových | odkazy řetězců | Název monitoru pro posun dat, který spustil událost. |
-| RunId | odkazy řetězců | ID spuštění, které zjistilo posun dat |
-| BaseDatasetId | odkazy řetězců | ID základní datové sady použité k detekci posunu |
-| TargetDatasetId | odkazy řetězců | ID cílové sady dat použité ke zjištění posunu |
+| DataDriftId | řetězec | ID monitoru pro posunování dat, který spustil událost |
+| Datatenatových | řetězec | Název monitoru pro posun dat, který spustil událost. |
+| RunId | řetězec | ID spuštění, které zjistilo posun dat |
+| BaseDatasetId | řetězec | ID základní datové sady použité k detekci posunu |
+| TargetDatasetId | řetězec | ID cílové sady dat použité ke zjištění posunu |
 | DriftCoefficient | double | Koeficient – výsledek, který spustil událost |
 | StartTime | datetime | Čas zahájení časové řady cílové sady dat, která vedla k detekci posunu.  |
 | EndTime | datetime | Koncový čas časové řady cílové sady, která vedla k detekci posunu. |
@@ -250,13 +249,13 @@ Datový objekt má pro každý typ události následující vlastnosti:
 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | odkazy řetězců | ID experimentu, do kterého daný běh patří. |
-| Experiment | odkazy řetězců | Název experimentu, do kterého daný běh patří. |
-| RunId | odkazy řetězců | ID běhu, které bylo dokončeno. |
-| RunType | odkazy řetězců | Typ spuštění dokončeného běhu. |
+| ExperimentId | řetězec | ID experimentu, do kterého daný běh patří. |
+| Experiment | řetězec | Název experimentu, do kterého daný běh patří. |
+| RunId | řetězec | ID běhu, které bylo dokončeno. |
+| RunType | řetězec | Typ spuštění dokončeného běhu. |
 | RunTags | odkazy objektů | Značky dokončeného spuštění. |
 | RunProperties | odkazy objektů | Vlastnosti dokončeného běhu |
-| RunStatus | odkazy řetězců | Stav spuštění. |
+| RunStatus | řetězec | Stav spuštění. |
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 | Nadpis | Popis |

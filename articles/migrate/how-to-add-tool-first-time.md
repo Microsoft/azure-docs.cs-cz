@@ -4,10 +4,9 @@ description: Popisuje, jak vytvořit projekt Azure Migrate a přidat nástroj pr
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82901199"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>První přidání nástroje pro vyhodnocení/migraci
@@ -58,8 +57,8 @@ Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte n
     > [!NOTE]
     > Při vytváření projektu je nutné přidat alespoň jeden nástroj pro vyhodnocení nebo migraci.
 
-5. V **nástroji vybrat nástroj pro posouzení**přidejte Nástroj pro posouzení. Pokud nástroj pro posouzení nepotřebujete, vyberte **Přeskočit přidat nástroj pro posouzení na** > **Další**. 
-2. V **nástroji vybrat nástroj pro migraci**přidejte Nástroj pro migraci podle potřeby. Pokud nepotřebujete Nástroj pro migraci hned teď, vyberte **Přeskočit přidat nástroj pro migraci pro teď** > **Další**.
+5. V **nástroji vybrat nástroj pro posouzení**přidejte Nástroj pro posouzení. Pokud nástroj pro posouzení nepotřebujete, vyberte **Přeskočit přidat nástroj pro posouzení na**  >  **Další**. 
+2. V **nástroji vybrat nástroj pro migraci**přidejte Nástroj pro migraci podle potřeby. Pokud nepotřebujete Nástroj pro migraci hned teď, vyberte **Přeskočit přidat nástroj pro migraci pro teď**  >  **Další**.
 3. V části **Revize + přidat nástroje**zkontrolujte nastavení a klikněte na **Přidat nástroje**.
 
 Po vytvoření projektu můžete vybrat další nástroje pro posouzení a migraci serverů a úloh, databází a webových aplikací.
