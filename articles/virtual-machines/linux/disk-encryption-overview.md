@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601271"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
@@ -56,7 +56,7 @@ Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux 
 
 Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Azure Disk Encryption; z těch, které jsou schváleny, podporuje pouze následující distribuce a verze Azure Disk Encryption:
 
-| Publisher | Nabídka | Skladová jednotka (SKU) | NÁZVEM | Typ svazku podporovaný pro šifrování |
+| Publisher | Nabídka | SKU | NÁZVEM | Typ svazku podporovaný pro šifrování |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Kanonický: UbuntuServer: 18.04-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 18.04 | 18,04-DENNĚ – LTS | Kanonický: UbuntuServer: 18.04-DAILY-LTS: nejnovější | Operační systém a datový disk |
@@ -64,7 +64,6 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kanonický: UbuntuServer: 14.04.5-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5 – DENNĚ – LTS | Kanonický: UbuntuServer: 14.04.5-DAILY-LTS: nejnovější | Operační systém a datový disk |
 | RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: nejnovější | Operační systém a datový disk (viz poznámka níže) |
-| RedHat | RHEL 7,7 | 7 – RAW | RedHat: RHEL: 7-RAW: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,7 | 7 – LVM | RedHat: RHEL: 7-LVM: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: nejnovější | Operační systém a datový disk (viz poznámka níže) |
@@ -94,7 +93,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 
 ## <a name="additional-vm-requirements"></a>Další požadavky na virtuální počítače
 
-Azure Disk Encryption vyžaduje, aby byly v systému přítomné moduly dm-crypt a vfat. Odebráním nebo zakázáním VFAT z výchozí image znemožníte systému číst klíč a získat klíč potřebný k odemknutí disků při dalším restartování. Kroky pro posílení zabezpečení systému, které odebírají modul VFAT ze systému, nejsou kompatibilní s Azure Disk Encryption. 
+Azure Disk Encryption vyžaduje, aby byly v systému přítomné moduly dm-crypt a vfat. Odebráním nebo zakázáním VFAT z výchozí image znemožníte systému číst klíč a získat klíč potřebný k odemknutí disků při dalším restartování. Kroky pro posílení zabezpečení systému, které odeberou modul VFAT ze systému nebo vynutili rozšiřování mountpoints/složek operačního systému v datových jednotkách nejsou kompatibilní s Azure Disk Encryption. 
 
 Než povolíte šifrování, datové disky, které mají být zašifrované, musí být správně uvedené v adresáři/etc/fstab.. Při vytváření položek použít možnost "neúspěch" a zvolit název trvalého blokového zařízení (jako názvy zařízení ve formátu "/dev/sdX" nemusí být přidružen ke stejnému disku během restartování, zejména po šifrování; Další informace o tomto chování najdete v tématu: [řešení potíží se změnami názvů zařízení s platformou Linux VM](troubleshoot-device-names-problems.md)).
 

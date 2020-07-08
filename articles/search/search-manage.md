@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565911"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 
@@ -28,7 +28,6 @@ ms.locfileid: "85368273"
 
 Azure Kognitivní hledání je plně spravovaná cloudová vyhledávací služba, která se používá k vytváření bohatě vyhledávaného prostředí pro vlastní aplikace. Tento článek se zabývá úlohami správy služby, které můžete provádět v [Azure Portal](https://portal.azure.com) pro vyhledávací službu, kterou jste už zřídili. Správa služeb je odlehčená podle návrhu a je omezená na následující úlohy:
 
-* Získejte informace o službě a obsahu na domovské stránce **Přehled** .
 * Pomocí odkazu **použití** střední stránky se podívejte na úložiště.
 * Ověřte svazky dotazů a latenci pomocí odkazu **sledování** střední stránky a zda byly požadavky omezeny.
 * Spravujte přístup pomocí stránky **klíče** vlevo.

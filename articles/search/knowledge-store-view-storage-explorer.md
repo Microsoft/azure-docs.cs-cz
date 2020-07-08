@@ -1,24 +1,21 @@
 ---
-title: Zobrazit znalostní bázi Knowledge Store (Preview) pomocí Průzkumník služby Storage
+title: Zobrazení znalostní báze s Průzkumník služby Storage
 titleSuffix: Azure Cognitive Search
-description: Umožňuje zobrazit a analyzovat Azure Kognitivní hledání Knowledge Store pomocí Průzkumník služby Storage Azure Portal. znalostní databáze je aktuálně ve verzi Public Preview.
+description: Umožňuje zobrazit a analyzovat Azure Kognitivní hledání Knowledge Store pomocí Průzkumník služby Storage Azure Portal.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: ba0b02067c032f9038051c169866588ded44af73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566025"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Zobrazení znalostní báze s Průzkumník služby Storage
-
-> [!IMPORTANT] 
-> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 V tomto článku se naučíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Průzkumník služby Storage v Azure Portal.
 
@@ -61,5 +58,5 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 Připojte si toto úložiště znalostní báze k Power BI pro hlubší analýzu nebo přejděte vpřed s kódem pomocí REST API a post, aby se vytvořilo jiné úložiště znalostí.
 
 > [!div class="nextstepaction"]
-> [Připojení pomocí Power BI](knowledge-store-connect-power-bi.md)
-> [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md)
+> [Připojení pomocí Power BI](knowledge-store-connect-power-bi.md) 
+>  [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md)

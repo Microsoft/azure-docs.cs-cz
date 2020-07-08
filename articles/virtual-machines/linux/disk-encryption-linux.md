@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1ec7328363cf835c733a4d0c266732c6748c829
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601377"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
 
@@ -38,7 +38,7 @@ Ve všech případech byste si měli [udělat snímek](snapshot-copy-managed-dis
 
 ## <a name="install-tools-and-connect-to-azure"></a>Nainstalovat nástroje a připojit se k Azure
 
-Azure Disk Encryption můžete povolit a spravovat prostřednictvím rozhraní příkazového [řádku Azure](/cli/azure) a [Azure PowerShell](/powershell/azure/new-azureps-module-az). K tomu je potřeba nainstalovat nástroje místně a připojit se k předplatnému Azure.
+Azure Disk Encryption můžete povolit a spravovat prostřednictvím rozhraní příkazového [řádku Azure](/cli/azure) a [Azure PowerShell](/powershell/azure/new-azureps-module-az). Pokud to chcete udělat, musíte nástroje nainstalovat místně a připojit se k předplatnému Azure.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -388,23 +388,7 @@ Na rozdíl od syntaxe PowerShellu rozhraní příkazového řádku nevyžaduje, 
 
 
 ## <a name="disable-encryption-for-linux-vms"></a>Zakázat šifrování pro virtuální počítače se systémem Linux
-Šifrování můžete zakázat pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo pomocí Správce prostředků šablony. 
-
->[!IMPORTANT]
->Zakázání šifrování pomocí Azure Disk Encryption na virtuálních počítačích se systémem Linux je podporováno pouze pro datové svazky. Pokud je svazek s operačním systémem zašifrovaný, není podpora na svazcích dat nebo operačních systémů podporována.  
-
-- **Zakázat šifrování disku pomocí Azure PowerShell:** Pokud chcete šifrování zakázat, použijte rutinu [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) . 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType DATA]
-     ```
-
-- **Zakázat šifrování pomocí Azure CLI:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az-vm-encryption-disable) . 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
-     ```
-- **Zakázat šifrování pomocí šablony Správce prostředků:** Zakáže šifrování pomocí [zákazu šifrování na spuštěné šabloně virtuálního počítače se systémem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) .
-     1. Klikněte na **Nasadit do Azure**.
-     2. Vyberte předplatné, skupinu prostředků, umístění, virtuální počítač, právní podmínku a smlouvu.
+[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -412,7 +396,7 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 
 - Šifrování virtuálních počítačů nebo virtuálních počítačů na úrovni Basic vytvořených prostřednictvím metody vytváření virtuálních počítačů
 - Zakázání šifrování na jednotce operačního systému nebo datové jednotce virtuálního počítače se systémem Linux, pokud je jednotka operačního systému zašifrovaná.
-- Šifrování jednotky operačního systému pro systém Linux Virtual Machine Scale Sets.
+- Šifrování jednotky operačního systému pro virtuální počítače se systémem Linux Virtual Machine Scale Sets.
 - Šifrování vlastních imagí na virtuálních počítačích se systémem Linux.
 - Integrace s místním systémem správy klíčů.
 - Soubory Azure (sdílený systém souborů).
@@ -420,12 +404,15 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Dynamické svazky.
 - Dočasné disky s operačním systémem.
 - Šifrování sdílených/distribuovaných systémů souborů, jako je (ale ne omezené): DFS, GFS, DRDB a CephFS.
-- Přesunutí šifrovaného virtuálního počítače do jiného předplatného.
+- Přesunutí šifrovaného virtuálního počítače do jiného předplatného nebo oblasti.
+- Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
 - Výpis stavu systému jádra (kdump).
 - Oracle ACFS (systém souborů clusteru ASM).
 - Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Virtuální počítače řady Lsv2 (viz: [Lsv2-Series](../lsv2-series.md)).
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
+- Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.
+- Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 
 ## <a name="next-steps"></a>Další kroky
 

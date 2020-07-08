@@ -1,20 +1,20 @@
 ---
 title: Vysvětlení nevláken zařízení v Azure IoT Hub | Microsoft Docs
 description: Příručka pro vývojáře – pomocí vláken zařízení můžete synchronizovat stav a konfigurační data mezi IoT Hub a vašimi zařízeními.
-author: wesmc7777
+author: ash2017
 manager: philmea
-ms.author: wesmc
+ms.author: asrastog
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.custom: mqtt
-ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f61748a0a0d3d999670b6129e0e58758715ba3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731464"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601849"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Pochopení a používání vláken zařízení v IoT Hub
 
@@ -59,7 +59,7 @@ Nevlákenná zařízení je dokument JSON, který obsahuje:
 
 * **Hlášené vlastnosti**. Používá se společně s požadovanými vlastnostmi k synchronizaci konfigurace nebo podmínek zařízení. Aplikace zařízení může nastavit hlášené vlastnosti a back-end řešení může číst a dotazovat je.
 
-* **Vlastnosti identity zařízení**. Kořen dokumentu s dvojitou čárkou v zařízení JSON obsahuje vlastnosti jen pro čtení z odpovídající identity zařízení uložené v [registru identit](iot-hub-devguide-identity-registry.md). Vlastnosti `connectionStateUpdatedTime` a `generationId` nebudou zahrnuty.
+* **Vlastnosti identity zařízení**. Kořen dokumentu s dvojitou čárkou v zařízení JSON obsahuje vlastnosti jen pro čtení z odpovídající identity zařízení uložené v [registru identit](iot-hub-devguide-identity-registry.md). Vlastnosti `connectionStateUpdatedTime` a nebudou `generationId` zahrnuty.
 
 ![Snímek obrazovky se zdvojenými vlastnostmi zařízení](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -109,7 +109,7 @@ Následující příklad ukazuje dokument JSON s dvojím zápisem zařízení:
 }
 ```
 
-V kořenovém objektu jsou vlastnosti identity zařízení a objekty kontejneru pro `tags` a a zároveň `reported` i `desired` vlastnosti. `properties` `$metadata`Kontejner obsahuje některé prvky jen pro čtení (, `$etag`a `$version`) popsané v oddílech [Dvojitá metadata zařízení](iot-hub-devguide-device-twins.md#device-twin-metadata) a [Optimistická souběžnost](iot-hub-devguide-device-twins.md#optimistic-concurrency) .
+V kořenovém objektu jsou vlastnosti identity zařízení a objekty kontejneru pro a a `tags` zároveň i `reported` `desired` Vlastnosti. `properties`Kontejner obsahuje některé prvky jen pro čtení ( `$metadata` , `$etag` a `$version` ) popsané v oddílech [Dvojitá metadata zařízení](iot-hub-devguide-device-twins.md#device-twin-metadata) a [Optimistická souběžnost](iot-hub-devguide-device-twins.md#optimistic-concurrency) .
 
 ### <a name="reported-property-example"></a>Příklad hlášené vlastnosti
 
@@ -133,7 +133,7 @@ V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a ap
    },
    ```
 
-2. Aplikace zařízení se okamžitě upozorní na změnu v případě připojení nebo při prvním opětovném připojení. Aplikace zařízení pak nahlásí aktualizovanou konfiguraci (nebo chybovou podmínku pomocí `status` vlastnosti). Tady je část hlášených vlastností:
+2. Aplikace zařízení se okamžitě upozorní na změnu v případě připojení nebo při prvním opětovném připojení. Aplikace zařízení pak nahlásí aktualizovanou konfiguraci (nebo chybovou podmínku pomocí `status` Vlastnosti). Tady je část hlášených vlastností:
 
    ```json
    "reported": {
@@ -159,7 +159,7 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
 
 * **Načíst zdvojení zařízení podle ID** Tato operace vrátí dokument s dvojitým označením zařízení, včetně značek a požadovaných a hlášených systémových vlastností.
 
-* **Částečně aktualizovat zdvojené zařízení**. Tato operace umožňuje back-endu řešení částečně aktualizovat značky nebo požadované vlastnosti v zařízení s dvojitou funkčností. Částečná aktualizace se vyjádří jako dokument JSON, který přidá nebo aktualizuje libovolnou vlastnost. Vlastnosti nastavené `null` na jsou odebrané. Následující příklad vytvoří novou požadovanou vlastnost s `{"newProperty": "newValue"}`hodnotou, přepíše existující hodnotu `existingProperty` s `"otherNewValue"`a odebere. `otherOldProperty` U stávajících požadovaných vlastností nebo značek nejsou provedeny žádné další změny:
+* **Částečně aktualizovat zdvojené zařízení**. Tato operace umožňuje back-endu řešení částečně aktualizovat značky nebo požadované vlastnosti v zařízení s dvojitou funkčností. Částečná aktualizace se vyjádří jako dokument JSON, který přidá nebo aktualizuje libovolnou vlastnost. Vlastnosti nastavené na `null` jsou odebrané. Následující příklad vytvoří novou požadovanou vlastnost s hodnotou `{"newProperty": "newValue"}` , přepíše existující hodnotu `existingProperty` s `"otherNewValue"` a odebere `otherOldProperty` . U stávajících požadovaných vlastností nebo značek nejsou provedeny žádné další změny:
 
    ```json
    {
@@ -175,15 +175,15 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
    }
    ```
 
-* **Nahraďte požadované vlastnosti**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující požadované vlastnosti a nahradit nový dokument JSON pro `properties/desired`.
+* **Nahraďte požadované vlastnosti**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující požadované vlastnosti a nahradit nový dokument JSON pro `properties/desired` .
 
-* **Nahraďte značky**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující značky a nahradit nový dokument JSON pro `tags`.
+* **Nahraďte značky**. Tato operace umožňuje back-endu řešení úplně přepsat všechny existující značky a nahradit nový dokument JSON pro `tags` .
 
 * **Dostávat dvojitá oznámení**. Tato operace umožňuje, aby byl back-end řešení upozorněn při změně vlákna. K tomu je potřeba, aby vaše řešení IoT vytvořilo trasu a nastavilo zdroj dat na hodnotu *twinChangeEvents*. Ve výchozím nastavení už žádné takové trasy neexistují, takže se neodesílají žádná dvojitá oznámení. Pokud je frekvence změny příliš vysoká nebo z jiných důvodů, jako jsou například vnitřní chyby, může IoT Hub odeslat pouze jedno oznámení, které obsahuje všechny změny. Proto pokud vaše aplikace potřebuje spolehlivé auditování a protokolování všech zprostředkujících stavů, měli byste použít zprávy typu zařízení-Cloud. Zpráva s dvojitým oznámením obsahuje vlastnosti a text.
 
   - Vlastnosti
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     $content – typ | application/json |
     $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -197,9 +197,9 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
 
     Vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
-  - Tělo
+  - Text
         
-    Tato část obsahuje všechny zdvojené změny ve formátu JSON. Používá stejný formát jako oprava, s rozdílem, který může obsahovat všechny nedokončené oddíly: Tagy, Properties. hlášené, Properties. revisioned a obsahuje prvky "$metadata". Například:
+    Tato část obsahuje všechny zdvojené změny ve formátu JSON. Používá stejný formát jako oprava, s rozdílem, který může obsahovat všechny nedokončené oddíly: Tagy, Properties. hlášené, Properties. revisioned a obsahuje prvky "$metadata". Třeba
 
     ```json
     {
@@ -246,7 +246,7 @@ Sady [SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md) usnadňují použ
 
 Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s následujícími omezeními:
 
-* **Keys**: všechny klíče v objektech JSON jsou v kódování UTF-8, Velká a malá písmena a dlouhé až 1 KB. Povolené znaky vyloučí řídicí znaky Unicode (segmenty C0 a C1) `.`, `$`a, a SP.
+* **Keys**: všechny klíče v objektech JSON jsou v kódování UTF-8, Velká a malá písmena a dlouhé až 1 KB. Povolené znaky vyloučí řídicí znaky UNICODE (segmenty C0 a C1), a `.` , a `$` SP.
 
 * **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena.
 
@@ -288,7 +288,7 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
 
 ## <a name="device-twin-size"></a>Velikost vlákna zařízení
 
-IoT Hub vynutilo omezení velikosti 8 KB na hodnotě `tags`a omezení velikosti 32 KB na hodnotu `properties/desired` a. `properties/reported` Tyto součty jsou výhradně prvky jen pro čtení `$etag`, `$version`například, a `$metadata/$lastUpdated`.
+IoT Hub vynutilo omezení velikosti 8 KB na hodnotě a `tags` omezení velikosti 32 KB na hodnotu `properties/desired` a `properties/reported` . Tyto součty jsou výhradně prvky jen pro čtení, například, `$etag` `$version` a `$metadata/$lastUpdated` .
 
 Velikost vlákna je vypočítána následujícím způsobem:
 
@@ -302,11 +302,11 @@ Velikost vlákna je vypočítána následujícím způsobem:
 
 * Hodnoty komplexních vlastností (vnořené objekty) se vypočítávají na základě agregované velikosti klíčů vlastností a hodnot vlastností, které obsahují.
 
-IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost `tags`, `properties/desired`nebo `properties/reported` dokumentů nad rámec limitu.
+IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost `tags` , `properties/desired` nebo `properties/reported` dokumentů nad rámec limitu.
 
 ## <a name="device-twin-metadata"></a>Zařízení s dvojitou metadatou
 
-IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátu `YYYY-MM-DDTHH:MM:SS.mmmZ`ISO8601.
+IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátu ISO8601 `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 
 Příklad:
 

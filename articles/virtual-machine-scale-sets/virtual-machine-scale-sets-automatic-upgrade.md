@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 04/14/2020
+ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: c06ad5ab2688bd62fdf898950a8f64cd655a9fcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601339"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému služby Azure Virtual Machine Scale set
 
@@ -46,11 +46,11 @@ Proces upgradu funguje takto:
 Nástroj Orchestrator pro upgrade operačního systému nástroje pro škálování před upgradem každé dávky kontroluje celkový stav sady škálování. Při upgradu dávky mohou existovat i jiné souběžné plánované nebo neplánované aktivity údržby, které by mohly ovlivnit stav instancí sady škálování. V takových případech, pokud se více než 20% instancí sady škálování stane špatným, se upgrade sady škálování zastaví na konci aktuální dávky.
 
 ## <a name="supported-os-images"></a>Podporované image operačních systémů
-V současné době jsou podporovány pouze některé image platformy operačního systému. Podpora vlastních imagí je dostupná [ve verzi Preview](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview) pro vlastní image prostřednictvím [Galerie sdílených imagí](shared-image-galleries.md).
+V současné době jsou podporovány pouze některé image platformy operačního systému. Vlastní image [se podporují](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) , pokud sada škálování používá vlastní image pomocí [Galerie sdílených imagí](shared-image-galleries.md).
 
 V současné době se podporují následující SKU platforem (a pravidelně se přidávají další):
 
-| Vydavatel               | Nabídka OS      |  Skladová jednotka (SKU)               |
+| Publisher               | Nabídka OS      |  Skladová jednotka (SKU)               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04 – LTS          |
@@ -77,90 +77,25 @@ V současné době se podporují následující SKU platforem (a pravidelně se 
 ### <a name="service-fabric-requirements"></a>Service Fabric požadavky
 
 Pokud používáte Service Fabric, ujistěte se, že jsou splněné následující podmínky:
--   [Úroveň odolnosti](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Service Fabric je stříbrná nebo zlatá a není bronzová.
+-   [Úroveň odolnosti](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Service Fabric je stříbrná nebo zlatá a není bronzová.
 -   Rozšíření Service Fabric v definici modelu sady škálování musí mít TypeHandlerVersion 1,1 nebo vyšší.
 -   Úroveň odolnosti by měla být stejná jako u Service Fabric clusteru a rozšíření Service Fabric v definici modelu sady škálování.
+- Další sonda stavu nebo použití rozšíření pro stav aplikace se nevyžaduje.
 
 Zajistěte, aby se nastavení odolnosti neshodovalo s Service Fabric clusterem a rozšířením Service Fabric, protože v důsledku neshody dojde k chybám upgradu. Úrovně trvanlivosti se dají upravovat podle pokynů popsaných na [této stránce](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels).
 
 
-## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>Automatický upgrade bitové kopie operačního systému pro vlastní image (Preview)
+## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatický upgrade bitové kopie operačního systému pro vlastní image
 
-> [!IMPORTANT]
-> Automatický upgrade operačního systému pro vlastní image je v tuto chvíli Public Preview. K používání funkcí verze Public Preview, které jsou popsané níže, se vyžaduje postup výslovného souhlasu.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Automatický upgrade image operačního systému je k dispozici ve verzi Preview pro vlastní image nasazené pomocí [Galerie sdílených imagí](shared-image-galleries.md). Další vlastní image nejsou podporované pro automatické upgrady imagí operačního systému.
-
-Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkci *AutomaticOSUpgradeWithGalleryImage* pro každé předplatné, jak je popsáno níže.
-
-### <a name="rest-api"></a>REST API
-Následující příklad popisuje, jak povolit verzi Preview pro vaše předplatné:
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
-```
-
-Registrace funkce může trvat až 15 minut. Postup kontroly stavu registrace:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
-```
-
-Po registraci této funkce pro vaše předplatné dokončete proces výslovných přihlášení tím, že tuto změnu rozšíříte do zprostředkovatele výpočetních prostředků.
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-K povolení verze Preview pro vaše předplatné použijte rutinu [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) .
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Registrace funkce může trvat až 15 minut. Postup kontroly stavu registrace:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Po registraci této funkce pro vaše předplatné dokončete proces výslovných přihlášení tím, že tuto změnu rozšíříte do zprostředkovatele výpočetních prostředků.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az-feature-register) .
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Registrace funkce může trvat až 15 minut. Postup kontroly stavu registrace:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Po registraci této funkce pro vaše předplatné dokončete proces výslovných přihlášení tím, že tuto změnu rozšíříte do zprostředkovatele výpočetních prostředků.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+Automatický upgrade image operačního systému se podporuje pro vlastní image nasazené pomocí [Galerie sdílených imagí](shared-image-galleries.md). Další vlastní image nejsou podporované pro automatické upgrady imagí operačního systému.
 
 ### <a name="additional-requirements-for-custom-images"></a>Další požadavky na vlastní image
-- Výše popsaný proces výslovných přihlášení musí být dokončen pouze jednou pro každé předplatné. Po dokončení výslovných přihlášení se můžou automatické upgrady operačního systému povolit pro libovolnou sadu škálování v tomto předplatném.
-- Galerie sdílených imagí může být v jakémkoli předplatném a nemusí být výslovným souhlasem. Pouze odběr sady škálování vyžaduje, aby se funkce přihlášena.
-- Proces konfigurace automatického upgradu imagí operačního systému je stejný pro všechny sady škálování, jak je popsáno v [části Konfigurace](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) této stránky.
+- Proces instalace a konfigurace automatického upgradu image operačního systému je stejný pro všechny sady škálování, jak je popsáno v [části Konfigurace](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) této stránky.
 - Instance sad škálování nakonfigurované pro automatické upgrady imagí operačního systému se budou upgradovat na nejnovější verzi Image Galerie sdílených imagí, když se publikuje nová verze image a [replikuje](shared-image-galleries.md#replication) se do oblasti této sady škálování. Pokud se nová bitová kopie nereplikuje do oblasti, ve které je rozšíření nasazeno, instance sady škálování nebudou upgradovány na nejnovější verzi. Replikace místních imagí vám umožní řídit zavedení nového obrázku pro sady škálování.
 - Nová verze Image by se neměla z poslední verze této image galerie vyloučit. Verze imagí vyloučené z poslední verze image galerie se nepočítají do sady škálování prostřednictvím automatického upgradu image operačního systému.
 
 > [!NOTE]
->Může trvat až 3 hodiny, než sada škálování aktivuje první zavedení upgradu obrazu po konfiguraci sady škálování pro automatické upgrady operačního systému. Jedná se o jednorázovou prodlevu na sadu škálování. Další uvádění obrázků se aktivují v sadě škálování do 30 minut.
+>Může trvat až 3 hodiny, než se sada škálování aktivuje při prvním nakonfigurovaném nastavení škálování pro automatické upgrady operačního systému. Jedná se o jednorázovou prodlevu na sadu škálování. Další uvádění obrázků se aktivují v sadě škálování do 30-60 minut.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Konfigurace automatického upgradu image operačního systému
@@ -193,11 +128,14 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-K nakonfigurování automatických upgradů bitových kopií operačního systému pro sadu škálování použijte [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
+Slouží `[az vmss update](/cli/azure/vmss#az-vmss-update)` ke konfiguraci automatických upgradů bitových kopií operačního systému pro sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
+
+> [!NOTE]
+>Po nakonfigurování automatických upgradů bitových kopií operačního systému pro sadu škálování musíte virtuální počítače pro škálování nastavit také na nejnovější model sady škálování, pokud vaše sada škálování používá [zásady upgradu](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)ručně.
 
 ## <a name="using-application-health-probes"></a>Používání sond stavu aplikace
 

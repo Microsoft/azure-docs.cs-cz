@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: b39c935af1215445f4cd0e68df04b86254f1fe31
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.date: 06/30/2020
+ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601679"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Interpretace modelu v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,8 +43,6 @@ Třídy interpretace jsou zpřístupněny prostřednictvím více balíčků sad
 * `azureml.interpret`, hlavní balíček obsahující funkce podporované Microsoftem.
 
 * `azureml.contrib.interpret`, ve verzi Preview a experimentálních funkcích, které můžete vyzkoušet.
-
-* `azureml.train.automl.automlexplainer`balíček pro interpretaci automatizovaných modelů strojového učení.
 
 Použijte `pip install azureml-interpret` a `pip install azureml-interpret-contrib` pro obecné použití a `pip install azureml-contrib-interpret` pro AutoML použijte k získání balíčků pro vyhodnocení.
 

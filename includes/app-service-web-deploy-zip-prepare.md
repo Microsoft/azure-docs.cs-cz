@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 6b5aa4f409b8c2f5a9125ab01e8587f4ac9c4ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570200"
 ---
 ## <a name="create-a-project-zip-file"></a>Vytvořit souboru ZIP projektu
 
@@ -23,11 +23,11 @@ ms.locfileid: "75945155"
 
 V místním okně terminálu přejděte do kořenového adresáře projektu aplikace. 
 
-Tento adresář by měl obsahovat vstupní soubor vaší webové aplikace, jako je například _index. html_, _index. php_a _App. js_. Může také obsahovat soubory správy balíčků jako _Project. JSON_, _skladatele. JSON_, _Package. JSON_, _Bower. JSON_a _požadavky. txt_.
+Tento adresář by měl obsahovat vstupní soubor vaší webové aplikace, například _index.html_, _index. php_a _app.js_. Může také obsahovat soubory správy balíčků, například _project.json_, _composer.json_, _package.json_, _bower.json_a _requirements.txt_.
 
-Pokud nechcete, aby App Service spustila automatizaci nasazení za vás, spusťte všechny úlohy sestavení (například `npm`, `bower` `gulp` `composer`,, a `pip`) a ujistěte se, že máte všechny soubory, které potřebujete ke spuštění aplikace. Tento krok je nutný, pokud chcete [balíček spustit přímo](../articles/app-service/deploy-run-package.md).
+Pokud nechcete, aby App Service spustila automatizaci nasazení za vás, spusťte všechny úlohy sestavení (například `npm` ,,, `bower` `gulp` `composer` a `pip` ) a ujistěte se, že máte všechny soubory, které potřebujete ke spuštění aplikace. Tento krok je nutný, pokud chcete [balíček spustit přímo](../articles/app-service/deploy-run-package.md).
 
-Vytvořte archiv ZIP se všemi položkami ve vašem projektu. Následující příkaz využívá základní nástroj vašeho terminálu:
+Vytvořte archiv ZIP se všemi položkami ve vašem projektu. V případě `dotnet` projektů je tato složka výstupní složkou `dotnet publish` příkazu. Následující příkaz využívá základní nástroj vašeho terminálu:
 
 ```
 # Bash

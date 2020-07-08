@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570138"
 ---
 V tomto kroku si vyhodnocujete, kolik sdílených složek Azure potřebujete. Jedna instance nebo cluster Windows serveru může synchronizovat až 30 sdílených složek Azure.
 
@@ -58,7 +58,7 @@ Dalším důležitým aspektem Azure File Sync a vyváženým výkonem a prostř
 > [!IMPORTANT]
 > Nejdůležitějším vektorem škálování pro Azure File Sync je počet položek (soubory a složky), které je třeba synchronizovat.
 
-Azure File Sync podporuje synchronizaci až 100 000 položek s jednou sdílenou složkou Azure. Toto omezení může být překročeno a zobrazuje pouze informace o tom, co tým Azure File Sync pravidelně testuje.
+Azure File Sync podporuje synchronizaci až 100 000 000 položek s jednou sdílenou složkou Azure. Toto omezení může být překročeno a zobrazuje pouze informace o tom, co tým Azure File Sync pravidelně testuje.
 
 Osvědčeným postupem je udržovat počet položek na rozsah synchronizace nízké. To je důležitý faktor, který je potřeba vzít v úvahu při mapování složek na sdílené složky Azure.
 

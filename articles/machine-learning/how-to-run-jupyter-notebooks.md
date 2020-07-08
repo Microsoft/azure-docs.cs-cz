@@ -9,15 +9,15 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 04/21/2020
-ms.openlocfilehash: b8869eee4e44001f5d4aeafbbdb32f93f0a7e0c8
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/27/2020
+ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601445"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Jak spustit poznámkové bloky Jupyter v pracovním prostoru (Preview)
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Přečtěte si, jak spustit poznámkové bloky Jupyter přímo ve vašem pracovním prostoru v Azure Machine Learning Studiu. I když můžete spustit [Jupyter](https://jupyter.org/) nebo [JupyterLab](https://jupyterlab.readthedocs.io), můžete také upravit a spustit poznámkové bloky, aniž byste museli opustit pracovní prostor.
@@ -51,10 +51,12 @@ Vytvoření nového poznámkového bloku:
 1. Vyberte adresář souborů.
 1. Vyberte **Vytvořit**.
 
-> [!TIP]
-> Můžete také vytvořit textové soubory.  Jako typ souboru vyberte **text** a přidejte rozšíření k názvu (například MyFile.py nebo MyFile. txt).  
+Můžete také vytvořit textové soubory.  Jako typ souboru vyberte **text** a rozšíření přidejte k názvu (například myfile.py nebo myfile.txt).  
 
 Pomocí nástrojů v horní části stránky poznámkových bloků můžete také nahrávat složky a soubory, včetně poznámkových bloků.  Poznámkové bloky a většina typů textových souborů se zobrazí v sekci Preview.  Pro většinu ostatních typů souborů není dostupná žádná verze Preview.
+
+> [!IMPORTANT]
+> Obsah v poznámkových blocích a skriptech může potenciálně číst data z vašich relací a přistupovat k datům bez vaší organizace v Azure.  Načte jenom soubory z důvěryhodných zdrojů. Další informace najdete v tématu [bezpečné](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)osvědčené postupy pro kód.
 
 ### <a name="clone-samples"></a>Klonovat ukázky
 
@@ -95,15 +97,37 @@ Zkopírujte a vložte adresu URL pro sdílení poznámkového bloku nebo souboru
 
 Pokud chcete upravit Poznámkový blok, otevřete libovolný Poznámkový blok umístěný v části **uživatelské soubory** v pracovním prostoru. Klikněte na buňku, kterou chcete upravit. 
 
+Poznámkový blok můžete upravovat bez připojení k výpočetní instanci.  Pokud chcete v poznámkovém bloku spustit buňky, vyberte nebo vytvořte výpočetní instanci.  Pokud vyberete zastavenou výpočetní instanci, automaticky se spustí při spuštění první buňky.
+
 Když je spuštěná výpočetní instance, můžete také použít dokončování kódu využívající [technologii IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)v jakémkoli poznámkovém bloku Pythonu.
 
 Na panelu nástrojů poznámkového bloku můžete také spustit Jupyter nebo JupyterLab.  Azure Machine Learning neposkytuje aktualizace a opravují chyby z Jupyter nebo JupyterLab, protože se jedná o open source produkty mimo hranici podpora Microsoftu.
+
+### <a name="use-intellisense"></a>Používání technologie IntelliSense
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) je podpora dokončování kódu, která zahrnuje několik funkcí: seznam členů, informace o parametrech, rychlé informace a dokončování slov. Tyto funkce vám pomůžou získat další informace o kódu, který používáte, sledovat parametry, které píšete, a přidávat volání vlastností a metod s pouze několika klávesami.  
+
+Při psaní kódu použijte kombinaci kláves CTRL + mezerník pro aktivaci technologie IntelliSense.
+
+### <a name="save-and-checkpoint-a-notebook"></a>Uložení a vytvoření kontrolního bodu poznámkového bloku
+
+Azure Machine Learning vytvoří soubor kontrolního bodu při vytváření souboru *ipynb*   .
+
+Na panelu nástrojů poznámkového bloku vyberte nabídku a pak **soubor &gt; uložte a kontrolní bod** , abyste ručně uložili Poznámkový blok a přidali do něj soubor kontrolního bodu, který je přidružený k poznámkovému bloku.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Snímek obrazovky s nástrojem pro uložení v panelu nástrojů Poznámkový blok":::
+
+Každý Poznámkový blok se automaticky uloží každých 30 sekund.Automatické ukládání aktualizuje pouze počáteční soubor *ipynb*   , nikoli soubor kontrolního bodu.
+ 
+Výběrem **kontrolního bodu** v nabídce Poznámkový blok vytvořte pojmenovaný kontrolní bod a obnovte Poznámkový blok na uložený kontrolní bod.
+
 
 ### <a name="useful-keyboard-shortcuts"></a>Užitečné klávesové zkratky
 
 |Klávesnice  |Akce  |
 |---------|---------|
 |Shift+Enter     |  Spuštění buňky       |
+|Ctrl + mezerník | Aktivace technologie IntelliSense |
 |CTRL + M (Windows)     |  Povolí nebo zakáže soutisk karty v poznámkovém bloku.       |
 |CTRL + SHIFT + M (Mac & Linux)     |    Povolí nebo zakáže soutisk karty v poznámkovém bloku.     |
 |TAB (při zapnutém depeši tabulátorem) | Přidat znak \t (odsazení)

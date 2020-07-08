@@ -2,35 +2,32 @@
 title: Definování projekce ve znalostní bázi Knowledge Store
 titleSuffix: Azure Cognitive Search
 description: Příklady běžných vzorů o tom, jak promítnout obohacené dokumenty do úložiště znalostí pro použití s Power BI nebo Azure ML.
-manager: eladz
+manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566011"
 ---
-# <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Projekce pro znalostní bázi Knowledge Store: jak natvarovat a exportovat obohacení
+# <a name="how-to-shape-and-export-enrichments"></a>Jak natvarovat a exportovat obohacení
 
-> [!IMPORTANT] 
-> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+Projekce představují fyzický výraz obohacených dokumentů ve znalostní bázi Knowledge Store. Efektivní používání obohacených dokumentů vyžaduje strukturu. V tomto článku prozkoumáte strukturu i vztahy, naučíte se, jak vytvořit vlastnosti projekce, a jak propojit data mezi vytvořenými typy projekce. 
 
-Projekce představují fyzický výraz obohacených dokumentů ve znalostní bázi Knowledge Store. Efektivní používání obohacených dokumentů vyžaduje strukturu. V tomto článku prozkoumáte strukturu i vztahy, naučíte se, jak vytvořit vlastnosti projekce, a jak propojit data napříč typy projekce, které vytvoříte. 
+Chcete-li vytvořit projekci, data jsou naformovaná pomocí [Shaper dovednosti](cognitive-search-skill-shaper.md) pro vytvoření vlastního objektu nebo použití syntaxe vloženého tvaru v rámci definice projekce. 
 
-Chcete-li vytvořit projekci, je nutné tvarovat data pomocí [Shaper dovednosti](cognitive-search-skill-shaper.md) pro vytvoření vlastního objektu nebo použití syntaxe vloženého tvaru v rámci definice projekce. 
-
-Datový tvar obsahuje všechna data, která máte v úmyslu k projektu, vytvořená jako hierarchie uzlů. V tomto článku se dozvíte několik postupů pro tvarování dat, aby je bylo možné promítnout do fyzických struktur, které přispívají k vytváření sestav, analýz nebo zpracování pro příjem dat. 
+Datový tvar obsahuje všechna data, která jsou určena pro projekt, vytvořená jako hierarchie uzlů. Tento článek ukazuje několik postupů pro tvarování dat, aby je bylo možné promítnout do fyzických struktur, které mají za to, že se vytvářejí sestavy, analýzy nebo zpracování pro příjem dat. 
 
 Příklady prezentované v tomto článku najdete v této [ukázce REST API](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/projections/Projections%20Docs.postman_collection.json), kterou si můžete stáhnout a spustit v klientovi HTTP.
 
-## <a name="introduction-to-the-examples"></a>Úvod k příkladům
+## <a name="introduction-to-projection-examples"></a>Příklady úvodu do projekce
 
-Pokud máte zkušenosti s [projekcemi](knowledge-store-projection-overview.md), můžete si všimnout, že existují tři typy:
+Existují tři typy [projekce](knowledge-store-projection-overview.md):
 
 + Tabulky
 + Objekty
@@ -38,7 +35,7 @@ Pokud máte zkušenosti s [projekcemi](knowledge-store-projection-overview.md), 
 
 Projekce tabulek jsou uloženy v úložišti tabulek Azure. Do úložiště objektů BLOB se napíší projekce objektů a souborů, kde se jako soubory JSON ukládají projekce objektů a můžou obsahovat obsah ze zdrojového dokumentu a také všechny jejich výstupy nebo obohacení dovedností. Kanál pro obohacení může také extrahovat binární soubory jako obrázky, tyto binární soubory jsou probíhají jako projekce souborů. Když je binární objekt promítnut jako projekce objektu, uloží se pouze metadata, která jsou k němu přidružená, jako objekt BLOB JSON. 
 
-Abychom pochopili průnik mezi vytvářením a projekcí dat, použijeme jako základ pro prozkoumávání různých konfigurací následující dovednosti. Tato dovednosti zpracovává nezpracovaný obsah obrázku a textu. Projekce budou definované z obsahu dokumentu a výstupů dovedností pro scénáře, které chceme podporovat.
+Abychom pochopili průnik mezi vytvářením a projekcí dat, použijeme jako základ pro prozkoumávání různých konfigurací následující dovednosti. Tato dovednosti zpracovává nezpracovaný obsah obrázku a textu. Projekce budou definované z obsahu dokumentu a výstupy dovedností, a to v případě požadovaných scénářů.
 
 > [!IMPORTANT] 
 > Při experimentování s projekcemi je užitečné [nastavit vlastnost mezipaměti indexeru](search-howto-incremental-index.md) , aby se zajistilo řízení nákladů. Pokud mezipaměť indexeru není nastavená, bude se po úpravách projekce znovu obohacen celý dokument. Když je mezipaměť nastavená a jenom aktualizované projekce, dovednosti spuštění pro dříve obohacené dokumenty nevede k žádným novým poplatkům za Cognitive Services.
@@ -206,21 +203,21 @@ Pomocí této dovednosti s hodnotou null `knowledgeStore` jako základu náš pr
 
 Sestavování do tabulek v Azure Storage je užitečné pro vytváření sestav a analýzu pomocí nástrojů jako Power BI. Power BI mohou číst z tabulek a zjišťovat relace na základě klíčů, které jsou generovány během projekce. Pokud se pokoušíte vytvořit řídicí panel, zjednoduší se tím tato úloha. 
 
-Řekněme, že se snažíme vytvořit řídicí panel, kde můžeme vizualizovat klíčové fráze extrahované z dokumentů jako Cloud Wordu. Aby bylo možné vytvořit správnou datovou strukturu, můžeme do dovednosti přidat dovednost Shaper a vytvořit vlastní tvar, který obsahuje podrobné údaje specifické pro dokument a klíčové fráze. Vlastní tvar bude volán `pbiShape` v `document` kořenovém uzlu.
+Pojďme vytvořit řídicí panel, který vizualizuje klíčové fráze extrahované z dokumentů jako Cloud Wordu. Chcete-li vytvořit správnou datovou strukturu, přidejte do dovednosti dovednost Shaper a vytvořte vlastní obrazec, který obsahuje podrobnosti a klíčové fráze specifické pro dokument. Vlastní tvar bude volán `pbiShape` v `document` kořenovém uzlu.
 
 > [!NOTE] 
 > Výčnělky tabulek jsou Azure Storage tabulky, které se řídí limity úložiště, které jsou uložené Azure Storage. Další informace najdete v tématu [omezení úložiště tabulek](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Je užitečné znát, že velikost entity nemůže být větší než 1 MB a jedna vlastnost nemůže být větší než 64 KB. Tato omezení vytvářejí v tabulkách dobré řešení pro ukládání velkého počtu malých entit.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Použití dovedností Shaper k vytvoření vlastního obrazce
 
-Vytvořte vlastní tvar, který můžete promítnout do tabulkového úložiště. Bez vlastního tvaru může projekce odkazovat pouze na jeden uzel (jedna projekce na výstup). Vytvoření vlastního obrazce vám umožní agregovat různé prvky do nového logického celku, který se může promítnout jako jedna tabulka, nebo rozdělit a rozdělit do kolekce tabulek. 
+Vytvořte vlastní tvar, který můžete promítnout do tabulkového úložiště. Bez vlastního tvaru může projekce odkazovat pouze na jeden uzel (jedna projekce na výstup). Vytvoření vlastního obrazce agreguje různé prvky do nového logického celku, který se může promítnout jako jedna tabulka nebo rozdělit a rozdělit do kolekce tabulek. 
 
-V tomto příkladu vlastní obrazec kombinuje metadata a identifikované entity a klíčové fráze. Objekt se nazývá `pbiShape` a je v `/document`něm nadřazený. 
+V tomto příkladu vlastní obrazec kombinuje metadata a identifikované entity a klíčové fráze. Objekt se nazývá `pbiShape` a je v něm nadřazený `/document` . 
 
 > [!IMPORTANT] 
 > Jedním z účelů tvarování je zajistit, aby všechny uzly pro obohacení byly vyjádřené ve správném formátu JSON, který je potřeba pro projektování do znalostní báze Store. To platí hlavně v případě, že strom rozšíření obsahuje uzly, které nejsou ve správném formátu JSON (například když je obohacení nadřízený na primitivní jako řetězec).
 >
-> Všimněte si posledních dvou uzlů `KeyPhrases` a. `Entities` Ty jsou zabaleny do platného objektu JSON s `sourceContext`. To je nutné, `keyphrases` protože `entities` a jsou obohaceny na primitivních elementech a je nutné je převést na platný formát JSON předtím, než bude možné je promítnout.
+> Všimněte si posledních dvou uzlů `KeyPhrases` a `Entities` . Ty jsou zabaleny do platného objektu JSON s `sourceContext` . To je nutné, protože `keyphrases` a `entities` jsou obohaceny na primitivních elementech a je nutné je převést na platný formát JSON předtím, než bude možné je promítnout.
 >
 
 
@@ -304,7 +301,7 @@ Přidejte výše uvedenou Shaper dovednost do dovednosti.
 }  
 ```
 
-Teď, když máme všechna data potřebná pro projekt k tabulkám, aktualizujte objekt knowledgeStore o definice tabulky. V tomto příkladu máme tři tabulky definované nastavením `tableName`vlastností `source` a. `generatedKeyName`
+Teď, když máme všechna data potřebná pro projekt k tabulkám, aktualizujte objekt knowledgeStore o definice tabulky. V tomto příkladu máme tři tabulky definované nastavením `tableName` `source` `generatedKeyName` vlastností a.
 
 ```json
 "knowledgeStore" : {
@@ -345,31 +342,31 @@ Práci můžete zpracovat pomocí následujících kroků:
 
 Nyní máte pracovní projekci se třemi tabulkami. Import těchto tabulek do Power BI by měl mít za následek Power BI automatické zjišťování vztahů.
 
-Před přechodem na další příklad umožňuje znovu navštívit aspekty projekce tabulky, abyste pochopili mechanismy vytváření řezů a související data.
+Než přejdete k dalšímu příkladu, pojďme přesměrovat aspekty projekce tabulky, abychom pochopili mechanismy vytváření řezů a související data.
 
 ### <a name="slicing"></a>Dělení 
 
 Vytváření řezů je technika, která rozděluje celý sloučený obrazec na části prvků. Výsledek se skládá z oddělených, ale souvisejících tabulek, s kterými můžete pracovat samostatně.
 
-V příkladu `pbiShape` je sloučený obrazec (nebo uzel obohacení). V definici projekce `pbiShape` je rozdělena do dalších tabulek, což umožňuje vytáhnout části tvaru ```keyPhrases``` a. ```Entities``` V Power BI to je užitečné, protože k jednotlivým dokumentům jsou přidruženy různé entity a klíčová fráze a získáte další přehledy, pokud můžete zobrazit entity a klíčová fráze jako data v kategoriích.
+V příkladu `pbiShape` je sloučený obrazec (nebo uzel obohacení). V definici projekce je rozdělena `pbiShape` do dalších tabulek, což umožňuje vytáhnout části tvaru ```keyPhrases``` a ```Entities``` . V Power BI to je užitečné, protože k jednotlivým dokumentům jsou přidruženy různé entity a klíčová fráze a získáte další přehledy, pokud můžete zobrazit entity a klíčová fráze jako data v kategoriích.
 
 Vytváření řezů implicitně vygeneruje vztah mezi nadřazenými a podřízenými tabulkami pomocí ```generatedKeyName``` v nadřazené tabulce pro vytvoření sloupce se stejným názvem v podřízené tabulce. 
 
 ### <a name="naming-relationships"></a>Pojmenovávání vztahů
 
-Vlastnosti ```generatedKeyName``` a ```referenceKeyName``` se používají k propojení dat napříč tabulkami nebo dokonce napříč typy projekce. Každý řádek v podřízené tabulce nebo projekci má vlastnost ukazující zpátky na nadřazenou položku. Název sloupce nebo vlastnosti v podřízeném objektu je ```referenceKeyName``` z nadřazené položky. Když ```referenceKeyName``` není zadaný, služba ho nastaví jako výchozí ```generatedKeyName``` z nadřazené. 
+```generatedKeyName```Vlastnosti a ```referenceKeyName``` se používají k propojení dat napříč tabulkami nebo dokonce napříč typy projekce. Každý řádek v podřízené tabulce nebo projekci má vlastnost ukazující zpátky na nadřazenou položku. Název sloupce nebo vlastnosti v podřízeném ```referenceKeyName``` objektu je z nadřazené položky. Když ```referenceKeyName``` není zadaný, služba ho nastaví jako výchozí ```generatedKeyName``` z nadřazené. 
 
-Power BI spoléhá na tyto generované klíče a zjistí vztahy v tabulkách. Pokud potřebujete sloupec v podřízené tabulce s názvem jinak, nastavte ```referenceKeyName``` vlastnost v nadřazené tabulce. Jedním z příkladů je nastavit ID ```generatedKeyName``` as v tabulce pbiDocument a ```referenceKeyName``` jako DocumentID. Výsledkem by byl sloupec v tabulkách pbiEntities a pbiKeyPhrases obsahující ID dokumentu s názvem DocumentID.
+Power BI spoléhá na tyto generované klíče a zjistí vztahy v tabulkách. Pokud potřebujete sloupec v podřízené tabulce s názvem jinak, nastavte ```referenceKeyName``` vlastnost v nadřazené tabulce. Jedním z příkladů je nastavit ```generatedKeyName``` ID as v tabulce pbiDocument a ```referenceKeyName``` jako DocumentID. Výsledkem by byl sloupec v tabulkách pbiEntities a pbiKeyPhrases obsahující ID dokumentu s názvem DocumentID.
 
 ## <a name="projecting-to-objects"></a>Projekce do objektů
 
-Výčnělky objektů nemají stejná omezení jako projekce tabulek a jsou vhodnější pro projekci rozsáhlých dokumentů. V tomto příkladu budeme promítnout celý dokument do projekce objektu. Výčnělky objektů jsou omezeny na jednu projekci v kontejneru a nelze je rozdělit.
+Výčnělky objektů nemají stejná omezení jako projekce tabulek a jsou vhodnější pro projekci rozsáhlých dokumentů. V tomto příkladu je celý dokument odeslán jako projekce objektu. Výčnělky objektů jsou omezeny na jednu projekci v kontejneru a nelze je rozdělit.
 
-Pro definování projekce objektu použijeme ```objects``` pole v projekcích. Nový tvar můžete vygenerovat pomocí dovednosti v Shaper nebo pomocí vloženého tvaru projekce objektu. Přestože příklad tabulky ukázal přístup k vytvoření tvaru a vytváření řezů, tento příklad ukazuje použití vloženého tvaru. 
+Pro definování projekce objektu použijte ```objects``` pole v projekce. Nový tvar můžete vygenerovat pomocí dovednosti v Shaper nebo pomocí vloženého tvaru projekce objektu. Přestože příklad tabulky ukázal přístup k vytvoření tvaru a vytváření řezů, tento příklad ukazuje použití vloženého tvaru. 
 
-Vložené tvarování je schopnost vytvořit nový tvar v definici vstupů do projekce. Při vložené tvarování se vytvoří anonymní objekt, který je totožný s tím, co by Shaper dovednost vytvořila `pbiShape`(v našem případě). Vložení tvarování je užitečné, pokud definujete tvar, který nehodláte znovu použít.
+Vložené tvarování je schopnost vytvořit nový tvar v definici vstupů do projekce. Při vložené tvarování se vytvoří anonymní objekt, který je totožný s tím, co by Shaper dovednost vytvořila (v našem případě `pbiShape` ). Vložení tvarování je užitečné, pokud definujete tvar, který nehodláte znovu použít.
 
-Vlastnost projekce je pole. V tomto příkladu přidáme novou instanci projekce do pole, kde definice knowledgeStore obsahuje vložené projekce. Při použití vložených projekce můžete Shaper dovednosti vynechat.
+Vlastnost projekce je pole. Tento příklad přidá novou instanci projekce do pole, kde definice knowledgeStore obsahuje vložené projekce. Při použití vložených projekce můžete Shaper dovednosti vynechat.
 
 ```json
 "knowledgeStore" : {
@@ -426,7 +423,7 @@ Vlastnost projekce je pole. V tomto příkladu přidáme novou instanci projekce
 
 Výčnělky souborů jsou obrázky, které jsou extrahovány ze zdrojového dokumentu nebo výstupů obohacení, které mohou být vycházet z procesu rozšíření. Projekce souborů, podobně jako projekce objektů, jsou implementovány jako objekty BLOB v Azure Storage a obsahují obrázek. 
 
-K vygenerování projekce souboru používáme `files` pole v objektu projekce. Tento příklad projekty všechny obrázky extrahované z dokumentu do kontejneru s názvem `samplefile`.
+Chcete-li vygenerovat projekci souboru, použijte `files` pole v objektu projekce. Tento příklad projekty všechny obrázky extrahované z dokumentu do kontejneru s názvem `samplefile` .
 
 ```json
 "knowledgeStore" : {
@@ -450,7 +447,7 @@ K vygenerování projekce souboru používáme `files` pole v objektu projekce. 
 
 Složitější scénář může vyžadovat, abyste promítáte obsah napříč typy projekce. Například pokud potřebujete projektovat některá data jako klíčové fráze a entity do tabulek, uložte výsledky optického rozpoznávání textu a textu rozložení jako objekty a potom obrázky naprojektujte jako soubory. 
 
-V tomto příkladu aktualizace dovednosti zahrnují následující změny:
+Tento příklad aktualizuje dovednosti s následujícími změnami:
 
 1. Vytvoří tabulku, která má řádek pro každý dokument.
 1. Vytvořte tabulku související s tabulkou dokumentu s každou klíčovou frází identifikovanou jako řádek v této tabulce.
@@ -463,7 +460,7 @@ Tyto změny se projeví v definici knowledgeStore.
 
 ### <a name="shape-data-for-cross-projection"></a>Data obrazce pro křížovou projekci
 
-Chcete-li získat tvary, které potřebujeme pro tyto projekce, Začněte přidáním nové Shaper dovednosti, která vytvoří objekt ve tvaru `crossProjection`s názvem. 
+Pro získání tvarů potřebných pro tyto projekce Začněte přidáním nové Shaper dovednosti, která vytvoří objekt ve tvaru s názvem `crossProjection` . 
 
 ```json
 {
@@ -534,7 +531,7 @@ Chcete-li získat tvary, které potřebujeme pro tyto projekce, Začněte přid�
 
 ### <a name="define-table-object-and-file-projections"></a>Definování projekce tabulek, objektů a souborů
 
-Z konsolidovaného objektu crossProjection můžeme objekt rozdělit do několika tabulek, zachytit výstup OCR jako objekty BLOB a pak image Uložit jako soubory (také ve službě BLOB Storage).
+Z konsolidovaného objektu crossProjection vyrovnejte objekt do několika tabulek, Zachyťte výstup optického rozpoznávání znaků jako objekty BLOB a uložte obrázek jako soubory (také ve službě BLOB Storage).
 
 ```json
 "knowledgeStore" : {
@@ -595,7 +592,7 @@ Výčnělky objektů vyžadují název kontejneru pro každou projekci, projekce
 
 ### <a name="relationships-among-table-object-and-file-projections"></a>Vztahy mezi projekcemi tabulek, objektů a souborů
 
-Tento příklad také zvýrazní jinou funkci projekce. Definováním více typů projekce v rámci stejného objektu projekce je vztah vyjádřený v rámci různých typů (tabulek, objektů, souborů) a mezi nimi, což vám umožní začít s řádkem tabulky pro dokument a najít veškerý text optického rozpoznávání obrázků v tomto dokumentu v projekci objektu. 
+Tento příklad také zvýrazní jinou funkci projekce. Definováním více typů projekce v rámci stejného objektu projekce je vztah vyjádřený v rámci různých typů (tabulky, objekty, soubory) a napříč nimi. To vám umožní začít s řádkem tabulky pro dokument a najít veškerý text optického rozpoznávání obrázků v tomto dokumentu v projekci objektu. 
 
 Pokud nechcete, aby data byla v relaci, definujte projekce v různých objektech projekce. Například následující fragment kódu bude mít za následek související tabulky, ale bez relací mezi tabulkami a objekty (text OCR) projekce. 
 
@@ -663,7 +660,7 @@ Při definování projekce je k dispozici několik běžných problémů, které
 
 + Netvarování obohacení řetězců do platného formátu JSON. Když jsou řetězce obohaceny, například `merged_content` obohaceny klíčovými frázemi, je obohacená vlastnost vyjádřena jako podřízená položka `merged_content` ve stromu obohacení. Výchozí reprezentace není ve správném formátu JSON. Takže v době projekce nezapomeňte tuto obohacení transformovat na platný objekt JSON s názvem a hodnotou.
 
-+ Vynechává se ```/*``` na konci zdrojové cesty. Pokud je `/document/pbiShape/keyPhrases`zdrojem projekce, pole klíčové fráze je promítnuto jako jeden objekt nebo řádek. Místo toho nastavte zdrojovou cestu tak `/document/pbiShape/keyPhrases/*` , aby pro každou klíčovou frázi vydávala jeden řádek nebo objekt.
++ Vynechává se na ```/*``` konci zdrojové cesty. Pokud je zdrojem projekce `/document/pbiShape/keyPhrases` , pole klíčové fráze je promítnuto jako jeden objekt nebo řádek. Místo toho nastavte zdrojovou cestu tak, aby pro `/document/pbiShape/keyPhrases/*` každou klíčovou frázi vydávala jeden řádek nebo objekt.
 
 + Chyby syntaxe cesty V selektorech cest se rozlišují velká a malá písmena a můžou vést k chybějícím upozorněním vstupu, pokud nepoužíváte přesný případ pro selektor.
 

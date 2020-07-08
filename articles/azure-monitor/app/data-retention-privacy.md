@@ -2,13 +2,13 @@
 title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft Docs
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: d77eaa32c8487d1aa87626683b4c29bf1cee0e75
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/30/2020
+ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601356"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -18,8 +18,8 @@ Za prvé, krátká odpověď:
 
 * Standardní moduly telemetrie, které spouští "vycházející z boxu", nepravděpodobně posílají citlivá data službě. Telemetrie se týká metriky zatížení, výkonu a využití, sestav výjimek a dalších diagnostických dat. Hlavní data uživatele zobrazená v diagnostických sestavách jsou adresy URL; ale vaše aplikace by neměla v žádném případě vkládat citlivá data do prostého textu v adrese URL.
 * Můžete napsat kód, který odesílá další vlastní telemetrii, které vám pomůžou s diagnostikou a monitorováním využití. (Toto rozšíření je skvělou funkcí Application Insights.) Může to být omylem, aby bylo možné napsat tento kód tak, aby obsahoval osobní a další citlivá data. Pokud vaše aplikace pracuje s takovými daty, měli byste použít důkladný proces kontroly na všechen kód, který píšete.
-* Při vývoji a testování vaší aplikace je snadno možné zkontrolovat, co posílá sada SDK. Data se zobrazí v oknech výstup ladění rozhraní IDE a prohlížeče. 
-* Data jsou uložená v [Microsoft Azure](https://azure.com) serverech v USA nebo Evropě. (Ale vaše aplikace může běžet kdekoli.) Azure má [silné procesy zabezpečení a splňuje širokou škálu standardů dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vy a váš určený tým mají přístup k vašim datům. Zaměstnanci Microsoftu můžou mít omezený přístup jenom za konkrétní omezené okolnosti se svým vědomím. Šifrované při přenosu a v klidovém stavu.
+* Při vývoji a testování vaší aplikace je snadno možné zkontrolovat, co posílá sada SDK. Data se zobrazí v oknech výstup ladění rozhraní IDE a prohlížeče.
+* Umístění můžete vybrat při vytváření nového prostředku Application Insights. [Tady](https://azure.microsoft.com/global-infrastructure/services/?products=all)se dozvíte víc o dostupnosti Application Insights v jednotlivých oblastech.
 *   Zkontrolujte shromážděná data, protože to může zahrnovat data, která jsou v některých případech povolena, ale ne jiné.  Dobrým příkladem je název zařízení. Název zařízení ze serveru nemá žádný vliv na ochranu osobních údajů a je užitečný, ale název zařízení z telefonu nebo přenosného počítače může mít dopad na ochranu osobních údajů a je méně užitečný. Sada SDK vyvinutá primárně pro cílové servery by ve výchozím nastavení shromáždila název zařízení a může být nutné ji přepsat v normálních událostech a výjimkách.
 
 Zbývající část tohoto článku podrobněji vychází z těchto odpovědí. Je navržena tak, aby byla samostatná, takže ji můžete zobrazit kolegům, kteří nejsou součástí svého bezprostředního týmu.
@@ -213,7 +213,7 @@ Nedoporučujeme explicitně nastavit aplikaci tak, aby používala protokol TLS 
 | Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
 | Windows Server 2008 SP2 | Podpora TLS 1,2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | –
+|Windows Vista | Nepodporuje se. | Není k dispozici
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 

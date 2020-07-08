@@ -1,26 +1,24 @@
 ---
-title: Migrace konfigurací Azure Firewall do zásad Azure Firewall (Preview) pomocí PowerShellu
-description: Přečtěte si, jak migrovat konfigurace Azure Firewall na zásady Azure Firewall (Preview).
+title: Migrace Azure Firewall konfigurací na zásady Azure Firewall pomocí PowerShellu
+description: Postup migrace Azure Firewall konfigurací na zásady Azure Firewall
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601322"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Migrace konfigurací Azure Firewall do zásad Azure Firewall (Preview) pomocí PowerShellu
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>Migrace Azure Firewall konfigurací na zásady Azure Firewall pomocí PowerShellu
 
 Skript Azure PowerShell můžete použít k migraci stávajících Azure Firewall konfigurací do prostředku zásad Azure Firewall. Pak můžete zásadu nasadit pomocí nástroje Azure Firewall Manager.
 
-`AZFWMigrationScript.ps1` Skript vytvoří FirewallPolicy se třemi RuleCollectionGroup objekty pro ApplicationRuleCollections, NetworkRuleCollections a NatRuleCollections v uvedeném pořadí. 
+`AZFWMigrationScript.ps1`Skript vytvoří FirewallPolicy se třemi RuleCollectionGroup objekty pro ApplicationRuleCollections, NetworkRuleCollections a NatRuleCollections v uvedeném pořadí. 
 
 RuleCollectionGroup je nové seskupení na nejvyšší úrovni pro kolekce pravidel pro budoucí rozšíření. Používání výše uvedených výchozích hodnot se doporučuje a provádí se automaticky z portálu.
 
@@ -161,4 +159,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nasazení Azure Firewall Manageru: [Přehled nasazení Preview Azure firewall Manageru](deployment-overview.md)
+Další informace o nasazení Azure Firewall Manageru: [Přehled nasazení nástroje Azure firewall Manager](deployment-overview.md).
