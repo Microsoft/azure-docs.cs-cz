@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: c16343b412cd9164df84ea140e9bc5368890cc3e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920193"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -46,38 +46,52 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano | Ano – podpora z verze balíčku: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled image a jakmile všechny image RHEL 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku: *18.5 -6. el7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | Není k dispozici |
 |RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 7lvm – Gen2 | 7.7.2020051922  | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.20200416 | ano  | Ano – podpora z verze balíčku: *18.5 -6. el7*|
-|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020|
-|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020 |
+|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Ano (Poznámka: Toto je náhled image a jakmile všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020|
+|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ano (Poznámka: Toto je náhled image a jakmile všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020 |
 
-RedHat: image RHEL 7,8 a 8,2 (Gen1 a Gen2) se zřídí pomocí Cloud-init.
+* Všechny Image RedHat: RHEL 7,8 a 8,2 (Gen1 a Gen2) se zřídí pomocí Cloud-init.
 
 ### <a name="centos"></a>CentOS
 
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled image a jakmile všechny image CentOS 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku:`18.5-3.el7.centos`|
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | Není k dispozici |
+|OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |ano | Ano – podpora z verze balíčku:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |ano | Ano – podpora z verze balíčku:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |ano | Ano – podpora z verze balíčku:`18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS – HPC | 7_7 – Gen2 |7.6.2020062601 |ano | Ano – podpora z verze balíčku:`18.5-6.el7.centos.5`|
+|OpenLogic 8,1 |CentOS | 8_1 |8.1.2020062400 |ano | Ano – podpora z verze balíčku:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS | 8_1 – Gen2 |8.1.2020062401 |ano | Ano – podpora z verze balíčku:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 |CentOS – HPC | 8_1 |8.1.2020062400 |ano | Ano – podpora z verze balíčku:`18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1 – Gen2 |8.1.2020062401 |ano | Ano – podpora z verze balíčku:`18.5-7.el8_1.1`|
 
-* Image CentOS 7,7, které budou povolené pro cloudovou inicializaci, se aktualizují tady v červnu 2020. 
-* Image CentOS 7,8 se zřídí pomocí Cloud-init.
-
+* Všechny Image OpenLogic: CentOS 7,8 a 8,2 (Gen1 a Gen2) se zřídí pomocí Cloud-init.
 
 ### <a name="oracle"></a>Oracle
 
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| Náhled obrázku (Všimněte si, že se jedná o image ve verzi Preview a když všechny Image Oracle 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ne, balíček je ve verzi Preview: *18.5-3.0.1. el7*
+|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| Náhled obrázku (Poznámka: Toto je obrázek verze Preview a když všechny Image Oracle 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ne, balíček je ve verzi Preview: *18.5-3.0.1. el7*
 
 ### <a name="suse-sles"></a>SUSE SLES
-| Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
-|:--- |:--- |:--- |:--- |:--- |:--- |
-|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1 – Basic |Cloud-init-Preview| Podrobnosti najdete na [blogu SUSE Cloud-init](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Ne, ve verzi Preview. |
-|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1 – Basic |Gen2-Cloud-init-Preview| Podrobnosti najdete na [blogu SUSE Cloud-init](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Ne, ve verzi Preview. |
+Tyto image SLES se aktualizovaly, aby se zřídily pomocí Cloud-init, ale byly aktualizovány taky varianty imagí Gen2.
+* SUSE: SLES-15-SP1-{Basic/BYOS/HPC/HPC-BYOS/chost-BYOS}: Gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1: Gen1:2020.06.10
+* SUSE: SLES-SAP-15-SP1-BYOS: Gen1:2020.06.10
+* SUSE: Manager-proxy-4-BYOS: Gen1:2020.06.10
+* SUSE: Manager-Server-4-BYOS: Gen1:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 15:2020.06.10
+* SUSE: SLES-12-SP5: Gen1:2020.06.10
+* SUSE: SLES-12-SP5 {-BYOS/Basic/HPC-BYOS/HPC}: Gen1:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP4:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP3:2020.06.10
+* SUSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP2:2020.06.10
 
 
 ### <a name="debian"></a>Debian

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f200457bd327a6f2ce74794bb28dd16c38e6fdd
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856314"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat clustering v mezipaměti Azure Premium pro instanci Redis.
@@ -98,7 +98,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy týkající s
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Jak jsou klíče distribuované v clusteru?
 V dokumentaci k [modelu distribuce klíčů](https://redis.io/topics/cluster-spec#keys-distribution-model) Redis: klíčový prostor je rozdělen na 16384 slotů. Každý klíč se vyhodnotí jako hash a přiřadí se k jednomu z těchto slotů, které se distribuují napříč uzly clusteru. Můžete nakonfigurovat, která část klíče má hodnotu hash, aby bylo zajištěno, že se ve stejném horizontálních oddílů pomocí značek hash nachází více klíčů.
 
-* Klíče se značkami hash – Pokud je libovolná část klíče uzavřená v `{` a `}`, pro účely určení slotu hodnoty hash klíče se hodnota hash vyhodnotí jenom pro tuto část klíče. Například následující 3 klíče by se nacházely ve stejném horizontálních oddílů `{key}1`:, `{key}2`a `{key}3` vzhledem k tomu, že pouze `key` část názvu je nastavena na hodnotu hash. Úplný seznam klíčových specifikací hash klíčů najdete v tématu [klíče hash klíčů](https://redis.io/topics/cluster-spec#keys-hash-tags).
+* Klíče se značkami hash – Pokud je libovolná část klíče uzavřená v `{` a `}` , pro účely určení slotu hodnoty hash klíče se hodnota hash vyhodnotí jenom pro tuto část klíče. Například následující 3 klíče by se nacházely ve stejném horizontálních oddílů:, a vzhledem k tomu, že `{key}1` `{key}2` `{key}3` pouze `key` část názvu je nastavena na hodnotu hash. Úplný seznam klíčových specifikací hash klíčů najdete v tématu [klíče hash klíčů](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Klíče bez značky hash – pro použití algoritmu hash se používá celý název klíče. Výsledkem je statistická i distribuce napříč horizontálních oddílů mezipaměti.
 
 Pro dosažení nejlepšího výkonu a propustnosti doporučujeme, aby byly klíče rovnoměrně distribuovány. Pokud používáte klíče s tagem hash, jedná se o zodpovědnost aplikace za účelem zajištění rovnoměrné distribuce klíčů.
@@ -127,13 +127,15 @@ Protokol clusteringu vyžaduje, aby klient provedl správná připojení horizon
 
 Pro jiné než TLS použijte následující příkazy.
 
-    Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
-    Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
-    Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
-    ...
-    Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```bash
+Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
+Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
+Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
+...
+Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```
 
-V případě protokolu TLS `1300N` Nahraďte parametr `1500N`.
+V případě protokolu TLS Nahraďte parametr `1300N` `1500N` .
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Můžu nakonfigurovat clustering pro dříve vytvořenou mezipaměť?
 Ano. Nejdřív zajistěte, aby byla vaše mezipaměť Premium, a to tak, že pokud není, proveďte škálování. Dále byste měli být schopni zobrazit možnosti konfigurace clusteru, včetně možnosti Povolit cluster. Velikost clusteru můžete změnit po vytvoření mezipaměti, nebo po prvním povolení clusteringu.
@@ -151,7 +153,7 @@ Clustering je k dispozici jenom pro mezipaměti úrovně Premium.
 <a name="move-exceptions"></a>
 
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Jak mám při používání StackExchange. Redis a clusteringu dělat výjimky, co mám dělat?
-Pokud používáte StackExchange. Redis a při použití clusteringu `MOVE` přijímají výjimky, ujistěte se, že používáte [stackexchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) nebo novější. Pokyny ke konfiguraci aplikací .NET pro použití StackExchange. Redis najdete v tématu [Konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Pokud používáte StackExchange. Redis a `MOVE` při použití clusteringu přijímají výjimky, ujistěte se, že používáte [stackexchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) nebo novější. Pokyny ke konfiguraci aplikací .NET pro použití StackExchange. Redis najdete v tématu [Konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Další kroky
 Naučte se používat víc funkcí mezipaměti Premium.

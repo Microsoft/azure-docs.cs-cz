@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1cd5ead1604f47f07aa9d517f679850fcea8d897
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856376"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -47,7 +47,7 @@ V architektuře Azure Virtual WAN se virtuální rozbočovače sítě WAN zříd
 
 Virtuální síť WAN můžete vytvořit tak, že vytvoříte jedno virtuální centrum sítě WAN v oblasti s největším počtem paprsků (větví, virtuální sítě, uživatelů) a potom propojíte paprsky, které jsou v jiných oblastech, do centra. Tato možnost je vhodná v případě, že podniková technologie je převážně v jedné oblasti s několika vzdálenými paprsky.  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Připojení k rozbočovači (Preview)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Připojení k rozbočovači
 
 Podnikové cloudové nároky můžou zahrnovat víc cloudových oblastí a je optimální (latence) pro přístup ke cloudu z oblasti nejbližší jejich fyzické lokalitě a uživatelům. Jedním z klíčových zásad globální architektury přenosové sítě je umožnění připojení mezi oblastmi mezi všemi koncovými body cloudu a místními sítěmi. To znamená, že provoz z větve, která je připojená ke cloudu v jedné oblasti, může získat přístup k jiné větvi nebo virtuální síti v jiné oblasti pomocí připojení typu hub, které povoluje [globální síť Azure](https://azure.microsoft.com/global-infrastructure/global-network/).
 

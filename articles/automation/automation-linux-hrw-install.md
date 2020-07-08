@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: c569c83ed0bc5d78f0e5670c802188ee9fd8fd53
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856127"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -30,17 +30,17 @@ Pokud nemáte pracovní prostor Azure Monitor Log Analytics, před vytvořením 
 
 Pokud máte pracovní prostor, ale není propojený s vaším účtem Automation, umožňuje funkce automatizace přidat funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Pokud povolíte jednu z Azure Automation funkcí v pracovním prostoru Log Analytics, konkrétně [Update Management](automation-update-management.md) nebo [Change Tracking a inventáře](change-tracking.md), automaticky se do počítače agenta přiřadí komponenty pracovního procesu.
 
-   Pokud chcete přidat funkci Update Management do svého pracovního prostoru, spusťte následující rutinu PowerShellu:
+Pokud chcete přidat funkci Update Management do svého pracovního prostoru, spusťte následující rutinu PowerShellu:
 
-    ```powershell-interactive
+```powershell-interactive
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
-    ```
+```
 
-   Pokud chcete do svého pracovního prostoru přidat funkci Change Tracking a inventáře, spusťte následující rutinu PowerShellu:
+Pokud chcete do svého pracovního prostoru přidat funkci Change Tracking a inventáře, spusťte následující rutinu PowerShellu:
 
-    ```powershell-interactive
+```powershell-interactive
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
-    ```
+```
 
 ### <a name="log-analytics-agent"></a>Agent Log Analytics
 

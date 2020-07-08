@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856640"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Známé problémy/omezení migrace pro online migrace Azure SQL Database
 
@@ -28,7 +28,7 @@ Známé problémy a omezení související s online migracemi z SQL Server na Az
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migrace dočasná tabulky není podporovaná.
 
-**Příznak**
+**Příznaky**
 
 Pokud se zdrojová databáze skládá z jedné nebo několika dočasných tabulek, během operace úplného načtení dat se vaše migrace databáze nezdařila a může se zobrazit následující zpráva:
 
@@ -38,9 +38,9 @@ Pokud se zdrojová databáze skládá z jedné nebo několika dočasných tabule
 
  ![Příklad chyb v dočasné tabulce](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**Odstraníte**
+**Alternativní řešení**
 
-Použijte k tomu následující postup.
+Postupujte následovně.
 
 1. Pomocí níže uvedeného dotazu Najděte dočasné tabulky ve zdrojovém schématu.
 
@@ -52,21 +52,21 @@ Použijte k tomu následující postup.
 
 3. Spusťte znovu aktivitu migrace.
 
-**Materiály**
+**Prostředky**
 
 Další informace najdete v článku [dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migrace tabulek obsahuje jeden nebo více sloupců s datovým typem hierarchyid
 
-**Příznak**
+**Příznaky**
 
 Při operaci úplného načtení dat se může zobrazit výjimka SQL naznačující, že "ntext není kompatibilní s hierarchyid":
 
 ![Příklad chyb hierarchyid](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**Odstraníte**
+**Alternativní řešení**
 
-Použijte k tomu následující postup.
+Postupujte následovně.
 
 1. Pomocí dotazu níže vyhledejte tabulky uživatelů, které obsahují sloupce s datovým typem hierarchyid.
 
@@ -80,9 +80,9 @@ Použijte k tomu následující postup.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Selhání migrace s různými narušeními integrity s aktivními aktivačními událostmi ve schématu během úplného načtení dat nebo přírůstkové synchronizace dat
 
-**Odstraníte**
+**Alternativní řešení**
 
-Použijte k tomu následující postup.
+Postupujte následovně.
 
 1. Vyhledá aktivační události, které jsou aktuálně aktivní ve zdrojové databázi, pomocí následujícího dotazu:
 
@@ -96,7 +96,7 @@ Použijte k tomu následující postup.
 
 ### <a name="support-for-lob-data-types"></a>Podpora datových typů LOB
 
-**Příznak**
+**Příznaky**
 
 Pokud je délka sloupce Large Object (LOB) větší než 32 KB, může se stát, že se data v cíli zkrátí. Délku sloupce LOB můžete ověřit pomocí následujícího dotazu:
 
@@ -104,29 +104,29 @@ Pokud je délka sloupce Large Object (LOB) větší než 32 KB, může se stát,
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud máte sloupec LOB, který je větší než 32 KB, obraťte se na technický tým na [vyžádání migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="issues-with-timestamp-columns"></a>Problémy se sloupci časových razítek
 
-**Příznak**
+**Příznaky**
 
 Azure Database Migration Service nemigruje hodnotu zdrojového časového razítka. místo toho Azure Database Migration Service vygeneruje novou hodnotu časového razítka v cílové tabulce.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud potřebujete Azure Database Migration Service migrovat přesnou hodnotu časového razítka uloženou ve zdrojové tabulce, obraťte se na technický tým na [vyžádání migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Chyby migrace dat neposkytují další podrobnosti v okně podrobný stav databáze.
 
-**Příznak**
+**Příznaky**
 
 Pokud dojde k selhání migrace v zobrazení stav databáze podrobnosti, výběr odkazu **chyby migrace dat** na horním pásu karet nemusí poskytnout další podrobnosti, které jsou specifické pro selhání migrace.
 
 ![chyby migrace dat – příklad bez podrobností](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud se chcete dostat k určitým podrobnostem o selhání, použijte následující postup.
 
@@ -138,24 +138,28 @@ Pokud se chcete dostat k určitým podrobnostem o selhání, použijte následuj
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Zeměpisná vlastnost DataType není v online migraci SQLDB podporovaná.
 
-**Příznak**
+**Příznaky**
 
 Migrace se nezdařila s chybovou zprávou obsahující následující text:
 
-     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+```output
+"** encountered a fatal error", "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode.
+```
 
-**Odstraníte**
+**Alternativní řešení**
 
 I když Azure Database Migration Service podporuje zeměpisný datový typ pro offline migrace do Azure SQL Database pro online migrace, geografický datový typ se nepodporuje. Než se pokusíte použít Azure Database Migration Service pro online migraci této databáze, zkuste změnit datový typ ve zdroji na podporovaný typ.
 
 ### <a name="supported-editions"></a>Podporované edice
 
-**Příznak**
+**Příznaky**
 
 Migrace se nezdařila s chybovou zprávou obsahující následující text:
 
-    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```output
+Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```
 
-**Odstraníte**
+**Alternativní řešení**
 
 Podpora online migrací pro Azure SQL Database používání Azure Database Migration Service se rozšiřuje jenom na edice Enterprise, Standard a Developer. Před zahájením procesu migrace se ujistěte, že používáte podporovanou edici.

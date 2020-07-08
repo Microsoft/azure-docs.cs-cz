@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 225c67421a26edc52e06ee0cf0b6e1c965f52009
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856823"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytváření clusterů HDInsight pomocí Azure Data Lake Storage Gen1 pomocí Azure Portal
 
@@ -45,7 +45,7 @@ V této části vytvoříte cluster HDInsight s účty Data Lake Storage Gen1 ja
 
 Pokud chcete vytvořit cluster HDInsight s účtem Data Lake Storage Gen1 jako výchozí účet úložiště:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen1**a potom zadejte následující informace:
 
@@ -64,7 +64,7 @@ Následující pokyny Vytvoří cluster HDInsight s účtem služby Azure Storag
 
 Pokud chcete vytvořit cluster HDInsight s účtem Data Lake Storage Gen1 jako další účet úložiště:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště**vyberte **Azure Storage**a potom zadejte následující informace:
 
@@ -170,7 +170,9 @@ Když pracujete s daty v účtu Data Lake Storage Gen1, je třeba změnit někol
 
 Pokud používáte například cluster, který jste vytvořili pomocí Data Lake Storage Gen1 jako primární úložiště, cesta k datům je: *adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.NET/path/to/File*. Dotaz na podregistr pro vytvoření tabulky z ukázkových dat uložených v účtu Data Lake Storage Gen1 vypadá jako v následujícím příkazu:
 
-    CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```console
+CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```
 
 Označení
 

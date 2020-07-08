@@ -3,12 +3,12 @@ title: Základní aktualizace obrázků – úkoly
 description: Přečtěte si o základních imagí pro Image kontejnerů aplikací a o tom, jak může základní aktualizace image aktivovat úlohu Azure Container Registry.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 017c8f8a3a15896bd6e14a54136ba713e9f9c499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918500"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Základní aktualizace obrázků pro úlohy ACR
 
@@ -37,7 +37,14 @@ Pro sestavení imagí z souboru Dockerfile úloha ACR detekuje závislosti zákl
 * Veřejné úložiště v Docker Hub 
 * Veřejné úložiště v Microsoft Container Registry
 
-Pokud se základní bitová kopie zadaná `FROM` v příkazu nachází v jednom z těchto umístění, úloha ACR přidá vidlici, aby se zajistilo, že se image znovu sestaví i v případě, že se aktualizuje její základ.
+Pokud se základní bitová kopie zadaná v `FROM` příkazu nachází v jednom z těchto umístění, úloha ACR přidá vidlici, aby se zajistilo, že se image znovu sestaví i v případě, že se aktualizuje její základ.
+
+## <a name="base-image-notifications"></a>Oznámení základní image
+
+Čas mezi aktualizací základní image a aktivací závislého úkolu závisí na umístění základní Image:
+
+* **Základní image z veřejného úložiště v Docker Hub nebo MCR** – pro základní image ve veřejných úložištích je úloha ACR vyhledává aktualizace imagí v náhodném intervalu od 10 do 60 minut. Závislé úlohy se spouštějí odpovídajícím způsobem.
+* **Základní image z Azure Container Registry** – pro základní image ve službě Azure Container Registry okamžitě aktivuje úloha ACR spuštění, když se aktualizuje základní image. Základní obrázek může být ve stejném ACR, kde je úloha spuštěná, nebo v jiné ACR v jakékoli oblasti.
 
 ## <a name="additional-considerations"></a>Další aspekty
 
@@ -51,7 +58,7 @@ Pokud se základní bitová kopie zadaná `FROM` v příkazu nachází v jednom 
 
 * **Aktivační událost ke sledování závislostí** – Pokud chcete, aby úloha ACR mohla určit a sledovat závislosti image kontejneru – což zahrnuje základní image, musíte nejdřív aktivovat úlohu, aby se image sestavila **aspoň jednou**. Úlohu můžete například aktivovat ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] .
 
-* **Stabilní značka pro základní image** – Chcete-li aktivovat úlohu na základě aktualizace základního obrázku, musí mít základní image *stabilní* značku, například `node:9-alpine`. Toto označení je typické pro základní bitovou kopii, která je aktualizována pomocí operačních systémů a oprav rozhraní .NET na nejnovější stabilní verzi. Pokud se základní image aktualizuje pomocí nové značky verze, neaktivuje úlohu. Další informace o označování obrázků naleznete v [doprovodnéch materiálech k osvědčeným postupům](container-registry-image-tag-version.md). 
+* **Stabilní značka pro základní image** – Chcete-li aktivovat úlohu na základě aktualizace základního obrázku, musí mít základní image *stabilní* značku, například `node:9-alpine` . Toto označení je typické pro základní bitovou kopii, která je aktualizována pomocí operačních systémů a oprav rozhraní .NET na nejnovější stabilní verzi. Pokud se základní image aktualizuje pomocí nové značky verze, neaktivuje úlohu. Další informace o označování obrázků naleznete v [doprovodnéch materiálech k osvědčeným postupům](container-registry-image-tag-version.md). 
 
 * **Další triggery úloh** – v úloze aktivované aktualizacemi základních imagí můžete také povolit triggery na základě [potvrzení zdrojového kódu](container-registry-tutorial-build-task.md) nebo [plánu](container-registry-tasks-scheduled.md). Základní aktualizace image může také aktivovat úlohu s [více kroky](container-registry-tasks-multi-step.md).
 

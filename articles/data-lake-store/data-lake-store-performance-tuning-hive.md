@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 819e158ce2613441efdf2177d50fc8e7989bf68f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: c49388d50b79b037b0a0923f2c5e9ac72105c54e
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855753"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro podregistr v HDInsight a Azure Data Lake Storage Gen1
 
@@ -45,7 +45,7 @@ Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu D
 
 **hive.exec. snižoval. bytes. per.** – tento parametr nastaví velikost každého zmenšení.  Ve výchozím nastavení má každý zpomalení 256 MB.  
 
-## <a name="guidance"></a>Doprovodné materiály
+## <a name="guidance"></a>Pokyny
 
 **Nastavit hive.exec.. bytes. per.** – výchozí hodnota je vhodná, pokud jsou data nekomprimovaná.  Pro komprimovaná data byste měli zmenšit velikost zmenšení.  
 
@@ -55,17 +55,15 @@ Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu D
 
 Souběžný počet probíhajících úloh nebo paralelismu bude svázán s celkovou pamětí PŘÍZe.  Počet kontejnerů PŘÍZe určí, kolik souběžných úloh může být spuštěno.  Pro nalezení paměti PŘÍZe na uzel můžete přejít na Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+> Celková paměť PŘÍZ = uzly * PŘÍZ paměti na uzel počet kontejnerů PŘÍZ = celková paměť PŘÍZe/velikost kontejneru tez
+
 Klíčem ke zvýšení výkonu pomocí Data Lake Storage Gen1 je co nejvíc zvýšit souběžnost.  Tez automaticky vypočítá počet úloh, které by se měly vytvořit, takže je nemusíte nastavovat.   
 
 ## <a name="example-calculation"></a>Příklad výpočtu
 
 Řekněme, že máte cluster D14 s 8 uzly.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+> Celková paměť PŘÍZ = uzly * PŘÍZ paměť na uzel celkové paměti PŘÍZ = 8 uzlů * 96GB = 768GB počet kontejnerů PŘÍZ = 768GB/3072MB = 256
 
 ## <a name="limitations"></a>Omezení
 

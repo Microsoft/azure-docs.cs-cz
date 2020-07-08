@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856676"
 ---
 # <a name="keys-and-values"></a>Klíče a hodnoty
 
@@ -19,25 +19,29 @@ Konfigurace aplikací Azure ukládá konfigurační data jako páry klíč-hodno
 
 ## <a name="keys"></a>Klíče
 
-Klíče slouží jako identifikátory párů klíč-hodnota a slouží k ukládání a načítání odpovídajících hodnot. Je běžným postupem uspořádání klíčů do hierarchického oboru názvů pomocí oddělovače znaků, například `/` nebo. `:` Použijte konvenci, která je vhodná pro vaši aplikaci. Konfigurace aplikace považuje klíče za celek. Neanalyzuje klíče, abyste zjistili, jak jsou jejich názvy strukturované nebo vynutily jakékoli pravidlo.
+Klíče slouží jako identifikátory párů klíč-hodnota a slouží k ukládání a načítání odpovídajících hodnot. Je běžným postupem uspořádání klíčů do hierarchického oboru názvů pomocí oddělovače znaků, například `/` nebo `:` . Použijte konvenci, která je vhodná pro vaši aplikaci. Konfigurace aplikace považuje klíče za celek. Neanalyzuje klíče, abyste zjistili, jak jsou jejich názvy strukturované nebo vynutily jakékoli pravidlo.
 
 Tady jsou dva příklady názvů klíčů strukturovaných do hierarchie:
 
 * Založené na službě Component Services
 
+```aspx
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
+```
 
 * Na základě oblastí nasazení
 
+```aspx
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+```
 
 Použití konfiguračních dat v rámci aplikačních architektur může určovat konkrétní schémata názvů pro klíčové hodnoty. Například jarní cloudové rozhraní Java definuje `Environment` prostředky, které dodávají nastavení do aplikace pružiny.  Tyto parametry jsou parametrizované proměnnými, které obsahují název a *profil* *aplikace* . Klíče pro pružinová konfigurační data související s cloudem obvykle začínají těmito dvěma prvky oddělenými oddělovačem.
 
 Klíče uložené v konfiguraci aplikace rozlišují velká a malá písmena, která jsou založená na kódování Unicode. Klíče *app1* a *app1* se liší v úložišti konfigurace aplikace. Mějte na paměti, že pokud použijete nastavení konfigurace v rámci aplikace, protože některé architektury zpracovávají konfigurační klíče bez rozlišování velkých a malých písmen. Pro odlišení klíčů nedoporučujeme používat velká a malá písmena.
 
-V názvech klíčů můžete použít libovolný znak Unicode s `*`výjimkou `,`, a `\`.  Pokud potřebujete zahrnout jeden z těchto vyhrazených znaků, vydejte ho pomocí `\{Reserved Character}`. 
+V názvech klíčů můžete použít libovolný znak Unicode s výjimkou `*` , `,` a `\` .  Pokud potřebujete zahrnout jeden z těchto vyhrazených znaků, vydejte ho pomocí `\{Reserved Character}` . 
 
 U páru klíč-hodnota je omezení velikosti 10 KB. Tento limit zahrnuje všechny znaky v klíči, jeho hodnotu a všechny přidružené volitelné atributy. V rámci tohoto limitu můžete pro klíče mít mnoho úrovní hierarchie.
 
@@ -53,25 +57,27 @@ Klíče můžete v konfiguraci aplikací hierarchicky uspořádat mnoha způsoby
 
 ### <a name="label-keys"></a>Klíče popisků
 
-Hodnoty klíče v konfiguraci aplikace můžou volitelně mít atribut Label. Popisky slouží k odlišení klíčových hodnot se stejným klíčem. Key *app1* *s popisky a* a *B* tvoří dva samostatné klíče v úložišti konfigurace aplikace. Ve výchozím nastavení nemá hodnota klíče žádný popisek. Chcete-li explicitně odkazovat na hodnotu klíče bez popisku, `\0` použijte (adresa URL `%00`je zakódována jako).
+Hodnoty klíče v konfiguraci aplikace můžou volitelně mít atribut Label. Popisky slouží k odlišení klíčových hodnot se stejným klíčem. Key *app1* *s popisky a* a *B* tvoří dva samostatné klíče v úložišti konfigurace aplikace. Ve výchozím nastavení nemá hodnota klíče žádný popisek. Chcete-li explicitně odkazovat na hodnotu klíče bez popisku, použijte `\0` (adresa URL je zakódována jako `%00` ).
 
 Label nabízí pohodlný způsob, jak vytvořit varianty klíče. Běžné použití popisků je zadání více prostředí pro stejný klíč:
 
+```aspx
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
+```
 
 ### <a name="version-key-values"></a>Hodnoty klíče verze
 
 Konfigurace aplikace nepoužívá hodnoty klíče pro automatické verze. Použijte popisky jako způsob vytvoření více verzí hodnoty klíče. Můžete například zadat číslo verze aplikace nebo ID potvrzení Git v popisech k identifikaci klíčových hodnot přidružených k určitému sestavení softwaru.
 
-V popisech můžete použít libovolný znak Unicode s `*`výjimkou `,`, a `\`. Tyto znaky jsou vyhrazené. Chcete-li zahrnout vyhrazený znak, je nutné jej řídicím `\{Reserved Character}`příkazem použít.
+V popisech můžete použít libovolný znak Unicode s výjimkou `*` , `,` a `\` . Tyto znaky jsou vyhrazené. Chcete-li zahrnout vyhrazený znak, je nutné jej řídicím příkazem použít `\{Reserved Character}` .
 
 ### <a name="query-key-values"></a>Hodnoty klíče dotazu
 
-Jednotlivé hodnoty klíče se jednoznačně identifikují pomocí klíče a popisku, který může být `null`. Zadáním vzoru zadáte dotaz na úložiště konfigurace aplikace pro klíčové hodnoty. Úložiště konfigurace aplikace vrátí všechny klíčové hodnoty, které odpovídají vzoru, a jejich odpovídající hodnoty a atributy. Použijte následující vzorové vzory v REST API volání do konfigurace aplikace:
+Jednotlivé hodnoty klíče se jednoznačně identifikují pomocí klíče a popisku, který může být `null` . Zadáním vzoru zadáte dotaz na úložiště konfigurace aplikace pro klíčové hodnoty. Úložiště konfigurace aplikace vrátí všechny klíčové hodnoty, které odpovídají vzoru, a jejich odpovídající hodnoty a atributy. Použijte následující vzorové vzory v REST API volání do konfigurace aplikace:
 
-| Key | |
+| Klíč | |
 |---|---|
 | `key`je vynecháno nebo`key=*` | Odpovídá všem klíčům |
 | `key=abc` | Odpovídá přesně názvu klíče **ABC** |

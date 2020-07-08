@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907529"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918754"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -69,8 +69,8 @@ Než budete pokračovat, ujistěte se, že jsou splněné následující předpo
 [Filtr IP](iot-hub-ip-filtering.md) IoT Hub také neřídí veřejný přístup k předdefinovanému koncovému bodu. Pokud chcete zcela zablokovat přístup k veřejné síti ke službě IoT Hub, musíte: 
 
 1. Konfigurace přístupu k privátnímu koncovému bodu pro IoT Hub
-1. Vypnout přístup k veřejné síti pomocí filtru IP pro blokování všech IP adres
-1. Vypnutí vestavěného koncového bodu centra událostí [nastavením směrování na Neodesílat data](iot-hub-devguide-messages-d2c.md)
+1. Vypnout [přístup k veřejné síti](iot-hub-public-network-access.md) nebo použít filtr IP k blokování všech IP adres
+1. Zastavení používání integrovaného koncového bodu centra událostí [nastavením směrování na Neodesílat data](iot-hub-devguide-messages-d2c.md)
 1. Vypnutí [záložní trasy](iot-hub-devguide-messages-d2c.md#fallback-route)
 1. Konfigurace odchozího přenosu dat na jiné prostředky Azure pomocí [důvěryhodné služby Microsoftu](#egress-connectivity-from-iot-hub-to-other-azure-resources)
 

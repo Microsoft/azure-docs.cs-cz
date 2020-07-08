@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 00b4306340e9888ea5a794c7940a021674060e05
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316117"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856963"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -177,7 +177,7 @@ Informace o používání služby Azure cache pro Redis s prostředím PowerShel
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Co dělají konfigurační možnosti StackExchange. Redis?
 StackExchange. Redis má mnoho možností. Tato část pojednává o některých běžných nastaveních. Podrobnější informace o možnostech StackExchange. Redis najdete v tématu [Konfigurace stackexchange. Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Popis | Doporučení |
+| ConfigurationOptions | Description | Doporučení |
 | --- | --- | --- |
 | AbortOnConnectFail |Když se nastaví na true, připojení se po selhání sítě znovu nepřipojí. |Nastavte na hodnotu false a nechte StackExchange. Redis automaticky znovu připojit. |
 | ConnectRetry |Počet opakovaných pokusů o připojení při počátečním připojení. |Pokyny najdete v následujících pokynech. |
@@ -213,22 +213,23 @@ Jednou z skvělých věcí o Redis je to, že mnoho klientů podporuje mnoho rů
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Existuje místní emulátor pro Azure cache pro Redis?
 Pro službu Azure cache pro Redis není k dispozici žádný místní emulátor, ale můžete spustit MSOpenTech verzi redis-server.exe z [nástrojů příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/) v místním počítači a připojit se k němu a získat podobné prostředí emulátoru místní mezipaměti, jak je znázorněno v následujícím příkladu:
 
-    private static Lazy<ConnectionMultiplexer>
-          lazyConnection = new Lazy<ConnectionMultiplexer>
-        (() =>
-        {
-            // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
-            return ConnectionMultiplexer.Connect("127.0.0.1:6379");
-        });
+```csharp
+private static Lazy<ConnectionMultiplexer>
+      lazyConnection = new Lazy<ConnectionMultiplexer>
+    (() =>
+    {
+        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+    });
 
-        public static ConnectionMultiplexer Connection
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+```
 
 Volitelně můžete nakonfigurovat soubor [Redis. conf](https://redis.io/topics/config) tak, aby lépe odpovídal [výchozím nastavením mezipaměti](cache-configure.md#default-redis-server-configuration) pro online Azure cache pro Redis, pokud je to potřeba.
 
@@ -366,10 +367,12 @@ V podstatě to znamená, že pokud je počet zaneprázdněných vláken větší
 
 Pokud se podíváme na ukázkovou chybovou zprávu z StackExchange. Redis (Build 1.0.450 nebo novější), uvidíte, že teď vytisknou statistiky fondu (podrobnosti najdete v podrobnostech o IOCP a PRACOVNÍKovi níže).
 
+```output
     System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
     queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
 
 V předchozím příkladu vidíte, že pro vlákno IOCP je šest zaneprázdněných vláken a systém je nakonfigurován tak, aby umožňoval čtyři minimální vlákna. V takovém případě by se u klienta pravděpodobně zobrazilo zpoždění 2 500 ms, protože 6 > 4.
 

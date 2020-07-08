@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: f604d1d054717e426fcb02271b3a2aa06c6489b6
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856919"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro Spark ve službě HDInsight a Azure Data Lake Storage Gen1
 
@@ -43,7 +43,7 @@ Když spouštíte úlohy Sparku, tady jsou nejdůležitější nastavení, kter�
 
 Ve výchozím nastavení jsou pro každý fyzický jádro při spuštění Sparku ve službě HDInsight definovány dva jádra virtuálních PŘÍZe. Toto číslo poskytuje dobré vyvážení souběžnosti a množství kontextu přepínání z více vláken.
 
-## <a name="guidance"></a>Doprovodné materiály
+## <a name="guidance"></a>Pokyny
 
 Při spouštění analytických úloh Sparku pro práci s daty v Data Lake Storage Gen1 doporučujeme použít nejnovější verzi HDInsight, abyste získali nejlepší výkon pomocí Data Lake Storage Gen1. Když je úloha náročnější na vstupně-výstupní operace, můžete nakonfigurovat některé parametry, aby se zlepšil výkon. Data Lake Storage Gen1 je vysoce škálovatelná úložná platforma, která dokáže zvládnout vysokou propustnost. Pokud se úloha skládá hlavně z čtení nebo zápisů, zvýšení souběžnosti vstupu/výstupu do a z Data Lake Storage Gen1 může zvýšit výkon.
 
@@ -55,26 +55,30 @@ Existuje několik obecných způsobů, jak zvýšit souběžnost pro úlohy nár
 
 **Krok 3: nastavení prováděcích jader** – pro úlohy náročné na vstupně-výstupní operace, které nemají složitou operaci, je dobré začít s vysokým počtem jader vykonavatelů, aby se zvýšil počet paralelních úloh na vykonavatele. Nastavování prováděcích jader na 4 je dobrým startem.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 Zvýšení počtu prováděcích jader vám poskytne více paralelismu, abyste mohli experimentovat s různými prováděcími jádry. Pro úlohy, které mají složitější operace, byste měli snížit počet jader na vykonavatele. Pokud je jádro prováděče nastavené na vyšší než 4, může být uvolňování paměti neefektivní a snižuje výkon.
 
 **Krok 4: určení množství paměti příze v clusteru** – tyto informace jsou k dispozici v Ambari. Přejděte na PŘÍZe a zobrazte kartu Contigs. V tomto okně se zobrazí paměť PŘÍZe.
 Všimněte si, že když jste v okně, můžete také zobrazit výchozí velikost kontejneru PŘÍZ. Velikost kontejneru PŘÍZe je stejná jako hodnota parametru paměti na vykonavatele.
 
-    Total YARN memory = nodes * YARN memory per node
+Celková paměť PŘÍZ = uzly * PŘÍZe paměť na uzel
+
 **Krok 5: výpočet počtu prováděcích modulů**
 
 **Vypočítat omezení paměti** – parametr počet-prováděcích modulů je omezený buď pamětí, nebo procesorem. Omezení paměti je určeno množstvím dostupné paměti PŘÍZe vaší aplikace. Vezměte v úvahu celkovou paměť PŘÍZe a vydělte ji pomocí prováděcího modulu – paměť. Omezení musí být pro počet aplikací ve větším měřítku, takže rozdělujeme podle počtu aplikací.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps
+Omezení paměti = (celková paměť PŘÍZe/paměti prováděcího modulu)/počet aplikací
+
 **Vypočítat omezení procesoru** – omezení CPU se vypočítává jako celkový počet virtuálních jader dělený počtem jader na vykonavatele. Pro každý fyzický jádro je k dispozici 2 virtuální jádra. Podobně jako u omezení paměti jsme vyděleni počtem aplikací.
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+virtuální jádra = (uzly v clusteru * # fyzických jader v uzlu * 2) omezení počtu PROCESORů = (celkem virtuálních jader/počet jader na vykonavatele)/počet aplikací
+
 **Nastavit počet prováděcích** modulů – parametr NUM-prováděče se určí tak, že se vyberou minimálně omezení paměti a omezení CPU. 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)
-Nastavení většího počtu prováděcích modulů nemusí nutně zvyšovat výkon. Měli byste zvážit, že přidáním dalších prováděcích modulů přidáte další režii pro každý další prováděcí modul, což může způsobit snížení výkonu. Počet – vykonavatelé jsou vázány prostředky clusteru.
+počet-prováděče = min (celkový počet virtuálních jader/počet jader na vykonavatele, dostupná paměť PŘÍZ/prováděcí paměť) větší počet prováděcích modulů nemusí nutně zvyšovat výkon. Měli byste zvážit, že přidáním dalších prováděcích modulů přidáte další režii pro každý další prováděcí modul, což může způsobit snížení výkonu. Počet – vykonavatelé jsou vázány prostředky clusteru.
 
 ## <a name="example-calculation"></a>Příklad výpočtu
 
@@ -84,30 +88,28 @@ Nastavení většího počtu prováděcích modulů nemusí nutně zvyšovat vý
 
 **Krok 2: nastavení prováděcího modulu-paměti** – pro účely tohoto příkladu určíme, že 6 GB prováděcích paměti bude stačit pro úlohy náročné na vstupně-výstupní operace.
 
-    executor-memory = 6GB
+```console
+executor-memory = 6GB
+```
+
 **Krok 3: nastavení prováděcích jader** – vzhledem k tomu, že se jedná o náročnou vstupně-výstupní úlohu, můžeme nastavit počet jader pro každý prováděcí modul na čtyři. Nastavení jader na vykonavatel na více než čtyři mohou způsobit problémy uvolňování paměti.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 **Krok 4: určení množství paměti příze v clusteru** – navigujte na Ambari a zjistěte, že každý D4V2 má 25 GB paměti příze. Vzhledem k tomu, že existují 8 uzlů, je dostupná paměť PŘÍZe vynásobena 8.
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25 GB = 200 GB
+Celková paměť PŘÍZ = uzly * PŘÍZ Memory * za uzel celková hodnota PŘÍZ paměti = 8 uzlů * 25 GB = 200 GB
+
 **Krok 5: výpočet počtu prováděcích** modulů – parametr počet-prováděcích modulů se určuje tak, že se vyberou minimálně omezení paměti a omezení procesoru dělené počtem aplikací spuštěných ve Sparku.
 
 **Vypočítat omezení paměti** – omezení paměti je vypočítáno jako celková paměť příze dělená pamětí na vykonavatele.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps 
-    Memory constraint = (200 GB / 6 GB) / 2
-    Memory constraint = 16 (rounded)
-**Vypočítat omezení procesoru** – omezení CPU se vypočítá jako celkový počet jader příze dělený počtem jader na vykonavatele.
-    
-    YARN cores = nodes in cluster * # of cores per node * 2
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+Omezení paměti = (celková paměť PŘÍZe/paměti prováděcího modulu)/# z omezení paměti aplikace = (200 GB/6 GB)/2 omezení paměti = 16 (zaokrouhleno) **Vypočítat omezení procesoru** – omezení procesoru se vypočítá jako celkový počet jader příze dělený počtem jader na vykonavatele.
+
+Prostředky PŘÍZe = uzly v clusteru * počet jader na uzel * 2 PŘÍZové jádra = 8 uzlů × 8 jader za sekundu za D14 * 2 = 128 omezení procesoru = (celkový počet PŘÍZových jader/počet jader na vykonavatele)/počet procesorových omezení pro 128 aplikace = 16
+
 **Nastavit moduly pro číslování**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16
+počet-prováděče = min (omezení paměti, omezení procesoru) počet-prováděcích modulů = min (16, 16) NUM-exekutors = 16

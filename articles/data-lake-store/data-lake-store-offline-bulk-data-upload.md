@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9b99f7fa88dc933c32077d273221d8551270529c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855678"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Použijte službu import/export Azure pro offline kopírování dat a Data Lake Storage Gen1
 
@@ -31,17 +31,16 @@ Než začnete, musíte mít následující:
 
 Před použitím služby Import/export přerušit datový soubor, který se má přenést **do kopií, které mají velikost menší než 200 GB** . Nástroj pro import nefunguje se soubory většími než 200 GB. V tomto článku rozdělíme soubor na bloky 100 GB. To můžete provést pomocí [Cygwin](https://cygwin.com/install.html). Cygwin podporuje příkazy systému Linux. V takovém případě použijte následující příkaz:
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 Operace rozdělení vytvoří soubory s následujícími názvy.
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB. TSV – část-AA*
+* *319GB. TSV – část-AB*
+* *319GB. TSV – část-AC*
+* *319GB. TSV – část-AD*
 
 ## <a name="get-disks-ready-with-data"></a>Příprava disků na data
 

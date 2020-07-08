@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856993"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>Použití GitOps pro konfiguraci s podporou ARC Azure (Preview)
 
@@ -167,7 +167,7 @@ Všimněte si, že `sourceControlConfiguration` prostředek je aktualizovaný se
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "complianceState": "Compliant",
+    "complianceState": "Installed",
     "lastConfigApplied": "2019-12-05T05:34:41.481000",
     "message": "...",
     "messageLevel": "3"
@@ -201,8 +201,8 @@ Při `sourceControlConfiguration` vytvoření se v digestoři stane několik vě
 Během procesu zřizování se `sourceControlConfiguration` přesunou mezi několika změnami stavu. Sledujte průběh pomocí `az k8sconfiguration show ...` příkazu výše:
 
 1. `complianceStatus` -> `Pending`: představuje počáteční a průběžné stavy
-1. `complianceStatus` -> `Compliant`: `config-agent` bylo možné úspěšně nakonfigurovat cluster a nasadit `flux` bez chyby.
-1. `complianceStatus` -> `Noncompliant`: `config-agent` došlo k chybě při nasazování `flux` , podrobnosti by měly být k dispozici v `complianceStatus.message` těle odpovědi.
+1. `complianceStatus` -> `Installed`: `config-agent` bylo možné úspěšně nakonfigurovat cluster a nasadit `flux` bez chyby.
+1. `complianceStatus` -> `Failed`: `config-agent` došlo k chybě při nasazování `flux` , podrobnosti by měly být k dispozici v `complianceStatus.message` těle odpovědi.
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Použít konfiguraci z privátního úložiště Git
 

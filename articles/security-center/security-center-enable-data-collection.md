@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855928"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel.
@@ -199,7 +199,7 @@ Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve
 <br>
 Pro počítače se systémem Linux zatím není podporována podpora více domovských stránek agenta, takže pokud je zjištěna existující instalace agenta, Automatické zřizování nebude provedeno a konfigurace počítače nebude změněna.
 <br>
-Pro existující počítače v předplatných, které jsou připojené k Security Center před 2019-03-17, když se zjistí existující agent, nebude rozšíření agenta Log Analytics nainstalované a počítač nebude ovlivněný. Pro tyto počítače si Projděte doporučení "vyřešit problémy se stavem agenta monitorování na vašich počítačích" a vyřešte problémy s instalací agenta na těchto počítačích.
+Pro existující počítače v předplatných, které jsou připojené k Security Center před 17 2019, když se zjistí existující agent, nebude rozšíření agenta Log Analytics nainstalované a počítač nebude ovlivněn. Pro tyto počítače si Projděte doporučení "vyřešit problémy se stavem agenta monitorování na vašich počítačích" a vyřešte problémy s instalací agenta na těchto počítačích.
 
   
 - Agent System Center Operations Manager je nainstalován v počítači.<br>
@@ -237,58 +237,44 @@ Existuje několik způsobů, jak ručně nainstalovat agenta Log Analytics. Při
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Nasazení rozšíření VM Operations Management Suite 
 
 Můžete ručně nainstalovat agenta Log Analytics, aby Security Center mohl shromažďovat data zabezpečení z vašich virtuálních počítačů a poskytovat doporučení a výstrahy.
-1. Vyberte možnost Automatické zřizování – vypnuto.
-2. Vytvořte pracovní prostor a nastavte cenovou úroveň pracovního prostoru, pro který chcete nastavit agenta Log Analytics:
 
-   a.  V hlavní nabídce Security Center vyberte **zásady zabezpečení**.
-     
-   b.  Vyberte pracovní prostor, ve kterém chcete agenta připojit. Ujistěte se, že je pracovní prostor ve stejném předplatném, které používáte v Security Center a máte oprávnění ke čtení a zápisu v pracovním prostoru.
-       ![Výběr pracovního prostoru][8]
-3. Nastavte cenovou úroveň.
-   ![Vybrat cenovou úroveň][9] 
-   >[!NOTE]
-   >Pokud má pracovní prostor již povolené řešení **Security** nebo **SecurityCenterFree** , ceny se nastaví automaticky. 
+1. Zakažte Automatické zřizování.
+
+1. Volitelně můžete vytvořit pracovní prostor.
+
+1. Nastavte pracovní prostor, do kterého instalujete agenta Log Analytics do cenové úrovně Standard:
+
+    1. V nabídce Security Center vyberte **cenové & nastavení**.
+
+    1. Nastavte pracovní prostor, do kterého instalujete agenta. Ujistěte se, že je pracovní prostor ve stejném předplatném, které používáte v Security Center a máte oprávnění ke čtení a zápisu v pracovním prostoru.
+
+    1. Nastavte cenovou úroveň Standard a vyberte **Uložit**.
+
+        ![Nastavení pracovního prostoru na cenovou úroveň Standard](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >Pokud má pracovní prostor již povolené řešení **Security** nebo **SecurityCenterFree** , ceny se nastaví automaticky. 
    > 
 
-4. Pokud chcete nasadit agenty na nové virtuální počítače pomocí šablony Správce prostředků, nainstalujte rozšíření virtuálního počítače OMS:
+1. Pokud chcete nasadit agenty na nové virtuální počítače pomocí šablony Správce prostředků, nainstalujte agenta Log Analytics:
 
-   a.  [Instalace rozšíření pro virtuální počítače OMS pro Windows](../virtual-machines/extensions/oms-windows.md)
+   a.  [Instalace agenta Log Analytics pro Windows](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [Instalace rozšíření pro virtuální počítače OMS pro Linux](../virtual-machines/extensions/oms-linux.md)
-5. Pokud chcete nasadit rozšíření na stávající virtuální počítače, postupujte podle pokynů v [tématu shromáždění dat o službě Azure Virtual Machines](../azure-monitor/learn/quick-collect-azurevm.md).
+   b.  [Instalace agenta Log Analytics pro Linux](../virtual-machines/extensions/oms-linux.md)
+
+1. Pokud chcete nasadit rozšíření na stávající virtuální počítače, postupujte podle pokynů v [tématu shromáždění dat o službě Azure Virtual Machines](../azure-monitor/learn/quick-collect-azurevm.md).
 
    > [!NOTE]
    > Část **shromažďování údajů o událostech a výkonu** je nepovinná.
    >
-6. Pokud chcete k nasazení rozšíření použít PowerShell, použijte následující příklad PowerShellu:
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. Přejděte na **Log Analytics** a klikněte na **Upřesnit nastavení**.
-    
-      ![Nastavení Log Analytics][11]
 
-   2. Zkopírujte hodnoty z **ID pracovního prostoru** a **primárního klíče**.
-  
-      ![Kopírovat hodnoty][12]
+1. Pokud chcete k nasazení rozšíření použít PowerShell, postupujte podle pokynů v dokumentaci k virtuálním počítačům:
 
-   3. Naplňte veřejnou konfiguraci a soukromou konfiguraci pomocí těchto hodnot:
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [Počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - Při instalaci na virtuální počítač s Windows:
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - Při instalaci na virtuální počítač se systémem Linux:
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [Počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > Pokyny, jak připojit Security Center pomocí prostředí PowerShell, najdete v tématu [Automatizace připojování Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).

@@ -3,26 +3,26 @@ title: Omezení a hranice – QnA Maker
 description: QnA Maker má meta omezení pro části znalostní báze a služby. Pro účely testování a publikování je důležité zachovat znalostní bázi v rámci těchto omezení.
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855565"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
-Níže uvedené limity QnA Maker jsou kombinací [omezení cenové úrovně Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) a [QnA maker limity cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/). Je potřeba znát obě sady omezení, abyste porozuměli tomu, kolik znalostní báze můžete vytvořit podle jednotlivých prostředků a jak velký může růst každý znalostní báze.
+Níže uvedené limity QnA Maker jsou kombinací [omezení cenové úrovně Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md) a [QnA maker limity cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/). Je potřeba znát obě sady omezení, abyste porozuměli tomu, kolik znalostní báze můžete vytvořit podle jednotlivých prostředků a jak velký může růst každý znalostní báze.
 
 ## <a name="knowledge-bases"></a>Znalostní báze
 
-Maximální počet základů znalostní báze je založený na [omezeních vrstvy Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity).
+Maximální počet základů znalostní báze je založený na [omezeních vrstvy Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md).
 
 |**Úroveň Kognitivní hledání Azure** | **Free** | **Základní** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximální povolený počet publikovaných základů znalostí|2|14|49|199|199|2 999|
 
- Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat 14 báze znalostí (1 index na publikovanou znalostní bázi). Patnáctý index `testkb`se používá pro všechny znalostní báze pro vytváření a testování.
+ Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat 14 báze znalostí (1 index na publikovanou znalostní bázi). Patnáctý index se `testkb` používá pro všechny znalostní báze pro vytváření a testování.
 
 ## <a name="extraction-limits"></a>Omezení extrakce
 
@@ -55,11 +55,11 @@ Maximální počet přímých odkazů, které lze procházet pro extrakci QnAs z
 
 ## <a name="metadata-limits"></a>Omezení metadat
 
-Metadata jsou uvedena jako textový klíč: dvojice hodnot, jako je například `product:windows 10`. Je uložen a porovnán v malých malých písmenech.
+Metadata jsou uvedena jako textový klíč: dvojice hodnot, jako je například `product:windows 10` . Je uložen a porovnán v malých malých písmenech.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Podle cenové úrovně Azure Kognitivní hledání
 
-Maximální počet polí metadat na bázi znalostní báze je založený na **[omezeních vaší vrstvy Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)**.
+Maximální počet polí metadat na bázi znalostní báze je založený na **[omezeních vaší vrstvy Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md)**.
 
 |**Úroveň Kognitivní hledání Azure** | **Free** | **Základní** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -85,7 +85,7 @@ Celková omezení obsahu ve znalostní bázi Knowledge Base:
 * Délka názvu souboru: 200
 * Podporované formáty souborů: ". TSV", ". PDF", ". txt", ". docx", ". xlsx".
 * Maximální počet alternativních otázek: 300
-* Maximální počet párů otázek a odpovědí: závisí na zvolené **[úrovni Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Pár otázek a odpovědí se mapuje na dokument v Azure Kognitivní hledání indexu.
+* Maximální počet párů otázek a odpovědí: závisí na zvolené **[úrovni Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md#document-limits)** . Pár otázek a odpovědí se mapuje na dokument v Azure Kognitivní hledání indexu.
 * Adresa URL/stránka HTML: 1 000 000 znaků
 
 ## <a name="create-knowledge-base-call-limits"></a>Vytvořit limity volání ve znalostní bázi Knowledge Base:

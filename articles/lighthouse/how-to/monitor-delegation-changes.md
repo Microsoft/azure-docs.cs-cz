@@ -3,12 +3,12 @@ title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
 ms.date: 03/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5bb299f85074675b1d02943ee623394a7deff000
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919144"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
@@ -73,7 +73,7 @@ Až vytvoříte účet instančního objektu a přiřadíte roli Čtenář monit
 
 Po vytvoření nového účtu instančního objektu s přístupem ke čtečce monitorování ke kořenovému oboru spravovaného tenanta ho můžete použít k dotazování a hlášení aktivity delegování ve vašem tenantovi. 
 
-[Tento skript Azure PowerShell](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) lze použít k dotazování na poslední 1 den aktivity a sestavy na všech přidaných nebo odebraných delegováních (nebo pokusůch, které nebyly úspěšné). Dotazuje data [protokolu aktivit tenanta](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) a pak vytvoří následující hodnoty, které se budou hlásit na přidaných nebo odebraných delegováních:
+[Tento skript Azure PowerShell](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) lze použít k dotazování na poslední 1 den aktivity a sestavy na všech přidaných nebo odebraných delegováních (nebo pokusůch, které nebyly úspěšné). Dotazuje data [protokolu aktivit tenanta](/rest/api/monitor/TenantActivityLogs/List) a pak vytvoří následující hodnoty, které se budou hlásit na přidaných nebo odebraných delegováních:
 
 - **DelegatedResourceId**: ID delegovaného předplatného nebo skupiny prostředků
 - **CustomerTenantId**: ID tenanta zákazníka

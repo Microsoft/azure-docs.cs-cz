@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: faq
-ms.date: 05/24/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855596"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -224,17 +224,17 @@ Veřejné klíče SSH můžete zadat jako prostý text při vytváření virtuá
 }
 ```
 
-název elementu linuxConfiguration | Požaduje se | Typ | Popis
+název elementu linuxConfiguration | Požaduje se | Typ | Description
 --- | --- | --- | ---
-protokoly | Ne | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux.
-cesta | Ano | String | Určuje cestu k souboru pro Linux, kde se mají najít klíče SSH nebo certifikát.
-keyData | Ano | String | Určuje veřejný klíč SSH kódovaný ve formátu base64.
+protokoly | No | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux.
+cesta | Yes | Řetězec | Určuje cestu k souboru pro Linux, kde se mají najít klíče SSH nebo certifikát.
+keyData | Yes | Řetězec | Určuje veřejný klíč SSH kódovaný ve formátu base64.
 
 Příklad najdete v tématu [Šablona pro rychlý Start pro 101-VM-sshkey GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Při spuštění `Update-AzVmss` po přidání více než jednoho certifikátu ze stejného trezoru klíčů se zobrazí následující zpráva:
 
->Update-AzVmss: list tajného kódu obsahuje opakované instance/Subscriptions/u \< můj odběr-id>/ResourceGroups/Internal-RG-dev/Providers/Microsoft.keyvault/Vaults/Internal-keyvault-dev, což není povoleno.
+>Update-AzVmss: list Secret obsahuje opakované instance/Subscriptions/ \<my-subscription-id> /resourceGroups/Internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/Internal-keyvault-dev, které nejsou povoleny.
 
 K tomu může dojít, pokud se pokusíte znovu přidat stejný trezor namísto použití nového certifikátu trezoru pro existující zdrojový trezor. `Add-AzVmssSecret`Pokud přidáváte další tajné kódy, příkaz nefunguje správně.
 
@@ -338,7 +338,7 @@ Další informace najdete na webu [Centrum zabezpečení Microsoft](https://www.
 
 Ano. V šablonách rychlého startu Azure pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) a [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)se můžete podívat na příklady šablon MSI.
 
-## <a name="deleting"></a>Odstraňuje
+## <a name="deleting"></a>odstraňování
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Budou při odstraňování instancí dodrženy zámky nastavené na instancích sady škálování virtuálních počítačů?
 
@@ -656,7 +656,7 @@ Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Návody zapnout diagnostiku spouštění?
 

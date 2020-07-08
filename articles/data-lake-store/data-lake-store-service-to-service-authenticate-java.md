@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9e282aed68e58409a53546a08699cc7035633f62
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: c55824990779ff7947a7e89b31f5fa2479d940dd
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857156"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Ověřování služba-služba s Azure Data Lake Storage Gen1 pomocí jazyka Java
 
@@ -41,39 +41,45 @@ V tomto článku se dozvíte, jak pomocí sady Java SDK provádět ověřování
 
 2. Přidejte k souboru Maven **pom.xml** následující závislosti. Přidejte následující fragment kódu před **\</project>** značku:
 
-        <dependencies>
-          <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.2.3</version>
-          </dependency>
-          <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.21</version>
-          </dependency>
-        </dependencies>
+    ```xml
+    <dependencies>
+      <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-data-lake-store-sdk</artifactId>
+        <version>2.2.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>1.7.21</version>
+      </dependency>
+    </dependencies>
+    ```
 
     První závislost je použít sadu Data Lake Storage Gen1 SDK ( `azure-data-lake-store-sdk` ) z úložiště Maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada Data Lake Storage Gen1 SDK používá [slf4j](https://www.slf4j.org/) protokolování, které vám umožní vybírat z mnoha oblíbených protokolovacích rozhraní, jako je log4j, protokolování Java, logback atd., nebo bez protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
-        import com.microsoft.azure.datalake.store.ADLException;
-        import com.microsoft.azure.datalake.store.ADLStoreClient;
-        import com.microsoft.azure.datalake.store.DirectoryEntry;
-        import com.microsoft.azure.datalake.store.IfExists;
-        import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
-        import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
+    ```java
+    import com.microsoft.azure.datalake.store.ADLException;
+    import com.microsoft.azure.datalake.store.ADLStoreClient;
+    import com.microsoft.azure.datalake.store.DirectoryEntry;
+    import com.microsoft.azure.datalake.store.IfExists;
+    import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
+    import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
+    ```
 
 4. Použijte následující fragment kódu v aplikaci Java k získání tokenu pro webovou aplikaci služby Active Directory, kterou jste vytvořili dříve, pomocí jedné z podtříd `AccessTokenProvider` (Následující příklad používá `ClientCredsTokenProvider` ). Poskytovatel tokenu má uložené přihlašovací údaje v mezipaměti a automaticky token obnovuje, pokud má vypršet jeho platnost. Je možné vytvořit vlastní podtřídy `AccessTokenProvider` , takže tokeny jsou získány kódem zákazníka. Teď teď používáme ten, který jste zadali v sadě SDK.
 
     Místo **FILL-IN-HERE** zadejte skutečné hodnoty pro webovou aplikaci Azure Active Directory.
 
-        private static String clientId = "FILL-IN-HERE";
-        private static String authTokenEndpoint = "FILL-IN-HERE";
-        private static String clientKey = "FILL-IN-HERE";
-    
-        AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);   
+    ```java
+    private static String clientId = "FILL-IN-HERE";
+    private static String authTokenEndpoint = "FILL-IN-HERE";
+    private static String clientKey = "FILL-IN-HERE";
+
+    AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);   
+    ```
 
 Sada Data Lake Storage Gen1 SDK poskytuje vhodné metody, které umožňují spravovat tokeny zabezpečení potřebné ke komunikaci s účtem Data Lake Storage Gen1. Není ale povinné použít tuto sadu SDK a tyto metody. Můžete použít také jakýkoliv jiný způsob získání tokenu, například sadu [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) nebo vlastní kód.
 

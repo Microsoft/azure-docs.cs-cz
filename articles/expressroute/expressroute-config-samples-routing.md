@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 6aa66ddc52665c22310fb58977fd516eea4e806a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b9db450139c22fdf2df0875f36c65cdf684dfb3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856693"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače pro nastavení a správu směrování
 Tato stránka poskytuje při práci se službou Azure ExpressRoute ukázky konfigurace rozhraní a směrování pro směrovače Cisco IOS – XE a Juniper MX řady.
@@ -40,78 +40,90 @@ V každém směrovači, který se připojíte k Microsoftu, budete potřebovat j
 
 Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní s jedním ID sítě VLAN. ID sítě VLAN je jedinečné pro každý partnerský vztah. Poslední oktet vaší adresy IPv4 bude vždycky liché číslo.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <VLAN_ID>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <VLAN_ID>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 **Definice rozhraní QinQ**
 
 Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní se dvěma ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud je použito, zůstává stejné napříč všemi partnerskými vztahy. ID vnitřní sítě VLAN (značka c) je jedinečné pro každý partnerský vztah. Poslední oktet vaší adresy IPv4 bude vždycky liché číslo.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 ### <a name="set-up-ebgp-sessions"></a>Nastavení relací eBGP
 Pro každý partnerský vztah musíte nastavit relaci protokolu BGP s Microsoftem. Pomocí následující ukázky nastavte relaci protokolu BGP. Pokud adresa IPv4, kterou jste použili pro vaše podrozhraní, byla. b. c. d, pak IP adresa souseda BGP (Microsoft) bude a. b. c. d + 1. Poslední oktet adresy IPv4 souseda protokolu BGP bude vždycky sudé číslo.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-     neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+ neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Nastavte předpony, které se budou inzerovat přes relaci protokolu BGP.
 Nakonfigurujte směrovač tak, aby inzeroval vybrané předpony do Microsoftu pomocí následující ukázky.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="route-maps"></a>Mapy tras
 Pomocí map tras a seznamů předpon můžete filtrovat předpony šířené do vaší sítě. Podívejte se na následující ukázku a ujistěte se, že máte nastavené odpovídající seznamy předpon.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
-     exit-address-family
-    !
-    route-map <MS_Prefixes_Inbound> permit 10
-     match ip address prefix-list <MS_Prefixes>
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
+ exit-address-family
+!
+route-map <MS_Prefixes_Inbound> permit 10
+ match ip address prefix-list <MS_Prefixes>
+!
+```
 
 ### <a name="configure-bfd"></a>Konfigurace BFD
 
 BFD nakonfigurujete na dvou místech: jednu na úrovni rozhraní a jinou na úrovni BGP. Tady je příklad pro rozhraní QinQ. 
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     bfd interval 300 min_rx 300 multiplier 3
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
-    
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> fall-over bfd
-     exit-address-family
-    !
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ bfd interval 300 min_rx 300 multiplier 3
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> fall-over bfd
+ exit-address-family
+!
+```
 
 
 ## <a name="juniper-mx-series-routers"></a>Směrovače společnosti Juniper MX Series
@@ -123,6 +135,7 @@ Ukázky v této části se vztahují na směrovač Juniper MX Series.
 
 Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní s jedním ID sítě VLAN. ID sítě VLAN je jedinečné pro každý partnerský vztah. Poslední oktet vaší adresy IPv4 bude vždycky liché číslo.
 
+```console
     interfaces {
         vlan-tagging;
         <Interface_Number> {
@@ -134,12 +147,14 @@ Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní s je
             }
         }
     }
+```
 
 
 **Definice rozhraní QinQ**
 
 Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní se dvěma ID sítě VLAN. Vnější ID sítě VLAN (s-tag), pokud je použito, zůstává stejné napříč všemi partnerskými vztahy. ID vnitřní sítě VLAN (značka c) je jedinečné pro každý partnerský vztah. Poslední oktet vaší adresy IPv4 bude vždycky liché číslo.
 
+```console
     interfaces {
         <Interface_Number> {
             flexible-vlan-tagging;
@@ -151,10 +166,12 @@ Tato ukázka poskytuje definici dílčího rozhraní pro dílčí rozhraní se d
             }                               
         }                                   
     }                           
+```
 
 ### <a name="set-up-ebgp-sessions"></a>Nastavení relací eBGP
 Pro každý partnerský vztah musíte nastavit relaci protokolu BGP s Microsoftem. Pomocí následující ukázky nastavte relaci protokolu BGP. Pokud adresa IPv4, kterou jste použili pro vaše podrozhraní, byla. b. c. d, pak IP adresa souseda BGP (Microsoft) bude a. b. c. d + 1. Poslední oktet adresy IPv4 souseda protokolu BGP bude vždycky sudé číslo.
 
+```console
     routing-options {
         autonomous-system <Customer_ASN>;
     }
@@ -167,10 +184,12 @@ Pro každý partnerský vztah musíte nastavit relaci protokolu BGP s Microsofte
             }                               
         }                                   
     }
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Nastavte předpony, které se budou inzerovat přes relaci protokolu BGP.
 Nakonfigurujte směrovač tak, aby inzeroval vybrané předpony do Microsoftu pomocí následující ukázky.
 
+```console
     policy-options {
         policy-statement <Policy_Name> {
             term 1 {
@@ -192,11 +211,12 @@ Nakonfigurujte směrovač tak, aby inzeroval vybrané předpony do Microsoftu po
             }                               
         }                                   
     }
-
+```
 
 ### <a name="route-policies"></a>Zásady směrování
 Pomocí map tras a seznamů předpon můžete filtrovat předpony šířené do vaší sítě. Podívejte se na následující ukázku a ujistěte se, že máte nastavené odpovídající seznamy předpon.
 
+```console
     policy-options {
         prefix-list MS_Prefixes {
             <IP_Prefix_1/Subnet_Mask>;
@@ -223,10 +243,12 @@ Pomocí map tras a seznamů předpon můžete filtrovat předpony šířené do 
             }                               
         }                                   
     }
+```
 
 ### <a name="configure-bfd"></a>Konfigurace BFD
 Nakonfigurujte BFD jenom v části protokol BGP.
 
+```console
     protocols {
         bgp { 
             group <Group_Name> { 
@@ -239,10 +261,12 @@ Nakonfigurujte BFD jenom v části protokol BGP.
             }                               
         }                                   
     }
+```
 
 ### <a name="configure-macsec"></a>Konfigurace MACSec
 V případě konfigurace MACSec musí klíč přidružení připojení (CAK) a název klíče přidružení připojení (CKN) odpovídat nakonfigurovaným hodnotám prostřednictvím příkazů PowerShellu.
 
+```console
     security {
         macsec {
             connectivity-association <Connectivity_Association_Name> {
@@ -260,6 +284,7 @@ V případě konfigurace MACSec musí klíč přidružení připojení (CAK) a n
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>Další kroky
 Další podrobnosti najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

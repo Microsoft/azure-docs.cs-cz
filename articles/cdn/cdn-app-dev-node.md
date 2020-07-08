@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f5a6180fa939699f752678271fbddfb8328a1afe
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c83323ff7b951892b96d49f3173c022592aac331
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84883937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920165"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -44,7 +44,9 @@ Teď, když jsme vytvořili skupinu prostředků pro profily CDN a udělili jí 
 
 Vytvořte složku pro uložení vaší aplikace.  Z konzoly nástroje Node.js nástrojů v aktuální cestě nastavte aktuální umístění do této nové složky a inicializujte projekt spuštěním:
 
-    npm init
+```console
+npm init
+```
 
 Pak budete mít k dispozici řadu otázek pro inicializaci projektu.  V případě **vstupního bodu**používá tento kurz *app.js*.  V následujícím příkladu vidíte své další volby.
 
@@ -52,8 +54,10 @@ Pak budete mít k dispozici řadu otázek pro inicializaci projektu.  V případ
 
 Náš projekt je nyní inicializován pomocí *packages.jsv* souboru.  Náš projekt bude používat některé knihovny Azure, které jsou obsaženy v balíčcích NPM.  Pro Node.js (Azure-ARM-CD) použijeme Azure Client runtime pro Node.js (MS-REST-Azure) a Klientská knihovna Azure CDN.  Pojďme je přidat do projektu jako závislosti.
 
-    npm install --save ms-rest-azure
-    npm install --save azure-arm-cdn
+```console
+npm install --save ms-rest-azure
+npm install --save azure-arm-cdn
+```
 
 Po dokončení instalace balíčků by *package.jsv* souboru mělo vypadat podobně jako v tomto příkladu (čísla verzí se můžou lišit):
 

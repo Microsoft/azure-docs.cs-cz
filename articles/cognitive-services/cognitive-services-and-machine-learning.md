@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856725"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -73,7 +73,7 @@ Cognitive Services jako skupina služeb může pro školený model vyžadovat ž
 
 ### <a name="no-additional-training-data-required"></a>Nevyžadují se žádné další školicí údaje.
 
-Služby, které poskytují plně vyškolený model, lze považovat za _černé pole_. Nemusíte znát, jak fungují nebo jaká data se použila k jejich školení. Data přenesete do plně vyškolených modelů, abyste získali předpověď. 
+Služby, které poskytují plně vyškolený model, se dají považovat za _neprůhledné pole_. Nemusíte znát, jak fungují nebo jaká data se použila k jejich školení. Data přenesete do plně vyškolených modelů, abyste získali předpověď. 
 
 ### <a name="some-or-all-training-data-required"></a>Některá nebo všechna nutná školicí data
 
@@ -93,10 +93,10 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |--|--|--|--|
 |[Detektor anomálií](./Anomaly-Detector/overview.md)|x|x|x|
 |Vyhledávání pomocí služby Bing |x|||
-|[Computer Vision](./Computer-vision/Home.md)|x|||
+|[Počítačové zpracování obrazu](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Tvář](./Face/Overview.md)|x|x||
+|[Rozpoznávání tváře](./Face/Overview.md)|x|x||
 |[Rozpoznávání formulářů](./form-recognizer/overview.md)||x||
 |[Asistivní čtečka](./immersive-reader/overview.md)|x|||
 |[Rozpoznávání rukopisu](./Ink-recognizer/overview.md)|x|x||
@@ -108,7 +108,7 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |[Převod řeči na text (STT)](speech-service/speech-to-text.md)|x|x||
 |[Překlad řeči](speech-service/speech-translation.md)|x|||
 |[Analýza textu](./text-analytics/overview.md)|x|||
-|[Překladač](./translator/translator-info-overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
 |[Překladatel – vlastní Překladatel](./translator/custom-translator/overview.md)||x||
 
 * Přizpůsobený modul potřebuje jenom školicí data shromážděná službou (stejně jako v reálném čase) k vyhodnocení vašich zásad a dat. Přizpůsobování nepotřebuje velké historické datové sady pro školení předem nebo Batch. 

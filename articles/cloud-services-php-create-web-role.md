@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 54410e1e70a2ec0d3a9e2f853dc9556cd05996ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70d48ba9519c627addf58939866633cdcc43049e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297250"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919827"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Vytvoření rolí pracovního procesu a webu PHP
 
@@ -40,22 +40,28 @@ Prvním krokem při vytváření webové role nebo role pracovního procesu PHP 
 
 Pokud chcete vytvořit nový projekt služby Azure, spusťte Azure PowerShell jako správce a spusťte následující příkaz:
 
-    PS C:\>New-AzureServiceProject myProject
+```powershell
+PS C:\>New-AzureServiceProject myProject
+```
 
-Tento příkaz vytvoří nový adresář (`myProject`), do kterého můžete přidat webové a pracovní role.
+Tento příkaz vytvoří nový adresář ( `myProject` ), do kterého můžete přidat webové a pracovní role.
 
 ## <a name="add-php-web-or-worker-roles"></a>Přidat webové role nebo role pracovních procesů PHP
 
 Chcete-li přidat webovou roli PHP do projektu, spusťte následující příkaz v kořenovém adresáři projektu:
 
-    PS C:\myProject> Add-AzurePHPWebRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWebRole roleName
+```
 
 V případě role pracovního procesu použijte tento příkaz:
 
-    PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```
 
 > [!NOTE]
-> `roleName` Parametr je nepovinný. Je-li tento parametr vynechán, bude automaticky vygenerován název role. První vytvořená webová role bude `WebRole1`, druhá bude `WebRole2`atd. První vytvořená role pracovního procesu bude `WorkerRole1`, druhá bude `WorkerRole2`atd.
+> `roleName`Parametr je nepovinný. Je-li tento parametr vynechán, bude automaticky vygenerován název role. První vytvořená webová role bude `WebRole1` , druhá bude atd `WebRole2` . První vytvořená role pracovního procesu bude `WorkerRole1` , druhá bude atd `WorkerRole2` .
 >
 >
 
@@ -68,11 +74,14 @@ V některých případech místo výběru integrovaného modulu runtime PHP a je
 Pokud chcete nakonfigurovat webovou roli, aby používala modul runtime PHP, který zadáte, postupujte takto:
 
 1. Vytvořte projekt služby Azure a přidejte webovou roli PHP, jak je popsáno dříve v tomto tématu.
-2. Vytvořte `php` složku ve `bin` složce, která se nachází v kořenovém adresáři webové role, a přidejte do `php` složky modul runtime php (všechny binární soubory, konfigurační soubory, podsložky atd.).
-3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat webovou roli tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Pokud to chcete provést, přidejte [instalační program sqlncli. msi x64] do `bin` složky v kořenovém adresáři webové role. Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
+2. Vytvořte `php` složku ve `bin` složce, která se nachází v kořenovém adresáři webové role, a přidejte do složky modul runtime php (všechny binární soubory, konfigurační soubory, podsložky atd.) `php` .
+3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat webovou roli tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Chcete-li to provést, přidejte [instalační programsqlncli.msi x64] do `bin` složky v kořenovém adresáři webové role. Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definujte úlohu po spuštění, která konfiguruje [Internetová informační služba (IIS)][iis.net] , aby používala modul runtime php ke `.php` zpracování požadavků na stránky. Provedete to tak, `setup_web.cmd` že v textovém editoru `bin` otevřete soubor (v souboru kořenového adresáře webové role) a nahradíte jeho obsah následujícím skriptem:
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
+4. Definujte úlohu po spuštění, která konfiguruje [Internetová informační služba (IIS)][iis.net] , aby používala modul runtime php ke zpracování požadavků na `.php` stránky. Provedete to tak, že `setup_web.cmd` v textovém editoru otevřete soubor (v `bin` souboru kořenového adresáře webové role) a nahradíte jeho obsah následujícím skriptem:
 
     ```cmd
     @ECHO ON
@@ -95,7 +104,7 @@ Pokud chcete nakonfigurovat webovou roli, aby používala modul runtime PHP, kte
 6. Publikujte aplikaci, jak je popsáno v části [publikování aplikace](#publish-your-application) níže.
 
 > [!NOTE]
-> `download.ps1` Skript (ve `bin` složce kořenového adresáře webové role) lze odstranit po provedení výše uvedeného postupu pro použití vlastního modulu runtime php.
+> `download.ps1`Skript (ve `bin` složce kořenového adresáře webové role) lze odstranit po provedení výše uvedeného postupu pro použití vlastního modulu runtime php.
 >
 >
 
@@ -104,11 +113,14 @@ Pokud chcete nakonfigurovat webovou roli, aby používala modul runtime PHP, kte
 Chcete-li nakonfigurovat roli pracovního procesu tak, aby používala modul runtime PHP, který zadáte, postupujte takto:
 
 1. Vytvořte projekt služby Azure a přidejte roli pracovního procesu PHP, jak je popsáno dříve v tomto tématu.
-2. V kořenovém adresáři role pracovního procesu vytvořte `php` složku a přidejte do `php` ní modul runtime php (všechny binární soubory, konfigurační soubory, podsložky atd.).
-3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat roli pracovního procesu tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Provedete to tak, že do kořenového adresáře role pracovního procesu přidáte [instalační program sqlncli. msi x64] . Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
+2. `php`V kořenovém adresáři role pracovního procesu vytvořte složku a přidejte do ní modul runtime php (všechny binární soubory, konfigurační soubory, podsložky atd.) `php` .
+3. VOLITELNÉ Pokud modul runtime PHP používá [ovladače Microsoft pro PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat roli pracovního procesu tak, aby při zřizování nainstalovala [SQL Server Native Client 2012][sql native client] . Pokud to chcete provést, přidejte [instalační programsqlncli.msi x64] do kořenového adresáře role pracovního procesu. Spouštěcí skript popsaný v dalším kroku bude při zřizování role tiše spustit instalační program. Pokud modul runtime PHP nepoužívá ovladače Microsoft pro PHP pro SQL Server, můžete z skriptu uvedeného v dalším kroku odebrat následující řádek:
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. V případě zřízení role definujte úlohu po `php.exe` spuštění, která přidá spustitelný soubor do proměnné prostředí PATH role pracovního procesu. Provedete to tak, `setup_worker.cmd` že v textovém editoru otevřete soubor (v kořenovém adresáři role pracovního procesu) a nahradíte jeho obsah následujícím skriptem:
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
+4. V případě zřízení role definujte úlohu po spuštění, která přidá `php.exe` spustitelný soubor do proměnné prostředí PATH role pracovního procesu. Provedete to tak, že `setup_worker.cmd` v textovém editoru otevřete soubor (v kořenovém adresáři role pracovního procesu) a nahradíte jeho obsah následujícím skriptem:
 
     ```cmd
     @echo on
@@ -147,20 +159,26 @@ Všimněte si, že musíte mít nainstalovaný PHP místně pro použití emulá
 
 Chcete-li spustit projekt v emulátorech, spusťte následující příkaz z kořenového adresáře vašeho projektu:
 
-    PS C:\MyProject> Start-AzureEmulator
+```powershell
+PS C:\MyProject> Start-AzureEmulator
+```
 
 Zobrazí se výstup podobný tomuto:
 
-    Creating local package...
-    Starting Emulator...
-    Role is running at http://127.0.0.1:81
-    Started
+```output
+Creating local package...
+Starting Emulator...
+Role is running at http://127.0.0.1:81
+Started
+```
 
-Aplikaci spuštěnou v emulátoru můžete zobrazit tak, že otevřete webový prohlížeč a přejdete na místní adresu zobrazenou ve výstupu (`http://127.0.0.1:81` v příkladu výstup výše).
+Aplikaci spuštěnou v emulátoru můžete zobrazit tak, že otevřete webový prohlížeč a přejdete na místní adresu zobrazenou ve výstupu ( `http://127.0.0.1:81` v příkladu výstup výše).
 
 Chcete-li zastavit emulátory, spusťte tento příkaz:
 
-    PS C:\MyProject> Stop-AzureEmulator
+```powershell
+PS C:\MyProject> Stop-AzureEmulator
+```
 
 ## <a name="publish-your-application"></a>Publikování aplikace
 
@@ -176,4 +194,4 @@ Další informace najdete v tématu [středisko pro vývojáře PHP](https://azu
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
-[Instalační program sqlncli. msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648
+[Instalační programsqlncli.msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648

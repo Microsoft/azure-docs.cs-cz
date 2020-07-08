@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855898"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -167,7 +167,7 @@ Níže jsou uvedené možnosti a výhody pro povolení dvoustupňové ověřová
 * Vyžadovat VÍCEFAKTOROVÉ ověřování pomocí Microsoft Authenticator pro všechny uživatele
 * Omezte starší verze ověřovacích protokolů.
 
-Tato metoda je dostupná pro všechny úrovně licencování, ale nemůže být smíšená se stávajícími zásadami podmíněného přístupu. Další informace najdete ve výchozím nastavení zabezpečení Azure AD.
+Tato metoda je dostupná pro všechny úrovně licencování, ale nemůže být smíšená se stávajícími zásadami podmíněného přístupu. Další informace najdete ve [výchozím nastavení zabezpečení Azure AD](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) .
 
 **Možnost 2**: [Povolení Multi-Factor Authentication změnou stavu uživatele](../../active-directory/authentication/howto-mfa-userstates.md).   
 **Zvýhodnění**: Jedná se o tradiční metodu pro Vyžadování dvoustupňového ověřování. Funguje s [azure Multi-Factor Authentication v cloudu i v azure Multi-Factor Authentication Server](/azure/active-directory/authentication/concept-mfa-whichversion). Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování pokaždé, když se přihlásí, a přepíše zásady podmíněného přístupu.
@@ -189,7 +189,7 @@ Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro v
 Tato metoda používá Azure AD Identity Protection hodnocení rizik k určení, jestli se vyžaduje dvoustupňové ověřování na základě rizika uživatele a přihlašování pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metodě najdete v [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview).
 
 > [!Note]
-> Možnost 1, povolení Multi-Factor Authentication změnou stavu uživatele, přepíše zásady podmíněného přístupu. Vzhledem k tomu, že možnosti 2 a 3 používají zásady podmíněného přístupu, nelze s nimi použít možnost 1.
+> Možnost 2, povolení Multi-Factor Authentication změnou stavu uživatele, Přepisuje zásady podmíněného přístupu. Protože možnosti 3 a 4 používají zásady podmíněného přístupu, nemůžete s nimi použít parametr 2.
 
 Organizace, které neposkytují další vrstvy ochrany identity, jako je například dvoustupňové ověřování, jsou náchylnější k útoku prostřednictvím krádeže přihlašovacích údajů. Útok krádeže přihlašovacích údajů může vést k ohrožení bezpečnosti dat.
 

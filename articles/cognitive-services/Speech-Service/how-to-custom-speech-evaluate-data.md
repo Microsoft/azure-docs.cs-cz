@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856834"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Vyhodnocení přesnosti služby Custom Speech
 
@@ -23,7 +23,7 @@ V tomto dokumentu se dozvíte, jak kvantitativní měření kvality modelu řeč
 
 ## <a name="what-is-word-error-rate-wer"></a>Co je četnost chyb ve Wordu (WER)?
 
-Standardní hodnota pro měření přesnosti modelu je *počet chyb v aplikaci* (WER). Služba WER počítá počet nesprávných slov identifikovaných během rozpoznávání a pak je vydělí celkovým počtem slov poskytnutých v přepisu popisku. Nakonec se toto číslo vynásobí 100% za účelem výpočtu WER.
+Standardní hodnota pro měření přesnosti modelu je *počet chyb v aplikaci* (WER). Služba WER počítá počet nesprávných slov zjištěných během rozpoznávání a pak je vydělí celkovým počtem slov poskytnutých v rámci přepisu popisku (viz obrázek N). Nakonec se toto číslo vynásobí 100% za účelem výpočtu WER.
 
 ![Vzorec WER](./media/custom-speech/custom-speech-wer-formula.png)
 

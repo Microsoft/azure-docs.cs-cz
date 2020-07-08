@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae829336c5328bec4b620217c34c69fa5931b3a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856851"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Virtuální síť je privátní síť v cloudu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Premium Azure cache.
@@ -59,24 +59,26 @@ Po vytvoření mezipaměti můžete kliknutím na **Virtual Network** v **nabíd
 
 Pokud se chcete připojit ke službě Azure cache pro instanci Redis při použití virtuální sítě, zadejte název hostitele vaší mezipaměti do připojovacího řetězce, jak je znázorněno v následujícím příkladu:
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-    });
+```csharp
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+});
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
+```
 
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Nejčastější dotazy k Azure cache pro virtuální sítě Redis
 Následující seznam obsahuje odpovědi na nejčastější dotazy týkající se škálování Azure cache pro Redis.
 
 * Jaké jsou některé běžné problémy s chybou konfigurace Azure cache pro Redis a virtuální sítě?
-* [Jak ověřit fungování mezipaměti ve virtuální síti?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [Jak ověřit, že mezipaměť funguje ve virtuální síti?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * Proč se při pokusu o připojení k mezipaměti Azure pro Redis ve virtuální síti zobrazuje chyba s oznámením, že vzdálený certifikát je neplatný?
 * [Můžu použít virtuální sítě se standardní nebo základní mezipamětí?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Proč v některých podsítích selže vytváření mezipaměti Azure pro Redis, ale ne jiné?
@@ -128,11 +130,11 @@ Existuje osm požadavků na rozsah příchozích portů. Příchozí požadavky 
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Příchozí |TCP |Komunikace klienta s Redis, Vyrovnávání zatížení Azure | (Podsíť Redis) | (Redis podsíť), Virtual Network Azure Load Balancer <sup>1</sup> |
 | 8443 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
-| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Azure Load Balancer |
+| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení v Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
 | 10221-10231 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Redis podsíť), Azure Load Balancer |
 | 13000-13999 |Příchozí |TCP |Komunikace klienta s Redis clustery, Vyrovnávání zatížení Azure | (Podsíť Redis) |Virtual Network Azure Load Balancer |
 | 15000-15999 |Příchozí |TCP |Komunikace klientů s Redis clustery, vyrovnáváním zatížení Azure a geografickou replikací | (Podsíť Redis) |Virtual Network, Azure Load Balancer (geografická podsíť druhé repliky) |
-| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Azure Load Balancer |
+| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení v Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
 | 20226 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
 
 <sup>1</sup> můžete použít značku služby ' AzureLoadBalancer ' (Správce prostředků) (nebo ' AZURE_LOADBALANCER ' pro klasický) pro vytváření pravidel NSG.
@@ -146,7 +148,7 @@ Existují požadavky na připojení k síti pro službu Azure cache pro Redis, k
 * Konfigurace DNS pro virtuální síť musí umožňovat překlad všech koncových bodů a domén uvedených v předchozích bodech. Tyto požadavky DNS můžou být splněné tím, že zajistí konfiguraci a údržbu platné infrastruktury DNS pro virtuální síť.
 * Odchozí síťové připojení k následujícím koncovým bodům monitorování Azure, které se řeší v následujících doménách DNS: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
-### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Jak ověřit fungování mezipaměti ve virtuální síti?
+### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Jak ověřit, že mezipaměť funguje ve virtuální síti?
 
 >[!IMPORTANT]
 >Když se připojujete ke službě Azure cache pro instanci Redis, která je hostovaná ve virtuální síti, musí být klienti mezipaměti ve stejné virtuální síti nebo ve virtuální síti s povoleným partnerským vztahem virtuálních sítí ve stejné oblasti Azure. Globální VNET Peering nejsou aktuálně podporovány. To zahrnuje všechny testovací aplikace nebo nástroje pro testování testů a diagnostiky. Bez ohledu na to, kde je klientská aplikace hostovaná, je nutné nakonfigurovat skupiny zabezpečení sítě tak, aby síťový provoz klienta měl přístup k instanci Redis.

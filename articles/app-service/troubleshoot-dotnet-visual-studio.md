@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857208"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -66,7 +66,7 @@ Sada Visual Studio poskytuje přístup k podmnožině funkcí správy aplikací 
     Chcete-li provést úlohu správy aplikací, kterou nelze provést v tomto okně, klikněte na tlačítko **otevřít v portál pro správu** . otevře se okno prohlížeče pro Azure Portal.
 
 ## <a name="access-app-files-in-server-explorer"></a><a name="remoteview"></a>Přístup k souborům aplikace v Průzkumník serveru
-Obvykle nasadíte webový projekt s `customErrors` příznakem v souboru Web. config, který `On` je `RemoteOnly`nastaven na nebo, což znamená, že se vám při potížích s něčím nezobrazí užitečná chybová zpráva. V případě mnoha chyb získáte stránku, například jednu z následujících možností:
+Obvykle nasadíte webový projekt s `customErrors` příznakem v Web.config souboru nastaveným na `On` nebo `RemoteOnly` , což znamená, že se vám nezobrazuje chybová zpráva, pokud došlo k nějakému problému. V případě mnoha chyb získáte stránku, například jednu z následujících možností:
 
 **Chyba serveru v/aplikaci:**
 
@@ -80,28 +80,28 @@ Obvykle nasadíte webový projekt s `customErrors` příznakem v souboru Web. co
 
 ![Chybová stránka neusnadňující](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-Často nejjednodušší způsob, jak najít příčinu chyby, je povolit podrobné chybové zprávy, které popisují první z předchozích snímků obrazovky. To vyžaduje změnu v nasazeném souboru Web. config. Můžete upravit soubor *Web. config* v projektu a znovu nasadit projekt, nebo vytvořit [transformaci Web. config](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) a nasadit sestavení pro ladění, ale existuje rychlejší způsob: v **Průzkumník řešení**můžete přímo zobrazit a upravit soubory ve vzdálené aplikaci pomocí funkce *vzdáleného zobrazení* .
+Často nejjednodušší způsob, jak najít příčinu chyby, je povolit podrobné chybové zprávy, které popisují první z předchozích snímků obrazovky. To vyžaduje změnu v nasazeném souboru Web.config. Můžete upravit soubor *Web.config* v projektu a znovu nasadit projekt, nebo vytvořit [Web.config transformovat](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) a nasadit sestavení pro ladění, ale existuje rychlejší způsob: v **Průzkumník řešení**můžete přímo zobrazit a upravit soubory ve vzdálené aplikaci pomocí funkce *vzdáleného zobrazení* .
 
 1. V **Průzkumník serveru**rozbalte položku **Azure**, rozbalte položku **App Service**, rozbalte skupinu prostředků, ve které je vaše aplikace umístěná, a potom rozbalte uzel pro vaši aplikaci.
 
     Zobrazí se uzly, které vám umožní přístup k souborům obsahu a souborům protokolu aplikace.
-2. Rozbalte uzel **soubory** a dvakrát klikněte na soubor *Web. config* .
+2. Rozbalte uzel **soubory** a dvakrát klikněte na soubor *Web.config* .
 
-    ![Otevřete soubor Web. config.](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Otevřít Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
-    Visual Studio otevře soubor Web. config ze vzdálené aplikace a zobrazí [Vzdálený] vedle názvu souboru v záhlaví.
+    Visual Studio otevře soubor Web.config ze vzdálené aplikace a v záhlaví zobrazí [Vzdálený] vedle názvu souboru.
 3. Přidejte následující řádek do `system.web` prvku:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Upravit soubor Web. config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Upravit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Aktualizujte prohlížeč, na kterém je zobrazená chybová zpráva, a teď zobrazíte podrobnou chybovou zprávu, například následující příklad:
 
     ![Podrobná chybová zpráva](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
     (Zobrazená chyba byla vytvořena přidáním řádku zobrazené červeně do *Views\Home\Index.cshtml*.)
 
-Úprava souboru Web. config je pouze jedním z příkladů scénářů, ve kterých je možnost číst a upravovat soubory ve vaší aplikaci App Service usnadňuje odstraňování potíží.
+Úprava souboru Web.config je jenom jedním z příkladů scénářů, ve kterých je možnost číst a upravovat soubory ve vaší aplikaci App Service usnadnit odstraňování potíží.
 
 ## <a name="remote-debugging-apps"></a><a name="remotedebug"></a>Aplikace pro vzdálené ladění
 Pokud podrobná chybová zpráva neposkytne dostatek informací a chyba se nedá znovu vytvořit v místním prostředí, můžete jiný způsob řešení potíží spustit v režimu ladění vzdáleně. Můžete nastavit zarážky, manipulovat přímo s pamětí, krokovat kód a dokonce i změnit cestu kódu.
@@ -151,7 +151,7 @@ V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste 
 
     Visual Studio zastaví na zarážce a kód je spuštěný v Azure, ne na vašem místním počítači.
 
-1. Pokud chcete zobrazit `currentTime` hodnotu času, najeďte myší na proměnnou.
+1. Pokud `currentTime` chcete zobrazit hodnotu času, najeďte myší na proměnnou.
 
     ![Zobrazit proměnnou v režimu ladění spuštěném v Azure](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
@@ -206,7 +206,7 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
 11. Pokračujte v běhu stisknutím klávesy F5.
 
-     `GenerateThumbnail` Metoda dokončí vytvoření miniatury.
+     `GenerateThumbnail`Metoda dokončí vytvoření miniatury.
 
 12. V prohlížeči aktualizujte stránku index a uvidíte miniaturu.
 
@@ -218,7 +218,7 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
      ![Klikněte na ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
-     Na řídicím panelu se `GenerateThumbnail` zobrazí, že se funkce spustila v poslední době.
+     Na řídicím panelu se zobrazí, že se `GenerateThumbnail` funkce spustila v poslední době.
 
      (Při příštím kliknutí na **zobrazit řídicí panel**se nemusíte přihlašovat a prohlížeč přejde přímo na stránku vaší webové úlohy.)
 
@@ -233,7 +233,7 @@ Pokud funkce [zapsala protokoly](https://github.com/Azure/azure-webjobs-sdk/wiki
 * Spuštění v režimu ladění v produkčním prostředí se nedoporučuje. Pokud se vaše produkční aplikace neškáluje na více instancí serveru, ladění brání webovému serveru v reakci na jiné požadavky. Pokud máte více instancí webového serveru, získáte při připojení k ladicímu programu náhodnou instanci a neexistuje žádný způsob, jak zajistit, aby následné požadavky prohlížeče přešly na stejnou instanci. Také obvykle nebudete nasazovat sestavení ladění do produkčního prostředí a optimalizace kompilátoru pro sestavení vydaných verzí mohou ukázat, co se děje řádekem v kódu ve zdrojovém kódu. Pro řešení potíží s produkčním prostředím je nejlepším prostředkem trasování aplikací a protokoly webového serveru.
 * Vyhněte se dlouhému zastavení při zarážce při vzdáleném ladění. Azure považuje proces, který se zastaví po delší dobu než několik minut, a ukončí ho.
 * Při ladění Server odesílá data do sady Visual Studio, což by mohlo mít vliv na poplatky za šířku pásma. Informace o sazbách šířky pásma najdete v tématu [ceny Azure](https://azure.microsoft.com/pricing/calculator/).
-* Ujistěte se, že `debug` atribut `compilation` elementu v souboru *Web. config* je nastaven na hodnotu true. Je nastavena na hodnotu true ve výchozím nastavení při publikování konfigurace sestavení ladění.
+* Ujistěte se, že `debug` atribut `compilation` prvku v souboru *Web.config* je nastaven na hodnotu true. Je nastavena na hodnotu true ve výchozím nastavení při publikování konfigurace sestavení ladění.
 
     ```xml
     <system.web>
@@ -243,7 +243,7 @@ Pokud funkce [zapsala protokoly](https://github.com/Azure/azure-webjobs-sdk/wiki
     ```
 * Pokud zjistíte, že ladicí program nekrokuje do kódu, který chcete ladit, bude pravděpodobně nutné změnit nastavení Pouze můj kód.  Další informace naleznete v tématu [určení, zda se má ladit pouze uživatelský kód pomocí pouze můj kód v aplikaci Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Časovač se spustí na serveru, když povolíte funkci vzdáleného ladění a po 48 hodinách se funkce automaticky vypne. Tento limit 48 hodin se provádí z důvodů zabezpečení a výkonu. Tuto funkci můžete snadno znovu zapnout, kolikrát chcete. Doporučujeme ponechat ho zakázaný, když nebudete aktivně ladit.
-* Ladicí program můžete připojit ručně k libovolnému procesu, nejen k procesu aplikace (W3wp. exe). Další informace o použití režimu ladění v aplikaci Visual Studio naleznete v tématu [ladění v aplikaci Visual Studio](/visualstudio/debugger/debugging-in-visual-studio).
+* Ladicí program můžete připojit ručně k libovolnému procesu, nejen k procesu aplikace (w3wp.exe). Další informace o použití režimu ladění v aplikaci Visual Studio naleznete v tématu [ladění v aplikaci Visual Studio](/visualstudio/debugger/debugging-in-visual-studio).
 
 ## <a name="diagnostic-logs-overview"></a><a name="logsoverview"></a>Přehled diagnostických protokolů
 Aplikace ASP.NET, která běží v aplikaci App Service, může vytvořit následující typy protokolů:
@@ -271,7 +271,7 @@ V této části provedete následující úlohy:
 Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete v tématu [jak pracovat s úložištěm Azure Queue pomocí sady WebJobs SDK – jak zapisovat protokoly](https://github.com/Azure/azure-webjobs-sdk/wiki). Následující pokyny pro zobrazení protokolů a řízení způsobu jejich uložení v Azure platí také pro protokoly aplikací vytvořené pomocí WebJobs.
 
 ### <a name="add-tracing-statements-to-the-application"></a>Přidání příkazů trasování do aplikace
-1. Otevřete *souboru controllers\homecontroller.cs*a nahraďte `Contact` metody `Index`, `About`a s následujícím kódem, aby bylo možné přidat `Trace` příkazy a `using` příkaz pro `System.Diagnostics`:
+1. Otevřete *souboru controllers\homecontroller.cs*a nahraďte `Index` metody, a `About` `Contact` s následujícím kódem, aby bylo možné přidat `Trace` příkazy a `using` příkaz pro `System.Diagnostics` :
 
     ```csharp
     public ActionResult Index()
@@ -312,7 +312,7 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
     ![Trasování v okně ladění](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
     Následující postup ukazuje, jak zobrazit výstup trasování na webové stránce bez kompilace v režimu ladění.
-1. Otevřete soubor Web. config aplikace (který se nachází ve složce projektu) a přidejte `<system.diagnostics>` element na konec souboru těsně před uzavírací `</configuration>` element:
+1. Otevřete soubor aplikace Web.config (ten umístěný ve složce projektu) a přidejte `<system.diagnostics>` element na konec souboru těsně před uzavírací `</configuration>` element:
 
     ``` xml
     <system.diagnostics>
@@ -329,15 +329,15 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
     </system.diagnostics>
     ```
 
-`WebPageTraceListener` Umožňuje zobrazit výstup trasování procházením na `/trace.axd`.
-1. Do souboru Web. config `<system.web>` přidejte <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">prvek trasování</a> , například následující příklad:
+`WebPageTraceListener`Umožňuje zobrazit výstup trasování procházením na `/trace.axd` .
+1. Do souboru Web.config přidejte <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">prvek trasování</a> `<system.web>` , například následující příklad:
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
     ```
 
 1. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
-1. Na panelu Adresa v okně prohlížeče přidejte do adresy URL *Trace. axd* a potom stiskněte klávesu ENTER (adresa URL je podobná `http://localhost:53370/trace.axd`).
+1. Na panelu Adresa v okně prohlížeče přidejte do adresy URL *Trace. axd* a potom stiskněte klávesu ENTER (adresa URL je podobná `http://localhost:53370/trace.axd` ).
 1. Na stránce **trasování aplikací** klikněte na tlačítko **Zobrazit podrobnosti** na prvním řádku (ne na řádku BrowserLink).
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
@@ -346,9 +346,11 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    Ve výchozím nastavení `trace.axd` je k dispozici pouze místně. Pokud jste chtěli, aby byl k dispozici ze vzdálené aplikace, mohli byste `localOnly="false"` přidat k `trace` elementu v souboru *Web. config* , jak je znázorněno v následujícím příkladu:
+    Ve výchozím nastavení `trace.axd` je k dispozici pouze místně. Pokud jste chtěli, aby byl k dispozici ze vzdálené aplikace, mohli byste přidat `localOnly="false"` do `trace` prvku v souboru *Web.config* , jak je znázorněno v následujícím příkladu:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```xml
+    <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```
 
     Povolení `trace.axd` v produkční aplikaci se ale z bezpečnostních důvodů nedoporučuje. V následujících částech uvidíte snazší způsob, jak číst protokoly trasování v aplikaci App Service.
 
@@ -366,7 +368,7 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
     ![Zobrazit protokoly streamování v místní nabídce](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
 4. V okně prohlížeče, které zobrazuje vaši domovskou stránku aplikace klikněte na tlačítko **kontakt**.
 
-    Během několika sekund se zobrazí výstup trasování na úrovni chyby, které jste přidali do `Contact` metody, v okně **výstup** .
+    Během několika sekund se zobrazí výstup trasování na úrovni chyby, které jste přidali do metody, `Contact` v okně **výstup** .
 
     ![Trasování chyb v okně výstup](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
@@ -386,7 +388,7 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
 
     ![Podrobný výstup trasování](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
 
-    V této části jste povolili a zakázali protokolování pomocí nastavení aplikace. Můžete také povolit a zakázat naslouchací procesy trasování úpravou souboru Web. config. Úprava souboru Web. config ale způsobí, že se doména aplikace recykluje, zatímco při povolování protokolování přes konfiguraci aplikace to neudělá. Pokud dojde k opakovanému reprodukování nebo občasnýmu zpracování problému, recyklování domény aplikace může "opravit" a vynutit vám, abyste počkali, až bude znovu provedeno. Povolením diagnostiky v Azure umožníte okamžité zachycení informací o chybách bez recyklace domény aplikace.
+    V této části jste povolili a zakázali protokolování pomocí nastavení aplikace. Můžete také povolit a zakázat naslouchací procesy trasování úpravou souboru Web.config. Úprava souboru Web.config ale způsobí, že se doména aplikace recykluje, zatímco při povolování protokolování přes konfiguraci aplikace to neudělá. Pokud dojde k opakovanému reprodukování nebo občasnýmu zpracování problému, recyklování domény aplikace může "opravit" a vynutit vám, abyste počkali, až bude znovu provedeno. Povolením diagnostiky v Azure umožníte okamžité zachycení informací o chybách bez recyklace domény aplikace.
 
 ### <a name="output-window-features"></a>Funkce okna výstup
 Karta **protokoly Microsoft Azure** v okně **výstup** obsahuje několik tlačítek a textové pole:
@@ -440,7 +442,7 @@ Podrobné protokoly chyb obsahují další informace o požadavcích HTTP, kter�
 
     ![Monitorovat všechny protokoly](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
-4. Na panelu Adresa v okně prohlížeče přidejte k adrese URL znak navíc, který způsobí chybu 404 (například `http://localhost:53370/Home/Contactx`), a stiskněte klávesu ENTER.
+4. Na panelu Adresa v okně prohlížeče přidejte k adrese URL znak navíc, který způsobí chybu 404 (například `http://localhost:53370/Home/Contactx` ), a stiskněte klávesu ENTER.
 
     Po několika sekundách se zobrazí podrobný protokol chyb v okně **výstup** sady Visual Studio.
 
@@ -669,7 +671,7 @@ K dispozici nejsou žádná důkladná a aktuální Úvod k ASP.NET trasování 
 
 Pro protokolování chyb je alternativou k psaní vlastního trasovacího kódu použití Open Source protokolovacího rozhraní, jako je [knihovny elmah](https://nuget.org/packages/elmah/). Další informace najdete v [blogovém příspěvku Scott Hanselman o knihovny elmah](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
 
-K získání protokolů streamování z Azure nemusíte také používat ASP.NET ani `System.Diagnostics` trasování. Služba protokol streamování aplikací App Service streamuje libovolný soubor *. txt*, *. html*nebo *. log* , který najde ve složce *Logfiles* . Proto byste mohli vytvořit vlastní systém protokolování, který zapisuje do systému souborů aplikace, a váš soubor se automaticky streamuje a stáhne. Vše, co musíte udělat, je napsat kód aplikace, který vytvoří soubory ve složce *d:\home\logfiles* .
+`System.Diagnostics`K získání protokolů streamování z Azure nemusíte také používat ASP.NET ani trasování. Služba protokol streamování aplikací App Service streamuje libovolný soubor *. txt*, *. html*nebo *. log* , který najde ve složce *Logfiles* . Proto byste mohli vytvořit vlastní systém protokolování, který zapisuje do systému souborů aplikace, a váš soubor se automaticky streamuje a stáhne. Vše, co musíte udělat, je napsat kód aplikace, který vytvoří soubory ve složce *d:\home\logfiles* .
 
 ### <a name="analyzing-web-server-logs"></a>Analýza protokolů webového serveru
 Další informace o analýze protokolů webového serveru najdete v následujících zdrojích informací:

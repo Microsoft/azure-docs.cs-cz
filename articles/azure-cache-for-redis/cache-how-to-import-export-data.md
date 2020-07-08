@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856999"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Import a export dat v Azure cache pro Redis
 Import/Export je mezipaměť Azure pro operaci správy dat Redis, která umožňuje importovat data do mezipaměti Azure pro Redis nebo exportovat data z mezipaměti Azure pro Redis tím, že importuje a exportuje snímek Azure cache for Redis Database (RDB) z mezipaměti Premium do objektu BLOB v účtu Azure Storage.
@@ -127,7 +127,7 @@ Ano, a můžete importovat/exportovat mezi Clusterovou mezipamětí a neclustero
 Některé cenové úrovně mají odlišná [omezení databází](cache-configure.md#databases), takže při importu je potřeba vzít v paměti, pokud jste při vytváření mezipaměti nakonfigurovali vlastní hodnotu pro `databases` nastavení.
 
 * Při importu do cenové úrovně s nižším `databases` limitem, než je vrstva, ze které jste exportovali:
-  * Pokud používáte výchozí počet `databases`, který je pro všechny cenové úrovně 16, neztratí se žádná data.
+  * Pokud používáte výchozí počet `databases` , který je pro všechny cenové úrovně 16, neztratí se žádná data.
   * Pokud používáte vlastní počet `databases` , který spadá do omezení pro vrstvu, do které importujete, neztratí se žádná data.
   * Pokud vaše exportovaná data obsahují data v databázi, která překračuje limity nové úrovně, data z těchto vyšších databází se neimportují.
 
@@ -142,7 +142,9 @@ Ano, pokyny pro PowerShell najdete v tématu [Import mezipaměti Azure pro Redis
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Během operace import/export se zobrazila chyba časového limitu. Co to znamená?
 Pokud zůstanete v okně **importovat data** nebo **exportovat data** déle než 15 minut před zahájením operace, zobrazí se chybová zpráva podobná následujícímu příkladu:
 
-    The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```output
+The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```
 
 Chcete-li tento problém vyřešit, spusťte operaci importu nebo exportu ještě před 15 minutami.
 

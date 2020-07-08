@@ -3,12 +3,12 @@ title: Vytvoření vlastních artefaktů pro virtuální počítač s DevTest La
 description: Naučte se vytvářet vlastní artefakty pro použití s Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f33b6da3354dc3caf9376f249b802d324aa3148c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857023"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs
 
@@ -24,25 +24,27 @@ Můžete použít *artefakty* k nasazení a nastavení aplikace po zřízení vi
 ## <a name="artifact-definition-file-format"></a>Formát definičního souboru artefaktu
 Následující příklad ukazuje oddíly, které tvoří základní strukturu definičního souboru:
 
-    {
-      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-      "title": "",
-      "description": "",
-      "iconUri": "",
-      "targetOsType": "",
-      "parameters": {
-        "<parameterName>": {
-          "type": "",
-          "displayName": "",
-          "description": ""
-        }
-      },
-      "runCommand": {
-        "commandToExecute": ""
+```json
+  {
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "",
+    "description": "",
+    "iconUri": "",
+    "targetOsType": "",
+    "parameters": {
+      "<parameterName>": {
+        "type": "",
+        "displayName": "",
+        "description": ""
       }
+    },
+    "runCommand": {
+      "commandToExecute": ""
     }
+  }
+```
 
-| Název elementu | Povinné? | Popis |
+| Název elementu | Povinné? | Description |
 | --- | --- | --- |
 | $schema |No |Umístění souboru schématu JSON. Soubor schématu JSON vám může přispět k otestování platnosti definičního souboru. |
 | title |Yes |Název artefaktu zobrazeného v testovacím prostředí |
@@ -57,15 +59,17 @@ V oddílu Parameters souboru definice určete, které hodnoty může uživatel z
 
 Chcete-li definovat parametry, použijte následující strukturu:
 
-    "parameters": {
-      "<parameterName>": {
-        "type": "<type-of-parameter-value>",
-        "displayName": "<display-name-of-parameter>",
-        "description": "<description-of-parameter>"
-      }
+```json
+  "parameters": {
+    "<parameterName>": {
+      "type": "<type-of-parameter-value>",
+      "displayName": "<display-name-of-parameter>",
+      "description": "<description-of-parameter>"
     }
+  }
+```
 
-| Název elementu | Povinné? | Popis |
+| Název elementu | Povinné? | Description |
 | --- | --- | --- |
 | typ |Yes |Typ hodnoty parametru Seznam povolených typů najdete v následujícím seznamu. |
 | displayName |Yes |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
@@ -115,12 +119,14 @@ V následujícím seznamu jsou uvedeny běžné funkce:
 
 Následující příklad ukazuje, jak použít výrazy a funkce k vytvoření hodnoty:
 
-    runCommand": {
-        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
-    , ' -RawPackagesList ', parameters('packages')
-    , ' -Username ', parameters('installUsername')
-    , ' -Password ', parameters('installPassword'))]"
-    }
+```json
+  runCommand": {
+      "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+  , ' -RawPackagesList ', parameters('packages')
+  , ' -Username ', parameters('installUsername')
+  , ' -Password ', parameters('installPassword'))]"
+  }
+```
 
 ## <a name="create-a-custom-artifact"></a>Vytvoření vlastního artefaktu
 

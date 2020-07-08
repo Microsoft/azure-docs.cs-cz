@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73904630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855907"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Vyladění Azure Data Lake Storage Gen1 pro výkon
 
@@ -65,15 +65,11 @@ Někdy mají datové kanály omezenou kontrolu nad nezpracovanými daty, která 
 
 V případě úloh podregistrů a ADLA může vytváření oddílů při vyřazování dat časových řad v některých dotazech pomáhat při čtení pouze podmnožiny dat, což zvyšuje výkon.
 
-Tyto kanály, které ingestují data časových řad, často umísťují své soubory se strukturovaným pojmenování pro soubory a složky. Níže je uveden běžný příklad pro data, která jsou strukturována podle data:
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+Tyto kanály, které ingestují data časových řad, často umísťují své soubory se strukturovaným pojmenování pro soubory a složky. Níže je uveden běžný příklad pro data, která jsou strukturovaná podle data: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. TSV*.
 
 Všimněte si, že informace o typu DateTime se zobrazí jak jako složky, tak i v názvu souboru.
 
-Pro datum a čas je toto běžný vzor.
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+Pro datum a čas je zde běžný vzor: *\dataset\yyyy\mm\dd\hh\mm\ datafile_YYYY_MM_DD_HH_mm. TSV*.
 
 Výběr, který provedete se složkou a organizací souborů, by se měl optimalizovat pro větší velikosti souborů a přiměřený počet souborů v každé složce.
 

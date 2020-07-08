@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71846534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856943"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Podpora 32bitových operačních systémů ve virtuálních počítačích Azure
 
-Microsoft Azure teď umožňuje uživatelům do Azure přenést do svých 32 operačních systémů Windows. Vzhledem k tomu, že některé z těchto operačních systémů již dosáhly smlouvy o podpoře na konci životního cyklu, společnost Microsoft nenabízí další podporu pro tyto operační systémy. Podpora se také nenabízí pro operační systémy založené na systému Linux nebo pro distribuci na platformě BSD (Berkeley Software Distribution), které běží na Microsoft Azurem virtuálním počítači (VM).
+Microsoft Azure teď umožňuje uživatelům do Azure přenést do svých 32 operačních systémů Windows. Podporované jsou jenom specializované virtuální pevné disky a v Azure nebudou fungovat generalizované image. Vzhledem k tomu, že některé z těchto operačních systémů již dosáhly smlouvy o podpoře na konci životního cyklu, společnost Microsoft nenabízí další podporu pro tyto operační systémy. Podpora se také nenabízí pro operační systémy založené na systému Linux nebo pro distribuci na platformě BSD (Berkeley Software Distribution), které běží na Microsoft Azurem virtuálním počítači (VM).
 
 ## <a name="more-information"></a>Další informace
 
 Další informace o operačních systémech, které jsou podporované na virtuálních počítačích Azure, najdete v následujících článcích znalostní báze Microsoft Knowledge Base:
 
 * [Podpora serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
-* [Podpora technologie pro Linux a open source v Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
+* [Podpora Linuxu a open source technologií v Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 * [Další informace o bezplatných rozšířených aktualizacích zabezpečení pro Windows Server 2008/R2 v Azure](https://www.microsoft.com/cloud-platform/windows-server-2008)
 * [Přečtěte si další informace o podpoře systému Windows Server 2008 SP2 32 – specializované image v Azure](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
