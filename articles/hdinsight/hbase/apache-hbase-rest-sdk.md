@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e769d33db0a8f28ed22ba3c284a1e9b23ea6d11
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74806656"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959156"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .NET SDK pro Apache HBA
 
@@ -25,11 +24,13 @@ Pro aplikace v jazyce C# a .NET poskytuje [Klientská knihovna REST Microsoft HB
 
 Sada HBA sady .NET SDK je k dispozici jako balíček NuGet, který lze nainstalovat z **konzoly Správce balíčků NuGet** sady Visual Studio pomocí následujícího příkazu:
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Vytvoření instance nového objektu HBaseClient
 
-Chcete-li použít sadu SDK, vytvořte instanci `HBaseClient` nového objektu a předejte se `ClusterCredentials` složeným z rozhraní `Uri` do vašeho clusteru a uživatelské jméno a heslo Hadoop.
+Chcete-li použít sadu SDK, vytvořte instanci nového `HBaseClient` objektu a předejte se `ClusterCredentials` složeným z rozhraní `Uri` do vašeho clusteru a uživatelské jméno a heslo Hadoop.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -70,7 +71,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Vložení dat
 
-Chcete-li vložit data, zadejte jedinečný klíč řádku jako identifikátor řádku. Všechna data jsou uložena v `byte[]` poli. Následující kód definuje a přidá sloupce `title`, `director`a `release_date` do rodiny sloupců T1, protože tyto sloupce jsou nejčastěji používané. Sloupce `description` a `tagline` jsou přidány do rodiny sloupců T2. Data můžete podle potřeby rozdělit do rodin sloupců.
+Chcete-li vložit data, zadejte jedinečný klíč řádku jako identifikátor řádku. Všechna data jsou uložena v `byte[]` poli. Následující kód definuje a přidá `title` `director` sloupce, a `release_date` do rodiny sloupců T1, protože tyto sloupce jsou nejčastěji používané. `description`Sloupce a `tagline` jsou přidány do rodiny sloupců T2. Data můžete podle potřeby rozdělit do rodin sloupců.
 
 ```csharp
 var key = "fifth_element";
@@ -118,7 +119,7 @@ HBA implementují [Cloud BigTable](https://cloud.google.com/bigtable/), takže f
 
 ## <a name="select-data"></a>Výběr dat
 
-Chcete-li načíst data z tabulky HBA, předejte název tabulky a klíč řádku do `GetCellsAsync` metody, která vrátí. `CellSet`
+Chcete-li načíst data z tabulky HBA, předejte název tabulky a klíč řádku do `GetCellsAsync` metody, která vrátí `CellSet` .
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +133,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-V tomto případě kód vrátí pouze první vyhovující řádek, protože pro jedinečný klíč by měl být pouze jeden řádek. Vrácená hodnota se změní na `string` formát v `byte[]` poli. Tuto hodnotu můžete také převést na jiné typy, jako je například celé číslo pro datum vydání verze videa:
+V tomto případě kód vrátí pouze první vyhovující řádek, protože pro jedinečný klíč by měl být pouze jeden řádek. Vrácená hodnota se změní na `string` Formát v `byte[]` poli. Tuto hodnotu můžete také převést na jiné typy, jako je například celé číslo pro datum vydání verze videa:
 
 ```csharp
 var releaseDateField = cells.rows[0].values

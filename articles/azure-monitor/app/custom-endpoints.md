@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
 ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194839"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
@@ -25,7 +24,7 @@ Pokud chcete odesílat data z Application Insights do určitých oblastí, budet
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> Soubor ApplicationInsights. config je automaticky přepsán, kdykoli je proveden upgrade sady SDK. Po provedení upgradu sady SDK nezapomeňte znovu zadat hodnoty koncového bodu specifické pro oblast.
+> Soubor applicationinsights.config je automaticky přepsán, kdykoli se provede upgrade sady SDK. Po provedení upgradu sady SDK nezapomeňte znovu zadat hodnoty koncového bodu specifické pro oblast.
 
 ```xml
 <ApplicationInsights>
@@ -49,7 +48,7 @@ Pokud chcete odesílat data z Application Insights do určitých oblastí, budet
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Upravte soubor appSettings. JSON v projektu následujícím způsobem a upravte hlavní koncový bod:
+Upravte appsettings.jssouboru v projektu následujícím způsobem pro úpravu hlavního koncového bodu:
 
 ```json
 "ApplicationInsights": {
@@ -83,7 +82,7 @@ Název: `APPLICATIONINSIGHTS_CONNECTION_STRING` hodnota:`Connection String Value
 
 # <a name="java"></a>[Java](#tab/java)
 
-Upravte soubor ApplicationInsights. XML a změňte výchozí adresu koncového bodu.
+Upravte soubor applicationinsights.xml tak, aby se změnila výchozí adresa koncového bodu.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

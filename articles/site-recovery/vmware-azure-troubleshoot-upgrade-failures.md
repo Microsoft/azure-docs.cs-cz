@@ -8,10 +8,9 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84434367"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
@@ -30,17 +29,17 @@ K upgradu použijte následující postup:
    1. V části "odkazy na aktuálně podporované kumulativní aktualizace" [v článku aktualizace služby v Azure Site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) vyberte poskytovatele, kterého chcete upgradovat.
    2. Na stránce Souhrn vyhledejte část **informace o aktualizaci** a Stáhněte kumulativní aktualizaci pro Microsoft Azure Site Recovery Unified Setup.
 
-2. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace. Extrahujte instalační soubory ze souboru ke stažení pomocí následujícího příkazu: MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt; cesta ke složce extrahovaných souborů &gt; .
+2. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace. Extrahujte instalační soubory ze souboru ke stažení pomocí následujícího příkazu MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: &lt; cesta ke složce pro extrahované soubory &gt; .
     
     Příklad příkazu:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: C:\Temp\Extracted
 
 3. Na příkazovém řádku přejděte do složky, do které jste extrahovali soubory, a spusťte následující instalační příkazy:
    
-    CX_THIRDPARTY_SETUP. EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART UCX_SERVER_SETUP. EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART/UPGRADE
+    CX_THIRDPARTY_SETUP.EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART UCX_SERVER_SETUP.EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART/UPGRADE
 
-1. Vraťte se do složky, do které jste stáhli sjednocenou instalaci, a spuštěním MicrosoftAzureSiteRecoveryUnifiedSetup. exe dokončete upgrade. 
+1. Vraťte se do složky, do které jste stáhli sjednocenou instalaci, a spusťte MicrosoftAzureSiteRecoveryUnifiedSetup.exe pro dokončení upgradu. 
 
 ## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>Upgrade se nezdařil z důvodu přejmenování složky třetí strany.
 
@@ -48,24 +47,24 @@ Aby byl upgrade úspěšný, nesmí být složka třetí strany přejmenována.
 
 K vyřešení tohoto problému.
 
-1. Spusťte Editor registru (Regedit. exe) a otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
+1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
 1. Zkontrolujte `Build_Version` hodnotu klíče. Pokud je nastavená na nejnovější verzi, snižte číslo verze. Například pokud je nejnovější verze 9,22. \* a `Build_Version` nastavte klíč na tuto hodnotu a pak ho snižte na 9,21. \* .
 1. Stáhněte si nejnovější Microsoft Azure Site Recovery Unified Setup:
    1. V části "odkazy na aktuálně podporované kumulativní aktualizace" [v článku aktualizace služby v Azure Site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) vyberte poskytovatele, kterého chcete upgradovat.
    2. Na stránce Souhrn vyhledejte část **informace o aktualizaci** a Stáhněte kumulativní aktualizaci pro Microsoft Azure Site Recovery Unified Setup.
-1. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace, a extrahujte instalační soubory ze souboru ke stažení pomocí následujícího příkazu, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt; cesta ke složce extrahovaných souborů &gt; .
+1. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace, a extrahujte instalační soubory ze souboru ke stažení pomocí následujícího příkazu MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: &lt; cesta ke složce pro extrahované soubory &gt; .
 
     Příklad příkazu:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: C:\Temp\Extracted
 
 1. Na příkazovém řádku přejděte do složky, do které jste extrahovali soubory, a spusťte následující instalační příkazy:
    
-    CX_THIRDPARTY_SETUP. EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART
+    CX_THIRDPARTY_SETUP.EXE/VERYSILENT/SUPPRESSMSGBOXES/NORESTART
 
-1. Pomocí Správce úloh můžete monitorovat průběh instalace. Při CX_THIRDPARTY_SETUP procesu. Nástroj EXE již není ve Správci úloh viditelný, přejděte k dalšímu kroku.
+1. Pomocí Správce úloh můžete monitorovat průběh instalace. Pokud proces pro CX_THIRDPARTY_SETUP.EXE již není viditelný ve Správci úloh, přejděte k dalšímu kroku.
 1. Ověřte, zda existuje C:\thirdparty a zda složka obsahuje knihovny RRD.
-1. Vraťte se do složky, do které jste stáhli sjednocenou instalaci, a spuštěním MicrosoftAzureSiteRecoveryUnifiedSetup. exe dokončete upgrade.
+1. Vraťte se do složky, do které jste stáhli sjednocenou instalaci, a spusťte MicrosoftAzureSiteRecoveryUnifiedSetup.exe pro dokončení upgradu.
 
 ## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>Upgrade se nezdařil z důvodu chyby instalace hlavního cíle.
 
@@ -73,7 +72,7 @@ Při upgradu zprostředkovatele Microsoft Azure Site Recovery Provider (DRA) se 
 
 Příčinou může být hodnota null pro parametr v klíči registru. Řešení problému –
 
-1. Spusťte Editor registru (Regedit. exe) a otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
+1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
 1. Zkontrolujte hodnotu klíče ' InstallDirectory '.Pokud má hodnotu null, přidejte hodnotu aktuální instalační adresář.
 1. Podobně otevřete větev HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 v editoru registru.
 1. Zkontrolujte hodnotu klíče InstallDirectory a přidejte hodnotu aktuální instalační adresář.

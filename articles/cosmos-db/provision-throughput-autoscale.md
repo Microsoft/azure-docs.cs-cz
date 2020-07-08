@@ -7,15 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791142"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Vytvoření kontejnerů a databází Azure Cosmos s využitím propustnosti automatického škálování
 
-Azure Cosmos DB vám umožní nastavit buď standardní (ruční), nebo škálovatelnou propustnost zřízené na vašich databázích a kontejnerech. Tento článek popisuje výhody a případy použití zřízené propustnosti pomocí automatického škálování. 
+Azure Cosmos DB umožňuje nastavit standardní (ruční) nebo automatické škálování zřízené propustnosti databází a kontejnerů. Tento článek popisuje výhody a případy použití automatického škálování zřízené propustnosti. 
 
 Zajištěná propustnost pro automatické škálování je vhodná pro klíčové úlohy, které mají proměnlivé nebo nepředvídatelné vzory přenosů dat, a vyžadují SLA s vysokým výkonem a škálováním. 
 
@@ -63,11 +62,11 @@ Pomocí [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Omezení propustnosti a úložiště pro automatické škálování
 
-V případě jakékoli hodnoty `Tmax` může databáze nebo kontejner uchovávat celkem `0.01 * Tmax GB` . Po dosažení tohoto limitu úložiště se maximální RU/s automaticky zvýší na základě nové hodnoty úložiště bez dopadu na vaši aplikaci. 
+V případě jakékoli hodnoty `Tmax` může databáze nebo kontejner uchovávat celkem `0.01 * Tmax GB` . Po dosažení této velikosti úložiště se maximální počet RU/s automaticky zvýší v závislosti na nové hodnotě úložiště bez jakéhokoli dopadu na vaši aplikaci. 
 
-Pokud například zadáte maximální RU/s 50 000 RU/s (měřítko mezi 5000-50 000 RU/s), můžete ukládat až 500 GB dat. Pokud překročíte 500 GB – např. úložiště je nyní 600 GB, nové maximum RU/s bude 60 000 RU/s (škáluje se v rozsahu 6000-60 000 RU/s).
+Například pokud začnete s maximálním počtem 50 000 RU/s (škálování mezi 5 000 a 50 000 RU/s), můžete uložit až 500 GB dat. Pokud překročíte 500 GB, například na 600 GB úložiště, nový maximální počet RU/s bude 60 000 (škálování mezi 6 000 a 60 000 RU/s).
 
-Když použijete propustnost na úrovni databáze s AutoScale, můžete mít prvních 25 kontejnerů, které mají automatické škálování maximální RU/s 4000 (škáluje 400-4000 RU/s), pokud nepřekračujete 40 GB úložiště. Další informace najdete v této [dokumentaci](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) .
+Pokud s automatickým škálováním využijete propustnost na úrovni databáze, prvních 25 kontejnerů může sdílet maximální počet 4 000 RU/s automatického škálování (škálování mezi 400 a 4 000 RU/s), dokud nepřekročíte 40 GB úložiště. Další informace najdete v této [dokumentaci](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) .
 
 ## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>Porovnání – kontejnery nakonfigurované s ručním a nepropustností automatického škálování
 Další podrobnosti najdete v této [dokumentaci](how-to-choose-offer.md) k výběru mezi standardní (ruční) a propustností automatického škálování.  

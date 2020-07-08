@@ -4,10 +4,9 @@ description: Použijte operaci kopírování v šabloně Azure Resource Manager 
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678456"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Iterace vlastnosti v šablonách ARM
@@ -16,7 +15,7 @@ V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Element Copy má následující obecný formát:
 
@@ -252,7 +251,7 @@ Můžete použít iteraci prostředků a vlastností společně. Odkázat na ite
 
 Následující příklad ukazuje běžný scénář pro vytvoření více než jedné hodnoty pro vlastnost.
 
-|Šablona  |Popis  |
+|Šablona  |Description  |
 |---------|---------|
 |[Nasazení virtuálního počítače s proměnným počtem datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí několik datových disků s virtuálním počítačem. |
 

@@ -8,12 +8,11 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679654"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806631"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Podobnost a bodování v Azure Kognitivní hledání
 
@@ -38,7 +37,7 @@ Profil vyhodnocování je součástí definice indexu, která se skládá z vá�
 
 <a name="scoring-statistics"></a>
 
-## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Statistiky bodování a rychlé relace (Preview)
+## <a name="scoring-statistics-and-sticky-sessions"></a>Statistiky bodování a rychlé relace
 
 Z důvodu škálovatelnosti Azure Kognitivní hledání distribuuje každý index vodorovně prostřednictvím procesu horizontálního dělení, což znamená, že části indexu jsou fyzicky oddělené.
 
@@ -47,14 +46,14 @@ Ve výchozím nastavení se skóre dokumentu počítá na základě statistický
 Pokud upřednostňujete výpočet skóre na základě statistických vlastností ve všech horizontálních oddílů, můžete to udělat přidáním *scoringStatistics = Global* jako [parametru dotazu](https://docs.microsoft.com/rest/api/searchservice/search-documents) (nebo přidat *"scoringStatistics": "Global"* jako parametr těla [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
 Použití scoringStatistics zajistí, že všechny horizontálních oddílů ve stejné replice budou mít stejné výsledky. V takovém případě se jiné repliky mohou mírně lišit, protože jsou vždy aktualizovány pomocí nejnovějších změn v indexu. V některých scénářích můžete chtít, aby vaši uživatelé měli během dotazové relace k větší konzistenci výsledků. V takových scénářích můžete zadat `sessionId` jako součást dotazů. `sessionId`Je jedinečný řetězec, který vytvoříte pro odkazování na jedinečnou relaci uživatele.
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
@@ -72,6 +71,37 @@ Prozatím můžete určit, který algoritmus řazení podobnosti byste chtěli p
 Následující segment videa se rychle přepošle na vysvětlení algoritmů hodnocení používaných v Azure Kognitivní hledání. Pro další pozadí si můžete přehrát celé video.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
+
+<a name="featuresMode-param"></a>
+
+## <a name="featuresmode-parameter-preview"></a>parametr featuresMode (Preview)
+
+Požadavky na [hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) mají nový parametr [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) , který může poskytnout další podrobnosti o závažnosti na úrovni pole. Vzhledem k tomu `@searchScore` , že se pro dokument počítá vše (jak to je důležité pro tento dokument v kontextu tohoto dotazu), můžete prostřednictvím featuresMode získat informace o jednotlivých polích, jak vyjadřují ve `@search.features` struktuře. Struktura obsahuje všechna pole, která se používají v dotazu (buď určitá pole prostřednictvím **searchFields** v dotazu, nebo všechna pole, která jsou v indexu **vyhledána jako prohledávatelný** ). Pro každé pole získáte následující hodnoty:
+
++ Počet jedinečných tokenů nalezených v poli
++ Skóre podobnosti nebo míra, jak podobný obsah pole je, relativní vzhledem k termínu dotazu
++ Frekvence termínu nebo počet, kolikrát byl termín dotazu nalezen v poli
+
+Pro dotaz, který cílí na pole Description (popis) a "title", může odpověď, která obsahuje, `@search.features` vypadat takto:
+
+```json
+"value": [
+ {
+    "@search.score": 5.1958685,
+    "@search.features": {
+        "description": {
+            "uniqueTokenMatches": 1.0,
+            "similarityScore": 0.29541412,
+            "termFrequency" : 2
+        },
+        "title": {
+            "uniqueTokenMatches": 3.0,
+            "similarityScore": 1.75451557,
+            "termFrequency" : 6
+        }
+```
+
+Tyto datové body můžete využívat ve [vlastních řešeních bodování](https://github.com/Azure-Samples/search-ranking-tutorial) nebo je použít k ladění problémů s relevancí vyhledávání.
 
 ## <a name="see-also"></a>Viz také
 

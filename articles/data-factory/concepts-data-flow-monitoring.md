@@ -7,13 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/17/2020
-ms.openlocfilehash: 9594a2ddfaa0103e171618925ba6974bf9ad7f00
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.date: 07/03/2020
+ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833961"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958888"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -56,12 +55,31 @@ Po spuštění toku dat ve Sparku Azure Data Factory určí optimální cesty k�
   * Čas spuštění clusteru: doba, po kterou se získá výpočetní prostředí JIT ve službě JIT pro spuštění toku dat
   * Počet transformací: kolik kroků transformace se provádí v toku
   
-![Sledování toku dat](media/data-flow/monitornew.png "Nové monitorování toku dat")  
+![Sledování toku dat](media/data-flow/monitornew.png "Nové monitorování toku dat")
+
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Celková doba zpracování jímky vs. doba zpracování transformace
+
+Každá fáze transformace obsahuje celkovou dobu, po kterou je tato fáze dokončena, společně s každou dobou spuštění oddílu celkem. Po kliknutí na jímku se zobrazí "doba zpracování jímky". Tentokrát zahrnuje celkový čas transformace *a* i/O čas, který trvalo zápis dat do cílového úložiště. Rozdíl mezi časem zpracování jímky a celkem transformace je vstupně-výstupní čas pro zápis dat.
+
+Pokud v zobrazení monitorování kanálu ADF otevřete výstup JSON z aktivity toku dat, můžete také zobrazit podrobné časování každého kroku transformace oddílu. JSON obsahuje časování milisekund pro každý oddíl, zatímco zobrazení monitorování uživatelského rozhraní je agregovaným načasováním oddílů přidaných dohromady:
+
+```
+ {
+     "stage": 4,
+     "partitionTimes": [
+          14353,
+          14914,
+          14246,
+          14912,
+          ...
+         ]
+}
+```
   
 ## <a name="monitor-icons"></a>Monitorovat ikony
 
 Tato ikona znamená, že data transformace již byla v clusteru uložena do mezipaměti, takže časování a cesta provádění poberou v úvahu:
 
-![Sledování toku dat](media/data-flow/mon004.png "Sledování toku dat")
+![Sledování toku dat](media/data-flow/mon005.png "Sledování toku dat")
 
 V transformaci se také zobrazují ikony zelených kroužků. Představují Počet umyvadel, do kterých data přecházejí.

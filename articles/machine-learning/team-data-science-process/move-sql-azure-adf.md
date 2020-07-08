@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194413"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Přesunout data z databáze SQL Server do SQL Database pomocí Azure Data Factory
@@ -61,7 +60,7 @@ V tomto kurzu se předpokládá, že máte následující:
 >
 
 ## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Nahrajte data do instance SQL Server.
-K předvedení procesu migrace používáme [datovou sadu NYC taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/) . Datová sada taxislužby NYC je k dispozici, jak je uvedeno v tomto příspěvku, v datech Azure Blob Storage [NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Data obsahují dva soubory, soubor trip_data. csv, který obsahuje podrobnosti o cestě, a soubor trip_far. csv, který obsahuje podrobnosti o tarifu placeného pro každou cestu. Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
+K předvedení procesu migrace používáme [datovou sadu NYC taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/) . Datová sada taxislužby NYC je k dispozici, jak je uvedeno v tomto příspěvku, v datech Azure Blob Storage [NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Data obsahují dva soubory, trip_data.csv soubor, který obsahuje podrobnosti o cestě, a soubor trip_far.csv, který obsahuje podrobnosti o tarifu placeného pro každou cestu. Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
 
 Můžete buď upravit proceduru, která je zde uvedena, do sady vlastních dat nebo postupovat podle kroků popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do SQL Server databáze](sql-walkthrough.md#dbload).
 
@@ -138,7 +137,7 @@ Definice tabulky pro SQL Server je určena v následujícím souboru JSON:
 
 Tady nejsou uvedené názvy sloupců. Na názvy sloupců můžete vybrat jejich výběr tak, že je sem zahrnete (podrobnosti najdete v tématu [dokumentace k ADF](../../data-factory/copy-activity-overview.md) .
 
-Zkopírujte definici JSON tabulky do souboru s názvem *onpremtabledef. JSON* a uložte ho do známého umístění (tady se předpokládá, že bude *C:\temp\onpremtabledef.JSON*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru s názvem *onpremtabledef.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\onpremtabledef.jszapnutá*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
@@ -171,7 +170,7 @@ Definice tabulky pro výstupní umístění objektu BLOB je následující (mapu
 }
 ```
 
-Zkopírujte definici JSON tabulky do souboru s názvem *bloboutputtabledef. JSON* a uložte ho do známého umístění (tady se předpokládá, že bude *C:\temp\bloboutputtabledef.JSON*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru s názvem *bloboutputtabledef.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\bloboutputtabledef.jszapnutá*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
@@ -203,7 +202,7 @@ Definice tabulky pro výstup SQL Azure je následující (Toto schéma mapuje da
 }
 ```
 
-Zkopírujte definici JSON tabulky do souboru s názvem *AzureSqlTable. JSON* a uložte ho do známého umístění (tady se předpokládá, že bude *C:\temp\AzureSqlTable.JSON*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru s názvem *AzureSqlTable.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\AzureSqlTable.jszapnutá*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
@@ -288,7 +287,7 @@ Pomocí výše uvedených definic tabulek je definice kanálu pro ADF uvedená n
 }
 ```
 
-Zkopírujte tuto definici JSON kanálu do souboru s názvem *pipelinedef. JSON* a uložte ho do známého umístění (tady se předpokládá *C:\temp\pipelinedef.JSON*). Vytvořte kanál v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte tuto definici JSON kanálu do souboru s názvem *pipelinedef.jsv* souboru a uložte ho do známého umístění (tady se předpokládá *C:\temp\pipelinedef.jszapnuto*). Vytvořte kanál v ADF pomocí následující rutiny Azure PowerShell:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 

@@ -12,10 +12,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194470"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
@@ -26,7 +25,7 @@ Jedním z problémů pro moderní integraci dat je přesun dat do cloudu a z mí
 
 Podrobné informace o Správa dat bráně a způsobu jejich použití najdete v následujících článcích:
 
-*  [Brána správy dat](data-factory-data-management-gateway.md)
+*  [Brána Správa dat](data-factory-data-management-gateway.md)
 *  [Přesun dat mezi místním prostředím a cloudem pomocí Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 

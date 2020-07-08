@@ -6,13 +6,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: cbc2104ae3c55ae3670867b7a253d812f3a4be0e
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: abedaf6f66bdd7aea36512c90bb5ee799f8e7a99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800940"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Konfigurace síťového virtuálního zařízení ve službě Azure HDInsight
 
@@ -21,13 +20,14 @@ ms.locfileid: "82864705"
 
 Azure Firewall se automaticky nakonfiguruje tak, aby povolovala provoz pro spoustu běžných důležitých scénářů. Použití jiného síťového virtuálního zařízení bude vyžadovat, abyste nakonfigurovali řadu dalších funkcí. Při konfiguraci síťového virtuálního zařízení mějte na paměti následující faktory:
 
-* Služby podporující koncový bod služby by měly být nakonfigurované s koncovými body služby.
+* Služby podporující koncové body služby je možné konfigurovat pomocí koncových bodů služby, které mají za následek obejít síťové virtuální zařízení, obvykle pro náklady nebo požadavky na výkon.
 * Závislosti IP adres jsou pro přenos bez HTTP/S (provoz TCP i UDP).
-* Koncové názvy koncových bodů HTTP/HTTPS můžete umístit do zařízení síťové virtuální zařízení.
-* Koncové body HTTP/HTTPS se zástupnými znaky jsou závislosti, které se můžou lišit podle počtu kvalifikátorů.
+* V zařízení síťové virtuální zařízení se můžou na seznam povolených názvů koncových bodů HTTP/HTTPS.
 * Přiřaďte směrovací tabulku, kterou vytvoříte ve své podsíti HDInsight.
 
 ## <a name="service-endpoint-capable-dependencies"></a>Závislosti podporující koncový bod služby
+
+Volitelně můžete povolit jeden nebo více následujících koncových bodů služby, které budou mít za následek obejít síťové virtuální zařízení. Tato možnost může být užitečná pro velké objemy datových přenosů za účelem úspory nákladů a také pro optimalizace výkonu. 
 
 | **Služba** |
 |---|
@@ -37,35 +37,21 @@ Azure Firewall se automaticky nakonfiguruje tak, aby povolovala provoz pro spous
 
 ### <a name="ip-address-dependencies"></a>Závislosti IP adres
 
-| **Služba** | **Zobrazí** |
+| **Služba** | **Podrobnosti** |
 |---|---|
-| \*: 123 | Kontroluje se čas NTP. Provoz se kontroluje na více koncových bodech na portu 123. |
-| [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Tyto IP adresy jsou službou HDInsight. |
-| Privátní IP adresy AAD-DS pro clustery ESP |
-| \*: 16800 pro aktivaci Windows služby správy klíčů |
-| \*12000 pro Log Analytics |
+| [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Tyto IP adresy jsou pro řízení služby HDInsight a měly by být zahrnuté do UDR, aby se předešlo asymetrickému směrování. |
+| Privátní IP adresy AAD-DS | Je potřeba jenom pro clustery ESP.|
+
 
 ### <a name="fqdn-httphttps-dependencies"></a>Závislosti HTTP/HTTPS v plně kvalifikovaném názvu domény
 
 > [!Important]
-> Následující seznam obsahuje jenom několik nejdůležitějších plně kvalifikovaných názvů domén. Další plně kvalifikované názvy domény (většinou Azure Storage a Azure Service Bus) můžete získat pro konfiguraci síťové virtuální zařízení [v tomto souboru](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
+> Následující seznam obsahuje jenom několik nejdůležitějších plně kvalifikovaných názvů domén. Úplný seznam plně kvalifikovaných názvů domén (většinou Azure Storage a Azure Service Bus) můžete získat pro konfiguraci síťové virtuální zařízení [v tomto souboru](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json). Tyto závislosti jsou používány operacemi na úrovni ovládacího prvku HDInsight k úspěšnému vytvoření clusteru.
 
 | **Služba**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
 

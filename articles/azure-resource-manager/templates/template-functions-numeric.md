@@ -4,10 +4,9 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677912"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Číselné funkce pro šablony ARM
@@ -20,7 +19,7 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 * [Plovák](#float)
 * [int](#int)
 * [počet](#max)
-* [min](#min)
+* [dlouhé](#min)
 * [střední](#mod)
 * [mul](#mul)
 * [jednotk](#sub)
@@ -33,7 +32,7 @@ Vrátí součet dvou poskytnutých celých čísel.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 |operand1 |Yes |int |První číslo, které se má přidat |
 |Operand2 |Yes |int |Druhé číslo, které se má přidat |
@@ -91,7 +90,7 @@ Vrátí index iterační smyčky.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | opakovat | No | řetězec | Název smyčky pro získání iterace. |
 | posun |No |int |Číslo, které se má přidat do hodnoty iterace založené na nule |
@@ -156,7 +155,7 @@ Vrátí celočíselnou část dvou poskytnutých celých čísel.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |Číslo, které se má rozdělit. |
 | Operand2 |Yes |int |Číslo, které se používá k rozdělení. Nemůže být 0. |
@@ -214,7 +213,7 @@ Převede hodnotu na číslo s plovoucí desetinnou čárkou. Tuto funkci použij
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na číslo s plovoucí desetinnou čárkou. |
 
@@ -248,7 +247,7 @@ Převede zadanou hodnotu na celé číslo.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Yes |řetězec nebo int |Hodnota, která má být převedena na celé číslo. |
 
@@ -295,7 +294,7 @@ Vrátí maximální hodnotu z pole celých čísel nebo seznam celých čísel o
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá maximální hodnotu |
 
@@ -346,7 +345,7 @@ Vrátí minimální hodnotu z pole celých čísel nebo seznam celých čísel o
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá minimální hodnotu. |
 
@@ -397,7 +396,7 @@ Vrátí zbytek celočíselného dělení pomocí dvou poskytnutých celých čí
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |Číslo, které se má rozdělit. |
 | Operand2 |Yes |int |Číslo, které se používá k rozdělení, nemůže být 0. |
@@ -455,7 +454,7 @@ Vrací násobení dvou poskytnutých celých čísel.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |První číslo, které se má vynásobit |
 | Operand2 |Yes |int |Druhé číslo, které se má vynásobit |
@@ -513,7 +512,7 @@ Vrátí odčítání dvou poskytnutých celých čísel.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |Číslo, které je odečteno od. |
 | Operand2 |Yes |int |Číslo, které se odečte. |

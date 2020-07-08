@@ -9,10 +9,9 @@ ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193520"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen2
@@ -123,12 +122,12 @@ V modelu stylu POSIX, který používá Data Lake Storage Gen2, jsou oprávněn�
 
 V následující tabulce jsou uvedeny některé běžné scénáře, které vám pomohou pochopit, která oprávnění jsou nutná k provádění určitých operací s účtem úložiště.
 
-|    Operace             |    /    | Brno | Portland | Data. txt     |
+|    Operace             |    /    | Brno | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Číst data. txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Připojit k data. txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Odstranit data. txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Vytvořit data. txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Přečíst Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Připojit k Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Odstranit Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Vytvořit Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Seznamu                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Seznam/Oregon/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Seznam/Oregon/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -281,7 +280,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
-No. Řízení přístupu prostřednictvím seznamů ACL je povolené pro účet úložiště, pokud je zapnutá funkce hierarchického oboru názvů (HNS).
+Ne. Řízení přístupu prostřednictvím seznamů ACL je povolené pro účet úložiště, pokud je zapnutá funkce hierarchického oboru názvů (HNS).
 
 Pokud je funkce HNS vypnutá, autorizační pravidla Azure RBAC se pořád použijí.
 

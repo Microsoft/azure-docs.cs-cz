@@ -4,10 +4,9 @@ description: Tento článek vysvětluje, jak pomocí relací povolit společné 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341192"
 ---
 # <a name="message-sessions"></a>Relace zpráv

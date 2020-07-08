@@ -8,10 +8,9 @@ ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
 ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252436"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
@@ -128,7 +127,7 @@ Vyloučení odchozích omezení TCP je snazší, protože limity jsou nastaveny 
 
 Aby nedocházelo k odchozím limitům TCP, můžete buď zvětšit velikost vašich pracovních procesů, nebo horizontální horizontální navýšení kapacity.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pochopení dvou typů omezení odchozího připojení a toho, co vaše aplikace dělá, by mělo usnadnit řešení potíží. Pokud víte, že vaše aplikace provede mnoho volání stejného účtu úložiště, můžete mít podezření na omezení SNAT. Pokud vaše aplikace vytvoří hodně volání koncových bodů po internetu, měli byste se domnívat, že jste dosáhli limitu počtu virtuálních počítačů.
 

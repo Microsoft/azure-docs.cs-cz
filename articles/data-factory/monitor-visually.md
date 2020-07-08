@@ -9,13 +9,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
-ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801514"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuální monitorování služby Azure Data Factory
 
@@ -191,6 +190,10 @@ Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na
     ![Box pro kritéria cíle](media/monitor-visually/add-criteria-1.png)
 
     ![Seznam kritérií](media/monitor-visually/add-criteria-2.png)
+
+    ![Seznam kritérií](media/monitor-visually/add-criteria-3.png)
+
+    Můžete vytvářet upozornění na různé metriky, včetně těch, které se týkají počtu a velikosti entit ADF, spuštění aktivit, kanálu a triggeru, Integration Runtime (IR) využití procesoru/paměti, počtu uzlů/fronty, a také pro spouštění balíčků SSIS a operace SSIS IR pro spuštění/zastavení.
 
 1.  Nakonfigurujte logiku výstrah. Pro vybranou metriku můžete vytvořit výstrahu pro všechny kanály a odpovídající aktivity. Můžete také vybrat konkrétní typ aktivity, název aktivity, název kanálu nebo typ selhání.
 

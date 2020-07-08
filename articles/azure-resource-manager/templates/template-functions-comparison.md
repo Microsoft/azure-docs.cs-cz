@@ -4,10 +4,9 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677827"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Funkce porovnání pro šablony ARM
@@ -15,7 +14,7 @@ ms.locfileid: "84677827"
 Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azure Resource Manager (ARM).
 
 * [COALESCE](#coalesce)
-* [equals](#equals)
+* [rovná se](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [tolik](#less)
@@ -29,7 +28,7 @@ Vrátí první hodnotu, která není null, z parametrů. Prázdné řetězce, pr
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int, String, Array nebo Object |První hodnota, která má být testována na hodnotu null. |
 | Další argumenty |No |int, String, Array nebo Object |Další hodnoty, které mají být testovány na hodnotu null. |
@@ -93,10 +92,10 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | stringOutput | Řetězec | default |
 | intOutput | Int | 1 |
 | objectOutput | Objekt | {"First": "default"} |
-| arrayOutput | Pole | první |
+| arrayOutput | Pole |  [1] |
 | emptyOutput | Logická hodnota | True |
 
-## <a name="equals"></a>equals
+## <a name="equals"></a>rovná se
 
 `equals(arg1, arg2)`
 
@@ -104,7 +103,7 @@ Kontroluje, zda jsou dvě hodnoty vzájemně stejné.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int, String, Array nebo Object |První hodnota pro kontrolu rovnosti. |
 | arg2 |Yes |int, String, Array nebo Object |Druhá hodnota pro kontrolu rovnosti. |
@@ -237,7 +236,7 @@ Kontroluje, zda je první hodnota větší než druhá hodnota.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int nebo String |První hodnota pro lepší porovnání. |
 | arg2 |Yes |int nebo String |Druhá hodnota pro lepší porovnání. |
@@ -302,7 +301,7 @@ Kontroluje, zda je první hodnota větší než nebo rovna druhé hodnotě.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int nebo String |První hodnota pro porovnání větší nebo rovno. |
 | arg2 |Yes |int nebo String |Druhá hodnota pro vyšší nebo stejné porovnání. |
@@ -367,7 +366,7 @@ Kontroluje, zda je první hodnota menší než druhá hodnota.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int nebo String |První hodnota pro méně porovnání. |
 | arg2 |Yes |int nebo String |Druhá hodnota pro méně porovnání. |
@@ -432,7 +431,7 @@ Kontroluje, zda je první hodnota menší nebo rovna druhé hodnotě.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int nebo String |První hodnota pro porovnání menší nebo rovno. |
 | arg2 |Yes |int nebo String |Druhá hodnota pro porovnání menší nebo rovno. |

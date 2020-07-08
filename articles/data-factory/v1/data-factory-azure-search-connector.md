@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194922"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Vložení dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
@@ -57,9 +56,9 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 | Vlastnost | Popis | Vyžadováno |
 | -------- | ----------- | -------- |
-| typ | Vlastnost Type musí být nastavená na: **AzureSearch**. | Ano |
-| url | Adresa URL služby vyhledávání | Ano |
-| Klíč | Klíč správce pro vyhledávací službu. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **AzureSearch**. | Yes |
+| url | Adresa URL služby vyhledávání | Yes |
+| key | Klíč správce pro vyhledávací službu. | Yes |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
@@ -67,8 +66,8 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 | Vlastnost | Popis | Vyžadováno |
 | -------- | ----------- | -------- |
-| typ | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Ano |
-| indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Ano |
+| typ | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Yes |
+| indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Yes |
 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
@@ -99,12 +98,12 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 
 | Datový typ Azure Kognitivní hledání | Podporováno v jímky Azure Kognitivní hledání |
 | ---------------------- | ------------------------------ |
-| Řetězec | Y |
-| Int32 | Y |
-| Int64 | Y |
-| Double | Y |
-| Logická hodnota | Y |
-| DataTimeOffset | Y |
+| Řetězec | Ano |
+| Int32 | Ano |
+| Int64 | Ano |
+| Double | Ano |
+| Logická hodnota | Ano |
+| DataTimeOffset | Ano |
 | Pole řetězců | N |
 | GeographyPoint | N |
 

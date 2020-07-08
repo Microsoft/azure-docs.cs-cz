@@ -15,10 +15,9 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79e3ed41ad3038cf66d61c25292ebad55c2b5e92
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84731693"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Role správce pro služby Microsoft 365 Services
@@ -38,7 +37,7 @@ Security & – centrum dodržování předpisů (Rozšířená ochrana před int
 Bezpečné skóre | [Role správce Azure AD](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Správce dodržování předpisů | [Role správce dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Není k dispozici
 Azure Information Protection | [Role správce Azure AD](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Microsoft Cloud App Security | [Řízení přístupu na základě role](https://docs.microsoft.com/cloud-app-security/manage-admins) | [referenční dokumentace k rozhraní API](https://docs.microsoft.com/cloud-app-security/api-tokens) 
+Microsoft Cloud App Security | [Řízení přístupu na základě role](https://docs.microsoft.com/cloud-app-security/manage-admins) | [Referenční materiály k rozhraní API](https://docs.microsoft.com/cloud-app-security/api-tokens) 
 Rozšířená ochrana před internetovými útoky Azure | [Skupiny rolí služby Azure ATP](https://docs.microsoft.com/azure-advanced-threat-protection/atp-role-groups) | Není k dispozici
 Rozšířená ochrana před internetovými útoky v programu Windows Defender | [Řízení přístupu na základě role ATP v programu Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Není k dispozici
 Privileged Identity Management | [Role správce Azure AD](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Načíst přiřazení rolí](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)

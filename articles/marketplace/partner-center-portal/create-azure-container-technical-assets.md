@@ -7,20 +7,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700982"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958595"
 ---
 # <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejneru Azure
 
 Tento článek poskytuje technické prostředky a doporučení, které vám pomůžou vytvořit kontejnerovou nabídku na Azure Marketplace.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Informace o rychlých startech, kurzech a ukázkách najdete v [dokumentaci k Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
+Informace o rychlých startech, kurzech a ukázkách najdete v [dokumentaci k Azure Container Instances](../../container-instances/index.yml).
 
 ## <a name="fundamental-technical-knowledge"></a>Základní technické poznatky
 
@@ -43,7 +42,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Doporučujeme přidat tyto nástroje do vašeho vývojového prostředí:
 
-- [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +54,9 @@ Projděte si dostupné nástroje na stránce [Azure vývojářské nástroje](ht
 
 Další informace najdete v následujících kurzech:
 
-- [Kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úkolů](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
+- [Kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úkolů](../../container-registry/container-registry-tutorial-quick-task.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvořte nabídku kontejneru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
+- [Vytvořte nabídku kontejneru](create-azure-container-offer.md).

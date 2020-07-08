@@ -6,14 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834760"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040771"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analýza subjektivního hodnocení na Twitteru v reálném čase v Azure Stream Analytics
 
@@ -127,7 +126,7 @@ Před spuštěním aplikace bude nutné od sebe vyžadovat určité informace, j
 
 1. Ujistěte se, že jste stáhli aplikaci [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) , jak je uvedeno v části požadavky.
 
-2. Pomocí textového editoru otevřete soubor *App. config* . Proveďte následující změny `<appSettings>` elementu:
+2. Pomocí textového editoru otevřete soubor *App.config* . Proveďte následující změny `<appSettings>` elementu:
 
    * Nastavte `oauth_consumer_key` na klíč příjemce Twitteru (klíč rozhraní API). 
    * Nastavte `oauth_consumer_secret` na klíč příjemce Twitteru (tajný klíč rozhraní API).
@@ -159,7 +158,7 @@ Teď, když jsou události ve službě Twitter streamované v reálném čase, m
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
    |Alias vstupu| *TwitterStream* | Zadejte alias pro vstup. |
-   |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
+   |Předplatné  | \<Your subscription\> |  Vyberte předplatné Azure, které chcete použít. |
    |Obor názvů centra událostí | *ASA – Twitter – eventhub* |
    |Název centra událostí | *socialtwitter – eh* | Vyberte možnost *použít existující*. Pak vyberte centrum událostí, které jste vytvořili.|
    |Typ komprese události| GZip | Typ komprese dat|
@@ -224,7 +223,7 @@ Je určen vstup, dotaz a výstup úlohy. Jste připraveni začít úlohu Stream 
 
 3. Na stránce **Spustit úlohu** pro **čas spuštění výstupu úlohy**vyberte **nyní** a pak vyberte **Spustit**.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky

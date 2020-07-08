@@ -9,12 +9,11 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992891"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958918"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace pracovního prostoru centra a projektů do vlastního překladatele
 
@@ -134,14 +133,14 @@ Tato tabulka porovnává funkce mezi centrem Microsoft Translator a vlastním p�
 |:-----|:----:|:----:|
 |Stav funkce přizpůsobení    | Obecná dostupnost    | Obecná dostupnost |
 | Verze textového rozhraní API    | V2     | Technologie  |
-| Přizpůsobení SMT    | Ano    | Ne |
-| Přizpůsobení NMT    | Ne    | Ano |
-| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | Ne    | Ano |
+| Přizpůsobení SMT    | Yes    | No |
+| Přizpůsobení NMT    | No    | Yes |
+| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | No    | Yes |
 | Žádné trasování | Ano | Ano |
 
 ## <a name="new-languages"></a>Nové jazyky
 
-Pokud jste komunitou nebo organizací, která pracuje na vytváření nového jazykového systému pro Microsoft Translator, získáte [custommt@microsoft.com](mailto:custommt@microsoft.com) Další informace v.
+Pokud jste komunitou nebo organizací, která pracuje na vytváření nového jazykového systému pro překladatele, získáte [custommt@microsoft.com](mailto:custommt@microsoft.com) Další informace v.
 
 ## <a name="next-steps"></a>Další kroky
 

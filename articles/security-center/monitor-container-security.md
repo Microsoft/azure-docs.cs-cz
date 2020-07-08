@@ -6,30 +6,18 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801372"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>Monitorování zabezpečení kontejnerů
+# <a name="monitor-the-security-of-your-containers"></a>Monitorování zabezpečení kontejnerů
 
 Tato stránka vysvětluje použití funkcí zabezpečení kontejnerů popsaných v článku věnovaném [zabezpečení kontejnerů](container-security.md) v části koncepty.
 
-Azure Security Center pokrývá následující tři aspekty zabezpečení kontejneru:
-
-- **Správa ohrožení zabezpečení** – Pokud používáte cenovou úroveň Standard Security Center (viz [ceny](/azure/security-center/security-center-pricing)), můžete Azure Container Registry na bázi ARM kontrolovat při každém vložení nového obrázku. Skener (s technologií Qualys) prezentuje závěry jako doporučení Security Center.
-    Podrobné pokyny najdete v části [Kontrola registrů kontejnerů](#scanning-your-arm-based-container-registries-for-vulnerabilities) v následujících chybách.
-
-- **Posílení zabezpečení kontejnerů Docker hostitelé** – Security Center najde nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo v jiných počítačích se systémem Linux, na kterých běží Docker, a průběžně porovnává konfigurace kontejnerů s centrem pro testování přes Internet Security (SNS) Docker. Security Center vás upozorní na to, že kontejnery nevyhovují žádnému z ovládacích prvků. Nepřetržité monitorování rizik zabezpečení z důvodu neplatných konfigurací je zásadní součástí jakéhokoli programu zabezpečení. 
-    Podrobné pokyny najdete v článku [posílení zabezpečení kontejnerů Docker pro kontejnery](#hardening-your-containers-docker-hosts) .
-
-- **Posílení zabezpečení clusterů služby Azure Kubernetes** – Security Center poskytuje doporučení při hledání ohrožení zabezpečení v konfiguraci clusterů služby Azure Kubernetes. Podrobnosti o specifických doporučeních, která se mohou zobrazit, najdete v tématu [věnovaném doporučením služby Kubernetes](recommendations-reference.md#recs-containers).
-
-- **Ochrana modulem runtime** – Pokud používáte cenovou úroveň Standard Security Center, získáte ochranu před hrozbami v reálném čase pro vaše kontejnerová prostředí. Security Center generuje výstrahy pro podezřelé aktivity na úrovni hostitele a clusteru AKS. Podrobnosti o relevantních výstrahách zabezpečení, které se mohou zobrazit, najdete v částech [výstrahy pro clustery služby Azure Kubernetes](alerts-reference.md#alerts-akscluster) a [výstrahy pro kontejnery – úroveň hostitele](alerts-reference.md#alerts-containerhost) v referenční tabulce výstrahy.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Kontrola registrů kontejnerů založených na ARM pro ohrožení zabezpečení 
 
@@ -37,7 +25,7 @@ Azure Security Center pokrývá následující tři aspekty zabezpečení kontej
 
     1. Ujistěte se, že jste v Azure Security Center cenové úrovně Standard.
 
-    1. Na stránce **Nastavení cenové &** povolte pro vaše předplatné nepovinnou sadu kontejnerových registrací ![: povolení sady kontejnerů registrů kontejnerů.](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. Na stránce **Nastavení cenové &** povolte pro vaše předplatné nepovinnou sadu kontejnerových registrací: ![ Povolení sady kontejnerů registrů kontejnerů.](media/monitor-container-security/enabling-container-registries-bundle.png)
 
         Security Center je teď připravený ke skenování imagí, které se připravují do registru. 
 

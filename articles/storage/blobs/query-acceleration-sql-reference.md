@@ -11,10 +11,9 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193410"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)
@@ -58,7 +57,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 ## <a name="data-types"></a>Typy dat
 
-|Typ dat|Popis|
+|Typ dat|Description|
 |---------|-------------------------------------------|
 |INT      |64 – celé číslo se znaménkem.                     |
 |Plovák    |64-bit ("dvojitá přesnost") plovoucí desetinná čárka.|
@@ -192,7 +191,7 @@ Tato tabulka popisuje řetězce, které lze použít k určení výstupního for
 |S                |Zlomek sekund (0,1 – 0.9)        |
 |SS               |Zlomek sekund (0,01 – 0,99)      |
 |POVĚŘENÍ              |Zlomek sekund (0,001 – 0.999)    |
-|X                |Posun v hodinách                      |
+|×                |Posun v hodinách                      |
 |XX nebo XXXX       |Posun v hodinách a minutách (+ 0430)  |
 |XXX nebo XXXXX     |Posun v hodinách a minutách (-07:00) |
 |x                |Posun v hodinách (7)                  |

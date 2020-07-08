@@ -10,13 +10,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: 3f97db2e2722d16c3fa780dbe7205813c0e75420
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: 2c9bb4bbf52c968afe267bfa3e2b8d6dae980833
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801572"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -24,7 +23,7 @@ ms.locfileid: "84655576"
 
 Cloudové aplikace jsou komplexní a obsahují mnoho pohyblivých částí. Monitory poskytují data, která vám pomůžou zajistit, aby vaše aplikace zůstaly v dobrém stavu. Monitory také umožňují vyhnout se potenciálním problémům a řešit předchozí problémy. Data monitorování můžete využít k získání podrobných informací o vašich aplikacích. Tato znalostní báze vám pomůže zlepšit výkon a udržovatelnost aplikace. Pomáhá také automatizovat akce, které jinak vyžadují ruční zásah.
 
-Azure Monitor poskytuje základní metriky a protokoly infrastruktury na základní úrovni pro většinu služeb Azure. Diagnostické protokoly Azure jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Azure Data Factory může zapisovat diagnostické protokoly v Azure Monitor. Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na následující video:
+Azure Monitor poskytuje základní metriky a protokoly infrastruktury na základní úrovni pro většinu služeb Azure. Diagnostické protokoly Azure jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Azure Data Factory (ADF) může zapisovat diagnostické protokoly v Azure Monitor. Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na následující video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
@@ -60,8 +59,13 @@ Vytvořte nebo přidejte nastavení diagnostiky pro datovou továrnu.
 
 1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics**a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics**.
 
-    * V režimu _specifickém pro prostředky_ diagnostické protokoly z Azure Data Factory Flow do tabulek _ADFPipelineRun_, _ADFTriggerRun_a _ADFActivityRun_ .
     * V režimu _diagnostiky Azure_ se protokoly diagnostiky flowují do tabulky _AzureDiagnostics_ .
+
+    * V režimu _specifickém pro prostředky_ diagnostické protokoly z Azure Data Factory Flow do tabulek _ADFActivityRun_, _ADFPipelineRun_, _ADFTriggerRun_, _ADFSSISIntegrationRuntimeLogs_, _ADFSSISPackageEventMessageContext_, _ADFSSISPackageEventMessages_, _ADFSSISPackageExecutableStatistics_, _ADFSSISPackageExecutionComponentPhases_ _a ADFSSISPackageExecutionDataStatistics._
+
+      Můžete vybrat různé protokoly, které jsou relevantní pro vaše úlohy, pro odeslání do Log Analytics tabulek. Pokud například nepoužíváte služba SSIS (SQL Server Integration Services) (SSIS) vůbec, nemusíte vybírat žádné protokoly SSIS. Pokud chcete protokolovat SSIS Integration Runtime (IR) operace spuštění/zastavení/údržby, můžete vybrat SSIS INFRAČERVENé protokoly. Pokud vyvoláte spouštění balíčků SSIS prostřednictvím T-SQL, můžete vybrat pouze protokoly balíčku SSIS. Pokud vyvoláte spouštění balíčků SSIS prostřednictvím aktivit balíčku Execute SSIS v kanálech ADF, můžete vybrat všechny protokoly.
+
+    * Vyberete-li možnost _AllMetrics_, budou k dispozici metriky pro počet/velikost entit ADF, aktivity, kanál/aktivační událost, Integration runtime (IR) využití procesoru/paměti, počet uzlů/fronta a také pro spouštění balíčků SSIS a operace SSIS IR spustit/zastavit pro vás budou moci monitorovat nebo vyvolávat výstrahy na.
 
    ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -115,26 +119,36 @@ Můžete vizualizovat předchozí metriky, zobrazit dotazy za těmito metrikami,
 > [!NOTE]
 > Azure Data Factory Analytics (Preview) odesílá diagnostické protokoly do cílových tabulek _specifických pro prostředky_ . Můžete zapisovat dotazy z následujících tabulek: _ADFPipelineRun_, _ADFTriggerRun_a _ADFActivityRun_.
 
-
 ## <a name="data-factory-metrics"></a>Data Factory metriky
 
 S monitorováním můžete získat přehled o výkonu a stavu úloh Azure. Nejdůležitější typ dat monitorování je metrika, která se také označuje jako čítač výkonu. Metriky generuje většina prostředků Azure. Monitorování nabízí několik způsobů konfigurace a využívání těchto metrik pro monitorování a řešení potíží.
 
-Azure Data Factory verze 2 vygeneruje následující metriky.
+Tady jsou některé metriky vydávané Azure Data Factory verze 2:
 
-| **Metrika**           | **Zobrazovaný název metriky**         | **Jednotce** | **Typ agregace** | **Popis**                                       |
-|----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRuns | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet spuštění kanálu, které byly úspěšně dokončeny během minutového okna. |
-| PipelineFailedRuns   | Neúspěšná metrika spuštění kanálu    | Počet    | Celkem                | Celkový počet spuštění kanálu, které selhaly během minutového okna.    |
-| ActivitySucceededRuns | Úspěšná aktivita spustí metriky | Počet    | Celkem                | Celkový počet spuštění aktivit, které byly úspěšně dokončeny během minutového okna.  |
-| ActivityFailedRuns   | Neúspěšná aktivita spustí metriky    | Počet    | Celkem                | Celkový počet spuštění aktivit, které selhaly během minutového okna.     |
-| TriggerSucceededRuns | Úspěšná aktivační událost spustí metriky  | Počet    | Celkem                | Celkový počet spuštěných aktivačních událostí, které byly úspěšně dokončeny během minutového okna.   |
-| TriggerFailedRuns    | Neúspěšná aktivační událost spustí metriky     | Počet    | Celkem                | Celkový počet spuštění triggerů, které selhaly během minutového okna.      |
+| **Metrika**                           | **Zobrazovaný název metriky**                  | **Jednotce** | **Typ agregace** | **Popis**                |
+|--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
+| ActivityCanceledRuns                 | Zrušené metriky spuštění aktivit           | Počet    | Celkem                | Celkový počet spuštění aktivit, které byly zrušeny během minutového okna. |
+| ActivityFailedRuns                   | Neúspěšná aktivita spustí metriky             | Počet    | Celkem                | Celkový počet spuštění aktivit, které selhaly během minutového okna. |
+| ActivitySucceededRuns                | Úspěšná aktivita spustí metriky          | Počet    | Celkem                | Celkový počet spuštění aktivit, které byly úspěšně dokončeny během minutového okna. |
+| PipelineCanceledRuns                 | Metriky zrušených běhů kanálu           | Počet    | Celkem                | Celkový počet spuštění kanálu, které byly zrušeny během minutového okna. |
+| PipelineFailedRuns                   | Neúspěšná metrika spuštění kanálu             | Počet    | Celkem                | Celkový počet spuštění kanálu, které selhaly během minutového okna. |
+| PipelineSucceededRuns                | Úspěšné metriky spuštění kanálu          | Počet    | Celkem                | Celkový počet spuštění kanálu, které byly úspěšně dokončeny během minutového okna. |
+| TriggerCanceledRuns                  | Zrušená aktivační událost spouští metriky            | Počet    | Celkem                | Celkový počet spuštění triggerů, které byly zrušeny během minutového okna. |
+| TriggerFailedRuns                    | Neúspěšná aktivační událost spustí metriky              | Počet    | Celkem                | Celkový počet spuštění triggerů, které selhaly během minutového okna. |
+| TriggerSucceededRuns                 | Úspěšná aktivační událost spustí metriky           | Počet    | Celkem                | Celkový počet spuštěných aktivačních událostí, které byly úspěšně dokončeny během minutového okna. |
+| SSISIntegrationRuntimeStartCanceled  | Zrušené počáteční metriky SSIS IR           | Počet    | Celkem                | Celkový počet SSIS INFRAÈERVENÉHO spuštění, které byly zrušeny během minutového okna. |
+| SSISIntegrationRuntimeStartFailed    | Neúspěšné SSIS počáteční metriky IR             | Počet    | Celkem                | Celkový počet SSIS IR začíná během minutového okna, které selhalo. |
+| SSISIntegrationRuntimeStartSucceeded | Úspěšně se SSISy počáteční metriky IR          | Počet    | Celkem                | Celkový počet SSIS IR začíná v průběhu minutového okna. |
+| SSISIntegrationRuntimeStopStuck      | Zablokované metriky stop SSIS IR               | Počet    | Celkem                | Celkový počet SSIS, která byla zablokována v minutovém okně. |
+| SSISIntegrationRuntimeStopSucceeded  | Úspěšná SSIS metriky INFRAČERVENého zastavení           | Počet    | Celkem                | Celkový počet SSISů IR se zastavilo v průběhu minutového okna. |
+| SSISPackageExecutionCanceled         | Počet zrušených metrik spuštění balíčku SSIS  | Počet    | Celkem                | Celkový počet spuštěných SSIS balíčků, které byly zrušeny během minutového okna. |
+| SSISPackageExecutionFailed           | Neúspěšné metriky spuštění balíčku SSIS    | Počet    | Celkem                | Celkový počet spuštěných SSIS balíčků, které selhaly během minutového okna. |
+| SSISPackageExecutionSucceeded        | Úspěšné metriky spuštění balíčku SSIS | Počet    | Celkem                | Celkový počet spuštěných SSIS balíčků, které byly úspěšně dokončeny během minutového okna. |
 
 Pokud chcete získat přístup k metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
 > [!NOTE]
-> Emitují se jenom dokončené události, aktivované aktivity a spuštění kanálu. Probíhající a izolovaný prostor nebo spuštění ladění **nejsou vydávány** . 
+> Emitují se jenom dokončené události, aktivované aktivity a spuštění kanálu. Probíhající a izolovaný prostor nebo spuštění ladění **nejsou vydávány** . Na druhé straně jsou vygenerovány všechny události z SSIS balíčků, včetně těch, které jsou dokončeny, probíhá, a vyvolány prostřednictvím T-SQL agenta SSMS/SQL Server/jiných určených nástrojů nebo jako aktivované/izolovaný/izolovaný provoz, spouští aktivity balíčku SSIS v kanálech ADF.
 
 ## <a name="data-factory-alerts"></a>Výstrahy Data Factory
 
@@ -245,7 +259,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | --- | --- | --- |
 | **storageAccountId** |Řetězec | ID prostředku účtu úložiště, do kterého chcete odeslat diagnostické protokoly. |
 | **serviceBusRuleId** |Řetězec | ID pravidla sběrnice (Service-Bus) pro obor názvů sběrnice, ve kterém chcete mít Event Hubs vytvořené pro diagnostické protokoly pro streamování. ID pravidla má formát `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -261,7 +275,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="response"></a>Odpověď
 
 200 OK.
-
 
 ```json
 {
@@ -373,7 +386,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     },
     "identity": null
 }
-
 ```
 Další informace najdete v tématu [nastavení diagnostiky](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
@@ -507,7 +519,6 @@ Další informace najdete v tématu [nastavení diagnostiky](https://docs.micros
       "SystemParameters": {}
     }
 }
-
 ```
 
 | Vlastnost | Typ | Popis | Příklad |
@@ -525,6 +536,280 @@ Další informace najdete v tématu [nastavení diagnostiky](https://docs.micros
 |**triggerEvent**| Řetězec | Událost triggeru | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**Čína**| Řetězec | Čas spuštění triggeru, který se spouští ve formátu TimeSpan UTC. | `2017-06-26T20:55:29.5007959Z`|
 |**stav**| Řetězec | Konečný stav ukazující, zda se aktivační událost úspěšně aktivovala. Možné hodnoty vlastností jsou `Succeeded` a `Failed` . | `Succeeded`|
+
+#### <a name="ssis-integration-runtime-log-attributes"></a>Atributy protokolu SSIS Integration runtime
+
+Jedná se o atributy protokolu/vlastnosti SSIS Integration Runtime (IR) operace spustit/zastavit/údržba.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "resultType": "",
+   "properties": {
+      "message": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Vlastnost                   | Typ   | Popis                                                   | Příklad                        |
+| -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
+| **interval**                   | Řetězec | Čas události ve formátu UTC:`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Řetězec | Název vaší operace SSIS IR                            | `Start/Stop/Maintenance` |
+| **kategorií**               | Řetězec | Kategorie diagnostických protokolů                               | `SSISIntegrationRuntimeLogs` |
+| **correlationId**          | Řetězec | Jedinečné ID pro sledování konkrétní operace             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
+| **dataFactoryName**        | Řetězec | Název vašeho ADF                                          | `MyADFv2` |
+| **integrationRuntimeName** | Řetězec | Název SSIS IR                                      | `MySSISIR` |
+| **úroveň**                  | Řetězec | Úroveň diagnostických protokolů                                  | `Informational` |
+| **resultType**             | Řetězec | Výsledek operace SSIS IR                          | `Started/InProgress/Succeeded/Failed` |
+| **Zpráva**                | Řetězec | Výstupní zpráva vaší operace SSIS IR                  | `The stopping of your SSIS integration runtime has succeeded.` |
+| **Prostředku**             | Řetězec | Jedinečné ID prostředku ADF                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-event-message-context-log-attributes"></a>Atributy protokolu kontextu zprávy události SSIS
+
+Jedná se o atributy protokolu/vlastnosti podmínek souvisejících se zprávami událostí generovanými SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka/zobrazení kontextové zprávy o SSIS katalogu (SSISDB)](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) , která zobrazuje hodnoty za běhu mnoha vlastností balíčku SSIS. Vygenerují se, když vyberete `Basic/Verbose` úroveň protokolování a užitečnost pro ladění a kontrolu kompatibility.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "operationId": "",
+      "contextDepth": "",
+      "packagePath": "",
+      "contextType": "",
+      "contextSourceName": "",
+      "contextSourceId": "",
+      "propertyName": "",
+      "propertyValue": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Vlastnost                   | Typ   | Popis                                                          | Příklad                        |
+| -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
+| **interval**                   | Řetězec | Čas události ve formátu UTC:`YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Řetězec | Tato nastavení se nastaví na`YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
+| **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                      | `SSISPackageEventMessageContext` |
+| **correlationId**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Řetězec | Název vašeho ADF                                                 | `MyADFv2` |
+| **integrationRuntimeName** | Řetězec | Název SSIS IR                                             | `MySSISIR` |
+| **úroveň**                  | Řetězec | Úroveň diagnostických protokolů                                         | `Informational` |
+| **operationId**            | Řetězec | Jedinečné ID pro sledování konkrétní operace v SSISDB          | `1`(1 znamená operace související s balíčky, které nejsou uložené v SSISDB) |
+| **contextDepth**           | Řetězec | Hloubka kontextu zprávy události                              | `0`(0 znamená kontext před spuštěním spuštění balíčku, 1 znamená kontext při výskytu chyby a zvyšuje se, jak je kontext dále z chyby) |
+| **packagePath**            | Řetězec | Cesta k objektu balíčku jako zdroj kontextu zprávy události      | `\Package` |
+| **contextType**            | Řetězec | Typ objektu balíčku jako zdroj kontextu zprávy události      | `60`(Další informace naleznete v tématu [Další typy kontextu](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
+| **contextSourceName**      | Řetězec | Název objektu balíčku jako zdroj kontextu zprávy události      | `MyPackage` |
+| **contextSourceId**        | Řetězec | Jedinečné ID objektu balíčku jako zdroj kontextu zprávy události | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
+| **propertyName**           | Řetězec | Název vlastnosti balíčku pro zdroj kontextu zprávy události   | `DelayValidation` |
+| **Objekt**          | Řetězec | Hodnota vlastnosti balíčku pro zdroj kontextu zprávy události  | `False` |
+| **Prostředku**             | Řetězec | Jedinečné ID prostředku ADF                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-event-messages-log-attributes"></a>Atributy protokolu zpráv událostí SSIS
+
+Toto jsou atributy protokolu/vlastnosti zpráv událostí generovaných spouštěním balíčků SSIS ve vašem SSIS IR. Poskytují podobné informace jako [tabulka/zobrazení zpráv o událostech SSISDB](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) , které zobrazují podrobný text nebo metadata zpráv událostí. Jsou vygenerovány na jakékoli úrovni protokolování s výjimkou `None` .
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "operationId": "",
+      "messageTime": "",
+      "messageType": "",
+      "messageSourceType": "",
+      "message": "",
+      "packageName": "",
+      "eventName": "",
+      "messageSourceName": "",
+      "messageSourceId": "",
+      "subcomponentName": "",
+      "packagePath": "",
+      "executionPath": "",
+      "threadId": ""
+   }
+}
+```
+
+| Vlastnost                   | Typ   | Popis                                                        | Příklad                        |
+| -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
+| **interval**                   | Řetězec | Čas události ve formátu UTC:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Řetězec | Tato nastavení se nastaví na`YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
+| **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                    | `SSISPackageEventMessages` |
+| **correlationId**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Řetězec | Název vašeho ADF                                               | `MyADFv2` |
+| **integrationRuntimeName** | Řetězec | Název SSIS IR                                           | `MySSISIR` |
+| **úroveň**                  | Řetězec | Úroveň diagnostických protokolů                                       | `Informational` |
+| **operationId**            | Řetězec | Jedinečné ID pro sledování konkrétní operace v SSISDB        | `1`(1 znamená operace související s balíčky, které nejsou uložené v SSISDB) |
+| **messageTime**            | Řetězec | Čas, kdy se zpráva události vytvoří ve formátu UTC          | `2017-06-28T21:00:27.3534352Z` |
+| **messageType**            | Řetězec | Typ zprávy události                                     | `70`(Další informace najdete v tématu [Další typy zpráv](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **messageSourceType**      | Řetězec | Typ zdroje zprávy události                              | `20`(Další informace naleznete v tématu [Další typy zdrojů zpráv](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **Zpráva**                | Řetězec | Text zprávy události                                     | `MyPackage:Validation has started.` |
+| **soubor s balíčkem**            | Řetězec | Název provedeného souboru balíčku                             | `MyPackage.dtsx` |
+| **eventName**              | Řetězec | Název související události run-time                                 | `OnPreValidate` |
+| **messageSourceName**      | Řetězec | Název součásti balíčku jako zdroj zprávy události         | `Data Flow Task` |
+| **messageSourceId**        | Řetězec | Jedinečné ID součásti balíčku jako zdroj zprávy události    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+| **subcomponent**       | Řetězec | Název součásti toku dat jako zdroj zprávy události       | `SSIS.Pipeline` |
+| **packagePath**            | Řetězec | Cesta k objektu balíčku jako zdroj zprávy události            | `\Package\Data Flow Task` |
+| **executionPath**          | Řetězec | Úplná cesta z nadřazeného balíčku pro spuštěnou součást            | `\Transformation\Data Flow Task`(Tato cesta také zachycuje iterace komponenty) |
+| **IDvlákna**               | Řetězec | Jedinečné ID vlákna, které bylo provedeno při zaznamenání zprávy o události | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+
+#### <a name="ssis-executable-statistics-log-attributes"></a>Atributy protokolu statistiky spustitelných souborů SSIS
+
+Jedná se o atributy protokolu/vlastnosti spustitelných statistik generovaných spouštěním balíčků SSIS na SSIS IR, kde jsou spustitelné soubory kontejnery nebo úlohy v kontrolních tocích balíčku. Poskytují podobné informace jako [SSISDB/zobrazení statistiky spustitelných souborů](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) , které zobrazují řádek pro každý spuštěný spustitelný soubor, včetně jeho iterací. Vygenerují se na úrovni protokolování s výjimkou `None` a užitečnou pro identifikaci kritických bodů a selhání na úrovni úlohy.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "executionId": "",
+      "executionPath": "",
+      "startTime": "",
+      "endTime": "",
+      "executionDuration": "",
+      "executionResult": "",
+      "executionValue": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Vlastnost                   | Typ   | Popis                                                      | Příklad                        |
+| -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
+| **interval**                   | Řetězec | Čas události ve formátu UTC:`YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Řetězec | Tato nastavení se nastaví na`YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
+| **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                  | `SSISPackageExecutableStatistics` |
+| **correlationId**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Řetězec | Název vašeho ADF                                             | `MyADFv2` |
+| **integrationRuntimeName** | Řetězec | Název SSIS IR                                         | `MySSISIR` |
+| **úroveň**                  | Řetězec | Úroveň diagnostických protokolů                                     | `Informational` |
+| **executionId**            | Řetězec | Jedinečné ID pro sledování konkrétního spuštění v SSISDB      | `1`(1 znamená provádění související s balíčky, které nejsou uložené v SSISDB) |
+| **executionPath**          | Řetězec | Úplná cesta z nadřazeného balíčku pro spuštěnou součást          | `\Transformation\Data Flow Task`(Tato cesta také zachycuje iterace komponenty) |
+| **startTime**              | Řetězec | Čas, kdy spustitelný soubor vstoupí do fáze předběžného spuštění ve formátu UTC  | `2017-06-28T21:00:27.3534352Z` |
+| **endTime**                | Řetězec | Čas, kdy spustitelný soubor vstoupí do fáze po spuštění ve formátu UTC | `2017-06-28T21:00:27.3534352Z` |
+| **executionDuration**      | Řetězec | Doba běhu spustitelného souboru v milisekundách                   | `1,125` |
+| **executionResult**        | Řetězec | Výsledek spuštění spustitelného souboru                                 | `0`(0 znamená úspěch, 1 znamená selhání, 2 znamená dokončení a 3 znamená zrušení) |
+| **executionValue**         | Řetězec | Uživatelem definovaná hodnota vrácená spuštěním spustitelného souboru            | `1` |
+| **Prostředku**             | Řetězec | Jedinečné ID prostředku ADF                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-execution-component-phases-log-attributes"></a>Atributy protokolu fází provádění SSIS
+
+Jedná se o atributy protokolu/vlastnosti statistik za běhu pro součásti toku dat vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení fáze SSISDB spuštění](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) , které zobrazují čas strávený součástmi toku dat ve všech fázích provádění. Vygenerují se, když vyberete `Performance/Verbose` úroveň protokolování a užitečnou pro zachytávání statistik spuštění toku dat.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "executionId": "",
+      "packageName": "",
+      "taskName": "",
+      "subcomponentName": "",
+      "phase": "",
+      "startTime": "",
+      "endTime": "",
+      "executionPath": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Vlastnost                   | Typ   | Popis                                                         | Příklad                        |
+| -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
+| **interval**                   | Řetězec | Čas události ve formátu UTC:`YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Řetězec | Tato nastavení se nastaví na`YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
+| **kategorií**               | Řetězec | Kategorie diagnostických protokolů                                     | `SSISPackageExecutionComponentPhases` |
+| **correlationId**          | Řetězec | Jedinečné ID pro sledování konkrétní operace                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | Řetězec | Název vašeho ADF                                                | `MyADFv2` |
+| **integrationRuntimeName** | Řetězec | Název SSIS IR                                            | `MySSISIR` |
+| **úroveň**                  | Řetězec | Úroveň diagnostických protokolů                                        | `Informational` |
+| **executionId**            | Řetězec | Jedinečné ID pro sledování konkrétního spuštění v SSISDB         | `1`(1 znamená provádění související s balíčky, které nejsou uložené v SSISDB) |
+| **soubor s balíčkem**            | Řetězec | Název provedeného souboru balíčku                              | `MyPackage.dtsx` |
+| **/TN**               | Řetězec | Název spouštěné úlohy toku dat                                 | `Data Flow Task` |
+| **subcomponent**       | Řetězec | Název součásti toku dat                                     | `Derived Column` |
+| **fázové**                  | Řetězec | Název fáze provádění                                         | `AcquireConnections` |
+| **startTime**              | Řetězec | Čas spuštění fáze spuštění ve formátu UTC                  | `2017-06-28T21:00:27.3534352Z` |
+| **endTime**                | Řetězec | Čas ukončení fáze spuštění ve formátu UTC                    | `2017-06-28T21:00:27.3534352Z` |
+| **executionPath**          | Řetězec | Cesta spuštění pro úlohu toku dat                            | `\Transformation\Data Flow Task` |
+| **Prostředku**             | Řetězec | Jedinečné ID prostředku ADF                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+
+#### <a name="ssis-execution-data-statistics-log-attributes"></a>Atributy protokolu statistiky dat spuštění SSIS
+
+Jedná se o atributy protokolu/vlastnosti pohybů dat přes každou nožku kanálů toku dat, od nadřazeného až po komponenty, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení statistiky SSISDB spuštění](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) , které zobrazují počty řádků dat přesouvaných pomocí úloh toku dat. Vygenerují se, když vyberete `Verbose` úroveň protokolování a užitečnou pro výpočet propustnosti toku dat.
+
+```json
+{
+   "time": "",
+   "operationName": "",
+   "category": "",
+   "correlationId": "",
+   "dataFactoryName": "",
+   "integrationRuntimeName": "",
+   "level": "",
+   "properties": {
+      "executionId": "",
+      "packageName": "",
+      "taskName": "",
+      "dataflowPathIdString": "",
+      "dataflowPathName": "",
+      "sourceComponentName": "",
+      "destinationComponentName": "",
+      "rowsSent": "",
+      "createdTime": "",
+      "executionPath": ""
+   },
+   "resourceId": ""
+}
+```
+
+| Vlastnost                     | Typ   | Popis                                                        | Příklad                        |
+| ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
+| **interval**                     | Řetězec | Čas události ve formátu UTC:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**            | Řetězec | Tato nastavení se nastaví na`YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
+| **kategorií**                 | Řetězec | Kategorie diagnostických protokolů                                    | `SSISPackageExecutionDataStatistics` |
+| **correlationId**            | Řetězec | Jedinečné ID pro sledování konkrétní operace                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**          | Řetězec | Název vašeho ADF                                               | `MyADFv2` |
+| **integrationRuntimeName**   | Řetězec | Název SSIS IR                                           | `MySSISIR` |
+| **úroveň**                    | Řetězec | Úroveň diagnostických protokolů                                       | `Informational` |
+| **executionId**              | Řetězec | Jedinečné ID pro sledování konkrétního spuštění v SSISDB        | `1`(1 znamená provádění související s balíčky, které nejsou uložené v SSISDB) |
+| **soubor s balíčkem**              | Řetězec | Název provedeného souboru balíčku                             | `MyPackage.dtsx` |
+| **/TN**                 | Řetězec | Název spouštěné úlohy toku dat                                | `Data Flow Task` |
+| **dataflowPathIdString**     | Řetězec | Jedinečné ID pro cestu toku dat sledování                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
+| **dataflowPathName**         | Řetězec | Název cesty toku dat                                         | `ADO NET Source Output` |
+| **sourceComponentName**      | Řetězec | Název součásti toku dat, která odesílá data                    | `SQLDB Table3` |
+| **destinationComponentName** | Řetězec | Název součásti toku dat, která přijímá data                 | `Derived Column` |
+| **rowsSent**                 | Řetězec | Počet řádků odeslaných součástí zdroje                        | `500` |
+| **createdTime**              | Řetězec | Čas, kdy se hodnoty v řádcích získávají ve formátu UTC                | `2017-06-28T21:00:27.3534352Z` |
+| **executionPath**            | Řetězec | Cesta spuštění pro úlohu toku dat                           | `\Transformation\Data Flow Task` |
+| **Prostředku**               | Řetězec | Jedinečné ID prostředku ADF                                 | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="log-analytics-schema"></a>Log Analytics schéma
 
@@ -548,6 +833,65 @@ Log Analytics dědí schéma z monitorování s následujícími výjimkami:
     | $.properties.SystemParameters | Třídy SystemParameters | Dynamická |
     | $. Properties. Značky | Značky | Dynamická |
 
+## <a name="monitor-ssis-operations-with-azure-monitor"></a>Monitorování operací SSIS pomocí Azure Monitor
+
+Pokud chcete na& posunout úlohy služba SSIS (SQL Server Integration Services) (SSIS), můžete [ZŘÍDIT SSIS Integration runtime (IR) v Azure Data Factory (ADF)](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) , který podporuje:
+
+- Spouštění balíčků nasazených do katalogu SSIS (SSISDB) Azure SQL Database hostovaných serverem/spravovanou instancí (model nasazení projektu)
+- Spouštění balíčků nasazených do systému souborů, souborů Azure nebo databáze služby SQL Server Database (MSDB) hostované službou Azure SQL Managed instance (model nasazení balíčku)
+
+Po zřízení můžete [ověřit provozní stav SSIS IR pomocí Azure PowerShell nebo na rozbočovači **monitorování** na portálu ADF](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Pomocí modelu nasazení projektu jsou protokoly spouštění balíčků SSIS uložené v interních tabulkách a zobrazeních SSISDB, takže se dají dotazovat, analyzovat a vizuálně prezentovat pomocí určených nástrojů, jako je SQL Server Management Studio (SSMS). Pomocí modelu nasazení balíčku můžete protokoly spuštění balíčků SSIS ukládat do systému souborů nebo souborů Azure jako soubory CSV, které je potřeba analyzovat a zpracovávat pomocí jiných určených nástrojů, než se dají dotazovat, analyzovat a vizuálně prezentovat.
+
+Nyní s [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) integrací se dá dotazovat na všechny metriky a protokoly vygenerované z operací IR SSIS a spouštění balíčků SSIS, analyzovat je a vizuálně prezentovat na Azure Portal, zatímco výstrahy je také možné na nich vyvolat.
+
+### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Konfigurace nastavení diagnostiky a pracovního prostoru pro operace SSIS
+
+Chcete-li odeslat všechny metriky a protokoly vygenerované pomocí operací SSIS IR a spuštění balíčků SSIS, které se Azure Monitor, postupujte podle podrobných pokynů ke [konfiguraci nastavení diagnostiky a pracovního prostoru pro ADF](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace).
+
+### <a name="ssis-operational-metrics"></a>Provozní metriky SSIS
+
+Provozní [metriky](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) SSIS jsou čítače výkonu/číselné hodnoty, které popisují stav SSIS IR operace spuštění/zastavení a spuštění balíčku SSIS v určitém bodě v čase. Jsou součástí [metriky ADF v Azure monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics), včetně těch, které se týkají počtu a velikosti entit ADF, spuštění aktivit, kanálu/triggeru a infračerveného využití procesoru/paměti, počtu uzlů a fronty.
+
+Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF na Azure Monitor, zaškrtnutím políčka _AllMetrics_ zpřístupníte SSIS provozní metriky pro [interaktivní analýzu pomocí Azure Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started), [prezentace na řídicím panelu Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)a [Upozornění téměř v reálném čase](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric).
+
+![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+### <a name="ssis-operational-alerts"></a>SSIS provozní výstrahy
+
+Pokud chcete vyvolat upozornění na provozní metriky SSIS z portálu ADF, [Vyberte stránku **výstrahy & metriky** v centru **monitorování** ADF a postupujte podle podrobných pokynů](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts).
+
+![Vyvolává se SSIS provozní výstrahy z portálu ADF.](media/data-factory-monitor-oms/data-factory-monitor-alerts-ssis.png)
+
+Pokud chcete vygenerovat upozornění na provozní metriky SSIS z Azure Portal, [Vyberte stránku **výstrahy** centra **monitorování** Azure a postupujte](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-alerts)podle podrobných pokynů.
+
+![Vyvolává se SSIS provozní výstrahy z Azure Portal](media/data-factory-monitor-oms/azure-monitor-alerts-ssis.png)
+
+### <a name="ssis-operational-logs"></a>Provozní protokoly SSIS
+
+Provozní [protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) SSIS jsou události generované SSISmi infračervenými operacemi a prováděním balíčků SSIS, které poskytují dostatek kontextu a informací o všech zjištěných problémech a jsou užitečné pro analýzu původní příčiny. 
+
+Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF na Azure Monitor, můžete vybrat relevantní provozní protokoly SSIS a odeslat je Log Analytics, které jsou založené na Azure Průzkumník dat, kde budou zpřístupněny pro [analýzu pomocí bohatých dotazovacích jazyků](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), [prezentací na řídicím panelu Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)a [Upozornění téměř v reálném čase](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+
+![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+Schémata a obsah protokolů spouštění balíčků SSIS v Azure Monitor a Log Analytics jsou podobné těm v interních tabulkách a zobrazeních SSISDB.
+
+| Kategorie protokolu Azure Monitor          | Log Analytics tabulky                     | SSISDB interní tabulky/zobrazení              |
+| ------------------------------------- | ---------------------------------------- | ----------------------------------------- |
+| `SSISIntegrationRuntimeLogs`          | `ADFSSISIntegrationRuntimeLogs`          |                                           |
+| `SSISPackageEventMessageContext`      | `ADFSSISPackageEventMessageContext`      | `[internal].[event_message_context]`      |
+| `SSISPackageEventMessages`            | `ADFSSISPackageEventMessages`            | `[internal].[event_messages]`             |
+| `SSISPackageExecutableStatistics`     | `ADFSSISPackageExecutableStatistics`     | `[internal].[executable_statistics]`      |
+| `SSISPackageExecutionComponentPhases` | `ADFSSISPackageExecutionComponentPhases` | `[internal].[execution_component_phases]` |
+| `SSISPackageExecutionDataStatistics`  | `ADFSSISPackageExecutionDataStatistics`  | `[internal].[execution_data_statistics]`  |
+
+Další informace o atributech a vlastnostech operačního protokolu SSIS najdete v tématu [Azure monitor a Log Analytics schémat pro ADF](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events).
+
+Vybrané protokoly spouštění balíčků SSIS se vždycky odesílají do Log Analytics bez ohledu na vaše metody volání, například na Azure-SQL Server Data Tools (SSDT), v T-SQL agentu SSMS/SQL Server nebo v jiných určených nástrojích, nebo jako triggery/izolovaného prostředí a spuštění aktivit balíčku Execute SSIS v kanálech ADF.
+
+Při dotazování protokolů spouštění balíčků SSIS na Log Analytics je můžete spojit s použitím vlastností OperationId/ExecutionId/ID korelace. OperationId/ExecutionId se vždycky nastaví na 1 pro všechny operace nebo provádění související s balíčky, které **nejsou** uložené v SSISDB.
+
+![Dotazování na Log Analytics protokoly spouštění balíčků SSIS](media/data-factory-monitor-oms/log-analytics-query.png)
 
 ## <a name="next-steps"></a>Další kroky
 [Programové monitorování a Správa kanálů](monitor-programmatically.md)

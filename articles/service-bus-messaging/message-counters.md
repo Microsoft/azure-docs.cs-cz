@@ -4,10 +4,9 @@ description: Načtěte počet zpráv uchovávaných ve frontách a odběrech pom
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d0e1a7a5c6eb0b281b4e6ac08135f41f28ecbec8
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341273"
 ---
 # <a name="message-counters"></a>Čítače zpráv

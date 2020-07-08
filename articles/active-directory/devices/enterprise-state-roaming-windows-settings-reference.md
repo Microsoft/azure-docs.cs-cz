@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252963"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
@@ -26,12 +25,12 @@ Následuje seznam nastavení, která budou v systému Windows 10 roamingovaná n
 
 V následující tabulce najdete souhrn typů zařízení a účtů, které jsou podporované architekturou synchronizace, zálohování a obnovení ve Windows 10.
 
-| Typ účtu a operace | Plocha | Mobilní zařízení |
+| Typ účtu a operace | Plocha | Mobilní |
 | --- | --- | --- |
-| Azure Active Directory: synchronizace |Ano |Ne |
-| Azure Active Directory: zálohování a obnovení |Ne |Ne |
+| Azure Active Directory: synchronizace |Yes |No |
+| Azure Active Directory: zálohování a obnovení |No |No |
 | Účet Microsoft: synchronizace |Ano |Ano |
-| Účet Microsoft: zálohování a obnovení |No |Ano |
+| Účet Microsoft: zálohování a obnovení |No |Yes |
 
 ## <a name="what-is-backup"></a>Co je zálohování?
 
@@ -69,7 +68,7 @@ V následující tabulce se ve sloupci skupina nastavení zobrazí další polo�
 Interní položky ve sloupci skupina nastavení odkazují na nastavení a aplikace, které se můžou zakázat jenom v synchronizaci v rámci samotné aplikace, nebo vypnutím synchronizace pro celé zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení Zásady skupiny.
 Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do skupiny.
 
-| Nastavení | Plocha | Mobilní zařízení | Skupina |
+| Nastavení | Plocha | Mobilní | Skupina |
 | --- | --- | --- | --- |
 | **Účty**: obrázek účtu |synchronizace |× |Motiv |
 | **Účty**: Další nastavení účtu |X |X | |

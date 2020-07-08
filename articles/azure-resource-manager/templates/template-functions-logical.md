@@ -4,10 +4,9 @@ description: Popisuje funkce, které lze použít v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677385"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logické funkce pro šablony ARM
@@ -28,7 +27,7 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
 | arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
@@ -80,7 +79,7 @@ Převede parametr na logickou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
@@ -134,7 +133,7 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | pomocné |Yes |Boolean |Hodnota, která ověří, zda je true nebo false. |
 | trueValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
@@ -239,7 +238,7 @@ Převede logickou hodnotu na její opačnou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |Boolean |Hodnota, kterou chcete převést. |
 
@@ -312,7 +311,7 @@ Kontroluje, zda je hodnota parametru pravdivá.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
 | arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |

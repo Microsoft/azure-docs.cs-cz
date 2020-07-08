@@ -4,12 +4,11 @@ description: Odpovědi na nejčastější dotazy týkající se služby Azure Co
 author: dkkapur
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 64dcd3da42083401d7086c1db6f3f930beb9a76d
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447777"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806597"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -27,7 +26,7 @@ Velikost Image kontejneru má vliv na dobu potřebnou k nasazení, takže obecn�
 
 Vzhledem k tomu, že jedním z hlavních determinantů časů nasazení je velikost obrázku, hledejte způsob, jak velikost zmenšit. Odeberte vrstvy, které nepotřebujete, nebo zmenšete velikost vrstev v imagi (tím, že vybíráte světlejší základní bitovou kopii operačního systému). Pokud například používáte kontejnery Linux, zvažte použití Alpine jako základní image, nikoli úplného serveru Ubuntu. Podobně pro kontejnery Windows použijte základní image nano serveru, pokud je to možné. 
 
-Měli byste také kontrolovat seznam imagí předem uložených v mezipaměti ve službě Azure Container images, které jsou k dispozici prostřednictvím rozhraní API pro [vypsání imagí v mezipaměti](/rest/api/container-instances/listcachedimages) . Může být možné přepnout vrstvu obrázku pro jednu z imagí z mezipaměti před uložením na více systémů. 
+Měli byste také kontrolovat seznam imagí předem uložených v mezipaměti ve službě Azure Container images, které jsou k dispozici prostřednictvím rozhraní API pro [vypsání imagí v mezipaměti](/rest/api/container-instances/location/listcachedimages) . Může být možné přepnout vrstvu obrázku pro jednu z imagí z mezipaměti před uložením na více systémů. 
 
 Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) k omezení času spuštění kontejneru.
 

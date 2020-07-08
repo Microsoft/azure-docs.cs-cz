@@ -4,10 +4,9 @@ description: Popisuje, jak může vlastník účtu testovacího prostředí nast
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 17456f61352b1e26a33c042b27faa2d3aa44d73a
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445079"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Nastavení informací o podpoře (vlastník účtu testovacího prostředí v Azure Lab Services)
@@ -21,7 +20,7 @@ Informace o podpoře zahrnují:
 - Další pokyny 
 
 ## <a name="specify-support-information"></a>Zadat informace o podpoře
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Na panelu hledání zadejte **služby testovacího prostředí**a ve výsledcích hledání vyberte **služby testovacího prostředí** . 
 3. V seznamu účtů testovacího prostředí vyberte svůj účet testovacího prostředí. 
 4. Přepněte na stránku **interní podpory** , proveďte následující kroky:

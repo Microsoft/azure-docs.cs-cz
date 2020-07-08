@@ -1,5 +1,5 @@
 ---
-title: Python
+title: Spustit skript jazyka Python v Návrháři
 titleSuffix: Azure Machine Learning
 description: Naučte se používat Python v Návrháři Azure Machine Learning k transformaci dat.
 services: machine-learning
@@ -10,14 +10,13 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer, tracking-python
-ms.openlocfilehash: af26dce03c0dcf5226c52dcdd8af4408186aa343
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557039"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041009"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Spouštění kódu v Pythonu v Návrháři Azure Machine Learning
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>Spuštění kódu Pythonu v Návrháři Azure Machine Learning
 
 V tomto článku se dozvíte, jak pomocí modulu [spouštěného skriptu Pythonu](algorithm-module-reference/execute-python-script.md) přidat vlastní logiku do návrháře Azure Machine Learning. V následujícím postupu můžete pomocí knihovny PANDAS provádět jednoduché technologie funkcí.
 

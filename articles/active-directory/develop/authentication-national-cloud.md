@@ -14,10 +14,9 @@ ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
 ms.openlocfilehash: 20a158aac6a03dfe0bd8929de9fa66ea215aa29c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194119"
 ---
 # <a name="national-clouds"></a>Národní cloudy
@@ -28,7 +27,7 @@ Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v n�
 
 - Azure Government
 - Azure Germany
-- Azure China 21Vianet
+- Azure (Čína) 21Vianet
 
 Národní cloudy jsou jedinečné a oddělené prostředí z globálního úložiště Azure. Je důležité si uvědomit klíčové rozdíly při vývoji aplikace pro tato prostředí. Mezi rozdíly patří registrace aplikací, získávání tokenů a konfigurace koncových bodů.
 
@@ -79,6 +78,6 @@ Pokud se chcete dozvědět, jak vytvořit aplikaci pomocí platformy Microsoft i
 Přečtěte si další informace:
 
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure (Čína) 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure (Německo)](https://docs.microsoft.com/azure/germany/)
 - [Základy ověřování Azure AD](authentication-scenarios.md)

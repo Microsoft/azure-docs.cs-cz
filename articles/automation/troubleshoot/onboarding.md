@@ -2,20 +2,16 @@
 title: Řešení potíží s nasazením funkcí Azure Automation
 description: Tento článek popisuje, jak řešit problémy, které vznikají při nasazování funkcí Azure Automation.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/22/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 4c4c43d8522c6f507d458c56abc445e2da35fa6d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739375"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801025"
 ---
-# <a name="troubleshoot-feature-deployment-issues"></a>Řešení potíží s nasazením funkcí
+# <a name="troubleshoot-feature-deployment-issues"></a>Řešení problémů s nasazením funkcí
 
 Po nasazení funkce Azure Automation Update Management nebo funkce Change Tracking a inventáře na virtuálních počítačích se mohou zobrazit chybové zprávy. Tento článek popisuje chyby, ke kterým může dojít, a jak je vyřešit.
 
@@ -71,7 +67,7 @@ K této chybě dochází v důsledku nesprávných nebo chybějících oprávně
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že máte správná [oprávnění k nasazení funkcí](../automation-role-based-access-control.md#feature-setup-permissions), a pak zkuste funkci nasadit znovu. Pokud se zobrazí chybová zpráva `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění, abyste mohli zjistit, jestli je virtuální počítač pro pracovní prostor povolený.
+Ujistěte se, že máte správná [oprávnění k nasazení funkcí](../automation-role-based-access-control.md#feature-setup-permissions), a pak zkuste funkci nasadit znovu. Pokud se zobrazí chybová zpráva `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , přečtěte si následující [informace o řešení potíží](update-management.md#failed-to-enable-error).
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: nasazení funkcí se nepovede a zobrazí se zpráva "nepovedlo se nakonfigurovat účet Automation pro diagnostické protokolování".
 

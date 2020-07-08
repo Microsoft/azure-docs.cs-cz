@@ -9,10 +9,9 @@ ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
 ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194319"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure
@@ -33,17 +32,17 @@ Všimněte si, že ne všechny služby Azure automaticky replikují data, ani ne
 
 ## <a name="can-i-select-my-regional-pairs"></a>Můžu vybrat své místní páry?
 
-No. Některé služby Azure spoléhají na regionální páry, jako je třeba [redundantní úložiště](./storage/common/storage-redundancy.md)Azure. Tyto služby neumožňují vytváření nových oblastí pro místní párování.  Podobně vzhledem k tomu, že Azure řídí plánovanou údržbu a stanovení priorit obnovení pro regionální páry, nemůžete definovat vlastní regionální páry, které tyto služby budou využívat. Můžete ale vytvořit vlastní řešení pro zotavení po havárii vytvořením služeb v libovolném počtu oblastí a využitím služeb Azure k jejich párování. 
+Ne. Některé služby Azure spoléhají na regionální páry, jako je třeba [redundantní úložiště](./storage/common/storage-redundancy.md)Azure. Tyto služby neumožňují vytváření nových oblastí pro místní párování.  Podobně vzhledem k tomu, že Azure řídí plánovanou údržbu a stanovení priorit obnovení pro regionální páry, nemůžete definovat vlastní regionální páry, které tyto služby budou využívat. Můžete ale vytvořit vlastní řešení pro zotavení po havárii vytvořením služeb v libovolném počtu oblastí a využitím služeb Azure k jejich párování. 
 
 Například můžete použít služby Azure, například [AzCopy](./storage/common/storage-use-azcopy-v10.md) , k plánování zálohování dat do účtu úložiště v jiné oblasti.  Pomocí [Azure DNS a Azure Traffic Manager](./networking/disaster-recovery-dns-traffic-manager.md)můžou zákazníci navrhovat odolnou architekturu svých aplikací, které budou zachovány se ztrátou primární oblasti.
 
 ## <a name="am-i-limited-to-using-services-within-my-regional-pairs"></a>Je omezeno na používání služeb v rámci místních párů?
 
-No. Zatímco konkrétní služba Azure může spoléhat na regionální dvojici, můžete své další služby hostovat v libovolné oblasti, která vyhovuje vašim obchodním potřebám.  Řešení úložiště Azure GRS může párovat data v oblasti Kanada – střed s partnerským uzlem v Kanadě – východ při použití výpočetních prostředků umístěných v Východní USA.  
+Ne. Zatímco konkrétní služba Azure může spoléhat na regionální dvojici, můžete své další služby hostovat v libovolné oblasti, která vyhovuje vašim obchodním potřebám.  Řešení úložiště Azure GRS může párovat data v oblasti Kanada – střed s partnerským uzlem v Kanadě – východ při použití výpočetních prostředků umístěných v Východní USA.  
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Je nutné použít místní páry Azure?
 
-No. Zákazníci můžou využívat služby Azure k navržení odolné služby, aniž by se museli spoléhat na regionální páry Azure.  Nicméně doporučujeme, abyste nakonfigurovali možnosti zotavení po havárii v provozní kontinuitě (BCDR) napříč místními páry, abyste mohli využít [izolaci](./security/fundamentals/isolation-choices.md) a zlepšit [dostupnost](./availability-zones/az-overview.md). U aplikací, které podporují více aktivních oblastí, doporučujeme vždy, když je to možné, použít obě oblasti z dvojice oblastí. Tím zajistíte optimální dostupnost pro aplikace a minimalizovanou dobu obnovení v případě havárie. Kdykoli je to možné, navrhněte aplikaci pro zajištění [maximální odolnosti](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) a snadného [zotavení po havárii](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery).
+Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, aniž by se museli spoléhat na regionální páry Azure.  Nicméně doporučujeme, abyste nakonfigurovali možnosti zotavení po havárii v provozní kontinuitě (BCDR) napříč místními páry, abyste mohli využít [izolaci](./security/fundamentals/isolation-choices.md) a zlepšit [dostupnost](./availability-zones/az-overview.md). U aplikací, které podporují více aktivních oblastí, doporučujeme vždy, když je to možné, použít obě oblasti z dvojice oblastí. Tím zajistíte optimální dostupnost pro aplikace a minimalizovanou dobu obnovení v případě havárie. Kdykoli je to možné, navrhněte aplikaci pro zajištění [maximální odolnosti](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) a snadného [zotavení po havárii](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery).
 
 ## <a name="azure-regional-pairs"></a>Regionální páry Azure
 

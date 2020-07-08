@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252776"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Nasazení zabezpečené pracovní stanice spravované v Azure
@@ -33,16 +32,16 @@ Před nasazením řešení vyberte profil. V nasazení můžete použít více p
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Uživatel v Azure AD | Ano | Ano | Ano | Ano | Ano | Ano |
 | Spravovaná v Intune | Ano | Ano | Ano | Ano | Ano | Ano |
-| Zařízení – zaregistrované v Azure AD | Ano |  |  |  |  | |   |
+| Zařízení – zaregistrované v Azure AD | Yes |  |  |  |  | |   |
 | Zařízení – připojeno k Azure AD |   | Ano | Ano | Ano | Ano | Ano |
-| Použité standardní hodnoty zabezpečení Intune |   | Ano <br> Rozšíření | Ano <br> (HighSecurity) | Ano <br> (NCSC) | Ano <br> Psán | NA |
+| Použité standardní hodnoty zabezpečení Intune |   | Yes <br> Rozšíření | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Psán | NA |
 | Hardware splňuje zabezpečené standardy pro Windows 10. |   | Ano | Ano | Ano | Ano | Ano |
 | Povolené ATP programu Microsoft Defender |   | Ano  | Ano | Ano | Ano | Ano |
 | Odebrání oprávnění správce |   |   | Ano  | Ano | Ano | Ano |
 | Nasazení pomocí programu Microsoft autopilot |   |   | Ano  | Ano | Ano | Ano |
 | Aplikace nainstalované jenom pomocí Intune |   |   |   | Ano | Ano |Ano |
 | Adresy URL omezené na seznam schválených |   |   |   | Ano | Ano |Ano |
-| Blokované na internetu (příchozí/odchozí) |   |   |   |  |  |Ano |
+| Blokované na internetu (příchozí/odchozí) |   |   |   |  |  |Yes |
 
 > [!NOTE]
 > V doprovodných **zařízeních** zabezpečených pracovních stanic se přiřadí profily a zásady. Uživatelé nebudou mít k těmto zásadám aplikovány přímo, což umožňuje sdílení zařízení (sdílená zařízení) v platnosti. Pokud zabezpečená pracovní stanice není sdílená v nasazení, nebo jsou nutné jednotlivé zásady uživatele, přiřazení profilů uživatelských zásad se dá přiřadit uživateli a zařízení. 
@@ -61,7 +60,7 @@ Když vytvoříte zabezpečený účet správce pracovní stanice, vystavte si �
 
 Vyžadovat službu Multi-Factor Authentication alespoň pro správce. Pokyny k implementaci najdete v tématu [nasazení cloudového vícefaktorového ověřování](../authentication/howto-mfa-getstarted.md) .
 
-### <a name="azure-ad-users-and-groups"></a>Uživatelé a skupiny Azure AD
+### <a name="azure-ad-users-and-groups"></a>Uživatelé a skupiny služby Azure AD
 
 1. V Azure Portal přejděte na **Azure Active Directory**  >  **Uživatelé**  >  **Nový uživatel**.
 1. Postupujte podle kroků v [kurzu Vytvoření uživatele](/Intune/quickstart-create-user)a vytvořte Správce zařízení.
@@ -231,7 +230,7 @@ Aby bylo možné úspěšně dokončit posílení zabezpečení řešení, Stáh
 
 | Profil | Umístění pro stahování | Bitmap |
 | --- | --- | --- |
-| Nízká úroveň zabezpečení | – | – |
+| Nízká úroveň zabezpečení | Není k dispozici | Není k dispozici |
 | Rozšířené zabezpečení | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
 | Vysoké zabezpečení | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Specializovaná | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC – Windows10 (1803) SecurityBaseline.ps1 |

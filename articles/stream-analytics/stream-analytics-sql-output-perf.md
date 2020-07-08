@@ -7,18 +7,17 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: e0fcbec2e502088024805ebc1f02007c09a12c9d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.openlocfilehash: 6281e729c2663666cd61f22b2697edd61bbf88f5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192496"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040788"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
 
 Tento článek popisuje tipy, které vám pomůžou dosáhnout lepší propustnosti zápisu při načítání dat do Azure SQL Database pomocí Azure Stream Analytics.
 
-Výstup SQL v Azure Stream Analytics podporuje paralelní zápis jako možnost. Tato možnost umožňuje [plně paralelní](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie úloh, ve kterých je paralelní zápis více výstupních oddílů do cílové tabulky. Povolení této možnosti v Azure Stream Analytics ale nemusí být dostatečné pro dosažení vyšší propustnosti, protože to významně závisí na konfiguraci databáze a schématu tabulek. Výběr indexů, klíčů clusteringu, faktoru plnění indexu a komprese má vliv na dobu načítání tabulek. Další informace o optimalizaci databáze pro zlepšení výkonu dotazů a zatížení na základě vnitřních srovnávacích testů najdete v tématu [Průvodce výkonem služby SQL Database](../azure-sql/database/performance-guidance.md). Řazení zápisů není zaručené při psaní rovnoběžně s SQL Database.
+Výstup SQL v Azure Stream Analytics podporuje paralelní zápis jako možnost. Tato možnost umožňuje [plně paralelní](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie úloh, ve kterých je paralelní zápis více výstupních oddílů do cílové tabulky. Povolení této možnosti v Azure Stream Analytics ale nemusí být dostatečné pro dosažení vyšší propustnosti, protože to významně závisí na konfiguraci databáze a schématu tabulek. Výběr indexů, klíčů clusteringu, faktoru plnění indexu a komprese má vliv na dobu načítání tabulek. Další informace o optimalizaci databáze pro zlepšení výkonu dotazů a zatížení na základě vnitřních srovnávacích testů najdete v tématu [SQL Database Průvodce výkonem](../azure-sql/database/performance-guidance.md). Řazení zápisů není zaručené při psaní rovnoběžně s SQL Database.
 
 Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlepšit celkovou propustnost vašeho řešení.
 
