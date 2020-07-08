@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit vlastní image v Azure DevTest Labs ze so
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba627421a43a8e4e7f193ad96da09da8934d028c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481268"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Vytvoření vlastní image ze souboru VHD
@@ -22,7 +22,7 @@ ms.locfileid: "85481268"
 
 Následující kroky vás provedou vytvořením vlastní image ze souboru VHD pomocí Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 

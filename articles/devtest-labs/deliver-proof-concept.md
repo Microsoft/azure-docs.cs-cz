@@ -4,10 +4,10 @@ description: Naučte se, jak doručovat koncept, aby se Azure DevTest Labs mohl 
 ms.topic: article
 ms.date: 06/2/2020
 ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481353"
 ---
 # <a name="deliver-a-proof-of-concept"></a>Doručovat zkoušku konceptu 

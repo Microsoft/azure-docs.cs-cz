@@ -4,10 +4,10 @@ description: Naučte se ukládat tajné klíče do Azure Key Vault a používat 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481642"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Ukládejte tajné klíče v trezoru klíčů v Azure DevTest Labs

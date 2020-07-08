@@ -4,10 +4,10 @@ description: Naučte se spouštět virtuální počítače v testovacím prostř
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 72ce964b451fb6bcd1e93d75e6ae674c7608d63a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481897"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Spouštění virtuálních počítačů v testovacím prostředí pomocí Azure Automationch runbooků

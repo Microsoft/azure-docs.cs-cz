@@ -4,10 +4,10 @@ description: Tento článek obsahuje návod, který vám ukáže, jak nahrát so
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ff8ee15f35765027db1407f05c108739bd97433e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480775"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí PowerShellu
@@ -20,7 +20,7 @@ V Azure DevTest Labs se soubory VHD dají použít k vytvoření vlastních imag
 
 Následující kroky vás provedou odesláním souboru VHD do Azure DevTest Labs pomocí prostředí PowerShell. 
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 

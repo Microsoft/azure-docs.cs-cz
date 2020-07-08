@@ -4,10 +4,10 @@ description: Nahrání souboru VHD do účtu úložiště testovacího prostřed
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ccdf27488147bc4840d1e505ba2761bf328d6a32
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480758"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
@@ -24,7 +24,7 @@ Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomoc
 
 1. Získejte název účtu úložiště testovacího prostředí pomocí Azure Portal:
 
-    1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
     1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
     

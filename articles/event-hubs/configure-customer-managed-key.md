@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastn
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479823"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
@@ -94,14 +94,14 @@ Pomocí těchto kroků povolte protokoly pro klíče spravované zákazníkem.
 ## <a name="log-schema"></a>Schéma protokolu 
 Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následující tabulce. 
 
-| Název | Popis |
+| Name | Description |
 | ---- | ----------- | 
 | /TN | Popis úlohy, která selhala. |
 | ActivityId | Interní ID, které se používá ke sledování. |
 | category | Definuje klasifikaci úkolu. Například pokud je klíč z vašeho trezoru klíčů zakázaný, pak se jedná o kategorii informací, nebo pokud se klíč nedá rozdělit, může dojít k chybě. |
 | resourceId | ID prostředku Azure Resource Manager |
 | keyVault | Úplný název trezoru klíčů |
-| Klíč | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
+| key | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
 | verze | Verze používaného klíče |
 | NázevOperace | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
 | kód | Kód, který je přidružen k operaci. Příklad: kód chyby 404 znamená, že klíč nebyl nalezen. |

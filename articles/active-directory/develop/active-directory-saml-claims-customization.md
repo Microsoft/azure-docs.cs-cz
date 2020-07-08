@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478293"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
@@ -54,7 +54,7 @@ Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude Azure AD vystavo
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
-| Formát NameID | Popis |
+| Formát NameID | Description |
 |---------------|-------------|
 | **Výchozí** | Azure AD bude používat výchozí formát zdroje. |
 | **Trvalý** | Služba Azure AD bude používat jako formát NameID jako trvalá. |
@@ -68,7 +68,7 @@ Dočasná NameID je také podporována, ale v rozevíracím seznamu není k disp
 
 Vyberte požadovaný zdroj pro `NameIdentifier` deklaraci (nebo NameId). Můžete vybrat z následujících možností.
 
-| Název | Popis |
+| Name | Description |
 |------|-------------|
 | E-mail | E-mailová adresa uživatele |
 | Třídy | Hlavní název uživatele (UPN) uživatele |

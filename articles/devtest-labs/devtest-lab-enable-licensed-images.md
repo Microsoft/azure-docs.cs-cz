@@ -4,10 +4,10 @@ description: Naučte se, jak povolit licencovanou image v Azure DevTest Labs pom
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6a4023a0107acf5aa4cabc2178d17f7be40301f0
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481013"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Povolte ve svém testovacím prostředí licencovaný obraz v Azure DevTest Labs
@@ -17,7 +17,7 @@ V Azure DevTest Labs je licencovaná image taková, která zahrnuje podmínky a 
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Zjištění, jestli je k dispozici licencovaná image pro uživatele
 Prvním krokem, který uživatelům umožňuje vytvářet virtuální počítače z licencované image, je zajistit, aby byly podmínky a ujednání přijaté pro licencovanou bitovou kopii. Následující kroky ukazují, jak můžete zobrazit stav nabídky licencované image a v případě potřeby přijmout podmínky a ujednání.
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 

@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479415"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Konfigurační soubor knihovny Microsoft Authentication Library pro Android
@@ -341,7 +341,7 @@ Následující příklad znázorňuje základní konfiguraci, která určuje ID 
 ## <a name="how-to-use-a-configuration-file"></a>Použití konfiguračního souboru
 
 1. Vytvořte konfigurační soubor. V nástroji doporučujeme vytvořit vlastní konfigurační soubor `res/raw/auth_config.json` . Můžete ho ale umístit kamkoli tam, kde chcete.
-2. Sdělte MSAL, kde můžete hledat vaši konfiguraci při vytváření `PublicClientApplication` . Například:
+2. Sdělte MSAL, kde můžete hledat vaši konfiguraci při vytváření `PublicClientApplication` . Příklad:
 
    ```java
    //On Worker Thread
