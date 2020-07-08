@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
 ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981151"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Sestavte svou první aplikaci bez serveru pomocí Azure Logic Apps a Azure Functions v aplikaci Visual Studio
@@ -64,7 +63,7 @@ Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-re
 
    ![Vytvořit nový projekt v aplikaci Visual Studio](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. V části **Nainstalováno**, vyberte **Visual C#** nebo **Visual Basic**. Pak vyberte **cloudová** > **Skupina prostředků Azure**.
+1. V části **Nainstalováno**, vyberte **Visual C#** nebo **Visual Basic**. Pak vyberte **cloudová**  >  **Skupina prostředků Azure**.
 
    > [!NOTE]
    > Pokud neexistuje kategorie **cloudu** nebo projekt **skupiny prostředků Azure** , ujistěte se, že jste nainstalovali sadu Azure SDK pro Visual Studio.
@@ -73,7 +72,7 @@ Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-re
 
    1. V poli **vytvořit nový projekt** vyberte šablonu projektu **skupiny prostředků Azure** pro Visual C# nebo Visual Basic a pak vyberte **Další**.
 
-   1. Zadejte název a další informace o projektu, které chcete použít pro skupinu prostředků Azure. Až to budete mít, vyberte **Vytvořit**.
+   1. Zadejte název a další informace o projektu, které chcete použít pro skupinu prostředků Azure. Po dokončení vyberte **Vytvořit**.
 
 1. Zadejte název vašeho projektu a jeho umístění a pak vyberte **OK**.
 
@@ -90,7 +89,7 @@ Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-re
    ![Vybrat šablonu pro rychlý Start Azure](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
    Visual Studio vytvoří a otevře řešení pro váš projekt skupiny prostředků. 
-   Vámi zvolená šablona Azure pro rychlý Start vytvoří šablonu nasazení s názvem azuredeploy. JSON v projektu skupiny prostředků. Tato šablona nasazení zahrnuje definici pro jednoduchou aplikaci logiky, která se aktivuje požadavkem HTTP, volá funkci Azure a vrátí výsledek jako odpověď HTTP.
+   Vámi zvolená šablona Azure pro rychlý Start vytvoří šablonu nasazení s názvem azuredeploy.jsv rámci projektu skupiny prostředků. Tato šablona nasazení zahrnuje definici pro jednoduchou aplikaci logiky, která se aktivuje požadavkem HTTP, volá funkci Azure a vrátí výsledek jako odpověď HTTP.
 
    ![Nové řešení bez serveru](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
@@ -100,7 +99,7 @@ Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-re
 
 Než budete moct aplikaci logiky otevřít v návrháři aplikace logiky v aplikaci Visual Studio, musíte mít skupinu prostředků Azure, která je už nasazená v Azure. Návrhář pak může vytvořit připojení k prostředkům a službám ve vaší aplikaci logiky. Pro tuto úlohu použijte následující postup k nasazení řešení ze sady Visual Studio do Azure Portal:
 
-1. V Průzkumník řešení v místní nabídce vašeho projektu prostředku vyberte **nasadit** > **Nový**.
+1. V Průzkumník řešení v místní nabídce vašeho projektu prostředku vyberte **nasadit**  >  **Nový**.
 
    ![Vytvořit nové nasazení pro skupinu prostředků](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
@@ -119,9 +118,9 @@ Než budete moct aplikaci logiky otevřít v návrháři aplikace logiky v aplik
 
 Pokud chcete aplikaci logiky upravit po nasazení, otevřete aplikaci logiky pomocí návrháře aplikace logiky v aplikaci Visual Studio.
 
-1. V Průzkumník řešení v místní nabídce souboru azuredeploy. JSON vyberte **otevřít pomocí návrháře aplikace logiky**.
+1. V Průzkumník řešení v místní nabídce azuredeploy.jsv souboru vyberte **otevřít v návrháři aplikace logiky**.
 
-   ![Otevření azuredeploy. JSON v návrháři aplikace logiky](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
+   ![Otevřít azuredeploy.jsv návrháři aplikace logiky](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
    > [!TIP]
    > Pokud tento příkaz v aplikaci Visual Studio 2019 nemáte, ověřte, že máte nejnovější aktualizace pro Visual Studio.
@@ -140,7 +139,7 @@ Pokud chcete vytvořit projekt funkcí a funkci pomocí JavaScriptu, Pythonu, F 
 
 ## <a name="deploy-functions-from-visual-studio"></a>Nasazení funkcí ze sady Visual Studio
 
-Vaše šablona nasazení nasadí všechny služby Azure Functions, které máte ve vašem řešení, z úložiště Git, které je určené proměnnými v souboru azuredeploy. JSON. Při vytváření a vytváření projektu Functions ve vašem řešení si můžete tento projekt ověřit ve správě zdrojového kódu Git (například GitHub nebo Azure DevOps) a pak aktualizovat `repo` proměnnou tak, aby šablona nasadila funkci Azure Functions.
+Vaše šablona nasazení nasadí všechny služby Azure Functions, které máte ve vašem řešení, z úložiště Git, které je určené proměnnými v azuredeploy.jsv souboru. Při vytváření a vytváření projektu Functions ve vašem řešení si můžete tento projekt ověřit ve správě zdrojového kódu Git (například GitHub nebo Azure DevOps) a pak aktualizovat `repo` proměnnou tak, aby šablona nasadila funkci Azure Functions.
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>Správa aplikací logiky a zobrazení historie spuštění
 

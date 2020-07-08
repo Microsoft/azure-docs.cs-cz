@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.openlocfilehash: 916c54c3739d1164e4e9c1db67aa1f4e0dbd0c6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157789"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrace Azure HDInsight 3,6 Apache Storm do HDInsight 4,0 Apache Spark
@@ -39,7 +38,7 @@ Apache Storm můžete poskytovat různé úrovně zaručeného zpracování zpr�
 |---|---|---|---|
 |**Záruka zpracování událostí**|Aspoň jednou <br> Právě jednou (Trident) |[Právě jednou](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Právě jednou](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Model zpracování**|Reálný čas <br> Micro Batch (Trident) |Mikrodávka |Mikrodávka |
-|**Podpora času události**|[Ano](https://storm.apache.org/releases/2.0.0/Windowing.html)|Ne|[Ano](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Podpora času události**|[Ano](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Ano](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Jazyky**|Java atd.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Streamování Sparku vs strukturované streamování Sparku
@@ -57,7 +56,7 @@ Operace vyplavování poskytuje model, který zpracovává každou jednotlivou u
 
 Topologie Storm se skládají z několika součástí, které jsou uspořádány do orientovaného acyklického grafu (DAG). Data proudí mezi komponentami v grafu. Každá komponenta spotřebovává jeden či více datových streamů a případně může i jeden či více streamů vysílat.
 
-|Součást |Popis |
+|Součást |Description |
 |---|---|
 |Spout|Přinese data do topologie. Vysílají do topologie jeden nebo více datových proudů.|
 |Bolt|Spotřebovává datové proudy emitované z spoutů nebo jiného šrouby. Bolty mohou volitelně vysílat do topologie datové streamy. Bolty také odpovídají za zápis dat do externích služeb nebo úložiště, například HDFS, Kafka nebo HBase.|
@@ -67,7 +66,7 @@ Topologie Storm se skládají z několika součástí, které jsou uspořádány
 
 Přetvoření se skládá z následujících tří démonů, které udržují cluster pro zaplavení fungovat.
 
-|Proces |Popis |
+|Proces |Description |
 |---|---|
 |Nimbus|Podobně jako Hadoop JobTracker je zodpovědný za distribuci kódu v rámci clusteru a přiřazování úloh do počítačů a sledování selhání.|
 |Zookeeper|Používá se pro koordinaci clusteru.|

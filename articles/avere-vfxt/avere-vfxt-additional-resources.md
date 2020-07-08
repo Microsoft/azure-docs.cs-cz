@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76153764"
 ---
 # <a name="additional-documentation"></a>Další dokumentace
@@ -19,7 +18,7 @@ Tento článek obsahuje odkazy na další dokumentaci k rozhraní pro správu ov
 
 ## <a name="avere-cluster-documentation"></a>Dokumentace ke clusteru avere
 
-Další dokumentaci ke clusteru avere najdete na webu v <https://azure.github.io/Avere/>. Tyto dokumenty vám pomůžou pochopit možnosti clusteru a nakonfigurovat jeho nastavení.
+Další dokumentaci ke clusteru avere najdete na webu v <https://azure.github.io/Avere/> . Tyto dokumenty vám pomůžou pochopit možnosti clusteru a nakonfigurovat jeho nastavení.
 
 * [Průvodce vytvořením clusteru FXT](<https://azure.github.io/Avere/#fxt_cluster>) je určený pro clustery tvořené fyzickými hardwarovými uzly, ale některé informace v dokumentu jsou relevantní i pro clustery vFXT. Nové Správce clusteru vFXT mohou zejména těžit z těchto částí:
   * [Přizpůsobení nastavení podpory a monitorování](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) vysvětluje, jak přizpůsobit nastavení nahrávání podpory a povolit vzdálené monitorování.

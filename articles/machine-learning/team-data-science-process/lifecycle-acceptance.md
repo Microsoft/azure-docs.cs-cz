@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720516"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Fáze přijetí zákazníků v životním cyklu procesu vědeckého zpracování dat týmu
@@ -44,7 +43,7 @@ V této fázi jsou řešeny dva hlavní úkoly:
 
 Zákazník by měl ověřit, že systém splňuje své obchodní potřeby a že odpoví na otázky s přijatelnou přesností pro nasazení systému do produkčního prostředí pro použití jejich aplikací klienta. Všechna dokumentace se dokončuje a přezkoumávají. Projekt je předán do entity zodpovědné za operace. Tato entita může být například tým pro odborníky na IT nebo zákazníky nebo agent zákazníka, který je zodpovědný za provoz systému v produkčním prostředí. 
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 Hlavním artefaktem vytvořeným v této konečné fázi je **Zpráva o ukončení projektu pro zákazníka**. Tato technická sestava obsahuje všechny podrobnosti projektu, které jsou užitečné pro získání informací o tom, jak systém provozovat. TDSP poskytuje šablonu [sestavy ukončení](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) . Šablonu můžete použít tak, jak je, nebo ji můžete přizpůsobit pro konkrétní potřeby klienta. 
 
 

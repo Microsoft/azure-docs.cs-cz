@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76314534"
 ---
 # <a name="apply-sql-transformation"></a>Použití transformace SQL
@@ -33,7 +32,7 @@ Pomocí modulu použít transformaci SQL můžete:
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Postup konfigurace použití transformace SQL  
 
-Modul může jako vstupy trvat až tři datové sady. Když odkazujete na datové sady připojené ke každému vstupnímu portu, musíte použít názvy `t1`, `t2`, a. `t3` Číslo tabulky označuje index vstupního portu.  
+Modul může jako vstupy trvat až tři datové sady. Když odkazujete na datové sady připojené ke každému vstupnímu portu, musíte použít názvy `t1` , `t2` , a `t3` . Číslo tabulky označuje index vstupního portu.  
   
 Zbývající parametr je dotaz SQL, který používá syntaxi SQLite. Při zadávání více řádků v textovém poli **skript SQL** ukončete jednotlivé příkazy středníkem. V opačném případě jsou zalomení řádků převedeny na mezery.  
 
@@ -45,7 +44,7 @@ Tato část obsahuje podrobné informace o implementaci, tipy a odpovědi na nej
 
 -   Na portu 1 je vždy vyžadován vstup.  
   
--   U identifikátorů sloupců, které obsahují mezeru nebo jiné speciální znaky, vždy při odkazování na sloupec v klauzulích `SELECT` or `WHERE` uzavřete identifikátor sloupce do hranatých závorek nebo do dvojitých uvozovek.  
+-   U identifikátorů sloupců, které obsahují mezeru nebo jiné speciální znaky, vždy při odkazování na sloupec v klauzulích or uzavřete identifikátor sloupce do hranatých závorek nebo do dvojitých uvozovek `SELECT` `WHERE` .  
   
 ### <a name="unsupported-statements"></a>Nepodporované příkazy  
 
@@ -53,11 +52,11 @@ I když SQLite podporuje většinu standardu ANSI SQL, nezahrnuje mnoho funkcí 
   
 - SQLite používá dynamické zadání pro hodnoty namísto přiřazování typu do sloupce jako u většiny relačních databázových systémů. Je slabě typované a umožňuje implicitní převod typu.  
   
-- `LEFT OUTER JOIN`je implementován, ale ne `RIGHT OUTER JOIN` nebo `FULL OUTER JOIN`.  
+- `LEFT OUTER JOIN`je implementován, ale ne `RIGHT OUTER JOIN` nebo `FULL OUTER JOIN` .  
 
-- Příkazy `RENAME TABLE` a `ADD COLUMN` se dají použít spolu s `ALTER TABLE` příkazem, ale jiné klauzule nejsou podporované, `DROP COLUMN`včetně, `ALTER COLUMN`a. `ADD CONSTRAINT`  
+- `RENAME TABLE`Příkazy a se dají použít `ADD COLUMN` spolu s `ALTER TABLE` příkazem, ale jiné klauzule nejsou podporované, včetně `DROP COLUMN` , `ALTER COLUMN` a `ADD CONSTRAINT` .  
   
-- Můžete vytvořit zobrazení v rámci SQLite, ale zobrazení jsou až jen pro čtení. Nelze provést příkaz `DELETE`, `INSERT`nebo `UPDATE` v zobrazení. Můžete ale vytvořit Trigger, který se aktivuje při pokusu o `DELETE`spuštění `INSERT`, nebo `UPDATE` v zobrazení a provádění dalších operací v těle triggeru.  
+- Můžete vytvořit zobrazení v rámci SQLite, ale zobrazení jsou až jen pro čtení. Nelze provést `DELETE` `INSERT` příkaz, nebo `UPDATE` v zobrazení. Můžete ale vytvořit Trigger, který se aktivuje při pokusu o spuštění `DELETE` , `INSERT` nebo `UPDATE` v zobrazení a provádění dalších operací v těle triggeru.  
   
 
 Kromě seznamu nepodporovaných funkcí poskytovaných na oficiálním webu SQLite je na následujícím wikiwebu uveden seznam dalších nepodporovaných funkcí: [SQLite – nepodporovaný SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  

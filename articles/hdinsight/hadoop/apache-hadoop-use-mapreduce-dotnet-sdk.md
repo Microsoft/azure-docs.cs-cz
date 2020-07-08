@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/15/2020
 ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157045"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spouštění úloh MapReduce pomocí sady HDInsight .NET SDK
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Naučte se odesílat MapReduce úlohy pomocí sady HDInsight .NET SDK. Clustery HDInsight se dodává se souborem jar s některými MapReduce ukázkami. Soubor JAR je `/example/jars/hadoop-mapreduce-examples.jar`.  Jedna z ukázek je **WORDCOUNT**. Vyvíjíte konzolovou aplikaci v jazyce C# pro odeslání WORDCOUNT úlohy.  Úloha načte `/example/data/gutenberg/davinci.txt` soubor a výstupem výsledků do `/example/data/davinciwordcount`.  Chcete-li spustit aplikaci znovu, je nutné vyčistit výstupní složku.
+Naučte se odesílat MapReduce úlohy pomocí sady HDInsight .NET SDK. Clustery HDInsight se dodává se souborem jar s některými MapReduce ukázkami. Soubor JAR je `/example/jars/hadoop-mapreduce-examples.jar` .  Jedna z ukázek je **WORDCOUNT**. Vyvíjíte konzolovou aplikaci v jazyce C# pro odeslání WORDCOUNT úlohy.  Úloha načte `/example/data/gutenberg/davinci.txt` soubor a výstupem výsledků do `/example/data/davinciwordcount` .  Chcete-li spustit aplikaci znovu, je nutné vyčistit výstupní složku.
 
 > [!NOTE]  
 > Kroky v tomto článku je třeba provést z klienta systému Windows. Informace o použití klienta se systémem Linux, OS X nebo UNIX pro práci s podregistrem získáte pomocí voliče karet zobrazeného v horní části článku.
@@ -36,13 +35,13 @@ Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, které usnadňují p
 
 1. Spusťte Visual Studio a vytvořte konzolovou aplikaci v jazyce C#.
 
-1.  > Přejděte do **nástroje** > **Správce balíčků NuGet****Konzola správce balíčků** a zadejte následující příkaz:
+1. Přejděte do **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** a zadejte následující příkaz:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. Zkopírujte kód uvedený níže do **program.cs**. Pak upravte kód nastavením hodnot `existingClusterName`pro:, `existingClusterPassword`, `defaultStorageAccountName`, `defaultStorageAccountKey`a. `defaultStorageContainerName`
+1. Zkopírujte kód uvedený níže do **program.cs**. Pak upravte kód nastavením hodnot pro: `existingClusterName` , `existingClusterPassword` , `defaultStorageAccountName` , `defaultStorageAccountKey` a `defaultStorageContainerName` .
 
     ```csharp
     using System.Collections.Generic;
@@ -163,9 +162,9 @@ Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, které usnadňují p
 
 1. Stisknutím klávesy **F5** spusťte aplikaci.
 
-Pokud chcete úlohu znovu spustit, musíte v ukázce změnit název výstupní složky úlohy `/example/data/davinciwordcount`.
+Pokud chcete úlohu znovu spustit, musíte v ukázce změnit název výstupní složky úlohy `/example/data/davinciwordcount` .
 
-Po úspěšném dokončení úlohy aplikace vytiskne obsah výstupního souboru `part-r-00000`.
+Po úspěšném dokončení úlohy aplikace vytiskne obsah výstupního souboru `part-r-00000` .
 
 ## <a name="next-steps"></a>Další kroky
 

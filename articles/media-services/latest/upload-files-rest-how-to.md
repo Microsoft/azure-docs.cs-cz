@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705764"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>Nahrání souborů do účtu Media Services V3 pomocí REST
@@ -35,14 +34,14 @@ K dokončení kroků popsaných v tomto tématu je třeba provést následujíc�
     
     Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
-## <a name="create-an-asset"></a>Vytvoření assetu
+## <a name="create-an-asset"></a>Vytvoření prostředku
 
 V této části se dozvíte, jak vytvořit nový prostředek.
 
-1.  -> Vyberte **Assets****assety vytvořit nebo aktualizovat Asset**.
+1. Vyberte **Assets**  ->  **assety vytvořit nebo aktualizovat Asset**.
 2. Stiskněte **Odeslat**.
 
-    ![Vytvoření assetu](./media/upload-files/postman-create-asset.png)
+    ![Vytvoření prostředku](./media/upload-files/postman-create-asset.png)
 
 Zobrazí se **odpověď** s informacemi o nově vytvořeném prostředku.
 
@@ -50,7 +49,7 @@ Zobrazí se **odpověď** s informacemi o nově vytvořeném prostředku.
 
 V této části se dozvíte, jak získat adresu URL SAS, která byla vygenerována pro vytvořený Asset. Adresa URL SAS byla vytvořena s oprávněním pro čtení i zápis a lze ji použít k nahrání digitálních souborů do kontejneru assetů.
 
-1.  -> Vyberte **položku assets****list adresy URL assetů**.
+1. Vyberte **položku assets**  ->  **list adresy URL assetů**.
 2. Stiskněte **Odeslat**.
 
     ![Nahrání souboru](./media/upload-files/postman-create-sas-locator.png)

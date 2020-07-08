@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720006"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Role a úlohy vědeckého zpracování týmových dat
@@ -116,7 +115,7 @@ Následující obrázek popisuje pracovní postup TDSP pro provedení projektu:
 Kroky pracovního postupu můžete seskupit do tří aktivit:
 
 - Vedoucí projektu provádějí plánování sprintů
-- Vědečtí data vyvíjejí artefakty `git` na větvích, které řeší pracovní položky.
+- Vědečtí data vyvíjejí artefakty na `git` větvích, které řeší pracovní položky.
 - Vedoucí projektu nebo jiní členové týmu dělají revize kódu a sloučí pracovní větve do hlavní větve.
 
 Podrobné pokyny k pracovnímu postupu provádění projektu naleznete v tématu [agilní vývoj projektů pro datové vědy](agile-development.md).

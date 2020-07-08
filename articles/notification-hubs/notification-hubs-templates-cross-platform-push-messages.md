@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263740"
 ---
 # <a name="templates"></a>Šablony
@@ -58,7 +57,7 @@ Můžete vytvořit podobné datové části pro platformy MPNS (Windows Phone) a
 
 Tento požadavek vynutí, aby back-end aplikace vytvářely různé datové části pro každou platformu, a efektivně vytvoří back-end zodpovědný za součást prezentační vrstvy aplikace. Mezi důležité aspekty patří lokalizace a grafické rozložení (zejména pro aplikace pro Windows Store, které obsahují oznámení pro různé typy dlaždic).
 
-Funkce šablony Notification Hubs umožňuje klientské aplikaci vytvořit speciální registrace, které se nazývají registrace šablon, mezi které patří také sada značek, šablona. Funkce šablony Notification Hubs umožňuje klientské aplikaci přidružit zařízení k šablonám bez ohledu na to, jestli pracujete s instalacemi (preferované) nebo registrací. V předchozích příkladech datové části se jedná o skutečnou zprávu s upozorněním (Hello!), která je závislá na platformě. Šablona je sada instrukcí pro Centrum oznámení o tom, jak naformátovat zprávu nezávislou na platformě pro registraci konkrétní klientské aplikace. V předchozím příkladu je zpráva nezávislá na platformě jedinou vlastností: `message = Hello!`.
+Funkce šablony Notification Hubs umožňuje klientské aplikaci vytvořit speciální registrace, které se nazývají registrace šablon, mezi které patří také sada značek, šablona. Funkce šablony Notification Hubs umožňuje klientské aplikaci přidružit zařízení k šablonám bez ohledu na to, jestli pracujete s instalacemi (preferované) nebo registrací. V předchozích příkladech datové části se jedná o skutečnou zprávu s upozorněním (Hello!), která je závislá na platformě. Šablona je sada instrukcí pro Centrum oznámení o tom, jak naformátovat zprávu nezávislou na platformě pro registraci konkrétní klientské aplikace. V předchozím příkladu je zpráva nezávislá na platformě jedinou vlastností: `message = Hello!` .
 
 Proces je znázorněný na následujícím obrázku:
 
@@ -133,19 +132,19 @@ Chcete-li provést registraci v šablonách pomocí modelu instalace (preferovan
 
 V následující tabulce je uveden jazyk povolený v šablonách:
 
-| Expression       | Popis |
+| Výraz       | Popis |
 | ---------------- | --- |
 | $ (Prop)          | Odkaz na vlastnost události se zadaným názvem. V názvech vlastností se nerozlišují velká a malá písmena. Tento výraz se přeloží na textovou hodnotu vlastnosti nebo do prázdného řetězce, pokud vlastnost není k dispozici. |
 | $ (Prop, n)       | Jak je uvedeno výše, ale text se explicitně ořízne n znaků, například $ (title, 20), ořízne obsah vlastnosti title o 20 znaků. |
 | . (Prop, n)       | Jak je uvedeno výše, ale text má příponu se třemi tečkami, jak je oříznutý. Celková velikost oříznutého řetězce a přípona nepřekračuje n znaků. . (title; 20) se vstupní vlastností "Toto je název řádku". Výsledkem je **název...** |
 | % (Prop)          | Podobně jako $ (název) s tím rozdílem, že výstup je kódovaný pomocí identifikátoru URI. |
-| # (Prop)          | Používá se v šablonách JSON (například pro šablony iOS a Android).<br><br>Tato funkce funguje úplně stejně jako $ (Prop) dřív, s výjimkou případů, kdy se používá v šablonách JSON (například šablony Apple). V takovém případě, pokud tato funkce není obklopena "{", "}" (například "myJsonProperty": "# (Name)") a vyhodnotí se jako číslo ve formátu JavaScriptu, například RegExp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) (\.&#91;0-9&#93;+)? ((e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, výstupní JSON je číslo.<br><br>Například ' BADGE ': ' # (Name) ' se bude ' BADGE ': 40 (a ne ' 40 '). |
+| # (Prop)          | Používá se v šablonách JSON (například pro šablony iOS a Android).<br><br>Tato funkce funguje úplně stejně jako $ (Prop) dřív, s výjimkou případů, kdy se používá v šablonách JSON (například šablony Apple). V takovém případě, pokud tato funkce není obklopena "{", "}" (například "myJsonProperty": "# (Name)") a vyhodnotí se jako číslo ve formátu JavaScriptu, například RegExp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) ( \.&#91;0-9&#93;+)? ( (e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, výstupní JSON je číslo.<br><br>Například ' BADGE ': ' # (Name) ' se bude ' BADGE ': 40 (a ne ' 40 '). |
 | ' text ' nebo "text" | Literál. Literály obsahují libovolný text uzavřený v jednoduchých nebo dvojitých uvozovkách. |
 | Výraz1 + Výraz2    | Operátor zřetězení spojuje dva výrazy do jednoho řetězce. |
 
 Výrazy mohou být libovolné z předchozích forem.
 
-Při použití zřetězení musí být celý výraz ohraničený pomocí `{}`. Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
+Při použití zřetězení musí být celý výraz ohraničený pomocí `{}` . Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 Například následující šablona není platnou šablonou XML:
 

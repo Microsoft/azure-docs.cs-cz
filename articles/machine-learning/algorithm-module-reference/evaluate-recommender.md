@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76312256"
 ---
 # <a name="evaluate-recommender"></a>Vyhodnocení doporučovacího systému
@@ -65,7 +64,7 @@ Při vyhodnocování předpokládaných hodnocení musí datová sada s hodnocen
 -   Třetí sloupec obsahuje odpovídající hodnocení položky uživatele.  
   
 > [!IMPORTANT] 
-> Aby bylo vyhodnocení úspěšné, názvy sloupců musí být `User`, `Item`a `Rating`v uvedeném pořadí.  
+> Aby bylo vyhodnocení úspěšné, názvy sloupců musí být `User` , `Item` a v `Rating` uvedeném pořadí.  
   
 Vyhodnotit doporučený postup porovná hodnocení v datové sadě "uzemnění" s předpokládaným hodnocením datové sady s skóre. Pak vypočítá střední absolutní chybu (MAE) a hlavní střední chybu (RMSE).
 
@@ -81,7 +80,7 @@ Když vyhodnocujete doporučení pro položky, použijte datovou sadu s skóre, 
 Než tuto datovou sadu připojíte, doporučujeme, abyste datovou sadu seřadili tak, aby se nejdůležitější položky nacházely jako první.  
 
 > [!IMPORTANT] 
-> Aby bylo možné vyhodnotit Doporučené doporučení pro práci, názvy `User`sloupců `Item 1`musí `Item 2`být `Item 3` ,, a tak dále.  
+> Aby bylo možné vyhodnotit Doporučené doporučení pro práci, názvy sloupců musí být `User` ,, `Item 1` `Item 2` `Item 3` a tak dále.  
   
 Vyhodnotit doporučený modul vypočítá průměrně Kumulovaný kumulativní nárůst (NDCG) a vrátí ho do výstupní datové sady.  
   

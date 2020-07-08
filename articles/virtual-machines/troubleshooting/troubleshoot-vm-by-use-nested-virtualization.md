@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
 ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76119614"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží s chybným virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
@@ -42,13 +41,13 @@ Aby bylo možné připojit poškozený virtuální počítač, musí záchranný
 
 2.  Po vytvoření záchranného virtuálního počítače se jedná o vzdálenou plochu na záchranný virtuální počítač.
 
-3.  V správce serveru vyberte **Spravovat** > **Přidat role a funkce**.
+3.  V správce serveru vyberte **Spravovat**  >  **Přidat role a funkce**.
 
 4.  V části **typ instalace** vyberte instalace na základě **rolí nebo na základě funkcí**.
 
 5.  V části **Vybrat cílový server** se ujistěte, že je vybraný záchranný virtuální počítač.
 
-6.  Vyberte >  **role Hyper-V****Přidat funkce**.
+6.  Vyberte **role Hyper-V**  >  **Přidat funkce**.
 
 7.  V části **funkce** vyberte **Další** .
 
@@ -60,7 +59,7 @@ Aby bylo možné připojit poškozený virtuální počítač, musí záchranný
 
 11. V případě potřeby zaškrtněte políčko pro restartování serveru.
 
-12. Vyberte **Install** (Nainstalovat).
+12. Vyberte **Nainstalovat**.
 
 13. Povolí serveru instalaci role Hyper-V. Tato akce trvá několik minut a server se automaticky restartuje.
 
@@ -74,7 +73,7 @@ Aby bylo možné připojit poškozený virtuální počítač, musí záchranný
 
 4.  Otevřete Správce technologie Hyper-V: v **Správce serveru**vyberte **roli technologie Hyper-v**. Pravým tlačítkem myši klikněte na server a pak vyberte **Správce technologie Hyper-V**.
 
-5.  Ve Správci technologie Hyper-V klikněte pravým tlačítkem na záchranný virtuální počítač a potom vyberte **Nový** > **virtuální počítač** > **Další**.
+5.  Ve Správci technologie Hyper-V klikněte pravým tlačítkem na záchranný virtuální počítač a potom vyberte **Nový**  >  **virtuální počítač**  >  **Další**.
 
 6.  Zadejte název virtuálního počítače a pak vyberte **Další**.
 

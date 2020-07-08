@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721774"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů na podregistry
@@ -89,14 +88,14 @@ Podregistr se dodává se sadou UDF pro zpracování polí DateTime. V podregist
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Tento dotaz na * \<* podregistr předpokládá, že se pole DateTime>ve výchozím formátu data a času.
+Tento dotaz na podregistr předpokládá, že *\<datetime field>* je ve výchozím formátu data a času.
 
 Pokud pole DateTime není ve výchozím formátu, je třeba nejprve převést pole DateTime na časové razítko systému UNIX a pak převést časové razítko systému UNIX na řetězec DateTime, který je ve výchozím formátu. Pokud je hodnota DateTime ve výchozím formátu, uživatelé mohou použít vložené hodnoty DateTime UDF k extrakci funkcí.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-V tomto dotazu, pokud * \<>pole DateTime* má vzor, jako je *03/26/2015 12:04:39*, by měl být `'MM/dd/yyyy HH:mm:ss'` * \<vzor pole DateTime>* . K otestování můžou uživatelé spustit
+V tomto dotazu, pokud *\<datetime field>* má vzorec jako *03/26/2015 12:04:39*, by měl být * \<pattern of the datetime field> * `'MM/dd/yyyy HH:mm:ss'` . K otestování můžou uživatelé spustit
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -112,7 +111,7 @@ Pokud má tabulka podregistru textové pole obsahující řetězec slov, který 
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Vypočítat vzdálenosti mezi sadami souřadnic GPS
 Dotaz uvedený v této části se dá přímo použít pro data NYC taxislužby na cestách. Účelem tohoto dotazu je Ukázat, jak použít vloženou matematickou funkci v podregistru pro generování funkcí.
 
-Pole, která se používají v tomto dotazu, jsou souřadnicemi GPS pro vyzvednutí a dropoff, *s\_názvem výstupní Zeměpisná délka*, *\_vyzvednutí zeměpisné šířky*, *dropoff\_Zeměpisná délka*a *dropoff\_Zeměpisná šířka*. Dotazy, které počítají přímou vzdálenost mezi vyzvednutím a dropoff souřadnicemi, jsou:
+Pole, která se používají v tomto dotazu, jsou souřadnicemi GPS pro vyzvednutí a dropoff, s názvem *výstupní \_ Zeměpisná délka*, *vyzvednutí \_ zeměpisné šířky*, *dropoff \_ Zeměpisná délka*a *dropoff \_ Zeměpisná šířka*. Dotazy, které počítají přímou vzdálenost mezi vyzvednutím a dropoff souřadnicemi, jsou:
 
         set R=3959;
         set pi=radians(180);
@@ -130,7 +129,7 @@ Pole, která se používají v tomto dotazu, jsou souřadnicemi GPS pro vyzvednu
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Matematické rovnice, které vypočítávají vzdálenost mezi dvěma souřadnicemi GPS, najdete na webu <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">typu Pohyblivý text</a> , který vytvořil Petr lapisu. V tomto JavaScriptu je funkce `toRad()` jenom *lat_or_lon*PI/180, která převede stupně na radiány. Zde je *lat_or_lon* Zeměpisná šířka a délka. Vzhledem k tomu, že podregistr funkci `atan2`neposkytuje, ale poskytuje `atan`funkci, `atan2` je funkce implementovaná `atan` funkcí ve výše uvedeném dotazu na podregistr pomocí definice poskytované v <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedii</a>.
+Matematické rovnice, které vypočítávají vzdálenost mezi dvěma souřadnicemi GPS, najdete na webu <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">typu Pohyblivý text</a> , který vytvořil Petr lapisu. V tomto JavaScriptu `toRad()` je funkce jenom *lat_or_lon*PI/180, která převede stupně na radiány. Zde je *lat_or_lon* Zeměpisná šířka a délka. Vzhledem k tomu, že podregistr funkci neposkytuje `atan2` , ale poskytuje funkci `atan` , `atan2` je funkce implementovaná `atan` funkcí ve výše uvedeném dotazu na podregistr pomocí definice poskytované v <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedii</a>.
 
 ![Vytvoření pracovního prostoru](./media/create-features-hive/atan2new.png)
 

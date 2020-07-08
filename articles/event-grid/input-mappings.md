@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721655"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapování vlastních polí na schéma Event Gridu
@@ -47,9 +46,9 @@ Při vytváření vlastního tématu určete, jak se mají mapovat pole z původ
 
 * Hodnota **vstupního schématu** určuje typ schématu. Dostupné možnosti jsou schéma CloudEvents, vlastní schéma události nebo schéma Event Grid. Výchozí hodnota je Event Grid schématu. Při vytváření vlastního mapování mezi schématem a schématem služby Event Grid použijte vlastní schéma událostí. Pokud jsou události ve schématu CloudEvents, použijte schéma Cloudevents.
 
-* Vlastnost **mapování výchozích hodnot** určuje výchozí hodnoty pro pole ve schématu Event Grid. Můžete nastavit výchozí hodnoty pro `subject`, `eventtype`a. `dataversion` Tento parametr obvykle použijete, pokud vlastní schéma neobsahuje pole, které odpovídá jednomu z těchto tří polí. Například můžete určit, že verze dat je vždy nastavená na **1,0**.
+* Vlastnost **mapování výchozích hodnot** určuje výchozí hodnoty pro pole ve schématu Event Grid. Můžete nastavit výchozí hodnoty pro `subject` , `eventtype` a `dataversion` . Tento parametr obvykle použijete, pokud vlastní schéma neobsahuje pole, které odpovídá jednomu z těchto tří polí. Například můžete určit, že verze dat je vždy nastavená na **1,0**.
 
-* Hodnota **mapování polí** mapuje pole ze schématu do schématu Event Grid. Zadejte hodnoty do dvojice klíč/hodnota oddělené mezerou. Jako název klíče použijte název pole Event Grid. Pro tuto hodnotu použijte název pole. Můžete použít názvy `id`klíčů pro, `topic`, `eventtime`, `subject`, `eventtype`a. `dataversion`
+* Hodnota **mapování polí** mapuje pole ze schématu do schématu Event Grid. Zadejte hodnoty do dvojice klíč/hodnota oddělené mezerou. Jako název klíče použijte název pole Event Grid. Pro tuto hodnotu použijte název pole. Můžete použít názvy klíčů pro `id` , `topic` , `eventtime` ,, a `subject` `eventtype` `dataversion` .
 
 Pokud chcete vytvořit vlastní téma pomocí Azure CLI, použijte:
 

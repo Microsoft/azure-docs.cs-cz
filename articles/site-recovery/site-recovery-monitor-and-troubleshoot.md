@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68717355"
 ---
 # <a name="monitor-site-recovery"></a>Monitorování Site Recovery
@@ -46,12 +45,12 @@ Než začnete, můžete si projít [běžné otázky týkající se monitorován
 
 V části **replikované položky**Monitorujte stav všech počítačů v trezoru, které mají povolenou replikaci.
 
-**Stav** | **Zobrazí**
+**Stav** | **Podrobnosti**
 --- | ---
 V pořádku | Replikace probíhá normálně. Nezjistily se žádné chybové příznaky ani upozornění.
 Upozornění | Zjistil se jeden nebo víc příznaků upozornění, které by mohly mít vliv na replikaci.
-Kritická | Zjistil se minimálně jeden příznak kritické chyby replikace.<br/><br/> Tyto chybové příznaky jsou obvykle indikátory, které se zablokují replikací, nebo nepostupují stejně rychle jako rychlost změny dat.
-Neuvedeno | Servery, které se v současné době neočekávají pro replikaci. To může zahrnovat počítače, u kterých došlo k převzetí služeb při selhání.
+Kritické | Zjistil se minimálně jeden příznak kritické chyby replikace.<br/><br/> Tyto chybové příznaky jsou obvykle indikátory, které se zablokují replikací, nebo nepostupují stejně rychle jako rychlost změny dat.
+Nelze použít | Servery, které se v současné době neočekávají pro replikaci. To může zahrnovat počítače, u kterých došlo k převzetí služeb při selhání.
 
 ## <a name="monitor-test-failovers"></a>Monitorování testovacího převzetí služeb při selhání
 
@@ -60,11 +59,11 @@ V případě **úspěchu testu převzetí služeb při selhání**Sledujte stav 
 - Doporučujeme spustit testovací převzetí služeb při selhání na replikovaných počítačích nejméně jednou za šest měsíců. Je to způsob, jak ověřit, že převzetí služeb při selhání funguje podle očekávání, aniž by došlo k přerušení produkčního prostředí. 
 - Testovací převzetí služeb při selhání se považuje za úspěšné až po úspěšném dokončení a vyčištění po převzetí služeb při selhání.
 
-**Stav** | **Zobrazí**
+**Stav** | **Podrobnosti**
 --- | ---
 Doporučuje se test | Počítače, u kterých došlo k testovacímu převzetí služeb při selhání, protože byla povolena ochrana.
 Úspěšně provedeno | Počítače s nebo více úspěšnými testovacími převzetím služeb při selhání.
-Neuvedeno | Počítače, které aktuálně nejsou vhodné pro testovací převzetí služeb při selhání. Například počítače, u kterých došlo k převzetí služeb při selhání, mají počáteční replikaci, převzetí služeb při selhání nebo převzetí služeb při selhání.
+Nelze použít | Počítače, které aktuálně nejsou vhodné pro testovací převzetí služeb při selhání. Například počítače, u kterých došlo k převzetí služeb při selhání, mají počáteční replikaci, převzetí služeb při selhání nebo převzetí služeb při selhání.
 
 ## <a name="monitor-configuration-issues"></a>Sledování problémů s konfigurací
 
@@ -73,7 +72,7 @@ V případě **problémů s konfigurací**monitorujte všechny problémy, které
 - Problémy s konfigurací (s výjimkou dostupnosti aktualizace softwaru) se zjišťují pomocí pravidelné operace ověřování, která se ve výchozím nastavení spouští každých 12 hodin. Můžete vynutit, aby operace ověřování běžela okamžitě kliknutím na ikonu aktualizace vedle záhlaví oddílu **problémy s konfigurací** .
 - Kliknutím na odkazy zobrazíte další podrobnosti. U problémů, které mají vliv na konkrétní počítače, klikněte ve sloupci **cílové konfigurace** na možnost **vyžaduje pozornost** . Podrobnosti zahrnují doporučení pro nápravu.
 
-**Stav** | **Zobrazí**
+**Stav** | **Podrobnosti**
 --- | ---
 Chybějící konfigurace | Chybí nezbytné nastavení, například síť pro obnovení nebo skupina prostředků.
 Chybějící prostředky | Zadaný prostředek se nepovedlo najít nebo není v předplatném dostupný. Prostředek se například odstranil nebo migrovali. Monitorované prostředky zahrnovaly cílovou skupinu prostředků, cílovou virtuální síť, podsíť, protokol/cílový účet úložiště, cílovou skupinu dostupnosti, cílovou IP adresu.
@@ -109,12 +108,12 @@ V **zobrazení infrastruktura**Sledujte komponenty infrastruktury zapojené do r
 
     **Scénář** | **Stav**  | **Zobrazit dostupné?**
     --- |--- | ---
-    **Replikace mezi místními lokalitami** | Všechny státy | Ne 
-    **Replikace virtuálních počítačů Azure mezi oblastmi Azure**  | Replikace je povolená/počáteční replikace probíhá. | Ano
-    **Replikace virtuálních počítačů Azure mezi oblastmi Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne   
-    **Replikace VMware do Azure** | Replikace je povolená/počáteční replikace probíhá. | Ano     
-    **Replikace VMware do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne      
-    **Replikace Hyper-V do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne
+    **Replikace mezi místními lokalitami** | Všechny státy | No 
+    **Replikace virtuálních počítačů Azure mezi oblastmi Azure**  | Replikace je povolená/počáteční replikace probíhá. | Yes
+    **Replikace virtuálních počítačů Azure mezi oblastmi Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | No   
+    **Replikace VMware do Azure** | Replikace je povolená/počáteční replikace probíhá. | Yes     
+    **Replikace VMware do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | No      
+    **Replikace Hyper-V do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | No
 
 - Pokud chcete zobrazit zobrazení infrastruktury pro jeden počítač pro replikaci, v nabídce trezoru klikněte na **replikované položky**a vyberte server.  
 

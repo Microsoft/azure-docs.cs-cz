@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721958"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Testování kódu pro datové vědy v Azure pomocí vědeckého procesu týmového zpracování dat a Azure DevOps Services
@@ -128,7 +127,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
     
     ![Sestavení a výběr agentů](./media/code-test/select_agent.PNG)
 
-    e. V **+** levém podokně vyberte, pokud chcete přidat úlohu pro tuto fázi sestavení. Vzhledem k tomu, že spustíme skript Pythonu **test1.py** pro dokončení všech kontrol, tato úloha používá příkaz prostředí PowerShell ke spouštění kódu Pythonu.
+    e. **+** V levém podokně vyberte, pokud chcete přidat úlohu pro tuto fázi sestavení. Vzhledem k tomu, že spustíme skript Pythonu **test1.py** pro dokončení všech kontrol, tato úloha používá příkaz prostředí PowerShell ke spouštění kódu Pythonu.
     
     ![Podokno přidat úkoly s vybraným prostředím PowerShell](./media/code-test/add_task_powershell.PNG)
 
@@ -138,7 +137,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
     
     ![Podrobnosti PowerShellu](./media/code-test/powershell_scripts.PNG)
 
-    g. Pokud chcete dokončit proces kanálu sestavení, vyberte **uložit & frontu** .
+    například Pokud chcete dokončit proces kanálu sestavení, vyberte **uložit & frontu** .
 
     ![Tlačítko "Uložit & front"](./media/code-test/save_and_queue_build_definition.PNG)
 
@@ -154,7 +153,7 @@ Pokud jsou výstrahy správně nastavené, budete po dokončení sestavení upoz
 * V tématu věnovaném testování částí v případě scénářů pro datové vědy si prohlédněte [úložiště předpovědi pro předpověď výnosů](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) .
 * Sledujte předchozí osnovu a příklady ve scénáři prediktivní příjem výnosů ve vašich vlastních projektech pro datové vědy.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 * [Vědecké zpracování týmových dat](https://aka.ms/tdsp)
 * [Testovací nástroje sady Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Prostředky testování Azure DevOps](https://www.visualstudio.com/team-services/)

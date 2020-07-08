@@ -14,10 +14,9 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76696517"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Použití MSAL pro Android s B2C
@@ -34,7 +33,7 @@ Daná aplikace B2C má dvě zásady:
 - Upravit profil
     * Znamená`B2C_1_EditProfile`
 
-Konfigurační soubor aplikace by byl deklarován dvakrát `authorities`. Jednu pro každou zásadu. `type` Vlastnost každé autority je `B2C`.
+Konfigurační soubor aplikace by byl deklarován dvakrát `authorities` . Jednu pro každou zásadu. `type`Vlastnost každé autority je `B2C` .
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -54,7 +53,7 @@ Konfigurační soubor aplikace by byl deklarován dvakrát `authorities`. Jednu 
 }
 ```
 
-`redirect_uri` Musí být registrována v konfiguraci aplikace a také v `AndroidManifest.xml` nástroji pro podporu přesměrování během [toku udělení autorizačního kódu](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
+`redirect_uri`Musí být registrována v konfiguraci aplikace a také v nástroji `AndroidManifest.xml` pro podporu přesměrování během [toku udělení autorizačního kódu](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
 
 ## <a name="initialize-ipublicclientapplication"></a>Inicializovat IPublicClientApplication
 
@@ -139,7 +138,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Zadat zásadu
 
-Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, volání jiné jiné než výchozí je `fromAuthority` dosaženo zadáním klauzule `acquireToken` při `acquireTokenSilent` sestavování nebo parametrech.  Příklad:
+Vzhledem k tomu, že zásady v B2C jsou reprezentovány jako samostatné autority, volání jiné jiné než výchozí je dosaženo zadáním `fromAuthority` klauzule při sestavování `acquireToken` nebo `acquireTokenSilent` parametrech.  Příklad:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -155,9 +154,9 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 Tok uživatele registrace nebo přihlašování k místnímu účtu zobrazuje**zapomenuté heslo?** propojit. Kliknutím na tento odkaz se automaticky neaktivuje tok uživatele resetování hesla.
 
-Místo toho se kód `AADB2C90118` chyby vrátí do vaší aplikace. Vaše aplikace by měla zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo.
+Místo toho se kód chyby `AADB2C90118` vrátí do vaší aplikace. Vaše aplikace by měla zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo.
 
-Pokud chcete zachytit kód chyby resetování hesla, můžete použít tuto implementaci v rámci `AuthenticationCallback`:
+Pokud chcete zachytit kód chyby resetování hesla, můžete použít tuto implementaci v rámci `AuthenticationCallback` :
 
 ```java
 new AuthenticationCallback() {
@@ -227,15 +226,15 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken deklarace identity
 
-Deklarace identity vrácené v IdToken jsou vyplněné pomocí služby tokenů zabezpečení (STS), nikoli pomocí MSAL. V závislosti na použitém zprostředkovateli identity (IdP) mohou chybět některé deklarace identity. Některé zprostředkovatelů identity aktuálně neposkytují `preferred_username` deklaraci identity. Vzhledem k tomu, že je tato deklarace identity používána MSAL pro ukládání do `MISSING FROM THE TOKEN RESPONSE`mezipaměti, se na svém místě používá zástupný symbol. Další informace o deklaracích B2C IdToken najdete v tématu [Přehled tokenů v Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
+Deklarace identity vrácené v IdToken jsou vyplněné pomocí služby tokenů zabezpečení (STS), nikoli pomocí MSAL. V závislosti na použitém zprostředkovateli identity (IdP) mohou chybět některé deklarace identity. Některé zprostředkovatelů identity aktuálně neposkytují `preferred_username` deklaraci identity. Vzhledem k tomu, že je tato deklarace identity používána MSAL pro ukládání do mezipaměti, `MISSING FROM THE TOKEN RESPONSE` se na svém místě používá zástupný symbol. Další informace o deklaracích B2C IdToken najdete v tématu [Přehled tokenů v Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
 
 ## <a name="managing-accounts-and-policies"></a>Správa účtů a zásad
 
-B2C považuje každou zásadu za samostatnou autoritu. Přístupové tokeny, aktualizační tokeny a tokeny ID vrácené z jednotlivých zásad proto nejsou zaměnitelné. To znamená, že každá zásada vrátí `IAccount` samostatný objekt, jehož tokeny nelze použít k vyvolání jiných zásad.
+B2C považuje každou zásadu za samostatnou autoritu. Přístupové tokeny, aktualizační tokeny a tokeny ID vrácené z jednotlivých zásad proto nejsou zaměnitelné. To znamená, že každá zásada vrátí samostatný `IAccount` objekt, jehož tokeny nelze použít k vyvolání jiných zásad.
 
-Každá zásada přidá `IAccount` do mezipaměti pro každého uživatele. Pokud se uživatel přihlásí k aplikaci a vyvolá dvě zásady, budou mít dvě `IAccount`. Pokud chcete tohoto uživatele odebrat z mezipaměti, musíte zavolat `removeAccount()` za každou zásadu.
+Každá zásada přidá `IAccount` do mezipaměti pro každého uživatele. Pokud se uživatel přihlásí k aplikaci a vyvolá dvě zásady, budou mít dvě `IAccount` . Pokud chcete tohoto uživatele odebrat z mezipaměti, musíte zavolat `removeAccount()` za každou zásadu.
 
-Když obnovujete tokeny pro zásadu s `acquireTokenSilent`, zadejte stejný `IAccount` , který byl vrácen z předchozích vyvolání zásady do. `AcquireTokenSilentParameters` Poskytnutí účtu vráceného jinou zásadou způsobí chybu.
+Když obnovujete tokeny pro zásadu s `acquireTokenSilent` , zadejte stejný `IAccount` , který byl vrácen z předchozích vyvolání zásady do `AcquireTokenSilentParameters` . Poskytnutí účtu vráceného jinou zásadou způsobí chybu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/16/2020
 ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76311950"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight
@@ -50,7 +49,7 @@ cd C:\HDI
     * src\main\java\org\apache\hadoop\examples: obsahuje kód vaší aplikace.
     * src\test\java\org\apache\hadoop\examples: obsahuje testy pro vaši aplikaci.
 
-1. Odeberte generovaný ukázkový kód. Odstraňte vygenerované soubory `AppTest.java`testů a aplikace a `App.java` zadáním následujících příkazů:
+1. Odeberte generovaný ukázkový kód. Odstraňte vygenerované soubory testů a aplikace `AppTest.java` a `App.java` zadáním následujících příkazů:
 
     ```cmd
     cd wordcountjava
@@ -60,7 +59,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>Aktualizace modelu objektu projektu
 
-Úplný odkaz na soubor pom. XML naleznete v tématu https://maven.apache.org/pom.html. Otevřete `pom.xml` zadáním následujícího příkazu:
+Úplný odkaz na soubor pom.xml naleznete v tématu https://maven.apache.org/pom.html . Otevřete zadáním `pom.xml` následujícího příkazu:
 
 ```cmd
 notepad pom.xml
@@ -68,7 +67,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Přidat závislosti
 
-V `pom.xml`přidejte do `<dependencies>` oddílu následující text:
+V `pom.xml` přidejte do oddílu následující text `<dependencies>` :
 
 ```xml
 <dependency>
@@ -91,9 +90,9 @@ V `pom.xml`přidejte do `<dependencies>` oddílu následující text:
 </dependency>
 ```
 
-Tato definice definuje požadované knihovny (uvedené &lt;v\>artifactId) s konkrétní verzí (uvedenou v &lt;rámci\>verze). V době kompilace se tyto závislosti stáhnou z výchozího úložiště Maven. Pomocí [hledání úložiště Maven](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) můžete zobrazit další informace.
+Tato definice definuje požadované knihovny (uvedené v &lt; artifactId \> ) s konkrétní verzí (uvedenou v rámci &lt; verze \> ). V době kompilace se tyto závislosti stáhnou z výchozího úložiště Maven. Pomocí [hledání úložiště Maven](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) můžete zobrazit další informace.
 
-`<scope>provided</scope>` Říká Maven, že tyto závislosti by neměly být zabaleny do aplikace, protože jsou poskytovány clusterem HDInsight za běhu.
+`<scope>provided</scope>`Říká Maven, že tyto závislosti by neměly být zabaleny do aplikace, protože jsou poskytovány clusterem HDInsight za běhu.
 
 > [!IMPORTANT]
 > Použitá verze by měla odpovídat verzi Hadoop přítomné ve vašem clusteru. Další informace o verzích najdete v dokumentu [Správa verzí komponent HDInsight](../hdinsight-component-versioning.md) .
@@ -102,7 +101,7 @@ Tato definice definuje požadované knihovny (uvedené &lt;v\>artifactId) s konk
 
 Moduly plug-in Maven umožňují přizpůsobit fáze sestavení projektu. Tato část slouží k přidání modulů plug-in, prostředků a dalších možností konfigurace sestavení.
 
-Do `pom.xml` souboru přidejte následující kód a soubor uložte a zavřete. Tento text musí být uvnitř `<project>...</project>` značek v souboru, například mezi `</dependencies>` a. `</project>`
+Do souboru přidejte následující kód `pom.xml` a soubor uložte a zavřete. Tento text musí být uvnitř `<project>...</project>` značek v souboru, například mezi `</dependencies>` a `</project>` .
 
 ```xml
 <build>
@@ -139,7 +138,7 @@ Do `pom.xml` souboru přidejte následující kód a soubor uložte a zavřete. 
 </build>
 ```
 
-V této části nakonfigurujeme modul plug-in kompilátoru Apache Maven a modul plug-in Apache Maven. Modul plug-in kompilátoru se používá ke kompilaci topologie. Modul plug-in pro barevný nádech se používá k tomu, aby se zabránilo duplicitě licencí v balíčku JAR, který je sestavený pomocí Maven. Tento modul plug-in se používá k tomu, aby v clusteru HDInsight nedocházelo k chybě duplicitních licenčních souborů v době běhu. Použití Maven-destínového plug- `ApacheLicenseResourceTransformer` in s implementací zabraňuje chybu.
+V této části nakonfigurujeme modul plug-in kompilátoru Apache Maven a modul plug-in Apache Maven. Modul plug-in kompilátoru se používá ke kompilaci topologie. Modul plug-in pro barevný nádech se používá k tomu, aby se zabránilo duplicitě licencí v balíčku JAR, který je sestavený pomocí Maven. Tento modul plug-in se používá k tomu, aby v clusteru HDInsight nedocházelo k chybě duplicitních licenčních souborů v době běhu. Použití Maven-destínového plug-in s `ApacheLicenseResourceTransformer` implementací zabraňuje chybu.
 
 Maven-barevný modul plug-in také vytvoří Uber jar, který obsahuje všechny závislosti, které aplikace požaduje.
 
@@ -147,7 +146,7 @@ Uložte soubor `pom.xml`.
 
 ## <a name="create-the-mapreduce-application"></a>Vytvoření aplikace MapReduce
 
-1. Zadáním následujícího příkazu vytvořte nový soubor `WordCount.java`a otevřete ho. V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
+1. Zadáním následujícího příkazu vytvořte nový soubor a otevřete ho `WordCount.java` . V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java
@@ -226,7 +225,7 @@ Uložte soubor `pom.xml`.
     }
     ```
 
-    Všimněte si, že název `org.apache.hadoop.examples` balíčku je a název třídy `WordCount`je. Tyto názvy použijete při odeslání úlohy MapReduce.
+    Všimněte si, že název balíčku je `org.apache.hadoop.examples` a název třídy je `WordCount` . Tyto názvy použijete při odeslání úlohy MapReduce.
 
 ## <a name="build-and-package-the-application"></a>Sestavení a zabalení aplikace
 
@@ -238,14 +237,14 @@ mvn clean package
 
 Tento příkaz vyčistí všechny předchozí artefakty sestavení, stáhne všechny závislosti, které ještě nejsou nainstalované, a pak sestaví a zabalí aplikaci.
 
-Po dokončení příkazu `wordcountjava/target` adresář obsahuje soubor s názvem `wordcountjava-1.0-SNAPSHOT.jar`.
+Po dokončení příkazu `wordcountjava/target` adresář obsahuje soubor s názvem `wordcountjava-1.0-SNAPSHOT.jar` .
 
 > [!NOTE]
-> `wordcountjava-1.0-SNAPSHOT.jar` Soubor je uberjar, který obsahuje nejen úlohu WORDCOUNT, ale také závislosti, které úloha vyžaduje za běhu.
+> `wordcountjava-1.0-SNAPSHOT.jar`Soubor je uberjar, který obsahuje nejen úlohu WORDCOUNT, ale také závislosti, které úloha vyžaduje za běhu.
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>Nahrát úlohy JAR a spustit (SSH)
 
-Následující postup slouží `scp` ke zkopírování jar do primárního hlavního uzlu HBA HBA v clusteru HDInsight. `ssh` Příkaz se pak použije pro připojení ke clusteru a spuštění příkladu přímo na hlavním uzlu.
+Následující postup slouží `scp` ke zkopírování jar do primárního hlavního uzlu HBA HBA v clusteru HDInsight. `ssh`Příkaz se pak použije pro připojení ke clusteru a spuštění příkladu přímo na hlavním uzlu.
 
 1. Nahrajte jar do clusteru. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight a potom zadejte následující příkaz:
 
@@ -265,7 +264,7 @@ Následující postup slouží `scp` ke zkopírování jar do primárního hlavn
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
 
-    Tento příkaz spustí aplikaci WordCount MapReduce. Vstupní soubor je `/example/data/gutenberg/davinci.txt`a výstupní adresář je `/example/data/wordcountout`. Vstupní soubor i výstup budou uloženy do výchozího úložiště pro cluster.
+    Tento příkaz spustí aplikaci WordCount MapReduce. Vstupní soubor je `/example/data/gutenberg/davinci.txt` a výstupní adresář je `/example/data/wordcountout` . Vstupní soubor i výstup budou uloženy do výchozího úložiště pro cluster.
 
 1. Po dokončení úlohy použijte následující příkaz k zobrazení výsledků:
 

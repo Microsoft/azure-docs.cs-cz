@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721893"
 ---
 # <a name="collaborative-coding-with-git"></a>Kódování založené na spolupráci s využitím Gitu
@@ -39,7 +38,7 @@ Novou větev můžete vytvořit také pomocí následujícího příkazu git bas
 git checkout -b <new branch name> <base branch name>
 
 ```
-Pokud nezadáte název \<základní větve>, je nová větev založena na `master`. 
+Pokud nezadáte a \<base branch name> , je nová větev založená na `master` . 
 
 Chcete-li přepnout do své pracovní větve, spusťte následující příkaz: 
 
@@ -47,7 +46,7 @@ Chcete-li přepnout do své pracovní větve, spusťte následující příkaz:
 git checkout <working branch name>
 ```
 
-Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Přepínání `git checkout master` se spouští zpátky do `master` větve.
+Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Přepínání se spouští `git checkout master` zpátky do `master` větve.
 
 Je dobrým zvykem vytvořit větev Git pro každou pracovní položku uživatelského scénáře. Pak můžete pro každou pracovní položku úkolu vytvořit větev na základě větve uživatelského scénáře. Uspořádejte větve v hierarchii, které odpovídají vztahu uživatelský scénář – úkol, pokud máte více lidí pracujících v různých uživatelských scénářích pro stejný projekt nebo v různých úlohách pro stejný uživatelský scénář. Můžete minimalizovat konflikty tím, že každý člen týmu pracuje na jiné větvi nebo v jiném kódu nebo jiné artefakty při sdílení větve. 
 
@@ -61,7 +60,7 @@ Můžete také propojit pracovní položku s existující větví. Na stránce *
 
 ## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>Práce na větvi a potvrzení změn 
 
-Po provedení změny pracovní položky, jako je například přidání souboru skriptu R do `script` větve místního počítače, můžete pomocí následujících příkazů Git bash Potvrdit změnu z místní větve na opačnou pracovní větev:
+Po provedení změny pracovní položky, jako je například přidání souboru skriptu R do větve místního počítače `script` , můžete pomocí následujících příkazů Git bash Potvrdit změnu z místní větve na opačnou pracovní větev:
 
 ```bash
 git status
@@ -76,7 +75,7 @@ git push origin script
 
 Po jednom nebo několika potvrzeních a nabízených oznámeních, až budete připraveni k sloučení aktuální pracovní větve do své základní větve, můžete vytvořit a odeslat *žádost o* přijetí změn v Azure Repos. 
 
-Na hlavní stránce projektu Azure DevOps **ukažte** > na úložiště**žádostí o získání dat** v levém navigačním panelu. Pak vyberte jednu z **nových tlačítek žádosti o** přijetí změn nebo vytvořte odkaz na **žádost** o přijetí změn.
+Na hlavní stránce projektu Azure DevOps **ukažte na úložiště**  >  **žádostí o získání dat** v levém navigačním panelu. Pak vyberte jednu z **nových tlačítek žádosti o** přijetí změn nebo vytvořte odkaz na **žádost** o přijetí změn.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 

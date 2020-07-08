@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980632"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services: nejčastější dotazy
@@ -54,7 +53,7 @@ Pokud chcete zjistit dostupné velikosti v oblasti, přečtěte si téma [Micros
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Proč dojde k selhání nasazení cloudové služby z důvodu limitů, kvót a omezení na mém předplatném nebo službě?
 Nasazení cloudové služby může selhat, pokud prostředky, které se musí přidělit, překračují výchozí nebo maximální kvótu povolenou pro vaši službu na úrovni oblasti nebo datového centra. Další informace najdete v tématu [omezení Cloud Services](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Můžete také sledovat aktuální využití/kvótu pro vaše předplatné na portálu: Azure Portal => předplatné => \<odpovídající předplatné> => využití + kvóta.
+Můžete také sledovat aktuální využití/kvótu pro vaše předplatné na portálu: Azure Portal => předplatné => \<appropriate subscription>   => "využití + kvóta".
 
 Informace související s využitím prostředků/spotřebou se dají získat taky prostřednictvím rozhraní API pro fakturaci Azure. Viz [rozhraní API využití prostředků Azure (Preview)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 

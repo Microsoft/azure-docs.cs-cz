@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76262805"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Orchestrace singleton v Durable Functions (Azure Functions)
@@ -52,11 +51,11 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**Function. JSON**
+**function.jsna**
 
 ```json
 {
@@ -83,7 +82,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-**index. js**
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -114,7 +113,7 @@ module.exports = async function(context, req) {
 
 ---
 
-Ve výchozím nastavení jsou identifikátory instancí náhodně generované identifikátory GUID. V předchozím příkladu se ale ID instance předává v datech směrování z adresy URL. Kód volá `GetStatusAsync`(C#) nebo `getStatus` (JavaScript), aby zkontroloval, jestli instance se zadaným ID už běží. Pokud taková instance není spuštěná, vytvoří se nová instance s tímto ID.
+Ve výchozím nastavení jsou identifikátory instancí náhodně generované identifikátory GUID. V předchozím příkladu se ale ID instance předává v datech směrování z adresy URL. Kód volá `GetStatusAsync` (C#) nebo `getStatus` (JavaScript), aby zkontroloval, jestli instance se zadaným ID už běží. Pokud taková instance není spuštěná, vytvoří se nová instance s tímto ID.
 
 > [!NOTE]
 > V této ukázce je potenciální podmínka časování. Pokud se dvě instance **HttpStartSingle** spustí souběžně, obě volání funkce budou hlásit úspěch, ale pouze jedna instance orchestrace bude skutečně spuštěna. V závislosti na vašich požadavcích může to mít nežádoucí vedlejší účinky. Z tohoto důvodu je důležité zajistit, aby žádné dvě požadavky nemohly současně spouštět tuto triggerovou funkci.

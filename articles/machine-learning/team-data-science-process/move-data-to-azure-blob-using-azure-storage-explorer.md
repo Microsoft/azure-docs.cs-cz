@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bfc63c6f5aca92fb7fda9e3ecf63ce4c332b12ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720907"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Přesun dat do a z Azure Blob Storage pomocí Průzkumník služby Azure Storage
@@ -52,6 +51,6 @@ Následující postup popisuje, jak nahrávat a stahovat data pomocí Průzkumn�
 6. Měl by se teď zobrazit přidaný účet úložiště. Pokud chcete vytvořit kontejner objektů BLOB v účtu úložiště, klikněte pravým tlačítkem na uzel **kontejnery objektů BLOB** v tomto účtu, vyberte **vytvořit kontejner objektů BLOB**a zadejte název.
 7. Pokud chcete nahrát data do kontejneru, vyberte cílový kontejner a klikněte na tlačítko **nahrát** .
 ![Účty úložiště](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. Klikněte na tlačítko **...** napravo od pole **soubory** , vyberte jeden nebo více souborů, které chcete odeslat ze systému souborů, a kliknutím na tlačítko **Odeslat** zahajte nahrávání souborů. ![Nahrání souborů](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+8. Klikněte na tlačítko **...** napravo od pole **soubory** , vyberte jeden nebo více souborů, které chcete odeslat ze systému souborů, a kliknutím na tlačítko **Odeslat** zahajte nahrávání souborů. ![ Nahrání souborů](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. Chcete-li stáhnout data, vyberte objekt BLOB v odpovídajícím kontejneru ke stažení a klikněte na tlačítko **Stáhnout**. ![Stažení souborů](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76714413"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Úkoly vedoucího projektu v rámci vědeckého zpracování týmových dat
@@ -57,7 +56,7 @@ Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počít
 
 Vytvoření úložiště projektu v projektu **myTeam** vašeho týmu:
 
-1. Přejít na stránku **souhrnu** projektu vašeho týmu na *adrese https\//\<: název serveru>\</název organizace>\</název týmu>*, například **https:\//dev.Azure.com/DataScienceUnit/myTeam**, a v levém navigačním panelu vyberte úložiště. **Repos** 
+1. Přejít na stránku **souhrnu** projektu vašeho týmu na adrese *https \/ / \<server name> / \<organization name> / \<team name> :* například **https: \/ /dev.Azure.com/DataScienceUnit/myTeam** **a v levém navigačním panelu vyberte úložiště** . 
    
 1. V horní části stránky vyberte název úložiště a v rozevíracím seznamu vyberte **nové úložiště** .
    
@@ -83,7 +82,7 @@ Chcete-li naplnit úložiště projektu obsahem vašeho úložiště šablony t�
    
    ![Vybrat Import](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a do pole **Adresa URL klonu**zadejte adresu URL úložiště **TeamTemplate** . Adresa URL je *https:\//\<název serveru>/\<název organizace>/\<název týmu>/_git/\<název úložiště šablony týmu>*. Příklad: **https:\//dev.Azure.com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a do pole **Adresa URL klonu**zadejte adresu URL úložiště **TeamTemplate** . Adresa URL je *https: \/ / \<server name> / \<organization name> / \<team name> /_git/ \<team template repository name> *. Příklad: **https: \/ /dev.Azure.com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
    
 1. Vyberte **Importovat**. Obsah vašeho úložiště šablony týmu se importuje do vašeho úložiště projektu. 
    

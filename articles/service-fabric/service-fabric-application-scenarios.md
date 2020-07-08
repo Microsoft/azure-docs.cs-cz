@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76024734"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric scénáře aplikací
@@ -55,15 +54,15 @@ Příkladem stavové služby je sestavování aplikací pomocí rolí pracovníh
 
 Stavové služby v Service Fabric přinesou vysokou dostupnost pro všechny typy aplikací, nikoli jenom databáze a další úložiště dat. Jedná se o přirozený pokrok. Aplikace se už přesunuly z použití čistě relačních databází pro zajištění vysoké dostupnosti pro databáze NoSQL. Samotné aplikace teď můžou mít svůj "horkou" stav a data spravovaná v nich, aby se daly zvýšit výkon, aniž by došlo ke ztrátě spolehlivosti, konzistence nebo dostupnosti.
 
-Při sestavování aplikací, které se skládají z mikroslužeb, obvykle máte k dispozici kombinaci bezstavových webových aplikací (například ASP.NET a Node. js), která zavolá bezstavové a stavové služby firmy střední úrovně. Aplikace a služby jsou nasazené ve stejném Service Fabric clusteru prostřednictvím příkazů Service Fabric nasazení. Každá z těchto služeb je nezávislá na použití škálování, spolehlivosti a využití prostředků. Tato nezávislost vylepšuje flexibilitu a flexibilitu při vývoji a správě životního cyklu.
+Při sestavování aplikací, které se skládají z mikroslužeb, obvykle máte k dispozici kombinaci bezstavových webových aplikací (například ASP.NET a Node.js), která volá bezstavové a stavové služby firmy střední úrovně. Aplikace a služby jsou nasazené ve stejném Service Fabric clusteru prostřednictvím příkazů Service Fabric nasazení. Každá z těchto služeb je nezávislá na použití škálování, spolehlivosti a využití prostředků. Tato nezávislost vylepšuje flexibilitu a flexibilitu při vývoji a správě životního cyklu.
 
 Stavové mikroslužby zjednodušují návrhy aplikací, protože odstraňují nutnost dalších front a mezipamětí, které byly tradičně nutné pro řešení požadavků na dostupnost a latenci čistě bezstavových aplikací. Vzhledem k tomu, že stavová služba má vysokou dostupnost a nízkou latenci, je pro správu ve vaší aplikaci méně podrobností.
 
 Následující diagramy znázorňují rozdíly mezi návrhem aplikace, která je Bezstavová a ta je stavová. Díky využití [Reliable Services](service-fabric-reliable-services-introduction.md) a [Reliable Actors](service-fabric-reliable-actors-introduction.md) programovacích modelů omezuje stavové služby složitost aplikace při dosahování vysoké propustnosti a nízké latence.
 
-Tady je ukázková aplikace, která používá bezstavové ![služby: aplikace, která používá bezstavové služby.][Image1]
+Tady je ukázková aplikace, která používá bezstavové služby: ![ aplikace, která používá bezstavové služby.][Image1]
 
-Tady je ukázková aplikace, která používá stavové ![služby: aplikace, která používá stavové služby.][Image2]
+Tady je ukázková aplikace, která používá stavové služby: ![ aplikace, která používá stavové služby.][Image2]
 
 ## <a name="next-steps"></a>Další kroky
 

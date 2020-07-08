@@ -4,10 +4,9 @@ description: Tento článek vysvětluje, jak používat podporu KeyVaultReferenc
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76545479"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
@@ -86,9 +85,9 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
     Odkaz na tento [dokument](how-to-grant-access-other-resources.md) vám umožní zjistit, jak udělit spravované identitě přístup k trezoru klíčů. Všimněte si také, že pokud používáte spravovanou identitu přiřazenou systémem, je spravovaná identita vytvořena až po nasazení aplikace.
 
 ## <a name="keyvault-secret-as-application-parameter"></a>Tajný klíč trezoru klíčů jako parametr aplikace
-Řekněme, že aplikace potřebuje číst heslo back-end databáze uloženou v trezoru klíčů, Service Fabric podpora KeyVaultReference to usnadňuje. Níže uvedený příklad `DBPassword` přečte tajný kód z trezoru klíčů pomocí podpory Service Fabric KeyVaultReference.
+Řekněme, že aplikace potřebuje číst heslo back-end databáze uloženou v trezoru klíčů, Service Fabric podpora KeyVaultReference to usnadňuje. Níže uvedený příklad přečte `DBPassword` tajný kód z trezoru klíčů pomocí podpory Service Fabric KeyVaultReference.
 
-- Přidat oddíl do souboru Settings. XML
+- Přidání oddílu do settings.xml
 
     Definovat `DBPassword` parametr s typem `KeyVaultReference` a hodnotou`<KeyVaultURL>`
 
@@ -97,7 +96,7 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- Odkazování na nový oddíl v souboru souboru ApplicationManifest. XML v`<ConfigPackagePolicies>`
+- Odkázat na nový oddíl v ApplicationManifest.xml`<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
@@ -115,7 +114,7 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
 
 - Použití KeyVaultReference ve vaší aplikaci
 
-    Service Fabric při vytváření instance služby vyřeší parametr KeyVaultReference pomocí spravované identity aplikace. Každý parametr uvedený v `<Section  Name=dbsecrets>` části bude soubor ve složce, na kterou odkazuje objekt EnvironmentVariable SecretPath. Pod fragmentem kódu v jazyce C# ukazují, jak číst DBPassword ve vaší aplikaci.
+    Service Fabric při vytváření instance služby vyřeší parametr KeyVaultReference pomocí spravované identity aplikace. Každý parametr uvedený v části `<Section  Name=dbsecrets>` bude soubor ve složce, na kterou odkazuje objekt EnvironmentVariable SecretPath. Pod fragmentem kódu v jazyce C# ukazují, jak číst DBPassword ve vaší aplikaci.
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");
@@ -126,7 +125,7 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
     }
     ```
     > [!NOTE] 
-    > Pro scénář kontejneru můžete použít přípojný bod k určení, kam `secrets` bude připojen.
+    > Pro scénář kontejneru můžete použít přípojný bod k určení, kam bude `secrets` připojen.
 
 ## <a name="keyvault-secret-as-environment-variable"></a>Tajný klíč trezoru klíčů jako proměnná prostředí
 

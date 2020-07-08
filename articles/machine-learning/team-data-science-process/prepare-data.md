@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720040"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
@@ -96,7 +95,7 @@ K dispozici jsou různé metody pro snížení velikosti dat pro snazší zpraco
 
 **Zkoumání dat** nabízí včasnou pohled na data. V průběhu tohoto kroku může být zjištěna řada problémů s daty a je možné použít odpovídající metody pro řešení těchto problémů.  Je důležité klást otázky, jako je například zdroj problému a způsob, jakým je možné problém zavádět. Tento proces také pomáhá při rozhodování o krocích zpracování dat, které je třeba provést, aby je bylo možné vyřešit. Určením konečných případů použití a osoby lze také použít k určení priorit při zpracování dat.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 > *Dolování dat: koncepce a techniky*, třetí edice, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber a Jian Pei
 > 
 > 

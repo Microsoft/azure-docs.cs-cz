@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76697893"
 ---
 # <a name="brokered-authentication-in-android"></a>Zprostředkované ověřování v Androidu
@@ -56,9 +55,9 @@ Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, M
 
 ### <a name="when-a-broker-is-installed"></a>Při instalaci zprostředkovatele
 
-Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na `acquireToken()`Interaktivní tokeny (volání) zpracovávány zprostředkovatelem namísto místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
+Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání `acquireToken()` ) zpracovávány zprostředkovatelem namísto místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
 
-Instalace zprostředkovatele nepožaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit `MsalUiRequiredException` , bude další požadavek přejít do služby Broker. `MsalUiRequiredException`je vyvolána z několika důvodů a je třeba je přeložit interaktivně. Jedná se o některé běžné důvody:
+Instalace zprostředkovatele nepožaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException`je vyvolána z několika důvodů a je třeba je přeložit interaktivně. Jedná se o některé běžné důvody:
 
 - Uživatel změnil heslo přidružené k účtu.
 - Uživatelský účet už nesplňuje zásady podmíněného přístupu.
@@ -116,9 +115,9 @@ MSAL komunikuje se zprostředkovatelem dvěma způsoby:
 - Služba vázaná na zprostředkovatele
 - Android ke správci účtů
 
-MSAL nejprve používá službu přivázané na zprostředkovatele, protože volání této služby nevyžaduje žádná oprávnění Androidu. Pokud se vazba na vázanou službu nezdaří, MSAL použije rozhraní Android ke správci účtů API. MSAL to dělá jenom v případě, `"READ_CONTACTS"` že vaše aplikace už má udělené oprávnění.
+MSAL nejprve používá službu přivázané na zprostředkovatele, protože volání této služby nevyžaduje žádná oprávnění Androidu. Pokud se vazba na vázanou službu nezdaří, MSAL použije rozhraní Android ke správci účtů API. MSAL to dělá jenom v případě, že vaše aplikace už má udělené `"READ_CONTACTS"` oprávnění.
 
-Pokud `MsalClientException` se zobrazí kód `"BROKER_BIND_FAILURE"`chyby, jsou k dispozici dvě možnosti:
+Pokud `MsalClientException` se zobrazí kód chyby `"BROKER_BIND_FAILURE"` , jsou k dispozici dvě možnosti:
 
 - Požádejte uživatele, aby zakázal optimalizaci výkonu pro aplikaci Microsoft Authenticator a Portál společnosti Intune.
 - Požádat uživatele o udělení `"READ_CONTACTS"` oprávnění

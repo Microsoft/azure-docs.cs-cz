@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: fb940857a0f88590cb9bbbf56b9e6a791299309f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980949"
 ---
 # <a name="azure-operational-security-checklist"></a>Kontrolní seznam pro operační zabezpečení Azure
@@ -37,7 +36,7 @@ Azure poskytuje sadu služeb infrastruktury, které můžete použít k nasazen�
 
 Tento kontrolní seznam je určený k tomu, aby podniky při nasazování sofistikovaných podnikových aplikací v Azure pokrývaly různé požadavky na provozní zabezpečení. Dá se taky použít k vytvoření zabezpečené cloudové migrace a provozní strategie pro vaši organizaci.
 
-|Kategorie kontrolního seznamu| Popis|
+|Kategorie kontrolního seznamu| Description|
 | ------------ | -------- |
 | [<br>Role zabezpečení & řízení přístupu](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>Použijte [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) k poskytnutí konkrétního uživatele, který se používá k přiřazení oprávnění uživatelům, skupinám a aplikacím v určitém oboru.</li></ul> |
 | [<br>Úložiště & shromažďování dat](../../storage/blobs/security-recommendations.md)|<ul><li>Pomocí zabezpečení roviny správy Zabezpečte svůj účet úložiště pomocí [Access Control na základě rolí (RBAC)](../../role-based-access-control/role-assignments-portal.md).</li><li>Zabezpečení roviny dat pro zabezpečení přístupu k datům pomocí [sdílených přístupových podpisů (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) a uložených zásad přístupu.</li><li>Používejte šifrování na úrovni přenosu – pomocí protokolu HTTPS a šifrování, které používá protokol [SMB (Server Message Block Protocol) 3,0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) pro [sdílené složky Azure](../../storage/files/storage-dotnet-how-to-use-files.md).</li><li>Pomocí [šifrování na straně klienta](../../storage/common/storage-client-side-encryption.md) Zabezpečte data, která odesíláte do účtů úložiště, pokud požadujete výhradní kontrolu šifrovacích klíčů. </li><li>Pomocí [šifrování služby Storage (SSE)](../../storage/common/storage-service-encryption.md) automaticky Zašifrujte data v Azure Storage a [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) Zašifrujte soubory disků virtuálního počítače pro operační systém a datové disky.</li><li>K monitorování typu autorizace použijte Azure [Analýza úložiště](https://docs.microsoft.com/rest/api/storageservices/storage-analytics) . Podobně jako u Blob Storage můžete zjistit, jestli uživatelé použili sdílený přístupový podpis nebo klíče účtu úložiště.</li><li>Pro přístup k prostředkům úložiště z různých domén použijte [sdílení prostředků mezi zdroji (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .</li></ul> |

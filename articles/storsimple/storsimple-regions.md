@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76275112"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostupné oblasti pro váš StorSimple
@@ -61,9 +60,9 @@ V závislosti na modelu mohou být zařízení StorSimple k dispozici v různýc
 
 Pokud používáte fyzické zařízení s StorSimple 8100 nebo 8600, je zařízení dostupné v následujících zemích nebo oblastech.
 
-| #  | Země/region        | #  | Země/region     | #  | Země/region      | #  | Země/region             |
+| #  | Země/oblast        | #  | Země/oblast     | #  | Země/oblast      | #  | Země/oblast             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 1  | Austrálie             | 16 | Hongkong – zvláštní správní oblast      | 31 | Nový Zéland         | 46 | Jižní Afrika               |
+| 1  | Austrálie             | 16 | Hongkong – zvláštní administrativní oblast      | 31 | Nový Zéland         | 46 | Jižní Afrika               |
 | 2  | Rakousko               | 17 | Maďarsko            | 32 | Nigérie             | 47 | Jižní Korea                |
 | 3  | Bahrajn               | 18 | Island            | 33 | Norsko              | 48 | Španělsko                      |
 | 4  | Belgie               | 19 | Indie              | 34 | Peru                | 49 | Srí Lanka                  |
@@ -75,7 +74,7 @@ Pokud používáte fyzické zařízení s StorSimple 8100 nebo 8600, je zaříze
 | 10 | Dánsko               | 25 | Keňa              | 40 | Rumunsko             | 55 | Ukrajina                    |
 | 11 | Egypt                 | 26 | Kuvajt             | 41 | Rusko              | 56 | Spojené arabské emiráty       |
 | 12 | Finsko               | 27 | Macao – zvláštní administrativní oblast          | 42 | Saúdská Arábie        | 57 | Spojené království             |
-| 13 | Francie                | 28 | Malajsie           | 43 | Singapur           | 58 | Spojené státy              |
+| 13 | Francie                | 28 | Malajsie           | 43 | Singapur           | 58 | USA              |
 | 14 | Německo               | 29 | Mexiko             | 44 | Slovensko            | 59 | Vietnam                    |
 | 15 | Řecko                | 30 | Nizozemsko        | 45 | Slovinsko            | 60 | Chorvatsko                    |
 

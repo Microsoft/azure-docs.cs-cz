@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: 09a5f004570430fafe5c86f4f8ae048f2d1fe4c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981943"
 ---
 # <a name="manage-azure-media-services-v2-accounts"></a>Správa účtů Azure Media Services V2
@@ -30,7 +29,7 @@ Media Services V2 nepodporuje model víceklientské architektury. Pokud potřebu
 
 > [!IMPORTANT]
 > Pro přístup k Media Services rozhraní API v2 je potřeba resetovat informace o [ověřování Azure AD](media-services-portal-get-started-with-aad.md) .  
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Před migrací na jiné předplatné vytvořte zálohy všech dat ve vašem účtu.
 * Musíte zastavit všechny koncové body streamování a prostředky živého streamování. Uživatelé nebudou mít přístup k vašemu obsahu po dobu trvání přesunutí skupiny prostředků. 

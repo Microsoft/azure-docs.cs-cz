@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76713146"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Postup zabezpečení rozhraní API s využitím ověřování pomocí klientských certifikátů ve službě API Management
@@ -51,8 +50,8 @@ Níže uvedené zásady je možné nakonfigurovat tak, aby kontrolovaly vystavit
 ```
 
 > [!NOTE]
-> Chcete-li zakázat kontrolu použití `context.Request.Certificate.VerifyNoRevocation()` seznamu odvolaných certifikátů namísto. `context.Request.Certificate.Verify()`
-> Pokud je klientský certifikát podepsaný svým držitelem, musí být do API Management a `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` pro práci [odesílány](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority.
+> Chcete-li zakázat kontrolu použití seznamu odvolaných certifikátů `context.Request.Certificate.VerifyNoRevocation()` namísto `context.Request.Certificate.Verify()` .
+> Pokud je klientský certifikát podepsaný svým držitelem, musí být do API Management a pro práci [odesílány](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` .
 
 ## <a name="checking-the-thumbprint"></a>Kontrola kryptografického otisku
 
@@ -69,8 +68,8 @@ Níže uvedené zásady se dají nakonfigurovat tak, aby kontrolovaly kryptograf
 ```
 
 > [!NOTE]
-> Chcete-li zakázat kontrolu použití `context.Request.Certificate.VerifyNoRevocation()` seznamu odvolaných certifikátů namísto. `context.Request.Certificate.Verify()`
-> Pokud je klientský certifikát podepsaný svým držitelem, musí být do API Management a `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` pro práci [odesílány](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority.
+> Chcete-li zakázat kontrolu použití seznamu odvolaných certifikátů `context.Request.Certificate.VerifyNoRevocation()` namísto `context.Request.Certificate.Verify()` .
+> Pokud je klientský certifikát podepsaný svým držitelem, musí být do API Management a pro práci [odesílány](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` .
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Kontrola kryptografického otisku proti certifikátům odeslaným do API Management
 
@@ -88,11 +87,11 @@ Následující příklad ukazuje, jak kontrolovat kryptografický otisk certifik
 ```
 
 > [!NOTE]
-> Chcete-li zakázat kontrolu použití `context.Request.Certificate.VerifyNoRevocation()` seznamu odvolaných certifikátů namísto. `context.Request.Certificate.Verify()`
-> Pokud je klientský certifikát podepsaný svým držitelem, musí být do API Management a `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` pro práci [odesílány](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority.
+> Chcete-li zakázat kontrolu použití seznamu odvolaných certifikátů `context.Request.Certificate.VerifyNoRevocation()` namísto `context.Request.Certificate.Verify()` .
+> Pokud je klientský certifikát podepsaný svým držitelem, musí být do API Management a pro práci [odesílány](api-management-howto-ca-certificates.md) kořenové (nebo zprostředkující) certifikáty certifikační autority `context.Request.Certificate.Verify()` `context.Request.Certificate.VerifyNoRevocation()` .
 
 > [!TIP]
-> Problém zablokování klientského certifikátu popsaný v tomto [článku](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) se může projevit v několika ohledech, například když se `403 Forbidden` požadavky zablokují, požadavky `context.Request.Certificate` jsou `null`po vypršení časového limitu na stavový kód. Tento problém obvykle ovlivňuje `POST` a `PUT` požadavky s délkou obsahu přibližně 60KB nebo větší.
+> Problém zablokování klientského certifikátu popsaný v tomto [článku](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) se může projevit v několika ohledech, například když se požadavky zablokují, požadavky `403 Forbidden` jsou po vypršení časového limitu na stavový kód `context.Request.Certificate` `null` . Tento problém obvykle ovlivňuje `POST` a `PUT` požadavky s délkou obsahu přibližně 60KB nebo větší.
 > Aby nedošlo k tomuto problému, zapněte nastavení vyjednávat klientský certifikát pro požadované názvy hostitelů v okně vlastní domény, jak je znázorněno níže. Tato funkce není k dispozici na úrovni spotřeby.
 
 ![Vyjednat klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)

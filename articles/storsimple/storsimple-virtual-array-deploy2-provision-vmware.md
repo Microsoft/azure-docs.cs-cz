@@ -9,10 +9,9 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76272100"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Nasazení virtuálního pole StorSimple – zřizování ve VMware
@@ -95,13 +94,13 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 7. Zobrazí se okno **Prohlížeč úložiště dat**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Na panelu nástrojů klikněte na ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) ikonu a vytvořte novou složku. Zadejte název složky a poznamenejte si ho. Název této složky použijete později při vytváření virtuálního počítače (doporučený osvědčený postup). Klikněte na tlačítko **OK**.
+8. Na panelu nástrojů klikněte na ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) ikonu a vytvořte novou složku. Zadejte název složky a poznamenejte si ho. Název této složky použijete později při vytváření virtuálního počítače (doporučený osvědčený postup). Klikněte na **OK**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Nová složka se zobrazí v levém podokně okna **Prohlížeč úložiště dat**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Klikněte na ikonu ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) nahrát a vyberte **nahrát soubor**.
+10. Klikněte na ikonu nahrát ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) a vyberte **nahrát soubor**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. Přejděte k souborům VMDK, které jste si stáhli. Zobrazí se dva soubory. Vyberte soubor k nahrání.

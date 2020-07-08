@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548709"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
@@ -43,7 +42,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 Když IoT Edge modul runtime vytvoří novou instanci modulu, získá odpovídající identitu modulu. Identita modulu je uložena v IoT Hub a slouží jako obor adresování a zabezpečení pro veškerou místní a cloudovou komunikaci pro danou instanci modulu.
 
-Identita přidružená k instanci modulu závisí na identitě zařízení, na kterém je instance spuštěná, a názvu, který do tohoto modulu zadáte, do svého řešení. Například pokud zavoláte `insight` modul, který používá Azure Stream Analytics a nasadíte ho do zařízení s názvem `Hannover01`, modul runtime IoT Edge vytvoří odpovídající identitu modulu s názvem. `/devices/Hannover01/modules/insight`
+Identita přidružená k instanci modulu závisí na identitě zařízení, na kterém je instance spuštěná, a názvu, který do tohoto modulu zadáte, do svého řešení. Například pokud zavoláte `insight` modul, který používá Azure Stream Analytics a nasadíte ho do zařízení s názvem `Hannover01` , modul runtime IoT Edge vytvoří odpovídající identitu modulu s názvem `/devices/Hannover01/modules/insight` .
 
 Ve scénářích, kdy potřebujete na jednom zařízení několikrát nasadit image jednoho modulu, můžete stejný obrázek nasadit několikrát s různými názvy.
 

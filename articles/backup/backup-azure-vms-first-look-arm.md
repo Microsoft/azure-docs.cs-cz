@@ -4,10 +4,9 @@ description: V tomto článku se dozvíte, jak zálohovat jeden virtuální poč
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705441"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
@@ -31,7 +30,7 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Klikněte na **všechny služby** a ve filtru zadejte **virtuální počítače**a potom klikněte na **virtuální počítače**.
 3. V seznamu virtuálních počítačů vyberte virtuální počítač, který chcete zálohovat.
 4. V nabídce VM (virtuální počítač) klikněte na **zálohovat**.
@@ -56,7 +55,7 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 8. Průběh konfigurace můžete sledovat v oznámeních na portálu.
 9. Po dokončení úlohy klikněte v nabídce virtuální počítač na **zálohovat**. Stránka zobrazuje stav zálohování pro virtuální počítač, informace o vydaných bodech obnovení, spuštěných úlohách a výstrahách.
 
-   ![Stav zálohování](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![Stav zálohy](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. Po povolení zálohování se spustí prvotní zálohování. Počáteční zálohu můžete spustit okamžitě nebo počkat, až začne v souladu s plánem zálohování.
     - Až do dokončení počáteční zálohy se **Stav poslední zálohy** zobrazí jako **varování (čeká se na prvotní zálohování)**.
@@ -64,7 +63,7 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 
 ## <a name="run-a-backup-immediately"></a>Okamžitě spustit zálohování
 
-1. Pokud chcete spustit zálohování okamžitě, v nabídce VM (virtuální počítač) klikněte na **zálohovat** > **zálohování hned teď**.
+1. Pokud chcete spustit zálohování okamžitě, v nabídce VM (virtuální počítač) klikněte na **zálohovat**  >  **zálohování hned teď**.
 
     ![Spustit zálohování](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 

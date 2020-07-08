@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76264029"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
@@ -234,7 +233,7 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
 
     ![][3]
 
-    g. Nakonfigurujte úlohu tak, aby běžela průběžně, takže když se přihlásíte k [Azure Portal] , mělo by se zobrazit něco jako v následujícím seznamu:
+    například Nakonfigurujte úlohu tak, aby běžela průběžně, takže když se přihlásíte k [Azure Portal] , mělo by se zobrazit něco jako v následujícím seznamu:
 
     ![][4]
 
@@ -244,7 +243,7 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
 
     b. Ujistěte se, že je ve vaší aplikaci povolený příjem oznámení informačními zprávami.
 
-    c. Zajistěte, aby se při spuštění aplikace volala následující registrační kód Notification Hubs (po nahrazení hodnot `HubName` a: `DefaultListenSharedAccessSignature`
+    c. Zajistěte, aby se při spuštění aplikace volala následující registrační kód Notification Hubs (po nahrazení `HubName` `DefaultListenSharedAccessSignature` hodnot a:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -291,4 +290,4 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
 [Service Bus pro publikování a následné programování]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Webová úloha Azure]: ../app-service/webjobs-create.md
 [Notification Hubs – kurz univerzální pro Windows]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

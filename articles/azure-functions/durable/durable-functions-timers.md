@@ -5,17 +5,16 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76261479"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Časovače v Durable Functions (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) poskytuje *odolné časovače* pro použití ve funkcích nástroje Orchestrator pro implementaci zpoždění nebo nastavení časových limitů pro asynchronní akce. Trvalé časovače by se měly používat ve funkcích Orchestrator `Thread.Sleep` místo `Task.Delay` a (C#) nebo `setTimeout()` a `setInterval()` (JavaScript).
+[Durable Functions](durable-functions-overview.md) poskytuje *odolné časovače* pro použití ve funkcích nástroje Orchestrator pro implementaci zpoždění nebo nastavení časových limitů pro asynchronní akce. Trvalé časovače by se měly používat ve funkcích Orchestrator místo `Thread.Sleep` a `Task.Delay` (C#) nebo `setTimeout()` a `setInterval()` (JavaScript).
 
-Můžete vytvořit trvalý časovač voláním metody `CreateTimer` (.NET) nebo metody `createTimer` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger). Metoda vrátí úlohu, která se dokončí k zadanému datu a času.
+Můžete vytvořit trvalý časovač voláním `CreateTimer` metody (.NET) nebo `createTimer` metody (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger). Metoda vrátí úlohu, která se dokončí k zadanému datu a času.
 
 ## <a name="timer-limitations"></a>Omezení časovače
 
@@ -46,7 +45,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí příklad cíle jazyka C# Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklad cíle jazyka C# Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -104,7 +103,7 @@ public static async Task<bool> Run(
 ```
 
 > [!NOTE]
-> Předchozí příklad cíle jazyka C# Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklad cíle jazyka C# Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

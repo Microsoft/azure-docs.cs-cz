@@ -1,6 +1,6 @@
 ---
 title: Podpora platforem sady SDK pro zařízení Azure IoT | Microsoft Docs
-description: Open source sady SDK pro zařízení jsou k dispozici na GitHubu v jazyce C, .NET (C#), Java, Node. js a Python, aby bylo možné připojit zařízení k Azure IoT Hub a službě Device Provisioning (DPS).
+description: Sady SDK pro open source zařízení jsou k dispozici na GitHubu v jazyce C, .NET (C#), Java, Node.js a Python pro připojení zařízení k Azure IoT Hub a službě Device Provisioning (DPS).
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76045116"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Podpora platforem sady SDK pro zařízení Azure IoT
 
-Microsoft usiluje o průběžnou rozšiřování celé části zařízení s technologií Azure IoT Hub, která podporuje. Microsoft publikuje open source sady SDK pro zařízení na GitHubu, aby bylo možné lépe připojit zařízení k Azure IoT Hub a službě Device Provisioning. Sady SDK pro zařízení jsou k dispozici pro jazyky C, .NET (C#), Java, Node. js a Python. Microsoft testuje každou sadu SDK, aby se zajistilo, že běží na podporovaných konfiguracích, a to v části [Podpora platforem Microsoft SDK a platformy zařízení](#microsoft-sdks-and-device-platform-support) .
+Microsoft usiluje o průběžnou rozšiřování celé části zařízení s technologií Azure IoT Hub, která podporuje. Microsoft publikuje open source sady SDK pro zařízení na GitHubu, aby bylo možné lépe připojit zařízení k Azure IoT Hub a službě Device Provisioning. Sady SDK pro zařízení jsou k dispozici pro jazyky C, .NET (C#), Java, Node.js a Python. Microsoft testuje každou sadu SDK, aby se zajistilo, že běží na podporovaných konfiguracích, a to v části [Podpora platforem Microsoft SDK a platformy zařízení](#microsoft-sdks-and-device-platform-support) .
 
 Kromě sad SDK pro zařízení poskytuje společnost Microsoft několik dalších cesty vedoucí, které zákazníkům a vývojářům umožňují připojit svá zařízení k Azure IoT:
 
@@ -30,7 +29,7 @@ Toto téma poskytuje informace o sadách Microsoft SDK a podporovaných konfigur
 
 ## <a name="microsoft-sdks-and-device-platform-support"></a>Microsoft SDK a podpora platforem zařízení
 
-Microsoft publikuje open source sady SDK na GitHubu pro následující jazyky: C, .NET (C#), Node. js, Java a Python. Sady SDK a jejich závislosti jsou uvedeny v této části. Sady SDK jsou podporované na všech platformách zařízení, které tyto závislosti splňují.
+Microsoft publikuje open source sady SDK na GitHubu pro následující jazyky: C, .NET (C#), Node.js, Java a Python. Sady SDK a jejich závislosti jsou uvedeny v této části. Sady SDK jsou podporované na všech platformách zařízení, které tyto závislosti splňují.
 
 Pro každou z uvedených sad SDK Microsoft:
 
@@ -57,7 +56,7 @@ Pro každou z uvedených sad SDK Microsoft:
 
 [Sada SDK pro zařízení služby Azure IoT Hub Python](https://github.com/Azure/azure-iot-sdk-python) je testována s nástrojem a podporuje následující konfigurace.
 
-| Operační systém                  | Přepínač                          |
+| Operační systém                  | Compiler                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7. *, 3,5 nebo novější |
 | MacOS High Sierra   | Python 2,7. *, 3,5 nebo novější |
@@ -78,7 +77,7 @@ Sadu .NET SDK je také možné použít s Windows IoT Core s [agentem zařízen�
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-[Sada SDK pro zařízení Node. js v Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-node) se testuje pomocí a podporuje následující konfigurace.
+[Sada SDK pro zařízení Azure IoT Hub Node.js](https://github.com/Azure/azure-iot-sdk-node) se testuje pomocí a podporuje následující konfigurace.
 
 | Operační systém                  | Verze uzlu    |
 |---------------------|-----------------|
@@ -134,7 +133,7 @@ Pokud při používání sad SDK pro zařízení Azure IoT dochází k problém�
 
 * [Problémy s Azure IoT Hub Java SDK](https://github.com/Azure/azure-iot-sdk-java/issues)
 
-* [Problémy s SDK pro Node. js v Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-node/issues)
+* [Problémy s Node.js SDK pro Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Problémy sady SDK pro Azure IoT Hub Python](https://github.com/Azure/azure-iot-sdk-python/issues)
 

@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157266"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Pravidla brány firewall v Azure Database for PostgreSQL – jeden server
@@ -29,7 +28,7 @@ Pokusy o připojení z Internetu a Azure musí nejdřív projít přes bránu fi
 Pravidla brány firewall na úrovni serveru se vztahují na všechny databáze na stejném serveru Azure Database for PostgreSQL. Pokud je IP adresa požadavku v jednom z rozsahů určených v pravidlech brány firewall na úrovni serveru, připojení je povoleno.
 Pokud IP adresa požadavku není v rozsahu zadaném v žádném z pravidel brány firewall na úrovni serveru, požadavek na připojení se nezdařil.
 Pokud se například vaše aplikace připojí pomocí ovladače JDBC pro PostgreSQL, může se při pokusu o připojení, když brána firewall blokuje připojení, setkat.
-> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá:\_No pg HBA. conf pro hostitele "123.45.67.890", User "AdminUser", Database "PostgreSQL", SSL
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: No pg \_ HBA. conf pro hostitele "123.45.67.890", "AdminUser", Database "PostgreSQL", SSL
 
 ## <a name="connecting-from-azure"></a>Připojení z Azure
 Doporučujeme, abyste našli odchozí IP adresu libovolné aplikace nebo služby a výslovně povolili přístup k těmto IP adresám nebo rozsahům. Můžete například najít odchozí IP adresu Azure App Service nebo použít veřejnou IP adresu vázanou k virtuálnímu počítači nebo jinému prostředku (viz níže, kde najdete informace o připojení k privátní IP adrese virtuálního počítače prostřednictvím koncových bodů služby). 
@@ -57,7 +56,7 @@ Vezměte v úvahu následující body, pokud se přístup k Microsoft Azure data
 * **Přihlášení není autorizováno nebo bylo použito nesprávné heslo:** Pokud přihlášení nemá oprávnění k serveru Azure Database for PostgreSQL nebo je použité heslo nesprávné, připojení k serveru Azure Database for PostgreSQL je odepřeno. Při vytváření nastavení brány firewall jsou jenom klienti s příležitostí k pokusu o připojení k vašemu serveru. Každý klient musí stále zadat potřebná zabezpečovací pověření.
 
    Například pomocí klienta JDBC se může zobrazit následující chyba.
-   > Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: ověřování hesla pro uživatele "uživatelské_jméno" se nezdařilo.
+   > java.util.concurrent.ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: ověřování heslem pro uživatele "uživatelské_jméno" se nezdařilo.
 
 * **Dynamická IP adresa:** Pokud vaše internetové připojení používá dynamické přidělování IP adres a máte problémy dostat se přes bránu firewall, můžete zkusit jedno z následujících řešení:
 
@@ -65,7 +64,7 @@ Vezměte v úvahu následující body, pokud se přístup k Microsoft Azure data
 
    * Místo toho Získejte statické IP adresy pro klientské počítače a pak přidejte statickou IP adresu jako pravidlo brány firewall.
 
-* **IP adresa serveru je pravděpodobně veřejná:** Připojení k Azure Database for PostgreSQL serveru jsou směrována prostřednictvím veřejně přístupné brány Azure. Skutečná IP adresa serveru je však chráněná bránou firewall. Další informace najdete v [článku architektura připojení](concepts-connectivity-architecture.md). 
+* **IP adresa serveru je pravděpodobně veřejná:** Připojení k Azure Database for PostgreSQL serveru jsou směrována prostřednictvím veřejně přístupné brány Azure. Skutečná IP adresa serveru je však chráněná bránou firewall. Další informace najdete v [článku věnovaném architektuře připojení](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>Další kroky
 Články o vytváření pravidel brány firewall na úrovni serveru a databáze najdete v těchto tématech:

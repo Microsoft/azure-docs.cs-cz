@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: brendm
 ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278863"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Objevte a zaregistrujte své jarní cloudové služby
@@ -19,8 +18,8 @@ Zjišťování služeb je klíčovým požadavkem na architekturu založenou na 
 
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Registrace aplikace pomocí registru jarní cloudové služby
 
-Předtím, než může vaše aplikace spravovat registraci a zjišťování služby pomocí registru jarní cloudové služby, musí být do souboru *pom. XML* aplikace zahrnuty několik závislostí.
-Zahrňte závislosti pro *jaře-Cloud-Started-Netflix-Eureka-Client* a *jaře-Cloud-Start-Azure-jaře-Cloud-Client* to a *pom. XML.*
+Předtím, než může vaše aplikace spravovat registraci a zjišťování služby pomocí registru jarní cloudové služby, musí být do souboru *pom.xml* aplikace zahrnuto několik závislostí.
+Zahrňte závislosti pro *jaře-Cloud-Started-Netflix-Eureka-Client* a *jaře-Cloud-Start-Azure-jaře-Cloud-Client* to *pom.xml*
 
 ```xml
     <dependency>

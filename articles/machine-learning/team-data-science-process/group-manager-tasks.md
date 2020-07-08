@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721349"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Úlohy správce skupin procesů týmu pro data vědeckého zpracování
@@ -57,7 +56,7 @@ Následující kurz vás provede podrobnými kroky.
    
    ![Vytvoření projektu](./media/group-manager-tasks/create-project.png)
 
-Otevře se stránka **Souhrn** projektu **GroupCommon** . Adresa URL stránky je *https:\//\<servername>/\<název organizace>/groupcommon*.
+Otevře se stránka **Souhrn** projektu **GroupCommon** . Adresa URL stránky je *https: \/ / \<servername> / \<organization-name> /GroupCommon*.
 
 ![Stránka souhrnu projektu](./media/group-manager-tasks/project-summary.png)
 
@@ -121,13 +120,13 @@ Import úložišť týmu TDSP:
    
    ![Vybrat Import](./media/group-manager-tasks/import-repo.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a jako **adresu URL klonu**zadejte *https\/:/GitHub.com/Azure/Azure-TDSP-ProjectTemplate.Git* . Pak vyberte **importovat**. Obsah úložiště Microsoft TDSP Team ProjectTemplate se importuje do úložiště GroupProjectTemplate. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a jako **adresu URL klonu**zadejte *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.Git* . Pak vyberte **importovat**. Obsah úložiště Microsoft TDSP Team ProjectTemplate se importuje do úložiště GroupProjectTemplate. 
    
    ![Importovat týmový úložiště Microsoft TDSP](./media/group-manager-tasks/import-repo-2.png)
    
 1. V horní části stránky **úložišť** rozbalte rozevírací seznam a vyberte úložiště **GroupUtilities** .
    
-1. Opakujte proces importu pro import obsahu úložiště nástrojů Microsoft TDSP Team **Utility** , *https:\//GitHub.com/Azure/Azure-TDSP-Utilities.Git*, do úložiště **GroupUtilities** . 
+1. Opakujte proces importu pro import obsahu úložiště nástrojů Microsoft TDSP Team **Utility** , *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.Git*, do úložiště **GroupUtilities** . 
    
 Každé ze dvou úložišť skupin teď obsahuje všechny soubory kromě těch, které jsou v adresáři *. Git* , z odpovídajícího úložiště týmu Microsoft TDSP. 
 

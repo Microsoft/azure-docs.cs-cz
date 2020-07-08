@@ -8,17 +8,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.openlocfilehash: f9b3cde8ff0f3a1b97d53a1de72cb6c5c48a800c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76289777"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL partneři migrace
 Pro rozsáhlou podporu Azure Database for PostgreSQL řešení si můžete vybrat z široké škály špičkových partnerů a nástrojů. V tomto článku se zvýrazňují partneři Microsoftu s řešeními pro migraci, která podporují Azure Database for PostgreSQL.
 
 ## <a name="migration-partners"></a>Partneři migrace
-| Partner | Popis | Odkazy | Videa |
+| Partner | Description | Odkazy | Videa |
 | --- | --- | --- | --- |
 | ![Technologie SNP][1] |**Technologie SNP**<br>Technologie SNP je pouze cloudový poskytovatel služeb, který vytváří bezpečná a spolehlivá řešení pro firmy v budoucnosti. Společnost se domnívá při generování reálné hodnoty pro vaši firmu. Z myšlenky, technologie SNP sdílí společný účel s klienty, aby bylo možné svou investici do výhody zaměnit.|[Web][snp_website]<br>[Twitter][snp_twitter]<br>[Kontakt][snp_contact] | |
 | ![Nejlepší technologie DB, LLC][2] |**Nejlepší technologie DB, LLC**<br>DB nejlépe pomáhá zákazníkům získat z spravované služby Azure Database na maximum. Společnost nabízí několik způsobů, jak můžete začít, včetně [návrhu architektury budoucího stavu](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Správa dat optimalizace pro datové platformy Microsoft](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [služby plánování Microsoft Azure nasazení](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)a [školení připravenosti na datovou platformu Azure](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Web][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Kontakt][dbbest_contact] | |

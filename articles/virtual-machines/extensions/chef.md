@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76544714"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Rozšíření VM VM pro Linux a Windows
@@ -36,7 +35,7 @@ Rozšíření virtuálních počítačů pro virtuální počítače vyžaduje, 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma rozšíření virtuálního počítače pro rozhraní. Přípona vyžaduje minimálně adresu URL serveru pro název klienta, název ověřovacího klienta a ověřovací klíč pro server s názvem. Tyto hodnoty najdete v `knife.rb` souboru na Starter-Kit. zip, který se stáhne při instalaci nástroje pro [automatizaci](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) nebo samostatného [serveru](https://downloads.chef.io/chef-server). Vzhledem k tomu, že ověřovací klíč by měl být považován za citlivá data, měl by být nakonfigurován v rámci elementu **protectedSettings** , což znamená, že bude pouze dešifrován v cílovém virtuálním počítači.
+Následující JSON zobrazuje schéma rozšíření virtuálního počítače pro rozhraní. Přípona vyžaduje minimálně adresu URL serveru pro název klienta, název ověřovacího klienta a ověřovací klíč pro server s názvem. Tyto hodnoty najdete v `knife.rb` souboru ve starter-kit.zip, který se stáhne při instalaci nástroje pro [automatizaci](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) nebo samostatného [serveru](https://downloads.chef.io/chef-server). Vzhledem k tomu, že ověřovací klíč by měl být považován za citlivá data, měl by být nakonfigurován v rámci elementu **protectedSettings** , což znamená, že bude pouze dešifrován v cílovém virtuálním počítači.
 
 ```json
 {
@@ -67,16 +66,16 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="core-property-values"></a>Hodnoty základních vlastností
 
-| Název | Hodnota/příklad | Typ dat
+| Name | Hodnota/příklad | Typ dat
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | řetězec (datum) |
 | vydavatel | `Chef.Bootstrap.WindowsAzure` | řetězec |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | řetězec |
+| typ | `LinuxChefClient`(Linux), `ChefClient` (Windows) | řetězec |
 | typeHandlerVersion | `1210.13` | řetězec (Double) |
 
 ### <a name="settings"></a>Nastavení
 
-| Název | Hodnota/příklad | Typ dat | Povinné?
+| Name | Hodnota/příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ----
 | nastavení/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (URL) | Ano |
 | nastavení/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Ano |
@@ -84,7 +83,7 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
-| Název | Příklad | Typ dat | Povinné?
+| Name | Příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Ano |
 

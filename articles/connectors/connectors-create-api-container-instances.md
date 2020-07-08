@@ -12,10 +12,9 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76046289"
 ---
 # <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Nasazení a Správa Azure Container Instances pomocí Azure Logic Apps
@@ -54,7 +53,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](.
      -nebo-
 
    * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte jako filtr "instance kontejneru". V seznamu akce vyberte akci konektoru služby Azure Container instance, kterou chcete.
 

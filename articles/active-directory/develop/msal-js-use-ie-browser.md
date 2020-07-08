@@ -1,7 +1,7 @@
 ---
-title: Problémy v Internet Exploreru (MSAL. js) | Azure
+title: Problémy v aplikaci Internet Explorer (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Použijte Microsoft Authentication Library pro JavaScript (MSAL. js) v prohlížeči Internet Explorer.
+description: Použijte knihovnu Microsoft Authentication Library pro JavaScript (MSAL.js) v prohlížeči Internet Explorer.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,18 +14,17 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c4f3c4153e1404a5576427be7ef218f5a669387e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76695853"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy v prohlížečích Internet Explorer a Microsoft Edge (MSAL. js)
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy s Internet Explorerem a prohlížeči Microsoft Edge (MSAL.js)
 
-Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) se vygeneruje pro [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , aby ji bylo možné spustit v Internet Exploreru. Existuje však několik věcí, které je třeba znát.
+Knihovna Microsoft Authentication Library pro JavaScript (MSAL.js) je vygenerovaná pro [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , aby ji bylo možné spustit v Internet Exploreru. Existuje však několik věcí, které je třeba znát.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Spuštění aplikace v Internet Exploreru
-Pokud máte v úmyslu používat MSAL. js v aplikacích, které lze spustit v aplikaci Internet Explorer, bude nutné před odkazování na skript MSAL. js přidat odkaz na doplňování příslib.
+Pokud máte v úmyslu používat MSAL.js v aplikacích, které lze spustit v aplikaci Internet Explorer, bude nutné před odkazování na MSAL.js skriptu přidat odkaz na doplňování Promise.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
@@ -39,19 +38,19 @@ Je to proto, že Internet Explorer nativně nepodporuje příslibů JavaScriptu.
 Nasazení aplikace do produkčního prostředí (například ve službě Azure Web Apps) normálně funguje bez problémů, pokud koncový uživatel přijal místní nabídky. Otestovali jsme ji pomocí aplikace Internet Explorer 11.
 
 ### <a name="running-locally"></a>Místní spuštění
-Pokud chcete místně spustit a ladit aplikaci spuštěnou v aplikaci Internet Explorer, je třeba mít na paměti následující skutečnosti (Předpokládejme, že chcete aplikaci spustit jako *http://localhost:1234*):
+Pokud chcete místně spustit a ladit aplikaci spuštěnou v aplikaci Internet Explorer, je třeba mít na paměti následující skutečnosti (Předpokládejme, že chcete aplikaci spustit jako *http://localhost:1234* ):
 
-- Internet Explorer má bezpečnostní mechanismus s názvem chráněný režim, který brání správnému fungování MSAL. js. V rámci příznaků se po přihlášení může stránka přesměrovat na http://localhost:1234/null.
+- Internet Explorer má bezpečnostní mechanismus s názvem chráněný režim, který brání správnému fungování MSAL.js. V rámci příznaků se po přihlášení může stránka přesměrovat na http://localhost:1234/null .
 
 - Chcete-li aplikaci spustit a ladit místně, je nutné zakázat tento chráněný režim. Pro toto:
 
     1. Klikněte na **nástroje** Internet Explorer (ikona ozubeného kolečka).
     1. Vyberte **Možnosti Internetu** a pak kartu **zabezpečení** .
-    1. Klikněte na zónu **Internetu** a zrušte políčko **Povolit chráněný režim (vyžaduje restart aplikace Internet Explorer)**. Internet Explorer upozorňuje, že váš počítač už není chráněný. Klikněte na tlačítko **OK**.
+    1. Klikněte na zónu **Internetu** a zrušte políčko **Povolit chráněný režim (vyžaduje restart aplikace Internet Explorer)**. Internet Explorer upozorňuje, že váš počítač už není chráněný. Klikněte na **OK**.
     1. Restartujte aplikaci Internet Explorer.
     1. Spusťte a ladit aplikaci.
 
-Až budete hotovi, obnovte nastavení zabezpečení aplikace Internet Explorer.  Vyberte **Nastavení** -> **Internet možnosti** -> **zabezpečení** -> **obnovit všechny zóny na výchozí úroveň**.
+Až budete hotovi, obnovte nastavení zabezpečení aplikace Internet Explorer.  Vyberte **Nastavení**  ->  **Internet možnosti**  ->  **zabezpečení**  ->  **obnovit všechny zóny na výchozí úroveň**.
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [známých problémech při používání MSAL. js v Internet Exploreru](msal-js-use-ie-browser.md).
+Další informace o [známých problémech při použití MSAL.js v Internet Exploreru](msal-js-use-ie-browser.md).

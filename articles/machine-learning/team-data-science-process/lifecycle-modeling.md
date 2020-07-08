@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720465"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Fáze modelování životního cyklu procesu vědeckého zpracování dat týmu
@@ -69,7 +68,7 @@ Proces pro školení modelů zahrnuje následující kroky:
 
 Poskytujeme [automatizovaný nástroj pro modelování a vytváření sestav](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) s TDSP, které je možné spustit pomocí několika algoritmů a Sweep parametrů a vytvořit základní model. Vytvoří také sestavu modelování standardních hodnot, která shrnuje výkon jednotlivých kombinací modelů a parametrů, včetně důležitosti proměnné. Tento proces je také iterativní, protože může řídit další inženýry funkcí. 
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 Artefakty vytvořené v této fázi zahrnují:
 
    * [Sady funkcí](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): funkce vyvinuté pro modelování jsou popsané v části **sady funkcí** sestavy **definice dat** . Obsahuje ukazatele na kód pro generování funkcí a popis způsobu, jakým byla funkce vygenerována.

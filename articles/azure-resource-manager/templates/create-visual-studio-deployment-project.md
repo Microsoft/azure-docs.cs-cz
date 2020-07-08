@@ -4,10 +4,9 @@ description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků A
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76152727"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
@@ -20,7 +19,7 @@ Tento článek ukazuje, jak používat [Visual Studio 2019 nebo novější s nai
 
 V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony **webové aplikace** .
 
-1. V aplikaci Visual Studio vyberte **soubor**>**Nový**>**projekt**.
+1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
 1. Vyberte šablonu projektu **skupiny prostředků Azure** a **Další**.
 
     ![Vytvoření projektu](./media/create-visual-studio-deployment-project/create-project.png)
@@ -41,11 +40,11 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 
     Vzhledem k tomu, že jste vybrali šablonu webové aplikace, zobrazí se následující soubory:
 
-   | Název souboru | Popis |
+   | Název souboru | Description |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru. Visual Studio pomocí tohoto skriptu PowerShellu nasadí vaši šablonu. |
-   | Web. JSON |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
-   | Web. Parameters. JSON |Soubor parametrů, který má hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. |
+   | WebSite.jsna |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
+   | WebSite.parameters.jsna |Soubor parametrů, který má hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. |
 
     Tyto základní soubory mají všechny projekty nasazení skupiny prostředků. Ostatní projekty můžou mít i další soubory, které podporují jiné funkce.
 
@@ -53,7 +52,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 
 Projekt nasazení můžete přizpůsobit úpravou šablony Správce prostředků, která popisuje prostředky, které chcete nasadit. Další informace o jednotlivých prvcích šablony Resource Manageru najdete v tématu o [vytváření šablon Azure Resource Manageru](template-syntax.md).
 
-1. Chcete-li pracovat se šablonou, otevřete **Web. JSON**.
+1. Chcete-li pracovat se šablonou, otevřete **WebSite.jsna**.
 
 1. Editor sady Visual Studio poskytuje nástroje, které vám s úpravami šablony Resource Manageru pomohou. Okno **JSON Outline** (Osnova JSON) usnadňuje zobrazení prvků, které jsou v šabloně definované.
 
@@ -103,7 +102,7 @@ Projekt nasazení můžete přizpůsobit úpravou šablony Správce prostředků
    }
    ```
 
-1. Otevřete soubor **Web. Parameters. JSON** . Pomocí souboru Parameters (parametry) předáte hodnoty během nasazení, které přizpůsobují nasazený prostředek. Poskytněte plánu hostování název a uložte soubor.
+1. Otevřete **WebSite.parameters.jsv** souboru. Pomocí souboru Parameters (parametry) předáte hodnoty během nasazení, které přizpůsobují nasazený prostředek. Poskytněte plánu hostování název a uložte soubor.
 
    ```json
    {
@@ -121,9 +120,9 @@ Projekt nasazení můžete přizpůsobit úpravou šablony Správce prostředků
 
 Nyní jste připraveni nasadit projekt do skupiny prostředků.
 
-Ve výchozím nastavení používá skript prostředí PowerShell (Deploy-AzureResourceGroup. ps1) v projektu modul AzureRM. Pokud stále máte nainstalovaný modul AzureRM a chcete ho dál používat, můžete použít tento výchozí skript. Pomocí tohoto skriptu můžete nasadit své řešení pomocí rozhraní sady Visual Studio.
+Ve výchozím nastavení používá skript prostředí PowerShell (Deploy-AzureResourceGroup.ps1) v projektu modul AzureRM. Pokud stále máte nainstalovaný modul AzureRM a chcete ho dál používat, můžete použít tento výchozí skript. Pomocí tohoto skriptu můžete nasadit své řešení pomocí rozhraní sady Visual Studio.
 
-Pokud jste však migrovali do nového [modulu AZ Module](/powershell/azure/new-azureps-module-az), je nutné přidat nový skript do projektu. Pokud chcete přidat skript, který používá modul AZ, zkopírujte skript [Deploy-AzTemplate. ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) a přidejte ho do projektu. Pokud chcete tento skript použít pro nasazení, musíte ho spustit z konzoly PowerShellu namísto použití rozhraní nasazení sady Visual Studio.
+Pokud jste však migrovali do nového [modulu AZ Module](/powershell/azure/new-azureps-module-az), je nutné přidat nový skript do projektu. Chcete-li přidat skript, který používá modul AZ, zkopírujte skript [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) a přidejte jej do projektu. Pokud chcete tento skript použít pro nasazení, musíte ho spustit z konzoly PowerShellu namísto použití rozhraní nasazení sady Visual Studio.
 
 Oba přístupy jsou uvedené v tomto článku. Tento článek odkazuje na výchozí skript jako skript modulu AzureRM a nový skript jako skript AZ Module.
 
@@ -139,7 +138,7 @@ V případě skriptu AZ Module Script otevřete konzolu PowerShellu a spusťte:
 
 Pro skript modulu AzureRM použijte Visual Studio:
 
-1. V místní nabídce uzlu projektu nasazení klikněte na možnost **nasadit** > **Nový**.
+1. V místní nabídce uzlu projektu nasazení klikněte na možnost **nasadit**  >  **Nový**.
 
     ![Nová položka nabídky nasazení](./media/create-visual-studio-deployment-project/deploy.png)
 
@@ -167,7 +166,7 @@ Pojďme se podívat na výsledky.
 
 V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím není v projektu nasazený žádný kód.
 
-1. Přidejte projekt do řešení sady Visual Studio. Klikněte pravým tlačítkem na řešení a vyberte **Přidat** > **Nový projekt**.
+1. Přidejte projekt do řešení sady Visual Studio. Klikněte pravým tlačítkem na řešení a vyberte **Přidat**  >  **Nový projekt**.
 
     ![Přidat projekt](./media/create-visual-studio-deployment-project/add-project.png)
 
@@ -199,7 +198,7 @@ V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím ne
 
    ![Viz Referenční informace](./media/create-visual-studio-deployment-project/see-reference.png)
 
-1. Vraťte se do šablony (Web. JSON) a přidejte prostředek do šablony.
+1. Vraťte se do šablony (WebSite.jsna) a přidejte prostředek do šablony.
 
     ![Přidat prostředek](./media/create-visual-studio-deployment-project/add-resource-2.png)
 
@@ -211,7 +210,7 @@ V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím ne
 
 1. V šabloně jsou nějaké nové parametry. Přidaly se v předchozím kroku. Nemusíte zadávat hodnoty pro **_artifactsLocation** nebo **_artifactsLocationSasToken** , protože tyto hodnoty se generují automaticky. Je však třeba nastavit složku a název souboru na cestu, která obsahuje balíček pro nasazení. Názvy těchto parametrů končí na **PackageFolder** a **PackageFileName**. První část názvu je název prostředku Nasazení webu, který jste přidali. V tomto článku se nazývají **ExampleAppPackageFolder** a **ExampleAppPackageFileName**.
 
-   Otevřete **Web. Parameters. JSON** a nastavte tyto parametry na hodnoty, které jste viděli v referenčních vlastnostech. Nastavte **ExampleAppPackageFolder** na název složky. Nastavte **ExampleAppPackageFileName** na název souboru ZIP.
+   Otevřete **Website.parameters.js** a nastavte tyto parametry na hodnoty, které jste viděli v referenčních vlastnostech. Nastavte **ExampleAppPackageFolder** na název složky. Nastavte **ExampleAppPackageFileName** na název souboru ZIP.
 
    ```json
    {
@@ -237,7 +236,7 @@ Vzhledem k tomu, že jste do projektu přidali kód, vaše nasazení je trochu j
 
 ### <a name="az-module-script"></a>AZ Module Script
 
-Pokud používáte skript AZ Module, je třeba provést v šabloně jednu malou změnu. Tento skript přidá lomítko do umístění artefaktů, ale šablona neočekává lomítko. Otevřete web. JSON a vyhledejte vlastnosti pro rozšíření MSDeploy. Má vlastnost s názvem **packageUri**. Odeberte lomítko mezi umístěním artefaktů a složkou balíčku.
+Pokud používáte skript AZ Module, je třeba provést v šabloně jednu malou změnu. Tento skript přidá lomítko do umístění artefaktů, ale šablona neočekává lomítko. Otevřete WebSite.jsa vyhledejte vlastnosti pro rozšíření MSDeploy. Má vlastnost s názvem **packageUri**. Odeberte lomítko mezi umístěním artefaktů a složkou balíčku.
 
 Měl by vypadat takto:
 
@@ -281,7 +280,7 @@ Pro skript modulu AzureRM použijte Visual Studio:
 
 Nejste omezení jenom na prostředky dostupné prostřednictvím rozhraní sady Visual Studio. Nasazení můžete přizpůsobit tak, že přidáte do šablony vlastní prostředek. Pokud chcete zobrazit přidávání prostředku, přidáte provozní řídicí panel pro správu prostředku, který jste nasadili.
 
-1. Otevřete soubor Web. JSON a přidejte následující JSON za prostředek účtu úložiště, ale před zavřením `]` oddílu prostředků.
+1. Otevřete WebSite.jsv souboru a přidejte následující JSON za prostředek účtu úložiště, ale před zavřením `]` oddílu prostředků.
 
    ```json
     ,{

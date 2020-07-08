@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710828"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Odesílání událostí ze služby Azure SignalR Service do služby Event Grid
 
 Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí pomocí modelu Pub-sub. V tomto průvodci pomocí Azure CLI vytvoříte službu signalizace Azure, přihlásíte se k odběru událostí připojení a pak nasadíte ukázkovou webovou aplikaci, abyste přijímali události. Nakonec se můžete připojit a odpojit a zobrazit datovou část události v ukázkové aplikaci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-account] před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -75,7 +74,7 @@ Po vytvoření služby signalizace Azure CLI vrátí výstup podobný následuj�
 
 V této části použijete šablonu Správce prostředků umístěnou v úložišti GitHub k nasazení předem připravené ukázkové webové aplikace do Azure App Service. Později se přihlásíte k odběru událostí Event Grid registru a tuto aplikaci určíte jako koncový bod, do kterého se události odesílají.
 
-Pokud chcete ukázkovou aplikaci nasadit, `SITE_NAME` nastavte na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
+Pokud chcete ukázkovou aplikaci nasadit, nastavte `SITE_NAME` na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>

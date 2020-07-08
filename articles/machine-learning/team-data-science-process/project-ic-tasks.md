@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721247"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úkoly pro jednotlivé přispěvatele v rámci vědeckého zpracování týmových dat
@@ -55,7 +54,7 @@ Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počít
 
 Chcete-li pracovat s místními úložišti a nasdílet změny až do sdíleného týmu a úložišť projektů, nejprve zkopírujte nebo *naklonujte* úložiště do místního počítače. 
 
-1. Ve službě Azure DevOps se podívejte na stránku souhrnu projektu vašeho týmu na adrese *https:\//\<název serveru\<>/název organizace\<>/název týmu>*, například **https:\//dev.Azure.com/DataScienceUnit/myTeam**.
+1. V Azure DevOps na stránce se souhrnem projektu svého týmu na adrese *https: \/ / \<server name> / \<organization name> / \<team name> *například **https: \/ /dev.Azure.com/DataScienceUnit/myTeam**.
    
 1. V levém navigačním panelu vyberte úložiště **a v horní** části stránky vyberte úložiště, které chcete klonovat.
    

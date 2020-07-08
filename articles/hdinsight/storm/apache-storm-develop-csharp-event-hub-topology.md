@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981642"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs s využitím Apache Storm v HDInsight (C#)
@@ -35,7 +34,7 @@ Topologie jazyka C# musí také cílit na rozhraní .NET 4,5.
 
 ## <a name="how-to-work-with-event-hubs"></a>Jak pracovat s Event Hubs
 
-Společnost Microsoft poskytuje sadu komponent Java, které lze použít ke komunikaci s Event Hubs z topologie s více podmnožinami. Soubor archivu Java (JAR), který obsahuje verzi kompatibilní s HDInsight 3,6, najdete v [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)části.
+Společnost Microsoft poskytuje sadu komponent Java, které lze použít ke komunikaci s Event Hubs z topologie s více podmnožinami. Soubor archivu Java (JAR), který obsahuje verzi kompatibilní s HDInsight 3,6, najdete v části [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) .
 
 > [!IMPORTANT]  
 > I když jsou komponenty napsané v jazyce Java, můžete je snadno použít z topologie jazyka C#.
@@ -113,9 +112,9 @@ Kompletní verzi projektu vytvořeného v tomto článku si můžete stáhnout z
 
 ## <a name="download-the-event-hubs-components"></a>Stáhnout součásti Event Hubs
 
-Stáhněte komponentu Event Hubs Spout a šroub z [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Stáhněte komponentu Event Hubs Spout a šroub z [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) .
 
-Vytvořte adresář s názvem `eventhubspout`a uložte ho do adresáře.
+Vytvořte adresář s názvem `eventhubspout` a uložte ho do adresáře.
 
 ## <a name="configure-event-hubs"></a>Konfigurace Event Hubs
 
@@ -123,7 +122,7 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 1. Po vytvoření centra událostí si prohlédněte nastavení **EventHub** v Azure Portal a vyberte **zásady sdíleného přístupu**. Vyberte **+ Přidat** a vytvořte následující zásady:
 
-   | Název | Oprávnění |
+   | Name | Oprávnění |
    | --- | --- |
    | archiv |Odeslat |
    | modulu |Naslouchat |
@@ -138,9 +137,9 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 2. Stáhněte řešení z centra pro zaplavení [– hybridní](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
-3. Otevřete **EventHubExample. sln**. V projektu **EventHubWriter** otevřete soubor **App. config** . Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
+3. Otevřete **EventHubExample. sln**. V projektu **EventHubWriter** otevřete soubor **App.config** . Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
 
-   | Key | Hodnota |
+   | Klíč | Hodnota |
    | --- | --- |
    | EventHubPolicyName |zapisovač (Pokud jste pro zásadu s oprávněním *Odeslat* použili jiný název, použijte ji místo toho.) |
    | EventHubPolicyKey |Klíč pro zásady zapisovače. |
@@ -148,15 +147,15 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
    | EventHubName |Název vašeho centra událostí. |
    | EventHubPartitionCount |Počet oddílů v centru událostí. |
 
-4. Uložte a zavřete soubor **App. config** .
+4. Uložte a zavřete soubor **App.config** .
 
 ## <a name="configure-the-eventhubreader"></a>Konfigurace EventHubReader
 
 1. Otevřete projekt **EventHubReader** .
 
-2. Otevřete soubor **App. config** pro **EventHubReader**. Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
+2. Otevřete soubor **App.config** pro **EventHubReader**. Pomocí informací z centra událostí, které jste nakonfigurovali dříve, vyplníte hodnotu pro následující klíče:
 
-   | Key | Hodnota |
+   | Klíč | Hodnota |
    | --- | --- |
    | EventHubPolicyName |Čtenář (Pokud jste pro zásadu použili jiný název, použijte místo toho oprávnění k *naslouchání* .) |
    | EventHubPolicyKey |Klíč pro zásady čtenáře |
@@ -164,7 +163,7 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
    | EventHubName |Název vašeho centra událostí. |
    | EventHubPartitionCount |Počet oddílů v centru událostí. |
 
-3. Uložte a zavřete soubor **App. config** .
+3. Uložte a zavřete soubor **App.config** .
 
 ## <a name="deploy-the-topologies"></a>Nasazení topologií
 

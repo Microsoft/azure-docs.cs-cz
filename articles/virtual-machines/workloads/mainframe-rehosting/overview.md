@@ -11,10 +11,9 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76289794"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
@@ -72,7 +71,7 @@ Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure. Není to
 
 Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](/azure/virtual-machines/linux/overview) a [Windows](/azure/virtual-machines/windows/overview) .
 
@@ -118,7 +117,7 @@ Viz také:
 
 - [Dokumenty White paper o tématech z sálového počítače](mainframe-white-papers.md)
 - [Migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Odstraňování potíží](/azure/virtual-machines/troubleshooting/)
+- [Řešení potíží](/azure/virtual-machines/troubleshooting/)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

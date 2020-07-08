@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
 ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157060"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí sady .NET SDK pro Apache Hadoop ve službě HDInsight
@@ -31,13 +30,13 @@ Naučte se používat sadu Azure HDInsight .NET SDK ke spouštění úloh Apache
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Použití Sqoop v clusterech HDInsight se sadou .NET SDK
 
-Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je snazší pracovat s clustery HDInsight z .NET. V této části vytvoříte konzolovou aplikaci v jazyce C#, která bude `hivesampletable` exportována do Azure SQL Database tabulky, kterou jste vytvořili z požadovaných součástí.
+Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je snazší pracovat s clustery HDInsight z .NET. V této části vytvoříte konzolovou aplikaci v jazyce C#, která bude exportována `hivesampletable` do Azure SQL Database tabulky, kterou jste vytvořili z požadovaných součástí.
 
-## <a name="set-up"></a>Nastavit
+## <a name="set-up"></a>Nastavení
 
 1. Spusťte Visual Studio a vytvořte konzolovou aplikaci v jazyce C#.
 
-1.  > Přejděte do **nástroje** > **Správce balíčků NuGet****Konzola správce balíčků** a spusťte následující příkaz:
+1. Přejděte do **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** a spusťte následující příkaz:
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
@@ -47,7 +46,7 @@ Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je snazší p
 
 Z podregistru do SQL Server.  Tento příklad exportuje data z tabulky podregistru `hivesampletable` do `mobiledata` tabulky v SQL Database.
 
-1. V souboru Program.cs použijte následující kód. Upravte kód a nastavte hodnoty pro `ExistingClusterName`, a. `ExistingClusterPassword`
+1. V souboru Program.cs použijte následující kód. Upravte kód a nastavte hodnoty pro `ExistingClusterName` , a `ExistingClusterPassword` .
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;

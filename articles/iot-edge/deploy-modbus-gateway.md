@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511140"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes bránu IoT Edge zařízení
@@ -33,7 +32,7 @@ V tomto článku se předpokládá, že používáte protokol Modbus TCP. Dalš�
 
 ## <a name="prepare-a-modbus-container"></a>Příprava kontejneru Modbus
 
-Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, který můžete použít. K modulu můžete přistupovat z Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)nebo s identifikátorem URI image `mcr.microsoft.com/azureiotedge/modbus:1.0`.
+Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, který můžete použít. K modulu můžete přistupovat z Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)nebo s identifikátorem URI image `mcr.microsoft.com/azureiotedge/modbus:1.0` .
 
 Pokud chcete vytvořit vlastní modul a přizpůsobit ho pro své prostředí, na GitHubu je open source projekt [Azure IoT Edgeho modulu Modbus](https://github.com/Azure/iot-edge-modbus) . Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Chcete-li vytvořit image kontejneru, přečtěte si téma [vývoj modulů C# v aplikaci Visual Studio](how-to-visual-studio-develop-csharp-module.md) nebo [vývoj modulů v Visual Studio Code](how-to-vs-code-develop-module.md). Tyto články obsahují pokyny k vytváření nových modulů a publikování imagí kontejneru do registru.
 
@@ -54,7 +53,7 @@ Tato část vás provede nasazením modulu Microsoft Sample Modbus do zařízen�
    3. Modul se automaticky nakonfiguruje pro váš IoT Hub a zobrazí se v seznamu IoT Edgech modulů. Trasy jsou také automaticky nakonfigurovány. Vyberte **Zkontrolovat a vytvořit**.
    4. Zkontrolujte manifest nasazení a vyberte **vytvořit**.
 
-5. Vyberte modul Modbus, `ModbusTCPModule`v seznamu a vyberte kartu nastavení s **dvojitým modulem** . Požadovaný formát JSON pro nevlákenný požadovaný název modulu je automaticky vyplněn.
+5. Vyberte modul Modbus, `ModbusTCPModule` v seznamu a vyberte kartu **nastavení s dvojitým modulem** . Požadovaný formát JSON pro nevlákenný požadovaný název modulu je automaticky vyplněn.
 
 6. Vyhledejte vlastnost **SlaveConnection** ve formátu JSON a nastavte její hodnotu na IPv4 adresu vašeho zařízení Modbus.
 

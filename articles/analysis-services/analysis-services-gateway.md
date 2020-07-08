@@ -8,10 +8,9 @@ ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76310148"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
@@ -58,7 +57,7 @@ Možná budete muset v bráně firewall zahrnout IP adresy pro vaši oblast dat.
 
 Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 
-| Názvy domén | Odchozí porty | Popis |
+| Názvy domén | Odchozí porty | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |Ke stažení instalačního programu se používá HTTP. |
 | *.powerbi.com |443 |HTTPS |
@@ -75,7 +74,7 @@ Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 
 ### <a name="forcing-https-communication-with-azure-service-bus"></a><a name="force-https"></a>Vynucení komunikace přes protokol HTTPS s Azure Service Busem
 
-Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS místo přímého protokolu TCP; Nicméně to může významně snížit výkon. Soubor *Microsoft. PowerBI. datamove. Pipeline. GatewayCore. dll. config* můžete upravit změnou hodnoty z `AutoDetect` na. `Https` Tento soubor se obvykle nachází v adresáři *C:\Program Files\On-premises data Gateway*.
+Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS místo přímého protokolu TCP; Nicméně to může významně snížit výkon. Soubor *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* můžete upravit změnou hodnoty z `AutoDetect` na `Https` . Tento soubor se obvykle nachází v adresáři *C:\Program Files\On-premises data Gateway*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -87,7 +86,7 @@ Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS 
 
 V části místní brána dat je součástí obecného obsahu, který se vztahuje na všechny služby, které brána podporuje:
 
-* [Místní brána dat – Nejčastější dotazy](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
+* [Místní brána dat – nejčastější dotazy](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
 * [Použití aplikace místní brány dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
 * [Správa na úrovni tenantů](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
 * [Konfigurace nastavení proxy serveru](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   

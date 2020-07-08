@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76262958"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externích událostí v Durable Functions (Azure Functions)
@@ -20,7 +19,7 @@ Funkce nástroje Orchestrator mají možnost čekat a naslouchat externím udál
 
 ## <a name="wait-for-events"></a>Počkat na události
 
-Metody `WaitForExternalEvent` (.NET) a `waitForExternalEvent` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
+`WaitForExternalEvent`Metody (.NET) a `waitForExternalEvent` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -42,7 +41,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -93,7 +92,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -141,9 +140,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-V rozhraní .NET, pokud nelze datovou část události převést na očekávaný typ `T`, je vyvolána výjimka.
+V rozhraní .NET, pokud nelze datovou část události převést na očekávaný typ `T` , je vyvolána výjimka.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -173,7 +172,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>Odesílání událostí
 
-Metoda `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) odesílá události, pro které `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` (JavaScript) čeká.  Metoda přijímá jako parametry *EventName* a *eventData.* `RaiseEventAsync` Data události musí být serializovatelný v kódu JSON.
+`RaiseEventAsync`Metoda (.NET) nebo `raiseEvent` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) odesílá události, `WaitForExternalEvent` pro které (.NET) nebo `waitForExternalEvent` (JavaScript) čeká.  `RaiseEventAsync`Metoda přijímá jako parametry *EventName* a *eventData* . Data události musí být serializovatelný v kódu JSON.
 
 Níže je uvedená příklad funkce aktivované frontou, která odesílá událost schválení do instance funkce Orchestrator. ID instance Orchestration pochází z těla zprávy fronty.
 
@@ -190,7 +189,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions `OrchestrationClient` 1. x je nutné použít atribut namísto `DurableClient` atributu a místo toho musíte použít typ `DurableOrchestrationClient` parametru. `IDurableOrchestrationClient` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí kód jazyka C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `OrchestrationClient` atribut namísto `DurableClient` atributu a místo toho musíte použít `DurableOrchestrationClient` typ parametru `IDurableOrchestrationClient` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -205,7 +204,7 @@ module.exports = async function(context, instanceId) {
 
 ---
 
-Interně `RaiseEventAsync` , (.NET) `raiseEvent` nebo (JavaScript) zařadí do fronty zprávu, která se vybrala čekající funkcí Orchestrator. Pokud instance nečeká na zadaný *název události,* zpráva události se přidá do fronty v paměti. Pokud instance orchestrace později začne naslouchat tomuto *názvu události,* zkontroluje ve frontě zprávy o událostech.
+Interně, `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript) zařadí do fronty zprávu, která se vybrala čekající funkcí Orchestrator. Pokud instance nečeká na zadaný *název události,* zpráva události se přidá do fronty v paměti. Pokud instance orchestrace později začne naslouchat tomuto *názvu události,* zkontroluje ve frontě zprávy o událostech.
 
 > [!NOTE]
 > Pokud není k dispozici žádná instance orchestrace se zadaným *ID instance*, zpráva události bude zahozena.

@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727199"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Komponenty a hranice informačních systémů Azure
@@ -47,7 +46,7 @@ Datové centrum je rozdělené do clusterů. Clustery izolují chyby na úrovni 
 
 ### <a name="hardware-inventory"></a>Inventář hardwaru
 
-Technologie FC připraví inventář hardwarových a síťových zařízení Azure během procesu konfigurace zavedení. Všechny nové hardwarové a síťové součásti, které vstupují do produkčního prostředí Azure, se musí řídit procesem konfigurace Bootstrap. FC zodpovídá za správu celého inventáře uvedeného v konfiguračním souboru datacentra. XML.
+Technologie FC připraví inventář hardwarových a síťových zařízení Azure během procesu konfigurace zavedení. Všechny nové hardwarové a síťové součásti, které vstupují do produkčního prostředí Azure, se musí řídit procesem konfigurace Bootstrap. Technologie FC zodpovídá za správu celého inventáře, který je uvedený v konfiguračním souboru datacenter.xml.
 
 ### <a name="fc-managed-operating-system-images"></a>Bitové kopie operačního systému spravované FC
 
@@ -97,7 +96,7 @@ Zaměstnanci (nebo dodavatelé) Microsoftu se považují za interní uživatele.
 | Technici nasazení Azure | Interní | Přístup k zákaznickým datům | Nasazení a upgrade součástí platformy, softwaru a plánovaných změn konfigurace v podpoře Azure. | Přístup k prostředí za běhu s omezeným trvalým přístupem k systémům, kteří nejsou zákazníky. |
 | Podpora výpadků zákazníků Azure (tenant) | Interní | Přístup k zákaznickým datům | Ladění a diagnostika výpadků platforem a chyb pro jednotlivé výpočetní klienty a účty Azure. Analyzovat chyby. Důležité opravy pro platformu nebo zákazníka a technická vylepšení pro celou podporu. | Přístup k prostředí za běhu s omezeným trvalým přístupem k systémům, kteří nejsou zákazníky. |
 | Technici na webu Azure Live (technici pro sledování) a incident | Interní | Přístup k zákaznickým datům | Diagnostikujte a zmírnit stav platforem pomocí diagnostických nástrojů. Opravy disků pro ovladače svazků, opravné položky vyplývající z výpadků a napomáhají při nečinnosti při obnovení. | Přístup k prostředí za běhu s omezeným trvalým přístupem k systémům, kteří nejsou zákazníky. |
-|Zákazníci Azure | Externí | – | – | – |
+|Zákazníci Azure | Externí | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Azure používá k ověřování uživatelů a zákazníků organizace jedinečné identifikátory (nebo procesy, které jednají jménem uživatelů organizace). To platí pro všechny prostředky a zařízení, které jsou součástí prostředí Azure.
 

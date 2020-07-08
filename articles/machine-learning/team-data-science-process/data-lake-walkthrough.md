@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76717925"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelný návod pro datovou vědu pomocí Azure Data Lake: ucelený návod
@@ -131,7 +130,7 @@ CSV trip_fare obsahuje podrobnosti o tarifu placeného za každou cestu, jako je
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Jedinečný klíč pro připojení k datům\_cest a služební\_tarif se skládá z následujících tří polí: Medallion, oprávnění k\_napadení a\_data a času vyzvednutí. K nezpracovaným souborům CSV se dá dostat z Azure Storageého objektu BLOB. Skript U-SQL pro toto spojení je v části [připojení a tabulky tarifů](#join) .
+Jedinečný klíč pro připojení k \_ datům cest a služební \_ tarif se skládá z následujících tří polí: Medallion, oprávnění k napadení \_ a \_ data a času vyzvednutí. K nezpracovaným souborům CSV se dá dostat z Azure Storageého objektu BLOB. Skript U-SQL pro toto spojení je v části [připojení a tabulky tarifů](#join) .
 
 ## <a name="process-data-with-u-sql"></a>Zpracování dat pomocí U-SQL
 Úlohy zpracování dat popsané v této části zahrnují ingestování, kontrolu kvality, prozkoumávání a vzorkování dat. Zobrazuje se taky tabulka pro cestu k jízdám a tarifům. Poslední část ukazuje spuštění úlohy skript U-SQL z Azure Portal. Tady jsou odkazy na jednotlivé pododdíly:
@@ -158,7 +157,7 @@ Chcete-li spustit U-SQL, spusťte aplikaci Visual Studio, klikněte na **soubor-
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>Přijímání dat: čtení dat z veřejného objektu BLOB
 
-Umístění dat v objektu blob Azure se odkazuje jako na **název\_\@wasb://Container účtu\_\_\_BLOB Storage Name.blob.Core.Windows.NET/blob_name** a dá se extrahovat pomocí **extraktorů. CSV ()**. Název\_kontejneru pro název kontejneru\@BLOB\_Storage\_\_v adrese wasb nahraďte názvem vlastního kontejneru a názvem účtu úložiště v následujících skriptech. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné **použít\_data\_\{\*\}ze souboru. csv** pro čtení všech 12 souborů na cestách.
+Umístění dat v objektu blob Azure je odkazováno jako ** \_ název wasb://Container \@ \_ účtu BLOB Storage \_ \_ name.blob.core.windows.net/blob_name** a lze ho extrahovat pomocí **Extractors.Csv ()**. Název kontejneru pro název kontejneru \_ \@ BLOB \_ Storage \_ \_ v adrese wasb nahraďte názvem vlastního kontejneru a názvem účtu úložiště v následujících skriptech. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné použít data ze souboru ** \_ \_ \{ \* \} . csv** pro čtení všech 12 souborů na cestách.
 
     ///Read in Trip data
     @trip0 =
@@ -181,7 +180,7 @@ Umístění dat v objektu blob Azure se odkazuje jako na **název\_\@wasb://Cont
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Vzhledem k tomu, že jsou v prvním řádku záhlaví, je nutné odebrat záhlaví a změnit typy sloupců do odpovídajících. Zpracovaná data můžete buď Uložit do Azure Data Lake Storage pomocí **swebhdfs://data_lake_storage_name. azuredatalakestorage. NET/Folder_name/file_name**_ nebo do účtu Azure Blob Storage pomocí **wasb://container_name\@blob_storage_account_name. blob. Core. Windows. NET/blob_name**.
+Vzhledem k tomu, že jsou v prvním řádku záhlaví, je nutné odebrat záhlaví a změnit typy sloupců do odpovídajících. Zpracovaná data můžete buď Uložit do Azure Data Lake Storage pomocí **swebhdfs://data_lake_storage_name. azuredatalakestorage. NET/Folder_name/file_name**_ nebo do účtu Azure Blob Storage pomocí **wasb://container_name \@ blob_storage_account_name. blob. Core. windows. NET/blob_name**.
 
     // change data types
     @trip =
@@ -569,7 +568,7 @@ Tady sestavíte binární klasifikační model, který předpovídá, jestli je 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Sestavení rozhraní API webové služby a jeho využití v Pythonu
 Po sestavení je třeba zprovoznění model strojového učení. Jako příklad se používá binární logistický model. Ujistěte se, že verze scikit-učení v místním počítači je 0.15.1 (Azure Machine Learning Studio je už aspoň v této verzi).
 
-* Vyhledejte přihlašovací údaje k pracovnímu prostoru z nastavení Azure Machine Learning Studio (Classic). V Azure Machine Learning Studio klikněte na **Nastavení** --> **názvy** --> **autorizační tokeny**.
+* Vyhledejte přihlašovací údaje k pracovnímu prostoru z nastavení Azure Machine Learning Studio (Classic). V Azure Machine Learning Studio klikněte na **Nastavení**  -->  **názvy**  -->  **autorizační tokeny**.
 
     ![C3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -612,7 +611,7 @@ Vytvořte cluster HDInsight (Linux) z [Azure Portal](https://portal.azure.com). 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>Vytvoření tabulky podregistru v HDInsight
-Nyní vytváříte tabulky podregistru, které se mají použít v Azure Machine Learning Studio (Classic) v clusteru HDInsight pomocí dat uložených v Azure Data Lake Storage v předchozím kroku. Přejdete na vytvořený cluster HDInsight. Klikněte na **Nastavení** --> **vlastnosti** --> **cluster AAD identity** --> **adls přístup**, ujistěte se, že se Váš účet Azure Data Lake Storage přidal v seznamu s právy pro čtení, zápis a spouštění.
+Nyní vytváříte tabulky podregistru, které se mají použít v Azure Machine Learning Studio (Classic) v clusteru HDInsight pomocí dat uložených v Azure Data Lake Storage v předchozím kroku. Přejdete na vytvořený cluster HDInsight. Klikněte na **Nastavení**  -->  **vlastnosti**  -->  **cluster AAD identity**  -->  **adls přístup**, ujistěte se, že se Váš účet Azure Data Lake Storage přidal v seznamu s právy pro čtení, zápis a spouštění.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -675,7 +674,7 @@ Příklad experimentu binární klasifikace, který čte data z tabulky podregis
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-Po vytvoření experimentu klikněte na nastavit**prediktivní webovou službu** **webové služby** --> .
+Po vytvoření experimentu klikněte na **nastavit**  -->  **prediktivní webovou službu** webové služby.
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 

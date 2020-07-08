@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76694986"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Nakonfigurovat metodu post pro volání REST API Media Services V2  
@@ -37,13 +36,13 @@ Toto prostředí a kolekce se používají v článcích, které ukazují, jak d
 
 ## <a name="configure-the-environment"></a>Konfigurace prostředí 
 
-1. Vytvořte soubor. JSON, který obsahuje proměnné prostředí používané v kurzech AMS. Pojmenujte soubor (například **AzureMediaServices. postman_environment. JSON**). Otevřete soubor a vložte kód, který definuje prostředí pro publikování z [tohoto výpisu kódu](postman-environment.md). 
+1. Vytvořte soubor. JSON, který obsahuje proměnné prostředí používané v kurzech AMS. Pojmenujte soubor (například **AzureMediaServices.postman_environment.json**). Otevřete soubor a vložte kód, který definuje prostředí pro publikování z [tohoto výpisu kódu](postman-environment.md). 
 2. Spusťte nástroj **Postman**.
 3. Na pravé straně obrazovky vyberte možnost **Manage environment** (Spravovat prostředí).
 
     ![Nahrání souboru](./media/media-services-rest-upload-files/postman-create-env.png)
 4. V dialogovém okně **Manage environment** (Spravovat prostředí) klikněte na **Import**.
-5. Vyhledejte a vyberte soubor **AzureMediaServices. postman_environment. JSON** .
+5. Procházet a vybrat **AzureMediaServices.postman_environment.jsv** souboru.
 6. Přidá se prostředí **AzureMedia** .
 7. Zavřete dialogové okno.
 8. Vyberte prostředí **AzureMedia** .
@@ -52,9 +51,9 @@ Toto prostředí a kolekce se používají v článcích, které ukazují, jak d
 
 ## <a name="configure-the-collection"></a>Konfigurace kolekce
 
-1. Vytvořte soubor. JSON, který obsahuje kolekci **post** , se všemi operacemi, které jsou potřeba k nahrání souboru do Media Services. Pojmenujte soubor (například **AzureMediaServicesOperations. postman_collection. JSON**). Otevřete soubor a vložte kód, který definuje kolekci **post** , z [tohoto výpisu kódu](postman-collection.md).
+1. Vytvořte soubor. JSON, který obsahuje kolekci **post** , se všemi operacemi, které jsou potřeba k nahrání souboru do Media Services. Pojmenujte soubor (například **AzureMediaServicesOperations.postman_collection.json**). Otevřete soubor a vložte kód, který definuje kolekci **post** , z [tohoto výpisu kódu](postman-collection.md).
 2. Kliknutím na **Import** importujte soubor kolekce.
-3. Vyberte soubor **AzureMediaServicesOperations. postman_collection. JSON** .
+3. Vyberte **AzureMediaServicesOperations.postman_collection.jsv** souboru.
 
     ![Nahrání souboru](./media/media-services-rest-upload-files/postman-import-collection.png)
 

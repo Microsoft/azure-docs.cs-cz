@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513367"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
@@ -50,7 +49,7 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>Openapi verze 3
 
--   Pokud je `servers` zadáno mnoho, API Management se pokusí vybrat první adresu URL https. Pokud nejsou žádné adresy URL protokolu HTTPs, první adresa URL protokolu HTTP. Pokud neexistují žádné adresy URL protokolu HTTP, adresa URL serveru bude prázdná.
+-   Pokud `servers` je zadáno mnoho, API Management se pokusí vybrat první adresu URL https. Pokud nejsou žádné adresy URL protokolu HTTPs, první adresa URL protokolu HTTP. Pokud neexistují žádné adresy URL protokolu HTTP, adresa URL serveru bude prázdná.
 -   `Examples`není podporován, ale `example` je.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI mechanismy importu, aktualizací a exportu
@@ -59,9 +58,9 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 
 Pro každou operaci nalezenou v dokumentu OpenAPI se vytvoří nová operace s názvem prostředku Azure a zobrazovaným názvem nastaveným na `operationId` a `summary` v uvedeném pořadí. `operationId`hodnota je normalizována podle pravidel popsaných níže. `summary`hodnota je importována tak, jak je, a její délka je omezena na 300 znaků.
 
-Pokud `operationId` není zadaný (tj `null` `get-foo`. není přítomen, nebo je prázdný), bude hodnota názvu prostředku Azure vygenerována kombinací metody HTTP a šablony cesty, například.
+Pokud `operationId` není zadaný (tj. není přítomen, `null` nebo je prázdný), bude hodnota názvu prostředku Azure vygenerována kombinací metody HTTP a šablony cesty, například `get-foo` .
 
-Pokud `summary` není zadán (tj. není přítomen, `null`nebo je prázdný), `display name` hodnota se nastaví na. `operationId` Pokud `operationId` parametr není zadán, hodnota zobrazovaného názvu bude vygenerována kombinací metody HTTP a šablony cesty, například `Get - /foo`.
+Pokud `summary` není zadán (tj. není přítomen, `null` nebo je prázdný), `display name` hodnota se nastaví na `operationId` . Pokud `operationId` parametr není zadán, hodnota zobrazovaného názvu bude vygenerována kombinací metody HTTP a šablony cesty, například `Get - /foo` .
 
 ### <a name="update-an-existing-api-via-openapi-import"></a>Aktualizace existujícího rozhraní API prostřednictvím importu OpenAPI
 
@@ -76,19 +75,19 @@ Odstraní se všechny existující neodpovídající operace.
 Aby bylo možné importovat více, postupujte prosím podle těchto pokynů:
 
 - Nezapomeňte zadat `operationId` vlastnost pro každou operaci.
-- Po počátečním `operationId` importu upustit od změny.
+- `operationId`Po počátečním importu upustit od změny.
 - Nikdy neměňte `operationId` metodu ani šablonu cesty http.
 
 ### <a name="export-api-as-openapi"></a>Exportovat rozhraní API jako OpenAPI
 
-Pro každou operaci bude název prostředku Azure exportován jako `operationId`a název zobrazení bude exportován jako. `summary`
+Pro každou operaci bude název prostředku Azure exportován jako `operationId` a název zobrazení bude exportován jako `summary` .
 Normalizační pravidla pro operationId
 
 - Převést na malá písmena.
-- Nahraďte každou sekvenci nealfanumerických znaků jednou pomlčkou, například, `GET-/foo/{bar}?buzz={quix}` do. `get-foo-bar-buzz-quix-`
-- Na obou stranách můžete `get-foo-bar-buzz-quix-` oříznout pomlčky, například se stane`get-foo-bar-buzz-quix`
+- Nahraďte každou sekvenci nealfanumerických znaků jednou pomlčkou, například, `GET-/foo/{bar}?buzz={quix}` do `get-foo-bar-buzz-quix-` .
+- Na obou stranách můžete oříznout pomlčky, například se `get-foo-bar-buzz-quix-` stane`get-foo-bar-buzz-quix`
 - Ořízne tak, aby odpovídala 76 znakům, čtyři znaky menší než maximální omezení pro název prostředku.
-- V případě potřeby použijte zbývající čtyři znaky pro příponu odstranění duplicitních dat ve formě `-1, -2, ..., -999`.
+- V případě potřeby použijte zbývající čtyři znaky pro příponu odstranění duplicitních dat ve formě `-1, -2, ..., -999` .
 
 
 ## <a name="wsdl"></a><a name="wsdl"> </a>WSDL

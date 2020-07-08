@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: a82d2317314c79a82fe80c5a25afc950fb728815
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76155192"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MySQL
@@ -64,7 +63,7 @@ Pokud se přístup ke službě Microsoft Azure Database for MySQL server nechov�
 
    * Získejte pro své klientské počítače statické přidělování IP adres a následně přidejte tyto IP adresy jako pravidla brány firewall.
 
-* **IP adresa serveru je pravděpodobně veřejná:** Připojení k Azure Database for MySQL serveru jsou směrována prostřednictvím veřejně přístupné brány Azure. Skutečná IP adresa serveru je však chráněná bránou firewall. Další informace najdete v [článku architektura připojení](concepts-connectivity-architecture.md). 
+* **IP adresa serveru je pravděpodobně veřejná:** Připojení k Azure Database for MySQL serveru jsou směrována prostřednictvím veřejně přístupné brány Azure. Skutečná IP adresa serveru je však chráněná bránou firewall. Další informace najdete v [článku věnovaném architektuře připojení](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

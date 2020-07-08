@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980382"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Správa účtů Azure Media Services V3
@@ -29,7 +28,7 @@ Pokud potřebujete přesunout Media Services účet k novému předplatnému, mu
 > [!NOTE]
 > Media Services V3 podporuje model víceklientské architektury.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Před migrací na jiné předplatné vytvořte zálohy všech dat ve vašem účtu.
 * Musíte zastavit všechny koncové body streamování a prostředky živého streamování. Uživatelé nebudou mít přístup k vašemu obsahu po dobu trvání přesunutí skupiny prostředků. 

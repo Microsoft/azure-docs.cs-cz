@@ -14,10 +14,9 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 3d834a8d1524595304c22fed9897094622dfd93f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76696210"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Java
@@ -32,7 +31,7 @@ MSAL for Java se připojuje ke službě Azure AD, která přihlašuje uživatele
 
 ## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Interaktivní získání tokenu pro federovaného uživatele
 
-Když `ConfidentialClientApplication.AcquireToken()` zavoláte `PublicClientApplication.AcquireToken()` nebo `AuthorizationCodeParameters` s `DeviceCodeParameters`nebo, uživatelské prostředí je obvykle:
+Když zavoláte `ConfidentialClientApplication.AcquireToken()` nebo `PublicClientApplication.AcquireToken()` s `AuthorizationCodeParameters` nebo `DeviceCodeParameters` , uživatelské prostředí je obvykle:
 
 1. Uživatel zadá své ID účtu.
 2. Azure AD krátce zobrazuje "přebírá vás na stránku vaší organizace" a uživatel se přesměruje na přihlašovací stránku zprostředkovatele identity. Přihlašovací stránka se obvykle přizpůsobí s logem organizace.
@@ -44,7 +43,7 @@ Podporované verze AD FS v tomto federovaném scénáři jsou:
 
 ## <a name="acquire-a-token-via-username-and-password"></a>Získání tokenu prostřednictvím uživatelského jména a hesla
 
-Když získáte token `ConfidentialClientApplication.AcquireToken()` pomocí nebo `PublicClientApplication.AcquireToken()` s `IntegratedWindowsAuthenticationParameters` nebo `UsernamePasswordParameters`, MSAL pro jazyk Java získá poskytovatele identity, aby kontaktoval na základě uživatelského jména. MSAL for Java získá token [tokenu SAML 1,1](reference-saml-tokens.md) od poskytovatele identity, který potom poskytne službě Azure AD, která vrací JSON web token (Jwt).
+Když získáte token pomocí nebo `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` s `IntegratedWindowsAuthenticationParameters` nebo `UsernamePasswordParameters` , MSAL pro jazyk Java získá poskytovatele identity, aby kontaktoval na základě uživatelského jména. MSAL for Java získá token [tokenu SAML 1,1](reference-saml-tokens.md) od poskytovatele identity, který potom poskytne službě Azure AD, která vrací JSON web token (Jwt).
 
 ## <a name="next-steps"></a>Další kroky
 

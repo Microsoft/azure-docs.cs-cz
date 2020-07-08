@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511089"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Příprava vývojového a testovacího prostředí pro IoT Edge
@@ -43,7 +42,7 @@ Pokud dáváte přednost vývoji s jinými editory nebo rozhraním příkazovéh
 
 ### <a name="visual-studio-code-extension"></a>Rozšíření editoru Visual Studio Code
 
-Rozšíření Azure IoT Edge pro Visual Studio Code poskytuje IoT Edge šablony modulů postavené na programovacích jazycích, včetně jazyků C, C#, Java, Node. js a Python, a také funkcí Azure Functions v jazyce C#.
+Rozšíření Azure IoT Edge pro Visual Studio Code poskytuje IoT Edge šablony modulů založené na programovacích jazycích, včetně jazyků C, C#, Java, Node.js a Pythonu, a také funkcí Azure Functions v jazyce C#.
 
 Další informace a jejich stažení najdete v tématu [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
@@ -59,7 +58,7 @@ Kromě rozšíření IoT Edge může být užitečné nainstalovat další rozš
 | C | [Git](https://git-scm.com/) |
 | C# | [Sada .NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [Nastavit proměnnou prostředí JAVA_HOME](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
-| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge generátoru modulu Node. js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
+| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Generátor modulu Azure IoT Edge Node.js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
 ### <a name="visual-studio-20172019-extension"></a>Rozšíření sady Visual Studio 2017/2019
@@ -97,7 +96,7 @@ Další informace a pokyny k instalaci najdete v tématu [Azure IoT EdgeHub dev 
 
 ### <a name="iot-edge-dev-container"></a>IoT Edge kontejner pro vývoj
 
-Kontejner pro vývoj Azure IoT Edge je kontejner Docker, který obsahuje všechny závislosti, které potřebujete pro vývoj IoT Edge. Tento kontejner usnadňuje začátek s libovolným jazykem, ve kterém chcete vyvíjet, včetně jazyků C#, Python, Node. js a Java. Vše, co je potřeba nainstalovat, je kontejnerový modul, jako je Docker nebo Moby, který načte kontejner do vývojového počítače.
+Kontejner pro vývoj Azure IoT Edge je kontejner Docker, který obsahuje všechny závislosti, které potřebujete pro vývoj IoT Edge. Tento kontejner usnadňuje začátek s libovolným jazykem, ve kterém chcete vyvíjet, včetně jazyků C#, Python, Node.js a Java. Vše, co je potřeba nainstalovat, je kontejnerový modul, jako je Docker nebo Moby, který načte kontejner do vývojového počítače.
 
 Další informace najdete v tématu [Azure IoT Edge vývojového kontejneru](https://hub.docker.com/r/microsoft/iotedgedev/).
 

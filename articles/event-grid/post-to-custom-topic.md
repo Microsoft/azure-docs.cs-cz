@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721550"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Příspěvek do vlastního tématu pro Azure Event Grid
@@ -23,9 +22,9 @@ Tento článek popisuje, jak odeslat událost do vlastního tématu. Zobrazuje f
 
 ## <a name="endpoint"></a>Koncový bod
 
-Při odesílání příspěvku HTTP na vlastní téma použijte formát identifikátoru URI: `https://<topic-endpoint>?api-version=2018-01-01`.
+Při odesílání příspěvku HTTP na vlastní téma použijte formát identifikátoru URI: `https://<topic-endpoint>?api-version=2018-01-01` .
 
-Například platný identifikátor URI je: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Například platný identifikátor URI je: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 
 Pokud chcete získat koncový bod pro vlastní téma pomocí Azure CLI, použijte:
 
@@ -39,11 +38,11 @@ Chcete-li získat koncový bod pro vlastní téma s Azure PowerShell, použijte:
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 
 V žádosti zahrňte hodnotu záhlaví s názvem `aeg-sas-key` , která obsahuje klíč pro ověření.
 
-Například platná hodnota hlavičky je `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Například platná hodnota hlavičky je `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==` .
 
 Pokud chcete získat klíč pro vlastní téma pomocí Azure CLI, použijte:
 

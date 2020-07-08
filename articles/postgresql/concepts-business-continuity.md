@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981920"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
@@ -23,7 +22,7 @@ Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které 
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Schopnost** | **Základní** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
+| **Funkce** | **Základní** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporuje se | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |

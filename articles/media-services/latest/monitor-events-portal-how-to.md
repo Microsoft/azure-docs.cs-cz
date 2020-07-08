@@ -16,10 +16,9 @@ ms.workload: media
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76509219"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Vytvoření a monitorování událostí Media Services se službou Event Grid s využitím webu Azure Portal
@@ -73,7 +72,7 @@ K odběru tématu se přihlašujete, aby služba Event Grid věděla, které ud�
 
 1. Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. 
 
-    Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Koncový bod musí být nastaven `validationResponse` na `validationCode`hodnotu. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](../../event-grid/security-authentication.md). Můžete zobrazit kód webové aplikace, abyste viděli, jak ověřuje předplatné.
+    Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Koncový bod musí být nastaven `validationResponse` na hodnotu `validationCode` . Další informace najdete v tématu [Event Grid zabezpečení a ověřování](../../event-grid/security-authentication.md). Můžete zobrazit kód webové aplikace, abyste viděli, jak ověřuje předplatné.
 
 Teď spustíme události, které vám pomůžou zjistit, jak Event Grid distribuuje zprávu do koncového bodu.
 

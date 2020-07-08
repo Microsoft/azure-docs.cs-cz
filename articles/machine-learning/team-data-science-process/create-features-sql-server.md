@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721740"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Vytvoření funkcí pro data v SQL Serveru pomocí jazyka SQL a Pythonu
@@ -63,7 +62,7 @@ Následující příklad ukazuje, jak generovat funkce rozdělený pomocí binni
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>Zavádění funkcí z jednoho sloupce
 V této části ukážeme, jak v tabulce zavést jeden sloupec pro generování dalších funkcí. V příkladu se předpokládá, že je v tabulce, ze které se pokoušíte generovat funkce, sloupec Zeměpisná šířka nebo zeměpisná délka.
 
-Tady je stručný úvod k datům o poloze/Zeměpisná šířka (znovu se zdroji z StackOverflow `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`). Tady jsou některé užitečné věci, které vám pomohou pochopit data o poloze před vytvořením funkcí z tohoto pole:
+Tady je stručný úvod k datům o poloze/Zeměpisná šířka (znovu se zdroji z StackOverflow `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude` ). Tady jsou některé užitečné věci, které vám pomohou pochopit data o poloze před vytvořením funkcí z tohoto pole:
 
 * Symbol označuje, zda se jedná o Severní nebo jižní, východní nebo západní na světě.
 * Nenulová stovka číslice značí zeměpisnou délku, nepoužívá zeměpisnou šířku.
@@ -76,7 +75,7 @@ Tady je stručný úvod k datům o poloze/Zeměpisná šířka (znovu se zdroji 
 * Pátý počet desetinných míst je až 1,1 m: rozliší stromy od sebe navzájem. Přesnost na tuto úroveň u komerčních jednotek GPS se dá dosáhnout jenom s rozdílovou korekcí.
 * Šest desetinných míst je rovno 0,11 m: můžete použít tuto úroveň pro navrhování struktur podrobněji pro návrh krajiny a vytváření silnic. Mělo by být dostatečně dobré pro sledování pohybů Glaciers a řek. Tento cíl je možné dosáhnout tím, že přijímáte painstaking míry pomocí GPS, jako je rozdílově korigovaný GPS.
 
-Informace o umístění může být natrénuje oddělením informací o oblasti, umístění a městech. Jednou taky může zavolat koncový bod REST, jako je například rozhraní API služby Bing `https://msdn.microsoft.com/library/ff701710.aspx` Maps (viz získání informací o oblasti nebo oblasti).
+Informace o umístění může být natrénuje oddělením informací o oblasti, umístění a městech. Jednou taky může zavolat koncový bod REST, jako je například rozhraní API služby Bing Maps (viz `https://msdn.microsoft.com/library/ff701710.aspx` získání informací o oblasti nebo oblasti).
 
     select
         <location_columnname>

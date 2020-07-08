@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710329"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Fáze životního cyklu pracovního procesu vědeckého zpracování dat týmu
@@ -74,7 +73,7 @@ Identifikujte zdroje dat, které obsahují známé příklady odpovědí na vaš
 
 Můžete například zjistit, že stávající systémy potřebují shromažďovat a Protokolovat další druhy dat pro vyřešení problému a dosažení cílů projektu. V takové situaci můžete chtít vyhledat externí zdroje dat nebo aktualizovat systémy a shromažďovat nová data.
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 Tady jsou dodávky v této fázi:
 
    * [Dokument o pronájmu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): v definici struktury projektu TDSP je k dispozici standardní šablona. Dokument Chart je živý dokument. Šablonu aktualizujete v rámci projektu při provádění nových zjišťování a změnách obchodních požadavků. Klíč se má iterovat na tomto dokumentu a při průběhu procesu zjišťování přidat další podrobnosti. Zachovejte zákazníkům a dalším zúčastněným účastníkům, kteří mají v úmyslu provádět změny a jasně sdělit důvody, proč se tyto změny týkají.  
