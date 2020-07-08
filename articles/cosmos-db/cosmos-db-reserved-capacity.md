@@ -8,10 +8,10 @@ ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85118929"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů s využitím rezervované kapacity ve službě Azure Cosmos DB
@@ -34,7 +34,7 @@ Velikost nákupu rezervovaných kapacit by měla být založena na celkovém obj
 
 Vypočítejte doporučení nákupu na základě hodinového způsobu použití. Doporučuje se využití za posledních 7, 30 a 60 dní a na nákup rezervovaných kapacit, který maximalizuje vaše úspory. Doporučené velikosti rezervace můžete zobrazit v Azure Portal pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).  
 
 2. Vyberte **všechny**  >  **rezervace**služeb  >  **Přidat**.
 
@@ -58,7 +58,7 @@ Toto doporučení k zakoupení rezervace 30 000 RU/s indikuje, že mezi 3 roky r
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Koupit Azure Cosmos DB rezervovanou kapacitu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).  
 
 2. Vyberte **všechny**  >  **rezervace**služeb  >  **Přidat**.  
 

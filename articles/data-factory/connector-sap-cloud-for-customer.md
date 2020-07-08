@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987555"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z SAP cloudu pro zákazníky (C4C) pomocí Azure Data Factory
@@ -50,16 +50,16 @@ Pro propojenou službu SAP Cloud pro zákazníka jsou podporovány následujíc�
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomer**. | Ano |
-| url | Adresa URL služby SAP C4C OData | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k SAP C4C. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomer**. | Yes |
+| url | Adresa URL služby SAP C4C OData | Yes |
+| uživatelské jméno | Zadejte uživatelské jméno pro připojení k SAP C4C. | Yes |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
 >[!IMPORTANT]
 >Pokud chcete zkopírovat data do služby SAP Cloud pro zákazníka, explicitně [vytvořte Azure IR](create-azure-integration-runtime.md#create-azure-ir) s umístěním poblíž vašeho cloudu SAP pro zákazníka a přidružte se k propojené službě jako v následujícím příkladu:
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -90,10 +90,10 @@ Pokud chcete kopírovat data ze SAP cloudu pro zákazníka, nastavte vlastnost T
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **SapCloudForCustomerResource** . |Ano |
-| cesta | Zadejte cestu k entitě SAP C4C OData. |Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **SapCloudForCustomerResource** . |Yes |
+| cesta | Zadejte cestu k entitě SAP C4C OData. |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -122,13 +122,13 @@ Pokud chcete kopírovat data ze SAP cloudu pro zákazníka, nastavte typ zdroje 
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSource** .  | Ano |
-| query | Zadejte vlastní dotaz OData pro čtení dat. | Ne |
-| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | Ne |
+| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSource** .  | Yes |
+| query | Zadejte vlastní dotaz OData pro čtení dat. | No |
+| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | No |
 
 Vzorový dotaz pro získání dat pro určitý den:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -166,11 +166,11 @@ Pokud chcete zkopírovat data do SAP cloudu pro zákazníka, nastavte typ jímky
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSink** .  | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapCloudForCustomerSink** .  | Yes |
 | writeBehavior | Chování operace zápisu. Může být "vložení", "Update". | Ne. Výchozí hodnota "Insert". |
 | writeBatchSize | Velikost dávky operace zápisu. Velikost dávky, která má dosáhnout nejlepšího výkonu, se může lišit pro různé tabulky nebo servery. | Ne. Výchozí hodnota 10. |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

@@ -4,10 +4,10 @@ description: Popisuje běžné síťové vzory pro Service Fabric a vytváření
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85106613"
 ---
 # <a name="service-fabric-networking-patterns"></a>Modely Service Fabric sítě

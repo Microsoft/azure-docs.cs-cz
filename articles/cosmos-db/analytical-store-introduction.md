@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
 ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85116022"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
@@ -142,7 +142,7 @@ Abyste získali odhad nákladů na nejvyšší úroveň, abyste mohli analytick�
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analytická hodnota TTL (Time to Live)
 
-Analytická hodnota TTL indikuje, jak dlouho se mají uchovávat data v analytickém úložišti pro kontejner. 
+Analytická hodnota TTL pro kontejner určuje, jak dlouho se mají uchovávat data v analytickém úložišti. 
 
 Vložení, aktualizace a odstranění provozních dat se automaticky synchronizují z transakčního úložiště do analytického úložiště, bez ohledu na konfiguraci transakčního standardu TTL. Uchovávání těchto provozních dat v analytickém úložišti se dá řídit analytickou hodnotou TTL na úrovni kontejneru, jak je uvedeno níže:
 
@@ -170,6 +170,6 @@ Další informace najdete v následujících dokumentech:
 
 * [Začínáme s Azure Synapse Linkem pro Azure Cosmos DB](configure-synapse-link.md)
 
-* [Nejčastější dotazy týkající se synapse odkazů pro Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
+* [Nejčastější dotazy k Synapse Linku pro Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
 * [Případy použití Azure Synapse Linku pro Azure Cosmos DB](synapse-link-use-cases.md)

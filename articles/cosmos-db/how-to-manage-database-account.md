@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
 ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85116753"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
@@ -39,7 +39,7 @@ Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB s využi
 
 ### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 
 1. Přejděte k účtu Azure Cosmos a otevřete nabídku **replikovat data globálně** .
 

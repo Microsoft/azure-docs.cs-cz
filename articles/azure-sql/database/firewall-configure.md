@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
 ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84976808"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
@@ -37,7 +37,7 @@ Pokusy o připojení z Internetu a Azure musí projít přes bránu firewall př
 
 ### <a name="server-level-ip-firewall-rules"></a>Pravidla firewallu protokolu IP na úrovni serveru
 
-Tato pravidla umožňují klientům přístup k celému serveru, tedy ke všem databázím spravovaným serverem. Pravidla jsou uložena v *Hlavní* databázi. Pro server můžete mít maximálně 128 pravidel brány firewall protokolu IP na úrovni serveru. Pokud máte povolené nastavení **Povolit službám a prostředkům Azure přístup k tomuto nastavení serveru** , počítá se jako jedno pravidlo brány firewall pro server.
+Tato pravidla umožňují klientům přistupovat k celému serveru, to znamená ke všem databázím, které server spravuje. Pravidla jsou uložena v *Hlavní* databázi. Pro jeden server můžete mít maximálně 128 pravidel firewallu protokolu IP na úrovni serveru. Pokud máte povolené nastavení **Povolit službám a prostředkům Azure přístup k tomuto nastavení serveru** , počítá se jako jedno pravidlo brány firewall pro server.
   
 Pravidla brány firewall protokolu IP na úrovni serveru můžete nakonfigurovat pomocí příkazů Azure Portal, PowerShellu nebo jazyka Transact-SQL.
 
@@ -54,7 +54,7 @@ Pravidla brány firewall protokolu IP na úrovni databáze umožňují klientům
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>Doporučení pro nastavení pravidel brány firewall
 
-Pokud je to možné, doporučujeme použít pravidla brány firewall na úrovni databáze. Tento postup zvyšuje zabezpečení a zajišťuje větší přenositelnost databáze. Pro správce použijte pravidla brány firewall IP na úrovni serveru. Můžete je také použít, pokud máte mnoho databází se stejnými požadavky na přístup a nechcete konfigurovat jednotlivé databáze zvlášť.
+Pokud je to možné, doporučujeme použít pravidla brány firewall na úrovni databáze. Tento přístup zvyšuje zabezpečení a zlepšuje přenositelnost databází. Pro správce použijte pravidla brány firewall IP na úrovni serveru. Můžete je také použít, pokud máte mnoho databází se stejnými požadavky na přístup a nechcete konfigurovat jednotlivé databáze zvlášť.
 
 > [!NOTE]
 > Informace o přenosných databázích v kontextu kontinuity podnikových procesů najdete v tématu [Požadavky na ověřování pro zotavení po havárii](active-geo-replication-security-configure.md).
@@ -105,7 +105,7 @@ Pokud chcete aplikacím hostovaným v Azure povolit připojení k vašemu SQL se
 
 ## <a name="permissions"></a>Oprávnění
 
-Aby bylo možné vytvářet a spravovat pravidla brány firewall protokolu IP pro SQL Server Azure, budete muset mít jednu z těchto možností:
+Abyste mohli vytvářet a spravovat pravidla firewallu protokolu IP pro Azure SQL Serveru, musíte být:
 
 - v roli [přispěvatel SQL Server](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 - v roli [Správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)
@@ -118,7 +118,7 @@ První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí 
 > [!IMPORTANT]
 > Pravidla brány firewall protokolu IP na úrovni databáze lze vytvořit a spravovat pouze pomocí jazyka Transact-SQL.
 
-Pro zvýšení výkonu se pravidla brány firewall IP na úrovni serveru dočasně ukládají do mezipaměti na úrovni databáze. Pokud chcete mezipaměť aktualizovat, podívejte se na příkaz [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
+Pro zvýšení výkonu se pravidla firewallu protokolu IP na úrovni serveru dočasně ukládají do mezipaměti na úrovni databáze. Pokud chcete mezipaměť aktualizovat, podívejte se na příkaz [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
 > [!TIP]
 > Pomocí [auditování databáze](../../azure-sql/database/auditing-overview.md) můžete auditovat změny brány firewall na úrovni serveru a databáze.

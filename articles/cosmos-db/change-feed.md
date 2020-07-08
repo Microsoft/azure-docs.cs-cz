@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85119371"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Kanál změn ve službě Azure Cosmos DB
@@ -27,10 +27,10 @@ Tato funkce je v současnosti podporovaná následujícími Azure Cosmos DB rozh
 
 | **Klientské ovladače** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Rozhraní Gremlin API**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Ano | Ano | Ano | Ano | Ne |
-|Java|Ano|Ano|Ano|Ano|Ne|
-|Python|Ano|Ano|Ano|Ano|Ne|
-|Uzel/JS|Ano|Ano|Ano|Ano|Ne|
+| .NET | Ano | Ano | Ano | Ano | No |
+|Java|Ano|Ano|Ano|Ano|No|
+|Python|Ano|Ano|Ano|Ano|No|
+|Uzel/JS|Ano|Ano|Ano|Ano|No|
 
 ## <a name="change-feed-and-different-operations"></a>Změna kanálu a různých operací
 

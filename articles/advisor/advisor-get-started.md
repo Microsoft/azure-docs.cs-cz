@@ -4,10 +4,10 @@ description: Začínáme s Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85117858"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
@@ -19,7 +19,7 @@ Naučte se, jak získat přístup ke službě Advisor prostřednictvím Azure Po
 
 ## <a name="get-recommendations"></a>Získat doporučení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. V levém podokně klikněte na možnost **Poradce**.  Pokud v levém podokně nevidíte poradce, klikněte na **všechny služby**.  V podokně nabídky služby v části **monitorování a Správa**klikněte na možnost **Poradce**. Zobrazí se řídicí panel Advisor.
 

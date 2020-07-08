@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72a9dc504edac01654fb21ec3386a596e03492c9
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85077789"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Běžné scénáře správy nároků ve službě Azure AD
@@ -61,7 +61,7 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. Najít balíček pro přístup
-1. [Vyžádání přístup](entitlement-management-request-access.md#request-an-access-package)
+1. [Vyžádání přístupu](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
 
@@ -94,7 +94,7 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 1. Najít odkaz na balíček přístupu, který jste dostali od svého kontaktu
 1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [Vyžádání přístup](entitlement-management-request-access.md#request-an-access-package)
+1. [Vyžádání přístupu](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
 

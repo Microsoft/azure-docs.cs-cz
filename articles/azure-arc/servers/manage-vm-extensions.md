@@ -8,10 +8,10 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 ms.openlocfilehash: e04b2c63f782a4fcbb64273c08511ecb0bbc2bc3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84977686"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Správa rozšíření virtuálních počítačů pomocí ARC Azure pro servery (Preview)
@@ -711,7 +711,7 @@ Chcete-li použít rozšíření agenta závislosti Azure Monitor, je k dispozic
 }
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal.
 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85193409"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
@@ -86,7 +86,7 @@ V Azure Portal vytvořte pracovní prostor synapse:
 
 Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouštět kanály a provádět systémové úlohy.
 
-- Otevřete Azure Portal
+- Otevřete Azure Portal.
 - Najít STG1
 - Přejít na CNT1
 - Zajistěte, aby se služba MSI (Identita spravované služby) pro WS1 přiřadila k roli **Přispěvatel dat objektů BLOB úložiště** v CNT1.
@@ -95,7 +95,7 @@ Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>Krok 5: Konfigurace přístupu správce pro fondy SQL
 
-- Otevřete Azure Portal
+- Otevřete Azure Portal.
 - Přejít na WS1
 - V části **Nastavení**klikněte na **Správce služby SQL Active Directory** .
 - Klikněte na **nastavit správce** a vyberte WS1 \_ SQLAdmins.
