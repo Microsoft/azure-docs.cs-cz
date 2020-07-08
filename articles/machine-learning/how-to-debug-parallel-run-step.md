@@ -6,21 +6,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 01/15/2020
-ms.openlocfilehash: 7f05133f15f1df39a61c34b43f18828ee494b735
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 07/06/2020
+ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433448"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026997"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Ladění a řešení potíží s ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak ladit a řešit potíže se třídou [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) z [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+V tomto článku se dozvíte, jak ladit a řešit potíže se třídou [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) z [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 ## <a name="testing-scripts-locally"></a>Místní testování skriptů
 
@@ -40,7 +40,7 @@ Z důvodu distribuované povahy úloh ParallelRunStep existují protokoly z něk
 
 Protokoly vygenerované ze vstupního skriptu pomocí pomocníka EntryScript a příkazů Print budou nalezeny v následujících souborech:
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`: Jedná se o protokoly napsané z entry_script pomocí pomocné rutiny EntryScript. Obsahuje také příkaz Print (stdout) z entry_script.
+- `~/logs/user/<ip_address>/<node_name>.log.txt`: Tyto soubory jsou protokoly napsané z entry_script pomocí pomocné rutiny EntryScript. Obsahuje také příkaz Print (stdout) z entry_script.
 
 Stručné porozumění chybám ve skriptu:
 
@@ -52,13 +52,13 @@ Další informace o chybách ve skriptu najdete v těchto případech:
 
 Pokud potřebujete úplný přehled o tom, jak každý uzel spustil skript skóre, podívejte se na jednotlivé protokoly procesu pro každý uzel. Protokoly procesu lze nalézt ve `sys/node` složce seskupené podle uzlů pracovních procesů:
 
-- `~/logs/sys/node/<node_name>.txt`: Tento soubor poskytuje podrobné informace o každé Mini dávce, jak je pracovník vybral nebo dokončil. Pro každou miniskou dávku tento soubor obsahuje:
+- `~/logs/sys/node/<node_name>.txt`: Tento soubor poskytuje podrobné informace o každé Mini dávce, jak je vyzvednuta nebo dokončena pracovním procesem. Pro každou miniskou dávku tento soubor obsahuje:
 
     - IP adresa a PID pracovního procesu. 
     - Celkový počet položek, počet úspěšně zpracovaných položek a počet neúspěšných položek.
     - Čas spuštění, doba trvání, doba zpracování a metoda spuštění.
 
-Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na adrese `~/logs/sys/perf/overview.csv` . Informace o jednotlivých procesech jsou k dispozici v části `~logs/sys/processes.csv` .
+Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na adrese `~/logs/sys/perf/overview.csv` . Informace o každém procesu jsou k dispozici v části `~logs/sys/processes.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Návody se protokolovat z uživatelského skriptu ze vzdáleného kontextu?
 Můžete získat protokolovací nástroj z EntryScript, jak je znázorněno v následujícím ukázkovém kódu, aby se protokoly zobrazovaly ve složce **logs/uživatel** na portálu.
@@ -87,7 +87,7 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Jak můžu předat vstup ze strany, například soubor nebo soubory obsahující vyhledávací tabulku, do všech mých pracovníků?
 
-Sestavte [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) obsahující vstup ze strany a zaregistrujte ji do pracovního prostoru. Předejte ho do `side_input` parametru vašeho `ParallelRunStep` . Navíc můžete přidat cestu do `arguments` oddílu a snadno tak přistupovat k připojené cestě:
+Sestavte [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) obsahující vstup ze strany a zaregistrujte ji do pracovního prostoru. Předejte ho do `side_input` parametru vašeho `ParallelRunStep` . Navíc můžete přidat jeho cestu do `arguments` oddílu a snadno tak získat přístup k připojené cestě:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -113,6 +113,6 @@ labels_path = args.labels_dir
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nápovědu k balíčku [AzureML-contrib-Pipeline-Step](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) a [dokumentaci](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) ke třídě ParallelRunStep najdete v referenčních informacích k sadě SDK.
+* Nápovědu k balíčku [AzureML-Pipeline Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) najdete v referenčních informacích k sadě SDK. Zobrazení referenční [dokumentace](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py) pro třídu ParallelRunStep.
 
-* Postupujte podle pokynů v [rozšířeném kurzu](tutorial-pipeline-batch-scoring-classification.md) použití kanálů s ParallelRunStep a jako příklad předání jiného souboru jako vstupu ze strany. 
+* Řiďte se [pokročilým kurzem](tutorial-pipeline-batch-scoring-classification.md) používání kanálů pomocí ParallelRunStep. V tomto kurzu se dozvíte, jak předat jiný soubor jako vstup ze strany. 

@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658060"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027099"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
@@ -56,7 +56,7 @@ Než vyberete možnost publikování, je důležité pochopit požadavky na prez
 **Azure Marketplace** aplikace jsou technická "stavební a integrovaná řešení" založená na Azure, která jsou určená pro vývojáře IT nebo vývojářů. Azure Marketplace konzultační služby jsou profesionální nabídky služeb, které zákazníkům pomůžou začít s využitím nebo urychlit používání Azure.
 
 >[!Note]
->Křížové výpisy (pouze pro aplikace SaaS): Pokud seznam nebo nabídka na základě zkušební verze splňuje kritéria pro cílovou skupinu uživatelů technické i obchodní skupiny, vaše nabídka bude uvedena v obou prodejní místa. Další informace o možnostech publikování najdete níže.
+>"Křížové výpisy" (pouze pro aplikace SaaS): Pokud vaše nabídka SaaS je určena pro technickou cílovou skupinu (Azure Marketplace) a obchodní cílovou skupinu (AppSource), můžete vybrat kategorii nebo podkategorii, které platí pro prodejní místa. Je třeba mít na vědomí, že záměr "křížového výpisu" vaší nabídky by měl být založen na hodnotách, které se rozšíří do obou cílových skupin. Kliknutím [sem](./gtm-offer-listing-best-practices.md#categories) zobrazíte kategorie, které platí pro jednotlivé prezentace.
 
 ## <a name="choose-a-publishing-option"></a>Zvolit možnost publikování
 
@@ -64,7 +64,7 @@ Dostupné možnosti publikování nabízejí odlišnou zákaznickou zapojení a 
 
 | **Možnost publikování**    | **Popis**  |
 | :------------------- | :-------------------|
-| **Seznamu** | Jednoduchý seznam vaší aplikace nebo služby, který umožňuje uživateli na webu Marketplace požádat o připojení k zákazníkovi prostřednictvím **kontaktních** hovorů. |
+| **Seznam** | Jednoduchý seznam vaší aplikace nebo služby, který umožňuje uživateli na webu Marketplace požádat o připojení k zákazníkovi prostřednictvím **kontaktních** hovorů. |
 | **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnost volání na akci, která se používá pro možnost publikování zkušební verze, je buď **bezplatná zkušební verze** , nebo **testovací jednotka**. |
 | **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Volání akce je **teď Get**.
 | **Provedena** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Volání akce je **teď Get**.|

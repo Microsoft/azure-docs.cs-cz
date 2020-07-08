@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362318"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026691"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -405,6 +405,12 @@ Pokud používáte šablonu Azure Resource Manager GitHubu, zadejte hodnoty pro 
 - Heslo správce tenanta: tajný kód pro heslo, který jste vygenerovali pro instanční objekt.
 - IsServicePrincipal: **true**
 - AadTenantId: ID tenanta Azure AD vytvořeného objektu služby
+
+### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Chyba: vmSubnet není k dispozici při konfiguraci virtuálních sítí
+
+**Příčina:** V šabloně tržiště WVD se v uživatelském rozhraní zobrazí jenom podsítě, které mají aspoň tolik IP adres, kolik je dostupných jako celkový počet virtuálních počítačů zadaných v šabloně. Skutečný počet dostupných IP adres v podsíti musí být roven počtu nově nasazených virtuálních počítačů, které však nelze vypočítat pomocí aktuálního uživatelského rozhraní.
+
+**Oprava:** Můžete zadat podsíť s aspoň tolik IP adresami, kolik je k dispozici jako počet virtuálních počítačů, které se přidávají pomocí uživatelského rozhraní Marketplace. to se dá udělat zadáním názvu podsítě v parametru "**existingSubnetName**" při opětovném [nasazení stávajícího nasazení](expand-existing-host-pool-2019.md#redeploy-from-azure) nebo [nasazení pomocí základní šablony ARM z GitHubu](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,0 +1,81 @@
+---
+title: Informace o směrováních virtuálních center
+titleSuffix: Azure Virtual WAN
+description: Tento článek popisuje směrování virtuálního rozbočovače
+services: virtual-wan
+author: cherylmc
+ms.service: virtual-wan
+ms.topic: conceptual
+ms.date: 06/29/2020
+ms.author: cherylmc
+ms.openlocfilehash: 6809429b26eea30ca0569044634308d2e4dff9f7
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025977"
+---
+# <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
+
+Možnosti směrování ve virtuálním rozbočovači poskytuje směrovač, který spravuje všechna směrování mezi branami pomocí Border Gateway Protocol (BGP). Virtuální rozbočovač může obsahovat několik bran, jako je třeba Brána VPN typu Site-to-site, brána ExpressRoute, brána typu Point-to-site, Azure Firewall. Tento směrovač taky zajišťuje přenosové propojení mezi virtuálními sítěmi, které se připojují k virtuálnímu rozbočovači, a může podporovat až agregovanou propustnost 50 GB/s. Tyto možnosti směrování platí pro standardní virtuální zákazníky sítě WAN.
+
+Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md).
+
+## <a name="routing-concepts"></a><a name="concepts"></a>Koncepty směrování
+
+V následujících částech najdete popis klíčových konceptů v směrování virtuálního rozbočovače.
+
+### <a name="hub-route-table"></a><a name="hub-route"></a>Tabulka směrování centra
+
+Tabulka směrování virtuálního rozbočovače může obsahovat jednu nebo více tras. Trasa zahrnuje její název, popisek, cílový typ, seznam cílových předpon a další informace o směrování pro paket, který má být směrován. **Připojení** obvykle bude mít konfiguraci směrování, která se přidruží nebo šíří do směrovací tabulky.
+
+### <a name="connection"></a><a name="connection"></a>Připojení
+
+Připojení jsou Správce prostředků prostředky, které mají konfiguraci směrování. Existují čtyři typy připojení:
+
+* **Připojení VPN**: připojí síť VPN k bráně VPN virtuálního rozbočovače.
+* **Připojení ExpressRoute**: připojuje okruh ExpressRoute k bráně ExpressRoute virtuálního rozbočovače.
+* **Připojení konfigurace P2S**: připojí konfiguraci VPN uživatele (Point-to-site) k bráně virtuální sítě VPN (Point-to-site) uživatele virtuálního rozbočovače.
+* **Připojení k virtuální síti rozbočovače**: propojuje virtuální sítě s virtuálním rozbočovačem.
+
+Během instalace můžete nastavit konfiguraci směrování pro připojení k virtuální síti. Ve výchozím nastavení se všechna připojení přiřadí a šíří do výchozí směrovací tabulky.
+
+### <a name="association"></a><a name="association"></a>Řídí
+
+Každé připojení je přidruženo k jedné směrovací tabulce. Přidružením připojení k tabulce směrování lze provoz odeslat do cíle uvedeného jako trasy v tabulce směrování. Konfigurace směrování připojení zobrazí přidruženou směrovací tabulku.  Ke stejné směrovací tabulce může být přidruženo více připojení. Všechna připojení VPN, ExpressRoute a User VPN jsou přidružena ke stejné (výchozí) směrovací tabulce.
+
+Ve výchozím nastavení jsou všechna připojení přidružena k **výchozí směrovací tabulce** ve virtuálním rozbočovači. Každé virtuální centrum má svou vlastní výchozí směrovací tabulku, kterou je možné upravit pro přidání statických tras. Trasy přidané staticky mají přednost před dynamicky zjištěnými trasami pro stejné předpony.
+
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-association.png" alt-text="Řídí":::
+
+### <a name="propagation"></a><a name="propagation"></a>Šíření
+
+Připojení dynamicky šíří trasy do směrovací tabulky. S připojením VPN, připojením ExpressRoute nebo připojením konfigurace P2S se trasy šíří z virtuálního rozbočovače na místní směrovač pomocí protokolu BGP. Trasy lze rozšířit do jedné nebo více směrovacích tabulek.
+
+**Tabulka směrování None** je k dispozici také pro každé virtuální centrum. Rozšiřování do tabulky směrování None znamená, že pro rozšíření od připojení nejsou nutné žádné trasy. Připojení VPN, ExpressRoute a VPN uživatele šíří trasy do stejné sady směrovacích tabulek.
+
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Šíření":::
+
+### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurace statických tras v připojení k virtuální síti
+
+Konfigurace statických tras poskytuje mechanismus pro řízení provozu prostřednictvím IP adresy dalšího směrování, což může být virtuální síťové zařízení (síťové virtuální zařízení) zřízené ve virtuální síti paprsků připojené k virtuálnímu rozbočovači. Statická trasa se skládá z názvu trasy, seznamu předpon cíle a IP adresy dalšího směrování.
+
+> [!NOTE]
+> Některé z těchto nových konceptů přidružení, šíření a statických tras ve virtuální síti se můžou pořád vyvádět a očekávat v týdnu od srpna 3.
+>
+
+## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Směrování tabulek v základních a standardních virtuálních sítích WAN před sadou funkcí asociace a rozšíření
+
+Směrovací tabulky teď mají funkce pro přidružení a šíření. Již existující směrovací tabulka je směrovací tabulka, která nemá tyto funkce. Pokud máte již existující trasy ve směrování centra a chcete používat nové funkce, vezměte v úvahu následující skutečnosti:
+
+* **Standardní virtuální zákazníci sítě WAN s předem existujícími trasami ve virtuálním centru**:
+
+Pokud chcete používat nové funkce směrovací tabulky, počkejte prosím, než se dokončí platnost v Azure, do dne v týdnu od 3. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
+
+* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí v Azure, a počkejte prosím na dokončení zavedení v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md).
+
+Další informace o virtuální síti WAN najdete v části [Nejčastější dotazy](virtual-wan-faq.md).

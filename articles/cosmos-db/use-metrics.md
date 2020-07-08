@@ -7,18 +7,18 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: 157f0a710a0b3aed25455600bbf19d4ae84ed848
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 5428de23eb0e1b8c31f4576881526ec08ccc9698
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391940"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027820"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
 
 Azure Cosmos DB poskytuje metriky pro propustnost, úložiště, konzistenci, dostupnost a latenci. Azure Portal nabízí agregované zobrazení těchto metrik. Metriky služby Azure Cosmos DB můžete zobrazit také s využitím rozhraní API služby Azure Monitor. Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](cosmos-db-azure-monitor-metrics.md) . 
 
-Tento článek vás provede běžnými případy použití a Azure Cosmos DB metriky, které je možné použít k analýze a ladění těchto problémů. Metriky se shromažďují každých pět minut a uchovávají se po dobu sedmi dní.
+Tento článek popisuje běžné případy použití a možnosti použití metrik služby Azure Cosmos DB k analýze a ladění těchto problémů. Metriky se shromažďují každých pět minut a uchovávají se po dobu sedmi dní.
 
 ## <a name="view-metrics-from-azure-portal"></a>Zobrazit metriky z Azure Portal
 
@@ -56,7 +56,7 @@ Nejběžnější stavový kód chyby je 429 (omezení rychlosti/omezování). Ta
 
 Dobré mohutnosti klíčů oddílů je nezbytné pro libovolnou škálovatelnou aplikaci. Chcete-li určit rozdělení propustnosti děleného kontejneru rozděleného podle oddílů, přejděte do okna **metriky** v [Azure Portal](https://portal.azure.com). Na kartě **propustnost** se rozpis úložiště zobrazuje v poli **maximální spotřebované ru/sekund každého grafu fyzického oddílu** . Následující obrázek znázorňuje příklad špatné distribuce dat, jak znázorňuje zkosený oddíl úplně vlevo.
 
-![Jeden oddíl se silným využitím v 3:05. odp.](media/use-metrics/metrics-17.png)
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Jeden oddíl se zobrazením velkého využití":::
 
 Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, což může vést k omezení požadavků a může vyžadovat přerozdělení na oddíly. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
 

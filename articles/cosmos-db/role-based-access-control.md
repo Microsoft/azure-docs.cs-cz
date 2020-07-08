@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0782d5f091671a235df1ab85a8b9706c7efe9170
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: cbb97dd260e5aee53595afc24e577ce08334e2b2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509028"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027014"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Níže jsou uvedené předdefinované role podporované nástrojem Azure Cosmos 
 
 Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci řízení přístupu na základě role v prostředcích Azure Cosmos. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role. Následující snímek obrazovky ukazuje integraci služby Active Directory (RBAC) pomocí řízení přístupu (IAM) v Azure Portal:
 
-![Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze](./media/role-based-access-control/database-security-identity-access-management-rbac.png)
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze":::
 
 ## <a name="custom-roles"></a>Vlastní role
 
@@ -110,6 +110,6 @@ Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBA
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je řízení přístupu na základě role (RBAC) pro prostředky Azure](../role-based-access-control/overview.md)
+- [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)
 - [Vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md)
 - [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

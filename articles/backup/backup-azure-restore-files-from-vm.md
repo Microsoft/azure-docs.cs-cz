@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85124983"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027160"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -182,7 +182,7 @@ mount [RAID Disk Path] [/mountpath]
 
 Pokud je v disku RAID nakonfigurovaný jiný LVM, použijte předchozí postup pro oddíly LVM, ale místo názvu disku RAID použijte název svazku.
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 ### <a name="for-windows-os"></a>OPERAČNÍ systém Windows
 
@@ -247,9 +247,9 @@ Přístup ke službě `download.microsoft.com` je vyžadován ke stažení kompo
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Obnovení souborů ze záloh virtuálních počítačů s velkými disky
 
-V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure s více než 16 disky a velikost každého disku je větší než 32 TB.
+V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure s více než 16 disky nebo pokud je velikost každého disku větší než 4 TB.
 
-Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy, když je použit velký počet disků (>16) nebo velké disky (> 32 TB), jsou doporučeny následující body akcí:
+Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy, když je použit velký počet disků (>16) nebo velké disky (> 4 TB), jsou doporučeny následující body akcí:
 
 - Pro obnovení souborů ponechte samostatný server pro obnovení (virtuální počítače Azure s D2v3). Tuto možnost můžete použít pouze pro obnovení souboru a pak ji vypnout, pokud to není nutné. Obnovení původního počítače se nedoporučuje, protože bude mít významný dopad na samotný virtuální počítač.
 - Pak skript spusťte jednou, abyste zkontrolovali, jestli je operace obnovení souborů úspěšná.

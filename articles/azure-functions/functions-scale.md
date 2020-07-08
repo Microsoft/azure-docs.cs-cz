@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5504416d09cf6b3f75d02e29cc93b0278cc42386
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117127"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025824"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -122,7 +122,7 @@ Je možné, že více aplikací Function App sdílí stejný účet úložiště
 
 Další informace o typech účtů úložiště najdete v tématu [představení služby Azure Storage Services](../storage/common/storage-introduction.md#core-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Jak fungují plány spotřeby a Premium
+## <a name="how-the-consumption-and-premium-plans-work"></a>Princip fungování plánů Consumption a Premium
 
 V plánech spotřeby a Premium Azure Functions infrastruktura škálovat prostředky procesoru a paměti přidáním dalších instancí hostitele Functions na základě počtu událostí, na kterých se funkce aktivuje. Každá instance hostitele Functions v plánu spotřeby je omezená na 1,5 GB paměti a jeden procesor.  Instance hostitele je celá aplikace Function App, což znamená, že všechny funkce v rámci aplikace Function App sdílejí prostředky v rámci instance a škálují ve stejnou dobu. Aplikace Function App, které sdílejí stejný plán spotřeby, se škálují nezávisle.  V plánu Premium bude velikost vašeho plánu určovat dostupnou paměť a procesor pro všechny aplikace v tomto plánu na této instanci.  
 
@@ -175,7 +175,7 @@ Následující tabulka porovnání uvádí všechny důležité aspekty, které 
 | | |
 | --- | --- |  
 |**[Plán Consumption](#consumption-plan)**| Automatické škálování a Plaťte jenom za výpočetní prostředky, když jsou vaše funkce spuštěné. V plánu spotřeby se instance hostitele Functions dynamicky přidávají a odstraňují na základě počtu příchozích událostí.<br/> ✔ Výchozí plán hostování.<br/>Plaťte ✔ jenom v případě, že jsou vaše funkce spuštěné.<br/>✔ horizontálního navýšení kapacity, a to i během období vysokého zatížení.|  
-|**[Plán Premium](#premium-plan)**|Při automatickém škálování na základě poptávky používejte předem zadržené pracovní procesy ke spouštění aplikací bez prodlevy po nečinnosti, spuštění na výkonnějších instancích a připojení k virtuální sítě. Zvažte plán Azure Functions Premium v následujících situacích, kromě všech funkcí plánu App Service: <br/>✔ Vaše aplikace Function App běží nepřetržitě nebo téměř nepřetržitě.<br/>✔ Máte vysoký počet malých spuštění a máte vysoké náklady na spuštění, ale v plánu spotřeby se účtují s malým počtem sekund.<br/>✔ Budete potřebovat více možností procesoru nebo paměti, než jaké poskytuje plán spotřeby.<br/>✔ Váš kód musí běžet delší dobu, než je maximální doba běhu povolená v plánu spotřeby.<br/>✔ Vyžadujete funkce, které jsou k dispozici pouze [schopný v plánu Premium, například připojení k virtuální síti.|  
+|**[Plán Premium](#premium-plan)**|Při automatickém škálování na základě poptávky používejte předem zadržené pracovní procesy ke spouštění aplikací bez prodlevy po nečinnosti, spuštění na výkonnějších instancích a připojení k virtuální sítě. Zvažte plán Azure Functions Premium v následujících situacích, kromě všech funkcí plánu App Service: <br/>✔ Vaše aplikace Function App běží nepřetržitě nebo téměř nepřetržitě.<br/>✔ Máte vysoký počet malých spuštění a máte vysoké náklady na spuštění, ale v plánu spotřeby se účtují s malým počtem sekund.<br/>✔ Budete potřebovat více možností procesoru nebo paměti, než jaké poskytuje plán spotřeby.<br/>✔ Váš kód musí běžet delší dobu, než je maximální doba běhu povolená v plánu spotřeby.<br/>✔ Vyžadujete funkce, které jsou k dispozici pouze v plánu Premium, například připojení k virtuální síti.|  
 |**[Vyhrazený plán](#app-service-plan)**<sup>1</sup>|Spusťte své funkce v rámci plánu App Service v pravidelných App Servicech tarifech. Vhodným způsobem pro dlouhotrvající operace, i když je potřeba více prediktivního škálování a nákladů. Vezměte v úvahu App Service plán v následujících situacích:<br/>✔ Máte existující, nevyužité virtuální počítače, které už používají jiné instance App Service.<br/>✔ Chcete zadat vlastní image, na které se mají spouštět vaše funkce.|  
 |**[Pomocného mechanismu](#app-service-plan)**<sup>1</sup>|App Service Environment (pomocného mechanismu) je funkce App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění App Service aplikací ve velkém měřítku. Služby ASE jsou vhodné pro úlohy aplikací, které vyžadují: <br/>✔ Velmi vysokého měřítka.<br/>✔ Izolaci a zabezpečení přístupu k síti.<br/>✔ Vysoké využití paměti.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes poskytuje plně izolované a vyhrazené prostředí běžící nad platformou Kubernetes.  Kubernetes je vhodný pro úlohy aplikací, které vyžadují: <br/>✔ Požadavky na vlastní hardware.<br/>✔ Izolaci a zabezpečení přístupu k síti.<br/>✔ Schopnost spouštět v hybridním nebo multi-cloudovém prostředí.<br/>✔ Běžet společně se stávajícími aplikacemi a službami Kubernetes.|  

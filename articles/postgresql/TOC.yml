@@ -112,6 +112,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: Šifrování dat
               href: concepts-data-encryption-postgresql.md
+            - name: Dvojité šifrování infrastruktury
+              href: concepts-infrastructure-double-encryption.md
             - name: Standardní hodnoty zabezpečení
               href: security-baseline.md
         - name: Kontinuita podnikových procesů
@@ -307,6 +309,10 @@
               href: howto-data-encryption-cli.md
             - name: Ověření šifrování dat
               href: howto-data-encryption-validation.md
+        - name: Dvojité šifrování infrastruktury
+          items:
+            - name: Konfigurace dvojitého šifrování infrastruktury
+              href: howto-double-encryption.md
         - name: Restartování serveru
           items:
             - name: portál Azure

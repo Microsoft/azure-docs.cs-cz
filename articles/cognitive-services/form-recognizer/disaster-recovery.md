@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: ebc6ff2c7c0d72dff318c7582d9ae5339682bc95
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100868"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028232"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
@@ -162,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Další kroky
 
 V této příručce jste zjistili, jak používat rozhraní API pro kopírování k zálohování vlastních modelů do sekundárního prostředku pro rozpoznávání formulářů. Dále si Prozkoumejte referenční materiály k rozhraní API a podívejte se, co můžete dělat s nástrojem pro rozpoznávání formulářů.
-* [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+* [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

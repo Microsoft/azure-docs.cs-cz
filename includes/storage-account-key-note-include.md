@@ -5,18 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 95639caddfa627290f4e7153d50f9f7799a1f320
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba715d510dc296ffa8f9c0ee58841f284416a118
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460559"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027323"
 ---
 ## <a name="protect-your-access-keys"></a>Ochrana přístupových klíčů
 
 Přístupové klíče účtu úložiště jsou podobné kořenovému heslu vašeho účtu úložiště. Vždy buďte opatrní, abyste chránili přístupové klíče. Pomocí Azure Key Vault můžete bezpečně spravovat a střídat klíče. Vyhněte se distribuci přístupových klíčů jiným uživatelům, pevným kódováním nebo uložením kamkoli do prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že by mohly být ohrožené, můžete klíče otočit.
 
-Pokud je to možné, použijte Azure Active Directory (Azure AD) k autorizaci požadavků do úložiště objektů BLOB a front namísto sdíleného klíče. Azure AD poskytuje vynikající zabezpečení a jednoduchost používání sdíleného klíče. Další informace o autorizaci přístupu k datům pomocí Azure AD najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../articles/storage/common/storage-auth-aad.md).
+> [!NOTE]
+> Microsoft doporučuje pomocí Azure Active Directory (Azure AD) autorizovat požadavky na data objektů BLOB a front (Pokud je to možné) místo sdíleného klíče. Azure AD poskytuje vynikající zabezpečení a jednoduchost používání sdíleného klíče. Další informace o autorizaci přístupu k datům pomocí Azure AD najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../articles/storage/common/storage-auth-aad.md).

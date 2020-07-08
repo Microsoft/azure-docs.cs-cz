@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů pro Linux
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654863"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026708"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytvoření zásad konfigurace hostů pro Linux
 
@@ -81,7 +81,7 @@ I v prostředích systému Linux používá konfigurace hosta konfiguraci požad
 
 #### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
-Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Správce prostředků musí být stejný.
+Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Azure Resource Manager (šablona ARM) musí být stejné.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfigurace vlastní konfigurace hosta v systému Linux
 
@@ -276,9 +276,9 @@ New-GuestConfigurationPolicy `
 
 Následující soubory vytvořil `New-GuestConfigurationPolicy` :
 
-- **auditIfNotExists. JSON**
-- **deployIfNotExists. JSON**
-- **Iniciativa. JSON**
+- **auditIfNotExists.jsna**
+- **deployIfNotExists.jsna**
+- **Initiative.jsna**
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
 
@@ -347,7 +347,7 @@ describe file(attr_path) do
 end
 ```
 
-Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr s názvem **Parameters**. Tento parametr přebírá zatřiďovací tabulku, včetně všech podrobností o jednotlivých parametrech, a automaticky vytvoří všechny požadované oddíly souborů, pomocí kterých se vytvoří každá definice Azure Policy.
+Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr**. Tento parametr přebírá zatřiďovací tabulku, včetně všech podrobností o jednotlivých parametrech, a automaticky vytvoří všechny požadované oddíly souborů, pomocí kterých se vytvoří každá definice Azure Policy.
 
 Následující příklad vytvoří definici zásady pro audit cesty k souboru, kde uživatel zadá cestu v době přiřazení zásady.
 
@@ -371,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 

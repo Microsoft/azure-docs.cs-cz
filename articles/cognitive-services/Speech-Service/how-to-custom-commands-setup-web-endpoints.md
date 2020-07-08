@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414279"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027677"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
@@ -43,14 +43,15 @@ V tomto článku se naučíte, jak nastavit koncové body webu v aplikaci s vlas
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
-   | Název | UpdateDeviceState | Název webového koncového bodu |
+   | Name | UpdateDeviceState | Název webového koncového bodu |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | Adresa URL koncového bodu, ke kterému se má vaše aplikace pro vlastní příkazy mluvit |
    | Metoda | POST | Povolené interakce (například GET, POST) s vaším koncovým bodem.|
-   | Hlavičky | Key: aplikace, hodnota: jedinečný název vaší aplikace | Parametry záhlaví, které mají být zahrnuty v hlavičce požadavku.|
+   | Hlavičky | Klíč: App, Value: Vezměte prvních 8 číslic vaší hodnoty applicationId. | Parametry záhlaví, které mají být zahrnuty v hlavičce požadavku.|
 
     > [!NOTE]
     > - Příklad webového koncového bodu vytvořeného pomocí [funkce Azure Functions](https://docs.microsoft.com/azure/azure-functions/), která se zastavuje s databází, která ukládá stav zařízení televizoru a ventilátoru
     > - Navrhovaná hlavička je nutná jenom pro ukázkový koncový bod.
+    > - Chcete-li se ujistit, že hodnota záhlaví je v našem ukázkovém koncovém bodu jedinečná, vezměte prvních 8 číslic vaší hodnoty applicationId.
     > - V reálném světě může být webový koncový bod koncovým bodem služby [IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) , který spravuje vaše zařízení.
 
 1. Klikněte na **Uložit**.
@@ -68,12 +69,14 @@ V tomto článku se naučíte, jak nastavit koncové body webu v aplikaci s vlas
    | ------- | --------------- | ----------- |
    | Koncové body | UpdateDeviceState | Koncový bod webu, který chcete zavolat v této akci. |
    | Parametry dotazů | Item = {SubjectDevice} &&Value = {(OnOff)} | Parametry dotazu, které se mají připojit k adrese URL webového koncového bodu  |
-   | Obsah těla | – | Obsah těla žádosti |
+   | Obsah těla | Není k dispozici | Obsah těla žádosti |
 
     > [!NOTE]
     > - Navrhované parametry dotazu jsou potřebné jenom pro ukázkový koncový bod.
 
 1. V případě **úspěchu – akce, která se má provést**, vyberte **Odeslat odezvu řeči**.
+    
+    V **jednoduchém editoru**zadejte `{SubjectDevice} is {OnOff}` .
    
    > [!div class="mx-imgBorder"]
    > ![Akce webových koncových bodů volání při úspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -86,6 +89,9 @@ V tomto článku se naučíte, jak nastavit koncové body webu v aplikaci s vlas
    > - K polím v odpovědi HTTP můžete také přímo přistupovat pomocí `{YourWebEndpointName.FieldName}` . Příklad: `{UpdateDeviceState.TV}`
 
 1. V případě **selhání – akce, která se má provést**, vyberte **Odeslat odezvu řeči** .
+
+    V **jednoduchém editoru**zadejte `Sorry, {WebEndpointErrorMessage}` .
+
    > [!div class="mx-imgBorder"]
    > ![Akce webových koncových bodů volání při selhání](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 

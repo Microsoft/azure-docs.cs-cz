@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1acb01ceb9747fa833e998bd5501ce8a8a51babb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119456"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025773"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 
@@ -122,6 +122,8 @@ Odkaz synapse se nedoporučuje, pokud hledáte tradiční požadavky na datový 
 
 * V současné době se analytické úložiště dá povolit jenom pro nové kontejnery (v nových i existujících účtech Azure Cosmos DB).
 
+* V Preview se pro účty databáze s povoleným odkazem synapse nepodporuje zálohování a obnovování kontejnerů. Pokud máte produkční úlohy, které vyžadují funkci zálohování a obnovení, nedoporučujeme na těchto databázových účtech povolit synapse odkaz. 
+
 * Přístup k Azure Cosmos DB analytickému obchodu s synapse bez SQL serveru je v současné době ve verzi gatedd Preview. Pokud chcete požádat o přístup, odešlete e-mailem [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com).
 
 * Přístup k úložišti Azure Cosmos DB Analytics s zřízeným synapse SQL není momentálně k dispozici.
@@ -134,7 +136,7 @@ Model fakturace propojení Azure synapse zahrnuje náklady vzniklé pomocí Azur
 
 Další informace najdete v následujících dokumentech:
 
-* [Přehled analytického úložiště Azure Cosmos DB](analytical-store-introduction.md)
+* [Přehled analýzy Azure Cosmos DBho úložiště](analytical-store-introduction.md)
 
 * [Začínáme s Azure Synapse Linkem pro Azure Cosmos DB](configure-synapse-link.md)
  

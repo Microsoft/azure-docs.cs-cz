@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e26d2e98a791c4b4e212863700a4745185642de7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 486b89e5c93de7444758638ad36743ff2f0bcb37
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558410"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026334"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Náhled klientské knihovny Microsoft Azure Machine Learning Pythonu může povolit zabezpečený přístup k vašim datovým sadám Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a správu datových sad v pracovním prostoru.
@@ -38,23 +38,28 @@ Má závislost na následujících balíčcích:
 
 * požádal
 * Python – dateutil
-* PANDAS
+* pandas
 
 Doporučujeme použít distribuci Pythonu, jako je [Anaconda](https://www.anaconda.com/) nebo [zápoje](https://store.enthought.com/downloads/), která se dodává s Pythonem, IPython a třemi balíčky uvedenými výše. I když IPython není bezpodmínečně nutné, jedná se o Skvělé prostředí pro interaktivní práci a vizualizaci dat.
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Postup instalace klientské knihovny Azure Machine Learning Pythonu
 Nainstalujte klientskou knihovnu Azure Machine Learning Python pro dokončení úkolů popsaných v tomto tématu. Tato knihovna je k dispozici z [indexu balíčku Pythonu](https://pypi.python.org/pypi/azureml). Pokud ho chcete nainstalovat do prostředí Pythonu, spusťte následující příkaz z místního prostředí Pythonu:
 
-    pip install azureml
+```console
+pip install azureml
+```
 
 Případně si můžete stáhnout a nainstalovat ze zdrojů na [GitHubu](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
 
-    python setup.py install
+```console
+python setup.py install
+```
 
 Pokud máte v počítači nainstalovaný Git, můžete k instalaci přímo z úložiště Git použít PIP:
 
-    pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
-
+```console
+pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
+```
 
 ## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>Použití fragmentů kódu pro přístup k datovým sadám
 Knihovna klienta Python poskytuje programový přístup k vašim existujícím datovým sadám z experimentů, které byly spuštěny.
@@ -143,98 +148,119 @@ Následující kroky ukazují příklad, který vytváří experiment, spouští
 ### <a name="workspace"></a>Pracovní prostor
 Pracovní prostor je vstupním bodem pro knihovnu klienta Python. Zadejte `Workspace` třídu s ID pracovního prostoru a autorizačním tokenem pro vytvoření instance:
 
-    ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
-                   authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
-
+```python
+ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
+               authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
+```
 
 ### <a name="enumerate-datasets"></a>Zobrazení výčtu datových sad
 Zobrazení výčtu všech datových sad v daném pracovním prostoru:
 
-    for ds in ws.datasets:
-        print(ds.name)
+```python
+for ds in ws.datasets:
+    print(ds.name)
+```
 
 Chcete-li vytvořit výčet pouze datových sad vytvořených uživatelem:
 
-    for ds in ws.user_datasets:
-        print(ds.name)
+```python
+for ds in ws.user_datasets:
+    print(ds.name)
+```
 
 Chcete-li vytvořit výčet pouze ukázkových datových sad:
 
-    for ds in ws.example_datasets:
-        print(ds.name)
+```python
+for ds in ws.example_datasets:
+    print(ds.name)
+```
 
 Můžete získat přístup k datové sadě podle názvu (rozlišuje velká a malá písmena):
 
-    ds = ws.datasets['my dataset name']
+```python
+ds = ws.datasets['my dataset name']
+```
 
 Nebo k němu máte přístup podle indexu:
 
-    ds = ws.datasets[0]
-
+```python
+ds = ws.datasets[0]
+```
 
 ### <a name="metadata"></a>Metadata
 Datové sady mají kromě obsahu i metadata. (Mezilehlé datové sady jsou výjimkou z tohoto pravidla a nemají žádná metadata.)
 
 Některé hodnoty metadat jsou přiřazeny uživatelem v době vytváření:
 
-    print(ds.name)
-    print(ds.description)
-    print(ds.family_id)
-    print(ds.data_type_id)
+* `print(ds.name)`
+* `print(ds.description)`
+* `print(ds.family_id)`
+* `print(ds.data_type_id)`
 
 Jiné jsou hodnoty přiřazené službou Azure ML:
 
-    print(ds.id)
-    print(ds.created_date)
-    print(ds.size)
+* `print(ds.id)`
+* `print(ds.created_date)`
+* `print(ds.size)`
 
 Další informace `SourceDataset` o dostupných metadatech najdete ve třídě.
 
 ### <a name="read-contents"></a>Číst obsah
 Fragmenty kódu, které poskytuje Machine Learning Studio (Classic), automaticky stáhnou a deserializovat datovou sadu do objektu PANDAS dataframe. To se provádí pomocí `to_dataframe` metody:
 
-    frame = ds.to_dataframe()
+```python
+frame = ds.to_dataframe()
+```
 
 Pokud si přejete stáhnout nezpracovaná data a provést deserializaci sami, jedná se o možnost. V tuto chvíli je to jediná možnost pro formáty, jako je například ' ARFF ', kterou nelze deserializovat v knihovně klienta Python.
 
 Čtení obsahu jako textu:
 
-    text_data = ds.read_as_text()
+```python
+text_data = ds.read_as_text()
+```
 
 Čtení obsahu jako binárního souboru:
 
-    binary_data = ds.read_as_binary()
+```python
+binary_data = ds.read_as_binary()
+```
 
 Můžete také otevřít datový proud pro obsah:
 
-    with ds.open() as file:
-        binary_data_chunk = file.read(1000)
-
+```python
+with ds.open() as file:
+    binary_data_chunk = file.read(1000)
+```
 
 ### <a name="create-a-new-dataset"></a>Vytvořit novou datovou sadu
 Knihovna klienta Python umožňuje nahrávat datové sady z programu Pythonu. Tyto datové sady jsou pak k dispozici pro použití ve vašem pracovním prostoru.
 
 Pokud máte data v PANDAS dataframe, použijte následující kód:
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_dataframe(
-        dataframe=frame,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_dataframe(
+    dataframe=frame,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 Pokud jsou vaše data už serializovaná, můžete použít:
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_raw_data(
-        raw_data=raw_data,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_raw_data(
+    raw_data=raw_data,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 Knihovna klienta Pythonu je schopná serializovat PANDAS dataframe do následujících formátů (konstanty pro tyto jsou ve `azureml.DataTypeIds` třídě):
 
@@ -249,66 +275,76 @@ Pokud se pokusíte nahrát novou datovou sadu s názvem, který se shoduje s exi
 
 Chcete-li aktualizovat existující datovou sadu, musíte nejprve získat odkaz na existující datovou sadu:
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 Pak použijte `update_from_dataframe` k serializaci a nahrazení obsahu datové sady v Azure:
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(frame2)
+dataset.update_from_dataframe(frame2)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 Pokud chcete data serializovat v jiném formátu, zadejte hodnotu volitelného `data_type_id` parametru.
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets['existing dataset']
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        data_type_id=DataTypeIds.GenericTSV,
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    data_type_id=DataTypeIds.GenericTSV,
+)
 
-    print(dataset.data_type_id) # 'GenericTSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericTSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 Volitelně můžete nastavit nový popis zadáním hodnoty `description` parametru.
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to feb 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to feb 2015'
+```
 
 Volitelně můžete nastavit nový název zadáním hodnoty `name` parametru. Od této chvíle načtěte datovou sadu pouze pomocí nového názvu. Následující kód aktualizuje data, název a popis.
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        name='existing dataset v2',
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    name='existing dataset v2',
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id)                    # 'GenericCSV'
-    print(dataset.name)                            # 'existing dataset v2'
-    print(dataset.description)                     # 'data up to feb 2015'
+print(dataset.data_type_id)                    # 'GenericCSV'
+print(dataset.name)                            # 'existing dataset v2'
+print(dataset.description)                     # 'data up to feb 2015'
 
-    print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
-    print(ws.datasets['existing dataset'].name)    # IndexError
+print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
+print(ws.datasets['existing dataset'].name)    # IndexError
+```
 
 `data_type_id`Parametry a `name` `description` jsou volitelné a výchozí jejich předchozí hodnota. `dataframe`Parametr je vždy vyžadován.
 

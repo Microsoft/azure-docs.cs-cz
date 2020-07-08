@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Virtual Machine Scale Sets
-summary: Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatickým škálováním.
+summary: Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny virtuálních počítačů s vyrovnáváním zatížení a automatickým škálováním.
 metadata:
   title: Dokumentace ke službě Virtual Machine Scale Sets
   description: Naučte se vytvářet, konfigurovat, spravovat a automaticky škálovat škálovací sady virtuálních počítačů prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 8eff3979088aecf5ea8ed0383a1af8ad0d71c21d
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: 96719159e3dd360554c795c5cd1f6436d05fbeeb
+  ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701342"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86027252"
 landingContent:
 - title: Informace o škálovacích sadách virtuálních počítačů
   linkLists:

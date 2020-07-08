@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76719989"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026045"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
 Tento článek popisuje, jak pomocí dotazů na podregistru snížit data uložená v tabulkách podregistru Azure HDInsight a zmenšit tak jejich lepší správu pro účely analýzy. Pokrývá tři oblíbené metody vzorkování:
@@ -38,16 +38,18 @@ Jednotný náhodný odběr znamená, že každý řádek v datové sadě má ste
 
 Zde je příklad dotazu:
 
-    SET sampleRate=<sample rate, 0-1>;
+```python
+SET sampleRate=<sample rate, 0-1>;
+select
+    field1, field2, …, fieldN
+from
+    (
     select
-        field1, field2, …, fieldN
-    from
-        (
-        select
-            field1, field2, …, fieldN, rand() as samplekey
-        from <hive table name>
-        )a
-    where samplekey<='${hiveconf:sampleRate}'
+        field1, field2, …, fieldN, rand() as samplekey
+    from <hive table name>
+    )a
+where samplekey<='${hiveconf:sampleRate}'
+```
 
 Zde `<sample rate, 0-1>` Určuje poměr záznamů, které uživatelé chtějí vzorkovat.
 
@@ -56,48 +58,51 @@ Při vzorkování dat kategorií můžete chtít zahrnout nebo vyloučit všechn
 
 Tady je příklad dotazu, který ukázky seskupují:
 
-    SET sampleRate=<sample rate, 0-1>;
+```python
+SET sampleRate=<sample rate, 0-1>;
+select
+    b.field1, b.field2, …, b.catfield, …, b.fieldN
+from
+    (
     select
-        b.field1, b.field2, …, b.catfield, …, b.fieldN
+        field1, field2, …, catfield, …, fieldN
+    from <table name>
+    )b
+join
+    (
+    select
+        catfield
     from
         (
         select
-            field1, field2, …, catfield, …, fieldN
+            catfield, rand() as samplekey
         from <table name>
-        )b
-    join
-        (
-        select
-            catfield
-        from
-            (
-            select
-                catfield, rand() as samplekey
-            from <table name>
-            group by catfield
-            )a
-        where samplekey<='${hiveconf:sampleRate}'
-        )c
-    on b.catfield=c.catfield
+        group by catfield
+        )a
+    where samplekey<='${hiveconf:sampleRate}'
+    )c
+on b.catfield=c.catfield
+```
 
 ## <a name="stratified-sampling"></a><a name="stratified"></a>Vzorkování Stratified
 Náhodný odběr vzorkování je stratified s ohledem na proměnnou kategorií, když se získané vzorky nacházejí v kategorií hodnotách, které jsou přítomny ve stejném poměru, jako kdyby byly v nadřazeném souboru. Pomocí výše uvedeného příkladu Předpokládejme, že vaše data obsahují následující pozorování podle států: NEWARKU má 100 pozorování, NY má 60 pozorování a WA 300 obsahuje poznámky. Pokud zadáte rychlost vzorkování stratified, která bude 0,5, pak získaný vzorek by měl mít přibližně 50, 30 a 150 pozorování NEWARKU, NY a WA.
 
 Zde je příklad dotazu:
 
-    SET sampleRate=<sample rate, 0-1>;
+```hiveql
+SET sampleRate=<sample rate, 0-1>;
+select
+    field1, field2, field3, ..., fieldN, state
+from
+    (
     select
-        field1, field2, field3, ..., fieldN, state
-    from
-        (
-        select
-            field1, field2, field3, ..., fieldN, state,
-            count(*) over (partition by state) as state_cnt,
-              rank() over (partition by state order by rand()) as state_rank
-          from <table name>
-        ) a
-    where state_rank <= state_cnt*'${hiveconf:sampleRate}'
-
+        field1, field2, field3, ..., fieldN, state,
+        count(*) over (partition by state) as state_cnt,
+          rank() over (partition by state order by rand()) as state_rank
+      from <table name>
+    ) a
+where state_rank <= state_cnt*'${hiveconf:sampleRate}'
+```
 
 Informace o pokročilejších metodách vzorkování, které jsou k dispozici v podregistru, najdete v tématu [vzorkování LanguageManual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a65143394d8e6ee8a385cc5d1737cc976aae47b2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a748b9284407b5ecd8cc8f6225c6762e7017d4d9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558479"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026113"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Vědecké zpracování týmových dat v akci: používání Azure synapse Analytics
 V tomto kurzu Vás provedeme vytvořením a nasazením modelu strojového učení s využitím Azure synapse Analytics pro veřejně dostupnou datovou sadu, která je datovou sadou [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) . Model binární klasifikace vytváří předpověď bez ohledu na to, jestli je pro cestu placené nebo ne.  Mezi modely patří klasifikace s více třídami (bez ohledu na to, zda existuje Tip) a regrese (rozdělení pro placené částky Tip).
@@ -26,22 +26,33 @@ Postup následuje po pracovním postupu [TDSP (Team data vědecký proces)](http
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>Datová sada cest taxislužby pro NYC
 Data NYC taxislužby se skládají z přibližně 20 GB komprimovaných souborů CSV (~ 48 GB nekomprimovaných), zaznamenáváním více než 173 000 000 jednotlivých cest a tarifů placených za každou cestu. Každý záznam cesty zahrnuje umístění a časy vyzvednutí a dropoff, číslo licence v anonymního napadení (strojvedoucí) a číslo Medallion (jedinečné ID taxislužby). Data se týkají všech cest v roce 2013 a jsou k dispozici v následujících dvou datových sadách pro každý měsíc:
 
-1. Soubor **trip_data. csv** obsahuje podrobnosti o cestě, jako je třeba počet cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
+1. **trip_data.csv** soubor obsahuje podrobnosti o cestě, jako je třeba počet cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
 
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. Soubor **trip_fare. csv** obsahuje podrobnosti o tarifu placeného za každou cestu, jako je typ platby, částka tarifů, příplatek a daně, tipy a mýtné a celková placená částka. Tady je několik ukázkových záznamů:
+`medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
 
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+`89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
+2. Soubor **trip_fare.csv** obsahuje podrobnosti o tarifu placeného za každou cestu, jako je typ platby, částka tarifů, příplatek a daně, tipy a mýtné a celková placená částka. Tady je několik ukázkových záznamů:
+
+`medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+`89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+`0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+`DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 **Jedinečný klíč** , který se používá pro připojení k \_ datům cest a služební \_ tarif, se skládá z následujících tří polí:
 
@@ -55,11 +66,16 @@ Pro ilustraci tří druhů úloh modelování formuluje tři problémy s předpo
 1. **Binární klasifikace**: Chcete-li předpovědět, zda byla pro cestu vyplacena * \_ hodnota* tipu, to znamená, že hodnota tipu větší než $0 je pozitivním příkladem, zatímco je * \_ hodnota tipu* $0 záporná.
 2. **Klasifikace více tříd**: pro předpověď rozsahu tipu placeného pro danou cestu. * \_ Velikost tipu* rozdělíme na pět přihrádek nebo tříd:
 
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0 and tip_amount <= $5
-        Class 2 : tip_amount > $5 and tip_amount <= $10
-        Class 3 : tip_amount > $10 and tip_amount <= $20
-        Class 4 : tip_amount > $20
+`Class 0 : tip_amount = $0`
+
+`Class 1 : tip_amount > $0 and tip_amount <= $5`
+
+`Class 2 : tip_amount > $5 and tip_amount <= $10`
+
+`Class 3 : tip_amount > $10 and tip_amount <= $20`
+
+`Class 4 : tip_amount > $20`
+
 3. **Regresní úloha**: pro předpověď množství tipu placeného pro cestu.
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Nastavení prostředí pro Azure Data vědu pro pokročilé analýzy
@@ -91,13 +107,15 @@ Pokud chcete zřídit instanci Azure synapse Analytics, postupujte podle dokumen
 >
 >
 
-    BEGIN TRY
-           --Try to create the master key
-        CREATE MASTER KEY
-    END TRY
-    BEGIN CATCH
-           --If the master key exists, do nothing
-    END CATCH;
+```sql
+BEGIN TRY
+       --Try to create the master key
+    CREATE MASTER KEY
+END TRY
+BEGIN CATCH
+       --If the master key exists, do nothing
+END CATCH;
+```
 
 **V rámci vašeho předplatného Azure vytvořte pracovní prostor Azure Machine Learning.** Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md).
 
@@ -109,11 +127,13 @@ Otevřete konzolu příkazového řádku prostředí Windows PowerShell. Spusťt
 >
 >
 
-    $source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
-    $ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
-    $wc = New-Object System.Net.WebClient
-    $wc.DownloadFile($source, $ps1_dest)
-    .\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
+```azurepowershell
+$source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
+$ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
+$wc = New-Object System.Net.WebClient
+$wc.DownloadFile($source, $ps1_dest)
+.\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
+```
 
 Po úspěšném provedení se aktuální pracovní adresář změní na *-DestDir*. Měli byste vidět obrazovku, jak je znázorněno níže:
 
@@ -121,7 +141,9 @@ Po úspěšném provedení se aktuální pracovní adresář změní na *-DestDi
 
 Ve *DestDir*spusťte následující skript PowerShellu v režimu správce:
 
-    ./SQLDW_Data_Import.ps1
+```azurepowershell
+./SQLDW_Data_Import.ps1
+```
 
 Při prvním spuštění skriptu PowerShell budete požádáni o zadání informací z Azure synapse Analytics a účtu úložiště Azure Blob. Po prvním dokončení tohoto skriptu PowerShellu se zadané přihlašovací údaje zapíší do konfiguračního souboru SQLDW. conf v tomto pracovním adresáři. Budoucí spuštění tohoto souboru skriptu PowerShellu má možnost číst všechny potřebné parametry z tohoto konfiguračního souboru. Pokud potřebujete změnit některé parametry, můžete zvolit zadání parametrů na obrazovce po zobrazení výzvy odstraněním tohoto konfiguračního souboru a vložením hodnot parametrů jako výzvy nebo změnou hodnot parametrů úpravou souboru SQLDW. conf v adresáři *DestDir* .
 
@@ -134,178 +156,202 @@ Tento soubor **skriptu PowerShellu** dokončí následující úlohy:
 
 * **Stáhne a nainstaluje AzCopy**, pokud AzCopy ještě není nainstalovaný.
 
-        $AzCopy_path = SearchAzCopy
-        if ($AzCopy_path -eq $null){
-               Write-Host "AzCopy.exe is not found in C:\Program Files*. Now, start installing AzCopy..." -ForegroundColor "Yellow"
-            InstallAzCopy
-            $AzCopy_path = SearchAzCopy
-        }
-            $env_path = $env:Path
-            for ($i=0; $i -lt $AzCopy_path.count; $i++){
-                if ($AzCopy_path.count -eq 1){
-                    $AzCopy_path_i = $AzCopy_path
-                } else {
-                    $AzCopy_path_i = $AzCopy_path[$i]
-                }
-                if ($env_path -notlike '*' +$AzCopy_path_i+'*'){
-                    Write-Host $AzCopy_path_i 'not in system path, add it...'
-                    [Environment]::SetEnvironmentVariable("Path", "$AzCopy_path_i;$env_path", "Machine")
-                    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
-                    $env_path = $env:Path
-                }
+  ```azurepowershell
+  $AzCopy_path = SearchAzCopy
+  if ($AzCopy_path -eq $null){
+         Write-Host "AzCopy.exe is not found in C:\Program Files*. Now, start installing AzCopy..." -ForegroundColor "Yellow"
+      InstallAzCopy
+      $AzCopy_path = SearchAzCopy
+  }
+      $env_path = $env:Path
+      for ($i=0; $i -lt $AzCopy_path.count; $i++){
+          if ($AzCopy_path.count -eq 1){
+              $AzCopy_path_i = $AzCopy_path
+          } else {
+              $AzCopy_path_i = $AzCopy_path[$i]
+          }
+          if ($env_path -notlike '*' +$AzCopy_path_i+'*'){
+              Write-Host $AzCopy_path_i 'not in system path, add it...'
+              [Environment]::SetEnvironmentVariable("Path", "$AzCopy_path_i;$env_path", "Machine")
+              $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
+              $env_path = $env:Path
+          }
+  ```
+
 * **Zkopíruje data do privátního účtu BLOB Storage** z veřejného objektu BLOB pomocí AzCopy.
 
-        Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
-        $start_time = Get-Date
-        AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
-        $end_time = Get-Date
-        $time_span = $end_time - $start_time
-        $total_seconds = [math]::Round($time_span.TotalSeconds,2)
-        Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
-        Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
+  ```azurepowershell
+  Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
+  $start_time = Get-Date
+  AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
+  $end_time = Get-Date
+  $time_span = $end_time - $start_time
+  $total_seconds = [math]::Round($time_span.TotalSeconds,2)
+  Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
+  Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
+  ```
+
 * Pomocí následujících příkazů **načte data do vaší služby Azure synapse Analytics** z vašeho privátního účtu BLOB Storage s využitím LoadDataToSQLDW. SQL.
 
   * Vytvoření schématu
 
-          EXEC (''CREATE SCHEMA {schemaname};'');
+    ```sql
+    EXEC (''CREATE SCHEMA {schemaname};'');
+    ```
+
   * Vytvoření databáze s rozsahem pověření
 
-          CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
-          WITH IDENTITY = ''asbkey'' ,
-          Secret = ''{StorageAccountKey}''
+    ```sql
+    CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
+    WITH IDENTITY = ''asbkey'' ,
+    Secret = ''{StorageAccountKey}''
+    ```
+
   * Vytvoření externího zdroje dat pro objekt blob Azure Storage
 
-          CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
-          WITH
-          (
-              TYPE = HADOOP,
-              LOCATION =''wasbs://{ContainerName}@{StorageAccountName}.blob.core.windows.net'',
-              CREDENTIAL = {KeyAlias}
-          )
-          ;
+    ```sql
+    CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
+    WITH
+    (
+        TYPE = HADOOP,
+        LOCATION =''wasbs://{ContainerName}@{StorageAccountName}.blob.core.windows.net'',
+        CREDENTIAL = {KeyAlias}
+    )
+    ;
 
-          CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage}
-          WITH
-          (
-              TYPE = HADOOP,
-              LOCATION =''wasbs://{ContainerName}@{StorageAccountName}.blob.core.windows.net'',
-              CREDENTIAL = {KeyAlias}
-          )
-          ;
+    CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage}
+    WITH
+    (
+        TYPE = HADOOP,
+        LOCATION =''wasbs://{ContainerName}@{StorageAccountName}.blob.core.windows.net'',
+        CREDENTIAL = {KeyAlias}
+    )
+    ;
+    ```
+
   * Vytvoří externí formát souboru pro soubor CSV. Data jsou nekomprimovaná a pole jsou oddělená znakem kanálu.
 
-          CREATE EXTERNAL FILE FORMAT {csv_file_format}
-          WITH
-          (
-              FORMAT_TYPE = DELIMITEDTEXT,
-              FORMAT_OPTIONS
-              (
-                  FIELD_TERMINATOR ='','',
-                  USE_TYPE_DEFAULT = TRUE
-              )
-          )
-          ;
+    ```sql
+    CREATE EXTERNAL FILE FORMAT {csv_file_format}
+    WITH
+    (
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS
+        (
+            FIELD_TERMINATOR ='','',
+            USE_TYPE_DEFAULT = TRUE
+        )
+    )
+    ;
+    ```
+
   * Vytvoření externích tabulek tarifů a cest pro datovou sadu NYC taxislužby ve službě Azure Blob Storage.
 
-          CREATE EXTERNAL TABLE {external_nyctaxi_fare}
-          (
-              medallion varchar(50) not null,
-              hack_license varchar(50) not null,
-              vendor_id char(3),
-              pickup_datetime datetime not null,
-              payment_type char(3),
-              fare_amount float,
-              surcharge float,
-              mta_tax float,
-              tip_amount float,
-              tolls_amount float,
-              total_amount float
-          )
-          with (
-              LOCATION    = ''/nyctaxifare/'',
-              DATA_SOURCE = {nyctaxi_fare_storage},
-              FILE_FORMAT = {csv_file_format},
-              REJECT_TYPE = VALUE,
-              REJECT_VALUE = 12
-          )
+    ```sql
+    CREATE EXTERNAL TABLE {external_nyctaxi_fare}
+    (
+        medallion varchar(50) not null,
+        hack_license varchar(50) not null,
+        vendor_id char(3),
+        pickup_datetime datetime not null,
+        payment_type char(3),
+        fare_amount float,
+        surcharge float,
+        mta_tax float,
+        tip_amount float,
+        tolls_amount float,
+        total_amount float
+    )
+    with (
+        LOCATION    = ''/nyctaxifare/'',
+        DATA_SOURCE = {nyctaxi_fare_storage},
+        FILE_FORMAT = {csv_file_format},
+        REJECT_TYPE = VALUE,
+        REJECT_VALUE = 12
+    )
 
-            CREATE EXTERNAL TABLE {external_nyctaxi_trip}
-            (
-                   medallion varchar(50) not null,
-                   hack_license varchar(50)  not null,
-                   vendor_id char(3),
-                   rate_code char(3),
-                   store_and_fwd_flag char(3),
-                   pickup_datetime datetime  not null,
-                   dropoff_datetime datetime,
-                   passenger_count int,
-                   trip_time_in_secs bigint,
-                   trip_distance float,
-                   pickup_longitude varchar(30),
-                   pickup_latitude varchar(30),
-                   dropoff_longitude varchar(30),
-                   dropoff_latitude varchar(30)
-            )
-            with (
-                LOCATION    = ''/nyctaxitrip/'',
-                DATA_SOURCE = {nyctaxi_trip_storage},
-                FILE_FORMAT = {csv_file_format},
-                REJECT_TYPE = VALUE,
-                REJECT_VALUE = 12
-            )
+      CREATE EXTERNAL TABLE {external_nyctaxi_trip}
+      (
+             medallion varchar(50) not null,
+             hack_license varchar(50)  not null,
+             vendor_id char(3),
+             rate_code char(3),
+             store_and_fwd_flag char(3),
+             pickup_datetime datetime  not null,
+             dropoff_datetime datetime,
+             passenger_count int,
+             trip_time_in_secs bigint,
+             trip_distance float,
+             pickup_longitude varchar(30),
+             pickup_latitude varchar(30),
+             dropoff_longitude varchar(30),
+             dropoff_latitude varchar(30)
+      )
+      with (
+          LOCATION    = ''/nyctaxitrip/'',
+          DATA_SOURCE = {nyctaxi_trip_storage},
+          FILE_FORMAT = {csv_file_format},
+          REJECT_TYPE = VALUE,
+          REJECT_VALUE = 12
+      )
+    ```
 
     - Načtení dat z externích tabulek ve službě Azure Blob Storage do služby Azure synapse Analytics
 
-            CREATE TABLE {schemaname}.{nyctaxi_fare}
-            WITH
-            (
-                CLUSTERED COLUMNSTORE INDEX,
-                DISTRIBUTION = HASH(medallion)
-            )
-            AS
-            SELECT *
-            FROM   {external_nyctaxi_fare}
-            ;
+      ```sql
+      CREATE TABLE {schemaname}.{nyctaxi_fare}
+      WITH
+      (
+          CLUSTERED COLUMNSTORE INDEX,
+          DISTRIBUTION = HASH(medallion)
+      )
+      AS
+      SELECT *
+      FROM   {external_nyctaxi_fare}
+      ;
 
-            CREATE TABLE {schemaname}.{nyctaxi_trip}
-            WITH
-            (
-                CLUSTERED COLUMNSTORE INDEX,
-                DISTRIBUTION = HASH(medallion)
-            )
-            AS
-            SELECT *
-            FROM   {external_nyctaxi_trip}
-            ;
+      CREATE TABLE {schemaname}.{nyctaxi_trip}
+      WITH
+      (
+          CLUSTERED COLUMNSTORE INDEX,
+          DISTRIBUTION = HASH(medallion)
+      )
+      AS
+      SELECT *
+      FROM   {external_nyctaxi_trip}
+      ;
+      ```
 
     - Vytvořte ukázkovou tabulku dat (NYCTaxi_Sample) a vložte do ní data z výběru dotazů SQL v tabulkách Trip a tarif. (Některé kroky tohoto návodu musí použít tuto ukázkovou tabulku.)
 
-            CREATE TABLE {schemaname}.{nyctaxi_sample}
-            WITH
-            (
-                CLUSTERED COLUMNSTORE INDEX,
-                DISTRIBUTION = HASH(medallion)
-            )
-            AS
-            (
-                SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount,
-                tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
-                tip_class = CASE
-                        WHEN (tip_amount = 0) THEN 0
-                        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-                        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-                        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-                        ELSE 4
-                    END
-                FROM {schemaname}.{nyctaxi_trip} t, {schemaname}.{nyctaxi_fare} f
-                WHERE datepart("mi",t.pickup_datetime) = 1
-                AND t.medallion = f.medallion
-                AND   t.hack_license = f.hack_license
-                AND   t.pickup_datetime = f.pickup_datetime
-                AND   pickup_longitude <> ''0''
-                AND   dropoff_longitude <> ''0''
-            )
-            ;
+      ```sql
+      CREATE TABLE {schemaname}.{nyctaxi_sample}
+      WITH
+      (
+          CLUSTERED COLUMNSTORE INDEX,
+          DISTRIBUTION = HASH(medallion)
+      )
+      AS
+      (
+          SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount,
+          tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
+          tip_class = CASE
+                  WHEN (tip_amount = 0) THEN 0
+                  WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+                  WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+                  WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+                  ELSE 4
+              END
+          FROM {schemaname}.{nyctaxi_trip} t, {schemaname}.{nyctaxi_fare} f
+          WHERE datepart("mi",t.pickup_datetime) = 1
+          AND t.medallion = f.medallion
+          AND   t.hack_license = f.hack_license
+          AND   t.pickup_datetime = f.pickup_datetime
+          AND   pickup_longitude <> ''0''
+          AND   dropoff_longitude <> ''0''
+      )
+      ;
+      ```
 
 Geografické umístění účtů úložiště ovlivňuje dobu načítání.
 
@@ -357,75 +403,91 @@ Tady jsou typy úloh zkoumání a vytváření funkcí provedených v této čá
 ### <a name="data-import-verification"></a>Ověření importu dat
 Tyto dotazy poskytují rychlé ověření počtu řádků a sloupců v tabulkách naplněných pomocí paralelního hromadného importu základní verze.
 
-    -- Report number of rows in table <nyctaxi_trip> without table scan
-    SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
+--Sestava počet řádků v tabulce <nyctaxi_trip> bez kontroly tabulky
 
-    -- Report number of columns in table <nyctaxi_trip>
-    SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
+   ```sql
+   SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
+   ```
+
+--Sestava počtu sloupců v tabulce <nyctaxi_trip>
+
+   ```sql
+   SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
+   ```
 
 **Výstup:** Měli byste získat 173 179 759 řádků a 14 sloupců.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Průzkum: distribuce cest pomocí Medallion
 Tento ukázkový dotaz identifikuje medallions (taxislužby čísla), které v zadaném časovém období dokončily více než 100 cest. Dotaz by měl těžit z tabulkového přístupu s dělenou výhodou, protože je podmíněné schémam oddílu **pro \_ Datum vyzvednutí**. Dotazování na celou datovou sadu použije také prohledání děleného tabulky nebo indexu.
 
-    SELECT medallion, COUNT(*)
-    FROM <schemaname>.<nyctaxi_fare>
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
-    GROUP BY medallion
-    HAVING COUNT(*) > 100
+```sql
+SELECT medallion, COUNT(*)
+FROM <schemaname>.<nyctaxi_fare>
+WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
+GROUP BY medallion
+HAVING COUNT(*) > 100
+```
 
 **Výstup:** Dotaz by měl vrátit tabulku s řádky, které určují 13 369 medallions (Taxis) a počet cest dokončených v 2013. Poslední sloupec obsahuje počet dokončených cest.
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Průzkum: distribuce cest pomocí Medallion a hack_license
 Tento příklad identifikuje medallions (čísla taxislužby) a čísla hack_license (ovladačů), která během zadaného časového období dokončila více než 100 cest.
 
-    SELECT medallion, hack_license, COUNT(*)
-    FROM <schemaname>.<nyctaxi_fare>
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
-    GROUP BY medallion, hack_license
-    HAVING COUNT(*) > 100
+```sql
+SELECT medallion, hack_license, COUNT(*)
+FROM <schemaname>.<nyctaxi_fare>
+WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
+GROUP BY medallion, hack_license
+HAVING COUNT(*) > 100
+```
 
 **Výstup:** Dotaz by měl vrátit tabulku s 13 369 řádky s určením identifikátorů 13 369 auta/ovladače, u kterých bylo dokončeno více 100 v 2013. Poslední sloupec obsahuje počet dokončených cest.
 
 ### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Vyhodnocení kvality dat: ověření záznamů s nesprávnou zeměpisnou délkou nebo zeměpisnou šířkou
 Tento příklad zkoumá, pokud některá pole Zeměpisná délka a/nebo zeměpisná délka buď obsahují neplatnou hodnotu (Radian stupně by měly být mezi-90 a 90), nebo musí mít souřadnice (0, 0).
 
-    SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
-    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(pickup_latitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(dropoff_latitude AS float) NOT BETWEEN -90 AND 90
-    OR    (pickup_longitude = '0' AND pickup_latitude = '0')
-    OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
+```sql
+SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
+WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
+AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(pickup_latitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(dropoff_latitude AS float) NOT BETWEEN -90 AND 90
+OR    (pickup_longitude = '0' AND pickup_latitude = '0')
+OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
+```
 
 **Výstup:** Dotaz vrátí 837 467 cest s neplatnými poli Zeměpisná délka a/nebo zeměpisná šířka.
 
 ### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Prozkoumávání: v nestejné distribuci cest
 Tento příklad najde počet cest, které byly v zadaném časovém období (nebo v úplné datové sadě) neuvedené, a to tak, aby pokrývaly celý rok, jak je nastaveno zde. Tato distribuce odráží binární distribuci jmenovky, která se má později použít pro modelování binární klasifikace.
 
-    SELECT tipped, COUNT(*) AS tip_freq FROM (
-      SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
-      FROM <schemaname>.<nyctaxi_fare>
-      WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
-    GROUP BY tipped
+```sql
+SELECT tipped, COUNT(*) AS tip_freq FROM (
+  SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
+  FROM <schemaname>.<nyctaxi_fare>
+  WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
+GROUP BY tipped
+```
 
 **Výstup:** Dotaz by měl vrátit následující četnosti tipů pro rok 2013:90 447 622 šikmo a 82 264 709 není-šikmo.
 
 ### <a name="exploration-tip-classrange-distribution"></a>Průzkum: distribuce třídy nebo rozsahu tipu
 Tento příklad vypočítá distribuci rozsahů tipů v daném časovém období (nebo v úplné datové sadě, pokud pokrývá celý rok). Tato distribuce tříd Label se bude používat později pro modelování klasifikace s více třídami.
 
-    SELECT tip_class, COUNT(*) AS tip_freq FROM (
-        SELECT CASE
-            WHEN (tip_amount = 0) THEN 0
-            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-            ELSE 4
-        END AS tip_class
-    FROM <schemaname>.<nyctaxi_fare>
-    WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
-    GROUP BY tip_class
+```sql
+SELECT tip_class, COUNT(*) AS tip_freq FROM (
+    SELECT CASE
+        WHEN (tip_amount = 0) THEN 0
+        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+        ELSE 4
+    END AS tip_class
+FROM <schemaname>.<nyctaxi_fare>
+WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
+GROUP BY tip_class
+```
 
 **Výkonem**
 
@@ -440,96 +502,103 @@ Tento příklad vypočítá distribuci rozsahů tipů v daném časovém období
 ### <a name="exploration-compute-and-compare-trip-distance"></a>Průzkum: výpočty a porovnání vzdálenosti cest
 Tento příklad převede vyzvednutí a dropoff zeměpisnou délku a zeměpisnou šířku na geografické body SQL, vypočítá vzdálenost pro cestu pomocí rozdílů geografických bodů SQL a vrátí náhodný vzorek výsledků pro porovnání. Příklad omezuje výsledky na platné souřadnice pouze pomocí dotazu vyhodnocení kvality dat popsaných výše.
 
-    /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
-    SET ANSI_NULLS ON
-    GO
+```sql
+/****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
+SET ANSI_NULLS ON
+GO
 
-    SET QUOTED_IDENTIFIER ON
-    GO
+SET QUOTED_IDENTIFIER ON
+GO
 
-    IF EXISTS (SELECT * FROM sys.objects WHERE type IN ('FN', 'IF') AND name = 'fnCalculateDistance')
-      DROP FUNCTION fnCalculateDistance
-    GO
+IF EXISTS (SELECT * FROM sys.objects WHERE type IN ('FN', 'IF') AND name = 'fnCalculateDistance')
+  DROP FUNCTION fnCalculateDistance
+GO
 
-    -- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
-    CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
+-- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
+CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
-    RETURNS float
-    AS
-    BEGIN
-          DECLARE @distance decimal(28, 10)
-          -- Convert to radians
-          SET @Lat1 = @Lat1 / 57.2958
-          SET @Long1 = @Long1 / 57.2958
-          SET @Lat2 = @Lat2 / 57.2958
-          SET @Long2 = @Long2 / 57.2958
-          -- Calculate distance
-          SET @distance = (SIN(@Lat1) * SIN(@Lat2)) + (COS(@Lat1) * COS(@Lat2) * COS(@Long2 - @Long1))
-          --Convert to miles
-          IF @distance <> 0
-          BEGIN
-            SET @distance = 3958.75 * ATAN(SQRT(1 - POWER(@distance, 2)) / @distance);
-          END
-          RETURN @distance
-    END
-    GO
+RETURNS float
+AS
+BEGIN
+      DECLARE @distance decimal(28, 10)
+      -- Convert to radians
+      SET @Lat1 = @Lat1 / 57.2958
+      SET @Long1 = @Long1 / 57.2958
+      SET @Lat2 = @Lat2 / 57.2958
+      SET @Long2 = @Long2 / 57.2958
+      -- Calculate distance
+      SET @distance = (SIN(@Lat1) * SIN(@Lat2)) + (COS(@Lat1) * COS(@Lat2) * COS(@Long2 - @Long1))
+      --Convert to miles
+      IF @distance <> 0
+      BEGIN
+        SET @distance = 3958.75 * ATAN(SQRT(1 - POWER(@distance, 2)) / @distance);
+      END
+      RETURN @distance
+END
+GO
 
-    SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
-    dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
-    FROM <schemaname>.<nyctaxi_trip>
-    WHERE datepart("mi",pickup_datetime)=1
-    AND CAST(pickup_latitude AS float) BETWEEN -90 AND 90
-    AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
-    AND pickup_longitude != '0' AND dropoff_longitude != '0'
+SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
+dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
+FROM <schemaname>.<nyctaxi_trip>
+WHERE datepart("mi",pickup_datetime)=1
+AND CAST(pickup_latitude AS float) BETWEEN -90 AND 90
+AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
+AND pickup_longitude != '0' AND dropoff_longitude != '0'
+```
 
 ### <a name="feature-engineering-using-sql-functions"></a>Technologie funkcí pomocí funkcí SQL
 V některých případech může být funkce SQL efektivní možností pro strojírenství funkcí. V tomto návodu jsme definovali funkci SQL pro výpočet přímé vzdálenosti mezi výstupními a dropoff umístěními. V **nástrojích Data Tools sady Visual Studio**můžete spustit následující skripty SQL.
 
 Zde je skript SQL, který definuje funkci Distance.
 
-    SET ANSI_NULLS ON
-    GO
+```sql
+SET ANSI_NULLS ON
+GO
 
-    SET QUOTED_IDENTIFIER ON
-    GO
+SET QUOTED_IDENTIFIER ON
+GO
 
-    IF EXISTS (SELECT * FROM sys.objects WHERE type IN ('FN', 'IF') AND name = 'fnCalculateDistance')
-      DROP FUNCTION fnCalculateDistance
-    GO
+IF EXISTS (SELECT * FROM sys.objects WHERE type IN ('FN', 'IF') AND name = 'fnCalculateDistance')
+  DROP FUNCTION fnCalculateDistance
+GO
 
-    -- User-defined function calculate the direct distance between two geographical coordinates.
-    CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
+-- User-defined function calculate the direct distance between two geographical coordinates.
+CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
-    RETURNS float
-    AS
-    BEGIN
-          DECLARE @distance decimal(28, 10)
-          -- Convert to radians
-          SET @Lat1 = @Lat1 / 57.2958
-          SET @Long1 = @Long1 / 57.2958
-          SET @Lat2 = @Lat2 / 57.2958
-          SET @Long2 = @Long2 / 57.2958
-          -- Calculate distance
-          SET @distance = (SIN(@Lat1) * SIN(@Lat2)) + (COS(@Lat1) * COS(@Lat2) * COS(@Long2 - @Long1))
-          --Convert to miles
-          IF @distance <> 0
-          BEGIN
-            SET @distance = 3958.75 * ATAN(SQRT(1 - POWER(@distance, 2)) / @distance);
-          END
-          RETURN @distance
-    END
-    GO
+RETURNS float
+AS
+BEGIN
+      DECLARE @distance decimal(28, 10)
+      -- Convert to radians
+      SET @Lat1 = @Lat1 / 57.2958
+      SET @Long1 = @Long1 / 57.2958
+      SET @Lat2 = @Lat2 / 57.2958
+      SET @Long2 = @Long2 / 57.2958
+      -- Calculate distance
+      SET @distance = (SIN(@Lat1) * SIN(@Lat2)) + (COS(@Lat1) * COS(@Lat2) * COS(@Long2 - @Long1))
+      --Convert to miles
+      IF @distance <> 0
+      BEGIN
+        SET @distance = 3958.75 * ATAN(SQRT(1 - POWER(@distance, 2)) / @distance);
+      END
+      RETURN @distance
+END
+GO
+```
 
 Tady je příklad volání této funkce pro generování funkcí v dotazu SQL:
 
-    -- Sample query to call the function to create features
-    SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
-    dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
-    FROM <schemaname>.<nyctaxi_trip>
-    WHERE datepart("mi",pickup_datetime)=1
-    AND CAST(pickup_latitude AS float) BETWEEN -90 AND 90
-    AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
-    AND pickup_longitude != '0' AND dropoff_longitude != '0'
+--Vzorový dotaz pro volání funkce pro vytvoření funkcí
+
+   ```sql
+SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
+dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
+FROM <schemaname>.<nyctaxi_trip>
+WHERE datepart("mi",pickup_datetime)=1
+AND CAST(pickup_latitude AS float) BETWEEN -90 AND 90
+AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
+AND pickup_longitude != '0' AND dropoff_longitude != '0'
+   ```
 
 **Výstup:** Tento dotaz vygeneruje tabulku (s 2 803 538 řádky) s využitím Pickup a dropoff Latitudes a zeměpisná délka a příslušné přímé vzdálenosti v mílích. Tady jsou výsledky pro první tři řádky:
 
@@ -542,20 +611,22 @@ Tady je příklad volání této funkce pro generování funkcí v dotazu SQL:
 ### <a name="prepare-data-for-model-building"></a>Příprava dat pro vytváření modelů
 Následující dotaz se spojí s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ tarifs** , vygeneruje **binární popisek klasifikace**, který je na ní popsán, ** \_ třídu tipů**klasifikační klasifikace s více třídami a extrahuje ukázku z plné připojené datové sady. Vzorkování se provádí načtením podmnožiny cest na základě doby vyzvednutí.  Tento dotaz se dá zkopírovat a vložit přímo do modulu [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) [Import dat]import[-data] pro příjem přímých dat z instance SQL Database v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
 
-    SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
-        CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
-        CASE WHEN (tip_amount = 0) THEN 0
-            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-            ELSE 4
-        END AS tip_class
-    FROM <schemaname>.<nyctaxi_trip> t, <schemaname>.<nyctaxi_fare> f
-    WHERE datepart("mi",t.pickup_datetime) = 1
-    AND   t.medallion = f.medallion
-    AND   t.hack_license = f.hack_license
-    AND   t.pickup_datetime = f.pickup_datetime
-    AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```sql
+SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
+    CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
+    CASE WHEN (tip_amount = 0) THEN 0
+        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+        ELSE 4
+    END AS tip_class
+FROM <schemaname>.<nyctaxi_trip> t, <schemaname>.<nyctaxi_fare> f
+WHERE datepart("mi",t.pickup_datetime) = 1
+AND   t.medallion = f.medallion
+AND   t.hack_license = f.hack_license
+AND   t.pickup_datetime = f.pickup_datetime
+AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```
 
 Až budete připraveni přejít k Azure Machine Learning, může to mít jednu z těchto akcí:
 
@@ -584,7 +655,7 @@ Pokud jste již nastavili pracovní prostor Azure Machine Learning, můžete př
 
 Aby bylo možné spustit vzorový Poznámkový blok IPython nebo soubor skriptu Pythonu, jsou potřeba následující balíčky Pythonu. Pokud používáte službu IPython poznámkového bloku služby AzureML, tyto balíčky byly předem nainstalovány.
 
-- PANDAS
+- pandas
 - numpy
 - matplotlib
 - pyodbc
@@ -603,73 +674,86 @@ Následují některé příklady zkoumání dat, vizualizace dat a techniků fun
 ### <a name="initialize-database-credentials"></a>Inicializovat pověření databáze
 Nastavení připojení k databázi inicializujte v těchto proměnných:
 
-    SERVER_NAME=<server name>
-    DATABASE_NAME=<database name>
-    USERID=<user name>
-    PASSWORD=<password>
-    DB_DRIVER = <database driver>
+```sql
+SERVER_NAME=<server name>
+DATABASE_NAME=<database name>
+USERID=<user name>
+PASSWORD=<password>
+DB_DRIVER = <database driver>
+```
 
 ### <a name="create-database-connection"></a>Vytvoření připojení k databázi
 Toto je připojovací řetězec, který vytváří připojení k databázi.
 
-    CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
-    conn = pyodbc.connect(CONNECTION_STRING)
+```sql
+CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
+conn = pyodbc.connect(CONNECTION_STRING)
+```
 
 ### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>Vykázat počet řádků a sloupců v tabulce <nyctaxi_trip>
-    nrows = pd.read_sql('''
-        SELECT SUM(rows) FROM sys.partitions
-        WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
-    ''', conn)
 
-    print 'Total number of rows = %d' % nrows.iloc[0,0]
+```sql
+nrows = pd.read_sql('''
+    SELECT SUM(rows) FROM sys.partitions
+    WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
+''', conn)
 
-    ncols = pd.read_sql('''
-        SELECT COUNT(*) FROM information_schema.columns
-        WHERE table_name = ('<nyctaxi_trip>') AND table_schema = ('<schemaname>')
-    ''', conn)
+print 'Total number of rows = %d' % nrows.iloc[0,0]
 
-    print 'Total number of columns = %d' % ncols.iloc[0,0]
+ncols = pd.read_sql('''
+    SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_name = ('<nyctaxi_trip>') AND table_schema = ('<schemaname>')
+''', conn)
+
+print 'Total number of columns = %d' % ncols.iloc[0,0]
+```
 
 * Celkový počet řádků = 173179759
 * Celkový počet sloupců = 14
 
 ### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_fare"></a>Vykázat počet řádků a sloupců v tabulce <nyctaxi_fare>
-    nrows = pd.read_sql('''
-        SELECT SUM(rows) FROM sys.partitions
-        WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_fare>')
-    ''', conn)
 
-    print 'Total number of rows = %d' % nrows.iloc[0,0]
+```sql
+nrows = pd.read_sql('''
+    SELECT SUM(rows) FROM sys.partitions
+    WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_fare>')
+''', conn)
 
-    ncols = pd.read_sql('''
-        SELECT COUNT(*) FROM information_schema.columns
-        WHERE table_name = ('<nyctaxi_fare>') AND table_schema = ('<schemaname>')
-    ''', conn)
+print 'Total number of rows = %d' % nrows.iloc[0,0]
+
+ncols = pd.read_sql('''
+    SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_name = ('<nyctaxi_fare>') AND table_schema = ('<schemaname>')
+''', conn)
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
+```
 
 * Celkový počet řádků = 173179759
 * Celkový počet sloupců = 11
 
 ### <a name="read-in-a-small-data-sample-from-the-azure-synapse-analytics-database"></a>Ukázka malého data z databáze Azure synapse Analytics
-    t0 = time.time()
 
-    query = '''
-        SELECT TOP 10000 t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax,
-            f.tolls_amount, f.total_amount, f.tip_amount
-        FROM <schemaname>.<nyctaxi_trip> t, <schemaname>.<nyctaxi_fare> f
-        WHERE datepart("mi",t.pickup_datetime) = 1
-        AND   t.medallion = f.medallion
-        AND   t.hack_license = f.hack_license
-        AND   t.pickup_datetime = f.pickup_datetime
-    '''
+```sql
+t0 = time.time()
 
-    df1 = pd.read_sql(query, conn)
+query = '''
+    SELECT TOP 10000 t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax,
+        f.tolls_amount, f.total_amount, f.tip_amount
+    FROM <schemaname>.<nyctaxi_trip> t, <schemaname>.<nyctaxi_fare> f
+    WHERE datepart("mi",t.pickup_datetime) = 1
+    AND   t.medallion = f.medallion
+    AND   t.hack_license = f.hack_license
+    AND   t.pickup_datetime = f.pickup_datetime
+'''
 
-    t1 = time.time()
-    print 'Time to read the sample table is %f seconds' % (t1-t0)
+df1 = pd.read_sql(query, conn)
 
-    print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
+t1 = time.time()
+print 'Time to read the sample table is %f seconds' % (t1-t0)
+
+print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
+```
 
 Doba čtení ukázkové tabulky je 14,096495 sekund.
 Počet načtených řádků a sloupců = (1000, 21).
@@ -677,56 +761,72 @@ Počet načtených řádků a sloupců = (1000, 21).
 ### <a name="descriptive-statistics"></a>Popisné statistiky
 Teď jste připraveni prozkoumat data s ukázkami. Začneme s prohlížením některých popisných statistik pro ** \_ vzdálenost na cestách** (nebo na všech ostatních polích, která se rozhodnete zadat).
 
-    df1['trip_distance'].describe()
+```sql
+df1['trip_distance'].describe()
+```
 
 ### <a name="visualization-box-plot-example"></a>Vizualizace: příklad vykreslení boxu
 V dalším kroku se podíváme na pole, ve kterém se bude dráha cesty vizualizovat quantiles.
 
-    df1.boxplot(column='trip_distance',return_type='dict')
+```sql
+df1.boxplot(column='trip_distance',return_type='dict')
+```
 
 ![Výstup grafu Box][1]
 
 ### <a name="visualization-distribution-plot-example"></a>Vizualizace: příklad vykreslení distribuce
 Vykreslení, které vizualizují rozdělení a histogram pro vzorové vzdálenosti cest.
 
-    fig = plt.figure()
-    ax1 = fig.add_subplot(1,2,1)
-    ax2 = fig.add_subplot(1,2,2)
-    df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
-    df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
+```sql
+fig = plt.figure()
+ax1 = fig.add_subplot(1,2,1)
+ax2 = fig.add_subplot(1,2,2)
+df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
+df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
+```
 
 ![Výstup vykreslení distribuce][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>Vizualizace: pruhové a spojnicové pruhy
 V tomto příkladu vytvoříme cestu ke vzdálenosti do pěti přihrádek a vizualizujte výsledky binningu.
 
-    trip_dist_bins = [0, 1, 2, 4, 10, 1000]
-    df1['trip_distance']
-    trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
-    trip_dist_bin_id
+```sql
+trip_dist_bins = [0, 1, 2, 4, 10, 1000]
+df1['trip_distance']
+trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
+trip_dist_bin_id
+```
 
 Rozdělení přihrádky můžeme vykreslit v pruhovém nebo spojnicovém grafu pomocí:
 
-    pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
+```sql
+pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
+```
 
 ![Výstup pruhového grafu][3]
 
 a
 
-    pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
+```sql
+pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
+```
 
 ![Výstup vykreslení čáry][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Vizualizace: příklady scatterplot
 Pro zjištění, zda existuje korelace, zobrazujeme ** \_ v grafu dobu provozu \_ v \_ sekundách** a na **služební \_ dráze** .
 
-    plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
+```sql
+plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
+```
 
 ![Scatterplot výstup vztahu mezi časem a vzdáleností][6]
 
 Podobně můžeme kontrolovat vztah mezi ** \_ kódem sazby** a ** \_ délkou cesty**.
 
-    plt.scatter(df1['passenger_count'], df1['trip_distance'])
+```sql
+plt.scatter(df1['passenger_count'], df1['trip_distance'])
+```
 
 ![Scatterplot výstup vztahu mezi kódem a vzdáleností][8]
 
@@ -734,73 +834,105 @@ Podobně můžeme kontrolovat vztah mezi ** \_ kódem sazby** a ** \_ délkou ce
 V této části prozkoumáme distribuci dat pomocí ukázkových dat, která jsou trvale vytvořená v nové tabulce, kterou jsme vytvořili výše. Podobné průzkumy je možné provádět pomocí původních tabulek.
 
 #### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Prozkoumávání: vyhlášení počtu řádků a sloupců v ukázkové tabulce
-    nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
-    print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
-    ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
-    print 'Number of columns in sample = %d' % ncols.iloc[0,0]
+```sql
+nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
+print 'Number of rows in sample = %d' % nrows.iloc[0,0]
+
+ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
+print 'Number of columns in sample = %d' % ncols.iloc[0,0]
+```
 
 #### <a name="exploration-tippednot-tripped-distribution"></a>Průzkum: tripá/nedistribuce
-    query = '''
-        SELECT tipped, count(*) AS tip_freq
-        FROM <schemaname>.<nyctaxi_sample>
-        GROUP BY tipped
-        '''
 
-    pd.read_sql(query, conn)
-
-#### <a name="exploration-tip-class-distribution"></a>Průzkum: distribuce třídy Tip
-    query = '''
-        SELECT tip_class, count(*) AS tip_freq
-        FROM <schemaname>.<nyctaxi_sample>
-        GROUP BY tip_class
+```sql
+query = '''
+SELECT tipped, count(*) AS tip_freq
+    FROM <schemaname>.<nyctaxi_sample>
+    GROUP BY tipped
     '''
 
-    tip_class_dist = pd.read_sql(query, conn)
+    pd.read_sql(query, conn)
+```
+
+#### <a name="exploration-tip-class-distribution"></a>Průzkum: distribuce třídy Tip
+
+```sql
+query = '''
+    SELECT tip_class, count(*) AS tip_freq
+    FROM <schemaname>.<nyctaxi_sample>
+    GROUP BY tip_class
+'''
+
+tip_class_dist = pd.read_sql(query, conn)
+```
 
 #### <a name="exploration-plot-the-tip-distribution-by-class"></a>Průzkum: vykreslení pro distribuci tipů podle třídy
-    tip_class_dist['tip_freq'].plot(kind='bar')
+
+```sql
+tip_class_dist['tip_freq'].plot(kind='bar')
+```
 
 ![#26 vykreslení][26]
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Průzkum: každodenní distribuce cest
-    query = '''
-        SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
-        FROM <schemaname>.<nyctaxi_sample>
-        GROUP BY CONVERT(date, dropoff_datetime)
-    '''
 
-    pd.read_sql(query,conn)
+```sql
+query = '''
+    SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
+    FROM <schemaname>.<nyctaxi_sample>
+    GROUP BY CONVERT(date, dropoff_datetime)
+'''
+
+pd.read_sql(query,conn)
+```
 
 #### <a name="exploration-trip-distribution-per-medallion"></a>Průzkum: distribuce cest na Medallion
-    query = '''
-        SELECT medallion,count(*) AS c
-        FROM <schemaname>.<nyctaxi_sample>
-        GROUP BY medallion
-    '''
 
-    pd.read_sql(query,conn)
+```sql
+query = '''
+    SELECT medallion,count(*) AS c
+    FROM <schemaname>.<nyctaxi_sample>
+    GROUP BY medallion
+'''
+
+pd.read_sql(query,conn)
+```
 
 #### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Průzkum: distribuce cest pomocí Medallion a licence pro napadení
-    query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
-    pd.read_sql(query,conn)
 
+```sql
+query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
+pd.read_sql(query,conn)
+```
 
 #### <a name="exploration-trip-time-distribution"></a>Průzkum: distribuce doby provozu
-    query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
-    pd.read_sql(query,conn)
+
+```sql
+query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
+pd.read_sql(query,conn)
+```
 
 #### <a name="exploration-trip-distance-distribution"></a>Průzkum: distribuce vzdálenosti cest
-    query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
-    pd.read_sql(query,conn)
+
+```sql
+query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
+pd.read_sql(query,conn)
+```
 
 #### <a name="exploration-payment-type-distribution"></a>Průzkum: rozdělení typu platby
-    query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
-    pd.read_sql(query,conn)
+
+```sql
+query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
+pd.read_sql(query,conn)
+```
 
 #### <a name="verify-the-final-form-of-the-featurized-table"></a>Ověření konečného formuláře tabulky natrénuje
-    query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
-    pd.read_sql(query,conn)
+
+```sql
+query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
+pd.read_sql(query,conn)
+```
 
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Modely sestavení v Azure Machine Learning
 Nyní je připraven pokračovat na sestavení modelu a nasazení modelu v [Azure Machine Learning](https://studio.azureml.net). Data jsou připravena k použití v některém z dříve zjištěných problémů, konkrétně:
@@ -878,9 +1010,9 @@ Na následujícím obrázku je k dispozici ukázkový experiment pro bodování.
 Abyste rekapitulacei, co jsme udělali v tomto výukovém kurzu, vytvořili jste prostředí pro datové vědy v Azure, které pracovalo s velkou veřejnou datovou sadou, provedli jsme to prostřednictvím vědeckého procesu pro týmovou práci, veškerého způsobu získávání dat a následného nasazení Azure Machine Learning webové služby.
 
 ### <a name="license-information"></a>Informace o licenci
-Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE. txt v adresáři ukázkového kódu na GitHubu.
+Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE.txt v adresáři ukázkového kódu na GitHubu.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 - [Stránka stahování Andrés Monroy NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/)
 - [FÓLIE NYC data taxislužby na cestách pomocí Chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC taxislužby a výzkum a statistika Komise Limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: db0addfbc2fc5b322c2f6dd9b51f3ace10935589
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261412"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026963"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
@@ -23,12 +23,12 @@ V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video A
 * [Registrace zařízení IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
 * [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
-    * Použijte jednu z těchto oblastí: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – západ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
+    * Použijte jednu z těchto oblastí: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
     * Doporučuje se používat účty úložiště pro obecné účely v2 (GPv2).
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Konfigurace prostředků Azure pro používání živé analýzy videí
 
-### <a name="create-custom-azure-resource-manager-role"></a>Vytvoření vlastní role Azure Resource Manager
+### <a name="create-custom-azure-resource-manager-role"></a>Vytvoření vlastní role Azure Resource Manageru
 
 Přečtěte si téma [Vytvoření vlastní role Azure Resource Manager](create-custom-azure-resource-manager-role-how-to.md) a přiřazení k instančnímu objektu pro použití ve službě Live video Analytics.
 

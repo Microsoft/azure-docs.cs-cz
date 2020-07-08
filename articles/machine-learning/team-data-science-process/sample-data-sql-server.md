@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e43c343b27dfe2dc0c364e58ed7305bdcec37215
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717641"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026062"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Ukázková data na SQL Serveru v Azure
 
@@ -40,19 +40,26 @@ Tato část popisuje několik metod, pomocí kterých SQL provádí jednoduché 
 Následující dvě položky ukazují, jak použít `newid` v SQL Server k provedení vzorkování. Metoda, kterou zvolíte, závisí na tom, jak má být vzorek (pk_id v následujícím ukázkovém kódu považován za automaticky generovaný primární klíč).
 
 1. Méně striktní náhodný vzorek
-   
-        select  * from <table_name> where <primary_key> in 
-        (select top 10 percent <primary_key> from <table_name> order by newid())
+
+    ```sql
+    select  * from <table_name> where <primary_key> in 
+    (select top 10 percent <primary_key> from <table_name> order by newid())
+    ```
+
 2. Náhodná ukázka 
-   
-        SELECT * FROM <table_name>
-        WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
+
+    ```sql
+    SELECT * FROM <table_name>
+    WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
+    ```
 
 Možnost TABLESAMPLE lze použít také pro vzorkování dat. Tato možnost může být lepší, pokud je velikost dat velká (za předpokladu, že data na různých stránkách nejsou korelační) a že dotaz bude dokončen v přiměřené době.
 
-    SELECT *
-    FROM <table_name> 
-    TABLESAMPLE (10 PERCENT)
+```sql
+SELECT *
+FROM <table_name> 
+TABLESAMPLE (10 PERCENT)
+```
 
 > [!NOTE]
 > Můžete zkoumat a generovat funkce z těchto ukázkových dat tím, že je uložíte do nové tabulky.
@@ -67,16 +74,20 @@ Pomocí ukázkových dotazů uvedených výše v modulu Azure Machine Learning [
 ## <a name="using-the-python-programming-language"></a><a name="python"></a>Používání programovacího jazyka Python
 V této části se dozvíte, jak pomocí [knihovny pyodbc](https://code.google.com/p/pyodbc/) vytvořit rozhraní ODBC, které se připojí k databázi SQL serveru v Pythonu. Připojovací řetězec databáze je následující: (nahraďte servername, dbname, username a Password pomocí vaší konfigurace):
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 Knihovna [PANDAS](https://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód přečte 0,1% vzorku dat z tabulky v Azure SQL Database do dat PANDAS:
 
-    import pandas as pd
+```python
+import pandas as pd
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
+```
 
 Nyní můžete pracovat se vzorovými daty v datovém rámečku PANDAS. 
 
@@ -84,29 +95,35 @@ Nyní můžete pracovat se vzorovými daty v datovém rámečku PANDAS.
 Pomocí následujícího ukázkového kódu můžete uložit data z rozevíracího vzorku do souboru a odeslat je do objektu blob Azure. Data v objektu BLOB je možné přímo přečíst do Azure Machine Learning experimentu pomocí modulu [Import dat][import-data] . Kroky jsou následující: 
 
 1. Zápis datového rámce PANDAS do místního souboru
-   
-        dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
+
+    ```python
+    dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
+    ```
+
 2. Nahrání místního souboru do Azure Blob
-   
-        from azure.storage import BlobService
-        import tables
-   
-        STORAGEACCOUNTNAME= <storage_account_name>
-        LOCALFILENAME= <local_file_name>
-        STORAGEACCOUNTKEY= <storage_account_key>
-        CONTAINERNAME= <container_name>
-        BLOBNAME= <blob_name>
-   
-        output_blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)    
-        localfileprocessed = os.path.join(os.getcwd(),LOCALFILENAME) #assuming file is in current working directory
-   
-        try:
-   
-        #perform upload
-        output_blob_service.put_block_blob_from_path(CONTAINERNAME,BLOBNAME,localfileprocessed)
-   
-        except:            
-            print ("Something went wrong with uploading blob:"+BLOBNAME)
+
+    ```python
+    from azure.storage import BlobService
+    import tables
+
+    STORAGEACCOUNTNAME= <storage_account_name>
+    LOCALFILENAME= <local_file_name>
+    STORAGEACCOUNTKEY= <storage_account_key>
+    CONTAINERNAME= <container_name>
+    BLOBNAME= <blob_name>
+
+    output_blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)    
+    localfileprocessed = os.path.join(os.getcwd(),LOCALFILENAME) #assuming file is in current working directory
+
+    try:
+
+    #perform upload
+    output_blob_service.put_block_blob_from_path(CONTAINERNAME,BLOBNAME,localfileprocessed)
+
+    except:            
+        print ("Something went wrong with uploading blob:"+BLOBNAME)
+    ```
+
 3. Načtěte data z Azure BLOB pomocí Azure Machine Learning [Importujte modul dat][import-data] , jak je znázorněno na následující obrazovce:
 
 ![objekt BLOB čtečky][2]

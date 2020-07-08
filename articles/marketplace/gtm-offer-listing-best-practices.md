@@ -1,18 +1,18 @@
 ---
 title: Nabídka s doporučenými postupy – komerční tržiště Microsoftu
 description: Přečtěte si o osvědčených postupech pro uvedení na trh pro váš Microsoft AppSource a Azure Marketplace nabídek.
-author: qianw211
+author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740769"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027065"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -22,47 +22,173 @@ Tento článek obsahuje návrhy pro vytváření a poutavé komerční nabídky 
 
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Název nabídky | Zadejte silný název:<br> <ul> <li> Název vaší aplikace by měl sdělit základní hodnotu vašim zákazníkům. </li> <li> V názvu aplikace zahrňte klíčová slova pro hledání, abyste získali vyšší hodnocení ve výsledcích vyhledávacího stroje. </li> </ul> Pro servisní výpisy konzultační služby použijte nastavený formát názvu:<br>[Název nabídky: [Duration] [typ nabídky] (například *Contoso: implementace 2-Week*) <br><br> Dodržování pokynů pro značky:<br>Podle pokynů [Microsoftu a pokynů pro značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) a dalších relevantních pokynů pro produkty, které jsou specifické pro daný produkt, se můžete podívat na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
-| Popis nabídky | Zadejte jasný popis nabídky:<br> <ul> <li> Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit. </li> <li> Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět. </li> <li> Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete. </li> <li> Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.</li> <li> Konzultační služby, které poskytnete, navíc musí mít jasně stav služby Professional. </li></ul> Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující informace:<ul><li>Popis produktu</li><li>Typ uživatele, který je z produktu přínosný</li><li>Potřeby zákazníků nebo bolesti adres produktů.</li></ul> |
+| Název nabídky | V případě aplikací zadejte jasný název, který obsahuje klíčová slova pro hledání, která zákazníkům pomůžou vyhledat vaši nabídku. <br> <br> V případě konzultačních služeb použijte tento formát: [název nabídky: [doba trvání] [typ nabídky] (například contoso: implementace 2-Week). <br> <br> Dodržování pokynů pro značky: Sledujte ochranné známky [společnosti Microsoft a pokyny pro značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) a další důležité pokyny specifické pro produkty, které se vztahují na ochranné známky společnosti Microsoft a na názvy softwaru, produktů a služeb společnosti Microsoft. |
+| Popis nabídky | Zadejte jasný popis, který popisuje jeho hodnotu v prvních několika větách na pozici vaší nabídky.  Pamatujte, že tyto věty mohou být použity ve výsledcích vyhledávacího stroje. Základní komponenty pro vaši polohu hodnoty by měly zahrnovat: <ul> <li>Popis produktu nebo řešení. </li> <li> Uživatel, který je výhodou z produktu nebo řešení. </li> <li> Potřebu zákazníka nebo bolesti adres produktů nebo řešení. </li> </ul> <br> Pokud je to možné, využijte standardní oborové slovníace nebo používání na základě výhod.  Nespoléhá se na funkce a funkce k prodeji vašeho produktu.  Místo toho se zaměřte na hodnotu, kterou doručujete. <br> <br> V případě servisních konzultačních služeb jasně uveďte profesionální službu, kterou poskytnete. |
 
 Tabulky v této části obsahují návrhy na vytváření a poutavé nabídky Marketplace. Pokud chcete napsat a nakonfigurovat svoje marketingové materiály, navštivte [centrum partnerů](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
 
 ## <a name="storefront-listing-details"></a>Podrobnosti o prezentace seznamu
 
-| Nastavení prezentace | Osvědčený postup |
-|:--- |:--- |  
-| Odvětví: jenom Microsoft AppSource aplikace a konzultační služby | Vyberte odvětví, pokud vaše nabídka adresuje konkrétní oborové potřeby: <ul><li> V popisu své nabídky zavolejte specifické funkce pro konkrétní obor.</li> </ul> **Poznámka**: maximální počet možností se liší podle typu nabídky a je uveden v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/). |
-| Kategorie | Vyberte kategorie, které nejlépe odpovídají vaší nabídce:<br> <ul> <li> Pečlivě vybírejte kategorie, protože je zákazníci používají k hledání relevantních aplikací. </li> <li> Nezapomeňte si vyžádat, jak vaše nabídka v popisu nabídky podporuje potřeby jednotlivých kategorií. </li> </ul> **Poznámka**: maximální počet možností se liší podle typu nabídky a je uveden v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/). |
-| Produkty, se kterými vaše aplikace pracuje (3 max): jenom aplikace AppSource | Seznamte se s dalšími produkty a technologiemi, které vaše řešení používá nebo rozšiřuje. Například Azure IoT Hub nebo Azure Machine Learning. |
-| Hledaná klíčová slova (3 max) | Klíčová slova pro vyhledávání můžou firemním uživatelům při hledání najít vaši nabídku. <ul>  <li>v Microsoft AppSource</li> <li>v Azure Marketplace</li><li>Použití vyhledávacích strojů</li> </ul> Aby se Váš seznam zobrazoval v těchto hledáních, musíte: <ul> <li> Identifikujte tři nejlepší klíčová slova pro hledání pro vaši nabídku; </li> <li> Zahrňte klíčová slova hledání do přehledu a popisu nabídky. </li> <li> sem uveďte klíčová slova hledání. </li> </ul> |
+Kategorie a odvětví pro různé prezentace budou platit pro různé typy nabídek.
 
-### <a name="category"></a>Kategorie
+|  | **Kategorie <br> podle prezentace** |  | **Odvětví <br> pro AppSource** |
+| :------------------- |:----------------:|:------:|:-------------:|
+| **Typ nabídky**   |  **Azure Marketplace**  | **AppSource**  |
+| Aplikace Azure | × | |
+| Kontejner | × | |
+| Konzultační služby | | | × |
+| Dynamics 365 Customer Engagement & Power Platform | | X | X |
+| Správa dodavatelských řetězců & finance Dynamics 365 | | X | X | 
+| Dynamics 365 Business Central | | X | X |
+| Moduly IoT Edge | × | |
+| Power BI | | X | X |
+| SaaS | X | X | X |
+| Virtuální počítač Azure |  × |    |
 
-Microsoft AppSource a Azure Marketplace jsou prodejní místa, které slouží jako jiné a jedinečné požadavky zákazníků. Vyberte správné prezentace a kategorie pro každou nabídku a Zaměřte se na zákazníky podle role. 
+### <a name="categories"></a>Kategorie
 
-Pro nabídku můžete vybrat až dvě kategorie a dvě podkategorie. Níže uvedené kategorie a podkategorie jsou k dispozici v obou prodejní místa.  Zajistěte, aby byl výběr kategorie zarovnán s zamýšlenou cílovou skupinou, popisem nabídky a umístěním hodnoty vaší nabídky.
+Microsoft AppSource a Azure Marketplace jsou dvě různé prodejní místa, které slouží jako jedinečné požadavky zákazníků. Azure Marketplace se zaměřuje na odborníky na IT a vývojáře, kteří vytvářejí řešení v Azure.  Microsoft AppSource cílení firemních uživatelů, kteří hledají obchodní a/nebo SaaS aplikace, doplňky pro Dynamics 365, Microsoft 365 doplňky a aplikace Power Platform.
 
-| **Obor**    | **Subobory**  | 
-| :------------------- | :-------------------|
-| * Automobilový     | * Automobilový |
-| Zemědělství     | * Jiné – nesegmentované |
-| Distribuce    | * Velkoobchod <br> * Zásilka balíčku & expedice |
-| Vzdělávání     | * Vyšší vzdělávání <br> * Primární vzdělávání sekundárního &/K-12 <br> * Knihovny & muzeí |
-| Finanční služby     | * Bankovní & kapitálové trhy <br> * Pojištění |
-| Státní správa    | * Obrana & Intelligence (používá se pro volání národního a veřejného zabezpečení) <br> * Státní bezpečnost & spravedlnosti <br> * Civilní samospráva |
-| Zdravotní péče (používá se pro volání stavu)   | * Plátce stavu <br> * Poskytovatel stavu <br> * Farmaceutické výrobky |
-| Prostředky výrobního & (používá se pro volání výroby)   | * Chemický & Agrochemical <br> * Diskrétní výroba <br> * Energie |
-| Maloobchodní & spotřební zboží (používá se pro volání maloobchodního prodeje)  | * Spotřební zboží <br> * Maloobchodní prodejci |
-| * Media & komunikace (používá se pro volání médií a zábavy)  | * Media & Entertainment <br> * Telekomunikace |
-| Professional Services  | * Právní <br> * Partnerské služby partnerů |
-| * Architektura & konstrukce (používá se pro volání techniků architektury)  | * Jiné – nesegmentované |
-| * Pohostinství & cestování  | * Hotely & volný čas <br> * Cestovní & Transport <br> * Restaurace & potravinové služby |
-| * Ostatní odvětví veřejného sektoru  | * Lesní & rybolov <br> * Neziskové |
-| * Nemovitosti  | * Jiné – nesegmentované |
+Kategorie a podkategorie jsou namapovány na jednotlivé prezentacey založené na cílové cílové skupině. Vaše nabídka bude publikována do Microsoft AppSource nebo Azure Marketplace v závislosti na typu nabídky, možnosti transakce nabídky a výběru kategorie/podkategorie. 
+
+Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou a zamýšlenou cílovou skupinou. Můžete vybrat:
+
+* Až dvě (2) kategorie, včetně primární a sekundární kategorie (volitelné).
+* Až dvě (2) podkategorie pro každou primární nebo sekundární kategorii. Pokud není vybraná žádná podkategorie, nabídne se vám nabídka jenom pro vybranou kategorii.
+
+| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) (IT specialisté a vývojáři)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) (obchodní uživatelé)|
+| :------------------- |:----------------|
+|**Analýzy** | **Analýzy** |
+| &nbsp;&nbsp;Přehledy dat | &nbsp;&nbsp;Pokročilá analýza  |
+| &nbsp;&nbsp;Analýza dat |  &nbsp;&nbsp;Vytváření sestav & vizualizace |
+| &nbsp;&nbsp;Velké objemy dat | **AI a strojové učení**  |
+| &nbsp;&nbsp;Prediktivní analýza | &nbsp;&nbsp;AI pro firmy |
+| &nbsp;&nbsp;Analýzy v reálném čase/streamování | &nbsp;&nbsp;Robot – aplikace |
+| **AI a strojové učení** | **Spolupráce** |
+| &nbsp;&nbsp;Robot – služba | &nbsp;&nbsp;Kontaktování & lidí |
+| &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Správa schůzek |
+| &nbsp;&nbsp;Služba ML | &nbsp;&nbsp;Správa & pro návrh webu |
+| &nbsp;&nbsp;Automatizované ML | &nbsp;&nbsp;Úkol & řízení projektu |
+| &nbsp;&nbsp;Automatizace obchodních procesů | &nbsp;&nbsp;Videokonference pro hlasové & |
+| &nbsp;&nbsp;Popisky dat | **Dodržování předpisů & právní** |
+| &nbsp;&nbsp;Příprava dat | &nbsp;&nbsp;Audit daňových & |
+| &nbsp;&nbsp;Dolování znalostí | &nbsp;&nbsp;Legalit |
+| &nbsp;&nbsp;Operace ML | &nbsp;&nbsp;Data, zásady správného řízení & ochrany osobních údajů |
+| **Blockchain**  | &nbsp;&nbsp;Bezpečnost & stavu |
+| &nbsp;&nbsp;Akcelerátory aplikací | **Customer Service**  |
+| &nbsp;&nbsp;Hlavní kniha s jedním uzlem | &nbsp;&nbsp;Kontaktní centrum |
+| &nbsp;&nbsp;Hlavní kniha s více uzly | &nbsp;&nbsp;Tvář na službu obličeje |
+| &nbsp;&nbsp;Nástroje | &nbsp;&nbsp;Zpětná služba Office & Employee Service |
+| **Compute**  | &nbsp;&nbsp;Správa případů znalostní & |
+| &nbsp;&nbsp;Aplikační infrastruktura | &nbsp;&nbsp;Zapojení sociálních médií & Omnichannel |
+| &nbsp;&nbsp;Operační systémy | **Finance** |
+| &nbsp;&nbsp;Uchovávat | &nbsp;&nbsp;Účtování |
+| **Containers**  | &nbsp;&nbsp;Správa prostředků |
+| &nbsp;&nbsp;Začínáme s kontejnery | &nbsp;&nbsp;Analýzy, konsolidace & vytváření sestav |
+| &nbsp;&nbsp;Aplikace kontejneru | &nbsp;&nbsp;Kolekce & kreditů |
+| &nbsp;&nbsp;Image kontejneru | &nbsp;&nbsp;Řízení rizik & dodržování předpisů |
+| **Databáze**  | **Geografická poloha** |
+| &nbsp;&nbsp;Databáze NoSQL | &nbsp;&nbsp;Mapují |
+| &nbsp;&nbsp;Relační databáze | &nbsp;&nbsp;Novinky & počasí |
+| &nbsp;&nbsp;Hlavní kniha a databáze blockchain | **Human Resources** |
+| &nbsp;&nbsp;Datová jezera | &nbsp;&nbsp;Získání talentů |
+| &nbsp;&nbsp;Datový sklad | &nbsp;&nbsp;Správa talentů |
+| **Vývojářské nástroje**  | &nbsp;&nbsp;Operace HR |
+| &nbsp;&nbsp;Nástroje | &nbsp;&nbsp;Plánování zaměstnanců & Analytics |
+| &nbsp;&nbsp;Znakové | **Nástroje pro správu IT &** |
+| &nbsp;&nbsp;Služba pro vývojáře | &nbsp;&nbsp;Řešení pro správu |
+| **DevOps**  | &nbsp;&nbsp;Business Applications |
+| **Integrace**  | **Internet věcí** |
+| &nbsp;&nbsp;Omezován | &nbsp;&nbsp;Operace & správy prostředků |
+| **Nástroje pro správu IT &**  | &nbsp;&nbsp;Připojené produkty |
+| &nbsp;&nbsp;Řešení pro správu | &nbsp;&nbsp;Inteligentní dodavatelský řetězec |
+| &nbsp;&nbsp;Business Applications | &nbsp;&nbsp;Prediktivní údržba |
+| **Identita**  | &nbsp;&nbsp;Vzdálené monitorování |
+| &nbsp;&nbsp;Správa přístupu | &nbsp;&nbsp;Bezpečnostní & zabezpečení |
+| **Internet věcí**  | &nbsp;&nbsp;Prostředky & inteligentní infrastruktury |
+| &nbsp;&nbsp;Připojení IoT | &nbsp;&nbsp;Prostředky & mobility |
+| &nbsp;&nbsp;Služby IoT Core | **Marketing** |
+| &nbsp;&nbsp;Moduly IoT Edge | &nbsp;&nbsp;Reklamní |
+| &nbsp;&nbsp;Řešení IoT | &nbsp;&nbsp;Analytics |
+| &nbsp;&nbsp;Vizualizace & analýzy dat | &nbsp;&nbsp;Automatizace & správy kampaní |
+| **Média**  | &nbsp;&nbsp;E-mail marketingu |
+| &nbsp;&nbsp;Media Services | &nbsp;&nbsp;Události & Správa prostředků |
+| &nbsp;&nbsp;Content Protection | &nbsp;&nbsp;Analýza & výzkumu |
+| &nbsp;&nbsp;Live & streamování na vyžádání | &nbsp;&nbsp;Sociální média |
+| **Monitorování diagnostiky &**  | **Operace & zásobovacího řetězce** |
+| **Migrace**  | &nbsp;&nbsp;Správa produkčního prostředí Asset & |
+| &nbsp;&nbsp;Migrace dat | &nbsp;&nbsp;Prognózování poptávky |
+| **Hybridní realita**  | &nbsp;&nbsp;Správa informací & připojení |
+| **Sítě**  | &nbsp;&nbsp;Plánování, nákup & vytváření sestav |
+| &nbsp;&nbsp;Správci zařízení | &nbsp;&nbsp;Správa kvality & služeb |
+| &nbsp;&nbsp;Komunikační | &nbsp;&nbsp;Správa objednávek prodejních & |
+| &nbsp;&nbsp;Brány firewall | &nbsp;&nbsp;Správa datového skladu pro dopravu & |
+| &nbsp;&nbsp;Nástroje pro vyrovnávání zatížení | **Produktivitu** |
+| **Zabezpečení**  | &nbsp;&nbsp;Vytváření & správy obsahu |
+| &nbsp;&nbsp;Správa identit & přístupu | &nbsp;&nbsp;Správa dokumentů |
+| &nbsp;&nbsp;Ochrana před hrozbami | &nbsp;&nbsp;Správa e-mailů |
+| &nbsp;&nbsp;Information Protection | &nbsp;&nbsp;Překlad jazyka & |
+| **Storage**  | &nbsp;&nbsp;Hledat & reference |
+| &nbsp;&nbsp;Zálohování & obnovení | &nbsp;&nbsp;Gamifikační |
+| &nbsp;&nbsp;Hybridní úložiště pro podniky | **Sales** (Prodej) |
+| &nbsp;&nbsp;Sdílení souborů | &nbsp;&nbsp;Prodej |
+| &nbsp;&nbsp;Správa životního cyklu dat | &nbsp;&nbsp;Konfigurace, Price, Quota (CPQ) |
+| **Web**  | &nbsp;&nbsp;Správa smluv |
+| &nbsp;&nbsp;Blogy & CMS | &nbsp;&nbsp;APLIKACE |
+| &nbsp;&nbsp;Úvodní Web Apps | &nbsp;&nbsp;Elektronický obchod |
+| &nbsp;&nbsp;Elektronický obchod | &nbsp;&nbsp;Obohacení obchodních dat  |
+| &nbsp;&nbsp;Architektury webových aplikací | &nbsp;&nbsp;Povolení prodeje  |
+| &nbsp;&nbsp;Web Apps |  |
+
+**Důležité: SaaS nabídky a doplňky pro Microsoft 365**
+
+Konkrétní podrobnosti o tom, jak mohou možnosti jazyka Transact ovlivnit zobrazení a nákup zákazníků z webu Marketplace, najdete v [příručce podle typu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) . V případě nabídek SaaS, funkce transakce nabídky a výběr kategorie určí prezentace, kde se vaše nabídka publikuje:
+
+| Nabídka SaaS    |     |          |           |    |    |     | Příslušné prezentace |              |
+|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
+| Měřené fakturace | Microsoft 365 Doplňky | Kontaktujte mě | Transact (minimálně 1 plán) | Pouze soukromý plán | Pouze veřejný plán | Veřejné & soukromé plány | AppSource | Azure Marketplace |
+|  | X |  |  |  |  |  | X |  |
+| X |  |  | X | X |  |  |  | X |
+| X |  |  | X |  | X |  |  | X |
+| X |  |  | X |  |  | X |  | ×<sup>2</sup> |
+|  |  |  | X | X |  |  |  | X |
+|  |  |  | X |  | X |  | ×<sup>1</sup> | ×<sup>1</sup> |
+|  |  |  | X |  |  | X | ×<sup>1</sup> | ×<sup>1, 2</sup> |
+|  |  | × |  |  |  |  | ×<sup>1</sup> | ×<sup>1</sup> | 
+
+1. V závislosti na kategoriích/podkategoriích a průmyslových výběrech
+2. Nabídky s privátními plány budou publikovány na Azure Portal
+
 
 ### <a name="industries"></a>Odvětví
 
-Výběr v odvětví se vztahuje jenom na nabídky publikované v AppSource a konzultačních službách publikovaných v Azure Marketplace. Vyberte možnost odvětví a/nebo vertikálně, pokud vaše nabídka adresuje specifické potřeby a v popisu nabídky zavolá funkce specifické pro konkrétní obor. Můžete vybrat až dva (2) obory a dvě (2) svislého počtu vybraných pro jednotlivé obory.
+Výběr v odvětví se vztahuje jenom na nabídky publikované v AppSource a konzultačních službách publikovaných v Azure Marketplace.  Vyberte možnost odvětví a/nebo vertikálně, pokud vaše nabídka adresuje specifické potřeby a v popisu nabídky zavolá funkce specifické pro konkrétní obor. Můžete vybrat až dva (2) obory a dvě (2) svislého počtu vybraných pro jednotlivé obory.
+
+>[!Note]
+>Pro konzultační nabídky služby v Azure Marketplace neexistují žádné obory svislé.
+
+| **Odvětví** |  **Svislé čáry** |
+| :------------------- | :----------------|
+| **Zemědělství** | |
+| **Architektura & konstrukce** | |
+| **Automobilový průmysl** | |
+| **Distribuce** | Hromadné <br> Odeslání balíčku & balíčků |  
+| **Vzdělávání** | Vyšší vzdělávání <br> Primární & sekundární edu/K-12 <br> Knihovny & muzeí |
+| **Finanční služby** | Bankovní & kapitálové trhy <br> Pojišťovací | 
+| **Státní správa** |  Obrana & Intelligence <br> Civilní samospráva <br> Veřejné zabezpečení & spravedlnosti |
+| **Zdravotnictví** | Plátce stavu <br> Poskytovatel stavu <br> Pharmaceuticals | 
+| **Pohostinství & cestování** | Cestovní & Transport <br> Hotely & volný čas <br> Restaurace & potravinové služby | 
+| **Prostředky výrobního &** | Chemický & Agrochemical <br> Diskrétní výroba <br> Energetický sektor | 
+| **Komunikace s médii &** | Media & Entertainment <br> Telekomunikace | 
+| **Ostatní odvětví veřejného sektoru** | Lesní & rybolov <br> Pro neziskový sektor | 
+| **Profesionální služby** | Profesionální služby partnerů <br> Právní informace | 
+| **Real Estate** | |
+
+Obor jenom pro Microsoft AppSource:
+
+| **Obor** |  **Svislé čáry** |
+| :------------------- | :----------------|
+| **Maloobchodní & spotřební zboží** | Maloobchodní <br> Spotřební zboží |
 
 ### <a name="applicable-products"></a>Příslušné produkty
 

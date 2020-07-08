@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30a80a2e2eb5522768c08a24535b0fb3f8d86a44
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261983"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027756"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Nasazení Azure Cosmos DB a Azure App Service pomocí webové aplikace z GitHubu pomocí šablony Azure Resource Manager
 
@@ -36,7 +36,7 @@ Výsledné nasazení má plně funkční webovou aplikaci, která se může při
 
 Nejdřív kliknutím na tlačítko **nasadit do Azure** níže otevřete Azure Portal a vytvořte vlastní nasazení. Šablonu Azure Resource Management můžete zobrazit také v [galerii šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp) .
 
-[![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
 
 V Azure Portal vyberte předplatné, které chcete nasadit, a vyberte nebo vytvořte novou skupinu prostředků. Pak vyplňte následující hodnoty.
 
@@ -98,7 +98,7 @@ Existují tři prvky potřebné k tomu, aby fungovaly.
 
 Nejprve aplikace potřebuje požádat o koncový bod Cosmos DB a klíč ve `Startup` třídě ve webové aplikaci ASP.NET MVC. [Ukázka Cosmos DB to udělat](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) může běžet místně, kde můžete zadat informace o připojení do appsettings.jsna. Při nasazení se ale tento soubor nasadí s aplikací. Pokud tyto řádky červeného přístupu k nastavením z appsettings.js, pokusí se z nastavení aplikace v Azure App Service.
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Úvod":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="Spuštění":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>Používání speciálních funkcí správy prostředků Azure
 

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: 8f39c9cf159f8ce5068cf10460ba6f195baa7806
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205054"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026980"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Používání privátních koncových bodů pro konfiguraci aplikací Azure
 
@@ -24,7 +24,7 @@ Použití privátních koncových bodů pro vaše úložiště konfigurace aplik
 - Bezpečně se připojte k úložišti konfigurace aplikace z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
 
 > [!NOTE]
-> Konfigurace aplikace Azure nabízí použití privátních koncových bodů jako veřejné verze Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.
+> Funkce privátního koncového bodu je teď obecně dostupná ve všech oblastech *s výjimkou* střed Indie. V **střed Indie** oblasti nabízí konfigurace aplikace Azure používání privátních koncových bodů jako veřejné verze Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.
 
 ## <a name="conceptual-overview"></a>Koncepční přehled
 
