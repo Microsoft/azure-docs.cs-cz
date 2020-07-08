@@ -1,17 +1,17 @@
 ---
-title: Zjišťování, vyhodnocení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
+title: Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 description: Tento článek popisuje, jak migrovat virtuální počítače s AWS do Azure pomocí Azure Migrate.
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 739439f63c81ef75cdcbe0b9e1d3f367d073d43b
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85199088"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102799"
 ---
-# <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, vyhodnocení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
+# <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
 V tomto kurzu se dozvíte, jak zjišťovat, hodnotit a migrovat virtuální počítače s Amazon Web Services (AWS) na virtuální počítače Azure pomocí Azure Migrate: nástroje pro vyhodnocení serveru a migrace serveru.
 
@@ -39,8 +39,8 @@ Před migrací na Azure doporučujeme provést vyhodnocení pro zjišťování a
 
 Proveďte vyhodnocení následujícím způsobem:
 
-1. Posouzení se dá udělat tak, že se virtuální počítače s AWS považují za účely provedení posouzení pomocí nástroje Azure Migrate: Server Assessment Tool. Postupujte podle [kurzu](https://docs.microsoft.com/azure/migrate/tutorial-prepare-physical) a nastavte Azure a připravte si virtuální počítače s AWS pro posouzení.
-2. Pak postupujte podle tohoto [kurzu](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical) a nastavte Azure Migrate projekt a zařízení pro zjišťování a vyhodnocení vašich virtuálních počítačů s AWS.
+1. Posouzení se dá udělat tak, že se virtuální počítače s AWS považují za účely provedení posouzení pomocí nástroje Azure Migrate: Server Assessment Tool. Postupujte podle [kurzu](./tutorial-prepare-physical.md) a nastavte Azure a připravte si virtuální počítače s AWS pro posouzení.
+2. Pak postupujte podle tohoto [kurzu](./tutorial-assess-physical.md) a nastavte Azure Migrate projekt a zařízení pro zjišťování a vyhodnocení vašich virtuálních počítačů s AWS.
 
 I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení není povinným krokem, aby bylo možné migrovat virtuální počítače.
 
@@ -48,9 +48,9 @@ I když doporučujeme, abyste si vyzkoušeli posouzení, provádění posouzení
 
 ## <a name="1-prerequisites-for-migration"></a>1. předpoklady pro migraci
 
-- Zajistěte, aby virtuální počítače s AWS, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s AWS se považují za účely migrace jako fyzické. Projděte si [podporované operační systémy](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines) pro pracovní postup migrace fyzického serveru. Doporučujeme, abyste provedli migraci testů (testovací převzetí služeb při selhání), abyste ověřili, jestli virtuální počítač funguje očekávaným způsobem, a teprve potom se stejnou migrací.
-- Zajistěte, aby virtuální počítače s AWS splňovaly [podporované konfigurace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#physical-server-requirements) pro migraci do Azure.
-- Ověřte, že virtuální počítače s AWS, které se replikují do Azure, splňují [požadavky na virtuální počítače Azure.](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#azure-vm-requirements)
+- Zajistěte, aby virtuální počítače s AWS, které chcete migrovat, používaly podporovanou verzi operačního systému. Virtuální počítače s AWS se považují za účely migrace jako fyzické. Projděte si [podporované operační systémy](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) pro pracovní postup migrace fyzického serveru. Doporučujeme, abyste provedli migraci testů (testovací převzetí služeb při selhání), abyste ověřili, jestli virtuální počítač funguje očekávaným způsobem, a teprve potom se stejnou migrací.
+- Zajistěte, aby virtuální počítače s AWS splňovaly [podporované konfigurace](./migrate-support-matrix-physical-migration.md#physical-server-requirements) pro migraci do Azure.
+- Ověřte, že virtuální počítače s AWS, které se replikují do Azure, splňují [požadavky na virtuální počítače Azure.](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)
 - Před migrací do Azure jsou na virtuálních počítačích potřeba nějaké změny.
     - Pro některé operační systémy Azure Migrate provede tyto změny automaticky.
     - Před zahájením migrace je důležité tyto změny provést. Pokud před provedením změny migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
@@ -98,7 +98,7 @@ Azure Migrate: Migrace serveru používá pro replikaci počítačů do Azure za
 
 Připravte se na nasazení zařízení následujícím způsobem:
 
-- Nastavte samostatný virtuální počítač EC2 pro hostování replikačního zařízení. V této instanci musí být spuštěný systém Windows Server 2012 R2 nebo Windows Server 2016. [Zkontrolujte](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance#appliance-requirements) požadavky na hardware, software a síť pro dané zařízení.
+- Nastavte samostatný virtuální počítač EC2 pro hostování replikačního zařízení. V této instanci musí být spuštěný systém Windows Server 2012 R2 nebo Windows Server 2016. [Zkontrolujte](./migrate-replication-appliance.md#appliance-requirements) požadavky na hardware, software a síť pro dané zařízení.
 - Zařízení by nemělo být nainstalované na zdrojovém virtuálním počítači, který chcete replikovat. Měla by být nasazená na jiném virtuálním počítači.
 - AWS virtuální počítače, které se mají migrovat, by měly mít síťovou řadu, která by měla být v zařízení replikace. Nakonfigurujte potřebná pravidla skupiny zabezpečení, aby bylo možné tuto možnost povolit. Doporučuje se, aby bylo zařízení replikace nasazené ve stejném VPC jako zdrojové virtuální počítače, které se mají migrovat. Pokud musí být zařízení replikace v jiném VPC, musí se VPCs připojit prostřednictvím partnerského vztahu VPC.
 - Zdrojové virtuální počítače s AWS komunikují se zařízením replikace na portech HTTPS 443 (orchestrace řídicích kanálů) a TCP 9443 (přenos dat) pro správu replikace a přenos dat replikace. Zařízení replikace v nástroji dále orchestruje a odesílá data replikace do Azure přes odchozí port HTTPS 443. Pokud chcete tato pravidla nakonfigurovat, upravte pravidla příchozí/odchozí skupiny zabezpečení o příslušné porty a zdrojové informace IP.
@@ -183,7 +183,7 @@ Na zdrojovém virtuálním počítači AWS musí být nainstalovaný agent služ
 
 1. Přihlaste se k zařízení replikace.
 2. Přejděte na **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
-3. Najděte instalační program pro zdrojový virtuální počítač s AWS a verzi operačního systému. Zkontrolujte [podporované operační systémy](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines).
+3. Najděte instalační program pro zdrojový virtuální počítač s AWS a verzi operačního systému. Zkontrolujte [podporované operační systémy](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines).
 4. Zkopírujte instalační soubor na zdrojový virtuální počítač AWS, který chcete migrovat.
 5. Ujistěte se, že máte uložený textový soubor s hesly, který byl vytvořen při instalaci zařízení replikace.
     - Pokud jste zapomněli heslo uložit, můžete v tomto kroku Zobrazit přístupové heslo k zařízení replikace. Z příkazového řádku spusťte **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe-v** pro zobrazení aktuálního přístupového hesla.
@@ -335,7 +335,7 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
     - Zastaví replikaci pro virtuální počítač AWS.
     - Odebere virtuální počítač AWS z počtu **replikačních serverů** v Azure Migrate: Migrace serveru.
     - Vyčistí informace o stavu replikace pro virtuální počítač.
-2. Nainstalujte agenta pro [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) do migrovaných počítačů. Agent Windows VM pro Windows je předem nainstalovaný během procesu migrace.
+2. Nainstalujte agenta pro [Linux](../virtual-machines/extensions/agent-linux.md) do migrovaných počítačů. Agent Windows VM pro Windows je předem nainstalovaný během procesu migrace.
 3. Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
 4. U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
 5. Vyjmutí provozu do migrované instance virtuálního počítače Azure
@@ -344,19 +344,19 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
-    - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
-    - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
-    - Nasaďte službu [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview), která vám pomůže zabezpečit disky a zajistit bezpečnost dat před krádeží a neoprávněným přístupem.
+    - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
+    - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/security-overview.md).
+    - Nasaďte službu [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), která vám pomůže zabezpečit disky a zajistit bezpečnost dat před krádeží a neoprávněným přístupem.
     - Přečtěte si další informace o [zabezpečení prostředků IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) a navštivte [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Pro monitorování a správu:
-    - Zvažte nasazení služby [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), která bude monitorovat využití prostředků a útratu.
+    - Zvažte nasazení služby [Azure Cost Management](../cost-management-billing/cloudyn/overview.md), která bude monitorovat využití prostředků a útratu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [cestu k migraci do cloudu](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) v rozhraní Azure cloudu pro přijetí.
+Prozkoumejte [cestu k migraci do cloudu](/azure/architecture/cloud-adoption/getting-started/migrate) v rozhraní Azure cloudu pro přijetí.
 
 ## <a name="troubleshooting--tips"></a>Řešení potíží a tipy
 
