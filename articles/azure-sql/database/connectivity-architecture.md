@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: fceac1a5852c0be767ffc375ad9ec5de033f17b7
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 3d8bf23dcb9bfc390b9e165bcf38bf8feea5135f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506765"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833668"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -78,10 +78,10 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | --- | --- |
 | Austrálie – střed    | 20.36.105.0 |
 | Central2 Austrálie   | 20.36.113.0 |
-| Austrálie – východ       | 13.75.149.87, 40.79.161.1 |
+| Austrálie – východ       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
 | Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
-| Střední Kanada       | 40.85.224.249      |
+| Střední Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | Kanada – východ          | 40.86.226.166      |
 | USA – střed           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Čína – východ           | 139.219.130.35     |
@@ -102,7 +102,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Jižní Korea – střed        | 52.231.32.42       |
 | Jižní Korea – jih          | 52.231.200.86      |
 | USA – středosever     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
-| Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 |
+| Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | Norsko – východ          | 51.120.96.0        |
 | Norsko – západ          | 51.120.216.0       |
 | Jižní Afrika – sever   | 102.133.152.0      |
@@ -118,7 +118,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | USA – středozápad      | 13.78.145.25       |
 | Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA – západ              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA – západ 2            | 13.66.226.202      |
+| USA – západ 2            | 13.66.226.202, 40.78.240.8  |
 |                      |                    |
 
 ## <a name="next-steps"></a>Další kroky

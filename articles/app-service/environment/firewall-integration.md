@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 937f84d1b918eb7b9f38a62caef5dea7cede6d4d
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 8e63c0678967a21a6b2763574e594a1a6c2ba25b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832980"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
@@ -96,8 +96,10 @@ Toto použití Application Gateway je pouze jedním z příkladů konfigurace sy
 
 Azure Firewall může odesílat protokoly do Azure Storage, centra událostí nebo protokolů Azure Monitor. Pokud chcete svou aplikaci integrovat s jakýmkoli podporovaným cílem, na portálu Azure Firewall > diagnostické protokoly a povolte protokoly pro požadovaný cíl. Pokud provádíte integraci s protokoly Azure Monitor, můžete zobrazit protokolování pro veškerý provoz odeslaný do Azure Firewall. Pokud chcete zobrazit zamítnutý provoz, otevřete Log Analytics portálu pracovního prostoru > protokoly a zadejte dotaz jako 
 
-    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
- 
+```kusto
+AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+```
+
 Integrace vašich Azure Firewall s protokoly Azure Monitor je užitečná při prvním získání aplikace, když si nejste vědomi všech závislostí aplikace. Další informace o protokolech Azure Monitor můžete získat z [analýzy dat protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Závislosti

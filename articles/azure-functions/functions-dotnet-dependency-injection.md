@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: df26a6815a3dde27559f2f55038bdccadd78ea0b
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832861"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -119,7 +119,7 @@ Azure Functions aplikace poskytují stejné životnosti služeb jako [vkládán�
 
 - **Přechodný**: přechodné služby se vytvářejí při každém požadavku služby.
 - **Vymezené**: rozsah platnosti služby odpovídá době trvání spuštění funkce. Oborové služby se pro každé spuštění vytvoří jednou. Pozdější požadavky na tuto službu během opakovaného použití existující instance služby.
-- **Singleton**: životnost služby typu Singleton odpovídá době životnosti hostitele a je znovu používána napříč prováděním funkce v dané instanci. Pro připojení a klienty jsou doporučovány služby životnosti singleton, `SqlConnection` například `HttpClient` instance.
+- **Singleton**: životnost služby typu Singleton odpovídá době životnosti hostitele a je znovu používána napříč prováděním funkce v dané instanci. Pro připojení a klienty jsou doporučovány služby životnosti singleton, `DocumentClient` například `HttpClient` instance.
 
 Zobrazit nebo stáhnout [ukázku různých životností služby](https://aka.ms/functions/di-sample) na GitHubu.
 
@@ -185,7 +185,7 @@ Následující příklad `host.json` souboru Přidá filtr protokolu.
 
 Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
 
-|Typ služby|Doba platnosti|Popis|
+|Typ služby|Doba platnosti|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Konfigurace modulu runtime|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Zodpovídá za poskytnutí ID instance hostitele.|

@@ -4,22 +4,22 @@ description: Přečtěte si, jak získat přístup k souborům, rozhraním REST 
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: a7e242c000b57cbbfafebc1e11191199a7a4b95f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833481"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Přístup ke cloudovým datům v poznámkovém bloku
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Při provádění zajímavé práce v poznámkovém bloku Jupyter se vyžaduje data. Data jsou skutečně Lifeblood poznámkových blocích.
 
 V některých případech můžete [importovat datové soubory do projektu](work-with-project-data-files.md), a to i pomocí příkazů, jako `curl` je v rámci poznámkového bloku, ke stažení souboru přímo. Je ale nejspíš potřeba pracovat s mnohem pokročilejšími daty, která jsou dostupná ze zdrojů, které nepatří do souborů, jako jsou rozhraní REST API, relační databáze a cloudové úložiště, jako jsou tabulky Azure.
 
 Tento článek stručně popisuje tyto různé možnosti. Vzhledem k tomu, že se přístup k datům nejlépe zobrazuje v akci, najdete spustitelný kód v [ukázkách Azure Notebooks – přístup k datům](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 

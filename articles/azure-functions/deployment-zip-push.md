@@ -3,12 +3,12 @@ title: Nasazení nabízených oznámení zip pro Azure Functions
 description: K publikování Azure Functions použijte zařízení pro nasazení souboru. zip služby nasazení Kudu.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769659"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833048"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Komprimované nasazení pro službu Azure Functions
 
@@ -16,7 +16,7 @@ Tento článek popisuje, jak nasadit soubory projektu Function App do Azure z so
 
 Azure Functions má plný rozsah možností průběžného nasazování a integrace, které poskytuje Azure App Service. Další informace najdete v tématu [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md).
 
-Chcete-li urychlit vývoj, může být snazší nasadit soubory projektu Function App přímo ze souboru. zip. Rozhraní API pro nasazení. zip převezme obsah souboru. zip a extrahuje obsah do `wwwroot` složky aplikace Function App. Toto nasazení souboru ZIP používá stejnou službu Kudu, která je založena na kontinuální integraci nasazení, včetně:
+Chcete-li urychlit vývoj, může být snazší nasadit soubory projektu Function App přímo ze souboru. zip. Rozhraní API pro nasazení. zip převezme obsah souboru. zip a extrahuje obsah do složky aplikace `wwwroot` Function App. Toto nasazení souboru ZIP používá stejnou službu Kudu, která je založena na kontinuální integraci nasazení, včetně:
 
 + Odstranění souborů, které byly ponechány v předchozích nasazeních.
 + Přizpůsobení nasazení, včetně spuštěných skriptů nasazení.
@@ -56,17 +56,19 @@ Je však možné, že jste své funkce vytvořili pomocí editoru v Azure Portal
 
     Pomocí následujícího nasazení získat rozhraní API Stáhněte soubory z `<function_app>` projektu: 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
-    Včetně `/site/wwwroot/` tohoto souboru je soubor zip, který obsahuje pouze soubory projektu Function App, a ne celý web. Pokud ještě nejste přihlášení k Azure, budete vyzváni k tomu.  
+    Včetně tohoto `/site/wwwroot/` souboru je soubor zip, který obsahuje pouze soubory projektu Function App, a ne celý web. Pokud ještě nejste přihlášení k Azure, budete vyzváni k tomu.  
 
 Soubor. zip si můžete také stáhnout z úložiště GitHub. Když si stáhnete úložiště GitHub jako soubor. zip, GitHub přidá na větev další úroveň složky. Tato dodatečná úroveň složky znamená, že nemůžete nasadit soubor. zip přímo do svého stažení z GitHubu. Pokud používáte úložiště GitHub k údržbě aplikace Function App, měli byste použít [průběžnou integraci](functions-continuous-deployment.md) k nasazení aplikace.  
 
 ## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Nasazení s využitím rozhraní příkazového řádku Azure
 
-K aktivaci nasazení nabízených oznámení můžete použít rozhraní příkazového řádku Azure. Pomocí příkazu [AZ functionapp Deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) nasaďte do aplikace Function app soubor. zip. Chcete-li použít tento příkaz, musíte použít Azure CLI verze 2.0.21 nebo novější. Pokud chcete zjistit, jakou verzi rozhraní příkazového řádku Azure používáte `az --version` , použijte příkaz.
+K aktivaci nasazení nabízených oznámení můžete použít rozhraní příkazového řádku Azure. Pomocí příkazu [AZ functionapp Deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) nasaďte do aplikace Function app soubor. zip. Chcete-li použít tento příkaz, musíte použít Azure CLI verze 2.0.21 nebo novější. Pokud chcete zjistit, jakou verzi rozhraní příkazového řádku Azure používáte, použijte `az --version` příkaz.
 
-V následujícím příkazu nahraďte `<zip_file_path>` zástupný symbol cestou k umístění souboru. zip. Nahraďte `<app_name>` také jedinečným názvem vaší aplikace Function App a nahraďte `<resource_group>` názvem vaší skupiny prostředků.
+V následujícím příkazu nahraďte `<zip_file_path>` zástupný symbol cestou k umístění souboru. zip. Nahraďte také `<app_name>` jedinečným názvem vaší aplikace Function App a nahraďte `<resource_group>` názvem vaší skupiny prostředků.
 
 ```azurecli-interactive
 az functionapp deployment source config-zip -g <resource_group> -n \
@@ -83,7 +85,7 @@ Pokud používáte Azure CLI v místním počítači, `<zip_file_path>` je cesta
 
 Můžete také zvolit spuštění funkcí přímo ze souboru balíčku nasazení. Tato metoda přeskočí krok nasazení kopírování souborů z balíčku do `wwwroot` adresáře aplikace Function App. Místo toho je soubor balíčku připojen modulem runtime funkcí a obsah `wwwroot` adresáře bude jen pro čtení.  
 
-Nasazení souboru zip se integruje s touto funkcí, kterou můžete povolit tak, že nastavíte `WEBSITE_RUN_FROM_PACKAGE` nastavení funkce aplikace na `1`hodnotu. Další informace najdete v tématu [spuštění funkcí ze souboru balíčku nasazení](run-functions-from-deployment-package.md).
+Nasazení souboru zip se integruje s touto funkcí, kterou můžete povolit tak, že nastavíte nastavení funkce aplikace `WEBSITE_RUN_FROM_PACKAGE` na hodnotu `1` . Další informace najdete v tématu [spuštění funkcí ze souboru balíčku nasazení](run-functions-from-deployment-package.md).
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

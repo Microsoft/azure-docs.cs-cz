@@ -3,20 +3,20 @@ title: Instalace balíčků v poznámkových blocích Jupyter Azure Notebooks �
 description: 'Naučte se instalovat balíčky v Pythonu, R a F # z Jupyter poznámkového bloku běžícího na Azure.'
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646224"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831212"
 ---
 # <a name="install-packages-from-within-azure-notebooks-preview"></a>Instalace balíčků z aplikace Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 I když můžete nakonfigurovat [prostředí pro svůj Poznámkový blok na úrovni projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), můžete chtít nainstalovat balíčky přímo v jednotlivém poznámkovém bloku.
 
 Balíčky nainstalované z poznámkového bloku se vztahují jenom na aktuální relaci serveru. Instalace balíčku se po vypnutí serveru neuloží.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 

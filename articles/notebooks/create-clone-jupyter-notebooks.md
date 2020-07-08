@@ -3,18 +3,18 @@ title: Vytváření a klonování Jupyter poznámkových bloků – Azure Notebo
 description: Projekty Azure Notebooks ve verzi Preview spravují kolekci poznámkových bloků a souvisejících souborů, které můžete vytvořit nebo klonovat z jiného zdroje.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710384"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831280"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Vytváření a klonování projektů v Azure Notebooks Preview
 
-Azure Notebooks uspořádá Jupyter poznámkové bloky a související soubory do logických skupin označovaných jako *projekty*. Nejprve vytvoříte projekt jako kontejner a pak vytvoříte nebo naklonujte jeden nebo několik poznámkových bloků v rámci složky vedle jiných souborů projektu. (Tento proces je znázorněn v tomto [kurzu](tutorial-create-run-jupyter-notebook.md).)
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks uspořádá Jupyter poznámkové bloky a související soubory do logických skupin označovaných jako *projekty*. Nejprve vytvoříte projekt jako kontejner a pak vytvoříte nebo naklonujte jeden nebo několik poznámkových bloků v rámci složky vedle jiných souborů projektu. (Tento proces je znázorněn v tomto [kurzu](tutorial-create-run-jupyter-notebook.md).)
 
 Projekt také uchovává metadata a další nastavení konfigurace, která mají vliv na server, na kterém se poznámkové bloky spouštějí, včetně kroků vlastního nastavení a instalace balíčku. Další informace najdete v tématu [Správa a konfigurace projektů](configure-manage-azure-notebooks-projects.md).
 

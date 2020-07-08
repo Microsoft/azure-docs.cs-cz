@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8d0bcff79b6101047545614538dc1d58a854a6d
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832521"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -187,7 +187,7 @@ Po přípravě image pro nahrání se ujistěte, že virtuální počítač zůs
 
 Tato část platí jenom v případě, že se hlavní image vytvořila místně.
 
-V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do účtu služby Azure Storage. Pokud ještě nemáte účet úložiště Azure, vytvořte ho podle pokynů v [tomto článku](/azure/javascript/tutorial-vscode-static-website-node-03) .
+V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do účtu služby Azure Storage. Pokud ještě nemáte účet úložiště Azure, vytvořte ho podle pokynů v [tomto článku](/azure/developer/javascript/tutorial-vscode-static-website-node-03) .
 
 1. Pokud jste to ještě neudělali, převeďte image virtuálního počítače (VHD) na pevnou. Pokud bitovou kopii nepřevedete na pevnou, nemůžete tuto image úspěšně vytvořit.
 

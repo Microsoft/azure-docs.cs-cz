@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 17d135e9b250ba111cf2bd1a91a91d146221d69d
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833396"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Správa vlastností kontejneru a metadat pomocí .NET
 
@@ -25,14 +25,27 @@ Kontejnery objektů BLOB podporují systémové vlastnosti a uživatelsky defino
 
 - **Uživatelsky definovaná metadata**: uživatelsky definovaná metadata se skládají z jedné nebo více párů název-hodnota, které zadáte pro prostředek BLOB Storage. Metadata můžete použít k ukládání dalších hodnot s prostředkem. Hodnoty metadat jsou pouze pro vaše vlastní účely a neovlivňují způsob, jakým se prostředek chová.
 
+Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP, takže by měly splňovat všechna omezení řízení hlaviček protokolu HTTP. Názvy metadat musí být platné názvy hlaviček protokolu HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by se považovat za nerozlišování velkých a malých písmen. Hodnoty metadat obsahující znaky jiné než ASCII by měly být zakódované v kódování Base64 nebo v kódování URL.
+
+## <a name="retrieve-container-properties"></a>Načíst vlastnosti kontejneru
+
+# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+
+Chcete-li načíst vlastnosti kontejneru, zavolejte jednu z následujících metod:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)
+
+Následující příklad kódu načte vlastnosti systému kontejneru a zapisuje některé hodnoty vlastností do okna konzoly:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
+
+# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
+
 Načítají se hodnoty vlastností a metadat pro prostředek BLOB Storage je proces se dvěma kroky. Než budete moci číst tyto hodnoty, je nutné je explicitně načíst voláním metody **FetchAttributes** nebo **FetchAttributesAsync** . Výjimkou z tohoto pravidla je, že metody **Exists** a **ExistsAsync** volají odpovídající metodu **FetchAttributes** v rámci pokrývání. Při volání jedné z těchto metod není nutné volat také **FetchAttributes**.
 
 > [!IMPORTANT]
 > Pokud zjistíte, že vlastnost nebo hodnoty metadat pro prostředek úložiště nebyly naplněny, zkontrolujte, zda váš kód volá metodu **FetchAttributes** nebo **FetchAttributesAsync** .
-
-Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP, takže by měly splňovat všechna omezení řízení hlaviček protokolu HTTP. Názvy metadat musí být platné názvy hlaviček protokolu HTTP a platné identifikátory jazyka C#, mohou obsahovat pouze znaky ASCII a měly by se považovat za nerozlišování velkých a malých písmen. Hodnoty metadat obsahující znaky jiné než ASCII by měly být zakódované v kódování Base64 nebo v kódování URL.
-
-## <a name="retrieve-container-properties"></a>Načíst vlastnosti kontejneru
 
 Chcete-li načíst vlastnosti kontejneru, zavolejte jednu z následujících metod:
 
@@ -63,7 +76,33 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 }
 ```
 
+---
+
 ## <a name="set-and-retrieve-metadata"></a>Nastavení a načtení metadat
+
+# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+
+Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředku BLOB nebo kontejneru. Chcete-li nastavit metadata, přidejte páry název-hodnota do objektu [IDictionary](/dotnet/api/system.collections.idictionary) a potom zavolejte jednu z následujících metod pro zápis hodnot:
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadataasync)
+
+Název vašich metadat musí odpovídat konvencím pojmenování identifikátorů C#. Názvy metadat zachovávají případ, se kterým byly vytvořeny, ale při nastavení nebo čtení se nerozlišují malá a velká písmena. Pokud se pro prostředek odešlou dvě nebo víc hlaviček metadat se stejným názvem, služba BLOB Storage se oddělí a Zřetězí dvě hodnoty a vrátí kód odpovědi HTTP 200 (OK).
+
+Následující příklad kódu nastaví metadata na kontejneru.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddContainerMetadata":::
+
+Chcete-li načíst metadata, zavolejte jednu z následujících metod:
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync).
+
+Pak si přečtěte hodnoty, jak je znázorněno v následujícím příkladu.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
+
+# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
 
 Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředku BLOB nebo kontejneru. Chcete-li nastavit metadata, přidejte páry název-hodnota do kolekce **metadat** v prostředku a pak zavolejte jednu z následujících metod pro zápis hodnot:
 
@@ -125,6 +164,8 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
     }
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

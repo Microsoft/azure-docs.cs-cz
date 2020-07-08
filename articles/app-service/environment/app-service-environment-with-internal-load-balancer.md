@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833099"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Použití interního Load Balancer s App Service Environment
 
@@ -93,7 +93,7 @@ Pokud chcete tento tok vyzkoušet s vlastními certifikáty a otestovat přístu
 4. Po vytvoření vytvořte webovou aplikaci v pomocném mechanismu. 
 5. Vytvořte virtuální počítač, pokud ho v této virtuální síti nemáte (ne ve stejné podsíti jako pomocného mechanismu řízení nebo věci).
 6. Nastavte DNS pro subdoménu. Můžete použít zástupný znak s vaší subdoménou v DNS nebo pokud chcete provést některé jednoduché testy, upravte soubor hostitelů na VIRTUÁLNÍm počítači a nastavte název webové aplikace na VIP IP adresa. Pokud byl váš správce přihlášený jako název subdomény. ilbase.com a provedli jste webovou aplikaci MyTestApp, aby byla řešena v mytestapp.ilbase.com, nastavte ji v souboru Hosts. (V systému Windows je soubor hostitelů na adrese C:\Windows\System32\drivers\etc\)
-7. Použijte na tomto virtuálním počítači prohlížeč a pak `https://mytestapp.ilbase.com` na (nebo na základě názvu vaší webové aplikace ve vaší subdoméně).
+7. Použijte na tomto virtuálním počítači prohlížeč a pak na `https://mytestapp.ilbase.com` (nebo na základě názvu vaší webové aplikace ve vaší subdoméně).
 8. V prohlížeči na tomto virtuálním počítači přejděte na adresu `https://mytestapp.ilbase.com`. Pokud používáte certifikát podepsaný svým držitelem, musíte přijmout nedostatečné zabezpečení. 
 
 IP adresa pro váš interního nástroje je uvedena ve vašich vlastnostech jako virtuální IP adresa.
@@ -118,9 +118,10 @@ Další položky správy jsou Správa certifikátů a správa DNS. Certifikát, 
 #### <a name="dns-configuration"></a>Konfigurace DNS
 Při použití externí virtuální IP adresy se DNS spravuje přes Azure. Všechny aplikace vytvořené ve vaší službě ASE se automaticky přidají do Azure DNS, což je veřejná služba DNS. Ve službě ASE s interním nástrojem pro vyrovnávání zatížení musíte spravovat vlastní službu DNS. Pro danou subdoménu, jako je například contoso.corp.net, je nutné vytvořit záznamy DNS A, které odkazují na vaši interního nástroje adresu:
 
-    * 
-    *. SCM publikování FTP 
-
+- \*
+- *. SCM
+- ftp
+- publish
 
 ## <a name="getting-started"></a>Začínáme
 Pokud chcete začít pracovat se App Service prostředími, přečtěte si téma [Úvod do App Service prostředí][WhatisASE] .

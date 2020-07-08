@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Zjistěte, jak dynamicky vytvořit trvalý svazek se soubory Azure pro použití s několika souběžnými lusky ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 09/12/2019
-ms.openlocfilehash: 447df96240891e30570f0c7a8174674e1f404efc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/01/2020
+ms.openlocfilehash: 78bcd4925451125d5ab56a1da08cc307dc0fc236
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831586"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -18,7 +18,7 @@ Trvalý svazek představuje část úložiště, která byla zřízena pro použ
 
 Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložiště pro aplikace v AKS][concepts-storage].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -45,7 +45,7 @@ Vytvořte soubor s názvem `azure-file-sc.yaml` a zkopírujte ho v následujíc�
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: azurefile
+  name: my-azurefile
 provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
@@ -74,11 +74,11 @@ Teď vytvořte soubor s názvem `azure-file-pvc.yaml` a zkopírujte ho na násle
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: azurefile
+  name: my-azurefile
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: my-azurefile
   resources:
     requests:
       storage: 5Gi
@@ -96,15 +96,15 @@ kubectl apply -f azure-file-pvc.yaml
 Po dokončení se sdílená složka vytvoří. Vytvoří se také tajný kód Kubernetes, který obsahuje informace o připojení a přihlašovací údaje. K zobrazení stavu virtuálního okruhu (PVC) můžete použít příkaz [kubectl Get][kubectl-get] :
 
 ```console
-$ kubectl get pvc azurefile
+$ kubectl get pvc my-azurefile
 
-NAME        STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
+NAME           STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
+my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            my-azurefile      5m
 ```
 
 ## <a name="use-the-persistent-volume"></a>Použití trvalého svazku
 
-Následující YAML vytvoří pod, který pomocí *azurefile* trvalého objemu deklarací identity připojí sdílenou složku Azure na cestě */mnt/Azure* . V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
+Následující YAML vytvoří položku, která používá trvalý objem deklarací identity *My-azurefile* pro připojení sdílené složky Azure v cestě */mnt/Azure* . V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 Vytvořte soubor s názvem `azure-pvc-files.yaml` a zkopírujte následující YAML. Ujistěte se, že tento *argument* se shoduje s virtuálním okruhem vytvořeným v posledním kroku.
 
@@ -130,7 +130,7 @@ spec:
   volumes:
     - name: volume
       persistentVolumeClaim:
-        claimName: azurefile
+        claimName: my-azurefile
 ```
 
 Vytvořte pod příkazem [kubectl Apply][kubectl-apply] .
@@ -157,7 +157,7 @@ Containers:
 Volumes:
   volume:
     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-    ClaimName:  azurefile
+    ClaimName:  my-azurefile
     ReadOnly:   false
 [...]
 ```
@@ -170,7 +170,7 @@ Výchozí hodnota pro *FileMode* a *dirMode* je *0777* pro Kubernetes verze 1.13
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: azurefile
+  name: my-azurefile
 provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777

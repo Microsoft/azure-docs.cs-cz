@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: ab4cc288f2a505baaa8f3a70db0a1fe76fb20c96
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84744064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831926"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Řešení potíží se službou Azure Bastion
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak řešit potíže s Azure bastionu.
 2. Protokolování diagnostiky a další – odchozí na 443 až AzureCloud (regionální značky v rámci této značky služby se zatím nepodporují.)
 3. Cílový virtuální počítač – odchozí pro 3389 a 22 až VirtualNetwork
 
-Příklad pravidel NSG je k dispozici pro referenci v šabloně pro [rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
+Příklad pravidel NSG je k dispozici pro referenci v šabloně pro [rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 Další informace najdete v tématu [doprovodné materiály k NSG pro Azure bastionu](bastion-nsg.md).
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Nejde použít klíč SSH s Azure bastionu.

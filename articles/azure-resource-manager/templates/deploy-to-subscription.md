@@ -2,13 +2,13 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 17ae335fa40a71ed266211150df382404efbf61b
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 07/01/2020
+ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832810"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -17,7 +17,7 @@ Pro zjednodušení správy prostředků můžete nasadit prostředky na úrovni 
 > [!NOTE]
 > V nasazení na úrovni předplatného můžete nasadit do 800 různých skupin prostředků.
 
-Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API. Azure Portal nepodporuje nasazení na úrovni předplatného.
+Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API.
 
 ## <a name="supported-resources"></a>Podporované prostředky
 

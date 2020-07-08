@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 07fc4fbf9305cb2688bae6356f44b80bb6a6c115
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: d55d1c0d72f0122472813fc6e79ba021e8b86e89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831246"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections
+# <a name="azure-app-service-hybrid-connections"></a>Hybridní připojení Azure App Service
 
 Hybrid Connections je služba v Azure a funkce v Azure App Service. Jako služba má využití a možnosti nad rámec těch, které se používají v App Service. Další informace o Hybrid Connections a jejich používání mimo App Service najdete v tématu [Azure Relay Hybrid Connections][HCService].
 
@@ -94,7 +94,7 @@ App Service Hybrid Connections jsou k dispozici pouze v jednotkách Basic, Stand
 
 | Cenový tarif | Počet Hybrid Connections použitelný v plánu |
 |----|----|
-| Basic | 5 podle plánu |
+| Základní | 5 podle plánu |
 | Standard | 25 na plán |
 | PremiumV2 | 200 na aplikaci |
 | Izolovaný | 200 na aplikaci |
@@ -117,7 +117,7 @@ Funkce Hybrid Connections vyžaduje přenosového agenta v síti, který je host
 
 Tento nástroj běží na Windows Serveru 2012 a novějším. HCM se spouští jako služba a připojuje odchozí Azure Relay na portu 443.  
 
-Po instalaci HCM můžete spustit HybridConnectionManagerUi. exe, abyste mohli použít uživatelské rozhraní nástroje. Tento soubor je v instalačním adresáři Správce hybridního připojení. Ve Windows 10 můžete také ve vyhledávacím poli Vyhledat *správce hybridního připojení uživatelské rozhraní* .  
+Po instalaci HCM můžete spustit HybridConnectionManagerUi.exe pro použití uživatelského rozhraní nástroje. Tento soubor je v instalačním adresáři Správce hybridního připojení. Ve Windows 10 můžete také ve vyhledávacím poli Vyhledat *správce hybridního připojení uživatelské rozhraní* .  
 
 ![Snímek obrazovky s Správce hybridního připojení][7]
 
@@ -168,26 +168,30 @@ Existují pravidelné aktualizace Správce hybridního připojení, které řeš
 
 Pro Hybrid Connections existuje podpora rozhraní příkazového řádku Azure. Zadané příkazy fungují jak na úrovni plánu aplikace, tak na App Service.  Příkazy na úrovni aplikace jsou:
 
-    az webapp hybrid-connection
+```azurecli
+az webapp hybrid-connection
 
-    Group
-        az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        add    : Add a hybrid-connection to a webapp.
-        list   : List the hybrid-connections on a webapp.
-        remove : Remove a hybrid-connection from a webapp.
+Group
+    az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a hybrid-connection to a webapp.
+    list   : List the hybrid-connections on a webapp.
+    remove : Remove a hybrid-connection from a webapp.
+```
 
 Příkazy plánování App Service umožňují nastavit, který klíč dané hybridní připojení bude používat. Existují dva klíče nastavené pro každé hybridní připojení, primární a sekundární. Pomocí níže uvedených příkazů se můžete rozhodnout použít primární nebo sekundární klíč. To vám umožní přepínat klíče pro, kdy chcete pravidelně znovu vygenerovat klíče. 
 
-    az appservice hybrid-connection --help
+```azurecli
+az appservice hybrid-connection --help
 
-    Group
-        az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
-                  connections in that appservice plan.
+Group
+    az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
+                connections in that appservice plan.
+```
 
 ## <a name="secure-your-hybrid-connections"></a>Zabezpečení Hybrid Connections ##
 

@@ -11,12 +11,12 @@ author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/20/2020
-ms.openlocfilehash: 44da1d67155efe3feb41e3648c820a8ada0b8fc3
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9871d2ef46a4bbcaa0de7a2aee7d2c91f2bfefab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831909"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -106,7 +106,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     Vyberte **Další**.
 
-1. Ve formuláři **typ úlohy a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. Další informace najdete v tématu [Definování typů úloh](how-to-define-task-type.md) .
+1. Ve formuláři **typ úlohy a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. Další informace najdete v tématu [podporované typy úloh](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) .
 
     1. V případě klasifikace můžete také povolit obsáhlý Learning, který se používá pro text featurizations.
 

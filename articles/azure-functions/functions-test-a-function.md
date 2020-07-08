@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832555"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testování kódu ve službě Azure Functions
 
-Tento článek ukazuje, jak vytvořit automatizované testy pro Azure Functions. 
+Tento článek ukazuje, jak vytvořit automatizované testy pro Azure Functions.
 
 Testování veškerého kódu je doporučeno, ale můžete dosáhnout nejlepších výsledků zabalením logiky funkce a vytvořením testů mimo funkci. Vyabstrakce logiky omezuje řádky kódu funkce a umožňuje, aby byla funkce výhradně zodpovědná za volání jiných tříd nebo modulů. Tento článek však ukazuje, jak vytvořit automatizované testy proti funkcím aktivovaným protokolem HTTP a časovačem.
 
@@ -38,7 +38,7 @@ Pokud chcete nastavit prostředí, vytvořte funkci a otestujte aplikaci. Násle
 1. [Vytvoření nové aplikace Functions](./functions-create-first-azure-function.md) a pojmenování IT **funkcí**
 2. [Vytvořte funkci http ze šablony](./functions-create-first-azure-function.md) a pojmenujte ji **MyHttpTrigger**.
 3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji **MyTimerTrigger**.
-4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ji **Functions. Tests**. 
+4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ji **Functions. Tests**.
 5. Pomocí NuGet přidejte odkaz z testovací aplikace do [Microsoft. AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Odkázat na aplikaci *Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
 
@@ -127,7 +127,7 @@ namespace Functions.Tests
 }
 ```
 
-Tento výčet Určuje typ protokolovacího nástroje používaného testy. 
+Tento výčet Určuje typ protokolovacího nástroje používaného testy.
 
 Nyní vytvořte novou třídu v projektu *Functions. Tests* s názvem **TestFactory.cs** a zadejte následující kód:
 
@@ -314,7 +314,7 @@ module.exports = {
 
 Tento modul implementuje `IsPastDue` vlastnost jako nefalešnou instanci časovače. Konfigurace časovače, jako jsou výrazy NCRONTAB, zde nejsou požadovány, protože testovací svazek je pouhým voláním funkce přímo k otestování výsledku.
 
-Dále pomocí rozšíření VS Code Functions [vytvořte novou funkci http jazyka JavaScript](/azure/javascript/tutorial-vscode-serverless-node-01) a pojmenujte ji *HttpTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js**a přidejte následující kód:
+Dále pomocí rozšíření VS Code Functions [vytvořte novou funkci http jazyka JavaScript](/azure/developer/javascript/tutorial-vscode-serverless-node-01) a pojmenujte ji *HttpTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js**a přidejte následující kód:
 
 ```javascript
 const httpFunction = require('./index');

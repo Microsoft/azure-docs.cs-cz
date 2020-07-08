@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f647727c01bbddafe3b10877af3e1d5652bedd29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74110505"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833583"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Převod textu na řeč nejčastějších dotazech
 
@@ -59,9 +59,9 @@ Odpověď **: model**můžete škálovat v přírůstcích po 20 souběžných p
 
 **Otázka: jsou omezeny moje požadavky?**
 
-Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdete na stránkách pro [Převod textu na řeč](text-to-speech.md).
+Odpověď **: REST API**omezuje požadavky na standardní odběry na 25 za 5 sekund. Úroveň Free (F0) je omezená na 20 požadavků za minutu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Odstraňování potíží](troubleshooting.md)
-- [Poznámky k verzi](releasenotes.md)
+- [Řešení potíží](troubleshooting.md)
+- [Zpráva k vydání verze](releasenotes.md)

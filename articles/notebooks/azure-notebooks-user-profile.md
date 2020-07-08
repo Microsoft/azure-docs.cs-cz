@@ -3,14 +3,16 @@ title: Profil a ID uživatele pro použití s Azure Notebooks Preview
 description: Jak vytvořit a spravovat profil uživatele a ID uživatele pomocí Azure Notebooks, které se stávají součástí adresy URL sdílených poznámkových bloků.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831348"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Váš profil a ID uživatele pro Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 V rámci výkonného prostoru Azure Notebooks spolupráce váš uživatelský profil prezentuje vaši veřejnou image ostatním:
 
@@ -23,8 +25,6 @@ Vaše ID uživatele je součástí adres URL, které používáte ke sdílení p
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Soubory projektu.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klony konkrétních projektů.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Náhled konkrétního poznámkového bloku nebo souboru ve formátu HTML.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>ID uživatele
 
@@ -45,7 +45,7 @@ ID uživatele musí být tvořeno čtyřmi a šestnáct písmeny, číslicemi a 
 
 ## <a name="your-profile"></a>Váš profil
 
-Váš profil se skládá z veřejně viditelných informací na adrese URL `https://notebooks.azure.com/<user_id>`. Na stránce vašeho profilu se zobrazí také nedávno použité projekty a všechny projekty označených hvězdičkou.
+Váš profil se skládá z veřejně viditelných informací na adrese URL `https://notebooks.azure.com/<user_id>` . Na stránce vašeho profilu se zobrazí také nedávno použité projekty a všechny projekty označených hvězdičkou.
 
 Pokud chcete upravit svůj profil, použijte na stránce profilu příkaz **Upravit informace o profilu** . Následující části profilu:
 
@@ -61,4 +61,4 @@ Pokud chcete upravit svůj profil, použijte na stránce profilu příkaz **Upra
 ## <a name="next-steps"></a>Další kroky  
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření Jupyter poznámkového bloku pro provádění lineární regrese](tutorial-create-run-jupyter-notebook.md)
+> [Kurz: vytvoření a spuštění poznámkového bloku Jupyter pro lineární regresi](tutorial-create-run-jupyter-notebook.md)

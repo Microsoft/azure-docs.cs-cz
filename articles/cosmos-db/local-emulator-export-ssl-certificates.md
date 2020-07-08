@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
 ms.custom: tracking-python
-ms.openlocfilehash: a20d6bdb3a2d6070e81dfca84c851003f6ff4ca2
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: ae4840f5ca31f9bbef1fa5f9ffd175a1f1d7696b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832215"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 
@@ -74,6 +74,21 @@ Oba certifikáty je možné znovu vygenerovat kliknutím na **Resetovat data** v
 Při spouštění aplikací v jazyce Java nebo aplikací MongoDB, které používají klienta Java, je snazší nainstalovat certifikát do výchozího úložiště certifikátů Java, než aby bylo možné tyto `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` příznaky předat. Například zahrnutá ukázková aplikace Java ( `https://localhost:8081/_explorer/index.html` ) závisí na výchozím úložišti certifikátů.
 
 Podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store) importujte certifikát X.509 do výchozího úložiště certifikátů Javy. Mějte na paměti, že při používání nástroje keytool budete pracovat v adresáři %JAVA_HOME%.
+
+Případně můžete vytvořit a spustit skript "bash", který to provede automaticky:
+```bash
+#!/bin/bash
+
+# If emulator was started with /AllowNetworkAccess, replace the below with the actual IP address of it:
+EMULATOR_HOST=localhost
+EMULATOR_PORT=8081
+EMULATOR_CERT_PATH=/tmp/cosmos_emulator.cert
+openssl s_client -connect ${EMULATOR_HOST}:${EMULATOR_PORT} </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > $EMULATOR_CERT_PATH
+# delete the cert if already exists
+sudo $JAVA_HOME/bin/keytool -cacerts -delete -alias cosmos_emulator
+# import the cert
+sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $EMULATOR_CERT_PATH
+```
 
 Po instalaci certifikátu TLS/SSL CosmosDBEmulatorCertificate by aplikace měla být schopná připojit se k místnímu emulátoru Azure Cosmos DB a používat ho. Pokud se budou i nadále objevovat potíže, měli byste si přečíst článek o [ladění připojení SSL a TLS](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html). Je velmi pravděpodobné, že certifikát není nainstalovaný v úložišti %JAVA_HOME%/jre/lib/security/cacerts. Například pokud máte více nainstalovaných verzí Javy, vaše aplikace může používat jiné úložiště cacerts, než které jste aktualizovali.
 

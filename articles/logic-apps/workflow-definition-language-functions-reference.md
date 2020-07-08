@@ -3,15 +3,15 @@ title: Referenční příručka pro funkce ve výrazech
 description: Referenční příručka k funkcím ve výrazech pro Azure Logic Apps a automatizaci
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 4c7e5fd19049001409a7b349685c7e02bfc9875e
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.date: 07/01/2020
+ms.openlocfilehash: 30806880b3ce9ab89479cedbce60435f44024efd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85130716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833014"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -127,7 +127,7 @@ Chcete-li pracovat s podmínkami, porovnat hodnoty a výsledky výrazů nebo vyh
 | Funkce logického porovnání | Úkol |
 | --------------------------- | ---- |
 | [a](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
+| [rovná se](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Ověřte, zda je první hodnota větší než nebo rovna druhé hodnotě. |
 | [Přestože](../logic-apps/workflow-definition-language-functions-reference.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
@@ -477,6 +477,9 @@ A vrátí tento výsledek:
 Vrátí výstup akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON, které můžete přiřadit k výrazu. Ve výchozím nastavení funkce odkazuje na celý objekt akce, ale můžete volitelně zadat vlastnost, jejíž hodnota má být.
 Pro zkrácených verzí viz [actionBody ()](#actionBody), [actionOutputs ()](#actionOutputs)a [body ()](#body).
 Aktuální akci naleznete v tématu [Action ()](#action).
+
+> [!TIP]
+> `actions()`Funkce vrátí výstup jako řetězec. Pokud potřebujete pracovat s vrácenou hodnotou jako objekt JSON, musíte nejprve převést řetězcovou hodnotu. Můžete transformovat řetězcovou hodnotu na objekt JSON pomocí [Akce analyzovat JSON](logic-apps-perform-data-operations.md#parse-json-action).
 
 > [!NOTE]
 > Dřív jste mohli použít `actions()` funkci nebo `conditions` prvek při určení, že akce běžela na základě výstupu z jiné akce. Chcete-li však deklarovat explicitně závislosti mezi akcemi, je nyní nutné použít vlastnost závislé akce `runAfter` .
@@ -1826,7 +1829,7 @@ A vrátí tento výsledek:`false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>equals
+### <a name="equals"></a>rovná se
 
 Zkontroluje, jestli jsou hodnoty, výrazy nebo objekty ekvivalentní.
 Vrátí hodnotu true, pokud jsou obě ekvivalentní, nebo vrátí hodnotu false, pokud nejsou ekvivalentní.

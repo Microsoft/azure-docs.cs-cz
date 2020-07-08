@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: af22d7a81d8a778c3df38f929bfbfb0a651cebc6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c86a58c384c7356ecdaf668644f08c011a4c0a40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832997"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -78,9 +78,9 @@ namespace Company.Function
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu.
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -130,9 +130,9 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -161,9 +161,9 @@ module.exports = function (context, eventGridEvent) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu.
+Následující příklad ukazuje aktivační vazbu v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -305,9 +305,9 @@ Python nepodporuje atributy.
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* . Nejsou k dispozici žádné parametry konstruktoru nebo vlastnosti, které by bylo možné nastavit v `EventGridTrigger` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.js* v souboru. Nejsou k dispozici žádné parametry konstruktoru nebo vlastnosti, které by bylo možné nastavit v `EventGridTrigger` atributu.
 
-|Function. JSON – vlastnost |Description|
+|function.jsvlastnost |Description|
 |---------|---------|
 | **textový** | Požadováno – musí být nastavené na `eventGridTrigger` . |
 | **direction** | Požadováno – musí být nastavené na `in` . |
@@ -345,11 +345,11 @@ V Azure Functions 2. x a vyšší máte také možnost pro aktivační událost 
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti souboru *Function. JSON* `name` .
+Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsna* souboru `name` .
 
 # <a name="python"></a>[Python](#tab/python)
 
-Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti souboru *Function. JSON* , který je `name` zadaný jako `func.EventGridEvent` .
+Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti *function.jsu* souboru, který je `name` zadaný jako `func.EventGridEvent` .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -419,11 +419,15 @@ Příkaz vyžaduje adresu URL koncového bodu, která vyvolá funkci. Následuj�
 
 #### <a name="version-2x-and-higher-runtime"></a>Modul runtime verze 2. x (a vyšší)
 
-    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```
 
 #### <a name="version-1x-runtime"></a>Modul runtime verze 1. x
 
-    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```
 
 Systémový klíč je autorizační klíč, který musí být zahrnutý do adresy URL koncového bodu pro aktivační událost Event Grid. Následující část vysvětluje, jak získat systémový klíč.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831875"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certifikáty a App Service Environment 
 
@@ -41,13 +41,16 @@ Nemůžete vytvořit pomocného mechanismu řízení a nahrát ho jako jednu akc
 
 Pokud chcete rychle vytvořit certifikát podepsaný svým vlastníkem pro účely testování, můžete použít tento bit prostředí PowerShell:
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
+
 Při vytváření certifikátu podepsaného svým vlastníkem budete muset ověřit, že název subjektu má formát CN = {ASE_NAME_HERE} _InternalLoadBalancingASE.
 
 ## <a name="application-certificates"></a>Certifikáty aplikací 
@@ -80,15 +83,18 @@ Pokud chcete nahrát certifikát do vaší aplikace v pomocném mechanismu služ
 
 Certifikát bude k dispozici pro všechny aplikace ve stejném plánu služby App Service jako aplikace, která nakonfiguruje toto nastavení. Pokud potřebujete, aby byla k dispozici pro aplikace v jiném plánu App Service, bude nutné zopakovat operaci nastavení aplikace v aplikaci v tomto plánu App Service. Pokud chcete ověřit, že je certifikát nastavený, otevřete konzolu Kudu a vydejte následující příkaz v konzole ladění PowerShellu:
 
-    dir cert:\localmachine\root
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 K provedení testování můžete vytvořit certifikát podepsaný svým vlastníkem a vygenerovat soubor *. cer* pomocí následujícího prostředí PowerShell: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

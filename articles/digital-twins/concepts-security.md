@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1a54ec54823d8d002344e26f97db7043433f6da0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833160"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Zabezpečení digitálních vláken Azure pomocí řízení přístupu na základě role
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Z důvodu zabezpečení umožňuje digitální vlákna Azure přesné řízení přístupu ke konkrétním datům, prostředkům a akcím v nasazení. Provede to prostřednictvím podrobné strategie správy rolí a oprávnění označovaného jako **řízení přístupu na základě role (RBAC)**. [Tady](../role-based-access-control/overview.md)si můžete přečíst obecné principy RBAC pro Azure.
 
@@ -51,6 +48,9 @@ Se spravovanými identitami spravuje platforma Azure tuto identitu modulu runtim
 Azure poskytuje níže vestavěné role RBAC pro autorizaci přístupu k prostředku digitálních vláken Azure:
 * Vlastník digitálních vláken Azure (Preview) – pomocí této role můžete poskytnout úplný přístup k prostředkům Azure Digital Resources.
 * Čtečka digitálních vláken Azure (Preview) – Tato role slouží k udělení přístupu k prostředkům digitálních vláken Azure, které jsou jen pro čtení.
+
+> [!TIP]
+> Role čtenář digitálních vláken Azure (Preview) teď podporuje i vztahy procházení.
 
 Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [vysvětlení definic rolí](../role-based-access-control/role-definitions.md) v dokumentaci k Azure RBAC. Informace o vytváření vlastních rolí RBAC najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
 

@@ -8,21 +8,22 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: f3dc7a051021c75c7e1ed6904096c43a27c3e05e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465894"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833342"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 
 Statický obsah (HTML, CSS, JavaScript a soubory obrázků) můžete obsluhovat přímo z kontejneru úložiště s názvem *$Web*. Hostování obsahu v Azure Storage umožňuje používat architektury bez serveru, které zahrnují [Azure Functions](/azure/azure-functions/functions-overview) a jiné služby PaaS (Platform as a Service).
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
 > Pokud vaše lokalita závisí na kódu na straně serveru, použijte místo toho [Azure App Service](/azure/app-service/overview) .
+Ujistěte se, že jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Statické weby nejsou k dispozici v žádném jiném typu účtu úložiště.
 
 ## <a name="setting-up-a-static-website"></a>Nastavení statického webu
 
@@ -46,7 +47,7 @@ Pomocí kteréhokoli z těchto nástrojů můžete nahrát obsah do kontejneru *
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Rozšíření editoru Visual Studio Code](/azure/javascript/tutorial-vscode-static-website-node-01)
+> * [Rozšíření editoru Visual Studio Code](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>Zobrazení obsahu
 
@@ -63,11 +64,11 @@ Adresa URL vašeho webu obsahuje regionální kód. Například adresa URL `http
 
 I když tento kód musí zůstat v adrese URL, je k dispozici pouze pro interní použití a tento kód nebude nutné používat žádným jiným způsobem.
 
-Indexový dokument, který zadáte při povolování hostování statických webů, se zobrazí, když uživatelé otevřou web a nezadáte konkrétní soubor (například: `https://contosoblobaccount.z22.web.core.windows.net` ).  
+Indexový dokument, který zadáte při povolování hostování statických webů, se zobrazí, když uživatelé otevřou web a nezadáte konkrétní soubor (například: `https://contosoblobaccount.z22.web.core.windows.net` ).
 
 ### <a name="secondary-endpoints"></a>Sekundární koncové body
 
-Pokud nastavíte [redundanci v sekundární oblasti](../common/storage-redundancy.md#redundancy-in-a-secondary-region), můžete k obsahu webu získat přístup také pomocí sekundárního koncového bodu. Vzhledem k tomu, že jsou data replikována do sekundárních oblastí asynchronně, nejsou soubory, které jsou k dispozici v sekundárním koncovém bodu, synchronizovány se soubory, které jsou dostupné na primárním koncovém bodu. 
+Pokud nastavíte [redundanci v sekundární oblasti](../common/storage-redundancy.md#redundancy-in-a-secondary-region), můžete k obsahu webu získat přístup také pomocí sekundárního koncového bodu. Vzhledem k tomu, že jsou data replikována do sekundárních oblastí asynchronně, nejsou soubory, které jsou k dispozici v sekundárním koncovém bodu, synchronizovány se soubory, které jsou dostupné na primárním koncovém bodu.
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Dopad nastavení úrovně veřejného přístupu webového kontejneru
 
@@ -85,11 +86,11 @@ Veřejný přístup k primárnímu koncovému bodu služby BLOB Service se ale `
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Mapování vlastní domény na statickou adresu URL webu
 
-Svůj statický Web můžete zpřístupnit prostřednictvím vlastní domény. 
+Svůj statický Web můžete zpřístupnit prostřednictvím vlastní domény.
 
 Pro vlastní doménu je snazší povolit přístup HTTP, protože je Azure Storage nativně podporuje. Pokud chcete povolit protokol HTTPS, musíte použít Azure CDN, protože Azure Storage ještě nativně nepodporuje protokol HTTPS s vlastními doménami. Podrobné pokyny najdete v tématu [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md) .
 
-Pokud je účet úložiště nakonfigurovaný tak, aby [vyžadoval zabezpečený přenos](../common/storage-require-secure-transfer.md) přes protokol HTTPS, musí uživatelé použít koncový bod HTTPS. 
+Pokud je účet úložiště nakonfigurovaný tak, aby [vyžadoval zabezpečený přenos](../common/storage-require-secure-transfer.md) přes protokol HTTPS, musí uživatelé použít koncový bod HTTPS.
 
 > [!TIP]
 > Zvažte hostování vaší domény v Azure. Další informace najdete v tématu [hostování vaší domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).

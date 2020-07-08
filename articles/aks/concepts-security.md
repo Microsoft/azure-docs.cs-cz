@@ -2,14 +2,16 @@
 title: Koncepty – zabezpečení ve službě Azure Kubernetes Services (AKS)
 description: Přečtěte si o zabezpečení ve službě Azure Kubernetes (AKS), včetně komunikace mezi hlavním a uzlem, síťové zásady a Kubernetes tajné klíče.
 services: container-service
+author: mlearned
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 07/01/2020
+ms.author: mlearned
+ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831535"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepce zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
@@ -78,6 +80,8 @@ Pro omezení síťového provozu mezi lusky v clusteru nabízí AKS podporu pro 
 
 Použití tajných kódů snižuje citlivé informace, které jsou definovány v manifestu pod nebo Service YAML. Místo toho vyžádáte tajný klíč uložený v Kubernetes API serveru jako součást manifestu YAML. Tento přístup poskytuje pouze konkrétní přístup k tajnému kódu pod. Upozorňujeme na to, že soubory manifestu nezpracovaných tajných kódů obsahují tajná data ve formátu Base64 (Další informace najdete v [oficiální dokumentaci][secret-risks] ). Proto by se tento soubor měl považovat za citlivé informace a nikdy se nezavazuje ke správě zdrojového kódu.
 
+Tajné kódy Kubernetes jsou uložené v etcd a v úložišti hodnot distribuovaných klíčů. Úložiště Etcd je plně spravované pomocí AKS a [data se v rámci platformy Azure šifrují v klidovém][encryption-atrest]stavu. 
+
 ## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít s zabezpečením clusterů AKS, přečtěte si téma [upgrade clusteru AKS][aks-upgrade-cluster].
@@ -96,6 +100,7 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
+[encryption-atrest]: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

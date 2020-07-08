@@ -3,22 +3,22 @@ title: Přihlašovat Azure Notebooks Preview
 description: Nakonfigurujte svůj uživatelský účet pro Azure Notebooks pomocí účet Microsoft nebo pracovního/školního účtu.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832181"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Váš uživatelský účet pro Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Můžete použít Azure Notebooks s přihlášením pomocí uživatelského účtu nebo bez něj:
 
 - Bez přihlášení můžete vytvářet a spouštět poznámkové bloky, ale nemůžou uchovávat poznámkové bloky nebo datové soubory jako součást projektů. Uživatel, který obdrží odkaz na notebook Azure, může Poznámkový blok využít, aniž by se musel přihlašovat.
 - Když se přihlásíte, Azure Notebooks uchová všechny vaše projekty s vaším účtem. Přihlášení uživatelé mají také ID uživatele, které jim umožní sdílet své projekty a poznámkové bloky s ostatními.
 - Když se účet používaný pro Azure Notebooks taky přidruží k předplatnému Azure, získáte další výhody, jako je spuštění poznámkových bloků na výkonnějších serverech, vytváření privátních poznámkových bloků a udělení oprávnění pro poznámkové bloky jednotlivým uživatelům.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Přihlášení do Azure Notebooks vyžaduje buď účet Microsoft, nebo pracovní nebo školní účet. Při výběru příkazu pro **přihlášení** v pravé horní části stránky s poznámkovými bloky se zobrazí výzva k zadání účtu:
 
