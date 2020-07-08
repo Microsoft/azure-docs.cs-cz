@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174869"
 ---
 Každý klientský počítač, který se připojujete k virtuální síti s připojením typu Point-to-site, musí mít nainstalovaný klientský certifikát. Vygenerujete ho z kořenového certifikátu a nainstalujete ho na každý klientský počítač. Pokud nenainstalujete platný certifikát klienta, ověřování se nezdaří, pokud se klient pokusí připojit k virtuální síti.
@@ -22,7 +22,7 @@ Klientské certifikáty můžete vygenerovat pomocí následujících metod:
 
 - **Podnikový certifikát:**
 
-  - Pokud používáte podnikové certifikační řešení, vygenerujte klientský certifikát s *názvem\@* běžný název formátu Value yourdomain.com. Místo formátu *Name\Username domény* použijte tento formát.
+  - Pokud používáte podnikové certifikační řešení, vygenerujte klientský certifikát s názvem běžný název formátu Value * \@ yourdomain.com*. Místo formátu *Name\Username domény* použijte tento formát.
   - Ujistěte se, že je klientský certifikát založený na šabloně certifikátu uživatele, která má *ověřování klienta* uvedené jako první položka v seznamu uživatelů. Ověřte certifikát tak, že na něj dvakrát kliknete a zobrazíte **rozšířené použití klíče** na kartě **Podrobnosti** .
 
 - **Kořenový certifikát podepsaný svým držitelem:** Postupujte podle kroků v jednom z následujících článků P2S certifikátů, aby vytvořené klientské certifikáty byly kompatibilní s vašimi připojeními P2S. Postup v těchto článcích vygeneruje kompatibilní klientský certifikát: 
