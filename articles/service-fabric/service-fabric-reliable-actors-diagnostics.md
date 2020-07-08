@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846602"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
 Modul runtime Reliable Actors generuje události [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) a [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto informace poskytují přehled o tom, jak modul runtime pracuje a který umožňuje řešení potíží a monitorování výkonu.
@@ -23,7 +23,7 @@ Příklady nástrojů a technologií, které vám pomohou při shromažďování
 ### <a name="keywords"></a>Klíčová slova
 Všechny události, které patří do Reliable Actors EventSource, jsou přidruženy k jednomu nebo více klíčovým slovům. To umožňuje filtrovat události, které jsou shromažďovány. Jsou definovány následující bity klíčového slova.
 
-| 40bitového | Popis |
+| 40bitového | Description |
 | --- | --- |
 | 0x1 |Sada důležitých událostí, které shrnují operace modulu runtime Fabric Actors. |
 | 0x2 |Sada událostí, které popisují volání metod objektu actor. Další informace najdete v [úvodním tématu o hercích](service-fabric-reliable-actors-introduction.md). |
@@ -33,7 +33,7 @@ Všechny události, které patří do Reliable Actors EventSource, jsou přidru�
 ## <a name="performance-counters"></a>Čítače výkonu
 Modul runtime Reliable Actors definuje následující kategorie čítače výkonu.
 
-| Kategorie | Popis |
+| Kategorie | Description |
 | --- | --- |
 | Objekt actor Service Fabric |Čítače specifické pro Azure Service Fabric Actors, například čas potřebný k uložení stavu objektu actor |
 | Service Fabric – metoda objektu actor |Čítače specifické pro metody implementované Service Fabricmi aktéry, např. jak často je vyvolána metoda objektu actor |
@@ -46,7 +46,7 @@ Aplikace [sledování výkonu systému Windows](https://technet.microsoft.com/li
 Cluster, který má velký počet služeb actor nebo oddílů služby objektu actor, bude mít velký počet instancí čítače výkonu objektu actor. Názvy instancí čítače výkonu vám pomůžou identifikovat konkrétní [oddíl](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) a metodu actor (Pokud je k dispozici), ke které je přidružená instance čítače výkonu.
 
 #### <a name="service-fabric-actor-category"></a>Service Fabric kategorie objektu actor
-Pro kategorii `Service Fabric Actor`jsou názvy instancí čítače v následujícím formátu:
+Pro kategorii `Service Fabric Actor` jsou názvy instancí čítače v následujícím formátu:
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
@@ -54,14 +54,14 @@ Pro kategorii `Service Fabric Actor`jsou názvy instancí čítače v následuj�
 
 *ActorRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime Fabric Actors pro své interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Actor` kategorie:
+Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Actor` Kategorie:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046`
 
-V předchozím příkladu `2740af29-78aa-44bc-a20b-7e60fb783264` je řetězcová reprezentace id oddílu Service Fabric a `635650083799324046` je 64 ID, které je generováno pro interní použití modulu runtime.
+V předchozím příkladu `2740af29-78aa-44bc-a20b-7e60fb783264` je řetězcová reprezentace ID oddílu Service Fabric a `635650083799324046` je 64 ID, které je generováno pro interní použití modulu runtime.
 
 #### <a name="service-fabric-actor-method-category"></a>Kategorie metody Service Fabric objektu actor
-Pro kategorii `Service Fabric Actor Method`jsou názvy instancí čítače v následujícím formátu:
+Pro kategorii `Service Fabric Actor Method` jsou názvy instancí čítače v následujícím formátu:
 
 `MethodName_ActorsRuntimeMethodId_ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
@@ -73,17 +73,17 @@ Pro kategorii `Service Fabric Actor Method`jsou názvy instancí čítače v ná
 
 *ActorRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime Fabric Actors pro své interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Actor Method` kategorie:
+Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Actor Method` Kategorie:
 
 `ivoicemailboxactor.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486`
 
-V `ivoicemailboxactor.leavemessageasync` předchozím příkladu je názvem metody `2` , je 32 ID generované pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcové vyjádření ID oddílu Service Fabric a `635650083804480486` je 64 identifikátor ID generovaný pro interní použití modulu runtime.
+V předchozím příkladu `ivoicemailboxactor.leavemessageasync` je názvem metody, je `2` 32 ID generované pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcové vyjádření ID oddílu Service Fabric a `635650083804480486` je 64 identifikátor ID generovaný pro interní použití modulu runtime.
 
 ## <a name="list-of-events-and-performance-counters"></a>Seznam událostí a čítačů výkonu
 ### <a name="actor-method-events-and-performance-counters"></a>Události a čítače výkonu metody objektu actor
 Modul runtime Reliable Actors emituje následující události související s [metodami objektu actor](service-fabric-reliable-actors-introduction.md).
 
-| Název události | ID události | Úroveň | Klíčové slovo | Popis |
+| Název události | ID události | Úroveň | Klíčové slovo | Description |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |Verbose |0x2 |Modul runtime objektů Actors se chystá vyvolat metodu objektu actor. |
 | ActorMethodStop |8 |Verbose |0x2 |Metoda objektu actor byla dokončena. To znamená, že bylo vráceno asynchronní volání modulu runtime do metody actor a úloha vrácená metodou actor byla dokončena. |
@@ -91,7 +91,7 @@ Modul runtime Reliable Actors emituje následující události související s [
 
 Modul runtime Reliable Actors zveřejňuje následující čítače výkonu související s prováděním metod actor.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Service Fabric – metoda objektu actor |Volání za sekundu |Počet volání metody služby objektu actor za sekundu |
 | Service Fabric – metoda objektu actor |Průměrný počet milisekund na vyvolání |Doba potřebná k provedení metody služby objektu actor v milisekundách |
@@ -100,13 +100,13 @@ Modul runtime Reliable Actors zveřejňuje následující čítače výkonu souv
 ### <a name="concurrency-events-and-performance-counters"></a>Události souběžnosti a čítače výkonu
 Modul runtime Reliable Actors emituje následující události týkající se [souběžnosti](service-fabric-reliable-actors-introduction.md#concurrency).
 
-| Název události | ID události | Úroveň | Klíčové slovo | Popis |
+| Název události | ID události | Úroveň | Klíčové slovo | Description |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |Verbose |0x8 |Tato událost je zapsána na začátku každého nového objektu actor. Obsahuje počet čekajících volání objektu actor, která čekají na získání zámku na základě objektu actor, který vynutil souběžnost založenou na funkci. |
 
 Modul runtime Reliable Actors zveřejňuje následující čítače výkonu týkající se souběžnosti.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Objekt actor Service Fabric |Počet volání objektu actor čekajících na zámek objektu actor |Počet nevyřízených volání objektu actor čekajících na získání zámku na základě objektu actor, který vynutil souběžnost založenou na funkci |
 | Objekt actor Service Fabric |Průměrný počet milisekund čekání na zámek |Doba trvání (v milisekundách) pro získání zámku na základě objektu actor, který vynutil souběžnost založenou na funkci |
@@ -115,14 +115,14 @@ Modul runtime Reliable Actors zveřejňuje následující čítače výkonu týk
 ### <a name="actor-state-management-events-and-performance-counters"></a>Události správy stavu objektu actor a čítače výkonu
 Modul runtime Reliable Actors emituje následující události související se [správou stavu objektu actor](service-fabric-reliable-actors-state-management.md).
 
-| Název události | ID události | Úroveň | Klíčové slovo | Popis |
+| Název události | ID události | Úroveň | Klíčové slovo | Description |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 |Verbose |0x4 |Modul runtime objektů Actors se chystá uložit stav objektu actor. |
 | ActorSaveStateStop |11 |Verbose |0x4 |Modul runtime objektů actor dokončil ukládání stavu objektu actor. |
 
 Modul runtime Reliable Actors zveřejňuje následující čítače výkonu související se správou stavu objektu actor.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Objekt actor Service Fabric |Průměrný počet milisekund na operaci uložení stavu |Doba potřebná k uložení stavu objektu actor v milisekundách |
 | Objekt actor Service Fabric |Průměrný počet milisekund na operaci načtení stavu |Doba potřebná k načtení stavu objektu actor v milisekundách |
@@ -130,7 +130,7 @@ Modul runtime Reliable Actors zveřejňuje následující čítače výkonu souv
 ### <a name="events-related-to-actor-replicas"></a>Události související s replikami objektu actor
 Modul runtime Reliable Actors emituje následující události související s [replikami objektu actor](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
-| Název události | ID události | Úroveň | Klíčové slovo | Popis |
+| Název události | ID události | Úroveň | Klíčové slovo | Description |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |Informační |0x1 |Replika objektu actor změnila roli na primární. To znamená, že objekty Actors pro tento oddíl budou vytvořeny v rámci této repliky. |
 | ReplicaChangeRoleFromPrimary |2 |Informační |0x1 |Replika objektu actor změnila roli na jinou než primární. To znamená, že objekty Actors pro tento oddíl již nebudou v rámci této repliky vytvořeny. Do aktérů již vytvořených v rámci této repliky nebudou doručeny žádné nové žádosti. Objekty actor budou po dokončení všech probíhajících žádostí zničeny. |
@@ -138,21 +138,21 @@ Modul runtime Reliable Actors emituje následující události související s [
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Události aktivace a deaktivace objektu actor a čítače výkonu
 Modul runtime Reliable Actors emituje následující události týkající se [Aktivace a deaktivace objektu actor](service-fabric-reliable-actors-lifecycle.md).
 
-| Název události | ID události | Úroveň | Klíčové slovo | Popis |
+| Název události | ID události | Úroveň | Klíčové slovo | Description |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |Informační |0x1 |Byl aktivován objekt actor. |
 | ActorDeactivated |6 |Informační |0x1 |Objekt actor byl deaktivován. |
 
 Modul runtime Reliable Actors zveřejňuje následující čítače výkonu související s aktivací a deaktivací objektu actor.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Objekt actor Service Fabric |Průměrná OnActivateAsync milisekundy |Čas potřebný k provedení metody OnActivateAsync v milisekundách |
 
 ### <a name="actor-request-processing-performance-counters"></a>Čítače výkonu zpracovávající žádosti objektu actor
 Když klient vyvolá metodu prostřednictvím objektu proxy objektu actor, dojde k odeslání zprávy požadavku prostřednictvím sítě do služby objektu actor. Služba zpracuje zprávu požadavku a pošle odpověď zpět klientovi. Modul runtime Reliable Actors zveřejňuje následující čítače výkonu související se zpracováním žádosti objektu actor.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Objekt actor Service Fabric |počet nezpracovaných žádostí |Počet požadavků zpracovávaných ve službě |
 | Objekt actor Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách), po kterou služba zpracovává požadavek |

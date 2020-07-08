@@ -4,18 +4,18 @@ description: Naučte se spravovat metadata projektu, soubory projektu, prostřed
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: tracking-python
-ms.openlocfilehash: df64c9d90252c31118b66943b6a182319e3f1cc2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834076"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Správa a konfigurace projektů v Azure Notebooks Preview
 
-Projekt ve verzi Preview v Azure Notebooks je v podstatě konfigurací základního virtuálního počítače se systémem Linux, ve kterém se spouští poznámkové bloky Jupyter spolu se složkou souborů a popisnými metadaty. 
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Projekt ve verzi Preview v Azure Notebooks je v podstatě konfigurací základního virtuálního počítače se systémem Linux, ve kterém se spouští poznámkové bloky Jupyter spolu se složkou souborů a popisnými metadaty. 
 
 Řídicí panel projekt v Azure Notebooks umožňuje spravovat soubory a jinak konfigurovat vlastnosti projektu:
 
@@ -79,14 +79,14 @@ Jednotlivé položky v seznamu souborů projektu poskytují příkazy prostředn
 | Spustit | r (nebo klikněte na) | Spustí soubor poznámkového bloku. Další typy souborů jsou otevřeny k zobrazení.  |
 | Kopírovat odkaz | y | Zkopíruje odkaz na soubor do schránky. |
 | Spuštění v Jupyter Lab | j | Spustí Poznámkový blok v JupyterLab, což je více než Jupyter normálně poskytované rozhraní orientované na vývojáře. |
-| Náhled | p | Otevře náhled souboru HTML. pro poznámkové bloky je náhled vykreslování poznámkového bloku jen pro čtení. Další informace najdete v části [Preview](#preview) . |
+| Preview | p | Otevře náhled souboru HTML. pro poznámkové bloky je náhled vykreslování poznámkového bloku jen pro čtení. Další informace najdete v části [Preview](#preview) . |
 | Upravit soubor | Mohu | Otevře soubor pro úpravy. |
 | Stáhnout | d | Stáhne soubor zip, který obsahuje soubor nebo obsah složky. |
 | přejmenování | a | Zobrazí výzvu k zadání nového názvu souboru nebo složky. |
 | Odstranit | x | Vyzve k potvrzení a pak trvale odstraní soubor z projektu. Odstranění nelze vrátit zpět. |
 | Přesunout | m | Přesune soubor do jiné složky ve stejném projektu. |
 
-#### <a name="preview"></a>Náhled
+#### <a name="preview"></a>Preview
 
 Náhled souboru nebo poznámkového bloku je zobrazení obsahu jen pro čtení. spuštěné buňky poznámkového bloku jsou zakázané. Verze Preview je zobrazená komukoli, který má odkaz na soubor nebo Poznámkový blok, ale přihlásil se k Azure Notebooks. Jakmile se uživatel přihlásí, může Poznámkový blok klonovat na svůj vlastní účet nebo si ho může stáhnout do svého místního počítače.
 
@@ -127,7 +127,7 @@ Pokud chcete přidat krok, nejdřív vyberte **+ Přidat**a pak v rozevíracím 
 
 Informace, které pak provedete, závisí na zvoleném typu operace:
 
-- **Požadavky. txt**: v druhém rozevíracím seznamu vyberte soubor *. txt s požadavky* , který je již v projektu. Pak vyberte verzi Pythonu z třetího rozevíracího seznamu, který se zobrazí. Když použijete soubor *. txt s požadavky* , Azure Notebooks `pip install -r` se při spuštění serveru poznámkového bloku spustí se souborem *. txt* . Nemusíte explicitně instalovat balíčky přímo do samotného poznámkového bloku.
+- **Requirements.txt**: v druhém rozevíracím seznamu vyberte *requirements.txt* soubor, který je již v projektu. Pak vyberte verzi Pythonu z třetího rozevíracího seznamu, který se zobrazí. Když použijete soubor *requirements.txt* , Azure Notebooks `pip install -r` při spuštění serveru poznámkového bloku se spustí se souborem *requirements.txt* . Nemusíte explicitně instalovat balíčky přímo do samotného poznámkového bloku.
 
 - **Skript prostředí**: v druhém rozevíracím seznamu Vyberte skript prostředí bash shell (obvykle soubor s příponou *. sh* ), který obsahuje příkazy, které chcete spustit k inicializaci prostředí.
 

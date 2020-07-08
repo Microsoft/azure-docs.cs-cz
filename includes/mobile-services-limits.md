@@ -1,21 +1,21 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: app-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 2a9e9d79328a7bf5c3ff85ea5a8e8a594d68c4cf
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: be87d2af698bb71573952943b5ddc3f0910a3333
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74224397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838920"
 ---
-| Úroveň | Free | Základní | Standard |
+| Úroveň | Free | Basic | Standard |
 | --- | --- | --- | --- |
 | Volání rozhraní API |500 000 |1 500 000 na jednotku |15 000 000 na jednotku |
 | Aktivní zařízení |500 |Unlimited |Unlimited |
-| Měřítko |– |Až 6 jednotek |Neomezený počet jednotek |
+| Měřítko |Není k dispozici |Až 6 jednotek |Neomezený počet jednotek |
 | Nabízená oznámení |Zahrnuje Azure Notification Hubs úrovně Free, až 1 000 000 nabízených oznámení |Zahrnuté úrovně Basic Notification Hubs, až 10 000 000 nabízených oznámení |Zahrnutá úroveň Standard Notification Hubs, až 10 000 000 nabízených oznámení |
 | Zasílání zpráv v reálném čase/<br/>Webové sokety |Omezeně |350 na mobilní službu |Unlimited |
 | Offline synchronizace |Omezeně |Zahrnuje |Zahrnuje |

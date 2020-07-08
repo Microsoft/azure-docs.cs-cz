@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ce95e760dd9faf2130a81dff3f0611c27f99551d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e452f03721551adada69a36b1ce69e57f1111f55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834059"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury založené na událostech bez serveru s Azure Cosmos DB a Azure Functions
 
@@ -37,7 +37,7 @@ K implementaci toku založeného na události bez serveru budete potřebovat:
 Vytvoření funkce Azure pomocí triggeru Azure Functions pro Cosmos DB se teď podporuje napříč všemi Azure Functions integrace IDE a CLI:
 
 * [Rozšíření Visual studia](../azure-functions/functions-develop-vs.md) pro uživatele sady Visual Studio.
-* [Visual Studio Code rozšíření](/azure/javascript/tutorial-vscode-serverless-node-01) pro uživatele Visual Studio Code.
+* [Visual Studio Code rozšíření](/azure/developer/javascript/tutorial-vscode-serverless-node-01) pro uživatele Visual Studio Code.
 * A nakonec [základní nástroje CLI](../azure-functions/functions-run-local.md#create-func) pro nezávislá prostředí IDE pro různé platformy.
 
 ## <a name="run-your-trigger-locally"></a>Místní spuštění triggeru

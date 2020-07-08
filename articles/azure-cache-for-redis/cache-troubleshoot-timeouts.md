@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: c38854c8967d9cc4a5f8a58f7e068d5bfa556639
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833753"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s časovými limity služby Azure Cache for Redis
 
@@ -32,7 +32,9 @@ Služba Azure cache pro Redis pravidelně aktualizuje svůj serverový software 
 
 StackExchange. Redis používá konfigurační nastavení s názvem `synctimeout` pro synchronní operace s výchozí hodnotou 1000 MS. Pokud se synchronní volání v tuto chvíli nedokončí, klient StackExchange. Redis vyvolá chybu s časovým limitem, která je podobná následujícímu příkladu:
 
+```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a možné řešení problému. Následující tabulka obsahuje podrobnosti o metrikách chybové zprávy.
 
@@ -73,7 +75,10 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 
     Důrazně doporučujeme mít mezipaměť a klienta ve stejné oblasti Azure. Pokud máte scénář, který zahrnuje volání mezi oblastmi, nastavte `synctimeout` interval na hodnotu vyšší, než je výchozí interval 1000-MS zahrnutím `synctimeout` vlastnosti do připojovacího řetězce. Následující příklad ukazuje fragment připojovacího řetězce pro StackExchange. Redis poskytnutý službou Azure cache pro Redis s `synctimeout` 2000 MS.
 
-        synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```output
+    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```
+
 1. Ujistěte se, že používáte nejnovější verzi [balíčku NuGet stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/). V kódu jsou neustále opraveny chyby, aby bylo lépe robustní na vypršení časových limitů, takže je důležité mít nejnovější verzi.
 1. Pokud jsou vaše požadavky vázány omezeními šířky pásma na serveru nebo klientovi, trvá jejich dokončení déle a může způsobit vypršení časových limitů. Pokud chcete zjistit, jestli je váš časový limit z důvodu šířky pásma sítě na serveru, přečtěte si téma [omezení šířky pásma na straně serveru](cache-troubleshoot-server.md#server-side-bandwidth-limitation). Pokud chcete zjistit, jestli je časový limit z důvodu šířky pásma sítě klienta, přečtěte si téma [omezení šířky pásma na straně klienta](cache-troubleshoot-client.md#client-side-bandwidth-limitation).
 1. Získáváte na serveru nebo na klientovi vazbu na procesor?

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846855"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Vystavení šablon v Azure API Management
 Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru podle vlastního výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)a poskytnutá sada lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md), máte skvělou flexibilitu pro konfiguraci obsahu stránek, jak vidíte, aby byly použity pomocí těchto šablon.  
@@ -92,13 +92,13 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```
   
 ### <a name="controls"></a>Ovládací prvky  
- `Issue list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `Issue list`Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`Issues`|Kolekce entit [problémů](api-management-template-data-model-reference.md#Issue) .|Problémy viditelné pro aktuálního uživatele.|  
 |`Paging`|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce aplikací.|  

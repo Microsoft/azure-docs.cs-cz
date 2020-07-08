@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846569"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
@@ -48,7 +48,7 @@ Vyvážení zátěže přesunutím virtuálních počítačů mezi dvěma proces
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. Klikněte na **Vybrat počítače**a vyberte počítače, které chcete přesunout z aktuálního na cílový procesový Server. Pro každý virtuální počítač se zobrazí podrobnosti o průměrné změně dat. Pak klikněte na **OK**. 
-3. V trezoru Sledujte průběh úlohy pod **sledováním** > **Site Recovery úloh**.
+3. V trezoru Sledujte průběh úlohy pod **sledováním**  >  **Site Recovery úloh**.
 
 Změny se projeví na portálu tím, že bude trvat přibližně 15 minut. V případě rychlejšího efektu [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
@@ -63,7 +63,7 @@ Přesuňte celé zatížení zpracovávané procesovým serverem na jiný proces
 
     ![Přepínač](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. V trezoru Sledujte průběh úlohy pod **sledováním** > **Site Recovery úloh**.
+5. V trezoru Sledujte průběh úlohy pod **sledováním**  >  **Site Recovery úloh**.
 
 Změny se projeví na portálu tím, že bude trvat přibližně 15 minut. V případě rychlejšího efektu [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 

@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846868"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy
 
@@ -72,7 +72,7 @@ Pravidla brány firewall určují, jak brána firewall zpracovává konkrétní 
 
 Po definování tabulky brány firewall můžete určit podsítě, na které se vztahují pravidla v tabulce.
 
-1. Na stránce **Network** > **tabulky brány firewall** sítě vyberte tabulku brány firewall.
+1. Na stránce **Network**  >  **tabulky brány firewall** sítě vyberte tabulku brány firewall.
 2. Otevřete kartu **připojené sítě VLAN/podsíť** .
 3. Klikněte na **připojit k síti VLAN nebo podsíti**.
 4. Vyberte privátní cloud a síť VLAN. Zobrazí se název přidružené podsítě a blok CIDR.

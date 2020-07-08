@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 44b9b060be7ec707444ddf409848be1a16addb83
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833787"
 ---
 # <a name="azure-functions-http-trigger"></a>Aktivační událost Azure Functions HTTP
 
@@ -498,7 +498,9 @@ Vstupní typ triggeru je deklarován jako `HttpRequest` nebo vlastní typ. Pokud
 
 Ve výchozím nastavení platí, že když vytvoříte funkci triggeru HTTP, funkce je adresovat s cestou formuláře:
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
 Tuto trasu můžete přizpůsobit pomocí volitelné `route` vlastnosti vstupní vazby triggeru protokolu HTTP. Například následující *function.jsv* souboru definuje `route` vlastnost triggeru http:
 
@@ -766,7 +768,9 @@ Klíče funkcí můžete získat programově pomocí [rozhraní API pro správu 
 
 Většina šablon triggeru HTTP vyžaduje v žádosti klíč rozhraní API. Vaše žádost HTTP obvykle vypadá jako na následující adrese URL:
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 Klíč lze zahrnout do proměnné řetězce dotazu s názvem `code` , jak je uvedeno výše. Může být také obsažena v `x-functions-key` hlavičce protokolu HTTP. Hodnotou klíče může být libovolný klíč funkce definovaný pro funkci nebo libovolný klíč hostitele.
 
@@ -809,6 +813,14 @@ Autorizace Webhooku se zpracovává komponentou přijímače Webhooku, součást
 
 * **Řetězec dotazu**: Zprostředkovatel předá název klíče v `clientid` parametru řetězce dotazu, například `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>` .
 * **Hlavička žádosti**: Zprostředkovatel předá název klíče v `x-functions-clientid` hlavičce.
+
+## <a name="content-types"></a>Typy obsahu
+
+Předávání binárních a formulářových dat do funkce non-C # vyžaduje použití příslušné hlavičky Content-Type. Mezi podporované typy obsahu patří `octet-stream` binární data a [typy s více částmi](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart).
+
+### <a name="known-issues"></a>Známé problémy
+
+Ve funkcích, které nejsou v jazyce C, jsou požadavky odeslané s typem obsahu `image/jpeg` výsledkem `string` předané funkci. V takových případech je možné ručně převést `string` hodnotu na pole bajtů pro přístup k nezpracovaným binárním datům.
 
 ## <a name="limits"></a>Omezení
 

@@ -4,11 +4,11 @@ description: Zjistěte, jak se vyhnout problémům s výkonem v Azure Functions 
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846777"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -16,7 +16,7 @@ Funkce ve sdílených prostředcích aplikace Function App. Mezi těmito sdílen
 
 ## <a name="connection-limit"></a>Limit připojení
 
-Počet dostupných připojení je částečně omezený, protože aplikace Function App běží v [prostředí izolovaného prostoru (sandboxu)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedno z omezení, které ukládá izolovaný prostor ve vašem kódu, je omezení počtu odchozích připojení, která jsou aktuálně 600 aktivní (celkem 1 200) připojení na jednu instanci. Když dosáhnete tohoto limitu, modul runtime Functions zapíše do protokolů následující zprávu `Host thresholds exceeded: Connections`:. Další informace najdete v tématu [omezení služby Functions](functions-scale.md#service-limits).
+Počet dostupných připojení je částečně omezený, protože aplikace Function App běží v [prostředí izolovaného prostoru (sandboxu)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedno z omezení, které ukládá izolovaný prostor ve vašem kódu, je omezení počtu odchozích připojení, která jsou aktuálně 600 aktivní (celkem 1 200) připojení na jednu instanci. Když dosáhnete tohoto limitu, modul runtime Functions zapíše do protokolů následující zprávu: `Host thresholds exceeded: Connections` . Další informace najdete v tématu [omezení služby Functions](functions-scale.md#service-limits).
 
 Toto omezení je na instanci. Když [řadič škálování přidává instance aplikace Function App](functions-scale.md#how-the-consumption-and-premium-plans-work) a zpracovává více požadavků, má každá instance nezávislé omezení počtu připojení. To znamená, že není k dispozici žádný limit globálního připojení a v rámci všech aktivních instancí může být mnohem více než 600 aktivních připojení.
 
@@ -52,13 +52,13 @@ public static async Task Run(string input)
 }
 ```
 
-Běžným dotazem týkajícím se [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) v .NET je "Mám vyřadit klienta?" Obecně platí, že budete nakládat objekty, `IDisposable` které implementují, až je budete používat. Ale nebudete odstraňovat statický klient, protože ho nebudete používat, když funkce skončí. Chcete, aby byl statický klient aktivní po dobu trvání vaší aplikace.
+Běžným dotazem týkajícím se [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) v .NET je "Mám vyřadit klienta?" Obecně platí, že budete nakládat objekty, které implementují, `IDisposable` až je budete používat. Ale nebudete odstraňovat statický klient, protože ho nebudete používat, když funkce skončí. Chcete, aby byl statický klient aktivní po dobu trvání vaší aplikace.
 
 ### <a name="http-agent-examples-javascript"></a>Příklady agenta HTTP (JavaScript)
 
-Vzhledem k tomu, že poskytuje lepší možnosti správy připojení, měli byste [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) použít nativní třídu namísto nenativních metod, jako je `node-fetch` například modul. Parametry připojení jsou konfigurovány prostřednictvím možností `http.agent` třídy. Podrobné možnosti dostupné v agentovi HTTP najdete v tématu [New Agent (\[možnosti\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+Vzhledem k tomu, že poskytuje lepší možnosti správy připojení, měli byste použít nativní [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) třídu namísto nenativních metod, jako je například `node-fetch` modul. Parametry připojení jsou konfigurovány prostřednictvím možností `http.agent` třídy. Podrobné možnosti dostupné v agentovi HTTP najdete v tématu [New Agent ( \[ možnosti \] )](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-Globální `http.globalAgent` třída, kterou `http.request()` používá, má všechny tyto hodnoty nastavené na jejich příslušné výchozí hodnoty. Doporučený způsob, jak nakonfigurovat limity připojení ve funkcích, je nastavit maximální počet globálně. Následující příklad nastaví maximální počet soketů pro aplikaci Function App:
+Globální `http.globalAgent` třída, kterou používá, `http.request()` má všechny tyto hodnoty nastavené na jejich příslušné výchozí hodnoty. Doporučený způsob, jak nakonfigurovat limity připojení ve funkcích, je nastavit maximální počet globálně. Následující příklad nastaví maximální počet soketů pro aplikaci Function App:
 
 ```js
 http.globalAgent.maxSockets = 200;
@@ -130,7 +130,7 @@ Kód funkce může použít .NET Framework Zprostředkovatel dat pro SQL Server 
 ) implementuje ADO.NET ve výchozím nastavení sdružování připojení. Ale vzhledem k tomu, že stále může docházet k připojení, byste měli optimalizovat připojení k databázi. Další informace najdete v tématu věnovaném [sdružování připojení SQL Server (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Některá datová rozhraní, například Entity Framework, obvykle získávají připojovací řetězce z oddílu **connectionStrings** konfiguračního souboru. V tomto případě musíte explicitně přidat připojovací řetězce databáze SQL do kolekce **připojovacích řetězců** v nastavení aplikace Function App a v [souboru Local. Settings. JSON](functions-run-local.md#local-settings-file) v místním projektu. Pokud vytváříte instanci [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** s ostatními připojeními.
+> Některá datová rozhraní, například Entity Framework, obvykle získávají připojovací řetězce z oddílu **connectionStrings** konfiguračního souboru. V tomto případě musíte explicitně přidat připojovací řetězce databáze SQL do kolekce **připojovacích řetězců** v nastavení aplikace Function App a v [local.settings.jsv souboru](functions-run-local.md#local-settings-file) v místním projektu. Pokud vytváříte instanci [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** s ostatními připojeními.
 
 ## <a name="next-steps"></a>Další kroky
 

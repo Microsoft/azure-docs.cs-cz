@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a33d3e8b330f5ee8549f536bbfba958d96d8e59b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a37f57bc12e5756b493bb009268beb067e7faaab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833974"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Základní hodnoty zabezpečení Azure pro Logic Apps
 
@@ -238,7 +238,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
-**Pokyny**: Pokud chcete získat bohatší ladicí informace o aplikacích logiky během běhu, můžete nastavit a použít protokoly Azure monitor k zaznamenávání a ukládání informací o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v pracovním prostoru Log Analytics. Azure Monitor vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete vytvářet dotazy protokolů, které vám pomůžou shromáždit a zkontrolovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs.
+**Pokyny**: Pokud chcete získat bohatší ladicí informace o aplikacích logiky během běhu, můžete nastavit a použít protokoly Azure monitor k zaznamenávání a ukládání informací o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v pracovním prostoru Log Analytics. Azure Monitor pomáhá monitorovat cloudová a místní prostředí a usnadňuje zajištění jejich dostupnosti a výkonu. Pomocí protokolů Azure Monitor můžete vytvářet dotazy protokolů, které vám pomůžou shromáždit a zkontrolovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs.
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
@@ -254,7 +254,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
-**Pokyny**: Pokud chcete získat bohatší ladicí informace o aplikacích logiky během běhu, můžete nastavit a použít protokoly Azure monitor k zaznamenávání a ukládání informací o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v pracovním prostoru Log Analytics. Azure Monitor vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete vytvářet dotazy protokolů, které vám pomůžou shromáždit a zkontrolovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs.
+**Pokyny**: Pokud chcete získat bohatší ladicí informace o aplikacích logiky během běhu, můžete nastavit a použít protokoly Azure monitor k zaznamenávání a ukládání informací o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v pracovním prostoru Log Analytics. Azure Monitor pomáhá monitorovat cloudová a místní prostředí a usnadňuje zajištění jejich dostupnosti a výkonu. Pomocí protokolů Azure Monitor můžete vytvářet dotazy protokolů, které vám pomůžou shromáždit a zkontrolovat tyto informace. Tato diagnostická data můžete také použít s jinými službami Azure, například Azure Storage a Azure Event Hubs.
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
@@ -358,7 +358,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 **Doprovodné**materiály: Azure Active Directory (AD) mají předdefinované role, které se musí explicitně přiřadit a které jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-Pro snadný přístup k dalším prostředkům, které jsou chráněné Azure Active Directory (Azure AD) a ověřují vaši identitu bez přihlašování, může vaše aplikace logiky používat spravovanou identitu (dřív Identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče.
+Pro snadný přístup k dalším prostředkům, které jsou chráněné Azure Active Directory (Azure AD) a ověřují vaši identitu bez přihlašování, může vaše aplikace logiky používat spravovanou identitu (dřív Identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy.
 
 Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bodu sdílený přístupový podpis (SAS). Pokud sdílíte adresu URL koncového bodu pro aktivační událost na základě požadavku s ostatními stranami, můžete vygenerovat adresy URL zpětného volání, které používají konkrétní klíče a mají datum vypršení platnosti. Tímto způsobem můžete plynule vrátit klíče nebo omezit přístup k aktivaci aplikace logiky na základě konkrétního časového rozmezí.
 
@@ -483,9 +483,9 @@ Každý koncový bod žádosti v aplikaci logiky navíc má v adrese URL koncov�
 
 **Doprovodné**materiály: jako centrální ověřování a systém autorizací pro vaše Azure Logic Apps instance použijte Azure Active Directory (AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-Pokud je v Logic Apps podporovaná podpora, využijte spravovanou identitu pro snadný přístup k dalším prostředkům, které jsou chráněné Azure Active Directory (Azure AD), a ověřte svoji identitu bez přihlašování, ale přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče.
+Pokud je v Logic Apps podporovaná podpora, využijte spravovanou identitu pro snadný přístup k dalším prostředkům, které jsou chráněné Azure Active Directory (Azure AD), a ověřte svoji identitu bez přihlašování, ale přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy.
 
-Azure Logic Apps podporuje spravované identity přiřazené systémem i uživatelem. Vaše aplikace logiky může použít buď identitu přiřazenou systémem, nebo jedinou identitu přiřazenou uživatelem, kterou můžete sdílet přes skupinu aplikací logiky, ale ne obojí. V současné době pouze konkrétní vestavěné triggery a akce podporují spravované identity, nikoli spravované konektory nebo připojení, například:
+Azure Logic Apps podporuje spravované identity přiřazené systémem i uživatelem. Aplikace logiky může používat buď identitu přiřazenou systémem, nebo jedinou identitu přiřazenou uživatelem, kterou můžete sdílet ve skupině aplikací logiky, ale nikoli obojí. V současné době pouze konkrétní vestavěné triggery a akce podporují spravované identity, nikoli spravované konektory nebo připojení, například:
 - HTTP
 - Azure Functions
 - Azure API Management
@@ -573,7 +573,7 @@ Pro Logic Apps, které potřebují přímý přístup k prostředkům ve služb�
 
 Při vytváření ISE můžete použít buď interní nebo externí koncové body přístupu. Váš výběr určuje, jestli žádosti nebo triggery Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě.
 
-Kromě toho implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí Azure Active Directory řízení přístupu na základě role.
+Kromě toho implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím řízení přístupu na základě role Azure (RBAC).
 
 * [Vysvětlení konektorů pro Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list)
 
@@ -1049,7 +1049,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Doprovodné**materiály: pro snadný přístup k dalším prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD) a ověřují vaši identitu bez přihlašování, může vaše aplikace logiky používat spravovanou identitu (dřív identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče.
+**Doprovodné**materiály: pro snadný přístup k dalším prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD) a ověřují vaši identitu bez přihlašování, může vaše aplikace logiky používat spravovanou identitu (dřív identita spravované služby nebo MSI) místo přihlašovacích údajů nebo tajných kódů. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani vyměňovat tajné kódy.
 
 V současné době pouze konkrétní vestavěné triggery a akce podporují spravované identity, nikoli spravované konektory nebo připojení, například:
 - HTTP

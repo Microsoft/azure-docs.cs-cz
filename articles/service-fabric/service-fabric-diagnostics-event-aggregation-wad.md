@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846661"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ V tomto článku se používají následující nástroje:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Šablona Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Šablona Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric události platformy
 Service Fabric nastavíte v několika málo integrovaných [kanálech protokolování](service-fabric-diagnostics-event-generation-infra.md), u kterých jsou následující kanály předem nakonfigurované s příponou, aby odesílaly data monitorování a diagnostiky do tabulky úložiště nebo jinde:
@@ -63,12 +63,12 @@ Teď, když agregujete události v Azure Storage, můžete [nastavit protokoly A
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Vytvoření clusteru s diagnostickým rozšířením
 Chcete-li vytvořit cluster pomocí Správce prostředků, je nutné přidat kód JSON konfigurace diagnostiky do úplné Správce prostředků šablony. V rámci našich ukázek šablon Správce prostředků poskytujeme ukázkovou šablonu Správce prostředků clusteru s pěti virtuálními počítači, které se do ní přidaly pomocí konfigurace diagnostiky. Můžete ji zobrazit v tomto umístění v galerii ukázek Azure: [cluster s pěti uzly s diagnostikou správce prostředků šablony ukázka](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
-Chcete-li zobrazit nastavení diagnostiky v šabloně Správce prostředků, otevřete soubor azuredeploy. JSON a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte tlačítko **nasadit do Azure** , které je k dispozici na předchozím odkazu.
+Chcete-li zobrazit nastavení diagnostiky v šabloně Správce prostředků, otevřete azuredeploy.jsv souboru a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte tlačítko **nasadit do Azure** , které je k dispozici na předchozím odkazu.
 
 Alternativně můžete stáhnout ukázku Správce prostředků, provést v ní změny a vytvořit cluster s upravenou šablonou pomocí `New-AzResourceGroupDeployment` příkazu v okně Azure PowerShell. Podívejte se na následující kód parametrů, které předáte do příkazu. Podrobné informace o tom, jak nasadit skupinu prostředků pomocí PowerShellu, najdete v článku [nasazení skupiny prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Přidání rozšíření diagnostiky do existujícího clusteru
-Pokud máte existující cluster, který nemá nasazenou diagnostiku, můžete ho přidat nebo aktualizovat prostřednictvím šablony clusteru. Upravte Správce prostředků šablonu, která se používá k vytvoření existujícího clusteru, nebo Stáhněte šablonu z portálu, jak je popsáno výše. Upravte soubor Template. JSON prováděním následujících úloh:
+Pokud máte existující cluster, který nemá nasazenou diagnostiku, můžete ho přidat nebo aktualizovat prostřednictvím šablony clusteru. Upravte Správce prostředků šablonu, která se používá k vytvoření existujícího clusteru, nebo Stáhněte šablonu z portálu, jak je popsáno výše. Upravte template.jsv souboru prováděním následujících úloh:
 
 Přidejte do šablony nový prostředek úložiště přidáním do části Resources (prostředky).
 
@@ -89,7 +89,7 @@ Přidejte do šablony nový prostředek úložiště přidáním do části Reso
 },
 ```
 
- V dalším kroku přidejte do oddílu Parameters hned za definice účtu úložiště mezi `supportLogStorageAccountName`. Nahraďte zástupný text *název účtu úložiště* místo pro název účtu úložiště, který chcete.
+ V dalším kroku přidejte do oddílu Parameters hned za definice účtu úložiště mezi `supportLogStorageAccountName` . Nahraďte zástupný text *název účtu úložiště* místo pro název účtu úložiště, který chcete.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -111,7 +111,7 @@ Přidejte do šablony nový prostředek úložiště přidáním do části Reso
       }
     },
 ```
-Pak aktualizujte `VirtualMachineProfile` část souboru template. JSON přidáním následujícího kódu do pole rozšíření. Nezapomeňte přidat čárku na začátek nebo konec, v závislosti na tom, kde je vložena.
+Pak aktualizujte `VirtualMachineProfile` část template.jsv souboru přidáním následujícího kódu do pole rozšíření. Nezapomeňte přidat čárku na začátek nebo konec, v závislosti na tom, kde je vložena.
 
 ```json
 {
@@ -177,7 +177,7 @@ Pak aktualizujte `VirtualMachineProfile` část souboru template. JSON přidán�
 }
 ```
 
-Po úpravě souboru template. JSON, jak je popsáno, znovu publikujte šablonu Správce prostředků. Pokud byla šablona exportována, je při spuštění souboru Deploy. ps1 znovu publikována šablona. Po nasazení zajistěte, aby byla **ProvisioningState** **úspěšná**.
+Po úpravě template.jsv souboru, jak je popsáno, znovu publikujte šablonu Správce prostředků. Pokud byla šablona exportována, spuštěním souboru deploy.ps1 šablonu znovu publikujte. Po nasazení zajistěte, aby byla **ProvisioningState** **úspěšná**.
 
 > [!TIP]
 > Pokud budete do svého clusteru nasazovat kontejnery, povolte WAD, abyste si vybrali statistiku Docker tak, že ji přidáte do oddílu **WadCfg > DiagnosticMonitorConfiguration** .
@@ -282,7 +282,7 @@ Aby bylo možné **základní provozní kanál** povolit pro komplexní protokol
 
 Chcete-li aktualizovat diagnostiku pro shromažďování protokolů z nových kanálů EventSource, které reprezentují novou aplikaci, kterou se chystáte nasadit, proveďte stejný postup, jak je popsáno výše v tématu nastavení diagnostiky pro existující cluster.
 
-Aktualizujte `EtwEventSourceProviderConfiguration` oddíl v souboru template. JSON tak, aby bylo možné přidat položky pro nové kanály EventSource předtím, než použijete aktualizaci konfigurace `New-AzResourceGroupDeployment` pomocí příkazu PowerShellu. Název zdroje události je definován jako součást kódu v souboru ServiceEventSource.cs generovaném systémem Visual Studio.
+Aktualizujte `EtwEventSourceProviderConfiguration` část template.jsv souboru, abyste mohli přidat položky pro nové kanály EventSource předtím, než použijete aktualizaci konfigurace pomocí `New-AzResourceGroupDeployment` příkazu PowerShellu. Název zdroje události je definován jako součást kódu v souboru ServiceEventSource.cs generovaném systémem Visual Studio.
 
 Pokud se například váš zdroj události jmenuje my-EventSource, přidejte následující kód, který umístí události z mé vlastnosti EventSource do tabulky s názvem MyDestinationTableName.
 
@@ -324,7 +324,7 @@ Pokud je při vytváření clusteru zapnutá Diagnostika zapnutá, volitelné po
 
 V části "WadCfg" šablony Správce prostředků přidejte "jímku", včetně následujících dvou změn:
 
-1. Přidejte konfiguraci jímky přímo po dokončení deklarace `DiagnosticMonitorConfiguration` :
+1. Přidejte konfiguraci jímky přímo po `DiagnosticMonitorConfiguration` dokončení deklarace:
 
     ```json
     "SinksConfig": {
@@ -338,7 +338,7 @@ V části "WadCfg" šablony Správce prostředků přidejte "jímku", včetně n
 
     ```
 
-2. Zahrňte jímku do v `DiagnosticMonitorConfiguration` rozhraní přidáním následujícího řádku do `DiagnosticMonitorConfiguration` části `WadCfg` (napravo před deklarací `EtwProviders` jsou deklarovány):
+2. Zahrňte jímku do v rozhraní `DiagnosticMonitorConfiguration` přidáním následujícího řádku do části `DiagnosticMonitorConfiguration` `WadCfg` (napravo před `EtwProviders` deklarací jsou deklarovány):
 
     ```json
     "sinks": "applicationInsights"

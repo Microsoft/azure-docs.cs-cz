@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: f00946c4c0a9abe343448266128c682f2376cf7a
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833685"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure 
 
 ## <a name="select-your-experiment-type"></a>Výběr typu experimentu
 
-Než začnete experimentovat, měli byste určit druh problému strojového učení, který řešíte. Automatizované Machine Learning podporuje typy úloh klasifikace, regrese a prognózy. Přečtěte si další informace o [typech úloh](how-to-define-task-type.md).
+Než začnete experimentovat, měli byste určit druh problému strojového učení, který řešíte. Automatizované Machine Learning podporuje typy úloh klasifikace, regrese a prognózy. Přečtěte si další informace o [typech úloh](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
 
 Automatizované Machine Learning podporuje během procesu automatizace a optimalizace následující algoritmy. Jako uživatel není nutné zadávat algoritmus.
 
@@ -199,7 +199,7 @@ U každého automatizovaného experimentu strojového učení se vaše data [aut
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization ve [třídě AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-|Konfigurace Featurization | Popis |
+|Konfigurace Featurization | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**|
 |`"featurization": 'off'`| Indikuje, že krok featurization by se neměl provádět automaticky.|

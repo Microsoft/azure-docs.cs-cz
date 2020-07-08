@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265152"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846842"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Přehled zón a záznamů DNS
 
@@ -24,7 +24,7 @@ Tato stránka popisuje klíčové koncepty domén, zón DNS a záznamů a sad z�
 
 Domain Name System je hierarchie domén. Hierarchie začíná od kořenové domény, jejíž název je jednoduše "**.**".  Následují domény nejvyšší úrovně, jako jsou „com“, „net“, „org“, „uk“ nebo „jp“.  Následují domény druhé úrovně, jako jsou „org.uk“ nebo „co.jp“. Domény v hierarchii DNS se globálně distribuují a hostují názvové servery DNS po celém světě.
 
-Registrátor názvu domény je organizace, která vám umožní koupit název domény, například `contoso.com`.  Při nákupu názvu domény získáte právo řídit hierarchii DNS pod tímto názvem, například vám umožní nasměrovat název `www.contoso.com` na web vaší společnosti. Registrátor může doménu hostovat na svých názvových serverech vaším jménem nebo vám umožní zadat alternativní názvové servery.
+Registrátor názvu domény je organizace, která vám umožní koupit název domény, například `contoso.com` .  Při nákupu názvu domény získáte právo řídit hierarchii DNS pod tímto názvem, například vám umožní nasměrovat název `www.contoso.com` na web vaší společnosti. Registrátor může doménu hostovat na svých názvových serverech vaším jménem nebo vám umožní zadat alternativní názvové servery.
 
 Azure DNS poskytuje globálně distribuovanou infrastrukturu názvového serveru s vysokou dostupností, kterou můžete použít k hostování vaší domény. Díky hostování domén v Azure DNS můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů, fakturace a podpory jako jiné služby Azure.
 
@@ -48,7 +48,7 @@ V Azure DNS je hodnota TTL zadána pro sadu záznamů, nikoli pro každý zázna
 
 Azure DNS podporuje [záznamy se zástupným znakem](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Zástupné záznamy se vrátí v reakci na libovolný dotaz s odpovídajícím názvem (Pokud neexistuje bližší shoda ze sady záznamů bez zástupných znaků). Azure DNS podporuje sady záznamů se zástupnými znaky pro všechny typy záznamů s výjimkou NS a SOA.
 
-Chcete-li vytvořit sadu záznamů se zástupnými znaky, použijte\*název sady záznamů ' '. Alternativně můžete použít také název s '\*' jako jeho levý krajní popisek, například '\*. foo '.
+Chcete-li vytvořit sadu záznamů se zástupnými znaky, použijte název sady záznamů ' \* '. Alternativně můžete použít také název s ' \* ' jako jeho levý krajní popisek, například ' \* . foo '.
 
 ### <a name="caa-records"></a>Záznamy CAA
 
@@ -64,13 +64,13 @@ CAA záznamy umožňují vlastníkům domény určit, které certifikační auto
 
 Sady záznamů CNAME nemůžou existovat současně s jinými sadami záznamů se stejným názvem. Například nemůžete vytvořit sadu záznamů CNAME s relativním názvem "www" a záznamem A s relativním názvem "www".
 
-Vzhledem k tomu, že vrchol zóny (\@název = ') vždy obsahuje sady záznamů NS a SOA, které byly vytvořeny při vytvoření zóny, nemůžete na vrcholu zóny vytvořit sadu záznamů CNAME.
+Vzhledem k tomu, že vrchol zóny (název = ' \@ ) vždy obsahuje sady záznamů NS a SOA, které byly vytvořeny při vytvoření zóny, nemůžete na vrcholu zóny vytvořit sadu záznamů CNAME.
 
 Tato omezení se projeví u standardů DNS a nejedná se o omezení Azure DNS.
 
 ### <a name="ns-records"></a>Záznamy NS
 
-Záznam NS nastavený na vrcholu zóny (název\@) se vytvoří automaticky s každou zónou DNS a automaticky se odstraní při odstranění zóny (nedá se odstranit samostatně).
+Záznam NS nastavený na vrcholu zóny (název \@ ) se vytvoří automaticky s každou zónou DNS a automaticky se odstraní při odstranění zóny (nedá se odstranit samostatně).
 
 Tato sada záznamů obsahuje názvy Azure DNS názvových serverů přiřazených k zóně. Do této sady záznamů NS můžete přidat další názvové servery, aby se podporovaly domény spoluhostování s více než jedním poskytovatelem DNS. Můžete také upravit hodnotu TTL a metadata této sady záznamů. Nemůžete ale odebrat ani změnit předem vyplněné Azure DNS názvové servery. 
 
@@ -78,7 +78,7 @@ To platí jenom pro záznam NS nastavený na vrcholu zóny. Jiné sady záznamů
 
 ### <a name="soa-records"></a>Záznamy SOA
 
-Sada záznamů SOA je vytvořena automaticky na vrcholu každé zóny (název = '\@') a automaticky se odstraní při odstranění zóny.  Záznamy SOA nelze vytvářet ani odstraňovat samostatně.
+Sada záznamů SOA je vytvořena automaticky na vrcholu každé zóny (název = ' \@ ') a automaticky se odstraní při odstranění zóny.  Záznamy SOA nelze vytvářet ani odstraňovat samostatně.
 
 Můžete upravit všechny vlastnosti záznamu SOA s výjimkou vlastnosti Host, která je předem nakonfigurovaná tak, aby odkazovala na název primárního názvového serveru, který poskytuje Azure DNS.
 
@@ -92,7 +92,7 @@ Sériové číslo zóny v záznamu SOA není automaticky aktualizováno při pro
 
 [Záznamy SRV](https://en.wikipedia.org/wiki/SRV_record) jsou používány různými službami k určení umístění serveru. Při zadávání záznamu SRV v Azure DNS:
 
-* *Služba* a *protokol* musí být zadány jako součást názvu sady záznamů s předponami podtržítka.  Například "\_SIP. \_TCP.Name '.  V případě záznamu ve vrcholu zóny není nutné v názvu záznamu zadat '\@', stačí použít službu a protokol, například '\_SIP. \_protokol TCP.
+* *Služba* a *protokol* musí být zadány jako součást názvu sady záznamů s předponami podtržítka.  Například " \_ SIP. \_ tcp.name '.  V případě záznamu ve vrcholu zóny není nutné \@ v názvu záznamu zadat ' ', stačí použít službu a protokol, například ' \_ SIP. \_ protokol TCP.
 * *Priorita*, *váha*, *port*a *cíl* jsou zadány jako parametry každého záznamu v sadě záznamů.
 
 ### <a name="txt-records"></a>Záznamy TXT
@@ -127,10 +127,10 @@ Ve výchozím nastavení používá Azure DNS PowerShell k blokování souběžn
 
 Na úrovni Azure DNS REST API jsou značky ETag zadány pomocí hlaviček protokolu HTTP.  Jejich chování je uvedené v následující tabulce:
 
-| Hlavička | Chování |
+| Záhlaví | Chování |
 | --- | --- |
 | Žádná |Úspěšné vložení (žádné kontroly ETag) |
-| > ETag- \<Match |Pokaždé, když existuje prostředek a shody ETag, se vloží jenom úspěšně. |
+| If-Match\<etag> |Pokaždé, když existuje prostředek a shody ETag, se vloží jenom úspěšně. |
 | If-Match * |Podávat jenom úspěšné, pokud prostředek existuje |
 | If-None-Match * |Pokud prostředek neexistuje, operace PUT se zdaří. |
 

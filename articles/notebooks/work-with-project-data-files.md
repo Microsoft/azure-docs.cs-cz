@@ -3,18 +3,18 @@ title: Import a export dat s projekty pomocí Azure Notebooks Preview
 description: Naučte se, jak přenést data do projektu aplikace Azure Notebooks Preview z externích zdrojů a jak exportovat data z projektu.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834110"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Práce s datovými soubory v Azure Notebooks projektech ve verzi Preview
 
-Data jsou Lifeblood mnoha poznámkových bloků Jupyter, zejména poznámkových blocích používaných pro datové vědy. Pomocí Azure Notebooks můžete snadno importovat z různých zdrojů do projektu a pak tato data použít z poznámkových bloků. Poznámkové bloky můžete také vygenerovat data uložená v projektu, které pak můžete stáhnout pro použití jinde.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Data jsou Lifeblood mnoha poznámkových bloků Jupyter, zejména poznámkových blocích používaných pro datové vědy. Pomocí Azure Notebooks můžete snadno importovat z různých zdrojů do projektu a pak tato data použít z poznámkových bloků. Poznámkové bloky můžete také vygenerovat data uložená v projektu, které pak můžete stáhnout pro použití jinde.
 
 Nabídka **data** v běžícím poznámkovém bloku taky nabízí příkazy pro **nahrávání** a **stahování** , které pracují se soubory v projektu, i dočasné soubory pro aktuální relaci poznámkového bloku.
 
@@ -26,7 +26,7 @@ Zbývající část tohoto článku poskytuje podrobné informace o operacích s
 
 ## <a name="import-data"></a>Import dat
 
-Soubory můžete přenést do projektu z řídicího panelu projekt nebo do běžícího poznámkového bloku pomocí nabídky **data** nebo příkazu, jako je například `curl`.
+Soubory můžete přenést do projektu z řídicího panelu projekt nebo do běžícího poznámkového bloku pomocí nabídky **data** nebo příkazu, jako je například `curl` .
 
 ### <a name="import-files-from-the-project-dashboard"></a>Importovat soubory z řídicího panelu projekt
 
@@ -46,7 +46,7 @@ Soubory můžete přenést do projektu z řídicího panelu projekt nebo do bě�
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Import souborů z nabídky soubor v poznámkovém bloku
 
-1. V běžícím poznámkovém bloku vyberte příkaz pro**nahrání** **souboru** > :
+1. V běžícím poznámkovém bloku **File**vyberte příkaz pro  >  **nahrání** souboru:
 
     ![Příkaz nabídky pro nahrání souboru v rámci poznámkového bloku](media/file-menu-upload.png)
 
@@ -54,9 +54,9 @@ Soubory můžete přenést do projektu z řídicího panelu projekt nebo do bě�
 
 1. V místní nabídce **stav nahrávání** , která se zobrazí, vyberte v rozevíracím seznamu **cílovou složku** :
 
-    - Složka relace (*~/* ): nahraje soubory do aktuální relace poznámkového bloku, ale v projektu nevytvoří soubory. Složka relace je rovnocenná složce projektu, ale po ukončení relace nebude zachována. Chcete-li získat přístup k souborům relace v kódu, použijte předponu názvů souborů s relativní cestou *.. /*.
+    - Složka relace ( *~/* ): nahraje soubory do aktuální relace poznámkového bloku, ale v projektu nevytvoří soubory. Složka relace je rovnocenná složce projektu, ale po ukončení relace nebude zachována. Chcete-li získat přístup k souborům relace v kódu, použijte předponu názvů souborů s relativní cestou *.. /*.
 
-        Použití složky Session je užitečné pro experimentování a vyhnout se zbytečnému projektu se soubory, které mohou nebo nemusí být potřeba na dlouhodobé bázi. Soubory můžete také odeslat do složky relace, která má identické názvy souborů v projektu, aniž by docházelo ke konfliktům a bez nutnosti přejmenovat soubory. Řekněme například, že máte v projektu jednu verzi souboru *data. csv* , ale chcete experimentovat s jinou verzí souboru *data. csv*. Nahráním souboru do složky relace můžete spustit Poznámkový blok pomocí dat v nahraném souboru (odkazující na něj v kódu pomocí *.. /data.csv*) a ne data v souboru projektu.
+        Použití složky Session je užitečné pro experimentování a vyhnout se zbytečnému projektu se soubory, které mohou nebo nemusí být potřeba na dlouhodobé bázi. Soubory můžete také odeslat do složky relace, která má identické názvy souborů v projektu, aniž by docházelo ke konfliktům a bez nutnosti přejmenovat soubory. Řekněme například, že máte v projektu již jednu verzi *data.csv* , ale chcete experimentovat s jinou verzí nástroje *data.csv*. Nahráním souboru do složky relace můžete spustit Poznámkový blok pomocí dat v nahraném souboru (odkazující na něj v kódu pomocí *.. /data.csv*) místo dat v souboru projektu.
 
     - Složka projektu (*/Project*): nahraje soubory do projektu, kde k nim lze přihlédnout pomocí relativních cest v kódu. Nahrání souboru do této složky je stejné jako nahrávání souboru na řídicím panelu projektu. Soubor se uloží spolu s projektem a je dostupný v pozdějších relacích.
 
@@ -76,13 +76,13 @@ curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
 ```
 
-Při použití buňky kódu Pythonu v poznámkovém bloku použijte předponu `!`příkazů.
+Při použití buňky kódu Pythonu v poznámkovém bloku použijte předponu příkazů `!` .
 
-Složka projektu je výchozí složka, takže zadáním názvu cílového souboru jako *oil_price. csv* se vytvoří soubor v projektu. Chcete-li vytvořit soubor relace, předponu názvu nahraďte *.. jako v* *.. /oil_price. csv*.
+Složka projektu je výchozí složka, takže zadáním cílového názvu souboru, například *oil_price.csv* , vytvoří soubor v projektu. Chcete-li vytvořit soubor relace, předponu názvu nahraďte *.. jako v* *.. /oil_price.csv*.
 
 ### <a name="create-files-in-code"></a>Vytváření souborů v kódu
 
-Při použití kódu, který vytváří soubor, jako je například funkce `write_csv` PANDAS, jsou cesty vždy relativní ke složce projektu. Pomocí *.. Vytvoří soubor* relace, který se zahodí při zastavení a zavření poznámkového bloku.
+Při použití kódu, který vytváří soubor, jako je například `write_csv` funkce PANDAS, jsou cesty vždy relativní ke složce projektu. Pomocí *.. Vytvoří soubor* relace, který se zahodí při zastavení a zavření poznámkového bloku.
 
 ## <a name="export-files"></a>Exportovat soubory
 
@@ -100,7 +100,7 @@ Můžete také vybrat soubor a použít příkaz **ke stažení** (Klávesová z
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Export souborů z nabídky data v poznámkovém bloku
 
-1. Vyberte příkaz nabídky**Stáhnout** **soubor** > :
+1. Vyberte **File**  >  příkaz nabídky**Stáhnout** soubor:
 
     ![Příkaz nabídky pro stažení dat v rámci poznámkového bloku](media/file-menu-download.png)
 

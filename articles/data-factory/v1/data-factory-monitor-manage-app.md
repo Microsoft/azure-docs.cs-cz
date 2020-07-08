@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846904"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Popis</th>
+    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>
@@ -177,7 +177,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 <td>ActivityResume</td><td>Aktivita je pozastavena a nemůže spustit okna aktivity, dokud nebude obnovena.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Probíhá pokus o opakované spuštění aktivity.</td>
+<td>Zkusit znovu</td><td>Probíhá pokus o opakované spuštění aktivity.</td>
 </tr>
 <tr>
 <td>Ověřování</td><td>Ověřování ještě nebylo zahájeno.</td>
@@ -286,7 +286,7 @@ Pomocí stejného překryvného okna můžete filtry vymazat. Chcete-li vymazat 
 
 ## <a name="perform-batch-actions"></a>Provést akce dávky
 ### <a name="rerun-selected-activity-windows"></a>Znovu spustit vybraná okna aktivity
-Vyberte okno aktivity, klikněte na šipku dolů u prvního tlačítka panelu příkazů a vyberte **znovu** / spustit**znovu s možností nadřazený v kanálu**. Když vyberete možnost **znovu spustit s nadřazeným kanálem v kanálu, znovu** se spustí také všechna okna s nadřazenými aktivitami.
+Vyberte okno aktivity, klikněte na šipku dolů u prvního tlačítka panelu příkazů a vyberte **znovu**spustit  /  **znovu s možností nadřazený v kanálu**. Když vyberete možnost **znovu spustit s nadřazeným kanálem v kanálu, znovu** se spustí také všechna okna s nadřazenými aktivitami.
     ![Znovu spustit okno aktivity](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 V seznamu můžete také vybrat několik oken aktivit a znovu je spustit. Můžete chtít filtrovat okna aktivit na základě stavu (například **selhání**) – a pak znovu spustit okna nezdařené aktivity po opravě problému, který způsobí selhání okna aktivity. Podrobnosti o oknech aktivity filtrování v seznamu najdete v následující části.  
