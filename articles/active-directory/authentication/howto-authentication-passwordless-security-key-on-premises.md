@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654045"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550633"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Povolení klíče zabezpečení bez hesla k místním prostředkům pomocí Azure Active Directory (Preview)
 
 Tento dokument se zaměřuje na povolení ověřování bez hesla u místních prostředků pro prostředí, která jsou **připojená k Azure AD** i pro zařízení s Windows 10 **připojená k Azure AD** . Tato funkce poskytuje bezproblémové jednotné přihlašování (SSO) k místním prostředkům pomocí bezpečnostních klíčů kompatibilních s Microsoftem.
 
-|     |
-| --- |
-| Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
-|     |
+> [!NOTE]
+> Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Jednotné přihlašování k místním prostředkům pomocí klíčů FIDO2
 
@@ -81,7 +79,7 @@ Správci pomocí nástrojů PowerShellu ze svého Azure AD Connect serveru vytvo
 1. Spusťte následující příkazy PowerShellu pro vytvoření nového objektu serveru Azure AD Kerberos v místní doméně služby Active Directory i v tenantovi Azure Active Directory.
 
 > [!NOTE]
-> V `contoso.corp.com` následujícím příkladu nahraďte názvem místní domény služby Active Directory.
+> `contoso.corp.com`V následujícím příkladu nahraďte názvem místní domény služby Active Directory.
 
 ```powerShell
 Import-Module ".\AzureAdKerberos.psd1"
@@ -148,7 +146,7 @@ Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -Domain
 
 Objekt serveru Azure AD Kerberos je reprezentován ve službě Azure AD jako objekt *KerberosDomain* . Každá místní doména služby Active Directory je reprezentována jako jeden objekt *KerberosDomain* ve službě Azure AD.
 
-Vaše organizace má například doménovou strukturu služby Active Directory se dvěma doménami `contoso.com` a `fabrikam.com`. Pokud se rozhodnete, že Azure AD povolí vystavení TGT protokolu Kerberos pro celou doménovou strukturu, ve službě Azure AD jsou dva objekty *KerberosDomain* . Jeden objekt *KerberosDomain* pro `contoso.com`a jeden pro `fabrikam.com`. Pokud máte více doménových struktur služby Active Directory, je pro každou doménu v každé doménové struktuře jeden objekt *KerberosDomain* .
+Vaše organizace má například doménovou strukturu služby Active Directory se dvěma doménami `contoso.com` a `fabrikam.com` . Pokud se rozhodnete, že Azure AD povolí vystavení TGT protokolu Kerberos pro celou doménovou strukturu, ve službě Azure AD jsou dva objekty *KerberosDomain* . Jeden objekt *KerberosDomain* pro `contoso.com` a jeden pro `fabrikam.com` . Pokud máte více doménových struktur služby Active Directory, je pro každou doménu v každé doménové struktuře jeden objekt *KerberosDomain* .
 
 Musíte spustit kroky pro [vytvoření objektu serveru Kerberos](#create-kerberos-server-object) v každé doméně a doménové struktuře ve vaší organizaci, která obsahuje uživatele Azure AD.
 
@@ -197,7 +195,7 @@ Pokud chcete vyčistit počítač připojený k hybridní službě Azure AD po p
 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Po přihlášení pomocí FIDO se nepovedlo získat jednotné přihlašování k síťovému prostředku NTLM, aby se zobrazila výzva k zadání přihlašovacích údajů
 
-Zajistěte, aby v čase byly k dispozici dostatek řadičů domény pro doručení vaší žádosti o prostředky. Pokud chcete zjistit, jestli se zobrazuje řadič domény, na kterém je spuštěná funkce, přečtěte `nltest /dsgetdc:contoso /keylist /kdc`si výstup.
+Zajistěte, aby v čase byly k dispozici dostatek řadičů domény pro doručení vaší žádosti o prostředky. Pokud chcete zjistit, jestli se zobrazuje řadič domény, na kterém je spuštěná funkce, přečtěte si výstup `nltest /dsgetdc:contoso /keylist /kdc` .
 
 ## <a name="next-steps"></a>Další kroky
 

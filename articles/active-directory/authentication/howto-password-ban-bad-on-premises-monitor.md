@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652614"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550284"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
 
@@ -63,7 +63,7 @@ Diskrétní události pro zachycení těchto situací jsou zaznamenány v závis
 
 Klíčovým událostem souvisejícím s ověřováním hesla jsou následující:
 
-|   |Změna hesla |Heslo nastaveno|
+| Událost |Změna hesla |Heslo nastaveno|
 | --- | :---: | :---: |
 |Dána |10014 |10015|
 |Selhání (kvůli zásadám hesel zákazníka)| 10016, 30002| 10017, 30003|
@@ -79,7 +79,7 @@ Je-li protokolována dvojice událostí, jsou obě události explicitně přidru
 
 ### <a name="password-validation-summary-reporting-via-powershell"></a>Generování sestav souhrnu ověření hesla přes PowerShell
 
-`Get-AzureADPasswordProtectionSummaryReport` Rutina se dá použít k vytvoření souhrnného zobrazení aktivity ověření hesla. Příklad výstupu této rutiny je následující:
+`Get-AzureADPasswordProtectionSummaryReport`Rutina se dá použít k vytvoření souhrnného zobrazení aktivity ověření hesla. Příklad výstupu této rutiny je následující:
 
 ```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
@@ -96,7 +96,7 @@ PasswordSetErrors               : 1
 
 Rozsah generování sestav rutiny může být ovlivněn pomocí jednoho z parametrů – doménová struktura,-doména nebo – DomainController. Nepovedlo se určit parametr implikuje – doménová struktura.
 
-`Get-AzureADPasswordProtectionSummaryReport` Rutina funguje tak, že dotazuje protokol událostí správce agenta DC a pak počítá celkový počet událostí, které odpovídají jednotlivým zobrazeným kategoriím výsledek. Následující tabulka obsahuje mapování mezi každým výsledkem a jeho odpovídajícím ID události:
+`Get-AzureADPasswordProtectionSummaryReport`Rutina funguje tak, že dotazuje protokol událostí správce agenta DC a pak počítá celkový počet událostí, které odpovídají jednotlivým zobrazeným kategoriím výsledek. Následující tabulka obsahuje mapování mezi každým výsledkem a jeho odpovídajícím ID události:
 
 |Get-AzureADPasswordProtectionSummaryReport – vlastnost |ID odpovídajícího události|
 | :---: | :---: |
@@ -109,7 +109,7 @@ Rozsah generování sestav rutiny může být ovlivněn pomocí jednoho z parame
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-Všimněte si, `Get-AzureADPasswordProtectionSummaryReport` že je tato rutina expedována ve formuláři PowerShell Script a v případě potřeby může být odkazována přímo v následujícím umístění:
+Všimněte si, že `Get-AzureADPasswordProtectionSummaryReport` je tato rutina expedována ve formuláři PowerShell Script a v případě potřeby může být odkazována přímo v následujícím umístění:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
@@ -235,7 +235,7 @@ Protokolování textu je ve výchozím nastavení zakázáno. Aby se změny tét
 
 Software služby agenta DC nainstaluje objekt čítače výkonu s názvem **ochrana heslem Azure AD**. Nyní jsou k dispozici následující čítače výkonu:
 
-|Název čítače výkonu | Popis|
+|Název čítače výkonu | Description|
 | --- | --- |
 |Zpracovaná hesla |Tento čítač zobrazuje celkový počet zpracovaných a odmítnutých hesel od posledního restartování.|
 |Hesla přijata |Tento čítač zobrazuje celkový počet hesel, která byla přijata od posledního restartování.|
@@ -250,7 +250,7 @@ Software služby agenta DC nainstaluje objekt čítače výkonu s názvem **ochr
 
 ## <a name="dc-agent-discovery"></a>Zjišťování agenta řadiče domény
 
-`Get-AzureADPasswordProtectionDCAgent` Rutina se dá použít k zobrazení základních informací o různých AGENTECH řadiče domény spuštěných v doméně nebo doménové struktuře. Tyto informace se načítají z objektů serviceConnectionPoint zaregistrovaných spuštěnými službami agenta řadiče domény.
+`Get-AzureADPasswordProtectionDCAgent`Rutina se dá použít k zobrazení základních informací o různých agentech řadiče domény spuštěných v doméně nebo doménové struktuře. Tyto informace se načítají z objektů serviceConnectionPoint zaregistrovaných spuštěnými službami agenta řadiče domény.
 
 Příklad výstupu této rutiny je následující:
 
@@ -343,7 +343,7 @@ Pokud dojde k chybě rutiny a řešení příčin and\or není zřejmé, můžou
 
 ## <a name="proxy-discovery"></a>Zjišťování proxy
 
-`Get-AzureADPasswordProtectionProxy` Rutina se dá použít k zobrazení základních informací o různých službách proxy ochrany heslem Azure AD spuštěných v doméně nebo doménové struktuře. Tyto informace se načítají z objektů serviceConnectionPoint zaregistrovaných běžícími službami proxy.
+`Get-AzureADPasswordProtectionProxy`Rutina se dá použít k zobrazení základních informací o různých službách proxy ochrany heslem Azure AD spuštěných v doméně nebo doménové struktuře. Tyto informace se načítají z objektů serviceConnectionPoint zaregistrovaných běžícími službami proxy.
 
 Příklad výstupu této rutiny je následující:
 

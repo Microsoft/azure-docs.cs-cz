@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ebb751826f0495f378c2df4118b3ad2008fd418f
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 75c211ea61359c244c6280b9664a4f412b3d2279
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552014"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -256,7 +256,7 @@ Pomocí [Konfigurace životnosti tokenů](active-directory-configurable-token-li
 
 Aktualizační tokeny může server odvolat z důvodu změny přihlašovacích údajů, nebo v důsledku použití nebo akce správce.  Aktualizovat tokeny spadají do dvou tříd – těch vydaných důvěrným klientům (sloupec nejvíce vpravo) a těch vydaných pro veřejné klienty (všechny ostatní sloupce).   
 
-|   | Soubor cookie založený na hesle | Token založený na hesle | Soubory cookie nezaložené na heslech | Token založený na jiných heslech | Důvěrný token klienta |
+| Změnit | Soubor cookie založený na hesle | Token založený na hesle | Soubory cookie nezaložené na heslech | Token založený na jiných heslech | Důvěrný token klienta |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Platnost hesla vyprší | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
 | Heslo změnilo uživatel. | Odvoláno | Odvoláno | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 729d863e0f7c9d183554cbc65e9a8410ff17359a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516864"
 ---
 | Kategorie              | Úložiště dat                                                   | [Aktivita kopírování](../articles/data-factory/copy-activity-overview.md) (zdroj/jímka) | [Mapování toku dat](../articles/data-factory/concepts-data-flow-overview.md) (zdroj/jímka) | [Aktivita vyhledávání](../articles/data-factory/control-flow-lookup-activity.md) | [Aktivita](../articles/data-factory/control-flow-get-metadata-activity.md) / získání metadat [Ověřovací aktivita](../articles/data-factory/control-flow-validation-activity.md) | [Odstranit aktivitu](../articles/data-factory/delete-activity.md) |
@@ -74,7 +74,7 @@ ms.locfileid: "85516864"
 | &nbsp;                | [Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Dynamics AX](../articles/data-factory/connector-dynamics-ax.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [GitHub](../articles/data-factory/connector-github.md) |                                                           |   Pro odkaz na entitu modelu Common data model |              |                                                              |                                                              |
+| &nbsp;                | [GitHubu](../articles/data-factory/connector-github.md) |                                                           |   Pro odkaz na entitu modelu Common data model |              |                                                              |                                                              |
 | &nbsp;                | [Google AdWords](../articles/data-factory/connector-google-adwords.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [HubSpot (Preview)](../articles/data-factory/connector-hubspot.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Jira](../articles/data-factory/connector-jira.md)           | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |

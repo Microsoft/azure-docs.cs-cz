@@ -1,6 +1,6 @@
 ---
 title: Možnosti lovu v Azure Sentinel | Microsoft Docs
-description: Tento článek popisuje, jak používat možnosti lovu do Azure Sentinel.
+description: Pomocí integrovaných řešení pro lovecké a akční dotazy Azure si můžete vyžádat správné otázky a vyhledat problémy ve vašich datech.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552279"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Loven pro hrozby s Sentinel Azure
 
@@ -76,7 +76,7 @@ Podívejte se na [úložiště pro lovecké dotazy](https://github.com/Azure/Ori
 
 ## <a name="sample-query"></a>Ukázkový dotaz
 
-Typický dotaz začíná názvem tabulky následovaný řadou operátorů, které \|jsou odděleny.
+Typický dotaz začíná názvem tabulky následovaný řadou operátorů, které jsou odděleny \| .
 
 V předchozím příkladu začněte s názvem tabulky SecurityEvent a podle potřeby přidejte do kanálu prvky.
 
@@ -84,7 +84,7 @@ V předchozím příkladu začněte s názvem tabulky SecurityEvent a podle pot�
 
 2. Přidejte do dotazu filtr, aby se zobrazila pouze událost s ID 4688.
 
-3. Do dotazu v příkazovém řádku přidejte filtr, který bude obsahovat jenom instance nástroje cscript. exe.
+3. Přidejte do dotazu na příkazovém řádku filtr, který bude obsahovat pouze instance cscript.exe.
 
 4. Prozkoumejte pouze sloupce, které vás zajímají, a omezte výsledky na 1000 a klikněte na **Spustit dotaz**.
 5. Klikněte na zelený trojúhelník a spusťte dotaz. Můžete otestovat dotaz a spustit ho pro hledání neobvyklé chování.

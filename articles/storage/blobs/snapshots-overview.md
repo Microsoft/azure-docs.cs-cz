@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26646ad5ae42d2fa301a7f894084a78a64c73bd4
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550976"
 ---
 # <a name="blob-snapshots"></a>Snímky objektů BLOB
 
@@ -25,9 +25,9 @@ Snímek je verze objektu BLOB jen pro čtení, která je pořízena v určitém 
 
 ## <a name="about-blob-snapshots"></a>O snímcích objektů BLOB
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-Snímek objektu BLOB je stejný jako základní objekt BLOB s tím rozdílem, že identifikátor URI objektu BLOB má hodnotu **DateTime** připojenou k identifikátoru URI objektu blob, aby označoval čas, kdy se snímek povedl. Pokud je `http://storagesample.core.blob.windows.net/mydrives/myvhd`například identifikátor URI objektu blob stránky, je identifikátor URI snímku podobný `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`.
+Snímek objektu BLOB je stejný jako základní objekt BLOB s tím rozdílem, že identifikátor URI objektu BLOB má hodnotu **DateTime** připojenou k identifikátoru URI objektu blob, aby označoval čas, kdy se snímek povedl. Pokud je například identifikátor URI objektu blob stránky `http://storagesample.core.blob.windows.net/mydrives/myvhd` , je identifikátor URI snímku podobný `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` .
 
 > [!NOTE]
 > Všechny snímky sdílí identifikátor URI základního objektu BLOB. Jediným rozdílem mezi základním objektem BLOB a snímkem je připojená hodnota **DateTime** .

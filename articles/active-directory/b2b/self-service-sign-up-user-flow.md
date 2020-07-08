@@ -11,18 +11,16 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdae4a219408e811a49826999c85837aac449c0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386687"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551257"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
-|     |
-| --- |
-| Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.|
-|     |
+> [!NOTE]
+> Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Můžete vytvářet toky uživatelů pro aplikace, které jsou sestavené vaší organizací. Přidružení toku uživatele k aplikaci vám umožní povolit registraci této aplikace. Můžete zvolit více než jednu aplikaci, kterou chcete přidružit k toku uživatele. Po přidružení toku uživatele k jedné nebo více aplikacím se uživatelé, kteří navštíví tuto aplikaci, budou moci zaregistrovat a získat účet Guest pomocí možností nakonfigurovaných v toku uživatele.
 

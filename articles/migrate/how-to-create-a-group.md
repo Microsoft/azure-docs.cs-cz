@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68301669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549898"
 ---
 # <a name="create-a-group-for-assessment"></a>Vytvořit skupinu pro posouzení
 
@@ -43,11 +43,11 @@ Pokud chcete vytvořit skupinu ručně mimo vytváření posouzení, udělejte t
 
 2. Klikněte na ikonu **skupiny** .
 3. V části **vytvořit skupinu**zadejte název skupiny a do pole **název zařízení**vyberte zařízení Azure Migrate, které používáte pro zjišťování počítačů.
-1. V seznamu počítač vyberte počítače, které chcete přidat do skupiny > **vytvořit**.
+4. V seznamu počítač vyberte počítače, které chcete přidat do skupiny > **vytvořit**.
 
     ![Vytvoření skupiny](./media/how-to-create-a-group/create-group.png)
 
-Tuto skupinu teď můžete použít při [vytváření posouzení](how-to-create-assessment.md).
+Tuto skupinu teď můžete používat při [vytváření posouzení virtuálních počítačů Azure](how-to-create-assessment.md) nebo [vyhodnocení řešení Azure VMware (AVS)](how-to-create-azure-vmware-solution-assessment.md). Všimněte si, že můžete vytvořit posouzení služby AVS u skupin s pouze virtuálními počítači VMware. 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>Upřesnění skupiny pomocí mapování závislostí
 

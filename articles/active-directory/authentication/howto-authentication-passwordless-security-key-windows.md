@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c84d4f1ca01db07ea432bbf8f9929863a8134cfb
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550614"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
 Tento dokument se zaměřuje na povolení ověřování bez hesla založeného na klíčích zabezpečení FIDO2 u zařízení s Windows 10. Na konci tohoto článku se budete moct přihlásit k Azure AD i k hybridním zařízením s Windows 10 připojeným k Azure AD pomocí svého účtu služby Azure AD s použitím bezpečnostního klíče FIDO2.
 
-|     |
-| --- |
-| Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
-|     |
+> [!NOTE]
+> Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Požadavky
 
@@ -80,7 +78,7 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 
 Pokud chcete povolit použití klíčů zabezpečení pomocí Intune, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **registrace zařízení registrace zařízení**s  >  **Windows registrace**  >  **Windows Hello pro firmy**–  >  **vlastnosti**.
 1. V části **Nastavení**nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
 
@@ -90,7 +88,7 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **konfigurační**  >  **profily**zařízení  >  **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením:
    - Název: bezpečnostní klíče pro přihlášení k Windows

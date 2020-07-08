@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/22/2020
+ms.date: 06/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0a7048e79ddd4a86d7e14e573cf5b8556f462f03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550339"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
 
@@ -29,10 +29,8 @@ Některé organizace se nepřesunuly do hybridního ověřování z následujíc
 
 Abyste mohli přejít na hybridní ověřování, můžete teď nakonfigurovat Azure AD tak, aby se uživatelé mohli přihlašovat pomocí e-mailu v ověřené doméně jako alternativní přihlašovací ID. Pokud se například *Contoso* přesměruje na *Fabrikam*, místo toho, abyste se mohli dál přihlašovat pomocí staršího `balas@contoso.com` hlavního názvu uživatele (UPN), se teď dá použít alternativní přihlašovací ID. Pro přístup k aplikaci nebo službám se uživatelé přihlásí k Azure AD pomocí přiřazeného e-mailu, jako je například `balas@fabrikam.com` .
 
-|     |
-| --- |
-| Přihlášení k Azure AD s e-mailem jako alternativním přihlašovacím ID je funkce Public Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.|
-|     |
+> [!NOTE]
+> Přihlášení k Azure AD s e-mailem jako alternativním přihlašovacím ID je funkce Public Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Přehled přístupů ke službě Azure AD pro přihlášení
 
@@ -45,6 +43,19 @@ V některých organizacích se ale místní hlavní název uživatele (UPN) nepo
 Obvyklým řešením tohoto problému bylo nastavení hlavního názvu uživatele (UPN) Azure AD na e-mailovou adresu, se kterou uživatel očekává přihlášení. Tento přístup funguje, i když vede k různým UPN mezi místní službou AD a službou Azure AD a tato konfigurace není kompatibilní se všemi Microsoft 365 úlohami.
 
 Jiným přístupem je synchronizace Azure AD a místních UPN na stejnou hodnotu a konfigurace Azure AD tak, aby se uživatelé mohli přihlásit k Azure AD pomocí ověřeného e-mailu. Chcete-li tuto možnost poskytnout, definujte jednu nebo více e-mailových adres v atributu *proxyAddresses* uživatele v místním adresáři. *ProxyAddresses* se pak automaticky synchronizuje se službou Azure AD pomocí Azure AD Connect.
+
+## <a name="preview-limitations"></a>Omezení verze Preview
+
+Pokud se uživatel přihlásí pomocí e-mailu bez názvu UPN jako alternativní přihlašovací ID, platí v aktuálním stavu verze Preview tato omezení:
+
+* Uživatelé se můžou podívat na hlavní název uživatele (UPN), i když se přihlásí pomocí e-mailu bez názvu UPN. Může se zobrazit následující příklad chování:
+    * Uživatel se zobrazí výzva, abyste se přihlásili pomocí hlavního názvu uživatele (UPN) při přesměrování na přihlášení k Azure AD pomocí `login_hint=<non-UPN email>` .
+    * Když se uživatel přihlásí pomocí e-mailu bez hlavního názvu uživatele (UPN) a zadá nesprávné heslo, změní se stránka *zadání hesla* , aby se zobrazil hlavní název uživatele (UPN).
+    * Na některých webech a aplikacích společnosti Microsoft, jako je například [https://portal.azure.com](https://portal.azure.com) a systém Microsoft Office, se v pravém horním rohu může zobrazit ovládací prvek **správce účtů** , nikoli e-mailová adresa uživatele, která se používá k přihlášení.
+
+* Některé toky nejsou aktuálně kompatibilní s e-mailem bez názvu UPN, například následující:
+    * Identity Protection aktuálně neodpovídá ID alternativního přihlašovacího jména e-mailu s *Nevrácenými odhaleními přihlašovacích údajů* . Toto zjišťování rizik používá hlavní název uživatele (UPN) k vyhledání nevrácených přihlašovacích údajů. Další informace najdete v tématu [Azure AD Identity Protection detekci rizik a nápravě][identity-protection].
+    * Pozvánky B2B odeslané na alternativní e-mailové přihlašovací ID nejsou plně podporované. Po přijetí pozvání odeslaného e-mailem jako alternativního přihlašovacího ID nemusí být přihlášení pomocí alternativního e-mailu pro uživatele na koncovém bodu klienta fungovat.
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>Synchronizace e-mailových přihlašovacích adres do Azure AD
 
@@ -177,6 +188,7 @@ Další informace o hybridních operacích identity najdete v tématu Jak funguj
 [hybrid-overview]: ../hybrid/cloud-governed-management-for-on-premises.md
 [phs-overview]: ../hybrid/how-to-connect-password-hash-synchronization.md
 [pta-overview]: ../hybrid/how-to-connect-pta-how-it-works.md
+[identity-protection]: ../identity-protection/overview-identity-protection.md#risk-detection-and-remediation
 
 <!-- EXTERNAL LINKS -->
 [Install-Module]: /powershell/module/powershellget/install-module

@@ -12,18 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf9b92b868e8707a0e20531f5738146d833c301
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551533"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Příklad: Přímá federace s Active Directory Federation Services (AD FS) (AD FS) (Preview)
-|     |
-| --- |
-| Přímá federace je funkce veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.|
-|     |
+
+> [!NOTE]
+> Přímá federace je funkce veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Tento článek popisuje, jak nastavit [přímou federaci](direct-federation.md) pomocí Active Directory Federation Services (AD FS) (AD FS) jako poskytovatele identity SAML 2,0 nebo WS. Aby bylo možné podporovat přímé federace, musí být na zprostředkovateli identity nakonfigurovány určité atributy a deklarace identity. K ilustraci, jak nakonfigurovat poskytovatele identity pro přímou federaci, použijeme jako příklad Active Directory Federation Services (AD FS) (AD FS). Ukážeme, jak nastavit AD FS jako zprostředkovatele identity SAML a jako zprostředkovatele identity WS-dodaný.
 

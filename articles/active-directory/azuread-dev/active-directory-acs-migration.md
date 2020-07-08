@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8a7c6966c439bd69f809a26e0f3a7781d95619ad
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85383831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551728"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -281,10 +281,13 @@ V některých případech se může stát, že Azure AD a Azure AD B2C nestačí
 
 V těchto případech je vhodné zvážit migraci webové aplikace do jiné služby Cloud Authentication. Doporučujeme prozkoumat následující možnosti. Každá z následujících možností nabízí podobné funkce jako Access Control:
 
-|     |     |
-| --- | --- |
-| ![Na tomto obrázku vidíte logo Auth0](./media/active-directory-acs-migration/rsz-auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní cloudová služba identit, která [pro zákazníky Access ControlA vytvořila pokyny k migraci na vysoké úrovni](https://auth0.com/acs)a podporuje téměř všechny funkce služby ACS. |
-| ![Tento obrázek ukazuje logo identity testu.](./media/active-directory-acs-migration/rsz-ping.png) | Služba [příkazem testovat identitu](https://www.pingidentity.com) nabízí dvě řešení podobná službě ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pomocí nástroje. |
+![Na tomto obrázku vidíte logo Auth0](./media/active-directory-acs-migration/rsz-auth0.png) 
+
+[Auth0](https://auth0.com/acs) je flexibilní cloudová služba identit, která [pro zákazníky Access ControlA vytvořila pokyny k migraci na vysoké úrovni](https://auth0.com/acs)a podporuje téměř všechny funkce služby ACS.
+
+![Tento obrázek ukazuje logo identity testu.](./media/active-directory-acs-migration/rsz-ping.png)
+
+Služba [příkazem testovat identitu](https://www.pingidentity.com) nabízí dvě řešení podobná službě ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pomocí nástroje.
 
 Naším cílem při práci s identitou a nástrojem Auth0 je zajistit, aby měli všichni zákazníci Access Control cestu migrace pro své aplikace a služby, které minimalizují množství práce potřebné k přechodu z Access Control.
 
@@ -343,10 +346,12 @@ V některých případech se může stát, že přihlašovací údaje klienta Az
 
 V těchto případech můžete zvážit migraci webové aplikace do jiné cloudové ověřovací služby. Doporučujeme prozkoumat následující možnosti. Každá z následujících možností nabízí podobné funkce jako Access Control:
 
-|     |     |
-| --- | --- |
-| ![Na tomto obrázku vidíte logo Auth0](./media/active-directory-acs-migration/rsz-auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní cloudová služba identit, která [pro zákazníky Access ControlA vytvořila pokyny k migraci na vysoké úrovni](https://auth0.com/acs)a podporuje téměř všechny funkce služby ACS. |
-| ![Tento obrázek ukazuje logo identity testu.](./media/active-directory-acs-migration/rsz-ping.png) | Služba [příkazem testovat identitu](https://www.pingidentity.com) nabízí dvě řešení podobná službě ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pomocí nástroje. |
+![Na tomto obrázku vidíte logo Auth0](./media/active-directory-acs-migration/rsz-auth0.png)
+
+[Auth0](https://auth0.com/acs) je flexibilní cloudová služba identit, která [pro zákazníky Access ControlA vytvořila pokyny k migraci na vysoké úrovni](https://auth0.com/acs)a podporuje téměř všechny funkce služby ACS.
+
+![Tento obrázek ukazuje, že se na tomto obrázku zobrazuje logo služby test identity ](./media/active-directory-acs-migration/rsz-ping.png)
+ [příkazem příkazem](https://www.pingidentity.com) služby ACS. PingOne je cloudová služba identit, která podporuje mnoho stejných funkcí jako ACS a PingFederate je podobný místní produkt identity, který nabízí větší flexibilitu. Další podrobnosti o používání těchto produktů najdete v tématu [pokyny k vyřazení služby ACS](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pomocí nástroje.
 
 Naším cílem při práci s identitou a nástrojem Auth0 je zajistit, aby měli všichni zákazníci Access Control cestu migrace pro své aplikace a služby, které minimalizují množství práce potřebné k přechodu z Access Control.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0f905b3eb6d1675f0bc252c3500169b3144287d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550710"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminace špatných hesel v rámci organizace
 
@@ -158,7 +158,7 @@ Po normalizaci se toto heslo bude "contosoblankf9!". Odpovídající proces zjis
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
-|   | Ochrana heslem Azure AD s globálním seznamem zakázaných hesel | Ochrana heslem Azure AD s vlastním seznamem zakázaných hesel|
+| Uživatelé | Ochrana heslem Azure AD s globálním seznamem zakázaných hesel | Ochrana heslem Azure AD s vlastním seznamem zakázaných hesel|
 | --- | --- | --- |
 | Jenom cloudové uživatele | Azure AD Free | Azure AD Premium P1 nebo P2 |
 | Uživatelé synchronizovaný z místní služby Windows Server Active Directory | Azure AD Premium P1 nebo P2 | Azure AD Premium P1 nebo P2 |

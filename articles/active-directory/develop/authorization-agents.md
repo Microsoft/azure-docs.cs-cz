@@ -12,12 +12,12 @@ ms.date: 09/05/2019
 ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83a33fa3891e01c484f298f22d67467bc54a7618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551977"
 ---
 # <a name="authorization-agents-android"></a>Autorizační agenti (Android)
 
@@ -25,7 +25,7 @@ Tento článek popisuje různé autorizační agenty, které Microsoft Authentic
 
 Volba konkrétní strategie pro autorizační agenty je volitelná a představuje další funkční aplikace, které můžete přizpůsobit. Většina aplikací bude používat výchozí hodnoty MSAL (informace o různých výchozích nastaveních najdete v tématu [vysvětlení konfiguračního souboru Android MSAL](msal-configuration.md) ).
 
-MSAL podporuje autorizaci pomocí `WebView`nástroje, nebo systémového prohlížeče.  Následující obrázek ukazuje `WebView`, jak vypadá pomocí nástroje, nebo v prohlížeči systému pomocí CustomTabs nebo bez CustomTabs:
+MSAL podporuje autorizaci pomocí nástroje `WebView` , nebo systémového prohlížeče.  Následující obrázek ukazuje, jak vypadá pomocí nástroje `WebView` , nebo v prohlížeči systému pomocí CustomTabs nebo bez CustomTabs:
 
 ![Příklady přihlášení MSAL](./media/authorization-agents/sign-in-ui.jpg)
 
@@ -45,13 +45,13 @@ Pokud chcete použít webzobrazení v aplikaci, vložte do kódu JSON konfigurac
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-Při použití v aplikaci `WebView`se uživatel přihlásí přímo k aplikaci. Tokeny se uchovávají v izolovaném prostoru aplikace a nejsou dostupné mimo JAR souborů cookie aplikace. V důsledku toho uživatel nemůže mít v aplikacích možnosti jednotného přihlašování, pokud se aplikace neintegrují s ověřovatelem nebo Portál společnosti.
+Při použití v aplikaci se `WebView` uživatel přihlásí přímo k aplikaci. Tokeny se uchovávají v izolovaném prostoru aplikace a nejsou dostupné mimo JAR souborů cookie aplikace. V důsledku toho uživatel nemůže mít v aplikacích možnosti jednotného přihlašování, pokud se aplikace neintegrují s ověřovatelem nebo Portál společnosti.
 
-`WebView` Nicméně poskytuje možnost přizpůsobit si vzhled a chování uživatelského rozhraní pro přihlašování. Další informace o tom, jak toto přizpůsobení provést, najdete v tématu věnovaném [zobrazením v Androidu](https://developer.android.com/reference/android/webkit/WebView) .
+Nicméně `WebView` poskytuje možnost přizpůsobit si vzhled a chování uživatelského rozhraní pro přihlašování. Další informace o tom, jak toto přizpůsobení provést, najdete v tématu věnovaném [zobrazením v Androidu](https://developer.android.com/reference/android/webkit/WebView) .
 
 ## <a name="default-browser-plus-custom-tabs"></a>Výchozí prohlížeč a vlastní karty
 
-Ve výchozím nastavení MSAL používá strategii prohlížeče a [vlastních karet](https://developer.chrome.com/multidevice/android/customtabs) . Tuto strategii můžete výslovně označit tak, aby v budoucích verzích nedocházelo `DEFAULT` ke změnám pomocí následující konfigurace JSON v souboru vlastního konfigurace:
+Ve výchozím nastavení MSAL používá strategii prohlížeče a [vlastních karet](https://developer.chrome.com/multidevice/android/customtabs) . Tuto strategii můžete výslovně označit tak, aby v budoucích verzích nedocházelo ke změnám `DEFAULT` pomocí následující konfigurace JSON v souboru vlastního konfigurace:
 
 ```json
 "authorization_user_agent" : "BROWSER"
@@ -65,7 +65,7 @@ Vzhledem k tomu, že MSAL není možné zadat přesný balíček prohlížeče, 
 
 MSAL načte úplný seznam prohlížečů nainstalovaných na zařízení a vybere prohlížeč, který se má použít. Seznam je v pořadí vráceném správcem balíčků, který nepřímo odráží předvolby uživatele. Například výchozí prohlížeč, pokud je nastaveno, je první záznam v seznamu. _První_ prohlížeč v seznamu se vybere bez ohledu na to, jestli podporuje vlastní karty. Pokud prohlížeč podporuje vlastní karty, MSAL spustí vlastní kartu. vlastní karty mají vzhled a chování blíž k v aplikaci `WebView` a umožňují základní přizpůsobení uživatelského rozhraní. Další informace najdete [v tématu vlastní karty v Androidu](https://developer.chrome.com/multidevice/android/customtabs) .
 
-Pokud na zařízení nejsou žádné balíčky prohlížeče, používá MSAL v aplikaci `WebView`.
+Pokud na zařízení nejsou žádné balíčky prohlížeče, používá MSAL v aplikaci `WebView` .
 
 Pořadí prohlížečů v seznamu prohlížeče je určeno operačním systémem. Je v pořadí od nejvíce do nejnižší. Pokud se výchozí nastavení zařízení nezmění, měl by se pro každé přihlášení spustit stejný prohlížeč, aby se zajistilo prostředí jednotného přihlašování.
 
@@ -76,7 +76,7 @@ Pořadí prohlížečů v seznamu prohlížeče je určeno operačním systémem
 
 Následující prohlížeče byly testovány, aby bylo možné zjistit, zda správně přesměrují na `"redirect_uri"` zadané v konfiguračním souboru:
 
-| | Vestavěný prohlížeč | Chrome | Opera  | Microsoft Edge | Prohlížeč UC | Firefox |
+| Zařízení | Vestavěný prohlížeč | Chrome | Opera  | Microsoft Edge | Prohlížeč UC | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (rozhraní API 17) | dána | dána |nelze použít |nelze použít |nelze použít |nelze použít |
 | Samsung S7 (rozhraní API 25) | dána | dána | dána | dána | proběhne |dána |

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a9026db19d453100971739dcf633629a3f06d43
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 394af855b7968d38bf99afada246ae661dc0459a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85388299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549476"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Facebook pomocí Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Pokud chcete použít účet Facebook jako [poskytovatele identity](authorizatio
 1. Vyberte **Nastavení**  >  **základní**.
 1. Vyberte **kategorii**, například `Business and Pages` . Tuto hodnotu vyžaduje Facebook, ale nepoužívá se pro Azure AD B2C.
 1. V dolní části stránky vyberte **Přidat platformu**a pak vyberte **Web**.
-1. Do pole **Adresa URL webu**zadejte `https://your-tenant-name.b2clogin.com/` nahraďte `your-tenant-name` názvem vašeho tenanta. Zadejte adresu URL pro **zásadu ochrany osobních údajů**, například `http://www.contoso.com` . Adresa URL zásad je stránka, kterou udržujete pro poskytování informací o ochraně osobních údajů pro vaši aplikaci.
+1. Do pole **Adresa URL webu**zadejte adresu vašeho webu, například `https://contoso.com` . Zadejte adresu URL pro **zásadu ochrany osobních údajů**, například `http://www.contoso.com/privacy` . Adresa URL zásad je stránka, kterou udržujete pro poskytování informací o ochraně osobních údajů pro vaši aplikaci.
 1. Vyberte **Uložit změny**.
 1. V horní části stránky zkopírujte hodnotu **ID aplikace**.
 1. Vyberte **Zobrazit** a zkopírujte hodnotu **tajného kódu aplikace**. Pomocí obou z nich můžete nakonfigurovat Facebook jako poskytovatele identity ve vašem tenantovi. **Tajný klíč aplikace** je důležité bezpečnostní pověření.

@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69900041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550177"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Reference k funkcím
 V Azure AD Connect jsou funkce použity k manipulaci s hodnotou atributu během synchronizace.  
@@ -52,49 +52,107 @@ Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodno
 
 ## <a name="functions-reference"></a>Reference k funkcím
 
-| Seznam funkcí |  |  |  |  |
-| --- | --- | --- | --- | --- |
-| **Certifikát** | | | | |
-| [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
-| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
-| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
-| [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[CertVersion](#certversion) |[Certifikát](#iscert) | | | |
-| **Převod** | | | | |
-| [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
-| [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
-| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
-| **Datum a čas** | | | | |
-| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Současné](#now) | |
-| [NumFromDate](#numfromdate) | | | | |
-| **Adresář** | | | | |
-| [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
-| **Hodnocení** | | | | |
-| [IsBitSet](#isbitset) |[Datum a čas](#isdate) |[IsEmpty](#isempty) |[Identifikátor GUID](#isguid) | |
-| [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[K dispozici](#ispresent) | |
-| [Řetězec](#isstring) | | | | |
-| **Matematické** | | | | |
-| [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
-| **Vícehodnotový** | | | | |
-| [Zobrazí](#contains) |[Výpočtu](#count) |[Položka](#item) |[ItemOrNull](#itemornull) | |
-| [Připojit](#join) |[RemoveDuplicates –](#removeduplicates) |[Rozdělení](#split) | | |
-| **Tok programu** | | | | |
-| [Chyba](#error) |[IIF](#iif) |[Vybrat](#select) |[Přepnutí](#switch) | |
-| [,](#where) |[Řetězce](#with) | | | |
-| **Text** | | | | |
-| [HLAVNÍCH](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Zbývá](#left) |[Funkce](#len) |[LTrim](#ltrim) |[Středně](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Náhrady](#replace) | |
-| [ReplaceChars](#replacechars) |[Kliknutím](#right) |[RTrim](#rtrim) |[Sklon](#trim) | |
-| [UCase](#ucase) |[Word](#word) | | | |
+* **Certifikát**
+  * [CertExtensionOids](#certextensionoids)
+  * [CertFormat](#certformat)
+  * [CertFriendlyName](#certfriendlyname)
+  * [CertHashString](#certhashstring)
+  * [CertIssuer](#certissuer)
+  * [CertIssuerDN](#certissuerdn)
+  * [CertIssuerOid](#certissueroid)
+  * [CertKeyAlgorithm](#certkeyalgorithm)
+  * [CertKeyAlgorithmParams](#certkeyalgorithmparams)
+  * [CertNameInfo](#certnameinfo)
+  * [CertNotAfter](#certnotafter)
+  * [CertNotBefore](#certnotbefore)
+  * [CertPublicKeyOid](#certpublickeyoid)
+  * [CertPublicKeyParametersOid](#certpublickeyparametersoid)
+  * [CertSerialNumber](#certserialnumber)
+  * [CertSignatureAlgorithmOid](#certsignaturealgorithmoid)
+  * [CertSubject](#certsubject)
+  * [CertSubjectNameDN](#certsubjectnamedn)
+  * [CertSubjectNameOid](#certsubjectnameoid)
+  * [CertThumbprint](#certthumbprint)
+  * [CertVersion](#certversion)
+  * [Certifikát](#iscert)
+* **Počtu**
+  * [CBool](#cbool)
+  * [CDate](#cdate)
+  * [CGuid](#cguid)
+  * [ConvertFromBase64](#convertfrombase64)
+  * [ConvertToBase64](#converttobase64)
+  * [ConvertFromUTF8Hex](#convertfromutf8hex)
+  * [ConvertToUTF8Hex](#converttoutf8hex)
+  * [CNum](#cnum)
+  * [CRef](#cref)
+  * [CStr](#cstr)
+  * [StringFromGuid](#stringfromguid)
+  * [StringFromSid](#stringfromsid)
+* **Datum a čas**
+  * [DateAdd](#dateadd)
+  * [DateFromNum](#datefromnum)
+  * [FormatDateTime](#formatdatetime)
+  * [Současné](#now)
+  * [NumFromDate](#numfromdate)
+* **Adresář**
+  * [DNComponent](#dncomponent)
+  * [DNComponentRev](#dncomponentrev)
+  * [EscapeDNComponent](#escapedncomponent)
+* **Hodnocení**
+  * [IsBitSet](#isbitset)
+  * [Datum a čas](#isdate)
+  * [IsEmpty](#isempty)
+  * [Identifikátor GUID](#isguid)
+  * [IsNull](#isnull)
+  * [IsNullOrEmpty](#isnullorempty)
+  * [IsNumeric](#isnumeric)
+  * [K dispozici](#ispresent)
+  * [Řetězec](#isstring)
+* **Matematické**
+  * [BitAnd](#bitand)
+  * [BitOr](#bitor)
+  * [RandomNum](#randomnum)
+* **Vícenásobný * oceněný**
+  * [Zobrazí](#contains)
+  * [Výpočtu](#count)
+  * [Položka](#item)
+  * [ItemOrNull](#itemornull)
+  * [Připojit](#join)
+  * [RemoveDuplicates –](#removeduplicates)
+  * [Rozdělení](#split)
+* **Tok programu**
+  * [Chyba](#error)
+  * [IIF](#iif)
+  * [Výběr](#select)
+  * [Přepínač](#switch)
+  * [,](#where)
+  * [Řetězce](#with)
+* **Text**
+  * [HLAVNÍCH](#guid)
+  * [InStr](#instr)
+  * [InStrRev](#instrrev)
+  * [LCase](#lcase)
+  * [Zbývá](#left)
+  * [Funkce](#len)
+  * [LTrim](#ltrim)
+  * [Středně](#mid)
+  * [PadLeft](#padleft)
+  * [PadRight](#padright)
+  * [PCase](#pcase)
+  * [Náhrady](#replace)
+  * [ReplaceChars](#replacechars)
+  * [Kliknutím](#right)
+  * [RTrim](#rtrim)
+  * [Sklon](#trim)
+  * [UCase](#ucase)
+  * [Word](#word)
 
 ---
 ### <a name="bitand"></a>BitAnd
 **Popis:**  
 Funkce BitAnd nastaví v hodnotě zadané bity na hodnotu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num BitAnd(num value1, num value2)`
 
 * Hodnota1, hodnota2: číselné hodnoty, které by měly být AND'ed společně
@@ -107,7 +165,7 @@ Tato funkce převede oba parametry do binární reprezentace a nastaví bit na:
 
 Jinými slovy, vrátí 0 ve všech případech s výjimkou toho, že odpovídající bity obou parametrů jsou 1.
 
-**Případě**  
+**Příklad:**  
 `BitAnd(&HF, &HF7)`  
 Vrátí hodnotu 7, protože hexadecimální hodnota "F" a "F7" je vyhodnocena.
 
@@ -116,7 +174,7 @@ Vrátí hodnotu 7, protože hexadecimální hodnota "F" a "F7" je vyhodnocena.
 **Popis:**  
 Funkce BitOr nastaví v hodnotě zadané bity na hodnotu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num BitOr(num value1, num value2)`
 
 * Hodnota1, hodnota2: číselné hodnoty, které by měly být OR'ed společně
@@ -129,13 +187,13 @@ Tato funkce převede oba parametry do binární reprezentace a nastaví bit na 1
 **Popis:**  
 Funkce CBool vrátí logickou hodnotu založenou na vyhodnoceném výrazu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool CBool(exp Expression)`
 
 **Mark**  
 Pokud je výraz vyhodnocen jako nenulová hodnota, pak funkce CBool vrátí hodnotu true, jinak vrátí hodnotu false.
 
-**Případě**  
+**Příklad:**  
 `CBool([attrib1] = [attrib2])`  
 
 Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
@@ -145,7 +203,7 @@ Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 **Popis:**  
 Funkce CDate vrátí hodnotu DateTime UTC z řetězce. Hodnota DateTime není typem nativního atributu v synchronizaci, ale je používána některými funkcemi.
 
-**Syntaxe:**  
+**Syntaktick**  
 `dt CDate(str value)`
 
 * Hodnota: řetězec s datem, časem a volitelně časovou zónou
@@ -153,7 +211,7 @@ Funkce CDate vrátí hodnotu DateTime UTC z řetězce. Hodnota DateTime není ty
 **Mark**  
 Vrácený řetězec je vždy ve formátu UTC.
 
-**Případě**  
+**Příklad:**  
 `CDate([employeeStartTime])`  
 Vrátí hodnotu DateTime založenou na počátečním čase zaměstnance.
 
@@ -166,7 +224,7 @@ Vrátí hodnotu DateTime představující "2013-01-11 12:00 dop".
 **Popis:**  
 Vrátí hodnoty OID všech kritických rozšíření objektu certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -175,7 +233,7 @@ Vrátí hodnoty OID všech kritických rozšíření objektu certifikátu.
 **Popis:**  
 Vrátí název formátu tohoto certifikátu X. 509 v3.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertFormat(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -184,7 +242,7 @@ Vrátí název formátu tohoto certifikátu X. 509 v3.
 **Popis:**  
 Vrátí přidružený alias pro certifikát.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertFriendlyName(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -193,7 +251,7 @@ Vrátí přidružený alias pro certifikát.
 **Popis:**  
 Vrátí hodnotu hash SHA1 pro certifikát X. 509 v3 jako šestnáctkový řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertHashString(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -202,7 +260,7 @@ Vrátí hodnotu hash SHA1 pro certifikát X. 509 v3 jako šestnáctkový řetěz
 **Popis:**  
 Vrátí název certifikační autority, která vystavila certifikát X. 509 v3.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertIssuer(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -211,7 +269,7 @@ Vrátí název certifikační autority, která vystavila certifikát X. 509 v3.
 **Popis:**  
 Vrátí rozlišující název vystavitele certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertIssuerDN(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -220,7 +278,7 @@ Vrátí rozlišující název vystavitele certifikátu.
 **Popis:**  
 Vrátí identifikátor OID vystavitele certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertIssuerOid(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -229,7 +287,7 @@ Vrátí identifikátor OID vystavitele certifikátu.
 **Popis:**  
 Vrátí informace o algoritmu klíče pro tento certifikát X. 509 v3 jako řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -238,7 +296,7 @@ Vrátí informace o algoritmu klíče pro tento certifikát X. 509 v3 jako řet�
 **Popis:**  
 Vrátí parametry algoritmu klíče pro certifikát X. 509 v3 jako šestnáctkový řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -247,7 +305,7 @@ Vrátí parametry algoritmu klíče pro certifikát X. 509 v3 jako šestnáctkov
 **Popis:**  
 Vrátí název předmětu a vystavitele z certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 *   X509NameType: hodnota X509NameType pro předmět.
@@ -258,7 +316,7 @@ Vrátí název předmětu a vystavitele z certifikátu.
 **Popis:**  
 Vrátí datum v místním čase, po kterém certifikát již není platný.
 
-**Syntaxe:**  
+**Syntaktick**  
 `dt CertNotAfter(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -267,7 +325,7 @@ Vrátí datum v místním čase, po kterém certifikát již není platný.
 **Popis:**  
 Vrátí datum v místním čase, kdy bude certifikát platný.
 
-**Syntaxe:**  
+**Syntaktick**  
 `dt CertNotBefore(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -276,7 +334,7 @@ Vrátí datum v místním čase, kdy bude certifikát platný.
 **Popis:**  
 Vrátí identifikátor OID veřejného klíče pro certifikát X. 509 v3.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -285,7 +343,7 @@ Vrátí identifikátor OID veřejného klíče pro certifikát X. 509 v3.
 **Popis:**  
 Vrátí identifikátor OID parametrů veřejného klíče pro certifikát X. 509 v3.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -294,7 +352,7 @@ Vrátí identifikátor OID parametrů veřejného klíče pro certifikát X. 509
 **Popis:**  
 Vrátí sériové číslo certifikátu X. 509 v3.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertSerialNumber(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -303,7 +361,7 @@ Vrátí sériové číslo certifikátu X. 509 v3.
 **Popis:**  
 Vrátí identifikátor OID algoritmu použitého k vytvoření podpisu certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -312,7 +370,7 @@ Vrátí identifikátor OID algoritmu použitého k vytvoření podpisu certifik�
 **Popis:**  
 Získá rozlišující název subjektu z certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertSubject(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -321,7 +379,7 @@ Získá rozlišující název subjektu z certifikátu.
 **Popis:**  
 Vrátí rozlišující název subjektu z certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertSubjectNameDN(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -330,7 +388,7 @@ Vrátí rozlišující název subjektu z certifikátu.
 **Popis:**  
 Vrátí identifikátor OID názvu subjektu z certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertSubjectNameOid(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -339,7 +397,7 @@ Vrátí identifikátor OID názvu subjektu z certifikátu.
 **Popis:**  
 Vrátí kryptografický otisk certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -348,7 +406,7 @@ Vrátí kryptografický otisk certifikátu.
 **Popis:**  
 Vrátí verzi formátu X. 509 certifikátu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 
@@ -357,7 +415,7 @@ Vrátí verzi formátu X. 509 certifikátu.
 **Popis:**  
 Funkce CGuid převede řetězcovou reprezentaci identifikátoru GUID na jeho binární reprezentaci.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bin CGuid(str GUID)`
 
 * Řetězec formátovaný v tomto vzoru: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx nebo {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
@@ -367,7 +425,7 @@ Funkce CGuid převede řetězcovou reprezentaci identifikátoru GUID na jeho bin
 **Popis:**  
 Funkce Contains vyhledá řetězec uvnitř vícehodnotového atributu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num Contains (mvstring attribute, str search)`– rozlišuje velká a malá písmena  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
 `num Contains (mvref attribute, str search)`– rozlišuje velká a malá písmena
@@ -382,7 +440,7 @@ Vrátí index v atributu s více hodnotami, kde byl řetězec nalezen. hodnota 0
 Pro řetězcové atributy s více hodnotami hledá hledání v hodnotách podřetězce.  
 V případě referenčních atributů musí hledaný řetězec přesně odpovídat hodnotě, která má být považována za shodu.
 
-**Případě**  
+**Příklad:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
 Pokud má atribut proxyAddresses primární e-mailovou adresu (označenou jako velká písmena "SMTP:"), vrátí atribut proxyAddress, jinak vrátí chybu.
 
@@ -391,14 +449,14 @@ Pokud má atribut proxyAddresses primární e-mailovou adresu (označenou jako v
 **Popis:**  
 Funkce ConvertFromBase64 převede zadanou hodnotu v kódování Base64 na běžný řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str ConvertFromBase64(str source)`– předpokládá kódování Unicode.  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Zdroj: řetězec kódovaný v kódování Base64  
 * Kódování: Unicode, ASCII, UTF8
 
-**Případě**  
+**Příklad**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
@@ -409,7 +467,7 @@ Oba příklady vrátí "*Hello World!*"
 **Popis:**  
 Funkce ConvertFromUTF8Hex převede zadanou hodnotu kódovanou v šestnáctkovém formátu UTF8 na řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str ConvertFromUTF8Hex(str source)`
 
 * Zdroj: UTF8 2-Byte kódovaný Sting
@@ -418,7 +476,7 @@ Funkce ConvertFromUTF8Hex převede zadanou hodnotu kódovanou v šestnáctkovém
 Rozdíl mezi touto funkcí a ConvertFromBase64 ([], UTF8) v tom, že výsledek je uživatelsky přívětivý pro atribut DN.  
 Tento formát používá Azure Active Directory jako DN.
 
-**Případě**  
+**Příklad:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
 Vrátí "*Hello World!*"
 
@@ -428,10 +486,10 @@ Vrátí "*Hello World!*"
 Funkce ConvertToBase64 převede řetězec na řetězec Unicode base64.  
 Převede hodnotu pole celých čísel na odpovídající řetězcovou reprezentaci, která je zakódována pomocí číslic-Base-64.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str ConvertToBase64(str source)`
 
-**Případě**  
+**Příklad:**  
 `ConvertToBase64("Hello world!")`  
 Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
@@ -440,13 +498,13 @@ Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 **Popis:**  
 Funkce ConvertToUTF8Hex převede řetězec na šestnáctkovou hodnotu v kódování UTF8.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str ConvertToUTF8Hex(str source)`
 
 **Mark**  
 Výstupní formát této funkce se používá Azure Active Directory jako formát atributu DN.
 
-**Případě**  
+**Příklad:**  
 `ConvertToUTF8Hex("Hello world!")`  
 Vrátí 48656C6C6F20776F726C6421
 
@@ -455,7 +513,7 @@ Vrátí 48656C6C6F20776F726C6421
 **Popis:**  
 Funkce Count vrátí počet prvků v vícehodnotovém atributu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num Count(mvstr attribute)`
 
 ---
@@ -463,7 +521,7 @@ Funkce Count vrátí počet prvků v vícehodnotovém atributu.
 **Popis:**  
 Funkce CNum přebírá řetězec a vrací číselný datový typ.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num CNum(str value)`
 
 ---
@@ -471,10 +529,10 @@ Funkce CNum přebírá řetězec a vrací číselný datový typ.
 **Popis:**  
 Převede řetězec na atribut reference.
 
-**Syntaxe:**  
+**Syntaktick**  
 `ref CRef(str value)`
 
-**Případě**  
+**Příklad:**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
 ---
@@ -482,14 +540,14 @@ Převede řetězec na atribut reference.
 **Popis:**  
 Funkce CStr se převede na datový typ String.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str CStr(num value)`  
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
 * hodnota: může to být číselná hodnota, odkazový atribut nebo logická hodnota.
 
-**Případě**  
+**Příklad:**  
 `CStr([dn])`  
 Může vracet "CN = Jan, DC = contoso, DC = com"
 
@@ -498,7 +556,7 @@ Může vracet "CN = Jan, DC = contoso, DC = com"
 **Popis:**  
 Vrátí datum obsahující datum, ke kterému byl přidán zadaný časový interval.
 
-**Syntaxe:**  
+**Syntaktick**  
 `dt DateAdd(str interval, num value, dt date)`
 
 * interval: řetězcový výraz, který je časový interval, který chcete přidat. Řetězec musí mít jednu z následujících hodnot:
@@ -515,7 +573,7 @@ Vrátí datum obsahující datum, ke kterému byl přidán zadaný časový inte
 * hodnota: počet jednotek, které chcete přidat. Může to být kladné (pro získání dat v budoucnosti) nebo záporné (pro získání dat v minulosti).
 * Date: DateTime představuje datum, do kterého se přidá interval.
 
-**Případě**  
+**Příklad:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
 Přidá 3 měsíce a vrátí hodnotu DateTime představující "2001-04-01".
 
@@ -524,10 +582,10 @@ Přidá 3 měsíce a vrátí hodnotu DateTime představující "2001-04-01".
 **Popis:**  
 Funkce DateFromNum převede hodnotu ve formátu data AD na typ DateTime.
 
-**Syntaxe:**  
+**Syntaktick**  
 `dt DateFromNum(num value)`
 
-**Případě**  
+**Příklad:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
@@ -537,13 +595,13 @@ Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
 **Popis:**  
 Funkce DNComponent vrací hodnotu zadané složky DN z levé části.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
 * DN: atribut reference, který se má interpretovat
 * ComponentNumber: komponenta v rozlišujícím názvu, která se má vrátit
 
-**Případě**  
+**Příklad:**  
 `DNComponent(CRef([dn]),1)`  
 Pokud je DN "CN = Jan, OU =...", vrátí Jana
 
@@ -552,7 +610,7 @@ Pokud je DN "CN = Jan, OU =...", vrátí Jana
 **Popis:**  
 Funkce DNComponentRev vrací hodnotu zadané složky DN z pravého (konce).
 
-**Syntaxe:**  
+**Syntaktick**  
 `str DNComponentRev(ref dn, num ComponentNumber)`  
 `str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
 
@@ -560,7 +618,7 @@ Funkce DNComponentRev vrací hodnotu zadané složky DN z pravého (konce).
 * ComponentNumber – komponenta v rozlišujícím názvu, která se má vrátit
 * Možnosti: DC – ignorovat všechny komponenty s "DC ="
 
-**Případě**  
+**Příklad:**  
 Pokud je DN "CN = Jan, OU = Brno, OU = GA, OU = US, DC = contoso, DC = com", pak  
 `DNComponentRev(CRef([dn]),3)`  
 `DNComponentRev(CRef([dn]),1,"DC")`  
@@ -571,10 +629,10 @@ Jak nás vrátíme.
 **Popis:**  
 Funkce Error slouží k vrácení vlastní chyby.
 
-**Syntaxe:**  
+**Syntaktick**  
 `void Error(str ErrorMessage)`
 
-**Případě**  
+**Příklad:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Pokud atribut Account není přítomen, vyvolejte chybu objektu.
 
@@ -583,10 +641,10 @@ Pokud atribut Account není přítomen, vyvolejte chybu objektu.
 **Popis:**  
 Funkce EscapeDNComponent přebírá jednu komponentu DN a řídí ji, aby ji bylo možné znázornit v protokolu LDAP.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str EscapeDNComponent(str value)`
 
-**Případě**  
+**Příklad:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
 Zajistí, že objekt může být vytvořen v adresáři LDAP, i když má atribut DisplayName znaky, které musí být uvozeny v protokolu LDAP.
 
@@ -595,7 +653,7 @@ Zajistí, že objekt může být vytvořen v adresáři LDAP, i když má atribu
 **Popis:**  
 Funkce FormatDateTime slouží k formátování hodnoty DateTime na řetězec se zadaným formátem.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str FormatDateTime(dt value, str format)`
 
 * Value: hodnota ve formátu data a času
@@ -604,7 +662,7 @@ Funkce FormatDateTime slouží k formátování hodnoty DateTime na řetězec se
 **Mark**  
 Možné hodnoty pro tento formát najdete tady: [vlastní formáty data a času pro funkci Format](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
-**Případě**  
+**Příklad:**  
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
 Má za následek "2007-12-25".
@@ -617,7 +675,7 @@ Může mít za následek "20140905081453.0 Z"
 **Popis:**  
 Identifikátor GUID funkce vygeneruje nový náhodný identifikátor GUID.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Guid()`
 
 ---
@@ -625,14 +683,14 @@ Identifikátor GUID funkce vygeneruje nový náhodný identifikátor GUID.
 **Popis:**  
 Funkce IIF vrátí jednu ze sady možných hodnot na základě zadané podmínky.
 
-**Syntaxe:**  
+**Syntaktick**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 * podmínka: libovolná hodnota nebo výraz, který lze vyhodnotit na hodnotu true nebo false.
 * valueIfTrue: Pokud je podmínka vyhodnocena jako true, vrácená hodnota.
 * valueIfFalse: Pokud je podmínka vyhodnocena jako false, vrácená hodnota.
 
-**Případě**  
+**Příklad:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Pokud je uživatel interně, vrátí alias uživatele s názvem "t-", který je přidán na začátek, jinak vrátí alias uživatele tak, jak je.
 
@@ -641,7 +699,7 @@ Funkce IIF vrátí jednu ze sady možných hodnot na základě zadané podmínky
 **Popis:**  
 Funkce InStr vyhledá první výskyt podřetězce v řetězci.
 
-**Syntaxe:**  
+**Syntaktick**  
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
@@ -655,7 +713,7 @@ Funkce InStr vyhledá první výskyt podřetězce v řetězci.
 **Mark**  
 Vrátí pozici, kde byl dílčí řetězec nalezen, nebo 0, pokud nebyl nalezen.
 
-**Případě**  
+**Příklad:**  
 `InStr("The quick brown fox","quick")`  
 Evalues na 5
 
@@ -667,7 +725,7 @@ Vyhodnotí na 7
 **Popis:**  
 Funkce InStrRev najde poslední výskyt podřetězce v řetězci.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num InstrRev(str stringcheck, str stringmatch)`  
 `num InstrRev(str stringcheck, str stringmatch, num start)`  
 `num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
@@ -680,7 +738,7 @@ Funkce InStrRev najde poslední výskyt podřetězce v řetězci.
 **Mark**  
 Vrátí pozici, kde byl dílčí řetězec nalezen, nebo 0, pokud nebyl nalezen.
 
-**Případě**  
+**Příklad:**  
 `InStrRev("abbcdbbbef","bb")`  
 Vrátí hodnotu 7
 
@@ -689,12 +747,12 @@ Vrátí hodnotu 7
 **Popis:**  
 Funkce IsBitSet testuje, jestli je nastavený bit nebo ne.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsBitSet(num value, num flag)`
 
 * Value (hodnota): číselná hodnota, která je vyhodnocena. příznak: číselná hodnota, která má bit k vyhodnocení
 
-**Případě**  
+**Příklad:**  
 `IsBitSet(&HF,4)`  
 Vrátí hodnotu true, protože bit "4" je nastaven v hexadecimální hodnotě "F".
 
@@ -703,7 +761,7 @@ Vrátí hodnotu true, protože bit "4" je nastaven v hexadecimální hodnotě "F
 **Popis:**  
 Pokud je možné výraz vyhodnotit jako typ DateTime, je funkce-Date vyhodnocena jako true.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsDate(var Expression)`
 
 **Mark**  
@@ -714,7 +772,7 @@ Slouží k určení, zda může být akce CDate () úspěšná.
 **Popis:**  
 Vrátí hodnotu true, pokud lze nezpracovaná data serializovat do objektu certifikátu .NET X509Certificate2.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: bajtová reprezentace pole certifikátu X. 509. Bajtové pole může být binární (DER) kódovaný nebo X. 509 data s kódováním base64.
 ---
@@ -722,7 +780,7 @@ Vrátí hodnotu true, pokud lze nezpracovaná data serializovat do objektu certi
 **Popis:**  
 Pokud je atribut přítomen v CS nebo MV, ale vyhodnotí se jako prázdný řetězec, vyhodnotí se funkce Empty na hodnotu true.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsEmpty(var Expression)`
 
 ---
@@ -730,7 +788,7 @@ Pokud je atribut přítomen v CS nebo MV, ale vyhodnotí se jako prázdný řet�
 **Popis:**  
 Pokud je možné řetězec převést na identifikátor GUID, je funkce identifikátoru ". GUID" vyhodnocena na hodnotu true.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsGuid(str GUID)`
 
 **Mark**  
@@ -738,7 +796,7 @@ Identifikátor GUID je definován jako řetězec za jedním z těchto vzorů: xx
 
 Slouží k určení, zda může být CGuid () úspěšné.
 
-**Případě**  
+**Příklad:**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
 Pokud má StrAttribute formát GUID, vrátí binární reprezentaci, jinak vrátí hodnotu null.
 
@@ -747,13 +805,13 @@ Pokud má StrAttribute formát GUID, vrátí binární reprezentaci, jinak vrát
 **Popis:**  
 Pokud je výraz vyhodnocen jako null, funkce IsNull vrátí hodnotu true.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsNull(var Expression)`
 
 **Mark**  
 U atributu je hodnota null vyjádřena nepřítomností atributu.
 
-**Případě**  
+**Příklad:**  
 `IsNull([displayName])`  
 Vrátí hodnotu true, pokud atribut není přítomen v CS nebo MV.
 
@@ -762,14 +820,14 @@ Vrátí hodnotu true, pokud atribut není přítomen v CS nebo MV.
 **Popis:**  
 Pokud má výraz hodnotu null nebo je prázdný řetězec, vrátí funkce IsNullOrEmpty hodnotu true.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsNullOrEmpty(var Expression)`
 
 **Mark**  
 U atributu by se to mělo vyhodnotit na hodnotu true, pokud atribut chybí nebo je přítomen, ale je to prázdný řetězec.  
 Inverzní část této funkce je pojmenována jako.
 
-**Případě**  
+**Příklad:**  
 `IsNullOrEmpty([displayName])`  
 Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetězec v CS nebo MV.
 
@@ -778,7 +836,7 @@ Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetěze
 **Popis:**  
 Funkce-numeric vrátí logickou hodnotu, která označuje, zda lze výraz vyhodnotit jako typ čísla.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsNumeric(var Expression)`
 
 **Mark**  
@@ -789,7 +847,7 @@ Slouží k určení, zda může být CNum () úspěšné k analýze výrazu.
 **Popis:**  
 Pokud je možné výraz vyhodnotit na typ řetězce, pak je funkce typu String vyhodnocena jako true.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsString(var expression)`
 
 **Mark**  
@@ -800,13 +858,13 @@ Slouží k určení, zda může být CStr () úspěšné k analýze výrazu.
 **Popis:**  
 Pokud se výraz vyhodnotí jako řetězec, který není null a není prázdný, vrátí funkce vracející hodnotu true.
 
-**Syntaxe:**  
+**Syntaktick**  
 `bool IsPresent(var expression)`
 
 **Mark**  
 Inverzní funkce k této funkci má název IsNullOrEmpty.
 
-**Případě**  
+**Příklad:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -814,7 +872,7 @@ Inverzní funkce k této funkci má název IsNullOrEmpty.
 **Popis:**  
 Funkce Item vrátí jednu položku z vícehodnotového řetězce nebo atributu.
 
-**Syntaxe:**  
+**Syntaktick**  
 `var Item(mvstr attribute, num index)`
 
 * atribut: vícehodnotový atribut
@@ -825,7 +883,7 @@ Funkce Item je užitečná společně s funkcí Contains, protože druhá funkce
 
 Vyvolá chybu, pokud je index mimo rozsah.
 
-**Případě**  
+**Příklad:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Vrátí primární e-mailovou adresu.
 
@@ -834,7 +892,7 @@ Vrátí primární e-mailovou adresu.
 **Popis:**  
 Funkce ItemOrNull vrací jednu položku z násobných řetězců nebo atributů s více hodnotami.
 
-**Syntaxe:**  
+**Syntaktick**  
 `var ItemOrNull(mvstr attribute, num index)`
 
 * atribut: vícehodnotový atribut
@@ -850,7 +908,7 @@ Pokud je index mimo rozsah, pak vrátí hodnotu null.
 **Popis:**  
 Funkce Join vezme řetězec s více hodnotami a vrátí řetězec s jednou hodnotou se zadaným oddělovačem vloženým mezi každou položkou.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
@@ -860,19 +918,19 @@ Funkce Join vezme řetězec s více hodnotami a vrátí řetězec s jednou hodno
 **Poznámky**  
 Mezi funkcemi JOIN a Split je parita. Funkce Join přebírá pole řetězců a spojuje je pomocí řetězce oddělovače, aby vrátila jediný řetězec. Funkce Split přebírá řetězec a odděluje ho na oddělovači, aby vracelo pole řetězců. Klíčovým rozdílem je však, že spojení může zřetězit řetězce s libovolným řetězcem oddělovače, rozdělit může pouze oddělit řetězce pomocí jediného oddělovače znaků.
 
-**Případě**  
+**Příklad:**  
 `Join([proxyAddresses],",")`  
-Může vrátit: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
+Může vrátit: " SMTP:john.doe@contoso.com , smtp:jd@contoso.com "
 
 ---
 ### <a name="lcase"></a>LCase
 **Popis:**  
 Funkce LCase převede všechny znaky v řetězci na malá písmena.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str LCase(str value)`
 
-**Případě**  
+**Příklad:**  
 `LCase("TeSt")`  
 Vrátí "test".
 
@@ -881,7 +939,7 @@ Vrátí "test".
 **Popis:**  
 Funkce Left vrátí zadaný počet znaků nalevo od řetězce.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Left(str string, num NumChars)`
 
 * řetězec: řetězec, ze kterého se mají vracet znaky
@@ -896,7 +954,7 @@ Funkce Left vrátí zadaný počet znaků nalevo od řetězce.
 
 Pokud řetězec obsahuje méně znaků než číslo zadané v numChars, vrátí se řetězec shodný s řetězcem (tj. obsahující všechny znaky v parametru 1).
 
-**Případě**  
+**Příklad:**  
 `Left("John Doe", 3)`  
 Vrátí "Joh".
 
@@ -905,10 +963,10 @@ Vrátí "Joh".
 **Popis:**  
 Funkce len vrátí počet znaků v řetězci.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num Len(str value)`
 
-**Případě**  
+**Příklad:**  
 `Len("John Doe")`  
 Vrátí 8
 
@@ -917,10 +975,10 @@ Vrátí 8
 **Popis:**  
 Funkce LTrim odebere z řetězce úvodní prázdné znaky.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str LTrim(str value)`
 
-**Případě**  
+**Příklad:**  
 `LTrim(" Test ")`  
 Vrátí "test"
 
@@ -929,7 +987,7 @@ Vrátí "test"
 **Popis:**  
 Funkce Mid vrátí zadaný počet znaků ze zadané pozice v řetězci.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Mid(str string, num start, num NumChars)`
 
 * řetězec: řetězec, ze kterého se mají vracet znaky
@@ -948,7 +1006,7 @@ Vrátí numChars znaky od pozice začátek v řetězci.
 
 Pokud nejsou v řetězci od začátku pozice numChar znaky, co je vráceno, kolik znaků je možné.
 
-**Případě**  
+**Příklad:**  
 `Mid("John Doe", 3, 5)`  
 Vrátí "HN do".
 
@@ -960,7 +1018,7 @@ Vrátí "Chvojková"
 **Popis:**  
 Funkce Now vrací hodnotu DateTime určující aktuální datum a čas podle systémového data a času v počítači.
 
-**Syntaxe:**  
+**Syntaktick**  
 `dt Now()`
 
 ---
@@ -968,10 +1026,10 @@ Funkce Now vrací hodnotu DateTime určující aktuální datum a čas podle sys
 **Popis:**  
 Funkce NumFromDate vrací datum ve formátu data AD.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num NumFromDate(dt value)`
 
-**Případě**  
+**Příklad:**  
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
 Vrátí 129699324000000000
 
@@ -980,7 +1038,7 @@ Vrátí 129699324000000000
 **Popis:**  
 Funkce PadLeft opustila řetězec na zadanou délku pomocí zadaného ohraničujícího znaku.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str PadLeft(str string, num length, str padCharacter)`
 
 * řetězec: řetězec, který se má vyblokovat.
@@ -996,7 +1054,7 @@ Funkce PadLeft opustila řetězec na zadanou délku pomocí zadaného ohraničuj
 * Pokud je délka řetězce menší než délka, pak je vrácen nový řetězec požadované délky obsahující řetězec, který je doplněn na padCharacter.
 * Pokud má řetězec hodnotu null, funkce vrátí prázdný řetězec.
 
-**Případě**  
+**Příklad:**  
 `PadLeft("User", 10, "0")`  
 Vrátí "000000User".
 
@@ -1005,7 +1063,7 @@ Vrátí "000000User".
 **Popis:**  
 Funkce PadRight napraví řetězec na zadanou délku pomocí zadaného ohraničujícího znaku.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str PadRight(str string, num length, str padCharacter)`
 
 * řetězec: řetězec, který se má vyblokovat.
@@ -1021,7 +1079,7 @@ Funkce PadRight napraví řetězec na zadanou délku pomocí zadaného ohraniču
 * Pokud je délka řetězce menší než délka, pak je vrácen nový řetězec požadované délky obsahující řetězec, který je doplněn na padCharacter.
 * Pokud má řetězec hodnotu null, funkce vrátí prázdný řetězec.
 
-**Případě**  
+**Příklad:**  
 `PadRight("User", 10, "0")`  
 Vrátí "User000000".
 
@@ -1030,14 +1088,14 @@ Vrátí "User000000".
 **Popis:**  
 Funkce PCase převede první znak všech slov oddělených mezerou v řetězci na velká písmena a všechny ostatní znaky jsou převedeny na malá písmena.
 
-**Syntaxe:**  
+**Syntaktick**  
 `String PCase(string)`
 
 **Mark**
 
 * Tato funkce v současné době neposkytuje správné používání velkých a malých písmen, jako je například akronym.
 
-**Případě**  
+**Příklad:**  
 `PCase("TEsT")`  
 Vrátí "test".
 
@@ -1049,13 +1107,13 @@ Vrátí "test"
 **Popis:**  
 Funkce RandomNum vrací náhodné číslo mezi zadaným intervalem.
 
-**Syntaxe:**  
+**Syntaktick**  
 `num RandomNum(num start, num end)`
 
 * začátek: číslo určující spodní limit náhodné hodnoty, který se má vygenerovat
 * end: číslo identifikující horní mez náhodné hodnoty, která se má generovat
 
-**Případě**  
+**Příklad:**  
 `Random(100,999)`  
 Může vrátit 734.
 
@@ -1064,10 +1122,10 @@ Může vrátit 734.
 **Popis:**  
 Funkce RemoveDuplicates – přebírá řetězec s více hodnotami a ověří, zda jsou všechny hodnoty jedinečné.
 
-**Syntaxe:**  
+**Syntaktick**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Případě**  
+**Příklad:**  
 `RemoveDuplicates([proxyAddresses])`  
 Vrátí upravený atribut proxyAddress, ve kterém byly odstraněny všechny duplicitní hodnoty.
 
@@ -1076,7 +1134,7 @@ Vrátí upravený atribut proxyAddress, ve kterém byly odstraněny všechny dup
 **Popis:**  
 Funkce Replace nahradí všechny výskyty řetězce na jiný řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Replace(str string, str OldValue, str NewValue)`
 
 * řetězec: řetězec, ve kterém mají být nahrazeny hodnoty.
@@ -1090,7 +1148,7 @@ Funkce rozpoznává následující speciální monikery:
 * \r – návrat na začátek řádku
 * \t – karta
 
-**Případě**  
+**Příklad:**  
 `Replace([address],"\r\n",", ")`  
 Nahrazuje znak CRLF čárkou a mezerou a může vést k "One Microsoft Way, Redmond, WA, USA".
 
@@ -1099,7 +1157,7 @@ Nahrazuje znak CRLF čárkou a mezerou a může vést k "One Microsoft Way, Redm
 **Popis:**  
 Funkce ReplaceChars nahradí všechny výskyty znaků nalezených v řetězci ReplacePattern.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
 * String: řetězec, ve kterém mají být nahrazeny znaky.
@@ -1118,7 +1176,7 @@ Formát je {source1}: {Target1}, {SOURCE2}: {TARGET2}, {sourceN}, {targetN}, kde
 * Oddělovače, (čárka) a: (dvojtečka) jsou vyhrazené znaky a nelze je nahradit pomocí této funkce.
 * Mezery a jiné prázdné znaky v řetězci ReplacePattern jsou ignorovány.
 
-**Případě**  
+**Příklad:**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
 `ReplaceChars("Räksmörgås",%ReplaceString%)`  
@@ -1132,7 +1190,7 @@ Vrátí "ONeil", jedna značka je definována pro odebrání.
 **Popis:**  
 Funkce Right vrátí zadaný počet znaků od pravého (konce) řetězce.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Right(str string, num NumChars)`
 
 * řetězec: řetězec, ze kterého se mají vracet znaky
@@ -1149,7 +1207,7 @@ NumChars znaky jsou vráceny z poslední pozice řetězce.
 
 Pokud řetězec obsahuje méně znaků než číslo zadané v NumChars, vrátí se řetězec shodný s řetězcem.
 
-**Případě**  
+**Příklad:**  
 `Right("John Doe", 3)`  
 Vrátí "Chvojková".
 
@@ -1158,10 +1216,10 @@ Vrátí "Chvojková".
 **Popis:**  
 Funkce RTrim odebere na konci řetězce koncové prázdné znaky.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str RTrim(str value)`
 
-**Případě**  
+**Příklad:**  
 `RTrim(" Test ")`  
 Vrátí "test".
 
@@ -1170,7 +1228,7 @@ Vrátí "test".
 **Popis:**  
 Zpracuje všechny hodnoty v vícehodnotovém atributu (nebo výstupu výrazu) na základě zadané funkce.
 
-**Syntaxe:**  
+**Syntaktick**  
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
@@ -1179,7 +1237,7 @@ Zpracuje všechny hodnoty v vícehodnotovém atributu (nebo výstupu výrazu) na
 * výraz: výraz, který vrací kolekci hodnot
 * podmínka: jakákoli funkce, která může zpracovat položku v atributu.
 
-**4.6**  
+**Příklady:**  
 `Select($item,[otherPhone],Replace($item,"-",""))`  
 Vrátí všechny hodnoty v vícehodnotovém atributu otherPhone po odebrání spojovníků (-).
 
@@ -1188,7 +1246,7 @@ Vrátí všechny hodnoty v vícehodnotovém atributu otherPhone po odebrání sp
 **Popis:**  
 Funkce Split přebírá řetězec oddělený oddělovačem a vytváří jej jako řetězec s více hodnotami.
 
-**Syntaxe:**  
+**Syntaktick**  
 `mvstr Split(str value, str delimiter)`  
 `mvstr Split(str value, str delimiter, num limit)`
 
@@ -1196,7 +1254,7 @@ Funkce Split přebírá řetězec oddělený oddělovačem a vytváří jej jako
 * oddělovač: jeden znak, který se má použít jako oddělovač.
 * limit: maximální počet hodnot, které mohou vracet.
 
-**Případě**  
+**Příklad:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
 Vrací Vícehodnotový řetězec se dvěma prvky, které jsou užitečné pro atribut proxyAddress.
 
@@ -1205,7 +1263,7 @@ Vrací Vícehodnotový řetězec se dvěma prvky, které jsou užitečné pro at
 **Popis:**  
 Funkce StringFromGuid přebírá binární identifikátor GUID a převede ho na řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str StringFromGuid(bin GUID)`
 
 ---
@@ -1213,7 +1271,7 @@ Funkce StringFromGuid přebírá binární identifikátor GUID a převede ho na 
 **Popis:**  
 Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpečení na řetězec.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str StringFromSid(bin ObjectSID)`  
 
 ---
@@ -1221,7 +1279,7 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
 **Popis:**  
 Funkce Switch slouží k vrácení jedné hodnoty na základě vyhodnocených podmínek.
 
-**Syntaxe:**  
+**Syntaktick**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
 * výraz: variantní výraz, který chcete vyhodnotit.
@@ -1241,7 +1299,7 @@ Přepínač vyhodnocuje všechny výrazy, i když vrátí pouze jeden z nich. Z 
 
 Hodnota může být také funkce Error, která by vrátila vlastní řetězec.
 
-**Případě**  
+**Příklad:**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
 Vrátí jazyk používaný v některých hlavních městech, jinak vrátí chybu.
 
@@ -1250,10 +1308,10 @@ Vrátí jazyk používaný v některých hlavních městech, jinak vrátí chybu
 **Popis:**  
 Funkce Trim odstraní úvodní a koncové prázdné znaky z řetězce.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Trim(str value)`  
 
-**Případě**  
+**Příklad:**  
 `Trim(" Test ")`  
 Vrátí "test".
 
@@ -1265,10 +1323,10 @@ Odstraní úvodní a koncové mezery pro každou hodnotu v atributu proxyAddress
 **Popis:**  
 Funkce UCase převede všechny znaky v řetězci na velká písmena.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str UCase(str string)`
 
-**Případě**  
+**Příklad:**  
 `UCase("TeSt")`  
 Vrátí "TEST".
 
@@ -1278,7 +1336,7 @@ Vrátí "TEST".
 **Popis:**  
 Vrací podmnožinu hodnot z vícehodnotového atributu (nebo výstup výrazu) na základě konkrétní podmínky.
 
-**Syntaxe:**  
+**Syntaktick**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
 * Item: představuje element v vícehodnotovém atributu.
@@ -1286,7 +1344,7 @@ Vrací podmnožinu hodnot z vícehodnotového atributu (nebo výstup výrazu) na
 * podmínka: libovolný výraz, který lze vyhodnotit na hodnotu true nebo false.
 * výraz: výraz, který vrací kolekci hodnot
 
-**Případě**  
+**Příklad:**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
 Vrátí hodnoty certifikátů v vícehodnotovém atributu userCertificate, jejichž platnost ještě nevypršela.
 
@@ -1301,7 +1359,7 @@ Funkce with poskytuje způsob, jak zjednodušit složitý výraz pomocí proměn
 * dílčí výraz: dílčí výraz reprezentovaný proměnnou.
 * complexExpression: složitý výraz.
 
-**Případě**  
+**Příklad:**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
 Je funkčně ekvivalentní:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
@@ -1313,7 +1371,7 @@ Který vrátí pouze hodnoty certifikátů, jejichž platnost vypršela, v atrib
 **Popis:**  
 Funkce Word vrátí slovo obsažené v řetězci na základě parametrů popisujících oddělovače, které se mají použít, a číslo slova, které se má vrátit.
 
-**Syntaxe:**  
+**Syntaktick**  
 `str Word(str string, num WordNumber, str delimiters)`
 
 * řetězec: řetězec, ze kterého se má vrátit slovo.
@@ -1328,7 +1386,7 @@ Každý řetězec znaků v řetězci, oddělený jedním ze znaků v oddělovač
 
 Pokud řetězec obsahuje méně než čísla slov nebo řetězec neobsahuje žádná slova identifikovaná oddělovači, je vrácen prázdný řetězec.
 
-**Případě**  
+**Příklad:**  
 `Word("The quick brown fox",3," ")`  
 Vrátí "Brown"
 

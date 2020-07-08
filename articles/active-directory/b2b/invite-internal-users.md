@@ -11,19 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f217266a2b28bfaf15df6a70a28784873dd123
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551360"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Pozvání interních uživatelů ke spolupráci B2B
 
-|     |
-| --- |
-| Pozvání interních uživatelů k používání spolupráce B2B je funkce veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview. |
-|     |
+> [!NOTE]
+> Pozvání interních uživatelů k používání spolupráce B2B je funkce veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Před dostupností spolupráce Azure AD B2B můžou organizace spolupracovat s distributory, dodavateli, dodavateli a dalšími uživateli typu Host nastavením interních přihlašovacích údajů pro tyto uživatele. Pokud máte tyto interní uživatele typu Host, můžete je pozvat, aby používaly spolupráci B2B, abyste mohli využít výhod Azure AD B2B. Uživatelé typu Host B2B budou moci používat vlastní identity a přihlašovací údaje pro přihlášení a nebudete muset uchovávat hesla ani spravovat životní cyklus účtů.
 

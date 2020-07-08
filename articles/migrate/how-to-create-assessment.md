@@ -1,21 +1,21 @@
 ---
-title: Vytvoření posouzení pomocí Azure Migrate posouzení serveru | Microsoft Docs
-description: Popisuje, jak vytvořit posouzení pomocí nástroje Azure Migrate Server Assessment Tool
+title: Vytvoření posouzení virtuálního počítače Azure pomocí posouzení serveru Azure Migrate | Microsoft Docs
+description: Popisuje, jak vytvořit posouzení virtuálního počítače Azure pomocí nástroje Azure Migrate Server Assessment Tool.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: cffde2a677650387dffd19733e082ff7002ccb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68229099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549811"
 ---
-# <a name="create-an-assessment"></a>Vytvoření posouzení
+# <a name="create-an-azure-vm-assessment"></a>Vytvoření hodnocení virtuálních počítačů Azure
 
-Tento článek popisuje, jak vytvořit posouzení místních virtuálních počítačů VMware nebo virtuálních počítačů Hyper-V s Azure Migrate: posouzení serveru.
+Tento článek popisuje, jak vytvořit vyhodnocení virtuálního počítače Azure pro místní virtuální počítače VMware nebo virtuální počítače Hyper-V s Azure Migrate: posouzení serveru.
 
 [Azure Migrate](migrate-services-overview.md) vám pomůže migrovat do Azure. Azure Migrate poskytuje centralizované centrum pro sledování zjišťování, hodnocení a migrace místní infrastruktury, aplikací a dat do Azure. Centrum poskytuje nástroje Azure pro posuzování a migraci a také nabídky nezávislého výrobce softwaru (ISV) třetích stran. 
 
@@ -26,10 +26,10 @@ Tento článek popisuje, jak vytvořit posouzení místních virtuálních poč�
 - Chcete-li vytvořit posouzení, je třeba nastavit zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
 
 
-## <a name="assessment-overview"></a>Přehled posouzení
-Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate: posouzení serveru.
+## <a name="azure-vm-assessment-overview"></a>Přehled posouzení virtuálních počítačů Azure
+Existují dva typy kritérií změny velikosti, pomocí kterých můžete vytvořit vyhodnocení virtuálního počítače Azure pomocí Azure Migrate: posouzení serveru.
 
-**Posouzení** | **Zobrazí** | **Data**
+**Posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
 **Na základě výkonu** | Posouzení na základě shromážděných dat o výkonu | **Doporučená velikost virtuálního počítače**: na základě dat využití procesoru a paměti.<br/><br/> **Doporučený typ disku (spravovaný disk Standard nebo Premium)**: na základě vstupně-výstupních operací a propustnosti místních disků.
 **Jako místní** | Posouzení na základě místních velikostí. | **Doporučená velikost virtuálního počítače**: na základě velikosti místního virtuálního počítače<br/><br> **Doporučený typ disku**: na základě nastavení typu úložiště, které jste vybrali pro posouzení.
@@ -45,33 +45,37 @@ Proveďte posouzení následujícím způsobem:
 
     ![Posouzení](./media/how-to-create-assessment/assess.png)
 
-2. V poli **vyhodnotit servery**zadejte název posouzení.
-3. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
+3. V okně **vyhodnotit servery**vyberte typ posouzení jako "virtuální počítač Azure", vyberte zdroj zjišťování a zadejte název posouzení.
+
+    ![Základy hodnocení](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
+4. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
 
     ![Vlastnosti posouzení](./media/how-to-create-assessment//view-all.png)
 
-3. V **Vyberte nebo vytvořte skupinu**vyberte **vytvořit novou**a zadejte název skupiny. Skupina shromažďuje jeden nebo více virtuálních počítačů dohromady pro posouzení.
-4. V části **přidat počítače do skupiny**vyberte virtuální počítače, které chcete do skupiny přidat.
-5. Kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
+5. Klikněte na tlačítko **Další** a **Vyberte počítače, které chcete vyhodnotit**. V **Vyberte nebo vytvořte skupinu**vyberte **vytvořit novou**a zadejte název skupiny. Skupina shromažďuje jeden nebo více virtuálních počítačů dohromady pro posouzení.
+6. V části **přidat počítače do skupiny**vyberte virtuální počítače, které chcete do skupiny přidat.
+7. Kliknutím **next** na další **Projděte si téma** a podrobnější informace o posouzení a Projděte si podrobnosti o posouzení.
+8. Kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
 
     ![Vytvoření posouzení](./media/how-to-create-assessment//assessment-create.png)
 
-6. Po vytvoření posouzení ho zobrazte na stránce **servery** > **Azure Migrate:** > **vyhodnocení**vyhodnocení serveru.
-7. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
+9. Po vytvoření posouzení ho zobrazte na stránce **servery**  >  **Azure Migrate: vyhodnocení vyhodnocení serveru**  >  **Assessments**.
+10. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
 
 
 
-## <a name="review-an-assessment"></a>Kontrola posouzení
+## <a name="review-an-azure-vm-assessment"></a>Kontrola posouzení virtuálních počítačů Azure
 
-Posouzení popisuje:
+Posouzení virtuálního počítače Azure popisuje:
 
 - **Připravenost na Azure**: jestli jsou virtuální počítače vhodné pro migraci do Azure.
 - **Odhad měsíčních nákladů**: Odhadované měsíční náklady na výpočetní prostředky a úložiště pro provoz virtuálních počítačů v Azure.
 - **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci.
 
-### <a name="view-an-assessment"></a>Zobrazit posouzení
+### <a name="view-an-azure-vm-assessment"></a>Zobrazit posouzení virtuálního počítače Azure
 
-1. V případě **migrace** >  na**serverech**klikněte na **posouzení** v **Azure Migrate: posouzení serveru**.
+1. V případě **migrace**  >   na**serverech**klikněte na **posouzení** v **Azure Migrate: posouzení serveru**.
 2. V **posouzení**klikněte na posouzení a otevřete ho.
 
     ![Souhrn posouzení](./media/how-to-create-assessment/assessment-summary.png)
@@ -85,7 +89,7 @@ Posouzení popisuje:
     - **Nepřipraveno pro Azure**: zobrazuje problémy a navrhovanou nápravu.
     - **Připravenost neznámá**: používá se, když Azure Migrate nedokáže vyhodnotit připravenost kvůli problémům s dostupností dat.
 
-2. Klikněte na stav **připravenosti na Azure** . Můžete si prohlédnout podrobnosti připravenosti na virtuální počítač a přejít k podrobnostem, kde najdete podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
+3. Klikněte na stav **připravenosti na Azure** . Můžete si prohlédnout podrobnosti připravenosti na virtuální počítač a přejít k podrobnostem, kde najdete podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
 
 
 

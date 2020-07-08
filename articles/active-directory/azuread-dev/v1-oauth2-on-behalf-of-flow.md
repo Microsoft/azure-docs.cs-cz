@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551674"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Volání služeb pro službu, která používají delegovanou identitu uživatele v toku za jménem
 
@@ -79,7 +79,7 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Nakonfigurujte oprávnění pro vaši aplikaci. V okně **oprávnění rozhraní API**vyberte **Přidat oprávnění** a pak **Moje rozhraní API**.
 1. Do textového pole zadejte název služby střední vrstvy.
-1. Zvolte **vybrat oprávnění** a pak vyberte **přístup k \< názvu služby>**.
+1. Zvolte **vybrat oprávnění** a pak vyberte **přístup \<service name> **.
 
 ### <a name="configure-known-client-applications"></a>Konfigurovat známé klientské aplikace
 
@@ -105,7 +105,7 @@ Klientská aplikace je zabezpečená buď sdíleným tajným klíčem, nebo cert
 
 Při použití sdíleného tajného klíče obsahuje požadavek na přístupový token služby na službu následující parametry:
 
-| Parametr |  | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Požadavek OBO používá JSON Web Token (JWT), takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Požadavek na přístupový token služby na službu s certifikátem obsahuje následující parametry:
 
-| Parametr |  | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Požadavek OBO používá přístupový token JWT, takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota tokenu použitého v požadavku. |
@@ -249,7 +249,7 @@ Některé webové služby založené na protokolu OAuth potřebují přístup k 
 
 Požadavek služby na službu pro kontrolní výraz SAML obsahuje následující parametry:
 
-| Parametr |  | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Pro požadavek, který používá JWT, musí být hodnota **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti|
@@ -283,9 +283,9 @@ Odpověď obsahuje token SAML kódovaný v UTF8 a Base64url.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - partner`https://api.contoso.com`
-- access_token: \< kontrolní výraz SAML\>
+- access_token:\<SAML assertion\>
 - issued_token_type: urn: IETF: param: OAuth: typ tokenu: typu Saml2
-- refresh_token: \< aktualizační token\>
+- refresh_token:\<Refresh token\>
 
 ## <a name="client-limitations"></a>Omezení klienta
 

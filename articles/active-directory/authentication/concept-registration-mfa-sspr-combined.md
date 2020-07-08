@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550664"
 ---
 # <a name="combined-security-information-registration-overview"></a>Přehled souhrnné registrace informací o zabezpečení
 
@@ -34,7 +34,7 @@ Než začnete s novým prostředím, přečtěte si dokumentaci k tomuto správc
 Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně dostupná pro národní cloudy, jako je Azure USA, Azure Německo nebo Azure Čína 21Vianet.
 
 > [!IMPORTANT]
-> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou u obou funkcí povoleni, se zobrazí pouze nové prostředí s profilem. Nový můj profil se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé můžou profil zobrazit kliknutím na [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou u obou funkcí povoleni, se zobrazí pouze nové prostředí s profilem. Nový můj profil se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé můžou profil zobrazit kliknutím na [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
 >
 > Při pokusu o přístup k možnosti informace o zabezpečení se může zobrazit chybová zpráva. Například "Bohužel vás nemůžeme přihlásit". V takovém případě potvrďte, že nemáte žádné konfigurační objekty nebo objekt zásad skupiny blokující soubory cookie třetích stran ve webovém prohlížeči.
 
@@ -46,17 +46,17 @@ Stránky s profilem jsou lokalizovány na základě nastavení jazyka počítač
 
 Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-|   | Zaregistrovat | Změnit | Odstranit |
+| Metoda | Registrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
-| Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
-| Hardwarový token | Ne | Ne | Ano |
-| Telefon | Ano | Ano | Ano |
+| Microsoft Authenticator | Ano (maximálně 5) | No | Yes |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Yes |
+| Hardwarový token | No | No | Yes |
+| Rozložení | Ano | Ano | Ano |
 | Alternativní telefon | Ano | Ano | Ano |
-| Telefon do kanceláře | Ne | Ne | Ne |
-| E-mailu | Ano | Ano | Ano |
-| Bezpečnostní otázky | Ano | Ne | Ano |
-| Hesla aplikací | Ano | Ne | Ano |
+| Telefon do kanceláře | No | No | No |
+| E-mail | Ano | Ano | Ano |
+| Bezpečnostní otázky | Yes | No | Yes |
+| Hesla aplikací | Yes | No | Yes |
 | FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Ano | Ano | Ano |
 
 > [!NOTE]
@@ -111,7 +111,7 @@ Pokud zásady SSPR vyžadují, aby si uživatelé zkontrolovali své bezpečnost
 
 ### <a name="manage-mode"></a>Režim správy
 
-Uživatelé mají přístup ke správě režimu tak, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) že v něm nebo vyberou **bezpečnostní údaje** z mého profilu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
+Uživatelé mají přístup ke správě režimu tak, že v něm [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) nebo vyberou **bezpečnostní údaje** z mého profilu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
 
 ## <a name="key-usage-scenarios"></a>Scénáře použití klíčů
 
@@ -125,15 +125,15 @@ Uživatel nenainstaloval všechny požadované bezpečnostní údaje a přejde n
 
 Správce vynutil registraci.
 
-Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane [https://myprofile.microsoft.com](https://myprofile.microsoft.com)do. Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která se právě nastavila na stránce informace o zabezpečení.
+Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane do [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která se právě nastavila na stránce informace o zabezpečení.
 
 ### <a name="delete-security-info-from-my-profile"></a>Odstranit informace o zabezpečení z mého profilu
 
-Uživatel, který dříve nainstaloval alespoň jednu metodu, přejde na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Uživatel se rozhodne odstranit jednu z dříve registrovaných metod. Po dokončení již uživatel na stránce informace o zabezpečení nevidí tuto metodu.
+Uživatel, který dříve nainstaloval alespoň jednu metodu, přejde na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Uživatel se rozhodne odstranit jednu z dříve registrovaných metod. Po dokončení již uživatel na stránce informace o zabezpečení nevidí tuto metodu.
 
 ### <a name="change-the-default-method-from-my-profile"></a>Změna výchozí metody z mého profilu
 
-Uživatel, který dříve nainstaloval alespoň jednu metodu, kterou lze použít pro Multi-Factor Authentication přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Uživatel změní aktuální výchozí metodu na jinou výchozí metodu. Po dokončení uživatel uvidí novou výchozí metodu na stránce bezpečnostní údaje.
+Uživatel, který dříve nainstaloval alespoň jednu metodu, kterou lze použít pro Multi-Factor Authentication přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Uživatel změní aktuální výchozí metodu na jinou výchozí metodu. Po dokončení uživatel uvidí novou výchozí metodu na stránce bezpečnostní údaje.
 
 ## <a name="next-steps"></a>Další kroky
 

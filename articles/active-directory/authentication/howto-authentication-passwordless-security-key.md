@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550419"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)
 
@@ -24,10 +24,8 @@ Pro podniky, které používají hesla dnes a mají prostředí pro sdílené po
 
 Tento dokument se zaměřuje na povolení ověřování pomocí hesla založeného na klíčích zabezpečení. Na konci tohoto článku se budete moci přihlásit k webovým aplikacím pomocí účtu Azure AD pomocí bezpečnostního klíče FIDO2.
 
-|     |
-| --- |
-| Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
-|     |
+> [!NOTE]
+> Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Požadavky
 
@@ -52,8 +50,8 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** > **Security** > zásady ověřování**metody** > ověřování **(Preview)**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory**  >  zásady**ověřování**  >  **metody**ověřování  >  **(Preview)**.
 1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele

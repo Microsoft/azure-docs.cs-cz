@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 2dc69299e69546da25e7e46cfc38b1f5741096fe
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516200"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
@@ -114,7 +114,7 @@ Vydavatelé virtuálních počítačů byli informováni 2. července 2019 o př
 
 V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro vlastní ceny za základní jádro a jejich odpovídající kódy měn.
 
-| **Oblast** | **Název**             | **Kód měny** |
+| **Věřitel** | **Název**             | **Kód měny** |
 |------------|----------------------|-------------------|
 | DZ         | Alžírsko              | DZD               |
 | AR         | Argentina            | ARS               |

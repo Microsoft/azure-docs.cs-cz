@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
 ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516187"
 ---
-# <a name="azure-for-network-engineers"></a>Azure pro síťové techniky
+# <a name="azure-for-network-engineers"></a>Azure pro odborníky na sítě
 Jako standardní síťový inženýr jste se zabývali fyzickými prostředky, jako jsou směrovače, přepínače, kabely, brány firewall k vytváření infrastruktury. V logické vrstvě, kterou jste nakonfigurovali virtuální síť LAN (VLAN), protokol STP (Spanning Tree Protocol), směrovací protokoly (RIP, OSPF, BGP). Síť jste spravovali pomocí nástrojů pro správu a CLI. Sítě v cloudu jsou odlišné, pokud jsou koncové body sítě logické a používání směrovacích protokolů je minimální. Budete pracovat s rozhraním API Azure Resource Manager, Azure CLI a PowerShellu pro konfiguraci a správu prostředků v Azure. Cestu k síti zahájíte v cloudu tím, že budete rozumět základním klientům sítě Azure. 
 ## <a name="virtual-network"></a>Virtuální síť
 Při navrhování sítě od nejnižší úrovně si shromáždíte některé základní informace. Tyto informace mohou být počtem hostitelů, síťových zařízení, počtu podsítí, směrování mezi podsítěmi, izolovanými doménami, jako jsou například sítě VLAN. Tyto informace pomáhají při změně velikosti sítě a zabezpečení zařízení a také vytváření architektury pro podporu aplikací a služeb.

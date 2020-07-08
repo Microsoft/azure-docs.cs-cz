@@ -1,22 +1,22 @@
 ---
 title: Konfigurace správy relace ověřování – Azure Active Directory
-description: Upravte konfiguraci relace ověřování Azure AD, včetně četnosti přihlašovacích uživatelů a trvalosti relace prohlížeče.
+description: Upravte konfiguraci relace ověřování Azure AD, včetně četnosti přihlašování uživatelů a trvalosti relace prohlížeče.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72cc876e2fd695e40b3b9cf7d9a52d34dea2387c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552110"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
 
@@ -35,7 +35,7 @@ Než se začnete na podrobnosti o tom, jak nakonfigurovat zásady, Podívejme se
 
 Frekvence přihlášení definuje časový interval před tím, než se uživateli zobrazí výzva k opětovnému přihlášení při pokusu o přístup k prostředku.
 
-Výchozí konfigurací Azure Active Directory (Azure AD) pro frekvenci přihlašování uživatelů je posuvné okno 90 dnů. Dotazování uživatelů na přihlašovací údaje se často zdá jako rozumné, ale může Backfire: uživatelé, kteří jsou vyškoleni k zadání přihlašovacích údajů, aniž by si je mohli omylem dodávat do výzvy ke škodlivým přihlašovacím údajům.
+Výchozí konfigurací Azure Active Directory (Azure AD) pro četnost přihlašování uživatelů je posuvné okno 90 dnů. Dotazování uživatelů na přihlašovací údaje se často zdá jako rozumné, ale může Backfire: uživatelé, kteří jsou vyškoleni k zadání přihlašovacích údajů, aniž by si je mohli omylem dodávat do výzvy ke škodlivým přihlašovacím údajům.
 
 Může to vést ke zvukovému signalizaci, že nežádá uživatele, aby se k němu přihlásil. v důsledku toho jakékoli porušení zásad IT odvolá relaci. Mezi příklady patří (ale nejsou omezené na) změnu hesla, nekompatibilní zařízení nebo účet zakážete. Relace uživatelů taky můžete explicitně [odvolat pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Výchozí konfigurace služby Azure AD se zobrazí v případě, že uživatel nepožaduje zadání přihlašovacích údajů, pokud se zabezpečení stav jejich relací nezměnilo.
 
@@ -51,15 +51,17 @@ Nastavení četnosti přihlašování funguje s aplikacemi, které implementoval
 - Dynamics CRM Online
 - portál Azure
 
+Nastavení četnosti přihlašování funguje i u aplikací SAML, pokud neobsahují vlastní soubory cookie a při pravidelném ověřování se přesměrují zpátky do služby Azure AD.
+
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Četnost přihlašování uživatelů a ověřování Multi-Factor Authentication
 
-Četnost přihlašování se dřív používala jenom pro první ověření na zařízeních, která byla připojená k Azure AD, připojení k hybridní službě Azure AD a zaregistrované službě Azure AD. Pro naše zákazníky neexistuje snadný způsob, jak na těchto zařízeních znovu vymáhat vícefaktorové ověřování (MFA). Na základě zpětné vazby od zákazníků se pro vícefaktorové ověřování použijí i četnost přihlášení.
+Četnost přihlašování se dřív používala jenom pro první ověření na zařízeních, která byla připojená k Azure AD, připojení k hybridní službě Azure AD a zaregistrovaná služba Azure AD. Pro naše zákazníky neexistuje snadný způsob, jak na těchto zařízeních znovu vymáhat vícefaktorové ověřování (MFA). Na základě zpětné vazby od zákazníků se pro vícefaktorové ověřování použijí i četnost přihlášení.
 
 [![Frekvence přihlášení a MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Četnost přihlašování uživatelů a identit zařízení
 
-Pokud máte připojenou službu Azure AD, připojené k hybridní službě Azure AD nebo zařízení registrovaná v Azure AD, když uživatel odemkne své zařízení nebo přihlášení interaktivně, bude tato událost vyhovovat i zásadám četnosti přihlašování. V následujících 2 příkladech je četnost přihlášení uživatele nastavena na 1 hodinu:
+Pokud máte připojenou službu Azure AD, připojené k hybridní službě Azure AD nebo zařízení registrovaná v Azure AD, když uživatel odemkne své zařízení nebo přihlášení interaktivně, bude tato událost vyhovovat i zásadě četnosti přihlašování. V následujících dvou příkladech se četnost přihlášení uživatele nastaví na 1 hodinu:
 
 Příklad 1:
 
@@ -101,9 +103,9 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
 1. Vyberte v rozevíracím seznamu hodnotu **hodiny** nebo **dny** .
 1. Uložit zásadu
 
-![Zásada podmíněného přístupu konfigurovaná pro četnost přihlášení](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
+![Zásada podmíněného přístupu konfigurovaná pro frekvenci přihlašování](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-V zaregistrovaných zařízeních s Windows Azure AD se k zařízení přihlásí za výzvu. Pokud jste například nakonfigurovali četnost přihlášení na 24 hodin pro aplikace Office, uživatelé na registrovaných zařízeních s Windows v Azure AD splní zásady četnosti přihlašování přihlašováním k zařízení a při otevírání aplikací Office se neobjeví znovu.
+V zaregistrovaných zařízeních s Windows Azure AD se k zařízení přihlásí za výzvu. Pokud jste například nakonfigurovali četnost přihlášení na 24 hodin pro aplikace Office, uživatelé na registrovaných zařízeních s Windows v Azure AD splní zásady četnosti přihlašování přihlášením k zařízení a při otevírání aplikací Office se neobjeví znovu.
 
 Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webové aplikace, které běží ve stejné relaci prohlížeče, použije se u obou aplikací nejpřísnější zásada, protože všechny aplikace spuštěné ve stejné relaci prohlížeče sdílejí jeden token relace.
 

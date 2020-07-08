@@ -11,18 +11,17 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 856338e6c5a2bac55fee57d3ea09575a1a4d14ed
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551154"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Přizpůsobení jazyka v Azure Active Directory (Preview)
-|     |
-| --- |
-| Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.|
-|     |
+
+> [!NOTE]
+> Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Přizpůsobení jazyka v Azure Active Directory (Azure AD) umožňuje, aby tok uživatelů vyhovoval různým jazykům, aby vyhovoval potřebám vašich uživatelů. Společnost Microsoft poskytuje překlady pro [jazyky 36](#supported-languages). I v případě, že je vaše prostředí k dispozici pouze pro jeden jazyk, můžete přizpůsobit názvy atributů na stránce kolekce atributů.
 
@@ -202,5 +201,5 @@ Azure AD zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů pos
 | Turečtina               | recenzent            | ![ano](./media/user-flow-customize-language/yes.png) | ![ano](./media/user-flow-customize-language/yes.png) |
 | Ukrajinština             | Velká Británie            | ![ne](./media/user-flow-customize-language/no.png) | ![ano](./media/user-flow-customize-language/yes.png) |
 | Vietnamština            | InterDev            | ![ne](./media/user-flow-customize-language/no.png) | ![ano](./media/user-flow-customize-language/yes.png) |
-| Čínština (zjednodušená)  | zh – Hans       | ![ano](./media/user-flow-customize-language/yes.png) | ![ano](./media/user-flow-customize-language/yes.png) |
-| Čínština (tradiční) | zh – Hant       | ![ano](./media/user-flow-customize-language/yes.png) | ![ano](./media/user-flow-customize-language/yes.png) |
+| Čínština – zjednodušená  | zh – Hans       | ![ano](./media/user-flow-customize-language/yes.png) | ![ano](./media/user-flow-customize-language/yes.png) |
+| Čínština – tradiční | zh – Hant       | ![ano](./media/user-flow-customize-language/yes.png) | ![ano](./media/user-flow-customize-language/yes.png) |

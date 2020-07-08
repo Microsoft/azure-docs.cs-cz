@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1c0bd880f2052e6ee2ad3c5cdc3bed803f6da1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550119"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -574,7 +574,7 @@ Typ     | Name                          | Access               | Platí pro
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
 Povolit    | Domain Admins                 | Úplné řízení         | Tento objekt  |
-Povolit    | Správci                | Úplné řízení         | Tento objekt  |
+Povolit    | Administrators                | Úplné řízení         | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Oprávnění ke čtení     | Tento objekt  |
@@ -901,18 +901,31 @@ CBool(
 ```
 
 * Přidali jsme následující sadu funkcí kompatibilních s X509Certificate2 pro vytváření výrazů synchronizačního pravidla pro zpracování hodnot certifikátů v atributu userCertificate:
-
-    ||||
-    | --- | --- | --- |
-    |CertSubject|CertIssuer|CertKeyAlgorithm|
-    |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
-    |CertSubjectNameOid|CertIssuerDN|Certifikát|
-    |CertFriendlyName|CertThumbprint|CertExtensionOids|
-    |CertFormat|CertNotAfter|CertPublicKeyOid|
-    |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Vyberte|
-    |CertKeyAlgorithmParams|CertHashString|Kde|
-    |||With|
+  * CertSubject 
+  * CertIssuer
+  * CertKeyAlgorithm
+  * CertSubjectNameDN
+  * CertIssuerOid
+  * CertNameInfo
+  * CertSubjectNameOid
+  * CertIssuerDN
+  * Certifikát
+  * CertFriendlyName
+  * CertThumbprint
+  * CertExtensionOids
+  * CertFormat
+  * CertNotAfter
+  * CertPublicKeyOid 
+  * CertSerialNumber
+  * CertNotBefore
+  * CertPublicKeyParametersOid
+  * CertVersion
+  * CertSignatureAlgorithmOid
+  * Vyberte
+  * CertKeyAlgorithmParams
+  * CertHashString
+  * Kde
+  * With
 
 * Byly zavedeny změny schématu, které zákazníkům umožňují vytvářet vlastní pravidla synchronizace pro tok objektů sAMAccountName, domainNetBios a domainFQDN pro objekty skupiny a také rozlišující označení pro objekty uživatele:
 

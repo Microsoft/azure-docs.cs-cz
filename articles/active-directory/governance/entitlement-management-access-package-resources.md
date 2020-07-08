@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa110dac1ede9c3ef46bafcca0f4a59d956e3ae9
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550317"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna rolí prostředků pro balíček přístupu v Azure AD – Správa nároků
 
@@ -90,7 +90,7 @@ Další informace najdete v tématu věnovaném [porovnání skupin](https://doc
 
     Jakmile vyberete skupinu nebo tým, sloupec **Sub Type** zobrazí jeden z následujících podtypů:
 
-    |  |  |
+    | Dílčí typ | Description |
     | --- | --- |
     | Zabezpečení | Používá se pro udělení přístupu k prostředkům. |
     | Distribuce | Slouží k odesílání oznámení skupině lidí. |
