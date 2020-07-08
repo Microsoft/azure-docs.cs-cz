@@ -13,10 +13,10 @@ ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85477188"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Postupy: vyžádání vlastních deklarací pomocí MSAL pro iOS a macOS
@@ -25,7 +25,7 @@ OpenID Connect umožňuje volitelně požádat o vrácení individuálních dekl
 
 Knihovna Microsoft Authentication Library (MSAL) pro iOS a macOS umožňuje žádat o konkrétní deklarace ve scénářích interaktivního i tichého získání tokenu. Provede to přes `claimsRequest` parametr.
 
-Je třeba provést několik scénářů. Například:
+Je třeba provést několik scénářů. Příklad:
 
 - Vyžádání deklarací identity mimo standardní sadu pro vaši aplikaci.
 - Požaduje se konkrétní kombinace standardních deklarací identity, které se nedají zadat pomocí oborů pro vaši aplikaci. Pokud se například přístupový token zamítl z důvodu chybějících deklarací, aplikace může vyžádat chybějící deklarace identity pomocí MSAL.

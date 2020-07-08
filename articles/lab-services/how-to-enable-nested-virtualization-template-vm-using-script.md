@@ -4,10 +4,10 @@ description: Přečtěte si, jak vytvořit virtuální počítač šablony s ně
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a45257dffffc98c3f650c5b1753158edd9bfbede
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445742"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services pomocí skriptu

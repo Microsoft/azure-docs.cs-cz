@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak můžete škálovat testovací prostř
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9c999760a649d4df4b34221633491b8ece784f52
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85477087"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóty a omezení škálování v DevTest Labs
@@ -25,7 +25,7 @@ Například každé předplatné má výchozí kvótu 20 jader. Pokud tedy vytv�
 ## <a name="view-your-usage-and-quotas"></a>Zobrazení využití a kvót
 Tyto kroky ukazují, jak zobrazit aktuální kvóty v předplatném pro konkrétní prostředky Azure a zjistit, jaké procento z každé používané kvóty jste použili.
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **Další služby**a potom v seznamu vyberte **fakturace** .
 1. V okně fakturace vyberte předplatné.
 4. Vyberte **využití a kvóty**.

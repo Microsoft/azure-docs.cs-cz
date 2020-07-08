@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478004"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postupy: Konfigurace podmínek služby a prohlášení o zásadách ochrany osobních údajů pro aplikaci
@@ -58,7 +58,7 @@ Po přípravě podmínek služby a prohlášení o zásadách ochrany osobních 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Použití webu Azure Portal
 Postupujte podle následujících kroků v Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejděte do části **Registrace aplikací** a vyberte svou aplikaci.
 3. Otevřete podokno **branding** .
 4. Vyplňte pole **Adresa URL podmínek služby** a **Adresa URL prohlášení o zásadách ochrany osobních údajů** .

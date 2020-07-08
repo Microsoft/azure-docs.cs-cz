@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81767c36b2a5b46eb41be1e516a14fb3ebe3fb7f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476984"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>DevTest Labs v podniku
@@ -29,7 +29,7 @@ Tato dokumentace je určena pro podnikové plánovače IT, architekty a manažer
 
 ## <a name="enterprise-customers"></a>Podnikoví zákazníci
 
-Řada současných podnikových zákazníků DevTest Labs úspěšně používala DevTest Labs pro vývoj a testování úloh ve svých organizacích. [Přečtěte si další informace](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
+Řada současných podnikových zákazníků DevTest Labs úspěšně používala DevTest Labs pro vývoj a testování úloh ve svých organizacích. [Další informace](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
 
 ## <a name="next-steps"></a>Další kroky
 - [Referenční architektura pro podnik](devtest-lab-reference-architecture.md)

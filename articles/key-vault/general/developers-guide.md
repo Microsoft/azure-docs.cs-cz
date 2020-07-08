@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476763"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
@@ -127,7 +127,7 @@ Tyto články se týkají dalších scénářů a služeb, které používají n
 - [Přehled klíčů účtu úložiště Key Vault](../secrets/overview-storage-keys.md)) Popisuje klíče Key Vault Integration Azure Storage accounts.
 - [Key Vault Security světů](overview-security-worlds.md) popisuje vztahy mezi oblastmi a oblastmi zabezpečení.
 
-## <a name="social"></a>Sociální
+## <a name="social"></a>Sociální sítě
 
 - [Blog Key Vault](https://aka.ms/kvblog)
 - [Fórum Key Vault](https://aka.ms/kvforum)

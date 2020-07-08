@@ -14,10 +14,10 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: da09f78817e1271832397b4a130195385207645f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85477783"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Postupy: omezení aplikace Azure AD na skupinu uživatelů v tenantovi Azure AD
@@ -65,7 +65,7 @@ Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživa
 1. Vyhledejte nastavení **přiřazení uživatele požadované?** a nastavte ho na **Ano**. Pokud je tato možnost nastavená na **hodnotu Ano**, uživatelé v tenantovi musí být nejprve přiřazeni k této aplikaci nebo se nebudou moci přihlásit k této aplikaci.
 1. Vyberte **Uložit** a uložte tuto změnu konfigurace.
 
-### <a name="app-registration"></a>Registrace aplikací
+### <a name="app-registration"></a>Registrace aplikace
 
 1. Přejít na [**Azure Portal**](https://portal.azure.com/).
 1. V horním panelu vyberte přihlášený účet. 
@@ -99,4 +99,4 @@ Jakmile nakonfigurujete aplikaci tak, aby umožňovala přiřazení uživatele, 
 - [Přidejte autorizaci pomocí rolí aplikace & role deklarace identity do webové aplikace ASP.NET Core.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Používání skupin zabezpečení a rolí aplikací v aplikacích (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory nyní s deklaracemi skupin a aplikačními rolemi](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Manifest aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

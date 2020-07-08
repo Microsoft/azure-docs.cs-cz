@@ -4,10 +4,10 @@ description: Naučte se vytvářet a konfigurovat testovací prostředí pro uč
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445385"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
@@ -89,7 +89,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů  
 
-| Velikost | Cores | Paměť RAM | Popis | 
+| Velikost | Cores | Paměť RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Malá | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
 | Střední | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 

@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit vlastní image v Azure DevTest Labs ze z�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 597ef49b667cf613b721c645e09f8e6dcb157011
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476593"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Vytvoření vlastní image z virtuálního počítače
@@ -18,7 +18,7 @@ ms.locfileid: "85476593"
 
 Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a následně ji pomocí této vlastní image vytvořit identické virtuální počítače. Následující kroky ukazují, jak vytvořit vlastní image z virtuálního počítače:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 

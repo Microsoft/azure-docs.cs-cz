@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476831"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele za účelem zabezpečení událostí přihlášení
@@ -38,7 +38,7 @@ Uživatelské účty v Azure Multi-Factor Authentication mají následující t�
 
 | Status | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
 |:---:| --- |:---:|:--:|:--:|
-| Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | Ne | Ne | Ne |
+| Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | No | No | No |
 | Povoleno | Uživatel je zaregistrovaný ve službě Azure Multi-Factor Authentication, ale nezaregistroval metody ověřování. Obdrží výzvu k registraci při příštím přihlášení. | Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
 | Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure Multi-Factor Authentication. | Ano. Aplikace vyžadují hesla aplikací. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
 

@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak používat Azure Lab Services pro vytv
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445878"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Použít Azure Lab Services pro další Hackathon
@@ -15,7 +15,7 @@ Azure Lab Services je navržená tak, aby byla nenáročná a snadno použiteln�
 
 Pokud chcete používat služby testovacího prostředí pro Hackathon, ujistěte se, že je před začátkem Hackathon vytvořeno jak účet testovacího prostředí, tak i testovací prostředí alespoň několik dní. Postupujte také podle pokynů níže:
 
-## <a name="guidance"></a>Doprovodné materiály
+## <a name="guidance"></a>Pokyny
 
 - **Vytvořte testovací prostředí v oblasti nebo umístění, které je nejblíže účastníkům**. 
 

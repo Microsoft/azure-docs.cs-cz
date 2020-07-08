@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478123"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postupy: přizpůsobení prohlížečů a webových zobrazení pro iOS/macOS
@@ -75,9 +75,9 @@ Prohlížeč, který použijete, má vliv na možnosti jednotného přihlašová
 | Technologie    | Typ prohlížeče  | dostupnost iOS | dostupnost macOS | Sdílí soubory cookie a jiná data  | Dostupnost MSAL | Jednotné přihlašování |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systém | iOS12 a nahoru | macOS 10,15 a až | Yes | iOS a macOS 10.15 + | instance w/Safari
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | – | Yes | Jenom iOS |  instance w/Safari
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | – | No | Jenom iOS | Ne * *
-| **SFSafariViewController** | Systém | iOS10 | – | Yes | Jenom iOS |  instance w/Safari
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | Není k dispozici | Yes | Jenom iOS |  instance w/Safari
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | Není k dispozici | No | Jenom iOS | Ne * *
+| **SFSafariViewController** | Systém | iOS10 | Není k dispozici | Yes | Jenom iOS |  instance w/Safari
 | **WKWebView**  | V aplikaci | iOS8 a nahoru | macOS 10,10 a až | No | iOS a macOS | Ne * *
 
 * * Aby jednotné přihlašování fungovalo, musí být tokeny sdílené mezi aplikacemi. To vyžaduje mezipaměť tokenů nebo aplikaci zprostředkovatele, například Microsoft Authenticator pro iOS.
@@ -96,7 +96,7 @@ Každý požadavek lze nakonfigurovat tak, aby potlačil výchozí prohlížeč 
 
 Kromě toho MSAL podporuje předávání vlastní nastavením `WKWebView` `MSALInteractiveTokenParameters.webviewParameters.customWebView` Vlastnosti.
 
-Například:
+Příklad:
 
 Objective-C
 ```objc
