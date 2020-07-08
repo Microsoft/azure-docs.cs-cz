@@ -8,10 +8,10 @@ ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945354"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
@@ -808,12 +808,12 @@ Při streamování protokolu aktivit Azure do účtu úložiště nebo centra ud
 | resultType | stav. hodnota | |
 | resultSignature | dílčí stav. hodnota | |
 | resultDescription | description |  |
-| durationMs | – | Vždycky 0 |
+| durationMs | Není k dispozici | Vždycky 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | deklarace identity a vlastnosti autorizace |  |
 | Úroveň | Úroveň |  |
-| location | – | Umístění, kde byla událost zpracována. *Toto není umístění prostředku, ale místo, kde byla událost zpracována. Tato vlastnost bude v budoucí aktualizaci odebrána.* |
+| location | Není k dispozici | Umístění, kde byla událost zpracována. *Toto není umístění prostředku, ale místo, kde byla událost zpracována. Tato vlastnost bude v budoucí aktualizaci odebrána.* |
 | Vlastnosti | Properties. eventProperties |  |
 | Properties. eventCategory | category | Pokud nejsou k dispozici vlastnosti. eventCategory, kategorie je "administrativní". |
 | Properties. eventName | eventName |  |

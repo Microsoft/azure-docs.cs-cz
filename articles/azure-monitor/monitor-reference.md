@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
 ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945371"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
@@ -57,118 +57,118 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 
 | Služba | Metriky | Protokoly | Přehled | Poznámky |
 |:---|:---|:---|:---|:---|
-|Active Directory | No | Ano | [Ano](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
-|Active Directory B2C | Ne | Ne | Ne |  |
-|Active Directory Domain Services | No | Ano | Ne |  |
-|Protokol aktivit | No | Ano | Ne | |
-|Rozšířená ochrana před internetovými útoky | Ne | Ne | Ne |  |
-|Advisor | Ne | Ne | Ne |  |
-|AI Builder | Ne | Ne | Ne |  |
-|Analysis Services | Ano | Ano | Ne |  |
-|API pro FHIR | Ne | Ne | Ne |  |
-|API Management | Ano | Ano | Ne |  |
-|App Service | Ano | Ano | Ne |  |
-|AppConfig | Ne | Ne | Ne |  |
-|Application Gateway | Ano | Ano | Ne |  |
-|Služba ověření identity | Ne | Ne | Ne |  |
-|Automation | Ano | Ano | Ne |  |
-|Azure Service Manager (RDFE) | Ne | Ne | Ne |  |
-|Backup | No | Ano | Ne |  |
-|Bastion | Ne | Ne | Ne |  |
-|Batch | Ano | Ano | Ne |  |
-|Batch AI | Ne | Ne | Ne |  |
-|Služba Blockchain | No | Ano | Ne |  |
-|Blueprints | Ne | Ne | Ne |  |
-|Bot Service | Ne | Ne | Ne |  |
-|Cloud Services | Ano | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
-|Cloud Shell | Ne | Ne | Ne |  |
-|Cognitive Services | Ano | Ano | Ne |  |
-|Container Instances | Ano | Ne | Ne |  |
-|Container Registry | Ano | Ano | Ne |  |
-|Content Delivery Network (CDN) | No | Ano | Ne |  |
-|Cosmos DB | Ano | Ano | [Ano](insights/cosmosdb-insights-overview.md) |  |
-|Správa nákladů | Ne | Ne | Ne |  |
-|Data Box | Ne | Ne | Ne |  |
-|Data Catalog Gen2 | Ne | Ne | Ne |  |
-|Data Explorer | Ano | Ano | Ne |  |
-|Data Factory | Ano | Ano | Ne |  |
-|Data Factory v2 | No | Ano | Ne |  |
-|Data Share | Ne | Ne | Ne |  |
-|Database for MariaDB | Ano | Ano | Ne |  |
-|Database for MySQL | Ano | Ano | Ne |  |
-|Database for PostgreSQL | Ano | Ano | Ne |  |
-|Database Migration Service | Ne | Ne | Ne |  |
-|Databricks | No | Ano | Ne |  |
-|DDoS Protection | Ano | Ano | Ne |  |
-|DevOps | Ne | Ne | Ne |  |
-|DNS | Ano | Ne | Ne |  |
-|Názvy domén | Ne | Ne | Ne |  |
-|DPS | Ne | Ne | Ne |  |
-|Dynamics 365 Customer Engagement | Ne | Ne | Ne |  |
-|Finance a operace Dynamics 365 | Ne | Ne | Ne |  |
-|Event Grid | Ano | Ne | Ne |  |
-|Event Hubs | Ano | Ano | Ne |  |
-|ExpressRoute | Ano | Ano | Ne |  |
-|Brána firewall | Ano | Ano | Ne |  |
-|Front Door | Ano | Ano | Ne |  |
-|Funkce | Ano | Ano | Ne |  |
-|HDInsight | No | Ano | Ne |  |
-|HPC Cache | Ne | Ne | Ne |  |
-|Information Protection | No | Ano | Ne |  |
-|Intune | No | Ano | Ne |  |
-|IoT Central | Ne | Ne | Ne |  |
-|IoT Hub | Ano | Ano | Ne |  |
+|Active Directory | No | Yes | [Ano](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
+|Active Directory B2C | No | No | No |  |
+|Active Directory Domain Services | No | Yes | No |  |
+|Protokol aktivit | No | Yes | No | |
+|Rozšířená ochrana před internetovými útoky | No | No | No |  |
+|Advisor | No | No | No |  |
+|AI Builder | No | No | No |  |
+|Analysis Services | Ano | Ano | No |  |
+|API pro FHIR | No | No | No |  |
+|API Management | Ano | Ano | No |  |
+|App Service | Ano | Ano | No |  |
+|AppConfig | No | No | No |  |
+|Application Gateway | Ano | Ano | No |  |
+|Služba ověření identity | No | No | No |  |
+|Automation | Ano | Ano | No |  |
+|Azure Service Manager (RDFE) | No | No | No |  |
+|Backup | No | Yes | No |  |
+|Bastion | No | No | No |  |
+|Batch | Ano | Ano | No |  |
+|Batch AI | No | No | No |  |
+|Služba Blockchain | No | Yes | No |  |
+|Blueprints | No | No | No |  |
+|Bot Service | No | No | No |  |
+|Cloud Services | Ano | Ano | No | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
+|Cloud Shell | No | No | No |  |
+|Cognitive Services | Ano | Ano | No |  |
+|Container Instances | Yes | No | No |  |
+|Container Registry | Ano | Ano | No |  |
+|Content Delivery Network (CDN) | No | Yes | No |  |
+|Databáze Cosmos | Ano | Ano | [Ano](insights/cosmosdb-insights-overview.md) |  |
+|Správa nákladů | No | No | No |  |
+|Data Box | No | No | No |  |
+|Data Catalog Gen2 | No | No | No |  |
+|Data Explorer | Ano | Ano | No |  |
+|Data Factory | Ano | Ano | No |  |
+|Data Factory v2 | No | Yes | No |  |
+|Data Share | No | No | No |  |
+|Database for MariaDB | Ano | Ano | No |  |
+|Database for MySQL | Ano | Ano | No |  |
+|Database for PostgreSQL | Ano | Ano | No |  |
+|Database Migration Service | No | No | No |  |
+|Databricks | No | Yes | No |  |
+|DDoS Protection | Ano | Ano | No |  |
+|DevOps | No | No | No |  |
+|DNS | Yes | No | No |  |
+|Názvy domén | No | No | No |  |
+|DPS | No | No | No |  |
+|Dynamics 365 Customer Engagement | No | No | No |  |
+|Finance a operace Dynamics 365 | No | No | No |  |
+|Event Grid | Yes | No | No |  |
+|Event Hubs | Ano | Ano | No |  |
+|ExpressRoute | Ano | Ano | No |  |
+|Brána firewall | Ano | Ano | No |  |
+|Front Door | Ano | Ano | No |  |
+|Functions | Ano | Ano | No |  |
+|HDInsight | No | Yes | No |  |
+|HPC Cache | No | No | No |  |
+|Information Protection | No | Yes | No |  |
+|Intune | No | Yes | No |  |
+|IoT Central | No | No | No |  |
+|IoT Hub | Ano | Ano | No |  |
 |Key Vault | Ano | Ano | [Ano](insights/key-vaults-insights-overview.md) |  |
-|Kubernetes Service (AKS) | Ne | Ne | [Ano](insights/container-insights-overview.md)  |  |
-|Load Balancer | Ano | Ano | Ne |  |
-|Logic Apps | Ano | Ano | Ne |  |
-|Machine Learning Service | Ne | Ne | Ne |  |
-|Managed Applications  | Ne | Ne | Ne |  |
-|Maps  | Ne | Ne | Ne |  |
-|Media Services | Ano | Ano | Ne |  |
-|Microsoft Flow | Ne | Ne | Ne |  |
-|Microsoft Managed Desktop | Ne | Ne | Ne |  |
-|Microsoft PowerApps | Ne | Ne | Ne |  |
-|Microsoft Social Engagement | Ne | Ne | Ne |  |
-|Microsoft Stream | Ano | Ano | Ne |  |
-|Migrace | Ne | Ne | Ne |  |
-|Multi-Factor Authentication | No | Ano | Ne |  |
-|Network Watcher | Ano | Ano | Ne |  |
-|Notification Hubs | Ano | Ne | Ne |  |
-|Open Datasets | Ne | Ne | Ne |  |
-|Zásady | Ne | Ne | Ne |  |
-|Power BI Embedded | Ano | Ano | Ne |  |
-|Privátní propojení | Ne | Ne | Ne |  |
-|Komunikační platforma pro zařazování projektu | Ne | Ne | Ne |  |
-|Red Hat OpenShift | Ne | Ne | Ne |  |
+|Kubernetes Service (AKS) | No | No | [Ano](insights/container-insights-overview.md)  |  |
+|Load Balancer | Ano | Ano | No |  |
+|Logic Apps | Ano | Ano | No |  |
+|Machine Learning Service | No | No | No |  |
+|Managed Applications  | No | No | No |  |
+|Maps  | No | No | No |  |
+|Media Services | Ano | Ano | No |  |
+|Microsoft Flow | No | No | No |  |
+|Microsoft Managed Desktop | No | No | No |  |
+|Microsoft PowerApps | No | No | No |  |
+|Microsoft Social Engagement | No | No | No |  |
+|Microsoft Stream | Ano | Ano | No |  |
+|Migrace | No | No | No |  |
+|Multi-Factor Authentication | No | Yes | No |  |
+|Network Watcher | Ano | Ano | No |  |
+|Notification Hubs | Yes | No | No |  |
+|Open Datasets | No | No | No |  |
+|Zásada | No | No | No |  |
+|Power BI Embedded | Ano | Ano | No |  |
+|Privátní propojení | No | No | No |  |
+|Komunikační platforma pro zařazování projektu | No | No | No |  |
+|Red Hat OpenShift | No | No | No |  |
 |Redis Cache | Ano | Ano | [Ano](insights/redis-cache-insights-overview.md) | |
-|Resource Graph | Ne | Ne | Ne |  |
-|Resource Manager | Ne | Ne | Ne |  |
-|Maloobchodní vyhledávání – podle Bingu | Ne | Ne | Ne |  |
-|Search | Ano | Ano | Ne |  |
-|Service Bus | Ano | Ano | Ne |  |
-|Service Fabric | No | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
-|Portál pro registraci | Ne | Ne | Ne |  |
-|Site Recovery | No | Ano | Ne |  |
-|Jarní cloudová služba | Ne | Ne | Ne |  |
-|SQL Data Warehouse | Ano | Ano | Ne |  |
-|SQL Database | Ano | Ano | Ne |  |
-|SQL Server Stretch Database | Ano | Ano | Ne |  |
-|Zásobník | Ne | Ne | Ne |  |
-|Storage | Ano | Ne | [Ano](insights/storage-insights-overview.md) |  |
-|Mezipaměť úložiště | Ne | Ne | Ne |  |
-|Služby synchronizace úložiště | Ne | Ne | Ne |  |
-|Stream Analytics | Ano | Ano | Ne |  |
-|Time Series Insights | Ano | Ano | Ne |  |
-|TINA | Ne | Ne | Ne |  |
-|Traffic Manager | Ano | Ano | Ne |  |
-|Univerzální tisk | Ne | Ne | Ne |  |
-|Virtual Machine Scale Sets | No | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
+|Resource Graph | No | No | No |  |
+|Resource Manager | No | No | No |  |
+|Maloobchodní vyhledávání – podle Bingu | No | No | No |  |
+|Search | Ano | Ano | No |  |
+|Service Bus | Ano | Ano | No |  |
+|Service Fabric | No | Yes | No | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
+|Portál pro registraci | No | No | No |  |
+|Site Recovery | No | Yes | No |  |
+|Jarní cloudová služba | No | No | No |  |
+|SQL Data Warehouse | Ano | Ano | No |  |
+|Databáze SQL | Ano | Ano | No |  |
+|SQL Server Stretch Database | Ano | Ano | No |  |
+|Zásobník | No | No | No |  |
+|Storage | Yes | No | [Ano](insights/storage-insights-overview.md) |  |
+|Mezipaměť úložiště | No | No | No |  |
+|Služby synchronizace úložiště | No | No | No |  |
+|Stream Analytics | Ano | Ano | No |  |
+|Time Series Insights | Ano | Ano | No |  |
+|TINA | No | No | No |  |
+|Traffic Manager | Ano | Ano | No |  |
+|Univerzální tisk | No | No | No |  |
+|Virtual Machine Scale Sets | No | Yes | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
 |Virtual Machines | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
 |Virtual Network | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
-|Protokoly toku Virtual Network – NSG | No | Ano | Ne |  |
-|VPN Gateway | Ano | Ano | Ne |  |
-|Windows Virtual Desktop | Ne | Ne | Ne |  |
+|Protokoly toku Virtual Network – NSG | No | Yes | No |  |
+|VPN Gateway | Ano | Ano | No |  |
+|Windows Virtual Desktop | No | No | No |  |
 
 
 ## <a name="product-integrations"></a>Integrace produktů

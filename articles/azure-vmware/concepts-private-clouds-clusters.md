@@ -4,10 +4,10 @@ description: Seznamte se s klíčovými možnostmi pro služby Azure VMware Soft
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84906985"
 ---
 # <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Koncept řešení Azure VMware (AVS) ve verzi Preview pro privátní cloud a clustery

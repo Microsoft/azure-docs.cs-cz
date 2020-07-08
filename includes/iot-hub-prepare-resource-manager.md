@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67133569"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Příprava na ověření Azure Resource Manager požadavků
@@ -41,8 +41,8 @@ Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci AD 
 3. Pomocí následujícího příkazu vytvořte novou Azure Active Directory aplikaci, která nahradí držitele míst:
    
    * **{Display Name}:** zobrazovaný název vaší aplikace, například **MySampleApp**
-   * **{Adresa URL domovské stránky}:** adresa URL domovské stránky vaší aplikace, například **http:\//MySampleApp/Home**. Tato adresa URL nemusí odkazovat na skutečnou aplikaci.
-   * **{Identifikátor aplikace}:** Jedinečný identifikátor, například **http:\//MySampleApp**. Tato adresa URL nemusí odkazovat na skutečnou aplikaci.
+   * **{Adresa URL domovské stránky}:** adresa URL domovské stránky vaší aplikace, například **http: \/ /MySampleApp/Home**. Tato adresa URL nemusí odkazovat na skutečnou aplikaci.
+   * **{Identifikátor aplikace}:** Jedinečný identifikátor, například **http: \/ /MySampleApp**. Tato adresa URL nemusí odkazovat na skutečnou aplikaci.
    * **{Password}:** Heslo, které používáte k ověření ve vaší aplikaci.
      
      ```powershell

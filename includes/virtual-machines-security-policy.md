@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458658"
 ---
 Pro aplikace, které spouštíte, je důležité udržovat svůj virtuální počítač zabezpečený. Zabezpečení virtuálních počítačů může zahrnovat jednu nebo víc služeb Azure a funkcí, které pokrývají zabezpečený přístup k virtuálním počítačům a zabezpečené úložiště vašich dat. Tento článek poskytuje informace, které vám umožní zajistit zabezpečení virtuálních počítačů a aplikací.
 
-## <a name="antimalware"></a>Antimalware
+## <a name="antimalware"></a>antimalware
 
 Moderní hrozby pro cloudová prostředí jsou dynamické a zvyšují tlak na zachování efektivní ochrany, aby splňoval požadavky na dodržování předpisů a zabezpečení. [Microsoft Antimalware pro Azure](../articles/security/fundamentals/antimalware.md) je bezplatná funkce ochrany v reálném čase, která pomáhá identifikovat a odebírat viry, spyware a další škodlivý software. Výstrahy je možné nakonfigurovat tak, aby vás upozornily na to, že se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit na vašem VIRTUÁLNÍm počítači. Nepodporuje se na virtuálních počítačích se systémem Linux nebo Windows Server 2008.
 

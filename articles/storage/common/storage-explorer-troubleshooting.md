@@ -9,15 +9,15 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974513"
 ---
-# <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
+# <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
-Průzkumník služby Microsoft Azure Storage je samostatná aplikace, která usnadňuje práci s Azure Storagemi daty v systémech Windows, macOS a Linux. Aplikace se může připojit k účtům úložiště hostovaným v Azure, národním cloudům a Azure Stack.
+Průzkumník služby Azure Storage je samostatná aplikace, která usnadňuje práci s daty ve službě Azure Storage v operačních systémech Windows, macOS a Linux. Tato aplikace se může připojit k účtům úložiště hostovaným v Azure, národních cloudech nebo ve službě Azure Stack.
 
 Tato příručka shrnuje řešení problémů, které se běžně zobrazují v Průzkumník služby Storage.
 

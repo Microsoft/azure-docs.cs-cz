@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174682"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -27,7 +27,7 @@ Pro entitu můžete definovat až 252 vlastních vlastností.
 
 ### <a name="add-table-entities"></a>Přidat entity tabulky
 
-Přidejte do tabulky entity pomocí **Add-AzTableRow**. V těchto příkladech se používají klíče `partition1` oddílů `partition2`s hodnotami a a klíče řádku rovny zkratce State. Vlastnosti v každé entitě jsou `username` a `userid`. 
+Přidejte do tabulky entity pomocí **Add-AzTableRow**. V těchto příkladech se používají klíče oddílů s hodnotami `partition1` a a `partition2` klíče řádku rovny zkratce State. Vlastnosti v každé entitě jsou `username` a `userid` . 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -101,7 +101,7 @@ Get-AzTableRow -table $cloudTable `
 
 Tento dotaz načte jeden záznam.
 
-|pole|value|
+|pole|hodnota|
 |----|----|
 | UserID | 1 |
 | uživatelské jméno | Chris |
@@ -118,7 +118,7 @@ Get-AzTableRow `
 
 Tento dotaz načte jeden záznam.
 
-|pole|value|
+|pole|hodnota|
 |----|----|
 | UserID | 1 |
 | uživatelské jméno | Chris |
@@ -153,7 +153,7 @@ Get-AzTableRow -table $cloudTable `
 
 Ve výsledcích se zobrazí záznam Jessie2.
 
-|pole|value|
+|pole|hodnota|
 |----|----|
 | UserID | 2 |
 | uživatelské jméno | Jessie2 |

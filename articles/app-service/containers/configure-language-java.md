@@ -11,10 +11,10 @@ ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 496f519ba5e4eb17060ee35ed86fba45c85336d6
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84905727"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace linuxové aplikace v jazyce Java pro Azure App Service

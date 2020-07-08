@@ -7,10 +7,10 @@ author: mrbullwinkle
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: c903855dd7a550cfeef845d9c176e7ce7806a0df
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84947026"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>Řešení potíží s přehledy na základě sešitu

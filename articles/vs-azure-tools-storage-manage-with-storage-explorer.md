@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975261"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme s Průzkumníkem služby Storage
 
 ## <a name="overview"></a>Přehled
 
-Průzkumník služby Microsoft Azure Storage je samostatná aplikace, která usnadňuje práci s Azure Storagemi daty v systémech Windows, macOS a Linux. V tomto článku se dozvíte několik způsobů, jak se připojit k účtům Azure Storage a spravovat je.
+Průzkumník služby Azure Storage je samostatná aplikace, která usnadňuje práci s daty ve službě Azure Storage v operačních systémech Windows, macOS a Linux. V tomto článku se dozvíte několik způsobů, jak se připojit k účtům Azure Storage a spravovat je.
 
 ![Microsoft Azure Storage Explorer][0]
 

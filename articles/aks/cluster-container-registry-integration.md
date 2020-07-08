@@ -6,10 +6,10 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: aa2b82e70b1a1372076483c7405c32b66da377af
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974410"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry ze služby Azure Kubernetes Service
@@ -143,7 +143,7 @@ nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 * Další informace o [diagnostice ACR](../container-registry/container-registry-diagnostics-audit-logs.md)
 * Další informace o [stavu ACR](../container-registry/container-registry-check-health.md)
 

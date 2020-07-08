@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174816"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
@@ -83,10 +83,10 @@ Hodnoty odpovídají následujícím velikostem mezipaměti:
 
 | Hodnota | Basic a Standard<br>velikost mezipaměti | Premium<br>velikost mezipaměti |
 | :---: | :------------------------------: | :-------------------: |
-| 0     | 250 MB (výchozí)                 | neuvedeno                   |
+| 0     | 250 MB (výchozí)                 | Není k dispozici                   |
 | 1     | 1 GB                             | 6 GB (výchozí)        |
 | 2     | 2,5 GB                           | 13 GB                 |
 | 3     | 6 GB                             | 26 GB                 |
 | 4     | 13 GB                            | 53 GB                 |
 | 5     | 26 GB                            | 120 GB                |
-| 6     | 53 GB                            | neuvedeno                   |
+| 6     | 53 GB                            | Není k dispozici                   |

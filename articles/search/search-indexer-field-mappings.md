@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975329"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
@@ -212,7 +212,7 @@ Následující tabulka porovnává různá kódování Base64 řetězce `00>00?0
 | Base64 s odsazením | `MDA+MDA/MDA=` | Používejte znaky bezpečné pro URL a odstraňte odsazení. | Použití standardních znaků Base64 a přidání odsazení |
 | Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky bezpečné pro URL | Použití standardních znaků base64 |
 | Zabezpečená adresa URL – Base64 s odsazením | `MDA-MDA_MDA=` | Odebrat odsazení | Přidat odsazení |
-| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádné | Žádné |
+| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádná | Žádná |
 
 <a name="extractTokenAtPositionFunction"></a>
 

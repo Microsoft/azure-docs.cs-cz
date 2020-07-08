@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81263335"
 ---
 V následující části jsou shrnuta klíčová omezení obecně dostupné.
@@ -37,7 +37,7 @@ Frekvence a míry příchozího přenosu SKU S1 a S2 poskytují flexibilitu při
 
 Prostředí S2 SKU podporují podstatně více událostí za měsíc a mají výrazně vyšší kapacitu příchozího přenosu dat.
 
-| Skladová jednotka (SKU)  | Počet událostí za měsíc  | Počet událostí za minutu | Velikost události za minutu  |
+| SKU  | Počet událostí za měsíc  | Počet událostí za minutu | Velikost události za minutu  |
 |---------|---------|---------|---------|---------|
 | S1     |   30 000 000   |  720    |  720 KB   |
  |S2     |   300 000 000   | 7 200   | 7 200 KB  |
@@ -46,7 +46,7 @@ Prostředí S2 SKU podporují podstatně více událostí za měsíc a mají vý
 
 Omezení vlastností GA závisí na vybraném prostředí SKU. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které se dají zobrazit v [Time Series Insights Exploreru](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
-| Skladová jednotka (SKU) | Maximální vlastnosti |
+| SKU | Maximální vlastnosti |
 | --- | --- |
 | S1 | 600 vlastnosti (sloupce) |
 | S2 | 800 vlastnosti (sloupce) |

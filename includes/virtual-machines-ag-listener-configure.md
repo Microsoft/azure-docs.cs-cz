@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75468352"
 ---
 Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterých SQL Server Skupina dostupnosti naslouchá. Chcete-li vytvořit naslouchací proces skupiny dostupnosti, postupujte následovně:
@@ -28,7 +28,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
     a. Rozbalte název clusteru a klikněte na **role**.
 
-    b. V podokně **role** klikněte pravým tlačítkem myši na název skupiny dostupnosti a pak vyberte **Přidat prostředek** > **Klientský přístupový bod**.
+    b. V podokně **role** klikněte pravým tlačítkem myši na název skupiny dostupnosti a pak vyberte **Přidat prostředek**  >  **Klientský přístupový bod**.
 
    ![Klientský přístupový bod](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
@@ -66,7 +66,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
    ![Prostředek IP](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-    d. Klikněte na tlačítko **OK**.
+    d. Klikněte na **OK**.
 
 1. <a name="listname"></a>Nastavte prostředek klientského přístupového bodu na základě IP adresy.
 
@@ -76,7 +76,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
    ![Prostředek IP](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Klikněte na kartu **závislosti** . Ověřte, zda je IP adresa závislá. Pokud tomu tak není, nastavte závislost na IP adrese. Pokud je v seznamu uvedeno více prostředků, ověřte, zda IP adresa obsahuje nebo, nikoli a, závislosti. Klikněte na tlačítko **OK**. 
+    c. Klikněte na kartu **závislosti** . Ověřte, zda je IP adresa závislá. Pokud tomu tak není, nastavte závislost na IP adrese. Pokud je v seznamu uvedeno více prostředků, ověřte, zda IP adresa obsahuje nebo, nikoli a, závislosti. Klikněte na **OK**. 
 
    ![Prostředek IP](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
@@ -116,7 +116,7 @@ V případě potřeby opakujte výše uvedené kroky a nastavte parametry cluste
 
 1. Klikněte pravým tlačítkem na **IP adresu**a vyberte **vlastnosti**.
 
-1. Zkopírujte **název** IP adresy. Může to být `Cluster IP Address`. 
+1. Zkopírujte **název** IP adresy. Může to být `Cluster IP Address` . 
 
 1. <a name="setwsfcparam"></a>Nastavte parametry clusteru v prostředí PowerShell.
   

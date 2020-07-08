@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9a0315fadefac0269a6d9670844ef8c3886eef12
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975618"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
@@ -88,7 +88,7 @@ V předchozím diagramu aplikace:
 1. Požádá o autorizační kód, který je uplatněn pro přístupový token.
 2. Pomocí přístupového tokenu zavolá webové rozhraní API.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 - Autorizační kód můžete použít jenom jednou pro uplatnění tokenu. Nepokusit se vícekrát získat token se stejným autorizačním kódem, protože je výslovně zakázaný standardní specifikací protokolu. Pokud kód několikrát přiřadíte, ať už úmyslně, nebo vzhledem k tomu, že si nejste vědomi, že to architektura provede za vás, zobrazí se tato chyba:
 

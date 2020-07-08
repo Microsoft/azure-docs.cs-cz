@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Popisuje procesy pro připojení vašeho vývojového počítače ke clusteru Kubernetes pomocí místního procesu s Kubernetes.
 keywords: Místní proces pomocí Kubernetes, Azure Dev Spaces, vývojových prostorů, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974394"
 ---
 # <a name="how-local-process-with-kubernetes-works"></a>Jak funguje místní proces s Kubernetes

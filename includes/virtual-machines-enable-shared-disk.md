@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81008324"
 ---
 ## <a name="limitations"></a>Omezení
@@ -30,9 +30,9 @@ ms.locfileid: "81008324"
 Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, použijte novou vlastnost `maxShares` a definujte hodnotu větší než 1. To umožňuje sdílet disk napříč několika virtuálními počítači.
 
 > [!IMPORTANT]
-> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares`.
+> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares` .
 
-Než použijete následující šablonu, `[parameters('dataDiskName')]`nahraďte `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]` a vlastními hodnotami.
+Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]` , `[resourceGroup().location]` , a `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` vlastními hodnotami.
 
 ```json
 { 
@@ -80,7 +80,7 @@ Než použijete následující šablonu, `[parameters('dataDiskName')]`nahraďte
 Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, změňte `maxShares` parametr na hodnotu větší než 1. To umožňuje sdílet disk napříč několika virtuálními počítači.
 
 > [!IMPORTANT]
-> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares`.
+> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares` .
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -98,9 +98,9 @@ az disk show -g rg1 -n clidisk
 Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, použijte vlastnost `maxShares` a definujte hodnotu větší než 1. To umožňuje sdílet disk napříč několika virtuálními počítači.
 
 > [!IMPORTANT]
-> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares`.
+> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares` .
 
-Než `[parameters('dataDiskName')]`použijete následující šablonu, nahraďte `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`, `[parameters('diskIOPSReadWrite')]`, `[parameters('diskMBpsReadWrite')]`, `[parameters('diskIOPSReadOnly')]`, a `[parameters('diskMBpsReadOnly')]` vlastními hodnotami.
+Než použijete následující šablonu, nahraďte `[parameters('dataDiskName')]` , `[resourceGroup().location]` , `[parameters('dataDiskSizeGB')]` , `[parameters('maxShares')]` , `[parameters('diskIOPSReadWrite')]` , `[parameters('diskMBpsReadWrite')]` , `[parameters('diskIOPSReadOnly')]` a `[parameters('diskMBpsReadOnly')]` vlastními hodnotami.
 
 ```json
 {
@@ -170,7 +170,7 @@ Než `[parameters('dataDiskName')]`použijete následující šablonu, nahraďte
 
 ### <a name="using-azure-shared-disks-with-your-vms"></a>Použití sdílených disků Azure s vašimi virtuálními počítači
 
-Po nasazení sdíleného disku pomocí `maxShares>1`nástroje můžete disk připojit k jednomu nebo více virtuálním počítačům.
+Po nasazení sdíleného disku pomocí nástroje `maxShares>1` můžete disk připojit k jednomu nebo více virtuálním počítačům.
 
 > [!IMPORTANT]
 > Všechny virtuální počítače sdílející disk musí být nasazené ve stejné [skupině umístění blízkosti](../articles/virtual-machines/windows/proximity-placement-groups.md).
