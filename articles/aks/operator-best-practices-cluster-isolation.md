@@ -5,11 +5,12 @@ description: Seznamte se s osvědčenými postupy pro izolaci ve službě Azure 
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668338"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077759"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro izolaci clusteru ve službě Azure Kubernetes (AKS)
 
@@ -29,7 +30,7 @@ Kubernetes poskytuje funkce, které umožňují logicky izolovat týmy a úlohy 
   * Pokročilejší funkce plánovače zahrnují příchuti a tolerovánost, selektory uzlů a spřažení uzlů nebo spřažení nebo proti spřažení. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][aks-best-practices-advanced-scheduler].
 * **Sítě** zahrnují použití zásad sítě k řízení toku provozu v části a z lusků.
 * **Ověřování a autorizace** zahrnují uživatele řízení přístupu na základě role (RBAC) a Azure Active Directory (AD) Integration, identity pod a tajné klíče v Azure Key Vault. Další informace o těchto funkcích najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][aks-best-practices-identity].
-* **Kontejnery** zahrnují zásady zabezpečení, pod kontexty zabezpečení, kontrolu imagí a běhových prostředí pro ohrožení zabezpečení. Zahrnuje také použití aplikace App obraně nebo Seccomp (Secure Computing) k omezení přístupu k kontejneru do podkladového uzlu.
+* **Kontejnery** obsahují Azure Policy doplněk pro AKS, který vynutil zabezpečení, používá v kontextu zabezpečení a kontroluje jak image, tak i modul runtime pro zabezpečení. Zahrnuje také použití aplikace App obraně nebo Seccomp (Secure Computing) k omezení přístupu k kontejneru do podkladového uzlu.
 
 ## <a name="logically-isolate-clusters"></a>Logicky izolujte clustery
 

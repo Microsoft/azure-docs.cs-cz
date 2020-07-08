@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710690"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058108"
 ---
 # <a name="scaling-in-service-fabric"></a>Škálování v Service Fabric
 Azure Service Fabric usnadňuje vytváření škálovatelných aplikací tím, že spravuje služby, oddíly a repliky na uzlech clusteru. Spouštění mnoha úloh na stejném hardwaru umožňuje maximální využití prostředků, ale také nabízí flexibilitu při volbě škálování úloh. Tento video pro kanál 9 popisuje, jak můžete vytvářet škálovatelné aplikace mikroslužeb:
@@ -127,7 +127,7 @@ Ale proč se dokonce snažím vybrat schéma jednoho oddílu pro všechny uživa
 Při sestavování škály zvažte následující dynamický vzor. Možná budete muset přizpůsobit svou situaci:
 
 1. Místo toho, abyste se snažili vybrat schéma vytváření oddílů pro všechny uživatele, vytvořte službu správce.
-2. Úkolem služby manažera je podívat se na informace o zákaznících při registraci služby. V závislosti na těchto informacích vytvoří služba Správce instanci vaší _skutečné_ služby kontaktu – úložiště _, která je pro daného zákazníka pouze_. Pokud vyžadují konkrétní konfiguraci, izolaci nebo upgrady, můžete se také rozhodnout pro tohoto zákazníka aktivovat instanci aplikace. 
+2. Úkolem služby manažera je podívat se na informace o zákaznících při registraci služby. V závislosti na těchto informacích vytvoří služba Správce instanci vaší _skutečné_ služby úložiště kontaktů _jenom pro daného zákazníka_. Pokud vyžadují konkrétní konfiguraci, izolaci nebo upgrady, můžete se také rozhodnout pro tohoto zákazníka aktivovat instanci aplikace. 
 
 Tento vzor dynamického vytváření přináší mnoho výhod:
 

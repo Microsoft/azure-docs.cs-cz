@@ -3,15 +3,23 @@ title: Použití pod zásadami zabezpečení ve službě Azure Kubernetes Servic
 description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 5bd4e1b85513ed5473b4136b458d20fef4faa79c
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.date: 06/30/2020
+ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374487"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077622"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
+
+<!--
+> [!WARNING]
+> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
+> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
+
+**This document and feature are set for deprecation.**
+-->
 
 Chcete-li zlepšit zabezpečení clusteru AKS, můžete omezit, které části je možné naplánovat. Lusky, které vyžadují prostředky, které nepovolíte, nejde spustit v clusteru AKS. Tento přístup definujete pomocí zásad zabezpečení pod. V tomto článku se dozvíte, jak používat zásady zabezpečení pod k omezení nasazení lusků v AKS.
 
@@ -106,7 +114,7 @@ Zásady zabezpečení *Privileged* pod se aplikují na každého ověřeného u�
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-Jak je znázorněno v následujícím zhuštěném výstupu, je k disClusterRolemu *systému* přiřazeno *omezení PSP: Restricted* Users. Tato možnost poskytuje základní úroveň omezení bez definování vlastních zásad.
+Jak je znázorněno v následujícím zhuštěném výstupu, je režim *PSP: Privileged* ClusterRole přiřazen všem *systémům: ověření* uživatelé. Tato možnost poskytuje základní úroveň oprávnění bez definování vlastních zásad.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -164,7 +172,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Testování vytvoření privilegovaného pod
 
-Pojďme nejdřív otestovat, co se stane, když naplánujete pod, pomocí kontextu zabezpečení `privileged: true` . Tento kontext zabezpečení přestupňování oprávnění pod. V předchozí části, která ukázala výchozí zásady zabezpečení AKS pod, by měla zásada *s omezeným přístupem* zamítnout tuto žádost.
+Pojďme nejdřív otestovat, co se stane, když naplánujete pod, pomocí kontextu zabezpečení `privileged: true` . Tento kontext zabezpečení přestupňování oprávnění pod. V předchozí části, která ukázala výchozí zásady zabezpečení AKS pod, by měla zásada *oprávnění* zamítnout tuto žádost.
 
 Vytvořte soubor s názvem `nginx-privileged.yaml` a vložte následující YAML manifest:
 
@@ -199,7 +207,7 @@ V poli se nedosáhnou fáze plánování, takže před přesunutím na neexistuj
 
 ## <a name="test-creation-of-an-unprivileged-pod"></a>Vytvoření testu neprivilegovaného pod
 
-V předchozím příkladu specifikace pod požaduje privilegovanou eskalaci. Tento požadavek je odepřený ve výchozích zásadách zabezpečení *s omezením* pod, takže se u něj nepovede naplánovat. Pojďme teď spustit stejný NGINX pod tím, že nebudete mít požadavek na eskalaci oprávnění.
+V předchozím příkladu specifikace pod požaduje privilegovanou eskalaci. Tento požadavek je odepřený pomocí výchozích zásad zabezpečení *Privilege* , takže se u něj nepovede naplánovat. Pojďme teď spustit stejný NGINX pod tím, že nebudete mít požadavek na eskalaci oprávnění.
 
 Vytvořte soubor s názvem `nginx-unprivileged.yaml` a vložte následující YAML manifest:
 
@@ -232,7 +240,7 @@ V poli se nedosáhnou fáze plánování, takže před přesunutím na neexistuj
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Vytvoření testu pod s konkrétním kontextem uživatele
 
-V předchozím příkladu se image kontejneru automaticky pokusila použít kořen k navázání NGINX na port 80. Tuto žádost zamítla výchozí zásada zabezpečení *s omezením* pod, takže se na začátku nespustí. Pojďme teď spustit stejný NGINX pod stejným kontextem uživatele, jako je třeba `runAsUser: 2000` .
+V předchozím příkladu se image kontejneru automaticky pokusila použít kořen k navázání NGINX na port 80. Tato žádost byla zamítnutá pomocí výchozích zásad zabezpečení *Privilege* , takže se na začátku nespustí. Pojďme teď spustit stejný NGINX pod stejným kontextem uživatele, jako je třeba `runAsUser: 2000` .
 
 Vytvořte soubor s názvem `nginx-unprivileged-nonroot.yaml` a vložte následující YAML manifest:
 
@@ -298,7 +306,7 @@ Vytvořte zásadu pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte ná
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Pokud chcete zobrazit dostupné zásady, použijte příkaz [kubectl Get PSP][kubectl-get] , jak je znázorněno v následujícím příkladu. Porovnejte zásadu *PSP-Deny-Privilege* s výchozí *omezenou* zásadou, kterou jste vynutili v předchozích příkladech, a vytvořte pod. Zásady zakázaly jenom použití eskalace *priv* . Pro zásady *PSP-Deny-Privilege* neexistují žádná omezení pro uživatele nebo skupinu.
+Pokud chcete zobrazit dostupné zásady, použijte příkaz [kubectl Get PSP][kubectl-get] , jak je znázorněno v následujícím příkladu. Porovnejte zásadu *PSP-Deny-Privilege* s výchozími zásadami *oprávnění* , které byly vyhodnoceny v předchozích příkladech, a vytvořte pod ní. Zásady zakázaly jenom použití eskalace *priv* . Pro zásady *PSP-Deny-Privilege* neexistují žádná omezení pro uživatele nebo skupinu.
 
 ```console
 $ kubectl get psp

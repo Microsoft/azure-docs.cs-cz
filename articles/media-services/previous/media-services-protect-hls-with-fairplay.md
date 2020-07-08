@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968761"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058244"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Chraňte svůj HLS obsah pomocí Apple FairPlay nebo Microsoft PlayReady
 
@@ -65,7 +65,7 @@ Na straně Media Services Key Delivery se musí nastavit následující věci:
 
       Následující postup popisuje, jak vygenerovat soubor certifikátu. pfx pro FairPlay:
 
-    1. Nainstalujte OpenSSL z https://slproweb.com/products/Win32OpenSSL.html.
+    1. Nainstalujte OpenSSL z https://slproweb.com/products/Win32OpenSSL.html .
 
         Přejít do složky, kde je certifikát FairPlay a další soubory dodávané společností Apple.
     2. V příkazovém řádku spusťte následující příkaz. Tím se soubor. cer převede na soubor. pem.
@@ -73,7 +73,7 @@ Na straně Media Services Key Delivery se musí nastavit následující věci:
         "C:\OpenSSL-Win32\bin\openssl.exe" x509-informující der-in FairPlay. cer-out FairPlay-out. pem
     3. V příkazovém řádku spusťte následující příkaz. Tím se soubor. pem převede na soubor. pfx s privátním klíčem. Heslo pro soubor. pfx pak vyzve OpenSSL.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12-export FairPlay-out. pfx-INKEY PrivateKey. pem-in Fairplay-out. pem-Passin soubor: PrivateKey-PEM-Pass. txt
+        "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12-export FairPlay-out. pfx-INKEY PrivateKey. pem-in FairPlay-out. pem-Passin file:privatekey-pem-pass.txt
   * **Heslo certifikátu aplikace**: heslo pro vytvoření souboru. pfx.
   * **Heslo certifikátu aplikace**: heslo musíte nahrát podobně jako při odesílání jiných klíčů Media Services. K získání ID Media Services použijte hodnotu výčtu **ContentKeyType. FairPlayPfxPassword** . To je to, co potřebují k použití v rámci možnosti zásady doručování klíčů.
   * **IV**: Tato náhodná hodnota je 16 bajtů. Musí odpovídat IV v zásadě doručení assetu. Vygenerujete IV a umístíte ho na obě místa: zásady doručení assetu a zásady doručení klíčů.
@@ -127,7 +127,7 @@ Níže najdete obecné kroky pro ochranu prostředků pomocí FairPlay pomocí s
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>Použití FairPlay Key Delivery v aplikacích přehrávače
 Aplikace přehrávače můžete vyvíjet pomocí sady iOS SDK. Aby bylo možné přehrávat FairPlay obsah, je nutné implementovat protokol License Exchange. Tento protokol není specifikován společností Apple. Jak odesílat požadavky na doručení klíčů, je k diskaždé aplikaci. Služba doručování klíčů Media Services FairPlay očekává, že se SPC přidělí jako webová zpráva zakódovaná v URL formátu www v následujícím tvaru:
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player podporuje přehrávání FairPlay. Další informace najdete v [dokumentaci k Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) .

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6490292ef898e00c7677c829be41f3b06c638164
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192676"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076602"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
 
@@ -60,7 +60,7 @@ Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v s
 
     Tyto příkazy provedou následující akce:
 
-    |Příkaz | Popis |
+    |Příkaz | Description |
     |---|---|
     |ODKLÁDACÍ TABULKA|Odstraní tabulku a datový soubor pro případ, že tabulka již existuje.|
     |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou "externí" tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.|

@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/01/2020
-ms.openlocfilehash: 5527a27ab94c350a345bb916206057069c3d16da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82723165"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077214"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Azure Monitor v HDInsight
 
@@ -38,7 +38,7 @@ Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik
 
 Protokoluje seznam několika ukázkových dotazů, například:
 
-| Název dotazu                      | Popis                                                               |
+| Název dotazu                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Dostupnost počítačů v dnešní době    | Graf počtu počítačů odesílajících protokoly, každou hodinu                     |
 | Zobrazit prezenční signály                 | Zobrazit seznam všech prezenčních signálů počítače za poslední hodinu                           |
@@ -123,4 +123,4 @@ Výběr u seskupení závažnosti (tj. **závažnost 1, jak je** zvýrazněný v
 ## <a name="next-steps"></a>Další kroky
 
 * [Dostupnost clusteru – Apache Ambari](./hdinsight-cluster-availability.md)
-* [Použití protokolů Azure Monitoru](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+* [Použití protokolů Azure Monitor](hdinsight-hadoop-oms-log-analytics-tutorial.md)

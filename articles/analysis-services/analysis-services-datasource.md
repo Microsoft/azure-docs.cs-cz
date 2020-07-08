@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 83a5543aa2d1f30696bed05caf85b04ed6685bae
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197207"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077435"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Podporované zdroje dat ve službě Azure Analysis Services
 
@@ -22,22 +22,22 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 
 |Zdroj dat  |V paměti  |DirectQuery  |Poznámky |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   Ano      |    Ano      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure synapse Analytics (SQL Data Warehouse)      |   Ano      |   Ano       |<sup>[odst](#azprovider)</sup>|
-|Azure Blob Storage      |   Ano       |    Ne      | <sup>[první](#tab1400a)</sup> |
-|Azure Table Storage     |   Ano       |    Ne      | <sup>[první](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Ano        |  Ne        |<sup>[první](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Ano       |    Ne      |<sup>[první](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Ano       |    Ne      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|HDFS Azure HDInsight    |     Ano     |   Ne       |<sup>[první](#tab1400a)</sup> |
-|Azure HDInsight Spark     |   Ano       |   Ne       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
+|Azure SQL Database      |   Ano      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure synapse Analytics (SQL DW)      |   Ano      |   Yes       |<sup>[2](#azprovider)</sup>|
+|Azure Blob Storage      |   Yes       |    No      | <sup>[první](#tab1400a)</sup> |
+|Azure Table Storage     |   Yes       |    No      | <sup>[první](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Yes        |  No        |<sup>[první](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    No      |<sup>[první](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Yes       |    No      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|HDFS Azure HDInsight    |     Yes     |   No       |<sup>[první](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Yes       |   No       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
-**Poznámka**
+**Poznámky:**
 
 <a name="tab1400a">1</a> -tabelární 1400 a vyšší modely.  
 <a name="azprovider">2</a> – Pokud jsou zadané jako zdroj dat *zprostředkovatele* v tabulkovém 1200 a vyšších modelech, v paměti i v modelech DIRECTQUERY OLE DB vyžaduje SQL Server MSOLEDBSQL (doporučeno), SQL Server Native Client 11,0 nebo .NET Framework Zprostředkovatel dat pro SQL Server.  
-<a name="azsqlmanaged">3</a> – podporuje se spravovaná instance Azure SQL. Vzhledem k tomu, že se spravovaná instance spouští v rámci virtuální sítě Azure s privátní IP adresou, musí být v instanci povolený veřejný koncový bod. Pokud není povolená, vyžaduje se [místní brána dat](analysis-services-gateway.md) .  
+<a name="azsqlmanaged">3</a> – podporuje se spravovaná instance Azure SQL. Vzhledem k tomu, že se spravovaná instance SQL spouští v rámci virtuální sítě Azure s privátní IP adresou, musí být v instanci povolený veřejný koncový bod. Pokud není povolená, vyžaduje se [místní brána dat](analysis-services-gateway.md) .  
 <a name="databricks">4</a> – Azure Databricks používání konektoru Sparku se v tuto chvíli nepodporuje.  
 <a name="gen2">5</a> -adls Gen2 konektor se momentálně nepodporuje, ale konektor Azure Blob Storage můžete použít se zdrojem dat adls Gen2.
 
@@ -45,38 +45,38 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 
 |Zdroj dat | V paměti | DirectQuery |Poznámky   |
 |  --- | --- | --- | --- |
-|Databáze aplikace Access     |  Ano | Ne |  |
-|Active Directory     |  Ano | Ne | <sup>[6](#tab1400b)</sup>  |
-|Analysis Services     |  Ano | Ne |  |
-|Systém Analytics Platform System     |  Ano | Ne |  |
-|Soubor CSV  |Ano | Ne |  |
-|Dynamics 365     |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Excelový sešit     |  Ano | Ne |  |
-|Výměna      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Složka      |Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|IBM Informix  |Ano | Ne |  |
-|Dokument JSON      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Řádky z binárního souboru      | Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Databáze MySQL     | Ano | Ne |  |
-|Datový kanál OData      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Dotaz ODBC     | Ano | Ne |  |
-|OLE DB     |   Ano | Ne |  |
-|Oracle  | Ano  |Ano  | <sup>[9](#oracle)</sup> |
-|Databáze PostgreSQL   | Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Objekty Salesforce|  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Sestavy Salesforce |Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|SAP HANA     |  Ano | Ne |  |
-|SAP Business Warehouse    |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Sharepointový seznam      |   Ano | Ne | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|SQL Server datový sklad |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|Databáze Sybase     |  Ano | Ne |  |
-|Teradata | Ano  | Ano  | <sup>[10pruhový](#teradata)</sup> |
-|Soubor TXT  |Ano | Ne |  |
-|Tabulka XML    |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
+|Databáze aplikace Access     |  Yes | No |  |
+|Active Directory     |  Yes | No | <sup>[6](#tab1400b)</sup>  |
+|Analysis Services     |  Yes | No |  |
+|Systém Analytics Platform System     |  Yes | No |  |
+|Soubor CSV  |Yes | No |  |
+|Dynamics 365     |  Yes | No | <sup>[6](#tab1400b)</sup> |
+|Excelový sešit     |  Yes | No |  |
+|Výměna      |  Yes | No | <sup>[6](#tab1400b)</sup> |
+|Složka      |Ano | No | <sup>[6](#tab1400b)</sup> |
+|IBM Informix  |Yes | No |  |
+|Dokument JSON      |  Yes | No | <sup>[6](#tab1400b)</sup> |
+|Řádky z binárního souboru      | Yes | No | <sup>[6](#tab1400b)</sup> |
+|Databáze MySQL     | Yes | No |  |
+|Datový kanál OData      |  Yes | No | <sup>[6](#tab1400b)</sup> |
+|Dotaz ODBC     | Yes | No |  |
+|OLE DB     |   Yes | No |  |
+|Oracle  | Ano  |Yes  | <sup>[9](#oracle)</sup> |
+|Databáze PostgreSQL   | Yes | No | <sup>[6](#tab1400b)</sup> |
+|Objekty Salesforce|  Yes | No | <sup>[6](#tab1400b)</sup> |
+|Sestavy Salesforce |Yes | No | <sup>[6](#tab1400b)</sup> |
+|SAP HANA     |  Yes | No |  |
+|SAP Business Warehouse    |  Yes | No | <sup>[6](#tab1400b)</sup> |
+|Sharepointový seznam      |   Yes | No | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|SQL Server |Ano   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server datový sklad |Ano   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Databáze Sybase     |  Yes | No |  |
+|Teradata | Ano  | Yes  | <sup>[10](#teradata)</sup> |
+|Soubor TXT  |Yes | No |  |
+|Tabulka XML    |  Yes | No | <sup>[6](#tab1400b)</sup> |
 | | | |
 
-**Poznámka**  
+**Poznámky:**  
 <a name="tab1400b">6</a> – tabulkové 1400 a vyšší modely.  
 <a name="sqlim">7</a> – při zadání jako zdroje dat *zprostředkovatele* v tabulkových 1200 a vyšších modelech zadejte Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (doporučeno), SQL Server Native Client 11,0 nebo .NET Framework Zprostředkovatel dat pro SQL Server.  
 <a name="instgw">8</a> – Pokud zadáte MSOLEDBSQL jako poskytovatele dat, může být nutné stáhnout a nainstalovat [ovladač Microsoft OLE DB pro SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) na stejném počítači jako místní brána dat.  

@@ -11,11 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075429"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -42,6 +43,16 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 Verze Preview živé analýzy videí na IoT Edge se stala veřejnou. Další informace najdete v [poznámkách k verzi](../live-video-analytics-edge/release-notes.md).
 
 Live video Analytics na IoT Edge je rozšířením řady mediálních služeb. Umožňuje analyzovat živé video s modely AI podle vašeho výběru na vlastních hraničních zařízeních a volitelně zachytit a zaznamenat toto video. Nyní můžete vytvářet aplikace s analýzou videa v reálném čase na hraničních zařízeních, aniž byste se museli starat o složitost sestavování a provozování živého video kanálu.
+
+### <a name="search-by-topics"></a>Hledat podle témat
+
+Teď můžete pomocí rozhraní API pro hledání vyhledat videa s konkrétními tématy (jenom rozhraní API).
+
+Témata jsou přidána jako součást `textScope` (volitelný parametr). Podrobnosti najdete v tématu [rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) .  
+
+### <a name="labels-enhancement"></a>Vylepšení popisků
+
+Popisek autor značky byl upgradován a nyní obsahuje více vizuálních popisků, které lze identifikovat.
 
 ## <a name="may-2020"></a>Květen 2020
 

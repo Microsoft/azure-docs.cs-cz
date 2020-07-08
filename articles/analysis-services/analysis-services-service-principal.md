@@ -4,15 +4,15 @@ description: Naučte se, jak vytvořit instanční objekt pro automatizaci Azure
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f2ffd1ea098bcf98e25958ca40318a65b0ef6605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361451"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077367"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -38,7 +38,7 @@ Přihlašovací údaje instančního objektu a certifikáty je možné bezpečn�
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Přidání instančních objektů do role správce serveru
 
-Než budete moct použít instanční objekt pro Analysis Services operace správy serveru, musíte ho přidat do role Správci serveru. Další informace najdete v tématu [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md).
+Než budete moct použít instanční objekt pro Analysis Services operace správy serveru, musíte ho přidat do role Správci serveru. Instanční objekty musí být přidané přímo do role správce serveru. Přidání instančního objektu do skupiny zabezpečení a následné přidání této skupiny zabezpečení do role správce serveru není podporováno. Další informace najdete v tématu [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md).
 
 ## <a name="service-principals-in-connection-strings"></a>Objekty služby v připojovacích řetězcích
 

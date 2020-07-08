@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771668"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076942"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol SAML jednotného přihlašování
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parametr |  | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | ID | Vyžadováno | Azure AD používá tento atribut k naplnění `InResponseTo` atributu vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
 | Verze | Vyžadováno | Tento parametr by měl být nastaven na **2,0**. |
@@ -86,6 +86,8 @@ Pokud `NameIDPolicy` je k dispozici, můžete zahrnout její nepovinný `Format`
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Tato hodnota povoluje Azure Active Directory pro výběr formátu deklarace identity. Azure Active Directory vydá NameID jako párový identifikátor.
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory vydá deklaraci identity NameID jako náhodně generovanou hodnotu, která je jedinečná pro aktuální operaci jednotného přihlašování. To znamená, že hodnota je dočasná a nelze ji použít k identifikaci ověřovacího uživatele.
 
+`SPNameQualifier`Je-li parametr zadán, bude služba Azure AD `SPNameQualifier` v odpovědi obsahovat stejnou hodnotu.
+
 Služba Azure AD ignoruje `AllowCreate` atribut.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
@@ -97,7 +99,7 @@ Služba Azure AD ignoruje `AllowCreate` atribut.
 Pokud je tato vlastnost k dispozici, nezahrnujte `ProxyCount` atribut `IDPListOption` ani `RequesterID` element, protože nejsou podporovány.
 
 ### <a name="signature"></a>Podpis
-Nezahrnujte `Signature` element do `AuthnRequest` elementů. Služba Azure AD neověřuje podepsané žádosti o ověření. Ověření žadatele je poskytováno pouze v reakci na registrované adresy URL služby kontrolního výrazu.
+`Signature`Element v `AuthnRequest` elementech je nepovinný. Služba Azure AD neověřuje podepsané žádosti o ověření, pokud je k dispozici podpis. Ověření žadatele je poskytováno pouze v reakci na registrované adresy URL služby kontrolního výrazu.
 
 ### <a name="subject"></a>Subjekt
 Nezahrnujte `Subject` element. Azure AD nepodporuje zadání předmětu pro požadavek a vrátí chybu, pokud je k dispozici.
@@ -157,7 +159,7 @@ Až se požadované přihlášení úspěšně dokončí, Azure AD odešle odpov
 
 ### <a name="issuer"></a>Vystavitel
 
-Azure AD nastaví `Issuer` element na `https://sts.windows.net/<TenantIDGUID>/` , kde \< TENANTIDGUID> je ID TENANTA tenanta Azure AD.
+Azure AD nastaví `Issuer` element na `https://sts.windows.net/<TenantIDGUID>/` , kde \<TenantIDGUID> je ID TENANTA tenanta Azure AD.
 
 Například odpověď s prvkem vystavitele může vypadat jako v následujícím příkladu:
 
@@ -192,7 +194,7 @@ Kromě `ID` `IssueInstant` a `Version` Služba Azure AD nastavuje následující
 
 #### <a name="issuer"></a>Vystavitel
 
-To je nastavené na `https://sts.windows.net/<TenantIDGUID>/` místo, kde \< TenantIDGUID> je ID tenanta TENANTA Azure AD.
+To je nastavené na `https://sts.windows.net/<TenantIDGUID>/` místo, kde \<TenantIDGUID> je ID tenanta TENANTA Azure AD.
 
 ```
 <Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>

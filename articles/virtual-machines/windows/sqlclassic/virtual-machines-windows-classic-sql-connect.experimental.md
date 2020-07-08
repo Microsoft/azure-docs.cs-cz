@@ -16,11 +16,12 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4b63735509c0d1c755eced8277d18b2a535457b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017646"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078438"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Připojení k virtuálnímu počítači s SQL Serverem v Azure (nasazení Classic)
 > [!div class="op_single_selector"]
@@ -52,7 +53,9 @@ Ve stejné cloudové službě se dá vytvořit několik virtuálních počítač
 
 V tomto scénáři se můžete připojit pomocí **názvu** virtuálního počítače (také uvedeného jako **název počítače** nebo název **hostitele** na portálu). Toto je název, který jste zadali pro virtuální počítač během vytváření. Pokud jste například najmenovali virtuální počítač SQL **mysqlvm**, může klientský virtuální počítač ve stejné cloudové službě použít k připojení následující připojovací řetězec:
 
-    "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 ### <a name="connect-to-sql-server-over-the-internet"></a>Připojení k SQL Server přes Internet
 Pokud se chcete připojit ke svému databázovému stroji SQL Server z Internetu, musíte pro příchozí komunikaci TCP vytvořit koncový bod virtuálního počítače. Tento krok konfigurace Azure směruje příchozí provoz portu TCP na port TCP, který je pro virtuální počítač přístupný.
@@ -61,7 +64,9 @@ Pokud se chcete připojit přes Internet, musíte použít název DNS virtuáln�
 
 Představte si třeba klasický virtuální počítač s názvem **mysqlvm** s názvem DNS **mysqlvm7777.cloudapp.NET** a koncovým bodem virtuálního počítače **57500**. Za předpokladu správného nakonfigurovaného připojení se pro přístup k virtuálnímu počítači odkudkoli na internetu dá použít následující připojovací řetězec:
 
-    "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 I když tento připojovací řetězec umožňuje připojení klientů přes Internet, neznamená to, že se kdokoli může připojit k vašemu SQL Server. Mimo klienty musí mít správné uživatelské jméno a heslo. Pro zvýšení zabezpečení nepoužívejte známý port 1433 pro veřejný koncový bod virtuálního počítače. A pokud je to možné, zvažte přidání seznamu ACL na koncový bod, který omezí provoz jenom na klienty, které povolíte. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [Správa seznamu ACL na koncovém bodu](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
@@ -77,7 +82,9 @@ Virtuální sítě taky umožňují připojit virtuální počítače Azure k do
 
 Pokud plánujete nakonfigurovat prostředí domény a ověřování systému Windows, nemusíte konfigurovat veřejný koncový bod nebo ověřování SQL a přihlášení. V tomto scénáři se můžete připojit k instanci SQL Server zadáním názvu SQL Server virtuálního počítače v připojovacím řetězci. Následující příklad předpokládá, že bylo nakonfigurováno ověřování systému Windows a že uživateli byl udělen přístup k instanci SQL Server.
 
-    "Server=mysqlvm;Integrated Security=true"
+```config
+"Server=mysqlvm;Integrated Security=true"
+```
 
 ## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Postup konfigurace připojení SQL Server na virtuálním počítači Azure
 Následující kroky ukazují, jak se připojit k instanci SQL Server přes Internet pomocí SQL Server Management Studio (SSMS). Stejný postup se ale vztahuje na to, aby byl váš SQL Server virtuální počítač dostupný pro vaše aplikace, a přitom běží místně i v Azure.

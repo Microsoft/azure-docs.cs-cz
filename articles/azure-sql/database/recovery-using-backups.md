@@ -3,8 +3,8 @@ title: Obnovení databáze ze zálohy
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Přečtěte si o obnovení k určitému bodu v čase, které vám umožní vrátit databázi v Azure SQL Database nebo instanci ve spravované instanci Azure SQL až do 35 dnů.
 services: sql-database
-ms.service: sql-database
-ms.subservice: operations
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 848b8afa6070cb8b0141602f3bb62f24868a9d64
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: e12d5d7e9cfc6cfa80de1032e3d4d5659c44c0a7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718600"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075877"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Obnovení pomocí automatických záloh databáze – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,11 +51,11 @@ Pro velkou nebo velmi aktivní databázi může obnovení trvat několik hodin. 
 
 U jednoho předplatného platí omezení počtu souběžných požadavků na obnovení. Tato omezení se vztahují na jakoukoli kombinaci obnovení, geografického obnovení a obnovení k bodu v čase v dlouhodobém zálohování.
 
-| | **Maximální počet souběžných požadavků zpracovávaných** | **Maximální počet souběžných požadavků, které jsou odesílány** |
+|| **Maximální počet souběžných požadavků zpracovávaných** | **Maximální počet souběžných požadavků, které jsou odesílány** |
 | :--- | --: | --: |
-|Samostatná databáze (na předplatné)|10|60|
-|Elastický fond (pro každý fond)|4|200|
-||||
+|**Samostatná databáze (na předplatné)**|10|60|
+|**Elastický fond (pro každý fond)**|4|200|
+
 
 Neexistuje integrovaná metoda pro obnovení celého serveru. Příklad toho, jak tento úkol provést, najdete v tématu [Azure SQL Database: úplné obnovení serveru](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
 
@@ -64,7 +64,7 @@ Neexistuje integrovaná metoda pro obnovení celého serveru. Příklad toho, ja
 
 ## <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-K dřívějšímu bodu v čase můžete pomocí Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases)obnovit samostatnou databázi ve fondu nebo instanci. Požadavek může pro obnovenou databázi zadat libovolnou úroveň služby nebo výpočetní velikost. Ujistěte se, že na serveru, na který obnovujete databázi, máte dostatečné prostředky. 
+K dřívějšímu bodu v čase můžete pomocí Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.)obnovit samostatnou databázi ve fondu nebo instanci. Požadavek může pro obnovenou databázi zadat libovolnou úroveň služby nebo výpočetní velikost. Ujistěte se, že na serveru, na který obnovujete databázi, máte dostatečné prostředky. 
 
 Po dokončení obnovení vytvoří novou databázi na stejném serveru jako původní databázi. Obnovená databáze se účtuje za normálních sazeb na základě její úrovně služeb a výpočetní velikosti. Dokud se obnovení databáze nedokončí, neúčtují se vám žádné poplatky.
 
@@ -84,7 +84,7 @@ V okně Přehled databáze, kterou chcete obnovit v Azure Portal, můžete obnov
 
 #### <a name="sql-database"></a>SQL Database
 
-Chcete-li obnovit jednu nebo ve fondu databáze k určitému bodu v čase pomocí Azure Portal, otevřete stránku Přehled databáze a na panelu nástrojů vyberte možnost **obnovit** . Zvolte zdroj zálohy a vyberte bod zálohování bodu v čase, ze kterého bude vytvořena nová databáze.
+Chcete-li obnovit databázi k určitému bodu v čase pomocí Azure Portal, otevřete stránku Přehled databáze a na panelu nástrojů vyberte možnost **obnovit** . Zvolte zdroj zálohy a vyberte bod zálohování bodu v čase, ze kterého bude vytvořena nová databáze.
 
   ![Snímek obrazovky s možnostmi obnovení databáze](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
@@ -110,7 +110,7 @@ Odstraněné databáze ze serveru nebo prostředku spravované instance obnovít
 
 #### <a name="sql-database"></a>SQL Database
 
-Chcete-li obnovit jednu nebo sdruženou odstraněnou databázi do času odstranění pomocí Azure Portal, otevřete stránku Přehled serveru a vyberte **odstraněné databáze**. Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
+Chcete-li obnovit odstraněnou databázi na čas odstranění pomocí Azure Portal, otevřete stránku Přehled serveru a vyberte **odstraněné databáze**. Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
 
   ![Snímek obrazovky obnovení odstraněné databáze](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
@@ -230,7 +230,7 @@ Chcete-li obnovit databázi spravované instance, přečtěte si téma [Restore-
 
 ### <a name="rest-api"></a>REST API
 
-Postup obnovení jedné nebo sdružené databáze pomocí REST API:
+Postup obnovení databáze pomocí REST API:
 
 | Rozhraní API | Description |
 | --- | --- |
@@ -241,7 +241,7 @@ Postup obnovení jedné nebo sdružené databáze pomocí REST API:
 
 #### <a name="sql-database"></a>SQL Database
 
-Pokud chcete obnovit jednu nebo sdruženou databázi pomocí rozhraní příkazového řádku Azure, přečtěte si téma [AZ SQL DB Restore](/cli/azure/sql/db#az-sql-db-restore).
+Chcete-li obnovit databázi pomocí rozhraní příkazového řádku Azure, přečtěte si téma [AZ SQL DB Restore](/cli/azure/sql/db#az-sql-db-restore).
 
 #### <a name="sql-managed-instance"></a>Spravovaná instance SQL
 

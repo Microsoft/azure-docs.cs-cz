@@ -3,8 +3,8 @@ title: Úspora výpočetních nákladů s využitím rezervované kapacity
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Naučte se koupit Azure SQL Database a rezervovanou kapacitu SQL spravované instance, abyste ušetřili náklady na výpočetní výkon.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 1a733ea631b5c11b9686682420311a0d35cf46a5
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 81e3547dbd86c840baed8e044a84afd3b63f5be5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718569"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075769"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Úspora nákladů pro prostředky s rezervovanou kapacitou – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -44,7 +44,7 @@ Velikost rezervace by měla být založená na celkovém množství výpočetní
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte **Přidat** a potom v podokně **rezervace nákupních** oblastí vyberte **SQL Database** , abyste si nakoupili novou rezervaci pro SQL Database.
-4. Vyplňte požadovaná pole. Existující databáze (samostatné nebo sdružené) nebo spravované instance, které odpovídají vybraným atributům, mají nárok na získání rezervované slevy kapacity. Skutečný počet databází nebo spravovaných instancí, které získají slevu, závisí na zvoleném rozsahu a množství.
+4. Vyplňte požadovaná pole. Existující databáze v SQL Database a SQL Managed instance, které odpovídají atributům, které jste vybrali, mají nárok na získání rezervované slevy kapacity. Skutečný počet databází nebo spravovaných instancí, které získají slevu, závisí na zvoleném rozsahu a množství.
 
     ![Snímek obrazovky před odesláním nákupu rezervované kapacity](./media/reserved-capacity-overview/sql-reserved-vcores-purchase.png)
 

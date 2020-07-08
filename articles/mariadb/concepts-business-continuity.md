@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532387"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076568"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Informace o kontinuitě podnikových aplikací v Azure Database for MariaDB
 
@@ -48,11 +48,12 @@ Druhou možností je použít funkci geografického obnovení Azure Database for
 > [!IMPORTANT]
 > Geografické obnovení je možné pouze v případě, že jste zřídili Server s geograficky redundantním úložištěm záloh.
 
+## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
+
+Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie MariaDB binárního protokolu pro replikaci. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
+
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o automatizovaných zálohách najdete [v tématu zálohy v Azure Database for MariaDB](concepts-backup.md).
-- Obnovení k určitému bodu v čase pomocí Azure Portal najdete v tématu [obnovení databáze k určitému bodu v čase pomocí Azure Portal](howto-restore-server-portal.md).
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- Přečtěte si další informace o [automatizovaných zálohách v Azure Database for MariaDB](concepts-backup.md).
+- Naučte se, jak obnovit pomocí [Azure Portal](howto-restore-server-portal.md) nebo rozhraní příkazového [řádku Azure](howto-restore-server-cli.md).
+- Přečtěte si o [replikách pro čtení v Azure Database for MariaDB](concepts-read-replicas.md).

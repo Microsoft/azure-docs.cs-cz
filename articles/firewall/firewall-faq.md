@@ -5,13 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: victorh
-ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791482"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078421"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -218,3 +219,7 @@ Ne, přesunutí skupiny IP adres do jiné skupiny prostředků se momentálně n
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Jaký je časový limit nečinnosti protokolu TCP pro Azure Firewall?
 
 Standardní chování síťové brány firewall je, aby bylo zajištěno, že připojení TCP jsou udržována v provozu, a aby je bylo možné okamžitě zavřít, pokud není žádná aktivita. Časový limit nečinnosti Azure Firewall TCP je 4 minuty. Toto nastavení není konfigurovatelné. Pokud je doba nečinnosti delší než hodnota časového limitu, není zaručena údržba relace TCP nebo HTTP. Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v [příkladech rozhraní .NET](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Můžu Azure Firewall nasadit bez veřejné IP adresy?
+
+Ne, v současné době je nutné nasadit Azure Firewall s veřejnou IP adresou.

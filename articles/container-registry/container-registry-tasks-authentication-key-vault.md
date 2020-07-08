@@ -2,13 +2,13 @@
 title: Externí ověřování z ACR úlohy
 description: Nakonfigurujte úlohu Azure Container Registry (úkol ACR) pro čtení přihlašovacích údajů služby Docker, které jsou uložené v trezoru klíčů Azure, pomocí spravované identity pro prostředky Azure.
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842516"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058125"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externí ověřování v úloze ACR s využitím identity spravované službou Azure 
 
@@ -104,7 +104,7 @@ Kroky v této části vytvoří úlohu a umožní uživateli přiřazenou identi
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *dockerhubtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `dockerhubtask.yaml` v pracovním adresáři. `--assign-identity` Parametr předá ID prostředku identity přiřazené uživatelem. 
+Vytvořte úlohu *dockerhubtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `dockerhubtask.yaml` v pracovním adresáři. `--assign-identity`Parametr předá ID prostředku identity přiřazené uživatelem. 
 
 ```azurecli
 az acr task create \
@@ -117,13 +117,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+
+### <a name="grant-identity-access-to-key-vault"></a>Udělení přístupu identit k trezoru klíčů
+
+Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy][az-keyvault-set-policy] . Následující příklad umožňuje identitě číst tajné klíče z trezoru klíčů. 
+
+```azurecli
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
+```
+
+Pokračujte [v ručním spuštění úlohy](#manually-run-the-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Možnost 2: vytvoření úlohy s identitou přiřazenou systémem
 
 Kroky v této části vytvoří úlohu a povolí identitu přiřazenou systémem. Pokud místo toho chcete povolit uživatelsky přiřazenou identitu, přečtěte si část [možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *dockerhubtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `dockerhubtask.yaml` v pracovním adresáři. `--assign-identity` Parametr bez hodnoty umožňuje systémem přiřazenou identitu daného úkolu.  
+Vytvořte úlohu *dockerhubtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `dockerhubtask.yaml` v pracovním adresáři. `--assign-identity`Parametr bez hodnoty umožňuje systémem přiřazenou identitu daného úkolu.  
 
 ```azurecli
 az acr task create \
@@ -136,7 +150,7 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Udělení přístupu identit k trezoru klíčů
+### <a name="grant-identity-access-to-key-vault"></a>Udělení přístupu identit k trezoru klíčů
 
 Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy][az-keyvault-set-policy] . Následující příklad umožňuje identitě číst tajné klíče z trezoru klíčů. 
 
@@ -149,7 +163,7 @@ az keyvault set-policy --name mykeyvault \
 
 ## <a name="manually-run-the-task"></a>Ručně spustit úlohu
 
-Chcete-li ověřit, zda je úloha, ve které jste povolili spravovanou identitu, úspěšně spuštěna, spusťte úlohu ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] . `--set` Parametr se používá k předání názvu soukromého úložiště do úlohy. V tomto příkladu je zástupný název úložiště *hubuser/hubrepo*.
+Chcete-li ověřit, zda je úloha, ve které jste povolili spravovanou identitu, úspěšně spuštěna, spusťte úlohu ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] . `--set`Parametr se používá k předání názvu soukromého úložiště do úlohy. V tomto příkladu je zástupný název úložiště *hubuser/hubrepo*.
 
 ```azurecli
 az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
@@ -202,7 +216,7 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-Pokud chcete potvrdit, že je image vložená, zkontrolujte,`cf24` jestli je značka (v tomto příkladu) v úložišti privátního Docker Hub.
+Pokud chcete potvrdit, že je image vložená, zkontrolujte, jestli je značka ( `cf24` v tomto příkladu) v úložišti privátního Docker Hub.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82232849"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075752"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -49,7 +49,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 
 ![Přehled řídicího panelu Apache Ambari](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Položka |Popis |
+|Položka |Description |
 |---|---|
 |Logo Ambari|Otevře řídicí panel, který se dá použít k monitorování clusteru.|
 |Název clusteru # OPS|Zobrazí počet probíhajících operací Ambari. Když vyberete název clusteru nebo **# OPS** , zobrazí se seznam operací na pozadí.|
@@ -61,7 +61,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="alerts"></a>Výstrahy
 
@@ -153,7 +153,7 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
 
 2. Pomocí nabídky **Akce** vyberte akci, kterou chcete provést:
 
-    |Položka |Popis |
+    |Položka |Description |
     |---|---|
     |Spustit všechny součásti|Spusťte všechny součásti na hostiteli.|
     |Zastavit všechny komponenty|Zastavte všechny součásti na hostiteli.|

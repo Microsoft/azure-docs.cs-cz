@@ -5,11 +5,12 @@ description: Seznamte se s osvědčenými postupy pro použití pokročilých fu
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340847"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077843"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
@@ -100,7 +101,7 @@ K logické izolaci prostředků s pevným vyjmutím se používají chuti a omez
 Pojďme se podívat na příklad uzlů s velkým množstvím paměti. Tyto uzly můžou mít přednost pro lusky, které vyžadují vysoké množství paměti. Aby se zajistilo, že se prostředky nečinný, umožňují také spuštění ostatních lusků.
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 Specifikace pod pak přidá `nodeSelector` vlastnost k definování voliče uzlu, který odpovídá sadě popisku na uzlu:

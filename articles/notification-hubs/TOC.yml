@@ -70,6 +70,8 @@
           items:
             - name: Xamarin.Forms
               href: notification-hubs-backend-service-xamarin-forms.md
+            - name: React Native
+              href: notification-hubs-backend-service-react-native.md
     - name: telefon se systémem Windows
       items:
         - name: Odesílání nabízených oznámení aplikacím

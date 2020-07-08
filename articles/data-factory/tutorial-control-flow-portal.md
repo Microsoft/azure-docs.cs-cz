@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077643"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Větvení a řetězení aktivit v Azure Data Factoryovém kanálu pomocí Azure Portal
 
@@ -93,7 +93,7 @@ Požadavek v návrháři aplikace logiky by měl vypadat podobně jako na násle
 
 ![Návrhář aplikace logiky – požadavek](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Tady je příklad:
+Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Zde naleznete příklad:
 
 ![Návrhář aplikace logiky – akce odeslání e-mailu](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -105,7 +105,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
-Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Tady je příklad:
+Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
 
 ![Návrhář aplikace logiky – pracovní postup pro e-maily s informací o neúspěchu](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *Název objektu pro vytváření dat "ADFTutorialDataFactory" není k dispozici.*
+
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 
@@ -202,10 +203,11 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
    ![Nová propojená služba Azure Storage](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Jako složku zadejte `@pipeline().parameters.sourceBlobContainer` a jako název souboru zadejte `emp.txt`. Parametr kanálu sourceBlobContainer použijete k nastavení cesty ke složce pro datovou sadu.
 
-   ![Nastavení zdrojové datové sady](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. Přepněte na kartu s **kanálu** (nebo) klikněte na kanál ve stromovém zobrazení. Ověřte, že jako **Zdrojová datová sada** je vybraná datová sada **SourceBlobDataset**.
+    ![Nastavení zdrojové datové sady](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![Zdrojová datová sada](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. Přepněte na kartu s **kanálu** (nebo) klikněte na kanál ve stromovém zobrazení. Ověřte, že jako **Zdrojová datová sada** je vybraná datová sada **SourceBlobDataset**.
+      
+   ![Zdrojová datová sada](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
 13. V okně Vlastnosti přepněte na kartu **Jímka** a klikněte na **+ Nová** v části **Datová sada jímky**. V tomto kroku pro aktivitu kopírování vytvoříte datovou sadu jímky podobným způsobem, jako jste vytvořili zdrojovou datovou sadu.
 

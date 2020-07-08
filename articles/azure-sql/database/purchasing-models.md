@@ -3,8 +3,8 @@ title: Nákupní modely
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Přečtěte si informace o nákupních modelech, které jsou k dispozici pro Azure SQL Database a Azure SQL Managed instance.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: f54af4832f2885611420c33209ca873bc5cd5908
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718865"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075872"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -41,6 +41,10 @@ Následující tabulka a graf se porovnávají a kontrastují s nákupními mode
 ||||  
 
 ![Porovnání cenového modelu](./media/purchasing-models/pricing-model.png)
+
+Chcete optimalizovat a uložit své útraty do cloudu?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="compute-costs"></a>Náklady na výpočetní výkon
 
