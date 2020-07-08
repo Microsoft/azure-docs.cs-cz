@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83779606"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
@@ -39,13 +38,13 @@ Tento článek je založený na rutinách v AZ Batch Module 1.0.0. Moduly Azure 
 
 ### <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
-**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střední USA“. Například:
+**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střední USA“. Příklad:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Potom ve skupině prostředků vytvořte účet Batch. Zadejte název účtu v <*account_name*> a umístění a název vaší skupiny prostředků. Vytváření účtu Batch může nějakou dobu trvat. Například:
+Potom ve skupině prostředků vytvořte účet Batch. Zadejte název účtu v <*account_name*> a umístění a název vaší skupiny prostředků. Vytváření účtu Batch může nějakou dobu trvat. Příklad:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +78,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Odstranění účtu Batch
 
-**Remove-AzBatchAccount** odstraní účet Batch. Například:
+**Remove-AzBatchAccount** odstraní účet Batch. Příklad:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -164,7 +163,7 @@ Parametr **ID** podporuje pouze vyhledávání s úplným ID; Nejedná se o zás
 
 ### <a name="use-the-maxcount-parameter"></a>Použití parametru MaxCount
 
-Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, můžete buď upřesnit filtr, aby vracel méně objektů, nebo explicitně nastavit maximální hodnotu pomocí parametru **MaxCount**. Například:
+Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, můžete buď upřesnit filtr, aby vracel méně objektů, nebo explicitně nastavit maximální hodnotu pomocí parametru **MaxCount**. Příklad:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context

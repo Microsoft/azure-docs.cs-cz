@@ -9,13 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681996"
 ---
-# <a name="drawing-conversion-errors-and-warnings"></a>Vykreslování chyb a upozornění při převodu
+# <a name="drawing-conversion-errors-and-warnings"></a>Upozornění a chyby převodu kreslení
 
 [Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Balíčky pro kreslení musí splňovat [požadavky balíčku pro vykreslování](drawing-requirements.md). Pokud nejsou splněny některé požadavky, služba konverze vrátí chyby nebo upozornění. V tomto článku jsou uvedeny kódy chyb a varování při převodu s doporučeními, jak je vyřešit. Poskytuje také některé příklady kreseb, které mohou způsobit, že služba převodu vrátí tyto kódy.
 
@@ -343,14 +342,14 @@ K **dwgError** dojde v případě, že balíček pro kreslení obsahuje soubor D
 
 * Soubor DWG není platným kresbou formátu souborů DWG AutoCADu.
 * Soubor DWG je poškozený.
-* Soubor DWG je uveden v souboru _manifest. JSON_ , ale v archivu zip chybí.
+* Soubor DWG je uvedený v _manifest.jsv_ souboru, ale v archivu zip chybí.
 
 #### <a name="how-to-fix-dwgerror"></a>*Jak opravit dwgError*
 
-Chcete-li opravit **dwgError**, zkontrolujte soubor _manifest. JSON_ a potvrďte, že:
+Pokud chcete opravit **dwgError**, zkontrolujte _manifest.jsv_ souboru a ověřte, že:
 
 * Všechny soubory DWG v archivu ZIP jsou platné kresby formátu DWG AutoCADu, v AutoCADu je otevřete. Odeberte nebo opravte všechny neplatné výkresy.
-* Seznam souborů DWG v souboru _manifest. JSON_ odpovídá souborům DWG v archivu zip.
+* Seznam souborů DWG v _manifest.js_ se shoduje se soubory DWG v archivu zip.
 
 ## <a name="manifest-errors"></a>Chyby manifestu
 
@@ -358,9 +357,9 @@ Chcete-li opravit **dwgError**, zkontrolujte soubor _manifest. JSON_ a potvrďte
 
 #### <a name="description-for-invalidjsonformat"></a>Popis pro invalidJsonFormat
 
-K chybě **invalidJsonFormat** dojde v případě, že soubor _manifest. JSON_ nelze přečíst.
+Pokud _manifest.js_ pro soubor nelze přečíst, dojde k chybě **invalidJsonFormat** .
 
-_Manifest. json_file nelze načíst z důvodu chyb formátování nebo syntaxe JSON. Další informace o tom, jak formátovat a syntax formátu JSON, najdete [ve formátu výměny dat JavaScript Object Notation (JSON)](https://tools.ietf.org/html/rfc7159) .
+On_file _manifest.jsnelze načíst z důvodu chyb formátování nebo syntaxe JSON. Další informace o tom, jak formátovat a syntax formátu JSON, najdete [ve formátu výměny dat JavaScript Object Notation (JSON)](https://tools.ietf.org/html/rfc7159) .
 
 #### <a name="how-to-fix-invalidjsonformat"></a>*Jak opravit invalidJsonFormat*
 
@@ -370,7 +369,7 @@ K opravě chyby **invalidJsonFormat** použijte linter JSON ke zjištění a vy�
 
 #### <a name="description-for-missingrequiredfield"></a>*Popis pro missingRequiredField*
 
-K chybě **missingRequiredField** dojde v případě, že v souboru _manifest. JSON_ chybí požadovaná data.
+Pokud _manifest.jsv_ souboru chybí požadovaná data, dojde k chybě **missingRequiredField** .
 
 #### <a name="how-to-fix-missingrequiredfield"></a>*Jak opravit missingRequiredField*
 
@@ -380,23 +379,23 @@ Chcete-li opravit chybu **missingRequiredField** , ověřte, zda manifest obsahu
 
 #### <a name="description-for-missingmanifest"></a>*Popis pro missingManifest*
 
-K chybě **missingManifest** dojde v případě, že v archivu zip chybí soubor _manifest. JSON_ .
+K chybě **missingManifest** dojde, když v archivu ZIP chybí _manifest.jsv_ souboru.
 
 K chybě **missingManifest** dojde z jednoho nebo více následujících důvodů:
 
-* Soubor _manifest. JSON_ je špatně napsaný.
-* _Manifest. JSON_ chybí.
-* _Manifest. JSON_ není v kořenovém adresáři archivu zip.
+* Soubor _manifest.jsv_ souboru je špatně napsaný.
+* _manifest.js_ chybí.
+* _manifest.jsv_ adresáři není v kořenovém adresáři archivu zip.
 
 #### <a name="how-to-fix-missingmanifest"></a>*Jak opravit missingManifest*
 
-Pokud chcete opravit chybu **missingManifest** , zkontrolujte, že archiv obsahuje soubor s názvem _manifest. JSON_ na kořenové úrovni archivu zip.
+Pokud chcete opravit chybu **missingManifest** , zkontrolujte, že archiv obsahuje soubor s názvem _manifest.jsna_ kořenové úrovni archivu zip.
 
 ### <a name="conflict"></a>**Konflikt**
 
 #### <a name="description-for-conflict"></a>*Popis pro konflikt*
 
-K chybě **konfliktu** dojde, když soubor _manifest. JSON_ obsahuje konfliktní informace.
+K chybě **konfliktu** dojde, když _manifest.jsv_ souboru obsahuje konfliktní informace.
 
 #### <a name="example-scenario-for-conflict"></a>*Ukázkový scénář pro konflikt*
 
@@ -422,13 +421,13 @@ Služba konverze vrátí chybu **konfliktu** , pokud je definována více než j
 
 #### <a name="how-to-fix-conflict"></a>*Jak opravit konflikt*
 
-Chcete-li opravit chybu **konfliktu** , zkontrolujte _manifest. JSON_ a odeberte všechny konfliktní informace.
+Pokud chcete opravit chybu **konfliktu** , zkontrolujte _manifest.js_ a odeberte všechny konfliktní informace.
 
 ### <a name="invalidgeoreference"></a>**invalidGeoreference**
 
 #### <a name="description-for-invalidgeoreference"></a>*Popis pro invalidGeoreference*
 
-K chybě **invalidGeoreference** dojde v případě, že soubor _manifest. JSON_ obsahuje neplatnou informaci o mikroodkazech.
+K chybě **invalidGeoreference** dojde, když _manifest.jsv_ souboru obsahuje neplatný ukazatel.
 
 K chybě **invalidGeoreference** dojde z jednoho nebo více následujících důvodů:
 

@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83739528"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
@@ -174,7 +173,7 @@ Po nastavení vlastností smlouvy můžete nakonfigurovat způsob, jakým tato s
    * [Číslo verze ovládacího prvku](#outbound-control-version-number)
    * [Řídicí čísla](#outbound-control-numbers)
    * [Znakové sady a oddělovače](#outbound-character-sets-separators)
-   * [Ověřování](#outbound-validation)
+   * [Export](#outbound-validation)
 
 1. Až to budete mít, nezapomeňte nastavení uložit tak, že vyberete **OK**.
 
@@ -316,7 +315,7 @@ Když pracujete se schématy HIPAA a typy zpráv 277 nebo 837, je nutné provés
 
 Tato tabulka uvádí seznam ovlivněných zpráv, všechny varianty a čísla verzí dokumentů, která jsou namapována na tyto typy zpráv:
 
-| Typ nebo varianta zprávy |  Popis | Číslo verze dokumentu (GS8) |
+| Typ nebo varianta zprávy |  Description | Číslo verze dokumentu (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Oznámení o stavu informací o zdravotní péči | 005010X212 |
 | 837_I | Institucionální deklarace identity zdravotnictví | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |

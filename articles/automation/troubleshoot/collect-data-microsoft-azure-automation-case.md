@@ -14,13 +14,12 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684840"
 ---
-# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Data, která se mají shromažďovat při otevírání případu pro Microsoft Azure Automation
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation
 
 Tento článek popisuje některé informace, které byste měli shromáždit před otevřením případu pro Azure Automation s podporou Microsoft Azure. Tyto informace nejsou nutné k otevření případu. Může to ale přispět k rychlejšímu řešení problému Microsoftu. Po otevření případu může být také požádáni o tato data pracovníkem podpory.
 

@@ -9,10 +9,9 @@ ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
 ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772894"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
@@ -32,7 +31,7 @@ Tady je několik způsobů, jak můžete nasadit virtuální počítač s DCsv2:
 
 **Budou všechny image operačních systémů fungovat s důvěrným výpočetním prostředím Azure?**
 
-No. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/linux/generation-2.md) a [Windows](../virtual-machines/windows/generation-2.md)
+Ne. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/linux/generation-2.md) a [Windows](../virtual-machines/windows/generation-2.md)
 
 **Virtuální počítače s DCsv2 jsou na portálu zobrazeny šedě a nelze je vybrat.**
 
@@ -55,7 +54,7 @@ Virtuální počítače DC-Series běží na starších 6 procesorech Intel s In
 
 **Jsou virtuální počítače DCsv2 k dispozici globálně?**
 
-No. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
+Ne. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
 
 **Návody na virtuální počítače s DCsv2 nainstalovat sadu Open enklávy SDK?**
    

@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745013"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Prahové hodnoty, způsoby a časové rámce plateb
@@ -40,14 +39,14 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 
 | Země/oblast | Azure Marketplace | Ukládání, inzerce, míchání a Minecraftu | Office | Platby PayPal  |
 | --- | --- | --- | --- | --- |
-| Afghánistán | Ano | Ano | Ne | Ne |
+| Afghánistán | Ano | Ano | No | No |
 | Albánie | Ano | Ano | Ano | Ano |
 | Alžírsko | Ano | Ano | Ano | Ano |
-| Andorra | Ne | Ne | Ano | Ano |
+| Andorra | No | No | Ano | Ano |
 | Angola | Ano | Ano | Ano | No |
-| Antigua a Barbuda | Ano | Ano | No | Ano |
+| Antigua a Barbuda | Ano | Ano | No | Yes |
 | Argentina | Ano | Ano | Ano | Ano |
-| Arménie | Ano | Ano | Ne | Ne |
+| Arménie | Ano | Ano | No | No |
 | Austrálie | Ano | Ano | Ano | Ano |
 | Rakousko | Ano | Ano | Ano | Ano |
 | Ázerbájdžán | Ano | Ano | Ano | No |
@@ -58,7 +57,7 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Benin | Ano | Ano | Ano | No |
 | Bolívie | Ano | Ano | Ano | No |
 | Bosna a Hercegovina | Ano | Ano | Ano | Ano |
-| Botswana | Ano | Ano | No | Ano |
+| Botswana | Ano | Ano | No | Yes |
 | Brazílie | Ano | Ano | Ano | Ano |
 | Bulharsko | Ano | Ano | Ano | Ano |
 | Burkina Faso | Ano | Ano | Ano | No |
@@ -71,7 +70,7 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Chile | Ano | Ano | Ano | Ano |
 | Čína | No | Ano | Ano | Ano |
 | Kolumbie | Ano | Ano | Ano | Ano |
-| Komory | Ano | Ano | Ne | Ne |
+| Komory | Ano | Ano | No | No |
 | Konžská demokratická republika | Ano | Ano | Ano | No |
 | Konžská demokratická republika | Ano | Ano | Ano | No |
 | Kostarika | Ano | Ano | Ano | Ano |
@@ -80,7 +79,7 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Kypr | Ano | Ano | Ano | Ano |
 | Česká republika | Ano | Ano | Ano | Ano |
 | Dánsko | Ano | Ano | Ano | Ano |
-| Dominika | Ano | Ano | No | Ano |
+| Dominika | Ano | Ano | No | Yes |
 | Dominikánská republika | Ano | Ano | Ano | Ano |
 | Ekvádor | Ano | Ano | Ano | Ano |
 | Egypt | Ano | Ano | Ano | Ano |
@@ -88,7 +87,7 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Eritrea | Ano | Ano | Ano | No |
 | Estonsko | Ano | Ano | Ano | Ano |
 | Etiopie | Ano | Ano | Ano | No |
-| Ostrovy Fidži | Ano | Ano | Ne | Ne |
+| Fidži | Ano | Ano | No | No |
 | Finsko | Ano | Ano | Ano | Ano |
 | Francie | Ano | Ano | Ano | Ano |
 | Gruzie | Ano | Ano | Ano | Ano |
@@ -104,7 +103,7 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Island | Ano | Ano | Ano | No |
 | Indie | Ano | Ano | Ano | Ano |
 | Indonésie | Ano | Ano | Ano | Ano |
-| Irák | Ano | Ano | Ne | Ne |
+| Irák | Ano | Ano | No | No |
 | Irsko | Ano | Ano | Ano | Ano |
 | Izrael | Ano | Ano | Ano | Ano |
 | Itálie | Ano | Ano | Ano | Ano |
@@ -115,10 +114,10 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Keňa | Ano | Ano | Ano | Ano |
 | Korea (Jižní) | Ano | Ano | Ano | No |
 | Kuvajt | Ano | Ano | Ano | Ano |
-| Kyrgyzstán | Ne | Ne | Ano | No |
+| Kyrgyzstán | No | No | Yes | No |
 | Laos | Ano | Ano | Ano | No |
 | Lotyšsko | Ano | Ano | Ano | No |
-| Libanon | Ano | Ano | Ne | Ne |
+| Libanon | Ano | Ano | No | No |
 | Libérie | Ano | Ano | Ano | No |
 | Lichtenštejnsko | Ano | Ano | Ano | Ano |
 | Litva | Ano | Ano | Ano | No |
@@ -129,9 +128,9 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Malajsie | Ano | Ano | Ano | Ano |
 | Mali | Ano | Ano | Ano | No |
 | Malta | Ano | Ano | Ano | Ano |
-| Mauricius | Ano | Ano | No | Ano |
+| Mauricius | Ano | Ano | No | Yes |
 | Mexiko | Ano | Ano | Ano | Ano |
-| Monako | Ano | Ano | Ne | Ne |
+| Monako | Ano | Ano | No | No |
 | Mongolsko | Ano | Ano | Ano | No |
 | Černá Hora | Ano | Ano | Ano | No |
 | Maroko | Ano | Ano | Ano | No |
@@ -151,12 +150,12 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Filipíny | Ano | Ano | Ano | Ano |
 | Polsko | Ano | Ano | Ano | Ano |
 | Portugalsko | Ano | Ano | Ano | Ano |
-| Portoriko | Ne | Ne | Ano | No |
+| Portoriko | No | No | Yes | No |
 | Katar | Ano | Ano | Ano | Ano |
 | Rumunsko | Ano | Ano | Ano | No |
-| Rusko | Ano | Ano | No | Ano |
+| Rusko | Ano | Ano | No | Yes |
 | Rwanda | Ano | Ano | Ano | No |
-| Svatý Vincenc a Grenadiny | No | Ano | Ne | Ne |
+| Svatý Vincenc a Grenadiny | No | Yes | No | No |
 | Saúdská Arábie | Ano | Ano | Ano | Ano |
 | Senegal | Ano | Ano | Ano | No |
 | Srbsko | Ano | Ano | Ano | No |
@@ -171,23 +170,23 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Švédsko | Ano | Ano | Ano | Ano |
 | Švýcarsko | Ano | Ano | Ano | No |
 | Tchaj-wan | No | Ano | Ano | Ano |
-| Tádžikistán | Ano | Ano | Ne | Ne |
+| Tádžikistán | Ano | Ano | No | No |
 | Tanzanie | Ano | Ano | Ano | No |
 | Thajsko | Ano | Ano | Ano | Ano |
 | Timor Leste | Ano | Ano | Ano | No |
 | Togo | Ano | Ano | Ano | No |
-| Tonga | Ano | Ano | Ne | Ne |
+| Tonga | Ano | Ano | No | No |
 | Trinidad a Tobago | Ano | Ano | Ano | Ano |
 | Tunisko | Ano | Ano | Ano | No |
 | Turecko | Ano | Ano | Ano | No |
-| Turkmenistán | Ano | Ano | Ne | Ne |
+| Turkmenistán | Ano | Ano | No | No |
 | Uganda | Ano | Ano | Ano | No |
-| Ukrajina | Ano | Ano | Ne | Ne |
+| Ukrajina | Ano | Ano | No | No |
 | Spojené arabské emiráty | Ano | Ano | Ano | Ano |
 | Spojené království | Ano | Ano | Ano | Ano |
 | USA | Ano | Ano | Ano | Ano |
 | Uruguay | Ano | Ano | Ano | Ano |
-| Uzbekistán | Ano | Ano | Ne | Ne |
+| Uzbekistán | Ano | Ano | No | No |
 | Venezuela | Ano | Ano | Ano | Ano |
 | Vietnam | Ano | Ano | Ano | Ano |
 | Zambie | Ano | Ano | Ano | No |

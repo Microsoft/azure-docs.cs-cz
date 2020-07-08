@@ -12,10 +12,9 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744419"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Nastavte bezpečnostní klíč jako metodu ověřování.
@@ -33,7 +32,7 @@ Metody bezpečnostních údajů se používají pro ověřování dvou faktorů 
 
 | Metoda | Použití |
 | ------ | -------- |
-| Aplikace Authenticator | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
 | Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
@@ -49,7 +48,7 @@ Správce nebo vaše organizace vám poskytne klíč zabezpečení, pokud to vyž
 > [!Note]
 > Pokud nemůžete použít bezpečnostní klíč FIDO2, můžete použít i jiné metody ověřování bez hesla, jako je například aplikace Microsoft Authenticator nebo Windows Hello. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md). Další informace o Windows Hello najdete v tématu [Přehled Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Předtím, než budete moci zaregistrovat klíč zabezpečení, musí být splněny následující podmínky:
 

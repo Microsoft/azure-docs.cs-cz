@@ -4,10 +4,9 @@ description: Jak nakonfigurovat nebo zakázat přístup k portům SSH nebo RDP n
 ms.topic: how-to
 ms.date: 02/13/2018
 ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780297"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurace nebo zakázání vzdáleného přístupu k výpočetním uzlům ve fondu Azure Batch
@@ -21,7 +20,7 @@ Konfigurace koncového bodu se skládá z jednoho nebo více [fondů překládá
 
 Každá konfigurace fondu NAT zahrnuje jedno nebo více [pravidel skupiny zabezpečení sítě (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Každé pravidlo NSG povoluje nebo odmítá určitý síťový provoz do koncového bodu. Můžete zvolit, že chcete povolit nebo zakázat veškerý provoz, provoz identifikovaný [značkou služby](../virtual-network/security-overview.md#service-tags) (například Internet) nebo provoz z konkrétních IP adres nebo podsítí.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 * Konfigurace koncového bodu fondu je součástí [Konfigurace sítě](/rest/api/batchservice/pool/add#networkconfiguration)fondu. Konfigurace sítě může volitelně zahrnovat nastavení pro připojení fondu ke [službě Azure Virtual Network](batch-virtual-network.md). Pokud nastavíte fond ve virtuální síti, můžete vytvořit pravidla NSG, která používají nastavení adres ve virtuální síti.
 * Při konfiguraci fondu NAT můžete nakonfigurovat několik pravidel NSG. Pravidla jsou kontrolována v pořadí podle priority. Jakmile se pravidlo aplikuje, u dalších pravidel se už shoda nekontroluje.
 

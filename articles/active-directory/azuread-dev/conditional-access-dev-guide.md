@@ -14,19 +14,18 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738043"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře týkající se podmíněného přístupu ke službě Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
-* Vícefaktorové ověřování
+* Ověřování pomocí služby Multi-Factor Authentication
 * Povoluje přístup ke konkrétním službám jenom zařízením zaregistrovaným v Intune.
 * Omezení umístění uživatelů a rozsahů IP adres
 
@@ -46,7 +45,7 @@ Konkrétně následující scénáře vyžadují kód pro zpracování výzev po
 
 * Aplikace, které provádějí tok za běhu
 * Aplikace, které přistupují k několika službám nebo prostředkům
-* Jednostránkové aplikace používající ADAL. js
+* Jednostránkové aplikace používající ADAL.js
 * Web Apps volání prostředku
 
 Zásady podmíněného přístupu se dají použít pro aplikaci, ale dají se použít i pro webové rozhraní API, ke kterému přistupuje aplikace. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu, najdete v tématu [běžné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md).
@@ -98,7 +97,7 @@ Následující informace platí jenom v těchto scénářích podmíněného př
 
 * Aplikace, které provádějí tok za běhu
 * Aplikace, které přistupují k několika službám nebo prostředkům
-* Jednostránkové aplikace používající ADAL. js
+* Jednostránkové aplikace používající ADAL.js
 
 V následujících částech jsou pojednávají běžné scénáře, které jsou složitější. Základní provozní princip je vyhodnocen jako zásady podmíněného přístupu v době, kdy je token požadován pro službu s použitou zásadou podmíněného přístupu.
 
@@ -147,11 +146,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Pokud aplikace používá knihovnu ADAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě aplikace potřebuje provést interaktivní požadavek, ```AcquireToken``` aby koncovému uživateli bylo umožněno dodržovat tyto zásady.
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scénář: jednostránkové aplikace (SPA) využívající ADAL. js
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scénář: jednostránkové aplikace (SPA) pomocí ADAL.js
 
-V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplikaci (SPA), pomocí knihovny ADAL. js zavoláme webové rozhraní API pro podmíněný přístup. Toto je jednoduchá architektura, ale má několik drobné odlišnosti, které je potřeba vzít v úvahu při vývoji podmíněného přístupu.
+V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplikaci (SPA), která používá ADAL.js k volání webového rozhraní API chráněného podmíněného přístupu. Toto je jednoduchá architektura, ale má několik drobné odlišnosti, které je potřeba vzít v úvahu při vývoji podmíněného přístupu.
 
-V ADAL. js existuje několik funkcí, které získají tokeny: `login()` , `acquireToken(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
+V ADAL.js existuje několik funkcí, které získají tokeny: `login()` , `acquireToken(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
 
 * `login()`Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
 * `acquireToken(…)`dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
@@ -173,7 +172,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Naše aplikace potřebuje zachytit `error=interaction_required` . Aplikace pak může použít buď `acquireTokenPopup()` nebo `acquireTokenRedirect()` u stejného prostředku. Uživatel je nucen provést službu Multi-Factor Authentication. Jakmile uživatel dokončí službu Multi-Factor Authentication, aplikace vydá nový přístupový token pro požadovaný prostředek.
 
-Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete v případě, že si vyrezervujete [vzorový kód pro obecné úhlové. js](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) , najdete pokyny k úhlů
+Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete vyrezervovat obecný [Angular.js ukázka kódu](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) pro doprovodné materiály k ÚHLOVé Spa.
 
 ## <a name="see-also"></a>Viz také
 

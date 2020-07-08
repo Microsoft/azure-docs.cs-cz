@@ -4,10 +4,9 @@ description: Popisuje, jak přidat nové certifikáty, certifikát výměny a od
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83658381"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů clusteru Service Fabric v Azure
@@ -46,11 +45,11 @@ Tento postup předpokládá, že jste obeznámeni s tím, jak Správce prostřed
 
 ### <a name="edit-your-resource-manager-template"></a>Úprava šablony Správce prostředků
 
-Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. JSON obsahuje všechny úpravy, které budeme dělat. Tato ukázka je k dispozici v [úložišti Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
+Pro usnadnění následujících funkcí se vzorový 5-VM-1-NodeTypes-Secure_Step2.JSna obsahuje všechny úpravy, které budeme dělat. Tato ukázka je k dispozici v [úložišti Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Ujistěte se, že provedete všechny kroky.**
 
-1. Otevřete šablonu Správce prostředků, kterou jste použili k nasazení clusteru. (Pokud jste si stáhli ukázku z předchozího úložiště, pomocí 5-VM-1-NodeTypes-Secure_Step1. JSON nasaďte zabezpečený cluster a pak otevřete tuto šablonu.
+1. Otevřete šablonu Správce prostředků, kterou jste použili k nasazení clusteru. (Pokud jste si stáhli ukázku z předchozího úložiště, použijte 5-VM-1-NodeTypes-Secure_Step1.JSna k nasazení zabezpečeného clusteru a pak otevřete tuto šablonu).
 
 2. Přidejte **dva nové parametry** "secCertificateThumbprint" a "secCertificateUrlValue" typu "String" do oddílu parametru vaší šablony. Následující fragment kódu můžete zkopírovat a přidat ho do šablony. V závislosti na zdroji šablony už možná máte tato definovaná definice, pokud se tak chcete přesunout k dalšímu kroku. 
  
@@ -165,7 +164,7 @@ Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. J
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Upravte soubor šablony tak, aby odrážel nové parametry, které jste přidali výše.
-Pokud používáte ukázku z [úložiště Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) , abyste mohli postupovat podle, můžete začít dělat změny v ukázce 5-VM-1-nodetypes-Secure. PARAMETERS_STEP2. JSON. 
+Pokud používáte ukázku z [úložiště Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) , abyste mohli postupovat podle, můžete začít provádět změny v ukázkové 5-VM-1-NodeTypes-Secure.parameters_Step2.JSdne. 
 
 Upravte soubor parametrů šablony Správce prostředků přidejte dva nové parametry pro secCertificateThumbprint a secCertificateUrlValue. 
 

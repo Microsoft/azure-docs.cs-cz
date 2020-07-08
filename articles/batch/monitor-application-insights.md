@@ -4,10 +4,9 @@ description: Naučte se, jak instrumentovat aplikaci Azure Batch .NET pomocí kn
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83723608"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí Application Insights
@@ -48,7 +47,7 @@ Odkaz Application Insights z vaší aplikace .NET pomocí oboru názvů **Micros
 
 ## <a name="instrument-your-code"></a>Instrumentace kódu
 
-Chcete-li instrumentovat svůj kód, vaše řešení musí vytvořit Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). V tomto příkladu TelemetryClient načte svou konfiguraci ze souboru [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) . Nezapomeňte aktualizovat ApplicationInsights. config v následujících projektech s vaším klíčem Application Insights instrumentace: Microsoft. Azure. batch. Samples. TelemetryStartTask a TopNWordsSample.
+Chcete-li instrumentovat svůj kód, vaše řešení musí vytvořit Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). V tomto příkladu TelemetryClient načte svou konfiguraci z [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) souboru. Nezapomeňte aktualizovat ApplicationInsights.config v následujících projektech s vaším klíčem Application Insights instrumentace: Microsoft.Azure.Batch. Samples. TelemetryStartTask a TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Batch.Samples.TelemetryInitializer
 }
 ```
 
-Chcete-li povolit inicializátor telemetrie, soubor ApplicationInsights. config v projektu TopNWordsSample zahrnuje následující:
+Chcete-li povolit inicializátor telemetrie, soubor ApplicationInsights.config v projektu TopNWordsSample zahrnuje následující:
 
 ```xml
 <TelemetryInitializers>

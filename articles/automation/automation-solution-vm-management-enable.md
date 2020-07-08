@@ -6,13 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743762"
 ---
-# <a name="enable-startstop-vms-during-off-hours"></a>Povolit Start/Stop VMs during off-hours
+# <a name="enable-startstop-vms-during-off-hours"></a>Povolení funkce Enable Start/Stop VMs during off-hours
 
 Provedením kroků v tomto tématu zapněte funkci Start/Stop VMs during off-hours pro virtuální počítače s využitím nového nebo existujícího účtu Automation a propojeného pracovního prostoru Log Analytics. Po dokončení procesu instalace nakonfigurujte proměnné pro přizpůsobení funkce.
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743617"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s událostmi řízeným zpracováním na pozadí pomocí sady Azure WebJobs SDK
@@ -217,7 +216,7 @@ Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, kt
 
 Sada WebJobs SDK hledá připojovací řetězec úložiště v nastavení aplikace v Azure. Když spouštíte místně, vyhledá tuto hodnotu v místním konfiguračním souboru nebo v proměnných prostředí.
 
-1. Klikněte pravým tlačítkem myši na projekt, vyberte možnost **Přidat**  >  **novou položku...**, zvolte **konfigurační soubor JSON pro JavaScript**, pojmenujte nový soubor *appSettings. JSON* a vyberte **Přidat**. 
+1. Klikněte pravým tlačítkem myši na projekt, vyberte možnost **Přidat**  >  **novou položku...**, zvolte **konfigurační soubor JSON pro JavaScript**, pojmenujte nový soubor *appsettings.jsv* souboru a vyberte **Přidat**. 
 
 1. V novém souboru přidejte `AzureWebJobsStorage` pole, jako v následujícím příkladu:
 
@@ -229,7 +228,7 @@ Sada WebJobs SDK hledá připojovací řetězec úložiště v nastavení aplika
 
 1. Nahraďte *{Storage Connection String}* připojovacím řetězcem, který jste zkopírovali dříve.
 
-1. V Průzkumník řešení vyberte soubor *appSettings. JSON* a v okně **vlastnosti** nastavte **Kopírovat do výstupního adresáře** na kopírovat, **Pokud je novější**.
+1. Vyberte *appsettings.js* v souboru v Průzkumník řešení a v okně **vlastnosti** nastavte **Kopírovat do výstupního adresáře** na kopírovat, **Pokud je novější**.
 
 Později přidáte stejné nastavení aplikace připojovacího řetězce do aplikace v Azure App Service.
 
@@ -340,7 +339,7 @@ V této části provedete následující úlohy, abyste nastavili protokolován�
 
 1. Vyberte **Uložit**.
 
-1. Přidejte do projektu připojení Application Insights, abyste ho mohli spustit místně. V souboru *appSettings. JSON* přidejte `APPINSIGHTS_INSTRUMENTATIONKEY` pole, jako v následujícím příkladu:
+1. Přidejte do projektu připojení Application Insights, abyste ho mohli spustit místně. Do *appsettings.jsv* souboru přidejte `APPINSIGHTS_INSTRUMENTATIONKEY` pole, jako v následujícím příkladu:
 
     ```json
     {

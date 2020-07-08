@@ -10,10 +10,9 @@ ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744961"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
@@ -39,7 +38,7 @@ Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Při vytvá
 
 Když vytvoříte proměnnou pomocí Azure Portal, je nutné zadat datový typ z rozevíracího seznamu, aby portál mohl zobrazit příslušný ovládací prvek pro zadání hodnoty proměnné. Následující typy proměnných jsou k dispozici v Azure Automation:
 
-* String
+* Řetězec
 * Integer
 * DateTime
 * Logická hodnota
@@ -58,7 +57,7 @@ Můžete uložit více hodnot do jedné proměnné tak, že vytvoříte pole neb
 
 Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](modules.md#az-modules).
 
-| Rutina | Popis |
+| Rutina | Description |
 |:---|:---|
 |[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
 |[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Vytvoří novou proměnnou a nastaví její hodnotu.|
@@ -69,7 +68,7 @@ Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace
 
 Interní rutiny v následující tabulce se používají pro přístup k proměnným v sadách Runbook a konfiguracích DSC. Tyto rutiny se dodávají s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
-| Interní rutina | Popis |
+| Interní rutina | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Načte hodnotu existující proměnné.|
 |`Set-AutomationVariable`|Nastaví hodnotu pro existující proměnnou.|
@@ -88,7 +87,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python 2.
 
-|Python 2 – funkce|Popis|
+|Python 2 – funkce|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Načte hodnotu existující proměnné. |
 |`automationassets.set_automation_variable`|Nastaví hodnotu pro existující proměnnou. |

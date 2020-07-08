@@ -13,10 +13,9 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745723"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
@@ -61,7 +60,7 @@ Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k * \< your_organization>* Azure AD**.
+2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
 
     ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +105,7 @@ Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k * \< your_organization>* Azure AD**.
+2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
 
     ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

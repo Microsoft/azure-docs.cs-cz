@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83742218"
 ---
 # <a name="glossary"></a>Glosář
@@ -253,7 +252,7 @@ Následující seznam popisuje běžná slova používaná s Azure Maps službam
 
 <a name="municipality-subdivision"></a>**Dílčí dělení**: rozčlenění obce, jako je například okolní nebo místní název oblasti, například "centru".
 
-## <a name="n"></a>Ne
+## <a name="n"></a>N
 
 <a name="navigation-bar"></a>**Navigační panel**: sada ovládacích prvků na mapě, která se používá pro úpravu úrovně přiblížení, sklonu, rotace a přepínání základní vrstvy mapy.
 

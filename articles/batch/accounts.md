@@ -4,17 +4,16 @@ description: Přečtěte si o Azure Batch účtech a způsobu jejich použití z
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83791145"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Účty Batch a účty Azure Storage
 
 Účet Azure Batch je jedinečnou identifikovanou entitou v rámci služby Batch. Většina řešení Batch používá [Azure Storage](../storage/index.yml) pro ukládání souborů prostředků a výstupních souborů, takže každý účet Batch je obvykle přidružen k odpovídajícímu účtu úložiště.
 
-## <a name="batch-accounts"></a>Účty Batch
+## <a name="batch-accounts"></a>Účty služby Batch
 
 Veškeré zpracování a prostředky jsou přidruženy k účtu Batch. Pokud vaše aplikace odešle požadavek na službu Batch, ověří se tato žádost pomocí názvu účtu Azure Batch, adresy URL účtu a přístupové klávesy, nebo tokenu Azure Active Directory.
 

@@ -12,13 +12,12 @@ manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83770955"
 ---
-# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování a ověřování jsou k dispozici v Azure Active Directory?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
 V rámci přihlašovacího prostředí pro účty v Azure Active Directory (Azure AD) existují různé způsoby, jak se může uživatel sami ověřit. Uživatelské jméno a heslo představují nejběžnější způsob, jak by uživatel historicky poskytoval přihlašovací údaje. Díky modernímu ověřování a funkcím zabezpečení v Azure AD může být základní heslo doplněno nebo nahrazeno dalšími metodami ověřování.
 
@@ -35,11 +34,11 @@ Následující tabulka popisuje, jaké metody jsou k dispozici pro primární ne
 
 | Metoda | Primární ověření | Sekundární ověřování |
 | --- | --- | --- |
-| [Heslo](#password) | Ano | |
+| [Heslo](#password) | Yes | |
 | [Aplikace Microsoft Authenticator](#microsoft-authenticator-app) | Ano (Preview) | MFA a SSPR |
-| [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Ano | Jenom MFA |
+| [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Yes | Jenom MFA |
 | [Tokeny softwaru OATH](#oath-software-tokens) | No | VÍCEFAKTOROVÉHO |
-| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens-preview) | Ano | VÍCEFAKTOROVÉHO |
+| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens-preview) | Yes | VÍCEFAKTOROVÉHO |
 | [SMS](#phone-options) | Ano (Preview) | MFA a SSPR |
 | [Hlasový hovor](#phone-options) | No | MFA a SSPR |
 | [Bezpečnostní otázky](#security-questions) | No | Jenom SSPR |

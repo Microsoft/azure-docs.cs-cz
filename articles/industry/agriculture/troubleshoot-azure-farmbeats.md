@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656813"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
@@ -110,7 +109,7 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
 > [!NOTE]
 > ID partnera, se kterým se zajímá partnerka snímače.
 
-3. Vraťte se do partnerského rozhraní API a vyberte **Get/ \< ID>**.
+3. Vraťte se do partnerského rozhraní API a vyberte **získat/ \<ID> **.
 4. Zadejte ID partnera z kroku 3 a pak vyberte **provést**.
 
    Odpověď rozhraní API by měla mít Event Hubs připojovací řetězec.
@@ -203,15 +202,15 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
 
   **Aktualizovat uživatelské jméno Sentinel**
 
-    1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+    1. Přihlaste se k [Azure Portal](https://portal.azure.com).
     2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
-    3. Vyberte úložiště účtu úložiště * * * * > **kontejnery**  >  **Batch-PREP-Files**  >  **to_vm**  >  **config. ini.**
+    3. Vyberte úložiště účtu úložiště * * * * > **kontejnery**  >  **Batch-PREP-Files**  >  **to_vm**  >  **config.ini**
     4. Vybrat **Upravit**
     5. Aktualizace uživatelského jména v části sentinel_account
 
   **Aktualizovat heslo Sentinel**
 
-    1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+    1. Přihlaste se k [Azure Portal](https://portal.azure.com).
     2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
     3. Vyberte Trezor klíčů – * * * * *
     4. V části nastavení vyberte zásady přístupu.
@@ -250,7 +249,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: dosáhlo se maximálního počtu připojení.
 
-**Zpráva o selhání úlohy**: "maximální počet dvou souběžných toků dosažených uživatelským \< jménem"> ".
+**Zpráva o selhání úlohy**: maximální počet dvou souběžných toků dosažených uživatelem \<username> .
 
 **Význam**: Pokud se úloha nezdařila, protože bylo dosaženo maximálního počtu připojení, je stejný účet Sentinel používán ve více úlohách.
 

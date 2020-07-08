@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
 ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680687"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor metriky platformy exportovatelné prostřednictvím nastavení diagnostiky
@@ -44,7 +43,7 @@ Tabulka obsahuje následující sloupce.
 - Exportovatelné přes nastavení diagnostiky? 
 - Ovlivněno hodnotou NULL/0 
 - ResourceType 
-- Metric 
+- Metrika 
 - MetricDisplayName
 - Jednotka 
 - AggregationType
@@ -54,57 +53,57 @@ Tabulka obsahuje následující sloupce.
 > Následující tabulka může mít v dolní části vodorovný posuvník. Pokud se domníváte, že jste neztratili nějaké informace, zkontrolujte, že posuvník je zcela vlevo.  
 
 
-| Exportovatelné přes nastavení diagnostiky?  | Již generuje hodnoty NULL. |  ResourceType  |  Metric  |  MetricDisplayName  |  Jednotka  |  AggregationType | 
+| Exportovatelné přes nastavení diagnostiky?  | Již generuje hodnoty NULL. |  ResourceType  |  Metrika  |  MetricDisplayName  |  Jednotka  |  AggregationType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CleanerCurrentPrice  |  Paměť: aktuální cena čisticího modulu  |  Počet  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CleanerMemoryNonshrinkable  |  Paměť: nezmenšovaná paměť čisticí paměti  |  Bajty  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CleanerMemoryShrinkable  |  Paměť: velikost čisticí paměti  |  Bajty  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CommandPoolBusyThreads  |  Vlákna: zaneprázdněná vlákna fondu příkazů  |  Počet  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CommandPoolIdleThreads  |  Vlákna: nečinná vlákna fondu příkazů  |  Počet  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CommandPoolJobQueueLength  |  Délka fronty úloh fondu příkazů  |  Počet  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CurrentConnections  |  Připojení: aktuální připojení  |  Počet  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CurrentUserSessions  |  Aktuální uživatelské relace  |  Počet  |  Průměr | 
-| Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  LongParsingBusyThreads  |  Vlákna: zaneprázdněná vlákna s dlouhou analýzou  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  LongParsingIdleThreads  |  Vlákna: nečinná vlákna při dlouhé analýze  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  LongParsingJobQueueLength  |  Vlákna: délka fronty úloh dlouhého rozboru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  mashup_engine_memory_metric  |  Paměť motoru M  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  mashup_engine_private_bytes_metric  |  Počet privátních bajtů modulu M  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  mashup_engine_qpu_metric  |  QPU modulu M  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  mashup_engine_virtual_bytes_metric  |  Virtuální bajty motoru M  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  memory_metric  |  Memory (Paměť)  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  memory_thrashing_metric  |  Thrashing paměti  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  MemoryLimitHard  |  Paměť: limit paměti – pevný  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  Hodnota memorylimithigh  |  Paměť: limit paměti – vysoká  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  MemoryLimitLow  |  Paměť: limit paměti – nízká  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  MemoryLimitVertiPaq  |  Paměť: limit paměti VertiPaq  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  MemoryUsage  |  Paměť: využití paměti  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  private_bytes_metric  |  Soukromé bajty  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ProcessingPoolBusyIOJobThreads  |  Vlákna: zaneprázdněná vlákna úloh v/v fondu zpracování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ProcessingPoolBusyNonIOThreads  |  Vlákna: zaneprázdněná vlákna, která nejsou v/v fondu zpracování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ProcessingPoolIdleIOJobThreads  |  Vlákna: vlákna nečinných úloh v/v fondu zpracování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ProcessingPoolIdleNonIOThreads  |  Vlákna: nečinná vlákna v/v fondu zpracování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ProcessingPoolIOJobQueueLength  |  Vlákna: délka fronty úloh v/v fondu zpracování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ProcessingPoolJobQueueLength  |  Délka fronty úloh zpracování fondu  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  qpu_metric  |  QPU  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  QueryPoolBusyThreads  |  Zaneprázdněná vlákna fondu dotazů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  QueryPoolIdleThreads  |  Vlákna: nečinná vlákna fondu dotazů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  QueryPoolJobQueueLength  |  Vlákna: délka fronty úloh fondu dotazů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  Kvóta  |  Paměť: kvóta  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  QuotaBlocked  |  Paměť: kvóta blokována  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  RowsConvertedPerSec  |  Zpracování: počet převedených řádků za sekundu  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  RowsReadPerSec  |  Zpracování: Počet přečtených řádků za sekundu  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  RowsWrittenPerSec  |  Zpracování: počet zapsaných řádků za sekundu  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ShortParsingBusyThreads  |  Vlákna: krátkodobá analýza zaneprázdněných vláken  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ShortParsingIdleThreads  |  Vlákna: nečinná vlákna krátké analýzy  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  ShortParsingJobQueueLength  |  Vlákna: délka fronty úlohy krátké analýzy  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  SuccessfullConnectionsPerSec  |  Úspěšná připojení za sekundu  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  TotalConnectionFailures  |  Celkový počet selhání připojení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  TotalConnectionRequests  |  Požadavky na připojení celkem  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  VertiPaqNonpaged  |  Paměť: VertiPaq nestránkované  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  VertiPaqPaged  |  Paměť: VertiPaq stránkované  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AnalysisServices/servery  |  virtual_bytes_metric  |  Virtuální bajty  |  Bajty  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CleanerCurrentPrice  |  Paměť: aktuální cena čisticího modulu  |  Počet  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CleanerMemoryNonshrinkable  |  Paměť: nezmenšovaná paměť čisticí paměti  |  Bajty  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CleanerMemoryShrinkable  |  Paměť: velikost čisticí paměti  |  Bajty  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CommandPoolBusyThreads  |  Vlákna: zaneprázdněná vlákna fondu příkazů  |  Počet  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CommandPoolIdleThreads  |  Vlákna: nečinná vlákna fondu příkazů  |  Počet  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CommandPoolJobQueueLength  |  Délka fronty úloh fondu příkazů  |  Počet  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CurrentConnections  |  Připojení: aktuální připojení  |  Počet  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  CurrentUserSessions  |  Aktuální uživatelské relace  |  Počet  |  Průměr | 
+| Ano * * * *  | No |  Microsoft. AnalysisServices/servery  |  LongParsingBusyThreads  |  Vlákna: zaneprázdněná vlákna s dlouhou analýzou  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  LongParsingIdleThreads  |  Vlákna: nečinná vlákna při dlouhé analýze  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  LongParsingJobQueueLength  |  Vlákna: délka fronty úloh dlouhého rozboru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  mashup_engine_memory_metric  |  Paměť motoru M  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  mashup_engine_private_bytes_metric  |  Počet privátních bajtů modulu M  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  mashup_engine_qpu_metric  |  QPU modulu M  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  mashup_engine_virtual_bytes_metric  |  Virtuální bajty motoru M  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  memory_metric  |  Memory (Paměť)  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  memory_thrashing_metric  |  Thrashing paměti  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  MemoryLimitHard  |  Paměť: limit paměti – pevný  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  Hodnota memorylimithigh  |  Paměť: limit paměti – vysoká  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  MemoryLimitLow  |  Paměť: limit paměti – nízká  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  MemoryLimitVertiPaq  |  Paměť: limit paměti VertiPaq  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  MemoryUsage  |  Paměť: využití paměti  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  private_bytes_metric  |  Soukromé bajty  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ProcessingPoolBusyIOJobThreads  |  Vlákna: zaneprázdněná vlákna úloh v/v fondu zpracování  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ProcessingPoolBusyNonIOThreads  |  Vlákna: zaneprázdněná vlákna, která nejsou v/v fondu zpracování  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ProcessingPoolIdleIOJobThreads  |  Vlákna: vlákna nečinných úloh v/v fondu zpracování  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ProcessingPoolIdleNonIOThreads  |  Vlákna: nečinná vlákna v/v fondu zpracování  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ProcessingPoolIOJobQueueLength  |  Vlákna: délka fronty úloh v/v fondu zpracování  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ProcessingPoolJobQueueLength  |  Délka fronty úloh zpracování fondu  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  qpu_metric  |  QPU  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  QueryPoolBusyThreads  |  Zaneprázdněná vlákna fondu dotazů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  QueryPoolIdleThreads  |  Vlákna: nečinná vlákna fondu dotazů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  QueryPoolJobQueueLength  |  Vlákna: délka fronty úloh fondu dotazů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  Kvóta  |  Paměť: kvóta  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  QuotaBlocked  |  Paměť: kvóta blokována  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  RowsConvertedPerSec  |  Zpracování: počet převedených řádků za sekundu  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  RowsReadPerSec  |  Zpracování: Počet přečtených řádků za sekundu  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  RowsWrittenPerSec  |  Zpracování: počet zapsaných řádků za sekundu  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ShortParsingBusyThreads  |  Vlákna: krátkodobá analýza zaneprázdněných vláken  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ShortParsingIdleThreads  |  Vlákna: nečinná vlákna krátké analýzy  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  ShortParsingJobQueueLength  |  Vlákna: délka fronty úlohy krátké analýzy  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  SuccessfullConnectionsPerSec  |  Úspěšná připojení za sekundu  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  TotalConnectionFailures  |  Celkový počet selhání připojení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  TotalConnectionRequests  |  Požadavky na připojení celkem  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  VertiPaqNonpaged  |  Paměť: VertiPaq nestránkované  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  VertiPaqPaged  |  Paměť: VertiPaq stránkované  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AnalysisServices/servery  |  virtual_bytes_metric  |  Virtuální bajty  |  Bajty  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft.ApiManagement/service  |  BackendDuration  |  Doba trvání požadavků back-endu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.ApiManagement/service  |  Kapacita  |  Kapacita  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.ApiManagement/service  |  Kapacita  |  Kapacita  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft.ApiManagement/service  |  Doba trvání  |  Celková doba trvání žádostí o bránu  |  Milisekund  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft.ApiManagement/service  |  EventHubDroppedEvents  |  Vyřazené události EventHub  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft.ApiManagement/service  |  EventHubRejectedEvents  |  Odmítnuté události EventHub  |  Počet  |  Celkem | 
@@ -120,521 +119,521 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft.ApiManagement/service  |  SuccessfulRequests  |  Úspěšné požadavky brány (zastaralé)  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft.ApiManagement/service  |  TotalRequests  |  Požadavky brány celkem (zastaralé)  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft.ApiManagement/service  |  UnauthorizedRequests  |  Neautorizované žádosti o bránu (zastaralé)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  AppCpuUsagePercentage  |  Procento využití procesoru aplikací  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  AppMemoryCommitted  |  Přiřazená paměť aplikace  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  AppMemoryMax  |  Maximální velikost paměti aplikace  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  AppMemoryUsed  |  Využitá paměť aplikace  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  GCPauseTotalCount  |  Počet pozastavení GC  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  GCPauseTotalTime  |  Celkový čas pozastavení GC  |  Milisekund  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  MaxOldGenMemoryPoolBytes  |  Maximální velikost dostupných starých dat generace  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  OldGenMemoryPoolBytes  |  Stará velikost dat generace  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  OldGenPromotedBytes  |  Zvýšit úroveň na starou velikost dat generace  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  SystemCpuUsagePercentage  |  Procento využití procesoru v systému  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatErrorCount  |  Globální chyba Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatReceivedBytes  |  Celkový počet přijatých bajtů Tomcat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatRequestMaxTime  |  Maximální čas požadavku Tomcat  |  Milisekund  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatRequestTotalCount  |  Celkový počet žádostí Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatRequestTotalTime  |  Celkový počet požadavků Tomcat  |  Milisekund  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatResponseAvgTime  |  Průměrná doba požadavku Tomcat  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatSentBytes  |  Celkový počet odeslaných bajtů Tomcat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatSessionActiveCurrentCount  |  Počet otevřených relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatSessionActiveMaxCount  |  Maximální počet aktivních relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatSessionAliveMaxTime  |  Maximální doba běhu relace Tomcat  |  Milisekund  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatSessionCreatedCount  |  Počet vytvořených relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatSessionExpiredCount  |  Počet vypršení relace Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  TomcatSessionRejectedCount  |  Počet odmítnutých relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. AppPlatform/pružina  |  YoungGenPromotedBytes  |  Zvýšení úrovně na velikost dat malé generace  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Automation/automationAccounts  |  TotalJob  |  Celkový počet úloh  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Automation/automationAccounts  |  TotalUpdateDeploymentMachineRuns  |  Celkový počet spuštěných počítačů nasazení aktualizace  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  Celkový počet spuštění nasazení aktualizací  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  CoreCount  |  Vyhrazený počet jader  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  CreatingNodeCount  |  Vytváření počtu uzlů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  IdleNodeCount  |  Počet nečinných uzlů  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  JobDeleteCompleteEvent  |  Události dokončení odstranění úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  JobDeleteStartEvent  |  Události spuštění odstranění úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  JobDisableCompleteEvent  |  Úloha zakázat kompletní události  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  JobDisableStartEvent  |  Úloha zakázat počáteční události  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  JobStartEvent  |  Události spuštění úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  JobTerminateCompleteEvent  |  Ukončit události dokončení úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  JobTerminateStartEvent  |  Události spuštění ukončení úlohy  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  LeavingPoolNodeCount  |  Počet ponechávání uzlů fondu  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  LowPriorityCoreCount  |  Počet jader LowPriority  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  OfflineNodeCount  |  Počet uzlů v režimu offline  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  PoolCreateEvent  |  Vytváření fondů – události  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  PoolDeleteCompleteEvent  |  Události dokončení odstranění fondu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  PoolDeleteStartEvent  |  Události spuštění odstranění fondu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  PoolResizeCompleteEvent  |  Události dokončení změny velikosti fondu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  PoolResizeStartEvent  |  Události spuštění změny velikosti fondu  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  PreemptedNodeCount  |  Počet zrušených uzlů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  RebootingNodeCount  |  Restartování počtu uzlů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  ReimagingNodeCount  |  Počet uzlů obnovování imagí  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  RunningNodeCount  |  Počet spuštěných uzlů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  StartingNodeCount  |  Počáteční počet uzlů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  StartTaskFailedNodeCount  |  Počet neúspěšných spuštění úlohy – počet uzlů  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  TaskCompleteEvent  |  Události dokončení úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  TaskFailEvent  |  Události neúspěšných úloh  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Batch/batchAccounts  |  TaskStartEvent  |  Události zahájení úlohy  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  TotalLowPriorityNodeCount  |  Počet uzlů s nízkou prioritou  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  TotalNodeCount  |  Počet vyhrazených uzlů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  UnusableNodeCount  |  Počet nepoužitelných uzlů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Batch/batchAccounts  |  WaitingForStartTaskNodeCount  |  Čekání na počet uzlů spouštěcí úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Aktivní jádra  |  Aktivní jádra  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Aktivní uzly  |  Aktivní uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Jádra nečinných  |  Jádra nečinných  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Nečinné uzly  |  Nečinné uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Dokončená úloha  |  Dokončená úloha  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Úloha odeslána  |  Úloha odeslána  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Vynechávání jader  |  Vynechávání jader  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Ukončení uzlů  |  Ukončení uzlů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Zrušené jádra  |  Zrušené jádra  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Přepnuté uzly  |  Přepnuté uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Procento využití kvóty  |  Procento využití kvóty  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Celkový počet jader  |  Celkový počet jader  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Celkem uzlů  |  Celkem uzlů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Nepoužitelné jádra  |  Nepoužitelné jádra  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. BatchAI/pracovní prostory  |  Nepoužité uzly  |  Nepoužité uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  ConnectionAccepted  |  Přijatá připojení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  ConnectionActive  |  Aktivní připojení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  ConnectionHandled  |  Zpracovaná připojení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  CpuUsagePercentageInDouble  |  Procento využití procesoru  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  IOReadBytes  |  Bajty čtení v/v  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  IOWriteBytes  |  Bajty zápisu v/v  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  MemoryLimit  |  Omezení paměti  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  MemoryUsage  |  Využití paměti  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  MemoryUsagePercentageInDouble  |  Procento využití paměti  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  PendingTransactions  |  Nedokončené transakce  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  ProcessedBlocks  |  Zpracované bloky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  ProcessedTransactions  |  Zpracované transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  QueuedTransactions  |  Transakce ve frontě  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  RequestHandled  |  Zpracované žádosti  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. blockchain/blockchainMembers  |  StorageUsage  |  Využití úložiště  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits  |  Přístupy do mezipaměti  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits0  |  Přístupy do mezipaměti (horizontálních oddílů 0)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits1  |  Přístupy do mezipaměti (horizontálních oddílů 1)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits2  |  Přístupy do mezipaměti (horizontálních oddílů 2)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits3  |  Přístupy do mezipaměti (horizontálních oddílů 3)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits4  |  Přístupy do mezipaměti (horizontálních oddílů 4)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits5  |  Přístupy do mezipaměti (horizontálních oddílů 5)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits6  |  Přístupy do mezipaměti (horizontálních oddílů 6)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits7  |  Přístupy do mezipaměti (horizontálních oddílů 7)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits8  |  Přístupy do mezipaměti (horizontálních oddílů 8)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachehits9  |  Přístupy do mezipaměti (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheLatency  |  Mikrosekundy latence mezipaměti (Preview)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses  |  Neúspěšné přístupy do mezipaměti  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses0  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 0)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses1  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 1)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses2  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 2)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses3  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 3)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses4  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 4)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses5  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 5)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses6  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 6)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses7  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 7)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses8  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 8)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cachemisses9  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead  |  Čtení z mezipaměti  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead0  |  Čtení z mezipaměti (horizontálních oddílů 0)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead1  |  Čtení z mezipaměti (horizontálních oddílů 1)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead2  |  Čtení z mezipaměti (horizontálních oddílů 2)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead3  |  Čtení z mezipaměti (horizontálních oddílů 3)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead4  |  Čtení z mezipaměti (horizontálních oddílů 4)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead5  |  Čtení z mezipaměti (horizontálních oddílů 5)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead6  |  Čtení z mezipaměti (horizontálních oddílů 6)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead7  |  Čtení z mezipaměti (horizontálních oddílů 7)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead8  |  Čtení z mezipaměti (horizontálních oddílů 8)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheRead9  |  Čtení z mezipaměti (horizontálních oddílů 9)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite  |  Zápis do mezipaměti  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite0  |  Zápis do mezipaměti (horizontálních oddílů 0)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite1  |  Zápis do mezipaměti (horizontálních oddílů 1)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite2  |  Zápis do mezipaměti (horizontálních oddílů 2)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite3  |  Zápis do mezipaměti (horizontálních oddílů 3)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite4  |  Zápis do mezipaměti (horizontálních oddílů 4)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite5  |  Zápis do mezipaměti (horizontálních oddílů 5)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite6  |  Zápis do mezipaměti (horizontálních oddílů 6)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite7  |  Zápis do mezipaměti (horizontálních oddílů 7)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite8  |  Zápis do mezipaměti (horizontálních oddílů 8)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  cacheWrite9  |  Zápis do mezipaměti (horizontálních oddílů 9)  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients  |  Připojení klienti  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients0  |  Připojení klienti (horizontálních oddílů 0)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients1  |  Připojení klienti (horizontálních oddílů 1)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients2  |  Připojení klienti (horizontálních oddílů 2)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients3  |  Připojení klienti (horizontálních oddílů 3)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients4  |  Připojení klienti (horizontálních oddílů 4)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients5  |  Připojení klienti (horizontálních oddílů 5)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients6  |  Připojení klienti (horizontálních oddílů 6)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients7  |  Připojení klienti (horizontálních oddílů 7)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients8  |  Připojení klienti (horizontálních oddílů 8)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients9  |  Připojení klienti (horizontálních oddílů 9)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  chyby  |  chyby  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys  |  Vyloučené klíče  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys0  |  Vyřazené klíče (horizontálních oddílů 0)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys1  |  Vyřazené klíče (horizontálních oddílů 1)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys2  |  Vyřazené klíče (horizontálních oddílů 2)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys3  |  Vyřazené klíče (horizontálních oddílů 3)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys4  |  Vyřazené klíče (horizontálních oddílů 4)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys5  |  Vyřazení klíčů (horizontálních oddílů 5)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys6  |  Vyřazené klíče (horizontálních oddílů 6)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys7  |  Vyřazení klíčů (horizontálních oddílů 7)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys8  |  Vyřazené klíče (horizontálních oddílů 8)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys9  |  Vyřazené klíče (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys  |  Prošlé klíče  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys0  |  Klíče vypršení platnosti (horizontálních oddílů 0)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys1  |  Klíče vypršení platnosti (horizontálních oddílů 1)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys2  |  Klíče vypršení platnosti (horizontálních oddílů 2)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys3  |  Klíče vypršení platnosti (horizontálních oddílů 3)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys4  |  Klíče vypršení platnosti (horizontálních oddílů 4)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys5  |  Klíče vypršení platnosti (horizontálních oddílů 5)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys6  |  Klíče vypršení platnosti (horizontálních oddílů 6)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys7  |  Klíče vypršení platnosti (horizontálních oddílů 7)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys8  |  Klíče vypršení platnosti (horizontálních oddílů 8)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys9  |  Klíče vypršení platnosti (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  GetCommands  |  Příkazy Get  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands0  |  Načtení (horizontálních oddílů 0)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands1  |  Načtení (horizontálních oddílů 1)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands2  |  Get (horizontálních oddílů 2)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands3  |  Get (horizontálních oddílů 3)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands4  |  Get (horizontálních oddílů 4)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands5  |  Získá (horizontálních oddílů 5)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands6  |  Načtení (horizontálních oddílů 6)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands7  |  Načtení (horizontálních oddílů 7)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands8  |  Získá (horizontálních oddílů 8)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands9  |  Načtení (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond  |  Operace za sekundu  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond0  |  Operací za sekundu (horizontálních oddílů 0)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond1  |  Operací za sekundu (horizontálních oddílů 1)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond2  |  Operací za sekundu (horizontálních oddílů 2)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond3  |  Operací za sekundu (horizontálních oddílů 3)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond4  |  Operací za sekundu (horizontálních oddílů 4)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond5  |  Operací za sekundu (horizontálních oddílů 5)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond6  |  Operací za sekundu (horizontálních oddílů 6)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond7  |  Operací za sekundu (horizontálních oddílů 7)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond8  |  Operací za sekundu (horizontálních oddílů 8)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  operationsPerSecond9  |  Operací za sekundu (horizontálních oddílů 9)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime  |  Procesor  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime0  |  PROCESOR (horizontálních oddílů 0)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime1  |  PROCESOR (horizontálních oddílů 1)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime2  |  PROCESOR (horizontálních oddílů 2)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime3  |  PROCESOR (horizontálních oddílů 3)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime4  |  PROCESOR (horizontálních oddílů 4)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime5  |  PROCESOR (horizontálních oddílů 5)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime6  |  PROCESOR (horizontálních oddílů 6)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime7  |  PROCESOR (horizontálních oddílů 7)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime8  |  PROCESOR (horizontálních oddílů 8)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  percentProcessorTime9  |  PROCESOR (horizontálních oddílů 9)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad  |  Zatížení serveru  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad0  |  Zatížení serveru (horizontálních oddílů 0)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad1  |  Zatížení serveru (horizontálních oddílů 1)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad2  |  Zatížení serveru (horizontálních oddílů 2)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad3  |  Zatížení serveru (horizontálních oddílů 3)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad4  |  Zatížení serveru (horizontálních oddílů 4)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad5  |  Zatížení serveru (horizontálních oddílů 5)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad6  |  Zatížení serveru (horizontálních oddílů 6)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad7  |  Zatížení serveru (horizontálních oddílů 7)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad8  |  Zatížení serveru (horizontálních oddílů 8)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad9  |  Zatížení serveru (horizontálních oddílů 9)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands  |  Příkazy Set  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands0  |  Sady (horizontálních oddílů 0)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands1  |  Sady (horizontálních oddílů 1)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands2  |  Sady (horizontálních oddílů 2)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands3  |  Sady (horizontálních oddílů 3)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands4  |  Sady (horizontálních oddílů 4)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands5  |  Sady (horizontálních oddílů 5)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands6  |  Sady (horizontálních oddílů 6)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands7  |  Sady (horizontálních oddílů 7)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands8  |  Sady (horizontálních oddílů 8)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands9  |  Sady (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed  |  Celkový počet operací  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed0  |  Celkem operací (horizontálních oddílů 0)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed1  |  Celkem operací (horizontálních oddílů 1)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed2  |  Celkem operací (horizontálních oddílů 2)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed3  |  Celkem operací (horizontálních oddílů 3)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed4  |  Celkem operací (horizontálních oddílů 4)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed5  |  Celkem operací (horizontálních oddílů 5)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed6  |  Celkem operací (horizontálních oddílů 6)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed7  |  Celkem operací (horizontálních oddílů 7)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed8  |  Celkem operací (horizontálních oddílů 8)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed9  |  Celkem operací (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys  |  Celkem klíčů  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys0  |  Celkem klíčů (horizontálních oddílů 0)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys1  |  Celkem klíčů (horizontálních oddílů 1)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys2  |  Celkem klíčů (horizontálních oddílů 2)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys3  |  Celkem klíčů (horizontálních oddílů 3)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys4  |  Celkem klíčů (horizontálních oddílů 4)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys5  |  Celkem klíčů (horizontálních oddílů 5)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys6  |  Celkem klíčů (horizontálních oddílů 6)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys7  |  Celkem klíčů (horizontálních oddílů 7)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys8  |  Celkem klíčů (horizontálních oddílů 8)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalkeys9  |  Celkem klíčů (horizontálních oddílů 9)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory  |  Využitá paměť  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory0  |  Využitá paměť (horizontálních oddílů 0)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory1  |  Využitá paměť (horizontálních oddílů 1)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory2  |  Využitá paměť (horizontálních oddílů 2)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory3  |  Využitá paměť (horizontálních oddílů 3)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory4  |  Využitá paměť (horizontálních oddílů 4)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory5  |  Využitá paměť (horizontálních oddílů 5)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory6  |  Využitá paměť (horizontálních oddílů 6)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory7  |  Využitá paměť (horizontálních oddílů 7)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory8  |  Využitá paměť (horizontálních oddílů 8)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory9  |  Využitá paměť (horizontálních oddílů 9)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemorypercentage  |  Využitá paměť v procentech  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss  |  RSS využité paměti  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss0  |  RSS využité paměti (horizontálních oddílů 0)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss1  |  RSS využité paměti (horizontálních oddílů 1)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss2  |  RSS využité paměti (horizontálních oddílů 2)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss3  |  RSS využité paměti (horizontálních oddílů 3)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss4  |  RSS využité paměti (horizontálních oddílů 4)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss5  |  RSS využité paměti (horizontálních oddílů 5)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss6  |  RSS využité paměti (horizontálních oddílů 6)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss7  |  RSS využité paměti (horizontálních oddílů 7)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss8  |  RSS využité paměti (horizontálních oddílů 8)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss9  |  RSS využité paměti (horizontálních oddílů 9)  |  Bajty  |  Maximum | 
-| Ne  | Ne |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Bajty čtení z disku/s  |  Čtení z disku  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Bajty zápisu na disk/s  |  Zápis na disk  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Síťové vstupy  |  Síťové vstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Síťové výstupy  |  Síťové výstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicCompute/virtualMachines  |  Bajty čtení z disku/s  |  Čtení z disku  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicCompute/virtualMachines  |  Bajty zápisu na disk/s  |  Zápis na disk  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/virtualMachines  |  Síťové vstupy  |  Síťové vstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/virtualMachines  |  Síťové výstupy  |  Síťové výstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicCompute/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts  |  UsedCapacity  |  Využitá kapacita  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  BlobCapacity  |  Kapacita objektu BLOB  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  BlobCount  |  Počet objektů BLOB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  ContainerCount  |  Počet kontejnerů objektů BLOB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  IndexCapacity  |  Kapacita indexu  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  Kapacita zařízení  |  Kapacita souboru  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileCount  |  Počet souborů  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareCount  |  Počet sdílených souborů  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareQuota  |  Velikost kvóty sdílení souborů  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareSnapshotCount  |  Počet snímků sdílené složky  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareSnapshotSize  |  Velikost snímku sdílené složky  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/služby  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueCapacity  |  Kapacita fronty  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueCount  |  Počet front  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueMessageCount  |  Počet zpráv ve frontě  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableCapacity  |  Kapacita tabulky  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableCount  |  Počet tabulek  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableEntityCount  |  Počet entit tabulky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  BlockedCalls  |  Blokovaná volání  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  CharactersTrained  |  Vyškolené znaky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  CharactersTranslated  |  Přeložené znaky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  ClientErrors  |  Chyby klienta  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  DataIn  |  Data v  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  Data  |  Výstupní data  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  Latence  |  Latence  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  ServerErrors  |  Chyby serveru  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  SpeechSessionDuration  |  Doba trvání relace řeči  |  Sekundy  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  SuccessfulCalls  |  Úspěšná volání  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  TotalCalls  |  Celkový počet volání  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  TotalErrors  |  Celkový počet chyb  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  TotalTokenCalls  |  Celkový počet volání tokenu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Cognitiveservices Account/účty  |  TotalTransactions  |  Celkový počet transakcí  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Spotřebované kredity procesoru  |  Spotřebované kredity procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Zbývající kredity procesoru  |  Zbývající kredity procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Hloubka fronty datového disku  |  Hloubka fronty datových disků (Preview)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty přečtené z datového disku za sekundu  |  Bajty přečtené z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace čtení z datového disku za sekundu  |  Operace čtení z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty zapsané na datový disk/s  |  Bajty zapsané na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace zápisu na datový disk/s  |  Operace zápisu na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Příchozí toky  |  Příchozí toky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Maximální rychlost vytváření příchozích toků  |  Míra vytváření maximálního počtu příchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Síťové vstupy  |  Síť v fakturovatelný (zastaralé)  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Celková síť  |  Celková síť  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Síťové výstupy  |  Fakturovatelná odchozí síť (zastaralé)  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Celkový počet síťových výstupů  |  Celkový počet síťových výstupů  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Hloubka fronty disku s operačním systémem  |  Hloubka fronty disku operačního systému (Preview)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty přečtené z disku s operačním systémem/s  |  Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace čtení z disku s operačním systémem za sekundu  |  Operace čtení z disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty zápisu na disk s operačním systémem/s  |  Bajty zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace zápisu na disk s operačním systémem za sekundu  |  Operace zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operační systém na disk hloubka fronty  |  Disk s operačním systémem hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Přečtené bajty v operačním systému na disk/s  |  Bajty přečtené z disku s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace čtení z operačního systému na disk/s  |  Operace čtení z disku s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty zapsané v operačním systému na disk/s  |  Bajty zápisu na disk s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace zápisu v operačním systému na disk/s  |  Operace zápisu na disk s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Odchozí toky  |  Odchozí toky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Maximální rychlost vytváření odchozích toků  |  Frekvence maximálního vytváření odchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Hloubka fronty na disk  |  Datový disk hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Přečtené bajty podle disku/s  |  Bajty přečtené z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace čtení na disk/s  |  Operace čtení z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Bajty zápisu na disk/s  |  Bajty zapsané na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Neúspěšné čtení mezipaměti datových disků Premium  |  Neúspěšné čtení mezipaměti datových disků Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Počet přístupů do mezipaměti disku s operačním systémem Premium  |  Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachines  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Spotřebované kredity procesoru  |  Spotřebované kredity procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Zbývající kredity procesoru  |  Zbývající kredity procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Hloubka fronty datového disku  |  Hloubka fronty datových disků (Preview)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty přečtené z datového disku za sekundu  |  Bajty přečtené z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z datového disku za sekundu  |  Operace čtení z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zapsané na datový disk/s  |  Bajty zapsané na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na datový disk/s  |  Operace zápisu na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Příchozí toky  |  Příchozí toky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Maximální rychlost vytváření příchozích toků  |  Míra vytváření maximálního počtu příchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Síťové vstupy  |  Síť v fakturovatelný (zastaralé)  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Celková síť  |  Celková síť  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Síťové výstupy  |  Fakturovatelná odchozí síť (zastaralé)  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Celkový počet síťových výstupů  |  Celkový počet síťových výstupů  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Hloubka fronty disku s operačním systémem  |  Hloubka fronty disku operačního systému (Preview)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty přečtené z disku s operačním systémem/s  |  Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z disku s operačním systémem za sekundu  |  Operace čtení z disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zápisu na disk s operačním systémem/s  |  Bajty zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na disk s operačním systémem za sekundu  |  Operace zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operační systém na disk hloubka fronty  |  Disk s operačním systémem hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Přečtené bajty v operačním systému na disk/s  |  Bajty přečtené z disku s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z operačního systému na disk/s  |  Operace čtení z disku s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zapsané v operačním systému na disk/s  |  Bajty zápisu na disk s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu v operačním systému na disk/s  |  Operace zápisu na disk s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Odchozí toky  |  Odchozí toky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Maximální rychlost vytváření odchozích toků  |  Frekvence maximálního vytváření odchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Hloubka fronty na disk  |  Datový disk hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Přečtené bajty podle disku/s  |  Bajty přečtené z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení na disk/s  |  Operace čtení z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zápisu na disk/s  |  Bajty zapsané na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na disk/s  |  Operace zápisu na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Neúspěšné čtení mezipaměti datových disků Premium  |  Neúspěšné čtení mezipaměti datových disků Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Počet přístupů do mezipaměti disku s operačním systémem Premium  |  Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft.Compute/virtualMachineScaleSets  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Spotřebované kredity procesoru  |  Spotřebované kredity procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Zbývající kredity procesoru  |  Zbývající kredity procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Hloubka fronty datového disku  |  Hloubka fronty datových disků (Preview)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty přečtené z datového disku za sekundu  |  Bajty přečtené z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z datového disku za sekundu  |  Operace čtení z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zapsané na datový disk/s  |  Bajty zapsané na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na datový disk/s  |  Operace zápisu na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Příchozí toky  |  Příchozí toky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Maximální rychlost vytváření příchozích toků  |  Míra vytváření maximálního počtu příchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Síťové vstupy  |  Síť v fakturovatelný (zastaralé)  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Celková síť  |  Celková síť  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Síťové výstupy  |  Fakturovatelná odchozí síť (zastaralé)  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Celkový počet síťových výstupů  |  Celkový počet síťových výstupů  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Hloubka fronty disku s operačním systémem  |  Hloubka fronty disku operačního systému (Preview)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty přečtené z disku s operačním systémem/s  |  Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z disku s operačním systémem za sekundu  |  Operace čtení z disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zápisu na disk s operačním systémem/s  |  Bajty zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na disk s operačním systémem za sekundu  |  Operace zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operační systém na disk hloubka fronty  |  Disk s operačním systémem hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Přečtené bajty v operačním systému na disk/s  |  Bajty přečtené z disku s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z operačního systému na disk/s  |  Operace čtení z disku s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zapsané v operačním systému na disk/s  |  Bajty zápisu na disk s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu v operačním systému na disk/s  |  Operace zápisu na disk s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Odchozí toky  |  Odchozí toky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Maximální rychlost vytváření odchozích toků  |  Frekvence maximálního vytváření odchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Hloubka fronty na disk  |  Datový disk hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Přečtené bajty podle disku/s  |  Bajty přečtené z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení na disk/s  |  Operace čtení z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zápisu na disk/s  |  Bajty zapsané na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Neúspěšné čtení mezipaměti datových disků Premium  |  Neúspěšné čtení mezipaměti datových disků Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Počet přístupů do mezipaměti disku s operačním systémem Premium  |  Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerInstance/containerGroups  |  CpuUsage  |  Využití procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerInstance/containerGroups  |  MemoryUsage  |  Využití paměti  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerInstance/containerGroups  |  NetworkBytesReceivedPerSecond  |  Počet přijatých bajtů sítě za sekundu  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerInstance/containerGroups  |  NetworkBytesTransmittedPerSecond  |  Bajty přenášené přes síť za sekundu  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerRegistry/Registry  |  RunDuration  |  Doba trvání běhu  |  Milisekund  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. ContainerRegistry/Registry  |  SuccessfulPullCount  |  Počet úspěšných vyžádané replikace  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerRegistry/Registry  |  SuccessfulPushCount  |  Počet úspěšných vložení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerRegistry/Registry  |  TotalPullCount  |  Celkový počet vyžádané replikace  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. ContainerRegistry/Registry  |  TotalPushCount  |  Celkový počet nabízených oznámení  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ContainerService/managedClusters  |  kube_node_status_allocatable_cpu_cores  |  Celkový počet dostupných jader procesoru ve spravovaném clusteru  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ContainerService/managedClusters  |  kube_node_status_allocatable_memory_bytes  |  Celková velikost dostupné paměti ve spravovaném clusteru  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. ContainerService/managedClusters  |  kube_node_status_condition  |  Stavy pro různé podmínky uzlu  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ContainerService/managedClusters  |  kube_pod_status_phase  |  Počet lusků podle fáze  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ContainerService/managedClusters  |  kube_pod_status_ready  |  Počet lusků ve stavu připraveno  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  Availablecapacity;)  |  Dostupná kapacita  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloud  |  Odeslané bajty v cloudu (zařízení)  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloudPerShare  |  Odeslané bajty v cloudu (sdílená složka)  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughput  |  Propustnost stahování v cloudu  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughputPerShare  |  Propustnost stahování do cloudu (sdílení)  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughput  |  Propustnost nahrávání do cloudu  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughputPerShare  |  Propustnost nahrávání do cloudu (sdílení)  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  HyperVMemoryUtilization  |  Výpočet využití paměti na hraničních zařízeních  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  HyperVVirtualProcessorUtilization  |  Výpočetní prostředí Edge – procento využití procesoru  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  NICReadThroughput  |  Propustnost čtení (síť)  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  NICWriteThroughput  |  Propustnost zápisu (síť)  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  Úložiště  |  Celková kapacita  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataFactory/DataFactory  |  FailedRuns  |  Neúspěšná spuštění  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/DataFactory  |  SuccessfulRuns  |  Úspěšná spuštění  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  ActivityCancelledRuns  |  Zrušené metriky spuštění aktivit  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  ActivityFailedRuns  |  Neúspěšná aktivita spustí metriky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  ActivitySucceededRuns  |  Úspěšná aktivita spustí metriky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  FactorySizeInGbUnits  |  Celková velikost továrny (jednotka GB)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeAvailableMemory  |  Dostupná paměť modulu runtime integrace  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeAverageTaskPickupDelay  |  Doba trvání fronty prostředí Integration runtime  |  Sekundy  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeCpuPercentage  |  Využití procesoru prostředí Integration runtime  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeQueueLength  |  Délka fronty prostředí Integration runtime  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  MaxAllowedFactorySizeInGbUnits  |  Maximální povolená velikost továrny (jednotka GB)  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  MaxAllowedResourceCount  |  Maximální počet povolených entit  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  PipelineCancelledRuns  |  Zrušené metriky spuštění kanálu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  PipelineFailedRuns  |  Neúspěšná metrika spuštění kanálu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  PipelineSucceededRuns  |  Úspěšné metriky spuštění kanálu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  ResourceCount  |  Celkový počet entit  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  TriggerCancelledRuns  |  Zrušené aktivační události spustí metriky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  TriggerFailedRuns  |  Neúspěšná aktivační událost spustí metriky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataFactory/továrny  |  TriggerSucceededRuns  |  Úspěšná aktivační událost spustí metriky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeAnalytics/účty  |  JobAUEndedCancelled  |  Čas AU se zrušil.  |  Sekundy  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeAnalytics/účty  |  JobAUEndedFailure  |  Neúspěšná doba aktualizace AU  |  Sekundy  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeAnalytics/účty  |  JobAUEndedSuccess  |  Úspěšná doba AU  |  Sekundy  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeAnalytics/účty  |  JobEndedCancelled  |  Zrušené úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeAnalytics/účty  |  JobEndedFailure  |  Neúspěšné úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeAnalytics/účty  |  JobEndedSuccess  |  Úspěšné úlohy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeStore/účty  |  Čtení z  |  Přečtená data  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeStore/účty  |  Napsáno  |  Zapsaná data  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeStore/účty  |  ReadRequests  |  Žádosti o čtení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DataLakeStore/účty  |  TotalStorage  |  Celkové úložiště  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DataLakeStore/účty  |  WriteRequests  |  Požadavky na zápis  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  AppCpuUsagePercentage  |  Procento využití procesoru aplikací  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  AppMemoryCommitted  |  Přiřazená paměť aplikace  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  AppMemoryMax  |  Maximální velikost paměti aplikace  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  AppMemoryUsed  |  Využitá paměť aplikace  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  GCPauseTotalCount  |  Počet pozastavení GC  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  GCPauseTotalTime  |  Celkový čas pozastavení GC  |  Milisekund  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  MaxOldGenMemoryPoolBytes  |  Maximální velikost dostupných starých dat generace  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  OldGenMemoryPoolBytes  |  Stará velikost dat generace  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  OldGenPromotedBytes  |  Zvýšit úroveň na starou velikost dat generace  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  SystemCpuUsagePercentage  |  Procento využití procesoru v systému  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatErrorCount  |  Globální chyba Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatReceivedBytes  |  Celkový počet přijatých bajtů Tomcat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatRequestMaxTime  |  Maximální čas požadavku Tomcat  |  Milisekund  |  Maximum | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatRequestTotalCount  |  Celkový počet žádostí Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatRequestTotalTime  |  Celkový počet požadavků Tomcat  |  Milisekund  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatResponseAvgTime  |  Průměrná doba požadavku Tomcat  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatSentBytes  |  Celkový počet odeslaných bajtů Tomcat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatSessionActiveCurrentCount  |  Počet otevřených relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatSessionActiveMaxCount  |  Maximální počet aktivních relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatSessionAliveMaxTime  |  Maximální doba běhu relace Tomcat  |  Milisekund  |  Maximum | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatSessionCreatedCount  |  Počet vytvořených relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatSessionExpiredCount  |  Počet vypršení relace Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  TomcatSessionRejectedCount  |  Počet odmítnutých relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. AppPlatform/pružina  |  YoungGenPromotedBytes  |  Zvýšení úrovně na velikost dat malé generace  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. Automation/automationAccounts  |  TotalJob  |  Celkový počet úloh  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Automation/automationAccounts  |  TotalUpdateDeploymentMachineRuns  |  Celkový počet spuštěných počítačů nasazení aktualizace  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  Celkový počet spuštění nasazení aktualizací  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  CoreCount  |  Vyhrazený počet jader  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  CreatingNodeCount  |  Vytváření počtu uzlů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  IdleNodeCount  |  Počet nečinných uzlů  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  JobDeleteCompleteEvent  |  Události dokončení odstranění úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  JobDeleteStartEvent  |  Události spuštění odstranění úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  JobDisableCompleteEvent  |  Úloha zakázat kompletní události  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  JobDisableStartEvent  |  Úloha zakázat počáteční události  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  JobStartEvent  |  Události spuštění úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  JobTerminateCompleteEvent  |  Ukončit události dokončení úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  JobTerminateStartEvent  |  Události spuštění ukončení úlohy  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  LeavingPoolNodeCount  |  Počet ponechávání uzlů fondu  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  LowPriorityCoreCount  |  Počet jader LowPriority  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  OfflineNodeCount  |  Počet uzlů v režimu offline  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  PoolCreateEvent  |  Vytváření fondů – události  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  PoolDeleteCompleteEvent  |  Události dokončení odstranění fondu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  PoolDeleteStartEvent  |  Události spuštění odstranění fondu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  PoolResizeCompleteEvent  |  Události dokončení změny velikosti fondu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  PoolResizeStartEvent  |  Události spuštění změny velikosti fondu  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  PreemptedNodeCount  |  Počet zrušených uzlů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  RebootingNodeCount  |  Restartování počtu uzlů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  ReimagingNodeCount  |  Počet uzlů obnovování imagí  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  RunningNodeCount  |  Počet spuštěných uzlů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  StartingNodeCount  |  Počáteční počet uzlů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  StartTaskFailedNodeCount  |  Počet neúspěšných spuštění úlohy – počet uzlů  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  TaskCompleteEvent  |  Události dokončení úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  TaskFailEvent  |  Události neúspěšných úloh  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Batch/batchAccounts  |  TaskStartEvent  |  Události zahájení úlohy  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  TotalLowPriorityNodeCount  |  Počet uzlů s nízkou prioritou  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  TotalNodeCount  |  Počet vyhrazených uzlů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  UnusableNodeCount  |  Počet nepoužitelných uzlů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.Batch/batchAccounts  |  WaitingForStartTaskNodeCount  |  Čekání na počet uzlů spouštěcí úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Aktivní jádra  |  Aktivní jádra  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Aktivní uzly  |  Aktivní uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Jádra nečinných  |  Jádra nečinných  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Nečinné uzly  |  Nečinné uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Dokončená úloha  |  Dokončená úloha  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Úloha odeslána  |  Úloha odeslána  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Vynechávání jader  |  Vynechávání jader  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Ukončení uzlů  |  Ukončení uzlů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Zrušené jádra  |  Zrušené jádra  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Přepnuté uzly  |  Přepnuté uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Procento využití kvóty  |  Procento využití kvóty  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Celkový počet jader  |  Celkový počet jader  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Celkem uzlů  |  Celkem uzlů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Nepoužitelné jádra  |  Nepoužitelné jádra  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.BatchAI/Workspaces  |  Nepoužité uzly  |  Nepoužité uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  ConnectionAccepted  |  Přijatá připojení  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  ConnectionActive  |  Aktivní připojení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  ConnectionHandled  |  Zpracovaná připojení  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  CpuUsagePercentageInDouble  |  Procento využití procesoru  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  IOReadBytes  |  Bajty čtení v/v  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  IOWriteBytes  |  Bajty zápisu v/v  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  MemoryLimit  |  Omezení paměti  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  MemoryUsage  |  Využití paměti  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  MemoryUsagePercentageInDouble  |  Procento využití paměti  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  PendingTransactions  |  Nedokončené transakce  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  ProcessedBlocks  |  Zpracované bloky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  ProcessedTransactions  |  Zpracované transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  QueuedTransactions  |  Transakce ve frontě  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  RequestHandled  |  Zpracované žádosti  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. blockchain/blockchainMembers  |  StorageUsage  |  Využití úložiště  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits  |  Přístupy do mezipaměti  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits0  |  Přístupy do mezipaměti (horizontálních oddílů 0)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits1  |  Přístupy do mezipaměti (horizontálních oddílů 1)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits2  |  Přístupy do mezipaměti (horizontálních oddílů 2)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits3  |  Přístupy do mezipaměti (horizontálních oddílů 3)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits4  |  Přístupy do mezipaměti (horizontálních oddílů 4)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits5  |  Přístupy do mezipaměti (horizontálních oddílů 5)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits6  |  Přístupy do mezipaměti (horizontálních oddílů 6)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits7  |  Přístupy do mezipaměti (horizontálních oddílů 7)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits8  |  Přístupy do mezipaměti (horizontálních oddílů 8)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachehits9  |  Přístupy do mezipaměti (horizontálních oddílů 9)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheLatency  |  Mikrosekundy latence mezipaměti (Preview)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses  |  Neúspěšné přístupy do mezipaměti  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses0  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 0)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses1  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 1)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses2  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 2)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses3  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 3)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses4  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 4)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses5  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 5)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses6  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 6)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses7  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 7)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses8  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 8)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cachemisses9  |  Neúspěšné přístupy do mezipaměti (horizontálních oddílů 9)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead  |  Čtení z mezipaměti  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead0  |  Čtení z mezipaměti (horizontálních oddílů 0)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead1  |  Čtení z mezipaměti (horizontálních oddílů 1)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead2  |  Čtení z mezipaměti (horizontálních oddílů 2)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead3  |  Čtení z mezipaměti (horizontálních oddílů 3)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead4  |  Čtení z mezipaměti (horizontálních oddílů 4)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead5  |  Čtení z mezipaměti (horizontálních oddílů 5)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead6  |  Čtení z mezipaměti (horizontálních oddílů 6)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead7  |  Čtení z mezipaměti (horizontálních oddílů 7)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead8  |  Čtení z mezipaměti (horizontálních oddílů 8)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheRead9  |  Čtení z mezipaměti (horizontálních oddílů 9)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite  |  Zápis do mezipaměti  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite0  |  Zápis do mezipaměti (horizontálních oddílů 0)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite1  |  Zápis do mezipaměti (horizontálních oddílů 1)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite2  |  Zápis do mezipaměti (horizontálních oddílů 2)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite3  |  Zápis do mezipaměti (horizontálních oddílů 3)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite4  |  Zápis do mezipaměti (horizontálních oddílů 4)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite5  |  Zápis do mezipaměti (horizontálních oddílů 5)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite6  |  Zápis do mezipaměti (horizontálních oddílů 6)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite7  |  Zápis do mezipaměti (horizontálních oddílů 7)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite8  |  Zápis do mezipaměti (horizontálních oddílů 8)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  cacheWrite9  |  Zápis do mezipaměti (horizontálních oddílů 9)  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients  |  Připojení klienti  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients0  |  Připojení klienti (horizontálních oddílů 0)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients1  |  Připojení klienti (horizontálních oddílů 1)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients2  |  Připojení klienti (horizontálních oddílů 2)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients3  |  Připojení klienti (horizontálních oddílů 3)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients4  |  Připojení klienti (horizontálních oddílů 4)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients5  |  Připojení klienti (horizontálních oddílů 5)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients6  |  Připojení klienti (horizontálních oddílů 6)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients7  |  Připojení klienti (horizontálních oddílů 7)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients8  |  Připojení klienti (horizontálních oddílů 8)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  connectedclients9  |  Připojení klienti (horizontálních oddílů 9)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  chyby  |  chyby  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys  |  Vyloučené klíče  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys0  |  Vyřazené klíče (horizontálních oddílů 0)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys1  |  Vyřazené klíče (horizontálních oddílů 1)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys2  |  Vyřazené klíče (horizontálních oddílů 2)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys3  |  Vyřazené klíče (horizontálních oddílů 3)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys4  |  Vyřazené klíče (horizontálních oddílů 4)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys5  |  Vyřazení klíčů (horizontálních oddílů 5)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys6  |  Vyřazené klíče (horizontálních oddílů 6)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys7  |  Vyřazení klíčů (horizontálních oddílů 7)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys8  |  Vyřazené klíče (horizontálních oddílů 8)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  evictedkeys9  |  Vyřazené klíče (horizontálních oddílů 9)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys  |  Prošlé klíče  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys0  |  Klíče vypršení platnosti (horizontálních oddílů 0)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys1  |  Klíče vypršení platnosti (horizontálních oddílů 1)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys2  |  Klíče vypršení platnosti (horizontálních oddílů 2)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys3  |  Klíče vypršení platnosti (horizontálních oddílů 3)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys4  |  Klíče vypršení platnosti (horizontálních oddílů 4)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys5  |  Klíče vypršení platnosti (horizontálních oddílů 5)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys6  |  Klíče vypršení platnosti (horizontálních oddílů 6)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys7  |  Klíče vypršení platnosti (horizontálních oddílů 7)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys8  |  Klíče vypršení platnosti (horizontálních oddílů 8)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  expiredkeys9  |  Klíče vypršení platnosti (horizontálních oddílů 9)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  GetCommands  |  Příkazy Get  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands0  |  Načtení (horizontálních oddílů 0)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands1  |  Načtení (horizontálních oddílů 1)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands2  |  Get (horizontálních oddílů 2)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands3  |  Get (horizontálních oddílů 3)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands4  |  Get (horizontálních oddílů 4)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands5  |  Získá (horizontálních oddílů 5)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands6  |  Načtení (horizontálních oddílů 6)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands7  |  Načtení (horizontálních oddílů 7)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands8  |  Získá (horizontálních oddílů 8)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  getcommands9  |  Načtení (horizontálních oddílů 9)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond  |  Operace za sekundu  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond0  |  Operací za sekundu (horizontálních oddílů 0)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond1  |  Operací za sekundu (horizontálních oddílů 1)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond2  |  Operací za sekundu (horizontálních oddílů 2)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond3  |  Operací za sekundu (horizontálních oddílů 3)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond4  |  Operací za sekundu (horizontálních oddílů 4)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond5  |  Operací za sekundu (horizontálních oddílů 5)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond6  |  Operací za sekundu (horizontálních oddílů 6)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond7  |  Operací za sekundu (horizontálních oddílů 7)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond8  |  Operací za sekundu (horizontálních oddílů 8)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  operationsPerSecond9  |  Operací za sekundu (horizontálních oddílů 9)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime  |  Procesor  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime0  |  PROCESOR (horizontálních oddílů 0)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime1  |  PROCESOR (horizontálních oddílů 1)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime2  |  PROCESOR (horizontálních oddílů 2)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime3  |  PROCESOR (horizontálních oddílů 3)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime4  |  PROCESOR (horizontálních oddílů 4)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime5  |  PROCESOR (horizontálních oddílů 5)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime6  |  PROCESOR (horizontálních oddílů 6)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime7  |  PROCESOR (horizontálních oddílů 7)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime8  |  PROCESOR (horizontálních oddílů 8)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  percentProcessorTime9  |  PROCESOR (horizontálních oddílů 9)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad  |  Zatížení serveru  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad0  |  Zatížení serveru (horizontálních oddílů 0)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad1  |  Zatížení serveru (horizontálních oddílů 1)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad2  |  Zatížení serveru (horizontálních oddílů 2)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad3  |  Zatížení serveru (horizontálních oddílů 3)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad4  |  Zatížení serveru (horizontálních oddílů 4)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad5  |  Zatížení serveru (horizontálních oddílů 5)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad6  |  Zatížení serveru (horizontálních oddílů 6)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad7  |  Zatížení serveru (horizontálních oddílů 7)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad8  |  Zatížení serveru (horizontálních oddílů 8)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  serverLoad9  |  Zatížení serveru (horizontálních oddílů 9)  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands  |  Příkazy Set  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands0  |  Sady (horizontálních oddílů 0)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands1  |  Sady (horizontálních oddílů 1)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands2  |  Sady (horizontálních oddílů 2)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands3  |  Sady (horizontálních oddílů 3)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands4  |  Sady (horizontálních oddílů 4)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands5  |  Sady (horizontálních oddílů 5)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands6  |  Sady (horizontálních oddílů 6)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands7  |  Sady (horizontálních oddílů 7)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands8  |  Sady (horizontálních oddílů 8)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  setcommands9  |  Sady (horizontálních oddílů 9)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed  |  Celkový počet operací  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed0  |  Celkem operací (horizontálních oddílů 0)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed1  |  Celkem operací (horizontálních oddílů 1)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed2  |  Celkem operací (horizontálních oddílů 2)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed3  |  Celkem operací (horizontálních oddílů 3)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed4  |  Celkem operací (horizontálních oddílů 4)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed5  |  Celkem operací (horizontálních oddílů 5)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed6  |  Celkem operací (horizontálních oddílů 6)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed7  |  Celkem operací (horizontálních oddílů 7)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed8  |  Celkem operací (horizontálních oddílů 8)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalcommandsprocessed9  |  Celkem operací (horizontálních oddílů 9)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys  |  Celkem klíčů  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys0  |  Celkem klíčů (horizontálních oddílů 0)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys1  |  Celkem klíčů (horizontálních oddílů 1)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys2  |  Celkem klíčů (horizontálních oddílů 2)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys3  |  Celkem klíčů (horizontálních oddílů 3)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys4  |  Celkem klíčů (horizontálních oddílů 4)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys5  |  Celkem klíčů (horizontálních oddílů 5)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys6  |  Celkem klíčů (horizontálních oddílů 6)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys7  |  Celkem klíčů (horizontálních oddílů 7)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys8  |  Celkem klíčů (horizontálních oddílů 8)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  totalkeys9  |  Celkem klíčů (horizontálních oddílů 9)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory  |  Využitá paměť  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory0  |  Využitá paměť (horizontálních oddílů 0)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory1  |  Využitá paměť (horizontálních oddílů 1)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory2  |  Využitá paměť (horizontálních oddílů 2)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory3  |  Využitá paměť (horizontálních oddílů 3)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory4  |  Využitá paměť (horizontálních oddílů 4)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory5  |  Využitá paměť (horizontálních oddílů 5)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory6  |  Využitá paměť (horizontálních oddílů 6)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory7  |  Využitá paměť (horizontálních oddílů 7)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory8  |  Využitá paměť (horizontálních oddílů 8)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemory9  |  Využitá paměť (horizontálních oddílů 9)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemorypercentage  |  Využitá paměť v procentech  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss  |  RSS využité paměti  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss0  |  RSS využité paměti (horizontálních oddílů 0)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss1  |  RSS využité paměti (horizontálních oddílů 1)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss2  |  RSS využité paměti (horizontálních oddílů 2)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss3  |  RSS využité paměti (horizontálních oddílů 3)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss4  |  RSS využité paměti (horizontálních oddílů 4)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss5  |  RSS využité paměti (horizontálních oddílů 5)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss6  |  RSS využité paměti (horizontálních oddílů 6)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss7  |  RSS využité paměti (horizontálních oddílů 7)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss8  |  RSS využité paměti (horizontálních oddílů 8)  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. cache/Redis  |  usedmemoryRss9  |  RSS využité paměti (horizontálních oddílů 9)  |  Bajty  |  Maximum | 
+| No  | No |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Bajty čtení z disku/s  |  Čtení z disku  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Bajty zápisu na disk/s  |  Zápis na disk  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Síťové vstupy  |  Síťové vstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Síťové výstupy  |  Síťové výstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicCompute/domainNames/sloty/role  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. ClassicCompute/virtualMachines  |  Bajty čtení z disku/s  |  Čtení z disku  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicCompute/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. ClassicCompute/virtualMachines  |  Bajty zápisu na disk/s  |  Zápis na disk  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicCompute/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicCompute/virtualMachines  |  Síťové vstupy  |  Síťové vstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicCompute/virtualMachines  |  Síťové výstupy  |  Síťové výstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicCompute/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts  |  UsedCapacity  |  Využitá kapacita  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  BlobCapacity  |  Kapacita objektu BLOB  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  BlobCount  |  Počet objektů BLOB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  ContainerCount  |  Počet kontejnerů objektů BLOB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  IndexCapacity  |  Kapacita indexu  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/blobServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  Kapacita zařízení  |  Kapacita souboru  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileCount  |  Počet souborů  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareCount  |  Počet sdílených souborů  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareQuota  |  Velikost kvóty sdílení souborů  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareSnapshotCount  |  Počet snímků sdílené složky  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  FileShareSnapshotSize  |  Velikost snímku sdílené složky  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/služby  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueCapacity  |  Kapacita fronty  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueCount  |  Počet front  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  QueueMessageCount  |  Počet zpráv ve frontě  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/queueServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableCapacity  |  Kapacita tabulky  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableCount  |  Počet tabulek  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  TableEntityCount  |  Počet entit tabulky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ClassicStorage/storageAccounts/tableServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  BlockedCalls  |  Blokovaná volání  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  CharactersTrained  |  Vyškolené znaky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  CharactersTranslated  |  Přeložené znaky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  ClientErrors  |  Chyby klienta  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  DataIn  |  Data v  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  Data  |  Výstupní data  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  Latence  |  Latence  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  ServerErrors  |  Chyby serveru  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  SpeechSessionDuration  |  Doba trvání relace řeči  |  Sekundy  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  SuccessfulCalls  |  Úspěšná volání  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  TotalCalls  |  Celkový počet volání  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  TotalErrors  |  Celkový počet chyb  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  TotalTokenCalls  |  Celkový počet volání tokenu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Cognitiveservices Account/účty  |  TotalTransactions  |  Celkový počet transakcí  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Spotřebované kredity procesoru  |  Spotřebované kredity procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Zbývající kredity procesoru  |  Zbývající kredity procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Hloubka fronty datového disku  |  Hloubka fronty datových disků (Preview)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty přečtené z datového disku za sekundu  |  Bajty přečtené z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace čtení z datového disku za sekundu  |  Operace čtení z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty zapsané na datový disk/s  |  Bajty zapsané na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace zápisu na datový disk/s  |  Operace zápisu na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Příchozí toky  |  Příchozí toky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Maximální rychlost vytváření příchozích toků  |  Míra vytváření maximálního počtu příchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Síťové vstupy  |  Síť v fakturovatelný (zastaralé)  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Celková síť  |  Celková síť  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Síťové výstupy  |  Fakturovatelná odchozí síť (zastaralé)  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Celkový počet síťových výstupů  |  Celkový počet síťových výstupů  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Hloubka fronty disku s operačním systémem  |  Hloubka fronty disku operačního systému (Preview)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty přečtené z disku s operačním systémem/s  |  Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace čtení z disku s operačním systémem za sekundu  |  Operace čtení z disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty zápisu na disk s operačním systémem/s  |  Bajty zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace zápisu na disk s operačním systémem za sekundu  |  Operace zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operační systém na disk hloubka fronty  |  Disk s operačním systémem hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Přečtené bajty v operačním systému na disk/s  |  Bajty přečtené z disku s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace čtení z operačního systému na disk/s  |  Operace čtení z disku s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty zapsané v operačním systému na disk/s  |  Bajty zápisu na disk s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace zápisu v operačním systému na disk/s  |  Operace zápisu na disk s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Odchozí toky  |  Odchozí toky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Maximální rychlost vytváření odchozích toků  |  Frekvence maximálního vytváření odchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Hloubka fronty na disk  |  Datový disk hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Přečtené bajty podle disku/s  |  Bajty přečtené z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace čtení na disk/s  |  Operace čtení z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Bajty zápisu na disk/s  |  Bajty zapsané na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Neúspěšné čtení mezipaměti datových disků Premium  |  Neúspěšné čtení mezipaměti datových disků Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Počet přístupů do mezipaměti disku s operačním systémem Premium  |  Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachines  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Spotřebované kredity procesoru  |  Spotřebované kredity procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Zbývající kredity procesoru  |  Zbývající kredity procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Hloubka fronty datového disku  |  Hloubka fronty datových disků (Preview)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty přečtené z datového disku za sekundu  |  Bajty přečtené z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z datového disku za sekundu  |  Operace čtení z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zapsané na datový disk/s  |  Bajty zapsané na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na datový disk/s  |  Operace zápisu na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Příchozí toky  |  Příchozí toky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Maximální rychlost vytváření příchozích toků  |  Míra vytváření maximálního počtu příchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Síťové vstupy  |  Síť v fakturovatelný (zastaralé)  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Celková síť  |  Celková síť  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Síťové výstupy  |  Fakturovatelná odchozí síť (zastaralé)  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Celkový počet síťových výstupů  |  Celkový počet síťových výstupů  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Hloubka fronty disku s operačním systémem  |  Hloubka fronty disku operačního systému (Preview)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty přečtené z disku s operačním systémem/s  |  Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z disku s operačním systémem za sekundu  |  Operace čtení z disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zápisu na disk s operačním systémem/s  |  Bajty zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na disk s operačním systémem za sekundu  |  Operace zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operační systém na disk hloubka fronty  |  Disk s operačním systémem hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Přečtené bajty v operačním systému na disk/s  |  Bajty přečtené z disku s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení z operačního systému na disk/s  |  Operace čtení z disku s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zapsané v operačním systému na disk/s  |  Bajty zápisu na disk s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu v operačním systému na disk/s  |  Operace zápisu na disk s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Odchozí toky  |  Odchozí toky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Maximální rychlost vytváření odchozích toků  |  Frekvence maximálního vytváření odchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Hloubka fronty na disk  |  Datový disk hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Přečtené bajty podle disku/s  |  Bajty přečtené z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace čtení na disk/s  |  Operace čtení z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Bajty zápisu na disk/s  |  Bajty zapsané na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Operace zápisu na disk/s  |  Operace zápisu na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Neúspěšné čtení mezipaměti datových disků Premium  |  Neúspěšné čtení mezipaměti datových disků Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Počet přístupů do mezipaměti disku s operačním systémem Premium  |  Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft.Compute/virtualMachineScaleSets  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Spotřebované kredity procesoru  |  Spotřebované kredity procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Zbývající kredity procesoru  |  Zbývající kredity procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Hloubka fronty datového disku  |  Hloubka fronty datových disků (Preview)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty přečtené z datového disku za sekundu  |  Bajty přečtené z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z datového disku za sekundu  |  Operace čtení z datového disku za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zapsané na datový disk/s  |  Bajty zapsané na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na datový disk/s  |  Operace zápisu na datový disk za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Příchozí toky  |  Příchozí toky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Maximální rychlost vytváření příchozích toků  |  Míra vytváření maximálního počtu příchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Síťové vstupy  |  Síť v fakturovatelný (zastaralé)  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Celková síť  |  Celková síť  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Síťové výstupy  |  Fakturovatelná odchozí síť (zastaralé)  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Celkový počet síťových výstupů  |  Celkový počet síťových výstupů  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Hloubka fronty disku s operačním systémem  |  Hloubka fronty disku operačního systému (Preview)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty přečtené z disku s operačním systémem/s  |  Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z disku s operačním systémem za sekundu  |  Operace čtení z disku s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zápisu na disk s operačním systémem/s  |  Bajty zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na disk s operačním systémem za sekundu  |  Operace zápisu na disk s operačním systémem za sekundu (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operační systém na disk hloubka fronty  |  Disk s operačním systémem hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Přečtené bajty v operačním systému na disk/s  |  Bajty přečtené z disku s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení z operačního systému na disk/s  |  Operace čtení z disku s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zapsané v operačním systému na disk/s  |  Bajty zápisu na disk s operačním systémem/s (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu v operačním systému na disk/s  |  Operace zápisu na disk s operačním systémem za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Odchozí toky  |  Odchozí toky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Maximální rychlost vytváření odchozích toků  |  Frekvence maximálního vytváření odchozích toků (Preview)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Hloubka fronty na disk  |  Datový disk hloubka fronty (zastaralé)  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Přečtené bajty podle disku/s  |  Bajty přečtené z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace čtení na disk/s  |  Operace čtení z datového disku za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Bajty zápisu na disk/s  |  Bajty zapsané na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na datový disk za sekundu (zastaralé)  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium  |  Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Neúspěšné čtení mezipaměti datových disků Premium  |  Neúspěšné čtení mezipaměti datových disků Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Počet přístupů do mezipaměti disku s operačním systémem Premium  |  Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium  |  Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerInstance/containerGroups  |  CpuUsage  |  Využití procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerInstance/containerGroups  |  MemoryUsage  |  Využití paměti  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerInstance/containerGroups  |  NetworkBytesReceivedPerSecond  |  Počet přijatých bajtů sítě za sekundu  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerInstance/containerGroups  |  NetworkBytesTransmittedPerSecond  |  Bajty přenášené přes síť za sekundu  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerRegistry/Registry  |  RunDuration  |  Doba trvání běhu  |  Milisekund  |  Celkem | 
+| **Ano**  | No |  Microsoft. ContainerRegistry/Registry  |  SuccessfulPullCount  |  Počet úspěšných vyžádané replikace  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerRegistry/Registry  |  SuccessfulPushCount  |  Počet úspěšných vložení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerRegistry/Registry  |  TotalPullCount  |  Celkový počet vyžádané replikace  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. ContainerRegistry/Registry  |  TotalPushCount  |  Celkový počet nabízených oznámení  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ContainerService/managedClusters  |  kube_node_status_allocatable_cpu_cores  |  Celkový počet dostupných jader procesoru ve spravovaném clusteru  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ContainerService/managedClusters  |  kube_node_status_allocatable_memory_bytes  |  Celková velikost dostupné paměti ve spravovaném clusteru  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. ContainerService/managedClusters  |  kube_node_status_condition  |  Stavy pro různé podmínky uzlu  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ContainerService/managedClusters  |  kube_pod_status_phase  |  Počet lusků podle fáze  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ContainerService/managedClusters  |  kube_pod_status_ready  |  Počet lusků ve stavu připraveno  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  Availablecapacity;)  |  Dostupná kapacita  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloud  |  Odeslané bajty v cloudu (zařízení)  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloudPerShare  |  Odeslané bajty v cloudu (sdílená složka)  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughput  |  Propustnost stahování v cloudu  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughputPerShare  |  Propustnost stahování do cloudu (sdílení)  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughput  |  Propustnost nahrávání do cloudu  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughputPerShare  |  Propustnost nahrávání do cloudu (sdílení)  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  HyperVMemoryUtilization  |  Výpočet využití paměti na hraničních zařízeních  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  HyperVVirtualProcessorUtilization  |  Výpočetní prostředí Edge – procento využití procesoru  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  NICReadThroughput  |  Propustnost čtení (síť)  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  NICWriteThroughput  |  Propustnost zápisu (síť)  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataBoxEdge/dataBoxEdgeDevices  |  Úložiště  |  Celková kapacita  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataFactory/DataFactory  |  FailedRuns  |  Neúspěšná spuštění  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/DataFactory  |  SuccessfulRuns  |  Úspěšná spuštění  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  ActivityCancelledRuns  |  Zrušené metriky spuštění aktivit  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  ActivityFailedRuns  |  Neúspěšná aktivita spustí metriky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  ActivitySucceededRuns  |  Úspěšná aktivita spustí metriky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  FactorySizeInGbUnits  |  Celková velikost továrny (jednotka GB)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeAvailableMemory  |  Dostupná paměť modulu runtime integrace  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeAverageTaskPickupDelay  |  Doba trvání fronty prostředí Integration runtime  |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeCpuPercentage  |  Využití procesoru prostředí Integration runtime  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  IntegrationRuntimeQueueLength  |  Délka fronty prostředí Integration runtime  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  MaxAllowedFactorySizeInGbUnits  |  Maximální povolená velikost továrny (jednotka GB)  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  MaxAllowedResourceCount  |  Maximální počet povolených entit  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  PipelineCancelledRuns  |  Zrušené metriky spuštění kanálu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  PipelineFailedRuns  |  Neúspěšná metrika spuštění kanálu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  PipelineSucceededRuns  |  Úspěšné metriky spuštění kanálu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  ResourceCount  |  Celkový počet entit  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  TriggerCancelledRuns  |  Zrušené aktivační události spustí metriky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  TriggerFailedRuns  |  Neúspěšná aktivační událost spustí metriky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataFactory/továrny  |  TriggerSucceededRuns  |  Úspěšná aktivační událost spustí metriky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeAnalytics/účty  |  JobAUEndedCancelled  |  Čas AU se zrušil.  |  Sekundy  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeAnalytics/účty  |  JobAUEndedFailure  |  Neúspěšná doba aktualizace AU  |  Sekundy  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeAnalytics/účty  |  JobAUEndedSuccess  |  Úspěšná doba AU  |  Sekundy  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeAnalytics/účty  |  JobEndedCancelled  |  Zrušené úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeAnalytics/účty  |  JobEndedFailure  |  Neúspěšné úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeAnalytics/účty  |  JobEndedSuccess  |  Úspěšné úlohy  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeStore/účty  |  Čtení z  |  Přečtená data  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeStore/účty  |  Napsáno  |  Zapsaná data  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeStore/účty  |  ReadRequests  |  Žádosti o čtení  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DataLakeStore/účty  |  TotalStorage  |  Celkové úložiště  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. DataLakeStore/účty  |  WriteRequests  |  Požadavky na zápis  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. DBforMariaDB/servery  |  active_connections  |  Aktivní připojení  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. DBforMariaDB/servery  |  backup_storage_used  |  Využité úložiště záloh  |  Bajty  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. DBforMariaDB/servery  |  connections_failed  |  Neúspěšná připojení  |  Počet  |  Celkem | 
@@ -665,30 +664,30 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. DBforMySQL/servery  |  storage_limit  |  Omezení úložiště  |  Bajty  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. DBforMySQL/servery  |  storage_percent  |  Procento úložiště  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. DBforMySQL/servery  |  storage_used  |  Využité úložiště  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  active_connections  |  Aktivní připojení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  backup_storage_used  |  Využité úložiště záloh  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  connections_failed  |  Neúspěšná připojení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  cpu_percent  |  Procento využití procesoru  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  io_consumption_percent  |  V/v procenta  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  memory_percent  |  Procentuální hodnota paměti  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  network_bytes_egress  |  Síťové výstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  network_bytes_ingress  |  Síťové vstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  pg_replica_log_delay_in_bytes  |  Maximální prodleva napříč replikami  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  pg_replica_log_delay_in_seconds  |  Prodleva repliky  |  Sekundy  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  serverlog_storage_limit  |  Limit úložiště protokolu serveru  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  serverlog_storage_percent  |  Procentuální hodnota úložiště protokolu serveru  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  serverlog_storage_usage  |  Využité úložiště protokolu serveru  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  storage_limit  |  Omezení úložiště  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  storage_percent  |  Procento úložiště  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/servery  |  storage_used  |  Využité úložiště  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  active_connections  |  Aktivní připojení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  cpu_percent  |  Procento využití procesoru  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  IOPS  |  IOPS  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  memory_percent  |  Procentuální hodnota paměti  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_egress  |  Síťové výstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_ingress  |  Síťové vstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  storage_percent  |  Procento úložiště  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. DBforPostgreSQL/serversv2  |  storage_used  |  Využité úložiště  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  active_connections  |  Aktivní připojení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  backup_storage_used  |  Využité úložiště záloh  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  connections_failed  |  Neúspěšná připojení  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  cpu_percent  |  Procento využití procesoru  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  io_consumption_percent  |  V/v procenta  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  memory_percent  |  Procentuální hodnota paměti  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  network_bytes_egress  |  Síťové výstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  network_bytes_ingress  |  Síťové vstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  pg_replica_log_delay_in_bytes  |  Maximální prodleva napříč replikami  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  pg_replica_log_delay_in_seconds  |  Prodleva repliky  |  Sekundy  |  Maximum | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  serverlog_storage_limit  |  Limit úložiště protokolu serveru  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  serverlog_storage_percent  |  Procentuální hodnota úložiště protokolu serveru  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  serverlog_storage_usage  |  Využité úložiště protokolu serveru  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  storage_limit  |  Omezení úložiště  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  storage_percent  |  Procento úložiště  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/servery  |  storage_used  |  Využité úložiště  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  active_connections  |  Aktivní připojení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  cpu_percent  |  Procento využití procesoru  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  IOPS  |  IOPS  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  memory_percent  |  Procentuální hodnota paměti  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_egress  |  Síťové výstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  network_bytes_ingress  |  Síťové vstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  storage_percent  |  Procento úložiště  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. DBforPostgreSQL/serversv2  |  storage_used  |  Využité úložiště  |  Bajty  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. zařízení/účet  |  digitaltwins. telemetrie. Nodes  |  Zástupný text telemetrie uzlu digitální vlákna  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  C2D. Commands. odchozí. Abandon. Success  |  Zrušené zprávy C2D  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  C2D. Commands.. Complete. Complete. Success  |  Doručení zpráv C2D bylo dokončeno.  |  Počet  |  Celkem | 
@@ -705,7 +704,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  C2D. nevlákenná. Update. Success  |  Úspěšné zdvojené aktualizace z back-endu  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  C2DMessagesExpired  |  C2D zprávy prošly (Preview)  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  konfiguračních  |  Metriky konfigurace  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Devices/IotHubs  |  connectedDeviceCount  |  Připojená zařízení (Preview)  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Devices/IotHubs  |  connectedDeviceCount  |  Připojená zařízení (Preview)  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  D2C. Endpoints. invýstups. builtIns. events  |  Směrování: zprávy doručené zprávám/událostem  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  D2C. Endpoints. odchozí. eventHubs  |  Směrování: zprávy doručené do centra událostí  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  D2C. Endpoints. odchozí. serviceBusQueues  |  Směrování: zprávy doručené do fronty Service Bus  |  Počet  |  Celkem | 
@@ -751,52 +750,52 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  Jobs. listJobs. Success  |  Úspěšná volání na seznam úloh  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  Jobs. queryJobs. selhání  |  Neúspěšné dotazy na úlohy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  Jobs. queryJobs. Success  |  Úspěšné dotazy na úlohy  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Devices/IotHubs  |  totalDeviceCount  |  Celkem zařízení (Preview)  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Devices/IotHubs  |  totalDeviceCount  |  Celkem zařízení (Preview)  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  twinQueries. selhání  |  Neúspěšné zdvojené dotazy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  twinQueries.resultSize  |  Velikost výsledku nevlákenných dotazů  |  Bajty  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Devices/IotHubs  |  twinQueries. Success  |  Úspěšné zdvojené dotazy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/provisioningServices  |  AttestationAttempts  |  Pokusy o ověření identity  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/provisioningServices  |  DeviceAssignments  |  Přiřazená zařízení  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/provisioningServices  |  RegistrationAttempts  |  Pokusy o registraci  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Dostupné úložiště  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Ukončení připojení Cassandra  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Poplatky za žádosti Cassandra  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequests  |  Žádosti Cassandra  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  Využití datausage  |  Využití dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  DocumentCount  |  Počet dokumentů  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  DocumentQuota  |  Kvóta dokumentu  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  IndexUsage  |  Využití indexu  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  MetadataRequests  |  Žádosti o metadata  |  Počet  |  Počet | 
-| **Ano**  | **Ano** |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Poplatek za požadavek Mongo  |  Počet  |  Celkem | 
-| **Ano**  | **Ano** |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequests  |  Žádosti Mongo  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Počet požadavků Mongo  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Frekvence žádosti o odstranění Mongo  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsInsert  |  Frekvence požadavků na vložení Mongo  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Frekvence požadavků na dotaz Mongo  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Frekvence požadavků na aktualizace Mongo  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  ProvisionedThroughput  |  Zřízená propustnost  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  ReplicationLatency  |  Latence replikace p99  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Dostupnost služby  |  Procento  |  Průměr | 
-| **Ano**  | **Ano** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequests  |  Požadavky celkem  |  Počet  |  Počet | 
-| **Ano**  | **Ano** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Celkový počet jednotek žádostí  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  FailureCount  |  Počet selhání  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  SuccessCount  |  Počet úspěchů  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  SuccessLatency  |  Latence úspěchu  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  TransactionCount  |  Počet transakcí  |  Počet  |  Počet | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  AvailableStorage  |  Dostupné úložiště  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Ukončení připojení Cassandra  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Poplatky za žádosti Cassandra  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequests  |  Žádosti Cassandra  |  Počet  |  Počet | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  Využití datausage  |  Využití dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft.DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Počet  |  Počet | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  DocumentCount  |  Počet dokumentů  |  Počet  |  Celkem | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  DocumentQuota  |  Kvóta dokumentu  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  IndexUsage  |  Využití indexu  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  MetadataRequests  |  Žádosti o metadata  |  Počet  |  Počet | 
+| **Ano**  | **Ano** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Poplatek za požadavek Mongo  |  Počet  |  Celkem | 
+| **Ano**  | **Ano** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequests  |  Žádosti Mongo  |  Počet  |  Počet | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Počet požadavků Mongo  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Frekvence žádosti o odstranění Mongo  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsInsert  |  Frekvence požadavků na vložení Mongo  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Frekvence požadavků na dotaz Mongo  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Frekvence požadavků na aktualizace Mongo  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  ProvisionedThroughput  |  Zřízená propustnost  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft.DocumentDB/databaseAccounts  |  ReplicationLatency  |  Latence replikace p99  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft.DocumentDB/databaseAccounts  |  ServiceAvailability  |  Dostupnost služby  |  Procento  |  Průměr | 
+| **Ano**  | **Ano** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequests  |  Požadavky celkem  |  Počet  |  Počet | 
+| **Ano**  | **Ano** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Celkový počet jednotek žádostí  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EnterpriseKnowledgeGraph/Services  |  FailureCount  |  Počet selhání  |  Počet  |  Počet | 
+| No  | No |  Microsoft. EnterpriseKnowledgeGraph/Services  |  SuccessCount  |  Počet úspěchů  |  Počet  |  Počet | 
+| No  | No |  Microsoft. EnterpriseKnowledgeGraph/Services  |  SuccessLatency  |  Latence úspěchu  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. EnterpriseKnowledgeGraph/Services  |  TransactionCount  |  Počet transakcí  |  Počet  |  Počet | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  DeadLetteredCount  |  Nedoručené události s písmeny  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventGrid/domény  |  DeliveryAttemptFailCount  |  Doručení – neúspěšné události  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventGrid/domény  |  DeliveryAttemptFailCount  |  Doručení – neúspěšné události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  DeliverySuccessCount  |  Doručené události  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventGrid/domény  |  DestinationProcessingDurationInMs  |  Doba trvání zpracování cíle  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. EventGrid/domény  |  DestinationProcessingDurationInMs  |  Doba trvání zpracování cíle  |  Milisekund  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  DroppedEventCount  |  Vyřazené události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  MatchedEventCount  |  Spárované události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  PublishFailCount  |  Publikovat neúspěšné události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  PublishSuccessCount  |  Publikované události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  PublishSuccessLatencyInMs  |  Latence úspěšného publikování  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/eventSubscriptions  |  DeadLetteredCount  |  Nedoručené události s písmeny  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventGrid/eventSubscriptions  |  DeliveryAttemptFailCount  |  Doručení – neúspěšné události  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventGrid/eventSubscriptions  |  DeliveryAttemptFailCount  |  Doručení – neúspěšné události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/eventSubscriptions  |  DeliverySuccessCount  |  Doručené události  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventGrid/eventSubscriptions  |  DestinationProcessingDurationInMs  |  Doba trvání zpracování cíle  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. EventGrid/eventSubscriptions  |  DestinationProcessingDurationInMs  |  Doba trvání zpracování cíle  |  Milisekund  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/eventSubscriptions  |  DroppedEventCount  |  Vyřazené události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/eventSubscriptions  |  MatchedEventCount  |  Spárované události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/extensionTopics  |  PublishFailCount  |  Publikovat neúspěšné události  |  Počet  |  Celkem | 
@@ -807,30 +806,30 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. EventGrid/témata  |  PublishSuccessCount  |  Publikované události  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/témata  |  PublishSuccessLatencyInMs  |  Latence úspěšného publikování  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/témata  |  UnmatchedEventCount  |  Nespárované události  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  AvailableMemory  |  Paměť k dispozici  |  Procento  |  Maximum | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  CaptureBacklog  |  Zachyťte nevyřízené položky.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  CapturedBytes  |  Zachycené bajty.  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  CapturedMessages  |  Zachycené zprávy.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  ConnectionsClosed  |  Uzavřená připojení.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  ConnectionsOpened  |  Otevřená připojení.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  Procesor  |  Procesor  |  Procento  |  Maximum | 
-| **Ano**  | **Ano** |  Microsoft. EventHub/clustery  |  IncomingBytes  |  Příchozí bajty.  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. EventHub/clustery  |  AvailableMemory  |  Paměť k dispozici  |  Procento  |  Maximum | 
+| No  | No |  Microsoft. EventHub/clustery  |  CaptureBacklog  |  Zachyťte nevyřízené položky.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  CapturedBytes  |  Zachycené bajty.  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  CapturedMessages  |  Zachycené zprávy.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  ConnectionsClosed  |  Zavřená připojení.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. EventHub/clustery  |  ConnectionsOpened  |  Otevřená připojení.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. EventHub/clustery  |  Procesor  |  Procesor  |  Procento  |  Maximum | 
+| **Ano**  | **Ano** |  Microsoft. EventHub/clustery  |  IncomingBytes  |  Příchozí bajty  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/clustery  |  IncomingMessages  |  Příchozí zprávy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/clustery  |  IncomingRequests  |  Příchozí žádosti  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/clustery  |  OutgoingBytes  |  Odchozí bajty  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/clustery  |  OutgoingMessages  |  Odchozí zprávy  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  QuotaExceededErrors  |  Chyby překročení kvóty  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  ServerErrors  |  Chyby serveru.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  SuccessfulRequests  |  Úspěšné požadavky  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  ThrottledRequests  |  Omezené požadavky.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/clustery  |  UserErrors  |  Chyby uživatele.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  CaptureBacklog  |  Zachyťte nevyřízené položky.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  CapturedBytes  |  Zachycené bajty.  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  CapturedMessages  |  Zachycené zprávy.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  ConnectionsClosed  |  Uzavřená připojení.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  ConnectionsOpened  |  Otevřená připojení.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. EventHub/clustery  |  QuotaExceededErrors  |  Chyby překročení kvóty.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  ServerErrors  |  Chyby serveru.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  SuccessfulRequests  |  Úspěšné požadavky  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  ThrottledRequests  |  Omezené požadavky.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/clustery  |  UserErrors  |  Chyby uživatele.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  CaptureBacklog  |  Zachyťte nevyřízené položky.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  CapturedBytes  |  Zachycené bajty.  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  CapturedMessages  |  Zachycené zprávy.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  ConnectionsClosed  |  Zavřená připojení.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  ConnectionsOpened  |  Otevřená připojení.  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  EHABL  |  Archivovat nevyřízené zprávy (zastaralé)  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  EHAMBS  |  Propustnost zpráv archivu (zastaralé)  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  EHAMSGS  |  Archivní zprávy (zastaralé)  |  Počet  |  Celkem | 
@@ -841,7 +840,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  EHOUTMBS  |  Odchozí bajty (zastaralé) (zastaralé)  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  EHOUTMSGS  |  Odchozí zprávy (zastaralé)  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  FAILREQ  |  Neúspěšné žádosti (zastaralé)  |  Počet  |  Celkem | 
-| **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  IncomingBytes  |  Příchozí bajty.  |  Bajty  |  Celkem | 
+| **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  IncomingBytes  |  Příchozí bajty  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  IncomingMessages  |  Příchozí zprávy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  IncomingRequests  |  Příchozí žádosti  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  INMSGS  |  Příchozí zprávy (zastaralé) (zastaralé)  |  Počet  |  Celkem | 
@@ -851,55 +850,55 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  OutgoingBytes  |  Odchozí bajty  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  OutgoingMessages  |  Odchozí zprávy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  OUTMSGS  |  Odchozí zprávy (zastaralé) (zastaralé)  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  QuotaExceededErrors  |  Chyby překročení kvóty  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  ServerErrors  |  Chyby serveru.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  Velikost  |  Velikost  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  SuccessfulRequests  |  Úspěšné požadavky  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  QuotaExceededErrors  |  Chyby překročení kvóty.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  ServerErrors  |  Chyby serveru.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  Velikost  |  Velikost  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  SuccessfulRequests  |  Úspěšné požadavky  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  SUCCREQ  |  Úspěšné požadavky (zastaralé)  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. EventHub/obory názvů  |  SVRBSY  |  Chyby zaneprázdněnosti serveru (zastaralé)  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  ThrottledRequests  |  Omezené požadavky.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EventHub/obory názvů  |  UserErrors  |  Chyby uživatele.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  ThrottledRequests  |  Omezené požadavky.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. EventHub/obory názvů  |  UserErrors  |  Chyby uživatele.  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. HDInsight/clustery  |  CategorizedGatewayRequests  |  Zařadit požadavky na bránu  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. HDInsight/clustery  |  GatewayRequests  |  Žádosti o bránu  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. HDInsight/clustery  |  NumActiveWorkers  |  Počet aktivních pracovníků  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. HDInsight/clustery  |  ScalingRequests  |  Požadavky na škálování  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Insights/AutoscaleSettings  |  MetricThreshold  |  Prahová hodnota metriky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/AutoscaleSettings  |  ObservedCapacity  |  Zjištěná kapacita  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/AutoscaleSettings  |  ObservedMetricValue  |  Zaznamenaná hodnota metriky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. HDInsight/clustery  |  ScalingRequests  |  Požadavky na škálování  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. Insights/AutoscaleSettings  |  MetricThreshold  |  Prahová hodnota metriky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/AutoscaleSettings  |  ObservedCapacity  |  Zjištěná kapacita  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/AutoscaleSettings  |  ObservedMetricValue  |  Zaznamenaná hodnota metriky  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Insights/AutoscaleSettings  |  ScaleActionsInitiated  |  Zahájené akce škálování  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  availabilityResults/availabilityPercentage  |  Dostupnost  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  availabilityResults/Count  |  Testy dostupnosti  |  Počet  |  Počet | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  availabilityResults/doba trvání  |  Doba trvání testu dostupnosti  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  browserTimings/networkDuration  |  Doba připojení k síti – načtení stránky  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  browserTimings/processingDuration  |  Doba zpracování klienta  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  browserTimings/receiveDuration  |  Doba přijetí odezvy  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  browserTimings/sendDuration  |  Čas požadavku na odeslání  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  browserTimings/totalDuration  |  Doba načítání stránky v prohlížeči  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  závislosti/počet  |  Volání závislostí  |  Počet  |  Počet | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  závislosti/doba trvání  |  Doba trvání závislosti  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  závislosti/selhání  |  Selhání volání závislostí  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  výjimky/prohlížeč  |  Výjimky prohlížečů  |  Počet  |  Počet | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  availabilityResults/availabilityPercentage  |  Dostupnost  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. Insights/Components  |  availabilityResults/Count  |  Testy dostupnosti  |  Počet  |  Počet | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  availabilityResults/doba trvání  |  Doba trvání testu dostupnosti  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  browserTimings/networkDuration  |  Doba připojení k síti – načtení stránky  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  browserTimings/processingDuration  |  Doba zpracování klienta  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  browserTimings/receiveDuration  |  Doba přijetí odezvy  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  browserTimings/sendDuration  |  Čas požadavku na odeslání  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  browserTimings/totalDuration  |  Doba načítání stránky v prohlížeči  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. Insights/Components  |  závislosti/počet  |  Volání závislostí  |  Počet  |  Počet | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  závislosti/doba trvání  |  Doba trvání závislosti  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. Insights/Components  |  závislosti/selhání  |  Selhání volání závislostí  |  Počet  |  Počet | 
+| No  | No |  Microsoft. Insights/Components  |  výjimky/prohlížeč  |  Výjimky prohlížečů  |  Počet  |  Počet | 
 | **Ano**  | **Ano** |  Microsoft. Insights/Components  |  výjimky/počet  |  Výjimky  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  výjimky/Server  |  Výjimky serveru  |  Počet  |  Počet | 
+| No  | No |  Microsoft. Insights/Components  |  výjimky/Server  |  Výjimky serveru  |  Počet  |  Počet | 
 | **Ano**  | **Ano** |  Microsoft. Insights/Components  |  pageViews/Count  |  Zobrazení stránek  |  Počet  |  Počet | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  pageViews/doba trvání  |  Doba načítání zobrazení stránky  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  pageViews/doba trvání  |  Doba načítání zobrazení stránky  |  Milisekund  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Insights/Components  |  Čítače výkonu/exceptionsPerSecond  |  Míra výjimek  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  Čítače výkonu/memoryAvailableBytes  |  Dostupná paměť  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  Čítače výkonu/processCpuPercentage  |  PROCESOR procesů  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  Čítače výkonu/processIOBytesPerSecond  |  Rychlost zpracování v/v  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  Čítače výkonu/processorCpuPercentage  |  Čas procesoru  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  Čítače výkonu/processPrivateBytes  |  Nesdílené bajty procesu  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  Čítače výkonu/requestExecutionTime  |  Doba provádění požadavku HTTP  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  Čítače výkonu/memoryAvailableBytes  |  Dostupná paměť  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  Čítače výkonu/processCpuPercentage  |  PROCESOR procesů  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  Čítače výkonu/processIOBytesPerSecond  |  Rychlost zpracování v/v  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  Čítače výkonu/processorCpuPercentage  |  Čas procesoru  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  Čítače výkonu/processPrivateBytes  |  Nesdílené bajty procesu  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  Čítače výkonu/requestExecutionTime  |  Doba provádění požadavku HTTP  |  Milisekund  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Insights/Components  |  Čítače výkonu/requestsInQueue  |  Požadavky HTTP ve frontě aplikací  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Insights/Components  |  Čítače výkonu/requestsPerSecond  |  Rychlost požadavku HTTP  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  požadavky/počet  |  Žádosti serveru  |  Počet  |  Počet | 
-| **Ano**  | Ne |  Microsoft. Insights/Components  |  žádosti/doba trvání  |  Doba odezvy serveru  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  požadavky/selhání  |  Neúspěšné požadavky  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. Insights/Components  |  žádosti/rychlost  |  Počet požadavků serveru  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Insights/Components  |  požadavky/počet  |  Žádosti serveru  |  Počet  |  Počet | 
+| **Ano**  | No |  Microsoft. Insights/Components  |  žádosti/doba trvání  |  Doba odezvy serveru  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. Insights/Components  |  požadavky/selhání  |  Neúspěšné požadavky  |  Počet  |  Počet | 
+| No  | No |  Microsoft. Insights/Components  |  žádosti/rychlost  |  Počet požadavků serveru  |  CountPerSecond  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Insights/Components  |  trasování/počet  |  Trasování  |  Počet  |  Počet | 
-| **Ano**  | Ne |  Trezory a trezory Microsoft.  |  ServiceApiHit  |  Celkový počet přístupů k rozhraní API služby  |  Počet  |  Počet | 
-| **Ano**  | Ne |  Trezory a trezory Microsoft.  |  ServiceApiLatency  |  Celková latence rozhraní API služby  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Trezory a trezory Microsoft.  |  ServiceApiResult  |  Celkový počet výsledků rozhraní API služby  |  Počet  |  Počet | 
+| **Ano**  | No |  Trezory a trezory Microsoft.  |  ServiceApiHit  |  Celkový počet přístupů k rozhraní API služby  |  Počet  |  Počet | 
+| **Ano**  | No |  Trezory a trezory Microsoft.  |  ServiceApiLatency  |  Celková latence rozhraní API služby  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Trezory a trezory Microsoft.  |  ServiceApiResult  |  Celkový počet výsledků rozhraní API služby  |  Počet  |  Počet | 
 | **Ano**  | **Ano** |  Microsoft. Kusto/clustery  |  CacheUtilization  |  Využití mezipaměti  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Kusto/clustery  |  ContinuousExportMaxLatenessMinutes  |  Maximální počet minut zpoždění pro průběžný export  |  Počet  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. Kusto/clustery  |  ContinuousExportNumOfRecordsExported  |  Průběžný export – počet exportovaných záznamů  |  Počet  |  Celkem | 
@@ -918,45 +917,45 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. Kusto/clustery  |  StreamingIngestDataRate  |  Přenosová rychlost ingestování datových proudů  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Kusto/clustery  |  StreamingIngestDuration  |  Doba ingestování streamování  |  Milisekund  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Kusto/clustery  |  StreamingIngestResults  |  Výsledek ingestování streamování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  ActionLatency  |  Latence akcí   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  ActionLatency  |  Latence akcí   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  ActionsCompleted  |  Dokončené akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  ActionsFailed  |  Neúspěšné akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  ActionsSkipped  |  Vynechané akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  ActionsStarted  |  Spuštěné akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  ActionsSucceeded  |  Úspěšné akce   |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  ActionSuccessLatency  |  Latence úspěšných akcí   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  ActionSuccessLatency  |  Latence úspěšných akcí   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  ActionThrottledEvents  |  Omezené události akcí  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorMemoryUsage  |  Využití paměti konektoru pro prostředí integrační služby  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorProcessorUsage  |  Využití procesoru konektoru pro prostředí integrační služby  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowMemoryUsage  |  Využití paměti workflowu pro prostředí integrační služby  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowProcessorUsage  |  Využití procesoru pracovního postupu pro prostředí integrační služby  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorMemoryUsage  |  Využití paměti konektoru pro prostředí integrační služby  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorProcessorUsage  |  Využití procesoru konektoru pro prostředí integrační služby  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowMemoryUsage  |  Využití paměti workflowu pro prostředí integrační služby  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowProcessorUsage  |  Využití procesoru pracovního postupu pro prostředí integrační služby  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunFailurePercentage  |  Procento selhání spuštění  |  Procento  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  RunLatency  |  Latence spuštění  |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  RunLatency  |  Latence spuštění  |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunsCancelled  |  Zrušené běhy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunsCompleted  |  Dokončené běhy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunsFailed  |  Neúspěšná spuštění  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunsStarted  |  Spuštěné běhy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunsSucceeded  |  Úspěšná spuštění  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunStartThrottledEvents  |  Spustit omezené události  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  RunSuccessLatency  |  Latence úspěšného spuštění  |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  RunSuccessLatency  |  Latence úspěšného spuštění  |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  RunThrottledEvents  |  Události omezeného spuštění  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  TriggerFireLatency  |  Latence požáru triggeru   |  Sekundy  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  TriggerLatency  |  Latence triggeru   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  TriggerFireLatency  |  Latence požáru triggeru   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  TriggerLatency  |  Latence triggeru   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  TriggersCompleted  |  Aktivační události dokončeny   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  TriggersFailed  |  Neúspěšná triggery   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  TriggersFired  |  Aktivační události aktivovány   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  TriggersSkipped  |  Aktivační události přeskočeny  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  TriggersStarted  |  Spuštěné aktivační události   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  TriggersSucceeded  |  Aktivační události byly úspěšné   |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/integrationServiceEnvironments  |  TriggerSuccessLatency  |  Latence úspěšnosti triggeru   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/integrationServiceEnvironments  |  TriggerSuccessLatency  |  Latence úspěšnosti triggeru   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/integrationServiceEnvironments  |  TriggerThrottledEvents  |  Omezené události triggeru  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/Workflows  |  ActionLatency  |  Latence akcí   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/Workflows  |  ActionLatency  |  Latence akcí   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  ActionsCompleted  |  Dokončené akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  ActionsFailed  |  Neúspěšné akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  ActionsSkipped  |  Vynechané akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  ActionsStarted  |  Spuštěné akce   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  ActionsSucceeded  |  Úspěšné akce   |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/Workflows  |  ActionSuccessLatency  |  Latence úspěšných akcí   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/Workflows  |  ActionSuccessLatency  |  Latence úspěšných akcí   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  ActionThrottledEvents  |  Omezené události akcí  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  BillableActionExecutions  |  Fakturovatelné provádění akcí  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  BillableTriggerExecutions  |  Fakturovatelná spuštění triggerů  |  Počet  |  Celkem | 
@@ -967,143 +966,143 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  BillingUsageStorageConsumption  |  Využití fakturace pro provádění spotřeby úložiště  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  BillingUsageStorageConsumption  |  Využití fakturace pro provádění spotřeby úložiště  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunFailurePercentage  |  Procento selhání spuštění  |  Procento  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/Workflows  |  RunLatency  |  Latence spuštění  |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/Workflows  |  RunLatency  |  Latence spuštění  |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunsCancelled  |  Zrušené běhy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunsCompleted  |  Dokončené běhy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunsFailed  |  Neúspěšná spuštění  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunsStarted  |  Spuštěné běhy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunsSucceeded  |  Úspěšná spuštění  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunStartThrottledEvents  |  Spustit omezené události  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/Workflows  |  RunSuccessLatency  |  Latence úspěšného spuštění  |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/Workflows  |  RunSuccessLatency  |  Latence úspěšného spuštění  |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  RunThrottledEvents  |  Události omezeného spuštění  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TotalBillableExecutions  |  Fakturovatelná spuštění celkem  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/Workflows  |  TriggerFireLatency  |  Latence požáru triggeru   |  Sekundy  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Logic/Workflows  |  TriggerLatency  |  Latence triggeru   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/Workflows  |  TriggerFireLatency  |  Latence požáru triggeru   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/Workflows  |  TriggerLatency  |  Latence triggeru   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TriggersCompleted  |  Aktivační události dokončeny   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TriggersFailed  |  Neúspěšná triggery   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TriggersFired  |  Aktivační události aktivovány   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TriggersSkipped  |  Aktivační události přeskočeny  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TriggersStarted  |  Spuštěné aktivační události   |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TriggersSucceeded  |  Aktivační události byly úspěšné   |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Logic/Workflows  |  TriggerSuccessLatency  |  Latence úspěšnosti triggeru   |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Logic/Workflows  |  TriggerSuccessLatency  |  Latence úspěšnosti triggeru   |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Logic/Workflows  |  TriggerThrottledEvents  |  Omezené události triggeru  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Aktivní jádra  |  Aktivní jádra  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Aktivní uzly  |  Aktivní uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Dokončená spuštění  |  Dokončená spuštění  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Neúspěšná spuštění  |  Neúspěšná spuštění  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Jádra nečinných  |  Jádra nečinných  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Nečinné uzly  |  Nečinné uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Vynechávání jader  |  Vynechávání jader  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Ukončení uzlů  |  Ukončení uzlů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Nasazení modelu se nezdařilo  |  Nasazení modelu se nezdařilo  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Nasazení modelu spuštěn  |  Nasazení modelu spuštěn  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Nasazení modelu bylo úspěšné.  |  Nasazení modelu bylo úspěšné.  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Nepovedlo se zaregistrovat model  |  Nepovedlo se zaregistrovat model  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Registr modelu byl úspěšný.  |  Registr modelu byl úspěšný.  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Zrušené jádra  |  Zrušené jádra  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Přepnuté uzly  |  Přepnuté uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Procento využití kvóty  |  Procento využití kvóty  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Spuštěná spuštění  |  Spuštěná spuštění  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Celkový počet jader  |  Celkový počet jader  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Celkem uzlů  |  Celkem uzlů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Nepoužitelné jádra  |  Nepoužitelné jádra  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. MachineLearningServices/pracovní prostory  |  Nepoužité uzly  |  Nepoužité uzly  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Maps/Accounts  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. Maps/Accounts  |  Využití  |  Využití  |  Počet  |  Počet | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  AssetCount  |  Počet assetů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  AssetQuota  |  Kvóta prostředků  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  AssetQuotaUsedPercentage  |  Procento využité kvóty prostředků  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  ContentKeyPolicyCount  |  Počet zásad klíče obsahu  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  ContentKeyPolicyQuota  |  Kvóta zásad pro klíč obsahu  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  ContentKeyPolicyQuotaUsedPercentage  |  Procento využité kvóty zásad klíčů obsahu  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  StreamingPolicyCount  |  Počet zásad streamování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  StreamingPolicyQuota  |  Kvóta zásad streamování  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices  |  StreamingPolicyQuotaUsedPercentage  |  Procento využité kvóty zásad streamování  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices/starají  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices/starají  |  Žádosti  |  Žádosti  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Media/MediaServices/starají  |  SuccessE2ELatency  |  Koncová latence úspěch  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  GCPauseTotalCount  |  Počet pozastavení GC  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  GCPauseTotalTime  |  Celkový čas pozastavení GC  |  Milisekund  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  MaxOldGenMemoryPoolBytes  |  Maximální velikost dostupných starých dat generace  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  OldGenMemoryPoolBytes  |  Stará velikost dat generace  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  OldGenPromotedBytes  |  Zvýšit úroveň na starou velikost dat generace  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  ServiceCpuUsagePercentage  |  Procento využití procesoru služby  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryCommitted  |  Přiřazená paměť služby  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryMax  |  Maximální velikost paměti služby  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryUsed  |  Využitá paměť služby  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  SystemCpuUsagePercentage  |  Procento využití procesoru v systému  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatErrorCount  |  Globální chyba Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatReceivedBytes  |  Celkový počet přijatých bajtů Tomcat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestMaxTime  |  Maximální čas požadavku Tomcat  |  Milisekund  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestTotalCount  |  Celkový počet žádostí Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestTotalTime  |  Celkový počet požadavků Tomcat  |  Milisekund  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatResponseAvgTime  |  Průměrná doba požadavku Tomcat  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatSentBytes  |  Celkový počet odeslaných bajtů Tomcat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionActiveCurrentCount  |  Počet otevřených relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionActiveMaxCount  |  Maximální počet aktivních relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionAliveMaxTime  |  Maximální doba běhu relace Tomcat  |  Milisekund  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionCreatedCount  |  Počet vytvořených relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionExpiredCount  |  Počet vypršení relace Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionRejectedCount  |  Počet odmítnutých relací Tomcat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Microservices4Spring/appClusters  |  YoungGenPromotedBytes  |  Zvýšení úrovně na velikost dat malé generace  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools  |  VolumePoolAllocatedUsed  |  Využití přiděleného fondu svazků  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools  |  VolumePoolTotalLogicalSize  |  Celková logická velikost fondu svazků  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  AverageReadLatency  |  Průměrná latence čtení  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  AverageWriteLatency  |  Průměrná latence zápisu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  ReadIops  |  Čtení IOPS  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  VolumeLogicalSize  |  Logická velikost svazku  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  VolumeSnapshotSize  |  Velikost snímku svazku  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  WriteIops  |  Zápis IOPS  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  ApplicationGatewayTotalTime  |  Čas Application Gateway celkem  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  AvgRequestCountPerHealthyHost  |  Počet požadavků za minutu na hostitele v pořádku  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  BackendConnectTime  |  Čas připojení back-endu  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  BackendFirstByteResponseTime  |  Doba odezvy prvního bajtu back-endu  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  BackendLastByteResponseTime  |  Doba odezvy posledního bajtu back-endu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  BackendResponseStatus  |  Stav odpovědi back-endu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  BlockedCount  |  Distribuce pravidla Blokované požadavky brány firewall webových aplikací  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  BlockedReqCount  |  Počet blokovaných požadavků firewallu webových aplikací  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  BytesReceived  |  Přijaté bajty  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  BytesSent  |  Odeslané bajty  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  CapacityUnits  |  Aktuální jednotky kapacity  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  ClientRtt  |  Čas odezvy klienta  |  Milisekund  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  ComputeUnits  |  Aktuální výpočetní jednotky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  CurrentConnections  |  Aktuální připojení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  FailedRequests  |  Neúspěšné požadavky  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  HealthyHostCount  |  Počet hostitelů v pořádku  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  MatchedCount  |  Distribuce všech pravidel v firewallu webových aplikací  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  ResponseStatus  |  Stav odpovědi  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Network/applicationGateways  |  Propustnost  |  Propustnost  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  TlsProtocol  |  Protokol TLS klienta  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  TotalRequests  |  Požadavky celkem  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/applicationGateways  |  UnhealthyHostCount  |  Počet hostitelů není v pořádku  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/azurefirewalls  |  ApplicationRuleHit  |  Počet volání pravidel aplikace  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/azurefirewalls  |  Zpracováno na zpracování  |  Zpracovaná data  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/azurefirewalls  |  FirewallHealth  |  Stav brány firewall  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/azurefirewalls  |  NetworkRuleHit  |  Počet volání síťových pravidel  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/azurefirewalls  |  SNATPortUtilization  |  Využití portu SNAT  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/připojení  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/připojení  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/dnszones  |  QueryVolume  |  Svazek dotazu  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Network/dnszones  |  RecordSetCapacityUtilization  |  Využití kapacity sady záznamů  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/dnszones  |  RecordSetCount  |  Počet sad záznamů  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/expressRouteCircuits  |  ArpAvailability  |  Dostupnost protokolu ARP  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRouteCircuits  |  BgpAvailability  |  Dostupnost protokolu BGP  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteCircuits  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteCircuits  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteCircuits  |  GlobalReachBitsInPerSecond  |  GlobalReachBitsInPerSecond  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteCircuits  |  GlobalReachBitsOutPerSecond  |  GlobalReachBitsOutPerSecond  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteCircuits  |  QosDropBitsInPerSecond  |  DroppedInBitsPerSecond  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteCircuits  |  QosDropBitsOutPerSecond  |  DroppedOutBitsPerSecond  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRouteCircuits/peering  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRouteCircuits/peering  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteGateways  |  ErGatewayConnectionBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
-| Ne  | Ne |  Microsoft. Network/expressRouteGateways  |  ErGatewayConnectionBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRoutePorts  |  AdminState  |  AdminState  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRoutePorts  |  LineProtocol  |  LineProtocol  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRoutePorts  |  PortBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRoutePorts  |  PortBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRoutePorts  |  RxLightLevel  |  RxLightLevel  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/expressRoutePorts  |  TxLightLevel  |  TxLightLevel  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Aktivní jádra  |  Aktivní jádra  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Aktivní uzly  |  Aktivní uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Dokončená spuštění  |  Dokončená spuštění  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Neúspěšná spuštění  |  Neúspěšná spuštění  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Jádra nečinných  |  Jádra nečinných  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Nečinné uzly  |  Nečinné uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Vynechávání jader  |  Vynechávání jader  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Ukončení uzlů  |  Ukončení uzlů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Nasazení modelu se nezdařilo  |  Nasazení modelu se nezdařilo  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Nasazení modelu spuštěn  |  Nasazení modelu spuštěn  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Nasazení modelu bylo úspěšné.  |  Nasazení modelu bylo úspěšné.  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Nepovedlo se zaregistrovat model  |  Nepovedlo se zaregistrovat model  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Registr modelu byl úspěšný.  |  Registr modelu byl úspěšný.  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Zrušené jádra  |  Zrušené jádra  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Přepnuté uzly  |  Přepnuté uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Procento využití kvóty  |  Procento využití kvóty  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Spuštěná spuštění  |  Spuštěná spuštění  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Celkový počet jader  |  Celkový počet jader  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Celkem uzlů  |  Celkem uzlů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Nepoužitelné jádra  |  Nepoužitelné jádra  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. MachineLearningServices/pracovní prostory  |  Nepoužité uzly  |  Nepoužité uzly  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Maps/Accounts  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. Maps/Accounts  |  Využití  |  Využití  |  Počet  |  Počet | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  AssetCount  |  Počet assetů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  AssetQuota  |  Kvóta prostředků  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  AssetQuotaUsedPercentage  |  Procento využité kvóty prostředků  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  ContentKeyPolicyCount  |  Počet zásad klíče obsahu  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  ContentKeyPolicyQuota  |  Kvóta zásad pro klíč obsahu  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  ContentKeyPolicyQuotaUsedPercentage  |  Procento využité kvóty zásad klíčů obsahu  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  StreamingPolicyCount  |  Počet zásad streamování  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  StreamingPolicyQuota  |  Kvóta zásad streamování  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices  |  StreamingPolicyQuotaUsedPercentage  |  Procento využité kvóty zásad streamování  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Media/MediaServices/starají  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Media/MediaServices/starají  |  Žádosti  |  Žádosti  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Media/MediaServices/starají  |  SuccessE2ELatency  |  Koncová latence úspěch  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  GCPauseTotalCount  |  Počet pozastavení GC  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  GCPauseTotalTime  |  Celkový čas pozastavení GC  |  Milisekund  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  MaxOldGenMemoryPoolBytes  |  Maximální velikost dostupných starých dat generace  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  OldGenMemoryPoolBytes  |  Stará velikost dat generace  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  OldGenPromotedBytes  |  Zvýšit úroveň na starou velikost dat generace  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  ServiceCpuUsagePercentage  |  Procento využití procesoru služby  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryCommitted  |  Přiřazená paměť služby  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryMax  |  Maximální velikost paměti služby  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  ServiceMemoryUsed  |  Využitá paměť služby  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  SystemCpuUsagePercentage  |  Procento využití procesoru v systému  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatErrorCount  |  Globální chyba Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatReceivedBytes  |  Celkový počet přijatých bajtů Tomcat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestMaxTime  |  Maximální čas požadavku Tomcat  |  Milisekund  |  Maximum | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestTotalCount  |  Celkový počet žádostí Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatRequestTotalTime  |  Celkový počet požadavků Tomcat  |  Milisekund  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatResponseAvgTime  |  Průměrná doba požadavku Tomcat  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatSentBytes  |  Celkový počet odeslaných bajtů Tomcat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionActiveCurrentCount  |  Počet otevřených relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionActiveMaxCount  |  Maximální počet aktivních relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionAliveMaxTime  |  Maximální doba běhu relace Tomcat  |  Milisekund  |  Maximum | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionCreatedCount  |  Počet vytvořených relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionExpiredCount  |  Počet vypršení relace Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  TomcatSessionRejectedCount  |  Počet odmítnutých relací Tomcat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Microservices4Spring/appClusters  |  YoungGenPromotedBytes  |  Zvýšení úrovně na velikost dat malé generace  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools  |  VolumePoolAllocatedUsed  |  Využití přiděleného fondu svazků  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools  |  VolumePoolTotalLogicalSize  |  Celková logická velikost fondu svazků  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  AverageReadLatency  |  Průměrná latence čtení  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  AverageWriteLatency  |  Průměrná latence zápisu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  ReadIops  |  Čtení IOPS  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  VolumeLogicalSize  |  Logická velikost svazku  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  VolumeSnapshotSize  |  Velikost snímku svazku  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. NetApp/netAppAccounts/capacityPools/svazky  |  WriteIops  |  Zápis IOPS  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/applicationGateways  |  ApplicationGatewayTotalTime  |  Čas Application Gateway celkem  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. Network/applicationGateways  |  AvgRequestCountPerHealthyHost  |  Počet požadavků za minutu na hostitele v pořádku  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Network/applicationGateways  |  BackendConnectTime  |  Čas připojení back-endu  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. Network/applicationGateways  |  BackendFirstByteResponseTime  |  Doba odezvy prvního bajtu back-endu  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. Network/applicationGateways  |  BackendLastByteResponseTime  |  Doba odezvy posledního bajtu back-endu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  BackendResponseStatus  |  Stav odpovědi back-endu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  BlockedCount  |  Distribuce pravidla Blokované požadavky brány firewall webových aplikací  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  BlockedReqCount  |  Počet blokovaných požadavků firewallu webových aplikací  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  BytesReceived  |  Přijaté bajty  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  BytesSent  |  Odeslané bajty  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. Network/applicationGateways  |  CapacityUnits  |  Aktuální jednotky kapacity  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Network/applicationGateways  |  ClientRtt  |  Čas odezvy klienta  |  Milisekund  |  Průměr | 
+| No  | No |  Microsoft. Network/applicationGateways  |  ComputeUnits  |  Aktuální výpočetní jednotky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  CurrentConnections  |  Aktuální připojení  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  FailedRequests  |  Neúspěšné požadavky  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  HealthyHostCount  |  Počet hostitelů v pořádku  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  MatchedCount  |  Distribuce všech pravidel v firewallu webových aplikací  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  ResponseStatus  |  Stav odpovědi  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Network/applicationGateways  |  Propustnost  |  Propustnost  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  TlsProtocol  |  Protokol TLS klienta  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  TotalRequests  |  Požadavky celkem  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/applicationGateways  |  UnhealthyHostCount  |  Počet hostitelů není v pořádku  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/azurefirewalls  |  ApplicationRuleHit  |  Počet volání pravidel aplikace  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/azurefirewalls  |  Zpracováno na zpracování  |  Zpracovaná data  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/azurefirewalls  |  FirewallHealth  |  Stav brány firewall  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/azurefirewalls  |  NetworkRuleHit  |  Počet volání síťových pravidel  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/azurefirewalls  |  SNATPortUtilization  |  Využití portu SNAT  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/připojení  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/připojení  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/dnszones  |  QueryVolume  |  Svazek dotazu  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Network/dnszones  |  RecordSetCapacityUtilization  |  Využití kapacity sady záznamů  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/dnszones  |  RecordSetCount  |  Počet sad záznamů  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/expressRouteCircuits  |  ArpAvailability  |  Dostupnost protokolu ARP  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRouteCircuits  |  BgpAvailability  |  Dostupnost protokolu BGP  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteCircuits  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteCircuits  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteCircuits  |  GlobalReachBitsInPerSecond  |  GlobalReachBitsInPerSecond  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteCircuits  |  GlobalReachBitsOutPerSecond  |  GlobalReachBitsOutPerSecond  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteCircuits  |  QosDropBitsInPerSecond  |  DroppedInBitsPerSecond  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteCircuits  |  QosDropBitsOutPerSecond  |  DroppedOutBitsPerSecond  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRouteCircuits/peering  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRouteCircuits/peering  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteGateways  |  ErGatewayConnectionBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
+| No  | No |  Microsoft. Network/expressRouteGateways  |  ErGatewayConnectionBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRoutePorts  |  AdminState  |  AdminState  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRoutePorts  |  LineProtocol  |  LineProtocol  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRoutePorts  |  PortBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRoutePorts  |  PortBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRoutePorts  |  RxLightLevel  |  RxLightLevel  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/expressRoutePorts  |  TxLightLevel  |  TxLightLevel  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Network/frontdoors  |  BackendHealthPercentage  |  Procento stavu back-endu  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Network/frontdoors  |  BackendRequestCount  |  Počet požadavků back-endu  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Network/frontdoors  |  BackendRequestLatency  |  Latence žádosti back-endu  |  Milisekund  |  Průměr | 
@@ -1113,62 +1112,62 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. Network/frontdoors  |  ResponseSize  |  Velikost odpovědi  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Network/frontdoors  |  TotalLatency  |  Celková latence  |  Milisekund  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Network/frontdoors  |  WebApplicationFirewallRequestCount  |  Počet požadavků firewallu webových aplikací  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Network/loadBalancers  |  AllocatedSnatPorts  |  Přidělené porty SNAT (Preview)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/loadBalancers  |  ByteCount  |  Počet bajtů  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/loadBalancers  |  DipAvailability  |  Stav sondy stavu  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/loadBalancers  |  PacketCount  |  Počet paketů  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/loadBalancers  |  SnatConnectionCount  |  Počet připojení SNAT  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/loadBalancers  |  SYNCount  |  Počet SYN  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Network/loadBalancers  |  UsedSnatPorts  |  Využité porty SNAT (Preview)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/loadBalancers  |  VipAvailability  |  Dostupnost cesty k datům  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/networkInterfaces  |  BytesReceivedRate  |  Přijaté bajty  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/networkInterfaces  |  BytesSentRate  |  Odeslané bajty  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/networkInterfaces  |  PacketsReceivedRate  |  Přijaté pakety  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/networkInterfaces  |  PacketsSentRate  |  Odeslané pakety  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/networkWatchers/connectionMonitors  |  AverageRoundtripMs  |  Průměrná doba odezvy (MS)  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/networkWatchers/connectionMonitors  |  ChecksFailedPercent  |  Počet neúspěšných kontrol v procentech (Preview)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/networkWatchers/connectionMonitors  |  ProbesFailedPercent  |  % PROBE selhalo  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/networkWatchers/connectionMonitors  |  RoundTripTimeMs  |  Doba odezvy (MS) (Preview)  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  ByteCount  |  Počet bajtů  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  BytesDroppedDDoS  |  Příchozí bajty vynechané DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  BytesForwardedDDoS  |  Příchozí bajty předané DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  BytesInDDoS  |  Příchozí bajty DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  DDoSTriggerSYNPackets  |  Příchozí pakety SYN pro aktivaci zmírnění DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  DDoSTriggerTCPPackets  |  Příchozí pakety TCP pro aktivaci zmírnění DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  DDoSTriggerUDPPackets  |  Příchozí pakety UDP pro aktivaci zmírnění DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  IfUnderDDoSAttack  |  V části útok DDoS nebo ne  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  PacketCount  |  Počet paketů  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  PacketsDroppedDDoS  |  Vynechané příchozí pakety DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  PacketsForwardedDDoS  |  DDoS předaných příchozích paketů  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  PacketsInDDoS  |  DDoS příchozích paketů  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  SynCount  |  Počet SYN  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  TCPBytesDroppedDDoS  |  Příchozí bajty protokolu TCP vyhozené DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  TCPBytesForwardedDDoS  |  Příchozí DDoS předaných bajtů protokolu TCP  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  TCPBytesInDDoS  |  Příchozí bajty DDoS TCP  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  TCPPacketsDroppedDDoS  |  Zrušené příchozí pakety protokolu TCP DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  TCPPacketsForwardedDDoS  |  DDoS předaných paketů příchozího protokolu TCP  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  TCPPacketsInDDoS  |  DDoS příchozí pakety TCP  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  UDPBytesDroppedDDoS  |  Zrušené Příchozí bajty UDP DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  UDPBytesForwardedDDoS  |  Příchozí DDoS předávaných bajtů UDP  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  UDPBytesInDDoS  |  Příchozí bajty UDP DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  UDPPacketsDroppedDDoS  |  Zrušené příchozí pakety UDP DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  UDPPacketsForwardedDDoS  |  Příchozí pakety UDP předané DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  UDPPacketsInDDoS  |  Příchozí pakety UDP DDoS  |  CountPerSecond  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/publicIPAddresses  |  VipAvailability  |  Dostupnost cesty k datům  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  Stav koncového bodu podle koncového bodu  |  Počet  |  Maximum | 
+| No  | No |  Microsoft. Network/loadBalancers  |  AllocatedSnatPorts  |  Přidělené porty SNAT (Preview)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/loadBalancers  |  ByteCount  |  Počet bajtů  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/loadBalancers  |  DipAvailability  |  Stav sondy stavu  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/loadBalancers  |  PacketCount  |  Počet paketů  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/loadBalancers  |  SnatConnectionCount  |  Počet připojení SNAT  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/loadBalancers  |  SYNCount  |  Počet SYN  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Network/loadBalancers  |  UsedSnatPorts  |  Využité porty SNAT (Preview)  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/loadBalancers  |  VipAvailability  |  Dostupnost cesty k datům  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/networkInterfaces  |  BytesReceivedRate  |  Přijaté bajty  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/networkInterfaces  |  BytesSentRate  |  Odeslané bajty  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/networkInterfaces  |  PacketsReceivedRate  |  Přijaté pakety  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/networkInterfaces  |  PacketsSentRate  |  Odeslané pakety  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/networkWatchers/connectionMonitors  |  AverageRoundtripMs  |  Průměrná doba odezvy (MS)  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/networkWatchers/connectionMonitors  |  ChecksFailedPercent  |  Počet neúspěšných kontrol v procentech (Preview)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/networkWatchers/connectionMonitors  |  ProbesFailedPercent  |  % PROBE selhalo  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/networkWatchers/connectionMonitors  |  RoundTripTimeMs  |  Doba odezvy (MS) (Preview)  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  ByteCount  |  Počet bajtů  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  BytesDroppedDDoS  |  Příchozí bajty vynechané DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  BytesForwardedDDoS  |  Příchozí bajty předané DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  BytesInDDoS  |  Příchozí bajty DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  DDoSTriggerSYNPackets  |  Příchozí pakety SYN pro aktivaci zmírnění DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  DDoSTriggerTCPPackets  |  Příchozí pakety TCP pro aktivaci zmírnění DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  DDoSTriggerUDPPackets  |  Příchozí pakety UDP pro aktivaci zmírnění DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  IfUnderDDoSAttack  |  V části útok DDoS nebo ne  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  PacketCount  |  Počet paketů  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  PacketsDroppedDDoS  |  Vynechané příchozí pakety DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  PacketsForwardedDDoS  |  DDoS předaných příchozích paketů  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  PacketsInDDoS  |  DDoS příchozích paketů  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  SynCount  |  Počet SYN  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  TCPBytesDroppedDDoS  |  Příchozí bajty protokolu TCP vyhozené DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  TCPBytesForwardedDDoS  |  Příchozí DDoS předaných bajtů protokolu TCP  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  TCPBytesInDDoS  |  Příchozí bajty DDoS TCP  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  TCPPacketsDroppedDDoS  |  Zrušené příchozí pakety protokolu TCP DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  TCPPacketsForwardedDDoS  |  DDoS předaných paketů příchozího protokolu TCP  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  TCPPacketsInDDoS  |  DDoS příchozí pakety TCP  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  UDPBytesDroppedDDoS  |  Zrušené Příchozí bajty UDP DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  UDPBytesForwardedDDoS  |  Příchozí DDoS předávaných bajtů UDP  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  UDPBytesInDDoS  |  Příchozí bajty UDP DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  UDPPacketsDroppedDDoS  |  Zrušené příchozí pakety UDP DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  UDPPacketsForwardedDDoS  |  Příchozí pakety UDP předané DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  UDPPacketsInDDoS  |  Příchozí pakety UDP DDoS  |  CountPerSecond  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/publicIPAddresses  |  VipAvailability  |  Dostupnost cesty k datům  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  Stav koncového bodu podle koncového bodu  |  Počet  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. Network/trafficManagerProfiles  |  QpsByEndpoint  |  Dotazy podle vráceného koncového bodu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  AverageBandwidth  |  Šířka pásma S2S brány  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  P2SBandwidth  |  Šířka pásma P2S brány  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  P2SConnectionCount  |  Počet připojení P2S  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  TunnelAverageBandwidth  |  Šířka pásma tunelu  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  TunnelEgressBytes  |  Výstupní bajty tunelu  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  TunnelEgressPacketDropTSMismatch  |  Odpojení odchozího paketu o neshodě tunelového propojení TS  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  TunnelEgressPackets  |  Odchozí tunelové pakety  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  TunnelIngressBytes  |  Vstupní bajty tunelového propojení  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  TunnelIngressPacketDropTSMismatch  |  Přetažení paketů neshody TS s tunelem pro příchozí přenosy  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworkGateways  |  TunnelIngressPackets  |  Tunelové pakety pro příchozí připojení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworks  |  PingMeshAverageRoundtripMs  |  Čas odezvy na virtuální počítač pomocí příkazů pro odeslání  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  Nepovedlo se odeslat příkazy do virtuálního počítače  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  AverageBandwidth  |  Šířka pásma S2S brány  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  P2SBandwidth  |  Šířka pásma P2S brány  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  P2SConnectionCount  |  Počet připojení P2S  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  TunnelAverageBandwidth  |  Šířka pásma tunelu  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  TunnelEgressBytes  |  Počet bajtů výchozího přenosu dat tunelu  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  TunnelEgressPacketDropTSMismatch  |  Počet zahození paketů výchozího přenosu dat tunelu kvůli neshodě SP  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  TunnelEgressPackets  |  Počet paketů výchozího přenosu dat tunelu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  TunnelIngressBytes  |  Počet bajtů příchozího přenosu dat tunelu  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  TunnelIngressPacketDropTSMismatch  |  Počet zahození paketů příchozího přenosu dat tunelu kvůli neshodě SP  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworkGateways  |  TunnelIngressPackets  |  Tunelové pakety pro příchozí připojení  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworks  |  PingMeshAverageRoundtripMs  |  Čas odezvy na virtuální počítač pomocí příkazů pro odeslání  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  Nepovedlo se odeslat příkazy do virtuálního počítače  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  přijíman  |  Příchozí zprávy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  příchozí. All. failedrequests  |  Všechny příchozí neúspěšné požadavky  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  příchozí. All. – žádosti  |  Všechny příchozí žádosti  |  Počet  |  Celkem | 
@@ -1180,7 +1179,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  instalace. patch  |  Operace instalace opravy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  instalace. Upsert  |  Operace vytvoření nebo aktualizace instalace  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  notificationhub. push  |  Všechna odchozí oznámení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  odchozí. allpns. badorexpiredchannel  |  Chybné nebo prošlé chyby kanálu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  odchozí. allpns. badorexpiredchannel  |  Chybné nebo prošlé chyby kanálu  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  odchozí. allpns. channelerror  |  Chyby kanálu  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  odchozí. allpns. invalidpayload  |  Chyby datové části  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  odchozí. allpns. pnserror  |  Chyby systému externích oznámení  |  Počet  |  Celkem | 
@@ -1231,128 +1230,128 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  registrace. Get  |  Registrace – operace čtení  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  registrace. aktualizace  |  Operace aktualizace registrace  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. NotificationHubs/obory názvů/NotificationHubs  |  naplánováno. čeká na  |  Nedokončená plánovaná oznámení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_ k dispozici paměti  |  % Dostupné paměti  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% dostupného odkládacího prostoru  |  % Dostupného odkládacího prostoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% používaných potvrzených bajtů  |  % Používaných potvrzených bajtů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času DPC  |  % Času DPC  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_ uzlů inode% Free  |  % Bezplatného uzlů inode  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% volného místa  |  % Volného místa  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% volného místa  |  % Volného místa  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času nečinnosti  |  % Času nečinnosti  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času přerušení  |  % Času přerušení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času čekání na v/v  |  % Času čekání na v/v  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% dobrý čas  |  % Dobrý čas  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% privilegovaného času  |  % Privilegovaného času  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času procesoru  |  Procesorový čas v %  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času procesoru  |  Procesorový čas v %  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% využití uzlů inode  |  % Použitého uzlů inode  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Využitá paměť Average_%  |  % Využité paměti  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Využité místo Average_%  |  % Využitého místa  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% využitého místa odkládacího souboru  |  % Využitého místa odkládacího souboru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Čas uživatele Average_%  |  % Uživatelského času  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Available MB  |  Dostupné MB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Paměť Average_Available v MB  |  Dostupná paměť v MB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Přeměna Average_Available MB  |  Dostupný počet MB swap  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/čtení  |  Střední doba disku/čtení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/čtení  |  Střední doba disku/čtení  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. Doba disku/přenos  |  Střední doba disku/přenos  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/zápis  |  Střední doba disku/zápis  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/zápis  |  Střední doba disku/zápis  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Přijaté Average_Bytes za sekundu  |  Přijaté bajty/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Odeslané Average_Bytes za sekundu  |  Odeslané bajty/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Bytes celkem/s  |  Bajty celkem/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Délka fronty disku Average_Current  |  Aktuální délka fronty disku  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk přečtených bajtů/s  |  Bajty čtení z disku/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk čtení za sekundu  |  Čtení z disku/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk čtení za sekundu  |  Čtení z disku/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk přenosů za sekundu  |  Přenosy disku/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk přenosů za sekundu  |  Přenosy disku/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk bajty zápisu za sekundu  |  Bajty zápisu na disk/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Zápisy Average_Disk za sekundu  |  Zápisy na disk/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Zápisy Average_Disk za sekundu  |  Zápisy na disk/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free megabajtů  |  Volné megabajty  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free megabajtů  |  Volné megabajty  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free fyzická paměť  |  Volná fyzická paměť  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free mezera v stránkovacích souborech  |  Volné místo ve stránkovacích souborech  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free virtuální paměti  |  Volná virtuální paměť  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Počet bajtů Average_Logical disku za sekundu  |  Bajty logického disku/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Page čtení za sekundu  |  Čtení stránek/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Zápisy Average_Page za sekundu  |  Zápisy stránek/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Pages/s  |  Stránky/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Pct privilegovaného času  |  Privilegovaný čas protokolu PCT  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Čas uživatele Average_Pct  |  Doba uživatele v protokolu PCT  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Počet bajtů Average_Physical disku za sekundu  |  Bajty fyzického disku/s  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Processes  |  Procesy  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Délka fronty Average_Processor  |  Délka fronty procesoru  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Size uložený ve stránkovacích souborech  |  Velikost uložená ve stránkovacích souborech  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Total bajty  |  Bajty celkem  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Přijaté bajty Average_Total  |  Celkový počet přijatých bajtů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Přenesené bajty Average_Total  |  Celkový počet odeslaných bajtů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Total kolizí  |  Celkový počet kolizí  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Přijaté pakety Average_Total  |  Celkový počet přijatých paketů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Odeslané Average_Total pakety  |  Celkový počet odeslaných paketů  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Total chyby příjmu  |  Celkový počet chyb příjmu  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Chyby při odesílání Average_Total  |  Chyby odesílání celkem  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Uptime  |  Doba provozu  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Used MB odkládacího prostoru  |  Využité místo odkládacího souboru v MB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Used kB paměti  |  Využitá paměť v kilobajtech  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Used paměť v MB  |  Využitá paměť v MB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Users  |  Uživatelé  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Virtual sdílená paměť  |  Virtuální sdílená paměť  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Událost  |  Událost  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_ k dispozici paměti  |  % Dostupné paměti  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% dostupného odkládacího prostoru  |  % Dostupného odkládacího prostoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% používaných potvrzených bajtů  |  % Používaných potvrzených bajtů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času DPC  |  % Času DPC  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_ uzlů inode% Free  |  % Bezplatného uzlů inode  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% volného místa  |  % Volného místa  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% volného místa  |  % Volného místa  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času nečinnosti  |  % Času nečinnosti  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času přerušení  |  % Času přerušení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času čekání na v/v  |  % Času čekání na v/v  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% dobrý čas  |  % Dobrý čas  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% privilegovaného času  |  % Privilegovaného času  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času procesoru  |  Procesorový čas v %  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% času procesoru  |  Procesorový čas v %  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% využití uzlů inode  |  % Použitého uzlů inode  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Využitá paměť Average_%  |  % Využité paměti  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Využité místo Average_%  |  % Využitého místa  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_% využitého místa odkládacího souboru  |  % Využitého místa odkládacího souboru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Čas uživatele Average_%  |  % Uživatelského času  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Available MB  |  Dostupné MB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Paměť Average_Available v MB  |  Dostupná paměť v MB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Přeměna Average_Available MB  |  Dostupný počet MB swap  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/čtení  |  Střední doba disku/čtení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/čtení  |  Střední doba disku/čtení  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. Doba disku/přenos  |  Střední doba disku/přenos  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/zápis  |  Střední doba disku/zápis  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Avg. doba disku/zápis  |  Střední doba disku/zápis  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Přijaté Average_Bytes za sekundu  |  Přijaté bajty/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Odeslané Average_Bytes za sekundu  |  Odeslané bajty/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Bytes celkem/s  |  Bajty celkem/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Délka fronty disku Average_Current  |  Aktuální délka fronty disku  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk přečtených bajtů/s  |  Bajty čtení z disku/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk čtení za sekundu  |  Čtení z disku/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk čtení za sekundu  |  Čtení z disku/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk přenosů za sekundu  |  Přenosy disku/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk přenosů za sekundu  |  Přenosy disku/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Disk bajty zápisu za sekundu  |  Bajty zápisu na disk/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Zápisy Average_Disk za sekundu  |  Zápisy na disk/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Zápisy Average_Disk za sekundu  |  Zápisy na disk/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free megabajtů  |  Volné megabajty  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free megabajtů  |  Volné megabajty  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free fyzická paměť  |  Volná fyzická paměť  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free mezera v stránkovacích souborech  |  Volné místo ve stránkovacích souborech  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Free virtuální paměti  |  Volná virtuální paměť  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Počet bajtů Average_Logical disku za sekundu  |  Bajty logického disku/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Page čtení za sekundu  |  Čtení stránek/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Zápisy Average_Page za sekundu  |  Zápisy stránek/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Pages/s  |  Stránky/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Pct privilegovaného času  |  Privilegovaný čas protokolu PCT  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Čas uživatele Average_Pct  |  Doba uživatele v protokolu PCT  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Počet bajtů Average_Physical disku za sekundu  |  Bajty fyzického disku/s  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Processes  |  Procesy  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Délka fronty Average_Processor  |  Délka fronty procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Size uložený ve stránkovacích souborech  |  Velikost uložená ve stránkovacích souborech  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Total bajty  |  Bajty celkem  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Přijaté bajty Average_Total  |  Celkový počet přijatých bajtů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Přenesené bajty Average_Total  |  Celkový počet odeslaných bajtů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Total kolizí  |  Celkový počet kolizí  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Přijaté pakety Average_Total  |  Celkový počet přijatých paketů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Odeslané Average_Total pakety  |  Celkový počet odeslaných paketů  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Total chyby příjmu  |  Celkový počet chyb příjmu  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Chyby při odesílání Average_Total  |  Chyby odesílání celkem  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Uptime  |  Doba provozu  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Used MB odkládacího prostoru  |  Využité místo odkládacího souboru v MB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Used kB paměti  |  Využitá paměť v kilobajtech  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Used paměť v MB  |  Využitá paměť v MB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Users  |  Uživatelé  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Average_Virtual sdílená paměť  |  Virtuální sdílená paměť  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Událost  |  Událost  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. OperationalInsights/pracovní prostory  |  Prezenční signál  |  Prezenční signál  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. OperationalInsights/pracovní prostory  |  Aktualizace  |  Aktualizace  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. PowerBIDedicated/– kapacity  |  memory_metric  |  Memory (Paměť)  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. PowerBIDedicated/– kapacity  |  memory_thrashing_metric  |  Thrashing paměti (datové sady)  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. PowerBIDedicated/– kapacity  |  qpu_high_utilization_metric  |  Vysoké využití procesoru  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. PowerBIDedicated/– kapacity  |  QueryDuration  |  Doba trvání dotazu (datové sady)  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. PowerBIDedicated/– kapacity  |  QueryPoolJobQueueLength  |  Délka fronty úloh fondu dotazů (datové sady)  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  ActiveListeners  |  ActiveListeners  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. OperationalInsights/pracovní prostory  |  Aktualizace  |  Aktualizace  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. PowerBIDedicated/– kapacity  |  memory_metric  |  Memory (Paměť)  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. PowerBIDedicated/– kapacity  |  memory_thrashing_metric  |  Thrashing paměti (datové sady)  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. PowerBIDedicated/– kapacity  |  qpu_high_utilization_metric  |  Vysoké využití procesoru  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. PowerBIDedicated/– kapacity  |  QueryDuration  |  Doba trvání dotazu (datové sady)  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. PowerBIDedicated/– kapacity  |  QueryPoolJobQueueLength  |  Délka fronty úloh fondu dotazů (datové sady)  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Relay/obory názvů  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  ActiveListeners  |  ActiveListeners  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Relay/obory názvů  |  BytesTransferred  |  BytesTransferred  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  ListenerConnections – ClientError  |  ListenerConnections – ClientError  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  ListenerConnections – ServerError  |  ListenerConnections – ServerError  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  ListenerConnections – úspěch  |  ListenerConnections – úspěch  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  ListenerConnections – TotalRequests  |  ListenerConnections – TotalRequests  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  ListenerDisconnects  |  ListenerDisconnects  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  SenderConnections – ClientError  |  SenderConnections – ClientError  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  SenderConnections – ServerError  |  SenderConnections – ServerError  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  SenderConnections – úspěch  |  SenderConnections – úspěch  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  SenderConnections – TotalRequests  |  SenderConnections – TotalRequests  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Relay/obory názvů  |  SenderDisconnects  |  SenderDisconnects  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Search/searchServices  |  SearchLatency  |  Latence hledání  |  Sekundy  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Search/searchServices  |  SearchQueriesPerSecond  |  Hledání dotazů za sekundu  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Search/searchServices  |  ThrottledSearchQueriesPercentage  |  Procento omezených vyhledávacích dotazů  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  ActiveMessages  |  Počet aktivních zpráv ve frontě nebo tématu.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  ConnectionsClosed  |  Uzavřená připojení.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  ConnectionsOpened  |  Otevřená připojení.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  CPUXNS  |  PROCESOR (zastaralé)  |  Procento  |  Maximum | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  DeadletteredMessages  |  Počet nedoručených zpráv ve frontě nebo tématu  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Relay/obory názvů  |  ListenerConnections – ClientError  |  ListenerConnections – ClientError  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  ListenerConnections – ServerError  |  ListenerConnections – ServerError  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  ListenerConnections – úspěch  |  ListenerConnections – úspěch  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  ListenerConnections – TotalRequests  |  ListenerConnections – TotalRequests  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  ListenerDisconnects  |  ListenerDisconnects  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  SenderConnections – ClientError  |  SenderConnections – ClientError  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  SenderConnections – ServerError  |  SenderConnections – ServerError  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  SenderConnections – úspěch  |  SenderConnections – úspěch  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  SenderConnections – TotalRequests  |  SenderConnections – TotalRequests  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Relay/obory názvů  |  SenderDisconnects  |  SenderDisconnects  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Search/searchServices  |  SearchLatency  |  Latence hledání  |  Sekundy  |  Průměr | 
+| **Ano**  | No |  Microsoft. Search/searchServices  |  SearchQueriesPerSecond  |  Hledání dotazů za sekundu  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. Search/searchServices  |  ThrottledSearchQueriesPercentage  |  Procento omezených vyhledávacích dotazů  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  ActiveConnections  |  ActiveConnections  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  ActiveMessages  |  Počet aktivních zpráv ve frontě nebo tématu.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  ConnectionsClosed  |  Zavřená připojení.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  ConnectionsOpened  |  Otevřená připojení.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  CPUXNS  |  PROCESOR (zastaralé)  |  Procento  |  Maximum | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  DeadletteredMessages  |  Počet nedoručených zpráv ve frontě nebo tématu  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. ServiceBus/obory názvů  |  IncomingMessages  |  Příchozí zprávy  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. ServiceBus/obory názvů  |  IncomingRequests  |  Příchozí žádosti  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  Zprávy  |  Počet zpráv ve frontě nebo tématu.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  NamespaceCpuUsage  |  Procesor  |  Procento  |  Maximum | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  NamespaceMemoryUsage  |  Využití paměti  |  Procento  |  Maximum | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  Zprávy  |  Počet zpráv ve frontě/tématu.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  NamespaceCpuUsage  |  Procesor  |  Procento  |  Maximum | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  NamespaceMemoryUsage  |  Využití paměti  |  Procento  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. ServiceBus/obory názvů  |  OutgoingMessages  |  Odchozí zprávy  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  ScheduledMessages  |  Počet naplánovaných zpráv ve frontě nebo tématu.  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  ServerErrors  |  Chyby serveru.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  Velikost  |  Velikost  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  SuccessfulRequests  |  Úspěšné požadavky  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  ThrottledRequests  |  Omezené požadavky.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  UserErrors  |  Chyby uživatele.  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. ServiceBus/obory názvů  |  WSXNS  |  Využití paměti (zastaralé)  |  Procento  |  Maximum | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  ActualCpu  |  ActualCpu  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  ActualMemory  |  ActualMemory  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  AllocatedCpu  |  AllocatedCpu  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  AllocatedMemory  |  AllocatedMemory  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  ApplicationStatus  |  ApplicationStatus  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  ContainerStatus  |  ContainerStatus  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  CpuUtilization  |  CpuUtilization  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  MemoryUtilization  |  MemoryUtilization  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  RestartCount  |  RestartCount  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  ServiceReplicaStatus  |  ServiceReplicaStatus  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. ServiceFabricMesh/aplikace  |  ServiceStatus  |  ServiceStatus  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  ScheduledMessages  |  Počet naplánovaných zpráv ve frontě nebo tématu.  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  ServerErrors  |  Chyby serveru.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  Velikost  |  Velikost  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  SuccessfulRequests  |  Úspěšné požadavky  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  ThrottledRequests  |  Omezené požadavky.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  UserErrors  |  Chyby uživatele.  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. ServiceBus/obory názvů  |  WSXNS  |  Využití paměti (zastaralé)  |  Procento  |  Maximum | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  ActualCpu  |  ActualCpu  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  ActualMemory  |  ActualMemory  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  AllocatedCpu  |  AllocatedCpu  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  AllocatedMemory  |  AllocatedMemory  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  ApplicationStatus  |  ApplicationStatus  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  ContainerStatus  |  ContainerStatus  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  CpuUtilization  |  CpuUtilization  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  MemoryUtilization  |  MemoryUtilization  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  RestartCount  |  RestartCount  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  ServiceReplicaStatus  |  ServiceReplicaStatus  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. ServiceFabricMesh/aplikace  |  ServiceStatus  |  ServiceStatus  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SignalRService/Signaler  |  ConnectionCount  |  Počet připojení  |  Počet  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SignalRService/Signaler  |  InboundTraffic  |  Příchozí provoz  |  Bajty  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. SignalRService/Signaler  |  MessageCount  |  Počet zpráv  |  Počet  |  Celkem | 
@@ -1360,200 +1359,200 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. SignalRService/Signaler  |  SystemErrors  |  Systémové chyby  |  Procento  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SignalRService/Signaler  |  UserErrors  |  Chyby uživatele  |  Procento  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SQL/managedInstances  |  avg_cpu_percent  |  Průměrné procento procesoru  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/managedInstances  |  io_bytes_read  |  Přečtené vstupně-výstupní bajty  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/managedInstances  |  io_bytes_written  |  Zapsané vstupně-výstupní bajty  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/managedInstances  |  io_requests  |  Počet požadavků v/v  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/managedInstances  |  reserved_storage_mb  |  Rezervované místo v úložišti  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/managedInstances  |  storage_space_used_mb  |  Využité místo úložiště  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/managedInstances  |  virtual_core_count  |  Počet virtuálních jader  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery  |  database_dtu_consumption_percent  |  Procento DTU  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery  |  database_storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/managedInstances  |  io_bytes_read  |  Přečtené vstupně-výstupní bajty  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/managedInstances  |  io_bytes_written  |  Zapsané vstupně-výstupní bajty  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/managedInstances  |  io_requests  |  Počet požadavků v/v  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/managedInstances  |  reserved_storage_mb  |  Rezervované místo v úložišti  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/managedInstances  |  storage_space_used_mb  |  Využité místo úložiště  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/managedInstances  |  virtual_core_count  |  Počet virtuálních jader  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery  |  database_dtu_consumption_percent  |  Procento DTU  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery  |  database_storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery  |  dtu_consumption_percent  |  Procento DTU  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery  |  dtu_used  |  Využité DTU  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery  |  storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  allocated_data_storage  |  Přidělené datové místo  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  app_cpu_billed  |  CPU aplikace se fakturuje.  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  app_cpu_percent  |  Procento využití procesoru aplikací  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  app_memory_percent  |  Procento paměti aplikace  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery  |  storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  allocated_data_storage  |  Přidělené datové místo  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  app_cpu_billed  |  CPU aplikace se fakturuje.  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  app_cpu_percent  |  Procento využití procesoru aplikací  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  app_memory_percent  |  Procento paměti aplikace  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  blocked_by_firewall  |  Blokováno bránou firewall  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  cache_hit_percent  |  Procento přístupů do mezipaměti  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  cache_used_percent  |  Procento využité mezipaměti  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  cache_used_percent  |  Procento využité mezipaměti  |  Procento  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  connection_failed  |  Neúspěšná připojení  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  connection_successful  |  Úspěšná připojení  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  cpu_limit  |  Limit procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  cpu_limit  |  Limit procesoru  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  cpu_percent  |  Procento CPU  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  cpu_used  |  Využitý procesor  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  ukončení  |  Zablokování  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  dtu_consumption_percent  |  Procento DTU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  dtu_limit  |  Limit DTU  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  dtu_limit  |  Limit DTU  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  dtu_used  |  Využité DTU  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  dwu_consumption_percent  |  Procento DWU  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  dwu_limit  |  DWU limit  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  dwu_limit  |  DWU limit  |  Počet  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  dwu_used  |  DWU použito  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  local_tempdb_usage_percent  |  Místní procento databáze tempdb  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  local_tempdb_usage_percent  |  Místní procento databáze tempdb  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  log_write_percent  |  Procentní hodnota protokolu v/v  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  memory_usage_percent  |  Procento paměti  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  memory_usage_percent  |  Procento paměti  |  Procento  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  physical_data_read_percent  |  Procento datových V/V  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  sessions_percent  |  Procento relací  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  úložiště  |  Využité místo pro data  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  storage_percent  |  Procento využitého datového prostoru  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  tempdb_data_size  |  Velikost datového souboru tempdb v kilobajtech  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  tempdb_log_size  |  Velikost souboru protokolu tempdb v kilobajtech  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/databáze  |  tempdb_log_used_percent  |  Použit protokol tempdb v procentech  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  úložiště  |  Využité místo pro data  |  Bajty  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  storage_percent  |  Procento využitého datového prostoru  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  tempdb_data_size  |  Velikost datového souboru tempdb v kilobajtech  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  tempdb_log_size  |  Velikost souboru protokolu tempdb v kilobajtech  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/databáze  |  tempdb_log_used_percent  |  Použit protokol tempdb v procentech  |  Procento  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  workers_percent  |  Procento pracovních procesů  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/databáze  |  xtp_storage_percent  |  Procentuální hodnota úložiště OLTP v paměti  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  allocated_data_storage  |  Přidělené datové místo  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  allocated_data_storage_percent  |  Procentuální hodnota přiděleného datového prostoru  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  cpu_limit  |  Limit procesoru  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  allocated_data_storage  |  Přidělené datové místo  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  allocated_data_storage_percent  |  Procentuální hodnota přiděleného datového prostoru  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  cpu_limit  |  Limit procesoru  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  cpu_percent  |  Procento CPU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  cpu_used  |  Využitý procesor  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_allocated_data_storage  |  Přidělené datové místo  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_cpu_limit  |  Limit procesoru  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_cpu_percent  |  Procento CPU  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_cpu_used  |  Využitý procesor  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_dtu_consumption_percent  |  Procento DTU  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_eDTU_used  |  využité eDTU  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_log_write_percent  |  Procentní hodnota protokolu v/v  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_physical_data_read_percent  |  Procento datových V/V  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_sessions_percent  |  Procento relací  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. SQL/servery/elasticPools  |  database_workers_percent  |  Procento pracovních procesů  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  cpu_used  |  Využitý procesor  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_allocated_data_storage  |  Přidělené datové místo  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_cpu_limit  |  Limit procesoru  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_cpu_percent  |  Procento CPU  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_cpu_used  |  Využitý procesor  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_dtu_consumption_percent  |  Procento DTU  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_eDTU_used  |  využité eDTU  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_log_write_percent  |  Procentní hodnota protokolu v/v  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_physical_data_read_percent  |  Procento datových V/V  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_sessions_percent  |  Procento relací  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. SQL/servery/elasticPools  |  database_workers_percent  |  Procento pracovních procesů  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  dtu_consumption_percent  |  Procento DTU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  eDTU_limit  |  limit eDTU  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  eDTU_limit  |  limit eDTU  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  eDTU_used  |  využité eDTU  |  Počet  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  log_write_percent  |  Procentní hodnota protokolu v/v  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  physical_data_read_percent  |  Procento datových V/V  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  sessions_percent  |  Procento relací  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  storage_limit  |  Maximální velikost dat  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  storage_percent  |  Procento využitého datového prostoru  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  tempdb_data_size  |  Velikost datového souboru tempdb v kilobajtech  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  tempdb_log_size  |  Velikost souboru protokolu tempdb v kilobajtech  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. SQL/servery/elasticPools  |  tempdb_log_used_percent  |  Použit protokol tempdb v procentech  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  storage_limit  |  Maximální velikost dat  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  storage_percent  |  Procento využitého datového prostoru  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  storage_used  |  Využité místo pro data  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  tempdb_data_size  |  Velikost datového souboru tempdb v kilobajtech  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  tempdb_log_size  |  Velikost souboru protokolu tempdb v kilobajtech  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. SQL/servery/elasticPools  |  tempdb_log_used_percent  |  Použit protokol tempdb v procentech  |  Procento  |  Maximum | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  workers_percent  |  Procento pracovních procesů  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. SQL/servery/elasticPools  |  xtp_storage_percent  |  Procentuální hodnota úložiště OLTP v paměti  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts  |  UsedCapacity  |  Využitá kapacita  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  BlobCapacity  |  Kapacita objektu BLOB  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  BlobCount  |  Počet objektů BLOB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  ContainerCount  |  Počet kontejnerů objektů BLOB  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  IndexCapacity  |  Kapacita indexu  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/blobServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/služby  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/služby  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/služby  |  Kapacita zařízení  |  Kapacita souboru  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/služby  |  FileCount  |  Počet souborů  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/služby  |  FileShareCount  |  Počet sdílených souborů  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/služby  |  FileShareQuota  |  Velikost kvóty sdílení souborů  |  Bajty  |  Průměr | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/služby  |  FileShareSnapshotCount  |  Počet snímků sdílené složky  |  Počet  |  Průměr | 
-| Ne  | Ne |  Microsoft. Storage/storageAccounts/služby  |  FileShareSnapshotSize  |  Velikost snímku sdílené složky  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/služby  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/služby  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/služby  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/služby  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  QueueCapacity  |  Kapacita fronty  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  QueueCount  |  Počet front  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  QueueMessageCount  |  Počet zpráv ve frontě  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/queueServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  TableCapacity  |  Kapacita tabulky  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  TableCount  |  Počet tabulek  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  TableEntityCount  |  Počet entit tabulky  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. Storage/storageAccounts/tableServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientIOPS  |  Celkový počet vstupně-výstupních operací klienta  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientLatency  |  Průměrná latence klienta  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientLockIOPS  |  IOPS zámku klienta  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientMetadataReadIOPS  |  Metadata klienta přečetla IOPS  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientMetadataWriteIOPS  |  Zápis metadat klienta za sekundu  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientReadIOPS  |  Klientský vstupně-výstupní operace čtení  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientReadThroughput  |  Průměrná propustnost čtení mezipaměti  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientWriteIOPS  |  Zápis klientského IOPS za sekundu  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  ClientWriteThroughput  |  Průměrná propustnost zápisu mezipaměti  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetAsyncWriteThroughput  |  Propustnost asynchronního zápisu StorageTarget  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetFillThroughput  |  Propustnost výplně StorageTarget  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetHealth  |  Stav cíle úložiště  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetIOPS  |  Celkem StorageTarget IOPS  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetLatency  |  Latence StorageTarget  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetMetadataReadIOPS  |  StorageTarget metadata Read IOPS  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetMetadataWriteIOPS  |  Zápisy metadat StorageTarget IOPS  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetReadAheadThroughput  |  Propustnost před čtením StorageTarget  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetReadIOPS  |  StorageTarget čtení IOPS  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetSyncWriteThroughput  |  Propustnost synchronního zápisu StorageTarget  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetTotalReadThroughput  |  StorageTarget celkové propustnosti čtení  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetTotalWriteThroughput  |  StorageTarget celkové propustnosti zápisu  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  StorageTargetWriteIOPS  |  StorageTarget zápis IOPS  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. StorageCache/caches  |  Doba provozu  |  Doba provozu  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  ServerSyncSessionResult  |  Výsledek relace synchronizace  |  Počet  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncBatchTransferredFileBytes  |  Synchronizované bajty  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecalledNetworkBytesByApplication  |  Velikost odvolání při vrstvení cloudu podle aplikace  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecalledTotalNetworkBytes  |  Velikost odvolání při vyvolání vrstvy cloudu  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecallIOTotalSizeBytes  |  Stažení vrstvení cloudu  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecallThroughputBytesPerSecond  |  Propustnost volání při navracení cloudových vrstev  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncServerHeartbeat  |  Online stav serveru  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncSyncSessionAppliedFilesCount  |  Synchronizované soubory  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices  |  StorageSyncSyncSessionPerItemErrorsCount  |  Soubory se nesynchronizují  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/registeredServers  |  ServerHeartbeat  |  Online stav serveru  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/registeredServers  |  ServerRecallIOTotalSizeBytes  |  Stažení vrstvení cloudu  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupBatchTransferredFileBytes  |  Synchronizované bajty  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionAppliedFilesCount  |  Synchronizované soubory  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionPerItemErrorsCount  |  Soubory se nesynchronizují  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointBatchTransferredFileBytes  |  Synchronizované bajty  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionAppliedFilesCount  |  Synchronizované soubory  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionPerItemErrorsCount  |  Soubory se nesynchronizují  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  AMLCalloutFailedRequests  |  Neúspěšné žádosti o funkce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  AMLCalloutInputEvents  |  Události funkcí  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  AMLCalloutRequests  |  Žádosti o funkce  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  ConversionErrors  |  Chyby převodu dat  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  DeserializationError  |  Chyby při deserializaci vstupu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  DroppedOrAdjustedEvents  |  Události mimo pořadí  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  EarlyInputEvents  |  Události předčasného vstupu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  chyby  |  Běhové chyby  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  InputEventBytes  |  Bajty vstupních událostí  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  InputEvents  |  Události vstupu  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  InputEventsSourcesBacklogged  |  Nevyřízené události vstupu  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  InputEventsSourcesPerSecond  |  Přijaté vstupní zdroje  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  LateInputEvents  |  Zpožděné vstupní události  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  OutputEvents  |  Výstupní události  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  OutputWatermarkDelaySeconds  |  Zpoždění vodoznaku  |  Sekundy  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. StreamAnalytics/streamingjobs  |  ResourceUtilization  |  Využití SU%  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskReadBytesPerSecond  |  Bajty čtení z disku/s  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskReadLatency  |  Latence čtení disku  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskReadOperations  |  Operace čtení z disku  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskWriteBytesPerSecond  |  Bajty zápisu na disk/s  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskWriteLatency  |  Latence zápisu na disk  |  Milisekund  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskWriteOperations  |  Operace zápisu na disk  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  MemoryActive  |  Paměť aktivní  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  MemoryGranted  |  Přidělená paměť  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  MemoryUsed  |  Využitá paměť  |  Bajty  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  Síťové vstupy  |  Síťové vstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  Síťové výstupy  |  Síťové výstupy  |  Bajty  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  NetworkInBytesPerSecond  |  Síť v bajtech/s  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  NetworkOutBytesPerSecond  |  Výstupní bajty sítě/s  |  BytesPerSecond  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
-| **Ano**  | Ne |  Microsoft. VMwareCloudSimple/virtualMachines  |  PercentageCpuReady  |  Procento připraveného procesoru  |  Milisekund  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| No  | No |  Microsoft. Storage/storageAccounts  |  UsedCapacity  |  Využitá kapacita  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/blobServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| No  | No |  Microsoft. Storage/storageAccounts/blobServices  |  BlobCapacity  |  Kapacita objektu BLOB  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. Storage/storageAccounts/blobServices  |  BlobCount  |  Počet objektů BLOB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/blobServices  |  ContainerCount  |  Počet kontejnerů objektů BLOB  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/blobServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. Storage/storageAccounts/blobServices  |  IndexCapacity  |  Kapacita indexu  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/blobServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/blobServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/blobServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/blobServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/služby  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/služby  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| No  | No |  Microsoft. Storage/storageAccounts/služby  |  Kapacita zařízení  |  Kapacita souboru  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. Storage/storageAccounts/služby  |  FileCount  |  Počet souborů  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Storage/storageAccounts/služby  |  FileShareCount  |  Počet sdílených souborů  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Storage/storageAccounts/služby  |  FileShareQuota  |  Velikost kvóty sdílení souborů  |  Bajty  |  Průměr | 
+| No  | No |  Microsoft. Storage/storageAccounts/služby  |  FileShareSnapshotCount  |  Počet snímků sdílené složky  |  Počet  |  Průměr | 
+| No  | No |  Microsoft. Storage/storageAccounts/služby  |  FileShareSnapshotSize  |  Velikost snímku sdílené složky  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/služby  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/služby  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/služby  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/služby  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  QueueCapacity  |  Kapacita fronty  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  QueueCount  |  Počet front  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  QueueMessageCount  |  Počet zpráv ve frontě  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/queueServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  Dostupnost  |  Dostupnost  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  Výchozí přenos dat  |  Výchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  Příchozí přenos dat  |  Příchozí přenos dat  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  SuccessE2ELatency  |  Celková latence při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  SuccessServerLatency  |  Latence serveru při úspěchu  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  TableCapacity  |  Kapacita tabulky  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  TableCount  |  Počet tabulek  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  TableEntityCount  |  Počet entit tabulky  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. Storage/storageAccounts/tableServices  |  Transakce  |  Transakce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientIOPS  |  Celkový počet vstupně-výstupních operací klienta  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientLatency  |  Průměrná latence klienta  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientLockIOPS  |  IOPS zámku klienta  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientMetadataReadIOPS  |  Metadata klienta přečetla IOPS  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientMetadataWriteIOPS  |  Zápis metadat klienta za sekundu  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientReadIOPS  |  Klientský vstupně-výstupní operace čtení  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientReadThroughput  |  Průměrná propustnost čtení mezipaměti  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientWriteIOPS  |  Zápis klientského IOPS za sekundu  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  ClientWriteThroughput  |  Průměrná propustnost zápisu mezipaměti  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetAsyncWriteThroughput  |  Propustnost asynchronního zápisu StorageTarget  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetFillThroughput  |  Propustnost výplně StorageTarget  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetHealth  |  Stav cíle úložiště  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetIOPS  |  Celkem StorageTarget IOPS  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetLatency  |  Latence StorageTarget  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetMetadataReadIOPS  |  StorageTarget metadata Read IOPS  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetMetadataWriteIOPS  |  Zápisy metadat StorageTarget IOPS  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetReadAheadThroughput  |  Propustnost před čtením StorageTarget  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetReadIOPS  |  StorageTarget čtení IOPS  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetSyncWriteThroughput  |  Propustnost synchronního zápisu StorageTarget  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetTotalReadThroughput  |  StorageTarget celkové propustnosti čtení  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetTotalWriteThroughput  |  StorageTarget celkové propustnosti zápisu  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  StorageTargetWriteIOPS  |  StorageTarget zápis IOPS  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. StorageCache/caches  |  Doba provozu  |  Doba provozu  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  ServerSyncSessionResult  |  Výsledek relace synchronizace  |  Počet  |  Průměr | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncBatchTransferredFileBytes  |  Synchronizované bajty  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecalledNetworkBytesByApplication  |  Velikost odvolání při vrstvení cloudu podle aplikace  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecalledTotalNetworkBytes  |  Velikost odvolání při vyvolání vrstvy cloudu  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecallIOTotalSizeBytes  |  Stažení vrstvení cloudu  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncRecallThroughputBytesPerSecond  |  Propustnost volání při navracení cloudových vrstev  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncServerHeartbeat  |  Online stav serveru  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncSyncSessionAppliedFilesCount  |  Synchronizované soubory  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices  |  StorageSyncSyncSessionPerItemErrorsCount  |  Soubory se nesynchronizují  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/registeredServers  |  ServerHeartbeat  |  Online stav serveru  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/registeredServers  |  ServerRecallIOTotalSizeBytes  |  Stažení vrstvení cloudu  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupBatchTransferredFileBytes  |  Synchronizované bajty  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionAppliedFilesCount  |  Synchronizované soubory  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionPerItemErrorsCount  |  Soubory se nesynchronizují  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointBatchTransferredFileBytes  |  Synchronizované bajty  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionAppliedFilesCount  |  Synchronizované soubory  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionPerItemErrorsCount  |  Soubory se nesynchronizují  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  AMLCalloutFailedRequests  |  Neúspěšné žádosti o funkce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  AMLCalloutInputEvents  |  Události funkcí  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  AMLCalloutRequests  |  Žádosti o funkce  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  ConversionErrors  |  Chyby převodu dat  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  DeserializationError  |  Chyby při deserializaci vstupu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  DroppedOrAdjustedEvents  |  Události mimo pořadí  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  EarlyInputEvents  |  Události předčasného vstupu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  chyby  |  Běhové chyby  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  InputEventBytes  |  Bajty vstupních událostí  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  InputEvents  |  Události vstupu  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  InputEventsSourcesBacklogged  |  Nevyřízené události vstupu  |  Počet  |  Maximum | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  InputEventsSourcesPerSecond  |  Přijaté vstupní zdroje  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  LateInputEvents  |  Zpožděné vstupní události  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  OutputEvents  |  Výstupní události  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  OutputWatermarkDelaySeconds  |  Zpoždění vodoznaku  |  Sekundy  |  Maximum | 
+| **Ano**  | No |  Microsoft. StreamAnalytics/streamingjobs  |  ResourceUtilization  |  Využití SU%  |  Procento  |  Maximum | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  Bajty čtení z disku  |  Bajty čtení z disku  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  Operace čtení z disku/s  |  Operace čtení z disku/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  Bajty zápisu na disk  |  Bajty zápisu na disk  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  Operace zápisu na disk/s  |  Operace zápisu na disk/s  |  CountPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskReadBytesPerSecond  |  Bajty čtení z disku/s  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskReadLatency  |  Latence čtení disku  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskReadOperations  |  Operace čtení z disku  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskWriteBytesPerSecond  |  Bajty zápisu na disk/s  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskWriteLatency  |  Latence zápisu na disk  |  Milisekund  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  DiskWriteOperations  |  Operace zápisu na disk  |  Počet  |  Celkem | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  MemoryActive  |  Paměť aktivní  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  MemoryGranted  |  Přidělená paměť  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  MemoryUsed  |  Využitá paměť  |  Bajty  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  Síťové vstupy  |  Síťové vstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  Síťové výstupy  |  Síťové výstupy  |  Bajty  |  Celkem | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  NetworkInBytesPerSecond  |  Síť v bajtech/s  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  NetworkOutBytesPerSecond  |  Výstupní bajty sítě/s  |  BytesPerSecond  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  Procento CPU  |  Procento CPU  |  Procento  |  Průměr | 
+| **Ano**  | No |  Microsoft. VMwareCloudSimple/virtualMachines  |  PercentageCpuReady  |  Procento připraveného procesoru  |  Milisekund  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Web/hostingEnvironments/multiRolePools  |  ActiveRequests  |  Aktivní požadavky  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Web/hostingEnvironments/multiRolePools  |  AverageResponseTime  |  Průměrná doba odezvy  |  Sekundy  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. Web/hostingEnvironments/multiRolePools  |  BytesReceived  |  Data v  |  Bajty  |  Celkem | 

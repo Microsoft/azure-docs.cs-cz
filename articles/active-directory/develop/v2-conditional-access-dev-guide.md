@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
+title: Pokyny pro vývojáře týkající se podmíněného přístupu ke službě Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Pokyny a scénáře pro vývojáře pro podmíněný přístup Azure AD a platformy Microsoft identity
 services: active-directory
@@ -15,17 +15,16 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83771073"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře týkající se podmíněného přístupu ke službě Azure Active Directory
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
-* [Vícefaktorové ověřování](../authentication/concept-mfa-howitworks.md)
+* [Ověřování pomocí služby Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * Povoluje přístup ke konkrétním službám jenom zařízením zaregistrovaným v Intune.
 * Omezení umístění uživatelů a rozsahů IP adres
 
@@ -49,7 +48,7 @@ Konkrétně následující scénáře vyžadují kód pro zpracování výzev po
 
 * Aplikace, které provádějí tok za běhu
 * Aplikace, které přistupují k několika službám nebo prostředkům
-* Jednostránkové aplikace využívající MSAL. js
+* Jednostránkové aplikace používající MSAL.js
 * Web Apps volání prostředku
 
 Zásady podmíněného přístupu se dají použít pro aplikaci, ale dají se použít i pro webové rozhraní API, ke kterému přistupuje aplikace. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu, najdete v tématu [rychlý Start: vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../conditional-access/app-based-mfa.md).
@@ -101,7 +100,7 @@ Následující informace platí jenom v těchto scénářích podmíněného př
 
 * Aplikace, které provádějí tok za běhu
 * Aplikace, které přistupují k několika službám nebo prostředkům
-* Jednostránkové aplikace využívající MSAL. js
+* Jednostránkové aplikace používající MSAL.js
 
 V následujících částech jsou pojednávají běžné scénáře, které jsou složitější. Základní provozní princip je vyhodnocen jako zásady podmíněného přístupu v době, kdy je token požadován pro službu s použitou zásadou podmíněného přístupu.
 
@@ -150,11 +149,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Pokud aplikace používá knihovnu MSAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě aplikace potřebuje provést interaktivní požadavek, ```AcquireToken``` aby koncovému uživateli bylo umožněno dodržovat tyto zásady.
 
-## <a name="scenario-single-page-app-spa-using-msaljs"></a>Scénář: jednostránkové aplikace (SPA) využívající MSAL. js
+## <a name="scenario-single-page-app-spa-using-msaljs"></a>Scénář: jednostránkové aplikace (SPA) pomocí MSAL.js
 
-V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplikaci (SPA) pomocí MSAL. js k volání webového rozhraní API chráněného podmíněného přístupu. Toto je jednoduchá architektura, ale má několik drobné odlišnosti, které je potřeba vzít v úvahu při vývoji podmíněného přístupu.
+V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplikaci (SPA), která používá MSAL.js k volání webového rozhraní API chráněného podmíněného přístupu. Toto je jednoduchá architektura, ale má několik drobné odlišnosti, které je potřeba vzít v úvahu při vývoji podmíněného přístupu.
 
-V MSAL. js existuje několik funkcí, které získají tokeny: `loginPopup()` , `acquireTokenSilent(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
+V MSAL.js existuje několik funkcí, které získají tokeny: `loginPopup()` , `acquireTokenSilent(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
 
 * `loginPopup()`Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
 * `acquireTokenSilent(…)`dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
@@ -176,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Naše aplikace potřebuje zachytit `error=interaction_required` . Aplikace pak může použít buď `acquireTokenPopup()` nebo `acquireTokenRedirect()` u stejného prostředku. Uživatel je nucen provést službu Multi-Factor Authentication. Jakmile uživatel dokončí službu Multi-Factor Authentication, aplikace vydá nový přístupový token pro požadovaný prostředek.
 
-Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete v případě, že si vyrezervujete [vzorový kód pro obecné úhlové. js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) , najdete pokyny k úhlů
+Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete vyrezervovat obecný [Angular.js ukázka kódu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) pro doprovodné materiály k ÚHLOVé Spa.
 
 ## <a name="see-also"></a>Viz také
 

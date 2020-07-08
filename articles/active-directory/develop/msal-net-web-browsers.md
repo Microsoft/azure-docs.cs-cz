@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 4e62536b610595c7a53eb8333f06f147e628dec7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772042"
 ---
 # <a name="using-web-browsers-msalnet"></a>Používání webových prohlížečů (MSAL.NET)
@@ -47,13 +46,13 @@ Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systé
 
 | Rozhraní .NET Framework        | Vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
-| .NET Classic     | Ano | Ano ^ | Vložené |
+| .NET Classic     | Yes | Ano ^ | Vložené |
 | .NET Core     | No | Ano ^ | Systém |
 | .NET Standard | No | Ano ^ | Systém |
-| UPW | Ano | Ne | Vložené |
+| UPW | Yes | No | Vložené |
 | Xamarin.Android | Ano | Ano  | Systém |
 | Xamarin.iOS | Ano | Ano  | Systém |
-| Xamarin.Mac| Ano | Ne | Vložené |
+| Xamarin.Mac| Yes | No | Vložené |
 
 ^ Vyžaduje " http://localhost " identifikátor URI přesměrování
 

@@ -4,10 +4,9 @@ description: Jak připojit sdílenou složku služby soubory Azure z výpočetn�
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780272"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Použití sdílené složky Azure s fondem služby Batch
@@ -39,8 +38,8 @@ V dávce je potřeba připojit sdílenou složku pokaždé, když je úloha spu�
 
 Například zahrňte `net use` příkaz pro připojení sdílené složky jako součást každého příkazového řádku úkolu. Pro připojení sdílené složky jsou potřeba následující přihlašovací údaje:
 
-* **Uživatelské jméno**: Azure \\ \< storageaccountname \> , například Azure \\ *mystorageaccountname*
-* **Heslo**: \< StorageAccountKeyWhichEnds in = =>, například *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Uživatelské jméno**: Azure \\ \<storageaccountname\> , například Azure \\ *mystorageaccountname*
+* **Heslo**: například \<StorageAccountKeyWhichEnds in==> *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Následující příkaz připojí sdílenou složku *myfileshare* v účtu úložiště *mystorageaccountname* jako jednotku *S:* .
 
@@ -116,8 +115,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Pak spusťte `mount` příkaz pro připojení sdílené složky a zadejte tyto přihlašovací údaje:
 
-* **Uživatelské jméno**: \< storageaccountname \> , například *mystorageaccountname*
-* **Heslo**: \< StorageAccountKeyWhichEnds in = =>, například *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Uživatelské jméno**: například \<storageaccountname\> *mystorageaccountname*
+* **Heslo**: například \<StorageAccountKeyWhichEnds in==> *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Následující příkaz připojí sdílení souborů *myfileshare* v účtu úložiště *mystorageaccountname* na adrese */mnt/MyAzureFileShare*: 
 

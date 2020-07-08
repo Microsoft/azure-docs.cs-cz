@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
 ms.openlocfilehash: dfa3f00e668488574abeb08964909a8972c8913f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772943"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
@@ -47,8 +46,8 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 
 | Geografie virtuálního počítače                              | Geografie pracovního prostoru |
 |-------------------------------------|---------------|
-| USA, Brazílie, Jižní Afrika | USA |
-| Kanada                              | Kanada        |
+| USA, Brazílie, Jižní Afrika | Česká republika |
+| Canada                              | Kanada        |
 | Evropa (s výjimkou Spojeného království)   | Evropa        |
 | Spojené království                      | Spojené království |
 | Asie (s výjimkou Indie, Japonska, Koreje, ČLR)   | Asie a Tichomoří  |

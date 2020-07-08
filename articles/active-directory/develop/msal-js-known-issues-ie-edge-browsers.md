@@ -1,7 +1,7 @@
 ---
-title: Problémy v Internet Exploreru & Microsoft Edge (MSAL. js) | Azure
+title: Problémy v Internet Exploreru & Microsoft Edge (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Seznamte se s informacemi o tom, jaké jsou problémy při používání knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s Internet Explorerem a prohlížeči Microsoft Edge.
+description: Seznamte se s informacemi o tom, jaké problémy při používání knihovny Microsoft Authentication Library pro JavaScript (MSAL.js) s Internet Explorerem a prohlížeči Microsoft Edge.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,19 +14,18 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772076"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy v prohlížečích Internet Explorer a Microsoft Edge (MSAL. js)
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy s Internet Explorerem a prohlížeči Microsoft Edge (MSAL.js)
 
 ## <a name="issues-due-to-security-zones"></a>Problémy způsobené zónami zabezpečení
 V IE a Microsoft Edge jsme měli několik sestav o problémech s ověřováním (od aktualizace *verze prohlížeče Microsoft Edge do 40.15063.0.0*). Sledujeme tyto informace a informovali o týmu Microsoft Edge. I když Microsoft Edge funguje na řešení, tady je popis často se vyskytujících potíží a možných alternativních řešení, která je možné implementovat.
 
 ### <a name="cause"></a>Příčina
-Příčina většiny těchto problémů je následující. Úložiště relací a místní úložiště jsou rozdělené podle zón zabezpečení v prohlížeči Microsoft Edge. V této konkrétní verzi Microsoft Edge se při přesměrování aplikace mezi zónami vymažou úložiště relací a místní úložiště. Konkrétně je úložiště relací v normální navigaci v prohlížeči vymazáno a relace i místní úložiště jsou vymazány v režimu InPrivate prohlížeče. MSAL. js uloží určitý stav do úložiště relace a spoléhá na kontrolu tohoto stavu během toků ověřování. Při vymazání úložiště relace dojde ke ztrátě tohoto stavu, takže dojde k přerušení prostředí.
+Příčina většiny těchto problémů je následující. Úložiště relací a místní úložiště jsou rozdělené podle zón zabezpečení v prohlížeči Microsoft Edge. V této konkrétní verzi Microsoft Edge se při přesměrování aplikace mezi zónami vymažou úložiště relací a místní úložiště. Konkrétně je úložiště relací v normální navigaci v prohlížeči vymazáno a relace i místní úložiště jsou vymazány v režimu InPrivate prohlížeče. MSAL.js ukládá určitý stav do úložiště relace a spoléhá na kontrolu tohoto stavu během toků ověřování. Při vymazání úložiště relace dojde ke ztrátě tohoto stavu, takže dojde k přerušení prostředí.
 
 ### <a name="issues"></a>Issues (Problémy)
 
@@ -36,12 +35,12 @@ Příčina většiny těchto problémů je následující. Úložiště relací 
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **Automaticky otevíraná okna se nezavřou nebo se zablokuje při ověřování pomocí přihlašovacích údajů prostřednictvím místní nabídky**. Při ověřování prostřednictvím překryvného okna v Microsoft Edge nebo IE (InPrivate) po zadání přihlašovacích údajů a přihlášení se v případě, že je v navigaci zapojeno více domén napříč zónami zabezpečení, se místní okno nezavře, protože MSAL. js ztratí popisovač do místního okna.  
+- **Automaticky otevíraná okna se nezavřou nebo se zablokuje při ověřování pomocí přihlašovacích údajů prostřednictvím místní nabídky**. Při ověřování prostřednictvím překryvného okna v Microsoft Edge nebo IE (InPrivate) po zadání přihlašovacích údajů a přihlášení se v případě, že je do navigace zapojeno více domén napříč zónami zabezpečení, se místní okno nezavře, protože MSAL.js ztratí popisovač do překryvného okna.  
 
-### <a name="update-fix-available-in-msaljs-023"></a>Aktualizace: Oprava je k dispozici v MSAL. js 0.2.3
-Opravy potíží s smyčkou přesměrování ověřování byly vydány v [MSAL. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases). Pokud chcete tuto opravu využít, povolte příznak `storeAuthStateInCookie` v konfiguraci MSAL. js. Ve výchozím nastavení je tento příznak nastaven na hodnotu false.
+### <a name="update-fix-available-in-msaljs-023"></a>Aktualizace: Oprava je k dispozici ve MSAL.js 0.2.3
+Opravy potíží se smyčkou přesměrování ověřování byly vydány v [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases). Pokud chcete tuto opravu využít, povolte příznak `storeAuthStateInCookie` v konfiguraci MSAL.js. Ve výchozím nastavení je tento příznak nastaven na hodnotu false.
 
-Pokud `storeAuthStateInCookie` je příznak povolený, MSAL. js použije soubory cookie prohlížeče k uložení stavu požadavku potřebného k ověření toků ověřování.
+Když `storeAuthStateInCookie` je příznak povolený, MSAL.js použije soubory cookie prohlížeče k uložení stavu požadavku, který se vyžaduje pro ověření toků ověřování.
 
 > [!NOTE]
 > Tato oprava ještě není k dispozici pro obálky msal-úhlů a msal-AngularJS. Tato oprava neřeší problém pomocí překryvných oken.
@@ -57,7 +56,7 @@ Postup je následující:
     - Vyberte kartu **zabezpečení** .
     - V části **Důvěryhodné servery** klikněte na tlačítko **lokality** a v dialogovém okně, které se otevře, přidejte adresy URL.
 
-2. Jak už bylo uvedeno dříve, protože během pravidelné navigace bylo vymazáno pouze úložiště relace, můžete MSAL. js nakonfigurovat tak, aby místo toho používal místní úložiště. To lze nastavit jako `cacheLocation` parametr konfigurace při INICIALIZACI MSAL.
+2. Jak už bylo zmíněno dříve, protože během pravidelné navigace se vymazalo jenom úložiště relací, můžete místo toho nakonfigurovat MSAL.js k použití místního úložiště. To lze nastavit jako `cacheLocation` parametr konfigurace při INICIALIZACI MSAL.
 
 Upozorňujeme, že tento problém se nevyřeší při procházení InPrivate, protože se vymažou jak relace, tak místní úložiště.
 
@@ -68,4 +67,4 @@ Existují případy, kdy jsou automaticky otevíraná okna blokována v IE nebo 
 **Alternativním řešením**je, že vývojáři budou muset v IE a Microsoft Edge povolená překryvná okna předtím, než začnou používat svoji aplikaci, aby se tomuto problému vyhnuli.
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [použití MSAL. js v Internet Exploreru](msal-js-use-ie-browser.md).
+Přečtěte si další informace o [používání MSAL.js v Internet Exploreru](msal-js-use-ie-browser.md).

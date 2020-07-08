@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747637"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
@@ -71,7 +70,7 @@ Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který 
 
 Následující tokeny specifikátoru formátu lze použít samostatně nebo v kombinaci k dosažení vlastních formátů data a času:
 
-|Specifikátor formátu   |Popis   |Výsledky pro příklad času 2018-01-02T10:06:08|
+|Specifikátor formátu   |Description   |Výsledky pro příklad času 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: rrrr}|Rok jako čtyřmístné číslo|2018|
 |{DateTime: MM}|Měsíc od 01 do 12|01|

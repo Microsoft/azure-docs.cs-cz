@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744814"
 ---
 # <a name="payout-summaries"></a>Přehledy plateb
@@ -68,19 +67,19 @@ Pokud chcete na této stránce Exportovat data transakcí, vyberte **exportovat*
 
 | Stav vystavení           | Důvod                                                                                                                                      | Je vyžadována akce partnera?                                   |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| Nezpracované              | Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. | Ne                                                         |
-| Nadcházející                 | Platební objednávka vygenerovala nevyřízené interní recenze před zpracováním platby.                                                               | Ne                                                         |
+| Nezpracované              | Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. | No                                                         |
+| Nadcházející                 | Platební objednávka vygenerovala nevyřízené interní recenze před zpracováním platby.                                                               | No                                                         |
 | Nevyřízená daňová faktura      | Vaše daňová faktura je neúplná nebo neplatná.                                                                                                  | Abyste mohli platit, musíte si nejdřív aktualizovat svou daňovou fakturu. |
 | Zamítnuto během revize   | Platba byla během revize odmítnuta.                                                                                                     | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
 | Failed                   | Platba se nezdařila z důvodu chyby systému Microsoft.                                                                                         | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
-| Rozpracované              | Platba probíhá.                                                                                                                 | Ne                                                         |
-| Nesprávná platba        | Recouping platby probíhá.                                                                                                       | Ne                                                         |
-| Odesláno                     | Platba byla odeslána do vaší banky.                                                                                                     | Ne                                                         |
-| Opětovného zpracování             | V platbě došlo k systémové chybě společnosti Microsoft a probíhá její zpracování.                                                                  | Ne                                                         |
-| Reversed                 | Platba byla stornována vaší bankou a bude odeslána znovu v dalším platebním cyklu.                                                     | Ne                                                         |
+| Rozpracované              | Platba probíhá.                                                                                                                 | No                                                         |
+| Nesprávná platba        | Recouping platby probíhá.                                                                                                       | No                                                         |
+| Odesláno                     | Platba byla odeslána do vaší banky.                                                                                                     | No                                                         |
+| Opětovného zpracování             | V platbě došlo k systémové chybě společnosti Microsoft a probíhá její zpracování.                                                                  | No                                                         |
+| Reversed                 | Platba byla stornována vaší bankou a bude odeslána znovu v dalším platebním cyklu.                                                     | No                                                         |
 | Daňová faktura odmítnuta     | Vaše daňová faktura byla během revize odmítnuta. Všechny probíhající platby budou pozastaveny, dokud se nedokončí kontrola daňové faktury.                 | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
-| Daňová faktura pod kontrolou | Vaše daňové faktury se přezkoumávají. Po schválení daňové faktury se vaše platba uvolní.                                   | Ne                                                         |
-| Rejected                 | Platba byla odmítnuta vaší bankou.                                                                                                      | Podrobnosti získáte od své banky.                             |
+| Daňová faktura pod kontrolou | Vaše daňové faktury se přezkoumávají. Po schválení daňové faktury se vaše platba uvolní.                                   | No                                                         |
+| Zamítnuto                 | Platba byla odmítnuta vaší bankou.                                                                                                      | Podrobnosti získáte od své banky.                             |
 |||
 
 ## <a name="export-data-page"></a>Stránka pro export dat

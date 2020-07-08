@@ -10,13 +10,12 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684867"
 ---
-# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Řešení problémů s Change Tracking a inventářem
+# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Řešení problémů s řešením Change Tracking a Inventory
 
 Tento článek popisuje, jak řešit a řešit problémy s Azure Automation Change Tracking a inventáře. Obecné informace o Change Tracking a inventáři najdete v tématu [přehled Change Tracking a inventáře](../change-tracking.md).
 
@@ -55,7 +54,7 @@ Pokud stále potřebujete pomoc, můžete shromáždit diagnostické informace a
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Agent Log Analytics pro Windows není spuštěný.
 
-Ověřte, zda je na tomto počítači spuštěný agent Log Analytics pro systém Windows (**HealthService. exe**).
+Ověřte, zda je v počítači spuštěn Agent Log Analytics pro systém Windows (**HealthService.exe**).
 
 ##### <a name="communication-to-automation-account-blocked"></a>Komunikace s blokovaným účtem služby Automation
 

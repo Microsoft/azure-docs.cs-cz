@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680888"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Řešení potíží se sdílenými prostředky
@@ -76,15 +75,15 @@ Některé běžné důvody, proč se modul nemusí úspěšně naimportovat do A
 
 K vyřešení problému použijte kterékoli z těchto řešení:
 
-* Ujistěte se, že modul používá formát: název modulu. zip-> název modulu nebo číslo verze-> (Module. psm1, Module. psd1).
+* Ujistěte se, že modul používá formát: ModuleName.zip-> Module nebo číslo verze-> (Module. psm1, ModuleName.psd1).
 * Otevřete soubor **. psd1** a podívejte se, jestli má modul nějaké závislosti. V takovém případě nahrajte tyto moduly do účtu Automation.
 * Ujistěte se, že se ve složce modulu nacházejí všechny odkazované soubory **. dll** .
 
-### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Scénář: Update-AzureModule. ps1 se při aktualizaci modulů pozastaví.
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Scénář: Update-AzureModule.ps1 se při aktualizaci modulů pozastaví
 
 #### <a name="issue"></a>Problém
 
-Pokud k aktualizaci modulů Azure používáte Runbook [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) , proces aktualizace modulu je pozastaven.
+Když pomocí sady [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) Runbook aktualizujete moduly Azure, proces aktualizace modulu je pozastaven.
 
 #### <a name="cause"></a>Příčina
 
@@ -97,7 +96,7 @@ Není běžné, že ve stejném účtu Automation jsou vyžadovány všechny mod
 > [!NOTE]
 > Vyhněte se importování celého `Az.Automation` `AzureRM.Automation` modulu nebo, který importuje všechny obsažené moduly.
 
-Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` parametr do skriptu **Update-AzureModules. ps1** a zadejte nižší hodnotu, než je výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
+Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` do skriptu **Update-AzureModules.ps1** parametr a zadejte nižší hodnotu než výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
 
  ```powershell
          $Body = @"
@@ -138,7 +137,7 @@ Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít přís
 
 Pokud k problému dochází z důvodu zámku, ověřte, že je možné zámek odebrat. Pak přejděte k prostředku, který je v Azure Portal uzamčený, klikněte pravým tlačítkem na zámek a vyberte **Odstranit**.
 
-### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Scénář: při provádění Runbooku se zobrazí chyba "v souboru DLL" iplpapi. dll "" nepovedlo se najít vstupní bod s názvem ' GetPerAdapterInfo '.
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Scénář: zobrazí se chyba "při provádění Runbooku se zobrazí vstupní bod s názvem ' GetPerAdapterInfo ' v knihovně DLL ' iplpapi.dll '.
 
 #### <a name="issue"></a>Problém
 

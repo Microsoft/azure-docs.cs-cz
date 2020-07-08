@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83757595"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení služby Azure Multi-Factor Authentication
@@ -103,7 +102,7 @@ Doporučujeme, aby organizace používaly podmíněný přístup k definování 
    2. Pokud používáte *země nebo oblasti*
       1. Rozbalte rozevírací nabídku a vyberte země nebo oblasti, které chcete definovat pro toto pojmenované umístění.
       2. Rozhodněte, jestli se mají *Zahrnout neznámé oblasti*. Neznámé oblasti jsou IP adresy, které nejdou namapovat na zemi nebo oblast.
-7. Vyberte **vytvořit** .
+7. Vyberte **Vytvořit**.
 
 ## <a name="plan-authentication-methods"></a>Plánování metod ověřování
 
@@ -354,7 +353,7 @@ Sestavy pro Azure MFA
 
 Azure Multi-Factor Authentication poskytuje sestavy prostřednictvím Azure Portal:
 
-| Sestava | Umístění | Popis |
+| Sestava | Umístění | Description |
 | --- | --- | --- |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
 

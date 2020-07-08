@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 3d27b6d96dfd6c815cedc6194e6bb6e8a101dec2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83735908"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
@@ -62,7 +61,7 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Přenáší agenty na chráněné servery | Operace agenta se nezdařila z důvodu chyby komunikace se službou Koordinátor agenta DPM v \<> servername. | **Pokud Doporučená akce uvedená v produktu nefunguje, proveďte následující kroky**: <ul><li> Pokud připojujete počítač z nedůvěryhodné domény, postupujte podle [těchto kroků](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> ANI </li><li> Pokud připojujete počítač z důvěryhodné domény, vyřešte potíže pomocí kroků uvedených v [tomto blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>ANI</li><li> Zkuste zakázat antivirovou ochranu jako krok pro odstraňování potíží. Pokud se problém vyřeší, upravte nastavení antivirového programu podle doporučení v [tomto článku](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019).</li></ul> |
+| Přenáší agenty na chráněné servery | Operace agenta se nezdařila z důvodu chyby komunikace se službou Koordinátor agenta DPM v systému \<ServerName> . | **Pokud Doporučená akce uvedená v produktu nefunguje, proveďte následující kroky**: <ul><li> Pokud připojujete počítač z nedůvěryhodné domény, postupujte podle [těchto kroků](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> ANI </li><li> Pokud připojujete počítač z důvěryhodné domény, vyřešte potíže pomocí kroků uvedených v [tomto blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>ANI</li><li> Zkuste zakázat antivirovou ochranu jako krok pro odstraňování potíží. Pokud se problém vyřeší, upravte nastavení antivirového programu podle doporučení v [tomto článku](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019).</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Instalační program nemohl aktualizovat metadata registru
 

@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726719"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit aplikace kontejneru v Azure Batch
@@ -28,7 +27,7 @@ Pomocí kontejnerů můžete snadno spouštět úlohy služby Batch bez nutnosti
     * Batch .NET SDK 8.0.0 verze
     * Sada Batch Python SDK verze 4,0
     * Batch Java SDK verze 3,0
-    * Batch Node. js SDK verze 3,0
+    * Sada Batch Node.js SDK verze 3,0
 
 * **Účty**: v předplatném Azure budete muset vytvořit účet Batch a volitelně účet Azure Storage.
 

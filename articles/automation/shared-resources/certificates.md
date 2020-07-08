@@ -10,10 +10,9 @@ ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ebd4bf0ff91342229edb4295489f0cbd0970699a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745031"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Správa certifikátů v Azure Automation
@@ -27,7 +26,7 @@ Azure Automation ukládá certifikáty bezpečně pro přístup pomocí runbook�
 
 Rutiny v následující tabulce vytvářejí a spravují certifikáty služby Automation pomocí prostředí PowerShell. Dodávají se jako součást [AZ moduls](modules.md#az-modules).
 
-|Rutina |Popis|
+|Rutina |Description|
 | --- | ---|
 |[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Načte informace o certifikátu, který se má použít v sadě Runbook nebo konfiguraci DSC. Samotný certifikát můžete načíst jenom pomocí interní `Get-AutomationCertificate` rutiny.|
 |[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Vytvoří nový certifikát ve službě Automation.|
@@ -40,7 +39,7 @@ Pomocí rutiny [Add-AzureCertificate](/powershell/module/servicemanagement/azure
 
 Interní rutina v následující tabulce se používá pro přístup k certifikátům ve vašich sadách Runbook. Tato rutina se dodává s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
-| Interní rutina | Popis |
+| Interní rutina | Description |
 |:---|:---|
 |`Get-AutomationCertificate`|Načte certifikát, který se má použít v sadě Runbook nebo konfiguraci DSC. Vrátí objekt [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) .|
 

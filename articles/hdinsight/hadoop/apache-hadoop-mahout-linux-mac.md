@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656324"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Generování doporučení pomocí Apache Mahout ve službě Azure HDInsight
@@ -89,14 +88,14 @@ Data obsažená v `user-ratings.txt` mají strukturu `userID` , `movieID` , `use
 
     První sloupec je `userID` . Hodnoty obsažené v ' [' a '] ' jsou `movieId` : `recommendationScore` .
 
-2. K poskytnutí dalších informací o doporučeních můžete použít výstup spolu s MovieDB. txt. Nejprve zkopírujte soubory místně pomocí následujících příkazů:
+2. K poskytnutí dalších informací o doporučeních můžete použít výstup spolu s moviedb.txt. Nejprve zkopírujte soubory místně pomocí následujících příkazů:
 
     ```bash
     hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
     hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
     ```
 
-    Tento příkaz zkopíruje výstupní data do souboru s názvem **Recommendations. txt** v aktuálním adresáři společně s datovými soubory videa.
+    Tento příkaz zkopíruje výstupní data do souboru s názvem **recommendations.txt** v aktuálním adresáři společně s datovými soubory videa.
 
 3. Pomocí následujícího příkazu vytvořte skript v jazyce Python, který vyhledá názvy filmů pro data ve výstupu doporučení:
 
@@ -168,11 +167,11 @@ Data obsažená v `user-ratings.txt` mají strukturu `userID` , `movieID` , `use
 
     Tento příkaz vyhledá doporučení vygenerovaná pro ID uživatele 4.
 
-   * Soubor **User-ratings. txt** slouží k načtení hodnocení filmů, které byly ohodnoceny.
+   * **user-ratings.txt** soubor se používá k načtení vyhodnocených filmů.
 
-   * Soubor **MovieDB. txt** slouží k načtení názvů filmů.
+   * Soubor **moviedb.txt** slouží k načtení názvů filmů.
 
-   * **Doporučení. txt** slouží k načtení doporučení filmu pro tohoto uživatele.
+   * **recommendations.txt** slouží k načtení doporučení filmu pro tohoto uživatele.
 
      Výstup z tohoto příkazu je podobný následujícímu textu:
 

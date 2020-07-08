@@ -4,10 +4,9 @@ description: Postup vyloučení disků z replikace do Azure pomocí Azure Site R
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83740514"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
@@ -44,7 +43,7 @@ Ano | Ano | Ano | Ano
 
 ## <a name="typical-scenarios"></a>Typické scénáře
 
-Příklady četnosti změn dat, které jsou skvělými kandidáty pro vyloučení, zahrnují zápisy do stránkovacího souboru (Pagefile. sys) a zapisuje se do souboru tempdb Microsoft SQL Server. V závislosti na zatížení a subsystému úložiště může stránkovací soubor a soubory tempdb registrovat značné množství změn. Replikace tohoto typu dat do Azure je náročná na prostředky.
+Příklady četnosti změn dat, které jsou skvělými kandidáty pro vyloučení, zahrnují zápisy do stránkovacího souboru (pagefile.sys) a zapisuje do souboru tempdb Microsoft SQL Server. V závislosti na zatížení a subsystému úložiště může stránkovací soubor a soubory tempdb registrovat značné množství změn. Replikace tohoto typu dat do Azure je náročná na prostředky.
 
 - K optimalizaci replikace pro virtuální počítač s jedním virtuálním diskem, který obsahuje operační systém i stránkovací soubor, můžete:
     1. Rozdělíte jeden virtuální disk na dva virtuální disky. Jeden virtuální disk obsahuje operační systém, druhý stránkovací soubor.
@@ -185,7 +184,7 @@ DB Disk4 | Disk4 | G:\ | Uživatelská databáze 2
 
 ## <a name="example-2-exclude-the-paging-file-disk"></a>Příklad 2: vyloučení disku se stránkovacím souborem
 
-Pojďme se podívat, jak zpracovat vyloučení disku, převzetí služeb při selhání a převzetí služeb při selhání pro zdrojový virtuální počítač s Windows, pro který chcete vyřadit disk s příponou. sys na jednotce D i na alternativním disku.
+Pojďme se podívat na to, jak zpracovat vyloučení disku, převzetí služeb při selhání a převzetí služeb při selhání pro zdrojový virtuální počítač s Windows, pro který chceme, aby se soubor pagefile.sys na disku D a na alternativním disku vyloučí.
 
 
 ### <a name="paging-file-on-the-d-drive"></a>Stránkovací soubor na jednotce D
@@ -213,7 +212,7 @@ Po převzetí služeb při selhání virtuální počítač Azure obsahuje disky
 **Název disku** | **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Disk operačním systému
-DB-Disk1 | Disk1 | D:\ | Dočasné úložiště/soubor Pagefile. sys <br/><br/> Protože DB-Disk1 (D:) bylo vyloučeno, D: je první písmeno jednotky z dostupného seznamu.<br/><br/> Azure přiřadí písmeno jednotky D: svazku dočasného úložiště.<br/><br/> Vzhledem k tomu, že D: je k dispozici, nastavení stránkovacího souboru virtuálního počítače zůstane stejné).
+DB-Disk1 | Disk1 | D:\ | Dočasné úložiště/pagefile.sys <br/><br/> Protože DB-Disk1 (D:) bylo vyloučeno, D: je první písmeno jednotky z dostupného seznamu.<br/><br/> Azure přiřadí písmeno jednotky D: svazku dočasného úložiště.<br/><br/> Vzhledem k tomu, že D: je k dispozici, nastavení stránkovacího souboru virtuálního počítače zůstane stejné).
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 

@@ -4,10 +4,9 @@ description: Přímá telemetrie na různé prostředky pro vývoj, testování 
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83773701"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
@@ -45,7 +44,7 @@ Aby bylo snazší změnit ikey při pohybu kódu mezi fázemi výroby, nastavte 
 
 Nastavte klíč v inicializační metodě, jako je například global.aspx.cs ve službě ASP.NET:
 
-*R #*
+*C#*
 
     protected void Application_Start()
     {
@@ -108,7 +107,7 @@ Vlastnost verze aplikace se nastavuje několika různými způsoby.
     </DeploymentEvent>
 
     ```
-* [ASP.NET] Vygenerujte BuildInfo. config automaticky v MSBuild. Uděláte to tak, že do souboru přidáte několik řádků `.csproj` :
+* [ASP.NET] Automatické generování BuildInfo.config v nástroji MSBuild. Uděláte to tak, že do souboru přidáte několik řádků `.csproj` :
 
     ```XML
 
@@ -117,7 +116,7 @@ Vlastnost verze aplikace se nastavuje několika různými způsoby.
     </PropertyGroup>
     ```
 
-    Tím se vygeneruje soubor s názvem *názevvašehoprojektu*. BuildInfo. config. proces publikování se přejmenuje na BuildInfo. config.
+    Tím se vygeneruje soubor s názvem *názevvašehoprojektu*.BuildInfo.config. Proces publikování je přejmenoval na BuildInfo.config.
 
     Popisek sestavení obsahuje zástupný symbol (AutoGen_...) při sestavování pomocí sady Visual Studio. Ale při sestavení pomocí nástroje MSBuild se naplní správným číslem verze.
 

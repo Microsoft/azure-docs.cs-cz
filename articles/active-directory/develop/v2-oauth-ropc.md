@@ -14,10 +14,9 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83770972"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
@@ -64,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Parametr | Podmínka | Popis |
+| Parametr | Podmínka | Description |
 | --- | --- | --- |
 | `tenant` | Vyžadováno | Tenant adresáře, do kterého chcete uživatele přihlašovat. Může se jednat o formát GUID nebo popisný název. Tento parametr nemůže být nastaven na hodnotu `common` nebo `consumers` , ale může být nastaven na hodnotu `organizations` . |
 | `client_id` | Vyžadováno | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
@@ -90,9 +89,9 @@ Následující příklad ukazuje úspěšnou odpověď tokenu:
 }
 ```
 
-| Parametr | Formát | Popis |
+| Parametr | Formát | Description |
 | --------- | ------ | ----------- |
-| `token_type` | String | Vždy nastavte na `Bearer` . |
+| `token_type` | Řetězec | Vždy nastavte na `Bearer` . |
 | `scope` | Řetězce oddělené mezerami | Pokud byl vrácen přístupový token, tento parametr vypíše obory, pro které je přístupový token platný. |
 | `expires_in`| int | Počet sekund, po který je zahrnutý přístupový token platný |
 | `access_token`| Neprůhledný řetězec | Vydány pro požadované [obory](v2-permissions-and-consent.md) . |
@@ -105,7 +104,7 @@ Pomocí obnovovacího tokenu můžete získat nové přístupové tokeny a aktua
 
 Pokud uživatel nezadal správné uživatelské jméno nebo heslo nebo pokud klient neobdržel požadovaný souhlas, ověřování se nezdaří.
 
-| Chyba | Popis | Akce klienta |
+| Chyba | Description | Akce klienta |
 |------ | ----------- | -------------|
 | `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávné nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory uděleny, `consent_required` bude vrácena chyba. Pokud k tomu dojde, klient by měl odeslat uživateli interaktivní výzvu pomocí webového zobrazení nebo prohlížeče. |
 | `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ grantu není podporován u `/common` `/consumers` kontextů ověřování nebo.  `/organizations`Místo toho použijte nebo ID tenanta. |

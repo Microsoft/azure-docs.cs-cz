@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664932"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Průvodce nastavením velikosti clusteru interaktivních dotazů ve službě Azure HDInsight
@@ -30,7 +29,7 @@ Tento dokument popisuje velikost clusteru HDInsight Interactive Query (LLAP) pro
 
 Doporučené hodnoty konfigurace jsou založené na pracovním uzlu typ D14 v2.
 
-| Klíč | Hodnota | Popis |
+| Klíč | Hodnota | Description |
 |---|---|---|
 | příz. NodeManager. Resource. paměť-MB | 102400 (MB) | Celková velikost paměti, která je zadána v MB pro všechny kontejnery PŘÍZe na uzlu. |
 | příze. Scheduler. maximum – přidělení-MB | 102400 (MB) | Maximální přidělení pro každou žádost kontejneru v RM v MB. Požadavky na paměť vyšší než tato hodnota se projeví. |
@@ -39,7 +38,7 @@ Doporučené hodnoty konfigurace jsou založené na pracovním uzlu typ D14 v2.
 | podregistr. Server2. TEZ. Sessions. per. default. Queue | number_of_worker_nodes |Počet relací pro každou frontu s názvem v podregistru. Server2. TEZ. default. Queues. Toto číslo odpovídá počtu koordinátorů dotazů (tez AMs). |
 | TEZ. am. Resource. Memory. MB | 4096 (MB) | Velikost paměti v MB, kterou má tez AppMaster použít. |
 | podregistr. TEZ. Container. Size | 4096 (MB) | Zadaná velikost kontejneru tez v MB |
-| podregistr. llap. démon. NUM. prováděče | 12 | Počet prováděcích modulů na démona LLAP |
+| hive.llap.daemon.num.executors | 12 | Počet prováděcích modulů na démona LLAP |
 | podregistr. llap. IO. nevláken. Size | 12 | Velikost fondu vláken pro prováděče. |
 | podregistr. llap. démon. příze. Container. MB | 86016 (MB) | Celková paměť v MB používaná jednotlivými démony LLAP (paměť na démon).|
 | podregistr. llap. IO. Memory. Size | 409600 (MB) | Velikost mezipaměti v MB na LLAP démona poskytnutá pro mezipaměť SSD je povolená. |
@@ -129,7 +128,7 @@ Celková paměť démona LLAP = [velikost mezipaměti LLAP] + [velikost haldy] +
 
 Doporučuje se upravit velikost mezipaměti a velikost haldy, která je nejvhodnější pro vaše zatížení.  
 
-### <a name="hivellapdaemonnumexecutors"></a>podregistr. llap. démon. NUM. prováděče
+### <a name="hivellapdaemonnumexecutors"></a>hive.llap.daemon.num.executors
 
 Tato konfigurace řídí počet prováděcích modulů, které mohou paralelně provádět úlohy na LLAP démon. Tato hodnota je zůstatkem počtu dostupných virtuální jádra, velikosti paměti zadané na vykonavateli a celkové dostupné paměti na LLAP démon. Obvykle by tato hodnota měla být co nejblíže k počtu jader.
 

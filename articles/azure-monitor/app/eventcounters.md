@@ -4,10 +4,9 @@ description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Appli
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83700434"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
@@ -134,7 +133,7 @@ Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor
 
 ### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>Jaké platformy se můžu podívat na výchozí seznam čítačů .NET Core 3,0?
 
-EventCounter nevyžaduje žádná zvláštní oprávnění a podporuje se na všech platformách .NET Core 3,0. To zahrnuje:
+EventCounter nevyžaduje žádná zvláštní oprávnění a podporuje se na všech platformách .NET Core 3,0. Sem patří:
 
 * **Operační systém**: Windows, Linux nebo MacOS.
 * **Metoda hostování**: v procesu nebo mimo proces.

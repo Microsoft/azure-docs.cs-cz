@@ -4,10 +4,9 @@ description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chrá
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747441"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
@@ -171,7 +170,7 @@ Po stažení všech souborů na virtuální počítač s Azure Stack přejdete d
 
 ![Stažení centra 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. Pokud chcete spustit instalaci, ze seznamu stažených souborů klikněte na **MicrosoftAzureBackupserverInstaller. exe**.
+1. Pokud chcete spustit instalaci, ze seznamu stažených souborů klikněte na **MicrosoftAzureBackupserverInstaller.exe**.
 
     > [!WARNING]
     > K extrakci instalačních souborů je potřeba aspoň 4 GB volného místa.
@@ -193,7 +192,7 @@ Po stažení všech souborů na virtuální počítač s Azure Stack přejdete d
 
    ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Po dokončení procesu extrakce klikněte na tlačítko **Dokončit**. Ve výchozím nastavení je zvolena možnost **Spustit soubor Setup. exe** . Po kliknutí na **Dokončit**nainstaluje Setup. exe Microsoft Azure Backup Server do zadaného umístění.
+6. Po dokončení procesu extrakce klikněte na tlačítko **Dokončit**. Ve výchozím nastavení je vybrána možnost **spustit setup.exe** . Po kliknutí na **dokončit**Setup.exe nainstaluje Microsoft Azure Backup Server do zadaného umístění.
 
    ![Průvodce instalací Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 

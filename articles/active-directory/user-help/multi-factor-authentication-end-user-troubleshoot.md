@@ -13,13 +13,12 @@ ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.openlocfilehash: 8d2e34bcfd180dfeb814dace2a496f3ac593c5bf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738604"
 ---
-# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy se dvěma faktory ověřováním a vaším pracovním nebo školním účtem
+# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvojúrovňovým ověřováním a pracovním nebo školním účtem
 
 Když vaše organizace Azure Active Directory (Azure AD) zapne dvojúrovňové ověřování, vyžaduje přihlášení k vašemu pracovnímu nebo školnímu účtu kombinaci uživatelského jména, hesla a mobilního zařízení nebo telefonu. Je bezpečnější než heslo, spoléhá se na dvě formy ověřování: víte, co znáte, a něco, co s vámi máte. Dvojúrovňové ověřování může zabránit škodlivým podvodníkům v předplatném, protože i když mají vaše heslo, lichá, že nemají vaše zařízení.
 

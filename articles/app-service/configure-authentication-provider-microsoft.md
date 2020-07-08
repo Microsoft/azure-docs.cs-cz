@@ -8,10 +8,9 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772832"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení k účtu Microsoft
@@ -28,7 +27,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service nebo Azure Fun
 1. V Azure Portal přejít na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . V případě potřeby se přihlaste pomocí účet Microsoft.
 1. Vyberte **Nová registrace**a pak zadejte název aplikace.
 1. V části **podporované typy účtů**vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)** .
-1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a potom zadejte `https://<app-domain-name>/.auth/login/aad/callback` . * \<>App-Domain-Name* nahraďte názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
+1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a potom zadejte `https://<app-domain-name>/.auth/login/aad/callback` . Nahraďte *\<app-domain-name>* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
 
 1. Vyberte **Zaregistrovat**.
 1. Zkopírujte **ID aplikace (klienta)**. Budete ho potřebovat později.
@@ -63,4 +62,4 @@ Nyní jste připraveni použít účet Microsoft k ověřování ve vaší aplik
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
