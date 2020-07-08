@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 8e4f042e162408fef44b5c525b3a737e37005fdd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042509"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042641"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Spouštění analytických dotazů ad hoc napříč více databázemi (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-MultitenantDB](https://github.com/micr
 
 Pokud chcete spouštět dotazy pro zajímavější datovou sadu, vytvořte pomocí generátoru lístků data o prodeji lístku.
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ Operational Analytics pro \\ vytváření sestav ad \\ *demo-AdhocReporting. ps1* a nastavte následující hodnoty:
+1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *Demo-AdhocReporting.ps1* skriptu a nastavte následující hodnoty:
    * **$DemoScenario** = 1, **vykoupit lístky pro události na všech místě**.
 2. Stisknutím klávesy **F5** spusťte skript a vygenerujte prodej lístku. Po spuštění skriptu pokračujte postupem v tomto kurzu. Data lístku se dotazují v části *Run ad hoc distribuované dotazy* , takže počkejte, než se generátor lístků dokončí.
 
@@ -73,7 +73,7 @@ Pro dosažení tohoto modelu všechny tabulky tenantů obsahují sloupec *VenueI
 
 Toto cvičení nasadí databázi *adhocreporting* . Toto je hlavní databáze, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenanta. Databáze je nasazená na stávající Server katalogu, což je server, který se používá pro všechny databáze související se správou v ukázkové aplikaci.
 
-1. Otevřít... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *demo-ADHOCREPORTING. ps1* ve *ISE PowerShellu* a nastavte následující hodnoty:
+1. Otevřít... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *Demo-AdhocReporting.ps1* v *PowerShellu ISE* a nastavte následující hodnoty:
    * **$DemoScenario** = 2, **nasadit databázi ad hoc Analytics**.
 
 2. Stisknutím klávesy **F5** spusťte skript a vytvořte databázi *adhocreporting* .
@@ -159,4 +159,4 @@ Teď Vyzkoušejte [kurz analýzy tenantů](saas-multitenantdb-tenant-analytics.m
 * Additional [tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
 
-* [Elastic Query](elastic-query-overview.md)
+* [Elastický dotaz](elastic-query-overview.md)

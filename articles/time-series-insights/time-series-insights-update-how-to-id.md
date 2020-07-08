@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48d8c9a0f32c94f64601d27b9785213b776439af
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 312bb9bac93ea30d01e1c3138709325ee1aa6173
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706768"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042165"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID časové řady
 
@@ -37,9 +37,10 @@ Výběr vhodného ID časové řady je kritický. Výběr ID časové řady je n
 Klíčové osvědčené postupy, které je potřeba provést, zahrnují:
 
 * Vyberte klíč oddílu s velkým počtem jedinečných hodnot (například stovky nebo tisíce). V mnoha případech to může být ID zařízení, ID senzoru nebo ID značky ve formátu JSON.
-* ID časové řady by mělo být jedinečné na úrovni uzlu na úrovni listu [modelu časové řady](./time-series-insights-update-tsm.md).
+* ID časové řady by mělo být jedinečné na úrovni uzlu na úrovni listu [modelu časové řady](./concepts-model-overview.md).
 * Omezení počtu znaků pro řetězec názvu vlastnosti časové řady je 128. Pro hodnotu vlastnosti ID časové řady je limit znaků 1 024.
 * Pokud hodnota jedinečné vlastnosti pro ID časové řady chybí, bude zpracována jako hodnota null a bude se jednat o stejné pravidlo omezení jedinečnosti.
+* Pokud je vaše ID časové řady vnořené v rámci komplexního objektu JSON, nezapomeňte při zadávání názvu vlastnosti sledovat [pravidla sloučení](./concepts-json-flattening-escaping-rules.md) příchozích dat. Podívejte se na příklad [B](concepts-json-flattening-escaping-rules.md#example-b). 
 * Jako ID časové řady můžete také vybrat až *tři* vlastnosti klíče. Jejich kombinace bude složený klíč, který představuje ID časové řady.  
   > [!NOTE]
   > Vaše tři klíčové vlastnosti musí být řetězce.
@@ -79,6 +80,6 @@ V Azure Portal pak můžete složený klíč zadat následujícím způsobem:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [modelování dat](./time-series-insights-update-tsm.md).
+* Přečtěte si [pravidla pro sloučení a uvozovací znaky JSON](./concepts-json-flattening-escaping-rules.md) , abyste pochopili, jak budou události uložené.
 
 * Naplánujte si [prostředí pro Azure Time Series Insights Preview](./time-series-insights-update-plan.md).

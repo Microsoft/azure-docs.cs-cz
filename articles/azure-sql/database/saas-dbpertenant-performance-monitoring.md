@@ -1,6 +1,6 @@
 ---
 title: 'Aplikace SaaS: sledování výkonu mnoha databází'
-description: Monitorování a Správa výkonu databází a fondů Azure SQL v aplikaci SaaS s více klienty
+description: Monitorování a Správa výkonu Azure SQL Database v SaaS aplikaci pro více tenantů
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 458349ec666de7cdb94fca5422143738fea50a26
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 714ddf69bd8bca70019487576830b319bd25a7c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042845"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042811"
 ---
-# <a name="monitor-and-manage-performance-of-azure-sql-database-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a Správa výkonu Azure SQL Database a fondů v aplikaci SaaS s více klienty
+# <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a Správa výkonu Azure SQL Database v SaaS aplikaci pro více tenantů
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 V tomto kurzu se prozkoumá několik klíčových scénářů správy výkonu používaných v aplikacích SaaS. Pomocí generátoru zatížení pro simulaci aktivity napříč všemi databázemi tenanta se prokáže integrované funkce monitorování a upozorňování SQL Database a elastických fondů.
@@ -69,7 +69,7 @@ I když fondy můžou být nákladově efektivní jenom se dvěma databázemi S3
 
 Pokud jste již v předchozím kurzu zřídili dávku tenantů, přejděte k části [simulace využití ve všech databázích tenantů](#simulate-usage-on-all-tenant-databases) .
 
-1. V **prostředí POWERSHELL ISE**otevřete... \\ Výukové moduly \\ pro sledování a správu výkonu \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. V **prostředí POWERSHELL ISE**otevřete... \\ \\Demo-PerformanceMonitoringAndManagement.ps1pro monitorování a správu výkonu výukových modulů \\ * * Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavení **$DemoScenario**  =  **1** **zřídí dávku tenantů** .
 1. Stisknutím klávesy **F5** spusťte skript.
 
@@ -79,7 +79,7 @@ Skript *New-TenantBatch* používá vnořenou nebo propojenou sadu [Správce pro
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Simulace využití ve všech databázích tenantů
 
-Je k dispozici skript *demo-PerformanceMonitoringAndManagement. ps1* , který simuluje zatížení spouštěné ve všech databázích tenanta. Zatížení je generováno pomocí jednoho z dostupných scénářů načítání:
+*Demo-PerformanceMonitoringAndManagement.ps1* skript je k dispozici pro simulaci zatížení běžícího na všech databázích tenanta. Zatížení je generováno pomocí jednoho z dostupných scénářů načítání:
 
 | Ukázka | Scénář |
 |:--|:--|
@@ -91,7 +91,7 @@ Je k dispozici skript *demo-PerformanceMonitoringAndManagement. ps1* , který si
 
 Generátor zatížení použije *syntetické* zatížení jenom pro CPU na každé databázi tenantů. Generátor spustí úlohu pro každou databázi tenantů, která pravidelně volá uloženou proceduru generující zatížení. Úrovně zatížení (v eDTU), doba trvání a intervaly jsou napříč všemi databázemi různé, což simuluje nepředvídanou činnost tenanta.
 
-1. V **prostředí POWERSHELL ISE**otevřete... \\ Výukové moduly \\ pro sledování a správu výkonu \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. V **prostředí POWERSHELL ISE**otevřete... \\ \\Demo-PerformanceMonitoringAndManagement.ps1pro monitorování a správu výkonu výukových modulů \\ * * Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavte **$DemoScenario**  =  **2**, *vygenerujte normální zatížení intenzity*.
 1. Stisknutím klávesy **F5** použijte zatížení u všech databází tenantů.
 
@@ -195,7 +195,7 @@ Pokud v jednotlivých databázích ve fondu dojde k trvalému vysokému zatíže
 
 Toto cvičení simuluje vliv vysokého zatížení při prodeji lístků na populární koncert v Koncertním sále Contoso.
 
-1. V **prostředí POWERSHELL ISE**otevřete... \\ Skript *demo-PerformanceMonitoringAndManagement. ps1*
+1. V **prostředí POWERSHELL ISE**otevřete... \\ *Demo-PerformanceMonitoringAndManagement.ps1* skript.
 1. Nastavte **$DemoScenario = 5, vygenerujte normální zatížení plus vysoké zatížení v jednom tenantovi (přibližně 95 DTU).**
 1. Nastavte **$SingleTenantDatabaseName = contosoconcerthall**
 1. Skript proveďte pomocí **F5**.

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 05/21/2020
-ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/06/2020
+ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798115"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042624"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -40,8 +40,10 @@ Při návrhu toků mapování dat můžete každou transformaci otestovat tak, �
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Zvýšení výpočetní velikosti v Azure Integration Runtime
 
 Integration Runtime s více jádry zvyšuje počet uzlů ve výpočetním prostředí Spark a poskytuje větší výpočetní výkon pro čtení, zápis a transformaci dat. Datové proudy ADF využívají Spark pro výpočetní modul. Prostředí Spark funguje velmi dobře pro paměťově optimalizované prostředky.
-* Vyzkoušejte **výpočetní cluster COMPUTE** , pokud chcete, aby byl rychlost zpracování vyšší než zadaná sazba.
-* Vyzkoušení **paměťově optimalizovaného** clusteru, pokud chcete uložit do mezipaměti více dat v paměti. Optimalizovaná paměť má vyšší cenový bod na jádro než výpočetní výkon, ale bude nejspíš mít za následek rychlejší rychlost transformace. Pokud dojde k chybám při provádění toků dat z paměti, přepněte na konfiguraci optimalizované pro paměť Azure IR.
+
+Doporučujeme použít **paměť optimalizovanou** pro produkci většiny úloh. Do paměti budete moct ukládat víc dat a minimalizovat chyby z důvodu nedostatku paměti. Optimalizovaná paměť má vyšší cenový bod na jádro než výpočetní výkon, ale bude nejspíš mít za následek rychlejší přenosové rychlosti a více úspěšných kanálů. Pokud dojde k chybám při provádění toků dat z paměti, přepněte na konfiguraci optimalizované pro paměť Azure IR.
+
+**Optimalizované pro výpočty** mohou postačovat pro ladění a náhled dat s omezeným počtem řádků dat. Optimalizované výpočty se nejspíš nebudou provádět i v produkčních úlohách.
 
 ![Nový IR](media/data-flow/ir-new.png "Nový IR")
 
@@ -110,7 +112,7 @@ Pokud chcete do datové sady DW vyhnout vkládání řádků, zaškrtněte v nas
 
 ## <a name="optimizing-for-files"></a>Optimalizace pro soubory
 
-V každé transformaci můžete nastavit schéma dělení, které má Datová továrna použít na kartě optimalizace. Je vhodné nejdřív otestovat jímky založené na souborech, které zachovají výchozí dělení a optimalizace.
+V každé transformaci můžete nastavit schéma dělení, které má Datová továrna použít na kartě optimalizace. Je vhodné nejdřív otestovat jímky založené na souborech, které zachovají výchozí dělení a optimalizace. V případě, že se v jímky pro cíl souboru přesunují oddíly na "aktuální dělení", umožní vám Spark nastavit příslušné výchozí oddíly pro vaše úlohy. Výchozí dělení používá 128 MB na oddíl.
 
 * U menších souborů se můžete setkat s tím, že zvolíte méně oddílů, někdy je lepší a rychlejší než při vytváření oddílů malých souborů v Sparku.
 * Pokud nemáte dostatek informací o zdrojových datech, vyberte možnost *kruhové dotazování* na oddíly a nastavte počet oddílů.
@@ -153,13 +155,13 @@ Nastavení propustnosti a vlastností dávky u jímky CosmosDB se projeví pouze
 * Propustnost: tady nastavte vyšší propustnost, aby bylo možné dokumentům psát rychleji CosmosDB. Na základě nastavení vysoké propustnosti Prosím mějte na paměti vyšší náklady na RU.
 *   Rozpočet propustnosti zápisu: použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem oddílů Spark, nastavení propustnosti rozpočtu umožní v těchto oddílech větší rovnováhu.
 
-## <a name="join-performance"></a>Výkon připojení
+## <a name="join-and-lookup-performance"></a>Výkon připojení a vyhledávání
 
 Správa výkonu spojení v toku dat je velice obvyklá operace, kterou provedete v celém životním cyklu transformací dat. V rámci ADF data nevyžadují, aby datové toky před spojením seřadily data, protože se tyto operace provádějí jako spojení s algoritmem hash ve Sparku. Můžete ale využít vyšší výkon s optimalizací spojení vysílání, které platí pro spojení, existují a transformace vyhledávání.
 
 Tím se vyhnete neprůběžným rozchodům tím, že do uzlu Spark zapnete obsah obou stran relace připojení. Tato funkce je vhodná pro menší tabulky, které se používají pro hledání odkazů. Větší tabulky, které se nevejdou do paměti uzlu, nejsou vhodnými kandidáty pro optimalizaci všesměrového vysílání.
 
-Doporučená konfigurace pro toky dat s mnoha operacemi spojování spočívá v tom, že optimalizace je nastavená na hodnotu automaticky pro vysílání a používá konfiguraci paměťově optimalizovaného Azure Integration Runtime. Pokud při spuštění toku dat dojde k chybám nebo časovým limitům všesměrového vysílání, můžete zapnout optimalizaci vysílání. Výsledkem ale bude pomalejší provádění toků dat. Volitelně můžete nastavit tok dat pro přenos jenom na levou nebo pravou stranu spojení nebo obojí.
+Doporučená konfigurace pro toky dat s mnoha operacemi spojování spočívá v tom, že optimalizace je nastavená na hodnotu automaticky pro vysílání a používá konfiguraci ***paměťově optimalizovaného*** Azure Integration runtime. Pokud při spuštění toku dat dojde k chybám nebo časovým limitům všesměrového vysílání, můžete zapnout optimalizaci vysílání. Výsledkem ale bude pomalejší provádění toků dat. Volitelně můžete nastavit tok dat pro přenos jenom na levou nebo pravou stranu spojení nebo obojí.
 
 ![Nastavení všesměrového vysílání](media/data-flow/newbroad.png "Nastavení všesměrového vysílání")
 

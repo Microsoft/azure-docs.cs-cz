@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 04/09/2020
-ms.openlocfilehash: f79eb910728286ef5dc3a28974353db012bc5a16
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 5a246288eb3c4063a85935c20abec5c86467d340
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449647"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042369"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -177,7 +177,7 @@ Po dokončení konfigurace fondu můžete kliknout na použít, pojmenovat fond 
 
 V Azure Portal můžete monitorovat využití elastického fondu a databází v rámci tohoto fondu. Můžete také provést sadu změn elastického fondu a odeslat všechny změny ve stejnou dobu. Tyto změny zahrnují přidání nebo odebrání databází, změnu nastavení elastického fondu nebo změnu nastavení databáze.
 
-Pokud chcete začít monitorovat elastický fond, najděte a otevřete elastický fond na portálu. Zobrazí se první obrazovka, která vám poskytne přehled o stavu elastického fondu. To zahrnuje:
+Pokud chcete začít monitorovat elastický fond, najděte a otevřete elastický fond na portálu. Zobrazí se první obrazovka, která vám poskytne přehled o stavu elastického fondu. Sem patří:
 
 - Monitorování grafů znázorňujících využití prostředků elastického fondu
 - Nedávné výstrahy a doporučení, pokud jsou k dispozici pro elastický fond
