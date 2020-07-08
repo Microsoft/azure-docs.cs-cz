@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 93f38210e3529ea4252f43db134667d3426a6599
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554533"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -122,7 +122,7 @@ K nasazení výchozích hodnot zabezpečení se vztahují následující další
 
 Tato bezplatná výchozí nastavení zabezpečení umožňují registraci a používání Azure Multi-Factor Authentication **jenom pomocí Microsoft Authenticator aplikace s využitím oznámení**. Podmíněný přístup umožňuje použití libovolné metody ověřování, kterou správce zvolí k povolení.
 
-|   | Výchozí nastavení zabezpečení | Podmíněný přístup |
+| Metoda | Výchozí nastavení zabezpečení | Podmíněný přístup |
 | --- | --- | --- |
 | Oznámení prostřednictvím mobilní aplikace | X | X |
 | Ověřovací kód z mobilní aplikace nebo hardwarového tokenu | × * * | × |
@@ -145,9 +145,9 @@ Podmíněný přístup můžete použít ke konfiguraci zásad, které se podoba
 
 Tady jsou podrobné návody, jak pomocí podmíněného přístupu nakonfigurovat ekvivalentní zásady na tyto zásady povolené ve výchozím nastavení zabezpečení:
 
-- [Vyžadování MFA pro správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [Vyžadovat MFA pro správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Vyžadování MFA pro správu Azure](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Blokování starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Blokovat starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Vyžadování MFA pro všechny uživatele](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Vyžadovat registraci Azure MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – vyžaduje Azure AD Identity Protection část Azure AD Premium P2.
 
@@ -177,4 +177,4 @@ Zakázání výchozích hodnot zabezpečení v adresáři:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Běžné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)
+[Společné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)

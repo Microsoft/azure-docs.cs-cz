@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560821"
 ---
 # <a name="shaper-cognitive-skill"></a>Kognitivní dovednost tvarovače
 
@@ -251,5 +251,5 @@ V tomto případě **Shaper** vytvoří komplexní typ. Tato struktura existuje 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Jak používat komplexní typy](search-howto-complex-data-types.md)
-+ [Knowledge Store (Preview)](knowledge-store-concept-intro.md)
++ [Knowledge Store](knowledge-store-concept-intro.md)
 + [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md)

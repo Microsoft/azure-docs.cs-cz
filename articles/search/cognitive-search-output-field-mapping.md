@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557274"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Jak mapovat pole obohacená AI na index s možností prohledávání
 
@@ -28,7 +28,7 @@ Pro přesun obsahu z obohacených dokumentů do indexu jsou vyžadovány mapová
 Pro mapování polí přidejte `outputFieldMappings` do definice indexeru, jak je znázorněno níže:
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -78,7 +78,7 @@ Cesta v sourceFieldName může představovat jeden nebo více elementů. V před
 
 V případech, kdy existuje několik prvků, jsou "shrnuty" do pole, které obsahuje každý prvek. 
 
-Čím více z nich je v ```/document/content/organizations/*/description``` příkladu, data v poli *descriptions* budou vypadat jako ploché pole popisů předtím, než se naindexuje:
+Čím více z ```/document/content/organizations/*/description``` nich je v příkladu, data v poli *descriptions* budou vypadat jako ploché pole popisů předtím, než se naindexuje:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
@@ -117,7 +117,7 @@ Toto je důležitý princip, takže budeme poskytovat další příklad. Předst
 
 Předpokládejme, že váš index obsahuje pole s názvem "nemoci" typu Collection (EDM. String), kde byste chtěli uložit všechny názvy entit. 
 
-To lze provést snadno pomocí symbolu "\*", jak je znázorněno níže:
+To lze provést snadno pomocí \* symbolu "", jak je znázorněno níže:
 
 ```json
     "outputFieldMappings": [

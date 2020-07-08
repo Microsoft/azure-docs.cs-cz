@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554770"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -41,13 +41,12 @@ V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se sprá
 
 K naplánování vaší hybridní implementace služby Azure AD byste se měli seznámit s těmito kroky:
 
-|   |   |
-| --- | --- |
-| ![Zaškrtnout][1] | Zkontrolovat podporovaná zařízení |
-| ![Zaškrtnout][1] | Projděte si věci, které byste měli znát. |
-| ![Zaškrtnout][1] | Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD |
-| ![Zaškrtnout][1] | Vyberte svůj scénář na základě vaší infrastruktury identity |
-| ![Zaškrtnout][1] | Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD |
+> [!div class="checklist"]
+> - Zkontrolovat podporovaná zařízení
+> - Projděte si věci, které byste měli znát.
+> - Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD
+> - Vyberte svůj scénář na základě vaší infrastruktury identity
+> - Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD
 
 ## <a name="review-supported-devices"></a>Zkontrolovat podporovaná zařízení
 
@@ -136,7 +135,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části**koncové body** **služby** > můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body**služby můžete zjistit, jaké koncové body jsou povolené.
 
 > [!NOTE]
 > Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
@@ -160,18 +159,18 @@ V některých případech se vaše místní uživatelské názvy UPN můžou li�
 
 V následující tabulce najdete podrobné informace o podpoře místních UPN služby AD ve Windows 10 – připojení k hybridní službě Azure AD.
 
-| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
+| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Description |
 | ----- | ----- | ----- | ----- |
 | Balíček | Federovaní | Z verze 1703 | Obecná dostupnost |
 | Bez směrování | Federovaní | Z verze 1803 | Obecná dostupnost |
-| Balíček | Spravovaní | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
-| Bez směrování | Spravovaní | Nepodporuje se | |
+| Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
+| Bez směrování | Spravované | Nepodporuje se | |
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Konfigurace hybridního prostředí Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)
-> [Konfigurace hybridního připojení Azure Active Directory ke spravovanému prostředí](hybrid-azuread-join-managed-domains.md)
+> [Konfigurace služby hybrid Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md) 
+>  [Konfigurace hybridního Azure Active Directory JOIN pro spravované prostředí](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557222"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
 
@@ -29,7 +29,7 @@ V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné souč�
 
 ## <a name="install-the-service-map-management-pack"></a>Instalace Service Map Management Pack
 
-Integraci mezi Operations Manager a funkcí map povolíte tak, že importujete sadu Management Pack sady Microsoft. SystemCenter. ServiceMap (Microsoft. SystemCenter. ServiceMap. mpb). Sadu Management Pack můžete stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=55763). Svazek obsahuje následující sady Management Pack:
+Integraci mezi Operations Manager a funkcí map povolíte tak, že naimportujete sadu Microsoft.SystemCenter. ServiceMap Management Pack (Microsoft.SystemCenter. ServiceMap. mpb). Sadu Management Pack můžete stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=55763). Svazek obsahuje následující sady Management Pack:
 
 * Zobrazení aplikací v Microsoft Service Map
 * Microsoft System Center Service Map interní
@@ -106,7 +106,7 @@ Složka Service Map má čtyři uzly:
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
 
-Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehledu Service map** (podokno**Správa** > **Operations Management Suite** > **Service map**).
+Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehledu Service map** (podokno**Správa** > **Operations Management Suite**  >  **Service map**).
 
 > [!NOTE]
 > [Operations Management Suite byla sada služeb](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , které jsou součástí Log Analytics, což je teď součástí [Azure monitor](../overview.md).
@@ -117,7 +117,7 @@ V této aktuální verzi můžete nakonfigurovat pouze jeden pracovní prostor L
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurace pravidel a přepsání
 
-Pravidlo, *Microsoft. SystemCenter. ServiceMapImport. Rule*, pravidelně načítá informace z funkce map Azure monitor pro virtuální počítače. Chcete-li upravit interval synchronizace, můžete pravidlo přepsat a změnit hodnotu parametru **IntervalMinutes**.
+Pravidlo *Microsoft.SystemCenter. ServiceMapImport. Rule*pravidelně načítá informace z funkce map Azure monitor pro virtuální počítače. Chcete-li upravit interval synchronizace, můžete pravidlo přepsat a změnit hodnotu parametru **IntervalMinutes**.
 
 ![Okno Vlastnosti Operations Manager Overrides](media/service-map-scom/scom-overrides.png)
 
@@ -142,5 +142,6 @@ Oficiální dokumentaci k Azure o vytváření instančního objektu najdete v t
 * [Vytvoření instančního objektu pomocí Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [Vytvoření instančního objektu pomocí služby Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>Váš názor
+### <a name="suggestions"></a>Návrhy
+
 Máte jakoukoli zpětnou vazbu pro nás o integraci s funkcí Azure Monitor pro virtuální počítače map nebo s touto dokumentací? Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.

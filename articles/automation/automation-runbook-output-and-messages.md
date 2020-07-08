@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557880"
 ---
 # <a name="monitor-runbook-output"></a>Monitorování výstupu runbooků
 
@@ -18,7 +18,7 @@ Většina sad Runbook Azure Automation má nějaký formu výstupu. Tento výstu
 
 Následující tabulka stručně popisuje každý datový proud s chováním v Azure Portal publikovaných runbooků a při [testování sady Runbook](automation-testing-runbook.md). Výstupní datový proud je hlavní datový proud, který se používá pro komunikaci mezi sadami Runbook. Ostatní datové proudy jsou klasifikovány jako datové proudy zpráv určené k sdělování informací uživateli. 
 
-| Datový proud | Popis | Publikováno | Test |
+| Datový proud | Description | Publikováno | Test |
 |:--- |:--- |:--- |:--- |
 | Chyba |Chybová zpráva určená pro uživatele. Na rozdíl od s výjimkou, sada Runbook ve výchozím nastavení pokračuje i po chybové zprávě. |Zapsáno do historie úlohy |Zobrazuje se v podokně výstup testu. |
 | Ladit |Zprávy určené pro interaktivního uživatele. Neměl by se používat v sadách Runbook. |Nepíše se do historie úlohy. |Nezobrazuje se v podokně výstup testu. |
@@ -88,7 +88,7 @@ Následují příklady výstupních datových typů:
 
 #### <a name="declare-output-data-type-in-a-workflow"></a>Deklarace výstupního datového typu v pracovním postupu
 
-Pracovní postup Určuje datový typ výstupu pomocí [atributu OutputType](https://technet.microsoft.com/library/hh847785.aspx). Tento atribut nemá žádný vliv na modul runtime, ale poskytuje indikaci v době návrhu očekávaného výstupu Runbooku. Protože sada nástrojů pro Runbooky se stále vyvíjí, je důležité deklarovat výstupní datové typy v době návrhu. Proto je osvědčeným postupem zahrnutí této deklarace do všech sad Runbook, které vytvoříte.
+Pracovní postup Určuje datový typ výstupu pomocí [atributu OutputType](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). Tento atribut nemá žádný vliv na modul runtime, ale poskytuje indikaci v době návrhu očekávaného výstupu Runbooku. Protože sada nástrojů pro Runbooky se stále vyvíjí, je důležité deklarovat výstupní datové typy v době návrhu. Proto je osvědčeným postupem zahrnutí této deklarace do všech sad Runbook, které vytvoříte.
 
 Následující vzorový Runbook poskytuje výstup objektu řetězce a zahrnuje deklaraci jeho typu výstupu. Pokud má Runbook jako výstup pole určitého typu, měli byste specifikovat opačný typ, než je typ pole.
 

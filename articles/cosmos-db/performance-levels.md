@@ -6,18 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 2d9e9ed1a65265a119f59edee7da1b8f244e2f7f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85112731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556052"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Vyřazení úrovní výkonu S1, S2 a S3 z provozu
 
 > [!IMPORTANT] 
 > Úrovně výkonu S1, S2 a S3 popsané v tomto článku jsou vyřazeny a již nejsou k dispozici pro nové účty Azure Cosmos DB.
->
 
 Tento článek obsahuje přehled úrovní výkonu S1, S2 a S3 a popisuje, jak se kolekce, které používají tyto úrovně výkonu, můžou migrovat do kolekcí s jedním děleným oddílem. Po přečtení tohoto článku budete moci zodpovědět následující otázky:
 
@@ -43,7 +42,7 @@ Tento článek obsahuje přehled úrovní výkonu S1, S2 a S3 a popisuje, jak se
 
 V následující tabulce jsou porovnávány možnosti propustnosti a úložiště dostupné v kolekcích s jedním oddílem, dělené kolekce a S1, S2 a S3 úrovně výkonu. Tady je příklad USA – východ 2 oblasti:
 
-|   |Dělená kolekce|Kolekce s jedním oddílem|S1|S2|S3|
+| Název kvóty  |Dělená kolekce|Kolekce s jedním oddílem|S1|S2|S3|
 |---|---|---|---|---|---|
 |Maximální propustnost|Unlimited|10 000 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
 |Minimální propustnost|2,5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|

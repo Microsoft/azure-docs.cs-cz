@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84761166"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555314"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Plánování nasazení přístupového panelu Azure Active Directory
 
@@ -127,11 +127,11 @@ Následující tabulka uvádí několik důležitých konfigurací přístupový
 | Určení pilotních skupin| Identifikujte skupinu zabezpečení Azure AD, která se má použít, a ujistěte se, že všichni pilotní členové jsou součástí skupiny. |
 | Určete skupinu nebo skupiny, které mají být povoleny v produkčním prostředí.| Identifikujte skupiny zabezpečení Azure AD nebo skupiny služby Active Directory synchronizované se službou Azure AD, které se mají použít. Zajistěte, aby všichni pilotní členové byli součástí skupiny. |
 | Umožňuje uživatelům používat jednotné přihlašování pro určité typy aplikací.| Federované jednotné přihlašování, OAuth, heslo jednotného přihlašování, App proxy |
-| Povolení uživatelům používat Samoobslužné resetování hesla | Ano |
-| Dovolit uživatelům používat Multi-Factor Authentication| Ano |
+| Povolení uživatelům používat Samoobslužné resetování hesla | Yes |
+| Dovolit uživatelům používat Multi-Factor Authentication| Yes |
 | Umožňuje uživatelům používat samoobslužnou správu skupin pro určité typy skupin.| Skupiny zabezpečení, skupiny Office 365 |
-| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Ano |
-| Umožňuje uživatelům používat kontroly přístupu.| Ano |
+| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Yes |
+| Umožňuje uživatelům používat kontroly přístupu.| Yes |
 
 ### <a name="plan-consent-strategy"></a>Strategie souhlasu s plánem
 
@@ -261,7 +261,7 @@ Pokud chcete naplánovat členství ve skupině samoobslužných služeb, určet
 
 Azure AD nabízí [sestavy, které nabízejí technické a obchodní přehledy](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). Spolupracujte se svými vlastníky obchodních a technických aplikací, abyste mohli převzít vlastnictví těchto sestav a pravidelně je spotřebovávat. Následující tabulka uvádí některé příklady typických scénářů generování sestav.
 
-|   | Řízení rizik| Zvýšení produktivity| Zásady správného řízení a dodržování předpisů |
+| Příklad | Řízení rizik| Zvýšení produktivity| Zásady správného řízení a dodržování předpisů |
 |  - |- | - | - |
 | Typy sestav|  Oprávnění a použití aplikace| Aktivita zřizování účtů| Kontrola přístupu k aplikacím |
 | Potenciální akce| Přístup pro audit; odvolat oprávnění| Opravte všechny chyby zřizování.| Odvolat přístup |
@@ -338,11 +338,11 @@ K provedení požadované úlohy v Azure Active Directory byste měli použít r
 
 | Osoby| Role| Role Azure AD  |
 | - | -| -|
-| Správce helpdesku| Podpora vrstvy 1| Žádné |
+| Správce helpdesku| Podpora vrstvy 1| Žádná |
 | Správce identit| Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD| Globální správce |
-| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
+| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
 | Správci infrastruktury| Vlastník změna certifikátu| Globální správce |
-| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
+| Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádná |
 
 Pomocí [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) můžete spravovat své role, abyste měli k dispozici další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 

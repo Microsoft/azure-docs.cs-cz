@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 130cc532355ac0c52ad08b1a32ae8b961d7ced75
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558552"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Řešení potíží souvisejících s Azure Data Box BLOB Storage
 
@@ -55,7 +55,7 @@ Tato část podrobně popisuje některé hlavní problémy, na které čelí bě
 |Chybová zpráva  |Doporučená akce |
 |---------|---------|
 |Hodnota pro jednu z hlaviček protokolu HTTP není ve správném formátu. |Data Box není podporována nainstalovaná verze knihovny Microsoft Azure Storage pro Python. Podporované verze najdete v tématu Azure Data Box požadavky na úložiště objektů BLOB.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu TLS s kódováním Base64 (viz jak [Stáhnout certifikát](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Například:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. <br> Například na Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Před spuštěním Pythonu nastavte proměnnou prostředí REQUESTS_CA_BUNDLE na cestu k souboru certifikátu TLS s kódováním Base64 (viz jak [Stáhnout certifikát](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Příklad:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativně přidejte certifikát do úložiště certifikátů systému a pak nastavte tuto proměnnou prostředí na cestu k danému úložišti. <br> Například na Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>Běžné chyby

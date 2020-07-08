@@ -4,15 +4,15 @@ description: Přečtěte si o generování a přijímání potenciálních záka
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559576"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Potenciální zákazníci z komerční nabídky na webu Marketplace
 
@@ -87,10 +87,12 @@ Informace o zákazníkovi se odesílají prostřednictvím několika polí. Nás
 
 ## <a name="best-practices-for-lead-management"></a>Osvědčené postupy pro správu potenciálních zákazníků
 
+Tady je několik doporučení pro řízení zájemců prostřednictvím prodejního cyklu:
+
 - **Proces**: Definujte jasný prodejní proces s milníky, analýzou a jasným vlastnictvím týmu.
 - **Kvalifikace**: Definujte předpoklady, které označují, zda byl zájemce plně kvalifikován. Zajistěte, aby prodejci prodeje nebo marketingu zabírali před úplným prodejem.
-- **Následná**akce: Nezapomeňte pokračovat. Očekává se, že typická transakce vyžaduje 5 až 12 následných volání.
-- **Nurture**: nurture vašich zájemců, abyste vám pomohli dosáhnout vyššího ziskového rozpětí.
+- **Následná**akce: Nezapomeňte během 24 hodin pokračovat. Přímo poté, co zákazník nasadí testovací verzi, dostanete zájemce v aplikaci CRM zvolené možnosti. odešlete je e-mailem v době, kdy jsou pořád zahřívání. Požádejte o plánování telefonního hovoru, abyste lépe pochopili, jestli je váš produkt dobrým řešením pro svůj problém. Očekává se, že typická transakce vyžaduje několik následných volání.
+- **Nurture**: nurture vašich zájemců, abyste vám pomohli dosáhnout vyššího ziskového rozpětí. Vrátit se změnami, ale bombard je. Doporučujeme, abyste před uzavřením e-mailu před zavřením přeposlali aspoň pár zákazníků. Nedávejte po prvním pokusu. Pamatujte na to, že tito zákazníci přímo využívají váš produkt a stráví čas v bezplatné zkušební verzi; jsou to skvělé potenciální zákazníky.
 
 ## <a name="common-questions-about-lead-management"></a>Běžné otázky týkající se správy potenciálních zákazníků
 
@@ -141,7 +143,7 @@ K datům zájemce uloženým v tabulce Azure můžete přistupovat z Azure Porta
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Můžu dostávat oznámení při každém odeslání nového potenciálního zákazníka z obchodu Marketplace?
 
-Yes. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
+Ano. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
 
 ### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Nakonfigurovali jste Salesforce jako cíl pro zájem, ale proč nemůžu najít potenciální zákazníky?
 

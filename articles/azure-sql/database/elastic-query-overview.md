@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: 9069ec574af54c5c44efac5a6a9df1da62053219
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 0497356e536632d179f4f64a6a9df8551a7a1897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195093"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557865"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled elastického dotazu Azure SQL Database (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -148,7 +148,7 @@ Elastický dotaz je zahrnutý v ceně Azure SQL Database. Mějte na paměti, že
 * Statistiky sloupců v externích tabulkách nejsou aktuálně podporovány. Statistiky tabulek jsou podporovány, ale je nutné je vytvořit ručně.
 * Elastický dotaz funguje pouze s Azure SQL Database. Nemůžete ho použít pro dotazování instance SQL Server.
 
-## <a name="feedback"></a>Váš názor
+## <a name="share-your-feedback"></a>Sdílejte svůj názor
 
 Flexibilní dotazy vám pomůžete sdílet s elastickými dotazy, a to na fórech MSDN nebo na Stack Overflow. Máme zájem o všechny druhy zpětné vazby k této službě (vady, hrubou hranu, nedostatky funkcí).
 

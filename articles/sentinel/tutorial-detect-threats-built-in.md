@@ -1,6 +1,6 @@
 ---
 title: Prozkoumejte výstrahy pomocí služby Azure Sentinel | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak prozkoumat výstrahy pomocí funkce Sentinel Azure.
+description: Naučte se používat předem připravené šablony pro detekci hrozeb Azure, které vás upozorní, když dojde k nějakému podezřelému.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560040"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: okamžité zjištění hrozeb
 
@@ -29,7 +29,7 @@ ms.locfileid: "77585199"
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Po [připojení zdrojů](quickstart-onboard.md) dat ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Pokud to chcete povolit, Azure Sentinel vám poskytne předem připravené předdefinované šablony. Tyto šablony byly navržené týmem společnosti Microsoft pro odborníky na zabezpečení a analytikům na základě známých hrozeb, běžných vektorů útoku a řetězů eskalace útoků na podezřelé aktivity. Po povolení těchto šablon budou automaticky vyhledávat všechny aktivity, které vypadají podezřele napříč vaším prostředím. Mnohé z šablon můžete přizpůsobit tak, aby vyhledaly nebo odfiltroval aktivity podle vašich potřeb. Výstrahy vygenerované pomocí těchto šablon vytvoří incidenty, které můžete přiřadit a prozkoumat ve svém prostředí.
+Po [připojení zdrojů dat](quickstart-onboard.md)   ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Pokud to chcete povolit, Azure Sentinel vám poskytne předem připravené předdefinované šablony. Tyto šablony byly navržené týmem společnosti Microsoft pro odborníky na zabezpečení a analytikům na základě známých hrozeb, běžných vektorů útoku a řetězů eskalace útoků na podezřelé aktivity. Po povolení těchto šablon budou automaticky vyhledávat všechny aktivity, které vypadají podezřele napříč vaším prostředím. Mnohé z šablon můžete přizpůsobit tak, aby vyhledaly nebo odfiltroval aktivity podle vašich potřeb. Výstrahy vygenerované pomocí těchto šablon vytvoří incidenty, které můžete přiřadit a prozkoumat ve svém prostředí.
 
 Tento kurz vám pomůže detekovat hrozby pomocí služby Azure Sentinel:
 

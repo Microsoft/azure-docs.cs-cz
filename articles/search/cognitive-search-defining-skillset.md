@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557457"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Postup vytvoření dovednosti v kanálu rozšíření AI v Azure Kognitivní hledání 
 
@@ -55,7 +55,7 @@ V diagramu se krok *vytrhlinování dokumentu* provede automaticky. V podstatě 
 Dovednosti je definován jako pole dovedností. Každá dovednost definuje zdroj svých vstupů a název vytvořených výstupů. Pomocí [REST API Create dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset)můžete definovat dovednosti, který odpovídá předchozímu diagramu: 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Vytvoření sady dovedností
 
-Při vytváření dovednosti můžete zadat popis, který provede samoobslužný dokument dovednosti. Popis je nepovinný, ale užitečný pro sledování toho, co dovednosti. Vzhledem k tomu, že dovednosti je dokument JSON, který nepovoluje komentáře, musíte pro `description` tento prvek použít element.
+Při vytváření dovednosti můžete zadat popis, který provede samoobslužný dokument dovednosti. Popis je nepovinný, ale užitečný pro sledování toho, co dovednosti. Vzhledem k tomu, že dovednosti je dokument JSON, který nepovoluje komentáře, musíte `description` pro tento prvek použít element.
 
 ```json
 {
@@ -163,13 +163,13 @@ Pojďme se podívat na první dovednost, což je integrovaná [dovednost pro roz
     }
 ```
 
-* Každá integrovaná dovednost má `odata.type`, `input`a `output` vlastnosti. Vlastnosti specifické pro dovednost poskytují další informace, které se vztahují na tuto dovednost. Pro rozpoznávání entit `categories` je jedna entita mezi pevnou sadou typů entit, kterou může předvlakový model rozpoznat.
+* Každá integrovaná dovednost má `odata.type` , `input` a `output` Vlastnosti. Vlastnosti specifické pro dovednost poskytují další informace, které se vztahují na tuto dovednost. Pro rozpoznávání entit `categories` je jedna entita mezi pevnou sadou typů entit, kterou může předvlakový model rozpoznat.
 
-* Každá dovednost by měla mít ```"context"```. Kontext představuje úroveň, na které operace probíhají. V dovednostech výše je kontext celý dokument, což znamená, že dovednost rozpoznávání entit se volá jednou pro každý dokument. Výstupy jsou také vytvářeny na této úrovni. Přesněji řečeno, ```"organizations"``` jsou generovány jako člen ```"/document"```. V případě dovedností pro příjem dat můžete na tyto nově vytvořené informace odkazovat ```"/document/organizations"```jako na.  Pokud ```"context"``` pole není explicitně nastaveno, je výchozím kontextem dokument.
+* Každá dovednost by měla mít ```"context"``` . Kontext představuje úroveň, na které operace probíhají. V dovednostech výše je kontext celý dokument, což znamená, že dovednost rozpoznávání entit se volá jednou pro každý dokument. Výstupy jsou také vytvářeny na této úrovni. Přesněji řečeno, ```"organizations"``` jsou generovány jako člen ```"/document"``` . V případě dovedností pro příjem dat můžete na tyto nově vytvořené informace odkazovat jako na ```"/document/organizations"``` .  Pokud ```"context"``` pole není explicitně nastaveno, je výchozím kontextem dokument.
 
-* Dovednost má jeden vstup s názvem "text", ve kterém je zdrojová vstupní sada ```"/document/content"```nastavená na. Dovednost (rozpoznávání entit) pracuje na poli *obsah* každého dokumentu, což je standardní pole vytvořené indexerem objektů BLOB v Azure. 
+* Dovednost má jeden vstup s názvem "text", ve kterém je zdrojová vstupní sada nastavená na ```"/document/content"``` . Dovednost (rozpoznávání entit) pracuje na poli *obsah* každého dokumentu, což je standardní pole vytvořené indexerem objektů BLOB v Azure. 
 
-* Dovednost má jeden výstup s názvem ```"organizations"```. Výstupy existují pouze během zpracování. Chcete-li tento výstup zřetězit na vstup pro příjem dat, odkazujte na ```"/document/organizations"```výstup.
+* Dovednost má jeden výstup s názvem ```"organizations"``` . Výstupy existují pouze během zpracování. Chcete-li tento výstup zřetězit na vstup pro příjem dat, odkazujte na výstup ```"/document/organizations"``` .
 
 * V případě konkrétního dokumentu ```"/document/organizations"``` je hodnota pole organizací extrahovaných z textu. Příklad:
 
@@ -179,7 +179,7 @@ Pojďme se podívat na první dovednost, což je integrovaná [dovednost pro roz
 
 Některé situace volají pro odkazování na každý prvek pole samostatně. Předpokládejme například, že chcete každý prvek předat ```"/document/organizations"``` samostatně do jiné dovednosti (například vlastní rozšíření pro vyhledávání entit Bingu). Na každý prvek pole můžete odkazovat přidáním hvězdičky do cesty:```"/document/organizations/*"``` 
 
-Druhá dovednost pro extrakci mínění se řídí stejným vzorem jako první obohacení. Jako vstup ```"/document/content"``` bere a vrátí mínění skóre pro každou instanci obsahu. Vzhledem k tomu, že jste ```"context"``` pole nezadali explicitně, výstup (mySentiment) je teď podřízeným ```"/document"```objektem.
+Druhá dovednost pro extrakci mínění se řídí stejným vzorem jako první obohacení. ```"/document/content"```Jako vstup bere a vrátí mínění skóre pro každou instanci obsahu. Vzhledem k tomu, že jste ```"context"``` pole nezadali explicitně, výstup (mySentiment) je teď podřízeným objektem ```"/document"``` .
 
 ```json
     {
@@ -229,7 +229,7 @@ Odvolání struktury vlastního rozšíření pro vyhledávání entit Bingu:
 
 Tato definice je [vlastní dovednost](cognitive-search-custom-skill-web-api.md) , která jako součást procesu rozšíření volá webové rozhraní API. Pro každou organizaci identifikovanou nástrojem pro rozpoznávání entit volá tato dovednost webové rozhraní API, kde najdete popis této organizace. Orchestrace, kdy volat webové rozhraní API a postup toku přijatých informací, je zpracována interně modulem pro obohacení. Nicméně inicializace nutná pro volání tohoto vlastního rozhraní API musí být uvedena ve formátu JSON (například identifikátor URI, httpHeaders a očekávané vstupy). Pokyny k vytvoření vlastního webového rozhraní API pro kanál pro rozšíření najdete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md).
 
-Všimněte si, že pole "Context" je nastaveno ```"/document/organizations/*"``` na hvězdičku, což znamená, že je krok rozšíření volán *pro každou* organizaci ```"/document/organizations"```v rámci. 
+Všimněte si, že pole "Context" je nastaveno na ```"/document/organizations/*"``` hvězdičku, což znamená, že je krok rozšíření volán *pro každou* organizaci v rámci ```"/document/organizations"``` . 
 
 Výstup, v tomto případě se pro každou identifikovanou organizaci vygeneruje popis společnosti. Při odkazování na popis v rámci navazujícího kroku (například při extrakci klíčových frází) byste použili cestu ```"/document/organizations/*/description"``` k tomu. 
 
@@ -247,7 +247,7 @@ Až do této struktury byla tato struktura jenom interní, jenom paměť a použ
 
 ## <a name="add-a-knowledge-store"></a>Přidat znalostní bázi Knowledge Store
 
-[Znalostní báze](knowledge-store-concept-intro.md) je funkce ve verzi Preview v Azure kognitivní hledání pro ukládání obohaceného dokumentu. Znalostní báze, kterou vytvoříte, je zajištěné účtem služby Azure Storage, kde je úložiště, ve kterém jsou rozšířená data uložena. 
+[Znalostní báze](knowledge-store-concept-intro.md) je funkce v Azure kognitivní hledání pro ukládání obohaceného dokumentu. Znalostní báze, kterou vytvoříte, je zajištěné účtem služby Azure Storage, kde je úložiště, ve kterém jsou rozšířená data uložena. 
 
 Do dovednosti se přidá definice znalostní databáze. Návod k celému procesu najdete [v tématu vytvoření znalostní báze v klidovém úložišti](knowledge-store-create-rest.md).
 

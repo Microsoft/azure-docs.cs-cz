@@ -1,6 +1,6 @@
 ---
 title: Připojení dat Barracuda ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Barracuda ke službě Azure Sentinel.
+description: Naučte se, jak pomocí konektoru WAF (Barracuda Web Application firewall) připojit protokoly Barracuda s použitím funkce Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 4e87bb57e6bdfea6307a166383da9dea187eea4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559117"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Připojení zařízení Barracuda 
 

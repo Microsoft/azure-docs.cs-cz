@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: carlrab
-ms.date: 03/13/2019
-ms.openlocfilehash: 1db8eeecf411ae219474029e09cb866aaf0d5bbe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/29/2020
+ms.openlocfilehash: d35b4691bcf6e40edd57d4caeae00e18a8298925
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558888"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Správa prostředků v hustých elastických fondech
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -60,7 +60,7 @@ Azure SQL Database poskytuje několik metrik, které jsou relevantní pro tento 
 |`avg_log_write_percent`|Využití propustnosti pro zápis protokolu transakcí v/v. K dispozici pro každou databázi ve fondu a také pro samotný fond. Propustnost protokolu na úrovni databáze a na úrovni fondu jsou různá omezení, proto se doporučuje monitorování této metriky na obou úrovních. K dispozici v zobrazení [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) v každé databázi a v zobrazení [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) v `master` databázi. Tato metrika se také generuje do Azure Monitor, kde se [nazývá](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `log_write_percent` , a je možné ji zobrazit v Azure Portal. Pokud je tato metrika blízko až 100%, všechny úpravy databáze (příkazy INSERT, UPDATE, DELETE, MERGE, SELECT... DO, BULK INSERT atd.) bude pomalejší.|Pod 90%. Může být přijatelné příležitostné krátké špičky až do 100%.|
 |`oom_per_second`|Frekvence chyb v nedostatku paměti (OOM) v elastickém fondu, což je indikátor přetížení paměti. K dispozici v zobrazení [Sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database?view=azuresqldb-current) . Podívejte se na [Příklady](#examples) pro výpočet této metriky pomocí ukázkového dotazu.|0|
 |`avg_storage_percent`|Využití prostoru úložiště na úrovni elastického fondu. K dispozici v zobrazení [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) v `master` databázi. Tato metrika se také generuje do Azure Monitor, kde se [nazývá](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `storage_percent` , a je možné ji zobrazit v Azure Portal.|Pod 80%. Může pro fondy bez nárůstu dat přistupovat 100%.|
-|`tempdb_log_used_percent`|Využití místa protokolu transakcí v `tempdb` databázi. I když dočasné objekty vytvořené v jedné databázi nejsou viditelné v jiných databázích ve stejném elastickém fondu, `tempdb` je sdíleným prostředkem pro všechny databáze ve stejném fondu. Dlouhodobá nebo nečinná transakce `tempdb` spuštěná z jedné databáze ve fondu může spotřebovávat velkou část transakčního protokolu a způsobit chyby dotazů v jiných databázích ve stejném fondu. K dispozici v zobrazení [Sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) . Tato metrika se také generuje do Azure Monitor a je možné ji zobrazit v Azure Portal. Podívejte se na [Příklady](#examples) ukázkový dotaz, který vrátí aktuální hodnotu této metriky.|Pod 50%. Příležitostné špičky až do 80% jsou přijatelné.|
+|`tempdb_log_used_percent`|Využití místa protokolu transakcí v `tempdb` databázi. I když dočasné objekty vytvořené v jedné databázi nejsou viditelné v jiných databázích ve stejném elastickém fondu, `tempdb` je sdíleným prostředkem pro všechny databáze ve stejném fondu. Dlouhotrvající nebo osamocená transakce `tempdb` spuštěná z jedné databáze ve fondu může spotřebovat velkou část transakčního protokolu a způsobit chyby dotazů v jiných databázích ve stejném fondu. Je odvozeno z zobrazení [Sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) a [Sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql) . Tato metrika se také generuje do Azure Monitor a je možné ji zobrazit v Azure Portal. Podívejte se na [Příklady](#examples) ukázkový dotaz, který vrátí aktuální hodnotu této metriky.|Pod 50%. Příležitostné špičky až do 80% jsou přijatelné.|
 |||
 
 Kromě těchto metrik Azure SQL Database poskytuje zobrazení, které vrací skutečná omezení zásad správného řízení prostředků, a další zobrazení, která vrací statistiky využití prostředků na úrovni fondu zdrojů a na úrovni skupiny úloh.
@@ -114,11 +114,17 @@ ORDER BY pool_id;
 
 ### <a name="monitoring-tempdb-log-space-utilization"></a>Monitorování `tempdb` využití místa v protokolu
 
-Tento dotaz vrátí aktuální hodnotu `tempdb_log_used_percent` metriky. Tento dotaz se dá provést v jakékoli databázi v elastickém fondu.
+Tento dotaz vrátí aktuální hodnotu `tempdb_log_used_percent` metriky, která zobrazuje relativní využití `tempdb` transakčního protokolu vzhledem k jeho maximální povolené velikosti. Tento dotaz se dá provést v jakékoli databázi v elastickém fondu.
 
 ```sql
-SELECT used_log_space_in_percent AS tempdb_log_used_percent
-FROM tempdb.sys.dm_db_log_space_usage;
+SELECT (lsu.used_log_space_in_bytes / df.log_max_size_bytes) * 100 AS tempdb_log_space_used_percent
+FROM tempdb.sys.dm_db_log_space_usage AS lsu
+CROSS JOIN (
+           SELECT SUM(CAST(max_size AS bigint)) * 8 * 1024. AS log_max_size_bytes
+           FROM tempdb.sys.database_files
+           WHERE type_desc = N'LOG'
+           ) AS df
+;
 ```
 
 ## <a name="next-steps"></a>Další kroky

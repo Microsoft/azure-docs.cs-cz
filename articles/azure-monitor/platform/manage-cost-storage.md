@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 4f7be81c3593e35dfbbcf3a5671726da70ae0c7e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 4906ea7c3ed3486a4ce089f51916fb8322761fe9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559552"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor    
 
@@ -196,7 +196,7 @@ Každý pracovní prostor má denní limit, který se aplikuje na jinou hodinu d
 Brzy po dosažení denního limitu se kolekce fakturovatelných datových typů zastaví pro zbytek dne. (Latence vyplývající z použití denního limitu znamená, že se limit nepoužívá přesně na určenou denní úroveň limitu.) V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která je nakonfigurována tak, aby po dosažení denního limitu dat upozornila na oznámení. 
 
 > [!WARNING]
-> Denní limit nezastaví shromažďování dat z Azure Sentinal ani Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
+> Denní limit nezastaví shromažďování dat z Azure Sentinel nebo Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Určete, který denní limit dat se má definovat.
 

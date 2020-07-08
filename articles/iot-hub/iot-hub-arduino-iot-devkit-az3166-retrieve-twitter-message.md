@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60779740"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560965"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Protřepení a protřepávání na vyžádání – načtení zprávy Twitteru pomocí Azure Functions
 
@@ -50,13 +50,13 @@ Začněte tím, že otevřete složku projektu.
 ### <a name="open-the-arduino-examples-folder"></a>Otevřete složku příklady Arduino
 
 Rozbalte část s **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > AzureIoT**a vyberte **ShakeShake**. Otevře se nové okno VS Code, ve kterém se zobrazí složka projektu. Pokud nevidíte část MXCHIP AZ3166, ujistěte se, že je zařízení správně připojené, a restartujte Visual Studio Code.  
-Příklady ![řešení Mini-Solution](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
+![Příklady řešení Mini-Solution](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Vzorový projekt lze také otevřít z palety příkazů. Kliknutím `Ctrl+Shift+P` na (MacOS `Cmd+Shift+P`:) otevřete paletu příkazů, zadáte **Arduino**a pak vyhledáte a vyberete **Arduino: příklady**.
+Vzorový projekt lze také otevřít z palety příkazů. Kliknutím na `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) otevřete paletu příkazů, zadáte **Arduino**a pak vyhledáte a vyberete **Arduino: příklady**.
 
 ## <a name="provision-azure-services"></a>Zřizování služeb Azure
 
-V okně řešení spusťte úlohu prostřednictvím `Ctrl+P` (MacOS: `Cmd+P`) zadáním. `task cloud-provision`
+V okně řešení spusťte úlohu prostřednictvím `Ctrl+P` (MacOS: `Cmd+P` ) zadáním `task cloud-provision` .
 
 V terminálu VS Code vás interaktivní příkazový řádek provede zřízením požadovaných služeb Azure:
 
@@ -77,7 +77,7 @@ Nahraďte řetězec `iot` v složených závorkách preferovaným hashtagem. Dev
 
 ## <a name="deploy-azure-functions"></a>Nasazení služby Azure Functions
 
-Pro `Ctrl+P` spuštění nasazení Azure Functions `Cmd+P`kódu použijte ( `task cloud-deploy` MacOS:):
+Pro spuštění `Ctrl+P` `Cmd+P` `task cloud-deploy` nasazení Azure Functions kódu použijte (MacOS:):
 
 ![nasazení v cloudu](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
@@ -90,7 +90,7 @@ Dále Sestavte a nahrajte kód zařízení.
 
 ### <a name="windows"></a>Windows
 
-1. Použijte `Ctrl+P` ke spuštění `task device-upload`.
+1. Použijte `Ctrl+P` ke spuštění `task device-upload` .
 
 2. Terminál vás vyzve k zadání režimu konfigurace. Postupujte následovně:
 
@@ -185,7 +185,7 @@ Pro účely testování používá tento ukázkový projekt předem nakonfigurov
 
 Jak řešit problémy nebo poskytovat zpětnou vazbu. 
 
-### <a name="problems"></a>Problém
+### <a name="problems"></a>Problémy
 
 Jedním z problémů, které vidíte, pokud se při úspěšném spuštění každého kroku zobrazí obrazovka ' No tweety '. K tomuto stavu obvykle dochází při prvním nasazení a spuštění ukázky, protože aplikace Function App vyžaduje pár sekund až po dobu jedné minuty, aby bylo možné aplikaci studeny spustit. 
 
@@ -196,8 +196,6 @@ Nebo při spuštění kódu existují některé výkyvů, které způsobují res
 2. V [Azure Portal](https://portal.azure.com/)Najděte vytvořenou aplikaci Azure functions a restartujte ji:
 
    ![Azure – funkce – restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
-
-### <a name="feedback"></a>Váš názor
 
 Pokud se setkáte s dalšími problémy, přečtěte si [Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujte nás pomocí následujících kanálů:
 

@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554896"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
 Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze cloudové nebo cloudové. Každá organizace může nasadit zařízení připojená k Azure AD bez ohledu na velikost nebo odvětví. Připojení k Azure AD funguje i v hybridním prostředí a umožňuje přístup ke cloudovým i místním aplikacím a prostředkům.
 
-|   | Připojení k Azure AD |
+| Připojení k Azure AD | Description |
 | --- | --- |
 | **Definice** | Připojeno pouze k Azure AD vyžadování účtu organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro cloudové i hybridní organizace. |
 |   | Platí pro všechny uživatele v organizaci. |
-| **Vlastnictví zařízení** | Má organizace |
+| **Vlastnictví zařízení** | Organizace |
 | **Operační systémy** | Všechna zařízení s Windows 10 |
 | **Zřizování** | Samoobslužná služba: Windows OOBE nebo nastavení |
 |   | Hromadný zápis |

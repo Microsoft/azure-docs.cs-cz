@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556370"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -66,8 +66,11 @@ Ověřování Azure Active Directory podporuje následující metody připojení
 - Azure Active Directory integrovaný
 - Azure Active Directory univerzální s MFA
 - Používání certifikátů aplikací služby Active Directory nebo klientských tajných klíčů
+- [Spravovaná identita](howto-connect-with-managed-identity.md)
 
 Po ověření vůči službě Active Directory načtěte token. Tento token je vaším heslem pro přihlášení.
+
+Mějte na paměti, že operace správy, jako je přidání nových uživatelů, jsou v tuto chvíli podporované jenom pro role uživatelů Azure AD.
 
 > [!NOTE]
 > Další podrobnosti o tom, jak se připojit k tokenu služby Active Directory, najdete v tématu [Konfigurace a přihlášení pomocí Azure AD pro Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md).

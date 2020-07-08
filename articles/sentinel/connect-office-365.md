@@ -1,6 +1,6 @@
 ---
 title: Připojení protokolů Office 365 ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Office 365 k Azure Sentinel.
+description: Naučte se pomocí konektoru protokolu Office 365 získat informace o probíhajících činnostech uživatelů a správců v Exchange a SharePointu, včetně OneDrivu.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: yelevin
-ms.openlocfilehash: bcd00247486faeea47ef4a4a43fa1df5420321e6
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559341"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Připojení protokolů Office 365 ke službě Azure Sentinel
 

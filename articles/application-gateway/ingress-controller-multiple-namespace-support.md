@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2c519792bcf9251f926d305c9611320a18b7c346
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84806992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556166"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Povolení podpory více oborů názvů v clusteru AKS s Application Gatewaym řadičem příchozího přenosu dat
 
@@ -45,6 +45,7 @@ V horní části hierarchie – **naslouchací procesy** (IP adresa, port a host
 Na dalších cestách, fondech back-endu, nastavení HTTP a certifikáty TLS může vytvořit jenom jeden obor názvů a duplikáty se odeberou.
 
 Představte si třeba následující duplicitní obory názvů příchozích prostředků příchozího přenosu dat `staging` a `production` pro `www.contoso.com` :
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -101,6 +102,7 @@ Ve výchozím nastavení AGIC nakonfiguruje Application Gateway na základě poz
   - použití [role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) k omezení AGIC na konkrétní obory názvů
 
 ## <a name="sample-helm-config-file"></a>Ukázkový konfigurační soubor Helm
+
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 
@@ -152,5 +154,5 @@ Ve výchozím nastavení AGIC nakonfiguruje Application Gateway na základě poz
     # Specify aks cluster related information. THIS IS BEING DEPRECATED.
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
-    ```
+```
 

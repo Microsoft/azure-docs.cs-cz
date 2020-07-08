@@ -12,21 +12,19 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 700e8f2ae29ad41ceaecf58c3ffde4a27725c25c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252793"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554886"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
 Organizace teď můžou používat ověřování Azure Active Directory (AD) pro své virtuální počítače Azure s **Windows serverem 2019 Datacenter Edition** nebo **Windows 10 1809** a novějším. Použití Azure AD k ověřování na virtuálních počítačích vám poskytne způsob, jak centrálně řídit a vysazovat zásady. Nástroje, jako je Access Control na základě rolí Azure (RBAC) a podmíněný přístup Azure AD, umožňují řídit, kdo má přístup k virtuálnímu počítači. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat virtuální počítač s Windows serverem 2019 pro použití ověřování Azure AD.
 
-|     |
-| --- |
-| Přihlášení Azure AD pro virtuální počítače Azure s Windows je funkce veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
-|     |
+> [!NOTE]
+> Přihlášení Azure AD pro virtuální počítače Azure s Windows je funkce veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 K přihlášení k virtuálním počítačům s Windows v Azure přinášíme spoustu výhod, včetně těchto:
 

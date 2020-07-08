@@ -1,6 +1,6 @@
 ---
 title: Připojení dat Fortinet ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Fortinet ke službě Azure Sentinel.
+description: Připojte zařízení Fortinet ke službě Azure Sentinel a zobrazte řídicí panely, vytvářejte vlastní výstrahy a vylepšete šetření. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555957"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Připojení Fortinet ke službě Azure Sentinel
 
@@ -50,7 +50,7 @@ Nakonfigurujte Fortinet pro přeposílání zpráv syslog ve formátu CEF do pra
    > [!NOTE] 
    > Další informace najdete v [knihovně dokumentů Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Vyberte svou verzi a použijte **odkaz na zprávu** **příručky** a protokolu.
 
-1. Pokud chcete použít příslušné schéma v Azure Monitor Log Analytics pro události Fortinet, vyhledejte `CommonSecurityLog`.
+1. Pokud chcete použít příslušné schéma v Azure Monitor Log Analytics pro události Fortinet, vyhledejte `CommonSecurityLog` .
 
 1. Pokračujte [krokem 3: ověření připojení](connect-cef-verify.md).
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 3e58bdafce6746d7f83dfbceeff529c6d4b5075a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559938"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity (Preview)
 
@@ -111,7 +111,7 @@ Při indexování z databáze SQL musí mít zdroj dat následující požadovan
 Příklad vytvoření objektu zdroje dat SQL Azure pomocí [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -132,7 +132,7 @@ Index určuje pole v dokumentu, atributech a dalších konstrukcích, které pro
 Tady je postup vytvoření indexu s prohledávatelným `booktitle` polem:   
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -156,7 +156,7 @@ Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer.
 Příklad definice indexeru pro indexer SQL Azure:
 
 ```
-POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 

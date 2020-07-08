@@ -1,6 +1,6 @@
 ---
 title: Připojení dat DNS ve službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data DNS ve službě Azure Sentinel.
+description: Naučte se připojit libovolný server DNS (Domain Name Server), který běží v systému Windows, do Azure Sentinel tím, že nainstalujete agenta na počítač DNS.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555428"
 ---
 # <a name="connect-your-domain-name-server"></a>Připojit váš názvový server domény
 
@@ -43,10 +43,10 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace o DNS z agentů Windows. |
-| [Agenti systému Linux](../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../azure-monitor/platform/om-agents.md) | Ano | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet služby Azure Storage](../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Řešení Azure Storage se v řešení nepoužívá. |
+| [Agenti systému Windows](../azure-monitor/platform/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Linux](../azure-monitor/learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
+| [Skupina pro správu nástroje System Center Operations Manager](../azure-monitor/platform/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet úložiště Azure](../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat
 

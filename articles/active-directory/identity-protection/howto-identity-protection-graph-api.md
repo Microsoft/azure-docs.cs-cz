@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 10/18/2019
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 324737611d2d05411012050fcf7140bee48d35b0
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f5e5a4075705e43dc0ac37181bf33b078013177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505830"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555235"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
@@ -30,113 +30,56 @@ Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská
 
 Existují čtyři kroky pro přístup k datům Identity Protection prostřednictvím Microsoft Graph:
 
-1. Načtěte název domény.
-2. Vytvořte novou registraci aplikace. 
-3. Pomocí tohoto tajného klíče a několika dalších informací můžete ověřit Microsoft Graph, kde obdržíte ověřovací token. 
-4. Pomocí tohoto tokenu můžete vytvářet požadavky na koncový bod rozhraní API a znovu získat data o ochraně identit.
+- [Načíst název domény](#retrieve-your-domain-name)
+- [Vytvořit novou registraci aplikace](#create-a-new-app-registration)
+- [Konfigurace oprávnění rozhraní API](#configure-api-permissions)
+- [Konfigurace platného pověření](#configure-a-valid-credential)
 
-Než začnete, budete potřebovat:
+### <a name="retrieve-your-domain-name"></a>Načíst název domény 
 
-* Oprávnění správce k vytvoření aplikace ve službě Azure AD
-* Název domény tenanta (například contoso.onmicrosoft.com)
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).  
+1. Vyhledejte **Azure Active Directory**  >  **vlastní názvy domén**. 
+1. Poznamenejte si `.onmicrosoft.com` doménu, budete potřebovat tyto informace v pozdějším kroku.
 
-## <a name="retrieve-your-domain-name"></a>Načíst název domény 
+### <a name="create-a-new-app-registration"></a>Vytvořit novou registraci aplikace
 
-1. [Přihlaste](https://portal.azure.com) se k vašemu Azure Portal jako správce. 
-1. V levém navigačním podokně klikněte na **Active Directory**. 
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/41.png)
-
-1. V části **Spravovat** klikněte na **vlastnosti**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/42.png)
-
-1. Zkopírujte název domény.
-
-## <a name="create-a-new-app-registration"></a>Vytvořit novou registraci aplikace
-
-1. Na stránce **Active Directory** klikněte v části **Spravovat** na **Registrace aplikací**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/42.png)
-
-1. V nabídce v horní části klikněte na **Registrace nové aplikace**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/43.png)
-
+1. V Azure Portal přejděte do **Azure Active Directory**  >  **Registrace aplikací**.
+1. Vyberte **Nová registrace**.
 1. Na stránce **vytvořit** proveďte následující kroky:
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/44.png)
-
-   1. Do textového pole **název** zadejte název vaší aplikace (například aplikace rozhraní API pro detekci rizik Azure AD).
-
-   1. Jako **typ**vyberte **Webová aplikace nebo webové rozhraní API**.
-
-   1. Do textového pole **přihlašovací adresa URL** zadejte `http://localhost` .
-
-   1. Klikněte na **Vytvořit**.
-1. Stránku **Nastavení** otevřete tak, že v seznamu aplikace kliknete na nově vytvořenou registraci aplikace. 
+   1. Do textového pole **název** zadejte název vaší aplikace (například: rozhraní API pro detekci rizik Azure AD).
+   1. V části **podporované typy účtů**vyberte typ účtů, které budou používat rozhraní API.
+   1. Vyberte **Zaregistrovat**.
 1. Zkopírujte **ID aplikace**.
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Udělit aplikaci oprávnění používat rozhraní API
+### <a name="configure-api-permissions"></a>Konfigurace oprávnění rozhraní API
 
-1. Na stránce **Nastavení** klikněte na **požadovaná oprávnění**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/15.png)
-
-1. Na stránce **požadovaná oprávnění** klikněte na panelu nástrojů v horní části na **Přidat**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/16.png)
-
+1. V **aplikaci** , kterou jste vytvořili, vyberte **oprávnění rozhraní API**.
+1. Na stránce **konfigurovaná oprávnění** klikněte na panelu nástrojů v horní části na **Přidat oprávnění**.
 1. Na stránce **Přidat přístup přes rozhraní API** klikněte na **Vybrat rozhraní API**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/17.png)
-
 1. Na stránce **Vyberte rozhraní API** vyberte **Microsoft Graph**a pak klikněte na **Vybrat**.
+1. Na stránce **oprávnění API žádosti** : 
+   1. Vyberte **oprávnění aplikace**.
+   1. Zaškrtněte políčka vedle `IdentityRiskEvent.Read.All` a `IdentityRiskyUser.Read.All` .
+   1. Vyberte **Přidat oprávnění**.
+1. Vyberte **pro doménu udělit souhlas správce** . 
 
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/18.png)
+### <a name="configure-a-valid-credential"></a>Konfigurace platného pověření
 
-1. Na stránce **Přidat přístup přes rozhraní API** klikněte na **vybrat oprávnění**.
+1. V **aplikaci** , kterou jste vytvořili, vyberte **certifikáty & tajných**kódů.
+1. V části **tajné klíče klienta**vyberte **nový tajný klíč klienta**.
+   1. Zadejte tajný klíč klienta **Popis** a nastavte časový interval vypršení platnosti podle vašich zásad vaší organizace.
+   1. Vyberte možnost **Přidat**.
 
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/19.png)
-
-1. Na stránce **Povolit přístup** klikněte na **číst všechny informace o rizikech identity**a pak klikněte na **Vybrat**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/20.png)
-
-1. Na stránce **Přidat přístup přes rozhraní API** klikněte na **Hotovo**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/21.png)
-
-1. Na stránce **požadovaná oprávnění** klikněte na **udělit oprávnění**a potom klikněte na **Ano**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/22.png)
-
-## <a name="get-an-access-key"></a>Získání přístupového klíče
-
-1. Na stránce **Nastavení** klikněte na **klíče**.
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/23.png)
-
-1. Na stránce **klíče** proveďte následující kroky:
-
-   ![Vytvoření aplikace](./media/howto-identity-protection-graph-api/24.png)
-
-   1. Do textového pole **Popis klíče** zadejte popis (například *zjišťování rizik Azure AD*).
-   1. Jako **dobu trvání**vyberte **v 1 roce**.
-   1. Klikněte na **Uložit**.
-   1. Zkopírujte hodnotu klíče a vložte ji do bezpečného umístění.   
-   
    > [!NOTE]
    > Pokud tento klíč ztratíte, budete se muset vrátit do této části a vytvořit nový klíč. Zachovat tento klíč jako tajný klíč: kdokoli, kdo má přístup k vašim datům.
-   > 
 
 ## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>Ověřování pro Microsoft Graph a dotazování rozhraní API detekce rizik identity
 
 V tomto okamžiku byste měli mít:
 
 - Název domény tenanta
-- ID klienta 
-- Klíč 
+- ID aplikace (klienta) 
+- Tajný klíč nebo certifikát klienta 
 
 K ověření odešlete požadavek post `https://login.microsoft.com` s následujícími parametry v těle:
 
@@ -145,7 +88,7 @@ K ověření odešlete požadavek post `https://login.microsoft.com` s následuj
 - client_id:\<your client ID\>
 - client_secret:\<your key\>
 
-V případě úspěchu tato akce vrátí ověřovací token.  
+V případě úspěchu vrátí tato žádost ověřovací token.  
 Chcete-li volat rozhraní API, vytvořte hlavičku s následujícím parametrem:
 
 ```
@@ -154,9 +97,11 @@ Chcete-li volat rozhraní API, vytvořte hlavičku s následujícím parametrem:
 
 Při ověřování můžete v vráceném tokenu najít typ tokenu a přístupový token.
 
-Poslat tuto hlavičku jako požadavek na následující adresu URL API:`https://graph.microsoft.com/beta/identityRiskEvents`
+Poslat tuto hlavičku jako požadavek na následující adresu URL API:`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
 
 Odpověď, pokud je úspěšná, je kolekce detekcí rizik identity a přidružených dat ve formátu JSON OData, který se dá analyzovat a zpracovat podle potřeby.
+
+### <a name="sample"></a>Ukázka
 
 Tady je ukázkový kód pro ověřování a volání rozhraní API pomocí PowerShellu.  
 Stačí přidat ID klienta, tajný klíč a doménu tenanta.
@@ -177,7 +122,7 @@ Stačí přidat ID klienta, tajný klíč a doménu tenanta.
     if ($oauth.access_token -ne $null) {
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
 
-        $url = "https://graph.microsoft.com/beta/identityRiskEvents"
+        $url = "https://graph.microsoft.com/v1.0/identityProtection/riskDetections"
         Write-Output $url
 
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)

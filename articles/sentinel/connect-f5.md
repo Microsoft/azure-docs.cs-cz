@@ -1,6 +1,6 @@
 ---
 title: Připojit data F5 ASM ke službě Azure Sentinel | Microsoft Docs
-description: Přečtěte si, jak připojit data v kódu ASM ke službě Azure Sentinel.
+description: Naučte se používat datový konektor F5 ASM pro stažení protokolů ASM z F5 do Azure Sentinel. Zobrazit F5 data ASM v sešitech, vytvořit výstrahy a vylepšit šetření.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: bee8ec9b6532042659d54d590a29d49e7ce07c92
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715830"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555414"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>Připojit F5 ASM k Azure Sentinel
 

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67109337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555381"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definice strategie přijetí hybridní identity
 V této úloze definujete strategii přijetí hybridní identity pro vaše řešení hybridní identity, která bude vyhovovat obchodním požadavkům, které byly popsané v tématu:
@@ -63,7 +63,7 @@ Strategii, kterou použijete, se projeví při přihlašování uživatelů.  N�
 
 **Aplikace připojené k doména a privátní sítě**:
 
-|  | Synchronizovaná identita | Federated Identity |
+| Aplikace | Synchronizovaná identita | Federated Identity |
 | --- | --- | --- |
 | Webové prohlížeče |Ověřování založené na formulářích |jednotné přihlašování se někdy vyžaduje k poskytnutí ID organizace. |
 | Outlook |Vyzvat k zadání pověření |Vyzvat k zadání pověření |
@@ -73,7 +73,7 @@ Strategii, kterou použijete, se projeví při přihlašování uživatelů.  N�
 
 **Externí nebo nedůvěryhodné zdroje**:
 
-|  | Synchronizovaná identita | Federated Identity |
+| Aplikace | Synchronizovaná identita | Federated Identity |
 | --- | --- | --- |
 | Webové prohlížeče |Ověřování založené na formulářích |Ověřování založené na formulářích |
 | Outlook, Skype pro firmy (Lync), OneDrive pro firmy, předplatné Office |Vyzvat k zadání pověření |Vyzvat k zadání pověření |
@@ -111,7 +111,7 @@ V průběhu let existovalo několik synchronizačních nástrojů, které se pou
 ### <a name="supported-topologies"></a>Podporované topologie
 Při definování strategie synchronizace musí být určena topologie, která se používá. V závislosti na informacích, které byly určeny v kroku 2, můžete určit, která topologie je vhodná pro použití. Jediná doménová struktura je jediná topologie služby Azure AD, která se skládá z jedné doménové struktury Active Directory a jedné instance Azure AD.  Tato hodnota se bude používat ve většině scénářů a při použití Azure AD Connect Expresní instalace je očekávaná topologie, jak je znázorněno na následujícím obrázku.
 
-![Scénář s](./media/plan-hybrid-identity-design-considerations/single-forest.png) jednou doménovou strukturou topologie s jednou doménou je běžné, že velké a i malé organizace mají více doménových struktur, jak je znázorněno na obrázku 5.
+![](./media/plan-hybrid-identity-design-considerations/single-forest.png)Scénář s jednou doménovou strukturou topologie s jednou doménou je běžné, že velké a i malé organizace mají více doménových struktur, jak je znázorněno na obrázku 5.
 
 > [!NOTE]
 > Další informace o různých místních topologiích a topologiích Azure AD s Azure AD Connect synchronizace najdete v článku [topologie pro Azure AD Connect](plan-connect-topologies.md).
@@ -158,7 +158,7 @@ Chcete-li to provést, musí být splněny následující podmínky:
 * Doménu DNS je možné zaregistrovat jenom v jednom adresáři služby Azure AD, aby hlavní názvy uživatelů v místní službě AD museli používat samostatné obory názvů.
 * Uživatelé v jedné instanci Azure AD budou moct jenom zobrazit uživatele ze své instance.  Nebudou moct zobrazit uživatele v ostatních instancích.
 * Jenom jeden adresář služby Azure AD může povolit službu Exchange hybrid s místní službou AD.
-* Vzájemná výlučná práva platí také pro zpětný zápis.  Díky tomu některé funkce zpětného zápisu nejsou v této topologii podporované, protože se předpokládá jedna místní konfigurace.  To zahrnuje:
+* Vzájemná výlučná práva platí také pro zpětný zápis.  Díky tomu některé funkce zpětného zápisu nejsou v této topologii podporované, protože se předpokládá jedna místní konfigurace.  Sem patří:
   * Zpětný zápis skupiny s výchozí konfigurací
   * Zpětný zápis zařízení
 

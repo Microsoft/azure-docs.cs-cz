@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561049"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
@@ -22,11 +22,11 @@ Neměnné úložiště pro úložiště objektů BLOB v Azure umožňuje uživat
 
 Informace o tom, jak pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure, nastavit a vymazat právní zásady uchovávání informací, najdete v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](storage-blob-immutability-policies-manage.md).
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>Neměnné úložiště objektů BLOB
 
-Neměnné úložiště pomáhá organizacím v oblasti zdravotní péče, finančním institucím a souvisejícím oborům&mdash;, což je zvláštní zprostředkovatel – organizace&mdash;pro dealery ukládají data bezpečně. Neměnné úložiště je také možné využít v jakémkoli scénáři k ochraně důležitých dat proti úpravám nebo odstranění.
+Neměnné úložiště pomáhá organizacím v oblasti zdravotní péče, finančním institucím a souvisejícím oborům, což je &mdash; zvláštní zprostředkovatel – organizace pro dealery &mdash; ukládají data bezpečně. Neměnné úložiště je také možné využít v jakémkoli scénáři k ochraně důležitých dat proti úpravám nebo odstranění.
 
 Mezi typické případy použití patří:
 
@@ -84,9 +84,9 @@ Vzhledem k tomu, že toto nastavení je součástí zásad uchovávání informa
 
 Předpokládejme například, že uživatel vytvoří zásady uchovávání informací s `allowProtectedAppendWrites` povoleným a intervalem uchování 90 dnů. V současné době se vytvoří doplňovací objekt blob, _logblob1_a v kontejneru se nové protokoly přidají do připojeného objektu BLOB po dobu příštích 10 dnů. Efektivní doba uchování pro _logblob1_ je tedy 100 dnů od dnešního dne (čas posledního připojení + 90 dní).
 
-Odemčené zásady uchovávání informací umožňují, `allowProtectedAppendWrites` aby bylo nastavení povolené a zakázané. Jakmile budou zásady uchovávání informací na základě času uzamčené, `allowProtectedAppendWrites` nastavení se nedá změnit.
+Odemčené zásady uchovávání informací umožňují, aby `allowProtectedAppendWrites` bylo nastavení povolené a zakázané. Jakmile budou zásady uchovávání informací na základě času uzamčené, `allowProtectedAppendWrites` nastavení se nedá změnit.
 
-Zásady právního blokování nemohou `allowProtectedAppendWrites` povolit a žádné právní blokování budou nezruší vlastnost allowProtectedAppendWrites. Pokud se pro zásady uchovávání informací s `allowProtectedAppendWrites` povoleným časovým plánem používá právní blokování, rozhraní *AppendBlock* API selže, dokud se neobnoví jeho právní blokování.
+Zásady právního blokování nemohou povolit `allowProtectedAppendWrites` a žádné právní blokování budou nezruší vlastnost allowProtectedAppendWrites. Pokud se pro zásady uchovávání informací s povoleným časovým plánem používá právní blokování `allowProtectedAppendWrites` , rozhraní *AppendBlock* API selže, dokud se neobnoví jeho právní blokování.
 
 ## <a name="legal-holds"></a>Blokování z právních důvodů
 
@@ -112,7 +112,7 @@ V následující tabulce jsou uvedeny typy operací úložiště objektů blob, 
 
 <sup>1</sup> služba BLOB umožňuje těmto operacím vytvořit nový objekt BLOB jednou. Všechny následné operace přepsání na stávající cestě objektu BLOB v neměnitelném kontejneru nejsou povoleny.
 
-<sup>2</sup> připojovací blok je povolený jenom pro zásady uchovávání informací s povolenou `allowProtectedAppendWrites` vlastností. Další informace najdete v části [Povolení chráněných objektů BLOB pro zápis](#allow-protected-append-blobs-writes) .
+<sup>2</sup> připojovací blok je povolený jenom pro zásady uchovávání informací s `allowProtectedAppendWrites` povolenou vlastností. Další informace najdete v části [Povolení chráněných objektů BLOB pro zápis](#allow-protected-append-blobs-writes) .
 
 ## <a name="pricing"></a>Ceny
 

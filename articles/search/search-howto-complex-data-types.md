@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562039"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Postup modelování komplexních datových typů v Azure Kognitivní hledání
 
@@ -27,13 +27,13 @@ Azure Kognitivní hledání nativně podporuje komplexní typy a kolekce. Tyto t
 Chcete-li začít, doporučujeme [sadu dat hotelů](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), kterou můžete načíst do průvodce **importem dat** v Azure Portal. Průvodce detekuje ve zdroji komplexní typy a navrhuje schéma indexu založené na zjištěných strukturách.
 
 > [!Note]
-> Podpora komplexních typů je všeobecně dostupná v `api-version=2019-05-06`. 
+> Podpora komplexních typů se stala všeobecně dostupnou od `api-version=2019-05-06` . 
 >
 > Pokud je vaše řešení hledání postavené na předchozích řešeních plochých datových sad v kolekci, měli byste index změnit tak, aby zahrnoval komplexní typy, které jsou podporované v nejnovější verzi rozhraní API. Další informace o upgradu verzí rozhraní API najdete v tématu [upgrade na nejnovější verzi REST API](search-api-migration.md) nebo [upgrade na nejnovější verzi sady .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
 ## <a name="example-of-a-complex-structure"></a>Příklad komplexní struktury
 
-Následující dokument JSON se skládá z jednoduchých polí a složitých polí. Složitá pole, například `Address` a `Rooms`, mají dílčí pole. `Address`má jednu sadu hodnot pro tyto dílčí pole, protože se jedná o jediný objekt v dokumentu. Naproti tomu `Rooms` má více sad hodnot pro své dílčí pole, jeden pro každý objekt v kolekci.
+Následující dokument JSON se skládá z jednoduchých polí a složitých polí. Složitá pole, například `Address` a `Rooms` , mají dílčí pole. `Address`má jednu sadu hodnot pro tyto dílčí pole, protože se jedná o jediný objekt v dokumentu. Naproti tomu `Rooms` má více sad hodnot pro své dílčí pole, jeden pro každý objekt v kolekci.
 
 ```json
 {
@@ -103,7 +103,7 @@ Všimněte si, že v rámci komplexního typu má každé dílčí pole typ a m�
 
 ### <a name="data-updates"></a>Aktualizace dat
 
-Aktualizace existujících dokumentů v indexu pomocí `upload` akce funguje stejně jako u složitých a jednoduchých polí – všechna pole se nahrazují. Nicméně `merge` (nebo `mergeOrUpload` při použití pro existující dokument) nefungují stejně jako ve všech polích. `merge` Konkrétně nepodporuje sloučení prvků v rámci kolekce. Toto omezení existuje pro kolekce primitivních typů a komplexních kolekcí. Chcete-li aktualizovat kolekci, je nutné načíst úplnou hodnotu kolekce, provést změny a pak zahrnout novou kolekci do požadavku rozhraní API pro index.
+Aktualizace existujících dokumentů v indexu pomocí `upload` Akce funguje stejně jako u složitých a jednoduchých polí – všechna pole se nahrazují. Nicméně `merge` (nebo `mergeOrUpload` při použití pro existující dokument) nefungují stejně jako ve všech polích. Konkrétně `merge` nepodporuje sloučení prvků v rámci kolekce. Toto omezení existuje pro kolekce primitivních typů a komplexních kolekcí. Chcete-li aktualizovat kolekci, je nutné načíst úplnou hodnotu kolekce, provést změny a pak zahrnout novou kolekci do požadavku rozhraní API pro index.
 
 ## <a name="searching-complex-fields"></a>Hledání složitých polí
 
@@ -117,11 +117,11 @@ Podobné dotazy nejsou pro fulltextové vyhledávání na rozdíl od filtrů *ne
 
 ## <a name="selecting-complex-fields"></a>Výběr komplexních polí
 
-`$select` Parametr slouží k výběru polí, která se vrátí ve výsledcích hledání. Chcete-li použít tento parametr pro výběr konkrétní dílčí pole složeného pole, zahrňte nadřazené pole a dílčí pole oddělené lomítkem (`/`).
+`$select`Parametr slouží k výběru polí, která se vrátí ve výsledcích hledání. Chcete-li použít tento parametr pro výběr konkrétní dílčí pole složeného pole, zahrňte nadřazené pole a dílčí pole oddělené lomítkem ( `/` ).
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-Pole musí být označena jako zavedená v indexu, pokud je chcete ve výsledcích hledání. V `$select` příkazu lze použít pouze pole, která jsou označena jako schopná.
+Pole musí být označena jako zavedená v indexu, pokud je chcete ve výsledcích hledání. V příkazu lze použít pouze pole, která jsou označena jako schopná `$select` .
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Filtrování, omezující vlastnosti a řazení složitých polí
 
@@ -129,9 +129,9 @@ Stejnou [syntaxi cesty OData](query-odata-filter-orderby-syntax.md) použitou pr
 
 ### <a name="faceting-sub-fields"></a>Podpole omezující vlastnosti
 
-Jakékoli dílčí pole může být označeno jako ploška, pokud není typu `Edm.GeographyPoint` nebo. `Collection(Edm.GeographyPoint)`
+Jakékoli dílčí pole může být označeno jako ploška, pokud není typu `Edm.GeographyPoint` nebo `Collection(Edm.GeographyPoint)` .
 
-Počty dokumentů vracené ve výsledcích omezující vlastnosti jsou vypočítány pro nadřazený dokument (Hotel), nikoli pro dílčí dokumenty ve složité kolekci (místnosti). Předpokládejme například, že Hotel má 20 místností typu "Suite". Pro tento parametr `facet=Rooms/Type`omezující vlastnosti bude počet omezující vlastnosti jeden pro Hotel, ne 20 pro místnosti.
+Počty dokumentů vracené ve výsledcích omezující vlastnosti jsou vypočítány pro nadřazený dokument (Hotel), nikoli pro dílčí dokumenty ve složité kolekci (místnosti). Předpokládejme například, že Hotel má 20 místností typu "Suite". Pro tento parametr omezující vlastnosti `facet=Rooms/Type` bude počet omezující vlastnosti jeden pro Hotel, ne 20 pro místnosti.
 
 ### <a name="sorting-complex-fields"></a>Řazení složitých polí
 
@@ -145,11 +145,11 @@ Můžete se podívat na dílčí pole komplexního pole ve výrazu filtru. Stač
 
     $filter=Address/Country eq 'Canada'
 
-Chcete-li filtrovat podle komplexního pole kolekce, můžete použít **výraz lambda** s [ `any` operátory a `all` ](search-query-odata-collection-operators.md). V takovém případě **Proměnná rozsahu** výrazu lambda je objekt s podoblastmi. Můžete se podívat na tato dílčí pole se standardní syntaxí cesty OData. Například následující filtr vrátí všechny hotely s aspoň jednou a všemi místnostmi, které nepatří ke kouření:
+Chcete-li filtrovat podle komplexního pole kolekce, můžete použít **výraz lambda** s [ `any` `all` operátory a](search-query-odata-collection-operators.md). V takovém případě **Proměnná rozsahu** výrazu lambda je objekt s podoblastmi. Můžete se podívat na tato dílčí pole se standardní syntaxí cesty OData. Například následující filtr vrátí všechny hotely s aspoň jednou a všemi místnostmi, které nepatří ke kouření:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Stejně jako u jednoduchých polí nejvyšší úrovně lze jednoduchá dílčí pole komplexních polí zahrnout pouze do filtrů, pokud mají atribut **Filtered** nastaven na `true` hodnotu v definici indexu. Další informace najdete v referenčních informacích k [rozhraní API pro vytvoření indexu](/rest/api/searchservice/create-index).
+Stejně jako u jednoduchých polí nejvyšší úrovně lze jednoduchá dílčí pole komplexních polí zahrnout pouze do filtrů, pokud mají atribut **Filtered** nastaven na hodnotu `true` v definici indexu. Další informace najdete v referenčních informacích k [rozhraní API pro vytvoření indexu](/rest/api/searchservice/create-index).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,23 +8,16 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: d870cb8d90573ab0c9661804aa1dd17b64d1600d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555539"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Edice Azure Machine Learning Enterprise a Basic 
 
 Azure Machine Learning nabízí dvě edice přizpůsobené potřebám strojového učení. Tyto edice určují, které nástroje Machine Learning jsou dostupné vývojářům a odborníkům přes data z pracovního prostoru.
-
-<br/>
-<br/>
-
-| Edice Basic | Edice Enterprise                 |
-|------------------------------------------------------------------------------------|-----------|
-|Skvělé pro: <br/>a vývoj open source <br/>+ v cloudovém měřítku s<br/>+ prostředí pro první použití kódu <br/><br/>Pracovní prostory úrovně Basic umožňují dál používat Azure Machine Learning a [platit jenom za prostředky Azure spotřebované](concept-plan-manage-cost.md) během procesu ml. |Všechny edice Basic a plus:<br/>+ webové rozhraní Studio <br/>+ Secure, komplexní správa životního cyklu ML <br/>+ pro všechny úrovně dovedností<br/><br/>Pracovní prostory Enterprise Edition se účtují jenom za jejich spotřebu v Azure, zatímco edice je ve verzi Preview. |
 
 ## <a name="choose-an-edition"></a>Volba edice
 
@@ -111,7 +104,6 @@ Přečtěte si, jak [upgradovat základní pracovní prostor na edici Enterprise
 | Batch Inferencing                                                                  | Vše                     |
 | Modely s hardwarovou akcelerací založené na FPGA                                             | Vše                     |
 | Profilace modelu                                                                    | Vše                     |
-| Vysvětlení v uživatelském rozhraní                                                               | Pouze edice Enterprise |
 
 <br/>
 <br/>

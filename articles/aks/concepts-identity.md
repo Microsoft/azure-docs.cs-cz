@@ -4,12 +4,12 @@ description: Přečtěte si o přístupu a identitě ve službě Azure Kubernete
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: ffb3f0a7aee63f8b655e7056ee870de80c2f814e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558167"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -67,6 +67,9 @@ Jakmile jsou role definované pro udělení oprávnění k prostředkům, přiř
 Vazby role slouží k přiřazení rolí pro daný obor názvů. Tento přístup umožňuje logicky oddělit jeden AKS cluster s uživateli, kteří mají jenom přístup k prostředkům aplikace v jejich přiřazeném oboru názvů. Pokud potřebujete navazovat role napříč celým clusterem nebo prostředky clusteru mimo daný obor názvů, můžete místo toho použít *ClusterRoleBindings*.
 
 ClusterRoleBinding funguje stejným způsobem jako vázání rolí uživatelům, ale lze je použít na prostředky v celém clusteru, nikoli na konkrétní obor názvů. Tento přístup vám umožní udělit správcům nebo pracovníkům podpory přístup ke všem prostředkům v clusteru AKS.
+
+> [!NOTE]
+> Všechny akce clusteru, které povede podpora Microsoftu, se zavedou s souhlasem uživatele v rámci předdefinované role Kubernetes ["Upravit"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) v názvu `aks-support-rolebinding` . Díky této podpoře rolí AKS je povoleno upravovat konfiguraci clusteru a prostředky pro řešení problémů s clustery, ale role nemůže měnit oprávnění ani vytvářet role nebo vazby rolí. Přístup k rolím je povolený jenom v aktivních lístkech podpory s přístupem JIT (just-in-time). Přečtěte si další informace o [zásadách podpory AKS](support-policies.md).
 
 ## <a name="next-steps"></a>Další kroky
 

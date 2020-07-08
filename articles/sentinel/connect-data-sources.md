@@ -1,6 +1,6 @@
 ---
 title: Připojení zdrojů dat ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit zdroje dat ke službě Azure Sentinel.
+description: Naučte se, jak propojit zdroje dat, jako je Microsoft Threat Protection, Microsoft 365 a Office 365, Azure AD, ATP a Cloud App Security, do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 3ff031cb9e4dd45de180eca4b726aa47f0fd52e1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555517"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -54,7 +54,7 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Server DNS](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Ochrana ATP v programu Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md)
     - [Firewall webových aplikací Microsoft](connect-microsoft-waf.md)
     - [Brána Windows Firewall](connect-windows-firewall.md)
     - [Události zabezpečení systému Windows](connect-windows-security-events.md)
@@ -67,7 +67,7 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
-    - [Protokoly hraničních 81](connect-perimeter-81-logs.md)
+    - [Protokoly Perimeteru 81](connect-perimeter-81-logs.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [Zimperium](connect-zimperium-mtd.md)
@@ -80,7 +80,7 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     Agent Azure Sentinel, který je ve skutečnosti agentem Log Analytics, převede protokoly ve formátu CEF do formátu, který je možné pomocí Log Analytics ingestovat. V závislosti na typu zařízení se agent nainstaluje buď přímo na zařízení, nebo na vyhrazeném serveru pro přeposílání protokolů se systémem Linux. Agent pro Linux přijímá události z procesu démona syslog přes protokol UDP, ale pokud se očekává, že počítač se systémem Linux shromáždí velký objem událostí syslog, pošle se přes protokol TCP z procesu démona syslog do agenta a tam, kde Log Analytics.
 
     - **Brány firewall, proxy servery a koncové body:**
-        - [Rozpoznávání AI Vectra](connect-ai-vectra-detect.md)
+        - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)

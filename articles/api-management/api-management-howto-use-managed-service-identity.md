@@ -1,6 +1,6 @@
 ---
 title: Použití spravovaných identit v Azure API Management | Microsoft Docs
-description: Naučte se používat spravované identity v API Management
+description: Naučte se vytvářet identity přiřazené systémem a uživatelem v API Management pomocí Azure Portal, PowerShellu a šablony pro Správce prostředků.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -11,44 +11,44 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 028b26537c9fe8a976dbc68a4776b2ea4101d811
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558036"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit v Azure API Management
 
-V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro instanci API Management a jak získat přístup k dalším prostředkům. Spravovaná identita generovaná službou Azure Active Directory (Azure AD) umožňuje vaší instanci API Management snadno a bezpečně přistupovat k dalším prostředkům chráněným službou Azure AD, jako je třeba Azure Key Vault. Tuto identitu spravuje Azure a nevyžaduje zřizování ani navýšení tajných kódů. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro instanci Azure API Management a jak získat přístup k dalším prostředkům. Spravovaná identita generovaná službou Azure Active Directory (Azure AD) umožňuje vaší instanci API Management snadno a bezpečně přistupovat k dalším prostředkům chráněným službou Azure AD, jako je třeba Azure Key Vault. Azure spravuje tuto identitu, takže nemusíte zřizovat ani střídat tajné klíče. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
 
-Instanci API Management lze udělit dvěma typům identit:
+API Management instanci můžete udělit dva typy identit:
 
-- **Identita přiřazená systémem** je vázaná na vaši službu a při odstranění vaší služby se odstraní. Služba může mít pouze jednu identitu přiřazenou systémem.
-- **Uživatelsky přiřazená identita** je samostatný prostředek Azure, který je možné přiřadit ke službě. Služba může mít více uživatelsky přiřazených identit (*).
+- *Identita přiřazená systémem* je vázaná na vaši službu a při odstranění vaší služby se odstraní. Služba může mít pouze jednu identitu přiřazenou systémem.
+- *Uživatelsky přiřazená identita* je samostatný prostředek Azure, který je možné přiřadit ke službě. Služba může mít více uživatelsky přiřazených identit.
 
-## <a name="create-a-system-assigned-managed-identity-for-an-api-management-instance"></a>Vytvoření spravované identity přiřazené systémem pro instanci API Management
+## <a name="create-a-system-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené systémem
 
-### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte instanci API Management jako normální a pak tuto funkci povolte.
+Pokud chcete nastavit spravovanou identitu v Azure Portal, vytvoříte nejprve instanci API Management a pak tuto funkci povolíte.
 
 1. Na portálu vytvořte instanci API Management, normálně by to bylo. Přejděte na portál na portálu.
 2. Vyberte **spravované identity**.
-3. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
+3. Na kartě **přiřazeno systému** přepněte **stav** na **zapnuto**. Vyberte **Uložit**.
 
-    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Povolte spravovanou identitu přiřazenou systémem." border="true":::
+    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Výběry pro povolení spravované identity přiřazené systémem" border="true":::
 
 
-### <a name="using-azure-powershell"></a>Použití Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Následující kroky vás provedou vytvořením instance API Management a přiřazením identity pomocí Azure PowerShell. 
 
-1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/install-az-ps)a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
+1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů v [příručce Azure PowerShell](/powershell/azure/install-az-ps). Pak spusťte příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-2. Vytvořte instanci API Management pomocí Azure PowerShell. Další příklady použití Azure PowerShell s instancí API Management najdete v tématu [API Management ukázek PowerShellu](powershell-samples.md):
+2. Použijte následující kód k vytvoření instance. Další příklady použití Azure PowerShell s instancí API Management najdete v tématu [API Management ukázek PowerShellu](powershell-samples.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -58,7 +58,7 @@ Následující kroky vás provedou vytvořením instance API Management a přiř
     New-AzApiManagement -ResourceGroupName $resourceGroupName -Name consumptionskuservice -Location $location -Sku Consumption -Organization contoso -AdminEmail contoso@contoso.com -SystemAssignedIdentity
     ```
 
-3. Aktualizace a existující instance pro vytvoření identity:
+3. Aktualizace existující instance pro vytvoření identity:
 
     ```azurepowershell-interactive
     # Get an API Management instance
@@ -68,7 +68,7 @@ Následující kroky vás provedou vytvořením instance API Management a přiř
     Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity
     ```
 
-### <a name="using-the-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
+### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
 Můžete vytvořit instanci API Management s identitou, a to zahrnutím následující vlastnosti do definice prostředků:
 
@@ -78,7 +78,7 @@ Můžete vytvořit instanci API Management s identitou, a to zahrnutím následu
 }
 ```
 
-To oznamuje službě Azure, aby vytvořila a spravovala identitu vaší instance API Management.
+Tato vlastnost oznamuje službě Azure, aby vytvořila a spravovala identitu vaší instance API Management.
 
 Například kompletní šablona Azure Resource Manager může vypadat takto:
 
@@ -117,22 +117,22 @@ Při vytvoření instance má následující další vlastnosti:
 }
 ```
 
-Vlastnost tenantId určuje, do kterého tenanta Azure AD patří identita. PrincipalId je jedinečný identifikátor instance nové identity. V rámci služby Azure AD má instanční objekt stejný název, který jste zadali vaší instanci API Management.
+`tenantId`Vlastnost určuje, do jakého tenanta Azure AD patří identita. `principalId`Vlastnost je jedinečný identifikátor pro novou identitu instance. V rámci služby Azure AD má instanční objekt stejný název, který jste zadali vaší instanci API Management.
 
 
 > [!NOTE]
-> Instance API Management může současně mít přiřazené i uživatelsky přiřazené identity. V tomto případě `type` by vlastnost byla`SystemAssigned,UserAssigned`
+> Instance API Management může současně mít přiřazené i uživatelsky přiřazené identity. V tomto případě `type` by vlastnost byla `SystemAssigned,UserAssigned` .
 
-### <a name="scenarios-supported"></a>Podporované scénáře
+### <a name="supported-scenarios"></a>Podporované scénáře
 
 #### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Získání vlastního certifikátu TLS/SSL pro instanci API Management z Azure Key Vault
-Identitu služby API Management přiřazenou systémem můžete použít k načtení vlastních certifikátů TLS/SSL uložených v Azure Key Vault. Tyto certifikáty je možné přiřadit k vlastním doménám v instanci API Management.
+K načtení vlastních certifikátů TLS/SSL uložených v Azure Key Vault můžete použít identitu instance API Management přiřazenou systémem. Tyto certifikáty pak můžete přiřadit k vlastním doménám v instanci API Management. Upozorňujeme na tyto skutečnosti:
 
-1. Typ obsahu tajného kódu musí být *Application/x-PKCS12*.
-2. Měl by se použít koncový bod tajného certifikátu Key Vault, který obsahuje skutečný tajný klíč.
+- Typ obsahu tajného kódu musí být *Application/x-PKCS12*.
+- Použijte koncový bod tajného certifikátu Key Vault, který obsahuje tajný klíč.
 
 > [!Important]
-> Pokud není k dispozici verze objektu certifikátu, bude API Management po nahrání do Key Vault během 4 hodin automaticky získat novější verzi certifikátu.
+> Pokud neposkytnete verzi objektu certifikátu, API Management bude automaticky získávat novější verzi certifikátu do čtyř hodin poté, co se aktualizuje v Key Vault.
 
 Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuje následující kroky:
 
@@ -192,7 +192,7 @@ Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuj
         "keyVaultIdToCertificate": {
             "type": "string",
             "metadata": {
-                "description": "Reference to the KeyVault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
+                "description": "Reference to the Key Vault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
             }
         }
     },
@@ -262,36 +262,36 @@ Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuj
 }
 ```
 
-#### <a name="authenticate-using-api-management-identity-to-the-backend"></a>Ověřování pomocí API Management identity k back-endu
+#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Ověřování pro back-end pomocí API Management identity
 
-Identitu přiřazenou systémem můžete použít k ověření do back-endu pomocí zásad [ověřování spravovaného identity](api-management-authentication-policies.md#ManagedIdentity) .
+Identitu přiřazenou systémem můžete použít k ověření do back-endu prostřednictvím zásad [ověřování spravované-identity](api-management-authentication-policies.md#ManagedIdentity) .
 
 
-## <a name="create-a-user-assigned-managed-identity-for-an-api-management-instance"></a>Vytvoření spravované identity přiřazené uživatelem pro instanci API Management
+## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
 > [!NOTE]
-> Instance API Management může být přidružená k spravované identitě přiřazené uživatelem až 10.
+> Instanci API Management můžete přidružit až 10 spravovaných identit přiřazených uživatelem.
 
-### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte instanci API Management jako normální a pak tuto funkci povolte.
+Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte instanci API Management a pak tuto funkci povolte.
 
 1. Na portálu vytvořte instanci API Management, normálně by to bylo. Přejděte na portál na portálu.
 2. Vyberte **spravované identity**.
-3. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat**.
-4. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na tlačítko **Add** (Přidat).
+3. Na kartě **přiřazený uživatel** vyberte **Přidat**.
+4. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Vyberte možnost **Přidat**.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Povolit spravovanou identitu přiřazenou uživatelem" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Výběry pro povolení spravované identity přiřazené uživatelem" border="true":::
 
-### <a name="using-azure-powershell"></a>Použití Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Následující kroky vás provedou vytvořením instance API Management a přiřazením identity pomocí Azure PowerShell. 
 
-1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/install-az-ps)a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
+1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů v [příručce Azure PowerShell](/powershell/azure/install-az-ps). Pak spusťte příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-2. Vytvořte instanci API Management pomocí Azure PowerShell. Další příklady použití Azure PowerShell s instancí API Management najdete v tématu [API Management ukázek PowerShellu](powershell-samples.md):
+2. Použijte následující kód k vytvoření instance. Další příklady použití Azure PowerShell s instancí API Management najdete v tématu [API Management ukázek PowerShellu](powershell-samples.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -306,7 +306,7 @@ Následující kroky vás provedou vytvořením instance API Management a přiř
     New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization contoso -AdminEmail admin@contoso.com -Sku Consumption -UserAssignedIdentity $userIdentities
     ```
 
-3. Aktualizuje a stávající služba, aby službu přiřadila identitu.
+3. Aktualizace existující služby pro přiřazení identity ke službě:
 
     ```azurepowershell-interactive
     # Get an API Management instance
@@ -320,7 +320,7 @@ Následující kroky vás provedou vytvořením instance API Management a přiř
     Set-AzApiManagement -InputObject $apimService -UserAssignedIdentity $userIdentities
     ```
 
-### <a name="using-the-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
+### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
 Můžete vytvořit instanci API Management s identitou, a to zahrnutím následující vlastnosti do definice prostředků:
 
@@ -382,21 +382,21 @@ Když je služba vytvořená, má následující další vlastnosti:
 }
 ```
 
-PrincipalId je jedinečný identifikátor pro identitu, která se používá pro správu Azure AD. ClientId je jedinečný identifikátor pro novou identitu aplikace, která se používá k určení identity, která se má použít během volání za běhu.
+`principalId`Vlastnost je jedinečný identifikátor pro identitu, která se používá pro správu Azure AD. `clientId`Vlastnost je jedinečný identifikátor pro novou identitu aplikace, která se používá k určení identity, která se má použít při volání za běhu.
 
 > [!NOTE]
-> Instance API Management může současně mít přiřazené i uživatelsky přiřazené identity. V tomto případě `type` by vlastnost byla`SystemAssigned,UserAssigned`
+> Instance API Management může současně mít přiřazené i uživatelsky přiřazené identity. V tomto případě `type` by vlastnost byla `SystemAssigned,UserAssigned` .
 
-### <a name="scenarios-supported"></a>Podporované scénáře
+### <a name="supported-scenarios"></a>Podporované scénáře
 
-#### <a name="authenticate-using-user-assigned-identity-to-the-backend"></a>Ověřování pomocí uživatelem přiřazené identity k back-endu
+#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Ověřování v back-endu pomocí uživatelsky přiřazené identity
 
-Identita přiřazená uživatelem se dá použít k ověření do back-endu pomocí zásad [ověřování spravovaného identity](api-management-authentication-policies.md#ManagedIdentity) .
+K ověření v back-endu pomocí zásad [ověřování spravovaného pomocí identity](api-management-authentication-policies.md#ManagedIdentity) můžete použít uživatelem přiřazenou identitu.
 
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Odebrání identity
 
-Identitu přiřazenou systémem je možné odebrat zakázáním této funkce pomocí portálu nebo šablony Azure Resource Manager stejným způsobem jako v případě, že byla vytvořena. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Pokud chcete odebrat všechny identity, nastavte typ identity na None (žádné).
+Identitu přiřazenou systémem můžete odebrat tak, že tuto funkci zakážete prostřednictvím portálu nebo šablony Azure Resource Manager stejným způsobem jako v případě, že byla vytvořena. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Pokud chcete odebrat všechny identity, nastavte typ identity na `"None"` .
 
 Odebrání identity přiřazené systémem tímto způsobem ji odstraní také z Azure AD. Identity přiřazené systémem se při odstranění instance API Management automaticky z Azure AD odeberou.
 
@@ -409,13 +409,14 @@ Pokud chcete odebrat všechny identity pomocí šablony Azure Resource Manager, 
 ```
 
 > [!Important]
-> Pokud je instance API Management nakonfigurovaná s vlastním certifikátem SSL z trezoru klíčů a pokusí se o vypnutí spravované identity, požadavek se nezdařil.
-> Zákazník může odblokovat samy sebe přepnutím z Azure Key Vault certifikátu na poskytnutí vloženého kódovaného certifikátu a vypnutím spravované identity. Podívejte se na téma [Konfigurace vlastní domény](configure-custom-domain.md) .
+> Pokud je instance API Management nakonfigurovaná s vlastním certifikátem SSL z Key Vault a pokusíte se zakázat spravovanou identitu, požadavek se nezdaří.
+>
+> Odblokování můžete odblokovat tak, že přepnete z Azure Key Vault certifikátu na vložený kódovaný certifikát a zakážete spravovanou identitu. Další informace najdete v tématu [Konfigurace vlastního názvu domény](configure-custom-domain.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o spravovaných identitách pro prostředky Azure:
 
-* [Co jsou spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md)
+* [Jaké jsou spravované identity prostředků Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 * [Šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates)
 * [Ověřování pomocí spravované identity v zásadě](./api-management-authentication-policies.md#ManagedIdentity)

@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 06/22/2020
 ms.author: allensu
-ms.openlocfilehash: 5cb053a87293a4309a393bd9e0e76bf0d881dd71
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559306"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Reference ke stroji pravidel Standard pro Azure CDN
 
@@ -36,7 +36,14 @@ Každé pravidlo může mít až deset podmínek shody a pět akcí. Každý kon
 
 Součástí tohoto omezení je výchozí *globální pravidlo*. Globální pravidlo nemá podmínky shody. akce, které jsou definovány v globálním pravidle, se vždy aktivují.
 
-## <a name="syntax"></a>Syntax
+## <a name="limits-and-pricing"></a>Omezení a ceny 
+
+Každý koncový bod Azure CDN může mít až 25 pravidel. Každé pravidlo může mít až deset podmínek shody a pět akcí. Ceny pro modul pravidel řídí následující dimenze: 
+- Pravidla: $1 na pravidlo za měsíc 
+- Počet zpracovaných požadavků: $0,60 za milion requets
+- Prvních 5 pravidel zůstane zadarmo.
+
+## <a name="syntax"></a>Syntaxe
 
 Způsob zpracování speciálních znaků v pravidle se liší v závislosti na tom, jak různé podmínky shody a akce zpracovávají textové hodnoty. Podmínka nebo akce shody mohou interpretovat text jedním z následujících způsobů:
 
@@ -54,7 +61,7 @@ K označení kódování adresy URL (například) se používá znak procenta `%
 
 Text, který je interpretován jako zástupná hodnota, přiřadí další význam pro speciální znaky. Následující tabulka popisuje, jak se interpretují konkrétní speciální znaky v modulu Standard Rules:
 
-Znak | Popis
+Znak | Description
 ----------|------------
 \ | Zpětné lomítko se používá k úniku znaků určených v této tabulce. Zpětné lomítko musí být zadáno přímo před speciálním znakem, který by měl být uvozen řídicím znakem. Například následující syntaxe řídí hvězdičku:`\*`
 % | K označení kódování adresy URL (například) se používá znak procenta `%20` .

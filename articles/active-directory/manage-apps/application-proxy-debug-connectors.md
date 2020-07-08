@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9254e0ce9f27d95edb01359e53888078c1087381
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 39a27ce3b3e7946504298451233b6054302c45f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555040"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Ladění problémů s konektorem Proxy aplikací 
 
@@ -40,7 +40,7 @@ Tento vývojový diagram vás provede kroky pro ladění některých častých p
 
 ![Vývojový diagram znázorňující kroky pro ladění konektoru](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Akce | Description | 
+| Krok | Akce | Description |
 |---------|---------|---------|
 |1 | Najít skupinu konektorů přiřazenou k aplikaci | Máte pravděpodobně nainstalovaný konektor na více serverech. v takovém případě by se měly konektory [přiřadit ke skupinám konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Další informace o skupinách konektorů najdete v tématu [publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů](application-proxy-connector-groups.md). |
 |2 | Instalace konektoru a přiřazení skupiny | Pokud nemáte nainstalovaný konektor, přečtěte si téma [instalace a registrace konektoru](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Pokud máte problémy s instalací konektoru, přečtěte si téma [problém instalace konektoru](application-proxy-connector-installation-problem.md).<br></br> Pokud konektor není přiřazen ke skupině, přečtěte si téma [přiřazení konektoru ke skupině](application-proxy-connector-groups.md#create-connector-groups).<br></br>Pokud aplikace není přiřazena ke skupině konektorů, přečtěte si téma [přiřazení aplikace do skupiny konektorů](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 461c5b1603a4c06e680aab671238a1c8ccd5dacd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558545"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešení potíží souvisejících se Azure Data Box a Azure Data Box Heavy
 
@@ -23,12 +23,12 @@ Tento článek podrobně popisuje, jak řešit problémy, které se mohou zobraz
 
 Chyby v Data Box a Data Box Heavy jsou shrnuty takto:
 
-| Kategorie chyby *        | Popis        | Doporučená akce    |
+| Kategorie chyby *        | Description        | Doporučená akce    |
 |----------------------------------------------|---------|--------------------------------------|
-| Názvy kontejnerů nebo sdílených složek | Názvy kontejnerů nebo sdílených složek nedodržují pravidla pro pojmenování Azure.  |Stažení seznamů chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Přečtěte si další informace](#container-or-share-name-errors).  |
-| Omezení velikosti kontejneru nebo sdílení | Celkový objem dat v kontejnerech nebo sdílených složkách překračuje limit Azure.   |Stažení seznamů chyb. <br> Snižte celkový objem dat v kontejneru nebo sdílené složce. [Přečtěte si další informace](#container-or-share-size-limit-errors).|
-| Omezení velikosti objektu nebo souboru | Objekt nebo soubory v kontejnerech nebo sdílených složkách přesahují limit Azure.|Stažení seznamů chyb. <br> Zmenšete velikost souboru v kontejneru nebo sdílené složce. [Přečtěte si další informace](#object-or-file-size-limit-errors). |    
-| Data nebo typ souboru | Formát dat nebo typ souboru se nepodporuje. |Stažení seznamů chyb. <br> U objektů blob stránky nebo spravovaných disků zajistěte, aby byla data zarovnaná 512 bajtů a zkopírována do předem vytvořených složek. [Přečtěte si další informace](#data-or-file-type-errors). |
+| Názvy kontejnerů nebo sdílených složek | Názvy kontejnerů nebo sdílených složek nedodržují pravidla pro pojmenování Azure.  |Stažení seznamů chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Další informace](#container-or-share-name-errors).  |
+| Omezení velikosti kontejneru nebo sdílení | Celkový objem dat v kontejnerech nebo sdílených složkách překračuje limit Azure.   |Stažení seznamů chyb. <br> Snižte celkový objem dat v kontejneru nebo sdílené složce. [Další informace](#container-or-share-size-limit-errors).|
+| Omezení velikosti objektu nebo souboru | Objekt nebo soubory v kontejnerech nebo sdílených složkách přesahují limit Azure.|Stažení seznamů chyb. <br> Zmenšete velikost souboru v kontejneru nebo sdílené složce. [Další informace](#object-or-file-size-limit-errors). |    
+| Data nebo typ souboru | Formát dat nebo typ souboru se nepodporuje. |Stažení seznamů chyb. <br> U objektů blob stránky nebo spravovaných disků zajistěte, aby byla data zarovnaná 512 bajtů a zkopírována do předem vytvořených složek. [Další informace](#data-or-file-type-errors). |
 | Nekritické chyby objektů BLOB nebo souborů  | Názvy objektů BLOB nebo souborů nedodržují pravidla pro pojmenování Azure nebo tento typ souboru se nepodporuje. | Tyto objekty blob nebo soubory se nemusí kopírovat nebo se můžou změnit názvy. [Přečtěte si, jak tyto chyby opravit](#non-critical-blob-or-file-errors). |
 
 \*První čtyři kategorie chyb jsou kritické chyby a je nutné je opravit předtím, než budete moci pokračovat v přípravě na odeslání.

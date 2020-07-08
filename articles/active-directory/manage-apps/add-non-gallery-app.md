@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555120"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Přidání aplikace, která není v seznamu (galerie), do vaší organizace Azure AD
 
@@ -70,7 +70,7 @@ Tento článek popisuje, jak přidat aplikaci mimo galerii do **podnikových apl
 
       Chování pro **přiřazené** uživatele:
 
-       | Nastavení vlastností aplikace | | | Prostředí pro přiřazené uživatele | |
+       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro přiřazené uživatele | Prostředí pro přiřazené uživatele |
        |---|---|---|---|---|
        | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
        | ano | ano | ano | ano | ano  |
@@ -84,7 +84,7 @@ Tento článek popisuje, jak přidat aplikaci mimo galerii do **podnikových apl
 
       Chování pro **nepřiřazené** uživatele:
 
-       | Nastavení vlastností aplikace | | | Prostředí pro nepřiřazené uživatele | |
+       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro nepřiřazené uživatele | Prostředí pro nepřiřazené uživatele |
        |---|---|---|---|---|
        | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
        | ano | ano | ano | ne  | ne   |

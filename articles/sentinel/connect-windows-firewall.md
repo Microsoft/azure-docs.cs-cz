@@ -1,6 +1,6 @@
 ---
 title: Připojit data brány Windows Firewall ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data brány Windows Firewall ke službě Azure Sentinel.
+description: Povolte konektor brány Windows Firewall ve službě Azure Sentinel, abyste mohli snadno streamovat události brány firewall z počítačů s Windows, které mají nainstalované agenty Log Analytics.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559475"
 ---
 # <a name="connect-windows-firewall"></a>Připojení brány Windows Firewall
 

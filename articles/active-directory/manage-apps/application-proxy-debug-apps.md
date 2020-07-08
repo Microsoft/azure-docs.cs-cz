@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e944c25f39903f8a78a949206bc8037f34508698
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764634"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555051"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Ladění problémů s aplikací Proxy aplikací 
 
@@ -39,7 +39,7 @@ Tento vývojový diagram vás provede kroky pro ladění některých nejběžně
 
 ![Vývojový diagram znázorňující kroky pro ladění aplikace](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Akce | Description | 
+| Krok | Akce | Description |
 |---------|---------|---------|
 |1 | Otevřete prohlížeč, přejděte do aplikace a zadejte svoje přihlašovací údaje. | Zkuste použít přihlašovací údaje pro přihlášení k aplikaci a vyhledat všechny chyby související s uživatelem, třeba [Tato podniková aplikace není dostupná](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | Ověření přiřazení uživatele k aplikaci | Ujistěte se, že váš uživatelský účet má oprávnění pro přístup k aplikaci zevnitř podnikové sítě, a pak otestujte přihlášení k aplikaci pomocí kroků v části [test aplikace](application-proxy-add-on-premises-application.md#test-the-application). Pokud se problémy s přihlášením trvají, přečtěte si téma [jak řešit chyby při přihlašování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |

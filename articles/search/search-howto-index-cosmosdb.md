@@ -9,18 +9,18 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13c55f2a7470a0d33e12e9e6f0da9df3421242fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688870"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556246"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indexování dat Cosmos DB pomocí indexeru ve službě Azure Cognitive Search 
 
 > [!IMPORTANT] 
 > Rozhraní SQL API je všeobecně dostupné.
-> MongoDB API, rozhraní Gremlin API a podpora rozhraní API Cassandra jsou momentálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview)můžete požádat o přístup k náhledům. [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+> MongoDB API, rozhraní Gremlin API a podpora rozhraní API Cassandra jsou momentálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview)můžete požádat o přístup k náhledům. [REST API verze 2020-06-30-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 > [!WARNING]
 > Azure Kognitivní hledání podporuje jenom kolekce Cosmos DB s nastavenou [zásadou indexování](https://docs.microsoft.com/azure/cosmos-db/index-policy) jako [konzistentní](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) . Indexování kolekcí se zásadami opožděného indexování se nedoporučuje a může mít za následek chybějící data. Kolekce s zakázaným indexováním nejsou podporovány.
@@ -33,9 +33,9 @@ Indexer Cosmos DB ve službě Azure Kognitivní hledání může procházet [Azu
 
 + Pro [rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), které je všeobecně dostupné, můžete k vytvoření zdroje dat a indexeru použít [portál](#cosmos-indexer-portal), [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) .
 
-+ Pro [MONGODB API (Preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)můžete k vytvoření zdroje dat a indexeru použít buď [portál](#cosmos-indexer-portal) , nebo [REST API verze 2019-05-06-Preview](search-api-preview.md) .
++ Pro [MONGODB API (Preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)můžete k vytvoření zdroje dat a indexeru použít buď [portál](#cosmos-indexer-portal) , nebo [REST API verze 2020-06-30-Preview](search-api-preview.md) .
 
-+ Pro [rozhraní API Cassandra (Preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) a [rozhraní Gremlin API (Preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)můžete vytvořit zdroj dat a indexer jenom pomocí [REST API verze 2019-05-06-Preview](search-api-preview.md) .
++ Pro [rozhraní API Cassandra (Preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) a [rozhraní Gremlin API (Preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)můžete vytvořit zdroj dat a indexer jenom pomocí [REST API verze 2020-06-30-Preview](search-api-preview.md) .
 
 
 > [!Note]
@@ -123,7 +123,7 @@ Po dokončení indexování můžete pomocí [Průzkumníka služby Search Vyhle
 Pomocí REST API můžete indexovat Azure Cosmos DB data, a to za pracovní postup tří částí, který je společný pro všechny Indexery v Azure Kognitivní hledání: vytvořte zdroj dat, vytvořte index a vytvořte indexer. K extrakci dat z Cosmos DB dochází, když odešlete požadavek Create indexer. Po dokončení této žádosti budete mít Queryable index. 
 
 > [!NOTE]
-> Pro indexování dat z Cosmos DB rozhraní API Gremlin nebo Cosmos DB rozhraní API Cassandra musíte nejdřív požádat o přístup k ověřovaným náhledům vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview). Po zpracování žádosti obdržíte pokyny, jak pomocí [REST API verze 2019-05-06-Preview](search-api-preview.md) vytvořit zdroj dat.
+> Pro indexování dat z Cosmos DB rozhraní API Gremlin nebo Cosmos DB rozhraní API Cassandra musíte nejdřív požádat o přístup k ověřovaným náhledům vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview). Po zpracování žádosti obdržíte pokyny, jak pomocí [REST API verze 2020-06-30-Preview](search-api-preview.md) vytvořit zdroj dat.
 
 Dříve v tomto článku se zmiňujeme, že indexování [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) a [Azure kognitivní hledání](search-what-is-an-index.md) indexování je jedinečných operací. Pro Cosmos DB indexování se ve výchozím nastavení automaticky indexují všechny dokumenty s výjimkou rozhraní API Cassandra. Pokud automatické indexování vypnete, můžete k dokumentům přicházet pouze prostřednictvím vlastních odkazů nebo dotazů pomocí ID dokumentu. Indexování služby Azure Kognitivní hledání vyžaduje, aby v kolekci, která bude indexována službou Azure Kognitivní hledání, byla zapnuta Cosmos DB automatické indexování. Při registraci ve verzi Preview služby Cosmos DB rozhraní API Cassandra indexeru budete mít k dispozici pokyny, jak nastavit Cosmos DB indexování.
 
@@ -154,7 +154,7 @@ Tyto hodnoty můžete najít na portálu:
 
 Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -223,7 +223,7 @@ Dotaz na sloučení pole:
 
 Pokud ho ještě nemáte, [vytvořte cílový index Azure kognitivní hledání](/rest/api/searchservice/create-index) . Následující příklad vytvoří index s polem ID a popis:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -261,13 +261,13 @@ Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdroj
 | Pole primitivních typů, například ["a", "b", "c"] |Collection(Edm.String) |
 | Řetězce, které vypadají jako kalendářní data |EDM. DateTimeOffset, Edm. String |
 | Objekty injson, například {"Type": "Point", "souřadnice": [Long, lat]} |Edm.GeographyPoint |
-| Jiné objekty JSON |– |
+| Jiné objekty JSON |Není k dispozici |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4. konfigurace a spuštění indexeru
 
 Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -340,7 +340,7 @@ Pokud používáte vlastní dotaz, ujistěte se, že vlastnost, na kterou odkazu
 
 Následující příklad vytvoří zdroj dat se zásadami podmíněného odstranění:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 

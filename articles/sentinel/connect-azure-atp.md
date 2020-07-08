@@ -1,6 +1,6 @@
 ---
 title: Připojení dat Azure ATP k Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data ATP Azure ke službě Azure Sentinel.
+description: Naučte se streamovat protokoly z Azure Advanced Threat Protection (ATP) do Azure Sentinel jediným kliknutím.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f58c38ccfa234752a80c05c300d245c6c9e97cf0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559174"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Připojení dat z Azure Advanced Threat Protection (ATP)
 

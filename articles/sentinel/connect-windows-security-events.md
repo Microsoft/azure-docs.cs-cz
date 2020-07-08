@@ -1,6 +1,6 @@
 ---
 title: Připojit data událostí zabezpečení systému Windows ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data událostí zabezpečení systému Windows ke službě Azure Sentinel.
+description: Naučte se používat konektory událostí zabezpečení ke streamování všech událostí zabezpečení ze systémů Windows do vašeho pracovního prostoru služby Azure Sentinel. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 30055ba1befc68d015e3e3162d8db11a2916f3d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555712"
 ---
 # <a name="connect-windows-security-events"></a>Připojení událostí zabezpečení systému Windows 
 
@@ -81,7 +81,7 @@ Shromažďování událostí zabezpečení systému Windows v rámci služby Azu
 
 1. Klikněte na **Aktualizovat**.
 
-1. Chcete-li použít příslušné schéma v Log Analytics pro události zabezpečení systému Windows `SecurityEvent` , zadejte do okna dotazu.
+1. Chcete-li použít příslušné schéma v Log Analytics pro události zabezpečení systému Windows, zadejte `SecurityEvent` do okna dotazu.
 
 ## <a name="validate-connectivity"></a>Ověřit připojení
 

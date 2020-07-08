@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560839"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Vytvoření indexu pro více jazyků v Azure Kognitivní hledání
 
@@ -44,7 +44,7 @@ Jakmile je analyzátor jazyka vybrán pro pole, bude použit spolu s každou vyd
 
 Pokud je znám jazyk agenta, který vydává dotaz, může být požadavek na hledání vymezen na konkrétní pole pomocí parametru dotazu **searchFields** . Následující dotaz se vydá jenom s popisem v polštině:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
 
 Dotaz na index můžete z portálu pomocí [**Průzkumníka služby Search**](search-explorer.md) vložit do dotazu, který se podobá výše uvedenému.
 
@@ -61,7 +61,7 @@ Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případ�
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561776"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Použít úplnou syntaxi hledání Lucene (rozšířené dotazy v Azure Kognitivní hledání)
 
@@ -34,9 +34,9 @@ K tomu, co potřebujete, je odeslání nebo ekvivalent nástroje pro vystavení 
 
 ### <a name="set-the-request-header"></a>Nastavit hlavičku požadavku
 
-1. V hlavičce požadavku nastavte **typ obsahu** na `application/json`.
+1. V hlavičce požadavku nastavte **typ obsahu** na `application/json` .
 
-2. Přidejte **klíč API-Key**a nastavte jej na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB`. Toto je klíč dotazu pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.
+2. Přidejte **klíč API-Key**a nastavte jej na tento řetězec: `252044BE3886FE4A8E3BAA4F595114BB` . Toto je klíč dotazu pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.
 
 Po zadání hlavičky žádosti ji můžete znovu použít pro všechny dotazy v tomto článku, přičemž se odkládá jenom řetězec **Search =** String. 
 
@@ -53,7 +53,7 @@ Složení adresy URL má následující prvky:
 + **`https://azs-playground.search.windows.net/`** je vyhledávací služba izolovaného prostoru, kterou udržuje vývojový tým Azure Kognitivní hledání. 
 + **`indexes/nycjobs/`** je index úloh NYC v kolekci indexů dané služby. V žádosti se vyžaduje název služby i index.
 + **`docs`** je kolekce dokumentů obsahující veškerý prohledávatelný obsah. Klíč rozhraní API pro dotaz zadaný v hlavičce požadavku funguje jenom na operacích čtení, které cílí na kolekci dokumentů.
-+ **`api-version=2019-05-06`** nastaví verzi rozhraní API, což je povinný parametr u všech požadavků.
++ **`api-version=2020-06-30`** nastaví verzi rozhraní API, což je povinný parametr u všech požadavků.
 + **`search=*`** je řetězec dotazu, který je v počátečním dotazu null, vrací první 50 výsledků (ve výchozím nastavení).
 
 ## <a name="send-your-first-query"></a>Odeslání prvního dotazu
@@ -63,10 +63,10 @@ Jako krok ověření vložte následující žádost do pole získat a klikněte
 Vložte tuto adresu URL do klienta REST jako krok ověření a zobrazte strukturu dokumentu.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*
   ```
 
-Řetězec dotazu, **`search=*`**, je nespecifikované vyhledávání odpovídající hodnotě null nebo prázdné vyhledávání. Je to nejjednodušší hledání, které můžete udělat.
+Řetězec dotazu, **`search=*`** , je nespecifikované vyhledávání odpovídající hodnotě null nebo prázdné vyhledávání. Je to nejjednodušší hledání, které můžete udělat.
 
 Volitelně můžete přidat **`$count=true`** adresu URL a vrátit tak počet dokumentů, které odpovídají kritériím vyhledávání. U prázdného vyhledávacího řetězce se jedná o všechny dokumenty v indexu (přibližně 2800 v případě úloh NYC).
 
@@ -75,7 +75,7 @@ Volitelně můžete přidat **`$count=true`** adresu URL a vrátit tak počet do
 Přidáním metody **queryType = Full** můžete vyvolat úplnou syntaxi dotazu a přepsat výchozí jednoduchou syntaxi dotazu. 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&search=*
 ```
 
 Všechny příklady v tomto článku určují parametr **queryType = Full** Search, který označuje, že je úplná syntaxe zpracována analyzátorem dotazů Lucene. 
@@ -101,12 +101,12 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 Mezery za čárkami jsou nepovinné.
 
 > [!Tip]
-> Při použití REST API z kódu aplikace Nezapomeňte zadat parametry pro kódování adresy URL jako `$select` a. `searchFields`
+> Při použití REST API z kódu aplikace Nezapomeňte zadat parametry pro kódování adresy URL jako `$select` a `searchFields` .
 
 ### <a name="full-url"></a>Úplná adresa URL
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
 ```
 
 Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
@@ -134,7 +134,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 ### <a name="full-url"></a>Úplná adresa URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Ukázková odpověď po ukázce](media/search-query-lucene-examples/intrafieldfilter.png)
@@ -150,11 +150,11 @@ Nezapomeňte vložit více řetězců v uvozovkách, pokud chcete, aby byly oba 
 Pole zadané v poli **NázevPole: searchExpression** musí být vyhledávací pole. Podrobnosti o tom, jak se v definicích polí používají atributy indexu, najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
 
 > [!NOTE]
-> V předchozím příkladu jsme nemuseli použít `searchFields` parametr, protože každá část dotazu má explicitně zadaný název pole. Tento parametr však lze použít i v `searchFields` případě, že chcete spustit dotaz, ve kterém jsou některé části vymezeny na konkrétní pole, a zbytek by se mohl vztahovat na několik polí. Dotaz `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` by se například shodoval `senior NOT junior` pouze s `business_title` polem, zatímco by odpovídal "externímu" s `posting_type` polem. Název pole zadaný v poli **NázevPole: searchExpression** vždycky má přednost před `searchFields` parametr, což je proč v tomto příkladu nemusíme do `business_title` `searchFields` parametru zahrnout.
+> V předchozím příkladu jsme nemuseli použít `searchFields` parametr, protože každá část dotazu má explicitně zadaný název pole. Tento parametr však lze použít i v `searchFields` případě, že chcete spustit dotaz, ve kterém jsou některé části vymezeny na konkrétní pole, a zbytek by se mohl vztahovat na několik polí. Dotaz by se například `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` shodoval pouze s `senior NOT junior` `business_title` polem, zatímco by odpovídal "externímu" s `posting_type` polem. Název pole zadaný v poli **NázevPole: searchExpression** vždycky má přednost před `searchFields` parametr, což je proč v tomto příkladu nemusíme do `business_title` parametru zahrnout `searchFields` .
 
 ## <a name="example-3-fuzzy-search"></a>Příklad 3: vyhledávání s fuzzy logikou
 
-Úplná syntaxe Lucene podporuje také přibližné vyhledávání, které se shoduje s výrazy, které mají podobnou konstrukci. Chcete-li provést hledání přibližné hodnoty, přidejte `~` na konci jednoho slova symbol tildy s volitelným parametrem, hodnotu mezi 0 a 2, která určuje vzdálenost úprav. Například `blue~` nebo `blue~1` by vrátil modrou, blues a glue.
+Úplná syntaxe Lucene podporuje také přibližné vyhledávání, které se shoduje s výrazy, které mají podobnou konstrukci. Chcete-li provést hledání přibližné hodnoty, přidejte na `~` konci jednoho slova symbol tildy s volitelným parametrem, hodnotu mezi 0 a 2, která určuje vzdálenost úprav. Například `blue~` nebo `blue~1` by vrátil modrou, blues a glue.
 
 ### <a name="search-expression"></a>Výraz hledání
 
@@ -174,7 +174,7 @@ searchFields=business_title&$select=business_title&search=business_title:asosiat
 Tento dotaz vyhledá úlohy s termínem "přidružit" (záměrně nesprávně napsaný):
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
   ![Odezva vyhledávání s fuzzy logikou](media/search-query-lucene-examples/fuzzysearch.png)
 
@@ -197,14 +197,14 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 V tomto dotazu pro úlohy s termínem "vedoucí analytik", kde je oddělený o více než jedno slovo:
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
   ![Dotaz na Proximity](media/search-query-lucene-examples/proximity-before.png)
 
 Zkuste to znovu a odstraňte slova mezi termínem "vedoucí analytik". Všimněte si, že pro tento dotaz jsou vraceny 8 dokumentů na rozdíl od 10 pro předchozí dotaz.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
 ## <a name="example-5-term-boosting"></a>Příklad 5: posílení podmínek
@@ -215,16 +215,16 @@ Termín zvyšování skóre označuje, že dokument je vyšší, pokud obsahuje 
 V tomto dotazu "před" vyhledejte úlohy pomocí programu *počítačový analytik* a Všimněte si, že se nevyskytly žádné výsledky s slovy *Computer* i *analytik*, ale v horní části výsledků se staly úlohy *počítačů* .
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
   ![Zvyšování skóre termínu před](media/search-query-lucene-examples/termboostingbefore.png)
 
 V případě dotazu "po" Opakujte hledání, tentokrát při zvyšování výsledků s výrazem *analytika* v termínu " *počítač* ", pokud obě slova neexistují. 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
 ```
-Lépe čitelná verze výše uvedeného dotazu je `search=business_title:computer analyst^2`. Pro funkční dotaz `^2` je zakódován jako `%5E2`, což je těžké vidět.
+Lépe čitelná verze výše uvedeného dotazu je `search=business_title:computer analyst^2` . Pro funkční dotaz `^2` je zakódován jako `%5E2` , což je těžké vidět.
 
   ![Zvyšování termínu po](media/search-query-lucene-examples/termboostingafter.png)
 
@@ -247,10 +247,10 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 
 ### <a name="full-url"></a>Úplná adresa URL
 
-V tomto dotazu vyhledejte úlohy, které mají termín vyšší nebo nižší: `search=business_title:/(Sen|Jun)ior/`.
+V tomto dotazu vyhledejte úlohy, které mají termín vyšší nebo nižší: `search=business_title:/(Sen|Jun)ior/` .
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
   ![Dotaz Regex](media/search-query-lucene-examples/regex.png)
@@ -260,7 +260,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 >
 
 ## <a name="example-7-wildcard-search"></a>Příklad 7: hledání pomocí zástupných znaků
-Můžete použít obecně rozpoznanou syntaxi pro hledání zástupných znaků více (\*?). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jedním výrazem a nikoli frází.
+Můžete použít obecně rozpoznanou syntaxi pro \* hledání zástupných znaků více (?). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jedním výrazem a nikoli frází.
 
 ### <a name="search-expression"></a>Výraz hledání
 
@@ -273,7 +273,7 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 V tomto dotazu vyhledejte úlohy, které obsahují předponu "program", která by obsahovala obchodní tituly s výrazy programování a programátory. Nemůžete použít * ani? symbol jako první znak hledání.
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
   ![Zástupný dotaz](media/search-query-lucene-examples/wildcard.png)
 
