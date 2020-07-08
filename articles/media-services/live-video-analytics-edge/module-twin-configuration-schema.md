@@ -4,10 +4,9 @@ description: Toto téma popisuje modul s dvojitým formátem JSON pro živé vid
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266810"
 ---
 # <a name="module-twin-json-schema"></a>Nevlákenný modul – schéma JSON
@@ -23,23 +22,23 @@ Toto téma popisuje modul s dvojitým formátem JSON pro živé video analýzy v
 
 Live video Analytics na IoT Edge zpřístupňuje následující funkční vlastnosti modulu. 
 
-|Vlastnost |Požaduje se |Dynamická |Popis |
+|Vlastnost |Požaduje se |Dynamická |Description |
 |---|---|---|---|
-|applicationDataDirectory |Ano |Ne |Cesta k připojenému svazku pro trvalou konfiguraci. |
-|azureMediaServicesArmId |Ano |Ne |Jedinečný identifikátor správy prostředků Azure pro účet Media Services.|
-|aadTenantId |Ano |Ne |ID tenanta Azure AD zákazníka.|
+|applicationDataDirectory |Yes |No |Cesta k připojenému svazku pro trvalou konfiguraci. |
+|azureMediaServicesArmId |Yes |No |Jedinečný identifikátor správy prostředků Azure pro účet Media Services.|
+|aadTenantId |Yes |No |ID tenanta Azure AD zákazníka.|
 |aadServicePrincipalAppId |Ano |Ano |Zákazník vytvořil AppId Azure AD.|
-|aadServicePrincipalCertificate |Ano<sup>*</sup>  |Ano |Zákazník vytvořil certifikát AppId Azure AD.|
-|aadServicePrincipalPassword |Ano<sup>*</sup>  |Ano |Zákazník vytvořil heslo AppId Azure AD.|
-|aadEndpoint |Ne |Ne |Koncový bod služby Azure AD specifický pro Cloud. <br/>Výchozí`https://login.microsoftonline.com` |
-|aadResourceId |Ne |Ne |ID cílové skupiny nebo prostředku Azure AD konkrétního cloudu <br/>Výchozí`https://management.core.windows.net/` |
-|armEndpoint |Ne |Ne |Koncový bod pro správu prostředků Azure specifický pro Cloud <br/>Výchozí`https://management.azure.com/` |
-|diagnosticsLevel |No |Ano |Podrobnosti událostí: <br/>Informace & # x02758; Upozornění & # x02758; Chyba & # x02758; Důležité & # x02758; NTato |
-|diagnosticsEventsOutputName |No |Ano |Výstup na rozbočovači pro diagnostické události <br/>(Prázdné znamená, že diagnostika nejsou publikována)|
-|operationalEventsOutputName|No|Ano|Výstup centra pro provozní události<br/>(Prázdné znamená, že provozní události nejsou publikovány)
-|logLevel|No|Ano|Jeden z následujících produktů: <br/>& # x000B7; Podrobné<br/>& # x000B7; Informace (výchozí)<br/>& # x000B7; Upozornění<br/>& # x000B7; Chyba<br/>& # x000B7; NTato|
-|logCategories|No|Ano|Čárkami oddělený seznam následujících: aplikace, MediaPipeline, události <br/>Výchozí: aplikace, události|
-|debugLogsDirectory|No|Ano|Adresář pro protokoly ladění. Pokud jsou generovány protokoly, nejsou-li přítomny protokoly ladění, jsou zakázány.
+|aadServicePrincipalCertificate |Ano<sup>*</sup>  |Yes |Zákazník vytvořil certifikát AppId Azure AD.|
+|aadServicePrincipalPassword |Ano<sup>*</sup>  |Yes |Zákazník vytvořil heslo AppId Azure AD.|
+|aadEndpoint |No |No |Koncový bod služby Azure AD specifický pro Cloud. <br/>Výchozí`https://login.microsoftonline.com` |
+|aadResourceId |No |No |ID cílové skupiny nebo prostředku Azure AD konkrétního cloudu <br/>Výchozí`https://management.core.windows.net/` |
+|armEndpoint |No |No |Koncový bod pro správu prostředků Azure specifický pro Cloud <br/>Výchozí`https://management.azure.com/` |
+|diagnosticsLevel |No |Yes |Podrobnosti událostí: <br/>Informace & # x02758; Upozornění & # x02758; Chyba & # x02758; Důležité & # x02758; NTato |
+|diagnosticsEventsOutputName |No |Yes |Výstup na rozbočovači pro diagnostické události <br/>(Prázdné znamená, že diagnostika nejsou publikována)|
+|operationalEventsOutputName|No|Yes|Výstup centra pro provozní události<br/>(Prázdné znamená, že provozní události nejsou publikovány)
+|logLevel|No|Yes|Jeden z následujících produktů: <br/>& # x000B7; Podrobné<br/>& # x000B7; Informace (výchozí)<br/>& # x000B7; Upozornění<br/>& # x000B7; Chyba<br/>& # x000B7; NTato|
+|logCategories|No|Yes|Čárkami oddělený seznam následujících: aplikace, MediaPipeline, události <br/>Výchozí: aplikace, události|
+|debugLogsDirectory|No|Yes|Adresář pro protokoly ladění. Pokud jsou generovány protokoly, nejsou-li přítomny protokoly ladění, jsou zakázány.
 
 <sup>*</sup>Je nutné zadat buď certifikát zabezpečení služby, nebo heslo. 
 

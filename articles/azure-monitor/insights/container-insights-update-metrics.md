@@ -4,10 +4,9 @@ description: Tento článek popisuje, jak aktualizovat Azure Monitor pro kontejn
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298257"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak aktualizovat službu Azure Monitor pro kontejnery a povolit metriky
@@ -90,7 +89,7 @@ Provedením následujících kroků aktualizujete konkrétní cluster v předpla
 
 Provedením následujících kroků aktualizujte všechny clustery v rámci předplatného pomocí Azure PowerShell.
 
-1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) si skript **mdm_onboarding_atscale. ps1** a uložte ho do místní složky z našeho úložiště GitHub.
+1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) si skript **mdm_onboarding_atscale.ps1** a uložte ho do místní složky z našeho úložiště GitHub.
 2. Spusťte následující příkaz pomocí Azure PowerShell.  Upravte hodnotu **SubscriptionId** pomocí hodnoty ze stránky **přehledu AKS** pro cluster AKS.
 
     ```powershell
@@ -106,7 +105,7 @@ Provedením následujících kroků aktualizujte všechny clustery v rámci pře
 
 Provedením následujících kroků aktualizujte konkrétní cluster pomocí Azure PowerShell.
 
-1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) si skript **mdm_onboarding. ps1** a uložte ho do místní složky z našeho úložiště GitHub.
+1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) si skript **mdm_onboarding.ps1** a uložte ho do místní složky z našeho úložiště GitHub.
 
 2. Spusťte následující příkaz pomocí Azure PowerShell. Upravte hodnoty pro **SubscriptionId**, **resourceGroupName**a **název_clusteru** pomocí hodnot na stránce **Přehled AKS** pro cluster AKS.
 

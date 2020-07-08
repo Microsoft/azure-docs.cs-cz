@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 05/27/2020
 ms.author: dbradish
 ms.openlocfilehash: 404022b13f44174e4b647f0430a58fac5eeb81df
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300616"
 ---
 # <a name="azure-cli-for-azure-data-share"></a>Azure CLI pro sdílení dat Azure
@@ -24,7 +23,7 @@ Rozhraní příkazového řádku Azure ([Azure CLI](/cli/azure/what-is-azure-cli
 
 Všechny příkazy rozhraní příkazového řádku Azure pro sdílenou složku Azure jsou aktuálně rozšířením rozhraní příkazového řádku Azure CLI.  Rozšíření poskytuje přístup k experimentálním a předběžným příkazům.  Přečtěte si další informace o odkazech na rozšíření v [používání rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-|Reference k rozhraní příkazového řádku Azure CLI |Popis
+|Reference k rozhraní příkazového řádku Azure CLI |Description
 |-|-|-|
 | [AZ datashare](/cli/azure/ext/datashare/datashare) | Všechny příkazy pro správu Azure Data Share.
 | [AZ datashare Account](/cli/azure/ext/datashare/datashare/account) | Příkazy pro správu účtů Azure Data Share

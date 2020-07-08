@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Popisuje procesy, které Azure Dev Spaces napájení
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307363"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Jak Azure Dev Spaces funguje
@@ -28,7 +27,7 @@ Pomocí místního procesu s Kubernetes můžete připojit svůj vývojový poč
 
 ### <a name="run-your-code-in-aks"></a>Spuštění kódu v AKS
 
-Kromě přesměrování provozu mezi vývojovým počítačem a vaším AKS clusterem můžete pomocí Azure Dev Spaces nakonfigurovat a rychle spustit kód přímo v AKS. Pomocí sady Visual Studio, Visual Studio Code nebo Azure Dev Spaces CLI, Azure dev Spaces nahraje váš kód do clusteru a pak ho sestaví a spustí. Azure dev Spaces může také inteligentně synchronizovat změny kódu a restartovat službu, aby se změny projevily podle potřeby. Při spuštění kódu se protokoly sestavení a trasování HTTP streamují zpátky do vašeho klienta, abyste mohli sledovat průběh a diagnostikovat případné problémy. Můžete také použít Azure Dev Spaces, pro připojení ladicího programu v aplikaci Visual Studio a Visual Studio Code na služby Java, Node. js a .NET Core. Další informace najdete v tématu [jak připravovat projekt pro Azure dev Spaces funguje][how-it-works-prep], [Jak spustit kód s Azure dev Spaces funguje][how-it-works-up]a [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging].
+Kromě přesměrování provozu mezi vývojovým počítačem a vaším AKS clusterem můžete pomocí Azure Dev Spaces nakonfigurovat a rychle spustit kód přímo v AKS. Pomocí sady Visual Studio, Visual Studio Code nebo Azure Dev Spaces CLI, Azure dev Spaces nahraje váš kód do clusteru a pak ho sestaví a spustí. Azure dev Spaces může také inteligentně synchronizovat změny kódu a restartovat službu, aby se změny projevily podle potřeby. Při spuštění kódu se protokoly sestavení a trasování HTTP streamují zpátky do vašeho klienta, abyste mohli sledovat průběh a diagnostikovat případné problémy. Můžete také použít Azure Dev Spaces, pro připojení ladicího programu v aplikaci Visual Studio a Visual Studio Code na služby Java, Node.js a .NET Core. Další informace najdete v tématu [jak připravovat projekt pro Azure dev Spaces funguje][how-it-works-prep], [Jak spustit kód s Azure dev Spaces funguje][how-it-works-up]a [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging].
 
 ## <a name="team-development"></a>Týmový vývoj
 

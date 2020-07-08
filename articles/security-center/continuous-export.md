@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
 ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299940"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
@@ -143,5 +142,5 @@ Související materiály najdete v následující dokumentaci:
 
 - [Dokumentace ke službě Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Dokumentace k ověřovacím službám Azure](https://docs.microsoft.com/azure/sentinel/)
-- [Dokumentace ke službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Dokumentace k Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schémata datových typů automatizace a průběžného exportu pracovního postupu](https://aka.ms/ASCAutomationSchemas)

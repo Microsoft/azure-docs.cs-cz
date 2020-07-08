@@ -4,10 +4,9 @@ description: Vytvoření skupiny kontejnerů ve virtuální síti a použití sl
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299158"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Zveřejňuje statickou IP adresu pro skupinu kontejnerů.
@@ -29,7 +28,7 @@ Pokud je Aplikační brána spuštěná a skupina kontejnerů zpřístupňuje st
 
 V typickém případě už můžete mít virtuální síť Azure. Pokud ho ještě nemáte, vytvořte ho tak, jak je znázorněno v následujících ukázkových příkazech. Virtuální síť potřebuje samostatné podsítě pro aplikační bránu a skupinu kontejnerů.
 
-Pokud ho potřebujete, vytvořte skupinu prostředků Azure. Například:
+Pokud ho potřebujete, vytvořte skupinu prostředků Azure. Příklad:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
@@ -71,7 +70,7 @@ az network public-ip create \
 
 Spusťte následující příkaz [AZ Container Create][az-container-create] a vytvořte skupinu kontejnerů ve virtuální síti, kterou jste nakonfigurovali v předchozím kroku. 
 
-Skupina je nasazená v podsíti *myACISubnet* a obsahuje jednu instanci s názvem *kontejneru AppContainer* , která načte `aci-helloworld` image. Jak je vidět v dalších článcích v dokumentaci, tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML. 
+Skupina je nasazená v podsíti *myACISubnet* a obsahuje jednu instanci s názvem *kontejneru AppContainer* , která načte `aci-helloworld` image. Jak je vidět v dalších článcích v dokumentaci, tento obrázek zabalí malou webovou aplikaci napsanou v Node.js, která slouží jako statická stránka HTML. 
 
 ```azurecli
 az container create \

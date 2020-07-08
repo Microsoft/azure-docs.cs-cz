@@ -9,10 +9,9 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298223"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Použití sady Visual Studio a Visual Studio Code k sestavování zařízení IoT technologie Plug and Play
@@ -69,7 +68,7 @@ Generátor kódu se pokusí použít soubory DCM a rozhraní umístěné v míst
 
 Po dokončení generování kódu rozšíření otevře nové okno VS Code s kódem. Otevřete-li vygenerovaný soubor, například **Main. c**, může se stát, že technologie IntelliSense ohlásí, že nemůže otevřít zdrojové soubory sady c SDK. Chcete-li povolit správnou navigaci pomocí technologie IntelliSense a kódu, použijte následující postup pro zahrnutí zdroje C SDK:
 
-1. V VS Code pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte a vyberte **C/C++: upravit konfigurace (JSON)** a otevřete soubor **c_cpp_properties. JSON** .
+1. V VS Code pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte a vyberte **C/C++: upravit konfigurace (JSON)** a otevřete **c_cpp_properties.jsv** souboru.
 
 1. Do části přidejte cestu k sadě SDK pro zařízení `includePath` :
 

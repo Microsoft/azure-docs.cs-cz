@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 6/2/2020
 ms.subservice: alerts
 ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299294"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
@@ -34,7 +33,7 @@ Základní postup je následující:
 
 Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je uvedená Ukázková šablona, která vytvoří pravidlo upozornění metriky.
 
-Následující kód JSON uložte jako simplestaticmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako simplestaticmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -208,7 +207,7 @@ Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zd
 
 Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí souboru parametrů. Ukázkový soubor parametrů je uveden níže.
 
-Níže uvedený formát JSON uložte jako simplestaticmetricalert. Parameters. JSON a upravte ho podle potřeby.
+Níže uvedený formát JSON uložte jako simplestaticmetricalert.parameters.jsa podle potřeby ho upravte.
 
 ```json
 {
@@ -283,7 +282,7 @@ az group deployment create \
 
 Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je uvedená Ukázková šablona, která vytvoří pravidlo upozornění metriky.
 
-Následující kód JSON uložte jako simpledynamicmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako simpledynamicmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -481,7 +480,7 @@ Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zd
 
 Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí souboru parametrů. Ukázkový soubor parametrů je uveden níže. 
 
-Níže uvedený formát JSON uložte jako simpledynamicmetricalert. Parameters. JSON a upravte ho podle potřeby.
+Níže uvedený formát JSON uložte jako simpledynamicmetricalert.parameters.jsa podle potřeby ho upravte.
 
 ```json
 {
@@ -572,7 +571,7 @@ Při použití dimenzí v pravidle výstrahy obsahujícím více kritérií Pama
     - V následujícím příkladu, protože **transakce** i metriky **SuccessE2ELatency** mají dimenzi **ApiName** a *Criterion1* Určuje hodnotu *getblob* pro dimenzi **ApiName** , pak *criterion2* musí také nastavit hodnotu *getblob* pro dimenzi **ApiName** .
 
 
-Následující kód JSON uložte jako advancedstaticmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako advancedstaticmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -707,7 +706,7 @@ Následující kód JSON uložte jako advancedstaticmetricalert. JSON pro účel
 
 Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Uložte a upravte JSON níže jako advancedstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
+Pro účely tohoto návodu uložte a upravte JSON níže jako advancedstaticmetricalert.parameters.js.
 
 ```json
 {
@@ -816,7 +815,7 @@ Například několik možných časových řad, které jsou monitorovány pomoc�
 - Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
 - Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
 
-Následující kód JSON uložte jako multidimensionalstaticmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako multidimensionalstaticmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -943,7 +942,7 @@ Následující kód JSON uložte jako multidimensionalstaticmetricalert. JSON pr
 
 Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Uložte a upravte JSON níže jako multidimensionalstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
+Pro účely tohoto návodu uložte a upravte JSON níže jako multidimensionalstaticmetricalert.parameters.js.
 
 ```json
 {
@@ -1036,7 +1035,7 @@ Například několik možných časových řad, které jsou monitorovány pomoc�
 - Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
 - Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
 
-Následující kód JSON uložte jako advanceddynamicmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako advanceddynamicmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1158,7 +1157,7 @@ Následující kód JSON uložte jako advanceddynamicmetricalert. JSON pro úče
 
 Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Uložte a upravte JSON níže jako advanceddynamicmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
+Pro účely tohoto návodu uložte a upravte JSON níže jako advanceddynamicmetricalert.parameters.js.
 
 ```json
 {
@@ -1252,7 +1251,7 @@ Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vla
 
 Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky. Ujistěte se také, že je již hlášena vlastní metrika, protože nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje.
 
-Následující kód JSON uložte jako customstaticmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako customstaticmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1432,7 +1431,7 @@ Následující kód JSON uložte jako customstaticmetricalert. JSON pro účely 
 
 Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
 
-Uložte a upravte JSON níže jako customstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
+Pro účely tohoto návodu uložte a upravte JSON níže jako customstaticmetricalert.parameters.js.
 
 ```json
 {
@@ -1527,7 +1526,7 @@ V této části najdete popis Azure Resource Manager šablon pro různé scéná
 
 Tato šablona vytvoří pravidlo upozornění na metriku statického prahového hodnoty, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
 
-Pro účely tohoto návodu uložte JSON jako all-VM-in-Resource-Group-static. JSON.
+Pro účely tohoto návodu uložte JSON níže jako all-vms-in-resource-group-static.js.
 
 ```json
 {
@@ -1760,7 +1759,7 @@ Pro účely tohoto návodu uložte JSON jako all-VM-in-Resource-Group-static. JS
 ```
 
 Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
-Pro účely tohoto návodu uložte a upravte JSON níže jako all-VM-in-Resource-Group-static. Parameters. JSON.
+Pro účely tohoto návodu uložte a upravte JSON níže jako all-vms-in-resource-group-static.parameters.js.
 
 ```json
 {
@@ -1839,7 +1838,7 @@ az group deployment create \
 
 Tato šablona vytvoří pravidlo upozornění na metriku dynamických prahových hodnot, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
 
-Pro účely tohoto návodu uložte JSON jako all-VM-in-Resource-Group-Dynamic. JSON.
+Pro účely tohoto návodu uložte JSON níže jako all-vms-in-resource-group-dynamic.js.
 
 ```json
 {
@@ -2089,7 +2088,7 @@ Pro účely tohoto návodu uložte JSON jako all-VM-in-Resource-Group-Dynamic. J
 ```
 
 Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
-Pro účely tohoto návodu uložte a upravte JSON níže jako all-VM-in-Resource-Group-Dynamic. Parameters. JSON.
+Pro účely tohoto návodu uložte a upravte JSON níže jako all-vms-in-resource-group-dynamic.parameters.js.
 
 ```json
 {
@@ -2174,7 +2173,7 @@ az group deployment create \
 
 Tato šablona vytvoří pravidlo upozornění na metriku statické prahové hodnoty, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v předplatném.
 
-Následující kód JSON uložte jako all-VM-in-Subscription-static. JSON pro účely tohoto návodu.
+Pro účely tohoto návodu uložte JSON níže jako all-vms-in-subscription-static.js.
 
 ```json
 {
@@ -2408,7 +2407,7 @@ Následující kód JSON uložte jako all-VM-in-Subscription-static. JSON pro ú
 ```
 
 Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
-Pro účely tohoto návodu uložte a upravte níže uvedený formát JSON jako all-VM-in-Subscription-static. Parameters. JSON.
+Pro účely tohoto návodu uložte a upravte JSON níže jako all-vms-in-subscription-static.parameters.js.
 
 ```json
 {
@@ -2484,7 +2483,7 @@ az group deployment create \
 
 Tato šablona vytvoří pravidlo upozornění na metriku dynamických prahových hodnot, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v předplatném.
 
-Pro účely tohoto postupu si níže uložte JSON jako all-VM-in-Subscription-Dynamic. JSON.
+Pro účely tohoto návodu uložte JSON níže jako all-vms-in-subscription-dynamic.js.
 
 ```json
 {
@@ -2734,7 +2733,7 @@ Pro účely tohoto postupu si níže uložte JSON jako all-VM-in-Subscription-Dy
 ```
 
 Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
-Pro účely tohoto návodu uložte a upravte JSON níže jako all-VM-Subscription-Dynamic. Parameters. JSON.
+Pro účely tohoto návodu uložte a upravte JSON níže jako all-vms-in-subscription-dynamic.parameters.js.
 
 ```json
 {
@@ -2816,7 +2815,7 @@ az group deployment create \
 
 Tato šablona vytvoří pravidlo upozornění na metriku statického prahového hodnoty, které monitoruje procentuální hodnotu procesoru pro seznam virtuálních počítačů (v jedné oblasti Azure) v předplatném.
 
-Pro účely tohoto návodu uložte níže uvedený formát JSON jako list-VM-static. JSON.
+Pro účely tohoto návodu uložte JSON níže jako list-of-vms-static.js.
 
 ```json
 {
@@ -3050,7 +3049,7 @@ Pro účely tohoto návodu uložte níže uvedený formát JSON jako list-VM-sta
 ```
 
 Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
-Pro účely tohoto návodu uložte a upravte níže uvedený formát JSON jako list-VM-static. Parameters. JSON.
+Pro účely tohoto návodu uložte a upravte JSON níže jako list-of-vms-static.parameters.js.
 
 ```json
 {
@@ -3129,7 +3128,7 @@ az group deployment create \
 
 Tato šablona vytvoří pravidlo upozornění na metriku dynamických prahových hodnot, které monitoruje procentuální hodnotu procesoru pro seznam virtuálních počítačů (v jedné oblasti Azure) v předplatném.
 
-Pro účely tohoto návodu uložte níže uvedený formát JSON jako list-VMS-Dynamic. JSON.
+Pro účely tohoto návodu uložte JSON níže jako list-of-vms-dynamic.js.
 
 ```json
 {
@@ -3379,7 +3378,7 @@ Pro účely tohoto návodu uložte níže uvedený formát JSON jako list-VMS-Dy
 ```
 
 Výše uvedenou šablonu můžete použít spolu se souborem parametrů uvedeným níže.
-Pro účely tohoto návodu uložte a upravte následující JSON jako list-VM-Dynamic. Parameters. JSON.
+Pro účely tohoto návodu uložte a upravte JSON níže jako list-of-vms-dynamic.parameters.js.
 
 ```json
 {
@@ -3465,7 +3464,7 @@ az group deployment create \
 [Application Insights testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) vám pomůžou monitorovat dostupnost vašeho webu nebo aplikace z různých míst po celém světě. Výstrahy testu dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu míst.
 Výstrahy testu dostupnosti stejného typu prostředku jako výstrahy metriky (Microsoft. Insights/metricAlerts). Následující vzorovou Azure Resource Manager šablonu lze použít k nastavení jednoduchého testu dostupnosti a přidružené výstrahy.
 
-Následující kód JSON uložte jako availabilityalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako availabilityalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -3573,7 +3572,7 @@ Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí
 >
 > `&amp`; je odkaz na entitu HTML pro &. Parametry adresy URL jsou pořád oddělené jednou &, ale pokud si adresu URL ve formátu HTML zmiňujete, budete ji muset zakódovat. Takže pokud máte v hodnotě parametru pingURL nějaké "&", musíte ho řídicím znakem " `&amp` ;".
 
-Níže uvedený formát JSON uložte jako availabilityalert. Parameters. JSON a upravte ho podle potřeby.
+Níže uvedený formát JSON uložte jako availabilityalert.parameters.jsa podle potřeby ho upravte.
 
 ```json
 {

@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
 ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300523"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Řešení potíží při spuštění – došlo k chybě čtení z disku
@@ -58,7 +57,7 @@ Tato chybová zpráva znamená, že je struktura disku poškozená a není čite
 
 Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s operačním systémem, který obsahuje úložiště BCD, je označený jako **aktivní**. Pokud máte virtuální počítač 2. generace, přeskočte před [opravou diskového oddílu](#fix-the-disk-partition), protože příznak stavu byl v pozdější generaci zastaralý.
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd. exe).
+1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd.exe).
 1. Zadáním příkazu **DiskPart** spusťte nástroj **DiskPart** .
 1. Zadejte **disk se seznamem** pro výpis disků v systému a identifikaci připojeného virtuálního pevného disku operačního systému (VHD).
 1. Po umístění připojeného virtuálního pevného disku s operačním systémem zadejte k výběru disku položku **sel disk #** . Na následujícím obrázku najdete příklad, kdy je disk 1 připojeným virtuálním pevným diskem operačního systému.
@@ -86,7 +85,7 @@ Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s op
 
 ### <a name="fix-the-disk-partition"></a>Opravit diskový oddíl
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd. exe).
+1. Otevřete příkazový řádek se zvýšenými oprávněními (cmd.exe).
 1. Pomocí následujícího příkazu spusťte na discích **příkaz Chkdsk** a proveďte opravy chyb:
 
    `chkdsk <DRIVE LETTER>: /f`

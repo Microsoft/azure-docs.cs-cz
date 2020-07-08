@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300728"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
@@ -91,5 +90,5 @@ U globálně distribuovaných aplikací nebo pro regionální scénáře převze
 - [Možnosti podpory](supportability.md)
 - [Vysoká dostupnost](high-availability.md)
 - [Fyzické zabezpečení](physical-security.md)
-- [Sledování](monitoring.md)
+- [Monitorování](monitoring.md)
 - [Architektura nasazení](deployment-architecture.md)

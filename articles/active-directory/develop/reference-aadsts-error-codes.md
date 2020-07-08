@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266589"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
@@ -60,7 +59,7 @@ Tady je Ukázková chybová odpověď:
 
 `error`Pole má několik možných hodnot – Přečtěte si odkazy na dokumentaci k protokolu a specifikace OAuth 2,0, abyste se dozvěděli víc o specifických chybách (například `authorization_pending` v [toku kódu zařízení](v2-oauth2-device-code.md)) a jak na ně reagovat.  Zde jsou uvedeny některé běžné položky:
 
-| Kód chyby         | Popis        | Akce klienta    |
+| Kód chyby         | Description        | Akce klienta    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu.|
 | `invalid_grant`    | Některé materiály pro ověřování (ověřovací kód, token aktualizace, přístupový token, PKCE) byly neplatné, neanalyzovatelné, chybějící nebo jinak nepoužitelné. | Vyzkoušejte nový požadavek na `/authorize` koncový bod, abyste získali nový autorizační kód.  Zvažte možnost zkontrolovat a ověřit používání protokolů v této aplikaci. |
@@ -78,7 +77,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 
 ## <a name="aadsts-error-codes"></a>Kódy chyb AADSTS
 
-| Chyba | Popis |
+| Chyba | Description |
 |---|---|
 | AADSTS16000 | SelectUserAccount – Toto je přerušení vyvolané službou Azure AD, které vede k uživatelskému rozhraní, které umožňuje uživateli vybrat z několika platných relací jednotného přihlašování. Tato chyba je poměrně častá a může se vrátit do aplikace, pokud `prompt=none` je zadaná. |
 | AADSTS16001 | UserAccountSelectionInvalid – Tato chyba se zobrazí, pokud uživatel klikne na dlaždici, že byla logika výběru relace odmítnuta. Když se aktivuje Tato chyba, umožní uživateli obnovení z aktualizovaného seznamu dlaždic nebo relací nebo výběrem jiného účtu. K této chybě může dojít z důvodu vady kódu nebo stavu časování. |
@@ -308,7 +307,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource – prostředek není nakonfigurovaný tak, aby přijímal tokeny jenom pro zařízení. |
 | AADSTS240001 | BulkAADJTokenUnauthorized – uživatel nemá autorizaci k registraci zařízení ve službě Azure AD. |
 | AADSTS240002 | RequiredClaimIsMissing – id_token nelze použít jako `urn:ietf:params:oauth:grant-type:jwt-bearer` udělení.|
-| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy – správce tenanta nakonfiguroval zásadu zabezpečení, která tento požadavek blokuje. Zkontrolujte zásady zabezpečení, které jsou definovány na úrovni tenanta, a určete, jestli váš požadavek splňuje požadavky zásad. |
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy – správce tenanta nakonfiguroval zásadu zabezpečení, která tento požadavek blokuje. Zkontrolujte zásady zabezpečení definované na úrovni tenanta a zjistěte, jestli váš požadavek splňuje požadavky zásad. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest – aplikace se nenašla v adresáři nebo tenantovi. K tomu může dojít v případě, že aplikace nebyla nainstalována správcem tenanta nebo nebyla odsouhlasena žádným uživatelem v tenantovi. Možná jste špatně nakonfigurovali hodnotu identifikátoru aplikace nebo jste odeslali požadavek na ověření do nesprávného tenanta. |
 | AADSTS700020 | InteractionRequired – udělení přístupu vyžaduje interakci. |
 | AADSTS700022 | InvalidMultipleResourcesScope – zadaná hodnota oboru vstupních parametrů není platná, protože obsahuje více než jeden prostředek. |

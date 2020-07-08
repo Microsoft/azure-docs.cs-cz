@@ -12,10 +12,9 @@ ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84295418"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
@@ -42,7 +41,7 @@ Tyto kroky se mohou mírně lišit v závislosti na typu aplikace, kterou vytvá
 
 ## <a name="web-applications"></a>Webové aplikace
 
-Pro webové aplikace (včetně .NET, PHP, Java, Ruby, Pythonu a Node. js), které jsou hostované na serveru a jsou dostupné prostřednictvím prohlížeče, Azure AD B2C podporuje [OpenID Connect](protocols-overview.md) pro všechna uživatelská prostředí. V Azure AD B2C implementaci OpenID Connect inicializuje webová aplikace uživatelské prostředí tím, že vydává žádosti o ověření do služby Azure AD. Výsledkem požadavku je `id_token`. Tento token zabezpečení představuje identitu uživatele. Poskytuje také informace o uživateli ve formě deklarací identity:
+Pro webové aplikace (včetně .NET, PHP, Java, Ruby, Pythonu a Node.js), které jsou hostované na serveru a jsou dostupné prostřednictvím prohlížeče, Azure AD B2C podporuje [OpenID Connect](protocols-overview.md) pro všechna prostředí uživatele. V Azure AD B2C implementaci OpenID Connect inicializuje webová aplikace uživatelské prostředí tím, že vydává žádosti o ověření do služby Azure AD. Výsledkem požadavku je `id_token`. Tento token zabezpečení představuje identitu uživatele. Poskytuje také informace o uživateli ve formě deklarací identity:
 
 ```json
 // Partial raw id_token

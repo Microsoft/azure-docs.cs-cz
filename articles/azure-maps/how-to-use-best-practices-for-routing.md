@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266691"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
@@ -61,7 +60,7 @@ Tady je porovnání, ve kterém se zobrazují některé možnosti směrových ce
 | Získat směr směrování | 1 | | X | X | |
 | Pokyny pro odeslání trasy | 1 | X | X | X | X |
 | Batch – itinerář trasy | 700 | | X | X | |
-| Vyjednaná matice směrování | 700 | | X | | |
+| Vyjednaná matice směrování | 700 | | × | | |
 
 Další informace o možnostech směrování u elektrických vozidel najdete v našem kurzu o [Směrování elektrických vozidel pomocí Azure Notebooks s Pythonem](tutorial-ev-routing.md).
 
@@ -73,7 +72,7 @@ Hodnota **travelTimeInSeconds** výpočtu trasy zahrnuje zpoždění v důsledku
 
 Pokud do žádosti zahrnete parametr **computeTravelTimeFor = All** , bude mít element Summary v odpovědi následující další pole, včetně historických podmínek provozu:
 
-| Prvek | Popis|
+| Prvek | Description|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | Odhadovaná doba trvání cesty, která se počítá jako v případě, že na trase nedochází k žádným zpožděním kvůli přenosovým podmínkám, například kvůli zahlcení |
 | historicTrafficTravelTimeInSeconds | Odhadovaná doba trvání cesty vypočtená pomocí historických dat o přenosech závislých na čase |
@@ -323,7 +322,7 @@ Obrázek níže je příklad vykreslování alternativních tras se zadanými li
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Použití směrovací služby ve webové aplikaci
 
-Sada Azure Maps Web SDK poskytuje [modul služby](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest). Tento modul je pomocná knihovna usnadňující použití rozhraní REST API Azure Maps v aplikacích web nebo Node. js pomocí JavaScriptu nebo TypeScript. Modul služby lze použít k vykreslení vrácených tras na mapě. Modul automaticky určuje, které rozhraní API se má použít s požadavky GET a POST.
+Sada Azure Maps Web SDK poskytuje [modul služby](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest). Tento modul je pomocná knihovna usnadňující použití Azure Maps rozhraní REST API ve webových nebo Node.jsch aplikacích pomocí JavaScriptu nebo TypeScript. Modul služby lze použít k vykreslení vrácených tras na mapě. Modul automaticky určuje, které rozhraní API se má použít s požadavky GET a POST.
 
 ## <a name="next-steps"></a>Další kroky
 

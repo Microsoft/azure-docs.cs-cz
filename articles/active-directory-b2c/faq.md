@@ -11,10 +11,9 @@ ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84297900"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
@@ -49,7 +48,7 @@ Azure AD B2C také podporuje [vlastní zásady](custom-policy-overview.md). Vlas
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Můžu nakonfigurovat obory pro shromažďování dalších informací o uživatelích z různých poskytovatelů sociálních identit?
 
-No. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
+Ne. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
 
 * Facebook: e-mail
 * Google +: e-mail

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 85aaefa12f0cef21e3a367700d1a4899a75e8a90
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298336"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
@@ -30,7 +29,7 @@ Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dota
 
 1. Na [portálu](https://portal.azure.com/)vyberte **monitorování**. V této části vyberte **výstrahy**.
 
-    ![Sledování](media/alerts-log/AlertsPreviewMenu.png)
+    ![Monitorování](media/alerts-log/AlertsPreviewMenu.png)
 
 1. Klikněte na **nové pravidlo výstrahy**. 
 
@@ -207,7 +206,7 @@ Následuje struktura šablony prostředků založené na [vytváření pravidel 
 
 ```
 
-Vzorový JSON výše se dá uložit jako (řekněme) sampleScheduledQueryRule. JSON pro účely tohoto procházení a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
+Vzorový formát JSON se dá uložit jako (řekněme) sampleScheduledQueryRule.jspro účely tohoto průvodce pomocí a je možné ho nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Výstraha protokolu s dotazem mezi prostředky pomocí šablony prostředků Azure
@@ -304,7 +303,7 @@ Následuje struktura šablony prostředků založené na [vytváření pravidel 
 > [!IMPORTANT]
 > Při použití dotazu mezi prostředky v upozornění protokolu je použití [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) povinné a uživatel musí mít přístup k seznamu uvedených prostředků.
 
-Vzorový JSON výše se dá uložit jako (řekněme) sampleScheduledQueryRule. JSON pro účely tohoto procházení a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
+Vzorový formát JSON se dá uložit jako (řekněme) sampleScheduledQueryRule.jspro účely tohoto průvodce pomocí a je možné ho nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="managing-log-alerts-using-powershell"></a>Správa výstrah protokolu pomocí prostředí PowerShell
 
@@ -353,7 +352,7 @@ Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](https://docs.
 > [!NOTE]
 > Výstrahy protokolu pro Log Analytics je taky možné spravovat pomocí starších [Log Analytics rozhraní API pro upozornění](api-alerts.md) a starších šablon [Log Analytics uložená hledání a upozornění](../insights/solutions-resources-searches-alerts.md) . Další informace o tom, jak se ve výchozím nastavení používá nové rozhraní API ScheduledQueryRules, najdete v tématu [Přepnutí na nové rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
 
-Výstrahy protokolu aktuálně nemají vyhrazené příkazy rozhraní příkazového řádku. Jak je znázorněno níže, je možné použít příkaz Azure Resource Manager CLI pro ukázkovou šablonu prostředků, která se v oddílu šablony prostředků zobrazila dříve (sampleScheduledQueryRule. JSON):
+Výstrahy protokolu aktuálně nemají vyhrazené příkazy rozhraní příkazového řádku. Jak je znázorněno níže, můžete použít příkaz Azure Resource Manager CLI pro ukázkovou šablonu prostředků, která se zobrazila dříve (sampleScheduledQueryRule.json) v části šablona prostředků:
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json

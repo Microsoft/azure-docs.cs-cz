@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84265314"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework  
@@ -334,7 +333,7 @@ Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráv
 2. Nastavte src na zdroj Smooth Streaming (např. http: \/ /devplatem.vo.msecnd.NET/Sintel/Sintel_H264.ISM/manifest). 
 3. Proveďte požadované změny konfigurace a klikněte na náhled a aktualizovat.
    
-   **Poznámka:** Webový server obsahu potřebuje platný soubor crossdomain. XML. 
+   **Poznámka:** Webový server obsahu potřebuje platné crossdomain.xml. 
 4. Zkopírujte a vložte kód na jednoduchou stránku HTML pomocí oblíbeného textového editoru, jako je například v následujícím příkladu:
 
         <html>

@@ -4,10 +4,9 @@ description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Se
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299226"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
