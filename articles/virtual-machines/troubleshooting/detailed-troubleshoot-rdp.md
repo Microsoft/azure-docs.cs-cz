@@ -16,10 +16,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920140"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobné kroky pro řešení problémů s připojením ke vzdálené ploše virtuálních počítačů s Windows v Azure
@@ -131,11 +130,11 @@ Opakujte pokus o připojení z počítače. Pokud se stále nemůžete připojit
 * Brána Windows Firewall nebo jiná místní brána firewall má odchozí pravidlo, které brání provozu vzdálené plochy.
 * Zjišťování neoprávněných vniknutí nebo software pro monitorování sítě běžící na virtuálním počítači Azure znemožňuje připojení ke vzdálené ploše.
 
-U virtuálních počítačů vytvořených pomocí modelu nasazení Classic můžete použít relaci vzdálené Azure PowerShell k virtuálnímu počítači Azure. Nejdřív musíte nainstalovat certifikát pro hostující cloudovou službu virtuálního počítače. Přejděte na [Konfigurace zabezpečeného vzdáleného powershellového přístupu k Azure Virtual Machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) a Stáhněte si soubor skriptu **InstallWinRMCertAzureVM. ps1** do svého místního počítače.
+U virtuálních počítačů vytvořených pomocí modelu nasazení Classic můžete použít relaci vzdálené Azure PowerShell k virtuálnímu počítači Azure. Nejdřív musíte nainstalovat certifikát pro hostující cloudovou službu virtuálního počítače. Přejděte na [Konfigurace zabezpečeného vzdáleného powershellového přístupu k Azure Virtual Machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) a Stáhněte si soubor **InstallWinRMCertAzureVM.ps1** skriptu do svého místního počítače.
 
 V dalším kroku nainstalujte Azure PowerShell, pokud jste to ještě neudělali. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-Potom otevřete příkazový řádek Azure PowerShell a změňte aktuální složku na umístění souboru skriptu **InstallWinRMCertAzureVM. ps1** . Chcete-li spustit skript Azure PowerShell, je nutné nastavit správné zásady spouštění. Spuštěním příkazu **Get-ExecutionPolicy** určete aktuální úroveň zásad. Informace o nastavení příslušné úrovně najdete v tématu [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
+Potom otevřete příkazový řádek Azure PowerShell a změňte aktuální složku na umístění souboru skriptu **InstallWinRMCertAzureVM.ps1** . Chcete-li spustit skript Azure PowerShell, je nutné nastavit správné zásady spouštění. Spuštěním příkazu **Get-ExecutionPolicy** určete aktuální úroveň zásad. Informace o nastavení příslušné úrovně najdete v tématu [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
 
 V dalším kroku zadejte název předplatného Azure, název cloudové služby a název virtuálního počítače (odebráním < a >ch znaků) a pak tyto příkazy spusťte.
 

@@ -4,10 +4,9 @@ description: Až začnete s Application Insights, tady je přehled funkcí, kter
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.openlocfilehash: 3c4a9a736f34d4f7dbfeb004d0837f1f2efa55dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666020"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Další telemetrie z Application Insights
@@ -18,7 +17,7 @@ Po [přidání Application Insights do kódu ASP.NET](../../azure-monitor/app/as
 |(Servery IIS) [Nainstalujte monitorování stavu](https://go.microsoft.com/fwlink/?LinkId=506648) na každém serverovém počítači.<br/>(Azure Web Apps) V Ovládacích panelech Azure pro webovou aplikaci otevřete okno Application Insights.| [**Čítače výkonu**](../../azure-monitor/app/performance-counters.md)<br/>[**Výjimky**](asp-net-exceptions.md) – podrobné trasování zásobníku<br/>[**Závislosti**](../../azure-monitor/app/asp-net-dependencies.md)|
 |[Přidat fragment kódu JavaScriptu na vaše webové stránky](../../azure-monitor/app/javascript.md)|[Výkon stránky](../../azure-monitor/app/usage-overview.md), výjimky prohlížeče, výkon AJAX. Vlastní telemetrie na straně klienta.|
 |[Vytvořit webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)|Získání výstrah v případě, že váš web nebude k dispozici|
-|Ujistěte se, že nástroj MSBuild generuje [BuildInfo. config.](https://msdn.microsoft.com/library/dn449058.aspx)|[Poznámky k sestavení v grafech metrik](https://docs.microsoft.com/azure/azure-monitor/app/annotations)
+|[Zajistěte, aby byl buildinfo.config](https://msdn.microsoft.com/library/dn449058.aspx) generovaný nástrojem MSBuild|[Poznámky k sestavení v grafech metrik](https://docs.microsoft.com/azure/azure-monitor/app/annotations)
 |[Zápis vlastních událostí a metrik](../../azure-monitor/app/api-custom-events-metrics.md)|Počet obchodních událostí a metrik, sledování podrobného využití a další.|
 |[Profilování živého webu](https://aka.ms/AIProfilerPreview)|Podrobné časování funkcí z živé webové aplikace|
 

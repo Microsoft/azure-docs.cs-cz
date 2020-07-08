@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658622"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Převody dlaždic návrháře zobrazení Azure Monitor
@@ -23,13 +22,13 @@ ms.locfileid: "77658622"
 Opětovné vytvoření dlaždice seznamu & prstence v sešitech zahrnuje dvě samostatné vizualizace. Pro část prstenec jsou k dispozici dvě možnosti.
 V nabídce Start vyberte možnost **Přidat dotaz** a vložte původní dotaz z návrháře zobrazení do buňky.
 
-**Možnost 1:** Výběr **výsečového grafu** z rozevíracího seznamu ![ **vizualizace** : nabídka vizualizace výsečového grafu](media/view-designer-conversion-tiles/pie-chart.png)
+**Možnost 1:** Výběr **výsečového grafu** z rozevíracího seznamu **vizualizace** : ![ Nabídka vizualizace výsečového grafu](media/view-designer-conversion-tiles/pie-chart.png)
 
-**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost `| render piechart` **nastavit podle dotazu** a přidejte do něj dotaz:
+**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost **nastavit podle dotazu** a přidejte `| render piechart` do něj dotaz:
 
  ![Nabídka vizualizace](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Případě**
+**Příklad**
 
 Původní dotaz
 ```KQL
@@ -75,11 +74,11 @@ Existují dvě možnosti, jak vizualizovat spojnicový graf.
  
  ![Nabídka spojnicového grafu](media/view-designer-conversion-tiles/line-visualization.png)
 
-**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost `| render linechart` **nastavit podle dotazu** a přidejte do něj dotaz:
+**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost **nastavit podle dotazu** a přidejte `| render linechart` do něj dotaz:
 
  ![Nabídka vizualizace](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Případě**
+**Příklad**
 
 ```KQL
 search * 
@@ -146,9 +145,9 @@ search *
 
 Existují dvě možnosti, jak vizualizovat dotaz jako pruhový graf:
 
-**Možnost 1:** Výběr **pruhového grafu** z rozevíracího seznamu ![ **vizualizace** : vizualizace BarChart](media/view-designer-conversion-tiles/bar-visualization.png)
+**Možnost 1:** Výběr **pruhového grafu** z rozevíracího seznamu **vizualizace** : ![ vizualizace BarChart](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost `| render barchart` **nastavit podle dotazu** a přidejte do něj dotaz:
+**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost **nastavit podle dotazu** a přidejte `| render barchart` do něj dotaz:
 
  ![Nabídka vizualizace](media/view-designer-conversion-tiles/set-by-query.png)
 

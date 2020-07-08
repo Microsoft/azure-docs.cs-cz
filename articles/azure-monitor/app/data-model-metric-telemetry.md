@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671966"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
@@ -33,7 +32,7 @@ Metrika představující systémové a procesní čítače:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhá práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Průměrná doba provádění požadavků
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Probíhá práce... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | počet požadavků čekajících na zpracování ve frontě
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
 Název metriky, kterou byste chtěli vidět na portálu Application Insights a uživatelském rozhraní. 
 
@@ -59,7 +58,7 @@ Směrodatná odchylka agregované metriky. Neměl by být nastaven pro měření
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
-Metrika s nastavenou `CustomPerfCounter` vlastní vlastností `true` , která označuje, že metrika představuje čítač výkonu systému Windows. Tyto metriky jsou umístěné v tabulce čítače výkonu. Není v customMetrics. Název této metriky se také analyzuje za účelem extrakce názvů kategorií, čítačů a instancí.
+Metrika s `CustomPerfCounter` nastavenou vlastní vlastností `true` , která označuje, že metrika představuje čítač výkonu systému Windows. Tyto metriky jsou umístěné v tabulce čítače výkonu. Není v customMetrics. Název této metriky se také analyzuje za účelem extrakce názvů kategorií, čítačů a instancí.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 

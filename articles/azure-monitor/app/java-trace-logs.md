@@ -4,10 +4,9 @@ description: Prohledat Log4J nebo Logback trasování v Application Insights
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657210"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování Java v Application Insights
@@ -33,7 +32,7 @@ Můžete změnit prahovou hodnotu protokolování zaznamenaného pomocí `AI-Age
 </ApplicationInsightsAgent>
 ```
 
-Pomocí tohoto `AI-Agent.xml` souboru můžete zablokovat zachytávání protokolování agenta Java:
+Pomocí tohoto souboru můžete zablokovat zachytávání protokolování agenta Java `AI-Agent.xml` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -56,7 +55,7 @@ Podle pokynů nainstalujte [sadu Application Insights SDK pro jazyk Java][java],
 *Zvolte vhodný způsob pro váš projekt.*
 
 #### <a name="if-youre-using-maven"></a>Pokud používáte Maven...
-Pokud je váš projekt již nastaven na použití Maven pro sestavení, slučte jeden z následujících fragmentů kódu do souboru pom. XML.
+Pokud je váš projekt již nastaven na použití Maven pro sestavení, slučte jeden z následujících fragmentů kódu do souboru pom.xml.
 
 Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
 

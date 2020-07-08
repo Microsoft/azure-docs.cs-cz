@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658026"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Vizualizace sešitu Azure Monitor
@@ -69,7 +68,7 @@ Pracovní sešity podporují grafy pro protokoly i zdroje dat metriky.
 | `Size` | Svislá velikost ovládacího prvku | Malá, střední, Velká nebo plná |
 | `Color palette` | Paleta barev, která se má použít v grafu Ignorováno v režimu s více metrikami nebo v režimu segmentace. | Modrá, zelená, červená atd. |
 | `Legend` | Agregační funkce, která se má použít pro legendu | Součet nebo průměr hodnot nebo maximum, minimum, první, poslední hodnota |
-| `Query` | Libovolný dotaz KQL, který vrací data ve formátu očekávaném vizualizací grafu | _vyžádá \| požadavky-Series = Count () výchozí nastavení = 0 v časovém razítku před (1d) do Now () krok 1H_ |
+| `Query` | Libovolný dotaz KQL, který vrací data ve formátu očekávaném vizualizací grafu | _vyžádá požadavky \| -Series = Count () výchozí nastavení = 0 v časovém razítku před (1d) do Now () krok 1H_ |
 
 ### <a name="adding-a-metric-chart"></a>Přidání grafu metriky
 
@@ -93,7 +92,7 @@ Pracovní sešity podporují grafy pro protokoly i zdroje dat metriky.
 | `Visualization` | Vizualizace, která se má použít | Plošný, pruhový, spojnicový, bodový, mřížka |
 | `Split By` | Volitelně rozdělit metriku na dimenzi | Transakce podle geografického typu |
 | `Size` | Svislá velikost ovládacího prvku | Malá, střední nebo Velká |
-| `Color palette` | Paleta barev, která se má použít v grafu Ignoruje se `Split by` , pokud se použije parametr. | Modrá, zelená, červená atd. |
+| `Color palette` | Paleta barev, která se má použít v grafu Ignoruje se, pokud se `Split by` použije parametr. | Modrá, zelená, červená atd. |
 
 ## <a name="grids"></a>Mřížky
 
@@ -138,7 +137,7 @@ Podpora dlaždic sešitu zobrazuje název, Podnadpis, velký text, ikony, přech
 7. Kliknutím na tlačítko **nastavení dlaždice** otevřete podokno nastavení.
 8. V **poli dlaždice**nastavte:
     * Hlava`name`
-    * Left: `Requests`, rendererer: `Big Number`, barevná paleta `Green to Red`:, minimální hodnota:`0`
+    * Left: `Requests` , rendererer: `Big Number` , barevná paleta: `Green to Red` , minimální hodnota:`0`
     * Dolů`appName`
 9. Klikněte na tlačítko **Uložit a zavřít** v dolní části podokna.
 
@@ -182,7 +181,7 @@ Následující příklad ukazuje metriky stavu kontejneru (velikost pracovní sa
 8. V části _sloupce_ nahoře nastavte:
     * _ID_ – vykreslovací modul sloupců:`Hidden`
     * _Nadřazené ID_ – vykreslovací modul sloupců:`Hidden`
-    * _Požadavky_ – vykreslovací modul sloupců: `Bar`, barva: `Blue`, minimální hodnota:`0`
+    * _Požadavky_ – vykreslovací modul sloupců: `Bar` , barva: `Blue` , minimální hodnota:`0`
 9. Klikněte na tlačítko _Uložit a zavřít_ v dolní části podokna.    
 
 ![Snímek obrazovky se souhrnným zobrazením dlaždice](./media/workbooks-visualizations/tree-settings.png)
@@ -243,9 +242,9 @@ Následující graf ukazuje tok dat v/v počítači prostřednictvím různých 
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
 10. V _nastavení formát uzlu_ v horní části nastavte:
-    * _Horní sloupec obsahu_– použití: `Name`, Renderer sloupce:`Text`
-    * _Center Content_-use Column: `Calls`, Renderer sloupců: `Big Number`, barevná paleta:`None`
-    * _Dolní obsah_– sloupec použití: `Kind`, zobrazovací sloupec:`Text`
+    * _Horní sloupec obsahu_– použití: `Name` , Renderer sloupce:`Text`
+    * _Center Content_-use Column: `Calls` , Renderer sloupců: `Big Number` , barevná paleta:`None`
+    * _Dolní obsah_– sloupec použití: `Kind` , zobrazovací sloupec:`Text`
 10. Klikněte na tlačítko _Uložit a zavřít_ v dolní části podokna.
 
 ![Snímek obrazovky se souhrnným zobrazením dlaždice](./media/workbooks-visualizations/graph-settings.png)

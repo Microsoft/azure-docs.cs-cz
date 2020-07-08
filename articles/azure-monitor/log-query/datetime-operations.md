@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655374"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Práce s hodnotami data a času v Azure Monitorch dotazech protokolu
@@ -38,7 +37,7 @@ Dotazovací jazyk Kusto má dva hlavní datové typy spojené s daty a časy: Da
 |úrovni mikrosekund | úrovni mikrosekund  |
 |libovoln        | nanosekund   |
 
-Hodnoty DateTime lze vytvořit přetypováním řetězce pomocí `todatetime` operátoru. Chcete-li například zkontrolovat prezenční signály virtuálních počítačů odeslaných v určitém časovém období `between` , použijte operátor k zadání časového rozsahu.
+Hodnoty DateTime lze vytvořit přetypováním řetězce pomocí `todatetime` operátoru. Chcete-li například zkontrolovat prezenční signály virtuálních počítačů odeslaných v určitém časovém období, použijte `between` operátor k zadání časového rozsahu.
 
 ```Kusto
 Heartbeat
@@ -84,7 +83,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-`timeAgo` Sloupec obsahuje hodnoty, jako například: "00:09:31.5118992", což znamená, že jsou formátovány jako hh: mm: ss. fffffff. Pokud chcete tyto hodnoty naformátovat na `numver` minuty od počátečního času, vydělte tuto hodnotu hodnotou "1 minuty":
+`timeAgo`Sloupec obsahuje hodnoty, jako například: "00:09:31.5118992", což znamená, že jsou formátovány jako hh: mm: ss. fffffff. Pokud chcete tyto hodnoty naformátovat na `numver` minuty od počátečního času, vydělte tuto hodnotu hodnotou "1 minuty":
 
 ```Kusto
 Event
@@ -96,7 +95,7 @@ Event
 
 
 ## <a name="aggregations-and-bucketing-by-time-intervals"></a>Agregace a zablokování podle časových intervalů
-Dalším běžným scénářem je nutnost získat statistiku v určitém časovém období v určitou dobu. V tomto scénáři může být `bin` operátor použit jako součást klauzule sumarizace.
+Dalším běžným scénářem je nutnost získat statistiku v určitém časovém období v určitou dobu. V tomto scénáři `bin` může být operátor použit jako součást klauzule sumarizace.
 
 K získání počtu událostí, ke kterým došlo každých 5 minut během poslední poloviny hodiny, použijte následující dotaz:
 
@@ -117,7 +116,7 @@ Tento dotaz vytvoří následující tabulku:
 |2018-08-01T09:50:00.000|41|
 |2018-08-01T09:55:00.000|16|
 
-Dalším způsobem, jak vytvořit sady výsledků, je používat funkce, jako například `startofday`:
+Dalším způsobem, jak vytvořit sady výsledků, je používat funkce, jako například `startofday` :
 
 ```Kusto
 Event

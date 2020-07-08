@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671575"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilování webových aplikací běžících na virtuálním počítači Azure nebo v sadě škálování virtuálního počítače pomocí Application Insights Profiler
@@ -65,7 +64,7 @@ V tomto článku se dozvíte, jak můžete Application Insights Profiler spustit
     Set-AzVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-1. Pokud zamýšlená aplikace běží prostřednictvím [služby IIS](https://www.microsoft.com/web/downloads/platform.aspx), povolte funkci `IIS Http Tracing` Windows.
+1. Pokud zamýšlená aplikace běží prostřednictvím [služby IIS](https://www.microsoft.com/web/downloads/platform.aspx), povolte `IIS Http Tracing` funkci Windows.
 
    a. Navažte vzdálený přístup k prostředí a pak použijte okno [Přidat funkce systému Windows]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) . Nebo spusťte následující příkaz v PowerShellu (jako správce):  
 
@@ -87,7 +86,7 @@ Ještě nepoužíváme způsob, jak nastavit Application Insights Profiler jímk
 
     ![Ověřte, jestli je nainstalované rozšíření WAD.][wadextension]
 
-2. Najděte pro svůj virtuální počítač rozšíření pro diagnostiku virtuálních počítačů. Přejít na [https://resources.azure.com](https://resources.azure.com). Rozbalte skupinu prostředků, Microsoft. COMPUTE virtualMachines, název a rozšíření virtuálního počítače.  
+2. Najděte pro svůj virtuální počítač rozšíření pro diagnostiku virtuálních počítačů. Přejít na [https://resources.azure.com](https://resources.azure.com) . Rozbalte skupinu prostředků, Microsoft. COMPUTE virtualMachines, název a rozšíření virtuálního počítače.  
 
     ![V Azure Resource Explorer přejděte na WAD config.][azureresourceexplorer]
 

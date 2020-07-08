@@ -4,10 +4,9 @@ description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu slu
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77653964"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazení oznámení o stavu služby s využitím webu Azure Portal
@@ -24,13 +23,13 @@ Existují různé třídy oznámení o stavu služby:
 
 Každé oznámení o stavu služby zahrnuje podrobnosti o rozsahu a dopadu na vaše prostředky. Podrobnosti zahrnují:
 
-Název vlastnosti | Popis
+Název vlastnosti | Description
 -------- | -----------
 barev | Jedna z následujících hodnot: **admin** nebo **Operation**.
 correlationId | Obvykle identifikátor GUID ve formátu řetězce. Události, které patří do stejné akce, obvykle sdílejí stejné ID korelace.
 eventDataId | Jedinečný identifikátor události
 eventName | Název události
-level | Úroveň události
+úroveň | Úroveň události
 resourceProviderName | Název poskytovatele prostředků pro ovlivněný prostředek.
 resourceType| Typ prostředku ovlivněného prostředku.
 subStatus | Obvykle stavový kód HTTP odpovídajícího volání REST, ale může také obsahovat další řetězce popisující dílčí stav. Příklad: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), Nenalezeno (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), interní chyba serveru (kód stavu http: 500), nedostupná služba (Stavový kód HTTP: 503) a časový limit brány (kód stavu http: 504).

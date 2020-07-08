@@ -4,10 +4,9 @@ description: Zahájení monitorování nové aplikace s novým klíčem instrume
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671439"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorování webu SharePointu pomocí Application Insights
@@ -39,7 +38,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-Vložte skript těsně před značku &lt;/Head&gt; každé stránky, kterou chcete sledovat. Pokud má váš web stránku předlohy, můžete skript umístit sem. Například v projektu ASP.NET MVC ho vložíte do souboru View\Shared\_Layout.cshtml.
+Vložte skript těsně před &lt; &gt; značku/Head každé stránky, kterou chcete sledovat. Pokud má váš web stránku předlohy, můžete skript umístit sem. Například v projektu ASP.NET MVC ho vložíte do souboru View\Shared\_Layout.cshtml.
 
 Skript obsahuje klíč instrumentace, který nasměruje telemetrii pro daný prostředek Application Insights.
 
@@ -51,7 +50,7 @@ Rezervujte si stránku šablony a upravte ji pomocí nástroje SharePoint Design
 
 ![](./media/sharepoint/03-master.png)
 
-Přidejte kód těsně před značku </head>. 
+Přidejte kód těsně před </head> Inteligentní. 
 
 ![](./media/sharepoint/04-code.png)
 

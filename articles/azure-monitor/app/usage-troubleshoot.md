@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670912"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástroji pro analýzu chování uživatelů v Application Insights
@@ -32,7 +31,7 @@ Nástroje pro analýzu chování uživatelů v současné době nepodporují po�
 ## <a name="naming-events"></a>Události pojmenování
 **Moje aplikace obsahuje tisíce různých zobrazení stránky a vlastní názvy událostí. Mezi nimi je těžké rozlišovat a časté nástroje pro analýzu chování uživatelů přestanou reagovat. Jak můžu opravit tyto problémy s pojmenování?**
 
-Zobrazení stránky a vlastní názvy událostí se používají v rámci nástrojů pro analýzu chování uživatelů. Pro získání hodnoty z těchto nástrojů je důležité, aby byly události pojmenovány správně. Cílem je zůstatek mezi příliš malými a obecnými jmény ("kliknuli na tlačítko") a s příliš velkým počtem nejenom specifických názvů ("tlačítko Upravit klikněte na http:\//www.contoso.com/index").
+Zobrazení stránky a vlastní názvy událostí se používají v rámci nástrojů pro analýzu chování uživatelů. Pro získání hodnoty z těchto nástrojů je důležité, aby byly události pojmenovány správně. Cílem je zůstatek mezi příliš malými a obecnými jmény ("kliknuli na tlačítko") a s příliš velkým počtem nejenom specifických názvů ("tlačítko Upravit klikněte na http: \/ /www.contoso.com/index").
 
 Chcete-li provést změny zobrazení stránky a vlastních názvů událostí, které vaše aplikace posílá, je nutné změnit zdrojový kód aplikace a znovu nasadit. **Všechna data telemetrie v Application Insights jsou uložená po dobu 90 dnů a nejde je odstranit**, takže změny provedené v názvech událostí budou trvat 90 dnů, než se plně manifest zaplní. Po dobu 90 dnů od změny názvu se ve své telemetrii zobrazí staré i nové názvy událostí, takže podle potřeby upravte dotazy a sdělte v rámci svých týmů.
 
@@ -42,12 +41,12 @@ Pokud vaše aplikace odesílá příliš mnoho názvů zobrazení stránky, zkon
 
 * Pokud Application Insights JavaScript SDK automaticky odesílá názvy stránek, můžete buď změnit nadpisy stránek, nebo přepnout na ruční odesílání názvů zobrazení stránky. Sada SDK ve výchozím nastavení [odesílá název každé](https://developer.mozilla.org/docs/Web/HTML/Element/title) stránky jako název zobrazení stránky. Vaše tituly můžete změnit tak, aby byly obecnější, ale měli byste s vědomím SEO a dalšími dopady na tuto změnu. Ruční určení názvů zobrazení stránky s `trackPageView` rozhraním API přepíše automaticky shromážděné názvy, takže můžete odeslat obecnější názvy v telemetrie beze změny názvů stránek.   
 
-Pokud vaše aplikace odesílá příliš mnoho vlastních názvů událostí, změňte název v kódu tak, aby byl méně specifický. Znovu se vyhněte vkládání adres URL a dalších informací do vlastních názvů událostí přímo na stránce. Místo toho tyto podrobnosti přesunete do vlastních vlastností vlastní události pomocí `trackEvent` rozhraní API. Například místo `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`na, navrhujeme něco podobného `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
+Pokud vaše aplikace odesílá příliš mnoho vlastních názvů událostí, změňte název v kódu tak, aby byl méně specifický. Znovu se vyhněte vkládání adres URL a dalších informací do vlastních názvů událostí přímo na stránce. Místo toho tyto podrobnosti přesunete do vlastních vlastností vlastní události pomocí `trackEvent` rozhraní API. Například místo `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")` na, navrhujeme něco podobného `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })` .
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled nástrojů pro analýzu chování uživatelů](usage-overview.md)
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

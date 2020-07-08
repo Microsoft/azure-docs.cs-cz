@@ -9,21 +9,20 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925602"
 ---
 # <a name="linux-performance-troubleshooting"></a>Řešení potíží s výkonem pro Linux
 
 Vyčerpání prostředků na počítačích se systémem Linux je běžný problém a může se vydávat za nejrůznějších symptomů. Tento dokument poskytuje podrobný přehled dostupných nástrojů, které vám pomůžou diagnostikovat tyto problémy.
 
-Mnohé z těchto nástrojů přijímají interval, ve kterém se má vydávat výstup za provozu. Tento výstupní formát obvykle usnadňuje vzory hledání. V případě přijetí bude ukázkové volání zahrnovat `[interval]`.
+Mnohé z těchto nástrojů přijímají interval, ve kterém se má vydávat výstup za provozu. Tento výstupní formát obvykle usnadňuje vzory hledání. V případě přijetí bude ukázkové volání zahrnovat `[interval]` .
 
 Mnohé z těchto nástrojů mají rozsáhlou historii a širokou škálu možností konfigurace. Tato stránka poskytuje pouze jednoduchou podmnožinu vyvolání pro zdůraznění běžných problémů. Kanonický zdroj informací je vždy referenční dokumentaci pro každý konkrétní nástroj. Tato dokumentace bude mnohem důkladnější, než je zde uvedeno.
 
-## <a name="guidance"></a>Doprovodné materiály
+## <a name="guidance"></a>Pokyny
 
 Při zkoumání problémů s výkonem byste měli systematicky postupovat. POUŽÍVAJÍ se dva běžné přístupy (využití, sytost, chyby) a červená (rychlost, chyby, doba trvání). ČERVENÁ se obvykle používá v kontextu služeb pro monitorování na základě požadavků. POUŽITÍ se obvykle používá pro monitorování prostředků: pro každý prostředek v počítači, využití monitorování, sytost a chyby. Mezi čtyři hlavní druhy prostředků na jakémkoli počítači patří procesor, paměť, disk a síť. Vysoké využití, sytost nebo chybové sazby pro některý z těchto prostředků označují možný problém se systémem. Pokud problém existuje, prozkoumejte hlavní příčinu: Proč je vysoká latence v/v disku? Jsou disky nebo SKU virtuálního počítače omezené? Které procesy zapisují do zařízení a do jakých souborů?
 
@@ -119,11 +118,11 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`poskytuje podobné informace `mpstat` a `top`výčet počtu procesů, které čekají na procesor (sloupec r), statistiku paměti a procento času procesoru stráveného v jednotlivých pracovních stavech.
+`vmstat`poskytuje podobné informace `mpstat` a `top` výčet počtu procesů, které čekají na procesor (sloupec r), statistiku paměti a procento času procesoru stráveného v jednotlivých pracovních stavech.
 
 ## <a name="memory"></a>Memory (Paměť)
 
-Paměť je velice důležitá a naštěstí snadné, což je prostředek ke sledování. Některé nástroje mohou hlásit procesor i paměť, například `vmstat`. Ale nástroje, `free` jako například, mohou být stále užitečné pro rychlé ladění.
+Paměť je velice důležitá a naštěstí snadné, což je prostředek ke sledování. Některé nástroje mohou hlásit procesor i paměť, například `vmstat` . Ale nástroje, jako například `free` , mohou být stále užitečné pro rychlé ladění.
 
 ### <a name="free"></a>free
 
@@ -157,7 +156,7 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`poskytuje podrobné přehledy o využití disku. Toto vyvolání vyvoláno `-x` pro rozšířená statistiku, `-y` aby se od spuštění přeskočila průměrná hodnota počátečního `1 1` výstupního tiskového tisku, a aby bylo možné zadat interval 1 sekund, který končí po jednom bloku výstupu. 
+`iostat`poskytuje podrobné přehledy o využití disku. Toto vyvolání vyvoláno `-x` pro rozšířená statistiku, `-y` aby se od spuštění přeskočila průměrná hodnota počátečního výstupního tiskového tisku, a `1 1` aby bylo možné zadat interval 1 sekund, který končí po jednom bloku výstupu. 
 
 `iostat`zpřístupňuje mnoho užitečných statistik:
 
@@ -199,7 +198,7 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`je výkonný nástroj pro rozsáhlou škálu analýz. I když tento příklad používá svoji možnost měření statistiky sítě, je stejně efektivní pro měření spotřeby procesoru a paměti. Tento příklad vyvolá příznak `sar` s `-n` příznakem pro `DEV` zadání klíčového slova (síťové zařízení), které zobrazuje propustnost sítě podle zařízení.
+`sar`je výkonný nástroj pro rozsáhlou škálu analýz. I když tento příklad používá svoji možnost měření statistiky sítě, je stejně efektivní pro měření spotřeby procesoru a paměti. Tento příklad vyvolá `sar` příznak s `-n` příznakem pro zadání `DEV` klíčového slova (síťové zařízení), které zobrazuje propustnost sítě podle zařízení.
 
 - Součet `rxKb/s` a `txKb/s` je celková propustnost pro dané zařízení. Pokud tato hodnota překročí limit zřízené síťové karty Azure, budou mít úlohy na počítači zvýšenou latenci sítě.
 - `%ifutil`využití měr pro dané zařízení. Vzhledem k tomu, že se tato hodnota blíží 100%, budou mít úlohy zvýšenou latenci sítě.

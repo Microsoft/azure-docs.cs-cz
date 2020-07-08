@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658213"
 ---
 # <a name="workbook-parameters"></a>Parametry sešitu
@@ -39,7 +38,7 @@ Na tyto hodnoty parametrů se dá odkazovat v jiných částech sešitů, a to p
 3. Klikněte na modré tlačítko _Přidat parametr_ .
 4. V podokně nového parametru, které se objeví, zadejte:
     1. Název parametru: `TimeRange` *(Všimněte si, že __názvy__ parametrů **nemůžou** obsahovat mezery ani speciální znaky.)*
-    2. Zobrazované jméno `Time Range`: *(ale __zobrazované názvy__ můžou obsahovat mezery, speciální znaky, Emoji atd.)*  
+    2. Zobrazované jméno: `Time Range` *(ale __zobrazované názvy__ můžou obsahovat mezery, speciální znaky, Emoji atd.)*  
     2. Typ parametru:`Time range picker`
     3. Požadovanou`checked`
     4. Dostupné časové rozsahy: poslední hodina, posledních 12 hodin, posledních 24 hodin, poslední 48 hodin, poslední 3 dny, posledních 7 dní a povolený výběr vlastního časového rozsahu
@@ -54,7 +53,7 @@ V takovém případě bude sešit vypadat jako v režimu čtení, ve stylu "Pill
 ## <a name="referencing-a-parameter"></a>Odkazování na parametr
 ### <a name="via-bindings"></a>Přes vazby
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. Otevřete rozevírací seznam _časový rozsah_ a vyberte `Time Range` možnost v části parametry v dolní části.
+2. Otevřete rozevírací seznam _časový rozsah_ a vyberte možnost v `Time Range` části parametry v dolní části.
 3. Tím se naváže parametr časového rozsahu na časový rozsah grafu. Časový rozsah ukázkového dotazu je nyní za posledních 24 hodin.
 4. Spusťte dotaz, aby se zobrazily výsledky.
 
@@ -63,7 +62,7 @@ V takovém případě bude sešit vypadat jako v režimu čtení, ve stylu "Pill
 ### <a name="in-kql"></a>V KQL
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
 2. Do KQL zadejte filtr oboru času pomocí parametru:`| where timestamp {TimeRange}`
-3. Tím se rozšíří doba vyhodnocování dotazu na `| where timestamp > ago(1d)`, což je hodnota časového rozsahu parametru.
+3. Tím se rozšíří doba vyhodnocování dotazu na `| where timestamp > ago(1d)` , což je hodnota časového rozsahu parametru.
 4. Spusťte dotaz, aby se zobrazily výsledky.
 
     ![Obrázek znázorňující časový rozsah, na který odkazuje KQL](./media/workbooks-parameters/time-in-code.png)

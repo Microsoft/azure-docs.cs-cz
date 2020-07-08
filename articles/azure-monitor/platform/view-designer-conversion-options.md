@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658706"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Možnosti převodu návrháře zobrazení Azure Monitor na sešity
@@ -20,12 +19,12 @@ ms.locfileid: "77658706"
 
 Návrhář zobrazení má pevně daný statický styl reprezentace, zatímco sešity umožňují přidat a upravit způsob reprezentace dat. Následující obrázky popisují dva příklady, jak můžete uspořádat sešity při převodu zobrazení.
 
-[Svislý sešit](view-designer-conversion-examples.md#vertical)
-![svisle](media/view-designer-conversion-options/view-designer-vertical.png)
+[Svislý sešit](view-designer-conversion-examples.md#vertical) 
+ ![ Svislé](media/view-designer-conversion-options/view-designer-vertical.png)
 
-[Tabbed workbook](view-designer-conversion-examples.md#tabbed)
-![Datové typy](media/view-designer-conversion-options/distribution-tab.png)
-karty![rozložení datového typu v sešitu s kartami přes kartu čas](media/view-designer-conversion-options/over-time-tab.png)
+[Tabbed workbook](view-designer-conversion-examples.md#tabbed) 
+ Sešit ![ s kartami Datové typy karty distribuce datového typu ](media/view-designer-conversion-options/distribution-tab.png)
+ ![ přes kartu čas](media/view-designer-conversion-options/over-time-tab.png)
 
 ## <a name="tile-conversion"></a>Převod dlaždic
 Návrhář zobrazení používá funkci dlaždice přehled k reprezentaci a sumarizaci celkového stavu. Ty se reprezentují ve sedmi dlaždicích, od čísel až po grafy. V sešitech můžou uživatelé vytvářet podobné vizualizace a připnout je, aby se podobají původnímu stylu dlaždic s přehledem. 

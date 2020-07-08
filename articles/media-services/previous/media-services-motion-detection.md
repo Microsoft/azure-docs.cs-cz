@@ -15,10 +15,9 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77913000"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Detekce pohybů pomocí Azure Media Analytics
@@ -45,7 +44,7 @@ Při vytváření úlohy s **Azure Media Motion Detector**je nutné zadat předv
 ### <a name="parameters"></a>Parametry
 Můžete použít následující parametry:
 
-| Název | Možnosti | Popis | Výchozí |
+| Name | Možnosti | Description | Výchozí |
 | --- | --- | --- | --- |
 | sensitivityLevel |Řetězec: ' nízká ', ' střední ', ' High ' |Nastaví úroveň citlivosti, na které jsou nahlášeny pohyby. Upravte tuto hodnotu pro úpravu počtu falešně pozitivních hodnot. |úrovně |
 | frameSamplingValue |Kladné celé číslo |Nastaví četnost spuštění algoritmu. 1 se rovná každému snímku, 2 znamená každý druhý rámec atd. |1 |
@@ -98,9 +97,9 @@ Rozhraní API detektoru pohybu poskytuje indikátory, jakmile se v pevném videu
 
 Následující tabulka popisuje prvky výstupního souboru JSON.
 
-| Prvek | Popis |
+| Prvek | Description |
 | --- | --- |
-| version |To odkazuje na verzi rozhraní API pro video. Aktuální verze je 2. |
+| verze |To odkazuje na verzi rozhraní API pro video. Aktuální verze je 2. |
 | měřítk |"Takty" za sekundu videa. |
 | posun |Časový posun pro časová razítka v "taktech". Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. V budoucích scénářích, které podporujeme, se tato hodnota může změnit. |
 | snímků |Počet snímků ve videu za sekundu. |
@@ -109,7 +108,7 @@ Následující tabulka popisuje prvky výstupního souboru JSON.
 | doba trvání |Délka události v "taktech". |
 | interval |Interval každého záznamu v události, v "taktech". |
 | stránka events |Každý fragment události obsahuje pohyb zjištěný během tohoto časového období. |
-| type |V aktuální verzi je to vždycky "2" pro obecný pohyb. Tento popisek poskytuje rozhraní API pro video, které flexibilita rozděluje pohyb v budoucích verzích. |
+| typ |V aktuální verzi je to vždycky "2" pro obecný pohyb. Tento popisek poskytuje rozhraní API pro video, které flexibilita rozděluje pohyb v budoucích verzích. |
 | regionId |Jak bylo vysvětleno výše, bude tato verze vždy 0 v této verzi. Tento popisek poskytuje rozhraní API pro video, které nabízí flexibilitu při hledání pohybu v různých oblastech v budoucích verzích. |
 | regionu |Odkazuje na oblast ve videu, kde se zajímáte o pohybu. <br/><br/>-"ID" představuje oblast oblasti – v této verzi je pouze jeden identifikátor 0. <br/>– "typ" představuje tvar oblasti, o které se zajímáte pro pohyb. V současné době jsou podporovány "obdélníky" a "mnohoúhelník".<br/> Pokud jste zadali "Rectangle", oblast má rozměry v X, Y, šířce a výšce. Souřadnice X a Y reprezentují horní levý horní souřadnici oblasti v normalizovaném rozsahu od 0,0 do 1,0. Šířka a výška představuje velikost oblasti v normalizovaném rozsahu od 0,0 do 1,0. V aktuální verzi jsou hodnoty X, Y, Šířka a výška vždy opraveny na 0, 0 a 1, 1. <br/>Pokud jste zadali "mnohoúhelník", má oblast rozměry v bodech. <br/> |
 | svalovin |Metadata jsou rozdělená do různých segmentů s názvem fragmenty. Každý fragment obsahuje začátek, dobu trvání, číslo intervalu a události. Fragment bez událostí znamená, že během tohoto počátečního času a doby trvání nebyl zjištěn žádný pohyb. |

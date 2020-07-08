@@ -4,10 +4,9 @@ description: Získejte přizpůsobená oznámení o událostech služby Service 
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654065"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Odesílání upozornění na Azure Service Health s PagerDuty pomocí webhooků
@@ -27,7 +26,7 @@ V tomto článku se dozvíte, jak nastavit oznámení o stavu služby Azure pros
 
     a. **Typ integrace**: Microsoft Azure
 
-    b. **Název integrace**: \<název\>
+    b. **Název integrace**:\<Name\>
 
     ![Nastavení integrace v PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -80,7 +79,7 @@ V tomto článku se dozvíte, jak nastavit oznámení o stavu služby Azure pros
 
     BODY        <service health payload>
     ```
-1. Měla by `202 Accepted` se zobrazit zpráva s informacemi o "ID události".
+1. Měla by se zobrazit `202 Accepted` Zpráva s informacemi o "ID události".
 
 1. Pokud chcete ověřit, že se integrace úspěšně nastavila, navštivte [PagerDuty](https://www.pagerduty.com/) .
 

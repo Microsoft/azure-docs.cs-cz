@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660236"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Hledání dotazů v protokolech Azure Monitor
@@ -51,7 +50,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Použijete `==` `:`-li místo, výsledky budou zahrnovat záznamy, ve kterých má *zdrojový* sloupec přesně hodnotu "Chyba" a v tomto případě přesně. Použití ': ' bude obsahovat záznamy, kde *zdroj* obsahuje hodnoty, například "kód chyby 404" nebo "Error".
+> Použijete `==` -li místo `:` , výsledky budou zahrnovat záznamy, ve kterých má *zdrojový* sloupec přesně hodnotu "Chyba" a v tomto případě přesně. Použití ': ' bude obsahovat záznamy, kde *zdroj* obsahuje hodnoty, například "kód chyby 404" nebo "Error".
 
 ## <a name="case-sensitivity"></a>Rozlišování velkých a malých písmen
 Ve výchozím nastavení pojem hledání nerozlišuje velká a malá písmena, takže hledání "DNS" by mohlo mít za následek například "DNS", "DNS" nebo "DNS". Pokud chcete rozlišovat velikost písmen pro hledání, použijte `kind` možnost:
@@ -89,12 +88,12 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-Vše v tabulce můžete také získat pomocí stejné zástupné karty: `search in (Event) *`, ale to by bylo stejné jako psaní pouze `Event`pro zápis.
+Vše v tabulce můžete také získat pomocí stejné zástupné karty: `search in (Event) *` , ale to by bylo stejné jako psaní pouze pro zápis `Event` .
 
 > [!TIP]
 > I když můžete použít `search *` k získání každého sloupce z každé tabulky, doporučuje se vždy určit rozsah dotazů na konkrétní tabulky. Dokončení dotazů bez oboru může chvíli trvat a může vrátit příliš mnoho výsledků.
 
-## <a name="add-and--or-to-search-queries"></a>/ Přidání *and* *nebo* vyhledání dotazů
+## <a name="add-and--or-to-search-queries"></a>Přidání *and* / *nebo* vyhledání dotazů
 Pomocí **a** můžete vyhledat záznamy, které obsahují několik výrazů:
 
 ```Kusto

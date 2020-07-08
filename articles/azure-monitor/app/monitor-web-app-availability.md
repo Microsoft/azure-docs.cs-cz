@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670028"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
@@ -23,7 +22,7 @@ Existují tři typy testů dostupnosti:
 
 * [Testování ping adresy URL](#create-a-url-ping-test): jednoduchý test, který můžete vytvořit na portálu Azure.
 * [Webový test s více kroky](availability-multistep.md): záznam sekvence webových požadavků, které je možné přehrát zpětně testovat složitější scénáře. Webové testy s více kroky jsou vytvořeny v Visual Studio Enterprise a nahrány na portál pro provádění.
-* [Testy dostupnosti vlastních stop](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, lze použít `TrackAvailability()` metodu k odeslání výsledků do Application Insights.
+* [Testy dostupnosti vlastních stop](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, `TrackAvailability()` lze použít metodu k odeslání výsledků do Application Insights.
 
 **Pro každý prostředek Application Insights můžete vytvořit testy dostupnosti až 100.**
 
@@ -31,7 +30,7 @@ Existují tři typy testů dostupnosti:
 
 Aby bylo možné vytvořit test dostupnosti, musíte nejprve vytvořit prostředek Application Insights. Pokud jste už vytvořili prostředek, přejděte k další části a [vytvořte test adresy URL pomocí testu URL](#create-a-url-ping-test).
 
-V Azure Portal vyberte **vytvořit prostředek** > **vývojářské nástroje** > **Application Insights** a [vytvořte prostředek Application Insights](create-new-resource.md).
+V Azure Portal vyberte **vytvořit prostředek**  >  **vývojářské nástroje**  >  **Application Insights** a [vytvořte prostředek Application Insights](create-new-resource.md).
 
 ## <a name="create-a-url-ping-test"></a>Vytvoření testu adresy URL pomocí příkazu Ping
 
@@ -45,7 +44,7 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 
 |Nastavení| Vysvětlení
 |----|----|----|
-|**Adresa URL** |  Adresa URL může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.|
+|**URL** |  Adresa URL může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.|
 |**Analyzovat závislé požadavky**| Test žádostí o obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Test se nezdaří, pokud některý z těchto prostředků nelze úspěšně stáhnout v časovém limitu pro celý test. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL. Povolení této možnosti má za následek přísnější kontrolu. Test se nezdařil pro případy, které nemusí být při ručním procházení lokality patrné.
 |**Povolit opakování**|v případě, že se test nezdařil, bude opakován po krátkém intervalu. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. **Tuto možnost doporučujeme**. V průměru přibližně 80 % selhání při opakování zmizí.|
 |**Frekvence testování**| Nastaví, jak často se test spouští z každého umístění testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.|
@@ -69,8 +68,8 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
-|**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
-|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota** = pro umístění upozornění v umístění**testovacích umístění – 2, minimálně pět umístění testu.**|
+|**Klasický** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
+|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
 
 ## <a name="see-your-availability-test-results"></a>Zobrazení výsledků testu dostupnosti
 

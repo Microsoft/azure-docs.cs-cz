@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669042"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
@@ -23,7 +22,7 @@ Informace o skupinách akcí najdete v tématu [Vytvoření skupin akcí](../../
 
 
 ## <a name="authenticate-the-webhook"></a>Ověření Webhooku
-Webhook může volitelně použít autorizaci založenou na tokenech pro ověřování. Identifikátor URI Webhooku se uloží s ID tokenu, například `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+Webhook může volitelně použít autorizaci založenou na tokenech pro ověřování. Identifikátor URI Webhooku se uloží s ID tokenu, například `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue` .
 
 ## <a name="payload-schema"></a>Schéma datové části
 Datová část JSON obsažená v operaci POST se liší v závislosti na poli data datové části Context. activityLog. eventSource.
@@ -254,20 +253,20 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 }
 ```
 
-| Název elementu | Popis |
+| Název elementu | Description |
 | --- | --- |
 | status |Používá se pro výstrahy metriky. Pro výstrahy protokolu aktivit vždycky nastavte na aktivované. |
 | kontext |Kontext události |
 | resourceProviderName |Poskytovatel prostředků ovlivněného prostředku. |
 | conditionType |Vždy "Event" |
-| jméno |Název pravidla výstrahy. |
+| name |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy |
 | description |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
 | resourceId |ID prostředku ovlivněného prostředku |
 | resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek. |
-| properties |Sada `<Key, Value>` párů (to znamená `Dictionary<String, String>`), která obsahuje podrobnosti o události. |
+| properties |Sada `<Key, Value>` párů (to znamená `Dictionary<String, String>` ), která obsahuje podrobnosti o události. |
 | event |Prvek, který obsahuje metadata o události. |
 | autorizace |Vlastnosti události Access Control na základě rolí. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
 | category |Kategorie události Mezi podporované hodnoty patří administrativní, výstraha, zabezpečení, ServiceHealth a doporučení. |
@@ -277,7 +276,7 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | eventDataId |Jedinečný identifikátor události |
 | eventSource |Název služby nebo infrastruktury Azure, která událost vygenerovala. |
 | httpRequest |Požadavek obvykle zahrnuje metodu ID žádosti klienta, clientIpAddress a HTTP (například PUT). |
-| level |Jedna z následujících hodnot: kritická, chyba, upozornění a informativní. |
+| úroveň |Jedna z následujících hodnot: kritická, chyba, upozornění a informativní. |
 | operationId |Identifikátor GUID se obvykle sdílí mezi událostmi, které odpovídají jedné operaci. |
 | operationName |Název operace |
 | properties |Vlastnosti události |

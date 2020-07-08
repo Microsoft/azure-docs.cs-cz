@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670317"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Vytváření grafů a diagramů z Azure Monitorch dotazů protokolu
@@ -33,7 +32,7 @@ Heartbeat
 
 Ve výchozím nastavení se výsledky zobrazují jako tabulka:
 
-![Table](media/charts/table-display.png)
+![Tabulka](media/charts/table-display.png)
 
 Chcete-li získat lepší zobrazení, vyberte **graf**a zvolte možnost **výseč** k vizualizaci výsledků:
 
@@ -69,7 +68,7 @@ Perf
 ![Referenční čára](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>Více dimenzí
-Více výrazů v `by` klauzuli pro `summarize` vytvoření více řádků ve výsledcích, jeden pro každou kombinaci hodnot.
+Více výrazů v `by` klauzuli `summarize` pro vytvoření více řádků ve výsledcích, jeden pro každou kombinaci hodnot.
 
 ```Kusto
 SecurityEvent

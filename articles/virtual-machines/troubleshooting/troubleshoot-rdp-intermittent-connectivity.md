@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918219"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Vzdálená plocha se často odpojuje od virtuálního počítače Azure
@@ -90,8 +89,8 @@ Pokud chcete tento problém vyřešit, použijte řízení sériového portu neb
 1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
 2. Po připojení disku s operačním systémem k virtuálnímu počítači pro obnovení se ujistěte, že je disk označený jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem.
 3. Na disku s operačním systémem, který jste připojili, přejděte do složky **\Windows\System32\Config** . Zkopírujte všechny soubory v této složce jako zálohu pro případ, že je vyžadováno vrácení zpět.
-4. Spusťte Editor registru (Regedit. exe).
-5. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte**podregistr Loading** **File** > :
+4. Spusťte Editor registru (regedit.exe).
+5. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **File**  >  **podregistr Loading**File:
 6. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** . Pak načtěte podregistr software **\windows\system32\config\SOFTWARE** pod klíčem **HKEY_LOCAL_MACHINE** . Jako název softwaru pro podregistr zadejte **BROKENSOFTWARE**. 
 7. Otevřete okno příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**) a ve zbývajících krocích spusťte příkazy pro resetování konfigurací RDP. 
 8. Snižte úroveň zabezpečení RDP na 0, aby komunikace mezi serverem a klientem používala nativní šifrování RDP:

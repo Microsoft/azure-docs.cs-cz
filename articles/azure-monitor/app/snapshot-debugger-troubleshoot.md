@@ -6,10 +6,9 @@ author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671405"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
@@ -30,7 +29,7 @@ Pokud se tím problém nevyřeší, přečtěte si následující postup ruční
 
 ## <a name="verify-the-instrumentation-key"></a>Ověření klíče instrumentace
 
-Ujistěte se, že ve vaší publikované aplikaci používáte správný klíč instrumentace. Klíč instrumentace je obvykle načtený ze souboru ApplicationInsights. config. Ověřte, že hodnota je stejná jako klíč instrumentace pro prostředek Application Insights, který vidíte na portálu.
+Ujistěte se, že ve vaší publikované aplikaci používáte správný klíč instrumentace. Klíč instrumentace se obvykle čte z ApplicationInsights.config souboru. Ověřte, že hodnota je stejná jako klíč instrumentace pro prostředek Application Insights, který vidíte na portálu.
 
 ## <a name="preview-versions-of-net-core"></a>Verze Preview rozhraní .NET Core
 Pokud aplikace používá verzi Preview rozhraní .NET Core a Snapshot Debugger byla povolena prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, Snapshot Debugger pravděpodobně nebude možné spustit. Postupujte podle pokynů v části [povolit Snapshot debugger pro další prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , abyste před povolením prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)zahrnuli ***také*** balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) .
@@ -42,7 +41,7 @@ Pokud byla Snapshot Debugger povolena prostřednictvím [podokna Application Ins
 
 ## <a name="check-the-uploader-logs"></a>Podívejte se na protokoly odeslání.
 
-Po vytvoření snímku se na disku vytvoří soubor s minimálním výpisem (. dmp). Samostatný proces odeslání vytvoří soubor s minimálním výpisem a nahraje ho společně s případnými přidruženými soubory PDB pro Application Insights úložiště Snapshot Debugger. Po úspěšném nahrání s minimálním výpisem se z disku odstraní. Soubory protokolu procesu odeslání jsou uchovávány na disku. V prostředí App Service můžete tyto protokoly najít v `D:\Home\LogFiles`. K vyhledání těchto souborů protokolu použijte web pro správu Kudu pro App Service.
+Po vytvoření snímku se na disku vytvoří soubor s minimálním výpisem (. dmp). Samostatný proces odeslání vytvoří soubor s minimálním výpisem a nahraje ho společně s případnými přidruženými soubory PDB pro Application Insights úložiště Snapshot Debugger. Po úspěšném nahrání s minimálním výpisem se z disku odstraní. Soubory protokolu procesu odeslání jsou uchovávány na disku. V prostředí App Service můžete tyto protokoly najít v `D:\Home\LogFiles` . K vyhledání těchto souborů protokolu použijte web pro správu Kudu pro App Service.
 
 1. Otevřete aplikaci App Service v Azure Portal.
 2. Klikněte na **Rozšířené nástroje**nebo vyhledejte **Kudu**.
@@ -79,10 +78,10 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> Výše uvedený příklad je z verze 1.2.0 balíčku NuGet Microsoft. ApplicationInsights. SnapshotCollector. V dřívějších verzích se volá `MinidumpUploader.exe` proces odeslání a protokol je méně podrobný.
+> Výše uvedený příklad je z verze 1.2.0 balíčku NuGet Microsoft. ApplicationInsights. SnapshotCollector. V dřívějších verzích se volá proces odeslání `MinidumpUploader.exe` a protokol je méně podrobný.
 
-V předchozím příkladu je `c12a605e73c44346a984e00000000000`klíč instrumentace. Tato hodnota by měla odpovídat klíči instrumentace vaší aplikace.
-S minimálním výpisem je přidružen ke snímku s ID `139e411a23934dc0b9ea08a626db16c5`. Toto ID můžete později použít k vyhledání přidružené telemetrie výjimky v Application Insights Analytics.
+V předchozím příkladu je klíč instrumentace `c12a605e73c44346a984e00000000000` . Tato hodnota by měla odpovídat klíči instrumentace vaší aplikace.
+S minimálním výpisem je přidružen ke snímku s ID `139e411a23934dc0b9ea08a626db16c5` . Toto ID můžete později použít k vyhledání přidružené telemetrie výjimky v Application Insights Analytics.
 
 Odeslání nových soubory PDB vyhledá nové každých 15 minut. Tady je příklad:
 
@@ -107,14 +106,14 @@ Povolte aspoň dva souběžné snímky.
 Pokud například vaše aplikace používá 1 GB z celkové pracovní sady, měli byste se ujistit, že je k ukládání snímků k dispozici alespoň 2 GB místa na disku.
 Pomocí těchto kroků můžete nakonfigurovat roli cloudové služby s vyhrazeným místním prostředkem pro snímky.
 
-1. Úpravou souboru definice cloudové služby (. csdef) přidejte do cloudové služby nový místní prostředek. V následujícím příkladu je definován prostředek s `SnapshotStore` názvem o velikosti 5 GB.
+1. Úpravou souboru definice cloudové služby (. csdef) přidejte do cloudové služby nový místní prostředek. V následujícím příkladu je definován prostředek `SnapshotStore` s názvem o velikosti 5 GB.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
    ```
 
-2. Úpravou spouštěcího kódu role přidejte proměnnou prostředí, která odkazuje na `SnapshotStore` místní prostředek. Pro role pracovního procesu by se kód měl přidat do `OnStart` metody vaší role:
+2. Úpravou spouštěcího kódu role přidejte proměnnou prostředí, která odkazuje na `SnapshotStore` místní prostředek. Pro role pracovního procesu by se kód měl přidat do metody vaší role `OnStart` :
    ```csharp
    public override bool OnStart()
    {
@@ -122,7 +121,7 @@ Pomocí těchto kroků můžete nakonfigurovat roli cloudové služby s vyhrazen
        return base.OnStart();
    }
    ```
-   V případě webových rolí (ASP.NET) by se měl kód přidat do `Application_Start` metody vaší webové aplikace:
+   V případě webových rolí (ASP.NET) by se měl kód přidat do metody vaší webové aplikace `Application_Start` :
    ```csharp
    using Microsoft.WindowsAzure.ServiceRuntime;
    using System;
@@ -140,7 +139,7 @@ Pomocí těchto kroků můžete nakonfigurovat roli cloudové služby s vyhrazen
    }
    ```
 
-3. Aktualizujte soubor ApplicationInsights. config vaší role, abyste přepsali dočasné umístění složky používané nástrojem.`SnapshotCollector`
+3. Aktualizujte soubor ApplicationInsights.config role pro přepsání umístění dočasné složky používané nástrojem`SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
@@ -163,13 +162,13 @@ Snapshot Collector kontroluje několik známých umístění a zajišťuje tak, 
 
 Pokud se vhodná složka nenajde, Snapshot Collector nahlásí chybu oznamující, že _se nepovedlo najít vhodnou složku stínové kopie._
 
-Pokud se kopie nezdařila, Snapshot Collector `ShadowCopyFailed` hlásí chybu.
+Pokud se kopie nezdařila, Snapshot Collector hlásí `ShadowCopyFailed` chybu.
 
-Pokud nelze spustit odeslání, Snapshot Collector hlásí `UploaderCannotStartFromShadowCopy` chybu. Text zprávy obsahuje `System.UnauthorizedAccessException`často. K této chybě obvykle dochází, protože aplikace běží pod účtem s omezenými oprávněními. Účet má oprávnění k zápisu do složky stínové kopie, ale nemá oprávnění ke spouštění kódu.
+Pokud nelze spustit odeslání, Snapshot Collector hlásí `UploaderCannotStartFromShadowCopy` chybu. Text zprávy obsahuje často `System.UnauthorizedAccessException` . K této chybě obvykle dochází, protože aplikace běží pod účtem s omezenými oprávněními. Účet má oprávnění k zápisu do složky stínové kopie, ale nemá oprávnění ke spouštění kódu.
 
-Vzhledem k tomu, že k těmto chybám obvykle dochází při spuštění, obvykle `ExceptionDuringConnect` se jedná o chybu oznamující, že _se nepovedlo spustit odeslání._
+Vzhledem k tomu, že k těmto chybám obvykle dochází při spuštění, obvykle se jedná o `ExceptionDuringConnect` chybu oznamující, že _se nepovedlo spustit odeslání._
 
-Pokud chcete tyto chyby vyřešit, můžete ručně zadat složku stínové kopie pomocí možnosti `ShadowCopyFolder` konfigurace. Například pomocí ApplicationInsights. config:
+Pokud chcete tyto chyby vyřešit, můžete ručně zadat složku stínové kopie pomocí `ShadowCopyFolder` Možnosti konfigurace. Například pomocí ApplicationInsights.config:
 
    ```xml
    <TelemetryProcessors>
@@ -181,7 +180,7 @@ Pokud chcete tyto chyby vyřešit, můžete ručně zadat složku stínové kopi
    </TelemetryProcessors>
    ```
 
-Nebo, pokud používáte appSettings. JSON s aplikací .NET Core:
+Nebo, pokud používáte appsettings.jsv s aplikací .NET Core:
 
    ```json
    {
@@ -200,7 +199,7 @@ Při vytvoření snímku je tato výjimka označena ID snímku. Toto ID snímku 
 
 1. V Azure Portal přejděte k prostředku Application Insights.
 2. Klikněte na **Vyhledat**.
-3. Do `ai.snapshot.id` textového pole hledání zadejte a stiskněte klávesu ENTER.
+3. `ai.snapshot.id`Do textového pole hledání zadejte a stiskněte klávesu ENTER.
 
 ![Hledání telemetrie s ID snímku na portálu](./media/snapshot-debugger/search-snapshot-portal.png)
 

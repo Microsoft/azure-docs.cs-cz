@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77651377"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Přístup k prostředkům IBM DB2 a jejich správa pomocí Azure Logic Apps
@@ -26,7 +25,7 @@ Konektor DB2 zahrnuje klienta Microsoftu, který komunikuje se vzdálenými serv
 
 Konektor IBM DB2 podporuje tyto platformy a verze IBM DB2 spolu s produkty kompatibilními s IBM DB2, které podporují DRDA (Distributed relační Database Architecture) verze 10 a 11:
 
-| Platforma | Version | 
+| Platforma | Verze | 
 |----------|---------|
 | IBM DB2 pro z/OS | 11,1, 10,1 |
 | IBM DB2 pro i | 7,3, 7,2, 7,1 |
@@ -80,14 +79,14 @@ Příklady v tomto článku používají Trigger **opakování** .
 
 Pokud chcete nastavit připojení, zadejte tyto podrobnosti o připojení po zobrazení výzvy, zvolte **vytvořit**a pak aplikaci logiky uložte:
 
-| Vlastnost | Požaduje se | Popis |
+| Vlastnost | Povinné | Popis |
 |----------|----------|-------------|
-| **Připojit přes místní bránu** | Ne | Platí jenom pro místní připojení. |
-| **Název připojení** | Ano | Název připojení, například "MyLogicApp-DB2-připojení" |
-| **Server** | Ano | Číslo portu nebo dvojtečku, které má adresa nebo alias pro server DB2, například "myDB2server.cloudapp.net:50000". <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje adresu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP. |
-| **Databáze** | Ano | Název databáze <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje název RELAČNÍ databáze DRDA (RDBNAM): <p>– DB2 pro z/OS akceptuje 16bajtový řetězec, ve kterém je databáze známá jako umístění IBM DB2 pro z/OS. <br>– DB2 pro Přijímám 18 bajtů, kde je databáze známá jako relační databáze IBM DB2 for i. <br>– DB2 pro LUW akceptuje řetězec o velikosti 8 bajtů. |
-| **Jmen** | Ano | Vaše uživatelské jméno pro databázi <p><p>**Poznámka**: Tato hodnota je řetězec, jehož délka je založena na konkrétní databázi: <p><p>– DB2 pro z/OS akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Přijímám řetězec 10 bajtů. <br>– DB2 pro Linux nebo UNIX akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Windows přijímá 30 bajtů řetězce. |
-| **Heslo** | Ano | Heslo pro databázi |
+| **Připojit přes místní bránu** | No | Platí jenom pro místní připojení. |
+| **Název připojení** | Yes | Název připojení, například "MyLogicApp-DB2-připojení" |
+| **Server** | Yes | Číslo portu nebo dvojtečku, které má adresa nebo alias pro server DB2, například "myDB2server.cloudapp.net:50000". <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje adresu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP. |
+| **Database** | Yes | Název databáze <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje název RELAČNÍ databáze DRDA (RDBNAM): <p>– DB2 pro z/OS akceptuje 16bajtový řetězec, ve kterém je databáze známá jako umístění IBM DB2 pro z/OS. <br>– DB2 pro Přijímám 18 bajtů, kde je databáze známá jako relační databáze IBM DB2 for i. <br>– DB2 pro LUW akceptuje řetězec o velikosti 8 bajtů. |
+| **Jmen** | Yes | Vaše uživatelské jméno pro databázi <p><p>**Poznámka**: Tato hodnota je řetězec, jehož délka je založena na konkrétní databázi: <p><p>– DB2 pro z/OS akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Přijímám řetězec 10 bajtů. <br>– DB2 pro Linux nebo UNIX akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Windows přijímá 30 bajtů řetězce. |
+| **Heslo** | Yes | Heslo pro databázi |
 ||||
 
 Příklad:
@@ -100,16 +99,16 @@ Příklad:
 
 Před vytvořením připojení musíte mít už nainstalovanou místní bránu dat. Jinak nemůžete dokončit nastavování připojení. Pokud máte instalaci brány, pokračujte zadáním těchto podrobností o připojení a pak zvolte **vytvořit**.
 
-| Vlastnost | Požaduje se | Popis |
+| Vlastnost | Povinné | Popis |
 |----------|----------|-------------|
-| **Připojit přes místní bránu** | Ano | Použije se, pokud chcete místní připojení a zobrazuje vlastnosti místního připojení. |
-| **Název připojení** | Ano | Název připojení, například "MyLogicApp-DB2-připojení" | 
-| **Server** | Ano | Číslo portu nebo dvojtečku, které má adresa nebo alias pro server DB2, například "myDB2server: 50000". <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje adresu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP. |
-| **Databáze** | Ano | Název databáze <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje název RELAČNÍ databáze DRDA (RDBNAM): <p>– DB2 pro z/OS akceptuje 16bajtový řetězec, ve kterém je databáze známá jako umístění IBM DB2 pro z/OS. <br>– DB2 pro Přijímám 18 bajtů, kde je databáze známá jako relační databáze IBM DB2 for i. <br>– DB2 pro LUW akceptuje řetězec o velikosti 8 bajtů. |
-| **Authentication** | Ano | Typ ověřování pro připojení, například "základní" <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje základní nebo Windows (Kerberos). |
-| **Jmen** | Ano | Vaše uživatelské jméno pro databázi <p><p>**Poznámka**: Tato hodnota je řetězec, jehož délka je založena na konkrétní databázi: <p><p>– DB2 pro z/OS akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Přijímám řetězec 10 bajtů. <br>– DB2 pro Linux nebo UNIX akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Windows přijímá 30 bajtů řetězce. |
-| **Heslo** | Ano | Heslo pro databázi |
-| **Brány** | Ano | Název nainstalované místní brány dat <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje všechny nainstalované brány dat v rámci předplatného Azure a skupiny prostředků. |
+| **Připojit přes místní bránu** | Yes | Použije se, pokud chcete místní připojení a zobrazuje vlastnosti místního připojení. |
+| **Název připojení** | Yes | Název připojení, například "MyLogicApp-DB2-připojení" | 
+| **Server** | Yes | Číslo portu nebo dvojtečku, které má adresa nebo alias pro server DB2, například "myDB2server: 50000". <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje adresu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP. |
+| **Database** | Yes | Název databáze <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje název RELAČNÍ databáze DRDA (RDBNAM): <p>– DB2 pro z/OS akceptuje 16bajtový řetězec, ve kterém je databáze známá jako umístění IBM DB2 pro z/OS. <br>– DB2 pro Přijímám 18 bajtů, kde je databáze známá jako relační databáze IBM DB2 for i. <br>– DB2 pro LUW akceptuje řetězec o velikosti 8 bajtů. |
+| **Authentication** | Yes | Typ ověřování pro připojení, například "základní" <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje základní nebo Windows (Kerberos). |
+| **Jmen** | Yes | Vaše uživatelské jméno pro databázi <p><p>**Poznámka**: Tato hodnota je řetězec, jehož délka je založena na konkrétní databázi: <p><p>– DB2 pro z/OS akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Přijímám řetězec 10 bajtů. <br>– DB2 pro Linux nebo UNIX akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Windows přijímá 30 bajtů řetězce. |
+| **Heslo** | Yes | Heslo pro databázi |
+| **Brány** | Yes | Název nainstalované místní brány dat <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje všechny nainstalované brány dat v rámci předplatného Azure a skupiny prostředků. |
 ||||
 
 Příklad:
@@ -141,7 +140,7 @@ Rozbalte akci **získat tabulky** .
 
 ## <a name="get-row"></a>Získat řádek
 
-K načtení jednoho záznamu v databázové tabulce DB2 použijte akci **získat řádek** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `SELECT WHERE` , například `SELECT FROM AREA WHERE AREAID = '99999'`.
+K načtení jednoho záznamu v databázové tabulce DB2 použijte akci **získat řádek** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `SELECT WHERE` , například `SELECT FROM AREA WHERE AREAID = '99999'` .
 
 1. Pokud jste ještě nikdy nepoužili akce DB2 před ve vaší aplikaci logiky, přečtěte si postup v části [Přidání akce DB2 – získat tabulky](#add-db2-action) , ale místo toho přidejte akci **získat řádek** a vraťte se sem, abyste mohli pokračovat.
 
@@ -151,10 +150,10 @@ K načtení jednoho záznamu v databázové tabulce DB2 použijte akci **získat
 
 1. Zadejte hodnoty pro všechny požadované vlastnosti (*). Po výběru tabulky akce zobrazí příslušné vlastnosti, které jsou specifické pro záznamy v této tabulce.
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název tabulky** | Ano | Tabulka s požadovaným záznamem, například "oblast" v tomto příkladu |
-   | **ID oblasti** | Ano | ID požadovaného záznamu, například "99999" v tomto příkladu |
+   | **Název tabulky** | Yes | Tabulka s požadovaným záznamem, například "oblast" v tomto příkladu |
+   | **ID oblasti** | Yes | ID požadovaného záznamu, například "99999" v tomto příkladu |
    ||||
 
    ![Vybrat tabulku](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -182,7 +181,7 @@ Rozbalte akci **získat řádek** .
 
 ## <a name="get-rows"></a>Získat řádky
 
-K načtení všech záznamů v databázové tabulce DB2 použijte akci **získat řádky** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `SELECT` , například `SELECT * FROM AREA`.
+K načtení všech záznamů v databázové tabulce DB2 použijte akci **získat řádky** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `SELECT` , například `SELECT * FROM AREA` .
 
 1. Pokud jste ještě nikdy nepoužili akce DB2 před ve vaší aplikaci logiky, přečtěte si postup v části [Přidání akce DB2 – získat tabulky](#add-db2-action) , ale místo toho přidejte akci **získat řádky** a vraťte se sem, abyste mohli pokračovat.
 
@@ -219,7 +218,7 @@ Rozbalte akci **získat řádky** .
 
 ## <a name="insert-row"></a>Vložení řádku
 
-K přidání jednoho záznamu do tabulky databáze DB2 použijte akci **Vložit řádek** do aplikace logiky. Tato akce spustí příkaz DB2 `INSERT` , například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+K přidání jednoho záznamu do tabulky databáze DB2 použijte akci **Vložit řádek** do aplikace logiky. Tato akce spustí příkaz DB2 `INSERT` , například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)` .
 
 1. Pokud jste ještě nikdy nepoužili akce DB2 před v aplikaci logiky, přečtěte si postup v části [Přidání akce DB2 – získat tabulky](#add-db2-action) , ale místo toho přidejte akci **Vložit řádek** a pak se vraťte sem, abyste mohli pokračovat.
 
@@ -231,12 +230,12 @@ K přidání jednoho záznamu do tabulky databáze DB2 použijte akci **Vložit 
 
    V tomto příkladu jsou zde vlastnosti:
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název tabulky** | Ano | Tabulka, do které se má záznam přidat, například "oblast" |
-   | **ID oblasti** | Ano | ID oblasti, která se má přidat, například "99999" |
-   | **Popis oblasti** | Ano | Popis oblasti, která se má přidat, například "oblast 99999" |
-   | **ID oblasti** | Ano | ID oblasti, která se má přidat, například "102" |
+   | **Název tabulky** | Yes | Tabulka, do které se má záznam přidat, například "oblast" |
+   | **ID oblasti** | Yes | ID oblasti, která se má přidat, například "99999" |
+   | **Popis oblasti** | Yes | Popis oblasti, která se má přidat, například "oblast 99999" |
+   | **ID oblasti** | Yes | ID oblasti, která se má přidat, například "102" |
    |||| 
 
    Příklad:
@@ -266,7 +265,7 @@ Rozbalte akci **Vložit řádek** .
 
 ## <a name="update-row"></a>Aktualizovat řádek
 
-Pokud chcete aktualizovat jeden záznam v databázové tabulce DB2, použijte akci **aktualizovat řádek** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `UPDATE` , například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`.
+Pokud chcete aktualizovat jeden záznam v databázové tabulce DB2, použijte akci **aktualizovat řádek** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `UPDATE` , například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)` .
 
 1. Pokud jste ještě nikdy nepoužili akce DB2 před ve vaší aplikaci logiky, přečtěte si postup v části [Přidání akce DB2 – získat tabulky](#add-db2-action) , ale místo toho přidejte akci **aktualizovat řádek** a vraťte se sem, abyste mohli pokračovat.
 
@@ -278,13 +277,13 @@ Pokud chcete aktualizovat jeden záznam v databázové tabulce DB2, použijte ak
 
    V tomto příkladu jsou zde vlastnosti:
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název tabulky** | Ano | Tabulka, ve které se má záznam aktualizovat, například "oblast" |
-   | **ID řádku** | Ano | ID záznamu, který se má aktualizovat, například "99999" |
-   | **ID oblasti** | Ano | Nové ID oblasti, například "99999" |
-   | **Popis oblasti** | Ano | Popis nové oblasti, například "aktualizované 99999" |
-   | **ID oblasti** | Ano | Nové ID oblasti, například "102" |
+   | **Název tabulky** | Yes | Tabulka, ve které se má záznam aktualizovat, například "oblast" |
+   | **ID řádku** | Yes | ID záznamu, který se má aktualizovat, například "99999" |
+   | **ID oblasti** | Yes | Nové ID oblasti, například "99999" |
+   | **Popis oblasti** | Yes | Popis nové oblasti, například "aktualizované 99999" |
+   | **ID oblasti** | Yes | Nové ID oblasti, například "102" |
    ||||
 
    Příklad:
@@ -314,7 +313,7 @@ Rozbalte akci **aktualizovat řádek** .
 
 ## <a name="delete-row"></a>Odstranit řádek
 
-K odstranění jednoho záznamu z tabulky databáze DB2 použijte akci **Odstranit řádek** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `DELETE` , například `DELETE FROM AREA WHERE AREAID = '99999'`.
+K odstranění jednoho záznamu z tabulky databáze DB2 použijte akci **Odstranit řádek** ve vaší aplikaci logiky. Tato akce spustí příkaz DB2 `DELETE` , například `DELETE FROM AREA WHERE AREAID = '99999'` .
 
 1. Pokud jste ještě nikdy nepoužili akce DB2 před ve vaší aplikaci logiky, přečtěte si postup v části [Přidání akce DB2 – získat tabulky](#add-db2-action) , ale místo toho přidejte akci **Odstranit řádek** a pak se vraťte sem, abyste mohli pokračovat.
 
@@ -326,10 +325,10 @@ K odstranění jednoho záznamu z tabulky databáze DB2 použijte akci **Odstran
 
    V tomto příkladu jsou zde vlastnosti:
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název tabulky** | Ano | Tabulka, ve které se má záznam odstranit, například "oblast" |
-   | **ID řádku** | Ano | ID záznamu, který se má odstranit, například "99999" |
+   | **Název tabulky** | Yes | Tabulka, ve které se má záznam odstranit, například "oblast" |
+   | **ID řádku** | Yes | ID záznamu, který se má odstranit, například "99999" |
    ||||
 
    Příklad:

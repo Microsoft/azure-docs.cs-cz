@@ -4,10 +4,9 @@ description: Nastavte atributy pro Image kontejneru nebo úložiště, aby se ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659692"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Uzamknutí image kontejneru ve službě Azure Container Registry
@@ -69,7 +68,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Uzamknutí obrázku pomocí výtahu manifestu
 
-K uzamknutí image *myrepo/MyImage* identifikované hodnotou Digest MANIFESTU (SHA-256 hash, reprezentovaná `sha256:...`jako) spusťte následující příkaz. (Chcete-li zjistit, který výtah manifestu je přidružen k jedné nebo více značkám obrázku, spusťte příkaz [AZ ACR úložištì show-Manifests][az-acr-repository-show-manifests] .)
+K uzamknutí image *myrepo/MyImage* identifikované hodnotou Digest MANIFESTU (SHA-256 hash, reprezentovaná jako `sha256:...` ) spusťte následující příkaz. (Chcete-li zjistit, který výtah manifestu je přidružen k jedné nebo více značkám obrázku, spusťte příkaz [AZ ACR úložištì show-Manifests][az-acr-repository-show-manifests] .)
 
 ```azurecli
 az acr repository update \

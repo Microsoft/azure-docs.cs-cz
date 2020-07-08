@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
 ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919426"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Spuštění virtuálního počítače Azure je zablokované na Windows Update.
@@ -53,7 +52,7 @@ V závislosti na počtu aktualizací, které jsou instalovány nebo vraceny zpě
     Pokud je například připojený disk s operačním systémem jednotka F, spusťte následující příkaz:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Otevřete soubor složce c:\Temp\ Patch_level. txt a pak ho z dolní části si přečtěte. Vyhledejte aktualizaci, která čeká na **instalaci** nebo **čeká na odinstalaci** .  Následuje ukázka stavu aktualizace:
+5. Otevřete soubor C:\temp\Patch_level.txt a pak ho z dolní části si přečtěte. Vyhledejte aktualizaci, která čeká na **instalaci** nebo **čeká na odinstalaci** .  Následuje ukázka stavu aktualizace:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

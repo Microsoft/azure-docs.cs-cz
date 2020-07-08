@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664775"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení VMware Monitoring (nepoužívané) v Azure Monitor
@@ -40,10 +39,10 @@ Vytvořte virtuální počítač s operačním systémem Linux pro příjem vše
    ![tok syslog](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Konfigurovat shromažďování syslog
-1. Nastavte předávání syslog pro VSphere. Podrobné informace, které vám pomůžou nastavit předávání syslog, najdete v tématu [Konfigurace protokolu syslog na ESXi 5,0 a vyšší (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Přejít**Software** > na **konfiguraci** > hostitele ESXi**Rozšířené nastavení** > **syslog**.
+1. Nastavte předávání syslog pro VSphere. Podrobné informace, které vám pomůžou nastavit předávání syslog, najdete v tématu [Konfigurace protokolu syslog na ESXi 5,0 a vyšší (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Přejít na **konfiguraci hostitele ESXi**  >  **Software**  >  **Rozšířené nastavení**  >  **syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
 1. Do pole *syslog. Global. logHost* přidejte server Linux a číslo portu *1514*. Příklad: `tcp://hostname:1514` nebo `tcp://123.456.789.101:1514`
-1. Otevřete hostitelskou bránu firewall ESXi pro syslog. **Konfigurace** > **Software** > hostitele ESXi > **profil zabezpečení**softwaru**firewall** a otevřete **vlastnosti**.  
+1. Otevřete hostitelskou bránu firewall ESXi pro syslog. **Konfigurace**  >  hostitele ESXi **Software**  >  **Profil zabezpečení**  >  **Brána firewall** a otevřené **vlastnosti**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -56,7 +55,7 @@ Vytvořte virtuální počítač s operačním systémem Linux pro příjem vše
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Restartujte agenta Log Analytics pro Linux spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+1. Restartujte agenta Log Analytics pro Linux spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 1. Otestujte připojení mezi serverem Linux a hostitelem ESXi pomocí `nc` příkazu na hostiteli ESXi. Příklad:
 
     ```
@@ -64,9 +63,9 @@ Vytvořte virtuální počítač s operačním systémem Linux pro příjem vše
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. V Azure Portal proveďte dotaz protokolu pro `VMware_CL`. Když Azure Monitor shromažďuje data syslog, uchovává formát syslog. Na portálu jsou některá konkrétní pole zachycena, například *název hostitele* a název *procesu*.  
+1. V Azure Portal proveďte dotaz protokolu pro `VMware_CL` . Když Azure Monitor shromažďuje data syslog, uchovává formát syslog. Na portálu jsou některá konkrétní pole zachycena, například *název hostitele* a název *procesu*.  
 
-    ![type](./media/vmware/type.png)  
+    ![typ](./media/vmware/type.png)  
 
     Pokud výsledky hledání protokolu zobrazení jsou podobné obrázku výše, je nastaveno použití řídicího panelu řešení VMware Monitoring.  
 
@@ -131,7 +130,7 @@ Jeden hostitel ESXi generuje více protokolů na základě jejich procesů. VMwa
 
 Další podrobnosti můžete zobrazit kliknutím na hostitele ESXi nebo na typ události.
 
-Když kliknete na název hostitele ESXi, zobrazí se informace z tohoto hostitele ESXi. Pokud chcete zúžit výsledky s typem události, přidejte `“ProcessName_s=EVENT TYPE”` je do vyhledávacího dotazu. Ve vyhledávacím filtru můžete vybrat možnost **Process** . Tím se omezí informace za vás.
+Když kliknete na název hostitele ESXi, zobrazí se informace z tohoto hostitele ESXi. Pokud chcete zúžit výsledky s typem události, přidejte je `“ProcessName_s=EVENT TYPE”` do vyhledávacího dotazu. Ve vyhledávacím filtru můžete vybrat možnost **Process** . Tím se omezí informace za vás.
 
 ![Drob](./media/vmware/eventhostdrilldown.png)
 
@@ -188,7 +187,7 @@ Může existovat několik důvodů:
   1. Log Analytics naslouchá na portu 1514. Pokud chcete ověřit, že je otevřený, spusťte následující příkaz:`netstat -a | grep 1514`
   1. Měl by se zobrazit `1514/tcp` otevřený port. Pokud to neuděláte, ověřte, že je omsagent správně nainstalovaný. Pokud nevidíte informace o portu, pak na virtuálním počítači není otevřený port syslog.
 
-    a. Pomocí nástroje `ps -ef | grep oms`ověřte, zda je spuštěný agent Log Analytics. Pokud není spuštěný, spusťte proces spuštěním příkazu.`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Pomocí nástroje ověřte, zda je spuštěný agent Log Analytics `ps -ef | grep oms` . Pokud není spuštěný, spusťte proces spuštěním příkazu.`sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Otevřete soubor `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 

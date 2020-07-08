@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666633"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolování času pro příjem dat ve službě Azure Monitor
@@ -60,7 +59,7 @@ Chcete-li zjistit četnost shromažďování dat, přečtěte si dokumentaci pro
 Po ingestování záznamů protokolu do kanálu Azure Monitor (jak je identifikované vlastností [_TimeReceived](log-standard-properties.md#_timereceived) ) se zapisují do dočasného úložiště, které zajistí izolaci tenanta a zajistěte, aby se data neztratila. Tento proces obvykle přidává 5-15 sekund. Některá řešení pro správu implementují těžší algoritmy pro agregaci dat a odvozují přehledy při streamování dat. Například monitorování výkonu sítě agreguje příchozí data v intervalech po dobu tří minut a efektivně přidá latenci na 3 minuty. Dalším procesem, který přidává latenci, je proces, který zpracovává vlastní protokoly. V některých případech může tento proces přidat několik minut latence do protokolů shromažďovaných ze souborů agentem.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nové zřizování vlastních datových typů
-Když se vytvoří nový typ vlastních dat z [vlastního protokolu](data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](data-collector-api.md), systém vytvoří vyhrazený kontejner úložiště. Jedná se o jednorázovou režii, která nastane pouze při prvním výskytu tohoto datového typu.
+Když se vytvoří nový typ vlastních dat z [vlastního protokolu](data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](data-collector-api.md), systém vytvoří vyhrazený kontejner úložiště. Jedná se o jednorázovou režii, ke které dochází pouze při prvním výskytu daného datového typu.
 
 ### <a name="surge-protection"></a>Ochrana proti přepětí
 Nejvyšší prioritou Azure Monitor je zajistit, že se neztratí žádná zákaznická data, takže systém má vestavěnou ochranu proti nárůstu dat. To zahrnuje vyrovnávací paměti, aby se zajistilo, že i v případě obrovské zátěže systém zůstane funkční. V rámci normálního zatížení tyto ovládací prvky přidávají méně než minutu, ale v extrémních podmínkách a selháních by mohly přidat značnou dobu, zatímco data jsou bezpečná.
@@ -79,7 +78,7 @@ Doba příjmu se může u různých prostředků v různých případech lišit.
 |:---|:---|:---|
 | Záznam vytvořený ve zdroji dat | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Pokud zdroj dat tuto hodnotu nenastaví, bude nastaven na stejný čas jako _TimeReceived. |
 | Záznam přijatý Azure Monitor koncový bod pro ingestování | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Zpoždění latence přijímání
 Můžete změřit latenci konkrétního záznamu porovnáním výsledku funkce [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) s vlastností _TimeGenerated_ . Tato data je možné použít s různými agregacemi k nalezení, jak se latence příjmu chová. Prověřte si určitý percentil doby příjmu, abyste získali přehled o velkém množství dat. 
@@ -95,7 +94,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-Předchozí kontroly percentilu jsou vhodné pro hledání obecných trendů v latenci. Pro identifikaci krátkodobého špičky v latenci může být použití maxima (`max()`) efektivnější.
+Předchozí kontroly percentilu jsou vhodné pro hledání obecných trendů v latenci. Pro identifikaci krátkodobého špičky v latenci může být použití maxima ( `max()` ) efektivnější.
 
 Chcete-li přejít k podrobnostem o době příjmu konkrétního počítače v časovém intervalu, použijte následující dotaz, který také vizualizuje data z minulého dne v grafu: 
 

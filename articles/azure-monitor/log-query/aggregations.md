@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670300"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Agregace v Azure Monitorch dotazech protokolu
@@ -63,7 +62,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Chcete-li spočítat pouze počítače se systémem Linux, které odesílají `dcountif`prezenční signály, použijte:
+Chcete-li spočítat pouze počítače se systémem Linux, které odesílají prezenční signály, použijte `dcountif` :
 
 ```Kusto
 Heartbeat 
@@ -82,14 +81,14 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|Spojené státy    | 19                  |
+|USA    | 19                  |
 |Kanada           | 3                   |
 |Irsko          | 0                   |
 |Spojené království   | 0                   |
 |Nizozemsko      | 2                   |
 
 
-Pokud chcete analyzovat i menší podskupiny vašich dat, přidejte do `by` oddílu Další názvy sloupců. Můžete například chtít spočítat samostatné počítače z každé země nebo oblasti na OSType:
+Pokud chcete analyzovat i menší podskupiny vašich dat, přidejte do oddílu Další názvy sloupců `by` . Můžete například chtít spočítat samostatné počítače z každé země nebo oblasti na OSType:
 
 ```Kusto
 Heartbeat 
@@ -98,7 +97,7 @@ Heartbeat
 ```
 
 ## <a name="percentiles-and-variance"></a>Percentily a odchylky
-Při vyhodnocování numerických hodnot je běžné zvyklosti použít `summarize avg(expression)`průměrně. Na průměry jsou ovlivněny extrémní hodnoty, které charakterizují pouze několik případů. Chcete-li tento problém vyřešit, můžete použít méně citlivé funkce, `median` například `variance`nebo.
+Při vyhodnocování numerických hodnot je běžné zvyklosti použít průměrně `summarize avg(expression)` . Na průměry jsou ovlivněny extrémní hodnoty, které charakterizují pouze několik případů. Chcete-li tento problém vyřešit, můžete použít méně citlivé funkce, například `median` nebo `variance` .
 
 ### <a name="percentile"></a>Percentil
 Chcete-li najít medián hodnoty, použijte `percentile` funkci s hodnotou k určení percentilu:

@@ -4,10 +4,9 @@ description: Nasaďte balíček ZIP vaší aplikace s nedělitelnost. Zlepšení
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920718"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Spuštění aplikace v Azure App Service přímo z balíčku ZIP
@@ -31,7 +30,7 @@ Naproti tomu, když spouštíte přímo z balíčku, soubory v balíčku nejsou 
 
 ## <a name="enable-running-from-package"></a>Povolit spuštění z balíčku
 
-Nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace umožňuje spuštění z balíčku. Pokud ho chcete nastavit, spusťte následující příkaz pomocí Azure CLI.
+`WEBSITE_RUN_FROM_PACKAGE`Nastavení aplikace umožňuje spuštění z balíčku. Pokud ho chcete nastavit, spusťte následující příkaz pomocí Azure CLI.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_RUN_FROM_PACKAGE="1"
@@ -47,7 +46,7 @@ Nejjednodušší způsob, jak balíček v App Service spustit, je pomocí přík
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
 ```
 
-Vzhledem k `WEBSITE_RUN_FROM_PACKAGE` tomu, že nastavení aplikace je nastavené, tento příkaz neextrahuje obsah balíčku do adresáře *D:\home\site\wwwroot* vaší aplikace. Místo toho odešle soubor ZIP jako *D:\home\data\SitePackages*a vytvoří soubor *. txt* ve stejném adresáři, který obsahuje název balíčku zip, který se má načíst za běhu. Pokud váš balíček ZIP nahrajete jiným způsobem (například [FTP](deploy-ftp.md)), budete muset vytvořit adresář *D:\home\data\SitePackages* a soubor *. txt* .
+Vzhledem k tomu `WEBSITE_RUN_FROM_PACKAGE` , že nastavení aplikace je nastavené, tento příkaz neextrahuje obsah balíčku do adresáře *D:\home\site\wwwroot* vaší aplikace. Místo toho odešle soubor ZIP jako *D:\home\data\SitePackages*a vytvoří *packagename.txt* ve stejném adresáři, který obsahuje název balíčku zip, který se má načíst za běhu. Pokud váš balíček ZIP nahrajete jiným způsobem (například [FTP](deploy-ftp.md)), budete muset vytvořit adresář *D:\home\data\SitePackages* a soubor *packagename.txt* ručně.
 
 Příkaz také restartuje aplikaci. Protože `WEBSITE_RUN_FROM_PACKAGE` je nastavena, App Service připojí nahraný balíček jako adresář *wwwroot* jen pro čtení a spustí aplikaci přímo z tohoto připojeného adresáře.
 
@@ -55,7 +54,7 @@ Příkaz také restartuje aplikaci. Protože `WEBSITE_RUN_FROM_PACKAGE` je nasta
 
 Balíček můžete také spustit z externí adresy URL, jako je například Azure Blob Storage. Pomocí [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) můžete odeslat soubory balíčku do svého účtu BLOB Storage. Pomocí privátního kontejneru úložiště se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) můžete App Service modulu runtime povolit zabezpečený přístup k balíčku. 
 
-Po nahrání souboru do úložiště objektů BLOB a zadání adresy URL SAS pro tento soubor nastavte nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace na adresu URL. V následujícím příkladu se používá Azure CLI:
+Po nahrání souboru do úložiště objektů BLOB a zadání adresy URL SAS pro tento soubor nastavte `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace na adresu URL. V následujícím příkladu se používá Azure CLI:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="https://myblobstorage.blob.core.windows.net/content/SampleCoreMVCApp.zip?st=2018-02-13T09%3A48%3A00Z&se=2044-06-14T09%3A48%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=bNrVrEFzRHQB17GFJ7boEanetyJ9DGwBSV8OM3Mdh%2FM%3D"
@@ -65,10 +64,10 @@ Pokud publikujete aktualizovaný balíček se stejným názvem pro úložiště 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-- Spuštění přímo z balíčku zpřístupňuje `wwwroot` jen pro čtení. Pokud se aplikace pokusí zapisovat soubory do tohoto adresáře, dojde k chybě.
+- Spuštění přímo z balíčku zpřístupňuje jen `wwwroot` pro čtení. Pokud se aplikace pokusí zapisovat soubory do tohoto adresáře, dojde k chybě.
 - Formáty TAR a GZIP se nepodporují.
 - Tato funkce není kompatibilní s [místní mezipamětí](overview-local-cache.md).
-- Pro zlepšení výkonu pro studený start použijte místní možnost zip (`WEBSITE_RUN_FROM_PACKAGE`= 1).
+- Pro zlepšení výkonu pro studený start použijte místní možnost zip ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 
 ## <a name="more-resources"></a>Další zdroje informací
 

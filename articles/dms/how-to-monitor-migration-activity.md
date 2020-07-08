@@ -12,10 +12,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77648508"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Monitorování aktivity migrace pomocí Azure Database Migration Service
@@ -93,7 +92,7 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Doba trvání</strong></td>
-      <td>–</td>
+      <td>Není k dispozici</td>
       <td>Celková doba z migrační aktivity migrace do migrace byla dokončena nebo došlo k chybě migrace.</td>
     </tr>
      </tbody>
@@ -108,7 +107,7 @@ V dolní části okna jsou uvedené tabulky a zobrazí se rychlý souhrn průbě
 
 Následující tabulka popisuje pole zobrazená v podrobnostech na úrovni tabulky.
 
-| Název pole        | Popis       |
+| Název pole        | Description       |
 | ------------- | ------------- |
 | **Úplné načtení dokončeno**      | Počet tabulek dokončil úplné načtení dat. |
 | **Úplné načtení ve frontě**      | Počet tabulek, které jsou zařazeny do fronty pro úplné načtení.      |
@@ -129,10 +128,10 @@ K dispozici jsou dvě karty, které znázorňují průběh migrace v plném zat�
 
 Následující tabulka popisuje pole zobrazená v průběhu migrace na úrovni tabulky.
 
-| Název pole        | Popis       |
+| Název pole        | Description       |
 | ------------- | ------------- |
 | **Stav – synchronizace**      | Průběžná synchronizace je spuštěná. |
-| **Vložit**      | Počet vkládání funkce CDC v řádcích použitých na cíl      |
+| **Insert**      | Počet vkládání funkce CDC v řádcích použitých na cíl      |
 | **Aktualizace** | Počet aktualizací CDC v řádcích použitých na cíl      |
 | **Odstranit**      | Počet odstranění CDC v řádcích použitých na cíl |
 | **Celkem použito**      | Celkový počet aktualizací CDC, vkládání a odstranění v řádcích použitých pro cíl |

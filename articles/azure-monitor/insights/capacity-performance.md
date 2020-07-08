@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666939"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Plánování kapacity virtuálních počítačů Hyper-V pomocí řešení Capacity and Performance (zastaralé)
@@ -39,12 +38,12 @@ Pomocí řešení Capacity and Performance v části monitorování můžete lé
 
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
 
-| Připojený zdroj | Podpora | Popis |
+| Připojený zdroj | Podpora | Description |
 |---|---|---|
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne    | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
-| [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ano |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
-| [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
+| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Yes | Řešení shromažďuje informace o kapacitě a datech o výkonu od agentů systému Windows. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | Řešení neshromažďuje informace o kapacitě a datech výkonu z přímých agentů systému Linux.|
+| [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Yes |Řešení shromažďuje data o kapacitě a výkonu od agentů v připojené skupině pro správu systému SCOM. Přímé připojení od agenta SCOM k Log Analytics není vyžadováno.|
+| [Účet úložiště Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Služba Azure Storage neobsahuje data o kapacitě a výkonu.|
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -88,7 +87,7 @@ Kliknutím na dlaždici Capacity and Performance otevřete řídicí panel Capac
 - **Dvou**
     - **Využití CPU hostitele** Zobrazuje grafický trend využití CPU hostitelských počítačů a seznam hostitelů na základě vybraného časového období. Když najedete myší na spojnicový graf, zobrazí se podrobnosti určitého bodu v čase. Kliknutím na graf zobrazíte další podrobnosti v hledání v protokolu. Kliknutím na libovolný název hostitele otevřete prohledávání protokolů a zobrazte podrobnosti o čítačích procesoru pro hostované virtuální počítače.
     - **Využití paměti hostitele** Zobrazuje grafický trend využití paměti hostitelských počítačů a seznamu hostitelů na základě vybraného časového období. Když najedete myší na spojnicový graf, zobrazí se podrobnosti určitého bodu v čase. Kliknutím na graf zobrazíte další podrobnosti v hledání v protokolu. Kliknutím na libovolný název hostitele otevřete prohledávání protokolů a zobrazte podrobnosti o čítačích paměti pro hostované virtuální počítače.
-- **Virtuální počítače**
+- **Virtual Machines**
     - **Využití CPU virtuálních počítačů** Zobrazuje grafický trend využití procesoru u virtuálních počítačů a seznam virtuálních počítačů na základě vybraného časového období. Když najedete myší na spojnicový graf, zobrazí se podrobnosti o konkrétním bodu v čase pro první 3 virtuální počítače. Kliknutím na graf zobrazíte další podrobnosti v hledání v protokolu. Kliknutím na libovolný název virtuálního počítače otevřete prohledávání protokolů a zobrazte podrobnosti agregovaného čítače CPU pro virtuální počítač.
     - **Využití paměti virtuálního počítače** Zobrazuje grafický trend využití paměti pro virtuální počítače a seznam virtuálních počítačů na základě vybraného časového období. Když najedete myší na spojnicový graf, zobrazí se podrobnosti o konkrétním bodu v čase pro první 3 virtuální počítače. Kliknutím na graf zobrazíte další podrobnosti v hledání v protokolu. Kliknutím na libovolný název virtuálního počítače otevřete prohledávání protokolů a zobrazte podrobnosti o čítači agregované paměti pro virtuální počítač.
     - **Celkový počet** vstupně-výstupních operací virtuálního počítače Zobrazuje grafický trend celkového počtu vstupně-výstupních operací disku pro virtuální počítače a seznam virtuálních počítačů s jednotlivými vstupně-výstupních operací na základě vybraného časového období. Když najedete myší na spojnicový graf, zobrazí se podrobnosti o konkrétním bodu v čase pro první 3 virtuální počítače. Kliknutím na graf zobrazíte další podrobnosti v hledání v protokolu. Kliknutím na libovolný název virtuálního počítače otevřete prohledávání protokolů a zobrazte podrobnosti o čítači agregovaného disku IOPS pro virtuální počítač.
@@ -117,7 +116,7 @@ V rámci sumarizace řešení shromažďuje data o kapacitě a výkonu z nejrůz
 V následující tabulce najdete ukázková hledání v protokolech pro data o kapacitě a výkonu shromážděná a vypočtená tímto řešením.
 
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | Všechny konfigurace paměti hostitele | &#124; výkonu, kde ObjectName = = "Capacity and Performance" a CounterName = = "hostovaná paměť MB" &#124; sumarizaci MB = AVG (CounterValue) podle InstanceName |
 | Všechny konfigurace paměti virtuálního počítače | &#124; výkonu, kde ObjectName = = "Capacity and Performance" a CounterName = = "virtuální počítač přiřadil MB" &#124; sumarizaci MB = AVG (CounterValue) pomocí InstanceName |

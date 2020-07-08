@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671609"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilování živých aplikací Service Fabric Azure pomocí Application Insights
@@ -18,7 +17,7 @@ ms.locfileid: "77671609"
 Application Insights Profiler můžete nasadit i na tyto služby:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Virtual Machines Azure](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="set-up-the-environment-deployment-definition"></a>Nastavení definice nasazení prostředí
 
@@ -26,11 +25,11 @@ Application Insights Profiler je součástí Azure Diagnostics. Azure Diagnostic
 
 Chcete-li nastavit prostředí, proveďte následující akce:
 
-1. Profiler podporuje .NET Framework a .Net Core. Pokud používáte .NET Framework, ujistěte se, že používáte [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Je dostačující ověřit, zda je `Windows Server 2012 R2` nasazený operační systém nebo novější. Profiler podporuje .NET Core 2,1 a novější aplikace.
+1. Profiler podporuje .NET Framework a .Net Core. Pokud používáte .NET Framework, ujistěte se, že používáte [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější. Je dostačující ověřit, zda je nasazený operační systém `Windows Server 2012 R2` nebo novější. Profiler podporuje .NET Core 2,1 a novější aplikace.
 
 1. Vyhledejte rozšíření [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) v souboru šablony nasazení.
 
-1. Přidejte následující `SinksConfig` oddíl jako podřízený element prvku `WadCfg`. Nahraďte `ApplicationInsightsProfiler` hodnotu vlastnosti vlastním klíčem instrumentace Application Insights:  
+1. Přidejte následující `SinksConfig` oddíl jako podřízený element prvku `WadCfg` . Nahraďte `ApplicationInsightsProfiler` hodnotu vlastnosti vlastním klíčem instrumentace Application Insights:  
 
       ```json
       "SinksConfig": {

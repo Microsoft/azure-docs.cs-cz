@@ -7,10 +7,9 @@ author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
 ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654388"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Cenové změny pro Azure Network Performance Monitor
@@ -109,7 +108,7 @@ Připojení je test dosažitelnosti jednoho koncového bodu (adresa URL nebo sí
 
 Náklady na monitorování koncového bodu v celém měsíci najdete v části [monitorování připojení](https://azure.microsoft.com/pricing/details/network-watcher/) . Poplatky za data jsou k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) pro Log Analytics v části pro příjem dat.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 [Nejčastější dotazy k log Analyticsm](https://azure.microsoft.com/pricing/details/log-analytics/)cenám: část s nejčastějšími dotazy obsahuje informace o cenách úrovně Free, ceny za uzel a další informace o cenách.
 

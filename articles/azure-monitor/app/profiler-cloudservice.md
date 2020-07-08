@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671660"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilování živě Cloud Services Azure pomocí Application Insights
@@ -18,7 +17,7 @@ ms.locfileid: "77671660"
 Application Insights Profiler můžete nasadit i na tyto služby:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Aplikace Service Fabric Azure](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Virtual Machines Azure](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler se instaluje s rozšířením Azure Diagnostics. Stačí nakonfigurovat Azure Diagnostics pro instalaci profileru a odesílání profilů do prostředku Application Insights.
 
@@ -43,7 +42,7 @@ Application Insights Profiler se instaluje s rozšířením Azure Diagnostics. S
 
       Pokud soubor nemůžete najít, přečtěte si téma [nastavení diagnostiky pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Přidejte následující `SinksConfig` oddíl jako podřízený prvek `WadCfg`:  
+    b. Přidejte následující `SinksConfig` oddíl jako podřízený prvek `WadCfg` :  
 
       ```xml
       <WadCfg>
@@ -63,7 +62,7 @@ Application Insights Profiler se instaluje s rozšířením Azure Diagnostics. S
     > * Klíč, který používá jímka ApplicationInsights. 
     > * Klíč, který používá jímka ApplicationInsightsProfiler. 
     >
-    > Aktuální hodnotu klíč instrumentace, kterou používá `ApplicationInsights` jímka, najdete v *ServiceConfiguration..\* soubory cscfg* . 
+    > Aktuální hodnotu klíč instrumentace, kterou používá jímka, najdete `ApplicationInsights` v *ServiceConfiguration. \* . soubory cscfg* . 
     > Po vydání sady Visual Studio 15,5 Azure SDK se musí navzájem shodovat pouze klíče instrumentace používané aplikací a jímka ApplicationInsightsProfiler.
 
 1. Nasaďte službu s novou konfigurací diagnostiky a Application Insights Profiler je nakonfigurovaná tak, aby běžela ve vaší službě.

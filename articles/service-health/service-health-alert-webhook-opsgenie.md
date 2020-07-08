@@ -4,10 +4,9 @@ description: Získejte přizpůsobená oznámení o událostech služby Service 
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654133"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Odesílání upozornění na Azure Service Health s OpsGenie pomocí webhooků
@@ -29,7 +28,7 @@ V tomto článku se dozvíte, jak nastavit upozornění na stav služby Azure po
 
 1.  Vyplňte další pole, jako jsou **příjemci**, **Povolení**a **potlačení oznámení**.
 
-1.  Zkopírujte a uložte **adresu URL integrace**, která by již měla obsahovat `apiKey` vaše připojení ke konci.
+1.  Zkopírujte a uložte **adresu URL integrace**, která by již měla obsahovat vaše `apiKey` připojení ke konci.
 
     ![Adresa URL integrace v OpsGenie](./media/webhook-alerts/opsgenie-integration-url.png)
 

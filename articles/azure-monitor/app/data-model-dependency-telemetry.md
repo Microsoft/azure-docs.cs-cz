@@ -5,17 +5,16 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671915"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie závislostí: datový model Application Insights
 
 Telemetrie závislostí (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje interakce monitorované komponenty se vzdálenou komponentou, jako je SQL nebo koncový bod HTTP.
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
 Název příkazu iniciované tímto voláním závislosti. Nízká hodnota mohutnosti. Příklady jsou název uložené procedury a šablona cesty URL.
 
@@ -37,7 +36,7 @@ Cílový web volání závislosti. Příkladem je název serveru, adresa hostite
 
 ## <a name="duration"></a>Doba trvání
 
-Doba trvání žádosti ve formátu `DD.HH:MM:SS.MMMMMM`:. Musí být kratší než `1000` dny.
+Doba trvání žádosti ve formátu: `DD.HH:MM:SS.MMMMMM` . Musí být kratší než `1000` dny.
 
 ## <a name="result-code"></a>Kód výsledku
 

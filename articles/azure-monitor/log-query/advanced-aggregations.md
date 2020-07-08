@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662174"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v Azure Monitorch dotazech protokolu
@@ -38,9 +37,9 @@ Event
 | počítač2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-`makelist`vygeneruje seznam v pořadí, do kterého byla data předána. Chcete-li události seřadit od nejstarších `asc` k nejnovějším, použijte příkaz `desc`v příkazu Order místo. 
+`makelist`vygeneruje seznam v pořadí, do kterého byla data předána. Chcete-li události seřadit od nejstarších k nejnovějším, použijte `asc` příkaz v příkazu Order místo `desc` . 
 
-Je také užitečné vytvořit seznam jenom různých hodnot. Tato metoda se nazývá _sada_ a je možné ji vygenerovat `makeset`:
+Je také užitečné vytvořit seznam jenom různých hodnot. Tato metoda se nazývá _sada_ a je možné ji vygenerovat `makeset` :
 
 ```Kusto
 Event
@@ -55,10 +54,10 @@ Event
 | počítač2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-Stejně `makelist`tak `makeset` funguje také se seřazenými daty a vygeneruje pole na základě pořadí řádků, které jsou do ní předány.
+Stejně `makelist` tak `makeset` funguje také se seřazenými daty a vygeneruje pole na základě pořadí řádků, které jsou do ní předány.
 
 ## <a name="expanding-lists"></a>Rozbalování seznamů
-Inverzní operace `makelist` nebo `makeset` je `mvexpand`, která rozšiřuje seznam hodnot na samostatné řádky. Může se rozšířit na libovolný počet dynamických sloupců, JSON i Array. Můžete například zaškrtnout tabulku *prezenčního signálu* pro řešení odesílající data z počítačů, které odeslaly prezenční signál za poslední hodinu:
+Inverzní operace `makelist` nebo `makeset` je `mvexpand` , která rozšiřuje seznam hodnot na samostatné řádky. Může se rozšířit na libovolný počet dynamických sloupců, JSON i Array. Můžete například zaškrtnout tabulku *prezenčního signálu* pro řešení odesílající data z počítačů, které odeslaly prezenční signál za poslední hodinu:
 
 ```Kusto
 Heartbeat
@@ -142,7 +141,7 @@ Heartbeat
 | Přímý Agent | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-Třetí prvek *count_* pole je 0 podle očekávání a v poli _TimeGenerated_ je k dispozici párové časové razítko "2017-06-06T19:00:00.0000000 z". Tento formát pole je obtížné přečíst i v takovém případě. Použijte `mvexpand` k rozšíření polí a vytvoření stejného výstupu formátu generovaného pomocí `summarize`:
+Třetí prvek *count_* pole je 0 podle očekávání a v poli _TimeGenerated_ je k dispozici párové časové razítko "2017-06-06T19:00:00.0000000 z". Tento formát pole je obtížné přečíst i v takovém případě. Použijte `mvexpand` k rozšíření polí a vytvoření stejného výstupu formátu generovaného pomocí `summarize` :
 
 ```Kusto
 Heartbeat
@@ -163,7 +162,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zúžení výsledků do sady elementů: `let`, `makeset`,, `toscalar``in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zúžení výsledků do sady elementů: `let` , `makeset` , `toscalar` ,`in`
 Běžným scénářem je výběr názvů některých konkrétních entit na základě sady kritérií a následného filtrování různých datových sad na tuto sadu entit. Můžete například najít počítače, u kterých se ví, že mají chybějící aktualizace, a identifikovat IP adresy, na které tyto počítače zavolaly:
 
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671133"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Sjednocená Diagnostika transakcí mezi komponentami
@@ -66,9 +65,9 @@ V tomto sbalitelném podokně se zobrazují další výsledky, které splňují 
 
 [Application Insights Profiler](../../azure-monitor/app/profiler.md) nebo [program Snapshot Debugger](snapshot-debugger.md) vám pomůžou diagnostikovat problémy s výkonem a selháním na úrovni kódu. Díky tomuto prostředí můžete zobrazit trasování a snímky profileru z jakékoli komponenty jediným kliknutím.
 
-Pokud nemůžete získat funkční profil, kontaktujte prosím **serviceprofilerhelp\@Microsoft.com**
+Pokud nemůžete získat funkční profil, kontaktujte prosím **serviceprofilerhelp \@ Microsoft.com**
 
-Pokud se vám nepovedlo Snapshot Debugger pracovat, kontaktujte **prosím\@snapshothelp Microsoft.com**
+Pokud se vám nepovedlo Snapshot Debugger pracovat, kontaktujte prosím **snapshothelp \@ Microsoft.com**
 
 ![Integrace profileru](media/transaction-diagnostics/profilerTraces.png)
 

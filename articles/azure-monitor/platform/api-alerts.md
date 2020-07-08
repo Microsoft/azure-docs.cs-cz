@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664996"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytváření a Správa pravidel výstrah v Log Analytics s využitím REST API 
@@ -31,7 +30,7 @@ Plány mají vlastnosti v následující tabulce.
 |:--- |:--- |
 | Interval |Jak často se spouští hledání. Měří se v minutách. |
 | QueryTimeSpan |Časový interval, po kterém jsou kritéria vyhodnocena. Musí být rovno nebo větší než interval. Měří se v minutách. |
-| Version |Použitá verze rozhraní API.  V současné době by měl být vždy nastaven na hodnotu 1. |
+| Verze |Použitá verze rozhraní API.  V současné době by měl být vždy nastaven na hodnotu 1. |
 
 Můžete například zvážit dotaz na událost s intervalem 15 minut a časovým intervalem 30 minut. V takovém případě se dotaz spustí každých 15 minut a výstraha se aktivuje, pokud se kritéria pokračuje v překladu na true v rozsahu 30 minut.
 
@@ -122,7 +121,7 @@ Akci odstraňte pomocí metody Delete s ID akce.
 ### <a name="alert-actions"></a>Akce výstrah
 Plán by měl mít jednu a jenom jednu akci výstrahy.  Akce výstrahy mají jednu nebo více částí v následující tabulce.  Každá je podrobněji popsána níže.
 
-| Sekce | Popis | Využití |
+| Sekce | Description | Využití |
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
 | Severity |Popisek, který se používá k klasifikaci výstrahy, když se aktivuje| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
@@ -267,7 +266,7 @@ Použijte metodu PUT s existujícím ID akce a upravte skupinu akcí přidružen
 Ve výchozím nastavení postupuje pro oznámení standardní šablonu a formát. Uživatel ale může přizpůsobit některé akce, i když je řídí skupiny akcí. V současné době je přizpůsobení možné pro předmět e-mailu a datovou část Webhooku.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Přizpůsobení předmětu e-mailu pro skupinu akcí
-Ve výchozím nastavení je předmět e-mailu pro výstrahy: `<AlertName>` upozornění `<WorkspaceName>`výstrahy pro. To ale můžete přizpůsobit, abyste mohli určit určitá slova nebo značky – abyste mohli pravidla filtru snadno využívat ve své doručené poště. Podrobnosti hlavičky přizpůsobení e-mailu se musí posílat společně s podrobnostmi o členovi akce, jak je uvedeno níže v ukázce.
+Ve výchozím nastavení je předmět e-mailu pro výstrahy: upozornění výstrahy `<AlertName>` pro `<WorkspaceName>` . To ale můžete přizpůsobit, abyste mohli určit určitá slova nebo značky – abyste mohli pravidla filtru snadno využívat ve své doručené poště. Podrobnosti hlavičky přizpůsobení e-mailu se musí posílat společně s podrobnostmi o členovi akce, jak je uvedeno níže v ukázce.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658009"
 ---
 # <a name="workbook-time-parameters"></a>Parametry času sešitu
@@ -49,7 +48,7 @@ V takovém případě bude sešit vypadat jako v režimu čtení.
 ### <a name="in-kql"></a>V KQL
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
 2. Do KQL zadejte filtr oboru času pomocí parametru:`| where timestamp {TimeRange}`
-3. Tím se rozšíří doba vyhodnocování dotazu na `| where timestamp > ago(1d)`, což je hodnota časového rozsahu parametru.
+3. Tím se rozšíří doba vyhodnocování dotazu na `| where timestamp > ago(1d)` , což je hodnota časového rozsahu parametru.
 4. Spusťte dotaz, aby se zobrazily výsledky.
 
     ![Obrázek znázorňující časový rozsah, na který odkazuje KQL](./media/workbooks-time/time-in-code.png)

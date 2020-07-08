@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658264"
 ---
 # <a name="interactive-workbooks"></a>Interaktivní sešity
@@ -75,7 +74,7 @@ Někdy je žádoucí exportovat celý obsah vybraného řádku místo pouze konk
 Na referenčním ovládacím prvku KQL použijte `todynamic` funkci pro analýzu JSON a přístup k jednotlivým sloupcům.
 
  ## <a name="grid-cell-clicks"></a>Kliknutí na buňky mřížky
-Pracovní sešity umožňují autorům přidat interaktivitu prostřednictvím speciálního typu vykreslovacího modulu sloupců tabulky `link renderer`s názvem. Modul pro vykreslování odkazů převede buňku mřížky na hypertextový odkaz na základě obsahu buňky. Pracovní sešity podporují mnoho druhů vykreslovacích objektů, včetně těch, které umožňují otevřít okna s přehledem prostředků, diváků kontejnerů vlastností, hledání v App Insights, využití, trasování transakcí atd.
+Pracovní sešity umožňují autorům přidat interaktivitu prostřednictvím speciálního typu vykreslovacího modulu sloupců tabulky s názvem `link renderer` . Modul pro vykreslování odkazů převede buňku mřížky na hypertextový odkaz na základě obsahu buňky. Pracovní sešity podporují mnoho druhů vykreslovacích objektů, včetně těch, které umožňují otevřít okna s přehledem prostředků, diváků kontejnerů vlastností, hledání v App Insights, využití, trasování transakcí atd.
 
 ### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Nastavení interaktivity pomocí kliknutí na buňky mřížky
 1. Kliknutím na položku panelu nástrojů pro _Úpravy_ přepněte sešit do režimu úprav.
@@ -90,8 +89,8 @@ Pracovní sešity umožňují autorům přidat interaktivitu prostřednictvím s
 5. `Run query`zobrazení výsledků
 6. Kliknutím na _Nastavení sloupce_ otevřete podokno nastavení.
 7. V části _sloupce_ nastavte:
-    1. _Ukázka_ -sloupcový Renderer: `Link`, zobrazení pro otevření: `Cell Details`, popisek odkazu:`Sample`
-    2. _Count_ -Column Renderer: `Bar`, barevná paleta: `Blue`, minimální hodnota:`0`
+    1. _Ukázka_ -sloupcový Renderer: `Link` , zobrazení pro otevření: `Cell Details` , popisek odkazu:`Sample`
+    2. _Count_ -Column Renderer: `Bar` , barevná paleta: `Blue` , minimální hodnota:`0`
     3. Vykreslovací modul sloupců _požadavků_ :`Automatic`
     4. Změny aplikujte kliknutím na _Uložit a zavřít_ .
 8. Klikněte na jeden z `Sample` odkazů v mřížce. Otevře se podokno vlastností s podrobnostmi o vzorku požadavku.
@@ -127,10 +126,10 @@ Sešit umožňuje uživatelům, aby se na základě hodnot parametrů zobrazoval
 3. Nastavte hodnotu parametru na`Yes`
 4. V ovládacím prvku dotaz s plošným grafem klikněte na ikonu _Upřesnit nastavení_ (ikona ozubeného kolečka).
 5. Ověřte nastavení`Make this item conditionally visible`
-    1. Tato položka se zobrazí, `ShowDetails` Pokud hodnota `equals` parametru`Yes`
+    1. Tato položka se zobrazí, pokud `ShowDetails` hodnota `equals` parametru`Yes`
 6. Potvrďte změny kliknutím na _hotové úpravy_ .
 7. Na panelu nástrojů sešitu klikněte na _hotové úpravy_ a zadejte režim čtení.
-8. Přepněte hodnotu parametru `ShowDetails` na `No`. Všimněte si, že graf uvedený níže zmizí.
+8. Přepněte hodnotu parametru `ShowDetails` na `No` . Všimněte si, že graf uvedený níže zmizí.
 
 Následující obrázek ukazuje viditelný případ, kde `ShowDetails` je`Yes`
 

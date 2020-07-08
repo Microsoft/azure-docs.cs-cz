@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
 ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657518"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika zrušených oznámení v Azure Notification Hubs
@@ -116,7 +115,7 @@ Pokud se služba nabízených oznámení pokusí doručovat oznámení, ale zař
 
 Každá aplikace ukládá jenom jedno nedávné oznámení. Pokud je v době, kdy je zařízení v režimu offline, posíláno více oznámení, každé nové oznámení způsobí, že poslední z nich bude zrušeno. Udržování pouze nejnovějšího oznámení *se nazývá sloučení* v APNs a *sbalení* v FCM. (FCM používá klíč sbalení.) Pokud zařízení po dlouhou dobu zůstane offline, budou oznámení uložená pro zařízení zahozena. Další informace najdete v tématu [Přehled služby APN] a [o zprávách FCM].
 
-Pomocí Notification Hubs můžete předat slučovací klíč přes hlavičku HTTP pomocí obecného rozhraní SendNotification API. Například pro sadu .NET SDK můžete použít `SendNotificationAsync`. Rozhraní SendNotification API také přijímá hlavičky protokolu HTTP, které se předávají do příslušné služby nabízených oznámení.
+Pomocí Notification Hubs můžete předat slučovací klíč přes hlavičku HTTP pomocí obecného rozhraní SendNotification API. Například pro sadu .NET SDK můžete použít `SendNotificationAsync` . Rozhraní SendNotification API také přijímá hlavičky protokolu HTTP, které se předávají do příslušné služby nabízených oznámení.
 
 ## <a name="self-diagnosis-tips"></a>Tipy pro samočinnou diagnostiku
 
@@ -199,7 +198,7 @@ Pokud oznámení v klientském zařízení nepřijde, může při Notification H
 
 Pokud chcete získat přehled o chybách služby nabízených oznámení, můžete použít vlastnost [EnableTestSend] . Tato vlastnost je automaticky povolena při odesílání zkušebních zpráv z portálu nebo klienta sady Visual Studio. Tato vlastnost slouží k zobrazení podrobných informací o ladění a také prostřednictvím rozhraní API. V současné době je možné ji použít v sadě .NET SDK. Bude nakonec přidáno do všech klientských sad SDK.
 
-Chcete-li `EnableTestSend` použít vlastnost se voláním REST, přidejte parametr řetězce dotazu s názvem *test* na konec volání odeslání. Příklad:
+Chcete-li použít `EnableTestSend` vlastnost se voláním REST, přidejte parametr řetězce dotazu s názvem *test* na konec volání odeslání. Příklad:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -215,9 +214,9 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-Na konci spuštění `result.State` jednoduše stavy `Enqueued`. Výsledky neposkytují žádný přehled o tom, co se stalo s nabízeným oznámením.
+Na konci spuštění `result.State` jednoduše stavy `Enqueued` . Výsledky neposkytují žádný přehled o tom, co se stalo s nabízeným oznámením.
 
-Dále můžete použít vlastnost `EnableTestSend` Boolean. Při inicializaci `EnableTestSend` `NotificationHubClient` použijte vlastnost, abyste získali podrobný stav o chybách služby nabízených oznámení, ke kterým dojde při odeslání oznámení. Volání Send trvá déle, než se vrátí, protože nejprve potřebuje Notification Hubs pro doručení oznámení službě nabízených oznámení.
+Dále můžete použít `EnableTestSend` vlastnost Boolean. `EnableTestSend`Při inicializaci použijte vlastnost, `NotificationHubClient` abyste získali podrobný stav o chybách služby nabízených oznámení, ke kterým dojde při odeslání oznámení. Volání Send trvá déle, než se vrátí, protože nejprve potřebuje Notification Hubs pro doručení oznámení službě nabízených oznámení.
 
 ```csharp
     bool enableTestSend = true;

@@ -17,10 +17,9 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657159"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
@@ -38,7 +37,7 @@ S Azure můžete vytvářet řešení kompatibilní se zabezpečením, která sp
 * Identifikujte a zjišťují hrozby.
 * Splnění požadavků na dodržování předpisů.  
 
-## <a name="antimalware"></a>Antimalware
+## <a name="antimalware"></a>antimalware
 
 S Azure můžete použít antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro a Kaspersky. Tento software pomáhá chránit vaše virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami.
 
@@ -64,7 +63,7 @@ V případě ještě výkonnější ochrany zvažte použití [rozšířené och
 * [Bezpečnostní skóre](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
 * [Pokročilé lov](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [Správa a rozhraní API](/windows/security/threat-protection/windows-defender-atp/management-apis)
-* [Ochrana před hrozbami Microsoftu](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+* [Microsoft Threat Protection](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
 Další informace:
 
@@ -160,7 +159,7 @@ Další informace:
 
 I když důvěrné výpočetní operace není technicky součástí zabezpečení virtuálních počítačů, téma zabezpečení virtuálních počítačů patří do předmětu vyšší úrovně zabezpečení Compute. Důvěrné výpočetní prostředky patří do kategorie zabezpečení Compute.
 
-Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném formátu", který je vyžadován pro efektivní zpracování, data jsou chráněna v prostředí https://en.wikipedia.org/wiki/Trusted_execution_environment s důvěryhodným spouštěním (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
+Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném formátu", který je vyžadován pro efektivní zpracování, data jsou chráněna v prostředí s důvěryhodným spouštěním https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
 
 TEEs zajistěte, aby neexistoval žádný způsob, jak zobrazit data ani operace uvnitř vně, ani pomocí ladicího programu. Ještě zajistí, že přístup k datům je povolen pouze autorizovaným kódem. Pokud dojde ke změně nebo poškození kódu, operace jsou zamítnuté a prostředí je zakázané. TEE vynutila tyto ochrany v průběhu provádění kódu v rámci IT.
 

@@ -8,10 +8,9 @@ ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659658"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
@@ -81,20 +80,20 @@ K tomuto problému může dojít v případě, že se řídicí panel vytvořil 
 Grafy metrik Azure používají čárkovaný styl čáry k označení toho, že mezi dvěma známými datovými body zrnitosti chybí hodnota (označovaná také jako hodnota null). Například pokud v selektoru jste si vybrali členitou časovou přesnost 1 minuty, ale metrika byla nahlášena v 07:26, 07:27, 07:29 a 07:30 (Všimněte si, že se v části sekunda a třetí datové body objeví minutová mezera), pak se přerušovaná čára připojí 07:27 a 07:29 a plná čára připojí všechny ostatní datové body. Přerušovaná čára klesne dolů na nulu, pokud metrika používá agregaci **Count** a **Sum** . U agregací **AVG**, **min** nebo **Max** se přerušovaná čára spojí dva nejbližší známé datové body. Pokud data navíc chybí na pravé nebo levé straně grafu, přerušovaná čára se protáhne směrem k chybějícímu datovému bodu.
   ![obrázek metriky](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
 
-**Řešení:** Toto chování je záměrné. Je to užitečné při identifikaci chybějících datových bodů. Spojnicový graf je nadřízenou volbou pro vizualizaci trendů metrik s vysokou hustotou, ale může být obtížné ji interpretovat pro metriky s zhuštěnými hodnotami, zejména v případě, že se v souvislosti s časovým intervalem jsou důležité hodnoty. Přerušovaná čára usnadňuje čtení těchto grafů, ale pokud je váš graf stále nejasný, zvažte zobrazení metrik pomocí jiného typu grafu. Například rozptýlený graf pro stejnou metriku jasně zobrazuje každé časové intervaly tím, že vizualizuje tečku pouze v případě, že existuje hodnota a přeskočí datový bod úplně, pokud hodnota chybí: ![obrázek metriky](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Řešení:** Toto chování je záměrné. Je to užitečné při identifikaci chybějících datových bodů. Spojnicový graf je nadřízenou volbou pro vizualizaci trendů metrik s vysokou hustotou, ale může být obtížné ji interpretovat pro metriky s zhuštěnými hodnotami, zejména v případě, že se v souvislosti s časovým intervalem jsou důležité hodnoty. Přerušovaná čára usnadňuje čtení těchto grafů, ale pokud je váš graf stále nejasný, zvažte zobrazení metrik pomocí jiného typu grafu. Například rozptýlený graf pro stejnou metriku jasně zobrazuje každé časové intervaly tím, že vizualizuje tečku pouze v případě, že existuje hodnota a přeskočí datový bod úplně, pokud hodnota chybí: ![ Obrázek metriky](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
 
    > [!NOTE]
    > Pokud stále dáváte přednost zobrazení metrik pomocí spojnicového grafu, může vám s posuzováním časových intervalů pomoct, když najedete myší na graf, protože se zvýrazní datový bod, který se nachází pod ukazatelem myši.
 
 ## <a name="chart-shows-unexpected-drop-in-values"></a>Graf zobrazuje neočekávané hodnoty zrušení v hodnotách
 
-V řadě případů je zdánlivý pokles hodnot metrik způsobený nesprávným výkladem dat zobrazených v grafu. Pokud graf ukazuje data za poslední minuty, může vás zmást pokles součtů nebo počtů, protože platforma Azure ještě nepřijala nebo nezpracovala nejnovější datové body metrik. V závislosti na konkrétní službě se může latence zpracování metrik pohybovat v rozsahu několika minut. V grafech zobrazujících nedávný časový rozsah s členitou přesností 1 nebo 5 minut se může poznamenat, že hodnota za posledních několik minut bude podrobná: ![obrázek metriky](./media/metrics-troubleshoot/drop-in-values.png)
+V řadě případů je zdánlivý pokles hodnot metrik způsobený nesprávným výkladem dat zobrazených v grafu. Pokud graf ukazuje data za poslední minuty, může vás zmást pokles součtů nebo počtů, protože platforma Azure ještě nepřijala nebo nezpracovala nejnovější datové body metrik. V závislosti na konkrétní službě se může latence zpracování metrik pohybovat v rozsahu několika minut. V grafech zobrazujících nedávný časový rozsah s členitou přesností 1 nebo 5 minut se může poznamenat, že hodnota za posledních několik minut bude podrobná: ![ Obrázek metriky](./media/metrics-troubleshoot/drop-in-values.png)
 
 **Řešení:** Toto chování je záměrné. Věříme, že je přínosné zobrazovat data ihned po přijetí, a to i v případě, že jde o *částečná* nebo *neúplná* data. Díky tomu můžete rychleji dojít k důležitému závěru a rovnou spustit šetření. Když například u metriky, která ukazuje počet selhání, uvidíte částečnou hodnotu X, budete vědět, že v dané minutě došlo minimálně k X selháním. Rovnou můžete začít s šetřením problému a nemusíte čekat, až se zobrazí přesný počet selhání, ke kterým došlo v dané minutě, což nemusí být tak důležité. Jakmile obdržíme kompletní sadu dat, graf se aktualizuje. V tu dobu se však můžou zobrazit také nové neúplné datové body pro poslední minuty.
 
 ## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Nejde vybrat obor názvů a metriky hostovaného operačního systému.
 
-Virtuální počítače a služba Virtual Machine Scale Sets mají dvě kategorie metrik: metriky **hostitele virtuálních počítačů** shromažďované hostitelským prostředím Azure a metriky **hostovaného operačního systému (Classic)** shromažďované [agentem monitorování](agents-overview.md) spuštěným na virtuálních počítačích. Agenta monitorování můžete nainstalovat povolením [rozšíření Azure Diagnostics](diagnostics-extension-overview.md).
+Virtuální počítače a škálovací sady virtuálních počítačů mají dvě kategorie metrik: Metriky **hostitele virtuálního počítače**, které shromažďuje hostitelské prostředí Azure, a metriky **hostovaného operačního systému (Classic)** , které shromažďuje [agent monitorování](agents-overview.md) spuštěný na virtuálních počítačích. Agenta monitorování můžete nainstalovat povolením [rozšíření Azure Diagnostics](diagnostics-extension-overview.md).
 
 Metriky hostovaného operačního systému se ve výchozím nastavení ukládají do účtu služby Azure Storage, který vyberete na kartě **Nastavení diagnostiky** vašeho prostředku. Pokud se metriky hostovaného operačního systému neshromáždí nebo pokud k nim Průzkumník metrik nemá přístup, zobrazí se pouze obor názvů metrik **hostitele virtuálního počítače**:
 

@@ -16,10 +16,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920123"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobný postup řešení potíží s SSH při připojování k virtuálnímu počítači s Linuxem v Azure
@@ -33,7 +32,7 @@ Následující diagram znázorňuje komponenty, které jsou součástí.
 Následující kroky vám pomůžou izolovat zdroj selhání a zjistit řešení nebo řešení.
 
 1. Ověřte stav virtuálního počítače na portálu.
-   V [Azure Portal](https://portal.azure.com)vyberte*název*virtuálního počítače **virtuálních počítačů** > .
+   V [Azure Portal](https://portal.azure.com)vyberte název virtuálního počítače **virtuálních počítačů**  >  *VM name*.
 
    V podokně stavu virtuálního počítače by se měla zobrazit **spuštěná**. Přejděte dolů a zobrazte si poslední aktivitu pro výpočetní prostředky, úložiště a síťové prostředky.
 
@@ -71,7 +70,7 @@ Pokud platí jedna z těchto podmínek, dočasně zakažte software a zkuste př
 Pokud používáte ověřování pomocí certifikátu, ověřte, že máte tato oprávnění ke složce. ssh v domovském adresáři:
 
 * Chmod 700 ~/.ssh
-* Chmod 644 ~/.ssh/\*. pub
+* Chmod 644 ~/.ssh/ \* . pub
 * Chmod 600 ~/.ssh/id_rsa (nebo všechny jiné soubory, které mají v nich uložené soukromé klíče)
 * Chmod 644 ~/.ssh/known_hosts (obsahuje hostitele, ke kterým jste se připojili přes SSH)
 
@@ -105,7 +104,7 @@ Pokud nemáte jiný virtuální počítač ve stejné virtuální síti, můžet
 
 Pokud můžete vytvořit připojení SSH s virtuálním počítačem ve stejné virtuální síti, podívejte se do těchto oblastí:
 
-* **Konfigurace koncového bodu pro provoz SSH na cílovém virtuálním počítači.** Privátní port TCP koncového bodu by měl odpovídat portu TCP, na kterém naslouchá služba SSH na virtuálním počítači. (Výchozí port je 22). Ověřte číslo portu TCP SSH v Azure Portal tak, že vyberete**možnost** >  **virtuální počítače** > *název* > virtuálního počítače**koncové body**.
+* **Konfigurace koncového bodu pro provoz SSH na cílovém virtuálním počítači.** Privátní port TCP koncového bodu by měl odpovídat portu TCP, na kterém naslouchá služba SSH na virtuálním počítači. (Výchozí port je 22). Ověřte číslo portu TCP SSH v Azure Portal tak, že vyberete **možnost virtuální počítače**  >  *název*virtuálního počítače  >  **Settings**  >  **koncové body**.
 * **Seznam ACL pro koncový bod provozu SSH na cílovém virtuálním počítači.** Seznam ACL umožňuje zadat povolený nebo zakázaný příchozí provoz z Internetu na základě jeho zdrojové IP adresy. Nesprávně nakonfigurované seznamy řízení přístupu (ACL) můžou zabránit příchozímu provozu SSH do koncového bodu. Zkontrolujte seznamy ACL, abyste měli jistotu, že příchozí provoz z veřejných IP adres vašeho proxy serveru nebo jiného hraničního serveru je povolený. Další informace najdete v tématu [informace o seznamech řízení přístupu k síti (ACL)](../../virtual-network/virtual-networks-acl.md).
 
 Chcete-li odstranit koncový bod jako zdroj problému, odeberte aktuální koncový bod, vytvořte jiný koncový bod a zadejte název SSH (port TCP 22 pro číslo veřejného a soukromého portu). Další informace najdete v tématu [nastavení koncových bodů na virtuálním počítači v Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

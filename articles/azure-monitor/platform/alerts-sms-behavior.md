@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665302"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Chování výstrah SMS ve skupinách akcí
@@ -30,7 +29,7 @@ Přijímač SMS nakonfigurovaný jako součást skupiny akcí obdrží zprávu S
 * Krátký název skupiny akcí, na kterou se tato výstraha odeslala
 * Název výstrahy
 
-| REPLY | Popis |
+| REPLY | Description |
 | ----- | ----------- |
 | DEZAKTIVOVAT`<Action Group Short name>` | Zakáže další zprávu SMS ze skupiny akcí. |
 | ABY`<Action Group Short name>` | Opětovné povolení serveru SMS ze skupiny akcí |

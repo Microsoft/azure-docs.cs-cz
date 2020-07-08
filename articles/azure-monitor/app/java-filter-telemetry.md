@@ -4,10 +4,9 @@ description: Zmenšení provozu telemetrie filtrováním událostí, které nepo
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659913"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
@@ -27,7 +26,7 @@ Filtry dodané po box zahrnují:
 
 ## <a name="setting-filters"></a>Nastavení filtrů
 
-V souboru ApplicationInsights. xml přidejte `TelemetryProcessors` oddíl podobný tomuto příkladu:
+V ApplicationInsights.xml přidejte `TelemetryProcessors` oddíl podobný tomuto příkladu:
 
 
 ```XML
@@ -109,7 +108,7 @@ V souboru ApplicationInsights. xml přidejte `TelemetryProcessors` oddíl podobn
 
 * `DurationThresholdInMS`-Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je tato nastavení nastavena, nejsou hlášeny stránky, které jsou načteny rychleji než tento čas.
 * `NotNeededNames`-Čárkami oddělený seznam názvů stránek.
-* `NotNeededUrls`-Čárkami oddělený seznam fragmentů adresy URL. `"home"` Filtruje například všechny stránky, které mají v adrese URL "Home".
+* `NotNeededUrls`-Čárkami oddělený seznam fragmentů adresy URL. `"home"`Filtruje například všechny stránky, které mají v adrese URL "Home".
 
 
 ### <a name="request-telemetry-filter"></a>Vyžádat filtr telemetrie
@@ -190,7 +189,7 @@ Filtruje trasování protokolů (protokolované pomocí [TrackTrace ()](../../az
 
 ### <a name="1-code-your-filter"></a>1. kódování filtru
 
-V kódu vytvořte třídu, která implementuje `TelemetryProcessor`:
+V kódu vytvořte třídu, která implementuje `TelemetryProcessor` :
 
 ```Java
 
@@ -229,7 +228,7 @@ V kódu vytvořte třídu, která implementuje `TelemetryProcessor`:
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. vyvolejte filtr v konfiguračním souboru.
 
-V souboru ApplicationInsights. XML:
+V ApplicationInsights.xml:
 
 ```XML
 
@@ -257,7 +256,7 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-Budete muset vytvořit vlastní parametry filtru v nástroji a využít `application.properties` k předání těchto parametrů do vlastního filtru nahlasovou architekturu jarních konfigurací. 
+Budete muset vytvořit vlastní parametry filtru v nástroji `application.properties` a využít k předání těchto parametrů do vlastního filtru nahlasovou architekturu jarních konfigurací. 
 
 
 ## <a name="troubleshooting"></a>Řešení potíží

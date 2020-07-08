@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672391"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Shromažďovat data z rozšíření diagnostiky Azure do protokolů Azure Monitor
@@ -24,13 +23,13 @@ Rozšíření diagnostiky Azure ukládá data do účtu Azure Storage. Protokoly
 
 | Typ protokolu | Typ prostředku | Umístění |
 | --- | --- | --- |
-| Protokoly IIS |Virtuální počítače <br> Webové role <br> Role pracovního procesu |WAD – IIS – soubory protokolu (Blob Storage) |
-| Syslog |Virtuální počítače |LinuxsyslogVer2v0 (Table Storage) |
+| Protokoly IIS |Virtual Machines <br> Webové role <br> Role pracovního procesu |WAD – IIS – soubory protokolu (Blob Storage) |
+| Syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
 | Service Fabric provozní události |Uzly Service Fabric |WADServiceFabricSystemEventTable |
 | Service Fabric spolehlivých událostí objektu actor |Uzly Service Fabric |WADServiceFabricReliableActorEventTable |
 | Service Fabric spolehlivých událostí služby |Uzly Service Fabric |WADServiceFabricReliableServiceEventTable |
-| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
-| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
+| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtual Machines <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
+| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtual Machines <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Datové typy nejsou podporovány.
 

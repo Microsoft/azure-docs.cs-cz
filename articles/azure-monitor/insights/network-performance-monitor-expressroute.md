@@ -7,10 +7,9 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660746"
 ---
 # <a name="expressroute-monitor"></a>Monitorování ExpressRoute
@@ -32,7 +31,7 @@ Pro servery v Azure, které se používají pro monitorování prostřednictvím
 Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
-> Než budete pokračovat v tomto kroku, nainstalujte agenta místního serveru a agenta serveru Azure a spusťte skript prostředí PowerShell EnableRules. ps1. 
+> Než budete pokračovat v tomto kroku, nainstalujte agenta místního serveru a agenta serveru Azure a spusťte skript EnableRules.ps1 PowerShellu. 
 
  
 ### <a name="discover-expressroute-peering-connections"></a>Zjistit připojení partnerských vztahů ExpressRoute 
@@ -109,7 +108,7 @@ Network Performance Monitor pomáhá diagnostikovat několik problémů s připo
 
 Můžete zobrazit kódy oznámení a nastavit výstrahy na nich prostřednictvím **LogAnalytics**. Na stránce **Diagnostika npm** uvidíte popisy každé aktivované zprávy diagnostiky.
 
-| Kód oznámení (protokoly) | Popis |
+| Kód oznámení (protokoly) | Description |
 | --- | --- |
 | 5501 | Nejde procházet sekundárním připojením okruhu ExpressRoute. |
 | 5502 | Primární připojení okruhu ExpressRoute se nedá Procházet. |

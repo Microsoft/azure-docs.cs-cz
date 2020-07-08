@@ -8,10 +8,9 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670878"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v aplikaci Visual Studio
@@ -81,7 +80,7 @@ Pokud chcete vyhledat anomálie v datech, vyberte jednu z možností anomálií 
 [Další informace o trendech](../../azure-monitor/app/visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Místní monitorování
-(Ze sady Visual Studio 2015 Update 2) Pokud jste nenakonfigurovali sadu SDK tak, aby odesílala telemetrii na portál Application Insights (takže v souboru ApplicationInsights. config není žádný klíč instrumentace), zobrazí se v okně diagnostiky telemetrie z poslední ladicí relace. 
+(Ze sady Visual Studio 2015 Update 2) Pokud jste nenakonfigurovali sadu SDK tak, aby odesílala telemetrii na portál Application Insights (takže v ApplicationInsights.config neexistuje žádný klíč instrumentace), zobrazí se v okně diagnostiky telemetrie z poslední ladicí relace. 
 
 Toto je žádoucí, pokud jste již publikovali předchozí verzi aplikace. Nechcete, aby se telemetrie z vaší relace ladění promíchala s telemetrií na portálu služby Application Insights z publikované aplikace.
 
@@ -90,7 +89,7 @@ Je také užitečné, pokud máte některou [vlastní telemetrii](../../azure-mo
 * *Nejdřív jsem nakonfigurovali Application Insights k odeslání telemetrie na portál. Ale teď chci zobrazit telemetrii jenom v aplikaci Visual Studio.*
   
   * V okně hledání nastavení je možnost vyhledávání místní diagnostiky i v případě, že vaše aplikace odesílá telemetrii na portál.
-  * Pokud chcete zastavit telemetrii, která se posílá na portál, odkomentujte řádek `<instrumentationkey>...` z ApplicationInsights. config. Až budete připraveni na portál znovu odeslat telemetrii, odkomentujte ho.
+  * Pokud chcete zastavit vystavení telemetrie na portálu, odkomentujte řádek `<instrumentationkey>...` z ApplicationInsights.config. Až budete připraveni na portál znovu odeslat telemetrii, odkomentujte ho.
 
 
 ## <a name="next-steps"></a>Další kroky

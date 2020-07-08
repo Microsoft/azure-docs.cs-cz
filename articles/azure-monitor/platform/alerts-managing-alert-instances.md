@@ -5,10 +5,9 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667614"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Správa instancí výstrah pomocí sjednocených výstrah
@@ -22,7 +21,7 @@ Díky [jednotnému prostředí upozornění](https://aka.ms/azure-alerts-overvie
 
 Na stránku výstrahy můžete přejít některým z následujících způsobů:
 
-- V [Azure Portal](https://portal.azure.com/)vyberte **monitorovat** > **výstrahy**.  
+- V [Azure Portal](https://portal.azure.com/)vyberte **monitorovat**  >  **výstrahy**.  
 
      ![Snímek obrazovky s výstrahami monitorování](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   

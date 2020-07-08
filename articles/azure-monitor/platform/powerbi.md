@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
 ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659279"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat data protokolu Azure Monitor do Power BI
@@ -29,7 +28,7 @@ Chcete-li importovat data z [pracovního prostoru Log Analytics](manage-access.m
 Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , který vrátí data, která chcete vyplnit Power BI datovou sadu.  Pak tento dotaz exportujte do [jazyka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) , který lze použít v Power BI Desktop.
 
 1. [Vytvořte dotaz protokolu v Log Analytics](../log-query/get-started-portal.md) pro extrakci dat pro datovou sadu.
-2. Vyberte **exportovat** > **Power BI dotaz (M)**.  Tím se dotaz exportuje do textového souboru s názvem **PowerBIQuery. txt**. 
+2. Vyberte **exportovat**  >  **Power BI dotaz (M)**.  Tím se dotaz exportuje do textového souboru s názvem **PowerBIQuery.txt**. 
 
     ![Exportovat hledání protokolu](media/powerbi/export-analytics.png)
 
@@ -39,7 +38,7 @@ Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , 
 Power BI Desktop je desktopová aplikace, která umožňuje vytvořit datové sady a sestavy, které se dají publikovat do Power BI.  Můžete ji také použít k vytvoření dotazu pomocí Power Queryho jazyka exportovaného z Azure Monitor. 
 
 1. Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/desktop/) , pokud ho ještě nemáte, a pak aplikaci otevřete.
-2. Vyberte **načíst data** > **prázdný dotaz** pro otevření nového dotazu.  Pak vyberte **Rozšířený editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Done** (Hotovo).
+2. Vyberte **načíst data**  >  **prázdný dotaz** pro otevření nového dotazu.  Pak vyberte **Rozšířený editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Done** (Hotovo).
 
     ![Power BI Desktop dotaz](media/powerbi/desktop-new-query.png)
 

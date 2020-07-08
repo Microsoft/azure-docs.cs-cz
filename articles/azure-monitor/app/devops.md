@@ -4,15 +4,14 @@ description: Jak Application Insights zapadá do cyklu devOps
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669688"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
-Application Insights monitoruje spuštěnou webovou aplikaci. Dozvíte se o chybách a problémech s výkonem a pomůže vám analyzovat, jak zákazníci používají vaši aplikaci. Funguje pro aplikace běžící na mnoha platformách (ASP.NET, Java EE, Node. js,...) a hostuje se v cloudu i v místním prostředí. 
+Application Insights monitoruje spuštěnou webovou aplikaci. Dozvíte se o chybách a problémech s výkonem a pomůže vám analyzovat, jak zákazníci používají vaši aplikaci. Funguje pro aplikace běžící na mnoha platformách (ASP.NET, Java EE, Node.js,...) a jsou hostované v cloudu i v místním prostředí. 
 
 ![Aspekty složitosti doručování webových aplikací](./media/devops/010.png)
 
@@ -158,6 +157,6 @@ Když je vyvolána výstraha, Application Insights může automaticky vytvořit 
 Začínáme s Application Insights je snadné. Hlavní možnosti jsou:
 
 * [Servery služby IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)a také pro [Azure App Service](../../azure-monitor/app/app-insights-overview.md).
-* Instrumentujte svůj projekt během vývoje. To lze provést pro aplikace [ASP.NET](../../azure-monitor/app/asp-net.md) nebo [Java](../../azure-monitor/app/java-get-started.md) a také pro [Node. js](../../azure-monitor/app/nodejs.md) a hostitele [jiných typů](../../azure-monitor/app/platforms.md). 
+* Instrumentujte svůj projekt během vývoje. To můžete provést pro aplikace [ASP.NET](../../azure-monitor/app/asp-net.md) nebo [Java](../../azure-monitor/app/java-get-started.md) a také [Node.js](../../azure-monitor/app/nodejs.md) a hostitele [jiných typů](../../azure-monitor/app/platforms.md). 
 * Vyinstrumentujte [jakoukoli webovou stránku](../../azure-monitor/app/javascript.md) přidáním krátkého fragmentu kódu.
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
 ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672238"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Verze a historie schématu konfigurace rozšíření Windows Azure Diagnostics (WAD)
@@ -26,7 +25,7 @@ Tento článek uvádí historii verzí verzí schématu [rozšíření Azure Dia
 |2.5               |1.2                            |přípona|  
 |2,6               |1.3                            |"|  
 |2.7               |1.4                            |"|  
-|2,8               |1,5                            |"|  
+|2,8               |1.5                            |"|  
 |2.9               |1.6                            |"|
 |2,96              |1.7                            |"|
 |2,96              |1.8                            |"|
@@ -48,7 +47,7 @@ Různé verze diagnostiky Azure používají různá schémata konfigurace. Sch�
 Přidání podpory pro Azure Monitor jímku. Tato jímka se vztahuje pouze na čítače výkonu. Umožňuje odesílat čítače výkonu shromážděné na VIRTUÁLNÍm počítači, VMSS nebo cloudovou službu, aby se Azure Monitor jako vlastní metriky. Jímka Azure Monitor podporuje:
 * Načítání všech čítačů výkonu odeslaných do Azure Monitor prostřednictvím [rozhraní API pro Azure monitor metriky.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
 * Upozorňování na všechny čítače výkonu odesílané do Azure Monitor prostřednictvím nového [jednotného prostředí s výstrahami](../../azure-monitor/platform/alerts-overview.md) v Azure monitor
-* Zpracovávání operátoru zástupného znaku v čítačích výkonu jako dimenze instance v rámci metriky. Pokud jste si například shromáždili čítač "logický disk\*()/DiskWrites/SEC", mohli byste filtrovat a rozdělit na dimenzi "instance", která vykreslí nebo upozorní na zápisy disku/s pro každý logický disk (C:, D: atd.).
+* Zpracovávání operátoru zástupného znaku v čítačích výkonu jako dimenze instance v rámci metriky. Pokud jste si například shromáždili čítač "logický disk ( \* )/DiskWrites/SEC", mohli byste filtrovat a rozdělit na dimenzi "instance", která vykreslí nebo upozorní na zápisy disku/s pro každý logický disk (C:, D: atd.).
 
 Definování Azure Monitor jako nové jímky v konfiguraci diagnostického rozšíření
 ```json
@@ -167,7 +166,7 @@ Existují významné rozdíly mezi tím, jak připojovací řetězec pracoval v 
 
 * V sadě Azure SDK 2,4 a starších verzích byl připojovací řetězec použit modulem plug-in diagnostiky k získání informací o účtu úložiště pro přenos diagnostických protokolů.
 * Sada Visual Studio v sadě Azure SDK 2,6 a novějších používá připojovací řetězec diagnostiky ke konfiguraci rozšíření diagnostiky s příslušnými informacemi o účtu úložiště během publikování. Připojovací řetězec umožňuje definovat různé účty úložiště pro různé konfigurace služby, které bude Visual Studio používat při publikování. Vzhledem k tomu, že modul plug-in diagnostiky již není k dispozici (po sadě Azure SDK 2,5), nemůže soubor. cscfg sám povolit rozšíření diagnostiky. Toto rozšíření je nutné povolit samostatně prostřednictvím nástrojů, jako je například Visual Studio nebo PowerShell.
-* Z důvodu zjednodušení procesu konfigurace diagnostického rozšíření pomocí prostředí PowerShell obsahuje výstup balíčku ze sady Visual Studio také kód XML pro veřejnou konfiguraci pro rozšíření diagnostiky pro každou roli. Visual Studio používá připojovací řetězec pro diagnostiku k naplnění informací o účtu úložiště přítomných ve veřejné konfiguraci. Veřejné konfigurační soubory se vytvoří ve složce rozšíření a postupuje podle vzoru `PaaSDiagnostics.<RoleName>.PubConfig.xml`. Jakékoli nasazení založené na prostředí PowerShell může použít tento model k mapování jednotlivých konfigurací na roli.
+* Z důvodu zjednodušení procesu konfigurace diagnostického rozšíření pomocí prostředí PowerShell obsahuje výstup balíčku ze sady Visual Studio také kód XML pro veřejnou konfiguraci pro rozšíření diagnostiky pro každou roli. Visual Studio používá připojovací řetězec pro diagnostiku k naplnění informací o účtu úložiště přítomných ve veřejné konfiguraci. Veřejné konfigurační soubory se vytvoří ve složce rozšíření a postupuje podle vzoru `PaaSDiagnostics.<RoleName>.PubConfig.xml` . Jakékoli nasazení založené na prostředí PowerShell může použít tento model k mapování jednotlivých konfigurací na roli.
 * Připojovací řetězec v souboru. cscfg je také používán Azure Portal pro přístup k diagnostickým datům, aby se mohl zobrazit na kartě **monitorování** . Připojovací řetězec je potřeba ke konfiguraci služby pro zobrazení podrobných dat monitorování na portálu.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Migrace projektů do sady Azure SDK 2,6 a novější
@@ -181,7 +180,7 @@ Pokud v souboru. wadcfgx migrujete ze sady Azure SDK 2,5 na sadu Azure SDK 2,6 n
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>Co jsou připojovací řetězce pro aktualizaci vývoje pro vývoj... má zaškrtávací políčko?
 Zaškrtávací políčko pro **aktualizace vývojových řetězců úložiště pro diagnostiku a ukládání do mezipaměti s Microsoft Azure přihlašovací údaje účtu úložiště při publikování do Microsoft Azure** poskytuje pohodlný způsob, jak aktualizovat všechny připojovací řetězce v účtu úložiště Azure, které jste zadali během publikování.
 
-Předpokládejme například, že zaškrtnete toto políčko a určíte `UseDevelopmentStorage=true`připojovací řetězec diagnostiky. Při publikování projektu do Azure bude Visual Studio automaticky aktualizovat připojovací řetězec diagnostiky s účtem úložiště, který jste zadali v Průvodci publikováním. Pokud se ale skutečný účet úložiště zadal jako připojovací řetězec diagnostiky, použije se místo toho tento účet.
+Předpokládejme například, že zaškrtnete toto políčko a určíte připojovací řetězec diagnostiky `UseDevelopmentStorage=true` . Při publikování projektu do Azure bude Visual Studio automaticky aktualizovat připojovací řetězec diagnostiky s účtem úložiště, který jste zadali v Průvodci publikováním. Pokud se ale skutečný účet úložiště zadal jako připojovací řetězec diagnostiky, použije se místo toho tento účet.
 
 ### <a name="diagnostics-functionality-differences-between-azure-sdk-24-and-earlier-and-azure-sdk-25-and-later"></a>Rozdíly v diagnostických funkcích mezi Azure SDK 2,4 a starším a Azure SDK 2,5 a novějším
 Pokud upgradujete projekt ze sady Azure SDK 2,4 na sadu Azure SDK 2,5 nebo novější, měli byste mít na paměti následující rozdíly v těchto diagnostických funkcích.

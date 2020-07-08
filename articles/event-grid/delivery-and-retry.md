@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: spelluru
 ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921058"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
@@ -60,7 +59,7 @@ Po doručení zprávy vyčká Event Grid 30 sekund na odpověď. Pokud koncový 
 
 - 10 sekund
 - 30 sekund
-- 1 minuta
+- 1 min.
 - 5 minut
 - 10 minut
 - 30 minut
@@ -113,11 +112,11 @@ Event Grid považuje za úspěšné doručení **pouze** následující kódy od
 
 Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), jsou považovány za selhání a budou opakovány. Některé mají konkrétní zásady opakování, které jsou pro ně vázané níže. všechny ostatní se řídí standardním exponenciálním modelem. Je důležité mít na paměti, že kvůli vysoce paralelismuější povaze architektury Event Grid není chování při opakování deterministické. 
 
-| Kód stavu | Chování opakování |
+| Stavový kód | Chování opakování |
 | ------------|----------------|
 | 400 Chybný požadavek | Zkuste to znovu po 5 minutách a dalších (nedoručených zpráv hned po nastavení nedoručených zpráv) |
 | 401 Neautorizováno | Zkusit znovu za 5 minut nebo déle |
-| 403 zakázané | Zkusit znovu za 5 minut nebo déle |
+| 403 – Zakázáno | Zkusit znovu za 5 minut nebo déle |
 | 404 Nenalezeno | Zkusit znovu za 5 minut nebo déle |
 | 408 – Časový limit žádosti | Opakovat po 2 nebo více minutách |
 | Entita požadavku 413 je moc velká. | Opakovat po 10 sekundách nebo dalších (nedoručené zprávy hned po nastavení nedoručených zpráv) |

@@ -6,17 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670062"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
 
 ## <a name="using-spring-boot-15x"></a>Použití pružinového spuštění 1.5 x
-Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti: 
+Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti: 
 * [Application Insights jaře-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 nebo novější
 * 1.1.0 nebo novější v registru mikroměřiče Azure
 * [Pružina mikroměřiče starší verze](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (Tato znovu nasměruje kód pro automatické nastavování v rozhraní pružiny).
@@ -24,7 +23,7 @@ Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
 
 Kroky
 
-1. Aktualizujte soubor pom. XML vaší aplikace pro spouštění pružin a přidejte do ní následující závislosti:
+1. Aktualizujte soubor pom.xml vaší aplikace pro spouštění pružin a přidejte do ní následující závislosti:
 
     ```XML
     <dependency>
@@ -54,7 +53,7 @@ Kroky
 
 ## <a name="using-spring-2x"></a>Použití pružiny 2. x
 
-Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
+Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti:
 
 * Application Insights pružiny-Boot-Starter 2.1.2 nebo vyšší
 * Azure-jaře-Boot – metriky – starts 2.0.7 nebo novější
@@ -62,7 +61,7 @@ Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
 
 Kroky:
 
-1. Aktualizujte soubor pom. XML vaší aplikace pro spouštění pružin a přidejte do ní následující závislost:
+1. Aktualizujte soubor pom.xml vaší aplikace pro spouštění pružin a přidejte do ní následující závislost:
 
     ```XML
     <dependency> 
@@ -113,7 +112,7 @@ Vypnutí automatické shromažďování metrik:
 
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Použití mikroměřiče u webových aplikací, které nejsou ve jarním spuštění
 
-Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
+Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti:
 
 * Application Insights 2.5.0 Web auto nebo novější
 * 1.1.0 nebo novější v registru mikroměřiče Azure
@@ -121,7 +120,7 @@ Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
 
 Kroky:
 
-1. Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
+1. Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti:
 
     ```XML
         <dependency>

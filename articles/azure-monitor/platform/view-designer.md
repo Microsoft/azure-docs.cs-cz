@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658485"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
@@ -32,7 +31,7 @@ Zobrazení se zobrazí na stránce **přehled** Azure Monitor v Azure Portal. Tu
 
 Zobrazení, která vytvoříte pomocí návrháře zobrazení, obsahují prvky, které jsou popsány v následující tabulce:
 
-| Část | Popis |
+| Část | Description |
 |:--- |:--- |
 | Dlaždice | Se zobrazí na stránce s **přehledem** Azure monitor. Každá dlaždice zobrazuje vizuální souhrn vlastního zobrazení, které představuje. Každý typ dlaždice poskytuje jinou vizualizaci záznamů. Výběrem dlaždice zobrazíte vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí se při výběru dlaždice. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
@@ -49,9 +48,9 @@ Zobrazení, která byla vytvořena pomocí návrháře zobrazení, zobrazují n�
 
 Možnosti jsou popsány v následující tabulce:
 
-| Možnost | Popis |
+| Možnost | Description |
 |:--|:--|
-| Obnovení   | Aktualizuje zobrazení o nejnovější data. | 
+| Aktualizovat   | Aktualizuje zobrazení o nejnovější data. | 
 | Protokoly      | Otevře [Log Analytics](../log-query/portals.md) pro analýzu dat pomocí dotazů protokolu. |
 | Upravit       | Otevře zobrazení v Návrháři zobrazení, kde můžete upravit jeho obsah a konfiguraci.  |
 | Klonování      | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným *kopírováním* . |
@@ -95,7 +94,7 @@ Možnosti pro práci se zobrazeními v režimu úprav jsou popsány v následuj�
 
 ![Nabídka upravit](media/view-designer/edit-menu.png)
 
-| Možnost | Popis |
+| Možnost | Description |
 |:--|:--|
 | Uložit        | Uloží změny a zavře zobrazení. |
 | Zrušit      | Zahodí vaše změny a zavře zobrazení. |

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670572"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďovat protokoly IIS v Azure Monitor
@@ -43,7 +42,7 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 | csUserName |Jméno ověřeného uživatele, který se připojil k serveru. Anonymní uživatelé se označují pomlčkou. |
 | csUriStem |Cíl žádosti, jako je například webová stránka. |
 | csUriQuery |Dotaz (pokud existuje), který klient prováděl při pokusu o provedení. |
-| ManagementGroupName |Název skupiny pro správu pro agenty Operations Manager.  Pro jiné agenty to je AOI-\<ID pracovního prostoru.\> |
+| ManagementGroupName |Název skupiny pro správu pro agenty Operations Manager.  Pro jiné agenty je to AOI-\<workspace ID\> |
 | RemoteIPCountry |Země nebo oblast IP adresy klienta. |
 | RemoteIPLatitude |Zeměpisná šířka IP adresy klienta. |
 | RemoteIPLongitude |Zeměpisná délka klientské IP adresy. |
@@ -60,12 +59,12 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 ## <a name="log-queries-with-iis-logs"></a>Protokolování dotazů s protokoly služby IIS
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy protokolu služby IIS.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | W3CIISLog |Všechny záznamy protokolu služby IIS. |
 | W3CIISLog &#124; WHERE scStatus = = 500 |Všechny záznamy protokolu služby IIS se stavem vrácenými na 500. |
 | W3CIISLog &#124; souhrnu počtu () podle cIP |Počet záznamů protokolu IIS podle IP adresy klienta |
-| W3CIISLog &#124; WHERE csHost = = "www\.contoso.com" &#124; sumarizace Count () od csUriStem |Počet záznamů protokolu IIS podle adresy URL pro hostitele www\.contoso.com |
+| W3CIISLog &#124; WHERE csHost = = "www \. contoso.com" &#124; sumarizace Count () od csUriStem |Počet záznamů protokolu IIS podle adresy URL pro hostitele www \. contoso.com |
 | W3CIISLog &#124; Shrnutí součtu (csBytes) podle počítače &#124; Vezměte 500000 |Celkový počet bajtů přijatých jednotlivými počítači IIS. |
 
 ## <a name="next-steps"></a>Další kroky

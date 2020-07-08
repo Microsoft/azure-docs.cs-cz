@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
 ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662497"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Monitorujte rozbočovače Surface Azure Monitor, abyste mohli sledovat jejich stav.
@@ -40,7 +39,7 @@ Budete potřebovat ID pracovního prostoru a klíč pracovního prostoru pro Log
 Intune je produkt společnosti Microsoft, který umožňuje centrálně spravovat nastavení konfigurace Log Analytics pracovního prostoru, která se vztahují na jedno nebo více vašich zařízení. Pomocí těchto kroků nakonfigurujete zařízení přes Intune:
 
 1. Přihlaste se k Intune.
-2. Přejděte do **Nastavení** > **připojené zdroje**.
+2. Přejděte do **Nastavení**  >  **připojené zdroje**.
 3. Vytvoří nebo upraví zásadu na základě šablony Surface Hub.
 4. Přejděte do části zásady Azure Operational Insights a přidejte do této zásady *ID pracovního prostoru* Log Analytics a *klíč pracovního prostoru* .
 5. Uložte zásady.

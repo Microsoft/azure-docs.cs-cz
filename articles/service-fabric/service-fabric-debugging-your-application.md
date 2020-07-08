@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77624142"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí Visual Studia
@@ -23,7 +22,7 @@ ms.locfileid: "77624142"
 Můžete ušetřit čas a peníze nasazením a laděním aplikace Azure Service Fabric v clusteru pro vývoj místních počítačů. Sady Visual Studio 2019 nebo 2015 mohou nasadit aplikaci do místního clusteru a automaticky připojit ladicí program ke všem instancím aplikace. Pro připojení ladicího programu je třeba spustit aplikaci Visual Studio jako správce.
 
 1. Spusťte místní vývojový cluster podle kroků uvedených v části [Nastavení vývojového prostředí Service Fabric](service-fabric-get-started.md).
-2. Stiskněte klávesu **F5** nebo klikněte na **ladění** > **Spustit ladění**.
+2. Stiskněte klávesu **F5** nebo klikněte na **ladění**  >  **Spustit ladění**.
    
     ![Spuštění ladění aplikace][startdebugging]
 3. Nastavte zarážky v kódu a proveďte krokování aplikace kliknutím na příkazy v nabídce **ladění** .
@@ -56,7 +55,7 @@ Můžete ušetřit čas a peníze nasazením a laděním aplikace Azure Service 
 ### <a name="running-a-script-as-part-of-debugging"></a>Spuštění skriptu jako součást ladění
 V některých scénářích může být nutné spustit skript jako součást spuštění relace ladění (např. Pokud nepoužíváte výchozí služby).
 
-V aplikaci Visual Studio můžete přidat soubor s názvem **Start-Service. ps1** ve složce **Scripts** projektu aplikace Service Fabric (. sfproj). Tento skript bude vyvolán po vytvoření aplikace v místním clusteru.
+V aplikaci Visual Studio můžete přidat soubor s názvem **Start-Service.ps1** ve složce **Scripts** projektu aplikace Service Fabric (. sfproj). Tento skript bude vyvolán po vytvoření aplikace v místním clusteru.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

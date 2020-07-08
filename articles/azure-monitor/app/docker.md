@@ -4,10 +4,9 @@ description: Čítače výkonu Docker, události a výjimky lze zobrazit v Appli
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669603"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Monitorovat aplikace Docker v Application Insights (zastaralé)
@@ -54,7 +53,7 @@ Teď, když jste se dostali k zobrazení telemetrie, můžete nastavit kontejner
 Pro hostitele Docker je vyžadován pouze jeden Application Insights obrázek. Pokud je vaše aplikace nasazená na více hostitelích Docker, pak tento příkaz opakujte na každém hostiteli.
 
 ## <a name="update-your-app"></a>Aktualizace aplikace
-Pokud je aplikace instrumentovaná pomocí [sady Application Insights SDK pro jazyk Java](../../azure-monitor/app/java-get-started.md), přidejte následující řádek do souboru ApplicationInsights. XML v projektu v rámci `<TelemetryInitializers>` elementu:
+Pokud je aplikace instrumentovaná pomocí [sady Application Insights SDK pro jazyk Java](../../azure-monitor/app/java-get-started.md), přidejte následující řádek do souboru ApplicationInsights.xml v projektu v rámci `<TelemetryInitializers>` elementu:
 
 ```xml
 

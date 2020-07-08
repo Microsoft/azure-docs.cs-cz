@@ -4,10 +4,9 @@ description: Získejte přizpůsobená oznámení o událostech služby Service 
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654099"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Odesílání upozornění na Azure Service Health s ServiceNow pomocí webhooků
@@ -26,7 +25,7 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
  
     ![Tlačítko "nové skriptované REST API" v ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  Přidejte **název** do REST API a nastavte **ID rozhraní API** na `azureservicehealth`.
+1.  Přidejte **název** do REST API a nastavte **ID rozhraní API** na `azureservicehealth` .
 
 1.  Vyberte **Odeslat**.
 
@@ -36,12 +35,12 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
 
     ![Karta prostředků v ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  **Pojmenujte** nový `event` prostředek a změňte **metodu HTTP** na `POST`.
+1.  **Pojmenujte** nový prostředek `event` a změňte **metodu HTTP** na `POST` .
 
 1.  V části **skript** přidejte následující kód JavaScriptu:
 
     >[!NOTE]
-    >Ve skriptu níže musíte aktualizovat `<secret>`hodnotu`<group>`, a `<email>` .
+    >`<secret>` `<group>` Ve skriptu níže musíte aktualizovat hodnotu, a `<email>` .
     >* `<secret>`měl by to být náhodný řetězec, například GUID.
     >* `<group>`měla by se jednat o skupinu ServiceNow, ke které chcete přiřadit incident.
     >* `<email>`měla by to být konkrétní osoba, se kterou chcete incident přiřadit (volitelné).
@@ -131,7 +130,7 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
     })(request, response);
     ```
 
-1.  Na kartě zabezpečení zrušte zaškrtnutí políčka **vyžaduje ověření** a vyberte **Odeslat**. `<secret>` Místo toho nastavíte ochranu tohoto rozhraní API.
+1.  Na kartě zabezpečení zrušte zaškrtnutí políčka **vyžaduje ověření** a vyberte **Odeslat**. `<secret>`Místo toho nastavíte ochranu tohoto rozhraní API.
 
     ![Zaškrtávací políčko "vyžaduje ověření" v ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
 

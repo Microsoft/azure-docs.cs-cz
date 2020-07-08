@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77915033"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování klasických prostředků úložiště
@@ -97,8 +96,8 @@ Na portálu můžou být v závislosti na seznamu objektů BLOB vybraných k ods
 
 
 2. Pokud je vybraná kombinace "pronajatých" a "dostupných" objektů blob, zobrazí se tlačítko "odstranit". Operace "Delete" ale ponechá za objekty blob stránky, na kterých se zapůjčení disku zachová. 
-![Snímek obrazovky portálu s oknem seznam objektů BLOB kontejneru s otevřeným](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
-![snímkem obrazovky portálu s vybraným otevřeným oknem objektů blob "odstranit"](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![Snímek obrazovky portálu s oknem seznam objektů BLOB kontejneru s otevřeným snímkem ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![ obrazovky portálu s vybraným otevřeným oknem objektů blob "odstranit"](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Pokud se uživatel rozhodne odstranit pomocí PowerShellu, bude výsledkem následující chyba. 
@@ -114,7 +113,7 @@ Pokud se uživatel rozhodne odstranit pomocí PowerShellu, bude výsledkem násl
 Postupujte podle těchto kroků na Azure Portal:
 1.  Přejděte na [Azure Portal](https://portal.azure.com).
 2.  Přejděte na disky (klasické). 
-3.  Klikněte na kartu disky. ![snímek obrazovky portálu se spuštěným oknem seznam objektů BLOB kontejneru](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  Klikněte na kartu disky. ![ Snímek obrazovky portálu se spuštěným oknem seznam objektů BLOB kontejneru](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Vyberte datový disk a potom klikněte na Odstranit disk.
  ![Snímek obrazovky portálu se spuštěným oknem seznam objektů BLOB kontejneru](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)

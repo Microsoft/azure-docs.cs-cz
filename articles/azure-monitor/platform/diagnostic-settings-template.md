@@ -8,10 +8,9 @@ ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672425"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků
@@ -21,7 +20,7 @@ ms.locfileid: "77672425"
 > Vzhledem k tomu, že nemůžete [vytvořit nastavení diagnostiky](diagnostic-settings.md) pro protokol aktivit Azure pomocí PowerShellu nebo rozhraní příkazového řádku, jako je nastavení diagnostiky pro jiné prostředky Azure, vytvořte šablonu správce prostředků pro protokol aktivit pomocí informací v tomto článku a nasaďte tuto šablonu pomocí PowerShellu nebo rozhraní příkazového řádku.
 
 ## <a name="deployment-methods"></a>Metody nasazení
-Šablony Správce prostředků můžete nasadit pomocí libovolné platné metody, včetně PowerShellu a rozhraní příkazového řádku. Nastavení diagnostiky pro protokol aktivit musí být nasazeno do `az deployment create` předplatného `New-AzDeployment` pomocí rozhraní příkazového řádku nebo PowerShellu. Nastavení diagnostiky pro protokoly prostředků se musí nasadit do skupiny prostředků `az group deployment create` pomocí rozhraní příkazového řádku nebo `New-AzResourceGroupDeployment` PowerShellu.
+Šablony Správce prostředků můžete nasadit pomocí libovolné platné metody, včetně PowerShellu a rozhraní příkazového řádku. Nastavení diagnostiky pro protokol aktivit musí být nasazeno do předplatného pomocí rozhraní příkazového `az deployment create` řádku nebo `New-AzDeployment` PowerShellu. Nastavení diagnostiky pro protokoly prostředků se musí nasadit do skupiny prostředků pomocí rozhraní příkazového `az group deployment create` řádku nebo `New-AzResourceGroupDeployment` PowerShellu.
 
 Podrobnosti najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) a [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) . 
 
@@ -144,7 +143,7 @@ Následuje příklad, který vytvoří nastavení diagnostiky pro nastavení aut
 ```
 
 ## <a name="activity-log"></a>Protokol aktivit
-Pro protokol aktivit Azure Přidejte prostředek typu `Microsoft.Insights/diagnosticSettings`. Kategorie k dispozici jsou uvedené v [protokolech aktivit v protokolu aktivit](activity-log-view.md#categories-in-the-activity-log). Následuje šablona, která shromažďuje všechny kategorie protokolů aktivit do Log Analyticsho pracovního prostoru, účtu úložiště a centra událostí.
+Pro protokol aktivit Azure Přidejte prostředek typu `Microsoft.Insights/diagnosticSettings` . Kategorie k dispozici jsou uvedené v [protokolech aktivit v protokolu aktivit](activity-log-view.md#categories-in-the-activity-log). Následuje šablona, která shromažďuje všechny kategorie protokolů aktivit do Log Analyticsho pracovního prostoru, účtu úložiště a centra událostí.
 
 
 ```json

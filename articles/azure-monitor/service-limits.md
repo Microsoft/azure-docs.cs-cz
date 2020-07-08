@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
 ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657907"
 ---
 # <a name="azure-monitor-service-limits"></a>Omezení služby Azure Monitor
@@ -41,4 +40,4 @@ V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
 - [Ceny Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
 - [Monitorování využití a odhadovaných nákladů v Azure Monitor](platform/usage-estimated-costs.md)
-- [Správa využití a nákladů pro službu Application Insights](app/pricing.md)
+- [Správa využití Application Insights a souvisejících nákladů](app/pricing.md)

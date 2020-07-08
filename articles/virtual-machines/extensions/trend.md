@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919919"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows
@@ -57,7 +56,7 @@ Po zobrazení okna **Nastavení** v průvodci proveďte následující kroky:
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Instalace hloubkového agenta zabezpečení na existujícím virtuálním počítači
 K instalaci agenta na existující virtuální počítač budete potřebovat následující položky:
 
-* Azure PowerShell modul, verze 0.8.2 nebo novější, nainstalované na místním počítači. Verzi Azure PowerShell, kterou jste nainstalovali, můžete zjistit pomocí příkazu **Get-Module Azure | Format-Table Version** . Pokyny a odkaz na nejnovější verzi najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview). Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount`.
+* Azure PowerShell modul, verze 0.8.2 nebo novější, nainstalované na místním počítači. Verzi Azure PowerShell, kterou jste nainstalovali, můžete zjistit pomocí příkazu **Get-Module Azure | Format-Table Version** . Pokyny a odkaz na nejnovější verzi najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview). Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount` .
 * Agent virtuálního počítače je nainstalovaný na cílovém virtuálním počítači.
 
 Nejprve ověřte, zda je agent virtuálního počítače již nainstalován. Zadejte název cloudové služby a název virtuálního počítače a potom na příkazovém řádku Azure PowerShell na úrovni správce spusťte následující příkazy. Nahradí vše v uvozovkách, včetně < a > znaků.

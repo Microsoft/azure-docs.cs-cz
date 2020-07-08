@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668379"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení Alert Management v Azure Log Analytics
@@ -45,11 +44,11 @@ Další informace o způsobu, jakým se aktualizují sady pro správu řešení,
 ### <a name="agents"></a>Agenti
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
 
-| Připojený zdroj | Podpora | Popis |
+| Připojený zdroj | Podpora | Description |
 |:--- |:--- |:--- |
-| [Agenti systému Windows](agent-windows.md) | Ne |Přímo agenti Windows negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne |Přímo agenti Linux negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Linux.  Výstrahy Nagios a Zabbix se shromažďují z těch serverů, které vyžadují agenta pro Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../../azure-monitor/platform/om-agents.md) |Ano |Výstrahy, které jsou generovány v agentech Operations Manager, jsou doručeny do skupiny pro správu a poté předány do Log Analytics.<br><br>Přímé připojení od agentů Operations Manager k Log Analytics se nevyžaduje. Data výstrah se předávají ze skupiny pro správu do úložiště Log Analytics. |
+| [Agenti systému Windows](agent-windows.md) | No |Přímo agenti Windows negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Windows. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | No |Přímo agenti Linux negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Linux.  Výstrahy Nagios a Zabbix se shromažďují z těch serverů, které vyžadují agenta pro Linux. |
+| [Skupina pro správu nástroje System Center Operations Manager](../../azure-monitor/platform/om-agents.md) |Yes |Výstrahy, které jsou generovány v agentech Operations Manager, jsou doručeny do skupiny pro správu a poté předány do Log Analytics.<br><br>Přímé připojení od agentů Operations Manager k Log Analytics se nevyžaduje. Data výstrah se předávají ze skupiny pro správu do úložiště Log Analytics. |
 
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
@@ -63,7 +62,7 @@ Když přidáte řešení Alert Management do pracovního prostoru Log Analytics
 
 Kliknutím na dlaždici **Alert Management** otevřete řídicí panel **Alert Management** .  Řídicí panel obsahuje sloupce v následující tabulce.  V každém sloupci je uveden seznam prvních 10 výstrah podle počtu, který odpovídá kritériím daného sloupce pro zadaný obor a časový rozsah.  Hledání v protokolu, které poskytuje celý seznam, můžete spustit kliknutím na **Zobrazit vše** v dolní části sloupce nebo kliknutím na záhlaví sloupce.
 
-| Sloupec | Popis |
+| Sloupec | Description |
 |:--- |:--- |
 | Kritické výstrahy |Všechny výstrahy se závažností kritické seskupené podle názvu výstrahy.  Kliknutím na název výstrahy spustíte hledání v protokolu, které vrátí všechny záznamy pro tuto výstrahu. |
 | Varovné výstrahy |Všechny výstrahy se závažností upozornění seskupené podle názvu výstrahy.  Kliknutím na název výstrahy spustíte hledání v protokolu, které vrátí všechny záznamy pro tuto výstrahu. |
@@ -106,7 +105,7 @@ Pokud se posunete napravo, řídicí panel obsahuje několik běžných dotazů,
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy výstrah shromážděné tímto řešením: 
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:---|:---|
 | Výstraha &#124;, kde SourceSystem = = "OpsManager" and AlertSeverity = = "Error" a TimeRaised > (24 hodin) |Kritické výstrahy vyvolané během posledních 24 hodin |
 | Výstraha &#124;, kde AlertSeverity = = "Warning" a TimeRaised > před (24 hodin) |Výstrahy upozornění vyvolané během posledních 24 hodin |

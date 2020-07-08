@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672204"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
@@ -42,7 +41,7 @@ Pokud chcete nastavit místní server Grafana, [Stáhněte a nainstalujte Grafan
 
 ## <a name="sign-in-to-grafana"></a>Přihlásit se k Grafana
 
-1. Pomocí IP adresy vašeho serveru otevřete přihlašovací stránku na *adrese http://\<IP\>adresa: 3000* nebo * \<DnsName>\:3000* v prohlížeči. I když je 3000 výchozí port, Všimněte si, že při instalaci jste vybrali jiný port. Měla by se zobrazit přihlašovací stránka pro server Grafana, který jste vytvořili.
+1. Pomocí IP adresy vašeho serveru otevřete přihlašovací stránku na adrese *http:// \<IP address\> : 3000* nebo * \<DNSName> \: 3000* v prohlížeči. I když je 3000 výchozí port, Všimněte si, že při instalaci jste vybrali jiný port. Měla by se zobrazit přihlašovací stránka pro server Grafana, který jste vytvořili.
 
     ![Přihlašovací obrazovka Grafana](./media/grafana-plugin/grafana-login-screen.png)
 

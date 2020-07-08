@@ -7,10 +7,9 @@ ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671334"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Povolení Snapshot Debugger pro aplikace .NET v Azure Service Fabric, cloudové službě a Virtual Machines
@@ -25,7 +24,7 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové službě, Virtual
 
 2. Do své aplikace přidejte balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) .
 
-3. V případě potřeby přizpůsobené Snapshot Debugger konfiguraci přidanou do [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Výchozí konfigurace Snapshot Debugger je většinou prázdná a všechna nastavení jsou volitelná. Tady je příklad, který ukazuje konfiguraci odpovídající výchozí konfiguraci:
+3. V případě potřeby si přizpůsobili Snapshot Debugger konfiguraci přidanou [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Výchozí konfigurace Snapshot Debugger je většinou prázdná a všechna nastavení jsou volitelná. Tady je příklad, který ukazuje konfiguraci odpovídající výchozí konfiguraci:
 
     ```xml
     <TelemetryProcessors>
@@ -71,19 +70,19 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové službě, Virtual
 
 2. Do své aplikace přidejte balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) .
 
-3. Upravte `Startup` třídu vaší aplikace a přidejte a nakonfigurujte procesor telemetrie Snapshot collector.
-    1. Pokud se používá balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) verze 1.3.5 nebo vyšší, přidejte následující příkazy using do `Startup.cs`.
+3. Upravte třídu vaší aplikace a `Startup` přidejte a nakonfigurujte procesor telemetrie Snapshot collector.
+    1. Pokud se používá balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) verze 1.3.5 nebo vyšší, přidejte následující příkazy using do `Startup.cs` .
 
        ```csharp
             using Microsoft.ApplicationInsights.SnapshotCollector;
        ```
 
-       Přidejte následující na konec metody ConfigureServices ve `Startup` třídě v. `Startup.cs`
+       Přidejte následující na konec metody ConfigureServices ve `Startup` třídě v `Startup.cs` .
 
        ```csharp
             services.AddSnapshotCollector((configuration) => Configuration.Bind(nameof(SnapshotCollectorConfiguration), configuration));
        ```
-    2. Pokud se používá balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) verze 1.3.4 nebo nižší, přidejte následující příkazy using do `Startup.cs`.
+    2. Pokud se používá balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) verze 1.3.4 nebo nižší, přidejte následující příkazy using do `Startup.cs` .
 
        ```csharp
        using Microsoft.ApplicationInsights.SnapshotCollector;
@@ -92,7 +91,7 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové službě, Virtual
        using Microsoft.ApplicationInsights.Extensibility;
        ```
     
-       Přidejte do `Startup` třídy `SnapshotCollectorTelemetryProcessorFactory` následující třídu.
+       Přidejte `SnapshotCollectorTelemetryProcessorFactory` do třídy následující třídu `Startup` .
     
        ```csharp
        class Startup
@@ -112,7 +111,7 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové službě, Virtual
            }
            ...
         ```
-        Přidejte služby `SnapshotCollectorConfiguration` a `SnapshotCollectorTelemetryProcessorFactory` ke spouštěcímu kanálu:
+        Přidejte `SnapshotCollectorConfiguration` služby a `SnapshotCollectorTelemetryProcessorFactory` ke spouštěcímu kanálu:
     
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
@@ -129,7 +128,7 @@ Pokud vaše aplikace běží v Azure Service Fabric, cloudové službě, Virtual
        }
        ```
 
-4. V případě potřeby přizpůsobené konfiguraci Snapshot Debugger přidáním oddílu SnapshotCollectorConfiguration do souboru appSettings. JSON. Všechna nastavení v konfiguraci Snapshot Debugger jsou volitelná. Tady je příklad, který ukazuje konfiguraci odpovídající výchozí konfiguraci:
+4. V případě potřeby přizpůsobené konfiguraci Snapshot Debugger přidáním oddílu SnapshotCollectorConfiguration do appsettings.js. Všechna nastavení v konfiguraci Snapshot Debugger jsou volitelná. Tady je příklad, který ukazuje konfiguraci odpovídající výchozí konfiguraci:
 
    ```json
    {

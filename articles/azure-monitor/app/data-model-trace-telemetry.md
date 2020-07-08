@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671949"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Sledovací telemetrie: datový model Application Insights
 
-Telemetrii trasování (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje `printf` příkazy pro trasování stylu, které jsou prohledávány při hledání textu. `Log4Net`, `NLog`a další položky souborového protokolu založené na textu jsou přeloženy do instancí tohoto typu. Trasování nemá měření jako rozšiřitelnost.
+Telemetrii trasování (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje `printf` příkazy pro trasování stylu, které jsou prohledávány při hledání textu. `Log4Net`, `NLog` a další položky souborového protokolu založené na textu jsou přeloženy do instancí tohoto typu. Trasování nemá měření jako rozšiřitelnost.
 
 ## <a name="message"></a>Zpráva
 
@@ -23,7 +22,7 @@ Maximální délka: 32768 znaků
 
 ## <a name="severity-level"></a>Úroveň závažnosti
 
-Úroveň závažnosti trasování. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Úroveň závažnosti trasování. Hodnota může být `Verbose` , `Information` , `Warning` , `Error` , `Critical` .
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 

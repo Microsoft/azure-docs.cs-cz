@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663251"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v Azure Monitor
@@ -38,17 +37,17 @@ Přidejte Agent Health řešení do svého pracovního prostoru Log Analytics po
 ### <a name="supported-agents"></a>Podporovaní agenti
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporuje se | Description |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Události prezenčního signálu se shromažďují z přímých agentů systému Windows.|
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Události prezenčního signálu se shromažďují z agentů, kteří se nahlásí do skupiny pro správu každých 60 sekund, a pak předají Azure Monitor. Přímé připojení od agentů Operations Manager k Azure Monitor se nevyžaduje. Data události prezenčního signálu se předávají ze skupiny pro správu do pracovního prostoru Log Analytics.|
+| Agenti systému Windows | Yes | Události prezenčního signálu se shromažďují z přímých agentů systému Windows.|
+| Skupina pro správu nástroje System Center Operations Manager | Yes | Události prezenčního signálu se shromažďují z agentů, kteří se nahlásí do skupiny pro správu každých 60 sekund, a pak předají Azure Monitor. Přímé připojení od agentů Operations Manager k Azure Monitor se nevyžaduje. Data události prezenčního signálu se předávají ze skupiny pro správu do pracovního prostoru Log Analytics.|
 
 ## <a name="using-the-solution"></a>Použití řešení
 Když přidáte řešení do svého pracovního prostoru Log Analytics, do řídicího panelu se přidá dlaždice **Agent Health** . Tato dlaždice ukazuje celkový počet agentů a počet nereagujících agentů za posledních 24 hodin.<br><br> ![Dlaždice řešení Agent Health na řídicím panelu](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Health**.  Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec obsahuje seznam prvních deseti událostí podle počtu, které splňují kritéria sloupce pro zadaný časový rozsah. Výběrem možnosti **Zobrazit všechno** v pravé dolní části každého sloupce nebo kliknutím na záhlaví sloupce můžete spustit prohledávání protokolu, které vám poskytne úplný seznam.
 
-| Sloupec | Popis |
+| Sloupec | Description |
 |--------|-------------|
 | Počet agentů v průběhu času | Trend vývoje počtu linuxových agentů a agentů systému Windows za posledních sedm dnů.|
 | Počet nereagujících agentů | Seznam agentů, kteří za posledních 24 hodin neodeslali prezenční signál.|
@@ -90,7 +89,7 @@ Každý agent, který hlásí do Operations Manager management server bude odes�
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záznamy shromážděné tímto řešením.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Celkový počet agentů |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Počet nereagujících agentů za posledních 24 hodin |

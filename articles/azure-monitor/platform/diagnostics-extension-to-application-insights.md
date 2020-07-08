@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672323"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslat cloudovou službu, virtuální počítač nebo Service Fabric diagnostická data do Application Insights
@@ -69,7 +68,7 @@ Příklad konfigurace jímky pro Application Insights:
         - Informace
         - Upozornění
         - Chyba
-        - Kritická
+        - Kritické
 
 Kanál funguje jako filtr a umožňuje vybrat konkrétní úrovně protokolu k odeslání do cílové jímky. Můžete například shromáždit podrobné protokoly a odeslat je do úložiště, ale zaslat do jímky pouze chyby.
 

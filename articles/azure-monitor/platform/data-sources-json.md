@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662157"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Shromažďování vlastních zdrojů dat JSON pomocí agenta Log Analytics pro Linux v Azure Monitor
@@ -26,9 +25,9 @@ Vlastní zdroje dat JSON můžete shromažďovat do [Azure monitor](data-platfor
 
 ### <a name="configure-input-plugin"></a>Nakonfigurovat vstupní modul plug-in
 
-Pokud chcete shromažďovat data JSON v Azure Monitor, `oms.api.` přidejte na vstupní modul plug-in na začátek Fluent značky.
+Pokud chcete shromažďovat data JSON v Azure Monitor, přidejte `oms.api.` na vstupní modul plug-in na začátek Fluent značky.
 
-Například následující je samostatný konfigurační soubor `exec-json.conf` v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`nástroji.  K tomu se používá modul plug `exec` -in, který spouští příkaz ve složeném intervalu 30 sekund.  Výstup z tohoto příkazu je shromážděn modulem plug-in JSON Output.
+Například následující je samostatný konfigurační soubor `exec-json.conf` v nástroji `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` .  K tomu se používá modul plug-in, `exec` který spouští příkaz ve složeném intervalu 30 sekund.  Výstup z tohoto příkazu je shromážděn modulem plug-in JSON Output.
 
 ```
 <source>
@@ -52,12 +51,12 @@ Například následující je samostatný konfigurační soubor `exec-json.conf`
   retry_wait 30s
 </match>
 ```
-Konfigurační soubor přidaný v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` části bude vyžadovat, aby se jeho vlastnictví změnilo pomocí následujícího příkazu.
+Konfigurační soubor přidaný v části `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` bude vyžadovat, aby se jeho vlastnictví změnilo pomocí následujícího příkazu.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Konfigurovat výstupní modul plug-in 
-Přidejte následující konfiguraci výstupního modulu plug-in do hlavní `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` konfigurace v nebo jako samostatný konfigurační soubor umístěný v`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+Přidejte následující konfiguraci výstupního modulu plug-in do hlavní konfigurace v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` nebo jako samostatný konfigurační soubor umístěný v`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -80,13 +79,13 @@ Restartujte agenta Log Analytics pro Linux Service pomocí následujícího př�
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Výstup
-Data budou shromažďována v Azure Monitor s typem záznamu `<FLUENTD_TAG>_CL`.
+Data budou shromažďována v Azure Monitor s typem záznamu `<FLUENTD_TAG>_CL` .
 
-Například vlastní značka `tag oms.api.tomcat` v Azure monitor s typem záznamu `tomcat_CL`.  Můžete načíst všechny záznamy tohoto typu s následujícím dotazem protokolu.
+Například vlastní značka `tag oms.api.tomcat` v Azure monitor s typem záznamu `tomcat_CL` .  Můžete načíst všechny záznamy tohoto typu s následujícím dotazem protokolu.
 
     Type=tomcat_CL
 
-Vnořené zdroje dat JSON jsou podporovány, ale jsou indexované na základě nadřazeného pole. Například následující data JSON se vrátí z dotazu protokolu jako `tag_s : "[{ "a":"1", "b":"2" }]`.
+Vnořené zdroje dat JSON jsou podporovány, ale jsou indexované na základě nadřazeného pole. Například následující data JSON se vrátí z dotazu protokolu jako `tag_s : "[{ "a":"1", "b":"2" }]` .
 
 ```
 {

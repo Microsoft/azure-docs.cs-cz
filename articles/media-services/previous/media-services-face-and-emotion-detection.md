@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919307"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Detekce obličeje a emoce pomocí Azure Media Analytics
@@ -81,7 +80,7 @@ Při vytváření úlohy s **Azure Media Face Detector**je nutné zadat předvol
 ```
 
 #### <a name="attribute-descriptions"></a>Popisy atributů
-| Název atributu | Popis |
+| Název atributu | Description |
 | --- | --- |
 | Mode |Rychlost rychlého zpracování, ale méně přesná (výchozí).|
 
@@ -156,7 +155,7 @@ Při vytváření úlohy s **Azure Media Face Detector**je nutné zadat předvol
 
 
 #### <a name="attribute-descriptions"></a>Popisy atributů
-| Název atributu | Popis |
+| Název atributu | Description |
 | --- | --- |
 | Mode |Obličeje: jenom rozpoznávání tváře.<br/>PerFaceEmotion: vrátíte emoce nezávisle pro každou detekci obličeje.<br/>AggregateEmotion: vrátí průměrné hodnoty emoce pro všechny plošky v rámci rámečku. |
 | AggregateEmotionWindowMs |Použijte, pokud je vybraný režim AggregateEmotion. Určuje délku videa, která se používá k získání každého agregovaného výsledku v milisekundách. |

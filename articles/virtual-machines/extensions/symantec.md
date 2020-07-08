@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919902"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows
@@ -33,7 +32,7 @@ Pokud máte stávající předplatné od Symantecu pro místní řešení, můž
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Instalace Symantec Endpoint Protection na stávajícím virtuálním počítači
 Než začnete, budete potřebovat následující:
 
-* Azure PowerShell modul verze 0.8.2 nebo novější, ve vašem pracovním počítači. Verzi Azure PowerShell, kterou jste nainstalovali, můžete zjistit pomocí příkazu **Get-Module Azure | Format-Table Version** . Pokyny a odkaz na nejnovější verzi najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][PS]. Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount`.
+* Azure PowerShell modul verze 0.8.2 nebo novější, ve vašem pracovním počítači. Verzi Azure PowerShell, kterou jste nainstalovali, můžete zjistit pomocí příkazu **Get-Module Azure | Format-Table Version** . Pokyny a odkaz na nejnovější verzi najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][PS]. Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount` .
 * Agent virtuálního počítače běžící na virtuálním počítači Azure.
 
 Nejdřív ověřte, že je na virtuálním počítači už nainstalovaný agent virtuálního počítače. Zadejte název cloudové služby a název virtuálního počítače a potom na příkazovém řádku Azure PowerShell na úrovni správce spusťte následující příkazy. Nahradí vše v uvozovkách, včetně < a > znaků.

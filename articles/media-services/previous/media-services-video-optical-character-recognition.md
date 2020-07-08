@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918304"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Použití Azure Media Analytics k převodu textového obsahu v videosouborech na digitální text  
@@ -46,7 +45,7 @@ Konfigurace úlohy (přednastavení). Při vytváření úlohy pomocí **Azure M
 >
 
 ### <a name="attribute-descriptions"></a>Popisy atributů
-| Název atributu | Popis |
+| Název atributu | Description |
 | --- | --- |
 |AdvancedOutput| Pokud nastavíte AdvancedOutput na hodnotu true, bude výstup JSON obsahovat pozice pro každé jedno slovo (kromě frází a oblastí). Pokud nechcete zobrazit tyto podrobnosti, nastavte příznak na false. Výchozí hodnota je False. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Jazyk |(volitelné) popisuje jazyk textu, který má být hledán. Jedna z následujících možností: automaticky rozpoznat (výchozí), arabština, ChineseSimplified, ChineseTraditional, Čeština Dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, ruština, španělština, švédština, turečtina. |
@@ -107,7 +106,7 @@ Výstup optického rozpoznávání videa poskytuje data rozdělená na znaky nal
 
 Výstup obsahuje následující atributy:
 
-| Prvek | Popis |
+| Prvek | Description |
 | --- | --- |
 | Timescale |"takty" za sekundu videa |
 | Posun |časový posun pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. |
@@ -119,7 +118,7 @@ Výstup obsahuje následující atributy:
 | doba trvání |Délka fragmentu v "taktech" |
 | interval |interval každé události v rámci daného fragmentu |
 | stránka events |pole obsahující oblasti |
-| . |objekt představující zjištěná slova nebo fráze |
+| oblast |objekt představující zjištěná slova nebo fráze |
 | language |jazyk textu zjištěného v rámci oblasti |
 | změny |orientace textu zjištěného v rámci oblasti |
 | čáry |pole řádků textu zjištěných v rámci oblasti |

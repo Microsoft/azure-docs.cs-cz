@@ -8,10 +8,9 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925927"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Firewall webových aplikací (WAF) se seznamy vyloučení služby front-dveří 
@@ -20,10 +19,10 @@ Někdy může firewall webových aplikací (WAF) blokovat požadavek, který chc
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Konfigurace seznamů vyloučení pomocí Azure Portal
 **Správa vyloučení** je přístupná z portálu WAF v části **spravovaná pravidla**
 
-![Správa vyloučení](../media/waf-front-door-exclusion/exclusion1.png)
-![exclusion_add správy](../media/waf-front-door-exclusion/exclusion2.png)
+![Správa vyloučení ](../media/waf-front-door-exclusion/exclusion1.png)
+ ![ exclusion_add správy](../media/waf-front-door-exclusion/exclusion2.png)
 
- Příklad seznamu vyloučení: ![Správa exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
+ Příklad seznamu vyloučení: ![ správa exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
 
 Tento příklad vylučuje hodnotu v poli záhlaví *uživatele* . Platný požadavek může obsahovat pole *uživatele* obsahující řetězec, který spouští pravidlo pro vložení SQL. V tomto případě můžete v tomto případě vyloučit parametr *uživatele* tak, aby pravidlo WAF nevyhodnotilo cokoli v poli.
 

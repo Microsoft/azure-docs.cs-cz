@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671830"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Model dat Application Insights telemetrie
@@ -30,11 +29,11 @@ Následující typy telemetrie slouží k monitorování provádění vaší apl
 
     **Operace** je podprocesy spuštění, které zpracovávají požadavek. Můžete také [napsat kód](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) pro monitorování jiných typů operací, jako je například "probuzení" ve webové úloze nebo funkci, která pravidelně zpracovává data.  Každá operace má ID. Toto ID, které se dá použít k [seskupení](../../azure-monitor/app/correlation.md) všech telemetrie generovaných v době, kdy vaše aplikace zpracovává požadavek. Každá operace buď proběhne úspěšně, nebo se nezdaří a má časový interval.
 * [**Výjimka**](data-model-exception-telemetry.md) – obvykle představuje výjimku, která způsobí selhání operace.
-* [**Dependency**](data-model-dependency-telemetry.md) – představuje volání z vaší aplikace do externí služby nebo úložiště, jako je například REST API nebo SQL. V ASP.NET jsou volání závislostí na SQL definována pomocí `System.Data`. Volání koncových bodů HTTP jsou definována `System.Net`pomocí. 
+* [**Dependency**](data-model-dependency-telemetry.md) – představuje volání z vaší aplikace do externí služby nebo úložiště, jako je například REST API nebo SQL. V ASP.NET jsou volání závislostí na SQL definována pomocí `System.Data` . Volání koncových bodů HTTP jsou definována pomocí `System.Net` . 
 
 Application Insights poskytuje tři další datové typy pro vlastní telemetrii:
 
-* [Trace](data-model-trace-telemetry.md) – používá se buď přímo, nebo prostřednictvím adaptéru k implementaci protokolování diagnostiky pomocí architektury instrumentace, která je pro vás známá, například `Log4Net` nebo `System.Diagnostics`.
+* [Trace](data-model-trace-telemetry.md) – používá se buď přímo, nebo prostřednictvím adaptéru k implementaci protokolování diagnostiky pomocí architektury instrumentace, která je pro vás známá, například `Log4Net` nebo `System.Diagnostics` .
 * [Událost](data-model-event-telemetry.md) – obvykle se používá k zaznamenání interakce uživatele s vaší službou a k analýze vzorců používání.
 * [Metrika](data-model-metric-telemetry.md) – používá se k hlášení periodických skalárních měření.
 

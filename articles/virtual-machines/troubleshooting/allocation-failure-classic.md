@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77913374"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Postup řešení potíží pro scénáře selhání přidělení v modelu nasazení Classic
@@ -50,7 +49,7 @@ Upgrade_VMSizeNotSupported nebo GeneralError
 
 Žádost o změnu velikosti virtuálního počítače nebo přidání virtuálního počítače nebo instance role do existující cloudové služby se musí vyžádat v původním clusteru, který hostuje existující cloudovou službu. Vytvořením nové cloudové služby umožníte platformě Azure najít další cluster, který má bezplatné prostředky, nebo podporuje požadovanou velikost virtuálního počítače.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud je chyba Upgrade_VMSizeNotSupported *, zkuste jinou velikost virtuálního počítače. Pokud použití jiné velikosti virtuálního počítače není možnost, ale pokud je přijatelné použít jinou virtuální IP adresu (VIP), vytvořte novou cloudovou službu pro hostování nového virtuálního počítače a přidejte novou cloudovou službu do místní virtuální sítě, ve které jsou spuštěné stávající virtuální počítače. Pokud vaše existující cloudová služba nepoužívá regionální virtuální síť, můžete pro novou cloudovou službu vytvořit novou virtuální síť a pak připojit [stávající virtuální síť k nové virtuální síti](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Přečtěte si další informace o [regionálních virtuálních sítích](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
@@ -65,7 +64,7 @@ GeneralError*
 
 Částečné navracení znamená, že jste zastavili (oddělili) jednu nebo víc virtuálních počítačů v cloudové službě, ale ne všechny. Když zastavíte (narušíte přidělení) virtuálního počítače, budou se tyto přidružené prostředky uvolnit. Restartování virtuálního počítače, který se zastavil (přidělení), je tedy nová žádost o přidělení. Restartování virtuálních počítačů v částečně navrácené cloudové službě se podobá přidání virtuálních počítačů do existující cloudové služby. Požadavek na přidělení se musí provést v původním clusteru, který hostuje stávající cloudovou službu. Vytvořením jiné cloudové služby umožníte platformě Azure najít další cluster, který má bezplatný prostředek, nebo podporuje požadovanou velikost virtuálního počítače.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud je přijatelné použít jinou VIP, odstraňte zastavené (navrácené) virtuální počítače (ale zachovejte přidružené disky) a přidejte virtuální počítače zpátky přes jinou cloudovou službu. Pro připojení ke cloudovým službám použijte místní virtuální síť:
 
@@ -81,7 +80,7 @@ GeneralError*
 
 Úplné navracení znamená, že jste zastavili (oddělili) všechny virtuální počítače z cloudové služby. Žádosti o přidělení k restartování těchto virtuálních počítačů je nutné provést v původním clusteru, který hostuje cloudovou službu. Vytvořením nové cloudové služby umožníte platformě Azure najít další cluster, který má bezplatné prostředky, nebo podporuje požadovanou velikost virtuálního počítače.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud je přijatelné použít jinou virtuální IP adresu, odstraňte původní zastavené (navrácené) virtuální počítače (ale zachovejte přidružené disky) a odstraňte odpovídající cloudovou službu (přidružené výpočetní prostředky už byly po zastavení (přidělení) virtuálních počítačů vydané. Vytvořte novou cloudovou službu pro přidání virtuálních počítačů zpátky.
 
@@ -94,7 +93,7 @@ New_General * nebo New_VMSizeNotSupported *
 
 Pracovní nasazení a provozní nasazení cloudové služby se hostují ve stejném clusteru. Když přidáte druhé nasazení, bude proveden pokus o odpovídající žádost o přidělení ve stejném clusteru, který je hostitelem prvního nasazení.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Odstraňte první nasazení a původní cloudovou službu a znovu nasaďte cloudovou službu. Tato akce může nakládat s prvním nasazením v clusteru, který má dostatek volných prostředků pro přizpůsobení nasazení nebo v clusteru, který podporuje požadované velikosti virtuálních počítačů.
 
@@ -107,7 +106,7 @@ New_General * nebo New_VMSizeNotSupported *
 
 Libovolný výpočetní prostředek přiřazený ke skupině vztahů je vázaný na jeden cluster. Nové požadavky na výpočetní prostředky v této skupině vztahů se pokoušejí ve stejném clusteru, ve kterém jsou hostované stávající prostředky. To platí bez ohledu na to, jestli se nové prostředky vytvoří prostřednictvím nové cloudové služby nebo existující cloudové služby.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud není skupina vztahů potřebná, nepoužívejte skupinu vztahů ani seskupte výpočetní prostředky do více skupin vztahů.
 
@@ -120,7 +119,7 @@ New_General * nebo New_VMSizeNotSupported *
 
 Před tím, než byly zavedeny regionální virtuální sítě, jste museli přidružit virtuální síť ke skupině vztahů. Výsledkem je, že výpočetní prostředky umístěné do skupiny vztahů jsou vázány stejnými omezeními, jak je popsáno v části scénář přidělení: spřažení (virtuální počítač/služba) výše. Výpočetní prostředky jsou vázané na jeden cluster.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud nepotřebujete skupinu vztahů, vytvořte novou oblastní virtuální síť pro nové prostředky, které přidáváte, a pak [Připojte stávající virtuální síť k nové virtuální síti](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Přečtěte si další informace o [regionálních virtuálních sítích](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 

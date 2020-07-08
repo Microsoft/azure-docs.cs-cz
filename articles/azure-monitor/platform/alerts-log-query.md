@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667784"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Protokolovat dotazy výstrah v Azure Monitor
@@ -25,7 +24,7 @@ Například následující dotaz je vymezen na tabulku _SecurityEvent_ a hledá 
 SecurityEvent | where EventID == 4624 
 ```
 
-Dotazy, které začínají `search` na `union` nebo umožňují prohledávat více sloupců v tabulce nebo dokonce i v několika tabulkách. Následující příklady znázorňují několik metod hledání termínu _paměti_:
+Dotazy, které začínají `search` `union` na nebo umožňují prohledávat více sloupců v tabulce nebo dokonce i v několika tabulkách. Následující příklady znázorňují několik metod hledání termínu _paměti_:
 
 ```Kusto
 search "Memory"
@@ -38,9 +37,9 @@ union * | where ObjectName == "Memory"
 Přestože `search` a `union` jsou užitečné při zkoumání dat, vyhledávání podmínek nad celým datovým modelem, je méně efektivní než použití tabulky, protože musí kontrolovat napříč více tabulkami. Vzhledem k tomu, že dotazy v pravidlech výstrah jsou spouštěny v pravidelných intervalech, může to mít za následek nadměrné režie přidání latence do výstrahy. Z důvodu této režie by dotazy na pravidla výstrah protokolů v Azure měly vždycky začít s tabulkou, která má definovat jasný rozsah, což zvyšuje výkon dotazů a relevanci výsledků.
 
 ## <a name="unsupported-queries"></a>Nepodporované dotazy
-Od 11. ledna 2019, vytváření nebo úpravy pravidel upozornění protokolů, které `search`používají, `union` nebo operátory nebudou podporovány v Azure Portal. Při použití těchto operátorů v pravidle výstrahy dojde k vrácení chybové zprávy. Tato změna nemá vliv na existující pravidla a pravidla upozornění vytvořená a upravená pomocí rozhraní Log Analytics API. Stále byste měli zvážit změnu všech pravidel upozornění, která používají tyto typy dotazů, a tím i zlepšit jejich efektivitu.  
+Od 11. ledna 2019, vytváření nebo úpravy pravidel upozornění protokolů, které používají `search` , nebo `union` operátory nebudou podporovány v Azure Portal. Při použití těchto operátorů v pravidle výstrahy dojde k vrácení chybové zprávy. Tato změna nemá vliv na existující pravidla a pravidla upozornění vytvořená a upravená pomocí rozhraní Log Analytics API. Stále byste měli zvážit změnu všech pravidel upozornění, která používají tyto typy dotazů, a tím i zlepšit jejich efektivitu.  
 
-Tato změna neovlivní pravidla upozornění protokolu pomocí [dotazů na více zdrojů](../log-query/cross-workspace-query.md) `union`, což omezuje rozsah dotazu na konkrétní prostředky. Nejedná se o `union *` ekvivalent, který nelze použít.  Následující příklad bude platný v pravidle výstrahy protokolu:
+Tato změna neovlivní pravidla upozornění protokolu pomocí [dotazů na více zdrojů](../log-query/cross-workspace-query.md) `union` , což omezuje rozsah dotazu na konkrétní prostředky. Nejedná se o ekvivalent, `union *` který nelze použít.  Následující příklad bude platný v pravidle výstrahy protokolu:
 
 ```Kusto
 union 
@@ -53,10 +52,10 @@ workspace('Contoso-workspace1').Perf
 >[Dotaz na více prostředků](../log-query/cross-workspace-query.md) v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pravidla upozornění protokolu [dotazu pro více prostředků](../log-query/cross-workspace-query.md) můžete vytvořit bez toho, aby byl přepínač použit pomocí [šablony ARM pro rozhraní scheduledQueryRules API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale toto pravidlo upozornění lze spravovat i v případě, že [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
 
 ## <a name="examples"></a>Příklady
-Následující příklady zahrnují dotazy protokolů, které používají `search` `union` , a poskytují kroky, pomocí kterých můžete tyto dotazy upravovat pro použití s pravidly výstrah.
+Následující příklady zahrnují dotazy protokolů, které používají, a `search` `union` poskytují kroky, pomocí kterých můžete tyto dotazy upravovat pro použití s pravidly výstrah.
 
 ### <a name="example-1"></a>Příklad 1
-Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search`: 
+Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search` : 
 
 ``` Kusto
 search * | where Type == 'Perf' and CounterName == '% Free Space' 
@@ -86,7 +85,7 @@ Perf
 
 
 ### <a name="example-2"></a>Příklad 2
-Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search`: 
+Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search` : 
 
 ``` Kusto
 search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
@@ -137,7 +136,7 @@ search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceN
 
 Výsledek tohoto dotazu by ukázal, že všechny tyto vlastnosti byly získány z tabulky _perf_ . 
 
-Nyní použijte `union` příkaz `withsource` with k určení, která zdrojová tabulka přispěla k jednotlivým řádkům.
+Nyní použijte `union` `withsource` příkaz with k určení, která zdrojová tabulka přispěla k jednotlivým řádkům.
 
 ``` Kusto
 union withsource=table * | where CounterName == "% Processor Utility" 

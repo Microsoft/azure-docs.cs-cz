@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671643"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilace produkčních aplikací v Azure pomocí Application Insights
@@ -53,19 +52,19 @@ Microsoft Service Profiler používá kombinaci metod vzorkování a instrumenta
 
 Zásobník volání zobrazený v zobrazení Časová osa je výsledkem vzorkování a instrumentace. Vzhledem k tomu, že každá ukázka zachycuje úplný zásobník volání vlákna, zahrnuje kód z Microsoft .NET Framework a z jiných rozhraní, na které odkazujete.
 
-### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Přidělení objektů (CLR! JIT\_New nebo CLR! JIT\_Newarr1)
+### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Přidělení objektů (CLR! JIT \_ New nebo CLR! JIT \_ Newarr1)
 
-**CLR! JIT\_JIT New** a **CLR! JIT\_Newarr1** jsou pomocné funkce v .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT\_** je vyvolána nově, když je objekt přidělen. **CLR! Newarr1\_JIT** se vyvolá při přidělení pole objektu. Tyto dvě funkce jsou obvykle rychlé a mohou trvat poměrně krátké množství času. Pokud **CLR! JIT\_New** nebo **CLR! Newarr1\_JIT** na časové ose zabere spoustu času, kód může přidělit mnoho objektů a spotřebovávat značné množství paměti.
+**CLR! JIT JIT \_ New** a **CLR! JIT \_ Newarr1** jsou pomocné funkce v .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT \_ ** je vyvolána nově, když je objekt přidělen. **CLR! \_NEWARR1 JIT** se vyvolá při přidělení pole objektu. Tyto dvě funkce jsou obvykle rychlé a mohou trvat poměrně krátké množství času. Pokud **CLR! JIT \_ New** nebo **CLR! \_NEWARR1 JIT** na časové ose zabere spoustu času, kód může přidělit mnoho objektů a spotřebovávat značné množství paměti.
 
 ### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Načítání kódu (CLR! ThePreStub)
 
 **CLR! ThePreStub** je pomocná funkce v .NET Framework, která připravuje kód pro první spuštění. Toto provedení obvykle zahrnuje, ale není omezeno na kompilaci JIT (just-in-time). Pro každou metodu jazyka C#, **CLR! ThePreStub** by mělo být vyvoláno nejvýše jednou během procesu.
 
-Pokud **CLR! ThePreStub** trvá pro požadavek dlouhou dobu, jedná se o první požadavek, který tuto metodu spustí. Čas, kdy má modul runtime .NET Framework načíst první metodu, je významný. Můžete zvážit použití procesu zahřívání, který spustí tuto část kódu předtím, než k němu uživatelé přistupují, nebo můžete ve svých sestaveních spustit generátor nativních bitových kopií (Ngen. exe).
+Pokud **CLR! ThePreStub** trvá pro požadavek dlouhou dobu, jedná se o první požadavek, který tuto metodu spustí. Čas, kdy má modul runtime .NET Framework načíst první metodu, je významný. Můžete zvážit použití procesu zahřívání, který spustí tuto část kódu předtím, než k němu uživatelé přistupují, nebo můžete ve svých sestaveních spustit generátor nativních bitových kopií (ngen.exe).
 
-### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Zamykání zámků (CLR! JITutil\_MonContention nebo CLR! JITutil\_MonEnterWorker)
+### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Zamykání zámků (CLR! JITutil \_ MonContention nebo CLR! JITutil \_ MonEnterWorker)
 
-**CLR! JITutil\_MonContention** nebo **CLR! JITutil\_MonEnterWorker** označuje, že aktuální vlákno čeká na uvolnění zámku. Tento text se často zobrazuje při spuštění příkazu **zámku** jazyka C#, vyvolání metody **monitor. Enter** nebo vyvolání metody s atributem **MethodImplOptions. Synchronized** . K uzamčení zámku obvykle dochází, když vlákno _a získá zámek_ a vlákno _B_ se pokusí získat stejný zámek _před uvolněním_ vlákna.
+**CLR! JITutil \_ MonContention** nebo **CLR! JITutil \_ MonEnterWorker** označuje, že aktuální vlákno čeká na uvolnění zámku. Tento text se často zobrazuje při spuštění příkazu **zámku** jazyka C#, vyvolání metody **monitor. Enter** nebo vyvolání metody s atributem **MethodImplOptions. Synchronized** . K uzamčení zámku obvykle dochází, když vlákno _a získá zámek_ a vlákno _B_ se pokusí získat stejný zámek _před uvolněním_ vlákna.
 
 ### <a name="loading-code-cold"></a><a id="ngencold"></a>Načítání kódu ([STUDENá])
 
@@ -79,11 +78,11 @@ Metody jako **HttpClient. Send** označují, že kód čeká na dokončení pož
 
 ### <a name="database-operation"></a><a id="sqlcommand"></a>Databázová operace
 
-Metody jako **SqlCommand. Execute** označují, že kód čeká na dokončení operace databáze.
+Metody jako **SqlCommand.Exeroztomilá** označují, že kód čeká na dokončení operace databáze.
 
-### <a name="waiting-await_time"></a><a id="await"></a>Čekání (\_čas čekání)
+### <a name="waiting-await_time"></a><a id="await"></a>Čekání ( \_ čas čekání)
 
-Čas čekání znamená, že kód čeká na dokončení jiné úlohy. **\_** K tomuto zpoždění obvykle dochází v příkazu C# **AWAIT** . V případě, že kód v jazyce C# **očekává**, vlákno odvíjí a vrátí řízení fondu vláken a neexistuje žádné vlákno, které je blokováno pro **dokončení čekání.** Logicky ale vlákno, které **čekalo** , je "blokované" a čeká na dokončení operace. Příkaz **AWAIT\_Time** označuje čas zablokování, který čeká na dokončení úlohy.
+**Očekává \_ se ČAS** znamená, že kód čeká na dokončení jiné úlohy. K tomuto zpoždění obvykle dochází v příkazu C# **AWAIT** . V případě, že kód v jazyce C# **očekává**, vlákno odvíjí a vrátí řízení fondu vláken a neexistuje žádné vlákno, které je blokováno pro **dokončení čekání.** Logicky ale vlákno, které **čekalo** , je "blokované" a čeká na dokončení operace. Příkaz **AWAIT \_ Time** označuje čas zablokování, který čeká na dokončení úlohy.
 
 ### <a name="blocked-time"></a><a id="block"></a>Čas zablokování
 

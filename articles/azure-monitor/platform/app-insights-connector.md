@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665149"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
@@ -42,12 +41,12 @@ Při použití řešení můžete:
 
 Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďována data pro Application Insights Connector agenti. Všechna data, která řešení používá, přichází přímo z Azure.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporuje se | Description |
 | --- | --- | --- |
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Řešení neshromažďuje informace od agentů systému Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace od agentů systému Linux. |
-| [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ne | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
-| [Účet služby Azure Storage](collect-azure-metrics-logs.md) | Ne | Řešení neumožňuje shromažďování informací z Azure Storage. |
+| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | No | Řešení neshromažďuje informace od agentů systému Windows. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace od agentů systému Linux. |
+| [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | No | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
+| [Účet úložiště Azure](collect-azure-metrics-logs.md) | No | Řešení neumožňuje shromažďování informací z Azure Storage. |
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -190,7 +189,7 @@ Záznam s *typem* *ApplicationInsights* se vytvoří pro každý typ vstupních 
 | Město | Město nebo města, kde pochází požadavek |
 | Syntetické | Určuje, zda byla žádost vytvořena uživatelem nebo automatizovanou metodou. True = automatizovaná metoda nebo false = generovaná uživatelem |
 | SamplingRate | Procento telemetrie vygenerované sadou SDK, která je odeslána na portál. Rozsah 0,0 – 100,0. |
-| SampledCount | 100/(SamplingRate). Například 4 =&gt; 25% |
+| SampledCount | 100/(SamplingRate). Například 4 = &gt; 25% |
 | Ověřování typu | True nebo false |
 | OperationID | Položky, které mají stejné ID operace, se zobrazují jako související položky na portálu. Obvykle ID žádosti |
 | ParentOperationID | ID nadřazené operace |
@@ -207,11 +206,11 @@ Záznam s *typem* *ApplicationInsights* se vytvoří pro každý typ vstupních 
 | AvailabilityRunLocation | Geografický zdroj požadavku HTTP |
 | AvailabilityResult | Indikuje výsledek úspěšnosti webového testu. |
 | AvailabilityMessage | Zpráva připojená k webovému testu |
-| AvailabilityCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
+| AvailabilityCount | 100/(vzorkovací frekvence). Například 4 = &gt; 25% |
 | DataSizeMetricValue | 1,0 nebo 0,0 |
-| DataSizeMetricCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
+| DataSizeMetricCount | 100/(vzorkovací frekvence). Například 4 = &gt; 25% |
 | AvailabilityDuration | Doba trvání webového testu v milisekundách |
-| AvailabilityDurationCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
+| AvailabilityDurationCount | 100/(vzorkovací frekvence). Například 4 = &gt; 25% |
 | AvailabilityValue |   |
 | AvailabilityMetricCount |   |
 | AvailabilityTestId | Jedinečný identifikátor GUID pro webový test |
@@ -233,7 +232,7 @@ Záznam s *typem* *ApplicationInsights* se vytvoří pro každý typ vstupních 
 | ExceptionAssembly | Sestavení zahrnuje architekturu a verzi a token veřejného klíče. |
 | Výjimka | Typ výjimky |
 | ExceptionHandledAt | Označuje úroveň, která zpracovává výjimku. |
-| ExceptionCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
+| ExceptionCount | 100/(vzorkovací frekvence). Například 4 = &gt; 25% |
 | ExceptionMessage | Zpráva o výjimce |
 | ExceptionStack | Úplný zásobník výjimky |
 | ExceptionHasStack | True, pokud má výjimka zásobník |
@@ -245,18 +244,18 @@ Záznam s *typem* *ApplicationInsights* se vytvoří pro každý typ vstupních 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ | ApplicationInsights |
-| TelemetryType | Request |
+| TelemetryType | Žádost |
 | ResponseCode | Odpověď HTTP se odeslala klientovi. |
 | RequestSuccess | Označuje úspěch nebo neúspěch. True nebo false |
 | ID požadavku | ID pro jednoznačnou identifikaci žádosti |
 | Žádost o zadání | Základ pro GET/POST + URL |
 | RequestDuration | Doba trvání žádosti v sekundách |
-| zprostředkovatele identity | Adresa URL požadavku, který nezahrnuje hostitele |
+| URL | Adresa URL požadavku, který nezahrnuje hostitele |
 | Hostitel | Hostitel webového serveru |
 | URLBase | Úplná adresa URL požadavku |
 | ApplicationProtocol | Typ protokolu používaného aplikací |
-| RequestCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
-| RequestDurationCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
+| RequestCount | 100/(vzorkovací frekvence). Například 4 = &gt; 25% |
+| RequestDurationCount | 100/(vzorkovací frekvence). Například 4 = &gt; 25% |
 | RequestDurationMin | U ukázkových záznamů v tomto poli se zobrazuje minimální doba trvání požadavku (milisekundy) pro reprezentované datové body. |
 | RequestDurationMax | U ukázkových záznamů v tomto poli se zobrazuje maximální doba trvání požadavku (milisekundy) pro reprezentované datové body. |
 | RequestDurationStdDev | U ukázkových záznamů v tomto poli se zobrazuje směrodatná odchylka mezi všemi dobami trvání žádosti (milisekundy) pro reprezentované datové body. |

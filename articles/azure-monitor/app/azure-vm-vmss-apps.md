@@ -4,10 +4,9 @@ description: Sledování výkonu aplikací pro virtuální počítače Azure a A
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661324"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
@@ -32,7 +31,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro virtuální po�
 
     * Agent Application Insights automaticky shromažďuje stejné signály závislostí jako sadu .NET SDK. Další informace najdete v tématu [Automatická kolekce závislostí](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) .
         > [!NOTE]
-        > V současné době jsou podporovány pouze aplikace hostované v rozhraní .NET IIS. Použijte SDK pro instrumentaci aplikací ASP.NET Core, Java a Node. js hostovaných na virtuálních počítačích Azure a ve službě Virtual Machine Scale Sets.
+        > V současné době jsou podporovány pouze aplikace hostované v rozhraní .NET IIS. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET Core, Java a Node.js hostované na virtuálních počítačích Azure a ve službě Virtual Machine Scale Sets.
 
 * Pomocí sady SDK **založené na kódu**
 
@@ -168,7 +167,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 Přečtěte si tipy pro řešení potíží pro rozšíření Application Insights Monitoring Agent pro aplikace .NET běžící na virtuálních počítačích Azure a službě Virtual Machine Scale Sets.
 
 > [!NOTE]
-> Aplikace .NET Core, Java a Node. js jsou podporované jenom na virtuálních počítačích Azure a Azure Virtual Machine Scale Sets prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
+> Aplikace .NET Core, Java a Node.js se podporují jenom na virtuálních počítačích Azure a Azure Virtual Machine Scale Sets prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
 
 Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujících adresářích:
 ```Windows
