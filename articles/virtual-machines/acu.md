@@ -10,10 +10,9 @@ ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
 ms.openlocfilehash: 74c0f5be7998450b0fb868ff4969e412fdaa4788
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414466"
 ---
 # <a name="azure-compute-unit-acu"></a>Výpočetní jednotka Azure (ACU)
@@ -68,7 +67,7 @@ Vlákny s technologií Hyper a schopné spustit vnořenou virtualizaci
 | [HC](hc-series.md) |297 – 315 * | 1:1 |
 | [L4S úrovně – L32s úrovně](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 – L80s_v2](lsv2-series.md) |150 – 175 * * | 2:1 |
-| [4m](m-series.md) | 160 – 180 | 2:1\*\*\* |
+| [M](m-series.md) | 160 – 180 | 2:1\*\*\* |
 
 Tady jsou odkazy na Další informace o různých velikostech:
 

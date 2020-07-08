@@ -8,16 +8,15 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ffc8e1919350c9a14cb53bd243af66fdfa839d04
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
-ms.translationtype: MT
+ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373450"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957575"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
-Spravovaná služba nabízí podporu pro [Lighthouse scénáře Azure](../../lighthouse/overview.md) . Když zákazník přijme nabídku spravované služby, může se připojit k prostředkům pro [správu delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md). Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
+Spravovaná služba nabízí podporu pro [Lighthouse scénáře Azure](../../lighthouse/overview.md) . Když zákazník přijme nabídku spravované služby, může se připojit k prostředkům pro [správu delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md). Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 Abyste mohli publikovat nabídku spravované služby, musíte mít [úroveň kompetence cloudové platformy stříbrné nebo Gold](https://partner.microsoft.com/membership/cloud-platform-competency) nebo být [odborníkem na službu Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .
 
@@ -162,7 +161,7 @@ Volitelně můžete přidat až pět videí, která předvádí vaši nabídku. 
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
-- [Osvědčené postupy pro výpisy nabídky na webu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Osvědčené postupy pro výpisy nabídky na webu Marketplace](../gtm-offer-listing-best-practices.md)
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 

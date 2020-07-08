@@ -7,18 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aac3f87c642559b0dfa13c38da448e425df3ffa2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684606"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957796"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak získat Doporučené informace v AppSource a Azure Marketplace
 
 Azure Marketplace a AppSource obsahují oddíly s **vybranými aplikacemi** , kde můžete mít vybranou aplikaci:
 
-* Za prvé, pokud máte nabídku zkušební verze nebo transakce, můžete využít výhody "propagace kategorií" prostřednictvím [výhod komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+* Za prvé, pokud máte nabídku zkušební verze nebo transakce, můžete využít výhody "propagace kategorií" prostřednictvím [výhod komerčního tržiště](gtm-your-marketplace-benefits.md).
 * Potom si přečtěte seznam osvědčených postupů a kritérií níže, abyste mohli získat na místě.
 
 Algoritmus výběru vybrané aplikace vygeneruje skóre pro aplikaci od Microsoftu, stejně jako platební skóre osoby v USA.  Týdenní výběr doporučených aplikací bude založen na výpočtu výkonu aplikace a služby.
@@ -31,7 +30,7 @@ Ke zlepšení skóre můžete použít následující akce:
 2. *Azure Marketplace aplikace: Rozšiřte využití Azure za měsíc měsíčně.* Pokud můžete dosáhnout 1 000 hodin využití Azure v měsíci, bude se vám značně zvyšovat pravděpodobnost, že se vám bude podařit.
 3. *Aplikace AppSource: Zvyšte akvizice, které připravujeme na vaši nabídku.* Pokud máte možnost dosáhnout 10 akvizic za měsíc, budete značně zvyšovat pravděpodobnost, že se vám bude vymezit. 
 4. *Dosažení stavu připraveného pro společný prodej*: splnění požadavků pro spoluprodejní přípravu.
-5. *Zlepšení kvality vaší nabídky*: informace o tom, jak upravit nabídku, najdete v [pokynech pro výpis obsahu](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) .
+5. *Zlepšení kvality vaší nabídky*: informace o tom, jak upravit nabídku, najdete v [pokynech pro výpis obsahu](marketplace-criteria-content-validation.md) .
 6. Publikujete několik nabídek na webu Marketplace: jsou uvedené všechny vaše základní aplikace a služby? Máte zkušební prostředí?
 7. Doporučte zákazníkům psát recenze.
 
@@ -44,7 +43,7 @@ Vaše podpora GTM také obsahuje úplnou knihovnu šablon samoobslužných pomoc
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [výhodách komerčního tržiště](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+Přečtěte si další informace o [výhodách komerčního tržiště](gtm-your-marketplace-benefits.md).
 
 Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) , abyste mohli vytvořit a nakonfigurovat vaši nabídku.
 

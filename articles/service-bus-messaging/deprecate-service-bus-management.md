@@ -4,10 +4,9 @@ description: Tento článek popisuje mapování zastaralých rutin služby Azure
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7ef744a3a35888be9d72addca61ef389f2cf97cc
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340763"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Vyřazení podpory Azure Service Manager pro Azure Service Bus, předávání a Event Hubs

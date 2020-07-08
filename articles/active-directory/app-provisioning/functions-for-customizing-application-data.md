@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.openlocfilehash: 47f0502226e4227c6b94920da6f040004beb41f1
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781663"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Postupy: zápis výrazů pro mapování atributů v Azure AD
@@ -71,7 +70,7 @@ Jinými slovy, vrátí 0 ve všech případech s výjimkou toho, že odpovídaj�
 | **Hodnota1** |Vyžadováno |num |Číselná hodnota, která by měla být AND'ed s hodnota2|
 | **Argument** |Vyžadováno |num |Číselná hodnota, která má být AND'ed s hodnota1|
 
-**Případě**<br>
+**Příklad:**<br>
 BitAnd (&HF, &HF7)                                                                                
 11110111 a 00000111 = 00000111, takže BitAnd vrátí hodnotu 7, binární hodnota 00000111
 
@@ -87,7 +86,7 @@ BitAnd (&HF, &HF7)
 | --- | --- | --- | --- |
 | **vyjádření** |Vyžadováno | expression | Libovolný platný výraz |
 
-**Případě**<br>
+**Příklad:**<br>
 CBool ([attribute1] = [attribute2])                                                                    
 Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 
@@ -116,7 +115,7 @@ Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Řetězec, který má být převeden na základní 64|
 
-**Případě**<br>
+**Příklad:**<br>
 ConvertToBase64 ("Hello World!")                                                                                                        
 Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
@@ -132,7 +131,7 @@ Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 | --- | --- | --- | --- |
 | **Zdrojová** |Vyžadováno |Řetězec |Řetězec, který se má převést na UTF8 hex|
 
-**Případě**<br>
+**Příklad:**<br>
 ConvertToUTF8Hex ("Hello World!")                                                                                                         
 Vrátí 48656C6C6F20776F726C6421
 
@@ -160,7 +159,7 @@ Vrátí 48656C6C6F20776F726C6421
 | --- | --- | --- | --- |
 | **osa** |Vyžadováno | Číselná, referenční nebo logická hodnota | Může to být číselná hodnota, odkazový atribut nebo logická hodnota. |
 
-**Případě**<br>
+**Příklad:**<br>
 CStr ([DN])                                                            
 Vrátí "CN = Jan, DC = contoso, DC = com"
 
@@ -176,7 +175,7 @@ Vrátí "CN = Jan, DC = contoso, DC = com"
 | --- | --- | --- | --- |
 | **osa** |Vyžadováno | Datum | Datum reklamy, které má být převedeno na typ DateTime |
 
-**Případě**<br>
+**Příklad:**<br>
 DateFromNum([lastLogonTimestamp])                                                                                                   
 DateFromNum(129699324000000000)                                                            
 Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
@@ -215,7 +214,7 @@ Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
 | **valueIfTrue** |Vyžadováno |Proměnná nebo řetězec | Pokud je podmínka vyhodnocena jako true, vrácená hodnota. |
 | **valueIfFalse** |Vyžadováno |Proměnná nebo řetězec |Pokud je podmínka vyhodnocena jako false, vrácená hodnota.|
 
-**Případě**<br>
+**Příklad:**<br>
 IIF ([Country] = "USA"; [Country]; [Department])
 
 ---
@@ -233,7 +232,7 @@ IIF ([Country] = "USA"; [Country]; [Department])
 | **Čína** |Volitelné |Integer |Počáteční pozice pro vyhledání podřetězce|
 | **compareType** |Volitelné |Výčet |Může být vbTextCompare nebo vbBinaryCompare |
 
-**Případě**<br>
+**Příklad:**<br>
 InStr ("Rychlá hnědá Fox", "Rychlá")                                                                             
 Evalues na 5
 
@@ -252,7 +251,7 @@ Vyhodnotí na 7
 | --- | --- | --- | --- |
 | **vyjádření** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
-**Případě**<br>
+**Příklad:**<br>
 IsNull ([DisplayName])                                                                                                
 Vrátí hodnotu true, pokud atribut není přítomen.
 
@@ -269,7 +268,7 @@ Inverzní část této funkce je pojmenována jako.
 | --- | --- | --- | --- |
 | **vyjádření** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
-**Případě**<br>
+**Příklad:**<br>
 IsNullOrEmpty ([DisplayName])                                               
 Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetězec.
 
@@ -285,7 +284,7 @@ Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetěze
 | --- | --- | --- | --- |
 | **vyjádření** |Vyžadováno |expression |Výraz, který se má vyhodnotit |
 
-**Případě**<br>
+**Příklad:**<br>
 Switch (přítomen ([directManager]); [directManager]; ([skiplevelManager]); [skiplevelManager]; ([režisér]); [Director])
 
 ---
@@ -313,7 +312,7 @@ Switch (přítomen ([directManager]); [directManager]; ([skiplevelManager]); [sk
 | **přidělen** |Vyžadováno |Atribut |Vícehodnotový atribut, který má být prohledán |
 | **indexovacím** |Vyžadováno |Integer | Index položky v řetězci s více hodnotami|
 
-**Případě**<br>
+**Příklad:**<br>
 Item ([proxyAddresses]; 1)
 
 ---
@@ -347,7 +346,7 @@ Pokud řetězec obsahuje méně znaků než číslo zadané v numChars, vrátí 
 | **Řetězec** |Vyžadováno |Atribut | Řetězec, ze kterého se mají vracet znaky |
 | **NumChars** |Vyžadováno |Integer | Číslo určující počet znaků, které mají být vráceny od začátku (vlevo) řetězce|
 
-**Případě**<br>
+**Příklad:**<br>
 Vlevo ("Jan Novák"; 3)                                                            
 Vrátí "Joh"
 
@@ -401,7 +400,7 @@ Vrátí "Joh"
 | --- | --- | --- | --- |
 | **osa** |Vyžadováno | Řetězec | Řetězec data a času v podporovaném formátu. Podporované formáty naleznete v tématu https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx . |
 
-**Případě**<br>
+**Příklad:**<br>
 * Příklad pracovního dne <br>
   Za předpokladu, že chcete mapovat atribut *ContractEndDate* z Workday, který je ve formátu *2020-12-31-08:00* až *accountExpires* pole ve službě AD, zde je postup, jak můžete tuto funkci použít a změnit posun časového pásma tak, aby odpovídal vašemu národnímu prostředí. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
@@ -423,7 +422,7 @@ Vrátí "Joh"
 | --- | --- | --- | --- |
 | **přidělen** |Vyžadováno |Vícehodnotový atribut |Vícehodnotový atribut, který bude mít odebrané duplicity|
 
-**Případě**<br>
+**Příklad:**<br>
 RemoveDuplicates – ([proxyAddresses])                                                                                                       
 Vrátí upravený atribut proxyAddress, ve kterém se odebraly všechny duplicitní hodnoty.
 
@@ -579,7 +578,7 @@ Pokud řetězec obsahuje méně než čísla slov nebo řetězec neobsahuje žá
 | **WordNumber** |Vyžadováno | Integer | Číslo určující, které číslo slova se má vrátit|
 | **oddělovače** |Vyžadováno |Řetězec| Řetězec představující oddělovače, které se mají použít k identifikaci slov|
 
-**Případě**<br>
+**Příklad:**<br>
 Word ("Rychlá hnědá Fox", 3, "")                                                                                       
 Vrátí "Brown"
 

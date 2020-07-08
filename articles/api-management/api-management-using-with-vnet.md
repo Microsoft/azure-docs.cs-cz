@@ -14,10 +14,9 @@ ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
 ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84674274"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
@@ -203,7 +202,7 @@ Každá další jednotka API Management škálování vyžaduje dvě další IP 
 
 IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být na seznamu povolená i IP adresa specifická pro **oblast** .
 
-| **Prostředí Azure**|   **Oblast**|  **IP adresa**|
+| **Prostředí Azure**|   **Věřitel**|  **IP adresa**|
 |-----------------|-------------------------|---------------|
 | Veřejný partnerský vztah Azure| Střed USA – jih (globální)| 104.214.19.224|
 | Veřejný partnerský vztah Azure| Střed USA – sever (globální)| 52.162.110.80|

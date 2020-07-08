@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: fb2031072ce93fcacdf52f8f0fad68f836049b22
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 1267225f6b8557efc7ce36a973daef0a46aaba2d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560909"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957983"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -22,11 +21,11 @@ Konzultační nabídky služeb jsou zapojení specifické pro zákazníky. Vydav
 
 ## <a name="compare-consulting-services"></a>Porovnání konzultačních služeb
 
-Komerční tržiště prodejní místa, Microsoft AppSource a Azure Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi těmito dvěma prodejní místa naleznete v tématu [porovnání Microsoft AppSource a Azure Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+Komerční tržiště prodejní místa, Microsoft AppSource a Azure Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi těmito dvěma prodejní místa naleznete v tématu [porovnání Microsoft AppSource a Azure Marketplace](comparing-appsource-azure-marketplace.md).
 
 Nabídky konzultačních služeb, které jsou založené na Dynamics 365, Power Apps a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v souboru PDF s [pokyny pro Microsoft AppSource konzultační služby](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) .
 
-Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v tématech [publikování konzultační služby Azure](./partner-center-portal/create-consulting-service-offer.md) a [publikování nabídky spravované služby na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
+Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v tématech [publikování konzultační služby Azure](./partner-center-portal/create-consulting-service-offer.md) a [publikování nabídky spravované služby na Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md).
 
 > [!Note]
 > Konzultační služby v Azure Marketplace by se měly zaměřit na nabídky pro technickou cílovou skupinu a zdůraznit technická řešení a služby Azure.
@@ -72,7 +71,7 @@ Další informace o kompetencích najdete na stránce [Microsoft Partner Network
 
 Partneři se systémovým integrátorem mohou odesílat konzultační nabídky na následujících 20 zemí nebo oblastí:
 
-|   |   |   |   |
+| Země  | (pokračuje...)   | (pokračuje...)  | (pokračuje...)  |
 |---------|----------|----------|----------|
 | Austrálie | Belgie | Kanada | Dánsko |
 | Finsko  | Francie | Německo  | Indie   |
@@ -83,7 +82,7 @@ Partneři se systémovým integrátorem mohou odesílat konzultační nabídky n
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Zaregistrujte se na konzultační služby na komerčním webu Marketplace.
 
-Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) firemní informace na webu Marketplace. Úplný kontrolní seznam požadavků na registraci najdete v tématu [se stala vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher). 
+Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) firemní informace na webu Marketplace. Úplný kontrolní seznam požadavků na registraci najdete v tématu [se stala vydavatelem na webu Marketplace](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava publikovaných artefaktů
 Před registrací můžete začít shromažďovat a připravovat obsah, který vám pomůže vašemu seznamu vyjadřují hodnotu vaší služby a řešení cílovému zákazníkovi. 

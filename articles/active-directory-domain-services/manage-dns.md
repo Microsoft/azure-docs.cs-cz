@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7841db3138af2f8cb1efc03508b9e7c0bdb71324
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: b48fb62532402338fdf53cd6f9b15bac812c3c2c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734635"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040210"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Správa DNS a vytvoření podmíněného předávaného serveru ve Azure Active Directory Domain Services spravované doméně
 
@@ -23,7 +22,7 @@ V Azure Active Directory Domain Services (Azure služba AD DS) je klíčovou sou
 
 Při spouštění vlastních aplikací a služeb možná budete muset vytvořit záznamy DNS pro počítače, které nejsou připojené k doméně, nakonfigurovat virtuální IP adresy pro nástroje pro vyrovnávání zatížení nebo nastavit externí servery DNS pro přeposílání. Uživatelům patřícím do skupiny *správci řadiče domény AAD* se udělují oprávnění ke správě DNS ve spravované doméně Azure služba AD DS a můžou vytvářet a upravovat vlastní záznamy DNS.
 
-V hybridním prostředí se v Azure služba AD DS nesynchronizují zóny DNS a záznamy nakonfigurované v jiných oborech názvů DNS, například v místním prostředí služba AD DS. Pokud chcete vyřešit pojmenované prostředky v jiných oborech názvů DNS, vytvořte a používejte podmíněné servery pro přeposílání, které odkazují na existující servery DNS ve vašem prostředí.
+V hybridním prostředí se do spravované domény nesynchronizují zóny DNS a záznamy nakonfigurované v jiných oborech názvů DNS, například v místním prostředí služba AD DS. Pokud chcete vyřešit pojmenované prostředky v jiných oborech názvů DNS, vytvořte a používejte podmíněné servery pro přeposílání, které odkazují na existující servery DNS ve vašem prostředí.
 
 V tomto článku se dozvíte, jak nainstalovat nástroje serveru DNS a pak pomocí konzoly DNS spravovat záznamy a vytvářet v Azure služba AD DS podmíněné servery pro směrování.
 
@@ -45,7 +44,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 ## <a name="install-dns-server-tools"></a>Instalace nástrojů serveru DNS
 
-Pokud chcete vytvářet a upravovat záznamy DNS v Azure služba AD DS, musíte nainstalovat nástroje serveru DNS. Tyto nástroje je možné nainstalovat jako funkci Windows serveru. Další informace o tom, jak nainstalovat nástroje pro správu na klienta Windows, najdete v tématu Install [Nástroje pro vzdálenou správu serveru (RSAT)][install-rsat].
+Chcete-li vytvářet a upravovat záznamy DNS ve spravované doméně, je nutné nainstalovat nástroje serveru DNS. Tyto nástroje je možné nainstalovat jako funkci Windows serveru. Další informace o tom, jak nainstalovat nástroje pro správu na klienta Windows, najdete v tématu Install [Nástroje pro vzdálenou správu serveru (RSAT)][install-rsat].
 
 1. Přihlaste se ke svému VIRTUÁLNÍmu počítači pro správu. Postup, jak se připojit pomocí Azure Portal, najdete v tématu [připojení k virtuálnímu počítači s Windows serverem][connect-windows-server-vm].
 1. Pokud se při přihlášení k virtuálnímu počítači ve výchozím nastavení **Správce serveru** neotevře, vyberte nabídku **Start** a pak zvolte **Správce serveru**.
@@ -58,7 +57,7 @@ Pokud chcete vytvářet a upravovat záznamy DNS v Azure služba AD DS, musíte 
 
     ![Vyberte instalaci nástrojů serveru DNS ze seznamu dostupných nástrojů pro správu rolí.](./media/manage-dns/install-dns-tools.png)
 
-1. Na stránce **potvrzení** vyberte **nainstalovat**. Instalace nástrojů pro správu zásad dnsGroup může trvat minutu nebo dvě.
+1. Na stránce **potvrzení** vyberte **nainstalovat**. Instalace nástrojů serveru DNS může trvat minutu nebo dvě.
 1. Po dokončení instalace funkce vyberte **Zavřít** a ukončete průvodce **přidáním rolí a funkcí** .
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>Otevřete konzolu pro správu DNS pro správu DNS.
@@ -82,7 +81,7 @@ S nainstalovanými nástroji serveru DNS můžete spravovat záznamy DNS ve spra
 
 ## <a name="create-conditional-forwarders"></a>Vytváření služeb pro podmíněné dopředné
 
-Zóna DNS v Azure služba AD DS by měla obsahovat jenom zónu a záznamy pro samotnou spravovanou doménu. V Azure služba AD DS nevytvářejte další zóny pro řešení pojmenovaných prostředků v jiných oborech názvů DNS. Místo toho ve spravované doméně použijte podmíněné servery pro předání a sdělte tak serveru DNS, na který se má přejít, aby se daly přeložit adresy pro tyto prostředky.
+Zóna DNS v Azure služba AD DS by měla obsahovat jenom zónu a záznamy pro samotnou spravovanou doménu. V spravované doméně nevytvářejte další zóny, aby se vyřešily pojmenované prostředky v jiných oborech názvů DNS. Místo toho ve spravované doméně použijte podmíněné servery pro předání a sdělte tak serveru DNS, na který se má přejít, aby se daly přeložit adresy pro tyto prostředky.
 
 Podmíněný Server pro dodávání je možnost konfigurace serveru DNS, která umožňuje definovat doménu DNS, například *contoso.com*, pro přeposílání dotazů na. Místo místního serveru DNS se při pokusu o překlad dotazů na záznamy v této doméně předají dotazy DNS na konfigurovanou službu DNS pro tuto doménu. Tato konfigurace zajistí, že se vrátí správné záznamy DNS, protože nevytvoříte místní zónu DNS s duplicitními záznamy ve spravované doméně, aby odrážely tyto prostředky.
 

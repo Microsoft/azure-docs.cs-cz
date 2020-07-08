@@ -4,10 +4,9 @@ description: Přehled Service Bus diagnostiky klientů a komplexní trasování 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340723"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím Service Bus zasílání zpráv
@@ -20,7 +19,7 @@ Když producent pošle zprávu přes frontu, obvykle se děje v rozsahu někter�
 Microsoft Azure Service Bus zasílání zpráv má definované vlastnosti datové části, které by producenti a spotřebitelé měli použít k předání takového kontextu trasování.
 Protokol je založený na [protokolu korelace http](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Název vlastnosti        | Popis                                                 |
+| Název vlastnosti        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  ID diagnostiky       | Jedinečný identifikátor externího volání od producenta do fronty. Odůvodnění, požadavky a formát najdete [v protokolu HTTP pro žádosti o ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Korelace – kontext | Kontext operace, který je šířený napříč všemi službami zapojenými do zpracování operací. Další informace najdete v tématu [korelace – kontext v protokolu HTTP](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) . |
