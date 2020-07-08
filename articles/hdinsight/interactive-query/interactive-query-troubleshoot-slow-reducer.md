@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 8a9c7ed9f6b5b8ec89bfca6dd59034b11f05f9a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895168"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>Scénář: v Azure HDInsight je zpomalení pomalé
@@ -24,11 +23,11 @@ Při spuštění dotazu, jako `insert into table1 partition(a,b) select a,b,c fr
 
 ## <a name="cause"></a>Příčina
 
-Otevřete [Beeline](../hadoop/apache-hadoop-use-hive-beeline.md) a ověřte hodnotu Set `hive.optimize.sort.dynamic.partition`.
+Otevřete [Beeline](../hadoop/apache-hadoop-use-hive-beeline.md) a ověřte hodnotu Set `hive.optimize.sort.dynamic.partition` .
 
 Hodnota této proměnné má být nastavena na hodnotu true nebo false na základě povaze dat.
 
-Pokud jsou oddíly ve vstupní tabulce menší (tzn. méně než 10), a proto je počet výstupních oddílů a proměnná je nastavená na `true`, způsobí to, že se data globálně seřadí a napíší pomocí jednoho zmenšení na oddíl. I v případě, že počet dostupných reduktorů je větší, může být několik reduktorů zpožděných na začátku z důvodu zešikmení dat a maximální paralelismus nelze dosáhnout. Při změně na `false`je možné zpracovat více než jedno zmenšení jednoho oddílu a zapíše se více menších souborů, což bude mít za následek rychlejší vložení. To může mít vliv na další dotazy, i když z důvodu přítomnosti menších souborů.
+Pokud jsou oddíly ve vstupní tabulce menší (tzn. méně než 10), a proto je počet výstupních oddílů a proměnná je nastavená na `true` , způsobí to, že se data globálně seřadí a napíší pomocí jednoho zmenšení na oddíl. I v případě, že počet dostupných reduktorů je větší, může být několik reduktorů zpožděných na začátku z důvodu zešikmení dat a maximální paralelismus nelze dosáhnout. Při změně na `false` je možné zpracovat více než jedno zmenšení jednoho oddílu a zapíše se více menších souborů, což bude mít za následek rychlejší vložení. To může mít vliv na další dotazy, i když z důvodu přítomnosti menších souborů.
 
 Hodnota `true` dává smysl, pokud je počet oddílů větší a data nejsou zkosená. V takových případech se výsledek fáze mapy zapíše tak, že každý oddíl bude zpracován jedním snížením, což vedlo k lepšímu výkonu dotazů.
 
@@ -44,6 +43,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

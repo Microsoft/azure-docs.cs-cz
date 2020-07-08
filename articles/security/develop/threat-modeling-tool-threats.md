@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727828"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool hrozby
@@ -38,7 +37,7 @@ Threat Modeling Tool vám pomůže odpovědět na některé otázky, jako jsou t
 
 K lepšímu seřazení těchto druhů podaných otázek Microsoft používá model pro rozteč, který kategorizuje různé typy hrozeb a zjednodušuje celkové bezpečnostní hovory.
 
-| Kategorie | Popis |
+| Kategorie | Description |
 | -------- | ----------- |
 | **Falšování identity** | Zahrnuje neoprávněný přístup a následné použití ověřovacích informací jiného uživatele, jako je uživatelské jméno a heslo. |
 | **Falšování** | Zahrnuje škodlivou úpravu dat. Mezi příklady patří neoprávněné změny provedené u trvalých dat, jako je třeba ta, která se uchovávají v databázi, a změna dat při jejich toku mezi dvěma počítači přes otevřenou síť, jako je například Internet. |

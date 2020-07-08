@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887321"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Scénář: `hbase hbck` příkaz vrátí nekonzistence ve službě Azure HDInsight.
@@ -43,7 +42,7 @@ Se liší.
 
 ## <a name="issue-region-is-offline"></a>Problém: oblast je offline.
 
-Oblast XXX není nasazená na žádném RegionServer. To znamená, že oblast je `hbase:meta`v, ale je v režimu offline.
+Oblast XXX není nasazená na žádném RegionServer. To znamená, že oblast je v `hbase:meta` , ale je v režimu offline.
 
 ### <a name="cause"></a>Příčina
 
@@ -67,7 +66,7 @@ Se liší.
 
 ### <a name="resolution"></a>Řešení
 
-Ručně sloučí tyto překryté oblasti. V části přejít na HMaster web UI tabulka webové uživatelské rozhraní vyberte odkaz tabulka, který má problém. Zobrazí se počáteční klíč/koncový klíč každé oblasti patřící do této tabulky. Pak tyto překryté oblasti slučte. V prostředí HBA Shell `merge_region 'xxxxxxxx','yyyyyyy', true`. Příklad:
+Ručně sloučí tyto překryté oblasti. V části přejít na HMaster web UI tabulka webové uživatelské rozhraní vyberte odkaz tabulka, který má problém. Zobrazí se počáteční klíč/koncový klíč každé oblasti patřící do této tabulky. Pak tyto překryté oblasti slučte. V prostředí HBA Shell `merge_region 'xxxxxxxx','yyyyyyy', true` . Příklad:
 
 ```
 RegionA, startkey:001, endkey:010,
@@ -83,7 +82,7 @@ V tomto scénáři je potřeba sloučit oblast a RegionC a získat v oblasti ste
 
 ## <a name="issue-cant-load-regioninfo"></a>Problém: nejde načíst.`.regioninfo`
 
-Nelze načíst `.regioninfo` pro oblast `/hbase/data/default/tablex/regiony`.
+Nelze načíst `.regioninfo` pro oblast `/hbase/data/default/tablex/regiony` .
 
 ### <a name="cause"></a>Příčina
 
@@ -107,6 +106,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

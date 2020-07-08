@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
 ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75966053"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Pokyny pro zotavení po havárii pro data v Azure Data Lake Storage Gen1

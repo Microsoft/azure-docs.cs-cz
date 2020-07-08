@@ -12,17 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75966073"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: vytvoření prvního kanálu pro transformaci dat pomocí clusteru Hadoop
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Prostředí](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Šablona Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
@@ -81,7 +80,7 @@ Je nutné, abyste před zahájením tohoto kurzu splňovali následující poža
 
 1. **Předplatné Azure** – Pokud nemáte předplatné Azure, můžete si během několika minut vytvořit bezplatný zkušební účet. Postup při vytváření bezplatného zkušebního účtu najdete v článku [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 2. **Úložiště Azure** – Pro ukládání dat v rámci tohoto kurzu budete používat účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md). Po vytvoření účtu úložiště si poznamenejte **název účtu** a **přístupový klíč**. Informace o tom, jak načíst přístupové klíče účtu úložiště, najdete v tématu [Správa přístupových](../../storage/common/storage-account-keys-manage.md)klíčů účtu úložiště.
-3. Stáhněte a zkontrolujte soubor dotazu na podregistr (**HQL**) umístěný v umístění [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql):. Tento dotaz transformuje vstupní data a vytváří výstupní data.
+3. Stáhněte a zkontrolujte soubor dotazu na podregistr (**HQL**) umístěný v umístění: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) . Tento dotaz transformuje vstupní data a vytváří výstupní data.
 4. Stáhněte si a zkontrolujte vzorový vstupní soubor (**input. log**) umístěný v:[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Ve Blob Storage Azure vytvořte kontejner objektů BLOB s názvem **adfgetstarted** .
 6. Nahrajte soubor **partitionweblogs. HQL** do složky **Script** v kontejneru **adfgetstarted** . Používejte nástroje, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
@@ -90,7 +89,7 @@ Je nutné, abyste před zahájením tohoto kurzu splňovali následující poža
 Po dokončení požadovaných součástí vyberte jeden z následujících nástrojů nebo sad SDK a proveďte tento kurz:
 
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [Prostředí](data-factory-build-your-first-pipeline-using-powershell.md)
+- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Šablona Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 

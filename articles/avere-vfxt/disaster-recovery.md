@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75966646"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Pokyny pro zotavení po havárii pro avere vFXT pro Azure
@@ -83,7 +82,7 @@ Pomocí těchto kroků můžete vytvořit zálohu dat v jiném účtu.
 
    Poznamenejte si název a informace o spojení základní souborového (uvedené na stránce **oboru názvů** v Ovládacích panelech), abyste je mohli replikovat po opětovném přidání kontejneru po zálohování.
 
-   Základní souborového můžete odebrat pomocí ovládacího panelu clusteru. [Otevřete ovládací panel cluster](avere-vfxt-cluster-gui.md) a vyberte **Core souborového** > **Spravovat Core filers**. Najděte systém úložiště, který chcete zálohovat, a pomocí tlačítka **Odebrat** ho z clusteru odstraňte.
+   Základní souborového můžete odebrat pomocí ovládacího panelu clusteru. [Otevřete ovládací panel cluster](avere-vfxt-cluster-gui.md) a vyberte **Core souborového**  >  **Spravovat Core filers**. Najděte systém úložiště, který chcete zálohovat, a pomocí tlačítka **Odebrat** ho z clusteru odstraňte.
 
 1. Vytvořte nový prázdný kontejner úložiště objektů BLOB v jiném účtu úložiště v jiné oblasti.
 

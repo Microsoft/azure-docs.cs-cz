@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887202"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Službu Apache HBase Master (HMaster) se nepodařilo spustit ve službě Azure HDInsight.
@@ -34,7 +33,7 @@ HMaster provede základní příkaz seznamu ve složkách WAL. Pokud HMaster zob
 
 Zkontrolujte zásobník volání a pokuste se určit, která složka může způsobovat problém (například může se jednat o složku WAL nebo složku. tmp). Potom v Průzkumníku cloudu nebo pomocí příkazů HDFS zkuste najít soubor problému. Obvykle se jedná o `*-renamePending.json` soubor. ( `*-renamePending.json` Soubor je soubor deníku, který se používá k implementaci operace pro atomické přejmenování v ovladači WASB. Z důvodu chyb v této implementaci mohou být tyto soubory ponechány po selhání procesu a tak dále.) Vynutit – odstraňte tento soubor buď v Průzkumníku cloudu, nebo pomocí příkazů HDFS.
 
-V tomto umístění může být někdy také dočasný soubor s názvem něco `$$$.$$$` podobného. K zobrazení tohoto souboru je `ls` nutné použít příkaz HDFS. soubor se v Průzkumníku cloudu nezobrazuje. K odstranění tohoto souboru použijte příkaz `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`HDFS.
+V tomto umístění může být někdy také dočasný soubor s názvem něco podobného `$$$.$$$` . `ls`K zobrazení tohoto souboru je nutné použít příkaz HDFS. soubor nelze v Průzkumníkovi cloudu zobrazit. K odstranění tohoto souboru použijte příkaz HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$` .
 
 Po spuštění těchto příkazů by se měl HMaster spustit hned.
 
@@ -44,7 +43,7 @@ Po spuštění těchto příkazů by se měl HMaster spustit hned.
 
 ### <a name="issue"></a>Problém
 
-Může se zobrazit zpráva s oznámením, že `hbase: meta` tabulka není online. Spuštění `hbck` může hlásit, `hbase: meta table replicaId 0 is not found on any region.` že v protokolech HMaster se může zobrazit zpráva: `No server address listed in hbase: meta for region hbase: backup <region name>`.  
+Může se zobrazit zpráva s oznámením, že `hbase: meta` tabulka není online. Spuštění `hbck` může hlásit, že `hbase: meta table replicaId 0 is not found on any region.` v protokolech HMaster se může zobrazit zpráva: `No server address listed in hbase: meta for region hbase: backup <region name>` .  
 
 ### <a name="cause"></a>Příčina
 
@@ -75,7 +74,7 @@ HMaster nebylo možné inicializovat po restartování HBA.
 
 ### <a name="issue"></a>Problém
 
-HMaster vyprší s závažnou výjimkou podobnou této: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
+HMaster vyprší s závažnou výjimkou podobnou této: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned` .
 
 ### <a name="cause"></a>Příčina
 
@@ -83,7 +82,7 @@ K tomuto problému může dojít, pokud máte spoustu tabulek a oblastí, které
 
 ### <a name="resolution"></a>Řešení
 
-1. Z uživatelského rozhraní Apache Ambari přejdete do části **HBA** > **Konfigurace**. Do vlastního `hbase-site.xml` souboru přidejte následující nastavení:
+1. Z uživatelského rozhraní Apache Ambari přejdete do části **HBA**  >  **Konfigurace**. Do vlastního `hbase-site.xml` souboru přidejte následující nastavení:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -107,15 +106,15 @@ Uzly jsou pravidelně restartovány. V protokolech serveru oblastí se můžou z
 
 ### <a name="cause"></a>Příčina
 
-Pozastavení `regionserver` JVM GC. Pozastavení bude mít za `regionserver` následek nereagovat a nebude moct odeslat srdcový signál do HMaster v rámci časového limitu ZK relace 40s. HMaster se bude `regionserver` domnívat, že `regionserver` bude nedoručená a restartuje se.
+`regionserver`Pozastavení JVM GC. Pozastavení bude `regionserver` mít za následek nereagovat a nebude moct odeslat srdcový signál do HMaster v rámci časového limitu ZK relace 40s. HMaster se bude domnívat `regionserver` , že bude nedoručená a `regionserver` restartuje se.
 
 ### <a name="resolution"></a>Řešení
 
-Změňte časový limit relace Zookeeper, ne pouze `hbase-site` nastavení `zookeeper.session.timeout` , ale také `zoo.cfg` je `maxSessionTimeout` třeba změnit nastavení Zookeeper.
+Změňte časový limit relace Zookeeper, ne pouze `hbase-site` nastavení, `zookeeper.session.timeout` ale také `zoo.cfg` `maxSessionTimeout` je třeba změnit nastavení Zookeeper.
 
 1. Přístup k uživatelskému rozhraní Ambari, přejděte na **adaptéry HBA-> konfigurace-> nastavení**, v části časové limity změňte hodnotu časový limit relace Zookeeper.
 
-1. Přístup k uživatelskému rozhraní Ambari, přejděte na **Zookeeper-> config-> Custom** `zoo.cfg`, přidejte nebo změňte následující nastavení. Ujistěte se, že hodnota je stejná jako HBA `zookeeper.session.timeout`.
+1. Přístup k uživatelskému rozhraní Ambari, přejděte na **Zookeeper-> config-> Custom** `zoo.cfg` , přidejte nebo změňte následující nastavení. Ujistěte se, že hodnota je stejná jako HBA `zookeeper.session.timeout` .
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -147,6 +146,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

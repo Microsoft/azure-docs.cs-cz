@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: mayg
 ms.openlocfilehash: 367f29237a3f2a634f209026df47b0cbd6ffc97c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75897959"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Replikace počítačů s disky s podporou Customer-Managed Key (CMK)
@@ -33,7 +32,7 @@ V tomto příkladu je primární oblast Azure Východní Asie a sekundární obl
     - **Zdrojové předplatné**: předplatné, ke kterému patří vaše zdrojové virtuální počítače. Může to být jakékoli předplatné, které je ve stejném Azure Active Directory tenant jako trezor služby Recovery Services.
     - **Skupina prostředků**: Skupina prostředků, do které patří vaše zdrojové virtuální počítače. V dalším kroku jsou uvedené pro ochranu všechny virtuální počítače ve vybrané skupině prostředků.
 
-3. V **Virtual Machines** > **vyberte virtuální počítače**, vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
+3. V **Virtual Machines**  >  **vyberte virtuální počítače**, vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
 
 4. V **Nastavení**můžete nakonfigurovat následující nastavení cílové lokality.
 
@@ -64,7 +63,7 @@ Pomocí těchto kroků upravíte Site Recovery výchozí nastavení cíle.
 
 3. Vyberte **přizpůsobit** u možnosti šifrování úložiště a vyberte cílovou normu des pro všechny spravované klíče zákazníka (CMK). V době výběru budete také moci zjistit, ke kterému cílovému trezoru klíčů je algoritmus DES přidružen.
 
-4. Vyberte **vytvořit cílový prostředek** > **Povolit replikaci**.
+4. Vyberte **vytvořit cílový prostředek**  >  **Povolit replikaci**.
 5. Po povolení replikace virtuálních počítačů můžete u **replikovaných položek**ověřit stav virtuálních počítačů.
 
 ![Povolení replikace pro počítač s disky s povoleným CMK](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-customize-target-disk-properties.png)

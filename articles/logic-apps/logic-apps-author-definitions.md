@@ -7,13 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979393"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Vytvoření, úprava nebo rozšiřování JSON pro definice pracovních postupů aplikací logiky v Azure Logic Apps
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Vytváření, úpravy nebo rozšiřování souborů JSON pro definice pracovních postupů aplikací logiky v Azure Logic Apps
 
 Při vytváření podnikových integračních řešení pomocí automatizovaných pracovních postupů v [Azure Logic Apps](../logic-apps/logic-apps-overview.md)používají definice aplikace logiky jednoduché a deklarativní JavaScript Object Notation (JSON) spolu se [schématem WDL (Workflow Definition Language](../logic-apps/logic-apps-workflow-definition-language.md) ) pro jejich popis a ověření. Tyto formáty usnadňují čtení definic aplikace logiky a jejich pochopení bez znalosti kódu.
 Pokud chcete automatizovat vytváření a nasazování aplikací logiky, můžete do [šablon Azure Resource Manager](../azure-resource-manager/templates/overview.md)zahrnout definice aplikace logiky jako [prostředky Azure](../azure-resource-manager/management/overview.md) .
@@ -28,7 +27,7 @@ Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplik
 
 ## <a name="edit-json---azure-portal"></a>Upravit Azure Portal JSON
 
-1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure Portal</a>.
 
 2. V nabídce vlevo vyberte **všechny služby**.
 Do vyhledávacího pole Najděte "Logic Apps" a potom z výsledků vyberte svou aplikaci logiky.
@@ -46,7 +45,7 @@ V aplikaci Visual Studio můžete otevřít aplikace logiky, které byly vytvoř
 
 1. Otevřete řešení sady Visual Studio nebo projekt [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , který obsahuje vaši aplikaci logiky.
 
-2. Najděte a otevřete definici aplikace logiky, která se ve výchozím nastavení zobrazuje v [šabloně správce prostředků](../azure-resource-manager/templates/overview.md)s názvem **LogicApp. JSON**.
+2. Najděte a otevřete definici aplikace logiky, která se ve výchozím nastavení zobrazuje v [šabloně správce prostředků](../azure-resource-manager/templates/overview.md)s názvem **LogicApp.js**.
 Tuto šablonu můžete použít a přizpůsobit pro nasazení v různých prostředích.
 
 3. Otevřete místní nabídku pro definici a šablonu aplikace logiky.
@@ -127,16 +126,16 @@ Tento postup popisuje, jak tento příklad zpracovává tento řetězec a pracuj
 "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) Získejte název společnosti, abyste získali celkový počet znaků.
+1. Získejte [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) název společnosti, abyste získali celkový počet znaků.
 
-2. Chcete-li získat kratší řetězec, `5`odčítání.
+2. Chcete-li získat kratší řetězec, odčítání `5` .
 
-3. Nyní získáte [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md).
-Začněte na indexu `5`a přejít na zbytek řetězce.
+3. Nyní získáte [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) .
+Začněte na indexu `5` a přejít na zbytek řetězce.
 
 4. Převede tento podřetězec na [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) řetězec.
 
-5. Všechny [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) znaky `-` jsou `+` nyní znaky.
+5. [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)Všechny znaky jsou nyní znaky `+` `-` .
 
 6. Nakonec [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) všechny `/` znaky se `_` znaky.
 
@@ -147,7 +146,7 @@ Chcete-li získat různé výsledky na základě hodnoty vlastnosti, můžete vy
 Například tento pracovní postup definuje některé kategorie jako parametry a mapu, která se shoduje s těmito kategoriemi s konkrétní adresou URL.
 Nejprve pracovní postup získá seznam článků. Pracovní postup potom používá mapu k nalezení adresy URL, která odpovídá kategorii pro každý článek.
 
-*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) Funkce zkontroluje, jestli kategorie odpovídá známé definované kategorii.
+*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md)Funkce zkontroluje, jestli kategorie odpovídá známé definované kategorii.
 
 *   Po získání vyhovující kategorie se v příkladu položka z mapy načte pomocí hranatých závorek:`parameters[...]`
 
@@ -228,19 +227,19 @@ Tento výraz například vyhledá, jak dlouho trvá tento pracovní postup, a pr
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. Z `order` akce rozbalte `startTime`.
-2. Získá aktuální čas pomocí `utcNow()`.
+1. Z `order` Akce rozbalte `startTime` .
+2. Získá aktuální čas pomocí `utcNow()` .
 3. Odečíst jednu sekundu:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md)
 
-   Můžete použít jiné jednotky času, například `minutes` nebo. `hours`
+   Můžete použít jiné jednotky času, například `minutes` nebo `hours` .
 
 3. Nyní můžete porovnat tyto dvě hodnoty.
 
    Pokud je první hodnota menší než druhá hodnota, pak více než jedna sekunda uplynula od prvního umístění objednávky.
 
-Chcete-li formátovat data, můžete použít formátovací moduly řetězců. Například pro získání RFC1123 použijte [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md).
+Chcete-li formátovat data, můžete použít formátovací moduly řetězců. Například pro získání RFC1123 použijte [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) .
 Přečtěte si další informace o [formátování kalendářních dat](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ``` json

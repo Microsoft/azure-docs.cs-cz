@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 2b17c2488e47148e8845433f9c7613e1127fbffa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895764"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Scénář: Chyba rozhraní Apache Ambari UI 502 ve službě Azure HDInsight
@@ -32,7 +31,7 @@ Ve většině případů můžete pro zmírnění problému restartovat aktivní
 
 ### <a name="ambari-server-failed-to-start"></a>Ambari Server se nepovedlo spustit.
 
-V protokolech Ambari-Server můžete zjistit, proč se Ambari Server nepovedlo spustit. Jednou z běžných příčin je chyba kontroly konzistence databáze. Můžete to zjistit v tomto souboru protokolu: `/var/log/ambari-server/ambari-server-check-database.log`.
+V protokolech Ambari-Server můžete zjistit, proč se Ambari Server nepovedlo spustit. Jednou z běžných příčin je chyba kontroly konzistence databáze. Můžete to zjistit v tomto souboru protokolu: `/var/log/ambari-server/ambari-server-check-database.log` .
 
 Pokud jste provedli jakékoli úpravy uzlu clusteru, vraťte je prosím. Vždy používejte uživatelské rozhraní Ambari k úpravě všech konfigurací spojených s Hadoop/Spark.
 
@@ -49,7 +48,7 @@ service ambari-server start
 
 ### <a name="ambari-server-killed-by-oom-killer"></a>Server Ambari ukončil OOM-Killer
 
-V některých scénářích vaše hlavnímu uzlu vyčerpá paměť a Linux OOM-Killer začne vybírat procesy, které se mají ukončit. Tuto situaci můžete ověřit tak, že vyhledáte ID procesu AmbariServer, které by se nemělo najít. Pak se podívejte na `/var/log/syslog`své a hledejte něco podobného:
+V některých scénářích vaše hlavnímu uzlu vyčerpá paměť a Linux OOM-Killer začne vybírat procesy, které se mají ukončit. Tuto situaci můžete ověřit tak, že vyhledáte ID procesu AmbariServer, které by se nemělo najít. Pak se podívejte na své `/var/log/syslog` a hledejte něco podobného:
 
 ```
 Jul 27 15:29:30 xxx-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0
@@ -71,6 +70,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

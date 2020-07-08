@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887151"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Řešení potíží s výkonem Apache HBase ve službě Azure HDInsight
@@ -65,17 +64,17 @@ Pokud migrujete do Azure HDInsight, ujistěte se, že je migrace prováděna sys
 
 ## <a name="server-side-configuration-tunings"></a>Ladění konfigurace na straně serveru
 
-Ve službě HDInsight HBA jsou HFiles uložené ve vzdáleném úložišti. V případě neúspěšného ukládání do mezipaměti je cena čtení vyšší než u místních systémů, protože data v místních systémech jsou zajištěna místními HDFS. Pro většinu scénářů je k obcházení tohoto problému navrženo inteligentní použití mezipamětí HBA (bloková mezipaměť a mezipaměť bloků). V případech, kdy se problém nevyřeší, může tento problém pomoci při použití účtu typu blob bloku Premium. Ovladač Windows Azure Storage Blob spoléhá na určité vlastnosti, jako je `fs.azure.read.request.size` například načtení dat v blocích na základě toho, co určuje, zda má být režim čtení (sekvenční a náhodný), takže může i nadále existovat instance vyšší latence s čtením. Díky empirickým experimentům jsme zjistili, že nastavení velikosti bloku požadavků na čtení`fs.azure.read.request.size`() na 512 KB a velikost bloku pro tabulky adaptérů HBA mají stejnou velikost, což vede k dosažení nejlepšího výsledku v praxi.
+Ve službě HDInsight HBA jsou HFiles uložené ve vzdáleném úložišti. V případě neúspěšného ukládání do mezipaměti je cena čtení vyšší než u místních systémů, protože data v místních systémech jsou zajištěna místními HDFS. Pro většinu scénářů je k obcházení tohoto problému navrženo inteligentní použití mezipamětí HBA (bloková mezipaměť a mezipaměť bloků). V případech, kdy se problém nevyřeší, může tento problém pomoci při použití účtu typu blob bloku Premium. Ovladač Windows Azure Storage Blob spoléhá na určité vlastnosti, jako je například `fs.azure.read.request.size` načtení dat v blocích na základě toho, co určuje, zda má být režim čtení (sekvenční a náhodný), takže může i nadále existovat instance vyšší latence s čtením. Díky empirickým experimentům jsme zjistili, že nastavení velikosti bloku požadavků na čtení ( `fs.azure.read.request.size` ) na 512 KB a velikost bloku pro tabulky adaptérů HBA mají stejnou velikost, což vede k dosažení nejlepšího výsledku v praxi.
 
-U většiny clusterových uzlů HDInsight poskytuje `bucketcache` služby HDInsight HBA jako soubor na místní SSD úrovně Premium, která je připojená k virtuálnímu počítači, na kterém běží. `regionservers` Použití mezipaměti mimo haldu místo toho může poskytovat nějaké vylepšení. Toto alternativní řešení má omezení využití dostupné paměti a může být menší než mezipaměť na základě souborů, takže nemusí vždy být nejlepší volbou.
+U většiny clusterových uzlů HDInsight poskytuje služby HDInsight HBA `bucketcache` jako soubor na místní SSD úrovně Premium, která je připojená k virtuálnímu počítači, na kterém běží `regionservers` . Použití mezipaměti mimo haldu místo toho může poskytovat nějaké vylepšení. Toto alternativní řešení má omezení využití dostupné paměti a může být menší než mezipaměť na základě souborů, takže nemusí vždy být nejlepší volbou.
 
 Níže jsou uvedené některé další konkrétní parametry, které jsme provedli a které mi pomohly při různých stupních:
 
-- Zvětšete `memstore` velikost z výchozích 128 mb na 256 MB. Toto nastavení se obvykle doporučuje pro těžké scénáře zápisu.
+- Zvětšete `memstore` Velikost z výchozích 128 MB na 256 MB. Toto nastavení se obvykle doporučuje pro těžké scénáře zápisu.
 
 - Zvyšte počet podprocesů, které jsou vyhrazeny pro komprimaci, od výchozího nastavení **1** až **4**. Toto nastavení je relevantní, pokud sledujeme časté drobné komprimace.
 
-- Vyhněte `memstore` se zablokování vyprázdnění kvůli limitu úložiště. Pokud chcete tuto vyrovnávací paměť zadat, `Hbase.hstore.blockingStoreFiles` Zvyšte nastavení na **100**.
+- Vyhněte se zablokování `memstore` vyprázdnění kvůli limitu úložiště. Pokud chcete tuto vyrovnávací paměť zadat, zvyšte `Hbase.hstore.blockingStoreFiles` nastavení na **100**.
 
 - K řízení vyprázdnění použijte následující nastavení:
 
@@ -104,9 +103,9 @@ Níže jsou uvedené některé další konkrétní parametry, které jsme proved
 - Vypršení časových limitů RPC: **3 minuty**
 
    - Vypršení časových limitů RPC zahrnuje vypršení časového limitu pro adaptéry služby HBA, časový limit pro klientský skener a časový limit dotazů v Phoenixu. 
-   - Ujistěte se, že `hbase.client.scanner.caching` je parametr nastavený na stejnou hodnotu na konci serveru i na konci klienta. Pokud nejsou totožné, toto nastavení vede k chybám na konci klienta, které souvisejí s `OutOfOrderScannerException`. Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na **100**.
+   - Ujistěte se, že `hbase.client.scanner.caching` je parametr nastavený na stejnou hodnotu na konci serveru i na konci klienta. Pokud nejsou totožné, toto nastavení vede k chybám na konci klienta, které souvisejí s `OutOfOrderScannerException` . Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na **100**.
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 
 Níže jsou uvedené další parametry pro zvážení ladění:
 
@@ -122,6 +121,6 @@ Pokud váš problém zůstane nevyřešený, podívejte se na jeden z následuj�
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-- Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí. Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) . Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 - Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Vaše předplatné Microsoft Azure zahrnuje přístup k podpoře správy předplatných a fakturaci a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

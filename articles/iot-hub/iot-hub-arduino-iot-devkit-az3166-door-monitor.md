@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75977298"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
@@ -81,7 +80,7 @@ Po dokončení nasazení klikněte na něj a potom klikněte na tlačítko **Spr
 
 ![Správa SendGrid](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-Na stránce SendGrid klikněte na **Nastavení** > **klíče** > rozhraní API**vytvořit klíč rozhraní API**.
+Na stránce SendGrid klikněte na **Nastavení**  >  **klíče rozhraní API**  >  **vytvořit klíč rozhraní API**.
 
 ![Nejdřív SendGrid vytvořit rozhraní API](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
@@ -134,13 +133,13 @@ Rozbalte část s **Příklady Arduino** na levé straně, přejděte k **přík
 
 ![zkrácené řešení – příklady](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Ukázkovou aplikaci můžete otevřít také z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
+Ukázkovou aplikaci můžete otevřít také z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
 
 ### <a name="provision-azure-services"></a>Zřizování služeb Azure
 
 V okně řešení spusťte úlohu zřízení cloudu:
-- Typ `Ctrl+P` (MacOS: `Cmd+P`).
-- Do `task cloud-provision` zadaného textového pole zadejte.
+- Typ `Ctrl+P` (MacOS: `Cmd+P` ).
+- `task cloud-provision`Do zadaného textového pole zadejte.
 
 V terminálu VS Code vás interaktivní příkazový řádek provede zřízením požadovaných služeb Azure. Vyberte všechny stejné položky ze seznamu výzev, které jste dříve zřídili v [nasazení IoT Hub v Azure](#deploy-iot-hub-in-azure).
 
@@ -155,7 +154,7 @@ V dalším kroku nahrajte kód pro zařízení.
 
 #### <a name="windows"></a>Windows
 
-1. Použijte `Ctrl+P` ke spuštění `task device-upload`.
+1. Použijte `Ctrl+P` ke spuštění `task device-upload` .
 
 2. Terminál vás vyzve k zadání režimu konfigurace. Provedete to tak, že stisknete tlačítko a, nahrajete a uvolníte tlačítko obnovit. Na obrazovce se zobrazí identifikační číslo DevKit a *Konfigurace*aplikace Word.
 
@@ -163,7 +162,7 @@ V dalším kroku nahrajte kód pro zařízení.
 
 1. Vložte DevKit do režimu konfigurace: podržte stisknuté tlačítko a a pak nasaďte a uvolněte tlačítko Resetovat. Obrazovka zobrazí ' Configuration '.
 
-2. Kliknutím `Cmd+P` spustíte `task device-upload`.
+2. Kliknutím `Cmd+P` spustíte `task device-upload` .
 
 #### <a name="verify-upload-and-run-the-sample-app"></a>Ověřte, nahrajte a spusťte ukázkovou aplikaci.
 
@@ -182,7 +181,7 @@ DevKit se restartuje a začne používat kód.
 
 Program se nejprve inicializuje, když je DevKit v přítomnosti stabilního magnetického pole.
 
-Po inicializaci `Door closed` se na obrazovce zobrazí. Když dojde ke změně v magnetickém poli, stav se změní na `Door opened`. Pokaždé, když se změní stav dvířek, obdržíte e-mailové oznámení. (Tyto e-mailové zprávy můžou trvat až pět minut.)
+Po inicializaci `Door closed` se na obrazovce zobrazí. Když dojde ke změně v magnetickém poli, stav se změní na `Door opened` . Pokaždé, když se změní stav dvířek, obdržíte e-mailové oznámení. (Tyto e-mailové zprávy můžou trvat až pět minut.)
 
 ![Magnety blízko senzoru: dvířka zavřena](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magnety blízko senzoru: dvířka zavřena")
 

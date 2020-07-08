@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 701e314ad2a3762b1e8ca022ce18d9435ce2db37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894108"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scénář: "sledovací: Chyba: měkké uzamčení-CPU" z clusteru Azure HDInsight
@@ -20,7 +19,7 @@ Tento článek popisuje postup řešení potíží a možná řešení potíží
 
 ## <a name="issue"></a>Problém
 
-Syslogy jádra obsahují chybovou zprávu: `watchdog: BUG: soft lockup - CPU`.
+Syslogy jádra obsahují chybovou zprávu: `watchdog: BUG: soft lockup - CPU` .
 
 ## <a name="cause"></a>Příčina
 
@@ -39,10 +38,10 @@ Použijte opravu jádra. Skript níže upgraduje jádro Linux a restartuje poč�
     | Vlastnost | Hodnota |
     | --- | --- |
     | Typ skriptu | – Vlastní |
-    | Název |Oprava potíží s provizorním zámkem jádra |
+    | Name |Oprava potíží s provizorním zámkem jádra |
     | Identifikátor URI skriptu bash |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Typ (typy) uzlů |Pracovní proces, Zookeeper |
-    | Parametry |– |
+    | Parametry |Není k dispozici |
 
     Vyberte možnost **zachovat tuto akci se skriptem...** , pokud chcete, aby skript po přidání nových uzlů spustil skript.
 
@@ -60,6 +59,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979413"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformace XML s využitím map v Azure Logic Apps s rozšířením Enterprise Integration Pack
 
-Pro přenos dat XML mezi formáty pro scénáře podnikové integrace v Azure Logic Apps může vaše aplikace logiky používat mapy, nebo konkrétně mapy XSLT (Extensible Style Language Transformations). Mapa je dokument XML, který popisuje, jak převést data z dokumentu XML do jiného formátu. 
+K převádění dat XML mezi formáty ve scénářích podnikové integrace v Azure Logic Apps může vaše aplikace logiky používat mapy, konkrétně mapy XSLT (Extensible Stylesheet Language Transformation). Mapa je dokument XML, který popisuje, jak převádět data z dokumentu XML do jiného formátu. 
 
 Předpokládejme například, že pravidelně dostanete objednávky B2B nebo faktury od zákazníka, který používá formát data YYYMMDD. Vaše organizace ale používá formát data MMDDYYY. Můžete definovat a použít mapu, která transformuje formát data YYYMMDD na formát MMDDYYY před uložením podrobností o objednávce nebo faktuře do vaší databáze aktivity zákazníka.
 
@@ -36,9 +35,9 @@ Omezení související s integračními účty a artefakty, jako jsou mapy, najd
   * Pro sestavení potřebujete kontejner objektů blob Azure, kde můžete nahrát sestavení a umístění tohoto kontejneru. Tímto způsobem můžete toto umístění poskytnout později po přidání sestavení do účtu pro integraci. 
   Pro tento úkol budete potřebovat tyto položky:
 
-    | Položka | Popis |
+    | Položka | Description |
     |------|-------------|
-    | [Účet služby Azure Storage](../storage/common/storage-account-overview.md) | V tomto účtu vytvořte kontejner objektů BLOB v Azure pro vaše sestavení. Naučte [se vytvořit účet úložiště](../storage/common/storage-account-create.md). |
+    | [Účet úložiště Azure](../storage/common/storage-account-overview.md) | V tomto účtu vytvořte kontejner objektů BLOB v Azure pro vaše sestavení. Naučte [se vytvořit účet úložiště](../storage/common/storage-account-create.md). |
     | Kontejner objektů blob | V tomto kontejneru můžete nahrát sestavení. Toto umístění kontejneru budete potřebovat také při přidávání sestavení do účtu pro integraci. Přečtěte si, jak [vytvořit kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). |
     | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů BLOB. Chcete-li použít Průzkumník služby Storage, buď [Stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo v Azure Portal vyhledejte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník služby Storage**. |
     |||
@@ -150,7 +149,7 @@ Na stránce **Přehled** v účtu pro integraci teď v části **komponenty**dla
 1. Po dokončení nahrávání vygenerujte sdílený přístupový podpis (SAS) pro vaše sestavení. 
    V místní nabídce vašeho sestavení vyberte **získat sdílený přístupový podpis**.
 
-1. V podokně **sdílený přístupový podpis** vyberte možnost >  **generovat identifikátor URI sdíleného přístupového podpisu na úrovni kontejneru****vytvořit**. 
+1. V podokně **sdílený přístupový podpis** vyberte možnost **generovat identifikátor URI sdíleného přístupového podpisu na úrovni kontejneru**  >  **vytvořit**. 
    Po vygenerování adresy URL SAS klikněte vedle pole **Adresa URL** na možnost **Kopírovat**.
 
 1. Vraťte se do Azure Portal, kde je otevřeno podokno **Přidat sestavení** . 

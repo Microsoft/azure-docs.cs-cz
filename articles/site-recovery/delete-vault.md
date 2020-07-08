@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
 ms.openlocfilehash: 0e409ffdedbac822aedf48833f2dd85f8e04afa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894983"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
@@ -43,14 +42,14 @@ Než budete moct odstranit trezor, musíte odebrat registrované servery a polo�
 ## <a name="delete-a-vault-hyper-v-vm-with-vmm-to-azure"></a>Odstranění trezoru – virtuální počítač Hyper-V (s VMM) do Azure
 
 1. Pomocí [těchto kroků](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) odstraňte virtuální počítače Hyper-V spravované nástrojem System Center VMM.
-2. Zrušte přidružení a odstranění všech zásad replikace. Provedete to ve vašem trezoru > **Site Recovery infrastruktury** > pro**Zásady replikace****nástroje System Center VMM** > .
+2. Zrušte přidružení a odstranění všech zásad replikace. Provedete to ve vašem trezoru > **Site Recovery infrastruktury**  >  **pro zásady replikace nástroje System Center VMM**  >  **Replication Policies**.
 3. Pomocí [těchto kroků](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) zrušíte registraci připojeného serveru VMM.
 4. Pak odstraňte trezor.
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Odstranění trezoru – virtuální počítač Hyper-V do Azure
 
 1. Pomocí [těchto kroků](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure) odstraníte všechny chráněné virtuální počítače.
-2. Zrušte přidružení a odstranění všech zásad replikace. Provedete to ve vašem trezoru > **Site Recovery infrastruktury** > pro > **Zásady replikace****lokalit Hyper-V**.
+2. Zrušte přidružení a odstranění všech zásad replikace. Provedete to ve vašem trezoru > **Site Recovery infrastruktury**  >  **pro zásady replikace lokalit Hyper-V**  >  **Replication Policies**.
 3. Pokud chcete zrušit registraci hostitele Hyper-V, postupujte podle [těchto pokynů](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site) .
 4. Odstraňte lokalitu Hyper-V.
 5. Pak odstraňte trezor.

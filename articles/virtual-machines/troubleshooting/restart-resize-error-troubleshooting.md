@@ -14,10 +14,9 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75965612"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Řešení potíží s nasazením při restartování nebo změně velikosti stávajícího virtuálního počítače s Windows v Azure
@@ -41,7 +40,7 @@ Pokusíte se spustit zastavený virtuální počítač, ale získáte selhání 
 ### <a name="resolution"></a>Řešení
 * Zastavte všechny virtuální počítače ve skupině dostupnosti a pak restartujte všechny virtuální počítače.
   
-  1. Klikněte **na skupiny** > *prostředků vaše skupina* > prostředků**prostředky** > *vaše sada* > dostupnosti**Virtual Machines** > **zastavíte***virtuální počítač* > .
+  1. Klikněte na **skupiny**prostředků  >  *vaše skupina prostředků*  >  **prostředky**  >  *vaše sada dostupnosti*  >  **Virtual Machines**  >  *your virtual machine*  >  **zastavíte**virtuální počítač.
   2. Po zastavení všech virtuálních počítačů vyberte všechny zastavené virtuální počítače a klikněte na spustit.
 * Opakujte požadavek na restartování později.
 
@@ -57,7 +56,7 @@ Pokusíte se změnit velikost existujícího virtuálního počítače, ale zís
   
   1. Zastavte všechny virtuální počítače ve skupině dostupnosti.
      
-     * Klikněte **na skupiny** > *prostředků vaše skupina* > prostředků**prostředky** > *vaše sada* > dostupnosti**Virtual Machines** > **zastavíte***virtuální počítač* > .
+     * Klikněte na **skupiny**prostředků  >  *vaše skupina prostředků*  >  **prostředky**  >  *vaše sada dostupnosti*  >  **Virtual Machines**  >  *your virtual machine*  >  **zastavíte**virtuální počítač.
   2. Až se všechny virtuální počítače zastaví, změňte velikost požadovaného virtuálního počítače na větší velikost.
   3. Vyberte virtuální počítač se změněnou velikostí a klikněte na **Spustit**a potom spusťte všechny zastavené virtuální počítače.
 

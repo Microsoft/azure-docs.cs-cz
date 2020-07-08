@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
 ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895039"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Výjimka při spouštění dotazů ze zobrazení podregistru Apache Ambari ve službě Azure HDInsight
@@ -33,9 +32,9 @@ Cannot create property 'errors' on string '<!DOCTYPE html PUBLIC '-//W3C//DTD XH
 
 Vypršel časový limit brány.
 
-Hodnota časového limitu brány je 2 minuty. Dotazy ze zobrazení podregistru Ambari se odesílají do `/hive2` koncového bodu prostřednictvím brány. Jakmile je dotaz úspěšně zkompilován a přijat, vrátí HiveServer `queryid`. Klienti si pak pomohou dotazovat se na stav dotazu. Pokud v průběhu tohoto procesu HiveServer nevrátí odpověď HTTP do 2 minut, vyvolá brána HDI pro volající chybu vypršení časového limitu brány 502,3. K chybám může dojít při odeslání dotazu ke zpracování (pravděpodobnější) a také ve volání get status (pravděpodobně méně pravděpodobný). Uživatelé uvidí jednu z nich.
+Hodnota časového limitu brány je 2 minuty. Dotazy ze zobrazení podregistru Ambari se odesílají do `/hive2` koncového bodu prostřednictvím brány. Jakmile je dotaz úspěšně zkompilován a přijat, vrátí HiveServer `queryid` . Klienti si pak pomohou dotazovat se na stav dotazu. Pokud v průběhu tohoto procesu HiveServer nevrátí odpověď HTTP do 2 minut, vyvolá brána HDI pro volající chybu vypršení časového limitu brány 502,3. K chybám může dojít při odeslání dotazu ke zpracování (pravděpodobnější) a také ve volání get status (pravděpodobně méně pravděpodobný). Uživatelé uvidí jednu z nich.
 
-Vlákno obslužné rutiny protokolu HTTP by mělo být rychlé: Připravte úlohu a vraťte `queryid`. Z několika důvodů ale může dojít k zaneprázdnění všech vláken obslužných rutin, což má za následek vypršení časových limitů pro nové dotazy a volání get status.
+Vlákno obslužné rutiny protokolu HTTP by mělo být rychlé: Připravte úlohu a vraťte `queryid` . Z několika důvodů ale může dojít k zaneprázdnění všech vláken obslužných rutin, což má za následek vypršení časových limitů pro nové dotazy a volání get status.
 
 ### <a name="responsibilities-of-the-http-handler-thread"></a>Odpovědnosti vlákna obslužné rutiny HTTP
 
@@ -54,13 +53,13 @@ Některá obecná doporučení pro zlepšení situace:
 
 * Pokud používáte externí podregistr metastore, zkontrolujte metriky databáze a ujistěte se, že databáze není přetížená. Zvažte možnost škálování vrstvy databáze metastore.
 
-* Ujistěte se, že je paralelní operace zapnutá (to umožňuje paralelní spouštění vláken obslužných rutin HTTP). Pokud chcete ověřit hodnotu, spusťte [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) a **přejděte k** > **Konfigurace** > podregistru**Upřesnit** > **vlastní podregistr – lokalita**. Hodnota `hive.server2.parallel.ops.in.session` by měla být `true`.
+* Ujistěte se, že je paralelní operace zapnutá (to umožňuje paralelní spouštění vláken obslužných rutin HTTP). Pokud chcete ověřit hodnotu, spusťte [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) a **přejděte k části Konfigurace podregistru**  >  **Configs**  >  **Upřesnit**  >  **vlastní podregistr – lokalita**. Hodnota `hive.server2.parallel.ops.in.session` by měla být `true` .
 
 * Ujistěte se, že SKU virtuálního počítače clusteru není pro zatížení příliš malá. Zvažte rozdělení práce mezi několik clusterů. Další informace najdete v tématu [Výběr typu clusteru](../hdinsight-capacity-planning.md#choose-a-cluster-type).
 
 * Pokud je v clusteru nainstalovaný Ranger, zkontrolujte prosím, jestli je pro každý dotaz moc velký počet Ranger zásad, které je potřeba vyhodnotit. Vyhledejte duplicitní nebo nepotřebné zásady.
 
-* Ověřte hodnotu **velikosti haldy HiveServer2** z Ambari. Přejděte k > **optimalizaci****Nastavení****Konfigurace** >  **podregistru** > . Ujistěte se, že hodnota je větší než 10 GB. Upravte podle potřeby pro optimalizaci výkonu.
+* Ověřte hodnotu **velikosti haldy HiveServer2** z Ambari. Přejděte k **Hive**  >  **Configs**  >  **optimalizaci nastavení**konfigurace podregistru  >  **Optimization**. Ujistěte se, že hodnota je větší než 10 GB. Upravte podle potřeby pro optimalizaci výkonu.
 
 * Ujistěte se, že dotaz na podregistr je dobře laděný. Další informace najdete v tématu věnovaném [optimalizaci Apache Hive dotazů ve službě Azure HDInsight](../hdinsight-hadoop-optimize-hive-query.md).
 
@@ -70,6 +69,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

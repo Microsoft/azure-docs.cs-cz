@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75974409"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy zabezpečení a DevOps
@@ -45,13 +44,13 @@ K nasazení clusteru HDInsight připojeného k doméně použijte následující
     |Parametr |Popis |
     |---|---|
     |Název domény|Název domény, který je přidružený k Azure služba AD DS.|
-    |Uživatelské jméno domény|Účet služby v doméně spravované na řadiči domény Azure služba AD DS, kterou jste vytvořili v předchozí části, například: `hdiadmin@contoso.onmicrosoft.com`. Tento uživatel domény bude správcem tohoto clusteru HDInsight.|
+    |Uživatelské jméno domény|Účet služby v doméně spravované na řadiči domény Azure služba AD DS, kterou jste vytvořili v předchozí části, například: `hdiadmin@contoso.onmicrosoft.com` . Tento uživatel domény bude správcem tohoto clusteru HDInsight.|
     |Heslo domény|Heslo účtu služby|
-    |Organizační jednotka|Rozlišující název organizační jednotky, kterou chcete používat s clusterem HDInsight, například: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Pokud tato organizační jednotka neexistuje, pokusí se cluster HDInsight vytvořit organizační jednotku s použitím oprávnění účtu služby.|
-    |ADRESA URL LDAPS|například `ldaps://contoso.onmicrosoft.com:636`.|
-    |Přístup ke skupině uživatelů|Skupiny zabezpečení, jejichž uživatelé chcete synchronizovat s clusterem, například: `HiveUsers`. Pokud chcete zadat více skupin uživatelů, oddělte je středníkem ";". Aby bylo nutné clustery ESP vytvořit, musí být tyto skupiny v adresáři existovat.|
+    |Organizační jednotka|Rozlišující název organizační jednotky, kterou chcete používat s clusterem HDInsight, například: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com` . Pokud tato organizační jednotka neexistuje, pokusí se cluster HDInsight vytvořit organizační jednotku s použitím oprávnění účtu služby.|
+    |ADRESA URL LDAPS|například `ldaps://contoso.onmicrosoft.com:636` .|
+    |Přístup ke skupině uživatelů|Skupiny zabezpečení, jejichž uživatelé chcete synchronizovat s clusterem, například: `HiveUsers` . Pokud chcete zadat více skupin uživatelů, oddělte je středníkem ";". Aby bylo nutné clustery ESP vytvořit, musí být tyto skupiny v adresáři existovat.|
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Úvod do zabezpečení Apache Hadoop s využitím clusterů HDInsight připojených k doméně](../domain-joined/hdinsight-security-overview.md)
 - [Plánování clusterů Apache Hadoop připojených k doméně Azure v HDInsight](../domain-joined/apache-domain-joined-architecture.md)
@@ -81,19 +80,19 @@ Koncová podniková zabezpečení je možné dosáhnout pomocí následujících
     - Transparentní šifrování na straně serveru pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem.
     - Při přenosu šifrování pomocí šifrování na straně klienta, https a TLS.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Přehled služby Azure Virtual Networks](../../virtual-network/virtual-networks-overview.md)
 - [Přehled skupin zabezpečení sítě Azure](../../virtual-network/security-overview.md)
 - [Partnerský vztah Azure Virtual Network](../../virtual-network/virtual-network-peering-overview.md)
-- [Příručka zabezpečení Azure Storage](../../storage/blobs/security-recommendations.md)
+- [Průvodce zabezpečením Azure Storage](../../storage/blobs/security-recommendations.md)
 - [Šifrování služby Azure Storage v klidovém provozu](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>Použití monitorování & upozorňování
 
 Další informace najdete v článku:
 
-[Přehled služby Azure Monitor](../../azure-monitor/overview.md)
+[Přehled Azure Monitor](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>Upgradovat clustery
 

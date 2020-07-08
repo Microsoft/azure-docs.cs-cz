@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: twooley
 ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75930210"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalace a konfigurace adaptéru StorSimple pro SharePoint
@@ -140,7 +139,7 @@ Ujistěte se, že je farma serverů SharePoint správně nakonfigurovaná, a to 
   3. V levém podokně klikněte na **místní server**.
   4. V pravém podokně vedle **Možnosti konfigurace rozšířeného zabezpečení IE**klikněte **na zapnuto**.
   5. V části **Správci**klikněte na **vypnout**.
-  6. Klikněte na tlačítko **OK**.
+  6. Klikněte na **OK**.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Požadavky na vzdálené úložiště objektů BLOB (RBS)
 Ujistěte se, že používáte podporovanou verzi SQL Server. K dispozici jsou pouze následující verze, které mohou používat RBS:
@@ -170,7 +169,7 @@ Po instalaci adaptéru StorSimple pro službu SharePoint nakonfigurujte kód RBS
 ## <a name="configure-garbage-collection"></a>Konfigurace uvolňování paměti
 Při odstranění objektů z webu služby SharePoint nejsou automaticky odstraněny ze svazku úložiště RBS. Místo toho se v rámci asynchronního programu pro údržbu na pozadí odstraní osamocené objekty BLOB z úložiště souborů. Správci systému můžou naplánovat pravidelné spouštění tohoto procesu nebo ho můžou spustit, kdykoli to bude nutné.
 
-Tento program údržby (Microsoft. data. SqlRemoteBlobs. Maintainer. exe) se automaticky nainstaluje na všechny servery SharePoint WFE a aplikační servery, když povolíte RBS. Program je nainstalován v následujícím umístění: *spouštěcí jednotka*: \Program Files\Microsoft SQL Remote BLOB Storage 10.50 \ údržba \
+Tento program údržby (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) se automaticky nainstaluje na všechny servery SharePoint WFE a aplikační servery, když povolíte RBS. Program je nainstalován v následujícím umístění: *spouštěcí jednotka*: \Program Files\Microsoft SQL Remote BLOB Storage 10.50 \ údržba \
 
 Informace o konfiguraci a používání programu údržby najdete v tématu [Správa RBS v SharePoint serveru 2013][8].
 
@@ -208,7 +207,7 @@ Následující postupy popisují, jak přesunout objekty blob zpátky do SQL Ser
 > Před odinstalací softwaru adaptéru musíte objekty blob přesunout zpátky do databází obsahu.
 
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 Než přesunete data zpět do databáze obsahu SQL Server a zahájíte proces odebrání adaptéru, shromážděte následující informace:
 
 * Názvy všech databází, pro které je povoleno RBS
@@ -226,7 +225,7 @@ Před odinstalací adaptéru StorSimple pro software služby SharePoint je nutn�
 4. Na stránce **konfigurovat adaptér StorSimple** klikněte na tlačítko **Zakázat** pod každou databází obsahu, kterou chcete odebrat z externího úložiště objektů BLOB. 
 5. Odstraňte objekty ze SharePointu a pak je znovu nahrajte.
 
-Alternativně můžete použít rutinu prostředí `RBS Migrate()` Microsoft PowerShell, která je součástí služby SharePoint. Další informace najdete v tématu [migrace obsahu do RBS nebo](https://technet.microsoft.com/library/ff628255.aspx)z něj.
+Alternativně můžete použít `RBS Migrate()` rutinu prostředí Microsoft PowerShell, která je součástí služby SharePoint. Další informace najdete v tématu [migrace obsahu do RBS nebo](https://technet.microsoft.com/library/ff628255.aspx)z něj.
 
 Po přesunutí objektů BLOB zpět do databáze obsahu přejděte k dalšímu kroku: [odinstalujte adaptér](#uninstall-the-adapter).
 

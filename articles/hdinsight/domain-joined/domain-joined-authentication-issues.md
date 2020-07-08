@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75896124"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problémy s ověřováním ve službě Azure HDInsight
@@ -34,7 +33,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Příčina
 
-Kód chyby Azure AD 50126 znamená, `AllowCloudPasswordValidation` že klient nestavil zásady.
+Kód chyby Azure AD 50126 znamená, že `AllowCloudPasswordValidation` klient nestavil zásady.
 
 ### <a name="resolution"></a>Řešení
 
@@ -106,11 +105,11 @@ Změňte heslo v Azure Portal (v místním systému) a potom počkejte 30 minut,
 
 ### <a name="issue"></a>Problém
 
-Zobrazí se chybová `interaction_required`zpráva.
+Zobrazí se chybová zpráva `interaction_required` .
 
 ### <a name="cause"></a>Příčina
 
-Pro uživatele platí zásady podmíněného přístupu nebo vícefaktorové ověřování. Vzhledem k tomu, že interaktivní ověřování se zatím nepodporuje, je potřeba daného uživatele nebo cluster vyloučit z vícefaktorového ověřování nebo podmíněného přístupu. Pokud se rozhodnete vyloučit cluster (zásady výjimky na základě IP adresy), ujistěte se, že je služba `ServiceEndpoints` AD pro tuto virtuální síť povolená.
+Pro uživatele platí zásady podmíněného přístupu nebo vícefaktorové ověřování. Vzhledem k tomu, že interaktivní ověřování se zatím nepodporuje, je potřeba daného uživatele nebo cluster vyloučit z vícefaktorového ověřování nebo podmíněného přístupu. Pokud se rozhodnete vyloučit cluster (zásady výjimky na základě IP adresy), ujistěte se, že je služba AD `ServiceEndpoints` pro tuto virtuální síť povolená.
 
 ### <a name="resolution"></a>Řešení
 
@@ -148,9 +147,9 @@ Se liší.
 
 ### <a name="resolution"></a>Řešení
 
-Aby kinit bylo úspěšné, musíte znát `sAMAccountName` (Jedná se o krátký název účtu bez sféry). `sAMAccountName`je obvykle předpona účtu (například Bob in `bob@contoso.com`). Pro některé uživatele se může lišit. Abyste se dozvěděli, budete potřebovat možnost Procházet adresář a vyhledat si ho `sAMAccountName`.
+Aby kinit bylo úspěšné, musíte znát `sAMAccountName` (Jedná se o krátký název účtu bez sféry). `sAMAccountName`je obvykle předpona účtu (například Bob in `bob@contoso.com` ). Pro některé uživatele se může lišit. Abyste se dozvěděli, budete potřebovat možnost Procházet adresář a vyhledat si ho `sAMAccountName` .
 
-Způsoby, jak `sAMAccountName`najít:
+Způsoby, jak najít `sAMAccountName` :
 
 * Pokud se můžete přihlásit k Ambari pomocí místního správce Ambari, podívejte se na seznam uživatelů.
 
@@ -158,7 +157,7 @@ Způsoby, jak `sAMAccountName`najít:
 
 * Z hlavního uzlu můžete k hledání použít příkazy služby SAMBA. To vyžaduje platnou relaci protokolu Kerberos (úspěšné kinit). NET ADS Search "(userPrincipalName = Bob *)"
 
-    Výsledky hledání nebo procházení by měly ukazovat na `sAMAccountName` atribut. Také se můžete podívat na další atributy `pwdLastSet`, například, `badPasswordTime` `userPrincipalName` atd., pokud se tyto vlastnosti shodují s očekávaným způsobem.
+    Výsledky hledání nebo procházení by měly ukazovat na `sAMAccountName` atribut. Také se můžete podívat na další atributy, například `pwdLastSet` , `badPasswordTime` `userPrincipalName` atd., pokud se tyto vlastnosti shodují s očekávaným způsobem.
 
 ---
 
@@ -182,7 +181,7 @@ Ověřte uživatelské jméno a heslo. Také se podívejte na další vlastnosti
 
 ### <a name="issue"></a>Problém
 
-Příkaz Job/HDFS se `TokenNotFoundException`z důvodu nezdařil.
+Příkaz Job/HDFS se z důvodu nezdařil `TokenNotFoundException` .
 
 ### <a name="cause"></a>Příčina
 
@@ -198,7 +197,7 @@ Ujistěte se, že jste se úspěšně přihlásili k portálu Ambari, a to pomoc
 
 ### <a name="issue"></a>Problém
 
-Uživatel obdrží chybovou `Error fetching access token`zprávu.
+Uživatel obdrží chybovou zprávu `Error fetching access token` .
 
 ### <a name="cause"></a>Příčina
 
@@ -218,6 +217,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

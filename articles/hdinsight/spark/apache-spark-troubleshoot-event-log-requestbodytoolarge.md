@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894405"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge "se zobrazuje v protokolu aplikací streamování aplikace Apache Spark v HDInsight
@@ -32,13 +31,13 @@ V Spark 2,3 každá aplikace Spark generuje jeden soubor protokolu událostí Sp
 
 K dispozici jsou tři řešení pro tuto chybu:
 
-* Zvětšete velikost bloku na až 100 MB. V uživatelském rozhraní Ambari upravte konfigurační vlastnost `fs.azure.write.request.size` HDFS (nebo ji vytvořte v `Custom core-site` oddílu). Nastavte vlastnost na větší hodnotu, například: 33554432. Uložte aktualizovanou konfiguraci a restartujte příslušné součásti.
+* Zvětšete velikost bloku na až 100 MB. V uživatelském rozhraní Ambari upravte konfigurační vlastnost HDFS `fs.azure.write.request.size` (nebo ji vytvořte v `Custom core-site` oddílu). Nastavte vlastnost na větší hodnotu, například: 33554432. Uložte aktualizovanou konfiguraci a restartujte příslušné součásti.
 
 * Pravidelně zastavte a znovu odešlete úlohu Spark-streamování.
 
 * Pomocí HDFS můžete ukládat protokoly událostí Spark. Použití HDFS pro úložiště může způsobit ztrátu dat událostí Spark během škálování clusteru nebo upgrady Azure.
 
-    1. Udělejte změny v `spark.eventlog.dir` uživatelském `spark.history.fs.logDirectory` rozhraní Ambari a pomocí něj:
+    1. Udělejte změny v `spark.eventlog.dir` `spark.history.fs.logDirectory` uživatelském rozhraní Ambari a pomocí něj:
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events
@@ -62,6 +61,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

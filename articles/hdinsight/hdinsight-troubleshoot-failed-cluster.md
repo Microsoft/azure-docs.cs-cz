@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895318"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalou úlohou na clusteru HDInsight nebo jejím selháním
@@ -111,7 +110,7 @@ Následující části popisují, jak kontrolovat stav jednotlivých uzlů a cel
 
 ### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Získání snímku stavu clusteru pomocí řídicího panelu uživatelského rozhraní Ambari
 
-[Řídicí panel uživatelského rozhraní Ambari](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) poskytuje přehled o stavu clusteru, například o době provozu, paměti, využití sítě a procesoru, HDFS využití disku a tak dále. Pomocí části hostitelé v Ambari můžete zobrazit prostředky na úrovni hostitele. Můžete také zastavit a restartovat služby.
+[Řídicí panel uživatelského rozhraní Ambari](#view-cluster-configuration-settings-with-the-ambari-ui) ( `https://<clustername>.azurehdinsight.net` ) poskytuje přehled o stavu clusteru, například o době provozu, paměti, využití sítě a procesoru, HDFS využití disku a tak dále. Pomocí části hostitelé v Ambari můžete zobrazit prostředky na úrovni hostitele. Můžete také zastavit a restartovat služby.
 
 ### <a name="check-your-webhcat-service"></a>Podívejte se na službu WebHCat
 
@@ -129,11 +128,11 @@ Ambari zobrazí výstrahu s informacemi o hostitelích, na kterých je služba W
 
 ![Server Apache Ambari restartování WebHCat serveru](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
-Pokud se server WebHCat stále nespustí, zkontrolujte zprávy o chybách v protokolu operací. Podrobnější informace najdete v souborech `stderr` a `stdout` na uzlech, na které se odkazuje.
+Pokud se server WebHCat stále nespustí, zkontrolujte zprávy o chybách v protokolu operací. Podrobnější informace najdete v `stderr` souborech a na `stdout` uzlech, na které se odkazuje.
 
 #### <a name="webhcat-times-out"></a>WebHCat časový limit
 
-Vyprší časový limit An HDInsight brány na odpovědi, které trvá déle než `502 BadGateway`dvě minuty, a vrátí se. WebHCat se dotazuje na úlohy PŘÍZe na stavech úloh a pokud by PŘÍZe trvala déle než dvě minuty, může to vytrvat i vypršení tohoto požadavku.
+Vyprší časový limit An HDInsight brány na odpovědi, které trvá déle než dvě minuty, a vrátí se `502 BadGateway` . WebHCat se dotazuje na úlohy PŘÍZe na stavech úloh a pokud by PŘÍZe trvala déle než dvě minuty, může to vytrvat i vypršení tohoto požadavku.
 
 V takovém případě zkontrolujte následující protokoly v `/var/log/webhcat` adresáři:
 
@@ -142,13 +141,13 @@ V takovém případě zkontrolujte následující protokoly v `/var/log/webhcat`
 * **webhcat-Console-Error. log** je stderr procesu serveru.
 
 > [!NOTE]  
-> Každý `webhcat.log` je převedený za den a generuje soubory `webhcat.log.YYYY-MM-DD`s názvem. Vyberte příslušný soubor pro časový rozsah, který zkoumáte.
+> Každý `webhcat.log` je převedený za den a generuje soubory s názvem `webhcat.log.YYYY-MM-DD` . Vyberte příslušný soubor pro časový rozsah, který zkoumáte.
 
 Následující části popisují některé možné příčiny WebHCat časových limitů.
 
 ##### <a name="webhcat-level-timeout"></a>Časový limit úrovně WebHCat
 
-Když je WebHCat pod zatížením, s více než 10 otevřenými sokety trvá vytvoření nových připojení soketu déle, což může mít za následek časový limit. Chcete-li zobrazit seznam síťových připojení k WebHCat a z `netstat` nich, použijte aktuální aktivní hlavnímu uzlu:
+Když je WebHCat pod zatížením, s více než 10 otevřenými sokety trvá vytvoření nových připojení soketu déle, což může mít za následek časový limit. Chcete-li zobrazit seznam síťových připojení k WebHCat a z nich, použijte `netstat` aktuální aktivní hlavnímu uzlu:
 
 ```bash
 netstat | grep 30111
@@ -170,7 +169,7 @@ Na úrovni PŘÍZe existují dva typy časových limitů:
 
 1. Odeslání úlohy PŘÍZe může trvat dostatečně dlouho, aby se mohl zapříčinit časový limit.
 
-    Pokud otevřete soubor `/var/log/webhcat/webhcat.log` protokolu a vyhledáte "úloha zařazená do fronty", může se zobrazit více položek, kde doba provádění je příliš dlouhá (>2000 MS), s položkami, které zobrazují zvýšení čekací doby.
+    Pokud otevřete `/var/log/webhcat/webhcat.log` soubor protokolu a vyhledáte "úloha zařazená do fronty", může se zobrazit více položek, kde doba provádění je příliš dlouhá (>2000 MS), s položkami, které zobrazují zvýšení čekací doby.
 
     Čas úloh ve frontě se dál zvyšuje, protože frekvence, s jakou se nové úlohy odesílají, je vyšší než frekvence, s jakou jsou staré úlohy dokončené. Jakmile se použije paměť PŘÍZe 100%, *fronta joblauncher* už nemůže půjčit kapacitu z *výchozí fronty*. Proto nelze do fronty joblauncher přijmout žádné další nové úlohy. To může způsobit, že čas čekání bude trvat déle a déle, což způsobí chybu vypršení časového limitu, která obvykle následuje po mnoha dalších.
 
@@ -184,7 +183,7 @@ Na úrovni PŘÍZe existují dva typy časových limitů:
 
     * Vypsat všechny úlohy: Jedná se o časově náročné volání. Toto volání vypíše aplikace z správce prostředků PŘÍZe a pro každou dokončenou aplikaci Získá stav z JobHistoryServer PŘÍZe. U většího počtu úloh může toto volání vyprší časový limit.
 
-    * Seznam úloh, které jsou starší než sedm dní: JobHistoryServer v HDInsight se nakonfiguruje tak, aby uchovávala informace o`mapreduce.jobhistory.max-age-ms` dokončených úlohách po dobu sedmi dní (hodnota). Při pokusu o výčet vyčištěných úloh dojde k vypršení časového limitu.
+    * Seznam úloh, které jsou starší než sedm dní: JobHistoryServer v HDInsight se nakonfiguruje tak, aby uchovávala informace o dokončených úlohách po dobu sedmi dní ( `mapreduce.jobhistory.max-age-ms` hodnota). Při pokusu o výčet vyčištěných úloh dojde k vypršení časového limitu.
 
 Diagnostikujte tyto problémy:
 
@@ -196,13 +195,13 @@ Diagnostikujte tyto problémy:
 
 1. Stavový kód HTTP 500
 
-    Ve většině případů, kdy WebHCat vrátí 500, obsahuje chybová zpráva podrobnosti o selhání. V opačném případě `webhcat.log` se podíváte na upozornění a chybové zprávy.
+    Ve většině případů, kdy WebHCat vrátí 500, obsahuje chybová zpráva podrobnosti o selhání. V opačném případě se podíváte `webhcat.log` na upozornění a chybové zprávy.
 
 2. Selhání úlohy
 
     Můžou nastat případy, kdy interakce s WebHCat jsou úspěšné, ale úlohy selžou.
 
-    Templeton shromažďuje výstup konzoly úloh jako `stderr` v `statusdir`, což je často užitečné při řešení potíží. `stderr`obsahuje identifikátor aplikace nitě aktuálního dotazu.
+    Templeton shromažďuje výstup konzoly úloh jako `stderr` v `statusdir` , což je často užitečné při řešení potíží. `stderr`obsahuje identifikátor aplikace nitě aktuálního dotazu.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Krok 4: Kontrola zásobníku prostředí a verzí
 
@@ -214,7 +213,7 @@ Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje infor
 
 Existuje mnoho typů protokolů, které jsou generovány z mnoha služeb a součástí, které tvoří cluster HDInsight. [Soubory protokolu WebHCat](#check-your-webhcat-service) jsou popsány dříve. Existuje několik dalších užitečných souborů protokolu, které můžete prozkoumat pro zúžení potíží s clusterem, jak je popsáno v následujících částech.
 
-* Clustery HDInsight se skládají z několika uzlů, přičemž většina z nich je spouštěna z úlohy na spouštění odeslaných úloh. Úlohy se spouštějí souběžně, ale soubory protokolu můžou výsledky zobrazit jenom lineárně. HDInsight provádí nové úlohy a ukončí nejprve jiné, které se nedaří dokončit. Veškerá tato aktivita je protokolována do `stderr` souborů `syslog` a.
+* Clustery HDInsight se skládají z několika uzlů, přičemž většina z nich je spouštěna z úlohy na spouštění odeslaných úloh. Úlohy se spouštějí souběžně, ale soubory protokolu můžou výsledky zobrazit jenom lineárně. HDInsight provádí nové úlohy a ukončí nejprve jiné, které se nedaří dokončit. Veškerá tato aktivita je protokolována do `stderr` `syslog` souborů a.
 
 * Soubory protokolu akcí skriptu zobrazují během procesu vytváření clusteru chyby nebo neočekávané změny konfigurace.
 

@@ -9,15 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75911697"
 ---
 # <a name="display-feature-information"></a>Zobrazení informací o funkci
 
-Prostorová data jsou často reprezentovaná pomocí bodů, čar a mnohoúhelníků. Tato data často obsahují informace o metadatech, které jsou k ní přidružené. Například bod může představovat umístění úložiště a metadata o této restauraci může být jeho jméno, adresa a typ potravin, který IT oddělení obsluhuje. Tato metadata lze přidat jako vlastnosti těchto funkcí pomocí `JsonObject`. Následující kód vytvoří jednoduchou funkci Point s `title` vlastností, která má hodnotu "Hello World!".
+Prostorová data jsou často reprezentovaná pomocí bodů, čar a mnohoúhelníků. Tato data často obsahují informace o metadatech, které jsou k ní přidružené. Například bod může představovat umístění úložiště a metadata o této restauraci může být jeho jméno, adresa a typ potravin, který IT oddělení obsluhuje. Tato metadata lze přidat jako vlastnosti těchto funkcí pomocí `JsonObject` . Následující kód vytvoří jednoduchou funkci Point s `title` vlastností, která má hodnotu "Hello World!".
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +31,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-Když uživatel komunikuje s funkcí na mapě, můžou se události použít k reakci na tyto akce. Běžným scénářem je zobrazení zprávy z vlastností metadat funkce, se kterou uživatel pracuje. `OnFeatureClick` Událost je hlavní událost, která se používá k detekci, kdy uživatel klepne na funkci na mapě. K dispozici je `OnLongFeatureClick` také událost. Při přidávání `OnFeatureClick` události do mapy může být omezena na jednu vrstvu předáním ID vrstvy, na kterou se omezuje. Pokud není předáno žádné ID vrstvy, klepněte na mapě na libovolné funkci, bez ohledu na to, ve které vrstvě se nachází, by tato událost mohla vyvolat. Následující kód vytvoří vrstvu symbolů pro vykreslení dat bodů na mapě, poté přidá `OnFeatureClick` událost a omezí ji na tuto vrstvu symbolů.
+Když uživatel komunikuje s funkcí na mapě, můžou se události použít k reakci na tyto akce. Běžným scénářem je zobrazení zprávy z vlastností metadat funkce, se kterou uživatel pracuje. `OnFeatureClick`Událost je hlavní událost, která se používá k detekci, kdy uživatel klepne na funkci na mapě. K dispozici je také `OnLongFeatureClick` událost. Při přidávání `OnFeatureClick` události do mapy může být omezena na jednu vrstvu předáním ID vrstvy, na kterou se omezuje. Pokud není předáno žádné ID vrstvy, klepněte na mapě na libovolné funkci, bez ohledu na to, ve které vrstvě se nachází, by tato událost mohla vyvolat. Následující kód vytvoří vrstvu symbolů pro vykreslení dat bodů na mapě, poté přidá `OnFeatureClick` událost a omezí ji na tuto vrstvu symbolů.
 
 ```java
 //Create a symbol and add it to the map.
@@ -50,7 +49,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 ## <a name="display-a-toast-message"></a>Zobrazit informační zprávy
 
-Zpráva informační zprávy je jedním z nejjednodušších způsobů zobrazení informací uživateli a je k dispozici ve všech verzích Androidu. Nepodporuje žádný typ vstupu uživatele a zobrazuje se jenom po krátkou dobu. Pokud chcete uživateli rychle informovat o tom, co se na něj klepnuli, může být informační zpráva vhodná. Následující kód ukazuje, jak lze v `OnFeatureClick` události použít informační zprávy.
+Zpráva informační zprávy je jedním z nejjednodušších způsobů zobrazení informací uživateli a je k dispozici ve všech verzích Androidu. Nepodporuje žádný typ vstupu uživatele a zobrazuje se jenom po krátkou dobu. Pokud chcete uživateli rychle informovat o tom, co se na něj klepnuli, může být informační zpráva vhodná. Následující kód ukazuje, jak lze v události použít informační zprávy `OnFeatureClick` .
 
 ```java
 //Add a feature click event to the map.

@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: e241657186582955d21981f7dfe18856724aa692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894414"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Scénář: Jupyter Server 404 "nenalezen" v důsledku "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
@@ -36,7 +35,7 @@ Tato chyba může být způsobena několika způsoby:
 
 - Pokud jste nakonfigurovali pravidla skupiny zabezpečení sítě (NSG), která budou omezovat přístup ke clusteru. Omezení přístupu pomocí pravidel NSG vám pořád umožní přímý přístup k Apache Ambari a dalším službám s použitím IP adresy místo názvu clusteru. Při přístupu k Jupyter se ale může zobrazit chyba 404 "Nenalezeno".
 
-- Pokud jste vašemu bráně HDInsight přizpůsobili jiný název DNS než standard `xxx.azurehdinsight.net`.
+- Pokud jste vašemu bráně HDInsight přizpůsobili jiný název DNS než standard `xxx.azurehdinsight.net` .
 
 ## <a name="resolution"></a>Řešení
 
@@ -47,7 +46,7 @@ Tato chyba může být způsobena několika způsoby:
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. Vyhledejte řádek, který říká: `NotebookApp.allow_origin='\"https://{2}.{3}\"'` a změňte jej na: `NotebookApp.allow_origin='\"*\"'`.
+1. Vyhledejte řádek, který říká: `NotebookApp.allow_origin='\"https://{2}.{3}\"'` a změňte jej na: `NotebookApp.allow_origin='\"*\"'` .
 
 1. Restartujte službu Jupyter z Ambari.
 
@@ -61,6 +60,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

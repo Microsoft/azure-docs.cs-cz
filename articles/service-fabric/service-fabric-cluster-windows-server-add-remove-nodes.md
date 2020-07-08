@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
 ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934209"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidání nebo odebrání uzlů u samostatného clusteru Service Fabric na Windows Serveru
@@ -29,7 +28,7 @@ Po [vytvoření samostatného clusteru Service Fabric na počítačích s Window
 
 5. Spusťte PowerShell se zvýšenými oprávněními a přejdete do umístění balíčku Get.
 
-6. Spusťte skript *této. ps1* s parametry, které popisují nový uzel, který chcete přidat. Následující příklad přidá nový uzel s názvem VM5 s typem NodeType0 a IP adresa 182.17.34.52 do UD1 a FD:/DC1/R0. `ExistingClusterConnectionEndPoint`je koncový bod připojení pro uzel, který už je v existujícím clusteru, což může být IP adresa *kteréhokoli* uzlu v clusteru. 
+6. Spusťte skript *AddNode.ps1* s parametry, které popisují nový uzel, který chcete přidat. Následující příklad přidá nový uzel s názvem VM5 s typem NodeType0 a IP adresa 182.17.34.52 do UD1 a FD:/DC1/R0. `ExistingClusterConnectionEndPoint`je koncový bod připojení pro uzel, který už je v existujícím clusteru, což může být IP adresa *kteréhokoli* uzlu v clusteru. 
 
    Nezabezpečené (vytváření prototypů):
 
@@ -69,7 +68,7 @@ Po [vytvoření samostatného clusteru Service Fabric na počítačích s Window
    Průběh upgradu můžete monitorovat na Service Fabric Explorer. Alternativně můžete spustit rutinu [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Přidání uzlů do clusterů nakonfigurovaných pomocí zabezpečení systému Windows pomocí gMSA
-Pro clustery nakonfigurované pomocí skupinového účtu spravované služby (https://technet.microsoft.com/library/hh831782.aspx)gMSA) (je možné přidat nový uzel pomocí upgradu konfigurace:
+Pro clustery nakonfigurované pomocí skupinového účtu spravované služby (gMSA) (je https://technet.microsoft.com/library/hh831782.aspx) možné přidat nový uzel pomocí upgradu konfigurace:
 1. Spuštěním rutiny [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) na kterémkoli z existujících uzlů získáte nejnovější konfigurační soubor a přidejte podrobnosti o novém uzlu, který chcete přidat do oddílu uzly. Ujistěte se, že je nový uzel součástí stejného spravovaného účtu skupiny. Tento účet by měl být správce na všech počítačích.
 
     ```
@@ -127,7 +126,7 @@ Přidejte do oddílu "nastavení" v části "FabricSettings" parametr "NodesToBe
     Průběh upgradu můžete monitorovat na Service Fabric Explorer. Alternativně můžete spustit rutinu [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps).
 
 > [!NOTE]
-> Odebrání uzlů může iniciovat více upgradů. Některé uzly jsou označeny `IsSeedNode=”true”` značkou a lze je identifikovat pomocí dotazování manifestu clusteru pomocí příkazu `Get-ServiceFabricClusterManifest`. Odebrání takových uzlů může trvat déle než jiné, protože počáteční uzly se v takových scénářích musí pohybovat. Cluster musí udržovat minimálně 3 uzly typu primární uzel.
+> Odebrání uzlů může iniciovat více upgradů. Některé uzly jsou označeny `IsSeedNode=”true”` značkou a lze je identifikovat pomocí dotazování manifestu clusteru pomocí příkazu `Get-ServiceFabricClusterManifest` . Odebrání takových uzlů může trvat déle než jiné, protože počáteční uzly se v takových scénářích musí pohybovat. Cluster musí udržovat minimálně 3 uzly typu primární uzel.
 > 
 > 
 

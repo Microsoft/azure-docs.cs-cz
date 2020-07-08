@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979377"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověřování XML s využitím schémat v Azure Logic Apps s rozšířením Enterprise Integration Pack
@@ -135,7 +134,7 @@ Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata*
 1. Po dokončení nahrávání vygenerujte sdílený přístupový podpis (SAS) pro vaše schéma. 
    V místní nabídce schématu vyberte **získat sdílený přístupový podpis**.
 
-1. V podokně **sdílený přístupový podpis** vyberte možnost >  **generovat identifikátor URI sdíleného přístupového podpisu na úrovni kontejneru****vytvořit**. 
+1. V podokně **sdílený přístupový podpis** vyberte možnost **generovat identifikátor URI sdíleného přístupového podpisu na úrovni kontejneru**  >  **vytvořit**. 
    Po vygenerování adresy URL SAS klikněte vedle pole **Adresa URL** na možnost **Kopírovat**.
 
 1. Vraťte se do Azure Portal, kde je otevřeno podokno **Přidat schéma** . Vyberte možnost **velký soubor**.

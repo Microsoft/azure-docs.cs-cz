@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: 4460c24bb742bff72af47954363b1051f5d9b43d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895277"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Řešení potíží pomocí Azure HDInsight
@@ -32,7 +31,7 @@ ms.locfileid: "75895277"
 | HDInsight v systému Linux a optimalizace | - [Informace o použití HDInsight v systému Linux](hdinsight-hadoop-linux-information.md)<br>- [Řešení potíží s Apache Hadoop paměti a výkonu](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive výkon dotazů](https://web.archive.org/web/20190217214250/https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | Protokoly a výpisy | - [Přístup k protokolům aplikace Apache Hadoop nitě v systému Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Povolit výpisy haldy pro Apache Hadoop služby v systému Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [Analýza protokolů HDInsight](hdinsight-debug-jobs.md)|
 | chyby | - [Pochopení a vyřešení chyb WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Nastavení Apache Hive k opravě chyby OutofMemory](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
-| Nástroje | - [Optimalizace Apache Hive dotazů](hdinsight-hadoop-optimize-hive-query.md)<br>- [Nástroj HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Nástroj HDInsight zatmění](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Nástroj HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Nástroj HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
+| nástroje | - [Optimalizace Apache Hive dotazů](hdinsight-hadoop-optimize-hive-query.md)<br>- [Nástroj HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Nástroj HDInsight zatmění](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Nástroj HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Nástroj HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -40,6 +39,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

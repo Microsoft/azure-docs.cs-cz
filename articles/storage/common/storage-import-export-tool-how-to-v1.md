@@ -9,15 +9,14 @@ ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75975669"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Použití nástroje Azure import/export (model nasazení Classic)
 
-Nástroj pro import/export pro Azure (WAImportExport. exe) se používá k vytváření a správě úloh pro službu Azure import/export, která umožňuje přenášet velké objemy dat do nebo z Azure Blob Storage.
+Nástroj Azure import/export (WAImportExport.exe) slouží k vytváření a správě úloh pro službu Azure import/export, což vám umožní přenášet velké objemy dat do nebo z Azure Blob Storage.
 
 Tato dokumentace je určena pro model nasazení Classic nástroje Azure import/export. Informace o použití nejnovější verze tohoto nástroje najdete v tématu [použití nástroje Azure import/export](../storage-import-export-tool-how-to.md).
 

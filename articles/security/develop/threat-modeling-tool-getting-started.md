@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68728302"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s Threat Modeling Tool
@@ -43,7 +42,7 @@ Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na
 
 | Součást                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Názory, tlačítko návrhy a problémy** | Přejdete na **[Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** pro všechny věci SDL. Nabízí vám možnost si přečíst si, co dělají jiní uživatelé, spolu s alternativními řešeními a doporučeními. Pokud stále nemůžete najít, co hledáte, pošlete nám tmtextsupport@microsoft.com e-mail pro náš tým podpory, který vám může pomoci                                                                                                                            |
+| **Názory, tlačítko návrhy a problémy** | Přejdete na **[Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** pro všechny věci SDL. Nabízí vám možnost si přečíst si, co dělají jiní uživatelé, spolu s alternativními řešeními a doporučeními. Pokud stále nemůžete najít, co hledáte, pošlete tmtextsupport@microsoft.com nám e-mail pro náš tým podpory, který vám může pomoci                                                                                                                            |
 | **Vytvoření modelu**                          | Otevře prázdné plátno pro vykreslení diagramu. Ujistěte se, že jste vybrali šablonu, kterou chcete použít pro váš model.                                                                                                                                                                                                                                                                                                                                                                       |
 | **Šablona pro nové modely**                 | Před vytvořením modelu je nutné vybrat šablonu, kterou chcete použít. Naší hlavní šablonou je šablona modelu Azure Threat, která obsahuje vzorníky specifické pro Azure, hrozby a omezení rizik. V případě obecných modelů vyberte v rozevírací nabídce možnost znalostní báze SDL TM. Chcete vytvořit vlastní šablonu nebo Odeslat novou pro všechny uživatele? Další informace najdete na naší stránce GitHubu **[úložiště šablon](https://github.com/Microsoft/threat-modeling-templates)** .                              |
 | **Otevření modelu**                            | <p>Otevře dříve uložené modely hrozeb. Funkce nedávno otevřených modelů je skvělé, pokud potřebujete otevřít nejaktuálnější soubory. Když najedete myší na výběr, najdete dva způsoby otevření modelů:</p><p><ul><li>Otevřít z tohoto počítače – klasický způsob otevření souboru pomocí místního úložiště</li><li>Otevřené z OneDrivu – týmy můžou používat složky na OneDrivu k ukládání a sdílení všech jejich modelů hrozeb na jednom místě, které vám pomůžou zvýšit produktivitu a spolupráci.</li></ul></p> |
@@ -144,4 +143,4 @@ Přístup k modelování hrozeb, který jsme tady provedli, je podstatně jednod
 
 ## <a name="next-steps"></a>Další kroky
 
-Pošlete své dotazy, komentáře a obavy do tmtextsupport@microsoft.com. Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
+Pošlete své dotazy, komentáře a obavy do tmtextsupport@microsoft.com . Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.

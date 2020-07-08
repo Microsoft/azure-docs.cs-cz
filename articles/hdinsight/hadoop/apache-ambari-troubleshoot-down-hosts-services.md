@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/02/2019
 ms.openlocfilehash: 5340b1c7a6510595376789bc5777e6fb6f07dd4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895642"
 ---
 # <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>Scénář: uživatelské rozhraní Apache Ambari zobrazuje hostitele a služby ve službě Azure HDInsight.
@@ -26,7 +25,7 @@ Uživatelské rozhraní Apache Ambari je přístupné, ale uživatelské rozhran
 
 Ve většině scénářů se jedná o problém se serverem Ambari, který neběží na aktivním hlavnímu uzlu. Zkontrolujte, které hlavnímu uzlu je aktivní hlavnímu uzlu, a ujistěte se, že Ambari-server běží na pravé straně. Nespouštějte ručně Ambari-Server, takže služba kontroleru převzetí služeb při selhání zodpovídá za spuštění Ambari-Server na pravé straně hlavnímu uzlu. Restartujte aktivní hlavnímu uzlu, aby se vynutilo převzetí služeb při selhání.
 
-Tyto potíže mohou způsobovat i problémy se sítí. V každém uzlu clusteru zkontrolujte, jestli můžete provést příkaz `headnodehost`k zadání příkazů. Existuje vzácná situace, ke `headnodehost`které se nemůže připojit uzel clusteru:
+Tyto potíže mohou způsobovat i problémy se sítí. V každém uzlu clusteru zkontrolujte, jestli můžete provést příkaz k zadání příkazů `headnodehost` . Existuje vzácná situace, ke které se nemůže připojit uzel clusteru `headnodehost` :
 
 ```
 $>telnet headnodehost 8440
@@ -43,6 +42,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

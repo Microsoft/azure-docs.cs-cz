@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75922780"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení Reliable Services a Reliable Actors
@@ -42,7 +41,7 @@ Vzhledem k tomu, že obsahuje kontrolní body a protokol, může úplné záloho
 Problém s úplnými zálohami nastane, pokud jsou kontrolní body velké.
 Například replika, která má 16 GB stavu, bude obsahovat kontrolní body, které přidají přibližně 16 GB.
 Pokud máme v cíli bodu obnovení pět minut, replika musí být zálohována každých pět minut.
-Pokaždé, když ho zálohuje, potřebuje zkopírovat 16 GB kontrolních bodů kromě 50 MB (konfigurovatelných pomocí `CheckpointThresholdInMB`) pro vydaných protokolů.
+Pokaždé, když ho zálohuje, potřebuje zkopírovat 16 GB kontrolních bodů kromě 50 MB (konfigurovatelných pomocí) pro vydaných `CheckpointThresholdInMB` protokolů.
 
 ![Příklad úplného zálohování](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
 
@@ -57,10 +56,10 @@ Chcete-li obnovit přírůstkovou zálohu, je nutné zadat celý řetězec zálo
 ## <a name="backup-reliable-services"></a>Reliable Services zálohy
 Autor služby má úplnou kontrolu nad tím, kdy se mají ukládat zálohy a kam se budou ukládat zálohy.
 
-Chcete-li spustit zálohování, musí služba vyvolat zděděnou členskou funkci `BackupAsync`.  
+Chcete-li spustit zálohování, musí služba vyvolat zděděnou členskou funkci `BackupAsync` .  
 Zálohy se dají provádět jenom z primárních replik a vyžadují udělení stavu zápisu.
 
-Jak je vidět níže `BackupAsync` , přebírá `BackupDescription` objekt, kde jedna může zadat úplnou nebo přírůstkovou zálohu, a také funkci zpětného volání, `Func<< BackupInfo, CancellationToken, Task<bool>>>` která je vyvolána, když byla složka zálohy vytvořena místně a je připravena k jejímu přesunutí do některého externího úložiště.
+Jak je vidět níže, `BackupAsync` přebírá `BackupDescription` objekt, kde jedna může zadat úplnou nebo přírůstkovou zálohu, a také funkci zpětného volání, `Func<< BackupInfo, CancellationToken, Task<bool>>>` která je vyvolána, když byla složka zálohy vytvořena místně a je připravena k jejímu přesunutí do některého externího úložiště.
 
 ```csharp
 
@@ -70,19 +69,19 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-Požadavek na převzetí přírůstkové zálohy může selhat `FabricMissingFullBackupException`s. Tato výjimka označuje, že se děje jedna z následujících věcí:
+Požadavek na převzetí přírůstkové zálohy může selhat s `FabricMissingFullBackupException` . Tato výjimka označuje, že se děje jedna z následujících věcí:
 
 - replika nikdy netrvalou úplnou zálohu, protože se stala primární,
 - Některé záznamy protokolu od poslední zálohy byly zkráceny nebo
 - replika prošla `MaxAccumulatedBackupLogSizeInMB` limitem.
 
-Uživatelé mohou zvýšit pravděpodobnost, že bude možné provádět přírůstkové zálohování konfigurací `MinLogSizeInMB` nebo. `TruncationThresholdFactor`
+Uživatelé mohou zvýšit pravděpodobnost, že bude možné provádět přírůstkové zálohování konfigurací `MinLogSizeInMB` nebo `TruncationThresholdFactor` .
 Zvýšením počtu těchto hodnot se zvýší využití disku na jednu repliku.
 Další informace najdete v tématu [konfigurace Reliable Services](service-fabric-reliable-services-configuration.md) .
 
-`BackupInfo`obsahuje informace týkající se zálohování, včetně umístění složky, do které modul runtime uložil zálohu (`BackupInfo.Directory`). Funkce zpětného volání může přesunout `BackupInfo.Directory` do externího úložiště nebo do jiného umístění.  Tato funkce také vrátí logickou hodnotu, která označuje, zda byla schopna úspěšně přesunout složku záloha do jejího cílového umístění.
+`BackupInfo`obsahuje informace týkající se zálohování, včetně umístění složky, do které modul runtime uložil zálohu ( `BackupInfo.Directory` ). Funkce zpětného volání může přesunout `BackupInfo.Directory` do externího úložiště nebo do jiného umístění.  Tato funkce také vrátí logickou hodnotu, která označuje, zda byla schopna úspěšně přesunout složku záloha do jejího cílového umístění.
 
-Následující kód ukazuje, `BackupCallbackAsync` jak lze metodu použít k nahrání zálohy do Azure Storage:
+Následující kód ukazuje, jak `BackupCallbackAsync` lze metodu použít k nahrání zálohy do Azure Storage:
 
 ```csharp
 private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
@@ -116,10 +115,10 @@ V tomto případě modul runtime automaticky detekuje ztrátu dat a vyvolá `OnD
 
 Autor služby musí provést následující kroky, aby obnovil:
 
-  - Přepsat metodu `OnDataLossAsync`virtuální základní třídy.
+  - Přepsat metodu virtuální základní třídy `OnDataLossAsync` .
   - Vyhledejte nejnovější zálohu v externím umístění, které obsahuje zálohy služby.
   - Stáhněte si nejnovější zálohu (a dekomprimujte zálohu do zálohovací složky, pokud byla komprimovaná).
-  - `OnDataLossAsync` Metoda poskytuje `RestoreContext`. Zavolejte `RestoreAsync` rozhraní API na poskytnutou `RestoreContext`adresu.
+  - `OnDataLossAsync`Metoda poskytuje `RestoreContext` . Zavolejte `RestoreAsync` rozhraní API na poskytnutou adresu `RestoreContext` .
   - Vrátí hodnotu true, pokud bylo obnovení úspěšné.
 
 Následuje příklad implementace `OnDataLossAsync` metody:
@@ -137,19 +136,19 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription`předání do `RestoreContext.RestoreAsync` volání obsahuje člen s názvem `BackupFolderPath`.
-Při obnovování jediné úplné zálohy by měla `BackupFolderPath` být tato nastavení nastavena na místní cestu ke složce, která obsahuje úplnou zálohu.
+`RestoreDescription`předání do `RestoreContext.RestoreAsync` volání obsahuje člen s názvem `BackupFolderPath` .
+Při obnovování jediné úplné zálohy `BackupFolderPath` by měla být tato nastavení nastavena na místní cestu ke složce, která obsahuje úplnou zálohu.
 Při obnovování úplné zálohy a počtu přírůstkových záloh `BackupFolderPath` byste měli nastavit místní cestu ke složce, která obsahuje pouze úplné zálohování, ale také všechny přírůstkové zálohy.
-`RestoreAsync`volání může být `FabricMissingFullBackupException` vyvoláno, pokud `BackupFolderPath` zadané neobsahuje úplnou zálohu.
-Může také vyvolat výjimku `ArgumentException` , `BackupFolderPath` Pokud má porušený řetězec přírůstkových záloh.
+`RestoreAsync`volání může být vyvoláno, `FabricMissingFullBackupException` Pokud `BackupFolderPath` zadané neobsahuje úplnou zálohu.
+Může také vyvolat výjimku, `ArgumentException` Pokud `BackupFolderPath` má porušený řetězec přírůstkových záloh.
 Například pokud obsahuje úplnou zálohu, první přírůstkové a třetí přírůstkové zálohování, ale ne druhou přírůstkovou zálohu.
 
 > [!NOTE]
-> RestorePolicy je ve výchozím nastavení standardně nastavená na hodnotu Safe.  To znamená, že `RestoreAsync` rozhraní API selže s chybou ArgumentException, pokud zjistí, že složka pro zálohování obsahuje stav, který je starší než nebo roven stavu obsaženému v této replice.  `RestorePolicy.Force`dá se použít k přeskočení této kontroly bezpečnosti. Tento parametr je určen jako součást `RestoreDescription`.
+> RestorePolicy je ve výchozím nastavení standardně nastavená na hodnotu Safe.  To znamená, že `RestoreAsync` rozhraní API selže s chybou ArgumentException, pokud zjistí, že složka pro zálohování obsahuje stav, který je starší než nebo roven stavu obsaženému v této replice.  `RestorePolicy.Force`dá se použít k přeskočení této kontroly bezpečnosti. Tento parametr je určen jako součást `RestoreDescription` .
 > 
 
 ## <a name="deleted-or-lost-service"></a>Odstraněná nebo ztracená služba
-Je-li služba odebrána, je nutné nejprve znovu vytvořit službu, aby bylo možné data obnovit.  Je důležité vytvořit službu se stejnou konfigurací, například pomocí schématu dělení, aby bylo možné data snadno obnovit.  Jakmile je služba spuštěná, musí se v každém oddílu této`OnDataLossAsync` služby VYVOLÁVAT rozhraní API pro obnovení dat (výše). Jedním ze způsobů, jak toho dosáhnout, je použít [FabricClient. TestManagementClient. StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) na každém oddílu.  
+Je-li služba odebrána, je nutné nejprve znovu vytvořit službu, aby bylo možné data obnovit.  Je důležité vytvořit službu se stejnou konfigurací, například pomocí schématu dělení, aby bylo možné data snadno obnovit.  Jakmile je služba spuštěná, `OnDataLossAsync` musí se v každém oddílu této služby vyvolávat rozhraní API pro obnovení dat (výše). Jedním ze způsobů, jak toho dosáhnout, je použít [FabricClient. TestManagementClient. StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) na každém oddílu.  
 
 Od tohoto okamžiku je implementace stejná jako u výše uvedeného scénáře. Každý oddíl musí obnovit poslední relevantní zálohu z externího úložiště. Jedna výstraha znamená, že ID oddílu se teď může změnit, protože modul runtime vytvoří ID oddílů dynamicky. Proto služba potřebuje Uložit příslušné informace o oddílu a název služby k identifikaci správné poslední zálohy pro obnovení pro každý oddíl.
 
@@ -162,14 +161,14 @@ Pokud nově nasazená aplikace obsahuje chybu, může to způsobit poškození d
 
 První věc, kterou je třeba provést po zjištění takové chyby egregious, která způsobí poškození dat, je zmrazení služby na úrovni aplikace a pokud je to možné, upgraduje na verzi kódu aplikace, která chybu neobsahuje.  I po tom, co je kód služby opraven, mohou být data stále poškozena, a proto může být nutné obnovit data.  V takových případech nemusí být stačit obnovit poslední zálohu, protože může dojít také k poškození nejnovějších záloh.  Proto je nutné najít poslední zálohu, která byla provedena před poškozením dat.
 
-Pokud si nejste jistí, které zálohy jsou poškozené, můžete nasadit nový cluster Service Fabric a obnovit zálohy ovlivněných oddílů stejně jako u výše uvedeného scénáře "odstraněno nebo ztracená služba".  Pro každý oddíl Začněte obnovovat zálohy od nejnovějších k nejméně. Jakmile najdete zálohu, která nemá poškození, přesuňte nebo odstraňte všechny zálohy tohoto oddílu, které byly novější (než tato záloha). Tento postup opakujte pro každý oddíl. Když `OnDataLossAsync` se teď v oddílu v produkčním clusteru volá poslední záloha, která se nachází v externím úložišti, bude ta, kterou vybral výše uvedený proces.
+Pokud si nejste jistí, které zálohy jsou poškozené, můžete nasadit nový cluster Service Fabric a obnovit zálohy ovlivněných oddílů stejně jako u výše uvedeného scénáře "odstraněno nebo ztracená služba".  Pro každý oddíl Začněte obnovovat zálohy od nejnovějších k nejméně. Jakmile najdete zálohu, která nemá poškození, přesuňte nebo odstraňte všechny zálohy tohoto oddílu, které byly novější (než tato záloha). Tento postup opakujte pro každý oddíl. Když se teď v `OnDataLossAsync` oddílu v produkčním clusteru volá poslední záloha, která se nachází v externím úložišti, bude ta, kterou vybral výše uvedený proces.
 
 Nyní je možné pomocí oddílu "Odstraněná nebo ztracená služba" obnovit stav služby do stavu před tím, než kód ladění ztratí stav.
 
 Poznámky:
 
   - Při obnovení je pravděpodobné, že obnovená záloha je starší než stav oddílu před ztrátou dat. Z tohoto důvodu byste měli provést obnovení jenom jako poslední možnost obnovení co nejvíc dat.
-  - Řetězec, který představuje cestu zálohovací složky a cesty souborů uvnitř zálohovací složky, může být větší než 255 znaků v závislosti na délce FabricDataRoot cesty a názvu typu aplikace. To může způsobit, že `Directory.Move` `PathTooLongException` některé metody .NET, například, vyvolávají výjimku. Jedním z alternativních řešení je přímé volání rozhraní API Kernel32 `CopyFile`, třeba.
+  - Řetězec, který představuje cestu zálohovací složky a cesty souborů uvnitř zálohovací složky, může být větší než 255 znaků v závislosti na délce FabricDataRoot cesty a názvu typu aplikace. To může způsobit, že některé metody .NET, například `Directory.Move` , vyvolávají `PathTooLongException` výjimku. Jedním z alternativních řešení je přímé volání rozhraní API Kernel32, třeba `CopyFile` .
 
 ## <a name="back-up-and-restore-reliable-actors"></a>Zálohování a obnovení Reliable Actors
 
@@ -197,7 +196,7 @@ ActorRuntime.RegisterActorAsync<MyActor>(
     (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
-Výchozím zprostředkovatelem stavu pro Reliable Actors je `KvsActorStateProvider`. Přírůstkové zálohování není pro `KvsActorStateProvider`. standardně povolené. Můžete povolit přírůstkové zálohování vytvořením `KvsActorStateProvider` s příslušným nastavením ve svém konstruktoru a pak ho předat konstruktoru ActorService, jak je znázorněno v následujícím fragmentu kódu:
+Výchozím zprostředkovatelem stavu pro Reliable Actors je `KvsActorStateProvider` . Přírůstkové zálohování není pro. standardně povolené `KvsActorStateProvider` . Můžete povolit přírůstkové zálohování vytvořením `KvsActorStateProvider` s příslušným nastavením ve svém konstruktoru a pak ho předat konstruktoru ActorService, jak je znázorněno v následujícím fragmentu kódu:
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -218,7 +217,7 @@ Po povolení přírůstkového zálohování může přírůstkové zálohován�
   - Replika nikdy netrvalou úplnou zálohu, protože se stala primární.
   - Některé záznamy protokolu byly od posledního zálohování zkráceny.
 
-Když je zapnuté přírůstkové `KvsActorStateProvider` zálohování, nepoužívá k řízení záznamů protokolů cyklickou vyrovnávací paměť a pravidelně ji zkrátí. Pokud uživatel neprovádí zálohu po dobu 45 minut, systém automaticky zkrátí záznamy protokolu. Tento interval lze nakonfigurovat zadáním `logTruncationIntervalInMinutes` v `KvsActorStateProvider` konstruktoru (podobně jako při povolení přírůstkového zálohování). V případě, že primární replika potřebuje sestavit další repliku odesláním všech svých dat, mohou být záznamy protokolu také zkráceny.
+Když je zapnuté přírůstkové zálohování, `KvsActorStateProvider` nepoužívá k řízení záznamů protokolů cyklickou vyrovnávací paměť a pravidelně ji zkrátí. Pokud uživatel neprovádí zálohu po dobu 45 minut, systém automaticky zkrátí záznamy protokolu. Tento interval lze nakonfigurovat zadáním `logTruncationIntervalInMinutes` v `KvsActorStateProvider` konstruktoru (podobně jako při povolení přírůstkového zálohování). V případě, že primární replika potřebuje sestavit další repliku odesláním všech svých dat, mohou být záznamy protokolu také zkráceny.
 
 Při obnovení ze záložního řetězce, podobně jako Reliable Services, by měl BackupFolderPath obsahovat podadresáře s jedním podadresářem obsahujícím úplné zálohování a další podadresáře, které obsahují přírůstkové zálohování. Pokud selže ověření řetězu zálohování, vrátí rozhraní API pro obnovení výjimku FabricException s příslušnou chybovou zprávou. 
 
@@ -230,7 +229,7 @@ Při obnovení ze záložního řetězce, podobně jako Reliable Services, by m�
 Je důležité zajistit, aby byla důležitá data zálohována a mohla by být obnovena z. To se dá udělat vyvoláním `Start-ServiceFabricPartitionDataLoss` rutiny v prostředí PowerShell, která může způsobit ztrátu dat v určitém oddílu a otestovat, jestli funkce zálohování a obnovení dat pro vaši službu fungují podle očekávání.  Také je možné programově vyvolat ztráty a obnovení dat z této události.
 
 > [!NOTE]
-> Ukázkovou implementaci funkcí zálohování a obnovení můžete najít v aplikaci Web reference na GitHubu. Podívejte se prosím na `Inventory.Service` službu, kde najdete další podrobnosti.
+> Ukázkovou implementaci funkcí zálohování a obnovení můžete najít v aplikaci Web reference na GitHubu. Podívejte se prosím na službu, kde najdete `Inventory.Service` Další podrobnosti.
 > 
 > 
 
@@ -238,16 +237,16 @@ Je důležité zajistit, aby byla důležitá data zálohována a mohla by být 
 Tady jsou další podrobnosti o zálohování a obnovení.
 
 ### <a name="backup"></a>Backup
-Správce spolehlivého stavu poskytuje možnost vytvářet konzistentní zálohy bez blokování operací čtení a zápisu. Pokud to chcete udělat, využívá mechanismus kontrolního bodu a protokolu trvalosti.  Správce spolehlivého stavu provádí v určitých bodech nepřibližné (zjednodušené) kontrolní body, které zbavují tlak z transakčního protokolu a zlepšují dobu obnovení.  Když `BackupAsync` je volána, správce spolehlivého stavu vydá pokyn všem spolehlivým objektům ke zkopírování jejich nejnovějších souborů kontrolních bodů do místní záložní složky.  Správce Reliable State pak zkopíruje všechny záznamy protokolu počínaje od "ukazatele" Start "k nejnovějšímu záznamu protokolu do složky pro zálohování.  Vzhledem k tomu, že všechny záznamy protokolu až do nejnovějšího záznamu protokolu jsou součástí zálohování a správce spolehlivého stavu zachovává protokolování proti zápisu, zaručuje správce spolehlivého stavu, že všechny potvrzené transakce (`CommitAsync` úspěšně vráceny) jsou součástí zálohy.
+Správce spolehlivého stavu poskytuje možnost vytvářet konzistentní zálohy bez blokování operací čtení a zápisu. Pokud to chcete udělat, využívá mechanismus kontrolního bodu a protokolu trvalosti.  Správce spolehlivého stavu provádí v určitých bodech nepřibližné (zjednodušené) kontrolní body, které zbavují tlak z transakčního protokolu a zlepšují dobu obnovení.  Když `BackupAsync` je volána, správce spolehlivého stavu vydá pokyn všem spolehlivým objektům ke zkopírování jejich nejnovějších souborů kontrolních bodů do místní záložní složky.  Správce Reliable State pak zkopíruje všechny záznamy protokolu počínaje od "ukazatele" Start "k nejnovějšímu záznamu protokolu do složky pro zálohování.  Vzhledem k tomu, že všechny záznamy protokolu až do nejnovějšího záznamu protokolu jsou součástí zálohování a správce spolehlivého stavu zachovává protokolování proti zápisu, zaručuje správce spolehlivého stavu, že všechny potvrzené transakce ( `CommitAsync` úspěšně vráceny) jsou součástí zálohy.
 
 Všechny transakce, které po `BackupAsync` volání metody zavolaly, mohou nebo nemusí být v záloze.  Po naplnění místní složky zálohování platformou (která znamená, že je místní záloha dokončená modulem runtime) se vyvolá zpětné volání zálohy služby.  Toto zpětné volání zodpovídá za přesunutí zálohovací složky do externího umístění, jako je například Azure Storage.
 
 ### <a name="restore"></a>Obnovení
 Správce Reliable State nabízí možnost obnovení ze zálohy pomocí `RestoreAsync` rozhraní API.  
-`RestoreAsync` Metoda on `RestoreContext` může být volána pouze uvnitř `OnDataLossAsync` metody.
+`RestoreAsync`Metoda on `RestoreContext` může být volána pouze uvnitř `OnDataLossAsync` metody.
 Logická hodnota vrácená funkcí `OnDataLossAsync` označuje, zda služba obnovila svůj stav z externího zdroje.
-Pokud `OnDataLossAsync` vrátí hodnotu true, Service Fabric bude znovu sestavovat všechny ostatní repliky z tohoto primárního. Service Fabric zajistí, aby repliky, které `OnDataLossAsync` budou přijímat volání, přešly na primární roli, ale neudělily stav čtení nebo stav zápisu.
-To znamená, že pro StatefulService Implements `RunAsync` nebude volána, dokud `OnDataLossAsync` nebude dokončena úspěšně.
+Pokud `OnDataLossAsync` vrátí hodnotu true, Service Fabric bude znovu sestavovat všechny ostatní repliky z tohoto primárního. Service Fabric zajistí, aby repliky, které budou přijímat `OnDataLossAsync` volání, přešly na primární roli, ale neudělily stav čtení nebo stav zápisu.
+To znamená, že pro StatefulService Implements nebude `RunAsync` volána, dokud nebude `OnDataLossAsync` dokončena úspěšně.
 Pak `OnDataLossAsync` bude vyvolána na novém primárním.
 Dokud služba toto rozhraní API úspěšně dokončí (vrátí hodnotu true nebo false) a dokončí příslušnou novou konfiguraci, rozhraní API se v tuto chvíli bude dál volat.
 

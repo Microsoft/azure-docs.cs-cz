@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934702"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Použití MapReduce s Apache Hadoop v HDInsight pomocí SSH
@@ -42,7 +41,7 @@ Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoře
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Tento příkaz spustí `wordcount` třídu, která je obsažena v `hadoop-mapreduce-examples.jar` souboru. Používá `/example/data/gutenberg/davinci.txt` dokument jako vstup a výstup je uložen na `/example/data/WordCountOutput`.
+    Tento příkaz spustí `wordcount` třídu, která je obsažena v `hadoop-mapreduce-examples.jar` souboru. Používá `/example/data/gutenberg/davinci.txt` dokument jako vstup a výstup je uložen na `/example/data/WordCountOutput` .
 
     > [!NOTE]
     > Další informace o této úloze MapReduce a ukázkových datech najdete v tématu [použití MapReduce v Apache Hadoop ve službě HDInsight](hdinsight-use-mapreduce.md).
@@ -62,7 +61,7 @@ Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoře
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Tento příkaz zobrazí dva soubory, `_SUCCESS` a `part-r-00000`. `part-r-00000` Soubor obsahuje výstup pro tuto úlohu.
+    Tento příkaz zobrazí dva soubory, `_SUCCESS` a `part-r-00000` . `part-r-00000`Soubor obsahuje výstup pro tuto úlohu.
 
     > [!NOTE]  
     > Některé úlohy MapReduce mohou rozdělit výsledky napříč více soubory, které jsou **součástí jazyka r-#** # # # #. Pokud ano, použijte k označení pořadí souborů příponu # # # # #.
@@ -73,7 +72,7 @@ Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoře
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Tento příkaz zobrazí seznam slov, která jsou obsažena v souboru **wasbs://example/data/Gutenberg/DaVinci.txt** , a počet, kolikrát se každé slovo objevilo. Následující text je příkladem dat, která jsou obsažena v souboru:
+    Tento příkaz zobrazí seznam slov, která jsou obsažena v souboru **wasbs://example/data/gutenberg/davinci.txt** a počet pokusů o každé slovo. Následující text je příkladem dat, která jsou obsažena v souboru:
 
     ```output
     wreathed        3

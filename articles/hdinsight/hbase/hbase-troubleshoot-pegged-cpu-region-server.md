@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887304"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Scénář: doložení procesoru na serveru oblasti v clusteru Apache HBA v Azure HDInsight
@@ -24,19 +23,19 @@ Proces serveru oblasti Apache HBA začíná pracovat blízko až 200% CPU, což 
 
 ## <a name="cause"></a>Příčina
 
-Pokud spouštíte clustery HBA v 3.4, možná jste dosáhli potenciální chyby způsobené upgradem JDK na verzi 1.7.0 _151. Příznak uvidíme, že proces serveru oblastí se začne používat blízko až 200% CPU (aby se ověřilo, `top` že jste tento příkaz spustili. Pokud se v procesu zabírají blízko 200% CPU získat své PID a ověříte, že je proces serveru `ps -aux | grep` oblastí spuštěný
+Pokud spouštíte clustery HBA v 3.4, možná jste dosáhli potenciální chyby způsobené upgradem JDK na verzi 1.7.0 _151. Příznak uvidíme, že proces serveru oblastí se začne používat blízko až 200% CPU (aby se ověřilo, že jste tento `top` příkaz spustili. Pokud se v procesu zabírají blízko 200% CPU získat své PID a ověříte, že je proces serveru oblastí spuštěný `ps -aux | grep`
 
 ## <a name="resolution"></a>Řešení
 
 1. Nainstalujte JDK 1,8 na všechny uzly clusteru následujícím způsobem:
 
-    * Spusťte akci `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`skriptu. Nezapomeňte vybrat možnost, která se má spustit na všech uzlech.
+    * Spusťte akci skriptu `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh` . Nezapomeňte vybrat možnost, která se má spustit na všech uzlech.
 
-    * Alternativně se můžete přihlásit do každého jednotlivého uzlu a spustit příkaz `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk`.
+    * Alternativně se můžete přihlásit do každého jednotlivého uzlu a spustit příkaz `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk` .
 
-1. Přejít na uživatelské rozhraní Ambari `https://<clusterdnsname>.azurehdinsight.net`–.
+1. Přejít na uživatelské rozhraní Ambari – `https://<clusterdnsname>.azurehdinsight.net` .
 
-1. Přejděte na **adaptéry HBA->konfigurace – >pokročilé – >Upřesnit** `hbase-env configs` a změňte proměnnou `JAVA_HOME` na `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`. Uložte změnu konfigurace.
+1. Přejděte na **adaptéry HBA->konfigurace – >pokročilé – >Upřesnit** `hbase-env configs` a změňte proměnnou `JAVA_HOME` na `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64` . Uložte změnu konfigurace.
 
 1. [Volitelné, ale Doporučené] [Vyprázdnit všechny tabulky v clusteru](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
@@ -56,6 +55,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

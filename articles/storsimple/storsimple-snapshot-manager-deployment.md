@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75933383"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Nasazení modulu snap-in StorSimple Snapshot Manager MMC
@@ -117,7 +116,7 @@ K připojení StorSimple Snapshot Manager k zařízení StorSimple použijte ná
 2. V podokně **obor** klikněte pravým tlačítkem na uzel **zařízení** a pak klikněte na **Konfigurovat zařízení**. Zobrazí se dialogové okno **Konfigurace zařízení** .
    
     ![Konfigurace zařízení](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. V poli seznam **zařízení** vyberte IP adresu zařízení Microsoft Azure StorSimple nebo virtuálního zařízení. Do textového pole **heslo** zadejte StorSimple Snapshot Manager heslo, které jste vytvořili pro zařízení v Azure Portal. Klikněte na tlačítko **OK**.
+3. V poli seznam **zařízení** vyberte IP adresu zařízení Microsoft Azure StorSimple nebo virtuálního zařízení. Do textového pole **heslo** zadejte StorSimple Snapshot Manager heslo, které jste vytvořili pro zařízení v Azure Portal. Klikněte na **OK**.
 4. StorSimple Snapshot Manager vyhledá zařízení, které jste identifikovali. Pokud je zařízení k dispozici, StorSimple Snapshot Manager přidá připojení. Můžete [ověřit připojení k zařízení](#to-verify-the-connection) a potvrdit, že připojení bylo úspěšně přidáno.
    
     Pokud zařízení není z nějakého důvodu k dispozici, StorSimple Snapshot Manager vrátí chybovou zprávu. Kliknutím na tlačítko **OK** zavřete chybovou zprávu a kliknutím na tlačítko **Storno** zavřete dialogové okno **Konfigurace zařízení** .

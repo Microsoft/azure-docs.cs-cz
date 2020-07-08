@@ -9,15 +9,14 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75970278"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů objektů BLOB v Azure (ABFS): vyhrazený ovladač Azure Storage pro Hadoop
 
-Jednou z primárních metod přístupu k datům v Azure Data Lake Storage Gen2 je prostřednictvím [systému Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umožňuje uživatelům Azure Blob Storage přístup k novému ovladači, ovladači systému souborů blob Azure nebo `ABFS`. ABFS je součástí Apache Hadoop a je součástí mnoha komerčních distribucí systému Hadoop. Pomocí tohoto ovladače můžou spousta aplikací a platforem získat přístup k datům v Azure Blob Storage bez explicitního odkazování na Data Lake Storage Gen2 kódu.
+Jednou z primárních metod přístupu k datům v Azure Data Lake Storage Gen2 je prostřednictvím [systému Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umožňuje uživatelům Azure Blob Storage přístup k novému ovladači, ovladači systému souborů blob Azure nebo `ABFS` . ABFS je součástí Apache Hadoop a je součástí mnoha komerčních distribucí systému Hadoop. Pomocí tohoto ovladače můžou spousta aplikací a platforem získat přístup k datům v Azure Blob Storage bez explicitního odkazování na Data Lake Storage Gen2 kódu.
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Předchozí schopnost: ovladač Azure Storage Blob Windows
 

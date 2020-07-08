@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68736327"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Registrace zdrojů dat v Azure Data Catalog
@@ -38,7 +37,7 @@ Při registraci zdroje dat extrahuje nástroj registrace informace o struktuře 
 Pro všechny objekty tato strukturální metadata obsahují umístění objektu, aby uživatelé, kteří data zjišťují, mohli tyto informace použít pro připojení k objektu v nástrojích klienta podle svého výběru. Další strukturální metadata obsahují název a typ objektu a název a název sloupce nebo sloupce a datový typ.
 
 ## <a name="descriptive-metadata"></a>Popisná metadata
-Kromě základních strukturálních metadat, která jsou extrahována ze zdroje dat, nástroj pro registraci zdroje dat extrahuje popisné metadata. Pro SQL Server Analysis Services a SQL Server Reporting Services se tato metadata odebírají z vlastností popisu zveřejněných těmito službami. Pro SQL Server jsou extrahovány hodnoty zadané pomocí\_rozšířené vlastnosti Popis MS. Pro Oracle Database Nástroj pro registraci zdroje dat extrahuje sloupec komentáře ze zobrazení komentáře na kartě\_\_všechny.
+Kromě základních strukturálních metadat, která jsou extrahována ze zdroje dat, nástroj pro registraci zdroje dat extrahuje popisné metadata. Pro SQL Server Analysis Services a SQL Server Reporting Services se tato metadata odebírají z vlastností popisu zveřejněných těmito službami. Pro SQL Server jsou extrahovány hodnoty zadané pomocí \_ Rozšířené vlastnosti Popis MS. Pro Oracle Database Nástroj pro registraci zdroje dat extrahuje sloupec komentáře ze \_ zobrazení komentáře na kartě všechny \_ .
 
 Kromě popisných metadat, která jsou extrahována ze zdroje dat, mohou uživatelé zadat popisná metadata pomocí nástroje pro registraci zdroje dat. Uživatelé můžou přidávat značky a můžou identifikovat odborníky na registrované objekty. Všechna tato popisné metadata se zkopírují do služby Data Catalog spolu se strukturálními metadaty.
 

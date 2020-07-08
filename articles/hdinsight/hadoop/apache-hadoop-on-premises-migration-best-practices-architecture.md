@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934694"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy pro architekturu
@@ -38,11 +37,11 @@ V následující tabulce jsou uvedeny různé metody, které lze použít k vytv
 
 |Nástroj|Založené na prohlížeči|Příkazový řádek|REST API|Sada SDK|
 |---|---|---|---|---|
-|[portál Azure](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
-|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|×|×|×|×|
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
+|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Rozhraní příkazového řádku Azure (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||×|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||×|||
-|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||×|×||
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
 |[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||×|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||×|
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||×|
@@ -107,7 +106,7 @@ Mezi osvědčené postupy metastore Hive HDInsight patří následující:
 
 ## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy
 
-- Zvažte použití clusteru LLAP pro interaktivní dotazy podregistru s vyšší dobou odezvy [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) je nová funkce v podregistru 2,0, která umožňuje ukládání dotazů do mezipaměti v paměti. LLAP vydává dotazy na podregistr mnohem rychleji, až do [26x rychleji než v registru 1. x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+- Zvažte použití clusteru LLAP pro interaktivní dotazy podregistru s vyšší dobou odezvy [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)   je nová funkce v podregistru 2,0, která umožňuje ukládání dotazů do mezipaměti v paměti. LLAP vydává dotazy na podregistr mnohem rychleji, až do [26x rychleji než v registru 1. x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Zvažte použití úloh Spark místo úloh podregistru.
 - Zvažte nahrazení dotazů založených na Impala pomocí dotazů LLAP.
 - Zvažte nahrazení úloh MapReduce pomocí úloh Spark.
