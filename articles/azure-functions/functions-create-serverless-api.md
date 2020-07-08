@@ -7,15 +7,14 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122765"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Přizpůsobení koncového bodu HTTP v Azure Functions
 
-V tomto článku se dozvíte, jak Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Azure Functions se dodává s kolekcí integrovaných triggerů HTTP a vazeb, které usnadňují vytváření koncových bodů v nejrůznějších jazycích, včetně Node. js, C# a dalších. V tomto článku budete přizpůsobovat Trigger HTTP, který bude zpracovávat konkrétní akce v návrhu rozhraní API. Také se připravujete pro rostoucí rozhraní API integrací s Proxy služby Azure Functions a nastavením přípravných rozhraní API. Tyto úlohy se provádí na základě funkcí prostředí COMPUTE bez serveru, takže se nemusíte starat o škálování prostředků – stačí se zaměřit na logiku rozhraní API.
+V tomto článku se dozvíte, jak Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Azure Functions se dodává s kolekcí integrovaných triggerů HTTP a vazeb, které usnadňují vytváření koncových bodů v nejrůznějších jazycích, včetně Node.js, C# a dalších. V tomto článku budete přizpůsobovat Trigger HTTP, který bude zpracovávat konkrétní akce v návrhu rozhraní API. Také se připravujete pro rostoucí rozhraní API integrací s Proxy služby Azure Functions a nastavením přípravných rozhraní API. Tyto úlohy se provádí na základě funkcí prostředí COMPUTE bez serveru, takže se nemusíte starat o škálování prostředků – stačí se zaměřit na logiku rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -37,7 +36,7 @@ Ve výchozím nastavení je funkce triggeru protokolu HTTP nakonfigurovaná tak,
 
 1. Použijte nastavení triggeru HTTP, jak je uvedeno v následující tabulce.
 
-    | Pole | Ukázková hodnota | Popis |
+    | Pole | Ukázková hodnota | Description |
     |---|---|---|
     | Šablona trasy | /hello | Určuje, jaká trasa se používá k vyvolání této funkce. |
     | Úroveň autorizace | Anonymní | Volitelné: Zpřístupňuje vaši funkci bez klíče rozhraní API. |
@@ -105,7 +104,7 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.m
 
 1. Na stránce **nový proxy** použijte nastavení v následující tabulce a pak vyberte **vytvořit**.
 
-    | Pole | Ukázková hodnota | Popis |
+    | Pole | Ukázková hodnota | Description |
     |---|---|---|
     | Name | HelloProxy | Popisný název sloužící jen ke správě |
     | Šablona trasy | /api/remotehello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
@@ -128,7 +127,7 @@ Pokud chcete vytvořit toto rozhraní API pro vytváření, vytvoříme nový pr
 
 Vyberte `proxies.json` v levém navigačním panelu. Tento soubor uchovává konfiguraci pro všechny vaše proxy servery. Pokud používáte jednu z [metod nasazení Functions](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment), můžete tento soubor udržovat ve správě zdrojového kódu. Další informace o tomto souboru najdete v článku o [pokročilé konfiguraci proxy](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
 
-Pokud jste dosud následovali, proxy. JSON by měl vypadat takto:
+Pokud jste následovali společně, proxies.jsby měl vypadat takto:
 
 ```json
 {
@@ -144,7 +143,7 @@ Pokud jste dosud následovali, proxy. JSON by měl vypadat takto:
 }
 ```
 
-Dále přidáte své rozhraní API pro návrhy. Soubor proxy. JSON nahraďte následujícím kódem:
+Dále přidáte své rozhraní API pro návrhy. Nahraďte proxies.jssouboru následujícím kódem:
 
 ```json
 {

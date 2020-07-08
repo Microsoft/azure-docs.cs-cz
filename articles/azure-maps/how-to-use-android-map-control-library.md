@@ -10,10 +10,9 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648215"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
@@ -84,7 +83,7 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
         ```
     
     4. Přejděte na **soubor** na panelu nástrojů a pak klikněte na **synchronizovat projekt se soubory Gradle**.
-3. Přidejte do hlavní aktivity fragment mapy ( \> aktivita rozložení res \> \_ Main. XML):
+3. Přidejte do hlavní aktivity fragment mapy ( \> aktivita rozložení res \> \_main.xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

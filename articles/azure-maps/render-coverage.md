@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123934"
 ---
 # <a name="azure-maps-render-coverage"></a>Pokrytí vykreslování Azure Maps
@@ -32,7 +31,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 ## <a name="africa"></a>Afrika 
 
 
-| Země/region | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Alžírsko                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -92,7 +91,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="americas"></a>Amerika
 
-| Země/region | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua a Barbuda       | ✓ | ✓ |
@@ -145,8 +144,8 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ | ✓ |
 | Surinam                  | ✓ | ✓ |
 | Trinidad a Tobago       | ✓ | ✓ |
-| Turks a Caicos  | ✓ | ✓ |
-| Spojené státy             | ✓ | ✓ |
+| Ostrovy Turks a Caicos  | ✓ | ✓ |
+| USA             | ✓ | ✓ |
 | Uruguay                   | ✓ | ✓ |
 | Venezuela                 | ✓ | ✓ |
 | Britské Panenské ostrovy   | ✓ | ✓ |
@@ -154,7 +153,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="asia"></a>Asie 
 
-| Země/region | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Afghánistán               |   | Ř |
 | Bahrajn                   | ✓ | ✓ |
@@ -166,7 +165,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Čína                     |   | Ř |
 | Kokosové ostrovy   |   | Ř |
 | Korejská lidově demokratická republika |   | Ř |
-| Hongkong – zvláštní správní oblast             | ✓ | ✓ |
+| Hongkong – zvláštní administrativní oblast             | ✓ | ✓ |
 | Indie                     | Ř | ✓ | 
 | Indonésie                 | ✓ | ✓ |
 | Iran                      |   | Ř |
@@ -208,7 +207,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="oceania"></a>Oceánie
 
-| Země/region | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Americká Samoa            |   | ✓ |
 | Austrálie                 | ✓ | ✓ |
@@ -238,7 +237,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="europe"></a>Evropa
 
-| Země/region | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
+| Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
 | Albánie                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |

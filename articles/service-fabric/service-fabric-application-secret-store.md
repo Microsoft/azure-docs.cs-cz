@@ -4,10 +4,9 @@ description: Tento článek popisuje, jak používat úložiště centrálních 
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197770"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Úložiště centrálních tajných kódů v Azure Service Fabric 
@@ -73,7 +72,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
 
 Při použití tajného klíče ve vaší aplikaci Service Fabric postupujte podle těchto kroků.
 
-1. Přidejte do souboru **Settings. XML** část s následujícím fragmentem kódu. Všimněte si, že hodnota je ve formátu { `secretname:version` }.
+1. Přidejte do souboru **settings.xml** oddíl s následujícím fragmentem kódu. Všimněte si, že hodnota je ve formátu { `secretname:version` }.
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +80,7 @@ Při použití tajného klíče ve vaší aplikaci Service Fabric postupujte pod
      </Section>
    ```
 
-1. Importujte oddíl v **souboru souboru ApplicationManifest. XML**.
+1. Importujte část v **ApplicationManifest.xml**.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -99,7 +98,7 @@ Při použití tajného klíče ve vaší aplikaci Service Fabric postupujte pod
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
 1. Připojte tajné klíče ke kontejneru. Jediná změna nutná k zpřístupnění tajných kódů uvnitř kontejneru je `specify` bod připojení v `<ConfigPackage>` .
-Následující fragment kódu je upravený **souboru ApplicationManifest. XML**.  
+Následující fragment kódu je upravený **ApplicationManifest.xml**.  
 
    ```xml
    <ServiceManifestImport>
@@ -117,7 +116,7 @@ Následující fragment kódu je upravený **souboru ApplicationManifest. XML**.
    ```
    Tajné kódy jsou k dispozici pod přípojným bodem v kontejneru.
 
-1. Můžete vytvořit vazby tajného kódu k proměnné prostředí procesu zadáním `Type='SecretsStoreRef` . Následující fragment kódu je příkladem vytvoření vazby `supersecret` verze `ver1` k proměnné prostředí `MySuperSecret` v **souboru ServiceManifest. XML**.
+1. Můžete vytvořit vazby tajného kódu k proměnné prostředí procesu zadáním `Type='SecretsStoreRef` . Následující fragment kódu je příkladem vytvoření vazby `supersecret` verze `ver1` k proměnné prostředí `MySuperSecret` v **ServiceManifest.xml**.
 
    ```xml
    <EnvironmentVariables>

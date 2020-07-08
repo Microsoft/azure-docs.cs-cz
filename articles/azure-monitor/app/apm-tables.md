@@ -6,10 +6,9 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83210538"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Změny prostředků na základě pracovního prostoru (Preview)
@@ -20,7 +19,7 @@ Data prostředků Application Insights na základě pracovního prostoru se ukl�
 
 ## <a name="table-structure"></a>Struktura tabulky
 
-| Starší verze názvu tabulky | Název nové tabulky | Popis |
+| Starší verze názvu tabulky | Název nové tabulky | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Souhrnná data z testů dostupnosti.|
 | browserTimings | AppBrowserTimings | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.|
@@ -65,10 +64,10 @@ Starší tabulka: dostupnost
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
-|itemType|řetězec|Typ|String|
+|itemType|řetězec|Typ|Řetězec|
 |location|řetězec|Umístění|řetězec|
 |zpráva|řetězec|Zpráva|řetězec|
-|jméno|řetězec|Name|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -108,7 +107,7 @@ Starší tabulka: browserTimings
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|jméno|řetězec|Name|datetime|
+|name|řetězec|Name|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
@@ -154,8 +153,8 @@ Starší tabulka: závislosti
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
-|itemType|řetězec|Typ|String|
-|jméno|řetězec|Name|řetězec|
+|itemType|řetězec|Typ|Řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -167,7 +166,7 @@ Starší tabulka: závislosti
 |úspěch|řetězec|Úspěch|Logická hodnota|
 |cílové|řetězec|Cíl|řetězec|
 |časové razítko|datetime|TimeGenerated|datetime|
-|type|řetězec|DependencyType|řetězec|
+|typ|řetězec|DependencyType|řetězec|
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
@@ -197,7 +196,7 @@ Starší tabulka: customEvents
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|jméno|řetězec|Name|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -232,7 +231,7 @@ Starší tabulka: customMetrics
 |iKey|řetězec|IKey|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|jméno|řetězec|Name|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -243,7 +242,7 @@ Starší tabulka: customMetrics
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|value|real|odstraněn||
+|hodnota|real|odstraněn||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -276,8 +275,8 @@ Starší tabulka: pageViews
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
-|itemType|řetězec|Typ|String|
-|jméno|řetězec|Name|řetězec|
+|itemType|řetězec|Typ|Řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -317,7 +316,7 @@ Starší tabulka: čítače výkonu
 |případě|řetězec|Instance|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|jméno|řetězec|Name|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -328,7 +327,7 @@ Starší tabulka: čítače výkonu
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|value|real|Hodnota|real|
+|hodnota|real|Hodnota|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -352,24 +351,24 @@ Starší tabulka: žádosti
 |customDimensions|dynamic|Vlastnosti|Dynamická|
 |customMeasurements|dynamic|Měření|Dynamická|
 |doba trvání|real|Trvání v MS|Skutečné|
-|`id`|řetězec|`Id`|String|
+|`id`|řetězec|`Id`|Řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
-|itemType|řetězec|Typ|String|
-|jméno|řetězec|Name|String|
+|itemType|řetězec|Typ|Řetězec|
+|name|řetězec|Name|Řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
 |operation_SyntheticSource|řetězec|OperationSyntheticSource|řetězec|
-|performanceBucket|řetězec|PerformanceBucket|String|
-|resultCode|řetězec|ResultCode|String|
+|performanceBucket|řetězec|PerformanceBucket|Řetězec|
+|resultCode|řetězec|ResultCode|Řetězec|
 |sdkVersion|řetězec|SdkVersion|řetězec|
 |session_Id|řetězec|SessionId|řetězec|
-|source|odkazy řetězců|Zdroj|String|
+|source|odkazy řetězců|Zdroj|Řetězec|
 |úspěch|řetězec|Úspěch|Logická hodnota|
 |časové razítko|datetime|TimeGenerated|datetime|
-|url|řetězec|URL|String|
+|url|řetězec|URL|Řetězec|
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
@@ -383,7 +382,7 @@ Starší tabulka: výjimky
 |appId|řetězec|\_ResourceGUID|řetězec|
 |application_Version|řetězec|AppVersion|řetězec|
 |appName|řetězec|\_ResourceId|řetězec|
-|sestavení|řetězec|Assembly|řetězec|
+|sestavení|řetězec|Sestavení|řetězec|
 |client_Browser|řetězec|ClientBrowser|řetězec|
 |client_City|řetězec|ClientCity|řetězec|
 |client_CountryOrRegion|řetězec|ClientCountryOrRegion|řetězec|
@@ -421,7 +420,7 @@ Starší tabulka: výjimky
 |session_Id|řetězec|SessionId|řetězec|
 |severityLevel|int|SeverityLevel|int|
 |časové razítko|datetime|TimeGenerated|datetime|
-|type|řetězec|Typvýjimky|řetězec|
+|typ|řetězec|Typvýjimky|řetězec|
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|

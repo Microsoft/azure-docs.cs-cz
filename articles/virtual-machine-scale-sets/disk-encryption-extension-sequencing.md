@@ -10,10 +10,9 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117253"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Použití Azure Disk Encryption s pořadím rozšíření pro škálování sady virtuálních počítačů
@@ -155,7 +154,7 @@ Tady je příklad s použitím "AzureDiskEncryption" následovaného "VMDiagnost
 ```
 
 Podrobnější šablonu najdete v těchto tématech:
-* Použít rozšíření Azure Disk Encryption po vlastním skriptu prostředí, který formátuje disk (Linux): [Deploy-extseq-Linux-ADE-After-CustomScript. JSON](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* Po vytvoření vlastního skriptu prostředí, který formátuje disk (Linux), použijte rozšíření Azure Disk Encryption: [deploy-extseq-linux-ADE-after-customscript.jsna](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>Další kroky

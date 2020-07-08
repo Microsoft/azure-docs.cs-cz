@@ -9,13 +9,12 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005262"
 ---
-# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Kódování a dekódování plochých souborů v Azure Logic Apps pomocí Enterprise Integration Pack
+# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Kódování a dekódování plochých souborů v Azure Logic Apps s využitím řešení Enterprise Integration Pack
 
 Před odesláním obsahu XML obchodnímu partnerovi ve scénáři B2B (Business-to-Business) možná budete chtít takový obsah nejdřív zakódovat. Vytvořením aplikace logiky můžete kódovat a dekódovat ploché soubory pomocí konektoru **plochých souborů** . Aplikace logiky může získat tento obsah XML z různých zdrojů, jako je Trigger žádosti, jiná aplikace nebo jiné [konektory, které podporuje Azure Logic Apps](../connectors/apis-list.md). Další informace najdete v tématu [co je Azure Logic Apps](logic-apps-overview.md)?
 
@@ -31,16 +30,16 @@ Před odesláním obsahu XML obchodnímu partnerovi ve scénáři B2B (Business-
 
 * Aspoň dva [obchodní partneři](logic-apps-enterprise-integration-partners.md) , které jste už ve svém účtu pro integraci definovali.
 
-## <a name="add-flat-file-encode-action"></a>Přidat akci kódování plochého souboru
+## <a name="add-flat-file-encode-action"></a>Přidání akce kódování plochého souboru
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V rámci triggeru nebo akce v aplikaci logiky vyberte **Nový krok** > **přidat akci**. V tomto příkladu se používá aktivační událost žádosti, která je pojmenována **při přijetí požadavku HTTP**, a zpracovává příchozí požadavky mimo aplikaci logiky.
+1. V rámci triggeru nebo akce v aplikaci logiky vyberte **Nový krok**  >  **přidat akci**. V tomto příkladu se používá aktivační událost žádosti, která je pojmenována **při přijetí požadavku HTTP**, a zpracovává příchozí požadavky mimo aplikaci logiky.
 
    > [!TIP]
    > Zadání schématu JSON je volitelné. Pokud máte ukázkovou datovou část z příchozího požadavku, vyberte **použít ukázkovou datovou část k vygenerování schématu**, zadejte ukázkovou datovou část a vyberte **Hotovo**. Schéma se zobrazí v poli **schématu JSON textu žádosti** .
 
-1. V části **zvolit akci**zadejte `flat file`. V seznamu akce vyberte tuto akci: **kódování plochého souboru**
+1. V části **zvolit akci**zadejte `flat file` . V seznamu akce vyberte tuto akci: **kódování plochého souboru**
 
    ![Vybrat akci kódování plochého souboru](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -63,16 +62,16 @@ Před odesláním obsahu XML obchodnímu partnerovi ve scénáři B2B (Business-
 
 Nyní jste hotovi s nastavením akce kódování plochého souboru. V reálné aplikaci můžete ukládat zakódovaná data do obchodní aplikace (LOB), jako je třeba Salesforce. Nebo můžete zakódovaná data odeslat obchodnímu partnerovi. Pokud chcete poslat výstup z akce kódování do Salesforce nebo do svého obchodního partnera, použijte další [konektory, které jsou dostupné v Azure Logic Apps](../connectors/apis-list.md).
 
-## <a name="add-flat-file-decode-action"></a>Přidat akci dekódovat plochého souboru
+## <a name="add-flat-file-decode-action"></a>Přidání akce dekódování plochého souboru
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V rámci triggeru nebo akce v aplikaci logiky vyberte **Nový krok** > **přidat akci**. V tomto příkladu se používá aktivační událost žádosti, která je pojmenována **při přijetí požadavku HTTP**, a zpracovává příchozí požadavky mimo aplikaci logiky.
+1. V rámci triggeru nebo akce v aplikaci logiky vyberte **Nový krok**  >  **přidat akci**. V tomto příkladu se používá aktivační událost žádosti, která je pojmenována **při přijetí požadavku HTTP**, a zpracovává příchozí požadavky mimo aplikaci logiky.
 
    > [!TIP]
    > Zadání schématu JSON je volitelné. Pokud máte ukázkovou datovou část z příchozího požadavku, vyberte **použít ukázkovou datovou část k vygenerování schématu**, zadejte ukázkovou datovou část a vyberte **Hotovo**. Schéma se zobrazí v poli **schématu JSON textu žádosti** .
 
-1. V části **zvolit akci**zadejte `flat file`. V seznamu akce vyberte tuto akci: **dekódování plochého souboru**
+1. V části **zvolit akci**zadejte `flat file` . V seznamu akce vyberte tuto akci: **dekódování plochého souboru**
 
    ![Výběr akce "dekódování plochého souboru"](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 

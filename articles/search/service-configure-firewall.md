@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125574"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurace brány firewall protokolu IP pro Azure Kognitivní hledání
@@ -39,7 +38,7 @@ Z důvodu zjednodušení vývoje vám Azure Portal pomůže identifikovat a při
 
 Portál automaticky rozpozná vaši IP adresu klienta. Může to být IP adresa klienta počítače nebo brány sítě. Nezapomeňte tuto IP adresu odebrat, než převezmete své zatížení do produkčního prostředí.
 
-Pokud chcete přidat aktuální IP adresu do seznamu IP adres, zkuste **Přidat IP adresu klienta**. Potom vyberte **Uložit**.
+Pokud chcete přidat aktuální IP adresu do seznamu IP adres, zkuste **Přidat IP adresu klienta**. Pak vyberte **Uložit**.
 
 ![Snímek obrazovky, který ukazuje, jak nakonfigurovat nastavení brány firewall protokolu IP, aby se povolila aktuální IP adresa](./media/service-configure-firewall/enable-current-ip.png)
 

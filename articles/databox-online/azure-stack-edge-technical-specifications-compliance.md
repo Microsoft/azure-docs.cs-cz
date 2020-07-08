@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83652049"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Technické specifikace Azure Stack Edge
@@ -45,7 +44,7 @@ Hraniční zařízení Azure Stack má dvě 100-240 V jednotkách napájení (PS
 | Maximální výstupní výkon    | 750 W                     |
 | Frekvence               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
-| Horká, připojitelná           | Ano                        |
+| Horká, připojitelná           | Yes                        |
 
 ### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Azure Stack specifikace napájecího kabelu na hraničních zařízeních podle oblasti
 
@@ -60,7 +59,7 @@ The following table lists the typical power consumption data (actual values may 
 
 Vaše zařízení Azure Stack Edge má 6 síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Popis                 |
+| Specifikace           | Description                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
 

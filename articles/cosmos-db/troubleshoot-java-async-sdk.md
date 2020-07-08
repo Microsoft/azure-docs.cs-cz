@@ -10,16 +10,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651886"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Async Java SDK v2 s účty SQL API
 
 > [!div class="op_single_selector"]
-> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Sada Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
 > * [Sada Async Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
@@ -193,7 +192,7 @@ Výše uvedená výjimka navrhuje, abyste měli závislost na starší verzi RxJ
 
 Alternativním řešením pro tyto problémy je určit, která jiná závislost přináší RxJava-1.2.2 a vyloučit přenosnou závislost na RxJava-1.2.2 a povolení sady CosmosDB SDK připraví novější verzi.
 
-Pokud chcete zjistit, kterou knihovnu přináší RxJava-1.2.2, spusťte následující příkaz vedle souboru projektu pom. XML:
+Pokud chcete zjistit, která Knihovna přinese v RxJava-1.2.2, spusťte následující příkaz vedle souboru projektu pom.xml:
 ```bash
 mvn dependency:tree
 ```

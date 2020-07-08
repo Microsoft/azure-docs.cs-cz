@@ -7,10 +7,9 @@ ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122636"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: Integrace služby Functions s virtuální sítí Azure
@@ -138,7 +137,7 @@ Když máte povolenou integraci virtuální sítě, můžete ve své aplikaci Fu
     | -------- | ---------------- | ---------------- |
     | **Název** | Plant | Název může být libovolná hodnota. Slouží k identifikaci proxy serveru. |
     | **Šablona směrování** | /plant | Trasa, která se mapuje na prostředek virtuálního počítače. |
-    | **Adresa URL back-endu** | http://<YOUR_VM_IP>/wp-content/Themes/twentyseventeen/assets/images/Header.jpg | Nahraďte `<YOUR_VM_IP>` IP adresou vašeho virtuálního počítače WordPress, který jste vytvořili dříve. Toto mapování vrátí jeden soubor z webu. |
+    | **Adresa URL back-endu** | http://<YOUR_VM_IP>/wp-content/Themes/twentyseventeen/assets/images/header.jpg | Nahraďte `<YOUR_VM_IP>` IP adresou vašeho virtuálního počítače WordPress, který jste vytvořili dříve. Toto mapování vrátí jeden soubor z webu. |
 
 1. Výběrem **vytvořit** přidejte proxy do aplikace Function App.
 

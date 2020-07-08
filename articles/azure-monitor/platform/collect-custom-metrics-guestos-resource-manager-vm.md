@@ -8,10 +8,9 @@ ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
 ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650542"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro virtuální počítač s Windows
@@ -38,22 +37,22 @@ Rozšíření Azure Diagnostics používá funkci s názvem "datové jímky" ke 
 ## <a name="author-resource-manager-template"></a>Šablona pro vytváření Správce prostředků
 V tomto příkladu můžete použít veřejně dostupnou ukázkovou šablonu. Spouští se šablony na adrese https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows .
 
-- **Azuredeploy. JSON** je předkonfigurovaná správce prostředků šablona pro nasazení virtuálního počítače.
+- **Azuredeploy.jsv** je předkonfigurovaná správce prostředků šablona pro nasazení virtuálního počítače.
 
-- **Azuredeploy. Parameters. JSON** je soubor parametrů, který ukládá informace, jako je třeba uživatelské jméno a heslo, které byste chtěli pro svůj virtuální počítač nastavit. Během nasazování používá šablona Správce prostředků parametry, které jsou nastaveny v tomto souboru.
+- **Azuredeploy.parameters.json** je soubor parametrů, který ukládá informace, jako je třeba uživatelské jméno a heslo, které byste chtěli pro virtuální počítač nastavit. Během nasazování používá šablona Správce prostředků parametry, které jsou nastaveny v tomto souboru.
 
 Stáhněte a uložte oba soubory místně.
 
-### <a name="modify-azuredeployparametersjson"></a>Upravit azuredeploy. Parameters. JSON
-Otevřete soubor *azuredeploy. Parameters. JSON.*
+### <a name="modify-azuredeployparametersjson"></a>Upravit azuredeploy.parameters.jsna
+Otevřít *azuredeploy.parameters.jsv* souboru
 
 1. Zadejte hodnoty pro **adminUsername** a **adminPassword** pro virtuální počítač. Tyto parametry se používají pro vzdálený přístup k virtuálnímu počítači. Abyste se vyhnuli napadení virtuálního počítače, nepoužívejte hodnoty v této šabloně. Roboty vyhledá v Internetu uživatelská jména a hesla ve veřejných úložištích GitHubu. Pravděpodobně budou testovány virtuální počítače s těmito výchozími hodnotami.
 
 1. Vytvořte jedinečný DnsName pro virtuální počítač.
 
-### <a name="modify-azuredeployjson"></a>Upravit azuredeploy. JSON
+### <a name="modify-azuredeployjson"></a>Upravit azuredeploy.jsna
 
-Otevřete soubor *azuredeploy. JSON.*
+Otevřít *azuredeploy.jsv* souboru
 
 Po zadání položky pro StorageAccountName přidejte do části **proměnné** této šablony ID účtu úložiště **.**
 
@@ -263,7 +262,7 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 1. Po úspěšném nasazení by měl být virtuální počítač ve Azure Portal, což generuje metriky Azure Monitor.
 
    > [!NOTE]
-   > Můžete spustit chybu kolem vybraného vmSkuSize. Pokud k tomu dojde, vraťte se zpět do souboru azuredeploy. JSON a aktualizujte výchozí hodnotu parametru vmSkuSize. V takovém případě doporučujeme vyzkoušet "Standard_DS1_v2").
+   > Můžete spustit chybu kolem vybraného vmSkuSize. Pokud k tomu dojde, vraťte se do azuredeploy.jsv souboru a aktualizujte výchozí hodnotu parametru vmSkuSize. V takovém případě doporučujeme vyzkoušet "Standard_DS1_v2").
 
 ## <a name="chart-your-metrics"></a>Vytvoření grafu metrik
 

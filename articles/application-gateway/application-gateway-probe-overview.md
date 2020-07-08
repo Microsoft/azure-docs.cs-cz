@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648408"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
@@ -49,7 +48,7 @@ Následující kritéria odpovídají kritériím:
 
 Kritéria shody lze zadat pomocí `New-AzApplicationGatewayProbeHealthResponseMatch` rutiny.
 
-Například:
+Příklad:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -59,7 +58,7 @@ Po zadání kritérií shody je lze připojit ke konfiguraci testu pomocí `-Mat
 
 ### <a name="default-health-probe-settings"></a>Výchozí nastavení sondy stavu
 
-| Vlastnost sondy | Hodnota | Popis |
+| Vlastnost sondy | Hodnota | Description |
 | --- | --- | --- |
 | Adresa URL testu paměti |http://127.0.0.1:\<port\>/ |Cesta URL |
 | Interval |30 |Doba v sekundách, po kterou se má čekat, než se pošle další sonda stavu.|
@@ -69,7 +68,7 @@ Po zadání kritérií shody je lze připojit ke konfiguraci testu pomocí `-Mat
 > [!NOTE]
 > Port je stejný port jako nastavení back-endu protokolu HTTP.
 
-Výchozí sonda se vyhledá jenom na http: \/ /127.0.0.1: \< port \> pro určení stavu. Pokud potřebujete nakonfigurovat sondu stavu tak, aby přešel na vlastní adresu URL nebo upravili jakékoli jiné nastavení, musíte použít vlastní testy. Další informace o testech HTTP najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md#for-probe-traffic).
+Výchozí sonda se vyhledává jenom v http: \/ /127.0.0.1: \<port\> k určení stavu. Pokud potřebujete nakonfigurovat sondu stavu tak, aby přešel na vlastní adresu URL nebo upravili jakékoli jiné nastavení, musíte použít vlastní testy. Další informace o testech HTTP najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md#for-probe-traffic).
 
 ### <a name="probe-intervals"></a>Intervaly sondy
 
@@ -85,7 +84,7 @@ Vlastní testy vám umožní podrobnější kontrolu nad monitorováním stavu. 
 
 Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
-| Vlastnost sondy | Popis |
+| Vlastnost sondy | Description |
 | --- | --- |
 | Name |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
 | Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
@@ -97,7 +96,7 @@ Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
 > [!IMPORTANT]
 > Pokud je pro jednu lokalitu nakonfigurované Application Gateway, ve výchozím nastavení by měl být název hostitele zadaný jako 127.0.0.1, pokud není v vlastní sondě nakonfigurovaný.
-> Pro odkaz na vlastní test paměti se pošle \< protokol \> :// \< hostitel \> : \< cesta k portu \> \< \> . Použitý port bude stejný jako port definovaný v nastavení back-endu protokolu HTTP.
+> Odkaz na vlastní test paměti se pošle na \<protocol\> :// \<host\> : \<port\> \<path\> . Použitý port bude stejný jako port definovaný v nastavení back-endu protokolu HTTP.
 
 ## <a name="nsg-considerations"></a>NSG požadavky
 

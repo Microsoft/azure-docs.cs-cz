@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
 ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201107"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>výraz App () v Azure Monitor dotazu
@@ -20,7 +19,7 @@ ms.locfileid: "83201107"
 > [!IMPORTANT]
 > Výraz App () se nepoužívá, pokud používáte [prostředek Application Insights založený na pracovních prostorech](../app/create-workspace-resource.md) , protože data protokolu se ukládají v pracovním prostoru Log Analytics. Použijte výraz log () k zápisu dotazu, který obsahuje aplikaci ve více pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 `app(`*RID*`)`
 

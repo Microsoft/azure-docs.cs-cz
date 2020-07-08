@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649220"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložení a konfigurace nastavení služby API Management pomocí Gitu
@@ -148,7 +147,7 @@ Informace o tom, jak tuto operaci provést pomocí REST API, najdete v tématu [
 
 Soubory a složky v místním úložišti Git obsahují informace o konfiguraci instance služby.
 
-| Položka | Popis |
+| Položka | Description |
 | --- | --- |
 | Kořenová složka API – Správa |Obsahuje konfiguraci nejvyšší úrovně pro instanci služby. |
 | Složka rozhraní API |Obsahuje konfiguraci pro rozhraní API v instanci služby. |

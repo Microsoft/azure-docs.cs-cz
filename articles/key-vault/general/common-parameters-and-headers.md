@@ -11,19 +11,18 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005820"
 ---
 # <a name="common-parameters-and-headers"></a>Běžné parametry a záhlaví
 
 Následující informace jsou společné pro všechny operace, které můžete provádět v souvislosti s Key Vault prostředky:
 
-- Hlavička protokolu `Host` http musí být vždy přítomna a musí obsahovat název hostitele trezoru. Příklad: `Host: contoso.vault.azure.net`. Všimněte si, že většina technologií klienta `Host` naplní HLAVIČKU z identifikátoru URI. V `GET https://contoso.vault.azure.net/secrets/mysecret{...}` `Host` případě instance nastaví jako `contoso.vault.azure.net`. To znamená, že pokud k Key Vault přistupujete pomocí nezpracované IP adresy `GET https://10.0.0.23/secrets/mysecret{...}`, `Host` jako je automatická hodnota hlavičky chybná, bude nutné ručně zkontrolovat, že `Host` hlavička obsahuje název hostitele trezoru.
+- Hlavička protokolu HTTP `Host` musí být vždy přítomna a musí obsahovat název hostitele trezoru. Příklad: `Host: contoso.vault.azure.net`. Všimněte si, že většina technologií klienta naplní `Host` hlavičku z identifikátoru URI. V případě instance `GET https://contoso.vault.azure.net/secrets/mysecret{...}` nastaví `Host` jako `contoso.vault.azure.net` . To znamená, že pokud k Key Vault přistupujete pomocí nezpracované IP adresy `GET https://10.0.0.23/secrets/mysecret{...}` , jako je automatická hodnota `Host` hlavičky chybná, bude nutné ručně zkontrolovat, že `Host` Hlavička obsahuje název hostitele trezoru.
 - Nahraďte `{api-version}` verzí API-Version v identifikátoru URI.
-- Nahraďte `{subscription-id}` identifikátorem vašeho předplatného v IDENTIFIKÁTORu URI.
+- Nahraďte `{subscription-id}` identifikátorem vašeho předplatného v identifikátoru URI.
 - Nahraďte `{resource-group-name}` skupinou prostředků. Další informace najdete v článku Použití skupin prostředků ke správě prostředků Azure.
 - Nahraďte `{vault-name}` názvem vašeho trezoru klíčů v identifikátoru URI.
 - Nastavte hlavičku Content-Type na Application/JSON.
@@ -41,7 +40,7 @@ Služba bude používat stavové kódy HTTP k indikaci úspěchu nebo selhání.
    }  
 ```
 
-|Název elementu | Typ | Popis |
+|Název elementu | Typ | Description |
 |---|---|---|
 | kód | řetězec | Typ chyby, ke které došlo.|
 | zpráva | řetězec | Popis toho, co způsobilo chybu. |

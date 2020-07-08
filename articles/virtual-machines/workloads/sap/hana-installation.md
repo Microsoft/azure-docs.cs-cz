@@ -14,10 +14,9 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117117"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
@@ -144,8 +143,8 @@ Zásady vytváření názvů svazků úložiště jsou uvedené v následující
 
 | Využití úložiště | Název připojení | Název svazku | 
 | --- | --- | ---|
-| Data HANA | /hana/data/SID/mnt0000 \< m> | IP adresa úložiště:/hana_data_SID_mnt00001_tenant_vol |
-| Protokol HANA | /hana/log/SID/mnt0000 \< m> | IP adresa úložiště:/hana_log_SID_mnt00001_tenant_vol |
+| Data HANA | /hana/data/SID/mnt0000\<m> | IP adresa úložiště:/hana_data_SID_mnt00001_tenant_vol |
+| Protokol HANA | /hana/log/SID/mnt0000\<m> | IP adresa úložiště:/hana_log_SID_mnt00001_tenant_vol |
 | Zálohování protokolu HANA | /hana/log/backups | IP adresa úložiště:/hana_log_backups_SID_mnt00001_tenant_vol |
 | Sdílená HANA | /hana/shared/SID | IP adresa úložiště:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /usr/sap/SID | IP adresa úložiště:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -198,7 +197,7 @@ Parametry můžete nakonfigurovat i po instalaci SAP HANA databáze pomocí arch
 Úložiště používané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na jeden soubor. Na rozdíl od omezení velikosti souborů v systémech souborů EXT3 úložiště HANA neví implicitně omezení úložiště vynutilé úložištěm velkých instancí HANA. V důsledku toho nebude při dosažení limitu velikosti souboru 16TB automaticky vytvářet nové datové soubory. Vzhledem k tomu, že HANA se pokusí zvětšit soubor nad rámec 16 TB, HANA odešle zprávy o chybách a indexový server selže na konci.
 
 > [!IMPORTANT]
-> Aby se HANA zabránilo v pokusu o zvětšení datových souborů, které přesahují limit velikosti souborů o velikosti 16 TB úložiště velkých instancí HANA, musíte nastavit následující parametry v konfiguračním souboru SAP HANA Global. ini.
+> Aby se zabránilo tomu, že se HANA snaží rozšířit datové soubory nad rámec velikosti souborů o velikosti 16 TB úložiště velkých instancí HANA, musíte nastavit následující parametry v konfiguračním souboru global.ini SAP HANA.
 > 
 > - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000

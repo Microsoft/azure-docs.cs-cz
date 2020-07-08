@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83654519"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST  
@@ -95,7 +94,7 @@ Jedna z hodnot, které musíte zadat při vytváření assetu, jsou možnosti vy
 * **CommonEncryptionProtected**  =  **2** – tuto možnost použijte, pokud nahráváte obsah, který už je zašifrovaný a chráněný pomocí Common Encryption nebo PlayReady DRM (například Smooth Streaming chráněná pomocí technologie PlayReady DRM).
 * **EnvelopeEncryptionProtected**  =  **4** – tuto možnost použijte, pokud odesíláte HLS ŠIFROVANÝ pomocí AES. Soubory musí být zakódované a šifrované pomocí nástroje pro transformaci.
 
-### <a name="create-an-asset"></a>Vytvoření assetu
+### <a name="create-an-asset"></a>Vytvoření prostředku
 Asset je kontejner pro více typů nebo sad objektů v Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků. V REST API vytvoření Assetu vyžaduje odeslání žádosti POST do Media Services a umístění jakýchkoli vlastností informací o prostředku do textu žádosti.
 
 Následující příklad ukazuje, jak vytvořit Asset.
@@ -339,7 +338,7 @@ Jakmile budete mít AccessPolicy a lokátor, vlastní soubor se nahraje do konte
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
 ### <a name="update-the-assetfile"></a>Aktualizace AssetFile
-Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Například:
+Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Příklad:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -821,7 +820,7 @@ Jakmile budete mít AccessPolicy a lokátor, můžete soubory stahovat pomocí r
 
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Například:    
+V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Příklad:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 

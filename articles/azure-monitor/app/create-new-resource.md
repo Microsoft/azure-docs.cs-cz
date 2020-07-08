@@ -4,10 +4,9 @@ description: Ručně nastavte Application Insights monitorování pro novou živ
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200672"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
@@ -28,7 +27,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
    | ------------- |:-------------|:-----|
    | **Název**      | `Unique value` | Název, který identifikuje monitorovanou aplikaci. |
    | **Skupina prostředků**     | `myResourceGroup`      | Název nové nebo existující skupiny prostředků pro hostování dat App Insights |
-   | **Oblast** | `East US` | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Věřitel** | `East US` | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
    | **Režim prostředků** | `Classic` nebo `Workspace-based` | Prostředky založené na pracovních prostorech jsou momentálně ve verzi Public Preview a umožňují vám odeslat Application Insights telemetrii do společného pracovního prostoru Log Analytics. Další informace najdete v [článku o prostředcích založených na pracovních prostorech](create-workspace-resource.md).
 
 > [!NOTE]

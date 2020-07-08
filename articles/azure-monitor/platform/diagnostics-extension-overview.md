@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83635956"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
@@ -44,7 +43,7 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 | --- | --- |
 | Protokoly událostí systému Windows   | Události z protokolu událostí systému Windows. |
 | Čítače výkonu | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
@@ -59,7 +58,7 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 | --- | --- |
 | Syslog | Události odeslané do systému protokolování událostí pro Linux.   |
 | Čítače výkonu  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
@@ -72,7 +71,7 @@ Nakonfigurujte jednu nebo více *datových umyvadel* pro odesílání dat do dal
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
 | Azure Monitor metriky | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. Přečtěte si téma [streamování dat Azure Diagnostics do Event Hubs](diagnostics-extension-stream-event-hubs.md) |
@@ -85,7 +84,7 @@ Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Lo
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 LAD zapisuje data do tabulek v Azure Storage. Podporuje jímky v následující tabulce.
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. |
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |

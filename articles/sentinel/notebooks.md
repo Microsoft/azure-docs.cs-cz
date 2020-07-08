@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
 ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83652024"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Použití poznámkových bloků Jupyter k prolovení bezpečnostních hrozeb
@@ -62,7 +61,7 @@ Můžete spustit Poznámkový blok přímo z Azure Sentinel nebo klonovat všech
  
 1. V Azure Portal přejděte na **Azure Sentinel**  >  **Threat management**  >  **poznámkové bloky**služby Azure Sentinel Threat Management, kde vidíte poznámkové bloky, které poskytuje Azure Sentinel. 
 
-2. Vyberte jednotlivé poznámkové bloky pro čtení jejich popisů, požadovaných datových typů a zdrojů dat. Například:
+2. Vyberte jednotlivé poznámkové bloky pro čtení jejich popisů, požadovaných datových typů a zdrojů dat. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![spustit Poznámkový blok](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -86,7 +85,7 @@ Tento postup vytvoří Azure Notebooks projekt, který obsahuje poznámkové blo
 
    ![Importovat Poznámkový blok](./media/notebooks/sentinel-create-project.png)
 
-4. Otevřete projekt, který jste právě vytvořili, a pak otevřete složku **poznámkové bloky** a zobrazte si poznámkové bloky. Například:
+4. Otevřete projekt, který jste právě vytvořili, a pak otevřete složku **poznámkové bloky** a zobrazte si poznámkové bloky. Příklad:
 
    ![Importovat úložiště](./media/notebooks/sentinel-open-notebook1.png)
 

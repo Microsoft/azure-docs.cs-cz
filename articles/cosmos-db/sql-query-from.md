@@ -7,23 +7,22 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005858"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Klauzule FROM v Azure Cosmos DB
 
-Klauzule FROM (`FROM <from_specification>`) je volitelná, pokud se zdroj nefiltruje nebo se v dotazu později nepoužívá. Dotaz, jako `SELECT * FROM Families` je například výčet v rámci `Families` celého kontejneru. Místo použití názvu kontejneru můžete použít také kořenový kořenový identifikátor pro kontejner.
+Klauzule FROM ( `FROM <from_specification>` ) je volitelná, pokud se zdroj nefiltruje nebo se v dotazu později nepoužívá. Dotaz, jako `SELECT * FROM Families` je například výčet v rámci celého `Families` kontejneru. Místo použití názvu kontejneru můžete použít také kořenový kořenový identifikátor pro kontejner.
 
-`FROM` Klauzule vynutila následující pravidla na dotaz:
+`FROM`Klauzule vynutila následující pravidla na dotaz:
 
-* Kontejner může mít alias, například `SELECT f.id FROM Families AS f` nebo jednoduše. `SELECT f.id FROM Families f` Tady `f` je alias pro `Families`. Stejně jako volitelné klíčové slovo pro [alias](sql-query-working-with-json.md#aliasing) identifikátoru.  
+* Kontejner může mít alias, například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f` . Tady `f` je alias pro `Families` . Stejně jako volitelné klíčové slovo pro [alias](sql-query-working-with-json.md#aliasing) identifikátoru.  
 
-* Po aliasu nelze původní název zdroje svázat. Například je syntakticky neplatný, `SELECT Families.id FROM Families f` protože identifikátor `Families` byl alias a již jej nelze přeložit.  
+* Po aliasu nelze původní název zdroje svázat. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože identifikátor `Families` byl alias a již jej nelze přeložit.  
 
-* Všechny odkazované vlastnosti musí být plně kvalifikované, aby nedocházelo k nejednoznačným vazbám při neexistenci striktního dodržování schématu. Například je syntakticky neplatný, `SELECT id FROM Families f` protože vlastnost `id` není vázaná.
+* Všechny odkazované vlastnosti musí být plně kvalifikované, aby nedocházelo k nejednoznačným vazbám při neexistenci striktního dodržování schématu. Například `SELECT id FROM Families f` je syntakticky neplatný, protože vlastnost `id` není vázaná.
 
 ## <a name="syntax"></a>Syntaxe
   
@@ -45,7 +44,7 @@ FROM <from_specification>
      | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
   
 - `<from_source>`  
   
@@ -53,7 +52,7 @@ FROM <from_specification>
   
 -  Pokud je výraz container_name, container_name bude použit jako alias.  
   
--  Pokud je `<container_expression>`výraz, pak property_name a property_name bude použit jako alias. Pokud je výraz container_name, container_name bude použit jako alias.  
+-  Pokud je výraz `<container_expression>` , pak property_name a property_name bude použit jako alias. Pokud je výraz container_name, container_name bude použit jako alias.  
   
 - FORMÁTU`input_alias`  
   
@@ -81,15 +80,15 @@ FROM <from_specification>
   
 - `<container_expression> '.' property_name`  
   
-  Určuje, že se má dokument načíst přístupem k `property_name` vlastnosti.  
+  Určuje, že se má dokument načíst přístupem k `property_name` Vlastnosti.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Určuje, že by měl být dokument načten přístupem `property_name` k vlastnosti nebo prvku array_index pole pro všechny dokumenty načtené pomocí zadaného výrazu kontejneru.  
+  Určuje, že by měl být dokument načten přístupem k `property_name` vlastnosti nebo prvku array_index pole pro všechny dokumenty načtené pomocí zadaného výrazu kontejneru.  
   
 ## <a name="remarks"></a>Poznámky
   
-Všechny aliasy, které jsou zadány nebo `<from_source>(`odvozeny v rámci, musí být jedinečné. Syntaxe `<container_expression>.`property_name je stejná jako `<container_expression>' ['"property_name"']'`. Nicméně druhá syntaxe může být použita, pokud název vlastnosti obsahuje znak, který není identifikátor.  
+Všechny aliasy, které jsou zadány nebo odvozeny v rámci, `<from_source>(` musí být jedinečné. Syntaxe `<container_expression>.` Property_Name je stejná jako `<container_expression>' ['"property_name"']'` . Nicméně druhá syntaxe může být použita, pokud název vlastnosti obsahuje znak, který není identifikátor.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Zpracování chybějících vlastností, chybějících prvků pole a nedefinovaných hodnot
   
@@ -99,9 +98,9 @@ Pokud výraz kontejneru přistupuje k vlastnostem nebo prvkům pole a tato hodno
   
 Kontejnerový výraz může být v oboru kontejneru nebo v oboru dokumentu:  
   
-- Výraz je obor kontejneru, pokud je podkladový zdroj výrazu kontejneru buď ROOT, nebo `container_name`. Takový výraz představuje sadu dokumentů načtených z kontejneru přímo a není závislý na zpracování jiných výrazů kontejneru.  
+- Výraz je obor kontejneru, pokud je podkladový zdroj výrazu kontejneru buď ROOT, nebo `container_name` . Takový výraz představuje sadu dokumentů načtených z kontejneru přímo a není závislý na zpracování jiných výrazů kontejneru.  
   
-- Výraz je v oboru dokumentu, pokud je `input_alias` základní zdroj výrazu kontejneru představen dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v oboru každého dokumentu, který patří do sady přidružené k kontejneru s aliasem. Výsledná sada bude sjednocením sad získanou vyhodnocením výrazu kontejneru pro každý dokument v podkladové sadě.
+- Výraz je v oboru dokumentu, pokud je základní zdroj výrazu kontejneru `input_alias` představen dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v oboru každého dokumentu, který patří do sady přidružené k kontejneru s aliasem. Výsledná sada bude sjednocením sad získanou vyhodnocením výrazu kontejneru pro každý dokument v podkladové sadě.
 
 ## <a name="examples"></a>Příklady
 

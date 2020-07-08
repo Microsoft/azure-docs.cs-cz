@@ -10,10 +10,9 @@ ms.date: 09/05/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 030e2c23d68a3fbbc96dd7591583cb27b650d011
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200017"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Řízení zabezpečení pro Azure Virtual Machine Scale Sets
@@ -53,7 +52,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Vir
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Yes | Virtual Machine Scale Sets najdete v tématu [Azure Disk Encryption](disk-encryption-overview.md). |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Yes | Azure Virtual Machines podporuje šifrování [ExpressRoute](/azure/expressroute) a virtuální sítě. Viz [šifrování v přenosech na virtuálních počítačích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Yes | Klíče spravované zákazníkem jsou podporovaným scénářem šifrování Azure; Viz téma [Azure Disk Encryption Virtual Machine Scale Sets](disk-encryption-overview.md)|
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
 | Zašifrovaná volání rozhraní API| Yes | Přes HTTPS a TLS. |
 
 ## <a name="configuration-management"></a>Správa konfigurace

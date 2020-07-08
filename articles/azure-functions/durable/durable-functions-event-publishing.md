@@ -4,10 +4,9 @@ description: Naučte se konfigurovat automatické publikování Azure Event Grid
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124230"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
@@ -101,7 +100,7 @@ Přidejte `notifications` oddíl do `durableTask` vlastnosti souboru a nahraďte
 }
 ```
 
-Možné konfigurační vlastnosti Azure Event Grid najdete v [dokumentaci Host. JSON](../functions-host-json.md#durabletask). Po dokončení konfigurace `host.json` souboru vaše aplikace Function App odešle události životního cyklu do tématu Event Grid. Tato akce se spustí, když aplikaci Function App spustíte místně i v Azure.
+Možné konfigurační vlastnosti Azure Event Grid najdete v [host.jsv dokumentaci](../functions-host-json.md#durabletask). Po dokončení konfigurace `host.json` souboru vaše aplikace Function App odešle události životního cyklu do tématu Event Grid. Tato akce se spustí, když aplikaci Function App spustíte místně i v Azure.
 
 Nastavte nastavení aplikace pro klíč tématu v Function App a `local.settings.json` . Následující JSON je ukázka `local.settings.json` pro místní ladění. Nahraďte `<topic_key>` klíčem tématu.  
 

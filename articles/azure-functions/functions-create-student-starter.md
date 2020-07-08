@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: alkarche
 ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122819"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Vytvoření funkce pomocí Azure for Students Starter
@@ -89,7 +88,7 @@ V Azure for Students Starter máte přístup k většině funkcí prostředí Az
     * Podporují se všechny vstupní a výstupní vazby. [Úplný seznam najdete tady.](functions-triggers-bindings.md)
 * Podporované jazyky: 
     * C# (.NET Core 2)
-    * JavaScript (Node. js 8 & 10)
+    * JavaScript (Node.js 8 & 10)
     * F # (.NET Core 2)
     * [Tady najdete jazyky podporované v vyšších plánech.](supported-languages.md)
 * Jediným podporovaným operačním systémem je Windows.

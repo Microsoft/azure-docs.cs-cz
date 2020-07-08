@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997253"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Balíček zabezpečení podniku pro Azure HDInsight
@@ -22,7 +21,7 @@ Enterprise Security je volitelný balíček, který můžete přidat do clusteru
 
     V minulosti jste vytvořili clustery HDInsight s místními uživateli a místními uživateli SSH. Místní uživatel správce má přístup ke všem souborům, složkám, tabulkám a sloupcům.  Pomocí Balíček zabezpečení podniku můžete povolit řízení přístupu na základě role integrací služby HDInsight se službou Active Directory. Který zahrnuje místní službu Active Directory Azure Active Directory Domain Services. Nebo Active Directory na virtuálním počítači s IaaS. Správce domény v clusteru může uživatelům udělit vlastní uživatelské jméno a heslo v podnikovém (doméně).
 
-    Další informace naleznete v tématu:
+    Další informace naleznete v tématech:
 
     * [Úvod do zabezpečení Apache Hadoop s využitím clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md)
 
@@ -64,4 +63,4 @@ Informace o cenách a smlouvě SLA pro Balíček zabezpečení podniku najdete v
 * [Nastavení clusteru pro Apache Hadoop, Spark a další funkce v HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Práce v Apache Hadoop ve službě HDInsight z počítače s Windows](hdinsight-hadoop-windows-tools.md)
 * [Poznámky k verzi Hortonworks přidružené k verzím Azure HDInsight](./hortonworks-release-notes.md)
-* [Součásti Apache v HDInsight](./hdinsight-component-versioning.md)
+* [Komponenty Apache ve službě HDInsight](./hdinsight-component-versioning.md)

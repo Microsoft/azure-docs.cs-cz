@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
 ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83006323"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
@@ -132,7 +131,7 @@ Vytvořte prostředek ExportPipeline pro svůj zdrojový registr kontejneru pomo
 
 Zkopírujte [soubory šablon](https://github.com/Azure/acr/tree/master/docs/image-transfer/ExportPipelines) správce prostředků ExportPipeline do místní složky.
 
-Do souboru `azuredeploy.parameters.json`zadejte následující hodnoty parametrů:
+Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.json` :
 
 |Parametr  |Hodnota  |
 |---------|---------|
@@ -144,7 +143,7 @@ Do souboru `azuredeploy.parameters.json`zadejte následující hodnoty parametr�
 
 ### <a name="export-options"></a>Možnosti exportu
 
-`options` Vlastnost pro kanály exportu podporuje volitelné logické hodnoty. Doporučené jsou následující hodnoty:
+`options`Vlastnost pro kanály exportu podporuje volitelné logické hodnoty. Doporučené jsou následující hodnoty:
 
 |Parametr  |Hodnota  |
 |---------|---------|
@@ -162,7 +161,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-Ve výstupu příkazu si poznamenejte ID prostředku (`id`) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
+Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -178,7 +177,7 @@ Vytvořte prostředek ImportPipeline v cílovém registru kontejneru pomocí nas
 
 Zkopírujte [soubory šablon](https://github.com/Azure/acr/tree/master/docs/image-transfer/ImportPipelines) správce prostředků ImportPipeline do místní složky.
 
-Do souboru `azuredeploy.parameters.json`zadejte následující hodnoty parametrů:
+Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.json` :
 
 Parametr  |Hodnota  |
 |---------|---------|
@@ -190,7 +189,7 @@ Parametr  |Hodnota  |
 
 ### <a name="import-options"></a>Možnosti importu
 
-`options` Vlastnost pro kanál importu podporuje volitelné logické hodnoty. Doporučené jsou následující hodnoty:
+`options`Vlastnost pro kanál importu podporuje volitelné logické hodnoty. Doporučené jsou následující hodnoty:
 
 |Parametr  |Hodnota  |
 |---------|---------|
@@ -208,7 +207,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku (`id`) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
+Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -224,7 +223,7 @@ Vytvořte prostředek PipelineRun pro svůj zdrojový registr kontejneru pomocí
 
 Zkopírujte [soubory šablon](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Export) správce prostředků PipelineRun do místní složky.
 
-Do souboru `azuredeploy.parameters.json`zadejte následující hodnoty parametrů:
+Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.json` :
 
 |Parametr  |Hodnota  |
 |---------|---------|
@@ -282,7 +281,7 @@ Pomocí prostředku PipelineRun můžete také aktivovat ImportPipeline pro impo
 
 Zkopírujte [soubory šablon](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Import) správce prostředků PipelineRun do místní složky.
 
-Do souboru `azuredeploy.parameters.json`zadejte následující hodnoty parametrů:
+Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.json` :
 
 |Parametr  |Hodnota  |
 |---------|---------|
@@ -327,7 +326,7 @@ az deployment group delete \
 ## <a name="troubleshooting"></a>Řešení potíží
 
 * **Template deployment chyby nebo chyby**
-  * Pokud se spuštění kanálu nezdařilo, podívejte `pipelineRunErrorMessage` se na vlastnost prostředku spuštění.
+  * Pokud se spuštění kanálu nezdařilo, podívejte se na `pipelineRunErrorMessage` vlastnost prostředku spuštění.
   * Chyby při nasazení běžných šablon najdete v tématu [řešení potíží s nasazeními šablon ARM](../azure-resource-manager/templates/template-tutorial-troubleshoot.md) .
 * **Problémy s exportem nebo importem objektů BLOB úložiště**
   * Vypršela platnost tokenu SAS nebo může mít nedostatečná oprávnění pro zadaný příkaz pro export nebo import.

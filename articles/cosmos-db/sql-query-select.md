@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005953"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Klauzule SELECT v Azure Cosmos DB
 
-Každý dotaz se skládá z `SELECT` klauzule a volitelných klauzulí [from](sql-query-from.md) a [WHERE](sql-query-where.md) podle standardů ANSI SQL. Obvykle je zdroj v `FROM` klauzuli vyhodnocen a `WHERE` klauzule používá filtr na zdroj pro načtení podmnožiny položek JSON. `SELECT` Klauzule potom v seznamu Select vypíše požadované hodnoty JSON.
+Každý dotaz se skládá z `SELECT` klauzule a volitelných klauzulí [from](sql-query-from.md) a [WHERE](sql-query-where.md) podle standardů ANSI SQL. Obvykle je zdroj v klauzuli vyhodnocen `FROM` a `WHERE` klauzule používá filtr na zdroj pro načtení podmnožiny položek JSON. `SELECT`Klauzule potom v seznamu Select vypíše požadované hodnoty JSON.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -31,7 +30,7 @@ SELECT <select_specification>
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
 ```  
   
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
   
 - `<select_specification>`  
 
@@ -47,7 +46,7 @@ SELECT <select_specification>
   
 - `VALUE`  
 
-  Určuje, že se má místo úplného objektu JSON načíst hodnota JSON. To, na rozdíl `<property_list>` od, nezalomí předpokládané hodnoty v objektu.  
+  Určuje, že se má místo úplného objektu JSON načíst hodnota JSON. To, na rozdíl od, `<property_list>` nezalomí předpokládané hodnoty v objektu.  
 
 - `DISTINCT`
   
@@ -59,9 +58,9 @@ SELECT <select_specification>
 
 ## <a name="remarks"></a>Poznámky
 
-`SELECT *` Syntaxe je platná pouze v případě, že klauzule FROM deklaruje přesně jeden alias. `SELECT *`poskytuje projekci identity, která může být užitečná, pokud není potřeba žádná projekce. PŘÍKAZ SELECT * je platný pouze v případě, že je zadána klauzule FROM a byl zaveden pouze jeden vstupní zdroj.  
+`SELECT *`Syntaxe je platná pouze v případě, že klauzule FROM deklaruje přesně jeden alias. `SELECT *`poskytuje projekci identity, která může být užitečná, pokud není potřeba žádná projekce. PŘÍKAZ SELECT * je platný pouze v případě, že je zadána klauzule FROM a byl zaveden pouze jeden vstupní zdroj.  
   
-`SELECT <select_list>` A `SELECT *` jsou "syntaktický cukr" a mohou být případně vyjádřeny pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
+`SELECT <select_list>`A `SELECT *` jsou "syntaktický cukr" a mohou být případně vyjádřeny pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -77,7 +76,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>Příklady
 
-Následující příklad dotazu SELECT se vrátí `address` z `Families` jeho `id` shody `AndersenFamily`:
+Následující příklad dotazu SELECT se vrátí `address` z `Families` jeho `id` shody `AndersenFamily` :
 
 ```sql
     SELECT f.address

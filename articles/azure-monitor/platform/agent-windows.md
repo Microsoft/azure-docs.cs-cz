@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
 ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996430"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
@@ -60,9 +59,9 @@ Chcete-li nakonfigurovat použití protokolu [TLS 1,2](https://docs.microsoft.co
 
 Nakonfigurujte .NET Framework 4,6 nebo novější, aby podporovaly zabezpečenou kryptografii, protože ve výchozím nastavení je zakázaná. [Silná kryptografie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly jako TLS 1,2 a blokuje protokoly, které nejsou zabezpečené. 
 
-1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE \software\microsoft\\. NETFramework\v4.0.30319**.  
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE \software\microsoft \\ . NETFramework\v4.0.30319**.  
 2. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**.  
-3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft\\. NETFramework\v4.0.30319**.  
+3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft \\ . NETFramework\v4.0.30319**.  
 4. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**. 
 5. Restartujte systém, aby se nastavení projevilo. 
 
@@ -103,7 +102,7 @@ V následující tabulce jsou vysvětlené konkrétní parametry podporované in
 |OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno pro přístup k ověřenému proxy serveru |
 |OPINSIGHTS_PROXY_PASSWORD               | Heslo pro přístup k ověřenému proxy serveru |
 
-1. K extrakci instalačních souborů agenta se spustí `MMASetup-<platform>.exe /c` příkazový řádek se zvýšenými oprávněními a zobrazí výzvu k zadání cesty k extrakci souborů.  Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.  
+1. K extrakci instalačních souborů agenta se spustí příkazový řádek se zvýšenými oprávněními `MMASetup-<platform>.exe /c` a zobrazí výzvu k zadání cesty k extrakci souborů.  Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>` .  
 2. Pokud chcete nainstalovat agenta v tichém režimu a nakonfigurovat ho tak, aby se nahlásil k pracovnímu prostoru ve službě Azure Commercial Cloud, ze složky, do které jste extrahovali instalační soubory, zadejte: 
    
      ```dos
@@ -131,13 +130,13 @@ Následující příklad nainstaluje agenta 64, který je identifikován `URI` h
 >[!NOTE]
 >Tento postup a příklad skriptu nepodporuje upgrade agenta, který už je nasazený na počítači s Windows.
 
-32 bitové a 64 verze balíčku agenta mají různé kódy produktů a nové verze jsou také jedinečné.  Kód produktu je identifikátor GUID, který je hlavní identifikací aplikace nebo produktu a který je reprezentován vlastností Instalační služba systému Windows **ProductCode** .  `ProductId` Hodnota ve skriptu **MMAgent. ps1** musí odpovídat kódu produktu z balíčku pro instalaci agenta 32 nebo 64.
+32 bitové a 64 verze balíčku agenta mají různé kódy produktů a nové verze jsou také jedinečné.  Kód produktu je identifikátor GUID, který je hlavní identifikací aplikace nebo produktu a který je reprezentován vlastností Instalační služba systému Windows **ProductCode** .  `ProductId`Hodnota ve **MMAgent.ps1m** skriptu musí odpovídat kódu produktu z balíčku 32 nebo 64 instalačního programu agenta.
 
-Chcete-li získat kód produktu přímo z instalačního balíčku agenta, můžete použít program Orca. exe z [komponent Windows SDK pro instalační služba systému Windows vývojářů](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , kteří jsou součástí sady Windows Software Development Kit, nebo pomocí PowerShellu, který následuje [ukázkový skript](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsaný společností MVP (Microsoft hodnotný Professional).  Pro oba tyto metody musíte nejprve extrahovat soubor **MOMAgent. msi** z instalačního balíčku MMASetup.  Tento postup je uveden výše v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
+Pokud chcete získat kód produktu přímo z instalačního balíčku agenta, můžete použít Orca.exe ze [součástí Windows SDK pro instalační služba systému Windows vývojářů](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , kteří jsou součástí sady Windows Software Development Kit, nebo pomocí PowerShellu, který následuje [ukázkový skript](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsaný společností MVP (Microsoft hodnotný Professional).  Pro oba tyto metody musíte nejprve extrahovat soubor **MOMagent.msi** z instalačního balíčku MMASetup.  Tento postup je uveden výše v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
 
-1. Importujte modul xPSDesiredStateConfiguration DSC z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) nástroje do Azure Automation.  
+1. Importujte modul xPSDesiredStateConfiguration DSC z nástroje [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
 2.    Vytvoří Azure Automation variabilní prostředky pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* na ID vašeho pracovního prostoru Log Analytics a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč vašeho pracovního prostoru.
-3.    Zkopírujte skript a uložte ho jako MMAgent. ps1.
+3.    Zkopírujte skript a uložte ho jako MMAgent.ps1.
 
 ```powershell
 Configuration MMAgent
@@ -176,7 +175,7 @@ Configuration MMAgent
 ```
 
 4. Aktualizujte `ProductId` hodnotu ve skriptu pomocí kódu produktu extrahovaného z nejnovější verze instalačního balíčku agenta pomocí výše doporučených metod. 
-5. [Importujte konfigurační skript MMAgent. ps1](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) do svého účtu Automation. 
+5. [Importujte konfigurační skript MMAgent.ps1](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) do svého účtu Automation. 
 6. Přiřaďte ke konfiguraci [počítač se systémem Windows nebo uzel](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration) . Během 15 minut uzel zkontroluje svou konfiguraci a Agent se odešle do uzlu.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Ověření připojení agenta k Log Analytics

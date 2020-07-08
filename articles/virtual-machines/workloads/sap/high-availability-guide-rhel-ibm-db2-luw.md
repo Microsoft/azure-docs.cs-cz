@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983036"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na linuxovém serveru Red Hat Enterprise
@@ -33,7 +32,7 @@ Podporované verze IBM Db2 jsou 10,5 a novější, jak je popsáno v části SAP
 
 Než začnete s instalací, přečtěte si následující poznámky a dokumentace SAP:
 
-| Poznámka SAP | Popis |
+| Poznámka SAP | Description |
 | --- | --- |
 | [1928533] | Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] | SAP v Azure: požadavky na podporu |
@@ -59,7 +58,7 @@ Než začnete s instalací, přečtěte si následující poznámky a dokumentac
 | [Referenční informace k doplňku vysoké dostupnosti][rhel-ha-ref] |
 | [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru][rhel-azr-supp]
 | [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure][rhel-azr-inst]
-| [Nasazení IBM Db2 Azure Virtual Machines DBMS pro úlohy SAP][dbms-db2] |
+| [Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP][dbms-db2] |
 | [IBM Db2 HADR 11,1][db2-hadr-11.1] |
 | [IBM Db2 HADR 10,5][db2-hadr-10.5] |
 | [Zásady podpory pro clustery s vysokou dostupností RHEL – Správa IBM Db2 pro Linux, UNIX a Windows v clusteru][rhel-db2-supp]
@@ -113,7 +112,7 @@ Před spuštěním nasazení dokončete proces plánování. Plánování staví
 | Virtuální počítače hostující IBM Db2 LUW | Velikost virtuálního počítače, úložiště, sítě, IP adresa. |
 | Název a virtuální IP adresa virtuálního hostitele pro databázi IBM Db2| Virtuální IP adresa nebo název hostitele, který se používá pro připojení aplikačních serverů SAP. **DB-Virt-hostname**, **DB-Virt-IP**. |
 | Oplocení Azure | Způsob, jak zabránit rozdělení situací v mozku, je zabránit. |
-| Azure Load Balancer | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
+| Nástroj pro vyrovnávání zatížení Azure | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
 | Překlad adres| Jak řešení překladu názvů funguje v prostředí. Služba DNS se důrazně doporučuje. Je možné použít místní soubor hostitelů. |
     
 Další informace o Pacemaker pro Linux v Azure najdete v tématu [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure][rhel-pcs-azr].
@@ -205,7 +204,7 @@ V závislosti na počátečním testování/převzetí služeb při selhání do
 
 Pokud chcete nastavit pohotovostní databázový server pomocí procedury pro homogenní systémovou kopii SAP, proveďte tyto kroky:
 
-1. Vyberte možnost **kopírování systému** > **cílová** > **Distributed** > **instance distribuované databáze**.
+1. Vyberte možnost **kopírování systému** > **cílová**  >  **Distributed**  >  **instance distribuované databáze**.
 1. Jako metodu kopírování vyberte **homogenní systém** , abyste mohli obnovit zálohu na pohotovostní instanci serveru pomocí zálohování.
 1. Až se dostanete k kroku konec obnovení databáze pro homogenní systémovou kopii, ukončete instalační program. Obnovte databázi ze zálohy primárního hostitele. Všechny následné fáze instalace už jsou spuštěné na primárním databázovém serveru.
 
@@ -336,8 +335,8 @@ Následující položky jsou s předponou buď:
 - **[2]**: platí pouze pro uzel 2
 
 **[A]** předpoklad pro Pacemaker konfigurace:
-1. Vypínání obou databázových serverů pomocí\<> SID uživatele DB2 pomocí db2stop.
-1. Změna prostředí prostředí pro DB2\<SID> uživatele na */bin/ksh*:
+1. Ukončete obě databázové servery s uživatelem DB2 \<sid> pomocí db2stop.
+1. Změna prostředí prostředí pro uživatele DB2 \<sid> na */bin/ksh*:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -455,7 +454,7 @@ Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu 
 
    f. Ujistěte se, že jste **povolili plovoucí IP adresu**.
 
-   g. Vyberte **OK**.
+   například Vyberte **OK**.
 
 **[A]** přidejte pravidlo brány firewall pro port testu paměti:
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
@@ -464,12 +463,12 @@ sudo firewall-cmd --reload</code></pre>
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Provedení změn v profilech SAP pro použití virtuální IP adresy pro připojení
 Aby bylo možné připojit se k primární instanci konfigurace HADR, musí aplikační vrstva SAP používat virtuální IP adresu, kterou jste definovali a nakonfigurovali pro Azure Load Balancer. Jsou vyžadovány tyto změny:
 
-/sapmnt/\<SID>/Profile/default. PFL
+/sapmnt/ \<SID> /Profile/default. PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/Global/DB6/Db2cli.ini
+/sapmnt/ \<SID> /global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -490,12 +489,12 @@ Použijte konfigurační nástroj J2EE ke kontrole nebo aktualizaci adresy URL J
     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
     
 1. V levém rámci vyberte **úložiště zabezpečení**.
-1. V pravém rámečku Vyberte klíč `jdbc/pool/\<SAPSID>/url`.
+1. V pravém rámečku Vyberte klíč `jdbc/pool/\<SAPSID>/url` .
 1. Změňte název hostitele v adrese URL JDBC na název virtuálního hostitele.
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 1. Pokud chcete změny uložit, vyberte ikonu disku v levém horním rohu.
 1. Zavřete konfigurační nástroj.
 1. Restartujte instanci Java.
@@ -507,7 +506,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společné sdílené složky NFS nebo GlusterFS, ve kterých jsou protokoly napsané z obou uzlů. Sdílená složka nebo GlusterFS systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace naleznete v tématu:
+Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace naleznete v tématech:
 
 - [GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver][glusterfs] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP][anf-rhel]
@@ -557,7 +556,7 @@ Původní stav systému SAP je popsán v části > konfigurace služby Transacti
 > Než začnete s testem, ujistěte se, že:
 > * Pacemaker nemá žádné neúspěšné akce (stav počítačů).
 > * Neexistují žádná omezení umístění (Leftovers test migrace).
-> * Synchronizace IBM Db2 HADR funguje. Ověření pomocí> SID\<uživatele DB2 <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * Synchronizace IBM Db2 HADR funguje. Ověřit s uživatelem DB2\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migrujte uzel, na kterém je spuštěná primární databáze Db2, spuštěním následujícího příkazu:
@@ -613,9 +612,9 @@ Migrujte prostředek zpátky na *AZ-idb01* a vymažte omezení umístění.
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
-- **počítače RES_NAME přesunout \<> <host>:** Vytvoří omezení umístění a může způsobit problémy s převzetím.
-- **zdroj počítačů vymazání \<RES_NAME>**: vymaže omezení umístění.
-- **res_name>čištění \<prostředků počítačů **: vymaže všechny chyby prostředku.
+- **přesuny prostředků počítačů \<res_name> <host> :** vytvoří omezení umístění a může způsobit problémy s převzetím.
+- **prostředek počítače vymazat \<res_name> **: vymaže omezení umístění.
+- **Vyčištění \<res_name> prostředků počítačů **: vymaže všechny chyby prostředku.
 
 ### <a name="test-a-manual-takeover"></a>Test ručního převzetí
 
@@ -710,7 +709,7 @@ Instance Db2 se v sekundární roli přiřadí znovu.
 
 ### <a name="stop-db-via-db2stop-force-on-the-node-that-runs-the-hadr-primary-database-instance"></a>Zastavení DB přes db2stop Force na uzlu, na kterém běží primární instance databáze HADR
 
-Jako db2stop vykonání příkazu EXECUTE SID uživatele DB2\<>:
+Když uživatel DB2 \<sid> provede příkaz db2stop Force:
 <pre><code>az-idb01:db2ptr> db2stop force</code></pre>
 
 Zjištěna chyba:

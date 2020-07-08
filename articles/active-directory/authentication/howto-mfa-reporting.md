@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83639846"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Použití sestavy přihlášení ke kontrole událostí Azure Multi-Factor Authentication
@@ -118,7 +117,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Následující tabulka může pomoct řešit události pomocí stažené verze sestavy aktivity z předchozích kroků portálu nebo příkazů PowerShellu. Tyto kódy výsledku se nezobrazí přímo v Azure Portal.
 
-| Výsledek volání | Popis | Obecný popis |
+| Výsledek volání | Description | Obecný popis |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | Zadán kód PIN | Uživatel zadal kód PIN. Pokud ověření proběhlo úspěšně, zadali jste správný PIN kód. Pokud je ověřování odepřeno, zadali jste nesprávný kód PIN nebo je uživatel nastaven na standardní režim. |
 | SUCCESS_NO_PIN | Pouze zadání # | Pokud je uživatel nastavený na režim připnutí a ověřování je odepřeno, znamená to, že uživatel nezadal PIN kód a zadali jste jenom #.  Pokud je uživatel nastavený na standardní režim a ověřování je úspěšné, znamená to, že uživatel zadal jenom #, což je správné nastavení v režimu Standard. |
@@ -170,7 +169,7 @@ Následující tabulka může pomoct řešit události pomocí stažené verze s
 
 K dispozici jsou následující další informace a sestavy pro události MFA, včetně těch pro MFA Server:
 
-| Sestava | Umístění | Popis |
+| Sestava | Umístění | Description |
 |:--- |:--- |:--- |
 | Historie blokovaného uživatele | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
 | Využití pro místní součásti | Zpráva o aktivitě > > MFA služby Azure AD > Security | Poskytuje informace o celkovém využití MFA serveru prostřednictvím rozšíření NPS, ADFS a MFA serveru. |

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
 ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995808"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Použití časových posunutí a živých výstupů k vytvoření přehrávání videa na vyžádání
@@ -31,9 +30,9 @@ Vztah mezi živou událostí a jeho živými výstupy je podobný tradičnímu T
 
 Tato část popisuje, jak používat záznam DVR během události pro kontrolu nad tím, jaké části streamu jsou k dispozici pro Rewind.
 
-`archiveWindowLength` Hodnota určuje, jak daleko v čase může prohlížeč přejít z aktuální živé pozice. `archiveWindowLength` Hodnota také určuje, jak dlouho mohou klientské manifesty růst.
+`archiveWindowLength`Hodnota určuje, jak daleko v čase může prohlížeč přejít z aktuální živé pozice. `archiveWindowLength`Hodnota také určuje, jak dlouho mohou klientské manifesty růst.
 
-Předpokládejme, že jste proudem fotbalového hry a `ArchiveWindowLength` máte jenom 30 minut. Prohlížeč, který začne sledovat událost 45 minut po zahájení hry, může hledat zpět na nejvíce 15 minut. Vaše živé výstupy pro hru budou pokračovat, dokud se zastaví živá událost. Obsah, který se nachází mimo archiveWindowLength, se nepřetržitě zruší z úložiště a je neobnovitelný. V tomto příkladu bylo video mezi začátkem události a značkou od 15 minut vymazáno z vašeho DVR a z kontejneru v úložišti objektů BLOB pro daný prostředek. Archiv se nedá obnovit a odebere se z kontejneru v úložišti objektů BLOB v Azure.
+Předpokládejme, že jste proudem fotbalového hry a máte `ArchiveWindowLength` jenom 30 minut. Prohlížeč, který začne sledovat událost 45 minut po zahájení hry, může hledat zpět na nejvíce 15 minut. Vaše živé výstupy pro hru budou pokračovat, dokud se zastaví živá událost. Obsah, který se nachází mimo archiveWindowLength, se nepřetržitě zruší z úložiště a je neobnovitelný. V tomto příkladu bylo video mezi začátkem události a značkou od 15 minut vymazáno z vašeho DVR a z kontejneru v úložišti objektů BLOB pro daný prostředek. Archiv se nedá obnovit a odebere se z kontejneru v úložišti objektů BLOB v Azure.
 
 Živá událost podporuje až tři souběžně běžící živé výstupy (můžete vytvořit maximálně 3 záznamy/archivy z jednoho živého datového proudu ve stejnou dobu). Tato podpora umožňuje publikování a archivaci různých částí události podle potřeby. Předpokládejme, že budete potřebovat vysílat nepřetržitě živý lineární kanál a v průběhu dne vytvářet nahrávky různých programů, které zákazníkům nabízíme jako obsah na vyžádání pro účely zachytávání. V tomto scénáři nejprve vytvoříte primární živý výstup s krátkým oknem archivu o 1 hodinu nebo méně – jedná se o primární živý datový proud, ke kterému by se návštěvníci mohli naladit. Vytvořili jste Lokátor streamování pro tento živý výstup a publikujete ho na aplikaci nebo web jako datový kanál "Live". I když je živá událost spuštěná, můžete programově vytvořit druhý souběžný živý výstup na začátku programu (nebo 5 minut, kdy budete chtít, aby se některé úchyty mohly oříznout později). Tento druhý živý výstup se dá odstranit 5 minut po skončení programu. S tímto druhým prostředkem můžete vytvořit nový Lokátor streamování pro publikování tohoto programu jako prostředku na vyžádání v katalogu vaší aplikace. Tento proces můžete opakovat několikrát pro jiné hranice programu nebo světla, které chcete sdílet jako videa na vyžádání, a to vše, když se "živý" kanál z prvního živého výstupu pokračuje ve vysílání lineárního kanálu.
 
@@ -45,7 +44,7 @@ I po zastavení a odstranění události můžou uživatelé streamovat archivov
 
 Pokud jste publikovali Asset svého živého výstupu pomocí lokátoru streamování, bude se dál zobrazovat živá událost (až do délky okna DVR), dokud nevyprší platnost nebo odstranění lokátoru streamování, podle toho, co nastane dřív.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 - [Přehled živého streamování](live-streaming-overview.md)
 - [Kurz živého streamování](stream-live-tutorial-with-api.md)

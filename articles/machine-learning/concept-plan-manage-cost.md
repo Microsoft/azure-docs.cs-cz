@@ -11,10 +11,9 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996321"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
@@ -104,8 +103,8 @@ V některých případech byste měli nakonfigurovat své školicí běhy, aby s
 
 Tady je několik možností, které máte:
 * Definujte parametr s názvem `max_run_duration_seconds` v RunConfiguration k řízení maximální doby, po kterou se může běh na výpočetním prostředí rozhodnout (buď místní, nebo vzdálený cloudový výpočet).
-* V případě [ladění pomocí parametrů](how-to-tune-hyperparameters.md#early-termination)Definujte zásadu prvotního ukončení ze zásad Bandit, pozastavené zásady nebo zásadu výběru zkrácení. Chcete-li dále řídit Sweep parametrů, použijte parametry jako `max_total_runs` nebo. `max_duration_minutes`
-* V případě [automatizovaného strojového učení](how-to-configure-auto-train.md#exit)nastavte podobné zásady ukončení `enable_early_stopping` pomocí příznaku. K řízení maximální doby trvání `iteration_timeout_minutes` běhu `experiment_timeout_minutes` nebo pro celý experiment použijte také vlastnosti, jako je a.
+* V případě [ladění pomocí parametrů](how-to-tune-hyperparameters.md#early-termination)Definujte zásadu prvotního ukončení ze zásad Bandit, pozastavené zásady nebo zásadu výběru zkrácení. Chcete-li dále řídit Sweep parametrů, použijte parametry jako `max_total_runs` nebo `max_duration_minutes` .
+* V případě [automatizovaného strojového učení](how-to-configure-auto-train.md#exit)nastavte podobné zásady ukončení pomocí `enable_early_stopping` příznaku. K `iteration_timeout_minutes` `experiment_timeout_minutes` řízení maximální doby trvání běhu nebo pro celý experiment použijte také vlastnosti, jako je a.
 
 ## <a name="use-low-priority-vms"></a>Použití virtuálních počítačů s nízkou prioritou
 
@@ -125,7 +124,7 @@ Prioritu virtuálního počítače nastavíte některým z těchto způsobů:
                                                                max_nodes=4)
     ```
 
-* Pomocí rozhraní příkazového řádku nastavte `vm-priority`:
+* Pomocí rozhraní příkazového řádku nastavte `vm-priority` :
 
     ```azurecli-interactive
     az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
@@ -142,7 +141,7 @@ Azure Machine Learning COMPUTE podporuje rezervované instance, které jsou v po
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Přečtěte si další informace:
 * [Správa a zvýšení kvót prostředků](how-to-manage-quotas.md)
 * [Správa nákladů pomocí [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md).
 * [Azure Machine Learning výpočetní](how-to-set-up-training-targets.md#amlcompute)prostředky.

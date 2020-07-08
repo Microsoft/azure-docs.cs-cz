@@ -13,15 +13,14 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83004748"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
-Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí subdoménu `azure-api.net` (například `apim-service-name.azure-api.net`). Můžete ale zpřístupnit API Management koncových bodů pomocí vlastního názvu domény, například **contoso.com**. V tomto kurzu se dozvíte, jak namapovat stávající vlastní název DNS na koncové body vystavené instancí API Management.
+Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí subdoménu `azure-api.net` (například `apim-service-name.azure-api.net` ). Můžete ale zpřístupnit API Management koncových bodů pomocí vlastního názvu domény, například **contoso.com**. V tomto kurzu se dozvíte, jak namapovat stávající vlastní název DNS na koncové body vystavené instancí API Management.
 
 > [!IMPORTANT]
 > API Management přijímá pouze požadavky s hodnotami [hlaviček hostitele](https://tools.ietf.org/html/rfc2616#section-14.23) , které odpovídají výchozímu názvu domény nebo libovolnému z nakonfigurovaných názvů vlastních domén.
@@ -49,11 +48,11 @@ K provedení kroků popsaných v tomto článku musíte mít:
 
     K dispozici je několik koncových bodů, ke kterým můžete přiřadit vlastní název domény. V současné době jsou k dispozici následující koncové body:
 
-    - **Brána** (výchozí je: `<apim-service-name>.azure-api.net`),
-    - **Portál** (výchozí je: `<apim-service-name>.portal.azure-api.net`),
-    - **Správa** (výchozí je: `<apim-service-name>.management.azure-api.net`),
-    - **SCM** (výchozí je: `<apim-service-name>.scm.azure-api.net`),
-    - **NewPortal** (výchozí je: `<apim-service-name>.developer.azure-api.net`).
+    - **Brána** (výchozí je: `<apim-service-name>.azure-api.net` ),
+    - **Portál** (výchozí je: `<apim-service-name>.portal.azure-api.net` ),
+    - **Správa** (výchozí je: `<apim-service-name>.management.azure-api.net` ),
+    - **SCM** (výchozí je: `<apim-service-name>.scm.azure-api.net` ),
+    - **NewPortal** (výchozí je: `<apim-service-name>.developer.azure-api.net` ).
 
     > [!NOTE]
     > Pouze koncový bod **brány** je k dispozici pro konfiguraci v úrovni spotřeby.
@@ -68,7 +67,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
 
     > [!NOTE]
-    > Názvy domén se zástupnými `*.contoso.com` znaky, např., jsou podporovány ve všech úrovních s výjimkou úrovně spotřeby.
+    > Názvy domén se zástupnými znaky, např., `*.contoso.com` jsou podporovány ve všech úrovních s výjimkou úrovně spotřeby.
 
     > [!TIP]
     > Doporučujeme použít [Azure Key Vault pro správu certifikátů](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) a jejich nastavení na autorenew.
@@ -78,7 +77,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     >
     > Pokud je certifikát nastavený na automatické obnovení, API Management bude automaticky vybírat nejnovější verzi bez jakéhokoli výpadku služby (Pokud vaše API Management vrstva má smlouvu SLA – i. e. ve všech úrovních kromě úrovně pro vývojáře).
 
-1. Klikněte na použít.
+1. Klikněte na Použít.
 
     > [!NOTE]
     > Proces přiřazení certifikátu může v závislosti na velikosti nasazení trvat 15 minut nebo déle. SKU pro vývojáře má výpadky, základní a vyšší skladové jednotky nevýpadek.

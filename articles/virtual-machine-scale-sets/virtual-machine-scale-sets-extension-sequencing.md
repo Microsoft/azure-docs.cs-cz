@@ -10,10 +10,9 @@ ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83121027"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Zřizování rozšíření sekvence ve virtuálních počítačích Virtual Machine Scale Sets
@@ -145,7 +144,7 @@ Vzhledem k tomu, že vlastnost "provisionAfterExtensions" přijímá pole názv�
 }
 ```
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 Následující příklad přidá nové rozšíření s názvem ExtensionC do modelu sady škálování. ExtensionC má závislosti na příponách a ExtensionB, které už jsou definované v modelu sady škálování.
 
 ```

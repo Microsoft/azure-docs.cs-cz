@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123900"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
@@ -58,7 +57,7 @@ V následující tabulce je uveden úplný seznam hodnot pro úroveň přiblíž
 |13|19,1|4889,6|
 |14|9.6|2457,6|
 |15|4,8|1228,8|
-|16|2.4|614,4|
+|16|2,4|614,4|
 |17|1.2|307,2|
 |18|0.6|152,8|
 |19|0.3|76,4|
@@ -167,7 +166,7 @@ Nakonec `quadkeys` Zadejte jednorozměrný klíč indexu, který obvykle zachov�
 
 Následující vzorový kód ukazuje, jak implementovat funkce popsané v tomto dokumentu. Tyto funkce mohou být v případě potřeby snadno přeloženy do jiných programovacích jazyků.
 
-#### <a name="c"></a>[R #](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 using System;

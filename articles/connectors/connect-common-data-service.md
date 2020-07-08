@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997097"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service pomocí Azure Logic Apps
@@ -49,11 +48,11 @@ V tomto příkladu přidejte Trigger Common Data Service, který se aktivuje př
 
    ![Aktivovat informace o prostředí pro monitorování](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Prostředí** | Ano | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](https://docs.microsoft.com/power-platform/admin/environments-overview). |
-   | **Název entity** | Ano | Entita, která se má monitorovat například "Zájemci" |
-   | **Rozsah** | Ano | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
+   | **Prostředí** | Yes | Prostředí, které se má monitorovat, například "prodejní výroba Fabrikam". Další informace najdete v tématu [Power Platform – Přehled prostředí](https://docs.microsoft.com/power-platform/admin/environments-overview). |
+   | **Název entity** | Yes | Entita, která se má monitorovat například "Zájemci" |
+   | **Rozsah** | Yes | Zdroj, který vytvořil nový záznam, například uživatel ve vaší obchodní jednotce nebo libovolný uživatel ve vaší organizaci. V tomto příkladu se používá "obchodní jednotka". |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Přidat Common Data Service akci
@@ -70,10 +69,10 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
    ![Informace o akcích pro prostředí, kde se má záznam vytvořit](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název organizace** | Ano | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
-   | **Název entity** | Ano | Entita, ve které chcete záznam vytvořit, například "úkoly" |
+   | **Název organizace** | Yes | Prostředí, ve kterém chcete záznam vytvořit, takže v triggeru nemusí být stejné prostředí, ale v tomto příkladu se jedná o prodejní produkci Fabrikam. |
+   | **Název entity** | Yes | Entita, ve které chcete záznam vytvořit, například "úkoly" |
    | **Subjekt** | Ano, na základě entity vybrané v tomto příkladu | Krátký popis cíle pro tuto úlohu |
    ||||
 
@@ -87,7 +86,7 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
       ![Vyberte výstupy triggerů, které se mají použít v záznamu úlohy.](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Výstup triggeru | Popis |
+      | Výstup triggeru | Description |
       |----------------|-------------|
       | **Jméno** | Křestní jméno z záznamu zájemce pro použití jako primární kontakt v záznamu úkolu |
       | **Příjmení** | Příjmení ze záznamu zájemce, které se má použít jako primární kontakt v záznamu úkolu |
@@ -148,19 +147,19 @@ Bez ohledu na to, zda ručně zadáte hodnotu nebo vyberete hodnotu ze seznamu d
 
 Tato tabulka popisuje některé typy polí a typy dat, které tato pole vyžadují pro jejich hodnoty.
 
-| Pole | Datový typ | Popis |
+| Pole | Datový typ | Description |
 |-------|-----------|-------------|
 | Textové pole | Jeden řádek textu | Vyžaduje buď jeden řádek textu nebo dynamický obsah, který má datový typ text, například tyto vlastnosti: <p><p>- **Název** <br>- **Kategorií** |
 | Pole celé číslo | Celé číslo | Vyžaduje buď celočíselný nebo dynamický obsah, který má datový typ integer, například tyto vlastnosti: <p><p>- **Procento dokončení** <br>- **Úkolu** |
 | Pole data | Datum a čas | Vyžaduje buď datum ve formátu MM/DD/YYY, nebo dynamický obsah, který má datový typ datum, například tyto vlastnosti: <p><p>- **Datum vytvoření** <br>- **Počáteční datum** <br>- **Skutečný začátek** <br>- **Skutečný konec** <br>- **Termín splnění** |
-| Pole, které odkazuje na jiný záznam entity | Primární klíč | Vyžaduje ID záznamu, jako je identifikátor GUID, a typ vyhledávání, což znamená, že hodnoty ze seznamu dynamického obsahu nebudou fungovat, například tyto vlastnosti: <p><p>- **Vlastník**: musí se jednat o platné ID uživatele nebo ID záznamu týmu. <br>- **Typ vlastníka**: musí se jednat o typ vyhledávání, `systemusers` například `teams`nebo, v uvedeném pořadí. <p><p>- **Týkající se**: musí se jednat o platné ID záznamu, jako je ID účtu nebo ID záznamu kontaktu. <br>- **Týká se typu**: musí se jednat o typ vyhledávání `accounts` , `contacts`například nebo, v uvedeném pořadí. <p><p>- **Zákazník**: musí se jednat o platné ID záznamu, jako je ID účtu nebo ID záznamu kontaktu. <br>- **Typ zákazníka**: musí se jednat o typ vyhledávání, například `accounts` nebo `contacts`, v uvedeném pořadí. |
+| Pole, které odkazuje na jiný záznam entity | Primární klíč | Vyžaduje ID záznamu, jako je identifikátor GUID, a typ vyhledávání, což znamená, že hodnoty ze seznamu dynamického obsahu nebudou fungovat, například tyto vlastnosti: <p><p>- **Vlastník**: musí se jednat o platné ID uživatele nebo ID záznamu týmu. <br>- **Typ vlastníka**: musí se jednat o typ vyhledávání `systemusers` , například `teams` nebo, v uvedeném pořadí. <p><p>- **Týkající se**: musí se jednat o platné ID záznamu, jako je ID účtu nebo ID záznamu kontaktu. <br>- **Týká se typu**: musí se jednat o typ vyhledávání `accounts` , například nebo `contacts` , v uvedeném pořadí. <p><p>- **Zákazník**: musí se jednat o platné ID záznamu, jako je ID účtu nebo ID záznamu kontaktu. <br>- **Typ zákazníka**: musí se jednat o typ vyhledávání, například `accounts` nebo `contacts` , v uvedeném pořadí. |
 ||||
 
 Tento příklad ukazuje, jak akce **vytvořit nový záznam** vytvoří nový záznam "Tasks", který je přidružen k ostatním záznamům entity, konkrétně záznam uživatele a záznam účtu. Akce určuje ID a vyhledávací typy pro tyto záznamy entit pomocí hodnot, které odpovídají očekávaným datovým typům pro příslušné vlastnosti.
 
-* Na základě vlastnosti **Owner** , která určuje ID uživatele a vlastnost **typ vlastníka** , která určuje typ `systemusers` vyhledávání, akce přiřadí nový záznam "Tasks" s konkrétním uživatelem.
+* Na základě vlastnosti **Owner** , která určuje ID uživatele a vlastnost **typ vlastníka** , která určuje `systemusers` typ vyhledávání, akce přiřadí nový záznam "Tasks" s konkrétním uživatelem.
 
-* V závislosti na **vlastnosti s** názvem, která určuje ID záznamu a vlastnost **související typ** , která určuje typ `accounts` vyhledávání, akce přiřadí nový záznam "Tasks" s konkrétním účtem.
+* V závislosti na **vlastnosti s** názvem, která určuje ID záznamu a vlastnost **související typ** , která určuje `accounts` typ vyhledávání, akce přiřadí nový záznam "Tasks" s konkrétním účtem.
 
 ![Vytvoření záznamu "Tasks" přidruženého k identifikátorům a vyhledávacím typům](./media/connect-common-data-service/create-new-record-task-properties.png)
 

@@ -1,18 +1,17 @@
 ---
-title: Síťové požadavky
+title: Požadavky sítě
 description: Požadavky na síť a osvědčené síťové postupy pro optimální prostředí
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196543"
 ---
-# <a name="network-requirements"></a>Síťové požadavky
+# <a name="network-requirements"></a>Požadavky sítě
 
 Stabilní a nízká latence síťového připojení k datovému centru Azure je důležitá pro dobrý zážitek uživatele při vzdáleném vykreslování Azure. Špatné stavy sítě mohou způsobit přerušená připojení, nestabilní, kolísání nebo přechodové hologramy a znatelné zpoždění při aktualizaci grafu scény na straně serveru.
 

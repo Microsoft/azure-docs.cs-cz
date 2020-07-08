@@ -15,10 +15,9 @@ ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201120"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
@@ -46,7 +45,7 @@ Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód použ
 1. V aplikaci Visual Studio vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce NuGet**.
 2. V okně **konzoly Správce balíčků** `Install-Package` přidejte následující balíčky NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
 
-|Balíček|Popis|
+|Balíček|Description|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Abyste měli jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Knihovna ověřování ADAL pro sadu Azure SDK pro NET|
@@ -56,19 +55,19 @@ Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód použ
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Vytvoření a konfigurace souboru nastavení aplikace
 
-### <a name="create-appsettingsjson"></a>Vytvořit appSettings. JSON
+### <a name="create-appsettingsjson"></a>Vytvořit appsettings.jsna
 
 1. Přejít na **obecný**  >  **textový soubor**
-1. Pojmenujte ho "appSettings. JSON".
+1. Pojmenujte ho "appsettings.json".
 1. Nastavte vlastnost kopírovat do výstupního adresáře souboru. JSON na kopírovat, pokud je novější (takže aplikace bude mít k nim přístup, když je publikovaná).
 
-### <a name="set-values-in-appsettingsjson"></a>Nastavení hodnot v souboru appSettings. JSON
+### <a name="set-values-in-appsettingsjson"></a>Nastavit hodnoty v appsettings.jsna
 
-Spusťte `az ams account sp create` příkaz, jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do souboru appSettings. JSON.
+Spusťte `az ams account sp create` příkaz, jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do "appsettings.json".
  
 ## <a name="add-configuration-file"></a>Přidání konfiguračního souboru
 
-Pro usnadnění práce přidejte konfigurační soubor, který je zodpovědný za čtení hodnot z "appSettings. JSON".
+Pro usnadnění práce přidejte konfigurační soubor, který je zodpovědný za čtení hodnot z "appsettings.jszapnuté".
 
 1. Přidejte do projektu novou třídu. cs. Pojmenujte ji `ConfigWrapper`. 
 1. Do tohoto souboru vložte následující kód (Tento příklad předpokládá, že máte obor názvů `ConsoleApp1` ).

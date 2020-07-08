@@ -8,10 +8,9 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125770"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro sadu škálování virtuálního počítače s Windows
@@ -38,14 +37,14 @@ Rozšíření Azure Diagnostics používá funkci nazvanou **datové jímky** k 
 ## <a name="author-a-resource-manager-template"></a>Vytvořit šablonu Správce prostředků 
 V tomto příkladu můžete použít veřejně dostupnou [ukázkovou šablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale):  
 
-- **Azuredeploy. JSON** je předkonfigurovaná správce prostředků šablona pro nasazení sady škálování virtuálního počítače.
+- **Azuredeploy.json** je předkonfigurovaná správce prostředků šablona pro nasazení sady škálování virtuálního počítače.
 
-- **Azuredeploy. Parameters. JSON** je soubor parametrů, který ukládá informace, jako je například uživatelské jméno a heslo, které chcete nastavit pro virtuální počítač. Během nasazování používá šablona Správce prostředků parametry nastavené v tomto souboru. 
+- **Azuredeploy.parameters.json** je soubor parametrů, který ukládá informace, jako je třeba uživatelské jméno a heslo, které chcete nastavit pro virtuální počítač. Během nasazování používá šablona Správce prostředků parametry nastavené v tomto souboru. 
 
 Stáhněte a uložte oba soubory místně. 
 
-###  <a name="modify-azuredeployparametersjson"></a>Upravit azuredeploy. Parameters. JSON
-Otevřete soubor **azuredeploy. Parameters. JSON** :  
+###  <a name="modify-azuredeployparametersjson"></a>Upravit azuredeploy.parameters.jsna
+Otevřete **azuredeploy.parameters.jsv** souboru:  
  
 - Zadejte **vmSKU** , který chcete nasadit. Doporučujeme Standard_D2_v3. 
 - Zadejte **windowsOSVersion** , který chcete použít pro sadu škálování virtuálního počítače. Doporučujeme 2016 – Datacenter. 
@@ -54,8 +53,8 @@ Otevřete soubor **azuredeploy. Parameters. JSON** :
 - Zadejte hodnoty pro **adminUsername** a **adminPassword** pro sadu škálování virtuálního počítače. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům v sadě škálování. Abyste se vyhnuli napadení virtuálního **počítače, nepoužívejte ty** v této šabloně. Roboty prověřování Internetu pro uživatelská jména a hesla ve veřejných úložištích GitHubu. Budou pravděpodobně testovány virtuální počítače s těmito výchozími hodnotami. 
 
 
-###  <a name="modify-azuredeployjson"></a>Upravit azuredeploy. JSON
-Otevřete soubor **azuredeploy. JSON** . 
+###  <a name="modify-azuredeployjson"></a>Upravit azuredeploy.jsna
+Otevřete **azuredeploy.jsv** souboru. 
 
 Přidejte proměnnou, která bude uchovávat informace o účtu úložiště v šabloně Správce prostředků. Všechny protokoly nebo čítače výkonu zadané v konfiguračním souboru diagnostiky se zapisují do úložiště metriky Azure Monitor a účtu úložiště, který zadáte tady: 
 
@@ -266,7 +265,7 @@ Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:
 1. Po úspěšném nasazení byste měli v Azure Portal najít sadu škálování virtuálního počítače. Mělo by vygenerovat metriky pro Azure Monitor. 
 
    > [!NOTE]  
-   > Můžete spustit chybu kolem vybraného **vmSkuSize**. V takovém případě se vraťte k souboru **azuredeploy. JSON** a aktualizujte výchozí hodnotu parametru **vmSkuSize** . Doporučujeme, abyste si vyzkoušeli **Standard_DS1_v2**. 
+   > Můžete spustit chybu kolem vybraného **vmSkuSize**. V takovém případě se vraťte k vašemu **azuredeploy.jsv** souboru a aktualizujte výchozí hodnotu parametru **vmSkuSize** . Doporučujeme, abyste si vyzkoušeli **Standard_DS1_v2**. 
 
 
 ## <a name="chart-your-metrics"></a>Vytvoření grafu metrik 

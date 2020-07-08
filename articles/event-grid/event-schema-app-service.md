@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: jafreebe
 ms.openlocfilehash: 0a24e8ba84739dbc1b5de5e0546a8fe0d2e826f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650704"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service jako zdroj Event Grid
@@ -24,7 +23,7 @@ Tento článek poskytuje vlastnosti a schéma pro události Azure App Service. �
 
 Azure App Service emituje následující typy událostí.
 
-|    Event Type                                             |    Popis                                                     |
+|    Event Type                                             |    Description                                                     |
 |-----------------------------------------------------------|--------------------------------------------------------------------|
 |    Microsoft. Web/weby. BackupOperationStarted             |    Aktivované při zahájení zálohování                             |
 |    Microsoft. Web/weby. BackupOperationCompleted           |    Aktivované po dokončení zálohování                           |
@@ -47,7 +46,7 @@ Azure App Service emituje následující typy událostí.
 Když se aktivuje událost, Služba Event Grid odešle data o této události do předplatného koncového bodu.
 V této části najdete příklad toho, jak by tato data vypadala jako u každé události. Každá událost má následující data nejvyšší úrovně:
 
-|     Vlastnost          |     Typ     |     Popis                                                                                                                                |
+|     Vlastnost          |     Typ     |     Description                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    téma              |    řetězec    |    Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid.                                      |
 |    závislosti            |    řetězec    |    Cesta definovaná vydavatelem k předmětu události                                                                                              |
@@ -83,7 +82,7 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 
 Datový objekt obsahuje následující vlastnosti:
 
-|    Vlastnost                |    Typ      |    Popis                                                                                                       |
+|    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
@@ -121,7 +120,7 @@ Datový objekt obsahuje následující vlastnosti:
 
 Datový objekt obsahuje následující vlastnosti:
 
-|    Vlastnost                |    Typ      |    Popis                                                                                                       |
+|    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
@@ -159,7 +158,7 @@ Datový objekt obsahuje následující vlastnosti:
 
 Datový objekt obsahuje následující vlastnosti:
 
-|    Vlastnost                |    Typ      |    Popis                                                                                                       |
+|    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
@@ -198,7 +197,7 @@ Datový objekt obsahuje následující vlastnosti:
 
 Datový objekt obsahuje následující vlastnosti:
 
-|    Vlastnost                |    Typ      |    Popis                                                                                                       |
+|    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
@@ -236,7 +235,7 @@ Datový objekt obsahuje následující vlastnosti:
 
 Datový objekt má následující vlastnosti:
 
-|    Vlastnost                |    Typ      |    Popis                                                                                                       |
+|    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
@@ -283,7 +282,7 @@ Datový objekt má následující vlastnosti:
 
 Datový objekt má následující vlastnosti:
 
-|    Vlastnost                         |    Typ      |    Popis                                                                                                       |
+|    Vlastnost                         |    Typ      |    Description                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appServicePlanEventTypeDetail    |    odkazy objektů    |    Podrobnosti o akci v plánu služby App Service                                                                          |
 |    stampKind                        |    řetězec    |    Druh prostředí, ve kterém je plán služby App Service                                                                     |

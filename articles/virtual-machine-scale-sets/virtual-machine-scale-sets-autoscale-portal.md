@@ -10,10 +10,9 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124937"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování sady škálování virtuálních počítačů v Azure Portal
@@ -46,7 +45,7 @@ Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instan
     | *Časová agregace*     | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr        |
     | *Název metriky*          | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
     | *Statistika agregačního intervalu* | Definuje, jak by měly být shromážděné metriky v jednotlivých intervalech agregovány pro účely analýzy.                             | Průměr        |
-    | *Podnikatel*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
+    | *Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
     | *Mezí*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 70             |
     | *Doba trvání*             | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 10 minut     |
     | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                        | Zvýšit procento o |
@@ -70,7 +69,7 @@ Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud j
     
     | Parametr              | Vysvětlení                                                                                                          | Hodnota          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Podnikatel*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Menší než   |
+    | *Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Menší než   |
     | *Mezí*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 30             |
     | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                         | Snížit procento o |
     | *Počet instancí*       | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                             | 20             |

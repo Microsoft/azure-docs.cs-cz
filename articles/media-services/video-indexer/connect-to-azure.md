@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005936"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
@@ -131,7 +130,7 @@ Pokud se připojení k Azure nepovedlo, můžete se pokusit problém vyřešit r
     2. Vyberte [metodu ověřování instančního objektu](../previous/media-services-portal-get-started-with-aad.md).
     3. Získat ID klienta a tajný klíč klienta
 
-        Po výběru **Možnosti**->**klíče**, přidat **Popis**, stiskněte **Uložit**a hodnota klíče se naplní.
+        Po výběru **Možnosti** -> **klíče**, přidat **Popis**, stiskněte **Uložit**a hodnota klíče se naplní.
 
         Pokud klíč vyprší, vlastník účtu bude muset kontaktovat Video Indexer podporu, aby se klíč obnovil.
 
@@ -144,7 +143,7 @@ V dialogovém okně **připojit video indexer k předplatnému Azure** stránky 
 
 V dialogovém okně zadejte následující informace:
 
-|Nastavení|Popis|
+|Nastavení|Description|
 |---|---|
 |Oblast účtu Video Indexer|Název oblasti účtu Video Indexer. Pro lepší výkon a snížení nákladů doporučujeme zadat název oblasti, kde se nachází Azure Media Services prostředek a Azure Storage účet. |
 |Tenant Azure AD|Název tenanta Azure AD, například "contoso.onmicrosoft.com". Informace o tenantovi lze získat z Azure Portal. Umístěte ukazatel myši na jméno přihlášeného uživatele v pravém horním rohu. Vyhledá jméno napravo od **domény**.|
@@ -163,7 +162,7 @@ Možnost importu obsahu je platná pro automatizované i ruční postupy popsan�
 > [!NOTE]
 > Obsah se dá z každého účtu importovat jenom jednou.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Platí následující Azure Media Services související s požadavky:
 

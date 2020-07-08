@@ -6,10 +6,9 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649115"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
@@ -23,7 +22,7 @@ Přihlašovací údaje na úrovni uživatele můžete nakonfigurovat na [stránc
 
 ### <a name="in-the-cloud-shell"></a>V Cloud Shell
 
-Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Nahraďte \< uživatelské jméno> a \< heslo> pomocí uživatelského jména a hesla pro nasazení. 
+Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Nahraďte \<username> a \<password> pomocí uživatelského jména a hesla pro nasazení. 
 
 - Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol @. 
 - Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly. 
@@ -38,7 +37,7 @@ Výstup JSON zobrazuje heslo jako `null` . Pokud se zobrazí chyba `'Conflict'. 
 
 V Azure Portal musíte mít alespoň jednu aplikaci, abyste mohli získat přístup k přihlašovací stránce nasazení. Konfigurace přihlašovacích údajů na úrovni uživatele:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  ** \< any_app **  >  **na**  >  **FTP**  >  **řídicím panelu**FTP centra nasazení>.
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  **\<any_app>**  >  **Deployment center**  >  **FTP**  >  **řídicí panel**FTP centra nasazení.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 

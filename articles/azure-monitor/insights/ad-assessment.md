@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
 ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651859"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí Active Directory s využitím řešení kontroly stavu Active Directory ve službě Azure Monitor
@@ -40,7 +39,7 @@ Po přidání řešení a dokončení kontroly se na řídicím panelu **kontrol
 * Pracovní prostor Log Analytics pro přidání řešení kontroly stavu služby Active Directory z Azure Marketplace v Azure Portal. Není vyžadována žádná další konfigurace.
 
   > [!NOTE]
-  > Po přidání řešení se soubor AdvisorAssessment. exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená.
+  > Po přidání řešení se soubor AdvisorAssessment.exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená.
   >
   >
 
@@ -140,9 +139,9 @@ Tady je snímek obrazovky, který ukazuje dotaz protokolu: <
 
 Vyberte doporučení, která chcete ignorovat. V dalším postupu použijete hodnoty pro RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations. txt
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
 
-1. Vytvořte soubor s názvem IgnoreRecommendations. txt.
+1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
 
 2. Vložte nebo zadejte jednotlivé RecommendationIdy pro každé doporučení, které chcete, Azure Monitor ignorovat na samostatném řádku a pak soubor uložte a zavřete.
 
@@ -162,7 +161,7 @@ Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uved
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
 
-2. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny soubory IgnoreRecommendations. txt nebo z nich můžete RecommendationIDs odebrat.
+2. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny IgnoreRecommendations.txt soubory nebo z nich můžete odebrat RecommendationIDs.
 
 ## <a name="ad-health-check-solutions-faq"></a>Nejčastější dotazy k řešením kontroly stavu AD
 
@@ -195,7 +194,7 @@ Výsledky pak lze exportovat do aplikace Excel pro další kontrolu.
 
 *Jaký je název procesu, který provádí shromažďování dat?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Jak dlouho trvá shromažďování dat?*
 

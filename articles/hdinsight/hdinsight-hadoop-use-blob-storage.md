@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83655180"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
@@ -29,7 +28,7 @@ V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDIns
 | Druh účtu úložiště | Podporované služby | Podporované úrovně výkonu |Nepodporované úrovně výkonu| Podporované úrovně přístupu |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (obecné účely v2)  | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
-| Úložiště (obecné účely v1)   | Objekt blob     | Standard                    |Premium| –                    |
+| Úložiště (obecné účely v1)   | Objekt blob     | Standard                    |Premium| Není k dispozici                    |
 | BlobStorage                    | Objekt blob     | Standard                    |Premium| Horká, studená, archivní\*   |
 
 Pro ukládání obchodních dat nedoporučujeme používat výchozí kontejner objektů BLOB. Ideální postup je výchozí kontejner objektů blob po každém použití odstranit a snížit tak náklady na úložiště. Výchozí kontejner obsahuje protokoly aplikací a systému. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
@@ -129,7 +128,7 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 
 | Nástroj | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [portál Azure](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -167,7 +166,7 @@ Při vytváření clusteru HDInsight zadáváte účet služby Azure Storage, kt
 
 V tomto článku jste zjistili, jak používat HDFS kompatibilní úložiště Azure se službou HDInsight. Toto úložiště umožňuje vytvářet přizpůsobitelná a dlouhodobá řešení pro získávání archivovaných dat a používat HDInsight k odemčení informací uvnitř uložených strukturovaných a nestrukturovaných dat.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Začínáme se službou Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Začínáme s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)

@@ -9,10 +9,9 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83006020"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Vztahy ukotvení a způsoby hledání v prostorových kotvách Azure
@@ -73,7 +72,7 @@ Tento postup můžete i nadále používat pro další kotvy a další relace v 
 
 ### <a name="verify-anchor-connections"></a>Ověřit kotvy připojení
 
-Aplikace může ověřit, zda jsou dvě kotvy propojeny vyvoláním dotazu pro okolní kotvy, které provedete nastavením `NearAnchorCriteria` na `CloudSpatialAnchorWatcher`. Pokud výsledek dotazu obsahuje cílovou kotvu, je připojení ukotvení ověřeno. Pokud kotvy nejsou připojené, aplikace se může pokusit o jejich připojení znovu.
+Aplikace může ověřit, zda jsou dvě kotvy propojeny vyvoláním dotazu pro okolní kotvy, které provedete nastavením `NearAnchorCriteria` na `CloudSpatialAnchorWatcher` . Pokud výsledek dotazu obsahuje cílovou kotvu, je připojení ukotvení ověřeno. Pokud kotvy nejsou připojené, aplikace se může pokusit o jejich připojení znovu.
 
 Zde jsou některé důvody, proč se mohou kotvy nedaří připojit:
 

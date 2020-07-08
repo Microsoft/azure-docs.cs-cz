@@ -8,10 +8,9 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983070"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Řešení potíží s firewallem webových aplikací (WAF) pro Azure Application Gateway
@@ -28,7 +27,7 @@ OWASP RuleSets jsou navržené tak, aby byly velmi přísné, a vyladěny tak, a
 
 Řekněme například, že máte legitimní provoz obsahující řetězec *1 = 1* , který chcete předat vaší WAF. Pokud si vyzkoušíte požadavek, WAF blokuje přenos, který obsahuje váš *1 = 1* řetězec v jakémkoli parametru nebo poli. Toto je řetězec často spojený s útokem na injektáže SQL. Můžete procházet protokoly a zobrazit časové razítko požadavku a pravidla, která jsou blokovaná/spárována.
 
-V následujícím příkladu vidíte, že se během stejné žádosti spouštějí čtyři pravidla (pomocí pole TransactionId). První z nich odpovídá tomu, že uživatel použil pro požadavek číselnou adresu URL, která zvyšuje skóre anomálií o tři, protože se jedná o upozornění. Další pravidlo, které odpovídá, je 942130, což je ten, který hledáte. V `details.data` poli můžete zobrazit *1 = 1* . Tím se ještě třikrát zvyšuje skóre anomálií, protože se jedná i o upozornění. Obecně platí, že každé pravidlo, které **odpovídá** akci, zvyšuje skóre anomálií a v tomto okamžiku bude skóre anomálie šest. Další informace najdete v tématu [režim bodování anomálií](ag-overview.md#anomaly-scoring-mode).
+V následujícím příkladu vidíte, že se během stejné žádosti spouštějí čtyři pravidla (pomocí pole TransactionId). První z nich odpovídá tomu, že uživatel použil pro požadavek číselnou adresu URL, která zvyšuje skóre anomálií o tři, protože se jedná o upozornění. Další pravidlo, které odpovídá, je 942130, což je ten, který hledáte. V poli můžete zobrazit *1 = 1* `details.data` . Tím se ještě třikrát zvyšuje skóre anomálií, protože se jedná i o upozornění. Obecně platí, že každé pravidlo, které **odpovídá** akci, zvyšuje skóre anomálií a v tomto okamžiku bude skóre anomálie šest. Další informace najdete v tématu [režim bodování anomálií](ag-overview.md#anomaly-scoring-mode).
 
 Poslední dvě položky protokolu ukázaly, že žádost byla zablokována, protože skóre anomálie bylo dostatečně vysoké. Tyto položky mají jinou akci než druhá druhá. Ukazují, že jsou ve skutečnosti *zablokované* . Tato pravidla jsou povinná a nejde je zakázat. Nemusely být považovány za pravidla, ale více jako základní infrastruktura WAF interních.
 
@@ -182,7 +181,7 @@ Toto pole můžete vyloučit. Další informace o seznamech vyloučení najdete 
 
 Můžete také prostudovat protokoly brány firewall a získat informace, abyste viděli, co je třeba přidat do seznamu vyloučení. Pokud chcete povolit protokolování, přečtěte si téma [stav back-endu, protokoly prostředků a metriky pro Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-Zkontrolujte protokol brány firewall a Prohlédněte si soubor PT1H. JSON po dobu, po kterou došlo k žádosti, kterou chcete zkontrolovat.
+Zkontrolujte protokol brány firewall a zobrazte PT1H.jsv souboru po dobu, po kterou došlo k žádosti, kterou chcete zkontrolovat.
 
 V tomto příkladu vidíte, že máte čtyři pravidla se stejným TransactionID a že ke všem došlo ve stejnou dobu.
 
@@ -301,7 +300,7 @@ Fiddler je užitečný nástroj znovu pro vyhledání názvů hlaviček požadav
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-Další možností zobrazení hlaviček žádostí a odpovědí je prohledání v vývojářských nástrojích Chrome. Můžete stisknout klávesu F12 nebo kliknout pravým tlačítkem – > **zkontrolovat** -> **vývojářské nástroje**a vybrat kartu **síť** . načtěte webovou stránku a klikněte na žádost, kterou chcete zkontrolovat.
+Další možností zobrazení hlaviček žádostí a odpovědí je prohledání v vývojářských nástrojích Chrome. Můžete stisknout klávesu F12 nebo kliknout pravým tlačítkem – > **zkontrolovat**  ->  **vývojářské nástroje**a vybrat kartu **síť** . načtěte webovou stránku a klikněte na žádost, kterou chcete zkontrolovat.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

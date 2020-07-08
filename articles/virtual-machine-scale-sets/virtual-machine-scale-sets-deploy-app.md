@@ -10,10 +10,9 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124920"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
@@ -90,9 +89,9 @@ Pokud jsou zásady upgradu v sadě škálování *Ruční*, aktualizujte instanc
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
-Další informace, včetně ukázkového souboru *Cloud-init. txt* , najdete v tématu věnovaném [použití Cloud-init k přizpůsobení virtuálních počítačů Azure](../virtual-machines/linux/using-cloud-init.md).
+Další informace, včetně ukázkového souboru *cloud-init.txt* , najdete v tématu věnovaném [použití Cloud-init k přizpůsobení virtuálních počítačů Azure](../virtual-machines/linux/using-cloud-init.md).
 
-Pokud chcete vytvořit sadu škálování a použít soubor Cloud-init, přidejte `--custom-data` do příkazu [AZ VMSS Create](/cli/azure/vmss) parametr a zadejte název souboru Cloud-init. Následující příklad vytvoří sadu škálování s názvem *myScaleSet* v *myResourceGroup* a nakonfiguruje instance virtuálních počítačů pomocí souboru s názvem *Cloud-init. txt*. Zadejte vlastní názvy následujícím způsobem:
+Pokud chcete vytvořit sadu škálování a použít soubor Cloud-init, přidejte `--custom-data` do příkazu [AZ VMSS Create](/cli/azure/vmss) parametr a zadejte název souboru Cloud-init. Následující příklad vytvoří sadu škálování s názvem *myScaleSet* v *myResourceGroup* a nakonfiguruje instance virtuálních počítačů pomocí souboru s názvem *cloud-init.txt*. Zadejte vlastní názvy následujícím způsobem:
 
 ```azurecli
 az vmss create \

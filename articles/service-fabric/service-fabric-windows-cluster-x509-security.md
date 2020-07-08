@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653638"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X. 509
@@ -18,7 +17,7 @@ Tento článek popisuje, jak zabezpečit komunikaci mezi různými uzly samostat
 Další informace o zabezpečení clusterů, jako je zabezpečení mezi uzly, zabezpečení mezi klienty a uzly a řízení přístupu na základě rolí, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
 
 ## <a name="which-certificates-do-you-need"></a>Které certifikáty potřebujete?
-Pokud chcete začít, [Stáhněte si balíček Service Fabric pro Windows Server](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) do jednoho z uzlů v clusteru. Ve staženém balíčku najdete soubor ClusterConfig. X509. Machine. JSON. Otevřete soubor a podívejte se na téma zabezpečení v části vlastnosti:
+Pokud chcete začít, [Stáhněte si balíček Service Fabric pro Windows Server](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) do jednoho z uzlů v clusteru. Ve staženém balíčku najdete ClusterConfig.X509.MultiMachine.jsv souboru. Otevřete soubor a podívejte se na téma zabezpečení v části vlastnosti:
 
 ```JSON
 "security": {
@@ -265,7 +264,7 @@ Pro clustery, které používáte pro účely testování, můžete použít cer
 Další otázky najdete v [nejčastějších](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)dotazech k certifikátu.
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Volitelné: vytvoření certifikátu podepsaného svým držitelem
-Jedním ze způsobů, jak vytvořit certifikát podepsaný svým držitelem, který se dá správně zabezpečit, je použít skript CertSetup. ps1 ve složce sady SDK pro Service Fabric v adresáři C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure.. Úpravou tohoto souboru můžete změnit výchozí název certifikátu. (Podívejte se na hodnotu CN = ServiceFabricDevClusterCert.) Spusťte tento skript jako `.\CertSetup.ps1 -Install` .
+Jedním ze způsobů, jak vytvořit certifikát podepsaný svým držitelem, který se dá správně zabezpečit, je použít skript CertSetup.ps1 ve složce sady Service Fabric SDK v adresáři C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. Úpravou tohoto souboru můžete změnit výchozí název certifikátu. (Podívejte se na hodnotu CN = ServiceFabricDevClusterCert.) Spusťte tento skript jako `.\CertSetup.ps1 -Install` .
 
 Nyní exportujte certifikát do souboru. pfx s chráněným heslem. Nejprve Získejte kryptografický otisk certifikátu. 
 1. Z nabídky **Start** spusťte **spravovat certifikáty počítače**. 
@@ -344,13 +343,13 @@ Po nainstalování certifikátů je můžete nainstalovat na uzly clusteru. Uzly
 4. Opakujte předchozí kroky pro každý certifikát serveru. Pomocí těchto kroků můžete také nainstalovat klientské certifikáty do počítačů, u kterých chcete zpřístupnit přístup ke clusteru.
 
 ## <a name="create-the-secure-cluster"></a>Vytvoření zabezpečeného clusteru
-Až nakonfigurujete oddíl zabezpečení v souboru ClusterConfig. X509. s více počítači, můžete přejít k části [Vytvoření clusteru](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) a nakonfigurovat uzly a vytvořit samostatný cluster. Nezapomeňte při vytváření clusteru použít soubor ClusterConfig. X509. s více počítači. JSON. Například váš příkaz může vypadat takto:
+Až nakonfigurujete část zabezpečení ClusterConfig.X509.MultiMachine.jsv souboru, můžete přejít k části [Vytvoření clusteru](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) a nakonfigurovat uzly a vytvořit samostatný cluster. Nezapomeňte při vytváření clusteru použít ClusterConfig.X509.MultiMachine.jsv souboru. Například váš příkaz může vypadat takto:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Po úspěšném spuštění zabezpečeného samostatného clusteru Windows a nastavování ověřených klientů pro připojení použijte postup v části [připojení ke clusteru pomocí PowerShellu](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) , který se k němu připojí. Například:
+Po úspěšném spuštění zabezpečeného samostatného clusteru Windows a nastavování ověřených klientů pro připojení použijte postup v části [připojení ke clusteru pomocí PowerShellu](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) , který se k němu připojí. Příklad:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }

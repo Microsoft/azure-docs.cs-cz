@@ -15,10 +15,9 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995866"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Konfigurace a licenční požadavky pro Apple FairPlay 
@@ -39,7 +38,7 @@ Při použití Media Services k šifrování obsahu HLS pomocí nástroje **Appl
 
         Následující postup popisuje, jak vygenerovat soubor certifikátu. pfx pro FairPlay:
 
-        1. Nainstalujte OpenSSL z https://slproweb.com/products/Win32OpenSSL.html.
+        1. Nainstalujte OpenSSL z https://slproweb.com/products/Win32OpenSSL.html .
 
             Přejít do složky, kde je certifikát FairPlay a další soubory dodávané společností Apple.
         2. V příkazovém řádku spusťte následující příkaz. Tím se soubor. cer převede na soubor. pem.
@@ -47,7 +46,7 @@ Při použití Media Services k šifrování obsahu HLS pomocí nástroje **Appl
             "C:\OpenSSL-Win32\bin\openssl.exe" x509-informující der-in FairPlay. cer-out FairPlay-out. pem
         3. V příkazovém řádku spusťte následující příkaz. Tím se soubor. pem převede na soubor. pfx s privátním klíčem. Heslo pro soubor. pfx pak vyzve OpenSSL.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12-export FairPlay-out. pfx-INKEY PrivateKey. pem-in Fairplay-out. pem-Passin soubor: PrivateKey-PEM-Pass. txt
+            "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12-export FairPlay-out. pfx-INKEY PrivateKey. pem-in FairPlay-out. pem-Passin file:privatekey-pem-pass.txt
             
     * **Heslo certifikátu aplikace**: heslo pro vytvoření souboru. pfx.
     * **Dotaz**: Tento klíč se obdrží, když vygenerujete certifikaci pomocí portálu pro vývojáře Apple. Každý vývojový tým obdrží jedinečný dotaz. Uložte kopii žádosti a uložte ji na bezpečném místě. U Media Services musíte nakonfigurovat ASK jako FairPlayAsk.

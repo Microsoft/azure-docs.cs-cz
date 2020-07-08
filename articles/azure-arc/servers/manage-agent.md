@@ -9,10 +9,9 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648105"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
@@ -52,7 +51,7 @@ Pokud neznáte možnosti příkazového řádku pro Instalační služba systém
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. Spusťte **AzureConnectedMachineAgent. msi** pro spuštění Průvodce instalací nástroje.
+2. Spusťte **AzureConnectedMachineAgent.msi** pro spuštění Průvodce instalací nástroje.
 
 Průvodce instalací zjistí, zda existuje předchozí verze, a poté automaticky provede upgrade agenta. Po dokončení upgradu se Průvodce instalací automaticky zavře.
 
@@ -125,7 +124,7 @@ Akce příkazu [zypperu](https://en.opensuse.org/Portal:Zypper) , jako je instal
 
 ## <a name="about-the-azcmagent-tool"></a>O nástroji Azcmagent
 
-Nástroj Azcmagent (Azcmagent. exe) se používá ke konfiguraci agenta Azure ARC pro servery (Preview) připojeného počítače během instalace nebo po instalaci změnit počáteční konfiguraci agenta. Azcmagent. exe poskytuje parametry příkazového řádku pro přizpůsobení agenta a zobrazení jeho stavu:
+Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci agenta Azure ARC pro servery (Preview) připojeného počítače během instalace nebo po instalaci změnit počáteční konfiguraci agenta. Azcmagent.exe poskytuje parametry příkazového řádku pro přizpůsobení agenta a zobrazení jeho stavu:
 
 * **Připojení** – připojení počítače k Arc Azure
 
@@ -212,11 +211,11 @@ Obě následující metody odeberou agenta, ale neodstraňují složku *C:\Progr
     c. V **programech a funkcích**vyberte **Azure Connected Machine agent**, vyberte **odinstalovat**a pak vyberte **Ano**.  
 
     >[!NOTE]
-    > Průvodce instalací agenta můžete také spustit dvojitým kliknutím na balíček instalačního programu **AzureConnectedMachineAgent. msi** .
+    > Průvodce instalací agenta můžete také spustit dvojitým kliknutím na balíček Instalační služby **AzureConnectedMachineAgent.msi** .
 
 #### <a name="uninstall-from-the-command-line"></a>Odinstalace z příkazového řádku
 
-K ručnímu odinstalování agenta z příkazového řádku nebo k použití automatizované metody, jako je například skript, můžete použít následující příklad. Nejprve musíte načíst kód produktu, což je identifikátor GUID, který je hlavním identifikátorem balíčku aplikace, z operačního systému. Odinstalace se provádí pomocí příkazového řádku Msiexec. exe – `msiexec /x {Product Code}` .
+K ručnímu odinstalování agenta z příkazového řádku nebo k použití automatizované metody, jako je například skript, můžete použít následující příklad. Nejprve musíte načíst kód produktu, což je identifikátor GUID, který je hlavním identifikátorem balíčku aplikace, z operačního systému. Odinstalace se provádí pomocí příkazového řádku Msiexec.exe – `msiexec /x {Product Code}` .
 
 1. Otevřete Editor registru.
 

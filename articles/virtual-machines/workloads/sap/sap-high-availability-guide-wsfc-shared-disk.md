@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982951"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure
@@ -60,15 +59,15 @@ V systému Windows instance SAP ASCS/SCS obsahuje službu SAP Central Services, 
 Instance SAP ASCS/SCS má následující komponenty:
 
 * Centrální služby SAP:
-    * Dva procesy, server zpráv a zařazování a> název \<virtuálního hostitele ASCS/SCS, který se používá pro přístup k těmto dvěma procesům.
-    * Struktura souborů: číslo\\&lt;S:\usr\sap&gt;SID \ ASCS/\<SCS instance\>
+    * Dva procesy, server zpráv a zařazování a \<ASCS/SCS virtual host name> , který se používá pro přístup k těmto dvěma procesům.
+    * Struktura souborů: S:\usr\sap \\ &lt; SID &gt; \ ASCS/SCS\<instance number\>
 
 
 * Soubory globálního hostitele SAP:
-  * Struktura souborů: S:\usr\sap\\&lt;SID&gt;\SYS\...
-  * Sdílená složka sapmnt, která umožňuje přístup k těmto globálním S:\usr\sap\\&lt;SID&gt;\SYS\.. soubory s použitím následující cesty UNC:
+  * Struktura souborů: S:\usr\sap \\ &lt; SID &gt; \SYS \. ..
+  * Sdílená složka sapmnt, která umožňuje přístup k těmto globálním S:\usr\sap \\ &lt; SID &gt; \SYS \. .. soubory pomocí následující cesty UNC:
 
-    \\\\<ASCS\>/SCS název virtuálního hostitele \sapmnt\\&lt;SID&gt;\SYS\...
+    \\\\<ASCS/SCS název virtuálního hostitele \> \Sapmnt \\ &lt; SID &gt; \SYS \. ..
 
 
 ![Obrázek 2: procesy, struktura souborů a globální sapmnt sdílené složky hostitele instance SAP ASCS/SCS][sap-ha-guide-figure-8001]
@@ -83,7 +82,7 @@ _**Obrázek 3:** Architektura SAP ASCS/SCS HA se sdíleným diskem_
 
 > [!IMPORTANT]
 > Tyto dvě komponenty běží pod stejnou instancí SAP ASCS/SCS:
->* Stejný \<> název virtuálního hostitele ASCS/SCS se používá pro přístup k procesům zpracování zpráv SAP a zařazování do fronty a k souborům globálního hostitele SAP prostřednictvím sdílené složky sapmnt.
+>* Stejný \<ASCS/SCS virtual host name> postup se používá pro přístup k procesům zpráv SAP a zařazování do fronty a k souborům globálního hostitele SAP prostřednictvím sdílené složky sapmnt.
 >* Mezi nimi se sdílí stejná jednotka sdíleného disku clusteru.
 >
 

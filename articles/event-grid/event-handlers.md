@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83592453"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí v Azure Event Grid
@@ -22,8 +21,8 @@ Tady jsou podporované obslužné rutiny událostí:
 
 - [Webhooky](handler-webhooks.md). Azure Automation Runbooky a Logic Apps se podporují prostřednictvím webhooků. 
 - [Azure Functions](handler-functions.md)
-- [Centra událostí](handler-event-hubs.md)
-- [Přenos hybridních připojení](handler-relay-hybrid-connections.md)
+- [Centrum událostí](handler-event-hubs.md)
+- [Hybridní připojení pro přenos](handler-relay-hybrid-connections.md)
 - [Service Bus fronty a témata](handler-service-bus.md)
 - [Fronty úložiště](handler-storage-queues.md)
 

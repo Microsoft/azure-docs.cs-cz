@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201531"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
@@ -23,7 +22,7 @@ ms.locfileid: "83201531"
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-V tomto kurzu se naučíte vizualizovat data ze senzorů v reálném čase, která vaše centrum IoT obdrží, pomocí webové aplikace Node. js spuštěné v místním počítači. Po místní instalaci webové aplikace můžete podle pokynů použít postup hostování webové aplikace v Azure App Service. Pokud se chcete pokusit vizualizovat data ve službě IoT Hub pomocí Power BI, přečtěte si téma [použití Power BI k vizualizaci dat snímačů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
+V tomto kurzu se naučíte vizualizovat data ze senzorů v reálném čase, která vaše centrum IoT obdrží, pomocí node.js webové aplikace spuštěné v místním počítači. Po místní instalaci webové aplikace můžete podle pokynů použít postup hostování webové aplikace v Azure App Service. Pokud se chcete pokusit vizualizovat data ve službě IoT Hub pomocí Power BI, přečtěte si téma [použití Power BI k vizualizaci dat snímačů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
 
 ## <a name="what-you-do"></a>Co dělat
 
@@ -37,7 +36,7 @@ V tomto kurzu se naučíte vizualizovat data ze senzorů v reálném čase, kter
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
 
   * Aktivní předplatné Azure
   * Centrum IoT v rámci vašeho předplatného
@@ -100,17 +99,17 @@ V adresáři Web-Apps-Node-IoT-Hub-data-vizualizace otevřete webovou aplikaci v
 
 Věnujte prosím chvilku, abyste prozkoumali následující soubory:
 
-* **Server. js** je skript na straně služby, který inicializuje webový soket a třídu obálky centra událostí. Poskytuje zpětné volání do třídy obálky centra událostí, které třída používá pro vysílání příchozích zpráv do webového soketu.
+* **Server.js** je skript na straně služby, který inicializuje webový soket a třídu obálky centra událostí. Poskytuje zpětné volání do třídy obálky centra událostí, které třída používá pro vysílání příchozích zpráv do webového soketu.
 
-* **Event-hub-Reader. js** je skript na straně služby, který se připojuje ke předdefinovanému koncovému bodu služby IoT Hub pomocí zadaného připojovacího řetězce a skupiny uživatelů. Extrahuje DeviceId a EnqueuedTimeUtc z metadat na příchozích zprávách a pak ji přenáší pomocí metody zpětného volání registrovaného serverem. js.
+* **Event-hub-reader.js** je skript na straně služby, který se připojuje k předdefinovanému koncovému bodu služby IoT Hub pomocí zadaného připojovacího řetězce a skupiny uživatelů. Extrahuje DeviceId a EnqueuedTimeUtc z metadat na příchozích zprávách a pak ji přenáší pomocí metody zpětného volání registrované server.js.
 
-* **Chart-Device-data. js** je skript na straně klienta, který naslouchá na webovém soketu, sleduje každý DeviceID a ukládá poslední 50 bodů příchozích dat pro každé zařízení. Pak váže vybraná data zařízení k objektu grafu.
+* **Chart-device-data.js** je skript na straně klienta, který naslouchá na webovém soketu, sleduje každý DeviceID a ukládá poslední 50 bodů příchozích dat pro každé zařízení. Pak váže vybraná data zařízení k objektu grafu.
 
-* **Index. html** zpracovává rozložení uživatelského rozhraní pro webovou stránku a odkazuje na potřebné skripty pro logiku na straně klienta.
+* **Index.html** zpracovává rozložení uživatelského rozhraní pro webovou stránku a odkazuje na potřebné skripty pro logiku na straně klienta.
 
 ## <a name="configure-environment-variables-for-the-web-app"></a>Konfigurace proměnných prostředí pro webovou aplikaci
 
-Aby webová aplikace mohla číst data ze služby IoT Hub, potřebuje připojovací řetězec služby IoT Hub a název skupiny uživatelů, do které by se měl číst. Získává tyto řetězce z prostředí procesu na následujících řádcích v serveru. js:
+Aby webová aplikace mohla číst data ze služby IoT Hub, potřebuje připojovací řetězec služby IoT Hub a název skupiny uživatelů, do které by se měl číst. Získává tyto řetězce z prostředí procesu na následujících řádcích v server.js:
 
 ```javascript
 const iotHubConnectionString = process.env.IotHubConnectionString;
@@ -165,7 +164,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Teď v plánu App Service zřídit webovou aplikaci. `--deployment-local-git`Parametr umožňuje nahrát a nasadit kód webové aplikace z úložiště Git na místním počítači. Název vaší webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, číslice a spojovníky. Nezapomeňte zadat uzel verze 10,6 nebo novější pro `--runtime` parametr v závislosti na verzi modulu runtime Node. js, který používáte. Pomocí `az webapp list-runtimes` příkazu můžete získat seznam podporovaných modulů runtime.
+2. Teď v plánu App Service zřídit webovou aplikaci. `--deployment-local-git`Parametr umožňuje nahrát a nasadit kód webové aplikace z úložiště Git na místním počítači. Název vaší webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, číslice a spojovníky. Nezapomeňte zadat uzel verze 10,6 nebo novější pro `--runtime` parametr v závislosti na verzi Node.js modulu runtime, který používáte. Pomocí `az webapp list-runtimes` příkazu můžete získat seznam podporovaných modulů runtime.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
@@ -198,7 +197,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Přidejte vzdálené úložiště k klonu, který odkazuje na úložiště Git webové aplikace v App Service. V případě \< adresy URL klonu Git \> použijte adresu URL vrácenou v předchozím kroku. Spusťte následující příkaz v příkazovém okně.
+7. Přidejte vzdálené úložiště k klonu, který odkazuje na úložiště Git webové aplikace v App Service. \<Git clone URL\>V případě použijte adresu URL vrácenou v předchozím kroku. Spusťte následující příkaz v příkazovém okně.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -229,7 +228,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
 
 11. V prohlížeči přejděte na `https://<your web app name>.azurewebsites.net`. Webová stránka podobná té, kterou jste viděli při zobrazení webové aplikace v místním prostředí. Za předpokladu, že vaše zařízení běží a odesílá data, měl by se zobrazit běžící vykreslení 50 nejnovější teploty a čtení vlhkosti odesílané zařízením.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud v této ukázce provedete všechny problémy, zkuste postup v následujících částech. Pokud stále máte problémy, pošlete nám svůj názor na konci tohoto tématu.
 
@@ -239,13 +238,13 @@ Pokud v této ukázce provedete všechny problémy, zkuste postup v následujíc
 
 * V prohlížeči otevřete nástroje pro vývojáře (v mnoha prohlížečích ho otevře klávesa F12) a vyhledejte konzolu. Vyhledejte všechna upozornění nebo chyby, které tam byly vytištěny.
 
-* V/js/chat-Device-data.js. můžete ladit skript na straně klienta.
+* Můžete ladit skript na straně klienta v/js/chat-device-data.js.
 
 ### <a name="local-website-issues"></a>Problémy s místním webem
 
 * Sledujte výstup v okně, kde jste spustili uzel pro výstup konzoly.
 
-* Ladění kódu serveru, konkrétně Server. js a/Scripts/Event-hub-Reader.js.
+* Ladění kódu serveru, konkrétně server.js a/Scripts/event-hub-reader.js.
 
 ### <a name="azure-app-service-issues"></a>Problémy s Azure App Service
 
