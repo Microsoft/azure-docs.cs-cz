@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656322"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Řešení potíží s nabízenou instalací služby mobility
@@ -41,7 +40,7 @@ V případě systému Windows (**chyba 95107**) ověřte, zda uživatelský úč
 * Ruční přidání klíče registru, který zakazuje vzdálené řízení přístupu uživatele:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Přidat nový `DWORD`:`LocalAccountTokenFilterPolicy`
+  * Přidat nový `DWORD` :`LocalAccountTokenFilterPolicy`
   * Nastavte hodnotu na`1`
 
 * Chcete-li přidat klíč registru, spusťte z příkazového řádku následující příkaz:
@@ -51,9 +50,9 @@ V případě systému Windows (**chyba 95107**) ověřte, zda uživatelský úč
 Pro Linux (**chyba 95108**) musíte zvolit **kořenový** účet pro úspěšnou instalaci agenta služby mobility. Kromě toho by měly být spuštěny služby SSH protokol FTP (File Transfer Protocol) (SFTP). Povolení subsystému SFTP a ověřování hesla v souboru _sshd_config_ :
 
 1. Přihlaste se jako uživatel **root**.
-1. Přejít na _/etc/ssh/sshd_config soubor_, Najděte řádek, který začíná na `PasswordAuthentication`.
-1. Odkomentujte řádek a změňte hodnotu na `yes`.
-1. Najděte řádek, který začíná `Subsystem`a odkomentujte řádek.
+1. Přejít na _/etc/ssh/sshd_config soubor_, Najděte řádek, který začíná na `PasswordAuthentication` .
+1. Odkomentujte řádek a změňte hodnotu na `yes` .
+1. Najděte řádek, který začíná `Subsystem` a odkomentujte řádek.
 1. Restartujte `sshd` službu.
 
 Pokud chcete upravit pověření zvoleného uživatelského účtu, postupujte podle [těchto pokynů](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
@@ -97,7 +96,7 @@ K této chybě dochází, když přihlašovací servery nejsou na zdrojovém po�
 
 Přihlašovací služba není na zdrojovém počítači spuštěná a způsobila selhání žádosti o přihlášení. Agenta mobility nejde nainstalovat. Pokud chcete chybu vyřešit, použijte jednu z následujících metod ke spuštění `Netlogon` služby na zdrojovém počítači:
 
-* Chcete-li `Netlogon` spustit službu z příkazového řádku, spusťte příkaz `net start Netlogon`.
+* Chcete-li spustit `Netlogon` službu z příkazového řádku, spusťte příkaz `net start Netlogon` .
 * Ve Správci úloh spusťte `Netlogon` službu.
 
 ## <a name="connectivity-failure-errorid-95117--97118"></a>Chyba připojení (ErrorID: 95117 & 97118)
@@ -108,7 +107,7 @@ Konfigurační server/procesový Server se škálováním na více instancí se 
 
 * Ujistěte se, že na zdrojovém počítači můžete testovat z konfiguračního serveru. Pokud jste během povolování replikace zvolili procesový Server se škálováním na více instancí, ujistěte se, že na zdrojovém počítači můžete testovat z procesového serveru příkaz k otestování.
 
-* Na příkazovém řádku počítač zdrojového serveru použijte `Telnet` příkaz k otestování konfiguračního serveru nebo procesového serveru se škálováním na více instancí na portu HTTPS 135, jak je znázorněno v následujícím příkazu. Tento příkaz zkontroluje, jestli nedochází k problémům se síťovým připojením nebo blokování portů brány firewall.
+* Na příkazovém řádku počítač zdrojového serveru použijte příkaz `Telnet` k otestování konfiguračního serveru nebo procesového serveru se škálováním na více instancí na portu HTTPS 135, jak je znázorněno v následujícím příkazu. Tento příkaz zkontroluje, jestli nedochází k problémům se síťovým připojením nebo blokování portů brány firewall.
 
   `telnet <CS/ scale-out PS IP address> <135>`
 
@@ -118,9 +117,9 @@ Konfigurační server/procesový Server se škálováním na více instancí se 
   * Služby SFTP by měly být spuštěné. Postup povolení subsystému SFTP a ověřování hesla v souboru _sshd_config_ :
 
     1. Přihlaste se jako uživatel **root**.
-    1. Přejít na _/etc/ssh/sshd_config_ soubor, Najděte řádek, který začíná na `PasswordAuthentication`.
-    1. Odkomentujte řádek a změňte hodnotu na `yes`.
-    1. Najděte řádek, který začíná `Subsystem`a odkomentujte řádek.
+    1. Přejít na _/etc/ssh/sshd_config_ soubor, Najděte řádek, který začíná na `PasswordAuthentication` .
+    1. Odkomentujte řádek a změňte hodnotu na `yes` .
+    1. Najděte řádek, který začíná `Subsystem` a odkomentujte řádek.
     1. Restartujte `sshd` službu.
 
 * Pokus o připojení se nezdařil, pokud po určitém časovém intervalu neexistují žádné správné odpovědi nebo navázáno připojení selhalo, protože se nepovedlo odpovědět připojeného hostitele.
@@ -137,13 +136,13 @@ Po kontrole připojení zkontrolujte, jestli je ve vašem virtuálním počíta�
 Pro **Windows 2008 R2 a starší verze**:
 
 * Pokud chcete povolit sdílení souborů a tiskáren přes bránu Windows Firewall,
-  1. Otevřete **Ovládací panely** > **systém a zabezpečení** > **brány Windows Firewall**. V levém podokně vyberte možnost **Rozšířená nastavení** > **příchozí pravidla** ve stromu konzoly.
+  1. Otevřete **Ovládací panely**  >  **systém a zabezpečení**  >  **brány Windows Firewall**. V levém podokně vyberte možnost **Rozšířená nastavení**  >  **příchozí pravidla** ve stromu konzoly.
   1. Vyhledejte pravidla sdílení souborů a tiskáren (NB-Session-in) a sdílení souborů a tiskáren (SMB-in).
   1. U každého pravidla klikněte pravým tlačítkem na pravidlo a pak klikněte na **Povolit pravidlo**.
 
 * Povolení sdílení souborů s Zásady skupiny:
   1. Klikněte na **Start**, zadejte `gpmc.msc` a vyhledejte.
-  1. V navigačním podokně otevřete následující složky:**Konfigurace** > **Administrative Templates** > uživatele >  **zásad místního počítače**šablony pro správu > **sdílení sítě****součásti systému Windows**.
+  1. V navigačním podokně otevřete následující složky: Konfigurace uživatele **zásad místního počítače**  >  **User Configuration**  >  **šablony pro správu**  >  sdílení sítě**součásti systému Windows**  >  **Network Sharing**.
   1. V podokně podrobností poklikejte na **zabránit uživatelům v sdílení souborů v rámci svého profilu**.
 
      Chcete-li zakázat nastavení Zásady skupiny a povolit uživatelům sdílení souborů, vyberte možnost **zakázáno**.
@@ -160,7 +159,7 @@ Po kontrole souborové a tiskové služby povolte službu WMI pro privátní, ve
 
 Povolení rozhraní WMI:
 
-1. Otevřete **Ovládací panely** > **zabezpečení** a vyberte **Brána Windows Firewall**.
+1. Otevřete **Ovládací panely**  >  **zabezpečení** a vyberte **Brána Windows Firewall**.
 1. Vyberte **změnit nastavení** a pak vyberte kartu **výjimky** .
 1. V okně **výjimky** zaškrtněte políčko pro rozhraní WMI (Windows Management Instrumentation) (WMI), aby se povolil provoz rozhraní WMI přes bránu firewall.
 
@@ -221,7 +220,7 @@ Příklad:
 
 Názvy zařízení je potřeba nahradit odpovídajícími identifikátory UUID.
 
-1. Vyhledá UUID zařízení provedením příkazu `blkid \<device name>`.
+1. Vyhledá UUID zařízení provedením příkazu `blkid \<device name>` .
 
    Příklad:
 
@@ -232,7 +231,7 @@ Názvy zařízení je potřeba nahradit odpovídajícími identifikátory UUID.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Nyní nahraďte název zařízení identifikátorem UUID ve formátu, jako `root=UUID=\<UUID>`je například. Pokud například nahradíte názvy zařízení identifikátorem UUID pro kořen a parametr Resume uvedené v souborech _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_ , řádky v souborech vypadají jako na následujícím řádku:
+1. Nyní nahraďte název zařízení identifikátorem UUID ve formátu, jako je například `root=UUID=\<UUID>` . Pokud například nahradíte názvy zařízení identifikátorem UUID pro kořen a parametr Resume uvedené v souborech _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_ , řádky v souborech vypadají jako na následujícím řádku:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -250,7 +249,7 @@ Služba Site Recovery mobility má mnoho komponent, z nichž jedna se nazývá o
 
 ## <a name="lvm-support-from-920-version"></a>Podpora LVM z verze 9,20
 
-Před verzí 9,20 byl pro datové disky podporován Správce logických svazků (LVM). `/boot` Oddíl by měl být na diskovém oddílu a ne na LVM svazek.
+Před verzí 9,20 byl pro datové disky podporován Správce logických svazků (LVM). `/boot`Oddíl by měl být na diskovém oddílu a ne na LVM svazek.
 
 Od [verze 9,20](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)se podporuje disk s [operačním systémem na LVM](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) .
 
@@ -301,7 +300,7 @@ Pokuste se na zdrojový počítač ručně nainstalovat službu poskytovatele VS
 
 ## <a name="vss-error---0x8004e00f"></a>Chyba služby VSS – 0x8004E00F
 
-K této chybě obvykle dochází během instalace agenta mobility z důvodu problémů v `DCOM` nástroji a `DCOM` je v kritickém stavu.
+K této chybě obvykle dochází během instalace agenta mobility z důvodu problémů v nástroji `DCOM` a `DCOM` je v kritickém stavu.
 
 K určení příčiny chyby použijte následující postup.
 
@@ -321,7 +320,7 @@ K určení příčiny chyby použijte následující postup.
     - Exit code: 802
     ```
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 Obraťte se na [tým platformy Microsoft Windows](https://aka.ms/Windows_Support) , kde získáte pomoc při řešení problému s modelem DCOM.
 
@@ -358,17 +357,17 @@ Postup při obejít instalaci poskytovatele služby VSS Azure Site Recovery a ru
 
 ## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Instalace poskytovatele služby Stínová kopie svazku se nezdařila, protože Clusterová služba je povolena v počítači bez clusteru.
 
-Tento problém způsobí selhání instalace agenta Azure Site Recovery mobility během instalace Azure Site Recovery poskytovatele služby VSS. Příčinou této chyby je, že došlo k potížím s `COM+` tím, že brání instalaci poskytovatele VSS.
+Tento problém způsobí selhání instalace agenta Azure Site Recovery mobility během instalace Azure Site Recovery poskytovatele služby VSS. Příčinou této chyby je, že došlo k potížím s tím `COM+` , že brání instalaci poskytovatele VSS.
 
 ### <a name="to-identify-the-issue"></a>Identifikace problému
 
-V protokolu, který se nachází na konfiguračním serveru, v _\<C:\ProgramData\ASRSetupLogs\UploadedLogs data a času>UA_InstallLogFile. log_ najdete následující výjimku:
+V protokolu umístěném na konfiguračním serveru na adrese _C:\ProgramData\ASRSetupLogs\UploadedLogs \<date-time> UA_InstallLogFile. log_ najdete následující výjimku:
 
 ```plaintext
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
 ```
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 1. Ověřte, zda je tento počítač počítač bez clusteru a zda nejsou používány součásti clusteru.
 1. Pokud se komponenty nepoužívají, odeberte z počítače součásti clusteru.
@@ -377,9 +376,9 @@ Problém vyřešíte takto:
 
 Pokud se instalace agenta mobility nezdařila, zkontrolujte protokoly v části _C:\ProgramData\ASRSetupLogs_ a zjistěte, jestli některé z požadovaných ovladačů v některých sadách ovládacích prvků chybí.
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
-1. Pomocí Editoru registru `regedit.msc`, jako je, otevřete registr.
+1. Pomocí Editoru registru `regedit.msc` , jako je, otevřete registr.
 1. Otevřete `HKEY_LOCAL_MACHINE\SYSTEM` uzel.
 1. V `SYSTEM` uzlu vyhledejte sady ovládacích prvků.
 1. Otevřete jednotlivé sady ovládacích prvků a ověřte, zda jsou k dispozici následující ovladače systému Windows:

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479555"
 ---
 # <a name="install-azure-farmbeats"></a>Instalace služby Azure FarmBeats
@@ -124,9 +123,9 @@ Spusťte následující postup v instanci Cloud Shell pomocí prostředí PowerS
 
 4. Skript si vyžádá následující tři vstupy:
 
-    - **FarmBeats název webu**: Jedná se o jedinečnou PŘEDPONU adresy URL vaší webové aplikace FarmBeats. V případě, že předpona už je obsazená, skript se zobrazí jako chyba. Po instalaci bude vaše nasazení FarmBeats dostupné z https://\<FarmBeats-web-Name>. azurewebsites.NET a rozhraní API Swagger budou na https://\<FarmBeats – název webu>-API.azurewebsites.NET
+    - **FarmBeats název webu**: Jedná se o jedinečnou PŘEDPONU adresy URL vaší webové aplikace FarmBeats. V případě, že předpona už je obsazená, skript se zobrazí jako chyba. Po instalaci bude vaše nasazení FarmBeats dostupné z https:// \<FarmBeats-website-name> . azurewebsites.NET a rozhraní API Swagger budou v https:// \<FarmBeats-website-name> -API.azurewebsites.NET.
 
-    - **Přihlašovací ID Azure**: zadejte přihlašovací ID Azure pro uživatele, kterého chcete přidat jako správce FarmBeats. Tento uživatel pak může udělit přístup pro přístup k webové aplikaci FarmBeats jiným uživatelům. Přihlašovací ID je všeobecně ve formátu john.doe@domain.com. Podporuje se i hlavní název uživatele (UPN) Azure.
+    - **Přihlašovací ID Azure**: zadejte přihlašovací ID Azure pro uživatele, kterého chcete přidat jako správce FarmBeats. Tento uživatel pak může udělit přístup pro přístup k webové aplikaci FarmBeats jiným uživatelům. Přihlašovací ID je všeobecně ve formátu john.doe@domain.com . Podporuje se i hlavní název uživatele (UPN) Azure.
 
     - **ID předplatného**: Toto je ID předplatného, ve kterém chcete nainstalovat službu Azure FarmBeats.
 
@@ -168,9 +167,9 @@ Nyní jste připraveni nainstalovat FarmBeats. Spusťte instalaci podle následu
 
 8. Po ověření zadaných podrobností vyberte **OK**. Zobrazí se stránka Podmínky použití. Přečtěte si podmínek a vyberte **vytvořit** a spusťte instalaci. Budete přesměrováni na stránku, kde můžete postupovat podle pokynů k instalaci.
 
-Až se instalace dokončí, můžete ověřit instalaci a začít používat portál FarmBeats, a to tak, že přejdete na název webu, který jste zadali\<během instalace: https://FarmBeats-web-Name>. azurewebsites.NET. Mělo by se zobrazit uživatelské rozhraní FarmBeats s možností vytváření farem.
+Po dokončení instalace můžete ověřit instalaci a začít používat portál FarmBeats, a to tak, že přejdete na název webu, který jste zadali během instalace: https:// \<FarmBeats-website-name> . azurewebsites.NET. Mělo by se zobrazit uživatelské rozhraní FarmBeats s možností vytváření farem.
 
-**DataHub** najdete na adrese https://\<FarmBeats-web-Name>-API.azurewebsites.NET/Swagger. Tady uvidíte různé objekty rozhraní API FarmBeats a na rozhraních API se provádějí operace REST.
+**DataHub** najdete na adrese https:// \<FarmBeats-website-name> -API.azurewebsites.NET/Swagger. Tady uvidíte různé objekty rozhraní API FarmBeats a na rozhraních API se provádějí operace REST.
 
 ## <a name="upgrade"></a>Upgrade
 
@@ -196,9 +195,9 @@ Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a 
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-Cesta ke vstupnímu souboru. JSON je volitelná. Pokud není zadaný, skript se vyzve pro všechny požadované vstupy. Upgrade by se měl dokončit během přibližně 30 minut.
+Cesta k input.jssouboru je volitelná. Pokud není zadaný, skript se vyzve pro všechny požadované vstupy. Upgrade by se měl dokončit během přibližně 30 minut.
 
-## <a name="uninstall"></a>Odinstalovat
+## <a name="uninstall"></a>Odinstalace
 
 Pokud chcete odinstalovat službu Azure FarmBeats DataHub nebo akcelerátor, proveďte následující kroky:
 

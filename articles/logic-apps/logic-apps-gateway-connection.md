@@ -7,10 +7,9 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657134"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
@@ -39,12 +38,12 @@ Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connect
 * Systém souborů
 * IBM DB2  
 * IBM Informix
-* IBM MQ
+* IBM MQ V8.0.0.1
 * MySQL
 * Oracle Database
 * PostgreSQL
 * SAP
-* SharePoint Server
+* SharePoint Designer
 * SQL Server
 * Teradata
 
@@ -79,11 +78,11 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
 
    ![Přidat nový prostředek Azure pro bránu dat](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. V části **vytvořit bránu připojení**zadejte tyto informace pro prostředek brány. Až to budete mít, vyberte **Vytvořit**.
+1. V části **vytvořit bránu připojení**zadejte tyto informace pro prostředek brány. Po dokončení vyberte **Vytvořit**.
 
    | Vlastnost | Popis |
    |----------|-------------|
-   | **Název prostředku** | Zadejte název prostředku brány, který obsahuje jenom písmena,`-`číslice, spojovníky (), podtržítka (`_`), kulaté závorky (`(`, `)`) nebo tečky (`.`). |
+   | **Název prostředku** | Zadejte název prostředku brány, který obsahuje jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) nebo tečky ( `.` ). |
    | **Předplatné** | Vyberte předplatné Azure pro účet Azure, který se použil pro instalaci brány. Výchozí předplatné vychází z účtu Azure, který jste použili k přihlášení. |
    | **Skupina prostředků** | [Skupina prostředků Azure](../azure-resource-manager/management/overview.md) , kterou chcete použít |
    | **Umístění** | Stejná oblast nebo umístění, které bylo vybráno pro cloudovou službu brány během [Instalace brány](../logic-apps/logic-apps-gateway-install.md). V opačném případě se instalace brány nezobrazí v seznamu **název instalace** . Vaše umístění vaší aplikace logiky se může lišit od umístění prostředku brány. |
@@ -121,7 +120,7 @@ Po vytvoření prostředku brány a přidružení předplatného Azure k tomuto 
 
    ![Vytvoření propojení mezi aplikací logiky a bránou dat](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. Až to budete mít, vyberte **Vytvořit**.
+1. Po dokončení vyberte **Vytvořit**.
 
 Vaše připojení k bráně je teď připravené na použití vaší aplikace logiky.
 
@@ -140,7 +139,7 @@ Chcete-li aktualizovat nastavení pro připojení brány, můžete upravit přip
 
 Pokud chcete najít všechna připojení rozhraní API přidružená k vašemu předplatnému Azure:
 
-* V nabídce Azure Portal vyberte **všechny služby** > **Web** > **rozhraní Web API připojení**.
+* V nabídce Azure Portal vyberte **všechny služby**  >  **Web**  >  **rozhraní Web API připojení**.
 * Nebo z nabídky Azure Portal vyberte **všechny prostředky**. Nastavte filtr **typu** na **připojení rozhraní API**.
 
 <a name="change-delete-gateway-resource"></a>

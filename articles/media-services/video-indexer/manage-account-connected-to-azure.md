@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
 ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499665"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa účtu Video Indexer připojeného k Azure
@@ -54,12 +53,12 @@ Pokud váš účet potřebuje nějaké úpravy, zobrazí se na stránce **Nastav
 
 V dialogovém okně **aktualizace připojení k Azure Media Services** stránky [video indexer](https://www.videoindexer.ai/) budete požádáni o zadání hodnot pro následující nastavení:
 
-|Nastavení|Popis|
+|Nastavení|Description|
 |---|---|
 |ID předplatného Azure|ID předplatného se dá načíst z Azure Portal. Na levém panelu klikněte na **všechny služby** a vyhledejte "předplatná". Vyberte **předplatná** a v seznamu předplatných vyberte požadované ID.|
 |Název skupiny prostředků Azure Media Services|Název skupiny prostředků, ve které jste vytvořili Media Services účet.|
-|ID aplikace|ID aplikace Azure AD (s oprávněním pro zadaný účet Media Services), který jste vytvořili pro tento Video Indexer účet. <br/><br/>Pokud chcete získat ID aplikace, přejděte na Azure Portal. V části Media Services účet vyberte svůj účet a přejděte na **přístup přes rozhraní API**. V**aplikace Azure AD** ->  **instančního objektu vyberte připojit k Media Services rozhraní API**. Zkopírujte příslušné parametry.|
-|Klíč aplikace|Klíč aplikace služby Azure AD přidružený k vašemu Media Services účtu, který jste zadali výše. <br/><br/>Klíč aplikace získáte tak, že přejdete na Azure Portal. V části Media Services účet vyberte svůj účet a přejděte na **přístup přes rozhraní API**. Vyberte **připojit k Media Services rozhraní API s instančním objektem** -> **spravovat certifikáty aplikací** -> **& tajných klíčů**. Zkopírujte příslušné parametry.|
+|ID aplikace|ID aplikace Azure AD (s oprávněním pro zadaný účet Media Services), který jste vytvořili pro tento Video Indexer účet. <br/><br/>Pokud chcete získat ID aplikace, přejděte na Azure Portal. V části Media Services účet vyberte svůj účet a přejděte na **přístup přes rozhraní API**. **V aplikace Azure AD instančního objektu vyberte připojit k Media Services rozhraní API**  ->  **Azure AD App**. Zkopírujte příslušné parametry.|
+|Klíč aplikace|Klíč aplikace služby Azure AD přidružený k vašemu Media Services účtu, který jste zadali výše. <br/><br/>Klíč aplikace získáte tak, že přejdete na Azure Portal. V části Media Services účet vyberte svůj účet a přejděte na **přístup přes rozhraní API**. Vyberte **připojit k Media Services rozhraní API s instančním objektem**  ->  **Spravovat**  ->  **Certifikáty aplikací & tajných klíčů**. Zkopírujte příslušné parametry.|
 
 ## <a name="autoscale-reserved-units"></a>Jednotky rezervované pro automatické škálování
 
@@ -75,7 +74,7 @@ Pokud váš účet potřebuje nějaké úpravy, zobrazí se na stránce **Nastav
 
 * EventGrid
 
-    Je nutné zaregistrovat poskytovatele prostředků EventGrid pomocí Azure Portal. V [Azure Portal](https://portal.azure.com/)přejít na **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft. EventGrid**. Pokud není v **registrovaném** stavu, vyberte **Registrovat**. Registrace může trvat několik minut.
+    Je nutné zaregistrovat poskytovatele prostředků EventGrid pomocí Azure Portal. V [Azure Portal](https://portal.azure.com/)přejít na **předplatná** > [předplatné] > **ResourceProviders**  >  **Microsoft. EventGrid**. Pokud není v **registrovaném** stavu, vyberte **Registrovat**. Registrace může trvat několik minut.
 
 * Koncový bod streamování
 

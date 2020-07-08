@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476011"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Práce s více klienty v Azure Sentinel 
@@ -27,7 +26,7 @@ Pokud jste spravovaným poskytovatelem zabezpečení (MSSP) a používáte [Azur
 
 ## <a name="prerequisites"></a>Požadavky
 - [Zprovoznění Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
-- Aby to fungovalo správně, musí být váš tenant zaregistrován pro poskytovatele prostředků Azure Sentinel aspoň na jednom předplatném. Pokud máte ve svém tenantovi registrovanou ověřovací službu Azure, budete připraveni začít. V takovém případě vyberte **odběry** ze Azure Portal a potom jako **poskytovatelé prostředků**.  Pak na obrazovce **SOC-Resource Providers (poskytovatelé prostředků** ) vyhledejte `Microsoft.OperationalInsights` a `Microsoft.SecurityInsights`vyberte a vyberte **zaregistrovat**.
+- Aby to fungovalo správně, musí být váš tenant zaregistrován pro poskytovatele prostředků Azure Sentinel aspoň na jednom předplatném. Pokud máte ve svém tenantovi registrovanou ověřovací službu Azure, budete připraveni začít. V takovém případě vyberte **odběry** ze Azure Portal a potom jako **poskytovatelé prostředků**.  Pak na obrazovce **SOC-Resource Providers (poskytovatelé prostředků** ) vyhledejte a vyberte `Microsoft.OperationalInsights` a `Microsoft.SecurityInsights` Vyberte **zaregistrovat**.
    ![Kontrolovat poskytovatele prostředků](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Přístup k Azure Sentinel z jiných tenantů
 1. V části **adresář + předplatné**vyberte delegované adresáře a předplatné, kde se nacházejí pracovní prostory Azure Sentinel zákazníka.

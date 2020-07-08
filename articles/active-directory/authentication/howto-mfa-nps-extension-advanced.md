@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34d92af88106151e7efba679c53c5b5bd1c07dcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653791"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Rozšířené možnosti konfigurace rozšíření NPS pro službu Multi-Factor Authentication
@@ -30,7 +29,7 @@ V rámci rozšíření serveru NPS můžete určit atribut služby Active Direct
 
 Pokud chcete nakonfigurovat alternativní přihlašovací ID, použijte `HKLM\SOFTWARE\Microsoft\AzureMfa` a upravte následující hodnoty registru:
 
-| Název | Typ | Výchozí hodnota | Popis |
+| Name | Typ | Výchozí hodnota | Description |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | řetězec | Obsahovat | Místo hlavního názvu uživatele (UPN) určete název atributu služby Active Directory, který chcete použít. Tento atribut se používá jako atribut AlternateLoginId. Pokud je tato hodnota registru nastavena na [platný atribut služby Active Directory](https://msdn.microsoft.com/library/ms675090.aspx) (například mail nebo DisplayName), pak se hodnota atributu používá místo hlavního názvu uživatele (UPN) pro ověřování. Pokud je tato hodnota registru prázdná nebo není nakonfigurovaná, je AlternateLoginId zakázaná a k ověřování se používá hlavní název uživatele (UPN). |
 | LDAP_FORCE_GLOBAL_CATALOG | Boolean | False | Pomocí tohoto příznaku vynutíte při vyhledávání AlternateLoginId použití globálního katalogu pro hledání LDAP. Nakonfigurujte řadič domény jako globální katalog, přidejte do globálního katalogu atribut AlternateLoginId a pak tento příznak povolte. <br><br> Pokud je nakonfigurováno LDAP_LOOKUP_FORESTS (není prázdné), **bude tento příznak vynutil jako true**bez ohledu na hodnotu nastavení registru. V takovém případě rozšíření serveru NPS vyžaduje, aby byl globální katalog nakonfigurovaný s atributem AlternateLoginId pro jednotlivé doménové struktury. |
@@ -42,16 +41,16 @@ Pokud chcete řešit problémy s alternativními přihlašovacími ID, použijte
 
 Pokud potřebujete monitorovat dostupnost serveru, třeba když nástroje pro vyrovnávání zatížení ověřují, které servery jsou spuštěné před odesláním úloh, nechcete, aby tyto kontroly byly zablokované požadavky na ověření. Místo toho vytvořte seznam IP adres, které víte, že účty služeb používají, a zakažte pro tento seznam požadavky na Multi-Factor Authentication.
 
-Pokud chcete nakonfigurovat seznam povolených IP adres, `HKLM\SOFTWARE\Microsoft\AzureMfa` použijte a nakonfigurujte tuto hodnotu registru:
+Pokud chcete nakonfigurovat seznam povolených IP adres, použijte `HKLM\SOFTWARE\Microsoft\AzureMfa` a nakonfigurujte tuto hodnotu registru:
 
-| Název | Typ | Výchozí hodnota | Popis |
+| Name | Typ | Výchozí hodnota | Description |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | řetězec | Obsahovat | Zadejte středníkem oddělený seznam IP adres. Zahrňte IP adresy počítačů, ve kterých pochází žádosti o služby, jako je třeba server NAS/VPN. Rozsahy IP adres a podsítě se nepodporují. <br><br> Například *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
 > [!NOTE]
 > Tento klíč registru není ve výchozím nastavení vytvořen instalačním programem a při restartování služby se v protokolu AuthZOptCh zobrazí chyba. Tato chyba v protokolu se může ignorovat, ale pokud se tento klíč registru vytvoří a zůstane prázdný, pokud není potřeba, chybová zpráva se nevrátí.
 
-Pokud se žádost dostane z IP adresy, která existuje v rámci `IP_WHITELIST`, bude dvoustupňové ověřování vynecháno. Seznam IP adres se porovnává s IP adresou, která je k dispozici v atributu *ratNASIPAddress* žádosti RADIUS. Pokud žádost RADIUS přichází bez atributu ratNASIPAddress, zapíše se následující upozornění: "P_WHITE_LIST_WARNING:: IP seznam povolených adres se ignoruje, protože v žádosti RADIUS v atributu NasIpAddress chybí zdrojová IP adresa."
+Pokud se žádost dostane z IP adresy, která existuje v rámci `IP_WHITELIST` , bude dvoustupňové ověřování vynecháno. Seznam IP adres se porovnává s IP adresou, která je k dispozici v atributu *ratNASIPAddress* žádosti RADIUS. Pokud žádost RADIUS přichází bez atributu ratNASIPAddress, zapíše se následující upozornění: "P_WHITE_LIST_WARNING:: IP seznam povolených adres se ignoruje, protože v žádosti RADIUS v atributu NasIpAddress chybí zdrojová IP adresa."
 
 ## <a name="next-steps"></a>Další kroky
 

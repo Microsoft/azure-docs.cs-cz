@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632935"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
@@ -201,9 +200,9 @@ Instance objektu **Query** má vytvořenou velikost stránky (až 100). Pak se n
 
 Objekt dotazu zpřístupňuje více **dalších** hodnot v závislosti na možnosti deserializace vyžadované dotazem. Například při použití projekce jsou objekty typu vlákna nebo úlohy nebo prostý formát JSON.
 
-### <a name="nodejs-example"></a>Příklad pro Node. js
+### <a name="nodejs-example"></a>Příklad Node.js
 
-Funkce dotazu se zveřejňuje v [sadě SDK služby Azure IoT pro Node. js](iot-hub-devguide-sdks.md) v objektu **registru** .
+Funkce dotazu se zveřejňuje v [sadě Azure IoT Service SDK pro Node.js](iot-hub-devguide-sdks.md) v objektu **registru** .
 
 Tady je příklad jednoduchého dotazu:
 
@@ -235,7 +234,7 @@ Objekt dotazu zpřístupňuje více **dalších** hodnot v závislosti na možno
 > [!IMPORTANT]
 > Výsledkem dotazu může být několik minut zpoždění s ohledem na nejnovější hodnoty v nevlákenách zařízení. Pokud se dotazuje jednotlivé zařízení na základě ID, použijte [REST API získat dvojitou](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin). Toto rozhraní API vždycky vrátí nejnovější hodnoty a má vyšší omezení omezování. REST API můžete vystavit přímo nebo použít ekvivalentní funkce v jedné ze [sad SDK služby Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
-V současné době jsou porovnání podporovány pouze mezi primitivními typy (žádné objekty), `... WHERE properties.desired.config = properties.reported.config` například je podporována pouze v případě, že tyto vlastnosti mají primitivní hodnoty.
+V současné době jsou porovnání podporovány pouze mezi primitivními typy (žádné objekty), například `... WHERE properties.desired.config = properties.reported.config` je podporována pouze v případě, že tyto vlastnosti mají primitivní hodnoty.
 
 ## <a name="get-started-with-jobs-queries"></a>Začínáme s dotazy na úlohy
 
@@ -273,7 +272,7 @@ V současné době jsou porovnání podporovány pouze mezi primitivními typy (
 V současné době je tato kolekce Queryable jako **Devices.Jobs** v dotazovacím jazyku IoT Hub.
 
 > [!IMPORTANT]
-> V současné době se při dotazování na vlákna zařízení nikdy nevrátí vlastnost Jobs. To znamená, že dotazy obsahující "ze zařízení". K vlastnosti Jobs lze získat přímý pøístup pouze pomocí `FROM devices.jobs`dotazů.
+> V současné době se při dotazování na vlákna zařízení nikdy nevrátí vlastnost Jobs. To znamená, že dotazy obsahující "ze zařízení". K vlastnosti Jobs lze získat přímý pøístup pouze pomocí dotazů `FROM devices.jobs` .
 >
 >
 
@@ -309,7 +308,7 @@ SELECT * FROM devices.jobs
 
 V současné době dotazy na **Devices.Jobs** nepodporují:
 
-* Výčnělky jsou proto možné `SELECT *` pouze.
+* Výčnělky `SELECT *` jsou proto možné pouze.
 * Podmínky, které kromě vlastností úlohy odkazují na vlákna zařízení (viz předchozí část).
 * Provádění agregací, například Count, AVG, seskupit podle.
 
@@ -392,7 +391,7 @@ GROUP BY <group_by_element>
 V současné době je klauzule GROUP BY podporována pouze při dotazování na vlákna zařízení.
 
 > [!IMPORTANT]
-> Termín `group` je v současné době považován za speciální klíčové slovo v dotazech. V případě, že použijete jako název vlastnosti, zvažte její použití `group` v dvojité závorce, aby se předešlo chybám, např.. `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`
+> Termín `group` je v současné době považován za speciální klíčové slovo v dotazech. V případě, že použijete `group` jako název vlastnosti, zvažte její použití v dvojité závorce, aby se předešlo chybám, např. `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'` .
 >
 
 ## <a name="expressions-and-conditions"></a>Výrazy a podmínky
@@ -441,7 +440,7 @@ Chcete-li zjistit, jakým způsobem má každý symbol ve syntaxi výrazů, pou�
 | function_name| Libovolná funkce uvedená v části [Functions](#functions) . |
 | decimal_literal |Float vyjádřený v desítkovém zápisu. |
 | hexadecimal_literal |Číslo vyjádřené řetězcem 0x následovaným řetězcem hexadecimálních číslic. |
-| string_literal |Řetězcové literály jsou řetězce Unicode reprezentované sekvencí nula nebo více znaků Unicode nebo řídicí sekvence. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách nebo dvojitých uvozovkách. Povolené řídicí znaky: `\'`, `\"`, `\\`, `\uXXXX` pro znaky Unicode definované 4 šestnáctkovými číslicemi. |
+| string_literal |Řetězcové literály jsou řetězce Unicode reprezentované sekvencí nula nebo více znaků Unicode nebo řídicí sekvence. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách nebo dvojitých uvozovkách. Povolené řídicí znaky: `\'` , `\"` , `\\` , `\uXXXX` pro znaky Unicode definované 4 šestnáctkovými číslicemi. |
 
 ### <a name="operators"></a>Operátory
 
@@ -451,7 +450,7 @@ Podporovány jsou následující operátory:
 | --- | --- |
 | Průměr |+, -, *, /, % |
 | Logické |A, NEBO, NOT |
-| Srovnání |=,! =, <, >, <=, >=,  <> |
+| Porovnání |=,! =, <, >, <=, >=,  <> |
 
 ### <a name="functions"></a>Functions
 
@@ -459,7 +458,7 @@ Při dotazování na vlákna a úlohy je jedinou podporovanou funkcí:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| IS_DEFINED (vlastnost) | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota ( `null`včetně). |
+| IS_DEFINED (vlastnost) | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota (včetně `null` ). |
 
 V podmínkách směrování jsou podporovány následující matematické funkce:
 
@@ -478,14 +477,14 @@ V podmínkách směrování jsou podporovány následující funkce kontroly a p
 
 | Funkce | Popis |
 | -------- | ----------- |
-| AS_NUMBER | Převede vstupní řetězec na číslo. `noop`Pokud je vstup číslo, `Undefined` Pokud řetězec nepředstavuje číslo.|
+| AS_NUMBER | Převede vstupní řetězec na číslo. `noop`Pokud je vstup číslo, `Undefined`Pokud řetězec nepředstavuje číslo.|
 | IS_ARRAY | Vrací logickou hodnotu označující, zda je typ zadaného výrazu pole Array. |
 | IS_BOOL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu logická hodnota. |
-| IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null`. Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
+| IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
 | IS_NULL | Vrací logickou hodnotu označující, zda je typ zadaného výrazu null. |
 | IS_NUMBER | Vrací logickou hodnotu označující, zda je typ zadaného výrazu číslo. |
 | IS_OBJECT | Vrací logickou hodnotu označující, zda je typ zadaného výrazu objekt JSON. |
-| IS_PRIMITIVE | Vrací logickou hodnotu označující, zda je typ zadaného výrazu primitivní (řetězec, logická hodnota, číselná hodnota nebo `null`). |
+| IS_PRIMITIVE | Vrací logickou hodnotu označující, zda je typ zadaného výrazu primitivní (řetězec, logická hodnota, číselná hodnota nebo `null` ). |
 | IS_STRING | Vrací logickou hodnotu označující, zda je typ zadaného výrazu řetězec. |
 
 V podmínkách směrování jsou podporovány následující řetězcové funkce:

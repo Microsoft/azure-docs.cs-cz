@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
 ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458150"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Nasazení pomocí Terraformu z bash v Azure Cloud Shell
@@ -62,7 +61,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 Uložte soubor a ukončete textový editor.
 
 ### <a name="terraform-init"></a>Terraformu init
-Začněte spuštěním `terraform init`.
+Začněte spuštěním `terraform init` .
 
 ```
 justin@Azure:~$ terraform init
@@ -90,10 +89,10 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-K inicializaci pracovního adresáře obsahujícího konfigurační soubory Terraformu se používá [příkaz terraformu init](https://www.terraform.io/docs/commands/init.html) . `terraform init` Příkaz je prvním příkazem, který by měl být spuštěn po zápisu nové konfigurace terraformu nebo klonování existujícího ze správy verzí. Spuštění tohoto příkazu se dá bezpečně provést víckrát.
+K inicializaci pracovního adresáře obsahujícího konfigurační soubory Terraformu se používá [příkaz terraformu init](https://www.terraform.io/docs/commands/init.html) . `terraform init`Příkaz je prvním příkazem, který by měl být spuštěn po zápisu nové konfigurace terraformu nebo klonování existujícího ze správy verzí. Spuštění tohoto příkazu se dá bezpečně provést víckrát.
 
 ### <a name="terraform-plan"></a>Příkaz terraform plan
-Zobrazte náhled prostředků, které má šablona Terraformu vytvořit s `terraform plan`.
+Zobrazte náhled prostředků, které má šablona Terraformu vytvořit s `terraform plan` .
 
 ```
 justin@Azure:~$ terraform plan
@@ -129,7 +128,7 @@ can't guarantee that exactly these actions will be performed if
 [Příkaz terraform plan](https://www.terraform.io/docs/commands/plan.html) se používá k vytvoření plánu provádění. Terraformu provede aktualizaci, pokud není explicitně zakázaná, a pak určí, jaké akce je potřeba k dosažení požadovaného stavu zadaného v konfiguračních souborech. Plán se dá uložit s použitím a pak se terraformu použít k tomu, aby se zajistilo, že se spustí jenom předem plánované akce.
 
 ### <a name="terraform-apply"></a>Příkaz terraform apply
-Zřizování prostředků Azure pomocí `terraform apply`.
+Zřizování prostředků Azure pomocí `terraform apply` .
 
 ```
 justin@Azure:~$ terraform apply

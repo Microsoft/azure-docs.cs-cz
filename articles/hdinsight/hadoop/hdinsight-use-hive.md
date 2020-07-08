@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471349"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL ve službě Azure HDInsight?
@@ -23,7 +22,7 @@ Podregistr umožňuje strukturování struktury na základě nestrukturovaných 
 
 HDInsight nabízí několik typů clusterů, které jsou vyladěné pro konkrétní úlohy. Následující typy clusterů se nejčastěji používají pro dotazy na podregistry:
 
-|Typ clusteru |Popis|
+|Typ clusteru |Description|
 |---|---|
 |Interaktivní dotaz|Cluster Hadoop, který poskytuje funkci [LLAP (nízká latence Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) pro zlepšení dob odezvy pro interaktivní dotazy. Další informace najdete v dokumentu [Začínáme s interaktivním dotazem v HDInsight](../interactive-query/apache-interactive-query-get-started.md) .|
 |Hadoop|Cluster Hadoop, který je vyladěn pro úlohy dávkového zpracování. Další informace najdete v dokumentu [Začínáme s Apache Hadoop v HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .|
@@ -66,13 +65,13 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Podregistr také podporuje vlastní **serializátor nebo deserializaci (SerDe)** pro složitá nebo nepravidelná strukturovaná data. Další informace najdete v tématu [Jak používat vlastní SERDE JSON s](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentem HDInsight.
 
-Další informace o formátech souborů podporovaných podregistru najdete v tématu [Ruční verze jazyka (https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Další informace o formátech souborů podporovaných podregistru najdete v tématu [Ruční verze jazyka ( https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Vnitřní tabulky a externí tabulky podregistru
 
 Existují dva typy tabulek, které lze vytvořit s podregistru:
 
-* __Interní__: data jsou uložená v datovém skladu podregistru. Datový sklad se nachází `/hive/warehouse/` ve výchozím úložišti pro daný cluster.
+* __Interní__: data jsou uložená v datovém skladu podregistru. Datový sklad se nachází ve `/hive/warehouse/` výchozím úložišti pro daný cluster.
 
     Použijte interní tabulky, pokud platí jedna z následujících podmínek:
 
@@ -106,11 +105,11 @@ Podregistr se dá taky rozšířit prostřednictvím **uživatelsky definovanýc
 
 ## <a name="example-data"></a>Příklad dat
 
-Podregistr v HDInsight je předem načtený pomocí interní tabulky s názvem `hivesampletable`. HDInsight také poskytuje příklady datových sad, které se dají použít s podregistru. Tyto sady dat jsou uloženy v `/example/data` adresářích `/HdiSamples` a. Tyto adresáře existují ve výchozím úložišti pro váš cluster.
+Podregistr v HDInsight je předem načtený pomocí interní tabulky s názvem `hivesampletable` . HDInsight také poskytuje příklady datových sad, které se dají použít s podregistru. Tyto sady dat jsou uloženy v `/example/data` `/HdiSamples` adresářích a. Tyto adresáře existují ve výchozím úložišti pro váš cluster.
 
 ## <a name="example-hive-query"></a>Ukázkový dotaz na podregistr
 
-Následující příkazy HiveQL vystaví sloupce projektu `/example/data/sample.log` do souboru:
+Následující příkazy HiveQL vystaví sloupce projektu do `/example/data/sample.log` souboru:
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -131,12 +130,12 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 V předchozím příkladu příkazy HiveQL provádějí následující akce:
 
-|Příkaz |Popis |
+|Příkaz |Description |
 |---|---|
 |ODKLÁDACÍ TABULKA|Pokud tabulka již existuje, odstraňte ji.|
 |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění a v původním formátu.|
 |FORMÁT ŘÁDKU|Instruuje podregistr, jak jsou data formátovaná. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
-|ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Říká podregistru, ve kterém jsou data uložená `example/data` (adresář) a je uložený jako text. Data mohou být v jednom souboru nebo rozložena mezi více souborů v rámci adresáře.|
+|ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Říká podregistru, ve kterém jsou data uložená ( `example/data` adresář) a je uložený jako text. Data mohou být v jednom souboru nebo rozložena mezi více souborů v rámci adresáře.|
 |SELECT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** , protože existují tři řádky, které obsahují tuto hodnotu.|
 |INPUT__FILE__NAME jako je%. log|Podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by mělo vracet pouze data ze souborů končících log. log.|
 
@@ -164,7 +163,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Tyto příkazy provádějí následující akce:
 
-|Příkaz |Popis |
+|Příkaz |Description |
 |---|---|
 |CREATE TABLE, POKUD NEEXISTUJE|Pokud tabulka neexistuje, vytvořte ji. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Tabulka je uložená v datovém skladu podregistru a je plně spravovaná podregistrem.|
 |ULOŽENO JAKO ORC|Ukládá data ve formátu optimalizovaného řádku (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.|

@@ -4,10 +4,9 @@ description: Popisuje, jak určit, jestli se má použít kompletní nebo přír
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460241"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
@@ -82,7 +81,7 @@ Při nasazení v režimu **úplné** se odstraní prostředek C. Skupina prostř
 
 ## <a name="set-deployment-mode"></a>Nastavit režim nasazení
 
-Chcete-li nastavit režim nasazení při nasazení pomocí prostředí PowerShell, `Mode` použijte parametr.
+Chcete-li nastavit režim nasazení při nasazení pomocí prostředí PowerShell, použijte `Mode` parametr.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `

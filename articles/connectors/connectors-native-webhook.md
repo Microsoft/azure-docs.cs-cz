@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 tags: connectors
 ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656285"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Vytváření a spouštění automatizovaných pracovních postupů založených na událostech pomocí webhooků HTTP v Azure Logic Apps
@@ -67,7 +66,7 @@ Další informace najdete v těchto tématech:
 
 Tato integrovaná aktivační událost volá koncový bod přihlášení k odběru cílové služby a zaregistruje adresu URL zpětného volání s cílovou službou. Vaše aplikace logiky potom počká, než cílová služba pošle `HTTP POST` požadavek na adresu URL zpětného volání. Když dojde k této události, aktivační událost se aktivuje a předá do pracovního postupu veškerá data v žádosti.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. Do vyhledávacího pole návrháře zadejte `http webhook` jako filtr. V seznamu **triggery** vyberte aktivační událost **http Webhooku** .
 
@@ -81,14 +80,14 @@ Tato integrovaná aktivační událost volá koncový bod přihlášení k odbě
 
    ![Zadejte parametry triggeru Webhooku protokolu HTTP.](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Předplatné – metoda** | Ano | Metoda, která se má použít při přihlášení k odběru cílového koncového bodu |
-   | **Přihlášení k odběru – identifikátor URI** | Ano | Adresa URL, která se má použít pro přihlášení k odběru cílového koncového bodu |
-   | **Přihlášení k odběru – tělo** | Ne | Libovolný text zprávy, který má být zahrnut do žádosti o přihlášení k odběru. Tento příklad obsahuje adresu URL zpětného volání, která jednoznačně identifikuje předplatitele, což je vaše aplikace logiky `@listCallbackUrl()` , pomocí výrazu pro načtení adresy URL zpětného volání aplikace logiky. |
-   | **Zrušit odběr – metoda** | Ne | Metoda, která se má použít při zrušení odběru cílového koncového bodu |
-   | **Odhlásit odběr – identifikátor URI** | Ne | Adresa URL, která se má použít k odhlášení odběru cílového koncového bodu |
-   | **Odhlásit odběr – tělo** | Ne | Volitelný text zprávy, který se má zahrnout do žádosti o zrušení odběru <p><p>**Poznámka**: Tato vlastnost nepodporuje použití `listCallbackUrl()` funkce. Trigger ale automaticky zahrne a pošle hlavičky `x-ms-client-tracking-id` a `x-ms-workflow-operation-name`, které může cílová služba použít k jednoznačné identifikaci předplatitele. |
+   | **Předplatné – metoda** | Yes | Metoda, která se má použít při přihlášení k odběru cílového koncového bodu |
+   | **Přihlášení k odběru – identifikátor URI** | Yes | Adresa URL, která se má použít pro přihlášení k odběru cílového koncového bodu |
+   | **Přihlášení k odběru – tělo** | No | Libovolný text zprávy, který má být zahrnut do žádosti o přihlášení k odběru. Tento příklad obsahuje adresu URL zpětného volání, která jednoznačně identifikuje předplatitele, což je vaše aplikace logiky, pomocí `@listCallbackUrl()` výrazu pro načtení adresy URL zpětného volání aplikace logiky. |
+   | **Zrušit odběr – metoda** | No | Metoda, která se má použít při zrušení odběru cílového koncového bodu |
+   | **Odhlásit odběr – identifikátor URI** | No | Adresa URL, která se má použít k odhlášení odběru cílového koncového bodu |
+   | **Odhlásit odběr – tělo** | No | Volitelný text zprávy, který se má zahrnout do žádosti o zrušení odběru <p><p>**Poznámka**: Tato vlastnost nepodporuje použití `listCallbackUrl()` funkce. Trigger ale automaticky zahrne a pošle hlavičky `x-ms-client-tracking-id` a `x-ms-workflow-operation-name` , které může cílová služba použít k jednoznačné identifikaci předplatitele. |
    ||||
 
 1. Chcete-li přidat další vlastnosti aktivační události, otevřete seznam **Přidat nový parametr** .
@@ -107,13 +106,13 @@ Tato integrovaná aktivační událost volá koncový bod přihlášení k odbě
 
 Tato Vestavěná akce volá koncový bod přihlášení k odběru v cílové službě a zaregistruje adresu URL zpětného volání s cílovou službou. Vaše aplikace logiky se pak pozastaví a počká, až cílová služba pošle `HTTP POST` požadavek na adresu URL zpětného volání. Pokud k této události dojde, akce předá do pracovního postupu všechna data v žádosti. Pokud se operace úspěšně dokončí, akce odhlásit odběr koncového bodu a vaše aplikace logiky pokračuje v běhu zbývajícího pracovního postupu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger Webhooku HTTP.
 
 1. V kroku, kam chcete přidat akci Webhooku HTTP, vyberte **Nový krok**.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole návrháře zadejte `http webhook` jako filtr. V seznamu **Akce** vyberte akci **Webhooku http** .
 
@@ -127,14 +126,14 @@ Tato Vestavěná akce volá koncový bod přihlášení k odběru v cílové slu
 
    ![Zadejte parametry akce Webhooku protokolu HTTP.](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Předplatné – metoda** | Ano | Metoda, která se má použít při přihlášení k odběru cílového koncového bodu |
-   | **Přihlášení k odběru – identifikátor URI** | Ano | Adresa URL, která se má použít pro přihlášení k odběru cílového koncového bodu |
-   | **Přihlášení k odběru – tělo** | Ne | Libovolný text zprávy, který má být zahrnut do žádosti o přihlášení k odběru. Tento příklad obsahuje adresu URL zpětného volání, která jednoznačně identifikuje předplatitele, což je vaše aplikace logiky `@listCallbackUrl()` , pomocí výrazu pro načtení adresy URL zpětného volání aplikace logiky. |
-   | **Zrušit odběr – metoda** | Ne | Metoda, která se má použít při zrušení odběru cílového koncového bodu |
-   | **Odhlásit odběr – identifikátor URI** | Ne | Adresa URL, která se má použít k odhlášení odběru cílového koncového bodu |
-   | **Odhlásit odběr – tělo** | Ne | Volitelný text zprávy, který se má zahrnout do žádosti o zrušení odběru <p><p>**Poznámka**: Tato vlastnost nepodporuje použití `listCallbackUrl()` funkce. Tato akce ale automaticky zahrne a pošle hlavičky `x-ms-client-tracking-id` a `x-ms-workflow-operation-name`, které může cílová služba použít k jednoznačné identifikaci předplatitele. |
+   | **Předplatné – metoda** | Yes | Metoda, která se má použít při přihlášení k odběru cílového koncového bodu |
+   | **Přihlášení k odběru – identifikátor URI** | Yes | Adresa URL, která se má použít pro přihlášení k odběru cílového koncového bodu |
+   | **Přihlášení k odběru – tělo** | No | Libovolný text zprávy, který má být zahrnut do žádosti o přihlášení k odběru. Tento příklad obsahuje adresu URL zpětného volání, která jednoznačně identifikuje předplatitele, což je vaše aplikace logiky, pomocí `@listCallbackUrl()` výrazu pro načtení adresy URL zpětného volání aplikace logiky. |
+   | **Zrušit odběr – metoda** | No | Metoda, která se má použít při zrušení odběru cílového koncového bodu |
+   | **Odhlásit odběr – identifikátor URI** | No | Adresa URL, která se má použít k odhlášení odběru cílového koncového bodu |
+   | **Odhlásit odběr – tělo** | No | Volitelný text zprávy, který se má zahrnout do žádosti o zrušení odběru <p><p>**Poznámka**: Tato vlastnost nepodporuje použití `listCallbackUrl()` funkce. Tato akce ale automaticky zahrne a pošle hlavičky `x-ms-client-tracking-id` a `x-ms-workflow-operation-name` , které může cílová služba použít k jednoznačné identifikaci předplatitele. |
    ||||
 
 1. Chcete-li přidat další vlastnosti akce, otevřete seznam **Přidat nový parametr** .
@@ -155,17 +154,17 @@ Další informace o parametrech Trigger a Action, které jsou podobné ostatním
 
 Zde jsou další informace o výstupech z triggeru nebo akce Webhooku HTTP, které vrací tyto informace:
 
-| Název vlastnosti | Typ | Popis |
+| Název vlastnosti | Typ | Description |
 |---------------|------|-------------|
-| záhlaví | objekt | Hlavičky z požadavku |
-| text | objekt | Objekt JSON | Objekt s obsahem textu z požadavku |
+| záhlaví | odkazy objektů | Hlavičky z požadavku |
+| text | odkazy objektů | Objekt JSON | Objekt s obsahem textu z požadavku |
 | stavový kód | int | Stavový kód z požadavku |
 |||
 
-| Kód stavu | Popis |
+| Stavový kód | Description |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Accepted |
+| 202 | Přijato |
 | 400 | Chybný požadavek |
 | 401 | Neautorizováno |
 | 403 | Forbidden |

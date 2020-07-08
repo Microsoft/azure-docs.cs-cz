@@ -16,15 +16,14 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: 72d413c5d8bc982d885d889da35b29a3607410cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79472063"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
->Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` a vložením této adresy URL: do čtečky kanálů RSS.
+>Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` do čtečky kanálů RSS.
 
 Tento článek poskytuje pokyny k migraci z Media Services V2 na v3.
 
@@ -42,7 +41,7 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
 *  V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i provoz založené na Azure Resource Manageru. Šablony Azure Resource Manager lze použít k vytváření a nasazování transformací, koncových bodů streamování, živých událostí a dalších.
 * [Openapi specifikace (dříve označované jako Swagger)](https://aka.ms/ams-v3-rest-sdk) dokument.
     Zpřístupňuje schéma pro všechny součásti služby, včetně kódování založeného na souborech.
-* Sady SDK dostupné pro [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core [, Node. js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Přejít](https://aka.ms/ams-v3-go-ref)a Ruby.
+* Sady SDK dostupné pro [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core [,Node.js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Přejít](https://aka.ms/ams-v3-go-ref)a Ruby.
 * Integrace [Azure CLI](https://aka.ms/ams-v3-cli-ref) pro jednoduchou podporu skriptování
 
 ### <a name="new-features"></a>Nové funkce

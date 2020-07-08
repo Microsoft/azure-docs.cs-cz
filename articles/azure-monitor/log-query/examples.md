@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480279"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů Azure Monitor protokolu
@@ -72,7 +71,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Vyhledání chráněných záznamů o stavu pomocí záznamů prezenčního signálu
 
 Tento příklad najde související záznamy stavu ochrany a záznamy prezenčního signálu, které odpovídají v počítači i v čase.
-Všimněte si, že pole čas se zaokrouhluje na nejbližší minutu. Použili jsme výpočet běhového přihrádky k tomu `round_time=bin(TimeGenerated, 1m)`, aby:.
+Všimněte si, že pole čas se zaokrouhluje na nejbližší minutu. Použili jsme výpočet běhového přihrádky k tomu, aby: `round_time=bin(TimeGenerated, 1m)` .
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -229,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Počet událostí zabezpečení podle ID aktivity
 
 
-Tento příklad spoléhá na pevnou strukturu sloupce **Activity** \<: název\>-\<\>ID.
+Tento příklad spoléhá na pevnou strukturu sloupce **aktivita** : \<ID\> - \<Name\> .
 Analyzuje hodnotu **aktivity** na dva nové sloupce a spočítá výskyt jednotlivých **ActivityId**.
 
 ```Kusto
@@ -270,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Název a ID aktivity analýzy
-Následující dva příklady jsou závislé na pevné struktuře sloupce **aktivita** \<: název\>-\<\>ID. První příklad používá operátor **Parse** k přiřazení hodnot dvěma novým sloupcům: **ActivityId** a **activityDesc**.
+Následující dva příklady jsou závislé na pevné struktuře sloupce **aktivita** : \<ID\> - \<Name\> . První příklad používá operátor **Parse** k přiřazení hodnot dvěma novým sloupcům: **ActivityId** a **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -375,7 +374,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Využití
 
-`Usage` Datový typ lze použít ke sledování přijímaných objemů dat podle řešení nebo datového typu. Existují další techniky, jak prozkoumat ingestované datové svazky podle [počítače](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) nebo [předplatného Azure, skupiny prostředků nebo prostředku](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription).
+`Usage`Datový typ lze použít ke sledování přijímaných objemů dat podle řešení nebo datového typu. Existují další techniky, jak prozkoumat ingestované datové svazky podle [počítače](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) nebo [předplatného Azure, skupiny prostředků nebo prostředku](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription).
 
 #### <a name="data-volume-by-solution"></a>Objem dat podle řešení
 
@@ -389,7 +388,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-Všimněte si, že `where IsBillable = true` klauzule filtruje datové typy z určitých řešení, pro které se neúčtují žádné poplatky za ingestování.  Také klauzule WITH `TimeGenerated` je určena pouze k zajištění toho, aby se možnosti dotazování v Azure Portal prohledaly až po dobu 24 hodin. Při použití datového typu použití a `StartTime` `EndTime` představují časové intervaly, pro které jsou zobrazeny výsledky. 
+Všimněte si, že klauzule `where IsBillable = true` filtruje datové typy z určitých řešení, pro které se neúčtují žádné poplatky za ingestování.  Také klauzule WITH `TimeGenerated` je určena pouze k zajištění toho, aby se možnosti dotazování v Azure Portal prohledaly až po dobu 24 hodin. Při použití datového typu použití `StartTime` a `EndTime` představují časové intervaly, pro které jsou zobrazeny výsledky. 
 
 #### <a name="data-volume-by-type"></a>Objem dat podle typu
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471026"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
@@ -67,10 +66,10 @@ V Azure Portal přejdete do své instance služby a výběrem možnosti **Správ
 
 >[!TIP]
 > * Potvrďte, že koncový bod testu končí lomítkem (/), aby se zajistilo, že se soubor CSS správně načte.  
-> * Pokud Váš prohlížeč vyžaduje, abyste zadali přihlašovací údaje pro zobrazení stránky, použijte k dekódování koncového bodu testu [adresu URL](https://www.urldecoder.org/) . Dekódování adresy URL vrátí adresu URL ve formátu https://\<username>:\<Password> @\<cluster-Name>. test.azureapps.IO/Gateway/Green ".  Pomocí tohoto formuláře můžete získat přístup ke koncovému bodu.
+> * Pokud Váš prohlížeč vyžaduje, abyste zadali přihlašovací údaje pro zobrazení stránky, použijte k dekódování koncového bodu testu [adresu URL](https://www.urldecoder.org/) . Dekódování adresy URL vrátí adresu URL ve formátu "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.IO/Gateway/Green".  Pomocí tohoto formuláře můžete získat přístup ke koncovému bodu.
 
 >[!NOTE]    
-> Nastavení konfiguračního serveru se týká jak vašeho přípravného prostředí, tak i produkčního prostředí. Pokud například nastavíte cestu kontextu`server.servlet.context-path`() pro bránu aplikace na serveru konfigurace jako *somepath*, cesta k zelenému nasazení se změní na "https://\<username>:\<password> @\<název_clusteru-Name>. test.azureapps.IO/Gateway/Green/somepath/...".
+> Nastavení konfiguračního serveru se týká jak vašeho přípravného prostředí, tak i produkčního prostředí. Například pokud nastavíte cestu kontextu ( `server.servlet.context-path` ) pro bránu aplikace na serveru konfigurace jako *somepath*, cesta k zelenému nasazení se změní na "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.IO/Gateway/Green/somepath/...".
  
  Pokud v tuto chvíli navštívíte svou veřejnou bránu aplikace, měli byste vidět starou stránku bez nové změny.
     

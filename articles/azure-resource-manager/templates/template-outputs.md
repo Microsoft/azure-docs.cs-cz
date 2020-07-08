@@ -4,10 +4,9 @@ description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resour
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460020"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Výstupy v šabloně Azure Resource Manager
@@ -79,7 +78,7 @@ Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovn�
 }
 ```
 
-`reference` Funkci nelze použít v části výstupy [vnořené šablony](linked-templates.md#nested-template). Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, převeďte vnořenou šablonu na propojenou šablonu.
+Funkci nelze použít `reference` v části výstupy [vnořené šablony](linked-templates.md#nested-template). Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, převeďte vnořenou šablonu na propojenou šablonu.
 
 ## <a name="get-output-values"></a>Získat výstupní hodnoty
 
@@ -87,7 +86,7 @@ Po úspěšném nasazení se výstupní hodnoty automaticky vrátí do výsledk�
 
 Chcete-li získat výstupní hodnoty z historie nasazení, můžete použít skript.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -110,7 +109,7 @@ az deployment group show \
 
 Následující příklady ukazují scénáře použití výstupů.
 
-|Šablona  |Popis  |
+|Šablona  |Description  |
 |---------|---------|
 |[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří komplexní proměnné a vypíše tyto hodnoty. Neimplementuje žádné prostředky. |
 |[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vypíše ID prostředku. |

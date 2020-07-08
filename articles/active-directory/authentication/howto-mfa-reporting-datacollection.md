@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653637"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování uživatelských dat v Azure Multi-Factor Authentication
@@ -70,7 +69,7 @@ Pokusy o ověření (používané pro vytváření sestav a řešení potíží)
 
 Aktivace (pokusí se aktivovat účet v mobilní aplikaci Microsoft Authenticator):
 - Uživatelské jméno
-- Název účtu
+- Account Name
 - Časové razítko
 - Získat výsledek aktivačního kódu
 - Aktivace proběhla úspěšně
@@ -138,10 +137,10 @@ Pro MFA Server verze 8,0 nebo vyšší může následující postup správcům e
 - Přihlaste se k serveru MFA, přejděte na kartu **Uživatelé** , vyberte daného uživatele a klikněte na tlačítko **Upravit** . Pořídit snímky obrazovky (Alt-Print Screen) na jednotlivých kartách a poskytnout tak uživateli aktuální nastavení MFA.
 - Z příkazového řádku serveru MFA spusťte následující příkaz, který mění cestu podle vaší instalace `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` na vytvoření souboru ve formátu JSON.
 - Správci můžou použít i operaci GetUserGdpr sady SDK webové služby jako možnosti Exportovat všechny informace cloudové služby MFA shromážděné pro daného uživatele nebo začlenit do rozsáhlejšího řešení pro vytváření sestav.
-- Vyhledejte `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` a zálohujte pro "\<uživatelské jméno>" (včetně uvozovek ve vyhledávání), abyste našli všechny výskyty přidávaného nebo měněného záznamu uživatele.
+- Vyhledejte `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` a vyhledejte všechny zálohy " \<username> " (včetně uvozovek ve vyhledávání), abyste našli všechny výskyty přidávaného nebo měněného záznamu uživatele.
    - Tyto záznamy můžou být omezené (ale neodstraňují se) tak, že zrušíte kontrolu **"protokolovat změny uživatelů" v uživatelském** rozhraní MFA serveru, v části protokolování, na kartě soubory protokolů.
    - Pokud je protokol syslog nakonfigurovaný a v části **uživatelské** rozhraní MFA serveru, část protokolování, karta syslog, je možné shromažďovat položky protokolu z protokolu syslog.
-- Další výskyty uživatelského jména v souboru MultiFactorAuthSvc. log a dalších souborech protokolu serveru MFA, které souvisí s pokusy o ověření, se považují za provoz a duplikují se na informace poskytované pomocí exportu MultiFactorAuthGdpr. exe nebo webové služby SDK GetUserGdpr.
+- Další výskyty uživatelského jména v souboru MultiFactorAuthSvc. log a dalších souborech protokolu serveru MFA, které souvisí s pokusy o ověření, se považují za provoz a duplikují se na informace poskytované pomocí MultiFactorAuthGdpr.exe exportu nebo sady SDK pro webové služby GetUserGdpr.
 
 ## <a name="delete-data-from-mfa-server"></a>Odstranit data z MFA serveru
 

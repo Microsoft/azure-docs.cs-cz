@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653357"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS ve Windows Serveru
@@ -84,8 +83,8 @@ Multi-Factor Authentication Server máte teď nastavený jako dodatečného posk
 Postupujte podle těchto kroků a upravte soubor MultiFactorAuthenticationAdfsAdapter.config:
 
 1. Uzel **UseWebServiceSdk** nastavte na **true**.  
-2. Hodnotu **WebServiceSdkUrl** nastavte na URL sady SDK webové služby pro Multi-Factor Authentication. Například: *https\/\/: contoso.com/\<certificateer>/multifactorauthwebservicesdk/pfwssdk.asmx*, kde * \<Certificate>* je název vašeho certifikátu.  
-3. Úpravou skriptu skript Register-MultiFactorAuthenticationAdfsAdapter. ps1 přidejte `-ConfigurationFilePath &lt;path&gt;` na konec `Register-AdfsAuthenticationProvider` příkazu, kde * &lt;cesta&gt; * je úplná cesta k souboru souboru MultiFactorAuthenticationAdfsAdapter. config.
+2. Hodnotu **WebServiceSdkUrl** nastavte na URL sady SDK webové služby pro Multi-Factor Authentication. Například: *https: \/ \/ contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, kde *\<certificatename>* je název vašeho certifikátu.  
+3. Upravte skript Register-MultiFactorAuthenticationAdfsAdapter.ps1 přidáním `-ConfigurationFilePath &lt;path&gt;` na konec `Register-AdfsAuthenticationProvider` příkazu, kde * &lt; &gt; cesta* je úplná cesta k souboru MultiFactorAuthenticationAdfsAdapter.config.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Konfigurace sady SDK webové služby pomocí uživatelského jména a hesla
 

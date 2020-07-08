@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656332"
 ---
-# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytváření, sledování a Správa souborů FTP pomocí Azure Logic Apps
+# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytvoření, monitorování a správa souborů FTP pomocí Azure Logic Apps
 
 Pomocí Azure Logic Apps a konektoru FTP můžete vytvářet automatizované úlohy a pracovní postupy, které umožňují vytvářet, monitorovat, odesílat a přijímat soubory prostřednictvím účtu na serveru FTP spolu s dalšími akcemi, například:
 
@@ -45,8 +44,8 @@ Aktivační procedury FTP fungují při cyklickém dotazování systému soubor�
 
 | Klient SFTP | Akce |
 |-------------|--------|
-| WinSCP | Přejít na **Možnosti** > **Předvolby** > **přenos** > **Edit**upravit > **zachovat časové razítko** > **Zakázat** |
-| FileZilly | Přejít na **přenos** > – zachovat**zablokovaná** **Časová razítka přenesených souborů** >  |
+| WinSCP | Přejít na **Možnosti**  >  **Předvolby**  >  **přenos**  >  **Upravit**  >  **zachovat časové razítko**  >  **Zakázat** |
+| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná**Časová razítka přenesených souborů**  >  **Disable** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
@@ -69,13 +68,13 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. Pro prázdné aplikace logiky zadejte `ftp` do vyhledávacího pole jako filtr. V seznamu **triggery** vyberte Trigger, který chcete.
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole `ftp` jako filtr. V seznamu **triggery** vyberte Trigger, který chcete.
 
    -nebo-
 
    Pro existující aplikace logiky klikněte v posledním kroku na místo, kam chcete přidat akci, vyberte **Nový krok**a potom vyberte **přidat akci**. Do vyhledávacího pole zadejte `ftp` jako filtr. V seznamu **Akce** vyberte akci, kterou chcete.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Zadejte informace o připojení a vyberte **vytvořit**.
 
@@ -95,7 +94,7 @@ Zde je příklad, který ukazuje, jak použít **při přidání nebo úpravě s
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Pro prázdné aplikace logiky zadejte `ftp` do vyhledávacího pole jako filtr. V seznamu triggery vyberte tuto aktivační událost: **když se přidá nebo upraví dodané datum (jenom vlastnosti)** .
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole `ftp` jako filtr. V seznamu triggery vyberte tuto aktivační událost: **když se přidá nebo upraví dodané datum (jenom vlastnosti)** .
 
    ![Vyhledejte a vyberte aktivační událost FTP.](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
@@ -105,7 +104,7 @@ Zde je příklad, který ukazuje, jak použít **při přidání nebo úpravě s
 
    ![Vytvořit připojení k serveru FTP](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. V poli **Složka** vyberte ikonu složky, aby se zobrazil seznam. Chcete-li najít složku, kterou chcete monitorovat pro nové nebo upravované soubory, vyberte šipku pravého**>** úhlu (), přejděte do této složky a pak ji vyberte.
+1. V poli **Složka** vyberte ikonu složky, aby se zobrazil seznam. Chcete-li najít složku, kterou chcete monitorovat pro nové nebo upravované soubory, vyberte šipku pravého úhlu ( **>** ), přejděte do této složky a pak ji vyberte.
 
    ![Najít a vybrat složku, která se má monitorovat](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 

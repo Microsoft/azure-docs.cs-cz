@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 9eba6f2c47629b708dde4a5a2888b76dbd24b4e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455889"
 ---
 # <a name="split-data-module"></a>Modul rozdělení dat
@@ -87,7 +86,7 @@ Následující příklady ukazují, jak rozdělit datovou sadu pomocí možnosti
 
 ### <a name="single-whole-word"></a>Jedno celé slovo 
 
-Tento příklad vloží do první datové sady všechny řádky, které obsahují text `Gryphon` ve sloupci `Text`. Vloží další řádky do druhého výstupu **rozdělených dat**.
+Tento příklad vloží do první datové sady všechny řádky, které obsahují text `Gryphon` ve sloupci `Text` . Vloží další řádky do druhého výstupu **rozdělených dat**.
 
 ```text
     \"Text" Gryphon  
@@ -101,7 +100,7 @@ Tento příklad hledá zadaný řetězec na libovolné pozici v druhém sloupci 
 (\1) ^[a-f]
 ```
 
-První výsledná datová sada obsahuje všechny řádky, ve kterých indexový sloupec začíná jedním z těchto `a`znaků `b`: `c`, `d`, `e`, `f`,,. Všechny ostatní řádky jsou směrovány na druhý výstup.
+První výsledná datová sada obsahuje všechny řádky, ve kterých indexový sloupec začíná jedním z těchto znaků: `a` , `b` , `c` , `d` , `e` , `f` . Všechny ostatní řádky jsou směrovány na druhý výstup.
 
 ## <a name="select-a-relative-expression"></a>Výběr relativního výrazu
 
@@ -114,12 +113,12 @@ První výsledná datová sada obsahuje všechny řádky, ve kterých indexový 
    Pro **číselný sloupec**:
    - Sloupec obsahuje čísla libovolného číselného datového typu, včetně datových typů data a času.
    - Výraz může odkazovat maximálně na jeden název sloupce.
-   - Pro operaci a použijte znak `&`ampersand. Použijte pro operaci nebo znak `|`kanálu.
-   - Podporovány jsou následující `<`operátory:, `>`, `<=`, `>=`, `==`,. `!=`
-   - Operace nelze seskupit pomocí `(` a. `)`
+   - `&`Pro operaci a použijte znak ampersand. Použijte `|` pro operaci nebo znak kanálu.
+   - Podporovány jsou následující operátory: `<` , `>` , `<=` , `>=` , `==` , `!=` .
+   - Operace nelze seskupit pomocí `(` a `)` .
    
    Pro **řetězcový sloupec**:
-   - Podporovány jsou následující operátory: `==`,. `!=`
+   - Podporovány jsou následující operátory: `==` , `!=` .
 
 1. Odešlete kanál.
 
@@ -129,7 +128,7 @@ Následující příklady ukazují, jak rozdělit datovou sadu pomocí možnosti
 
 ### <a name="calendar-year"></a>Kalendářní rok
 
-Běžným scénářem je rozdělit datovou sadu o roky. Následující výraz vybere všechny řádky, ve kterých jsou hodnoty ve sloupci `Year` větší než `2010`.
+Běžným scénářem je rozdělit datovou sadu o roky. Následující výraz vybere všechny řádky, ve kterých jsou hodnoty ve sloupci `Year` větší než `2010` .
 
 ```text
 \"Year" > 2010
@@ -137,7 +136,7 @@ Běžným scénářem je rozdělit datovou sadu o roky. Následující výraz vy
 
 Výraz data musí mít účet pro všechny části kalendářních dat zahrnuté do sloupce data. Formát dat v datovém sloupci musí být konzistentní. 
 
-Například ve sloupci kalendářních dat, který používá formát `mmddyyyy`, by měl být výraz podobný tomuto:
+Například ve sloupci kalendářních dat, který používá formát `mmddyyyy` , by měl být výraz podobný tomuto:
 
 ```text
 \"Date" > 1/1/2010

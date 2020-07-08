@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
 ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460445"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Nejčastější dotazy týkající se výkonu protokolu SMB pro Azure NetApp Files
@@ -44,7 +43,7 @@ Windows podporuje vícekanálový protokol SMB, protože systém Windows 2012 pr
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Podporuje můj virtuální počítač Azure technologii RSS?
 
-Pokud chcete zjistit, jestli vaše síťové adaptéry virtuálních počítačů Azure podporují RSS, `Get-SmbClientNetworkInterface` spusťte příkaz takto a zkontrolujte pole `RSS Capable`: 
+Pokud chcete zjistit, jestli vaše síťové adaptéry virtuálních počítačů Azure podporují RSS, spusťte příkaz takto `Get-SmbClientNetworkInterface` a zkontrolujte pole `RSS Capable` : 
 
 ![Podpora RSS pro virtuální počítač Azure](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
@@ -60,7 +59,7 @@ Vícekanálový funkce protokolu SMB umožňuje klientovi SMB3 vytvořit fond p�
 
 Ne. Klient SMB bude odpovídat počtu síťových adaptérů vráceného serverem SMB.  Každý svazek úložiště je přístupný z jednoho a pouze jednoho koncového bodu úložiště.  To znamená, že pro všechny relace SMB se bude používat jenom jedna síťová karta.  
 
-Jak ukazuje výstup `Get-SmbClientNetworkInterace` níže, má virtuální počítač dvě síťová rozhraní – 15 a 12.  Jak je uvedeno níže v příkazu `Get-SmbMultichannelConnection`, i když jsou k dispozici dva síťové adaptéry podporující kanály RSS, v souvislosti se sdílenou složkou SMB se používá jenom rozhraní 12. rozhraní 15 se nepoužívá.
+Jak `Get-SmbClientNetworkInterace` ukazuje výstup níže, má virtuální počítač dvě síťová rozhraní – 15 a 12.  Jak je uvedeno níže v příkazu `Get-SmbMultichannelConnection` , i když jsou k dispozici dvě síťová rozhraní podporující kanály RSS, používá se ve spojení se sdílenou složkou SMB pouze rozhraní 12. rozhraní 15 se nepoužívá.
 
 ![Síťové karty podporující RSS](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
@@ -74,9 +73,9 @@ Následující testy a grafy ukazují sílu rozhraní SMB vícekanálový na úl
 
 ### <a name="random-io"></a>Náhodné vstupně-výstupní operace  
 
-Díky funkci SMB vícekanálový zakázanou na klientovi byly čistě 8-KiB testy čtení a zápisu provedeny pomocí FIO a pracovní sady 40-GiB.  Sdílená složka SMB byla mezi jednotlivými testy odpojena s přírůstekem počtu připojení klientů SMB podle nastavení síťového `1`rozhraní RSS,`4`,`8`,`16`,. `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` Testy ukazují, že výchozí nastavení `4` je dostatečné pro úlohy náročné na vstupně-výstupní operace; zvýšení na `8` a `16` neměla žádný vliv. 
+Díky funkci SMB vícekanálový zakázanou na klientovi byly čistě 8-KiB testy čtení a zápisu provedeny pomocí FIO a pracovní sady 40-GiB.  Sdílená složka SMB byla mezi jednotlivými testy odpojena s přírůstekem počtu připojení klientů SMB podle nastavení síťového rozhraní RSS `1` ,,, `4` `8` `16` , `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` . Testy ukazují, že výchozí nastavení `4` je dostatečné pro úlohy náročné na vstupně-výstupní operace; zvýšení na `8` a `16` neměla by mít žádný vliv. 
 
-Příkaz `netstat -na | findstr 445` ukázal, že další připojení byla vytvořena s přírůstky `1` od `4` do `8` až do `16`.  Čtyři jádra procesoru se během každého testu plně využila pro protokol SMB, jak potvrzují statistiky Perfmon `Per Processor Network Activity Cycles` (nezahrnuje se v tomto článku).
+Příkaz `netstat -na | findstr 445` ukázal, že další připojení byla vytvořena s přírůstky od `1` do `4` až do `8` `16` .  Čtyři jádra procesoru se během každého testu plně využila pro protokol SMB, jak potvrzují statistiky Perfmon `Per Processor Network Activity Cycles` (nezahrnuje se v tomto článku).
 
 ![Náhodné vstupně-výstupní testy](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 

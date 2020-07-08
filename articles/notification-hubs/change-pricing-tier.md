@@ -14,10 +14,9 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656472"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Změna cenové úrovně oboru názvů centra oznámení Azure
@@ -40,9 +39,9 @@ Při použití Azure Portal můžete změnit cenovou úroveň oboru názvů na s
 
 Následující postup ukazuje, jak změnit cenovou úroveň oboru názvů na stránce oboru názvů. Když změníte úroveň oboru názvů, bude platit pro všechna centra v daném oboru názvů.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** .
-3. V části **Internet věcí** vyberte **obory názvů centra oznámení** . Pokud vyberete hvězdičku (`*`) vedle textu, přidá se do levého navigačního panelu v části **Oblíbené**. Umožňuje rychleji přistupovat ke stránce oborů názvů. Po přidání do oblíbených položek vyberte **obory názvů centra oznámení**.
+3. V části **Internet věcí** vyberte **obory názvů centra oznámení** . Pokud vyberete hvězdičku ( `*` ) vedle textu, přidá se do levého navigačního panelu v části **Oblíbené**. Umožňuje rychleji přistupovat ke stránce oborů názvů. Po přidání do oblíbených položek vyberte **obory názvů centra oznámení**.
 
     ![Všechny služby – > obory názvů centra oznámení](./media/change-pricing-tier/all-services-nhub.png)
 
@@ -64,7 +63,7 @@ Následující postup ukazuje, jak změnit cenovou úroveň oboru názvů na str
 
 Následující postup ukazuje, jak změnit cenovou úroveň oboru názvů na stránce centra. I když provedete tyto kroky počínaje na stránce centra, změníte cenovou úroveň pro obor názvů a všechna centra v oboru názvů.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** .
 3. V části **Internet věcí** vyberte **Notification Hubs** .
 4. Vyberte **centrum**oznámení.

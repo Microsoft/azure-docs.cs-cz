@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 63a5cdbff79af52d9f96cf410a820c6cfc530066
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79454019"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtrovat události pro Event Grid
@@ -22,7 +21,7 @@ Tento článek popisuje, jak filtrovat události při vytváření předplatnéh
 
 ## <a name="filter-by-event-type"></a>Filtrovat podle typu události
 
-Při vytváření předplatného Event Grid můžete určit [typy událostí](event-schema.md) , které se mají odeslat do koncového bodu. Příklady v této části vytvářejí odběry událostí pro skupinu prostředků, ale omezují události, které jsou odesílány `Microsoft.Resources.ResourceWriteFailure` do `Microsoft.Resources.ResourceWriteSuccess`a. Pokud potřebujete větší flexibilitu při filtrování událostí podle typů událostí, přečtěte si téma filtrovat podle pokročilých operátorů a datových polí.
+Při vytváření předplatného Event Grid můžete určit [typy událostí](event-schema.md) , které se mají odeslat do koncového bodu. Příklady v této části vytvářejí odběry událostí pro skupinu prostředků, ale omezují události, které jsou odesílány do `Microsoft.Resources.ResourceWriteFailure` a `Microsoft.Resources.ResourceWriteSuccess` . Pokud potřebujete větší flexibilitu při filtrování událostí podle typů událostí, přečtěte si téma filtrovat podle pokročilých operátorů a datových polí.
 
 Pro prostředí PowerShell použijte `-IncludedEventType` parametr při vytváření předplatného.
 
@@ -36,7 +35,7 @@ New-AzEventGridSubscription `
   -IncludedEventType $includedEventTypes
 ```
 
-Pro rozhraní `--included-event-types` příkazového řádku Azure použijte parametr. Následující příklad používá Azure CLI v prostředí bash:
+Pro rozhraní příkazového řádku Azure použijte `--included-event-types` parametr. Následující příklad používá Azure CLI v prostředí bash:
 
 ```azurecli
 includedEventTypes="Microsoft.Resources.ResourceWriteFailure Microsoft.Resources.ResourceWriteSuccess"
@@ -81,7 +80,7 @@ Pro šablonu Správce prostředků použijte `includedEventTypes` vlastnost.
 
 Události můžete filtrovat podle předmětu v datech události. Můžete zadat hodnotu, která se má shodovat s počátkem nebo koncem předmětu. Pokud při filtrování událostí podle předmětu potřebujete větší flexibilitu, přečtěte si téma filtrování podle pokročilých operátorů a datových polí.
 
-V následujícím příkladu PowerShellu vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí `-SubjectBeginsWith` parametru můžete omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
+V následujícím příkladu PowerShellu vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí parametru můžete `-SubjectBeginsWith` omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
 
 ```powershell
 $resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
@@ -93,7 +92,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-Následující příklad PowerShellu vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg`.
+Následující příklad PowerShellu vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg` .
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -105,7 +104,7 @@ New-AzEventGridSubscription `
   -SubjectEndsWith ".jpg"
 ```
 
-V následujícím příkladu Azure CLI vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí `--subject-begins-with` parametru můžete omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
+V následujícím příkladu Azure CLI vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí parametru můžete `--subject-begins-with` omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
 
 ```azurecli
 resourceId=$(az resource show --name demoSecurityGroup --resource-group myResourceGroup --resource-type Microsoft.Network/networkSecurityGroups --query id --output tsv)
@@ -117,7 +116,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-Další příklad Azure CLI vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg`.
+Další příklad Azure CLI vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg` .
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -129,7 +128,7 @@ az eventgrid event-subscription create \
   --subject-ends-with ".jpg"
 ```
 
-V následujícím příkladu šablony Správce prostředků vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí `subjectBeginsWith` vlastnosti můžete omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
+V následujícím příkladu šablony Správce prostředků vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí vlastnosti můžete `subjectBeginsWith` omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
 
 ```json
 "resources": [
@@ -155,7 +154,7 @@ V následujícím příkladu šablony Správce prostředků vytvoříte odběr u
 ]
 ```
 
-Následující příklad šablony Správce prostředků vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg`.
+Následující příklad šablony Správce prostředků vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg` .
 
 ```json
 "resources": [

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456739"
 ---
 # <a name="apply-math-operation"></a>Použití matematických operací
@@ -36,7 +35,7 @@ Hledání potřebných operací v těchto kategoriích:
   
      Funkce v kategorii **Basic** lze použít k manipulaci s jednou hodnotou nebo sloupcem hodnot. Například můžete získat absolutní hodnotu všech čísel ve sloupci nebo vypočítat druhou odmocninu každé hodnoty ve sloupci.  
   
--   [Porovnání](#comparison-operations)  
+-   [Porovnán](#comparison-operations)  
   
       Funkce v kategorii **porovnání** jsou použity pro porovnání: můžete provést párové porovnání hodnot ve dvou sloupcích nebo můžete porovnat jednotlivé hodnoty ve sloupci se zadanou konstantou. Můžete například porovnat sloupce a určit, zda byly hodnoty stejné ve dvou datových sadách. Nebo můžete použít konstantu, jako je například maximální povolená hodnota, abyste našli odlehlé hodnoty v číselném sloupci.  
   
@@ -72,7 +71,7 @@ Každá instance tohoto modulu může v jednom okamžiku provádět pouze jeden 
 1.  Vyberte jeden nebo více zdrojových sloupců, u kterých chcete provést výpočet.   
   
     - Libovolný sloupec, který zvolíte, musí být číselný datový typ. 
-    - Rozsah dat musí být platný pro vybranou matematickou operaci. V opačném případě může dojít k chybě nebo NaN (nejedná se o číslo). Například ln (-1,0) je neplatná operace a výsledkem je hodnota `NaN`.
+    - Rozsah dat musí být platný pro vybranou matematickou operaci. V opačném případě může dojít k chybě nebo NaN (nejedná se o číslo). Například ln (-1,0) je neplatná operace a výsledkem je hodnota `NaN` .
   
 1.  Kliknutím na **kategorie** vyberte **typ** matematické operace, která se má provést.
     
@@ -257,8 +256,8 @@ Operace|Num1|Num2|Sloupec výsledku|Výsledná hodnota|
 |Násobení|1|5|Vícenásobný (Num2_Num1)|5|
 |Odčítání|1|5|Odečíst (Num2_Num1)|4|
 |Odčítání|0|1|Odečíst (Num2_Num1)|0|
-|Dělení|1|5|Dělit (Num2_Num1)|5|
-|Dělení|0|1|Dělit (Num2_Num1)|Nekonečno|
+|Oddělení|1|5|Dělit (Num2_Num1)|5|
+|Oddělení|0|1|Dělit (Num2_Num1)|Nekonečno|
 
 ### <a name="add"></a>Přidat
 

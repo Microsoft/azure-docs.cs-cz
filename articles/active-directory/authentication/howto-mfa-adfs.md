@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5949fdce9d591a9c02c5c6c4fb2f1dde94c45d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80654026"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
@@ -59,9 +58,9 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 1. Otevřete správu služby AD FS.
 2. Na levé **straně vyberte vztahy důvěryhodnosti předávající strany**.
 3. Klikněte pravým tlačítkem na **systém Microsoft Office 365 Identity Platform** a vyberte **upravit pravidla deklarací identity...** 
-   Konzola ADFS – úprava pravidel ![deklarací identity](./media/howto-mfa-adfs/trustedip1.png)
+    ![ Konzola ADFS – úprava pravidel deklarací identity](./media/howto-mfa-adfs/trustedip1.png)
 4. V pravidla transformace vystavení klikněte na **Přidat pravidlo.** 
-    ![](./media/howto-mfa-adfs/trustedip2.png)
+    ![ Přidání pravidla deklarace identity](./media/howto-mfa-adfs/trustedip2.png)
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
    ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/trustedip3.png)
 6. Do pole vedle názvu pravidla deklarace identity zadejte název pravidla. Příklad: InsideCorpNet.
@@ -85,8 +84,8 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
 Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvěryhodné IP adresy.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** > **pojmenované umístění**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+2. Vyberte **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup**  >  **pojmenované umístění**.
 3. V okně **podmíněný přístup – pojmenovaná umístění** vyberte **Konfigurovat důvěryhodné IP adresy MFA** .
 
    ![Podmíněný přístup služby Azure AD konfigurace důvěryhodných IP adres MFA](./media/howto-mfa-adfs/trustedip6.png)

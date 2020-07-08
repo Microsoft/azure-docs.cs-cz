@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480449"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav ve službě Azure Monitor pro virtuální počítače s využitím sešitů
@@ -26,7 +25,7 @@ Sešity jsou užitečné pro scénáře, jako například:
 
 Následující tabulka shrnuje sešity, které Azure Monitor pro virtuální počítače obsahuje, abyste mohli začít.
 
-| sešit | Popis | Rozsah |
+| sešit | Description | Rozsah |
 |----------|-------------|-------|
 | Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Ve velkém měřítku |
 | Čítače výkonu | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Ve velkém měřítku |
@@ -44,7 +43,7 @@ Následující tabulka shrnuje sešity, které Azure Monitor pro virtuální po�
 
 Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných grafů, tabulek, textových a vstupních ovládacích prvků. Abychom lépe porozuměli sešitům, začněte tím, že otevřete šablonu a projdeme vytvořením vlastního sešitu. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Virtual Machines**.
 
@@ -100,7 +99,7 @@ Chcete-li zahrnout data z jiných Log Analytics pracovních prostorů nebo z kon
 
 ### <a name="advanced-analytic-query-settings"></a>Pokročilé nastavení analytického dotazu
 
-Každá část má vlastní Rozšířená nastavení, která jsou přístupná prostřednictvím ![](media/vminsights-workbooks/006-settings.png) ikony pro úpravy oddílu sešity nastavení umístěné napravo od tlačítka **přidat parametry** .
+Každá část má vlastní Rozšířená nastavení, která jsou přístupná prostřednictvím ![ ikony pro úpravy oddílu sešity nastavení ](media/vminsights-workbooks/006-settings.png) umístěné napravo od tlačítka **přidat parametry** .
 
 ![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/007-settings-expanded.png)
 
@@ -147,7 +146,7 @@ Tady je příklad dat virtuálního počítače, která jsou načítána do seš
 
 Parametry sešitu umožňují změnit hodnoty v sešitu bez nutnosti ručně upravovat oddíly dotazu nebo textu. Tím se eliminuje nutnost potřebovat porozumět základnímu dotazovacímu jazyku a významně rozšířit potenciální cílovou skupinu vytváření sestav na základě sešitu.
 
-Hodnoty parametrů jsou nahrazeny v dotazech, textu nebo jiných oddílech parametrů vložením názvu parametru do složených závorek, například ``{parameterName}``. Názvy parametrů jsou omezené na podobná pravidla jako identifikátory JavaScriptu, abecední znaky nebo podtržítka, následované alfanumerickými znaky nebo podtržítkem. Například **a1** je povoleno, ale **1a** není povoleno.
+Hodnoty parametrů jsou nahrazeny v dotazech, textu nebo jiných oddílech parametrů vložením názvu parametru do složených závorek, například ``{parameterName}`` . Názvy parametrů jsou omezené na podobná pravidla jako identifikátory JavaScriptu, abecední znaky nebo podtržítka, následované alfanumerickými znaky nebo podtržítkem. Například **a1** je povoleno, ale **1a** není povoleno.
 
 Parametry jsou lineární, počínaje horním okrajem sešitu a natékání dolů na pozdější kroky.  Parametry deklarované později v sešitu mohou přepsat parametry, které byly dříve deklarovány. To také umožňuje parametrům, které používají dotazy pro přístup k hodnotám z parametrů definovaných dříve. V samotném kroku parametru jsou parametry také lineární, zleva doprava, kde parametry vpravo mohou záviset na parametru deklarovaném dříve v tomto kroku.
  

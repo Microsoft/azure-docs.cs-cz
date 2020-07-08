@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657001"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Odeslání e-mailu z účtu SMTP pomocí Azure Logic Apps
@@ -43,20 +42,20 @@ Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) může
 1. V posledním kroku, kam chcete přidat akci SMTP, vyberte **Nový krok**. 
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte jako filtr "SMTP". V seznamu akce vyberte akci, kterou chcete.
 
 1. Po zobrazení výzvy zadejte tyto informace o připojení:
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název připojení** | Ano | Název připojení k serveru SMTP | 
-   | **Adresa serveru SMTP** | Ano | Adresa serveru SMTP | 
-   | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro váš účet SMTP | 
-   | **Heslo** | Ano | Heslo pro váš účet SMTP | 
-   | **Port serveru SMTP** | Ne | Konkrétní port na serveru SMTP, který chcete použít | 
-   | **Povolit SSL?** | Ne | Zapněte nebo vypněte šifrování TLS/SSL. | 
+   | **Název připojení** | Yes | Název připojení k serveru SMTP | 
+   | **Adresa serveru SMTP** | Yes | Adresa serveru SMTP | 
+   | **Uživatelské jméno** | Yes | Vaše uživatelské jméno pro váš účet SMTP | 
+   | **Heslo** | Yes | Heslo pro váš účet SMTP | 
+   | **Port serveru SMTP** | No | Konkrétní port na serveru SMTP, který chcete použít | 
+   | **Povolit SSL?** | No | Zapněte nebo vypněte šifrování TLS/SSL. | 
    |||| 
 
 1. Zadejte potřebné podrobnosti pro vybranou akci. 

@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458065"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rychlý Start pro bash v Azure Cloud Shell
@@ -35,7 +34,7 @@ Tento dokument popisuje, jak používat Bash v Azure Cloud Shell v [Azure Portal
 > Při každé relaci se automaticky ověřují pro Azure CLI.
 
 ### <a name="select-the-bash-environment"></a>Výběr prostředí bash
-Ověřte, že je v rozevíracím seznamu prostředí v levé části okna prostředí uvedena ikona prostředí `Bash`. <br>
+Ověřte, že je v rozevíracím seznamu prostředí v levé části okna prostředí uvedena ikona prostředí `Bash` . <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Nastavení předplatného
@@ -50,7 +49,7 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Vaše předplatné bude zapamatovatelné pro budoucí relace pomocí `/home/<user>/.azure/azureProfile.json`.
+> Vaše předplatné bude zapamatovatelné pro budoucí relace pomocí `/home/<user>/.azure/azureProfile.json` .
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Vytvořte novou skupinu prostředků v WestUS s názvem "MyRG".
@@ -66,9 +65,9 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Pomocí `--generate-ssh-keys` pokynů příkazového řádku Azure CLI vytvoří a nastaví veřejné a privátní klíče ve vašem virtuálním `$Home` počítači a adresáři. Ve výchozím nastavení jsou klíče umístěny v Cloud Shell `/home/<user>/.ssh/id_rsa` v `/home/<user>/.ssh/id_rsa.pub`a. Vaše `.ssh` složka je trvalá v IMAGI 5 GB připojené sdílené složky, která se používá k zachování `$Home`.
+> Pomocí `--generate-ssh-keys` pokynů příkazového řádku Azure CLI vytvoří a nastaví veřejné a privátní klíče ve vašem virtuálním počítači a `$Home` adresáři. Ve výchozím nastavení jsou klíče umístěny v Cloud Shell v `/home/<user>/.ssh/id_rsa` a `/home/<user>/.ssh/id_rsa.pub` . Vaše `.ssh` Složka je trvalá v imagi 5 GB připojené sdílené složky, která se používá k zachování `$Home` .
 
-Vaše uživatelské jméno na tomto VIRTUÁLNÍm počítači bude vaše uživatelské jméno použité vUser@Azure:Cloud Shell ($).
+Vaše uživatelské jméno na tomto VIRTUÁLNÍm počítači bude vaše uživatelské jméno použité v Cloud Shell ($ User@Azure: ).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH do virtuálního počítače se systémem Linux
 1. Na panelu hledání Azure Portal vyhledejte název svého virtuálního počítače.

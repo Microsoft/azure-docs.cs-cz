@@ -7,10 +7,9 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480874"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
@@ -84,7 +83,7 @@ Základní procesy použijte k instalaci agentů na adrese [připojení počíta
 
 Network Performance Monitor používá syntetické transakce k monitorování výkonu sítě mezi zdrojovými a cílovými agenty. Můžete zvolit TCP a ICMP jako protokol pro monitorování v možnosti monitorování výkonu a sledování připojení služby. Jako monitorovací protokol pro ExpressRoute monitor je k dispozici pouze protokol TCP. Ujistěte se, že brána firewall umožňuje komunikaci mezi Log Analytics agenty, které se používají pro monitorování protokolu, který zvolíte. 
 
-* **Protokol TCP**: Pokud jako protokol pro monitorování zvolíte TCP, otevřete port brány firewall u agentů používaných pro Network Performance Monitor a monitorování ExpressRoute a ujistěte se, že se agenti mohou vzájemně připojit. Pokud chcete otevřít port, spusťte skript prostředí PowerShell [EnableRules. ps1](https://aka.ms/npmpowershellscript) bez parametrů v okně PowerShellu s oprávněními správce.
+* **Protokol TCP**: Pokud jako protokol pro monitorování zvolíte TCP, otevřete port brány firewall u agentů používaných pro Network Performance Monitor a monitorování ExpressRoute a ujistěte se, že se agenti mohou vzájemně připojit. Pokud chcete otevřít port, spusťte skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell bez parametrů v okně PowerShellu s oprávněními správce.
 
     Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. 
 
@@ -92,7 +91,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
     > Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte bránu firewall sítě, ujistěte se, že umožňuje provoz určený pro port TCP používaný Network Performance Monitor.
 
     >[!NOTE]
-    > Pro monitorování připojení služby nemusíte spouštět skript prostředí PowerShell [EnableRules. ps1](https://aka.ms/npmpowershellscript ) .
+    > Pro monitorování připojení služby nemusíte spouštět skript prostředí [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell.
 
     
 

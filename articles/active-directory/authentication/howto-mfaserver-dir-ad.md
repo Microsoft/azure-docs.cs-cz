@@ -13,10 +13,9 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480976"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
@@ -35,7 +34,7 @@ Ve výchozím nastavení je Azure Multi-Factor Authentication (MFA) Server nakon
 > [!NOTE]
 > Integrace adresáře není zaručena pracovat s jinými adresáři než Active Directory Domain Services.
 
-| Funkce | Popis |
+| Funkce | Description |
 | --- | --- |
 | Použít Active Directory |Vyberte možnost Použít Active Directory, pokud chcete používat Active Directory pro importování a synchronizaci.  Toto je výchozí nastavení. <br>Poznámka: Aby integrace služby Active Directory fungovala správně, připojte počítač k doméně a přihlaste se pomocí doménového účtu. |
 | Zahrnout důvěryhodné domény |Zaškrtněte políčko **Zahrnout důvěryhodné domény**, pokud chcete, aby se agent pokusil připojit k doménám, kterým důvěřuje aktuální doména, k jiné doméně v doménové struktuře nebo k doménám ve vztahu důvěryhodnosti doménové struktury.  Pokud neimportujete ani nesynchronizujete uživatele z jakékoli důvěryhodné domény, zrušte označení tohoto zatržítka – zvýší se tím výkon.  Ve výchozím nastavení je zatržítko označené. |
@@ -45,7 +44,7 @@ Ve výchozím nastavení je Azure Multi-Factor Authentication (MFA) Server nakon
 
 V následující tabulce jsou popsaná nastavení konfigurace LDAP.
 
-| Funkce | Popis |
+| Funkce | Description |
 | --- | --- |
 | Server |Zadejte název hostitele nebo IP adresu serveru, na kterém běží adresář LDAP.  Můžete taky zadat záložní server oddělený středníkem. <br>Poznámka: když je typ vazby SSL (TLS), vyžaduje se plně kvalifikovaný název hostitele. |
 | Základní rozlišující název |Zadejte rozlišující název objektu základního adresáře, ze kterého začínají všechny dotazy na adresář.  Příklad: dc=abc,dc=com. |
@@ -76,11 +75,11 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 
 ![Přizpůsobení atributů integrace adresáře na serveru MFA](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Funkce | Popis |
+| Funkce | Description |
 | --- | --- |
 | Jedinečný identifikátor |Zadejte název atributu, který slouží jako jedinečný identifikátor kontejneru, skupiny zabezpečení a záznamů uživatele.  V Active Directory je to obvykle objectGUID. V jiných implementacích LDAP se může používat entryUUID nebo něco podobného.  Výchozí hodnota je objectGUID. |
 | Typ jedinečného identifikátoru |Vyberte typ atributu jedinečného identifikátoru.  V Active Directory má atribut objectGUID typ GUID. V jiných implementacích LDAP se může používat typ Pole bajtů ASCII nebo Řetězec.  Výchozí hodnota je GUID. <br><br>Je důležité tento typ nastavit správně, protože na synchronizační položky se odkazuje pomocí jejich jedinečného identifikátoru. Typ jedinečného identifikátoru se používá pro přímé vyhledání objektu v adresáři.  Pokud se typ nastaví na Řetězec, když adresář ve skutečnosti ukládá hodnotu jako pole znaků ASCII, nebude synchronizace fungovat správně. |
-| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>Pokud atribut obsahující pouze rozlišující název neexistuje, může být použit atribut cesty reklamy.  Část cesty „LDAP://\<server\>/“ se automaticky odstraní a zůstane jen rozlišující název objektu. |
+| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>Pokud atribut obsahující pouze rozlišující název neexistuje, může být použit atribut cesty reklamy.  \<server\>Část cesty "LDAP:///" se automaticky odstraní a zůstane pouze rozlišující název objektu. |
 | Název kontejneru |Zadejte název atributu, který v záznamu kontejneru obsahuje název.  Hodnota tohoto atributu se zobrazí v Hierarchii kontejneru při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. <br><br>Pokud různé kontejnery používají pro své názvy různé atributy, použijte k oddělení několika atributů názvu kontejneru středník.  Pro zobrazení názvu objektu kontejneru se použije první atribut názvu kontejneru, který se v něm najde. |
 | Název skupiny zabezpečení |Zadejte název atributu, který v záznamu skupiny zabezpečení obsahuje název.  Hodnota tohoto atributu se zobrazí v seznamu Skupiny zabezpečení při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. |
 | Uživatelské jméno |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelské jméno.  Hodnota tohoto atributu se použije jako uživatelské jméno pro Multi-Factor Auth Server.  Můžete zadat i druhý, záložní atribut.  Druhý atribut se použije pouze v případě, že první atribut neobsahuje hodnotu pro uživatele.  Výchozí hodnoty jsou userPrincipalName a sAMAccountName. |
@@ -88,7 +87,7 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 | Příjmení |Zadejte název atributu, který v záznamu uživatele obsahuje příjmení.  Výchozí hodnota je sn. |
 | E-mailová adresa |Zadejte název atributu, který v záznamu uživatele obsahuje e-mailovou adresu.  Na e-mailovou adresu se uživateli pošle uvítací e-mail a budou se posílat e-maily s aktualitami.  Výchozí hodnota je mail. |
 | Uživatelská skupina |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelskou skupinu.  Uživatelská skupina se může použít pro filtrování uživatelů v agentovi a v sestavách v Portálu pro správu Multi-Factor Auth Serveru. |
-| Popis |Zadejte název atributu, který v záznamu uživatele obsahuje popis.  Popis se používá jen pro vyhledávání.  Výchozí hodnota je description. |
+| Description |Zadejte název atributu, který v záznamu uživatele obsahuje popis.  Popis se používá jen pro vyhledávání.  Výchozí hodnota je description. |
 | Jazyk telefonního hovoru |Zadejte název atributu, který obsahuje krátký název jazyka pro hlasové hovory s uživatelem. |
 | Jazyk textové zprávy |Zadejte název atributu, který obsahuje krátký název jazyka pro SMS zprávy posílané uživateli. |
 | Jazyk mobilní aplikace |Zadejte název atributu, který obsahuje krátký název jazyka pro textové zprávy v mobilní aplikaci uživatele. |
@@ -121,7 +120,7 @@ Pokud adresář LDAP podporuje ovládací prvek DirSync a je pro něj nakonfigur
 
 Následující tabulka obsahuje další informace k jednotlivým nastavením na kartě Synchronizace.
 
-| Funkce | Popis |
+| Funkce | Description |
 | --- | --- |
 | Povolit synchronizaci se službou Active Directory |Pokud je toto políčko zaškrtnuté, služba Multi-Factor Auth Server se bude pravidelně dotazovat služby Active Directory na změny. <br><br>Poznámka: Než služba Multi-Factor Auth Server začne zpracovávat změny, musí se přidat aspoň jedna Synchronizační položka a aspoň jednou provést akce Synchronizovat. |
 | Synchronizovat každých |Zadejte dobu, po kterou bude služba Multi-Factor Auth Server čekat mezi jednotlivými dotazy zpracováními změn. <br><br> Poznámka: Zadaná doba je interval mezi začátky jednotlivých cyklů.  Pokud doba zpracování změn překročí tento interval, služba ihned provede další dotazování. |

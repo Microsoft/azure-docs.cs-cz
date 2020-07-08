@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
 ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461040"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Správa koncových bodů streamování pomocí Media Services V3
@@ -44,7 +43,7 @@ Zrevidujte
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-Další informace naleznete v tématu: 
+Další informace naleznete v tématech: 
 
 * Referenční dokumentaci ke [spuštění StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) .
 * Spuštění koncového bodu streamování je asynchronní operace. 
@@ -54,7 +53,7 @@ Další informace naleznete v tématu:
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
  
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Přejít na účet Azure Media Services.
 1. V levém podokně vyberte **koncové body streamování**.
 1. Vyberte koncový bod streamování, který chcete spustit, a pak vyberte **Spustit**.

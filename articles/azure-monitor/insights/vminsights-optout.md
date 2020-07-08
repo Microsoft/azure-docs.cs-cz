@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480517"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Zakázání monitorování virtuálních počítačů v Azure Monitor pro virtuální počítače
@@ -24,7 +23,7 @@ Azure Monitor pro virtuální počítače spoléhá na následující komponenty
 * Log Analytics pracovní prostor, který ukládá data monitorování z virtuálních počítačů a jiných zdrojů.
 * Kolekce čítačů výkonu nakonfigurovaných v pracovním prostoru. Kolekce aktualizuje konfiguraci monitorování na všech virtuálních počítačích připojených k pracovnímu prostoru.
 * `VMInsights`, což je monitorovací řešení nakonfigurované v pracovním prostoru. Toto řešení aktualizuje konfiguraci monitorování na všech virtuálních počítačích připojených k pracovnímu prostoru.
-* `MicrosoftMonitoringAgent`a `DependencyAgent`, což jsou rozšíření virtuálních počítačů Azure. Tato rozšíření shromažďují a odesílají data do pracovního prostoru.
+* `MicrosoftMonitoringAgent`a `DependencyAgent` , což jsou rozšíření virtuálních počítačů Azure. Tato rozšíření shromažďují a odesílají data do pracovního prostoru.
 
 Při přípravě na zakázání monitorování virtuálních počítačů mějte na paměti tyto skutečnosti:
 
@@ -36,9 +35,9 @@ Při přípravě na zakázání monitorování virtuálních počítačů mějte
 
 ## <a name="remove-azure-monitor-for-vms-completely"></a>Zcela odebrat Azure Monitor pro virtuální počítače
 
-Pokud stále potřebujete Log Analytics pracovní prostor, postupujte podle těchto kroků a úplně odeberte Azure Monitor pro virtuální počítače. `VMInsights` Řešení odeberete z pracovního prostoru.  
+Pokud stále potřebujete Log Analytics pracovní prostor, postupujte podle těchto kroků a úplně odeberte Azure Monitor pro virtuální počítače. Řešení odeberete `VMInsights` z pracovního prostoru.  
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Log Analytics**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste zvolili, když jste povolili Azure Monitor pro virtuální počítače.
 4. Na levé straně vyberte **řešení**.  
@@ -56,7 +55,7 @@ Pokud má váš Log Analytics pracovní prostor stále podporovat monitorování
 >
 > Pokud odeberete agenta Log Analytics, zabráníte tím, aby tyto služby a řešení aktivně spravovaly váš virtuální počítač. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **Virtual Machines**. 
 3. V seznamu vyberte virtuální počítač. 
 4. Na levé straně vyberte **rozšíření**. Na stránce **rozšíření** vyberte **DependencyAgent**.

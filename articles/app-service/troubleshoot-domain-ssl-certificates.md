@@ -9,10 +9,9 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80668020"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem v doméně a TLS/SSL v Azure App Service
@@ -88,9 +87,9 @@ K tomuto problému může dojít z některého z následujících důvodů:
 
     **Řešení**: Pokud je certifikát označený jako podvod a za 24 hodin se nevyřešil, postupujte podle těchto kroků:
 
-    1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+    1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
     2. Přejít na **App Service certifikáty**a vyberte certifikát.
-    3. Vyberte **Konfigurace** > **certifikátu krok 2: ověření** > **domény ověření**. Tento krok pošle e-mailové oznámení poskytovateli certifikátů Azure, aby problém vyřešil.
+    3. Vyberte **Konfigurace certifikátu**  >  **Krok 2: ověření**  >  **domény ověření**. Tento krok pošle e-mailové oznámení poskytovateli certifikátů Azure, aby problém vyřešil.
 
 ## <a name="custom-domain-problems"></a>Problémy s vlastní doménou
 
@@ -120,7 +119,7 @@ Internetový prohlížeč možná pořád ukládá do mezipaměti starou IP adre
 
 **Řešení pro příčinu 2**
 
-Vymažte prohlížeč. Pro zařízení s Windows můžete spustit příkaz `ipconfig /flushdns`. Pomocí [WhatsmyDNS.NET](https://www.whatsmydns.net/) ověřte, že vaše doména odkazuje na IP adresu aplikace. 
+Vymažte prohlížeč. Pro zařízení s Windows můžete spustit příkaz `ipconfig /flushdns` . Pomocí [WhatsmyDNS.NET](https://www.whatsmydns.net/) ověřte, že vaše doména odkazuje na IP adresu aplikace. 
 
 ### <a name="you-cant-add-a-subdomain"></a>Nejde přidat subdoménu. 
 
@@ -190,7 +189,7 @@ App Service automaticky synchronizuje certifikát během 48 hodin. Při otočen�
 
 Můžete vynutit synchronizaci certifikátu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
 2. Vyberte opětovné vytvoření klíče **a synchronizaci**a pak vyberte **synchronizovat**. Dokončení synchronizace trvá déle. 
 3. Po dokončení synchronizace se zobrazí následující oznámení: "úspěšně se aktualizovaly všechny prostředky s nejnovějším certifikátem".
 

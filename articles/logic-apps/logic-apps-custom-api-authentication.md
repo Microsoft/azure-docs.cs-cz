@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656236"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Zvýšení zabezpečení pro volání vlastních rozhraní API z Azure Logic Apps
@@ -51,9 +50,9 @@ Vaše aplikace logiky používá tuto identitu aplikace Azure AD k ověřování
 2. Potvrďte, že jste ve stejném adresáři jako vaše webová aplikace nebo aplikace API.
 
    > [!TIP]
-   > Chcete-li přepnout adresáře, zvolte svůj profil a vyberte jiný adresář. Případně vyberte možnost **Přehled** > **adresáře Switch**.
+   > Chcete-li přepnout adresáře, zvolte svůj profil a vyberte jiný adresář. Případně vyberte možnost **Přehled**  >  **adresáře Switch**.
 
-3. V nabídce adresář v části **Spravovat**vyberte **Registrace aplikací** > **Nová registrace aplikace**.
+3. V nabídce adresář v části **Spravovat**vyberte **Registrace aplikací**  >  **Nová registrace aplikace**.
 
    > [!TIP]
    > Ve výchozím nastavení zobrazuje seznam registrací aplikací všechny registrace aplikací ve vašem adresáři. Chcete-li zobrazit pouze registrace aplikací, vyberte vedle pole hledání možnost **Moje aplikace**. 
@@ -197,13 +196,13 @@ Otevřete definici aplikace logiky v zobrazení kódu, vyhledejte část definic
 }
 ```
 
-| Vlastnost | Požaduje se | Popis | 
+| Vlastnost | Povinné | Popis | 
 | -------- | -------- | ----------- | 
-| tenant | Ano | Identifikátor GUID pro tenanta Azure AD | 
-| osoby | Ano | Identifikátor GUID cílového prostředku, ke kterému chcete získat přístup, což je ID klienta z identity aplikace pro webovou aplikaci nebo aplikaci API. | 
-| clientId | Ano | Identifikátor GUID pro klienta požadujícího přístup, což je ID klienta z identity aplikace pro vaši aplikaci logiky. | 
-| Tajný kód | Ano | Klíč nebo heslo z identity aplikace pro klienta, který žádá o přístupový token | 
-| type | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je `ActiveDirectoryOAuth`hodnota. | 
+| tenant | Yes | Identifikátor GUID pro tenanta Azure AD | 
+| osoby | Yes | Identifikátor GUID cílového prostředku, ke kterému chcete získat přístup, což je ID klienta z identity aplikace pro webovou aplikaci nebo aplikaci API. | 
+| clientId | Yes | Identifikátor GUID pro klienta požadujícího přístup, což je ID klienta z identity aplikace pro vaši aplikaci logiky. | 
+| Tajný kód | Yes | Klíč nebo heslo z identity aplikace pro klienta, který žádá o přístupový token | 
+| typ | Yes | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth` . | 
 |||| 
 
 Příklad:
@@ -248,11 +247,11 @@ V části **autorizace** zahrňte tyto vlastnosti:
 } 
 ```
 
-| Vlastnost | Požaduje se | Popis |
+| Vlastnost | Povinné | Popis |
 | -------- | -------- | ----------- |
-| `type` | Ano | Typ ověřování. Pro klientské certifikáty TLS/SSL musí být `ClientCertificate`hodnota. |
-| `password` | Ne | Heslo pro přístup k klientskému certifikátu (soubor PFX) |
-| `pfx` | Ano | Obsah klientského certifikátu kódovaný v Base64 (soubor PFX) |
+| `type` | Yes | Typ ověřování. Pro klientské certifikáty TLS/SSL musí být hodnota `ClientCertificate` . |
+| `password` | No | Heslo pro přístup k klientskému certifikátu (soubor PFX) |
+| `pfx` | Yes | Obsah klientského certifikátu kódovaný v Base64 (soubor PFX) |
 ||||
 
 <a name="basic"></a>
@@ -271,11 +270,11 @@ V části **autorizace** zahrňte tyto vlastnosti:
 }
 ```
 
-| Vlastnost | Požaduje se | Popis | 
+| Vlastnost | Povinné | Popis | 
 | -------- | -------- | ----------- | 
-| type | Ano | Typ ověřování, který chcete použít. Pro základní ověřování musí být `Basic`hodnota. | 
-| uživatelské jméno | Ano | Uživatelské jméno, které chcete použít pro ověřování. | 
-| heslo | Ano | Heslo, které chcete použít pro ověřování. | 
+| typ | Yes | Typ ověřování, který chcete použít. Pro základní ověřování musí být hodnota `Basic` . | 
+| uživatelské jméno | Yes | Uživatelské jméno, které chcete použít pro ověřování. | 
+| heslo | Yes | Heslo, které chcete použít pro ověřování. | 
 |||| 
 
 <a name="azure-ad-code"></a>

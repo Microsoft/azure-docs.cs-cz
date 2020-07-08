@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652080"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
@@ -72,7 +71,7 @@ Metodu **Run** můžete přepsat tak, aby pro vaši instanci role implementovala
 Přepsání metody **Run** není vyžadováno; Výchozí implementace spustí vlákno, které je trvale úsporné. Pokud přepíšete metodu **Run** , váš kód by měl blokovat neomezenou dobu. Pokud se metoda **Run** vrátí, role se automaticky recykluje. Jinými slovy, Azure vyvolá událost **zastavení** a zavolá metodu **restop** , aby bylo možné spustit sekvence vypnutí, než bude role přepnuta do režimu offline.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Implementace metod životního cyklu ASP.NET pro webovou roli
-Pomocí metod životního cyklu ASP.NET můžete kromě těch, které poskytuje třída **RoleEntryPoint** , spravovat inicializační a ukončovací sekvenci webové role. To může být užitečné pro účely kompatibility, Pokud předáváte existující aplikaci ASP.NET do Azure. Metody životního cyklu ASP.NET se volají v rámci metod **RoleEntryPoint** . Metoda **spuštění\_aplikace** je volána po dokončení metody **RoleEntryPoint. OnStart** . Metoda **End\_aplikace** je volána před voláním metody **RoleEntryPoint... stop** .
+Pomocí metod životního cyklu ASP.NET můžete kromě těch, které poskytuje třída **RoleEntryPoint** , spravovat inicializační a ukončovací sekvenci webové role. To může být užitečné pro účely kompatibility, Pokud předáváte existující aplikaci ASP.NET do Azure. Metody životního cyklu ASP.NET se volají v rámci metod **RoleEntryPoint** . Metoda ** \_ spuštění aplikace** je volána po dokončení metody **RoleEntryPoint. OnStart** . Metoda ** \_ end aplikace** je volána před voláním metody **RoleEntryPoint... stop** .
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si, jak [vytvořit balíček cloudové služby](cloud-services-model-and-package.md).

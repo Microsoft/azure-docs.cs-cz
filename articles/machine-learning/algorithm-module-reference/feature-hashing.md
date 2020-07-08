@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456246"
 ---
 # <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
@@ -39,7 +38,7 @@ Například proveďte sadu jednoduchých vět, jako třeba, a potom mínění sk
 
 Interně modul hashování funkcí vytvoří slovník n-gramů. Například seznam bigrams pro tuto datovou sadu by byl podobný tomuto:
 
-|Termín (bigrams)|Frequency|
+|Termín (bigrams)|Frekvence|
 |------------|---------------|
 |Tato kniha|3|
 |Jsem blízký|1|
@@ -48,7 +47,7 @@ Interně modul hashování funkcí vytvoří slovník n-gramů. Například sezn
 
 Velikost n-gramů můžete řídit pomocí vlastnosti **n-gramů** . Zvolíte-li možnost bigrams, jsou vypočítány také unigrams. Slovník by měl také zahrnovat jednotlivé výrazy, jako jsou tyto:
 
-|Termín (unigrams)|Frequency|
+|Termín (unigrams)|Frekvence|
 |------------|---------------|
 |účetních|3|
 |I|3|

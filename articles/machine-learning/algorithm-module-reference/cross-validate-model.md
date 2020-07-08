@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477642"
 ---
 # <a name="cross-validate-model"></a>Křížové ověření modelu
@@ -86,7 +85,7 @@ První výstup modulu poskytuje zdrojová data pro každý řádek spolu s někt
 
 Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **Vizualizace výsledků skóre**.
 
-| Nový název sloupce      | Popis                              |
+| Nový název sloupce      | Description                              |
 | -------------------- | ---------------------------------------- |
 | Vyhodnocené popisky        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
 | Pravděpodobnost skóre | Tento sloupec se přidá na konec datové sady. Označuje odhadovanou pravděpodobnost hodnoty v **popiscích skóre**. |
@@ -101,7 +100,7 @@ V této sestavě jsou skládání uvedena podle hodnoty indexu ve vzestupném po
 Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **vizualizovat výsledky vyhodnocení podle skládání**.
 
 
-|Název sloupce| Popis|
+|Název sloupce| Description|
 |----|----|
 |Číslo skládání| Identifikátor pro každé skládání. Pokud jste vytvořili pět přeložení, bude se jednat o pět podmnožin dat, očíslované od 0 do 4.
 |Počet příkladů v skládání|Počet řádků přiřazených každému skládání. Měly by být zhruba stejné. |

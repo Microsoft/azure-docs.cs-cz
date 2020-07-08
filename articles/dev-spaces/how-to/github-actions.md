@@ -7,10 +7,9 @@ description: Revize a testování změn z žádosti o přijetí změn přímo ve
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637949"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
@@ -116,7 +115,7 @@ cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-Úpravou [Bikes/Server. js][bikes-server-js] odeberte řádky 232 a 233:
+Upravte [kolaci/server.js][bikes-server-js] a odstraňte řádky 232 a 233:
 
 ```javascript
     // Hard code image url *FIX ME*

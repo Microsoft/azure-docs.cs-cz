@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477506"
 ---
 # <a name="partition-and-sample-module"></a>Oddíl a vzorový modul
@@ -75,7 +74,7 @@ Tato možnost podporuje jednoduché náhodné vzorkování nebo náhodné vzorko
 
 1. **Frekvence vzorkování**: zadejte hodnotu mezi 0 a 1. Tato hodnota určuje procento řádků ze zdrojové datové sady, které by měly být zahrnuty do výstupní datové sady.
 
-   Pokud například potřebujete jenom polovinu původní datové sady, zadejte `0.5` , abyste označili, že vzorkovací frekvence by měla být 50%.
+   Pokud například potřebujete jenom polovinu původní datové sady, zadejte, `0.5` abyste označili, že vzorkovací frekvence by měla být 50%.
 
    Řádky vstupní datové sady jsou v souladu se zapsaným poměrem a selektivním umístěním do výstupní datové sady.
 

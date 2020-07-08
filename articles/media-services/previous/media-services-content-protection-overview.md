@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460955"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu 
@@ -84,12 +83,12 @@ Když konfigurujete zásady omezeného tokenu, musíte zadat primární ověřov
 
 Funkce *Prevence opětovného přehrání tokenu* umožňuje Media Services zákazníkům nastavit limit, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Zákazník může přidat deklaraci identity typu `urn:microsoft:azure:mediaservices:maxuses` v tokenu, kde hodnota je počet, kolikrát je možné token použít k získání licence nebo klíče. Všechny následné požadavky se stejným tokenem na doručení klíče vrátí neautorizovanou odpověď. Podívejte se, jak přidat deklaraci identity v [ukázce DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
  
-#### <a name="considerations"></a>Požadavky
+#### <a name="considerations"></a>Důležité informace
 
 * Zákazníci musí mít kontrolu nad generováním tokenu. Deklarace identity musí být umístěna do samotného tokenu.
 * Při použití této funkce jsou požadavky s tokeny, jejichž čas vypršení platnosti je více než jedna hodina od doby přijetí žádosti, odmítnuty s neoprávněnou odpovědí.
 * Tokeny se jednoznačně identifikují podle jejich signatury. Jakékoli změny v datové části (například aktualizace na čas vypršení platnosti nebo deklarace identity) mění signaturu tokenu a počítají se jako nový token, který nepřijde do výše uvedeného klíče.
-* Přehrávání se nezdařilo, pokud token `maxuses` překročil hodnotu nastavenou zákazníkem.
+* Přehrávání se nezdařilo, pokud token překročil `maxuses` hodnotu nastavenou zákazníkem.
 * Tato funkce se dá použít pro veškerý stávající chráněný obsah (musí se změnit jenom vydaný token).
 * Tato funkce funguje s tokenem JWT i SWT.
 

@@ -8,10 +8,9 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477030"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Nastavení vývojového prostředí Azure Red Hat OpenShift
@@ -19,7 +18,7 @@ ms.locfileid: "79477030"
 K sestavování a spouštění aplikací Microsoft Azure Red Hat OpenShift budete potřebovat:
 
 * Nainstalujte verzi 2.0.65 Azure CLI (nebo novější) (nebo použijte Azure Cloud Shell).
-* Zaregistrujte `AROGA` se na funkci a přidružené poskytovatele prostředků.
+* Zaregistrujte se na `AROGA` funkci a přidružené poskytovatele prostředků.
 * Vytvořte tenanta Azure Active Directory (Azure AD).
 * Vytvořte objekt aplikace služby Azure AD.
 * Vytvořte uživatele Azure AD.
@@ -34,7 +33,7 @@ Azure Red Hat OpenShift vyžaduje rozhraní příkazového řádku Azure 2.0.65 
 az --version
 ```
 
-První řádek výstupu bude mít verzi rozhraní příkazového řádku (CLI) `azure-cli (2.0.65)`, například.
+První řádek výstupu bude mít verzi rozhraní příkazového řádku (CLI), například `azure-cli (2.0.65)` .
 
 Tady jsou pokyny pro [instalaci Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , pokud potřebujete novou instalaci nebo upgrade.
 
@@ -42,7 +41,7 @@ Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/a
 
 ## <a name="register-providers-and-features"></a>Registrovat poskytovatele a funkce
 
-Předtím `Microsoft.ContainerService AROGA` , než `Microsoft.Solutions`nasadíte první cluster Azure Red Hat OpenShift, musí být do vašeho předplatného zaregistrovaná funkce, `Microsoft.Compute` `Microsoft.Storage`,, `Microsoft.KeyVault` a. `Microsoft.Network`
+`Microsoft.ContainerService AROGA` `Microsoft.Solutions` `Microsoft.Compute` Předtím, `Microsoft.Storage` `Microsoft.KeyVault` `Microsoft.Network` než nasadíte první cluster Azure Red Hat OpenShift, musí být do vašeho předplatného zaregistrovaná funkce,,, a.
 
 Pokud chcete tyto poskytovatele a funkce zaregistrovat ručně, použijte následující pokyny z prostředí bash, pokud máte nainstalované rozhraní příkazového řádku nebo z relace Azure Cloud Shell (bash) v Azure Portal:
 

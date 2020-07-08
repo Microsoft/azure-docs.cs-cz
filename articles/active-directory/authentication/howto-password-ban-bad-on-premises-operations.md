@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652622"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Povolení ochrany heslem v místní Azure Active Directory
@@ -26,13 +25,13 @@ K ochraně místního prostředí Active Directory Domain Services (služba AD D
 
 Další informace o tom, jak funguje ochrana heslem Azure AD v místním prostředí, najdete v tématu věnovaném [vymáhání ochrany heslem Azure AD pro Windows Server Active Directory](concept-password-ban-bad-on-premises.md).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se dozvíte, jak povolit ochranu heslem Azure AD pro místní prostředí. Před dokončením tohoto článku [nainstalujte a zaregistrujte službu proxy ochrany heslem Azure AD a agenty řadiče domény](howto-password-ban-bad-on-premises-deploy.md) v místním služba AD DSovém prostředí.
 
 ## <a name="enable-on-premises-password-protection"></a>Povolit místní ochranu heslem
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte **do Azure Active Directory** > **Security** > **metody** > ověřování zabezpečení**ochrana heslem**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory**  >  **Security**  >  **metody ověřování**zabezpečení  >  **ochrana heslem**.
 1. Nastavte možnost **Povolit ochranu heslem ve službě Windows Server Active Directory** na *hodnotu Ano*.
 
     Pokud je toto nastavení nastaveno na *ne*, všechny nasazené agenty řadiče domény Azure AD se přejdou do režimu quiescent, ve kterém jsou všechna hesla přijímána tak, jak jsou. Neprovádí se žádné aktivity ověření a události auditu se nevygenerují.

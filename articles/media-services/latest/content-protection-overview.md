@@ -16,10 +16,9 @@ ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461108"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
@@ -78,10 +77,10 @@ Příklad ukazuje, jak:
 
 3. Vytvořte testovací token.
 
-   `GetTokenAsync` Metoda ukazuje, jak vytvořit testovací token.
+   `GetTokenAsync`Metoda ukazuje, jak vytvořit testovací token.
 4. Sestavte adresu URL streamování.
 
-   `GetDASHStreamingUrlAsync` Metoda ukazuje, jak vytvořit adresu URL streamování. V tomto případě adresa URL streamuje obsah POMLČKy.
+   `GetDASHStreamingUrlAsync`Metoda ukazuje, jak vytvořit adresu URL streamování. V tomto případě adresa URL streamuje obsah POMLČKy.
 
 ### <a name="player-with-an-aes-or-drm-client"></a>Přehrávač s klientem AES nebo DRM
 
@@ -124,7 +123,7 @@ Protokol HLS podporuje následující formáty kontejnerů a schémata šifrová
 
 |Formát kontejneru|Schéma šifrování|Příklad adresy URL|
 |---|---|---|
-|Všechny|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
 |MPG2 – TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
 |CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
 |MPG2 – TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
@@ -142,7 +141,7 @@ Protokol MPEG-SPOJOVNÍK podporuje následující formáty kontejneru a schémat
 
 |Formát kontejneru|Schéma šifrování|Příklady adres URL
 |---|---|---|
-|Všechny|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
 |CSF (FMP4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
 |CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
@@ -186,12 +185,12 @@ Když konfigurujete zásady s omezením tokenu, musíte zadat primární ověřo
 
 Funkce *Prevence opětovného přehrání tokenu* umožňuje Media Services zákazníkům nastavit limit, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Zákazník může přidat deklaraci identity typu `urn:microsoft:azure:mediaservices:maxuses` v tokenu, kde hodnota je počet, kolikrát je možné token použít k získání licence nebo klíče. Všechny následné požadavky se stejným tokenem na doručení klíče vrátí neautorizovanou odpověď. Podívejte se, jak přidat deklaraci identity v [ukázce DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
  
-#### <a name="considerations"></a>Požadavky
+#### <a name="considerations"></a>Důležité informace
 
 * Zákazníci musí mít kontrolu nad generováním tokenu. Deklarace identity musí být umístěna do samotného tokenu.
 * Při použití této funkce jsou požadavky s tokeny, jejichž čas vypršení platnosti je více než jedna hodina od doby přijetí žádosti, odmítnuty s neoprávněnou odpovědí.
 * Tokeny se jednoznačně identifikují podle jejich signatury. Jakékoli změny v datové části (například aktualizace na čas vypršení platnosti nebo deklarace identity) mění signaturu tokenu a počítají se jako nový token, který nepřijde do výše uvedeného klíče.
-* Přehrávání se nezdařilo, pokud token `maxuses` překročil hodnotu nastavenou zákazníkem.
+* Přehrávání se nezdařilo, pokud token překročil `maxuses` hodnotu nastavenou zákazníkem.
 * Tato funkce se dá použít pro veškerý stávající chráněný obsah (musí se změnit jenom vydaný token).
 * Tato funkce funguje s tokenem JWT i SWT.
 
@@ -242,7 +241,7 @@ Příklad:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`má hodnotu požadovaného klíče. Můžete použít `AlternativeMediaId` , pokud chcete mapovat požadavek na entitu na straně. `AlternativeMediaId` Můžete například použít k usnadnění vyhledávání oprávnění.
+`ContentKeyId`má hodnotu požadovaného klíče. Můžete použít, `AlternativeMediaId` Pokud chcete mapovat požadavek na entitu na straně. `AlternativeMediaId`Můžete například použít k usnadnění vyhledávání oprávnění.
 
 Příklady REST, které používají vlastní licence nebo adresy URL pro získání klíčů, najdete v tématu [zásady streamování – vytvořit](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
 
@@ -251,9 +250,9 @@ Příklady REST, které používají vlastní licence nebo adresy URL pro získ�
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud se zobrazí `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` chyba, ujistěte se, že zadáváte vhodné zásady streamování.
+Pokud se zobrazí `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` Chyba, ujistěte se, že zadáváte vhodné zásady streamování.
 
-Pokud se zobrazí chyby, které končí `_NOT_SPECIFIED_IN_URL`, ujistěte se, že jste v adrese URL zadali formát šifrování. Příklad: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Viz [protokoly streamování a typy šifrování](#streaming-protocols-and-encryption-types).
+Pokud se zobrazí chyby, které končí, ujistěte se, `_NOT_SPECIFIED_IN_URL` že jste v adrese URL zadali formát šifrování. Příklad: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Viz [protokoly streamování a typy šifrování](#streaming-protocols-and-encryption-types).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

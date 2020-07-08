@@ -4,10 +4,9 @@ description: Přečtěte si, jak najít příchozí a odchozí IP adresy pro apl
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656773"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy v Azure Functions
@@ -25,7 +24,7 @@ IP adresy jsou spojené s aplikacemi Function App, ne s jednotlivými funkcemi. 
 
 Každá aplikace Function App má jednu příchozí IP adresu. Zjištění této IP adresy:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
 3. Vyberte **Funkce platformy**.
 4. Vyberte **vlastnosti**a v části **virtuální IP adresa**se zobrazí příchozí IP adresa.
@@ -39,7 +38,7 @@ Vyhledání odchozích IP adres dostupných pro aplikaci Function App:
 1. Přihlaste se k [Azure Resource Explorer](https://resources.azure.com).
 2. Vyberte **předplatná > {vaše předplatné} > poskytovatelé > weby Microsoft. Web >**.
 3. Na panelu JSON Najděte lokalitu s `id` vlastností, která končí názvem vaší aplikace Function App.
-4. Viz `outboundIpAddresses` a `possibleOutboundIpAddresses`. 
+4. Viz `outboundIpAddresses` a `possibleOutboundIpAddresses` . 
 
 Sada `outboundIpAddresses` je aktuálně dostupná pro aplikaci Function App. Sada `possibleOutboundIpAddresses` zahrnuje IP adresy, které budou dostupné jenom v případě, že se aplikace funkcí [škáluje na jiné cenové úrovně](#outbound-ip-address-changes).
 
@@ -95,7 +94,7 @@ Když aplikace Function App běží v [plánu spotřeby](functions-scale.md#cons
 Sada dostupných odchozích IP adres pro aplikaci Function App se může změnit v těchto případech:
 
 * Proveďte jakoukoli akci, která může změnit příchozí IP adresu.
-* Změňte cenovou úroveň plánu App Service. Seznam všech možných odchozích IP adres, které vaše aplikace může používat, je pro všechny cenové úrovně ve `possibleOutboundIPAddresses` vlastnosti. Viz [Najít odchozí IP adresy](#find-outbound-ip-addresses).
+* Změňte cenovou úroveň plánu App Service. Seznam všech možných odchozích IP adres, které vaše aplikace může používat, je pro všechny cenové úrovně ve `possibleOutboundIPAddresses` Vlastnosti. Viz [Najít odchozí IP adresy](#find-outbound-ip-addresses).
 
 Když aplikace Function App běží v [plánu spotřeby](functions-scale.md#consumption-plan), odchozí IP adresa se může změnit i v případě, že jste neudělali žádné akce, jako jsou ty, které jsou [uvedené výše](#inbound-ip-address-changes).
 
@@ -115,7 +114,7 @@ Pokud potřebujete statické a vyhrazené IP adresy, doporučujeme [App Service 
 
 Pokud chcete zjistit, jestli vaše aplikace Function App běží na App Service Environment:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
 3. Vyberte kartu **Přehled**.
 4. Úroveň plánu App Service se zobrazí v části **App Service plán/cenová úroveň**. Cenová úroveň App Service Environment je **izolovaná**.
@@ -126,7 +125,7 @@ Alternativně můžete použít [Cloud Shell](../cloud-shell/quickstart.md):
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-App Service Environment `sku` je `Isolated`.
+App Service Environment `sku` je `Isolated` .
 
 ## <a name="next-steps"></a>Další kroky
 

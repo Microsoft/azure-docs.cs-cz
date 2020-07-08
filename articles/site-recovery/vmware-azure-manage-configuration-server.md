@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672737"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače nebo fyzického serveru VMware
@@ -43,9 +42,9 @@ Ke konfiguračnímu serveru se dostanete takto:
 
     ![Úprava VMware](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
-Přihlašovací údaje můžete také upravit pomocí CSPSConfigtool. exe.
+Přihlašovací údaje můžete také upravit prostřednictvím CSPSConfigtool.exe.
 
-1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool. exe.
+1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool.exe
 2. Vyberte účet, který chcete upravit, a klikněte na **Upravit**.
 3. Zadejte upravené přihlašovací údaje a klikněte na **OK** .
 
@@ -59,9 +58,9 @@ Upravte přihlašovací údaje používané k automatické instalaci služby mob
 
     ![Úprava přihlašovacích údajů služby mobility](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
-Přihlašovací údaje můžete také upravit pomocí CSPSConfigtool. exe.
+Přihlašovací údaje můžete také měnit prostřednictvím CSPSConfigtool.exe.
 
-1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool. exe.
+1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool.exe
 2. Vyberte účet, který chcete upravit, a klikněte na **Upravit** .
 3. Zadejte nové přihlašovací údaje a klikněte na **OK**.
 
@@ -74,9 +73,9 @@ Pokud jste při OVF nasazení konfiguračního serveru nenechali přidávat při
     ![Přidání – mobilita – přihlašovací údaje](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Zadejte nové přihlašovací údaje a klikněte na **Přidat**.
 
-Přihlašovací údaje můžete také přidat pomocí CSPSConfigtool. exe.
+Přihlašovací údaje můžete také přidat prostřednictvím CSPSConfigtool.exe.
 
-1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool. exe.
+1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool.exe
 2. Klikněte na **Přidat**, zadejte nové přihlašovací údaje a klikněte na **OK**.
 
 ## <a name="modify-proxy-settings"></a>Úprava nastavení proxy serveru
@@ -107,7 +106,7 @@ Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru
 
 ### <a name="if-certificates-are-yet-to-expire"></a>Pokud certifikáty ještě vyprší
 
-1. Obnovení prodlužujete tak, že v trezoru otevřete **Site Recovery** > **konfigurační server**infrastruktury. Vyberte požadovaný konfigurační server.
+1. Obnovení prodlužujete tak, že v trezoru otevřete **Site Recovery**  >  **konfigurační server**infrastruktury. Vyberte požadovaný konfigurační server.
 2. Zajistěte, aby všechny součásti procesové servery se škálováním na více systémů, hlavní cílové servery a agenti mobility na všech chráněných počítačích používaly nejnovější verze a jsou v připojeném stavu
 3. Nyní vyberte možnost **obnovit certifikáty**.
 4. Postupujte pečlivě podle pokynů na této stránce a kliknutím na tlačítko OK obnovte certifikáty na vybraném konfiguračním serveru a jeho přidružených součástech.
@@ -125,12 +124,12 @@ Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru
 V případě potřeby můžete konfigurační server ve stejném trezoru znovu zaregistrovat. Pokud máte další počítač procesového serveru, Kromě výchozího procesového serveru, který běží na počítači konfiguračního serveru, znovu proveďte registraci obou počítačů.
 
 
-1. V trezoru otevřete **Spravovat** >  > **servery konfigurace****infrastruktury Site Recovery**.
+1. V trezoru otevřete **Spravovat**  >  **Site Recovery Infrastructure**  >  **servery konfigurace**infrastruktury Site Recovery.
 2. V části **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 3. Přihlaste se k počítači konfiguračního serveru.
-4. V **%ProgramData%\ASR\home\svsystems\bin**otevřete **cspsconfigtool. exe**.
+4. V **%ProgramData%\ASR\home\svsystems\bin**otevřete **cspsconfigtool.exe**.
 5. Na kartě **registrace trezoru** vyberte **Procházet**a vyhledejte soubor s přihlašovacími údaji trezoru, který jste stáhli.
-6. V případě potřeby zadejte proxy server podrobnosti. Potom vyberte **Zaregistrovat**.
+6. V případě potřeby zadejte proxy server podrobnosti. Pak vyberte **Register** (Registrovat).
 7. Otevřete okno příkazového řádku PowerShellu pro správu a spusťte následující příkaz:
    ```
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -138,7 +137,7 @@ V případě potřeby můžete konfigurační server ve stejném trezoru znovu z
    ```
 
     >[!NOTE]
-    >Aby bylo možné **načíst nejnovější certifikáty** z konfiguračního serveru do procesového serveru se škálováním na více instancí, spusťte příkaz *"\<instalace Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt*
+    >Aby bylo možné **načíst nejnovější certifikáty** z konfiguračního serveru do procesového serveru se škálováním na více instancí, spusťte příkaz *" \<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe> "--registermt*
 
 8. Nakonec restartujte obengine spuštěním následujícího příkazu.
    ```
@@ -178,7 +177,7 @@ Odkazy na kumulativní aktualizace pro upgrade na všechny verze konfiguračníh
 
 Proveďte upgrade serveru následujícím způsobem:
 
-1. V trezoru přejdete na **Správa** > **Site Recovery** > **Konfigurace serverů**infrastruktury.
+1. V trezoru přejdete na **Správa**  >  **Site Recovery**  >  **Konfigurace serverů**infrastruktury.
 2. Pokud je k dispozici aktualizace, zobrazí se odkaz ve sloupci **verze agenta** >.
     ![Aktualizace](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Stáhněte instalační soubor aktualizace na konfigurační server.
@@ -212,22 +211,22 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="parameters"></a>Parametry
 
-|Název parametru| Typ | Popis| Hodnoty|
+|Název parametru| Typ | Description| Hodnoty|
 |-|-|-|-|
-| /ServerMode|Požaduje se|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
-|/InstallLocation|Požaduje se|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
-|/MySQLCredsFilePath|Požaduje se|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
-|/VaultCredsFilePath|Požaduje se|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
-|/EnvType|Požaduje se|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
-|/PSIP|Požaduje se|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
-|/CSIP|Požaduje se|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
-|/PassphraseFilePath|Požaduje se|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
-|/BypassProxy|Nepovinné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
-|/ProxySettingsFilePath|Nepovinné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
-|DataTransferSecurePort|Nepovinné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
-|/SkipSpaceCheck|Nepovinné|Přeskočí kontrolu místa na disku mezipaměti.| |
-|/AcceptThirdpartyEULA|Požaduje se|Příznak značí přijetí smlouvy EULA třetích stran| |
-|/ShowThirdpartyEULA|Nepovinné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
+| /ServerMode|Vyžadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
+|/InstallLocation|Vyžadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
+|/MySQLCredsFilePath|Vyžadováno|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
+|/VaultCredsFilePath|Vyžadováno|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
+|/EnvType|Vyžadováno|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
+|/PSIP|Vyžadováno|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
+|/CSIP|Vyžadováno|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
+|/PassphraseFilePath|Vyžadováno|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
+|/BypassProxy|Volitelné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
+|/ProxySettingsFilePath|Volitelné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
+|DataTransferSecurePort|Volitelné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
+|/SkipSpaceCheck|Volitelné|Přeskočí kontrolu místa na disku mezipaměti.| |
+|/AcceptThirdpartyEULA|Vyžadováno|Příznak značí přijetí smlouvy EULA třetích stran| |
+|/ShowThirdpartyEULA|Volitelné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
 
 
 
@@ -256,7 +255,7 @@ ProxyPassword="Password"
 1. [Zakažte ochranu](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) pro všechny virtuální počítače v konfiguračním serveru.
 2. [Zrušte přidružení](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) a [odstranění](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) všech zásad replikace z konfiguračního serveru.
 3. [Odstraňte](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) všechny servery vCenter nebo hostitele vSphere, kteří jsou přidruženi ke konfiguračnímu serveru.
-4. V trezoru otevřete **Site Recovery** > **konfigurační servery**infrastruktury.
+4. V trezoru otevřete **Site Recovery**  >  **konfigurační servery**infrastruktury.
 5. Vyberte konfigurační server, který chcete odebrat. Pak na stránce **Podrobnosti** vyberte **Odstranit**.
 
     ![Odstranit konfigurační server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -293,15 +292,15 @@ Volitelně můžete konfigurační server odstranit pomocí prostředí PowerShe
 
 1. Přihlaste se ke konfiguračnímu serveru a otevřete okno příkazového řádku jako správce.
 2. Chcete-li změnit adresář na složku bin, spusťte příkaz **CD%ProgramData%\ASR\home\svsystems\bin**
-3. Chcete-li vygenerovat soubor s heslem, spusťte **genpassphrase. exe-v > MobSvc. přístupový klíč**.
+3. Chcete-li vygenerovat soubor s heslem, spusťte **genpassphrase.exe-v > MobSvc. přístupový klíč**.
 4. Vaše přístupové heslo bude uloženo v souboru na adrese **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
 ## <a name="refresh-configuration-server"></a>Aktualizovat konfigurační server
 
-1. V Azure Portal přejděte do **trezoru** > **Recovery Services Správa** > **Site Recovery infrastruktury** > pro**konfigurační servery** **VMware & fyzické počítače** > .
+1. V Azure Portal přejděte do **trezoru Recovery Services**  >  **Správa**  >  **Site Recovery infrastruktury**  >  **pro konfigurační servery VMware & fyzické počítače**  >  **Configuration Servers** .
 2. Klikněte na konfigurační server, který chcete aktualizovat.
-3. V okně s podrobnostmi o zvoleném konfiguračním **serveru klikněte na** > tlačítko**aktualizovat server**.
-4. Sledujte průběh úlohy v části**monitorování** >  **trezoru** > služby Recovery Services**Site Recovery úlohy**.
+3. V okně s podrobnostmi o zvoleném konfiguračním **serveru klikněte na**tlačítko  >  **aktualizovat server**.
+4. Sledujte průběh úlohy v části monitorování **trezoru služby Recovery Services**  >  **Monitoring**  >  **Site Recovery úlohy**.
 
 ## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení
 

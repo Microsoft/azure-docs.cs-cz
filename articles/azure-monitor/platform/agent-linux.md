@@ -7,10 +7,9 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
 ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637525"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Připojení počítačů se systémem Linux k Azure Monitor
@@ -46,10 +45,10 @@ Docker – cimprov | 1.0.0 | Poskytovatel Docker pro OMI. Instaluje se jenom v p
 Po instalaci agenta Log Analytics pro balíčky pro Linux se aplikují následující další změny konfigurace v rámci systému. Tyto artefakty jsou po odinstalaci balíčku omsagent odebrány.
 
 * Je vytvořen Neprivilegovaný uživatel s názvem: `omsagent` . Démon se spustí pod tímto pověřením. 
-* V `/etc/sudoers.d/omsagent`nástroji se vytvoří soubor sudoers *include* . Tím `omsagent` se zmocňuje k restartování procesu démona syslog a omsagent. Pokud direktivy *include* sudo nejsou podporovány v nainstalované verzi sudo, budou do `/etc/sudoers`nich zapisovány tyto položky.
+* V nástroji *include* se vytvoří soubor sudoers include `/etc/sudoers.d/omsagent` . Tím se zmocňuje `omsagent` k restartování procesu démona syslog a omsagent. Pokud direktivy *include* sudo nejsou podporovány v nainstalované verzi sudo, budou do nich zapisovány tyto položky `/etc/sudoers` .
 * Konfigurace syslog je upravena tak, aby předá podmnožinu událostí agentovi. Další informace najdete v tématu [Konfigurace shromažďování dat SYSLOG](data-sources-syslog.md).
 
-Na monitorovaném počítači se systémem Linux je agent uveden jako `omsagent`. `omsconfig`je agentem Log Analytics agenta pro konfiguraci pro Linux, který vyhledává novou konfiguraci na straně portálu každých 5 minut. Nové a aktualizované konfigurace se aplikují na konfigurační soubory agenta v `/etc/opt/microsoft/omsagent/conf/omsagent.conf`umístění.
+Na monitorovaném počítači se systémem Linux je agent uveden jako `omsagent` . `omsconfig`je agentem Log Analytics agenta pro konfiguraci pro Linux, který vyhledává novou konfiguraci na straně portálu každých 5 minut. Nové a aktualizované konfigurace se aplikují na konfigurační soubory agenta v umístění `/etc/opt/microsoft/omsagent/conf/omsagent.conf` .
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
 
@@ -78,16 +77,16 @@ Agent Log Analytics pro Linux je k dispozici v balíčku skriptu pro samorozbalo
 
 1. [Stáhněte](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide) a přeneste příslušnou sadu prostředků (x64 nebo x86) na svůj virtuální počítač nebo fyzický počítač se systémem Linux pomocí spojovacího bodu služby nebo SFTP.
 
-2. Nainstalujte sadu prostředků pomocí `--install` argumentu. Chcete-li se připojit k pracovnímu prostoru Log Analytics během instalace `-w <WorkspaceID>` , `-s <workspaceKey>` zadejte parametry a, které jste zkopírovali dříve.
+2. Nainstalujte sadu prostředků pomocí `--install` argumentu. Chcete-li se připojit k pracovnímu prostoru Log Analytics během instalace, zadejte parametry a, které jste `-w <WorkspaceID>` `-s <workspaceKey>` zkopírovali dříve.
 
     >[!NOTE]
-    >Pokud jsou nainstalované všechny závislé `--upgrade` balíčky, jako je OMI, SCX, omsconfig nebo jejich starší verze, je třeba použít argument, jako by to byl případ, kdy je již nainstalován agent služby system Center Operations Manager pro Linux. 
+    >`--upgrade`Pokud jsou nainstalované všechny závislé balíčky, jako je OMI, SCX, omsconfig nebo jejich starší verze, je třeba použít argument, jako by to byl případ, kdy je již nainstalován agent služby System Center Operations Manager pro Linux. 
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --install -w <workspace id> -s <shared key>
     ```
 
-3. Chcete-li nakonfigurovat agenta pro Linux k instalaci a připojení k Log Analyticsmu pracovnímu prostoru prostřednictvím brány Log Analytics, spusťte následující příkaz, který poskytuje proxy, ID pracovního prostoru a parametry klíče pracovního prostoru. Tuto konfiguraci můžete zadat na příkazovém řádku zahrnutím `-p [protocol://][user:password@]proxyhost[:port]`. Vlastnost *ProxyHost* přijímá plně kvalifikovaný název domény nebo IP adresu serveru brány Log Analytics.  
+3. Chcete-li nakonfigurovat agenta pro Linux k instalaci a připojení k Log Analyticsmu pracovnímu prostoru prostřednictvím brány Log Analytics, spusťte následující příkaz, který poskytuje proxy, ID pracovního prostoru a parametry klíče pracovního prostoru. Tuto konfiguraci můžete zadat na příkazovém řádku zahrnutím `-p [protocol://][user:password@]proxyhost[:port]` . Vlastnost *ProxyHost* přijímá plně kvalifikovaný název domény nebo IP adresu serveru brány Log Analytics.  
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -121,7 +120,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 
 Následující postup slouží ke konfiguraci nastavení agenta pro Log Analytics v Azure a Azure Government cloudu pomocí skriptu obálky pro počítače se systémem Linux, které mohou komunikovat přímo nebo prostřednictvím proxy server ke stažení agenta hostovaného na GitHubu a instalaci agenta.  
 
-Pokud počítač se systémem Linux potřebuje komunikovat prostřednictvím proxy server k Log Analytics, lze tuto konfiguraci zadat na příkazovém řádku zahrnutím `-p [protocol://][user:password@]proxyhost[:port]`. Vlastnost *protokolu* přijímá `http` nebo `https`a vlastnost *PROXYHOST* přijímá plně kvalifikovaný název domény nebo IP adresu proxy server. 
+Pokud počítač se systémem Linux potřebuje komunikovat prostřednictvím proxy server k Log Analytics, lze tuto konfiguraci zadat na příkazovém řádku zahrnutím `-p [protocol://][user:password@]proxyhost[:port]` . Vlastnost *protokolu* přijímá `http` nebo `https` a vlastnost *ProxyHost* přijímá plně kvalifikovaný název domény nebo IP adresu proxy server. 
 
 Příklad: `https://proxy01.contoso.com:30443`
 
@@ -133,7 +132,7 @@ Pokud je v obou případech vyžadováno ověřování, je nutné zadat uživate
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    Následující příkaz obsahuje parametr `-p` proxy a ukázkovou syntaxi, když proxy server vyžaduje ověření:
+    Následující příkaz obsahuje `-p` parametr proxy a ukázkovou syntaxi, když proxy server vyžaduje ověření:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -145,7 +144,7 @@ Pokud je v obou případech vyžadováno ověřování, je nutné zadat uživate
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    Následující příkaz obsahuje parametr `-p` proxy a ukázkovou syntaxi, když proxy server vyžaduje ověření:
+    Následující příkaz obsahuje `-p` parametr proxy a ukázkovou syntaxi, když proxy server vyžaduje ověření:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us

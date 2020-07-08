@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471740"
 ---
 # <a name="caching-with-azure-front-door"></a>Ukládání do mezipaměti s předními dvířky Azure
@@ -92,17 +91,17 @@ Přední dveře budou prostředky ukládat do mezipaměti, dokud nevyprší hodn
 </br>Osvědčeným postupem je zajistit, aby vaši uživatelé měli vždycky přístup k nejnovější kopii vašich assetů, aby si mohli každou aktualizaci nastavovat vaše prostředky a publikovat je jako nové adresy URL. Přední dvířka okamžitě načtou nové prostředky pro další požadavky klientů. Někdy možná budete chtít vyprázdnit obsah uložený v mezipaměti ze všech hraničních uzlů a pokaždé, když budou všechny získávat nové aktualizované prostředky. Důvodem může být aktualizace webové aplikace nebo rychlé aktualizace prostředků, které obsahují nesprávné informace.
 
 </br>Vyberte prostředky, které chcete vymazat z hraničních uzlů. Pokud chcete vymazat všechny prostředky, klikněte na zaškrtávací políčko Odstranit vše. V opačném případě zadejte cestu každého assetu, který chcete vyprázdnit, do textového pole cesta. Následující formáty jsou v cestě podporované.
-1. **Vyprázdnit jednu cestu**: vyprázdnit jednotlivé prostředky zadáním úplné cesty prostředku (bez protokolu a domény) s příponou souboru, například/Pictures/Strasbourg.png;
-2. **Zástupné znaky**:\*hvězdička () se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového\* bodu pomocí/v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky následovaný\*/, například/Pictures/\*.
+1. **Vymazání jedné cesty**: vyprázdnit jednotlivé prostředky zadáním úplné cesty k prostředku (bez protokolu a domény) s příponou souboru, například/Pictures/strasbourg.png;
+2. **Zástupné znaky**: hvězdička ( \* ) se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového bodu pomocí/ \* v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky následovaný/ \* , například/Pictures/ \* .
 3. **Kořenová doména vyprázdnění**: vyprázdní kořen koncového bodu znakem "/" v cestě.
 
 Mezipaměť vyprázdnění na frontách v mezipaměti nerozlišuje velká a malá písmena. Kromě toho jsou dotazy řetězce nezávislá, což znamená, že při vymazání adresy URL se odstraní všechny variace řetězce dotazu. 
 
 ## <a name="cache-expiration"></a>Vypršení platnosti mezipaměti
 Následující pořadí hlaviček se používá k určení, jak dlouho bude položka uložená v naší mezipaměti:</br>
-1. Cache-Control: s-maxage =\<sekund>
-2. Cache-Control: max – stáří =\<sekundy>
-3. Platnost vyprší: \<http-datum>
+1. Cache-Control: s-maxage =\<seconds>
+2. Řízení mezipaměti: max. stáří =\<seconds>
+3. Expires\<http-date>
 
 Hlavičky odpovědí, které určují, že odpověď nebude ukládána do mezipaměti, jako je například řízení mezipaměti: soukromé, Cache-Control: no-cache a Cache-Control: No-Store se nerespektuje. Pokud je ale pro stejnou adresu URL víc požadavků za letu na jednom místě, můžou tuto odpověď sdílet. Pokud není k dispozici žádný ovládací prvek Cache-Control, znamená to, že AFD bude prostředek ukládat do mezipaměti za X dobu, kdy je X náhodně vyskladněno mezi 1 až 3 dny.
 

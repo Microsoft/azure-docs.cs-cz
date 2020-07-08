@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652582"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Inteligentní uzamykání Azure Active Directory
@@ -56,7 +55,7 @@ Pomocí následujících pokynů ověřte zásady uzamčení místních účtů 
 
 1. Otevřete nástroj pro správu Zásady skupiny.
 2. Upravte zásady skupiny, které obsahují zásady uzamčení účtů vaší organizace, například **výchozí zásady domény**.
-3. Přejít na**zásady** >  **Konfigurace** > počítače**nastavení systému Windows nastavení** > **zabezpečení** > **Zásady účtů** > zásady**uzamčení účtů**.
+3. Přejít na **zásady konfigurace počítače**  >  **Policies**  >  **nastavení systému Windows nastavení**  >  **zabezpečení**zásady  >  **účtů**zásady  >  **uzamčení účtů**.
 4. Ověřte **prahovou hodnotu uzamčení účtu** a **Vynulovat čítač uzamčení účtu po** hodnotách.
 
 ![Úprava zásad uzamčení místních účtů služby Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -67,8 +66,8 @@ Na základě požadavků vaší organizace může být nutné přizpůsobit hodn
 
 Chcete-li kontrolovat nebo upravovat hodnoty inteligentního uzamknutí pro vaši organizaci, použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **Security** >  > **metody ověřování**zabezpečení**ochrana heslem**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **Security**  >  **metody ověřování**zabezpečení  >  **ochrana heslem**.
 1. Nastavte **prahovou hodnotu uzamčení**na základě toho, kolik neúspěšných přihlášení na účtu je před prvním uzamčením povolené. Výchozí hodnota je 10.
 1. Nastavte **dobu uzamčení v sekundách**na délku v sekundách každého uzamknutí. Výchozí hodnota je 60 sekund (jedna minuta).
 

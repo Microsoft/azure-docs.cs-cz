@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480738"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Povolení Azure Monitor pro virtuální počítače pro hybridní prostředí
@@ -41,7 +40,7 @@ Kroky pro dokončení této úlohy jsou shrnuté takto:
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Instalace agenta závislostí ve Windows
 
-Agenta závislostí můžete nainstalovat ručně do počítačů se systémem Windows `InstallDependencyAgent-Windows.exe`. Pokud tento spustitelný soubor spustíte bez jakýchkoli možností, spustí se Průvodce instalací nástroje, který můžete použít k interaktivní instalaci agenta.
+Agenta závislostí můžete nainstalovat ručně do počítačů se systémem Windows `InstallDependencyAgent-Windows.exe` . Pokud tento spustitelný soubor spustíte bez jakýchkoli možností, spustí se Průvodce instalací nástroje, který můžete použít k interaktivní instalaci agenta.
 
 >[!NOTE]
 >K instalaci nebo odinstalaci agenta jsou nutná oprávnění *správce* .
@@ -53,7 +52,7 @@ Následující tabulka popisuje parametry, které jsou podporovány instalační
 | /? | Vrátí seznam možností příkazového řádku. |
 | Parametr | Provede tichou instalaci bez zásahu uživatele. |
 
-Chcete-li například spustit instalační program s `/?` parametrem, zadejte **InstallDependencyAgent-Windows. exe/?**.
+Pokud třeba chcete spustit instalační program s `/?` parametrem, zadejte **InstallDependencyAgent-Windows.exe/?**.
 
 Soubory pro agenta závislostí Windows se ve výchozím nastavení instalují do složky *C:\Program Files\Microsoft Dependency agent* . Pokud se agent závislostí nepovede spustit po dokončení instalace, podívejte se na protokoly, kde najdete podrobné informace o chybě. Adresář protokolu je *%ProgramFiles%\Microsoft Dependency Agent\logs*.
 
@@ -73,7 +72,7 @@ Agent závislostí je nainstalovaný na serverech se systémem Linux z *InstallD
 
 Pokud například chcete spustit instalační program s `-help` parametrem, zadejte **InstallDependencyAgent-Linux64. bin-Help**.
 
-Nainstalujte agenta závislostí pro Linux jako kořen spuštěním příkazu `sh InstallDependencyAgent-Linux64.bin`.
+Nainstalujte agenta závislostí pro Linux jako kořen spuštěním příkazu `sh InstallDependencyAgent-Linux64.bin` .
 
 Pokud se nepovede spustit agenta závislostí, podrobnější informace o chybě najdete v protokolech. V agentech Linux se adresář protokolu */var/opt/Microsoft/Dependency-agent/log*.
 
@@ -106,7 +105,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-## <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
+## <a name="desired-state-configuration"></a>Desired State Configuration
 
 Chcete-li nasadit agenta závislostí pomocí konfigurace požadovaného stavu (DSC), můžete použít modul xPSDesiredStateConfiguration s následujícím příkladem kódu:
 
@@ -156,7 +155,7 @@ Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si téma:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Vytvoření a spuštění šablony
 
@@ -206,7 +205,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
     }
     ```
 
-1. Uložte tento soubor jako *installsolutionsforvminsights. JSON* do místní složky.
+1. Uložte tento soubor jako *installsolutionsforvminsights.js* do místní složky.
 
 1. Zachyťte hodnoty pro pole *pracovní prostor*, *ResourceGroupName*a *WorkspaceLocation*. Hodnota pro název *pracovního prostoru* je název vašeho pracovního prostoru Log Analytics. Hodnota pro *WorkspaceLocation* je oblast, ve které je pracovní prostor definován.
 
@@ -229,7 +228,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
 
 Pokud se instalace agenta závislostí zdařila, ale váš počítač se na mapě nezobrazuje, Diagnostikujte problém pomocí následujících kroků.
 
-1. Je agent závislostí úspěšně nainstalován? Můžete to ověřit tak, že zkontrolujete, jestli je služba nainstalovaná a spuštěná.
+1. Je Dependency Agent správně nainstalovaný? Můžete to ověřit tak, že zkontrolujete, jestli je příslušná služba nainstalovaná a spuštěná.
 
     **Windows**: vyhledejte službu s názvem Microsoft Dependency agent.
 
@@ -243,13 +242,13 @@ Pokud se instalace agenta závislostí zdařila, ale váš počítač se na map�
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-    Vrátil (a) jeden nebo více výsledků? Jsou data nedávná? Pokud ano, Váš agent Log Analytics správně funguje a komunikuje se službou. Pokud ne, ověřte agenta na serveru: [Log Analytics agenta pro řešení potíží s Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
+    Vrátil (a) jeden nebo více výsledků? Jsou data aktuální? Pokud ano, Váš agent Log Analytics správně funguje a komunikuje se službou. Pokud ne, ověřte agenta na serveru: [Log Analytics agenta pro řešení potíží s Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>Počítač se zobrazí na mapě, ale nemá žádné procesy.
 
 Pokud na mapě vidíte Server, ale nemá žádná data o procesu nebo připojení, která indikuje, že je agent závislostí nainstalovaný a spuštěný, ale ovladač jádra se nenačetl.
 
-Ověřte soubor C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log (Windows) nebo soubor/var/opt/Microsoft/Dependency-agent/log/Service.log (Linux). Poslední řádky souboru by měly indikovat, proč se jádro nezátěže. Například pokud jste aktualizovali jádro, nemusí být jádro v systému Linux podporováno.
+Zkontrolujte soubor C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log (Windows) nebo soubor /var/opt/microsoft/dependency-agent/log/service.log (Linux). Poslední řádky souboru by měly obsahovat informace o tom, proč se jádro nenačetlo. Například pokud jste jádro aktualizovali, nemusí být podporované v Linuxu.
 
 
 ## <a name="next-steps"></a>Další kroky

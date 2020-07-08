@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477455"
 ---
 # <a name="smote"></a>SMOTE
@@ -42,10 +41,10 @@ Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent*
 
 ||Třída 0|Třída 1|celkem|  
 |-|-------------|-------------|-----------|  
-|Původní datová sada<br /><br /> (ekvivalent **SMOTE procent** = **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
-|**SMOTE procento** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
-|**SMOTE procento** = **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
-|**SMOTE procento** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
+|Původní datová sada<br /><br /> (ekvivalentní k **SMOTE procent**  =  **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
+|**Procento SMOTE**  =  **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
+|**Procento SMOTE**  =  **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
+|**Procento SMOTE**  =  **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
   
 > [!WARNING]
 > Zvýšení počtu případů pomocí SMOTE není zaručené vytvoření přesnější modelů. Vyzkoušejte si kanály s různou procentuální hodnotou, různými sadami funkcí a různými čísly nejbližších sousedů, abyste viděli, jak přidávání případů ovlivní váš model.  

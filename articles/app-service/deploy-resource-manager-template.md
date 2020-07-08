@@ -7,10 +7,9 @@ ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637933"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manager
@@ -45,7 +44,7 @@ Prostředky se nasazují v následujícím pořadí:
 
 **Vrstva 4**
 * App Service certifikát – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
-* Nastavení konfigurace (připojovací řetězce, hodnoty Web. config, nastavení aplikace) – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
+* Nastavení konfigurace (připojovací řetězce, web.config hodnoty, nastavení aplikace) – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
 
 **Vrstva 5**
 * Vazby názvu hostitele – závisí na certifikátu, pokud je k dispozici. V opačném případě závisí na prostředku vyšší úrovně.
@@ -90,7 +89,7 @@ Pokud vaše Správce prostředků šablona používá MSDeploy, může být obt�
 
 1. Přejít na [konzolu Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)webu.
 2. Přejděte do složky na adrese D:\home\LogFiles\SiteExtensions\MSDeploy..
-3. Vyhledejte soubory appManagerStatus. XML a appManagerLog. XML. První soubor zapíše stav. Druhý soubor protokoluje informace o chybě. Pokud chyba není pro vás nejasná, můžete ji zahrnout, až budete požádáni o nápovědu k [fóru](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+3. Vyhledejte soubory appManagerStatus.xml a appManagerLog.xml. První soubor zapíše stav. Druhý soubor protokoluje informace o chybě. Pokud chyba není pro vás nejasná, můžete ji zahrnout, až budete požádáni o nápovědu k [fóru](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Zvolit jedinečný název webové aplikace
 
@@ -127,7 +126,7 @@ V Key Vault vyberte **certifikáty** a **vygenerujte/importujte** pro nahrání 
 
 ![Import certifikátu](media/web-sites-rm-template-guidance/import-certificate.png)
 
-Do šablony zadejte název certifikátu pro `keyVaultSecretName`.
+Do šablony zadejte název certifikátu pro `keyVaultSecretName` .
 
 Příklad šablony najdete v tématu [Nasazení certifikátu webové aplikace z Key Vault tajného kódu a jeho použití k vytvoření vazby SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 

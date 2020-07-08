@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477659"
 ---
 # <a name="convert-to-indicator-values"></a>Převod na hodnoty indikátoru
@@ -48,7 +47,7 @@ Předpokládejme, že máte sloupec s výsledky, které určují, jestli má ser
 | ID serveru | Skóre selhání |
 | --------- | ------------- |
 | 10301     | Nízká           |
-| 10302     | Střednědobé používání        |
+| 10302     | Střední        |
 | 10303     | Vysoká          |
 
 Když použijete příkaz **převést na hodnoty indikátoru**, Návrhář převede jeden sloupec popisků na více sloupců, které obsahují logické hodnoty:  
@@ -63,7 +62,7 @@ Tady je postup, jak převod funguje:
 
 -   Ve sloupci **skóre selhání** , který popisuje riziko, existují pouze tři možné hodnoty (vysoká, střední a nízká) a žádné chybějící hodnoty. Vytvoří se tak přesně tři nové sloupce.  
 
--   Nové sloupce indikátoru se pojmenují na základě záhlaví sloupců a hodnot zdrojového sloupce, a to pomocí tohoto vzoru: * \<zdrojový sloupec> \<-hodnota dat>*.  
+-   Nové sloupce indikátoru jsou pojmenovány na základě záhlaví sloupců a hodnot zdrojového sloupce pomocí tohoto modelu: *\<source column>- \<data value>* .  
 
 -   Měl by být 1 v přesně jednom sloupci indikátoru a 0 ve všech ostatních sloupcích indikátorů, protože každý server může mít pouze jedno hodnocení rizika.  
 
@@ -98,13 +97,13 @@ Tato část obsahuje podrobné informace o implementaci, tipy a odpovědi na nej
 
 -   Pouze sloupce označené jako kategorií lze převést na sloupce indikátorů. Pokud se zobrazí následující chyba, je pravděpodobný, že jeden ze sloupců, které jste vybrali, není kategorií:  
 
-     Chyba 0056: sloupec s názvem \<sloupce Name> není v povolené kategorii.  
+     Chyba 0056: sloupec s názvem \<column name> není v povolené kategorii.  
 
      Ve výchozím nastavení je většina řetězcových sloupců zpracovávána jako řetězcové funkce, takže je musíte explicitně označit jako kategorií pomocí [Edit metadata](edit-metadata.md).  
 
 -   Počet sloupců, které můžete převést na sloupce indikátorů, není nijak omezený. Vzhledem k tomu, že každý sloupec hodnot může vracet více sloupců indikátorů, můžete chtít v jednom okamžiku převést a zkontrolovat jen několik sloupců.  
 
--   Pokud sloupec obsahuje chybějící hodnoty, vytvoří se samostatný sloupec indikátoru pro chybějící kategorii s tímto názvem: * \<zdrojový sloupec> – chybí.*  
+-   Pokud sloupec obsahuje chybějící hodnoty, vytvoří se samostatný sloupec indikátoru pro chybějící kategorii s tímto názvem: * \<source column> – chybějící*  
 
 -   Pokud sloupec, který převedete na hodnoty indikátoru, obsahuje čísla, musí být označený jako kategorií jako jakýkoliv jiný sloupec funkce. Až to uděláte, budou se čísla považovat za diskrétní hodnoty. Pokud máte například číselný sloupec s hodnotami MPG v rozsahu od 25 do 30, vytvoří se nový sloupec indikátoru pro každou diskrétní hodnotu:  
 

@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471672"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Podpora protokolů hlaviček protokolu HTTP v front-dveřích Azure
@@ -33,7 +32,7 @@ Přední dvířka přijímají většinu hlaviček z příchozího požadavku be
 
 Přední dvířka obsahují záhlaví z příchozího požadavku, pokud nejsou odebrána z důvodu omezení. Přední dvířka také přidávají následující hlavičky:
 
-| Hlavička  | Příklad a popis |
+| Záhlaví  | Příklad a popis |
 | ------------- | ------------- |
 | Vedení |  Přes: 1,1 Azure </br> Přední dvířka přidávají verzi HTTP klienta následovanou *Azure* jako hodnotu pro hlavičku Via. Tato hlavička označuje verzi protokolu HTTP klienta a tato přední dvířka byla zprostředkujícím příjemcem pro požadavek mezi klientem a back-endu.  |
 | X – Azure – IP adresa klienta | X-Azure-IP adresa klienta: 127.0.0.1 </br> Představuje IP adresu klienta přidruženou k zpracovávané žádosti. Například žádost přicházející z proxy serveru může přidat hlavičku X-pro, která označuje IP adresu původního volajícího. |
@@ -49,7 +48,7 @@ Přední dvířka obsahují záhlaví z příchozího požadavku, pokud nejsou o
 
 Všechny hlavičky odeslané do front-endu z back-endu jsou také předány klientovi. Níže jsou hlavičky odeslané z front-dveří klientům.
 
-| Hlavička  | Příklad |
+| Záhlaví  | Příklad |
 | ------------- | ------------- |
 | X – Azure – ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Toto je jedinečný referenční řetězec, který identifikuje požadavek poskytovaný předními dveřmi. To je důležité pro řešení potíží, které se používá k vyhledávání protokolů přístupu.|
 

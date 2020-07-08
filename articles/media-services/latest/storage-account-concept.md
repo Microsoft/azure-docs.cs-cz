@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
 ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499832"
 ---
 # <a name="azure-storage-accounts"></a>Účty úložiště Azure
@@ -32,7 +31,7 @@ Doporučujeme používat GPv2, abyste mohli využít výhod nejnovějších funk
 > [!NOTE]
 > Pro použití s Azure Media Services je podporována pouze úroveň Hot Access, i když ostatní úrovně přístupu lze použít ke snížení nákladů na úložiště obsahu, který se aktivně nepoužívá.
 
-Pro svůj účet úložiště můžete vybrat jiné SKU. Další informace najdete v tématu [účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS`. Když však vybíráte SKU pro produkční prostředí, měli byste `--sku Standard_RAGRS`zvážit, což zajišťuje geografickou replikaci pro kontinuitu podnikových aplikací.
+Pro svůj účet úložiště můžete vybrat jiné SKU. Další informace najdete v tématu [účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS` . Když však vybíráte SKU pro produkční prostředí, měli byste zvážit `--sku Standard_RAGRS` , což zajišťuje geografickou replikaci pro kontinuitu podnikových aplikací.
 
 ## <a name="assets-in-a-storage-account"></a>Prostředky v účtu úložiště
 
@@ -45,7 +44,7 @@ V Media Services V3 se k nahrávání souborů do assetů používají rozhraní
 
 Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by měly být šifrovány šifrováním na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště v Media Services V3:
 
-|Možnost šifrování|Popis|Media Services v3|
+|Možnost šifrování|Description|Media Services v3|
 |---|---|---|
 |Media Services šifrování úložiště| Šifrování AES-256, klíč spravovaný pomocí Media Services. |Nepodporováno. <sup>(1)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se.|

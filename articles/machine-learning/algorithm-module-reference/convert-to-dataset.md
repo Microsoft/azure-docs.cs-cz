@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456586"
 ---
 # <a name="convert-to-dataset"></a>Převod na datovou sadu
@@ -46,9 +45,9 @@ Než použijete převod na datovou sadu, doporučujeme použít modul [Upravit m
     - **ReplaceValues**: tuto možnost použijte, pokud chcete zadat jedinou hodnotu, která se má nahradit jakoukoliv jinou přesnou hodnotu. Chybějící hodnoty nebo vlastní hodnoty můžete nahradit nastavením metody **Replace** :
 
       - **Chybějící**: tuto možnost vyberte, pokud chcete nahradit chybějící hodnoty vstupní datovou sadou. V poli **Nová hodnota**zadejte hodnotu pro nahrazení chybějících hodnot.
-      - **Vlastní**: tuto možnost vyberte, pokud chcete nahradit vlastní hodnoty vstupní datovou sadou. Do pole **vlastní hodnota**zadejte hodnotu, kterou chcete najít. Pokud například data obsahují řetězec `obs` použitý jako zástupný symbol pro chybějící hodnoty, zadáte. `obs` Pro **novou hodnotu**zadejte novou hodnotu, kterou má původní řetězec nahradit.
+      - **Vlastní**: tuto možnost vyberte, pokud chcete nahradit vlastní hodnoty vstupní datovou sadou. Do pole **vlastní hodnota**zadejte hodnotu, kterou chcete najít. Pokud například data obsahují řetězec `obs` použitý jako zástupný symbol pro chybějící hodnoty, zadáte `obs` . Pro **novou hodnotu**zadejte novou hodnotu, kterou má původní řetězec nahradit.
   
-    Všimněte si, že operace **ReplaceValues** se vztahuje pouze na přesné shody. Například tyto řetězce nebudou ovlivněny: `obs.`,. `obsolete`  
+    Všimněte si, že operace **ReplaceValues** se vztahuje pouze na přesné shody. Například tyto řetězce nebudou ovlivněny: `obs.` , `obsolete` .  
  
   
 5.  Odešlete kanál.  

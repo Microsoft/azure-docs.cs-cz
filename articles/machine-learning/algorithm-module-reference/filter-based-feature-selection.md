@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477591"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
@@ -120,7 +119,7 @@ Pokud používáte korelaci Pearsonova s numerickou funkcí a popiskem kategori�
 
 -   Pokusíte-li se použít metodu bodování se sloupcem datového typu, který metoda nepodporuje, modul vyvolá chybu. Do sloupce se ale přiřadí nula skóre.  
 
--   Pokud sloupec obsahuje logickou hodnotu (true/false), zpracuje se jako `True = 1` a. `False = 0`  
+-   Pokud sloupec obsahuje logickou hodnotu (true/false), zpracuje se jako `True = 1` a `False = 0` .  
 
 -   Sloupec nemůže být funkcí, pokud byl označený jako **popisek** nebo **skóre**.  
 

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653122"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
@@ -51,7 +50,7 @@ Když hlavní Azure MFA Server přejde do offline režimu, podřízené servery 
 
 Ujistěte se, že server, který používáte pro Azure Multi-Factor Authentication, splňuje následující požadavky:
 
-| Požadavky pro Azure Multi-Factor Authentication Server | Popis |
+| Požadavky pro Azure Multi-Factor Authentication Server | Description |
 |:--- |:--- |
 | Hardware |<li>200 MB volného místa na pevném disku</li><li>Procesor kompatibilní s x32 nebo x64</li><li>1 GB RAM nebo víc</li> |
 | Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
@@ -96,7 +95,7 @@ Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužíva
 Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication Server z webu Azure Portal:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **zabezpečení** > **MFA**.
+2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **zabezpečení**  >  **MFA**.
 3. V části **správce MFA serveru**vyberte **nastavení serveru**.
 4. Vyberte **Stáhnout** a podle pokynů na stránce pro stažení uložte instalační program. 
 

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477489"
 ---
 # <a name="preprocess-text"></a>Předzpracování textu
@@ -51,7 +50,7 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
 
 1. **Zjistit věty**: tuto možnost vyberte, pokud chcete, aby modul při provádění analýzy vkládal značku ohraničení věty.
 
-    Tento modul používá sérii tří znaků `|||` kanálu, které reprezentují zakončení věty.
+    Tento modul používá sérii tří znaků kanálu `|||` , které reprezentují zakončení věty.
 
 1. Provádět volitelné operace hledání a nahrazení pomocí regulárních výrazů.
 
@@ -70,18 +69,18 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
     
     * **Odebrat duplicitní znaky**: tuto možnost vyberte, pokud chcete odebrat nadbytečné znaky v jakékoli sekvenci, která se opakuje více než dvakrát. Například sekvence jako "AAAAA" by se snížila na "AA".
     
-    * **Odebrat e-mailové adresy**: tuto možnost vyberte, pokud chcete odebrat `<string>@<string>`jakoukoli sekvenci formátu.  
-    * **Odebrat adresy URL**: tuto možnost vyberte, pokud chcete odebrat všechny sekvence obsahující následující PŘEDPONY adresy `http`URL `https`: `ftp`,,,`www`
+    * **Odebrat e-mailové adresy**: tuto možnost vyberte, pokud chcete odebrat jakoukoli sekvenci formátu `<string>@<string>` .  
+    * **Odebrat adresy URL**: tuto možnost vyberte, pokud chcete odebrat všechny sekvence obsahující následující PŘEDPONY adresy URL: `http` , `https` , `ftp` ,`www`
     
 1. **Rozbalit kontrakty operací**: Tato možnost platí jenom pro jazyky, které používají kontrakty operací. v současné době pouze v angličtině. 
 
     Když například vyberete tuto možnost, můžete *nahradit frázi. nezůstane tam* , kde *se nachází.*
 
-1. **Normalizovat zpětná lomítka na lomítka**: tuto možnost vyberte, pokud chcete namapovat všechny instance `\\` na `/`.
+1. **Normalizovat zpětná lomítka na lomítka**: tuto možnost vyberte, pokud chcete namapovat všechny instance `\\` na `/` .
 
-1. **Rozdělit tokeny na speciální znaky**: tuto možnost vyberte `&`, pokud chcete rozdělit slova na znaky, například, `-`a tak dále. Tato možnost může také snížit speciální znaky, pokud se opakuje více než dvakrát. 
+1. **Rozdělit tokeny na speciální znaky**: tuto možnost vyberte, pokud chcete rozdělit slova na znaky, například `&` , `-` a tak dále. Tato možnost může také snížit speciální znaky, pokud se opakuje více než dvakrát. 
 
-    Například řetězec `MS---WORD` by byl rozdělen na tři tokeny, `MS` `-`, a. `WORD`
+    Například řetězec `MS---WORD` by byl rozdělen na tři tokeny,, `MS` `-` a `WORD` .
 
 1. Odešlete kanál.
 
