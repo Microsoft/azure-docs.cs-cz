@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 06/25/2020
 ms.author: rolyon
 ms.openlocfilehash: bcf1966ffc326291448cb611d99390fe0d652151
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392899"
 ---
 # <a name="create-an-azure-custom-role-using-an-azure-resource-manager-template"></a>Vytvoření vlastní role Azure pomocí šablony Azure Resource Manager
@@ -54,7 +54,7 @@ Rozsah, ve kterém se dá tato vlastní role přiřadit, se nastaví na aktuáln
 
 Pomocí těchto kroků nasaďte předchozí šablonu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Otevřete Azure Cloud Shell pro PowerShell.
 

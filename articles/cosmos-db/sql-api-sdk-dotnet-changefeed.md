@@ -9,18 +9,18 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392059"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
 
 > [!div class="op_single_selector"]
 >
-> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
-> * [Sada .NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)

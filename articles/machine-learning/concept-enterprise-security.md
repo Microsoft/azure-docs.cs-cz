@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
 ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392229"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
@@ -26,7 +26,7 @@ Když použijete cloudovou službu, osvědčeným postupem je omezit přístup j
 > [!NOTE]
 > Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Active Directory (Azure AD) nakonfigurovaná tak, aby ji používala. Toto je proces ověřování:
 

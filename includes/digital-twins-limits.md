@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
 ms.openlocfilehash: 76ccd6f42f2cfd83512a2e817e8c2ac9aa61a28b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391471"
 ---
 ### <a name="functional-limits"></a>Funkční omezení
@@ -31,7 +31,7 @@ Následující tabulka uvádí funkční omezení digitálních vláken Azure v 
 | Dotaz | Počet znaků v dotazu | 8 000 | Ano |
 | Dotaz | Počet `JOINS` v dotazu | 1 | Yes |
 
-### <a name="rate-limits"></a>Omezení rychlosti
+### <a name="rate-limits"></a>Omezení přenosové rychlosti
 
 Tato tabulka odráží omezení přenosové rychlosti různých rozhraní API.
 

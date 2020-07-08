@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
 ms.openlocfilehash: 43fad6249d5c6f528353a819e03dd7401440e05d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391005"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
@@ -39,7 +39,7 @@ Spravovaná instance SQL kombinuje nejlepší funkce, které jsou k dispozici v 
 > [!IMPORTANT]
 > Spravovaná instance SQL se spouští se všemi funkcemi nejnovější verze SQL Server, včetně online operací, automatických oprav plánů a dalších vylepšení výkonu podniku. Porovnání funkcí, které jsou k dispozici, je vysvětleno v tématu [porovnání funkcí: Azure SQL Managed instance versus SQL Server](../database/features-comparison.md).
 
-| **Výhody PaaS** | **Provozní kontinuita** |
+| **Výhody PaaS** | **Kontinuita podnikových procesů** |
 | --- | --- |
 |Bez nákupu a správy hardwaru <br>Žádná režie správy pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatizované opravy a upgrade verze <br>Integrace s jinými datovými službami PaaS |Smlouva SLA o 99,99% provozu  <br>Integrovaná [Vysoká dostupnost](../database/high-availability-sla.md) <br>Data chráněná pomocí [automatizovaných záloh](../database/automated-backups-overview.md) <br>Uživatelsky konfigurovatelné období uchovávání záloh pro zákazníky <br>[Zálohy](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) iniciované uživatelem <br>Možnost [obnovení databáze v daném časovém okamžiku](../database/recovery-using-backups.md#point-in-time-restore) |
 |**Zabezpečení a dodržování předpisů** | **správy**|
@@ -146,7 +146,7 @@ V následující tabulce najdete souhrn operací a typických celkových dob trv
 |Nasazení |První instance jiné generace hardwaru v neprázdné podsíti (například první instance Gen 5 v podsíti s instancemi Gen 4)|Vytváření virtuálních clusterů *|90% dokončených operací za 4 hodiny.|
 |Nasazení |Vytvoření první instance 4 virtuální jádra, v prázdné nebo neprázdné podsíti|Vytváření virtuálních clusterů * *|90% dokončených operací za 4 hodiny.|
 |Nasazení |Vytváření dalších instancí v neprázdné podsíti (druhá, třetí atd. instance)|Změna velikosti virtuálního clusteru|90% dokončených operací za 2,5 hodin.|
-|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení Azure AD, příznak Zvýhodněné hybridní využití Azure)|–|Až 1 minuta.|
+|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení Azure AD, příznak Zvýhodněné hybridní využití Azure)|Není k dispozici|Až 1 minuta.|
 |Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|Připojení souborů databáze|90% dokončených operací za 5 minut.|
 |Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace úroveň služeb)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin.|
@@ -259,7 +259,7 @@ Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure 
 
 Služba SQL Managed instance umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../database/authentication-aad-overview.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje službu [Multi-Factor Authentication](../database/authentication-mfa-ssms-configure.md) pro zvýšení zabezpečení dat a aplikací při podpoře jednotného přihlašování.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Ověřování spravované instance SQL odkazuje na to, jak uživatelé při připojování k databázi prokáže jejich identitu. Spravovaná instance SQL podporuje dva typy ověřování:  
 

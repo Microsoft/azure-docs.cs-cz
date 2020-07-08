@@ -8,10 +8,10 @@ ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413157"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
@@ -22,7 +22,7 @@ Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné p
 
 Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochopit klíčové pojmy nebo koncepty.
 
-| Termín nebo koncept | Popis |
+| Termín nebo koncept | Description |
 | --- | --- |
 | oblast | Sada Datacenter nasazených v hraničním prostředí určeném pro latenci a připojená přes vyhrazenou síť s nízkou latencí. |
 | geografické | Oblast světa, která obsahuje alespoň jednu oblast Azure. Geografické oblasti definují diskrétní trh, který zachovává rozsahy dat a hranice dodržování předpisů. Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, které vydržely selhání celé oblasti prostřednictvím připojení k naší vyhrazené síťové infrastruktuře s vysokou kapacitou. |
@@ -79,7 +79,7 @@ Pokud nabídka služeb není v konkrétní oblasti dostupná, můžete svůj zá
 | Typ oblasti | Bez regionu | Základní | Hlavní fáze | Specializovaná | Zóny dostupnosti | Rezidence dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Doporučené | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | :heavy_check_mark: | :heavy_check_mark: |
-| Střídat | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | Řízený na základě poptávky | – | :heavy_check_mark: |
+| Střídat | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | Řízený na základě poptávky | Není k dispozici | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Služby podle kategorie
 
@@ -112,7 +112,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Service Bus | Brána Azure Firewall | Data Box Heavy |
 > | Service Fabric | Azure Functions | Data Catalog |
 > | Virtual Machine Scale Sets | Azure HPC Cache | Data Factory: Data Factory v1 |
-> | Virtuální počítače | Azure IoT Hub | Data Lake Analytics |
+> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
 > | Virtual Machines: Av2-Series | Azure Kubernetes Service (AKS) | Machine Learning Studio |
 > | Virtual Machines: BS-Series | Azure Machine Learning | Microsoft Genomics |
 > | Virtual Machines: DSv2-Series | Azure Private Link | Remote Rendering |
@@ -148,7 +148,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > |  | Ultra Disk Storage |  |
 > |  | Virtual Machines: Fsv2-Series |  |
 > |  | Virtual Machines: řada M-Series |  |
-> |  | Virtuální síť WAN |  |
+> |  | Virtual WAN |  |
 
 ###  <a name="services-resiliency"></a>Odolnost služeb
 

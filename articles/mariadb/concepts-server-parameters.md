@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
 ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392722"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Parametry serveru v Azure Database for MariaDB
@@ -84,8 +84,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -133,8 +133,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -155,8 +155,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -175,8 +175,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -195,8 +195,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|
