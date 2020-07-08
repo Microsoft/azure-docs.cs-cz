@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5d508450d17d6e07e2c2bdb78b7934988936b9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0c55cc6e0fc15b663667a5131e2dd333106418cd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715745"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957058"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>Optimalizace transakcí ve fondu SQL
 
@@ -44,7 +44,7 @@ Limity bezpečnosti transakce platí pouze pro plně protokolované operace.
 
 Následující operace jsou schopné provádět minimální protokolování:
 
-* CREATE TABLE JAKO SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-CTAS.MD? TOC =/Azure/synapse-Analytics/TOC.JSON&BC =/Azure/synapse-Analytics/breadcrumb/TOC.JSON)
+* CREATE TABLE JAKO SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-CTAS.MD? TOC =/Azure/synapse-Analytics/toc.jsv&BC =/Azure/synapse-Analytics/breadcrumb/toc.jszapnuto)
 * Vložit.. VYBRALI
 * CREATE INDEX
 * ZMĚNIT INDEX OPĚTOVNÉHO SESTAVENÍ

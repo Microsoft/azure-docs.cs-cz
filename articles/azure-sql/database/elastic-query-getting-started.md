@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 871ff0fe7fdf92e82b30b1c93867d753ce9a82b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048522"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956895"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,45 +64,53 @@ Používají se k připojení ke Správci map horizontálních oddílů a k hori
 1. Otevřete SQL Server Management Studio nebo SQL Server Data Tools v aplikaci Visual Studio.
 2. Připojte se k databázi ElasticDBQuery a spusťte následující příkazy T-SQL:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+    ```tsql
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
-        WITH IDENTITY = '<username>',
-        SECRET = '<password>';
+    CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+    WITH IDENTITY = '<username>',
+    SECRET = '<password>';
+    ```
 
     uživatelské jméno a heslo by se mělo shodovat s přihlašovacími údaji použitými v kroku 3 oddílu [Stažení a spuštění ukázkové aplikace](elastic-scale-get-started.md#download-and-run-the-sample-app) v článku **Začínáme s elastic Database Tools** .
 
 ### <a name="external-data-sources"></a>Externí zdroje dat
 Pokud chcete vytvořit externí zdroj dat, spusťte v databázi ElasticDBQuery tento příkaz:
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
-      (TYPE = SHARD_MAP_MANAGER,
-      LOCATION = '<server_name>.database.windows.net',
-      DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
-      CREDENTIAL = ElasticDBQueryCred,
-       SHARD_MAP_NAME = 'CustomerIDShardMap'
-    ) ;
+```tsql
+CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+    (TYPE = SHARD_MAP_MANAGER,
+    LOCATION = '<server_name>.database.windows.net',
+    DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
+    CREDENTIAL = ElasticDBQueryCred,
+    SHARD_MAP_NAME = 'CustomerIDShardMap'
+) ;
+```    
 
  "CustomerIDShardMap" je název mapy horizontálních oddílů, pokud jste vytvořili mapu horizontálních oddílů a správce mapování horizontálních oddílů pomocí ukázky nástrojů elastické databáze. Pokud jste však pro tuto ukázku použili vlastní instalaci, měl by se jednat o název mapy horizontálních oddílů, který jste zvolili v aplikaci.
 
 ### <a name="external-tables"></a>Externí tabulky
 Vytvořte externí tabulku, která odpovídá tabulce Customers na horizontálních oddílů spuštěním následujícího příkazu v databázi ElasticDBQuery:
 
-    CREATE EXTERNAL TABLE [dbo].[Customers]
-    ( [CustomerId] [int] NOT NULL,
-      [Name] [nvarchar](256) NOT NULL,
-      [RegionId] [int] NOT NULL)
-    WITH
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc,
-      DISTRIBUTION = SHARDED([CustomerId])
-    ) ;
+```tsql
+CREATE EXTERNAL TABLE [dbo].[Customers]
+( [CustomerId] [int] NOT NULL,
+    [Name] [nvarchar](256) NOT NULL,
+    [RegionId] [int] NOT NULL)
+WITH
+( DATA_SOURCE = MyElasticDBQueryDataSrc,
+    DISTRIBUTION = SHARDED([CustomerId])
+) ;
+```
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Spuštění ukázkového dotazu T-SQL pro elastickou databázi
 Po definování externího zdroje dat a externích tabulek teď můžete použít plný T-SQL přes vaše externí tabulky.
 
 Spustit tento dotaz v databázi ElasticDBQuery:
 
-    select count(CustomerId) from [dbo].[Customers]
+```tsql
+select count(CustomerId) from [dbo].[Customers]
+```
 
 Všimněte si, že dotaz agreguje výsledky ze všech horizontálních oddílů a poskytne následující výstup:
 
