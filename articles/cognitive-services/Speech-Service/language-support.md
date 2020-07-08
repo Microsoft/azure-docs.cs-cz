@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 148b344d469c78936b56b96090c76e379bb63731
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027490"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087142"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -100,27 +101,42 @@ Další informace o regionální dostupnosti najdete v tématu [oblasti](regions
 
 |Národní prostředí  | Jazyk            | Pohlaví | Název hlasu | Podpora stylů |
 |--|--|--|--|--|
+| `ar-EG` | Arabština (Egypt)                  | Female | `ar-EG-SalmaNeural`      | Obecné |
+| `ar-SA` | Arabština (Saúdská Arábie)           | Female | `ar-SA-ZariyahNeura`     | Obecné |
+| `ca-ES` | katalánština (Španělsko)                 | Female | `ca-ES-AlbaNeural`       | Obecné |
+| `da-DK` | dánština (Dánsko)                | Female | `da-DK-ChristelNeural`   | Obecné |
 | `de-DE` | němčina (Německo)                | Female | `de-DE-KatjaNeural`      | Obecné |
 | `en-AU` | Angličtina (Austrálie)             | Female | `en-AU-NatashaNeural`    | Obecné |
 | `en-CA` | Angličtina (Kanada)                | Female | `en-CA-ClaraNeural`      | Obecné |
 | `en-GB` | Angličtina (Spojené království)                    | Female | `en-GB-LibbyNeural`      | Obecné |
 |         |                                 | Female | `en-GB-MiaNeural`        | Obecné |
+| `en-IN` | Angličtina (Indie)                 | Female | `en-IN-NeerjaNeural`     | Obecné |
 | `en-US` | Angličtina (USA)                    | Female | `en-US-AriaNeural`       | Obecné, více dostupných stylů hlasu |
 |         |                                 | Male   | `en-US-GuyNeural`        | Obecné |
 | `es-ES` | Španělština (Španělsko)                 | Female | `es-ES-ElviraNeural`     | Obecné |
 | `es-MX` | Španělština (Mexiko)                | Female | `es-MX-DaliaNeural`      | Obecné |
+| `fi-FI` | finština (Finsko)               | Female | `fi-FI-NooraNeural`      | Obecné |
 | `fr-CA` | Francouzština (Kanada)                 | Female | `fr-CA-SylvieNeural`     | Obecné |
 | `fr-FR` | francouzština (Francie)                 | Female | `fr-FR-DeniseNeural`     | Obecné |
+| `hi-IN` | hindština (Indie)                   | Female | `hi-IN-SwaraNeural`      | Obecné |
 | `it-IT` | italština (Itálie)                 | Female | `it-IT-ElsaNeural`       | Obecné |
 | `ja-JP` | Japonština                        | Female | `ja-JP-NanamiNeural`     | Obecné |
 | `ko-KR` | Korejština                          | Female | `ko-KR-SunHiNeural`      | Obecné |
 | `nb-NO` | Norština                       | Female | `nb-NO-IselinNeural`     | Obecné |
-| `pt-BR` | Portugalština (Brazílie)             | Female | `pt-BR-FranciscaNeural`  | Obecné |
+| `nl-NL` | Holandština (Netherland)              | Female | `nl-NL-ColetteNeural`    | Obecné |
+| `pl-PL` | polština (Polsko)                 | Female | `pl-PL-ZofiaNeural`      | Obecné |
+| `pt-BR` | Portugalština (Brazílie)             | Female | `pt-BR-FranciscaNeural`  | Obecné, více dostupných stylů hlasu |
 | `tr-TR` | Turečtina                         | Female | `tr-TR-EmelNeural`       | Obecné |
+| `pt-PT` | portugalština (Portugalsko)           | Female | `pt-PT-FernandaNeural`   | Obecné |
+| `ru-RU` | ruština (Rusko)                | Female | `ru-RU-DariyaNeural`     | Obecné |
+| `sv-SE` | švédština (Švédsko)                | Female | `sv-SE-HilleviNeural`    | Obecné |
+| `th-TH` | thajština (Thajsko)                 | Female | `th-TH-AcharaNeural`     | Obecné |
 | `zh-CN` | Čínština (Mandarin, zjednodušená)  | Female | `zh-CN-XiaoxiaoNeural`   | Obecné, více dostupných stylů hlasu |
 |         |                                 | Female | `zh-CN-XiaoyouNeural`    | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
 |         |                                 | Male   | `zh-CN-YunyangNeural`    | Optimalizováno pro čtení zpráv, je k dispozici více stylů hlasu |
 |         |                                 | Male   | `zh-CN-YunyeNeural`      | Optimalizováno pro mluvený popis scénáře |
+| `zh-HK` | Čínština (kantonština, tranditional)   | Female | `zh-HK-HiuGaaiNeural`| Obecné |
+| `zh-TW` | Čínština (tchajwanský mandarinka)   | Female | `zh-TW-HsiaoYuNeural`    | Obecné |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Hlas se změnil na `en-US-AriaNeural` . Pokud jste předtím používali "Jessa", převeďte ho na standard ARIA.

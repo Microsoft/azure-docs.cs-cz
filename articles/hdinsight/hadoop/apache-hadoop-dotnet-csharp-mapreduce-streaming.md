@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 28817489af535ee45a6cc06cc5fe9d4fde9da8eb
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 77d8143743f899bcb9fd3927de223d84d406ed6f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996835"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086785"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití jazyka C# s MapReduce streamingmi na Apache Hadoop ve službě HDInsight
 
@@ -23,7 +23,7 @@ Streamování Apache Hadoop umožňuje spouštět úlohy MapReduce pomocí skrip
 
 ## <a name="net-on-hdinsight"></a>.NET v HDInsight
 
-Clustery HDInsight využívají [monohttps://mono-project.com) (](https://mono-project.com) ke spouštění aplikací .NET). Mono verze 4.2.1 je součástí HDInsight verze 3,6. Další informace o verzi mono, která je součástí služby HDInsight, najdete v tématu [Apache Hadoop komponenty dostupné s různými verzemi služby HDInsight](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
+Clustery HDInsight využívají [mono https://mono-project.com) (](https://mono-project.com) ke spouštění aplikací .NET). Mono verze 4.2.1 je součástí HDInsight verze 3,6. Další informace o verzi mono, která je součástí služby HDInsight, najdete v tématu [Apache Hadoop komponenty dostupné s různými verzemi služby HDInsight](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
 
 Další informace o kompatibilitě mono s .NET Framework verzí naleznete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -31,9 +31,9 @@ Další informace o kompatibilitě mono s .NET Framework verzí naleznete v tém
 
 Základní proces používaný pro streamování v tomto dokumentu je následující:
 
-1. Hadoop předá data mapovači (*Mapper. exe* v tomto příkladu) na stdin.
+1. Hadoop předá data do mapovače (*mapper.exe* v tomto příkladu) na stdin.
 2. Mapovač zpracovává data a generuje páry klíč/hodnota, které jsou odděleny tabulátory, do STDOUT.
-3. Výstup je přečtený pomocí Hadoop a pak se předává do nástroje pro redukci (v tomto příkladu je to příkaz zpomalení *. exe* ) na stdin.
+3. Výstup se načte pomocí Hadoop a pak se předává do nástroje pro redukci (*reducer.exe* v tomto příkladu) na stdin.
 4. Snížení načte páry klíč/hodnota, které jsou odděleny tabulátory, zpracuje data a pak výsledek vygeneruje jako páry klíč/hodnota oddělených tabulátorem na STDOUT.
 5. Výstup se načte pomocí Hadoop a zapisuje do výstupního adresáře.
 
@@ -51,7 +51,7 @@ Další informace o streamování najdete v tématu [streamování Hadoop](https
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Schéma identifikátoru URI pro primární úložiště clusterů. Toto schéma bude `wasb://` Azure Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage nebo Data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI `wasbs://` by `abfss://`byl nebo v uvedeném pořadí.
+* Schéma identifikátoru URI pro primární úložiště clusterů. Toto schéma bude `wasb://` Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage nebo Data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` nebo v `abfss://` uvedeném pořadí.
 
 ## <a name="create-the-mapper"></a>Vytvoření mapovače
 
@@ -88,7 +88,7 @@ namespace mapper
 }
 ```
 
-Po vytvoření aplikace ji Sestavte, abyste vytvořili soubor */bin/Debug/Mapper.exe* v adresáři projektu.
+Po vytvoření aplikace ji Sestavte, abyste vytvořili soubor */bin/Debug/mapper.exe* v adresáři projektu.
 
 ## <a name="create-the-reducer"></a>Vytvoření redukce
 
@@ -141,13 +141,13 @@ namespace reducer
 }
 ```
 
-Po vytvoření aplikace ji Sestavte, abyste vytvořili soubor */bin/Debug/Reducer.exe* v adresáři projektu.
+Po vytvoření aplikace ji Sestavte, abyste vytvořili soubor */bin/Debug/reducer.exe* v adresáři projektu.
 
 ## <a name="upload-to-storage"></a>Nahrání do úložiště
 
 Dál je potřeba nahrát *Mapovač* a aplikace *snižující* kapacitu do úložiště HDInsight.
 
-1. V aplikaci Visual Studio vyberte **Zobrazit** > **Průzkumník serveru**.
+1. V aplikaci Visual Studio vyberte **Zobrazit**  >  **Průzkumník serveru**.
 
 1. Klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit k Microsoft Azure předplatnému...** a dokončete proces přihlašování.
 
@@ -165,11 +165,11 @@ Dál je potřeba nahrát *Mapovač* a aplikace *snižující* kapacitu do úlož
 
         ![Ikona nahrání HDInsight pro Mapper, Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru**možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** přejdete do složky *bin\Debug* pro projekt *Mapper* a pak zvolíte soubor *Mapper. exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
+        V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru**možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** přejdete do složky *bin\Debug* pro projekt *mapper* a pak zvolte soubor *mapper.exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
 
-    * V případě **Azure Data Lake Storage**klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a pak vyberte **Odeslat**. Nakonec vyberte soubor *Mapper. exe* a pak vyberte **otevřít**.
+    * V případě **Azure Data Lake Storage**klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a pak vyberte **Odeslat**. Nakonec vyberte soubor *mapper.exe* a pak vyberte **otevřít**.
 
-    Po dokončení nahrávání *mapovače. exe* opakujte proces nahrávání pro soubor. exe pro *zmenšení* .
+    Po dokončení nahrávání *mapper.exe* opakujte proces nahrávání pro *reducer.exe* soubor.
 
 ## <a name="run-a-job-using-an-ssh-session"></a>Spustit úlohu: použití relace SSH
 
@@ -221,7 +221,7 @@ Následující postup popisuje, jak spustit úlohu MapReduce pomocí relace SSH:
    |Parametr | Popis |
    |---|---|
    |Hadoop-streaming. jar|Určuje soubor JAR, který obsahuje funkci streamování MapReduce.|
-   |– soubory|Určuje soubory *Mapper. exe* a *snižoval. exe* pro tuto úlohu. Deklarace `wasbs:///`protokolu `adl:///`, nebo `abfs:///` předtím, než je každý soubor cestou k kořenovému adresáři výchozího úložiště pro cluster.|
+   |– soubory|Určuje *mapper.exe* a *reducer.exe* soubory pro tuto úlohu. `wasbs:///` `adl:///` Deklarace protokolu, nebo `abfs:///` předtím, než je každý soubor cestou k kořenovému adresáři výchozího úložiště pro cluster.|
    |– Mapovač|Určuje soubor, který implementuje Mapovač.|
    |– redukce|Určuje soubor, který implementuje redukci.|
    |-vstup|Určuje vstupní data.|
@@ -253,7 +253,7 @@ Pomocí následujícího skriptu PowerShellu spusťte úlohu MapReduce a stáhn�
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-Tento skript vás vyzve k zadání názvu a hesla přihlašovacího účtu clusteru spolu s názvem clusteru HDInsight. Po dokončení úlohy se výstup stáhne do souboru s názvem *Output. txt*. Následující text je příkladem dat v `output.txt` souboru:
+Tento skript vás vyzve k zadání názvu a hesla přihlašovacího účtu clusteru spolu s názvem clusteru HDInsight. Po dokončení úlohy se výstup stáhne do souboru s názvem *output.txt*. Následující text je příkladem dat v `output.txt` souboru:
 
 ```output
 you     1128

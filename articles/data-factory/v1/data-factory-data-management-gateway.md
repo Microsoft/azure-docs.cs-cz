@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087074"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -246,7 +247,9 @@ Pokud dojde k chybám, které jsou podobné těm, je pravděpodobně způsobena 
 
 Pokud používáte bránu firewall jiného výrobce, můžete ručně otevřít port 8050. Pokud během instalace brány narazíte na problém brány firewall, můžete zkusit nainstalovat bránu bez konfigurace brány firewall pomocí následujícího příkazu.
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 Pokud se rozhodnete neotevírat port 8050 na počítači brány, použijte jiné mechanismy než použití aplikace **Nastavení přihlašovacích údajů** ke konfiguraci přihlašovacích údajů úložiště dat. Můžete například použít rutinu [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) prostředí PowerShell. V části Nastavení přihlašovacích údajů a zabezpečení najdete informace o tom, jak se dají nastavit přihlašovací údaje úložiště dat.
 

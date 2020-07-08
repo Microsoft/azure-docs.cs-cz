@@ -4,11 +4,12 @@ description: Monitorujte webové aplikace pro účely dostupnosti, výkonu a vyu
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: 302d96544a719f0e818d942bff1011c6a4368ef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086241"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
@@ -17,7 +18,7 @@ ms.locfileid: "85807311"
 K [Microsoft Azure](https://azure.com)potřebujete předplatné. Přihlaste se pomocí účet Microsoft, kterou můžete potřebovat pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. Váš tým může mít k Azure předplatné organizace: Požádejte vlastníka, aby vás do něho přidal pomocí účet Microsoft.
 
 > [!NOTE]
-> K dispozici je nová Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md) Tento balíček cílí [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , a proto se dá použít v .NET Core 2,0 nebo vyšší a .NET Framework 4.7.2 nebo novější.
+> [Pro všechny](../../azure-monitor/app/worker-service.md) konzolové aplikace se *důrazně doporučuje* použít balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) a související pokyny. Tento balíček cílí [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , a proto se dá použít v .NET Core 2,1 nebo vyšší a .NET Framework 4.7.2 nebo novější.
 
 ## <a name="getting-started"></a>Začínáme
 

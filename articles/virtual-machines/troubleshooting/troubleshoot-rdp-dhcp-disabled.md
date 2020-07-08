@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087788"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nejde RDP do Azure Virtual Machines, protože je zakázaná služba klienta DHCP.
 
@@ -39,7 +40,9 @@ Nemůžete vytvořit připojení RDP k virtuálnímu počítači v Azure, proto�
 
 U Správce prostředků virtuálních počítačů můžete pomocí funkce Konzola sériového přístupu zadat dotaz na protokoly událostí 7022 pomocí následujícího příkazu:
 
-    wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```console
+wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```
 
 U klasických virtuálních počítačů budete muset pracovat v OFFLINE režimu a shromažďovat protokoly ručně.
 
@@ -62,14 +65,21 @@ Pokud chcete tento problém vyřešit, pomocí sériového řízení povolte DHC
 ). Pokud není na vašem VIRTUÁLNÍm počítači povolená síťová konzola, přečtěte si téma [resetování síťového rozhraní](reset-network-interface.md).
 2. Ověřte, jestli je na síťovém rozhraní zakázaný protokol DHCP:
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
+
 3. Pokud je server DHCP zastavený, zkuste službu spustit.
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
 
 4. Znovu spusťte dotaz na službu, abyste se ujistili, že byla služba úspěšně spuštěna.
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
 
     Zkuste se připojit k virtuálnímu počítači a zjistit, jestli se problém vyřešil.
 5. Pokud se služba nespustí, použijte následující vhodné řešení na základě chybové zprávy, kterou jste dostali:
@@ -156,23 +166,38 @@ Pokud chcete tento problém vyřešit, pomocí sériového řízení povolte DHC
 
 1. Vzhledem k tomu, že k tomuto problému dochází v případě, že došlo ke změně spouštěcího účtu této služby, vraťte účet na jeho výchozí stav:
 
-        sc config DHCP obj= 'NT Authority\Localservice'
+    ```console
+    sc config DHCP obj= 'NT Authority\Localservice'
+    ```
+
 2. Spusťte službu:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 3. Zkuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>Dojde k chybě nebo zablokování služby klienta DHCP.
 
 1. Pokud je stav služby zablokovaný ve stavu **spuštění** nebo **zastavení** , zkuste službu zastavit:
 
-        sc stop DHCP
+    ```console
+    sc stop DHCP
+    ```
+
 2. Izolujte službu na svém vlastním kontejneru Svchost:
 
-        sc config DHCP type= own
+    ```console
+    sc config DHCP type= own
+    ```
+
 3. Spusťte službu:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 4. Pokud se služba ještě nespustí, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline

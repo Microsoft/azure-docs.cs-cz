@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708493"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086394"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transakční replikace se spravovanou instancí Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,8 +29,8 @@ Transakční replikace je funkce spravované instance Azure SQL a SQL Server, kt
 Transakční replikaci můžete použít k nahrání změn provedených ve spravované instanci SQL Azure na:
 
 - Místní databáze SQL Server nebo na VIRTUÁLNÍm počítači Azure
-- Jedna nebo ve fondu databáze v Azure SQL Database
-- Jedna nebo ve fondu databáze ve spravované instanci Azure SQL
+- Databáze v Azure SQL Database
+- Databáze instancí ve spravované instanci Azure SQL
 
   > [!NOTE]
   > Pokud chcete používat všechny funkce spravované instance SQL Azure, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).

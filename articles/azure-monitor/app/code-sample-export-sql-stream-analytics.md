@@ -3,12 +3,12 @@ title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 811d86c0a9b8e55f548046402885e2ec5967c477
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087216"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
 Tento článek popisuje, jak přesunout data telemetrie z [Azure Application Insights][start] do Azure SQL Database pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -77,14 +77,14 @@ Až se znovu rozhodnete z předplatného v [Azure Portal][portal], vytvořte dat
 
 ![Nová data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
-Ujistěte se, že databázový server umožňuje přístup ke službám Azure:
+Ujistěte se, že server umožňuje přístup ke službám Azure:
 
 ![Procházení, servery, server, nastavení, brána firewall, povolení přístupu k Azure](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Vytvoření tabulky ve službě Azure SQL DB
+## <a name="create-a-table-in-azure-sql-database"></a>Vytvořit tabulku v Azure SQL Database
 Připojte se k databázi vytvořené v předchozí části pomocí preferovaného nástroje pro správu. V tomto návodu použijeme [SQL Server Management Tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
 
-![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Připojení k Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 Vytvořte nový dotaz a spusťte následující příkaz T-SQL:
 
@@ -126,7 +126,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ```
 
-![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
+![Vytvořit PageViewsTable](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
 V této ukázce používáme data z zobrazení stránky. Pokud chcete zobrazit další dostupná data, zkontrolujte výstup JSON a podívejte se na [model exportu dat](../../azure-monitor/app/export-data-model.md).
 
@@ -135,7 +135,7 @@ Z [Azure Portal](https://portal.azure.com/)vyberte službu Azure Stream Analytic
 
 ![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![Nová úloha Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Po vytvoření nové úlohy vyberte **Přejít k prostředku**.
 
@@ -157,7 +157,9 @@ Teď budete potřebovat primární přístupový klíč z účtu úložiště, k
 
 Vzor předpony cesty určuje, jak Stream Analytics najde vstupní soubory v úložišti. Musíte ho nastavit tak, aby odpovídal způsobu průběžného exportu uložených dat. Nastavte to takto:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```sql
+webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```
 
 V tomto příkladu:
 
@@ -235,9 +237,10 @@ Můžete zvolit, zda chcete začít zpracovávat data od verze Now nebo začít 
 
 Po několika minutách se vraťte na SQL Server Management Tools a sledujte tok dat v. Například použijte dotaz podobný tomuto:
 
-    SELECT TOP 100 *
-    FROM [dbo].[PageViewsTable]
-
+```sql
+SELECT TOP 100 *
+FROM [dbo].[PageViewsTable]
+```
 
 ## <a name="related-articles"></a>Související články
 * [Export do Power BI pomocí Stream Analytics](../../azure-monitor/app/export-power-bi.md )

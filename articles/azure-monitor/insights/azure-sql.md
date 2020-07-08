@@ -7,11 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249410"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087176"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -71,7 +72,7 @@ Když do svého pracovního prostoru přidáte Azure SQL Analytics, přidá se d
 
 ![Dlaždice souhrnu Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Po načtení se na dlaždici zobrazí počet databází a elastických fondů v SQL Database a ve spravovaných instancích a databázích instancí ve spravované instanci SQL, ze které Azure SQL Analytics přijímá telemetrii diagnostiky.
+Po načtení se na dlaždici zobrazí počet databází a elastických fondů v SQL Database a instancích a databázích instancí ve spravované instanci SQL, ze které Azure SQL Analytics přijímá telemetrii diagnostiky.
 
 ![Dlaždice Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -105,7 +106,7 @@ Po výběru dlaždice Azure SQL Analytics pro databáze se zobrazí řídicí pa
 
 Když vyberete některou dlaždici, otevře se v konkrétní perspektivě sestava s podrobnostmi. Po výběru perspektivy se otevře sestava procházení sestav.
 
-Když vyberete zobrazení spravované instance SQL, zobrazí se podrobnosti o využití spravované instance, databázích, které obsahuje, a telemetrie na dotazech spuštěných napříč instancí.
+Když vyberete zobrazení spravované instance SQL, zobrazí se podrobnosti o využití instance, databázích instancí a telemetrii u dotazů provedených napříč spravovanou instancí.
 
 ![Azure SQL Analytics vypršení časových limitů](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -268,7 +269,7 @@ AzureDiagnostics
 
 > [!NOTE]
 >
-> - Představte si, že nastavení této výstrahy je, že monitorovaná spravovaná instance má k dispozici streamování protokolu ResourceUsageStats s povoleným Azure SQL Analytics.
+> - Představte si nastavení této výstrahy znamená, že monitorovaná spravovaná instance má k dispozici streamování protokolu ResourceUsageStats s povoleným Azure SQL Analytics.
 > - Tento dotaz vyžaduje nastavení pravidla výstrahy, aby se aktivovala výstraha v případě, že v dotazu existují výsledky (> 0 výsledků), a označuje, že podmínka ve spravované instanci existuje. Výstupem je procento využití úložiště na spravované instanci.
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Průměrná spotřeba procesoru je nad 95% za poslední 1 hod.

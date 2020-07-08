@@ -5,14 +5,14 @@ services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146951"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086887"
 ---
 # <a name="about-azure-edge-zone-preview"></a>O verzi Preview zóny Azure Edge
 
@@ -74,7 +74,9 @@ Mezi typické případy použití patří:
 
 Hraniční zóny budou nabídnuty ve spolupráci s následujícími operátory:
 
-- AT&T (Brno, Praha a Los Angeles)
+- AT&T (Brno, Praha a Los Angeles) 
+
+Další informace [vám poskytne tým hraničních zón](https://aka.ms/EdgeZones) .
 
 ## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Zóny privátních hraničních zařízení Azure
 

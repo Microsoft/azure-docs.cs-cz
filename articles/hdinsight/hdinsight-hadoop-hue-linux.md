@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef30672e250e598688d1b81fd33fe0a995e78c7d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835474"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087720"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití odstínu v clusterech HDInsight Hadoop
 
@@ -72,7 +72,9 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 
     Tato akce vrátí název podobný následujícímu:
 
-        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```output
+    myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```
 
     Toto je název hostitele primární hlavnímu uzlu, kde se nachází web odstín.
 
@@ -115,7 +117,7 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 
 1. Odstín nerozumí Apache Tez úlohám, což je aktuální výchozí nastavení pro podregistr. Pokud chcete jako spouštěcí modul podregistru použít MapReduce, aktualizujte skript tak, aby ve skriptu použil následující příkaz:
 
-         set hive.execution.engine=mr;
+   `set hive.execution.engine=mr;`
 
 1. U clusterů se systémem Linux můžete mít scénář, ve kterém jsou služby spuštěné na primárním hlavnímu uzlu, zatímco Správce prostředků může běžet na sekundárním počítači. V takovém případě může dojít k chybám (zobrazené níže) při použití funkce odstín k zobrazení podrobností o SPUŠTĚNých úlohách v clusteru. Po dokončení úlohy však můžete zobrazit podrobnosti o úloze.
 

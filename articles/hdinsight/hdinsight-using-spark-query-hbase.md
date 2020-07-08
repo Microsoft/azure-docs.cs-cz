@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: e5d9d4f215752d95ee1d676e8a5b126b6d0d3ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190618"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087482"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
@@ -23,16 +23,16 @@ Apache Hbas se obvykle dotazuje buď pomocí rozhraní API na nižší úrovni (
 
 * Ve stejné [virtuální síti](./hdinsight-plan-virtual-network-deployment.md)jsou nasazené dva samostatné clustery HDInsight. Je nainstalovaná jedna z adaptérů HBA a jedna Spark s aspoň Spark 2,1 (HDInsight 3,6). Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* Schéma identifikátoru URI pro primární úložiště clusterů. Toto schéma by bylo wasb://pro Azure Blob Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo adl://pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
+* Schéma identifikátoru URI pro primární úložiště clusterů. Toto schéma by bylo wasb://pro Azure Blob Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo ADL://pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .  Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Celkový proces
 
 Proces vysoké úrovně, který umožňuje vašemu clusteru Spark dotazovat se na cluster HDInsight, je následující:
 
 1. Připravte si některá ukázková data v adaptérech HBA.
-2. Získejte soubor HBase-site. XML z vaší složky Konfigurace clusteru HBA (/etc/HBase/conf).
-3. Uložte kopii HBase-site. XML do konfigurační složky Spark 2 (/etc/spark2/conf).
-4. Spusťte `spark-shell` odkazování konektoru Spark HBA podle jeho souřadnic Maven v `packages` možnosti.
+2. Získejte soubor hbase-site.xml ze složky pro konfiguraci clusteru HBA (/etc/HBase/conf).
+3. Uložte kopii hbase-site.xml do konfigurační složky Spark 2 (/etc/spark2/conf).
+4. Spusťte `spark-shell` odkazování konektoru Spark HBA podle jeho souřadnic Maven v `packages` Možnosti.
 5. Definujte katalog, který mapuje schéma ze Sparku na HBA.
 6. Můžete pracovat s daty HBA pomocí rozhraní API RDD nebo dataframe.
 
@@ -77,9 +77,9 @@ V tomto kroku vytvoříte a naplníte tabulku v Apache Hbach, které pak můžet
     exit
     ```
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Kopírování HBase-site. XML do clusteru Spark
+## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Kopírovat hbase-site.xml do clusteru Spark
 
-Zkopírujte soubor HBase-site. XML z místního úložiště do kořenového adresáře výchozího úložiště clusteru Spark.  Upravte následující příkaz tak, aby odrážel vaši konfiguraci.  Pak z otevřené relace SSH do clusteru HBA zadejte příkaz:
+Zkopírujte hbase-site.xml z místního úložiště do kořenového adresáře výchozího úložiště clusteru Spark.  Upravte následující příkaz tak, aby odrážel vaši konfiguraci.  Pak z otevřené relace SSH do clusteru HBA zadejte příkaz:
 
 | Hodnota syntaxe | Nová hodnota|
 |---|---|
@@ -97,7 +97,7 @@ Pak ukončete připojení SSH k vašemu clusteru HBA.
 exit
 ```
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Vložte HBase-site. XML do clusteru Spark.
+## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Vložení hbase-site.xml do clusteru Spark
 
 1. Připojte se k hlavnímu uzlu clusteru Spark pomocí SSH. Níže uvedený příkaz upravte nahrazením `SPARKCLUSTER` názvem vašeho clusteru Spark a zadáním příkazu:
 
@@ -113,13 +113,49 @@ exit
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spustit prostředí Spark odkazující na konektor Spark HBA
 
+Po dokončení předchozího kroku byste měli být schopni spustit prostředí Spark, které odkazuje na příslušnou verzi konektoru Spark HBA. Nejnovější verzi jádra konektoru Spark HBA pro váš scénář najdete v tématu [úložiště SHC Core](https://repo.hortonworks.com/content/groups/public/com/hortonworks/shc/shc-core/).
+
+Příklad: v následující tabulce jsou uvedeny dvě verze a odpovídající příkazy, které tým HDInsight aktuálně používá. Pokud jsou verze adaptérů HBA a Spark stejné jako v tabulce, můžete pro své clustery použít stejné verze. 
+
+
 1. V otevřené relaci SSH ke clusteru Spark zadejte následující příkaz, který spustí prostředí Spark:
 
-    ```bash
-    spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
-    ```  
+    |Verze Sparku| Verze HDI HBA  | Verze SHC    |  Příkaz  |
+    | :-----------:| :----------: | :-----------: |:----------- |
+    |      2.1    | HDI 3,6 (HBA 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2,4    | HDI 4,0 (HBA 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
-2. Nechejte tuto instanci prostředí Spark otevřené a pokračujte dalším krokem.
+2. Nechte tuto instanci prostředí Sparku otevřenou a pokračujte [definováním katalogu a dotazu](#define-a-catalog-and-query). Pokud nenajdete jar, který odpovídá vašim verzím v SHC Core úložiště, pokračujte ve čtení. 
+
+JAR můžete vytvořit přímo z větve GitHubu [Spark-HBA-Connector](https://github.com/hortonworks-spark/shc) . Pokud například používáte se systémem Spark 2,3 a HBA 1,1, proveďte tyto kroky:
+
+1. Naklonujte úložiště:
+
+    ```bash
+    git clone https://github.com/hortonworks-spark/shc
+    ```
+    
+2. Přejít na větev-2,3:
+
+    ```bash
+    git checkout branch-2.3
+    ```
+
+3. Sestavení z větve (vytvoří soubor. jar):
+
+    ```bash
+    mvn clean package -DskipTests
+    ```
+    
+3. Spusťte následující příkaz (nezapomeňte změnit název. jar, který odpovídá sestavenému souboru. jar):
+
+    ```bash
+    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
+    ```
+    
+4. Nechte tuto instanci prostředí Sparku otevřenou a pokračujte k další části. 
+
+
 
 ## <a name="define-a-catalog-and-query"></a>Definování katalogu a dotazu
 
@@ -150,11 +186,11 @@ V tomto kroku definujete objekt katalogu, který mapuje schéma z Apache Spark n
     |}""".stripMargin
     ```
 
-    Kód provede následující úkony:  
+    Kód:  
 
-     a. Definujte schéma katalogu pro tabulku HBA s názvem `Contacts`.  
-     b. Identifikujte rowkey jako `key`a namapujte názvy sloupců používané ve Sparku na rodinu sloupců, název sloupce a typ sloupce, jak se používá v adaptérech HBA.  
-     c. Rowkey musí být také definováno podrobněji jako pojmenovaný sloupec (`rowkey`), který má konkrétní rodinu `cf` sloupců. `rowkey`  
+    1. Definuje schéma katalogu pro tabulku HBA s názvem `Contacts` .  
+    1. Identifikuje rowkey jako `key` a mapuje názvy sloupců používané ve Sparku na rodinu sloupců, název sloupce a typ sloupce, jak se používá v adaptérech HBA.  
+    1. Definuje rowkey podrobně jako pojmenovaný sloupec ( `rowkey` ), který má konkrétní rodinu sloupců `cf` `rowkey` .  
 
 1. Níže uvedeným příkazem Definujte metodu, která poskytuje objekt dataframe kolem `Contacts` tabulky v hbach:
 

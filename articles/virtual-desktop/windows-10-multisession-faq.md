@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735094"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086921"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -61,7 +61,7 @@ Galerie Azure obsahuje několik verzí, včetně Windows 10 Enterprise multi-ses
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Které verze více relací Windows 10 Enterprise jsou podporované?
 
-Windows 10 Enterprise multi-session, verze 1809 a novější se podporují a jsou dostupné v galerii Azure. Tyto verze se řídí stejnými zásadami životního cyklu podpory jako Windows 10 Enterprise, což znamená, že vydání pružiny se podporuje po dobu 18 měsíců a vydání na 30 měsíců.
+Windows 10 Enterprise multi-session, verze 1809 a novější se podporují a jsou dostupné v galerii Azure. Tyto verze se řídí stejnými zásadami životního cyklu podpory jako Windows 10 Enterprise, což znamená, že verze v březnu je podporovaná na 18 měsíců a v září vydání po dobu 30 měsíců.
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Které řešení pro správu profilů mám použít pro více relací Windows 10 Enterprise?
 

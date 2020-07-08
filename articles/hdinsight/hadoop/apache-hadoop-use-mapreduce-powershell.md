@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eb5817a3339494417bb426bfdccb09ae3ac7230
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75830067"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087771"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí PowerShellu
 
@@ -78,7 +79,7 @@ Chcete-li zobrazit slova a počty vytvářené úlohou, otevřete soubor **outpu
 > [!NOTE]  
 > Výstupní soubory úlohy MapReduce jsou neměnné. Takže pokud tuto ukázku znovu spustíte, musíte změnit název výstupního souboru.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud se po dokončení úlohy nevrátí žádné informace, zobrazte chyby úlohy. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec souboru **mapreducejob.ps1** následující příkaz. Pak soubor uložte a znovu spusťte skript.
 

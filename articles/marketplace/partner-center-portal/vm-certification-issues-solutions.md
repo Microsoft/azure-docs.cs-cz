@@ -7,147 +7,148 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 ms.date: 06/16/2020
-ms.openlocfilehash: 7bd3f1a5b242ee5196e92456cb3fc8c97f8f5b27
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 71577a52ed1b528bc330d4c8e1f4c34ab6e1d81f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958527"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087040"
 ---
-# <a name="virtual-machine-certification---issues-and-solutions"></a>Certifikace virtuálních počítačů – problémy a řešení
+# <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémy a řešení během certifikace virtuálních počítačů 
 
-Když publikujete image virtuálních počítačů do Azure Marketplace, tým Azure ověří image virtuálního počítače, aby zajistila její možnosti spouštění, zabezpečení a kompatibility Azure. Pokud některý z testů s vysokou kvalitou selže, publikování se nezdaří a zobrazí se zpráva obsahující chybu.
+Když publikujete image virtuálního počítače do Azure Marketplace, tým Azure je ověří, aby zajistil, že se jedná o možnosti spouštění, zabezpečení a kompatibility Azure. Pokud některý z testů s vysokou kvalitou selže, publikování se nezdaří a zobrazí se chybová zpráva s popisem problému.
 
-Tento článek vysvětluje běžné chybové zprávy pro image virtuálních počítačů. Popisuje také související řešení:
+Tento článek vysvětluje běžné chybové zprávy během publikování imagí virtuálních počítačů společně se souvisejícími řešeními.
 
 > [!NOTE]
 > Pokud máte dotazy nebo připomínky ke zlepšení, obraťte se na [podporu partnerského centra](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="approved-base-image"></a>Schválená základní image
 
-Když odešlete žádost o opětovné publikování image s aktualizacemi, může testovací případ na částečný počet selhat. V takovém případě nebude vaše image schválená.
+Když odešlete žádost o opětovné publikování image s aktualizacemi, může testovací případ na částečný počet selhat. Pokud dojde k chybě, váš obrázek nebude schválený.
 
-K této chybě dojde, pokud jste použili základní image, která patří jinému vydavateli a aktualizovali jste bitovou kopii. V takové situaci nebudete moct publikovat image.
+K této chybě dojde, když použijete základní bitovou kopii, která patří jinému vydavateli a aktualizovali jste bitovou kopii. V takové situaci nebudete moct publikovat image.
 
-Pokud chcete tento problém vyřešit, načtěte nejnovější image z Azure Marketplace a proveďte v této imagi změny. Pro zobrazení schválených základních imagí, kde můžete vyhledat svou image, se podívejte na tyto informace:
+Chcete-li tento problém vyřešit, načtěte obrázek z Azure Marketplace a proveďte v něm změny. Další informace najdete v následujících článcích:
 
-- [Linux – image](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows-images](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base))
+- [Image Linux](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
+- [Bitové kopie systému Windows](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
-Pokud chcete zjistit, jestli vaše image podporuje rozšíření virtuálních počítačů, nebo ne, postupujte podle těchto kroků:
+Zkontrolujte, jestli vaše image podporuje rozšíření virtuálních počítačů.
 
-Povolit rozšíření virtuálních počítačů:
+Pokud chcete povolit rozšíření virtuálních počítačů, udělejte toto:
 
-1. Vyberte virtuální počítač Linux.
-2. Přejít na **nastavení diagnostiky**.
-3. Pomocí aktualizace **účtu úložiště**povolte základní matice.
-4. Vyberte **Uložit**.
+1. Vyberte virtuální počítač se systémem Linux.
+1. Přejít na **nastavení diagnostiky**.
+1. Pomocí aktualizace **účtu úložiště**povolte základní matice.
+1. Vyberte **Uložit**.
 
    ![Povolit sledování na úrovni hosta.](./media/vm-certification-issues-solutions-1.png)
 
-Ověřte, jestli jsou rozšíření virtuálních počítačů správně aktivované:
+Pokud chcete ověřit, jestli jsou rozšíření virtuálních počítačů správně aktivované, udělejte toto:
 
-5. Přejít na kartu **rozšíření virtuálního počítače** na virtuálním počítači a ověřit **diagnostické rozšíření pro Linux**.
-6. Pokud se stav **zřizování úspěšně zřídí** , test testovacího případu byl úspěšný.
-7. Pokud se stav **zřizování nezdařil** , testovací případ rozšíření se nezdařil a je nutné nastavit zpřísněný příznak.
+1. Na virtuálním počítači vyberte kartu **rozšíření virtuálního počítače** a pak ověřte stav **rozšíření Linux Diagnostics**.
+    * Pokud je stav *zřizování úspěšné*, předává testovací případ rozšíření.  
+    * Pokud se stav *zřizování nezdařil*, testový případ rozšíření se nezdařil a je nutné nastavit zpřísněný příznak.
 
-   ![Zřizování bylo úspěšné.](./media/vm-certification-issues-solutions-2.png)
+      ![Snímek obrazovky zobrazující, že zřizování bylo úspěšné](./media/vm-certification-issues-solutions-2.png)
 
-   Pokud se rozšíření virtuálního počítače nepovede, [pomocí diagnostického rozšíření pro Linux monitorujte metriky a protokoly](../../virtual-machines/extensions/diagnostics-linux.md) , abyste je povolili. Pokud nechcete, aby bylo rozšíření virtuálního počítače povolené, obraťte se na tým podpory a požádejte ho, aby rozšíření zakázal.
+      Pokud se rozšíření virtuálního počítače nepovede, přečtěte si téma [použití diagnostického rozšíření systému Linux k monitorování metrik a protokolů](../../virtual-machines/extensions/diagnostics-linux.md) , které chcete povolit. Pokud nechcete, aby bylo rozšíření virtuálního počítače povolené, obraťte se na tým podpory a požádejte ho, aby ho zakázal.
 
-## <a name="virtual-machine-provisioning-issue"></a>Problém zřizování virtuálních počítačů
+## <a name="vm-provisioning-issue"></a>Problém zřizování virtuálních počítačů
 
-Před odesláním vaší nabídky ověřte, zda je proces zřizování pro virtuální počítač striktně následován. Pokud chcete zobrazit formát JSON pro zřizování virtuálního počítače, přečtěte si [certifikát na virtuálním počítači Azure (VM) image](azure-vm-image-certification.md).
+Ujistěte se, že jste před odesláním nabídky ověřili, že jste provedli proces zřizování virtuálních počítačů striktně. Pokud chcete zobrazit formát JSON pro zřizování virtuálního počítače, přečtěte si téma [certifikace image virtuálního počítače Azure](azure-vm-image-certification.md).
 
 Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 
-|S.NO|error|reason|řešení|
+|Scénář|Chyba|Důvod|Řešení|
 |---|---|---|---|
-|1|Neplatný virtuální pevný disk (VHD)|Pokud zadaná hodnota souboru cookie v zápatí VHD není správná, pak se virtuální pevný disk považuje za neplatný.|Znovu vytvořte image a odešlete žádost.|
-|2|Neplatný typ objektu BLOB|Zřizování virtuálního počítače se nezdařilo, protože použitý blok je typ objektu BLOB místo typu stránky.|Znovu vytvořte image a odešlete žádost.|
+|1|Neplatný virtuální pevný disk (VHD)|Pokud je zadaná hodnota souboru cookie v zápatí VHD nesprávná, bude virtuální pevný disk považován za neplatný.|Znovu vytvořte bitovou kopii a odešlete žádost.|
+|2|Neplatný typ objektu BLOB|Zřizování virtuálního počítače se nezdařilo, protože použitý blok je typ objektu BLOB místo typu stránky.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |3|Časový limit zřizování nebo není správně zobecněný|Došlo k potížím s generalizací virtuálních počítačů.|Znovu vytvořte bitovou kopii pomocí generalizace a odešlete žádost.|
 
 > [!NOTE]
-> Pro dokumentaci týkající se generalizace virtuálních počítačů použijte tyto odkazy:
-> - [Linux](create-azure-vm-technical-asset.md#generalize-the-image))
-> - [Systém Windows](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep))
+> Další informace o generalizaci virtuálních počítačů najdete v těchto tématech:
+> - [Dokumentace pro Linux](create-azure-vm-technical-asset.md#generalize-the-image)
+> - [Dokumentace k Windows](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
 
 ## <a name="software-compliance-for-windows"></a>Kompatibilita softwaru pro Windows
 
-Pokud se vaše žádost o image Windows zamítla kvůli kompatibilitě softwaru, pak jste možná vytvořili image Windows s nainstalovaným SQL serverem a nemusíte z Azure Marketplace přebírat příslušnou základní image SQL.
+Pokud se vaše žádost o bitovou kopii systému Windows zamítla z důvodu problému s kompatibilitou softwaru, možná jste vytvořili bitovou kopii systému Windows s nainstalovanou instancí SQL serveru místo toho, aby se z Azure Marketplace přestala příslušná základní image verze SQL.
 
 Nevytvářejte vlastní image Windows s nainstalovaným SQL serverem. Místo toho použijte z Azure Marketplace schválené základní image SQL (Enterprise/Standard/Web).
 
-Pokud se pokoušíte nainstalovat sadu Visual Studio nebo libovolný produkt licencovaný na Office, obraťte se na tým podpory, který vám poskytne předchozí schválení.
+Pokud se pokoušíte nainstalovat sadu Visual Studio nebo jakýkoli produkt licencovaný pro Office, obraťte se na tým podpory, který vám poskytne předchozí schválení.
 
-Další informace najdete v podrobnějších informacích o tom, jak si můžete vybrat schválený základ pro [Vytvoření technických prostředků virtuálních počítačů Azure](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
+Další informace o výběru schválené základní třídy najdete v tématu [Vytvoření technických prostředků virtuálních počítačů Azure](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
 
 ## <a name="tool-kit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo
 
-Sada nástrojů Microsoft Certification Toolkit vám pomůže provést testovací případy a ověřit, jestli je váš virtuální pevný disk nebo Image kompatibilní s prostředím Azure.
+Sada nástrojů Microsoft Certification Toolkit vám může pomáhat při spouštění testovacích případů a ověření, že je váš virtuální pevný disk nebo Image kompatibilní s prostředím Azure.
 
 Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-certification.md).
 
 ## <a name="linux-test-cases"></a>Testovací případy pro Linux
 
-Níže jsou uvedené testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
+V následující tabulce jsou uvedeny testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
 
-|Zdroj č.|testovací případy|description|
+|Scénář|Testovací případ|Description|
 |---|---|---|
 |1|Bash historii|Před vytvořením image virtuálního počítače by se měly vymazat soubory historie bash.|
-|2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 a novější.|
-|3|Požadované parametry jádra|Ověří, jestli jsou nastavené tyto parametry jádra: <br>Konzola = ttyS0<br>earlyprintk = ttyS0<br>rootdelay = 300|
+|2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 nebo novější.|
+|3|Požadované parametry jádra|Ověřuje, že jsou nastavené následující parametry jádra: <br>Konzola = ttyS0<br>earlyprintk = ttyS0<br>rootdelay = 300|
 |4|Odkládací oddíl na disku s operačním systémem|Ověřuje, že se na disku s operačním systémem odkládací oddíly nevytváří.|
 |5|Kořenový oddíl na disku s operačním systémem|Vytvořte jeden kořenový oddíl pro disk s operačním systémem.|
-|6|Verze OpenSSL|Verze OpenSSL by měla být větší nebo rovna hodnotě v 0.9.8.|
-|7|Verze Pythonu|Doporučujeme Python verze 2.6 + důrazně.|
-|8|Interval – aktivní klient|Nastavte ClientAliveInterval na 180. V případě potřeby je možné tuto aplikaci nastavit mezi 30 až 235. Pokud pro koncové uživatele povolíte SSH, musí být tato hodnota nastavena, jak je vysvětleno.|
+|6|Verze OpenSSL|Verze OpenSSL by měla být v 0.9.8 nebo novější.|
+|7|Verze Pythonu|Doporučujeme Python verze 2,6 nebo novější.|
+|8|Interval – aktivní klient|Nastavte ClientAliveInterval na 180. V případě potřeby je možné aplikaci nastavit z 30 na 235. Pokud pro koncové uživatele povolíte SSH, musí být tato hodnota nastavena, jak je vysvětleno.|
 |9|Architektura operačního systému|Podporují se jen 64bitové operační systémy.|
 |10|Automatická aktualizace|Určuje, jestli je povolená Automatická aktualizace agenta pro Linux.|
 
-### <a name="common-errors-found-while-executing-the-previous-test-cases"></a>Při provádění předchozích testovacích případů se našly běžné chyby.
+### <a name="common-errors-found-while-executing-previous-test-cases"></a>Při provádění předchozích testovacích případů se našly běžné chyby.
 
-Při provádění předchozích testovacích případů byly zjištěny běžné chyby.
+V následující tabulce jsou uvedeny běžné chyby, které byly nalezeny při provádění předchozích testovacích případů:
  
-|S.NO|testovací případ|error|řešení|
+|Scénář|Testovací případ|Chyba|Řešení|
 |---|---|---|---|
-|1|Testovací případ verze agenta pro Linux|Minimální verze agenta pro Linux je 2,241 nebo vyšší. Tento požadavek byl povinný od 1. května 2020.|Aby bylo možné [Odeslat žádost](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support), musí být bitová kopie aktualizována s požadovanou verzí.|
-|2|Testovací případ historie bash|Pokud je velikost historie bash v odeslaném obrázku větší než 1 KB, zobrazí se chyba. Velikost je omezená na 1 KB, aby se zajistilo, že v souboru historie bash nejsou zachyceny žádné potenciálně citlivé informace.|Pokud chcete tento problém vyřešit, připojte VHD k jakémukoli jinému pracovnímu virtuálnímu počítači a proveďte nějaké změny (například odstraňte `.bash` soubory historie), které chcete zmenšit, aby velikost menší nebo rovna 1 KB.|
-|3|Požadovaný parametr jádra pro testovací případ|Tato chyba se zobrazí, pokud hodnota pro **konzolu** není nastavená na **ttyS0**. Kontrolu provedete provedením příkazu:<br>`cat /proc/cmdline`|Nastavte hodnotu pro **Console** na **ttyS0** a odešlete požadavek znovu.|
-|4|Testovací případ intervalu ClientAlive|Pokud výsledek sady nástrojů poskytne neúspěšný výsledek pro tento testovací případ, existuje nevhodná hodnota pro **ClientAliveInterval**.|Nastavte hodnotu parametru **ClientAliveInterval** na hodnotu menší nebo rovnou hodnotě 235 a odešlete požadavek znovu.|
+|1|Testovací případ verze agenta pro Linux|Minimální verze agenta pro Linux je 2,241 nebo novější. Tento požadavek byl povinný od 1. května 2020.|Aby bylo možné [Odeslat žádost](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support), musí být bitová kopie aktualizována s požadovanou verzí.|
+|2|Testovací případ historie bash|Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), zobrazí se chyba. Velikost je omezená na 1 KB, aby se zajistilo, že v souboru historie bash nejsou zachyceny žádné potenciálně citlivé informace.|Pokud chcete tento problém vyřešit, připojte VHD k jakémukoli jinému pracovnímu virtuálnímu počítači a proveďte požadované změny (například odstraňte soubory historie *. bash* ), aby se snížila velikost menší nebo rovna 1 KB.|
+|3|Požadovaný parametr jádra pro testovací případ|Tato chyba se zobrazí, pokud hodnota pro **konzolu** není nastavená na **ttyS0**. Kontrolou spusťte následující příkaz:<br>`cat /proc/cmdline`|Nastavte hodnotu **Console** na **ttyS0**a odešlete požadavek znovu.|
+|4|Testovací případ intervalu ClientAlive|Pokud výsledek sady nástrojů poskytne neúspěšný výsledek pro tento testovací případ, existuje nevhodná hodnota pro **ClientAliveInterval**.|Nastavte hodnotu parametru **ClientAliveInterval** na hodnotu menší nebo rovnou hodnotě 235 a potom požadavek odešlete znovu.|
 
 ### <a name="windows-test-cases"></a>Testovací případy Windows
 
-Níže jsou uvedené testovací případy systému Windows, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
+V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
-|Zdroj č.|testovací případy|description|
+|Scénář |Testovací případy|Description|
 |---|---|---|---|
-|1|Architektura operačního systému|Azure podporuje jenom 64 bitových operačních systémů.|
-|2|Závislost uživatelského účtu|Provádění aplikace by nemělo být závislé na účtu správce.|
-|3|Cluster s podporou převzetí služeb při selhání|Funkce Clustering s podporou převzetí služeb při selhání ve Windows serveru se zatím nepodporuje. aplikace by neměla být závislá na této funkci.|
+|1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
+|2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
+|3|Cluster s podporou převzetí služeb při selhání|Funkce Clustering s podporou převzetí služeb při selhání ve Windows serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |4|PROTOKOLŮ|Protokol IPv6 se v prostředí Azure ještě nepodporuje. Aplikace by neměla být závislá na této funkci.|
 |5|DHCP|Role serveru Dynamic Host Configuration Protocol zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |6|Hyper-V|Role serveru Hyper-V zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |7|Vzdálený přístup|Role serveru vzdáleného přístupu (Direct Access) zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |8|Služby Rights Management|Rights Management služby. Role serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |9|Služba pro nasazení systému Windows|Služba pro nasazení systému Windows. Role serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
-|10|BitLocker Drive Encryption|Nástroj BitLocker Drive Encryption se na pevném disku operačního systému nepodporuje, ale můžete ho použít na datových discích.|
+|10|BitLocker Drive Encryption|Nástroj BitLocker Drive Encryption se na pevném disku operačního systému nepodporuje, ale je možné ho použít na datových discích.|
 |11|Názvový server internetového úložiště|Funkce názvového serveru pro Internet Storage zatím není podporována. Aplikace by neměla být závislá na této funkci.|
 |12|Multipath I/O|Funkce Multipath I/O. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |13|Vyrovnávání zatížení sítě|Vyrovnávání zatížení sítě. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |14|Protokol PNRP (Peer Name Resolution Protocol)|Protokol PNRP (Peer Name Resolution Protocol). Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
-|15|Služby SNMP|Funkce služby SNMP zatím není podporována. Aplikace by neměla být závislá na této funkci.|
+|15|Služby SNMP|Funkce služeb SNMP (Simple Network Management Protocol) se zatím nepodporuje. Aplikace by neměla být závislá na této funkci.|
 |16|Služba Windows Internet Name Service|Služba Windows Internet Name Service. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |17|Služba bezdrátové sítě LAN|Služba bezdrátové sítě LAN. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 
-Pokud jste pocházeli při jakémkoli selhání s výše uvedenými testovacími případy, přečtěte si sloupec **Popis** v předchozí tabulce pro toto řešení. Pokud potřebujete další informace, obraťte se na tým podpory. 
+Pokud jste pocházeli při jakémkoli selhání s předchozími testovacími případy, přečtěte si sloupec **Popis** v tabulce pro řešení. Pokud potřebujete další informace, obraťte se na tým podpory. 
 
 ## <a name="data-disk-size-verification"></a>Ověření velikosti datového disku
 
-Pokud je velikost jakékoli žádosti odeslané s datovým diskem větší než 1023 GB, bude tato žádost schválena. Toto pravidlo platí pro Linux & Windows.
+Pokud je velikost jakékoli žádosti odeslané s datovým diskem větší než 1023 gigabajtů (GB), požadavek se neschválí. Toto pravidlo se vztahuje na systémy Linux a Windows.
 
-požadavek odešlete znovu o velikost menší nebo rovnou 1023 GB.
+Požadavek odešlete znovu o velikost menší nebo rovnou 1023 GB.
 
 ## <a name="os-disk-size-validation"></a>Ověřování velikosti disku s operačním systémem
 
@@ -158,48 +159,48 @@ Omezení velikosti disku operačního systému najdete v následujících pravid
 |Linux|30 GB až 1023 GB|
 |Windows|30 GB až 250 GB|
 
-Protože virtuální počítače umožňují přístup k základnímu operačnímu systému, zajistěte, aby velikost virtuálního pevného disku byla pro virtuální pevný disk dostatečně velká. Vzhledem k tomu, že disky nejsou rozšiřitelné bez výpadků, použijte velikost disku v rozmezí 30 až 50 GB.
+Protože virtuální počítače umožňují přístup k základnímu operačnímu systému, zajistěte, aby velikost virtuálního pevného disku byla pro virtuální pevný disk dostatečně velká. Vzhledem k tomu, že disky nejsou rozšiřitelné bez výpadků, použijte velikost disku z 30 GB do 50 GB.
 
-|Velikost virtuálního pevného disku|Skutečná obsazená velikost|řešení|
+|Velikost virtuálního pevného disku|Skutečná obsazená velikost|Řešení|
 |---|---|---|
-|>500 TiB|Není k dispozici|obraťte se na tým podpory se schválením výjimky.|
-|250-500 TiB|>200 GiB se liší od velikosti objektu BLOB|obraťte se na tým podpory se schválením výjimky.|
+|>500 tebibytes (TiB)|Není k dispozici|Obraťte se na tým podpory se schválením výjimky.|
+|250-500 TiB|Rozdíl velikosti objektu BLOB v >200 gibibajtech (GiB)|Obraťte se na tým podpory se schválením výjimky.|
 
 > [!NOTE]
-> Větší velikosti disků účtují vyšší náklady a během kroků zřizování a replikace se bude účtovat zpoždění. Z důvodu tohoto zpoždění a nákladů může tým podpory vyhledat odůvodnění pro schválení výjimky.
+> Větší velikosti disků účtují vyšší náklady a během procesu instalace a replikace se bude účtovat zpoždění. Z důvodu tohoto zpoždění a nákladů může tým podpory vyhledat odůvodnění pro schválení výjimky.
 
 ## <a name="wannacry-patch-verification-test-for-windows"></a>Test ověření WannaCry opravy pro Windows
 
-Aby se zabránilo potenciálnímu útoku souvisejícímu se WannaCry virem, zajistěte, aby všechny požadavky na image Windows byly aktualizované pomocí nejnovější opravy.
+Aby se zabránilo potenciálnímu útoku souvisejícímu s virem WannaCry, zajistěte, aby všechny požadavky na image Windows byly aktualizované pomocí nejnovější opravy.
 
-Pokud chcete zjistit verzi opravenou v systému Windows Server, přečtěte si v následující tabulce Podrobnosti o operačním systému a minimální verzi, kterou bude podporovat. 
+Chcete-li zjistit podrobnosti o operačním systému pro opravu Windows serveru a minimální verzi, kterou bude podporovat, přečtěte si následující tabulku: 
 
 Verzi souboru bitové kopie lze ověřit z `C:\windows\system32\drivers\srv.sys` nebo `srv2.sys` .
 
 > [!NOTE]
-> WindowsServer2019 nemá žádné požadavky na povinnou verzi.
+> Windows Server 2019 nemá žádné požadavky na povinnou verzi.
 
-|Operační systém|verze|
+|Operační systém|Verze|
 |---|---|
-|WindowsServer2008R2|6.1.7601.23689|
-|WindowsServer2012|6.2.9200.22099|
-|WindowsServer2012R2|6.3.9600.18604|
-|WindowsServer2016|10.0.14393.953|
-|WindowsServer2019|NA|
+|Systém Windows obsluhuje 2008 R2|6.1.7601.23689|
+|Windows Server 2012|6.2.9200.22099|
+|Windows Server 2012 R2|6.3.9600.18604|
+|Windows Server 2016|10.0.14393.953|
+|Windows Server 2019|NA|
 
 ## <a name="sack-vulnerability-patch-verification"></a>Ověření opravy ohrožení zabezpečení pro parametr
 
 Když odešlete image pro Linux, váš požadavek může být odmítnut z důvodu problémů s verzí jádra.
 
-Aktualizujte jádro pomocí schválené verze a odešlete požadavek znovu. Schválenou verzi jádra můžete najít v následující tabulce. Číslo verze by mělo být rovno nebo větší než hodnota uvedená níže.
+Aktualizujte jádro pomocí schválené verze a odešlete požadavek znovu. Schválenou verzi jádra můžete najít v následující tabulce. Číslo verze by mělo být rovno nebo větší než zde uvedené číslo.
 
-Pokud bitová kopie není nainstalovaná s některou z následujících verzí jádra, aktualizujte si Image pomocí správných oprav. Další informace najdete na následujících odkazech. Po aktualizaci obrázku pomocí těchto požadovaných oprav vyžádejte od týmu podpory potřebné schválení:
+Pokud bitová kopie není nainstalovaná s některou z následujících verzí jádra, aktualizujte ji pomocí správných oprav. Po aktualizaci obrázku pomocí těchto požadovaných oprav vyžádejte od týmu podpory potřebné schválení:
 
 - CVE-2019-11477 
 - CVE-2019-11478 
 - CVE-2019-11479
 
-|Řada OS|verze|jádra|
+|Řada OS|Verze|jádro|
 |---|---|---|
 |Ubuntu|14,04 LTS|4.4.0-151| 
 ||14,04 LTS|4.15.0-1049 – * – Azure|
@@ -246,77 +247,73 @@ Pokud bitová kopie není nainstalovaná s některou z následujících verzí j
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>Velikost obrázku musí být v násobcích megabajtů.
 
-Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na více než 1 MB. Pokud váš virtuální pevný disk neodpovídá doporučené virtuální velikosti, váš požadavek může být zamítnutý.
+Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnané na násobky 1 megabajtu (MB). Pokud váš virtuální pevný disk neodpovídá doporučené virtuální velikosti, váš požadavek může být zamítnutý.
 
-Při převodu z nezpracovaného disku na virtuální pevný disk postupujte podle pokynů a je nutné zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v tématu [informace o neschválených distribucích](../../virtual-machines/linux/create-upload-generic.md) .
+Při převodu z nezpracovaného disku na VHD postupujte podle pokynů a ujistěte se, že velikost nezpracovaného disku je násobkem 1 MB. Další informace najdete v tématu [informace o neschválených distribucích](../../virtual-machines/linux/create-upload-generic.md).
 
 ## <a name="vm-access-denied"></a>Přístup k virtuálnímu počítači byl odepřen
 
-Pokud při provádění testovacích případů na virtuálním počítači provedete problémy s odepřeným přístupem, může to být způsobeno nedostatečnými oprávněními ke spuštění testovacích případů.
+Pokud při spuštění testovacích případů na virtuálním počítači postupujete mezi problémy s odepřeným přístupem, může to být kvůli nedostatečným oprávněním ke spuštění testovacích případů.
 
-Zkontrolujte, zda je pro účet, na kterém provádíte vlastní testovací případy, povolen správný přístup. Pokud ne, povolte přístup pro spuštění testovacích případů. Pokud nechcete povolit přístup, můžete sdílet výsledky pro samočinný test případu s týmem podpory.
+Zkontrolujte, zda je pro účet, na kterém běží vlastní testové případy, povolen správný přístup. Pokud přístup povolen není, povolte ho pro spuštění testovacích případů. Pokud nechcete povolit přístup, můžete sdílet výsledky pro samočinný test případu s týmem podpory.
 
 ## <a name="download-failure"></a>Chyba stahování
     
-V následující tabulce najdete případné problémy při stahování image virtuálního počítače pomocí adresy URL SAS.
+V následující tabulce najdete případné problémy, které vznikají při stahování image virtuálního počítače pomocí adresy URL sdíleného přístupového podpisu (SAS).
 
-|S.NO|error|reason|řešení|
+|Scénář|Chyba|Důvod|Řešení|
 |---|---|---|---|
-|1|Objekt BLOB se nenašel.|Virtuální pevný disk se může buď odstranit, nebo přesunout ze zadaného umístění.|| 
-|2|Používaný objekt BLOB|Virtuální pevný disk používá jiný interní proces.|Virtuální pevný disk by měl být při stahování pomocí adresy URL SAS v používaném stavu.|
-|3|Neplatná adresa URL SAS|Přidružená adresa URL SAS pro tento virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
-|4|Neplatný podpis|Přidružená adresa URL SAS pro tento virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
-|6|Podmíněná hlavička HTTP|Neplatná adresa URL SAS|Získejte správnou adresu URL SAS.|
-|7|Neplatný název VHD|Ověřte, zda **%** v názvu VHD existují speciální znaky, například nebo **""** .|Přejmenování souboru VHD odebráním speciálních znaků|
+|1|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.|| 
+|2|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete pomocí adresy URL SAS.|
+|3|Neplatná adresa URL SAS|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
+|4|Neplatný podpis|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
+|6|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
+|7|Neplatný název VHD|Zkontrolujte, zda nějaké speciální znaky, například znak procenta (%) nebo uvozovky (") existují v názvu VHD.|Přejmenujte soubor VHD odebráním speciálních znaků.|
 
-## <a name="first-1-mb-partition"></a>První oddíl 1 MB
+## <a name="first-1-mb-partition"></a>První oddíl 1-MB
 
-Při odesílání virtuálního pevného disku se ujistěte, že první oddíl 1 MB virtuálního pevného disku je prázdný. V opačném případě se vaše žádost nezdaří.
+Když odešlete VHD, ujistěte se, že první oddíl 1 MB virtuálního pevného disku je prázdný. V opačném případě se vaše žádost nezdaří.
 
 ## <a name="default-credentials"></a>Výchozí pověření
 
-Vždy zajistěte, aby se výchozí pověření neodesílala u odeslaného virtuálního pevného disku. Přidání výchozích přihlašovacích údajů způsobí, že virtuální pevný disk bude více zranitelný vůči bezpečnostním hrozbám Místo toho vytvořte při odesílání VHD vlastní přihlašovací údaje.
+Vždy zajistěte, aby se výchozí pověření neodesílala u odeslaného virtuálního pevného disku. Přidání výchozích přihlašovacích údajů způsobí, že virtuální pevný disk bude více zranitelný vůči bezpečnostním hrozbám Místo toho vytvořte při odeslání VHD vlastní přihlašovací údaje.
   
 ## <a name="datadisk-mapped-incorrectly"></a>Nesprávně mapované datadisk
 
-Pokud je žádost odeslána s více datovými disky, ale jejich pořadí není v pořadí, považuje se za problém s mapováním. Například pokud existují tři datové disky, pořadí číslování musí být **0, 1, 2**. Jakékoli jiné pořadí bude považováno za problém s mapováním.
+Pokud je žádost odeslána s více datovými disky, ale jejich pořadí není v pořadí, považuje se za problém s mapováním. Například pokud existují tři datové disky, pořadí číslování musí být *0, 1, 2*. Jakékoli jiné pořadí se považuje za problém s mapováním.
 
-odešlete žádost znovu se správným pořadím datových disků.
+Odešlete žádost znovu se správným pořadím datových disků.
 
 ## <a name="incorrect-os-mapping"></a>Nesprávné mapování OS
 
-Když se vytvoří obrázek, může být namapovaný nebo přiřazený k nesprávnému popisku operačního systému. Pokud je například při vytváření image vybraná možnost **Windows** jako součást názvu operačního systému, disk s operačním systémem by měl být nainstalovaný jenom s Windows. Totéž platí pro Linux.
+Když je vytvořen obrázek, může být namapován na nebo přiřazen nesprávný popisek operačního systému. Pokud například při vytváření image vyberete jako součást názvu operačního systému možnost **Windows** , disk s operačním systémem by měl být nainstalován pouze se systémem Windows. Stejný požadavek platí pro Linux.
 
 ## <a name="vm-not-generalized"></a>Virtuální počítač není zobecněný.
 
-Pokud se mají znovu použít všechny image vybrané z Azure Marketplace, musí být virtuální pevný disk s operačním systémem zobecněný.
+Pokud se mají znovu použít všechny image z Azure Marketplace, musí být virtuální pevný disk s operačním systémem zobecněný.
 
-Linux:
+* Pro **Linux**následující proces GENERALIZUJE virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač.
 
-Následující proces generalizuje virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač.
+  V okně SSH zadejte následující příkaz:`sudo waagent -deprovision+user`
 
-V okně SSH zadejte následující příkaz:`sudo waagent -deprovision+user`
+* Pro **Windows**můžete zobecnit bitové kopie systému Windows pomocí nástroje `sysreptool` .
 
-Windows:
+Další informace o tomto nástroji najdete v tématu [Přehled nástroje pro přípravu systému (Sysprep)]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Bitové kopie systému Windows jsou zobecněny pomocí `sysreptool` .
+## <a name="datadisk-errors"></a>Chyby datadisk
 
-Další informace o tomto nástroji najdete v článku [Nástroj Sysprep (Příprava systému) – přehled]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) .
+Pro řešení chyb souvisejících s datovým diskem použijte následující tabulku:
 
-## <a name="datadisk-error"></a>Chyba datadisk
-
-V následující tabulce najdete řešení chyb souvisejících s datovým diskem.
-
-|Chyba|reason|řešení|
+|Chyba|Důvod|Řešení|
 |---|---|---|
-|`DataDisk- InvalidUrl:`|Tato chyba může být způsobena neplatným číslem při odeslání nabídky logické jednotce (LUN).|Ověřte, že je pořadí čísel LUN pro datový disk v partnerském centru.|
-|`DataDisk- NotFound:`|Tato chyba může být způsobená tím, že datový disk není umístěný na zadané adrese URL SAS.|Ověřte, že je datový disk umístěný na adrese URL SAS zadané v požadavku.|
+|`DataDisk- InvalidUrl:`|K této chybě mohlo dojít z důvodu neplatného čísla logické jednotky (LUN) při odeslání nabídky.|Ověřte, že je pořadí čísel LUN pro datový disk v partnerském centru.|
+|`DataDisk- NotFound:`|K této chybě může dojít kvůli tomu, že datový disk není umístěný na zadané adrese URL SAS.|Ověřte, že je datový disk umístěný na adrese URL SAS, která je zadaná v požadavku.|
 
 ## <a name="remote-access-issue"></a>Problém se vzdáleným přístupem
 
-Pokud není možnost protokolu RDP pro bitovou kopii systému Windows povolena, zobrazí se tato chyba. 
+Pokud v imagi Windows není povolená možnost protokol RDP (Remote Desktop Protocol) (RDP), zobrazí se tato chyba. 
 
-Před odesláním povolte možnost přístup k protokolu RDP pro image Windows.
+Než je odešlete, povolte přístup k protokolu RDP pro image Windows.
 
 ## <a name="next-steps"></a>Další kroky
 

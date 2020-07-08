@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 40d49d156b76db5e02ec48defbb82ed60819c478
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651108"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086955"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Seznámení s chybami přijatými z WebHCatu v HDInsightu a jejich řešení
 
@@ -34,7 +34,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 | Nastavení | Co dělá | Výchozí hodnota |
 | --- | --- | --- |
 | [příze. Scheduler. Capacity. Max – aplikace][maximum-applications] |Maximální počet úloh, které mohou být aktivní souběžně (čeká na vyřízení nebo spuštění) |10 000 |
-| [Templeton. Exec. Max – procs][max-procs] |Maximální počet požadavků, které mohou být souběžně obsluhovány |20 |
+| [templeton.exec. Max-procs][max-procs] |Maximální počet požadavků, které mohou být souběžně obsluhovány |20 |
 | [MapReduce. jobhistory. Max – stáří-MS][max-age-ms] |Počet dní, po který se zachová historie úloh |7 dní |
 
 ## <a name="too-many-requests"></a>Příliš mnoho žádostí

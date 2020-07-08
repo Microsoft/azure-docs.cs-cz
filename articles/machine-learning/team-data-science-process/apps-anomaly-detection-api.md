@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656544"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087159"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rozhraní API pro detekci anomálií
 
@@ -63,44 +63,48 @@ Aby bylo možné volat rozhraní API, budete muset znát umístění koncového 
 ### <a name="sample-request-body"></a>Ukázka textu žádosti
 Požadavek obsahuje dva objekty: `Inputs` a `GlobalParameters` .  V níže uvedeném příkladu žádosti se některé parametry odesílají explicitně, zatímco jiné nejsou (posuňte se dolů na úplný seznam parametrů pro každý koncový bod).  Parametry, které se explicitně neodesílají v žádosti, budou používat výchozí hodnoty uvedené níže.
 
-    {
-                "Inputs": {
-                        "input1": {
-                                "ColumnNames": ["Time", "Data"],
-                                "Values": [
-                                        ["5/30/2010 18:07:00", "1"],
-                                        ["5/30/2010 18:08:00", "1.4"],
-                                        ["5/30/2010 18:09:00", "1.1"]
-                                ]
-                        }
-                },
-        "GlobalParameters": {
-            "tspikedetector.sensitivity": "3",
-            "zspikedetector.sensitivity": "3",
-            "bileveldetector.sensitivity": "3.25",
-            "detectors.spikesdips": "Both"
-        }
+```json
+{
+            "Inputs": {
+                    "input1": {
+                            "ColumnNames": ["Time", "Data"],
+                            "Values": [
+                                    ["5/30/2010 18:07:00", "1"],
+                                    ["5/30/2010 18:08:00", "1.4"],
+                                    ["5/30/2010 18:09:00", "1.1"]
+                            ]
+                    }
+            },
+    "GlobalParameters": {
+        "tspikedetector.sensitivity": "3",
+        "zspikedetector.sensitivity": "3",
+        "bileveldetector.sensitivity": "3.25",
+        "detectors.spikesdips": "Both"
     }
+}
+```
 
 ### <a name="sample-response"></a>Ukázková odpověď
 Chcete-li zobrazit `ColumnNames` pole, musíte `details=true` do žádosti zahrnout jako parametr adresy URL.  V níže uvedených tabulkách najdete význam každého z těchto polí.
 
-    {
-        "Results": {
-            "output1": {
-                "type": "table",
-                "value": {
-                    "Values": [
-                        ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
-                        ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
-                        ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
-                    ],
-                    "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
-                    "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
-                }
+```json
+{
+    "Results": {
+        "output1": {
+            "type": "table",
+            "value": {
+                "Values": [
+                    ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
+                    ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
+                    ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
+                ],
+                "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
+                "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
             }
         }
     }
+}
+```
 
 
 ## <a name="score-api"></a>Rozhraní API skóre
@@ -111,7 +115,7 @@ Následující obrázek ukazuje příklad anomálií, které může rozhraní AP
 ### <a name="detectors"></a>Detektory
 Rozhraní API pro detekci anomálií podporuje detektory ve třech hlavních kategoriích. Podrobnosti o specifických vstupních parametrech a výstupech pro jednotlivé detektory najdete v následující tabulce.
 
-| Kategorie detektoru | Detectoru | Popis | Vstupní parametry | Výstupy |
+| Kategorie detektoru | Detectoru | Description | Vstupní parametry | Výstupy |
 | --- | --- | --- | --- | --- |
 | Detektory špičky |Detektor TSpike |Detekovat špičky a neshodné hodnoty na základě toho, co se týče hodnot od první a třetího Kvartily |*tspikedetector. Citlivost:* přebírá celočíselnou hodnotu v rozsahu 1-10, výchozí hodnota: 3; Vyšší hodnoty zachytí více extrémních hodnot tím, že budou méně citlivé. |TSpike: binární hodnoty – ' 1 ', pokud je detekována špička/DIP, ' 0 ' jinak |
 | Detektory špičky | Detektor ZSpike |Detekovat špičky a nezávisle na tom, jak daleko jsou v databodech ze střední hodnoty |*zspikedetector. Citlivost:* přebírat celočíselnou hodnotu v rozsahu 1-10, výchozí hodnota: 3; Vyšší hodnoty zachytí více extrémních hodnot, takže jsou méně citlivé. |ZSpike: binární hodnoty – ' 1 ', pokud je detekována špička/DIP, ' 0 ' jinak |
@@ -121,22 +125,22 @@ Rozhraní API pro detekci anomálií podporuje detektory ve třech hlavních kat
 ### <a name="parameters"></a>Parametry
 Podrobnější informace o těchto vstupních parametrech jsou uvedeny v následující tabulce:
 
-| Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
+| Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
 | detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |celé číslo |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
-| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
-| trenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
+| trenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
 | tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
 | zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
-| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |celé číslo |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |– |
+| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |celé číslo |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.
 
-| Výstupy | Popis |
+| Výstupy | Description |
 | --- | --- |
-| Time |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
+| Čas |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | Data |Hodnoty z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | TSpike |Binární indikátor, který označuje, jestli je špička detekována detektorem TSpike |
 | ZSpike |Binární indikátor, který označuje, jestli je špička detekována detektorem ZSpike |
@@ -157,29 +161,29 @@ Detektory v koncovém bodu sezónnost jsou podobné těm, které jsou v nesezón
 
 Podrobnější informace o těchto vstupních parametrech jsou uvedeny v následující tabulce:
 
-| Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
+| Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
 | předzpracování. aggregationInterval |Interval agregace v sekundách pro agregaci vstupních časových řad |0 (není provedena žádná agregace) |celé číslo |0: přeskočit agregaci > 0 jinak |5 minut až 1 den, časová řada závislá |
-| předzpracování. aggregationFunc |Funkce používaná pro agregaci dat do zadaného AggregationInterval |mean |Výčtový |střední hodnota, suma, délka |– |
-| předzpracování. replaceMissing |Hodnoty, které slouží k imputaci chybějících dat |LKV (Poslední známá hodnota) |Výčtový |nula, LKV, střední hodnota |– |
+| předzpracování. aggregationFunc |Funkce používaná pro agregaci dat do zadaného AggregationInterval |mean |Výčtový |střední hodnota, suma, délka |Není k dispozici |
+| předzpracování. replaceMissing |Hodnoty, které slouží k imputaci chybějících dat |LKV (Poslední známá hodnota) |Výčtový |nula, LKV, střední hodnota |Není k dispozici |
 | detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |celé číslo |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
-| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
-| postrenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
-| negtrenddetector. Citlivost |Citlivost pro záporný detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
+| postrenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
+| negtrenddetector. Citlivost |Citlivost pro záporný detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
 | tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
 | zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
 | sezónnost. Enable |Zda má být provedena analýza sezónnost |true |Boolean |true, false |Závislá na časové řadě |
 | sezónnost. numSeasonality |Maximální počet pravidelných cyklů, které se mají zjistit |1 |celé číslo |1, 2 |1-2 |
-| sezónnost. Transform |Zda mají být před použitím detekce anomálií odebrány sezónní (a) komponenty trendu |odsezóny |Výčtový |None, resezóny, deseasontrend |– |
-| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |celé číslo |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |– |
+| sezónnost. Transform |Zda mají být před použitím detekce anomálií odebrány sezónní (a) komponenty trendu |odsezóny |Výčtový |None, resezóny, deseasontrend |Není k dispozici |
+| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |celé číslo |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.
 
-| Výstupy | Popis |
+| Výstupy | Description |
 | --- | --- |
-| Time |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
+| Čas |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | OriginalData |Hodnoty z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | ProcessedData |Jednu z následujících možností: <ul><li>Sestavila se řada časových řad, pokud byla zjištěna významná sezónnost a vybraná možnost pro odplánování;</li><li>seřízená a netrendovaná časová řada, pokud se zjistilo významné sezónnost a volba deseasontrend</li><li>v opačném případě je tato možnost stejná jako OriginalData</li> |
 | TSpike |Binární indikátor, který označuje, jestli je špička detekována detektorem TSpike |

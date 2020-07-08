@@ -15,12 +15,12 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a8781a5afb8b6df0444ce177be452f84c73413e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172351"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087213"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Ověřování založené na tokenech (HTTP/2) na APNS
 
@@ -53,15 +53,15 @@ Pokud chcete povolit ověřování na základě tokenu, budete potřebovat násl
 
 Identifikátor klíče se dá získat ze stránky **klíče** v části **certifikáty, identifikátory & profily**ve vašem účtu Apple Developer:
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
+![Certifikáty](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
+![Identifikátory](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier-and-application-name"></a>Identifikátor aplikace a název aplikace
 
 Název a identifikátor aplikace jsou také k dispozici na stránce **certifikáty, identifikátory & profily** v účtu vývojáře:
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
+![Certifikáty a ID](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
 ### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>Konfigurace prostřednictvím sady .NET SDK nebo Azure Portal
 
@@ -77,9 +77,9 @@ Přihlašovací údaje založené na tokenech se skládají z následujících p
 
 * **ID klíče**: identifikátor privátního klíče vygenerovaného na portálu pro vývojáře Apple; například `2USFGKSKLT` .
 * **ID týmu**: taky se označuje jako předpona nebo předpona aplikace. Toto je identifikátor organizace na portálu pro vývojáře Apple. například `S4V3D7CHJR` .
-* **ID sady**: označuje se taky jako ID aplikace. Toto je identifikátor sady prostředků pro aplikaci. například `com.microsoft.nhubsample2019` . Všimněte si, že pro mnoho aplikací můžete použít jeden klíč. Tato hodnota se mapuje na `apns-topic` hlavičku HTTP při odesílání oznámení a používá se k zacílení na konkrétní aplikaci.
+* **ID sady**: označuje se taky jako ID aplikace. Toto je identifikátor sady prostředků pro aplikaci. například `com.example.myapp` . Všimněte si, že pro mnoho aplikací můžete použít jeden klíč. Tato hodnota se mapuje na `apns-topic` hlavičku HTTP při odesílání oznámení a používá se k zacílení na konkrétní aplikaci. Všimněte si, že hodnotu explicitně nemůžete nastavit `apns-topic` .
 * **Token**: taky se označuje jako klíč nebo privátní klíč. To se získá ze souboru. P8 vygenerovaného na portálu pro vývojáře Apple. Klíč musí mít povolený APN (který je při generování klíče vybraný na portálu pro vývojáře Apple). Hodnota musí mít záhlaví nebo zápatí PEM z něj odstraněna, až ji dodáte na portál NH nebo rozhraní API.
-* **Koncový bod**: Toto je přepínač v okně Notification Hubsového portálu a pole řetězce v rozhraní API. Platné hodnoty jsou `https://api.push.apple.com` nebo `https://api.sandbox.push.apple.com` . Notification Hubs používá tuto hodnotu pro prostředí produkčního prostředí nebo izolovaného prostoru (sandbox) pro odesílání oznámení. To se musí shodovat s `aps-environment` oprávněním v aplikaci, jinak se vygenerované tokeny zařízení APNs neshodují s prostředím a oznámení se nepodaří odeslat.
+* **Koncový bod**: Toto je přepínač v okně Notification Hubsového portálu a pole řetězce v rozhraní API. Platné hodnoty jsou `https://api.development.push.apple.com:443/3/device` nebo `https://api.sandbox.push.apple.com:443/3/device` . Notification Hubs používá tuto hodnotu pro prostředí produkčního prostředí nebo izolovaného prostoru (sandbox) pro odesílání oznámení. To se musí shodovat s `aps-environment` oprávněním v aplikaci, jinak se vygenerované tokeny zařízení APNs neshodují s prostředím a oznámení se nepodaří odeslat.
 
 Zde je ukázka kódu ilustrující správné použití:
 

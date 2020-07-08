@@ -11,14 +11,82 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607869"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086282"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="text-to-speech-2020-july-release"></a>Převod textu na řeč 2020 – červenec verze
+
+### <a name="new-features"></a>Nové funkce
+
+* **Neuronové TTS, 15 novinek neuronové**– nové hlasy přidané do portfolia neuronové TTS jsou Salma v arabštině (Egypt), Zariyah v arabštině (Saúdská Arábie), alba v Katalánština (Španělsko), Christel v dánštině (Dánsko), Neerja v angličtině (Indie), Swara v hindštině (Indie), Colette v holandštině (Nizozemsko), Zofia v polštině (Polsko), Fernanda v portugalštině (Portugalsko), Dariya v ruštině (Rusko), Hillevi v švédském (Švédsku), Achara v thajštině (Thajsko), Iselin Norština (Bokmål), HiuGaai v čínštině (Hongkong) a HsiaoYu v čínštině (Tchaj-wan). Zkontroluje všechny [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices).  
+
+* **Vlastní hlas, zjednodušené hlasové testování s výukovým tokem pro zjednodušení uživatelského prostředí**: Díky nové funkci testování se každý hlas automaticky testuje pomocí předdefinované testovací sady optimalizované pro jednotlivé jazyky, které budou pokrývat scénáře obecného a hlasového asistenta. Tyto sady testů pečlivě vyberou a testují, aby zahrnovaly typické případy použití a fonémy v jazyce. Kromě toho mohou uživatelé i nadále vybrat nahrávání vlastních testovacích skriptů při výuce modelu.
+
+* **Vytvoření zvukového obsahu: byla vydána sada nových funkcí pro zajištění výkonnějšího ladění hlasu a možností správy zvuku.**
+
+    * `Pitch`, `rate` a `volume` jsou rozšířeny, aby podporovaly optimalizaci s předdefinovanou hodnotou, jako je například pomalé, střední a rychlé. Pro uživatele je teď snadné vybrat hodnotu "Constant" pro jejich úpravu zvuku.
+
+    ![Ladění zvuku](media/release-notes/audio-tuning.png)
+
+    * Uživatelé teď můžou zkontrolovat `Audio history` soubor pro práci. Díky této funkci mohou uživatelé snadno sledovat veškeré vygenerované zvuky související s pracovním souborem. Můžou si prohlédnout historii verze a porovnat kvalitu současně s optimalizací. 
+
+    ![Historie zvuků](media/release-notes/audio-history.png)
+
+    * Tato `Clear` funkce je teď pružnější. Uživatelé můžou vymazat konkrétní parametr ladění a přitom ponechat další parametry dostupné pro vybraný obsah.  
+
+    * Na [úvodní stránce](https://speech.microsoft.com/audiocontentcreation) se přidalo video s kurzem, které uživatelům pomůže rychle začít pracovat s laděním hlasu a řečí pro řeč. 
+
+### <a name="general-tts-voice-quality-improvements"></a>Obecná vylepšení kvality hlasu TTS
+
+* Vylepšený TTS vocoder v pro vyšší věrnost a nižší latenci.
+
+    * Aktualizovali jsme Elsa v italštině na nový vocoder, který dosáhl + 0,464 paměti CMOS (srovnávací průměrné skóre názoru) v kvalitě hlasu, 40% rychlejší v syntézě a 30% snížení latence při první byte. 
+    * Aktualizovali jsme Xiaoxiao v čínštině na nový vocoder s využitím + 0148 paměti CMOS pro obecné domény, + 0,348 pro styl newscast a + 0,195 pro styl Lyrical. 
+
+* Aktualizované `de-DE` a `ja-JP` hlasové modely, aby byl výstup TTS více přirozený.
+    
+    * Aktualizovaný Katja v němčině s nejnovější metodou modelování Prosody, MOS (střední skóre stanoviska) je + 0,13. 
+    * Aktualizovaný Nanami v japonštině s novým zvýrazňujícím modelem Prosody, MOS (znamenající skóre stanoviska) je + 0,19;  
+
+* Vylepšená přesnost výslovnosti na úrovni aplikace v 5 jazycích.
+
+    | Jazyk | Omezení chyby výslovnosti |
+    |---|---|
+    | en-GB | 51% |
+    | ko-KR | sedmnáct |
+    | pt-BR | 39% |
+    | pt-PT | 77% |
+    | id-ID | 46% |
+
+### <a name="bug-fixes"></a>Opravy chyb
+
+* Čtení měny
+    * Opravili jsme problém se čtením měny pro `es-ES` a`es-MX`
+     
+    | Jazyk | Vstup | Přečtení po vylepšení |
+    |---|---|---|
+    | ES – MX | $1,58 | un Peso cincuenta y Ocho centavos |
+    | es-ES | $1,58 | dólar cincuenta y Ocho centavos |
+
+    * Podpora pro zápornou měnu (například-€325) v následujících národních prostředích: `en-US` , `en-GB` , `fr-FR` , `it-IT` , `en-AU` , `en-CA` .
+
+* Vylepšené čtení adres v `pt-PT` .
+* Opravili jsme `en-AU` problémy s výslovností Natasha () a Libby ( `en-UK` ) na slovech "for" a "4".  
+* Opravené chyby v nástroji pro tvorbu zvukového obsahu
+    * Další a neočekávané pozastavení po druhém odstavci je opraveno.  
+    * Funkce No Break je přidána zpátky z regresní chyby. 
+    * Vyřešil se problém s náhodným aktualizací Speech studia.  
+
+### <a name="samplessdk"></a>Ukázky/sada SDK
+
+* JavaScript: řeší problém s přehráváním v prohlížeči FireFox a Safari v macOS a iOS. 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>Sada Speech SDK 1.12.1:2020 – červenou verzi
 **Rozpoznávání řeči (neboli SPX)**
 -   Přidání funkcí vyhledávání v nápovědě k rozhraní příkazového řádku:
@@ -149,7 +217,7 @@ Buďte v pořádku!
 - JavaScript: Přidání podpory pro pro `FromHost API` usnadnění používání s Prem kontejnery a svrchovanými cloudy. Další informace [najdete v dokumentaci.](speech-container-howto.md)
 - JavaScript: nyní jsme se spojili `NODE_TLS_REJECT_UNAUTHORIZED` s příspěvkem z [orgads](https://github.com/orgads). [Tady](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)najdete podrobnosti.
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - `OpenSSL`byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud vaše Doručená pošta nebyla `OpenSSL` nainstalována do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
 - Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na, `long` aby bylo umožněno přístupu k `WordLevelTimingResults` datům, když jsou data řeči delší než 2 minuty.
@@ -190,7 +258,7 @@ Buďte v pořádku!
 - Přidání `KeywordRecognizer` podpory pro Windows (UWP), Android a iOS prostřednictvím balíčků NuGet a Unity
 - Bylo přidáno rozhraní API vzdálené konverzace Java, které umožní přepis konverzace v asynchronních dávkách.
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - Funkce konverzace Transcriber přesunuté do oboru názvů `Microsoft.CognitiveServices.Speech.Transcription` .
 - Součást metod konverzace Transcriber je přesunuta do nové `Conversation` třídy.
@@ -322,7 +390,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - Sada Speech SDK pro jazyky Java, .NET Core, C++ a objektivní-C získala podporu macOS. Podpora pro macOS je v současnosti ve verzi beta.
 - iOS: sada Speech SDK pro iOS (cíl-C) je teď publikovaná taky jako CocoaPod.
 - JavaScript: podpora pro jiný než výchozí mikrofon jako vstupní zařízení.
-- JavaScript: proxy podpora pro Node. js.
+- JavaScript: podpora proxy serveru pro Node.js.
 
 **ukázky**
 
@@ -412,7 +480,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
   - V této verzi je k dispozici beta verze podpory Pythonu (3,5 a novější). Další informace naleznete zde] (rychlý Start – python.md).
 - JavaScript
   - Sada Speech SDK pro JavaScript je open source. Zdrojový kód je k dispozici na [GitHubu](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
-  - Nyní podporujeme Node. js. Další informace najdete [tady](quickstart-js-node.md).
+  - Nyní podporujeme Node.js, další informace najdete [tady](quickstart-js-node.md).
   - Omezení délky pro zvukové relace bylo odebráno, k automatickému připojení dojde v rámci pokrytí.
 - `Connection`předmětů
   - Z `Recognizer` , můžete získat přístup k `Connection` objektu. Tento objekt vám umožňuje explicitně iniciovat připojení služby a přihlásit se k odběru událostí a odpojovat se.
@@ -443,7 +511,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 **ukázky**
 
 - Aktualizovali a opravili jsme několik ukázek (například výstupní hlasy pro překlad atd.).
-- Do [ukázkového úložiště](https://aka.ms/csspeech/samples)se přidaly ukázky pro Node. js.
+- Do [ukázkového úložiště](https://aka.ms/csspeech/samples)se přidaly Node.js ukázky.
 
 ## <a name="speech-sdk-110"></a>Sada Speech SDK 1.1.0
 
@@ -497,7 +565,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 - Podpora pro cíl-C v iOS. Podívejte se na náš rychlý úvodní úkol [v jazyce C pro iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
 - Podpora JavaScriptu v prohlížeči Podívejte se na náš [rychlý úvodní JavaScript](quickstart-js-browser.md).
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - V této verzi se zavádí určitý počet nezměněných změn.
   Podrobnosti najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
@@ -516,7 +584,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 
 - Vystavení dalších podrobností o chybách při chybě připojení
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - V jazyce Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` již funkce nevyžaduje parametr cesty. Tato cesta se teď automaticky detekuje na všech podporovaných platformách.
 - Přístupový objekt get vlastnosti `EndpointUrl` v jazycích Java a C# byl odebrán.
@@ -545,7 +613,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 - Výsledek rozpoznávání obsahuje více polí. Jsou posunuty od zahájení zvuku a doby trvání (v tiků) rozpoznaného textu a dalších hodnot, které představují stav rozpoznávání, například `InitialSilenceTimeout` a `InitialBabbleTimeout` .
 - Podporuje AuthorizationToken pro vytváření instancí továrny.
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - Události rozpoznávání: `NoMatch` Typ události byl sloučen do `Error` události.
 - SpeechOutputFormat v jazyce C# byla přejmenována na `OutputFormat` , aby zůstala v souladu s C++.

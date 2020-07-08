@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77314514ca26997fecd6b5d7c6ba1fc7d14c2584
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209056"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087448"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů služby Azure Storage k omezení přístupu k datům ve službě HDInsight
 
@@ -39,11 +39,11 @@ Služba HDInsight má úplný přístup k datům v účtech Azure Storage přidr
 
 * Pokud používáte jazyk C#, Visual Studio musí být verze 2013 nebo vyšší.
 
-* Schéma identifikátoru URI pro váš účet úložiště. Toto schéma bude `wasb://` Azure Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.
+* Schéma identifikátoru URI pro váš účet úložiště. Toto schéma bude `wasb://` Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .
 
 * Existující cluster HDInsight, do kterého se má přidat sdílený přístupový podpis V takovém případě můžete použít Azure PowerShell k vytvoření clusteru a přidání sdíleného přístupového podpisu během vytváření clusteru.
 
-* Ukázkové soubory z [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Toto úložiště obsahuje následující položky:
+* Ukázkové soubory z [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) . Toto úložiště obsahuje následující položky:
 
   * Projekt sady Visual Studio, který může vytvořit kontejner úložiště, uloženou zásadu a SAS pro použití se službou HDInsight
   * Skript Pythonu, který může vytvořit kontejner úložiště, uloženou zásadu a SAS pro použití se službou HDInsight
@@ -88,7 +88,7 @@ Uložte token SAS vytvořený na konci každé metody. Token bude vypadat podobn
 
 ### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Hodnoty `RESOURCEGROUP`, `STORAGEACCOUNT`a `STORAGECONTAINER` nahraďte odpovídajícími hodnotami pro existující kontejner úložiště. Změňte adresář na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` nebo upravte `-File` parametr tak, aby obsahoval absolutní cestu pro `Set-AzStorageblobcontent`. Zadejte následující příkaz prostředí PowerShell:
+`RESOURCEGROUP`Hodnoty, `STORAGEACCOUNT` a nahraďte `STORAGECONTAINER` odpovídajícími hodnotami pro existující kontejner úložiště. Změňte adresář na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` nebo upravte `-File` parametr tak, aby obsahoval absolutní cestu pro `Set-AzStorageblobcontent` . Zadejte následující příkaz prostředí PowerShell:
 
 ```powershell
 $resourceGroupName = "RESOURCEGROUP"
@@ -154,7 +154,7 @@ Set-AzStorageblobcontent `
 
 Použití proměnných v této části vychází z prostředí systému Windows. Pro bash nebo jiná prostředí se budou potřebovat mírné variace.
 
-1. Nahraďte `STORAGEACCOUNT`a `STORAGECONTAINER` příslušnými hodnotami pro existující kontejner úložiště.
+1. Nahraďte `STORAGEACCOUNT` a `STORAGECONTAINER` příslušnými hodnotami pro existující kontejner úložiště.
 
     ```azurecli
     # set variables
@@ -178,7 +178,7 @@ Použití proměnných v této části vychází z prostředí systému Windows.
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. Změňte adresář na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` nebo upravte `--file` parametr tak, aby obsahoval absolutní cestu pro `az storage blob upload`. Spusťte zbývající příkazy:
+3. Změňte adresář na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` nebo upravte `--file` parametr tak, aby obsahoval absolutní cestu pro `az storage blob upload` . Spusťte zbývající příkazy:
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -199,9 +199,9 @@ Použití proměnných v této části vychází z prostředí systému Windows.
 
 ### <a name="using-python"></a>Pomocí Pythonu
 
-Otevřete `SASToken.py` soubor, nahraďte `storage_account_name`, `storage_account_key`a `storage_container_name` zadejte odpovídající hodnoty pro existující kontejner úložiště a potom spusťte skript.
+Otevřete `SASToken.py` soubor, nahraďte `storage_account_name` , `storage_account_key` a `storage_container_name` Zadejte odpovídající hodnoty pro existující kontejner úložiště a potom spusťte skript.
 
-Pokud se zobrazí chybová zpráva `pip install --upgrade azure-storage` `ImportError: No module named azure.storage`, může být nutné provést akci.
+Pokud se zobrazí chybová zpráva, může být nutné provést akci `pip install --upgrade azure-storage` `ImportError: No module named azure.storage` .
 
 ### <a name="using-c"></a>Pomocí jazyka C\#
 
@@ -211,9 +211,9 @@ Pokud se zobrazí chybová zpráva `pip install --upgrade azure-storage` `Import
 
 3. Vyberte **Nastavení** a přidejte hodnoty pro následující položky:
 
-    |Položka |Popis |
+    |Položka |Description |
     |---|---|
-    |StorageConnectionString|Připojovací řetězec pro účet úložiště, pro který chcete vytvořit uloženou zásadu a SAS pro. Formát by měl být `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` ve `myaccount` formátu, kde je název vašeho účtu úložiště `mykey` a je klíč pro účet úložiště.|
+    |StorageConnectionString|Připojovací řetězec pro účet úložiště, pro který chcete vytvořit uloženou zásadu a SAS pro. Formát by měl být `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` ve formátu, kde `myaccount` je název vašeho účtu úložiště a `mykey` je klíč pro účet úložiště.|
     |ContainerName|Kontejner v účtu úložiště, ke kterému chcete omezit přístup|
     |SASPolicyName|Název, který se má použít pro vytvoření uložené zásady.|
     |FileToUpload|Cesta k souboru, který je odeslán do kontejneru.|
@@ -228,7 +228,7 @@ Omezte přístup k kontejneru pomocí sdíleného přístupového podpisu. Přid
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Vytvoření clusteru, který používá SAS
 
-`CLUSTERNAME`Nahraďte `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`, a `TOKEN` odpovídajícími hodnotami. Zadejte příkazy prostředí PowerShell:
+Nahraďte,,, `CLUSTERNAME` `RESOURCEGROUP` `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER` , `STORAGEACCOUNT` a `TOKEN` odpovídajícími hodnotami. Zadejte příkazy prostředí PowerShell:
 
 ```powershell
 $clusterName = 'CLUSTERNAME'
@@ -351,9 +351,9 @@ Dokončení tohoto skriptu trvá, obvykle přibližně po dobu 15 minut. Po doko
 
 Pokud máte existující cluster, můžete přidat SAS do konfigurace **základního webu** pomocí následujících kroků:
 
-1. Otevřete webové uživatelské rozhraní Ambari pro váš cluster. Adresa této stránky je `https://YOURCLUSTERNAME.azurehdinsight.net`. Po zobrazení výzvy proveďte ověření v clusteru pomocí jména správce (správce) a hesla, které jste použili při vytváření clusteru.
+1. Otevřete webové uživatelské rozhraní Ambari pro váš cluster. Adresa této stránky je `https://YOURCLUSTERNAME.azurehdinsight.net` . Po zobrazení výzvy proveďte ověření v clusteru pomocí jména správce (správce) a hesla, které jste použili při vytváření clusteru.
 
-1. Přejděte na stránku **HDFS** > **Konfigurace** > **Upřesnit** > **vlastní jádro-site**.
+1. Přejděte na stránku **HDFS**  >  **Konfigurace**  >  **Upřesnit**  >  **vlastní jádro-site**.
 
 1. Rozbalte část **vlastní základ pro základní lokalitu** , přejděte na konec a a pak vyberte **Přidat vlastnost...**. Pro **klíč** a **hodnotu**použijte následující hodnoty:
 
@@ -411,9 +411,9 @@ Pomocí následujících kroků ověříte, že můžete číst a vypisovat polo
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Tento příkaz stáhne soubor do místního souboru s názvem **Testfile. txt**.
+    Tento příkaz stáhne soubor do místního souboru s názvem **testfile.txt**.
 
-5. Pomocí následujícího příkazu nahrajte místní soubor do nového souboru s názvem **testupload. txt** v úložišti SAS:
+5. Pomocí následujícího příkazu nahrajte místní soubor do nového souboru s názvem **testupload.txt** v úložišti SAS:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -421,7 +421,9 @@ Pomocí následujících kroků ověříte, že můžete číst a vypisovat polo
 
     Zobrazí se zpráva podobná následujícímu textu:
 
-        put: java.io.IOException
+    ```output
+    put: java.io.IOException
+    ```
 
     K této chybě dochází, protože umístění úložiště je pouze pro čtení a seznam. Pomocí následujícího příkazu umístěte data do výchozího úložiště pro cluster, do kterého lze zapisovat:
 

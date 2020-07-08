@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647726"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087635"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa clusteru služeb ML v Azure HDInsight
 
@@ -50,17 +50,19 @@ Vzhledem k tomu, že RStudio běží na hraničním uzlu clusteru, existuje něk
 
 ### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: použití vytvořeného uživatele SSH k přihlášení k hraničnímu uzlu
 
-Postupujte podle pokynů v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k hraničnímu uzlu. Adresa hraničního uzlu pro cluster služeb ML v HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Postupujte podle pokynů v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k hraničnímu uzlu. Adresa hraničního uzlu pro cluster služeb ML v HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net` .
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2: Přidání dalších uživatelů Linuxu na hraničním uzlu
 
 Pokud chcete přidat uživatele na hraničním uzlu, spusťte následující příkazy:
 
-    # Add a user 
-    sudo useradd <yournewusername> -m
+```bash
+# Add a user 
+sudo useradd <yournewusername> -m
 
-    # Set password for the new user
-    sudo passwd <yournewusername>
+# Set password for the new user
+sudo passwd <yournewusername>
+```
 
 Na následujícím snímku obrazovky vidíte výstupy.
 
@@ -70,7 +72,7 @@ Po zobrazení výzvy k zadání hesla "aktuální heslo protokolu Kerberos", sta
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3: Použití komunitní verze RStudia s vytvořeným uživatelem
 
-Přístup k RStudio `https://CLUSTERNAME.azurehdinsight.net/rstudio/`z. Pokud se přihlašujete poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru a přihlašovací údaje uživatele SSH, které jste vytvořili. Pokud se nejedná o vaše první přihlášení, zadejte pouze pověření pro uživatele SSH, kterého jste vytvořili.
+Přístup k RStudio z `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Pokud se přihlašujete poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru a přihlašovací údaje uživatele SSH, které jste vytvořili. Pokud se nejedná o vaše první přihlášení, zadejte pouze pověření pro uživatele SSH, kterého jste vytvořili.
 
 Můžete se také přihlásit pomocí původních přihlašovacích údajů (ve výchozím nastavení je *sshuser*) souběžně z jiného okna prohlížeče.
 
@@ -80,27 +82,29 @@ Všimněte si také, že nově přidaní uživatelé nemají v systému Linux ko
 
 Můžete nastavit přístup ke výpočetnímu kontextu HDInsight Spark ze vzdálené instance klienta ML běžící na ploše. K tomu je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování výpočetního kontextu výpočetního rxspark na ploše: například:
 
-    myNameNode <- "default"
-    myPort <- 0
+```r
+myNameNode <- "default"
+myPort <- 0
 
-    mySshHostname  <- '<clustername>-ed-ssh.azurehdinsight.net'  # HDI secure shell hostname
-    mySshUsername  <- '<sshuser>'# HDI SSH username
-    mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
+mySshHostname  <- '<clustername>-ed-ssh.azurehdinsight.net'  # HDI secure shell hostname
+mySshUsername  <- '<sshuser>'# HDI SSH username
+mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
 
-    myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
-    myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
+myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
+myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
 
-    mySparkCluster <- RxSpark(
-      hdfsShareDir = myhdfsShareDir,
-      shareDir     = myShareDir,
-      sshUsername  = mySshUsername,
-      sshHostname  = mySshHostname,
-      sshSwitches  = mySshSwitches,
-      sshProfileScript = '/etc/profile',
-      nameNode     = myNameNode,
-      port         = myPort,
-      consoleOutput= TRUE
-    )
+mySparkCluster <- RxSpark(
+    hdfsShareDir = myhdfsShareDir,
+    shareDir     = myShareDir,
+    sshUsername  = mySshUsername,
+    sshHostname  = mySshHostname,
+    sshSwitches  = mySshSwitches,
+    sshProfileScript = '/etc/profile',
+    nameNode     = myNameNode,
+    port         = myPort,
+    consoleOutput= TRUE
+)
+```
 
 Další informace najdete v části "použití Microsoft Machine Learning Server jako klienta Apache Hadoop" v tématu [použití RevoScaleR ve výpočetním kontextu Apache Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios) .
 
@@ -110,27 +114,31 @@ Výpočetní kontext vám umožňuje řídit, jestli se výpočty provádějí m
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>Distribuování kódu R do více uzlů
 
-Pomocí služby ML Services v HDInsight můžete stávající kód R použít a spustit ho napříč několika uzly v clusteru pomocí `rxExec`. Tato funkce je užitečná při uklízení parametrů nebo provádění simulací. Následující kód je příklad použití příkazu `rxExec`:
+Pomocí služby ML Services v HDInsight můžete stávající kód R použít a spustit ho napříč několika uzly v clusteru pomocí `rxExec` . Tato funkce je užitečná při uklízení parametrů nebo provádění simulací. Následující kód je příklad použití příkazu `rxExec`:
 
-    rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
+```r
+rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
+```
 
-Pokud stále používáte kontext Spark, tento příkaz vrátí hodnotu Node pro pracovní uzly, na kterých je spuštěný kód `(Sys.info()["nodename"])` . Například v clusteru se čtyřmi uzly očekáváte, že dostanete výstup podobný následujícímu fragmentu kódu:
+Pokud stále používáte kontext Spark, tento příkaz vrátí hodnotu Node pro pracovní uzly, `(Sys.info()["nodename"])` na kterých je spuštěný kód. Například v clusteru se čtyřmi uzly očekáváte, že dostanete výstup podobný následujícímu fragmentu kódu:
 
-    $rxElem1
-        nodename
-    "wn3-mymlser"
+```r
+$rxElem1
+    nodename
+"wn3-mymlser"
 
-    $rxElem2
-        nodename
-    "wn0-mymlser"
+$rxElem2
+    nodename
+"wn0-mymlser"
 
-    $rxElem3
-        nodename
-    "wn3-mymlser"
+$rxElem3
+    nodename
+"wn3-mymlser"
 
-    $rxElem4
-        nodename
-    "wn3-mymlser"
+$rxElem4
+    nodename
+"wn3-mymlser"
+```
 
 ## <a name="access-data-in-apache-hive-and-parquet"></a>Přístup k datům v Apache Hive a Parquet
 
@@ -138,38 +146,39 @@ Služba HDInsight ML Services umožňuje přímý přístup k datům v podregist
 
 Následuje vzorový kód pro použití těchto nových funkcí:
 
-    #Create a Spark compute context:
-    myHadoopCluster <- rxSparkConnect(reset = TRUE)
+```r
+#Create a Spark compute context:
+myHadoopCluster <- rxSparkConnect(reset = TRUE)
 
-    #Retrieve some sample data from Hive and run a model:
-    hiveData <- RxHiveData("select * from hivesampletable",
-                     colInfo = list(devicemake = list(type = "factor")))
-    rxGetInfo(hiveData, getVarInfo = TRUE)
+#Retrieve some sample data from Hive and run a model:
+hiveData <- RxHiveData("select * from hivesampletable",
+                       colInfo = list(devicemake = list(type = "factor")))
+rxGetInfo(hiveData, getVarInfo = TRUE)
 
-    rxLinMod(querydwelltime ~ devicemake, data=hiveData)
+rxLinMod(querydwelltime ~ devicemake, data=hiveData)
 
-    #Retrieve some sample data from Parquet and run a model:
-    rxHadoopMakeDir('/share')
-    rxHadoopCopyFromLocal(file.path(rxGetOption('sampleDataDir'), 'claimsParquet/'), '/share/')
-    pqData <- RxParquetData('/share/claimsParquet',
-                     colInfo = list(
-                age    = list(type = "factor"),
-               car.age = list(type = "factor"),
-                  type = list(type = "factor")
-             ) )
-    rxGetInfo(pqData, getVarInfo = TRUE)
+#Retrieve some sample data from Parquet and run a model:
+rxHadoopMakeDir('/share')
+rxHadoopCopyFromLocal(file.path(rxGetOption('sampleDataDir'), 'claimsParquet/'), '/share/')
+pqData <- RxParquetData('/share/claimsParquet',
+                        colInfo = list(
+                            age    = list(type = "factor"),
+                            car.age = list(type = "factor"),
+                            type = list(type = "factor")
+                        ) )
+rxGetInfo(pqData, getVarInfo = TRUE)
 
-    rxNaiveBayes(type ~ age + cost, data = pqData)
+rxNaiveBayes(type ~ age + cost, data = pqData)
 
-    #Check on Spark data objects, cleanup, and close the Spark session:
-    lsObj <- rxSparkListData() # two data objs are cached
-    lsObj
-    rxSparkRemoveData(lsObj)
-    rxSparkListData() # it should show empty list
-    rxSparkDisconnect(myHadoopCluster)
+#Check on Spark data objects, cleanup, and close the Spark session:
+lsObj <- rxSparkListData() # two data objs are cached
+lsObj
+rxSparkRemoveData(lsObj)
+rxSparkListData() # it should show empty list
+rxSparkDisconnect(myHadoopCluster)
+```
 
-
-Další informace o používání těchto nových funkcí najdete v online nápovědě služby ML prostřednictvím použití příkazů `?RxHivedata` a. `?RxParquetData`  
+Další informace o používání těchto nových funkcí najdete v online nápovědě služby ML prostřednictvím použití `?RxHivedata` `?RxParquetData` příkazů a.  
 
 ## <a name="install-additional-r-packages-on-the-cluster"></a>Instalace dalších balíčků R na clusteru
 
@@ -192,7 +201,7 @@ Pokud chcete nainstalovat balíčky R na pracovní uzly clusteru, musíte použ�
 
    * Do pole **název**zadejte název akce skriptu.
 
-     * V případě **identifikátoru URI bash skriptu**zadejte `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Toto je skript, který do pracovního uzlu nainstaluje další balíčky R.
+     * V případě **identifikátoru URI bash skriptu**zadejte `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Toto je skript, který do pracovního uzlu nainstaluje další balíčky R.
 
    * Zaškrtněte políčko pouze pro **pracovní proces**.
 

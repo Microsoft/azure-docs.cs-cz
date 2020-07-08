@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64685322"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086462"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight v Azure Marketplace
 Aplikaci Azure HDInsight můžete nainstalovat na cluster HDInsight se systémem Linux. V tomto článku se dozvíte, jak publikovat aplikaci HDInsight v Azure Marketplace. Obecné informace o publikování v Azure Marketplace najdete v tématu [publikování nabídky v Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -44,7 +44,7 @@ V rámci publikování aplikací na webu Marketplace jsou zapojené dva kroky. N
 }
 ```
 
-| Pole | Popis | Možné hodnoty |
+| Pole | Description | Možné hodnoty |
 | --- | --- | --- |
 | typy |Typy clusterů, se kterými je aplikace kompatibilní. |Hadoop, HBA, proplavení, Spark (nebo libovolná kombinace těchto) |
 | verze |Typy clusterů HDInsight, se kterými je aplikace kompatibilní. |3.4 |

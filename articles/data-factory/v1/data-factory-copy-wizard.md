@@ -13,11 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74927054"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086904"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Snadné kopírování a přesouvání dat pomocí Průvodce kopírováním Azure Data Factory
 > [!NOTE]
@@ -65,10 +66,12 @@ Proměnné v cestě ke složce můžete použít ke kopírování dat ze složky
 
 Předpokládejme, že máte vstupní složky v následujícím formátu:
 
-    2016/03/01/01
-    2016/03/01/02
-    2016/03/01/03
-    ...
+```text
+2016/03/01/01
+2016/03/01/02
+2016/03/01/03
+...
+```
 
 Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte jednu z těchto složek (například 2016->03->01->02) a klikněte na **zvolit**. Mělo by se zobrazit `2016/03/01/02` v textovém poli. Nyní nahraďte **2016** řetězcem **{year}**, **03** a **{month}**, **01** s **{Day}** a **02** s **{Hour}** a stiskněte klávesu TAB. Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
 

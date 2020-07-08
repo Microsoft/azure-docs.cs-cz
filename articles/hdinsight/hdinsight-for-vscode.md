@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704858"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087125"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -71,7 +71,7 @@ V případě národního cloudového uživatele proveďte následující kroky a
 
 ## <a name="connect-to-an-azure-account"></a>Připojení k účtu Azure
 
-Než budete moct odesílat skripty do svých clusterů z Visual Studio Code, musíte se připojit ke svému účtu Azure nebo propojit cluster. Použijte přihlašovací údaje uživatelského jména a hesla pro Apache Ambari nebo účet připojený k doméně. Pomocí těchto kroků se připojte k Azure:
+Než budete moct odesílat skripty do svých clusterů z Visual Studio Code, uživatel se může přihlásit k předplatnému Azure nebo [propojit cluster HDInsight](#link-a-cluster). K připojení ke clusteru HDInsight použijte přihlašovací údaje pro Ambari uživatelské jméno/heslo nebo připojené k doméně pro cluster ESP. Pomocí těchto kroků se připojte k Azure:
 
 1. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** a zadejte **Azure: přihlásit**se:
 
@@ -291,6 +291,21 @@ Nástroj také podporuje dotaz **Spark SQL** :
    ![Odeslat výstup výsledku úlohy Pythonu](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
 Po odeslání úlohy Pythonu se protokoly odeslání zobrazí v okně **výstup** v Visual Studio Code. Zobrazí se také adresa URL uživatelského rozhraní Spark a adresa URL uživatelského rozhraní příze. Pro sledování stavu úlohy můžete otevřít adresu URL ve webovém prohlížeči.
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integrace se službou HDInsight identity broker (HIB)
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Připojení ke clusteru HDInsight ESP pomocí zprostředkovatele ID (HIB)
+
+Pomocí běžných kroků se přihlaste k předplatnému Azure, abyste se připojili ke clusteru HDInsight ESP pomocí zprostředkovatele ID (HIB). Po přihlášení se v Azure Exploreru zobrazí seznam clusterů. Další pokyny najdete v tématu [připojení ke clusteru HDInsight](#connect-to-an-azure-account).
+
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Spuštění úlohy podregistru nebo PySpark v clusteru HDInsight ESP s zprostředkovatelem ID (HIB)
+
+Pro spuštění úlohy podregistru můžete postupovat podle běžných kroků k odeslání úlohy do clusteru HDInsight ESP se zprostředkovatelem ID (HIB). Další pokyny najdete v tématu [odeslání interaktivních dotazů na podregistr a dávkových skriptů podregistru](#submit-interactive-hive-queries-and-hive-batch-scripts) .
+
+Pokud chcete spustit interaktivní úlohu PySpark, můžete postupovat podle běžných kroků k odeslání úlohy do clusteru HDInsight ESP se zprostředkovatelem ID (HIB). Další pokyny najdete v tématu [odeslání interaktivních dotazů PySpark](#submit-interactive-pyspark-queries) .
+
+Pokud chcete spustit dávkovou úlohu PySpark, můžete postupovat podle běžných kroků k odeslání úlohy do clusteru HDInsight ESP se zprostředkovatelem ID (HIB). Další pokyny najdete v tématu [odeslání úlohy služby Batch pro PySpark](#submit-pyspark-batch-job) .
+
 
 ## <a name="apache-livy-configuration"></a>Konfigurace Apache Livy
 

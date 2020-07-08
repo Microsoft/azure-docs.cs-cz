@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4517a600acaf581ad240d634e89bba3984f835db
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75978179"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087329"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti na virtuálních počítačích Azure SQL Server
 > [!div class="op_single_selector"]
@@ -61,22 +62,26 @@ Pro každý virtuální počítač, který je hostitelem repliky Azure, musíte 
 5. Spusťte **Azure PowerShell**. Otevře se nová relace PowerShellu s načtenými moduly pro správu Azure.
 6. Spusťte rutinu **Get-AzurePublishSettingsFile**. Tato rutina vás přesměruje na prohlížeč a stáhne soubor nastavení publikování do místního adresáře. Může se zobrazit výzva k zadání přihlašovacích údajů k vašemu předplatnému Azure.
 7. Spusťte příkaz **Import-AzurePublishSettingsFile** s cestou k souboru nastavení publikování, který jste stáhli:
-   
-        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
-   
+
+    ```powershell
+    Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```
+
     Po importu souboru nastavení publikování můžete svoje předplatné Azure spravovat v relaci PowerShellu.
     
 1. Zkopírujte skript prostředí PowerShell níže do textového editoru a nastavte hodnoty proměnných tak, aby vyhovovaly vašemu prostředí (pro některé parametry byly zadány výchozí hodnoty). Všimněte si, že pokud vaše skupina dostupnosti zahrnuje oblasti Azure, musíte skript spustit jednou v každém datovém centru pro cloudovou službu a uzly, které se nacházejí v tomto datovém centru.
+
+    ```powershell
+    # Define variables
+    $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
+    $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
    
-        # Define variables
-        $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
-        $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
-   
-        # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
-        ForEach ($node in $AGNodes)
-        {
-            Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
-        }
+    # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
+    ForEach ($node in $AGNodes)
+    {
+        Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
+    }
+    ```
 
 2. Po nastavení proměnných zkopírujte skript z textového editoru do relace Azure PowerShell a spusťte ho. Pokud se výzva stále zobrazuje >>, zadejte ENTER znovu, abyste se ujistili, že se skript začne spouštět.
 
@@ -97,18 +102,21 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejdřív vy
 1. Pro externí vyrovnávání zatížení musíte získat veřejnou virtuální IP adresu cloudové služby, která obsahuje vaše repliky. Přihlaste se k webu Azure Portal. Přejděte ke cloudové službě, která obsahuje virtuální počítač skupiny dostupnosti. Otevřete zobrazení **řídicího panelu** .
 2. Poznamenejte si adresu uvedenou na **veřejné virtuální IP adrese (VIP)**. Pokud vaše řešení zahrnuje virtuální sítě, opakujte tento krok pro každou cloudovou službu, která obsahuje virtuální počítač, který je hostitelem repliky.
 3. Na jednom z virtuálních počítačů zkopírujte skript PowerShellu níže do textového editoru a nastavte proměnné na hodnoty, které jste si poznamenali dříve.
+
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP Address resource name
+    $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
    
-        # Define variables
-        $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
+    Import-Module FailoverClusters
    
-        Import-Module FailoverClusters
+    # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
    
-        # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
-   
-        # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
-        # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
+    # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    ```
+
 4. Po nastavení proměnných otevřete okno Windows PowerShellu se zvýšenými oprávněními a potom zkopírujte skript z textového editoru a vložte ho do relace Azure PowerShell, abyste ho mohli spustit. Pokud se výzva stále zobrazuje >>, zadejte ENTER znovu, abyste se ujistili, že se skript začne spouštět.
 5. Tento postup opakujte na každém virtuálním počítači. Tento skript nakonfiguruje prostředek IP adresy s IP adresou cloudové služby a nastaví další parametry, jako je například port testu. Když se prostředek IP adresy přepne do online režimu, může reagovat na cyklické dotazování na portu testu z koncového bodu s vyrovnáváním zatížení, který jste vytvořili dříve v tomto kurzu.
 
@@ -124,7 +132,9 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejdřív vy
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>Testování naslouchacího procesu skupiny dostupnosti (přes Internet)
 Aby bylo možné přistupovat k naslouchacímu procesu mimo virtuální síť, musíte použít externí/veřejné vyrovnávání zatížení (popsané v tomto tématu) místo interního nástroje, které je přístupné jenom v rámci stejné virtuální sítě. V připojovacím řetězci zadáte název cloudové služby. Pokud byste například měli cloudovou službu s názvem *mycloudservice*, bude příkaz Sqlcmd vypadat takto:
 
-    sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```console
+sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```
 
 Na rozdíl od předchozího příkladu musí být použito ověřování SQL, protože volající nemůže používat ověřování systému Windows přes Internet. Další informace najdete v tématu [Skupina dostupnosti Always On na virtuálním počítači Azure: scénáře připojení klientů](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Pokud používáte ověřování SQL, ujistěte se, že jste v obou replikách vytvořili stejné přihlašovací údaje. Další informace o řešení potíží s přihlášeními pomocí skupin dostupnosti najdete v tématech [Postup mapování přihlášení nebo použití obsaženého uživatele SQL Database pro připojení k ostatním replikám a mapování na databáze dostupnosti](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75660252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087601"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML v HDInsight
 
@@ -34,7 +34,7 @@ Obecně platí, že skript R, který je spuštěn v clusteru služby ML na hrani
 - Zmenšit mapování
 - Spark
 
-*Místní* a *localpar* možnosti se liší pouze v tom, jak se spouštějí volání **rxExec** . Oba mají paralelní volání funkce RX napříč všemi dostupnými jádry, pokud není uvedeno jinak pomocí možnosti RevoScaleR **numCoresToUse** , například `rxOptions(numCoresToUse=6)`. Možnosti paralelního provádění nabízejí optimální výkon.
+*Místní* a *localpar* možnosti se liší pouze v tom, jak se spouštějí volání **rxExec** . Oba mají paralelní volání funkce RX napříč všemi dostupnými jádry, pokud není uvedeno jinak pomocí možnosti RevoScaleR **numCoresToUse** , například `rxOptions(numCoresToUse=6)` . Možnosti paralelního provádění nabízejí optimální výkon.
 
 Následující tabulka shrnuje různé možnosti výpočetního kontextu pro nastavení způsobu spuštění volání:
 
@@ -73,7 +73,9 @@ V následujících částech jsou uvedené některé obecné pravidla pro výbě
 ## <a name="inline-help-on-rxsetcomputecontext"></a>Vložená Pomocník pro rxSetComputeContext
 Další informace a příklady RevoScaleR výpočetních kontextů najdete v tématu s vloženou nápovědu v R na metodě rxSetComputeContext, například:
 
-    > ?rxSetComputeContext
+```console
+> ?rxSetComputeContext
+```
 
 Další informace najdete v tématu [Přehled distribuovaných výpočtů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci Machine Learning Server](https://docs.microsoft.com/machine-learning-server/).
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972793"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087737"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytváření clusterů Apache HBA v HDInsight v Azure Virtual Network
 
@@ -51,7 +51,7 @@ V této části vytvoříte cluster Apache HBA založený na systému Linux s z�
 
 1. V dialogovém okně **vlastní nasazení** vyberte **Upravit šablonu**.
 
-1. Na řádku 165 změňte hodnotu `Standard_A3` na. `Standard_A4_V2` Potom vyberte **Uložit**.
+1. Na řádku 165 změňte hodnotu `Standard_A3` na `Standard_A4_V2` . Pak vyberte **Uložit**.
 
 1. Dokončete zbývající šablonu s následujícími informacemi:
 
@@ -132,12 +132,14 @@ V vrácených datech JavaScript Object Notation (JSON) vyhledejte položku "host
 
 Pokud chcete ověřit, jestli virtuální počítač může komunikovat s clusterem HBA, použijte příkaz `ping headnode0.<dns suffix>` z virtuálního počítače. Například, `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Pokud chcete tyto informace použít v aplikaci Java, můžete postupovat podle kroků v části [použití Apache Maven k vytváření aplikací v jazyce Java, které používají Apache HBA s HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) k vytvoření aplikace. Aby se aplikace mohla připojit ke vzdálenému serveru HBA, upravte v tomto příkladu soubor **HBase-site. XML** , aby používal plně kvalifikovaný název domény pro Zookeeper. Příklad:
+Pokud chcete tyto informace použít v aplikaci Java, můžete postupovat podle kroků v části [použití Apache Maven k vytváření aplikací v jazyce Java, které používají Apache HBA s HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) k vytvoření aplikace. Chcete-li aplikaci připojit ke vzdálenému serveru HBA, upravte soubor **hbase-site.xml** v tomto příkladu tak, aby používal plně kvalifikovaný název domény pro Zookeeper. Příklad:
 
-    <property>
-        <name>hbase.zookeeper.quorum</name>
-        <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
-    </property>
+```xml
+<property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
+</property>
+```
 
 > [!NOTE]  
 > Další informace o překladu názvů ve virtuálních sítích Azure, včetně toho, jak používat vlastní server DNS, najdete v tématu [překlad IP adres (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).

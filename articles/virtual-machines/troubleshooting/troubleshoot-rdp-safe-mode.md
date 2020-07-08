@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918202"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086768"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nejde se připojit k virtuálnímu počítači, protože virtuální počítač se spouští do nouzového režimu.
 
@@ -46,7 +47,9 @@ Pokud chcete tento problém vyřešit, nakonfigurujte pomocí sériového říze
    ). Pokud na vašem VIRTUÁLNÍm počítači není povolena sériová konzola, přečtěte si téma [Oprava virtuálního počítače v režimu offline](#repair-the-vm-offline).
 2. Ověřte konfigurační data spouštění:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     Pokud je virtuální počítač nakonfigurovaný tak, aby se spouštěl do nouzového režimu, zobrazí se v části **zaváděcí program pro spouštění systému Windows** s názvem **safeboot**další příznak. Pokud nevidíte příznak **safeboot** , virtuální počítač není v bezpečném režimu. Tento článek se nevztahuje na váš scénář.
 
@@ -60,11 +63,15 @@ Pokud chcete tento problém vyřešit, nakonfigurujte pomocí sériového říze
 
 3. Odstraňte příznak **safemoade** , aby se virtuální počítač spouštěl v normálním režimu:
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. Zkontrolujte konfigurační data spouštění a ujistěte se, že je odstraněný příznak **safeboot** :
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. Restartujte virtuální počítač a potom zkontrolujte, jestli je problém vyřešený.
 
@@ -114,7 +121,10 @@ Pokud chcete povolit protokol výpisu a sériovou konzolu, spusťte následujíc
 1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**).
 2. Ověřte konfigurační data spouštění. V následujících příkazech předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je F. nahraďte toto písmeno jednotky odpovídající hodnotou pro váš virtuální počítač.
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     Poznamenejte si název identifikátoru oddílu, který má složku **\Windows** . Ve výchozím nastavení je název identifikátoru "výchozí".
 
     Pokud je virtuální počítač nakonfigurovaný tak, aby se spouštěl do nouzového režimu, zobrazí se v části **zaváděcí program pro spouštění systému Windows** s názvem **safeboot**další příznak. Pokud nevidíte příznak **safeboot** , Tento článek se nevztahuje na váš scénář.
@@ -123,8 +133,14 @@ Pokud chcete povolit protokol výpisu a sériovou konzolu, spusťte následujíc
 
 3. Odeberte příznak **safeboot** , aby se virtuální počítač spouštěl v normálním režimu:
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. Zkontrolujte konfigurační data spouštění a ujistěte se, že je odstraněný příznak **safeboot** :
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
 5. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.
