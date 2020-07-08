@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869566"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Zvýhodněné hybridní využití Azure pro Windows Server
@@ -66,7 +65,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Šablona
-V rámci šablon Správce prostředků je třeba zadat další `licenseType` parametr. Další informace o [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md) najdete v článku.
+V rámci šablon Správce prostředků `licenseType` je třeba zadat další parametr. Další informace o [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md) najdete v článku.
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -102,7 +101,7 @@ V okně virtuálního počítače portálu můžete virtuální počítač aktua
     Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 - Převod stávajících virtuálních počítačů s Windows serverem na Zvýhodněné hybridní využití Azure pro Windows Server
 
     ```azurecli
@@ -135,7 +134,7 @@ Location                 : westus
 LicenseType              :
 ```
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Windows_Server']" -o table
 ```
@@ -162,7 +161,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Nasazení sady škálování virtuálního počítače s Zvýhodněné hybridní využití Azure pro Windows Server
-V rámci Správce prostředků šablon sady škálování virtuálního počítače musí být ve vlastnosti `licenseType` VirtualMachineProfile zadaný další parametr. To můžete provést během vytváření nebo aktualizace sady škálování prostřednictvím šablony ARM, PowerShellu, rozhraní příkazového řádku Azure nebo REST.
+V rámci Správce prostředků šablon sady škálování virtuálního počítače `licenseType` musí být ve vlastnosti VirtualMachineProfile zadaný další parametr. To můžete provést během vytváření nebo aktualizace sady škálování prostřednictvím šablony ARM, PowerShellu, rozhraní příkazového řádku Azure nebo REST.
 
 Následující příklad používá šablonu ARM s imagí Windows serveru 2016 Datacenter:
 ```json

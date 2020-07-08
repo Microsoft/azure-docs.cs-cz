@@ -10,10 +10,9 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891469"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Windows Java pro Azure App Service
@@ -82,7 +81,7 @@ Azure App Service podporuje vyladění a přizpůsobení prostřednictvím Azure
 
 Pokud chcete nastavit přidělenou paměť nebo jiné možnosti modulu runtime JVM, vytvořte [nastavení aplikace](configure-common.md#configure-app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service předá toto nastavení jako proměnnou prostředí modulu runtime Java při spuštění.
 
-V Azure Portal v části **nastavení aplikace** pro webovou aplikaci vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , které obsahuje další nastavení, například. `-Xms512m -Xmx1204m`
+V Azure Portal v části **nastavení aplikace** pro webovou aplikaci vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , které obsahuje další nastavení, například `-Xms512m -Xmx1204m` .
 
 Pokud chcete nakonfigurovat nastavení aplikace z modulu plug-in Maven, přidejte do části modul plug-in Azure značky nastavení/hodnoty. Následující příklad nastaví konkrétní minimální a maximální velikost haldy Java:
 
@@ -122,7 +121,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>Nastavit výchozí kódování znaků
 
-V Azure Portal v části **nastavení aplikace** pro webovou aplikaci vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` s hodnotou. `-Dfile.encoding=UTF-8`
+V Azure Portal v části **nastavení aplikace** pro webovou aplikaci vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` s hodnotou `-Dfile.encoding=UTF-8` .
 
 Případně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in App Service Maven. Přidejte značky název a hodnota nastavení do konfigurace modulu plug-in:
 
@@ -149,7 +148,7 @@ Pomocí možnosti **ověřování a autorizace** nastavte ověřování aplikac�
 
 #### <a name="tomcat"></a>Tomcat
 
-Vaše aplikace Tomcat může získat přístup k deklaracím uživatele přímo z servlet přetypování objektu zabezpečení na objekt mapy. Objekt mapy bude mapovat jednotlivé typy deklarací na kolekci deklarací pro daný typ. V následujícím kódu `request` je instance `HttpServletRequest`.
+Vaše aplikace Tomcat může získat přístup k deklaracím uživatele přímo z servlet přetypování objektu zabezpečení na objekt mapy. Objekt mapy bude mapovat jednotlivé typy deklarací na kolekci deklarací pro daný typ. V následujícím kódu `request` je instance `HttpServletRequest` .
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -179,7 +178,7 @@ public String getScheme()
 public int getServerPort()
 ```
 
-Chcete-li tuto funkci zakázat, vytvořte nastavení aplikace `WEBSITE_AUTH_SKIP_PRINCIPAL` s názvem s hodnotou `1`. Chcete-li zakázat všechny filtry servlet přidané App Service, vytvořte nastavení s `WEBSITE_SKIP_FILTERS` názvem s hodnotou `1`.
+Chcete-li tuto funkci zakázat, vytvořte nastavení aplikace s názvem `WEBSITE_AUTH_SKIP_PRINCIPAL` s hodnotou `1` . Chcete-li zakázat všechny filtry servlet přidané App Service, vytvořte nastavení s názvem `WEBSITE_SKIP_FILTERS` s hodnotou `1` .
 
 ### <a name="configure-tlsssl"></a>Konfigurace TLS/SSL
 
@@ -191,7 +190,7 @@ Podle pokynů v části [zabezpečení vlastního názvu DNS s vazbou TLS v Azur
 
 Nejdřív postupujte podle pokynů pro [udělení přístupu aplikace Key Vault](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a [Vytvoření odkazu trezoru klíčů pro váš tajný klíč v nastavení aplikace](app-service-key-vault-references.md#reference-syntax). Můžete ověřit, že se odkaz na tajný kód přeloží vytištěním proměnné prostředí a vzdáleným přístupem k App Service terminálu.
 
-Pro vložení těchto tajných kódů do konfiguračního souboru jarní nebo Tomcat použijte syntaxi injektáže proměnné prostředí (`${MY_ENV_VAR}`). V případě konfiguračních souborů pružiny se podívejte na tuto dokumentaci k [externě nakonfigurovaným konfiguracím](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
+Pro vložení těchto tajných kódů do konfiguračního souboru jarní nebo Tomcat použijte syntaxi injektáže proměnné prostředí ( `${MY_ENV_VAR}` ). V případě konfiguračních souborů pružiny se podívejte na tuto dokumentaci k [externě nakonfigurovaným konfiguracím](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 
 ## <a name="configure-apm-platforms"></a>Konfigurace platforem APM
@@ -201,26 +200,26 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 ### <a name="configure-new-relic"></a>Konfigurovat nové Relic
 
 1. Vytvoření nového účtu Relic na [NewRelic.com](https://newrelic.com/signup)
-2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný řetězci *NewRelic-Java-x. x. x. zip*.
+2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip*.
 3. Zkopírujte licenční klíč, budete ho potřebovat ke konfiguraci agenta později.
 4. Pomocí [konzoly Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) vytvořte nový adresář */Home/site/wwwroot/APM*.
 5. Nahrajte nezabalené nové soubory agenta Java Relic do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic*.
 6. Upravte soubor YAML na */Home/site/wwwroot/APM/NewRelic/NewRelic.yml* a nahraďte hodnotu licence zástupného symbolu vlastním licenčním klíčem.
 7. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
-    - Pokud vaše aplikace používá **Java se**, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
-    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
+    - Pokud vaše aplikace používá **Java se**, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ### <a name="configure-appdynamics"></a>Konfigurace AppDynamics
 
 1. Vytvoření účtu AppDynamics na [AppDynamics.com](https://www.appdynamics.com/community/register/)
-2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný jako *AppServerAgent-x. x. x. xxxxx. zip*
+2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný *AppServerAgent-x.x.x.xxxxx.zip*
 3. Pomocí [konzoly Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) vytvořte nový adresář */Home/site/wwwroot/APM*.
 4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics*.
 5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
     - Pokud používáte **Java se**systémem, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
-    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
+    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou, `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` kde `<app-name>` je váš App Service název.
 
->  Pokud již máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS`, přidejte `-javaagent:/...` možnost na konec aktuální hodnoty.
+>  Pokud již máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS` , přidejte `-javaagent:/...` možnost na konec aktuální hodnoty.
 
 ## <a name="data-sources"></a>Zdroje dat
 
@@ -234,7 +233,7 @@ Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly bud
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
 | SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
-Chcete-li nakonfigurovat Tomcat pro použití JDBC (Java Database Connectivity) nebo rozhraní Java Persistence (JPA), nejprve `CATALINA_OPTS` upravte proměnnou prostředí, která je čtena nástrojem Tomcat při spuštění. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
+Chcete-li nakonfigurovat Tomcat pro použití JDBC (Java Database Connectivity) nebo rozhraní Java Persistence (JPA), nejprve upravte `CATALINA_OPTS` proměnnou prostředí, která je čtena nástrojem Tomcat při spuštění. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
 ```xml
 <appSettings>
@@ -245,15 +244,15 @@ Chcete-li nakonfigurovat Tomcat pro použití JDBC (Java Database Connectivity) 
 </appSettings>
 ```
 
-Nebo nastavte proměnné prostředí na stránce nastavení **konfigurační** > **aplikace** v Azure Portal.
+Nebo nastavte proměnné prostředí na stránce nastavení **konfigurační**  >  **aplikace** v Azure Portal.
 
 Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro všechny aplikace běžící na Tomcat servlet.
 
 #### <a name="application-level-data-sources"></a>Zdroje dat na úrovni aplikace
 
-1. Vytvořte soubor *Context. XML* v adresáři *META-INF/* Directory vašeho projektu. Pokud neexistuje, vytvořte *soubor META-INF nebo* s adresářem.
+1. Vytvořte soubor *context.xml* v adresáři *META-INF nebo* v adresáři vašeho projektu. Pokud neexistuje, vytvořte *soubor META-INF nebo* s adresářem.
 
-2. V *kontextu. XML*přidejte `Context` element, který bude propojit zdroj dat s adresou JNDI. `driverClassName` Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
+2. V *context.xml*přidejte `Context` prvek pro propojení zdroje dat s adresou JNDI. `driverClassName`Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
 
     ```xml
     <Context>
@@ -268,7 +267,7 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
     </Context>
     ```
 
-3. Aktualizujte *Web. XML* vaší aplikace tak, aby používal zdroj dat ve vaší aplikaci.
+3. Aktualizujte *web.xml* vaší aplikace tak, aby používala zdroj dat ve vaší aplikaci.
 
     ```xml
     <resource-env-ref>
@@ -301,14 +300,14 @@ Alternativně můžete k nahrání ovladače JDBC použít klienta FTP. [Při z�
 
 Pokud chcete upravit Tomcat `server.xml` nebo jiné konfigurační soubory, nejdřív si poznamenejte hlavní verzi Tomcat na portálu.
 
-1. Najděte domovský adresář Tomcat pro vaši verzi spuštěním `env` příkazu. Vyhledejte proměnnou prostředí, která začíná `AZURE_TOMCAT`a odpovídá vaší hlavní verzi. Například `AZURE_TOMCAT85_HOME` odkazuje na adresář Tomcat pro Tomcat 8,5.
-1. Po identifikaci domovského adresáře Tomcat pro vaši verzi zkopírujte konfigurační adresář do `D:\home`. Například pokud `AZURE_TOMCAT85_HOME` má hodnotu `D:\Program Files (x86)\apache-tomcat-8.5.37`, nová cesta kopírovaného adresáře bude. `D:\home\apache-tomcat-8.5.37`
+1. Najděte domovský adresář Tomcat pro vaši verzi spuštěním `env` příkazu. Vyhledejte proměnnou prostředí, která začíná `AZURE_TOMCAT` a odpovídá vaší hlavní verzi. Například `AZURE_TOMCAT85_HOME` odkazuje na adresář Tomcat pro Tomcat 8,5.
+1. Po identifikaci domovského adresáře Tomcat pro vaši verzi zkopírujte konfigurační adresář do `D:\home` . Například pokud `AZURE_TOMCAT85_HOME` má hodnotu `D:\Program Files (x86)\apache-tomcat-8.5.37` , nová cesta kopírovaného adresáře bude `D:\home\apache-tomcat-8.5.37` .
 
 Nakonec restartujte App Service. Vaše nasazení by mělo jít `D:\home\site\wwwroot\webapps` stejně jako dřív.
 
 ## <a name="configure-java-se"></a>Konfigurace Java SE
 
-Při spuštění. Aplikace JAR na Java SE v systému Windows `server.port` se před spuštěním aplikace předává jako možnost příkazového řádku. Port HTTP můžete ručně vyřešit z proměnné prostředí `HTTP_PLATFORM_PORT`. Hodnota této proměnné prostředí bude port HTTP, na kterém by měla vaše aplikace naslouchat. 
+Při spuštění. Aplikace JAR na Java SE v systému Windows `server.port` se před spuštěním aplikace předává jako možnost příkazového řádku. Port HTTP můžete ručně vyřešit z proměnné prostředí `HTTP_PLATFORM_PORT` . Hodnota této proměnné prostředí bude port HTTP, na kterém by měla vaše aplikace naslouchat. 
 
 ## <a name="java-runtime-statement-of-support"></a>Příkaz Java Runtime pro podporu
 

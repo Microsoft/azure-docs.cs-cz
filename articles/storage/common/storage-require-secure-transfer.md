@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870518"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Pro zajištění zabezpečených připojení vyžadovat zabezpečený přenos
@@ -54,8 +53,8 @@ Vlastnost **Required pro zabezpečený přenos** můžete zapnout při vytváře
 Pokud chcete zabezpečený přenos vyžadovat programově, nastavte vlastnost _supportsHttpsTrafficOnly_ v účtu úložiště. Tuto vlastnost můžete nastavit pomocí REST API poskytovatele prostředků úložiště, klientských knihoven nebo nástrojů:
 
 * [REST API](/rest/api/storagerp/storageaccounts)
-* [Prostředí](/powershell/module/az.storage/set-azstorageaccount)
-* [CLI](/cli/azure/storage/account)
+* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
+* [Rozhraní příkazového řádku](/cli/azure/storage/account)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
 * [Python SDK](https://pypi.org/project/azure-mgmt-storage)

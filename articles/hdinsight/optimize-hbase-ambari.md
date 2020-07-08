@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: a7da6bc23d797e0e89b2338f446fc850b0fd0577
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797159"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache HBA s Apache Ambari ve službě Azure HDInsight
@@ -56,12 +55,12 @@ Pro optimalizaci pro náhodná čtení můžete snížit horní a dolní limit s
 
 ### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>Počet řádků načtených při kontrole z disku
 
-`hbase.client.scanner.caching` Nastavení definuje počet řádků načtených z disku při volání `next` metody na skeneru.  Výchozí hodnota je 100. Čím vyšší je počet vzdálených volání z klienta na server oblasti, což vede k rychlejšímu prověřování. Toto nastavení ale taky zvýší tlak paměti na straně klienta.
+`hbase.client.scanner.caching`Nastavení definuje počet řádků načtených z disku při `next` volání metody na skeneru.  Výchozí hodnota je 100. Čím vyšší je počet vzdálených volání z klienta na server oblasti, což vede k rychlejšímu prověřování. Toto nastavení ale taky zvýší tlak paměti na straně klienta.
 
 ![Apache HBA počet načtených řádků](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]  
-> Nenastavujte hodnotu tak, aby čas mezi voláním další metody na skeneru byl větší než časový limit skeneru. Doba trvání časového limitu skeneru je `hbase.regionserver.lease.period` definována vlastností.
+> Nenastavujte hodnotu tak, aby čas mezi voláním další metody na skeneru byl větší než časový limit skeneru. Doba trvání časového limitu skeneru je definována `hbase.regionserver.lease.period` vlastností.
 
 ## <a name="optimize-write-heavy-workloads"></a>Optimalizace náročných úloh pro zápis
 
@@ -79,21 +78,21 @@ HBA ukládají data do interního formátu souboru s názvem *HFile*. Vlastnost 
 
 * Vlastnost `hbase.hregion.memstore.flush.size` definuje velikost, při které je setSize paměťového úložiště vyprázdněna na disk. Výchozí velikost je 128 MB.
 
-* Multiplikátor bloku pro oblasti HBA je definován `hbase.hregion.memstore.block.multiplier`. Výchozí hodnota je 4. Maximální povolená hodnota je 8.
+* Multiplikátor bloku pro oblasti HBA je definován `hbase.hregion.memstore.block.multiplier` . Výchozí hodnota je 4. Maximální povolená hodnota je 8.
 
-* HBA zablokuje aktualizace, pokud setSize paměťového úložiště bajty`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`().
+* HBA zablokuje aktualizace, pokud setSize paměťového úložiště `hbase.hregion.memstore.flush.size`  *  `hbase.hregion.memstore.block.multiplier` bajty ().
 
-    S výchozími hodnotami velikosti vyprázdnění a násobitele bloku jsou aktualizace zablokované, pokud setSize paměťového úložiště je 128 × 4 = 512 MB. Chcete-li snížit počet blokování aktualizací, zvyšte hodnotu `hbase.hregion.memstore.block.multiplier`.
+    S výchozími hodnotami velikosti vyprázdnění a násobitele bloku jsou aktualizace zablokované, pokud setSize paměťového úložiště je 128 × 4 = 512 MB. Chcete-li snížit počet blokování aktualizací, zvyšte hodnotu `hbase.hregion.memstore.block.multiplier` .
 
 ![Multiplikátor bloku oblasti Apache HBA](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
 
 ## <a name="define-memstore-size"></a>Definovat velikost setSize paměťového úložiště
 
-Velikost setSize paměťového úložiště je definována parametry `hbase.regionserver.global.memstore.UpperLimit` a. `hbase.regionserver.global.memstore.LowerLimit` Nastavení těchto hodnot je stejné jako u každého dalšího, při zápisu dojde k pozastavení, což také způsobuje častější vyprazdňování a vede k vyššímu výkonu zápisu.
+Velikost setSize paměťového úložiště je definována `hbase.regionserver.global.memstore.UpperLimit` `hbase.regionserver.global.memstore.LowerLimit` parametry a. Nastavení těchto hodnot je stejné jako u každého dalšího, při zápisu dojde k pozastavení, což také způsobuje častější vyprazdňování a vede k vyššímu výkonu zápisu.
 
 ## <a name="set-memstore-local-allocation-buffer"></a>Nastavit místní vyrovnávací paměť pro přidělení setSize paměťového úložiště
 
-Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled`. Pokud je povoleno (true), toto nastavení zabrání fragmentaci haldy během operace silného zápisu. Výchozí hodnotou je hodnota true.
+Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled` . Pokud je povoleno (true), toto nastavení zabrání fragmentaci haldy během operace silného zápisu. Výchozí hodnotou je hodnota true.
 
 ![HBA. hregion. setSize paměťového úložiště. mslab. Enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
 

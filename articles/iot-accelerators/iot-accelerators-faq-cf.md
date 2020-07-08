@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792373"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení propojené továrny
@@ -42,9 +41,9 @@ Společnost Microsoft zvolila OPC UA, protože se jedná o otevřené, neproprie
 
 IP adresu můžete přidat dvěma způsoby:
 
-* Použijte skript `Simulation/Factory/Add-SimulationPublicIp.ps1` prostředí PowerShell v [úložišti](https://github.com/Azure/azure-iot-connected-factory). Jako parametr předejte název nasazení. Pro místní nasazení použijte `<your username>ConnFactoryLocal`. Skript vytiskne IP adresu virtuálního počítače.
+* Použijte skript prostředí PowerShell `Simulation/Factory/Add-SimulationPublicIp.ps1` v [úložišti](https://github.com/Azure/azure-iot-connected-factory). Jako parametr předejte název nasazení. Pro místní nasazení použijte `<your username>ConnFactoryLocal` . Skript vytiskne IP adresu virtuálního počítače.
 
-* V Azure Portal vyhledejte skupinu prostředků vašeho nasazení. S výjimkou místního nasazení má skupina prostředků název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu sestavení je `<your username>ConnFactoryLocal`název skupiny prostředků. Nyní do skupiny prostředků přidejte nový prostředek **veřejné IP adresy** .
+* V Azure Portal vyhledejte skupinu prostředků vašeho nasazení. S výjimkou místního nasazení má skupina prostředků název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu sestavení je název skupiny prostředků `<your username>ConnFactoryLocal` . Nyní do skupiny prostředků přidejte nový prostředek **veřejné IP adresy** .
 
 > [!NOTE]
 > V obou případech se ujistěte, že nainstalujete nejnovější opravy podle pokynů na [webu Ubuntu](https://wiki.ubuntu.com/Security/Upgrades). Pokud je váš virtuální počítač přístupný prostřednictvím veřejné IP adresy, udržujte si instalaci v aktuálním stavu.
@@ -53,28 +52,28 @@ IP adresu můžete přidat dvěma způsoby:
 
 IP adresu můžete odebrat dvěma způsoby:
 
-* Použijte PowerShellový skript simulace/výroba/Remove-SimulationPublicIp. ps1 [úložiště](https://github.com/Azure/azure-iot-connected-factory). Jako parametr předejte název nasazení. Pro místní nasazení použijte `<your username>ConnFactoryLocal`. Skript vytiskne IP adresu virtuálního počítače.
+* Použijte PowerShellový simulaci/tovární nebo Remove-SimulationPublicIp.ps1 [úložiště](https://github.com/Azure/azure-iot-connected-factory). Jako parametr předejte název nasazení. Pro místní nasazení použijte `<your username>ConnFactoryLocal` . Skript vytiskne IP adresu virtuálního počítače.
 
-* V Azure Portal vyhledejte skupinu prostředků vašeho nasazení. S výjimkou místního nasazení má skupina prostředků název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu sestavení je `<your username>ConnFactoryLocal`název skupiny prostředků. Nyní ze skupiny prostředků odeberte prostředek **veřejné IP adresy** .
+* V Azure Portal vyhledejte skupinu prostředků vašeho nasazení. S výjimkou místního nasazení má skupina prostředků název, který jste zadali jako řešení nebo název nasazení. Pro místní nasazení pomocí skriptu sestavení je název skupiny prostředků `<your username>ConnFactoryLocal` . Nyní ze skupiny prostředků odeberte prostředek **veřejné IP adresy** .
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Návody se přihlašovat k simulaci virtuálního počítače?
 
-Přihlášení k virtuálnímu počítači simulace se podporuje jenom v případě, že jste řešení nasadili pomocí `build.ps1` skriptu PowerShellu v [úložišti](https://github.com/Azure/azure-iot-connected-factory).
+Přihlášení k virtuálnímu počítači simulace se podporuje jenom v případě, že jste řešení nasadili pomocí skriptu PowerShellu `build.ps1` v [úložišti](https://github.com/Azure/azure-iot-connected-factory).
 
 Pokud jste řešení nasadili z www.azureiotsolutions.com, nemůžete se přihlásit k virtuálnímu počítači. Nemůžete se přihlásit, protože heslo je vygenerované náhodně a nemůžete ho resetovat.
 
 1. Přidejte veřejnou IP adresu k virtuálnímu počítači. Viz [návody přidání veřejné IP adresy na simulaci virtuálního počítače?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. Vytvořte relaci SSH k VIRTUÁLNÍmu počítači pomocí IP adresy virtuálního počítače.
-1. Uživatelské jméno, které se má `docker`použít, je:.
+1. Uživatelské jméno, které se má použít, je: `docker` .
 1. Heslo, které se má použít, závisí na verzi, kterou jste použili k nasazení:
-    * Pro řešení nasazená pomocí skriptu Build. ps1 do 1. června 2017 je heslo: `Passw0rd`.
-    * Pro řešení nasazená pomocí skriptu Build. ps1 od 1. června 2017 můžete v `<name of your deployment>.config.user` souboru najít heslo. Heslo je uloženo v nastavení **VmAdminPassword** . Heslo se vygeneruje náhodně v době nasazení, pokud ho neurčíte `build.ps1` pomocí parametru skriptu.`-VmAdminPassword`
+    * Pro řešení nasazená pomocí skriptu build.ps1 do 1. června 2017 je heslo: `Passw0rd` .
+    * V případě řešení nasazených pomocí skriptu build.ps1 po 1. června 2017 můžete v souboru najít heslo `<name of your deployment>.config.user` . Heslo je uloženo v nastavení **VmAdminPassword** . Heslo se vygeneruje náhodně v době nasazení, pokud ho neurčíte pomocí `build.ps1` parametru skriptu.`-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Návody zastavit a spustit všechny procesy Docker v simulaci virtuálního počítače?
 
 1. Přihlaste se k virtuálnímu počítači simulace. Přečtěte si téma [návody Přihlaste se k simulaci virtuálního počítače?](#how-do-i-sign-in-to-the-simulation-vm)
-1. Chcete-li zjistit, které kontejnery jsou aktivní `docker ps`, spusťte příkaz:.
-1. Chcete-li zastavit všechny kontejnery simulace, `./stopsimulation`spusťte příkaz:.
+1. Chcete-li zjistit, které kontejnery jsou aktivní, spusťte příkaz: `docker ps` .
+1. Chcete-li zastavit všechny kontejnery simulace, spusťte příkaz: `./stopsimulation` .
 1. Chcete-li spustit všechny kontejnery simulace:
     * Exportujte proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu nastavení **IotHubOwnerConnectionString** v `<name of your deployment>.config.user` souboru. Příklad:
 
@@ -86,7 +85,7 @@ Pokud jste řešení nasadili z www.azureiotsolutions.com, nemůžete se přihl�
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Návody aktualizovat simulaci na virtuálním počítači?
 
-Pokud jste provedli nějaké změny v simulaci, můžete použít skript `build.ps1` prostředí PowerShell v [úložišti](https://github.com/Azure/azure-iot-connected-factory) pomocí `updatedimulation` příkazu. Tento skript vytvoří všechny komponenty simulace, zastaví simulaci ve virtuálním počítači, nahraje, nainstaluje a spustí je.
+Pokud jste provedli nějaké změny v simulaci, můžete použít skript prostředí PowerShell `build.ps1` v [úložišti](https://github.com/Azure/azure-iot-connected-factory) pomocí `updatedimulation` příkazu. Tento skript vytvoří všechny komponenty simulace, zastaví simulaci ve virtuálním počítači, nahraje, nainstaluje a spustí je.
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Návody zjistit připojovací řetězec centra IoT, které používá moje řešení?
 
@@ -115,7 +114,7 @@ Pomocí nástroje [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Jak mohu získat data protokolu z komponent simulace?
 
-Všechny součásti v protokolu simulace informace v nástroji do souborů protokolu. Tyto soubory najdete ve složce `home/docker/Logs`na virtuálním počítači. K načtení protokolů můžete použít skript `Simulation/Factory/Get-SimulationLogs.ps1` prostředí PowerShell v [úložišti](https://github.com/Azure/azure-iot-connected-factory).
+Všechny součásti v protokolu simulace informace v nástroji do souborů protokolu. Tyto soubory najdete ve složce na virtuálním počítači `home/docker/Logs` . K načtení protokolů můžete použít skript prostředí PowerShell `Simulation/Factory/Get-SimulationLogs.ps1` v [úložišti](https://github.com/Azure/azure-iot-connected-factory).
 
 Tento skript musí být přihlášený k virtuálnímu počítači. Možná budete muset zadat přihlašovací údaje pro přihlášení. Pokud chcete najít přihlašovací údaje, přečtěte si téma [návody přihlášení k virtuálnímu počítači pro simulaci?](#how-do-i-sign-in-to-the-simulation-vm)
 
@@ -144,7 +143,7 @@ Pokud chcete povolit interaktivní mapování v řešení propojené továrny, m
 
 Při nasazování z [www.azureiotsolutions.com](https://www.azureiotsolutions.com)proces nasazení přidá účet Azure Maps do skupiny prostředků, která obsahuje služby akcelerátoru řešení.
 
-Při nasazení pomocí `build.ps1` skriptu v úložišti GitHub připojené továrny nastavte proměnnou `$env:MapApiQueryKey` prostředí v okně sestavení na [klíč vašeho účtu Azure Maps](../azure-maps/how-to-manage-account-keys.md). Interaktivní mapování se pak povolí automaticky.
+Při nasazení pomocí `build.ps1` skriptu v úložišti GitHub připojené továrny nastavte proměnnou prostředí `$env:MapApiQueryKey` v okně sestavení na [klíč vašeho účtu Azure Maps](../azure-maps/how-to-manage-account-keys.md). Interaktivní mapování se pak povolí automaticky.
 
 Po nasazení můžete také přidat klíč účtu Azure Maps do akcelerátoru řešení. Přejděte do Azure Portal a přihlaste se k prostředku App Service ve vašem nasazení propojené továrny. Přejděte do **nastavení aplikace**, kde najdete část **nastavení aplikace**. Nastavte **MapApiQueryKey** na [klíč účtu Azure Maps](../azure-maps/how-to-manage-account-keys.md). Uložte nastavení a potom přejděte na **Přehled** a restartujte App Service.
 
@@ -158,17 +157,17 @@ Přečtěte si, [jak spravovat účet Azure Maps a klíče](../azure-maps/how-to
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Jak povolit interaktivní mapování při místním ladění?
 
-Chcete-li povolit interaktivní mapování při místním ladění, `MapApiQueryKey` nastavte hodnotu nastavení v souborech `local.user.config` a `<yourdeploymentname>.user.config` v kořenu vašeho nasazení na hodnotu **QueryKey** , kterou jste zkopírovali dříve.
+Chcete-li povolit interaktivní mapování při místním ladění, nastavte hodnotu nastavení `MapApiQueryKey` v souborech `local.user.config` a `<yourdeploymentname>.user.config` v kořenu vašeho nasazení na hodnotu **QueryKey** , kterou jste zkopírovali dříve.
 
 ### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Návody použít na domovské stránce řídicího panelu jiný obrázek?
 
-Chcete-li změnit statický obrázek v/v na domovské stránce řídicího panelu, nahraďte obrázek `WebApp\Content\img\world.jpg`. Pak znovu sestavte a znovu nasaďte rozhraní WebApp.
+Chcete-li změnit statický obrázek v/v na domovské stránce řídicího panelu, nahraďte obrázek `WebApp\Content\img\world.jpg` . Pak znovu sestavte a znovu nasaďte rozhraní WebApp.
 
 ### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Návody používat zařízení OPC UA s propojenou továrnou?
 
 Odeslání dat telemetrie ze zařízení, která nejsou OPC UA, do propojené továrny:
 
-1. V `ContosoTopologyDescription.json` souboru [nakonfigurujte novou stanici v topologii připojené továrny](iot-accelerators-connected-factory-configure.md) .
+1. V souboru [nakonfigurujte novou stanici v topologii připojené továrny](iot-accelerators-connected-factory-configure.md) `ContosoTopologyDescription.json` .
 
 1. Ingestujte data telemetrie ve formátu JSON propojené továrny, který je kompatibilní:
 
@@ -194,6 +193,6 @@ Odeslání dat telemetrie ze zařízení, která nejsou OPC UA, do propojené to
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
+* [Přehled akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
 * [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)

@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891200"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a Správa centra oznámení pomocí PowerShellu
@@ -34,7 +33,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvořit a spravovat Azur
 
 Pokud také potřebujete vytvořit nový obor názvů služby Service Bus pro vaše centra oznámení, přečtěte si téma [správa Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
 
-Správa Center oznámení není podporovaná přímo rutinami, které jsou součástí Azure PowerShell. Nejlepším přístupem z PowerShellu je odkazování na sestavení Microsoft. Azure. NotificationHubs. dll. Sestavení je distribuováno pomocí [Microsoft Azure Notification Hubs balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Správa Center oznámení není podporovaná přímo rutinami, které jsou součástí Azure PowerShell. Nejlepším přístupem z PowerShellu je odkazování na sestavení Microsoft.Azure.NotificationHubs.dll. Sestavení je distribuováno pomocí [Microsoft Azure Notification Hubs balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,11 +45,11 @@ Správa Center oznámení není podporovaná přímo rutinami, které jsou souč
 
 Správa Azure Notification Hubs ještě není součástí rutin PowerShellu v Azure PowerShell. Pokud chcete zřídit centra oznámení, můžete použít klienta .NET, který je k dispozici v [balíčku Microsoft Azure Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Nejprve zajistěte, aby váš skript mohl najít sestavení **Microsoft. Azure. NotificationHubs. dll** , které je nainstalováno jako balíček NuGet v projektu sady Visual Studio. Aby bylo možné tento skript flexibilní, provede následující kroky:
+Nejprve zajistěte, aby váš skript mohl najít **Microsoft.Azure.NotificationHubs.dll** sestavení, které je nainstalováno jako balíček NuGet v projektu sady Visual Studio. Aby bylo možné tento skript flexibilní, provede následující kroky:
 
 1. Určuje cestu, ve které byla vyvolána.
-2. Projde cestu, dokud nenajde složku s názvem `packages`. Tato složka se vytvoří při instalaci balíčků NuGet pro projekty sady Visual Studio.
-3. Rekurzivně vyhledá `packages` složku pro sestavení s názvem `Microsoft.Azure.NotificationHubs.dll`.
+2. Projde cestu, dokud nenajde složku s názvem `packages` . Tato složka se vytvoří při instalaci balíčků NuGet pro projekty sady Visual Studio.
+3. Rekurzivně vyhledá `packages` složku pro sestavení s názvem `Microsoft.Azure.NotificationHubs.dll` .
 4. Odkazuje na sestavení tak, aby byly typy k dispozici pro pozdější použití.
 
 Tady je postup implementace těchto kroků ve skriptu PowerShellu:
@@ -102,7 +101,7 @@ V této části skriptu nastavíte čtyři místní proměnné.
 Tyto proměnné se používají pro připojení k vašemu oboru názvů a vytvoření nového centra oznámení nakonfigurovaného pro zpracování oznámení služby Windows Notification Services (WNS) s přihlašovacími údaji WNS pro aplikaci pro Windows. Informace o získání identifikátoru SID balíčku a tajného klíče najdete v kurzu [Začínáme Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 
 - Fragment skriptu používá `NamespaceManager` objekt ke kontrole, zda centrum oznámení identifikované `$Path` existuje.
-- Pokud neexistuje, skript vytvoří `NotificationHubDescription` s přihlašovacími údaji WNS a předá ho metodě `NamespaceManager` třídy. `CreateNotificationHub`
+- Pokud neexistuje, skript vytvoří `NotificationHubDescription` s přihlašovacími údaji WNS a předá ho `NamespaceManager` `CreateNotificationHub` metodě třídy.
 
 ``` powershell
 $Namespace = "<Enter your namespace>"

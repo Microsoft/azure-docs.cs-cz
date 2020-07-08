@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.custom: seodec18~~~~
 ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838514"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí Azure Portal
@@ -34,7 +33,7 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
 ## <a name="add-a-reference-data-set"></a>Přidání referenční sady dat
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte existující Azure Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
 
@@ -64,11 +63,11 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
    - Vložte data do textového editoru. Pak vyberte tlačítko **analyzovat referenční data** .
    - Kliknutím na tlačítko **zvolit soubor** přidejte data z místního textového souboru.
 
-   Například vložte data sdíleného svazku clusteru: [ ![vložená data CSV](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
+   Například vložte data sdíleného svazku clusteru: [ ![ vložená data CSV](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
 
-   Například vložte data pole JSON: [ ![vložit data JSON.](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
+   Například vložte data pole JSON: [ ![ Vložit data JSON](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox) .
 
-   Pokud při analýze hodnot dat dojde k chybě, zobrazí se chyba červeně v dolní části stránky, například `CSV parsing error, no rows extracted`.
+   Pokud při analýze hodnot dat dojde k chybě, zobrazí se chyba červeně v dolní části stránky, například `CSV parsing error, no rows extracted` .
 
 1. Po úspěšném analyzování dat se zobrazí datová mřížka zobrazující sloupce a řádky reprezentující data. Zkontrolujte datovou mřížku, abyste zajistili správnost.
 

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892209"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Jak používat JSONPath k transformaci dat JSON v sešitech
@@ -27,7 +26,7 @@ Pomocí transformace JSONPath mohou autoři sešitu převést JSON na strukturu 
 ## <a name="using-jsonpath"></a>Použití JSONPath
 
 1. Kliknutím na položku panelu nástrojů pro *Úpravy* přepněte sešit do režimu úprav.
-2. K přidání ovládacího prvku dotazu do sešitu použijte odkaz *Přidat* > *dotaz* přidat.
+2. K *Add*  >  Přidání ovládacího prvku dotazu do sešitu použijte odkaz Přidat*dotaz* přidat.
 3. Vyberte zdroj dat jako *JSON*.
 4. Pomocí editoru JSON zadejte následující fragment kódu JSON.
     ```json
@@ -69,7 +68,7 @@ Předpokládejme, že se vám jako reprezentace inventáře obchodu přidáváme
 1. Vyberte kartu *nastavení výsledků* a přepněte formát výsledku na *cestu JSON*.
 2. Použijte následující nastavení cesty JSON:
 
-    Tabulka cesty JSON: `$.store.books`. Toto pole představuje cestu k kořenovému adresáři tabulky. V tomto případě se zajímáme o inventář knih v obchodě. Cesta k tabulce filtruje kód JSON s informacemi o knize.
+    Tabulka cesty JSON: `$.store.books` . Toto pole představuje cestu k kořenovému adresáři tabulky. V tomto případě se zajímáme o inventář knih v obchodě. Cesta k tabulce filtruje kód JSON s informacemi o knize.
 
    | ID sloupců | Cesta JSON sloupce |
    |:-----------|:-----------------|

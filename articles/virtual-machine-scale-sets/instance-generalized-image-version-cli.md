@@ -10,10 +10,9 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797133"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image"></a>Vytvoření sady škálování z generalizované image
@@ -36,9 +35,9 @@ az sig image-definition list \
    --output tsv
 ```
 
-Vytvořte sadu škálování pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create). 
+Vytvořte sadu škálování pomocí [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
 
-Pomocí ID definice image pro `--image` můžete vytvořit instance sady škálování z nejnovější verze image, která je k dispozici. Můžete také vytvořit instance sady škálování z konkrétní verze, a to zadáním ID verze image pro `--image`. Uvědomte si, že použití konkrétní verze image znamená, že automatizace může selhat, pokud není dostupná konkrétní verze image, protože se odstranila nebo odebrala z oblasti. Pro vytvoření nového virtuálního počítače doporučujeme použít ID definice image, pokud není potřeba konkrétní verze image.
+Pomocí ID definice image pro `--image` můžete vytvořit instance sady škálování z nejnovější verze image, která je k dispozici. Můžete také vytvořit instance sady škálování z konkrétní verze, a to zadáním ID verze image pro `--image` . Uvědomte si, že použití konkrétní verze image znamená, že automatizace může selhat, pokud není dostupná konkrétní verze image, protože se odstranila nebo odebrala z oblasti. Pro vytvoření nového virtuálního počítače doporučujeme použít ID definice image, pokud není potřeba konkrétní verze image.
 
 V tomto příkladu vytváříme instance z nejnovější verze *myImageDefinition* image.
 

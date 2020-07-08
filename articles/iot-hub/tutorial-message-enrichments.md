@@ -9,10 +9,9 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770082"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
@@ -38,7 +37,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 * Nainstalujte [Visual Studio](https://www.visualstudio.com/).
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
@@ -51,7 +50,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 Stáhněte si [ukázky IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) z GitHubu a rozbalte je. Toto úložiště obsahuje několik aplikací, skriptů a Správce prostředků šablon. K tomu, aby je bylo možné použít v tomto kurzu, patří následující:
 
 * Pro ruční metodu je k dispozici skript rozhraní příkazového řádku, který se používá k vytvoření prostředků. Tento skript je v/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. Tento skript vytvoří prostředky a nakonfiguruje směrování zpráv. Po spuštění tohoto skriptu vytvořte rozšíření zprávy ručně pomocí [Azure Portal](https://portal.azure.com).
-* Pro automatizovanou metodu je Azure Resource Manager šablona. Šablona je ve formátu/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments. JSON. Tato šablona vytvoří prostředky, nakonfiguruje směrování zpráv a potom nakonfiguruje rozšíření zpráv.
+* Pro automatizovanou metodu je Azure Resource Manager šablona. Šablona je v/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.jszapnutá. Tato šablona vytvoří prostředky, nakonfiguruje směrování zpráv a potom nakonfiguruje rozšíření zpráv.
 * Třetí aplikace, kterou používáte, je aplikace pro simulaci zařízení, kterou používáte k posílání zpráv do služby IoT Hub a testování rozšíření zprávy.
 
 ## <a name="manually-set-up-and-configure-by-using-the-azure-cli"></a>Ruční nastavení a konfigurace pomocí Azure CLI
@@ -77,7 +76,7 @@ Pokud jste to ještě neudělali, otevřete [okno Azure Cloud Shell](https://she
 
 Tady jsou zdroje vytvořené skriptem. *Obohaceno* znamená, že prostředek je pro zprávy s obohacením. *Původní* znamená, že prostředek je pro zprávy, které nejsou obohaceny.
 
-| Název | Hodnota |
+| Name | Hodnota |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | název kontejneru | původně  |
@@ -259,7 +258,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 
 2. Tyto hodnoty přidejte do seznamu pro koncový bod ContosoStorageEndpointEnriched.
 
-   | Key | Hodnota | Koncový bod (rozevírací seznam) |
+   | Klíč | Hodnota | Koncový bod (rozevírací seznam) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin. Tags. Location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -287,7 +286,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 
 1. V podokně **vlastní nasazení** vyberte **v editoru vytvořit vlastní šablonu**.
 
-1. V podokně **Upravit šablonu** vyberte **načíst soubor**. Zobrazí se Průzkumník Windows. Vyhledejte soubor **template_messageenrichments. JSON** v souboru úložiště s příponou ZIP v **/IoT-Hub/tutorials/Routing/SimulatedDevice/Resources**. 
+1. V podokně **Upravit šablonu** vyberte **načíst soubor**. Zobrazí se Průzkumník Windows. Vyhledejte **template_messageenrichments.js** v souboru v souboru úložiště s příponou v **/IoT-Hub/tutorials/Routing/SimulatedDevice/Resources**. 
 
    ![Vybrat šablonu z místního počítače](./media/tutorial-message-enrichments/template-select.png)
 
@@ -297,7 +296,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 
    Tady jsou zdroje vytvořené pomocí načtení šablony. **Obohaceno** znamená, že prostředek je pro zprávy s obohacením. **Původní** znamená, že prostředek je pro zprávy, které nejsou obohaceny. Jedná se o stejné hodnoty, které se používají ve skriptu rozhraní příkazového řádku Azure CLI.
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | název kontejneru | původně  |
@@ -330,13 +329,13 @@ Chcete-li zobrazit rozšíření zprávy, vyberte **skupiny prostředků**. Pak 
 
 Teď, když jsou pro koncový bod nakonfigurované rozšíření zpráv, spusťte aplikaci simulovaného zařízení, aby se odesílaly zprávy do služby IoT Hub. Centrum se nastavilo s nastaveními, která provádějí následující úlohy:
 
-* Zprávy směrované do koncového bodu úložiště ContosoStorageEndpointOriginal nebudou obohaceny a budou uloženy v kontejneru `original`úložiště.
+* Zprávy směrované do koncového bodu úložiště ContosoStorageEndpointOriginal nebudou obohaceny a budou uloženy v kontejneru úložiště `original` .
 
-* Zprávy směrované do koncového bodu úložiště ContosoStorageEndpointEnriched budou obohaceny a uloženy v kontejneru `enriched`úložiště.
+* Zprávy směrované do koncového bodu úložiště ContosoStorageEndpointEnriched budou obohaceny a uloženy v kontejneru úložiště `enriched` .
 
 Aplikace simulovaného zařízení je jedním z aplikací při stažení. Aplikace odesílá zprávy pro každou z různých metod směrování zpráv v [kurzu směrování](tutorial-routing.md), který zahrnuje Azure Storage.
 
-Dvojím kliknutím na soubor řešení **IoT_SimulatedDevice. sln** otevřete kód v aplikaci Visual Studio a pak otevřete **program.cs**. Nahraďte název služby IoT Hub pro značku `{your hub name}`. Formát názvu hostitele služby IoT Hub je **{název vašeho centra}. Azure-Devices.NET**. V tomto kurzu se název hostitele centra ContosoTestHubMsgEn.azure-devices.net. Potom nahraďte klíč zařízení, který jste předtím uložili, když jste spustili skript, který vytvoří prostředky pro značku `{your device key}`.
+Dvojím kliknutím na soubor řešení **IoT_SimulatedDevice. sln** otevřete kód v aplikaci Visual Studio a pak otevřete **program.cs**. Nahraďte název služby IoT Hub pro značku `{your hub name}` . Formát názvu hostitele služby IoT Hub je **{název vašeho centra}. Azure-Devices.NET**. V tomto kurzu se název hostitele centra ContosoTestHubMsgEn.azure-devices.net. Potom nahraďte klíč zařízení, který jste předtím uložili, když jste spustili skript, který vytvoří prostředky pro značku `{your device key}` .
 
 Pokud nemáte klíč zařízení, můžete ho načíst z portálu. Po přihlášení klikněte na **skupiny prostředků**, vyberte svoji skupinu prostředků a potom vyberte Centrum IoT. Podívejte se na zařízení **IoT** pro vaše testovací zařízení a vyberte své zařízení. Vyberte ikonu kopírování vedle **primárního klíče** a zkopírujte ji do schránky.
 
@@ -352,7 +351,7 @@ Pokud nemáte klíč zařízení, můžete ho načíst z portálu. Po přihláš
 
 Spusťte konzolovou aplikaci během několika minut. Zprávy, které jsou odesílány, se zobrazí na obrazovce konzoly aplikace.
 
-Aplikace odesílá zprávy typu zařízení-cloud do centra IoT každou sekundu. Zpráva obsahuje serializovaný objekt JSON s ID zařízení, teplotou, vlhkostí a úrovní zprávy, jejíž výchozí hodnota je `normal`. Náhodně přiřadí úroveň `critical` nebo `storage`, což způsobí, že se zpráva směruje do účtu úložiště nebo do výchozího koncového bodu. Zprávy odesílané **obohacenému** kontejneru v účtu úložiště budou obohaceny.
+Aplikace odesílá zprávy typu zařízení-cloud do centra IoT každou sekundu. Zpráva obsahuje serializovaný objekt JSON s ID zařízení, teplotou, vlhkostí a úrovní zprávy, jejíž výchozí hodnota je `normal`. Náhodně přiřadí úroveň `critical` nebo `storage` , což způsobí, že se zpráva směruje do účtu úložiště nebo do výchozího koncového bodu. Zprávy odesílané **obohacenému** kontejneru v účtu úložiště budou obohaceny.
 
 Po odeslání několika zpráv úložiště si prohlédněte data.
 
@@ -386,7 +385,7 @@ Pokud chcete odebrat všechny prostředky, které jste vytvořili v tomto kurzu,
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Odvolání, `$resourceGroup` které bylo nastaveno na **ContosoResourcesMsgEn** na začátku tohoto kurzu.
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Odvolání, které `$resourceGroup` bylo nastaveno na **ContosoResourcesMsgEn** na začátku tohoto kurzu.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

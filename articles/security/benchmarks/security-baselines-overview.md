@@ -9,10 +9,9 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 43718e992349ff9bcb3635ab1b949c2b2f2c9ec0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871997"
 ---
 # <a name="security-baselines-for-azure"></a>Standardní hodnoty zabezpečení pro Azure
@@ -32,4 +31,4 @@ Každé doporučení zahrnuje následující informace:
 Všechna doporučení, včetně doporučení, která nejsou platná pro tuto konkrétní službu, jsou součástí směrného plánu, který vám poskytne úplný přehled o tom, jak srovnávací test zabezpečení Azure souvisí s každou službou. V některých případech mohou být ovládací prvky, které se nedají použít k různým důvodům, například ovládací prvky zaměřené na IaaS/výpočetní výkon (například ovládací prvky specifické pro správu konfigurace operačního systému) nemusejí být použitelné pro služby PaaS.
 
 
-Uvítáme vaše názory na směrné plány zabezpečení pro služby Azure. V níže uvedené oblasti zpětné vazby doporučujeme zadat komentáře. Pokud ale dáváte přednost sdílení vašich vstupů s týmem Azure Security test test, budete připraveni vyplnit formulář na stránce https://aka.ms/AzSecBenchmark.
+Uvítáme vaše názory na směrné plány zabezpečení pro služby Azure. V níže uvedené oblasti zpětné vazby doporučujeme zadat komentáře. Pokud ale dáváte přednost sdílení vašich vstupů s týmem Azure Security test test, budete připraveni vyplnit formulář na stránce https://aka.ms/AzSecBenchmark .

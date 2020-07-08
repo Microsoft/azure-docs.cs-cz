@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
 ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792305"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava stávající image virtuálního počítače Azure pro Linux pro použití s cloudovým inicializací
@@ -29,14 +28,14 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-Aktualizujte `cloud_init_modules` část v `/etc/cloud/cloud.cfg` , aby obsahovala následující moduly:
+Aktualizujte `cloud_init_modules` část v, `/etc/cloud/cloud.cfg` aby obsahovala následující moduly:
 
 ```bash
 - disk_setup
 - mounts
 ```
 
-Tady je ukázka toho, co vypadá oddíl pro obecné `cloud_init_modules` účely.
+Tady je ukázka toho, co vypadá oddíl pro obecné účely `cloud_init_modules` .
 
 ```bash
 cloud_init_modules:
@@ -55,7 +54,7 @@ cloud_init_modules:
  - ssh
 ```
 
-Řada úloh týkajících se zřizování a manipulace s dočasnými disky se musí aktualizovat v `/etc/waagent.conf`. Spusťte následující příkazy a aktualizujte příslušná nastavení.
+Řada úloh týkajících se zřizování a manipulace s dočasnými disky se musí aktualizovat v `/etc/waagent.conf` . Spusťte následující příkazy a aktualizujte příslušná nastavení.
 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
@@ -65,7 +64,7 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Umožněte pro agenta Azure Linux jenom Azure jako zdroj dat, a to tak, že `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` vytvoříte nový soubor pomocí editoru podle vašeho výběru s následujícím řádkem:
+Umožněte pro agenta Azure Linux jenom Azure jako zdroj dat, a to tak, že vytvoříte nový soubor `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` pomocí editoru podle vašeho výběru s následujícím řádkem:
 
 ```bash
 # Azure Data Source config
@@ -82,7 +81,7 @@ Pro Image CentOS s povoleným swapfile můžete spustit následující příkaz,
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Ujistěte se, že odkaz na swapfile `/etc/fstab` je odebraný z – měl by vypadat nějak takto:
+Ujistěte se, že odkaz na swapfile je odebraný z `/etc/fstab` – měl by vypadat nějak takto:
 
 ```output
 # /etc/fstab
@@ -119,7 +118,7 @@ sudo waagent -deprovision+user -force
 
 Další informace o příkazech zrušení zřízení agenta Azure Linux naleznete v tématu [Agent Azure Linux](../extensions/agent-linux.md) , kde najdete další podrobnosti.
 
-Ukončete relaci SSH a potom z prostředí bash spusťte následující příkazy Azure CLI k uvolnění, generalizaci a vytvoření nové image virtuálního počítače Azure.  `myResourceGroup` Nahraďte `sourceVmName` a odpovídajícími informacemi, které odpovídají vašemu sourceVM.
+Ukončete relaci SSH a potom z prostředí bash spusťte následující příkazy Azure CLI k uvolnění, generalizaci a vytvoření nové image virtuálního počítače Azure.  Nahraďte `myResourceGroup` a `sourceVmName` odpovídajícími informacemi, které odpovídají vašemu sourceVM.
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name sourceVmName

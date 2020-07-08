@@ -11,15 +11,14 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: sharadag
 ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768318"
 ---
 # <a name="wildcard-domains"></a>Domény se zástupnými znaky
 
-Kromě domén vrcholů a subdomén můžete mapovat název domény se zástupnými znaky na váš seznam hostitelů front-endu nebo vlastní domény v profilu front-endu Azure. Pokud máte v konfiguraci front-end serverů ve službě Azure frontu se zástupnými znaky, zjednoduší se chování směrování provozu pro více subdomén pro rozhraní API, aplikace nebo weby ze stejného pravidla směrování. Nemusíte měnit konfiguraci, aby bylo možné přidat nebo zadat každou subdoménu samostatně. Můžete například definovat směrování `customer1.contoso.com`pro, `customer2.contoso.com`a `customerN.contoso.com` pomocí stejného pravidla směrování a přidat doménu `*.contoso.com`se zástupnými znaky.
+Kromě domén vrcholů a subdomén můžete mapovat název domény se zástupnými znaky na váš seznam hostitelů front-endu nebo vlastní domény v profilu front-endu Azure. Pokud máte v konfiguraci front-end serverů ve službě Azure frontu se zástupnými znaky, zjednoduší se chování směrování provozu pro více subdomén pro rozhraní API, aplikace nebo weby ze stejného pravidla směrování. Nemusíte měnit konfiguraci, aby bylo možné přidat nebo zadat každou subdoménu samostatně. Můžete například definovat směrování pro `customer1.contoso.com` , `customer2.contoso.com` a `customerN.contoso.com` pomocí stejného pravidla směrování a přidat doménu se zástupnými znaky `*.contoso.com` .
 
 Mezi klíčové scénáře, které jsou vylepšené podporou zástupných domén, patří:
 
@@ -31,7 +30,7 @@ Mezi klíčové scénáře, které jsou vylepšené podporou zástupných domén
 
 ## <a name="adding-wildcard-domains"></a>Přidání domén se zástupnými znaky
 
-Můžete přidat doménu se zástupnými znaky do části pro front-end hostitele nebo domény. Podobně jako u subdomén se v případě front-end Azure ověří, že pro vaši doménu se zástupnými znaky existuje mapování záznamů CNAME. Toto mapování DNS může být přímé mapování záznamů CNAME, jako `*.contoso.com` je namapované na `contoso.azurefd.net`. Nebo můžete použít dočasné mapování afdverify. Například namapována `afdverify.contoso.com` tak `afdverify.contoso.azurefd.net` , aby ověřovala mapování záznamů CNAME pro zástupný znak.
+Můžete přidat doménu se zástupnými znaky do části pro front-end hostitele nebo domény. Podobně jako u subdomén se v případě front-end Azure ověří, že pro vaši doménu se zástupnými znaky existuje mapování záznamů CNAME. Toto mapování DNS může být přímé mapování záznamů CNAME, jako je `*.contoso.com` namapované na `contoso.azurefd.net` . Nebo můžete použít dočasné mapování afdverify. Například `afdverify.contoso.com` namapována tak, aby `afdverify.contoso.azurefd.net` ověřovala mapování záznamů CNAME pro zástupný znak.
 
 > [!NOTE]
 > Azure DNS podporuje záznamy se zástupným znakem.
@@ -40,7 +39,7 @@ Do front-end hostitelů můžete přidat tolik subdomén v doméně se zástupn�
 
 - Definování jiné trasy pro subdoménu, než je zbytek domén (z domény se zástupnými znaky).
 
-- Má jiné zásady WAF pro konkrétní subdoménu. Například `*.contoso.com` umožňuje přidat `foo.contoso.com` bez nutnosti znovu prokázat vlastnictví domény. Ale neumožňuje `foo.bar.contoso.com` , protože se nejedná o subdoménu jedné `*.contoso.com`úrovně. Chcete- `foo.bar.contoso.com` li přidat bez dalšího ověření vlastnictví `*.bar.contosonews.com` domény, je nutné přidat.
+- Má jiné zásady WAF pro konkrétní subdoménu. Například `*.contoso.com` umožňuje přidat `foo.contoso.com` bez nutnosti znovu prokázat vlastnictví domény. Ale neumožňuje, `foo.bar.contoso.com` protože se nejedná o subdoménu jedné úrovně `*.contoso.com` . Chcete-li přidat `foo.bar.contoso.com` bez dalšího ověření vlastnictví domény, je `*.bar.contosonews.com` nutné přidat.
 
 Můžete přidat domény se zástupnými znaky a jejich subdomény s určitými omezeními:
 
@@ -72,7 +71,7 @@ Pokud nechcete, aby se pro subdoménu spouštěla zásada WAF, můžete vytvoři
 Při konfiguraci pravidla směrování můžete jako front-end hostitele Vybrat doménu se zástupnými znaky. Pro domény se zástupnými znaky a subdomény můžete také použít jiné chování směrování. Jak je popsáno v tématu Jak se na [frontách Azure nachází párování směrování](front-door-route-matching.md), je za běhu zvolena nejvíce specifická shoda pro doménu napříč různými pravidly směrování.
 
 > [!IMPORTANT]
-> Musíte mít stejné vzory cest napříč pravidly směrování, jinak se zobrazí selhání. Máte například dvě pravidla směrování, jako je třeba trasa 1 (`*.foo.com/*` namapovaná na fond back-end a) a trasa 2`bar.foo.com/somePath/*` (namapovaná na back-end fond B). Pak přijde žádost o `bar.foo.com/anotherPath/*`. Přední dvířka Azure vybírá trasu 2 na základě přesnější shody domény, a to jenom v případě, že v cestách neodpovídají vzory cest.
+> Musíte mít stejné vzory cest napříč pravidly směrování, jinak se zobrazí selhání. Máte například dvě pravidla směrování, jako je třeba trasa 1 ( `*.foo.com/*` namapovaná na fond back-end a) a trasa 2 ( `bar.foo.com/somePath/*` namapovaná na back-end fond B). Pak přijde žádost o `bar.foo.com/anotherPath/*` . Přední dvířka Azure vybírá trasu 2 na základě přesnější shody domény, a to jenom v případě, že v cestách neodpovídají vzory cest.
 
 ## <a name="next-steps"></a>Další kroky
 

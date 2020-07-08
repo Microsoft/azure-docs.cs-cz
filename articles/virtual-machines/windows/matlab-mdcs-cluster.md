@@ -9,10 +9,9 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869424"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Vytvoření clusterů distribuovaných výpočetních serverů v programu MATLAB na virtuálních počítačích Azure
@@ -47,7 +46,7 @@ Aby bylo možné používat virtuální počítače Azure pro clusterované výp
    * Použijte dodaný skript prostředí PowerShell nebo použijte šablonu pro rychlý Start k vytvoření clusteru z image základního virtuálního počítače.   
    * Clustery můžete spravovat pomocí zadaného skriptu prostředí PowerShell, který umožňuje zobrazit, pozastavit, obnovit a odstranit clustery.
 
-## <a name="cluster-configurations"></a>Konfigurace clusteru
+## <a name="cluster-configurations"></a>Konfigurace clusterů
 Skript pro vytvoření clusteru a šablonu v současné době umožňují vytvořit jednu topologii distribuovaného výpočetního serveru programu MATLAB. Pokud chcete, vytvořte jeden nebo víc dalších clusterů s každým clusterem, který má jiný počet pracovních počítačů, a to pomocí různých velikostí virtuálních počítačů a tak dále.
 
 ### <a name="matlab-client-and-cluster-in-azure"></a>Klient a cluster pro MATLAB v Azure

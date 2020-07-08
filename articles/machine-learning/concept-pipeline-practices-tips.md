@@ -10,10 +10,9 @@ ms.author: laobri
 author: lobrien
 ms.date: 05/01/2020
 ms.openlocfilehash: 2ea353469ed111eebb591aa6ba86c652683cc2f0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858191"
 ---
 # <a name="iterating-and-evolving-machine-learning-pipelines"></a>Iterace a vývoj kanálů strojového učení
@@ -48,7 +47,7 @@ Pokud chcete rychle iterovat, můžete vytvořit profil kanálu, vytvořit kaná
 
 Samostatné kanály jsou přirozené čáry, na kterých je možné rozdělit úsilí. Více vývojářů nebo dokonce několik týmů může pracovat na různých krocích, pokud jsou data a argumenty toku mezi jednotlivými kroky dohodnuty. 
 
-Během aktivního vývoje můžete načíst `PipelineRun` a `StepRun` spustit výsledky z pracovního prostoru, použít tyto objekty ke stažení finálního a mezilehlého výstupu a použít tyto artefakty pro vlastní modulární práci.
+Během aktivního vývoje můžete načíst `PipelineRun` a `StepRun` Spustit výsledky z pracovního prostoru, použít tyto objekty ke stažení finálního a mezilehlého výstupu a použít tyto artefakty pro vlastní modulární práci.
 
 ## <a name="use-pipelines-to-test-techniques-in-isolation"></a>Použití kanálů k testování technik v izolaci
 

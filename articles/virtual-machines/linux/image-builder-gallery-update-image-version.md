@@ -9,17 +9,16 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: 2b65dee27bf31a3cf49b59ddf982834b86dca4de
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82872132"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Preview: vytvoření nové verze image virtuálního počítače z existující verze Image pomocí Azure image Builder
 
 V tomto článku se dozvíte, jak v [galerii sdílených imagí](shared-image-galleries.md)získat existující verzi image, aktualizovat ji a publikovat jako novou verzi image do galerie.
 
-K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIGfromSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
 
 
 ## <a name="register-the-features"></a>Registrace funkcí
@@ -74,7 +73,7 @@ imageDefName=myIbImageDef
 runOutputName=aibSIGLinuxUpdate
 ```
 
-Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id`.
+Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id` .
 
 ```console
 subscriptionID=<Subscription ID>
@@ -102,7 +101,7 @@ Pokud už máte vlastní galerii sdílených imagí a nepoužili jste předchoz�
 
 
 ## <a name="modify-helloimage-example"></a>Příklad úpravy helloImage
-Můžete si prohlédnout příklad, který se chystáme použít otevřením souboru. JSON tady: [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) spolu s [odkazem na šablonu image Builder](image-builder-json.md). 
+Můžete si prohlédnout příklad, který se chystáme použít otevřením souboru. JSON tady: [helloImageTemplateforSIGfromSIG.jsna](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) společně s [odkazem na šablonu pro tvůrce imagí](image-builder-json.md). 
 
 
 Stáhněte si příklad. JSON a nakonfigurujte ho pomocí proměnných. 

@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e1eb105671883d88d8fe34b9741d402d311556a9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82859013"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Použití geografické redundance k návrhu vysoce dostupných aplikací
@@ -63,7 +62,7 @@ Pokud například používáte ve své aplikaci fronty a objekty blob, můžete 
 
 Nakonec závisí na složitosti vaší aplikace. Můžete se rozhodnout Nezpracovávat selhání podle služby, ale místo toho přesměrovat požadavky na čtení pro všechny služby úložiště do sekundární oblasti a spustit aplikaci v režimu jen pro čtení při detekci problému se službou úložiště v primární oblasti.
 
-### <a name="other-considerations"></a>Další aspekty
+### <a name="other-considerations"></a>Další důležité informace
 
 Toto jsou další okolnosti, které budeme projednávat ve zbývající části tohoto článku.
 
@@ -196,7 +195,7 @@ Geograficky redundantní úložiště funguje replikací transakcí z primární
 
 Následující tabulka ukazuje příklad toho, co se může stát, když aktualizujete podrobnosti o zaměstnanci, abyste je mohli udělat jako členové role *správců* . V tomto příkladu je potřeba aktualizovat entitu **Zaměstnanec** a aktualizovat entitu **role správce** s počtem celkového počtu správců. Všimněte si, jak se aktualizace aplikují v sekundární oblasti mimo pořadí.
 
-| **Interval** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **Výsledek** |
+| **Čas** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **Výsledek** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakce A: <br> Vložit zaměstnance <br> entita v primárním objektu |                                   |                    | Transakce A vložená na primární,<br> ještě není replikované. |
 | T1       |                                                            | Transakce A <br> replikováno do<br> sekundární | T1 | Transakce byla replikována do sekundárního. <br>Čas poslední synchronizace se aktualizoval.    |

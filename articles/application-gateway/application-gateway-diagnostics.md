@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889707"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
@@ -39,7 +38,7 @@ Zpráva o stavu back-endu odráží výstup Application Gateway sondy stavu do b
 
 ### <a name="view-back-end-health-through-the-portal"></a>Zobrazení stavu back-endu prostřednictvím portálu
 
-V portálu je stav back-end k dispozici automaticky. V existující aplikační bráně vyberte **monitorování** > **stavu back-endu**.
+V portálu je stav back-end k dispozici automaticky. V existující aplikační bráně vyberte **monitorování**  >  **stavu back-endu**.
 
 Každý člen ve fondu back-end je uveden na této stránce (bez ohledu na to, zda se jedná o síťovou kartu, IP adresu nebo plně kvalifikovaný název domény). Zobrazí se název záložního fondu, port, back-end nastavení HTTP a stav. Platné hodnoty pro stav stavu jsou **v pořádku** **, nejsou v pořádku a**nejsou **známy**.
 
@@ -113,11 +112,11 @@ Protokoly můžete ukládat třemi způsoby:
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Chcete-li začít shromažďovat data dostupná prostřednictvím těchto protokolů, je nutné povolit protokolování přístupu a výkonu. Chcete-li povolit protokolování, použijte následující postup:
 
-1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota má formát: /subscriptions/\<ID předplatného\>/resourceGroups/\<název skupiny prostředků\>/providers/Microsoft.Storage/storageAccounts/\<název účtu úložiště\>. Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal
+1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota je ve formátu:/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> . Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal
 
     ![Portál: ID prostředku pro účet úložiště](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Poznamenejte si ID prostředku brány Application Gateway, pro které je povolené protokolování. Tato hodnota má formát:\</Subscriptions/SubscriptionId\>/ResourceGroups/\<název\>skupiny prostředků/Providers/Microsoft.Network/applicationGateways/\<název\>aplikační brány. Tuto informaci najdete pomocí webu Azure Portal.
+2. Poznamenejte si ID prostředku brány Application Gateway, pro které je povolené protokolování. Tato hodnota je ve formátu:/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> . Tuto informaci najdete pomocí webu Azure Portal.
 
     ![Portál: ID prostředku pro aplikační bránu](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -158,7 +157,7 @@ Azure ve výchozím nastavení generuje protokol aktivit. Protokoly se uchováva
 
 Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Každý přístup k Application Gateway je protokolován ve formátu JSON, jak je znázorněno v následujícím příkladu pro V1:
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway instance, která zpracovala požadavek.        |
 |IP adresa klienta     | Původní IP adresa pro požadavek.        |
@@ -202,7 +201,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 ```
 V případě Application Gateway a WAF v2 se v protokolech zobrazí další informace:
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway instance, která zpracovala požadavek.        |
 |IP adresa klienta     | Původní IP adresa pro požadavek.        |
@@ -256,7 +255,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na každé instanci Application Gateway, jak je popsáno v předchozích krocích. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Data protokolu výkonu se generují v intervalu 1 minuty. Je k dispozici pouze pro SKU v1. Pro SKU v2 použijte [metriky](application-gateway-metrics.md) pro data výkonu. Zaprotokolují se následující data:
 
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     |  Instance Application Gateway, pro kterou se generují údaje o výkonu. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.        |
 |healthyHostCount     | Počet v nefunkčních hostitelích ve fondu back-end.        |
@@ -293,7 +292,7 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 Protokol brány firewall je vygenerován pouze v případě, že jste jej povolili pro každou bránu aplikace, jak je popsáno v předchozích krocích. Tento protokol také vyžaduje, aby byla na aplikační bráně nakonfigurovaná brána firewall webových aplikací. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Zaprotokolují se následující data:
 
 
-|Hodnota  |Popis  |
+|Hodnota  |Description  |
 |---------|---------|
 |instanceId     | Instance Application Gateway, pro kterou se generují data brány firewall. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.         |
 |IP adresa klienta     |   Původní IP adresa pro požadavek.      |

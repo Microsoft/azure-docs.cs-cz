@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
 ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838582"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
@@ -31,7 +30,7 @@ Toto je seznam imagí RHEL dostupných v Azure. Pokud není uvedeno jinak, všec
 > [!NOTE]
 > Nezpracované obrázky se už nevytvářejí ve prospěch LVM imagí. LVM nabízí několik výhod oproti staršímu schématu oddílu RAW (bez LVM), včetně významně flexibilnějších možností změny velikosti oddílů.
 
-Nabídka| Skladová jednotka (SKU) | Dělení | Zřizování | Poznámky
+Nabídka| SKU | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
 |             | 6.8      | ZÍSKÁNÍ    | Linuxový agent |

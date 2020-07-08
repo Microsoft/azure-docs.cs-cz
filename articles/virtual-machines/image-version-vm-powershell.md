@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838463"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Verze Preview: vytvoření image z virtuálního počítače
@@ -27,7 +26,7 @@ Obrázky v galerii obrázků mají dvě komponenty, které vytvoříme v tomto p
 - **Verze image** je ta, která se používá k vytvoření virtuálního počítače při použití Galerie sdílených imagí. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Když vytvoříte virtuální počítač, použije se k vytvoření nového disku pro virtuální počítač verze image. Verze bitové kopie lze použít několikrát.
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku musíte mít existující galerii sdílených imagí a stávající virtuální počítač v Azure, který se použije jako zdroj. 
 
@@ -38,7 +37,7 @@ Při práci s tímto článkem nahraďte názvy prostředků tam, kde je to pot�
 
 ## <a name="get-the-gallery"></a>Získat galerii
 
-Můžete vypsat všechny galerie a definice imagí podle názvu. Výsledky jsou ve formátu `gallery\image definition\image version`.
+Můžete vypsat všechny galerie a definice imagí podle názvu. Výsledky jsou ve formátu `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
@@ -75,13 +74,13 @@ Stop-AzVM `
 
 Definice obrázků vytvoří logické seskupení obrázků. Používají se ke správě informací o imagi. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
 
-Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-disvisioning pro Linux), měli byste vytvořit definici Image pomocí `-OsState generalized`. Pokud jste virtuální počítač nezobecněni, vytvořte definici Image pomocí nástroje `-OsState specialized`.
+Při vytváření definice obrázku se ujistěte, že jsou všechny správné informace. Pokud jste virtuální počítač zobecněni (pomocí nástroje Sysprep pro Windows nebo waagent-disvisioning pro Linux), měli byste vytvořit definici Image pomocí `-OsState generalized` . Pokud jste virtuální počítač nezobecněni, vytvořte definici Image pomocí nástroje `-OsState specialized` .
 
 Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
 Vytvořte definici Image pomocí [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
 
-V tomto příkladu má definice image název *myImageDefinition*a je pro specializovaný virtuální počítač s Windows. Pokud chcete vytvořit definici imagí pomocí systému Linux, použijte `-OsType Linux`. 
+V tomto příkladu má definice image název *myImageDefinition*a je pro specializovaný virtuální počítač s Windows. Pokud chcete vytvořit definici imagí pomocí systému Linux, použijte `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -105,7 +104,7 @@ Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v r
 
 V tomto příkladu je verze image *1.0.0* a replikuje se do datových center *středozápadní USA* i *střed USA – jih* . Při výběru cílových oblastí pro replikaci nezapomeňte, že je také nutné zahrnout *zdrojovou* oblast jako cíl pro replikaci.
 
-Pokud chcete vytvořit verzi image z virtuálního počítače, použijte `$vm.Id.ToString()` pro `-Source`.
+Pokud chcete vytvořit verzi image z virtuálního počítače, použijte `$vm.Id.ToString()` pro `-Source` .
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -124,7 +123,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Replikace obrázku do všech cílových oblastí může chvíli trvat, proto jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh úlohy, zadejte `$job.State`.
+Replikace obrázku do všech cílových oblastí může chvíli trvat, proto jsme vytvořili úlohu, abychom mohli sledovat průběh. Chcete-li zobrazit průběh úlohy, zadejte `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -133,7 +132,7 @@ $job.State
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 >
-> Image můžete ukládat do úložiště `-StorageAccountType Premium_LRS`Premiun přidáním nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
+> Image můžete ukládat do úložiště Premiun přidáním `-StorageAccountType Premium_LRS` nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `-StorageAccountType Standard_ZRS` při vytváření verze image.
 >
 
 ## <a name="next-steps"></a>Další kroky

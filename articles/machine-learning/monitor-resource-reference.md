@@ -11,10 +11,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
 ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856031"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Referenční informace o monitorování služby Azure Machine Learning
@@ -73,7 +72,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | MinimumNodeCount | Minimální počet uzlů clusteru |
 | MaximumNodeCount | Maximální počet uzlů clusteru |
 | NodeDeallocationOption | Jak se má uzel uvolnit |
-| Vydavatel | Vydavatel typu clusteru |
+| Publisher | Vydavatel typu clusteru |
 | Nabídka | Nabídka, se kterou je cluster vytvořený |
 | Skladová jednotka (SKU) | SKU uzlu nebo virtuálního počítače vytvořeného v rámci clusteru |
 | Verze | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
@@ -109,7 +108,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | VmSize | Velikost virtuálního počítače uzlu |
 | VmFamilyName | Rodina virtuálních počítačů, do které uzel patří |
 | VmPriority | Priorita uzlu, který byl vytvořen jako vyhrazený/LowPriority |
-| Vydavatel | Vydavatel image virtuálního počítače, třeba Microsoft-dsvm |
+| Publisher | Vydavatel image virtuálního počítače, třeba Microsoft-dsvm |
 | Nabídka | Nabídka přidružená k vytvoření virtuálního počítače |
 | Skladová jednotka (SKU) | SKU vytvořeného uzlu nebo virtuálního počítače |
 | Verze | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
@@ -128,7 +127,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 **Model**
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | Nasazení modelu selhalo. | Počet | Počet nasazení modelů, které selhaly. |
 | Nasazení modelu začalo | Počet | Počet spuštěných nasazení modelu |
@@ -140,7 +139,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | Aktivní jádra | Počet | Počet aktivních výpočetních jader. |
 | Aktivní uzly | Počet | Počet aktivních uzlů. |
@@ -158,7 +157,7 @@ Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
 Níže jsou uvedené dimenze, které lze použít k filtrování metrik kvót:
 
-| Dimenze | Metriky dostupné s | Popis |
+| Dimenze | Metriky dostupné s | Description |
 | ---- | ---- | ---- |
 | Název clusteru | Všechny metriky kvót | Název výpočetní instance. |
 | Název rodiny virtuálních počítačů | Procento využití kvóty | Název rodiny virtuálních počítačů, kterou cluster používá. |
@@ -166,25 +165,25 @@ Níže jsou uvedené dimenze, které lze použít k filtrování metrik kvót:
 
 **Prostředek**
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | CpuUtilization | Procento | Kolik procent procesoru bylo využito pro daný uzel během běhu nebo úlohy. Tato metrika je publikována pouze v případě, že úloha běží na uzlu. Jedna úloha může používat jeden nebo více uzlů. Tato metrika je publikována na jeden uzel. |
 | GpuUtilization | Procento | Kolik procent GPU bylo využito pro daný uzel během běhu nebo úlohy. Jeden uzel může mít jeden nebo více GPU. Tato metrika je publikována na základě GPU na jeden uzel. |
 
 Níže jsou uvedené dimenze, které lze použít k filtrování metrik prostředků:
 
-| Dimenze | Popis |
+| Dimenze | Description |
 | ----- | ----- |
 | CreatedTime | |
 | DeviceId | ID zařízení (GPU) K dispozici pouze pro GpuUtilization. |
 | NodeId | ID uzlu, který byl vytvořen v případě běhu úlohy. |
 | RunId | ID běhu/úlohy |
 
-**Spouštěl**
+**Spustit**
 
 Informace o spuštěných školicích kurzech.
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | Dokončená spuštění | Počet | Počet dokončených spuštění. |
 | Neúspěšná spuštění | Počet | Počet neúspěšných spuštění. |
@@ -192,7 +191,7 @@ Informace o spuštěných školicích kurzech.
 
 Níže jsou uvedené dimenze, které lze použít k filtrování metrik spuštění:
 
-| Dimenze | Popis |
+| Dimenze | Description |
 | ---- | ---- |
 | ComputeType | Typ výpočtu, který se používá. |
 | PipelineStepType | Typ [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) použitý v běhu. |
@@ -201,7 +200,7 @@ Níže jsou uvedené dimenze, které lze použít k filtrování metrik spuště
 
 Platné hodnoty pro dimenzi RunType jsou:
 
-| Hodnota | Popis |
+| Hodnota | Description |
 | ----- | ----- |
 | Experiment | Spuštění bez kanálu. |
 | PipelineRun | Spuštění kanálu, které je nadřazeným objektem StepRun. |

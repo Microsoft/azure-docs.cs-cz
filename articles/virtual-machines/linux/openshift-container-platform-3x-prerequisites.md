@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759505"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Běžné požadavky pro nasazení OpenShift kontejneru Platform 3,11 v Azure
@@ -44,7 +43,7 @@ Tato příručka popisuje, jak vytvořit artefakty spojené s požadavky.
 > * Vytvořte Trezor klíčů pro správu klíčů SSH pro cluster OpenShift.
 > * Vytvoření instančního objektu pro použití poskytovatelem cloudu Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 Přihlaste se ke svému předplatnému Azure pomocí příkazu [AZ Login](/cli/azure/reference-index) a postupujte podle pokynů na obrazovce, nebo klikněte na tlačítko **vyzkoušet** a použijte Cloud Shell.

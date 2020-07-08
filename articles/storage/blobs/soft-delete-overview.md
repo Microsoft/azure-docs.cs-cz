@@ -10,10 +10,9 @@ ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884628"
 ---
 # <a name="soft-delete-for-blob-storage"></a>Obnovitelné odstranění pro úložiště objektů BLOB
@@ -83,7 +82,7 @@ Obnovitelné odstranění neukládá vaše data v případě, že dojde k odstra
 
 Následující tabulka podrobně popisuje očekávané chování při zapnutí obnovitelného odstranění:
 
-| Operace REST API | Typ prostředku | Popis | Změna chování |
+| Operace REST API | Typ prostředku | Description | Změna chování |
 |--------------------|---------------|-------------|--------------------|
 | [Odstranit](/rest/api/storagerp/StorageAccounts/Delete) | Účet | Odstraní účet úložiště, včetně všech kontejnerů a objektů blob, které obsahuje.                           | Žádná změna. Kontejnery a objekty BLOB v odstraněném účtu nejde obnovit. |
 | [Odstranění kontejneru](/rest/api/storageservices/delete-container) | Kontejner | Odstraní kontejner včetně všech objektů blob, které obsahuje. | Žádná změna. Objekty BLOB v odstraněném kontejneru nejsou obnovitelné. |

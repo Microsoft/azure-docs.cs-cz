@@ -10,10 +10,9 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884342"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Povolení a správa verzí objektů BLOB
@@ -22,7 +21,7 @@ Můžete povolit nebo zakázat správu verzí objektů BLOB (Preview) pro účet
 
 ## <a name="enable-blob-versioning"></a>Povolení správy verzí objektů blob
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Povolení správy verzí objektů BLOB v Azure Portal:
 
@@ -37,9 +36,9 @@ Povolení správy verzí objektů BLOB v Azure Portal:
 Chcete-li povolit správu verzí objektů BLOB pomocí šablony, vytvořte šablonu s vlastností **IsVersioningEnabled** na **hodnotu true**. Následující postup popisuje, jak vytvořit šablonu v Azure Portal.
 
 1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
-1. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
+1. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
 1. Zvolte **template Deployment**, zvolte **vytvořit**a potom **v editoru zvolte sestavit vlastní šablonu**.
-1. V editoru šablon vložte následující kód JSON. `<accountName>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
+1. V editoru šablon vložte následující kód JSON. `<accountName>`Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 1. Uložte šablonu.
 1. Zadejte skupinu prostředků účtu a pak kliknutím na tlačítko **koupit** nasaďte šablonu a povolte správu verzí objektů BLOB.
 

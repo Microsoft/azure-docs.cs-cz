@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025029"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Nasazování na vyhrazené hostitele
@@ -28,17 +27,17 @@ Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh
 > Použití vyhrazené SKU je dostupné jenom v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení.
 >
 
-Počínaje rozhraním API verze 2019-12-01 je v části `sku` vlastnosti skupiny kontejnerů v šabloně nasazení požadovaná vlastnost, která se vyžaduje pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Počínaje rozhraním API verze 2019-12-01 je `sku` v části vlastnosti skupiny kontejnerů v šabloně nasazení požadovaná vlastnost, která se vyžaduje pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-`sku` Vlastnost může mít jednu z následujících hodnot:
+`sku`Vlastnost může mít jednu z následujících hodnot:
 * `Standard`– standardní volba nasazení ACI, která stále garantuje zabezpečení na úrovni hypervisoru 
 * `Dedicated`– používá se pro izolaci na úrovni pracovního vytížení s vyhrazenými fyzickými hostiteli pro skupinu kontejnerů.
 
 ## <a name="modify-your-json-deployment-template"></a>Úprava šablony nasazení JSON
 
 V šabloně nasazení upravte nebo přidejte následující vlastnosti:
-* V `resources`části nastavte `apiVersion` na `2019-12-01`.
-* V části vlastnosti skupiny kontejnerů přidejte `sku` vlastnost s hodnotou. `Dedicated`
+* V části `resources` nastavte `apiVersion` na `2019-12-01` .
+* V části vlastnosti skupiny kontejnerů přidejte `sku` vlastnost s hodnotou `Dedicated` .
 
 Tady je příklad fragmentu pro oddíl Resources v šabloně nasazení skupiny kontejnerů, která používá vyhrazenou SKU:
 

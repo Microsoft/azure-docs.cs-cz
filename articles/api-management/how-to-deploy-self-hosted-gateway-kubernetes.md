@@ -10,10 +10,9 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82854108"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Nasazení brány v místním prostředí v Kubernetes
@@ -110,7 +109,7 @@ Další informace o překladu názvů v Kubernetes najdete na [webu Kubernetes](
 ### <a name="configuration-backup"></a>Zálohování konfigurace
 Další informace o chování samoobslužné brány v přítomnosti dočasného výpadku připojení k Azure najdete v tématu [Přehled samoobslužné brány](self-hosted-gateway-overview.md#connectivity-to-azure).
 
-Nakonfigurujte místní svazek úložiště pro kontejner samoobslužné brány, aby mohl uchovávat záložní kopii nejnovější stažené konfigurace. Pokud připojení nefunguje, svazek úložiště může po restartu použít záložní kopii. Cesta pro připojení svazku musí být <code>/apim/config</code>. Podívejte se na příklad na [GitHubu](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml).
+Nakonfigurujte místní svazek úložiště pro kontejner samoobslužné brány, aby mohl uchovávat záložní kopii nejnovější stažené konfigurace. Pokud připojení nefunguje, svazek úložiště může po restartu použít záložní kopii. Cesta pro připojení svazku musí být <code>/apim/config</code> . Podívejte se na příklad na [GitHubu](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml).
 Další informace o službě Storage v Kubernetes najdete na [webu Kubernetes](https://kubernetes.io/docs/concepts/storage/volumes/).
 
 ### <a name="local-logs-and-metrics"></a>Místní protokoly a metriky

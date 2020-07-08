@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797055"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Kopírování obrázku z jiné galerie
@@ -22,7 +21,7 @@ Pokud máte ve vaší organizaci více galerií, můžete také vytvářet verze
 
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku musíte mít existující galerii zdrojů, definici image a verzi image. Měli byste mít také cílovou galerii. 
 
@@ -154,7 +153,7 @@ az sig image-version create \
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 >
-> Image můžete ukládat do úložiště `--storage-account-type  premium_lrs`Premiun přidáním nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type  standard_zrs` při vytváření verze image.
+> Image můžete ukládat do úložiště Premiun přidáním `--storage-account-type  premium_lrs` nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type  standard_zrs` při vytváření verze image.
 >
 
 ## <a name="next-steps"></a>Další kroky

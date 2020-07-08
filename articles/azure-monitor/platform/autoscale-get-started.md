@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: db1814c0a27ac6d61c7353a2c66cb5a1a72688d3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82801599"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
@@ -59,12 +58,12 @@ Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nas
    ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
+Gratulujeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
 > Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 ### <a name="scale-based-on-a-schedule"></a>Škálování podle plánu
 Kromě škálování na základě procesoru můžete škálování nastavit jinak na konkrétní dny v týdnu.
 

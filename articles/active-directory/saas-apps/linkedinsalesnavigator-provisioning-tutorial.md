@@ -16,10 +16,9 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869745"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu LinkedIn Sales Navigator pro Automatické zřizování uživatelů
@@ -67,7 +66,7 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 1. Přihlaste se do centra účtů.
 
-2. Vyberte **nastavení &gt; správce správy** .
+2. Vyberte ** &gt; Nastavení správce správy** .
 
 3. Klikněte na **rozšířené integrace** na levém bočním panelu. Jste přesměrováni na centrum účtů.
 
@@ -99,7 +98,7 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 11. Do následujících polí zadejte v části **přihlašovací údaje správce** :
 
-    * Do pole **Adresa URL tenanta** zadejte https://developer.linkedin.com.
+    * Do pole **Adresa URL tenanta** zadejte https://developer.linkedin.com .
 
     * V poli **token tajného klíče** zadejte přístupový token, který jste vygenerovali v kroku 1, a klikněte na **Test připojení** .
 

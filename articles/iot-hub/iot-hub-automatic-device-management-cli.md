@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024961"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatická správa zařízení a modulů IoT pomocí Azure CLI
@@ -79,7 +78,7 @@ Tady je základní ukázka cílového obsahu pro automatickou konfiguraci zaří
 }
 ```
 
-Automatické konfigurace modulů se chovají velmi podobně, ale místo toho `moduleContent` cílíte `deviceContent`na místo.
+Automatické konfigurace modulů se chovají velmi podobně, ale místo toho cílíte na `moduleContent` místo `deviceContent` .
 
 ```json
 {
@@ -105,7 +104,7 @@ Tady jsou příklady dotazů na metriky:
 }
 ```
 
-Dotazy na metriky pro moduly jsou také podobné dotazům na zařízení, ale můžete `moduleId` je `devices.modules`vybrat z. Příklad: 
+Dotazy na metriky pro moduly jsou také podobné dotazům na zařízení, ale můžete je vybrat `moduleId` z `devices.modules` . Příklad: 
 
 ```json
 {
@@ -128,7 +127,7 @@ Pomocí následujícího příkazu vytvořte konfiguraci:
      --metrics [metric queries]
 ```
 
-* --**config-ID** – název konfigurace, která se vytvoří ve službě IoT Hub. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
+* --**config-ID** – název konfigurace, která se vytvoří ve službě IoT Hub. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` .
 
 * --**Labels** – přidejte popisky, které vám pomůžou sledovat vaši konfiguraci. Popisky jsou názvy, páry hodnot, které popisují vaše nasazení. Příklad: `HostPlatform, Linux` nebo `Version, 3.0.1`
 
@@ -172,11 +171,11 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 * --**config-ID** – název nasazení, které existuje ve službě IoT Hub.
 
-* --**metrika-ID** – název metriky, pro kterou chcete zobrazit seznam ID zařízení nebo ID modulů, například `appliedCount`.
+* --**metrika-ID** – název metriky, pro kterou chcete zobrazit seznam ID zařízení nebo ID modulů, například `appliedCount` .
 
-* --**název-centra** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]`.
+* --**název-centra** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]` .
 
-* --typ **metriky-typ** metriky může `system` být `user`nebo.  Systémové metriky jsou `targetedCount` a `appliedCount`. Všechny ostatní metriky jsou metrikami uživatele.
+* --typ **metriky-typ** metriky může být `system` nebo `user` .  Systémové metriky jsou `targetedCount` a `appliedCount` . Všechny ostatní metriky jsou metrikami uživatele.
 
 ## <a name="modify-a-configuration"></a>Úprava konfigurace
 
@@ -199,7 +198,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**config-ID** – název konfigurace, která existuje ve službě IoT Hub.
 
-* --**název-centra** – název centra IoT, ve kterém konfigurace existuje. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]`.
+* --**název-centra** – název centra IoT, ve kterém konfigurace existuje. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]` .
 
 * --**set** -aktualizuje vlastnost v konfiguraci. Můžete aktualizovat tyto vlastnosti:
 
@@ -222,7 +221,7 @@ az iot hub configuration delete --config-id [configuration id] \
 
 * --**config-ID** – název konfigurace, která existuje ve službě IoT Hub.
 
-* --**název-centra** – název centra IoT, ve kterém konfigurace existuje. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]`.
+* --**název-centra** – název centra IoT, ve kterém konfigurace existuje. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]` .
 
 ## <a name="next-steps"></a>Další kroky
 

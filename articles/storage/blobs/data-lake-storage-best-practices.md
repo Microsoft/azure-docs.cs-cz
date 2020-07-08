@@ -9,10 +9,9 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
 ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857877"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen2
@@ -39,7 +38,7 @@ Azure Active Directory instanční objekty obvykle používají služby, jako je
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Povolit bránu Data Lake Storage Gen2 firewall s přístupem ke službě Azure
 
-Data Lake Storage Gen2 podporuje možnost zapnout bránu firewall a omezit přístup jenom na služby Azure, což doporučuje omezit vektor externích útoků. Bránu firewall je možné povolit v účtu úložiště v Azure Portal > přes bránu firewall**Povolit bránu firewall (zapnuto)** > **Povolit přístup k možnostem služeb Azure** . **Firewall**
+Data Lake Storage Gen2 podporuje možnost zapnout bránu firewall a omezit přístup jenom na služby Azure, což doporučuje omezit vektor externích útoků. Bránu firewall je možné povolit v účtu úložiště v Azure Portal přes bránu **firewall**  >  **Povolit bránu firewall (zapnuto)**  >  **Povolit přístup k možnostem služeb Azure** .
 
 Pokud chcete získat přístup k účtu úložiště z Azure Databricks, nasaďte Azure Databricks do vaší virtuální sítě a potom do své brány firewall přidejte tuto virtuální síť. Viz [Konfigurace bran firewall a virtuálních sítí Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 

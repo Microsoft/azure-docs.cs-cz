@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792594"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
@@ -146,7 +145,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 | --- | --- |
 | AADClientID | ID klienta aplikace Azure AD, která má oprávnění k zápisu tajných kódů do trezoru klíčů. |
 | AADClientSecret | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných kódů do trezoru klíčů. |
-| keyVaultName | Název trezoru klíčů, do kterého se má klíč nahrát Můžete ji získat pomocí příkazu rozhraní příkazového `az keyvault show --name "MySecureVault" --query KVresourceGroup`řádku Azure CLI. |
+| keyVaultName | Název trezoru klíčů, do kterého se má klíč nahrát Můžete ji získat pomocí příkazu rozhraní příkazového řádku Azure CLI `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k zašifrování vygenerovaného klíče. Tento parametr je nepovinný, pokud v rozevíracím seznamu **UseExistingKek** vyberete **nokek** . Pokud v rozevíracím seznamu **UseExistingKek** vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
 | volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné podporované hodnoty jsou _OS_ nebo _All_. (Další informace najdete v části Podporované distribuce systému Linux a jejich verze pro operační systémy a datové disky v oddílu požadavky dříve.) |
 | sequenceVersion | Verze sekvence operace nástroje BitLocker Zvyšte číslo této verze pokaždé, když se na stejném virtuálním počítači provede operace šifrování disku. |

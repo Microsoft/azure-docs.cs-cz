@@ -11,10 +11,9 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733496"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odesílání zpráv na server MQTT
@@ -49,11 +48,11 @@ Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-
 Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > MQTT**a vyberte **MQTTClient**. Otevře se nové okno VS Code se složkou projektu.
 
 > [!NOTE]
-> Můžete také otevřít příklad z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
+> Můžete také otevřít příklad z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Sestavení a nahrání Arduino náčrtu do DevKit
 
-Typ `Ctrl+P` (MacOS: `Cmd+P`), který `task device-upload`se má spustit. Až se nahrávání dokončí, DevKit se restartuje a spustí nákres.
+Typ `Ctrl+P` (MacOS: `Cmd+P` ), který se má spustit `task device-upload` . Až se nahrávání dokončí, DevKit se restartuje a spustí nákres.
 
 ![zařízení – nahrání](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
@@ -64,11 +63,11 @@ Typ `Ctrl+P` (MacOS: `Cmd+P`), který `task device-upload`se má spustit. Až se
 
 V VS Code postupujte podle následujícího postupu a otevřete a nastavte monitorování sériového portu:
 
-1. Kliknutím na `COM[X]` slovo na stavovém řádku nastavte správný port COM `STMicroelectronics`: ![set-COM-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Kliknutím na `COM[X]` slovo na stavovém řádku nastavte správný port COM `STMicroelectronics` : ![ set-COM-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Kliknutím na ikonu plug-in na stavovém řádku otevřete monitorování sériového portu ![: sériové – monitorování](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Kliknutím na ikonu plug-in na stavovém řádku otevřete monitorování sériového portu: ![ sériové – monitorování](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Na stavovém řádku klikněte na číslo, které představuje přenosovou rychlost, a nastavte ji `115200`na ![: nastavení přenosové rychlosti.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Na stavovém řádku klikněte na číslo, které představuje přenosovou rychlost, a nastavte ji na `115200` : ![ nastavení přenosové rychlosti.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 Nástroj sériového zobrazení zobrazí všechny zprávy odesílané vzorovým nákresem. Náčrt připojuje DevKit k Wi-Fi. Po úspěšném připojení k síti Wi-Fi pošle skica zprávu zprostředkovateli MQTT. Poté ukázka opakovaně odesílá dvě zprávy "iot.eclipse.org" pomocí technologie QoS 0 a QoS 1 v uvedeném pořadí.
 

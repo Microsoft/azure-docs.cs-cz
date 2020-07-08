@@ -6,10 +6,9 @@ author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
 ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82836738"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
@@ -79,7 +78,7 @@ Kliknutím na prostředek zobrazíte všechny jeho změny. V případě potřeby
 
 ![Snímek obrazovky s podrobnostmi o změně](./media/change-analysis/change-details.png)
 
-U jakékoli zpětné vazby použijte tlačítko Odeslat názor v okně nebo e-mailu changeanalysisteam@microsoft.com.
+U jakékoli zpětné vazby použijte tlačítko Odeslat názor v okně nebo e-mailu changeanalysisteam@microsoft.com .
 
 ![Snímek obrazovky s tlačítkem zpětné vazby v okně pro změnu analýzy](./media/change-analysis/change-analysis-feedback.png)
 
@@ -109,7 +108,7 @@ Analýza změn aplikace je samostatný detektor ve webové aplikaci diagnostikuj
 
     ![Snímek obrazovky s uživatelským rozhraním povolit analýzu změn](./media/change-analysis/change-analysis-on.png)
 
-5. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů s** > **dostupností a výkonem** > **aplikace**výkonu. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách. Ve výchozím nastavení se zobrazí změny za posledních 24 hodin, které vám pomůžou s okamžitými problémy.
+5. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů s**  >  **dostupností a výkonem**  >  **aplikace**výkonu. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách. Ve výchozím nastavení se zobrazí změny za posledních 24 hodin, které vám pomůžou s okamžitými problémy.
 
      ![Snímek obrazovky se zobrazením rozdílů změn](./media/change-analysis/change-view.png)
 

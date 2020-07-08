@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800647"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
@@ -65,7 +64,7 @@ Ano. Zálohování se spustí při vypnutí počítače. Bod obnovení je označ
 
 Ano. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
 
-### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Aktivoval (a `AzureBackupRG_<geo>_<number>`) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (například). Budou moje zálohy stále fungovat?
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Aktivoval (a) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (například `AzureBackupRG_<geo>_<number>` ). Budou moje zálohy stále fungovat?
 
 Pokud zamknete skupinu prostředků vytvořenou službou Azure Backup, zálohování začnou selhat, protože je k dispozici maximální limit 18 bodů obnovení.
 
@@ -166,9 +165,9 @@ Virtuální počítač se zálohuje pomocí nastavení plánu a uchování v upr
 2. Pokud chcete přesunout virtuální počítače nakonfigurované s Azure Backup, proveďte následující kroky:
 
    1. Najděte umístění virtuálního počítače.
-   2. Vyhledejte skupinu prostředků s následujícím vzorem pojmenování `AzureBackupRG_<location of your VM>_1`:. Například *AzureBackupRG_westus2_1*
+   2. Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` . Například *AzureBackupRG_westus2_1*
    3. V Azure Portal zaškrtnout **Zobrazit skryté typy**.
-   4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor `AzureBackup_<name of your VM that you're trying to move>_###########`pojmenování.
+   4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
    6. Po dokončení operace odstranění můžete virtuální počítač přesunout.
 

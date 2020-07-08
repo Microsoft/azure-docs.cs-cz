@@ -4,10 +4,9 @@ description: Naučte se pracovat s definicemi podrobného plánu jako s kódem. 
 ms.date: 05/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864041"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
@@ -21,7 +20,7 @@ Plány Azure je možné plně spravovat prostřednictvím Azure Portal. Protože
   - Automatizované testování definic podrobných plánů v testovacích prostředích
   - Podpora kanálů průběžné integrace a průběžného nasazování (CI/CD)
 
-Bez ohledu na vaše důvody a Správa definic podrobných plánů jako kód přináší výhody. V tomto článku se dozvíte, `Import-AzBlueprintWithArtifact` jak `Export-AzBlueprintWithArtifact` používat příkazy a v modulu [AZ. detail](https://powershellgallery.com/packages/Az.Blueprint/) .
+Bez ohledu na vaše důvody a Správa definic podrobných plánů jako kód přináší výhody. V tomto článku se dozvíte, jak používat `Import-AzBlueprintWithArtifact` `Export-AzBlueprintWithArtifact` příkazy a v modulu [AZ. detail](https://powershellgallery.com/packages/Az.Blueprint/) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +39,7 @@ Než začnete s exportem a importem modrotisky, Podívejme se na to, jak jsou st
 > [!IMPORTANT]
 > Pokud není předána žádná hodnota parametru **názvu** `Import-AzBlueprintWithArtifact` rutiny, použije se název složky, ve které je definice podrobného plánu uložená.
 
-Spolu s definicí podrobného plánu, který musí `blueprint.json`být pojmenován, jsou artefakty, ze kterých se definice podrobného plánu skládá. Každý artefakt musí být v podsložce s názvem `artifacts`.
+Spolu s definicí podrobného plánu, který musí být pojmenován `blueprint.json` , jsou artefakty, ze kterých se definice podrobného plánu skládá. Každý artefakt musí být v podsložce s názvem `artifacts` .
 Společně se strukturou vaší definice podrobného plánu jako soubory JSON ve složkách, které by se měly podávat, vypadá takto:
 
 ```text
@@ -69,7 +68,7 @@ Postup exportu definice podrobného plánu je jednoduchý. Export definice podro
 - **Verze** (volitelné)
   - Určuje verzi pro **výstup, pokud referenční objekt** podrobného plánu obsahuje odkazy na více než jednu verzi.
 
-1. Získejte odkaz na definici podrobného plánu pro export z předplatného, `{subId}`které je reprezentované jako:
+1. Získejte odkaz na definici podrobného plánu pro export z předplatného, které je reprezentované jako `{subId}` :
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

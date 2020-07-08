@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759106"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Připojení zařízení Azure IoT Edge k aplikaci Azure IoT Central
@@ -30,7 +29,7 @@ Zařízení **Azure IoT Edge** může být zařízení brány se zařízeními, 
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Vztahy navazujících zařízení s bránou a moduly
 
-Podřízená zařízení se můžou prostřednictvím `$edgeHub` modulu připojit k zařízení IoT Edge brány. Toto zařízení IoT Edge se v tomto scénáři stávají transparentní bránou.
+Podřízená zařízení se můžou prostřednictvím modulu připojit k zařízení IoT Edge brány `$edgeHub` . Toto zařízení IoT Edge se v tomto scénáři stávají transparentní bránou.
 
 ![Diagram transparentní brány](./media/concepts-iot-edge/gateway-transparent.png)
 
@@ -38,7 +37,7 @@ Podřízená zařízení se taky můžou připojit k zařízení IoT Edge brány
 
 ![Diagram připojení vlastního modulu](./media/concepts-iot-edge/gateway-module.png)
 
-Následující diagram znázorňuje připojení k zařízení IoT Edge brány prostřednictvím obou typů modulů (vlastní a `$edgeHub`).  
+Následující diagram znázorňuje připojení k zařízení IoT Edge brány prostřednictvím obou typů modulů (vlastní a `$edgeHub` ).  
 
 ![Diagram připojení prostřednictvím obou připojovacích modulů](./media/concepts-iot-edge/gateway-module-transparent.png)
 

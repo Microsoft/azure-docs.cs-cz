@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792356"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Příjem a potvrzení zpráv B2B AS2 pomocí Azure Logic Apps a Enterprise Integration Pack
@@ -45,7 +44,7 @@ Tento příklad používá návrháře aplikace logiky v Azure Portal, ale můž
 
 1. V [Azure Portal](https://portal.azure.com)otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
-1. Do vyhledávacího pole zadejte `when a http request`a vyberte, **když se přijme požadavek HTTP** , který se má použít jako Trigger.
+1. Do vyhledávacího pole zadejte `when a http request` a vyberte, **když se přijme požadavek HTTP** , který se má použít jako Trigger.
 
    ![Pokud chcete spustit pracovní postup aplikace logiky, vyberte Trigger žádosti.](./media/logic-apps-enterprise-integration-b2b/select-http-request-trigger.png)
 
@@ -67,17 +66,17 @@ Nyní přidejte akce B2B, které chcete použít. V tomto příkladu se použív
 
    ![Přidat další krok do pracovního postupu aplikace logiky](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
-1. V části **zvolit akci**zadejte `as2 decode`do vyhledávacího pole a vyberte **AS2 Decode (v2)**.
+1. V části **zvolit akci**zadejte do vyhledávacího pole `as2 decode` a vyberte **AS2 Decode (v2)**.
 
    ![Vyhledejte a vyberte "AS2 dekódování (v2)"](./media/logic-apps-enterprise-integration-b2b/add-as2-decode-action.png)
 
-1. Pro vlastnost **zpráva k dekódování** zadejte vstup, který má AS2 akce dekódovat, což je `body` obsah PŘIJATÝ triggerem požadavku HTTP. Tento obsah můžete zadat několika způsoby, buď ze seznamu dynamického obsahu, nebo jako výraz:
+1. Pro vlastnost **zpráva k dekódování** zadejte vstup, který má AS2 akce dekódovat, což je `body` obsah přijatý triggerem požadavku HTTP. Tento obsah můžete zadat několika způsoby, buď ze seznamu dynamického obsahu, nebo jako výraz:
 
    * Pokud chcete vybrat ze seznamu, který zobrazuje dostupné výstupy triggeru, klikněte do pole **zpráva k dekódování** . Až se zobrazí seznam dynamického obsahu, v části **když se přijme požadavek HTTP**, vyberte hodnotu vlastnosti **body** , například:
 
      ![Vybrat hodnotu "tělo" z triggeru](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * Pokud chcete zadat výraz, který odkazuje na `body` výstup triggeru, klikněte do pole **zpráva k dekódování** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK**:
+   * Pokud chcete zadat výraz, který odkazuje na výstup triggeru `body` , klikněte do pole **zpráva k dekódování** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK**:
 
      `triggerOutputs()['body']`
 
@@ -91,7 +90,7 @@ Nyní přidejte akce B2B, které chcete použít. V tomto příkladu se použív
 
 1. Pro vlastnost **záhlaví zpráv** zadejte všechna záhlaví požadovaná pro akci AS2, která jsou popsána v `headers` obsahu přijatém triggerem požadavku HTTP.
 
-   Pokud chcete zadat výraz, který odkazuje na `headers` výstup triggeru, klikněte do pole **záhlaví zpráv** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK**:
+   Pokud chcete zadat výraz, který odkazuje na výstup triggeru `headers` , klikněte do pole **záhlaví zpráv** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK**:
 
    `triggerOutputs()['Headers']`
 
@@ -117,13 +116,13 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 
    `@body('AS2_Decode')?['AS2Message']?['MdnExpected']`
 
-   V prostředním poli se ujistěte, že je operace porovnání nastavená na `is equal to`. Do pole na pravé straně zadejte hodnotu `Expected`. Chcete-li získat výraz pro vyřešení tohoto tokenu, přepínejte mezi návrhářem a zobrazením kódu.
+   V prostředním poli se ujistěte, že je operace porovnání nastavená na `is equal to` . Do pole na pravé straně zadejte hodnotu `Expected` . Chcete-li získat výraz pro vyřešení tohoto tokenu, přepínejte mezi návrhářem a zobrazením kódu.
 
    ![Obrazec podmínky s rozhodovacími cestami](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. Nyní zadejte odpovědi, které mají být vráceny, pokud je akce **dekódování AS2** úspěšná nebo ne.
 
-   1. Pro případ, že je akce **dekódování AS2** úspěšná, vyberte v obrazci **při hodnotě true** možnost **přidat akci**. V části **zvolit akci**zadejte `response`do vyhledávacího pole a vyberte možnost **odpověď**.
+   1. Pro případ, že je akce **dekódování AS2** úspěšná, vyberte v obrazci **při hodnotě true** možnost **přidat akci**. V části **zvolit akci**zadejte do vyhledávacího pole `response` a vyberte možnost **odpověď**.
 
       ![Najde a vybere akci Response (odpověď).](./media/logic-apps-enterprise-integration-b2b/select-http-response-action.png)
 
@@ -141,7 +140,7 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 
       ![Vyřešený výraz pro přístup k AS2 MDN](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
 
-   1. Pro případ, že se akce **dekódování AS2** nepovede, vyberte v obrazci **Při false** možnost **přidat akci**. V části **zvolit akci**zadejte `response`do vyhledávacího pole a vyberte možnost **odpověď**. Nastavte akci **odpovědi** , která vrátí stav a požadovanou chybu.
+   1. Pro případ, že se akce **dekódování AS2** nepovede, vyberte v obrazci **Při false** možnost **přidat akci**. V části **zvolit akci**zadejte do vyhledávacího pole `response` a vyberte možnost **odpověď**. Nastavte akci **odpovědi** , která vrátí stav a požadovanou chybu.
 
 1. Uložte svou aplikaci logiky.
 
@@ -149,7 +148,7 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 
 1. Nyní přidejte akci **dekódovat zprávu X12** . V akci **odpověď** vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte `x12 decode`do vyhledávacího pole a vyberte **dekódovat zprávu X12**.
+1. V části **zvolit akci**zadejte do vyhledávacího pole `x12 decode` a vyberte **dekódovat zprávu X12**.
 
    ![Najít a vybrat akci dekódovat zprávu X12](./media/logic-apps-enterprise-integration-b2b/add-x12-decode-action.png)
 
@@ -174,7 +173,7 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 Teď jste dokončili nastavování vaší aplikace logiky B2B. V reálné aplikaci můžete ukládat dekódovat X12 data do obchodní aplikace (LOB) nebo do úložiště dat. Podívejte se například na tyto články:
 
 * [Připojení k systémům SAP z Azure Logic Apps](../logic-apps/logic-apps-using-sap-connector.md)
-* [Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps](../connectors/connectors-sftp-ssh.md)
+* [Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps](../connectors/connectors-sftp-ssh.md)
 
 Pokud chcete připojit své vlastní obchodní aplikace a používat tato rozhraní API ve vaší aplikaci logiky, můžete přidat další akce nebo [napsat vlastní rozhraní API](../logic-apps/logic-apps-create-api-app.md).
 

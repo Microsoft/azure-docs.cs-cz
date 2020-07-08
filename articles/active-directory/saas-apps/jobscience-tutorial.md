@@ -16,10 +16,9 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870547"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Kurz: Azure Active Directory integrace s Jobscience
@@ -134,7 +133,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Přejít na **Nastavení**.
    
-   ![Instalace a nastavení](./media/jobscience-tutorial/IC784358.png "Nastavení")
+   ![Nastavení](./media/jobscience-tutorial/IC784358.png "Nastavení")
 
 1. V levém navigačním podokně v části **Spravovat** kliknutím na **Správa domény** rozbalte související část a potom kliknutím na **moje doména** otevřete stránku **moje doména** . 
    
@@ -172,7 +171,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     f. Jako **umístění identity SAML**, vyberte **identita je v elementu NameIdentfier příkazu Subject**.
 
-    g. Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **adresy URL služby jednotného přihlašování SAML**, kterou jste zkopírovali z Azure Portal.
+    například Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **adresy URL služby jednotného přihlašování SAML**, kterou jste zkopírovali z Azure Portal.
 
     h. Do textového pole **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **adresy URL**pro odhlášení, kterou jste zkopírovali z Azure Portal.
 
@@ -194,7 +193,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Zabezpečovací mechanismy](./media/jobscience-tutorial/ic784368.png "Zabezpečovací mechanismy")
     
-    Klikněte na profil jednotného přihlašování, který jste vytvořili v předchozím kroku. Tato stránka zobrazuje adresu URL jednotného přihlašování vaší společnosti (například `https://companyname.my.salesforce.com?so=companyid`.    
+    Klikněte na profil jednotného přihlašování, který jste vytvořili v předchozím kroku. Tato stránka zobrazuje adresu URL jednotného přihlašování vaší společnosti (například `https://companyname.my.salesforce.com?so=companyid` .    
 
 > [!TIP]
 > Při nastavování aplikace si teď můžete přečíst stručnou verzi těchto instrukcí v rámci [Azure Portal](https://portal.azure.com).  Po přidání této aplikace z části **Active Directory > Enterprise** Apps stačí kliknout na kartu **jednotného přihlašování** a získat přístup k integrované dokumentaci v části **Konfigurace** v dolní části. Další informace o funkci integrovaná dokumentace si můžete přečíst tady: [dokumentace k Azure AD Embedded]( https://go.microsoft.com/fwlink/?linkid=845985) .
@@ -245,8 +244,8 @@ Aby se uživatelé Azure AD mohli přihlásit k Jobscience, musí se zřídit v 
 
 1. Přejít na nastavení.
    
-   ![Instalace a nastavení](./media/jobscience-tutorial/ic784358.png "Nastavení")
-1. Přejít na **Správa \> **uživatelů.
+   ![Nastavení](./media/jobscience-tutorial/ic784358.png "Nastavení")
+1. Přejít na **Správa uživatelů \> **.
    
    ![Uživatelé](./media/jobscience-tutorial/ic784369.png "Uživatelé")
 1. Klikněte na **Nový uživatel**.
@@ -262,13 +261,13 @@ Aby se uživatelé Azure AD mohli přihlásit k Jobscience, musí se zřídit v 
    
    c. Do textového pole **alias** zadejte název aliasu uživatele, jako je Brittas.
 
-   d. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com.
+   d. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com .
 
-   e. Do textového pole **uživatelské jméno** zadejte uživatelské jméno jako Brittasimon@contoso.comuživatel.
+   e. Do textového pole **uživatelské jméno** zadejte uživatelské jméno jako uživatel Brittasimon@contoso.com .
 
    f. Do textového pole **Přezdívka jméno** zadejte Přezdívka uživatele, jako je Simon.
 
-   g. Klikněte na **Uložit**.
+   například Klikněte na **Uložit**.
 
     
 > [!NOTE]

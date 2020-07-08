@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864398"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
@@ -45,7 +44,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 
 **Příčina 4: [virtuální počítače – možnosti konfigurace agenta nejsou nastavené (pro virtuální počítače se systémem Linux)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
-**Příčina 5: [řešení řízení aplikací blokuje IaaSBcdrExtension. exe.](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
+**Příčina 5: [řešení řízení aplikací blokuje IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – virtuální počítač je ve stavu selhání zřizování.
 
@@ -70,7 +69,7 @@ K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální p
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek pro skupinu prostředků virtuálního počítače a potom operaci spusťte znovu, aby se aktivovala operace vyčištění.
 > [!NOTE]
-> Služba Backup vytvoří samostatnou skupinu prostředků, než je skupina prostředků virtuálního počítače pro uložení kolekce bodů obnovení. Zákazníkům se doporučuje, aby nezamkli skupinu prostředků vytvořenou pro použití v rámci služby zálohování. Formát názvů pro skupinu prostředků vytvořenou službou zálohování: AzureBackupRG_`<Geo>`_`<number>` např. AzureBackupRG_northeurope_1
+> Služba Backup vytvoří samostatnou skupinu prostředků, než je skupina prostředků virtuálního počítače pro uložení kolekce bodů obnovení. Zákazníkům se doporučuje, aby nezamkli skupinu prostředků vytvořenou pro použití v rámci služby zálohování. Formát názvů pro skupinu prostředků vytvořenou službou zálohování: AzureBackupRG_ `<Geo>` _ `<number>` např. AzureBackupRG_northeurope_1
 
 **Krok 1: [Odebrání zámku ze skupiny prostředků bodu obnovení](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2: [Vyčištění kolekce bodů obnovení](#clean_up_restore_point_collection)**<br>
@@ -205,13 +204,13 @@ Pokud požadujete podrobné protokolování pro waagent, postupujte takto:
 Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření možností konfiguračního souboru **. možnost Enable** by měla být nastavena na **y** a **zřizování. Agent** by měl být nastaven na hodnotu **automaticky** , aby mohla zálohování fungovat.
 Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete v tématu.<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
-### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Řešení řízení aplikací blokuje IaaSBcdrExtension. exe.
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Řešení řízení aplikací blokuje IaaSBcdrExtension.exe
 
-Pokud používáte [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (nebo jiné řešení pro řízení aplikací) a pravidla jsou založená na vydavateli nebo cestě, může zablokovat spuštění spustitelného souboru **IaaSBcdrExtension. exe** .
+Pokud používáte [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (nebo jiné řešení řízení aplikací) a pravidla jsou založená na vydavateli nebo cestě, může **IaaSBcdrExtension.exe** spustitelný soubor zablokovat spuštění.
 
 #### <a name="solution"></a>Řešení
 
-Vylučte `/var/lib` cestu nebo spustitelný soubor **IaaSBcdrExtension. exe** z AppLockeru (nebo jiného softwaru pro řízení aplikací.)
+Vylučte `/var/lib` cestu nebo spustitelný soubor **IaaSBcdrExtension.exe** z AppLockeru (nebo jiného softwaru pro řízení aplikací.)
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Stav snímku nelze načíst nebo nelze vytvořit snímek.
 
@@ -228,8 +227,8 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_.`<number>`
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_ `<Geo>` _ `<number>` .
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
 
@@ -257,13 +256,13 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tato akce zajistí
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_`<Geo>`_`<number>` , kde se virtuální počítač nachází.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_ `<Geo>` _ `<number>` , kde se virtuální počítač nachází.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Klikněte na skupina prostředků. zobrazí se podokno **Přehled** .
-4. Výběrem možnosti **Zobrazit skryté typy** zobrazíte všechny skryté prostředky. Vyberte kolekce bodů obnovení s následujícím formátem AzureBackupRG_`<VMName>`_.`<number>`
+4. Výběrem možnosti **Zobrazit skryté typy** zobrazíte všechny skryté prostředky. Vyberte kolekce bodů obnovení s následujícím formátem AzureBackupRG_ `<VMName>` _ `<number>` .
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

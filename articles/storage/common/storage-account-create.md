@@ -10,10 +10,9 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82853495"
 ---
 # <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
@@ -26,9 +25,9 @@ V tomto článku se dozvíte, jak vytvořit účet úložiště pomocí [Azure P
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Žádné
 
@@ -51,7 +50,7 @@ Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového ř�
 - Příkazy rozhraní příkazového řádku můžete spustit z Azure Portal v Azure Cloud Shell.
 - Můžete nainstalovat rozhraní příkazového řádku a spustit příkazy rozhraní příkazového řádku místně.
 
-### <a name="use-azure-cloud-shell"></a>Použití Azure Cloud Shellu
+### <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
 Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Rozhraní příkazového řádku Azure je předem nainstalované a nakonfigurované pro použití s vaším účtem. V nabídce v pravé horní části Azure Portal klikněte na tlačítko **Cloud Shell** :
 
@@ -73,13 +72,13 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Přihlaste se k předplatnému `Connect-AzAccount` Azure pomocí příkazu a podle pokynů na obrazovce proveďte ověření.
+Přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` příkazu a podle pokynů na obrazovce proveďte ověření.
 
 ```powershell
 Connect-AzAccount
@@ -97,7 +96,7 @@ az login
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -109,7 +108,7 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 
 Účet úložiště **Univerzální v2** poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám, tabulkám a diskům. Zde popsané kroky vytvoří účet úložiště pro obecné účely v2, ale postup vytvoření libovolného typu účtu úložiště je podobný.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -125,7 +124,7 @@ $location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-Pokud si nejste jistí, kterou oblast pro `-Location` parametr určíte, můžete získat seznam podporovaných oblastí pro vaše předplatné pomocí příkazu [Get-AzLocation](/powershell/module/az.resources/get-azlocation) :
+Pokud si nejste jistí, kterou oblast pro parametr určíte `-Location` , můžete získat seznam podporovaných oblastí pro vaše předplatné pomocí příkazu [Get-AzLocation](/powershell/module/az.resources/get-azlocation) :
 
 ```powershell
 Get-AzLocation | select Location
@@ -220,7 +219,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> Tato šablona slouží pouze jako příklad. K dispozici je mnoho nastavení účtu úložiště, která nejsou nakonfigurována jako součást této šablony. Například pokud chcete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), měli byste tuto šablonu upravit nastavením `isHnsEnabledad` vlastnosti `StorageAccountPropertiesCreateParameters` objektu na. `true` 
+> Tato šablona slouží pouze jako příklad. K dispozici je mnoho nastavení účtu úložiště, která nejsou nakonfigurována jako součást této šablony. Například pokud chcete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), měli byste tuto šablonu upravit nastavením `isHnsEnabledad` vlastnosti `StorageAccountPropertiesCreateParameters` objektu na `true` . 
 
 Informace o tom, jak upravit tuto šablonu nebo vytvořit nové, najdete v těchto tématech:
 
@@ -236,7 +235,7 @@ Další informace o dostupných možnostech replikace najdete v tématu věnovan
 
 Odstranění účtu úložiště odstraní celý účet včetně všech dat v účtu a nedá se vrátit zpátky.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na účet úložiště.
 1. Klikněte na **Odstranit**.
@@ -288,7 +287,7 @@ Alternativně můžete odstranit skupinu prostředků, která odstraní účet �
 
 V tomto článku s postupem jste vytvořili účet úložiště úrovně Standard pro obecné účely v2. Pokud se chcete dozvědět, jak nahrávat a stahovat objekty blob do a z účtu úložiště, pokračujte jedním z rychlých startů pro úložiště objektů BLOB.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [Práce s objekty blob pomocí webu Azure Portal](../blobs/storage-quickstart-blobs-portal.md)

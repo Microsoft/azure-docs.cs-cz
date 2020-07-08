@@ -7,17 +7,16 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857406"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Psaní modulů plug-in pro Azure Media Player #
 
 Modul plug-in je zapsaný do JavaScriptu pro rozšíření nebo vylepšení přehrávače. Můžete psát moduly plug-in, které mění vzhled Azure Media Player, jeho funkce nebo dokonce mají rozhraní pro jiné služby. Můžete to udělat ve dvou snadných krocích:
 
-## <a name="step-1"></a>Krok 1 ##
+## <a name="step-1"></a>Step 1 ##
 
 Napište svůj JavaScript do funkce, například takto:
 

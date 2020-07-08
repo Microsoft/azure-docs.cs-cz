@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793087"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod do automatického škálování

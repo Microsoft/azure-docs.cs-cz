@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732564"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
@@ -93,7 +92,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 1. Nainstalujte [úlohu vývoj desktopových aplikací v C++](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) pro Visual Studio 2019. Podporují se také sady Visual Studio 2017 a 2015.
 
-1. Nainstalujte [cmake](https://cmake.org/). Zajistěte, aby byla `PATH` v aplikaci `cmake -version` , a to zadáním z příkazového řádku.
+1. Nainstalujte [cmake](https://cmake.org/). Zajistěte, aby byla v aplikaci, `PATH` a to zadáním `cmake -version` z příkazového řádku.
 
 1. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujících příkazů naklonujte nejnovější verzi úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
 
@@ -105,7 +104,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-1. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
+1. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z adresáře spusťte následující příkazy `azure-iot-sdk-c` :
 
     ```cmd
     mkdir cmake
@@ -136,23 +135,23 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Získání ukázky na GitHubu</a>
 
-1. K otevření `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` zdrojového souboru použijte Editor.
+1. K otevření zdrojového souboru použijte Editor `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` .
 
 1. Vyhledejte deklaraci konstanty `connectionString`:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    Hodnotu `connectionString` konstanty nahraďte připojovacím řetězcem zařízení, na které jste si poznamenali v části [registrace zařízení](./quickstart-send-telemetry-c.md#register-a-device) v [rychlém startu pro odeslání telemetrie C](./quickstart-send-telemetry-c.md).
+    Hodnotu konstanty nahraďte `connectionString` připojovacím řetězcem zařízení, na které jste si poznamenali v části [registrace zařízení](./quickstart-send-telemetry-c.md#register-a-device) v [rychlém startu pro odeslání telemetrie C](./quickstart-send-telemetry-c.md).
 
-1. Změňte `MESSAGE_COUNT` definici na `5000`:
+1. Změňte `MESSAGE_COUNT` definici na `5000` :
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=3)]
 
-1. Vyhledejte řádek kódu, který volá `IoTHubDeviceClient_LL_SetConnectionStatusCallback` k registraci funkce zpětného volání stavu připojení před smyčkou odeslání zprávy. Přidejte kód pod tento řádek, jak je znázorněno `IoTHubDeviceClient_LL_EnablePolicyConfiguration` níže pro volání povolení distribuovaného trasování pro zařízení:
+1. Vyhledejte řádek kódu, který volá `IoTHubDeviceClient_LL_SetConnectionStatusCallback` k registraci funkce zpětného volání stavu připojení před smyčkou odeslání zprávy. Přidejte kód pod tento řádek, jak je znázorněno níže pro volání `IoTHubDeviceClient_LL_EnablePolicyConfiguration` Povolení distribuovaného trasování pro zařízení:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    `IoTHubDeviceClient_LL_EnablePolicyConfiguration` Funkce umožňuje zásady pro konkrétní funkce IoTHub, které jsou konfigurovány prostřednictvím [vláken zařízení](./iot-hub-devguide-device-twins.md). Jakmile `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` je tato funkce povolená s výše uvedeným řádkem kódu, bude chování trasování zařízení odrážet distribuované vektorizace změny provedené v zařízení.
+    `IoTHubDeviceClient_LL_EnablePolicyConfiguration`Funkce umožňuje zásady pro konkrétní funkce IoTHub, které jsou konfigurovány prostřednictvím [vláken zařízení](./iot-hub-devguide-device-twins.md). Jakmile `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` je tato funkce povolená s výše uvedeným řádkem kódu, bude chování trasování zařízení odrážet distribuované vektorizace změny provedené v zařízení.
 
 1. Pokud chcete, aby se ukázková aplikace běžela bez použití všech kvót, přidejte na konci smyčky odeslat zprávu prodlevu o délce jednoho sekundy:
 
@@ -160,7 +159,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 ### <a name="compile-and-run"></a>Zkompilovat a spustit
 
-1. Přejděte do adresáře *iothub_ll_telemetry_sample* projektu z adresáře cmake (`azure-iot-sdk-c/cmake`), který jste vytvořili dříve, a zkompilujte ukázku:
+1. Přejděte do adresáře *iothub_ll_telemetry_sample* projektu z adresáře cmake (), `azure-iot-sdk-c/cmake` který jste vytvořili dříve, a zkompilujte ukázku:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -181,7 +180,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 **Není triviální** k zobrazení náhledu funkce distribuované trasování bez použití sady C SDK. Proto se tento přístup nedoporučuje.
 
-Nejdřív je nutné implementovat všechny primitivní IoT Hub protokolu ve zprávách pomocí Průvodce vývojem [pro vytváření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Pak upravte vlastnosti protokolu ve zprávách MQTT/AMQP na hodnotu přidat `tracestate` jako **systémovou vlastnost**. Konkrétně:
+Nejdřív je nutné implementovat všechny primitivní IoT Hub protokolu ve zprávách pomocí Průvodce vývojem [pro vytváření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Pak upravte vlastnosti protokolu ve zprávách MQTT/AMQP na `tracestate` hodnotu přidat jako **systémovou vlastnost**. Konkrétně:
 
 * V případě MQTT přidejte `%24.tracestate=timestamp%3d1539243209` do tématu zprávy, kde `1539243209` by měla být nahrazena časem vytvoření zprávy ve formátu časového razítka systému UNIX. Příklad naleznete v tématu implementace [v sadě C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) .
 * Pro AMQP přidejte `key("tracestate")` a `value("timestamp=1539243209")` jako anotaci zpráv. Referenční implementaci najdete [tady](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
@@ -212,7 +211,7 @@ Chcete-li změnit procento zpráv, které mají být trasovány z cloudu, je nut
 
     ![Stav trasování](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
 
-1. Volitelné Nastavte vzorkovací frekvenci na jinou hodnotu a sledujte změnu četnosti, kterou zprávy ve vlastnostech aplikace obsahují `tracestate` .
+1. Volitelné Nastavte vzorkovací frekvenci na jinou hodnotu a sledujte změnu četnosti, kterou zprávy `tracestate` ve vlastnostech aplikace obsahují.
 
 ### <a name="update-using-azure-iot-hub-for-vs-code"></a>Aktualizace pomocí IoT Hub Azure pro VS Code
 
@@ -247,10 +246,10 @@ Pokud chcete aktualizovat konfiguraci pro vzorkování distribuovaného trasová
 }
 ```
 
-| Název elementu | Požaduje se | Typ | Popis |
+| Název elementu | Požaduje se | Typ | Description |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Ano | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1`je zapnuto a `2` , je vypnuto. |
-| `sampling_rate` | Ano | Integer | Tato hodnota je procento. Povolují se jenom `0` hodnoty `100` z na (včetně).  |
+| `sampling_mode` | Yes | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1`je zapnuto a, `2` je vypnuto. |
+| `sampling_rate` | Yes | Integer | Tato hodnota je procento. Povolují se jenom hodnoty z `0` na `100` (včetně).  |
 
 ## <a name="query-and-visualize"></a>Dotazování a vizualizace
 
@@ -311,9 +310,9 @@ Po povolení bude podpora distribuovaného trasování pro IoT Hub postupovat po
 1. Zařízení IoT zprávu pošle IoT Hub.
 1. Zpráva se dorazí do brány služby IoT Hub.
 1. IoT Hub vyhledá `tracestate` ve vlastnostech aplikace zprávy a zkontroluje, jestli je ve správném formátu.
-1. V takovém případě IoT Hub `trace-id` `span-id` pro zprávu vytvoří globálně jedinečný, pro "směrování" a zaprotokoluje je do Azure monitor diagnostických protokolů v rámci operace. `DiagnosticIoTHubD2C`
-1. Po dokončení zpracování zprávy IoT Hub generuje další `span-id` a zaprotokoluje je spolu s existující `trace-id` operací. `DiagnosticIoTHubIngress`
-1. Pokud je pro zprávu zapnuté směrování, IoT Hub zapíše do vlastního koncového bodu a zaznamená `span-id` jiný se stejnou `trace-id` kategorií `DiagnosticIoTHubEgress`.
+1. V takovém případě IoT Hub pro zprávu vytvoří globálně jedinečný `trace-id` , `span-id` pro "směrování" a zaprotokoluje je do Azure monitor diagnostických protokolů v rámci operace `DiagnosticIoTHubD2C` .
+1. Po dokončení zpracování zprávy IoT Hub generuje další `span-id` a zaprotokoluje je spolu s existující `trace-id` operací `DiagnosticIoTHubIngress` .
+1. Pokud je pro zprávu zapnuté směrování, IoT Hub zapíše do vlastního koncového bodu a zaznamená jiný `span-id` se stejnou `trace-id` kategorií `DiagnosticIoTHubEgress` .
 1. Výše uvedené kroky se opakují pro každou vygenerovanou zprávu.
 
 ## <a name="public-preview-limits-and-considerations"></a>Omezení a požadavky pro veřejnou verzi Preview

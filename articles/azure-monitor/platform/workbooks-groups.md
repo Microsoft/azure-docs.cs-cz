@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892079"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Používání skupin v sešitech
@@ -22,7 +21,7 @@ Položka skupiny v sešitu umožňuje logicky seskupovat sadu kroků v sešitu.
 
 Skupiny v sešitech jsou užitečné pro několik věcí:
 
-- Rozložení
+- Layout
   - Ve scénářích, kdy chcete, aby byly položky uspořádány svisle, můžete vytvořit skupinu položek, které budou všechny navrstveny, a nastavit styl skupiny tak, aby byl procentuální hodnotou šířky, místo nastavení procentuální šířky pro všechny jednotlivé položky.
 - Viditelnost
   - Ve scénářích, kdy chcete zobrazit nebo zobrazit dohromady mnoho položek, můžete nastavit viditelnost celé skupiny položek místo nastavení nastavení viditelnosti pro každou jednotlivou položku. To může být užitečné v šablonách, které používají karty, protože můžete použít skupinu jako obsah karty a celou skupinu můžete skrýt nebo zobrazit na základě parametru nastaveného na vybrané kartě.
@@ -118,11 +117,11 @@ Zvažte šablonu skupiny, která má dva parametry v horní části.
 
 ![Úprava položky skupiny s výsledkem sloučení parametrů](./media/workbooks-groups/groups-wont-merge-away.png)
 
-Po načtení šablony item's skupiny se `TimeRange` parametr sloučí ze skupiny. Sešit bude mít krok počátečních parametrů s `TimeRange` a `Filter`a parametr skupiny bude obsahovat jenom tyto kroky:`FilterB`
+Po načtení šablony item's skupiny se `TimeRange` parametr sloučí ze skupiny. Sešit bude mít krok počátečních parametrů s a a `TimeRange` `Filter` parametr skupiny bude obsahovat jenom tyto kroky:`FilterB`
 
 ![výsledek parametrů, které se pryč nesloučí](./media/workbooks-groups/groups-wont-merge-away-result.png)
 
-Pokud načtená šablona obsahovala `TimeRange` a `Filter` (namísto `FilterB`), pak výsledný sešit by měl mít krok Parameters a skupinu s pouze zbývajícím krokem textu.
+Pokud načtená šablona obsahovala `TimeRange` a `Filter` (namísto `FilterB` ), pak výsledný sešit by měl mít krok Parameters a skupinu s pouze zbývajícím krokem textu.
 
 ## <a name="how-to-split-a-large-template-into-many-templates"></a>Jak rozdělit velkou šablonu do mnoha šablon
 

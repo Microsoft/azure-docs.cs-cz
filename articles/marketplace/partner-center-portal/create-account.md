@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
 ms.openlocfilehash: 2a1a6963a540f3e7384f73067af336b53b29134d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856685"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
@@ -21,7 +20,7 @@ Pokud chcete publikovat své nabídky [Azure Marketplace](https://azuremarketpla
 >[!IMPORTANT]
 >Pokud máte účet v [portál partnerů cloudu](https://cloudpartner.azure.com) , který se přesunul do partnerského centra, nemusíte vytvářet nový účet. Další informace najdete v tématu [vydavatelé, kteří přecházejí z portál partnerů cloudu](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud chcete vytvořit účet v partnerském centru, ujistěte se, že máte následující:
 
@@ -75,7 +74,7 @@ Váš profil vydavatele obsahuje název vaší společnosti a ID MPN. Pokud jste
 
     Po registraci přejdete na stránku Přehled komerčního tržiště. V levém podokně se zobrazí účet komerčního tržiště. 
     
-1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení** > **Nastavení partnerských** > **programů programy**.
+1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**nastavení  >  **partnerských**  >  **programů programy**.
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Další informace najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -112,7 +111,7 @@ Až se přihlásíte, dokončete nastavení účtu následujícím způsobem:
 >[!NOTE]
 > Abyste se mohli přihlásit k Microsoft Partner Network, musíte mít roli **správce účtu** nebo **globální správce** .
 
-1. V [partnerském centru](https://partner.microsoft.com/)vyberte **Nastavení** > **partner nastavení** > **programy** > **Začínáme.**
+1. V [partnerském centru](https://partner.microsoft.com/)vyberte **Nastavení**  >  **partner nastavení**  >  **programy**  >  **Začínáme**.
 
    Microsoft Partner Network zjistí vaše předplatné a zobrazí podokno s **profilem vydavatele** .
    
@@ -124,7 +123,7 @@ Až se přihlásíte, dokončete nastavení účtu následujícím způsobem:
 
     Po registraci přejdete na stránku Přehled komerčního tržiště. V levém podokně se zobrazí účet komerčního tržiště. 
     
-1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení** > **Nastavení partnerských** > **programů programy**.
+1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**nastavení  >  **partnerských**  >  **programů programy**.
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Další informace najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -143,7 +142,7 @@ Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/a
 
 Až se přihlásíte k partnerskému centru, dokončete nastavování účtu pomocí následujícího postupu:
 
-1. V partnerském centru vyberte **Nastavení** > **programy** > pro**vývojáře nastavení** > **Začínáme a**zadejte svou pracovní e-mailovou adresu.
+1. V partnerském centru vyberte **Nastavení**  >  programy pro**vývojáře nastavení**Začínáme  >  **Programs**  >  **Get Started**a zadejte svou pracovní e-mailovou adresu.
 1. Vyplňte podrobnosti na stránce **profilu vydavatele** .
 1. Přečtěte si podmínky a ujednání ve [smlouvě Microsoft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560)a pak vyberte **přijmout a pokračovat** a dokončete registraci.
 
@@ -152,7 +151,7 @@ Až se přihlásíte k partnerskému centru, dokončete nastavování účtu pom
 
     Po registraci přejdete na stránku Přehled komerčního tržiště. V levém podokně se zobrazí účet komerčního tržiště. 
     
-1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení** > **Nastavení partnerských** > **programů programy**.
+1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**nastavení  >  **partnerských**  >  **programů programy**.
 
 V partnerském centru jste nyní vytvořili účet komerčního tržiště. Další informace najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -168,10 +167,10 @@ Po přesunu informací o účtu z portál partnerů cloudu do partnerského cent
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Přidání nových vydavatelů do programu komerčního tržiště
 
-Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení k partnerskému centru výběrem **Nastavení** > účtu**vydavatelé** > **Přidat vydavatele**.
+Organizace může mít ke komerčnímu účtu Marketplace k dispozici více vydavatelů. Stávající uživatel může přidat další vydavatele po přihlášení k partnerskému centru výběrem **Nastavení účtu**  >  **vydavatelé**  >  **Přidat vydavatele**.
 
 >[!NOTE]
->Před přidáním nového vydavatele zkontrolujte seznam stávajících vydavatelů tak, že se přihlásíte do partnerského centra a vyberete **Nastavení** > účtu**vydavatelé**.
+>Před přidáním nového vydavatele zkontrolujte seznam stávajících vydavatelů tak, že se přihlásíte do partnerského centra a vyberete **Nastavení účtu**  >  **vydavatelé**.
 
 Další uživatelé ze stejného klienta Azure Active Directory mohou přidat nového vydavatele pomocí následujícího postupu:
 

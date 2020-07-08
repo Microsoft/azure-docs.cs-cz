@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
 ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82870033"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
@@ -81,7 +80,7 @@ Následující tabulka uvádí seznam atributů potřebných k definování záv
 
 | **Název vlastnosti** | **Popis**  | **Typ** | **Požadováno** |
 |---|---|---|---|
-| type  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Ano |
+| typ  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Yes |
 | posun | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
 | velikost | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | No  |
 

@@ -8,10 +8,9 @@ ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792220"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Vytvoření kopie virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure a Managed Disks
@@ -115,7 +114,7 @@ Pokud chcete vytvořit infrastrukturu virtuální sítě pro zkopírované virtu
 
 Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create)vytvořte virtuální počítač.
 
-Určete zkopírovaný spravovaný disk, který se použije jako disk s operačním`--attach-os-disk`systémem (), a to následujícím způsobem:
+Určete zkopírovaný spravovaný disk, který se použije jako disk s operačním systémem ( `--attach-os-disk` ), a to následujícím způsobem:
 
 ```azurecli
 az vm create --resource-group myResourceGroup \

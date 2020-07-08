@@ -10,10 +10,9 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f51b9ecf8e300af6b1e3f11d8431de7a282ab342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759355"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač se systémem Linux
@@ -25,7 +24,7 @@ V tomto článku se předpokládá, že jste už vytvořili virtuální počíta
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohoto názvu DNS, jako `ssh azureuser@mydns.westus.cloudapp.azure.com`je například.
+Nyní se můžete vzdáleně připojit k virtuálnímu počítači pomocí tohoto názvu DNS, jako je například `ssh azureuser@mydns.westus.cloudapp.azure.com` .
 
 ## <a name="next-steps"></a>Další kroky
 Když teď váš virtuální počítač má veřejnou IP adresu a název DNS, můžete nasadit společné aplikační architektury nebo služby, jako je Nginx, MongoDB, Docker atd.

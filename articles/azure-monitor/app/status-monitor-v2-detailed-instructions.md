@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81766860"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Agent Application Insights (dřív pojmenovaný Monitorování stavu v2): podrobné pokyny
@@ -32,7 +31,7 @@ K provedení změn v počítači vyžaduje prostředí PowerShell oprávnění n
 - Referenční informace: [o zásadách spouštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) a [Set-ExecutionPolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 ).
-- Příkaz: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
+- Příkaz: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - Volitelný parametr:
     - `-Force`. Obchází výzvu k potvrzení.
 
@@ -50,7 +49,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 
 ## <a name="prerequisites-for-powershell"></a>Předpoklady pro PowerShell
 
-Pomocí `$PSVersionTable` příkazu proveďte audit své instance prostředí PowerShell.
+Pomocí příkazu proveďte audit své instance prostředí PowerShell `$PSVersionTable` .
 Tento příkaz vytvoří následující výstup:
 
 
@@ -82,7 +81,7 @@ Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie pr
 2. Nainstalujte zprostředkovatele balíčku NuGet.
     - Popis: tohoto poskytovatele budete potřebovat k interakci s úložištěmi založenými na NuGet, jako je Galerie prostředí PowerShell.
     - Referenční informace: [install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
-    - Příkaz: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
+    - Příkaz: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
         - `-Force`. Obchází výzvu k potvrzení.
@@ -100,7 +99,7 @@ Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie pr
 3. Nakonfigurujte Galerie prostředí PowerShell jako důvěryhodné úložiště.
     - Popis: ve výchozím nastavení je Galerie prostředí PowerShell nedůvěryhodné úložiště.
     - Reference: [set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
-    - Příkaz: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
+    - Příkaz: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - Volitelný parametr:
         - `-Proxy`. Určuje proxy server pro požadavek.
 
@@ -115,9 +114,9 @@ Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie pr
     Tuto změnu můžete potvrdit a auditovat všechny PSRepositories spuštěním `Get-PSRepository` příkazu.
 
 4. Nainstalujte nejnovější verzi PowerShellGet.
-    - Popis: Tento modul obsahuje nástroje, které slouží k získání dalších modulů z Galerie prostředí PowerShell. Verze 1.0.0.1 je dodávána se systémy Windows 10 a Windows Server. Je vyžadována verze 1.6.0 nebo vyšší. Pokud chcete zjistit, která verze je nainstalovaná `Get-Command -Module PowerShellGet` , spusťte příkaz.
+    - Popis: Tento modul obsahuje nástroje, které slouží k získání dalších modulů z Galerie prostředí PowerShell. Verze 1.0.0.1 je dodávána se systémy Windows 10 a Windows Server. Je vyžadována verze 1.6.0 nebo vyšší. Pokud chcete zjistit, která verze je nainstalovaná, spusťte `Get-Command -Module PowerShellGet` příkaz.
     - Referenční informace: [instalace PowerShellGet](/powershell/scripting/gallery/installing-psget).
-    - Příkaz: `Install-Module -Name PowerShellGet`.
+    - Příkaz: `Install-Module -Name PowerShellGet` .
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
         - `-Force`. Obchází upozornění "už nainstalovaného" a nainstaluje nejnovější verzi.
@@ -141,7 +140,7 @@ Pomocí těchto kroků se stáhne modul AZ. ApplicationMonitor z Galerie prostř
 2. Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
 3. Nainstalujte modul AZ. ApplicationMonitor.
     - Referenční informace: [install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6)
-    - Příkaz: `Install-Module -Name Az.ApplicationMonitor`.
+    - Příkaz: `Install-Module -Name Az.ApplicationMonitor` .
     - Volitelné parametry:
         - `-Proxy`. Určuje proxy server pro požadavek.
         - `-AllowPrerelease`. Umožňuje instalaci verzí Alpha a beta.
@@ -200,7 +199,7 @@ Pokud instalujete modul do libovolného jiného adresáře, importujte modul ru�
 > Uložte obsah balíčku do svého zamýšleného běhového adresáře a potvrďte, že přístupová oprávnění povolují čtení, ale nikoli zápis.
 
 1. Změňte rozšíření na. zip a extrahujte obsah balíčku do svého zamýšleného instalačního adresáře.
-2. Vyhledejte cestu k souboru AZ. ApplicationMonitor. psd1.
+2. Vyhledejte cestu k souboru Az.ApplicationMonitor.psd1.
 3. Spusťte PowerShell jako správce se zvýšenými zásadami spouštění.
 4. Načtěte modul pomocí `Import-Module Az.ApplicationMonitor.psd1` příkazu.
     
@@ -212,12 +211,12 @@ Když monitorete počítač v privátním intranetu, budete muset směrovat pře
 Příkazy prostředí PowerShell ke stažení a instalaci AZ. ApplicationMonitor z Galerie prostředí PowerShell podporují `-Proxy` parametr.
 Při psaní instalačních skriptů si Projděte předchozí pokyny.
 
-Sada Application Insights SDK bude muset poslat telemetrii vaší aplikace Microsoftu. Doporučujeme nakonfigurovat nastavení proxy serveru pro vaši aplikaci v souboru Web. config. Další informace najdete v tématu [Application Insights Nejčastější dotazy: průchozí proxy server](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
+Sada Application Insights SDK bude muset poslat telemetrii vaší aplikace Microsoftu. Doporučujeme nakonfigurovat nastavení proxy serveru pro vaši aplikaci v souboru web.config. Další informace najdete v tématu [Application Insights Nejčastější dotazy: průchozí proxy server](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
 
 
 ## <a name="enable-monitoring"></a>Povolení monitorování
 
-K povolení `Enable-ApplicationInsightsMonitoring` monitorování použijte příkaz.
+`Enable-ApplicationInsightsMonitoring`K povolení monitorování použijte příkaz.
 
 Podrobný popis způsobu použití této rutiny najdete v [referenčních informacích k rozhraní API](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring) .
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 04/30/2020
 ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889259"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími
@@ -34,7 +33,7 @@ V následující tabulce jsou uvedeny různé metody, které můžete použít k
 
 | Clustery vytvořené pomocí | Webový prohlížeč | Příkazový řádek | REST API | Sada SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [portál Azure](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -98,13 +97,13 @@ Clustery HDInsight umožňují během vytváření clusteru konfigurovat dva už
 Uživatelské jméno protokolu HTTP má následující omezení:
 
 * Povolené speciální znaky: `_` a`@`
-* Nepovolené znaky: #;. "'\/,: '! *? $ ({}) [] <>|&--= +% ~ ^ Space
+* Nepovolené znaky: #;. ", \/ : '! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximální délka: 20
 
 Uživatelské jméno SSH má následující omezení:
 
-* Povolené speciální znaky:`_` a`@`
-* Nepovolené znaky: #;. "'\/,: '! *? $ ({}) [] <>|&--= +% ~ ^ Space
+* Povolené speciální znaky: `_` a`@`
+* Nepovolené znaky: #;. ", \/ : '! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximální délka: 64
 * Rezervované názvy: Hadoop, uživatelé, Oozie, podregistr, mapred, Ambari-QA, Zookeeper, tez, HDFS, Sqoop, příze, hcat, AMS, HBA, test1, Administrator, admin, User, uživatel1, test, uživatel2,, user3, admin1, 1, 123, a, ACTUser, ADM, admin2, ASPNET, Backup, Console, David, Host, Jan, Owner, test2, test3, user4, user5, Spark Support_388945a0
 
@@ -266,21 +265,21 @@ Některé nativní komponenty Java, jako je Apache Mahout a Cascading, se dají 
 
 V některých případech budete chtít během procesu vytváření nakonfigurovat následující konfigurační soubory:
 
-* clusterIdentity. XML
-* Core-site. XML
-* Gateway. XML
-* HBase-env. XML
-* HBase-site. XML
-* HDFS-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred – lokalita
-* Oozie-site. XML
-* Oozie-env. XML
-* Storm-site. XML
-* tez-site. XML
-* webhcat-site. XML
-* YARN-site. XML
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 
 Další informace najdete v tématu [Přizpůsobení clusterů HDInsight pomocí nástroje Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 

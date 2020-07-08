@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793138"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Upgrade verze Service Fabric, která běží na vašem clusteru 
@@ -26,7 +25,7 @@ Cluster můžete upgradovat na novou verzi pouze v případě, že používáte 
 Dva různé pracovní postupy mohou upgradovat cluster na nejnovější verzi nebo na podporovanou verzi Service Fabric. Jeden pracovní postup je pro clustery, které mají připojení k automatickému stažení nejnovější verze. Druhý pracovní postup je pro clustery, které nemají připojení ke stažení nejnovější verze Service Fabric.
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Povolení automatického upgradu Service Fabric verze clusteru
-Chcete-li nastavit cluster tak, aby stahoval aktualizace Service Fabric, když společnost Microsoft vydává novou `fabricClusterAutoupgradeEnabled` verzi, nastavte konfiguraci clusteru na *hodnotu true*. Chcete-li ručně vybrat podporovanou verzi Service Fabric, na které má být cluster zapnutý, nastavte `fabricClusterAutoupgradeEnabled` konfiguraci clusteru na *hodnotu NEPRAVDA*.
+Chcete-li nastavit cluster tak, aby stahoval aktualizace Service Fabric, když společnost Microsoft vydává novou verzi, nastavte `fabricClusterAutoupgradeEnabled` konfiguraci clusteru na *hodnotu true*. Chcete-li ručně vybrat podporovanou verzi Service Fabric, na které má být cluster zapnutý, nastavte `fabricClusterAutoupgradeEnabled` konfiguraci clusteru na *hodnotu NEPRAVDA*.
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Upgradujte clustery, které mají připojení ke stažení nejnovějšího kódu a konfigurace.
 Pomocí těchto kroků můžete cluster upgradovat na podporovanou verzi, pokud uzly clusteru mají připojení k Internetu na webu [služby Stažení softwaru](https://download.microsoft.com).
@@ -94,7 +93,7 @@ Pomocí těchto kroků můžete cluster upgradovat na podporovanou verzi, pokud 
 >
 
 ### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatické zřizování vs. ruční zřizování
-Pokud chcete povolit automatické stahování a registraci pro nejnovější verzi kódu, nastavte službu Service Fabric Update. Pokyny najdete v tématu *tools\servicefabricupdateservice.zip\ Readme_InstructionsAndHowTos. txt* v [samostatném balíčku](service-fabric-cluster-standalone-package-contents.md).
+Pokud chcete povolit automatické stahování a registraci pro nejnovější verzi kódu, nastavte službu Service Fabric Update. Pokyny najdete v tématu *Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt* v [samostatném balíčku](service-fabric-cluster-standalone-package-contents.md).
 
 Při ručním zpracování postupujte podle těchto pokynů.
 

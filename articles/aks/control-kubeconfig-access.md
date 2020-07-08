@@ -5,19 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890883"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Použití řízení přístupu na základě role v Azure k definování přístupu ke konfiguračnímu souboru Kubernetes ve službě Azure Kubernetes Service (AKS)
 
-Pomocí `kubectl` nástroje můžete pracovat s clustery Kubernetes. Rozhraní příkazového řádku Azure nabízí snadný způsob, jak získat přihlašovací údaje pro přístup a informace o konfiguraci pro připojení k `kubectl`vašim clusterům AKS pomocí nástroje. Pokud chcete omezit, kdo může získat informace o konfiguraci Kubernetes (*kubeconfig*) a omezit oprávnění, která pak mají, můžete použít řízení přístupu na základě role (RBAC) v Azure.
+Pomocí nástroje můžete pracovat s clustery Kubernetes `kubectl` . Rozhraní příkazového řádku Azure nabízí snadný způsob, jak získat přihlašovací údaje pro přístup a informace o konfiguraci pro připojení k vašim clusterům AKS pomocí nástroje `kubectl` . Pokud chcete omezit, kdo může získat informace o konfiguraci Kubernetes (*kubeconfig*) a omezit oprávnění, která pak mají, můžete použít řízení přístupu na základě role (RBAC) v Azure.
 
 V tomto článku se dozvíte, jak přiřadit role RBAC, které omezují, kdo může získat informace o konfiguraci pro cluster AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 

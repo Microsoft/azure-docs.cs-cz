@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: f1bce0a95b672bb23767fce3d5d092221ccd8321
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858336"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive s využitím Microsoft Power BI a ODBC ve službě Azure HDInsight
@@ -22,7 +21,7 @@ Naučte se, jak připojit Microsoft Power BI Desktop k Azure HDInsight pomocí r
 > [!IMPORTANT]
 > Můžete využít ovladač ODBC pro podregistr pro import prostřednictvím obecného konektoru ODBC v Power BI Desktop. Nedoporučuje se ale pro úlohy BI, které neinteraktivní charakterují modul dotazů na podregistr. [Konektor HDInsight Interactive pro dotazy](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepším výběrem pro jejich výkon.
 
-V tomto článku načtete data z tabulky `hivesampletable` podregistru do Power BI. Tabulka podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
+V tomto článku načtete data z `hivesampletable` tabulky podregistru do Power BI. Tabulka podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
 
 ![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
@@ -46,7 +45,7 @@ Tabulka podregistru **hivesampletable** se dodává se všemi clustery HDInsight
 
 1. Spusťte Power BI Desktop.
 
-1. V horní nabídce přejděte na **Domů** > **získat data** > **Další..**..
+1. V horní nabídce přejděte na **Domů**  >  **získat data**  >  **Další..**..
 
     ![Aplikace Power BI v HDInsight – otevřít data](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 

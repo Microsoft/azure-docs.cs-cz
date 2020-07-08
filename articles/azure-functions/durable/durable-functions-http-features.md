@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800715"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
@@ -47,17 +46,17 @@ Podporují se následující integrovaná rozhraní API HTTP.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**index. js**
+**index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**Function. JSON**
+**function.jsna**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 ---
 
-Spuštění funkce Orchestrator pomocí funkcí triggeru protokolu HTTP, které jsou uvedené výše, se dá provést pomocí libovolného klienta HTTP. Následující příkaz oblé spustí funkci Orchestrator s názvem `DoWork`:
+Spuštění funkce Orchestrator pomocí funkcí triggeru protokolu HTTP, které jsou uvedené výše, se dá provést pomocí libovolného klienta HTTP. Následující příkaz oblé spustí funkci Orchestrator s názvem `DoWork` :
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -80,7 +79,7 @@ Retry-After: 10
 }
 ```
 
-V předchozím příkladu každé pole, které končí, `Uri` odpovídá INTEGROVANÉMU HTTP API. Pomocí těchto rozhraní API můžete spravovat cílovou instanci Orchestration.
+V předchozím příkladu každé pole, které končí, `Uri` odpovídá integrovanému HTTP API. Pomocí těchto rozhraní API můžete spravovat cílovou instanci Orchestration.
 
 > [!NOTE]
 > Formát adres URL Webhooku závisí na tom, kterou verzi Azure Functions hostitele používáte. Předchozí příklad je pro hostitele Azure Functions 2,0.
@@ -224,7 +223,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-V předchozím příkladu je `tokenSource` parametr nakonfigurovaný tak, aby získal tokeny Azure AD pro [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Tokeny jsou identifikovány identifikátorem URI `https://management.core.windows.net`prostředku. Příklad předpokládá, že aktuální aplikace Function App běží buď místně, nebo byla nasazena jako aplikace Function App se spravovanou identitou. Předpokládá se, že místní identita nebo spravovaná identita má oprávnění ke správě virtuálních počítačů v zadané skupině `myRG`prostředků.
+V předchozím příkladu `tokenSource` je parametr nakonfigurovaný tak, aby získal tokeny Azure AD pro [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Tokeny jsou identifikovány identifikátorem URI prostředku `https://management.core.windows.net` . Příklad předpokládá, že aktuální aplikace Function App běží buď místně, nebo byla nasazena jako aplikace Function App se spravovanou identitou. Předpokládá se, že místní identita nebo spravovaná identita má oprávnění ke správě virtuálních počítačů v zadané skupině prostředků `myRG` .
 
 Nakonfigurovaný zdroj tokenu za běhu automaticky vrátí přístupový token OAuth 2,0. Zdroj pak přidá token jako nosný token do autorizační hlavičky odchozí žádosti. Tento model je vylepšením ručního přidávání autorizačních hlaviček do požadavků HTTP z následujících důvodů:
 

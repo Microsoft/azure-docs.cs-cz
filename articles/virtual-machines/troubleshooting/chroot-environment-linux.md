@@ -14,10 +14,9 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
 ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864679"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Prostředí chroot na záchranném virtuálním počítači se systémem Linux
@@ -84,7 +83,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       ```
 
       > [!NOTE]
-      > Pokud se zobrazí chybová `unable to unmount /rescue`zpráva, přidejte do příkazu umount parametr-l.
+      > Pokud se zobrazí chybová zpráva `unable to unmount /rescue` , přidejte do příkazu umount parametr-l.
       >
       > Příklad: `umount -l /rescue`
 
@@ -151,7 +150,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       ```
 
       > [!NOTE]
-      > Pokud se zobrazí chybová `unable to unmount /rescue`zpráva, přidejte do příkazu umount parametr-l.
+      > Pokud se zobrazí chybová zpráva `unable to unmount /rescue` , přidejte do příkazu umount parametr-l.
       >
       > Příklad: `umount -l /rescue`
 
@@ -195,7 +194,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       #lvscan
       ```
 
-   1. K načtení `lsblk` názvů LVM použijte příkaz:
+   1. `lsblk`K načtení názvů LVM použijte příkaz:
 
       ```
       [user@myvm ~]$ lsblk
@@ -264,7 +263,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       ```
 
       > [!NOTE]
-      > Pokud se zobrazí chybová `unable to unmount /rescue`zpráva, přidejte do příkazu umount parametr-l.
+      > Pokud se zobrazí chybová zpráva `unable to unmount /rescue` , přidejte do příkazu umount parametr-l.
       >
       > Příklad: `umount -l /rescue`
 
@@ -308,7 +307,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       #lvscan
       ```
 
-   1. K načtení `lsblk` názvů LVM použijte příkaz:
+   1. `lsblk`K načtení názvů LVM použijte příkaz:
 
       ```
       [user@myvm ~]$ lsblk
@@ -374,7 +373,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       ```
 
       > [!NOTE]
-      > Pokud se zobrazí chybová `unable to unmount /rescue`zpráva, přidejte do příkazu umount parametr-l.
+      > Pokud se zobrazí chybová zpráva `unable to unmount /rescue` , přidejte do příkazu umount parametr-l.
       >
       > Příklad: `umount -l /rescue`
 
@@ -443,7 +442,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       ```
 
       > [!NOTE]
-      > Pokud se zobrazí chybová `unable to unmount /rescue`zpráva, přidejte do příkazu umount parametr-l.
+      > Pokud se zobrazí chybová zpráva `unable to unmount /rescue` , přidejte do příkazu umount parametr-l.
       >
       > Příklad: `umount -l /rescue`
 
@@ -512,7 +511,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
       ```
 
       > [!NOTE]
-      > Pokud se zobrazí chybová `unable to unmount /rescue`zpráva, přidejte do příkazu umount parametr-l.
+      > Pokud se zobrazí chybová zpráva `unable to unmount /rescue` , přidejte do příkazu umount parametr-l.
       >
       > Příklad: `umount -l /rescue`
 

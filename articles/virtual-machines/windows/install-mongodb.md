@@ -10,10 +10,9 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869456"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure
@@ -38,10 +37,10 @@ Pokud chcete začít s instalací a konfigurací MongoDB, [Přihlaste se k virtu
    
    * Vyberte ikonu **nástroje** v pravém horním rohu.
    * V **Možnosti Internet**vyberte kartu **zabezpečení** a pak vyberte ikonu **Důvěryhodné servery** .
-   * Klikněte na tlačítko **weby** . Přidejte *https://\*. MongoDB.com* do seznamu důvěryhodných webů a potom dialogové okno zavřete.
+   * Klikněte na tlačítko **weby** . Přidejte *https:// \* . MongoDB.com* do seznamu důvěryhodných webů a potom dialogové okno zavřete.
      
      ![Konfigurovat nastavení zabezpečení aplikace Internet Explorer](./media/install-mongodb/configure-internet-explorer-security.png)
-4. Přejděte na stránku [MongoDB-downloads](https://www.mongodb.com/downloads) (https://www.mongodb.com/downloads).
+4. Přejděte na stránku [MongoDB-downloads](https://www.mongodb.com/downloads) ( https://www.mongodb.com/downloads) .
 5. V případě potřeby vyberte edici **Community Server** a pak vyberte nejnovější aktuální stabilní verzi pro*Windows Server 2008 R2 64-bit a novější*. Pokud chcete instalační program stáhnout, klikněte na **Stáhnout (MSI)**.
    
     ![Stáhnout instalační program MongoDB](./media/install-mongodb/download-mongodb.png)
@@ -60,14 +59,14 @@ Pokud chcete začít s instalací a konfigurací MongoDB, [Přihlaste se k virtu
      
      ![Konfigurace proměnných cest](./media/install-mongodb/configure-path-variables.png)
      
-     Přidejte cestu do složky MongoDB `bin` . MongoDB se obvykle instaluje do složky *C:\Program Files\MongoDB*. Ověřte cestu k instalaci na VIRTUÁLNÍm počítači. Následující příklad přidá výchozí umístění instalace MongoDB do `PATH` proměnné:
+     Přidejte cestu do `bin` složky MongoDB. MongoDB se obvykle instaluje do složky *C:\Program Files\MongoDB*. Ověřte cestu k instalaci na VIRTUÁLNÍm počítači. Následující příklad přidá výchozí umístění instalace MongoDB do `PATH` proměnné:
      
      ```
      ;C:\Program Files\MongoDB\Server\3.6\bin
      ```
      
      > [!NOTE]
-     > Nezapomeňte přidat úvodní středník (`;`), který označuje, že přidáváte umístění do `PATH` proměnné.
+     > Nezapomeňte přidat úvodní středník (), který `;` označuje, že přidáváte umístění do `PATH` proměnné.
 
 2. Vytvářejte MongoDB data a protokolovat adresáře na datovém disku. V nabídce **Start** vyberte **příkazový řádek**. V následujících příkladech se vytvoří adresáře na jednotce F:
    
@@ -94,9 +93,9 @@ Pokud chcete začít s instalací a konfigurací MongoDB, [Přihlaste se k virtu
    
     Předchozí příkaz vytvoří službu s názvem MongoDB s popisem "Mongo DB". Jsou také zadány následující parametry:
    
-   * `--dbpath` Možnost určuje umístění datového adresáře.
-   * `--logpath` Možnost musí být použita k určení souboru protokolu, protože spuštěná služba neobsahuje příkazové okno pro zobrazení výstupu.
-   * `--logappend` Možnost určuje, že restartování služby způsobí, že se výstup připojí k existujícímu souboru protokolu.
+   * `--dbpath`Možnost určuje umístění datového adresáře.
+   * `--logpath`Možnost musí být použita k určení souboru protokolu, protože spuštěná služba neobsahuje příkazové okno pro zobrazení výstupu.
+   * `--logappend`Možnost určuje, že restartování služby způsobí, že se výstup připojí k existujícímu souboru protokolu.
    
    Chcete-li spustit službu MongoDB, spusťte následující příkaz:
    
@@ -131,7 +130,7 @@ Výstup se podobá následujícímu příkladu:
 { "_id" : "ObjectId("57f6a86cee873a6232d74842"), "a" : 1 }
 ```
 
-`mongo` Konzolu ukončete následujícím způsobem:
+`mongo`Konzolu ukončete následujícím způsobem:
 
 ```
 exit

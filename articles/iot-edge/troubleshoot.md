@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9b6265bed138960a3839091ed1593413fc85710a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858591"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
@@ -21,12 +20,12 @@ Pokud máte problémy se spouštěním Azure IoT Edge ve vašem prostředí, pou
 
 ## <a name="run-the-check-command"></a>Spuštění příkazu check
 
-Prvním krokem při řešení potíží IoT Edge by měl být použití `check` příkazu, který spouští kolekci konfigurací a testů připojení pro běžné problémy. `check` Příkaz je k dispozici ve [verzi 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) a novější.
+Prvním krokem při řešení potíží IoT Edge by měl být použití `check` příkazu, který spouští kolekci konfigurací a testů připojení pro běžné problémy. `check`Příkaz je k dispozici ve [verzi 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) a novější.
 
 >[!NOTE]
 >Nástroj pro řešení potíží nemůže spustit kontroly připojení, pokud je zařízení IoT Edge za proxy server.
 
-Tento `check` příkaz můžete spustit následujícím způsobem, nebo pokud chcete zobrazit `--help` úplný seznam možností, přidejte příznak.
+Tento příkaz můžete spustit `check` následujícím způsobem, nebo pokud `--help` chcete zobrazit úplný seznam možností, přidejte příznak.
 
 V systému Linux:
 
@@ -50,9 +49,9 @@ Informace o všech diagnostických kontrolách, které tento nástroj spouští,
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>Shromažďování informací o ladění pomocí příkazu support-komplet
 
-Když potřebujete shromažďovat protokoly ze zařízení IoT Edge, nejpohodlnější způsob je použít `support-bundle` příkaz. Ve výchozím nastavení tento příkaz shromažďuje modul, IoT Edge správce zabezpečení a protokoly kontejnerů, `iotedge check` výstup JSON a další užitečné ladicí informace. Komprimuje je do jednoho souboru pro snadné sdílení. `support-bundle` Příkaz je k dispozici ve [verzi 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) a novější.
+Když potřebujete shromažďovat protokoly ze zařízení IoT Edge, nejpohodlnější způsob je použít `support-bundle` příkaz. Ve výchozím nastavení tento příkaz shromažďuje modul, IoT Edge správce zabezpečení a protokoly kontejnerů, `iotedge check` výstup JSON a další užitečné ladicí informace. Komprimuje je do jednoho souboru pro snadné sdílení. `support-bundle`Příkaz je k dispozici ve [verzi 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) a novější.
 
-Spusťte `support-bundle` příkaz s `--since` příznakem a určete tak, jak dlouho od minulosti chcete získat protokoly. Například `6h` načte protokoly za posledních šest hodin, `6d` za posledních šest dní, `6m` za posledních šest minut a tak dále. Pokud chcete `--help` Zobrazit úplný seznam možností, přidejte příznak.
+Spusťte `support-bundle` příkaz s `--since` příznakem a určete tak, jak dlouho od minulosti chcete získat protokoly. Například načte `6h` protokoly za posledních šest hodin, za posledních šest `6d` dní, za `6m` posledních šest minut a tak dále. Pokud `--help` chcete zobrazit úplný seznam možností, přidejte příznak.
 
 V systému Linux:
 
@@ -71,7 +70,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="check-your-iot-edge-version"></a>Ověřit verzi IoT Edge
 
-Pokud používáte starší verzi IoT Edge, může problém vyřešit upgrade. `iotedge check` Nástroj kontroluje, zda je démon zabezpečení IoT Edge nejnovější verze, ale nekontroluje verze IoT Edge centra a agentů. Chcete-li zjistit verzi modulů runtime na vašem zařízení, použijte příkazy `iotedge logs edgeAgent` a. `iotedge logs edgeHub` Číslo verze je deklarováno v protokolech při spuštění modulu.
+Pokud používáte starší verzi IoT Edge, může problém vyřešit upgrade. `iotedge check`Nástroj kontroluje, zda je démon zabezpečení IoT Edge nejnovější verze, ale nekontroluje verze IoT Edge centra a agentů. Chcete-li zjistit verzi modulů runtime na vašem zařízení, použijte příkazy `iotedge logs edgeAgent` a `iotedge logs edgeHub` . Číslo verze je deklarováno v protokolech při spuštění modulu.
 
 Pokyny k aktualizaci zařízení najdete v tématu [aktualizace démona zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
 
@@ -209,7 +208,7 @@ Ve Windows:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-Ve výchozím nastavení bude `agent` element vypadat jako v následujícím příkladu:
+Ve výchozím nastavení `agent` bude element vypadat jako v následujícím příkladu:
 
    ```yaml
    agent:
@@ -255,7 +254,7 @@ Azure IoT Edge umožňuje komunikaci z místního serveru do cloudu Azure pomoc�
 
 I když IoT Edge poskytuje rozšířenou konfiguraci pro zabezpečení Azure IoT Edge runtime a nasazených modulů, je stále závislý na základní konfiguraci počítače a sítě. Proto je nutné zajistit, aby byla pro zabezpečená komunikace s cloudovou komunikací nastavena správná pravidla sítě a brány firewall. Následující tabulku lze použít jako vodítko při konfiguraci pravidel brány firewall pro základní servery, kde je hostovaný Azure IoT Edge Runtime:
 
-|Protocol (Protokol)|Port|Příchozí|Odesílaná|Doprovodné materiály|
+|Protocol (Protokol)|Port|Příchozí|Odesílaná|Pokyny|
 |--|--|--|--|--|
 |MQTT|8883|BLOKOVÁNo (výchozí)|BLOKOVÁNo (výchozí)|<ul> <li>Konfigurace odchozího (odchozího), aby se otevírala při používání MQTT jako komunikačního protokolu<li>1883 pro MQTT není podporován IoT Edge. <li>Příchozí (příchozí) připojení by měla být blokovaná.</ul>|
 |AMQP|5671|BLOKOVÁNo (výchozí)|OTEVŘÍT (výchozí)|<ul> <li>Výchozí komunikační protokol pro IoT Edge. <li> Musí být nastavené tak, aby byly otevřené, pokud není Azure IoT Edge nakonfigurovaný pro jiné podporované protokoly nebo že AMQP je požadovaný komunikační protokol.<li>5672 pro AMQP není podporován IoT Edge.<li>Zablokovat tento port, když Azure IoT Edge používá jiný podporovaný protokol IoT Hub.<li>Příchozí (příchozí) připojení by měla být blokovaná.</ul></ul>|

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864245"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
@@ -204,7 +203,7 @@ Perf
 
 ### <a name="add-early-filters-to-the-query"></a>Přidat do dotazu počáteční filtry
 
-Další metodou, jak snížit objem dat, [je, aby](/azure/kusto/query/whereoperator) byly v počátečním stavu dotazu. Platforma Azure Průzkumník dat zahrnuje mezipaměť, která umožňuje zjistit, které oddíly obsahují data relevantní pro konkrétní podmínku WHERE. Například pokud dotaz obsahuje `where EventID == 4624` , bude tento dotaz distribuovat pouze uzlům, které zpracovávají oddíly s odpovídajícími událostmi.
+Další metodou, jak snížit objem dat, [je, aby](/azure/kusto/query/whereoperator) byly v počátečním stavu dotazu. Platforma Azure Průzkumník dat zahrnuje mezipaměť, která umožňuje zjistit, které oddíly obsahují data relevantní pro konkrétní podmínku WHERE. Například pokud dotaz obsahuje, bude tento `where EventID == 4624` dotaz distribuovat pouze uzlům, které zpracovávají oddíly s odpovídajícími událostmi.
 
 Následující příklady dotazů vytváří přesně stejný výsledek, ale druhý z nich je efektivnější:
 

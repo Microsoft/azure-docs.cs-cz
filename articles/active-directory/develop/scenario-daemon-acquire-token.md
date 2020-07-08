@@ -12,19 +12,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868995"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
-Po sestavení důvěrné klientské aplikace můžete získat token pro aplikaci voláním `AcquireTokenForClient`, předáním oboru a volitelně vynucením aktualizace tokenu.
+Po sestavení důvěrné klientské aplikace můžete získat token pro aplikaci voláním `AcquireTokenForClient` , předáním oboru a volitelně vynucením aktualizace tokenu.
 
 ## <a name="scopes-to-request"></a>Rozsahy k vyžádání
 
-Obor pro požadavek na tok přihlašovacích údajů klienta je název prostředku následovaný `/.default`. Tento zápis oznamuje službě Azure Active Directory (Azure AD) používání *oprávnění na úrovni aplikace* deklarované staticky během registrace aplikace. Tato oprávnění rozhraní API musí taky udělit správce klienta.
+Obor pro požadavek na tok přihlašovacích údajů klienta je název prostředku následovaný `/.default` . Tento zápis oznamuje službě Azure Active Directory (Azure AD) používání *oprávnění na úrovni aplikace* deklarované staticky během registrace aplikace. Tato oprávnění rozhraní API musí taky udělit správce klienta.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -53,11 +52,11 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ### <a name="azure-ad-v10-resources"></a>Prostředky Azure AD (v 1.0)
 
-Obor používaný pro pověření klienta by měl vždy být ID prostředku následovaný `/.default`.
+Obor používaný pro pověření klienta by měl vždy být ID prostředku následovaný `/.default` .
 
 > [!IMPORTANT]
 > Když MSAL požádá o přístupový token pro prostředek, který přijímá přístupový token verze 1,0, Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku.
-> Takže pokud jako Azure SQL Database (**https:\//Database.Windows.NET**) očekává prostředek cílovou skupinu, která končí lomítkem (pro Azure SQL Database, `https://database.windows.net/`), budete muset požádat o obor `https://database.windows.net//.default`. (Poznamenejte si dvojité lomítko.) Viz také MSAL.NET problém [#747: koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Takže pokud jako Azure SQL Database (**https: \/ /Database.Windows.NET**) očekává prostředek cílovou skupinu, která končí lomítkem (pro Azure SQL Database, `https://database.windows.net/` ), budete muset požádat o obor `https://database.windows.net//.default` . (Poznamenejte si dvojité lomítko.) Viz také MSAL.NET problém [#747: koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>Rozhraní API pro AcquireTokenForClient
 
@@ -202,13 +201,13 @@ Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platfor
 
 ## <a name="application-token-cache"></a>Mezipaměť tokenů aplikace
 
-V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken*XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient`, protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient`kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
+V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken*XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient` , protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient`kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Použili jste prostředek/. výchozí obor?
 
-Pokud se zobrazí chybová zpráva s oznámením, že jste použili neplatný rozsah, pravděpodobně jste `resource/.default` obor nepoužívali.
+Pokud se zobrazí chybová zpráva s oznámením, že jste použili neplatný rozsah, pravděpodobně jste obor nepoužívali `resource/.default` .
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Nezapomněli jste zadat souhlas správce? Aplikace démona vyžaduje!
 

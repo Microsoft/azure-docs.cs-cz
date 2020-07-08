@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
 ms.openlocfilehash: c032e900cd2f58581517b08905d5b0660ed8bbda
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857810"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Ladění aplikací Apache Spark v clusteru HDInsight pomocí Azure Toolkit for IntelliJ prostřednictvím SSH
@@ -23,9 +22,9 @@ Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsi
 
 * Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](../spark/apache-spark-jupyter-spark-sql-use-portal.md).
 
-* Pro uživatele Windows: když na počítači s Windows běží místní aplikace Spark Scala, může se zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K výjimce dochází, protože ve Windows chybí WinUtils. exe.
+* Pro uživatele Windows: když na počítači s Windows běží místní aplikace Spark Scala, může se zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K výjimce dochází, protože ve Windows chybí WinUtils.exe.
 
-    Chcete-li tuto chybu vyřešit, stáhněte [Winutils. exe](https://github.com/steveloughran/winutils) do umístění, jako je například **C:\WinUtils\bin**. Pak přidejte proměnnou prostředí **HADOOP_HOME**a nastavte hodnotu proměnné na **C:\WinUtils**.
+    Chcete-li tuto chybu vyřešit, stáhněte [Winutils.exe](https://github.com/steveloughran/winutils) do umístění, jako je například **C:\WinUtils\bin**. Pak přidejte proměnnou prostředí **HADOOP_HOME**a nastavte hodnotu proměnné na **C:\WinUtils**.
 
 * [INTELLIJ nápad](https://www.jetbrains.com/idea/download/#section=windows) (edice Community je zdarma).
 
@@ -56,22 +55,22 @@ Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsi
 
     |Vlastnost |Popis |
     |---|---|
-    |Název projektu|Zadejte název. Tento názorný postup `myApp`vás provede použitím.|
+    |Název projektu|Zadejte název. Tento názorný postup vás provede použitím `myApp` .|
     |Umístění projektu|Zadejte požadované umístění pro uložení projektu.|
     |Projektový SDK|Pokud je toto pole prázdné, vyberte **Nový...** a přejděte k JDK.|
     |Verze Sparku|Průvodce vytvořením integruje správnou verzi sady Spark SDK a Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte možnost **Spark 2. x.** V tomto příkladu se používá **Spark 2.3.0 (Scala 2.11.8)**.|
 
    ![IntelliJ nový projekt vybrat verzi Sparku](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-1. Vyberte **Finish** (Dokončit). Může to trvat několik minut, než bude projekt k dispozici. Podívejte se do pravého dolního rohu a sledujte jeho průběh.
+1. Vyberte **Dokončit**. Může to trvat několik minut, než bude projekt k dispozici. Podívejte se do pravého dolního rohu a sledujte jeho průběh.
 
-1. Rozbalte svůj projekt a přejděte k ukázce **Src** > **Main** > **Scala** > **Sample**. Dvakrát klikněte na **SparkCore_WasbIOTest**.
+1. Rozbalte svůj projekt a přejděte k ukázce **Src**  >  **Main**  >  **Scala**  >  **Sample**. Dvakrát klikněte na **SparkCore_WasbIOTest**.
 
 ## <a name="perform-local-run"></a>Provést místní spuštění
 
 1. Ve skriptu **SparkCore_WasbIOTest** klikněte pravým tlačítkem myši na editor skriptů a potom vyberte možnost **Spustit SparkCore_WasbIOTest** a proveďte místní spuštění.
 
-1. Až se místní spuštění dokončí, můžete si prohlédnout výstupní soubor uložit do aktuálního**__Nastavení__** **dat** > Průzkumníka projektu.
+1. Až se místní spuštění dokončí, můžete si prohlédnout výstupní soubor uložit do aktuálního nastavení **dat**Průzkumníka projektu  >  **__default__**.
 
     ![Výsledek místního běhu projektu IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
@@ -80,10 +79,10 @@ Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsi
     ![IntelliJ spustit místní běh konfigurací ladění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
     - [Proměnné prostředí](#prerequisites): Pokud jste již nastavili proměnnou prostředí systému **HADOOP_HOME** na **C:\WinUtils**, může automaticky rozpoznat, že není nutné ručně přidávat.
-    - [Umístění WinUtils. exe](#prerequisites): Pokud jste nestavili proměnnou prostředí systému, můžete umístění najít kliknutím na jeho tlačítko.
+    - [WinUtils.exe umístění](#prerequisites): Pokud jste nestavili proměnnou prostředí systému, můžete umístění najít kliknutím na jeho tlačítko.
     - Stačí zvolit jednu ze dvou možností a, které nejsou potřeba v MacOS a Linux.
 
-1. Konfiguraci můžete také nastavit ručně před provedením místního běhu a místního ladění. Na předchozím snímku obrazovky vyberte znaménko plus (**+**). Pak vyberte možnost **Apache Spark na HDInsight** . Zadejte informace pro **název**, **název hlavní třídy** , který chcete uložit, a potom klikněte na tlačítko místní spuštění.
+1. Konfiguraci můžete také nastavit ručně před provedením místního běhu a místního ladění. Na předchozím snímku obrazovky vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark na HDInsight** . Zadejte informace pro **název**, **název hlavní třídy** , který chcete uložit, a potom klikněte na tlačítko místní spuštění.
 
 ## <a name="perform-local-debugging"></a>Provést místní ladění
 
@@ -93,9 +92,9 @@ Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsi
 
 ## <a name="perform-remote-run"></a>Provést vzdálené spuštění
 
-1. Přejít na **Spusťte** > **úpravu konfigurací...** Z této nabídky můžete vytvořit nebo upravit konfigurace pro vzdálené ladění.
+1. Přejít na **Spusťte**  >  **úpravu konfigurací...** Z této nabídky můžete vytvořit nebo upravit konfigurace pro vzdálené ladění.
 
-1. V dialogovém okně **Spustit/ladit konfigurace** vyberte znaménko plus (**+**). Pak vyberte možnost **Apache Spark na HDInsight** .
+1. V dialogovém okně **Spustit/ladit konfigurace** vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark na HDInsight** .
 
    ![Přidat novou konfiguraci IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
 

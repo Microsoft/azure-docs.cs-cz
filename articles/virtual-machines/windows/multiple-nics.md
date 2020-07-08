@@ -8,10 +8,9 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870274"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows s více síťovými kartami
@@ -75,7 +74,7 @@ Obvykle vytvoříte také [skupinu zabezpečení sítě](../../virtual-network/s
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 Teď začněte sestavovat konfiguraci virtuálních počítačů. Velikost každého virtuálního počítače má omezení celkového počtu síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace najdete v tématu [velikosti virtuálních počítačů s Windows](sizes.md).
 
-1. Přihlašovací údaje pro virtuální počítač nastavte `$cred` na proměnnou následujícím způsobem:
+1. Přihlašovací údaje pro virtuální počítač nastavte na `$cred` proměnnou následujícím způsobem:
 
     ```powershell
     $cred = Get-Credential
@@ -152,7 +151,7 @@ Pokud chcete přidat virtuální síťovou kartu k existujícímu virtuálnímu 
     ```
 
     ### <a name="primary-virtual-nics"></a>Primární virtuální síťové karty
-    Jedna z síťových adaptérů na virtuálním počítači s více SÍŤOVÝmi kartami musí být primární. Pokud už jedna z existujících virtuálních síťových karet na virtuálním počítači je nastavená jako primární, můžete tento krok přeskočit. V následujícím příkladu se předpokládá, že na virtuálním počítači teď existují dvě virtuální síťové karty a chcete přidat první síťovou kartu`[0]`() jako primární:
+    Jedna z síťových adaptérů na virtuálním počítači s více SÍŤOVÝmi kartami musí být primární. Pokud už jedna z existujících virtuálních síťových karet na virtuálním počítači je nastavená jako primární, můžete tento krok přeskočit. V následujícím příkladu se předpokládá, že na virtuálním počítači teď existují dvě virtuální síťové karty a chcete přidat první síťovou kartu ( `[0]` ) jako primární:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -249,7 +248,7 @@ Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhran�
  
     V tomto příkladu je **Microsoft Hyper-V síťový adaptér #4** (rozhraní 7) sekundární síťové rozhraní, ke kterému není přiřazená výchozí brána.
 
-2. Z příkazového řádku spusťte `ipconfig` příkaz, abyste viděli, která IP adresa je přiřazená sekundárnímu síťovému rozhraní. V tomto příkladu je 192.168.2.4 přiřazen rozhraní 7. Pro sekundární síťové rozhraní se nevrátí žádná adresa výchozí brány.
+2. Z příkazového řádku spusťte příkaz, `ipconfig` abyste viděli, která IP adresa je přiřazená sekundárnímu síťovému rozhraní. V tomto příkladu je 192.168.2.4 přiřazen rozhraní 7. Pro sekundární síťové rozhraní se nevrátí žádná adresa výchozí brány.
 
 3. Pokud chcete směrovat veškerý provoz určený pro adresy mimo podsíť sekundárního síťového rozhraní do brány pro podsíť, spusťte následující příkaz:
 
@@ -275,7 +274,7 @@ Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhran�
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Pokud chcete potvrdit, že se přidaná trasa nachází v tabulce směrování `route print` , zadejte příkaz, který vrátí výstup podobný následujícímu textu:
+5. Pokud chcete potvrdit, že se přidaná trasa nachází v tabulce směrování, zadejte `route print` příkaz, který vrátí výstup podobný následujícímu textu:
 
     ```
     ===========================================================================

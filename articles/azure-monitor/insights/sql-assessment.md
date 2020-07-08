@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871242"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí SQL pomocí řešení pro kontrolu stavu SQL Server v Azure Monitor
@@ -38,7 +37,7 @@ Po přidání řešení a dokončení posouzení se souhrnné informace pro obla
 * Pracovní prostor Log Analytics pro přidání řešení kontroly stavu SQL z webu Azure Marketplace v Azure Portal. Abyste mohli řešení nainstalovat, musíte být správce nebo přispěvatel v rámci předplatného Azure.
 
   > [!NOTE]
-  > Po přidání řešení se soubor AdvisorAssessment. exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená.
+  > Po přidání řešení se soubor AdvisorAssessment.exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená.
   >
   >
 
@@ -177,8 +176,8 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 3. Vyberte doporučení, která chcete ignorovat. V dalším postupu použijete hodnoty pro RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations. txt
-1. Vytvořte soubor s názvem IgnoreRecommendations. txt.
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
+1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
 2. Vložte nebo zadejte jednotlivé RecommendationIdy pro každé doporučení, které chcete, Azure Monitor ignorovat na samostatném řádku a pak soubor uložte a zavřete.
 3. Uložte soubor do následující složky na každém počítači, na kterém chcete ignorovat doporučení Azure Monitor.
    * V počítačích s Microsoft Monitoring Agent (připojené přímo nebo prostřednictvím Operations Manager) – *systémová_jednotka*: \Program Files\Microsoft monitoring Agent\Agent
@@ -192,7 +191,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny soubory IgnoreRecommendations. txt nebo z nich můžete RecommendationIDs odebrat.
+3. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny IgnoreRecommendations.txt soubory nebo z nich můžete odebrat RecommendationIDs.
 
 ## <a name="sql-health-check-solution-faq"></a>Nejčastější dotazy k řešení kontroly stavu SQL
 
@@ -226,7 +225,7 @@ Výsledky pak lze exportovat do aplikace Excel pro další kontrolu.
 
 *Jaký je název procesu, který provádí shromažďování dat?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Jak dlouho trvá shromažďování dat?*
 

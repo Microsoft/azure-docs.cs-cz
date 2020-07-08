@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793036"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizace privátního cloudu CloudSimple pro instalaci Oracle RAC
@@ -44,16 +43,16 @@ Virtuální počítače Oracle RAC mají více disků, které se používají pr
 
 V následujícím příkladu se používají disky definované v následující tabulce.
 
-| Disk                                      | Účel                                       | Sdílený disk |
+| Disk                                      | Účel                                       | sdílený disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
 | Operační systém                                        | Disk operačním systému                         | No          |
 | MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | No          |
 | DATABÁZE                                  | Umístění instalace pro software Oracle Database | No          |
 | ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Ano         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Ano         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Ano         |
-| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Ano         |
+| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Yes         |
+| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Yes         |
 
 ![Konfigurace disku virtuálního počítače Oracle](media/oracle-vmdk.png)
 
@@ -174,8 +173,8 @@ zásady síti vSAN definují selhání pro tolerovat a diskové obložení pro d
 3. V nabídce vlevo vyberte **zásady úložiště virtuálního počítače** a pak vyberte **vytvořit zásadu úložiště virtuálního počítače**.
 4. Zadejte smysluplný název zásady a klikněte na **Další**.
 5. V části **Struktura zásad** vyberte **Povolit pravidla pro úložiště síti vSAN** a klikněte na **Další**.
-6. V části **vSAN** > **dostupnost** síti vSAN vyberte **žádné** pro odolnost sítě po havárii. Pokud chcete chyby tolerovat, vyberte možnost **zrcadlení RAID** pro požadovaný FTT.
-    ![nastavení](media/oracle-rac-storage-wizard-vsan.png)síti vSAN
+6. V části **vSAN**  >  **dostupnost** síti vSAN vyberte **žádné** pro odolnost sítě po havárii. Pokud chcete chyby tolerovat, vyberte možnost **zrcadlení RAID** pro požadovaný FTT.
+    ![](media/oracle-rac-storage-wizard-vsan.png)Nastavení síti vSAN
 7. V části **Upřesnit** vyberte počet diskových pruhů na jeden objekt. V případě rezervovaného prostoru objektu vyberte **silný zřízený**. Vyberte **Zakázat kontrolní součet objektu**. Klikněte na tlačítko **Další**.
 8. Podle pokynů na obrazovce zobrazte seznam kompatibilních úložišť síti vSAN, zkontrolujte nastavení a dokončete instalaci.
 
@@ -247,11 +246,11 @@ Pravidla spřažení z virtuálního počítače na hostitele zajistí, že virt
 2. Přihlaste se ke klientovi vSphere vašeho privátního cloudu.
 3. V klientovi vSphere vyberte cluster, ve kterém jsou nasazené virtuální počítače Oracle, a klikněte na **Konfigurovat**.
 4. V části konfigurovat vyberte **skupiny VM/hostitelů**.
-5. Klikněte **+** na.
+5. Klikněte na **+** .
 6. Přidejte skupinu virtuálních počítačů. Jako typ vyberte **Skupina virtuálních počítačů** . Zadejte název skupiny. Vyberte virtuální počítače a potom kliknutím na **OK** vytvořte skupinu.
 6. Přidejte skupinu hostitelů. Jako typ vyberte **Skupina hostitelů** . Zadejte název skupiny. Vyberte hostitele, na kterých se budou virtuální počítače spouštět, a pak kliknutím na **OK** vytvořte skupinu.
 7. Pokud chcete vytvořit pravidlo, klikněte na **pravidla virtuálního počítače nebo hostitele**.
-8. Klikněte **+** na.
+8. Klikněte na **+** .
 9. Zadejte název pravidla a zaškrtněte **Povolit**.
 10. Pro typ pravidla vyberte **Virtual Machines pro hostování**.
 11. Vyberte skupinu virtuálních počítačů, která obsahuje virtuální počítače Oracle.
@@ -259,7 +258,7 @@ Pravidla spřažení z virtuálního počítače na hostitele zajistí, že virt
 13. Vyberte skupinu hostitelů, kterou jste vytvořili.
 14. Kliknutím na **OK** vytvořte pravidlo.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 * [Informace o zásadách síti vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [Atribut VMware multi-Writer pro Shared VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

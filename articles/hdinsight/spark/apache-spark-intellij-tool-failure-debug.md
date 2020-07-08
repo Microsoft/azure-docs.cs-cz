@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857430"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)
@@ -56,9 +55,9 @@ Vytvořte projekt Spark 2.3.2 pro pokračování v ladění selhání. v tomto d
 
    c. V rozevíracím seznamu **verze Sparku** vyberte **Spark 2.3.2 (Scala 2.11.8)**.
 
-   d. Vyberte **Finish** (Dokončit).
+   d. Vyberte **Dokončit**.
 
-3. Vyberte **Src** > **Main** > **Scala** a otevřete svůj kód v projektu. V tomto příkladu se používá skript **AgeMean_Div ()** .
+3. Vyberte **Src**  >  **Main**  >  **Scala** a otevřete svůj kód v projektu. V tomto příkladu se používá skript **AgeMean_Div ()** .
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Spuštění aplikace Spark Scala/Java v clusteru HDInsight
 
@@ -68,7 +67,7 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
    ![HDI IntelliJ Přidat konfiguraci](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. V dialogovém okně **Spustit/ladit konfigurace** vyberte znaménko plus (**+**). Pak vyberte možnost **Apache Spark na HDInsight** .
+2. V dialogovém okně **Spustit/ladit konfigurace** vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark na HDInsight** .
 
    ![Přidat novou konfiguraci IntelliJ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
@@ -90,7 +89,7 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
 Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout profil neúspěšné úlohy do místního počítače.
 
-1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z odpovídajícího umístění: **\\\hdp\spark2-Events. Spark – chyby\\\<ID aplikace>** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
+1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z odpovídajícího umístění: **\hdp\spark2-Events \\ . Spark – selhání \\ \<application ID> ** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
 
    ![Průzkumník služby Azure Storage Chyba stahování](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 

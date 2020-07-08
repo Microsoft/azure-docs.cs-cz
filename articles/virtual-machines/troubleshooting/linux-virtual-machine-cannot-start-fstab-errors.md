@@ -15,10 +15,9 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: f68221666f370f87af7539d9302aaa3ed472d5e8
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82883137"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Řešení potíží se spouštěním virtuálních počítačů s Linuxem z důvodu chyb fstab

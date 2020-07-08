@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5648dc1a915f2d38dc7811e6fe23ec76d0aa6f23
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857278"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption pro virtuální počítače s Windows 
@@ -52,7 +51,7 @@ Azure Disk Encryption není k dispozici pro [virtuální počítače 2. generace
 
 ## <a name="networking-requirements"></a>Požadavky na síť
 Aby bylo možné povolit Azure Disk Encryption, musí virtuální počítače splňovat následující požadavky konfigurace koncového bodu sítě:
-  - K získání tokenu pro připojení k trezoru klíčů musí být virtuální počítač s Windows schopný se připojit k Azure Active Directory koncovému bodu \[,\]Login.microsoftonline.com.
+  - K získání tokenu pro připojení k trezoru klíčů musí být virtuální počítač s Windows schopný se připojit k Azure Active Directory koncovému bodu, \[ Login.microsoftonline.com \] .
   - Aby bylo možné zapsat šifrovací klíče do trezoru klíčů, musí být virtuální počítač s Windows schopný se připojit ke koncovému bodu trezoru klíčů.
   - Virtuální počítač s Windows musí být schopný se připojit ke koncovému bodu Azure Storage, který hostuje úložiště rozšíření Azure a účet úložiště Azure hostující soubory VHD.
   -  Pokud vaše zásada zabezpečení omezuje přístup z virtuálních počítačů Azure na Internet, můžete přeložit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo tak, aby umožňovalo odchozí připojení k IP adresám. Další informace najdete v tématu [Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).    
@@ -62,7 +61,7 @@ Aby bylo možné povolit Azure Disk Encryption, musí virtuální počítače sp
 
 Azure Disk Encryption používá ochranu pomocí externího klíče BitLockeru pro virtuální počítače s Windows. Pro virtuální počítače připojené k doméně neinstalujte žádné zásady skupiny, které vynutily ochranu čipem TPM. Informace o zásadách skupiny pro "povolení nástroje BitLocker bez kompatibilního čipu TPM" najdete v tématu [přehled zásady skupiny BitLockeru](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-Zásady BitLockeru na virtuálních počítačích připojených k doméně s vlastními zásadami skupiny musí zahrnovat následující nastavení: [Konfigurace úložiště informací pro obnovení BitLockeru v případě, > povolení 256 bitového obnovovacího klíče](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption se nezdaří, pokud vlastní nastavení zásad skupiny pro BitLocker nejsou kompatibilní. V počítačích, které nemají správné nastavení zásad, použijte nové zásady, vynutí aktualizaci nové zásady (gpupdate. exe/Force) a pak se může vyžadovat restartování.
+Zásady BitLockeru na virtuálních počítačích připojených k doméně s vlastními zásadami skupiny musí zahrnovat následující nastavení: [Konfigurace úložiště informací pro obnovení BitLockeru v případě, > povolení 256 bitového obnovovacího klíče](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption se nezdaří, pokud vlastní nastavení zásad skupiny pro BitLocker nejsou kompatibilní. V počítačích, které nemají správné nastavení zásad, použijte novou zásadu, vynutí aktualizaci nové zásady (gpupdate.exe/Force) a pak se může vyžadovat restartování.
 
 Azure Disk Encryption dojde k chybě, pokud zásady skupiny na úrovni domény blokují algoritmus AES-CBC, který je používán nástrojem BitLocker.
 
