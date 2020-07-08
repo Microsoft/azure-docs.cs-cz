@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362420"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Protokoly auditu v Azure Database for MariaDB
@@ -46,7 +46,7 @@ Mezi další parametry, které můžete upravit, patří:
 
 ## <a name="access-audit-logs"></a>Přístup k protokolům auditu
 
-Protokoly auditu jsou integrované s protokoly diagnostiky Azure Monitor. Jakmile povolíte protokoly auditu na serveru MariaDB, můžete je vygenerovat Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly v Azure Portal, najdete v [článku na portálu protokolu auditu](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
+Protokoly auditu se integrují s diagnostickými protokoly služby Azure Monitor. Po povolení protokolů auditu na serveru MariaDB je můžete posílat do protokolů služby Azure Monitor, služby Event Hubs nebo služby Azure Storage. Další informace o tom, jak povolit diagnostické protokoly v Azure Portal, najdete v [článku na portálu protokolu auditu](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
 ## <a name="diagnostic-logs-schemas"></a>Schémata protokolů diagnostiky
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85358663"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace nástroje Azure AD Connect pomocí oprávnění delegovaného správce SQL
@@ -31,7 +31,7 @@ S nejnovějším vydáním Azure AD Connect může být zřízení databáze nyn
 ## <a name="before-you-begin"></a>Než začnete
 Pokud chcete používat tuto funkci, musíte si uvědomit, že existuje několik pohybujících se částí a každá z nich může zahrnovat jiného správce ve vaší organizaci.  Následující tabulka shrnuje jednotlivé role a jejich příslušné úkoly při nasazení Azure AD Connect s touto funkcí.
 
-|Role|Popis|
+|Role|Description|
 |-----|-----|
 |Správce služby AD domény nebo doménové struktury|Vytvoří účet služby na úrovni domény, který Azure AD Connect používá ke spuštění služby synchronizace.  Další informace o účtech služeb najdete v tématu [účty a oprávnění](reference-connect-accounts-permissions.md).
 |Správce SQL|Vytvoří databázi ADSync a udělí správci Azure AD Connect a účtu služby vytvořenému správcem domény nebo doménové struktury oprávnění Login + dbo.|

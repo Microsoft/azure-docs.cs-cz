@@ -7,10 +7,10 @@ ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85363753"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Co je automatické instrumentace nebo připojení s nekódováním Azure Monitor Application Insights?
@@ -26,11 +26,11 @@ Po přidání dalších a dalších integrací se matice schopností automatick�
 |Prostředí/poskytovatel prostředků | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Azure App Service ve Windows  | GA, OnBD *       | GA, výslovný souhlas      | Privátní verze Preview | Privátní verze Preview |
-|Azure App Service v systému Linux    | –             | Nepodporuje se   | Public Preview  | Public Preview  |
-|Azure App Service na AKS      | –             | V návrhu       | V návrhu       | V návrhu       |
+|Azure App Service v systému Linux    | Není k dispozici             | Nepodporuje se   | Public Preview  | Public Preview  |
+|Azure App Service na AKS      | Není k dispozici             | V návrhu       | V návrhu       | V návrhu       |
 |Azure Functions – Basic       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
 |Azure Functions – závislosti| Nepodporuje se   | Nepodporuje se   | Public Preview  | Nepodporuje se   |
-|Azure Kubernetes Service      | –             | V návrhu       | Prostřednictvím agenta   | V návrhu       |
+|Azure Kubernetes Service      | Není k dispozici             | V návrhu       | Prostřednictvím agenta   | V návrhu       |
 |Okna virtuálních počítačů Azure             | Public Preview  | Nepodporuje se   | Nepodporuje se   | Nepodporuje se   |
 |Okna místních virtuálních počítačů       | GA, výslovný souhlas      | Nepodporuje se   | Prostřednictvím agenta   | Nepodporuje se   |
 |Samostatný agent – libovolný env.   | Nepodporuje se   | Nepodporuje se   | Public Preview  | Nepodporuje se   |

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85359003"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
@@ -50,7 +50,7 @@ Automatický upgrade používá Azure AD Connect Health pro infrastrukturu upgra
 
 Pokud **Synchronization Service Manager** uživatelské rozhraní běží na serveru, upgrade se pozastaví, dokud se uživatelské rozhraní nezavře.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud se vaše instalace připojení neupgraduje podle očekávání, postupujte podle těchto kroků a zjistěte, co by mohlo být chybné.
 
 Za prvé byste neměli očekávat, že se automatický upgrade bude pokoušet o první vydání nové verze. Před pokusem o upgrade došlo k úmyslnému náhodnosti, takže pokud se instalace neupgraduje hned, neprovádějte upozornění.

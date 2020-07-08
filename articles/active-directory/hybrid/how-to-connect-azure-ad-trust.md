@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360091"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztahu důvěryhodnosti AD FS s Azure AD s využitím Azure AD Connectu
@@ -39,7 +39,7 @@ Azure AD Connect může spravovat federaci mezi místními službami Active Dire
 
 Azure AD Connect spravuje **jenom** nastavení související se vztahem důvěryhodnosti služby Azure AD. Azure AD Connect nemění žádná nastavení v jiných vztazích důvěryhodnosti předávající strany v AD FS. V následující tabulce jsou uvedena nastavení, která jsou ovládána nástrojem Azure AD Connect.
 
-| Nastavení | Popis |
+| Nastavení | Description |
 | :--- | :--- |
 | Podpisový certifikát tokenu | K resetování a opětovnému vytvoření vztahu důvěryhodnosti s Azure AD se dá použít Azure AD Connect. Azure AD Connect je jednorázová okamžitá Výměna certifikátů podepisování tokenů pro AD FS a aktualizuje nastavení federace domény Azure AD.|
 | Podpisový algoritmus tokenu | Microsoft doporučuje jako algoritmus podepisování tokenů používat SHA-256. Azure AD Connect může zjistit, jestli je podpisový algoritmus tokenu nastavený na méně bezpečnou hodnotu než SHA-256. Nastavení bude v další možné konfigurační operaci aktualizovat na SHA-256. Aby bylo možné použít nový podpisový certifikát tokenu, je nutné aktualizovat jiný vztah důvěryhodnosti předávající strany. |
@@ -77,7 +77,7 @@ Při všech operacích, ve kterých se změní jakékoli nastavení, Azure AD Co
 
 Azure AD Connect zajistí, že vztah důvěryhodnosti služby Azure AD je vždycky nakonfigurovaný se správnou sadou doporučených pravidel deklarací identity. Microsoft doporučuje používat Azure AD Connect pro správu vztahu důvěryhodnosti Azure AD. V této části jsou uvedená sada pravidel transformace pro vystavování a jejich popis.
 
-| Název pravidla | Popis |
+| Název pravidla | Description |
 | --- | --- |
 | Vydávat hlavní název uživatele | Toto pravidlo vyhledá hodnotu userPrincipalName jako z atributu nakonfigurovaného v nastavení synchronizace pro userPrincipalName.|
 | Dotaz na objectGUID a msdsconsistencyguid pro vlastní ImmutableId deklaraci identity | Toto pravidlo přidá do kanálu dočasnou hodnotu pro identifikátor objectGUID a hodnotu msdsconsistencyguid, pokud existuje. |
