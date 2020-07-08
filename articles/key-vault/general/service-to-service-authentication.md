@@ -3,21 +3,23 @@ title: Ověřování služba-služba pro Azure Key Vault pomocí .NET
 description: K ověření Azure Key Vault používání .NET použijte knihovnu Microsoft. Azure. Services. AppAuthentication.
 keywords: místní přihlašovací údaje pro ověřování trezoru klíčů Azure Key
 author: msmbaldwin
-manager: rkarlin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/28/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 22f727688de46ae95f128a1589c8ae5d6792f232
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855078"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
+
+> [!NOTE]
+> Metody ověřování popsané v tomto článku se už nepovažují za osvědčené postupy. Doporučujeme, abyste přijali aktualizované metody ověřování v tématu [ověření Azure Key Vault](authentication.md).
 
 K ověření pro Azure Key Vault potřebujete přihlašovací údaje Azure Active Directory (Azure AD), buď sdílený tajný klíč, nebo certifikát.
 

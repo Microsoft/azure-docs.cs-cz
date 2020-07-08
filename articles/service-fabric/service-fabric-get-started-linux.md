@@ -3,12 +3,12 @@ title: Nastavení vývojového prostředí v systému Linux
 description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojový cluster v Linuxu. Po dokončení této instalace a nastavení budete moci sestavovat aplikace.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 346230c0363bf58926cc46cb8bac2de61b81d68b
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: cfc97a540ed8c4c17ca4030c45b16021b926d7c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854787"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Pokud chcete nainstalovat sadu SDK a přidružený balíček modulu runtime pomo
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. Přidejte do své klíčenky APT nový klíč GPG (Gnu Privacy Guard neboli GnuPG).
+3. Přidejte nový klíč programu MS Open Tech GNU Privacy Guard (GnuPG nebo GPG) do svého APTového prstence.
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
@@ -80,26 +80,20 @@ Pokud chcete nainstalovat sadu SDK a přidružený balíček modulu runtime pomo
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-5. Přidejte klíč MS Open Tech GPG do svého APTového prstence.
-
-    ```bash
-    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | apt-key add -
-    ```
-
-6. Nastavte úložiště Dockeru.
+5. Nastavte úložiště Dockeru.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
+6. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. Obnovte seznamy balíčků na základě nově přidaných úložišť.
+7. Obnovte seznamy balíčků na základě nově přidaných úložišť.
 
     ```bash
     sudo apt-get update

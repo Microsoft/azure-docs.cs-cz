@@ -2,23 +2,21 @@
 title: Jak vytvořit žádost o podporu Azure | Microsoft Docs
 description: Zákazníci, kteří potřebují pomoc, můžou pomocí Azure Portal najít samoobslužná řešení a vytvářet a spravovat žádosti o podporu.
 services: Azure Supportability
-author: ganganarayanan
+author: mgblythe
 manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: how-to
-ms.date: 03/31/2020
-ms.author: kfollis
-ms.openlocfilehash: 52205ec4f5aabc2eb858229d26bc4966441820aa
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.date: 06/25/2020
+ms.author: mblythe
+ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851852"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Jak vytvořit žádost o podporu Azure
-
-## <a name="overview"></a>Přehled
+# <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
 Azure umožňuje vytvářet a spravovat žádosti o podporu, označované taky jako lístky podpory. Můžete vytvářet a spravovat požadavky v [Azure Portal](https://portal.azure.com), který je popsaný v tomto článku. Žádosti můžete také vytvářet a spravovat programově pomocí [lístku podpory Azure REST API](/rest/api/support).
 
@@ -28,14 +26,14 @@ Azure umožňuje vytvářet a spravovat žádosti o podporu, označované taky j
 >* Azure Portal pro komerční použití:[https://portal.azure.com](https://portal.azure.com)
 >* Azure Portal pro Německo je:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
 >* Azure Portal pro USA vládu:[https://portal.azure.us](https://portal.azure.us)
->
->
 
-Na základě zpětné vazby od zákazníků jsme aktualizovali prostředí žádosti o podporu, abychom se mohli soustředit na tři hlavní cíle:
+Prostředí žádosti o podporu se zaměřuje na tři hlavní cíle:
 
 * **Zjednodušené**: Díky podpoře a řešení potíží snadno najdete a zjednodušíte, jak odeslat žádost o podporu.
 * **Integrovaná**: žádost o podporu můžete snadno otevřít, když řešíte problém s prostředkem Azure, aniž byste museli přepnout kontext.
-* **Efektivní**: Shromážděte klíčové informace, které Agent podpory potřebuje k efektivnímu vyřešení vašeho problému.
+* **Efektivní**: Shromážděte klíčové informace, které pracovník podpory potřebuje k efektivnímu vyřešení vašeho problému.
+
+Azure poskytuje neomezenou podporu pro správu předplatného, včetně fakturace, úpravy kvót a přenosů účtů. Pro technickou podporu potřebujete plán podpory. Další informace najdete v tématu [Porovnání plánů podpory](https://azure.microsoft.com/support/plans).
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -43,7 +41,7 @@ Můžete získat pomoc a **podporu** v Azure Portal. Je k dispozici v nabídce A
 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Pokud chcete vytvořit žádost o podporu, musíte být [vlastníkem](../../role-based-access-control/built-in-roles.md#owner), [přispěvatelem](../../role-based-access-control/built-in-roles.md#contributor) nebo přiřazenou roli [Přispěvatel žádosti o podporu](../../role-based-access-control/built-in-roles.md#support-request-contributor) na úrovni předplatného. Pokud chcete vytvořit žádost o podporu bez předplatného, například scénář Azure Active Directory (AAD), musíte být [správce](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Pokud chcete vytvořit žádost o podporu, musíte být [vlastníkem](../../role-based-access-control/built-in-roles.md#owner), [přispěvatelem](../../role-based-access-control/built-in-roles.md#contributor) nebo přiřazenou roli [Přispěvatel žádosti o podporu](../../role-based-access-control/built-in-roles.md#support-request-contributor) na úrovni předplatného. Pokud chcete vytvořit žádost o podporu bez předplatného, například Azure Active Directory scénář, musíte být [správce](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Přejít na pomoc a podpora z globálního záhlaví
 
@@ -53,7 +51,7 @@ Spuštění žádosti o podporu odkudkoli v Azure Portal:
 
    ![Nápověda a podpora](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. Vyberte **Nová žádost o podporu**. Postupujte podle pokynů a poskytněte nám informace o vašem problému. Navrhneme některá možná řešení, shromáždíme podrobnosti o problému a pomůžeme vám odeslat a sledovat žádost o podporu.
+1. Vyberte **Nová žádost o podporu**. Podle pokynů zadejte informace o vašem problému. Navrhneme některá možná řešení, shromáždíme podrobnosti o problému a pomůžeme vám odeslat a sledovat žádost o podporu.
 
    ![Nová žádost o podporu](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -65,7 +63,7 @@ K zahájení žádosti o podporu v kontextu prostředku teď pracujete s:
 
    ![V kontextu](./media/how-to-create-azure-support-request/incontext2lower.png)
 
-2. Postupujte podle pokynů a poskytněte nám informace o problému, který máte. Když zahájíte proces žádosti o podporu z prostředku, některé možnosti jsou pro vás předem vybrané.
+1. Postupujte podle pokynů a poskytněte nám informace o problému, který máte. Když zahájíte proces žádosti o podporu z prostředku, některé možnosti jsou pro vás předem vybrané.
 
 ## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
 
@@ -75,14 +73,9 @@ Provede vás několik kroků, které vám pomůžou shromáždit informace o va�
 
 V prvním kroku procesu žádosti o podporu se shromažďují základní informace o vašem problému a plánu podpory.
 
-Na kartě **základy** **nové žádosti o podporu**Využijte selektory a začněte nám informovat o problému. Nejdříve zjistíte některé obecné kategorie pro typ problému a zvolíte související předplatné. Vyberte službu, například **virtuální počítač s Windows**. Vyberte prostředek, jako je název vašeho virtuálního počítače. Popište problém vlastním slovem a **Vyberte typ problému** , abyste získali konkrétnější informace.
+Na kartě **základy** **nové žádosti o podporu**Využijte selektory a začněte nám informovat o problému. Nejdříve zjistíte některé obecné kategorie pro typ problému a zvolíte související předplatné. Vyberte službu, například **virtuální počítač s Windows**. Vyberte prostředek, jako je název vašeho virtuálního počítače. Popište problém vlastním slovem a potom vyberte **typ problému** a podtyp **problému** , abyste získali konkrétnější informace.
 
 ![Okno Základy](./media/how-to-create-azure-support-request/basics2lower.png)
-
-> [!NOTE]
-> Azure poskytuje neomezenou podporu pro správu předplatného, včetně fakturace, úpravy kvót a přenosů účtů. Pro technickou podporu potřebujete plán podpory. [Přečtěte si další informace o plánech podpory](https://azure.microsoft.com/support/plans).
->
->
 
 ### <a name="solutions"></a>Řešení
 
@@ -90,42 +83,35 @@ Po shromáždění základních informací vám dál ukážeme řešení, která
 
 ### <a name="details"></a>Podrobnosti
 
-Dále shromáždíme další podrobnosti o problému. Poskytování podrobných a podrobných informací v tomto kroku nám pomůže směrovat vaši žádost o podporu na správného agenta.
+Dále shromáždíme další podrobnosti o problému. Poskytování podrobných a podrobných informací v tomto kroku nám pomůže směrovat vaši žádost o podporu na správnou inženýra.
 
-Pokud je to možné, řekněte nám, kdy problém začal, a kroky pro reprodukování. Můžete nahrát soubor, například soubor protokolu nebo výstup z diagnostiky.
+1. Pokud je to možné, řekněte nám, kdy problém začal, a kroky pro reprodukování. Můžete nahrát soubor, například soubor protokolu nebo výstup z diagnostiky. Další informace o nahrání souborů najdete v tématu [pokyny pro nahrávání souborů](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-Až máme všechny informace o problému, vyberte, jak se má podpora získat. V části **informace**o **metodě podpory** vyberte závažnost dopadu. Poskytněte preferovanou metodu kontaktu, vhodnou dobu, kterou vás budou kontaktovat a váš jazyk podpory.
+1. Až máme všechny informace o problému, vyberte, jak se má podpora získat. V části **informace**o **metodě podpory** vyberte závažnost dopadu. Maximální úroveň závažnosti závisí na [plánu podpory](https://azure.microsoft.com/support/plans).
 
-Potom dokončete část **kontaktní informace** , abychom věděli, jak vás kontaktovat.
+    Ve výchozím nastavení je vybraná možnost **Sdílet diagnostické informace** . Díky tomu může podpora Azure shromažďovat [diagnostické informace](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) z vašich prostředků Azure. V některých případech je k dispozici druhá otázka, která není ve výchozím nastavení vybrána, například vyžádání přístupu k paměti virtuálního počítače.
+
+1. Poskytněte preferovanou metodu kontaktu, vhodnou dobu, kterou vás budou kontaktovat a váš jazyk podpory.
+
+1. Potom dokončete část **kontaktní informace** , abychom věděli, jak vás kontaktovat.
 
 ### <a name="review--create"></a>Zkontrolovat a vytvořit
 
 Na každé kartě dokončete všechny požadované informace a pak vyberte **zkontrolovat + vytvořit**. Projděte si podrobnosti, které odešlete podpoře. Vraťte se na libovolnou kartu a v případě potřeby proveďte změnu. Až budete spokojeni se žádostí o podporu, vyberte **vytvořit**.
 
-Agent podpory vás bude kontaktovat pomocí vámi zadané metody. Informace o počáteční době odezvy najdete v tématu [Rozsah podpory a rychlost odezvy](https://azure.microsoft.com/support/plans/response/).
+Pracovník podpory vás bude kontaktovat pomocí vámi zadané metody. Informace o počátečních časech odezvy najdete v tématu [Podpora rozsahu a odezvy](https://azure.microsoft.com/support/plans/response/).
 
-## <a name="all-support-requests"></a>Všechny žádosti o podporu
 
-Podrobnosti a stav žádostí o podporu můžete zobrazit tak, že přejdete na **help + podpora**  >   **všech žádostí o podporu**.
+## <a name="next-steps"></a>Další kroky
 
-![Všechny žádosti o podporu](./media/how-to-create-azure-support-request/allrequestslower.png)
-
-Na této stránce můžete filtrovat žádosti o podporu podle **předplatného**, data **Vytvoření** (UTC) a **stavu**. Na této stránce můžete také třídit a hledat žádosti o podporu.
-
-Vyberte žádost o podporu pro zobrazení podrobností, včetně závažnosti a očekávaného času, který bude trvat, než bude agent podpory reagovat.
-
-Pokud chcete změnit závažnost žádosti, vyberte možnost **dopad na firmu**. Vyberte ze seznamu závažnosti, které se mají přiřadit.
-
-> [!NOTE]
-> Maximální úroveň závažnosti závisí na plánu podpory. [Přečtěte si další informace o plánech podpory](https://azure.microsoft.com/support/plans).
->
->
 Další informace o možnostech samoobslužné pomoci v Azure najdete v tomto videu:
 
 > [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
-## <a name="next-steps"></a>Další kroky
+Další informace najdete na následujících odkazech:
 
+* [Jak spravovat žádost o podporu Azure](how-to-manage-azure-support-request.md)
+* [Rozhraní REST API lístku podpory Azure](/rest/api/support)
 * [Pošlete nám svůj názor a návrhy.](https://feedback.azure.com/forums/266794-support-feedback)
 * Zaujmout nás na [Twitteru](https://twitter.com/azuresupport)
 * Získejte pomoc od svých partnerů na stránce s [otázkou Microsoft Q&](https://docs.microsoft.com/answers/products/azure) .

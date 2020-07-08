@@ -3,12 +3,12 @@ title: Instalace agenta Microsoft Azure Recovery Services (MARS)
 description: Naučte se, jak nainstalovat agenta Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 767e04e45f88294ac4ffa58ec263a9a6d05eafb6
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855236"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -71,6 +71,7 @@ Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení 
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
   * `*.windows.net`
+  * `www.msftconnecttest.com`
 * IP adresy
   * 20.190.128.0/18
   * 40.126.0.0/18
@@ -82,6 +83,7 @@ Data můžete zálohovat přes Azure ExpressRoute pomocí veřejného partnersk�
 Pokud chcete použít veřejný partnerský vztah, nejdřív zajistěte přístup k následujícím doménám a adresám:
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
@@ -133,7 +135,7 @@ Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že p
 
 ## <a name="install-and-register-the-agent"></a>Instalace a registrace agenta
 
-1. Spusťte soubor *soubor marsagentinstaller. exe* na počítačích, které chcete zálohovat.
+1. Spusťte *MARSagentinstaller.exe* soubor na počítačích, které chcete zálohovat.
 1. V Průvodci instalací agenta MARS vyberte **nastavení instalace**. Vyberte, kam chcete nainstalovat agenta, a vyberte umístění mezipaměti. Pak vyberte **Další**.
    * Azure Backup používá mezipaměť k ukládání snímků dat před jejich odesláním do Azure.
    * Umístění mezipaměti by mělo mít volné místo, které se rovná alespoň 5 procent velikosti dat, která budete zálohovat.
