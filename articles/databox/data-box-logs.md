@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676412"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
@@ -26,7 +25,7 @@ Následující tabulka obsahuje souhrn kroků Data Box nebo Data Box Heavy objed
 | Vytvoření objednávky               | [Nastavení řízení přístupu v pořadí přes RBAC](#set-up-access-control-on-the-order)                                                    |
 | Zpracování objednávky            | [Sledovat pořadí](#track-the-order) přes <ul><li> portál Azure </li><li> Web lodního dopravce </li><li>E-mailová oznámení</ul> |
 | Nastavení zařízení              | Přístup k přihlašovacím údajům zařízení přihlášení k [protokolům aktivit](#query-activity-logs-during-setup)                                              |
-| Kopírování dat do zařízení        | [Zobrazení souboru *Error. XML* ](#view-error-log-during-data-copy) pro kopírování dat                                                             |
+| Kopírování dat do zařízení        | [Zobrazit *error.xml* soubory](#view-error-log-during-data-copy) pro kopírování dat                                                             |
 | Příprava k odeslání            | [Zkontrolujte soubory kusovníku](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu na zařízení.                                      |
 | Nahrávání dat do Azure       | [Kontrola chyb v protokolech kopírování](#review-copy-log-during-upload-to-azure) při nahrávání dat v datovém centru Azure                         |
 | Data mazání ze zařízení   | [Zobrazit řetěz protokolů o úschově](#get-chain-of-custody-logs-after-data-erasure) včetně protokolů auditu a historie objednávek                |
@@ -74,14 +73,14 @@ Můžete sledovat svou objednávku prostřednictvím Azure Portal a prostřednic
 
 Při kopírování dat do Data Box nebo Data Box Heavy se vygeneruje chybový soubor, pokud dojde k problémům s kopírovanými daty.
 
-### <a name="errorxml-file"></a>Error. XML – soubor
+### <a name="errorxml-file"></a>Soubor Error.xml
 
 Ujistěte se, že úlohy kopírování byly dokončeny bez chyb. Pokud během kopírování dojde k chybám, Stáhněte si protokoly ze stránky **připojit a kopírovat** .
 
 - Pokud jste zkopírovali soubor, který není 512 bajtů zarovnaný do složky spravovaného disku na vašem Data Box, soubor se do pracovního účtu úložiště nenahrál jako objekt blob stránky. V protokolech se zobrazí chyba. Odeberte soubor a zkopírujte soubor, který je 512 bajtů zarovnaných.
 - Pokud jste zkopírovali VHDX nebo dynamický virtuální pevný disk nebo Rozdílový virtuální pevný disk (tyto soubory nejsou podporované), zobrazí se v protokolech chyba.
 
-Tady je ukázka souboru *Error. XML* pro různé chyby při kopírování na spravované disky.
+Tady je ukázka *error.xml* různých chyb při kopírování na spravované disky.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +89,7 @@ Tady je ukázka souboru *Error. XML* pro různé chyby při kopírování na spr
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Tady je ukázka *Error. XML* pro různé chyby při kopírování do objektů blob stránky.
+Tady je ukázka *error.xml* pro různé chyby při kopírování do objektů blob stránky.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +100,7 @@ Tady je ukázka *Error. XML* pro různé chyby při kopírování do objektů bl
 ```
 
 
-Tady je ukázka *Error. XML* pro různé chyby při kopírování do objektů blob bloku.
+Tady je ukázka *error.xml* pro různé chyby při kopírování do objektů blob bloku.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +128,7 @@ Tady je ukázka *Error. XML* pro různé chyby při kopírování do objektů bl
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Tady je ukázka *Error. XML* pro různé chyby při kopírování do souborů Azure.
+Tady je ukázka *error.xml* různých chyb při kopírování do souborů Azure.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -203,7 +202,7 @@ Pro každé zpracovávané pořadí vytvoří služba Data Box v přidruženém 
 
 Při nahrávání do Azure se provádí výpočet s cyklicky redundantní kontrola (CRC). CRCs z kopie dat a po nahrání dat se porovnávají. Neshoda CRC znamená, že se nepovedlo nahrát odpovídající soubory.
 
-Ve výchozím nastavení se protokoly zapisují do kontejneru s `copylog`názvem. Protokoly se ukládají s následujícími zásadami vytváření názvů:
+Ve výchozím nastavení se protokoly zapisují do kontejneru s názvem `copylog` . Protokoly se ukládají s následujícími zásadami vytváření názvů:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -270,7 +269,7 @@ Nové jedinečné názvy kontejnerů jsou ve formátu `DataBox-GUID` a data pro 
 
 Tady je příklad protokolu kopírování, ve kterém se při nahrávání dat do Azure přejmenovaly objekty blob nebo soubory, které nesplňovaly zásady vytváření názvů Azure. Nové názvy objektů BLOB nebo souborů jsou převedeny na SHA256 výtah relativní cesty ke kontejneru a jsou nahrány do cesty na základě cílového typu. Cílem mohou být objekty blob bloku, objekty blob stránky nebo soubory Azure.
 
-`copylog` Určuje Starý a nový objekt BLOB nebo název souboru a cestu v Azure.
+`copylog`Určuje Starý a nový objekt BLOB nebo název souboru a cestu v Azure.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">

@@ -4,10 +4,9 @@ description: Popisuje vlastnosti exportované z průběžného exportu ve formá
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536841"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Exportovat datový model
@@ -112,7 +111,7 @@ Všechny typy telemetrie jsou doprovázeny kontextovým oddílem. Všechna tato 
 | Context. data. čas události |řetězec |UTC |
 | Context. data. syntetická |Boolean |Požadavek se zdá, že robot nebo webový test pochází. |
 | Context. data. samplingRate |číslo |Procento telemetrie vygenerované sadou SDK, která je odeslána na portál. Rozsah 0,0 – 100,0. |
-| kontext. zařízení |objekt |Klientské zařízení |
+| kontext. zařízení |odkazy objektů |Klientské zařízení |
 | Context. Device. browser |řetězec |IE, Chrome,... |
 | Context. Device. browserVersion |řetězec |Chrome 48,0,... |
 | Context. Device. deviceModel |řetězec | |
@@ -127,13 +126,13 @@ Všechny typy telemetrie jsou doprovázeny kontextovým oddílem. Všechna tato 
 | Context. Device. roleName |řetězec | |
 | Context. Device. screenResolution |řetězec | |
 | Context. Device. Type |řetězec |POČÍTAČ, prohlížeč,... |
-| Context. Location |objekt |Odvozeno `clientip`z. |
-| Context. Location. City |řetězec |Odvozeno `clientip`z, je-li známo |
+| Context. Location |odkazy objektů |Odvozeno z `clientip` . |
+| Context. Location. City |řetězec |Odvozeno z `clientip` , je-li známo |
 | Context. Location. IP adresa klienta |řetězec |Poslední osmiúhelníkem je Anonyme na hodnotu 0. |
 | Context. Location. kontinent |řetězec | |
 | Context. Location. Country |řetězec | |
 | Context. Location. provincie |řetězec |Stát nebo provincie |
-| context.operation.id |řetězec |Položky, které jsou stejné `operation id` , se zobrazí jako související položky na portálu. Obvykle je `request id`. |
+| context.operation.id |řetězec |Položky, které jsou stejné, `operation id` se zobrazí jako související položky na portálu. Obvykle je `request id` . |
 | context.operation.name |řetězec |Adresa URL nebo název žádosti |
 | Context. Operation. parentId |řetězec |Povoluje vnořené související položky. |
 | context.session.id |řetězec |`Id`skupiny operací ze stejného zdroje. Doba 30 minut bez operace signalizuje ukončení relace. |
@@ -146,7 +145,7 @@ Všechny typy telemetrie jsou doprovázeny kontextovým oddílem. Všechna tato 
 | Context. User. authId |řetězec | |
 | Context. User.-Authenticated |Boolean | |
 | Context. User. storeRegion |řetězec | |
-| Internal. data. documentVersion |řetězec | |
+| internal.data.documentVersion |řetězec | |
 | internal.data.id |řetězec | `Unique id`který je přiřazen při ingestování položky Application Insights |
 
 ## <a name="events"></a>Události
@@ -154,7 +153,7 @@ Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custo
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| počet událostí [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
+| počet událostí [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
 | název události [0] |řetězec |Název události  Maximální délka 250. |
 | Adresa URL události [0] |řetězec | |
 | událost [0] urlData. Base |řetězec | |
@@ -166,7 +165,7 @@ Oznamuje [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
 | basicException [0] sestavení |řetězec | |
-| basicException [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
+| basicException [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
 | basicException [0] výjimka |řetězec | |
 | basicException [0] Typvýjimky |řetězec | |
 | basicException [0] failedUserCodeMethod |řetězec | |
@@ -207,7 +206,7 @@ Odesílá TrackDependency. Slouží k hlášení výkonu a využití [volání z
 | remoteDependency [0] asynchronní |Boolean | |
 | remoteDependency [0] – základ |řetězec | |
 | remoteDependency [0] příkaz |řetězec |Například "domů/index" |
-| remoteDependency [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
+| remoteDependency [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
 | remoteDependency [0] dependencyTypeName |řetězec |HTTP, SQL,... |
 | remoteDependency [0] durationMetric. Value |číslo |Čas od volání k dokončení odpovědi podle závislosti |
 | remoteDependency [0]`id` |řetězec | |
@@ -225,12 +224,12 @@ Odesílá [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#tr
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| požadavek [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Příklad: 4 =&gt; 25%. |
+| požadavek [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Příklad: 4 = &gt; 25%. |
 | požadavek [0] durationMetric. Value |číslo |Čas od žádosti přicházející do odpovědi 1E7 = = 1 |
 | žádost [0]`id` |řetězec |`Operation id` |
 | žádost [0] název |řetězec |Základ pro GET/POST + URL  Maximální délka 250 |
 | žádost [0] responseCode |celé číslo |Odpověď HTTP se odeslala klientovi. |
-| žádost [0] byla úspěšná. |Boolean |Výchozí nastavení = = ( &lt; ResponseCode 400) |
+| žádost [0] byla úspěšná. |Boolean |Výchozí nastavení = = (responseCode &lt; 400) |
 | žádost [0] Adresa URL |řetězec |Nezahrnuje hostitel |
 | požadavek [0] urlData. Base |řetězec | |
 | požadavek [0] urlData. hashTag |řetězec | |
@@ -260,7 +259,7 @@ Odesílá se pomocí trackPageView () nebo [stopTrackPage](../../azure-monitor/a
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| Zobrazit [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
+| Zobrazit [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
 | Zobrazit [0] durationMetric. Value |celé číslo |Hodnota volitelně nastavena v trackPageView () nebo pomocí startTrackPage ()-stopTrackPage (). Nejedná se o stejné hodnoty jako clientPerformance hodnoty. |
 | Zobrazit [0] název |řetězec |Nadpis stránky  Maximální délka 250 |
 | Zobrazit adresu URL [0] |řetězec | |
@@ -275,7 +274,7 @@ Oznamuje [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-ava
 | --- | --- | --- |
 | dostupnost [0] availabilityMetric.name |řetězec |dostupnosti |
 | dostupnost [0] availabilityMetric. Value |číslo |1,0 nebo 0,0 |
-| počet dostupnosti [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
+| počet dostupnosti [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
 | dostupnost [0] dataSizeMetric.name |řetězec | |
 | dostupnost [0] dataSizeMetric. Value |celé číslo | |
 | dostupnost [0] durationMetric.name |řetězec | |
@@ -331,7 +330,7 @@ Hodnoty metriky v sestavách metriky i jinde jsou hlášeny se standardní struk
         "sampledValue": 468.71603053650279
       }
 
-V současné době se to může změnit v budoucnu – ve všech hodnotách, `count==1` které jsou hlášeny z modulů Standard SDK a `name` jsou `value` užitečné pouze pole a. Jediný případ, kdy by byl jiný, by byl při psaní vlastních volání TrackMetric, ve kterých jste nastavili další parametry.
+V současné době se to může změnit v budoucnu – ve všech hodnotách, které jsou hlášeny z modulů Standard SDK `count==1` a `name` `value` jsou užitečné pouze pole a. Jediný případ, kdy by byl jiný, by byl při psaní vlastních volání TrackMetric, ve kterých jste nastavili další parametry.
 
 Účelem ostatních polí je umožnění agregace metrik v sadě SDK za účelem snížení provozu na portál. Před odesláním každé sestavy metriky můžete například vypočítat průměrně několik následných čtení. Pak byste měli vypočítat minimální, maximální, směrodatnou odchylku a agregovanou hodnotu (součet nebo průměr) a nastavit počet na počet čtení reprezentovaných sestavou.
 

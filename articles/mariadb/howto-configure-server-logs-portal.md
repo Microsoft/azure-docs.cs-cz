@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81270587"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům z Azure Portal
@@ -23,7 +22,7 @@ Postup v tomto článku vyžaduje, abyste měli [Azure Database for MariaDB Serv
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolu pomalých dotazů. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vyberte server Azure Database for MariaDB.
 
@@ -66,7 +65,7 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů po
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
-1. V části **monitorování** na bočním panelu vyberte >  **nastavení diagnostiky****Přidat nastavení diagnostiky**.
+1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
 
    ![Snímek obrazovky s možnostmi nastavení diagnostiky](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
 

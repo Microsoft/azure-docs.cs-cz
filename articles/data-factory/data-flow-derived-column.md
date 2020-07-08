@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606507"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku mapování dat
@@ -42,7 +41,7 @@ Další informace o zpracování složitých typů v toku dat naleznete v témat
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -59,7 +58,7 @@ Další informace o zpracování složitých typů v toku dat naleznete v témat
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je odvozený sloupec s `CleanData` názvem, který přijímá příchozí `MoviesYear` datový proud a vytvoří dva odvozené sloupce. První odvozený sloupec nahrazuje sloupec `Rating` hodnotou hodnocení jako typ Integer. Druhý odvozený sloupec je vzor, který se shoduje se všemi sloupci, jejichž název začíná řetězcem "filmy". Pro každý odpovídající sloupec vytvoří sloupec `movie` , který je roven hodnotě odpovídajícího sloupce s předponou ' movie_ '. 
+Níže uvedený příklad je odvozený sloupec s názvem `CleanData` , který přijímá příchozí datový proud `MoviesYear` a vytvoří dva odvozené sloupce. První odvozený sloupec nahrazuje sloupec `Rating` hodnotou hodnocení jako typ Integer. Druhý odvozený sloupec je vzor, který se shoduje se všemi sloupci, jejichž název začíná řetězcem "filmy". Pro každý odpovídající sloupec vytvoří sloupec `movie` , který je roven hodnotě odpovídajícího sloupce s předponou ' movie_ '. 
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

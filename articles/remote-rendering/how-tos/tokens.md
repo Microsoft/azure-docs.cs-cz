@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687070"
 ---
 # <a name="get-service-access-tokens"></a>Získání přístupových tokenů služeb
@@ -24,7 +23,7 @@ Tento článek popisuje, jak tento přístupový token vytvořit.
 
 ## <a name="token-service-rest-api"></a>REST API služby tokenu
 
-Pro vytvoření přístupových tokenů poskytuje *služba tokenů zabezpečení* jednu REST API. Adresa URL služby ARR STS je https:\//STS.mixedreality.Azure.com.
+Pro vytvoření přístupových tokenů poskytuje *služba tokenů zabezpečení* jednu REST API. Adresa URL služby ARR STS je https: \/ /STS.mixedreality.Azure.com.
 
 ### <a name="get-token-request"></a>Žádost o získání tokenu
 
@@ -32,7 +31,7 @@ Pro vytvoření přístupových tokenů poskytuje *služba tokenů zabezpečení
 |-----------|:-----------|
 | /Accounts/**accountId**/token | GET |
 
-| Hlavička | Hodnota |
+| Záhlaví | Hodnota |
 |--------|:------|
 | Autorizace | "Bearer **accountId**:**accountKey**" |
 
@@ -40,11 +39,11 @@ Položku *accountId* a *accountKey* nahraďte odpovídajícími daty.
 
 ### <a name="get-token-response"></a>Odpověď Get token
 
-| Kód stavu | Datová část JSON | Komentáře |
+| Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
 | 200 | AccessToken: řetězec | Úspěch |
 
-| Hlavička | Účel |
+| Záhlaví | Účel |
 |--------|:------|
 | MS-CV | Tato hodnota se dá použít k trasování volání v rámci služby. |
 

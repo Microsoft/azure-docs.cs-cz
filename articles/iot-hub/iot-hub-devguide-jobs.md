@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730109"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
@@ -30,7 +29,7 @@ Zvažte použití úloh, pokud potřebujete naplánovat a sledovat průběh libo
 
 ## <a name="job-lifecycle"></a>Životní cyklus úlohy
 
-Úlohy jsou iniciovány back-end řešení a udržovány IoT Hub. Úlohu můžete iniciovat pomocí identifikátoru URI s přístupem ke službě`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`() a dotazovat se na průběh provádění úlohy prostřednictvím identifikátoru URI s přístupem`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`k službě (). Chcete-li aktualizovat stav spuštěných úloh po zahájení úlohy, spusťte dotaz na úlohu.
+Úlohy jsou iniciovány back-end řešení a udržovány IoT Hub. Úlohu můžete iniciovat pomocí identifikátoru URI s přístupem ke službě ( `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` ) a dotazovat se na průběh provádění úlohy prostřednictvím identifikátoru URI s přístupem k službě ( `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` ). Chcete-li aktualizovat stav spuštěných úloh po zahájení úlohy, spusťte dotaz na úlohu.
 
 > [!NOTE]
 > Když zahájíte úlohu, názvy vlastností a hodnoty můžou obsahovat jenom tisknutelné alfanumerické znaky US-ASCII, s výjimkou jakékoli v následující sadě:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
@@ -122,7 +121,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> Vlastnost *updateTwin* vyžaduje platnou shodu značky ETag; například `etag="*"`.
+> Vlastnost *updateTwin* vyžaduje platnou shodu značky ETag; například `etag="*"` .
 
 Následující fragment kódu ukazuje požadavek a odpověď na úlohu naplánovanou na aktualizaci vlastností zařízení, které jsou pro test-Device na rozbočovači contoso-1:
 

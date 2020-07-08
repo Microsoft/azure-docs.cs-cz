@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537606"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Nasazení agenta zabezpečení Azure Security Center pro IoT založeného na C# pro Windows
@@ -104,7 +103,7 @@ Pokud se agent nespustí, zapněte protokolování (protokolování je ve výcho
 
 Zapnutí protokolování:
 
-1. Otevřete konfigurační soubor (General. config) pro úpravy pomocí standardního editoru souborů.
+1. Otevřete konfigurační soubor (General.config) pro úpravy pomocí standardního editoru souborů.
 
 1. Upravte následující hodnoty:
 
@@ -126,7 +125,7 @@ Zapnutí protokolování:
      Restart-Service "ASC IoT Agent"
      ```
 
-   – nebo –
+   nebo
 
     **PŘEPSAT**
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261767"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Nastavení šifrování a ověřování TLS pro Apache Kafka ve službě Azure HDInsight
@@ -20,7 +19,7 @@ ms.locfileid: "81261767"
 V tomto článku se dozvíte, jak nastavit šifrování TLS (Transport Layer Security), dříve označované jako šifrování SSL (Secure Sockets Layer) (SSL) mezi klienty Apache Kafka a Apache Kafkami zprostředkovateli. Také se dozvíte, jak nastavit ověřování klientů (někdy označovaného jako obousměrný protokol TLS).
 
 > [!Important]
-> Existují dva klienty, které lze použít pro aplikace Kafka: klienta Java a klienta konzoly nástroje. Protokol TLS může používat `ProducerConsumer.java` jenom klient Java pro vytváření i využívání. Klient `console-producer.sh` výrobce konzoly nepracuje s protokolem TLS.
+> Existují dva klienty, které lze použít pro aplikace Kafka: klienta Java a klienta konzoly nástroje. Protokol `ProducerConsumer.java` TLS může používat jenom klient Java pro vytváření i využívání. Klient výrobce konzoly `console-producer.sh` nepracuje s protokolem TLS.
 
 > [!Note]
 > Výrobce konzoly HDInsight Kafka s verzí 1,1 nepodporuje protokol SSL.
@@ -133,7 +132,7 @@ Chcete-li dokončit úpravu konfigurace, proveďte následující kroky:
 
     ![Úprava vlastností konfigurace SSL Kafka v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. V části **Custom Kafka-Broker** nastavte vlastnost **SSL. Client. auth** na `required`. Tento krok se vyžaduje jenom v případě, že nastavujete ověřování a šifrování.
+1. V části **Custom Kafka-Broker** nastavte vlastnost **SSL. Client. auth** na `required` . Tento krok se vyžaduje jenom v případě, že nastavujete ověřování a šifrování.
 
     ![Úprava vlastností konfigurace SSL Kafka v Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
@@ -170,7 +169,7 @@ Pokud nepotřebujete ověřování, souhrn kroků pro nastavení šifrování TL
 
 1. Přihlaste se k certifikační autoritě (aktivnímu hlavnímu uzlu).
 1. Zkopírujte certifikát CA do klientského počítače z počítače certifikační autority (wn0).
-1. Přihlaste se ke klientskému počítači (HN1) a přejděte `~/ssl` do složky.
+1. Přihlaste se ke klientskému počítači (HN1) a přejděte do `~/ssl` složky.
 1. Importujte certifikát CA do truststore.
 1. Importujte certifikát certifikační autority do úložiště klíčů.
 

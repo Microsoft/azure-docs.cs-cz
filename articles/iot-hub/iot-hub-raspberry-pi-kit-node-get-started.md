@@ -1,5 +1,5 @@
 ---
-title: Připojení malinu pi k Azure IoT Hub v cloudu (Node. js)
+title: Připojení malinu pi k Azure IoT Hub v cloudu (Node.js)
 description: Naučte se, jak nastavit a připojit maliny v/v Azure IoT Hub pro malinu pi k odesílání dat na cloudovou platformu Azure v tomto kurzu.
 author: wesmc7777
 manager: eliotgra
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
 ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640532"
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojit malinu pi k Azure IoT Hub (Node. js)
+# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojit malinu pi k Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -51,7 +50,7 @@ Ještě nemáte k dispozici sadu? Zkuste použít [simulátor malinu PI online](
 
 * Deska maliny pi 2 nebo malin PI 3.
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 * Monitor, klávesnice USB a myš, které se připojují k Pi.
 
@@ -116,9 +115,9 @@ Připravte kartu microSD pro instalaci image Raspbian.
 
 1. Připojte pi k monitoru, klávesnici a myši.
 
-2. Spusťte PI a pak se přihlaste k `pi` Raspbian pomocí uživatelského jména a `raspberry` hesla.
+2. Spusťte PI a pak se přihlaste k Raspbian pomocí `pi` uživatelského jména a `raspberry` hesla.
 
-3. Klikněte na ikonu maliny > **Předvolby** > **malin. PI**.
+3. Klikněte na ikonu maliny > **Předvolby**  >  **malin. PI**.
 
    ![Nabídka předvolby Raspbian](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -182,17 +181,17 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
    Použijte integrovaného klienta SSH na Ubuntu nebo macOS. Možná budete muset spustit `ssh pi@<ip address of pi>` pro připojení Pi přes SSH.
 
    > [!NOTE]
-   > Výchozí uživatelské jméno je `pi` a heslo `raspberry`.
+   > Výchozí uživatelské jméno je `pi` a heslo `raspberry` .
 
-2. Nainstalujte Node. js a NPM do svého PI.
+2. Nainstalujte Node.js a NPM do svého PI.
 
-   Nejdřív ověřte verzi Node. js.
+   Nejdřív ověřte Node.js verzi.
 
    ```bash
    node -v
    ```
 
-   Pokud je verze nižší než 10. x nebo pokud ve verzi PI není Node. js, nainstalujte nejnovější verzi.
+   Pokud je verze nižší než 10. x nebo pokud na pi není Node.js, nainstalujte nejnovější verzi.
 
    ```bash
    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
@@ -225,9 +224,9 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
 
    ![Konfigurační soubor](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
-   V tomto souboru jsou dvě položky, které můžete nakonfigurovat. První z nich je `interval`, který definuje časový interval (v milisekundách) mezi zprávami odesílanými do cloudu. Druhá je `simulatedData`, což je logická hodnota, která určuje, jestli se mají použít Simulovaná data senzoru nebo ne.
+   V tomto souboru jsou dvě položky, které můžete nakonfigurovat. První z nich je `interval` , který definuje časový interval (v milisekundách) mezi zprávami odesílanými do cloudu. Druhá je `simulatedData` , což je logická hodnota, která určuje, jestli se mají použít Simulovaná data senzoru nebo ne.
 
-   Pokud nemáte **senzor**, nastavte `simulatedData` hodnotu `true` na, aby ukázková aplikace vytvořila a používala Simulovaná data snímače.
+   Pokud nemáte **senzor**, nastavte hodnotu na, aby `simulatedData` `true` ukázková aplikace vytvořila a používala Simulovaná data snímače.
 
    *Poznámka: adresa I2C použitá v tomto kurzu je standardně 0x77. V závislosti na vaší konfiguraci může být také 0x76: Pokud narazíte na chybu I2C, zkuste změnit hodnotu na 118 a zjistit, jestli to funguje lépe. Pokud chcete zjistit, jakou adresu používá váš senzor, spusťte `sudo i2cdetect -y 1` v prostředí na Maline PI.*
 

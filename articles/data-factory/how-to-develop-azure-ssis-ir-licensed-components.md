@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: b7079262dc7db4f4a00a9dc79193da1574c7153a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605854"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Instalace placených nebo licencovaných vlastních komponent pro prostředí Azure-SSIS Integration Runtime
@@ -41,9 +40,9 @@ Následující diagram znázorňuje typickou instalaci, aktivaci a vázání lic
 ![Instalace licencovaných komponent](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
 ## <a name="instructions"></a>Pokyny
-1. Nezávislý výrobce softwaru může nabízet své licencované komponenty v různých SKU nebo vrstvách (například jeden uzel, až 5 uzlů, až 10 uzlů a tak dále). ISV poskytuje odpovídající kód Product Key, když si zákazníci nakupují produkt. ISV může také poskytovat Azure Storage kontejner objektů blob, který obsahuje skript instalačního programu ISV a přidružené soubory. Zákazníci mohou tyto soubory zkopírovat do vlastního kontejneru úložiště a upravit je pomocí vlastního kódu Product Key (například spuštěním `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Zákazníci pak můžou zřídit nebo znovu nakonfigurovat Azure-SSIS IR s identifikátorem URI SAS svého kontejneru jako s parametrem. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+1. Nezávislý výrobce softwaru může nabízet své licencované komponenty v různých SKU nebo vrstvách (například jeden uzel, až 5 uzlů, až 10 uzlů a tak dále). ISV poskytuje odpovídající kód Product Key, když si zákazníci nakupují produkt. ISV může také poskytovat Azure Storage kontejner objektů blob, který obsahuje skript instalačního programu ISV a přidružené soubory. Zákazníci mohou tyto soubory zkopírovat do vlastního kontejneru úložiště a upravit je pomocí vlastního kódu Product Key (například spuštěním `IsvSetup.exe -pid xxxx-xxxx-xxxx` ). Zákazníci pak můžou zřídit nebo znovu nakonfigurovat Azure-SSIS IR s identifikátorem URI SAS svého kontejneru jako s parametrem. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-2. Při zřizování nebo změně konfigurace Azure-SSIS IR spustí instalační program ISV na každém uzlu dotaz na proměnné prostředí systému Windows `SSIS_CLUSTERID` a. `SSIS_CLUSTERNODECOUNT` Pak Azure-SSIS IR odešle své ID clusteru a kód Product Key pro licencovaný produkt pro aktivační server ISV, aby vygeneroval aktivační klíč.
+2. Při zřizování nebo změně konfigurace Azure-SSIS IR spustí instalační program ISV na každém uzlu dotaz na proměnné prostředí systému Windows `SSIS_CLUSTERID` a `SSIS_CLUSTERNODECOUNT` . Pak Azure-SSIS IR odešle své ID clusteru a kód Product Key pro licencovaný produkt pro aktivační server ISV, aby vygeneroval aktivační klíč.
 
 3. Po přijetí aktivačního klíče může instalační program ISV Uložit klíč místně na každém uzlu (například v registru).
 

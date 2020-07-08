@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680675"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikace s DPS pomocí protokolu MQTT
@@ -44,11 +43,11 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
 * Pro pole **ClientID** použijte **registrationId**.
 
-* V poli **uživatelské jméno** použijte `{idScope}/registrations/{registration_id}/api-version=2019-03-31`, kde `{idScope}` je [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) v DPS.
+* V poli **uživatelské jméno** použijte `{idScope}/registrations/{registration_id}/api-version=2019-03-31` , kde `{idScope}` je [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) v DPS.
 
 * V poli **heslo** použijte token SAS. Formát tokenu SAS je stejný jako u protokolů HTTPS a AMQP:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI by měl být ve formátu `{idScope}/registrations/{registration_id}`. Název zásad by měl být `registration`.
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI by měl být ve formátu `{idScope}/registrations/{registration_id}` . Název zásad by měl být `registration` .
 
   > [!NOTE]
   > Pokud používáte ověřování pomocí certifikátu X. 509, hesla tokenů SAS se nevyžadují.
@@ -68,17 +67,17 @@ Pokud chcete protokol MQTT použít přímo, *musí* se klient připojit přes T
 
 ## <a name="registering-a-device"></a>Registrace zařízení
 
-Pokud chcete zařízení zaregistrovat přes DPS, zařízení by se mělo přihlásit `$dps/registrations/res/#` jako **Filtr tématu**. Zástupný znak `#` na více úrovních v rámci filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. DPS nepovoluje použití zástupných znaků `#` nebo `?` pro filtrování dílčích témat. Vzhledem k tomu, že DPS není modul pro zasílání zpráv v rámci služby Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
+Pokud chcete zařízení zaregistrovat přes DPS, zařízení by se mělo přihlásit `$dps/registrations/res/#` jako **Filtr tématu**. Zástupný znak na více úrovních `#` v rámci filtru tématu slouží pouze k tomu, aby zařízení přijímalo další vlastnosti v názvu tématu. DPS nepovoluje použití `#` `?` zástupných znaků nebo pro filtrování dílčích témat. Vzhledem k tomu, že DPS není modul pro zasílání zpráv v rámci služby Pub pro obecné účely, podporuje pouze dokumentované názvy témat a filtry témat.
 
 Zařízení by mělo publikovat registrační zprávu k DPS pomocí `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **názvu tématu**. Datová část by měla obsahovat objekt [registrace zařízení](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) ve formátu JSON.
-V úspěšném scénáři obdrží zařízení odpověď na název `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` tématu, kde x je hodnota opakování v sekundách. Datová část odpovědi bude obsahovat objekt [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) ve formátu JSON.
+V úspěšném scénáři obdrží zařízení odpověď na `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` název tématu, kde x je hodnota opakování v sekundách. Datová část odpovědi bude obsahovat objekt [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) ve formátu JSON.
 
 ## <a name="polling-for-registration-operation-status"></a>Cyklické dotazování na stav operace registrace
 
-Zařízení musí pravidelně dotazovat službu, aby získala výsledek operace registrace zařízení. Za předpokladu, že se zařízení již přihlásilo k odběru `$dps/registrations/res/#` tématu, jak je uvedeno výše, může publikovat zprávu Get `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` stav operationstatus k názvu tématu. ID operace v této zprávě by měla být hodnota přijatá ve zprávě odpovědi RegistrationOperationStatus v předchozím kroku. V případě úspěšného případu bude služba reagovat na `$dps/registrations/res/200/?$rid={request_id}` téma. Datová část odpovědi bude obsahovat objekt RegistrationOperationStatus. Zařízení by mělo pokračovat ve cyklickém dotazování služby, pokud je kód odpovědi 202 po prodlevě, která je stejná jako perioda opakování. Operace registrace zařízení je úspěšná, pokud služba vrátí stavový kód 200.
+Zařízení musí pravidelně dotazovat službu, aby získala výsledek operace registrace zařízení. Za předpokladu, že se zařízení již přihlásilo k odběru `$dps/registrations/res/#` tématu, jak je uvedeno výše, může publikovat zprávu Get stav operationstatus k `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` názvu tématu. ID operace v této zprávě by měla být hodnota přijatá ve zprávě odpovědi RegistrationOperationStatus v předchozím kroku. V případě úspěšného případu bude služba reagovat na `$dps/registrations/res/200/?$rid={request_id}` téma. Datová část odpovědi bude obsahovat objekt RegistrationOperationStatus. Zařízení by mělo pokračovat ve cyklickém dotazování služby, pokud je kód odpovědi 202 po prodlevě, která je stejná jako perioda opakování. Operace registrace zařízení je úspěšná, pokud služba vrátí stavový kód 200.
 
 ## <a name="connecting-over-websocket"></a>Připojení přes protokol WebSocket
-Při připojování přes protokol WebSocket zadejte jako `mqtt`dílčí protokol. Postupujte podle [dokumentu RFC 6455](https://tools.ietf.org/html/rfc6455).
+Při připojování přes protokol WebSocket zadejte jako dílčí protokol `mqtt` . Postupujte podle [dokumentu RFC 6455](https://tools.ietf.org/html/rfc6455).
 
 ## <a name="next-steps"></a>Další kroky
 

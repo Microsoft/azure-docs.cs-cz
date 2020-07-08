@@ -9,10 +9,9 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687197"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge tak, aby komunikovalo přes proxy server
@@ -53,7 +52,7 @@ Adresy URL proxy serveru mají následující formát: **protokol**://**proxy_ho
 
 * **Protokol** je buď http, nebo HTTPS. Démon Docker může použít buď protokol, v závislosti na nastavení registru kontejneru, ale IoT Edge démon a kontejnery modulu runtime vždy používají protokol HTTP pro připojení k proxy serveru.
 
-* **Proxy_host** je adresa proxy server. Pokud vaše proxy server vyžaduje ověření, můžete přihlašovací údaje zadat v rámci hostitele proxy v následujícím formátu: **uživatel**:**heslo**\@**proxy_host**.
+* **Proxy_host** je adresa proxy server. Pokud vaše proxy server vyžaduje ověření, můžete přihlašovací údaje zadat v rámci hostitele proxy v následujícím formátu: **uživatel**:**heslo** \@ **proxy_host**.
 
 * **Proxy_port** je síťový port, na kterém proxy server reaguje na síťový provoz.
 
@@ -83,7 +82,7 @@ Následující kroky ukazují příklad instalace Windows pomocí `-proxy` argum
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-Máte-li složitá pověření pro proxy server, která nelze zahrnout do adresy URL, použijte `-ProxyCredential` parametr v rámci `-InvokeWebRequestParameters`. Například:
+Máte-li složitá pověření pro proxy server, která nelze zahrnout do adresy URL, použijte `-ProxyCredential` parametr v rámci `-InvokeWebRequestParameters` . Třeba
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -122,7 +121,7 @@ Otevřete Editor v terminálu a nakonfigurujte IoT Edge démon.
 sudo systemctl edit iotedge
 ```
 
-Zadejte následující text a nahraďte ** \<adresu URL proxy serveru>** adresou a portem proxy server. Pak operaci uložte a ukončete.
+Zadejte následující text a nahraďte **\<proxy URL>** ho adresou proxy server a portem. Pak operaci uložte a ukončete.
 
 ```ini
 [Service]
@@ -149,7 +148,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-Otevřete okno PowerShellu jako správce a spusťte následující příkaz pro úpravu registru s novou proměnnou prostředí. Adresu ** \<URL proxy serveru** nahraďte>adresou a portem proxy server.
+Otevřete okno PowerShellu jako správce a spusťte následující příkaz pro úpravu registru s novou proměnnou prostředí. Nahraďte **\<proxy url>** adresou proxy server a portem.
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>

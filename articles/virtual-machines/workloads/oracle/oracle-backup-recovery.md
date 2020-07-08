@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687000"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux
@@ -141,7 +140,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
 
 1. Stáhněte soubor JSON.
 
-    Stáhněte si VMSnapshotScriptPluginConfig. JSON https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfigz. Obsah souboru vypadá podobně jako v následujícím příkladu:
+    Stáhnout VMSnapshotScriptPluginConfig.jsz https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig . Obsah souboru vypadá podobně jako v následujícím příkladu:
 
     ```output
     {
@@ -168,11 +167,11 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
 
 3. Zkopírujte soubor JSON.
 
-    Zkopírujte VMSnapshotScriptPluginConfig. JSON do složky složce/etc/Azure.
+    Zkopírujte VMSnapshotScriptPluginConfig.jsdo složky složce/etc/Azure.
 
 4. Upravte soubor JSON.
 
-    Upravte soubor VMSnapshotScriptPluginConfig. JSON tak, aby zahrnoval `PreScriptLocation` parametry `PostScriptlocation` a. Příklad:
+    Upravte VMSnapshotScriptPluginConfig.jsv souboru tak, aby obsahovala `PreScriptLocation` `PostScriptlocation` parametry a. Příklad:
 
     ```output
     {
@@ -286,11 +285,11 @@ Další informace najdete v tématu [Zálohování konzistentní vzhledem k apli
 
     ![Stránka zálohování Recovery Services trezory](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  V okně **cíl zálohování** použijte výchozí hodnoty **Azure** a **virtuálního počítače**. Klikněte na tlačítko **OK**.
+5.  V okně **cíl zálohování** použijte výchozí hodnoty **Azure** a **virtuálního počítače**. Klikněte na **OK**.
 
     ![Stránka s podrobnostmi o úložištích Recovery Services](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  V případě **zásad zálohování**použijte **DefaultPolicy**nebo vyberte **vytvořit novou zásadu**. Klikněte na tlačítko **OK**.
+6.  V případě **zásad zálohování**použijte **DefaultPolicy**nebo vyberte **vytvořit novou zásadu**. Klikněte na **OK**.
 
     ![Stránka s podrobnostmi o zásadách zálohování Recovery Services trezory](./media/oracle-backup-recovery/recovery_service_06.png)
 
@@ -508,7 +507,7 @@ Po obnovení virtuálního počítače nastavte veřejnou IP adresu.
 
     ![Seznam veřejných IP adres](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  V okně **veřejné IP adresy** klikněte na **Přidat**. V okně **vytvořit veřejnou IP adresu** **Vyberte název veřejné**IP adresy. V části **Skupina prostředků** vyberte **Použít existující**. Poté klikněte na možnost **Vytvořit**.
+2.  V okně **veřejné IP adresy** klikněte na **Přidat**. V okně **vytvořit veřejnou IP adresu** **Vyberte název veřejné**IP adresy. V části **Skupina prostředků** vyberte **Použít existující**. Potom klikněte na **Vytvořit**.
 
     ![Vytvořit IP adresu](./media/oracle-backup-recovery/create_ip_01.png)
 

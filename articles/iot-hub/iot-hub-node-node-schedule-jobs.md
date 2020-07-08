@@ -1,6 +1,6 @@
 ---
 title: Plánování úloh pomocí Azure IoT Hub (Node) | Microsoft Docs
-description: Jak naplánovat úlohu Azure IoT Hub k vyvolání přímé metody na více zařízeních. Sady SDK Azure IoT pro Node. js slouží k implementaci aplikací simulovaného zařízení a aplikace služby ke spuštění úlohy.
+description: Jak naplánovat úlohu Azure IoT Hub k vyvolání přímé metody na více zařízeních. Sady SDK Azure IoT pro Node.js slouží k implementaci aplikací simulovaného zařízení a aplikace služby ke spuštění úlohy.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732272"
 ---
-# <a name="schedule-and-broadcast-jobs-nodejs"></a>Úlohy plánování a vysílání (Node. js)
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>Úlohy plánování a vysílání (Node.js)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
@@ -39,19 +38,19 @@ Další informace o každé z těchto možností najdete v těchto článcích:
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvořte aplikaci simulovaného zařízení Node. js, která má přímou metodu, která umožňuje **lockDoor**, která může být volána back-end řešení.
+* Vytvořte Node.js aplikaci simulovaného zařízení, která má přímou metodu, která umožňuje **lockDoor**, kterou může volat back-end řešení.
 
-* Vytvořte konzolovou aplikaci Node. js, která zavolá metodu **lockDoor** Direct v aplikaci simulovaného zařízení pomocí úlohy a aktualizuje požadované vlastnosti pomocí úlohy zařízení.
+* Vytvořte Node.js konzolovou aplikaci, která volá metodu **lockDoor** Direct v aplikaci simulovaného zařízení pomocí úlohy a aktualizuje požadované vlastnosti pomocí úlohy zařízení.
 
-Na konci tohoto kurzu máte dvě aplikace Node. js:
+Na konci tohoto kurzu máte dvě Node.js aplikace:
 
-* **simDevice. js**, který se připojí ke službě IoT Hub s identitou zařízení a přijímá metodu **lockDoor** Direct.
+* **simDevice.js**, která se připojí ke službě IoT Hub s identitou zařízení a přijímá přímo metodu **lockDoor** .
 
-* **scheduleJobService. js**, který volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti v zařízení pomocí úlohy.
+* **scheduleJobService.js**, která volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti v zařízení pomocí úlohy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
+* Node.js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
@@ -67,9 +66,9 @@ Na konci tohoto kurzu máte dvě aplikace Node. js:
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 
-V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na přímou metodu volanou cloudem, která spustí simulovanou **lockDoor** metodu.
+V této části vytvoříte konzolovou aplikaci Node.js, která reaguje na přímou metodu volanou cloudem, která aktivuje simulovanou metodu **lockDoor** .
 
-1. Vytvořte novou prázdnou složku s názvem **simDevice**.  Ve složce **simDevice** vytvořte soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
+1. Vytvořte novou prázdnou složku s názvem **simDevice**.  Ve složce **simDevice** vytvořte package.jsv souboru pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
    ```console
    npm init
@@ -81,9 +80,9 @@ V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na př�
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
-3. Pomocí textového editoru vytvořte nový soubor **simDevice. js** ve složce **simDevice** .
+3. Pomocí textového editoru vytvořte nový soubor **simDevice.js** ve složce **simDevice** .
 
-4. Na začátek souboru **simDevice. js** přidejte následující příkazy ' vyžadovat ':
+4. Přidejte následující příkazy ' vyžadovat ' na začátku **simDevice.js** souboru:
 
     ```javascript
     'use strict';
@@ -130,7 +129,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na př�
    });
    ```
 
-8. Uložte a zavřete soubor **simDevice. js** .
+8. Uložte a zavřete soubor **simDevice.js** .
 
 > [!NOTE]
 > Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
@@ -144,9 +143,9 @@ V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na př�
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Plánování úloh pro volání přímé metody a aktualizace vlastností vlákna zařízení
 
-V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vzdálenou **lockDoor** na zařízení pomocí přímé metody a aktualizuje vlastnosti vlákna zařízení.
+V této části vytvoříte konzolovou aplikaci Node.js, která inicializuje vzdálenou **lockDoor** na zařízení pomocí přímé metody a aktualizuje vlastnosti vlákna zařízení.
 
-1. Vytvořte novou prázdnou složku s názvem **scheduleJobService**.  Ve složce **scheduleJobService** vytvořte soubor Package. JSON pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
+1. Vytvořte novou prázdnou složku s názvem **scheduleJobService**.  Ve složce **scheduleJobService** vytvořte package.jsv souboru pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
     ```console
     npm init
@@ -158,9 +157,9 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     npm install azure-iothub uuid --save
     ```
 
-3. Pomocí textového editoru vytvořte nový soubor **scheduleJobService. js** ve složce **scheduleJobService** .
+3. Pomocí textového editoru vytvořte nový soubor **scheduleJobService.js** ve složce **scheduleJobService** .
 
-4. Na začátek souboru **scheduleJobService. js** přidejte následující příkazy ' vyžadovat ':
+4. Přidejte následující příkazy ' vyžadovat ' na začátku **scheduleJobService.js** souboru:
 
     ```javascript
     'use strict';
@@ -266,7 +265,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     });
     ```
 
-9. Uložte a zavřete soubor **scheduleJobService. js** .
+9. Uložte a zavřete soubor **scheduleJobService.js** .
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
 

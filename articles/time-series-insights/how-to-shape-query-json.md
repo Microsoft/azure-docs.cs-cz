@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641299"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Formát JSON obrazce pro maximalizaci výkonu dotazů
@@ -97,16 +96,16 @@ Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Ti
 
    | deviceId | Parametr | deviceLocation |
    | --- | --- | --- |
-   | FXXX | DATA\_řádku | EU |
-   | FYYY | DATA\_řádku | USA |
+   | FXXX | \_data řádku | EU |
+   | FYYY | \_data řádku | USA |
 
 * Time Series Insights tabulka událostí po sloučení:
 
    | deviceId | Parametr | deviceLocation | časové razítko | řadu. Rychlost toku ft3/s | řadu. Psí tlak v oleji motoru |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | DATA\_řádku | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | DATA\_řádku | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | DATA\_řádku | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | \_data řádku | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | \_data řádku | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | \_data řádku | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - Sloupec **deviceId** slouží jako záhlaví sloupce pro různá zařízení v rámci loďstva. Když hodnota **deviceId** nastaví svůj název vlastní vlastnosti, omezí se celkový počet zařízení na 595 (pro prostředí S1) nebo 795 (pro prostředí S2) s dalšími pěti sloupci.
@@ -165,23 +164,23 @@ Příklad datové části JSON:
 
 * Tabulka referenčních dat, která má vlastnosti klíče **deviceId** a **Series. tagId**:
 
-   | deviceId | Series. tagId | Parametr | deviceLocation | type | unit |
+   | deviceId | Series. tagId | Parametr | deviceLocation | typ | unit |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | DATA\_řádku | EU | Rychlost toku | ft3/s |
-   | FXXX | oilPressure | DATA\_řádku | EU | Tlak v oleji motoru | psi |
-   | FYYY | pumpRate | DATA\_řádku | USA | Rychlost toku | ft3/s |
-   | FYYY | oilPressure | DATA\_řádku | USA | Tlak v oleji motoru | psi |
+   | FXXX | pumpRate | \_data řádku | EU | Rychlost toku | ft3/s |
+   | FXXX | oilPressure | \_data řádku | EU | Tlak v oleji motoru | psi |
+   | FYYY | pumpRate | \_data řádku | USA | Rychlost toku | ft3/s |
+   | FYYY | oilPressure | \_data řádku | USA | Tlak v oleji motoru | psi |
 
 * Time Series Insights tabulka událostí po sloučení:
 
-   | deviceId | Series. tagId | Parametr | deviceLocation | type | unit | časové razítko | Series. Value |
+   | deviceId | Series. tagId | Parametr | deviceLocation | typ | unit | časové razítko | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | DATA\_řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | DATA\_řádku | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | DATA\_řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | DATA\_řádku | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | DATA\_řádku | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | DATA\_řádku | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | \_data řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | \_data řádku | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | \_data řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | \_data řádku | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | \_data řádku | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | \_data řádku | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - Sloupce **deviceId** a **Series. tagId** slouží jako záhlaví sloupců pro různá zařízení a značky v rámci loďstva. Použití každého vlastního atributu omezí dotaz na 594 (pro prostředí S1) nebo 794 (pro prostředí S2) celkem zařízení s ostatními šesti sloupci.

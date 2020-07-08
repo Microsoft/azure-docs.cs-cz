@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5e3f4f4aedb0bc3fb1f8ea11001b08daa57aafc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732487"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Úlohy plánování a vysílání (Java)
@@ -98,7 +97,7 @@ Vytvoření aplikace:
 
 3. Na příkazovém řádku přejděte do složky **plán – úlohy** .
 
-4. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **Schedule-Jobs** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Service-Client** ve vaší aplikaci:
+4. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **plán – úlohy** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Service-Client** ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -261,7 +260,7 @@ Vytvoření aplikace:
     }
     ```
 
-14. Aktualizujte podpis metody **Main** tak, aby zahrnoval `throws` následující klauzuli:
+14. Aktualizujte podpis metody **Main** tak, aby zahrnoval následující `throws` klauzuli:
 
     ```java
     public static void main( String[] args ) throws Exception
@@ -314,7 +313,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
 
 2. Na příkazovém řádku přejděte do složky **simulovaného zařízení** .
 
-3. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **simulovaného zařízení** a přidejte následující závislosti do uzlu **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Device-Client** ve vaší aplikaci:
+3. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **simulovaného zařízení** a přidejte následující závislosti do uzlu **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Device-Client** ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -428,7 +427,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     }
     ```
 
-13. Aktualizujte podpis metody **Main** tak, aby zahrnoval `throws` následující klauzuli:
+13. Aktualizujte podpis metody **Main** tak, aby zahrnoval následující `throws` klauzuli:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
@@ -502,7 +501,7 @@ Nyní jste připraveni spustit konzolové aplikace.
 
    ![Spustí se klient zařízení.](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
-2. Na příkazovém řádku ve `schedule-jobs` složce spusťte následující příkaz, který spustí aplikaci **Schedule-Jobs** Service ke spuštění dvou úloh. První nastaví požadované hodnoty vlastností a druhý zavolá přímo metodu:
+2. Na příkazovém řádku ve složce spusťte `schedule-jobs` následující příkaz, který spustí aplikaci **Schedule-Jobs** Service ke spuštění dvou úloh. První nastaví požadované hodnoty vlastností a druhý zavolá přímo metodu:
 
    ```cmd\sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

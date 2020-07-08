@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81262430"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Nepřibližné vyhledávání pro opravu chybných pravopisů a překlepů
@@ -58,13 +57,13 @@ Pokud ale testovací dotazy nezpůsobují očekávané shody, můžete zkusit pr
 
 Fuzzy dotazy jsou vytvářeny pomocí úplné syntaxe dotazů Lucene a vyvolává [analyzátor dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-1. Nastavte úplný analyzátor Lucene na dotaz (`queryType=full`).
+1. Nastavte úplný analyzátor Lucene na dotaz ( `queryType=full` ).
 
-1. Volitelně můžete určit rozsah žádosti na konkrétní pole pomocí tohoto parametru (`searchFields=<field1,field2>`). 
+1. Volitelně můžete určit rozsah žádosti na konkrétní pole pomocí tohoto parametru ( `searchFields=<field1,field2>` ). 
 
-1. Připojí operátor tilda`~`() na konci celého výrazu (`search=<string>~`).
+1. Připojí operátor tilda ( `~` ) na konci celého výrazu ( `search=<string>~` ).
 
-   Zahrňte volitelný parametr, číslo mezi 0 a 2 (výchozí), pokud chcete určit vzdálenost úprav (`~1`). Například "Blue ~" nebo "Blue ~ 1" vrátí "Blue", "blues" a "Glue".
+   Zahrňte volitelný parametr, číslo mezi 0 a 2 (výchozí), pokud chcete určit vzdálenost úprav ( `~1` ). Například "Blue ~" nebo "Blue ~ 1" vrátí "Blue", "blues" a "Glue".
 
 V Azure Kognitivní hledání kromě termínu a vzdálenosti (maximálně 2) neexistují žádné další parametry pro nastavení dotazu.
 

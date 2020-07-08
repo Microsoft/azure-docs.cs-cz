@@ -1,6 +1,6 @@
 ---
-title: Připojit malinu pi k řešení vzdáleného monitorování – Node. js – Azure | Microsoft Docs
-description: Popisuje postup připojení zařízení malinu pi k akcelerátoru řešení vzdáleného monitorování pomocí aplikace napsané v Node. js.
+title: Připojení k řešení vzdáleného monitorování z malinu PI – Node.js – Azure | Microsoft Docs
+description: V této části najdete popis postupu připojení zařízení malinu pi k akcelerátoru řešení vzdáleného monitorování pomocí aplikace napsané v Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,17 +10,16 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683949"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení malinu pi k akcelerátoru řešení vzdáleného monitorování (Node. js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení malinu pi k akcelerátoru řešení vzdáleného monitorování (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak připojit reálné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node. js, což je dobrá možnost pro prostředí s minimálními omezeními prostředků.
+V tomto kurzu se dozvíte, jak připojit reálné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, což je dobrá možnost pro prostředí s minimálními omezeními prostředků.
 
 Pokud dáváte přednost simulaci zařízení, přečtěte si téma [Vytvoření a otestování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
@@ -44,9 +43,9 @@ Na stolním počítači budete potřebovat klienta SSH, aby bylo možné vzdále
 
 ### <a name="required-raspberry-pi-software"></a>Požadovaný software maliny PI
 
-Pokud jste to ještě neudělali, nainstalujte Node. js verze 4.0.0 nebo novější do maliny PI. Následující kroky ukazují, jak nainstalovat Node. js v6 do složky malin PI:
+Pokud jste to ještě neudělali, nainstalujte Node.js verze 4.0.0 nebo novější do maliny PI. Následující kroky ukazují, jak nainstalovat Node.js v6 do malinu PI:
 
-1. Připojte se k malin. PI pomocí `ssh`. Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [webu maliny PI](https://www.raspberrypi.org/).
+1. Připojte se k malin. PI pomocí `ssh` . Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [webu maliny PI](https://www.raspberrypi.org/).
 
 1. Pomocí následujícího příkazu aktualizujte aplikaci malin PI:
 
@@ -54,7 +53,7 @@ Pokud jste to ještě neudělali, nainstalujte Node. js verze 4.0.0 nebo nověj�
     sudo apt-get update
     ```
 
-1. Pomocí následujících příkazů odeberte všechny existující instalace Node. js ze složky malin PI:
+1. Pomocí následujících příkazů odeberte všechny stávající instalace Node.js ze složky malin PI:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -62,20 +61,20 @@ Pokud jste to ještě neudělali, nainstalujte Node. js verze 4.0.0 nebo nověj�
     sudo apt-get remove npm  -y
     ```
 
-1. Pomocí následujícího příkazu Stáhněte a nainstalujte Node. js v6 do složky malin. PI:
+1. Pomocí následujícího příkazu Stáhněte a nainstalujte Node.js v6 do malinu PI:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs npm
     ```
 
-1. Pomocí následujícího příkazu ověřte, že jste úspěšně nainstalovali Node. js v 6.11.4:
+1. Pomocí následujícího příkazu ověřte, že jste úspěšně nainstalovali Node.js v 6.11.4:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node. js
+## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node.js
 
 Pomocí `ssh` připojení k aplikaci malin PI proveďte následující kroky:
 
@@ -93,9 +92,9 @@ Pomocí `ssh` připojení k aplikaci malin PI proveďte následující kroky:
     npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
-1. Ve `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring. js**. Otevřete tento soubor v textovém editoru. V aplikaci malin PI můžete použít editory `nano` nebo `vi` text.
+1. Ve `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru. V aplikaci malin PI můžete použít `nano` `vi` editory nebo text.
 
-1. V souboru **remote_monitoring. js** přidejte následující `require` příkazy:
+1. Do **remote_monitoring.js** souboru přidejte následující `require` příkazy:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -104,7 +103,7 @@ Pomocí `ssh` připojení k aplikaci malin PI proveďte následující kroky:
     var async = require('async');
     ```
 
-1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu `{device connection string}` zástupného symbolu hodnotou, kterou jste si poznamenali u zařízení, které jste zřídili v řešení vzdáleného monitorování:
+1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu zástupného symbolu `{device connection string}` hodnotou, kterou jste si poznamenali u zařízení, které jste zřídili v řešení vzdáleného monitorování:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -385,7 +384,7 @@ Pomocí `ssh` připojení k aplikaci malin PI proveďte následující kroky:
       });
       ```
 
-1. Uložte změny do souboru **remote_monitoring. js** .
+1. Uložte změny do souboru **remote_monitoring.js** .
 
 1. Chcete-li spustit ukázkovou aplikaci, spusťte následující příkaz na příkazovém řádku na adrese malin PI:
 

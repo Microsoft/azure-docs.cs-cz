@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/04/2019
 ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605362"
 ---
 # <a name="mapping-data-flow-graphs"></a>Mapování grafů toku dat
@@ -44,7 +43,7 @@ Na pravé straně dolního podokna konfigurace je tlačítko, kde při práci na
 
 Graf můžete vyhledat pomocí tlačítka Hledat na návrhové ploše.
 
-![Hledat](media/data-flow/search001.png "Vyhledat graf")
+![Vyhledávání](media/data-flow/search001.png "Vyhledat graf")
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,10 +10,9 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682011"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Vytvoření a otestování nového simulovaného zařízení
@@ -31,9 +30,9 @@ Ve druhém scénáři chce contoso otestovat nové zařízení inteligentního �
 
 *Vlastnosti*
 
-| Název                     | Hodnoty                      |
+| Name                     | Hodnoty                      |
 | ------------------------ | --------------------------- |
-| Barvy                    | Bílá, červená, modrá            |
+| Barva                    | Bílá, červená, modrá            |
 | Světlost               | 0 až 100                    |
 | Odhad zbývající životnost | Odpočítávání z 10 000 hodin |
 
@@ -41,7 +40,7 @@ Ve druhém scénáři chce contoso otestovat nové zařízení inteligentního �
 
 V následující tabulce jsou uvedena data, která žárovky do cloudu, jako datový proud:
 
-| Název   | Hodnoty      |
+| Name   | Hodnoty      |
 | ------ | ----------- |
 | Status | "zapnuto", "vypnuto" |
 | Teplota | Stupně F |
@@ -54,7 +53,7 @@ V následující tabulce jsou uvedena data, která žárovky do cloudu, jako dat
 
 Následující tabulka uvádí akce, které nové zařízení podporuje:
 
-| Název        |
+| Name        |
 | ----------- |
 | Přepnout na   |
 | Přepnout  |
@@ -63,7 +62,7 @@ Následující tabulka uvádí akce, které nové zařízení podporuje:
 
 V následující tabulce je uveden počáteční stav zařízení:
 
-| Název                     | Hodnoty |
+| Name                     | Hodnoty |
 | ------------------------ | -------|
 | Počáteční barva            | White  |
 | Počáteční jas       | 75     |
@@ -73,7 +72,7 @@ V následující tabulce je uveden počáteční stav zařízení:
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -108,11 +107,11 @@ Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azu
 
 Otevřete složku **Remote-Monitoring-Services-dotnet-master\storage-Adapter** v Visual Studio Code. Kliknutím na jakékoli tlačítko **obnovit** opravíte nevyřešené závislosti.
 
-Otevřete soubor **Storage-Adapter/WebService/appSettings. ini** a přiřaďte připojovací řetězec Cosmos DB k proměnné **documentDBConnectionString** .
+Otevřete soubor **Storage-Adapter/WebService/appsettings.ini** a přiřaďte k proměnné **documentDBConnectionString** připojovací řetězec Cosmos DB.
 
 Pokud chcete spustit mikroslužbu místně, klikněte na **ladění > spustit ladění**.
 
-Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby včetně adresy URL pro kontrolu stavu webové služby: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Při přechodu na tuto adresu by měl být ve stavu "OK: Alive" a dobře ".
+Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby včetně adresy URL pro kontrolu stavu webové služby: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) . Při přechodu na tuto adresu by měl být ve stavu "OK: Alive" a dobře ".
 
 Ponechte mikroslužbu adaptéru úložiště spuštěnou v této instanci Visual Studio Code při dokončení dalších kroků.
 
@@ -126,14 +125,14 @@ V této části přidáte nový typ telemetrie **vnitřních teplot** na existuj
 
     | Zdroj | Cíl |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\chiller-01.jsna | C:\temp\devicemodels\chiller-01.jsna |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
     | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
     | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
     | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Otevřete soubor **C:\temp\devicemodels\chiller-01.JSON** .
+1. Otevřete **C:\temp\devicemodels\chiller-01.jsv** souboru.
 
 1. V části **initialState** přidejte následující dvě definice:
 
@@ -159,9 +158,9 @@ V této části přidáte nový typ telemetrie **vnitřních teplot** na existuj
     },
     ```
 
-1. Uložte soubor **C:\temp\devicemodels\chiller-01.JSON** .
+1. Uložte **C:\temp\devicemodels\chiller-01.jsdo** souboru.
 
-1. Otevřete soubor **C:\temp\devicemodels\scripts\chiller-01-State.js** .
+1. Otevřete soubor **C:\temp\devicemodels\scripts\chiller-01-state.js** .
 
 1. Do proměnné **State** přidejte následující pole:
 
@@ -202,13 +201,13 @@ V této části přidáte nový typ telemetrie **vnitřních teplot** na existuj
     }
     ```
 
-1. Uložte soubor **C:\temp\devicemodels\scripts\chiller-01-State.js** .
+1. Uložte soubor **C:\temp\devicemodels\scripts\chiller-01-state.js** .
 
 ## <a name="create-the-lightbulb"></a>Vytvoření žárovky
 
 V této části definujete nový typ zařízení **žárovky** :
 
-1. Vytvořte soubor **C:\temp\devicemodels\lightbulb-01.JSON** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\lightbulb-01.jsna** a přidejte následující obsah:
 
     ```json
     {
@@ -272,9 +271,9 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\lightbulb-01.JSON**.
+    Uložte změny **C:\temp\devicemodels\lightbulb-01.jsv**.
 
-1. Vytvořte soubor **C:\temp\devicemodels\scripts\lightbulb-01-State.js** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\scripts\lightbulb-01-state.js** a přidejte následující obsah:
 
     ```javascript
     "use strict";
@@ -361,9 +360,9 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\scripts\lightbulb-01-State.js**.
+    Uložte změny **C:\temp\devicemodels\scripts\lightbulb-01-state.js**.
 
-1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOn-Method.js** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOn-method.js** a přidejte následující obsah:
 
     ```javascript
     "use strict";
@@ -387,9 +386,9 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\scripts\SwitchOn-Method.js**.
+    Uložte změny **C:\temp\devicemodels\scripts\SwitchOn-method.js**.
 
-1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOff-Method.js** a přidejte následující obsah:
+1. Vytvořte soubor **C:\temp\devicemodels\scripts\SwitchOff-method.js** a přidejte následující obsah:
 
     ```javascript
     "use strict";
@@ -413,7 +412,7 @@ V této části definujete nový typ zařízení **žárovky** :
     }
     ```
 
-    Uložte změny do **C:\temp\devicemodels\scripts\SwitchOff-Method.js**.
+    Uložte změny **C:\temp\devicemodels\scripts\SwitchOff-method.js**.
 
 Nyní jste vytvořili přizpůsobenou verzi typu **chladicího** zařízení a vytvořili jste nový typ zařízení **žárovky** .
 
@@ -425,7 +424,7 @@ V této části otestujete typy zařízení, které jste vytvořili v předchoz�
 
 Otevřete složku **Device-simulace-dotnet-Master** , kterou jste stáhli z GitHubu, do nové instance Visual Studio Code. Kliknutím na jakékoli tlačítko **obnovit** opravíte nevyřešené závislosti.
 
-Otevřete soubor **WebService/appSettings. ini** a přiřaďte Cosmos DB řetězec připojení k proměnné **documentdb_connstring** a upravte nastavení následujícím způsobem:
+Otevřete soubor **WebService/appsettings.ini** a přiřaďte k proměnné **documentdb_connstring** připojovací řetězec Cosmos DB a upravte nastavení následujícím způsobem:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
 ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682630"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric model prostředku aplikace
@@ -50,7 +49,7 @@ Můžete znovu použít existující účet úložiště, nebo můžete vytvoři
 
 ### <a name="configure-your-storage-account"></a>Konfigurace účtu úložiště
 
-Po vytvoření účtu úložiště vytvoříte kontejner objektů blob, kde můžete aplikace připravit. V Azure Portal otevřete Azure Storage účet, do kterého chcete ukládat své aplikace. Vyberte **objekty blob** > **Přidat kontejner**. 
+Po vytvoření účtu úložiště vytvoříte kontejner objektů blob, kde můžete aplikace připravit. V Azure Portal otevřete Azure Storage účet, do kterého chcete ukládat své aplikace. Vyberte **objekty blob**  >  **Přidat kontejner**. 
 
 Prostředky v clusteru je možné zabezpečit nastavením úrovně veřejného přístupu na **Private**. Přístup můžete udělit několika způsoby:
 
@@ -71,7 +70,7 @@ V tomto kurzu používáme [hlasovací ukázkovou aplikaci](https://github.com/A
 1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na **hlasovací** projekt a vyberte možnost **balíček**.
 
    ![Aplikace balíčku][PackageApplication]  
-1. Přejít do adresáře *.\Service-Fabric-dotnet-quickstart\Voting\pkg\Debug* Zip obsah do souboru s názvem *hlasovat. zip*. Soubor *souboru ApplicationManifest. XML* by měl být v kořenovém adresáři v souboru ZIP.
+1. Přejít do adresáře *.\Service-Fabric-dotnet-quickstart\Voting\pkg\Debug* Zip obsah do souboru s názvem *Voting.zip*. Soubor *ApplicationManifest.xml* by měl být v kořenovém adresáři v souboru ZIP.
 
    ![Aplikace zip][ZipApplication]  
 1. Přejmenujte soubor pro změnu rozšíření z. zip na *. sfpkg*.
@@ -84,10 +83,10 @@ Nyní je aplikace připravená a můžete vytvořit šablonu Správce prostředk
 
 ### <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 
-Ukázková aplikace obsahuje [šablony Azure Resource Manager](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) , které můžete použít k nasazení aplikace. Názvy souborů šablon jsou *UserApp. JSON* a *UserApp. Parameters. JSON*.
+Ukázková aplikace obsahuje [šablony Azure Resource Manager](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) , které můžete použít k nasazení aplikace. Názvy souborů šablon jsou *UserApp.jszapnuté* a *UserApp.Parameters.jsna*.
 
 > [!NOTE]
-> Soubor *UserApp. Parameters. JSON* se musí aktualizovat názvem vašeho clusteru.
+> *UserApp.Parameters.js* souboru musí být aktualizovaný s názvem vašeho clusteru.
 >
 >
 
@@ -95,11 +94,11 @@ Ukázková aplikace obsahuje [šablony Azure Resource Manager](https://github.co
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Název clusteru, do kterého nasazujete | SF – cluster123                                                |                                                              |
 | aplikace            | Název aplikace                 | Hlasování                                                       |
-| applicationTypeName    | Název typu aplikace           | VotingType                                                   | Musí odpovídat souboru ApplicationManifest. XML                 |
-| applicationTypeVersion | Verze typu aplikace         | 1.0.0                                                        | Musí odpovídat souboru ApplicationManifest. XML                 |
+| applicationTypeName    | Název typu aplikace           | VotingType                                                   | Musí odpovídat ApplicationManifest.xml                 |
+| applicationTypeVersion | Verze typu aplikace         | 1.0.0                                                        | Musí odpovídat ApplicationManifest.xml                 |
 | serviceName            | Název služby         | Hlasovacího tlačítka ~ VotingWeb                                             | Musí být ve formátu ApplicationName ~ ServiceType            |
-| serviceTypeName        | Název typu služby                | VotingWeb                                                    | Musí odpovídat ServiceManifest. XML                 |
-| appPackageUrl          | Adresa URL pro úložiště objektů BLOB aplikace     | https:\//servicefabricapps.blob.Core.Windows.NET/Apps/voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů BLOB (postup nastavení adresy URL je popsán dále v článku) |
+| serviceTypeName        | Název typu služby                | VotingWeb                                                    | Musí odpovídat ServiceManifest.xml                 |
+| appPackageUrl          | Adresa URL pro úložiště objektů BLOB aplikace     | https: \/ /servicefabricapps.blob.Core.Windows.NET/Apps/voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů BLOB (postup nastavení adresy URL je popsán dále v článku) |
 
 ```json
 {
@@ -140,7 +139,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 Můžete upgradovat aplikaci, která je už nasazená do clusteru Service Fabric, z některého z těchto důvodů:
 
-* Do aplikace se přidá nová služba. Při přidání služby do aplikace musí být do souborů *Service-manifest. XML* a *Application-manifest. XML* přidána definice služby. Aby odrážela novou verzi aplikace, musíte také změnit verzi typu aplikace z 1.0.0 na 1.0.1 v [UserApp. Parameters. JSON](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
+* Do aplikace se přidá nová služba. Při přidání služby do aplikace musí být do *service-manifest.xml* a *application-manifest.xml* souborů přidána definice služby. Aby odrážela novou verzi aplikace, musíte také změnit verzi typu aplikace z 1.0.0 na 1.0.1 v [UserApp.Parameters.js](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
 
     ```json
     "applicationTypeVersion": {
@@ -154,7 +153,7 @@ Můžete upgradovat aplikaci, která je už nasazená do clusteru Service Fabric
     }
     ```
 
-* Do aplikace se přidá nová verze existující služby. Mezi příklady patří změny kódu aplikace a aktualizace verze a názvu typu aplikace. Pro tento upgrade aktualizujte UserApp. Parameters. JSON takto:
+* Do aplikace se přidá nová verze existující služby. Mezi příklady patří změny kódu aplikace a aktualizace verze a názvu typu aplikace. Pro tento upgrade UserApp.Parameters.jsaktualizujte takto:
 
     ```json
      "applicationTypeVersion": {

@@ -13,10 +13,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605494"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
@@ -58,7 +57,7 @@ Pokud jste to ještě neudělali, vytvořte propojenou službu Azure Blob Storag
 - V případě **metody ověřování**vyberte **klíč účtu**, **identifikátor URI SAS**nebo **instanční objekt**.  
 
     >[!TIP]
-    >Pokud vyberete metodu **instančního objektu** , udělte instančnímu objektu aspoň roli  *Přispěvatel dat objektu BLOB služby Storage*. Další informace najdete v tématu [Azure Blob Storage Connector](connector-azure-blob-storage.md#linked-service-properties).
+    >Pokud vyberete metodu **instančního objektu** , udělte instančnímu objektu aspoň roli *Přispěvatel dat objektu BLOB služby Storage*   . Další informace najdete v tématu [Azure Blob Storage Connector](connector-azure-blob-storage.md#linked-service-properties).
 
 ![Příprava služby Azure Blob Storage – propojená služba pro přípravu](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -135,11 +134,11 @@ Tuto vlastnost můžete povolit také při spuštění existujících balíčků
   
   ![Povolit ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- **Možnost B:** Znovu nasaďte projekt, který obsahuje tyto balíčky pro spuštění v SSIS IR. Vlastnost pak můžete povolit zadáním `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`cesty k vlastnostem a nastavením na *hodnotu true* jako přepsání vlastnosti na kartě **Upřesnit** v automaticky otevíraném okně **spustit balíček** při spouštění balíčků z SSMS.
+- **Možnost B:** Znovu nasaďte projekt, který obsahuje tyto balíčky pro spuštění v SSIS IR. Vlastnost pak můžete povolit zadáním cesty k vlastnostem `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` a nastavením na *hodnotu true* jako přepsání vlastnosti na kartě **Upřesnit** v automaticky otevíraném okně **spustit balíček** při spouštění balíčků z SSMS.
 
   ![Povolit ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  Vlastnost můžete povolit také tak, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`že zadáte cestu k vlastnosti a nastavíte ji na *hodnotu true* jako přepsání vlastnosti na kartě **přepsání vlastností** [aktivity SSIS Package](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) při spouštění balíčků v kanálu Data Factory.
+  Vlastnost můžete povolit také tak, že `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` zadáte cestu k vlastnosti a nastavíte ji na *hodnotu true* jako přepsání vlastnosti na kartě **přepsání vlastností** [aktivity SSIS Package](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) při spouštění balíčků v kanálu Data Factory.
   
   ![Povolit ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
@@ -153,7 +152,7 @@ V místním prostředí IR můžete najít protokoly za běhu ve složce *C:\Pro
 
 Pokud pracovní úkoly v místním prostředí IR vyžadují ověřování systému Windows, [nakonfigurujte balíčky SSIS tak, aby používaly stejné ověřování systému Windows](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
 
-Vaše pracovní úkoly budou vyvolány s účtem služby IR v místním prostředí (*NT SERVICE\DIAHostService*ve výchozím nastavení) a vaše úložiště dat budou k dispozici s účtem ověřování systému Windows. Oba účty vyžadují, aby jim byly přiřazeny určité zásady zabezpečení. V místním počítači IR použijte místní zásady **zabezpečení** > **místní zásady** > **přiřazení uživatelských práv**a pak postupujte takto:
+Vaše pracovní úkoly budou vyvolány s účtem služby IR v místním prostředí (*NT SERVICE\DIAHostService*ve výchozím nastavení) a vaše úložiště dat budou k dispozici s účtem ověřování systému Windows. Oba účty vyžadují, aby jim byly přiřazeny určité zásady zabezpečení. V místním počítači IR použijte místní zásady **zabezpečení**  >  **místní zásady**  >  **přiřazení uživatelských práv**a pak postupujte takto:
 
 1. Přiřaďte *kvóty pro úpravu paměti pro proces* a *nahraďte zásady tokenu na úrovni procesu* na účet služby IR pro místní hostování. Tato situace by se měla provádět automaticky při instalaci místního prostředí IR s výchozím účtem služby. Pokud tomu tak není, přiřaďte tyto zásady ručně. Pokud používáte jiný účet služby, přiřaďte k němu stejné zásady.
 
@@ -165,7 +164,7 @@ První pracovní úkoly, které běží na vašem místním prostředí IR, se �
 
 Druhé pracovní úkoly, které běží na vašem Azure-SSIS IR, se neúčtují samostatně, ale vaše běžící Azure-SSIS IR se fakturují tak, jak je uvedeno v článku [Azure-SSIS IR ceny](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
 
-## <a name="enabling-tls-12"></a>Povolení TLS 1,2
+## <a name="enabling-tls-12"></a>Povolení protokolu TLS 1.2
 
 Pokud potřebujete používat protokol TLS 1,2 a zakažte starší verze protokolu SSL/TLS v místním prostředí IR, můžete si stáhnout a spustit *hlavní skript. cmd* , který najdete ve složce *CustomSetupScript/UserScenarios/TLS 1,2* našeho kontejneru Public Preview.  Pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/)se můžete připojit k našemu kontejneru veřejné verze Preview zadáním následujícího identifikátoru URI SAS:
 

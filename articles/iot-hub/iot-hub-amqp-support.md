@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730753"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu AMQP
@@ -34,7 +33,7 @@ Pro klienta služby jsou vyžadovány následující informace:
 | Název hostitele IoT Hub | `<iot-hub-name>.azure-devices.net` |
 | Název klíče | `service` |
 | Přístupový klíč | Primární nebo sekundární klíč, který je přidružený ke službě |
-| Sdílený přístupový podpis | Krátkodobý podpis sdíleného přístupu v následujícím formátu: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Chcete-li získat kód pro generování tohoto podpisu, přečtěte si téma [řízení přístupu k IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
+| Sdílený přístupový podpis | Krátkodobý podpis sdíleného přístupu v následujícím formátu: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` . Chcete-li získat kód pro generování tohoto podpisu, přečtěte si téma [řízení přístupu k IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
 
 Následující fragment kódu používá [knihovnu uAMQP v Pythonu](https://github.com/Azure/azure-uamqp-python) pro připojení ke službě IoT Hub prostřednictvím odkazu odesílatele.
 
@@ -68,9 +67,9 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 Další informace o výměně zpráv z cloudu na zařízení mezi službou a centrem IoT a mezi zařízením a službou IoT Hub najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](iot-hub-devguide-messages-c2d.md). Klient služby používá dva odkazy k posílání zpráv a přijímání zpětné vazby pro dříve odeslané zprávy ze zařízení, jak je popsáno v následující tabulce:
 
-| Autor | Typ odkazu | Cesta odkazu | Popis |
+| Vytvořil(a) | Typ odkazu | Cesta odkazu | Description |
 |------------|-----------|-----------|-------------|
-| Služba | Odkaz odesílatele | `/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tento odkaz odesílají prostřednictvím služby. Zprávy odeslané prostřednictvím tohoto odkazu mají svou `To` vlastnost nastavenou na cestu k přijímači cílového zařízení `/devices/<deviceID>/messages/devicebound`. |
+| Služba | Odkaz odesílatele | `/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tento odkaz odesílají prostřednictvím služby. Zprávy odeslané prostřednictvím tohoto odkazu mají svou `To` vlastnost nastavenou na cestu k přijímači cílového zařízení `/devices/<deviceID>/messages/devicebound` . |
 | Služba | Odkaz na přijímače | `/messages/serviceBound/feedback` | Zprávy o dokončení, odmítnutí a zrušení zpětné vazby, které pocházejí ze zařízení přijatých prostřednictvím tohoto odkazu, se službou. Další informace o zprávách zpětné vazby najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Následující fragment kódu ukazuje, jak vytvořit zprávu typu cloud-zařízení a odeslat ji do zařízení pomocí [knihovny uAMQP v Pythonu](https://github.com/Azure/azure-uamqp-python).
@@ -129,7 +128,7 @@ for msg in batch:
         print('unknown message:', msg.properties.content_type)
 ```
 
-Jak je uvedeno v předchozím kódu, zpráva o zpětné vazbě z cloudu na zařízení má typ obsahu *application/vnd. Microsoft. iothub. feedback. JSON*. Stav doručení původní zprávy můžete odvodit pomocí vlastností v těle zprávy JSON:
+Jak je uvedeno v předchozím kódu, zpráva o zpětné vazbě z cloudu na zařízení má typ obsahu *aplikace/vnd.microsoft.iothub.feedback.js*. Stav doručení původní zprávy můžete odvodit pomocí vlastností v těle zprávy JSON:
 
 * Klíč `statusCode` v těle zpětné vazby má jednu z následujících hodnot: *úspěch*, *vypršení platnosti*, *DeliveryCountExceeded*, *zamítnutí*nebo *vyprázdnění*.
 
@@ -147,7 +146,7 @@ V každém kroku musí klient prezentovat následující informace:
 
 * Platná pověření služby (token sdíleného přístupového podpisu služby).
 
-* Dobře formátovaná cesta k oddílu skupiny příjemců, ze které zamýšlí načíst zprávy. Pro danou skupinu uživatelů a ID oddílu má cesta následující formát: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (výchozí skupina uživatelů je `$Default`).
+* Dobře formátovaná cesta k oddílu skupiny příjemců, ze které zamýšlí načíst zprávy. Pro danou skupinu uživatelů a ID oddílu má cesta následující formát: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (výchozí skupina uživatelů je `$Default` ).
 
 * Volitelný predikát filtru k určení počátečního bodu v oddílu. Tento predikát může být ve formě pořadového čísla, posunu nebo časového razítka ve frontě.
 
@@ -229,7 +228,7 @@ Pro klienta zařízení jsou vyžadovány následující informace:
 |-------------|--------------|
 | Název hostitele IoT Hub | `<iot-hub-name>.azure-devices.net` |
 | Přístupový klíč | Primární nebo sekundární klíč, který je přidružený k zařízení |
-| Sdílený přístupový podpis | Krátkodobý podpis sdíleného přístupu v následujícím formátu: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Chcete-li získat kód pro generování tohoto podpisu, přečtěte si téma [řízení přístupu k IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
+| Sdílený přístupový podpis | Krátkodobý podpis sdíleného přístupu v následujícím formátu: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` . Chcete-li získat kód pro generování tohoto podpisu, přečtěte si téma [řízení přístupu k IoT Hub](./iot-hub-devguide-security.md#security-token-structure).
 
 Následující fragment kódu používá [knihovnu uAMQP v Pythonu](https://github.com/Azure/azure-uamqp-python) pro připojení ke službě IoT Hub prostřednictvím odkazu odesílatele.
 
@@ -262,7 +261,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 Následující cesty odkazů jsou podporovány jako operace zařízení:
 
-| Autor | Typ odkazu | Cesta odkazu | Popis |
+| Vytvořil(a) | Typ odkazu | Cesta odkazu | Description |
 |------------|-----------|-----------|-------------|
 | Zařízení | Odkaz na přijímače | `/devices/<deviceID>/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tomto odkazu přijímají na základě každého cílového zařízení. |
 | Zařízení | Odkaz odesílatele | `/devices/<deviceID>/messages/events` | Zprávy typu zařízení-Cloud, které jsou odesílány ze zařízení, se odesílají prostřednictvím tohoto odkazu. |

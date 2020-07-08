@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605187"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure
@@ -34,7 +33,7 @@ Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Instalace desktopového prostředí na VIRTUÁLNÍm počítači se systémem Linux
 Většina virtuálních počítačů se systémem Linux v Azure nemá ve výchozím nastavení nainstalované desktopové prostředí. Virtuální počítače se systémem Linux se běžně spravují pomocí připojení SSH, nikoli desktopové prostředí. V systému Linux jsou k dispozici různé desktopové prostředí, které si můžete vybrat. V závislosti na vaší volbě desktopového prostředí může aplikace využívat jednu až 2 GB místa na disku a instalaci a konfiguraci všech požadovaných balíčků trvá 5 až 10 minut.
 
-Následující příklad nainstaluje zjednodušené desktopové prostředí [Xfce4](https://www.xfce.org/) na virtuální počítač s Ubuntu 18,04 LTS. Příkazy pro ostatní distribuce se mírně liší (použijte `yum` k instalaci na Red Hat Enterprise Linux a ke konfiguraci `selinux` vhodných pravidel nebo použijte `zypper` k instalaci na SUSE).
+Následující příklad nainstaluje zjednodušené desktopové prostředí [Xfce4](https://www.xfce.org/) na virtuální počítač s Ubuntu 18,04 LTS. Příkazy pro ostatní distribuce se mírně liší (použijte `yum` k instalaci na Red Hat Enterprise Linux a ke konfiguraci vhodných `selinux` pravidel nebo použijte `zypper` k instalaci na SUSE).
 
 Nejdřív k vašemu VIRTUÁLNÍmu počítači připojte SSH. Následující příklad se připojí k virtuálnímu počítači s názvem *myvm.westus.cloudapp.Azure.com* s uživatelským jménem *azureuser*. Použijte vlastní hodnoty:
 
@@ -106,7 +105,7 @@ Pokud Váš místní klient RDP používá ověřování na úrovni sítě (NLA)
 
 
 ## <a name="troubleshoot"></a>Řešení potíží
-Pokud se k VIRTUÁLNÍmu počítači se systémem Linux nemůžete připojit pomocí klienta `netstat` vzdálené plochy, pomocí nástroje na virtuálním počítači se systémem Linux ověřte, zda váš virtuální počítač naslouchá připojením RDP následujícím způsobem:
+Pokud se k VIRTUÁLNÍmu počítači se systémem Linux nemůžete připojit pomocí klienta vzdálené plochy, pomocí nástroje `netstat` na virtuálním počítači se systémem Linux ověřte, zda váš virtuální počítač naslouchá připojením RDP následujícím způsobem:
 
 ```bash
 sudo netstat -plnt | grep rdp

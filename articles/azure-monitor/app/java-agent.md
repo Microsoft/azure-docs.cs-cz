@@ -4,10 +4,9 @@ description: Rozšířené monitorování výkonu a využití vašeho webu Java 
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537538"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycených výjimek a metod doby provádění ve webových aplikacích Java
@@ -16,7 +15,7 @@ ms.locfileid: "81537538"
 Pokud jste si nastavili [svou webovou aplikaci v jazyce Java pomocí Application Insights][java], můžete použít agenta Java k získání hlubších přehledů, aniž byste museli měnit kód:
 
 * **Závislosti:** Data o voláních, která vaše aplikace vytváří na jiné komponenty, včetně:
-  * Budou zachycena **odchozí volání http** prostřednictvím Apache HttpClient, OkHttp `java.net.HttpURLConnection` a.
+  * Budou zachycena **odchozí volání http** prostřednictvím Apache HttpClient, OkHttp a `java.net.HttpURLConnection` .
   * **Redis volání** prostřednictvím klienta Jedis.
   * **Dotazy JDBC** – pro MySQL a PostgreSQL, pokud volání trvá déle než 10 sekund, agent nahlásí plán dotazu.
 
@@ -26,8 +25,8 @@ Pokud jste si nastavili [svou webovou aplikaci v jazyce Java pomocí Application
   * **Logback**
 
 * **Lepší pojmenovávání operací:** (používá se pro agregaci požadavků na portálu)
-  * **Spring** Na `@RequestMapping`jaře.
-  * **Jax-RS** založené na `@Path`. 
+  * Na **jaře** `@RequestMapping` .
+  * **Jax-RS** založené na `@Path` . 
 
 Chcete-li použít agenta Java, nainstalujte jej na server. Webové aplikace musí být instrumentované pomocí [Application Insights Java SDK][java]. 
 
@@ -89,16 +88,16 @@ Klíč: `JAVA_OPTS` hodnota:`-javaagent:D:/home/site/wwwroot/applicationinsights
 Nejnovější verzi agenta Java najdete [tady](https://github.com/Microsoft/ApplicationInsights-Java/releases
 ). 
 
-Agent musí být zabalen jako prostředek v projektu tak, že končí na D:/Home/site/wwwroot/Directory. Můžete potvrdit, že je váš agent ve správném adresáři App Service, a to tak, že kliknete na **vývojové nástroje** > **Pokročilé nástroje** > **ladit konzolu** a prozkoumáte obsah adresáře webu.    
+Agent musí být zabalen jako prostředek v projektu tak, že končí na D:/Home/site/wwwroot/Directory. Můžete potvrdit, že je váš agent ve správném adresáři App Service, a to tak, že kliknete na **vývojové nástroje**  >  **Pokročilé nástroje**  >  **ladit konzolu** a prozkoumáte obsah adresáře webu.    
 
 * Kliknutím na Uložit uložte nastavení a kliknutím na Restartovat restartujte aplikaci. (Tyto kroky platí jenom pro App Services spuštěné v systému Windows.)
 
 > [!NOTE]
-> AI-Agent. XML a soubor JAR agenta by měly být ve stejné složce. Jsou často umístěny dohromady do `/resources` složky projektu.  
+> AI-Agent.xml a soubor JAR agenta by měly být ve stejné složce. Jsou často umístěny dohromady do `/resources` složky projektu.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>Povolit distribuované trasování W3C
 
-Do souboru AI-Agent. xml přidejte následující:
+Přidejte následující AI-Agent.xml:
 
 ```xml
 <Instrumentation>
@@ -122,7 +121,7 @@ Chcete-li vyhledat jednotlivé instance sestav závislostí, výjimek a metod, o
 
 [Diagnostikování problémů se závislostmi – Další informace](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)
 
-## <a name="questions-problems"></a>Máte dotazy? Problémy?
+## <a name="questions-problems"></a>Máte otázky? Problémy?
 * Žádná data? [Nastavení výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
 * [Řešení potíží Java](java-troubleshoot.md)
 

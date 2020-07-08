@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677606"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – použití clusteru Azure HDInsight Hadoop s datovou sadou 1 TB
@@ -75,13 +74,13 @@ K datové sadě [Criteo](https://labs.criteo.com/downloads/download-terabyte-cli
 
 Kliknutím na **pokračovat se můžete stáhnout** a přečíst si další informace o datové sadě a její dostupnosti.
 
-Data se nacházejí v umístění [úložiště objektů BLOB v Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) : wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "Wasb" odkazuje na umístění Azure Blob Storage.
+Data se nacházejí v umístění [úložiště objektů BLOB v Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) : wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ . "Wasb" odkazuje na umístění Azure Blob Storage.
 
 1. Data v tomto úložišti objektů BLOB v Azure se skládají ze tří podsložek nekomprimovaných dat.
 
-   1. Podsložka *nezpracované/počet/* obsahuje prvních 21 dnů od dne\_00 do dne 20\_
-   2. Podsložka *raw/vlak/* sestává z jednoho dne, dne\_21
-   3. Podsložka *raw/test/* se skládá ze dvou dnů data, dne\_22 a dne\_23.
+   1. Podsložka *nezpracované/počet/* obsahuje prvních 21 dnů od dne \_ 00 do dne \_ 20
+   2. Podsložka *raw/vlak/* sestává z jednoho dne, dne \_ 21
+   3. Podsložka *raw/test/* se skládá ze dvou dnů data, dne \_ 22 a dne \_ 23.
 2. Nezpracovaná data gzip jsou také k dispozici v hlavní složce *raw/* as day_NN. gz, kde NN přechází z 00 na 23.
 
 Alternativním přístupem k datům, prozkoumání a modelování těchto dat, která nevyžadují žádné místní soubory ke stažení, je vysvětleno dále v tomto návodu, když vytváříme tabulky podregistru.
@@ -115,9 +114,9 @@ Po zobrazení podregistru se REPL s označením "podregistr >", jednoduše vyvyj
 
 Následující kód vytvoří databázi "Criteo" a pak vygeneruje čtyři tabulky:
 
-* *tabulka pro generování počtů* na základě dnů od\_00 do dne\_20 dní,
-* tabulka, která *se má použít jako datová sada vlaku* postavená dne\_21.
-* dvě *tabulky pro použití jako testovací datové sady, které* jsou založené\_na dni 22\_a dne 23.
+* *tabulka pro generování počtů* na základě dnů od \_ 00 do dne \_ 20 dní,
+* tabulka, která *se má použít jako datová sada vlaku* postavená dne \_ 21.
+* dvě *tabulky pro použití jako testovací datové sady, které* jsou založené na dni \_ 22 a dne \_ 23.
 
 Rozdělte testovací sadu do dvou různých tabulek, protože jeden ze dnů je svátek. Cílem je určit, jestli model dokáže detekovat rozdíly mezi volnou a nedovolenou sazbou za kliknutí.
 
@@ -222,7 +221,7 @@ V obvyklých případech můžete skript volat také z adresářové přihrádky
 
         hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
 
-Nakonec prověřte počet příkladů testů v datové sadě testu na základě dne\_23.
+Nakonec prověřte počet příkladů testů v datové sadě testu na základě dne \_ 23.
 
 Příkaz, který se má udělat, je podobný jako na zobrazené stránce (podívejte se na [vzorový&#95;podregistr&#95;count&#95;criteo&#95;test&#95;den&#95;23&#95;příklady. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
@@ -247,7 +246,7 @@ To má za důsledek distribuci popisku:
 Procentuální hodnota pozitivních popisků je přibližně 3,3% (v souladu s původní datovou sadou).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Distribuce histogramu některých číselných proměnných v datové sadě vlaků
-K zjištění toho, co vypadá, jak\_se bude distribuce číselných proměnných líbit, můžete použít funkci "s nativním histogramem" v podregistru. Tady je obsah [ukázkového&#95;podregistru&#95;criteo&#95;histogram&#95;numeric. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
+\_K zjištění toho, co vypadá, jak se bude distribuce číselných proměnných líbit, můžete použít funkci "s nativním histogramem" v podregistru. Tady je obsah [ukázkového&#95;podregistru&#95;criteo&#95;histogram&#95;numeric. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -284,7 +283,7 @@ To má za důsledek následující:
 Kombinovaný pohled – kombinace v podregistru slouží k vytvoření výstupu podobného SQL namísto normálního seznamu. V této tabulce odpovídá první sloupec centru bin a druhý k frekvenci přihrádek.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Přibližné percentily některých číselných proměnných v datové sadě vlaků
-Také úroky s číselnými proměnnými je výpočet přibližných percentilů. Pro nás je to v\_nativním "percentilu". Obsah [ukázkového&#95;podregistru&#95;criteo&#95;přibližná&#95;percentily. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) jsou:
+Také úroky s číselnými proměnnými je výpočet přibližných percentilů. Pro nás je to v nativním "percentilu" \_ . Obsah [ukázkového&#95;podregistru&#95;criteo&#95;přibližná&#95;percentily. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) jsou:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
@@ -365,7 +364,7 @@ To má za důsledek:
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-Ukázkový skript [&#95;podregistr&#95;criteo&#95;převzorkovat&#95;test&#95;den&#95;22&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) provede pro testovací data, den\_22:
+Ukázkový skript [&#95;podregistr&#95;criteo&#95;převzorkovat&#95;test&#95;den&#95;22&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) provede pro testovací data, den \_ 22:
 
         --- Now for test data (day_22)
 
@@ -383,7 +382,7 @@ To má za důsledek:
         Time taken: 317.66 seconds
 
 
-Nakonec [ukázkový skript&#95;podregistr&#95;criteo&#95;převzorkovat&#95;test&#95;den&#95;23&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) provede pro testovací data, den\_23:
+Nakonec [ukázkový skript&#95;podregistr&#95;criteo&#95;převzorkovat&#95;test&#95;den&#95;23&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) provede pro testovací data, den \_ 23:
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -424,7 +423,7 @@ Náš proces sestavení modelu v Azure Machine Learning provede následující k
 Nyní jste připraveni sestavit modely v Azure Machine Learning Studiu. Naše ukázková data se ukládají jako tabulky podregistru v clusteru. Pro čtení těchto dat použijte modul Azure Machine Learning **importovat data** . Přihlašovací údaje pro přístup k účtu úložiště tohoto clusteru jsou k dispozici v následujících ohledech.
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>Krok 1: získání dat z tabulek podregistru do Azure Machine Learning pomocí modulu import dat a výběr pro experimentování ve službě Machine Learning
-Začněte tím, že vyberete **+ Nový** -> **experiment** -> **prázdný experiment**. Pak z **vyhledávacího** pole v levém horním rohu vyhledejte "Import dat". Přetažením modulu pro **Import dat** na plátno experimentu (střední část obrazovky) použijte modul pro přístup k datům.
+Začněte tím, že vyberete **+ Nový**  ->  **experiment**  ->  **prázdný experiment**. Pak z **vyhledávacího** pole v levém horním rohu vyhledejte "Import dat". Přetažením modulu pro **Import dat** na plátno experimentu (střední část obrazovky) použijte modul pro přístup k datům.
 
 **Importovaná data** vypadají při získávání dat z tabulky podregistru:
 
@@ -433,8 +432,8 @@ Začněte tím, že vyberete **+ Nový** -> **experiment** -> **prázdný experi
 V případě modulu **Import dat** jsou hodnoty parametrů, které jsou k dispozici na obrázku, pouze příklady řazení hodnot, které je třeba zadat. Zde jsou některé obecné pokyny k vyplnění sady parametrů pro modul **Import dat** .
 
 1. Zvolit dotaz na podregistr pro **zdroj dat**
-2. V poli **dotaz do databáze podregistru** je jednoduchý výběr * z <název\_vaší\_databáze. název\_tabulky\_je>-je dostatečně.
-3. **Identifikátor URI serveru Hcatalog**: Pokud je váš cluster "ABC", je to jednoduše: https:\//ABC.azurehdinsight.NET
+2. V poli **dotaz do databáze podregistru** je jednoduchý výběr * z <\_ název vaší databáze \_ . \_ název tabulky \_ je>-je dostatečně.
+3. **Identifikátor URI serveru Hcatalog**: Pokud je váš cluster "ABC", je to jednoduše: https: \/ /ABC.azurehdinsight.NET
 4. **Název uživatelského účtu Hadoop**: uživatelské jméno, které jste zvolili při vystavení clusteru v době od jejího provozu. (Nejedná se o uživatelské jméno vzdáleného přístupu.)
 5. **Heslo uživatelského účtu Hadoop**: heslo pro uživatelské jméno, které jste zvolili při vystavení clusteru v době od jejího provozu. (Nejedná se o heslo vzdáleného přístupu.)
 6. **Umístění výstupních dat**: vyberte Azure.
@@ -477,8 +476,8 @@ Pro některé kategorií funkce velkých datových sad můžou existovat miliony
 ##### <a name="building-counting-transforms"></a>Vytváření transformací inventury
 K sestavení funkcí Count použijte modul pro **inventarizaci sestavení** , který je k dispozici v Azure Machine Learning. Modul vypadá takto:
 
-![Sestavování – vlastnosti](./media/hive-criteo-walkthrough/e0eqKtZ.png)
-![modulu transformace – modul pro počítání transformací sestavení](./media/hive-criteo-walkthrough/OdDN0vw.png)
+![Sestavování – vlastnosti modulu transformace – ](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+ ![ modul pro počítání transformací sestavení](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT]
 > Do pole **počet sloupců** zadejte sloupce, u kterých chcete provést počty. Obvykle jsou to (jak bylo zmíněno) vysoce dimenzionální kategorií sloupce. Mějte na paměti, že datová sada Criteo má 26 kategorií sloupců: od Col15 do Col40. Zde se počet všech z nich uvede a sdělte jejich indexy (od 15 do 40 oddělených čárkami, jak je znázorněno).
@@ -518,7 +517,7 @@ Druhý skript R vyrovnává distribuci mezi kladnou a zápornou třídou (tříd
 
 ![Druhý skript R](./media/hive-criteo-walkthrough/91wvcwN.png)
 
-V tomto jednoduchém skriptu jazyka R se k\_nastavení\_množství vyvážení mezi kladnou a zápornou třídou používá poměr záporného hodnoty POS. To je důležité udělat, protože vylepšení nerovnováhy tříd má obvykle vliv na výkon při klasifikacích, kde je rozdělení třídy nakloněné (v tomto případě je to v tomto případě možné, že máte 3,3% pozitivní třídy a 96,7% negativní třídu).
+V tomto jednoduchém skriptu jazyka R \_ \_ se k nastavení množství vyvážení mezi kladnou a zápornou třídou používá poměr záporného hodnoty POS. To je důležité udělat, protože vylepšení nerovnováhy tříd má obvykle vliv na výkon při klasifikacích, kde je rozdělení třídy nakloněné (v tomto případě je to v tomto případě možné, že máte 3,3% pozitivní třídy a 96,7% negativní třídu).
 
 ##### <a name="applying-the-count-transformation-on-our-data"></a>Použití transformace Count u našich dat
 Nakonec můžete použít modul **použít transformaci a použít transformované** transformace v našich datových sadách pro vlak a test. Tento modul přebírá uloženou transformaci počtu jako jeden vstup a vlak nebo test datových sad jako druhý vstup a vrací data s funkcemi Count. Zobrazuje se tady:

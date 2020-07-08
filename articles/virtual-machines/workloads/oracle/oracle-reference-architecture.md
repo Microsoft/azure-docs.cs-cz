@@ -13,10 +13,9 @@ ms.date: 12/13/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683492"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
@@ -154,7 +153,7 @@ Oracle horizontálního dělení se primárně skládá z následujících souč
 
 - Databáze **horizontálních oddílů** – databáze horizontálních oddílů jsou databáze Oracle. Každá databáze se replikuje pomocí ochrany dat Oracle v konfiguraci zprostředkovatele s povoleným rychlým spuštěním převzetí služeb při selhání (FSFO). Pro každou horizontálních oddílů není nutné nastavovat převzetí služeb při selhání ochrany dat a replikaci. Tato konfigurace se automaticky nakonfiguruje a nasadí při vytvoření sdílené databáze. Pokud se konkrétní horizontálních oddílů nepovede, sdílení Oracle při převzetí služeb při selhání připojení databáze z primárního serveru do úsporného režimu automaticky nefunguje.
 
-Databáze Oracle horizontálně dělené můžete nasadit a spravovat pomocí dvou rozhraní: Oracle Enterprise Manager Cloud Control GUI nebo nástroj `GDSCTL` příkazového řádku. Můžete dokonce monitorovat různé horizontálních oddílů pro dostupnost a výkon pomocí řízení cloudu. `GDSCTL DEPLOY` Příkaz automaticky vytvoří horizontálních oddílů a jejich příslušné naslouchací procesy. Tento příkaz kromě toho automaticky nasadí konfiguraci replikace použitou pro vysokou dostupnost na úrovni horizontálních oddílů určenou správcem.
+Databáze Oracle horizontálně dělené můžete nasadit a spravovat pomocí dvou rozhraní: Oracle Enterprise Manager Cloud Control GUI nebo `GDSCTL` Nástroj příkazového řádku. Můžete dokonce monitorovat různé horizontálních oddílů pro dostupnost a výkon pomocí řízení cloudu. `GDSCTL DEPLOY`Příkaz automaticky vytvoří horizontálních oddílů a jejich příslušné naslouchací procesy. Tento příkaz kromě toho automaticky nasadí konfiguraci replikace použitou pro vysokou dostupnost na úrovni horizontálních oddílů určenou správcem.
 
 Existují různé způsoby, jak horizontálních oddílů databázi:
 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641687"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Haivision KB Live k odeslání živého datového proudu s jednou přenosovou rychlostí  
@@ -83,7 +82,7 @@ Kazet
     ![Snímek obrazovky 2017-08-14 na adrese 9.33.17](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  Klikněte na další a potom na Hotovo.
 9.  Kliknutím na **tlačítko Přehrát** spusťte kanál kodéru.  
-    ![Haivision KB. png](./media/media-services-configure-kb-live-encoder/step9.png)
+    ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>Přehrání testu
 Přejděte do nástroje AMSE a klikněte pravým tlačítkem myši na kanál, který chcete testovat. V nabídce najeďte myší na přehrávání náhledu a vyberte možnost s Azure Media Player.

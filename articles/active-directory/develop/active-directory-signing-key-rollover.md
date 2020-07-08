@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537232"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisového klíče v Azure Active Directory
@@ -37,7 +36,7 @@ Způsob, jakým vaše aplikace zpracovává výměna klíčů, závisí na prom�
 * [Webové aplikace/rozhraní API chrání prostředky a sestavené pomocí Azure App Services](#appservices)
 * [Webové aplikace/rozhraní API chrání prostředky pomocí rozhraní .NET OWIN OpenID Connect, WS-dodává nebo WindowsAzureActiveDirectoryBearerAuthentication middleware.](#owin)
 * [Webové aplikace/rozhraní API chrání prostředky pomocí middlewaru .NET Core OpenID Connect nebo JwtBearerAuthentication middleware](#owincore)
-* [Webové aplikace/rozhraní API chránící prostředky pomocí Node. js Passport – modul Azure-AD](#passport)
+* [Webové aplikace/rozhraní API Ochrana prostředků pomocí Node.js Passport – modul Azure-AD](#passport)
 * [Webové aplikace/rozhraní API chrání prostředky a vytvořené pomocí sady Visual Studio 2015 nebo novější](#vs2015)
 * [Webové aplikace, které chrání prostředky a vytvářejí je pomocí Visual Studio 2013](#vs2013)
 * Webová rozhraní API chránící prostředky a vytvořené pomocí Visual Studio 2013
@@ -110,10 +109,10 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Webové aplikace/rozhraní API chránící prostředky pomocí Node. js Passport – modul Azure-AD
-Pokud vaše aplikace používá modul Node. js Passport-AD, již má potřebnou logiku pro automatické zpracování výměny klíčů.
+### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Webové aplikace/rozhraní API Ochrana prostředků pomocí Node.js Passport – modul Azure-AD
+Pokud vaše aplikace používá modul Node.js Passport-AD, již má potřebnou logiku pro automatické zpracování výměny klíčů.
 
-Pomocí následujícího fragmentu kódu v aplikaci App. js můžete potvrdit, že vaše aplikace Passport – AD.
+Pomocí následujícího fragmentu kódu ve app.js vaší aplikace můžete potvrdit, že vaše aplikace Passport – AD.
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -129,7 +128,7 @@ Pokud byla vaše aplikace sestavena pomocí šablony webové aplikace v aplikaci
 Pokud jste k řešení přidali ověřování ručně, nemusí mít aplikace potřebnou logiku pro výměnu klíčů. Budete je muset napsat sami nebo můžete postupovat podle kroků ve [webových aplikacích/rozhraních API pomocí jiných knihoven nebo ručně implementovat jakýkoli z podporovaných protokolů](#other).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Webové aplikace, které chrání prostředky a vytvářejí je pomocí Visual Studio 2013
-Pokud byla vaše aplikace sestavena pomocí šablony webové aplikace v Visual Studio 2013 a Vy jste vybrali **účty organizace** z nabídky **změnit ověřování** , již má potřebná logika pro automatické zpracování výměny klíčů. Tato logika ukládá jedinečný identifikátor vaší organizace a informace o podpisovém klíči ve dvou databázových tabulkách přidružených k tomuto projektu. Připojovací řetězec pro databázi můžete najít v souboru Web. config projektu.
+Pokud byla vaše aplikace sestavena pomocí šablony webové aplikace v Visual Studio 2013 a Vy jste vybrali **účty organizace** z nabídky **změnit ověřování** , již má potřebná logika pro automatické zpracování výměny klíčů. Tato logika ukládá jedinečný identifikátor vaší organizace a informace o podpisovém klíči ve dvou databázových tabulkách přidružených k tomuto projektu. Připojovací řetězec pro databázi můžete najít v souboru Web.config projektu.
 
 Pokud jste k řešení přidali ověřování ručně, nemusí mít aplikace potřebnou logiku pro výměnu klíčů. Budete je muset napsat sami nebo můžete postupovat podle kroků ve [webových aplikacích/rozhraních API pomocí jiných knihoven nebo ručně implementovat jakýkoli z podporovaných protokolů.](#other)
 
@@ -239,7 +238,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2012
-Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Azure AD) a klíčích používaných k ověřování tokenů, které vydávají. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web. config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
+Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Azure AD) a klíčích používaných k ověřování tokenů, které vydávají. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
 
 Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů v dokumentaci od Microsoftu, je logika přecházení mezi klíči již obsažena v projektu. Všimněte si, že níže uvedený kód již v projektu existuje. Pokud vaše aplikace ještě tuto logiku nemá, postupujte podle následujících kroků a ověřte, zda správně funguje.
 
@@ -269,11 +268,11 @@ Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů 
    }
    ```
 
-Po provedení těchto kroků se web. config vaší aplikace aktualizuje o nejnovější informace z dokumentu federačních metadat, včetně nejnovějších klíčů. K této aktualizaci dojde pokaždé, když se fond aplikací recykluje ve službě IIS. ve výchozím nastavení je služba IIS nastavená na recyklaci aplikací každých 29 hodin.
+Po provedení těchto kroků se Web.config vaší aplikace aktualizuje o nejnovější informace z dokumentu federačních metadat, včetně nejnovějších klíčů. K této aktualizaci dojde pokaždé, když se fond aplikací recykluje ve službě IIS. ve výchozím nastavení je služba IIS nastavená na recyklaci aplikací každých 29 hodin.
 
 Použijte následující postup, chcete-li ověřit, zda je logika výměny klíčů funkční.
 
-1. Po ověření, že aplikace používá kód výše, otevřete soubor **Web. config** a přejděte do ** \<issuerNameRegistry>** blok, konkrétně vyhledejte následující pár řádků:
+1. Po ověření, že aplikace používá výše uvedený kód, otevřete soubor **Web.config** a přejděte do **\<issuerNameRegistry>** bloku, konkrétně se podívejte na následující pár řádků:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -281,7 +280,7 @@ Použijte následující postup, chcete-li ověřit, zda je logika výměny klí
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. V nastavení ** \<>přidat kryptografický otisk = ""** změňte hodnotu kryptografického otisku tak, že nahradíte libovolný znak jiným. Uložte soubor **Web.config**.
+2. V **\<add thumbprint="">** nastavení změňte hodnotu kryptografického otisku tak, že nahradíte libovolný znak jiným. Uložte soubor **Web.config**.
 3. Sestavte aplikaci a potom ji spusťte. Pokud můžete dokončit proces přihlášení, aplikace úspěšně aktualizuje klíč stažením požadovaných informací z dokumentu federačních metadat vašeho adresáře. Pokud máte problémy s přihlášením, zajistěte, aby změny v aplikaci byly správné, a přečtěte si téma [přidání přihlášení k webové aplikaci pomocí Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) nebo stažení a kontrola následující ukázky kódu: [víceklientské cloudová aplikace pro Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010 a technologie Windows Identity Foundation (WIF) v 1.0 pro .NET 3,5

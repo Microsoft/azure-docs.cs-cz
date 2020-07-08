@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641129"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování pomocí Media Services
@@ -74,17 +73,17 @@ Následující tabulka poskytuje návod pro porovnání dvou typů kanálů podp
 
 | Funkce | Předávací kanál | Kanál Standard |
 | --- | --- | --- |
-| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |Ne |Ano |
+| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Yes |
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstev, 60 + fps |720p, 6 vrstev, 30 snímků za sekundu |
 | Vstupní protokoly |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Price |Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video. |Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximální doba běhu |non |8 hodin |
-| Podpora pro vložení SLAT |Ne |Ano |
-| Podpora pro signalizaci AD |Ne |Ano |
+| Podpora pro vložení SLAT |No |Yes |
+| Podpora pro signalizaci AD |No |Yes |
 | Předávací titulky CEA 608/708 |Ano |Ano |
-| Podpora pro neuniformní vstupní GOPs |Ano |Ne – vstup musí být pevně 2sec GOPs. |
-| Podpora pro vstup variabilní frekvence snímků |Ano |Ne – vstupní hodnota musí být pevná snímková frekvence.<br/>Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kodér ale nemůže přetahovat na 10 snímků za sekundu. |
-| Automatické shutoff kanálů při ztrátě vstupního kanálu |Ne |V případě, že není spuštěn žádný program, po 12 hodinách. |
+| Podpora pro neuniformní vstupní GOPs |Yes |Ne – vstup musí být pevně 2sec GOPs. |
+| Podpora pro vstup variabilní frekvence snímků |Yes |Ne – vstupní hodnota musí být pevná snímková frekvence.<br/>Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kodér ale nemůže přetahovat na 10 snímků za sekundu. |
+| Automatické shutoff kanálů při ztrátě vstupního kanálu |No |V případě, že není spuštěn žádný program, po 12 hodinách. |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů (průchozí)
 
@@ -104,7 +103,7 @@ Další informace najdete v článku o [práci s kanály, které mají povolené
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>Popis kanálu a jeho souvisejících komponent
 
-### <a name="channel"></a>Channel
+### <a name="channel"></a>Kanál
 
 V Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s zodpovídá za zpracování obsahu živého streamování. Kanál poskytuje vstupní koncový bod (adresa URL pro příjem), který pak poskytnete pro živý překódování. Kanál přijímá živé vstupní proudy z živého překódování a zpřístupňuje je pro streamování prostřednictvím jednoho nebo více starají. Kanály také poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
@@ -151,9 +150,9 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje se fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádné spuštěné programy)<br/>– nebo –<br/>Streamování (aspoň jeden spuštěný program) |ANO |
+| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
-| Zastaveno |Zastaveno |Ne |
+| Zastaveno |Zastaveno |No |
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

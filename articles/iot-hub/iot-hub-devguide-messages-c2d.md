@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
 ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81729996"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Posílání zpráv z cloudu na zařízení ze služby IoT Hub
@@ -76,7 +75,7 @@ Když odešlete zprávu typu cloud-zařízení, může služba požádat o doru�
 
 | Hodnota vlastnosti ACK | Chování |
 | ------------ | -------- |
-| Žádná     | Centrum IoT negeneruje zprávu zpětné vazby (výchozí chování). |
+| žádné     | Centrum IoT negeneruje zprávu zpětné vazby (výchozí chování). |
 | pozitivní | Pokud zpráva typu cloud-zařízení dosáhne stavu *dokončeno* , Centrum IoT vygeneruje zprávu o zpětné vazbě. |
 | negativní | Pokud zpráva typu cloud-zařízení dosáhne *nedoručeného písmena* , Centrum IoT vygeneruje zprávu zpětné vazby. |
 | kompletní     | Centrum IoT v obou případech vygeneruje zprávu zpětné vazby. |
@@ -97,8 +96,8 @@ Tělo je pole záznamů serializovaných ve formátu JSON, z nichž každá má 
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Časové razítko, které indikuje, kdy došlo k výsledku zprávy (například centrum přijalo zprávu o zpětné vazbě nebo původní zpráva vypršela) |
 | OriginalMessageId  | Parametr *MessageID* zprávy typu cloud-zařízení, na kterou se vztahují tyto informace o zpětné vazbě |
-| StatusCode         | Požadovaný řetězec, který se používá ve zprávách zpětné vazby, které jsou generovány službou IoT Hub: <br/> *Úspěch* <br/> *Platnost vypršela* <br/> *DeliveryCountExceeded* <br/> *Rejected* <br/> *Odstraněna* |
-| Popis        | Hodnoty řetězce pro *StatusCode* |
+| StatusCode         | Požadovaný řetězec, který se používá ve zprávách zpětné vazby, které jsou generovány službou IoT Hub: <br/> *Nástup* <br/> *Platnost vypršela* <br/> *DeliveryCountExceeded* <br/> *Zamítnuto* <br/> *Odstraněna* |
+| Description        | Hodnoty řetězce pro *StatusCode* |
 | DeviceId           | *DeviceID* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
 | DeviceGenerationId | *DeviceGenerationId* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
 

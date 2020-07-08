@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: aa65b789d02c60ef6042aa62e1c138c0e1bd7224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676900"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavení Oracle ASM na virtuálním počítači Azure Linux  
@@ -60,7 +59,7 @@ Následující příklad vytvoří virtuální počítač s názvem myVM, který
     --data-disk-sizes-gb 50 50 50 50
    ```
 
-Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Všimněte si hodnoty pro `publicIpAddress`. Tuto adresu použijete pro přístup k virtuálnímu počítači.
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Všimněte si hodnoty pro `publicIpAddress` . Tuto adresu použijete pro přístup k virtuálnímu počítači.
 
    ```output
    {
@@ -210,7 +209,7 @@ Pro tento kurz je výchozím uživatelem *Mřížka* a výchozí skupina je *asm
    fdisk /dev/sdc
    ```
    
-   Pomocí odpovědí uvedených výše by měl výstup `fdisk` příkazu vypadat takto:
+   Pomocí odpovědí uvedených výše `fdisk` by měl výstup příkazu vypadat takto:
 
    ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -246,7 +245,7 @@ Pro tento kurz je výchozím uživatelem *Mřížka* a výchozí skupina je *asm
    Syncing disks.
    ```
 
-4. Opakujte předchozí `fdisk` příkaz pro `/dev/sdd`, `/dev/sde`a. `/dev/sdf`
+4. Opakujte předchozí `fdisk` příkaz pro `/dev/sdd` , `/dev/sde` a `/dev/sdf` .
 
 5. Ověřte konfiguraci disku:
 
@@ -385,14 +384,14 @@ Pokud chcete stáhnout a připravit software infrastruktury pro mřížku Oracle
    sudo chown -R grid:oinstall /opt/grid
    ```
 
-6. Aktualizuje nakonfigurované místo odkládacího souboru. Komponenty mřížky Oracle potřebují pro instalaci mřížky aspoň 6,8 GB prostoru pro odkládací umístění. Výchozí velikost stránkovacího souboru pro Image Oracle Linux v Azure je jenom 2 048 MB. Aby se aktualizované nastavení `ResourceDisk.SwapSizeMB` projevilo `/etc/waagent.conf` , musíte soubor zvětšit a restartovat službu WALinuxAgent. Vzhledem k tomu, že se jedná o soubor jen pro čtení, je nutné změnit oprávnění k souboru, aby bylo možné povolit přístup pro zápis.
+6. Aktualizuje nakonfigurované místo odkládacího souboru. Komponenty mřížky Oracle potřebují pro instalaci mřížky aspoň 6,8 GB prostoru pro odkládací umístění. Výchozí velikost stránkovacího souboru pro Image Oracle Linux v Azure je jenom 2 048 MB. Aby se aktualizované nastavení projevilo, musíte `ResourceDisk.SwapSizeMB` `/etc/waagent.conf` soubor zvětšit a restartovat službu WALinuxAgent. Vzhledem k tomu, že se jedná o soubor jen pro čtení, je nutné změnit oprávnění k souboru, aby bylo možné povolit přístup pro zápis.
 
    ```bash
    sudo chmod 777 /etc/waagent.conf  
    vi /etc/waagent.conf
    ```
 
-   Vyhledejte `ResourceDisk.SwapSizeMB` a změňte hodnotu na **8192**. Budete muset stisknout `insert` , pokud chcete zadat režim vložení, zadat hodnotu **8192** a potom se stisknutím klávesy `esc` vraťte do režimu příkazu. Chcete-li zapsat změny a soubor ukončit, zadejte `:wq` a stiskněte `enter`klávesu.
+   Vyhledejte `ResourceDisk.SwapSizeMB` a změňte hodnotu na **8192**. Budete muset stisknout, pokud `insert` chcete zadat režim vložení, zadat hodnotu **8192** a potom se stisknutím klávesy `esc` vraťte do režimu příkazu. Chcete-li zapsat změny a soubor ukončit, zadejte `:wq` a stiskněte klávesu `enter` .
    
    > [!NOTE]
    > Důrazně doporučujeme, abyste vždy použili `WALinuxAgent` ke konfiguraci odkládacího prostoru tak, aby se vždy vytvořil na místním dočasném disku (dočasný disk), aby se co nejlépe využíval. Další informace o najdete v tématu [Postup přidání odkládacího souboru ve virtuálních počítačích se systémem Linux Azure](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines).
@@ -402,14 +401,14 @@ Konfigurace Oracle ASM vyžaduje grafické rozhraní k dokončení instalace a k
 
 1. [Stáhněte](https://www.putty.org/) si a [Stáhněte si Xming](https://xming.en.softonic.com/) do počítače s Windows. Než budete pokračovat, musíte dokončit instalaci obou těchto aplikací s výchozími hodnotami.
 
-2. Po instalaci výstupu otevřete příkazový řádek, přejděte do složky pro výstupy (například C:\Program Files\PuTTY) a spusťte `puttygen.exe` příkaz, aby se vygeneroval klíč.
+2. Po instalaci výstupu otevřete příkazový řádek, přejděte do složky pro výstupy (například C:\Program Files\PuTTY) a spusťte příkaz, aby `puttygen.exe` se vygeneroval klíč.
 
 3. Generátor klíčů ve výstupu:
    
    1. Vygenerujte klíč výběrem `Generate` tlačítka.
    2. Zkopírujte obsah klíče (CTRL + C).
    3. Vyberte tlačítko `Save private key`.
-   4. Ignorujte upozornění týkající se zabezpečení klíče pomocí přístupového hesla a pak vyberte `OK`.
+   4. Ignorujte upozornění týkající se zabezpečení klíče pomocí přístupového hesla a pak vyberte `OK` .
 
    ![Snímek generátoru klíčů pro výstupu](./media/oracle-asm/puttykeygen.png)
 
@@ -424,18 +423,18 @@ Konfigurace Oracle ASM vyžaduje grafické rozhraní k dokončení instalace a k
 5. Vytvořte soubor s názvem `authorized_keys`. Vložte obsah klíče do tohoto souboru a pak soubor uložte.
 
    > [!NOTE]
-   > Klíč musí obsahovat řetězec `ssh-rsa`. Obsah klíče musí být také jeden řádek textu.
+   > Klíč musí obsahovat řetězec `ssh-rsa` . Obsah klíče musí být také jeden řádek textu.
    >  
 
-6. V klientském systému zahajte výstup do výstupu. V podokně **kategorie** přejít na **připojení** > **SSH** > **ověřování**. V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
+6. V klientském systému zahajte výstup do výstupu. V podokně **kategorie** přejít na **připojení**  >  **SSH**  >  **ověřování**. V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
 
    ![Snímek obrazovky s možnostmi ověřování SSH](./media/oracle-asm/setprivatekey.png)
 
-7. V podokně **kategorie** přejít na **připojení** > **SSH** > **X11**. Zaškrtněte políčko **Povolit předávání X11** .
+7. V podokně **kategorie** přejít na **připojení**  >  **SSH**  >  **X11**. Zaškrtněte políčko **Povolit předávání X11** .
 
    ![Snímek obrazovky s možnostmi předávání X11 SSH](./media/oracle-asm/enablex11.png)
 
-8. V podokně **kategorie** přejít na **relace**. Do dialogového okna název hostitele `<publicIPaddress>` zadejte svůj virtuální počítač Oracle ASM, zadejte nový `Saved Session` název a klikněte na zapnout. `Save`  Po uložení klikněte na zapnout `open` a připojte se k virtuálnímu počítači Oracle ASM.  Při prvním připojení budete upozorněni, že vzdálený systém není uložen do mezipaměti v registru. `yes` Klikněte na tlačítko a přidejte ho a pokračujte.
+8. V podokně **kategorie** přejít na **relace**. Do dialogového okna název hostitele zadejte svůj virtuální počítač Oracle ASM `<publicIPaddress>` , zadejte nový `Saved Session` název a klikněte na zapnout `Save` .  Po uložení klikněte na zapnout `open` a připojte se k virtuálnímu počítači Oracle ASM.  Při prvním připojení budete upozorněni, že vzdálený systém není uložen do mezipaměti v registru. Klikněte na tlačítko `yes` a přidejte ho a pokračujte.
 
    ![Snímek možností pro relaci výstupu](./media/oracle-asm/puttysession.png)
 
@@ -472,13 +471,13 @@ Pro instalaci infrastruktury pro mřížku Oracle proveďte následující kroky
 
    ![Snímek obrazovky se stránkou pro zadání hesla ASM instalační služby](./media/oracle-asm/install04.png)
 
-6. Na stránce **zadat možnosti správy** máte možnost konfigurovat em Cloud Control. Tuto možnost přeskočíme – kliknutím `next` budete pokračovat. 
+6. Na stránce **zadat možnosti správy** máte možnost konfigurovat em Cloud Control. Tuto možnost přeskočíme – kliknutím budete `next` pokračovat. 
 
 7. Na stránce **privilegované skupiny operačních systémů** použijte výchozí nastavení. Kliknutím `next` pokračujte.
 
 8. Na stránce **zadat umístění instalace** použijte výchozí nastavení. Kliknutím `next` pokračujte.
 
-9. Na stránce **vytvořit inventář** změňte adresář inventáře na `/u01/app/grid/oraInventory`. Kliknutím `next` pokračujte.
+9. Na stránce **vytvořit inventář** změňte adresář inventáře na `/u01/app/grid/oraInventory` . Kliknutím `next` pokračujte.
 
    ![Snímek obrazovky se stránkou pro vytvoření inventáře instalační služby](./media/oracle-asm/install08.png)
 
@@ -488,21 +487,21 @@ Pro instalaci infrastruktury pro mřížku Oracle proveďte následující kroky
 
 11. Na stránce **provést kontroly požadovaných součástí** selže aktuální nastavení s chybami. Toto chování je očekávané. Vyberte `Fix & Check Again`.
 
-12. V dialogovém okně **opravit skript** klikněte na `OK`.
+12. V dialogovém okně **opravit skript** klikněte na `OK` .
 
-13. Na stránce **Souhrn** zkontrolujte zvolená nastavení a potom klikněte na tlačítko `Install`.
+13. Na stránce **Souhrn** zkontrolujte zvolená nastavení a potom klikněte na tlačítko `Install` .
 
     ![Snímek obrazovky se souhrnem stránky instalačního programu](./media/oracle-asm/install12.png)
 
 14. Zobrazí se dialogové okno s upozorněním, ve kterém je třeba spustit konfigurační skripty jako privilegovaný uživatel. Kliknutím `Yes` pokračujte.
 
-15. Na stránce **Dokončit** klikněte `Close` na Dokončit instalaci.
+15. Na stránce **Dokončit** klikněte na `Close` Dokončit instalaci.
 
 ## <a name="set-up-your-oracle-asm-installation"></a>Nastavení instalace Oracle ASM
 
 K nastavení instalace Oracle ASM proveďte následující kroky:
 
-1. Ujistěte se, že jste stále přihlášeni jako **Mřížka**z relace X11. Možná budete muset být připotřebuji obnoviti `enter` k terminálu. Pak spusťte pomocníka s konfigurací Správce automatizovaného úložiště Oracle:
+1. Ujistěte se, že jste stále přihlášeni jako **Mřížka**z relace X11. Možná budete muset být `enter` připotřebuji obnoviti k terminálu. Pak spusťte pomocníka s konfigurací Správce automatizovaného úložiště Oracle:
 
    ```bash
    cd /u01/app/grid/product/12.1.0/grid/bin
@@ -511,7 +510,7 @@ K nastavení instalace Oracle ASM proveďte následující kroky:
 
    Otevře se Pomocník s konfigurací Oracle ASM.
 
-2. V dialogovém okně **Konfigurovat ASM: skupiny disků** klikněte na `Create` tlačítko a pak klikněte na. `Show Advanced Options`
+2. V dialogovém okně **Konfigurovat ASM: skupiny disků** klikněte na `Create` tlačítko a pak klikněte na `Show Advanced Options` .
 
 3. V dialogovém okně **vytvořit skupinu disků** :
 
@@ -523,7 +522,7 @@ K nastavení instalace Oracle ASM proveďte následující kroky:
 
    ![Snímek obrazovky dialogového okna vytvořit skupinu disků](./media/oracle-asm/asm02.png)
 
-4. V dialogovém okně **Konfigurovat ASM: skupiny disků** klikněte na `Create` tlačítko a pak klikněte na. `Show Advanced Options`
+4. V dialogovém okně **Konfigurovat ASM: skupiny disků** klikněte na `Create` tlačítko a pak klikněte na `Show Advanced Options` .
 
 5. V dialogovém okně **vytvořit skupinu disků** :
 
@@ -554,7 +553,7 @@ Software Oracle Database je již nainstalován na Azure Marketplace imagi. Chcet
 
    Otevře se Pomocník s konfigurací databáze.
 
-2. Na stránce **databázová operace** klikněte na `Create Database`.
+2. Na stránce **databázová operace** klikněte na `Create Database` .
 
 3. Na stránce **režim vytváření** :
 
@@ -570,7 +569,7 @@ Software Oracle Database je již nainstalován na Azure Marketplace imagi. Chcet
 
    ![Snímek obrazovky se stránkou Shrnutí](./media/oracle-asm/createdb03.png)
 
-5. Databáze byla vytvořena. Na stránce **Dokončit** máte možnost odemknout další účty pro použití této databáze a měnit hesla. Pokud to chcete udělat, vyberte **Správa hesel** – jinak klikněte na `close`.
+5. Databáze byla vytvořena. Na stránce **Dokončit** máte možnost odemknout další účty pro použití této databáze a měnit hesla. Pokud to chcete udělat, vyberte **Správa hesel** – jinak klikněte na `close` .
 
 ## <a name="delete-the-vm"></a>Odstranění virtuálního počítače
 

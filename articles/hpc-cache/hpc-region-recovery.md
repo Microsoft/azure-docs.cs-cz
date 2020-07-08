@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 21074ae6bc4959da031bc7065cd7d0639ec2a14f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537266"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Použití více mezipamětí pro místní obnovení převzetí služeb při selhání

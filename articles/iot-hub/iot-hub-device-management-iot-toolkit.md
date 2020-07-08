@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81688095"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub
@@ -48,7 +47,7 @@ Spusťte nástroje Azure IoT Tools pro Visual Studio Code s různými možnostmi
 * Aktivní předplatné Azure.
 * Azure IoT Hub v rámci vašeho předplatného.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Nástroje Azure IoT pro vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo zkopírujte tuto adresu URL a vložte ji do okna prohlížeče:`vscode:extension/vsciot-vscode.azure-iot-tools`.
+* [Nástroje Azure IoT pro vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo zkopírujte tuto adresu URL a vložte ji do okna prohlížeče: `vscode:extension/vsciot-vscode.azure-iot-tools` .
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Přihlaste se, abyste měli přístup ke službě IoT Hub.
 
@@ -71,19 +70,19 @@ Spusťte nástroje Azure IoT Tools pro Visual Studio Code s různými možnostmi
 
 2. Do vstupního pole zadejte název metody a datovou část.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení**IoT Hub v Azure** .
+3. Výsledky se zobrazí ve **výstupu**  >  zobrazení**IoT Hub v Azure** .
 
 ## <a name="read-device-twin"></a>Čtení z vlákna zařízení
 
 1. Klikněte pravým tlačítkem na zařízení a vyberte **Upravit nevlákenné zařízení**. 
 
-2. Soubor **Azure-IoT-Device-s dvojitou příponou. JSON** se otevře s obsahem vlákna zařízení.
+2. **azure-iot-device-twin.js** souboru se otevře s obsahem vlákna zařízení.
 
 ## <a name="update-device-twin"></a>Aktualizovat dvojitou dvojici zařízení
 
 1. Proveďte některé úpravy **značek** nebo **vlastností. požadované** pole.
 
-2. Klikněte pravým tlačítkem na soubor **Azure-IoT-Device-zdvojené. JSON** .
+2. Pravým tlačítkem myši klikněte na **azure-iot-device-twin.jsv** souboru.
 
 3. Vyberte možnost **aktualizovat dvojitou adresu zařízení** , aby se aktualizovaly vlákna zařízení.
 
@@ -95,7 +94,7 @@ Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte
 
 2. Do vstupního pole zadejte zprávu.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení**IoT Hub v Azure** .
+3. Výsledky se zobrazí ve **výstupu**  >  zobrazení**IoT Hub v Azure** .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,15 +7,14 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727252"
 ---
 # <a name="error-codes"></a>Kódy chyb #
 
-Když přehrávání nepůjde spustit nebo se zastavilo, aktivuje se událost chyby a `error()` funkce vrátí kód a volitelnou zprávu, aby vývojář aplikace mohl získat další podrobnosti. `error().message`není zobrazena zpráva uživateli.  Zpráva zobrazená uživateli je založena na `error().code` službě BITS 27-20, viz tabulka níže.
+Když přehrávání nepůjde spustit nebo se zastavilo, aktivuje se událost chyby a `error()` funkce vrátí kód a volitelnou zprávu, aby vývojář aplikace mohl získat další podrobnosti. `error().message`není zobrazena zpráva uživateli.  Zpráva zobrazená uživateli je založena na `error().code` službě bits 27-20, viz tabulka níže.
 
 ```javascript
 
@@ -44,12 +43,12 @@ Popište oblast chyby.
 Popište podrobnosti o chybě. bity 27-20 poskytují vysokou úroveň, bity 19-0 poskytují více podrobností, pokud jsou k dispozici.
 
 
-| amp. errorCode. název | Kódy, bity [27-0] (28 bitů) | Popis |
+| amp. errorCode. název | Kódy, bity [27-0] (28 bitů) | Description |
 |---|---:|---|
 | **Rozsah chyb MEDIA_ERR_ABORTED (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | Obecná chyba přerušení |
 | abortedErrNotImplemented | 0x0100001 | Chyba přerušení, neimplementováno |
-| abortedErrHttpMixedContentBlocked | 0x0100002 | Chyba přerušení, zakázaný smíšený obsah při načítání `http://` datového proudu ze `https://` stránky obvykle dochází k zablokování smíšeného obsahu |
+| abortedErrHttpMixedContentBlocked | 0x0100002 | Chyba přerušení, zakázaný smíšený obsah při načítání `http://` datového proudu ze stránky obvykle dochází k zablokování smíšeného obsahu `https://` |
 | **Počáteční hodnota chyb MEDIA_ERR_NETWORK (0x0200000-0x02FFFFF)** | | |
 | networkErrUnknown | 0x0200000 | Obecná chyba sítě |
 | networkErrHttpBadUrlFormat | 0x0200190 | Chybová odpověď HTTP 400 |

@@ -16,10 +16,9 @@ ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81603829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
@@ -126,7 +125,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název  | Zdrojový atribut  | Obor názvů |
+    | Name  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Role            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -148,7 +147,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** a uložte ho do svého počítače.
 
@@ -212,7 +211,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     a. Do textového pole **klíč** zadejte název klíče pro: Azureadtest.
 
-    b. Do textového pole **hodnota (volitelné)** zadejte hodnotu klíče v následujícím formátu `accountname-aws-admin`. Název účtu by měl být malými písmeny.
+    b. Do textového pole **hodnota (volitelné)** zadejte hodnotu klíče v následujícím formátu `accountname-aws-admin` . Název účtu by měl být malými písmeny.
 
     c. Klikněte na **Další: zkontrolovat**.
 
@@ -220,7 +219,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Konfigurace kontroly jednotného přihlašování][34]
 
-    a. Do textového pole **název role** zadejte hodnotu v následujícím vzoru `accountname-aws-admin`.
+    a. Do textového pole **název role** zadejte hodnotu v následujícím vzoru `accountname-aws-admin` .
 
     b. Do textového pole **Popis role** zadejte stejnou hodnotu, kterou jste použili pro název role.
 
@@ -283,7 +282,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    g. Rozbalte vlastnost appRoles z instančního objektu služby.
+    například Rozbalte vlastnost appRoles z instančního objektu služby.
 
     ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 

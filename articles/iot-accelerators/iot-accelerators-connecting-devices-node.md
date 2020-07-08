@@ -1,6 +1,6 @@
 ---
-title: Zřízení zařízení pro vzdálené monitorování v Node. js – Azure | Microsoft Docs
-description: V této části najdete popis postupu připojení zařízení k akcelerátoru řešení vzdáleného monitorování pomocí aplikace napsané v Node. js.
+title: Zřizování zařízení pro vzdálené monitorování v Node.js – Azure | Microsoft Docs
+description: V této části najdete popis postupu připojení zařízení k akcelerátoru řešení vzdáleného monitorování pomocí aplikace napsané v Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,23 +10,22 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 76692c7d923e261d1e3beefa0e2ea76b94282a46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683973"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení k akcelerátoru řešení vzdáleného monitorování (Node. js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení k akcelerátoru řešení vzdáleného monitorování (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak připojit reálné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node. js, což je dobrá možnost pro prostředí s minimálními omezeními prostředků.
+V tomto kurzu se dozvíte, jak připojit reálné zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, což je dobrá možnost pro prostředí s minimálními omezeními prostředků.
 
 Pokud dáváte přednost simulaci zařízení, přečtěte si téma [Vytvoření a otestování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
-## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node. js
+## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node.js
 
-Ujistěte se, že je v počítači pro vývoj nainstalovaná verze [Node. js](https://nodejs.org/) verze 4.0.0 nebo novější. Verzi můžete zjistit `node --version` spuštěním příkazu na příkazovém řádku.
+Ujistěte se, že na vašem vývojovém počítači je nainstalovaná verze [Node.js](https://nodejs.org/) 4.0.0 nebo novější. `node --version`Verzi můžete zjistit spuštěním příkazu na příkazovém řádku.
 
 1. Vytvořte složku s názvem `remotemonitoring` ve vývojovém počítači. V prostředí příkazového řádku přejděte do této složky.
 
@@ -37,9 +36,9 @@ Ujistěte se, že je v počítači pro vývoj nainstalovaná verze [Node. js](ht
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Ve `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring. js**. Otevřete tento soubor v textovém editoru.
+1. Ve `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
 
-1. V souboru **remote_monitoring. js** přidejte následující `require` příkazy:
+1. Do **remote_monitoring.js** souboru přidejte následující `require` příkazy:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -48,7 +47,7 @@ Ujistěte se, že je v počítači pro vývoj nainstalovaná verze [Node. js](ht
     var async = require('async');
     ```
 
-1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu `{device connection string}` zástupného symbolu hodnotou, kterou jste si poznamenali u zařízení, které jste zřídili v řešení vzdáleného monitorování:
+1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu zástupného symbolu `{device connection string}` hodnotou, kterou jste si poznamenali u zařízení, které jste zřídili v řešení vzdáleného monitorování:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -329,7 +328,7 @@ Ujistěte se, že je v počítači pro vývoj nainstalovaná verze [Node. js](ht
       });
       ```
 
-1. Uložte změny do souboru **remote_monitoring. js** .
+1. Uložte změny do souboru **remote_monitoring.js** .
 
 1. Chcete-li spustit ukázkovou aplikaci, spusťte na příkazovém řádku následující příkaz:
 

@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727161"
 ---
 # <a name="options"></a>Možnosti #
@@ -30,7 +29,7 @@ Nakonec, pokud nepoužíváte atribut pro nastavení dat pro aktivaci instalace 
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> Možnosti v konstruktoru jsou nastaveny pouze při první inicializaci před nastavením zdroje.  Chcete-li upravit možnosti na stejném inicializovaném Azure Media Player elementu, je nutné před změnou zdroje aktualizovat možnosti. Možnosti v JavaScriptu můžete aktualizovat pomocí `myPlayer.options({/*updated options*/});`. Všimněte si, že budou ovlivněny jenom změněné možnosti, všechny ostatní možnosti, které jste nastavili, budou trvalé.
+> Možnosti v konstruktoru jsou nastaveny pouze při první inicializaci před nastavením zdroje.  Chcete-li upravit možnosti na stejném inicializovaném Azure Media Player elementu, je nutné před změnou zdroje aktualizovat možnosti. Možnosti v JavaScriptu můžete aktualizovat pomocí `myPlayer.options({/*updated options*/});` . Všimněte si, že budou ovlivněny jenom změněné možnosti, všechny ostatní možnosti, které jste nastavili, budou trvalé.
 
 ## <a name="individual-options"></a>Jednotlivé možnosti ##
 
@@ -92,11 +91,11 @@ Nastavením této možnosti na true video element bude trvat celou šířku nad�
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`možnost Přepisuje explicitní `width` a `height` nastavení. Tato možnost je k dispozici pouze ve `2.0.0` verzi Azure Media Player a novější.
+`fluid`možnost Přepisuje explicitní `width` a `height` nastavení. Tato možnost je k dispozici pouze ve verzi Azure Media Player `2.0.0` a novější.
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`možnost řídí playbackSpeed řízení a sadu nastavení rychlosti přehrávání, které jsou pro uživatele k dispozici. `playbackSpeed`vezme objekt. Aby bylo možné povolit ovládací prvek rychlost přehrávání na ovládacím panelu, musí `enabled` být vlastnost objektu nastavena na hodnotu true. Příklad povolení rychlosti přehrávání v kódu:
+`playbackSpeed`možnost řídí playbackSpeed řízení a sadu nastavení rychlosti přehrávání, které jsou pro uživatele k dispozici. `playbackSpeed`vezme objekt. Aby bylo možné povolit ovládací prvek rychlost přehrávání na ovládacím panelu, `enabled` musí být vlastnost objektu nastavena na hodnotu true. Příklad povolení rychlosti přehrávání v kódu:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 

@@ -4,10 +4,9 @@ description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538286"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
@@ -35,8 +34,8 @@ Nastavení zařízení pomocí šablony VHD:
 
 Stáhněte pro zařízení šablonu VHD s příponou.
 
-1. V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
-2. V rozevíracích **seznamech počítačů** > , ve**kterých jsou počítače virtualizované?** klikněte na **Ano, s technologií Hyper-V**.
+1. V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+2. V rozevíracích **seznamech počítačů**, ve  >  **kterých jsou počítače virtualizované?** klikněte na **Ano, s technologií Hyper-V**.
 3. Kliknutím na **Stáhnout** Stáhněte soubor VHD.
 
     ![Stáhnout virtuální počítač](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
@@ -65,9 +64,9 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
     ![Nasazení VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
 2. V Průvodci importem virtuálního počítače > **než začnete**, klikněte na **Další**.
-3. V části **Vyhledat složku**zadejte složku obsahující extrahovaný virtuální pevný disk. Pak klikněte na **Další**.
+3. V části **Vyhledat složku**zadejte složku obsahující extrahovaný virtuální pevný disk. Potom klikněte na **Další**.
 1. V nabídce **Vybrat virtuální počítač**klikněte na **Další**.
-2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)**. Pak klikněte na **Další**.
+2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)**. Potom klikněte na **Další**.
 3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
 4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
 5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure.
@@ -91,7 +90,7 @@ Nastavte zařízení poprvé. Pokud zařízení nasadíte pomocí skriptu místo
 1. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
     - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
     - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
-        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
+        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN .
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
     - **Časová synchronizace**: čas je ověřený. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování virtuálních počítačů fungovalo správně.
@@ -106,7 +105,7 @@ Nastavte zařízení poprvé. Pokud zařízení nasadíte pomocí skriptu místo
 3. Po úspěšném přihlášení se vraťte k webové aplikaci.
 4. Vyberte předplatné, ve kterém byl vytvořen Azure Migrate projekt. Pak vyberte projekt.
 5. Zadejte název zařízení. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
-6. Klikněte na **zaregistrovat**.
+6. Klikněte na **Zaregistrovat**.
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Pověření delegáta pro virtuální pevné disky SMB
@@ -120,7 +119,7 @@ Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování
     ```
 
 2. Případně to udělejte v Editor místních zásad skupiny na zařízení:
-    - V > **konfiguraci počítače** **Zásady místního počítače**klikněte na **šablony pro správu** > **System** > **delegování přihlašovacích údajů**systému.
+    - V konfiguraci počítače **Zásady místního počítače**  >  **Computer Configuration**klikněte na **šablony pro správu**  >  **System**  >  **delegování přihlašovacích údajů**systému.
     - Dvakrát klikněte na **Povolit delegování nových přihlašovacích údajů**a vyberte **povoleno**.
     - V nabídce **Možnosti**klikněte na **Zobrazit**a do seznamu přidejte každého hostitele Hyper-V, který chcete zjistit, a použijte příkaz **WSMan/** jako předponu.
     - V **delegování přihlašovacích údajů**poklikejte na možnost **umožňuje delegovat nové přihlašovací údaje pomocí ověřování serveru jenom s protokolem NTLM**. Znovu přidejte všechny hostitele Hyper-V, které chcete vyhledat, do seznamu s použitím nástroje **WSMan/** jako předpony.
@@ -145,7 +144,7 @@ Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počí
 Po dokončení zjišťování můžete ověřit, že se virtuální počítače zobrazují na portálu.
 
 1. Otevřete řídicí panel Azure Migrate.
-2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
+2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 
 ## <a name="next-steps"></a>Další kroky

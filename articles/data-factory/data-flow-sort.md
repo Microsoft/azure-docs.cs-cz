@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606325"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>Transformace řazení v toku dat mapování
@@ -40,7 +39,7 @@ Chcete-li upravit nebo extrahovat hodnotu sloupce před použitím řazení, um�
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

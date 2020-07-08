@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 75d89b54bae6eb8166d44e08ea020a0da67ad20c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732557"
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
@@ -98,7 +97,7 @@ Tato Konzolová aplikace se připojí k vašemu IoT Hub a vyvolá přímo metodu
 
 3. Na příkazovém řádku přejděte do složky **Trigger-restart** .
 
-4. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **Trigger-restart** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku IoT-Service-Client ve vaší aplikaci:
+4. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **Trigger-restart** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku IoT-Service-Client ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -249,7 +248,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
 
 2. Na příkazovém řádku přejděte do složky **simulovaného zařízení** .
 
-3. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **simulovaného zařízení** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku IoT-Service-Client ve vaší aplikaci:
+3. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **simulovaného zařízení** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku IoT-Service-Client ve vaší aplikaci:
 
     ```xml
     <dependency>

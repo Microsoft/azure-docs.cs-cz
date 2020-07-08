@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640550"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojit malinu pi k Azure IoT Hub (C)
@@ -119,7 +118,7 @@ Připravte kartu microSD pro instalaci image Raspbian.
 
 1. Připojte pi k monitoru, klávesnici a myši, spusťte PI a pak se přihlaste k Raspbian pomocí `pi` uživatelského jména a `raspberry` hesla.
  
-2. Klikněte na ikonu maliny > **Předvolby** > **malin. PI**.
+2. Klikněte na ikonu maliny > **Předvolby**  >  **malin. PI**.
 
    ![Nabídka předvolby Raspbian](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
@@ -180,7 +179,7 @@ Zapněte Pi pomocí kabelu micro USB a zdroje napájení. Pomocí kabelu Etherne
 
    Použijte integrovaného klienta SSH na Ubuntu nebo macOS. Možná budete muset spustit `ssh pi@<ip address of pi>` pro připojení Pi přes SSH.
    > [!NOTE]
-   > Výchozí uživatelské jméno je `pi` a heslo `raspberry`.
+   > Výchozí uživatelské jméno je `pi` a heslo `raspberry` .
 
 
 ### <a name="configure-the-sample-application"></a>Konfigurace ukázkové aplikace

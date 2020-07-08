@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273286"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachovat soubory v Azure Cloud Shell
@@ -62,7 +61,7 @@ Cloud Shell používá ke sdílení souborů Azure v účtu úložiště v rámc
 Uživatelé by měli uzamknout přístup ke svým souborům nastavením oprávnění v účtu úložiště nebo na úrovni předplatného.
 
 ## <a name="supported-storage-regions"></a>Podporované oblasti úložiště
-Pokud chcete zjistit aktuální oblast, kterou můžete `env` spustit v bash, najděte proměnnou `ACC_LOCATION`nebo spusťte `$env:ACC_LOCATION`prostředí PowerShell. Sdílené složky obdrží obrázek o velikosti 5 GB, který jste vytvořili, abyste `$Home` zachovali svůj adresář.
+Pokud chcete zjistit aktuální oblast, kterou můžete spustit `env` v bash, najděte proměnnou `ACC_LOCATION` nebo spusťte prostředí PowerShell `$env:ACC_LOCATION` . Sdílené složky obdrží obrázek o velikosti 5 GB, který jste vytvořili, abyste zachovali svůj `$Home` adresář.
 
 Cloud Shell počítače existují v následujících oblastech:
 
@@ -83,12 +82,12 @@ Pokud se používá sekundární oblast úložiště, přidružený účet služ
 Uživatel může spustit `(Get-CloudDrive | Get-AzStorageAccount).Location` prostředí PowerShell, aby se zobrazilo umístění své sdílené složky.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Omezení vytváření prostředků pomocí zásad prostředků Azure
-Účty úložiště, které vytvoříte v Cloud Shell jsou označené jako `ms-resource-usage:azure-cloud-shell`. Pokud chcete uživatelům zakázat vytváření účtů úložiště v Cloud Shell, vytvořte [zásady prostředků Azure pro značky](../azure-policy/json-samples.md) , které se spouštějí touto konkrétní značkou.
+Účty úložiště, které vytvoříte v Cloud Shell jsou označené jako `ms-resource-usage:azure-cloud-shell` . Pokud chcete uživatelům zakázat vytváření účtů úložiště v Cloud Shell, vytvořte [zásady prostředků Azure pro značky](../azure-policy/json-samples.md) , které se spouštějí touto konkrétní značkou.
 
 ## <a name="how-cloud-shell-storage-works"></a>Jak funguje úložiště Cloud Shell 
 Cloud Shell uchovává soubory prostřednictvím obou následujících metod: 
-* Vytvořením bitové kopie disku v `$Home` adresáři zachovejte veškerý obsah v adresáři. Bitová kopie disku je uložena v zadané sdílené složce jako `acc_<User>.img` at `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`a automaticky synchronizuje změny. 
-* Vaše Zadaná sdílená složka se `clouddrive` připojuje jako `$Home` v adresáři pro přímou interakci sdílení souborů. `/Home/<User>/clouddrive`je namapována na `fileshare.storage.windows.net/fileshare`.
+* Vytvořením bitové kopie disku v `$Home` adresáři zachovejte veškerý obsah v adresáři. Bitová kopie disku je uložena v zadané sdílené složce jako `acc_<User>.img` at `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` a automaticky synchronizuje změny. 
+* Vaše Zadaná sdílená složka se připojuje jako `clouddrive` v `$Home` adresáři pro přímou interakci sdílení souborů. `/Home/<User>/clouddrive`je namapována na `fileshare.storage.windows.net/fileshare` .
  
 > [!NOTE]
 > Všechny soubory ve vašem `$Home` adresáři, jako jsou klíče SSH, jsou trvalé na uživatelském disku, který je uložený v připojené sdílené složce souborů. Pokud uchováváte informace ve vašem `$Home` adresáři a připojené sdílené složce, použijte doporučené postupy.
@@ -96,12 +95,12 @@ Cloud Shell uchovává soubory prostřednictvím obou následujících metod:
 ## <a name="clouddrive-commands"></a>příkazy clouddrive
 
 ### <a name="use-the-clouddrive-command"></a>Použití `clouddrive` příkazu
-V Cloud Shell můžete spustit příkaz s názvem `clouddrive`, který umožňuje ručně aktualizovat sdílenou složku, která je připojená k Cloud Shell.
+V Cloud Shell můžete spustit příkaz s názvem `clouddrive` , který umožňuje ručně aktualizovat sdílenou složku, která je připojená k Cloud Shell.
 
 ![Spuštění příkazu "clouddrive"](media/persisting-shell-storage/clouddrive-h.png)
 
 ### <a name="list-clouddrive"></a>Seznamu`clouddrive`
-Pokud chcete zjistit `clouddrive`, která sdílená složka je připojená `df` , spusťte příkaz. 
+Pokud chcete zjistit, která sdílená složka je připojená `clouddrive` , spusťte `df` příkaz. 
 
 Cesta k souboru clouddrive zobrazuje název vašeho účtu úložiště a sdílenou složku v adrese URL. Například `//storageaccountname.file.core.windows.net/filesharename`.
 
@@ -122,12 +121,12 @@ justin@Azure:~$
 #### <a name="prerequisites-for-manual-mounting"></a>Předpoklady ručního připojení
 Sdílenou složku, která je přidružená k Cloud Shell, můžete aktualizovat pomocí `clouddrive mount` příkazu.
 
-Pokud připojíte existující sdílenou složku, musí být účty úložiště umístěny ve vaší vybrané Cloud Shell oblasti. Načtěte umístění spuštěním `env` a kontrolou `ACC_LOCATION`.
+Pokud připojíte existující sdílenou složku, musí být účty úložiště umístěny ve vaší vybrané Cloud Shell oblasti. Načtěte umístění spuštěním `env` a kontrolou `ACC_LOCATION` .
 
-#### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` Příkaz
+#### <a name="the-clouddrive-mount-command"></a>`clouddrive mount`Příkaz
 
 > [!NOTE]
-> Pokud připojujete novou sdílenou složku, vytvoří se pro váš `$Home` adresář nová uživatelská image. Předchozí `$Home` obrázek je uložený v předchozí sdílené složce.
+> Pokud připojujete novou sdílenou složku, vytvoří se pro váš adresář nová uživatelská image `$Home` . Předchozí `$Home` Obrázek je uložený v předchozí sdílené složce.
 
 Spusťte `clouddrive mount` příkaz s následujícími parametry:
 
@@ -135,7 +134,7 @@ Spusťte `clouddrive mount` příkaz s následujícími parametry:
 clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareName
 ```
 
-Pokud chcete zobrazit další podrobnosti, `clouddrive mount -h`spusťte, jak je znázorněno zde:
+Pokud chcete zobrazit další podrobnosti, spusťte `clouddrive mount -h` , jak je znázorněno zde:
 
 ![Spuštění clouddrive mount'command](media/persisting-shell-storage/mount-h.png)
 
@@ -145,22 +144,22 @@ Sdílenou složku, která je připojená k Cloud Shell, můžete kdykoli odpojit
 1. Spusťte `clouddrive unmount`.
 2. Potvrďte a potvrďte výzvy.
 
-Sdílená složka bude i nadále existovat, dokud ji neodstraníte ručně. Cloud Shell už po dalších relacích tuto sdílenou složku nebude hledat. Pokud chcete zobrazit další podrobnosti, `clouddrive unmount -h`spusťte, jak je znázorněno zde:
+Sdílená složka bude i nadále existovat, dokud ji neodstraníte ručně. Cloud Shell už po dalších relacích tuto sdílenou složku nebude hledat. Pokud chcete zobrazit další podrobnosti, spusťte `clouddrive unmount -h` , jak je znázorněno zde:
 
 ![Spuštění clouddrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell `$Home` vymaže vaši image disku adresáře a všechny soubory ve sdílené složce. Tuto akci nelze vrátit zpět.
+> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell vymaže vaši `$Home` image disku adresáře a všechny soubory ve sdílené složce. Tuto akci nelze vrátit zpět.
 ## <a name="powershell-specific-commands"></a>Příkazy specifické pro PowerShell
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Vypsat `clouddrive` sdílené složky Azure
-`Get-CloudDrive` Rutina načte informace o sdílené složce Azure, které jsou `clouddrive` aktuálně připojené v Cloud Shell. <br>
+`Get-CloudDrive`Rutina načte informace o sdílené složce Azure, které jsou aktuálně připojené `clouddrive` v Cloud Shell. <br>
 ![Spuštění Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
 ### <a name="unmount-clouddrive"></a>Odpojte`clouddrive`
 Sdílenou složku Azure, která je připojená k Cloud Shell, můžete kdykoli odpojit. Pokud se sdílená složka Azure odebrala, budete při další relaci vyzváni k vytvoření nové sdílené složky Azure a připojení k ní.
 
-`Dismount-CloudDrive` Rutina odpojí sdílenou složku Azure od aktuálního účtu úložiště. Odpojení `clouddrive` ukončí aktuální relaci. Uživatel bude při další relaci vyzván k vytvoření a připojení nové sdílené složky Azure.
+`Dismount-CloudDrive`Rutina odpojí sdílenou složku Azure od aktuálního účtu úložiště. Odpojení `clouddrive` ukončí aktuální relaci. Uživatel bude při další relaci vyzván k vytvoření a připojení nové sdílené složky Azure.
 ![Spuštění odpojení – CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]

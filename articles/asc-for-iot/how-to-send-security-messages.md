@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81310984"
 ---
 # <a name="send-security-messages-sdk"></a>Odeslat sadu SDK pro zprávy zabezpečení
@@ -32,7 +31,7 @@ V této příručce se naučíte:
 > * Posílání zpráv o zabezpečení pomocí sady Azure IoT C SDK
 > * Posílání zpráv o zabezpečení pomocí sady Azure IoT C# SDK
 > * Posílání zpráv o zabezpečení pomocí sady SDK Azure IoT Python
-> * Posílání zpráv o zabezpečení pomocí sady Azure IoT Node. js SDK
+> * Posílání zpráv o zabezpečení pomocí sady Azure IoT Node.js SDK
 > * Posílání zpráv o zabezpečení pomocí sady Azure IoT Java SDK
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center pro možnosti IoT
@@ -47,7 +46,7 @@ Azure Security Center pro IoT definuje bezpečnostní zprávu pomocí následuj�
 - Pokud zpráva odpovídá [schématu zprávy zabezpečení](https://aka.ms/iot-security-schemas)
 - Pokud byla zpráva před odesláním nastavena jako bezpečnostní zpráva
 
-Každá zpráva zabezpečení obsahuje metadata odesílatele `AgentId`, jako je, `AgentVersion`, `MessageSchemaVersion` a seznam událostí zabezpečení.
+Každá zpráva zabezpečení obsahuje metadata odesílatele `AgentId` , jako je, `AgentVersion` , `MessageSchemaVersion` a seznam událostí zabezpečení.
 Schéma definuje platné a požadované vlastnosti zprávy zabezpečení, včetně typů událostí.
 
 > [!NOTE]
@@ -92,7 +91,7 @@ Po nastavení zprávy o zabezpečení a odeslání bude tato zpráva zpracována
 
 ## <a name="send-security-messages"></a>Odeslat zprávy zabezpečení
 
-Posílat zprávy zabezpečení *bez* použití Azure Security Center pro agenta IoT pomocí [sady SDK pro zařízení Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [sady SDK pro zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)Azure IoT C#, Azure IoT [Node. js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)nebo [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
+Posílat zprávy zabezpečení *bez* použití Azure Security Center pro agenta IoT pomocí [sady SDK pro zařízení Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), sady SDK pro zařízení Azure IoT [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), Azure IoT [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)nebo [sady Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
 
 Pokud chcete odesílat data zařízení z vašich zařízení ke zpracování Azure Security Center pro IoT, použijte jedno z následujících rozhraní API k označení zpráv pro správné směrování do Azure Security Center kanálu zpracování IoT.
 
@@ -100,7 +99,7 @@ Všechna data, která jsou odeslána, i když jsou označena správnou hlavičko
 
 ### <a name="send-security-message-api"></a>Poslat rozhraní API pro zprávy zabezpečení
 
-Rozhraní API pro **odesílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Python, Node. js a Java.
+Rozhraní API pro **odesílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Python, Node.js a Java.
 
 #### <a name="c-api"></a>ROZHRANÍ API JAZYKA C
 
@@ -160,7 +159,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
 }
 ```
 
-#### <a name="nodejs-api"></a>Rozhraní API pro Node. js
+#### <a name="nodejs-api"></a>Node.js API
 
 ```typescript
 var Protocol = require('azure-iot-device-mqtt').Mqtt

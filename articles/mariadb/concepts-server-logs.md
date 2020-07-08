@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272079"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
@@ -19,7 +18,7 @@ V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých do
 Další informace o protokolu pomalých dotazů najdete v dokumentaci k MariaDB pro [protokol pomalých dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
 ## <a name="configure-slow-query-logging"></a>Konfigurace pomalého protokolování dotazů
-Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud ho chcete povolit, `slow_query_log` nastavte na zapnuto. Tato možnost se dá povolit pomocí Azure Portal nebo Azure CLI. 
+Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud ho chcete povolit, nastavte na `slow_query_log` zapnuto. Tato možnost se dá povolit pomocí Azure Portal nebo Azure CLI. 
 
 Mezi další parametry, které můžete upravit, patří:
 
@@ -27,16 +26,16 @@ Mezi další parametry, které můžete upravit, patří:
 - **log_slow_admin_statements**: Pokud on zahrnuje příkazy pro správu, jako je ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
 - **log_queries_not_using_indexes**: Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
 - **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
-- **log_output**: Pokud "File", nástroj umožňuje zapsat protokol pomalých dotazů do úložiště místního serveru i do Azure monitor diagnostických protokolů. Pokud "none", protokol pomalého dotazu bude zapsán pouze do Azure Monitor diagnostické protokoly. 
+- **log_output**: Pokud "File", nástroj umožňuje zapsat protokol pomalých dotazů do úložiště místního serveru i do Azure monitor diagnostických protokolů. Pokud ho nastavíte na hodnotu None (Žádné), protokoly pomalých dotazů se budou zapisovat pouze do diagnostických protokolů služby Azure Monitor. 
 
 > [!IMPORTANT]
-> Pokud nejsou tabulky indexovány, může nastavení parametrů `log_queries_not_using_indexes` a `log_throttle_queries_not_using_indexes` na hodnotu on ovlivnit výkon MariaDB, protože všechny dotazy běžící proti těmto neindexovaným tabulkám budou zapsány do protokolu pomalého dotazu.<br><br>
+> Pokud nejsou tabulky indexovány, `log_queries_not_using_indexes` může nastavení parametrů a na hodnotu `log_throttle_queries_not_using_indexes` on ovlivnit výkon MariaDB, protože všechny dotazy běžící proti těmto neindexovaným tabulkám budou zapsány do protokolu pomalého dotazu.<br><br>
 > Pokud plánujete protokolování pomalých dotazů po delší dobu, doporučuje se nastavit `log_output` na "žádný". Pokud je nastavená na "soubor", tyto protokoly se zapisují do úložiště místního serveru a můžou ovlivnit výkon MariaDB. 
 
 Úplný popis pomalých parametrů protokolu dotazů naleznete v [dokumentaci k protokolu pomalého dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB.
 
 ## <a name="access-slow-query-logs"></a>Přístup k protokolům pomalým dotazům
-K dispozici jsou dvě možnosti přístupu k protokolům pomalých dotazů v Azure Database for MariaDB: místní úložiště serveru nebo protokoly diagnostiky Azure Monitor. Tento `log_output` parametr je nastaven pomocí parametru.
+K dispozici jsou dvě možnosti přístupu k protokolům pomalých dotazů v Azure Database for MariaDB: místní úložiště serveru nebo protokoly diagnostiky Azure Monitor. Tento parametr je nastaven pomocí `log_output` parametru.
 
 Pro úložiště na místním serveru můžete zobrazit a stáhnout protokoly pomalých dotazů pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI. V Azure Portal přejděte na server v Azure Portal. Pod hlavičkou **monitorování** vyberte stránku **protokoly serveru** . Další informace o rozhraní příkazového řádku Azure najdete v tématu [Konfigurace a přístup k protokolům serveru pomocí Azure CLI](howto-configure-server-logs-cli.md). 
 
@@ -84,7 +83,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 > [!Note]
-> V `sql_text`případě se protokol zkrátí, pokud překračuje 2048 znaků.
+> V případě `sql_text` se protokol zkrátí, pokud překračuje 2048 znaků.
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Analyzovat protokoly v protokolu Azure Monitor
 

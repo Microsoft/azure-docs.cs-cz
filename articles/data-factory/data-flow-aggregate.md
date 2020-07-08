@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606538"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku mapování dat
@@ -45,22 +44,22 @@ Každý agregační výraz musí obsahovat alespoň jednu agregační funkci.
 
 Agregované transformace jsou podobné dotazům na agregační výběr SQL. Sloupce, které nejsou zahrnuté v klauzuli Group by ani agregační funkce, nepřecházejí do výstupu agregační transformace. Pokud chcete zahrnout další sloupce do agregovaného výstupu, proveďte jednu z následujících metod:
 
-* Použijte agregační funkci, jako je `last()` například `first()` nebo, k zahrnutí tohoto dalšího sloupce.
+* Použijte agregační funkci, jako je například `last()` nebo `first()` , k zahrnutí tohoto dalšího sloupce.
 * Znovu připojte sloupce k výstupnímu datovému proudu pomocí [vzoru pro vlastní spojení](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
 ## <a name="removing-duplicate-rows"></a>Odebírání duplicitních řádků
 
-Běžné použití agregační transformace odebírá nebo identifikuje duplicitní položky ve zdrojových datech. Tento proces se označuje jako odstranění duplicit. V závislosti na sadě skupin podle klíčů použijte heuristickou volbu k určení, který duplicitní řádek chcete zachovat. Běžné heuristiky jsou `first()`, `last()`, `max()`a `min()`. Pomocí [vzorů sloupců](concepts-data-flow-column-pattern.md) můžete pravidlo použít pro všechny sloupce s výjimkou sloupců Group by.
+Běžné použití agregační transformace odebírá nebo identifikuje duplicitní položky ve zdrojových datech. Tento proces se označuje jako odstranění duplicit. V závislosti na sadě skupin podle klíčů použijte heuristickou volbu k určení, který duplicitní řádek chcete zachovat. Běžné heuristiky jsou `first()` , `last()` , `max()` a `min()` . Pomocí [vzorů sloupců](concepts-data-flow-column-pattern.md) můžete pravidlo použít pro všechny sloupce s výjimkou sloupců Group by.
 
 ![Odstranění duplicit](media/data-flow/agg-dedupe.png "Odstranění duplicit")
 
-Ve výše uvedeném příkladu jsou sloupce `ProductID` a `Name` používány pro seskupení. Pokud mají dva řádky stejné hodnoty pro tyto dva sloupce, považují se za duplicitní. V této agregační transformaci budou zachovány hodnoty prvního řádku, které se shodují, a všechny ostatní budou zahozeny. Pomocí syntaxe vzoru sloupce všechny sloupce, jejichž názvy nejsou `ProductID` a `Name` jsou namapovány na jejich existující název sloupce a na základě hodnoty prvního spárovaného řádku. Výstupní schéma je stejné jako vstupní schéma.
+Ve výše uvedeném příkladu jsou sloupce `ProductID` a používány `Name` pro seskupení. Pokud mají dva řádky stejné hodnoty pro tyto dva sloupce, považují se za duplicitní. V této agregační transformaci budou zachovány hodnoty prvního řádku, které se shodují, a všechny ostatní budou zahozeny. Pomocí syntaxe vzoru sloupce všechny sloupce, jejichž názvy nejsou `ProductID` a `Name` jsou namapovány na jejich existující název sloupce a na základě hodnoty prvního spárovaného řádku. Výstupní schéma je stejné jako vstupní schéma.
 
-Pro scénáře ověřování dat je možné `count()` pomocí funkce spočítat, kolik duplicit existuje.
+Pro scénáře ověřování dat je `count()` možné pomocí funkce spočítat, kolik duplicit existuje.
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -81,7 +80,7 @@ Pro scénáře ověřování dat je možné `count()` pomocí funkce spočítat,
 
 ### <a name="example"></a>Příklad
 
-Následující příklad přijímá příchozí datový proud `MoviesYear` a seskupuje řádky podle sloupce `year`. Transformace vytvoří agregovaný sloupec `avgrating` , který se vyhodnotí jako průměr sloupce `Rating`. Tato agregovaná transformace je `AvgComedyRatingsByYear`pojmenována.
+Následující příklad přijímá příchozí datový proud `MoviesYear` a seskupuje řádky podle sloupce `year` . Transformace vytvoří agregovaný sloupec `avgrating` , který se vyhodnotí jako průměr sloupce `Rating` . Tato agregovaná transformace je pojmenována `AvgComedyRatingsByYear` .
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
@@ -100,7 +99,7 @@ MoviesYear aggregate(
 
 ![Skript agregovaného toku dat](media/data-flow/aggdfs1.png "Skript agregovaného toku dat")
 
-```MoviesYear```: Odvozený sloupec definující rok a názvy ```AvgComedyRatingByYear```sloupců: agregovaná transformace pro průměrné hodnocení kohodnoty v seskupení podle ```avgrating```roku: název nového sloupce, který se vytváří, aby obsahoval agregovanou hodnotu.
+```MoviesYear```: Odvozený sloupec definující rok a názvy sloupců ```AvgComedyRatingByYear``` : agregovaná transformace pro průměrné hodnocení kohodnoty v seskupení podle roku ```avgrating``` : název nového sloupce, který se vytváří, aby obsahoval agregovanou hodnotu.
 
 ```
 MoviesYear aggregate(groupBy(year),

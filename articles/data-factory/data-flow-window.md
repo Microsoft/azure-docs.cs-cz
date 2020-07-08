@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606225"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Transformace okna Azure Data Factory
@@ -29,7 +28,7 @@ Nastavte dělení dat sloupce pro transformaci oken. Ekvivalent SQL je ```Partit
 ![Možnosti okna](media/data-flow/windows4.png "systém Windows 4")
 
 ## <a name="sort"></a>Seřadit
-Další část klauzule over je nastavení ```Order By```. Tím se nastaví řazení dat. Můžete také vytvořit výraz pro výpočet hodnoty v tomto poli sloupce pro řazení.
+Další část klauzule over je nastavení ```Order By``` . Tím se nastaví řazení dat. Můžete také vytvořit výraz pro výpočet hodnoty v tomto poli sloupce pro řazení.
 
 ![Možnosti okna](media/data-flow/windows5.png "systém Windows 5")
 
@@ -45,7 +44,7 @@ Nakonec použijte Tvůrce výrazů k definování agregací, které chcete použ
 
 ![Možnosti okna](media/data-flow/windows7.png "systém Windows 7")
 
-Úplný seznam agregačních a analytických funkcí, které jsou k dispozici pro použití v jazyce výrazů toku dat ADF prostřednictvím Tvůrce výrazů, jsou uvedeny https://aka.ms/dataflowexpressionszde:.
+Úplný seznam agregačních a analytických funkcí, které jsou k dispozici pro použití v jazyce výrazů toku dat ADF prostřednictvím Tvůrce výrazů, jsou uvedeny zde: https://aka.ms/dataflowexpressions .
 
 ## <a name="next-steps"></a>Další kroky
 

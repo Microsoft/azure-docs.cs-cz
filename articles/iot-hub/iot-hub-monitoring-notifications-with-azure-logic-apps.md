@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680724"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce
@@ -28,7 +27,7 @@ ms.locfileid: "81680724"
 
 Naučíte se, jak vytvořit aplikaci logiky, která připojuje vaše centrum IoT a vaši poštovní schránku k monitorování a upozorňování na teplotu.
 
-Klientský kód spuštěný v zařízení nastaví vlastnost aplikace, `temperatureAlert`v každé zprávě telemetrie, kterou odesílá do služby IoT Hub. Když kód klienta detekuje teplotu nad 30 C, nastaví tuto vlastnost na `true`; v opačném případě nastaví vlastnost na `false`hodnotu.
+Klientský kód spuštěný v zařízení nastaví vlastnost aplikace, `temperatureAlert` v každé zprávě telemetrie, kterou odesílá do služby IoT Hub. Když kód klienta detekuje teplotu nad 30 C, nastaví tuto vlastnost na `true` ; v opačném případě nastaví vlastnost na `false` .
 
 Zprávy přicházející ve službě IoT Hub vypadají podobně jako v následujícím příkladu s daty telemetrie obsaženými v těle a `temperatureAlert` vlastností obsaženými ve vlastnostech aplikace (systémové vlastnosti nejsou zobrazeny):
 
@@ -48,7 +47,7 @@ Zprávy přicházející ve službě IoT Hub vypadají podobně jako v následuj
 
 Další informace o formátu zpráv IoT Hub najdete v tématu [Vytvoření a čtení IoT Hub zpráv](iot-hub-devguide-messages-construct.md).
 
-V tomto tématu nastavíte směrování ve službě IoT Hub pro odesílání zpráv, ve kterých je `temperatureAlert` `true` vlastnost do Service Busho koncového bodu. Pak nastavíte aplikaci logiky, která se spustí na zprávách přicházejících do Service Busho koncového bodu, a pošle vám e-mailové oznámení.
+V tomto tématu nastavíte směrování ve službě IoT Hub pro odesílání zpráv, ve kterých `temperatureAlert` je vlastnost `true` do Service Busho koncového bodu. Pak nastavíte aplikaci logiky, která se spustí na zprávách přicházejících do Service Busho koncového bodu, a pošle vám e-mailové oznámení.
 
 ## <a name="what-you-do"></a>Co dělat
 
@@ -58,7 +57,7 @@ V tomto tématu nastavíte směrování ve službě IoT Hub pro odesílání zpr
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
 
   * Aktivní předplatné Azure.
   * Azure IoT Hub v rámci vašeho předplatného.
@@ -70,7 +69,7 @@ Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoří
 
 ### <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte **+ vytvořit Service Bus pro** > **integraci** > **Service Bus**prostředků.
+1. V [Azure Portal](https://portal.azure.com/)vyberte **+ vytvořit Service Bus pro**  >  **integraci**prostředků  >  **Service Bus**.
 
 1. V podokně **vytvořit obor názvů** zadejte následující informace:
 
@@ -96,7 +95,7 @@ Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoří
 
    ![Přidat frontu služby Service Bus do Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Zpátky v podokně **obor názvů Service Bus** v části **entity**vyberte **fronty**. Otevřete Service Busovou frontu ze seznamu a pak vyberte >  **zásady sdíleného přístupu****+ Přidat**.
+1. Zpátky v podokně **obor názvů Service Bus** v části **entity**vyberte **fronty**. Otevřete Service Busovou frontu ze seznamu a pak vyberte **zásady sdíleného přístupu**  >  **+ Přidat**.
 
 1. Zadejte název zásady, zaškrtněte **Spravovat**a pak vyberte **vytvořit**.
 
@@ -104,7 +103,7 @@ Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoří
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Přidání vlastního koncového bodu a pravidla směrování do služby IoT Hub
 
-Přidáním vlastního koncového bodu pro frontu Service Bus do služby IoT Hub a vytvořením pravidla směrování zpráv můžete směrovat zprávy, které obsahují upozornění na teplotu tohoto koncového bodu, kde budou vyzvednuty vaší aplikací logiky. Pravidlo směrování používá dotaz směrování, `temperatureAlert = "true"`k posílání zpráv na základě hodnoty vlastnosti `temperatureAlert` aplikace nastavené klientským kódem běžícím na zařízení. Další informace najdete v tématu [dotaz na směrování zpráv na základě vlastností zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+Přidáním vlastního koncového bodu pro frontu Service Bus do služby IoT Hub a vytvořením pravidla směrování zpráv můžete směrovat zprávy, které obsahují upozornění na teplotu tohoto koncového bodu, kde budou vyzvednuty vaší aplikací logiky. Pravidlo směrování používá dotaz směrování, `temperatureAlert = "true"` k posílání zpráv na základě hodnoty `temperatureAlert` Vlastnosti aplikace nastavené klientským kódem běžícím na zařízení. Další informace najdete v tématu [dotaz na směrování zpráv na základě vlastností zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
 
 ### <a name="add-a-custom-endpoint"></a>Přidat vlastní koncový bod
 
@@ -138,7 +137,7 @@ Přidáním vlastního koncového bodu pro frontu Service Bus do služby IoT Hub
 
    **Zdroj dat**: vyberte **zprávy telemetrie zařízení**.
 
-   **Dotaz směrování**: zadejte `temperatureAlert = "true"`.
+   **Dotaz směrování**: zadejte `temperatureAlert = "true"` .
 
    ![Přidat pravidlo směrování do Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
@@ -150,7 +149,7 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
-1. Vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
+1. Vyberte **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
 
 1. Zadejte následující informace:
 
@@ -218,7 +217,7 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
       ![Zvolit pole pro připojení k e-mailu SMTP](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
 
-   1. Zadejte svou e-mailovou adresu **To** **z** a do `High temperature detected` a pro **Předmět** a **text**. Pokud se otevře dialogové okno **Přidat dynamický obsah z aplikací a konektorů, které se používají v tomto okně Flow** , vyberte **Skrýt** a zavřete ho. V tomto kurzu nepoužíváte dynamický obsah.
+   1. Zadejte svou e-mailovou adresu **z** a **do**a `High temperature detected` pro **Předmět** a **text**. Pokud se otevře dialogové okno **Přidat dynamický obsah z aplikací a konektorů, které se používají v tomto okně Flow** , vyberte **Skrýt** a zavřete ho. V tomto kurzu nepoužíváte dynamický obsah.
 
       ![Vyplnit pole emailu pro připojení SMTP](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
 

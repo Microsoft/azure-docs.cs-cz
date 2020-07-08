@@ -8,10 +8,9 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606273"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Přehled transformace toku dat
@@ -20,7 +19,7 @@ ms.locfileid: "81606273"
 
 Níže je uveden seznam transformací aktuálně podporovaných v mapování toku dat. Kliknutím na jednotlivé transformace se dozvíte podrobnosti o konfiguraci.
 
-| Název | Kategorie | Popis |
+| Name | Kategorie | Description |
 | ---- | -------- | ----------- |
 | [Agregace](data-flow-aggregate.md) | Modifikátor schématu | Definujte různé typy agregací, jako například SUM, MIN, MAX a COUNT seskupené podle existujících nebo počítaných sloupců. | 
 | [Změna řádku](data-flow-alter-row.md) | Modifikátor řádku | Nastavení zásad vložení, odstranění, aktualizace a Upsert na řádcích |
@@ -33,11 +32,11 @@ Níže je uveden seznam transformací aktuálně podporovaných v mapování tok
 | [Vyhledávání](data-flow-lookup.md) | Několik vstupů/výstupů | Referenční data z jiného zdroje. |
 | [Nová větev](data-flow-new-branch.md) | Několik vstupů/výstupů | Použijte několik sad operací a transformací proti stejnému datovému proudu. |
 | [Převést na sloupce](data-flow-pivot.md) | Modifikátor schématu | Agregace, ve které má jeden nebo více sloupců seskupení jedinečné hodnoty řádků transformované na jednotlivé sloupce. |
-| [Vybrat](data-flow-select.md) | Modifikátor schématu | Sloupce aliasů a názvy datových proudů a přetáhnout nebo změnit uspořádání sloupců |
+| [Výběr](data-flow-select.md) | Modifikátor schématu | Sloupce aliasů a názvy datových proudů a přetáhnout nebo změnit uspořádání sloupců |
 | [Jímka](data-flow-sink.md) | - | Konečný cíl pro vaše data |
 | [Seřadit](data-flow-sort.md) | Modifikátor řádku | Seřadit příchozí řádky v aktuálním datovém proudu |
 | [Zdroj](data-flow-source.md) | - | Zdroj dat pro tok dat |
 | [Náhradní klíč](data-flow-surrogate-key.md) | Modifikátor schématu | Přidání přírůstku hodnoty libovolného klíče, který nepatří do zaměstnání |
-| [Sjednocovací](data-flow-union.md) | Několik vstupů/výstupů | Kombinování více datových proudů svisle |
+| [Sjednocení](data-flow-union.md) | Několik vstupů/výstupů | Kombinování více datových proudů svisle |
 | [Převést na řádky](data-flow-unpivot.md) | Modifikátor schématu | Kontingenční sloupce do hodnot řádků |
 | [Okno](data-flow-window.md) | Modifikátor schématu |  Definujte agregace sloupců na základě okna v datových proudech. |

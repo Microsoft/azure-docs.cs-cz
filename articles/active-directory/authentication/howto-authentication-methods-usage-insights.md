@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680193"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
@@ -38,12 +37,12 @@ Pro přístup k používání a přehledům nejsou potřeba žádné další lic
 Přístup k používání metod ověřování a přehledům:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** > používání**resetování** > hesla **& přehledy**.
+1. Přejděte na **Azure Active Directory**  >  používání**resetování hesla**  >  **& přehledy**.
 1. Z přehledů **registrace** nebo **využití** můžete zvolit otevření předem filtrovaných sestav, které se budou filtrovat podle vašich potřeb.
 
 ![Přehled využití & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Pokud chcete získat přístup k využití & Insights přímo [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade), přejděte na. Tento odkaz vás přenese na přehled registrace.
+Pokud chcete získat přístup k využití & Insights přímo, přejděte na [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) . Tento odkaz vás přenese na přehled registrace.
 
 Uživatelé zaregistrovaní, uživatelé a uživatelé s podporou dlaždic zobrazí následující registrační data pro vaše uživatele:
 
@@ -65,7 +64,7 @@ Kliknutím na **zaregistrované uživatele**, **povoleným uživatelům**nebo **
 
 Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následující informace:
 
-- Název
+- Name
 - Uživatelské jméno
 - Stav registrace (vše, registrováno, Neregistrováno)
 - Povolený stav (vše, povoleno, Nepovoleno)
@@ -80,7 +79,7 @@ Kliknutím na registrace nebo resetování grafů zobrazíte podrobnosti o reset
 
 Sestava obnovit podrobnosti zobrazuje události registrace a resetování za posledních 30 dní, včetně:
 
-- Název
+- Name
 - Uživatelské jméno
 - Funkce (vše, registrace, resetování)
 - Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání Office, SMS, E-mail, bezpečnostní otázky)

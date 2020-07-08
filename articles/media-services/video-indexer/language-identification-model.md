@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687127"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automaticky identifikovat mluvený jazyk pomocí modelu identifikace jazyka
@@ -35,9 +34,9 @@ Když používáte portál, přejděte na **video o účtu** na domovské strán
 
 ## <a name="model-output"></a>Výstup modelu
 
-Pokud je `> 0.6`spolehlivost pro daný jazyk, video indexer video transcribes podle nejpravděpodobnějšího jazyka. Pokud jazyk nelze identifikovat s jistotou, předpokládá se, že mluvený jazyk je angličtina. 
+Pokud je spolehlivost pro daný jazyk, Video Indexer video transcribes podle nejpravděpodobnějšího jazyka `> 0.6` . Pokud jazyk nelze identifikovat s jistotou, předpokládá se, že mluvený jazyk je angličtina. 
 
-Převládající jazyk modelu je k dispozici ve formátu JSON Insights `sourceLanguage` jako atribut (pod položkou root/video/Insights). Odpovídající hodnocení spolehlivosti je také k dispozici v `sourceLanguageConfidence` atributu.
+Převládající jazyk modelu je k dispozici ve formátu JSON Insights jako `sourceLanguage` atribut (pod položkou root/video/Insights). Odpovídající hodnocení spolehlivosti je také k dispozici v `sourceLanguageConfidence` atributu.
 
 ```json
 "insights": {
@@ -58,7 +57,7 @@ Převládající jazyk modelu je k dispozici ve formátu JSON Insights `sourceLa
     Angličtina, španělština, francouzština, němčina, italština, Mandariná chines, japonština, ruština a portugalština (Brazílie).
 * I když Video Indexer podporuje arabštinu (moderní Standard a Levantine), hindština a korejštinu, tyto jazyky se na víka nepodporují.
 * Pokud zvuk obsahuje jiné jazyky než seznam podporované, výsledek je neočekávaný.
-* Pokud Video Indexer nemůže identifikovat jazyk s dostatečnou spolehlivostí (`>0.6`), je záložní jazyk angličtina.
+* Pokud Video Indexer nemůže identifikovat jazyk s dostatečnou spolehlivostí ( `>0.6` ), je záložní jazyk angličtina.
 * Neexistuje žádná aktuální podpora pro soubor se smíšenými jazyky. Pokud zvuk obsahuje smíšené jazyky, výsledek je neočekávaný. 
 * Zvuk nízké kvality může mít vliv na výsledky modelu.
 * Model vyžaduje ve zvukovém zařízení alespoň jednu minutu řeči.

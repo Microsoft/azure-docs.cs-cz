@@ -4,10 +4,9 @@ description: Umožňuje najít, vytvořit, spravovat a odstranit projekty v Azur
 ms.topic: how-to
 ms.date: 04/19/2020
 ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676396"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
@@ -78,8 +77,8 @@ Poznámky:
 
 1. Přejděte do pracovního prostoru Log Analytics připojeného k projektu.
 
-    - Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci**posouzení serveru** **Essentials** > .
-       ![LA pracovní](./media/create-manage-projects/loganalytics-workspace.png)prostor.
+    - Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci **Essentials**  >  **posouzení serveru**Essentials.
+       ![LA pracovní prostor ](./media/create-manage-projects/loganalytics-workspace.png) .
        
     - Pokud jste již Azure Migrate projekt odstranili, vyberte **skupiny prostředků** v levém podokně Azure Portal a vyhledejte pracovní prostor.
        

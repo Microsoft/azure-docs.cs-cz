@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
 ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682500"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití nástrojů Azure IoT pro Visual Studio Code k posílání a přijímání zpráv mezi zařízením a IoT Hub
@@ -64,7 +63,7 @@ Pokud chcete monitorovat zprávy odesílané ze zařízení do služby IoT Hub, 
 
 1. Klikněte pravým tlačítkem na své zařízení a vyberte **Spustit sledování integrovaný koncový bod události**.
 
-2. Monitorované zprávy se zobrazí ve **výstupu** > zobrazení**IoT Hub v Azure** .
+2. Monitorované zprávy se zobrazí ve **výstupu**  >  zobrazení**IoT Hub v Azure** .
 
 3. Chcete-li ukončit monitorování, klikněte pravým tlačítkem myši na zobrazení **výstupu** a vyberte možnost **Zastavit sledování vestavěného koncového bodu události**.
 
@@ -76,7 +75,7 @@ Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte
 
 2. Do vstupního pole zadejte zprávu.
 
-3. Výsledky se zobrazí ve **výstupu** > zobrazení**IoT Hub v Azure** .
+3. Výsledky se zobrazí ve **výstupu**  >  zobrazení**IoT Hub v Azure** .
 
 ## <a name="next-steps"></a>Další kroky
 

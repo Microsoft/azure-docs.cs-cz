@@ -13,17 +13,16 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683827"
 ---
 # <a name="create-an-advanced-device-model"></a>Vytvoření pokročilého modelu zařízení
 
 Tato příručka popisuje soubory JSON a JavaScript, které definují vlastní model zařízení. Článek obsahuje několik ukázkových definičních souborů modelů zařízení a ukazuje, jak je nahrát do instance simulace zařízení. Můžete vytvářet pokročilé modely zařízení a simulovat tak realističtější chování zařízení pro vaše testování.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,9 +46,9 @@ Model zařízení definujete pomocí definičního souboru zařízení JSON a sa
 
 Typický model zařízení má:
 
-* Jeden soubor JSON pro každý model zařízení (například výtah. JSON).
-* Jeden soubor skriptu chování JavaScriptu pro každý model zařízení (například Elevator-State. js)
-* Jeden soubor skriptu metody JavaScriptu pro každou metodu zařízení (například Elevator-go-Down. js)
+* Jeden soubor JSON pro každý model zařízení (například elevator.jszapnutý).
+* Jeden soubor skriptu chování JavaScriptu pro každý model zařízení (například elevator-state.js)
+* Jeden soubor skriptu metody JavaScriptu pro každou metodu zařízení (například elevator-go-down.js)
 
 > [!NOTE]
 > Ne všechny modely zařízení definují metody. Proto model zařízení může nebo nemusí mít skripty metody. Všechny modely zařízení ale musí mít skript chování.
@@ -187,7 +186,7 @@ Simulovaná zařízení mohou také reagovat na volání metody. v takovém př�
 
 V tomto průvodci uvidíte, jak vytvořit model zařízení pro pomocí dronů. Pomocí dronů náhodně dokončí počáteční sadu souřadnic měnících polohu a nadmořskou výšku.
 
-Zkopírujte následující JSON do textového editoru a uložte ho jako **pomocí dronů. JSON**.
+Zkopírujte následující JSON do textového editoru a uložte ho jako **drone.jsna**.
 
 ### <a name="device-definition-json-example"></a>Ukázka JSON definice zařízení
 
@@ -277,7 +276,7 @@ function main(context, state) {
 
 ## <a name="create-a-behavior-script-file"></a>Vytvoření souboru skriptu chování
 
-Zkopírujte následující JavaScript do textového editoru a uložte ho jako **Drone-State. js**.
+Zkopírujte následující JavaScript do textového editoru a uložte ho jako **drone-state.js**.
 
 ### <a name="device-model-javascript-simulation-example"></a>Příklad simulace kódu JavaScriptu pro model zařízení
 
@@ -406,7 +405,7 @@ Skripty metody jsou podobné skriptům chování. Definují chování zařízen�
 
 Skript pro odvolání pomocí dronů nastaví souřadnice pomocí dronů na pevný bod pro simulaci pomocí dronů vracející domovskou stránku.
 
-Zkopírujte následující JavaScript do textového editoru a uložte ho jako **droneRecall-Method. js**.
+Zkopírujte následující JavaScript do textového editoru a uložte ho jako **droneRecall-method.js**.
 
 ### <a name="device-model-javascript-simulation-example"></a>Příklad simulace kódu JavaScriptu pro model zařízení
 

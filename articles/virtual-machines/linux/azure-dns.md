@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641716"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux v Azure
@@ -29,7 +28,7 @@ Následující tabulka ilustruje scénáře a odpovídající řešení pro pře
 | Překlad názvů mezi instancemi rolí nebo virtuálními počítači v různých virtuálních sítích |Servery DNS spravované zákazníkem, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-using-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Řešení místních počítačů a názvů služeb z instancí rolí nebo virtuálních počítačů v Azure |Servery DNS spravované zákazníkem (například místní řadič domény, místní řadič domény jen pro čtení nebo sekundární služba DNS, synchronizovaný pomocí zónových přenosů). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-using-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů hostitelů Azure z místních počítačů |Přepošle dotazy na proxy server DNS spravované zákazníkem v odpovídající virtuální síti. Proxy server předává dotazy do Azure pro řešení. Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-using-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Reverzní DNS pro interní IP adresy |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-using-your-own-dns-server) |neuvedeno |
+| Reverzní DNS pro interní IP adresy |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-using-your-own-dns-server) |Není k dispozici |
 
 ## <a name="name-resolution-that-azure-provides"></a>Překlad názvů, který poskytuje Azure
 Spolu s překladem veřejných názvů DNS poskytuje Azure interní překlad adres IP pro virtuální počítače a instance rolí, které se nacházejí ve stejné virtuální síti. Ve virtuálních sítích, které jsou založené na Azure Resource Manager, je přípona DNS v rámci virtuální sítě konzistentní; plně kvalifikovaný název domény není potřeba. Názvy DNS je možné přiřadit jak ke kartám síťových rozhraní, tak i k virtuálním počítačům. I když překlad IP adres, který Azure poskytuje, nevyžaduje žádnou konfiguraci, není to vhodná volba pro všechny scénáře nasazení, jak je vidět v předchozí tabulce.

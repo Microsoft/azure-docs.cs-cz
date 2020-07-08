@@ -4,10 +4,9 @@ description: Naučte se, jak přepínat Cluster Service Fabric, aby používal k
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272623"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změna z kryptografického otisku certifikátu clusteru na běžný název
@@ -118,7 +117,7 @@ Pak otevřete soubor šablony v textovém editoru a proveďte tři aktualizace, 
 
     Zvažte také odebrání *certificateThumbprint*, již na něj nelze odkazovat v šabloně správce prostředků.
 
-2. V prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** aktualizujte rozšíření virtuálního počítače tak, aby místo kryptografického otisku používalo běžný název v nastavení certifikátu.  V **virtualMachineProfile**->**extensionProfile**->**Nastavení****properties**->**certificate** `"commonNames": ["[parameters('certificateCommonName')]"],` `"thumbprint": "[parameters('certificateThumbprint')]",`**extensions**->rozšíření virtualMachineProfile extensionProfile Extensions – vlastnosti certifikátu, přidat a odebrat.->
+2. V prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** aktualizujte rozšíření virtuálního počítače tak, aby místo kryptografického otisku používalo běžný název v nastavení certifikátu.  V **virtualMachineProfile** -> nastavení rozšíření virtualMachineProfile**extensionProfile** -> **Extensions**– -> **vlastnosti** -> **settings** -> **certifikátu**, přidat `"commonNames": ["[parameters('certificateCommonName')]"],` a odebrat `"thumbprint": "[parameters('certificateThumbprint')]",` .
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {

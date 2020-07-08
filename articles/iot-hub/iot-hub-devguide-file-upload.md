@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.custom: mqtt
 ms.openlocfilehash: 35337a99706f25d62964e08a5b16cd8e81f315c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730300"
 ---
 # <a name="upload-files-with-iot-hub"></a>Nahrávání souborů s využitím služby IoT Hub
@@ -67,7 +66,7 @@ IoT Hub vrátí následující data, která zařízení používají k nahrání
 > [!NOTE]
 > Tato část popisuje nepoužívané funkce pro příjem identifikátoru URI SAS z IoT Hub. Použijte metodu POST popsanou výše.
 
-IoT Hub má dva koncové body REST pro podporu nahrávání souborů, jednu pro získání identifikátoru URI SAS pro úložiště a druhý pro oznamování služby IoT Hub dokončeného nahrávání. Zařízení spustí proces nahrání souboru odesláním GET do centra IoT na adrese `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Centrum IoT vrátí:
+IoT Hub má dva koncové body REST pro podporu nahrávání souborů, jednu pro získání identifikátoru URI SAS pro úložiště a druhý pro oznamování služby IoT Hub dokončeného nahrávání. Zařízení spustí proces nahrání souboru odesláním GET do centra IoT na adrese `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` . Centrum IoT vrátí:
 
 * Identifikátor URI SAS specifický pro soubor, který se má nahrát.
 
@@ -86,7 +85,7 @@ Zařízení nahraje soubor do úložiště pomocí sad Azure Storage SDK. Po dok
 }
 ```
 
-Hodnota `isSuccess` je logická hodnota, která označuje, zda byl soubor úspěšně nahrán. Stavový kód pro `statusCode` je stav odeslání souboru do úložiště a `statusDescription` odpovídá. `statusCode`
+Hodnota `isSuccess` je logická hodnota, která označuje, zda byl soubor úspěšně nahrán. Stavový kód pro `statusCode` je stav odeslání souboru do úložiště a `statusDescription` odpovídá `statusCode` .
 
 ## <a name="reference-topics"></a>Referenční témata:
 

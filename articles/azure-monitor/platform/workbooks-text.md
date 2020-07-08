@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687326"
 ---
 # <a name="workbook-text-parameters"></a>Textové parametry sešitu
@@ -60,7 +59,7 @@ V takovém případě bude sešit vypadat jako v režimu čtení.
     ![Obrázek znázorňující parametr textu odkazovaný v KQL](./media/workbooks-text/text-reference.png)
 
 > [!NOTE]
-> V předchozím příkladu `{SlowRequestThreshold}` představuje celočíselnou hodnotu. Pokud jste se dotazem na řetězec, například `{ComputerName}` byste museli změnit dotaz Kusto, aby se přidaly `"{ComputerName}"` uvozovky, aby pole parametru přijímalo vstup bez uvozovek.
+> V předchozím příkladu `{SlowRequestThreshold}` představuje celočíselnou hodnotu. Pokud jste se dotazem na řetězec, například byste `{ComputerName}` museli změnit dotaz Kusto, aby se přidaly uvozovky, aby `"{ComputerName}"` pole parametru přijímalo vstup bez uvozovek.
 
 ## <a name="setting-default-values"></a>Nastavení výchozích hodnot
 1. Začněte s prázdným sešitem v režimu úprav.

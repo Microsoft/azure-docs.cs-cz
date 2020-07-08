@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81604617"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
@@ -41,9 +40,9 @@ Centra úloh se identifikují podle názvu, který odpovídá těmto pravidlům:
 * Začíná písmenem
 * Má minimální délku 3 znaky, maximální délka je 45 znaků.
 
-Název centra úloh je deklarovaný v souboru *Host. JSON* , jak je znázorněno v následujícím příkladu:
+Název centra úloh je deklarován v *host.jsv* souboru, jak je znázorněno v následujícím příkladu:
 
-### <a name="hostjson-functions-20"></a>Host. JSON (funkce 2,0)
+### <a name="hostjson-functions-20"></a>host.jszapnuto (Functions 2,0)
 
 ```json
 {
@@ -56,7 +55,7 @@ Název centra úloh je deklarovaný v souboru *Host. JSON* , jak je znázorněno
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>Host. JSON (funkce 1. x)
+### <a name="hostjson-functions-1x"></a>host.jszapnuto (Functions 1. x)
 
 ```json
 {
@@ -66,9 +65,9 @@ Název centra úloh je deklarovaný v souboru *Host. JSON* , jak je znázorněno
 }
 ```
 
-Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je znázorněno v `host.json` následujícím ukázkovém souboru:
+Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je znázorněno v následujícím `host.json` ukázkovém souboru:
 
-### <a name="hostjson-functions-10"></a>Host. JSON (funkce 1,0)
+### <a name="hostjson-functions-10"></a>host.jszapnuto (Functions 1,0)
 
 ```json
 {
@@ -78,7 +77,7 @@ Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je z
 }
 ```
 
-### <a name="hostjson-functions-20"></a>Host. JSON (funkce 2,0)
+### <a name="hostjson-functions-20"></a>host.jszapnuto (Functions 2,0)
 
 ```json
 {
@@ -91,7 +90,7 @@ Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je z
 }
 ```
 
-Název centra úloh se nastaví na hodnotu nastavení `MyTaskHub` aplikace. Následující `local.settings.json` příklad ukazuje, jak definovat `MyTaskHub` nastavení jako: `samplehubname`
+Název centra úloh se nastaví na hodnotu `MyTaskHub` nastavení aplikace. Následující `local.settings.json` příklad ukazuje, jak definovat `MyTaskHub` nastavení jako `samplehubname` :
 
 ```json
 {
@@ -125,7 +124,7 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> Předchozí příklad v jazyce C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklad v jazyce C# je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -146,13 +145,13 @@ Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a čís
 
 | Trvalá verze rozšíření | Výchozí název centra úloh |
 | - | - |
-| 2.x | Při nasazení v Azure je název centra úloh odvozený od názvu _aplikace Function App_. Při spuštění mimo Azure je `TestHubName`výchozí název centra úloh. |
-| verze | Výchozí název centra úloh pro všechna prostředí jsou `DurableFunctionsHub`. |
+| 2.x | Při nasazení v Azure je název centra úloh odvozený od názvu _aplikace Function App_. Při spuštění mimo Azure je výchozí název centra úloh `TestHubName` . |
+| verze | Výchozí název centra úloh pro všechna prostředí jsou `DurableFunctionsHub` . |
 
 Další informace o rozdílech mezi verzemi rozšíření naleznete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 > [!NOTE]
-> Název se odlišuje od jednoho centra úkolů v případě, že je ve sdíleném účtu úložiště víc Center úkolů. Pokud máte více aplikací Function App sdílejících sdílený účet úložiště, je nutné explicitně nakonfigurovat různé názvy pro každé centrum úloh v souborech *Host. JSON* . V opačném případě budou aplikace s více aplikacemi vzájemně soutěžit na zprávy, což by mohlo vést k nedefinovanému chování, včetně orchestrace neočekávaného "zablokování" ve stavu `Pending` nebo `Running` .
+> Název se odlišuje od jednoho centra úkolů v případě, že je ve sdíleném účtu úložiště víc Center úkolů. Pokud máte více aplikací Function App sdílejících sdílený účet úložiště, musíte pro každé centrum úloh v *host.js* pro soubory explicitně nakonfigurovat jiné názvy. V opačném případě budou aplikace s více aplikacemi vzájemně soutěžit na zprávy, což by mohlo vést k nedefinovanému chování, včetně orchestrace neočekávaného "zablokování" ve `Pending` `Running` stavu nebo.
 
 ## <a name="next-steps"></a>Další kroky
 

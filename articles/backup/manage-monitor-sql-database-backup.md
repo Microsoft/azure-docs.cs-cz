@@ -4,10 +4,9 @@ description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL 
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537300"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovaných databází SQL Serveru
@@ -38,7 +37,7 @@ Vzhledem k tomu, že se zálohy protokolů vyskytují každých 15 minut, může
 
 Monitorování výstrah zálohování databáze:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
 
@@ -142,7 +141,7 @@ Upravte zásadu pro změnu četnosti zálohování nebo rozsahu uchovávání.
 > [!NOTE]
 > Jakákoli změna v období uchování se použije zpět na všechny starší body obnovení kromě nových.
 
-Na řídicím panelu trezoru klikněte na **Spravovat** > **zásady zálohování** a vyberte zásadu, kterou chcete upravit.
+Na řídicím panelu trezoru klikněte na **Spravovat**  >  **zásady zálohování** a vyberte zásadu, kterou chcete upravit.
 
   ![Spravovat zásady zálohování](./media/backup-azure-sql-database/modify-backup-policy.png)
 

@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732471"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Java)
@@ -63,7 +62,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 
 V této části upravíte aplikaci zařízení, kterou jste vytvořili v části [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) pro nahrání souboru do centra IoT.
 
-1. Zkopírujte soubor obrázku do `simulated-device` složky a přejmenujte ho `myimage.png`.
+1. Zkopírujte soubor obrázku do `simulated-device` složky a přejmenujte ho `myimage.png` .
 
 2. V textovém editoru otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` soubor.
 
@@ -156,7 +155,7 @@ V této části vytvoříte konzolovou aplikaci Java, která přijímá zprávy 
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. `pom.xml` Soubor uložte a zavřete.
+4. Soubor uložte a zavřete `pom.xml` .
 
 5. V textovém editoru otevřete `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` soubor.
 
@@ -233,7 +232,7 @@ V této části vytvoříte konzolovou aplikaci Java, která přijímá zprávy 
     }
     ```
 
-10. `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` Soubor uložte a zavřete.
+10. Soubor uložte a zavřete `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` .
 
 11. Pomocí následujícího příkazu sestavte aplikaci **pro čtení souborů a odesílání oznámení** a vyhledejte chyby:
 

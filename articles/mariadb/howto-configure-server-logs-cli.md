@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 75efdd8ed855fe78651fce5828aacb2384052ae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81270532"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům pomalým dotazům pomocí Azure CLI
@@ -24,9 +23,9 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Server můžete nakonfigurovat tak, aby se přihlásil k protokolu pomalým dotazů MySQL, a to provedením následujících kroků:
-1. Zapněte pomalé protokolování dotazů nastavením parametru **\_pomalého\_protokolu dotazů** na zapnuto.
-2. Vyberte, kde se mají protokoly výstupovat, a použijte přitom **výstup protokolu\_**. Pokud chcete odesílat protokoly do místního úložiště i Azure Monitor diagnostické protokoly, vyberte **soubor**. Pokud chcete odesílat protokoly jenom do protokolů Azure Monitor, vyberte **žádné** .
-3. Úprava dalších parametrů, jako jsou **například\_dlouhé\_časy dotazů** a **příkazy\_správce\_protokolu s pomalým protokolem\_**.
+1. Zapněte pomalé protokolování dotazů nastavením parametru **pomalého \_ \_ protokolu dotazů** na zapnuto.
+2. Vyberte, kde se mají protokoly výstupovat, a použijte přitom ** \_ výstup protokolu**. Pokud chcete odesílat protokoly do místního úložiště i Azure Monitor diagnostické protokoly, vyberte **soubor**. Pokud chcete odesílat protokoly jenom do protokolů Azure Monitor, vyberte **žádné** .
+3. Úprava dalších parametrů, jako jsou **například \_ dlouhé \_ časy dotazů** a ** \_ \_ \_ příkazy správce protokolu s pomalým protokolem**.
 
 Informace o tom, jak nastavit hodnotu těchto parametrů prostřednictvím rozhraní příkazového řádku Azure CLI, najdete v tématu [Postup konfigurace parametrů serveru](howto-configure-server-parameters-cli.md).
 
@@ -42,7 +41,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Vypsat protokoly pro Azure Database for MariaDB Server
 Pokud je **log_output** nakonfigurovaná na soubor, můžete získat přístup k protokolům přímo z místního úložiště serveru. Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MariaDB Server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) .
 
-Soubory protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **soubory\_\_protokolu list. txt**.
+Soubory protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem ** \_ soubory protokolu \_list.txt**.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

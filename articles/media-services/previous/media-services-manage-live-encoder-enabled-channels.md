@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641109"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
@@ -51,7 +50,7 @@ Počínaje verzí Media Services 2,10 můžete při vytváření kanálu určit,
 > 
 
 ## <a name="billing-implications"></a>Důsledky fakturace
-Kanál Live Encoding začíná při přechodu do stavu "spuštěno" prostřednictvím rozhraní API.   Stav můžete zobrazit také v Azure Portal nebo v nástroji Azure Media Services Explorer (https://aka.ms/amse).
+Kanál Live Encoding začíná při přechodu do stavu "spuštěno" prostřednictvím rozhraní API.   Stav můžete zobrazit také v Azure Portal nebo v nástroji Azure Media Services Explorer ( https://aka.ms/amse) .
 
 Následující tabulka ukazuje, jak se stavy kanálu mapují na fakturační stavy v rozhraní API a Azure Portal. Stavy se mírně liší mezi rozhraním API a uživatelského prostředí portálu. Jakmile je kanál ve stavu spuštěno prostřednictvím rozhraní API nebo ve stavu "připraveno" nebo "Streaming" ve Azure Portal, bude faktura aktivní.
 Chcete-li zastavit vyúčtování kanálu, je nutné zastavit kanál přes rozhraní API nebo v Azure Portal.
@@ -71,9 +70,9 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje se fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádné spuštěné programy)<br/>– nebo –<br/>Streamování (aspoň jeden spuštěný program) |ANO |
+| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
-| Zastaveno |Zastaveno |Ne |
+| Zastaveno |Zastaveno |No |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatické vypnutí pro nepoužívané kanály
 Od 25. ledna 2016 Media Services zavedli aktualizaci, která automaticky zastaví kanál (s povoleným živým kódováním) poté, co byl po dlouhou dobu spuštěný v nepoužívaném stavu. To platí pro kanály, které neobsahují žádné aktivní programy a které po delší dobu nedostaly vstupní příspěvek na dávky.
@@ -158,7 +157,7 @@ Požadavky:
 
 Stejné jako pro [RTMP s jednou přenosovou rychlostí](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP).
 
-#### <a name="other-considerations"></a>Další aspekty
+#### <a name="other-considerations"></a>Další důležité informace
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
 * Maximální rozlišení příchozího streamu videa je 1080 a maximálně 60 polí za sekundu, pokud je prokládaný, nebo 30 snímků za sekundu, pokud je progresivní.
 
@@ -313,16 +312,16 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádné spuštěné programy)<br/>– nebo –<br/>Streamování (aspoň jeden spuštěný program) |Ano |
+| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |Yes |
 | Zastavování |Zastavování |Ne (přechodný stav) |
-| Zastaveno |Zastaveno |Ne |
+| Zastaveno |Zastaveno |No |
 
 > [!NOTE]
 > V současné době je průměrem začátku kanálu přibližně 2 minuty, ale v některých případech může trvat až 20 minut. Resetování kanálu může trvat až 5 minut.
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>Požadavky
+## <a name="considerations"></a><a id="Considerations"></a>Důležité informace
 * Když se v kanálu **standardního** typu kódování vyskytne ztráta vstupního kanálu zdroje nebo příspěvků, nahradí se zdrojem videa nebo zvukem chyba SLAT a netichá. Kanál bude dál generovat SLAT, dokud se neobnoví informační kanál vstupů a příspěvků. Doporučujeme, aby živý kanál nebyl ponechán v takovém stavu déle než 2 hodiny. Po tomto okamžiku není zaručeno chování kanálu na vstupním připojení, ani v reakci na příkaz k obnovení není ani jeho chování. Budete muset kanál zastavit, odstranit ho a vytvořit nový.
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
 * Pokaždé, když znovu nakonfigurujete živý kodér, zavolejte na kanálu metodu **resetování** . Před resetováním kanálu musíte program zastavit. Po resetování kanálu restartujte program.

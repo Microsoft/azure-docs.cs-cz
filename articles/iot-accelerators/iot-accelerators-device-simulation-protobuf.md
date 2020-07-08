@@ -12,10 +12,9 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683995"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
@@ -65,14 +64,14 @@ Stáhněte a rozbalte [mikroslužbu simulace zařízení](https://github.com/Azu
 
 V Visual Studio Code otevřete složku **Remote-Monitoring-Services-dotnet-master\storage-Adapter** . Chcete-li opravit nevyřešené závislosti, klikněte na tlačítko **obnovit** .
 
-Otevřete soubor **. VSCode/Launch. JSON** a přiřaďte svůj připojovací řetězec Cosmos DB k proměnné **prostředí\_počítače\_STORAGEADAPTER\_DOCUMENTDB CONNSTRING** .
+Otevřete soubor **. VSCode/launch.jsv** souboru a přiřaďte Cosmos DB připojovací řetězec k proměnné prostředí **počítače \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** .
 
 > [!NOTE]
 > Když mikroslužbu spustíte místně na svém počítači, vyžaduje se i v Azure instance Cosmos DB, aby fungovala správně.
 
-Pokud chcete spustit mikroslužbu adaptéru úložiště místně, klikněte **na \> ladění spustit ladění**.
+Pokud chcete spustit mikroslužbu adaptéru úložiště místně, klikněte na **ladění \> Spustit ladění**.
 
-Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby včetně adresy URL pro kontrolu stavu webové služby: <http://127.0.0.1:9022/v1/status>. Při přechodu na tuto adresu by měl být ve stavu "OK: Alive" a dobře ".
+Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby včetně adresy URL pro kontrolu stavu webové služby: <http://127.0.0.1:9022/v1/status> . Při přechodu na tuto adresu by měl být ve stavu "OK: Alive" a dobře ".
 
 Ponechte mikroslužbu adaptéru úložiště spuštěnou v této instanci Visual Studio Code, zatímco provedete následující kroky.
 
@@ -82,9 +81,9 @@ Otevřete složku **Device-simulace-dotnet-Master** , kterou jste stáhli z GitH
 
 V tomto průvodci vytvoříte nový model zařízení pro sledování prostředků:
 
-1. Ve složce **Services\data\devicemodels** vytvořte nový soubor modelu zařízení s názvem **assettracker-01. JSON** .
+1. Ve složce **Services\data\devicemodels** vytvořte nový soubor modelu zařízení s názvem **assettracker-01.js** .
 
-1. Definujte funkčnost zařízení v souboru **assettracker-01. JSON** modelu zařízení. Oddíl telemetrie modelu zařízení Protobuf musí:
+1. Definujte funkčnost zařízení v modelu zařízení **assettracker-01.jsv** souboru. Oddíl telemetrie modelu zařízení Protobuf musí:
 
    * Zahrňte název třídy Protobuf, kterou vygenerujete pro vaše zařízení. V následující části se dozvíte, jak vygenerovat tuto třídu.
    * Jako formát zprávy zadejte Protobuf.
@@ -147,7 +146,7 @@ Napište skript chování, který definuje, jak se vaše zařízení chová. Dal
 
 Když máte model zařízení a určíte formát zprávy, můžete **vytvořit soubor.** Do souboru **proto** přidáte:
 
-* Který se shoduje s vlastností ClassName v modelu zařízení. **ClassName** `csharp_namespace`
+* `csharp_namespace`Který se shoduje s vlastností **ClassName** v modelu zařízení.
 * Zpráva pro každou strukturu dat k serializaci.
 * Název a typ pro každé pole ve zprávě.
 
@@ -168,7 +167,7 @@ Když máte model zařízení a určíte formát zprávy, můžete **vytvořit s
     }
     ```
 
-Značky `=1`, `=2` na jednotlivých prvcích, určují jedinečnou značku, kterou pole používá v binárním kódování. Čísla 1-15 vyžadují jeden méně bajt pro kódování než vyšší čísla.
+`=1`Značky, `=2` na jednotlivých prvcích, určují jedinečnou značku, kterou pole používá v binárním kódování. Čísla 1-15 vyžadují jeden méně bajt pro kódování než vyšší čísla.
 
 ## <a name="generate-the-protobuf-class"></a>Generovat třídu Protobuf
 
@@ -190,17 +189,17 @@ V této části otestujete zařízení pro sledování assetu, které jste vytvo
 
 ### <a name="run-the-device-simulation-microservice"></a>Spuštění mikroslužby simulace zařízení
 
-Otevřete soubor **. VSCode/Launch. JSON** a přiřaďte své:
+Otevřete soubor **. VSCode/launch.js** a přiřaďte ho:
 
-* IoT Hub připojovací řetězec k proměnné **prostředí\_IOTHUB\_počítače CONNSTRING** .
-* Připojovací řetězec účtu úložiště k proměnné **prostředí\_účtu\_úložiště\_Azure** .
-* Cosmos DB připojovací řetězec k proměnné **prostředí\_CONNSTRING\_počítače\_s DOCUMENTDB STORAGEADAPTER** .
+* IoT Hub připojovací řetězec k proměnné **prostředí \_ IOTHUB počítače \_ CONNSTRING** .
+* Připojovací řetězec účtu úložiště k proměnné **prostředí \_ \_ \_ účtu úložiště Azure** .
+* Cosmos DB připojovací řetězec k proměnné **prostředí \_ \_ \_ CONNSTRING počítače s DOCUMENTDB STORAGEADAPTER** .
 
-Otevřete soubor **WebService/Properties/launchSettings. JSON** a přiřaďte své:
+Otevřete **u souboru WebService/Properties/launchSettings.js** a přiřaďte své:
 
-* IoT Hub připojovací řetězec k proměnné **prostředí\_IOTHUB\_počítače CONNSTRING** .
-* Připojovací řetězec účtu úložiště k proměnné **prostředí\_účtu\_úložiště\_Azure** .
-* Cosmos DB připojovací řetězec k proměnné **prostředí\_CONNSTRING\_počítače\_s DOCUMENTDB STORAGEADAPTER** .
+* IoT Hub připojovací řetězec k proměnné **prostředí \_ IOTHUB počítače \_ CONNSTRING** .
+* Připojovací řetězec účtu úložiště k proměnné **prostředí \_ \_ \_ účtu úložiště Azure** .
+* Cosmos DB připojovací řetězec k proměnné **prostředí \_ \_ \_ CONNSTRING počítače s DOCUMENTDB STORAGEADAPTER** .
 
 Otevřete soubor **WebService\appsettings.ini** a upravte nastavení následujícím způsobem:
 
@@ -219,7 +218,7 @@ Přidejte položku do souboru **services\services.csproj** pro každý soubor, k
 </None>
 ```
 
-Pokud chcete spustit mikroslužbu místně, klikněte **na \> ladění spustit ladění**.
+Pokud chcete spustit mikroslužbu místně, klikněte na **ladění \> Spustit ladění**.
 
 Okno **terminálu** v Visual Studio Code zobrazuje výstup z běžící mikroslužby.
 
@@ -251,7 +250,7 @@ Nastavení post:
 
 1. Klikněte **na \> Import souboru**. Pak klikněte na **zvolit soubory**.
 
-1. Vyberte možnost **akcelerátor řešení simulace zařízení Azure IoT\_. kolekce pro vystavování** a řešení pro **simulaci zařízení Azure\_IoT. proúčtujte prostředí** a klikněte na **otevřít**.
+1. Vyberte možnost **akcelerátor řešení simulace zařízení Azure IoT. \_ kolekce pro vystavování** a **řešení pro simulaci zařízení Azure IoT. proúčtujte \_ prostředí** a klikněte na **otevřít**.
 
 1. Rozbalte **akcelerátor řešení pro simulaci zařízení Azure IoT** , abyste viděli požadavky, které můžete odeslat.
 
@@ -269,7 +268,7 @@ Chcete-li zastavit simulaci, vyberte možnost **zastavit simulaci** v příspěv
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V jejich instancích Visual Studio Code můžete zastavit dvě místně běžící mikroslužby (** \> ladění zastavit ladění**).
+V jejich instancích Visual Studio Code můžete zastavit dvě místně běžící mikroslužby (**ladění \> Zastavit ladění**).
 
 Pokud už nepotřebujete instance IoT Hub a Cosmos DB, odstraňte je z předplatného Azure, abyste se vyhnuli zbytečným poplatkům.
 

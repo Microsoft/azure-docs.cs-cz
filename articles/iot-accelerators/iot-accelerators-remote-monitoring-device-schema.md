@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683749"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schématu modelu zařízení
@@ -71,14 +70,14 @@ Soubory schématu pro výchozí simulovaná zařízení můžete zobrazit ve [sl
 
 Následující tabulka popisuje položky schématu nejvyšší úrovně:
 
-| Položka schématu | Popis |
+| Položka schématu | Description |
 | -- | --- |
 | `SchemaVersion` | Verze schématu je vždy `1.0.0` a je specifická pro formát tohoto souboru. |
 | `Id` | Jedinečné ID pro tento model zařízení. |
 | `Version` | Určuje verzi modelu zařízení. |
 | `Name` | Popisný název modelu zařízení. |
 | `Description` | Popis modelu zařízení. |
-| `Protocol` | Protokol připojení, který zařízení používá Může to být jedna `AMQP`z `MQTT`, a `HTTP`. |
+| `Protocol` | Protokol připojení, který zařízení používá Může to být jedna z `AMQP` , a `MQTT` `HTTP` . |
 
 Následující části popisují ostatní oddíly ve schématu JSON:
 
@@ -115,11 +114,11 @@ Následující příklad ukazuje definici objektu stavu zařízení pro simulova
 }
 ```
 
-Služba simulace spouští soubor **Chiller-01-State. js** každých pět sekund, aby bylo možné aktualizovat stav zařízení. Soubory JavaScriptu pro výchozí simulovaná zařízení můžete zobrazit ve [složce Scripts](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) na GitHubu. Podle konvence mají tyto soubory JavaScriptu **stav** přípony, aby je bylo možné odlišit od souborů, které implementují chování metody.
+Služba simulace spouští soubor **chiller-01-state.js** každých pět sekund, aby bylo možné aktualizovat stav zařízení. Soubory JavaScriptu pro výchozí simulovaná zařízení můžete zobrazit ve [složce Scripts](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) na GitHubu. Podle konvence mají tyto soubory JavaScriptu **stav** přípony, aby je bylo možné odlišit od souborů, které implementují chování metody.
 
 ## <a name="properties"></a>Vlastnosti
 
-`Properties` Oddíl schématu definuje hodnoty vlastností, které zařízení hlásí do řešení. Příklad:
+`Properties`Oddíl schématu definuje hodnoty vlastností, které zařízení hlásí do řešení. Příklad:
 
 ```json
 "Properties": {
@@ -130,13 +129,13 @@ Služba simulace spouští soubor **Chiller-01-State. js** každých pět sekund
 }
 ```
 
-Po spuštění řešení se dotazuje na všechna simulovaná zařízení a vytvoří seznam `Type` hodnot, které se použijí v uživatelském rozhraní. Řešení používá vlastnosti `Latitude` a `Longitude` k přidání umístění zařízení do mapy na řídicím panelu.
+Po spuštění řešení se dotazuje na všechna simulovaná zařízení a vytvoří seznam `Type` hodnot, které se použijí v uživatelském rozhraní. Řešení používá `Latitude` `Longitude` vlastnosti a k přidání umístění zařízení do mapy na řídicím panelu.
 
 ## <a name="telemetry"></a>Telemetrie
 
-`Telemetry` Pole uvádí všechny typy telemetrie, které simulované zařízení odesílá do řešení.
+`Telemetry`Pole uvádí všechny typy telemetrie, které simulované zařízení odesílá do řešení.
 
-Následující příklad pošle zprávu telemetrie JSON každých 10 sekund s `floor`, `vibration`a `temperature` daty ze senzorů výtahu:
+Následující příklad pošle zprávu telemetrie JSON každých 10 sekund s `floor` , `vibration` a `temperature` daty ze senzorů výtahu:
 
 ```json
 "Telemetry": [
@@ -158,7 +157,7 @@ Následující příklad pošle zprávu telemetrie JSON každých 10 sekund s `f
 ]
 ```
 
-`MessageTemplate`definuje strukturu zprávy JSON odesílané simulovaným zařízením. Zástupné symboly `MessageTemplate` v nástroji používají `${NAME}` syntaxi `NAME` , kde je klíč z [objektu stavu zařízení](#simulation). Řetězce by měly být v uvozovkách, čísla by neměla.
+`MessageTemplate`definuje strukturu zprávy JSON odesílané simulovaným zařízením. Zástupné symboly v nástroji `MessageTemplate` používají syntaxi `${NAME}` , kde `NAME` je klíč z [objektu stavu zařízení](#simulation). Řetězce by měly být v uvozovkách, čísla by neměla.
 
 `MessageSchema`definuje schéma zprávy odesílané simulovaným zařízením. Schéma zprávy je také Publikováno do IoT Hub, aby back-end aplikace mohly znovu použít informace k interpretaci příchozí telemetrie.
 
@@ -172,7 +171,7 @@ V současné době můžete použít pouze schémata zpráv JSON. Pole uvedená 
 * Double
 * DateTime
 
-Chcete-li odesílat zprávy telemetrie v různých intervalech, přidejte k `Telemetry` poli více typů telemetrie. Následující příklad odesílá data o teplotě a vlhkosti každých 10 sekund a stav světla každou minutu:
+Chcete-li odesílat zprávy telemetrie v různých intervalech, přidejte k poli více typů telemetrie `Telemetry` . Následující příklad odesílá data o teplotě a vlhkosti každých 10 sekund a stav světla každou minutu:
 
 ```json
 "Telemetry": [
@@ -206,7 +205,7 @@ Chcete-li odesílat zprávy telemetrie v různých intervalech, přidejte k `Tel
 
 ## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
 
-Simulované zařízení může reagovat na metody typu cloud-zařízení volané ze služby IoT Hub. `CloudToDeviceMethods` Oddíl v souboru schématu modelu zařízení:
+Simulované zařízení může reagovat na metody typu cloud-zařízení volané ze služby IoT Hub. `CloudToDeviceMethods`Oddíl v souboru schématu modelu zařízení:
 
 * Definuje metody, na které simulované zařízení může reagovat.
 * Identifikuje soubor JavaScriptu, který obsahuje logiku, která se má provést.

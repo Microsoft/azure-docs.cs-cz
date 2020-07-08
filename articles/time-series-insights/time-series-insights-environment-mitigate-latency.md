@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81263382"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights
@@ -56,7 +55,7 @@ Výstrahy umožňují diagnostikovat a zmírnit problémy s latencí, ke kterým
 
    Odtud můžete nakonfigurovat výstrahy pomocí některých z těchto podmínek:
 
-   |Metrika  |Popis  |
+   |Metric  |Popis  |
    |---------|---------|
    |**Přijaté bajty příchozího přenosu dat**     | Počet nezpracovaných bajtů načtených ze zdrojů událostí. Nezpracovaný počet obvykle zahrnuje název vlastnosti a hodnotu.  |  
    |**Příchozí přenos dat přijal neplatné zprávy.**     | Počet neplatných zpráv přečtených ze všech zdrojů událostí Azure Event Hubs nebo Azure IoT Hub.      |

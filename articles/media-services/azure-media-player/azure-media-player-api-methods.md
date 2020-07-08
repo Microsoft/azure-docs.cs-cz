@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727265"
 ---
 # <a name="api"></a>Rozhraní API #
@@ -19,7 +18,7 @@ Rozhraní API pro Azure Media Player umožňuje pracovat s videem prostřednictv
 
 ## <a name="referencing-the-player"></a>Odkazování na přehrávač ##
 
-Chcete-li používat funkce rozhraní API, potřebujete přístup k objektu přehrávače. Donovanovo je snadno získat. Stačí, abyste měli jistotu, že má vaše značka videa ID. Vzorový kód pro `vid1`vložení má ID. Pokud máte na jedné stránce více videí, zajistěte, aby měla každá značka videa jedinečné ID.
+Chcete-li používat funkce rozhraní API, potřebujete přístup k objektu přehrávače. Donovanovo je snadno získat. Stačí, abyste měli jistotu, že má vaše značka videa ID. Vzorový kód pro vložení má ID `vid1` . Pokud máte na jedné stránce více videí, zajistěte, aby měla každá značka videa jedinečné ID.
 
 `var myPlayer = amp('vid1');`
 

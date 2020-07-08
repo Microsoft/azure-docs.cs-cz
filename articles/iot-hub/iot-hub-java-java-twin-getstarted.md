@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt
 ms.openlocfilehash: 3ea2f0eec12d756a898f1761f6b22fd034c1bc3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732455"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme se zdvojením zařízení (Java)
@@ -67,7 +66,7 @@ V této části vytvoříte aplikaci Java, která přidá metadata umístění j
 
 3. Na příkazovém řádku přejděte do složky **Add-tags-Query** .
 
-4. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **Add-tags-Query** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Service-Client** ve vaší aplikaci:
+4. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **Add-tags-Query** a přidejte následující závislost na uzel **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Service-Client** ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -124,7 +123,7 @@ V této části vytvoříte aplikaci Java, která přidá metadata umístění j
     public static final String plant = "Redmond43";
     ```
 
-10. Aktualizujte podpis metody **Main** tak, aby zahrnoval `throws` následující klauzuli:
+10. Aktualizujte podpis metody **Main** tak, aby zahrnoval následující `throws` klauzuli:
 
     ```java
     public static void main( String[] args ) throws IOException
@@ -138,7 +137,7 @@ V této části vytvoříte aplikaci Java, která přidá metadata umístění j
     DeviceTwinDevice device = new DeviceTwinDevice(deviceId);
     ```
 
-12. Do metody `try/catch` **Main** přidejte následující blok:
+12. `try/catch`Do metody **Main** přidejte následující blok:
 
     ```java
     try {
@@ -150,7 +149,7 @@ V této části vytvoříte aplikaci Java, která přidá metadata umístění j
     }
     ```
 
-13. Pokud chcete ve **svém zařízení aktualizovat** dvojitou značku `try` **oblasti** a zařízení, přidejte do bloku následující kód:
+13. Pokud chcete ve **svém zařízení aktualizovat** dvojitou značku **oblasti** a zařízení, přidejte do bloku následující kód `try` :
 
     ```java
     // Get the device twin from IoT Hub
@@ -179,7 +178,7 @@ V této části vytvoříte aplikaci Java, která přidá metadata umístění j
     System.out.println(device);
     ```
 
-14. Pokud chcete zadat dotaz na vlákna ve službě IoT Hub, přidejte do `try` bloku následující kód po kódu, který jste přidali v předchozím kroku. Kód spouští dva dotazy. Každý dotaz vrátí maximálně 100 zařízení.
+14. Pokud chcete zadat dotaz na vlákna ve službě IoT Hub, přidejte do bloku následující kód `try` po kódu, který jste přidali v předchozím kroku. Kód spouští dva dotazy. Každý dotaz vrátí maximálně 100 zařízení.
 
     ```java
     // Query the device twins in IoT Hub
@@ -228,7 +227,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu hl
 
 2. Na příkazovém řádku přejděte do složky **simulovaného zařízení** .
 
-3. Pomocí textového editoru otevřete soubor **pom. XML** ve složce **simulovaného zařízení** a přidejte následující závislosti do uzlu **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Device-Client** ve vaší aplikaci.
+3. Pomocí textového editoru otevřete soubor **pom.xml** ve složce **simulovaného zařízení** a přidejte následující závislosti do uzlu **závislosti** . Tato závislost vám umožní komunikovat se službou IoT Hub pomocí balíčku **IoT-Device-Client** ve vaší aplikaci.
 
     ```xml
     <dependency>

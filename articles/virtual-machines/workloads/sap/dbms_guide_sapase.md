@@ -16,10 +16,9 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273201"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
@@ -50,7 +49,7 @@ Uzamknout stránky v paměti je nastavení, které zabrání stránkovanému vys
 
 
 ## <a name="linux-operating-system-specific-settings"></a>Nastavení specifické pro operační systém Linux
-V případě virtuálních počítačů `saptune` se systémem Linux by měly být ve výchozím nastavení povoleny s profilem SAP-pomocného programu Linux a lze ho ověřit pomocí příkazu.  
+V případě virtuálních počítačů se systémem Linux `saptune` by měly být ve výchozím nastavení povoleny s profilem SAP-POmocného programu Linux a lze ho ověřit pomocí příkazu.  
 
 `cat /proc/meminfo` 
 
@@ -83,7 +82,7 @@ Příklad konfigurace malého serveru databáze s pomocným mechanismem SAP s ve
 | Konfigurace | Windows | Linux | Komentáře |
 | --- | --- | --- | --- |
 | Typ virtuálního počítače | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
-| Akcelerované síťové služby | Povolení | Povolení | ---|
+| Akcelerované síťové služby | Povolit | Povolit | ---|
 | Verze protokolu SAP pomocného mechanismu | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | počet datových zařízení | 4 | 4 | ---|
 | počet zařízení protokolu | 1 | 1 | --- |
@@ -104,7 +103,7 @@ Příkladem konfigurace pro střední Server databáze pomocného programu SAP s
 | Konfigurace | Windows | Linux | Komentáře |
 | --- | --- | --- | --- |
 | Typ virtuálního počítače | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
-| Akcelerované síťové služby | Povolení | Povolení | ---|
+| Akcelerované síťové služby | Povolit | Povolit | ---|
 | Verze protokolu SAP pomocného mechanismu | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | počet datových zařízení | 8 | 8 | ---|
 | počet zařízení protokolu | 1 | 1 | --- |
@@ -124,7 +123,7 @@ Příkladem konfigurace malého serveru databáze pomocného mechanismu pro SAP 
 | Konfigurace | Windows | Linux | Komentáře |
 | --- | --- | --- | --- |
 | Typ virtuálního počítače | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
-| Akcelerované síťové služby | Povolení | Povolení | ---|
+| Akcelerované síťové služby | Povolit | Povolit | ---|
 | Verze protokolu SAP pomocného mechanismu | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | počet datových zařízení | 16 | 16 | ---|
 | počet zařízení protokolu | 1 | 1 | --- |
@@ -145,7 +144,7 @@ Příkladem konfigurace malého serveru databáze s pomocným mechanismem SAP s 
 | Konfigurace | Windows | Linux | Komentáře |
 | --- | --- | --- | --- |
 | Typ virtuálního počítače | Řada M-Series (1,0 až 4,0 TB RAM)  | Řada M-Series (1,0 až 4,0 TB RAM) | --- |
-| Akcelerované síťové služby | Povolení | Povolení | ---|
+| Akcelerované síťové služby | Povolit | Povolit | ---|
 | Verze protokolu SAP pomocného mechanismu | 16.0.03.07 nebo vyšší | 16.0.03.07 nebo vyšší | --- |
 | počet datových zařízení | 32 | 32 | ---|
 | počet zařízení protokolu | 1 | 1 | --- |
@@ -211,7 +210,7 @@ Správce SAP software Provisioning (SWPM) poskytuje možnost šifrovat databázi
 - Agregované disky pomocí prostorů úložiště Windows nebo Linux LVM2 se správnou velikostí a systémem souborů
 - Vytvoření dostatečného počtu zařízení pro účely dat, protokolů, dočasného a zálohování
 - Zvažte použití UltraDisk pro x-large systémy 
-- Spuštění `saptune` SAP-pomocného mechanismu v operačním systému Linux 
+- Spuštění `saptune` SAP-POmocného mechanismu v operačním systému Linux 
 - Zabezpečte databázi pomocí šifrování DB – ruční ukládání klíčů v Azure Key Vault 
 - Dokončete [Kontrolní seznam SAP v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) . 
 - Konfigurace zálohování protokolu a úplného zálohování 
@@ -221,7 +220,7 @@ Správce SAP software Provisioning (SWPM) poskytuje možnost šifrovat databázi
 ## <a name="using-dbacockpit-to-monitor-database-instances"></a>Monitorování instancí databáze pomocí DBACockpit
 Pro systémy SAP, které používají program SAP pomocného mechanismu přístupu jako databázová platforma, je DBACockpit přístupný jako okna integrovaných prohlížečů v transakčních DBACockpit nebo jako WebDynpro. Kompletní funkce pro monitorování a správu databáze jsou však k dispozici pouze v WebDynpro implementaci DBACockpit.
 
-Stejně jako u místních systémů je potřeba pro povolení všech funkcí SAP NetWeaver používaných WebDynpro implementací DBACockpit použít několik kroků. Pokud chcete povolit použití webdynpros a generovat požadované hodnoty, postupujte podle [poznámky k podpoře SAP #1245200](https://launchpad.support.sap.com/#/notes/1245200) . Pokud budete postupovat podle pokynů uvedených v předchozích poznámkách, můžete také nakonfigurovat nástroj`ICM`Internet Communications Manager () spolu s porty, které se mají použít pro připojení HTTP a HTTPS. Výchozí nastavení pro protokol HTTP vypadá takto:
+Stejně jako u místních systémů je potřeba pro povolení všech funkcí SAP NetWeaver používaných WebDynpro implementací DBACockpit použít několik kroků. Pokud chcete povolit použití webdynpros a generovat požadované hodnoty, postupujte podle [poznámky k podpoře SAP #1245200](https://launchpad.support.sap.com/#/notes/1245200) . Pokud budete postupovat podle pokynů uvedených v předchozích poznámkách, můžete také nakonfigurovat nástroj Internet Communications Manager ( `ICM` ) spolu s porty, které se mají použít pro připojení HTTP a HTTPS. Výchozí nastavení pro protokol HTTP vypadá takto:
 
 > ICM/server_port_0 = PROT = HTTP, PORT = 8000, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
@@ -231,17 +230,17 @@ Stejně jako u místních systémů je potřeba pro povolení všech funkcí SAP
 
 a odkazy vygenerované v transakční DBACockpit vypadají podobně jako:
 
-> https:\//\<fullyqualifiedhostname>:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https: \/ / \<fullyqualifiedhostname> : 44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//\<fullyqualifiedhostname>:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http: \/ / \<fullyqualifiedhostname> : 8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
 > 
 
 V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. Informace o tom, jak ICM Určuje plně kvalifikovaný název hostitele v závislosti na parametrech profilu a v případě potřeby explicitně nastavuje parametr ICM/host_name_full, najdete v článku o [podpoře SAP – poznámka #773830](https://launchpad.support.sap.com/#/notes/773830) .
 
-Pokud jste virtuální počítač nasadili ve scénáři jenom pro cloud bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a `domainlabel`. Formát veřejného názvu DNS virtuálního počítače vypadá takto:
+Pokud jste virtuální počítač nasadili ve scénáři jenom pro cloud bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a `domainlabel` . Formát veřejného názvu DNS virtuálního počítače vypadá takto:
 
-> `<custom domainlabel`>. `<azure region`>. cloudapp.Azure.com
+> `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 
 > 
 
@@ -249,9 +248,9 @@ Další podrobnosti týkající se názvu DNS najdete [tady] [Virtual-Machines-a
 
 Nastavení parametru profilu SAP ICM/host_name_full na název DNS virtuálního počítače Azure odkaz může vypadat podobně jako:
 
-> https:\//mydomainlabel.westeurope.cloudapp.NET:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> https: \/ /mydomainlabel.westeurope.cloudapp.NET:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.NET:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
+> http: \/ /mydomainlabel.westeurope.cloudapp.NET:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 
 V takovém případě je třeba zajistit následující:
 

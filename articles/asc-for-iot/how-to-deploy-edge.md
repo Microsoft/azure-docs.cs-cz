@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311275"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
@@ -165,7 +164,7 @@ Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu
 
 1. Ověřte, zda jsou spuštěny následující kontejnery:
 
-   | Název | OBRÁZEK |
+   | Name | OBRÁZEK |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
@@ -179,7 +178,7 @@ Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu
 
    `sudo docker logs azureiotsecurity`
 
-1. Pro podrobnější protokoly přidejte následující proměnnou prostředí do nasazení modulu **azureiotsecurity** : `logLevel=Debug`.
+1. Pro podrobnější protokoly přidejte následující proměnnou prostředí do nasazení modulu **azureiotsecurity** : `logLevel=Debug` .
 
 ## <a name="next-steps"></a>Další kroky
 

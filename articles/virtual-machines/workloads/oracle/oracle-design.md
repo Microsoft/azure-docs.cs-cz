@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687539"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
@@ -146,7 +145,7 @@ Na základě požadavků na šířku pásma sítě si můžete vybrat z různýc
 - Pro lepší výkon sítě používejte Virtual Machines s [akcelerovanými síťovými](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) službami.
 - U některých distrubutions pro Linux doporučujeme povolit [podporu pro funkci trim/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)oddálení.
 - Nainstalujte [správce Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) do samostatného virtuálního počítače.
-- Ve výchozím nastavení nejsou v systému Linux povoleny velké stránky. Zvažte možnost Povolit velké stránky a `use_large_pages = ONLY` nastavit Oracle DB. To může přispět ke zvýšení výkonu. Další informace najdete [tady](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
+- Ve výchozím nastavení nejsou v systému Linux povoleny velké stránky. Zvažte možnost Povolit velké stránky a nastavit `use_large_pages = ONLY` Oracle DB. To může přispět ke zvýšení výkonu. Další informace najdete [tady](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Typy disků a konfigurace
 

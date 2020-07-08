@@ -6,21 +6,20 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537436"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Začínáme s agentem Azure Monitor Application Insights pro místní servery
 
 Tento článek obsahuje příkazy rychlého startu očekávané pro fungování většiny prostředí.
 Pokyny závisí na Galerie prostředí PowerShell k distribuci aktualizací.
-Tyto příkazy podporují parametr prostředí `-Proxy` PowerShell.
+Tyto příkazy podporují parametr prostředí PowerShell `-Proxy` .
 
 Vysvětlení těchto příkazů, pokyny k přizpůsobení a informace o řešení potíží najdete v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Stažení a instalace prostřednictvím Galerie prostředí PowerShell
 

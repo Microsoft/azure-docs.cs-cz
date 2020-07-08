@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605055"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurace uchovávání v Time Series Insights
@@ -34,7 +33,7 @@ Podrobné informace o tom, jak tato nastavení lépe pochopit, najdete [v Time S
 
 ## <a name="configure-data-retention"></a>Konfigurace uchovávání dat
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte existující Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
 

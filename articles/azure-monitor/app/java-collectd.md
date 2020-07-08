@@ -4,10 +4,9 @@ description: Rozšířené monitorování výkonu aplikace vašeho webu Java pom
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537521"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromažďováno: metriky výkonu Linux v Application Insights
@@ -29,8 +28,8 @@ Na počítačích se systémem Linux Server:
 
 1. Nainstalujte [shromážděnou](https://collectd.org/) verzi 5.4.0 nebo novější.
 2. Stáhněte si [modul plug-in Application Insights Collected Writer](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Poznamenejte si číslo verze.
-3. Zkopírujte SKLENICi modulu plug `/usr/share/collectd/java`-in do.
-4. Upravit `/etc/collectd/collectd.conf`:
+3. Zkopírujte SKLENICi modulu plug-in do `/usr/share/collectd/java` .
+4. Upravit `/etc/collectd/collectd.conf` :
    * Ujistěte se, že je povolený [modul plug-in Java](https://collectd.org/wiki/index.php/Plugin:Java) .
    * Aktualizujte JVMArg pro Java. Class. Path, aby obsahovala následující JAR. Aktualizujte číslo verze tak, aby odpovídalo vašemu staženému:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
@@ -92,12 +91,12 @@ Ve výchozím nastavení odesílá modul plug-in Application Insights všechna d
 Vyloučení dat z konkrétních modulů plug-in nebo zdrojů dat:
 
 * Upravte konfigurační soubor. 
-* V `<Plugin ApplicationInsightsWriter>`přidejte řádky direktivy takto:
+* V `<Plugin ApplicationInsightsWriter>` přidejte řádky direktivy takto:
 
-| Směrnici | Účinek |
+| Směrnici | Efekt |
 | --- | --- |
 | `Exclude disk` |Vyloučit všechna data shromažďovaná `disk` modulem plug-in |
-| `Exclude disk:read,write` |Vylučte ze zdrojů `read` s `write` názvem a `disk` z modulu plug-in. |
+| `Exclude disk:read,write` |Vylučte ze zdrojů s názvem `read` a `write` z `disk` modulu plug-in. |
 
 Oddělte direktivy novým řádkem.
 
@@ -106,7 +105,7 @@ Oddělte direktivy novým řádkem.
 
 * Otevřete [vyhledávání][diagnostic] a zjistěte, jestli nezpracované události byly doručeny. Někdy trvá i déle, než se objeví v Průzkumníku metrik.
 * [Pro odchozí data možná budete muset nastavit výjimky brány firewall](../../azure-monitor/app/ip-addresses.md) .
-* Povolte trasování v modulu plug-in Application Insights. Přidat tento řádek do `<Plugin ApplicationInsightsWriter>`:
+* Povolte trasování v modulu plug-in Application Insights. Přidat tento řádek do `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Otevřete terminál a spusťte shromažďování v podrobném režimu, aby se zobrazily případné problémy, které hlásí:
   * `sudo collectd -f`

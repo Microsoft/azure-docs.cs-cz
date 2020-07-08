@@ -8,10 +8,9 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606122"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Použití vzorů sloupců v mapování toku dat
@@ -31,7 +30,7 @@ Chcete-li přidat vzor sloupce do odvozeného sloupce nebo na kartě agregace ag
 
 ![vzory sloupců](media/data-flow/columnpattern.png "Vzory sloupců")
 
-K zadání podmínky shody použijte [Tvůrce výrazů](concepts-data-flow-expression-builder.md) . Vytvořte logický výraz, který odpovídá sloupcům na základě `name`, `type`, `stream`a `position` sloupce. Vzor bude mít vliv na libovolný sloupec, posunovaná nebo definovaná, kde podmínka vrátí hodnotu true.
+K zadání podmínky shody použijte [Tvůrce výrazů](concepts-data-flow-expression-builder.md) . Vytvořte logický výraz, který odpovídá sloupcům na základě `name` , `type` , `stream` a `position` sloupce. Vzor bude mít vliv na libovolný sloupec, posunovaná nebo definovaná, kde podmínka vrátí hodnotu true.
 
 Dvě pole výrazu pod podmínkou shody určují nové názvy a hodnoty ovlivněných sloupců. Slouží `$$` k odkazování na existující hodnotu spárovaného pole. Levý rámeček výrazu definuje název a pravé pole výrazu definuje hodnotu.
 
@@ -45,7 +44,7 @@ Pokud chcete ověřit, jestli je vaše shoda podmínky správná, můžete ově�
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Mapování na základě pravidel pro výběr a jímku
 
-Při mapování sloupců ve zdroji a výběru transformací můžete přidat buď pevné mapování, nebo mapování na základě pravidel. Odpovídá na základě sloupců `name`, `type`, `stream` `position` a. Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
+Při mapování sloupců ve zdroji a výběru transformací můžete přidat buď pevné mapování, nebo mapování na základě pravidel. Odpovídá na základě `name` sloupců, `type` , a `stream` `position` . Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
 
 Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel**.
 
@@ -55,7 +54,7 @@ Každé mapování založené na pravidlech vyžaduje dva vstupy: podmínku, na 
 
 ![mapování na základě pravidel](media/data-flow/rule-based-mapping.png "Mapování na základě pravidel")
 
-Použijte `$$` syntaxi pro odkaz na vstupní název spárovaného sloupce. Pomocí výše uvedeného obrázku jako příklad si řekněme, že uživatel chce vyhledat všechny řetězcové sloupce, jejichž názvy jsou kratší než šest znaků. Pokud byl jeden příchozí sloupec pojmenován `test`, výraz `$$ + '_short'` sloupec `test_short`přejmenuje. Pokud je toto jediné mapování, které existuje, všechny sloupce, které nesplňují podmínku, se z výstupních dat ztratí.
+Použijte `$$` syntaxi pro odkaz na vstupní název spárovaného sloupce. Pomocí výše uvedeného obrázku jako příklad si řekněme, že uživatel chce vyhledat všechny řetězcové sloupce, jejichž názvy jsou kratší než šest znaků. Pokud byl jeden příchozí sloupec pojmenován `test` , výraz `$$ + '_short'` sloupec přejmenuje `test_short` . Pokud je toto jediné mapování, které existuje, všechny sloupce, které nesplňují podmínku, se z výstupních dat ztratí.
 
 Vzory odpovídají současně předaným i definovaným sloupcům. Chcete-li zjistit, které definované sloupce jsou mapovány pravidlem, klikněte na ikonu brýlí vedle pravidla. Ověřte výstup pomocí data Preview.
 
@@ -65,7 +64,7 @@ Pokud kliknete na ikonu Dvojitá šipka dolů, můžete zadat podmínku mapován
 
 ![mapování na základě pravidel](media/data-flow/regex-matching.png "Mapování na základě pravidel")
 
-Výše uvedený příklad se shoduje se vzorem `(r)` regulárního výrazu nebo libovolným názvem sloupce, který obsahuje malý případ r. Podobně jako u mapování na základě pravidel jsou všechny odpovídající sloupce změněny podmínkou na pravé straně pomocí `$$` syntaxe.
+Výše uvedený příklad se shoduje se vzorem regulárního výrazu `(r)` nebo libovolným názvem sloupce, který obsahuje malý případ r. Podobně jako u mapování na základě pravidel jsou všechny odpovídající sloupce změněny podmínkou na pravé straně pomocí `$$` syntaxe.
 
 ### <a name="rule-based-hierarchies"></a>Hierarchie založené na pravidlech
 
@@ -73,7 +72,7 @@ Pokud vaše definovaná projekce má hierarchii, můžete k mapování podsloupc
 
 ![mapování na základě pravidel](media/data-flow/rule-based-hierarchy.png "Mapování na základě pravidel")
 
-Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a`. `a`obsahuje dva podsloupce `b` a `c`. Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako". `$$`
+Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a`obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
 
 ## <a name="pattern-matching-expression-values"></a>Hodnoty výrazů pro porovnávání vzorů.
 

@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537623"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
@@ -43,7 +42,7 @@ Bez ohledu na počet instancí s horizontálním navýšení kapacity má každ�
 
 Sada odchozích IP adres vaší aplikace se mění při škálování aplikace mezi nižšími úrovněmi (**Basic**, **Standard**a **Premium**) a úrovní **Premium v2** .
 
-Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, a to bez ohledu na cenové úrovně, a to tak `possibleOutboundIpAddresses` , že vyhledáte vlastnost nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
+Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, a to bez ohledu na cenové úrovně, a to tak, že vyhledáte `possibleOutboundIpAddresses` vlastnost nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Najít odchozí IP adresy
 

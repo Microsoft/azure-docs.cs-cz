@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81309901"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kdy použít poskytovatele služby Azure Multi-Factor Authentication
@@ -48,11 +47,11 @@ Pokud poskytovatel MFA není propojený s tenantem Azure AD nebo pokud propojuje
 > [!CAUTION]
 > Při odstraňování zprostředkovatele ověřování se nejedná o žádné potvrzení. Výběr možnosti **Odstranit** je trvalý proces.
 
-Zprostředkovatele ověřování najdete v**Azure Active Directory** > **Zprostředkovatelé****zabezpečení** > **MFA** >  **Azure Portal** > . Kliknutím na uvedené zprostředkovatele zobrazíte podrobnosti a konfigurace přidružené k tomuto poskytovateli.
+Zprostředkovatele ověřování najdete v **Azure portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**  >  **Zprostředkovatelé**zabezpečení MFA Azure Portal. Kliknutím na uvedené zprostředkovatele zobrazíte podrobnosti a konfigurace přidružené k tomuto poskytovateli.
 
 Než odeberete poskytovatele ověřování, poznamenejte si všechna vlastní nastavení nakonfigurovaná ve vašem poskytovateli. Rozhodněte, jaká nastavení je potřeba migrovat do obecného nastavení MFA od svého poskytovatele a dokončete migraci těchto nastavení. 
 
-Servery Azure MFA propojené s poskytovateli bude nutné znovu aktivovat pomocí přihlašovacích údajů vygenerovaných v části **Azure Portal** > **Azure Active Directory** > **zabezpečení** > **MFA** > **serveru**MFA. Před opětovnou aktivací se musí v `\Program Files\Multi-Factor Authentication Server\Data\` adresáři na serverech Azure MFA ve vašem prostředí odstranit následující soubory:
+Servery Azure MFA propojené s poskytovateli bude nutné znovu aktivovat pomocí přihlašovacích údajů vygenerovaných v části **Azure Portal**  >  **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **serveru**MFA. Před opětovnou aktivací se musí `\Program Files\Multi-Factor Authentication Server\Data\` v adresáři na serverech Azure MFA ve vašem prostředí odstranit následující soubory:
 
 - caCert
 - cert
@@ -64,7 +63,7 @@ Servery Azure MFA propojené s poskytovateli bude nutné znovu aktivovat pomocí
 
 ![Odstranění poskytovatele ověřování z Azure Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Po potvrzení, že se všechna nastavení migrují, můžete přejít na**poskytovatele** **Azure Portal** > **Azure Active Directory** > **Security** > **MFA** > a vybrat tři tečky **...** a vybrat možnost **Odstranit**.
+Po potvrzení, že se všechna nastavení migrují, můžete přejít na poskytovatele **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**  >  **Providers** a vybrat tři tečky **...** a vybrat možnost **Odstranit**.
 
 > [!WARNING]
 > Odstranění poskytovatele ověřování odstraní všechny informace o vytváření sestav přidružené k tomuto poskytovateli. Před odstraněním poskytovatele můžete chtít sestavy aktivit Uložit.

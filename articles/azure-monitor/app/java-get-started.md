@@ -6,10 +6,9 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
 ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537504"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rychlý Start: Začínáme s Application Insights ve webovém projektu Java
@@ -25,7 +24,7 @@ Application Insights představují rozšiřitelnou analytickou službu, která w
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Získejte klíč instrumentace Application Insights
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Na webu Azure Portalvytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
 3. Najděte klíč instrumentace nového prostředku. Tento klíč budete muset za chvíli vložit do projektu kódu.
@@ -38,7 +37,7 @@ Application Insights představují rozšiřitelnou analytickou službu, která w
 
 # <a name="maven"></a>[Maven](#tab/maven)
 
-Pokud je váš projekt již nastaven na použití Maven pro sestavení, slučte následující kód do souboru *pom. XML* .
+Pokud je váš projekt již nastaven na použití Maven pro sestavení, slučte následující kód do souboru *pom.xml* .
 
 Pak obnovte závislosti projektu k získání stažených binárních souborů.
 
@@ -75,7 +74,7 @@ Stáhněte si [nejnovější verzi](https://github.com/Microsoft/ApplicationInsi
 ---
 
 ### <a name="questions"></a>Dotazy
-* *Jaký je vztah mezi `-web-auto`komponentami `-web` a a `-core` ?*
+* *Jaký je vztah mezi `-web-auto` `-web` komponentami a a `-core` ?*
   * `applicationinsights-web-auto`poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, automatickým registrací filtru Application Insights servlet za běhu.
   * `applicationinsights-web`také poskytuje metriky, které sledují počty požadavků HTTP servlet a doby odezvy, ale vyžaduje ruční registraci filtru Application Insights servlet ve vaší aplikaci.
   * `applicationinsights-core`poskytuje pouze úplné rozhraní API, například pokud vaše aplikace není založená na servlet.
@@ -86,8 +85,8 @@ Stáhněte si [nejnovější verzi](https://github.com/Microsoft/ApplicationInsi
   * Pokud provádíte ruční správu závislostí...
     * Stáhněte si poslední [Application Insights SDK pro jazyk Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a nahraďte staré. Změny jsou popsány v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
-## <a name="add-an-applicationinsightsxml-file"></a>Přidání souboru *ApplicationInsights. XML*
-Do složky prostředků v projektu přidejte *ApplicationInsights. XML* nebo se ujistěte, že je přidaný do cesty třídy nasazení vašeho projektu. Zkopírujte do něj následující kód XML.
+## <a name="add-an-applicationinsightsxml-file"></a>Přidat soubor *ApplicationInsights.xml*
+Přidejte *ApplicationInsights.xml* do složky prostředků v projektu nebo se ujistěte, že je přidána do cesty třídy nasazení vašeho projektu. Zkopírujte do něj následující kód XML.
 
 Nahraďte klíč instrumentace ten, který jste získali z Azure Portal.
 
@@ -118,7 +117,7 @@ Nahraďte klíč instrumentace ten, který jste získali z Azure Portal.
 </ApplicationInsights>
 ```
 
-V případě potřeby může být konfigurační soubor v jakémkoli umístění přístupném pro vaši aplikaci.  Vlastnost `-Dapplicationinsights.configurationDirectory` System Určuje adresář, který obsahuje *ApplicationInsights. XML*. Například konfigurační soubor umístěný v cestě `E:\myconfigs\appinsights\ApplicationInsights.xml` se nakonfiguruje pomocí vlastnosti `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"`.
+V případě potřeby může být konfigurační soubor v jakémkoli umístění přístupném pro vaši aplikaci.  Vlastnost System `-Dapplicationinsights.configurationDirectory` Určuje adresář, který obsahuje *ApplicationInsights.xml*. Například konfigurační soubor umístěný v cestě `E:\myconfigs\appinsights\ApplicationInsights.xml` se nakonfiguruje pomocí vlastnosti `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"`.
 
 * Klíč instrumentace se zasílá společně s každou položkou telemetrie a říká službě Application Insights, aby ho zobrazila v prostředku.
 * Požadavek komponenty HTTP je volitelný. Automaticky odesílá telemetrii týkající se žádostí a časů odezvy na portál.
@@ -129,7 +128,7 @@ Application Insights SDK hledá klíče v tomto pořadí:
 
 1. Systémová vlastnost:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
 2. Proměnná prostředí: APPINSIGHTS_INSTRUMENTATIONKEY
-3. Konfigurační soubor: *ApplicationInsights. XML*
+3. Konfigurační soubor: *ApplicationInsights.xml*
 
 Můžete ho taky [nastavit v kódu](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
@@ -188,13 +187,13 @@ Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte tel
 
 * Na serverech Windows nainstalujte:
 
-  * [Microsoft Visual C++ Redistributable](https://www.microsoft.com/download/details.aspx?id=40784)
+  * [Distribuovatelné součásti Microsoft Visual C++](https://www.microsoft.com/download/details.aspx?id=40784)
 
     (Tato komponenta povoluje čítače výkonu.)
 
 ## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (jarní spuštění)
 
-Aplikace pro spouštění pružiny spuštěné v systému Windows vyžadují další konfiguraci pro spuštění v Azure App Services. Upravte soubor **Web. config** a přidejte následující konfiguraci:
+Aplikace pro spouštění pružiny spuštěné v systému Windows vyžadují další konfiguraci pro spuštění v Azure App Services. Upravte **web.config** a přidejte následující konfiguraci:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -225,7 +224,7 @@ Sada Application Insights Java SDK teď podporuje [distribuované trasování W3
 
 Příchozí konfigurace sady SDK je podrobněji vysvětlena v našem článku o [korelaci](correlation.md).
 
-Odchozí konfigurace sady SDK je definována v souboru [AI-agent. XML](java-agent.md) .
+Odchozí konfigurace sady SDK je definována v souboru [AI-Agent.xml](java-agent.md) .
 
 ## <a name="performance-counters"></a>Čítače výkonu
 Otevřete **prozkoumat**, **metriky**a zobrazte si rozsah čítačů výkonu.
@@ -233,7 +232,7 @@ Otevřete **prozkoumat**, **metriky**a zobrazte si rozsah čítačů výkonu.
 ![Snímek obrazovky podokna metriky se zvolenými soukromými bajty procesu](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Vlastní nastavení kolekce čítačů výkonu
-Chcete-li zakázat shromažďování standardní sady čítačů výkonu, přidejte následující kód do kořenového uzlu souboru *ApplicationInsights. XML* :
+Chcete-li zakázat shromažďování standardní sady čítačů výkonu, přidejte do kořenového uzlu souboru *ApplicationInsights.xml* následující kód:
 
 ```XML
     <PerformanceCounters>
@@ -300,7 +299,7 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 
 [Přečtěte si další informace o tom, jak nastavit webové testy dostupnosti.][availability]
 
-## <a name="questions-problems"></a>Máte dotazy? Problémy?
+## <a name="questions-problems"></a>Máte otázky? Problémy?
 [Řešení potíží Java](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Další kroky

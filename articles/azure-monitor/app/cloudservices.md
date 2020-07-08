@@ -4,10 +4,9 @@ description: Efektivní sledování webových rolí a rolí pracovních procesů
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537589"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
@@ -70,7 +69,7 @@ Chcete-li odeslat telemetrii do příslušných prostředků, můžete nastavit 
 
 Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli a případně pro každou konfiguraci sestavení samostatnou sadu, je nejjednodušší je vytvořit na portálu Application Insights. Pokud vytvoříte velké množství prostředků, můžete [proces automatizovat](../../azure-monitor/app/powershell.md).
 
-1. V [Azure Portal][portal]vyberte možnost **nové** > **služby** > pro vývojáře**Application Insights**.  
+1. V [Azure Portal][portal]vyberte možnost **nové**  >  **služby pro vývojáře**  >  **Application Insights**.  
 
     ![Application Insights podokno](./media/cloudservices/01-new.png)
 
@@ -82,7 +81,7 @@ Jednotlivé prostředky identifikuje klíč instrumentace. Tento klíč možná 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Nastavení diagnostiky Azure pro každou roli
 Tuto možnost nastavte, pokud chcete aplikaci monitorovat pomocí Application Insights. U webových rolí Tato možnost poskytuje monitorování výkonu, výstrahy, diagnostiku a analýzu využití. U ostatních rolí můžete vyhledávat a monitorovat Azure Diagnostics, jako je například restart, čítače výkonu a volání System. Diagnostics. Trace. 
 
-1. V aplikaci Visual Studio Průzkumník řešení v části  >  **Roles** ** \<role>YourCloudService **otevřete vlastnosti jednotlivých rolí.
+1. V aplikaci Visual Studio Průzkumník řešení v části **\<YourCloudService>**  >  **role**otevřete vlastnosti jednotlivých rolí.
 
 1. V okně **Konfigurace**zaškrtněte políčko **Odeslat diagnostická data do Application Insights** a pak vyberte prostředek Application Insights, který jste vytvořili dříve.
 
@@ -90,7 +89,7 @@ Pokud jste se rozhodli použít samostatný prostředek Application Insights pro
 
 ![Konfigurace Application Insights](./media/cloudservices/configure-azure-diagnostics.png)
 
-To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration.\*. cscfg*. Zde je [ukázkový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration. \* . cscfg*. Zde je [ukázkový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg* ](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
@@ -124,7 +123,7 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
     * [Role pracovního procesu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Pro webové stránky](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. Nastavte soubor *ApplicationInsights. config* tak, aby se zkopíroval vždy do výstupního adresáře.
+1. Nastavte soubor *ApplicationInsights.config* , který se má zkopírovat vždy do výstupního adresáře.
 
    Zpráva v souboru *. config* vás vyzve k zadání klíče instrumentace do tohoto umístění. Pro cloudové aplikace je ale lepší je nastavit ze souboru *. cscfg* . Tento přístup zajišťuje správnou identifikaci role na portálu.
 
@@ -147,7 +146,7 @@ Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL 
     </Startup>
     ```
     
-2. Stáhněte si [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) a [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), umístěte je do `AppInsightsAgent` složky v každém projektu role. Nezapomeňte je zkopírovat do výstupního adresáře prostřednictvím vlastností souboru sady Visual Studio nebo skriptů sestavení.
+2. Stáhněte [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) a [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)je vložte do `AppInsightsAgent` složky v každém projektu role. Nezapomeňte je zkopírovat do výstupního adresáře prostřednictvím vlastností souboru sady Visual Studio nebo skriptů sestavení.
 
 3. Na všech rolích pracovního procesu přidejte proměnné prostředí: 
 
@@ -233,7 +232,7 @@ Pro webové role se shromažďují i tyto čítače:
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-Můžete zadat další vlastní nebo jiné čítače výkonu systému Windows úpravou *souboru ApplicationInsights. config* [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
+Můžete určit další vlastní nebo jiné čítače výkonu systému Windows úpravou *ApplicationInsights.config* [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
   ![Čítače výkonu](./media/cloudservices/002-servers.png)
 
@@ -242,11 +241,11 @@ Pro prostředí s bohatou diagnostikou si můžete zobrazit, co vedlo k žádost
 
 Chcete-li dosáhnout tohoto zobrazení pro role pracovního procesu, můžete použít vlastní inicializátor telemetrie k nastavení běžného atributu kontextu Operation.Id pro všechny telemetrie. To vám umožní zobrazit na první pohled, zda došlo k potížím s latencí nebo chybou v důsledku závislosti nebo kódu. 
 
-Zde je uveden postup:
+Jak na to:
 
 * Nastavte ID korelace na CallContext [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme ID žádosti jako ID korelace.
 * Přidejte vlastní implementaci TelemetryInitializer, abyste mohli nastavit Operation.Id na ID korelace, které bylo dříve nastaveno. Příklad naleznete v tématu [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
-* Přidejte inicializátor vlastní telemetrie. To můžete provést v souboru *ApplicationInsights. config* nebo v kódu [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
+* Přidejte inicializátor vlastní telemetrie. Můžete to udělat v souboru *ApplicationInsights.config* nebo v kódu [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Telemetrická data klienta
 Chcete-li získat telemetrii založenou na prohlížeči, jako je počet zobrazení stránky, doba načítání stránky nebo výjimky skriptu a psaní vlastní telemetrie ve skriptech stránky, přečtěte si téma [Přidání sady JavaScript SDK na webové stránky][client].

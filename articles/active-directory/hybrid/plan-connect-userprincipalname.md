@@ -11,10 +11,9 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680040"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Naplnění Azure AD UserPrincipalName
@@ -25,20 +24,20 @@ Hodnota atributu UserPrincipalName je uživatelské jméno Azure AD pro uživate
 ## <a name="upn-terminology"></a>Terminologie hlavního názvu uživatele
 V tomto článku se používá následující terminologie:
 
-|Označení|Popis|
+|Pojem|Description|
 |-----|-----|
 |Počáteční doména|Výchozí doména (onmicrosoft.com) v Tenantovi služby Azure AD. Například contoso.onmicrosoft.com.|
-|Adresa pro směrování e-mailů Microsoft Online (MOERA)|Azure AD vypočítá MOERA z atributu Azure AD MailNickName a počáteční doménu Azure AD &lt;jako MailNickName&gt;&#64;&lt;počáteční doménu.&gt;|
+|Adresa pro směrování e-mailů Microsoft Online (MOERA)|Azure AD vypočítá MOERA z atributu Azure AD MailNickName a počáteční doménu Azure AD jako &lt; MailNickName &gt;&#64;&lt; počáteční doménu &gt; .|
 |Místní atribut mailNickName|Atribut ve službě Active Directory, jehož hodnota představuje alias uživatele v organizaci Exchange.|
 |Atribut místních e-mailů|Atribut ve službě Active Directory, jehož hodnota představuje e-mailovou adresu uživatele|
-|Primární adresa SMTP|Primární e-mailová adresa objektu příjemce Exchange. Například SMTP: User\@contoso.com.|
+|Primární adresa SMTP|Primární e-mailová adresa objektu příjemce Exchange. Například SMTP: User \@ contoso.com.|
 |Alternativní ID přihlášení|Místní atribut jiný než UserPrincipalName, jako je například atribut mail, který se používá pro přihlášení.|
 
 ## <a name="what-is-userprincipalname"></a>Co je UserPrincipalName?
 UserPrincipalName je atribut, který je přihlašovacím jménem pro uživatele v Internetu na základě standardu [RFC 822](https://www.ietf.org/rfc/rfc0822.txt)pro Internet. 
 
 ### <a name="upn-format"></a>Formát UPN
-Hlavní název uživatele se skládá z předpony hlavního názvu uživatele (UPN) (název uživatelského účtu) a přípony UPN (název domény DNS). Předpona je připojena k příponě pomocí symbolu "\@". Například "někdo\@example.com". Hlavní název uživatele (UPN) musí být jedinečný mezi všemi objekty zabezpečení v rámci doménové struktury adresáře. 
+Hlavní název uživatele se skládá z předpony hlavního názvu uživatele (UPN) (název uživatelského účtu) a přípony UPN (název domény DNS). Předpona je připojena k příponě pomocí symbolu " \@ ". Například "někdo \@ example.com". Hlavní název uživatele (UPN) musí být jedinečný mezi všemi objekty zabezpečení v rámci doménové struktury adresáře. 
 
 ## <a name="upn-in-azure-ad"></a>Hlavní název uživatele (UPN) ve službě Azure AD 
 Služba Azure AD používá hlavní název uživatele (UPN), který uživatelům umožňuje přihlásit se.  Hlavní název uživatele (UPN), který může uživatel použít, závisí na tom, jestli byla doména ověřená.  Pokud byla doména ověřená, může se uživatel s touto příponou přihlásit do Azure AD.  
@@ -59,7 +58,7 @@ Pokud chcete povolit alternativní přihlašovací ID k Azure AD, při použití
 Další informace najdete v tématu [Konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) a [Konfigurace přihlášení ke službě Azure AD](how-to-connect-install-custom.md#azure-ad-sign-in-configuration) .
 
 ## <a name="non-verified-upn-suffix"></a>Neověřená přípona UPN
-Pokud není u tenanta Azure AD ověřená přípona místního atributu UserPrincipalName nebo alternativní ID přihlášení, je hodnota atributu UserPrincipalName služby Azure AD nastavená na MOERA. Azure AD vypočítá MOERA z atributu Azure AD MailNickName a počáteční doménu Azure AD &lt;jako MailNickName&gt;&#64;&lt;počáteční doménu.&gt;
+Pokud není u tenanta Azure AD ověřená přípona místního atributu UserPrincipalName nebo alternativní ID přihlášení, je hodnota atributu UserPrincipalName služby Azure AD nastavená na MOERA. Azure AD vypočítá MOERA z atributu Azure AD MailNickName a počáteční doménu Azure AD jako &lt; MailNickName &gt;&#64;&lt; počáteční doménu &gt; .
 
 ## <a name="verified-upn-suffix"></a>Ověřená přípona UPN
 Pokud je u tenanta Azure AD ověřená přípona místního nebo alternativního přihlašovacího ID, bude hodnota atributu UserPrincipalName služby Azure AD stejná jako u atributu místní hodnoty UserPrincipalName nebo alternativní přihlašovací ID.
@@ -90,14 +89,14 @@ Níže jsou uvedené příklady scénářů, jak se hlavní název uživatele vy
 ![Scenario1](./media/plan-connect-userprincipalname/example1.png)
 
 Místní uživatelský objekt:
-- mailNickName: &lt;nenastavené&gt;
-- proxyAddresses: {SMTP:us1@contoso.com}
+- mailNickName: &lt; nenastavené&gt;
+- proxyAddresses: { SMTP:us1@contoso.com }
 - modulus2@contoso.com
 - Třídyus3@contoso.com
 
 Při prvním synchronizování objektu uživatele do tenanta Azure AD
 - Nastavte atribut MailNickName Azure AD na primární předponu adresy SMTP.
-- Nastavte MOERA na &lt;MailNickName&gt;&#64;&lt;počáteční doménu&gt;.
+- Nastavte MOERA na &lt; MailNickName &gt;&#64;&lt; počáteční doménu &gt; .
 - Nastavte atribut Azure AD UserPrincipalName na MOERA.
 
 Objekt uživatele tenanta Azure AD:
@@ -111,7 +110,7 @@ Objekt uživatele tenanta Azure AD:
 
 Místní uživatelský objekt:
 - mailNickName: US4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses: { SMTP:us1@contoso.com }
 - modulus2@contoso.com
 - Třídyus3@contoso.com
 
@@ -129,13 +128,13 @@ Objekt uživatele tenanta Azure AD:
 
 Místní uživatelský objekt:
 - mailNickName: US4
-- proxyAddresses: {SMTP:us1@contoso.com}
+- proxyAddresses: { SMTP:us1@contoso.com }
 - modulus2@contoso.com
 - Třídyus5@contoso.com
 
 Synchronizace aktualizace pro místní atribut userPrincipalName pro tenanta Azure AD
 - Aktualizace pro místní atribut userPrincipalName aktivuje přepočítání atributu MOERA a Azure AD UserPrincipalName.
-- Nastavte MOERA na &lt;MailNickName&gt;&#64;&lt;počáteční doménu&gt;.
+- Nastavte MOERA na &lt; MailNickName &gt;&#64;&lt; počáteční doménu &gt; .
 - Nastavte atribut Azure AD UserPrincipalName na MOERA.
 
 Objekt uživatele tenanta Azure AD:
@@ -148,7 +147,7 @@ Objekt uživatele tenanta Azure AD:
 
 Místní uživatelský objekt:
 - mailNickName: US4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses: { SMTP:us6@contoso.com }
 - modulus7@contoso.com
 - Třídyus5@contoso.com
 
@@ -165,7 +164,7 @@ Objekt uživatele tenanta Azure AD:
 
 Místní uživatelský objekt:
 - mailNickName: US4
-- proxyAddresses: {SMTP:us6@contoso.com}
+- proxyAddresses: { SMTP:us6@contoso.com }
 - modulus7@contoso.com
 - Třídyus5@verified.contoso.com
 

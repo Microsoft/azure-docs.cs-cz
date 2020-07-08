@@ -10,10 +10,9 @@ ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp
 ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732232"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Monitorování operací IoT Hub (zastaralé)
@@ -43,7 +42,7 @@ IoT Hub monitoruje šest kategorií událostí:
 
     ![Přístup k konfiguraci monitorování operací na portálu](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Vyberte kategorie monitorování, které chcete monitorovat, a potom klikněte na **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilního s centrem událostí uvedených v části **nastavení monitorování**. Je volán `messages/operationsmonitoringevents`koncový bod IoT Hub.
+3. Vyberte kategorie monitorování, které chcete monitorovat, a potom klikněte na **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilního s centrem událostí uvedených v části **nastavení monitorování**. Je volán koncový bod IoT Hub `messages/operationsmonitoringevents` .
 
     ![Konfigurace monitorování operací ve službě IoT Hub](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
