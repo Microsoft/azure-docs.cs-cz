@@ -4,14 +4,14 @@ description: V tomto článku se dozvíte, jak spravovat shromažďování inven
 services: automation
 ms.subservice: change-inventory-management
 keywords: inventory, automation, change, tracking
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830612"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603107"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Správa shromažďování dat pro inventarizaci z virtuálních počítačů
 
@@ -22,7 +22,7 @@ Sledování inventáře pro virtuální počítač Azure můžete povolit ze str
 
 Azure Automation Change Tracking a inventář poskytují uživatelské rozhraní založené na prohlížeči pro nastavení a konfiguraci shromažďování inventáře.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -87,7 +87,7 @@ Následující části obsahují informace o jednotlivých vlastnostech, které 
 |Zadat cestu     | Cesta pro kontrolu souboru, například **/etc/*. conf**.       |
 |Typ cesty     | Typ položky, která se má sledovat Hodnoty jsou soubor a adresář.        |
 |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |
-|Použít sudo     | True, pokud se při kontrole položky používá sudo, a v opačném případě false.         |
+|Použití sudo     | True, pokud se při kontrole položky používá sudo, a v opačném případě false.         |
 |Odkazy     | Hodnota, která označuje, jak se zabývají symbolické odkazy při procházení adresářů. Možné hodnoty: <br> Ignorovat – Ignoruje symbolické odkazy a nezahrnuje odkazované soubory ani adresáře.<br>Sledovat – Během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>Spravovat – Sleduje symbolické odkazy a umožňuje zpracování vráceného obsahu.      |
 
 ## <a name="manage-machine-groups"></a>Správa skupin počítačů
@@ -100,7 +100,7 @@ Pokud chcete zobrazit skupiny počítačů, vyberte na stránce inventář kartu
 
 ![Zobrazení skupin počítačů na stránce inventáře](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-Výběrem skupiny počítačů ze seznamu se otevře stránka skupiny počítačů. Tato stránka zobrazuje podrobnosti o skupině počítačů. Mezi tyto podrobnosti patří dotaz Log Analytics, který se používá k definování skupiny. V dolní části stránky je seznam počítačů, které jsou součástí této skupiny.
+Výběrem skupiny počítačů ze seznamu se otevře stránka skupiny počítačů. Tato stránka zobrazuje podrobnosti o skupině počítačů. Mezi tyto podrobnosti patří dotaz protokolu Azure Monitor, který se používá k definování skupiny. V dolní části stránky je seznam počítačů, které jsou součástí této skupiny.
 
 ![Zobrazit stránku skupiny počítačů](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,15 +115,18 @@ Pokud chcete vytvořit novou skupinu počítačů, klikněte na **+ vytvořit sk
 Odebrání virtuálního počítače ze správy Change Tracking a inventáře:
 
 1. V levém podokně Azure Portal vyberte **Log Analytics**a pak vyberte pracovní prostor, který jste použili při povolování virtuálního počítače pro Change Tracking a inventář.
-2. Na stránce Log Analytics otevřete nabídku **prostředků** .
+2. Na stránce **Log Analytics** otevřete nabídku **prostředků** .
 3. V části **zdroje dat pracovního prostoru**vyberte **Virtual Machines** .
 4. V seznamu vyberte virtuální počítač, který chcete odpojit. Počítač má vedle **tohoto pracovního prostoru** ve sloupci **připojení OMS** zelenou značku zaškrtnutí.
 
    >[!NOTE]
    >Operations Management Suite (OMS) se teď označuje jako protokoly Azure Monitor.
-   
+
 5. V horní části Další stránky klikněte na **Odpojit**.
 6. Kliknutím na tlačítko **Ano** v potvrzovacím okně odpojíte počítač se správou.
+
+>[!NOTE]
+>Počítače se pořád zobrazují i po jejich registraci, protože hlásíme na všech počítačích v inventáři za posledních 24 hodin. Po odpojení počítače musíte počkat 24 hodin, než se dostanou do seznamu.
 
 ## <a name="next-steps"></a>Další kroky
 

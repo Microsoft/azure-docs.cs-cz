@@ -8,17 +8,17 @@ ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f77304beb598094e8dbbc51ebf624acd71b554b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 775b71dd88c26dfe3ee62326615f6a81ee237deb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604416"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy týkající se Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -32,7 +32,7 @@ Další informace najdete v tématu [Co je Azure Active Directory?](active-direc
 **Odpověď:** Pro přístup k webu Azure Portal potřebuje každý uživatel oprávnění s předplatným Azure. Pokud nemáte placené předplatné Office 365 nebo Azure AD, budete muset aktivovat bezplatný [účet Azure](https://azure.microsoft.com/free/
 ) nebo placené předplatné.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Jak je předplatné Azure propojeno se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
@@ -130,7 +130,7 @@ Pro uživatele Office 365 může váš správce resetovat heslo pomocí postupu 
 Pro účty Azure AD můžou správci resetovat hesla pomocí jedné z následujících metod:
 
 - [Resetování účtů na webu Azure Portal](active-directory-users-reset-password-azure-portal.md)
-- [Pomocí prostředí PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [Použití PowerShellu](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
 ---
@@ -160,7 +160,7 @@ Máme bránu, která filtruje požadavky a nabízí určitou ochranu před botne
 
 **Odpověď:** Se službou Azure AD Premium můžete přidávat a konfigurovat libovolné aplikace. V závislosti na možnostech vaší aplikace a vašich předvolbách můžete nakonfigurovat jednotné přihlašování a automatizované zřizování.  
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Pomocí SCIM zapněte automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ Další informace najdete v tématu [prostředí koncových uživatelů pro apli
 
 **Odpověď:** Azure AD podporuje mnoho standardizovaných protokolů pro ověřování a autorizaci, například SAML 2.0, OpenID Connect, OAuth 2.0 a WS-Federation. Azure AD podporuje funkce ukládání hesel do trezoru a automatického přihlašování pro aplikace, které podporují pouze ověření na základě formuláře.   
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md)
 * [Protokoly pro ověřování služby Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)

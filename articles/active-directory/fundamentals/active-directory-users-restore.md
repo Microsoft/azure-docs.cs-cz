@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ad71d75eb80f15c09e0a4dff4edc4a0eaae9e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603923"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odebrání nedávno odstraněného uživatele pomocí Azure Active Directory
 Po odstranění uživatele zůstane účet v pozastaveném stavu po dobu 30 dnů. Během tohoto 30denní okna se může uživatelský účet obnovit spolu se všemi jeho vlastnostmi. Po uplynutí tohoto 30denní okna se uživatel automaticky a trvale odstraní.
@@ -37,7 +37,7 @@ Chcete-li obnovit a trvale odstranit uživatele, musíte mít jednu z následuj�
 
 - Podpora partnerů 2
 
-- Správce uživatele
+- Správce uživatelů
 
 ## <a name="view-your-restorable-users"></a>Zobrazit uživatele obnovitelné
 Můžete zobrazit všechny uživatele, kteří byli odstraněni před méně než 30 dny. Tyto uživatele je možné obnovit.
