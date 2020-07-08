@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82096072"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
@@ -72,7 +72,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
 | Konfigurace IP adresy front-endu              | 600                           |
 | Velikost fondu back-endu                       | 1 000 konfigurace IP adres, jedna virtuální síť |
-| Back-endové prostředky <sup>na Load Balancer 1<sup> | 150                   |
+| Back-endové prostředky na Load Balancer <sup> 1<sup> | 150                   |
 | Porty s vysokou dostupností                 | 1 za interní front-end       |
 | Odchozí pravidla na Load Balancer        | 600                           |
 | [Časový limit nečinnosti protokolu TCP](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 minuty/30 minut          |

@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f4e5c59a5ce7c0d743a574309bb1b9276ce80bea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77597782"
 ---
 Služba soubory Azure nabízí dvě různé úrovně úložiště, Premium a Standard, které vám umožní přizpůsobit vaše sdílené složky na požadavky na výkon a cenu vašeho scénáře:

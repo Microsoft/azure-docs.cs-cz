@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79500195"
 ---
 1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto článku [klienta VPN typu Point-to-site](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) . Certifikát musí být v úložišti aktuálního uživatele.
@@ -23,7 +23,7 @@ ms.locfileid: "79500195"
 
 Po nakonfigurování brány virtuální sítě a instalaci klientského certifikátu v úložišti místního počítače na klientovi Windows 10 nakonfigurujte tunelové zařízení klienta pomocí následujících příkladů:
 
-1. Zkopírujte následující text a uložte ho jako *Usercert. ps1*:
+1. Zkopírujte následující text a uložte ho jako *usercert.ps1*:
 
    ```
    Param(
@@ -75,7 +75,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Zkopírujte následující text a uložte ho jako *VPNProfile. XML* ve stejné složce jako *Usercert. ps1*. Upravte následující text tak, aby odpovídal vašemu prostředí:
+1. Zkopírujte následující text a uložte ho jako *VPNProfile.xml* do stejné složky jako *usercert.ps1*. Upravte následující text tak, aby odpovídal vašemu prostředí:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -121,7 +121,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ```
 1. Spusťte PowerShell jako správce.
 
-1. V PowerShellu přejděte do složky, kde se nachází *Usercert. ps1* a *VPNProfile. XML* , a spusťte následující příkaz:
+1. V PowerShellu přejděte do složky, kde jsou umístěné *usercert.ps1* a *VPNProfile.xml* a spusťte následující příkaz:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest

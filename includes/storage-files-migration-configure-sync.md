@@ -8,15 +8,15 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 562099c65273cad50596268b89055ec78d92d18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82143536"
 ---
 Tento krok spojuje všechny prostředky a složky, které jste v instanci Windows serveru nastavili během předchozích kroků.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyhledejte prostředek služby synchronizace úložiště.
 1. Vytvořte novou *skupinu synchronizace* v rámci prostředku služby synchronizace úložiště pro každou sdílenou složku Azure. V Azure File Sync terminologii se sdílená složka Azure stane *koncovým bodem cloudu* v topologii synchronizace, který budete popisovat pomocí vytvoření skupiny synchronizace. Když vytváříte skupinu synchronizace, poskytněte jí známý název, který vám umožní rozpoznat, kterou sadu souborů se synchronizuje. Ujistěte se, že se na sdílenou složku Azure odkazuje pomocí odpovídajícího názvu.
 1. Po vytvoření skupiny synchronizace se v seznamu skupin synchronizace zobrazí řádek. Vyberte název (odkaz), chcete-li zobrazit obsah skupiny synchronizace. Sdílená složka Azure se zobrazí v části **koncové body cloudu**.

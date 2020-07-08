@@ -9,10 +9,10 @@ ms.date: 05/13/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1d14ee849c89e6c3807636d0a728157abd9de97a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650656"
 ---
 ## <a name="1-download-the-file"></a>1. Stáhněte si soubor
@@ -35,7 +35,7 @@ Rozbalte soubor zip. Soubor obsahuje následující složky:
 
 ## <a name="3-retrieve-information"></a>3. načtení informací
 
-Ve složce **AzureVPN** přejděte do souboru ***azurevpnconfig. XML*** a otevřete ho pomocí poznámkového bloku. Zaznamenejte si text mezi následujícími značkami.
+Ve složce **AzureVPN** přejděte do souboru ***azurevpnconfig.xml*** a otevřete ho pomocí poznámkového bloku. Zaznamenejte si text mezi následujícími značkami.
 
 ```
 <audience>          </audience>
@@ -57,6 +57,6 @@ Když přidáte připojení, použijte informace, které jste shromáždili v p�
 
 ## <a name="folder-contents"></a>Obsah složky
 
-* **Obecná složka** obsahuje certifikát veřejného serveru a soubor VpnSettings. XML. Soubor VpnSettings. XML obsahuje informace potřebné ke konfiguraci obecného klienta.
+* **Obecná složka** obsahuje certifikát veřejného serveru a soubor VpnSettings.xml. Soubor VpnSettings.xml obsahuje informace potřebné ke konfiguraci obecného klienta.
 
 * Stažený soubor ZIP může také obsahovat složky **WindowsAmd64** a **WindowsX86** . Tyto složky obsahují instalační program pro služby SSTP a IKEv2 pro klienty Windows. K instalaci klienta potřebujete práva správce.

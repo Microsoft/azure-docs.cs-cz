@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175087"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Získání připojovacího řetězce z Azure Portal
 Použijte [Azure Portal](https://portal.azure.com/) k získání připojovacího řetězce, který je nezbytný pro komunikaci vašeho klientského programu s Azure SQL Database.
 
-1. Vyberte **všechny služby** > **databáze SQL**.
+1. Vyberte **všechny služby**  >  **databáze SQL**.
 
 2. Do textového pole Filtr v blízkosti levého horního rohu okna **databáze SQL** zadejte název vaší databáze.
 
@@ -34,7 +34,7 @@ Použijte [Azure Portal](https://portal.azure.com/) k získání připojovacího
 
     ![Zkopírování připojovacího řetězce ADO pro vaši databázi][20-CopyAdoConnectionString]
 
-7. Podle potřeby upravte připojovací řetězec. To znamená, že vložte heslo do připojovacího řetězce nebo odeberte "@&lt;servername&gt;" z uživatelského jména, pokud je název uživatelského jména nebo serveru moc dlouhý.
+7. Podle potřeby upravte připojovací řetězec. To znamená, že vložte heslo do připojovacího řetězce nebo odeberte "@ &lt; servername &gt; " z uživatelského jména, pokud je název uživatelského jména nebo serveru moc dlouhý.
 
 8. V jednom nebo jiném formátu vložte do kódu klientského programu informace o připojovacím řetězci.
 

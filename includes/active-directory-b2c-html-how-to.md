@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117167"
 ---
 ## <a name="use-custom-page-content"></a>Použít vlastní obsah stránky
@@ -89,7 +89,7 @@ Tady je přehled tohoto procesu:
 
 V nadpisu vytvořte vlastní obsah stránky s názvem značky vašeho produktu.
 
-1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu HTML5 s prázdným prvkem nazvaným * \< div ID = "API" \> \< /div \> * umístěný v rámci značek * \< těla \> * . Tento prvek indikuje, kam se má vložit Azure AD B2C obsah.
+1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu HTML5 s prázdným elementem, který se *\<div id="api"\>\</div\>* nachází v rámci *\<body\>* značek. Tento prvek indikuje, kam se má vložit Azure AD B2C obsah.
 
    ```html
    <!DOCTYPE html>
@@ -114,7 +114,7 @@ V tomto článku používáme pro hostování našeho obsahu službu Azure Blob 
 
 Chcete-li hostovat obsah HTML v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce **centra** vyberte **Nový**  >  **úložiště**  >  **účet**úložiště.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.

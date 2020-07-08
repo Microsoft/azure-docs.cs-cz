@@ -9,10 +9,10 @@ ms.date: 03/18/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 10c2b447a3f174afe93f56084827756d24d982cc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792186"
 ---
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí 
@@ -35,7 +35,7 @@ $gallery = New-AzGallery `
 
 ## <a name="share-the-gallery"></a>Sdílení galerie
 
-Doporučujeme sdílet přístup na úrovni Galerie imagí. Pomocí e-mailové adresy a rutiny [Get-AzADUser](/powershell/module/az.resources/get-azaduser) Získejte ID objektu pro uživatele a pak pomocí [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) udělte přístup k galerii. alinne_montes@contoso.com V tomto příkladu nahraďte příklad e-mailu vlastními informacemi.
+Doporučujeme sdílet přístup na úrovni Galerie imagí. Pomocí e-mailové adresy a rutiny [Get-AzADUser](/powershell/module/az.resources/get-azaduser) Získejte ID objektu pro uživatele a pak pomocí [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) udělte přístup k galerii. V tomto příkladu nahraďte příklad e-mailu alinne_montes@contoso.com vlastními informacemi.
 
 ```azurepowershell-interactive
 # Get the object ID for the user

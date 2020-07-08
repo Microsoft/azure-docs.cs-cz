@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 879d0c2e8c4cd66ce04c0298d00f7d6a1987acf5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83597230"
 ---
 #### <a name="local-proxy"></a>Místní proxy server
 
 Můžete nakonfigurovat proxy server pro rozšíření Live Server Visual Studio Code, který směruje všechny požadavky na `/api` koncový bod rozhraní API na `http://127.0.0.1:7071/api` .
 
-1. Otevřete soubor _. VSCode/Settings. JSON_ .
+1. Otevřete soubor _. VSCode/settings.jsv_ souboru.
 
 1. Přidejte následující nastavení pro určení proxy serveru pro živý Server.
 

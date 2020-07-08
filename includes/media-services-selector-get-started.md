@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: ae56e02e89a6f7b5a9adaa587ee4a0521d21f349
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175095"
 ---
 > [!div class="op_single_selector"]
-> * [Portál](../articles/media-services/previous/media-services-portal-vod-get-started.md)
+> * [Azure Portal](../articles/media-services/previous/media-services-portal-vod-get-started.md)
 > * [.NET](../articles/media-services/previous/media-services-dotnet-get-started.md)
 > * [REST API](../articles/media-services/previous/media-services-rest-get-started.md)
 > * [Java](../articles/media-services/previous/media-services-java-how-to-use.md)

@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80059949"
 ---
 Po vytvoření kořenového certifikátu podepsaného svým držitelem exportujte soubor. cer veřejného klíče kořenového certifikátu (ne privátní klíč). Později tento soubor nahrajete do Azure. Následující kroky vám pomůžou exportovat soubor. cer pro kořenový certifikát podepsaný svým držitelem:

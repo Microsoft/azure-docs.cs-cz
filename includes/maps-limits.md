@@ -9,10 +9,10 @@ ms.date: 05/01/2020
 ms.author: v-stharr
 ms.custom: include file
 ms.openlocfilehash: 9eafc1ee2d873fbb0602c932eab57c45ddaeac08
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83673012"
 ---
 Následující tabulka uvádí omezení využití Azure Maps cenové úrovně S0. Omezení využití závisí na cenové úrovni.

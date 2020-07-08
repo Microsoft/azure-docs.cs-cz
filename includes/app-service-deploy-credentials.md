@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: cephalin
 ms.openlocfilehash: c3fa57dd162fbbfbf0d46f73bffc78f279ef2968
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649121"
 ---
 * **Přihlašovací údaje na úrovni uživatele**: jedna sada přihlašovacích údajů pro celý účet Azure. Dá se použít k nasazení App Service pro libovolnou aplikaci v libovolném předplatném, ke které má účet Azure oprávnění pro přístup. Je to výchozí sada, která je v grafickém uživatelském rozhraní na portálu (například **Přehled** a **vlastnosti** [stránky prostředku](../articles/azure-resource-manager/management/manage-resources-portal.md#manage-resources)aplikace). Když se uživateli udělí přístup k aplikaci prostřednictvím Access Control na základě rolí (RBAC) nebo oprávnění spolusprávce, může tento uživatel použít vlastní přihlašovací údaje na úrovni uživatele, dokud přístup nevrátí. Nesdílejte tyto přihlašovací údaje s ostatními uživateli Azure.

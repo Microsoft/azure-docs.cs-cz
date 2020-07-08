@@ -9,15 +9,15 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 864b37c9e59786546ad2c29faf8457cfc3a21f6b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82161161"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
-| Úroveň | Limit za den | Uchovávání dat | Poznámka |
+| Úroveň | Limit za den | Uchovávání dat | Komentář |
 |:---|:---|:---|:---|
 | Cenová úroveň aktuální za GB<br>(představený 2018. dubna) | Bez omezení | 30-730 dní | Pro další poplatky je dostupné uchovávání dat přesahující 31 dní. Přečtěte si další informace o cenách Azure Monitor. |
 | Starší úrovně Free<br>(představený 2016. dubna) | 500 MB | 7 dní | Když váš pracovní prostor dosáhne limitu 500 MB za den, příjem dat se zastaví a obnoví se na začátku dalšího dne. Den vychází ze standardu UTC. Všimněte si, že data shromážděná pomocí Azure Security Center nejsou zahrnutá do tohoto limitu 500 MB za den a budou se dál shromažďovat nad tímto limitem.  |
@@ -33,7 +33,7 @@ ms.locfileid: "82161161"
 | Úroveň Free  | 10 | Toto omezení nejde zvýšit. |
 | Všechny ostatní úrovně | Bez omezení | Omezíte počet prostředků v rámci skupiny prostředků a počet skupin prostředků na předplatné. |
 
-**portál Azure**
+**Azure Portal**
 
 | Kategorie | Omezení | Komentáře |
 |:---|:---|:---|
@@ -47,7 +47,7 @@ ms.locfileid: "82161161"
 | Maximální velikost pro jeden příspěvek | 30 MB | Rozdělte větší svazky na více příspěvků. |
 | Maximální velikost pro hodnoty polí  | 32 KB | Pole delší než 32 kB se oříznou. |
 
-**Search API**
+**Rozhraní API pro vyhledávání**
 
 | Kategorie | Omezení | Komentáře |
 |:---|:---|:---|

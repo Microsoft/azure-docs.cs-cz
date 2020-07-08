@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792971"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 přiřazení přístupových oprávnění k identitě

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 3a5485475e3d8030bf85734faec53b0ff0747499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678470"
 ---
 Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, což je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Vyberte **Kopírovat** a zkopírujte kód a vložte ho do Cloud Shell. Pak vyberte **ENTER** a spusťte ji. K dispozici je několik způsobů, jak spustit Cloud Shell:

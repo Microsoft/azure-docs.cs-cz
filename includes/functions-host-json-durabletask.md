@@ -8,10 +8,10 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117096"
 ---
 Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
@@ -92,7 +92,7 @@ Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durab
 
 Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadaný, použije se výchozí název centra úloh pro aplikaci Function App **DurableFunctionsHub**. Další informace najdete v tématu [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md).
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Alternativní názvy [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md) se dají použít k izolaci více Durable Functionsch aplikací od sebe, i když používají stejný back-end úložiště.|
 |controlQueueBatchSize|32|Počet zpráv, které mají být vyžádané z fronty ovládacích prvků v čase.|
@@ -104,15 +104,15 @@ Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a čís
 |maxConcurrentOrchestratorFunctions |10X počet procesorů v aktuálním počítači|Maximální počet funkcí nástroje Orchestrator, které mohou být zpracovány současně na jedné instanci hostitele.|
 |maxQueuePollingInterval|30 sekund|Maximální interval dotazování fronty řízení a pracovní položky ve formátu *HH: mm: SS* . Vyšší hodnoty můžou mít za následek vyšší latence při zpracování zpráv. Nižší hodnoty můžou mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.|
 |azureStorageConnectionStringName |AzureWebJobsStorage|Název nastavení aplikace, které obsahuje připojovací řetězec Azure Storage, který se používá ke správě základních prostředků Azure Storage.|
-|trackingStoreConnectionStringName||Název připojovacího řetězce, který se má použít pro tabulky historie a instance. Pokud není zadaný, použije `azureStorageConnectionStringName` se připojení.|
-|trackingStoreNamePrefix||Předpona, která se má použít pro tabulky historie a `trackingStoreConnectionStringName` instance, je-li zadána. Pokud není nastavená, výchozí hodnota předpony bude `DurableTask`. Pokud `trackingStoreConnectionStringName` parametr není zadán, budou tabulky historie a instance používat `hubName` hodnotu jako předpona a jakékoli nastavení pro `trackingStoreNamePrefix` bude ignorováno.|
+|trackingStoreConnectionStringName||Název připojovacího řetězce, který se má použít pro tabulky historie a instance. Pokud není zadaný, `azureStorageConnectionStringName` použije se připojení.|
+|trackingStoreNamePrefix||Předpona, která se má použít pro tabulky historie a instance `trackingStoreConnectionStringName` , je-li zadána. Pokud není nastavená, výchozí hodnota předpony bude `DurableTask` . Pokud `trackingStoreConnectionStringName` parametr není zadán, budou tabulky historie a instance používat `hubName` hodnotu jako předpona a jakékoli nastavení pro `trackingStoreNamePrefix` bude ignorováno.|
 |traceInputsAndOutputs |false (nepravda)|Hodnota, která označuje, zda se mají trasovat vstupy a výstupy volání funkcí. Výchozí chování při trasování událostí spuštění funkce je zahrnutí počtu bajtů v serializovaných vstupech a výstupech pro volání funkcí. Toto chování poskytuje minimální informace o tom, co vstupy a výstupy vypadají jako bez bloating protokolů nebo neúmyslného zveřejnění citlivých informací. Nastavení této vlastnosti na hodnotu true způsobí, že funkce protokolování výchozích funkcí zaznamená celý obsah vstupů a výstupů funkcí.|
 |logReplayEvents|false (nepravda)|Hodnota, která označuje, zda se mají zapisovat události opětovného přehrání orchestrace Application Insights.|
 |eventGridTopicEndpoint ||Adresa URL koncového bodu vlastního tématu Azure Event Grid Je-li tato vlastnost nastavena, jsou do tohoto koncového bodu publikovány události oznámení o životním cyklu orchestrace. Tato vlastnost podporuje řešení nastavení aplikace.|
-|eventGridKeySettingName ||Název nastavení aplikace obsahující klíč používaný k ověřování pomocí vlastního tématu Azure Event Grid v `EventGridTopicEndpoint`.|
+|eventGridKeySettingName ||Název nastavení aplikace obsahující klíč používaný k ověřování pomocí vlastního tématu Azure Event Grid v `EventGridTopicEndpoint` .|
 |eventGridPublishRetryCount|0|Počet pokusů o opakování, pokud se publikování do Event Grid tématu nezdařilo.|
 |eventGridPublishRetryInterval|5 minut|Event Grid publikuje interval opakování ve formátu *HH: mm: SS* .|
-|eventGridPublishEventTypes||Seznam typů událostí pro publikování Event Grid. Není-li tento parametr zadán, budou publikovány všechny typy událostí. Povolené hodnoty zahrnují `Started`, `Completed`, `Failed`, `Terminated`.|
+|eventGridPublishEventTypes||Seznam typů událostí pro publikování Event Grid. Není-li tento parametr zadán, budou publikovány všechny typy událostí. Povolené hodnoty zahrnují `Started` , `Completed` , `Failed` , `Terminated` .|
 |useGracefulShutdown|false (nepravda)|Tisk Povolit bezproblémové vypnutí, aby se snížila pravděpodobnost vypnutí hostitelských pokusů o zpracování funkcí v procesu.|
 
 Mnohé z těchto nastavení jsou pro optimalizaci výkonu. Další informace najdete v tématu [výkon a škálování](../articles/azure-functions/durable-functions-perf-and-scale.md).

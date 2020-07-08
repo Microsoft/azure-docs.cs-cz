@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78301932"
 ---
 Virtuální síť můžete vytvořit pomocí modelu nasazení Správce prostředků a Azure Portal pomocí následujících kroků. Další informace o virtuálních sítích najdete v tématu [přehled Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
@@ -22,7 +22,7 @@ Virtuální síť můžete vytvořit pomocí modelu nasazení Správce prostřed
 >
 >
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Do **vyhledávacích prostředků, služeb a dokumentů (G +/)** zadejte *Virtual Network*.
 
    ![Stránka pro vyhledání prostředku Virtual Network](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Stránka pro vyhledání prostředku virtuální sítě")
