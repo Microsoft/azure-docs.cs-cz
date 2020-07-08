@@ -4,10 +4,9 @@ description: Popisuje definici přiřazení zásad, kterou používá Azure Poli
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84205037"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
@@ -61,10 +60,10 @@ Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výslede
 
 Tato vlastnost má následující hodnoty:
 
-|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
+|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Description |
 |-|-|-|-|-|-|
 |Povoleno |Výchozí |řetězec |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
-|Zakázáno |DoNotEnforce |řetězec |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+|Zakázáno |DoNotEnforce |řetězec |Yes |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
 
 Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
 

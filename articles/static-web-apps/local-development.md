@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259265"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Nastavení místního vývoje pro Azure static Web Apps Preview
@@ -122,7 +121,7 @@ V rámci procesu vytváření rozhraní API je pro Visual Studio Code vytvořena
 
 ### <a name="debugging-the-api"></a>Ladění rozhraní API
 
-1. Otevřete soubor _API/GetMessage/index. js_ v Visual Studio Code.
+1. Otevřete soubor _API/GetMessage/index.js_ v Visual Studio Code.
 
 1. Klikněte na levý okraj na řádku 2 a nastavte zarážku. Zobrazí se červená tečka, která indikuje, že je nastavená zarážka.
 

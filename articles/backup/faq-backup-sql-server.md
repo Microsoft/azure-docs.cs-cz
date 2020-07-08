@@ -5,10 +5,9 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248256"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
@@ -32,8 +31,8 @@ Za určitých okolností služba Azure Backup spustí znovu média zálohování
 
 Automatické zaretušování je ve výchozím nastavení povolené pro všechny uživatele. Pokud se ale rozhodnete, že se odhlásíte, postupujte takto:
 
-- V instanci SQL Server v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte nebo upravte soubor **ExtensionSettingsOverrides. JSON** .
-- V souboru **ExtensionSettingsOverrides. JSON**nastavte *{"EnableAutoHealer": false}*.
+- V SQL Server instanci ve složce *C:\Program Files\Azure úlohy Backup\bin* vytvořte nebo upravte **ExtensionSettingsOverrides.jsv** souboru.
+- V **ExtensionSettingsOverrides.jsna**, nastavte *{"EnableAutoHealer": false}*.
 - Uložte změny a zavřete soubor.
 - V SQL Server instanci otevřete **úlohu spravovat** a restartujte službu **AzureWLBackupCoordinatorSvc** .
 
@@ -41,8 +40,8 @@ Automatické zaretušování je ve výchozím nastavení povolené pro všechny 
 
 Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
 
-1. V instanci SQL Server v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte soubor *ExtensionSettingsOverrides. JSON* .
-2. V souboru *ExtensionSettingsOverrides. JSON* změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
+1. V SQL Server instanci v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte *ExtensionSettingsOverrides.jsv* souboru.
+2. V *ExtensionSettingsOverrides.jsv* souboru změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
 Výchozí hodnota DefaultBackupTasksThreshold je **20**.
@@ -60,7 +59,7 @@ Podle omezení SQL můžete spustit příkaz Kopírovat pouze úplné zálohová
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Můžu chránit skupiny dostupnosti místně?
 
-No. Azure Backup chrání SQL Server databáze běžící v Azure. Pokud je skupina dostupnosti (AG) rozložená mezi Azure a místními počítači, může být AG chráněná jenom v případě, že je primární replika spuštěná v Azure. Azure Backup také chrání pouze uzly, které jsou spuštěny ve stejné oblasti Azure jako trezor Recovery Services.
+Ne. Azure Backup chrání SQL Server databáze běžící v Azure. Pokud je skupina dostupnosti (AG) rozložená mezi Azure a místními počítači, může být AG chráněná jenom v případě, že je primární replika spuštěná v Azure. Azure Backup také chrání pouze uzly, které jsou spuštěny ve stejné oblasti Azure jako trezor Recovery Services.
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>Můžu chránit skupiny dostupnosti napříč oblastmi?
 
@@ -68,7 +67,7 @@ Trezor Recovery Services Azure Backup může detekovat a chránit všechny uzly,
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-No. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](backup-azure-monitoring-built-in-monitor.md). V případě, že máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](backup-azure-monitoring-built-in-monitor.md). V případě, že máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 

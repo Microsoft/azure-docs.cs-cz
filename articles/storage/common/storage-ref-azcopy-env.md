@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 2307e510883b0cb7024c61c1b31bf2629ccbecb4
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220094"
 ---
 # <a name="azcopy-env"></a>azcopy env
@@ -37,14 +36,14 @@ azcopy env [flags]
 
 ## <a name="options"></a>Možnosti
 
-|Možnost|Popis|
+|Možnost|Description|
 |--|--|
 |-h,--help|Zobrazí obsah nápovědu k příkazu env. |
 |--Zobrazit citlivé|Zobrazuje proměnné prostředí citlivého a tajného kódu.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
+|Možnost|Description|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

@@ -4,10 +4,9 @@ description: Tento článek poskytuje pokyny ke konfiguraci a nasazení živé a
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261069"
 ---
 # <a name="production-readiness-and-best-practices"></a>Připravenost na produkční prostředí a osvědčené postupy
@@ -107,7 +106,7 @@ Dále můžete v části Vytvoření pro modul Edge v manifestu nasazení přida
 
 Pokud se podíváte na ukázkové mediální grafy pro rychlý Start a kurzy, jako je například [nepřetržité nahrávání videa](continuous-video-recording-tutorial.md), Upozorňujeme, že adresář localMediaCachePath (Media cache) používá podadresář pod applicationDataDirectory. Toto je doporučený přístup, protože mezipaměť obsahuje přechodná data.
 
-### <a name="naming-video-assets-or-files"></a>Pojmenovávání prostředků videa nebo souborů
+### <a name="naming-video-assets-or-files"></a>Pojmenování prostředků videí nebo videosouborů
 
 Grafy médií umožňují vytvářet prostředky v cloudu nebo souborech MP4 na hraničních zařízeních. Prostředky médií je možné vygenerovat [nepřetržitým záznamem videa](continuous-video-recording-tutorial.md) nebo [nahráváním videa založeného na událostech](event-based-video-recording-tutorial.md). I když se tyto prostředky a soubory můžou pojmenovat tak, jak chcete, doporučuje se u nepřetržitého mediálního záznamu založeného na záznamech, která je " &lt; anytext &gt; -$ {System. GraphTopologyName}-$ {System. GraphInstanceName}", doporučená struktura pojmenování. Jako příklad můžete nastavit assetNamePattern na jímku assetu následujícím způsobem:
 

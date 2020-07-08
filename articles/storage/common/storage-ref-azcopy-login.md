@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219964"
 ---
 # <a name="azcopy-login"></a>azcopy login
@@ -99,7 +98,7 @@ Zajistěte, aby se/path/to/my/CERT považovala za cestu k souboru PEM nebo PKCS1
 
 ## <a name="options"></a>Možnosti
 
-|Možnost|Popis|
+|Možnost|Description|
 |--|--|
 |--AAD-koncový bod|Koncový bod Azure Active Directory, který se má použít. Výchozí hodnota ( `https://login.microsoftonline.com` ) je správná pro veřejný cloud Azure. Nastavte tento parametr při ověřování v národním cloudu. Viz [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Tento příznak není pro Identita spravované služby potřebný.|
@@ -115,7 +114,7 @@ Tento příznak není pro Identita spravované služby potřebný.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
+|Možnost|Description|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

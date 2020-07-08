@@ -7,10 +7,9 @@ ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197237"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Instalace a použití Consul ve službě Azure Kubernetes Service (AKS)
@@ -31,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Ověření instalace Consul
 > * Odinstalace Consul z AKS
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart]. Ujistěte se, že cluster má minimálně 3 uzly ve fondu uzlů Linux.
 

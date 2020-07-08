@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: ccd729510341a9232764b1c211aa18c197ad5a37
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248630"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
@@ -66,18 +65,18 @@ Pro horizontální navýšení kapacity vydává automatické škálování pož
 ### <a name="cluster-compatibility"></a>Kompatibilita clusteru
 
 > [!Important]
-> Funkce automatického škálování Azure HDInsight byla vydaná pro všeobecnou dostupnost od 7. listopadu 2019 pro clustery Spark a Hadoop a zahrnutá vylepšení nejsou ve verzi Preview této funkce k dispozici. Pokud jste vytvořili cluster Spark starší než 7. listopadu 2019 a chcete ve svém clusteru používat funkci automatického škálování, doporučuje se cesta vytvořit nový cluster a povolit automatické škálování v novém clusteru.
+> Funkce automatického škálování Azure HDInsight se 7. listopadu 2019 vydala ve fázi obecné dostupnosti pro clustery Spark a Hadoop a zahrnovala vylepšení, která nebyla k dispozici ve verzi Preview této funkce. Pokud jste vytvořili cluster Spark před 7. listopadem 2019 a chcete ve svém clusteru využívat funkci automatického škálování, doporučujeme vytvořit nový cluster a povolit v něm automatické škálování.
 >
-> Automatické škálování pro interaktivní dotazy (LLAP) a clustery HBA jsou stále ve verzi Preview. Automatické škálování je dostupné jenom v clusterech Spark, Hadoop, Interactive Query a HBA.
+> Automatické škálování pro clustery Interactive Query (LLAP) a HBase je stále ve verzi Preview. Automatické škálování je k dispozici pouze v clusterech Spark, Hadoop, Interactive Query a HBase.
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
 | Verze | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | No | No | No |
+| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | No | No | No |
+| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | No | No | No |
+| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | No | No | No |
 
 \*Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 
@@ -225,7 +224,7 @@ Stav clusteru uvedený v Azure Portal vám může pomáhat monitorovat aktivity 
 
 Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v následujícím seznamu.
 
-| Stav clusteru | Popis |
+| Stav clusteru | Description |
 |---|---|
 | Spuštěno | Cluster pracuje normálně. Všechny předchozí aktivity automatického škálování se úspěšně dokončily. |
 | Doplnění  | Aktualizuje se konfigurace automatického škálování clusteru.  |
@@ -243,7 +242,7 @@ V části **monitorování**vyberte **metriky** . Pak v rozevíracím seznamu **
 
 ![Povolit metriku automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 
 ### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Zvažte latenci operací horizontálního navýšení nebo snížení kapacity.
 

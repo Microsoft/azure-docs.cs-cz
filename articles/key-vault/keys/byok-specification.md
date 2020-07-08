@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84198997"
 ---
-# <a name="bring-your-own-key-specification"></a>Přineste si vlastní klíčovou specifikaci
+# <a name="bring-your-own-key-specification"></a>Specifikace používání vlastního klíče
 
 Tento dokument popisuje specifikace pro import klíčů chráněných HSM z místních HSM zákazníků do Key Vault.
 
@@ -31,7 +30,7 @@ Požadavky jsou následující:
 
 ## <a name="terminology"></a>Terminologie
 
-|Název klíče|Typ klíče|Zdroj|Popis|
+|Název klíče|Typ klíče|Zdroj|Description|
 |---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA|Modul HSM Azure Key Vault|V Azure Key Vault byl vygenerován pár klíčů RSA zálohovaný modulem HSM.
 Klíč pro zabalení|AES|HSM dodavatele|[Dočasný] klíč AES generovaný modulem HSM v-Prem
@@ -158,7 +157,7 @@ Text požadavku:
 ```
 hodnota "key_hsm" je celý obsah KeyTransferPackage-ContosoFirstHSMkey. BYOK kódovaný ve formátu base64.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 ### <a name="azure-key-vault-rest-api"></a>Azure Key Vault REST API
 

@@ -10,20 +10,19 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233246"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Nasazení Azure SQL Edge (Preview) 
 
 Azure SQL Edge (Preview) je relační databázový stroj optimalizovaný pro nasazení IoT a Azure IoT Edge. Poskytuje funkce pro vytváření vysoce výkonných vrstev pro ukládání a zpracování dat pro aplikace a řešení IoT. V tomto rychlém startu se dozvíte, jak začít vytvářet modul Edge Azure SQL prostřednictvím Azure IoT Edge pomocí Azure Portal.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 * Vytvořte [IoT Hub Azure](../iot-hub/iot-hub-create-through-portal.md).
 * Zaregistruje [zařízení IoT Edge z Azure Portal](../iot-edge/how-to-register-device-portal.md).
 * Připravte zařízení IoT Edge, aby se [IoT Edge modul nasadil z Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
@@ -57,7 +56,7 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
 
    |**Parametr**  |**Popis**|
    |---------|---------|
-   | Název | Název modulu. |
+   | Name | Název modulu. |
    |SA_PASSWORD  | Zadejte silné heslo pro účet správce SQL Edge. |
    |MSSQL_LCID   | Nastaví ID jazyka, který se má použít pro SQL Server. Například 1036 je francouzština. |
    |MSSQL_COLLATION | Nastaví výchozí kolaci pro SQL Server. Toto nastavení přepíše výchozí mapování ID jazyka (LCID) na kolaci. |

@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
 ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84263223"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
@@ -193,7 +192,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parametr        | Podmínka        | Popis                                                                                |
+| Parametr        | Podmínka        | Description                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Vyžadováno | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazovaného v rámci organizací, jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |

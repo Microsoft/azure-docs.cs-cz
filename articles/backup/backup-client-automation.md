@@ -4,10 +4,9 @@ description: V tomto článku se naučíte, jak pomocí PowerShellu nastavit Azu
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: 696da2c94a439e5efaebbd148f6e05a9e0e15f37
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247746"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu

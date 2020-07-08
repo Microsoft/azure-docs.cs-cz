@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
 ms.openlocfilehash: ba5105c6183c88ca7e5641cdacaa5d80ea529bc6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84263886"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
@@ -52,15 +51,15 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Xero** . | Ano |
-| host | Koncový bod serveru Xero ( `api.xero.com` ).  | Ano |
-| consumerKey | Klíč příjemce přidružený k aplikaci Xero Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka pro **vygenerování PrivateKey. pem s numbits 512** . `openssl genrsa -out privatekey.pem 512` 1024 není podporována. Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/><br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se v certifikátu serveru vyžaduje název hostitele, který se bude shodovat s názvem hostitele serveru při připojení přes protokol TLS. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **Xero** . | Yes |
+| host | Koncový bod serveru Xero ( `api.xero.com` ).  | Yes |
+| consumerKey | Klíč příjemce přidružený k aplikaci Xero Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka pro **vygenerování PrivateKey. pem s numbits 512** . `openssl genrsa -out privatekey.pem 512` 1024 není podporována. Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/><br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se v certifikátu serveru vyžaduje název hostitele, který se bude shodovat s názvem hostitele serveru při připojení přes protokol TLS. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -98,10 +97,10 @@ Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **Xero
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **XeroObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **XeroObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -128,10 +127,10 @@ Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování 
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Contacts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

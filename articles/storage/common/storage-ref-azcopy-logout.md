@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 18add90ace11038fbba662b13400ccc7ddd8e763
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219946"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
@@ -36,13 +35,13 @@ azcopy logout [flags]
 
 ## <a name="options"></a>Možnosti
 
-|Možnost|Popis|
+|Možnost|Description|
 |--|--|
 |-h,--help|Zobrazit obsah nápovědu pro příkaz pro odhlášení|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
+|Možnost|Description|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

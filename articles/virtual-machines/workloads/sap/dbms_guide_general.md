@@ -16,10 +16,9 @@ ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84232658"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
@@ -77,7 +76,7 @@ V celém dokumentu se používají tyto výrazy:
 
 Některá dokumentace Microsoftu popisuje různé scénáře různých scénářů, a to hlavně v případě konfigurací s vysokou dostupností systému DBMS. V případě dokumentů souvisejících s SAP se scénář mezi místními systémy doloží na připojení typu Site-to-site nebo Private [ExpressRoute](https://azure.microsoft.com/services/expressroute/) a na šířku SAP, která je distribuována mezi místními a Azure.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 V úlohách SAP v Azure jsou k dispozici další články. Začněte s [úlohou SAP v Azure:](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) začněte a pak zvolte svou oblast zájmu.
 
 Následující poznámky SAP souvisejí s SAP v Azure v souvislosti s oblastí pokrytou v tomto dokumentu.
@@ -156,7 +155,7 @@ Jak už bylo uvedeno, pokud požadavek IOPS překročí, co může poskytnout je
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace naleznete v tématu:
+> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace naleznete v tématech:
 >
 > - [Konfigurace softwarového pole RAID v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) pomocí MDADM
 > - [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm) pomocí LVM
@@ -367,7 +366,7 @@ Další informace o konkrétním systému DBMS najdete v těchto tématech:
 
 - [Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP](dbms_guide_sqlserver.md)
 - [Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP](dbms_guide_oracle.md)
-- [Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP](dbms_guide_ibm.md)
+- [Nasazení IBM DB2 Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_ibm.md)
 - [Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP](dbms_guide_sapase.md)
 - [MaxDB SAP, živá mezipaměť a nasazení obsahu serveru v Azure](dbms_guide_maxdb.md)
 - [Průvodce provozem SAP HANA v Azure](hana-vm-operations.md)

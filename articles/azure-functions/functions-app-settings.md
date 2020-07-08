@@ -4,10 +4,9 @@ description: Referenční dokumentace k nastavení aplikace Azure Functions nebo
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84235353"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
@@ -16,7 +15,7 @@ Nastavení aplikace ve Function App obsahují globální možnosti konfigurace, 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-V souboru [Host. JSON](functions-host-json.md) a v souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) existují i další globální možnosti konfigurace.
+Existují další možnosti globální konfigurace v [host.js](functions-host-json.md) souboru a [local.settings.js](functions-run-local.md#local-settings-file) v souboru.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -40,7 +39,7 @@ Ve verzi 2. x a novějších verzích modulu runtime Functions konfiguruje chov�
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
-V rámci verze 2. x a novějších verzí modulu runtime Functions může nastavení aplikace přepsat nastavení [Host. JSON](functions-host-json.md) v aktuálním prostředí. Tato přepsání jsou vyjádřena jako nastavení aplikace s názvem `AzureFunctionsJobHost__path__to__setting` . Další informace najdete v tématu [přepis hodnot Host. JSON](functions-host-json.md#override-hostjson-values).
+Ve verzi 2. x a novějších verzích modulu runtime Functions může nastavení aplikace přepsat [host.jsv](functions-host-json.md) nastavení v aktuálním prostředí. Tato přepsání jsou vyjádřena jako nastavení aplikace s názvem `AzureFunctionsJobHost__path__to__setting` . Další informace najdete v tématu [přepis host.jsna hodnotách](functions-host-json.md#override-hostjson-values).
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -181,7 +180,7 @@ Maximální počet instancí, na které může aplikace Function App navýšit h
 ## <a name="website_node_default_version"></a>\_DEFAULT_VERSION uzlu \_ webu
 
 _Pouze Windows._  
-Nastaví verzi Node. js, která se má použít při spuštění aplikace Function App ve Windows. Chcete-li, aby modul runtime používal nejnovější dostupnou verzi cílené hlavní verze, použijte vlnovku (~). Například při nastavení na `~10` je použita nejnovější verze Node. js 10. V případě, že je hlavní verze cílena na vlnovku, nemusíte ručně aktualizovat dílčí verzi. 
+Nastaví verzi Node.js, která se má použít při spuštění aplikace Function App ve Windows. Chcete-li, aby modul runtime používal nejnovější dostupnou verzi cílené hlavní verze, použijte vlnovku (~). Například při nastavení na je `~10` použita nejnovější verze Node.js 10. V případě, že je hlavní verze cílena na vlnovku, nemusíte ručně aktualizovat dílčí verzi. 
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -201,7 +200,7 @@ Platné hodnoty jsou buď adresy URL, které se překládá na umístění soubo
 
 Ve výchozím nastavení budou proxy služby funkcí používat zástupce pro odesílání volání rozhraní API z proxy serverů přímo do funkcí ve stejné Function App namísto vytváření nového požadavku HTTP. Toto nastavení umožňuje toto chování zakázat.
 
-|Klíč|Hodnota|Popis|
+|Klíč|Hodnota|Description|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místním Function App již nebudou odesílána přímo do funkce a místo toho budou přesměrována zpět na front-end protokolu HTTP pro Function App|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Toto je výchozí hodnota. Volání s adresou URL back-endu ukazující na funkci v místním Function App budou předána přímo této funkci.|
@@ -211,14 +210,14 @@ Ve výchozím nastavení budou proxy služby funkcí používat zástupce pro od
 
 Toto nastavení určuje, jestli se% 2F dekóduje jako lomítka v parametrech směrování při jejich vložení do adresy URL back-endu. 
 
-|Klíč|Hodnota|Popis|
+|Klíč|Hodnota|Description|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry směrování s kódovanými lomítky budou mít dekódované. `example.com/api%2ftest`stane se`example.com/api/test`|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false (nepravda)|Toto je výchozí chování. Všechny parametry tras budou předány beze změny.|
 
 ### <a name="example"></a>Příklad
 
-Tady je příklad proxy. JSON ve Function App na adrese URL myfunction.com
+Tady je příklad proxies.jsv aplikaci Function App na adrese URL myfunction.com
 
 ```JSON
 {
@@ -243,6 +242,6 @@ Tady je příklad proxy. JSON ve Function App na adrese URL myfunction.com
 
 [Informace o tom, jak aktualizovat nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[Viz globální nastavení v souboru Host. JSON.](functions-host-json.md)
+[Zobrazit globální nastavení v host.jssouboru](functions-host-json.md)
 
 [Zobrazit další nastavení aplikací pro App Service aplikace](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

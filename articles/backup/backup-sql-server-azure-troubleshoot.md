@@ -4,10 +4,9 @@ description: Informace o řešení potíží při zálohování SQL Server datab
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247950"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
@@ -50,9 +49,9 @@ V některých případech se může stát, že při operacích zálohování a o
 
 1. Vylučte následující tři procesy běžící v rámci virtuálního počítače z kontroly antivirové ochrany:
 
-    - IaasWLPluginSvc. exe
-    - IaasWorkloadCoordinaorService. exe
-    - TriggerExtensionJob. exe
+    - IaasWLPluginSvc.exe
+    - IaasWorkloadCoordinaorService.exe
+    - TriggerExtensionJob.exe
 
 1. SQL také nabízí některé pokyny pro práci s antivirovými programy. Podrobnosti najdete v [tomto článku](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
 
@@ -60,7 +59,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 ### <a name="backup-type-unsupported"></a>Typ zálohování se nepodporuje.
 
-| Severity | Popis | Možné příčiny | Doporučená akce |
+| Severity | Description | Možné příčiny | Doporučená akce |
 |---|---|---|---|
 | Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
 

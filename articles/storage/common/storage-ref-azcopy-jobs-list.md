@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 545c0a358d415386a9bf2f13a4c05f3fdcab7665
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220061"
 ---
 # <a name="azcopy-jobs-list"></a>azcopy jobs list
@@ -34,13 +33,13 @@ azcopy jobs list [flags]
 
 ## <a name="options"></a>Možnosti
 
-|Možnost|Popis|
+|Možnost|Description|
 |--|--|
 |-h,--help|Zobrazit obsah nápovědu pro příkaz list|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
+|Možnost|Description|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195982"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány
@@ -104,7 +103,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
 
     ![Brána – konfigurace stránky](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    Tímto způsobem nejsnadnější způsob (jedním kliknutím) stáhnout, nainstalovat, nakonfigurovat a zaregistrovat bránu v jediném kroku. Můžete vidět, že se v počítači nainstaluje aplikace **Microsoft Správa dat Gateway Configuration Manager** . Spustitelný soubor **ConfigManager. exe** můžete také najít ve složce: **C:\Program Files\Microsoft Správa dat Gateway\2.0\Shared**.
+    Tímto způsobem nejsnadnější způsob (jedním kliknutím) stáhnout, nainstalovat, nakonfigurovat a zaregistrovat bránu v jediném kroku. Můžete vidět, že se v počítači nainstaluje aplikace **Microsoft Správa dat Gateway Configuration Manager** . Spustitelný **ConfigManager.exe** lze také najít ve složce: **C:\Program Files\Microsoft Správa dat Gateway\2.0\Shared**.
 
     Bránu můžete také ručně stáhnout a nainstalovat pomocí odkazů na této stránce a zaregistrovat ji pomocí klíče uvedeného v textovém poli **nový klíč** .
 
@@ -117,7 +116,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
 5. Počkejte pár minut nebo počkejte, až se zobrazí následující zpráva oznámení:
 
     ![Instalace brány byla úspěšná.](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. Na svém počítači spusťte aplikaci **Správa dat Configuration Manager brány** . V okně **hledání** zadejte pro přístup k tomuto nástroji **Správa dat bránu** . Spustitelný soubor **ConfigManager. exe** můžete také najít ve složce: **C:\Program Files\Microsoft Správa dat Gateway\2.0\Shared**
+6. Na svém počítači spusťte aplikaci **Správa dat Configuration Manager brány** . V okně **hledání** zadejte pro přístup k tomuto nástroji **Správa dat bránu** . Spustitelný **ConfigManager.exe** lze také najít ve složce: **C:\Program Files\Microsoft Správa dat Gateway\2.0\Shared**
 
     ![Configuration Manager brány](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. Potvrďte, že se zobrazí `adftutorialgateway is connected to the cloud service` zpráva. Stavový řádek dole zobrazuje **připojení ke cloudové službě** spolu se **zeleným znakem zaškrtnutí**.
@@ -279,7 +278,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
    * **FolderPath** je nastavená na **adftutorial/outfromonpremdf** , kde outfromonpremdf je složka v kontejneru adftutorial. Vytvořte kontejner **adftutorial** , pokud ještě neexistuje.
    * Vlastnost **availability** je nastavená na **hourly** (**frequency** je nastavená na **hour** a **interval** je nastavená na **1**).  Služba Data Factory v Azure SQL Database v tabulce **EMP** generuje výstupní datový řez každou hodinu.
 
-   Pokud nezadáte **filename** pro **výstupní tabulku**, generované soubory v **FolderPath** se pojmenují v následujícím formátu: `Data.<Guid>.txt` (například: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt).
+   Pokud nezadáte **filename** pro **výstupní tabulku**, generované soubory v **FolderPath** se pojmenují v následujícím formátu: `Data.<Guid>.txt` (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Pokud chcete nastavit **folderPath** a **fileName** dynamicky podle času **SliceStart**, použijte vlastnost partitionedBy. V následujícím příkladu folderPath používá rok, měsíc a den z vlastnosti SliceStart (čas zahájení zpracování řezu) a fileName používá hodinu z vlastnosti SliceStart. Pokud například začne být řez vytvářen v době 2014-10-20T08:00:00, vlastnost folderName je nastavená na wikidatagateway/wikisampledataout/2014/10/20 a vlastnost fileName je nastavená na 08.csv.
 

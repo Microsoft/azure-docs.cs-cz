@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 6225a7eb8198ffcca0d1e3e15f64e2b3c977dc16
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248273"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
@@ -30,10 +29,10 @@ Nový model pro okamžité obnovení nabízí následující vylepšení funkcí
 
 V současné době se úloha zálohování skládá ze dvou fází:
 
-1. Pořizuje se snímek virtuálního počítače.
-2. Přenos snímku virtuálního počítače do trezoru služby Azure Recovery Services.
+1. Pořízení snímku virtuálního počítače
+2. Přenos snímku virtuálního počítače do trezoru služby Azure Recovery Services
 
-Bod obnovení se považuje za vytvořený až po ukončení fází 1 a 2. V rámci tohoto upgradu je vytvořen bod obnovení hned po dokončení snímku a tento bod obnovení typu snímku lze použít k provedení obnovení pomocí stejného toku obnovení. Tento bod obnovení v Azure Portal můžete určit pomocí "snapshot" jako typ bodu obnovení a po přenosu snímku do trezoru se typ bodu obnovení změní na "Snapshot and trezor".
+Bod obnovení se považuje za vytvořený teprve po dokončení obou fází. V rámci tohoto upgradu se okamžitě po dokončení snímku vytvoří bod obnovení typu Snímek, pomocí kterého je možné provést obnovení s využitím stejného postupu obnovení. Tento bod obnovení v Azure Portal můžete určit pomocí "snapshot" jako typ bodu obnovení a po přenosu snímku do trezoru se typ bodu obnovení změní na "Snapshot and trezor".
 
 ![Úloha zálohování v zásobníku zálohování virtuálních počítačů Správce prostředků modelu nasazení – úložiště a trezor](./media/backup-azure-vms/instant-rp-flow.png)
 

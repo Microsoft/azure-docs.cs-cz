@@ -8,29 +8,28 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84235607"
 ---
-# <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílené složky pro Soubory Azure
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílené složky pro Azure Files
 
-Azure Files nabízí možnost převzít snímky sdílení sdílených složek. Snímky sdílené složky zachytí stav sdílení v daném časovém okamžiku. V tomto článku jsme popsali, co poskytují snímky pro sdílení a jak je můžete využít ve svém vlastním případu použití.
+Azure Files nabízí možnost pořizovat snímky sdílení sdílených složek. Snímky sdílených složek zachytí stav sdílení v daném časovém okamžiku. V tomto článku popisujeme, co poskytují snímky sdílení a jak je můžete využít ve svém vlastním případu použití.
 
-## <a name="when-to-use-share-snapshots"></a>Kdy použít snímky sdílené složky
+## <a name="when-to-use-share-snapshots"></a>Kdy použít snímky sdílení
 
 ### <a name="protection-against-application-error-and-data-corruption"></a>Ochrana proti chybě aplikace a poškození dat
 
-Aplikace, které používají sdílené složky, provádějí operace, jako je například zápis, čtení, ukládání, přenos a zpracování. Pokud je aplikace nesprávně nakonfigurovaná nebo je zavedená neúmyslná chyba, může dojít k náhodnému přepsání nebo poškození na několik bloků. Pro lepší ochranu proti těmto scénářům můžete před nasazením nového kódu aplikace pořídit snímek sdílené složky. Pokud se s novým nasazením zavede chyba nebo Chyba aplikace, můžete se vrátit k předchozí verzi vašich dat v této sdílené složce. 
+Aplikace, které používají sdílené složky, provádějí operace, jako je například zápis, čtení, ukládání, přenos a zpracování. Pokud je aplikace nesprávně nakonfigurovaná nebo je zavedena neúmyslná chyba, může dojít k náhodnému přepsání nebo poškození několika bloků. Abyste se lépe chránili před těmito situacemi, můžete před nasazením nového kódu aplikace pořídit snímek sdílené složky. Pokud se s novým nasazením zavede chyba nebo chyba aplikace, můžete se vrátit k předchozí verzi vašich dat v této sdílené složce. 
 
 ### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Ochrana před náhodným odstraněním nebo nezamýšlenými změnami
 
-Představte si, že pracujete s textovým souborem ve sdílené složce. Po zavření textového souboru ztratíte možnost vrátit změny zpět. V těchto případech je potřeba obnovit předchozí verzi souboru. Snímky sdílené složky můžete použít k obnovení předchozích verzí souboru, pokud je omylem přejmenováno nebo odstraněno.
+Představte si, že pracujete s textovým souborem ve sdílené složce. Po zavření textového souboru ztratíte možnost vrátit změny zpět. V těchto případech je potřeba obnovit předchozí verzi souboru. Snímky sdílené složky můžete použít k obnovení předchozích verzí souboru, pokud se omylem přejmenuje nebo odstraní.
 
 ### <a name="general-backup-purposes"></a>Obecné účely zálohování
 
-Po vytvoření sdílené složky můžete pravidelně vytvářet snímky sdílené složky, které ji budou používat pro zálohování dat. Snímek sdílené složky při pravidelném provádění pomáhá zachovat předchozí verze dat, které lze použít pro budoucí požadavky na audit nebo zotavení po havárii. Pro vytváření a správu snímků doporučujeme použít [Zálohování sdílených složek Azure](../../backup/azure-file-share-backup-overview.md) jako řešení zálohování. Snímky můžete také provádět a spravovat sami pomocí rozhraní příkazového řádku nebo PowerShellu.
+Po vytvoření sdílené složky můžete pravidelně vytvářet její snímek, který použijete pro zálohování dat. Snímek sdílené složky při pravidelném pořizování pomáhá zachovat předchozí verze dat, které lze použít pro budoucí požadavky na audit nebo zotavení po havárii. Pro vytváření a správu snímků doporučujeme použít [Zálohování sdílených složek Azure](../../backup/azure-file-share-backup-overview.md) jako řešení zálohování. Snímky můžete také provádět a spravovat sami pomocí rozhraní příkazového řádku nebo PowerShellu.
 
 ## <a name="capabilities"></a>Možnosti
 
@@ -73,15 +72,15 @@ V současné době není možné připojit snímky sdílené složky v systému 
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopírování dat zpět do sdílené složky ze snímku sdílené složky
 
-Operace kopírování, které zahrnují soubory a sdílené snímky, dodržují tato pravidla:
+Operace kopírování, které zahrnují soubory a snímky sdílených složek, se řídí těmito pravidly:
 
-Jednotlivé soubory ve snímku sdílené složky můžete zkopírovat do své základní sdílené složky nebo do jiného umístění. Můžete obnovit dřívější verzi souboru nebo obnovit úplnou sdílenou složku zkopírováním souboru File by ze snímku sdílené složky. Snímek sdílené složky není povýšen na základní sdílenou složku. 
+Jednotlivé soubory ve snímku sdílené složky můžete zkopírovat do jeho základní sdílené složky nebo do jiného umístění. Můžete obnovit dřívější verzi souboru nebo obnovit celou sdílenou složku zkopírováním jednotlivých souborů jeden po druhém ze snímku sdílené složky. Úroveň snímku sdílené složky se nezvýší na základní sdílenou složku. 
 
-Snímek sdílené složky zůstane po zkopírování beze změn, ale základní sdílená složka je přepsána kopií dat, která byla k dispozici ve snímku sdílené složky. Počet obnovených souborů se počítá směrem k změně obsahu.
+Snímek sdílené složky zůstane po zkopírování beze změn, ale základní sdílená složka se přepíše kopií dat, která byla k dispozici ve snímku sdílené složky. Všechny obnovené soubory se počítají jako „změněný obsah“.
 
-Soubor můžete zkopírovat ve snímku sdílené složky do jiného umístění s jiným názvem. Výsledný cílový soubor je zapisovatelný soubor, nikoli snímek sdílené složky. V takovém případě zůstane vaše základní sdílená složka nedotčená.
+Soubor ve snímku sdílené složky můžete zkopírovat do jiného umístění s jiným názvem. Do výsledného cílového souboru se dá zapisovat, není to snímek sdílené složky. V takovém případě zůstane vaše základní sdílená složka nedotčená.
 
-Když je cílový soubor přepsán kopií, všechny snímky sdílené složky přidružené k původnímu cílovému souboru zůstanou beze změny.
+Když se cílový soubor přepíše kopií, všechny snímky sdílené složky přidružené k původnímu cílovému souboru zůstanou beze změny.
 
 ## <a name="general-best-practices"></a>Obecné osvědčené postupy
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248681"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
@@ -41,7 +40,7 @@ Operace Refresh je [asynchronní operace](https://docs.microsoft.com/azure/azure
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |204 bez obsahu     |         |  OK bez vráceného obsahu      |
 |202 přijato     |         |     Přijato    |
@@ -104,7 +103,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 #### <a name="responses"></a><a name="responses-1"></a>Odpovědi
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +179,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Chcete-li vytvořit chráněnou položku, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
@@ -208,7 +207,7 @@ Vytvoření chráněné položky je [asynchronní operace](https://docs.microsof
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 přijato     |         |     Přijato    |
@@ -294,7 +293,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
@@ -319,7 +318,7 @@ Aktivace zálohování na vyžádání je [asynchronní operace](https://docs.mi
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -439,7 +438,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 (obsah) po dokončení této operace.
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |204. obsah     |         |  Obsah       |
 |202 přijato     |         |     Přijato    |

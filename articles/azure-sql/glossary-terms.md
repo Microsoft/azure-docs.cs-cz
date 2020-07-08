@@ -13,10 +13,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
 ms.openlocfilehash: f05871c41e2deec3f6a52446844c0b8fd2c9038d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221388"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář pojmů
@@ -45,7 +44,7 @@ ms.locfileid: "84221388"
 |:---|:---|:---|
 |Služba Azure|Spravovaná instance Azure SQL|[Spravovaná instance SQL](managed-instance/sql-managed-instance-paas-overview.md)|
 |Model nákupu|Nákupní model založený na virtuálních jádrech|[Nákupní model založený na virtuálních jádrech](database/service-tiers-vcore.md)|
-|Možnost nasazení |Jedna instance|[Jedna instance](managed-instance/sql-managed-instance-paas-overview.md)|
+|Možnost nasazení |Jedna instance|[Jediná instance](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Fond instancí (Preview)|[Fondy instancí](managed-instance/instance-pools-overview.md)|
 |Úroveň služeb|Pro obecné účely Pro důležité obchodní informace|[Úrovně služeb spravované instance SQL](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
 |Výpočetní vrstva|Zřízené výpočetní prostředky|[Zřízené výpočetní prostředky](database/service-tiers-vcore.md#compute-tiers)|

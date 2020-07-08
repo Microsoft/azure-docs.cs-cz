@@ -7,10 +7,9 @@ ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: 1bab503004876a2680286204de28631ce26b9069
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197106"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Nastavení průběžného nasazování s využitím Chocolatey
@@ -82,7 +81,7 @@ Svůj účet Automation můžete vložit do kterékoli z následujících oblast
 ## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>Krok 2: nastavení rozšíření virtuálních počítačů na šablonu Správce prostředků
 
 Podrobnosti o registraci virtuálních počítačů (pomocí rozšíření virtuálního počítače prostředí PowerShell DSC) poskytované v této [šabloně Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).
-Tento krok zaregistruje nový virtuální počítač se serverem Pull v seznamu uzlů konfigurace stavu. Součástí této registrace je určení konfigurace uzlu, která se má použít na uzel. Tato konfigurace uzlu nemusí na serveru pro vyžádání obsahu existovat, takže je přesně to, kde je krok 4 v první době proveden. Ale tady v kroku 2 se musíte rozhodnout, že jste určili název uzlu a název konfigurace. V tomto příkladu použití je uzel "isvbox" a konfigurace je "ISVBoxConfig". Proto je název konfigurace uzlu (který se má zadat v souboru DeploymentTemplate. JSON) "ISVBoxConfig. isvbox".
+Tento krok zaregistruje nový virtuální počítač se serverem Pull v seznamu uzlů konfigurace stavu. Součástí této registrace je určení konfigurace uzlu, která se má použít na uzel. Tato konfigurace uzlu nemusí na serveru pro vyžádání obsahu existovat, takže je přesně to, kde je krok 4 v první době proveden. Ale tady v kroku 2 se musíte rozhodnout, že jste určili název uzlu a název konfigurace. V tomto příkladu použití je uzel "isvbox" a konfigurace je "ISVBoxConfig". Proto je název konfigurace uzlu (který se má zadat v DeploymentTemplate.json) "ISVBoxConfig. isvbox".
 
 ## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>Krok 3: přidání požadovaných prostředků DSC na server vyžádané replikace
 
@@ -126,7 +125,7 @@ Zahrnutý příklad implementuje tyto kroky pro cChoco a xNetworking.
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>Krok 4: Přidání konfigurace uzlu na server vyžádané replikace
 
-Při prvním importu konfigurace do vyžádaného serveru a zkompilování není nic speciální. Všechna pozdější importy nebo kompilace stejné konfigurace vypadají přesně stejně. Pokaždé, když balíček aktualizujete a potřebujete ho nabízet do produkčního prostředí, provedete tento krok až po ověření správnosti konfiguračního souboru – včetně nové verze balíčku. Tady je konfigurační soubor **ISVBoxConfig. ps1**:
+Při prvním importu konfigurace do vyžádaného serveru a zkompilování není nic speciální. Všechna pozdější importy nebo kompilace stejné konfigurace vypadají přesně stejně. Pokaždé, když balíček aktualizujete a potřebujete ho nabízet do produkčního prostředí, provedete tento krok až po ověření správnosti konfiguračního souboru – včetně nové verze balíčku. Tady je konfigurační soubor **ISVBoxConfig.ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -171,7 +170,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-Tady je skript **New-ConfigurationScript. ps1** (upravený tak, aby používal modul AZ Module):
+Tady je **New-ConfigurationScript.ps1** skript (upravený tak, aby používal modul AZ Module):
 
 ```powershell
 Import-AzAutomationDscConfiguration `

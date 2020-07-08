@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196096"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Řešení potíží s replikací v zotavení po havárii virtuálního počítače Azure

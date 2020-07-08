@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 1f310eff1f6858618602c76a7458aadb06dc4d13
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219932"
 ---
 # <a name="azcopy-make"></a>azcopy make
@@ -42,14 +41,14 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 
 ## <a name="options"></a>Možnosti
 
-|Možnost|Popis|
+|Možnost|Description|
 |--|--|
 |-h,--help|Zobrazit obsah nápovědu pro příkaz make. |
 |--kvóta-GB UInt32|Určuje maximální velikost sdílené složky v gigabajtech (GiB), 0 znamená, že přijmete výchozí kvótu souborové služby.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
+|Možnost|Description|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

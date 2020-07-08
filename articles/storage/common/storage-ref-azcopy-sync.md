@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221059"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
@@ -81,7 +80,7 @@ Synchronizovat celý adresář včetně jeho podsložek (Všimněte si, že ve v
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-or
+nebo
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
@@ -142,7 +141,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--Exclude – řetězec atributů** (pouze Windows) vyloučení souborů, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
 
-**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
+**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/file.pdf). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
 
 **--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: \* . jpg; \* . PDF; přesný
 
@@ -160,7 +159,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
+|Možnost|Description|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

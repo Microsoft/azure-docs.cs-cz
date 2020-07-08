@@ -14,10 +14,9 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84263274"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
@@ -43,7 +42,7 @@ Dohled`https://login.microsoftonline.com/{tenant}/v2.0`
 
 `{tenant}`Může mít jednu ze čtyř hodnot:
 
-| Hodnota | Popis |
+| Hodnota | Description |
 | --- | --- |
 | `common` |Uživatelé, kteří mají osobní účet Microsoft a pracovní nebo školní účet z Azure AD, se můžou k aplikaci přihlásit. |
 | `organizations` |K aplikaci se můžou přihlásit jenom uživatelé s pracovními nebo školními účty ze služby Azure AD. |
@@ -116,7 +115,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Parametr | Podmínka | Popis |
+| Parametr | Podmínka | Description |
 | --- | --- | --- |
 | `tenant` | Vyžadováno | `{tenant}`Hodnotu v cestě k požadavku můžete použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common` `organizations` `consumers` identifikátory klientů,, a. Další informace najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
@@ -172,7 +171,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 V následující tabulce jsou popsány chybové kódy, které lze vrátit v `error` parametru chybové odpovědi:
 
-| Kód chyby | Popis | Akce klienta |
+| Kód chyby | Description | Akce klienta |
 | --- | --- | --- |
 | `invalid_request` | Chyba protokolu, například chybějící, povinný parametr. |Opravte a odešlete požadavek znovu. Jedná se o chybu vývoje, která se obvykle zachycuje při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemůže požádat o autorizační kód. |K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -292,7 +291,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parametr | Podmínka | Popis |
+| Parametr | Podmínka | Description |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Doporučené | Adresa URL, na kterou je uživatel přesměrován po úspěšném odhlášení. Pokud parametr není zahrnutý, zobrazí se uživateli obecná zpráva generovaná koncovým bodem Microsoft Identity Platform. Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací. |
 

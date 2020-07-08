@@ -7,10 +7,9 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219223"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
@@ -41,7 +40,7 @@ Azure Red Hat OpenShift 3,11 má limit 50 pod uzlem a 20 omezení výpočetních
 
 ### <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Může cluster počítat výpočetní uzly napříč několika oblastmi Azure?
 
-No. Všechny uzly v clusteru Azure Red Hat OpenShift musí pocházet ze stejné oblasti Azure.
+Ne. Všechny uzly v clusteru Azure Red Hat OpenShift musí pocházet ze stejné oblasti Azure.
 
 ### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>Dá se cluster nasadit napříč několika zónami dostupnosti?
 
@@ -49,7 +48,7 @@ Ano. K tomu dojde automaticky v případě, že je váš cluster nasazený do ob
 
 ### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Jsou uzly řídicí plochy abstraktní, protože se jedná o službu Azure Kubernetes Service (AKS)?
 
-No. Všechny prostředky, včetně hlavních uzlů clusteru, se spouštějí v rámci zákaznického předplatného. Tyto typy prostředků jsou vloženy do skupiny prostředků jen pro čtení.
+Ne. Všechny prostředky, včetně hlavních uzlů clusteru, se spouštějí v rámci zákaznického předplatného. Tyto typy prostředků jsou vloženy do skupiny prostředků jen pro čtení.
 
 ### <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Je cluster umístěn v rámci předplatného zákazníka? 
 

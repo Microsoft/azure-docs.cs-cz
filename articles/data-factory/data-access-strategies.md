@@ -9,10 +9,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: 0b966b10c5bbc7bb90a4226d94dda8b75e25c3af
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247474"
 ---
 # <a name="data-access-strategies"></a>Strategie přístupu k datům
@@ -47,17 +46,17 @@ Další informace o podporovaných mechanismech zabezpečení sítě v úložiš
 
     | Úložiště dat                  | Podporované mechanismy zabezpečení sítě v úložištích dat         | Důvěryhodná služba     | Rozsah statických IP adres | Značky služeb | Povolení služeb Azure |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|
-    | Úložiště dat Azure PaaS       | Azure Cosmos DB                                             | -                   | Ano             | -            | Ano                  |
+    | Úložiště dat Azure PaaS       | Azure Cosmos DB                                             | -                   | Ano             | -            | Yes                  |
     |                              | Průzkumník dat Azure                                         | -                   | Ano*            | Ano*         | -                    |
-    |                              | Azure Data Lake Gen1                                        | -                   | Ano             | -            | Ano                  |
-    |                              | Azure Database for MariaDB, MySQL, PostgreSQL               | -                   | Ano             | -            | Ano                  |
-    |                              | Azure File Storage                                          | -                   | Ano             | -            | .                    |
-    |                              | Azure Storage (blog, ADLS Gen2)                             | Ano (pouze ověřování MSI) | Ano             | -            | .                    |
-    |                              | Azure SQL DB, SQL DW (synapse Analytics), SQL ml          | -                   | Ano             | -            | Ano                  |
-    |                              | Azure Key Vault (pro načtení tajných klíčů/připojovacího řetězce) | Ano                 | Ano             | -            | -                    |
-    | Jiná úložiště dat PaaS/SaaS | AWS S3, SalesForce, Google Cloud Storage atd.            | -                   | Ano             | -            | -                    |
-    | LaaS Azure                   | SQL Server, Oracle atd.                                  | -                   | Ano             | Ano          | -                    |
-    | Místní laaS              | SQL Server, Oracle atd.                                  | -                   | Ano             | -            | -                    |
+    |                              | Azure Data Lake Gen1                                        | -                   | Ano             | -            | Yes                  |
+    |                              | Azure Database for MariaDB, MySQL, PostgreSQL               | -                   | Ano             | -            | Yes                  |
+    |                              | Azure File Storage                                          | -                   | Yes             | -            | .                    |
+    |                              | Azure Storage (blog, ADLS Gen2)                             | Ano (pouze ověřování MSI) | Yes             | -            | .                    |
+    |                              | Azure SQL DB, SQL DW (synapse Analytics), SQL ml          | -                   | Ano             | -            | Yes                  |
+    |                              | Azure Key Vault (pro načtení tajných klíčů/připojovacího řetězce) | Ano                 | Yes             | -            | -                    |
+    | Jiná úložiště dat PaaS/SaaS | AWS S3, SalesForce, Google Cloud Storage atd.            | -                   | Yes             | -            | -                    |
+    | LaaS Azure                   | SQL Server, Oracle atd.                                  | -                   | Ano             | Yes          | -                    |
+    | Místní laaS              | SQL Server, Oracle atd.                                  | -                   | Yes             | -            | -                    |
     
     **Dá se použít jenom v případě, že je virtuální síť ve službě Azure Průzkumník dat vložená a rozsah IP adres se dá použít na NSG/bráně firewall.* 
 
@@ -67,14 +66,14 @@ Další informace o podporovaných mechanismech zabezpečení sítě v úložiš
     |--------------------------------|---------------------------------------------------------------|-----------|---------------------|
     | Úložiště dat Azure PaaS       | Azure Cosmos DB                                               | Ano       | -                   |
     |                                | Průzkumník dat Azure                                           | -         | -                   |
-    |                                | Azure Data Lake Gen1                                          | Ano       | -                   |
-    |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Ano       | -                   |
-    |                                | Azure File Storage                                            | Ano       | -                   |
-    |                                | Azure Storage (blog, ADLS Gen2)                             | Ano       | Ano (pouze ověřování MSI) |
-    |                                | Azure SQL DB, SQL DW (synapse Analytics), SQL ml          | Ano       | -                   |
-    |                                | Azure Key Vault (pro načtení tajných klíčů/připojovacího řetězce) | Ano       | Ano                 |
-    | Jiná úložiště dat PaaS/SaaS | AWS S3, SalesForce, Google Cloud Storage atd.              | Ano       | -                   |
-    | LaaS Azure                     | SQL Server, Oracle atd.                                  | Ano       | -                   |
+    |                                | Azure Data Lake Gen1                                          | Yes       | -                   |
+    |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Yes       | -                   |
+    |                                | Azure File Storage                                            | Yes       | -                   |
+    |                                | Azure Storage (blog, ADLS Gen2)                             | Yes       | Ano (pouze ověřování MSI) |
+    |                                | Azure SQL DB, SQL DW (synapse Analytics), SQL ml          | Yes       | -                   |
+    |                                | Azure Key Vault (pro načtení tajných klíčů/připojovacího řetězce) | Ano       | Yes                 |
+    | Jiná úložiště dat PaaS/SaaS | AWS S3, SalesForce, Google Cloud Storage atd.              | Yes       | -                   |
+    | LaaS Azure                     | SQL Server, Oracle atd.                                  | Yes       | -                   |
     | Místní laaS              | SQL Server, Oracle atd.                                  | Ano       | -                   |    
 
 ## <a name="next-steps"></a>Další kroky

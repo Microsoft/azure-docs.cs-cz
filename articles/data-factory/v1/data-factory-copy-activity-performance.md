@@ -13,10 +13,9 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196107"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
@@ -208,8 +207,8 @@ Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování a určete,
 | Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
 | **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |False |No |
-| **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ho použít ve všech ostatních scénářích. |– |Ano, pokud je **enableStaging** nastavené na true |
-| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |No |
+| **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ho použít ve všech ostatních scénářích. |Není k dispozici |Ano, pokud je **enableStaging** nastavené na true |
+| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |Není k dispozici |No |
 | **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |False |No |
 
 Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v předchozí tabulce:
@@ -262,13 +261,13 @@ Doporučujeme, abyste provedli následující kroky, abyste mohli vyladit výkon
      * [Jednotky pro pohyb dat v cloudu](#cloud-data-movement-units)
      * [Připravené kopírování](#staged-copy)
      * [Škálovatelnost Správa dat brány](data-factory-data-management-gateway-high-availability-scalability.md)
-   * [Brána správy dat](#considerations-for-data-management-gateway)
+   * [Brána Správa dat](#considerations-for-data-management-gateway)
    * [Zdroj](#considerations-for-the-source)
    * [Jímka](#considerations-for-the-sink)
    * [Serializace a deserializace](#considerations-for-serialization-and-deserialization)
    * [Komprese](#considerations-for-compression)
    * [Mapování sloupců](#considerations-for-column-mapping)
-   * [Další požadavky](#other-considerations)
+   * [Další důležité informace](#other-considerations)
 3. **Rozšiřte konfiguraci na celou datovou sadu**. Až budete spokojeni s výsledky spuštění a výkonem, můžete rozšířit aktivní období definice a kanálu, abyste pokryli celou datovou sadu.
 
 ## <a name="considerations-for-data-management-gateway"></a>Předpoklady pro Správa dat bránu
@@ -361,7 +360,7 @@ Vlastnost **ColumnMappings** v aktivitě kopírování můžete nastavit tak, ab
 
 Pokud je zdrojové úložiště dat Queryable, například pokud se jedná o relační úložiště, jako je SQL Database nebo SQL Server, nebo pokud se jedná o NoSQL úložiště, jako je například úložiště tabulky nebo Azure Cosmos DB, zvažte vložení filtrování sloupce a změnu pořadí na vlastnost **dotazu** namísto použití mapování sloupce. Tímto způsobem se projekce objeví, zatímco služba pro přesun dat načítá data ze zdrojového úložiště dat, kde je mnohem efektivnější.
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 Pokud je velikost dat, která chcete zkopírovat, Velká, můžete upravit obchodní logiku a dále rozdělit data pomocí mechanismu řezů v Data Factory. Pak Naplánujte aktivitu kopírování tak, aby se spouštěla častěji, aby se snížila velikost dat pro každý běh aktivity kopírování.
 
 Buďte opatrní na počet datových sad a aktivit kopírování, které vyžadují, Data Factory, aby se současně konektor do stejného úložiště dat. Mnoho souběžných úloh kopírování může omezit úložiště dat a vést ke snížení výkonu, provádění interních opakovaných pokusů úloh kopírování a v některých případech na selhání.

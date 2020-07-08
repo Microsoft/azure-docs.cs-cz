@@ -10,22 +10,21 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c24cef2cf9e4c54d16ebc75eb1a56273d8826355
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221402"
 ---
-# <a name="monitor-module-twins"></a>Monitorovat vlákna modulů
+# <a name="monitor-module-twins"></a>Monitorování dvojčat modulu
 
 Moduly se v Azure neplní, IoT Hub umožňují monitorování dostupnosti a stavu nasazení IoT Edge. Moduly s dvojitou platností ukládají užitečné informace ve službě IoT Hub o výkonu spuštěných modulů. [Agenti IoT Edge](iot-edge-runtime.md#iot-edge-agent) a moduly runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) v nich udržují své moduly v chodu `$edgeAgent` a v `$edgeHub` uvedeném pořadí:
 
 * `$edgeAgent`obsahuje data o stavu a připojení týkající se IoT Edgeho agenta a modulů runtime centra IoT Edge a vašich vlastních modulů. Agent IoT Edge zodpovídá za nasazení modulů, jejich monitorování a stav připojení sestav do služby Azure IoT Hub.
 * `$edgeHub`obsahuje data o komunikaci mezi IoT Edgem rozbočovačem běžícím na zařízení a ve službě Azure IoT Hub. To zahrnuje zpracování příchozích zpráv ze zařízení pro příjem dat. Centrum IoT Edge zodpovídá za zpracování komunikace mezi IoT Hub Azure a IoT Edgemi zařízeními a moduly.
 
-Data jsou uspořádána do metadat, značek, spolu s požadovanými a nahlášenými vlastnostmi v modulech, které jsou ve strukturách JSON. Požadované vlastnosti, které jste zadali v souboru Deployment. JSON, se zkopírují do vláken modulu. Agent IoT Edge a centrum IoT Edge každé aktualizuje hlášené vlastnosti pro jejich moduly.
+Data jsou uspořádána do metadat, značek, spolu s požadovanými a nahlášenými vlastnostmi v modulech, které jsou ve strukturách JSON. Požadované vlastnosti, které jste zadali v deployment.jssouboru, se zkopírují do nevláken modulu. Agent IoT Edge a centrum IoT Edge každé aktualizuje hlášené vlastnosti pro jejich moduly.
 
-Podobně jsou požadované vlastnosti zadané pro vlastní moduly v souboru Deployment. JSON zkopírovány do jeho nedokončeného modulu, ale vaše řešení zodpovídá za poskytnutí jeho hlášených hodnot vlastností.
+Podobně požadované vlastnosti zadané pro vlastní moduly v deployment.jsv souboru se zkopírují do jeho nedokončeného modulu, ale vaše řešení zodpovídá za poskytování jeho hlášených hodnot vlastností.
 
 Tento článek popisuje, jak zkontrolovat nevlákenná vlákna v modulu Azure Portal, Azure CLI a v Visual Studio Code. Informace o sledování, jak vaše zařízení dostanou nasazení, najdete v tématu [monitorování nasazení IoT Edge](how-to-monitor-iot-edge-deployments.md). Přehled konceptu nevlákenných modulů naleznete [v tématu pochopení a použití vláken modulu v IoT Hub](../iot-hub/iot-hub-devguide-module-twins.md).
 
@@ -83,7 +82,7 @@ KÓD JSON může být popsaný v následujících částech od začátku:
 
 * Metadata – obsahuje data o připojení. V prodlení je stav připojení agenta IoT Edge vždy v odpojeném stavu: `"connectionState": "Disconnected"` . Důvodem, proč se stav připojení týká zpráv D2C (zařízení-Cloud) a Agent IoT Edge neodesílají zprávy D2C.
 * Vlastnosti – obsahuje dílčí `desired` `reported` sekce a.
-* Vlastnosti. požadovaný – (zobrazený sbalený) očekávané hodnoty vlastností nastavené operátorem v souboru Deployment. JSON.
+* Vlastnosti. požadovaný – (zobrazený sbalený) očekávané hodnoty vlastností nastavené operátorem v deployment.jsv souboru.
 * Properties. hlášené – nejnovější hodnoty vlastností hlášené agentem IoT Edge.
 
 Jak `properties.desired` oddíly a `properties.reported` mají podobnou strukturu a obsahují další metadata pro schéma, verzi a informace o modulu runtime. K dispozici je také `modules` oddíl pro všechny vlastní moduly (například `SimulatedTemperatureSensor` ), a `systemModules` část pro `$edgeAgent` `$edgeHub` moduly runtime a.
@@ -100,7 +99,7 @@ Následující vlastnosti jsou důležité pro kontrolu řešení potíží:
 
 * **runtimeStatus** – může to být jedna z následujících hodnot:
 
-    | Hodnota | Popis |
+    | Hodnota | Description |
     | --- | --- |
     | Neznámý | Výchozí stav, dokud se nevytvoří nasazení. |
     | omezení rychlosti | Spuštění modulu je naplánováno, ale aktuálně není spuštěno. Tato hodnota je užitečná pro modul, který provádí změny stavu při restartování. V případě, že se neúspěšný modul čeká na restartování během doby chladnutí, modul bude ve stavu omezení rychlosti. |
@@ -159,14 +158,14 @@ KÓD JSON může být popsaný v následujících částech od začátku:
 * Metadata – obsahuje data o připojení.
 
 * Vlastnosti – obsahuje dílčí `desired` `reported` sekce a.
-* Vlastnosti. požadovaný – (zobrazený sbalený) očekávané hodnoty vlastností nastavené operátorem v souboru Deployment. JSON.
+* Vlastnosti. požadovaný – (zobrazený sbalený) očekávané hodnoty vlastností nastavené operátorem v deployment.jsv souboru.
 * Properties. hlášené – nejnovější hodnoty vlastností hlášené IoT Edge hub.
 
 Pokud máte problémy se zařízeními pro příjem dat, doporučujeme, abyste si prozkoumali tato data, abyste mohli začít.
 
 ## <a name="monitor-custom-module-twins"></a>Monitorovat vlákna vlastního modulu
 
-Informace o připojení vašich vlastních modulů jsou zachovány v modulu IoT Edgeho agenta s dvojitou platností. Modul, který je pro váš vlastní modul, se využije hlavně k údržbě dat pro vaše řešení. Požadované vlastnosti, které jste definovali v souboru Deployment. JSON, se projeví v modulu s dvojitou hodnotou a váš modul může podle potřeby aktualizovat hlášené hodnoty vlastností.
+Informace o připojení vašich vlastních modulů jsou zachovány v modulu IoT Edgeho agenta s dvojitou platností. Modul, který je pro váš vlastní modul, se využije hlavně k údržbě dat pro vaše řešení. Požadované vlastnosti, které jste definovali v deployment.jssouboru, se projeví v modulu s dvojitou platností a váš modul může podle potřeby aktualizovat hlášené hodnoty vlastností.
 
 Pomocí sady [SDK pro zařízení Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) můžete použít preferovaný programovací jazyk k aktualizaci hlášených hodnot vlastností v modulu, a to na základě kódu aplikace vašeho modulu. Následující postup používá k tomu sadu Azure SDK pro .NET, která používá kód z modulu [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) :
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259469"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Popište Cluster Service Fabric pomocí Správce prostředků clusteru.
@@ -237,7 +236,7 @@ Pokud je v předchozím rozložení hodnota **TargetReplicaSetSize** 5 a N1 z cl
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |– |– |– |– |– |– |
+| **UD0** |Není k dispozici |Není k dispozici |Není k dispozici |Není k dispozici |Není k dispozici |Není k dispozici |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -247,7 +246,7 @@ Pokud je v předchozím rozložení hodnota **TargetReplicaSetSize** 5 a N1 z cl
 ## <a name="configuring-fault-and-upgrade-domains"></a>Konfigurace domén selhání a upgradu
 V nasazeních Service Fabric hostovaných v Azure se domény selhání a domény pro upgrade automaticky definují. Service Fabric vybere a použije informace o prostředí z Azure.
 
-Pokud vytváříte vlastní cluster (nebo chcete spustit konkrétní topologii ve vývoji), můžete zadat doménu selhání a informace o upgradu domény sami. V tomto příkladu definujeme místní vývojový cluster s devíti uzly, který zahrnuje tři datová centra (každý se třemi racky). Tento cluster má také tři domény upgradu, které jsou rozloženy v těchto třech datových centrech. Tady je příklad konfigurace v souboru manifestem clusteru. XML:
+Pokud vytváříte vlastní cluster (nebo chcete spustit konkrétní topologii ve vývoji), můžete zadat doménu selhání a informace o upgradu domény sami. V tomto příkladu definujeme místní vývojový cluster s devíti uzly, který zahrnuje tři datová centra (každý se třemi racky). Tento cluster má také tři domény upgradu, které jsou rozloženy v těchto třech datových centrech. Tady je příklad konfigurace v ClusterManifest.xml:
 
 ```xml
   <Infrastructure>
@@ -268,7 +267,7 @@ Pokud vytváříte vlastní cluster (nebo chcete spustit konkrétní topologii v
   </Infrastructure>
 ```
 
-Tento příklad používá ClusterConfig. JSON pro samostatná nasazení:
+Tento příklad používá ClusterConfig.jsv pro samostatná nasazení:
 
 ```json
 "nodes": [
@@ -375,7 +374,7 @@ Hodnota zadaná ve vlastnosti node může být řetězec, logická hodnota nebo 
 
 * Podmíněné kontroly pro vytváření konkrétních příkazů:
 
-  | Příkaz | Syntaxe |
+  | Příkaz | Syntax |
   | --- |:---:|
   | rovná se | "==" |
   | "nerovná se" | "!=" |
@@ -386,7 +385,7 @@ Hodnota zadaná ve vlastnosti node může být řetězec, logická hodnota nebo 
 
 * Logické příkazy pro seskupování a logické operace:
 
-  | Příkaz | Syntaxe |
+  | Příkaz | Syntax |
   | --- |:---:|
   | ani | "&&" |
   | ani | "&#124;&#124;" |
@@ -401,7 +400,7 @@ Tady je několik příkladů základních příkazů omezení:
 
 V případě, že je vyhodnocena jako "true", může být služba umístěna pouze v uzlech, kde je uvedena celková hodnota omezení umístění. Uzly, které nemají definovanou vlastnost, neodpovídají žádnému omezení umístění, které obsahuje vlastnost.
 
-Řekněme, že následující vlastnosti uzlu byly definovány pro typ uzlu v souboru manifestem clusteru. XML:
+Řekněme, že následující vlastnosti uzlu byly definovány pro typ uzlu v ClusterManifest.xml:
 
 ```xml
     <NodeType Name="NodeType01">
@@ -413,7 +412,7 @@ V případě, že je vyhodnocena jako "true", může být služba umístěna pou
     </NodeType>
 ```
 
-Následující příklad ukazuje vlastnosti uzlu definované pomocí ClusterConfig. JSON pro samostatná nasazení nebo Template. JSON pro clustery hostované v Azure. 
+Následující příklad ukazuje vlastnosti uzlu definované pomocí ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě clusterů hostovaných v Azure. 
 
 > [!NOTE]
 > V šabloně Azure Resource Manager je typ uzlu obvykle parametrizovaný. Vypadá to `"[parameters('vmNodeType1Name')]"` spíše než NodeType01.
@@ -505,7 +504,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-Můžete zobrazit kapacity definované v manifestu clusteru. Zde je příklad pro manifestem clusteru. XML:
+Můžete zobrazit kapacity definované v manifestu clusteru. Tady je příklad pro ClusterManifest.xml:
 
 ```xml
     <NodeType Name="NodeType03">
@@ -515,7 +514,7 @@ Můžete zobrazit kapacity definované v manifestu clusteru. Zde je příklad pr
     </NodeType>
 ```
 
-Tady je příklad kapacit definovaných pomocí ClusterConfig. JSON pro samostatná nasazení nebo Template. JSON pro clustery hostované v Azure: 
+Tady je příklad kapacit definovaných prostřednictvím ClusterConfig.jspro samostatné nasazení nebo Template.jsv případě clusterů hostovaných v Azure: 
 
 ```json
 "nodeTypes": [
@@ -548,7 +547,7 @@ Kapacita ve vyrovnávací paměti je další funkcí Správce prostředků clust
 
 Kapacita vyrovnávací paměti je určena globálně pro každou metriku pro všechny uzly. Hodnota, kterou vyberete pro rezervovanou kapacitu, je funkce počtu domén selhání a upgradu, které máte v clusteru. Čím více domén se selháním a upgradem znamená, že můžete vybrat nižší číslo pro svou kapacitu ve vyrovnávací paměti. Pokud máte více domén, můžete očekávat, že menší objemy clusteru nebudou během upgradů a selhání k dispozici. Určení kapacity s vyrovnávací pamětí dává smysl jenom v případě, že jste pro metriku zadali také kapacitu uzlu.
 
-Tady je příklad, jak určit kapacitu ve vyrovnávací paměti v souboru manifestem clusteru. XML:
+Tady je příklad, jak určit kapacitu ve vyrovnávací paměti v ClusterManifest.xml:
 
 ```xml
         <Section Name="NodeBufferPercentage">
@@ -557,7 +556,7 @@ Tady je příklad, jak určit kapacitu ve vyrovnávací paměti v souboru manife
         </Section>
 ```
 
-Tady je příklad, jak určit kapacitu vyrovnávací paměti pomocí ClusterConfig. JSON pro samostatná nasazení nebo Template. JSON pro clustery hostované v Azure:
+Tady je příklad, jak určit kapacitu s vyrovnávací pamětí prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě clusterů hostovaných v Azure:
 
 ```json
 "fabricSettings": [

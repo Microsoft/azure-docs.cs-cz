@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204187"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Co je režim pouze pro sestavy podmíněného přístupu?
@@ -38,7 +37,7 @@ Režim pouze pro sestavy je nový stav zásad podmíněného přístupu, který 
 
 Pokud je pro dané přihlášení vyhodnocena zásada v režimu pouze sestavy, existují čtyři nové možné hodnoty výsledků:
 
-| Výsledek | Popis |
+| Výsledek | Description |
 | --- | --- |
 | Pouze sestava: úspěch | Všechny nakonfigurované podmínky zásad, vyžadované neinteraktivní ovládací prvky grantu a ovládací prvky relace byly splněné. Například požadavek služby Multi-Factor Authentication je spokojen deklarací MFA, která už je v tokenu přítomná, nebo se na zařízení, které dodržuje předpisy, vyhovět zásadám zařízení, které dodržuje předpisy. |
 | Pouze sestava: Chyba | Všechny nakonfigurované podmínky zásad byly splněny, ale nebyly splněny všechny požadované ovládací prvky pro udělení neinteraktivního udělení nebo řízení relace. Například zásada platí pro uživatele, kde je nakonfigurovaný ovládací prvek blokování, nebo zařízení nesplňuje požadavky zásad zařízení. |

@@ -10,17 +10,16 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: c4da73e3197df894a0726556b4e92141818a520e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233074"
 ---
 # <a name="sysexternal_streaming_jobs-transact-sql"></a>sys. external_streaming_jobs (Transact-SQL)
 
 Vrátí řádek pro každou externí úlohu streamování vytvořenou v rámci oboru databáze.
 
-|Název sloupce|Datový typ|Popis|  
+|Název sloupce|Datový typ|Description|  
 |-----------------|---------------|-----------------|
 |**Jméno**|**musí**|Název datového proudu. Je v rámci databáze jedinečný.|
 |**object_id**|**int**|identifikační číslo objektu pro objekt datového proudu. Je v rámci databáze jedinečný.|
@@ -29,8 +28,8 @@ Vrátí řádek pro každou externí úlohu streamování vytvořenou v rámci o
 |**parent_object_id**|**účet**| identifikační číslo objektu pro nadřazený objekt tohoto datového proudu. V aktuální implementaci je tato hodnota vždycky null.|
 |**textový**|**char (2)**|Typ objektu. U objektů Stream je typ vždycky "EJ".|
 |**type_desc**|**nvarchar (60)**| Popis typu objektu U objektů Stream je typ vždycky EXTERNAL_STREAMING_JOB.|
-|**create_date**|**hodnotu**| Datum, kdy byl objekt vytvořen.|
-|**modify_date**|**hodnotu**| V aktuální implementaci je tato hodnota stejná jako create_date objektu Stream. |
+|**create_date**|**datetime**| Datum, kdy byl objekt vytvořen.|
+|**modify_date**|**datetime**| V aktuální implementaci je tato hodnota stejná jako create_date objektu Stream. |
 |**is_ms_shipped**|**bit**| Objekt vytvořený interní komponentou.|  
 |**is_published**|**bit**| Objekt je publikovaný.|  
 |**is_schema_published**|**bit**|Je Publikováno pouze schéma objektu.|

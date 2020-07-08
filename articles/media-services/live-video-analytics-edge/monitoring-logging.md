@@ -4,10 +4,9 @@ description: Tento článek poskytuje přehled živé analýzy videí na IoT Edg
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261209"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
@@ -139,7 +138,7 @@ Události pocházejí z hraničního zařízení a můžou se spotřebovat na hr
 
 Každá událost, pokud je pozorována prostřednictvím IoT Hub, bude mít sadu společných vlastností, jak je popsáno níže.
 
-|Vlastnost   |Typ vlastnosti| Typ dat   |Popis|
+|Vlastnost   |Typ vlastnosti| Typ dat   |Description|
 |---|---|---|---|
 |ID zprávy |systém |guid|  Jedinečné ID události|
 |téma| applicationProperty |řetězec|    Azure Resource Manager cesta pro Media Services účet.|
@@ -180,7 +179,7 @@ Typy událostí jsou přiřazeny k oboru názvů podle následujícího schémat
 
 #### <a name="event-classes"></a>Třídy událostí
 
-|Název třídy|Popis|
+|Název třídy|Description|
 |---|---|
 |Analýzy  |Události generované jako součást analýzy obsahu|
 |Diagnostika    |Události, které pomáhají diagnostikovat problémy a výkon.|
@@ -198,7 +197,7 @@ Příklady:
 
 Čas události je popsán v ISO8601 String a v čase, kdy k události došlo.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues) na hraničním zařízení. Informace, které jsou zapsány v protokolech, mohou být řízeny [následujícími dvojitými vlastnostmi modulu](module-twin-configuration-schema.md) :
 

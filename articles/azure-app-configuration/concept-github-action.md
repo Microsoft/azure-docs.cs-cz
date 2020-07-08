@@ -7,10 +7,9 @@ ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197064"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synchronizovat úložiště GitHub s konfigurací aplikace
@@ -209,11 +208,11 @@ jobs:
 ```
 
 ## <a name="use-azure-key-vault-with-github-action"></a>Použití Azure Key Vault s akcí GitHubu
-Vývojáři, kteří používají Azure Key Vault s AppConfiguration, by měli používat dva samostatné soubory, obvykle appSettings. JSON a secretreferences. JSON. Secretreferences. JSON bude obsahovat adresu URL tajného klíče trezoru klíčů.
+Vývojáři, kteří používají Azure Key Vault s AppConfiguration, by měli používat dva samostatné soubory, obvykle appsettings.jsa secretreferences.jsna. secretreferences.jsna bude obsahovat adresu URL tajného klíče trezoru klíčů.
 
 {"mySecret": "{ \" URI \" :" \" https://myKeyVault.vault.azure.net/secrets/mySecret } "}
 
-Akci GitHubu je pak možné nakonfigurovat tak, aby provedla striktní synchronizaci v souboru appSettings. JSON a za ní následovala nestriktní synchronizace na secretreferences. JSON. Následující ukázka spustí synchronizaci, je-li soubor aktualizován:
+Akce GitHubu se pak dá nakonfigurovat tak, aby se na appsettings.jsna, a po secretreferences.jsnestriktní synchronizaci na systému nakonfigurovala striktní synchronizace. Následující ukázka spustí synchronizaci, je-li soubor aktualizován:
 
 ```json
 on:
@@ -308,10 +307,10 @@ Vstupní parametry určují data, která akce používá během běhu.  Následu
 
 | Název vstupu | Povinné? | Hodnota |
 |----|----|----|
-| configurationFile | Ano | Relativní cesta ke konfiguračnímu souboru v úložišti  Jsou podporovány vzory glob a mohou obsahovat více souborů. |
-| formát | Ano | Formát souboru konfiguračního souboru.  Platné formáty jsou: JSON, YAML, Properties. |
-| připojovací řetězec | Ano | Připojovací řetězec pro instanci konfigurace aplikace Připojovací řetězec by měl být uložen jako tajný klíč v úložišti GitHub a v pracovním postupu by měl být použit pouze tajný název. |
-| oddělování | Ano | Oddělovač použitý při sloučení konfiguračního souboru na páry klíč-hodnota.  Platné hodnoty jsou:. , ; : - _ __ / |
+| configurationFile | Yes | Relativní cesta ke konfiguračnímu souboru v úložišti  Jsou podporovány vzory glob a mohou obsahovat více souborů. |
+| formát | Yes | Formát souboru konfiguračního souboru.  Platné formáty jsou: JSON, YAML, Properties. |
+| připojovací řetězec | Yes | Připojovací řetězec pro instanci konfigurace aplikace Připojovací řetězec by měl být uložen jako tajný klíč v úložišti GitHub a v pracovním postupu by měl být použit pouze tajný název. |
+| oddělování | Yes | Oddělovač použitý při sloučení konfiguračního souboru na páry klíč-hodnota.  Platné hodnoty jsou:. , ; : - _ __ / |
 | směr | No | Předpona, která se má přidat na začátek klíčů |
 | label | No | Popisek použitý při nastavování párů klíč-hodnota Je-li tento parametr zadán, je použit popisek s hodnotou null. |
 | přísné | No | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je False. |

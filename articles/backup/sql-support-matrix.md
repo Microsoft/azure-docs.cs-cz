@@ -4,10 +4,9 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování S
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234253"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure

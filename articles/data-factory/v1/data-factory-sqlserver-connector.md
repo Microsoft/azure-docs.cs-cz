@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195926"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Přesun dat do a z SQL Server pomocí Azure Data Factory
@@ -76,9 +75,9 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro SQL Server p
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| typ |Vlastnost Type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
-| připojovací řetězec |Zadejte informace připojovacího řetězce potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. |Ano |
-| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k databázi SQL Server. |Ano |
+| typ |Vlastnost Type by měla být nastavená na: **OnPremisesSqlServer**. |Yes |
+| připojovací řetězec |Zadejte informace připojovacího řetězce potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. |Yes |
+| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k databázi SQL Server. |Yes |
 | uživatelské jméno |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příklad: **DomainName \\ uživatelské_jméno**. |No |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |No |
 
@@ -133,7 +132,7 @@ Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informa
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| tableName |Název tabulky nebo zobrazení v instanci databáze SQL Server, na kterou odkazuje propojená služba |Ano |
+| tableName |Název tabulky nebo zobrazení v instanci databáze SQL Server, na kterou odkazuje propojená služba |Yes |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Pokud přesouváte data z databáze SQL Server, nastavíte typ zdroje v aktivitě kopírování na **SqlSource**. Podobně Pokud přesouváte data do databáze SQL Server, nastavíte typ jímky v aktivitě kopírování na **SqlSink**. V této části najdete seznam vlastností podporovaných SqlSource a SqlSink.
@@ -671,7 +670,7 @@ Mapování je stejné jako SQL Server mapování datových typů pro ADO.NET.
 | ntext |Řetězec, znak [] |
 | numerické |Desetinné číslo |
 | nvarchar |Řetězec, znak [] |
-| real |Single |
+| real |Jeden |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

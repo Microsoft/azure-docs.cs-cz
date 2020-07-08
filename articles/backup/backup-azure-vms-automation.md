@@ -4,10 +4,9 @@ description: Popisuje postup zálohování a obnovení virtuálních počítač�
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 4b869b24392fa597f752992fb65de46785117618
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234709"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu
@@ -489,7 +488,7 @@ Zadejte další parametr **TargetResourceGroupName** a určete tak RG, na které
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
 
-Soubor **VMConfig. JSON** se obnoví do účtu úložiště a spravované disky se obnoví do zadaného cílového RG.
+**VMConfig.JSv** souboru se obnoví do účtu úložiště a spravované disky se obnoví do zadaného cílového RG.
 
 Výstup se podobá následujícímu příkladu:
 

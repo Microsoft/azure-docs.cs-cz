@@ -4,10 +4,9 @@ description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259214"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
@@ -39,7 +38,7 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 [Kumulativní aktualizace 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) poskytuje následující aktualizace:
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů, jak je popsáno v souhrnu.
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu.
@@ -50,7 +49,7 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 [Kumulativní aktualizace 45](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery) poskytuje následující aktualizace:
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů, jak je popsáno v souhrnu.
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu.
@@ -61,7 +60,7 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 [Kumulativní aktualizace 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Neexistovaly žádné aktualizace pro poskytovatele Site Recovery a agenty.
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu.
@@ -75,7 +74,7 @@ Virtuální počítače Azure teď podporují virtuální počítače, které um
 
 [Kumulativní aktualizace 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -87,7 +86,7 @@ Virtuální počítače Azure teď podporují virtuální počítače, které um
 
 [Kumulativní aktualizace 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -97,7 +96,7 @@ Virtuální počítače Azure teď podporují virtuální počítače, které um
 
 Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **UEFI** | Site Recovery teď podporuje zotavení po havárii pro virtuální počítače Azure pomocí architektury spouštění založené na rozhraní UEFI.
 **Linux** | Site Recovery teď podporuje virtuální počítače Azure se systémem Linux s Azure Disk Encryption (ADE).
@@ -108,7 +107,7 @@ Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shr
 
 Nové funkce pro zotavení po havárii z VMware do Azure jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **UEFI** | Site Recovery teď podporuje zotavení po havárii pro virtuální počítače VMware pomocí architektury spouštění založené na rozhraní UEFI.<br/><br/> Mezi podporované operační systémy patří Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, SLES 12 SP4, RHEL 8.
 
@@ -134,7 +133,7 @@ Pro zotavení po havárii virtuálních počítačů Azure do sekundární oblas
 
 [Kumulativní aktualizace 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -145,7 +144,7 @@ Pro zotavení po havárii virtuálních počítačů Azure do sekundární oblas
 
 Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Nastavení testovacího převzetí služeb při selhání** | Při nastavování testovacího převzetí služeb při selhání teď můžete nakonfigurovat nastavení pro virtuální počítač a síť testovacího převzetí služeb při selhání, včetně IP adresy, NSG, interního vyrovnávání zatížení a veřejné IP adresy pro každou síťovou kartu počítače. Tato nastavení jsou volitelná a nemění aktuální chování. Pokud tato nastavení nenakonfigurujete, můžete v době testování převzetí služeb při selhání zvolit virtuální síť Azure. [Další informace](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
 **Plány obnovení** | Plány obnovení jsou teď omezené na 100 virtuálních počítačů, aby se zajistila spolehlivost převzetí služeb při selhání.
@@ -154,7 +153,7 @@ Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shr
 
 Nové funkce pro zotavení po havárii z VMware do Azure jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Plány obnovení** | Plány obnovení jsou teď omezené na 100 virtuálních počítačů, aby se zajistila spolehlivost převzetí služeb při selhání.
 
@@ -165,7 +164,7 @@ Nové funkce pro zotavení po havárii z VMware do Azure jsou shrnuté v tabulce
 
 [Kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -177,7 +176,7 @@ Nové funkce pro zotavení po havárii z VMware do Azure jsou shrnuté v tabulce
 
 Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Vyčištění po navrácení služeb po obnovení** | Po převzetí služeb při selhání sekundárním Azure a následné navrácení služeb po obnovení do primární oblasti Site Recovery automaticky vyčistí počítače v sekundární oblasti. Nemusíte ručně odstraňovat virtuální počítače a síťové karty.
 **Testovací převzetí služeb při selhání zachovává IP adresu** | IP adresu zdrojového virtuálního počítače teď můžete zachovat během postupu zotavení po havárii a vybrat statickou IP adresu testovacího převzetí služeb při selhání.
@@ -186,7 +185,7 @@ Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shr
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 Výstrahy nového procesového serveru | Přidali jsme nové výstrahy procesového serveru. [Další informace](vmware-physical-azure-monitor-process-server.md).
 
@@ -194,7 +193,7 @@ Výstrahy nového procesového serveru | Přidali jsme nové výstrahy procesov�
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 Účet úložiště | Site Recovery teď podporuje použití účtů úložiště s bránou firewall povolenou pro zotavení po havárii Hyper-V do Azure.  Můžete vybrat účty úložiště s podporou brány firewall jako cílový účet nebo úložiště mezipaměti. Pokud používáte účet s povolenou bránou firewall, ujistěte se, že jste povolili možnost Povolit důvěryhodné služby společnosti Microsoft.<br/><br/> To je podporováno pro virtuální počítače Hyper-V s nástrojem System Center VMM nebo bez něj.
 
@@ -205,7 +204,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -215,7 +214,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Šifrování bez služby Azure AD** | Šifrování bez aplikace Azure AD se teď podporuje pro replikaci virtuálních počítačů Azure na spravované disky se systémem Windows.
 **Síťové prostředky pro převzetí služeb při selhání** | Při převzetí služeb při selhání do jiné oblasti teď můžete k virtuálnímu počítači připojit nastavení síťových prostředků (skupin zabezpečení sítě, Vyrovnávání zatížení, veřejné IP adresy).
@@ -226,7 +225,7 @@ Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shr
 
 [Kumulativní aktualizace 38](https://support.microsoft.com/help/4513507/) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -247,7 +246,7 @@ Při replikaci virtuálního počítače Azure se spravovanými disky teď můž
 
 [Kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -257,7 +256,7 @@ Při replikaci virtuálního počítače Azure se spravovanými disky teď můž
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Oddíly GPT** | Od kumulativní aktualizace 37 a vyšší (služba mobility verze 9.25.5241.1) je v rozhraní UEFI podporováno až pět oddílů GPT. Před touto aktualizací se podporovaly čtyři.
 
@@ -269,7 +268,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 36](https://support.microsoft.com/help/4503156) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -278,7 +277,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Replikace přidaných disků** | Povolte replikaci datových disků přidaných do virtuálního počítače Azure, který je už povolený pro zotavení po havárii. [Další informace](azure-to-azure-enable-replication-added-disk.md).
 **Automatické aktualizace** | Při konfiguraci automatických aktualizací pro rozšíření služby mobility, které běží na virtuálních počítačích Azure povolených pro zotavení po havárii, teď můžete vybrat existující účet Automation, který se má použít, místo použití výchozího účtu vytvořeného nástrojem Site Recovery. [Další informace](azure-to-azure-autoupdate.md).
@@ -288,7 +287,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Monitorování procesového serveru** | V případě zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů můžete monitorovat a řešit potíže s procesovým serverem pomocí vylepšeného generování sestav a upozornění na stav serveru. [Další informace](vmware-physical-azure-monitor-process-server.md).
 
@@ -302,7 +301,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu)
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
@@ -311,7 +310,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Spravované disky** | Replikace místních virtuálních počítačů VMware a fyzických serverů se teď přímo na spravované disky v Azure. Místní data se odesílají do účtu úložiště mezipaměti v Azure a body obnovení se vytvoří ve službě Managed disks v cílovém umístění. Tím zajistíte, že nepotřebujete spravovat víc cílových účtů úložiště.
 **Konfigurační server** | Site Recovery teď podporuje konfigurační servery s více síťovými kartami. Před registrací konfiguračního serveru v trezoru přidejte další adaptéry k virtuálnímu počítači konfiguračního serveru. Pokud přidáte později, budete muset Server v trezoru znovu zaregistrovat.
@@ -323,7 +322,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -333,7 +332,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -343,7 +342,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Mapování sítě** | Pro zotavení po havárii virtuálního počítače Azure teď můžete použít jakoukoli dostupnou cílovou síť, když povolíte replikaci.
 **SSD úrovně Standard** | Nyní můžete nastavit zotavení po havárii pro virtuální počítače Azure pomocí [SSD úrovně Standard disků](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
@@ -354,7 +353,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Systém souborů Linux BRTFS** | Site Recovery teď podporuje replikaci virtuálních počítačů VMware se systémem souborů BRTFS. Replikace není podporovaná, pokud:<br/><br/>– Po povolení replikace se změní dílčí svazek systému souborů BTRFS.<br/><br/>– Systém souborů je rozložen na více disků.<br/><br/>– Systém souborů BTRFS podporuje RAID.
 **Windows Server 2019** | Byla přidána podpora pro počítače se systémem Windows Server 2019.
@@ -373,7 +372,7 @@ Akcelerované síťové služby umožňují virtuálnímu počítači pomocí ro
 
 [Kumulativní aktualizace 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -382,7 +381,7 @@ Akcelerované síťové služby umožňují virtuálnímu počítači pomocí ro
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Přidala se podpora pro RedHat Workstation 6/7 a nové verze jádra pro Ubuntu, Debian a SUSE.
 **Prostory úložiště – přímé** | Site Recovery podporuje virtuální počítače Azure s využitím Prostory úložiště s přímým přístupem (S2D).
@@ -391,7 +390,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Přidala se podpora pro RedHat Enterprise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 a Oracle Linux 7,6 a nové verze jádra pro Ubuntu, Debian a SUSE.
 
@@ -400,7 +399,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) nabízí následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -409,7 +408,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** |  Byla přidána podpora pro Oracle Linux 6,8, Oracle Linux 6,9 a Oracle Linux 7,0 s jádrem kompatibilním s Red Hat a pro UEK (Enterprise kernel kernel) verze 5.
 **LVM** | Byla přidána podpora pro LVM a LVM2 svazky.<br/><br/> Je teď podporovaný adresář/Boot na diskovém oddílu a na svazcích LVM.
@@ -422,7 +421,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Byla přidána podpora pro Oracle Linux 6,8, Oracle Linux 6,9 a Oracle Linux 7,0 s jádrem kompatibilním s Red Hat a pro UEK (Enterprise kernel kernel) verze 5.
 **Systém souborů Linux BRTFS** | Podporováno pro virtuální počítače Azure.
@@ -455,7 +454,7 @@ Zotavení po havárii virtuálních počítačů Azure má za následek náklady
 
 [Kumulativní aktualizace 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -463,7 +462,7 @@ Zotavení po havárii virtuálních počítačů Azure má za následek náklady
 ### <a name="azure-vm-disaster-recovery"></a>Zotavení po havárii virtuálního počítače Azure
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora oblastí** | Přibyla Site Recovery podpora pro Austrálie – střed 1 a Austrálie – střed 2.
 **Podpora pro šifrování disků** | Byla přidána podpora pro zotavení po havárii virtuálních počítačů Azure šifrovaných pomocí Azure Disk Encryption (ADE) s aplikací Azure AD. [Další informace](azure-to-azure-how-to-enable-replication-ade-vms.md).
@@ -475,7 +474,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -487,7 +486,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) poskytuje následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -495,7 +494,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 ### <a name="azure-vm-disaster-recovery"></a>Zotavení po havárii virtuálního počítače Azure
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Přidáno podporováno pro RedHat Enterprise Linux 6,10; CentOS 6,10.<br/><br/>
 **Cloudová podpora** | Podporované zotavení po havárii pro virtuální počítače Azure v německém cloudu.
@@ -504,7 +503,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 ### <a name="vmware-vmphysical-server-disaster-recovery"></a>Zotavení po havárii virtuálního počítače VMware/fyzického serveru
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Byla přidána podpora pro RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Virtuální počítače se systémem Linux, které používají styl oddílu tabulka oddílů GUID (GPT) v režimu kompatibility se starším systémem BIOS, jsou nyní podporovány. Další informace najdete v tématu [Nejčastější dotazy k virtuálním počítačům Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) .
 **Zotavení po havárii pro virtuální počítače po migraci** | Podpora pro povolení zotavení po havárii do sekundární oblasti pro místní virtuální počítač VMware migrované do Azure, aniž byste před povolením replikace museli odinstalovat službu mobility na virtuálním počítači.
@@ -516,7 +515,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 [Kumulativní aktualizace 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) nabízí následující aktualizace.
 
-**Aktualizace** | **Zobrazí**
+**Aktualizace** | **Podrobnosti**
 --- | ---
 **Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu).
@@ -525,7 +524,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Byla přidána podpora pro Red Hat Enterprise Linux 7,5.
 
@@ -533,7 +532,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Podpora Linuxu** | Byla přidána podpora pro Red Hat Enterprise Linux 7,5 SUSE Linux Enterprise Server 12.
 

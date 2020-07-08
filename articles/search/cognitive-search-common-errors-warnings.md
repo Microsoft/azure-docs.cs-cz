@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221317"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
@@ -34,7 +33,7 @@ Počínaje verzí rozhraní API `2019-05-06` jsou chyby a upozornění indexerů
 
 | Vlastnost | Popis | Příklad |
 | --- | --- | --- |
-| Klíč | ID dokumentu dokumentu ovlivněného chybou nebo upozorněním. | https: \/ /coromsearch.blob.Core.Windows.NET/JFK-1k/docid-32112954.PDF |
+| key | ID dokumentu dokumentu ovlivněného chybou nebo upozorněním. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Název operace popisující, kde došlo k chybě nebo upozornění. Tato struktura je generována následující strukturou: [Category]. [Subcategory]. [ResourceType]. resourceName | DocumentExtraction. azureblobu. myBlobContainerName obohacení. WebApiSkill. mySkillName projekce. SearchIndex. OutputFieldMapping. myOutputFieldName projekce. SearchIndex. MergeOrUpload. myIndexName projekce. KnowledgeStore. Table. myTableName |
 | zpráva | Popis chyby nebo varování na nejvyšší úrovni. | Nelze provést dovednost, protože požadavek webového rozhraní API se nezdařil. |
 | zobrazí | Jakékoli další podrobnosti, které mohou být užitečné při diagnostice problému, jako je například odpověď WebApi při provádění vlastní dovednosti, se nezdařila. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 zdroj, Func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... zbytek trasování zásobníku... |
@@ -334,7 +333,7 @@ Mapování polí výstupu, které odkazují na neexistující nebo null data, vy
 
 [Režimy analýzy indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) musí před analýzou zjistit, jak je text kódovaný. Dvěma nejběžnějšími způsoby kódování textu jsou UTF-16 a UTF-8. UTF-8 je kódování s proměnlivou délkou, kde každý znak je dlouhý 1 bajt a 4 bajty. UTF-16 je kódování s pevnou délkou, kde každý znak je dlouhý 2 bajty. UTF-16 má dvě různé varianty, "big endian" a "Little endian". Kódování textu je určeno označením "znak pořadí bajtů", řady bajtů před textem.
 
-| Kódování | Znak pořadí bajtů |
+| Encoding | Znak pořadí bajtů |
 | --- | --- |
 | UTF-16 big endian | 0xFE 0xFF |
 | UTF-16 Little endian | 0xFF – 0xFE |

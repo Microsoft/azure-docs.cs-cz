@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234693"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
@@ -31,7 +30,7 @@ Cluster Service Fabric v Azure je prostředek Azure, který používá a komunik
 ![Cluster Service Fabric][Image]
 
 ### <a name="virtual-machine"></a>Virtuální počítač
-[Virtuální počítač](/azure/virtual-machines/) , který je součástí clusteru, se nazývá uzel, i když je technicky, uzel clusteru je proces Service Fabric runtime. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako jsou [vlastnosti umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Každý počítač nebo virtuální počítač má automaticky spuštěnou službu *hostitele fabrichost vrátilo. exe*, která spouští při spuštění a potom spustí dva spustitelné soubory, *Fabric. exe* a *FabricGateway. exe*, které tvoří uzel. Produkční nasazení je jedním uzlem na fyzický nebo virtuální počítač. V případě testovacích scénářů můžete hostovat více uzlů na jednom počítači nebo VIRTUÁLNÍm počítači spuštěním několika instancí *Fabric. exe* a *FabricGateway. exe*.
+[Virtuální počítač](/azure/virtual-machines/) , který je součástí clusteru, se nazývá uzel, i když je technicky, uzel clusteru je proces Service Fabric runtime. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako jsou [vlastnosti umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Každý počítač nebo virtuální počítač má automaticky spuštěnou službu, *FabricHost.exe*, která spouští při spuštění, a potom spustí dva spustitelné soubory, *Fabric.exe* a *FabricGateway.exe*, které tvoří uzel. Produkční nasazení je jedním uzlem na fyzický nebo virtuální počítač. V případě testovacích scénářů můžete hostovat více uzlů na jednom počítači nebo VIRTUÁLNÍm počítači spuštěním více instancí *Fabric.exe* a *FabricGateway.exe*.
 
 Každý virtuální počítač je přidružen k virtuální síťové kartě (NIC) a každé síťové kartě je přiřazena privátní IP adresa.  Virtuální počítač je přiřazený k virtuální síti a místnímu nástroji pro vyrovnávání zatížení prostřednictvím síťového rozhraní.
 
@@ -47,7 +46,7 @@ Sady škálování můžete použít k nasazení a správě kolekce virtuálníc
 
 Další informace najdete v [Service Fabric typech uzlů a virtuálních počítačů Scale Sets](service-fabric-cluster-nodetypes.md).
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 Instance virtuálních počítačů jsou připojené za [Nástroj pro vyrovnávání zatížení Azure](/azure/load-balancer/load-balancer-overview), který je přidružený k [veřejné IP adrese](../virtual-network/public-ip-addresses.md) a popisku DNS.  Když zřizujete cluster s názvem * &lt; &gt; název_clusteru*, název DNS, * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com* je popisek DNS přidružený k nástroji pro vyrovnávání zatížení před nastavenou stupnicí.
 
 Virtuální počítače v clusteru mají jenom [privátní IP adresy](../virtual-network/private-ip-addresses.md).  Provoz správy a provoz služeb jsou směrovány prostřednictvím veřejného nástroje pro vyrovnávání zatížení.  Síťový provoz se směruje na tyto počítače prostřednictvím pravidel NAT (klienti se připojují ke konkrétním uzlům/instancím) nebo pravidel vyrovnávání zatížení (provoz směřuje do virtuálních počítačů kruhového dotazování).  Nástroj pro vyrovnávání zatížení má přidruženou veřejnou IP adresu s názvem DNS ve formátu: * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Veřejná IP adresa je další prostředek Azure ve skupině prostředků.  Pokud v clusteru definujete více typů uzlů, vytvoří se nástroj pro vyrovnávání zatížení pro každou sadu typů nebo škálování uzlu. Nebo můžete nastavit jeden nástroj pro vyrovnávání zatížení pro více typů uzlů.  Typ primárního uzlu má název * &lt; klastru DNS &gt; . &lt; Location &gt; . cloudapp.Azure.com*, jiné typy uzlů mají název clusteru DNS * &lt; &gt; - &lt; NodeType &gt; . &lt; Location &gt; . cloudapp.Azure.com*.

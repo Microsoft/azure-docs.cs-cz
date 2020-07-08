@@ -8,10 +8,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248732"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Konektor protokolů Azure Monitor pro Logic Apps a flow
@@ -35,7 +34,7 @@ Následující tabulka popisuje akce, které jsou součástí konektoru protokol
 > Konektor Azure Monitor logs nahrazuje konektor [azure Log Analytics](https://docs.microsoft.com/connectors/azureloganalytics/) a [konektor Azure Application Insights](https://docs.microsoft.com/connectors/applicationinsights/). Tento konektor nabízí stejné funkce jako ostatní a je upřednostňovanou metodou pro spuštění dotazu na Log Analytics pracovní prostor nebo aplikaci Application Insights.
 
 
-| Akce | Popis |
+| Akce | Description |
 |:---|:---|
 | [Spustit dotaz a výsledky seznamu](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Vrátí každý řádek jako svůj vlastní objekt. Tuto akci použijte, pokud chcete s každým řádkem pracovat samostatně ve zbývající části pracovního postupu. Tato akce obvykle následuje za [každou aktivitou](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop). |
 | [Spuštění dotazu a vizualizace výsledků](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Vrátí všechny řádky v sadě výsledků dotazu jako jeden formátovaný objekt. Tuto akci použijte, pokud chcete použít sadu výsledků ve zbývající části pracovního postupu, například odeslání výsledků do e-mailu.  |

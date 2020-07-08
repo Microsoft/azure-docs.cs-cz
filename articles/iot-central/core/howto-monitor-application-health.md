@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84249575"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Monitorování celkového stavu zařízení připojených k aplikaci IoT Central
@@ -43,7 +42,7 @@ Přístup k metrikám v Azure Portal spravuje [řízení přístupu na základě
 
 Následující tabulka popisuje metriky, které jsou aktuálně k dispozici pro IoT Central:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace | Popis |
+| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace | Description |
 |--------|---------------------|------|------------------|-------------|
 | connectedDeviceCount         | Celkem připojených zařízení                              | Počet  | Celkem             | Počet zařízení připojených k IoT Central                               |
 | C2D. Property. Read. Success    | Úspěšné čtení vlastností zařízení z IoT Central    | Počet  | Celkem             | Počet všech úspěšných čtení vlastností zahájených z IoT Central    |

@@ -1,5 +1,5 @@
 ---
-title: Správa a monitorování aplikací s využitím pružinového spouštěcího úložiště v Azure
+title: Správa a monitorování aplikací s využitím ovladače Azure Spring Boot
 description: Naučte se spravovat a monitorovat aplikace pomocí jarního spouštěcího válce.
 author: MikeDodaro
 ms.author: brendm
@@ -7,13 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84206006"
 ---
-# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Správa a monitorování aplikací s využitím pružinového spouštěcího úložiště v Azure
+# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Správa a monitorování aplikací s využitím ovladače Azure Spring Boot
 
 Po nasazení nového binárního souboru do aplikace budete možná chtít zjistit funkčnost a zobrazit informace o spuštěné aplikaci. Tento článek vysvětluje, jak získat přístup k rozhraní API z testovacího koncového bodu, který poskytuje Azure jarní Cloud, a zpřístupňuje funkce připravené pro produkční prostředí pro vaši aplikaci.
 

@@ -10,10 +10,9 @@ ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
 ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84232814"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště
@@ -103,7 +102,7 @@ V závislosti na připojení k síti a velikosti souboru VHD může dokončení 
 
 Virtuální pevný disk můžete zkopírovat do jiného účtu úložiště, abyste ho mohli použít při vytváření nového duplicitního virtuálního počítače.
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 Ujistěte se, že:
 
 * Obsahuje informace o **zdrojovém a cílovém účtu úložiště**. Pro zdrojový virtuální počítač je potřeba mít účet úložiště a názvy kontejnerů. Název kontejneru bude obvykle **VHD**. Musíte mít také cílový účet úložiště. Pokud ho ještě nemáte, můžete ho vytvořit buď pomocí portálu (**všechny služby** > účty úložiště > přidat), nebo pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) . 
@@ -179,7 +178,7 @@ Transfer failed:         0
 Elapsed time:            00.00:13:07
 ```
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 * Pokud se při použití AZCopy zobrazí chyba "Server selhal při ověření žádosti", ujistěte se, že je hodnota autorizační hlavičky správně vytvořená, včetně signatury. Pokud používáte klíč 2 nebo sekundární klíč úložiště, zkuste použít primární nebo první klíč úložiště.
 
 ## <a name="create-the-new-vm"></a>Vytvoření nového virtuálního počítače 

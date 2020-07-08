@@ -4,10 +4,9 @@ description: Live video Analytics na IoT Edge zveřejňuje několik přímých m
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261370"
 ---
 # <a name="direct-methods"></a>Přímé metody
@@ -98,7 +97,7 @@ Podrobná Chyba při ověřování, jako jsou třeba ověřování modulu grafu,
 }
 ```
 
-|Status|    Podrobný kód   |Popis|
+|Status|    Podrobný kód   |Description|
 |---|---|---|
 |400|   GraphValidationError|   Obecné chyby grafu, jako jsou cykly nebo dělení na oddíly atd.|
 |400|   ModuleValidationError|  Chyby ověřování specifické pro modul|
@@ -142,7 +141,7 @@ Tato přímá metoda načte jednu topologii grafu.
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Entita se našla|  200 |–
+|Entita se našla|  200 |Není k dispozici
 |Obecné chyby uživatele    |Rozsah 400  ||
 |Entita se nenašla.   |404        ||
 |Obecné chyby serveru| Rozsah 500       ||
@@ -193,8 +192,8 @@ Klíčové aspekty:
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-Existující entita se aktualizovala. |200|   –|
-Vytvořila se nová entita.  |201|   –|
+Existující entita se aktualizovala. |200|   Není k dispozici|
+Vytvořila se nová entita.  |201|   Není k dispozici|
 Obecné chyby uživatele |Rozsah 400  ||
 Chyby ověřování grafu |400    |GraphValidationError|
 Chyby ověřování modulu|   400 |ModuleValidationError|
@@ -229,8 +228,8 @@ Odstraní jednu topologii grafu.
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Entita se odstranila|    200|    –|
-|Entita se nenašla.|  204|    –|
+|Entita se odstranila|    200|    Není k dispozici|
+|Entita se nenašla.|  204|    Není k dispozici|
 |Obecné chyby uživatele|   Rozsah 400   ||
 |Na topologii grafu odkazuje jedna nebo více instancí grafu.| 409 |GraphTopologyInUse|
 |Obecné chyby serveru| Rozsah 500   ||
@@ -287,7 +286,7 @@ Načte seznam všech topologií grafu, které odpovídají kritériím filtru.
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Úspěch|   200 |–|
+|Úspěch|   200 |Není k dispozici|
 |Obecné chyby uživatele|   Rozsah 400   ||
 |Obecné chyby serveru| Rozsah 500   ||
 
@@ -325,7 +324,7 @@ Načte jednu instanci grafu:
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Entita se našla   |200|   –|
+|Entita se našla   |200|   Není k dispozici|
 |Obecné chyby uživatele|   Rozsah 400   ||
 |Entita se nenašla.|  404 ||
 |Obecné chyby serveru| Rozsah 500   ||
@@ -375,8 +374,8 @@ Klíčové aspekty:
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Existující entita se aktualizovala.    |200    |–|
-|Vytvořila se nová entita.|    201 |–|
+|Existující entita se aktualizovala.    |200    |Není k dispozici|
+|Vytvořila se nová entita.|    201 |Není k dispozici|
 |Obecné chyby uživatele|   Rozsah 400   ||
 |Chyby ověřování grafu    |400|   GraphValidationError|
 |Chyby ověřování modulu|  400 |ModuleValidationError|
@@ -416,8 +415,8 @@ Klíčové aspekty:
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Graf se úspěšně odstranil.|    200|    –|
-|Graf se nenašel.|   204|    –|
+|Graf se úspěšně odstranil.|    200|    Není k dispozici|
+|Graf se nenašel.|   204|    Není k dispozici|
 |Obecné chyby uživatele    |Rozsah 400  ||
 |Graf není ve stavu Zastaveno.    |409    |OperationNotAllowedInState|
 |Obecné chyby serveru| Rozsah 500   ||
@@ -474,7 +473,7 @@ Načte seznam všech instancí grafů, které odpovídají kritériím filtru.
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Úspěch    |200    |–|
+|Úspěch    |200    |Není k dispozici|
 |Obecné chyby uživatele|   Rozsah 400   ||
 |Obecné chyby serveru| Rozsah 500   ||
 
@@ -518,8 +517,8 @@ Klíčové aspekty
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Graf se úspěšně aktivoval.   |200    |–|
-|Vytvořila se nová entita. |201|   –|
+|Graf se úspěšně aktivoval.   |200    |Není k dispozici|
+|Vytvořila se nová entita. |201|   Není k dispozici|
 |Obecné chyby uživatele    |Rozsah 400  ||
 |Chyby ověřování modulu   |400|   ModuleValidationError|
 |Chyby ověřování prostředků|    409|    ResourceValidationError|
@@ -567,8 +566,8 @@ Klíčové aspekty:
 
 |Podmínka  |Stavový kód    |Podrobný kód chyby|
 |---|---|---|
-|Graf se úspěšně aktivoval.   |200|   –|
-|Vytvořila se nová entita. |201|   –|
+|Graf se úspěšně aktivoval.   |200|   Není k dispozici|
+|Vytvořila se nová entita. |201|   Není k dispozici|
 |Obecné chyby uživatele    |Rozsah 400  ||
 |Graf je ve stavu aktivace   |409|   OperationNotAllowedInState|
 |Obecné chyby serveru  |Rozsah 500  ||

@@ -4,13 +4,12 @@ description: Nahrávání videa založeného na událostech (EVR) se týká proc
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 0a6f7ca4233c195c7494fc6f63e7dfb5bf654c17
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261328"
 ---
-# <a name="event-based-video-recording"></a>Nahrávání videa založeného na událostech  
+# <a name="event-based-video-recording"></a>Nahrávání videa na základě událostí  
  
 ## <a name="suggested-pre-reading"></a>Navrhované před čtením  
 

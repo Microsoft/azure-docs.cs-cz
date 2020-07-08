@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220134"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
@@ -63,25 +62,25 @@ azcopy copy [source] [destination] [flags]
 
 Nahrajte jeden soubor pomocí ověřování OAuth. Pokud jste ještě přihlášeni k AzCopy, spusťte prosím příkaz AzCopy Login před spuštěním následujícího příkazu.
 
-- AzCopy CP "/path/to/File.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]"
+- AzCopy CP "/path/to/file.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]"
 
 Stejné jako výše, ale tentokrát také vypočítat hodnotu hash MD5 obsahu souboru a uložit ji jako vlastnost content-MD5 objektu BLOB:
 
-- AzCopy CP "/path/to/File.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]"--Put-MD5
+- AzCopy CP "/path/to/file.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]"--Put-MD5
 
 Odeslat jeden soubor pomocí tokenu SAS:
 
-- AzCopy CP "/path/to/File.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]? [SAS] "
+- AzCopy CP "/path/to/file.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]? [SAS] "
 
 Odeslat jeden soubor pomocí tokenu SAS a potrubního (pouze objekty blob bloku):
   
-- Cat "/path/to/File.txt" | AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "
+- Cat "/path/to/file.txt" | AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "
 
 Nahrajte celý adresář pomocí tokenu SAS:
   
 - AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
-or
+nebo
 
 - AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true--Put-MD5
 
@@ -95,15 +94,15 @@ Nahrávání souborů a adresářů pomocí tokenu SAS a zástupných znaků (*)
 
 Stažení jednoho souboru pomocí ověřování OAuth. Pokud jste ještě přihlášeni k AzCopy, spusťte prosím příkaz AzCopy Login před spuštěním následujícího příkazu.
 
-- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]" "/path/to/File.txt"
+- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]" "/path/to/file.txt"
 
 Stažení jednoho souboru pomocí tokenu SAS:
 
-- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] ""/path/to/File.txt "
+- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] ""/path/to/file.txt "
 
 Stažení jednoho souboru pomocí tokenu SAS a následného zřetězení výstupu do souboru (pouze objekty blob bloku):
   
-- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] ">"/path/to/File.txt "
+- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] ">"/path/to/file.txt "
 
 Stáhněte si celý adresář pomocí tokenu SAS:
   
@@ -197,7 +196,7 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--Exclude – řetězec typu BLOB** volitelně určuje typ objektu BLOB (BlockBlob/PageBlob/AppendBlob), který se má vyloučit při kopírování objektů BLOB z kontejneru nebo účtu. Použití tohoto příznaku se nedá použít pro kopírování dat ze služby mimo Azure. Více než jeden objekt BLOB by měl být oddělený středníkem (;).
 
-**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
+**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/file.pdf). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
 
 **--vyloučit-vzor** řetězec vyloučí tyto soubory při kopírování. Tato možnost podporuje zástupné znaky (*).
 
@@ -209,7 +208,7 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--include – řetězec atributů** (pouze Windows) zahrnuje soubory, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
 
-**--include-Path** řetězec zahrnuje pouze tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF).
+**--include-Path** řetězec zahrnuje pouze tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/file.pdf).
 
 **--include – řetězec vzoru** zahrne při kopírování jenom tyto soubory. Tato možnost podporuje zástupné znaky (*). Oddělte soubory pomocí '; '.
 

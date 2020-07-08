@@ -13,10 +13,9 @@ ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
 ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234902"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.
@@ -85,4 +84,4 @@ TransformOutput[] output = new TransformOutput[]
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video](stream-files-tutorial-with-rest.md)
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – CLI](stream-files-cli-quickstart.md)
 * [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – .NET](stream-files-dotnet-quickstart.md)
-* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video – Node. js](stream-files-nodejs-quickstart.md)
+* [Kurz: kódování vzdáleného souboru na základě adresy URL a streamu Node.jsvidea](stream-files-nodejs-quickstart.md)

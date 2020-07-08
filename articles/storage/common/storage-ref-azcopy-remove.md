@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: ab085b9a41120a9f56c1c2e39a89def8c3893747
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221070"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
@@ -91,7 +90,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--Odstranit-snímky –** řetězec ve výchozím nastavení operace odstranění se nezdařila, pokud má objekt BLOB snímky. Zadejte include pro odebrání kořenového objektu BLOB a všech jeho snímků; případně můžete zadat pouze pro odebrání pouze snímků, ale zachovat kořenový objekt BLOB.
 
-**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/File. PDF.
+**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/file.pdf.
 
 **--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: *. jpg;*. PDF; přesný
 
@@ -99,7 +98,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **-h,--** nápovědu pro odebrání
 
-**--include-Path** řetězec zahrnuje pouze tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/File. PDF
+**--include-Path** řetězec zahrnuje pouze tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/file.pdf
 
 **--include – řetězec vzorů** zahrnuje pouze soubory, u kterých se název shoduje se seznamem vzorů. Například: *. jpg;*. PDF; přesný
 
@@ -111,7 +110,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
+|Možnost|Description|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

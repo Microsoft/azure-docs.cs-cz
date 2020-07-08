@@ -4,10 +4,9 @@ description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data sl
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234792"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
@@ -52,9 +51,9 @@ Další předpoklady a omezení:
 
 ## <a name="configure-backup"></a>Konfigurace zálohování
 
-Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro službu SharePoint pomocí ConfigureSharePoint. exe a pak vytvořte skupinu ochrany v MABS.
+Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro službu SharePoint pomocí ConfigureSharePoint.exe a pak vytvořte skupinu ochrany v MABS.
 
-1. **Spusťte ConfigureSharePoint.exe** – tento nástroj nakonfiguruje službu Zapisovač VSS SharePointu \(WSS\) a předá agentovi ochrany přihlašovací údaje k farmě SharePointu. Po nasazení agenta ochrany najdete soubor ConfigureSharePoint. exe ve `<MABS Installation Path\>\bin` složce na front- \- End webovém serveru.  Pokud máte více serverů WFE, je třeba ji nainstalovat pouze na jeden z nich. Spuštění proveďte takto:
+1. **Spusťte ConfigureSharePoint.exe** – tento nástroj nakonfiguruje službu Zapisovač VSS SharePointu \(WSS\) a předá agentovi ochrany přihlašovací údaje k farmě SharePointu. Po nasazení agenta ochrany lze soubor ConfigureSharePoint.exe najít ve `<MABS Installation Path\>\bin` složce na front- \- End webovém serveru.  Pokud máte více serverů WFE, je třeba ji nainstalovat pouze na jeden z nich. Spuštění proveďte takto:
 
     * Na serveru WFE přejděte na příkazovém řádku do `\<MABS installation location\>\\bin\\` a spusťte `ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` , kde:
 
@@ -72,13 +71,13 @@ Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro služb
 
         * Udělte skupině **WSS_Admin_WPG** oprávnění ke čtení klíče registru MABS ( `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager` ).
 
-        Po spuštění ConfigureSharePoint. exe ho budete muset znovu spustit, pokud dojde ke změně v přihlašovacích údajích pro správce farmy služby SharePoint.
+        Po spuštění ConfigureSharePoint.exe budete muset znovu spustit, pokud dojde ke změně přihlašovacích údajů správce farmy služby SharePoint.
 
 1. Chcete-li vytvořit skupinu ochrany, klikněte na možnost Akce **ochrany**  >  **Actions**  >  **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** v konzole MABS.
 
 1. V **Vyberte typ skupiny ochrany**vyberte **servery**.
 
-1. V části **Vybrat členy skupiny**rozbalte server, který obsahuje roli WFE. Pokud existuje více než jeden server WFE, vyberte ten, na kterém jste nainstalovali ConfigureSharePoint. exe.
+1. V části **Vybrat členy skupiny**rozbalte server, který obsahuje roli WFE. Pokud existuje více než jeden server WFE, vyberte ten, na kterém jste nainstalovali ConfigureSharePoint.exe.
 
     Když rozbalíte službu VSS dotazů serveru SharePoint Server MABS, abyste viděli, co data MABS může chránit.  Pokud je databáze SharePointu vzdálená, MABS se k ní připojí. Pokud se zdroje dat služby SharePoint nezobrazí, zkontrolujte, zda je zapisovač VSS spuštěn na serveru SharePoint a všech vzdálených SQL Server a zda je agent MABS nainstalován na serveru SharePoint a ve vzdáleném SQL Server. Také se ujistěte, že databáze služby SharePoint nejsou chráněny jinde jako SQL Server databáze.
 

@@ -4,10 +4,9 @@ description: Tento článek popisuje náklady na monitorování metriky & invent
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204646"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Pochopení nákladů na monitorování Azure Monitor pro kontejnery
@@ -110,7 +109,7 @@ Pokud jste povolili monitorování clusteru AKS nakonfigurovaného takto,
 
 V pracovním prostoru přiřazené Log Analytics můžete zobrazit tabulky a objem dat vygenerovaných za hodinu. Další informace o jednotlivých tabulkách najdete v tématu [záznamy kontejneru](container-insights-log-search.md#container-records).
 
-|Table | Odhad velikosti (MB za hodinu) |
+|Tabulka | Odhad velikosti (MB za hodinu) |
 |------|---------------|
 |Výkon | 12,9 |
 |InsightsMetrics | 11,3 |

@@ -4,10 +4,9 @@ description: Toto téma obsahuje odpovědi na živé video analýzy na základě
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261321"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
@@ -18,7 +17,7 @@ Toto téma obsahuje odpovědi na živé video analýzy na základě nejčastěj�
 
 Jaké jsou systémové proměnné, které se dají použít v definici topologie grafu?
 
-|Proměnná   |Popis|
+|Proměnná   |Description|
 |---|---|
 |[System. DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu.|
 |System. GraphTopologyName   |Představuje topologii mediálního grafu, obsahuje podrobný plán grafu.|
@@ -31,17 +30,17 @@ Můžu modul Media Edge nasadit do zařízení s Windows 10?
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Zachytit z kamery IP a nastavení protokolu RTSP
 
-* Musím na svém zařízení používat speciální sadu SDK pro posílání streamu videa?
-    * No. Live video Analytics na IoT Edge podporuje záznamová média pomocí protokolu RTSP pro streamování videa (který se podporuje u většiny fotoaparátů protokolu IP).
+* Musím k odeslání streamu videa na zařízení použít speciální sadu SDK?
+    * Ne. Live video Analytics na IoT Edge podporuje záznamová média pomocí protokolu RTSP pro streamování videa (který se podporuje u většiny fotoaparátů protokolu IP).
 * Můžu nahrávat multimédia do živé analýzy videí v IoT Edge pomocí RTMP nebo hladkého (jako je Media Services živá událost)?
-    * No. LVA podporují pouze RTSP pro zachycení videa z fotoaparátů IP.
+    * Ne. LVA podporují pouze RTSP pro zachycení videa z fotoaparátů IP.
     * Všechny kamery podporující streamování RTSP přes TCP/HTTP by měly fungovat. 
-* Je možné resetovat nebo aktualizovat adresu URL zdroje RTSP pro instanci grafu?
+* Můžu u instance grafu resetovat nebo aktualizovat adresu URL zdroje RTSP?
     * Ano, pokud je instance grafu v neaktivním stavu.  
 * Je k dispozici simulátor RTSP pro použití při testování a vývoji?
-    * Ano. K dispozici je modul Edge [simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro použití v rychlém startu a kurzech pro podporu procesu učení. Tento modul je poskytován jako nejlepší úsilí a nemusí být vždy k dispozici. Důrazně doporučujeme, abyste tuto dobu nepoužívali déle než několik hodin. Než začnete vytvářet plány nasazení v produkčním prostředí, měli byste investovat do testování s vaším skutečným zdrojem RTSP.
-* Podporujete ONVIF vyhledávání fotoaparátů IP na hraničních zařízeních?
-    * Ne, na hraničních zařízeních není žádná podpora pro ONVIF zjišťování zařízení.
+    * Ano. K dispozici je modul Edge [simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro použití v rychlém startu a kurzech pro podporu procesu učení. Při poskytování tohoto modulu se snažíme všem maximálně vyhovět, ale ne vždy musí být dostupný. Důrazně doporučujeme, abyste tuto dobu nepoužívali déle než několik hodin. Než začnete vytvářet plány nasazení v produkčním prostředí, měli byste investovat do testování s vaším skutečným zdrojem RTSP.
+* Podporujete zjišťování ONVIF IP kamer na hraničních zařízeních?
+    * Ne, zjišťování ONVIF na hraničních zařízeních se nepodporuje.
 
 ## <a name="streaming-and-playback"></a>Streamování a přehrávání
 
@@ -54,9 +53,9 @@ Můžu modul Media Edge nasadit do zařízení s Windows 10?
     Mezi Doporučené přehrávače pro testování patří:
 
     * [Přehrávač médií Azure](../latest/use-azure-media-player.md)
-    * [HLS. js](https://hls-js.netlify.app/demo/)
-    * [Video. js](https://videojs.com/)
-    * [Pomlčka. js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
+    * [HLS.js](https://hls-js.netlify.app/demo/)
+    * [Video.js](https://videojs.com/)
+    * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
     * [Přehrávač Shaka](https://github.com/google/shaka-player)
     * [ExoPlayer](https://github.com/google/ExoPlayer)
     * [Apple Native HTTP Live Streaming](https://developer.apple.com/streaming/)
@@ -70,9 +69,9 @@ Můžu modul Media Edge nasadit do zařízení s Windows 10?
 ## <a name="monitoring-and-metrics"></a>Monitorování a metriky
 
 * Můžu na okraji monitorovat mediální graf pomocí Event Grid?
-    * No. Aktuálně Event Grid není podporován.
+    * Ne. Aktuálně Event Grid není podporován.
 * Můžu použít Azure Monitor k zobrazení stavu, metrik a výkonu mých grafů multimédií v cloudu nebo na hraničních zařízeních?
-    * No.
+    * Ne.
 * Existují nějaké nástroje, které usnadňují monitorování Media Services IoT Edge modulu?
     * Visual Studio Code podporuje rozšíření "Azure IoT Tools", které umožňuje snadno monitorovat koncové body modulu LVAEdge. Tento nástroj můžete použít k rychlému zahájení monitorování IoT Hub integrovaného koncového bodu pro "události" a zobrazení zpráv odvození, které jsou směrovány ze zařízení Edge do cloudu. 
 

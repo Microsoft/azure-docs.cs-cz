@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
 ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195278"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s replikací a převzetím služeb při selhání Hyper-V do Azure
@@ -53,8 +52,8 @@ Při řešení potíží s počáteční a probíhající replikací postupujte 
     - Pokud v prostředí provádíte replikaci pomocí nástroje VMM, ověřte, že jsou spuštěné tyto služby:
         - Na hostiteli Hyper-V ověřte, jestli je spuštěná služba Správa virtuálních počítačů, agent Microsoft Azure Recovery Services a hostitelská služba poskytovatele rozhraní WMI.
         - Na serveru VMM se ujistěte, že je spuštěná služba System Center Virtual Machine Manager.
-4. Zkontrolujte připojení mezi serverem Hyper-V a Azure. Chcete-li zjistit připojení, otevřete Správce úloh na hostiteli Hyper-V. Na kartě **výkon** klikněte na **otevřít sledování prostředků**. Na kartě **síť** > **procesu s aktivitou sítě**ověřte, zda souboru cbengine. exe aktivně odesílá velké objemy dat (MB).
-5. Ověřte, jestli se hostitelé Hyper-V můžou připojit k adrese URL objektu BLOB služby Azure Storage. Pokud chcete zjistit, jestli se hostitelé můžou připojit, vyberte a zaškrtněte **souboru cbengine. exe**. Zobrazte **připojení TCP** a ověřte připojení z hostitele k objektu BLOB služby Azure Storage.
+4. Zkontrolujte připojení mezi serverem Hyper-V a Azure. Chcete-li zjistit připojení, otevřete Správce úloh na hostiteli Hyper-V. Na kartě **výkon** klikněte na **otevřít sledování prostředků**. Na kartě **síť** > **procesu s aktivitou sítě**ověřte, zda cbengine.exe aktivně odesílá velké objemy dat (MB).
+5. Ověřte, jestli se hostitelé Hyper-V můžou připojit k adrese URL objektu BLOB služby Azure Storage. Pokud chcete zjistit, jestli se hostitelé můžou připojit, vyberte a zaškrtněte **cbengine.exe**. Zobrazte **připojení TCP** a ověřte připojení z hostitele k objektu BLOB služby Azure Storage.
 6. Ověřte problémy s výkonem, jak je popsáno níže.
     
 ### <a name="performance-issues"></a>Problémy s výkonem
@@ -130,7 +129,7 @@ Snímek konzistentní vzhledem k aplikacím je snímkem dat aplikací v rámci v
 
 2. Pokud chcete pro virtuální počítač vygenerovat snímky VSS, ověřte, že jsou na virtuálním počítači nainstalované integrační služby technologie Hyper-V a že je povolená služba Backup (VSS).
     - Zajistěte, aby na hostovi běžela služba nebo démony služby VSS integrační služby a jsou ve stavu **OK** .
-    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Přečtěte si další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Ujistěte se, že na virtuálním počítači běží služby Backup/VSS Integration Services, a to v dobrém stavu. V takovém případě tyto služby restartujte a na hostitelském serveru technologie Hyper-V svazek služba žadatele stínové kopie svazku.
 
 ### <a name="common-errors"></a>Běžné chyby

@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248579"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Správa záloh virtuálních počítačů Azure pomocí služby Azure Backup
@@ -30,7 +29,7 @@ Zálohy můžete spravovat pomocí řídicího panelu a přechodem k jednotlivý
 
 Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Recovery Services**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
 
     ![Vytvoření trezoru Služeb zotavení](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -56,7 +55,7 @@ Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
 Správa zásad zálohování:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
 2. Na dlaždici **zálohované položky** vyberte **Azure Virtual Machines**.
 
     ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)

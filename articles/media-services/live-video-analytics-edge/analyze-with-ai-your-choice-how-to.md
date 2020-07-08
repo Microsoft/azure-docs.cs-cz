@@ -4,13 +4,12 @@ description: V tomto článku se naučíte, jak vytvořit modul IoT Edge, který
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261258"
 ---
-# <a name="analyze-live-video-with-ai-of-your-choice"></a>Analýza živého videa pomocí AI dle vašeho výběru
+# <a name="analyze-live-video-with-ai-of-your-choice"></a>Analýza živého videa s využitím AI dle vašeho výběru
 
 V tomto článku se naučíte, jak vytvořit modul IoT Edge, který se dá integrovat se službou Live video Analytics v IoT Edge k analýze živého videa pomocí modelu počítačové vize dle vašeho výběru. 
 

@@ -12,10 +12,9 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196283"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Známé problémy/omezení migrace s využitím hybridního režimu
@@ -24,7 +23,7 @@ Známé problémy a omezení související s používáním Azure Database Migra
 
 ## <a name="installer-fails-to-authenticate"></a>Nepodařilo se ověřit instalační program
 
-Po nahrání certifikátu do AdApp nastane zpoždění až několik minut, než se bude moct ověřit pomocí Azure. Instalační program se pokusí o opakování s určitou prodlevou, ale je možné, že zpoždění šíření bude delší než opakování, a zobrazí se zpráva **FailedToGetAccessTokenException** . Pokud byl certifikát nahrán do správného AdApp a v dmsSettings. JSON byl zadán správný identifikátor AppId, zkuste znovu spustit instalační příkaz.
+Po nahrání certifikátu do AdApp nastane zpoždění až několik minut, než se bude moct ověřit pomocí Azure. Instalační program se pokusí o opakování s určitou prodlevou, ale je možné, že zpoždění šíření bude delší než opakování, a zobrazí se zpráva **FailedToGetAccessTokenException** . Pokud byl certifikát odeslán do správného AdApp a byl zadán správný identifikátor AppId v dmsSettings.js, zkuste znovu spustit instalační příkaz.
 
 ## <a name="service-offline-after-successful-installation"></a>Služba "offline" po úspěšné instalaci
 
@@ -55,7 +54,7 @@ Pokud se služba po úspěšném dokončení procesu instalace zobrazí jako off
 
 ## <a name="using-your-own-signed-certificate"></a>Používání vlastního podepsaného certifikátu
 
-Certifikát generovaný akcí GenerateCert je certifikát podepsaný svým držitelem, který nemusí být přijatelný v závislosti na vašich interních zásadách zabezpečení. Místo použití tohoto certifikátu můžete zadat vlastní certifikát a poskytnout kryptografický otisk v dmsSettings. JSON. Tento certifikát bude nutné nahrát do AdApp a nainstalovat na počítač, na který instalujete Azure Database Migration Service Hybrid Worker. Pak tento certifikát nainstalujte pomocí privátního klíče do úložiště certifikátů místního počítače.
+Certifikát generovaný akcí GenerateCert je certifikát podepsaný svým držitelem, který nemusí být přijatelný v závislosti na vašich interních zásadách zabezpečení. Místo použití tohoto certifikátu můžete zadat vlastní certifikát a poskytnout kryptografický otisk v dmsSettings.js. Tento certifikát bude nutné nahrát do AdApp a nainstalovat na počítač, na který instalujete Azure Database Migration Service Hybrid Worker. Pak tento certifikát nainstalujte pomocí privátního klíče do úložiště certifikátů místního počítače.
 
 ## <a name="running-the-worker-service-as-a-low-privilege-account"></a>Spuštění služby pracovního procesu jako účtu s nízkou úrovní oprávnění
 

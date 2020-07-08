@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261286"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Použití existující virtuální sítě s Azure Managed Applications
@@ -18,7 +17,7 @@ V tomto článku se dozvíte, jak definovat spravovanou aplikaci Azure, která s
 
 ## <a name="main-template"></a>Hlavní šablona
 
-Nejprve se podívejme na soubor **mainTemplate. JSON** . Níže je uvedena celá šablona pro nasazení virtuálního počítače a přidružených prostředků. Později budete podrobněji prozkoumávat části šablony, které souvisejí s používáním existující virtuální sítě.
+Nejprve se podíváme na **mainTemplate.js** souboru. Níže je uvedena celá šablona pro nasazení virtuálního počítače a přidružených prostředků. Později budete podrobněji prozkoumávat části šablony, které souvisejí s používáním existující virtuální sítě.
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/mainTemplate.json":::
 
@@ -38,7 +37,7 @@ Síťové rozhraní je nastaveno na proměnnou ID podsítě.
 
 ## <a name="ui-definition"></a>Definice uživatelského rozhraní
 
-Teď se podívejme na soubor **createUiDefinition. JSON** . Celý soubor je:
+Teď se podívejme na **createUiDefinition.js** souboru. Celý soubor je:
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/createUiDefinition.json":::
 
@@ -59,4 +58,4 @@ Do výstupů zahrnete hodnotu, která indikuje, jestli uživatel vybral novou ne
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vytváření definičního souboru uživatelského rozhraní najdete v tématu [CreateUiDefinition. JSON pro prostředí pro vytváření spravované aplikace Azure](create-uidefinition-overview.md).
+Další informace o vytváření definičního souboru uživatelského rozhraní najdete v tématu [CreateUiDefinition.jspro prostředí pro vytváření spravované aplikace Azure](create-uidefinition-overview.md).

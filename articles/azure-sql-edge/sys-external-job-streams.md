@@ -10,17 +10,16 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 2634128f4d431e4283f59032c6474a71f2af364d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233086"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)
 
 Vrátí řádek pro vstupní nebo výstupní externí objekt datového proudu namapovaný na externí úlohu streamování.
 
-|Název sloupce|Datový typ|Popis|  
+|Název sloupce|Datový typ|Description|  
 |-----------------|---------------|-----------------|
 |**job_id**|**int**| Identifikační číslo objektu pro objekt úlohy streamování. Tento sloupec se mapuje na sloupec object_id sys. external_streaming_jobs.|
 |**stream_id**|**int**| Identifikační číslo objektu pro objekt datového proudu. Tento sloupec se mapuje na sloupec object_id sys. external_streams. |

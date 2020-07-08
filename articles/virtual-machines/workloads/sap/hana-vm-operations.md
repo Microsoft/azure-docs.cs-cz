@@ -16,10 +16,9 @@ ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0ede0f5d74ceb5ce79cdfc095b3ffeccd96a1b3b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84230141"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
@@ -173,8 +172,8 @@ Instalace konfigurace SAP se škálováním na více instancí vyžaduje provede
 Vzhledem k tomu, že je nasazená Infrastruktura virtuálních počítačů Azure a všechny další přípravy, je nutné nainstalovat SAP HANA konfigurací škálování na více instancí v těchto krocích:
 
 - Instalace uzlu SAP HANA Master podle dokumentace SAP
-- V případě použití Azure Premium Storage nebo úložiště Ultra disk s nesdílenými disky/Hana/data a/Hana/log je třeba změnit soubor Global. ini a přidat parametr ' basepath_shared = No ' do souboru Global. ini. Tento parametr umožňuje, aby SAP HANA běžely s možností horizontálního navýšení kapacity bez "sdílených" **/Hana/data** a **/Hana/log** svazků mezi uzly. Podrobnosti jsou popsány v dokumentaci [SAP #2080991](https://launchpad.support.sap.com/#/notes/2080991). Pokud používáte svazky NFS založené na ANF pro/Hana/data a/Hana/log, nemusíte tuto změnu dělat.
-- Po případné změně v parametru Global. ini Restartujte instanci SAP HANA.
+- V případě použití Azure Premium Storage nebo Ultra diskového úložiště s nesdílenými disky/Hana/data a/Hana/log je třeba změnit soubor global.ini a přidat parametr ' basepath_shared = No ' do souboru global.ini. Tento parametr umožňuje, aby SAP HANA běžely s možností horizontálního navýšení kapacity bez "sdílených" **/Hana/data** a **/Hana/log** svazků mezi uzly. Podrobnosti jsou popsány v dokumentaci [SAP #2080991](https://launchpad.support.sap.com/#/notes/2080991). Pokud používáte svazky NFS založené na ANF pro/Hana/data a/Hana/log, nemusíte tuto změnu dělat.
+- Po případné změně parametru global.ini Restartujte instanci SAP HANA.
 - Přidejte další pracovní uzly. Viz také <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> . Určete interní síť pro SAP HANA komunikaci mezi uzly během instalace, nebo pak použijte například místní hdblcm. Podrobnější dokumentaci najdete v tématu také o [#2183363 SAP Note](https://launchpad.support.sap.com/#/notes/2183363). 
 
 Podrobné informace o nastavení SAP HANA systému škálování na více systémů s pohotovostním uzlem na SUSE Linux je podrobněji popsán v tématu [nasazení SAP HANA systému škálování na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse). Ekvivalentní dokumentaci pro Red Hat najdete v článku [nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel). 

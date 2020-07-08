@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
 ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196427"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
@@ -45,11 +44,11 @@ Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, kte
 |Účet úložiště   | Název účtu úložiště, ve kterém jsou umístěné objekty blob Pokud je ve stejném předplatném jako vaše Stream Analytics úlohy, můžete ho vybrat z rozevírací nabídky.   |
 |Klíč účtu úložiště   | Tajný klíč přidružený k účtu úložiště Tato funkce se automaticky naplní, pokud je účet úložiště ve stejném předplatném jako vaše úloha Stream Analytics.   |
 |Kontejner úložiště   | Kontejnery poskytují logické seskupení pro objekty blob uložené v Blob service Microsoft Azure. Po nahrání objektu blob do Blob service musíte zadat kontejner pro tento objekt BLOB.   |
-|Vzor cesty   | Tato vlastnost je povinná, která se používá k vyhledání objektů BLOB v zadaném kontejneru. V cestě se můžete rozhodnout, že chcete zadat jednu nebo více instancí následujících 2 proměnných:<BR>{Date}, {Time}<BR>Příklad 1: produkty/{Date}/{Time}/Product-list. csv<BR>Příklad 2: produkty/{Date}/Product-list. csv<BR>Příklad 3: Product-list. csv<BR><br> Pokud objekt BLOB v zadané cestě neexistuje, bude úloha Stream Analytics čekat na neomezenou dobu, než se objekt BLOB stane dostupným.   |
+|Vzor cesty   | Tato vlastnost je povinná, která se používá k vyhledání objektů BLOB v zadaném kontejneru. V cestě se můžete rozhodnout, že chcete zadat jednu nebo více instancí následujících 2 proměnných:<BR>{Date}, {Time}<BR>Příklad 1: produkty/{Date}/{Time}/product-list.csv<BR>Příklad 2: produkty/{Date}/product-list.csv<BR>Příklad 3: product-list.csv<BR><br> Pokud objekt BLOB v zadané cestě neexistuje, bude úloha Stream Analytics čekat na neomezenou dobu, než se objekt BLOB stane dostupným.   |
 |Formát data [nepovinné]   | Pokud jste {Date} použili v rámci zadaného vzoru cesty, můžete vybrat formát data, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: RRRR/MM/DD, MM/DD/RRRR atd.   |
 |Formát času [nepovinné]   | Pokud jste v rámci zadaného vzoru cesty použili {Time}, můžete vybrat formát času, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: HH, HH/mm nebo HH-mm.  |
 |Formát serializace události   | Chcete-li zajistit, aby dotazy fungovaly podle očekávání, Stream Analytics musí znát, který formát serializace používáte pro příchozí datové proudy. V případě referenčních dat jsou podporované formáty CSV a JSON.  |
-|Kódování   | Formát UTF-8 v tuto chvíli podporuje pouze kódování UTF-8.  |
+|Encoding   | Formát UTF-8 v tuto chvíli podporuje pouze kódování UTF-8.  |
 
 ### <a name="static-reference-data"></a>Statická referenční data
 
@@ -102,7 +101,7 @@ Můžete použít [spravovanou instanci SQL Azure](https://docs.microsoft.com/az
 |---------|---------|
 |Alias vstupu|Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.|
 |Předplatné|Zvolte vaše předplatné.|
-|Databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro spravovanou instanci SQL je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
+|databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro spravovanou instanci SQL je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
 |Uživatelské jméno|Uživatelské jméno přidružené k vašemu Azure SQL Database.|
 |Heslo|Heslo přidružené k vašemu Azure SQL Database.|
 |Pravidelně aktualizovat|Tato možnost umožňuje zvolit obnovovací frekvenci. Když zvolíte Zapnuto, budete moct zadat obnovovací frekvenci v DD: HH: MM.|

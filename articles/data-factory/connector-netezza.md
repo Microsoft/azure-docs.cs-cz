@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84216386"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí Azure Data Factory
@@ -56,8 +55,8 @@ Pro propojenou službu Netezza jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **Netezza**. | Ano |
-| připojovací řetězec | Připojovací řetězec ODBC, který se má připojit k Netezza. <br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `pwd` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| typ | Vlastnost **Type** musí být nastavená na **Netezza**. | Yes |
+| připojovací řetězec | Připojovací řetězec ODBC, který se má připojit k Netezza. <br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `pwd` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Yes |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` . Následující tabulka obsahuje popis dalších vlastností, které můžete nastavit:
@@ -67,7 +66,7 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 | SecurityLevel | Úroveň zabezpečení, kterou ovladač používá pro připojení k úložišti dat. Ovladač podporuje připojení SSL s jednosměrným ověřováním pomocí protokolu SSL verze 3. <br>Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Pouze nezabezpečené** (**onlyUnSecured**): ovladač nepoužívá protokol SSL.<br/>- **Upřednostňované nezabezpečené (preferredUnSecured) (výchozí)**: Pokud server nabízí možnost výběru, ovladač nepoužívá protokol SSL. <br/>- **Upřednostňované zabezpečené (preferredSecured)**: Pokud server nabízí možnost výběru, použije ovladač protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)**: ovladač se nepřipojí, pokud není k dispozici připojení SSL. | No |
 | Soubor_certifikátu_CÚ | Úplná cesta k certifikátu SSL, který používá server. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolený protokol SSL |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -121,12 +120,12 @@ Chcete-li kopírovat data z Netezza, nastavte vlastnost **Type** datové sady na
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **NetezzaTable** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **NetezzaTable** . | Yes |
 | XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -157,7 +156,7 @@ Chcete-li kopírovat data z Netezza, nastavte typ **zdroje** v aktivitě kopíro
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **NetezzaSource**. | Ano |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **NetezzaSource**. | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"` | Ne (Pokud je zadáno "tableName" v datové sadě |
 | partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Netezza. <br>Povolené hodnoty jsou: **none** (výchozí), **dataslice**a **DynamicRange**.<br>Pokud je povolená možnost oddílu (to znamená, ne `None` ), stupeň paralelismu na souběžně načtená data z databáze Netezza se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | No |
 | partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není možnost oddílu `None` . | No |

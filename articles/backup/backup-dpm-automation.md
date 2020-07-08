@@ -4,10 +4,9 @@ description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection M
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: bbd03c17f9f46494d6fadb64e1d059d1b81cd9ac
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234646"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu

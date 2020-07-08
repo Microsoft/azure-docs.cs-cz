@@ -14,10 +14,9 @@ ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220165"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
@@ -60,7 +59,7 @@ Když odešlete úlohy pro zpracování videí, je nutné sdělit Media Services
 * [Kódování z adresy URL HTTPS pomocí .NET](stream-files-dotnet-quickstart.md)
 * [Kódování z adresy URL HTTPS pomocí REST](stream-files-tutorial-with-rest.md)
 * [Kódování z adresy URL HTTPS pomocí rozhraní příkazového řádku](stream-files-cli-quickstart.md)
-* [Kódování z adresy URL protokolu HTTPS pomocí Node. js](stream-files-nodejs-quickstart.md)
+* [Kódování z adresy URL HTTPS pomocí Node.js](stream-files-nodejs-quickstart.md)
 
 ### <a name="creating-job-input-from-a-local-file"></a>Vytváření vstupu úlohy z místního souboru
 

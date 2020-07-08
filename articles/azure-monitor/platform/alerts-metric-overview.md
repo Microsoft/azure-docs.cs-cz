@@ -5,10 +5,9 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248817"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
@@ -128,10 +127,10 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače  | **Ano** | Ne | Ne |
-| Databáze systému SQL Server | **Ano** | **Ano** | Ne |
-| Elastické fondy SQL serveru | **Ano** | **Ano** | Ne |
-| Hraniční zařízení datového boxu | **Ano** | **Ano** | Ne |
+| Virtuální počítače  | **Ano** | No | No |
+| Databáze systému SQL Server | **Ano** | **Ano** | No |
+| Elastické fondy SQL serveru | **Ano** | **Ano** | No |
+| Hraniční zařízení datového boxu | **Ano** | **Ano** | No |
 
 Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jedním ze tří způsobů. Například u virtuálních počítačů můžete obor zadat jako:  
 

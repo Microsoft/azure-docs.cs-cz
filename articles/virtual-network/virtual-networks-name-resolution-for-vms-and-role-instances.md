@@ -14,10 +14,9 @@ ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204765"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
@@ -47,8 +46,8 @@ To, který typ překladu názvů použijete, závisí na tom, jak spolu vaše pr
 | Překlad názvů z App Service Web Apps v jedné virtuální síti na virtuální počítače v jiné virtuální síti |Servery DNS spravované zákazníky, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Rozlišení místních počítačů a názvů služeb z virtuálních počítačů nebo instancí rolí v Azure. |Servery DNS spravované zákazníky (místní řadič domény, místní řadič domény jen pro čtení nebo sekundární služba DNS, která se synchronizuje pomocí zónových přenosů, například). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů hostitelů Azure z místních počítačů. |Předává dotazy do služby DNS spravované zákazníkem proxy server v odpovídající virtuální síti, proxy server předává dotazy do Azure pro řešení. Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Reverzní DNS pro interní IP adresy |[Azure DNS privátní zóny](../dns/private-dns-overview.md) nebo [překlad IP adres poskytované Azure](#azure-provided-name-resolution) [pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Neuvedeno |
-| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Neužívá se. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Neuvedeno|
+| Reverzní DNS pro interní IP adresy |[Azure DNS privátní zóny](../dns/private-dns-overview.md) nebo [překlad IP adres poskytované Azure](#azure-provided-name-resolution) [pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Nelze použít |
+| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Neužívá se. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Nelze použít|
 
 ## <a name="azure-provided-name-resolution"></a>Překlad názvů poskytovaných službou Azure
 

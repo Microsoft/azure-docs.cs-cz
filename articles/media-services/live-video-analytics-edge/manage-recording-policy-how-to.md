@@ -4,13 +4,12 @@ description: Toto téma vysvětluje, jak spravovat zásady nahrávání.
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 321e68087bfe2a8b3e1354e49585a89f9d3af295
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261314"
 ---
-# <a name="manage-recording-policy"></a>Spravovat zásady záznamu
+# <a name="manage-recording-policy"></a>Správa zásad nahrávání
 
 Živé video analýzy můžete použít na IoT Edge pro [průběžné nahrávání videa](continuous-video-recording-concept.md), kde můžete nahrávat video do cloudu po týdny nebo měsíce. Délku (ve dnech) cloudového archivu můžete spravovat pomocí [nástrojů pro správu životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) , které jsou integrované v Azure Storage.  
 

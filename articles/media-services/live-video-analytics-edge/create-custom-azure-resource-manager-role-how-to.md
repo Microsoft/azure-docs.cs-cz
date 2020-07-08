@@ -4,10 +4,9 @@ description: Tento článek poskytuje pokyny k vytvoření vlastní role Azure R
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261167"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu
@@ -179,7 +178,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Parametry:
 
-|Parametry|Popis| 
+|Parametry|Description| 
 |---|---|
 |--role |Název nebo ID vlastní role V našem případě: "LVAEdge uživatel".|
 |--nabyvatel-objektu-ID|ID objektu instančního objektu, který budete používat.|

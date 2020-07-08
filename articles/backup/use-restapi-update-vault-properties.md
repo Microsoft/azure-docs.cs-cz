@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248222"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
@@ -43,7 +42,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Úspěšná odpověď pro operaci GET je uvedená níže:
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,7 +82,7 @@ K vytvoření textu žádosti se použijí tyto společné definice.
 
 Další podrobnosti najdete [v dokumentaci k REST API](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Name  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Description  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
@@ -107,7 +106,7 @@ Následující příklad slouží k aktualizaci stavu obnovitelného odstraněn�
 
 Úspěšná odpověď pro operaci PATCH je uvedená níže:
 
-|Name  |Typ  |Popis  |
+|Name  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

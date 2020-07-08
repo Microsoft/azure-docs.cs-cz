@@ -10,10 +10,9 @@ ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
 ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84232908"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření nespravované image z virtuálního počítače Azure
@@ -41,7 +40,7 @@ Virtuální počítač se systémem Linux můžete také zobecnit pomocí `sudo 
 2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%WINDIR%\system32\sysprep**a potom spusťte příkaz `sysprep.exe` .
 3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
 4. V **Možnosti vypnutí**vyberte **vypnout**.
-5. Klikněte na tlačítko **OK**.
+5. Klikněte na **OK**.
    
     ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Po dokončení nástroj Sysprep vypne virtuální počítač. 

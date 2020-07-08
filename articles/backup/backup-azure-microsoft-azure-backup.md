@@ -4,10 +4,9 @@ description: V tomto článku se dozvíte, jak připravit prostředí pro ochran
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247270"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
@@ -95,7 +94,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, v hlavní nabídce klikněte na tlačítko **Procházet**.
 
    * V seznamu prostředků zadejte **Recovery Services**.
@@ -147,7 +146,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="extracting-the-software-package"></a>Extrakce softwarového balíčku
 
-Po stažení všech souborů klikněte na **MicrosoftAzureBackupInstaller. exe**. Spustí se **Průvodce instalací Microsoft Azure Backup** , který extrahuje instalační soubory do umístění určeného vámi. Pokračujte v průvodci a kliknutím na tlačítko **extrahovat** zahajte proces extrakce.
+Po stažení všech souborů klikněte na **MicrosoftAzureBackupInstaller.exe**. Spustí se **Průvodce instalací Microsoft Azure Backup** , který extrahuje instalační soubory do umístění určeného vámi. Pokračujte v průvodci a kliknutím na tlačítko **extrahovat** zahajte proces extrakce.
 
 > [!WARNING]
 > K extrakci instalačních souborů je potřeba aspoň 4 GB volného místa.
@@ -156,7 +155,7 @@ Po stažení všech souborů klikněte na **MicrosoftAzureBackupInstaller. exe**
 
 ![Průvodce instalací Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu čerstvě extrahovaný soubor *Setup. exe* , aby se začal instalovat Microsoft Azure Backup Server, a klikněte na tlačítko **Dokončit** .
+Po dokončení extrakce zaškrtněte políčko, pokud chcete spustit čerstvě extrahovanou *setup.exe* a začněte s instalací Microsoft Azure Backup serveru a klikněte na tlačítko **Dokončit** .
 
 ### <a name="installing-the-software-package"></a>Instalace softwarového balíčku
 

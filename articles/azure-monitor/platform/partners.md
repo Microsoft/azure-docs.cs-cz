@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248967"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
