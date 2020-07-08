@@ -3,12 +3,12 @@ title: Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho smě
 description: Přečtěte si, jak převést Zásady skupiny ze směrného plánu zabezpečení Windows serveru 2019 do definice zásady.
 ms.date: 06/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 021e8cc4aa34a21f980363e71de1a4b9afbf3ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268976"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080665"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho směrného plánu pro Windows
 
@@ -92,7 +92,7 @@ Dalším krokem je publikování souboru do úložiště objektů BLOB.
 1. Následující skript obsahuje funkci, kterou můžete použít k automatizaci této úlohy. Všimněte si, že příkazy používané ve `publish` funkci vyžadují `Az.Storage` modul.
 
    ```azurepowershell-interactive
-    function publish {
+    function Publish-Configuration {
         param(
         [Parameter(Mandatory=$true)]
         $resourceGroup,
@@ -147,25 +147,29 @@ Dalším krokem je publikování souboru do úložiště objektů BLOB.
 
 1. K publikování konfiguračního balíčku hosta ve veřejném úložišti objektů BLOB použijte funkci publikovat s přiřazenými parametry.
 
-   ```azurepowershell-interactive
-   $uri = publish `
-    -resourceGroup $resourceGroup `
-    -storageAccountName $storageAccount `
-    -storageContainerName $storageContainer `
-    -filePath $path `
-    -blobName $blob
-    -FullUri
-    ```
 
+   ```azurepowershell-interactive
+   $PublishConfigurationSplat = @{
+       resourceGroup = $resourceGroup
+       storageAccountName = $storageAccount
+       storageContainerName = $storageContainer
+       filePath = $path
+       blobName = $blob
+       FullUri = $true
+   }
+   $uri = Publish-Configuration @PublishConfigurationSplat
+    ```
 1. Po vytvoření a nahrání balíčku vlastní zásady konfigurace hosta se vytvoří definice zásady konfigurace hosta. Pomocí `New-GuestConfigurationPolicy` rutiny vytvořte konfiguraci hosta.
 
    ```azurepowershell-interactive
-   New-GuestConfigurationPolicy `
-    -ContentUri $Uri `
-    -DisplayName 'Server 2019 Configuration Baseline' `
-    -Description 'Validation of using a completely custom baseline configuration for Windows VMs' `
-    -Path C:\git\policyfiles\policy  `
-    -Platform Windows 
+    $NewGuestConfigurationPolicySplat = @{
+        ContentUri = $Uri 
+        DisplayName = 'Server 2019 Configuration Baseline' 
+        Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
+        Path = 'C:\git\policyfiles\policy'  
+        Platform = Windows 
+        }
+   New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
 1. Publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny. Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` . K provedení příkazu Publikovat budete potřebovat přístup k vytvoření definic zásad v Azure. Konkrétní autorizační požadavky jsou zdokumentovány na stránce [přehled Azure Policy](../overview.md#getting-started) . Nejlepší integrovanou rolí je **Přispěvatel zásad prostředků**.

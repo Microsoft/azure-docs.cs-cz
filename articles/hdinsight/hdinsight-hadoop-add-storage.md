@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192480"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080002"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště do HDInsight
 
@@ -133,14 +133,6 @@ Když **znovu spustíte akci skriptu** , klíč se neaktualizuje, protože skrip
 
 > [!IMPORTANT]  
 > Otočení klíče úložiště pro primární účet úložiště připojené ke clusteru se nepodporuje.
-
-### <a name="poor-performance"></a>Špatný výkon
-
-Pokud je účet úložiště v jiné oblasti než cluster HDInsight, může docházet ke špatnému výkonu. Přístup k datům v jiné oblasti odesílá síťový provoz mimo oblastní datové centrum Azure. A přes veřejný Internet, což může způsobit latenci.
-
-### <a name="additional-charges"></a>Další poplatky
-
-Pokud je účet úložiště v jiné oblasti než cluster HDInsight, můžete si při fakturaci Azure všimnout dalších poplatků za výstup. Poplatek za výstupní data se použije, když data opustí místní datové centrum. Tento poplatek se uplatní i v případě, že je provoz určený pro jiné datové centrum Azure v jiné oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 

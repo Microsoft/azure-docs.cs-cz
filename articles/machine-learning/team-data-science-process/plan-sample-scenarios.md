@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687442"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078778"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
 Tento článek popisuje řadu ukázkových zdrojů dat a cílových scénářů, které lze zpracovat v rámci [vědeckého zpracování týmových dat (TDSP)](overview.md). TDSP poskytuje systematický přístup pro týmy, které umožňují spolupráci při vytváření inteligentních aplikací. Zde uvedené scénáře znázorňují možnosti dostupné v pracovním postupu zpracování dat, které závisí na charakteristikách dat, zdrojových umístěních a cílových úložištích v Azure.
@@ -193,9 +194,7 @@ Pokud chcete replikovat celou SQL Server databázi na svém SQL Serverm VIRTUÁL
 1. Vytvořte cluster Azure HDInsight Hadoop.
 1. Volitelné Předběžná zpracování a čištění dat.
    
-   a.  Předběžné zpracování a vyčištění dat v IPython poznámkovém bloku s přístupem k datům z Azure
-   
-       blobs.
+   a.  Předběžné zpracování a vyčištění dat v IPython poznámkovém bloku s přístupem k datům z objektů blob Azure.
    
    b.  V případě potřeby Transformujte data na vyčištěný tabulkový formulář.
    

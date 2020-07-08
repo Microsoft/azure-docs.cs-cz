@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 8ff4e2d8f778d05e9a0fa271600446e1c24380be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078557"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -60,7 +60,7 @@ Advisor analyzuje vzorce využití za posledních 30 dní pro následující pro
 Advisor analyzuje vzorce používání Azure Cosmos DB za posledních 30 dnů a doporučuje nákup rezervovaných kapacit pro optimalizaci nákladů. Pomocí rezervované kapacity si můžete předběžně koupit Azure Cosmos DB hodinové využití a ušetřit náklady za průběžné platby. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
 ### <a name="sql-paas-reserved-capacity"></a>Vyhrazená kapacita SQL PaaS
-Advisor analyzuje fondy elastické databáze SQL PaaS a vzory využití spravované instance za posledních 30 dní. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit SQL DB po hodinách využití a ušetřit náklady na výpočetní výkon SQL. Vaše licence SQL se účtuje samostatně a rezervace se nesleví. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
+Advisor analyzuje fondy elastické databáze SQL PaaS a vzory využití spravované instance SQL za posledních 30 dní. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit SQL DB po hodinách využití a ušetřit náklady na výpočetní výkon SQL. Vaše licence SQL se účtuje samostatně a rezervace se nesleví. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service vyhrazenou kapacitu pro poplatky za razítko
 Advisor v posledních 30 dnech analyzuje vzor použití poplatku za Azure App Service izolované prostředí a doporučuje rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity si můžete předem koupit hodinové využití pro poplatek za izolované prostředí a ušetřit náklady za průběžné platby. Rezervovaná kapacita se vztahuje pouze na poplatky za razítko a nikoli na App Service instance. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Služba Advisor počítá s uložením odhadů pro jednotlivá předplatná za použití ceny za 3 roky na základě vzorců využití za posledních 30 dní.

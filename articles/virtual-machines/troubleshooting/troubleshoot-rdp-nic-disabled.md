@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918236"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078625"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nejde o vzdálenou plochu k virtuálnímu počítači, protože síťové rozhraní je zakázané.
 
@@ -39,21 +40,29 @@ Pokud chcete povolit rozhraní pro virtuální počítač, použijte pro virtuá
 ). Pokud není na vašem VIRTUÁLNÍm počítači povolená síťová konzola, přečtěte si téma [resetování síťového rozhraní](#reset-network-interface).
 2. Ověřte stav síťového rozhraní:
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Poznamenejte si název zakázaného síťového rozhraní.
 
 3. Povolit síťové rozhraní:
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     Pokud je třeba rozhraní pro spolupráci s názvem "Ethernet 2", spusťte následující příkaz:
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  Zkontrolujte stav síťového rozhraní znovu a ujistěte se, že je síťové rozhraní povolené.
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     V tuto chvíli nemusíte restartovat virtuální počítač. Virtuální počítač bude dostupný zpátky.
 

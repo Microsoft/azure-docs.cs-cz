@@ -5,17 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800643"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078721"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
 Azure FarmBeats pomáhá přenášet údaje o počasí ze zprostředkovatelů dat počasí pomocí rozhraní konektoru na bázi Docker. Pomocí tohoto rozhraní poskytovatelé dat počasí implementují Docker, který se dá integrovat s FarmBeats. V současné době jsou podporovány následující poskytovatelé dat počasí:
 
-[DTN](https://www.dtn.com/dtn-content-integration/)
+  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+
+  [DTN](https://www.dtn.com/dtn-content-integration/)
 
 Data o počasí je možné využít ke generování přehledů s užitečnými informacemi a sestavení modelů AI/ML na FarmBeats.
 
@@ -59,6 +62,9 @@ Pokud chcete začít získávat data o počasí v datovém centru FarmBeats, pos
    ```
 
    Pokud například chcete získat data o počasí z DTN, použijte následující datovou část. Můžete upravit název a popis podle vaší předvolby.
+
+   > [!NOTE]
+   > Níže uvedený krok vyžaduje klíč rozhraní API, obraťte se prosím na DTN a získejte stejné předplatné DTN.
 
    ```json
    {

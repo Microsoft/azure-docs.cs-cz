@@ -3,18 +3,18 @@ title: Application Insights Azure pro ASP.NET Core aplikace | Microsoft Docs
 description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: f9e51521e9bd35c6afb3dbe7cafb1e56e847756a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e575bf0d1fe138ae9dd4160b55be4f2c8ea5bea
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390121"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082195"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
 Tento článek popisuje, jak povolit Application Insights pro [ASP.NET Core](https://docs.microsoft.com/aspnet/core) aplikaci. Po dokončení pokynů v tomto článku bude Application Insights shromažďovat požadavky, závislosti, výjimky, čítače výkonu, prezenční signály a protokoly z vaší aplikace ASP.NET Core.
 
-Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , která se zaměřuje na `netcoreapp3.0` . Tyto pokyny můžete použít pro všechny ASP.NET Core aplikace.
+Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , která se zaměřuje na `netcoreapp3.0` . Tyto pokyny můžete použít pro všechny ASP.NET Core aplikace. Pokud používáte [službu pracovního procesu](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services#worker-service-template), postupujte podle pokynů [zde](./worker-service.md).
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
@@ -225,7 +225,7 @@ Další informace najdete v tématu [Konfigurace adaptivního vzorkování pro a
 
 ### <a name="adding-telemetryinitializers"></a>Přidání TelemetryInitializers
 
-[Inicializátory telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) použijte, když chcete definovat globální vlastnosti, které se odešlou se všemi telemetrie.
+[Inicializátory telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) použijte, když chcete rozšířit telemetrii s dalšími informacemi.
 
 Přidejte všechny nové `TelemetryInitializer` kontejnery do `DependencyInjection` kontejneru, jak je znázorněno v následujícím kódu. Sada SDK automaticky vybere všechny `TelemetryInitializer` , které jsou přidány do `DependencyInjection` kontejneru.
 
@@ -282,7 +282,7 @@ Application Insights používá moduly telemetrie k automatickému shromažďov�
 Ve výchozím nastavení jsou povoleny následující moduly automatických kolekcí. Tyto moduly zodpovídají za automatické shromažďování telemetrie. Můžete je zakázat nebo nakonfigurovat, aby se změnily jejich výchozí chování.
 
 * `RequestTrackingTelemetryModule`– Shromáždí RequestTelemetry z příchozích webových požadavků.
-* `DependencyTrackingTelemetryModule`– Shromažďuje DependencyTelemetry z odchozích volání http a volání SQL.
+* `DependencyTrackingTelemetryModule`– Shromažďuje [DependencyTelemetry](./asp-net-dependencies.md) z odchozích volání http a volání SQL.
 * `PerformanceCollectorModule`-Shromažďuje Windows čítače výkonu.
 * `QuickPulseTelemetryModule`– Shromažďuje telemetrii pro zobrazení na portálu živých metrik.
 * `AppServicesHeartbeatTelemetryModule`– Shromažďuje srdce Beats (které se odesílají jako vlastní metriky) o Azure App Service prostředí, ve kterém je aplikace hostovaná.
@@ -329,7 +329,7 @@ Počínaje verzí 2.12.2 [`ApplicationInsightsServiceOptions`](#using-applicatio
 
 ### <a name="configuring-a-telemetry-channel"></a>Konfigurace kanálu telemetrie
 
-Výchozí kanál je `ServerTelemetryChannel` . Můžete ho přepsat, jak ukazuje následující příklad.
+Výchozí [kanál telemetrie](./telemetry-channels.md) je `ServerTelemetryChannel` . Můžete ho přepsat, jak ukazuje následující příklad.
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -398,7 +398,7 @@ public class HomeController : Controller
     }
 ```
 
-Další informace o vlastních datových sestavách v Application Insights najdete v tématu [Application Insights referenční informace k rozhraní API pro vlastní metriky](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/).
+Další informace o vlastních datových sestavách v Application Insights najdete v tématu [Application Insights referenční informace k rozhraní API pro vlastní metriky](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/). Podobný přístup lze použít k posílání vlastních metrik pro Application Insights pomocí [rozhraní Getmetric API](./get-metric.md).
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Některé šablony sady Visual Studio používaly metodu rozšíření UseApplicationInsights () na IWebHostBuilder pro povolení Application Insights. Je toto použití stále platné?
 

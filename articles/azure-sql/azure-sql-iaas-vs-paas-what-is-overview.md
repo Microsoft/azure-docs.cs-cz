@@ -13,11 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344624"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080172"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -58,7 +59,7 @@ Azure průběžně monitoruje vaše data pro hrozby. V případě Azure SQL mů�
 Existuje několik faktorů, které mohou mít vliv na vaše rozhodnutí zvolit mezi různými nabídkami dat:
 
 - [Náklady](#cost): obě možnosti PaaS i IaaS zahrnují základní cenu, která pokrývá základní infrastrukturu a licencování. S možností IaaS ale potřebujete investovat další čas a prostředky pro správu vaší databáze, zatímco v PaaS získáte tyto funkce správy zahrnuté do ceny. IaaS vám umožňuje vypnout prostředky, když je nepoužíváte ke snížení nákladů, zatímco PaaS je vždy spuštěný, dokud neodstraníte a znovu nevytvoříte prostředky, které jsou potřeba.
-- [Správa](#administration): možnosti PaaS omezují dobu potřebnou k investování do správy databáze. Omezuje ale také rozsah vlastních úloh správy a skriptů, které můžete provádět nebo spouštět. Například CLR není podporován pro databáze s jednou nebo ve fondu, ale podporuje se pro instanci spravované instance SQL. Kromě toho žádné možnosti nasazení v PaaS nepodporují použití příznaků trasování.
+- [Správa](#administration): možnosti PaaS omezují dobu potřebnou k investování do správy databáze. Omezuje ale také rozsah vlastních úloh správy a skriptů, které můžete provádět nebo spouštět. Například CLR není podporován u SQL Database, ale je podporován pro instanci spravované instance SQL. Kromě toho žádné možnosti nasazení v PaaS nepodporují použití příznaků trasování.
 - [Smlouva o úrovni služeb](#service-level-agreement-sla): IaaS i PaaS poskytují vysokou a standardní smlouvu SLA pro obory. PaaS Option garantuje 99,99% SLA, zatímco IaaS garantuje 99,95% SLA pro infrastrukturu, což znamená, že musíte implementovat další mechanismy, abyste zajistili dostupnost svých databází. Můžete dosáhnout 99,99% SLA vytvořením dalšího virtuálního počítače SQL a implementací řešení vysoké dostupnosti skupiny dostupnosti Always On SQL Server. 
 - [Čas přechodu do Azure](#market): SQL Server na virtuálním počítači Azure je přesnou shodu vašeho prostředí, takže migrace z místního počítače na virtuální počítač Azure se neliší od přesunu databází z jednoho místního serveru na jiný. Spravovaná instance SQL taky umožňuje snadnou migraci. před migrací ale můžou být nějaké změny, které musíte použít. 
 

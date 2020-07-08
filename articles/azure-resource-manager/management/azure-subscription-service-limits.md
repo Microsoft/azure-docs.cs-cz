@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: 7805e65b3f49a69d4667180715a58585767ddf5a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391472"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080971"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
 Tento dokument obsahuje seznam některých nejběžnějších omezení Microsoft Azure, která se také někdy označují jako kvóty.
 
-Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https://azure.microsoft.com/pricing/). V takovém případě můžete náklady odhadnout pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/). Můžete také přejít na stránku s podrobnostmi o cenách pro konkrétní službu, například na [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Tipy, které vám pomůžou se správou nákladů, najdete v tématu [Ochrana před neočekávanými náklady pomocí fakturace a správy nákladů Azure](../../billing/billing-getting-started.md).
+Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https://azure.microsoft.com/pricing/). V takovém případě můžete náklady odhadnout pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/). Můžete také přejít na stránku s podrobnostmi o cenách pro konkrétní službu, například na [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Tipy, které vám pomůžou se správou nákladů, najdete v tématu [Ochrana před neočekávanými náklady pomocí fakturace a správy nákladů Azure](../../cost-management-billing/manage/getting-started.md).
 
 ## <a name="managing-limits"></a>Správa omezení
 
@@ -29,7 +29,7 @@ Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https:/
 >
 > Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](../templates/error-resource-quota.md)zdarma.
 
-[Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](../../billing/billing-upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
+[Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](../../cost-management-billing/manage/upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
 
 Některá omezení se spravují na regionální úrovni.
 
@@ -259,7 +259,7 @@ Následující tabulka obsahuje informace o funkcích a omezeních [úrovní slu
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (starší verze)
 
-Omezení specifická pro Media Services V2 (starší verze) najdete v tématu [Media Services V2 (starší verze)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations) .
+Omezení specifická pro Media Services V2 (starší verze) najdete v tématu [Media Services V2 (starší verze)](../../media-services/previous/media-services-quotas-and-limitations.md) .
 
 ## <a name="mobile-services-limits"></a>Omezení Mobile Services
 
@@ -332,11 +332,11 @@ Následující tabulka se vztahuje na SKU V1, v2, Standard a WAF, pokud není uv
 
 ## <a name="sql-database-limits"></a>Omezení SQL Database
 
-Omezení SQL Database najdete v tématu omezení [prostředků SQL Database pro izolované databáze](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL Database omezení prostředků pro elastické fondy a databáze ve fondu](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)a [SQL Database omezení prostředků pro spravované instance](../../azure-sql/managed-instance/resource-limits.md).
+Omezení SQL Database najdete v tématu omezení [prostředků SQL Database pro izolované databáze](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL Database omezení prostředků pro elastické fondy a databáze ve fondu](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)a [SQL Database omezení prostředků pro spravovanou instanci SQL](../../azure-sql/managed-instance/resource-limits.md).
 
-## <a name="sql-data-warehouse-limits"></a>Omezení SQL Data Warehouse
+## <a name="azure-synapse-analytics-limits"></a>Omezení Azure synapse Analytics
 
-Omezení SQL Data Warehouse najdete v tématu [omezení prostředků SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+Omezení Azure synapse Analytics najdete v tématu [omezení prostředků Azure synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
 ## <a name="storage-limits"></a>Omezení úložiště
 

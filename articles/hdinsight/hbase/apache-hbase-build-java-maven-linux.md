@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/24/2019
-ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f367f7fb6201a62c7fb47e0c593d04d41e0b378
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079509"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Java pro Apache HBA
 
@@ -57,13 +57,13 @@ cd C:\HDI
     mkdir conf
     ```
 
-    Tento příkaz vytvoří adresář s názvem `hbaseapp` v aktuálním umístění, který obsahuje základní projekt Maven. Druhý příkaz změní pracovní adresář na `hbaseapp`. Třetí příkaz vytvoří nový adresář, `conf`který bude později použit. `hbaseapp` Adresář obsahuje následující položky:
+    Tento příkaz vytvoří adresář s názvem `hbaseapp` v aktuálním umístění, který obsahuje základní projekt Maven. Druhý příkaz změní pracovní adresář na `hbaseapp` . Třetí příkaz vytvoří nový adresář, `conf` který bude později použit. `hbaseapp`Adresář obsahuje následující položky:
 
     * `pom.xml`: Model objektu projektu ([pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje informace a podrobnosti o konfiguraci použité k sestavení projektu.
     * `src\main\java\com\microsoft\examples`: Obsahuje kód vaší aplikace.
     * `src\test\java\com\microsoft\examples`: Obsahuje testy pro vaši aplikaci.
 
-2. Odeberte generovaný ukázkový kód. Odstraňte vygenerované soubory `AppTest.java`testů a aplikace a `App.java` zadáním následujících příkazů:
+2. Odeberte generovaný ukázkový kód. Odstraňte vygenerované soubory testů a aplikace `AppTest.java` a `App.java` zadáním následujících příkazů:
 
     ```cmd
     DEL src\main\java\com\microsoft\examples\App.java
@@ -72,7 +72,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>Aktualizace modelu objektu projektu
 
-Úplný odkaz na soubor pom. XML naleznete v tématu https://maven.apache.org/pom.html.  Otevřete `pom.xml` zadáním následujícího příkazu:
+Úplný odkaz na soubor pom.xml naleznete v tématu https://maven.apache.org/pom.html .  Otevřete zadáním `pom.xml` následujícího příkazu:
 
 ```cmd
 notepad pom.xml
@@ -80,7 +80,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Přidat závislosti
 
-V `pom.xml`přidejte do `<dependencies>` oddílu následující text:
+V `pom.xml` přidejte do oddílu následující text `<dependencies>` :
 
 ```xml
 <dependency>
@@ -111,7 +111,7 @@ Další informace o verzích a součástech služby HDInsight najdete v tématu 
 
 Moduly plug-in Maven umožňují přizpůsobit fáze sestavení projektu. Tato část slouží k přidání modulů plug-in, prostředků a dalších možností konfigurace sestavení.
 
-Do `pom.xml` souboru přidejte následující kód a soubor uložte a zavřete. Tento text musí být uvnitř `<project>...</project>` značek v souboru, například mezi `</dependencies>` a. `</project>`
+Do souboru přidejte následující kód `pom.xml` a soubor uložte a zavřete. Tento text musí být uvnitř `<project>...</project>` značek v souboru, například mezi `</dependencies>` a `</project>` .
 
 ```xml
 <build>
@@ -158,18 +158,18 @@ Do `pom.xml` souboru přidejte následující kód a soubor uložte a zavřete. 
 </build>
 ```
 
-V této části nakonfigurujete`conf/hbase-site.xml`prostředek (), který obsahuje informace o konfiguraci pro adaptéry HBA.
+V této části nakonfigurujete prostředek ( `conf/hbase-site.xml` ), který obsahuje informace o konfiguraci pro adaptéry HBA.
 
 > [!NOTE]  
 > Můžete také nastavit konfigurační hodnoty prostřednictvím kódu. Podívejte se na komentáře v `CreateTable` příkladu.
 
-Tato část také nakonfiguruje modul [Plug-in kompilátoru Apache Maven](https://maven.apache.org/plugins/maven-compiler-plugin/) a [modul plug-in Apache Maven pro stíny](https://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru se používá ke kompilaci topologie. Modul plug-in pro barevný nádech se používá k tomu, aby se zabránilo duplicitě licencí v balíčku JAR, který je sestavený pomocí Maven. Tento modul plug-in se používá k tomu, aby v clusteru HDInsight nedocházelo k chybě duplicitních licenčních souborů v době běhu. Použití Maven-destínového plug- `ApacheLicenseResourceTransformer` in s implementací zabraňuje chybu.
+Tato část také nakonfiguruje modul [Plug-in kompilátoru Apache Maven](https://maven.apache.org/plugins/maven-compiler-plugin/) a [modul plug-in Apache Maven pro stíny](https://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru se používá ke kompilaci topologie. Modul plug-in pro barevný nádech se používá k tomu, aby se zabránilo duplicitě licencí v balíčku JAR, který je sestavený pomocí Maven. Tento modul plug-in se používá k tomu, aby v clusteru HDInsight nedocházelo k chybě duplicitních licenčních souborů v době běhu. Použití Maven-destínového plug-in s `ApacheLicenseResourceTransformer` implementací zabraňuje chybu.
 
 Maven-barevný modul plug-in také vytvoří Uber jar, který obsahuje všechny závislosti, které aplikace požaduje.
 
-### <a name="download-the-hbase-sitexml"></a>Stažení souboru HBase-site. XML
+### <a name="download-the-hbase-sitexml"></a>Stáhnout hbase-site.xml
 
-K zkopírování konfigurace adaptérů HBA z clusteru HBA do `conf` adresáře použijte následující příkaz. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight a pak zadejte příkaz:
+K zkopírování konfigurace adaptérů HBA z clusteru HBA do adresáře použijte následující příkaz `conf` . Nahraďte `CLUSTERNAME` názvem clusteru HDInsight a pak zadejte příkaz:
 
 ```cmd
 scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -179,7 +179,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ### <a name="implement-a-createtable-class"></a>Implementace třídy Create
 
-Zadáním následujícího příkazu vytvořte nový soubor `CreateTable.java`a otevřete ho. V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
+Zadáním následujícího příkazu vytvořte nový soubor a otevřete ho `CreateTable.java` . V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
@@ -261,7 +261,7 @@ Tento kód je `CreateTable` třída, která vytvoří tabulku s názvem `people`
 
 ### <a name="implement-a-searchbyemail-class"></a>Implementace třídy SearchByEmail
 
-Zadáním následujícího příkazu vytvořte nový soubor `SearchByEmail.java`a otevřete ho. V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
+Zadáním následujícího příkazu vytvořte nový soubor a otevřete ho `SearchByEmail.java` . V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
@@ -342,11 +342,11 @@ public class SearchByEmail {
 }
 ```
 
-`SearchByEmail` Třída se dá použít k dotazování na řádky podle e-mailové adresy. Vzhledem k tomu, že používá filtr regulárního výrazu, lze při použití třídy zadat buď řetězec, nebo regulární výraz.
+`SearchByEmail`Třída se dá použít k dotazování na řádky podle e-mailové adresy. Vzhledem k tomu, že používá filtr regulárního výrazu, lze při použití třídy zadat buď řetězec, nebo regulární výraz.
 
 ### <a name="implement-a-deletetable-class"></a>Implementace třídy DELETE
 
-Zadáním následujícího příkazu vytvořte nový soubor `DeleteTable.java`a otevřete ho. V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
+Zadáním následujícího příkazu vytvořte nový soubor a otevřete ho `DeleteTable.java` . V příkazovém řádku vyberte **Ano** , pokud chcete vytvořit nový soubor.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
@@ -376,7 +376,7 @@ public class DeleteTable {
 }
 ```
 
-`DeleteTable` Třída vyčistí tabulky HBA vytvořené v tomto příkladu tím, že zakáže a vyřadí tabulku vytvořenou `CreateTable` třídou.
+`DeleteTable`Třída vyčistí tabulky HBA vytvořené v tomto příkladu tím, že zakáže a vyřadí tabulku vytvořenou `CreateTable` třídou.
 
 ## <a name="build-and-package-the-application"></a>Sestavení a zabalení aplikace
 
@@ -388,14 +388,14 @@ public class DeleteTable {
 
     Tento příkaz sestaví a zabalí aplikaci do souboru. jar.
 
-2. Po dokončení příkazu `hbaseapp/target` adresář obsahuje soubor s názvem `hbaseapp-1.0-SNAPSHOT.jar`.
+2. Po dokončení příkazu `hbaseapp/target` adresář obsahuje soubor s názvem `hbaseapp-1.0-SNAPSHOT.jar` .
 
    > [!NOTE]  
-   > `hbaseapp-1.0-SNAPSHOT.jar` Soubor je Uber jar. Obsahuje všechny závislosti potřebné ke spuštění aplikace.
+   > `hbaseapp-1.0-SNAPSHOT.jar`Soubor je Uber jar. Obsahuje všechny závislosti potřebné ke spuštění aplikace.
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>Nahrát úlohy JAR a spustit (SSH)
 
-Následující postup slouží `scp` ke zkopírování jar do primárního hlavního uzlu HBA HBA v clusteru HDInsight. `ssh` Příkaz se pak použije pro připojení ke clusteru a spuštění příkladu přímo na hlavním uzlu.
+Následující postup slouží `scp` ke zkopírování jar do primárního hlavního uzlu HBA HBA v clusteru HDInsight. `ssh`Příkaz se pak použije pro připojení ke clusteru a spuštění příkladu přímo na hlavním uzlu.
 
 1. Nahrajte jar do clusteru. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight a potom zadejte následující příkaz:
 
@@ -425,12 +425,14 @@ Následující postup slouží `scp` ke zkopírování jar do primárního hlavn
 
     Zobrazí se následující výsledky:
 
-        Franklin Holtz - ID: 2
-        Franklin Holtz - franklin@contoso.com - ID: 2
-        Rae Schroeder - ID: 4
-        Rae Schroeder - rae@contoso.com - ID: 4
-        Gabriela Ingram - ID: 6
-        Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```console
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
 5. Chcete-li odstranit tabulku, použijte následující příkaz:
 
@@ -442,7 +444,7 @@ Následující postup slouží `scp` ke zkopírování jar do primárního hlavn
 
 Následující postup slouží k nahrání JAR do výchozího úložiště pro cluster Apache HBA pomocí Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) . Rutiny HDInsight se pak používají ke vzdálenému spuštění příkladů.
 
-1. Po instalaci a konfiguraci modulu AZ Module vytvořte soubor s názvem `hbase-runner.psm1`. Jako obsah souboru použijte následující text:
+1. Po instalaci a konfiguraci modulu AZ Module vytvořte soubor s názvem `hbase-runner.psm1` . Jako obsah souboru použijte následující text:
 
    ```powershell
     <#
@@ -664,7 +666,7 @@ Následující postup slouží k nahrání JAR do výchozího úložiště pro c
 
     Po zobrazení výzvy zadejte jméno a heslo přihlášení clusteru (správce). Příkaz nahraje `hbaseapp-1.0-SNAPSHOT.jar` do `example/jars` umístění v primárním úložišti pro váš cluster.
 
-5. Chcete-li vytvořit tabulku pomocí `hbaseapp`, použijte následující příkaz:
+5. Chcete-li vytvořit tabulku pomocí `hbaseapp` , použijte následující příkaz:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName $myCluster
@@ -682,14 +684,16 @@ Následující postup slouží k nahrání JAR do výchozího úložiště pro c
 
     Po zobrazení výzvy zadejte jméno a heslo přihlášení clusteru (správce).
 
-    Tento příkaz používá `SearchByEmail` třídu k vyhledání všech řádků, ve kterých rodina `contactinformation` sloupců a `email` sloupec obsahuje řetězec. `contoso.com` Měli byste obdržet následující výsledky:
+    Tento příkaz používá `SearchByEmail` třídu k vyhledání všech řádků, ve kterých `contactinformation` rodina sloupců a `email` sloupec obsahuje řetězec `contoso.com` . Měli byste obdržet následující výsledky:
 
-          Franklin Holtz - ID: 2
-          Franklin Holtz - franklin@contoso.com - ID: 2
-          Rae Schroeder - ID: 4
-          Rae Schroeder - rae@contoso.com - ID: 4
-          Gabriela Ingram - ID: 6
-          Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```output
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
     Použití **fabrikam.com** pro `-emailRegex` hodnotu vrátí uživatele, kteří mají **fabrikam.com** v poli e-mail. Jako hledaný termín můžete použít také regulární výrazy. Například **^ r** vrátí e-mailové adresy, které začínají písmenem "r".
 

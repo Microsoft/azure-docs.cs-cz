@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81314290"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079645"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure Portal
 
@@ -34,7 +34,7 @@ Azure ve výchozím nastavení směruje provoz mezi všemi podsítěmi v rámci 
 
 V tomto kurzu se používá [Azure Portal](https://portal.azure.com). Můžete použít také rozhraní příkazového [řádku Azure](tutorial-create-route-table-cli.md) nebo [Azure PowerShell](tutorial-create-route-table-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-an-nva"></a>Vytvoření síťového virtuálního zařízení
 
@@ -42,7 +42,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
 1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 
-1. Vyberte **zabezpečení** > **Windows serveru 2016 Datacenter**.
+1. Vyberte **zabezpečení**  >  **Windows serveru 2016 Datacenter**.
 
     ![Windows Server 2016 Datacenter, vytvoření virtuálního počítače, Azure Portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
 
@@ -144,7 +144,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
 1. Vyberte název směrovací tabulky (**myRouteTablePublic**).
 
-1. Vyberte **trasy** > **Přidat**.
+1. Vyberte **trasy**  >  **Přidat**.
 
     ![Přidat trasu, směrovací tabulku, Azure Portal](./media/tutorial-create-route-table-portal/add-route.png)
 
@@ -239,7 +239,7 @@ Než vyberete **vytvořit** , abyste vytvořili veřejný nebo privátní virtu�
 
 1. Na stránce **připojit se pomocí protokolu RDP** vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (*. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor *. RDP* . Pokud se zobrazí výzva, vyberte **Připojit**. Vyberte **Další možnosti** > **použít jiný účet**a pak zadejte uživatelské jméno a heslo, které jste zadali při vytváření privátního virtuálního počítače.
+1. Otevřete stažený soubor *. RDP* . Pokud se zobrazí výzva, vyberte **Připojit**. Vyberte **Další možnosti**  >  **použít jiný účet**a pak zadejte uživatelské jméno a heslo, které jste zadali při vytváření privátního virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -275,7 +275,7 @@ V pozdějším kroku použijete nástroj Trace Route k otestování směrování
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. Restartujte virtuální počítač *myVmNva* : na hlavním panelu vyberte **Spustit** > **napájení**, **ostatní (plánované)** > **pokračovat**.
+1. Restartujte virtuální počítač *myVmNva* : na hlavním panelu vyberte **Spustit**  >  **napájení**, **ostatní (plánované)**  >  **pokračovat**.
 
     Tím se také odpojí relace vzdálené plochy.
 
@@ -359,3 +359,6 @@ I když můžete nasadit mnoho prostředků Azure v rámci virtuální sítě, A
 
 > [!div class="nextstepaction"]
 > [Omezení síťového přístupu k prostředkům PaaS](tutorial-restrict-network-access-to-resources.md)
+
+> [!NOTE] 
+> Náklady na služby Azure Services. Azure Cost Management vám pomůže nastavit rozpočty a nakonfigurovat výstrahy, aby zůstaly pod kontrolou. Pomocí Cost Management Analyzujte, spravujte a optimalizujte náklady na Azure. Další informace najdete v [rychlém startu při analýze vašich nákladů](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

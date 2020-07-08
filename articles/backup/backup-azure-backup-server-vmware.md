@@ -3,11 +3,12 @@ title: Zálohování virtuálních počítačů VMware pomocí Azure Backup Serv
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware běžící na serveru VMware vCenter/ESXi.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628441"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081056"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -26,9 +27,8 @@ V tomto článku se dozvíte, jak:
 - Ověřte, že používáte verzi vCenter/ESXi, která je podporovaná pro zálohování. Další informace najdete v [tématu](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)věnovaném matici podpory.
 - Ujistěte se, že jste nastavili Azure Backup Server. Pokud jste to ještě neudělali, [udělejte to předtím,](backup-azure-microsoft-azure-backup.md) než začnete. Měli byste používat Azure Backup Server s nejnovějšími aktualizacemi.
 - Ujistěte se, že jsou otevřené následující síťové porty:
-    - TCP 443 mezi MABS a vCenter
-    - TCP 443 a TCP 902 mezi MABS a hostiteli ESXi
-
+  - TCP 443 mezi MABS a vCenter
+  - TCP 443 a TCP 902 mezi MABS a hostiteli ESXi
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Vytvoření zabezpečeného připojení k vCenter Server
 
@@ -133,72 +133,75 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 
 ### <a name="role-permissions"></a>Oprávnění role
 
-| Oprávnění pro uživatelský účet vCenter 6,7                     | Oprávnění pro uživatelský účet vCenter 6,5                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Úložiště dat cluster.Configurovat clusteru datatstore            | Úložiště dat cluster.Configurovat clusteru datatstore            |
-| Úložiště dat. AllocateSpace                                      | Úložiště dat. AllocateSpace                                      |
-| Úložiště dat. procházet úložiště dat                                   | Úložiště dat. procházet úložiště dat                                   |
-| Úložiště dat. operace se soubory na nízké úrovni                          | Úložiště dat. operace se soubory na nízké úrovni                          |
-| Metody Global. disable                                       | Metody Global. disable                                       |
-| Metody Global. Enable                                        | Metody Global. Enable                                        |
-| Globální. licence                                              | Globální. licence                                              |
-| Global. log – událost                                             | Global. log – událost                                             |
-| Globální. Správa vlastních atributů                              | Globální. Správa vlastních atributů                              |
-| Global. set – vlastní atribut                                  | Global. set – vlastní atribut                                  |
-| Host. Local – operace. Vytvořit virtuální počítač                | Host. Local – operace. Vytvořit virtuální počítač                |
-| Síť. přiřaďte síť                                       | Síť. přiřaďte síť                                       |
-| Partner. Přiřadit virtuální počítač k fondu zdrojů           | Partner. Přiřadit virtuální počítač k fondu zdrojů           |
-| vApp. Add – virtuální počítač                                     | vApp. Add – virtuální počítač                                     |
-| vApp. Assign – fond zdrojů                                    | vApp. Assign – fond zdrojů                                    |
-| vApp. Unregister                                              | vApp. Unregister                                              |
-| VirtualMachine.Configuration. Přidat nebo odebrat zařízení          | VirtualMachine.Configuration. Přidat nebo odebrat zařízení          |
-| Virtuální machine.Configuration. Získání zapůjčení disku            | Virtuální machine.Configuration. Zapůjčení disku                     |
-| Virtuální machine.Configuration. Přidat nový disk                   | Virtuální machine.Configuration. Přidat nový disk                   |
-| Virtuální machine.Configuration. Pokročilá konfigurace        | Virtuální machine.Configuration. Upřesnit                       |
-| Virtuální machine.Configuration. Přepnout sledování změn disků   | Virtuální machine.Configuration. Sledování změn disků          |
-| Zařízení USB hostitele Virtual machine.Configuration.Configurovat     | Virtuální machine.Configuration. Hostitelské zařízení USB               |
-| Virtuální machine.Configuration. Zvětšit virtuální disk           | Virtuální machine.Configuration. Zvětšit virtuální disk           |
-| Virtuální machine.Configuration. Dotazování nevlastněných souborů           | Virtuální machine.Configuration. Dotazování nevlastněných souborů           |
-| Virtuální machine.Configuration. Změnit umístění swapfile     | Virtuální machine.Configuration. Umístění swapfile            |
-| Virtuální počítač. Operace hosta. spuštění programu operace hosta | Virtuální počítač. Operace hosta. spuštění programu operace hosta |
-| Virtuální počítač. Operace hosta. změny operací hosta | Virtuální počítač. Operace hosta. změny operací hosta |
-| Virtuální počítač. Operace hosta. dotazy operace hosta    | Virtuální počítač. Operace hosta. dotazy operace hosta    |
-| Virtuální počítač. Působení. Připojení zařízení             | Virtuální počítač. Působení. Připojení zařízení             |
+Následující tabulka zachycuje oprávnění, která je třeba přiřadit k vytvořenému uživatelskému účtu:
+
+| Oprávnění pro uživatelský účet vCenter 6,5                          | Oprávnění pro uživatelský účet vCenter 6,7                            |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Úložiště dat cluster.Configurovat clusteru úložiště dat                           | Úložiště dat cluster.Configurovat clusteru úložiště dat                           |
+| Úložiště dat. AllocateSpace                                                    | Úložiště dat. AllocateSpace                                                    |
+| Úložiště dat. procházet úložiště dat                                                 | Úložiště dat. procházet úložiště dat                                                 |
+| Úložiště dat. operace se soubory na nízké úrovni                                        | Úložiště dat. operace se soubory na nízké úrovni                                        |
+| Metody Global. disable                                                     | Metody Global. disable                                                     |
+| Metody Global. Enable                                                      | Metody Global. Enable                                                      |
+| Globální. licence                                                            | Globální. licence                                                            |
+| Global. log – událost                                                           | Global. log – událost                                                           |
+| Globální. Správa vlastních atributů                                            | Globální. Správa vlastních atributů                                            |
+| Global. set – vlastní atribut                                                | Global. set – vlastní atribut                                                |
+| Host. Local – operace. Vytvořit virtuální počítač                               | Host. Local – operace. Vytvořit virtuální počítač                               |
+| Síť. přiřaďte síť                                                     | Síť. přiřaďte síť                                                     |
+| Partner. Přiřadit virtuální počítač k fondu zdrojů                          | Partner. Přiřadit virtuální počítač k fondu zdrojů                          |
+| vApp. Add – virtuální počítač                                                   | vApp. Add – virtuální počítač                                                   |
+| vApp. Assign – fond zdrojů                                                  | vApp. Assign – fond zdrojů                                                  |
+| vApp. Unregister                                                            | vApp. Unregister                                                            |
+| VirtualMachine.Configuration. Přidat nebo odebrat zařízení                         | VirtualMachine.Configuration. Přidat nebo odebrat zařízení                         |
+| Virtuální machine.Configuration. Zapůjčení disku                                   | Virtuální machine.Configuration. Získání zapůjčení disku                           |
+| Virtuální machine.Configuration. Přidat nový disk                                 | Virtuální machine.Configuration. Přidat nový disk                                 |
+| Virtuální machine.Configuration. Upřesnit                                     | Virtuální machine.Configuration. Pokročilá konfigurace                       |
+| Virtuální machine.Configuration. Sledování změn disků                         | Virtuální machine.Configuration. Přepnout sledování změn disků                  |
+| Virtuální machine.Configuration. Hostitelské zařízení USB                              | Zařízení USB hostitele Virtual machine.Configuration.Configurovat                    |
+| Virtuální machine.Configuration. Zvětšit virtuální disk                          | Virtuální machine.Configuration. Zvětšit virtuální disk                          |
+| Virtuální machine.Configuration. Dotazování nevlastněných souborů                          | Virtuální machine.Configuration. Dotazování nevlastněných souborů                          |
+| Virtuální machine.Configuration. Umístění swapfile                           | Virtuální machine.Configuration. Změnit umístění swapfile                    |
+| Virtuální počítač. Operace hosta. spuštění programu operace hosta         | Virtuální počítač. Operace hosta. spuštění programu operace hosta         |
+| Virtuální počítač. Operace hosta. změny operací hosta             | Virtuální počítač. Operace hosta. změny operací hosta             |
+| Virtuální počítač. Operace hosta. dotazy operace hosta                   | Virtuální počítač. Operace hosta. dotazy operace hosta                   |
+| Virtuální počítač. Působení. Připojení zařízení                            | Virtuální počítač. Působení. Připojení zařízení                            |
 | Virtuální počítač. Působení. Správa hostovaného operačního systému pomocí rozhraní VIX API | Virtuální počítač. Působení. Správa hostovaného operačního systému pomocí rozhraní VIX API |
-| Virtuální počítač. Působení. Vypnutí napájení                      | Virtuální počítač. Působení. Vypnutí napájení                      |
-| Virtuální počítač. Inventář. vytvořit nový                        | Virtuální počítač. Inventář. vytvořit nový                        |
-| Virtuální počítač. Inventář. odebrat                            | Virtuální počítač. Inventář. odebrat                            |
-| Virtuální počítač. Inventarizace. Register                          | Virtuální počítač. Inventarizace. Register                          |
-| Virtuální počítač. Zřizování. povolení přístupu k disku             | Virtuální počítač. Zřizování. povolení přístupu k disku             |
-| Virtuální počítač. Zřizování. povolení přístupu k souborům             | Virtuální počítač. Zřizování. povolení přístupu k souborům             |
-| Virtuální počítač. Zřizování. povolení přístupu k disku jen pro čtení   | Virtuální počítač. Zřizování. povolení přístupu k disku jen pro čtení   |
-| Virtuální počítač. Zřizování. povolení stahování virtuálního počítače | Virtuální počítač. Zřizování. povolení stahování virtuálního počítače |
-| Virtuální počítač. Správa snímků.  Vytvoření snímku       | Virtuální počítač. Správa snímků.  Vytvoření snímku       |
-| Virtuální počítač. Správa snímků. Odebrat snímek        | Virtuální počítač. Správa snímků. Odebrat snímek        |
-| Virtuální počítač. Správa snímků. Vrátit se ke snímku     | Virtuální počítač. Správa snímků. Vrátit se ke snímku     |
+| Virtuální počítač. Působení. Vypnutí napájení                                    | Virtuální počítač. Působení. Vypnutí napájení                                    |
+| Virtuální počítač. Inventář. vytvořit nový                                      | Virtuální počítač. Inventář. vytvořit nový                                      |
+| Virtuální počítač. Inventář. odebrat                                          | Virtuální počítač. Inventář. odebrat                                          |
+| Virtuální počítač. Inventarizace. Register                                        | Virtuální počítač. Inventarizace. Register                                        |
+| Virtuální počítač. Zřizování. povolení přístupu k disku                            | Virtuální počítač. Zřizování. povolení přístupu k disku                            |
+| Virtuální počítač. Zřizování. povolení přístupu k souborům                            | Virtuální počítač. Zřizování. povolení přístupu k souborům                            |
+| Virtuální počítač. Zřizování. povolení přístupu k disku jen pro čtení                  | Virtuální počítač. Zřizování. povolení přístupu k disku jen pro čtení                  |
+| Virtuální počítač. Zřizování. povolení stahování virtuálního počítače               | Virtuální počítač. Zřizování. povolení stahování virtuálního počítače               |
+| Virtuální počítač. Správa snímků. Vytvoření snímku                      | Virtuální počítač. Správa snímků. Vytvoření snímku                      |
+| Virtuální počítač. Správa snímků. Odebrat snímek                       | Virtuální počítač. Správa snímků. Odebrat snímek                       |
+| Virtuální počítač. Správa snímků. Vrátit se ke snímku                    | Virtuální počítač. Správa snímků. Vrátit se ke snímku                    |
 
-<br>
+> [!NOTE]
+> Následující tabulka uvádí oprávnění pro uživatelské účty vCenter 6,0 a vCenter 5,5.
 
-| **Oprávnění pro uživatelský účet vCenter 6,0**                | **Oprávnění pro uživatelský účet vCenter 5,5** |
-| ---------------------------------------------------------- | ------------------------------------------- |
-| Úložiště dat. AllocateSpace                                    | Síť. přiřadit                              |
-| Globální. Správa vlastních atributů                           | Úložiště dat. AllocateSpace                     |
-| Global. set – vlastní atribut                               | VirtualMachine.Config. Sledování změn ve        |
-| Host. Local – operace. Vytvořit virtuální počítač              | VirtualMachine. State. RemoveSnapshot         |
-| Sítě.  Přiřadit síť                                   | VirtualMachine. State. CreateSnapshot         |
-| Partner.  Přiřadit virtuální počítač k fondu zdrojů         | VirtualMachine. Provisioning. DiskRandomRead  |
-| Virtuální machine.Configuration. Přidat nový disk                | VirtualMachine. interaktivně. stavu poweroff            |
-| Virtuální machine.Configuration. Upřesnit                    | VirtualMachine. Inventory. Create             |
-| Virtuální machine.Configuration. Sledování změn disků        | VirtualMachine.Config. AddNewDisk            |
-| Virtuální machine.Configuration. Hostitelské zařízení USB             | VirtualMachine.Config. HostUSBDevice         |
-| Virtuální machine.Configuration. Dotazování nevlastněných souborů         | VirtualMachine.Config. AdvancedConfig        |
-| Virtuální machine.Configuration. Umístění swapfile          | VirtualMachine.Config. SwapPlacement         |
-| Virtuální počítač. Interakce. vypnutí                     | Global. ManageCustomFields                   |
-| Virtuální počítač. Inventáře. Vytvořit nový                     |                                             |
-| Virtuální počítač. Zřizování. povolení přístupu k disku            |                                             |
-| Virtuální počítač. Zřizování. Povolení přístupu k disku jen pro čtení |                                             |
-| Virtuální počítač. Správa snímků. Vytvořit snímek       |                                             |
-| Virtuální počítač. Správa snímků. Odebrat snímek       |                                             |
+| Oprávnění pro uživatelský účet vCenter 6,0 | Oprávnění pro uživatelský účet vCenter 5,5 |
+| --- | --- |
+| Úložiště dat. AllocateSpace | Síť. přiřadit |
+| Globální. Správa vlastních atributů | Úložiště dat. AllocateSpace |
+| Global. set – vlastní atribut | VirtualMachine.Config. Sledování změn ve |
+| Host. Local – operace. Vytvořit virtuální počítač | VirtualMachine. State. RemoveSnapshot |
+| Sítě. Přiřadit síť | VirtualMachine. State. CreateSnapshot |
+| Partner. Přiřadit virtuální počítač k fondu zdrojů | VirtualMachine. Provisioning. DiskRandomRead |
+| Virtuální machine.Configuration. Přidat nový disk | VirtualMachine. interaktivně. stavu poweroff |
+| Virtuální machine.Configuration. Upřesnit | VirtualMachine. Inventory. Create |
+| Virtuální machine.Configuration. Sledování změn disků | VirtualMachine.Config. AddNewDisk |
+| Virtuální machine.Configuration. Hostitelské zařízení USB | VirtualMachine.Config. HostUSBDevice |
+| Virtuální machine.Configuration. Dotazování nevlastněných souborů | VirtualMachine.Config. AdvancedConfig |
+| Virtuální machine.Configuration. Umístění swapfile | VirtualMachine.Config. SwapPlacement |
+| Virtuální počítač. Interakce. vypnutí | Global. ManageCustomFields |
+| Virtuální počítač. Inventáře. Vytvořit nový |   |
+| Virtuální počítač. Zřizování. povolení přístupu k disku |   |
+| Virtuální počítač. Zřizování. Povolení přístupu k disku jen pro čtení |   |
+| Virtuální počítač. Správa snímků. Vytvořit snímek |   |
+| Virtuální počítač. Správa snímků. Odebrat snímek |   |
 
 ## <a name="create-a-vmware-account"></a>Vytvoření účtu VMware
 

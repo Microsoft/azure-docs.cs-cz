@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e06ff28c7980910636edeb06c5863859120484
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701877"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081566"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Řešení konkrétních chybových zpráv protokolu RDP pro virtuální počítač s Windows v Azure
 Při použití připojení vzdálené plochy k virtuálnímu počítači s Windows (VM) v Azure se může zobrazit konkrétní chybová zpráva. Tento článek podrobně popisuje některé běžné chybové zprávy, ke kterým došlo, a postup řešení potíží. Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači pomocí protokolu RDP, ale nedošlo k určité chybové zprávě, přečtěte si článek [Průvodce odstraňováním potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md).
@@ -39,7 +40,9 @@ Příčina: vypršela doba odkladu licencí pro roli serveru vzdálené plochy 1
 
 Jako alternativní řešení uložte místní kopii souboru RDP z portálu a spusťte tento příkaz na příkazovém řádku PowerShellu pro připojení. Tento krok zakáže licencování jenom pro toto připojení:
 
-        mstsc <File name>.RDP /admin
+```powershell
+mstsc <File name>.RDP /admin
+```
 
 Pokud nepotřebujete ve skutečnosti více než dvě současná připojení ke vzdálené ploše k virtuálnímu počítači, můžete k odebrání role serveru Vzdálená plocha použít Správce serveru.
 
@@ -54,9 +57,11 @@ Možná řešení:
 
 * Pokud pracujete v intranetu organizace, ujistěte se, že váš počítač má přístup k proxy server a může do něj odesílat přenosy přes protokol HTTPS.
 * Pokud používáte místně uložený soubor RDP, zkuste použít ten, který je vygenerovaný portálem. Tento krok zajistí, že budete mít správný název DNS pro virtuální počítač nebo cloudovou službu a port koncového bodu virtuálního počítače. Tady je ukázkový soubor RDP generovaný portálem:
-  
-        full address:s:tailspin-azdatatier.cloudapp.net:55919
-        prompt for credentials:i:1
+
+    ```output
+    full address:s:tailspin-azdatatier.cloudapp.net:55919
+    prompt for credentials:i:1
+    ```
 
 Část adresy tohoto souboru RDP má následující:
 

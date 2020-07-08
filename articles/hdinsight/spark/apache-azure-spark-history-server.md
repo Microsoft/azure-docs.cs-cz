@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76548930"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079288"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použití rozšířených funkcí serveru historie Apache Spark k ladění a diagnostice aplikací Spark
 
@@ -32,7 +32,7 @@ Server historie Spark je webové uživatelské rozhraní pro kompletní a běž�
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otevřete webové uživatelské rozhraní serveru historie Sparku podle adresy URL
 
-Otevřete Server historie Sparku tak, že `https://CLUSTERNAME.azurehdinsight.net/sparkhistory`přejdete na, kde **název_clusteru** je název vašeho clusteru Spark.
+Otevřete Server historie Sparku tak, že přejdete na `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` , kde **název_clusteru** je název vašeho clusteru Spark.
 
 Webové uživatelské rozhraní serveru historie Sparku může vypadat podobně jako na tomto obrázku:
 
@@ -97,10 +97,10 @@ Vyberte ID úlohy a potom v nabídce Nástroje vyberte **data** , aby se zobrazi
    ![Heat mapa na stránce grafu úlohy aplikace Spark &.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Barvy |Popis |
+    |Barva |Description |
     |---|---|
     |Green|Úloha se úspěšně dokončila.|
-    |Orange|Úloha se nezdařila, ale nemá vliv na konečný výsledek úlohy. Tyto úlohy mají duplicitní nebo opakované instance, které mohou být později úspěšné.|
+    |Oranžový|Úloha se nezdařila, ale nemá vliv na konečný výsledek úlohy. Tyto úlohy mají duplicitní nebo opakované instance, které mohou být později úspěšné.|
     |Blue|Úloha je spuštěna.|
     |White|Úloha čeká na spuštění, nebo byla fáze přeskočena.|
     |Červený|Úloha se nezdařila.|
@@ -208,7 +208,7 @@ Vyberte ikonu barvy a vyberte nebo zrušte výběr odpovídajícího obsahu ve v
 Pokud se chcete vrátit k verzi komunity, proveďte následující kroky.
 
 1. Otevřete cluster v Ambari.
-1. Přejděte do **Spark2** > **Konfigurace**Spark2.
+1. Přejděte do **Spark2**  >  **Konfigurace**Spark2.
 1. Vyberte **vlastní spark2 – výchozí**.
 1. Vybrat **Přidat vlastnost...**
 1. Přidejte **Spark. UI. vylepšení. Enabled = FALSE**a pak ho uložte.
@@ -245,7 +245,7 @@ Pokud na serveru historie Sparku narazíte na chybu, proveďte následující kr
 
 ### <a name="how-do-i-upgrade-a-jar-file-in-a-hotfix-scenario"></a>Návody upgradovat soubor. jar ve scénáři oprav hotfix?
 
-Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, který provede upgrade `spark-enhancement.jar*`.
+Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, který provede upgrade `spark-enhancement.jar*` .
 
 **upgrade_spark_enhancement. sh**:
 
@@ -310,7 +310,7 @@ Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, 
     |Vlastnost |Hodnota |
     |---|---|
     |Typ skriptu|– Vlastní|
-    |Název|UpgradeJar|
+    |Name|UpgradeJar|
     |Identifikátor URI skriptu bash|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
     |Typ (typy) uzlů|Vedoucí pracovník|
     |Parametry|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
@@ -328,6 +328,6 @@ Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, 
 + [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)
 + [Konfigurace nastavení Apache Sparku](apache-spark-settings.md)
 
-## <a name="feedback"></a>Váš názor
+## <a name="suggestions"></a>Návrhy
 
-Pokud máte při používání tohoto nástroje nějaké připomínky nebo máte nějaké problémy, pošlete e-mail na adresu ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).
+Pokud máte při používání tohoto nástroje nějaké připomínky nebo máte nějaké problémy, pošlete e-mail na adresu ( [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) ).

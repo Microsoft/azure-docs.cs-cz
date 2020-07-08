@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb6c540573ecd3163e9200be66edb58ed2ca4751
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672119"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079203"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Použití systému Apache prasete s Apache Hadoop v HDInsight
 
@@ -36,7 +36,7 @@ Jazyk latince pro vepřové písmo umožňuje popsat tok dat z nezpracovaného v
 
 * **Vypsat nebo uložit**: výstupní data na obrazovku nebo je uložit ke zpracování.
 
-### <a name="user-defined-functions"></a>Uživatelem definované funkce
+### <a name="user-defined-functions"></a>Uživatelsky definované funkce
 
 Prasečí Latin podporuje také uživatelsky definované funkce (UDF), které vám umožní vyvolat externí komponenty, které implementují logiku, která je obtížné modelovat v prasečí latince.
 
@@ -44,11 +44,13 @@ Další informace o standardu prasečí latinku najdete v tématu Ruční použi
 
 ## <a name="example-data"></a><a id="data"></a>Příklad dat
 
-HDInsight poskytuje různé příklady datových sad, které jsou uložené v `/example/data` adresářích `/HdiSamples` a. Tyto adresáře jsou ve výchozím úložišti pro váš cluster. Příklad prasete v tomto dokumentu používá soubor *log4j* z `/example/data/sample.log`.
+HDInsight poskytuje různé příklady datových sad, které jsou uložené v `/example/data` `/HdiSamples` adresářích a. Tyto adresáře jsou ve výchozím úložišti pro váš cluster. Příklad prasete v tomto dokumentu používá soubor *log4j* z `/example/data/sample.log` .
 
 Každý protokol uvnitř souboru se skládá z řádku polí obsahujícího `[LOG LEVEL]` pole pro zobrazení typu a závažnosti, například:
 
-    2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```output
+2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```
 
 V předchozím příkladu je úroveň protokolu CHYBná.
 
@@ -59,15 +61,15 @@ V předchozím příkladu je úroveň protokolu CHYBná.
 
 Následující úloha v latince prasete načte `sample.log` soubor z výchozího úložiště pro cluster HDInsight. Pak provede řadu transformací, jejichž výsledkem je počet, kolikrát se jednotlivé úrovně protokolu objevily ve vstupních datech. Výsledky jsou zapsány do STDOUT.
 
-    ```
-    LOGS = LOAD 'wasb:///example/data/sample.log';
-    LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-    FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
-    GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
-    FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
-    RESULT = order FREQUENCIES by COUNT desc;
-    DUMP RESULT;
-    ```
+```output
+LOGS = LOAD 'wasb:///example/data/sample.log';
+LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+RESULT = order FREQUENCIES by COUNT desc;
+DUMP RESULT;
+```
 
 Následující obrázek ukazuje souhrn toho, co každá transformace provádí s daty.
 

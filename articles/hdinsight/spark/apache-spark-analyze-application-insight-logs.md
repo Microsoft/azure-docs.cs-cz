@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435239"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078795"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights s využitím Apache Spark ve službě HDInsight
 
@@ -31,7 +31,7 @@ Naučte se, jak pomocí [Apache Spark](https://spark.apache.org/) v HDInsight an
 
 Při vývoji a testování tohoto dokumentu byly použity následující prostředky:
 
-* Data telemetrie Application Insights se vygenerovala pomocí [webové aplikace Node. js, která je nakonfigurovaná tak, aby používala Application Insights](../../azure-monitor/app/nodejs.md).
+* Data telemetrie Application Insights byla vygenerována pomocí [Node.js webové aplikace nakonfigurované pro použití Application Insights](../../azure-monitor/app/nodejs.md).
 
 * Pro analýzu dat byl použit systém Linux Spark v clusteru HDInsight verze 3,5.
 
@@ -70,7 +70,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 ## <a name="analyze-the-data-pyspark"></a>Analyzovat data: PySpark
 
-1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter` místo, kde název_clusteru je název vašeho clusteru.
+1. Ve webovém prohlížeči přejděte na místo, `https://CLUSTERNAME.azurehdinsight.net/jupyter` kde název_clusteru je název vašeho clusteru.
 
 2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **PySpark**. Otevře se nová karta prohlížeče obsahující Jupyter Notebook založenou na Pythonu.
 
@@ -80,19 +80,21 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Tento kód nakonfiguruje Spark k rekurzivnímu přístupu ke struktuře adresářů pro vstupní data. Application Insights telemetrie se do adresářové struktury přihlásí podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Tento kód nakonfiguruje Spark k rekurzivnímu přístupu ke struktuře adresářů pro vstupní data. Application Insights telemetrie se do adresářové struktury přihlásí podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/` .
 
-4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky se zobrazí znak\*"" v závorkách, který označuje, že kód v této buňce je právě spuštěn. Po dokončení\*se text změní na číslo a výstup podobný následujícímu textu se zobrazí pod buňkou:
+4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky \* se zobrazí znak "" v závorkách, který označuje, že kód v této buňce je právě spuštěn. Po dokončení se \* text změní na číslo a výstup podobný následujícímu textu se zobrazí pod buňkou:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    pyspark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
-5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. `CONTAINER` Nahraďte `STORAGEACCOUNT` a názvem účtu Azure Storage a názvem kontejneru objektů blob, který obsahuje Application Insights data.
+5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. Nahraďte `CONTAINER` a názvem `STORAGEACCOUNT` účtu Azure Storage a názvem kontejneru objektů blob, který obsahuje Application Insights data.
 
    ```python
    %%bash
@@ -101,15 +103,17 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
     Tuto buňku spustíte stisknutím **SHIFT + ENTER** . Zobrazí se výsledek podobný následujícímu textu:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
     Vrácená cesta wasbs je umístění dat telemetrie Application Insights. Změňte `hdfs dfs -ls` řádek v buňce, abyste použili vrácenou cestu wasbs a pak stisknutím **klávesy SHIFT + ENTER** znovu spusťte tuto buňku. Tentokrát by se měly zobrazit adresáře, které obsahují data telemetrie.
 
    > [!NOTE]  
-   > V případě zbývajících kroků v této části se použil `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresář. Vaše adresářová struktura se může lišit.
+   > V případě zbývajících kroků v této části se `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` použil adresář. Vaše adresářová struktura se může lišit.
 
-6. Do další buňky zadejte následující kód: Nahraďte `WASB_PATH` cestou k předchozímu kroku.
+6. Do další buňky zadejte následující kód: Nahraďte cestou k `WASB_PATH` předchozímu kroku.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -125,66 +129,68 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
     Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, které je vygenerováno pro webové požadavky (data uložená v `Requests` podadresáři):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. Pomocí následujícího příkazu zaregistrujte datový rámec jako dočasnou tabulku a spusťte dotaz na data:
 
@@ -201,19 +207,21 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
     Tento dotaz vrátí informace podobné následujícímu textu:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="analyze-the-data-scala"></a>Analyzovat data: Scala
 
-1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter` místo, kde název_clusteru je název vašeho clusteru.
+1. Ve webovém prohlížeči přejděte na místo, `https://CLUSTERNAME.azurehdinsight.net/jupyter` kde název_clusteru je název vašeho clusteru.
 
 2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **Scala**. Zobrazí se nová karta prohlížeče obsahující Jupyter Notebook na základě Scala.
 
@@ -223,19 +231,21 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Tento kód nakonfiguruje Spark k rekurzivnímu přístupu ke struktuře adresářů pro vstupní data. Application Insights telemetrie se do adresářové struktury přihlásí podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Tento kód nakonfiguruje Spark k rekurzivnímu přístupu ke struktuře adresářů pro vstupní data. Application Insights telemetrie se do adresářové struktury přihlásí podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/` .
 
-4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky se zobrazí znak\*"" v závorkách, který označuje, že kód v této buňce je právě spuštěn. Po dokončení\*se text změní na číslo a výstup podobný následujícímu textu se zobrazí pod buňkou:
+4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky \* se zobrazí znak "" v závorkách, který označuje, že kód v této buňce je právě spuštěn. Po dokončení se \* text změní na číslo a výstup podobný následujícímu textu se zobrazí pod buňkou:
 
-        Creating SparkContext as 'sc'
+    ```output
+    Creating SparkContext as 'sc'
 
-        ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
-        3    application_1468969497124_0001    spark    idle    Link    Link    ✔
+    ID    YARN Application ID    Kind    State    Spark UI    Driver log    Current session?
+    3    application_1468969497124_0001    spark    idle    Link    Link    ✔
 
-        Creating HiveContext as 'sqlContext'
-        SparkContext and HiveContext created. Executing user code ...
+    Creating HiveContext as 'sqlContext'
+    SparkContext and HiveContext created. Executing user code ...
+    ```
 
-5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. `CONTAINER` Nahraďte `STORAGEACCOUNT` a názvem účtu Azure Storage a názvem kontejneru objektů blob, který obsahuje protokoly Application Insights.
+5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. Nahraďte `CONTAINER` a názvem `STORAGEACCOUNT` účtu Azure Storage a názvem kontejneru objektů blob, který obsahuje protokoly Application Insights.
 
    ```scala
    %%bash
@@ -244,15 +254,17 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
     Tuto buňku spustíte stisknutím **SHIFT + ENTER** . Zobrazí se výsledek podobný následujícímu textu:
 
-        Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```output
+    Found 1 items
+    drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+    ```
 
     Vrácená cesta wasbs je umístění dat telemetrie Application Insights. Změňte `hdfs dfs -ls` řádek v buňce, abyste použili vrácenou cestu wasbs a pak stisknutím **klávesy SHIFT + ENTER** znovu spusťte tuto buňku. Tentokrát by se měly zobrazit adresáře, které obsahují data telemetrie.
 
    > [!NOTE]  
-   > V případě zbývajících kroků v této části se použil `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresář. Tento adresář možná neexistuje, pokud nejsou data telemetrie pro webovou aplikaci.
+   > V případě zbývajících kroků v této části se `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` použil adresář. Tento adresář možná neexistuje, pokud nejsou data telemetrie pro webovou aplikaci.
 
-6. Do další buňky zadejte následující kód: Nahraďte `WASB\_PATH` cestou k předchozímu kroku.
+6. Do další buňky zadejte následující kód: Nahraďte cestou k `WASB\_PATH` předchozímu kroku.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -270,66 +282,68 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
     Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, které je vygenerováno pro webové požadavky (data uložená v `Requests` podadresáři):
 
-        root
-        |-- context: struct (nullable = true)
-        |    |-- application: struct (nullable = true)
-        |    |    |-- version: string (nullable = true)
-        |    |-- custom: struct (nullable = true)
-        |    |    |-- dimensions: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |    |-- metrics: array (nullable = true)
-        |    |    |    |-- element: string (containsNull = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- eventTime: string (nullable = true)
-        |    |    |-- isSynthetic: boolean (nullable = true)
-        |    |    |-- samplingRate: double (nullable = true)
-        |    |    |-- syntheticSource: string (nullable = true)
-        |    |-- device: struct (nullable = true)
-        |    |    |-- browser: string (nullable = true)
-        |    |    |-- browserVersion: string (nullable = true)
-        |    |    |-- deviceModel: string (nullable = true)
-        |    |    |-- deviceName: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- osVersion: string (nullable = true)
-        |    |    |-- type: string (nullable = true)
-        |    |-- location: struct (nullable = true)
-        |    |    |-- city: string (nullable = true)
-        |    |    |-- clientip: string (nullable = true)
-        |    |    |-- continent: string (nullable = true)
-        |    |    |-- country: string (nullable = true)
-        |    |    |-- province: string (nullable = true)
-        |    |-- operation: struct (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |-- session: struct (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- isFirst: boolean (nullable = true)
-        |    |-- user: struct (nullable = true)
-        |    |    |-- anonId: string (nullable = true)
-        |    |    |-- isAuthenticated: boolean (nullable = true)
-        |-- internal: struct (nullable = true)
-        |    |-- data: struct (nullable = true)
-        |    |    |-- documentVersion: string (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |-- request: array (nullable = true)
-        |    |-- element: struct (containsNull = true)
-        |    |    |-- count: long (nullable = true)
-        |    |    |-- durationMetric: struct (nullable = true)
-        |    |    |    |-- count: double (nullable = true)
-        |    |    |    |-- max: double (nullable = true)
-        |    |    |    |-- min: double (nullable = true)
-        |    |    |    |-- sampledValue: double (nullable = true)
-        |    |    |    |-- stdDev: double (nullable = true)
-        |    |    |    |-- value: double (nullable = true)
-        |    |    |-- id: string (nullable = true)
-        |    |    |-- name: string (nullable = true)
-        |    |    |-- responseCode: long (nullable = true)
-        |    |    |-- success: boolean (nullable = true)
-        |    |    |-- url: string (nullable = true)
-        |    |    |-- urlData: struct (nullable = true)
-        |    |    |    |-- base: string (nullable = true)
-        |    |    |    |-- hashTag: string (nullable = true)
-        |    |    |    |-- host: string (nullable = true)
-        |    |    |    |-- protocol: string (nullable = true)
+    ```output
+    root
+    |-- context: struct (nullable = true)
+    |    |-- application: struct (nullable = true)
+    |    |    |-- version: string (nullable = true)
+    |    |-- custom: struct (nullable = true)
+    |    |    |-- dimensions: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |    |-- metrics: array (nullable = true)
+    |    |    |    |-- element: string (containsNull = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- eventTime: string (nullable = true)
+    |    |    |-- isSynthetic: boolean (nullable = true)
+    |    |    |-- samplingRate: double (nullable = true)
+    |    |    |-- syntheticSource: string (nullable = true)
+    |    |-- device: struct (nullable = true)
+    |    |    |-- browser: string (nullable = true)
+    |    |    |-- browserVersion: string (nullable = true)
+    |    |    |-- deviceModel: string (nullable = true)
+    |    |    |-- deviceName: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- osVersion: string (nullable = true)
+    |    |    |-- type: string (nullable = true)
+    |    |-- location: struct (nullable = true)
+    |    |    |-- city: string (nullable = true)
+    |    |    |-- clientip: string (nullable = true)
+    |    |    |-- continent: string (nullable = true)
+    |    |    |-- country: string (nullable = true)
+    |    |    |-- province: string (nullable = true)
+    |    |-- operation: struct (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |-- session: struct (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- isFirst: boolean (nullable = true)
+    |    |-- user: struct (nullable = true)
+    |    |    |-- anonId: string (nullable = true)
+    |    |    |-- isAuthenticated: boolean (nullable = true)
+    |-- internal: struct (nullable = true)
+    |    |-- data: struct (nullable = true)
+    |    |    |-- documentVersion: string (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |-- request: array (nullable = true)
+    |    |-- element: struct (containsNull = true)
+    |    |    |-- count: long (nullable = true)
+    |    |    |-- durationMetric: struct (nullable = true)
+    |    |    |    |-- count: double (nullable = true)
+    |    |    |    |-- max: double (nullable = true)
+    |    |    |    |-- min: double (nullable = true)
+    |    |    |    |-- sampledValue: double (nullable = true)
+    |    |    |    |-- stdDev: double (nullable = true)
+    |    |    |    |-- value: double (nullable = true)
+    |    |    |-- id: string (nullable = true)
+    |    |    |-- name: string (nullable = true)
+    |    |    |-- responseCode: long (nullable = true)
+    |    |    |-- success: boolean (nullable = true)
+    |    |    |-- url: string (nullable = true)
+    |    |    |-- urlData: struct (nullable = true)
+    |    |    |    |-- base: string (nullable = true)
+    |    |    |    |-- hashTag: string (nullable = true)
+    |    |    |    |-- host: string (nullable = true)
+    |    |    |    |-- protocol: string (nullable = true)
+    ```
 
 8. Pomocí následujícího příkazu zaregistrujte datový rámec jako dočasnou tabulku a spusťte dotaz na data:
 
@@ -345,15 +359,17 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
     Tento dotaz vrátí informace podobné následujícímu textu:
 
-        +---------+
-        |     city|
-        +---------+
-        | Bellevue|
-        |  Redmond|
-        |  Seattle|
-        |Charlotte|
-        ...
-        +---------+
+    ```output
+    +---------+
+    |     city|
+    +---------+
+    | Bellevue|
+    |  Redmond|
+    |  Seattle|
+    |Charlotte|
+    ...
+    +---------+
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 

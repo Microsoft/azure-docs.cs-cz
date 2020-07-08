@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: 068af40ed42d0211eed6e1a315016bb8ecc40d05
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081839"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Přidávání dat do protokolů auditu pomocí vlastních hlaviček protokolu HTTP
 
@@ -36,7 +36,7 @@ Vlastní hlavičky můžete použít k zachycení několika typů informací. P�
 > [!IMPORTANT]
 > Mějte na paměti, že informace odesílané ve vlastních hlavičkách jsou uloženy v systému interního protokolování společnosti Microsoft po dobu 30 dnů po jejich zpřístupnění v Azure log monitoring. Před přidáním informací do vlastních hlaviček doporučujeme šifrovat všechny informace. Pomocí zákaznických hlaviček byste neměli předávat žádné informace o FÍ.
 
-Pro hlavičky HTTP je nutné použít následující zásady vytváření názvů: X-MS-AZUREFHIR-AUDIT-AUDIT- \<name> .
+Pro hlavičky HTTP je nutné použít následující zásady vytváření názvů: X-MS-AZUREFHIR-AUDIT- \<name> .
 
 Tyto hlavičky HTTP jsou součástí kontejneru objektů a dat přidaných do protokolu. Příklad:
 

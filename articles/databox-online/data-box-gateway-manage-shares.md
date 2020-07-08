@@ -8,11 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339191"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079139"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě sdílených složek ve službě Azure Data Box Gateway 
 
@@ -91,23 +92,23 @@ Funkce aktualizace umožňuje aktualizovat obsah místní sdílené složky. Kdy
 
 Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal následující kroky.
 
-1.   Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
+1. Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
 
-    ![Vyberte sdílenou složku](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![Vyberte sdílenou složku](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   Klikněte na **Aktualizovat**. 
+2. Klikněte na **Aktualizovat**. 
 
-    ![Kliknutím aktualizujte](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![Kliknutím aktualizujte](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   Po zobrazení výzvy k potvrzení klikněte na **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky. 
+3. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Spustí se úloha, která zaktualizuje obsah místní sdílené složky. 
 
-    ![Potvrďte aktualizaci](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![Potvrďte aktualizaci](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   Když aktualizace probíhá, bude možnost aktualizace v místní nabídce neaktivní. Kliknutím na oznámení úlohy zobrazte stav úlohy aktualizace.
 
-5.   Doba aktualizace závisí na počtu souborů v kontejneru Azure a také na souborech v zařízení. Po úspěšném dokončení aktualizace se zaktualizuje časové razítko sdílené složky. Operace se považuje za úspěšnou i v případě částečně neúspěšné aktualizace a časové razítko zaktualizuje. 
+5. Doba aktualizace závisí na počtu souborů v kontejneru Azure a také na souborech v zařízení. Po úspěšném dokončení aktualizace se zaktualizuje časové razítko sdílené složky. Operace se považuje za úspěšnou i v případě částečně neúspěšné aktualizace a časové razítko zaktualizuje. 
 
-    ![Aktualizované časové razítko](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![Aktualizované časové razítko](media/data-box-gateway-manage-shares/refresh-4.png)
  
 Pokud dojde k selhání, bude vydána výstraha. Výstraha uvede podrobnosti příčiny a doporučení k vyřešení problému. Výstraha obsahuje také odkazy na soubor s úplným souhrnem chyb, včetně souborů, které se nepovedlo aktualizovat nebo odstranit.
 

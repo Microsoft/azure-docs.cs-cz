@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74559352"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080869"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získání viditelnosti pro Azure Security Center v úrovni tenanta
 Tento článek vysvětluje, jak spravovat stav zabezpečení vaší organizace pomocí zásad zabezpečení pro všechna předplatná Azure propojená s vaším klientem Azure Active Directory.
@@ -73,7 +74,7 @@ Správce tenanta Azure Active Directory nemá přímý přístup k předplatným
 
 3. V části **Správa přístupu pro prostředky Azure**nastavte přepínač na **Ano**.
 
-   ![Globální správce může spravovat předplatná Azure a Skupiny pro správu snímek obrazovky.](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![Správa přístupu pro prostředky Azure – snímek obrazovky](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
    - Když nastavíte přepínač na Ano, bude vám přiřazena role správce přístupu uživatele v Azure RBAC v kořenovém oboru (/). Tím udělíte oprávnění k přiřazování rolí ve všech předplatných Azure a skupinách pro správu přidružených k tomuto adresáři služby Azure AD. Tento přepínač je dostupný jenom uživatelům, kteří mají přiřazenou roli globálního správce ve službě Azure AD.
 
@@ -160,7 +161,7 @@ Po přiřazení rolí RBAC uživatelům by se správce klienta měl odebrat z ro
 
 2. V navigačním seznamu klikněte na **Azure Active Directory** a pak klikněte na **vlastnosti**.
 
-3. V části **globální správce může spravovat předplatná a skupiny pro správu Azure**a nastavit přepínač na **ne**.
+3. V části **Správa přístupu pro prostředky Azure**nastavte přepínač na **ne**.
 
 4. Uložte nastavení kliknutím na **Uložit** .
 

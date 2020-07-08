@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75552640"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079492"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Osvědčené postupy pro Apache Phoenix z hlediska výkonu
 
@@ -52,7 +52,7 @@ S tímto novým primárním klíčem klíče řádků generované v Phoenixu bud
 
 V prvním řádku výše jsou data pro rowkey reprezentovaná, jak je znázorněno níže:
 
-|rowkey|       key|   value|
+|rowkey|       key|   hodnota|
 |------|--------------------|---|
 |  Dole – Jan až 111|adresa |1111 síť San Gabrielem Dr.|  
 |  Dole – Jan až 111|Android |1-425-000-0002|  
@@ -82,13 +82,17 @@ Phoenix vám umožňuje řídit počet oblastí, ve kterých jsou vaše data dis
 
 Chcete-li během vytváření nasoleit tabulku, zadejte počet sad Salt:
 
-    CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```sql
+CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```
 
 Toto nasolení rozdělí tabulku podél hodnot primárních klíčů a automaticky zvolí hodnoty. 
 
 Chcete-li určit, kde dojde k rozdělení tabulky, můžete tabulku před rozrozdělením zadáním hodnot rozsahu, podél kterých se rozdělení provádí. Chcete-li například vytvořit tabulku rozdělenou podél tří oblastí:
 
-    CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```sql
+CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```
 
 ## <a name="index-design"></a>Návrh indexu
 
@@ -120,11 +124,15 @@ Například v tabulce příklad kontaktu byste mohli vytvořit sekundární inde
 
 Pokud ale obvykle chcete vyhledat pole firstName a lastName s daným socialSecurityNum, mohli byste vytvořit zahrnutý index, který obsahuje pole firstName a lastName jako skutečná data v tabulce index:
 
-    CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```sql
+CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```
 
 Tento zahrnutý index umožňuje, aby následující dotaz získal všechna data pouhým čtením z tabulky obsahující sekundární index:
 
-    SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```sql
+SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```
 
 ### <a name="use-functional-indexes"></a>Použití funkčních indexů
 
@@ -132,7 +140,9 @@ Funkční indexy umožňují vytvořit index pro libovolný výraz, který oček
 
 Můžete například vytvořit index, který vám umožní provádět hledání bez rozlišování velkých a malých písmen na základě kombinovaného křestního jména a příjmení osoby:
 
-     CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```sql
+CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```
 
 ## <a name="query-design"></a>Návrh dotazu
 
@@ -153,46 +163,64 @@ V [SQLLine](http://sqlline.sourceforge.net/)použijte vysvětlení následovaný
 
 Řekněme například, že máte tabulku s názvem lety, která ukládá informace o zpoždění letu.
 
-Pokud chcete vybrat všechny lety s airlineid `19805`, kde airlineid je pole, které není v primárním klíči nebo v žádném indexu:
+Pokud chcete vybrat všechny lety s airlineid `19805` , kde airlineid je pole, které není v primárním klíči nebo v žádném indexu:
 
-    select * from "FLIGHTS" where airlineid = '19805';
+```sql
+select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Spusťte příkaz vysvětlit následujícím způsobem:
 
-    explain select * from "FLIGHTS" where airlineid = '19805';
+```sql
+explain select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Plán dotazu vypadá takto:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
-        SERVER FILTER BY AIRLINEID = '19805'
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
+   SERVER FILTER BY AIRLINEID = '19805'
+```
 
 V tomto plánu si poznamenejte frázi úplná kontrola nad lety. Tato fráze indikuje, že při provádění se v tabulce prohledává všechny řádky v tabulce místo použití možnosti zefektivnit kontrolu rozsahu nebo přeskočit kontrolu.
 
-Nyní řekněme, že chcete zadat dotaz na lety 2. ledna 2014 pro přepravce `AA` , kde jeho flightnum bylo větší než 1. Řekněme, že sloupce year, month, DayOfMonth, přepravce a flightnum existují v tabulce příkladů a jsou všechny součástí složeného primárního klíče. Dotaz by vypadal takto:
+Nyní řekněme, že chcete zadat dotaz na lety 2. ledna 2014 pro přepravce, `AA` kde jeho flightnum bylo větší než 1. Řekněme, že sloupce year, month, DayOfMonth, přepravce a flightnum existují v tabulce příkladů a jsou všechny součástí složeného primárního klíče. Dotaz by vypadal takto:
 
-    select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Podívejme se na plán tohoto dotazu:
 
-    explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Výsledný plán:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```
 
-Hodnoty v hranatých závorkách jsou rozsahem hodnot pro primární klíče. V tomto případě jsou hodnoty rozsahu opraveny s rokem 2014, měsíc 1 a DayOfMonth 2, ale umožňují hodnoty pro flightnum počínaje 2 a na začátku (`*`). Tento plán dotazu potvrdí, že se primární klíč používá podle očekávání.
+Hodnoty v hranatých závorkách jsou rozsahem hodnot pro primární klíče. V tomto případě jsou hodnoty rozsahu opraveny s rokem 2014, měsíc 1 a DayOfMonth 2, ale umožňují hodnoty pro flightnum počínaje 2 a na začátku ( `*` ). Tento plán dotazu potvrdí, že se primární klíč používá podle očekávání.
 
 Dále v tabulce lety vytvořte index s názvem `carrier2_idx` , který je pouze v poli přepravce. Tento index zahrnuje také flightdate, tailnum, Origin a flightnum jako zahrnuté sloupce, jejichž data jsou také uložená v indexu.
 
-    CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```sql
+CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```
 
 Řekněme, že chcete získat přepravce spolu s flightdate a tailnum, jak je znázorněno v následujícím dotazu:
 
-    explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```sql
+explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```
 
 Měli byste vidět, že se používá tento index:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```
 
 Úplný seznam položek, které se mohou objevit v tématu Vysvětlení výsledků plánu, najdete v části vysvětlující plány v příručce pro [ladění Apache Phoenix](https://phoenix.apache.org/tuning_guide.html).
 
@@ -200,7 +228,7 @@ Měli byste vidět, že se používá tento index:
 
 Obecně platí, že chcete vyhnout spojení, pokud jedna strana není malá, zejména u častých dotazů.
 
-V případě potřeby můžete s `/*+ USE_SORT_MERGE_JOIN */` pomocným nástrojem provádět velké spojení, ale velký počet spojení je náročná operace nad velkým počtem řádků. Pokud celková velikost všech tabulek na pravé straně by překročila dostupnou paměť, použijte `/*+ NO_STAR_JOIN */` pomocný parametr.
+V případě potřeby můžete s pomocným nástrojem provádět velké spojení `/*+ USE_SORT_MERGE_JOIN */` , ale velký počet spojení je náročná operace nad velkým počtem řádků. Pokud celková velikost všech tabulek na pravé straně by překročila dostupnou paměť, použijte `/*+ NO_STAR_JOIN */` pomocný parametr.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -222,7 +250,9 @@ Při odstraňování velkých datových sad zapněte funkci autocommit před vyd
 
 Pokud váš scénář přinese rychlost zápisu přes integritu dat, zvažte možnost zakázat protokol zápisu při vytváření tabulek:
 
-    CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```sql
+CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```
 
 Podrobnosti o této a dalších možnostech najdete v tématu [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html#options).
 

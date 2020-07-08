@@ -12,11 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668402"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078965"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
 
@@ -104,7 +105,7 @@ Aby byl tento test praktický, odpojte počítač od sítě před spuštěním p
 - Další provádění můžete pozastavit pomocí metody **Console. ReadLine** nebo dialogového okna s tlačítkem OK. Uživatel stiskne klávesu ENTER po zapojení počítače do sítě.
 - Pokuste se o připojení znovu a očekávat úspěch.
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testovat po chybném pravopisu názvu databáze při připojování
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>Testovat po chybném pravopisu uživatelského jména při připojování
 
 V programu může být uživatelské jméno před prvním pokusem o připojení záměrně napředné. Tato chyba je:
 

@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860609"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080733"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek podregistru a načítání dat z Azure Blob Storage
 
@@ -69,7 +70,9 @@ Můžete spustit příkaz, jako je například `hive -e "<your hive query>;` ode
 #### <a name="submit-hive-queries-in-hql-files"></a>Odeslání dotazů na podregistr do souborů. HQL
 Když je dotaz na podregistr složitější a má více řádků, úprava dotazů v příkazovém řádku nebo konzole příkazů podregistru není praktická. Alternativou je použití textového editoru v hlavním uzlu clusteru Hadoop k uložení dotazů na podregistr v souboru. HQL v místním adresáři hlavního uzlu. Pak se dotaz na podregistr v souboru. HQL dá odeslat pomocí `-f` následujícího argumentu:
 
-    hive -f "<path to the '.hql' file>"
+```console
+hive -f "<path to the '.hql' file>"
+```
 
 ![Dotaz na podregistr v souboru. HQL](./media/move-hive-tables/run-hive-queries-3.png)
 
@@ -77,8 +80,10 @@ Když je dotaz na podregistr složitější a má více řádků, úprava dotaz�
 
 Ve výchozím nastavení se po odeslání dotazu na podregistr do příkazového řádku Hadoop na obrazovce vytiskne průběh úlohy mapa/zmenšování. Chcete-li potlačit tisk obrazovky mapy/snížit průběh úlohy, můžete použít argument `-S` ("S" v horním případě) na příkazovém řádku následujícím způsobem:
 
-    hive -S -f "<path to the '.hql' file>"
-    hive -S -e "<Hive queries>"
+```console
+hive -S -f "<path to the '.hql' file>"
+hive -S -e "<Hive queries>"
+```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Odešlete dotazy na podregistr v konzole příkazů pro podregistr.
 Můžete taky nejdřív zadat příkazovou konzolu pro podregistr spuštěním příkazu `hive` v příkazovém řádku Hadoop a pak odeslat dotazy na podregistr v konzole příkazů pro podregistr. Zde je příklad. V tomto příkladu jsou dvě červená pole zvýrazněné příkazy, které slouží k zadání konzoly příkazového řádku, a dotaz na podregistr odeslaný do konzoly příkazového řádku v uvedeném pořadí. Zelené pole zvýrazní výstup z dotazu na podregistr.
@@ -90,7 +95,9 @@ Předchozí příklady přímo vychází z výstupů dotazů na podregistry na o
 **Výsledky dotazu na výstupní podregistry do místního souboru.**
 Pro výstup výsledků dotazu na podregistr do místního adresáře v hlavním uzlu je třeba odeslat dotaz na podregistr do příkazového řádku Hadoop následujícím způsobem:
 
-    hive -e "<hive query>" > <local path in the head node>
+```console
+hive -e "<hive query>" > <local path in the head node>
+```
 
 V následujícím příkladu je výstup dotazu na podregistr zapsán do souboru `hivequeryoutput.txt` v adresáři `C:\apps\temp` .
 
@@ -100,7 +107,9 @@ V následujícím příkladu je výstup dotazu na podregistr zapsán do souboru 
 
 Můžete také výstup výsledků dotazu na podregistr do objektu blob Azure v rámci výchozího kontejneru clusteru Hadoop. Dotaz na podregistr pro tento postup je následující:
 
-    insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```console
+insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```
 
 V následujícím příkladu se výstup dotazu na podregistr zapisuje do adresáře objektů BLOB `queryoutputdir` v rámci výchozího kontejneru clusteru Hadoop. V tomto případě stačí zadat název adresáře bez názvu objektu BLOB. Pokud zadáte název adresáře a objektů blob, například, je vyvolána chyba `wasb:///queryoutputdir/queryoutput.txt` .
 
@@ -121,18 +130,20 @@ Dotazy na podregistr se sdílejí v [úložišti GitHubu](https://github.com/Azu
 
 Tady je dotaz na podregistr, který vytváří tabulku podregistru.
 
-    create database if not exists <database name>;
-    CREATE EXTERNAL TABLE if not exists <database name>.<table name>
-    (
-        field1 string,
-        field2 int,
-        field3 float,
-        field4 double,
-        ...,
-        fieldN string
-    )
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
-    STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+create database if not exists <database name>;
+CREATE EXTERNAL TABLE if not exists <database name>.<table name>
+(
+    field1 string,
+    field2 int,
+    field3 float,
+    field4 double,
+    ...,
+    fieldN string
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
+STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```
 
 Tady jsou popisy polí, která potřebujete připojit, a další konfigurace:
 
@@ -146,7 +157,9 @@ Tady jsou popisy polí, která potřebujete připojit, a další konfigurace:
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Načtení dat do tabulek podregistru
 Tady je dotaz na podregistr, který načte data do tabulky podregistru.
 
-    LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```hiveql
+LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```
 
 * **\<path to blob data\>**: Pokud se soubor objektu blob, který se má nahrát do tabulky podregistru, nachází ve výchozím kontejneru clusteru HDInsight Hadoop, *\<path to blob data\>* měl by být ve formátu *"wasb:// \<directory in this container> / \<blob file name> "*. Soubor BLOB může být taky v dodatečném kontejneru clusteru HDInsight Hadoop. V takovém případě *\<path to blob data\>* by měla být ve formátu *"wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.NET/ \<blob file name> "*.
 
@@ -163,69 +176,83 @@ Kromě vytváření oddílů tabulek podregistru je také užitečné ukládat d
 ### <a name="partitioned-table"></a>Dělená tabulka
 Tady je dotaz na podregistr, který vytvoří dělenou tabulku a načte do ní data.
 
-    CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
-    (field1 string,
-    ...
-    fieldN string
-    )
-    PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-         lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
-    LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
-        PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
+(field1 string,
+...
+fieldN string
+)
+PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
+    PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```
 
 Při dotazování na dělené tabulky doporučujeme přidat podmínku oddílu na **začátek** `where` klauzule, což zlepší efektivitu hledání.
 
-    select
-        field1, field2, ..., fieldN
-    from <database name>.<partitioned table name>
-    where <partitionfieldname>=<partitionfieldvalue> and ...;
+```hiveql
+select
+    field1, field2, ..., fieldN
+from <database name>.<partitioned table name>
+where <partitionfieldname>=<partitionfieldvalue> and ...;
+```
 
 ### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>Uložení dat z podregistru ve formátu ORC
 Data z úložiště objektů BLOB není možné přímo načíst do tabulek podregistru, které jsou uložené ve formátu ORC. Tady jsou kroky, které musíte provést, abyste načetli data z objektů blob Azure do tabulek podregistru uložených ve formátu ORC.
 
 Vytvořte externí tabulku **uloženou jako textfile** a načtěte data z úložiště objektů blob do tabulky.
 
-        CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-            lines terminated by '<line separator>' STORED AS TEXTFILE
-            LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' STORED AS TEXTFILE
+    LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
 
-        LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+```
 
 Vytvořte interní tabulku se stejným schématem, jako má externí tabulka v kroku 1, se stejným oddělovačem polí a uložte data z podregistru ve formátu ORC.
 
-        CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```hiveql
+CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```
 
 Vyberte data z externí tabulky v kroku 1 a vložte je do tabulky ORC.
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name>
-            SELECT * FROM <database name>.<external textfile table name>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name>
+    SELECT * FROM <database name>.<external textfile table name>;
+```
 
 > [!NOTE]
 > Pokud * \<database name\> \<external textfile table name\> tabulka textfile* má v kroku 3 oddíly, `SELECT * FROM <database name>.<external textfile table name>` příkaz vybere proměnnou oddílu jako pole ve vrácené datové sadě. Vložení do * \<database name\> . \<ORC table name\> * neproběhne od * \<database name\> . \<ORC table name\> * nemá proměnnou oddílu jako pole ve schématu tabulky. V takovém případě je nutné konkrétně vybrat pole, do kterých mají být vložena * \<database name\> . \<ORC table name\> * následujícím způsobem:
 >
 >
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
-           SELECT field1, field2, ..., fieldN
-           FROM <database name>.<external textfile table name>
-           WHERE <partition variable>=<partition value>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
+    SELECT field1, field2, ..., fieldN
+    FROM <database name>.<external textfile table name>
+    WHERE <partition variable>=<partition value>;
+```
 
 Po *\<external text file table name\>* vložení všech dat do můžete bezpečně vyřadit při použití následujícího dotazu * \<database name\> . \<ORC table name\> *:
 
-        DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```hiveql
+    DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```
 
 Po provedení tohoto postupu byste měli mít tabulku s daty ve formátu ORC, která je připravena k použití.  

@@ -11,11 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195371"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082263"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
@@ -40,8 +41,8 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
     - Přes soukromý koncový bod (upřednostňovaný)
 
         1. Vyberte virtuální síť, ke které se má Azure-SSIS IR připojit:
-            - Ve stejné virtuální síti jako spravovaná instance SQL s **jinou podsítí**.
-            - Uvnitř jiné virtuální sítě než spravované instance SQL prostřednictvím partnerského vztahu virtuální sítě (která je omezená na stejnou oblast z důvodu omezení globálního partnerského vztahu virtuálních sítí) nebo připojení virtuální sítě k virtuální síti.
+            - Uvnitř stejné virtuální sítě jako spravovaná instance s **jinou podsítí**.
+            - Uvnitř jiné virtuální sítě, než je spravovaná instance, prostřednictvím partnerského vztahu virtuální sítě (která je omezená na stejnou oblast z důvodu omezení globálních partnerských vztahů) nebo připojení virtuální sítě k virtuální síti.
 
             Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 

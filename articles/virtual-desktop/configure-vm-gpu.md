@@ -7,11 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 96881154a368da15d703b43ba2ffe5d6dd034bd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a26b6a622368fe9601ea3b6555386b6a121540
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213257"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081090"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace GPU (Graphics Processing Unit) pro virtuální počítače s Windows
 
@@ -59,22 +60,36 @@ Ve výchozím nastavení se aplikace a počítače běžící v konfiguracích s
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurace kódování rámce akcelerovaného GPU
 
-Vzdálená plocha zakóduje všechny grafiky vygenerované aplikacemi a plochami (ať už vygenerované pomocí GPU nebo s využitím procesoru) pro přenos do klientů vzdálené plochy. Ve výchozím nastavení Vzdálená plocha nevyužívá k tomuto kódování dostupné GPU. Nakonfigurujte Zásady skupiny pro hostitele relací, aby bylo možné povolit kódování rámce GPU. Pokračuje se výše uvedenými kroky:
+Vzdálená plocha zakóduje všechny grafiky vygenerované aplikacemi a plochami (ať už vygenerované pomocí GPU nebo s využitím procesoru) pro přenos do klientů vzdálené plochy. Pokud se část obrazovky často aktualizuje, Tato část obrazovky se zakóduje pomocí kodeku videa (H. 264/AVC). Ve výchozím nastavení Vzdálená plocha nevyužívá k tomuto kódování dostupné GPU. Nakonfigurujte Zásady skupiny pro hostitele relací, aby bylo možné povolit kódování rámce GPU. Pokračuje se výše uvedenými kroky:
+ 
+>[!NOTE]
+>Pro virtuální počítače řady NVv4-series není k dispozici kódování rámců podporující GPU.
 
-1. **Pro připojení ke vzdálené ploše vyberte možnost nastavit prioritu zásad v grafickém režimu H. 264/avc 444** a nastavte tuto zásadu na **povoleno** , aby ve vzdálené relaci vynutila kodek H. 264/AVC 444.
-2. Vyberte zásady **Konfigurace H. 264/AVC hardwarového kódování pro připojení ke vzdálené ploše** a nastavte tuto zásadu na **povoleno** , pokud chcete povolit kódování hardwaru pro AVC/H. 264 ve vzdálené relaci.
+1. Vyberte zásady **Konfigurace H. 264/AVC hardwarového kódování pro připojení ke vzdálené ploše** a nastavte tuto zásadu na **povoleno** , pokud chcete povolit kódování hardwaru pro AVC/H. 264 ve vzdálené relaci.
 
     >[!NOTE]
     >V systému Windows Server 2016 nastavte možnost **PREFEROVAT AVC hardwarové kódování** , aby se **vždy pokoušelo o pokus**.
 
-3. Teď, když jste upravili zásady skupiny, vynuťte aktualizaci zásad skupiny. Otevřete příkazový řádek a zadejte:
+2. Teď, když jste upravili zásady skupiny, vynuťte aktualizaci zásad skupiny. Otevřete příkazový řádek a zadejte:
 
     ```batch
     gpupdate.exe /force
     ```
 
-4. Odhlaste se z relace vzdálené plochy.
+3. Odhlaste se z relace vzdálené plochy.
 
+## <a name="configure-fullscreen-video-encoding"></a>Nakonfigurovat kódování videa na celé obrazovce
+
+Pokud často používáte aplikace, které vytváří vysoce snímkový obsah, jako jsou 3D modelování, CAD a video aplikace, můžete pro vzdálenou relaci Povolit kódování na celé obrazovce. Profil videa na celé obrazovce poskytuje vyšší kmitočet snímků a lepší uživatelské prostředí pro tyto aplikace na úkor šířky pásma sítě a hostitele relací a prostředků klientů. Pro kódování videa na celé obrazovce se doporučuje používat kódování rámců GPU-Accelerated. Nakonfigurujte Zásady skupiny pro hostitele relace, aby se povolilo kódování videa na celé obrazovce. Pokračuje se výše uvedenými kroky:
+
+1. **Pro připojení ke vzdálené ploše vyberte možnost nastavit prioritu zásad v grafickém režimu H. 264/avc 444** a nastavte tuto zásadu na **povoleno** , aby ve vzdálené relaci vynutila kodek H. 264/AVC 444.
+2. Teď, když jste upravili zásady skupiny, vynuťte aktualizaci zásad skupiny. Otevřete příkazový řádek a zadejte:
+
+    ```batch
+    gpupdate.exe /force
+    ```
+
+3. Odhlaste se z relace vzdálené plochy.
 ## <a name="verify-gpu-accelerated-app-rendering"></a>Ověření vykreslování aplikace akcelerované GPU
 
 Pokud chcete ověřit, jestli aplikace používají GPU k vykreslování, zkuste použít některou z těchto možností:
@@ -89,7 +104,14 @@ Ověření, že Vzdálená plocha používá kódování GPU-akcelerované:
 1. Připojte se k ploše virtuálního počítače pomocí klienta virtuální plochy Windows.
 2. Spusťte prohlížeč událostí a přejděte do následujícího uzlu: **protokoly aplikací a služeb**  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
 3. Pokud chcete zjistit, jestli se používá kódování GPU, hledejte událost s ID 170. Pokud se zobrazí zpráva "je povolen hardwarový kodér AVC: 1", použije se kódování GPU.
-4. Pokud chcete zjistit, jestli se používá režim AVC 444, vyhledejte ID události 162. Pokud se zobrazí možnost AVC je k dispozici: 1 počáteční profil: 2048, použije se AVC 444.
+
+## <a name="verify-fullscreen-video-encoding"></a>Ověřit kódování videa na celé obrazovce
+
+Ověření, že Vzdálená plocha používá celé toto video kódování:
+
+1. Připojte se k ploše virtuálního počítače pomocí klienta virtuální plochy Windows.
+2. Spusťte prohlížeč událostí a přejděte do následujícího uzlu: **protokoly aplikací a služeb**  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **Operational**
+3. Pokud chcete zjistit, jestli se používá kódování videa na celé obrazovce, vyhledejte událost s ID 162. Pokud se zobrazí možnost AVC je k dispozici: 1 počáteční profil: 2048, použije se AVC 444.
 
 ## <a name="next-steps"></a>Další kroky
 

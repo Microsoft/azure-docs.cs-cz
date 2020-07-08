@@ -5,13 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75494984"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081753"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
 
@@ -46,7 +47,7 @@ Služba Azure HDInsight IO cache je ve výchozím nastavení deaktivována ve ve
 > [!NOTE]  
 > I když se na indikátoru průběhu zobrazuje aktivováno, mezipaměť v/v není ve skutečnosti povolená, dokud nerestartujete ostatní ovlivněné služby.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
   
 Po povolení vstupně-výstupních operací můžete získat chyby místa na disku při spouštění úloh Spark. K těmto chybám dochází, protože Spark používá k ukládání dat v průběhu operace přerozdělování také úložiště na místním disku. Spark může vyrazit z prostoru SSD, když je povolená vstupně-výstupní mezipaměť a prostor pro úložiště Spark se zmenší. Velikost místa využitého v/v mezipaměti je výchozím nastavením na polovinu celkového prostoru SSD. Využití místa na disku pro vstupně-výstupní mezipaměť je konfigurovatelné v Ambari. Pokud získáte chyby místa na disku, snižte velikost prostoru SSD používaného pro vstupně-výstupní mezipaměť a restartujte službu. Chcete-li změnit nastavení prostoru pro vstupně-výstupní operace, proveďte následující kroky:
 

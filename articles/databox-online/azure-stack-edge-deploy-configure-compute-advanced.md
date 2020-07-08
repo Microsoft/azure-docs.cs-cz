@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: eb7bb7933303aaf16f320e219ad3673bf1efde72
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080374"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Kurz: transformace dat pomocí Azure Stack Edge pro pokročilý tok nasazení
 
@@ -22,11 +22,11 @@ V tomto kurzu se dozvíte, jak nakonfigurovat výpočetní roli pro pokročilý 
 
 Výpočetní prostředí je možné nakonfigurovat pro jednoduchý nebo pokročilý tok nasazení na zařízení.
 
-|                  | Jednoduché nasazení                                | Pokročilé nasazení                   |
+| Kritéria | Jednoduché nasazení                                | Pokročilé nasazení                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | Určeno pro     | Správci IT                                | Vývojáři                            |
 | Typ             | Použití služby Azure Stack Edge k nasazení modulů      | Použití služby IoT Hub k nasazení modulů |
-| Nasazené moduly | Single                                           | Zřetězené nebo vícenásobné moduly           |
+| Nasazené moduly | Jeden                                           | Zřetězené nebo vícenásobné moduly           |
 
 
 Dokončení této procedury může trvat přibližně 20 až 30 minut.
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zař
     |Pole  |Hodnota  |
     |---------|---------|
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Název     |Zadejte název prostředku IoT Hub.         |
+    |Name     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
@@ -215,11 +215,11 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
 
         ![Přidání vlastního modulu](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5.    V části **zadat trasy**nastavte trasy mezi moduly.  
-    
-    ![Zadat trasy](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
+5. V části **zadat trasy**nastavte trasy mezi moduly.  
+   
+   ![Zadat trasy](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    *Trasu* můžete nahradit následujícím řetězcem trasy, který jste zkopírovali dříve. V tomto příkladu zadejte název místní sdílené složky, která bude zaručovat data do sdílené složky cloudu. `modulename` Nahraďte názvem modulu. Vyberte **Další**.
+    *Trasu* můžete nahradit následujícím řetězcem trasy, který jste zkopírovali dříve. V tomto příkladu zadejte název místní sdílené složky, která bude zaručovat data do sdílené složky cloudu. Nahraďte `modulename` názvem modulu. Vyberte **Další**.
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
@@ -227,9 +227,9 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
 
     ![Oddíl zadat trasy](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)
 
-6.    V části **zkontrolovat nasazení**Zkontrolujte všechna nastavení a pak vyberte **Odeslat** a odešlete modul pro nasazení.
+6. V části **zkontrolovat nasazení**Zkontrolujte všechna nastavení a pak vyberte **Odeslat** a odešlete modul pro nasazení.
 
-    ![Stránka set modules](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![Stránka set modules](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     Tato akce spustí nasazení modulu. Po dokončení nasazení se **běhový stav** modulu **spouští**.
 
@@ -241,13 +241,13 @@ Posledním krokem je ujistit se, že je modul připojený a spuštěný podle o�
 
 Provedením následujících kroků ověříte transformaci dat a přenos do Azure.
  
-1.    V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
+1. V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
+   ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
  
-1.    Přidejte data do místní sdílené složky.
+1. Přidejte data do místní sdílené složky.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     Data se přesunou do cloudové sdílené složky.
 

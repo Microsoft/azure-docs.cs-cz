@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767553"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082246"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
 
@@ -60,7 +60,7 @@ Různé verze služby HDInsight mají nainstalované různé verze služeb a sou
 
 Různé verze HDInsight spoléhají na konkrétní verze Ubuntu. Mezi verzemi operačních systémů, které musíte ve svém skriptu vyhledat, můžou být rozdíly. Například může být nutné nainstalovat binární soubor, který je svázán s verzí Ubuntu.
 
-Chcete-li zjistit verzi operačního systému `lsb_release`, použijte. Například následující skript ukazuje, jak odkazovat na konkrétní soubor tar v závislosti na verzi operačního systému:
+Chcete-li zjistit verzi operačního systému, použijte `lsb_release` . Například následující skript ukazuje, jak odkazovat na konkrétní soubor tar v závislosti na verzi operačního systému:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -77,7 +77,7 @@ fi
 
 HDInsight je založený na distribuci Ubuntu Linux. Různé verze služby HDInsight spoléhají na různé verze Ubuntu, což může změnit způsob, jakým se skript chová. Například HDInsight 3,4 a starší jsou založené na verzích Ubuntu, které používají příkaz Spustit jako. Verze 3,5 a vyšší jsou založené na Ubuntu 16,04, který používá systém. Systém a spuštění jsou závislé na různých příkazech, takže by měl být vytvořen skript pro práci s oběma.
 
-Dalším důležitým rozdílem mezi HDInsight 3,4 a 3,5 `JAVA_HOME` je to, že teď odkazuje na Java 8. Následující kód demonstruje, jak zjistit, jestli skript běží na Ubuntu 14 nebo 16:
+Dalším důležitým rozdílem mezi HDInsight 3,4 a 3,5 je to, že `JAVA_HOME` teď odkazuje na Java 8. Následující kód demonstruje, jak zjistit, jestli skript běží na Ubuntu 14 nebo 16:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -108,7 +108,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-Úplný skript, který obsahuje tyto fragmenty kódu, můžete najít https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.shna adrese.
+Úplný skript, který obsahuje tyto fragmenty kódu, můžete najít na adrese https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh .
 
 Verze Ubuntu, kterou používá HDInsight, najdete v dokumentu [verze součásti HDInsight](hdinsight-component-versioning.md) .
 
@@ -123,7 +123,7 @@ Osvědčeným postupem je stažení a archivace všeho v účtu Azure Storage v 
 > [!IMPORTANT]  
 > Použitý účet úložiště musí být výchozím účtem úložiště pro cluster nebo veřejným kontejnerem jen pro čtení v jakémkoli jiném účtu úložiště.
 
-Například ukázky poskytované společností Microsoft jsou uloženy v účtu [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) úložiště. Toto umístění je veřejný kontejner, který je jen pro čtení a který je spravován týmem HDInsight.
+Například ukázky poskytované společností Microsoft jsou uloženy v [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) účtu úložiště. Toto umístění je veřejný kontejner, který je jen pro čtení a který je spravován týmem HDInsight.
 
 ### <a name="use-pre-compiled-resources"></a><a name="bPS4"></a>Použití předem kompilovaných prostředků
 
@@ -152,7 +152,7 @@ Pro většinu operací nemusíte zadávat systém souborů. Následující pří
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
-V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace možná budete muset zadat identifikátor URI. Například `adl:///example/jars` pro Azure Data Lake Storage Gen1 `abfs:///example/jars` pro data Lake Storage Gen2 nebo `wasb:///example/jars` pro Azure Storage.
+V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace možná budete muset zadat identifikátor URI. Například `adl:///example/jars` pro Azure Data Lake Storage Gen1 pro `abfs:///example/jars` Data Lake Storage Gen2 nebo `wasb:///example/jars` pro Azure Storage.
 
 ### <a name="write-information-to-stdout-and-stderr"></a><a name="bPS7"></a>Zápis informací do STDOUT a STDERR
 
@@ -161,19 +161,19 @@ HDInsight protokoluje výstup skriptu, který je zapsaný do STDOUT a STDERR. Ty
 > [!NOTE]  
 > Apache Ambari je k dispozici pouze v případě, že byl cluster úspěšně vytvořen. Použijete-li během vytváření clusteru akci skriptu a vytváření se nepovede, přečtěte si téma [řešení potíží se skripty](./troubleshoot-script-action.md) v případě jiných způsobů přístupu k protokolovaným informacím.
 
-Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT `echo`, použijte. Příklad:
+Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo` . Příklad:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, `>&2` přidejte `echo`ho do. Příklad:
+Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte ho do `>&2` `echo` . Příklad:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-Tento postup přesměruje informace zapsané do STDOUT na STDERR (2). Další informace o přesměrování v/v naleznete [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)v tématu.
+Tento postup přesměruje informace zapsané do STDOUT na STDERR (2). Další informace o přesměrování v/v naleznete v tématu [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html) .
 
 Další informace o zobrazení informací protokolovaných akcemi skriptu najdete v tématu [řešení potíží se skripty](./troubleshoot-script-action.md).
 
@@ -235,10 +235,10 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Následující pomocníky jsou k dispozici pro použití ve skriptu:
 
-| Použití pomocníka | Popis |
+| Použití pomocníka | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Stáhne soubor ze zdrojového identifikátoru URI do zadané cesty k souboru. Ve výchozím nastavení nedojde k přepsání stávajícího souboru. |
-| `untar_file TARFILE DESTDIR` |Extrahuje soubor tar (using `-xf`) do cílového adresáře. |
+| `untar_file TARFILE DESTDIR` |Extrahuje soubor tar (using `-xf` ) do cílového adresáře. |
 | `test_is_headnode` |V případě, že je hlavní uzel clusteru spuštěný, vrátí 1; v opačném případě 0. |
 | `test_is_datanode` |Pokud je aktuálním uzlem uzel data (Worker), vrátí hodnotu 1. v opačném případě 0. |
 | `test_is_first_datanode` |Pokud je aktuální uzel prvním uzlem dat (Worker) (s názvem workernode0), vrátí hodnotu 1. v opačném případě 0. |
@@ -264,15 +264,19 @@ Hodnoty předané skriptu jako parametry by měly být uzavřeny jednoduchými u
 
 Nastavení proměnné prostředí se provádí následujícím příkazem:
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
-WHERE proměnná je název proměnné. Pro přístup k proměnné použijte `$VARIABLENAME`. Například chcete-li přiřadit hodnotu poskytnutou pozičním parametrem jako proměnnou prostředí s názvem PASSWORD, použijte následující příkaz:
+WHERE proměnná je název proměnné. Pro přístup k proměnné použijte `$VARIABLENAME` . Například chcete-li přiřadit hodnotu poskytnutou pozičním parametrem jako proměnnou prostředí s názvem PASSWORD, použijte následující příkaz:
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
-Následný přístup k informacím pak může použít `$PASSWORD`.
+Následný přístup k informacím pak může použít `$PASSWORD` .
 
-Proměnné prostředí nastavené v rámci skriptu existují pouze v rámci rozsahu skriptu. V některých případech může být nutné přidat proměnné prostředí v rámci systému, které budou zachovány po dokončení skriptu. Chcete-li přidat proměnné prostředí v rámci systému, přidejte proměnnou `/etc/environment`do. Například následující příkaz přidá `HADOOP_CONF_DIR`:
+Proměnné prostředí nastavené v rámci skriptu existují pouze v rámci rozsahu skriptu. V některých případech může být nutné přidat proměnné prostředí v rámci systému, které budou zachovány po dokončení skriptu. Chcete-li přidat proměnné prostředí v rámci systému, přidejte proměnnou do `/etc/environment` . Například následující příkaz přidá `HADOOP_CONF_DIR` :
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
@@ -298,7 +302,7 @@ Prostředky používané skriptem musí být také veřejně dostupné.
 Ukládání souborů v účtu Azure Storage nebo Azure Data Lake Storage poskytuje rychlý přístup v rámci sítě Azure.
 
 > [!NOTE]  
-> Formát identifikátoru URI, který se používá k odkazování na skript, se liší v závislosti na používané službě. Pro účty úložiště přidružené k clusteru HDInsight použijte `wasb://` nebo. `wasbs://` Pro veřejně čitelné identifikátory URI použijte `http://` nebo `https://`. Pro Data Lake Storage použijte `adl://`.
+> Formát identifikátoru URI, který se používá k odkazování na skript, se liší v závislosti na používané službě. Pro účty úložiště přidružené k clusteru HDInsight použijte `wasb://` nebo `wasbs://` . Pro veřejně čitelné identifikátory URI použijte `http://` nebo `https://` . Pro Data Lake Storage použijte `adl://` .
 
 ## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>Kontrolní seznam pro nasazení akce skriptu
 
@@ -324,11 +328,11 @@ Další informace o použití jednotlivých metod naleznete v tématu [How to us
 
 Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do clusteru HDInsight. Podívejte se [na téma Instalace a použití odstínu v clusterech HDInsight](hdinsight-hadoop-hue-linux.md) jako příklad akce skriptu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 V následujícím seznamu jsou chyby, které se můžou při používání skriptů, které jste vyvinuli, nacházet:
 
-**Chyba**: `$'\r': command not found`. Někdy následováno `syntax error: unexpected end of file`.
+**Chyba**: `$'\r': command not found` . Někdy následováno `syntax error: unexpected end of file` .
 
 *Příčina*: Tato chyba je způsobena tím, že řádky ve skriptu končí znakem CRLF. Systémy UNIX očekávají jako konec řádku pouze LF.
 
@@ -346,15 +350,17 @@ K tomuto problému často dochází, když je skript vytvořen v prostředí sys
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Upraví soubor přímo. |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |SOUBOR s informacemi o verzi obsahuje jenom konce LF. |
 
-**Chyba**: `line 1: #!/usr/bin/env: No such file or directory`.
+**Chyba**: `line 1: #!/usr/bin/env: No such file or directory` .
 
 *Příčina*: k této chybě dochází, když byl skript uložen jako UTF-8 s označením pořadí bajtů (BOM).
 
 *Řešení*: Uložte soubor buď jako ASCII, nebo jako UTF-8 bez kusovníku. V systému Linux nebo UNIX můžete také použít následující příkaz k vytvoření souboru bez tohoto kusovníku:
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
-Nahraďte `INFILE` souborem, který obsahuje kusovník. `OUTFILE`měl by se jednat o nový název souboru, který obsahuje skript bez tohoto kusovníku.
+Nahraďte souborem, který `INFILE` obsahuje kusovník. `OUTFILE`měl by se jednat o nový název souboru, který obsahuje skript bez tohoto kusovníku.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>Další kroky
 
