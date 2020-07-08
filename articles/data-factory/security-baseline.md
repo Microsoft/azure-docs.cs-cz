@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 854d95f95d6ecf2fe35bcc93ddeaafdc9bafbf8f
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485634"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044171"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
 
@@ -512,7 +512,7 @@ Pokud spouštíte Integration Runtime na virtuálním počítači Azure, připoj
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Poskytněte Microsoftu přístup k relevantním zákaznickým datům během scénářů podpory.
 
-**Doprovodné**materiály: ve scénářích podpory, kde Microsoft potřebuje získat přístup k zákaznickým datům, Azure Customer Lockbox poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Všimněte si, že přestože není k dispozici bezpečnostní modul Azure pro Azure Data Factory sebe sama, bezpečnostní modul Azure podporuje databáze SQL Azure a Azure Virtual Machines.
+**Doprovodné**materiály: ve scénářích podpory, kde Microsoft potřebuje získat přístup k zákaznickým datům, Azure Customer Lockbox poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Všimněte si, že přestože není k dispozici žádný bezpečnostní modul Azure pro Azure Data Factory sám, podporuje bezpečnostní modul Azure Azure SQL Database a Azure Virtual Machines.
 
 * [Pochopení Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -672,7 +672,7 @@ Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault 
 
 Pokud používáte Integration Runtime na virtuálním počítači Azure, postupujte podle doporučení Azure Security Center při provádění posouzení ohrožení zabezpečení vašich virtuálních počítačů. Použijte doporučené řešení zabezpečení Azure nebo řešení třetí strany pro provádění posouzení ohrožení zabezpečení vašich virtuálních počítačů.
 
-* [Jak spustit posuzování ohrožení zabezpečení ve vašich databázích SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Spuštění posouzení ohrožení zabezpečení na Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Jak povolit pokročilé zabezpečení dat](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -896,7 +896,7 @@ Všimněte si, že to platí jenom v případě, že vaše Integration Runtime b
 
 * [Co je brána Azure Firewall?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Co je firewall webových aplikací Azure?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Co je Firewall webových aplikací Azure?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview)
 

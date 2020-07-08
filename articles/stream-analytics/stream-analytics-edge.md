@@ -5,15 +5,15 @@ ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5213a13539ac028d3e2bfec3bc7476ac645f615b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837208"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043474"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
@@ -43,13 +43,12 @@ ASA používá IoT Hub k nasazení hraničních úloh do zařízení. Další in
 
 ### <a name="installation-instructions"></a>Pokyny k instalaci
 Kroky vysoké úrovně jsou popsány v následující tabulce. Další podrobnosti jsou uvedeny v následujících oddílech.
-
-|      |Krok   | Poznámky   |
-| ---   | ---   |  ---      |
-| 1   | **Vytvoření kontejneru úložiště**   | Kontejnery úložiště slouží k uložení definice úlohy, kde k nim budou mít k dispozici zařízení IoT. <br>  Můžete znovu použít libovolný existující kontejner úložiště.     |
-| 2   | **Vytvoření hraniční úlohy ASA**   |  Vytvořte novou úlohu, vyberte možnost **Edge** jako **hostitelské prostředí**. <br> Tyto úlohy se vytvářejí/spravují z cloudu a spouštějí se na vlastních IoT Edge zařízeních.     |
-| 3   | **Nastavení IoT Edge prostředí na vašich zařízeních**   | Pokyny pro [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
-| 4   | **Nasazení ASA na vašich zařízeních IoT Edge**   |  Definice úlohy ASA se exportuje do kontejneru úložiště, který jste vytvořili dříve.       |
+|Krok   | Poznámky   |
+| ---   |  ---      |
+| **Vytvoření kontejneru úložiště**   | Kontejnery úložiště slouží k uložení definice úlohy, kde k nim budou mít k dispozici zařízení IoT. <br>  Můžete znovu použít libovolný existující kontejner úložiště.     |
+| **Vytvoření hraniční úlohy ASA**   |  Vytvořte novou úlohu, vyberte možnost **Edge** jako **hostitelské prostředí**. <br> Tyto úlohy se vytvářejí/spravují z cloudu a spouštějí se na vlastních IoT Edge zařízeních.     |
+| **Nastavení IoT Edge prostředí na vašich zařízeních**   | Pokyny pro [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
+| **Nasazení ASA na vašich zařízeních IoT Edge**   |  Definice úlohy ASA se exportuje do kontejneru úložiště, který jste vytvořili dříve.       |
 
 Postup najdete v [tomto podrobném kurzu](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) nasazení první úlohy ASA na IoT Edge. Následující video by vám mělo porozumět procesu spuštění Stream Analytics úlohy na hraničním zařízení IoT:  
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: 673524f08ecae28fb6f2e18f3c0c7230cf102b06
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513473"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043865"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Pokročilé zabezpečení dat pro počítače SQL (Preview)
 
@@ -31,7 +31,7 @@ Tato funkce Preview zahrnuje funkce pro identifikaci a zmírnění potenciální
 * [Rozšířená ochrana před internetovými útoky](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) – služba zjišťování, která nepřetržitě monitoruje vaše servery SQL na hrozbách, jako jsou například injektáže SQL, útoky hrubou silou a zneužití oprávnění. Tato služba poskytuje výstrahy zabezpečení zaměřené na akce v Azure Security Center s podrobnostmi o podezřelé aktivitě, pokyny ke zmírnění hrozeb a možnosti pro pokračování v šetření pomocí ověřování Azure Sentinel.
 
 >[!TIP]
-> Rozšířené zabezpečení dat pro počítače s SQL je rozšířením [balíčku pokročilého zabezpečení dat](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)Azure Security Center, který je už dostupný pro databáze SQL Azure, synapse a spravované instance SQL.
+> Rozšířené zabezpečení dat pro počítače s SQL je rozšíření [balíčku pokročilého zabezpečení dat](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)Azure Security Center dostupného pro Azure SQL Database, Azure synapse a SQL Managed instance.
 
 
 ## <a name="set-up-advanced-data-security-for-sql-machines"></a>Nastavení pokročilého zabezpečení dat pro počítače s SQL 
@@ -91,14 +91,14 @@ Služba posouzení ohrožení zabezpečení prohledává vaše databáze jednou 
 
 Výsledky posouzení ohrožení zabezpečení můžete zobrazit přímo z Security Center.
 
-1. Z bočního panelu Security Center otevřete stránku **doporučení** a vyberte **ohrožení zabezpečení na serverech SQL Database na počítačích, která by měla být opravena (Preview)**. Další informace najdete v tématu [Security Center doporučení](security-center-recommendations.md). 
+1. Z bočního panelu Security Center otevřete stránku **doporučení** a vyberte **ohrožení zabezpečení na serverech SQL na počítačích, které by měly být opraveny (Preview)**. Další informace najdete v tématu [Security Center doporučení](security-center-recommendations.md). 
 
 
-    [![* * U vašich databází SQL na počítačích by měla být opravená ohrožení zabezpečení (Preview) * * doporučení](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
+    [![* * Na počítačích s SQL serverem by se měla opravit Chyba zabezpečení (Preview) * * doporučení](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
     Zobrazí se podrobné zobrazení tohoto doporučení.
 
-    [![Podrobné zobrazení pro chyby zabezpečení * * na vašich databázích SQL na počítačích by mělo být opraveno (Preview) * * doporučení](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
+    [![Podrobné zobrazení pro chyby zabezpečení * * na počítačích SQL na počítačích by mělo být opravené (Preview) * * doporučení](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
 1. Další podrobnosti najdete v podrobnostech:
 

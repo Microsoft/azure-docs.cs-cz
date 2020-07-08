@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak pomocí spravovaných identit ověřit
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261410"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044239"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI
 
@@ -172,7 +172,7 @@ Teď, když je úloha Stream Analytics vytvořená, může být dána přístup 
 
 ### <a name="use-the-power-bi-powershell-cmdlets"></a>Použití rutin Power BI PowerShellu
 
-1. Nainstalujte rutiny `MicrosoftPowerBIMgmt` Power BI PowerShellu.
+1. Nainstalujte `MicrosoftPowerBIMgmt` rutiny Power BI PowerShellu.
 
    > [!Important]
    > Ujistěte se prosím, že používáte verzi 1.0.821 nebo novější z rutin.
@@ -201,7 +201,7 @@ Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -Pr
 ```http
 POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
 ```
-Text žádosti
+Text požadavku
 ```json
 {
     "groupUserAccessRight": "Contributor",

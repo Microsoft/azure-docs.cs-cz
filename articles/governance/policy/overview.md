@@ -3,12 +3,12 @@ title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944657"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044188"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -82,7 +82,7 @@ Pokud žádná z předdefinovaných rolí nemá požadovaná oprávnění, vytvo
 
 ### <a name="resources-covered-by-azure-policy"></a>Prostředky, na které se vztahuje Azure Policy
 
-Azure Policy vyhodnocuje všechny prostředky v Azure. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/key-vault-overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
+Azure Policy vyhodnocuje všechny prostředky v Azure. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/general/overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Doporučení pro správu zásad
 
@@ -145,7 +145,7 @@ Podobně jako parametry zásad pomáhají parametry iniciativ zjednodušit sprá
 
 Jako příklad může posloužit scénář, ve kterém máte definici iniciativy **initiativeC** s definicemi zásad **policyA** a **policyB**, z nichž každá očekává jiný typ parametru:
 
-| Zásady | Název parametru |Typ parametru  |Poznámka |
+| Zásada | Název parametru |Typ parametru  |Poznámka |
 |---|---|---|---|
 | policyA | allowedLocations | pole  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
 | policyB | allowedSingleLocation |řetězec |Tento parametr jako hodnotu očekává jedno slovo, protože typ parametru byl definovaný jako řetězec. |

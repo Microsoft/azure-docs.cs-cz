@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317393"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043236"
 ---
-# <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace pomocí Azure Migrate
+# <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace s využitím Azure Migrate
 
 Tento článek poskytuje stručnou příručku, která vám pomůže vytvořit plán migrace do Azure pomocí [Azure Migrate](migrate-services-overview.md).Pokud máte další otázky, ověřte tyto prostředky:
 
@@ -83,7 +83,7 @@ Vyexportujte sestavu posouzení virtuálních počítačů Azure a vyfiltrujte t
 
 - **Připravenost je neznámá**: Azure Migrate není schopen určit připravenost počítače z důvodu nedostatečných metadat.
 
-Pomocí vyhodnocení databáze můžete vyhodnotit připravenost pro migraci SQL Serverch dat do databází Azure SQL nebo Azure SQL Database spravovaných instancí. Pro každou instanci SQL serveru vidíte procento stavu připravenosti migrace. U každé z těchto instancí si taky můžete prohlédnout doporučený cíl v Azure, potenciální blokující migrace, počet přerušujících změn, připravenost pro Azure SQL DB/Azure SQL VM a úroveň kompatibility. Můžete Dig hlouběji a pochopit dopad migračních bloků a doporučení, aby je bylo možné opravit.
+Pomocí vyhodnocení databáze můžete vyhodnotit připravenost pro migraci SQL Serverch dat do Azure SQL Database nebo spravovaných instancí Azure SQL. Pro každou instanci SQL serveru vidíte procento stavu připravenosti migrace. U každé z těchto instancí si taky můžete prohlédnout doporučený cíl v Azure, potenciální blokující migrace, počet přerušujících změn, připravenost pro Azure SQL DB/Azure SQL VM a úroveň kompatibility. Můžete Dig hlouběji a pochopit dopad migračních bloků a doporučení, aby je bylo možné opravit.
 
  ![Vyhodnocení databáze](./media/concepts-migration-planning/database-assessment-portal.png)
 

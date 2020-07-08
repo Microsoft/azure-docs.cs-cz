@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 02/12/2020
-  ms.openlocfilehash: 34d7e9ad4f312576eb1e51961feb8364b99a967e
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 1119c4ec7c0b57f1b3707708ecb9227d737e2898
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77651317"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86043117"
 landingContent:
 - title: Informace o službě Azure Time Series Insights
   linkLists:
@@ -34,7 +34,7 @@ landingContent:
     - text: Vizualizace dat v průzkumníku služby Time Series Insights verze Preview
       url: time-series-insights-update-explorer.md
     - text: Model služby Time Series
-      url: time-series-insights-update-tsm.md
+      url: concepts-model-overview.md
   - linkListType: video
     links:
     - text: Time Series Insights pro aplikace IoT (13:31)
@@ -57,16 +57,14 @@ landingContent:
       url: time-series-insights-how-to-add-an-event-source-iothub.md
     - text: Plánování prostředí
       url: time-series-insights-update-plan.md
-    - text: Příchozí přenos a úložiště dat
-      url: time-series-insights-update-storage-ingress.md
+    - text: Přehled ingestování dat
+      url: concepts-ingestion-overview.md
   - linkListType: how-to-guide
     links:
     - text: Zřizování a správa
       url: time-series-insights-update-how-to-manage.md
     - text: Udělení přístupu k datům
       url: time-series-insights-data-access.md
-    - text: Formování JSON pro příchozí přenos dat a dotazy
-      url: time-series-insights-update-how-to-shape-events.md
 - title: Referenční materiály k rozhraní API
   linkLists:
   - linkListType: reference

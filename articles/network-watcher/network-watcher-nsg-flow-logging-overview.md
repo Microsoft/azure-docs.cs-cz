@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: bedc0f6a457fe27d7358aea1219126427c924e1d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: e59a985f59da1b6a40a6b583d5e2a490611a702c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84627924"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043848"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -51,7 +51,10 @@ Protokoly toku jsou zdrojem pravdy pro všechny síťové aktivity ve vašem clo
 - Protokoly se shromažďují prostřednictvím platformy Azure a jakýmkoli způsobem neovlivňují prostředky zákazníků ani výkon sítě.
 - Protokoly se zapisují ve formátu JSON a zobrazují odchozí a příchozí toky podle NSG pravidla.
 - Každý záznam protokolu obsahuje síťové rozhraní (NIC), na které se tok vztahuje, informace o 5-tice, rozhodnutí o provozu & (jenom verze 2) informace o propustnosti. Úplné podrobnosti najdete v níže uvedeném _formátu protokolu_ .
-- Protokoly toku mají funkci uchovávání, která umožňuje automaticky odstranit protokoly až do roku po jejich vytvoření. **Poznámka**: uchování je dostupné jenom v případě, že používáte [účty úložiště pro obecné účely v2 (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts). 
+- Protokoly toku mají funkci uchovávání, která umožňuje automaticky odstranit protokoly až do roku po jejich vytvoření. 
+
+> [!NOTE]
+> Uchovávání informací je k dispozici pouze v případě, že používáte [účty úložiště pro obecné účely v2 (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts). 
 
 **Základní koncepty**
 
@@ -107,7 +110,7 @@ Stav toku _B_ se zaznamenává při zahájení toku. Stav toku _C_ a stav toku _
 Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více záznamů, které následují seznam vlastností popsaný v předchozí části.
 
 > [!NOTE]
-> Hodnoty ve vlastnosti **flowTuples* jsou čárkami oddělený seznam.
+> Hodnoty ve vlastnosti *flowTuples* jsou čárkami oddělený seznam.
  
 **Ukázka formátu protokolu toku NSG verze 1**
 ```json
@@ -306,7 +309,7 @@ Pro pokračování ve stavech _C_ a koncových _E_ toků jsou počty bajtů a pa
 
 K povolení protokolů toku použijte odpovídající odkaz níže.
 
-- [Portál Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 - [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
 - [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
 - [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
@@ -314,7 +317,7 @@ K povolení protokolů toku použijte odpovídající odkaz níže.
 
 ## <a name="updating-parameters"></a>Aktualizují se parametry
 
-**Portál Azure Portal**
+**Azure Portal**
 
 V Azure Portal přejděte do části protokoly toku NSG v Network Watcher. Pak klikněte na název NSG. Tím se zobrazí podokno nastavení protokolu toku. Změňte parametry, které chcete, a potom klikněte na **Uložit** , aby se změny nasadily.
 
@@ -354,9 +357,9 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Náklady na protokolování toků**: protokolování toku NSG se účtuje podle objemu vyprodukovaných protokolů. Velký objem přenosů může mít za následek objem protokolu velkého toku a související náklady. Ceny protokolu NSG Flow nezahrnují základní náklady na úložiště. Použití funkce zásady uchovávání informací s protokolováním toku NSG znamená, že se za delší dobu účtují samostatné náklady na úložiště. Pokud nepotřebujete funkci zásad uchovávání informací, doporučujeme nastavit tuto hodnotu na 0. Další informace najdete v tématu [Network Watcher ceny](https://azure.microsoft.com/pricing/details/network-watcher/) a [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/) pro další podrobnosti.
 
-**Nesprávný bajt a počty paketů pro příchozí toky**: [skupiny zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview) jsou implementovány jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). V důsledku omezení platformy se ale pravidla, která řídí příchozí toky, implementují bezstavovým způsobem. Z důvodu těchto bajtů a počty paketů nejsou pro tyto toky zaznamenávány. V důsledku toho by se počet bajtů a paketů hlášených v protokolech toku NSG (a Analýza provozu) lišil od skutečných čísel. Navíc jsou příchozí toky nyní neukončující. Toto omezení je naplánováno od prosince 2020.
+**Nesprávný bajt a počty paketů pro příchozí toky**: [skupiny zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview) jsou implementovány jako [stavová brána firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). V důsledku omezení platformy se ale pravidla, která řídí příchozí toky, implementují bezstavovým způsobem. Z důvodu těchto bajtů a počty paketů nejsou pro tyto toky zaznamenávány. V důsledku toho by se počet bajtů a paketů hlášených v protokolech toku NSG (a Analýza provozu) lišil od skutečných čísel. Navíc jsou příchozí toky nyní neukončující. Toto omezení je naplánováno od prosince 2020. 
 
-**Příchozí toky zaznamenané z internetových IP adres do virtuálních počítačů bez veřejných**IP adres: virtuální počítače, které nemají veřejnou IP adresu přiřazenou přes veřejnou IP adresu přidruženou k síťovému rozhraní jako veřejná IP adresa na úrovni instance nebo které jsou součástí základního fondu back-end služby Vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) a mají IP adresu přiřazenou Azure pro usnadnění odchozího připojení. V důsledku toho může dojít k zobrazení záznamů protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. I když Azure nedovolí těmto tokům VIRTUÁLNÍm počítačům, bude se zaprotokolovat a bude se zobrazovat Network Watcher v protokolu NSG toku, který navrhuje. Doporučujeme, aby nevyžádaný příchozí internetový provoz byl explicitně zablokován pomocí NSG.
+**Příchozí toky zaznamenané z internetových IP adres do virtuálních počítačů bez veřejných**IP adres: virtuální počítače, které nemají veřejnou IP adresu přiřazenou přes veřejnou IP adresu přidruženou k síťovému rozhraní jako veřejná IP adresa na úrovni instance nebo které jsou součástí základního fondu back-end služby Vyrovnávání zatížení, používají [výchozí SNAT](../load-balancer/load-balancer-outbound-connections.md) a mají IP adresu přiřazenou Azure pro usnadnění odchozího připojení. V důsledku toho může dojít k zobrazení záznamů protokolu toku pro toky z internetových IP adres, pokud je tok určen pro port v rozsahu portů přiřazených pro SNAT. I když Azure nedovolí těmto tokům VIRTUÁLNÍm počítačům, bude se zaprotokolovat a bude se zobrazovat Network Watcher v protokolu NSG toku, který navrhuje. Doporučujeme, aby nevyžádaný příchozí internetový provoz byl explicitně zablokován pomocí NSG.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

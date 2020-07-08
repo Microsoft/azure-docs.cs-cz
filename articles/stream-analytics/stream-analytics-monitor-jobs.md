@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2017
-ms.openlocfilehash: 465ca1d012c6d2057e33fe1460e794e4d5966be6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2177280d4b8ffd52fb37dd01a74ea3ab0ae7de9f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831207"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044069"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programové vytvoření monitorování úloh Stream Analytics
 
@@ -36,7 +36,7 @@ Než zahájíte tento proces, musíte splnit následující předpoklady:
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. Do souboru App. config přidejte následující oddíl appSettings.
+3. Do souboru App.config přidejte následující oddíl appSettings.
    
    ```csharp
    <appSettings>
@@ -167,7 +167,7 @@ Následující kód umožňuje monitorování pro **existující** úlohu Stream
 >   ```
 
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

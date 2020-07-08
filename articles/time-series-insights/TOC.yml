@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Azure Time Series Insights verze Preview
       items:
-        - name: Plánování prostředí
-          href: time-series-insights-update-plan.md
-        - name: Příchozí přenos a úložiště dat
-          href: time-series-insights-update-storage-ingress.md
         - name: Případy použití
           href: time-series-insights-update-use-cases.md
+        - name: Plánování prostředí
+          href: time-series-insights-update-plan.md
+        - name: Přehled příjmu dat
+          href: concepts-ingestion-overview.md
+        - name: Podporované datové typy
+          href: concepts-supported-data-types.md
+        - name: Zdroje událostí příjmu streamování
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: Pravidla pro řídicí znaky a linearizaci JSON
+          href: concepts-json-flattening-escaping-rules.md
+        - name: Omezení propustnosti příchozího přenosu datu streamování
+          href: concepts-streaming-throughput-limitations.md
+        - name: Storage
+          href: concepts-storage.md
         - name: Model služby Time Series
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: Dotaz na službu Time Series
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: Vizualizace dat v průzkumníku (Preview)
           href: time-series-insights-update-explorer.md
         - name: Vývoj

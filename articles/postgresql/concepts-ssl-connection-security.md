@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 9422337d30d06f0bb333e4d25ba1e54bd789ffec
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.date: 06/30/2020
+ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418156"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043831"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení TLS v Azure Database for PostgreSQL – jeden server
 
@@ -51,7 +51,7 @@ Některé aplikační architektury, které používají PostgreSQL pro své data
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Aplikace, které vyžadují ověření certifikátu pro připojení TLS
 
-V některých případech aplikace vyžadují místní soubor certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (. cer) pro zabezpečené připojení. Certifikát pro připojení k serveru Azure Database for PostgreSQL se nachází na adrese https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Stáhněte si soubor certifikátu a uložte ho do svého upřednostňovaného umístění.
+V některých případech aplikace vyžadují k zabezpečenému připojení soubor místního certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (CA). Certifikát pro připojení k serveru Azure Database for PostgreSQL se nachází na adrese https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Stáhněte si soubor certifikátu a uložte ho do svého upřednostňovaného umístění. (Další informace najdete v následujících odkazech k certifikátům pro servery v cloudech svrchovaného serveru: [Azure Government](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), [Azure Čína](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)a [Azure Německo](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).) 
 
 ### <a name="connect-using-psql"></a>Připojení pomocí psql
 
@@ -85,9 +85,9 @@ Azure Database for PostgreSQL jeden server poskytuje možnost vyhovět verzi TLS
 Například nastavení minimální verze nastavení TLS na TLS 1,0 znamená, že váš server umožní připojení z klientů pomocí protokolu TLS 1,0, 1,1 a 1,2 +. Další možností je nastavení na 1,2 znamená, že povolíte připojení jenom z klientů pomocí protokolu TLS 1.2 + a všechna připojení k TLS 1,0 a TLS 1,1 budou odmítnutá.
 
 > [!Note] 
-> Pro všechny nové servery Azure Database for PostgreSQL výchozí nastavení TLS zakázáno.
+> Ve výchozím nastavení Azure Database for PostgreSQL nevynutila minimální verzi TLS (nastavení `TLSEnforcementDisabled` ).
 >
-> Verze TLS podporované nástrojem Azure Database for PostgreSQL jsou v současnosti TLS 1,0, 1,1 a 1,2. Jakmile se vynutila konkrétní minimální verze protokolu TLS, nemůžete ji změnit na zakázané.
+> Jakmile vynucujete minimální verzi protokolu TLS, nemůžete později zakázat vynucení minimální verze.
 
 Informace o tom, jak nastavit nastavení TLS pro váš Azure Database for PostgreSQL samostatný server, najdete v článku [jak nakonfigurovat nastavení TLS](howto-tls-configurations.md).
 
