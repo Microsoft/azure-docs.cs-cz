@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700493"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085731"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
@@ -210,7 +211,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 | Deaktivovat | Pozastaví běžící topologii. |
 | Obnovení rovnováhy | Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru byste měli znovu vyrovnat běžící topologie. Tato operace umožňuje, aby topologie upravila paralelismus, aby vyrovnala dodatečné nebo omezené množství uzlů v clusteru.<br/><br/>Další informace najdete v tématu <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Princip paralelismu Apache Storm topologie</a>.
 | Kill | Ukončí topologii nečinnosti po zadaném časovém limitu. |
-| Ladit | Spustí ladicí relaci pro spuštěnou topologii. |
+| Ladění | Spustí ladicí relaci pro spuštěnou topologii. |
 | Zastavit ladění | Ukončí relaci ladění pro spuštěnou topologii. |
 | Změnit úroveň protokolu | Upraví úroveň protokolu ladění. |
 

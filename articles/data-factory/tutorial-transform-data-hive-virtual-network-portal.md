@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 7cdb58b45727c1a71b5c412046e07658ae8de314
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559728"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083062"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Transformujte data v Azure Virtual Network pomocí aktivity podregistru v Azure Data Factory pomocí Azure Portal
 
@@ -83,7 +83,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
  
    Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název datové továrny (například na vaše_jméno_MyAzureSsisDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+    *Název objektu pro vytváření dat "MyAzureSsisDataFactory" není k dispozici.*
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      

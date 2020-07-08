@@ -1,7 +1,7 @@
 ---
 title: Řízení přístupu k síti
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure SQL Data Warehouse (dříve Azure SQL Data Warehouse).
+description: Přehled správy a řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics (dřív Azure SQL Data Warehouse).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 3a88ce96ca95bd02481558597bcc8082adf7c975
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343978"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085459"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti
 
@@ -56,7 +56,7 @@ To ale má vliv na následující funkce, které běží na virtuálních počí
 
 ### <a name="import-export-service"></a>Import služby export
 
-Služba import exportu nefunguje **, když**je **povolený přístup ke službám Azure** . Problém ale můžete obejít [tak, že ručně spustíte SqlPackage. exe z virtuálního počítače Azure nebo exportujete](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) přímo do kódu pomocí rozhraní DACFx API.
+Služba import exportu nefunguje **, když**je **povolený přístup ke službám Azure** . Problém ale můžete obejít [tak, že ručně spustíte sqlpackage.exe z virtuálního počítače Azure nebo exportujete](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) přímo do kódu pomocí rozhraní API DACFx.
 
 ### <a name="data-sync"></a>Synchronizace dat
 
@@ -82,7 +82,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 > [!TIP]
 > Get-AzNetworkServiceTag vrátí globální rozsah pro tag služby SQL navzdory zadání parametru Location. Nezapomeňte ho filtrovat do oblasti, která je hostitelem databáze centra používané skupinou synchronizace.
 
-Všimněte si, že výstup skriptu PowerShellu je v zápisu CIDR (Classless Inter-Domain Routing). To je potřeba převést na formát počáteční a koncové IP adresy pomocí [Get-IPrangeStartEnd. ps1,](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) jako je to:
+Všimněte si, že výstup skriptu PowerShellu je v zápisu CIDR (Classless Inter-Domain Routing). Tento postup je potřeba převést na formát počáteční a koncové IP adresy, a to pomocí [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) takto:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -106,7 +106,7 @@ Nyní je můžete přidat jako jedinečná pravidla brány firewall a potom nast
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 
-Brána firewall založená na protokolu IP je funkcí logického SQL serveru v Azure, která zabraňuje všem přístupům k databázovému serveru, dokud explicitně [nepřidáte IP adresy](firewall-create-server-level-portal-quickstart.md) klientských počítačů.
+Brána firewall založená na protokolu IP je funkcí logického SQL serveru v Azure, která zabraňuje všem přístupům k vašemu serveru, dokud explicitně [nepřidáte IP adresy](firewall-create-server-level-portal-quickstart.md) klientských počítačů.
 
 ## <a name="virtual-network-firewall-rules"></a>Pravidla brány firewall virtuální sítě
 
@@ -131,14 +131,14 @@ Při zkoumání pravidel brány firewall virtuální sítě Pamatujte na tyto s�
 
 Brána Azure SQL Database firewall umožňuje zadat rozsahy IP adres, ze kterých se SQL Database přijímá komunikace. Tento přístup je v pořádku pro stabilní IP adresy, které jsou mimo privátní síť Azure. Virtuální počítače v privátní síti Azure ale mají nakonfigurovanou *dynamickou* IP adresu. Dynamické IP adresy se můžou změnit, když se virtuální počítač restartuje, a zase ověří pravidlo brány firewall založené na protokolu IP. V provozním prostředí by se Folly zadat dynamickou IP adresu v pravidle brány firewall.
 
-Toto omezení můžete obejít tak, že získáte *statickou* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [Konfigurace privátních IP adres pro virtuální počítač pomocí Azure Portal](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Přístup ke statickým IP adresám se ale může obtížně spravovat a je nákladný, pokud je to v rozsahu.
+Toto omezení můžete obejít tak, že získáte *statickou* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure Portal](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md). Přístup ke statickým IP adresám se ale může obtížně spravovat a je nákladný, pokud je to v rozsahu.
 
 Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a správě přístupu z konkrétní podsítě, která obsahuje vaše virtuální počítače.
 
 > [!NOTE]
 > V podsíti ještě nemůžete mít SQL Database. Pokud byl váš server uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat s vaším SQL Database. V takovém případě můžou vaše virtuální počítače komunikovat s SQL Database bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
 
-## <a name="private-link"></a>Private Link
+## <a name="private-link"></a>Privátní propojení
 
 Privátní odkaz vám umožní připojit se k serveru prostřednictvím **privátního koncového bodu**. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální síti](../../virtual-network/virtual-networks-overview.md) a podsíti.
 

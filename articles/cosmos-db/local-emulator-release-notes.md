@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687170"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083453"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 
@@ -26,7 +26,11 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="2111"></a>2.11.1
+### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
+
+- Tato verze mění způsob, jakým se shromažďují trasování ETL při řešení potíží s emulátorem Cosmos. WPR (nástroje pro Windows Performance Runtime) jsou teď výchozí nástroje pro zachycení trasování založené na ETL, zatímco staré zachycení založené na programu LOGMAN se už nepoužívá. Tato změna je vyžadována částečně, protože nejnovější aktualizace zabezpečení systému Windows měly neočekávaný dopad na to, jak program LOGMAN funguje při spuštění prostřednictvím emulátoru Cosmos.
+
+### <a name="2111-06102020"></a>2.11.1 (06/10/2020)
 
 - Tato verze opravuje několik chyb souvisejících s emulátorem Průzkumník dat. V některých případech při použití emulátoru Průzkumník dat přes webový prohlížeč se nemůže připojit ke koncovému bodu emulátoru Cosmos a všechny související akce, jako je vytvoření databáze nebo kontejneru, budou mít chybu. Druhý opravený problém souvisí s vytvořením položky ze souboru JSON pomocí akce Průzkumník dat nahrávání.
 

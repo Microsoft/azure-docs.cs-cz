@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945371"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085493"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -32,7 +32,7 @@ Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní ap
 [Azure Monitor pro skupiny prostředků (Preview)](insights/resource-group-insights.md) |  Roztřídit a diagnostikovat všechny problémy, které jednotlivé prostředky narazí, a současně nabídnout kontext jako stav a výkon skupiny prostředků jako celku. |
 | [Azure Monitor pro úložiště](insights/storage-insights-overview.md) | Poskytuje ucelený přehled o vašich Azure Storagech účtech tím, že přináší jednotný přehled o výkonu, kapacitě a dostupnosti služby Azure Storage Services. |
 | [Azure Monitor pro virtuální počítače](insights/vminsights-overview.md) | Monitoruje vaše virtuální počítače Azure a škálované sady virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech. |
-| [Azure Monitor pro Key Vault (Preview)](insights/key-vaults-insights-overview.md) | Povides komplexní monitorování vašich trezorů klíčů tím, že poskytujeme jednotný přehled o vašich Key Vaultch požadavcích, výkonu, selháních a latenci. |
+| [Azure Monitor pro Key Vault (Preview)](insights/key-vaults-insights-overview.md) | Poskytuje ucelený pohled na vaše trezory klíčů tím, že nabízí jednotný přehled o vašich Key Vaultch požadavcích, výkonu, selháních a latenci. |
 | [Azure Monitor pro Azure cache pro Redis (Preview)](insights/redis-cache-insights-overview.md) |  Poskytuje jednotný a interaktivní pohled na celkový výkon, selhání, kapacitu a provozní stav. |
 
 
@@ -86,7 +86,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Container Instances | Yes | No | No |  |
 |Container Registry | Ano | Ano | No |  |
 |Content Delivery Network (CDN) | No | Yes | No |  |
-|Databáze Cosmos | Ano | Ano | [Ano](insights/cosmosdb-insights-overview.md) |  |
+|Cosmos DB | Ano | Ano | [Ano](insights/cosmosdb-insights-overview.md) |  |
 |Správa nákladů | No | No | No |  |
 |Data Box | No | No | No |  |
 |Data Catalog Gen2 | No | No | No |  |
@@ -111,7 +111,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |ExpressRoute | Ano | Ano | No |  |
 |Brána firewall | Ano | Ano | No |  |
 |Front Door | Ano | Ano | No |  |
-|Functions | Ano | Ano | No |  |
+|Funkce | Ano | Ano | No |  |
 |HDInsight | No | Yes | No |  |
 |HPC Cache | No | No | No |  |
 |Information Protection | No | Yes | No |  |
@@ -131,12 +131,12 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Microsoft PowerApps | No | No | No |  |
 |Microsoft Social Engagement | No | No | No |  |
 |Microsoft Stream | Ano | Ano | No |  |
-|Migrace | No | No | No |  |
+|Migrate | No | No | No |  |
 |Multi-Factor Authentication | No | Yes | No |  |
 |Network Watcher | Ano | Ano | No |  |
 |Notification Hubs | Yes | No | No |  |
 |Open Datasets | No | No | No |  |
-|Zásada | No | No | No |  |
+|Zásady | No | No | No |  |
 |Power BI Embedded | Ano | Ano | No |  |
 |Privátní propojení | No | No | No |  |
 |Komunikační platforma pro zařazování projektu | No | No | No |  |
@@ -145,14 +145,14 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Resource Graph | No | No | No |  |
 |Resource Manager | No | No | No |  |
 |Maloobchodní vyhledávání – podle Bingu | No | No | No |  |
-|Search | Ano | Ano | No |  |
+|Hledat | Ano | Ano | No |  |
 |Service Bus | Ano | Ano | No |  |
 |Service Fabric | No | Yes | No | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
 |Portál pro registraci | No | No | No |  |
 |Site Recovery | No | Yes | No |  |
 |Jarní cloudová služba | No | No | No |  |
 |SQL Data Warehouse | Ano | Ano | No |  |
-|Databáze SQL | Ano | Ano | No |  |
+|SQL Database | Ano | Ano | No |  |
 |SQL Server Stretch Database | Ano | Ano | No |  |
 |Zásobník | No | No | No |  |
 |Storage | Yes | No | [Ano](insights/storage-insights-overview.md) |  |
@@ -184,7 +184,7 @@ Služby a řešení v následující tabulce ukládají svá data do Log Analyti
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Vytvořte nastavení diagnostiky pro odesílání protokolů do Azure Monitor. Viz [odeslání dat protokolu do úložiště, centra událostí nebo Log Analytics v Intune (Preview)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
 | Síť  | [Network Performance Monitor](insights/network-performance-monitor.md) – monitorovat síťové připojení a výkon do koncových bodů služby a aplikace.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – Analyzujte protokoly a metriky z Azure Application Gateway.<br>[Analýza provozu](/azure/network-watcher/traffic-analytics) – analyzuje protokoly toků Network Watcher skupiny zabezpečení sítě (NSG), které poskytují přehled o toku přenosů ve vašem cloudu Azure. |
 | [Office 365](insights/solution-office-365.md) | Monitorujte své prostředí Office 365. Aktualizovaná verze s vylepšenou dostupností prostřednictvím služby Azure Sentinel. |
-| [SQL Analytics](insights/azure-sql.md) | Monitorujte výkon databází SQL Azure, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými. |
+| [SQL Analytics](insights/azure-sql.md) | Sledujte výkon databází SQL Azure a spravovaných instancí SQL ve velkém měřítku a napříč několika předplatnými. |
 | [Surface Hub](insights/surface-hubs.md) | Sledujte stav a využití Surface Hubch zařízení. |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | Shromažďování dat z agentů Operations Manager připojením skupiny pro správu k Azure Monitor. Viz [připojení Operations Manager k Azure monitor](platform/om-agents.md)<br> Posuzuje rizika a stav vaší skupiny pro správu System Center Operations Manager pomocí řešení pro [posouzení Operations Manager](insights/scom-assessment.md) . |
 | [Místnosti Microsoft Teams](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Integrovaná a kompletní správa zařízení Microsoft Teams Room. |

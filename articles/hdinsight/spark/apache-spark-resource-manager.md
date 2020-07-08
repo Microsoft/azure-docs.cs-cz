@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932109"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085187"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
 
@@ -34,17 +34,17 @@ Pomocí uživatelského rozhraní PŘÍZe můžete monitorovat aplikace, které 
     ![Spustit rozhraní PŘÍZe](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. V uživatelském rozhraní Ambari přejděte do části **nepříze** > **Rychlé odkazy** > **aktivní** > **Správce prostředků uživatelského rozhraní**.
+   > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. V uživatelském rozhraní Ambari přejděte do části **nepříze**  >  **Rychlé odkazy**  >  **aktivní**  >  **Správce prostředků uživatelského rozhraní**.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optimalizace clusterů pro aplikace Spark
 
-Tři klíčové parametry, které lze použít pro konfiguraci Sparku v závislosti na požadavcích aplikace jsou `spark.executor.instances`, `spark.executor.cores`a `spark.executor.memory`. Vykonavatel je proces, který se spustil pro aplikaci Spark. Běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikosti prováděcího modulu pro jednotlivé clustery se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tyto informace jsou uloženy v `spark-defaults.conf` uzlech hlavní uzly clusteru.
+Tři klíčové parametry, které lze použít pro konfiguraci Sparku v závislosti na požadavcích aplikace jsou `spark.executor.instances` , `spark.executor.cores` a `spark.executor.memory` . Vykonavatel je proces, který se spustil pro aplikaci Spark. Běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikosti prováděcího modulu pro jednotlivé clustery se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tyto informace jsou uloženy v `spark-defaults.conf` uzlech hlavní uzly clusteru.
 
 Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všechny aplikace, které jsou spuštěny v clusteru), nebo je lze zadat také pro každou jednotlivou aplikaci.
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>Změna parametrů pomocí uživatelského rozhraní Ambari
 
-1. V uživatelském rozhraní Ambari přejděte na **Spark2** > **config** > **Customers Custom Spark2-Defaults**.
+1. V uživatelském rozhraní Ambari přejděte na **Spark2**  >  **config**  >  **Customers Custom Spark2-Defaults**.
 
     ![Nastavení parametrů pomocí Ambari Custom](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Nastavení parametrů pomocí Ambari Custom")
 
@@ -58,38 +58,44 @@ Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všech
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter poznámkovém bloku
 
-Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete provést změny `%%configure` konfigurace pomocí Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
+Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete `%%configure` provést změny konfigurace pomocí Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
 
 Následující fragment kódu ukazuje, jak změnit konfiguraci aplikace běžící v Jupyter.
 
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```scala
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```
 
 Parametry konfigurace musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce.
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>Změna parametrů aplikace odeslané pomocí Spark-Submit
 
-Následující příkaz je příkladem, jak změnit parametry konfigurace pro aplikaci Batch, která je odeslána pomocí `spark-submit`.
+Následující příkaz je příkladem, jak změnit parametry konfigurace pro aplikaci Batch, která je odeslána pomocí `spark-submit` .
 
-    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```scala
+spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>Změna parametrů aplikace odeslané pomocí objektu kudrlinkou
 
 Následující příkaz je příkladem, jak změnit parametry konfigurace pro aplikaci Batch, která je odeslána pomocí objektu kudrlinkou.
 
-    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```bash
+curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Změna těchto parametrů na serveru Spark Thrift
 
 Spark Thrift Server poskytuje přístup JDBC/ODBC ke clusteru Spark a používá se k provozování dotazů Spark SQL. Nástroje jako Power BI, Tableau a tak dále používají protokol ODBC ke komunikaci se serverem Spark Thrift ke spouštění dotazů Spark SQL jako aplikace Spark. Po vytvoření clusteru Spark se spustí dvě instance serveru Spark Thrift, jednu na každý hlavní uzel. Každý server Spark Thrift je v uživatelském rozhraní PŘÍZe viditelný jako aplikace Spark.
 
-Spark Thrift Server používá přidělování dynamických prováděcích modulů Spark, `spark.executor.instances` a proto se nepoužívá. Místo toho používá `spark.dynamicAllocation.maxExecutors` Spark Thrift Server a `spark.dynamicAllocation.minExecutors` k určení počtu prováděcích modulů. Parametry `spark.executor.cores`konfigurace a `spark.executor.memory` slouží k úpravě velikosti prováděcího modulu. Tyto parametry můžete změnit, jak je znázorněno v následujícím postupu:
+Spark Thrift Server používá přidělování dynamických prováděcích modulů Spark, a proto se `spark.executor.instances` nepoužívá. Místo toho používá Spark Thrift server `spark.dynamicAllocation.maxExecutors` a `spark.dynamicAllocation.minExecutors` k určení počtu prováděcích modulů. Parametry konfigurace `spark.executor.cores` a `spark.executor.memory` slouží k úpravě velikosti prováděcího modulu. Tyto parametry můžete změnit, jak je znázorněno v následujícím postupu:
 
-* Rozbalením kategorie **Advanced spark2-Thrift-sparkconf** aktualizujte parametry `spark.dynamicAllocation.maxExecutors`a `spark.dynamicAllocation.minExecutors`.
+* Rozbalením kategorie **Advanced spark2-Thrift-sparkconf** aktualizujte parametry `spark.dynamicAllocation.maxExecutors` a `spark.dynamicAllocation.minExecutors` .
 
     ![Konfigurace serveru Spark Thrift](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Konfigurace serveru Spark Thrift")
 
-* Rozbalením kategorie **Custom spark2-Thrift-sparkconf** aktualizujte parametry `spark.executor.cores`a `spark.executor.memory`.
+* Rozbalením kategorie **Custom spark2-Thrift-sparkconf** aktualizujte parametry `spark.executor.cores` a `spark.executor.memory` .
 
     ![Konfigurace parametru serveru Spark Thrift](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Konfigurace parametru serveru Spark Thrift")
 
@@ -97,7 +103,7 @@ Spark Thrift Server používá přidělování dynamických prováděcích modul
 
 Paměť ovladače serveru Spark Thrift je nakonfigurovaná na 25% velikosti paměti RAM hlavního uzlu, a to za předpokladu, že celková velikost paměti RAM hlavního uzlu je větší než 14 GB. Pomocí uživatelského rozhraní Ambari můžete změnit konfiguraci paměti ovladače, jak je znázorněno na následujícím snímku obrazovky:
 
-V uživatelském rozhraní Ambari přejděte do **Spark2** > **config** > **Advanced Spark2-ENV**. Pak zadejte hodnotu pro **spark_thrift_cmd_opts**.
+V uživatelském rozhraní Ambari přejděte do **Spark2**  >  **config**  >  **Advanced Spark2-ENV**. Pak zadejte hodnotu pro **spark_thrift_cmd_opts**.
 
 ## <a name="reclaim-spark-cluster-resources"></a>Uvolnění prostředků clusteru Spark
 

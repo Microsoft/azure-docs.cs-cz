@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195576"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082773"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
 
@@ -680,8 +680,8 @@ V této části zřídíte novou databázi v SQL Database, aby se aplikace použ
 
     | Zástupný symbol | Navrhovaná hodnota |
     | --- | --- |
-    | *{vaše_uživatelské jméno}* | Pro server databáze, který jste právě vytvořili, použijte **přihlašovací údaje správce serveru**. |
-    | *{vaše_heslo}* | Pro server databáze, který jste právě vytvořili, použijte heslo. |
+    | *{vaše_uživatelské jméno}* | Pro server, který jste právě vytvořili, použijte **přihlašovací jméno správce serveru** . |
+    | *{vaše_heslo}* | Použijte heslo pro server, který jste právě vytvořili. |
 
     Když uživatelské jméno a heslo přidáte jako nastavení aplikace, nezahrnou se do vašeho kódu. Tento přístup vám pomůže přihlašovací údaje ochránit.
 
@@ -701,7 +701,7 @@ V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v c
 
     Následující tabulka popisuje každý odkaz na akci v ukázkové aplikaci:
 
-    | Akce | Popis |
+    | Akce | Description |
     | --- | --- |
     | Vytvořit nové |Vytvoření nového týmu. |
     | Odehrát sezónu |Odehrání sezóny her, aktualizace týmových statistik a vymazání zastaralých dat z mezipaměti. |

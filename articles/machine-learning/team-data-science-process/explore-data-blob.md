@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685958"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085697"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat v úložišti objektů BLOB v Azure pomocí PANDAS
 
@@ -50,7 +51,7 @@ Chcete-li prozkoumat a manipulovat s datovou sadou, je nutné ji nejprve stáhno
     blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
     blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
     t2=time.time()
-    print(("It takes %s seconds to download "+blobname) % (t2 - t1))
+    print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
     ```
 
 1. Přečtěte si data do PANDAS dataframe ze staženého souboru.

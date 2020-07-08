@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74561737"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084677"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití externích balíčků s Jupyter poznámkovým blokům v clusterech s Apache Spark v HDInsight
 
@@ -33,11 +33,11 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 
 * Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v tématech [načtení dat a spuštění dotazů s Apache Spark v HDInsight](./apache-spark-load-data-run-query.md).
 
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. `wasb://` To Azure Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage nebo Data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI `wasbs://` by `abfss://`byl nebo v uvedeném pořadí taky [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To Azure Storage pro `wasb://` `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage nebo Data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` nebo v `abfss://` uvedeném pořadí taky [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Použijte externí balíčky s poznámkovými bloky Jupyter
 
-1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter` místo `CLUSTERNAME` , kde je název vašeho clusteru Spark.
+1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter` místo, kde `CLUSTERNAME` je název vašeho clusteru Spark.
 
 1. Vytvořte nový poznámkový blok. Vyberte **Nový**a pak vyberte **Spark**.
 
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 
     ![Zadání názvu poznámkového bloku](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Zadání názvu poznámkového bloku")
 
-1. K nakonfigurování poznámkového bloku pro použití externího balíčku použijete `%%configure` Magic. V poznámkových blocích, které používají externí balíčky, se ujistěte `%%configure` , že jste volali Magic do první buňky kódu. Tím se zajistí, že jádro je nakonfigurované na použití balíčku před spuštěním relace.
+1. `%%configure`K nakonfigurování poznámkového bloku pro použití externího balíčku použijete Magic. V poznámkových blocích, které používají externí balíčky, se ujistěte, že jste volali `%%configure` Magic do první buňky kódu. Tím se zajistí, že jádro je nakonfigurované na použití balíčku před spuštěním relace.
 
     >[!IMPORTANT]  
     >Pokud zapomenete nakonfigurovat jádro v první buňce, můžete použít `%%configure` `-f` parametr s parametrem, který ale bude restartovat relaci a veškerý průběh bude ztracen.
@@ -57,7 +57,7 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
     | Pro HDInsight 3,5 a HDInsight 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.11:1.5.0" }}`|
     |Pro HDInsight 3,3 a HDInsight 3,4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
 
-1. Výše uvedený fragment kódu očekává souřadnice Maven pro externí balíček v centrálním úložišti Maven. V tomto fragmentu `com.databricks:spark-csv_2.11:1.5.0` kódu je souřadnice Maven balíčku **Spark-CSV** . Tady je postup, jak sestavit souřadnice balíčku.
+1. Výše uvedený fragment kódu očekává souřadnice Maven pro externí balíček v centrálním úložišti Maven. V tomto fragmentu kódu `com.databricks:spark-csv_2.11:1.5.0` je souřadnice Maven balíčku **Spark-CSV** . Tady je postup, jak sestavit souřadnice balíčku.
 
     a. Vyhledejte balíček v úložišti Maven. V tomto článku používáme [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv).
 
@@ -67,27 +67,35 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 
     c. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
 
-        com.databricks:spark-csv_2.11:1.5.0
+    ```scala
+    com.databricks:spark-csv_2.11:1.5.0
+    ```
 
 1. Spusťte buňku Code s `%%configure` Magic. Tím se nakonfiguruje základní Livy relace tak, aby používala balíček, který jste zadali. V následujících buňkách poznámkového bloku teď můžete použít balíček, jak vidíte níže.
 
-        val df = spark.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = spark.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
     Pro HDInsight 3,4 a níže byste měli použít následující fragment kódu.
 
-        val df = sqlContext.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = sqlContext.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
 1. Potom můžete spustit fragmenty, jako je například znázorněno níže, a zobrazit tak data z datového rámce, který jste vytvořili v předchozím kroku.
 
-        df.show()
+    ```scala
+    df.show()
    
-        df.select("Time").count()
+    df.select("Time").count()
+    ```
 
 ## <a name="see-also"></a><a name="seealso"></a>Viz také
 

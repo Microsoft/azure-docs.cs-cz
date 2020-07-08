@@ -1,15 +1,15 @@
 ---
 title: Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
-ms.date: 06/04/2020
+ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209704"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085796"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -19,6 +19,18 @@ Po přečtení tohoto článku:
 
 - Získejte pracovní znalosti prostředků infrastruktury hlavní knihy a různých komponent, které tvoří stavební kameny blockchain sítě hlavní knihy.
 - Naučte se, jak nasadit a nakonfigurovat konsorcium prostředků infrastruktury hlavní knihy ve službě Azure Kubernetes pro produkční scénáře.
+
+[!INCLUDE [Preview note](./includes/preview.md)]
+
+## <a name="choose-an-azure-blockchain-solution"></a>Výběr řešení Azure blockchain
+
+Než začnete používat šablonu řešení, porovnejte svůj scénář s běžnými případy použití dostupných možností Azure blockchain.
+
+Možnost | Model služby | Běžný případ použití
+-------|---------------|-----------------
+Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+[Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Využijte Azure blockchain Workbench pro vytváření prototypů řešení blockchain nebo blockchain aplikace pro zkoušku konceptu. Azure Blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Architektura konsorcia infrastruktury pro hlavní kniha
 
@@ -397,7 +409,7 @@ Příkaz spustit pod příkazem pro dotaz na chaincode:
 ```
 Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<queryFunction>`    `<queryFuncArgs>`   uvedeném pořadí. Znovu se postará o chaincode_example02. přejít chaincode jako na odkaz a na hodnotu dotazu "a" ve světě nastavenou  `<queryFunction>`   na  `query` a  `<queryArgs>` na "a".  
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstranit potíže
 
 **Ověření verze spuštěné šablony**
 
@@ -429,6 +441,6 @@ Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce,
 
 Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
 
-- [Microsoft Q&stránku s otázkou pro službu Azure blockchain](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
+- [Microsoft Q&stránku s otázkou](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
 - [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

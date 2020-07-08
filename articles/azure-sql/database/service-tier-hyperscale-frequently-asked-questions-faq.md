@@ -11,11 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d5faa08b0b493ac9b7fc03cd15c4747c3e602f02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84049915"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084330"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,11 +43,11 @@ Databáze s technologií škálování na více instancí je databáze v SQL Dat
 | | Typ prostředku | Pro obecné účely |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
 | **Nejlepší pro** |Vše|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování úložiště velikosti až 100 TB, rychlé vertikální a horizontální výpočetní škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
-|  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
-| **Velikost výpočetního prostředí**|Jedna databáze/elastický fond * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
+|  **Typ prostředku** ||SQL Database/spravované instance SQL | Izolovaná databáze | SQL Database/spravované instance SQL |
+| **Velikost výpočetního prostředí**|SQL Database * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
 | |Spravovaná instance SQL | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není k dispozici | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
 | **Typ úložiště** | Vše |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
-| **Velikost úložiště** | Jedna databáze/elastický fond *| 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
+| **Velikost úložiště** | SQL Database *| 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
 | | Spravovaná instance SQL  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
 | **IOPS** | Izolovaná databáze | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
 | | Spravovaná instance SQL | Závisí na velikosti souboru | Není k dispozici | 1375 IOPS/vCore |

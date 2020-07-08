@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249479"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085714"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Přírůstkové načtení dat ze spravované instance Azure SQL do Azure Storage pomocí Change Data Capture (CDC)
 
@@ -113,7 +113,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
    Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+    *Název objektu pro vytváření dat "ADFTutorialDataFactory" není k dispozici.*
 3. Jako **verzi** vyberte **V2**.
 4. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 5. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
@@ -278,12 +278,12 @@ V tomto kroku vytvoříte kanál, který nejprve kontroluje počet změněných 
    2. Jako **Použít dotaz** vyberte **Dotaz**.
    3. Pro **dotaz**zadejte následující.
 
-    ```sql
-    DECLARE @from_lsn binary(10), @to_lsn binary(10); 
-    SET @from_lsn =sys.fn_cdc_get_min_lsn('dbo_customers'); 
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal', GETDATE());
-    SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
-    ```
+      ```sql
+      DECLARE @from_lsn binary(10), @to_lsn binary(10); 
+      SET @from_lsn =sys.fn_cdc_get_min_lsn('dbo_customers'); 
+      SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal', GETDATE());
+      SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
+      ```
 
    ![Aktivita kopírování – nastavení zdroje](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-settings.png)
 

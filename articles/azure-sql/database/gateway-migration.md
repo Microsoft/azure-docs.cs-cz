@@ -2,20 +2,20 @@
 title: Upozornění migrace provozu brány
 description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure SQL Database brány.
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: sqldbrb=1 
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: d9ec21657f871211df575b56ff56962aad3f5c88
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324708"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084949"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,10 +24,25 @@ Díky tomu, že se infrastruktura Azure zlepšuje, Microsoft pravidelně aktuali
 
 Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli změně bran, které jsou dostupné v jednotlivých oblastech. Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Database brány](connectivity-architecture.md#gateway-ip-addresses) .
 
-## <a name="impact-of-this-change"></a>Dopad této změny
+## <a name="status-updates"></a>Aktualizace stavu
 
-První kolo migrace provozu na novější brány se plánuje na **14. října 2019** v následujících oblastech:
+# <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
 
+### <a name="august-2020"></a>Srpen 2020
+
+Nové brány SQL se přidávají do následujících oblastí:
+
+- Austrálie – východ: 13.70.112.9
+- Kanada – střed: 52.246.152.0, 20.38.144.1 
+- Západní USA 2:40.78.240.8
+
+Tyto brány SQL začnou přijímat provoz zákazníků 10. srpna 2020. 
+
+# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
+
+Následující migrace brány jsou dokončené: 
+
+### <a name="october-2019"></a>Říjen 2019
 - Brazílie – jih
 - USA – západ
 - Západní Evropa
@@ -42,11 +57,16 @@ První kolo migrace provozu na novější brány se plánuje na **14. října 20
 - USA – východ 2
 - Východní Asie
 
-Při migraci provozu dojde ke změně veřejné IP adresy, kterou služba DNS pro vaši databázi v Azure SQL Database vyřeší.
-Bude to mít vliv, pokud máte následující:
+---
+
+## <a name="impact-of-this-change"></a>Dopad této změny
+
+Migrace provozu může změnit veřejnou IP adresu, kterou DNS překládá pro vaši databázi v Azure SQL Database.
+Může to mít vliv na to, jestli:
 
 - Pevně zakóduje IP adresu pro konkrétní bránu v místní bráně firewall.
-- Všechny podsítě používající Microsoft. SQL jako koncový bod služby, ale nemůžou komunikovat s IP adresami brány.
+- Mít všechny podsítě používající Microsoft. SQL jako koncový bod služby, ale nemůžou komunikovat s IP adresami brány.
+- Použít [redundantní konfiguraci zóny](high-availability-sla.md#zone-redundant-configuration) pro vaši databázi
 
 Nebudete mít vliv na tyto akce:
 

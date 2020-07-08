@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: df185f8b75af6a845306fccc18d7d3cce74d0815
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249161"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082654"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
 
@@ -161,7 +161,7 @@ END
 
    Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí červený vykřičník s následující chybou, změňte název datové továrny (například na vaše_jméno_ADFIncCopyTutorialDF) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
 
-       `Data factory name "ADFIncCopyTutorialDF" is not available`
+    *Název objektu pro vytváření dat "ADFIncCopyTutorialDF" není k dispozici.*
 4. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 5. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 

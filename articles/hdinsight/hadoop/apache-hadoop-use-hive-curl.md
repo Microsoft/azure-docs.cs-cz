@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298746"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085544"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spouštění dotazů Apache Hive pomocí Apache Hadoop ve službě HDInsight pomocí REST
 
@@ -32,7 +33,7 @@ Naučte se používat REST API WebHCat ke spouštění dotazů Apache Hive s Apa
 
 Základní identifikátor URI (Uniform Resource Identifier) pro REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI () rozlišuje velká a malá písmena `CLUSTERNAME.azurehdinsight.net` , jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Při použití kudrlinkou nebo jakékoli jiné komunikace REST s WebHCat je nutné ověřit požadavky zadáním uživatelského jména a hesla pro správce clusteru HDInsight. Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Aby se zajistilo, že se přihlašovací údaje odesílají na server bezpečně, vždy proveďte požadavky pomocí protokolu HTTPS (Secure HTTP).
 

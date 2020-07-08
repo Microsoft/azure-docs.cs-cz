@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265854"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084286"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do a z Oracle místně pomocí Azure Data Factory
 
@@ -70,7 +70,7 @@ Tento konektor Oracle podporuje dvě verze ovladačů:
 
 - **Oracle zprostředkovatel dat pro .NET**: ke kopírování dat z nebo do Oracle můžete použít Oracle zprostředkovatel dat. Tato součást je obsažena v [součástech Oracle Data Access Components pro systém Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Na počítač, na kterém je brána nainstalovaná, nainstalujte příslušnou verzi (32 bitů nebo 64). [Oracle zprostředkovatel dat .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) má přístup Oracle Database 10g Release 2 a novějších verzích.
 
-    Pokud vyberete **instalaci příkazu xcopy**, proveďte kroky popsané v souboru Readme. htm. Doporučujeme vybrat instalační program, který má uživatelské rozhraní (nikoli instalační program XCopy).
+    Pokud vyberete **instalaci příkazu xcopy**, proveďte kroky popsané v souboru readme.htm. Doporučujeme vybrat instalační program, který má uživatelské rozhraní (nikoli instalační program XCopy).
 
     Po instalaci poskytovatele restartujte službu Správa dat hostitele brány na svém počítači pomocí apletu služby nebo Configuration Manager brány Správa dat.
 
@@ -99,12 +99,12 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 
 Následující tabulka popisuje elementy JSON, které jsou specifické pro propojenou službu Oracle:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost **Type** musí být nastavená na **OnPremisesOracle**. |Ano |
-| driverType | Určete, který ovladač má být použit ke zkopírování dat z databáze Oracle nebo do ní. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Podrobnosti o ovladači najdete v části [podporovaná verze a instalace](#supported-versions-and-installation) . | Ne |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci databáze Oracle pro vlastnost **ConnectionString** . | Ano |
-| gatewayName | Název brány, který se používá pro připojení k místnímu serveru Oracle. |Ano |
+| typ |Vlastnost **Type** musí být nastavená na **OnPremisesOracle**. |Yes |
+| driverType | Určete, který ovladač má být použit ke zkopírování dat z databáze Oracle nebo do ní. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Podrobnosti o ovladači najdete v části [podporovaná verze a instalace](#supported-versions-and-installation) . | No |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci databáze Oracle pro vlastnost **ConnectionString** . | Yes |
+| gatewayName | Název brány, který se používá pro připojení k místnímu serveru Oracle. |Yes |
 
 **Příklad: použití ovladače společnosti Microsoft**
 
@@ -150,7 +150,7 @@ Oddíly souboru JSON datové sady, jako je například struktura, dostupnost a z
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **Oracle** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | tableName |Název tabulky v databázi Oracle, na kterou odkazuje propojená služba. |Ne (Pokud je zadáno **oracleReaderQuery** nebo **OracleSource** ) |
 
@@ -169,20 +169,20 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se
 
 V části aktivita kopírování, pokud je zdrojem **OracleSource** typ, jsou v oddílu **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu jazyka SQL. Například "vybrat \* z **myTable**". <br/><br/>Pokud není zadaný, spustí se tento příkaz SQL: "vybrat \* z **myTable**". |Ne<br />(Pokud je zadaný **TableName** **objektu DataSet** ) |
+| oracleReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu jazyka SQL. Například "vybrat \* z **myTable**". <br/><br/>Pokud není zadaný, spustí se tento příkaz SQL: "vybrat \* z **myTable**". |No<br />(Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 ### <a name="oraclesink"></a>OracleSink
 
 **OracleSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu. |**timespan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
+| writeBatchTimeout |Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu. |**timespan**<br/><br/> Příklad: 00:30:00 (30 minut) |No |
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Integer (počet řádků) |Ne (výchozí: 100) |
-| sqlWriterCleanupScript |Určuje dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. |Příkaz dotazu. |Ne |
-| sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitého řezu při opakovaném spuštění. |Název sloupce sloupce, který má datový typ **Binary (32)**. |Ne |
+| sqlWriterCleanupScript |Určuje dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. |Příkaz dotazu. |No |
+| sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitého řezu při opakovaném spuštění. |Název sloupce sloupce, který má datový typ **Binary (32)**. |No |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Příklady JSON pro kopírování dat do a z databáze Oracle
 
@@ -556,7 +556,9 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 
 **Chybová zpráva**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **Možné příčiny**
 
@@ -567,22 +569,26 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 
 * Pokud jste nenainstalovali poskytovatele .NET pro Oracle, [nainstalujte ho](https://www.oracle.com/technetwork/topics/dotnet/downloads/)a pak zkuste scénář zopakovat.
 * Pokud se zobrazí chybová zpráva i po instalaci poskytovatele, proveďte následující kroky:
-    1. Otevřete soubor konfigurace počítače pro .NET 2,0 ze složky <systémový disk\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. Vyhledejte **Oracle zprostředkovatel dat pro .NET**. Měli byste být schopni najít položku, jak je znázorněno v následujícím příkladu v části **System. data** > **DbProviderFactories**:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Zkopírujte tuto položku do souboru Machine. config v následující složce .NET 4,0: <systémový disk\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Pak změňte verzi na 4. xxx. x.x.
-* Nainstalujte <ODP.NET nainstalovanou\>cestu \ 11.2.0 \ client_1 \odp.net\bin\4\oracle.DataAccess.dll v globální mezipaměti sestavení (GAC) spuštěním **Gacutil/i [cesta zprostředkovatele]**.
+    1. Otevřete soubor konfigurace počítače pro .NET 2,0 ze složky <systémový disk \>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Vyhledejte **Oracle zprostředkovatel dat pro .NET**. Měli byste být schopni najít položku, jak je znázorněno v následujícím příkladu v části **System. data**  >  **DbProviderFactories**:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Zkopírujte tuto položku do souboru machine.config v následující složce .NET 4,0: <systémový disk \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Pak změňte verzi na 4. xxx. x.x.
+* Nainstalujte <cestu nainstalovanou \>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll ODP.NET do globální mezipaměti sestavení (GAC) spuštěním **Gacutil/i [cesta zprostředkovatele]**.
 
 ### <a name="problem-2-datetime-formatting"></a>Problém 2: formátování data a času
 
 **Chybová zpráva**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
 **Rozlišení**
 
 Je možné, že budete muset upravit řetězec dotazu v aktivitě kopírování na základě toho, jak jsou data ve vaší databázi Oracle nakonfigurovaná. Tady je příklad (pomocí funkce **TO_DATE** ):
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Mapování typů pro Oracle

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083983"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
@@ -57,7 +57,7 @@ V portálu obsahuje pole koncový bod kompatibilní s centrem událostí úplný
 | Název hostitele | abcd1234namespace.servicebus.windows.net |
 | Obor názvů | abcd1234namespace |
 
-Pak můžete použít všechny zásady sdíleného přístupu, které mají oprávnění **ServiceConnect** pro připojení k zadanému centru událostí.
+Pak můžete zvolit všechny zásady sdíleného přístupu v rozevíracím seznamu, jak je znázorněno na snímku obrazovky výše. Zobrazuje jenom zásady, které mají oprávnění **ServiceConnect** pro připojení k zadanému centru událostí.
 
 Sady SDK, které můžete použít pro připojení k integrovanému koncovému bodu kompatibilnímu s centrem událostí, který IoT Hub zpřístupňuje zahrnutí:
 

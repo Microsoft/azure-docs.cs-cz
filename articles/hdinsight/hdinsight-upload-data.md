@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: e73a8a420c7591a45a62ba38123c6b3368e0f738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190635"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085867"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrávání dat pro úlohy Apache Hadoop v HDInsight
 
@@ -37,7 +37,7 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 
 | Nástroj | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [portál Azure](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -60,18 +60,18 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 Například `hadoop fs -copyFromLocal data.txt /example/data/data.txt`.
 
-Vzhledem k tomu, že výchozí systém souborů pro HDInsight je v Azure Storage, je/example/data/data.txt ve skutečnosti Azure Storage. Můžete také odkazovat na soubor jako:
+Vzhledem k tomu, že výchozí systém souborů pro HDInsight je ve Azure Storage, je data.txt/example/data/ve skutečnosti v Azure Storage. Můžete také odkazovat na soubor jako:
 
-    wasbs:///example/data/data.txt
+`wasbs:///example/data/data.txt`
 
-– nebo –
+nebo
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+`wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
 Seznam dalších příkazů Hadoop, které pracují se soubory, najdete v tématu.[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
-> V clusterech Apache HBA je výchozí velikost bloku použitá při zápisu dat 256 KB. I když při použití rozhraní API HBA nebo rozhraní REST API funguje bez použití příkazů `hadoop` nebo `hdfs dfs` k zápisu dat větších než ~ 12 GB, dojde k chybě. Další informace najdete v tématu [výjimka úložiště pro zápis do objektu BLOB](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
+> V clusterech Apache HBA je výchozí velikost bloku použitá při zápisu dat 256 KB. I když při použití rozhraní API HBA nebo rozhraní REST API funguje bez použití `hadoop` příkazů nebo `hdfs dfs` k zápisu dat větších než ~ 12 GB, dojde k chybě. Další informace najdete v tématu [výjimka úložiště pro zápis do objektu BLOB](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
 
 ### <a name="graphical-clients"></a>Grafické klienty
 
@@ -98,7 +98,7 @@ Služba Azure Data Factory je plně spravovaná služba pro vytváření dat: ú
 
 |Typ úložiště|Dokumentace|
 |----|----|
-|Azure Blob Storage|[Kopírování dat do nebo z úložiště objektů BLOB v Azure pomocí Azure Data Factory](../data-factory/connector-azure-blob-storage.md)|
+|Azure Blob Storage|[Kopírování dat do nebo z úložiště Azure Blob Storage pomocí služby Azure Data Factory](../data-factory/connector-azure-blob-storage.md)|
 |Azure Data Lake Storage Gen1|[Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[Načtení dat do Azure Data Lake Storage Gen2 s využitím Azure Data Factory](../data-factory/load-azure-data-lake-storage-gen2.md)|
 

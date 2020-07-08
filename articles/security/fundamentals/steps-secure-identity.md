@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 6cda0d79166f355fd7346865f2d42d066a3e3690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e8e12c3e10243e2e8adb23527683813f33a75a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757887"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084371"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -114,9 +115,9 @@ S využitím duševního vlastnictví byste měli snížit dopad napadených už
 
 ### <a name="restrict-user-consent-operations"></a>Omezení operací souhlasu uživatele
 
-Je důležité pochopit různá [prostředí pro vyjádření souhlasu s aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [typy oprávnění a souhlas](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)a jejich dopady na zabezpečení stav vaší organizace. Ve výchozím nastavení mohou všichni uživatelé v Azure AD udělit aplikacím, které využívají platformu Microsoft identity, přístup k datům vaší organizace. I když uživatelům, kteří si můžou udělit souhlas sami, umožní uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365, Azure a dalšími službami, může představovat riziko, pokud se nepoužije a pečlivě monitoruje.
+Je důležité pochopit různá [prostředí pro vyjádření souhlasu s aplikací Azure AD](../../active-directory/develop/application-consent-experience.md), [typy oprávnění a souhlas](../../active-directory/develop/v2-permissions-and-consent.md)a jejich dopady na zabezpečení stav vaší organizace. Ve výchozím nastavení mohou všichni uživatelé v Azure AD udělit aplikacím, které využívají platformu Microsoft identity, přístup k datům vaší organizace. I když uživatelům, kteří si můžou udělit souhlas sami, umožní uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365, Azure a dalšími službami, může představovat riziko, pokud se nepoužije a pečlivě monitoruje.
 
-Společnost Microsoft doporučuje [zakázat budoucí operace souhlasu s uživatelem](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) , aby se snížila plocha a zmírnila toto riziko. Pokud je souhlas koncového uživatele zakázaný, bude se i nadále akceptovat předchozí granty souhlasu, ale všechny budoucí operace souhlasu musí udělat správce. Souhlas správce můžou vyžádat uživatelé prostřednictvím [pracovního postupu integrovaných žádostí o souhlas správce](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) nebo prostřednictvím vlastních procesů podpory. Před zakázáním souhlasu koncového uživatele použijte naše [doporučení](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) k naplánování této změny ve vaší organizaci. Pro aplikace, kterým chcete umožnit přístup všem uživatelům, zvažte [udělení souhlasu jménem všech uživatelů](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), aby uživatelé, kteří dosud nesouhlasili samostatně, měli přístup k aplikaci. Pokud nechcete, aby byly tyto aplikace dostupné pro všechny uživatele ve všech scénářích, použijte [přiřazení aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) a podmíněný přístup k omezení přístupu uživatelů ke [konkrétním aplikacím](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md).
+Microsoft doporučuje omezení souhlasu uživatele, aby se snížila vaše plocha a zmírnilo toto riziko. Můžete také použít [zásady pro vyjádření souhlasu s aplikací (Preview)](../../active-directory/manage-apps/configure-user-consent.md) k omezení souhlasu koncového uživatele jenom s ověřenými vydavateli a jenom pro oprávnění, která jste vybrali. Pokud je omezené vyjádření souhlasu koncovým uživatelem, budou se i nadále akceptovat předchozí granty souhlasu, ale všechny budoucí operace souhlasu musí provádět správce. V případě omezených případů může uživatel požádat o souhlas správce prostřednictvím integrovaného [pracovního postupu pro žádost o souhlas správce](../../active-directory/manage-apps/configure-admin-consent-workflow.md) nebo prostřednictvím vlastních procesů podpory. Než omezíte souhlas koncového uživatele, použijte naše [doporučení](../../active-directory/manage-apps/manage-consent-requests.md) a naplánujte tuto změnu ve vaší organizaci. Pro aplikace, kterým chcete umožnit přístup všem uživatelům, zvažte [udělení souhlasu jménem všech uživatelů](../../active-directory/develop/v2-admin-consent.md), aby uživatelé, kteří dosud nesouhlasili samostatně, měli přístup k aplikaci. Pokud nechcete, aby byly tyto aplikace dostupné pro všechny uživatele ve všech scénářích, použijte [přiřazení aplikace](../../active-directory/manage-apps/assign-user-or-group-access-portal.md) a podmíněný přístup k omezení přístupu uživatelů ke [konkrétním aplikacím](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md).
 
 Ujistěte se, že uživatelé můžou požádat o schválení správcem pro nové aplikace, aby se snížila jeho tření, minimalizoval objem podpory a aby si mohli uživatelé zaregistrovat aplikace pomocí přihlašovacích údajů jiných než Azure AD. Po regulování svých operací by správci měli pravidelně auditovat aplikace a souhlasná oprávnění.
 

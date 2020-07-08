@@ -2,7 +2,7 @@
 title: Konfigurace exportu metrik a protokolů prostředků do streamování
 description: Přečtěte si, jak nakonfigurovat streamování exportu metrik a protokolů prostředků, včetně inteligentní analýzy diagnostiky z Azure SQL Database a Azure SQL Managed instance, do cíle, kde můžete ukládat informace o využití prostředků a statistikách spouštění dotazů.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 49550453885ebaba40380a4675ace8fb012fcaa1
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085595"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurace exportu streamování Azure SQL Database a diagnostiky diagnostické telemetrie SQL spravované instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,16 +37,16 @@ Kromě streamování exportu Intelligent Insightsho protokolu můžete také exp
 
 | Diagnostická telemetrie pro databáze | Podpora Azure SQL Database | Podpora spravované instance Azure SQL |
 | :------------------- | ----- | ----- |
-| [Základní metriky](#basic-metrics): obsahuje hodnoty DTU/CPU, DTU/CPU, procentuální podíl fyzického data, procento zápisu protokolu, úspěšné/neúspěšné/blokované připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště a procento XTP úložiště. | Yes | Ne |
-| [Rozšířená instance a aplikace](#advanced-metrics): obsahuje data systémové databáze tempdb a velikost souboru protokolu a soubor protokolu tempdb%. | Yes | Ne |
+| [Základní metriky](#basic-metrics): obsahuje hodnoty DTU/CPU, DTU/CPU, procentuální podíl fyzického data, procento zápisu protokolu, úspěšné/neúspěšné/blokované připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procento úložiště a procento XTP úložiště. | Yes | No |
+| [Rozšířená instance a aplikace](#advanced-metrics): obsahuje data systémové databáze tempdb a velikost souboru protokolu a soubor protokolu tempdb%. | Yes | No |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): obsahuje informace o statistice za běhu dotazu, jako je například využití procesoru a statistika doby trvání dotazu. | Ano | Ano |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): obsahuje informace o statistice čekání na dotaz (co vaše dotazy čekaly), jako je například CPU, protokol a uzamykání. | Ano | Ano |
 | [Chyby](#errors-dataset): obsahuje informace o chybách SQL v databázi. | Ano | Ano |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databáze strávila čekáním na různé typy čekání. | Yes | Ne |
-| [Timeout](#time-outs-dataset): obsahuje informace o časových limitech v databázi. | Yes | Ne |
-| [Bloky](#blockings-dataset): obsahuje informace o blokujících událostech v databázi. | Yes | Ne |
-| [Zablokování](#deadlocks-dataset): obsahuje informace o událostech zablokování v databázi. | Yes | Ne |
-| [AutomaticTuning](#automatic-tuning-dataset): obsahuje informace o automatickém ladění doporučení pro databázi. | Yes | Ne |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databáze strávila čekáním na různé typy čekání. | Yes | No |
+| [Timeout](#time-outs-dataset): obsahuje informace o časových limitech v databázi. | Yes | No |
+| [Bloky](#blockings-dataset): obsahuje informace o blokujících událostech v databázi. | Yes | No |
+| [Zablokování](#deadlocks-dataset): obsahuje informace o událostech zablokování v databázi. | Yes | No |
+| [AutomaticTuning](#automatic-tuning-dataset): obsahuje informace o automatickém ladění doporučení pro databázi. | Yes | No |
 | [SQLInsights](#intelligent-insights-dataset): obsahuje Intelligent Insights do výkonu pro databázi. Další informace najdete v tématu [Intelligent Insights](intelligent-insights-overview.md). | Ano | Ano |
 
 > [!NOTE]
@@ -96,7 +96,7 @@ Pomocí nabídky **nastavení diagnostiky** v Azure Portal můžete povolit a na
 
 Vyberte jednu z následujících karet, kde najdete podrobné pokyny pro konfiguraci exportu diagnostické telemetrie do streamování v Azure Portal a pro skripty pro dosažení stejného prostředí pomocí PowerShellu a rozhraní příkazového řádku Azure.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Elastické fondy v Azure SQL Database
 
@@ -133,9 +133,9 @@ Pokud chcete povolit streamování diagnostické telemetrie pro prostředek elas
 > [!IMPORTANT]
 > Kromě konfigurace diagnostické telemetrie pro elastický fond musíte také nakonfigurovat diagnostiku diagnostiky pro každou databázi v elastickém fondu.
 
-### <a name="single-and-pooled-databases-in-azure-sql-database"></a>Databáze s jedním a fondem v Azure SQL Database
+### <a name="databases-in-azure-sql-database"></a>Databáze v Azure SQL Database
 
-Můžete nastavit jeden nebo fond databázových prostředků pro shromáždění následující diagnostické telemetrie:
+Můžete nastavit prostředek databáze pro shromáždění následující diagnostické telemetrie:
 
 | Prostředek | Monitorování telemetrie |
 | :------------------- | ------------------- |

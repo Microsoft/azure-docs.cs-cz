@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: efbd8dfa34f5d954e302b421dfcea6c46d9469ca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022824"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082790"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -235,7 +235,7 @@ Pak aktualizujte hodnoty pro konkrétní prostředí. Tabulka pod textem shrnuje
     | nameNode | Úplná cesta k kontejneru Azure Storage připojenému ke clusteru HDInsight. |
     | jobTracker | Interní název hostitele pro hlavní uzel PŘÍZe clusteru. Na domovské stránce Ambari v seznamu služeb vyberte možnost PŘÍZe a pak zvolte možnost aktivní Správce prostředků. Identifikátor URI názvu hostitele se zobrazí v horní části stránky. Připojit port 8050. |
     | Proměnné QueueName | Název fronty PŘÍZe použité při plánování akcí podregistru Nechejte jako výchozí. |
-    | Oozie. use. System. LIBPATH | Nechejte jako true. |
+    | oozie.use.system. LIBPATH | Nechejte jako true. |
     | appBase | Cesta k podsložce v Azure Storage, do které nasadíte pracovní postup Oozie a podpůrné soubory. |
     | Oozie. WF. Application. Path | Umístění pracovního postupu Oozie, `workflow.xml` který se má spustit. |
     | hiveScriptLoadPartition | Cesta v Azure Storage k souboru dotazu na podregistr `hive-load-flights-partition.hql` . |
@@ -422,7 +422,9 @@ Pomocí spojovacího bodu služby z relace bash Nasaďte svůj pracovní postup 
 
 1. Po ÚSPĚŠNÉm provedení dotazu do tabulky SQL Database můžete zobrazit vložené řádky. Pomocí Azure Portal přejděte do podokna pro SQL Database, vyberte **nástroje**a otevřete **Editor dotazů**.
 
-        SELECT * FROM dailyflights
+    ```sql
+    SELECT * FROM dailyflights
+    ```
 
 Teď, když je pracovní postup spuštěný pro jeden den testu, můžete tento pracovní postup zabalit koordinátorovi, který naplánuje pracovní postup tak, aby běžel denně.
 

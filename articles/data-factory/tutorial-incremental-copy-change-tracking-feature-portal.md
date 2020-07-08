@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: cb8d03b853e4e0f4f5f60a144e7a05ef19de1071
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: c28489c2fa502f0ba1283abdea19219ed7438a99
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251824"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085782"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do Azure Blob Storage pomocí informací o sledování změn pomocí Azure Portal
 
@@ -166,7 +166,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 
    Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *Název objektu pro vytváření dat "ADFTutorialDataFactory" není k dispozici.*
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu.
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 

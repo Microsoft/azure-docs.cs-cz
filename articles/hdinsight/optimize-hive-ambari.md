@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796366"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084354"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
 
@@ -134,10 +134,10 @@ K dispozici jsou tyto typy komprese:
 
 | Formát | Nástroj | Algoritmus | Přípona souboru | Rozdělitelné? |
 | --- | --- | --- | --- | --- |
-| GZIP | GZIP | DEFLATE | `.gz` | Ne |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Ano |
+| GZIP | GZIP | DEFLATE | `.gz` | No |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Ano, pokud je indexovaný |
-| Snappy | Není k dispozici | Snappy | Snappy | Ne |
+| Snappy | Není k dispozici | Snappy | Snappy | No |
 
 Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, jinak se vytvoří několik mapovačů. Pokud jsou vstupní data text, `bzip2` je to nejlepší možnost. V případě formátu ORC je přichycení nejrychlejší možnost komprese.
 

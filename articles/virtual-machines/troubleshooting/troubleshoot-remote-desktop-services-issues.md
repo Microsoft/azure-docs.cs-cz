@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919460"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084323"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Služba Vzdálená plocha se nespouští na virtuálním počítači Azure.
 
@@ -46,7 +47,9 @@ Při pokusu o připojení k virtuálnímu počítači se setkáte s následujíc
 
     Pomocí funkce Konzola sériového přístupu můžete také vyhledat tyto chyby spuštěním následujícího dotazu: 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>Příčina
  
@@ -178,22 +181,37 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
 
 1. K tomuto problému dochází, pokud došlo ke změně spouštěcího účtu této služby. Změna zpět na výchozí: 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. Spusťte službu:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. Zkuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
 
 #### <a name="termservice-service-crashes-or-hangs"></a>Zhroucení nebo zablokování služby TermService
 1. Pokud je stav služby zablokovaný při **spuštění** nebo **zastavení**, zkuste službu zastavit: 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. Izolujte službu na svém vlastním kontejneru Svchost:
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. Spusťte službu:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. Pokud se služba stále nedaří spustit, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline

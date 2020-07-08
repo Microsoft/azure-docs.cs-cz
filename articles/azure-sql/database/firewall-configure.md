@@ -1,6 +1,6 @@
 ---
 title: Pravidla brány firewall protokolu IP
-description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro databázi v Azure SQL Database nebo v bráně firewall služby Azure synapse Analytics. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro jednu nebo sdruženou databázi.
+description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro databázi v Azure SQL Database nebo v bráně firewall služby Azure synapse Analytics. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
-ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976808"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085085"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

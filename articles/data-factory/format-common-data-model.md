@@ -5,21 +5,21 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 07/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083776"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Systém metadat CDM (Common data model) umožňuje, aby data a jejich význam bylo možné snadno sdílet napříč aplikacemi a obchodními procesy. Další informace najdete v tématu Přehled [modelu Common data model](https://docs.microsoft.com/common-data-model/) .
 
-V Azure Data Factory mohou uživatelé transformovat entity CDM uložené v [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (adls Gen2) pomocí mapování toků dat.
+V Azure Data Factory mohou uživatelé transformovat entity CDM uložené v [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (adls Gen2) pomocí mapování toků dat. Vyberte si mezi model.jsa CDM styl manifestu a zapište do souborů manifestu CDM.
 
 > [!NOTE]
 > Konektor formátu CDM (Common data model) pro toky dat ADF je aktuálně k dispozici jako veřejná verze Preview.
@@ -27,6 +27,9 @@ V Azure Data Factory mohou uživatelé transformovat entity CDM uložené v [Azu
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
 Model Common data model je k dispozici jako [vložená datová sada](data-flow-source.md#inline-datasets) v mapování dat toků jako zdroj i jímka.
+
+> [!NOTE]
+> Při psaní entit CDM musíte mít již definovanou existující definici entity CDM (schématu metadat). Jímka toku dat ADF načte tento soubor entity CDM a naimportuje schéma do jímky pro mapování polí.
 
 ### <a name="source-properties"></a>Vlastnosti zdroje
 
@@ -51,8 +54,16 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 
 #### <a name="import-schema"></a>Importovat schéma
 
-CDM je k dispozici pouze jako vložená datová sada a ve výchozím nastavení nemá přidružené schéma. Chcete-li získat metadata sloupce, klikněte na tlačítko **importovat schéma** na kartě **projekce** . To vám umožní odkazovat na názvy sloupců a datové typy určené parametrem corpus. K importu schématu musí být aktivní [relace ladění toku dat](concepts-data-flow-debug-mode.md) .
+CDM je k dispozici pouze jako vložená datová sada a ve výchozím nastavení nemá přidružené schéma. Chcete-li získat metadata sloupce, klikněte na tlačítko **importovat schéma** na kartě **projekce** . To vám umožní odkazovat na názvy sloupců a datové typy určené parametrem corpus. Pro import schématu musí být [relace ladění toku dat](concepts-data-flow-debug-mode.md) aktivní a musíte mít existující definiční soubor entity CDM, na který odkazuje.
 
+> [!NOTE]
+>  Při použití model.jsu typu zdroje, který pochází z Power BI nebo datového toku Power Platform, se můžete setkat s chybou "corpus cesta je null nebo prázdná" z transformace zdroje. To je pravděpodobně způsobeno problémy s formátováním cesty k umístění oddílu v model.jssouboru. Chcete-li tento problém vyřešit, postupujte podle následujících kroků: 
+
+1. Otevřít model.jsv souboru v textovém editoru
+2. Najděte oddíly. Location – vlastnost 
+3. Změňte "blob.core.windows.net" na "dfs.core.windows.net"
+4. Opravte jakékoli kódování "% 2F" v adrese URL na "/".
+ 
 
 ### <a name="cdm-source-data-flow-script-example"></a>Příklad skriptu zdrojového toku dat CDM
 

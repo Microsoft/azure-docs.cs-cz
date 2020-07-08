@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85509213"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083946"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem Azure Data Lake Storage
 
@@ -79,7 +79,9 @@ Při vytvoření nového účtu Azure Data Lake Storage se kořenový adresář 
 
 Tato nastavení mají vliv na jeden konkrétní případ použití HDInsight zachycený v [nitě 247](https://hwxmonarch.atlassian.net/browse/YARN-247). Odesílání úloh může selhat s chybovou zprávou podobnou této:
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 Jak je uvedeno v předchozím propojení JIRA nitě a při lokalizaci veřejných prostředků lokalizátora ověřuje, že všechny požadované prostředky jsou skutečně veřejné, a to kontrolou jejich oprávnění na vzdáleném souborovém systému. Všechny LocalResource, které nevyhovují této podmínce, jsou odmítnuty pro lokalizaci. Kontroly oprávnění, včetně přístupu pro čtení do souboru pro "ostatní". Tento scénář nebude při hostování clusterů HDInsight na Azure Data Lake fungovat předem, protože Azure Data Lake zakazuje všem přístupům "ostatní" na úrovni kořenové složky.
 
