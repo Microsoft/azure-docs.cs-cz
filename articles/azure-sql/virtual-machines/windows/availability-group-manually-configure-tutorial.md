@@ -14,12 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 574e2e1647ecf33fb05600407163c96247b6ce41
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391039"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960737"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Kurz: Konfigurace skupiny dostupnosti SQL Server v Azure Virtual Machines ručně
 
@@ -39,15 +38,15 @@ V tomto kurzu se předpokládá základní znalost skupin dostupnosti Always On 
 
 V následující tabulce jsou uvedeny předpoklady, které je třeba provést před zahájením tohoto kurzu:
 
-|  |Požadavek |Description |
+| Požadavek |Description |
 |----- |----- |----- |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png) | Dvě instance SQL Server | – V sadě dostupnosti Azure <br/> – V jedné doméně <br/> – Je nainstalovaná funkce clusteringu s podporou převzetí služeb při selhání |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)| Windows Server | Sdílená složka pro disk s kopií clusteru |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Účet služby SQL Server | Účet domény |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Účet služby agenta SQL Server | Účet domény |  
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Otevřené porty brány firewall | -SQL Server: **1433** pro výchozí instanci <br/> -Koncový bod zrcadlení databáze: **5022** nebo libovolný dostupný port <br/> – Sonda stavu IP adres služby Vyrovnávání zatížení skupiny dostupnosti: **59999** nebo jakýkoli dostupný port <br/> – Sonda stavu IP jádra pro vyrovnávání zatížení clusteru: **58888** nebo jakýkoli dostupný port |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Přidat funkci clusteringu s podporou převzetí služeb při selhání | Tato funkce vyžaduje tyto instance SQL Server. |
-|![Square](./media/availability-group-manually-configure-tutorial/square.png)|Instalační účet domény | – Místní správce na každé SQL Server <br/> – Člen pevné role serveru sysadmin SQL Server pro každou instanci SQL Server  |
+|![Čtvercové ](./media/availability-group-manually-configure-tutorial/square.png) **dvě instance SQL Server**    | – V sadě dostupnosti Azure <br/> – V jedné doméně <br/> – Je nainstalovaná funkce clusteringu s podporou převzetí služeb při selhání |
+|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server**    | Sdílená složka pro disk s kopií clusteru |  
+|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server účet služby**    | Účet domény |
+|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server účet služby Agent**    | Účet domény |  
+|![Čtvercové ](./media/availability-group-manually-configure-tutorial/square.png) **porty brány firewall otevřené**    | -SQL Server: **1433** pro výchozí instanci <br/> -Koncový bod zrcadlení databáze: **5022** nebo libovolný dostupný port <br/> – Sonda stavu IP adres služby Vyrovnávání zatížení skupiny dostupnosti: **59999** nebo jakýkoli dostupný port <br/> – Sonda stavu IP jádra pro vyrovnávání zatížení clusteru: **58888** nebo jakýkoli dostupný port |
+|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **Přidat funkci clusteringu s podporou převzetí služeb při selhání**    | Tato funkce vyžaduje tyto instance SQL Server. |
+|![Čtvercový ](./media/availability-group-manually-configure-tutorial/square.png) **instalační účet domény**    | – Místní správce na každé SQL Server <br/> – Člen pevné role serveru sysadmin SQL Server pro každou instanci SQL Server  |
 
 
 Než začnete tento kurz, musíte [Dokončit požadavky na vytváření skupin dostupnosti Always On v Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md). Pokud jsou tyto požadavky již dokončeny, můžete přejít na příkaz [vytvořit cluster](#CreateCluster).
@@ -87,7 +86,7 @@ Po dokončení požadovaných součástí je prvním krokem vytvoření clusteru
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Nastavit IP adresu clusteru s podporou převzetí služeb při selhání Windows serveru
 
   > [!NOTE]
-  > V systému Windows Server 2019 vytvoří cluster místo **názvu sítě clusteru** **název distribuovaného serveru** . Pokud používáte Windows Server 2019, přeskočte všechny kroky, které v tomto kurzu odkazují na základní název clusteru. Název sítě clusteru můžete vytvořit pomocí [PowerShellu](failover-cluster-instance-storage-spaces-direct-manually-configure.md#windows-server-2019). Další informace najdete v [clusteru s podporou převzetí služeb při selhání na blogu: objekt sítě clusteru](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
+  > V systému Windows Server 2019 vytvoří cluster místo **názvu sítě clusteru** **název distribuovaného serveru** . Pokud používáte Windows Server 2019, přeskočte všechny kroky, které v tomto kurzu odkazují na základní název clusteru. Název sítě clusteru můžete vytvořit pomocí [PowerShellu](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-failover-cluster). Další informace najdete v [clusteru s podporou převzetí služeb při selhání na blogu: objekt sítě clusteru](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) . 
 
 1. V **Správce clusteru s podporou převzetí služeb při selhání**přejděte dolů na **základní prostředky clusteru** a rozbalte podrobnosti o clusteru. Měl by se zobrazit **název** a prostředky **IP adresy** ve stavu **selhání** . Prostředek IP adresy nelze uvést do režimu online, protože cluster má přiřazenou stejnou IP adresu jako samotný počítač, proto je duplicitní adresa.
 

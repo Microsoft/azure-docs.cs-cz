@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253320"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
@@ -94,8 +93,8 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    | Platnost začíná dnem | Frekvence | Výsledek |
    | --- | --- | --- |
-   | Dnešní datum  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
-   | Datum v budoucnosti  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
+   | Dnešní datum  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
+   | Datum v budoucnosti  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
 
    Pokud například nastavíte vypršení platnosti začínající na **1** a četnost na **měsíčně**, v této části se může vyskytnout vypršení platnosti pro dva uživatele:
 
@@ -253,7 +252,7 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Jiné |
+> |  | iOS | Android | Windows 10 | Jiné |
 > | --- | --- | --- | --- | --- |
 > | **Native app** | Ano | Ano | Ano |  |
 > | **Microsoft Edge** | Ano | Ano | Ano |  |

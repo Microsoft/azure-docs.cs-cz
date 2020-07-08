@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463939"
 ---
-# <a name="how-to-investigate-risk"></a>Postupy: šetření rizik
+# <a name="how-to-investigate-risk"></a>Postup: Šetření rizik
 
 Identity Protection poskytuje organizacím se třemi sestavami, které mohou používat k prozkoumání rizik identity ve svém prostředí. Tyto sestavy jsou **rizikové uživatele**, **rizikové přihlášení**a **detekce rizik**. Zkoumání událostí je klíč pro lepší porozumění a identifikaci slabých bodů ve vaší strategii zabezpečení.
 

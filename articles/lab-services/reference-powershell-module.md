@@ -4,10 +4,9 @@ description: Tento článek poskytuje informace o modulu PowerShellu, který pom
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d9c184f3917be378eb77d1bf4096bfebb5ee1884
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445589"
 ---
 # <a name="azlabservices-powershell-module-preview"></a>Modul PowerShellu Az.LabServices (Preview)

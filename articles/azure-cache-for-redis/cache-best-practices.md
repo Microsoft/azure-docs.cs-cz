@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457299"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Osvědčené postupy pro Azure Cache for Redis 
@@ -69,7 +68,7 @@ Bohužel neexistuje žádná jednoduchá odpověď.  Každá aplikace musí rozh
 Pokud chcete otestovat, jak váš kód funguje v chybových podmínkách, zvažte použití [funkce restartu](cache-administration.md#reboot). Restartování vám umožní zjistit, jak připojení výkyvů ovlivní vaši aplikaci.
 
 ## <a name="performance-testing"></a>Testování výkonu
- * **Začněte pomocí `redis-benchmark.exe` ** aby se dosáhlo možné propustnosti/latence před zápisem vlastních testů výkonu.  Redis-srovnávací dokumentaci najdete [tady](https://redis.io/topics/benchmarks).  Upozorňujeme, že Redis-test nepodporuje TLS, takže před spuštěním testu budete muset [Povolit port bez TLS přes portál](cache-configure.md#access-ports) .  [Verzi Redis-benchmark. exe kompatibilní s Windows najdete tady.](https://github.com/MSOpenTech/redis/releases)
+ * **Začněte pomocí `redis-benchmark.exe` ** aby se dosáhlo možné propustnosti/latence před zápisem vlastních testů výkonu.  Redis-srovnávací dokumentaci najdete [tady](https://redis.io/topics/benchmarks).  Upozorňujeme, že Redis-test nepodporuje TLS, takže před spuštěním testu budete muset [Povolit port bez TLS přes portál](cache-configure.md#access-ports) .  [Verzi redis-benchmark.exe kompatibilní se systémem Windows najdete tady.](https://github.com/MSOpenTech/redis/releases)
  * Virtuální počítač klienta, který se používá pro testování, by měl být **ve stejné oblasti** jako instance služby Redis Cache.
  * Pro vašeho klienta **doporučujeme používat pro Dv2 řadu virtuálních počítačů** , protože mají lepší hardware a poskytnou nejlepší výsledky.
  * Ujistěte se, že virtuální počítač klienta, který používáte, má při testování mezipaměti*aspoň tolik výpočetních a šířek pásma* . 
@@ -83,10 +82,10 @@ Pokud chcete otestovat, jak váš kód funguje v chybových podmínkách, zvažt
  
 ### <a name="redis-benchmark-examples"></a>Redis – příklady srovnávacích testů
 **Nastavení před testováním**: Připravte instanci mezipaměti daty požadovanými pro příkazy pro latenci a testování propustnosti uvedené níže.
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
 **Testování latence**: test Get požadavků pomocí datové části 1 tisíc
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
 
 **Postup testování propustnosti:** Požadavky GET v kanálu s datovou částí 1 tisíc
-> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

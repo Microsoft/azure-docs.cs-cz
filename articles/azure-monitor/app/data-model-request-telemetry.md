@@ -4,24 +4,23 @@ description: Application Insights datový model pro telemetrii žádostí
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807651"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: datový model Application Insights
 
-Položka telemetrie žádosti (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje logickou sekvenci spuštění spuštěnou externím požadavkem ve vaší aplikaci. Každé spuštění žádosti je identifikováno `ID` jedinečnými `url` a obsahujícími všechny parametry spuštění. Požadavky můžete seskupit podle logických `name` požadavků a definovat `source` tuto žádost. Spuštění kódu může mít za `success` následek `fail` nebo a má nějaký `duration`určitý. Úspěšnost i spuštění při selhání mohou být seskupeny `resultCode`. Počáteční čas pro telemetrii požadavků definovanou na úrovni obálky.
+Položka telemetrie žádosti (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje logickou sekvenci spuštění spuštěnou externím požadavkem ve vaší aplikaci. Každé spuštění žádosti je identifikováno jedinečnými `ID` a `url` obsahujícími všechny parametry spuštění. Požadavky můžete seskupit podle logických požadavků `name` a definovat `source` tuto žádost. Spuštění kódu může mít za následek `success` nebo `fail` a má nějaký určitý `duration` . Úspěšnost i spuštění při selhání mohou být seskupeny `resultCode` . Počáteční čas pro telemetrii požadavků definovanou na úrovni obálky.
 
-Telemetrie žádostí podporuje standardní rozšiřitelný model pomocí Custom `properties` a `measurements`.
+Telemetrie žádostí podporuje standardní rozšiřitelný model pomocí Custom `properties` a `measurements` .
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
-Název žádosti představuje cestu kódu pořízenou pro zpracování žádosti. Nízká hodnota mohutnosti, která umožňuje lepší seskupení požadavků. V případě požadavků HTTP představuje šablonu metoda HTTP a cestu adresy URL, `GET /values/{id}` například bez skutečné `id` hodnoty.
+Název žádosti představuje cestu kódu pořízenou pro zpracování žádosti. Nízká hodnota mohutnosti, která umožňuje lepší seskupení požadavků. V případě požadavků HTTP představuje šablonu metoda HTTP a cestu adresy URL, například `GET /values/{id}` bez skutečné `id` hodnoty.
 
-Application Insights webová sada SDK pošle název žádosti "tak, jak je", s ohledem na velikost písmen. Seskupení v uživatelském rozhraní rozlišuje velká a malá `GET /Home/Index` písmena, takže se `GET /home/INDEX` počítá odděleně od sebe, i když to často vede ke stejnému spuštění kontroleru a akcí. Důvodem je, že adresy URL obecně [rozlišují velká a malá písmena](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Možná budete chtít zjistit, jestli se `404` pro adresy URL zadané velkými písmeny nastaly všechny. Další informace o shromažďování názvů žádostí najdete v tématu ASP.NET Web SDK v [blogovém příspěvku](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights webová sada SDK pošle název žádosti "tak, jak je", s ohledem na velikost písmen. Seskupení v uživatelském rozhraní rozlišuje velká a malá písmena, takže `GET /Home/Index` se počítá odděleně od sebe, `GET /home/INDEX` i když to často vede ke stejnému spuštění kontroleru a akcí. Důvodem je, že adresy URL obecně [rozlišují velká a malá písmena](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Možná budete chtít zjistit, jestli `404` se pro adresy URL zadané velkými písmeny nastaly všechny. Další informace o shromažďování názvů žádostí najdete v tématu ASP.NET Web SDK v [blogovém příspěvku](https://apmtips.com/posts/2015-02-23-request-name-and-url/).
 
 Maximální délka: 1024 znaků
 
@@ -45,7 +44,7 @@ Maximální délka: 1024 znaků
 
 ## <a name="duration"></a>Doba trvání
 
-Doba trvání žádosti ve formátu `DD.HH:MM:SS.MMMMMM`:. Musí být kladný a menší než `1000` počet dní. Toto pole je povinné, protože telemetrie požadavků představuje operaci začínající na začátku a na konci.
+Doba trvání žádosti ve formátu: `DD.HH:MM:SS.MMMMMM` . Musí být kladný a menší než `1000` počet dní. Toto pole je povinné, protože telemetrie požadavků představuje operaci začínající na začátku a na konci.
 
 ## <a name="response-code"></a>Kód odpovědi
 
@@ -55,13 +54,13 @@ Maximální délka: 1024 znaků
 
 ## <a name="success"></a>Úspěch
 
-Označení úspěšného nebo neúspěšného volání. Toto pole je vyžadováno. Pokud není explicitně nastaveno na `false` -, je žádost považována za úspěšnou. Nastavte tuto hodnotu na `false` , pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
+Označení úspěšného nebo neúspěšného volání. Toto pole je vyžadováno. Pokud není explicitně nastaveno na `false` -, je žádost považována za úspěšnou. Nastavte tuto hodnotu na, `false` Pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
 
-Pro webové aplikace Application Insights definovat požadavek jako úspěšný, pokud je kód odpovědi menší `400` nebo roven. `401` Existují však případy, kdy toto výchozí mapování neodpovídá sémantikě aplikace. Kód `404` odpovědi může označovat položku "žádné záznamy", která může být součástí pravidelného toku. Může také označovat přerušený odkaz. Pro přerušené odkazy můžete dokonce implementovat pokročilejší logiku. Můžete označit poškozené odkazy jako chyby pouze v případě, že jsou tyto odkazy umístěny ve stejné lokalitě pomocí analýzy odkazující adresy URL. Nebo je při použití z mobilní aplikace společnosti označit jako neúspěšná. Podobně `301` a `302` označuje selhání při přistupování z klienta, který nepodporuje přesměrování.
+Pro webové aplikace Application Insights definovat požadavek jako úspěšný, pokud je kód odpovědi menší `400` nebo roven `401` . Existují však případy, kdy toto výchozí mapování neodpovídá sémantikě aplikace. Kód odpovědi `404` může označovat položku "žádné záznamy", která může být součástí pravidelného toku. Může také označovat přerušený odkaz. Pro přerušené odkazy můžete dokonce implementovat pokročilejší logiku. Můžete označit poškozené odkazy jako chyby pouze v případě, že jsou tyto odkazy umístěny ve stejné lokalitě pomocí analýzy odkazující adresy URL. Nebo je při použití z mobilní aplikace společnosti označit jako neúspěšná. Podobně `301` a `302` označuje selhání při přistupování z klienta, který nepodporuje přesměrování.
 
-Částečně přijatý obsah `206` může indikovat selhání celkové žádosti. Application Insights koncový bod například obdrží dávku položek telemetrie jako jeden požadavek. Vrátí `206` se, když některé položky v dávce nebyly úspěšně zpracovány. Zvýšená míra `206` znamená problém, který je třeba prozkoumat. Podobná logika se `207` vztahuje na Vícenásobný stav, kde úspěch může být nejhorší z různých kódů odpovědí.
+Částečně přijatý obsah `206` může indikovat selhání celkové žádosti. Application Insights koncový bod například obdrží dávku položek telemetrie jako jeden požadavek. Vrátí se, `206` když některé položky v dávce nebyly úspěšně zpracovány. Zvýšená míra `206` znamená problém, který je třeba prozkoumat. Podobná logika se vztahuje na `207` Vícenásobný stav, kde úspěch může být nejhorší z různých kódů odpovědí.
 
-V [příspěvku na blogu](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/)si můžete přečíst další informace o kódu výsledku žádosti a stavový kód.
+V [příspěvku na blogu](https://apmtips.com/posts/2016-12-03-request-success-and-response-code/)si můžete přečíst další informace o kódu výsledku žádosti a stavový kód.
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 

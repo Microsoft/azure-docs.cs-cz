@@ -14,14 +14,13 @@ ms.workload: big-compute
 ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 4da5fad63b148fa054eefb7f13424b46dc43bf29
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.openlocfilehash: 96a3ada98bb41ea007eaaae2a40983d2448b38c2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83764335"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960822"
 ---
-# <a name="using-certificates-with-batch"></a>Používání certifikátů se službou Batch
+# <a name="using-certificates-with-batch"></a>Použití certifikátů se službou Batch
 
 Hlavním důvodem pro použití certifikátů se službou Batch je, že máte aplikace spuštěné ve fondech, které se musí ověřit u koncového bodu. 
 
@@ -39,6 +38,6 @@ Když teď vytvoříte fond služby Batch, můžete přejít na certifikáty v r
 
 ## <a name="next-steps"></a>Další kroky
 
-Batch má rozhraní API pro certifikáty, [AZ Batch Certificate Create](https://docs.microsoft.com/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create)
+Batch má rozhraní API pro certifikáty, [AZ Batch Certificate Create](/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create)
 
 Informace o používání Key Vault najdete v tématu [zabezpečený přístup Key Vault pomocí služby Batch](credential-access-key-vault.md).

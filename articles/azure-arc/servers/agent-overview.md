@@ -6,14 +6,13 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/16/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b49682b2ece20266b3a051091d3784cc3e8bcca
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: MT
+ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807668"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Přehled agenta Azure ARC pro servery
 
@@ -26,6 +25,12 @@ Balíček agenta připojeného počítače Azure obsahuje několik logických so
 * Služba metadat hybridní instance (HIMDS) spravuje připojení k Azure a identitu Azure připojeného počítače.
 
 * Agent konfigurace hosta poskytuje zásady hosta a konfigurace hostů, jako je například vyhodnocení toho, jestli počítač vyhovuje požadovaným zásadám.
+
+    Všimněte si následujícího chování s Azure Policy [konfigurací hostů](../../governance/policy/concepts/guest-configuration.md) pro odpojený počítač:
+
+    * Přiřazení zásad konfigurace hosta, které cílí na odpojené počítače, není nijak ovlivněno.
+    * Přiřazení hosta je uloženo místně po dobu 14 dnů. Pokud se agent připojeného počítače připojí ke službě během 14 dnů, znovu se použije přiřazení zásad.
+    * Přiřazení se odstraní po 14 dnech a po 14 dnech se znovu nepřiřazují k počítači.
 
 * Agent rozšíření spravuje rozšíření virtuálních počítačů, včetně instalace, odinstalace a upgradu. Rozšíření se stáhnou z Azure a zkopírují se do `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` složky ve Windows a pro Linux do `/opt/GC_Ext/downloads` . V systému Windows je rozšíření nainstalováno v následující cestě `%SystemDrive%\Packages\Plugins\<extension>` a v systému Linux je rozšíření nainstalováno do nástroje `/var/lib/waagent/<extension>` .
 

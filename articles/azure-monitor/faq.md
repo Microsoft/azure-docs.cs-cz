@@ -7,12 +7,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807702"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -36,7 +35,7 @@ Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a
 Přístup ke všem funkcím Azure Monitor a datům z nabídky **monitor** v Azure Portal. Část **monitorování** v nabídce různých služeb Azure poskytuje přístup ke stejným nástrojům, které obsahují data filtrovaná pro konkrétní prostředek. Data Azure Monitor jsou také přístupná pro celou řadu scénářů pomocí rozhraní příkazového řádku, PowerShellu a REST API.
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Existuje místní verze Azure Monitor?
-No. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
+Ne. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Může Azure Monitor monitorovat místní prostředky?
 Ano, kromě shromažďování dat monitorování z prostředků Azure Azure Monitor můžou shromažďovat data z virtuálních počítačů a aplikací v jiných cloudech i v místním prostředí. Další informace najdete v tématu [zdroje dat monitorování pro Azure monitor](platform/data-sources.md).
@@ -245,7 +244,7 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
 
 * Přidá tyto soubory do projektu:
   * ApplicationInsights.config
-  * AI. js
+  * ai.js
 * Nainstaluje tyto balíčky NuGet:
   * *Rozhraní API pro Application Insights* – základní rozhraní API
   * *Application Insights API pro webové aplikace* – slouží k posílání telemetrie ze serveru.
@@ -262,7 +261,7 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
 Přečtěte si [poznámky k verzi](app/release-notes.md) pro sadu SDK odpovídající vašemu typu aplikace.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?
-V Průzkumník řešení klikněte pravým tlačítkem myši `ApplicationInsights.config` a vyberte možnost **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
+V Průzkumník řešení klikněte pravým tlačítkem myši `ApplicationInsights.config` a vyberte možnost **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v ApplicationInsights.config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Můžu `providers('Microsoft.Insights', 'components').apiVersions[0]` v nasazeních Azure Resource Manager použít?
 
@@ -318,7 +317,7 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -367,7 +366,7 @@ Pro všechny komponenty nebo role v jednom podnikovém systému použijte jeden 
 ### <a name="what-are-the-user-and-session-counts"></a>Jaké jsou počty uživatelů a relací?
 
 * Sada JavaScript SDK nastavuje na webovém klientovi soubor cookie pro uživatele, identifikaci vracení uživatelů a soubor cookie relace pro seskupení aktivit.
-* Pokud není k dispozici žádný skript na straně klienta, můžete [nastavit soubory cookie na serveru](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* Pokud není k dispozici žádný skript na straně klienta, můžete [nastavit soubory cookie na serveru](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Pokud se vaše lokalita používá v různých prohlížečích nebo v rámci anonymním nebo v různých počítačích, bude se tato síť počítat více než jednou.
 * Chcete-li identifikovat přihlášeného uživatele v počítačích a prohlížečích, přidejte volání [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
 
@@ -443,12 +442,12 @@ Umožněte webovému serveru odesílat telemetrii do našich koncových bodů.
 
 #### <a name="gateway-redirect"></a>Přesměrování brány
 
-Přesměrujte provoz z vašeho serveru do brány v intranetu přepsáním koncových bodů ve vaší konfiguraci. Pokud tyto vlastnosti Endpoint nejsou v konfiguraci k dispozici, budou tyto třídy používat výchozí hodnoty uvedené níže v příkladu ApplicationInsights. config. 
+Přesměrujte provoz z vašeho serveru do brány v intranetu přepsáním koncových bodů ve vaší konfiguraci. Pokud tyto vlastnosti Endpoint nejsou v konfiguraci k dispozici, budou tyto třídy používat výchozí hodnoty uvedené níže v příkladu ApplicationInsights.config. 
 
 Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V konfiguraci nahraďte výchozí hodnoty hodnotou `http://<your.gateway.address>/<relative path>` .
 
 
-##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Příklad ApplicationInsights. config s výchozími koncovými body:
+##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Příklad ApplicationInsights.config s výchozími koncovými body:
 ```xml
 <ApplicationInsights>
   ...
@@ -479,7 +478,7 @@ Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V
 Passthrough proxy můžete dosáhnout konfigurací úrovně počítače nebo proxy serveru na úrovni aplikace.
 Další informace najdete v článku dotnet na [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
- Příklad souboru Web. config:
+ Příklad Web.config:
  ```xml
 <system.net>
     <defaultProxy>
@@ -574,7 +573,7 @@ ContainerLog
 
 ```
 
-#### <a name="option-2"></a>2. možnost
+#### <a name="option-2"></a>Možnost 2
 
 Znovu povolit shromažďování pro tyto vlastnosti pro každý řádek protokolu kontejneru.
 
@@ -619,7 +618,7 @@ Informace o tom, jak upgradovat agenta, najdete v tématu [Správa agentů](insi
 
 V současné době Azure Monitor pro kontejnery nepodporuje víceřádkové protokolování, ale k dispozici jsou alternativní řešení. Můžete nakonfigurovat všechny služby pro zápis ve formátu JSON a potom Docker/Moby je zapíše jako jeden řádek.
 
-Můžete například zabalit protokol jako objekt JSON, jak je znázorněno v následujícím příkladu pro ukázkovou aplikaci Node. js:
+Můžete například zabalit protokol jako objekt JSON, jak je znázorněno v následujícím příkladu pro ukázkovou node.js aplikaci:
 
 ```
 console.log(json.stringify({ 

@@ -4,10 +4,9 @@ description: Jak používat pravidla brány firewall k povolení Azure Service B
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: a5ae491f82e73c5364788dff8b531e81d17ebb68
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341447"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Konfigurace pravidel brány firewall protokolu IP pro Azure Service Bus

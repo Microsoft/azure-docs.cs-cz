@@ -4,10 +4,9 @@ description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocen�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 3130150a227076befae3f58f65e00a36578b68d5
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341636"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Řízení zabezpečení pro zasílání zpráv Azure Service Bus
@@ -46,7 +45,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované v Azure Serv
 |---|---|--|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Ano, pokud je ve výchozím nastavení zapnuté šifrování na straně serveru. |  |  |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano. | Klíč spravovaný zákazníkem ve službě Azure webrecovery se dá použít k šifrování dat v Service Busm oboru názvů v klidovém umístění. | [Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal](configure-customer-managed-key.md)  |
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |   |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |   |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Yes | Podporuje standardní mechanismus HTTPS/TLS. |   |
 | Zašifrovaná volání rozhraní API| Yes | Volání rozhraní API se provádí prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |   |
 

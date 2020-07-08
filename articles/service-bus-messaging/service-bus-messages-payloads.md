@@ -4,10 +4,9 @@ description: Tento článek poskytuje přehled Azure Service Busch zpráv, datov
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341675"
 ---
 # <a name="messages-payloads-and-serialization"></a>Zprávy, datové části a serializace
@@ -22,7 +21,7 @@ Předdefinované vlastnosti zprostředkovatele jsou uvedeny v následující tab
  
 Ekvivalentní názvy používané na úrovni protokolu AMQP jsou uvedeny v závorkách. 
 
-| Název vlastnosti                         | Popis                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Název vlastnosti                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Content-Type)           | Volitelně popisuje datovou část zprávy s popisovačem po formátu RFC2045, oddíl 5; například `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [ID korelace (ID](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) korelace)       | Umožňuje aplikaci pro účely korelace určit kontext pro zprávu. například odráží zprávu **MessageID** zprávy, na kterou je odpovězeno.                                                                                                                                                                                                                                                                  |

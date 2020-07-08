@@ -3,12 +3,11 @@ title: Přehled Azure Resource Health
 description: Přehled Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80159247"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041570"
 ---
 # <a name="resource-health-overview"></a>Přehled Resource Health
  
@@ -18,7 +17,7 @@ Zprávy o [stavu Azure](https://status.azure.com) týkající se problémů se s
 
 ## <a name="resource-definition-and-health-assessment"></a>Definice prostředků a posouzení stavu
 
-*Prostředek* je konkrétní instance služby Azure, jako je například virtuální počítač, Webová aplikace nebo databáze SQL. Resource Health spoléhá na signály z různých služeb Azure a vyhodnotí, jestli je prostředek v pořádku. Pokud prostředek není v pořádku, Resource Health analyzuje další informace a určí zdroj problému. Také obsahuje zprávy o akcích, které společnost Microsoft provádí při řešení problému, a identifikuje věci, které můžete vyřešit.
+*Prostředek* je konkrétní instance služby Azure, jako je například virtuální počítač, Webová aplikace nebo SQL Database. Resource Health spoléhá na signály z různých služeb Azure a vyhodnotí, jestli je prostředek v pořádku. Pokud prostředek není v pořádku, Resource Health analyzuje další informace a určí zdroj problému. Také obsahuje zprávy o akcích, které společnost Microsoft provádí při řešení problému, a identifikuje věci, které můžete vyřešit.
 
 Další informace o vyhodnocení stavu najdete v seznamu typů prostředků a kontrol stavu na adrese [Azure Resource Health](resource-health-checks-resource-types.md).
 

@@ -3,12 +3,11 @@ title: Vykreslování aplikací
 description: Je možné použít jakékoli aplikace pro vykreslování Azure Batch. Azure Marketplace imagí virtuálních počítačů ale jsou k dispozici společně s předinstalovanými běžnými aplikacemi.
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726481"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960482"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Předem instalované aplikace na vykreslování imagí virtuálních počítačů
 
@@ -60,7 +59,7 @@ Následující seznam platí pro Windows Server 2016, verze vykreslování imag�
 * AZ 10
 
 > [!IMPORTANT]
-> Pokud chcete spustit V-Ray s Maya mimo [šablony rozšíření Azure Batch](https://github.com/Azure/batch-extension-templates), začněte `vrayses.exe` ještě před spuštěním vykreslování. Chcete-li spustit vrayses. exe mimo šablony, můžete použít následující příkaz `%MAYA_2017%\vray\bin\vrayses.exe"` .
+> Pokud chcete spustit V-Ray s Maya mimo [šablony rozšíření Azure Batch](https://github.com/Azure/batch-extension-templates), začněte `vrayses.exe` ještě před spuštěním vykreslování. Pokud chcete začít vrayses.exe mimo šablony, můžete použít následující příkaz `%MAYA_2017%\vray\bin\vrayses.exe"` .
 >
 > Příklad najdete v tématu spuštění úlohy [šablony Maya a v-Ray](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) na GitHubu.
 
@@ -87,4 +86,4 @@ Následující seznam platí pro Windows Server 2016, verze vykreslování imag�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete použít image virtuálních počítačů, musí se při vytvoření fondu zadat v konfiguraci fondu. Podívejte se na [Možnosti fondu Batch pro vykreslování](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools).
+Pokud chcete použít image virtuálních počítačů, musí se při vytvoření fondu zadat v konfiguraci fondu. Podívejte se na [Možnosti fondu Batch pro vykreslování](./batch-rendering-functionality.md#batch-pools).

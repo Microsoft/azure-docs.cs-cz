@@ -18,10 +18,9 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356164"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect synchronizace: zpracování chyb LargeObject způsobených atributem userCertificate
@@ -117,8 +116,8 @@ Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší pri
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
-    | Popis | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
+    | Name | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
+    | Description | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
     | Připojený systém | *Vyberte konektor Azure AD.* |
     | Typ připojeného systémového objektu | **uživatelský** | |
     | Typ objektu úložiště metaverse | **uživateli** | |
@@ -131,7 +130,7 @@ Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší pri
 
     | Atribut | Hodnota |
     | --- | --- |
-    | Typ toku |**Vyjádření** |
+    | Typ toku |**Výraz** |
     | Cílový atribut |**userCertificate** |
     | Zdrojový atribut |*Použijte následující výraz*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     

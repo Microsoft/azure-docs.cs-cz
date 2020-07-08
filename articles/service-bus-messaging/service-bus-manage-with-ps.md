@@ -4,10 +4,9 @@ description: Tento článek vysvětluje, jak používat modul Azure PowerShell k
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341757"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Použití PowerShellu ke správě Service Busch prostředků

@@ -16,12 +16,11 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69eb19686598de103b1c2f3e97ad35be2c427beb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85356367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807600"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 
@@ -288,12 +287,15 @@ Pokud jste použili vlastní instalaci, nastavte oprávnění ručně pomocí n�
 6. Jsou řadiče domény dostupné pomocí Azure AD Connect? Pokud se server Connect nemůže připojit ke všem řadičům domény, nakonfigurujte **pouze upřednostňovaný řadič domény**.  
     
     ![Řadič domény používaný konektorem služby Active Directory](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. Vraťte se na **Synchronization Service Manager** a **nakonfigurujte oddíl adresáře**. 
  
 8. V části **Vybrat oddíly adresáře**vyberte svoji doménu, zaškrtněte políčko **použít pouze upřednostňované řadiče domény** a pak klikněte na **Konfigurovat**. 
 
 9. V seznamu zadejte řadiče domény, které se mají připojit, aby je bylo nutné použít ke synchronizaci hesel. Stejný seznam se používá i pro import a export. Proveďte tyto kroky pro všechny domény.
+
+> [!NOTE]
+> Chcete-li tyto změny použít, restartujte službu **Microsoft Azure AD Sync** (AdSync).
 
 10. Pokud skript ukáže, že není k dispozici žádný prezenční signál, spusťte skript v [aktivační události Úplná synchronizace všech hesel](#trigger-a-full-sync-of-all-passwords).
 

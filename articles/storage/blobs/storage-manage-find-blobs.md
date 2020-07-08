@@ -9,10 +9,9 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85355654"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)
@@ -130,7 +129,7 @@ Následující tabulka uvádí všechny platné operátory pro podmíněné oper
 |     <      |  Menší než    | "Stáří" < "32" |
 |     <=     |  Menší než nebo rovno  | "Společnost" <= "contoso" |
 |    AND     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
-|     OR     |  Logický operátor OR   | "Stav" = "dokončeno" nebo "Priorita" >= "05" |
+|     NEBO     |  Logický operátor OR   | "Stav" = "dokončeno" nebo "Priorita" >= "05" |
 
 > [!NOTE]
 > Existují dva další operátory, nerovnosti a logické nebo, které jsou povoleny v podmíněné hlavičce x-MS-if-Tags pro operaci objektu blob, ale v operaci FindBlobsByTags neexistují.

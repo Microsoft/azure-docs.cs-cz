@@ -8,12 +8,11 @@ ms.date: 06/19/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c7f8b0679f9d5e0cacfdcdb3b30f9d92d7fa8e27
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 097826a24cb2de17b603ff5fe3113d715e079697
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807396"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -90,6 +89,7 @@ Systémy uvedené v následující tabulce jsou považovány za kompatibilní s 
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Vítr řek 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+| [Ubuntu 20,04 <sup>2</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
 <sup>1</sup> Debian 10 systémy, včetně Raspian Buster, používají verzi OpenSSL, kterou IoT Edge nepodporuje. K instalaci starší verze před instalací IoT Edge použijte následující příkaz:
 
@@ -97,7 +97,9 @@ Systémy uvedené v následující tabulce jsou považovány za kompatibilní s 
 sudo apt-get install libssl1.0.2
 ```
 
-## <a name="releases"></a>Vydané verze
+<sup>2</sup> balíčky Debian 9 z [úložiště Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) by měly být ve Ubuntu 20,04 fungovat.
+
+## <a name="releases"></a>Verze
 
 Iotedge vydání a poznámky k verzi jsou k dispozici na stránce [verze Azure-](https://github.com/Azure/azure-iotedge/releases) . IoT Edge V této části jsou uvedeny informace o těchto poznámkách k verzi, které vám pomůžou vizualizovat součásti každé verze snadněji.
 

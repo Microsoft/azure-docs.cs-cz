@@ -10,19 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2fa56217c54ac662a62a5ce835d75e3d85f05bfa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77470747"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041468"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelování dat v Azure Time Series Insights Preview
 
 Tento článek popisuje, jak pracovat s modelem časových řad ve službě Azure Time Series Insights Preview. Podrobně popisuje několik běžných scénářů dat.
 
 > [!TIP]
-> * Přečtěte si o [modelu časové řady](time-series-insights-update-tsm.md)verze Preview.
+> * Přečtěte si o [modelu časové řady](concepts-model-overview.md)verze Preview.
 > * Další informace o navigaci v uživatelském rozhraní Preview v [průzkumníkovi Azure Time Series Insights Preview](./time-series-insights-update-explorer.md).
 
 ## <a name="instances"></a>Instance
@@ -53,7 +52,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
     [![Hromadné nahrání instancí prostřednictvím formátu JSON.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png#lightbox)
 
-1. Vyberte **nahrát**.
+1. Vyberte **Nahrát**.
 
 ### <a name="edit-a-single-instance"></a>Úprava jedné instance
 
@@ -104,7 +103,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 1. Vyberte **nahrát JSON**.
 1. Vyberte soubor, který obsahuje datovou část hierarchie.
-1. Vyberte **nahrát**.
+1. Vyberte **Nahrát**.
 
     [![Výběry pro hromadné nahrávání hierarchií.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png#lightbox)
 
@@ -147,7 +146,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 1. Vyberte **nahrát JSON**.
 1. Vyberte soubor, který obsahuje datovou část typu.
-1. Vyberte **nahrát**.
+1. Vyberte **Nahrát**.
 
     [![Možnosti odesílání hromadných typů.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png#lightbox)
 
@@ -168,7 +167,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o modelu časové řady získáte v tématu věnovaném [modelování dat](./time-series-insights-update-tsm.md).
+- Další informace o modelu časové řady získáte v tématu věnovaném [modelování dat](./concepts-model-overview.md).
 
 - Pokud chcete získat další informace o verzi Preview, přečtěte si téma [vizualizace dat v průzkumníkovi Azure Time Series Insights Preview](./time-series-insights-update-explorer.md).
 

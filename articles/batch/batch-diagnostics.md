@@ -4,12 +4,11 @@ description: Zaznamenává a analyzuje události diagnostického protokolu pro p
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd8265d18f618980af466e193b41cfcc03999c47
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220349"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960720"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky
  
@@ -70,7 +69,7 @@ Postup konfigurace výstrahy metriky v Azure Portal:
 
 Další informace o vytváření výstrah metrik najdete v tématu [vysvětlení, jak výstrahy metrik fungují v Azure monitor](../azure-monitor/platform/alerts-metric-overview.md) a [vytváření, zobrazování a správa výstrah metrik pomocí Azure monitor](../azure-monitor/platform/alerts-metric.md).
 
-Můžete také nakonfigurovat upozornění téměř v reálném čase pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/)Azure monitor. Další informace najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/platform/alerts-overview.md). Pokud chcete do upozornění zahrnout informace o úlohách, úkolech nebo fondech, přečtěte si informace o vyhledávacích dotazech v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/learn/tutorial-response.md).
+Můžete také nakonfigurovat upozornění téměř v reálném čase pomocí [REST API](/rest/api/monitor/)Azure monitor. Další informace najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/platform/alerts-overview.md). Pokud chcete do upozornění zahrnout informace o úlohách, úkolech nebo fondech, přečtěte si informace o vyhledávacích dotazech v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/learn/tutorial-response.md).
 
 ## <a name="batch-diagnostics"></a>Diagnostika služby Batch
 
@@ -119,7 +118,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Například:
+Příklad:
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/

@@ -4,10 +4,9 @@ description: Tento článek poskytuje podrobné informace o SQLFilter gramatiky.
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341598"
 ---
 # <a name="sqlfilter-syntax"></a>Syntaxe SQLFilter
@@ -196,7 +195,7 @@ Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false
   
 `property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
   
 Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) :  
   

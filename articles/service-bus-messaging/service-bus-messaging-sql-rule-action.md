@@ -4,10 +4,9 @@ description: Tento článek poskytuje referenci pro SQLRuleAction syntax. Akce j
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341586"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Reference syntaxe SQLRuleAction pro Azure Service Bus
@@ -200,7 +199,7 @@ Logické konstanty jsou reprezentovány klíčovými slovy `TRUE` nebo `FALSE` .
   
 `property(name)`Funkce vrátí hodnotu vlastnosti, na kterou odkazuje `name` . `name`Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 - SADA se používá k vytvoření nové vlastnosti nebo aktualizaci hodnoty existující vlastnosti.
 - K odebrání vlastnosti se používá odebrání.
