@@ -2,9 +2,9 @@
 title: Použití ověřování Multi-Factor Azure Active Directory
 description: Azure SQL Database, spravovaná instance Azure SQL a Azure synapse Analytics podporují připojení z SQL Server Management Studio (SSMS) pomocí univerzálního ověřování služby Active Directory.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
-titleSuffix: Azure SQL Database and Azure Synapse
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 ms.custom: seoapril2019, has-adal-ref, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 04/23/2020
 tags: azure-synapse
-ms.openlocfilehash: 607644a67fad966be25915e55a1bec83d70a1fe0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25d08e86fde47c24c134bc03b036c4f456314856
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344811"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983575"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Použití ověřování Multi-Factor Azure Active Directory
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -64,13 +64,13 @@ Uživatelé Azure AD, kteří jsou podporováni ve scénářích Azure AD B2B ja
 
 ## <a name="universal-authentication-limitations"></a>Omezení univerzálního ověřování
 
-- SSMS a SqlPackage. exe jsou jediné nástroje aktuálně povolené pro MFA prostřednictvím univerzálního ověřování služby Active Directory.
+- SSMS a SqlPackage.exe jsou jediné nástroje aktuálně povolené pro MFA prostřednictvím univerzálního ověřování služby Active Directory.
 - SSMS verze 17,2 podporuje souběžný přístup více uživatelů s využitím univerzálního ověřování s MFA. Verze 17,0 a 17,1 omezuje přihlášení pro instanci SSMS pomocí univerzálního ověřování na jeden Azure Active Directory účet. Pokud se chcete přihlásit jako jiný účet služby Azure AD, musíte použít jinou instanci SSMS. (Toto omezení je omezené na univerzální ověřování Active Directory. můžete se přihlásit k jinému serveru pomocí ověřování hesla služby Active Directory, integrovaného ověřování Active Directory nebo SQL Server ověřování).
 - SSMS podporuje univerzální ověřování služby Active Directory pro Průzkumník objektů, Editor dotazů a vizualizaci úložiště dotazů.
 - SSMS verze 17,2 poskytuje podporu Průvodce DacFx pro export/extrakci nebo nasazení dat databáze. Po ověření konkrétního uživatele prostřednictvím dialogu počátečního ověřování pomocí univerzálního ověřování funguje Průvodce DacFx stejným způsobem jako u všech ostatních metod ověřování.
 - Návrhář tabulky SSMS nepodporuje univerzální ověřování.
 - Pro univerzální ověřování služby Active Directory nejsou k dispozici žádné další požadavky na software, s výjimkou, že je nutné použít podporovanou verzi SSMS.  
-- Verze Active Directory Authentication Library (ADAL) pro univerzální ověřování se aktualizovala na nejnovější vydanou verzi ADAL. dll, která 3.13.9 k dispozici. Viz [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
+- Verze Active Directory Authentication Library (ADAL) pro univerzální ověřování byla aktualizována na nejnovější vydanou verzi ADAL.dll 3.13.9. Viz [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -79,7 +79,7 @@ Uživatelé Azure AD, kteří jsou podporováni ve scénářích Azure AD B2B ja
 - Zajistěte, aby se uživatelé mohli připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru pomocí Azure Portal](firewall-configure.md)  
 - [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database nebo Azure synapse](authentication-aad-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
-- [SQLPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
+- [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
 - [Import souboru BACPAC do nové databáze](database-import.md)  
 - [Export databáze do souboru BACPAC](database-export.md)  
 - [Rozhraní IUniversalAuthProvider](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx) pro rozhraní C#  
