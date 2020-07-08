@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172365"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
@@ -173,7 +172,7 @@ V následující tabulce je uvedena vlastnost, jejímž prostřednictvím je mo�
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
-| VPN Gateway |Konfigurace protokolu IP brány |Ano |Ne |
+| VPN Gateway |Konfigurace protokolu IP brány |Yes |No |
 | Application Gateway |Konfigurace front-endu |Ano (jenom V1) |Ano (jenom v2) |
 
 ## <a name="limits"></a>Omezení

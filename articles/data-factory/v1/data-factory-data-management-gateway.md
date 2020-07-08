@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84188311"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
@@ -140,7 +139,7 @@ Je potřeba vzít v úvahu dvě brány firewall: **podniková brána firewall** 
 
 Na úrovni podnikové brány firewall je potřeba nakonfigurovat následující domény a odchozí porty:
 
-| Názvy domén | Porty | Popis |
+| Názvy domén | Porty | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
 | *.core.windows.net |443 |Používá se pro připravené kopírování pomocí objektu blob Azure (Pokud je nakonfigurované).|
@@ -180,8 +179,8 @@ Brána používá proxy server k připojení ke cloudové službě. Při počát
 Existují tři možnosti konfigurace:
 
 * **Nepoužívat proxy**: Brána explicitně nepoužívá žádný proxy server pro připojení ke cloudovým službám.
-* **Použít systémový proxy server**: Brána používá nastavení proxy serveru, které je nakonfigurované v diahost. exe. config a diawp. exe. config. Pokud v souboru diahost. exe. config a diawp. exe. config není nakonfigurovaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server.
-* **Použití vlastního proxy serveru**: Nakonfigurujte nastavení proxy serveru http tak, aby se používalo pro bránu, místo použití konfigurací v diahost. exe. config a diawp. exe. config. Adresa a port jsou požadovány. Uživatelské jméno a heslo jsou nepovinné v závislosti na nastavení ověřování proxy serveru. Všechna nastavení se šifrují pomocí certifikátu přihlašovacích údajů brány a ukládají se místně na hostitelském počítači brány.
+* **Použít systémový proxy server**: Brána používá nastavení proxy serveru, které je nakonfigurované v diahost.exe.config a diawp.exe.config. Pokud v diahost.exe.config a diawp.exe.config není nakonfigurovaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server.
+* **Použití vlastního proxy serveru**: Nakonfigurujte nastavení proxy serveru http tak, aby se používalo pro bránu, místo použití konfigurací v diahost.exe.config a diawp.exe.config. Adresa a port jsou požadovány. Uživatelské jméno a heslo jsou nepovinné v závislosti na nastavení ověřování proxy serveru. Všechna nastavení se šifrují pomocí certifikátu přihlašovacích údajů brány a ukládají se místně na hostitelském počítači brány.
 
 Po uložení aktualizovaných nastavení proxy serveru se služba hostitel brány pro správu dat automaticky restartuje.
 
@@ -202,10 +201,10 @@ Proxy server HTTP můžete zobrazit a aktualizovat pomocí nástroje Configurati
 >
 
 ### <a name="configure-proxy-server-settings"></a>Konfigurace nastavení proxy server
-Pokud pro proxy server HTTP vyberete možnost **použít systémové proxy** Server, brána použije nastavení proxy v souboru diahost. exe. config a diawp. exe. config. Pokud v souboru diahost. exe. config a diawp. exe. config není zadaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server. Následující postup poskytuje pokyny k aktualizaci souboru diahost. exe. config.
+Pokud vyberete možnost **použít systémové proxy** serveru pro proxy server http, brána použije nastavení proxy serveru v diahost.exe.config a diawp.exe.config. Pokud v diahost.exe.config a diawp.exe.config není zadaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server. Následující postup poskytuje pokyny k aktualizaci diahost.exe.config souboru.
 
-1. V Průzkumníku souborů proveďte bezpečnou kopii *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared \\ diahost. exe. config* , aby se zálohoval původní soubor.
-2. Spusťte program Notepad. exe spuštěný jako správce a otevřete textový soubor *C: \\ \\ Program Files \\ Microsoft Správa dat brána \\ 2,0 \\ Shared \\ diahost. exe. config*. Najdete výchozí značku pro system.net, jak je znázorněno v následujícím kódu:
+1. V Průzkumníku souborů proveďte bezpečnou kopii *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared \\diahost.exe.config* k zálohování původního souboru.
+2. Spusťte Notepad.exe spuštěno jako správce a otevřete textový soubor *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared \\diahost.exe.config*. Najdete výchozí značku pro system.net, jak je znázorněno v následujícím kódu:
 
     ```
     <system.net>
@@ -231,7 +230,7 @@ Pokud pro proxy server HTTP vyberete možnost **použít systémové proxy** Ser
 3. Uložte konfigurační soubor do původního umístění a pak znovu spusťte službu hostitel Správa dat brány, která změny vezme. Restartování služby: pomocí apletu služby v Ovládacích panelech nebo z **Správa dat brány Configuration Manager** > klikněte na tlačítko **Zastavit službu** a pak klikněte na **Spustit službu**. Pokud se služba nespustí, je pravděpodobně přidána nesprávná syntaxe značky XML do konfiguračního souboru aplikace, který byl upraven.
 
 > [!IMPORTANT]
-> Nezapomeňte aktualizovat diahost. exe. **config i diawp** . exe. config.
+> Nezapomeňte **aktualizovat diahost.exe.config i diawp.exe.config** .
 
 Kromě těchto bodů musíte také zajistit, aby Microsoft Azure v seznamu povolených položek vaší společnosti. Seznam platných IP adres Microsoft Azure lze stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -309,7 +308,7 @@ Funkci Automatické aktualizace můžete zakázat nebo povolit provedením násl
 Jakmile bránu nainstalujete, můžete spustit Správa dat Configuration Manager brány jedním z následujících způsobů:
 
 1. V okně **hledání** zadejte pro přístup k tomuto nástroji **Správa dat bránu** .
-2. Spusťte spustitelný soubor *ConfigManager. exe* ve složce: *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared*.
+2. Spusťte spustitelný *ConfigManager.exe* ve složce: *C: \\ \\ Program Files \\ Microsoft Správa dat brána \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Domovská stránka
 Domovská stránka vám umožní provést následující akce:
@@ -362,9 +361,9 @@ V Azure Portal můžete na počítači brány Zobrazit snímek využití prostř
 
 Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :
 
-Vlastnost monitorování | Popis
+Vlastnost monitorování | Description
 :------------------ | :----------
-Název | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Name | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
 Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase.
@@ -510,7 +509,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin Azure P
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. V Azure PowerShell přepněte do složky: *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\ *. Spusťte *RegisterGateway. ps1* přidružený k místní proměnné **$Key** , jak je znázorněno v následujícím příkazu. Tento skript zaregistruje klientského agenta nainstalovaného na vašem počítači pomocí logické brány, kterou jste vytvořili dříve.
+1. V Azure PowerShell přepněte do složky: *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\ *. Spusťte *RegisterGateway.ps1* přidružené k místní proměnné **$Key** , jak je znázorněno v následujícím příkazu. Tento skript zaregistruje klientského agenta nainstalovaného na vašem počítači pomocí logické brány, kterou jste vytvořili dříve.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

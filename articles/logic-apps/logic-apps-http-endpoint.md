@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
 ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170269"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTPS v Azure Logic Apps
@@ -357,7 +356,7 @@ V těle odpovědi můžete zahrnout více hlaviček a libovolného typu obsahu. 
 
 Odpovědi mají tyto vlastnosti:
 
-| Property (zobrazení) | Property (JSON) | Popis |
+| Property (zobrazení) | Property (JSON) | Description |
 |--------------------|-----------------|-------------|
 | **Stavový kód** | `statusCode` | Stavový kód HTTPS, který se má použít v odpovědi na příchozí požadavek. Tento kód může být libovolný platný stavový kód, který začíná na 2xx, 4xx nebo 5xx. Nicméně stavové kódy 3xx nejsou povoleny. |
 | **Hlavičky** | `headers` | Jedna nebo více hlaviček, které mají být zahrnuty do odpovědi |

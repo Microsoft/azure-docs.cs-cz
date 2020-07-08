@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
 ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84112682"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Nejčastější dotazy týkající se řešení Azure VMware (AVS) Preview
@@ -33,7 +32,7 @@ K dispozici jsou všechny služby Azure, které budou dostupné pro zákazníky 
 
 **Používají se stejné nástroje, které teď používám ke správě prostředků privátního cloudu?**
 
-Yes. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
+Ano. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
 
 **Můžu pomocí místního serveru vCenter spravovat privátní cloud?**
 
@@ -45,7 +44,7 @@ Konkrétní integrace a případy použití mohou být vyhodnoceny případ od p
 
 **Můžu migrovat virtuální počítače s vSphere z místního prostředí do služby AVS Private cloudy?**
 
-Yes. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní systémy přes vCenter [požadavky] [ https://kb.vmware.com/s/article/210695 ].
+Ano. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní systémy přes vCenter [požadavky] [ https://kb.vmware.com/s/article/210695 ].
 
 **Vyžaduje se v místních prostředích konkrétní verze vSphere?**
 
@@ -115,7 +114,7 @@ Clustery zkušební verze jsou tři hostitelské clustery, které se používaj�
 
 **Můžu pro zkušební clustery použít špičkové hostitele?**
 
-No. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
+Ne. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
 
 ## <a name="avs-and-vmware-software"></a>Software pro funkci AVS a VMware
 
@@ -162,11 +161,11 @@ V Azure Portal povolte připojení k Internetu pro privátní cloud. Pomocí Spr
 
 **Potřebuji omezit přístup z Internetu k virtuálním počítačům v logických sítích v privátním cloudu?**
 
-No. Příchozí síťový provoz z Internetu přímo do privátních cloudů není povolený.
+Ne. Příchozí síťový provoz z Internetu přímo do privátních cloudů není povolený.
 
 **Je potřeba omezit přístup k Internetu z virtuálních počítačů v logických sítích na Internet?**
 
-Yes. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
+Ano. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
 
 ## <a name="accounts-and-privileges"></a>Účty a oprávnění
 

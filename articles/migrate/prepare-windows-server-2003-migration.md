@@ -4,10 +4,9 @@ description: Přečtěte si, jak připravit servery Windows Server 2003 na migra
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172281"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Příprava počítačů s Windows serverem 2003 k migraci
@@ -38,7 +37,7 @@ Před migrací zkontrolujte, jestli je nainstalovaná služba Hyper-V Integratio
 3. Zkopírujte instalační složku na virtuální počítač VMware.
 4. Z příkazového řádku na virtuálním počítači spusťte příkaz ```gpedit.msc``` .
 5. Otevřete okno **Konfigurace počítače**  >  skripty**nastavení systému Windows**  >  **(spuštění nebo vypnutí)**.
-6. Do pole **po spuštění**  >  **Přidat**  >  **název skriptu**zadejte adresu Setup. exe.
+6. Do pole **po spuštění**  >  **Přidat**  >  **název skriptu**zadejte adresu setup.exe.
 7. Po migraci do Azure se skript spustí při prvním spuštění virtuálního počítače Azure.
 8. Ručně restartujte virtuální počítač Azure. V diagnostice spouštění je automaticky otevírané okno s oznámením, že je potřeba restartovat počítač.
 9. Po spuštění skriptu a instalaci integračních služeb technologie Hyper-V na virtuálním počítači Azure můžete skript odebrat z jeho spuštění.

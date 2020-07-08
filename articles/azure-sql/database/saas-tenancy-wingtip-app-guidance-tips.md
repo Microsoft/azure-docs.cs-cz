@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 4c3a141525f650d6e254f79ce9e3396f2c35a95f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84051882"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s ukázkami lístků Wingtip SaaS Apps
@@ -33,9 +32,9 @@ Obsah spustitelného souboru (skripty, knihovny DLL) může systém Windows zabl
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Klikněte na **klonovat nebo stáhnout**.
 3. Klikněte na **Stáhnout ZIP** a uložte soubor.
-4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
+4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Na kartě **Obecné** vyberte **odblokovat**.
-6. Klikněte na tlačítko **OK**.
+6. Klikněte na **OK**.
 7. Extrahujte soubory.
 
 Skripty jsou umístěny v *.. \\ Složka výukových modulů* .

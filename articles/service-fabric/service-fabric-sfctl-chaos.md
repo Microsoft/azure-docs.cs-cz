@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 9bc7a5405309e35a36b15f44a1b136b899afbb55
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84119319"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
@@ -33,7 +32,7 @@ Získá další segment událostí chaos na základě tokenu pro pokračování 
 
 Chcete-li získat další segment událostí chaos, můžete zadat token continuationtoken. Chcete-li získat začátek nového segmentu událostí chaos, můžete zadat časový rozsah prostřednictvím StartTimeUtc a EndTimeUtc. Nemůžete zadat jak token continuationtoken, tak i časový rozsah ve stejném volání. Pokud je k dispozici více než 100 událostí chaos, vrátí se události chaos ve více segmentech, kde segment neobsahuje více než 100 událostí chaos a získá další segment, který zavoláte do tohoto rozhraní API s tokenem pro pokračování.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
 |Argument|Description|
 | --- | --- |
@@ -58,7 +57,7 @@ Získejte stav chaos.
 
 Získá stav chaos, který označuje, jestli je chaos spuštěný, parametry chaos používané pro spuštění chaos a stav plánu chaos.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
 |Argument|Description|
 | --- | --- |
@@ -79,7 +78,7 @@ Spustí chaos v clusteru.
 
 Pokud chaos v clusteru ještě neběží, spustí se chaos s předanými parametry chaos. Pokud je po provedení tohoto volání již spuštěno chaos, volání se nezdařilo s kódem chyby FABRIC_E_CHAOS_ALREADY_RUNNING. Další podrobnosti najdete [Service Fabric v článku o chaos řízených v clusterech](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos) .
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
 |Argument|Description|
 | --- | --- |
@@ -112,7 +111,7 @@ Zastaví chaos, pokud je spuštěný v clusteru a umístí chaos plán do zastav
 
 Zastaví chaos spouštění nových chyb. Probíhající chyby se budou i nadále spouštět, dokud nebudou dokončeny. Aktuální plán chaos je přepnut do stavu Zastaveno. Po zastavení plánu zůstane stav zastaveno a nebude se používat k chaos plánování nových spuštění chaos. Aby bylo možné pokračovat v plánování, je třeba nastavit nový plán chaos.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 
 |Argument|Description|
 | --- | --- |

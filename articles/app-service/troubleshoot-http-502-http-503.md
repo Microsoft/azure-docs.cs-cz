@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170796"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení chyb HTTP z "502 špatné brány" a "503 Služba není dostupná" v Azure App Service
@@ -57,7 +56,7 @@ Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 ![monitorování aplikace pro řešení chyb HTTP 502 chybných bran a 503 Služba není k dispozici](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
@@ -99,7 +98,7 @@ Kromě toho můžete zvolit spuštění aplikace na více než jedné instanci. 
 Můžete nastavit škálování na ruční nebo automatické.
 
 #### <a name="use-autoheal"></a>Použít reretušovací
-Automatické zacele recykluje pracovní proces vaší aplikace na základě nastavení, které zvolíte (například změny konfigurace, požadavky, limity založené na paměti nebo doba potřebná ke spuštění žádosti). Ve většině případů je recyklací procesu nejrychlejší způsob, jak se zotavit z problému. I když aplikaci můžete kdykoli znovu spustit přímo na portálu Azure Portal, automatické zaretušování ji provede automaticky. Stačí přidat některé triggery do kořenového souboru Web. config pro vaši aplikaci. Všimněte si, že tato nastavení budou fungovat stejným způsobem i v případě, že vaše aplikace není rozhraní .NET One.
+Automatické zacele recykluje pracovní proces vaší aplikace na základě nastavení, které zvolíte (například změny konfigurace, požadavky, limity založené na paměti nebo doba potřebná ke spuštění žádosti). Ve většině případů je recyklací procesu nejrychlejší způsob, jak se zotavit z problému. I když aplikaci můžete kdykoli znovu spustit přímo na portálu Azure Portal, automatické zaretušování ji provede automaticky. Stačí přidat některé triggery do kořenového web.config vaší aplikace. Všimněte si, že tato nastavení budou fungovat stejným způsobem i v případě, že vaše aplikace není rozhraní .NET One.
 
 Další informace najdete v tématu věnovaném [automatickému retušování webů Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

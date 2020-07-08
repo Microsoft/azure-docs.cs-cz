@@ -9,10 +9,9 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168195"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: stažení a poznámky k verzi
@@ -27,8 +26,8 @@ ms.locfileid: "84168195"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**Vzorku**|[Ukázka Cosmos DB rozhraní API pro tabulky .NET](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Rychlé zprovoznění**|[Rychlé zprovoznění](create-table-dotnet.md)|
+|**Ukázka**|[Ukázka Cosmos DB rozhraní API pro tabulky .NET](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**Rychlý start**|[Rychlý start](create-table-dotnet.md)|
 |**Kurz**|[Kurz](tutorial-develop-table-dotnet.md)|
 |**Aktuální podporovaná architektura**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Nahlásit problém**|[Nahlásit problém](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -40,10 +39,10 @@ ms.locfileid: "84168195"
 * počáteční verze Preview sady 2.0.0 Table SDK, která přebírá závislost na [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)s vylepšeními výkonu a konsolidací oboru názvů na Cosmos DB koncový bod. Veřejné rozhraní API zůstává stejné.
 
 ## <a name="release-notes-for-100-series"></a>Poznámky k verzi pro řady 1.0.0
-1.0.0 Series přebírá závislost na [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+1.0.0 Series přebírá závislost na [Microsoft.Azure.DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
-* Zlepšení výkonu nastavením sady Table SDK výchozí úroveň trasování na SourceLevels. off, ke kterému se dá přihlašovat prostřednictvím App. config
+* Zlepšení výkonu nastavením sady Table SDK výchozí úroveň trasování na SourceLevels. off, kterou lze zařadit prostřednictvím app.config
 
 ### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * Zaveďte novou konfiguraci v části TableClientConfiguration, která bude používat vykonavatele REST ke komunikaci s Cosmos DB rozhraní API pro tabulky

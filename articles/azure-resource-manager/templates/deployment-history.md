@@ -5,15 +5,14 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84117833"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Zobrazit historii nasazení pomocí Azure Resource Manager
 
-Azure Resource Manager vám umožní zobrazit historii nasazení. Můžete kontrolovat konkrétní operace v předchozích nasazeních a zjistit, které prostředky byly nasazeny. Tato historie obsahuje informace o všech chybách.
+Azure Resource Manager vám umožní zobrazit historii nasazení. Můžete prozkoumat konkrétní operace v předchozích nasazeních a zjistit, jaké prostředky se nasadily. Tato historie obsahuje informace o všech chybách.
 
 Historie nasazení pro skupinu prostředků je omezená na 800 nasazení. Po dosažení limitu se nasazení z historie automaticky odstraní. Další informace najdete v tématu [Automatické odstraňování z historie nasazení](deployment-history-deletions.md).
 

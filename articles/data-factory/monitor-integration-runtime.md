@@ -11,10 +11,9 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84113688"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration Runtime ve službě Azure Data Factory
@@ -43,7 +42,7 @@ Výpočetní prostředek pro Azure Integration runtime je plně spravovaný elas
 ### <a name="properties"></a>Vlastnosti
 Následující tabulka uvádí popis vlastností vrácených rutinou pro prostředí Azure Integration Runtime:
 
-| Vlastnost | Description |
+| Vlastnost | Popis |
 -------- | ------------- | 
 | Name | Název prostředí Azure Integration runtime. |  
 | Stav | Stav prostředí Azure Integration runtime. | 
@@ -70,7 +69,7 @@ V této části najdete popis vlastností vrácených pomocí rutiny Get-AzDataF
 
 Následující tabulka uvádí popisy vlastností monitorování pro **každý uzel**:
 
-| Vlastnost | Description | 
+| Vlastnost | Popis | 
 | -------- | ----------- | 
 | Name | Název místního prostředí Integration runtime a uzlů, které jsou k němu přidružené. Uzel je místní počítač s Windows, na kterém je nainstalovaný modul Integration runtime v místním prostředí. |  
 | Status | Stav celkového místního prostředí Integration runtime a každého uzlu. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v další části. | 
@@ -94,7 +93,7 @@ Vypočtenou výchozí hodnotu můžete přepsat v Azure Portal. Vyberte vytvoři
 ### <a name="status-per-node"></a>Stav (na jeden uzel)
 Následující tabulka uvádí možné stavy uzlu Integration runtime v místním prostředí:
 
-| Status | Popis |
+| Status | Description |
 | ------ | ------------------ | 
 | Online | Uzel je připojen ke službě Data Factory. |
 | Offline | Uzel je offline. |

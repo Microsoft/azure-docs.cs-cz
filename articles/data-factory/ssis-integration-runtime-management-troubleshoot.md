@@ -12,10 +12,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118819"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory
@@ -124,7 +123,7 @@ K této chybě může dojít z nejrůznějších důvodů. Informace o jejím ř
 
 ### <a name="forbidden"></a>Forbidden
 
-Tento druh chyby může vypadat přibližně takto: "SubnetId není pro aktuální účet povolené. Zprostředkovatel prostředků Microsoft. Batch není zaregistrován v rámci stejného předplatného virtuální sítě.
+Tento druh chyby může vypadat přibližně takto: "SubnetId není pro aktuální účet povolené. Poskytovatel prostředků Microsoft.Batch není zaregistrován v rámci stejného předplatného virtuální sítě. "
 
 Tyto podrobnosti znamenají, že služba Azure Batch nemá přístup k vaší virtuální síti. Zaregistrujte poskytovatele prostředků Microsoft.Batch ve stejném předplatném jako virtuální síť.
 

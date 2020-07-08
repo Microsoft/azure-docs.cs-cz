@@ -14,10 +14,9 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84117909"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
@@ -48,7 +47,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
 
 ### <a name="create-your-adf"></a>Vytvoření ADF
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).    
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).    
 2. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
    ![Nový -> Objekt pro vytváření dat](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
@@ -217,7 +216,7 @@ V této části se naučíte vytvořit Azure Automation sadu Runbook, která spu
 Pokud účet Azure Automation ještě nemáte, vytvořte ho podle pokynů v tomto kroku. Podrobný postup najdete v článku [Vytvoření účtu Azure Automation](../automation/automation-quickstart-create-account.md) . V rámci tohoto kroku vytvoříte účet **Spustit v Azure jako** (instanční objekt ve vašem Azure Active Directory) a přiřadíte mu roli **přispěvatele** v předplatném Azure. Ujistěte se, že se jedná o stejné předplatné, které obsahuje váš ADF s Azure SSIS IR. Azure Automation tento účet použije k ověření, aby Azure Resource Manager a pracoval na svých prostředcích. 
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. V současné době se uživatelské rozhraní a aplikace ADF podporují jenom ve webových prohlížečích Microsoft Edge a Google Chrome.
-2. Přihlaste se k [portálu Azure](https://portal.azure.com/).    
+2. Přihlaste se k [Azure Portal](https://portal.azure.com/).    
 3. V nabídce vlevo vyberte **Nový** , vyberte **monitorování a Správa**a pak vyberte **Automation**. 
 
    ![Automatizace > Monitorování a správa >](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)

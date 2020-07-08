@@ -1,5 +1,5 @@
 ---
-title: Rozhraní API pro tabulky Azure Cosmos DB pro Node. js
+title: Azure Cosmos DB rozhraní API pro tabulky Node.js
 description: Seznamte se s Azure Cosmos DB rozhraní API pro tabulky včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,13 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84167974"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Rozhraní API pro tabulky Azure Cosmos DB pro Node. js: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky pro Node.js: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -27,7 +26,7 @@ ms.locfileid: "84167974"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API pro Node. js](https://azure.github.io/azure-storage-node/)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraníNode.js API](https://azure.github.io/azure-storage-node/)|
 |**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170762"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení potíží s výkonem pomalých aplikací v Azure App Service
@@ -58,7 +57,7 @@ Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 ![monitorování výkonu aplikace](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
@@ -152,7 +151,7 @@ Kromě toho můžete zvolit spuštění aplikace na více než jedné instanci. 
 Můžete nastavit škálování na ruční nebo automatické.
 
 #### <a name="use-autoheal"></a>Použít reretušovací
-Automatické zacele recykluje pracovní proces vaší aplikace na základě nastavení, které zvolíte (například změny konfigurace, požadavky, limity založené na paměti nebo doba potřebná ke spuštění žádosti). Ve většině případů je recyklací procesu nejrychlejší způsob, jak se zotavit z problému. I když aplikaci můžete kdykoli znovu spustit přímo v rámci Azure Portal, automatické automatický opravování ji provede automaticky. Stačí přidat některé triggery do kořenového souboru Web. config pro vaši aplikaci. Tato nastavení budou fungovat stejným způsobem i v případě, že vaše aplikace není aplikací .NET.
+Automatické zacele recykluje pracovní proces vaší aplikace na základě nastavení, které zvolíte (například změny konfigurace, požadavky, limity založené na paměti nebo doba potřebná ke spuštění žádosti). Ve většině případů je recyklací procesu nejrychlejší způsob, jak se zotavit z problému. I když aplikaci můžete kdykoli znovu spustit přímo v rámci Azure Portal, automatické automatický opravování ji provede automaticky. Stačí přidat některé triggery do kořenového web.config vaší aplikace. Tato nastavení budou fungovat stejným způsobem i v případě, že vaše aplikace není aplikací .NET.
 
 Další informace najdete v tématu věnovaném [automatickému retušování webů Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

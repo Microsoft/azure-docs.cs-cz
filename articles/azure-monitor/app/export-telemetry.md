@@ -4,10 +4,9 @@ description: Exportujte data o využití a diagnostiku do úložiště v Microso
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84147966"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
@@ -58,10 +57,10 @@ Může to trvat přibližně hodinu, než se data objeví v úložišti.
 
 Po dokončení prvního exportu najdete v kontejneru úložiště objektů BLOB v Azure strukturu podobnou následující: (Tato operace se bude lišit v závislosti na shromažďovaných datech.)
 
-|Name | Popis |
+|Name | Description |
 |:----|:------|
 | [Dostupnost](export-data-model.md#availability) | Oznamuje [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).  |
-| [Událostí](export-data-model.md#events) | Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
+| [Událost](export-data-model.md#events) | Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
 | [Výjimky](export-data-model.md#exceptions) |Oznamuje [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v prohlížeči.
 | [Zprávy](export-data-model.md#trace-messages) | Odesílá [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)a [adaptéry protokolování](../../azure-monitor/app/asp-net-trace-logs.md).
 | [Metriky](export-data-model.md#metrics) | Vygenerováno voláními rozhraní API metriky.
@@ -184,7 +183,7 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
     Ne, je nám líto. Náš Exportní modul v tuto chvíli funguje jenom s Azure Storage.  
 * *Existuje nějaké omezení množství dat, které jste umístili do Storu?*
 
-    No. Data budeme uchovávat, dokud neodstraníte export. Zastavíme se, pokud máme vnější omezení pro úložiště objektů blob, ale to je poměrně velké. Můžete určit, kolik úložiště používáte.  
+    Ne. Data budeme uchovávat, dokud neodstraníte export. Zastavíme se, pokud máme vnější omezení pro úložiště objektů blob, ale to je poměrně velké. Můžete určit, kolik úložiště používáte.  
 * *Kolik objektů BLOB se má v úložišti zobrazit?*
 
   * Pro každý datový typ, který jste vybrali k exportu, se vytvoří nový objekt BLOB každou minutu (pokud jsou k dispozici data).
