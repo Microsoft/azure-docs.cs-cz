@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504691"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro použití PowerShellu s Azure Data Lake Storage Gen1
@@ -21,12 +21,12 @@ Tento článek popisuje vlastnosti, které můžete ladit, abyste získali lepš
 
 ## <a name="performance-related-properties"></a>Vlastnosti související s výkonem
 
-| Vlastnost            | Výchozí | Popis |
+| Vlastnost            | Výchozí | Description |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Pomocí tohoto parametru můžete zvolit počet paralelních vláken pro nahrávání nebo stahování jednotlivých souborů. Toto číslo představuje maximální počet vláken, která se dají přidělit na jeden soubor, ale v závislosti na vašem scénáři můžete dostat méně vláken (například pokud nahráváte soubor o velikosti 1 KB, dostanete jedno vlákno i v případě, že požádáte o 20 vláken).  |
 | ConcurrentFileCount | 10      | Tento parametr je určený zejména pro nahrávání nebo stahování složek. Tento parametr určuje počet souborů, které lze souběžně nahrávat nebo stahovat. Toto číslo představuje maximální počet souběžných souborů, které je možné nahrávat nebo stahovat najednou, ale v závislosti na vašem scénáři můžete dosáhnout nižší souběžnosti (například pokud nahráváte dva soubory, získáte dvě souběžná nahrávání souborů i v případě, že požádáte o 15). |
 
-**Případě**
+**Příklad:**
 
 Tento příkaz stáhne soubory z Data Lake Storage Gen1 na místní disk uživatele pomocí 20 vláken na soubor a 100 souběžných souborů.
 
@@ -48,7 +48,7 @@ Další otázkou, kterou můžete mít, je určit, jakou hodnotu má poskytnout 
 
     `Total thread count = total physical cores * 6`
 
-    **Případě**
+    **Příklad:**
 
     Předpokládejme, že spouštíte příkazy prostředí PowerShell z virtuálního počítače D14, který má 16 jader.
 
@@ -58,7 +58,7 @@ Další otázkou, kterou můžete mít, je určit, jakou hodnotu má poskytnout 
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
-    **Případě**
+    **Příklad:**
 
     Za předpokladu, že máte 100 souborů v rozmezí od 1 do 10 GB, používáme jako největší velikost souboru pro rovnici 10 GB, což by bylo načteno jako následující.
 
@@ -68,7 +68,7 @@ Další otázkou, kterou můžete mít, je určit, jakou hodnotu má poskytnout 
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
-    **Případě**
+    **Příklad:**
 
     Podle ukázkových hodnot, které používáme:
 

@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
 ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482900"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Jak monitorovat normalizovaná RU/s pro kontejner Azure Cosmos nebo účet
@@ -33,7 +33,7 @@ Pokud je nepřetržitá špička z 100% normalizované spotřeby RU/s nebo blíz
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Zobrazení normalizované metriky spotřeby jednotek požadavků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 

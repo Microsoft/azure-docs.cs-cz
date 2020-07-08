@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit zásady automatického vypnutí pro testov
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482730"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurace automatické vypnutí testovacího prostředí a virtuálních počítačů COMPUTE v Azure DevTest Labs
@@ -31,7 +31,7 @@ Zásady pro automatické vypínání pomáhají minimalizovat odpadní laborato�
 
 Chcete-li zobrazit (a změnit) zásady pro testovací prostředí, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.   
 4. Vyberte **Konfigurace a zásady**.

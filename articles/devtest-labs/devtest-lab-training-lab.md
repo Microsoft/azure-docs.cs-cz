@@ -4,10 +4,10 @@ description: Tento článek poskytuje podrobné kroky, pomocí kterých můžete
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1a4b39d104d2ffdb45c23db2ad16cc4ee4627fb9
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85484141"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Použití Azure DevTest Labs pro školení

@@ -9,10 +9,10 @@ ms.date: 6/26/2020
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85484056"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
@@ -34,11 +34,11 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 | Kumulativní aktualizace z července 2019 – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24. července 2019 | Verze Supported agenta vyprší od 1. září 2020. |
 | Kumulativní aktualizace z července 2019 – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12. července 2019 | Verze Supported agenta vyprší od 1. září 2020. |
 | Verze v7 – [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. června 2019 | Verze Supported agenta vyprší od 1. září 2020. |
-| Verze V6 | 6.0.0.0 - 6.3.0.0 | – | Nepodporováno – platnost verzí agentů vypršela 21. dubna 2020 |
-| Verze verze 5 | 5.0.2.0 - 5.2.0.0 | – | Nepodporováno – platnost verzí agentů vypršela 18. března 2020 |
-| Verze v4 | 4.0.1.0 - 4.3.0.0 | – | Nepodporované – verze agentů vypršela 6. listopadu 2019 |
-| Verze v3 | 3.1.0.0 - 3.4.0.0 | – | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
-| Agenti pre-GA | 1.1.0.0 – 3.0.13.0 | – | Nepodporováno – platnost verzí agentů vypršela 1. října 2018 |
+| Verze V6 | 6.0.0.0 - 6.3.0.0 | Není k dispozici | Nepodporováno – platnost verzí agentů vypršela 21. dubna 2020 |
+| Verze verze 5 | 5.0.2.0 - 5.2.0.0 | Není k dispozici | Nepodporováno – platnost verzí agentů vypršela 18. března 2020 |
+| Verze v4 | 4.0.1.0 - 4.3.0.0 | Není k dispozici | Nepodporované – verze agentů vypršela 6. listopadu 2019 |
+| Verze v3 | 3.1.0.0 - 3.4.0.0 | Není k dispozici | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
+| Agenti pre-GA | 1.1.0.0 – 3.0.13.0 | Není k dispozici | Nepodporováno – platnost verzí agentů vypršela 1. října 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -99,7 +99,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
@@ -195,7 +195,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
@@ -263,7 +263,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
@@ -356,7 +356,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
@@ -453,7 +453,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
@@ -551,7 +551,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 - Režim FIPS není podporován a musí být zakázán. 
 
-### <a name="interoperability"></a>Interoperabilita
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
 - Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.

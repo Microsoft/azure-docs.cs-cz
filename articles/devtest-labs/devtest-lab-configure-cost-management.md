@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak sledovat náklady na 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482764"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledovat náklady spojené s testovacím prostředím v Azure DevTest Labs
@@ -18,7 +18,7 @@ V této části se dozvíte, jak pomocí grafu **trendu předpokládaných nákl
 
 Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte podle následujících kroků: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .  
@@ -28,7 +28,7 @@ Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte p
 
     **Odhadovaná hodnota nákladů** je aktuální odhadované náklady v kalendářním měsíci. Předpokládané **náklady** jsou odhadované náklady na celý aktuální kalendářní měsíc, vypočítané pomocí nákladů testovacího prostředí za předchozích pět dnů.
 
-    Náklady se zaokrouhlují na nejbližší celé číslo. Například: 
+    Náklady se zaokrouhlují na nejbližší celé číslo. Příklad: 
 
    * 5,01 zaokrouhlí na 6 
    * 5,50 zaokrouhlí na 6
@@ -74,7 +74,7 @@ DevTest Labs vám umožní lépe spravovat náklady v testovacím prostředí t�
 ## <a name="view-cost-by-resource"></a>Zobrazit náklady podle prostředku 
 Funkce trendu měsíčních nákladů v cvičení vám umožní zjistit, kolik jste strávili v aktuálním kalendářním měsíci. Zobrazuje také projekci útraty až do konce měsíce na základě vašich útraty za posledních sedm dní. Abychom vám pomohli pochopit, proč útraty v testovacím prostředí jsou na začátku prahové hodnoty, můžete použít funkci **náklady podle prostředků** , která zobrazuje měsíční náklady na **prostředek** v tabulce.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .

@@ -4,10 +4,10 @@ description: Naučte se, jak ohlásit Azure DevTest Labs využití napříč ně
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483427"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Nahlášení využití Azure DevTest Labs napříč několika cvičeními a předplatnými
@@ -75,7 +75,7 @@ Pomocí [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Až se systém nastaví a data se přesunou do dlouhodobého úložiště, další krok se doplní otázkami, které data potřebují k zodpovězení. Například: 
+Až se systém nastaví a data se přesunou do dlouhodobého úložiště, další krok se doplní otázkami, které data potřebují k zodpovězení. Příklad: 
 
 -   Jaké je využití velikosti virtuálního počítače?
 

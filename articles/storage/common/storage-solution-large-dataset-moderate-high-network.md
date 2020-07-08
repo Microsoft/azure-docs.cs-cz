@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 5b60162800695be67c742554881b296c3d8bb9dc
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504368"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Přenos dat rozsáhlých datových sad se střední až velkou šířkou pásma sítě
@@ -69,7 +69,7 @@ Pokud používáte offline přenos dat, použijte následující tabulku pro poc
 |    Formulářový faktor                      |    5 SSD na objednávku             |    1 X 50-kg zařízení velikosti stolního počítače na jednu objednávku    |    1 X ~ 500-kg velké zařízení na jednu objednávku    |    Až 10 HDD/SSD na objednávku        |
 |    Čas prvotního nastavení               |    Nízká <br>(15 minut)            |    Nízká až střední <br> (<30 minut)               |    Pokročilé<br>(1-2 hodin)               |    Střední až obtížné<br>variabilní |
 |    Odesílání dat do Azure               |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
-|    Export dat z Azure           |    Ne                           |    Ne                                            |    No                                    |    Yes                                 |
+|    Export dat z Azure           |    No                           |    No                                            |    No                                    |    Yes                                 |
 |    Šifrování                       |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    Hardware                         |     Dodán Microsoft          |    Dodán Microsoft                            |    Dodán Microsoft                    |    Dodán zákazník                   |
 |    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
@@ -88,8 +88,8 @@ Pokud používáte online přenos dat, použijte tabulku v následující část
 |    Datový typ                  |    Objekty blob Azure, soubory Azure, tabulky Azure    |    Objekty blob Azure, soubory Azure, tabulky Azure    |    Objekty blob Azure, soubory Azure                           |   Podporuje 70 + datových konektorů pro úložiště a formáty dat    |
 |    Formulářový faktor                |    Nástroje příkazového řádku                        |    Programové rozhraní                    |    Microsoft poskytuje virtuální <br>nebo fyzické zařízení     |    Služba v Azure Portal                                            |
 |    Počáteční nastavení jednorázového času     |    Snadné               |    Pokročilé                       |    Snadné (<30 minut) až střední (1-2 hodin)            |    Množství                                                          |
-|    Předběžné zpracování dat              |    Ne                                        |    Ne                                        |    Ano (s využitím hraničních výpočtů)                               |    Yes                                                                |
-|    Přenos z jiných cloudů       |    Ne                                        |    Ne                                        |    No                                                    |    Ano                                                                |
+|    Předběžné zpracování dat              |    No                                        |    No                                        |    Ano (s využitím hraničních výpočtů)                               |    Yes                                                                |
+|    Přenos z jiných cloudů       |    No                                        |    No                                        |    No                                                    |    Ano                                                                |
 |    Typ uživatele                        |    IT specialisté a vývoj                                       |    Vývoj                                       |    IT profesionál                                                |    IT profesionál                                                             |
 |    Ceny                          |    Bezplatné použití poplatků za výstup dat         |    Bezplatné použití poplatků za výstup dat         |    [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Ceny](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 

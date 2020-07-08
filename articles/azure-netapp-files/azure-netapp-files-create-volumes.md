@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483631"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
@@ -31,7 +31,7 @@ Musíte mít už nastavený fond kapacity.
 Podsíť musí být delegovaná na Azure NetApp Files.  
 [Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
-## <a name="considerations"></a>Požadavky 
+## <a name="considerations"></a>Důležité informace 
 
 * Rozhodnutí o tom, která verze systému souborů NFS se má použít  
   NFSv3 dokáže zvládnout širokou škálu případů použití a je běžně nasazená ve většině podnikových aplikací. Měli byste ověřit, jakou verzi (NFSv3 nebo NFSv 4.1) vaše aplikace vyžaduje, a vytvořit svazek s použitím příslušné verze. Pokud například používáte [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), doporučuje se zamykání souborů s nfsv 4.1 nad NFSv3. 

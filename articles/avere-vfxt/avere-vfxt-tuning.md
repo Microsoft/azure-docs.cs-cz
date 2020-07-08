@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 2d06e3cc80f05cc86980dd2570d1d4d203295ff2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85505286"
 ---
 # <a name="cluster-tuning"></a>Ladění clusteru
@@ -34,7 +34,7 @@ Tyto změny se můžou doporučit na základě kvality datových sad nebo stylu 
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloudové servery NAS nebo optimalizace Cloud Gateway
 
-V případě cloudového serveru NAS nebo brány cluster vFXT poskytuje přístup ve stylu serveru NAS ke kontejneru cloudu. Aby bylo možné využít vyšší rychlosti dat mezi clusterem vFXT a cloudovým úložištěm, může váš zástupce doporučit změnu nastavení na více agresivních nabízených dat do svazku úložiště z mezipaměti. Například:
+V případě cloudového serveru NAS nebo brány cluster vFXT poskytuje přístup ve stylu serveru NAS ke kontejneru cloudu. Aby bylo možné využít vyšší rychlosti dat mezi clusterem vFXT a cloudovým úložištěm, může váš zástupce doporučit změnu nastavení na více agresivních nabízených dat do svazku úložiště z mezipaměti. Příklad:
 
 * Zvyšte počet připojení TCP mezi clusterem a kontejnerem úložiště.
 

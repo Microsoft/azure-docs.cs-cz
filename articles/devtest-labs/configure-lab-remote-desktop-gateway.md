@@ -4,10 +4,10 @@ description: Naučte se, jak nakonfigurovat testovací prostředí v Azure DevTe
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483835"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs pro použití brány vzdálené plochy
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenu pomocí těchto kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte **testovací prostředí**.
 1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.

@@ -4,10 +4,10 @@ description: Naučte se, jak odstranit a exportovat osobní data ze služby Azur
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483512"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Export nebo odstranění osobních údajů z Azure DevTest Labs
@@ -151,7 +151,7 @@ Teď se podíváme na exportovaná data. Jak bylo zmíněno dříve, po úspěš
 
 **virtualmachines.csv** obsahuje následující sloupce dat:
 
-| Název sloupce | Popis |
+| Název sloupce | Description |
 | ----------- | ----------- | 
 | SubscriptionId | Identifikátor předplatného, ve kterém testovací prostředí existuje. |
 | LabUId | Jedinečný identifikátor GUID pro testovací prostředí |
@@ -160,7 +160,7 @@ Teď se podíváme na exportovaná data. Jak bylo zmíněno dříve, po úspěš
 | ResourceGroupName | Název skupiny prostředků, která obsahuje virtuální počítač | 
 | ResourceId | Plně kvalifikované ID prostředku pro virtuální počítač. |
 | ResourceUId | Identifikátor GUID virtuálního počítače |
-| Název | Název virtuálního počítače |
+| Name | Název virtuálního počítače |
 | CreatedTime | Datum a čas, kdy byl virtuální počítač vytvořen. |
 | DeletedDate | Datum a čas odstranění virtuálního počítače. Pokud je prázdný, odstranění ještě neproběhlo. |
 | ResourceOwner | Vlastník virtuálního počítače Pokud je hodnota prázdná, je to buď vynucený virtuální počítač, nebo vytvořený instančním objektem. |
@@ -179,7 +179,7 @@ Teď se podíváme na exportovaná data. Jak bylo zmíněno dříve, po úspěš
 
 Datové sloupce obsažené v **disks.csv** jsou uvedeny níže:
 
-| Název sloupce | Popis | 
+| Název sloupce | Description | 
 | ----------- | ----------- | 
 | SubscriptionId | ID předplatného, které obsahuje testovací prostředí |
 | LabUId | Identifikátor GUID testovacího prostředí |
@@ -188,7 +188,7 @@ Datové sloupce obsažené v **disks.csv** jsou uvedeny níže:
 | ResourceGroupName | Název skupiny prostředků, která obsahuje testovací prostředí | 
 | ResourceId | Plně kvalifikované ID prostředku pro virtuální počítač. |
 | ResourceUId | Identifikátor GUID virtuálního počítače |
- |Název | Název připojeného disku |
+ |Name | Název připojeného disku |
 | CreatedTime |Datum a čas vytvoření datového disku. |
 | DeletedDate | Datum a čas odstranění datového disku. |
 | ResourceStatus | Stav prostředku Aktivní, pokud prostředek existuje. Neaktivní, když je odstraněn. |

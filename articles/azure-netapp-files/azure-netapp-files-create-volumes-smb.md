@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: b-juche
 ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483699"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
@@ -45,7 +45,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    –       |    Odpověď na ozvěnu    |
+    |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |

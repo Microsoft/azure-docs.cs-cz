@@ -1,6 +1,6 @@
 ---
 title: Kopírování nebo přesun dat do Azure Storage pomocí AzCopy v10 za účelem | Microsoft Docs
-description: AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování dat do, z nebo mezi účty úložiště. Tento článek vám pomůže stáhnout AzCopy, připojit se k vašemu účtu úložiště a pak přenést soubory.
+description: AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování dat do, z nebo mezi účty úložiště. Tento článek vám pomůže se stažením nástroje AzCopy, připojením k vašemu účtu úložiště a následným přenosem souborů.
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,15 +8,15 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504470"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
-AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování objektů BLOB nebo souborů do nebo z účtu úložiště. Tento článek vám pomůže stáhnout AzCopy, připojit se k vašemu účtu úložiště a pak přenést soubory.
+AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat objekty blob nebo soubory do nebo z účtu úložiště. Tento článek vám pomůže se stažením nástroje AzCopy, připojením k vašemu účtu úložiště a následným přenosem souborů.
 
 > [!NOTE]
 > AzCopy **v10 za účelem** je aktuálně podporovaná verze AzCopy.
@@ -40,9 +40,9 @@ Tyto soubory se komprimují jako soubor zip (Windows a Mac) nebo jako soubor s t
 > Pokud chcete kopírovat data do služby [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) a z ní, nainstalujte [AzCopy verze 7,3](https://aka.ms/downloadazcopynet).
 
 
-## <a name="run-azcopy"></a>Spustit AzCopy
+## <a name="run-azcopy"></a>Spuštění nástroje AzCopy
 
-Pro usnadnění práce zvažte možnost Přidat umístění adresáře spustitelného souboru AzCopy do systémové cesty pro snadné použití. Tímto způsobem můžete zadat `azcopy` libovolný adresář v systému.
+Pro usnadnění práce zvažte přidání umístění adresáře spustitelného souboru AzCopy do systémové cesty. Tímto způsobem můžete zadat `azcopy` libovolný adresář v systému.
 
 Pokud se rozhodnete Nepřidávat adresář AzCopy do cesty, budete muset změnit adresáře na umístění spustitelného souboru AzCopy a typu `azcopy` nebo `.\azcopy` v příkazovém řádku prostředí Windows PowerShell.
 

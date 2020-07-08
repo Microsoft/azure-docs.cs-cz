@@ -4,17 +4,17 @@ description: Nakonfigurovat, které Azure Marketplace image se dají použít p�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9fdb4e3a888e876f91b8af2e4854a9c101eea45c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482713"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurace nastavení Azure Marketplace imagí v Azure DevTest Labs
 DevTest Labs podporuje vytváření virtuálních počítačů na základě Azure Marketplace imagí v závislosti na tom, jak jste nakonfigurovali Azure Marketplace imagí pro použití v testovacím prostředí. V tomto článku se dozvíte, jak určit, které Azure Marketplace image se můžou použít při vytváření virtuálních počítačů v testovacím prostředí. Tím zajistíte, že váš tým bude mít přístup jenom k potřebným imagím Marketplace. 
 
 ## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>Vyberte, které Azure Marketplace image jsou povolené při vytváření virtuálního počítače.
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí. 
 4. V okně testovacího prostředí vyberte **Konfigurace a zásady**.

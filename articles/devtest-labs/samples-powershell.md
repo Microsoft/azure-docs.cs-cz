@@ -4,10 +4,10 @@ description: Ukázky Azure PowerShell – skripty, které vám pomůžou se spr�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d94074acdd4aeef87f322f8e7a9734e5da9a1c32
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483223"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Ukázky Azure PowerShell pro Azure Lab Services

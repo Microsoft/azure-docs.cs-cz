@@ -4,10 +4,10 @@ description: Naučte se, jak přidat úložiště artefaktů do testovacího pro
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483903"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
@@ -55,7 +55,7 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí v Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .

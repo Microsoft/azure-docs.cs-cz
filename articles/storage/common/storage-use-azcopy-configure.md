@@ -9,15 +9,15 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504351"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
-AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování objektů BLOB nebo souborů do nebo z účtu úložiště. Tento článek vám pomůže provádět pokročilé konfigurační úlohy a pomáhá řešit problémy, které mohou nastat při používání AzCopy.
+AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat objekty blob nebo soubory do nebo z účtu úložiště. Tento článek vám pomůže provádět pokročilé konfigurační úlohy a pomáhá řešit problémy, které mohou nastat při používání AzCopy.
 
 > [!NOTE]
 > Pokud hledáte obsah, který vám pomůžete začít s AzCopy, přečtěte si některé z následujících článků:
@@ -124,7 +124,7 @@ Příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) neodstraní soubory z cílov�
 
 ## <a name="troubleshoot-issues"></a>Řešení potíží
 
-AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly můžete použít k prozkoumání a odstraňování potíží s případnými problémy. 
+AzCopy vytváří soubory protokolů a plánů pro každou úlohu. Protokoly můžete použít ke zkoumání případných problémů a jejich odstraňování. 
 
 Protokoly budou obsahovat stav selhání ( `UPLOADFAILED` , `COPYFAILED` , a `DOWNLOADFAILED` ), úplnou cestu a důvod selhání.
 

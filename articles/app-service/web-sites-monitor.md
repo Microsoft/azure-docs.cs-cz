@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482679"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
@@ -31,7 +31,7 @@ Pokud je aplikace hostována v plánu *Basic*, *Standard*nebo *Premium* , omezen
 
 Kvóty pro bezplatné nebo sdílené aplikace jsou:
 
-| Kvóta | Popis |
+| Kvóta | Description |
 | --- | --- |
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
