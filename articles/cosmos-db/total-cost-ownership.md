@@ -7,22 +7,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116260"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954651"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Celkové náklady na vlastnictví (vlastnictví) s Azure Cosmos DB
 
 Součástí návrhu služby Azure Cosmos DB jsou podrobné zásady správného řízení víceklientské architektury a prostředků. Tento návrh umožňuje provoz služby Azure Cosmos DB s výrazně nižšími náklady a pomáhá uživatelům ušetřit. Služba Azure Cosmos DB v současné době podporuje více než 280 zákaznických úloh na jednom počítači (tato hustota se neustále zvyšuje) a tisíce zákaznických úloh v rámci jednoho clusteru. Zajišťuje vyrovnávání zatížení replik zákaznických úloh napříč různými počítači v clusteru a napříč několika clustery v rámci datacentra. Další informace najdete v tématu [Azure Cosmos DB: vložení hranice globálně distribuovaných databází](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Z důvodu zásad správného řízení prostředků, víceklientské architektury a nativní integrace se zbytkem infrastruktury Azure je Azure Cosmos DB v průměru 4 až 6 časů levnějších než MongoDB, Cassandra nebo jiná OSS NoSQL spuštěná v IaaS a až 10krát levnější než databázové moduly běžící místně. Podívejte se na dokument s [celkovými náklady na vlastnictví cloudové služby databáze NoSQL (bez nich)](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
-Databázová řešení OSS NoSQL, jako je Apache Cassandra, MongoDB, HBA, jsou navržená místně. Když se tato služba nabídne jako spravovaná, je rovnocenná šabloně Správce prostředků s databází tenanta pro správu zřízené clusterů a monitorování podpory. Architektury OSS NoSQL vyžadují významnou provozní režii a odbornost můžou být obtížné najít. Na druhé straně Azure Cosmos DB je plně spravovaná cloudová služba, která vývojářům umožňuje soustředit se na firemní inovace, a ne na správu a údržbu infrastruktury databáze. 
+Databázová řešení OSS NoSQL, jako je Apache Cassandra, MongoDB, HBA, jsou navržená místně. Když se tato služba nabídne jako spravovaná, je rovnocenná šabloně Správce prostředků s databází tenanta pro správu zřízené clusterů a monitorování podpory. Architektury OSS NoSQL vyžadují významnou provozní režii a odbornost můžou být obtížné najít. Na druhé straně Azure Cosmos DB je plně spravovaná cloudová služba, která vývojářům umožňuje soustředit se na firemní inovace, a ne na správu a údržbu infrastruktury databáze.
 
 Na rozdíl od cloudové databázové služby Azure Cosmos DB nevytvořili a sestavili databázové stroje OSS NoSQL pomocí zásad správného řízení prostředků nebo jemně odstupňované víceklientské architektury jako základní principy architektury. Databázové moduly OSS NoSQL, jako je Cassandra a MongoDB, vycházejí z předpokladu, že všechny prostředky virtuálního počítače, na kterých jsou spuštěné, jsou k dispozici pro jejich použití. Mnohé z těchto databázových strojů nemůžou fungovat, pokud množství prostředků klesne pod určitou prahovou hodnotu. Například u malých instancí virtuálních počítačů, které jsou k dispozici s konfiguracemi doporučenými pro dodavatele naznačující obvykle velké virtuální počítače s vyššími náklady. Proto není možné hostovat NoSQL OSS ani jiný místní databázový stroj a zpřístupnit ho pomocí modelu zpoplatnění založeného na spotřebě, jako jsou požadavky za sekundu nebo spotřebované úložiště.
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Celkové náklady na vlastnictví Azure Cosmos DB 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Celkové náklady na vlastnictví Azure Cosmos DB
 
 Model zřizování Azure Cosmos DB bez serveru eliminuje nutnost nadměrného poskytování infrastruktury databáze. Azure Cosmos DB prostředky se poskytují bez nutnosti specializované konfigurace nebo licencování. V důsledku toho se Azure Cosmos DBé aplikace, které jsou v porovnání s databázemi OSS NoSQL, dají spouštět s využitím až 70 procent celkových nákladů na úspory vlastnictví. Příklady některých příkladů v reálném čase najdete v tématu [použití zákazníka – případy](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Mezi další výhody Azure Cosmos DB cenového modelu patří:
 

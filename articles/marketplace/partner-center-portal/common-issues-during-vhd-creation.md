@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724713"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954172"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Běžné problémy při vytváření virtuálního pevného disku
 
@@ -20,7 +19,7 @@ Tyto nejčastější dotazy se týkají běžných problémů, se kterými se m�
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Návody vytvořit virtuální počítač z Azure Portal pomocí virtuálního pevného disku ve službě Premium Storage?
 
-Azure Marketplace v současné době nepodporuje vytváření nabídek virtuálních počítačů z imagí ve spravovaném úložišti nebo z Azure Premium Storage. Podrobnosti najdete v tématu [Přehled Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+Azure Marketplace v současné době nepodporuje vytváření nabídek virtuálních počítačů z imagí ve spravovaném úložišti nebo z Azure Premium Storage. Podrobnosti najdete v tématu [Přehled Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Můžu pro nabídky použít virtuální počítače generace 2?
 
@@ -45,9 +44,9 @@ Generování certifikátů je vysvětleno v [certifikátu pro image virtuálníc
 
 Pokud používáte model nasazení Azure Resource Manager, máte k dispozici tři možnosti:
 
-* [Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [Vytvoření brány sítě VPN založené na trasách pomocí Azure PowerShell](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [Vytvoření brány sítě VPN založené na trasách pomocí rozhraní příkazového řádku](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [Vytvoření brány sítě VPN založené na trasách pomocí Azure PowerShell](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [Vytvoření brány sítě VPN založené na trasách pomocí rozhraní příkazového řádku](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Jaké jsou zásady podpory Microsoftu pro používání serverového softwaru Microsoftu na virtuálních počítačích založených na Azure?
 
@@ -75,4 +74,4 @@ Další informace najdete v těchto článcích:
 
 Pokaždé, když se pokusím vytvořit image z mých virtuálních pevných disků, zobrazí se chyba "virtuální pevný disk je už v úložišti imagí zaregistrovaný jako prostředek" v Azure PowerShell. Nevytvořil (a) jsem obrázek, ale v Azure nebyl nalezen žádný obrázek s tímto názvem. Jak to můžu vyřešit?
 
-K tomuto problému obvykle dochází, pokud jste vytvořili virtuální počítač z virtuálního pevného disku, který je na něm zamčený. Potvrďte, že z tohoto virtuálního pevného disku není přidělený žádný virtuální počítač, a potom zkuste operaci zopakovat. Pokud se tento problém opakuje, otevřete lístek podpory. Viz [Podpora partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+K tomuto problému obvykle dochází, pokud jste vytvořili virtuální počítač z virtuálního pevného disku, který je na něm zamčený. Potvrďte, že z tohoto virtuálního pevného disku není přidělený žádný virtuální počítač, a potom zkuste operaci zopakovat. Pokud se tento problém opakuje, otevřete lístek podpory. Viz [Podpora partnerského centra](support.md).

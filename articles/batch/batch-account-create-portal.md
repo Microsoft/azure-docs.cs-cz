@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1205de2b800588b735aeb20d388ba4b64bc6b078
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711336"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
@@ -21,7 +20,7 @@ Základní informace o účtech a scénářích služby Batch najdete v tématu 
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyberte **vytvořit prostředek**a pak vyberte **výpočty** a **Služba Batch**.
 
@@ -74,7 +73,7 @@ Pokud zvolíte možnost vytvořit účet Batch v režimu předplatného uživate
 
 Při vytváření prvního účtu Batch v režimu předplatného uživatele musíte zaregistrovat předplatné ve službě Batch. (Pokud jste to již provedli, přejděte k další části.)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyberte možnost **všechny**  >  **odběry**služeb a vyberte předplatné, které chcete použít pro účet Batch.
 

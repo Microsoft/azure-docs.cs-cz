@@ -1,18 +1,17 @@
 ---
-title: Použití místního procesu s Kubernetes s Visual Studio Code (Preview)
+title: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Naučte se používat místní proces s Kubernetes k připojení vašeho vývojového počítače k clusteru Kubernetes s Azure Dev Spaces
 keywords: Místní proces pomocí Kubernetes, Azure Dev Spaces, vývojových prostorů, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: 23a94528ffa4e9e412f472349ea26d1a14003616
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316737"
 ---
-# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Použití místního procesu s Kubernetes s Visual Studio Code (Preview)
+# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
 
 Místní proces s Kubernetes umožňuje spouštět a ladit kód na vašem vývojovém počítači, ale stále je připojený ke svému clusteru Kubernetes se zbytkem vaší aplikace nebo služeb. Například pokud máte rozsáhlou architekturu mikroslužeb s mnoha vzájemně závislými službami a databázemi, může být obtížné replikovat tyto závislosti na vašem vývojovém počítači. Kromě toho může být při vytváření a nasazování kódu do clusteru Kubernetes pro každou změnu kódu během vývoje ve vnitřní smyčce pomalý, časově náročný a obtížný použití s ladicím programem.
 
@@ -25,7 +24,7 @@ V této příručce se dozvíte, jak pomocí místního procesu s Kubernetes př
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][preview-terms]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tato příručka používá [ukázkovou aplikaci Azure dev Spaces pro sdílení kol][bike-sharing-github] k předvedení připojení vývojového počítače ke clusteru Kubernetes. Pokud už máte svoji vlastní aplikaci spuštěnou v clusteru Kubernetes, můžete postupovat podle následujících kroků a používat i názvy vlastních služeb.
 
@@ -130,13 +129,13 @@ Váš vývojový počítač se připojí, když se změní stavový řádek na o
 ![Připojený vývojový počítač](../media/local-process-kubernetes-vs-code/development-computer-connected.png)
 
 > [!NOTE]
-> V subesquent se nebudete vyzváni k zadání názvu služby, portu nebo spouštěcí úlohy. Tyto hodnoty jsou uloženy v *. VSCode/Tasks. JSON*.
+> V subesquent se nebudete vyzváni k zadání názvu služby, portu nebo spouštěcí úlohy. Tyto hodnoty jsou uloženy v *. VSCode/tasks.jsna*.
 
 Po připojení k vývojovému počítači spustí provoz přesměrování na váš vývojový počítač pro službu, kterou nahrazujete.
 
 ## <a name="set-a-break-point"></a>Nastavení bodu přerušení
 
-Otevřete [Server. js][server-js-breakpoint] a Kliknutím kamkoli na řádku 233 umístěte kurzor do umístění. Nastavte zarážku pomocí příkazu *F9* nebo kliknutím na tlačítko *Spustit* a *přepínací zarážku*.
+Otevřete [server.js][server-js-breakpoint] a kliknutím někam do řádku 233 umístěte kurzor do umístění. Nastavte zarážku pomocí příkazu *F9* nebo kliknutím na tlačítko *Spustit* a *přepínací zarážku*.
 
 Přejděte na ukázkovou aplikaci otevřením veřejné adresy URL. Jako uživatel vyberte *Aurelia Briggs (zákazník)* a pak vyberte kolo k pronajmutí. Všimněte si, že se obrázek pro kolo nenačte. Vraťte se na Visual Studio Code a sledujte řádek 233, který je zvýrazněný. Zarážka, kterou jste nastavili, pozastavila službu na řádku 233. Pokud chcete službu obnovit, stiskněte klávesu *F5* nebo klikněte na *Spustit* a pak *pokračovat*. Vraťte se do prohlížeče a ověřte, že se zobrazí zástupný obrázek pro kolo.
 

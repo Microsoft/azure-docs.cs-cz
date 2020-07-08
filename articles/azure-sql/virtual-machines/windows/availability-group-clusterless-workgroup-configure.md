@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343689"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955501"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -104,7 +103,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>Vytvoření clusteru s podporou převzetí služeb při selhání
 
-V tomto kroku vytvoříte cluster s podporou převzetí služeb při selhání. Pokud tyto kroky neznáte, můžete je sledovat v [kurzu cluster s podporou převzetí služeb při selhání](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct).
+V tomto kroku vytvoříte cluster s podporou převzetí služeb při selhání. Pokud tyto kroky neznáte, můžete je sledovat v [kurzu cluster s podporou převzetí služeb při selhání](failover-cluster-instance-storage-spaces-direct-manually-configure.md).
 
 Významné rozdíly mezi kurzem a to, co je potřeba udělat pro cluster pracovních skupin:
 - Zrušte kontrolu **úložiště**a při spuštění ověření clusteru **prostory úložiště s přímým přístupem** . 
@@ -130,7 +129,7 @@ Po vytvoření clusteru přiřaďte IP adresu statického clusteru. Postup je n�
 
 ## <a name="create-a-cloud-witness"></a>Vytvoření určujícího cloudu 
 
-V tomto kroku nakonfigurujte určující sdílenou složku v cloudu. Pokud nejste obeznámeni s postupem, Projděte si [kurz clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness). 
+V tomto kroku nakonfigurujte určující sdílenou složku v cloudu. Pokud nejste obeznámeni s postupem, přečtěte si téma [nasazení cloudového určujícího clusteru pro cluster s podporou převzetí služeb při selhání](/windows-server/failover-clustering/deploy-cloud-witness). 
 
 ## <a name="enable-the-availability-group-feature"></a>Povolit funkci Skupina dostupnosti 
 

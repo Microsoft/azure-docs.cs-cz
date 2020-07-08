@@ -3,12 +3,11 @@ title: Kopírovat aplikace a data do uzlů fondu
 description: Naučte se kopírovat aplikace a data do uzlů fondu.
 ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: e21b8551fb62c4335910fd05bb9590eaf6f7e35a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726821"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954889"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Kopírovat aplikace a data do uzlů fondu
 
@@ -19,13 +18,13 @@ Azure Batch podporuje několik způsobů, jak získat data a aplikace na výpoč
 Příklady: 
 - Použití příkazového řádku Start k přesunutí nebo instalaci aplikací
 
-- Zadejte seznam konkrétních souborů nebo kontejnerů v účtu úložiště Azure. Další informace najdete [v tématu Přidání # resourceFile v dokumentaci k REST](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile) .
+- Zadejte seznam konkrétních souborů nebo kontejnerů v účtu úložiště Azure. Další informace najdete [v tématu Přidání # resourceFile v dokumentaci k REST](/rest/api/batchservice/pool/add#resourcefile) .
 
-- Každá úloha spuštěná ve fondu spouští funkci MyApplication. exe, která musí být nejdřív nainstalovaná pomocí souboru MyApplication. msi. Použijete-li tento mechanismus, je nutné nastavit vlastnost **počkat na úspěšnost pro** počáteční úkol na **hodnotu true**. Další informace najdete v tématu [Přidání # starttask v dokumentaci k REST](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask).
+- Každá úloha spuštěná ve fondu běží MyApplication.exe musí být nejdřív nainstalovaná s MyApplication.msi. Použijete-li tento mechanismus, je nutné nastavit vlastnost **počkat na úspěšnost pro** počáteční úkol na **hodnotu true**. Další informace najdete v tématu [Přidání # starttask v dokumentaci k REST](/rest/api/batchservice/pool/add#starttask).
 
-- **Odkazy na balíček aplikace** ve fondu: pro aplikace nebo data, která je třeba nainstalovat na všechny uzly ve fondu. K balíčku aplikace není přidružený žádný příkaz Install, ale ke spuštění příkazu install můžete použít spouštěcí úkol. Pokud vaše aplikace nevyžaduje instalaci nebo se skládá z velkého počtu souborů, můžete použít tuto metodu. Balíčky aplikací jsou vhodné pro velké počty souborů, protože kombinují velký počet odkazů na soubory do malé datové části. Pokud se pokusíte zahrnout více než 100 samostatných souborů prostředků do jednoho úkolu, může služba Batch zacházet z interního systémového omezení pro jednu úlohu. Balíčky aplikací použijte také v případě, že máte přísnější požadavky na správu verzí, kde můžete mít mnoho různých verzí stejné aplikace a mezi nimi je potřeba vybrat. Další informace najdete v tématu [nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací služby Batch](https://docs.microsoft.com/azure/batch/batch-application-packages).
+- **Odkazy na balíček aplikace** ve fondu: pro aplikace nebo data, která je třeba nainstalovat na všechny uzly ve fondu. K balíčku aplikace není přidružený žádný příkaz Install, ale ke spuštění příkazu install můžete použít spouštěcí úkol. Pokud vaše aplikace nevyžaduje instalaci nebo se skládá z velkého počtu souborů, můžete použít tuto metodu. Balíčky aplikací jsou vhodné pro velké počty souborů, protože kombinují velký počet odkazů na soubory do malé datové části. Pokud se pokusíte zahrnout více než 100 samostatných souborů prostředků do jednoho úkolu, může služba Batch zacházet z interního systémového omezení pro jednu úlohu. Balíčky aplikací použijte také v případě, že máte přísnější požadavky na správu verzí, kde můžete mít mnoho různých verzí stejné aplikace a mezi nimi je potřeba vybrat. Další informace najdete v tématu [nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací služby Batch](./batch-application-packages.md).
 
-- **Soubory prostředků pro přípravu úlohy**: pro aplikace nebo data, která musí být nainstalována pro spuštění úlohy, ale není nutné je instalovat do celého fondu. Například: Pokud váš fond má mnoho různých typů úloh a pouze jeden typ úlohy potřebuje MyApplication. msi ke spuštění, je vhodné umístit krok instalace do úlohy přípravy úlohy. Další informace o úlohách přípravy úloh najdete v tématu [spuštění úkolů přípravy úloh a uvolnění úlohy na výpočetních uzlech služby Batch](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/).
+- **Soubory prostředků pro přípravu úlohy**: pro aplikace nebo data, která musí být nainstalována pro spuštění úlohy, ale není nutné je instalovat do celého fondu. Například: Pokud váš fond má mnoho různých typů úloh a MyApplication.msi spustit pouze jeden typ úlohy, je vhodné umístit krok instalace do úlohy přípravy úlohy. Další informace o úlohách přípravy úloh najdete v tématu [spuštění úkolů přípravy úloh a uvolnění úlohy na výpočetních uzlech služby Batch](./batch-job-prep-release.md).
 
 - **Soubory prostředků úlohy**: pro aplikaci nebo data jsou relevantní pouze pro jednotlivé úlohy. Například: máte pět úkolů, každý zpracovává jiný soubor a pak zapisuje výstup do úložiště objektů BLOB.  V takovém případě by měl být vstupní soubor zadaný v kolekci **souborů prostředků Tasks** , protože každý úkol má svůj vlastní vstupní soubor.
 
@@ -41,7 +40,7 @@ Existují i jiné způsoby, jak získat data do výpočetních uzlů, které nej
 - Stahování dat z jiných webových služeb nebo vlastních umístění
 - Mapování sdílené síťové složky
 
-### <a name="azure-storage"></a>Úložiště Azure
+### <a name="azure-storage"></a>Azure Storage
 
 Úložiště objektů BLOB má ke stažení cíle škálovatelnosti. Cíle škálovatelnosti sdílené složky ve službě Azure Storage jsou stejné jako u jednoho objektu BLOB. Velikost bude mít vliv na počet uzlů a fondů, které potřebujete.
 

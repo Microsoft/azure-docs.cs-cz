@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759530"
 ---
 # <a name="post-deployment-tasks"></a>Úkoly po nasazení
@@ -34,9 +33,9 @@ Pokud chcete použít Azure Active Directory pro ověřování, nejdřív musít
 Tyto kroky používají rozhraní příkazového řádku Azure CLI k vytvoření registrace aplikace a grafického uživatelského rozhraní (portálu) k nastavení oprávnění. K vytvoření registrace aplikace potřebujete následující pět informací:
 
 - Zobrazovaný název: název registrace aplikace (například OCPAzureAD)
-- Domovská stránka: adresa URL konzoly OpenShift (například `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Identifikátor URI: adresa URL konzoly OpenShift (například `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Adresa URL odpovědi: hlavní veřejná adresa URL a název registrace aplikace (například `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
+- Domovská stránka: adresa URL konzoly OpenShift (například `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Identifikátor URI: adresa URL konzoly OpenShift (například `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Adresa URL odpovědi: hlavní veřejná adresa URL a název registrace aplikace (například `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD` )
 - Heslo: zabezpečené heslo (použijte silné heslo)
 
 Následující příklad vytvoří registraci aplikace pomocí předchozích informací:
@@ -69,7 +68,7 @@ Poznamenejte si vlastnost appId vrácenou z příkazu pro pozdější krok.
 
 Na webu Azure Portal:
 
-1. Vyberte **Azure Active Directory** > **registraci aplikace**.
+1. Vyberte **Azure Active Directory**  >  **registraci aplikace**.
 2. Vyhledejte registraci vaší aplikace (například OCPAzureAD).
 3. Ve výsledcích klikněte na registrace aplikace.
 4. V části **Nastavení**vyberte **požadovaná oprávnění**.
@@ -197,7 +196,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 Otevřete Service Broker pro Azure nebo OSBA vám umožní zřídit Azure Cloud Services přímo z OpenShift. OSBA se v otevřené implementaci rozhraní API Service Broker pro Azure. Rozhraní Open Service Broker API je specifikace, která definuje společný jazyk pro poskytovatele cloudu, který můžou cloudové nativní aplikace použít ke správě cloudových služeb bez použití zámku.
 
-Pokud chcete nainstalovat OSBA na OpenShift, postupujte podle pokynů v tomto https://github.com/Azure/open-service-broker-azure#openshift-project-templateumístění:. 
+Pokud chcete nainstalovat OSBA na OpenShift, postupujte podle pokynů v tomto umístění: https://github.com/Azure/open-service-broker-azure#openshift-project-template . 
 > [!NOTE]
 > Proveďte pouze kroky uvedené v části šablona projektu OpenShift, nikoli v celé části instalování.
 

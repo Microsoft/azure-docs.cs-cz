@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: guybo
 ms.openlocfilehash: fd6d17709cc3e5e9f6bb89ed7480fcd9ee80fd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759386"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linux pro Azure
@@ -27,7 +26,7 @@ V tomto článku se předpokládá, že jste už Oracle Linux operační systém
 * Verze jádra Linux starší než 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v Oracle Linux 6,6 a novějším.
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
-* Ujistěte se, že `Addons` je úložiště povolené. Upravte `/etc/yum.repos.d/public-yum-ol6.repo`soubor (Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) a v tomto souboru změňte řádek `enabled=0` na `enabled=1` **[ol6_addons]** nebo **[ol7_addons]** .
+* Ujistěte se, že `Addons` je úložiště povolené. Upravte soubor `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux 7) a `enabled=0` v tomto souboru změňte řádek na `enabled=1` **[ol6_addons]** nebo **[ol7_addons]** .
 
 ## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 a novější
 Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému provést konkrétní konfigurační kroky.
@@ -39,7 +38,7 @@ Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému
         # sudo rpm -e --nodeps NetworkManager
    
     **Poznámka:** Pokud balíček ještě není nainstalovaný, tento příkaz se nezdaří a zobrazí se chybová zpráva. To se očekává.
-4. V `/etc/sysconfig/` adresáři vytvořte soubor s názvem **Network** , který obsahuje následující text:
+4. V adresáři vytvořte soubor **network** s názvem Network `/etc/sysconfig/` , který obsahuje následující text:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
@@ -74,7 +73,7 @@ Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému
    
    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.
    
-   `crashkernel` Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+   `crashkernel`Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 10. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění.  Obvykle se jedná o výchozí nastavení.
 11. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu. Nejnovější verze je 2.0.15.
     
@@ -112,7 +111,7 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 2. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.
-3. V `/etc/sysconfig/` adresáři vytvořte soubor s názvem **Network** , který obsahuje následující text:
+3. V adresáři vytvořte soubor **network** s názvem Network `/etc/sysconfig/` , který obsahuje následující text:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
@@ -148,7 +147,7 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
    
    Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.
    
-   `crashkernel` Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
+   `crashkernel`Možnost může být ponechána v případě potřeby nakonfigurovaná, ale Všimněte si, že tento parametr sníží velikost dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 10. Až budete hotovi s úpravou "/etc/default/GRUB", spusťte následující příkaz, který znovu sestaví konfiguraci grub:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg

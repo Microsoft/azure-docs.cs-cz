@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
 ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770966"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
@@ -22,11 +21,11 @@ Nahrazuje [monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/
 Telemetrii se pošle do Azure Portal, kde můžete [monitorovat](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) svoji aplikaci.
 
 > [!NOTE]
-> Modul aktuálně podporuje pouze nekódovatelné instrumentaci webových aplikací .NET, jejichž hostitelem je služba IIS. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET Core, Java a Node. js.
+> Modul aktuálně podporuje pouze nekódovatelné instrumentaci webových aplikací .NET, jejichž hostitelem je služba IIS. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET Core, Java a Node.js.
 
 ## <a name="powershell-gallery"></a>Galerie prostředí PowerShell
 
-Agent Application Insights se nachází zde: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Agent Application Insights se nachází zde: https://www.powershellgallery.com/packages/Az.ApplicationMonitor .
 
 ![Galerie prostředí PowerShell](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -46,7 +45,7 @@ Agent Application Insights se nachází zde: https://www.powershellgallery.com/p
 - [Spustit – ApplicationInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>Řešení potíží
-- [Odstraňování potíží](status-monitor-v2-troubleshoot.md)
+- [Řešení potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 
 

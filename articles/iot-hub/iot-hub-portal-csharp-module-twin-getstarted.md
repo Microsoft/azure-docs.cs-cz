@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759781"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
@@ -83,7 +82,7 @@ Chcete-li vytvořit aplikaci, která aktualizuje nedokončené hlášené vlastn
 
 Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k dispozici pouze v sadách IoT Hub předběžných vydání sady SDK pro zařízení. Pokud ho chcete nainstalovat, postupujte následovně:
 
-1. V > aplikaci Visual Studio otevřete **nástroje** > **Správce balíčků NuGet****Spravovat balíčky NuGet pro řešení**.
+1. V aplikaci Visual Studio otevřete **nástroje**  >  **Správce balíčků NuGet**  >  **Spravovat balíčky NuGet pro řešení**.
 
 1. Vyberte **Procházet**a pak vyberte **Zahrnout předprodejní verze**. Vyhledejte *Microsoft. Azure. Devices. Client*. Vyberte nejnovější verzi a nainstalujte.
 
@@ -95,7 +94,7 @@ Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k 
 
 Pro konzolovou aplikaci potřebujete připojovací řetězec modulu. Postupujte následovně:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Přejděte do svého centra IoT a vyberte **zařízení IoT**. Otevřete **myFirstDevice** a uvidíte, že **myFirstModule** se úspěšně vytvořil.
 

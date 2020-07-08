@@ -1,15 +1,14 @@
 ---
 title: Co je nového? Poznámky k verzi – služba Azure blockchain
 description: Zjistěte, co je nového ve službě Azure blockchain, jako je například nejnovější zpráva k vydání verze, verze, známé problémy a nadcházející změny.
-ms.date: 06/03/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c5316aa387de28fe1a78b336eb2e9e010c624b02
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921886"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Co je nového ve službě Azure blockchain?
 
@@ -23,6 +22,25 @@ Služba Azure blockchain se průběžně dostává na základě vylepšení. V t
 
 ---
 
+## <a name="june-2020"></a>Červen 2020
+
+### <a name="version-upgrades"></a>Upgrady verze
+
+- Upgrade verze kvora na 2.6.0. S verzí 2.6.0 můžete odesílat podepsané privátní transakce. Další informace o odesílání privátních transakcí najdete v [dokumentaci k rozhraní API kvora](https://docs.goquorum.com/en/latest/Getting%20Started/api/).
+- Upgrade verze Tessera na 0.10.5.
+
+### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>Velikost kontraktu a velikost transakce se zvýšily na 128 KB.
+
+Typ: Změna konfigurace
+
+Velikost kontraktu (MaxCodeSize) se zvýšila na 128 KB, abyste mohli nasazovat větší objemy inteligentních kontraktů. Také se zvýšila velikost transakce (txnSizeLimit) na 128 KB. Změny konfigurace se vztahují na nové konsorcia vytvořené ve službě Azure blockchain po června 19 2020.
+
+### <a name="trietimeout-value-reduced"></a>Snížená hodnota TrieTimeout
+
+Typ: Změna konfigurace
+
+Hodnota TrieTimeout se snížila, takže stav v paměti se zapisuje na disk častěji. Nižší hodnota zajišťuje rychlejší obnovení uzlu v nečastém případě havárie uzlu.
+
 ## <a name="may-2020"></a>Květen 2020
 
 ### <a name="version-upgrades"></a>Upgrady verze
@@ -33,17 +51,24 @@ Služba Azure blockchain se průběžně dostává na základě vylepšení. V t
 
 ### <a name="azure-blockchain-service-supports-sending-rawprivate-transactions"></a>Služba Azure blockchain podporuje odesílání transakcí rawPrivate.
 
-**Zadejte:** Zapnut
+Typ: funkce
 
 Zákazníci mohou podepisovat soukromé transakce mimo účet na uzlu.
 
 ### <a name="two-phase-member-provisioning"></a>Zřizování dvou fází členů
 
-**Zadejte:** Vylepšení
+Typ: vylepšení
 
 Dvě fáze vám pomůžou optimalizovat scénáře, kdy je člen vytvořen v dlouhodobém stávajícím konsorciu. Infrastruktura členů je zřízena v první fázi. Ve druhé fázi je člen synchronizován s blockchain. Dvoufázové zřizování pomáhá předcházet selhání vytvoření člena z důvodu vypršení časových limitů.
 
 ## <a name="known-issues"></a>Známé problémy
+
+### <a name="ethestimategas-function-throws-exception-in-quorum-v260"></a>funkce ETH. estimateGas vyvolá výjimku v kvoru v 2.6.0
+
+V kvoru v 2.6.0 volání funkce *ETH. estimateGas* bez zadání dalšího parametru *hodnoty* způsobí výjimku *selhání obslužné rutiny metody* . Tým kvora byl upozorněn a na konci července 2020 byla opravena. Dokud není k dispozici oprava, můžete použít následující alternativní řešení:
+
+- Vyhněte se použití *ETH. estimateGas* , protože může ovlivnit výkon. Další informace o potížích s výkonem ETH. estimateGas najdete v tématu [volání funkce ETH. estimateGas snižuje výkon](#calling-ethestimategas-function-reduces-performance). Zahrňte hodnotu plynu pro každou transakci. Většina knihoven bude volat ETH. estimateGas, pokud není poskytnuta hodnota plynů, což způsobí selhání kvora v 2.6.0.
+- Pokud potřebujete volat *ETH. estimateGas*, tým kvora navrhne, abyste jako alternativní řešení předávali další *hodnotu* parametru jako *0* .
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>Dolování se zastaví, pokud je méně než čtyři uzly validátoru.
 
@@ -89,11 +114,11 @@ Služba Azure blockchain se restartuje Tessera, když dojde k chybě. Restartov�
 
 Pokud posíláte velký objem privátních transakcí, použijte úroveň *Standard* . Využijte *základní* vrstvu pro vývoj, testování a kontrolu konceptů. Změna cenové úrovně mezi základními a standardními po vytvoření členů není podporována.
 
-### <a name="calling-ethestimate-gas-function-reduces-performance"></a>Volání funkce ETH. odhad plynu snižuje výkon.
+### <a name="calling-ethestimategas-function-reduces-performance"></a>Volání funkce ETH. estimateGas snižuje výkon.
 
-Volání funkce *ETH. odhad* několikrát zkracuje transakce za sekundu drasticky. Nepoužívejte funkci *ETH. odhad* plynu pro každé odeslání transakce. Funkce *ETH. odhad* je náročné na paměť.
+Vícenásobné volání funkce *ETH. estimateGas* snižuje počet transakcí za sekundu drasticky. Nepoužívejte funkci *ETH. estimateGas* pro každé odeslání transakce. Funkce *ETH. estimateGas* je náročné na paměť.
 
-Pokud je to možné, použijte hodnotu konzervativního plynu pro odeslání transakcí a minimalizujte použití *ETH. odhad*.
+Pokud je to možné, použijte hodnotu konzervativního plynu pro odeslání transakcí a minimalizujte použití *ETH. estimateGas*.
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Neohraničené smyčky v inteligentních kontraktech snižují výkon
 

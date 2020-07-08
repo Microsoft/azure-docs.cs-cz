@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f5ca4496b9de25d6e95f37076f679eacff28af81
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641643"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954961"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Wirecast k odeslání živého streamu s jednou přenosovou rychlostí 
 > [!div class="op_single_selector"]
@@ -92,7 +91,7 @@ V tomto kurzu se použijí následující nastavení výstupu. Zbývající čá
 2. Nakonfigurujte výstup tak, že přejdete na kartu **výstup** a vyberete **výstupní nastavení...**.
 
     Ujistěte se, že **cíl výstupu** je nastavený na **RTMP Server**.
-3. Klikněte na tlačítko **OK**.
+3. Klikněte na **OK**.
 4. Na stránce nastavení nastavte **cílové** pole na **Azure Media Services**.
 
     Profil kódování je předem vybraný do **Azure H. 264 720p 16:9 (1280 × 720)**. Chcete-li tato nastavení přizpůsobit, vyberte ikonu ozubeného kolečka napravo od rozevírací nabídky a pak zvolte možnost **Nová předvolba**.
@@ -102,7 +101,7 @@ V tomto kurzu se použijí následující nastavení výstupu. Zbývající čá
 
     Pojmenujte přednastavení a ověřte následující doporučené nastavení:
 
-    **Obrazový**
+    **Video**
 
    * Kodér: MainConcept H. 264
    * Počet snímků za sekundu: 30
@@ -147,7 +146,7 @@ V tomto kurzu se použijí následující nastavení výstupu. Zbývající čá
 
 Přejděte do nástroje AMSE a klikněte pravým tlačítkem myši na kanál, který chcete testovat. V nabídce najeďte myší **na přehrávání náhledu** a vyberte možnost **s Azure Media Player**.  
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 Pokud se datový proud objeví v přehrávači, kodér byl správně nakonfigurován pro připojení k AMS.
 

@@ -3,23 +3,22 @@ title: Připojení virtuálního systému souborů ve fondu
 description: Přečtěte si, jak připojit virtuální systém souborů ve fondu Batch.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816025"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954668"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
 
 Azure Batch teď podporuje připojení cloudového úložiště nebo externího systému souborů ve výpočetních uzlech se systémem Windows nebo Linux ve fondech služby Batch. Když je výpočetní uzel připojen k fondu, je virtuální systém souborů připojen a je v tomto uzlu považován za místní disk. Můžete připojit souborové systémy, jako jsou soubory Azure, Azure Blob Storage, systém souborů NFS (Network File System), včetně [mezipaměti avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)nebo protokolu CIFS (Common Internet File System).
 
-V tomto článku se dozvíte, jak připojit virtuální systém souborů ve fondu výpočetních uzlů pomocí [knihovny pro správu služby Batch pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet).
+V tomto článku se dozvíte, jak připojit virtuální systém souborů ve fondu výpočetních uzlů pomocí [knihovny pro správu služby Batch pro .NET](/dotnet/api/overview/azure/batch?view=azure-dotnet).
 
 > [!NOTE]
 > Připojení virtuálního systému souborů je podporováno v fondech Batch vytvořených v nebo po 2019-08-19. Fondy dávek vytvořené před 2019-08-19 tuto funkci nepodporují.
 > 
-> Rozhraní API pro připojování systémů souborů na výpočetním uzlu jsou součástí knihovny [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) .
+> Rozhraní API pro připojování systémů souborů na výpočetním uzlu jsou součástí knihovny [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) .
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Výhody připojení ve fondu
 
@@ -128,7 +127,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-Společné soubory protokolu CIFS (Common Internet File System) je možné připojit také k uzlům fondu, aby bylo možné k tradičním systémům souborů snadno přicházet pomocí Azure Batchch uzlů. CIFS je protokol pro sdílení souborů, který poskytuje mechanismus pro otevření a více platforem pro vyžádání souborů a služeb síťového serveru. Protokol CIFS je založený na rozšířené verzi protokolu SMB (Server Message Block) společnosti Microsoft pro sdílení souborů v Internetu a intranetu a používá se k připojení externích systémů souborů v uzlech systému Windows. Další informace o protokolu SMB najdete v tématu [souborový server a SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+Společné soubory protokolu CIFS (Common Internet File System) je možné připojit také k uzlům fondu, aby bylo možné k tradičním systémům souborů snadno přicházet pomocí Azure Batchch uzlů. CIFS je protokol pro sdílení souborů, který poskytuje mechanismus pro otevření a více platforem pro vyžádání souborů a služeb síťového serveru. Protokol CIFS je založený na rozšířené verzi protokolu SMB (Server Message Block) společnosti Microsoft pro sdílení souborů v Internetu a intranetu a používá se k připojení externích systémů souborů v uzlech systému Windows. Další informace o protokolu SMB najdete v tématu [souborový server a SMB](/windows-server/storage/file-server/file-server-smb-overview).
 
 ```csharp
 new PoolAddParameter
@@ -153,13 +152,13 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Diagnostika chyb připojení
 
-Pokud konfigurace připojení selže, výpočetní uzel ve fondu selže a stav uzlu bude nepoužitelný. Chcete-li diagnostikovat selhání konfigurace připojení, prozkoumejte [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) vlastnost, kde najdete podrobnosti o chybě.
+Pokud konfigurace připojení selže, výpočetní uzel ve fondu selže a stav uzlu bude nepoužitelný. Chcete-li diagnostikovat selhání konfigurace připojení, prozkoumejte [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) vlastnost, kde najdete podrobnosti o chybě.
 
 Chcete-li získat soubory protokolu pro ladění, použijte [OutputFiles](batch-task-output-files.md) k nahrání `*.log` souborů. `*.log`Soubory obsahují informace o připojení systému souborů v `AZ_BATCH_NODE_MOUNTS_DIR` umístění. Soubory protokolu připojení mají formát: `<type>-<mountDirOrDrive>.log` pro každé připojení. Například `cifs` připojení v adresáři pro připojení s názvem `test` bude mít soubor protokolu připojení s názvem: `cifs-test.log` .
 
 ## <a name="supported-skus"></a>Podporované SKU
 
-| Publisher | Nabídka | Skladová jednotka (SKU) | Sdílená složka Azure Files | Blobfuse | Připojení systému souborů NFS | Připojení CIFS |
+| Publisher | Nabídka | SKU | Sdílená složka Azure Files | Blobfuse | Připojení systému souborů NFS | Připojení CIFS |
 |---|---|---|---|---|---|---|
 | dávka | vykreslování – centos73 | vykreslování | :heavy_check_mark: <br>Poznámka: kompatibilní s CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04 – LTS, 18,04 – LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -179,5 +178,5 @@ Chcete-li získat soubory protokolu pro ladění, použijte [OutputFiles](batch-
 
 - Přečtěte si další podrobnosti o připojení sdílené složky služby soubory Azure se [systémem Windows](../storage/files/storage-how-to-use-files-windows.md) nebo [Linux](../storage/files/storage-how-to-use-files-linux.md).
 - Seznamte se s používáním a připojením virtuálních systémů souborů [blobfuse](https://github.com/Azure/azure-storage-fuse) .
-- Informace o systému souborů NFS a jeho aplikacích najdete v tématu [Přehled systému souborů](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) NFS.
-- Další informace o CIFS najdete v tématu [Přehled protokolu SMB a protokolu CIFS](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) .
+- Informace o systému souborů NFS a jeho aplikacích najdete v tématu [Přehled systému souborů](/windows-server/storage/nfs/nfs-overview) NFS.
+- Další informace o CIFS najdete v tématu [Přehled protokolu SMB a protokolu CIFS](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) .

@@ -7,12 +7,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: 1bea8adbdb39d2ce83cfe7821ef052fdc1f1d512
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921337"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Použití zprostředkovatele ID (Preview) pro správu přihlašovacích údajů
 
@@ -38,7 +37,7 @@ Zprostředkovatel ID umožňuje přihlásit se k clusterům ESP pomocí Multi-Fa
 
 Pokud chcete vytvořit cluster ESP s povoleným zprostředkovatelem ID, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků vytváření pro cluster ESP. Další informace najdete v tématu [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)protokolem ESP.
 1. Vyberte **Povolit zprostředkovatele ID HDInsight**.
 
@@ -89,6 +88,8 @@ Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy 
 ## <a name="tool-integration"></a>Integrace nástrojů
 
 [Modul plug-in HDInsight IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) se aktualizuje tak, aby podporoval OAuth. Tento modul plug-in můžete použít pro připojení ke clusteru a odeslání úloh.
+
+Pomocí [nástrojů pro podregistr Spark &](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) lze také využít vs Code k využití poznámkových bloků a odesílání úloh.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Přístup SSH bez hodnoty hash hesla v Azure služba AD DS
 

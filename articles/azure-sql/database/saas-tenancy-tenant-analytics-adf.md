@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84048802"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Prozkoumejte SaaS Analytics pomocí Azure SQL Database, Azure synapse Analytics, Data Factory a Power BI
@@ -79,7 +78,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 V tomto kurzu se seznámíte s analýzou údajů o prodeji lístků. V tomto kroku vygenerujete data lístku pro všechny klienty. V pozdějším kroku jsou tato data extrahována k analýze. Ujistěte se, že _jste zřídili dávku tenantů_ (jak je popsáno výše), abyste měli dostatek dat k vystavení rozsahu různých způsobů nákupu lístků.
 
-1. V PowerShellu ISE otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*a nastavte následující hodnotu:
+1. V prostředí PowerShell ISE otevřete soubor *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*a nastavte následující hodnotu:
     - **$DemoScenario**  =  **1** lístky nákupu pro události se všemi místy
 2. Stisknutím klávesy **F5** spusťte skript a vytvořte historii nákupů lístků pro všechny místo. Pomocí 20 tenantů vygeneruje skript desítky tisíc lístků a může trvat 10 minut nebo i déle.
 
@@ -122,7 +121,7 @@ V Průzkumník objektů:
 1. Klikněte **na \<user\> wingtipstaging** účet úložiště a prozkoumejte objekty, které jsou k dispozici.
 1. Kliknout na dlaždici **objekty blob**
 1. Klikněte na kontejner **ConfigFile**
-1. Ověřte, že **ConfigFile** obsahuje soubor JSON s názvem **TableConfig. JSON**. Tento soubor obsahuje názvy zdrojových a cílových tabulek, názvy sloupců a název sloupce sledování.
+1. Ověřte, že **ConfigFile** obsahuje soubor JSON s názvem **TableConfig.jsv**. Tento soubor obsahuje názvy zdrojových a cílových tabulek, názvy sloupců a název sloupce sledování.
 
 #### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
 

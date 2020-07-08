@@ -4,10 +4,9 @@ description: Naučte se, jak nastavit protokoly aktivit a diagnostické protokol
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322451"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
@@ -42,7 +41,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. K povolení di
 
 Event Hubs zachycuje diagnostické protokoly pro následující kategorie:
 
-| Kategorie | Popis | 
+| Kategorie | Description | 
 | -------- | ----------- | 
 | Protokoly archivu | Zachycuje informace o [Event Hubs operací zachycení](event-hubs-capture-overview.md) , konkrétně o protokolech souvisejících s chybami zachycení. |
 | Provozní protokoly | Zachyťte všechny operace správy, které se provádějí v oboru názvů Azure Event Hubs. Datové operace nejsou zachyceny kvůli velkému objemu operací s daty, které jsou prováděny na Azure Event Hubs. |
@@ -59,7 +58,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 Řetězce JSON protokolu archivu obsahují prvky uvedené v následující tabulce:
 
-Název | Popis
+Name | Description
 ------- | -------
 /TN | Popis úlohy, která se nezdařila
 ActivityId | Interní ID, které se používá ke sledování
@@ -97,7 +96,7 @@ Následující kód je příkladem řetězce JSON protokolu archivu:
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
-Název | Popis
+Name | Description
 ------- | -------
 ActivityId | Interní ID, které se používá pro účely sledování |
 EventName | Název operace |
@@ -129,7 +128,7 @@ Example:
 ## <a name="autoscale-logs-schema"></a>Schéma protokolů automatického škálování
 JSON protokolu automatického škálování obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Name | Description |
 | ---- | ----------- | 
 | TrackingId | Interní ID, které se používá pro účely trasování |
 | ResourceId | ID prostředku Azure Resource Manager. |
@@ -148,7 +147,7 @@ Tady je příklad události automatického škálování:
 ## <a name="kafka-coordinator-logs-schema"></a>Schéma protokolů koordinátora Kafka
 JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Name | Description |
 | ---- | ----------- | 
 | Identifikátor | ID žádosti, která se používá pro účely trasování |
 | ResourceId | ID prostředku Azure Resource Manager |
@@ -176,7 +175,7 @@ JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulc
 ## <a name="kafka-user-error-logs-schema"></a>Schéma protokolů chyb uživatele Kafka
 JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Name | Description |
 | ---- | ----------- |
 | TrackingId | ID sledování, které se používá pro účely trasování. |
 | NamespaceName | Název oboru názvů |
@@ -191,7 +190,7 @@ JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující ta
 
 Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Name | Description |
 | ---  | ----------- | 
 | SubscriptionId | ID předplatného Azure |
 | NamespaceName | Název oboru názvů |
@@ -219,7 +218,7 @@ Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky u
 ## <a name="customer-managed-key-user-logs"></a>Klíčové uživatelské protokoly spravované uživatelem
 Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Name | Description |
 | ---- | ----------- | 
 | Kategorie | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
 | ResourceId | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |

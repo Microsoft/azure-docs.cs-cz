@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79535778"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037507"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Vzory řešení služby Azure Stream Analytics
 
@@ -30,13 +29,13 @@ Tento vzor řešení nabízí nejnižší latenci ze zdroje událostí na řídi
 
 ## <a name="use-sql-for-dashboard"></a>Použít SQL pro řídicí panel
 
-Řídicí panel Power BI nabízí nízkou latenci, ale nedá se použít k tvorbě úplných sestav Power BI podrobnějším. Běžným vzorem vytváření sestav je nejprve výstup dat do databáze SQL. Pak použijte konektor SQL Power BI k dotazování SQL na nejnovější data.
+Řídicí panel Power BI nabízí nízkou latenci, ale nedá se použít k tvorbě úplných sestav Power BI podrobnějším. Běžným vzorem vytváření sestav je výstup dat, který se SQL Database jako první. Pak použijte konektor SQL Power BI k dotazování SQL na nejnovější data.
 
 ![Řídicí panel SQL ASA](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Používání SQL Database přináší větší flexibilitu, ale za cenu mírně vyšší latence. Toto řešení je optimální pro úlohy s požadavky na latenci větší než jedna sekunda. Pomocí této metody můžete maximalizovat možnosti Power BI pro další řezy a indexy dat pro sestavy a spoustu dalších možností vizualizace. Získáte také flexibilitu při používání jiných řešení řídicích panelů, jako je například Tableau.
+Použití SQL Database přináší větší flexibilitu, ale za cenu mírně vyšší latence. Toto řešení je optimální pro úlohy s požadavky na latenci větší než jedna sekunda. Pomocí této metody můžete maximalizovat možnosti Power BI pro další řezy a indexy dat pro sestavy a spoustu dalších možností vizualizace. Získáte také flexibilitu při používání jiných řešení řídicích panelů, jako je například Tableau.
 
-SQL není úložiště dat s vysokou propustností. Maximální propustnost databáze SQL z Azure Stream Analytics je aktuálně okolo 24 MB/s. Pokud zdroje událostí ve vašem řešení vytváří data s vyšší rychlostí, je nutné použít logiku zpracování v Stream Analytics k omezení výstupní rychlosti na SQL. Lze použít techniky, jako je filtrování, agregace oken, porovnávání vzorů s doplňováním a doplňování a analytické funkce. Výstupní rychlost do SQL je možné dále optimalizovat pomocí technik popsaných v [Azure Stream Analyticsovém výstupu do Azure SQL Database](stream-analytics-sql-output-perf.md).
+SQL není úložiště dat s vysokou propustností. Maximální propustnost SQL Database z Azure Stream Analytics je aktuálně okolo 24 MB/s. Pokud zdroje událostí ve vašem řešení vytváří data s vyšší rychlostí, je nutné použít logiku zpracování v Stream Analytics k omezení výstupní rychlosti na SQL. Lze použít techniky, jako je filtrování, agregace oken, porovnávání vzorů s doplňováním a doplňování a analytické funkce. Výstupní rychlost do SQL je možné dále optimalizovat pomocí technik popsaných v [Azure Stream Analyticsovém výstupu do Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Zahrnutí informací v reálném čase do vaší aplikace pomocí zasílání zpráv o událostech
 
@@ -72,7 +71,7 @@ Tento model zlepšuje odolnost a možnosti spravovatelnosti systému. Nicméně 
 
 ## <a name="use-reference-data-for-application-customization"></a>Použití referenčních dat pro přizpůsobení aplikace
 
-Funkce referenčních dat Azure Stream Analytics je navržena speciálně pro přizpůsobení koncových uživatelů, jako je prahová hodnota pro výstrahy, pravidla zpracování a [geografické](geospatial-scenarios.md)oblasti. Vrstva aplikace může přijmout změny parametrů a uložit je do databáze SQL. Úloha Stream Analytics pravidelně odesílá dotazy na změny z databáze a zpřístupňuje parametry přizpůsobení prostřednictvím připojení referenčních dat. Další informace o tom, jak používat referenční data pro přizpůsobení aplikace, najdete v tématu [referenční data SQL](sql-reference-data.md) a [připojení referenčních dat](/stream-analytics-query/reference-data-join-azure-stream-analytics).
+Funkce referenčních dat Azure Stream Analytics je navržena speciálně pro přizpůsobení koncových uživatelů, jako je prahová hodnota pro výstrahy, pravidla zpracování a [geografické](geospatial-scenarios.md)oblasti. Vrstva aplikace může přijmout změny parametrů a uložit je do SQL Database. Úloha Stream Analytics pravidelně odesílá dotazy na změny z databáze a zpřístupňuje parametry přizpůsobení prostřednictvím připojení referenčních dat. Další informace o tom, jak používat referenční data pro přizpůsobení aplikace, najdete v tématu [referenční data SQL](sql-reference-data.md) a [připojení referenčních dat](/stream-analytics-query/reference-data-join-azure-stream-analytics).
 
 Tento model lze také použít k implementaci modulu pravidel, kde jsou prahové hodnoty pravidel definovány z referenčních dat. Další informace o pravidlech najdete v tématu [proces konfigurovatelného pravidla na základě prahových hodnot v Azure Stream Analytics](stream-analytics-threshold-based-rules.md).
 
@@ -106,7 +105,7 @@ Většina aktivit pro datové vědy a analýzy stále probíhá offline. Data je
 
 ## <a name="use-reference-data-for-enrichment"></a>Použít referenční data pro obohacení
 
-Rozšíření dat je často požadavkem pro moduly ETL. Azure Stream Analytics podporuje rozšíření dat pomocí [referenčních dat](stream-analytics-use-reference-data.md) z databáze SQL i úložiště objektů BLOB v Azure. Rozšíření dat je možné provést pro data odpočívadla v Azure Data Lake i SQL Data Warehouse.
+Rozšíření dat je často požadavkem pro moduly ETL. Azure Stream Analytics podporuje rozšíření dat pomocí [referenčních dat](stream-analytics-use-reference-data.md) z SQL Database a úložiště objektů BLOB v Azure. Rozšíření dat je možné provést pro data odpočívadla v Azure Data Lake i SQL Data Warehouse.
 
 ![Offline Analýza ASA s obohacením dat](media/stream-analytics-solution-patterns/offlineanalytics.png)
 

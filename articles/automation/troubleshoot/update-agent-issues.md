@@ -10,13 +10,12 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680828"
 ---
-# <a name="troubleshoot-windows-update-agent-issues"></a>Řešení potíží s agentem Windows Update
+# <a name="troubleshoot-windows-update-agent-issues"></a>Řešení problémů s agentem Windows Update
 
 Může to mít spoustu důvodů, proč se Váš počítač během nasazování Update Management nezobrazuje jako připravený (v pořádku). Chcete-li zjistit základní problém, můžete ověřit stav agenta Windows Hybrid Runbook Worker. Níže jsou uvedené tři stavy připravenosti pro počítač:
 

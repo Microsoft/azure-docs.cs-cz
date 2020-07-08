@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987298"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
@@ -295,7 +294,7 @@ ExpressRoute Premium je kolekce následujících funkcí:
 * Vyšší počet virtuální sítě a Global Reach ExpressRoute připojení, která je možné povolit u okruhu ExpressRoute (výchozí hodnota je 10). Další informace najdete v tabulce [omezení ExpressRoute](#limits) .
 * Připojení k Office 365
 * Globální konektivita přes Microsoft Core Network. Nyní můžete propojit virtuální síť v jedné geopolitické oblasti s okruhem ExpressRoute v jiné oblasti.<br>
-    **4.6**
+    **Příklady:**
 
     *  Virtuální síť vytvořená v Evropě se dá propojit s okruhem ExpressRoute vytvořeným v silikonovém sedlu. 
     *  V partnerském vztahu Microsoftu se dá inzerovat předpony z dalších geopolitických oblastí, například SQL Azure v oblasti Evropa – západ od okruhu v Silicon sedlu.

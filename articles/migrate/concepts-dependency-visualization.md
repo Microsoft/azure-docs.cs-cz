@@ -4,10 +4,9 @@ description: Popisuje, jak používat analýzu závislostí pro posouzení pomoc
 ms.topic: conceptual
 ms.date: 06/14/2020
 ms.openlocfilehash: ff563668666207f35fa2ea796d6c909a59df245f
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84771338"
 ---
 # <a name="dependency-analysis"></a>Analýza závislostí
@@ -78,7 +77,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 **Log Analytics** | Nepožadováno. | Azure Migrate používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) k analýze závislostí. 
 **Proces** | Zachycuje data připojení TCP. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 **Data** | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
-**Vizualizace** | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/>  Mapu lze zobrazit pouze za hodinu.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.
+**Vizualizac** | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/>  Mapu lze zobrazit pouze za hodinu.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.
 Export dat | Posledních 30 dní data je možné stáhnout ve formátu CSV. | Data se dají dotazovat pomocí Log Analytics.
 
 

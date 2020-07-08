@@ -7,16 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8a020dc4a7e9d4e7de0671b566755e413caeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921842"
 ---
 # <a name="choose-the-right-consistency-level"></a>Volba vhodné úrovně konzistence 
 
-Distribuované databáze spoléhají na replikaci kvůli vysoké dostupnosti, nízké latenci nebo obojímu, se základními kompromisy mezi tím, co je konzistence čtení a dostupností, latencí a propustností. Většina komerčně dostupných distribuovaných databází požádá vývojáře o výběr mezi dvěma extrémními modely konzistence: silná *konzistence a* konečná konzistence. *strong* Azure Cosmos DB umožňuje vývojářům vybírat z pěti dobře definovaných modelů konzistence: *silná*, *ohraničená neaktuálnost*, *relace*, *konzistentní předpona* a *konečné*. Každý z těchto modelů konzistence je dobře definovaný, intuitivní a dá se použít pro konkrétní scénáře reálného světa. Každý z pěti modelů konzistence poskytuje přesné [dostupnosti a kompromisy na výkon](consistency-levels-tradeoffs.md) a jsou zajištěny prostřednictvím komplexního SLA. Následující jednoduché pokyny vám pomůžou při rozhodování v mnoha běžných scénářích.
+Distribuované databáze spoléhají na replikaci kvůli vysoké dostupnosti, nízké latenci nebo obojímu, se základními kompromisy mezi tím, co je konzistence čtení a dostupností, latencí a propustností. Většina komerčně dostupných distribuovaných databází požádá vývojáře o výběr mezi dvěma extrémními modely konzistence: silná *konzistence a* konečná konzistence. *strong* Azure Cosmos DB umožňuje vývojářům vybírat z pěti dobře definovaných modelů konzistence: *silná*, *ohraničená neaktuálnost*, *relace*, *konzistentní předpona* a *konečné*. Každý z těchto modelů konzistence je dobře definovaný, intuitivní a dá se použít pro konkrétní scénáře reálného světa. Každý z pěti modelů konzistence poskytuje přesné [dostupnosti a kompromisy na výkon](consistency-levels-tradeoffs.md) a jsou zajištěny prostřednictvím komplexního SLA. Výchozí konzistenci můžete nakonfigurovat na úrovni účtu a [přepsat ji na úrovni žádosti](how-to-manage-consistency.md#override-the-default-consistency-level). Následující jednoduché pokyny vám pomůžou při rozhodování v mnoha běžných scénářích.
 
 ## <a name="sql-api-and-table-api"></a>Rozhraní SQL API a rozhraní API pro tabulky
 

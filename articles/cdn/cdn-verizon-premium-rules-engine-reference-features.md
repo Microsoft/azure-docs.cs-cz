@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343196"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN z funkcí modulu pravidel Premium Verizon
@@ -33,7 +32,7 @@ Dostupné typy funkcí jsou:
 * [Zdroj](#origin)
 * [Specializace](#specialty)
 * [URL](#url)
-* [Web Application Firewall (Brána firewall webových aplikací)](#waf)
+* [Firewall webových aplikací](#waf)
 
 ### <a name="access"></a><a name="access"></a>Access
 
@@ -161,7 +160,7 @@ Tyto funkce umožňují přesměrování nebo přepsání požadavku na jinou ad
 
 **[Zpět na začátek](#top)**
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Brána firewall webových aplikací)
+### <a name="web-application-firewall"></a><a name="waf"></a>Firewall webových aplikací
 
 Funkce [Firewall webových aplikací](https://docs.vdms.com/cdn/Content/HRE/F/Web_Application_Firewall.htm) určuje, jestli se požadavek bude monitorovat přes firewall webových aplikací.
 

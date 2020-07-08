@@ -14,10 +14,9 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667414"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojení k virtuálnímu počítači s SQL Server v Azure
@@ -39,7 +38,7 @@ Pokud zřídíte SQL Server virtuální počítač v Azure Portal, máte možnos
 
 Mezi možnosti připojení patří:
 
-| Možnost | Popis |
+| Možnost | Description |
 |---|---|
 | **Republik** | Připojte se k SQL Server přes Internet. |
 | **Hlášen** | Připojte se k SQL Server ve stejné virtuální síti. |
@@ -135,7 +134,7 @@ I když portál poskytuje možnosti pro automatické nakonfigurování připojen
 
 V následující tabulce jsou uvedeny požadavky pro připojení k SQL Server na virtuálním počítači Azure.
 
-| Požadavek | Popis |
+| Požadavek | Description |
 |---|---|
 | [Povolit režim ověřování SQL Server](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Pro vzdálené připojení k virtuálnímu počítači, pokud jste službu Active Directory ve virtuální síti nenakonfigurovali, je potřeba SQL Server ověřování. |
 | [Vytvoření přihlášení SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Pokud používáte ověřování SQL, budete potřebovat přihlašovací jméno SQL s uživatelským jménem a heslem, které má také oprávnění k cílové databázi. |

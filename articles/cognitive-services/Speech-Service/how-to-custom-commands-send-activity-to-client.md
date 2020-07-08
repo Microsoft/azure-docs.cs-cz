@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0a3e3455615006c0e93cf32eebcdaedac9960a79
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307552"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027609"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Odeslat aktivitu vlastních příkazů klientské aplikaci
 
@@ -28,7 +27,7 @@ Dokončili jste následující úkoly:
 
 ## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) nebo vyšší. Tato příručka používá Visual Studio 2019
 > * Klíč předplatného Azure pro službu Speech Service: [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
 > * Dříve [vytvořená aplikace vlastních příkazů](quickstart-custom-commands-application.md)
 > * Klientská aplikace podporující sadu Speech SDK: [Postupy: integrace s klientskou aplikací pomocí sady Speech SDK](./how-to-custom-commands-setup-speech-sdk.md)
@@ -46,7 +45,7 @@ Dokončili jste následující úkoly:
      "device": "{SubjectDevice}"
    }
    ```
-1. Kliknutím na **Uložit** vytvořte nové pravidlo s akcí odeslat aktivitu.
+1. Klikněte na **Uložit** a vytvořte nové pravidlo s akcí odeslat aktivitu, **výukou** a **publikováním** změny.
 
    > [!div class="mx-imgBorder"]
    > ![Odeslat pravidlo dokončení aktivity](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,9 +54,12 @@ Dokončili jste následující úkoly:
 
 V tématu [Postupy: nastavení klientské aplikace pomocí sady Speech SDK (Preview)](./how-to-custom-commands-setup-speech-sdk.md)jste vytvořili klientskou aplikaci UWP se sadou Speech SDK, která zpracovává příkazy `turn on the tv` , jako je například `turn off the fan` . V případě přidaných vizuálů vidíte výsledek těchto příkazů.
 
-Přidat pole s popiskem s textem **, který označuje nebo** **vypíná** pomocí následujícího kódu XML přidaných do`MainPage.xaml`
+Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná**, přidejte následující blok XML StackPanel do `MainPage.xaml` .
 
 ```xml
+<StackPanel Orientation="Vertical" H......>
+......
+</StackPanel>
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
     <Grid x:Name="Grid_TV" Margin="50, 0" Width="100" Height="100" Background="LightBlue">
         <StackPanel>
@@ -72,6 +74,7 @@ Přidat pole s popiskem s textem **, který označuje nebo** **vypíná** pomoc�
         </StackPanel>
     </Grid>
 </StackPanel>
+<MediaElement ....../>
 ```
 
 ### <a name="add-reference-libraries"></a>Přidat knihovny odkazů
@@ -79,15 +82,21 @@ Přidat pole s popiskem s textem **, který označuje nebo** **vypíná** pomoc�
 Vzhledem k tomu, že jste vytvořili datovou část JSON, je nutné přidat odkaz na knihovnu [JSON.NET](https://www.newtonsoft.com/json) pro zpracování deserializace.
 
 1. Napravo od klienta vaše řešení.
-1. Zvolte možnost **Spravovat balíčky NuGet pro řešení**, vyberte **instalovat** . 
-1. Vyhledejte **Newtonsoft.js** v seznamu aktualizace aktualizujte **Microsoft. NETCore. UniversalWindowsPlatform** na nejnovější verzi.
+1. Zvolte možnost **Spravovat balíčky NuGet pro řešení**, vyberte **Procházet** . 
+1. Pokud jste již nainstalovali **Newtonsoft.jsna**, ujistěte se, že je její verze alespoň 12.0.3. Pokud ne, klikněte na **Spravovat balíčky NuGet pro řešení – aktualizace**a vyhledejte **Newtonsoft.jsna** webu. Tato příručka používá verzi 12.0.3.
 
-> [!div class="mx-imgBorder"]
-> ![Datová část aktivity odeslání](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > [!div class="mx-imgBorder"]
+    > ![Datová část aktivity odeslání](media/custom-commands/send-activity-to-client-json-nuget.png)
+
+1. Také se ujistěte, že balíček NuGet **Microsoft. NETCore. UniversalWindowsPlatform** je alespoň 6.2.10. Tato příručka používá verzi 6.2.10.
 
 V souboru MainPage. XAML. cs přidejte
-- `using Newtonsoft.Json;` 
-- `using Windows.ApplicationModel.Core;`
+
+```C#
+using Newtonsoft.Json; 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+```
 
 ### <a name="handle-the-received-payload"></a>Zpracovat přijatou datovou část
 

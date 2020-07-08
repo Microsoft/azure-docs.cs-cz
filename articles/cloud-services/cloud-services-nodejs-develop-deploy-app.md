@@ -9,12 +9,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919992"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
 
@@ -47,19 +46,24 @@ Proveďte následující kroky, a vytvořte tak nový projekt Azure Cloud Servic
 2. Proveďte [připojení PowerShellu] ke svému předplatnému.
 3. Zadejte následující rutiny PowerShellu, a vytvořte tak projekt.
 
-        New-AzureServiceProject helloworld
+   ```powershell
+   New-AzureServiceProject helloworld
+   ```
 
-    ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
+   ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
 
-    Rutina **New-AzureServiceProject** generuje základní strukturu pro publikování aplikace Node.js na službě Cloud Service. Obsahuje konfigurační soubory, které jsou nezbytné pro publikování v systému Azure. Rutina také změní pracovní adresář na adresář pro službu.
+   Rutina **New-AzureServiceProject** generuje základní strukturu pro publikování aplikace Node.js na službě Cloud Service. Obsahuje konfigurační soubory, které jsou nezbytné pro publikování v systému Azure. Rutina také změní pracovní adresář na adresář pro službu.
 
-    Rutina vytvoří následující soubory:
+   Rutina vytvoří následující soubory:
 
    * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** a **ServiceDefinition.csdef**: soubory specifické pro Azure, které jsou zapotřebí pro publikování aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
    * **deploymentSettings.json**: uloží místní nastavení, které používají rutiny Azure PowerShellu sloužící k nasazení.
+
 4. Zadejte následující příkaz pro přidání nové webové role:
 
-       Add-AzureNodeWebRole
+   ```powershell
+   Add-AzureNodeWebRole
+   ```
 
    ![The output of the Add-AzureNodeWebRole command][The output of the Add-AzureNodeWebRole command]
 
@@ -70,12 +74,14 @@ Proveďte následující kroky, a vytvořte tak nový projekt Azure Cloud Servic
 
 Aplikace Node.js je definována v souboru **server.js**, který je umístěn v adresáři pro webovou roli (ve výchozím nastavení **WebRole1**). Zde je kód:
 
-    var http = require('http');
-    var port = process.env.port || 1337;
-    http.createServer(function (req, res) {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Hello World\n');
-    }).listen(port);
+```js
+var http = require('http');
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World\n');
+}).listen(port);
+```
 
 Tento kód je v podstatě stejný jako u příkladu "Hello World" na webu [nodejs.org] až na to, že používá číslo portu přiřazené cloudovému prostředí.
 
@@ -89,14 +95,18 @@ Než aplikaci nasadíte v systému Azure, musíte si nejdřív stáhnout nastave
 
 1. Spusťte následující rutiny Azure PowerShellu:
 
-       Get-AzurePublishSettingsFile
+    ```powershell
+    Get-AzurePublishSettingsFile
+    ```
 
    Tím ve svém prohlížeči přejdete na stránku, odkud můžete stáhnout nastavení publikování. Můžete být vyzváni k přihlášení pomocí účtu Microsoft Account. Pokud k tomu dojde, použijte účet spojený s předplatným Azure.
 
    Soubor se staženým profilem uložte do umístění, kam se snadno dostanete.
 2. Spusťte následující rutinu, která importuje stažený profil publikování.
 
-       Import-AzurePublishSettingsFile [path to file]
+    ```powershell
+    Import-AzurePublishSettingsFile [path to file]
+    ```
 
     > [!NOTE]
     > Po importu nastavení publikování zvažte, zda byste neměli smazat soubor .publishSettings. Obsahuje totiž informace, které by někomu mohly umožnit přístup na váš účet.
@@ -104,8 +114,10 @@ Než aplikaci nasadíte v systému Azure, musíte si nejdřív stáhnout nastave
 ### <a name="publish-the-application"></a>Publikování aplikace
 Pokud chcete aplikaci publikovat, spusťte následující příkazy:
 
-      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
-    Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```powershell
+$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
+Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```
 
 * **-ServiceName** určuje název pro nasazení. Název musí být jedinečný, jinak se proces publikování nezdaří. Příkaz **Get-Date** přiřadí k řetězci datum/čas, aby byl název jedinečný.
 * **-Location** určuje datové centrum, kde bude aplikace hostována. Pokud chcete zobrazit seznam dostupných datových center, použijte rutinu **Get-AzureLocation**.
@@ -136,14 +148,18 @@ Může se stát, že po nasazení budete chtít aplikaci zastavit a vyhnout se t
 
 1. V okně prostředí Windows PowerShell pomocí následující rutiny ukončete nasazení služby vytvořené v předchozí části:
 
-       Stop-AzureService
+    ```powershell
+    Stop-AzureService
+    ```
 
    Zastavování služby může trvat několik minut. Až bude služba zastavená, obdržíte zprávu s oznámením, že se tak stalo.
 
    ![The status of the Stop-AzureService command][The status of the Stop-AzureService command]
 2. Pokud chcete službu odstranit, zavolejte následující rutinu:
 
-       Remove-AzureService
+    ```powershell
+    Remove-AzureService
+    ```
 
    Po zobrazení výzvy zadejte **Y**, a službu tak odstraňte.
 
@@ -161,7 +177,7 @@ Další informace najdete ve [Středisku pro vývojáře Node.js].
 
 [Porovnání webů Azure, služby Cloud Services a služby Virtual Machines]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [Použití jednoduché webové aplikace]: ../app-service/app-service-web-get-started-nodejs.md
-[Prostředí Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK pro .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [připojení PowerShellu]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

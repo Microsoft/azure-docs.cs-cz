@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5cc8bae0f0245f5c4b45ca0cd446582b04788c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758766"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
@@ -30,7 +29,7 @@ Když se pokusíte odeslat zprávu typu cloud-zařízení, požadavek se nezdař
 
 Základní příčinou je, že počet zpráv zařazených do fronty pro zařízení překračuje [limit fronty (50)](./iot-hub-devguide-quotas-throttling.md#other-limits).
 
-Nejpravděpodobnějším důvodem, že toto omezení spouštíte, je to, že k přijetí zprávy používáte protokol HTTPS, který vede k průběžnému cyklickému `ReceiveAsync`dotazování s využitím. výsledkem je IoT Hub omezení žádosti.
+Nejpravděpodobnějším důvodem, že toto omezení spouštíte, je to, že k přijetí zprávy používáte protokol HTTPS, který vede k průběžnému cyklickému dotazování s využitím `ReceiveAsync` . Výsledkem je IoT Hub omezení žádosti.
 
 ## <a name="solution"></a>Řešení
 

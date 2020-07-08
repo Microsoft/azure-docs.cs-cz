@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667875"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Konfigurace replikace na Edge Azure SQL (Preview) 
@@ -80,7 +79,7 @@ Pro odběry Azure SQL Edge nejsou podporované následující možnosti:
 
 ## <a name="examples"></a>Příklady
 
-Vytvořte publikaci a nabízený odběr. Další informace:
+Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématech:
   
 - [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Edge a IP adresy jako předplatitele (například **myEdgeinstance, 1433**) a názvu databáze v instanci Azure SQL Edge jako cílovou databázi (například **AdventureWorks**).  

@@ -8,10 +8,9 @@ ms.devlang: azurepowershell
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: c16c18a7056b2d23b64caeca4a88905b3dd2557c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041942"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MariaDB pomocí prostředí PowerShell
@@ -74,7 +73,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Sada parametrů **PointInTimeRestore** `Restore-AzMariaDbServer` rutiny vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Description  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
 | Name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
@@ -116,7 +115,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzMariaDbServer` rutiny vyžaduje následující parametry:
 
-| Nastavení | Navrhovaná hodnota | Description  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
 |Name | mydemoserver – geograficky obnovené | Název nového serveru. |

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759283"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Předplacení softwarových plánů Azure
@@ -70,7 +69,7 @@ Informace o tom, jak spravovat rezervaci, najdete v tématu [Správa rezervací 
 
 Další informace najdete v následujících článcích:
 
-- [Co jsou Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Co jsou rezervace Azure?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Správa rezervací v Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [Vysvětlení způsobu použití slevy za rezervaci SUSE](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)

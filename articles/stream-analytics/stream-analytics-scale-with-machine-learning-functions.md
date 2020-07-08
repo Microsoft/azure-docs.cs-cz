@@ -5,14 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835576"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037405"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Škálování Stream Analytics úlohy pomocí funkcí Azure Machine Learning Studio (Classic)
 
@@ -106,14 +105,14 @@ Níže je tabulka propustnosti Stream Analytics úlohy pro různé velikosti slu
 
 | velikost dávky (latence ML) | 500 (200 ms) | 1 000 (200 ms) | 5 000 (250 ms) | 10 000 (300 MS) | 25 000 (500 ms) |
 | --- | --- | --- | --- | --- | --- |
-| **1. SU** |2,500 |5 000 |20 000 |30 000 |50 000 |
-| **3 služba SUs** |2,500 |5 000 |20 000 |30 000 |50 000 |
-| **6 služby SUs** |2,500 |5 000 |20 000 |30 000 |50 000 |
+| **1. SU** |2,500 |5 000 |20 000 |30 000 |50,000 |
+| **3 služba SUs** |2,500 |5 000 |20 000 |30 000 |50,000 |
+| **6 služby SUs** |2,500 |5 000 |20 000 |30 000 |50,000 |
 | **12. SUs** |5 000 |10 000 |40,000 |60 000 |100 000 |
 | **18 SUs** |7 500 |15 000 |60 000 |90,000 |150 000 |
 | **24 SUs** |10 000 |20 000 |80,000 |120 000 |200 000 |
 | **…** |… |… |… |… |… |
-| **60 SUs** |25 000 |50 000 |200 000 |300 000 |500 000 |
+| **60 SUs** |25 000 |50,000 |200 000 |300 000 |500 000 |
 
 Teď byste měli mít dobrý přehled o tom, jak Machine Learning funkce v Stream Analytics fungují. Pravděpodobně také rozumíte tomu, že Stream Analytics úlohy "vyžádané" data ze zdrojů dat a každá "pull" vrací dávku událostí pro zpracování úlohy Stream Analytics. Jak tento model vyžádaného zpracování ovlivňuje požadavky na Machine Learning webové služby?
 

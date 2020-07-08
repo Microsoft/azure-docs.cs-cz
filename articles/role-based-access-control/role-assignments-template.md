@@ -14,10 +14,9 @@ ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392450"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
@@ -363,7 +362,7 @@ Následuje příklad přiřazení role přispěvatele k novému instančnímu ob
 
 Když ve službě Azure RBAC odeberete přístup k prostředku Azure, odeberete přiřazení role. Neexistuje způsob, jak odebrat přiřazení role pomocí šablony. Chcete-li odebrat přiřazení role, je nutné použít jiné nástroje, jako například:
 
-- [portál Azure](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
 - [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)

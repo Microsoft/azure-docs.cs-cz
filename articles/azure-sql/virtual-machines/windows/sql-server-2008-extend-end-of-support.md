@@ -14,10 +14,9 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84668742"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
@@ -42,7 +41,7 @@ Image nasazené prostřednictvím Azure Marketplace se dodávají s předinstalo
 > [!NOTE]
 > I když se SQL Server **vytvářet** a **Spravovat** okna, budou v Azure Portal fungovat s imagí SQL Server 2008 R2, nejsou _podporovány_následující funkce: automatické zálohování, Integrace Azure Key Vault, služby R a konfigurace úložiště.
 
-## <a name="licensing"></a>Licensing
+## <a name="licensing"></a>Licencování
 Nasazení s průběžnými platbami SQL Server 2008 R2 se dá převést na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Pokud chcete převést licenci na základě programu Software Assurance (SA) na průběžné platby, měli by se zákazníci zaregistrovat u [poskytovatele prostředků](sql-vm-resource-provider-register.md)virtuálního počítače SQL. Po této registraci se typ licence SQL zamění mezi Zvýhodněné hybridní využití Azure a průběžnými platbami.

@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e5cc6bbe363e111f5c39147010d6a3d00cb45c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604603"
 ---
 # <a name="what-are-baseline-policies"></a>Co jsou základní zásady?
 
@@ -25,7 +24,7 @@ Základní zásady představují sadu předdefinovaných zásad, které vám pom
 Správa vlastních zásad podmíněného přístupu vyžaduje licenci Azure AD Premium.
 
 > [!IMPORTANT]
-> Základní zásady jsou zastaralé. Další informace najdete [v tématu Co je nového v Azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) .
+> Základní zásady jsou zastaralé. Další informace najdete [v článku o tom, co je nového v Azure Active Directory?](../fundamentals/whats-new-archive.md#replacement-of-baseline-policies-with-security-defaults) .
 
 ## <a name="baseline-policies"></a>Základní zásady
 
@@ -57,7 +56,7 @@ Vyžadovat MFA pro správce (Preview) je základní zásada, která vyžaduje v�
 * Správce zabezpečení
 * Správce helpdesku/správce hesel
 * Správce fakturace
-* Správce uživatele
+* Správce uživatelů
 
 Pokud má vaše organizace tyto účty používané ve skriptech nebo v kódu, zvažte jejich nahrazení pomocí [spravovaných identit](../managed-identities-azure-resources/overview.md).
 
@@ -92,7 +91,7 @@ Aby bylo možné chránit privilegované akce, bude **vyžadovat vícefaktorové
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Povolení výchozích hodnot zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md)
 * [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
