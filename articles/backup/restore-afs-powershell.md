@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak obnovit soubory Azure pomocí slu
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201956"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Obnovení souborů Azure pomocí PowerShellu
@@ -125,7 +125,7 @@ Použijte příkaz [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft
 
 ### <a name="restore-multiple-files"></a>Obnovení více souborů
 
-V následujícím skriptu se snažíme obnovit soubory *FileSharePage. png* a *MyTestFile. txt* .
+V následujícím skriptu se snažíme obnovit soubory *FileSharePage.png* a *MyTestFile.txt* .
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"

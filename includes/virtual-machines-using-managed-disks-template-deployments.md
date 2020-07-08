@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76037944"
 ---
 Tento dokument vás provede rozdíly mezi spravovanými a nespravovanými disky při použití šablon Azure Resource Manager k zřizování virtuálních počítačů. Příklady vám pomůžou aktualizovat existující šablony, které používají nespravované disky na spravované disky. Pro referenci používáme jako vodítko šablonu [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) . Můžete zobrazit šablonu pomocí [spravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i předchozí verze s použitím [nespravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) , pokud byste je chtěli přímo porovnat.
@@ -85,10 +85,10 @@ V rámci objektu virtuálního počítače přidejte závislost na účet úlož
 
 ## <a name="managed-disks-template-formatting"></a>Formátování šablon spravovaných disků
 
-V případě Azure Managed Disks se disk stane prostředkem nejvyšší úrovně a již nepotřebuje, aby uživatel vytvořil účet úložiště. Spravované disky se nejdřív vystavily `2016-04-30-preview` ve verzi rozhraní API, jsou dostupné ve všech dalších verzích rozhraní API a teď jsou výchozí typ disku. V následujících částech se dozvíte o výchozím nastavení a podrobné informace o tom, jak tyto disky dále upravovat.
+V případě Azure Managed Disks se disk stane prostředkem nejvyšší úrovně a již nepotřebuje, aby uživatel vytvořil účet úložiště. Spravované disky se nejdřív vystavily ve `2016-04-30-preview` verzi rozhraní API, jsou dostupné ve všech dalších verzích rozhraní API a teď jsou výchozí typ disku. V následujících částech se dozvíte o výchozím nastavení a podrobné informace o tom, jak tyto disky dále upravovat.
 
 > [!NOTE]
-> Doporučuje se použít verzi rozhraní API novější než `2016-04-30-preview` v případě, že došlo k narušení změn `2016-04-30-preview` mezi `2017-03-30`a.
+> Doporučuje se použít verzi rozhraní API novější než `2016-04-30-preview` v případě, že došlo k narušení změn mezi `2016-04-30-preview` a `2017-03-30` .
 >
 >
 
@@ -96,7 +96,7 @@ V případě Azure Managed Disks se disk stane prostředkem nejvyšší úrovně
 
 Pokud chcete vytvořit virtuální počítač se spravovanými disky, nebudete už muset vytvořit prostředek účtu úložiště. Odkazy na níže uvedený příklad šablony obsahuje několik rozdílů oproti předchozím příkladům unmanged disku, které byste si poznamenali:
 
-- `apiVersion` Je verze, která podporuje spravované disky.
+- `apiVersion`Je verze, která podporuje spravované disky.
 - `osDisk`a `dataDisks` už neodkazuje na konkrétní identifikátor URI pro virtuální pevný disk.
 - Při nasazování bez zadání dalších vlastností disk použije typ úložiště na základě velikosti virtuálního počítače. Pokud například používáte velikost virtuálního počítače, která podporuje Premium Storage (velikosti s "s" v názvu, například Standard_D2s_v3), budou standardně nakonfigurované prémiové disky. Tuto změnu můžete změnit pomocí nastavení skladové položky (SKU) disku pro určení typu úložiště.
 - Pokud není zadaný žádný název disku, bude mít formát `<VMName>_OsDisk_1_<randomstring>` pro disk s operačním systémem a `<VMName>_disk<#>_<randomstring>` pro každý datový disk.
@@ -164,7 +164,7 @@ Jako alternativu k zadání konfigurace disku v objektu virtuálního počítač
 }
 ```
 
-V rámci objektu virtuálního počítače odkazujte na objekt disku, který se má připojit. Zadáním ID prostředku spravovaného disku vytvořeného ve `managedDisk` vlastnosti umožníte vytvoření přílohy disku jako virtuálního počítače. `apiVersion` Pro prostředek virtuálního počítače je nastavená na `2017-03-30`. Přidala se závislost na prostředku disku, aby se zajistilo jejich úspěšné vytvoření před vytvořením virtuálního počítače. 
+V rámci objektu virtuálního počítače odkazujte na objekt disku, který se má připojit. Zadáním ID prostředku spravovaného disku vytvořeného ve `managedDisk` vlastnosti umožníte vytvoření přílohy disku jako virtuálního počítače. `apiVersion`Pro prostředek virtuálního počítače je nastavená na `2017-03-30` . Přidala se závislost na prostředku disku, aby se zajistilo jejich úspěšné vytvoření před vytvořením virtuálního počítače. 
 
 ```json
 {
@@ -209,7 +209,7 @@ V rámci objektu virtuálního počítače odkazujte na objekt disku, který se 
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Vytvoření spravovaných skupin dostupnosti pomocí virtuálních počítačů pomocí spravovaných disků
 
-Pokud chcete vytvořit spravované skupiny dostupnosti s virtuálními počítači pomocí spravovaných `sku` disků, přidejte objekt do prostředku skupiny dostupnosti a `name` nastavte vlastnost `Aligned`na. Tato vlastnost zajišťuje, aby byly disky pro každý virtuální počítač dostatečně izolované od sebe navzájem, aby se předešlo jednomu bodu selhání. Všimněte si také, `apiVersion` že u prostředku skupiny dostupnosti je nastavena na `2018-10-01`hodnotu.
+Pokud chcete vytvořit spravované skupiny dostupnosti s virtuálními počítači pomocí spravovaných disků, přidejte `sku` objekt do prostředku skupiny dostupnosti a nastavte `name` vlastnost na `Aligned` . Tato vlastnost zajišťuje, aby byly disky pro každý virtuální počítač dostatečně izolované od sebe navzájem, aby se předešlo jednomu bodu selhání. Všimněte si také, že `apiVersion` u prostředku skupiny dostupnosti je nastavena na hodnotu `2018-10-01` .
 
 ```json
 {

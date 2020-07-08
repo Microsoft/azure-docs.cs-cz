@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 321146364897d46a403bdfd6789fcb219179d88c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830595"
 ---
 # <a name="view-update-assessments"></a>Zobrazení posouzení aktualizací
@@ -34,7 +34,7 @@ V následujících tabulkách jsou uvedeny podporované klasifikace aktualizací
 
 ### <a name="windows"></a>Windows
 
-|Classification  |Popis  |
+|Classification  |Description  |
 |---------|---------|
 |Důležité aktualizace     | Aktualizace pro konkrétní problémy, které řeší kritické chyby, které nesouvisí se zabezpečením.        |
 |Aktualizace zabezpečení     | Aktualizace pro problémy související se zabezpečením pro konkrétní produkt.        |
@@ -47,7 +47,7 @@ V následujících tabulkách jsou uvedeny podporované klasifikace aktualizací
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 
-|Classification  |Popis  |
+|Classification  |Description  |
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
 |Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo které nejsou aktualizacemi zabezpečení.        |

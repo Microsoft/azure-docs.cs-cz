@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828640"
 ---
 # <a name="create-modular-runbooks"></a>Vytváření modulárních runbooků

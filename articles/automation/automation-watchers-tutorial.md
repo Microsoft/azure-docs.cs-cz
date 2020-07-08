@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830578"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Sledování aktualizovaných souborů pomocí úlohy sledovacího procesu
@@ -47,7 +47,7 @@ V tomto kurzu se k vyhledání nových souborů v adresáři používá Runbook 
 
 Tento proces importu lze provést prostřednictvím [Galerie prostředí PowerShell](https://www.powershellgallery.com).
 
-1. Přejděte na stránku galerie pro [Watch-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd).
+1. Pro [Watch-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd)přejděte na stránku galerie.
 2. Na kartě **Azure Automation** klikněte na **nasadit a Azure Automation**.
 
 Tento Runbook můžete také naimportovat do účtu Automation z portálu pomocí následujících kroků.
@@ -74,7 +74,7 @@ V úloze sledovacího procesu se používá Runbook akce, který slouží k tomu
 
 Postup vytvoření sady Runbook akce:
 
-1. Přejděte na stránku galerie pro [Process-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf).
+1. Pro [Process-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf)přejděte na stránku galerie.
 2. Na kartě **Azure Automation** klikněte na **nasadit a Azure Automation**.
 
 Tento Runbook můžete také naimportovat do účtu Automation z Azure Portal:

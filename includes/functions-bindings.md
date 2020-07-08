@@ -17,7 +17,7 @@ Tato tabulka ukazuje vazby, které jsou podporovány v hlavních verzích modulu
 
 | Typ | verze | 2. x a vyšší<sup>1</sup> | Trigger | Vstup | Výstup |
 | ---- | :-: | :-: | :------: | :---: | :----: |
-| [Úložiště objektů BLOB](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
+| [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Databáze Cosmos](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
@@ -34,7 +34,7 @@ Tato tabulka ukazuje vazby, které jsou podporovány v hlavních verzích modulu
 | [SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md)                   |✔|✔| | |✔|
 | [Service Bus](../articles/azure-functions/functions-bindings-service-bus.md)             |✔|✔|✔| |✔|
 | [SignalR](../articles/azure-functions/functions-bindings-signalr-service.md)             | |✔| |✔|✔|
-| [Úložiště tabulek](../articles/azure-functions/functions-bindings-storage-table.md)         |✔|✔| |✔|✔|
+| [Table Storage](../articles/azure-functions/functions-bindings-storage-table.md)         |✔|✔| |✔|✔|
 | [Časovač](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 

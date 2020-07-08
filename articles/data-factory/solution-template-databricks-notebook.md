@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857643"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformace se službou Azure Databricks
@@ -36,7 +36,7 @@ V případě jednoduchosti šablona v tomto kurzu nevytvoří plánovanou aktiva
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet úložiště objektů BLOB v Azure s kontejnerem `sinkdata` , který se má použít jako jímka.
+- Účet úložiště objektů BLOB v Azure s kontejnerem, který se má `sinkdata` použít jako jímka.
 
   Poznamenejte si název účtu úložiště, název kontejneru a přístupový klíč. Tyto hodnoty budete potřebovat později v šabloně.
 
@@ -47,8 +47,8 @@ V případě jednoduchosti šablona v tomto kurzu nevytvoří plánovanou aktiva
 Import **transformačního** poznámkového bloku do pracovního prostoru datacihly:
 
 1. Přihlaste se ke svému pracovnímu prostoru Azure Databricks a pak vyberte **importovat**.
-       ![Příkaz nabídky pro import pracovního prostoru](media/solution-template-Databricks-notebook/import-notebook.png) vaše cesta k pracovnímu prostoru může být jiný než zobrazený, ale zapamatujte si ho později.
-1. Vyberte **importovat z: adresa URL**. Do textového pole zadejte `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`.
+       ![Příkaz nabídky pro import pracovního prostoru ](media/solution-template-Databricks-notebook/import-notebook.png) vaše cesta k pracovnímu prostoru může být jiný než zobrazený, ale zapamatujte si ho později.
+1. Vyberte **importovat z: adresa URL**. Do textového pole zadejte `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` .
 
    ![Výběry pro import poznámkového bloku](media/solution-template-Databricks-notebook/import-from-url.png)
 
@@ -56,7 +56,7 @@ Import **transformačního** poznámkového bloku do pracovního prostoru dataci
 
    V importovaném poznámkovém bloku přejdete na **příkaz 5** , jak je znázorněno v následujícím fragmentu kódu.
 
-   - `<storage name>`Nahraďte `<access key>` a vlastními informacemi o připojení úložiště.
+   - Nahraďte `<storage name>` a `<access key>` vlastními informacemi o připojení úložiště.
    - Použijte účet úložiště s `sinkdata` kontejnerem.
 
     ```python
@@ -90,7 +90,7 @@ Import **transformačního** poznámkového bloku do pracovního prostoru dataci
 
     ![Tlačítko generovat](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   *Uložte přístupový token* pro pozdější použití při vytváření propojené služby datacihly. Přístupový token vypadá nějak takto `dapi32db32cbb4w6eee18b7d87e45exxxxxx`.
+   *Uložte přístupový token* pro pozdější použití při vytváření propojené služby datacihly. Přístupový token vypadá nějak takto `dapi32db32cbb4w6eee18b7d87e45exxxxxx` .
 
 ## <a name="how-to-use-this-template"></a>Jak používat tuto šablonu
 
@@ -126,7 +126,7 @@ Import **transformačního** poznámkového bloku do pracovního prostoru dataci
 
 V novém kanálu je většina nastavení nakonfigurovaná automaticky s výchozími hodnotami. Zkontrolujte konfigurace kanálu a proveďte potřebné změny.
 
-1. V **příznaku dostupnosti**aktivity **ověření** ověřte, zda je hodnota zdrojové **datové sady** nastavena `SourceAvailabilityDataset` na hodnotu, kterou jste vytvořili dříve.
+1. V **příznaku dostupnosti**aktivity **ověření** ověřte, zda je hodnota zdrojové **datové sady** nastavena na hodnotu `SourceAvailabilityDataset` , kterou jste vytvořili dříve.
 
    ![Hodnota zdrojové datové sady](media/solution-template-Databricks-notebook/validation-settings.png)
 
@@ -134,11 +134,11 @@ V novém kanálu je většina nastavení nakonfigurovaná automaticky s výchoz�
 
    - **Karta zdroje zdrojového kódu** ![](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **Sink** Karta jímky ![na kartě jímky](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - Karta jímky na kartě **jímky** ![](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1. V **transformaci**aktivity **poznámkového bloku** zkontrolujte a podle potřeby aktualizujte cesty a nastavení.
 
-   **Propojená služba datacihly** by měla být předem vyplněná hodnotou z předchozího kroku, jak je znázorněno v následujícím příkladu: ![naplněná hodnota pro propojenou službu datacihly](media/solution-template-Databricks-notebook/notebook-activity.png)
+   **Propojená služba datacihly** by měla být předem vyplněná hodnotou z předchozího kroku, jak je znázorněno v následujícím příkladu: ![ naplněná hodnota pro propojenou službu datacihly](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    Postup kontroly nastavení **poznámkového bloku** :
   
@@ -150,7 +150,7 @@ V novém kanálu je většina nastavení nakonfigurovaná automaticky s výchoz�
 
        ![Základní parametry](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. Ověřte, že **parametry kanálu** odpovídají čemu uvedené na následujícím snímku obrazovky: ![parametry kanálu](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. Ověřte, že **parametry kanálu** odpovídají čemu uvedené na následujícím snímku obrazovky: ![ parametry kanálu](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Připojte se k vašim datovým sadám.
 
@@ -167,9 +167,9 @@ V novém kanálu je většina nastavení nakonfigurovaná automaticky s výchoz�
 
    - **DestinationFilesDataset** – kopírování dat do cílového umístění jímky. Použijte následující hodnoty:
 
-     - **Propojená služba** - `sinkBlob_LS`vytvořená v předchozím kroku.
+     - **Propojená služba**  -  `sinkBlob_LS` vytvořená v předchozím kroku.
 
-     - **File path** - Cesta`sinkdata/staged_sink`k souboru.
+     - **Cesta k souboru**  -  `sinkdata/staged_sink` .
 
        ![Výběry propojené služby a cesty k souboru pro DestinationFilesDataset](media/solution-template-Databricks-notebook/destination-dataset.png)
 
@@ -185,4 +185,4 @@ V novém kanálu je většina nastavení nakonfigurovaná automaticky s výchoz�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Seznámení se službou Azure Data Factory](introduction.md)
+- [Úvod do služby Azure Data Factory](introduction.md)

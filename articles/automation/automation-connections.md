@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837123"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Správa připojení v Azure Automation
@@ -41,7 +41,7 @@ Ve většině případů nemusíte vytvářet prostředek připojení, protože 
 
 Rutiny v následující tabulce vytvářejí a spravují připojení automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](shared-resources/modules.md#az-modules).
 
-|Rutina|Popis|
+|Rutina|Description|
 |---|---|
 |[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Načte informace o připojení.|
 |[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Vytvoří nové připojení.|
@@ -52,7 +52,7 @@ Rutiny v následující tabulce vytvářejí a spravují připojení automatizac
 
 Interní rutina v následující tabulce se používá pro přístup k připojením ve vašich sadách Runbook a konfiguracích DSC. Tato rutina se dodává s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](shared-resources/modules.md#internal-cmdlets).
 
-|Interní rutina|Popis|
+|Interní rutina|Description|
 |---|---|
 |`Get-AutomationConnection` | Načte hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](https://go.microsoft.com/fwlink/?LinkID=324844). Tuto zatřiďovací tabulku pak můžete použít s příslušnými příkazy v konfiguraci sady Runbook nebo DSC.|
 
@@ -97,7 +97,7 @@ Když vytváříte účet Automation, ve výchozím nastavení zahrnuje několik
 
 ## <a name="add-a-connection-type"></a>Přidat typ připojení
 
-Pokud se vaše sada Runbook nebo konfigurace DSC připojuje k externí službě, musíte definovat typ připojení ve [vlastním modulu](shared-resources/modules.md#custom-modules) s názvem Integration Module. Tento modul obsahuje soubor metadat, který určuje vlastnosti typu připojení a má název ** &lt; Module &gt; -Automation. JSON**umístěný ve složce modulu komprimovaného souboru **. zip** . Tento soubor obsahuje pole připojení, která jsou nutná pro připojení k systému nebo službě, kterou modul představuje. Pomocí tohoto souboru můžete pro typ připojení nastavit názvy polí, typy dat, stav šifrování a volitelný stav. 
+Pokud se vaše sada Runbook nebo konfigurace DSC připojuje k externí službě, musíte definovat typ připojení ve [vlastním modulu](shared-resources/modules.md#custom-modules) s názvem Integration Module. Tento modul obsahuje soubor metadat, který určuje vlastnosti typu připojení a má název ** &lt; Module &gt;-Automation.json**, umístěný ve složce modulu komprimovaného souboru **zip** . Tento soubor obsahuje pole připojení, která jsou nutná pro připojení k systému nebo službě, kterou modul představuje. Pomocí tohoto souboru můžete pro typ připojení nastavit názvy polí, typy dat, stav šifrování a volitelný stav. 
 
 V následujícím příkladu je šablona ve formátu souboru **. JSON** , která definuje vlastnosti uživatelského jména a hesla pro vlastní typ připojení s názvem `MyModuleConnection` :
 

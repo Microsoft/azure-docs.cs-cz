@@ -14,10 +14,10 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82883222"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
@@ -76,7 +76,7 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 V předchozím fragmentu kódu:
 
-- `policy`je řetězec obsahující název Azure AD B2C toku uživatele nebo vlastní zásady (například `PolicySignUpSignIn`).
+- `policy`je řetězec obsahující název Azure AD B2C toku uživatele nebo vlastní zásady (například `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow`vyžaduje se pro Android (aktivita) a je volitelný pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v Microsoft Windows a UIViewController v iOS. Další informace o dialogovém okně uživatelského rozhraní najdete v tématu [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) na wikiwebu MSAL.
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)`je metoda, která najde účet pro danou zásadu. Příklad:
 
@@ -93,13 +93,13 @@ V předchozím fragmentu kódu:
   }
   ```
 
-Použití toku uživatele nebo vlastní zásady (například umožnění úprav svého profilu nebo resetování hesla uživatelem) se právě provádí voláním `AcquireTokenInteractive`. U těchto dvou zásad nepoužíváte vrácený výsledek tokenu/ověřování.
+Použití toku uživatele nebo vlastní zásady (například umožnění úprav svého profilu nebo resetování hesla uživatelem) se právě provádí voláním `AcquireTokenInteractive` . U těchto dvou zásad nepoužíváte vrácený výsledek tokenu/ověřování.
 
 ## <a name="profile-edit-policies"></a>Zásady úprav profilu
 
 Pokud chcete uživatelům umožnit, aby se přihlásili pomocí sociální identity a pak upravili svůj profil, použijte Azure AD B2C upravit zásadu profilu.
 
-Uděláte to tak, `AcquireTokenInteractive` že zavoláte se autoritou pro tuto zásadu. Vzhledem k tomu, že je uživatel již přihlášen a má aktivní relaci souborů cookie `Prompt.NoPrompt` , použijte k zabránění zobrazení dialogu pro výběr účtu.
+Uděláte to tak, že zavoláte `AcquireTokenInteractive` se autoritou pro tuto zásadu. Vzhledem k tomu, že je uživatel již přihlášen a má aktivní relaci souborů cookie, použijte `Prompt.NoPrompt` k zabránění zobrazení dialogu pro výběr účtu.
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -145,7 +145,7 @@ AcquireTokenByUsernamePassword(
             SecureString password)
 ```
 
-Tato `AcquireTokenByUsernamePassword` metoda používá následující parametry:
+Tato `AcquireTokenByUsernamePassword` Metoda používá následující parametry:
 
 - *Obory* , pro které se má získat přístupový token
 - *Uživatelské jméno*.
@@ -157,7 +157,7 @@ Tok ROPC **funguje jenom pro místní účty**, kde se uživatelé zaregistroval
 
 ## <a name="google-auth-and-embedded-webview"></a>Google auth a vložené WebView
 
-Pokud používáte Google jako poskytovatele identity, doporučujeme použít prohlížeč systému, protože Google neumožňuje [ověřování z vložených WebView](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). V současné `login.microsoftonline.com` době je důvěryhodná autorita s Google a bude fungovat s vloženým webviewem. `b2clogin.com` Nejedná se ale o důvěryhodnou autoritu s Google, takže se uživatelé nebudou moct ověřit.
+Pokud používáte Google jako poskytovatele identity, doporučujeme použít prohlížeč systému, protože Google neumožňuje [ověřování z vložených WebView](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). V současné době `login.microsoftonline.com` je důvěryhodná autorita s Google a bude fungovat s vloženým webviewem. Nejedná `b2clogin.com` se ale o důvěryhodnou autoritu s Google, takže se uživatelé nebudou moct ověřit.
 
 Pokud se něco změní, poskytneme vám aktualizaci tohoto [problému](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) .
 
@@ -174,7 +174,7 @@ V současné době MSAL.NET potřebuje ke sestavení klíče mezipaměti tokenu 
 
 Obě tyto deklarace můžou chybět v Azure AD B2C scénářích, protože ne všichni poskytovatelé sociálních identit (Facebook, Google a další) je vrátí v tokenech, které vrátí do Azure AD B2C.
 
-Příznakem takového scénáře je, že MSAL.NET vrací `Missing from the token response` přístup k hodnotě `preferred_username` deklarace identity v tokenech vydaných Azure AD B2C. MSAL používá `Missing from the token response` hodnotu pro `preferred_username` zajištění mezikompatibility mezipaměti mezi knihovnami.
+Příznakem takového scénáře je, že MSAL.NET vrací `Missing from the token response` přístup k `preferred_username` hodnotě deklarace identity v tokenech vydaných Azure AD B2C. MSAL používá `Missing from the token response` hodnotu pro `preferred_username` zajištění mezikompatibility mezipaměti mezi knihovnami.
 
 ### <a name="workarounds"></a>Alternativní řešení
 
@@ -186,7 +186,7 @@ Případně můžete použít `tid` deklaraci identity, pokud používáte [vlas
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Zmírnění omezení u možnosti chybějící v odpovědi na token
 
-Jednou z `name` `preferred_username`možností je použít deklaraci identity místo. Pokud chcete zahrnout `name` deklaraci identity v TOKENech ID vydaných Azure AD B2C, vyberte při konfiguraci toku uživatele možnost **Zobrazit název** .
+Jednou z možností je použít `name` deklaraci identity místo `preferred_username` . Pokud chcete zahrnout `name` deklaraci identity v tokenech ID vydaných Azure AD B2C, vyberte při konfiguraci toku uživatele možnost **Zobrazit název** .
 
 Další informace o určení, které deklarace identity vrátí vaše uživatelské toky, najdete v tématu [kurz: vytvoření toků uživatelů v Azure AD B2C](../../active-directory-b2c/tutorial-create-user-flows.md).
 
@@ -194,6 +194,6 @@ Další informace o určení, které deklarace identity vrátí vaše uživatels
 
 Další podrobnosti o interaktivním získání tokenů pomocí MSAL.NET pro Azure AD B2C aplikace jsou k dispozici v následující ukázce.
 
-| Ukázka | Platforma | Popis|
+| Ukázka | Platforma | Description|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Aplikace Xamarin Forms, která používá MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s vrácenými tokeny.|

@@ -9,10 +9,10 @@ ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84346153"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
@@ -92,28 +92,28 @@ Ne, připojení bude i nadále chráněno protokolem IPsec/IKE. Jakmile z připo
 Ano, mohlo by dojít ke krátkému přerušení (několik sekund), protože brána Azure VPN Gateway přeruší stávající připojení a znovu spustí metodu handshake protokolu IKE pro opětovné vytvoření tunelu IPsec s využitím nových kryptografických algoritmů a parametrů. Pokud chcete přerušení minimalizovat, ujistěte se, že vaše místní zařízení VPN je také nakonfigurováno s odpovídajícími algoritmy a silami klíče.
 
 ### <a name="can-i-use-different-policies-on-different-connections"></a>Můžou se pro různá připojení použít různé zásady?
-Yes. Vlastní zásady se aplikují na jednotlivá připojení. Pro různá připojení můžete vytvořit a použít různé zásady IPsec/IKE. Můžete také použít vlastní zásady pro podmnožinu připojení. Zbývající připojení budou používat výchozí sady zásad IPsec/IKE Azure.
+Ano. Vlastní zásady se aplikují na jednotlivá připojení. Pro různá připojení můžete vytvořit a použít různé zásady IPsec/IKE. Můžete také použít vlastní zásady pro podmnožinu připojení. Zbývající připojení budou používat výchozí sady zásad IPsec/IKE Azure.
 
 ### <a name="can-i-use-the-custom-policy-on-vnet-to-vnet-connection-as-well"></a>Dají se vlastní zásady použít také pro připojení typu VNet-to-VNet?
 Ano, vlastní zásady můžete použít pro připojení IPsec mezi různými místy i pro připojení typu VNet-to-VNet.
 
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>Je nutné zadat stejné zásady pro oba prostředky připojení typu VNet-to-VNet?
-Yes. Tunel typu VNet-to-VNet se skládá ze dvou prostředků připojení v Azure (jeden pro každý směr). Zajistěte, aby oba prostředky připojení měly stejné zásady, jinak se připojení typu VNet-to-VNet nevytvoří.
+Ano. Tunel typu VNet-to-VNet se skládá ze dvou prostředků připojení v Azure (jeden pro každý směr). Zajistěte, aby oba prostředky připojení měly stejné zásady, jinak se připojení typu VNet-to-VNet nevytvoří.
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Fungují zásady IPsec/IKE na připojení ExpressRoute?
-No. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
+Ne. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Návody vytvářet připojení s typem protokolu IKEv1 nebo IKEv2?
 Připojení IKEv1 se dají vytvořit na všech SKU typu RouteBased VPN, s výjimkou úrovně Basic SKU, Standard SKU a dalších [původních SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku). Při vytváření připojení můžete zadat typ protokolu připojení IKEv1 nebo IKEv2. Pokud nezadáte typ protokolu připojení, použije se IKEv2 jako výchozí možnost, pokud je to možné. Další informace najdete v dokumentaci k [rutinám PowerShellu](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) . U typů SKU a podpory IKEv1/IKEv2 najdete informace v tématu [připojení bran k zařízením VPN založeným na zásadách](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Je přenos mezi IKEv1 a IKEv2 povolený?
-Yes. Je podporovaný přenos mezi připojeními IKEv1 a IKEv2.
+Ano. Je podporovaný přenos mezi připojeními IKEv1 a IKEv2.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Můžu mít IKEv1 připojení typu Site-to-site na základních SKU typu RouteBased VPN?
-No. Základní skladová položka nepodporuje toto.
+Ne. Základní skladová položka nepodporuje toto.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Můžu po vytvoření připojení změnit typ protokolu připojení (IKEv1 to IKEv2 a naopak)?
-No. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.
+Ne. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Kde najdu Další informace o konfiguraci protokolu IPsec?
 Viz téma [Konfigurace zásad IPSec/IKE pro připojení S2S nebo VNet-to-VNet](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md) .

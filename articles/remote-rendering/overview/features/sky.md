@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83759111"
 ---
 # <a name="sky-reflections"></a>Odrazy oblohy
@@ -118,7 +118,7 @@ Použijte `AzureSession.Actions.LoadTextureAsync` `TextureType.Texture2D` k nač
 
 Vzdálené vykreslování Azure poskytuje několik předdefinovaných map prostředí, které jsou vždycky dostupné. Všechna integrovaná mapování prostředí jsou cubemaps.
 
-|Identifikátor                         | Popis                                              | Obrázek                                                      |
+|Identifikátor                         | Description                                              | Obrázek                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
 |builtin://Autoshop                 | Spektrum pruhů světla, jasného základního osvětlení interiéru    | ![Přikoupit](media/autoshop.png)
 |builtin://BoilerRoom               | Světlé světlo – nastavení, více indikátorů okna      | ![BoilerRoom](media/boiler-room.png)

@@ -5,10 +5,10 @@ services: automation
 ms.date: 11/01/2018
 ms.topic: article
 ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828742"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Monitorování runbooků s upozorněními metrik

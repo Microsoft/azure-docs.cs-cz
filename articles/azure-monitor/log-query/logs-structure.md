@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
 ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196293"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
@@ -59,7 +59,7 @@ Když vytvoříte aplikaci v Application Insights, automaticky se vytvoří odpo
 
 Na rozdíl od Log Analytics pracovního prostoru má Application Insights aplikace pevnou sadu tabulek. Nelze nakonfigurovat jiné zdroje dat pro zápis do aplikace, takže nelze vytvořit žádné další tabulky. 
 
-| Table | Popis | 
+| Tabulka | Popis | 
 |:---|:---|
 | availabilityResults | Souhrnná data z testů dostupnosti. |
 | browserTimings      | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat. |
@@ -79,7 +79,7 @@ Schéma pro každou tabulku můžete zobrazit na kartě **schématu** v Log Anal
 ## <a name="standard-properties"></a>Standardní vlastnosti
 Zatímco každá tabulka v protokolech Azure Monitor má vlastní schéma, existují standardní vlastnosti sdílené všemi tabulkami. Podrobnosti o každé z nich najdete [v tématu standardní vlastnosti v protokolech Azure monitor](../platform/log-standard-properties.md) .
 
-| Pracovní prostor služby Log Analytics | Application Insights aplikace | Popis |
+| Pracovní prostor služby Log Analytics | Application Insights aplikace | Description |
 |:---|:---|:---|
 | TimeGenerated | časové razítko  | Datum a čas vytvoření záznamu |
 | Typ          | itemType   | Název tabulky, ze které byl záznam načten. |
