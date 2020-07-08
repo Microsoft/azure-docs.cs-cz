@@ -7,16 +7,15 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163722"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL pomocí importu a exportu
 Tento článek vysvětluje dva běžné přístupy k importu a exportu dat na server Azure Database for MySQL pomocí MySQL Workbench. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Server Azure Database for MySQL, a to tak, že pomocí [Azure Portal vytvoříte Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md).
 - Stažení aplikace MySQL Workbench [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) nebo jiného nástroje MySQL třetí strany pro import/export.
@@ -42,13 +41,13 @@ Přidejte informace o připojení do aplikace MySQL Workbench.
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>Určení, kdy použít techniky pro import a export místo výpisu a obnovení
 Pomocí nástrojů MySQL můžete importovat a exportovat databáze do Azure MySQL Database v následujících scénářích. V jiných scénářích můžete místo toho použít [Výpis paměti a obnovení](concepts-migrate-dump-restore.md) . 
 
-- Pokud potřebujete selektivně zvolit několik tabulek, které se mají importovat z existující databáze MySQL do databáze MySQL Azure, je nejlepší použít techniku importu a exportu.  Díky tomu můžete z migrace vynechat všechny nepotřebné tabulky a ušetřit tak čas a prostředky. Například `--include-tables` použijte přepínač nebo `--exclude-tables` s parametrem [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) a `--tables` přepínač s [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
+- Pokud potřebujete selektivně zvolit několik tabulek, které se mají importovat z existující databáze MySQL do databáze MySQL Azure, je nejlepší použít techniku importu a exportu.  Díky tomu můžete z migrace vynechat všechny nepotřebné tabulky a ušetřit tak čas a prostředky. Například použijte `--include-tables` přepínač nebo s parametrem `--exclude-tables` [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) a `--tables` přepínač s [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - Pokud přesouváte databázové objekty jiné než tabulky, je třeba tyto objekty explicitně vytvořit. Zahrňte omezení (primární klíč, cizí klíč, indexy), zobrazení, funkce, procedury, aktivační události a všechny další databázové objekty, které chcete migrovat.
 - Když migrujete data z jiných zdrojů dat než databáze MySQL, vytvoříte ploché soubory a naimportujete je pomocí [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 Zajistěte, aby všechny tabulky v databázi používaly modul úložiště InnoDB při načítání dat do Azure Database for MySQL. Azure Database for MySQL podporuje jenom modul úložiště InnoDB, takže nepodporuje alternativní úložné moduly. Pokud vaše tabulky vyžadují alternativní úložné moduly, nezapomeňte je převést na použití formátu modulu InnoDB před migrací na Azure Database for MySQL. 
 
-Pokud máte například WordPress nebo webovou aplikaci, která používá modul MyISAM, nejprve převeďte tabulky migrací dat do tabulek InnoDB. Pak proveďte obnovení do Azure Database for MySQL. Pomocí klauzule `ENGINE=INNODB` nastavte modul pro vytvoření tabulky a potom přeneste data do kompatibilní tabulky před migrací. 
+Pokud máte například WordPress nebo webovou aplikaci, která používá modul MyISAM, nejprve převeďte tabulky migrací dat do tabulek InnoDB. Pak proveďte obnovení do Azure Database for MySQL. Pomocí klauzule `ENGINE=INNODB` Nastavte modul pro vytvoření tabulky a potom přeneste data do kompatibilní tabulky před migrací. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns

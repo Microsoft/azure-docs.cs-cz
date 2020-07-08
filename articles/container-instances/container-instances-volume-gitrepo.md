@@ -4,10 +4,9 @@ description: Naučte se připojit svazek Gitrepo nepodporují, abyste mohli klon
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252091"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojení svazku Gitrepo nepodporují v Azure Container Instances
@@ -23,15 +22,15 @@ Svazek *gitrepo nepodporují* připojí adresář a naklonuje zadané úložišt
 
 Když připojíte svazek *gitrepo nepodporují* , můžete nastavit tři vlastnosti pro konfiguraci svazku:
 
-| Vlastnost | Požaduje se | Popis |
+| Vlastnost | Povinné | Popis |
 | -------- | -------- | ----------- |
-| `repository` | Ano | Úplná adresa URL, včetně `http://` nebo `https://`, úložiště Git, které se má klonovat.|
-| `directory` | Ne | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem`..`"".  Pokud zadáte "`.`", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
-| `revision` | Ne | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento `HEAD` parametr nezadáte, je revize naklonována. |
+| `repository` | Yes | Úplná adresa URL, včetně `http://` nebo `https://` , úložiště Git, které se má klonovat.|
+| `directory` | No | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem " `..` ".  Pokud zadáte " `.` ", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
+| `revision` | No | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento parametr nezadáte, `HEAD` je revize naklonována. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Připojit svazek Gitrepo nepodporují: Azure CLI
 
-Pokud chcete při nasazování instancí kontejneru pomocí [Azure CLI](/cli/azure)připojit svazek gitrepo nepodporují, zadejte parametry `--gitrepo-url` a `--gitrepo-mount-path` do příkazu [AZ Container Create][az-container-create] . Volitelně můžete zadat adresář v rámci svazku, do kterého se má klonovat`--gitrepo-dir`(), a hodnotu hash potvrzení revize, která se má klonovat`--gitrepo-revision`().
+Pokud chcete při nasazování instancí kontejneru pomocí [Azure CLI](/cli/azure)připojit svazek gitrepo nepodporují, zadejte `--gitrepo-url` `--gitrepo-mount-path` parametry a do příkazu [AZ Container Create][az-container-create] . Volitelně můžete zadat adresář v rámci svazku, do kterého se má klonovat ( `--gitrepo-dir` ), a hodnotu hash potvrzení revize, která se má klonovat ( `--gitrepo-revision` ).
 
 Tento ukázkový příkaz naklonuje ukázkovou aplikaci Microsoft [ACI-HelloWorld][aci-helloworld] do `/mnt/aci-helloworld` v instanci kontejneru:
 
@@ -63,7 +62,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 ## <a name="mount-gitrepo-volume-resource-manager"></a>Připojit svazek Gitrepo nepodporují: Správce prostředků
 
-Chcete-li při nasazování instancí kontejneru pomocí [šablony Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups)připojit svazek gitrepo nepodporují, nejprve `volumes` pole vyplňte v části skupina `properties` kontejnerů v šabloně. Pak u každého kontejneru ve skupině kontejnerů, do kterého chcete připojit svazek *gitrepo nepodporují* , vyplňte `volumeMounts` pole v `properties` části definice kontejneru.
+Chcete-li při nasazování instancí kontejneru pomocí [šablony Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups)připojit svazek gitrepo nepodporují, nejprve `volumes` pole vyplňte v části Skupina kontejnerů v `properties` šabloně. Pak u každého kontejneru ve skupině kontejnerů, do kterého chcete připojit svazek *gitrepo nepodporují* , vyplňte `volumeMounts` pole v `properties` části definice kontejneru.
 
 Například následující šablona Správce prostředků vytvoří skupinu kontejnerů skládající se z jednoho kontejneru. Kontejner klonuje dvě úložiště GitHubu zadaná v blocích svazku *gitrepo nepodporují* . Druhý svazek obsahuje další vlastnosti určující adresář, do kterého se má klonovat, a hodnotu hash potvrzení konkrétní revize, která se má klonovat.
 

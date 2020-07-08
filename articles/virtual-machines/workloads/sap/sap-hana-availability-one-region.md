@@ -16,10 +16,9 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255465"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Dostupnost SAP HANA v rámci jedné oblasti Azure
@@ -54,7 +53,7 @@ Funkce kontroly stavu monitoruje stav každého virtuálního počítače, kter�
 Díky monitorování hostitele a virtuálního počítače, které poskytuje Azure, se virtuální počítače Azure, na kterých dochází k problémům s hostiteli, automaticky restartují v dobrém hostiteli Azure. 
 
 >[!IMPORTANT]
->Azure Service retušova nerestartuje virtuální počítače se systémem Linux, kde je hostovaný operační systém v nenouzovém stavu jádra. Výchozí nastavení běžně používaných verzí systému Linux nerestartují virtuální počítače nebo servery, na kterých je jádro systému Linux v nenouzovém stavu. Místo toho výchozí předpokládá, že operační systém v jádru jádra má být schopný připojit ladicí program jádra k analýze. Azure respektuje toto chování tím, že nerestartuje automaticky virtuální počítač s hostovaným operačním systémem v takovém stavu. Předpokladem je, že tyto výskyty jsou extrémně vzácné. Výchozí chování můžete přepsat tak, aby bylo možné restartovat virtuální počítač. Pokud chcete změnit výchozí chování, povolte v/etc/sysctl.conf. parametr ' kernel. nouzové '. Čas, který jste nastavili pro tento parametr, je v sekundách. Běžné Doporučené hodnoty jsou před aktivací restartování pomocí tohoto parametru počkat na 20-30 sekund. Viz také <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>.
+>Azure Service retušova nerestartuje virtuální počítače se systémem Linux, kde je hostovaný operační systém v nenouzovém stavu jádra. Výchozí nastavení běžně používaných verzí systému Linux nerestartují virtuální počítače nebo servery, na kterých je jádro systému Linux v nenouzovém stavu. Místo toho výchozí předpokládá, že operační systém v jádru jádra má být schopný připojit ladicí program jádra k analýze. Azure respektuje toto chování tím, že nerestartuje automaticky virtuální počítač s hostovaným operačním systémem v takovém stavu. Předpokladem je, že tyto výskyty jsou extrémně vzácné. Výchozí chování můžete přepsat tak, aby bylo možné restartovat virtuální počítač. Pokud chcete změnit výchozí chování, povolte v/etc/sysctl.conf. parametr ' kernel. nouzové '. Čas, který jste nastavili pro tento parametr, je v sekundách. Běžné Doporučené hodnoty jsou před aktivací restartování pomocí tohoto parametru počkat na 20-30 sekund. Viz také <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf> .
 
 Druhá funkce, na kterou se spoléháte v tomto scénáři, je fakt, že se služba HANA, která běží v restartování virtuálního počítače, spouští automaticky po restartování virtuálního počítače. Službu Hana můžete nastavit tak, aby se [automaticky restartovala](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) přes sledovací služby různých služeb Hana.
 

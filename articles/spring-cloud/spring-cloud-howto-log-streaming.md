@@ -7,10 +7,9 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78192196"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
@@ -22,7 +21,7 @@ Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak 
 * Instance **jarního cloudu Azure** se spuštěnou aplikací, například [jarní cloudová aplikace](./spring-cloud-quickstart-launch-app-cli.md).
 
 > [!NOTE]
->  Rozšíření ASC CLI je aktualizované z verze 0.2.0 na 0.2.1. Tato změna má vliv na syntaxi příkazu pro streamování protokolů: `az spring-cloud app log tail`, který je nahrazen: `az spring-cloud app logs`. Příkaz: `az spring-cloud app log tail` bude v budoucí verzi zastaralá. Pokud jste používali verzi 0.2.0, můžete upgradovat na 0.2.1. Nejdřív odeberte starou verzi pomocí příkazu: `az extension remove -n spring-cloud`.  Pak nainstalujte 0.2.1 pomocí příkazu: `az extension add -n spring-cloud`.
+>  Rozšíření ASC CLI je aktualizované z verze 0.2.0 na 0.2.1. Tato změna má vliv na syntaxi příkazu pro streamování protokolů: `az spring-cloud app log tail` , který je nahrazen: `az spring-cloud app logs` . Příkaz: `az spring-cloud app log tail` bude v budoucí verzi zastaralá. Pokud jste používali verzi 0.2.0, můžete upgradovat na 0.2.1. Nejdřív odeberte starou verzi pomocí příkazu: `az extension remove -n spring-cloud` .  Pak nainstalujte 0.2.1 pomocí příkazu: `az extension add -n spring-cloud` .
 
 ## <a name="use-cli-to-tail-logs"></a>Použít CLI pro protokoly Tail
 
@@ -50,7 +49,7 @@ Tato akce vrátí protokoly:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Protokol Tail pro aplikaci s více instancemi
-Pokud existuje pro aplikaci s názvem `auth-service`více instancí, můžete si Zobrazit protokol instance pomocí `-i/--instance` možnosti. 
+Pokud existuje pro aplikaci s názvem více instancí `auth-service` , můžete si Zobrazit protokol instance pomocí `-i/--instance` Možnosti. 
 
 Nejprve můžete získat názvy instancí aplikace pomocí následujícího příkazu.
 
@@ -66,7 +65,7 @@ auth-service-default-12-75cc4577fc-pw7hb  Running   UP
 auth-service-default-12-75cc4577fc-8nt4m  Running   UP
 auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
-Pak můžete zasílat protokoly instance aplikace s možností možnosti `-i/--instance` :
+Pak můžete zasílat protokoly instance aplikace s `-i/--instance` možností možnosti:
 
 ```
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb

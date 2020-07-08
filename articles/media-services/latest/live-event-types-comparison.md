@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78244647"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živých událostí
@@ -36,13 +35,13 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 
 | Funkce | Předávací živá událost | Událost Standard nebo Premium1080p Live |
 | --- | --- | --- |
-| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |Ne |Ano |
+| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Yes |
 | Maximální rozlišení videa pro kanál příspěvků |4K (4096x2160 v 60 snímcích za sekundu) |1080p (1920x1088 v 30 snímcích/s)|
 | Doporučené maximum vrstev v kanálu příspěvků|Až 12|Jeden zvuk|
 | Maximální počet vrstev ve výstupu| Stejné jako vstup|Až 6 (viz Předvolby systému níže)|
-| Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|–|
+| Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|Není k dispozici|
 | Maximální přenosová rychlost pro jednu vrstvu v příspěvku |20 MB/s|20 MB/s|
-| Podpora pro zvukové stopy ve více jazycích|Ano|Ne|
+| Podpora pro zvukové stopy ve více jazycích|Yes|No|
 | Podporované vstupní kodeky videa |H. 264/AVC a H. 265/HEVC|H. 264/AVC|
 | Podporované video kodeky pro výstup|Stejné jako vstup|H. 264/AVC|
 | Podporovaná bitová hloubka videa, vstup a výstup|Až 10 bitů včetně HDR 10/HLG|8 bitů|
@@ -55,13 +54,13 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 | Maximální doba běhu| 24 hodin × 365 dní, živý lineární | 24 hodin × 365 dní, živý lineární (Preview)|
 | Možnost předávání dat titulků Embedded CEA 608/708|Ano|Ano|
 | Možnost zapnout živý přepis|Ano|Ano|
-| Podpora pro vložení SLAT|Ne|Ne|
-| Podpora pro signalizaci reklamy prostřednictvím rozhraní API| Ne|Ne|
+| Podpora pro vložení SLAT|No|No|
+| Podpora pro signalizaci reklamy prostřednictvím rozhraní API| No|No|
 | Podpora pro signalizaci reklamy prostřednictvím zpráv SCTE-35 in-band|Ano|Ano|
-| Možnost obnovení z krátkých kabin v informačním kanálu příspěvků|Ano|Částečné|
-| Podpora pro neuniformní vstupní GOPs|Ano|Ne – vstup musí mít pevnou skupinu GOP dobu trvání.|
-| Podpora pro vstup variabilní frekvence snímků|Ano|Ne – vstupní hodnota musí být pevná snímková frekvence. Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kanál příspěvků ale nemůže vyřadit kmitočet snímků (například na 15 snímků za sekundu).|
-| Automaticky shutoff událost živé události při ztrátě vstupního kanálu|Ne|Pokud není LiveOutput spuštěný, po 12 hodinách.|
+| Možnost obnovení z krátkých kabin v informačním kanálu příspěvků|Yes|Částečné|
+| Podpora pro neuniformní vstupní GOPs|Yes|Ne – vstup musí mít pevnou skupinu GOP dobu trvání.|
+| Podpora pro vstup variabilní frekvence snímků|Yes|Ne – vstupní hodnota musí být pevná snímková frekvence. Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kanál příspěvků ale nemůže vyřadit kmitočet snímků (například na 15 snímků za sekundu).|
+| Automaticky shutoff událost živé události při ztrátě vstupního kanálu|No|Pokud není LiveOutput spuštěný, po 12 hodinách.|
 
 ## <a name="system-presets"></a>Předvolby systému
 

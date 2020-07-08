@@ -12,10 +12,9 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78184244"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph operace k dispozici pro Azure AD B2C
@@ -30,7 +29,7 @@ Každé propojení v následujících částech cílí na odpovídající strán
 - [Vytvoření uživatele spotřebitele](https://docs.microsoft.com/graph/api/user-post-users)
 - [Získat uživatele](https://docs.microsoft.com/graph/api/user-get)
 - [Aktualizace uživatele](https://docs.microsoft.com/graph/api/user-update)
-- [Odstranit uživatele](https://docs.microsoft.com/graph/api/user-delete)
+- [Odstranění uživatele](https://docs.microsoft.com/graph/api/user-delete)
 
 Další informace o správě Azure AD B2C uživatelských účtů s rozhraním API Microsoft Graph najdete v tématu [správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).
 

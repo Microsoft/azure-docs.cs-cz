@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206232"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
@@ -110,7 +109,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 12. Nakonfigurujte akci Microsoft Teams. **Návrhář Logic Apps** vás vyzve k ověření vašeho účtu Office 365. Vyberte **ID týmu** a **ID kanálu** , do kterého se má zpráva poslat.
 
-13. Nakonfigurujte zprávu pomocí kombinace statického textu a odkazů na \<pole\> v dynamickém obsahu. Zkopírujte následující text a vložte ho do pole **zpráva** :
+13. Nakonfigurujte zprávu pomocí kombinace statického textu a odkazů na \<fields\> dynamický obsah. Zkopírujte následující text a vložte ho do pole **zpráva** :
 
     ```text
       Activity Log Alert: <eventSource>
@@ -119,7 +118,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
       resourceId: <resourceId>
     ```
 
-    Pak vyhledejte a nahraďte \<pole\> pomocí značek dynamického obsahu se stejným názvem.
+    Pak vyhledejte a nahraďte \<fields\> značkami dynamického obsahu se stejným názvem.
 
     > [!NOTE]
     > Existují dvě dynamická pole s názvem **status**. Přidejte obě tato pole do zprávy. Použijte pole, které je v kontejneru vlastností **activityLog** , a odstraňte druhé pole. Pokud chcete zobrazit úplný odkaz na pole, jak je znázorněno na následujícím snímku obrazovky, umístěte ukazatel myši na pole **stav** .
@@ -195,7 +194,7 @@ Položky Azure Service Health jsou součástí protokolu aktivit. Proces vytvoř
 
    1. V případě podmínky v **hodnotě true** postupujte podle pokynů v krocích 11 až 13 v tématu [Vytvoření upozornění protokolu aktivit](#create-an-activity-log-alert-administrative) a přidejte akci Microsoft Teams.
 
-   1. Definujte zprávu pomocí kombinace HTML a dynamického obsahu. Zkopírujte a vložte následující obsah do pole **zpráva** . Nahraďte `[incidentType]`pole `[trackingID]`, `[title]`, a `[communication]` pomocí značek dynamického obsahu se stejným názvem:
+   1. Definujte zprávu pomocí kombinace HTML a dynamického obsahu. Zkopírujte a vložte následující obsah do pole **zpráva** . Nahraďte `[incidentType]` `[trackingID]` pole,, `[title]` a `[communication]` pomocí značek dynamického obsahu se stejným názvem:
 
        ```html
        <p>
@@ -284,7 +283,7 @@ Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění 
 
       !["Akce po odeslání podmínky upozornění metriky výstrahy"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Akce po odeslání podmínky upozornění metriky výstrahy")
 
-  1. V **případě podmínky false** definujte akci Microsoft teams, aby komunikovala, že výstraha metriky neodpovídá očekáváním aplikace logiky. Zahrňte datovou část JSON. Všimněte si, jak odkazovat `triggerBody` na dynamický obsah ve `json()` výrazu.
+  1. V **případě podmínky false** definujte akci Microsoft teams, aby komunikovala, že výstraha metriky neodpovídá očekáváním aplikace logiky. Zahrňte datovou část JSON. Všimněte si, jak odkazovat na `triggerBody` dynamický obsah ve `json()` výrazu.
 
       !["Akce post nepravdivé podmínky upozornění na metriku"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Akce post nepravdivé podmínky upozornění metriky")
 

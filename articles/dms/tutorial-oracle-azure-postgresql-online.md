@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255562"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
@@ -86,7 +85,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
       SHUTDOWN IMMEDIATE;
       ```
 
-      Počkejte na potvrzení `'ORACLE instance shut down'`.
+      Počkejte na potvrzení `'ORACLE instance shut down'` .
 
     * Spusťte novou instanci a připojte ji (ale neotevírejte), abyste povolili nebo zakázali archivaci bu, a to spuštěním následujícího příkazu:
 
@@ -116,12 +115,12 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
       SELECT log_mode FROM v$database;
       ```
 
-      Měli byste obdržet odpověď `'ARCHIVELOG'`. Pokud je `'NOARCHIVELOG'`odpověď, pak se požadavek nesplní.
+      Měli byste obdržet odpověď `'ARCHIVELOG'` . Pokud je odpověď `'NOARCHIVELOG'` , pak se požadavek nesplní.
 
   * Pomocí jedné z následujících možností zapněte dodatečné protokolování replikace.
 
     * **Možnost 1**.
-      Změňte doplňkové protokolování na úrovni databáze tak, aby se pokryly všechny tabulky s PK a jedinečným indexem. Zjišťovací dotaz vrátí `'IMPLICIT'`.
+      Změňte doplňkové protokolování na úrovni databáze tak, aby se pokryly všechny tabulky s PK a jedinečným indexem. Zjišťovací dotaz vrátí `'IMPLICIT'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
@@ -134,7 +133,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
       ```
 
     * **Možnost 2**.
-      Změnou doplňkového protokolování na úrovni databáze pokryjete všechny tabulky a dotaz na vyhledávání vrátí `'YES'`.
+      Změnou doplňkového protokolování na úrovni databáze pokryjete všechny tabulky a dotaz na vyhledávání vrátí `'YES'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
@@ -166,7 +165,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    Měli byste obdržet odpověď `'YES'`.
+    Měli byste obdržet odpověď `'YES'` .
 
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Vyhodnocení úsilí pro Oracle k Azure Database for PostgreSQL migrace
 
@@ -221,7 +220,7 @@ Pokud vytvoříte schéma PostgreSQL pomocí nástrojů, jako je ora2pg před sp
     ![Zobrazení předplatných na portálu](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> Pokud potřebujete mapovat názvy zdrojových tabulek k tabulkám s různými názvy, e- [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) mailem a můžeme poskytnout skript pro automatizaci tohoto procesu.
+> Pokud potřebujete mapovat názvy zdrojových tabulek k tabulkám s různými názvy, e-mailem [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) a můžeme poskytnout skript pro automatizaci tohoto procesu.
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>Když schéma tabulky PostgreSQL neexistuje
 
@@ -249,7 +248,7 @@ Jak začít:
     | HR | targetHR.HR | "HR". ZEMĚ "." COUNTRY_ID " |
     | HR | targetHR.Hr | * Nejde namapovat smíšené případy. |
 
-    * Pokud chcete v cílovém PostgreSQL vytvořit kombinaci velkých a malých písmen a názvů [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)tabulek, obraťte se na. V cílové databázi PostgreSQL můžeme poskytnout skript pro nastavení schématu smíšené velikosti tabulky.
+    * Pokud chcete v cílovém PostgreSQL vytvořit kombinaci velkých a malých písmen a názvů tabulek, obraťte se na [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) . V cílové databázi PostgreSQL můžeme poskytnout skript pro nastavení schématu smíšené velikosti tabulky.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 
@@ -322,7 +321,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ## <a name="upload-oracle-oci-driver"></a>Nahrát ovladač Oracle OCI
 
-1. Vyberte **Uložit**a pak na obrazovce **instalovat ovladač OCI** se přihlaste k účtu Oracle a Stáhněte si ovladač **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bajtů) (kontrolní součet SHA1:865082268) z [tohoto místa](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
+1. Vyberte **Uložit**a pak na obrazovce **instalace ovladače rozhraní OCI** se přihlaste k účtu Oracle a stáhněte **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** ovladače (37 128 586 bajtů) (s kontrolním součtem SHA1:865082268) z [tohoto místa](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
 2. Stáhněte ovladač do sdílené složky.
 
    Ujistěte se, že je složka sdílená s uživatelským jménem, které jste zadali s minimálním přístupem jen pro čtení. Azure Database Migration Service přistupuje ke sdílené složce a přečte se z ní, aby se do Azure nahrál ovladač OCI vyvoláním uživatelského jména, které zadáte.

@@ -11,10 +11,9 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c11bc48742c398d2048a236c7d00af044971f845
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78185603"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů v Azure Active Directory B2C
@@ -73,7 +72,7 @@ V současné době jsou doporučeny následující toky uživatelů:
 
 Tok uživatelů **registrace nebo přihlašování** pomocí místních účtů zahrnuje **zapomenuté heslo** a odkaz na první stránce prostředí. Kliknutím na tento odkaz se automaticky neaktivuje tok uživatele resetování hesla.
 
-Místo toho se kód `AADB2C90118` chyby vrátí do vaší aplikace. Vaše aplikace potřebuje zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo. Příklad zobrazíte tak, že se podíváte na [jednoduchý vzorek ASP.NET](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) , který ukazuje propojení uživatelských toků.
+Místo toho se kód chyby `AADB2C90118` vrátí do vaší aplikace. Vaše aplikace potřebuje zpracovat tento kód chyby spuštěním konkrétního toku uživatele, který resetuje heslo. Příklad zobrazíte tak, že se podíváte na [jednoduchý vzorek ASP.NET](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) , který ukazuje propojení uživatelských toků.
 
 ## <a name="email-address-storage"></a>Úložiště e-mailových adres
 

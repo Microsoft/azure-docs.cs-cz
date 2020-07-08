@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196922"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
@@ -103,7 +102,7 @@ V poslední části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má 
 
 1. V Excelu otevřete nový nebo existující sešit.
 
-1. Na kartě **data** přejděte k části **získání dat** > **z jiných zdrojů** > **z rozhraní ODBC** a spusťte **z okna rozhraní ODBC** .
+1. Na kartě **data** přejděte k části **získání dat**  >  **z jiných zdrojů**  >  **z rozhraní ODBC** a spusťte **z okna rozhraní ODBC** .
 
     ![Průvodce otevřením datového připojení](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
@@ -115,7 +114,7 @@ V poslední části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má 
 
 1. Vyberte **hivesampletable**a pak vyberte **Další**.
 
-1. Vyberte **Finish** (Dokončit).
+1. Vyberte **Dokončit**.
 
 1. V dialogovém okně **Import dat** můžete změnit, nebo zadat dotaz. Provedete to tak, že vyberete **vlastnosti**. Může to trvat několik sekund.
 
@@ -142,7 +141,7 @@ Otestování druhé zásady (Read-hivesampletable-devicemake), kterou jste vytvo
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
-    na:
+    na
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 

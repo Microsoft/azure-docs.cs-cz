@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78268116"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Použití Media Services k doručování licencí DRM nebo klíčů AES 
@@ -44,7 +43,7 @@ Ukázku popsanou v tomto článku si můžete přečíst v tématu [použití Az
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-1. Nastavte vývojové prostředí a naplňte soubor App. config informacemi o připojení, jak je popsáno v tématu [Media Services vývoj pomocí .NET](media-services-dotnet-how-to-use.md).
+1. Nastavte vývojové prostředí a naplňte soubor app.config o informace o připojení, jak je popsáno v [Media Services vývoj pomocí .NET](media-services-dotnet-how-to-use.md).
 
 2. Do části **appSettings** definované ve vašem souboru app.config přidejte následující elementy:
 

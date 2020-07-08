@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255231"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA v Azure Virtual Machines
@@ -41,7 +40,7 @@ Informace o tom, jak najít software SAP v Azure, najdete v článku o [tom, jak
 
 ## <a name="azure-backup-service"></a>Služba Azure Backup
 
-Prvním zobrazeným scénářem je situace, kdy služba Azure Backup používá rozhraní SAP HANA `backint` k provedení zálohy streamování z databáze SAP HANA. Nebo můžete použít obecnější schopnost služby Azure Backup k vytvoření snímku disku konzistentního s aplikací a jeho přenesení do služby Azure Backup.
+Prvním zobrazeným scénářem je situace, kdy služba Azure Backup používá `backint` rozhraní SAP HANA k provedení zálohy streamování z databáze SAP HANA. Nebo můžete použít obecnější schopnost služby Azure Backup k vytvoření snímku disku konzistentního s aplikací a jeho přenesení do služby Azure Backup.
 
 Azure Backup integruje a je certifikovaný jako řešení zálohování pro SAP HANA pomocí vlastního rozhraní SAP HANA s názvem [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Další podrobnosti o řešení, jeho schopnostech a oblastech Azure, kde jsou k dispozici, najdete v článku věnovaném [podpoře pro zálohování SAP HANA databází na virtuálních počítačích Azure v matici podpory](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). Podrobnosti a principy služby Azure Backup pro HANA najdete v článku [o SAP HANA zálohování databáze ve virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/sap-hana-db-about). 
 
@@ -116,12 +115,12 @@ Jak bylo uvedeno dříve, popis možností zálohování snímků Azure Backup, 
 > Zálohy na základě snímků disku pro SAP HANA v nasazeních, kde se používají víc databázových kontejnerů, vyžaduje minimální verzi HANA 2,0 SP04.
 > 
 
-Služba Azure Storage neposkytuje konzistenci systému souborů na více discích nebo svazcích, které jsou připojeny k virtuálnímu počítači během procesu snímku. To znamená, že konzistence aplikací během snímku musí být doručena aplikací, v tomto případě SAP HANA sebe sama. [Poznámka 2039883 pro SAP](https://launchpad.support.sap.com/#/notes/2039883) obsahuje důležité informace o SAP HANA zálohování podle snímků úložiště. Například u systémů souborů XFS je nutné před spuštěním snímku úložiště spustit **zablokování\_XFS** , aby se zajistila konzistence aplikace (podrobnosti o **\_XFS zablokování**najdete na stránce o [XFS\_zablokování (8) – Linux Man](https://linux.die.net/man/8/xfs_freeze) ).
+Služba Azure Storage neposkytuje konzistenci systému souborů na více discích nebo svazcích, které jsou připojeny k virtuálnímu počítači během procesu snímku. To znamená, že konzistence aplikací během snímku musí být doručena aplikací, v tomto případě SAP HANA sebe sama. [Poznámka 2039883 pro SAP](https://launchpad.support.sap.com/#/notes/2039883) obsahuje důležité informace o SAP HANA zálohování podle snímků úložiště. Například u systémů souborů XFS je nutné před spuštěním snímku úložiště spustit ** \_ zablokování XFS** , aby se zajistila konzistence aplikace (podrobnosti o **XFS \_ zablokování**najdete na [stránce o XFS \_ zablokování (8) – Linux Man](https://linux.die.net/man/8/xfs_freeze) ).
 
 Za předpokladu, že existuje souborový systém XFS se čtyřmi virtuálními disky Azure, následující kroky poskytují konzistentní snímek, který představuje datovou oblast HANA:
 
 1. Příprava pro vytvoření snímku dat HANA
-1. Zablokovat systémy souborů pro všechny disky nebo svazky (například použít **zablokování XFS\_**)
+1. Zablokovat systémy souborů pro všechny disky nebo svazky (například použít ** \_ zablokování XFS**)
 1. Vytvoření všech potřebných snímků objektů BLOB v Azure
 1. Uvolnit systém souborů
 1. Potvrzení snímku dat HANA (odstraní snímek)
@@ -133,7 +132,7 @@ Další informace o vytváření snímků dat HANA najdete v těchto článcích
 - Další podrobnosti k provedení kroků #1 najdete v článku [vytvoření snímku dat (NATIVNÍ SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) . 
 - Podrobnosti o potvrzení/odstranění snímků dat HANA podle potřeby v kroku #5 najdete v článku [vytvoření snímku dat (NATIVNÍ SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) . 
 
-Je důležité potvrdit snímek HANA. Vzhledem k tomu &quot;, že SAP HANA kopírování při zápisu&quot; , nemusí v tomto režimu přípravy snímku vyžadovat další místo na disku. &#39;taky není možné spustit nové zálohy, dokud se nepotvrdí SAP HANA snímku.
+Je důležité potvrdit snímek HANA. Vzhledem k &quot; tomu, že SAP HANA kopírování při zápisu, &quot; nemusí v tomto režimu přípravy snímku vyžadovat další místo na disku. &#39;taky není možné spustit nové zálohy, dokud se nepotvrdí SAP HANA snímku.
 
 
 ### <a name="sap-hana-backup-scheduling-strategy"></a>SAP HANA strategie plánování zálohování

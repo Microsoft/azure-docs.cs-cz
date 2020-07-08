@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921449"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Při spuštění virtuálního počítače Azure se v systému Windows zobrazí modrá obrazovka "KRITICKá služba neúspěšná"
@@ -27,7 +26,7 @@ Tento článek popisuje chybu "KRITICKá služba neúspěšná", která se můž
 
 Virtuální počítač s Windows se nespustí. Když zkontrolujete spouštěcí snímky obrazovky v [diagnostice spouštění](./boot-diagnostics.md), zobrazí se na modré obrazovce jedna z následujících chybových zpráv:
 
-- "Váš počítač byl příčinou problému a je nutné ho restartovat. Můžete restartovat. Další informace o tomto problému a možných opravách najdete na https://windows.com/stopcodewebu. Pokud zavoláte osobu podpory, poskytněte jim tyto informace: Stop kód: KRITICKá služba se nezdařila. " 
+- "Váš počítač byl příčinou problému a je nutné ho restartovat. Můžete restartovat. Další informace o tomto problému a možných opravách najdete na webu https://windows.com/stopcode . Pokud zavoláte osobu podpory, poskytněte jim tyto informace: Stop kód: KRITICKá služba se nezdařila. " 
 - "Váš počítač byl příčinou problému a je nutné ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak za vás budeme restartovat. Pokud se chcete dozvědět víc, můžete k této chybě vyhledat online později: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Příčina
@@ -107,15 +106,15 @@ Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 
 1. Disk s operačním systémem připojte k virtuálnímu počítači pro obnovení.
 2. Na disku s operačním systémem, který jste připojili, přejděte na **\Windows\System32\Config**. Zkopírujte všechny soubory jako zálohu pro případ, že je vyžadováno vrácení zpět.
-3. Spusťte **Editor registru** (Regedit. exe).
-4. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte položku**podregistr Load** **File** > .
+3. Spusťte **Editor registru** (regedit.exe).
+4. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte položku **File**  >  **podregistr Load**File.
 5. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** .
 6. Vyhledejte **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** a proveďte následující změny:
 
     AutoRestart = 0
 
     CrashDumpEnabled = 2
-7.  Vyberte **BROKENSYSTEM**. V nabídce vyberte **soubor** > **Uvolnit podregistr**.
+7.  Vyberte **BROKENSYSTEM**. V nabídce vyberte **soubor**  >  **Uvolnit podregistr**.
 8.  Upravte nastavení BCD tak, aby se spouštěla do režimu ladění. Z příkazového řádku se zvýšenými oprávněními spusťte následující příkazy:
 
     ```cmd
@@ -135,7 +134,7 @@ Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 9. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](troubleshoot-recovery-disks-portal-windows.md).
 10. Spusťte virtuální počítač a zjistěte, jestli zobrazuje analýzu výpisu paměti. Vyhledejte soubor, který se nepodařilo načíst. Tento soubor je potřeba nahradit souborem z pracovního virtuálního počítače. 
 
-    Následuje ukázka analýzy výpisu paměti. Můžete vidět, že **Chyba** je na autocrypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys".
+    Následuje ukázka analýzy výpisu paměti. Můžete vidět, že **Chyba** je v filecrypt.sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
 
     ```
     kd> !analyze -v 

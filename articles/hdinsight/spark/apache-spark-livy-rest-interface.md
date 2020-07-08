@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206278"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Odesílání vzdálených úloh do clusteru HDInsight Spark pomocí rozhraní Apache Spark REST API
@@ -41,7 +40,7 @@ curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-* Pokud chcete předat název souboru jar a ClassName jako součást vstupního souboru (v tomto příkladu Input. txt)
+* Pokud chcete předat název souboru jar a ClassName jako součást vstupního souboru (v tomto příkladu input.txt)
 
     ```cmd
     curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -77,7 +76,7 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.a
 
 ### <a name="example"></a>Příklad
 
-Odstranění dávkové úlohy s ID `5`dávky.
+Odstranění dávkové úlohy s ID dávky `5` .
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/5"
@@ -99,7 +98,7 @@ V této části se podíváme na příklady, jak pomocí Livy Spark odeslat dáv
 
 Proveďte následující kroky:
 
-1. Pro snadné použití nastavte proměnné prostředí. Tento příklad je založený na prostředí Windows, podle potřeby si můžete prohlédnout proměnné, které jsou potřeba pro vaše prostředí. Nahraďte `CLUSTERNAME`a `PASSWORD` příslušnými hodnotami.
+1. Pro snadné použití nastavte proměnné prostředí. Tento příklad je založený na prostředí Windows, podle potřeby si můžete prohlédnout proměnné, které jsou potřeba pro vaše prostředí. Nahraďte `CLUSTERNAME` a `PASSWORD` příslušnými hodnotami.
 
     ```cmd
     set clustername=CLUSTERNAME
@@ -128,13 +127,13 @@ Proveďte následující kroky:
 
     Všimněte si, jak poslední řádek ve výstupu uvádí **součet: 0**, který navrhuje žádné spuštěné dávky.
 
-1. Nyní můžeme odeslat dávkovou úlohu. Následující fragment kódu používá vstupní soubor (Input. txt) k předání názvu jar a názvu třídy jako parametrů. Pokud spouštíte tyto kroky z počítače s Windows, je doporučený postup pro použití vstupního souboru.
+1. Nyní můžeme odeslat dávkovou úlohu. Následující fragment kódu používá vstupní soubor (input.txt) k předání názvu jar a názvu třídy jako parametrů. Pokud spouštíte tyto kroky z počítače s Windows, je doporučený postup pro použití vstupního souboru.
 
     ```cmd
     curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-    Parametry v souboru **input. txt** jsou definovány takto:
+    Parametry v souboru **input.txt** jsou definovány takto:
 
     ```text
     { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
@@ -203,11 +202,11 @@ Proveďte následující kroky:
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Aktualizace konfigurace Livy počínaje verzí HDInsight 3,5
 
-Clustery HDInsight 3,5 a vyšší, ve výchozím nastavení zakažte používání místních cest k souborům pro přístup k ukázkovým datovým souborům nebo jar. Doporučujeme použít místo toho `wasbs://` cestu k přístupu k jar nebo ukázkovým datovým souborům z clusteru.
+Clustery HDInsight 3,5 a vyšší, ve výchozím nastavení zakažte používání místních cest k souborům pro přístup k ukázkovým datovým souborům nebo jar. Doporučujeme použít `wasbs://` místo toho cestu k přístupu k jar nebo ukázkovým datovým souborům z clusteru.
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Odesílání úloh Livy pro cluster v rámci virtuální sítě Azure
 
-Pokud se připojíte ke clusteru HDInsight Spark z Virtual Network Azure, můžete se přímo připojit k Livy v clusteru. V takovém případě je `http://<IP address of the headnode>:8998/batches`adresa URL koncového bodu Livy. Zde je **8998** port, na kterém Livy běží na hlavnímu uzlu clusteru. Další informace o přístupu ke službám na neveřejných portech najdete v tématu [porty používané Apache Hadoop službami v HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
+Pokud se připojíte ke clusteru HDInsight Spark z Virtual Network Azure, můžete se přímo připojit k Livy v clusteru. V takovém případě je adresa URL koncového bodu Livy `http://<IP address of the headnode>:8998/batches` . Zde je **8998** port, na kterém Livy běží na hlavnímu uzlu clusteru. Další informace o přístupu ke službám na neveřejných portech najdete v tématu [porty používané Apache Hadoop službami v HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="next-steps"></a>Další kroky
 

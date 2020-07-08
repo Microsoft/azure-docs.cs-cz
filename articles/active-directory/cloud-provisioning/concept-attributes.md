@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78299325"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Pochopení schématu Azure AD
@@ -42,13 +41,13 @@ Uživatel může být například součástí marketingového oddělení. Při z
 
 Synchronizace atributů může být přímá, kde hodnota ve službě Azure AD je přímo nastavená na hodnotu atributu on-premises. Nebo, programový výraz může synchronizaci zpracovat. Programový výraz je zapotřebí v případech, kdy je nutné provést určitou logiku nebo určení k naplnění hodnoty.
 
-Například pokud byste měli atribut mail "john.smith@contoso.com" a museli byste vydělit část "@contoso.com" a flow pouze hodnotu "Jan. Smith", použijte něco podobného:
+Například pokud byste měli atribut mail "" a museli byste john.smith@contoso.com vydělit @contoso.com část "" a flow pouze hodnotu "Jan. Smith", použijte něco podobného:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
 **Vzorový vstup/výstup:** <br>
 
-* **Vstup** (pošta): "john.smith@contoso.com"
+* **Vstup** (pošta): " john.smith@contoso.com "
 * **Výstup**: Jan. Smith
 
 Další informace o tom, jak napsat vlastní výrazy a syntaxi, najdete v tématu [zápis výrazů pro mapování atributů v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
@@ -61,7 +60,7 @@ V následující tabulce jsou uvedeny běžné atributy a jejich synchronizace d
 |CN|Direct|commonName
 |countryCode|Direct|countryCode|
 |displayName|Direct|displayName|
-|givenName|Expression|givenName|
+|givenName|Výraz|givenName|
 |objectGUID|Direct|sourceAnchorBinary|  
 |Třídy|Direct|userPrincipalName (Hlavní název uživatele)|
 |ProxyAdress|Direct|ProxyAddress|
@@ -75,8 +74,8 @@ Chcete-li zobrazit schéma a ověřit jej, postupujte podle těchto kroků.
 1.  Přejít na [Průzkumník grafů](https://developer.microsoft.com/graph/graph-explorer).
 1.  Přihlaste se pomocí účtu globálního správce.
 1.  Na levé straně vyberte změnit oprávnění a zajistěte, aby byl adresář. **nepřístupný** **. všechno** se *poslalo*.
-1.  Spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`. Tento dotaz vrátí seznam objektů služby, které jsou vyfiltrovány.
-1.  Vyhledejte `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` a poznamenejte si hodnotu `"id"`pro.
+1.  Spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` . Tento dotaz vrátí seznam objektů služby, které jsou vyfiltrovány.
+1.  Vyhledejte `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` a poznamenejte si hodnotu pro `"id"` .
     ```
     "value": [
             {
@@ -149,8 +148,8 @@ Chcete-li zobrazit schéma a ověřit jej, postupujte podle těchto kroků.
                 "passwordCredentials": []
             },
     ```
-1. Nahraďte `{Service Principal id}` hodnotou a spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`.
-1. Vyhledejte `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` a poznamenejte si hodnotu `"id"`pro.
+1. Nahraďte `{Service Principal id}` hodnotou a spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` .
+1. Vyhledejte `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` a poznamenejte si hodnotu pro `"id"` .
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -241,11 +240,11 @@ Chcete-li zobrazit schéma a ověřit jej, postupujte podle těchto kroků.
                 ]
             }
     ```
-1. Nyní spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`.
+1. Nyní spusťte dotaz `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` .
  
     Příklad: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   `{Service Principal Id}` Nahraďte `{AD2ADD Provisioning Id}` a hodnotami.
+   Nahraďte `{Service Principal Id}` a `{AD2ADD Provisioning Id}` hodnotami.
 
 1. Tento dotaz vrátí schéma.
 

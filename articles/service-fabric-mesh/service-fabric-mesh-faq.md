@@ -5,10 +5,9 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252493"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy týkající se Service Fabric sítě
@@ -107,7 +106,7 @@ Odchozí dotazy DNS z kontejneru do služby Service Fabric DNS za určitých oko
 
 - Použijte Windows Update Creators Update (verze 1709) nebo vyšší jako základní image kontejneru.
 - Pokud název služby samotný nefunguje, zkuste plně kvalifikovaný název: ServiceName. ApplicationName.
-- V souboru Docker pro vaši službu přidejte `EXPOSE <port>` port, na kterém je port, na kterém službu zveřejňujete. Příklad:
+- V souboru Docker pro vaši službu přidejte port, `EXPOSE <port>` na kterém je port, na kterém službu zveřejňujete. Příklad:
 
 ```Dockerfile
 EXPOSE 80
@@ -117,7 +116,7 @@ EXPOSE 80
 
 Možná budete muset v místním vývojovém clusteru odkázat na jiné služby než v Azure.
 
-V místním vývojovém clusteru použijte `{serviceName}.{applicationName}`. V Azure Service Fabric sítě použijte `{servicename}`. 
+V místním vývojovém clusteru použijte `{serviceName}.{applicationName}` . V Azure Service Fabric sítě použijte `{servicename}` . 
 
 Síť Azure v současné době nepodporuje překlad DNS napříč aplikacemi.
 
@@ -127,7 +126,7 @@ Další známé problémy se službou DNS při spuštění Service Fabric vývoj
 
 NAT sítě ServiceFabric může zmizet při používání aplikace na vašem místním počítači. Chcete-li diagnostikovat, zda k tomu došlo, spusťte z příkazového řádku následující příkaz:
 
-`docker network ls`a Všimněte si `servicefabric_nat` , zda je uvedena v seznamu.  Pokud ne, spusťte následující příkaz:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls`a Všimněte si, zda `servicefabric_nat` je uvedena v seznamu.  Pokud ne, spusťte následující příkaz:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Tím se problém vyřeší i v případě, že je aplikace už nasazená místně a ve stavu není v pořádku.
 

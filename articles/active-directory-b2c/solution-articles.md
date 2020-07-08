@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78186722"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Řešení a školení pro Azure Active Directory B2C
@@ -22,7 +21,7 @@ Azure Active Directory B2C (Azure AD B2C) umožňuje organizacím implementovat 
 
 | Nadpis | Popis |
 | ----- | ----------- |
-| [Správa identit zákazníků pomocí Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | V tomto přehledu služby Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) od týmu Azure AD B2C nám poskytuje přehled o tom, jak služba funguje, a také ukazuje, jak můžeme rychle připojit B2C k aplikaci ASP.NET Core. |
+| [Správa identit zákazníků pomocí Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | V tomto přehledu služby Parakh Jain ( [@jainparakh](https://twitter.com/jainparakh) ) od týmu Azure AD B2C nám poskytuje přehled o tom, jak služba funguje, a také ukazuje, jak můžeme rychle připojit B2C k aplikaci ASP.NET Core. |
 | [Výhody použití Azure AD B2C](https://aka.ms/b2coverview) | Seznamte se s výhodami a běžnými scénáři Azure AD B2C a jak vaše aplikace můžou tuto službu CIAM využívat. |
 | [Získání odborných znalostí v Azure AD B2C: kurz pro vývojáře](https://aka.ms/learnAADB2C) | Tento kompletní kurz přebírá vývojářům kompletní cestu k vývoji aplikací s Azure AD B2C jako ověřovací mechanismus. Deset podrobnějších modulů s Labs pokrývá vše od nastavení předplatného Azure za účelem vytváření vlastních zásad, které definují cesty, které vaše zákazníky propojí. |
 | [Povolení přístupu k aplikacím pomocí Azure Active Directory partnerům, dodavatelům a zákazníkům](https://aka.ms/aadexternalidentities) | V případě úspěchu každé organizace, bez ohledu na její velikost, odvětví nebo dodržování předpisů a zabezpečení stav, se může jednat o schopnost organizace spolupracovat s jinými organizacemi a spojit se se zákazníky.<br><br>Tato příručka podrobně popisuje spolupráci Azure AD, Azure AD B2C a Azure AD B2B. Tato příručka podrobně popisuje obchodní hodnotu a mechanismy vytváření aplikací nebo webových prostředí, které poskytuje konsolidovaná prostředí pro ověřování přizpůsobená kontextům vašich zaměstnanců, obchodních partnerů a dodavatelů a zákazníkům. |

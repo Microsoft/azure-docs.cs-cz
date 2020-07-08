@@ -5,10 +5,9 @@ ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78254887"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy ke službě Service Fabric
@@ -64,7 +63,7 @@ Pro následující tři důvody potřebujeme, aby měl provozní cluster minimá
 2. Vždycky ukládáme jednu repliku služby na uzel, takže velikost clusteru je horním limitem počtu replik, které služba (ve skutečnosti oddíl) může mít.
 3. Vzhledem k tomu, že upgrade clusteru bude obsahovat alespoň jeden uzel, chceme mít vyrovnávací paměť aspoň jeden uzel. proto chceme, aby měl provozní cluster *kromě* minimálního minima aspoň dva uzly. Minimální hodnota je velikost kvora systémové služby, jak je vysvětleno níže.  
 
-Chceme, aby byl cluster dostupný na tváři souběžného selhání dvou uzlů. Aby byl cluster Service Fabric k dispozici, musí být systémové služby k dispozici. Služby stavového systému jako služba pojmenování služeb a správce převzetí služeb při selhání, které sledují, které služby jsou v clusteru nasazené a kde se aktuálně hostují, závisí na silné konzistenci. Tato silná konzistence pak závisí na schopnosti získat *kvorum* pro jakoukoli danou aktualizaci do stavu těchto služeb, kde kvorum představuje striktní většinu replik (N/2 + 1) pro danou službu. Takže pokud chceme být odolný proti souběžné ztrátě dvou uzlů (tedy současně současně se dvěma replikami systémové služby), musí mít ClusterSize-QuorumSize >= 2, což vynutí minimální velikost 5. Pokud to chcete vidět, zvažte, že cluster má N uzlů a v každém uzlu je N replik služby System Service--One. Velikost kvora systémové služby je (N/2 + 1). Výše uvedená nerovnost vypadá jako N-(N/2 + 1) >= 2. Je třeba vzít v úvahu dva případy, kdy je N i v případě, že N je liché. Pokud N je i, řekněme N = 2\*m, kde m >= 1, nerovnosti vypadá 2\*m-(2\*m/2 + 1) >= 2 nebo m >= 3. Minimum pro N je 6 a je dosaženo v případě m = 3. Na druhé straně platí, že pokud N je lichá, řekněme N\*= 2 m + 1, kde m >= 1, nerovnost by vypadala 2\*m + 1-(\*(2 m + 1)/2 + 1) >= 2\*nebo 2 m + 1-(m + 1) >= 2 nebo m >= 2. Minimum pro N je 5 a je dosaženo při m = 2. Proto ze všech hodnot N, které odpovídají nerovnosti ClusterSize-QuorumSize >= 2, je minimum 5.
+Chceme, aby byl cluster dostupný na tváři souběžného selhání dvou uzlů. Aby byl cluster Service Fabric k dispozici, musí být systémové služby k dispozici. Služby stavového systému jako služba pojmenování služeb a správce převzetí služeb při selhání, které sledují, které služby jsou v clusteru nasazené a kde se aktuálně hostují, závisí na silné konzistenci. Tato silná konzistence pak závisí na schopnosti získat *kvorum* pro jakoukoli danou aktualizaci do stavu těchto služeb, kde kvorum představuje striktní většinu replik (N/2 + 1) pro danou službu. Takže pokud chceme být odolný proti souběžné ztrátě dvou uzlů (tedy současně současně se dvěma replikami systémové služby), musí mít ClusterSize-QuorumSize >= 2, což vynutí minimální velikost 5. Pokud to chcete vidět, zvažte, že cluster má N uzlů a v každém uzlu je N replik služby System Service--One. Velikost kvora systémové služby je (N/2 + 1). Výše uvedená nerovnost vypadá jako N-(N/2 + 1) >= 2. Je třeba vzít v úvahu dva případy, kdy je N i v případě, že N je liché. Pokud N je i, řekněme N = 2 \* m, kde m >= 1, nerovnosti vypadá 2 \* m-(2 \* m/2 + 1) >= 2 nebo m >= 3. Minimum pro N je 6 a je dosaženo v případě m = 3. Na druhé straně platí, že pokud N je lichá, řekněme N = 2 \* m + 1, kde m >= 1, nerovnost by vypadala 2 \* m + 1-((2 \* m + 1)/2 + 1) >= 2 nebo 2 \* m + 1-(m + 1) >= 2 nebo m >= 2. Minimum pro N je 5 a je dosaženo při m = 2. Proto ze všech hodnot N, které odpovídají nerovnosti ClusterSize-QuorumSize >= 2, je minimum 5.
 
 Všimněte si, že ve výše uvedeném argumentu jsme předpokládali, že každý uzel má repliku systémové služby, takže se velikost kvora vypočítá na základě počtu uzlů v clusteru. Změnou *TargetReplicaSetSize* však můžeme zmenšit velikost kvora menší než (N/2 + 1), což by mohlo znamenat, že by mohlo být cluster menší než 5 uzlů a stále mít 2 Navíc uzly nad velikost kvora. Například v případě clusteru se čtyřmi uzly, pokud nastavíme TargetReplicaSetSize na 3, bude velikost kvora založená na TargetReplicaSetSize (3/2 + 1) nebo 2, proto máme ClusterSize-QuorumSize = 4-2 >= 2. Nicméně nemůžeme zaručit, že systémová služba bude v kvoru nebo vyšší, pokud ztratíte všechny dvojice uzlů současně, může to být tím, že dva uzly, které jsme ztratili, nahrály dvě repliky, takže systémová služba přejde do ztráty kvora (bude mít jenom jednu repliku) a stane se nedostupnou.
 
@@ -109,18 +108,18 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 
 | **Vyloučené procesy antivirové ochrany** |
 | --- |
-| Fabric. exe |
-| Hostitele fabrichost vrátilo. exe |
-| Služby fabricinstallerservice. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| Agent fabricdca. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Jak se dá aplikace ověřovat do trezoru klíčů, aby získala tajné kódy?
 Níže jsou uvedené možnosti pro vaši aplikaci k získání přihlašovacích údajů pro ověřování do trezoru klíčů:

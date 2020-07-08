@@ -8,10 +8,9 @@ ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78247994"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
@@ -44,9 +43,9 @@ Při provádění následných operací škálování, například zvýšení po
 
 * Synchronizace je povolená i v případě, že ve fondu dotazů nejsou žádné repliky. Pokud provádíte horizontální navýšení kapacity z nuly na jednu nebo více replik s novými daty z operace zpracování na primárním serveru, proveďte nejprve synchronizaci bez replik ve fondu dotazů a pak navýšení kapacity. Synchronizace před změnou kapacity zabrání redundantnímu vysazování nově přidaných replik.
 
-* Při odstraňování modelu databáze z primárního serveru se automaticky neodstraní z replik ve fondu dotazů. Operaci synchronizace musíte provést pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) prostředí PowerShell, který odebere soubory pro tuto databázi z umístění sdíleného úložiště objektů BLOB repliky a pak odstraní databázi modelů v replikách ve fondu dotazů. Chcete-li zjistit, zda databáze modelů existuje ve replikách ve fondu dotazů, ale ne na primárním serveru, zajistěte, aby byl **samostatný server pro zpracování dotazů od fondu** dotazů nastaven na **hodnotu Ano**. Pak pomocí SSMS se připojte k primárnímu serveru pomocí `:rw` kvalifikátoru a zjistěte, jestli databáze existuje. Pak se připojte k replikám ve fondu dotazů, a to tak `:rw` , že se připojíte bez kvalifikátoru a zjistíte, jestli existuje i stejná databáze. Pokud databáze existuje na replikách ve fondu dotazů, ale ne na primárním serveru, spusťte operaci synchronizace.   
+* Při odstraňování modelu databáze z primárního serveru se automaticky neodstraní z replik ve fondu dotazů. Operaci synchronizace musíte provést pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) prostředí PowerShell, který odebere soubory pro tuto databázi z umístění sdíleného úložiště objektů BLOB repliky a pak odstraní databázi modelů v replikách ve fondu dotazů. Chcete-li zjistit, zda databáze modelů existuje ve replikách ve fondu dotazů, ale ne na primárním serveru, zajistěte, aby byl **samostatný server pro zpracování dotazů od fondu** dotazů nastaven na **hodnotu Ano**. Pak pomocí SSMS se připojte k primárnímu serveru pomocí `:rw` kvalifikátoru a zjistěte, jestli databáze existuje. Pak se připojte k replikám ve fondu dotazů, a to tak, že se připojíte bez `:rw` kvalifikátoru a zjistíte, jestli existuje i stejná databáze. Pokud databáze existuje na replikách ve fondu dotazů, ale ne na primárním serveru, spusťte operaci synchronizace.   
 
-* Při přejmenování databáze na primárním serveru je potřeba další krok, který zajistí, že je databáze správně synchronizovaná na všechny repliky. Po přejmenování proveďte synchronizaci pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) , který určuje `-Database` parametr se starým názvem databáze. Tato synchronizace odebere ze všech replik databázi a soubory se starým názvem. Pak proveďte další synchronizaci, která `-Database` určuje parametr s novým názvem databáze. Druhá synchronizace zkopíruje nově pojmenovanou databázi do druhé sady souborů a napředá všechny repliky. Tyto synchronizace nelze provést pomocí příkazu synchronizovat model na portálu.
+* Při přejmenování databáze na primárním serveru je potřeba další krok, který zajistí, že je databáze správně synchronizovaná na všechny repliky. Po přejmenování proveďte synchronizaci pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) , který určuje `-Database` parametr se starým názvem databáze. Tato synchronizace odebere ze všech replik databázi a soubory se starým názvem. Pak proveďte další synchronizaci, která určuje `-Database` parametr s novým názvem databáze. Druhá synchronizace zkopíruje nově pojmenovanou databázi do druhé sady souborů a napředá všechny repliky. Tyto synchronizace nelze provést pomocí příkazu synchronizovat model na portálu.
 
 ### <a name="synchronization-mode"></a>Režim synchronizace
 
@@ -98,7 +97,7 @@ Podrobnější diagnostiku prostředků serveru s horizontálním navýšení ka
 
 1. Na portálu klikněte na horizontální navýšení **kapacity**. Pomocí posuvníku vyberte počet serverů repliky dotazů. Počet replik, které jste si zvolili, je navíc k vašemu stávajícímu serveru.  
 
-2. V **samostatném serveru pro zpracování z fondu dotazování**vyberte možnost Ano, pokud chcete server pro zpracování vyloučit ze serverů dotazů. [Připojení](#connections) klienta pomocí výchozího připojovacího řetězce (bez `:rw`) se přesměrují na repliky ve fondu dotazů. 
+2. V **samostatném serveru pro zpracování z fondu dotazování**vyberte možnost Ano, pokud chcete server pro zpracování vyloučit ze serverů dotazů. [Připojení](#connections) klienta pomocí výchozího připojovacího řetězce (bez `:rw` ) se přesměrují na repliky ve fondu dotazů. 
 
    ![Posuvník horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -131,7 +130,7 @@ Použijte operaci **synchronizace** .
 Vrátit stavové kódy:
 
 
-|kód  |Popis  |
+|Kód  |Description  |
 |---------|---------|
 |-1     |  Neplatný       |
 |0     | Replikaci        |
@@ -152,7 +151,7 @@ Chcete-li spustit synchronizaci, použijte rutinu [Sync-AzAnalysisServicesInstan
 
 K nastavení počtu replik dotazů použijte [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný `-ReadonlyReplicaCount` parametr.
 
-K oddělení zpracovatelského serveru z fondu dotazů použijte [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný `-DefaultConnectionMode` parametr, který se `Readonly`má použít.
+K oddělení zpracovatelského serveru z fondu dotazů použijte [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný `-DefaultConnectionMode` parametr, který se má použít `Readonly` .
 
 Další informace najdete v tématu [použití instančního objektu s modulem AZ. AnalysisServices](analysis-services-service-principal.md#azmodule).
 
@@ -172,9 +171,9 @@ Cenovou úroveň můžete na serveru změnit několika replikami. Stejná cenov�
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-**Problém:** Při zjištění chyby uživatelů **nejde\<najít název serveru> instance v režimu připojení ReadOnly.**
+**Problém:** Při načítání došlo ** \<Name of the server> k chybě. v režimu připojení se nepodařilo najít instanci serveru.**
 
-**Řešení:** Při výběru **samostatného serveru pro zpracování z možnosti fond dotazování** se připojení klienta pomocí výchozího připojovacího řetězce (bez `:rw`) přesměrují na repliky fondu dotazů. Pokud repliky ve fondu dotazů ještě nejsou online, protože synchronizace ještě není dokončená, přesměrovaná připojení klienta můžou selhat. Aby nedocházelo k neúspěšným připojením, musí být ve fondu dotazů při provádění synchronizace k dispozici alespoň dva servery. Každý server se synchronizuje jednotlivě, zatímco ostatní zůstávají online. Pokud se rozhodnete, že během zpracování nebude mít server pro zpracování ve fondu dotazů, můžete jej odebrat z fondu ke zpracování a pak jej přidat zpátky do fondu po dokončení zpracování, ale před synchronizací. K monitorování stavu synchronizace použijte metriky paměti a QPU.
+**Řešení:** Při výběru **samostatného serveru pro zpracování z možnosti fond dotazování** se připojení klienta pomocí výchozího připojovacího řetězce (bez `:rw` ) přesměrují na repliky fondu dotazů. Pokud repliky ve fondu dotazů ještě nejsou online, protože synchronizace ještě není dokončená, přesměrovaná připojení klienta můžou selhat. Aby nedocházelo k neúspěšným připojením, musí být ve fondu dotazů při provádění synchronizace k dispozici alespoň dva servery. Každý server se synchronizuje jednotlivě, zatímco ostatní zůstávají online. Pokud se rozhodnete, že během zpracování nebude mít server pro zpracování ve fondu dotazů, můžete jej odebrat z fondu ke zpracování a pak jej přidat zpátky do fondu po dokončení zpracování, ale před synchronizací. K monitorování stavu synchronizace použijte metriky paměti a QPU.
 
 
 

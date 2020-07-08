@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78273626"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
@@ -51,11 +50,11 @@ Aktualizace a zastaralosti za běhu jsou oznámeny zde:
 
 ### <a name="new-patch-updates"></a>Nové aktualizace oprav
 
-Aktualizace aktualizací .NET, PHP, Java SDK nebo verze Tomcat/Jetty se aplikují automaticky přepsáním stávající instalace novou verzí. Aktualizace pro Node. js se instalují souběžně se stávajícími verzemi (podobně jako hlavní a dílčí verze v další části). Nové verze oprav Pythonu se dají nainstalovat ručně prostřednictvím [rozšíření lokality](https://azure.microsoft.com/blog/azure-web-sites-extensions/)vedle sebe s integrovanými instalacemi v Pythonu.
+Aktualizace aktualizací .NET, PHP, Java SDK nebo verze Tomcat/Jetty se aplikují automaticky přepsáním stávající instalace novou verzí. Aktualizace Node.js opravy se instalují souběžně se stávajícími verzemi (podobně jako hlavní a dílčí verze v další části). Nové verze oprav Pythonu se dají nainstalovat ručně prostřednictvím [rozšíření lokality](https://azure.microsoft.com/blog/azure-web-sites-extensions/)vedle sebe s integrovanými instalacemi v Pythonu.
 
 ### <a name="new-major-and-minor-versions"></a>Nové hlavní a dílčí verze
 
-Když se přidá nová hlavní nebo dílčí verze, nainstaluje se souběžně s existujícími verzemi. Aplikaci můžete ručně upgradovat na novou verzi. Pokud jste nakonfigurovali verzi modulu runtime v konfiguračním souboru (například `web.config` a `package.json`), musíte upgradovat se stejnou metodou. Pokud jste pro konfiguraci běhové verze použili App Service nastavení, můžete ji změnit v [Azure Portal](https://portal.azure.com) nebo spuštěním příkazu rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Cloud Shell](../cloud-shell/overview.md), jak je znázorněno v následujících příkladech:
+Když se přidá nová hlavní nebo dílčí verze, nainstaluje se souběžně s existujícími verzemi. Aplikaci můžete ručně upgradovat na novou verzi. Pokud jste nakonfigurovali verzi modulu runtime v konfiguračním souboru (například `web.config` a `package.json` ), musíte upgradovat se stejnou metodou. Pokud jste pro konfiguraci běhové verze použili App Service nastavení, můžete ji změnit v [Azure Portal](https://portal.azure.com) nebo spuštěním příkazu rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Cloud Shell](../cloud-shell/overview.md), jak je znázorněno v následujících příkladech:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -78,15 +77,15 @@ Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtim
 | Informace | Kde ji najít | 
 |-|-|
 | Verze systému Windows | Viz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (informace o systému) |
-| Verze .NET | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| Verze .NET Core | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
-| Verze PHP | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
-| Výchozí verze Node. js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Verze Pythonu | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
-| Verze Java | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
+| Verze .NET | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| Verze .NET Core | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
+| Verze PHP | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
+| Výchozí verze Node.js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Verze Pythonu | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
+| Verze Java | V `https://<appname>.scm.azurewebsites.net/DebugConsole` Spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
 
 > [!NOTE]  
-> Přístup k umístění `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`registru, kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
+> Přístup k umístění registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
 >
 >
 

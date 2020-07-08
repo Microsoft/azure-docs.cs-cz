@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, TwistLock, Red Hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271366"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift
@@ -24,14 +23,14 @@ Tento dokument popisuje rozdíly v dokumentaci k nasazení obecných OpenShift v
 Než budete postupovat podle pokynů dodavatele, přečtěte si tyto pokyny.
 Nadpisy oddílů v následujících krocích pro konkrétní produkt odkazují přímo na nadpisy oddílů v dokumentaci pro dodavatele.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Dokumentace k většině produktů zabezpečení předpokládá, že máte oprávnění správce clusteru.
 Správci zákazníka nemají všechna oprávnění v Azure Red Hat OpenShift. Oprávnění požadovaná pro úpravu prostředků na úrovni clusteru jsou omezená.
 
-Nejdřív zajistěte, aby byl uživatel přihlášený ke clusteru jako správce zákazníka, a `oc get scc`to spuštěním. Všichni uživatelé, kteří jsou členy skupiny správců zákazníka, mají oprávnění Zobrazit omezení kontextu zabezpečení (SCCs) v clusteru.
+Nejdřív zajistěte, aby byl uživatel přihlášený ke clusteru jako správce zákazníka, a to spuštěním `oc get scc` . Všichni uživatelé, kteří jsou členy skupiny správců zákazníka, mají oprávnění Zobrazit omezení kontextu zabezpečení (SCCs) v clusteru.
 
-Dále se ujistěte, že `oc` binární verze je `3.11.154`.
+Dále se ujistěte, že `oc` binární verze je `3.11.154` .
 ```
 oc version
 oc v3.11.154
@@ -74,9 +73,9 @@ Pokračujte podle zbývajících pokynů v kroku 1.  Tyto pokyny popisují nasta
 ### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>Krok 2: nasazení azurová serveru, databáze a brány
 Postupujte podle kroků uvedených v části azurová dokumentace pro instalaci nástroje azurová-Console. yaml.
 
-Upravte poskytnutý `aqua-console.yaml`.  Odeberte horní dva objekty s označením `kind: ClusterRole` a. `kind: ClusterRoleBinding`  Tyto prostředky se nevytvoří, protože správce zákazníka nemá v tuto chvíli oprávnění upravovat `ClusterRole` a `ClusterRoleBinding` vytvářet objekty.
+Upravte poskytnutý `aqua-console.yaml` .  Odeberte horní dva objekty s označením `kind: ClusterRole` a `kind: ClusterRoleBinding` .  Tyto prostředky se nevytvoří, protože správce zákazníka nemá v tuto chvíli oprávnění upravovat a vytvářet `ClusterRole` `ClusterRoleBinding` objekty.
 
-Druhá změna bude v `kind: Route` části. `aqua-console.yaml` Pro `kind: Route` objekt v `aqua-console.yaml` souboru nahraďte následující YAML.
+Druhá změna bude v `kind: Route` části `aqua-console.yaml` . Pro objekt v souboru nahraďte následující YAML `kind: Route` `aqua-console.yaml` .
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -121,7 +120,7 @@ Při nasazování vynucení nastavte následující pole:
 
 Základní pokyny, které jsme změnili, najdete v [dokumentaci k nasazení cloudu Prisma](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html) .
 
-Začněte tím, že `twistcli` nainstalujete nástroj, jak je popsáno v části "Install Prisma Cloud" a "stažení cloudového softwaru Prisma".
+Začněte tím, že nainstalujete `twistcli` nástroj, jak je popsáno v části "Install Prisma Cloud" a "stažení cloudového softwaru Prisma".
 
 Vytvořit nový projekt OpenShift
 ```
@@ -138,7 +137,7 @@ Začněte s oddílem "Install Console".
 Během `oc create -f twistlock_console.yaml` kroku 2 se při vytváření oboru názvů zobrazí chyba.
 Můžete ji bezpečně ignorovat, obor názvů byl dříve vytvořen pomocí `oc new-project` příkazu.
 
-Používá `azure-disk` se pro typ úložiště.
+Používá se `azure-disk` pro typ úložiště.
 
 ### <a name="create-an-external-route-to-console"></a>Vytvoření externí trasy pro konzolu
 

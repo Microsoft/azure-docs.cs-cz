@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78164538"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrace databáze MariaDB do Azure Database for MariaDB pomocí výpisu a obnovení
@@ -18,7 +17,7 @@ Tento článek popisuje dva běžné způsoby zálohování a obnovení databáz
 - Výpis a obnovení z příkazového řádku (pomocí mysqldump) 
 - Výpis a obnovení pomocí PHPMyAdmin
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Pokud chcete projít tento průvodce, musíte mít:
 - [Vytvoření serveru Azure Database for MariaDB – Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - na počítači je nainstalovaný nástroj příkazového řádku [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) .
@@ -34,20 +33,20 @@ Pomocí nástrojů MySQL, jako je mysqldump a mysqlpump, můžete vypsat a nač�
 
 - Při migraci celé databáze používejte výpisy paměti databáze. Toto doporučení se drží při přesunu velkých objemů dat, nebo když chcete minimalizovat přerušení služby pro živé weby nebo aplikace. 
 -  Při načítání dat do služby Azure Database for MariaDB se ujistěte, že všechny tabulky v databázi používají databázové jádro InnoDB. Azure Database for MariaDB podporuje jenom modul úložiště InnoDB, a proto nepodporuje alternativní úložné moduly. Pokud jsou vaše tabulky nakonfigurované s jinými úložnými moduly, převeďte je do formátu modulu InnoDB před migrací na Azure Database for MariaDB.
-   Pokud máte například WordPress nebo WebApp pomocí tabulek MyISAM, nejprve tyto tabulky převeďte tak, že před obnovením do Azure Database for MariaDB převedete migraci do formátu InnoDB. Pomocí klauzule `ENGINE=InnoDB` nastavte modul použitý při vytváření nové tabulky a potom přeneste data do kompatibilní tabulky před obnovením. 
+   Pokud máte například WordPress nebo WebApp pomocí tabulek MyISAM, nejprve tyto tabulky převeďte tak, že před obnovením do Azure Database for MariaDB převedete migraci do formátu InnoDB. Pomocí klauzule `ENGINE=InnoDB` Nastavte modul použitý při vytváření nové tabulky a potom přeneste data do kompatibilní tabulky před obnovením. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- Abyste se při výpisu databází vyhnuli problémům s kompatibilitou, ujistěte se, že zdrojový i cílový systém používají stejnou verzi MariaDB. Pokud například váš stávající server MariaDB má verzi 10,2, měli byste migrovat na Azure Database for MariaDB nakonfigurovanou na run verze 10,2. `mysql_upgrade` Příkaz nefunguje na Azure Database for MariaDBm serveru a není podporovaný. Pokud potřebujete upgradovat přes MariaDB verze, nejdřív vypíšete nebo exportujte databázi nižší verze do vyšší verze MariaDB ve vašem vlastním prostředí. Potom spusťte `mysql_upgrade`příkaz, než se pokusíte o migraci do Azure Database for MariaDB.
+- Abyste se při výpisu databází vyhnuli problémům s kompatibilitou, ujistěte se, že zdrojový i cílový systém používají stejnou verzi MariaDB. Pokud například váš stávající server MariaDB má verzi 10,2, měli byste migrovat na Azure Database for MariaDB nakonfigurovanou na run verze 10,2. `mysql_upgrade`Příkaz nefunguje na Azure Database for MariaDBm serveru a není podporovaný. Pokud potřebujete upgradovat přes MariaDB verze, nejdřív vypíšete nebo exportujte databázi nižší verze do vyšší verze MariaDB ve vašem vlastním prostředí. Potom spusťte `mysql_upgrade` příkaz, než se pokusíte o migraci do Azure Database for MariaDB.
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 Pro optimalizaci výkonu si všimněte těchto doporučení při dumpingu velkých databází:
--   Při ukládání `exclude-triggers` databází použijte možnost v mysqldump. Vylučte triggery ze souborů s výpisem paměti, aby nedocházelo k příkazům triggeru během obnovování dat. 
--   Pomocí `single-transaction` možnosti nastavte režim izolace transakce na možnost opakované čtení a odešlete příkaz spustit transakci SQL serveru před výpisy dat. Dumpingové množství tabulek v rámci jedné transakce způsobí, že se během obnovování spotřebuje nějaké dodatečné úložiště. `single-transaction` Možnost a `lock-tables` možnost se vzájemně vylučují, protože uzamčené tabulky způsobují implicitní potvrzení všech čekajících transakcí. Pokud chcete vypsat velké tabulky, `single-transaction` Zkombinujte možnost s `quick` možností. 
--   Použijte syntaxi `extended-insert` s více řádky, která obsahuje několik seznamů hodnot. Výsledkem je menší soubor výpisu paměti a při opětovném načtení souboru se urychlí vložení.
--  Při výpisu databází použijte `order-by-primary` možnost mysqldump, aby se data využívala v pořadí primárního klíče.
--   Pokud chcete `disable-keys` před načtením zakázat omezení cizího klíče, použijte možnost v mysqldump. Zakázání kontrol cizích klíčů poskytuje nárůst výkonu. Povolte omezení a ověřte data po zatížení, abyste zajistili referenční integritu.
+-   `exclude-triggers`Při ukládání databází použijte možnost v mysqldump. Vylučte triggery ze souborů s výpisem paměti, aby nedocházelo k příkazům triggeru během obnovování dat. 
+-   Pomocí `single-transaction` Možnosti nastavte režim izolace transakce na možnost opakované čtení a odešlete příkaz spustit transakci SQL serveru před výpisy dat. Dumpingové množství tabulek v rámci jedné transakce způsobí, že se během obnovování spotřebuje nějaké dodatečné úložiště. `single-transaction`Možnost a `lock-tables` možnost se vzájemně vylučují, protože uzamčené tabulky způsobují implicitní potvrzení všech čekajících transakcí. Pokud chcete vypsat velké tabulky, zkombinujte `single-transaction` možnost s `quick` možností. 
+-   Použijte `extended-insert` syntaxi s více řádky, která obsahuje několik seznamů hodnot. Výsledkem je menší soubor výpisu paměti a při opětovném načtení souboru se urychlí vložení.
+-  `order-by-primary`Při výpisu databází použijte možnost mysqldump, aby se data využívala v pořadí primárního klíče.
+-   `disable-keys`Pokud chcete před načtením zakázat omezení cizího klíče, použijte možnost v mysqldump. Zakázání kontrol cizích klíčů poskytuje nárůst výkonu. Povolte omezení a ověřte data po zatížení, abyste zajistili referenční integritu.
 -   V případě potřeby použijte dělené tabulky.
 -   Načtěte data paralelně. Vyhněte se příliš moc paralelismu, protože by došlo k dosažení limitu prostředků a monitorování prostředků pomocí metrik dostupných v Azure Portal. 
 -   Použijte `defer-table-indexes` možnost v mysqlpump při vytváření dumpingových databází, aby se vytvoření indexu stalo po načtení dat tabulky.
@@ -66,7 +65,7 @@ K dispozici jsou následující parametry:
 - [souborzálohy. SQL] název souboru pro zálohování databáze 
 - [--opt] Možnost mysqldump 
 
-Pokud například chcete zálohovat databázi s názvem ' TestDB ' na serveru MariaDB s uživatelským jménem ' testuser ' a bez hesla k souboru testdb_backup. SQL, použijte následující příkaz. Příkaz zálohuje `testdb` databázi do souboru s názvem `testdb_backup.sql`, který obsahuje všechny příkazy SQL potřebné k opětovnému vytvoření databáze. 
+Pokud například chcete zálohovat databázi s názvem ' TestDB ' na serveru MariaDB s uživatelským jménem ' testuser ' a bez hesla k souboru testdb_backup. SQL, použijte následující příkaz. Příkaz zálohuje `testdb` databázi do souboru s názvem `testdb_backup.sql` , který obsahuje všechny příkazy SQL potřebné k opětovnému vytvoření databáze. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql

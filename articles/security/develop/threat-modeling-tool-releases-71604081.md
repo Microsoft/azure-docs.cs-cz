@@ -9,10 +9,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 59d385ba7de5bf7bceae4dc8ddadbca813046094
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78269714"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool vydání aktualizace 7.1.60408.1-4/9/2019
@@ -40,7 +39,7 @@ Verze Threat Modeling Tool klienta se teď zobrazuje na domovské obrazovce apli
 
 ### <a name="support-links-have-been-updated"></a>Odkazy na podporu byly aktualizovány
 
-Všechny odkazy podpory v rámci nástroje byly aktualizovány, aby bylo možné směrovat [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) uživatele spíše než Fórum MSDN.
+Všechny odkazy podpory v rámci nástroje byly aktualizovány, aby bylo možné směrovat uživatele [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) spíše než Fórum MSDN.
 
 ## <a name="system-requirements"></a>Požadavky na systém
 

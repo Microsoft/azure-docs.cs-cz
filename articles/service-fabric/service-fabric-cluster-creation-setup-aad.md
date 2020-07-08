@@ -4,10 +4,9 @@ description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro 
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78193372"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
@@ -38,7 +37,7 @@ Abychom zjednodušili některé kroky týkající se konfigurace služby Azure A
 
 Pomocí skriptů vytvoříme dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, vytvoříte uživatele pro [role podporované Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spusťte `SetupApplications.ps1`příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace.  Zadejte také uživatelská jména a hesla pro uživatele. Příklad:
+Spusťte `SetupApplications.ps1` příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace.  Zadejte také uživatelská jména a hesla pro uživatele. Příklad:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -49,18 +48,18 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > Pro národní cloudy (například Azure Government, Azure Čína, Azure Německo) byste měli zadat i `-Location` parametr.
 
-*TenantId* můžete najít spuštěním příkazu `Get-AzureSubscription`PowerShellu. Spuštění tohoto příkazu zobrazí TenantId pro každé předplatné.
+*TenantId* můžete najít spuštěním příkazu PowerShellu `Get-AzureSubscription` . Spuštění tohoto příkazu zobrazí TenantId pro každé předplatné.
 
 *Název_clusteru* slouží k vytvoření předpony aplikací služby Azure AD, které jsou vytvořeny pomocí skriptu. Nemusí přesně odpovídat samotnému názvu clusteru. Je určena jenom k tomu, aby bylo snazší mapovat artefakty Azure AD na cluster Service Fabric, ve kterém se používají.
 
 *WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster. Pokud vytváříte aplikace Azure AD, které představují existující cluster, zajistěte, aby tato adresa URL odpovídala vašemu stávajícímu koncovému bodu clusteru. Pokud vytváříte aplikace pro nový cluster, naplánujte koncový bod, který bude mít cluster, a ujistěte se, že nepoužíváte koncový bod existujícího clusteru. Ve výchozím nastavení je koncový bod Service Fabric Explorer:
 
-https://&lt;cluster_domain&gt;: 19080/Explorer
+https:// &lt; cluster_domain &gt; : 19080/Explorer
 
 Zobrazí se výzva, abyste se přihlásili k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. Pokud se podíváte na aplikace klienta v [Azure Portal][azure-portal], měli byste vidět dvě nové položky:
 
-   * *ClusterName*\_Cluster název_clusteru
-   * *Klient název_clusteru*\_
+   * *Název clusteru* \_ Služby
+   * *Název clusteru* \_ Služba
 
 Skript vytiskne JSON vyžadovaný šablonou Azure Resource Manager při [vytváření clusteru s povoleným AAD](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access), takže je vhodné ponechat okno PowerShellu otevřené.
 
@@ -96,7 +95,7 @@ Toto řešení je stejné jako předchozí.
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer vrátí selhání při přihlášení: "AADSTS50011"
 #### <a name="problem"></a>Problém
-Při pokusu o přihlášení ke službě Azure AD v Service Fabric Explorer vrátí stránka chybu: "AADSTS50011 &lt;: adresa URL&gt; adresy pro odpověď neodpovídá adresám odpovědí nakonfigurovaným pro aplikaci: &lt;GUID&gt;".
+Při pokusu o přihlášení ke službě Azure AD v Service Fabric Explorer vrátí stránka chybu: "AADSTS50011: adresa URL adresy pro odpověď neodpovídá &lt; &gt; adresám odpovědí nakonfigurovaným pro aplikaci: &lt; GUID &gt; ".
 
 ![Adresa odpovědi SFX se neshoduje.][sfx-reply-address-not-match]
 
@@ -110,13 +109,13 @@ Na stránce registrace aplikace Azure AD pro váš cluster Vyberte **ověřován
 
 ### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Připojení ke clusteru pomocí ověřování Azure AD prostřednictvím PowerShellu přináší při přihlášení chybu: "AADSTS50011"
 #### <a name="problem"></a>Problém
-Když se pokusíte připojit ke clusteru Service Fabric pomocí Azure AD přes PowerShell, přihlašovací stránka vrátí chybu: "AADSTS50011: adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: &lt;GUID&gt;".
+Když se pokusíte připojit ke clusteru Service Fabric pomocí Azure AD přes PowerShell, přihlašovací stránka vrátí chybu: "AADSTS50011: adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: &lt; GUID &gt; ".
 
 #### <a name="reason"></a>Důvod
 Podobně jako u předchozího problému se PowerShell pokusí ověřit vůči službě Azure AD, která poskytuje adresu URL pro přesměrování, která není uvedená v seznamu **adres URL odpovědí** aplikace Azure AD.  
 
 #### <a name="solution"></a>Řešení
-Použijte stejný proces jako v předchozím problému, ale adresa URL musí být nastavená na `urn:ietf:wg:oauth:2.0:oob`, speciální přesměrování pro ověřování pomocí příkazového řádku.
+Použijte stejný proces jako v předchozím problému, ale adresa URL musí být nastavená na `urn:ietf:wg:oauth:2.0:oob` , speciální přesměrování pro ověřování pomocí příkazového řádku.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Připojení clusteru pomocí ověřování Azure AD prostřednictvím PowerShellu
 Pokud chcete připojit Cluster Service Fabric, použijte následující příklad příkazu PowerShellu:

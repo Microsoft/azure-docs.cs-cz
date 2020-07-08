@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296377"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
@@ -34,7 +33,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToObject` se chová v různých typech. 
+  Následující příklad ukazuje, jak se `StringToObject` chová v různých typech. 
   
  Níže jsou uvedeny příklady s platným vstupem.
 
@@ -56,7 +55,7 @@ Zde je sada výsledků.
 ```
 
  Následují příklady s neplatným vstupem.
-I když jsou v rámci dotazu platné, nebudou analyzovány na platné objekty. Řetězce v řetězci objektu musí být buď uvozené řídicím znakem\\"{\\" a\\":\\" str "}", nebo okolní uvozovka musí být jednoduché "{" a ":" str "}".
+I když jsou v rámci dotazu platné, nebudou analyzovány na platné objekty. Řetězce v řetězci objektu musí být buď uvozené řídicím znakem "{ \\ " a \\ ": \\ " str \\ "}", nebo okolní uvozovka musí být jednoduché "{" a ":" str "}".
 
 Jednoduché uvozovky obklopující názvy vlastností nejsou platné JSON.
 

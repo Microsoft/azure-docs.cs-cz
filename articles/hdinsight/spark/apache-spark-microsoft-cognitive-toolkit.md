@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
 ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206550"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití Microsoft Cognitive Toolkit modelu hloubkového učení s clusterem Azure HDInsight Spark
@@ -61,20 +60,20 @@ Pokyny, jak pomocí Azure Portal spustit akci skriptu, najdete v tématu [Přizp
 |Vlastnost |Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Název| Nainstalovat MCT|
+|Name| Nainstalovat MCT|
 |Identifikátor URI skriptu bash|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Typ (typy) uzlů:|Vedoucí pracovník|
 |Parametry|Žádná|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Nahrání poznámkového bloku Jupyter do clusteru Azure HDInsight Spark
 
-Pokud chcete použít Microsoft Cognitive Toolkit s clusterem Azure HDInsight Spark, musíte do clusteru Azure HDInsight Spark načíst Poznámkový blok Jupyter **CNTK_model_scoring_on_Spark_walkthrough. ipynb** . Tento Poznámkový blok je k [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)dispozici na GitHubu na adrese.
+Pokud chcete použít Microsoft Cognitive Toolkit s clusterem Azure HDInsight Spark, musíte do clusteru Azure HDInsight Spark načíst Poznámkový blok Jupyter **CNTK_model_scoring_on_Spark_walkthrough. ipynb** . Tento Poznámkový blok je k dispozici na GitHubu na adrese [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
-1. Stažení a extrahování [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
+1. Stažení a extrahování [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
-1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/jupyter`umístění, kde `CLUSTERNAME` je název vašeho clusteru.
+1. Z webového prohlížeče přejděte do `https://CLUSTERNAME.azurehdinsight.net/jupyter` umístění, kde `CLUSTERNAME` je název vašeho clusteru.
 
-1. V poznámkovém bloku Jupyter vyberte **nahrát** v pravém horním rohu a pak přejděte ke stažení a vyberte soubor `CNTK_model_scoring_on_Spark_walkthrough.ipynb`.
+1. V poznámkovém bloku Jupyter vyberte **nahrát** v pravém horním rohu a pak přejděte ke stažení a vyberte soubor `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
     ![Nahrání poznámkového bloku Jupyter do clusteru Azure HDInsight Spark](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Nahrání poznámkového bloku Jupyter do clusteru Azure HDInsight Spark")
 

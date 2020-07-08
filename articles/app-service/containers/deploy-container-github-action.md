@@ -7,10 +7,9 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78246972"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
@@ -29,7 +28,7 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 |---------|---------|
 |**Authentication** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Sestavení** | 1. Nastavte prostředí. <br /> 2. Sestavte image kontejneru. |
-|**Nasadit** | 1. Nasaďte image kontejneru. |
+|**Nasazení** | 1. Nasaďte image kontejneru. |
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -123,15 +122,15 @@ jobs:
 
 K nasazení image do vlastního kontejneru v App Service použijte `azure/webapps-container-deploy@v1` akci. Tato akce má pět parametrů:
 
-| **Ukazatele**  | **Vysvětlení**  |
+| **Parametr**  | **Vysvětlení**  |
 |---------|---------|
 | **název aplikace** | Požadovanou Název aplikace App Service | 
 | **název slotu** | Volitelné Zadejte jinou existující patici, než je produkční slot. |
 | **fotografií** | Požadovanou Zadejte plně kvalifikované názvy imagí kontejneru. Například ' myregistry.azurecr.io/nginx:latest ' nebo ' Python: 3.7.2-Alpine/'. Pro aplikaci s více kontejnery je možné zadat více názvů imagí kontejneru (oddělené víceřádkově). |
 | **konfigurační soubor** | Volitelné Cesta k souboru Docker-skládání Musí být úplná cesta nebo relativní vzhledem k výchozímu pracovnímu adresáři. Vyžaduje se pro aplikace s více kontejnery. |
-| **kontejner – příkaz** | Volitelné Zadejte spouštěcí příkaz. Pro ex. příkaz dotnet Run nebo dotnet filename. dll |
+| **kontejner – příkaz** | Volitelné Zadejte spouštěcí příkaz. Pro ex. spuštění dotnet nebo dotnet filename.dll |
 
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node. js do vlastního kontejneru v App Service.
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do vlastního kontejneru v App Service.
 
 ```yaml
 on: [push]

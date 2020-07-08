@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78300844"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>Vynucení TLS 1,2 pro Azure AD Connect
@@ -34,10 +33,10 @@ Chcete-li vynutit, aby server Azure AD Connect používal pouze protokol TLS 1,2
 
 
 ### <a name="enable-tls-12"></a>Povolení protokolu TLS 1.2
-- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319]
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ . NETFramework\v4.0.30319]
   - "SystemDefaultTlsVersions" = DWORD: 00000001
   - "Do schusestrongcrypto" = DWORD: 0000001
-- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319]
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319]
   - "SystemDefaultTlsVersions" = DWORD: 00000001
   - "Do schusestrongcrypto" = DWORD: 00000001
 - [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
@@ -80,10 +79,10 @@ K povolení TLS 1,2 na vašem Azure AD Connectovém serveru můžete použít n�
 ```
 
 ### <a name="disable-tls-12"></a>Zakázat TLS 1,2
-- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319]
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ . NETFramework\v4.0.30319]
   - "SystemDefaultTlsVersions" = DWORD: 00000000
   - "Do schusestrongcrypto" = DWORD: 0000000
-- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\. NETFramework\v4.0.30319]
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319]
   - "SystemDefaultTlsVersions" = DWORD: 00000000
   - "Do schusestrongcrypto" = DWORD: 00000000
 - [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]

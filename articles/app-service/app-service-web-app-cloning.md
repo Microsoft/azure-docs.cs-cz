@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
 ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255189"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Azure App Service klonování aplikace pomocí PowerShellu
@@ -23,7 +22,7 @@ Klonování aplikací se podporuje pro plány služby App Service úrovně Stand
 ## <a name="cloning-an-existing-app"></a>Klonování existující aplikace
 Scénář: existující aplikace v Střed USA – jih oblasti a chcete klonovat obsah do nové aplikace v Střed USA – sever oblasti. Dá se dosáhnout pomocí Azure Resource Manager verze rutiny prostředí PowerShell pro vytvoření nové aplikace s `-SourceWebApp` možností.
 
-Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o zdrojové aplikaci použít následující příkaz PowerShellu (v tomto případě s názvem `source-webapp`):
+Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o zdrojové aplikaci použít následující příkaz PowerShellu (v tomto případě s názvem `source-webapp` ):
 
 ```powershell
 $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
@@ -41,7 +40,7 @@ Pomocí `New-AzWebApp` příkazu můžete vytvořit novou aplikaci v oblasti st�
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-Pokud chcete klonovat existující aplikaci včetně všech přidružených slotů nasazení, musíte použít `IncludeSourceWebAppSlots` parametr.  Všimněte si, `IncludeSourceWebAppSlots` že parametr je podporován pouze pro klonování celé aplikace včetně všech slotů. Následující příkaz prostředí PowerShell ukazuje použití tohoto parametru s `New-AzWebApp` příkazem:
+Pokud chcete klonovat existující aplikaci včetně všech přidružených slotů nasazení, musíte použít `IncludeSourceWebAppSlots` parametr.  Všimněte si, že `IncludeSourceWebAppSlots` parametr je podporován pouze pro klonování celé aplikace včetně všech slotů. Následující příkaz prostředí PowerShell ukazuje použití tohoto parametru s `New-AzWebApp` příkazem:
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
@@ -56,7 +55,7 @@ $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-weba
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>Klonování existující aplikace do App Service Environment
 Scénář: existující aplikace v Střed USA – jih oblasti a chcete klonovat obsah do nové aplikace do existující App Service Environment (pomocného mechanismu).
 
-Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o zdrojové aplikaci použít následující příkaz PowerShellu (v tomto případě s názvem `source-webapp`):
+Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o zdrojové aplikaci použít následující příkaz PowerShellu (v tomto případě s názvem `source-webapp` ):
 
 ```powershell
 $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
@@ -68,12 +67,12 @@ Znalost jména pomocného mechanismu a názvu skupiny prostředků, do které pa
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -ASEName DestinationASE -ASEResourceGroupName DestinationASEResourceGroupName -SourceWebApp $srcapp
 ```
 
-`Location` Parametr je vyžadován z důvodu starší verze, ale při vytváření aplikace v pomocném mechanismu řízení se ignoruje. 
+`Location`Parametr je vyžadován z důvodu starší verze, ale při vytváření aplikace v POmocném mechanismu řízení se ignoruje. 
 
 ## <a name="cloning-an-existing-app-slot"></a>Klonování existujícího slotu aplikace
 Scénář: chcete naklonovat existující slot nasazení aplikace do nové aplikace nebo nové přihrádky. Nová aplikace může být ve stejné oblasti jako původní pozice aplikace nebo v jiné oblasti.
 
-Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o pozici zdrojové aplikace (v tomto případě s názvem `source-appslot`) použít následující příkaz prostředí PowerShell: `source-app`
+Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o pozici zdrojové aplikace (v tomto případě s názvem) použít následující příkaz prostředí PowerShell `source-appslot` `source-app` :
 
 ```powershell
 $srcappslot = Get-AzWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-app -Slot source-appslot
@@ -122,7 +121,7 @@ Tady jsou známá omezení klonování aplikací:
 * Změny odchozích IP adres při klonování do jiné jednotky škálování
 * Není k dispozici pro aplikace pro Linux
 
-### <a name="references"></a>Odkazy
+### <a name="references"></a>Reference
 * [App Service klonování](app-service-web-app-cloning.md)
 * [Zálohování aplikace v Azure App Service](manage-backup.md)
 * [Podpora Azure Resource Manager pro Azure Traffic Manager Preview](../traffic-manager/traffic-manager-powershell-arm.md)

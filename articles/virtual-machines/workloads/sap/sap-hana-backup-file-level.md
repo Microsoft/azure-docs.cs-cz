@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271391"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
@@ -31,11 +30,11 @@ Standardní způsob, jak spravovat zálohování nebo obnovení na úrovni soubo
 
 ![Na tomto obrázku je znázorněno dialogové okno položky nabídky zálohování v SAP HANA studiu](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 
-Na tomto obrázku je znázorněno dialogové okno položky nabídky zálohování v SAP HANA studiu. Když zvolíte typ &quot;souboru,&quot; jeden musí zadat cestu v systému souborů, kde SAP HANA zapisuje záložní soubory. Obnovení funguje stejným způsobem.
+Na tomto obrázku je znázorněno dialogové okno položky nabídky zálohování v SAP HANA studiu. Když zvolíte typ &quot; souboru, &quot; jeden musí zadat cestu v systému souborů, kde SAP HANA zapisuje záložní soubory. Obnovení funguje stejným způsobem.
 
 I když je tato volba zvukem jednoduchá a přímá, je k dispozici nějaký ohled. Virtuální počítač Azure má omezení počtu datových disků, které se dají připojit. V závislosti na velikosti požadavků databáze a propustnosti disku nemusí být možné ukládat SAP HANA záložní soubory do systémů souborů virtuálního počítače. to může zahrnovat softwarové obložení na více datových disků. V tomto článku jsou k dispozici různé možnosti přesunutí těchto souborů zálohy a Správa omezení velikosti souborů a výkonu při zpracování terabajtů dat.
 
-Další možností, která nabízí větší volnost v oblasti celkové kapacity, je úložiště objektů BLOB v Azure. I když je jeden objekt BLOB taky omezený na 1 TB, celková kapacita jednoho kontejneru objektů BLOB je v současnosti 500 TB. Kromě toho zákazníkům dává možnost vybrat si, že se nazývá &quot;studená&quot; služba BLOB Storage, která má cenovou výhodu. Podrobnosti o studeném úložišti objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal) .
+Další možností, která nabízí větší volnost v oblasti celkové kapacity, je úložiště objektů BLOB v Azure. I když je jeden objekt BLOB taky omezený na 1 TB, celková kapacita jednoho kontejneru objektů BLOB je v současnosti 500 TB. Kromě toho zákazníkům dává možnost vybrat si, že se nazývá &quot; studená služba &quot; BLOB Storage, která má cenovou výhodu. Podrobnosti o studeném úložišti objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal) .
 
 Pro zajištění vyšší bezpečnosti použijte geograficky replikovaný účet úložiště pro uložení záloh SAP HANA. Podrobnosti o redundanci úložiště a replikaci úložiště najdete v tématu [Azure Storage redundance](https://docs.microsoft.com/azure/storage/common/storage-redundancy) .
 
@@ -65,7 +64,7 @@ Opakuje stejnou zálohu na softwarovém poli RAID s prokládáním přes pět p�
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Kopírování souborů SAP HANA zálohování do Azure Blob Storage
 Údaje o výkonu, čísla doby trvání zálohování a kopírovaná čísla doba kopírování nemusí představovat nejnovější stav technologie Azure. Microsoft neustále vylepšuje úložiště Azure, aby poskytoval větší propustnost a nižší latence. Proto jsou tato čísla pouze pro demonstrační účely. V oblasti Azure, kterou si zvolíte, je potřeba otestovat své individuální potřeby, abyste mohli posoudit, že je to pro vás nejvhodnější metoda.
 
-Další možností pro rychlé uložení SAP HANAch záložních souborů je úložiště objektů BLOB v Azure. Jeden kontejner objektů BLOB má omezení o velikosti přibližně 500 TB, dostatečně pro SAP HANA systémy, používá M32ts, M32ls, M64ls a GS5 typy virtuálních počítačů Azure, aby se zajistilo dostatečné SAP HANA zálohování. Zákazníci si můžou vybrat mezi &quot;&quot; horkou &quot;a&quot; studeným úložištěm objektů BLOB (viz [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)).
+Další možností pro rychlé uložení SAP HANAch záložních souborů je úložiště objektů BLOB v Azure. Jeden kontejner objektů BLOB má omezení o velikosti přibližně 500 TB, dostatečně pro SAP HANA systémy, používá M32ts, M32ls, M64ls a GS5 typy virtuálních počítačů Azure, aby se zajistilo dostatečné SAP HANA zálohování. Zákazníci si můžou vybrat mezi &quot; horkou &quot; a &quot; studeným &quot; úložištěm objektů BLOB (viz [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)).
 
 Pomocí nástroje blobxfer je snadné zkopírovat SAP HANA záložní soubory přímo do úložiště objektů BLOB v Azure.
 
