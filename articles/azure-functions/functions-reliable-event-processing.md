@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
 ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84676127"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions spolehlivé zpracování událostí
@@ -120,7 +119,7 @@ Příjemce e-mailu může prozkoumat stav okruhu a v případě potřeby restart
 
 Při použití tohoto přístupu se neztratí žádné zprávy, všechny zprávy jsou zpracovávány v daném pořadí a okruh můžete v případě potřeby rozdělit na dlouhou dobu.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 - [Ukázky spolehlivých zpracování událostí](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Přerušení okruhu trvalých entit Azure](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)

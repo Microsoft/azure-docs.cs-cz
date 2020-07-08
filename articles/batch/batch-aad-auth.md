@@ -4,12 +4,11 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757581"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958204"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -20,7 +19,7 @@ Při použití ověřování Azure AD s Azure Batch se můžete ověřit jedním
 - Použitím **integrovaného ověřování** k ověření uživatele, který pracuje s aplikací. Aplikace, která používá integrované ověřování, shromáždí přihlašovací údaje uživatele a použije tyto přihlašovací údaje k ověření přístupu k prostředkům služby Batch.
 - K ověření bezobslužné aplikace pomocí **instančního objektu** . Instanční objekt definuje zásadu a oprávnění pro aplikaci, aby představovala aplikaci při přístupu k prostředkům za běhu.
 
-Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](../active-directory/index.yml).
 
 ## <a name="endpoints-for-authentication"></a>Koncové body pro ověřování
 
@@ -140,20 +139,20 @@ Vlastní role uděluje podrobné oprávnění uživateli k odesílání úloh, �
 
 Vlastní roli můžete použít k udělení oprávnění uživateli, skupině nebo instančnímu objektu služby Azure AD pro následující operace RBAC:
 
-- Microsoft. Batch/batchAccounts/Pools/Write
-- Microsoft. Batch/batchAccounts/Pools/DELETE
-- Microsoft. Batch/batchAccounts/Pools/Read
-- Microsoft. Batch/batchAccounts/jobSchedules/Write
-- Microsoft. Batch/batchAccounts/jobSchedules/DELETE
-- Microsoft. Batch/batchAccounts/jobSchedules/Read
-- Microsoft. Batch/batchAccounts/Jobs/Write
-- Microsoft. Batch/batchAccounts/Jobs/DELETE
-- Microsoft. Batch/batchAccounts/Jobs/Read
-- Microsoft. Batch/batchAccounts/Certificates/Write
-- Microsoft. Batch/batchAccounts/Certificates/DELETE
-- Microsoft. Batch/batchAccounts/Certificates/Read
-- Microsoft. Batch/batchAccounts/Read (pro jakoukoliv operaci čtení)
-- Microsoft. Batch/batchAccounts/klíče listkey/Action (pro všechny operace)
+- Microsoft.Batch/batchAccounts/Pools/Write
+- Microsoft.Batch/batchAccounts/Pools/DELETE
+- Microsoft.Batch/batchAccounts/Pools/Read
+- Microsoft.Batch/batchAccounts/jobSchedules/Write
+- Microsoft.Batch/batchAccounts/jobSchedules/DELETE
+- Microsoft.Batch/batchAccounts/jobSchedules/Read
+- Microsoft.Batch/batchAccounts/Jobs/Write
+- Microsoft.Batch/batchAccounts/Jobs/DELETE
+- Microsoft.Batch/batchAccounts/Jobs/Read
+- Microsoft.Batch/batchAccounts/certifikáty/zápis
+- Microsoft.Batch/batchAccounts/certifikáty/odstranit
+- Microsoft.Batch/batchAccounts/certifikáty/číst
+- Microsoft.Batch/batchAccounts/Read (pro jakoukoliv operaci čtení)
+- Microsoft.Batch/batchAccounts/klíče listkey/Action (pro všechny operace)
 
 Vlastní role jsou pro uživatele ověřené službou Azure AD, nikoli přihlašovací údaje k účtu Batch (sdílený klíč). Všimněte si, že přihlašovací údaje účtu Batch poskytují úplný přístup k účtu Batch. Všimněte si také, že úlohy využívající autopool vyžadují oprávnění na úrovni fondu.
 
@@ -419,7 +418,7 @@ Pomocí přihlašovacích údajů instančního objektu otevřete objekt **Batch
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak používat ADAL jsou k dispozici v knihovně [ukázek kódu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) .
+- Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](../active-directory/index.yml). Podrobné příklady ukazující, jak používat ADAL jsou k dispozici v knihovně [ukázek kódu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) .
 
 - Další informace o instančních objektech naleznete [v tématu Application and Service Principal Objects in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Pokud chcete vytvořit instanční objekt pomocí Azure Portal, přečtěte si téma [použití portálu k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md). Instanční objekt můžete vytvořit také pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 

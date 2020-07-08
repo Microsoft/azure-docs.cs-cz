@@ -4,10 +4,9 @@ description: Tento článek poskytuje informace o tom, jak přidat koncový bod 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340984"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Konfigurace koncových bodů služby virtuální sítě pro Azure Service Bus

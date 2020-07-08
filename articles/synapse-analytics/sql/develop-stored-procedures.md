@@ -6,18 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430978"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958374"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>Používání uložených procedur ve fondu SQL
+# <a name="use-stored-procedures-in-sql-pool"></a>Použití uložených procedur ve fondu SQL
 
 Tipy pro implementaci uložených procedur v synapse fondu SQL (datový sklad) pro vývoj řešení
 
@@ -68,9 +67,9 @@ EXEC prc_nesting
 ```
 
 > [!NOTE]
-> Fond SQL momentálně nepodporuje [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Je nutné sledovat úroveň vnoření. Je pravděpodobné, že byste překročili osm omezení na úrovni vnoření, ale pokud to uděláte, budete muset znovu pracovat svůj kód, aby odpovídal úrovním vnoření v rámci tohoto limitu.
+> Fond SQL momentálně nepodporuje [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Je nutné sledovat úroveň vnoření. Je pravděpodobné, že byste překročili osm omezení na úrovni vnoření, ale pokud to uděláte, budete muset znovu pracovat svůj kód, aby odpovídal úrovním vnoření v rámci tohoto limitu.
 
-## <a name="insertexecute"></a>Vložit.. SPUSTIT
+## <a name="insertexecute"></a>INSERT..EXEROZTOMILÁ
 
 Fond SQL vám neumožňuje zpracovat sadu výsledků uložené procedury pomocí příkazu INSERT. Existuje však alternativní přístup, který můžete použít. Příklad najdete v článku o [dočasných tabulkách](develop-tables-temporary.md).
 

@@ -4,10 +4,9 @@ description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon 
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 17efb89e36429f9658759a0ed90d4e7b785fe4b7
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340904"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
@@ -24,7 +23,7 @@ Hlavní rozdíly v monitorování clusteru Windows serveru s Azure Monitor pro k
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Zobrazení více clusterů z Azure Monitor
 
@@ -75,7 +74,7 @@ Následující tabulka uvádí rozpis výpočtu, který řídí stav pro monitor
 | |Není známo |Pokud není uvedeno za posledních 30 minut |
 |**Systém pod**| | |
 | |V pořádku |100 % |
-| |Upozornění |– |
+| |Upozornění |Není k dispozici |
 | |Kritické |<100% |
 | |Není známo |Pokud není uvedeno za posledních 30 minut |
 |**Node** | | |
@@ -189,9 +188,9 @@ Tyto informace vám pomůžou rychle zjistit, jestli máte v clusteru správnou 
 
 Informace, které se zobrazí po zobrazení karty **uzly** , jsou popsány v následující tabulce.
 
-| Sloupec | Popis |
+| Sloupec | Description |
 |--------|-------------|
-| Název | Název hostitele |
+| Name | Název hostitele |
 | Status | Kubernetes zobrazení stavu uzlu. |
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;%  | Průměrné procento uzlů na základě percentilu během vybrané doby trvání. |
 | Min, AVG, 50, 90, 95., Max | Průměrná hodnota uzlů na základě hodnoty percentilu v době zvolené doby trvání. Průměrná hodnota se měří od nastaveného limitu CPU/paměti pro uzel. V případě lusků a kontejnerů je to průměrná hodnota uvedená v hostiteli. |
@@ -232,9 +231,9 @@ Vyberte hodnotu ve sloupci **uzel** pro konkrétní kontroler.
 
 Informace, které se zobrazí při zobrazení řadičů, jsou popsány v následující tabulce.
 
-| Sloupec | Popis |
+| Sloupec | Description |
 |--------|-------------|
-| Název | Název kontroleru.|
+| Name | Název kontroleru.|
 | Status | Stav souhrnu kontejnerů po dokončení jeho spuštění se stavem, jako je například *OK*, *ukončeno*, *Chyba*, *Zastaveno*nebo *pozastaveno*. Pokud je kontejner spuštěný, ale stav buď nebyl správně zobrazen nebo nebyl vyzvednut agentem a nereagoval na více než 30 minut, je stav *Neznámý*. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;%| Souhrnný průměr průměrného procenta každé entity pro vybranou metriku a percentil |
 | Min, AVG, 50, 90, 95., Max  | Souhrn průměrného výkonu procesoru v millicore nebo paměti v kontejneru pro vybraný percentil. Průměrná hodnota se měří od limitu CPU nebo paměti nastaveného pro objekt pod. |
@@ -269,9 +268,9 @@ Z kontejneru můžete přejít k podrobnostem nebo uzlu, abyste zobrazili data o
 
 Informace, které se zobrazí při zobrazení kontejnerů, jsou popsány v následující tabulce.
 
-| Sloupec | Popis |
+| Sloupec | Description |
 |--------|-------------|
-| Název | Název kontroleru.|
+| Name | Název kontroleru.|
 | Status | Stav kontejnerů, pokud existují. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;% | Souhrn průměrného procenta jednotlivých entit pro vybranou metriku a percentil. |
 | Min, AVG, 50, 90, 95., Max | Souhrn průměrného výkonu procesoru v millicore nebo paměti v kontejneru pro vybraný percentil. Průměrná hodnota se měří od limitu CPU nebo paměti nastaveného pro objekt pod. |

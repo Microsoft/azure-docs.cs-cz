@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85444246"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
@@ -66,7 +65,7 @@ Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných oč
 
 Pro tento plán přidejte do svého seznamu následující účastníky:
 
-| Role| Popis |
+| Role| Description |
 | - | - |
 | Správce zařízení| Zástupce týmu zařízení, který dokáže ověřit, jestli plán splňuje požadavky na zařízení vaší organizace. |
 | Správce sítě| Zástupce ze síťového týmu, který může zajistit, aby splňoval požadavky na síť. |

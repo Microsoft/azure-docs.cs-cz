@@ -3,17 +3,16 @@ title: Analýzy Azure Batch
 description: Témata v dávkové analýze obsahují referenční informace o událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: b07d362c3cc2d3b086cf0a82325025604907a393
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726855"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958102"
 ---
 # <a name="batch-analytics"></a>Dávková analýza
 Témata v dávkové analýze obsahují referenční informace o událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.
 
-Další informace o povolení a využívání protokolů diagnostiky služby Batch najdete v tématu [protokolování diagnostiky Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) .
+Další informace o povolení a využívání protokolů diagnostiky služby Batch najdete v tématu [protokolování diagnostiky Azure Batch](./batch-diagnostics.md) .
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 

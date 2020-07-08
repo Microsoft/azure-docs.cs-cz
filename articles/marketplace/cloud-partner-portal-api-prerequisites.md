@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1a20abf72ca25ba7c4b5600953766be4d62c708d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.openlocfilehash: c435e171c7e3cabea4007c7b78cf60727bf55efd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516189"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958225"
 ---
 <a name="api-prerequisites"></a>Požadavky na rozhraní API
 ================
@@ -26,7 +25,7 @@ Existují dva požadované programové prostředky, které potřebujete použít
 <a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Vytvoření instančního objektu ve vašem tenantovi Azure Active Directory
 ----------------------------------------------------------------
 
-Nejdřív je potřeba vytvořit instanční objekt v tenantovi Azure AD. Tomuto tenantovi se přiřadí vlastní sada oprávnění v portál partnerů cloudu. Váš kód bude volat rozhraní API pomocí tohoto tenanta namísto použití vašich osobních přihlašovacích údajů.  Úplné vysvětlení Vytvoření instančního objektu najdete v tématu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+Nejdřív je potřeba vytvořit instanční objekt v tenantovi Azure AD. Tomuto tenantovi se přiřadí vlastní sada oprávnění v portál partnerů cloudu. Váš kód bude volat rozhraní API pomocí tohoto tenanta namísto použití vašich osobních přihlašovacích údajů.  Úplné vysvětlení vytváření instančního objektu naleznete v tématu [How to: use the a Create a Application Azure AD a instanční objekt, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md).
 
 
 <a name="add-the-service-principal-to-your-account"></a>Přidání instančního objektu k vašemu účtu
@@ -63,7 +62,7 @@ Rozhraní portál partnerů cloudu API při ověřování používají následuj
 
 - Nosný token JSON Web Token (JWT) pro vyžádání přístupu k prostředkům
 - Protokol [OpenID Connect](https://openid.net/connect/) (OIDC) pro ověření identity
-- [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) jako autorita identity
+- [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) jako autorita identity
 
 Existují dva základní přístupy k programovému získání tokenu JWT:
 

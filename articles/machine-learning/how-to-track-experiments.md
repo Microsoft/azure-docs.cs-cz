@@ -13,10 +13,9 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84675198"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
@@ -39,7 +38,7 @@ Následující metriky je možné přidat ke spuštění během školení experi
 |Skalární hodnoty |Slouží<br>`run.log(name, value, description='')`<br><br>Příklad:<br>Run. log ("přesnost", 0,95) |Zaprotokoluje do běhu číselnou hodnotu nebo řetězec s daným názvem. Protokolování metriky do běhu způsobí, že se metrika uloží do záznamu spuštění v experimentu.  Stejnou metriku můžete v rámci spuštění zaprotokolovat několikrát, výsledek je považován za vektor této metriky.|
 |Seznamy|Slouží<br>`run.log_list(name, value, description='')`<br><br>Příklad:<br>Run. log_list ("přesností"; [0,6; 0,7; 0,87]) | Protokoluje seznam hodnot pro běh se zadaným názvem.|
 |Řádek|Slouží<br>`run.log_row(name, description=None, **kwargs)`<br>Příklad:<br>Run. log_row ("Y over X", X = 1, Y = 0.4) | Pomocí *log_row* se vytvoří metrika s více sloupci, jak je popsáno v tématu kwargs. Každý pojmenovaný parametr vygeneruje sloupec se zadanou hodnotou.  *log_row* může být jednou volána k zaznamenání libovolné řazené kolekce členů nebo vícekrát ve smyčce, aby vygenerovala úplnou tabulku.|
-|Table|Slouží<br>`run.log_table(name, value, description='')`<br><br>Příklad:<br>Run. log_table ("Y over X"; {"X": [1; 2; 3]; "Y": [0,6, 0,7, 0,89]}) | Zaprotokoluje objekt Dictionary do běhu s daným názvem. |
+|Tabulka|Slouží<br>`run.log_table(name, value, description='')`<br><br>Příklad:<br>Run. log_table ("Y over X"; {"X": [1; 2; 3]; "Y": [0,6, 0,7, 0,89]}) | Zaprotokoluje objekt Dictionary do běhu s daným názvem. |
 |Image|Slouží<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>`run.log_image("ROC", plot=plt)` | Zaprotokoluje obrázek do záznamu spuštění. K přihlášení použijte log_image. Soubor obrázku PNG nebo matplotlib vykreslení pro běh.  Tyto obrázky budou viditelné a srovnatelné v záznamu spuštění.|
 |Označení běhu|Slouží<br>`run.tag(key, value=None)`<br><br>Příklad:<br>Run. Tag ("Selected"; "Yes") | Označte běh pomocí klíče řetězce a volitelné řetězcové hodnoty.|
 |Odeslat soubor nebo adresář|Slouží<br>`run.upload_file(name, path_or_stream)`<br> <br> Příklad:<br>Run. upload_file ("best_model. pkl", "./model.pkl") | Nahrajte soubor na záznam spuštění. Spustí automaticky zachytávání souboru v zadaném výstupním adresáři, který pro většinu typů spuštění nastaví jako výchozí hodnotu "./Outputs".  Použijte upload_file jenom v případě, že je potřeba nahrát další soubory, nebo není zadaný výstupní adresář. Doporučujeme přidat `outputs` k názvu, aby se nahrál do adresáře výstupy. Můžete zobrazit seznam všech souborů, které jsou přidruženy k tomuto záznamu spuštění voláním`run.get_file_names()`|
@@ -229,7 +228,7 @@ Existují různé způsoby, jak použít rozhraní API protokolování k nahráv
 |Tabulka protokolu se dvěma číselnými sloupci|`run.log_table(name='Sine Wave', value=sines)`|Spojnicový graf se dvěma proměnnými|
 
 
-## <a name="example-notebooks"></a>Ukázkové poznámkové bloky
+## <a name="example-notebooks"></a>Příklady poznámkových bloků
 Následující poznámkové bloky ukazují koncepty v tomto článku:
 * [Postupy: použití-AzureML/školení/výuka v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [Postupy: použití-AzureML/školení/výuka v místním prostředí](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)

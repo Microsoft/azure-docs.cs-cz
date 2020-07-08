@@ -7,7 +7,7 @@ author: msaburnley
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
@@ -15,12 +15,11 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799359"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory
 Microsoft poskytuje globální technickou, předprodejní, fakturační a předplacenou podporu pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu Microsoft Azure placené a zkušební předplatné. V dalších jazycích je k dispozici podpora po telefonu a online podpora k fakturaci. 
@@ -46,30 +45,29 @@ Pokud nemůžete najít odpovědi pomocí prostředků pro samoobslužnou pomoc,
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a otevřete **Azure Active Directory**.
    
-2. Přejděte dolů na **řešení potíží a podporu** a vyberte **nový požadavek na podporu**.
+1. Přejděte dolů na **řešení potíží a podporu** a vyberte **nový požadavek na podporu**.
    
-3. V okně **základy** pro **typ problému**vyberte možnost **technický**.
+1. V okně **základy** pro **typ problému**vyberte možnost **technický**.
 
-4. Vyberte své **předplatné**.
+1. Vyberte své **předplatné**.
 
-5. V případě **služby**vyberte **Azure Active Directory**.
+1. V případě **služby**vyberte **Azure Active Directory**.
 
-6. Vytvořte **Souhrn** pro požadavek. Souhrn musí mít 140 znaků.
+1. Vytvořte **Souhrn** pro požadavek. Souhrn musí mít 140 znaků.
   
-7. Vyberte **typ problému**a potom vyberte kategorii pro daný typ. V tuto chvíli jste také nabízeli informace o samoobslužné nápovědě pro kategorii problému.
+1. Vyberte **typ problému**a potom vyberte kategorii pro daný typ. V tuto chvíli jste také nabízeli informace o samoobslužné nápovědě pro kategorii problému.
   
-7. Přidejte zbývající informace o problému a klikněte na tlačítko **Další**. 
+1. Přidejte zbývající informace o problému a klikněte na tlačítko **Další**. 
 
-8. V tuto chvíli jste v okně **řešení** nabídli řešení a dokumentaci pro samoobslužnou podporu. Pokud žádný z řešení problém nevyřeší, klikněte na tlačítko **Další**. 
+1. V tuto chvíli jste v okně **řešení** nabídli řešení a dokumentaci pro samoobslužnou podporu. Pokud žádný z řešení problém nevyřeší, klikněte na tlačítko **Další**. 
 
-9. V okně **podrobností** vyplňte požadované podrobnosti a vyberte [závažnost](https://azure.microsoft.com/support/plans/response/). 
+1. V okně **podrobností** vyplňte požadované podrobnosti a vyberte [závažnost](https://azure.microsoft.com/support/plans/response/). 
  
-![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-10. Zadejte kontaktní informace a vyberte **Další**. 
+1. Zadejte kontaktní informace a vyberte **Další**. 
 
-
-8. Zadejte kontaktní informace a vyberte **vytvořit**.
+1. Zadejte kontaktní informace a vyberte **vytvořit**.
   ![Kategorie problému – obrazovka pro samoobslužnou podporu](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Postup otevření lístku podpory pro Azure AD v centru pro správu Microsoft 365
@@ -79,19 +77,19 @@ Pokud nemůžete najít odpovědi pomocí prostředků pro samoobslužnou pomoc,
 
 1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který má licenci Enterprise mobility + Security (EMS).
 
-2. Na dlaždici **Podpora** vyberte **Nová žádost o službu**:
+1. Na dlaždici **Podpora** vyberte **Nová žádost o službu**:
 
-3. Na stránce **Přehled podpory** vyberte **Správa identit** nebo **Správa uživatelů a domén**:
+1. Na stránce **Přehled podpory** vyberte **Správa identit** nebo **Správa uživatelů a domén**:
 
-4. V části **funkce**vyberte funkci Azure AD, pro kterou chcete podporu.
+1. V části **funkce**vyberte funkci Azure AD, pro kterou chcete podporu.
 
-5. Jako **příznak**vyberte příslušný příznak, Shrňte problém a poskytněte relevantní podrobnosti a pak vyberte **Další**.
+1. Jako **příznak**vyberte příslušný příznak, Shrňte problém a poskytněte relevantní podrobnosti a pak vyberte **Další**.
 
-6. Vyberte jeden z nabízených prostředků samoobslužné podpory nebo vyberte **Ano, pokračovat** nebo **Ne, zrušit požadavek**.
+1. Vyberte jeden z nabízených prostředků samoobslužné podpory nebo vyberte **Ano, pokračovat** nebo **Ne, zrušit požadavek**.
 
-7. Pokud budete pokračovat, zobrazí se výzva k zadání dalších informací. Můžete připojit všechny soubory, které jsou reprezentovány s problémem, a pak vybrat **Další**.
+1. Pokud budete pokračovat, zobrazí se výzva k zadání dalších informací. Můžete připojit všechny soubory, které jsou reprezentovány s problémem, a pak vybrat **Další**.
 
-8. Zadejte kontaktní informace a vyberte **Odeslat žádost**.
+1. Zadejte kontaktní informace a vyberte **Odeslat žádost**.
 
 ## <a name="get-phone-support"></a>Získání telefonické podpory
 

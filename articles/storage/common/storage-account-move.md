@@ -10,15 +10,14 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515009"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu Azure Storage do jiné oblasti
 
-Pokud chcete přesunout účet úložiště, vytvořte kopii účtu úložiště v jiné oblasti. Pak přesuňte data do tohoto účtu pomocí AzCopy nebo jiného nástroje podle vašeho výběru.
+Pokud chcete přesunout účet úložiště, vytvořte jeho kopii v jiné oblasti. Pak přesuňte data do tohoto účtu pomocí AzCopy nebo jiného nástroje podle vašeho výběru.
 
 V tomto článku se dozvíte, jak:
 
@@ -33,9 +32,9 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Zajistěte, aby služby a funkce používané vaším účtem byly podporovány v cílové oblasti.
+- Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
 
-- V případě funkcí verze Preview se ujistěte, že je vaše předplatné na seznamu povolených pro cílovou oblast.
+- V případě funkcí Preview se ujistěte, že je vaše předplatné v cílové oblasti uvedené na seznamu povolených.
 
 <a id="prepare"></a>
 
@@ -43,15 +42,15 @@ V tomto článku se dozvíte, jak:
 
 Začněte tím, že vyexportujete a pak upravíte šablonu Správce prostředků. 
 
-### <a name="export-a-template"></a>Exportovat šablonu
+### <a name="export-a-template"></a>Export šablony
 
 Tato šablona obsahuje nastavení, která popisují váš účet úložiště. 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Export šablony pomocí Azure Portal:
+Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
@@ -95,23 +94,23 @@ Export šablony pomocí prostředí PowerShell:
 
 ### <a name="modify-the-template"></a>Úprava šablony 
 
-Upravte šablonu tak, že změníte název a oblast účtu úložiště.
+Upravte šablonu tím, že změníte název a oblast účtu úložiště.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Nasazení šablony pomocí Azure Portal:
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
+1. V Azure Portal vyberte **vytvořit prostředek**.
 
-2. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
+2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
 
-3. Vyberte **Template deployment**.
+3. Vyberte **template Deployment**.
 
     ![Knihovna šablon Azure Resource Manageru](./media/storage-account-move/azure-resource-manager-template-library.png)
 
 4. Vyberte **Vytvořit**.
 
-5. Vyberte **Vytvořit vlastní šablonu v editoru**.
+5. **V editoru vyberte vytvořit vlastní šablonu**.
 
 6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 
@@ -178,7 +177,7 @@ Nasazení šablony pomocí prostředí PowerShell:
 
 ## <a name="move"></a>Přesunout
 
-Nasaďte šablonu pro vytvoření nového účtu úložiště v cílové oblasti. 
+Nasaďte šablonu a vytvořte nový účet úložiště v cílové oblasti. 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -215,11 +214,11 @@ Nasaďte šablonu pro vytvoření nového účtu úložiště v cílové oblasti
 
 ### <a name="configure-the-new-storage-account"></a>Konfigurace nového účtu úložiště
 
-Některé funkce nebudou exportovány do šablony, takže je budete muset přidat do nového účtu úložiště. 
+Některé funkce se do šablony neexportují, takže je budete muset přidat do nového účtu úložiště. 
 
-Následující tabulka uvádí tyto funkce spolu s pokyny pro jejich přidání do nového účtu úložiště.
+Následující tabulka obsahuje seznam těchto funkcí společně s pokyny k jejich přidání do nového účtu úložiště.
 
-| Funkce    | Doprovodné materiály    |
+| Funkce    | Pokyny    |
 |--------|-----------|
 | **Zásady správy životního cyklu** | [Správa životního cyklu úložiště objektů blob v Azure](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statické weby** | [Hostování statického webu v Azure Storage](../blobs/storage-blob-static-website-how-to.md) |
@@ -230,20 +229,20 @@ Následující tabulka uvádí tyto funkce spolu s pokyny pro jejich přidání 
 > [!NOTE] 
 > Pokud nastavíte CDN pro zdrojový účet úložiště, stačí změnit původ vaší stávající sítě CDN na primární koncový bod služby BLOB Service (nebo na primární koncový bod statického webu) vašeho nového účtu. 
 
-### <a name="move-data-to-the-new-storage-account"></a>Přesunout data do nového účtu úložiště
+### <a name="move-data-to-the-new-storage-account"></a>Přesunutí dat do nového účtu úložiště
 
-AzCopy je preferovaný nástroj pro přesun vašich dat. Je optimalizovaná pro výkon.  Jedním ze způsobů, jak je to rychlejší, je to, že se data zkopírují přímo mezi servery úložiště, takže AzCopy nepoužívá šířku pásma sítě vašeho počítače. Použijte AzCopy na příkazovém řádku nebo jako součást vlastního skriptu. Viz Začínáme [s AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy je preferovaný nástroj pro přesun vašich dat. Je optimalizovaný na výkon.  Jedním z důvodů, proč je rychlejší, je skutečnost, že data se kopírují přímo mezi servery úložiště, takže AzCopy nevyužívá šířku pásma sítě vašeho počítače. AzCopy můžete použít na příkazovém řádku nebo jako součást vlastního skriptu. Viz Začínáme [s AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 K přesunu dat můžete použít také Azure Data Factory. Poskytuje intuitivní uživatelské rozhraní. Pokud chcete použít Azure Data Factory, přečtěte si některý z těchto odkazů:. 
 
-  - [Kopírování dat do nebo z úložiště objektů BLOB v Azure pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Kopírování dat z nebo do Azure File Storage pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Kopírování dat z a do úložiště tabulek v Azure pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Kopírování dat do nebo z úložiště Azure Blob Storage pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
+  - [Kopírování dat z nebo do Azure File Storage pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
+  - [Kopírování dat do a z Azure Table Storage pomocí služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
 
 ---
 
-## <a name="discard-or-clean-up"></a>Zahodit nebo vyčistit
+## <a name="discard-or-clean-up"></a>Zahození nebo vyčištění
 
 Pokud po nasazení chcete začít znovu, můžete cílový účet úložiště odstranit a postup opakovat postupem popsaným v části [Příprava](#prepare) a [Přesun](#move) v tomto článku.
 
@@ -251,7 +250,7 @@ Pokud chcete potvrdit změny a dokončit přesun účtu úložiště, odstraňte
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Postup odebrání účtu úložiště pomocí Azure Portal:
+Účet úložiště odeberete pomocí webu Azure Portal takto:
 
 1. V Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a výběrem možnosti **účty úložiště** zobrazte seznam účtů úložiště.
 

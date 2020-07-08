@@ -7,19 +7,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657851"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958170"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Příručka pro publikování na komerčním webu Marketplace
 
 Tato příručka pro publikování je navržená tak, aby pomáhala novým a stávajícím vydavatelům, které se seznámí s tím, jak vypisovat aplikace a služby na komerčních prodejní místaích na webu Marketplace, [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com)a rozšiřují jejich podnikání do
 
 >[!Note]
->Marketplace tady odkazuje jak na Azure Marketplace, tak i na AppSource.  Další informace najdete [na jednom webu prodejní místa](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
+>Marketplace tady odkazuje jak na Azure Marketplace, tak i na AppSource.  Další informace najdete [na jednom webu prodejní místa](comparing-appsource-azure-marketplace.md) .
 
 Tato příručka se zabývá následujícími tématy: 
 *   Co je Marketplace a jak to funguje 
@@ -62,7 +61,7 @@ Nové výpisy na webu Marketplace mají nárok na nejrůznější sadu bezplatn�
 
 *   Společný prodej: Začněte nebo Zrychlete svou cestu k prodeji s Microsoftem prostřednictvím webu Marketplace. Přístup k programům a podpoře pro zajištění společného prodeje pomocí Microsoft Teams
 
-Po [odeslání řešení](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) na Marketplace vás náš tým připojuje k podpoře vašeho prostředí pro publikování.  Další informace najdete v tématu [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
+Po [odeslání řešení](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) na Marketplace vás náš tým připojuje k podpoře vašeho prostředí pro publikování.  Další informace najdete v tématu [Vytvoření účtu partnerského centra](partner-center-portal/create-account.md) .
 
 Přečtěte si další informace o [výhodách komerčního tržiště](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 

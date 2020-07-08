@@ -8,12 +8,11 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 0159f69dcef2a98a8597762902ff2f45f30b0bef
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799390"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Připojení k účtu Azure Cosmos pomocí studia 3T
 
@@ -63,25 +62,29 @@ Pokud chcete vytvořit databázi, kolekci a dokumenty pomocí nástroje Studio 3
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Snímek obrazovky s položkou nabídky přidat dokument v Studio 3T":::
 5. V dialogovém okně Přidat dokument vložte následující příkaz a klikněte na tlačítko **Přidat dokument**.
 
-        {
+    ```json
+    {
         "_id": "AndersenFamily",
         "lastName": "Andersen",
         "parents": [
-               { "firstName": "Thomas" },
-               { "firstName": "Mary Kay"}
+            { "firstName": "Thomas" },
+            { "firstName": "Mary Kay"}
         ],
         "children": [
-           {
-               "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-               "pets": [{ "givenName": "Fluffy" }]
-           }
+            {
+                "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
+                "pets": [{ "givenName": "Fluffy" }]
+            }
         ],
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
-        }
+    }
+    ```
+    
 6. Přidat další dokument, tentokrát s následujícím obsahem:
 
-        {
+    ```json
+    {
         "_id": "WakefieldFamily",
         "parents": [
             { "familyName": "Wakefield", "givenName": "Robin" },
@@ -90,7 +93,7 @@ Pokud chcete vytvořit databázi, kolekci a dokumenty pomocí nástroje Studio 3
         "children": [
             {
                 "familyName": "Merriam",
-                 "givenName": "Jesse",
+                "givenName": "Jesse",
                 "gender": "female", "grade": 1,
                 "pets": [
                     { "givenName": "Goofy" },
@@ -99,13 +102,15 @@ Pokud chcete vytvořit databázi, kolekci a dokumenty pomocí nástroje Studio 3
             },
             {
                 "familyName": "Miller",
-                 "givenName": "Lisa",
-                 "gender": "female",
-                 "grade": 8 }
+                "givenName": "Lisa",
+                "gender": "female",
+                "grade": 8 }
         ],
         "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
         "isRegistered": false
-        }
+    }
+    ```
+
 7. Spustí ukázkový dotaz. Hledejte například skupiny s názvem ' Andersen ' a vraťte pole nadřazených a státních stavů.
 
     :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Snímek obrazovky s výsledky dotazu Mongo":::

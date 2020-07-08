@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: d5c0878a5999f1d7d716d8caaf9f3fffa5e401dc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982342"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040329"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak vztahy důvěryhodnosti fungují pro doménové struktury prostředků v Azure Active Directory Domain Services
 
@@ -26,6 +25,10 @@ Pro kontrolu tohoto vztahu důvěryhodnosti systém Windows Security vypočítá
 Mechanismy řízení přístupu poskytované služba AD DS a modelem distribuovaného zabezpečení systému Windows poskytují prostředí pro fungování vztahů důvěryhodnosti domény a doménové struktury. Aby tyto vztahy důvěryhodnosti fungovaly správně, musí mít každý prostředek nebo počítač přímo důvěryhodnou cestu k řadiči domény v doméně, ve které se nachází.
 
 Cesta vztahu důvěryhodnosti je implementovaná službou přihlašování k síti pomocí ověřeného připojení RPC (Remote Procedure Call) k důvěryhodné autoritě domény. Zabezpečený kanál se také rozšiřuje na jiné služba AD DS domény prostřednictvím vztahů mezi vztahy důvěryhodnosti mezi doménami. Tento zabezpečený kanál slouží k získání a ověření informací o zabezpečení, včetně identifikátorů zabezpečení (SID) pro uživatele a skupiny.
+
+Přehled o tom, jak se vztahy důvěryhodnosti vztahují na Azure služba AD DS, najdete v tématu [Koncepty a funkce doménové struktury prostředků][create-forest-trust].
+
+Pokud chcete začít používat vztahy důvěryhodnosti v Azure služba AD DS, [vytvořte spravovanou doménu, která používá vztahy důvěryhodnosti doménové struktury][tutorial-create-advanced].
 
 ## <a name="trust-relationship-flows"></a>Toky vztahů důvěryhodnosti
 
@@ -58,7 +61,7 @@ Přenositelnost určuje, zda je možné vztah důvěryhodnosti rozšířit mimo 
 
 Pokaždé, když vytvoříte novou doménu v doménové struktuře, automaticky se vytvoří obousměrný přenositelný vztah důvěryhodnosti mezi novou doménou a nadřazenou doménou. Pokud se do nové domény přidají podřízené domény, prochází cesta vztahu důvěryhodnosti směrem nahoru v doménové hierarchii, která rozšiřuje počáteční cestu důvěryhodnosti vytvořenou mezi novou doménou a nadřazenou doménou. Vztahy s přenositelnými vztahy důvěryhodnosti procházejí při vytváření doménového stromu směrem nahoru a vytvářejí přenositelné vztahy důvěryhodnosti mezi všemi doménami ve stromu domén.
 
-Žádosti o ověření následují tyto cesty důvěryhodnosti, takže účty z libovolné domény v doménové struktuře se dají ověřit v jakékoli jiné doméně v doménové struktuře. Při jednom procesu přihlášení mají účty s příslušnými oprávněními přístup k prostředkům v libovolné doméně v doménové struktuře.
+Žádosti o ověření následují tyto cesty důvěryhodnosti, takže účty z libovolné domény v doménové struktuře se dají ověřit v jakékoli jiné doméně v doménové struktuře. Při jednotném procesu přihlašování mají účty s řádnými oprávněními přístup k prostředkům v libovolné doméně v doménové struktuře.
 
 ## <a name="forest-trusts"></a>Vztahy důvěryhodnosti doménové struktury
 
@@ -152,7 +155,7 @@ Pokud je mezi doménovými strukturami propojeny dvě doménové struktury, pož
 
 Při prvním navázání vztahu důvěryhodnosti doménové struktury shromáždí každá doménová struktura všechny důvěryhodné obory názvů ve své partnerské struktuře partnerů a uloží je do [objektu důvěryhodné domény](#trusted-domain-object). Mezi důvěryhodné obory názvů patří názvy doménových struktur, přípony hlavního názvu uživatele (UPN), přípony hlavního názvu služby (SPN) a obory názvů identifikátoru zabezpečení (SID) používané v jiné doménové struktuře. Objekty objektu pro replikaci se replikují do globálního katalogu.
 
-Než mohou ověřovací protokoly sledovat cestu vztahu důvěryhodnosti doménové struktury, musí být hlavní název služby (SPN) počítače prostředku přeložen do umístění v jiné doménové struktuře. Hlavní název služby (SPN) může být jeden z následujících:
+Než mohou ověřovací protokoly sledovat cestu vztahu důvěryhodnosti doménové struktury, musí být hlavní název služby (SPN) počítače prostředku přeložen do umístění v jiné doménové struktuře. Hlavní název služby (SPN) může být jeden z následujících názvů:
 
 * Název DNS hostitele.
 * Název DNS domény.
@@ -172,7 +175,7 @@ Následující diagram a kroky poskytují podrobný popis procesu ověřování 
 
     Globální katalog potom zkontroluje svou databázi, kde zjistí informace o všech vztazích důvěryhodnosti doménové struktury, které jsou vytvořeny s doménovou strukturou. Pokud se najde, porovná přípony názvů uvedené v doménové struktuře Trust Object (důvěryhodné domény) k příponě cílového hlavního názvu služby (SPN), aby nalezla shodu. Po nalezení shody globální katalog poskytne doporučení směrování zpátky na *ChildDC1*.
 
-    Pomocné parametry směrování vám pomůžou s přímými požadavky na ověřování směrem k cílové doménové struktuře. Pomocné parametry se používají jenom v případě, že se hlavní název služby (SPN) nepodaří najít u všech tradičních ověřovacích kanálů, jako je místní řadič domény a pak globální katalog.
+    Pomocné parametry směrování vám pomůžou s přímými požadavky na ověřování směrem k cílové doménové struktuře. Pomocné parametry se používají jenom v případě, že se hlavní název služby (SPN) nepodaří najít u všech tradičních ověřovacích kanálů, jako je například místní řadič domény a pak globální katalog.
 
 4. *ChildDC1* odešle odkaz na svou nadřazenou doménu zpět na *Workstation1*.
 
@@ -228,7 +231,7 @@ Změna hesla není dokončena, dokud nebude ověřování pomocí hesla úspěš
 
 Pokud ověřování pomocí nového hesla neproběhne úspěšně, protože heslo je neplatné, pokusí se důvěřující řadič domény ověřit pomocí starého hesla. Pokud se úspěšně ověřuje pomocí starého hesla, pokračuje proces změny hesla během 15 minut.
 
-Aktualizace hesel trustu se musí replikovat na řadiče domény obou stran důvěry do 30 dnů. Pokud je heslo vztahu důvěryhodnosti změněno po 30 dnech a řadič domény pak má pouze heslo N-2, nemůže použít vztah důvěryhodnosti ze strany vztahu důvěryhodnosti a nemůže vytvořit zabezpečený kanál na důvěryhodné straně.
+Aktualizace hesel trustu se musí replikovat na řadiče domény obou stran důvěry do 30 dnů. Pokud je heslo vztahu důvěryhodnosti změněno po 30 dnech a řadič domény má pouze heslo N-2, nemůže použít vztah důvěryhodnosti ze strany vztahu důvěryhodnosti a nemůže vytvořit zabezpečený kanál na důvěryhodné straně.
 
 ## <a name="network-ports-used-by-trusts"></a>Síťové porty používané vztahy důvěryhodnosti
 

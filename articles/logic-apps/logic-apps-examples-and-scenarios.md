@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84190741"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, ukázky, kurzy a návody pro Azure Logic Apps
@@ -86,7 +85,7 @@ U systémů a služeb, které nemají publikované konektory, můžete také vyu
 V případě řešení pro podnikovou integraci a bezproblémové komunikace mezi organizacemi můžete vytvářet automatizované škálovatelné pracovní postupy pro tyto scénáře pomocí Enterprise Integration Pack (EIP) s Azure Logic Apps. I když organizace používají různé protokoly a formáty, můžou vyměňovat zprávy elektronicky. EIP transformuje různé formáty do formátu, který mohou systémy vaší organizace zpracovávat, a podporuje standardní protokoly, včetně AS2, X12, EDIFACT a RosettaNet. K sestavení těchto řešení vytvoříte účet pro integraci, což je samostatný prostředek Azure, který poskytuje zabezpečený, škálovatelný a spravovatelný kontejner pro artefakty, které definujete a používáte s pracovními postupy aplikace logiky. Mezi artefakty patří například obchodní partneři, smlouvy, mapy, schémata, certifikáty a konfigurace služby Batch.
 
 * [Přehled: řešení B2B Enterprise Integration s Azure Logic Apps a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* [Vytváření a Správa integračních účtů pro integraci B2B Enterprise v Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [Vytváření a správa účtů integrace pro podnikové integrace B2B v Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 ## <a name="access-azure-virtual-network-resources"></a>Přístup k prostředkům virtuální sítě Azure
 
@@ -103,8 +102,8 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 
 * [Rychlý Start: vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Přehled: Automatizace nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [Vytvoření šablon Azure Resource Manager pro automatizaci nasazení pro Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Nasazení šablon Azure Resource Manager pro Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Vytváření šablon Azure Resource Manageru pro automatizaci nasazení pro Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+* [Nasazování šablon Azure Resource Manageru pro Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 * [Ukázka: připojení k Azure Service Bus frontám z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Ukázka: připojení k Azure Storage účtům z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Ukázka: nastavení akce aplikace funkcí pro Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -119,9 +118,9 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 
 ### <a name="monitor"></a>Monitorování
 
-* [Monitorovat stav spuštění, zkontrolovat historii triggerů a nastavit výstrahy pro Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
+* [Monitorování stavu spuštění, zobrazení historie aktivačních událostí a nastavení upozornění pro Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)
-* [Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro zprávy B2B v Azure Logic Apps](../logic-apps/monitor-b2b-messages-log-analytics.md)
+* [Nastavení protokolů služby Azure Monitor a shromažďování diagnostických dat o zprávách B2B v Azure Logic Apps](../logic-apps/monitor-b2b-messages-log-analytics.md)
 * [Zobrazení a vytváření dotazů pro monitorování a sledování v protokolech Azure Monitor pro Azure Logic Apps](../logic-apps/create-monitoring-tracking-queries.md)
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>Zpracování typů obsahu, převodů a transformací
@@ -141,7 +140,7 @@ Azure Logic Apps se integruje s mnoha službami, například Azure Functions, Az
 * [Kurz: Vytvoření řídicího panelu pro streamování zákaznických přehledů pomocí Azure Logic Apps a Azure Functions](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Kurz: vytvoření funkce, která se integruje s Azure Logic Apps a Azure Cognitive Services k analýze služby Twitter post mínění](../azure-functions/functions-twitter-email.md)
 * [Kurz: Vytvoření řídicího panelu pro sociální zařízení AI pomocí Power BI a Azure Logic Apps](https://aka.ms/logicappsdemo)
-* [Kurz: monitorování změn virtuálních počítačů pomocí Azure Event Grid a Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [Kurz: Monitorování změn virtuálních počítačů s využitím služeb Azure Event Grid a Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Kurz: vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: volejte služby SOAP pomocí Azure Logic Apps](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

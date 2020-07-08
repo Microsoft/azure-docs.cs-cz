@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435634"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799730"
 ---
 # <a name="protect-your-machines-and-applications"></a>Ochrana počítačů a aplikací
 Když Azure Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
@@ -163,15 +162,13 @@ Když otevřete kartu **kontejnery** v závislosti na vašem prostředí, může
 
 ![Hostitel kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Hostitelé kontejneru – virtuální počítače s Docker 
 
-![Služba Kubernetes](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Clustery Azure Kubernetes Service (AKS)
+![Kubernetes ](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) clustery služby Azure Kubernetes Service (AKS). [Další informace Security Center o AKS sadě prostředků](azure-kubernetes-service-integration.md)
 
-![Registr kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Registry Azure Container Registry (ACR) – zobrazené pouze v případě, že jste na cenové úrovni Standard a máte povolenou Azure Container Registry sady prostředků.
+![Registry kontejnerů ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR). [Další informace Security Center o ACR sadě prostředků](azure-container-registry-integration.md)
 
 Pokyny, jak používat funkce zabezpečení kontejnerů, najdete v tématu [monitorování zabezpečení kontejnerů](monitor-container-security.md).
 
-Výhody Azure Container Registry sady jsou vysvětleny [zde](azure-container-registry-integration.md) .
 
-Výhody sady Kubernetes Services jsou vysvětleny [zde](azure-kubernetes-service-integration.md) .
 
 [![Karta kontejnery](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 

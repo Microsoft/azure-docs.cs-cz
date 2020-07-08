@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84674950"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
@@ -186,7 +185,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 
 Identity zařízení se reprezentují jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Popis |
+| Vlastnost | Možnosti | Description |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
@@ -210,7 +209,7 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 
 Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Popis |
+| Vlastnost | Možnosti | Description |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

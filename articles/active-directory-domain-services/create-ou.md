@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f0bc803c8f05f34a46f9e496446a3ce07bad179
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734890"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040278"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Vytvoření organizační jednotky (OU) ve Azure Active Directory Domain Services spravované doméně
 
-Organizační jednotky (OU) v Active Directory Domain Services (služba AD DS) umožňují logicky seskupovat objekty, jako jsou uživatelské účty, účty služeb nebo účty počítačů. Pak můžete přiřadit správce ke konkrétním organizačním jednotkám a použít zásady skupiny k vystavování cílových nastavení konfigurace.
+Organizační jednotky (OU) v spravované doméně Active Directory Domain Services (služba AD DS) umožňují logicky seskupovat objekty, jako jsou uživatelské účty, účty služeb nebo účty počítačů. Pak můžete přiřadit správce ke konkrétním organizačním jednotkám a použít zásady skupiny k vystavování cílových nastavení konfigurace.
 
 Spravované domény Azure služba AD DS zahrnují následující dva předdefinované organizační jednotky:
 
@@ -29,7 +28,7 @@ Spravované domény Azure služba AD DS zahrnují následující dva předdefino
 
 Když vytváříte a spouštíte úlohy, které používají Azure služba AD DS, možná budete muset vytvořit účty služeb pro aplikace, které se budou ověřovat sami. K uspořádání těchto účtů služeb často vytvoříte vlastní organizační jednotku ve spravované doméně a pak vytvoříte účty služeb v rámci této organizační jednotky.
 
-V hybridním prostředí se organizační jednotky vytvořené v místním prostředí služba AD DS nesynchronizují se službou Azure služba AD DS. Spravované domény používají strukturu ploché organizační jednotky. Všechny uživatelské účty a skupiny se ukládají do kontejneru *AADDC Users* , a to i v případě, že se synchronizují z různých místních domén nebo doménových struktur, a to i v případě, že jste nakonfigurovali hierarchickou strukturu organizační jednotky.
+V hybridním prostředí se organizační jednotky vytvořené v místním prostředí služba AD DS nesynchronizují se spravovanými doménami. Spravované domény používají strukturu ploché organizační jednotky. Všechny uživatelské účty a skupiny se ukládají do kontejneru *AADDC Users* , a to i v případě, že se synchronizují z různých místních domén nebo doménových struktur, a to i v případě, že jste nakonfigurovali hierarchickou strukturu organizační jednotky.
 
 V tomto článku se dozvíte, jak vytvořit organizační jednotku ve spravované doméně.
 
@@ -49,7 +48,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 ## <a name="custom-ou-considerations-and-limitations"></a>Vlastní doporučení a omezení organizační jednotky
 
-Při vytváření vlastních organizačních jednotek ve spravované doméně získáte další flexibilitu správy uživatelů a používání zásad skupiny. V porovnání s místním služba AD DS prostředí existují určitá omezení a požadavky při vytváření a správě vlastní struktury organizační jednotky v Azure služba AD DS:
+Při vytváření vlastních organizačních jednotek ve spravované doméně získáte další flexibilitu správy uživatelů a používání zásad skupiny. V porovnání s místním služba AD DS prostředí existují určitá omezení a požadavky při vytváření a správě vlastní struktury organizační jednotky ve spravované doméně:
 
 * Chcete-li vytvořit vlastní organizační jednotky, uživatelé musí být členy skupiny *AAD DC Administrators* .
 * Uživatel, který vytváří vlastní organizační jednotku, má prostřednictvím této organizační jednotky oprávnění správce (úplné řízení) a je vlastníkem prostředku.
