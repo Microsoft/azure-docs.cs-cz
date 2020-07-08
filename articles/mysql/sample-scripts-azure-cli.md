@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
-ms.openlocfilehash: 18c52505ddf82cb29b13a9ee7621db5c3422eab6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 467d14e1f00e88999e130d28ee0e5a00dac47825
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74769757"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120955"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Ukázky v Azure CLI pro službu Azure Database for MySQL 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure Database for MySQL.
 
-| |  |
+| Vzorový odkaz | Description  |
 |---|---|
 |**Vytvoření serveru**||
 | [Vytvoření serveru a pravidla brány firewall](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který vytvoří jeden server Azure Database for MySQL a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
