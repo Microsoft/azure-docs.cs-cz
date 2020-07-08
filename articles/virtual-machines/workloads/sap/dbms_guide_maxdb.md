@@ -16,10 +16,9 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022586"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Nasazení SAP MaxDB, liveCache a Content serveru na virtuálních počítačích Azure
@@ -370,7 +369,7 @@ Pokud chcete zvýšit počet cílů, na které se má zapisovat, existují dvě 
 
 Prokládání svazků na více připojených discích bylo zmíněno dříve v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
 
-#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Další požadavky
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Další důležité informace
 Všechny ostatní obecné oblasti, jako jsou například skupiny dostupnosti Azure nebo monitorování SAP, platí také jak je popsáno v tématu [požadavky pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md).  pro nasazení virtuálních počítačů s databází SAP MaxDB.
 Další nastavení pro SAP MaxDB jsou pro virtuální počítače Azure transparentní a jsou popsána v různých dokumentech uvedených v tématu SAP Note [767598] a v těchto poznámkách SAP:
 
@@ -412,7 +411,7 @@ Vzhledem k tomu, že SAP liveCache intenzivně využívá výpočetní výkon, s
 #### <a name="backup-and-restore-for-livecache-in-azure"></a>Zálohování a obnovení pro liveCache v Azure
 zálohování a obnovení, včetně požadavků na výkon, jsou již popsány v příslušných kapitolách SAP MaxDB v tomto dokumentu. 
 
-#### <a name="other-considerations"></a>Další aspekty
+#### <a name="other-considerations"></a>Další důležité informace
 Všechny ostatní obecné oblasti jsou již popsány v příslušné kapitole SAP MaxDB. 
 
 ## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Specifické pro nasazení serveru obsahu SAP ve Windows v Azure

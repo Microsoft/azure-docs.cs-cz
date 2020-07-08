@@ -12,10 +12,9 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324534"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Správa prostoru souborů pro databáze v Azure SQL Database
@@ -124,7 +123,7 @@ Při správě prostoru pro elastický fond je důležité pochopit následujíc�
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Dotazování elastického fondu pro informace o prostoru úložiště
 
-K určení množství úložného prostoru pro elastický fond lze použít následující dotazy.  
+K určení velikosti prostoru úložiště elastického fondu můžete použít následující dotazy.  
 
 ### <a name="elastic-pool-data-space-used"></a>Využité místo datového prostoru elastického fondu
 

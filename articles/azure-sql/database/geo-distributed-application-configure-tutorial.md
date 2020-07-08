@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324705"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Kurz: implementace geografické distribuované databáze (Azure SQL Database)
@@ -140,7 +139,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    cd SqlDbSample
    ```
 
-1. Pomocí oblíbeného editoru otevřete soubor *pom. XML* ve složce projektu.
+1. Pomocí oblíbeného editoru otevřete soubor *pom.xml* ve složce projektu.
 
 1. Přidejte ovladač Microsoft JDBC pro závislost SQL Server přidáním následující `dependency` části. Závislost musí být vložená v rámci větší `dependencies` části.
 

@@ -4,10 +4,9 @@ description: Seznamte se s tím, jak ve velkých datových sadách získat zázn
 ms.date: 03/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681069"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure

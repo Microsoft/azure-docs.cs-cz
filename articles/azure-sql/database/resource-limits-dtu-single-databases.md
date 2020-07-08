@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: fd8c3c7eaaee6a31acbc4cf513adb3e0e0fa566b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84341996"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu DTU – Azure SQL Database
@@ -39,7 +38,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 5 |
 | Zahrnuté úložiště (GB) | 2 |
 | Maximální počet možností úložiště (GB) | 2 |
-| Maximální úložiště OLTP v paměti (GB) |– |
+| Maximální úložiště OLTP v paměti (GB) |Není k dispozici |
 | Maximální počet souběžných pracovních procesů (požadavků) | 30 |
 | Maximální počet souběžných relací | 300 |
 |||
@@ -57,7 +56,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 10 | 20 | 50 | 100 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | – | – | – | – |
+| Maximální úložiště OLTP v paměti (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | Maximální počet souběžných pracovních procesů (požadavků)| 60 | 90 | 120 | 200 |
 | Maximální počet souběžných relací |600 | 900 | 1200 | 2400 |
 ||||||
@@ -75,7 +74,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | – | – | – | – |– |
+| Maximální úložiště OLTP v paměti (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |Není k dispozici |
 | Maximální počet souběžných pracovních procesů (požadavků)| 400 | 800 | 1600 | 3200 |6000 |
 | Maximální počet souběžných relací |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||

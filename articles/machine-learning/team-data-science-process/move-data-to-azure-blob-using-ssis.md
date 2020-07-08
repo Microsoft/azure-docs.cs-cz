@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322857"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do a z Azure Blob Storage pomocí konektorů SSIS
@@ -34,7 +33,7 @@ Diskuzi o normativních scénářích, které používají SSIS k tomu, aby se v
 > 
 > 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Abyste mohli provádět úkoly popsané v tomto článku, musíte mít předplatné Azure a nastavený účet Azure Storage. Pro nahrání nebo stažení dat budete potřebovat název účtu Azure Storage a klíč účtu.
 
 * Pokud chcete nastavit **předplatné Azure**, přečtěte si [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -64,7 +63,7 @@ K přesunu dat pomocí balíčku funkcí SSIS z místního prostředí do úlož
 
 Parametry, které používá úkol, jsou popsány zde:
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | **AzureStorageConnection** |Určuje existujícího Správce připojení Azure Storage nebo vytvoří nový, který odkazuje na účet Azure Storage, který odkazuje na místo, kde jsou hostované soubory objektů BLOB. |
 | **BlobContainer** |Určuje název kontejneru objektů blob, který obsahuje nahrané soubory jako objekty blob. |

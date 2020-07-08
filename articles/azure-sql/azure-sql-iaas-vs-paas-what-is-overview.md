@@ -14,10 +14,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
 ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84344624"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
@@ -142,7 +141,7 @@ Další informace o cenách najdete v následujících zdrojích informací a ma
 - [Ceny za virtuální počítače](https://azure.microsoft.com/pricing/details/virtual-machines/) pro [SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#sql) a pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#windows)
 - [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/)
 
-## <a name="administration"></a>Administration
+## <a name="administration"></a>Správa
 
 Pro mnoho firem je rozhodnutí o přechodu na využívání cloudové služby nejen otázkou nízkých nákladů, ale také snížení složitosti správy. Díky IaaS a PaaS spravuje Azure základní infrastrukturu a automaticky replikuje všechna data, aby poskytovala zotavení po havárii, nakonfiguruje a upgraduje databázový software, spravuje vyrovnávání zatížení a provádí transparentní převzetí služeb při selhání v případě selhání serveru v rámci datového centra.
 

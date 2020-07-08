@@ -4,13 +4,12 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího přenosu NGINX se statickou veřejnou IP adresou v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: a44a41806af30479f06ec4daba936c7aa71ef5d7
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.date: 07/02/2020
+ms.openlocfilehash: f10bed46f93af3579f07e04d9940fc98eef67826
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920314"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -25,7 +24,7 @@ Můžete také:
 - [Vytvoření kontroleru příchozího přenosu dat, který používá vaše vlastní certifikáty TLS][aks-ingress-own-tls]
 - [Vytvořte kontroler příchozího přenosu dat, který pomocí šifry umožňuje automaticky generovat certifikáty TLS s dynamickou veřejnou IP adresou.][aks-ingress-tls]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -70,6 +69,9 @@ Aktualizujte následující skript s použitím **IP adresy** vašeho kontroleru
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
@@ -105,7 +107,7 @@ Kontroler příchozího přenosu dat je teď přístupný prostřednictvím IP a
 Kontroler příchozího přenosu dat NGINX podporuje ukončení protokolu TLS. Existuje několik způsobů, jak načíst a nakonfigurovat certifikáty pro protokol HTTPS. V tomto článku se dozvíte, jak používat [Správce certifikátů][cert-manager], který umožňuje automatické [šifrování][lets-encrypt] generování certifikátů a funkcí správy.
 
 > [!NOTE]
-> V tomto článku se `staging` používá prostředí, které umožňuje šifrování. V produkčních nasazeních použijte `letsencrypt-prod` a `https://acme-v02.api.letsencrypt.org/directory` v definicích prostředků a při instalaci grafu Helm.
+> V tomto článku se používá prostředí, které `staging` umožňuje šifrování. V produkčních nasazeních použijte `letsencrypt-prod` a `https://acme-v02.api.letsencrypt.org/directory` v definicích prostředků a při instalaci grafu Helm.
 
 Pokud chcete nainstalovat kontrolér správce certifikátů do clusteru s podporou RBAC, použijte následující `helm install` příkaz:
 
@@ -134,9 +136,9 @@ Další informace o konfiguraci Správce certifikátů najdete v [projektu sprá
 
 ## <a name="create-a-ca-cluster-issuer"></a>Vytvoření vystavitele clusteru certifikační autority
 
-Než bude možné certifikáty vystavit, správce certifikátů vyžaduje prostředek [vystavitele][cert-manager-issuer] nebo [ClusterIssuer][cert-manager-cluster-issuer] . Tyto Kubernetes prostředky jsou identické ve fungování, `Issuer` ale fungují v jednom oboru názvů a `ClusterIssuer` fungují napříč všemi obory názvů. Další informace najdete v dokumentaci [vystavitele správce certifikátů][cert-manager-issuer] .
+Než bude možné certifikáty vystavit, správce certifikátů vyžaduje prostředek [vystavitele][cert-manager-issuer] nebo [ClusterIssuer][cert-manager-cluster-issuer] . Tyto Kubernetes prostředky jsou identické ve fungování, ale `Issuer` fungují v jednom oboru názvů a `ClusterIssuer` fungují napříč všemi obory názvů. Další informace najdete v dokumentaci [vystavitele správce certifikátů][cert-manager-issuer] .
 
-Vytvořte Vystavitel clusteru, například `cluster-issuer.yaml`, pomocí následujícího ukázkového manifestu. Aktualizujte e-mailovou adresu platnou adresou z vaší organizace:
+Vytvořte Vystavitel clusteru, například `cluster-issuer.yaml` , pomocí následujícího ukázkového manifestu. Aktualizujte e-mailovou adresu platnou adresou z vaší organizace:
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -245,7 +247,7 @@ spec:
     app: ingress-demo
 ```
 
-Spusťte dvě ukázkové aplikace pomocí `kubectl apply`:
+Spusťte dvě ukázkové aplikace pomocí `kubectl apply` :
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -254,9 +256,9 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 
 ## <a name="create-an-ingress-route"></a>Vytvoření trasy příchozího přenosu dat
 
-Obě aplikace jsou teď spuštěné v clusteru Kubernetes, ale nakonfigurují se se službou typu `ClusterIP`. Aplikace proto nejsou přístupné z Internetu. Pokud je chcete zpřístupnit veřejnosti, vytvořte Kubernetes prostředek příchozího přenosu dat. Prostředek příchozího přenosu dat konfiguruje pravidla, která směrují provoz do jedné z těchto dvou aplikací.
+Obě aplikace jsou teď spuštěné v clusteru Kubernetes, ale nakonfigurují se se službou typu `ClusterIP` . Aplikace proto nejsou přístupné z Internetu. Pokud je chcete zpřístupnit veřejnosti, vytvořte Kubernetes prostředek příchozího přenosu dat. Prostředek příchozího přenosu dat konfiguruje pravidla, která směrují provoz do jedné z těchto dvou aplikací.
 
-V následujícím příkladu je přenos do adresy `https://demo-aks-ingress.eastus.cloudapp.azure.com/` směrován do služby s názvem. `aks-helloworld` Provoz na adresu `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` je směrován do `ingress-demo` služby. Aktualizujte *hostitele* a *hostitele* na název DNS, který jste vytvořili v předchozím kroku.
+V následujícím příkladu je přenos do adresy `https://demo-aks-ingress.eastus.cloudapp.azure.com/` směrován do služby s názvem `aks-helloworld` . Provoz na adresu `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` je směrován do `ingress-demo` služby. Aktualizujte *hostitele* a *hostitele* na název DNS, který jste vytvořili v předchozím kroku.
 
 Vytvořte soubor s názvem `hello-world-ingress.yaml` a zkopírujte ho do následujícího příkladu YAML.
 
@@ -288,7 +290,7 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-Pomocí `kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic` příkazu vytvořte prostředek příchozího přenosu dat.
+Pomocí příkazu vytvořte prostředek příchozího přenosu dat `kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic` .
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
@@ -302,7 +304,7 @@ V dalším kroku se musí vytvořit prostředek certifikátu. Prostředek certif
 
 Správce certifikátů pravděpodobně pro vás automaticky vytvořil objekt certifikátu pomocí příchozího překrytí, které se automaticky nasazuje pomocí nástroje CERT Manager od verze v 0.2.2. Další informace najdete v dokumentaci ke [vstupnímu překrytí][ingress-shim].
 
-Chcete-li ověřit, zda byl certifikát vytvořen úspěšně, `kubectl describe certificate tls-secret --namespace ingress-basic` použijte příkaz.
+Chcete-li ověřit, zda byl certifikát vytvořen úspěšně, použijte `kubectl describe certificate tls-secret --namespace ingress-basic` příkaz.
 
 Pokud byl certifikát vystavený, zobrazí se výstup podobný následujícímu:
 ```
@@ -348,13 +350,13 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>Test konfigurace příchozího přenosu dat
 
-Otevřete webový prohlížeč s plně kvalifikovaným názvem domény vašeho kontroleru Kubernetes příchozího přenosu dat *`https://demo-aks-ingress.eastus.cloudapp.azure.com`*, například.
+Otevřete webový prohlížeč s plně kvalifikovaným názvem domény vašeho kontroleru Kubernetes příchozího přenosu dat, například *`https://demo-aks-ingress.eastus.cloudapp.azure.com`* .
 
-Jak tyto příklady používají `letsencrypt-staging`, vydaný certifikát TLS/SSL není v prohlížeči důvěryhodný. Přijměte výzvu k zadání upozornění, abyste mohli pokračovat v používání aplikace. Informace o certifikátu zobrazí tento *falešný certifikát x1 pro Intermediate* , který je vydaný pomocí zašifrování. Tento falešný certifikát indikuje `cert-manager` správné zpracování žádosti a obdržel certifikát od poskytovatele:
+Jak tyto příklady používají `letsencrypt-staging` , vydaný certifikát TLS/SSL není v prohlížeči důvěryhodný. Přijměte výzvu k zadání upozornění, abyste mohli pokračovat v používání aplikace. Informace o certifikátu zobrazí tento *falešný certifikát x1 pro Intermediate* , který je vydaný pomocí zašifrování. Tento falešný certifikát indikuje `cert-manager` správné zpracování žádosti a obdržel certifikát od poskytovatele:
 
 ![Pojďme si dešifrovat přípravný certifikát](media/ingress/staging-certificate.png)
 
-Když změníte šifrování tak `prod` `staging`, aby se místo toho používal důvěryhodný certifikát vydaný pomocí šifry, jak je znázorněno v následujícím příkladu:
+Když změníte šifrování tak, aby se `prod` místo toho používal `staging` důvěryhodný certifikát vydaný pomocí šifry, jak je znázorněno v následujícím příkladu:
 
 ![Pojďme šifrovat certifikát](media/ingress/certificate.png)
 
@@ -362,7 +364,7 @@ Ukázková aplikace se zobrazí ve webovém prohlížeči:
 
 ![Příklad aplikace jedna](media/ingress/app-one.png)
 
-Nyní přidejte cestu */Hello-World-Two* k plně kvalifikovanému názvu domény, *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* například. Zobrazí se druhá ukázková aplikace s vlastním názvem:
+Nyní přidejte cestu */Hello-World-Two* k plně kvalifikovanému názvu domény, například *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* . Zobrazí se druhá ukázková aplikace s vlastním názvem:
 
 ![Příklad aplikace – dvě](media/ingress/app-two.png)
 
@@ -372,7 +374,7 @@ Tento článek používá Helm k instalaci komponent příchozího přenosu dat,
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>Odstranění ukázkového oboru názvů a všech prostředků
 
-Chcete-li odstranit celý vzorový obor názvů, `kubectl delete` použijte příkaz a zadejte název oboru názvů. Všechny prostředky v oboru názvů jsou odstraněny.
+Chcete-li odstranit celý vzorový obor názvů, použijte `kubectl delete` příkaz a zadejte název oboru názvů. Všechny prostředky v oboru názvů jsou odstraněny.
 
 ```console
 kubectl delete namespace ingress-basic
@@ -387,7 +389,7 @@ kubectl delete -f certificates.yaml
 kubectl delete -f cluster-issuer.yaml
 ```
 
-Teď seznam vydaných verzí Helm `helm list` pomocí příkazu. Vyhledejte grafy s názvem *Nginx-* příchozí a *CERT-Manager* , jak je znázorněno v následujícím příkladu výstupu:
+Teď seznam vydaných verzí Helm pomocí `helm list` příkazu. Vyhledejte grafy s názvem *Nginx-* příchozí a *CERT-Manager* , jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ helm list --all-namespaces

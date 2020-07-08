@@ -11,10 +11,9 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 3cc74faa39b21b1ab275149db4f85de8f55fd07e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733478"
 ---
 # <a name="get-started-with-device-management-net"></a>Začínáme se správou zařízení (.NET)
@@ -129,7 +128,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která i
    Console.ReadLine();
    ```
 
-1.  > Vyberte**řešení**sestavení **sestavení**.
+1. Vyberte **Build**  >  **řešení**sestavení sestavení.
 
 > [!NOTE]
 > Tento kurz provede pouze jeden dotaz pro hlášené vlastnosti zařízení. V produkčním kódu doporučujeme dotazování na detekci změn v hlášených vlastnostech.
@@ -146,7 +145,7 @@ V této části:
 
 K vytvoření aplikace simulovaného zařízení použijte následující postup:
 
-1. V aplikaci Visual Studio v řešení TriggerReboot, které jste již vytvořili, vyberte **soubor** > **Nový** > **projekt**. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio v řešení TriggerReboot, které jste již vytvořili, vyberte **soubor**  >  **Nový**  >  **projekt**. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
 1. V části **Konfigurovat nový projekt**, pojmenujte projekt *SimulateManagedDevice*a pro **řešení**vyberte možnost **Přidat do řešení**. Vyberte **Vytvořit**.
 
@@ -154,7 +153,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na nový projekt **SimulateManagedDevice** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. Vyberte **Procházet**, vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Procházet**, vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
 
     ![Klientská aplikace okna Správce balíčků NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
@@ -237,9 +236,9 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
-1. Pro **běžné vlastnosti** > **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Výběrem **OK** uložte změny.
+1. Pro **běžné vlastnosti**  >  **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Výběrem **OK** uložte změny.
 
-1.  > Vyberte**řešení**sestavení **sestavení**.
+1. Vyberte **Build**  >  **řešení**sestavení sestavení.
 
 > [!NOTE]
 > Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo při [zpracování přechodné chyby](/azure/architecture/best-practices/transient-faults).

@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 06/23/2020
 tags: connectors
 ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85323160"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
@@ -23,7 +22,7 @@ ms.locfileid: "85323160"
 >
 > U Logic Apps, které používají starší konektory, [migrujte prosím na nejnovější konektor](#migrate) před datem vyřazení. V opačném případě se tyto aplikace logiky projeví při selhání spuštění a nebude možné odesílat zprávy do vašeho systému SAP.
 
-Tento článek ukazuje, jak můžete přistupovat k místním prostředkům SAP zevnitř aplikace logiky pomocí konektoru SAP. Konektor pracuje s klasickými verzemi SAP, jako jsou R/3 a systémy ECC místně. Konektor taky umožňuje integraci s novějšími systémy SAP založenými na HANA, jako je S/4 HANA, ať už jsou hostované místně nebo v cloudu. Konektor SAP podporuje integraci zpráv nebo dat do systémů a ze systému SAP NetWeaver prostřednictvím zprostředkujícího dokumentu (IDoc), rozhraní BAPI (Business Application Programming Interface) nebo vzdáleného volání funkce (RFC).
+Tento článek ukazuje, jak můžete přistupovat k místním prostředkům SAP zevnitř aplikace logiky pomocí konektoru SAP. Konektor pracuje s klasickými verzemi SAP, jako jsou R/3 a systémy ECC místně. Konektor umožňuje také integraci s novějšími systémy SAP založenými na HANA, jako je S/4 HANA, a to bez ohledu na to, jestli jsou hostované v místním prostředí, nebo v cloudu. Konektor SAP podporuje integraci dat nebo zpráv do a ze systémů SAP NetWeaver prostřednictvím formátu IDoc (Intermediate Document) nebo volání BAPI (Business Application Programming Interface) nebo RFC (Remote Function Call).
 
 Konektor SAP používá [knihovnu SAP .NET Connector (NCo)](https://support.sap.com/en/product/connectors/msnet.html) a poskytuje tyto akce:
 
@@ -39,7 +38,7 @@ V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které s
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 

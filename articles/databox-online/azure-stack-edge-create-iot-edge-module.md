@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339888"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Vývoj modulu C# IoT Edge pro přesunutí souborů na Azure Stack Edge
@@ -116,7 +115,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
     ![Vytvořit nové řešení 4](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. Přejděte do složky **EdgeSolution** , kterou jste vytvořili dříve. Okno VS Code načte pracovní prostor řešení IoT Edge s jeho pěti komponentami nejvyšší úrovně. V tomto článku nebudete upravovat složku **. VSCode** , soubor. **gitignore** , soubor **. env** a soubor **Deployment. template. JSON** .
+5. Přejděte do složky **EdgeSolution** , kterou jste vytvořili dříve. Okno VS Code načte pracovní prostor řešení IoT Edge s jeho pěti komponentami nejvyšší úrovně. V tomto článku nebudete upravovat složku **. VSCode** , soubor **. gitignore** , soubor **. env** a **deployment.template.js** .
     
     Jedinou komponentou, kterou upravíte, je složka moduly. Tato složka obsahuje kód jazyka C# pro vaše moduly a soubory Docker pro sestavení modulu jako image kontejneru.
 
@@ -256,7 +255,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
 2. Po zobrazení výzvy k zadání hesla zadejte heslo. Můžete také načíst hodnoty pro přihlašovací server, uživatelské jméno a heslo z **přístupových klíčů** v registru kontejnerů v Azure Portal.
  
-3. Po zadání přihlašovacích údajů můžete do služby Azure Container Registry odeslat image modulu. V Průzkumníku VS Code klikněte pravým tlačítkem na soubor **Module. JSON** a vyberte **sestavení a nabízené IoT Edge řešení**.
+3. Po zadání přihlašovacích údajů můžete do služby Azure Container Registry odeslat image modulu. V Průzkumníku VS Code klikněte pravým tlačítkem na **module.jsna** soubor a vyberte **sestavení a nabízené IoT Edge řešení**.
 
     ![Sestavování a nabízených IoT Edge řešení](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
@@ -273,7 +272,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
     *Program. cs (77, 44): upozornění CS1998: v této asynchronní metodě chybí operátory await a spustí se synchronně. Zvažte použití operátoru await pro čekání na neblokující volání rozhraní API nebo ' await Task. Run (...) ' k provedení práce vázané na procesor ve vlákně na pozadí.*
 
-4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>` . Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` :.
+4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v module.jsv souboru ve formátu `<repository>:<version>-<platform>` . Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` :.
 
 ## <a name="next-steps"></a>Další kroky
 
