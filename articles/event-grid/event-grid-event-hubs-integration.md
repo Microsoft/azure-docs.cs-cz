@@ -1,19 +1,14 @@
 ---
 title: 'Kurz: odeslání Event Hubs dat do datového skladu – Event Grid'
 description: 'Kurz: popisuje, jak pomocí Azure Event Grid a Event Hubs migrovat data do SQL Data Warehouse. K načtení digitalizačního souboru používá funkci Azure Functions.'
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.author: spelluru
-ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 07/07/2020
+ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212169"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117555"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
 Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. V tomto [Event Hubs a v ukázce Event Grid Integration](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob na SQL Data Warehouse.
@@ -60,7 +55,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell v Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
     ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)
@@ -86,7 +81,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
         ```
     2. Stiskněte klávesu **ENTER**. 
 
-        Tady je příklad:
+        Zde naleznete příklad:
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp

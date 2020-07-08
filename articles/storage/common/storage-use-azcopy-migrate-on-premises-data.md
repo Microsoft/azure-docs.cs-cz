@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74327523"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120632"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -84,11 +84,11 @@ Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště obje
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Nahraďte `<local-folder-path>` zástupný text cestou ke složce, která obsahuje soubory (například: `C:\myFolder` nebo `/mnt/myFolder`).
+* Nahraďte `<local-folder-path>` zástupný text cestou ke složce, která obsahuje soubory (například: `C:\myFolder` nebo `/mnt/myFolder` ).
 
-* `<storage-account-name>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
+* `<storage-account-name>`Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 
-* `<container-name>` Zástupný symbol nahraďte názvem kontejneru, který jste vytvořili.
+* `<container-name>`Zástupný symbol nahraďte názvem kontejneru, který jste vytvořili.
 
 Chcete-li odeslat obsah zadaného adresáře do úložiště objektů BLOB rekurzivně, zadejte `--recursive` možnost. Když s touto možností spustíte AzCopy, nahrají se také všechny podsložky a jejich soubory.
 
@@ -96,19 +96,19 @@ Chcete-li odeslat obsah zadaného adresáře do úložiště objektů BLOB rekur
 
 Pomocí AzCopy můžete nahrávat soubory na základě času jejich poslední úpravy. 
 
-Pokud to chcete vyzkoušet, upravte nebo vytvořte nové soubory ve zdrojovém adresáři pro účely testování. Pak použijte příkaz AzCopy `sync` .
+Pokud to chcete vyzkoušet, upravte nebo vytvořte nové soubory ve zdrojovém adresáři pro účely testování. Pak použijte `sync` příkaz AzCopy.
 
 ```AzCopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Nahraďte `<local-folder-path>` zástupný text cestou ke složce, která obsahuje soubory (například: `C:\myFolder` nebo. `/mnt/myFolder`
+* Nahraďte `<local-folder-path>` zástupný text cestou ke složce, která obsahuje soubory (například: `C:\myFolder` nebo `/mnt/myFolder` .
 
-* `<storage-account-name>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
+* `<storage-account-name>`Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 
-* `<container-name>` Zástupný symbol nahraďte názvem kontejneru, který jste vytvořili.
+* `<container-name>`Zástupný symbol nahraďte názvem kontejneru, který jste vytvořili.
 
-Další informace o `sync` příkazu najdete v tématu [synchronizace souborů](storage-use-azcopy-blobs.md#synchronize-files).
+Další informace o příkazu najdete `sync` v tématu [synchronizace souborů](storage-use-azcopy-blobs.md#synchronize-files).
 
 ## <a name="create-a-scheduled-task"></a>Vytvoření plánované úlohy
 
@@ -116,18 +116,22 @@ Můžete vytvořit plánovanou úlohu nebo úlohu Cron, která spouští skript 
 
 Zkopírujte následující příkaz AzCopy do textového editoru. Aktualizujte hodnoty parametrů příkazu AzCopy na odpovídající hodnoty. Uložte soubor jako `script.sh` (Linux) nebo `script.bat` (Windows) pro AzCopy. 
 
-V těchto příkladech se předpokládá, že `myFolder`vaše složka je pojmenována `mystorageaccount` , název vašeho účtu úložiště `mycontainer`je a název kontejneru je.
+V těchto příkladech se předpokládá, že vaše složka je pojmenována `myFolder` , název vašeho účtu úložiště je `mystorageaccount` a název kontejneru je `mycontainer` .
 
 > [!NOTE]
 > Příklad pro Linux připojí token SAS. Budete ho muset zadat v příkazu. Aktuální verze AzCopy v10 za účelem nepodporuje autorizaci Azure AD v úlohách cron.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-    azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
+```bash
+azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
+```
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-    azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+```bash
+azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+```
 
 ---
 

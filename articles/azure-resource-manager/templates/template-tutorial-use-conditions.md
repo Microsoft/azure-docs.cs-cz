@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b73598da2b34847a38485db9952302f7c5b33c98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185026"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119306"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Kurz: použití podmínky v šablonách ARM
 
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 > * Vyčištění prostředků
 
-Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace naleznete v tématu:
+Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace naleznete v tématech:
 
 * [Struktura souboru šablony: podmínka](conditional-resource-deployment.md)
 * [Podmíněně nasaďte prostředek v ŠABLONĚ ARM](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. [Vytvoření šablon ARM](use-vs-code-to-create-template.md)najdete v tématu použití Visual Studio Code.
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```console
@@ -54,7 +54,7 @@ K dokončení tohoto článku potřebujete:
 
 Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. Z Visual Studio Code vyberte **soubor**>**otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
 1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -73,7 +73,7 @@ K dokončení tohoto článku potřebujete:
 
     Před přizpůsobením šablony je vhodné si projít odkaz na šablonu.
 
-1. Vyberte **soubor**>**Uložit jako** a uložte kopii souboru do místního počítače s názvem **azuredeploy. JSON**.
+1. Vyberte **soubor** > **Uložit jako** a uložte kopii souboru do místního počítače s názvem **azuredeploy.js**.
 
 ## <a name="modify-the-template"></a>Úprava šablony
 

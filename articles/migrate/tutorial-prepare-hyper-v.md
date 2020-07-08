@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ca9020a9c306eea39d75c15c96b5f9fe9bcc11fe
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770539"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109616"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -36,7 +36,7 @@ Tabulka shrnuje úkoly, které je potřeba provést v Azure. Postupujte podle po
 **Úkol** | **Podrobnosti** | **Oprávnění**
 --- | --- | ---
 **Vytvoření projektu Azure Migrate** | Azure Migrate projekt poskytuje centrální umístění pro orchestraci a správu hodnocení a migrace pomocí nástrojů Azure Migrate, nástrojů společnosti Microsoft a nabídek třetích stran. | Váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka ve skupině prostředků, ve které se projekt nachází.
-**Registrovat zařízení** | Azure Migrate používá ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V odlehčené zařízení Azure Migrate. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration). | Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka v předplatném Azure.
+**Registrovat zařízení** | Azure Migrate používá ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V odlehčené zařízení Azure Migrate. [Další informace](migrate-appliance-architecture.md#appliance-registration). | Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 **Vytvoření aplikace Azure AD** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá pro komunikaci mezi agenty běžícími na zařízení a Azure Migrate. | Váš účet Azure potřebuje oprávnění k vytváření aplikací Azure AD.
 **Vytvoření virtuálního počítače** | Potřebujete oprávnění k vytvoření virtuálního počítače ve skupině prostředků a virtuální síti a pro zápis na spravovaný disk Azure. | Účet Azure potřebuje roli Přispěvatel virtuálních počítačů.
 
@@ -74,13 +74,13 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Toto je výchozí nastavení, které není citlivé. [Další informace](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ### <a name="assign-azure-account-permissions"></a>Přiřazení oprávnění účtu Azure
 
@@ -106,7 +106,7 @@ Hyper-V pro vyhodnocení virtuálních počítačů můžete připravit ručně 
 **Ověřit verzi PowerShellu** | Kontroluje, zda spouštíte skript v podporované verzi prostředí PowerShell. | Podívejte se na hostitele Hyper-V, na kterém běží PowerShell verze 4,0 nebo novější.
 **Vytvoření účtu** | Ověřuje, že jste (uživatel, který spouští skript), má oprávnění správce na hostiteli Hyper-V.<br/><br/>  Umožňuje vytvořit místní uživatelský účet (nejedná se o správce), který služba Azure Migrate používá ke komunikaci s hostitelem Hyper-V. Tento uživatelský účet se přidá do těchto skupin na hostiteli:<br/><br/> – Uživatelé vzdálené správy<br/><br/> – Správci technologie Hyper-V<br/><br/>-Performance Monitor Users | Nastavte doménu nebo místní uživatelský účet s oprávněními správce v hostitelích nebo clusteru Hyper-V.<br/><br/> – Pro všechny hostitele a clustery, které chcete zahrnout do zjišťování, potřebujete jeden účet.<br/><br/> – Účet může být místní nebo doménový účet. Doporučujeme, aby měl oprávnění správce na hostitelích nebo clusterech Hyper-V.<br/><br/> Případně, pokud nechcete přiřazovat oprávnění správce, jsou potřeba následující oprávnění: Uživatelé vzdálené správy; Správci technologie Hyper-V; Sledování výkonu uživatele.
 **Povolit vzdálenou komunikaci PowerShellu** | Povolí vzdálenou komunikaci PowerShellu na hostiteli, aby zařízení Azure Migrate mohlo spouštět na hostiteli příkazy PowerShellu přes připojení WinRM.| Pokud chcete nastavit, otevřete v každém hostiteli konzolu PowerShellu jako správce a spusťte tento příkaz:<br/><br/>``` Enable-PSRemoting -force ```
-**Nastavení integračních služeb technologie Hyper-V** | Kontroluje, zda jsou integrační služby technologie Hyper-V povoleny na všech virtuálních počítačích spravovaných hostitelem. |  Povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .<br/><br/> Pokud používáte systém Windows Server 2003, [postupujte podle těchto pokynů](prepare-windows-server-2003-migration.md).
+**Nastavení integračních služeb technologie Hyper-V** | Kontroluje, zda jsou integrační služby technologie Hyper-V povoleny na všech virtuálních počítačích spravovaných hostitelem. |  Povolte na každém virtuálním počítači [integrační služby technologie Hyper-V](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .<br/><br/> Pokud používáte systém Windows Server 2003, [postupujte podle těchto pokynů](prepare-windows-server-2003-migration.md).
 **Delegovat přihlašovací údaje, pokud se disky virtuálních počítačů nacházejí ve vzdálených sdílených složkách protokolu SMB** | Skript deleguje přihlašovací údaje. | [Povolte zprostředkovateli CredSSP](#enable-credssp-to-delegate-credentials) delegovat přihlašovací údaje.
 
 ### <a name="run-the-script"></a>Spuštění skriptu

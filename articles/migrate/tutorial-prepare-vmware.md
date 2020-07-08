@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f3bfaf7c2396e0f1091299375aae4bfaa1d7e8ff
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771185"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109571"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure
 
@@ -64,7 +64,7 @@ Aby bylo možné zařízení zaregistrovat, váš účet Azure potřebuje opráv
 Udělte účtu oprávnění následujícím způsobem:
 
 1. Ujistěte se, že jste tenant nebo globální správce. Pak ve službě Azure AD přejděte na **Azure Active Directory**  >  **Users**  >  **uživatelských nastavení**uživatelů.
-2. Nastavte **Registrace aplikací** na **Ano**. Toto je výchozí nastavení, které není citlivé. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+2. Nastavte **Registrace aplikací** na **Ano**. Toto je výchozí nastavení, které není citlivé. [Další informace](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-vmware/aad.png)
 
@@ -72,7 +72,7 @@ Udělte účtu oprávnění následujícím způsobem:
 
 #### <a name="method-2-assign-application-developer-role"></a>Metoda 2: přiřazení role vývojáře aplikace
 
-Případně může tenant nebo globální správce přiřadit roli vývojář aplikace k účtu. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) o přiřazení role.
+Případně může tenant nebo globální správce přiřadit roli vývojář aplikace k účtu. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md) o přiřazení role.
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>Přiřazení oprávnění k vytvoření Key Vault
 

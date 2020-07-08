@@ -4,18 +4,18 @@ description: Přečtěte si, jak připravit na posouzení/migraci fyzických ser
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771270"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113247"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 
 Tento článek popisuje, jak připravit na posouzení místních fyzických serverů s [Azure Migrate](migrate-services-overview.md).
 
-[Azure Migrate](migrate-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. 
+[Azure Migrate](./migrate-services-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. 
 
 Tento kurz je první v řadě, kde se dozvíte, jak vyhodnotit fyzické servery s Azure Migrate. V tomto kurzu se naučíte:
 
@@ -38,8 +38,8 @@ Nastavte Azure pro práci s Azure Migrate.
 **Úkol** | **Podrobnosti** 
 --- | --- 
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka. 
-**Registrovat poskytovatele prostředků (jenom posouzení)** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení počítačů pomocí Azure Migrate: posouzení serveru.<br/><br/> Při registraci zařízení se poskytovatelé prostředků zaregistrovali u předplatného, které jste zvolili v zařízení. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
-**Vytvoření aplikace Azure AD (jenom posouzení)** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá ke komunikaci mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (dostupných v rámci role vývojář aplikace).
+**Registrovat poskytovatele prostředků (jenom posouzení)** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení počítačů pomocí Azure Migrate: posouzení serveru.<br/><br/> Při registraci zařízení se poskytovatelé prostředků zaregistrovali u předplatného, které jste zvolili v zařízení. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
+**Vytvoření aplikace Azure AD (jenom posouzení)** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá ke komunikaci mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (dostupných v rámci role vývojář aplikace).
 
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu 
@@ -75,11 +75,11 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Toto je výchozí nastavení, které není citlivé. [Další informace](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 
 ## <a name="prepare-azure-for-physical-server-migration"></a>Příprava migrace pro Azure na fyzické servery

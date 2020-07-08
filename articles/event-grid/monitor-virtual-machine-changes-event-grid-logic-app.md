@@ -1,22 +1,22 @@
 ---
 title: Monitorování změn virtuálních počítačů – Azure Event Grid & Logic Apps
 description: Kontrolovat změny virtuálních počítačů pomocí Azure Event Grid a Logic Apps
-services: logic-apps
+services: logic-apps, event-grid
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 10/11/2019
-ms.openlocfilehash: 045f6d50846092820014ccc7f11a81f1e2234311
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/07/2020
+ms.openlocfilehash: 4edac3237f2eefaa98a6463bb0e720c0d884f0ca
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144084"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119408"
 ---
-# <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Kurz: monitorování změn virtuálních počítačů pomocí Azure Event Grid a Logic Apps
+# <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Kurz: Monitorování změn virtuálních počítačů s využitím služeb Azure Event Grid a Logic Apps
 
 Pokud chcete monitorovat a reagovat na konkrétní události, ke kterým dochází v prostředcích Azure nebo prostředků třetích stran, můžete automatizovat a spouštět úlohy jako pracovní postup vytvořením [Aplikace logiky](../logic-apps/logic-apps-overview.md) , která používá minimální kód. Tyto prostředky můžou publikovat události do služby [Azure Event Grid](../event-grid/overview.md). Event Grid tyto události pošle odběratelům, kteří jako své koncové body používají fronty, webhooky nebo [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md). V rámci předplatitele může vaše aplikace logiky počkat na tyto události z Event gridu, než se spustí automatizované pracovní postupy pro provádění úloh.
 
@@ -58,20 +58,20 @@ V tomto kurzu se naučíte:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
+1. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
 
    ![Vytvoření aplikace logiky](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
 
-1. V části **Aplikace logiky**zadejte informace o vašem prostředku aplikace logiky. Až to budete mít, vyberte **Vytvořit**.
+1. V části **Aplikace logiky**zadejte informace o vašem prostředku aplikace logiky. Po dokončení vyberte **Vytvořit**.
 
    ![Zadání podrobností o aplikaci logiky](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | <*Logic-App-Name*> | Zadejte jedinečný název aplikace logiky. |
-   | **Předplatné** | Ano | <*Azure – předplatné – název*> | Vyberte stejné předplatné Azure pro všechny služby v tomto kurzu. |
-   | **Skupina prostředků** | Ano | <*Azure-Resource-Group*> | Název skupiny prostředků Azure pro vaši aplikaci logiky, kterou můžete vybrat pro všechny služby v tomto kurzu. |
-   | **Umístění** | Ano | <*Oblast Azure*> | Pro všechny služby v tomto kurzu vyberte stejnou oblast. |
+   | **Název** | Yes | <*Logic-App-Name*> | Zadejte jedinečný název aplikace logiky. |
+   | **Předplatné** | Yes | <*Azure – předplatné – název*> | Vyberte stejné předplatné Azure pro všechny služby v tomto kurzu. |
+   | **Skupina prostředků** | Yes | <*Azure-Resource-Group*> | Název skupiny prostředků Azure pro vaši aplikaci logiky, kterou můžete vybrat pro všechny služby v tomto kurzu. |
+   | **Umístění** | Yes | <*Oblast Azure*> | Pro všechny služby v tomto kurzu vyberte stejnou oblast. |
    |||
 
 1. Když Azure nasadí vaši aplikaci logiky, Návrhář Logic Apps zobrazí stránku s úvodním videem a běžně používanými triggery. Posuňte se za video a triggery.
@@ -95,19 +95,19 @@ Nyní přidejte aktivační událost Event Grid, kterou použijete k monitorová
    ![Přihlášení pod přihlašovacími údaji Azure](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > Pokud jste se přihlásili pod osobním účtem Microsoft, třeba @outlook.com nebo @hotmail.com, nemusí se trigger služby Event Grid zobrazit správně. Jako alternativní řešení vyberte [připojit s instančním objektem](../active-directory/develop/howto-create-service-principal-portal.md)nebo proveďte ověření jako člena Azure Active Directory, který je přidružený k vašemu předplatnému Azure, například *uživatelské jméno*@emailoutlook.onmicrosoft.com.
+   > Pokud jste se přihlásili pod osobním účtem Microsoft, třeba @outlook.com nebo @hotmail.com, nemusí se trigger služby Event Grid zobrazit správně. Jako alternativní řešení vyberte [připojit s instančním objektem](../active-directory/develop/howto-create-service-principal-portal.md)nebo proveďte ověření jako člena Azure Active Directory, který je přidružený k vašemu předplatnému Azure, například *uživatelské jméno* @emailoutlook.onmicrosoft.com .
 
 1. Nyní můžete aplikaci logiky přihlašovat k událostem od vydavatele. Zadejte podrobnosti o odběru události, jak je popsáno v následující tabulce, například:
 
    ![Zadání podrobností o odběru události](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Description |
    | -------- | -------- | ----- | ----------- |
-   | **Předplatné** | Ano | <*Event – Publisher – Azure-Subscription-Name*> | Vyberte název předplatného Azure, které je přidružené k *vydavateli události*. Pro tento kurz vyberte název předplatného Azure pro váš virtuální počítač. |
-   | **Typ prostředku** | Ano | <*Event – Publisher-Azure-Resource-Type*> | Vyberte typ prostředku Azure pro vydavatele události. Další informace o typech prostředků Azure najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md). Pro tento kurz vyberte `Microsoft.Resources.ResourceGroups` hodnotu pro monitorování skupin prostředků Azure. |
-   | **Název prostředku** |  Ano | <*Event-Publish-Azure-Resource-Name*> | Vyberte název prostředku Azure pro vydavatele události. Tento seznam se liší v závislosti na typu prostředku, který jste vybrali. V tomto kurzu vyberte název skupiny prostředků Azure, která zahrnuje váš virtuální počítač. |
-   | **Položka typu události** |  Ne | <*typy událostí*> | Vyberte jeden nebo více konkrétních typů událostí pro filtrování a odeslání do služby Event Grid. Volitelně můžete například přidat tyto typy událostí k detekci, kdy jsou prostředky změněny nebo odstraněny: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Další informace najdete v těchto tématech: <p><p>- [Azure Event Grid schéma událostí pro skupiny prostředků](../event-grid/event-schema-resource-groups.md) <br>- [Principy filtrování událostí](../event-grid/event-filtering.md) <br>- [Filtrovat události pro Event Grid](../event-grid/how-to-filter-events.md) |
-   | Chcete-li přidat volitelné vlastnosti, vyberte možnost **Přidat nový parametr**a pak vyberte požadované vlastnosti. | Ne | {viz popisy} | * **Filtr předpon**: v tomto kurzu ponechte tuto vlastnost prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec předpony, třeba cestu k určitému prostředku a jeho parametr. <p>* **Filtr přípon**: v tomto kurzu ponechte tuto vlastnost prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec přípony, třeba příponu názvu souboru, pokud chcete jenom určité typy souborů. <p>* **Název předplatného**: pro tento kurz můžete zadat jedinečný název pro vaše předplatné událostí. |
+   | **Předplatné** | Yes | <*Event – Publisher – Azure-Subscription-Name*> | Vyberte název předplatného Azure, které je přidružené k *vydavateli události*. Pro tento kurz vyberte název předplatného Azure pro váš virtuální počítač. |
+   | **Typ prostředku** | Yes | <*Event – Publisher-Azure-Resource-Type*> | Vyberte typ prostředku Azure pro vydavatele události. Další informace o typech prostředků Azure najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md). Pro tento kurz vyberte `Microsoft.Resources.ResourceGroups` hodnotu pro monitorování skupin prostředků Azure. |
+   | **Název prostředku** |  Yes | <*Event-Publish-Azure-Resource-Name*> | Vyberte název prostředku Azure pro vydavatele události. Tento seznam se liší v závislosti na typu prostředku, který jste vybrali. V tomto kurzu vyberte název skupiny prostředků Azure, která zahrnuje váš virtuální počítač. |
+   | **Položka typu události** |  No | <*typy událostí*> | Vyberte jeden nebo více konkrétních typů událostí pro filtrování a odeslání do služby Event Grid. Volitelně můžete například přidat tyto typy událostí k detekci, kdy jsou prostředky změněny nebo odstraněny: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>Další informace najdete v těchto tématech: <p><p>- [Azure Event Grid schéma událostí pro skupiny prostředků](../event-grid/event-schema-resource-groups.md) <br>- [Principy filtrování událostí](../event-grid/event-filtering.md) <br>- [Filtrovat události pro Event Grid](../event-grid/how-to-filter-events.md) |
+   | Chcete-li přidat volitelné vlastnosti, vyberte možnost **Přidat nový parametr**a pak vyberte požadované vlastnosti. | No | {viz popisy} | * **Filtr předpon**: v tomto kurzu ponechte tuto vlastnost prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec předpony, třeba cestu k určitému prostředku a jeho parametr. <p>* **Filtr přípon**: v tomto kurzu ponechte tuto vlastnost prázdnou. Výchozí chování odpovídá všem hodnotám. Do filtru můžete zadat řetězec přípony, třeba příponu názvu souboru, pokud chcete jenom určité typy souborů. <p>* **Název předplatného**: pro tento kurz můžete zadat jedinečný název pro vaše předplatné událostí. |
    |||
 
 1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**. Pokud chcete v aplikaci logiky sbalit a skrýt podrobnosti akce, vyberte záhlaví akce.
@@ -120,13 +120,13 @@ Aplikace logiky je teď funkční a naslouchá událostem Event Gridu, ale zatí
 
 ## <a name="add-a-condition"></a>Přidání podmínky
 
-Pokud chcete, aby aplikace logiky běžela pouze v případě, že dojde k určité události nebo operace, přidejte podmínku, která `Microsoft.Compute/virtualMachines/write` kontroluje operaci. Jakmile je tato podmínka splněna, aplikace logiky vám pošle e-mail s podrobnostmi o aktualizovaném virtuálním počítači.
+Pokud chcete, aby aplikace logiky běžela pouze v případě, že dojde k určité události nebo operace, přidejte podmínku, která kontroluje `Microsoft.Compute/virtualMachines/write` operaci. Jakmile je tato podmínka splněna, aplikace logiky vám pošle e-mail s podrobnostmi o aktualizovaném virtuálním počítači.
 
 1. V návrháři aplikace logiky pod triggerem Event Grid vyberte **Nový krok**.
 
    ![Vyberte nový krok.](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
-1. V části **zvolit akci**zadejte `condition` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **Podmínka** .
+1. V části **zvolit akci**zadejte do vyhledávacího pole `condition` jako filtr. V seznamu akce vyberte akci **Podmínka** .
 
    ![Přidání podmínky](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
@@ -134,11 +134,11 @@ Pokud chcete, aby aplikace logiky běžela pouze v případě, že dojde k urči
 
    ![Zobrazí se prázdná podmínka.](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
 
-1. Přejmenujte název podmínky `If a virtual machine in your resource group has changed`na. V záhlaví podmínky vyberte tlačítko se třemi tečkami (..**.**) a pak vyberte **Přejmenovat**.
+1. Přejmenujte název podmínky na `If a virtual machine in your resource group has changed` . V záhlaví podmínky vyberte tlačítko se třemi tečkami (..**.**) a pak vyberte **Přejmenovat**.
 
    ![Přejmenovat podmínku](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
 
-1. Vytvořte podmínku, která kontroluje `body` událost u `data` objektu, kde se `operationName` vlastnost rovná `Microsoft.Compute/virtualMachines/write` operaci. Další informace o [schématu události Event Gridu](../event-grid/event-schema.md).
+1. Vytvořte podmínku, která kontroluje událost `body` u objektu, `data` kde `operationName` se vlastnost rovná `Microsoft.Compute/virtualMachines/write` operaci. Další informace o [schématu události Event Gridu](../event-grid/event-schema.md).
 
    1. Na prvním řádku pod **A** klikněte mimo pole vlevo. V seznamu dynamický obsah, který se zobrazí, vyberte možnost **výraz**.
 
@@ -176,7 +176,7 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
 
    ![Přidání akce, pokud podmínka platí](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. V části **zvolit akci**zadejte `send an email` do vyhledávacího pole jako filtr. Vyhledejte a vyberte konektor odpovídající vašemu poskytovateli e-mailu. Pak pro konektor vyberte akci „odeslat e-mail“. Příklad:
+1. V části **zvolit akci**zadejte do vyhledávacího pole `send an email` jako filtr. Vyhledejte a vyberte konektor odpovídající vašemu poskytovateli e-mailu. Pak pro konektor vyberte akci „odeslat e-mail“. Příklad:
 
    * Pro pracovní nebo školní účet Azure vyberte konektor Office 365 Outlook.
 
@@ -199,11 +199,11 @@ Teď přidejte [*akci*](../logic-apps/logic-apps-overview.md#logic-app-concepts)
    > [!TIP]
    > Pokud chcete vybrat výstup z předchozích kroků pracovního postupu, klikněte do textového pole, aby se zobrazil seznam dynamického obsahu, nebo vyberte **Přidat dynamický obsah**. Další výsledky získáte výběrem **Zobrazit více** pro každý oddíl v seznamu. Chcete-li zavřít seznam dynamického obsahu, vyberte znovu **Přidat dynamický obsah** .
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Description |
    | -------- | -------- | ----- | ----------- |
-   | **Akce** | Ano | <*Doména\@příjemce*> | Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
-   | **Subjekt** | Ano | `Resource updated:` **Subjekt** | Zadejte obsah předmětu e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **Předmět** události. V našem příkladu je v předmětu e-mailu název aktualizovaného prostředku (virtuálního počítače). |
-   | **Text** | Ano | `Resource:`**Téma** <p>`Event type:` **Event Type**<p>`Event ID:`**ID**<p>`Time:`**Čas události** | Zadejte obsah e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **události,** **Typ události**, **ID**a **dobu události** , aby váš e-mail zahrnoval prostředek, který vyvolal událost, typ události, časové razítko události a ID události pro aktualizaci. V tomto kurzu je prostředkem skupina prostředků Azure vybraná v aktivační události. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
+   | **Schopn** | Yes | <*\@doména příjemce*> | Zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
+   | **Subjekt** | Yes | `Resource updated:` **Subjekt** | Zadejte obsah předmětu e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **Předmět** události. V našem příkladu je v předmětu e-mailu název aktualizovaného prostředku (virtuálního počítače). |
+   | **Text** | Yes | `Resource:`**Téma** <p>`Event type:` **Event Type**<p>`Event ID:` **ID**<p>`Time:`**Čas události** | Zadejte obsah e-mailu. Pro tento kurz zadejte zadaný text a vyberte pole **události,** **Typ události**, **ID**a **dobu události** , aby váš e-mail zahrnoval prostředek, který vyvolal událost, typ události, časové razítko události a ID události pro aktualizaci. V tomto kurzu je prostředkem skupina prostředků Azure vybraná v aktivační události. <p>Pokud chcete do obsahu přidat prázdné řádky, stiskněte Shift + Enter. |
    ||||
 
    > [!NOTE]

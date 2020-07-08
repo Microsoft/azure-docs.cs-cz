@@ -4,12 +4,12 @@ description: Popisuje, jak vyhodnotit místní virtuální počítače VMware pr
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 7fcfa698b0a7e96a117b9d9663869bbec0e0079e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85550910"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110347"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Vyhodnocení virtuálních počítačů VMware (vyhodnocení serveru)
 
@@ -200,7 +200,7 @@ Pomocí vyhodnocení Azure Migrate serveru můžete vytvořit dva typy posouzen�
 **Typ posouzení** | **Podrobnosti**
 --- | --- 
 **Virtuální počítač Azure** | Posouzení migrace vašich místních serverů do virtuálních počítačů Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. [Další informace](concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Posouzení serveru poskytuje dvě možnosti pro kritéria změny velikosti:
 

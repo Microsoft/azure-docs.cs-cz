@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 7fd84fc2e98578772c806f358cb8d6c400e0d994
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185009"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119272"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablony ARM
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. [Vytvoření šablon ARM](use-vs-code-to-create-template.md)najdete v tématu použití Visual Studio Code.
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Pokud chcete zvýšit zabezpečení, použijte vygenerované heslo pro účet správce virtuálního počítače. Tady je ukázka pro vygenerování hesla:
 
     ```console
@@ -49,7 +49,7 @@ K dokončení tohoto článku potřebujete:
 
 V této části vytvoříte Trezor klíčů a do něj přidáte tajný klíč, abyste mohli načíst tajný klíč při nasazení šablony. Existuje mnoho způsobů, jak vytvořit Trezor klíčů. V tomto kurzu použijete Azure PowerShell k nasazení [šablony ARM](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Tato šablona provede dvě věci:
 
-* Vytvoří Trezor klíčů s povolenou `enabledForTemplateDeployment` vlastností. Tato vlastnost musí mít *hodnotu true* , aby mohl proces nasazení šablony přistupovat ke tajným klíčům, které jsou definovány v trezoru klíčů.
+* Vytvoří Trezor klíčů s `enabledForTemplateDeployment` povolenou vlastností. Tato vlastnost musí mít *hodnotu true* , aby mohl proces nasazení šablony přistupovat ke tajným klíčům, které jsou definovány v trezoru klíčů.
 * Přidá tajný klíč do trezoru klíčů. Tajný kód uchovává heslo správce virtuálního počítače.
 
 > [!NOTE]
@@ -99,7 +99,7 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
 
 Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona použitá v tomto kurzu se nazývá [nasazení jednoduchého virtuálního počítače s Windows](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
-1. V Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. V Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
 
 1. Do pole **název souboru** vložte následující adresu URL:
 
@@ -119,9 +119,9 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
 
    Před přizpůsobením šablony je užitečné, abyste měli základní znalosti šablony.
 
-1. Vyberte **soubor** > **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
+1. Vyberte **soubor**  >  **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy.jsv*.
 
-1. Opakujte kroky 1-3 pro otevření následující adresy URL a pak soubor uložte jako *azuredeploy. Parameters. JSON*.
+1. Opakujte kroky 1-3 pro otevření následující adresy URL a pak soubor uložte jako *azuredeploy.parameters.jsna*.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -131,7 +131,7 @@ Teď jste připravili Trezor klíčů a tajný klíč. V následujících část
 
 Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablony. Načítání tajné hodnoty se provádí konfigurací souboru parametrů šablony.
 
-1. V Visual Studio Code otevřete *azuredeploy. Parameters. JSON* , pokud ještě není otevřený.
+1. V Visual Studio Code otevřete *azuredeploy.parameters.js* , pokud už není otevřený.
 1. Aktualizujte `adminPassword` parametr na:
 
     ```json
@@ -167,7 +167,7 @@ Pomocí metody statického ID nemusíte dělat žádné změny v souboru šablon
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Nahrajte *azuredeploy. JSON* a *azuredeploy. Parameters. json* , abyste Cloud Shell. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Do Cloud Shell nahrajte jak *azuredeploy.js* , tak *azuredeploy.parameters.js* . Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
 
 1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 
@@ -192,7 +192,7 @@ Po úspěšném nasazení virtuálního počítače testujte přihlašovací úd
 
 1. Otevřete [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **skupiny** >  > **simpleWinVM****prostředků YourResourceGroupName>simpleWinVM.*YourResourceGroupName*\<**
+1. Vyberte **skupiny prostředků**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM**.
 1. V horní části vyberte **připojit** .
 1. Vyberte **Stáhnout soubor RDP**a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
 

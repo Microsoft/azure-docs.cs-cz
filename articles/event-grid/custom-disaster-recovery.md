@@ -1,18 +1,14 @@
 ---
 title: Zotavení po havárii pro vlastní témata v Azure Event Grid
 description: Tento kurz vás provede postupem nastavení architektury událostí pro obnovení, pokud služba Event Grid v oblasti není v pořádku.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557793"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115076"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.

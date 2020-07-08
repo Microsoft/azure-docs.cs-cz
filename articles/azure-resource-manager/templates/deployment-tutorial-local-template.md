@@ -4,12 +4,12 @@ description: Naučte se nasadit šablonu Azure Resource Manager z místního po�
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714062"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118898"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Kurz: nasazení místní šablony Azure Resource Manager
 
@@ -33,7 +33,7 @@ Po instalaci Azure PowerShell nebo rozhraní příkazového řádku Azure se uji
 
 ### <a name="editor-optional"></a>Editor (volitelné)
 
-Šablony jsou soubory JSON. Chcete-li zkontrolovat nebo upravit šablony, potřebujete dobrý Editor JSON. Doporučujeme Visual Studio Code s rozšířením nástroje Správce prostředků Tools. Pokud potřebujete nainstalovat tyto nástroje, přečtěte si téma [použití Visual Studio Code k vytvoření šablon Azure Resource Manager](use-vs-code-to-create-template.md).
+Šablony jsou soubory JSON. Chcete-li zkontrolovat nebo upravit šablony, potřebujete dobrý Editor JSON. Doporučujeme Visual Studio Code s rozšířením nástroje Správce prostředků Tools. Pokud potřebujete nainstalovat tyto nástroje, přečtěte si téma [rychlý Start: vytvoření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="review-template"></a>Zkontrolovat šablonu
 
@@ -44,7 +44,7 @@ Po instalaci Azure PowerShell nebo rozhraní příkazového řádku Azure se uji
 > [!IMPORTANT]
 > Názvy účtů úložiště musí mít délku 3 až 24 znaků a musí obsahovat jenom číslice a malá písmena. Název musí být jedinečný. V šabloně je název účtu úložiště název projektu s připojeným úložištěm a název projektu musí být dlouhý 3 až 11 znaků. Proto název projektu musí splňovat požadavky na název účtu úložiště a má méně než 11 znaků.
 
-Uložte kopii šablony do místního počítače s příponou. JSON, například azuredeploy. JSON. Tuto šablonu nasadíte později v tomto kurzu.
+Uložte kopii šablony do místního počítače s příponou. JSON, například azuredeploy.jsv. Tuto šablonu nasadíte později v tomto kurzu.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

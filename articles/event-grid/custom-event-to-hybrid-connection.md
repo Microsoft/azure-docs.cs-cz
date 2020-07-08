@@ -1,20 +1,14 @@
 ---
 title: 'Kurz: odeslání vlastních událostí do hybridního připojení – Event Grid'
 description: 'Kurz: k publikování tématu použijte Azure Event Grid a Azure CLI a přihlaste se k odběru této události. Hybridní připojení se používá pro koncový bod.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: tutorial
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720698"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114869"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kurz: směrování vlastních událostí Azure Relay Hybrid Connections pomocí Azure CLI a Event Grid
 

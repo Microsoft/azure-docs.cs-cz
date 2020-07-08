@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184975"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119323"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Kurz: použití skriptů pro nasazení k vytvoření certifikátu podepsaného svým držitelem (Preview)
 
@@ -40,7 +40,7 @@ Tento kurz se zabývá následujícími úkony:
 
 K dokončení tohoto článku potřebujete:
 
-* ** [Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. [Vytvoření šablon ARM](./use-vs-code-to-create-template.md)najdete v tématu použití Visual Studio Code.
+* ** [Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
 * **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). ID identity budete potřebovat při nasazení šablony. Formát identity je:
 
@@ -62,7 +62,7 @@ K dokončení tohoto článku potřebujete:
 
 Šablona použitá v tomto rychlém startu se nazývá [vytvořit Azure Key Vault a tajný klíč](https://azure.microsoft.com/resources/templates/101-key-vault-create/). Šablona vytvoří Trezor klíčů a potom do trezoru klíčů přidá tajný klíč.
 
-1. Z Visual Studio Code vyberte **soubor**>**otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -70,7 +70,7 @@ K dokončení tohoto článku potřebujete:
     ```
 
 3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Vyberte **soubor**>**Uložit jako** a uložte soubor jako **azuredeploy. JSON** do místního počítače.
+4. Vyberte **soubor** > **Uložit jako** a uložte soubor jako **azuredeploy.js** do svého místního počítače.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
@@ -253,7 +253,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
     }
     ```
 
-    `deploymentScripts` Prostředek závisí na prostředku trezoru klíčů a prostředku přiřazení role.  Má tyto vlastnosti:
+    `deploymentScripts`Prostředek závisí na prostředku trezoru klíčů a prostředku přiřazení role.  Má tyto vlastnosti:
 
     * **Identita**: skript nasazení používá ke spouštění skriptů spravovanou identitu přiřazenou uživatelem.
     * **druh**: zadejte typ skriptu. V současné době je podporován pouze skript prostředí PowerShell.
@@ -280,7 +280,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
     Správný příkaz je **Write-Output** namísto **Write-Output1**.
 
-1. Vyberte **soubor**>**Uložit** a soubor uložte.
+1. Vyberte **soubor** > **Uložit** a soubor uložte.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -324,7 +324,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
 ## <a name="debug-the-failed-script"></a>Ladění neúspěšného skriptu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Je to název projektu s připojeným **RG** . Ve skupině prostředků se zobrazí dva další prostředky. Tyto prostředky se označují jako *prostředky skriptu nasazení*.
 
     ![Prostředky skriptu pro nasazení Správce prostředků šablon](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
@@ -335,7 +335,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
 1. Vyberte účet úložiště s příponou **azscripts** .
 1. Vyberte dlaždici **sdílení souborů** . Zobrazí se složka **azscripts** .  Složka obsahuje spouštěcí soubory skriptu nasazení.
-1. Vyberte **azscripts**. Zobrazí se dvě složky **azscriptinput** a **azscriptoutput**.  Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Výstupní složka obsahuje **ExecutionResult. JSON** a výstupní soubor skriptu. Chybová zpráva se zobrazí v **ExecutionResult. JSON**. Výstupní soubor není k dispozici, protože spuštění selhalo.
+1. Vyberte **azscripts**. Zobrazí se dvě složky **azscriptinput** a **azscriptoutput**.  Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Výstupní složka obsahuje **executionresult.js** a výstupní soubor skriptu. V **executionresult.js**se zobrazí chybová zpráva. Výstupní soubor není k dispozici, protože spuštění selhalo.
 
 Odeberte řádek **Write-Output1** a znovu nasaďte šablonu.
 

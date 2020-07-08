@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 120f60698851bcdaf39f989b4d36c0436b716833
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77587753"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117861"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Vysvětlení poplatků za externí služby v Azure
 Externí služby zveřejňují externí dodavatelé softwaru na webu Azure Marketplace. Takovou externí službou, kterou si můžete zakoupit v Azure, přestože ji nevydal Microsoft, je například SendGrid. Prostřednictvím Azure Marketplace se prodávají i některé produkty Microsoftu.

@@ -4,12 +4,12 @@ description: Naučte se spouštět migraci virtuálních počítačů VMware zal
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: b01665e6ddb78ff95714004f4dbe5c97574aa5fb
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84769740"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119255"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete s tímto kurzem, [Přečtěte si](migrate-architecture.md) architekturu migrace založenou na agentech VMware.
+Než začnete s tímto kurzem, [Přečtěte si](./agent-based-migration-architecture.md) architekturu migrace založenou na agentech VMware.
 
 ## <a name="prepare-azure"></a>Příprava Azure
 
@@ -150,7 +150,7 @@ Pokud máte projekt, přidejte nástroj následujícím způsobem:
 3. V části **Přehled** klikněte na **Posoudit a migrovat servery**.
 4. V části **zjišťování, vyhodnocení a migrace serverů**klikněte na možnost **zhodnotit a migrovat servery**.
 
-    ! [Objevte a vyhodnoťte servery] (./Media/tutorial-Migrate-VMware-agent/assess-migrate.png
+    ![Zjišťování a vyhodnocení serverů](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
 
 1. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
 2. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
@@ -355,7 +355,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
     - Zastaví replikaci místního počítače.
     - Odebere počítač z počtu **replikačních serverů** v Azure Migrate: Migrace serveru.
     - Vyčistí informace o stavu replikace pro virtuální počítač.
-2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) .
+2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](../virtual-machines/extensions/agent-windows.md) nebo [Linux](../virtual-machines/extensions/agent-linux.md) .
 3. Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
 4. U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
 5. Vyjmutí provozu do migrované instance virtuálního počítače Azure
@@ -378,19 +378,19 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
     - Proveďte všechna vylepšení aplikace po migraci, například aktualizujte databázové připojovací řetězce a nakonfigurujte webové servery.
     - U migrované aplikace, která teď běží v Azure, proveďte finální akceptační testování aplikace a migrace.
 - Provozní kontinuita a zotavení po havárii
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
-    - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
-    - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
-    - Nasaďte službu [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview), která vám pomůže zabezpečit disky a zajistit bezpečnost dat před krádeží a neoprávněným přístupem.
+    - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
+    - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/security-overview.md).
+    - Nasaďte službu [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), která vám pomůže zabezpečit disky a zajistit bezpečnost dat před krádeží a neoprávněným přístupem.
     - Přečtěte si další informace o [zabezpečení prostředků IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) a navštivte [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Pro monitorování a správu:
-    - Zvažte nasazení služby [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), která bude monitorovat využití prostředků a útratu.
+    - Zvažte nasazení služby [Azure Cost Management](../cost-management-billing/cloudyn/overview.md), která bude monitorovat využití prostředků a útratu.
 
 
 
 
  ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [cestu k migraci do cloudu](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) v rozhraní Azure cloudu pro přijetí.
+Prozkoumejte [cestu k migraci do cloudu](/azure/architecture/cloud-adoption/getting-started/migrate) v rozhraní Azure cloudu pro přijetí.

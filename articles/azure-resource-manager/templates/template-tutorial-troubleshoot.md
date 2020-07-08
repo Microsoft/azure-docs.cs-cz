@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 737e8a247a232278db73de716647fc5bb890fe39
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184992"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119340"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Kurz: řešení potíží s nasazeními šablon ARM
 
@@ -37,13 +37,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-- Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. [Vytvoření šablon ARM](use-vs-code-to-create-template.md)najdete v tématu použití Visual Studio Code.
+- Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="create-a-problematic-template"></a>Vytvoření problematické šablony
 
 Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](https://azure.microsoft.com/resources/templates/101-storage-account-create/) ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/)a nastavte dvě problémy se šablonou.
 
-1. Z Visual Studio Code vyberte **soubor**>**otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -60,7 +60,7 @@ Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](htt
     - **apiVersion1** je neplatný název elementu. Jedná se o chybu ověřování.
     - Verze rozhraní API musí být "2018-07-01".  Jedná se o chybu nasazení.
 
-5. Vyberte **soubor**>**Uložit jako** a uložte soubor jako **azuredeploy. JSON** do místního počítače.
+5. Vyberte **soubor** > **Uložit jako** a uložte soubor jako **azuredeploy.js** do svého místního počítače.
 
 ## <a name="troubleshoot-the-validation-error"></a>Řešení chyby ověřování
 
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Otevřete skupinu prostředků tak, že vyberete **skupiny prostředků** a potom název skupiny prostředků. V rámci **nasazení**se zobrazí **1 chyba** .
 
     ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -107,8 +107,8 @@ Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
 Chybu můžete najít také v protokolech aktivit:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **monitorování** > **protokolu aktivit**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+2. Vyberte **monitorování**  >  **protokolu aktivit**.
 3. K vyhledání protokolu použijte filtry.
 
     ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

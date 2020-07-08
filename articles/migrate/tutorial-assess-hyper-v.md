@@ -4,12 +4,12 @@ description: Popisuje, jak vyhodnotit místní virtuální počítače Hyper-V p
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 53cf4eea4bfe61951be9975bacf9adb2b3fcf435
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114240"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Hyper-V pomocí Azure Migrate posouzení serveru
 
@@ -130,7 +130,7 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
 2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)**. Potom klikněte na **Další**.
 3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
 4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
-5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure. [Přečtěte si informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) o vytvoření virtuálního přepínače.
+5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure. [Přečtěte si informace](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) o vytvoření virtuálního přepínače.
 6. V části **Souhrn**zkontrolujte nastavení. Klikněte na **Dokončit**.
 7. Ve Správci technologie Hyper-V > **Virtual Machines**spusťte virtuální počítač.
 

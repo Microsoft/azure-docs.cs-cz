@@ -2,20 +2,19 @@
 title: Integrace služby Azure Automation se službou Event Grid | Microsoft Docs
 description: Zjistěte, jak automaticky přidat značku, když se vytvoří nový virtuální počítač, a odeslat oznámení do Microsoft Teams.
 keywords: automation, runbook, teams, event grid, virtual machine, VM
-services: automation
+services: automation,event-grid
 author: eamonoreilly
-manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "65521432"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114512"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Kurz: Integrace Azure Automation s Event Grid a Microsoft Teams
 
@@ -28,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvoří odběr Event Gridu.
 > * Vytvořit virtuální počítač, který spustí runbook
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +52,7 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 4. Vyberte **Importovat** a pojmenujte ho **Watch-VMWrite**.
 
 5. Po importu vyberte **Upravit** a zobrazte zdroj runbooku. 
-6. Aktualizujte řádek 74 ve skriptu, který chcete `Tag` použít místo `Tags`.
+6. Aktualizujte řádek 74 ve skriptu, který chcete použít `Tag` místo `Tags` .
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose

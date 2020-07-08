@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: d9300d3bbc5e6432e16f7656c7b4764df9b759cb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 98675b0f986ecb78ff122ed052a01d521aac1f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558569"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114206"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Posouzení serverů pomocí importovaných dat
 
@@ -105,29 +105,29 @@ Následující tabulka shrnuje pole souborů k vyplnění:
 
 **Název pole** | **Závaznou** | **Podrobnosti**
 --- | --- | ---
-**Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
-**IP adresa** | Ne | Adresa serveru.
-**Cores** | Ano | Počet jader procesoru přidělených serveru.
-**Memory (Paměť)** | Ano | Celková velikost paměti RAM (v MB) přidělená serveru.
-**Název operačního systému** | Ano | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
-**Verze operačního systému** | Ne | Verze operačního systému serveru.
-**Architektura operačního systému** | Ne | Architektura operačního systému serveru <br/> Platné hodnoty jsou: x64, x86, AMD64, 32-bit nebo 64-bit
-**Počet disků** | Ne | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
-**Velikost disku 1**  | Ne | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
-**Disk 1 operace čtení** | Ne | Operace čtení z disku za sekundu
-**Operace zápisu na disk 1** | Ne | Operace zápisu na disk za sekundu
-**Propustnost čtení disku 1** | Ne | Data načtená z disku za sekundu, v MB za sekundu.
-**Propustnost zápisu disku 1** | Ne | Data zapsaná na disk za sekundu, v MB za sekundu.
-**Procento využití procesoru** | Ne | Procento využitého procesoru
-**Procento využití paměti** | Ne | Procento využité paměti RAM
-**Operace čtení z celkového počtu disků** | Ne | Operace čtení disku za sekundu
-**Operace zápisu z celkového počtu disků** | Ne | Operace zápisu na disk za sekundu
-**Propustnost čtení celkem disků** | Ne | Data načtená z disku v MB za sekundu.
-**Propustnost zápisu celkem disků** | Ne | Data zapsaná na disk v MB za sekundu.
-**Síť v propustnosti** | Ne | Data přijatá serverem v MB za sekundu.
-**Propustnost sítě** | Ne | Data přenášená serverem v MB za sekundu.
-**Typ firmwaru** | Ne | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
-**Adresa MAC**| Ne | Adresa MAC serveru.
+**Název serveru** | Yes | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
+**IP adresa** | No | Adresa serveru.
+**Cores** | Yes | Počet jader procesoru přidělených serveru.
+**Memory (Paměť)** | Yes | Celková velikost paměti RAM (v MB) přidělená serveru.
+**Název operačního systému** | Yes | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
+**Verze operačního systému** | No | Verze operačního systému serveru.
+**Architektura operačního systému** | No | Architektura operačního systému serveru <br/> Platné hodnoty jsou: x64, x86, AMD64, 32-bit nebo 64-bit
+**Počet disků** | No | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
+**Velikost disku 1**  | No | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
+**Disk 1 operace čtení** | No | Operace čtení z disku za sekundu
+**Operace zápisu na disk 1** | No | Operace zápisu na disk za sekundu
+**Propustnost čtení disku 1** | No | Data načtená z disku za sekundu, v MB za sekundu.
+**Propustnost zápisu disku 1** | No | Data zapsaná na disk za sekundu, v MB za sekundu.
+**Procento využití procesoru** | No | Procento využitého procesoru
+**Procento využití paměti** | No | Procento využité paměti RAM
+**Operace čtení z celkového počtu disků** | No | Operace čtení disku za sekundu
+**Operace zápisu z celkového počtu disků** | No | Operace zápisu na disk za sekundu
+**Propustnost čtení celkem disků** | No | Data načtená z disku v MB za sekundu.
+**Propustnost zápisu celkem disků** | No | Data zapsaná na disk v MB za sekundu.
+**Síť v propustnosti** | No | Data přijatá serverem v MB za sekundu.
+**Propustnost sítě** | No | Data přenášená serverem v MB za sekundu.
+**Typ firmwaru** | No | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
+**Adresa MAC**| No | Adresa MAC serveru.
 
 
 ### <a name="add-operating-systems"></a>Přidat operační systémy
@@ -183,7 +183,7 @@ Pomocí posouzení serveru můžete vytvořit dva typy posouzení.
 **Typ posouzení** | **Podrobnosti**
 --- | --- 
 **Virtuální počítač Azure** | Posouzení migrace vašich místních serverů do virtuálních počítačů Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. (concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 ### <a name="sizing-criteria"></a>Kritéria změny velikosti
 
@@ -252,7 +252,7 @@ Posouzení virtuálního počítače Azure popisuje:
 
 ### <a name="review-cost-details"></a>Podrobnosti o kontrole nákladů
 
-Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure. Můžete:
+Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure. Další možnosti:
 
 - Projděte si měsíční náklady na výpočetní prostředky a úložiště. Náklady se sčítají pro všechny servery v hodnocené skupině.
 
