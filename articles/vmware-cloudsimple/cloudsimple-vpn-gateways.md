@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024853"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
@@ -60,7 +59,7 @@ Připojení VPN typu Site-to-site používá k navázání zabezpečeného přip
 |-----------|------------|------------|------------|
 | Šifrování | AES 128 | AES 256 | AES 256 |
 | Algoritmus hash| SHA 256 | SHA 256 | SHA 1 |
-| Skupina PFS (Perfect Forward Secrecy) | Žádné | Žádné | Žádné |
+| Skupina PFS (Perfect Forward Secrecy) | Žádná | Žádná | Žádná |
 | Doba života | 1 800 sekund | 1 800 sekund | 1 800 sekund |
 | Velikost dat | 4 GB | 4 GB | 4 GB |
 

@@ -14,21 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77167032"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Příkazy Windows – CMD a PowerShell
 
 Tato část obsahuje příklady příkazů pro provádění běžných úloh ve scénářích, kdy možná budete potřebovat konzolu SAC použít pro přístup k VIRTUÁLNÍmu počítači s Windows, například když potřebujete řešit chyby připojení RDP.
 
-Konzola SAC byla součástí všech verzí systému Windows, protože systém Windows Server 2003 je ve výchozím nastavení zakázán. Konzola SAC spoléhá na `sacdrv.sys` ovladač jádra, `Special Administration Console Helper` službu (`sacsvr`) a `sacsess.exe` proces. Další informace najdete v tématu [nástroje a nastavení služby pro nouzovou správu](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+Konzola SAC byla součástí všech verzí systému Windows, protože systém Windows Server 2003 je ve výchozím nastavení zakázán. Konzola SAC spoléhá na `sacdrv.sys` ovladač jádra, `Special Administration Console Helper` službu ( `sacsvr` ) a `sacsess.exe` proces. Další informace najdete v tématu [nástroje a nastavení služby pro nouzovou správu](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
-Konzola SAC umožňuje připojit se k běžícímu operačnímu systému prostřednictvím sériového portu. Při spuštění příkazu CMD z konzoly SAC `sacsess.exe` se `cmd.exe` spustí v běžícím operačním systému. Pokud se k VIRTUÁLNÍmu počítači připojíte pomocí funkce sériová konzola, můžete to zobrazit v části Správce úloh. Rozhraní CMD, ke kterému přistupujete přes `cmd.exe` konzolu SAC, je totéž, co používáte při připojení přes RDP. K dispozici jsou všechny stejné příkazy a nástroje, včetně možnosti Spustit PowerShell z této instance CMD. To je zásadní rozdíl mezi konzolou SAC a prostředím Windows Recovery Environment (WinRE) v konzole SAC vám umožní spravovat běžící operační systém, kde se WinRE spouští do jiného minimálního operačního systému. I když virtuální počítače Azure nepodporují možnost přístupu k rozhraní WinRE s funkcí sériové konzoly, můžete virtuální počítače Azure spravovat přes konzolu SAC.
+Konzola SAC umožňuje připojit se k běžícímu operačnímu systému prostřednictvím sériového portu. Při spuštění příkazu CMD z konzoly SAC se `sacsess.exe` spustí `cmd.exe` v běžícím operačním systému. Pokud se k VIRTUÁLNÍmu počítači připojíte pomocí funkce sériová konzola, můžete to zobrazit v části Správce úloh. Rozhraní CMD, ke kterému přistupujete přes konzolu SAC, je totéž `cmd.exe` , co používáte při připojení přes RDP. K dispozici jsou všechny stejné příkazy a nástroje, včetně možnosti Spustit PowerShell z této instance CMD. To je zásadní rozdíl mezi konzolou SAC a prostředím Windows Recovery Environment (WinRE) v konzole SAC vám umožní spravovat běžící operační systém, kde se WinRE spouští do jiného minimálního operačního systému. I když virtuální počítače Azure nepodporují možnost přístupu k rozhraní WinRE s funkcí sériové konzoly, můžete virtuální počítače Azure spravovat přes konzolu SAC.
 
-Vzhledem k tomu, že se Konzola SAC omezí na vyrovnávací paměť obrazovky 80x24 bez `| more` posouvání, přidejte do příkazů příkazy, aby se zobrazoval výstup jedné stránky. Použijte `<spacebar>` k zobrazení další stránky nebo `<enter>` k zobrazení dalšího řádku.
+Vzhledem k tomu, že se Konzola SAC omezí na vyrovnávací paměť obrazovky 80x24 bez posouvání, přidejte `| more` do příkazů příkazy, aby se zobrazoval výstup jedné stránky. Použijte `<spacebar>` k zobrazení další stránky nebo `<enter>` k zobrazení dalšího řádku.
 
 `SHIFT+INSERT`je zástupce pro vložení v okně sériové konzoly.
 
@@ -62,7 +61,7 @@ Po znaménku rovná se vyžaduje mezera.
 ### <a name="set-service-start-type"></a>Nastavit typ spuštění služby
 `sc config termservice start= demand`
 
-Po znaménku rovná se vyžaduje mezera. Možné hodnoty zahájení zahrnují `boot`, `system`, `auto`, `demand`, `disabled`, `delayed-auto`.
+Po znaménku rovná se vyžaduje mezera. Možné hodnoty zahájení zahrnují `boot` , `system` , `auto` , `demand` , `disabled` , `delayed-auto` .
 ### <a name="set-service-dependencies"></a>Nastavit závislosti služby
 `sc config termservice depend= RPCSS`
 
@@ -70,13 +69,13 @@ Po znaménku rovná se vyžaduje mezera.
 ### <a name="start-service"></a>Spustit službu
 `net start termservice`
 
-– nebo –
+nebo
 
 `sc start termservice`
 ### <a name="stop-service"></a>Zastavit službu
 `net stop termservice`
 
-– nebo –
+nebo
 
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>Správa síťových funkcí
@@ -91,7 +90,7 @@ Po znaménku rovná se vyžaduje mezera.
 ### <a name="set-nic-to-use-dhcp"></a>Nastavit síťovou kartu pro použití DHCP
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-Další informace o nástroji `netsh`získáte [kliknutím sem](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
+Další informace o nástroji `netsh` získáte [kliknutím sem](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Virtuální počítače Azure by měly být vždy nakonfigurované v hostovaném operačním systému, aby k získání IP adresy používaly protokol DHCP. Nastavení statické IP adresy Azure pořád používá protokol DHCP k přidělení statické IP adresy virtuálnímu počítači.
 ### <a name="ping"></a>Ping
@@ -128,7 +127,7 @@ Tento příkaz můžete použít při odstraňování potíží, abyste dočasn�
 ### <a name="verify-user-account-is-enabled"></a>Ověřte, že je povolený uživatelský účet.
 `net user <username> | find /i "active"`
 
-Virtuální počítače Azure vytvořené z generalizované image budou mít účet místního správce přejmenovaný na název zadaný při zřizování virtuálních počítačů. Takže to obvykle nebude `Administrator`.
+Virtuální počítače Azure vytvořené z generalizované image budou mít účet místního správce přejmenovaný na název zadaný při zřizování virtuálních počítačů. Takže to obvykle nebude `Administrator` .
 ### <a name="enable-user-account"></a>Povolit uživatelský účet
 `net user <username> /active:yes`
 ### <a name="view-user-account-properties"></a>Zobrazení vlastností uživatelského účtu
@@ -169,7 +168,7 @@ Použijte `604800000` k prohlédnutí 7 dní místo 24 hodin.
 ### <a name="list-installed-applications"></a>Výpis nainstalovaných aplikací
 `wmic product get Name,InstallDate | sort /r | more`
 
-`sort /r` Seřadí sestupně podle data instalace a usnadňuje tak zobrazení, co bylo nedávno nainstalováno. Slouží `<spacebar>` k přechodu na další stránku výstupu nebo `<enter>` pro posunutí na jeden řádek.
+`sort /r`Seřadí sestupně podle data instalace a usnadňuje tak zobrazení, co bylo nedávno nainstalováno. Slouží `<spacebar>` k přechodu na další stránku výstupu nebo `<enter>` pro posunutí na jeden řádek.
 ### <a name="uninstall-an-application"></a>Odinstalace aplikace
 `wmic path win32_product where name="<name>" call uninstall`
 
@@ -179,7 +178,7 @@ Nahraďte `<name>` názvem vráceným výše uvedeným příkazem pro aplikaci, 
 ### <a name="get-file-version"></a>Získat verzi souboru
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
-Tento příklad vrátí verzi souboru ovladače virtuální síťové karty, která je netvsc. sys, netvsc63. sys nebo netvsc60. sys v závislosti na verzi Windows.
+Tento příklad vrátí verzi souboru ovladače virtuální síťové karty, která je netvsc.sys, netvsc63.sys nebo netvsc60.sys v závislosti na verzi systému Windows.
 ### <a name="scan-for-system-file-corruption"></a>Vyhledat poškození systémového souboru
 `sfc /scannow`
 
@@ -195,7 +194,7 @@ Viz také [Oprava bitové kopie systému Windows](https://docs.microsoft.com/win
 ### <a name="restore-file-permissions-from-acl-file"></a>Obnovit oprávnění souboru ze souboru ACL
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-Cesta při použití `/restore` musí být nadřazenou složkou složky, kterou jste zadali při použití `/save`. V tomto příkladu je `\RSA` nadřazená `\MachineKeys` složka, kterou jste zadali v předchozím `/save` příkladu.
+Cesta při použití `/restore` musí být nadřazenou složkou složky, kterou jste zadali při použití `/save` . V tomto příkladu `\RSA` je nadřazená složka, kterou jste `\MachineKeys` zadali v `/save` předchozím příkladu.
 ### <a name="take-ntfs-ownership-of-a-folder"></a>Převzít vlastnictví složky v systému souborů NTFS
 `takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>Rekurzivní udělení oprávnění systému souborů NTFS ke složce
@@ -210,11 +209,11 @@ Cesta při použití `/restore` musí být nadřazenou složkou složky, kterou 
 ### <a name="show-os-version"></a>Zobrazit verzi operačního systému
 `ver`
 
-– nebo –
+nebo
 
 `wmic os get caption,version,buildnumber /format:list`
 
-– nebo –
+nebo
 
 `systeminfo  find /i "os name"`
 
@@ -222,7 +221,7 @@ Cesta při použití `/restore` musí být nadřazenou složkou složky, kterou 
 ### <a name="view-os-install-date"></a>Zobrazit datum instalace operačního systému
 `systeminfo | find /i "original"`
 
-– nebo –
+nebo
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>Zobrazit čas posledního spuštění
@@ -230,13 +229,13 @@ Cesta při použití `/restore` musí být nadřazenou složkou složky, kterou 
 ### <a name="view-time-zone"></a>Zobrazit časové pásmo
 `systeminfo | find /i "time zone"`
 
-– nebo –
+nebo
 
 `wmic timezone get caption,standardname /format:list`
 ### <a name="restart-windows"></a>Restartovat systém Windows
 `shutdown /r /t 0`
 
-Při `/f` přidání se vynutí ukončení spuštěných aplikací bez upozornění uživatelů.
+`/f`Při přidání se vynutí ukončení spuštěných aplikací bez upozornění uživatelů.
 ### <a name="detect-safe-mode-boot"></a>Rozpoznat spuštění v bezpečném režimu
 `bcdedit /enum | find /i "safeboot"`
 
@@ -280,11 +279,11 @@ Druhý klíč (v rámci \Policies) by byl nutný pouze v případě, že bylo na
 ### <a name="set-service-logon-account"></a>Nastavení přihlašovacího účtu služby
 `(get-wmiobject win32_service -filter "name='termservice'").Change($null,$null,$null,$null,$null,$false,'NT Authority\NetworkService')`
 
-Pokud používáte jiný účet služby než `NT AUTHORITY\LocalService`, `NT AUTHORITY\NetworkService`nebo `LocalSystem`, zadejte heslo účtu jako poslední (osmý) argument za názvem účtu.
+Pokud používáte jiný účet služby než `NT AUTHORITY\LocalService` , `NT AUTHORITY\NetworkService` nebo `LocalSystem` , zadejte heslo účtu jako poslední (osmý) argument za názvem účtu.
 ### <a name="set-service-startup-type"></a>Nastavit typ spouštění služby
 `set-service termservice -startuptype Manual`
 
-`Set-service``Automatic`akceptuje `Manual`, nebo `Disabled` pro typ spuštění.
+`Set-service`akceptuje `Automatic` , `Manual` nebo `Disabled` pro typ spuštění.
 ### <a name="set-service-dependencies"></a>Nastavit závislosti služby
 `Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\TermService' -Name DependOnService -Value @('RPCSS','TermDD')`
 ### <a name="start-service"></a>Spustit službu
@@ -295,42 +294,42 @@ Pokud používáte jiný účet služby než `NT AUTHORITY\LocalService`, `NT AU
 ### <a name="show-nic-properties"></a>Zobrazit vlastnosti síťové karty
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-– nebo –
+nebo
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
-`Get-NetAdapter`je k dispozici v roce 2012 +, `Get-WmiObject`pro 2008 R2 použití.
+`Get-NetAdapter`je k dispozici v roce 2012 +, pro 2008 R2 použití `Get-WmiObject` .
 ### <a name="show-ip-properties"></a>Zobrazit vlastnosti IP adresy
 `get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'" |  format-list DNSHostName,IPAddress,DHCPEnabled,IPSubnet,DefaultIPGateway,MACAddress,DHCPServer,DNSServerSearchOrder`
 ### <a name="enable-nic"></a>Povolit síťové rozhraní
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | enable-netadapter`
 
-– nebo –
+nebo
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
-`Get-NetAdapter`je k dispozici v roce 2012 +, `Get-WmiObject`pro 2008 R2 použití.
+`Get-NetAdapter`je k dispozici v roce 2012 +, pro 2008 R2 použití `Get-WmiObject` .
 ### <a name="set-nic-to-use-dhcp"></a>Nastavit síťovou kartu pro použití DHCP
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | Set-NetIPInterface -DHCP Enabled`
 
 `(get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'").EnableDHCP()`
 
-`Get-NetAdapter`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject`. Virtuální počítače Azure by měly být vždy nakonfigurované v hostovaném operačním systému, aby k získání IP adresy používaly protokol DHCP. Nastavení statické IP adresy Azure pořád používá protokol DHCP k přidělení IP adresy virtuálnímu počítači.
+`Get-NetAdapter`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject` . Virtuální počítače Azure by měly být vždy nakonfigurované v hostovaném operačním systému, aby k získání IP adresy používaly protokol DHCP. Nastavení statické IP adresy Azure pořád používá protokol DHCP k přidělení IP adresy virtuálnímu počítači.
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
 > [!NOTE]
-> Rutina s průběhem zápisu nemusí s tímto příkazem fungovat. `$ProgressPreference = "SilentlyContinue"` V rámci zmírnění rizika můžete pomocí prostředí PowerShell zakázat indikátor průběhu.
+> Rutina s průběhem zápisu nemusí s tímto příkazem fungovat. V rámci zmírnění rizika můžete pomocí `$ProgressPreference = "SilentlyContinue"` prostředí PowerShell zakázat indikátor průběhu.
 
-– nebo –
+nebo
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
-`Test-Netconnection`bez jakýchkoli parametrů se pokusí provést test `internetbeacon.msedge.net`z pøíkazového testu. Je k dispozici v roce 2012 +. Pro 2008 R2 použijte `Get-WmiObject` jako v druhém příkladu.
+`Test-Netconnection`bez jakýchkoli parametrů se pokusí provést test z pøíkazového testu `internetbeacon.msedge.net` . Je k dispozici v roce 2012 +. Pro 2008 R2 použijte `Get-WmiObject` jako v druhém příkladu.
 ### <a name="port-ping"></a>Příkazy pro odeslání portu
 `test-netconnection -ComputerName bing.com -Port 80`
 
-– nebo –
+nebo
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
@@ -338,21 +337,21 @@ Pokud používáte jiný účet služby než `NT AUTHORITY\LocalService`, `NT AU
 ### <a name="test-dns-name-resolution"></a>Testování překladu názvů DNS
 `resolve-dnsname bing.com`
 
-– nebo –
+nebo
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
-`Resolve-DnsName`je k dispozici v roce 2012 +. Pro 2008 R2 použití `System.Net.DNS`.
+`Resolve-DnsName`je k dispozici v roce 2012 +. Pro 2008 R2 použití `System.Net.DNS` .
 ### <a name="show-windows-firewall-rule-by-name"></a>Zobrazit pravidlo brány Windows Firewall podle názvu
 `get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>Zobrazit pravidlo brány Windows Firewall podle portu
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
-– nebo –
+nebo
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-`Get-NetFirewallPortFilter`je k dispozici v roce 2012 +. Pro 2008 R2 použijte objekt `hnetcfg.fwpolicy2` com.
+`Get-NetFirewallPortFilter`je k dispozici v roce 2012 +. Pro 2008 R2 použijte `hnetcfg.fwpolicy2` objekt com.
 ### <a name="disable-windows-firewall"></a>Zakázat bránu Windows Firewall
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
@@ -363,29 +362,29 @@ Pokud používáte jiný účet služby než `NT AUTHORITY\LocalService`, `NT AU
 ### <a name="verify-user-account-is-enabled"></a>Ověřte, že je povolený uživatelský účet.
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-– nebo –
+nebo
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
-`Get-LocalUser`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject`. Tento příklad ukazuje vestavěný účet místního správce, který má vždycky identifikátor SID `S-1-5-21-*-500`. Virtuální počítače Azure vytvořené z generalizované image budou mít účet místního správce přejmenovaný na název zadaný při zřizování virtuálních počítačů. Takže to obvykle nebude `Administrator`.
+`Get-LocalUser`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject` . Tento příklad ukazuje vestavěný účet místního správce, který má vždycky identifikátor SID `S-1-5-21-*-500` . Virtuální počítače Azure vytvořené z generalizované image budou mít účet místního správce přejmenovaný na název zadaný při zřizování virtuálních počítačů. Takže to obvykle nebude `Administrator` .
 ### <a name="add-local-user-to-local-group"></a>Přidat místního uživatele do místní skupiny
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>Povolit místní uživatelský účet
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser`
 
-Tento příklad povoluje integrovaný účet místního správce, který má vždycky identifikátor SID `S-1-5-21-*-500`. Virtuální počítače Azure vytvořené z generalizované image budou mít účet místního správce přejmenovaný na název zadaný při zřizování virtuálních počítačů. Takže to obvykle nebude `Administrator`.
+Tento příklad povoluje integrovaný účet místního správce, který má vždycky identifikátor SID `S-1-5-21-*-500` . Virtuální počítače Azure vytvořené z generalizované image budou mít účet místního správce přejmenovaný na název zadaný při zřizování virtuálních počítačů. Takže to obvykle nebude `Administrator` .
 ### <a name="view-user-account-properties"></a>Zobrazení vlastností uživatelského účtu
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-– nebo –
+nebo
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
-`Get-LocalUser`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject`. Tento příklad ukazuje vestavěný účet místního správce, který má vždycky identifikátor SID `S-1-5-21-*-500`.
+`Get-LocalUser`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject` . Tento příklad ukazuje vestavěný účet místního správce, který má vždycky identifikátor SID `S-1-5-21-*-500` .
 ### <a name="view-local-groups"></a>Zobrazit místní skupiny
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
-`Get-LocalUser`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject`.
+`Get-LocalUser`je k dispozici v roce 2012 +. Pro 2008 R2 použití `Get-WmiObject` .
 ## <a name="manage-the-windows-event-log"></a>Správa protokolu událostí systému Windows
 ### <a name="query-event-log-errors"></a>Chyby protokolu událostí dotazu
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
@@ -410,11 +409,11 @@ Použijte `604800000` k prohlédnutí 7 dní místo 24 hodin. |
 ### <a name="get-file-version"></a>Získat verzi souboru
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
-Tento příklad vrátí verzi souboru ovladače virtuální síťové karty, která má název netvsc. sys, netvsc63. sys nebo netvsc60. sys v závislosti na verzi systému Windows.
+Tento příklad vrátí verzi souboru ovladače virtuální síťové karty, která je pojmenována netvsc.sys, netvsc63.sys nebo netvsc60.sys v závislosti na verzi systému Windows.
 ### <a name="download-and-extract-file"></a>Stažení a extrakce souboru
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
-Tento příklad vytvoří `c:\bin` složku a pak stáhne a extrahuje sadu nástrojů na webu Sysinternals `c:\bin`.
+Tento příklad vytvoří `c:\bin` složku a pak stáhne a extrahuje sadu nástrojů na webu Sysinternals `c:\bin` .
 ## <a name="miscellaneous-tasks"></a>Různé úlohy
 ### <a name="show-os-version"></a>Zobrazit verzi operačního systému
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
@@ -425,11 +424,11 @@ Tento příklad vytvoří `c:\bin` složku a pak stáhne a extrahuje sadu nástr
 ### <a name="view-windows-uptime"></a>Zobrazit dobu provozu Windows
 `"{0:dd}:{0:hh}:{0:mm}:{0:ss}.{0:ff}" -f ((get-date)-(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).lastbootuptime))`
 
-Vrátí dobu provozu `<days>:<hours>:<minutes>:<seconds>:<milliseconds>`, například `49:16:48:00.00`.
+Vrátí dobu provozu `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` , například `49:16:48:00.00` .
 ### <a name="restart-windows"></a>Restartovat systém Windows
 `restart-computer`
 
-Při `-force` přidání se vynutí ukončení spuštěných aplikací bez upozornění uživatelů.
+`-force`Při přidání se vynutí ukončení spuštěných aplikací bez upozornění uživatelů.
 ## <a name="instance-metadata"></a>Metadata instance
 
 Pomocí dotazu na metadata instance Azure z virtuálního počítače Azure můžete zobrazit podrobnosti, jako je osType, Location, vmSize, vmId, Name, resourceGroupName, subscriptionId, privateIpAddress a publicIpAddress.

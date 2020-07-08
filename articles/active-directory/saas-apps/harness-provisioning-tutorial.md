@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057826"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Kurz: Konfigurace funkce pro Automatické zřizování uživatelů
@@ -53,7 +52,7 @@ Než nakonfigurujete a povolíte automatické zřizování uživatelů, rozhodn�
 
 ## <a name="set-up-harness-for-provisioning"></a>Nastavení rozpracovaného svazku pro zřizování
 
-1. Přihlaste se ke [konzole správce](https://app.harness.io/#/login)aplikace a pak přejděte na správu **nepřetržitého** > **přístupu**do zabezpečení.
+1. Přihlaste se ke [konzole správce](https://app.harness.io/#/login)aplikace a pak přejděte na správu **nepřetržitého**  >  **přístupu**do zabezpečení.
 
     ![Konzola správce ve více kabelech](media/harness-provisioning-tutorial/admin.png)
 
@@ -86,7 +85,7 @@ Než začnete konfigurovat funkci pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Odkaz všechny aplikace](common/enterprise-applications.png)
 
@@ -110,7 +109,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve službě Azure AD, udělejte toto:
 
-1. V [Azure Portal](https://portal.azure.com)vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V [Azure Portal](https://portal.azure.com)vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -130,7 +129,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. Do pole **Adresa URL tenanta** zadejte **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`**.  
+   a. Do pole **Adresa URL tenanta** zadejte **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
    b. Do pole **token tajného klíče** zadejte hodnotu ověřovacího tokenu SCIM, kterou jste uložili v kroku 6 části nastavení "nastavení svazku pro zřizování".  
    c. Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k tomuto svazku. Pokud se připojení nepovede, ujistěte se, že váš účet správce má oprávnění *správce* , a zkuste to znovu.
 

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77132048"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Získání pomocí dronů snímků z partnerů pomocí dronů
@@ -22,7 +21,7 @@ V současné době jsou podporovány následující partneři na základě sním
 
 Integrace dat pomocí dronů s použitím Azure FarmBeats vám pomůže získat orthomosaic data z pomocí dronůch letů, které ve vaší farmě vykonáváte, do DataHub. Jakmile budou data k dispozici, můžete je zobrazit v akcelerátoru FarmBeats. Data se dají použít k tvorbě datových fúzí a umělých inteligentních funkcí a vytváření modelů strojového učení.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
   - Ujistěte se, že jste nainstalovali Azure FarmBeats. Informace o tom, jak nainstalovat FarmBeats, najdete v tématu [instalace Azure FarmBeats](install-azure-farmbeats.md).
   - Ujistěte se, že máte farmu, pro kterou chcete pomocí dronůý obrázek ve vašem FarmBeats systému definovat.
@@ -35,7 +34,7 @@ Pokud chcete povolit integraci s FarmBeats, poskytněte poskytovateli zařízen�
  - ID klienta
  - Tajný klíč klienta
 
-Postupujte následovně.
+Postupujte takto:
 
 1. Stáhněte si tento [skript](https://aka.ms/farmbeatspartnerscript)a extrahujte ho na místní disk. V souboru ZIP jsou dva soubory.
 2. Přihlaste se k [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu.

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025295"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>Rozšíření privátního cloudu CloudSimple
@@ -27,7 +26,7 @@ V rámci nové konfigurace clusteru CloudSimple konfiguruje infrastrukturu VMwar
 
 Privátní cloud se dá několikrát rozšířit. Rozšíření se dá udělat jenom v případě, že zůstanete v rámci celkových omezení uzlu. Pokaždé, když rozbalíte privátní cloud, který přidáte do existujícího clusteru, nebo vytvořte nový.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Uzly musí být zřízené, aby bylo možné rozšířit svůj privátní cloud.  Další informace o zřizovacích uzlech najdete v článku [zřízení uzlů pro řešení VMware podle CloudSimple – Azure](create-nodes.md) .  Pro vytvoření nového clusteru musíte mít aspoň tři dostupné uzly stejné SKU.
 

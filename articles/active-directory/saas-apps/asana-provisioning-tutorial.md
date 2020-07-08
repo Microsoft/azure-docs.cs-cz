@@ -17,10 +17,9 @@ ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058903"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro Automatické zřizování uživatelů
@@ -59,7 +58,7 @@ Tato část vás provede připojením služby Azure AD k Asana rozhraní API pro
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na Asana ve službě Azure AD
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory**  >  **podnikové aplikace**  >  **všechny aplikace** .
 
 1. Pokud jste už nakonfigurovali Asana pro jednotné přihlašování, vyhledejte vaši instanci Asana pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Asana** v galerii aplikací. Ve výsledcích hledání vyberte **Asana** a přidejte je do seznamu aplikací.
 

@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190247"
 ---
 # <a name="consumption-model"></a>Model spotřeby
@@ -29,7 +28,7 @@ V obou modelech spotřeby existují při zadávání parametrů některé závis
 * Pokud jsou zadány hodnoty **accelerationEfficiency** a **decelerationEfficiency** , nesmí být produkt jejich hodnot větší než 1 (aby nedocházelo k trvalému pohybu).
 * **uphillEfficiency** a **downhillEfficiency** musí být vždy zadány jako dvojice (tj. nebo žádné).
 * Pokud jsou zadány hodnoty **uphillEfficiency** a **downhillEfficiency** , nesmí být produkt jejich hodnot větší než 1 (aby nedocházelo k trvalému pohybu).
-* \*Pokud uživatel zadá parametry __efektivity__ , musí se také zadat **vehicleWeight** . _Je-li_ **vehicleEngineType** , musí být zadán také parametr **fuelEnergyDensityInMJoulesPerLiter** .
+* Pokud \* uživatel zadá parametry __efektivity__ , musí se také zadat **vehicleWeight** . _Je-li_ **vehicleEngineType** , musí být zadán také parametr **fuelEnergyDensityInMJoulesPerLiter** .
 * **maxChargeInkWh** a **currentChargeInkWh** musí být vždy zadány jako dvojice (tj. obojí nebo None).
 
 > [!NOTE]

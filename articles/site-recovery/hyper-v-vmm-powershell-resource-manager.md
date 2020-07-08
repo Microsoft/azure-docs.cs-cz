@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048604"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Správce prostředků)
@@ -210,7 +209,7 @@ Chcete-li ověřit dokončení operace, postupujte podle kroků v části [monit
 
 ##  <a name="configure-network-mapping"></a>Konfigurace mapování sítě
 
-1. Tento příkaz slouží k načtení serverů pro aktuální trezor. Příkaz uloží Site Recovery servery do proměnné `$Servers` Array.
+1. Tento příkaz slouží k načtení serverů pro aktuální trezor. Příkaz uloží Site Recovery servery do `$Servers` proměnné array.
 
    ```azurepowershell
    $Servers = Get-AzRecoveryServicesAsrFabric
@@ -227,7 +226,7 @@ Chcete-li ověřit dokončení operace, postupujte podle kroků v části [monit
    > [!NOTE]
    > Zdrojový Virtual Machine Manager Server může být první nebo druhý v poli serveru. Ověřte Virtual Machine Manager názvy serverů a odpovídajícím způsobem načtěte sítě.
 
-1. Tato rutina vytvoří mapování mezi primární sítí a sítí pro obnovení. Určuje primární síť jako první prvek `$PrimaryNetworks`. Určuje síť pro obnovení jako první prvek `$RecoveryNetworks`.
+1. Tato rutina vytvoří mapování mezi primární sítí a sítí pro obnovení. Určuje primární síť jako první prvek `$PrimaryNetworks` . Určuje síť pro obnovení jako první prvek `$RecoveryNetworks` .
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
@@ -261,7 +260,7 @@ Až budou servery, cloudy a sítě správně nakonfigurované, povolte ochranu p
 > 1. Povolení převzetí služeb při selhání u spravovaných disků aktualizací vlastností virtuálního počítače
 > 1. Pomocí `Get-AzRecoveryServicesAsrReplicationProtectedItem` rutiny načtěte ID disku pro každý disk chráněné položky.
 > 1. Vytvořte objekt Dictionary pomocí `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` rutiny, který bude obsahovat mapování ID disku na disk pro šifrování disku. Tyto sady diskových šifrovacích sad se v cílové oblasti předem vytvoří.
-> 1. Aktualizujte vlastnosti virtuálního počítače `Set-AzRecoveryServicesAsrReplicationProtectedItem` pomocí rutiny předáním objektu Dictionary v parametru **DiskIdToDiskEncryptionSetMap** .
+> 1. Aktualizujte vlastnosti virtuálního počítače pomocí `Set-AzRecoveryServicesAsrReplicationProtectedItem` rutiny předáním objektu Dictionary v parametru **DiskIdToDiskEncryptionSetMap** .
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 

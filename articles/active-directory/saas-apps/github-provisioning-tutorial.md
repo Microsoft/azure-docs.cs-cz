@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057647"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
@@ -77,7 +76,7 @@ Tato část vás provede připojením k rozhraní API pro zřizování uživatel
 
     ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a pak zkuste znovu provést krok autorizovat ( **můžete být v rámci svého** účtu **Settings** > GitHubu `https://api.github.com/scim/v2/organizations/<Organization_name>`, který můžete**Najít).**
+7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a pak zkuste znovu provést krok autorizovat ( **můžete být v** `https://api.github.com/scim/v2/organizations/<Organization_name>` rámci svého účtu GitHubu, který můžete najít **Settings**  >  **Organizations**).
 
     ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub3.png)
 

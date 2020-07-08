@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162204"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
@@ -66,7 +65,7 @@ Pokud chcete obnovit soubor z účtu úložiště, přečtěte si:
 
 ## <a name="trash-purging"></a>Vyprazdňování odpadků
 
-`fs.trash.interval` Vlastnost z **HDFS** > **Advanced Core-site** by měla zůstat na výchozí hodnotě `0` , protože byste neměli ukládat data do místního systému souborů. Tato hodnota nemá vliv na účty vzdáleného úložiště (WASB, ADLS GEN1, ABFS).
+`fs.trash.interval`Vlastnost z **HDFS**  >  **Advanced Core-site** by měla zůstat na výchozí hodnotě, `0` protože byste neměli ukládat data do místního systému souborů. Tato hodnota nemá vliv na účty vzdáleného úložiště (WASB, ADLS GEN1, ABFS).
 
 ## <a name="next-steps"></a>Další kroky
 

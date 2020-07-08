@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: cd7aae05b064657c7b9072402f4bc4d4d7fef7a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057854"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Kurz: Konfigurace hejna pro Automatické zřizování uživatelů
@@ -56,7 +55,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Před konfigurací hejna pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit zřizování SCIM v hejnu.
 
-1. Přihlaste se k [hejnu](https://web.flock.com/?). Klikněte na **ikonu** > nastavení**spravovat váš tým**.
+1. Přihlaste se k [hejnu](https://web.flock.com/?). Klikněte na **ikonu nastavení**  >  **spravovat váš tým**.
 
     ![Flock](media/flock-provisioning-tutorial/icon.png)
 
@@ -100,7 +99,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-flock--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro hejno ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -116,7 +115,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte `https://api.flock-staging.com/v2/scim` hodnoty a **tokeny rozhraní API** NAČTENÉ dříve v **adrese URL tenanta** a **tajného tokenu** v uvedeném pořadí. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k hejnu. Pokud se připojení nepovede, zajistěte, aby měl váš účet hejn oprávnění správce, a zkuste to znovu.
+5. V části přihlašovací údaje správce zadejte `https://api.flock-staging.com/v2/scim` hodnoty a **tokeny rozhraní API** načtené dříve v **adrese URL tenanta** a **tajného tokenu** v uvedeném pořadí. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k hejnu. Pokud se připojení nepovede, zajistěte, aby měl váš účet hejn oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 

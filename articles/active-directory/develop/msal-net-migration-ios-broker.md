@@ -13,10 +13,9 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77185829"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
@@ -98,7 +97,7 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>Krok 2: nastavení UIViewController ()
-V ADAL.NET jste předali v UIViewController jako součást `PlatformParameters`. (Viz příklad v kroku 1.) V MSAL.NET, aby vývojářům poskytoval větší flexibilitu, se používá okno objektu, ale v běžném použití iOS se nepožaduje. Chcete-li použít zprostředkovatele, nastavte okno objektu tak, aby odesílalo a přijímalo odpovědi od zprostředkovatele. 
+V ADAL.NET jste předali v UIViewController jako součást `PlatformParameters` . (Viz příklad v kroku 1.) V MSAL.NET, aby vývojářům poskytoval větší flexibilitu, se používá okno objektu, ale v běžném použití iOS se nepožaduje. Chcete-li použít zprostředkovatele, nastavte okno objektu tak, aby odesílalo a přijímalo odpovědi od zprostředkovatele. 
 <table>
 <tr><td>Aktuální kód ADAL:</td><td>MSAL protějšek:</td></tr>
 <tr><td>
@@ -115,10 +114,10 @@ page.BrokerParameters = new PlatformParameters(
 </td><td>
 V MSAL.NET provedete dvě věci pro nastavení okna objektu pro iOS:
 
-1. V `AppDelegate.cs`nastavte `App.RootViewController` na nový `UIViewController()`. Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-1. Na volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)`a předejte odkaz na okno objektu, které použijete.
+1. V `AppDelegate.cs` nastavte `App.RootViewController` na nový `UIViewController()` . Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. Na volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)` a předejte odkaz na okno objektu, které použijete.
 
-**Například:**
+**Příklad:**
 
 V `App.cs`:
 ```csharp
@@ -151,7 +150,7 @@ ADAL.NET a MSAL.NET používají adresy URL k vyvolání zprostředkovatele a vr
 <tr><td>
 Schéma adresy URL je pro vaši aplikaci jedinečné.
 </td><td>
-Prostředek 
+Rozhraní 
 
 `CFBundleURLSchemes`Název musí zahrnovat 
 

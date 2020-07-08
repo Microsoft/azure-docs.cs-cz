@@ -15,17 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77050005"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Publikování obsahu Azure Media Services pomocí REST 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
-> * [Portál](media-services-portal-publish.md)
+> * [Azure Portal](media-services-portal-publish.md)
 > 
 > 
 
@@ -46,7 +45,7 @@ V [následující](#types) části jsou uvedeny typy výčtu, jejichž hodnoty j
 Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení https://media.windows.netk vám obdržíte přesměrování 301 s určením jiného identifikátoru URI Media Services. Je nutné provést následná volání nového identifikátoru URI.
+>Po úspěšném připojení k vám https://media.windows.net obdržíte přesměrování 301 s určením jiného identifikátoru URI Media Services. Je nutné provést následná volání nového identifikátoru URI.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Vytvoření lokátoru pro streamování OnDemand
 Chcete-li vytvořit Lokátor streamování OnDemand a získat adresy URL, je nutné provést následující akce:

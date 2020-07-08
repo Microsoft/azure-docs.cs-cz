@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063147"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Kurz: konfigurace na návštěvu pro Automatické zřizování uživatelů
@@ -56,7 +55,7 @@ Než nakonfigurujete a povolíte automatické zřizování uživatelů, rozhodn�
 
 Než navštívíte návštěvu pro Automatické zřizování uživatelů se službou Azure AD, musíte povolit systém pro SCIM (Provisioning pro správu identit mezi doménami).
 
-1. Přihlaste se k [návštěvě](https://app.visitly.io/login). Vyberte možnost **integrace** > **hostitele synchronizace**.
+1. Přihlaste se k [návštěvě](https://app.visitly.io/login). Vyberte možnost **integrace**  >  **hostitele synchronizace**.
 
     ![Synchronizace hostitele](media/Visitly-provisioning-tutorial/login.png)
 
@@ -100,7 +99,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro návštěvu ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Všechny aplikace](common/enterprise-applications.png)
 
@@ -116,7 +115,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Režim zřizování nastavený na automatické](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte hodnoty `https://api.visitly.io/v1/usersync/SCIM` **klíčů rozhraní API** , které jste dříve načetli v **adrese URL tenanta** a **tajného tokenu**v uvedeném pořadí. Vyberte **Test připojení** , aby se mohla služba Azure AD připojit k návštěvě. Pokud se připojení nepovede, ujistěte se, že má váš návštěvu oprávnění správce, a zkuste to znovu.
+5. V části přihlašovací údaje správce zadejte `https://api.visitly.io/v1/usersync/SCIM` hodnoty **klíčů rozhraní API** , které jste dříve načetli v **adrese URL tenanta** a **tajného tokenu**v uvedeném pořadí. Vyberte **Test připojení** , aby se mohla služba Azure AD připojit k návštěvě. Pokud se připojení nepovede, ujistěte se, že má váš návštěvu oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 

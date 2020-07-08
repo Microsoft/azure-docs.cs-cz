@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 3d1bb0bcbc0df98d7a884004cf96fe9810589185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058106"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Kurz: Konfigurace Druva pro Automatické zřizování uživatelů
@@ -60,7 +59,7 @@ Před konfigurací Druva pro Automatické zřizování uživatelů pomocí Azure
 
     ![Konzola pro správu Druva](media/druva-provisioning-tutorial/menubar.png)
 
-2. Přejděte ke **správě** > **nasazení** > **Uživatelé**.
+2. Přejděte ke **správě**  >  **nasazení**  >  **Uživatelé**.
 
     ![Druva přidat SCIM](media/druva-provisioning-tutorial/manage.png)
 
@@ -103,7 +102,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-druva-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Druva ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

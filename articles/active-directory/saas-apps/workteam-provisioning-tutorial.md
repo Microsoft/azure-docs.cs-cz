@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: e9b1e93cf543836b282525c53756752630d5e4f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062777"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Kurz: Konfigurace Workteam pro Automatické zřizování uživatelů
@@ -56,7 +55,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Před konfigurací Workteam pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na Workteam.
 
-1. Přihlaste se k [Workteam](https://app.workte.am/account/signin). Klikněte na nastavení **organizace** > **Nastavení**.
+1. Přihlaste se k [Workteam](https://app.workte.am/account/signin). Klikněte na nastavení **organizace**  >  **Nastavení**.
 
     ![Workteam](media/workteam-provisioning-tutorial/settings.png)
 
@@ -100,7 +99,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-workteam--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Workteam ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

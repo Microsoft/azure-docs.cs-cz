@@ -8,10 +8,9 @@ ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062145"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
@@ -67,20 +66,20 @@ Další informace o tom, jak Azure Analysis Services funguje s bránou, najdete 
    > [!NOTE]
    > Pokud se přihlásíte pomocí účtu domény, namapuje se na účet vaší organizace ve službě Azure AD. Účet vaší organizace se používá jako Správce brány.
 
-## <a name="register"></a><a name="register"></a>Zaregistrovat
+## <a name="register"></a><a name="register"></a>Registrovat
 
 Aby bylo možné vytvořit prostředek brány v Azure, musíte zaregistrovat místní instanci, kterou jste nainstalovali s cloudovou službou brány. 
 
 1.  Vyberte možnost **zaregistrovat novou bránu na tomto počítači**.
 
-    ![Zaregistrovat](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Registrovat](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Zadejte název a obnovovací klíč pro bránu. Ve výchozím nastavení používá brána výchozí oblast vašeho předplatného. Pokud potřebujete vybrat jinou oblast, vyberte **změnit oblast**.
 
     > [!IMPORTANT]
     > Uložte si obnovovací klíč na bezpečné místo. Obnovovací klíč se vyžaduje v rámci převzetí, migrace nebo obnovení brány. 
 
-   ![Zaregistrovat](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Registrovat](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>Vytvoření prostředku brány Azure
@@ -125,7 +124,7 @@ Po instalaci a registraci brány musíte vytvořit prostředek brány v Azure. P
 
     ![Připojení serveru k úspěšnému dokončení prostředku brány](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-A to je vše. Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
+A je to! Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další kroky
 

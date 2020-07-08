@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024785"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Vytvoření privátního cloudu CloudSimple
@@ -31,7 +30,7 @@ Vytvoření privátního cloudu vám pomůže vyřešit celou řadu běžných p
 
 Při vytváření privátního cloudu získáte jeden cluster vSphere a všechny virtuální počítače pro správu, které jsou vytvořeny v tomto clusteru.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Uzly musí být zřízené, aby bylo možné vytvořit privátní cloud. Další informace o zřizovacích uzlech najdete v tématu [zřízení uzlů pro řešení Azure VMware pomocí CloudSimple](create-nodes.md).
 

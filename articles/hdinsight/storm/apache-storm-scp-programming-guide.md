@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: ddf69a75a39911293277a4a4189cf4e79256e09d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77186865"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight
@@ -357,7 +356,7 @@ public void Abort();
     public T GetAttribute<T>(string key);
 ```
 
-Pokud je **simpleMode** nastaveno na **hodnotu true**, metoda **Commit** odstraní odpovídající ZNode v Zookeeper. V opačném případě metoda odstraní aktuální ZNode a přidá nový uzel do SVĚŘENé\_cesty.
+Pokud je **simpleMode** nastaveno na **hodnotu true**, metoda **Commit** odstraní odpovídající ZNode v Zookeeper. V opačném případě metoda odstraní aktuální ZNode a přidá nový uzel do SVĚŘENé \_ cesty.
 
 ### <a name="scpruntime"></a>SCPRuntime
 
@@ -434,7 +433,7 @@ Specifikace topologie můžete odesílat přímo do clusteru s více podsystému
 
 SCP.NET přidal následující funkce pro definování transakčních topologií:
 
-| Nová funkce | Parametry | Popis |
+| Nová funkce | Parametry | Description |
 | --- | --- | --- |
 | **TX – topolopy** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje transakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
 | **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
@@ -446,7 +445,7 @@ SCP.NET přidal následující funkce pro definování transakčních topologií
 
 SCP.NET definuje následující klíčová slova:
 
-| Klíčové slovo | Popis |
+| Klíčové slovo | Description |
 | --- | --- |
 | **: název** |Název topologie |
 | **: topologie** |Topologie pomocí funkcí v předchozí tabulce a integrovaných funkcích |
@@ -540,7 +539,7 @@ SCP.NET přidá přizpůsobenou metodu seskupení a k seskupení používá obsa
 V předchozím souboru specifikace:
 
 * `scp-field-group`Určuje, že seskupení je přizpůsobené seskupení polí implementované spojovacím bod služby.
-* `:tx`nebo `:non-tx` určuje, zda je topologie transakční. Tyto informace budete potřebovat, protože počáteční index se liší od transakčních a netransakčních topologií.
+* `:tx`nebo `:non-tx` Určuje, zda je topologie transakční. Tyto informace budete potřebovat, protože počáteční index se liší od transakčních a netransakčních topologií.
 * `[0,1]`Určuje sadu hodnot hash pro ID polí začínající nulou.
 
 ### <a name="hybrid-topology"></a>Hybridní topologie
@@ -668,7 +667,7 @@ public interface ICustomizedInteropJavaDeserializer {
 
 ## <a name="scp-host-mode"></a>Režim hostitele spojovacího bodu služby
 
-V tomto režimu můžete zkompilovat kód jako knihovnu DLL a použít SCPHost. exe, jak poskytuje spojovací bod služby (SCP) k odeslání topologie. Soubor specifikace vypadá jako tento kód:
+V tomto režimu můžete zkompilovat kód jako knihovnu DLL a použít SCPHost.exe, jak poskytuje spojovací bod služby (SCP) k odeslání topologie. Soubor specifikace vypadá jako tento kód:
 
 ```csharp
 (scp-spout
@@ -679,7 +678,7 @@ V tomto režimu můžete zkompilovat kód jako knihovnu DLL a použít SCPHost. 
   })
 ```
 
-Zde `"plugin.name"` je zadán jako `"SCPHost.exe"`, který je poskytován sadou SCP SDK. SCPHost. exe přijímá tři parametry v tomto pořadí:
+Zde `"plugin.name"` je zadán jako `"SCPHost.exe"` , který je poskytován sadou SCP SDK. SCPHost.exe přijímá tři parametry v tomto pořadí:
 
 1. Název knihovny DLL, který je `"HelloWorld.dll"` v tomto příkladu.
 1. Název třídy, který je `"Scp.App.HelloWorld.Generator"` v tomto příkladu.
@@ -693,7 +692,7 @@ V režimu hostitele zkompilujte kód jako knihovnu DLL pro vyvolání platformou
 
 Následující příklad jednoduchého HelloWorld ukazuje na SCP.NETu. Používá netransakční topologii s Spout nazvaný **generátor** a dvěma šrouby s názvem **rozdělovač** a **čítač**. **Generátor** Spout náhodně generuje věty a vygeneruje tyto věty do **rozdělovače**. Šroubce **rozdělovač** rozdělí věty na slova a vygeneruje tato slova na **čítač** . **Čítač počítadla** používá slovník k záznamu výskytu každého slova.
 
-V tomto příkladu jsou dva soubory specifikace: HelloWorld. spec a\_HelloWorld EnableAck. spec. Kód jazyka C# může zjistit, zda je potvrzení povoleno získáním `pluginConf` objektu ze strany Java.
+V tomto příkladu jsou dva soubory specifikace: HelloWorld. spec a HelloWorld \_ EnableAck. spec. Kód jazyka C# může zjistit, zda je potvrzení povoleno získáním `pluginConf` objektu ze strany Java.
 
 ```csharp
 /* demo how to get pluginConf info */
@@ -728,7 +727,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-Následující příklad HelloWorldTx ukazuje, jak implementovat transakční topologii. Příklad obsahuje jeden Spout nazvaný **generátor**, Batch se nazývá **částečný počet**a potvrzovací šroub s názvem **Count-suma**. Příklad také obsahuje tři existující textové soubory: DataSource0. txt, DataSource1. txt a DataSource2. txt.
+Následující příklad HelloWorldTx ukazuje, jak implementovat transakční topologii. Příklad obsahuje jeden Spout nazvaný **generátor**, Batch se nazývá **částečný počet**a potvrzovací šroub s názvem **Count-suma**. Příklad také obsahuje tři existující textové soubory: DataSource0.txt, DataSource1.txt a DataSource2.txt.
 
 V každé transakci **generátor** Spout náhodně vybere dva soubory z existujících tří souborů a vygeneruje názvy dvou souborů do šroubů s **částečným počtem** . Šroub **částečného počtu** :
 
@@ -783,11 +782,11 @@ public void FinishBatch(Dictionary<string, Object> parms)
 
 ### <a name="hybridtopology"></a>HybridTopology
 
-Tato topologie obsahuje Java Spout a jazyk C#. Používá výchozí serializaci a deserializaci, která je poskytována platformou SCP. Podrobnosti souboru specifikace najdete v souboru HybridTopology. spec\\ve složce Examples HybridTopology. Viz také SubmitTopology. bat, jak určit cestu třídy Java.
+Tato topologie obsahuje Java Spout a jazyk C#. Používá výchozí serializaci a deserializaci, která je poskytována platformou SCP. Podrobnosti souboru specifikace najdete v souboru HybridTopology. spec ve složce Examples \\ HybridTopology. Viz také SubmitTopology.bat, jak zadat cestu třídy Java.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
 
-Tento příklad je v podstatě stejný jako HelloWorld. Jediným rozdílem je, že váš kód je kompilován jako knihovna DLL a topologie je odeslána pomocí SCPHost. exe. Podrobnější vysvětlení najdete v části režim hostitele spojovacího bodu služby.
+Tento příklad je v podstatě stejný jako HelloWorld. Jediným rozdílem je, že váš kód je kompilován jako knihovna DLL a topologie je odeslána pomocí SCPHost.exe. Podrobnější vysvětlení najdete v části režim hostitele spojovacího bodu služby.
 
 ## <a name="next-steps"></a>Další kroky
 

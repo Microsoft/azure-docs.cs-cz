@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058459"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Kurz: Konfigurace Elium pro Automatické zřizování uživatelů
@@ -55,7 +54,7 @@ Když přiřadíte uživatele k Elium, musíte vybrat platnou roli specifickou p
 
 Před konfigurací Elium pro Automatické zřizování uživatelů se službou Azure AD musíte povolit systém pro zřizování SCIM (Domain Identity Management) na Elium. Postupujte následovně:
 
-1. Přihlaste se k Elium a pokračujte na**Nastavení** **profilu** > .
+1. Přihlaste se k Elium a **My Profile**pokračujte na  >  **Nastavení**profilu.
 
     ![Položka nabídky nastavení v Elium](media/Elium-provisioning-tutorial/setting.png)
 
@@ -112,7 +111,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro Elium ve s
 
     ![Automatické nastavení pro režim zřizování](common/provisioning-automatic.png)
 
-1. V části **přihlašovací údaje správce** zadejte ** \<\>** do pole **Adresa URL klienta** tenantURL/SCIM/v2. ( **TenantURL** je hodnota načtená dříve z konzoly pro správu Elium.) Zadejte také hodnotu **tajného tokenu** Elium do pole **token tajného** kódu. Nakonec vyberte **Test připojení** , abyste ověřili, že se služba Azure AD může připojit k Elium. Pokud se připojení nepovede, ujistěte se, že má váš účet Elium oprávnění správce, a zkuste to znovu.
+1. V části **přihlašovací údaje správce** zadejte do pole **Adresa URL klienta** ** \<tenantURL\> /SCIM/v2** . ( **TenantURL** je hodnota načtená dříve z konzoly pro správu Elium.) Zadejte také hodnotu **tajného tokenu** Elium do pole **token tajného** kódu. Nakonec vyberte **Test připojení** , abyste ověřili, že se služba Azure AD může připojit k Elium. Pokud se připojení nepovede, ujistěte se, že má váš účet Elium oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta a pole tajného tokenu v přihlašovacích údajích správce](common/provisioning-testconnection-tenanturltoken.png)
 

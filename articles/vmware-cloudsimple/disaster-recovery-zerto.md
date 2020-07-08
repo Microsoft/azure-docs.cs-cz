@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083131"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Nastavení privátního cloudu CloudSimple jako lokality pro zotavení po havárii pro místní úlohy VMware
@@ -51,7 +50,7 @@ Následující části popisují, jak nasadit řešení zotavení po havárii po
 Pokud chcete povolit virtuální replikaci Zerto z místního prostředí do svého privátního cloudu, proveďte následující požadavky.
 
 1. [Nastavte připojení VPN typu Site-to-site mezi vaší místní sítí a privátním cloudem CloudSimple](set-up-vpn.md).
-2. [Nastavte vyhledávání DNS tak, aby vaše komponenty správy privátního cloudu byly předávány na servery DNS privátního cloudu](on-premises-dns-setup.md).  Pokud chcete povolit předávání vyhledávání DNS, vytvořte záznam zóny přesměrování na místním serveru DNS pro `*.cloudsimple.io` CLOUDSIMPLE servery DNS.
+2. [Nastavte vyhledávání DNS tak, aby vaše komponenty správy privátního cloudu byly předávány na servery DNS privátního cloudu](on-premises-dns-setup.md).  Pokud chcete povolit předávání vyhledávání DNS, vytvořte záznam zóny přesměrování na místním serveru DNS pro `*.cloudsimple.io` CloudSimple servery DNS.
 3. Nastavte vyhledávání DNS tak, aby místní součásti vCenter byly předávány na místní servery DNS.  Servery DNS musí být dosažitelné z privátního cloudu CloudSimple prostřednictvím sítě Site-to-Site VPN. Pokud potřebujete pomoc, odešlete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), která poskytne následující informace.  
 
     * Název místní domény DNS

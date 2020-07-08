@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063777"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Chyba řešení potíží: "Modul runtime služby Azure Functions je nedosažitelný"
@@ -44,7 +43,7 @@ Pokud v předchozím kroku nemůžete najít připojovací řetězec účtu úlo
 
 Další informace najdete v tématu [referenční informace k nastavení aplikace Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
-### <a name="guidance"></a>Doprovodné materiály
+### <a name="guidance"></a>Pokyny
 
 * Pro některá z těchto nastavení nekontrolujte nastavení slotu. Pokud odměňujete sloty nasazení, aplikace Function App se ukončí.
 * Tato nastavení neměňte v rámci automatizovaných nasazení.
@@ -66,7 +65,7 @@ Vaše aplikace Function App musí být schopna získat přístup k účtu úlož
 
 Pokud máte nakonfigurovanou denní kvótu spuštění, aplikace Function App je dočasně zakázaná, což způsobuje, že mnohé z ovládacích prvků portálu nebudou dostupné. 
 
-Pokud chcete ověřit kvótu v [Azure Portal](https://portal.azure.com), vyberte **funkce** > platformy**Function App nastavení** ve vaší aplikaci Function App. Pokud používáte **kvótu denního využití** , kterou jste nastavili, zobrazí se následující zpráva:
+Pokud chcete ověřit kvótu v [Azure Portal](https://portal.azure.com), vyberte **funkce platformy**  >  **Function App nastavení** ve vaší aplikaci Function App. Pokud používáte **kvótu denního využití** , kterou jste nastavili, zobrazí se následující zpráva:
 
   > "Function Appa dosáhla kvóty denního využití a byla zastavena až do dalších 24 hodin časového rámce."
 

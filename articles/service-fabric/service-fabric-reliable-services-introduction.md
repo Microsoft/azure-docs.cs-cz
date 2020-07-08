@@ -7,10 +7,9 @@ ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083516"
 ---
 # <a name="reliable-services-overview"></a>Přehled Reliable Services
@@ -68,13 +67,13 @@ Pojďme se podívat, jak model Reliable Services pracuje s bezstavovou a stavovo
 
 Představte si například kalkulačku, která nemá žádnou paměť a přijímá všechny kroky a operace, které je potřeba provést najednou.
 
-V takovém případě může `RunAsync()` být (C#) `runAsync()` nebo (Java) služby prázdný, protože není k dispozici žádné zpracování úloh na pozadí, které služba potřebuje. Při vytvoření služby kalkulačky vrátí `ICommunicationListener` (C#) nebo `CommunicationListener` (Java) (například [webové rozhraní API](service-fabric-reliable-services-communication-webapi.md)), které otevře koncový bod naslouchání na některém portu. Toto naslouchání koncových bodů se zapojováním k různým metodám výpočtu (příklad: Add (N1, N2)), který definuje veřejné rozhraní API kalkulačky.
+V takovém případě `RunAsync()` může být (C#) nebo `runAsync()` (Java) služby prázdný, protože není k dispozici žádné zpracování úloh na pozadí, které služba potřebuje. Při vytvoření služby kalkulačky vrátí `ICommunicationListener` (C#) nebo `CommunicationListener` (Java) (například [webové rozhraní API](service-fabric-reliable-services-communication-webapi.md)), které otevře koncový bod naslouchání na některém portu. Toto naslouchání koncových bodů se zapojováním k různým metodám výpočtu (příklad: Add (N1, N2)), který definuje veřejné rozhraní API kalkulačky.
 
 Při volání z klienta je vyvolána vhodná metoda a služba kalkulačky provede operace s poskytnutými daty a vrátí výsledek. Neukládá žádný stav.
 
 Tento příklad kalkulačky usnadňuje neuložení žádného vnitřního stavu. Ale většina služeb není skutečně Bezstavová. Místo toho Externalize svůj stav na jiný obchod. (Například libovolná webová aplikace, která spoléhá na zachování stavu relace v záložním úložišti nebo v mezipaměti, není Bezstavová.)
 
-Běžným příkladem toho, jak se v Service Fabric používají bezstavové služby, je jako front-end, který zpřístupňuje veřejné rozhraní API pro webovou aplikaci. Front-end služba pak mluví se stavovým službám, aby dokončila požadavek uživatele. V takovém případě jsou volání klientů směrována na známý port, například 80, kde naslouchá Bezstavová služba. Tato Bezstavová služba přijme volání a určí, zda je volání od důvěryhodné strany a služby, pro kterou je určena.  Bezstavová služba pak předá volání do správného oddílu stavové služby a počká na odpověď. Když Bezstavová služba obdrží odpověď, odpoví na původního klienta. Příkladem takové služby je ukázka *Service Fabric Začínáme* ([C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)), kromě dalších ukázek Service Fabric v tomto úložišti.
+Běžným příkladem toho, jak se v Service Fabric používají bezstavové služby, je jako front-end, který zpřístupňuje veřejné rozhraní API pro webovou aplikaci. Front-end služba pak mluví se stavovým službám, aby dokončila požadavek uživatele. V takovém případě jsou volání klientů směrována na známý port, například 80, kde naslouchá Bezstavová služba. Tato Bezstavová služba přijme volání a určí, zda je volání od důvěryhodné strany a služby, pro kterou je určena.  Bezstavová služba pak předá volání do správného oddílu stavové služby a počká na odpověď. Když Bezstavová služba obdrží odpověď, odpoví na původního klienta. Příkladem takové služby je ukázka *Service Fabric Začínáme* ([C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)  /  [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)), kromě dalších ukázek Service Fabric v tomto úložišti.
 
 ### <a name="stateful-reliable-services"></a>Stavová Reliable Services
 
@@ -82,11 +81,11 @@ Běžným příkladem toho, jak se v Service Fabric používají bezstavové slu
 
 Většina služeb dnes ukládá svůj stav externě, protože externí obchod zajišťuje spolehlivost, dostupnost, škálovatelnost a konzistenci pro daný stav. V Service Fabric služby nejsou nutné k externímu ukládání stavu. Service Fabric postará o tyto požadavky jak pro kód služby, tak pro stav služby.
 
-Řekněme, že chceme napsat službu, která zpracovává obrázky. K tomu je potřeba, aby služba prováděla image a řadu převodů, které se v této imagi mají provést. Tato služba vrátí naslouchací proces komunikace (řekněme, že se jedná o WebAPI), který zpřístupňuje rozhraní `ConvertImage(Image i, IList<Conversion> conversions)`API jako. Když obdrží požadavek, služba ho uloží do a vrátí nějaké ID `IReliableQueue`klientovi, aby mohl žádost sledovat.
+Řekněme, že chceme napsat službu, která zpracovává obrázky. K tomu je potřeba, aby služba prováděla image a řadu převodů, které se v této imagi mají provést. Tato služba vrátí naslouchací proces komunikace (řekněme, že se jedná o WebAPI), který zpřístupňuje rozhraní API jako `ConvertImage(Image i, IList<Conversion> conversions)` . Když obdrží požadavek, služba ho uloží do a `IReliableQueue` vrátí nějaké ID klientovi, aby mohl žádost sledovat.
 
-V této službě `RunAsync()` může být složitější. Služba obsahuje smyčku uvnitř své `RunAsync()` žádosti, která vyžádá `IReliableQueue` a provede požadované převody. Výsledky se ukládají do, `IReliableDictionary` takže když se klient vrátí zpátky, může získat převedené obrázky. Aby se zajistilo, že i v případě, že se něco nepovede, nebude image ztracena, Tato spolehlivá služba by se vyčerpala z fronty, prováděla převody a uloží výsledek do jediné transakce. V tomto případě je zpráva odebrána z fronty a výsledky jsou uloženy ve slovníku výsledků pouze v případě, že byly převody dokončeny. Alternativně může služba získat image z fronty a hned ji uložit do vzdáleného úložiště. Tím se snižuje množství stavu, který musí služba spravovat, ale zvyšuje složitost, protože služba musí uchovávat potřebná metadata pro správu vzdáleného úložiště. V případě, že se některý z těchto postupů nezdařil, požadavek zůstane ve frontě, která čeká na zpracování.
+V této službě `RunAsync()` může být složitější. Služba obsahuje smyčku uvnitř své `RunAsync()` žádosti, která vyžádá `IReliableQueue` a provede požadované převody. Výsledky se ukládají do `IReliableDictionary` , takže když se klient vrátí zpátky, může získat převedené obrázky. Aby se zajistilo, že i v případě, že se něco nepovede, nebude image ztracena, Tato spolehlivá služba by se vyčerpala z fronty, prováděla převody a uloží výsledek do jediné transakce. V tomto případě je zpráva odebrána z fronty a výsledky jsou uloženy ve slovníku výsledků pouze v případě, že byly převody dokončeny. Alternativně může služba získat image z fronty a hned ji uložit do vzdáleného úložiště. Tím se snižuje množství stavu, který musí služba spravovat, ale zvyšuje složitost, protože služba musí uchovávat potřebná metadata pro správu vzdáleného úložiště. V případě, že se některý z těchto postupů nezdařil, požadavek zůstane ve frontě, která čeká na zpracování.
 
-I když tato služba funguje jako typická služba .NET, je rozdílem, že používané datové struktury (`IReliableQueue` a `IReliableDictionary`) poskytují Service Fabric a jsou vysoce spolehlivé, dostupné a konzistentní.
+I když tato služba funguje jako typická služba .NET, je rozdílem, že používané datové struktury ( `IReliableQueue` a `IReliableDictionary` ) poskytují Service Fabric a jsou vysoce spolehlivé, dostupné a konzistentní.
 
 ## <a name="when-to-use-reliable-services-apis"></a>Kdy použít rozhraní API pro Reliable Services
 

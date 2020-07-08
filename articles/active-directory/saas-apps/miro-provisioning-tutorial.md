@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: Zhchia
 ms.openlocfilehash: b7e1907e3fa1eb9d775fb7662445b08d5671e0b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063404"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Kurz: Konfigurace Miro pro Automatické zřizování uživatelů
@@ -54,7 +53,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 ## <a name="set-up-miro-for-provisioning"></a>Nastavení Miro pro zřizování
 
-1.  Pokud chcete načíst potřebný **tajný token** , kontaktujte tým podpory Miro support@miro.comna adrese. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace Miro ve Azure Portal.
+1.  Pokud chcete načíst potřebný **tajný token** , kontaktujte tým podpory Miro na adrese support@miro.com . Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace Miro ve Azure Portal.
 
 ## <a name="add-miro-from-the-gallery"></a>Přidání Miro z Galerie
 
@@ -90,7 +89,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-miro-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Miro ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

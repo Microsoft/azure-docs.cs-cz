@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77111763"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Použití identity spravované v Azure v ACR úlohách 
@@ -50,9 +49,9 @@ Pokud máte v úmyslu používat jenom identitu přiřazenou systémem, tento kr
 
 ### <a name="2-enable-identity-on-an-acr-task"></a>2. povolení identity v úloze ACR
 
-Když vytvoříte úlohu ACR, můžete volitelně povolit uživatelsky přiřazenou identitu, identitu přiřazenou systémem nebo obojí. Například `--assign-identity` parametr předejte při spuštění příkazu [AZ ACR Task Create][az-acr-task-create] v Azure CLI.
+Když vytvoříte úlohu ACR, můžete volitelně povolit uživatelsky přiřazenou identitu, identitu přiřazenou systémem nebo obojí. Například parametr předejte `--assign-identity` při spuštění příkazu [AZ ACR Task Create][az-acr-task-create] v Azure CLI.
 
-Pokud chcete povolit identitu přiřazenou systémem, předejte `--assign-identity` bez hodnoty nebo `assign-identity [system]`. Následující příklad příkazu vytvoří úlohu pro Linux z veřejného úložiště GitHub, které vytvoří `hello-world` bitovou kopii a povolí spravovanou identitu přiřazenou systémem:
+Pokud chcete povolit identitu přiřazenou systémem, předejte `--assign-identity` bez hodnoty nebo `assign-identity [system]` . Následující příklad příkazu vytvoří úlohu pro Linux z veřejného úložiště GitHub, které vytvoří `hello-world` bitovou kopii a povolí spravovanou identitu přiřazenou systémem:
 
 ```azurecli
 az acr task create \
@@ -64,7 +63,7 @@ az acr task create \
     --assign-identity
 ```
 
-Pokud chcete povolit uživatelsky přiřazenou identitu, `--assign-identity` předejte jí hodnotu *ID prostředku* identity. Následující příklad příkazu vytvoří úlohu pro Linux z veřejného úložiště GitHub, které vytvoří `hello-world` image a umožní uživateli přiřazenou spravovanou identitu:
+Pokud chcete povolit uživatelsky přiřazenou identitu, předejte jí `--assign-identity` hodnotu *ID prostředku* identity. Následující příklad příkazu vytvoří úlohu pro Linux z veřejného úložiště GitHub, které vytvoří `hello-world` image a umožní uživateli přiřazenou spravovanou identitu:
 
 ```azurecli
 az acr task create \
@@ -84,7 +83,7 @@ ID prostředku identity můžete získat spuštěním příkazu [AZ identity sho
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. udělte identitám oprávnění k přístupu k dalším prostředkům Azure.
 
-V závislosti na požadavcích úlohy udělte oprávnění identitě přístup k dalším prostředkům Azure. Příklady obsahují:
+V závislosti na požadavcích úlohy udělte oprávnění identitě přístup k dalším prostředkům Azure. Mezi příklady patří:
 
 * Přiřaďte spravované identitě roli s oprávněním Pull, push a pull nebo jinými oprávněními k cílovému registru kontejneru v Azure. Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md). 
 * Přiřaďte roli spravované identity pro čtení tajných klíčů v trezoru klíčů Azure.
@@ -103,9 +102,9 @@ az role assignment create \
 
 ### <a name="4-optional-add-credentials-to-the-task"></a>4. (volitelné) přidejte k úloze přihlašovací údaje.
 
-Pokud úloha potřebuje přihlašovací údaje pro vyžádání nebo vložení imagí do jiného vlastního registru nebo pro přístup k jiným prostředkům, přidejte k úloze přihlašovací údaje. Spuštěním příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje a předejte `--use-identity` parametr, aby označoval, že identita má přístup k přihlašovacím údajům. 
+Pokud úloha potřebuje přihlašovací údaje pro vyžádání nebo vložení imagí do jiného vlastního registru nebo pro přístup k jiným prostředkům, přidejte k úloze přihlašovací údaje. Spuštěním příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje a předejte parametr, `--use-identity` aby označoval, že identita má přístup k přihlašovacím údajům. 
 
-Pokud například chcete přidat přihlašovací údaje pro identitu přiřazenou systémem k ověřování pomocí služby Azure Container Registry *targetregistry*, předejte `use-identity [system]`:
+Pokud například chcete přidat přihlašovací údaje pro identitu přiřazenou systémem k ověřování pomocí služby Azure Container Registry *targetregistry*, předejte `use-identity [system]` :
 
 ```azurecli
 az acr task credential add \
@@ -125,7 +124,7 @@ az acr task credential add \
     --use-identity <clientID>
 ```
 
-ID klienta identity můžete získat spuštěním příkazu [AZ identity show][az-identity-show] . ID klienta je identifikátor GUID formuláře `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
+ID klienta identity můžete získat spuštěním příkazu [AZ identity show][az-identity-show] . ID klienta je identifikátor GUID formuláře `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .
 
 ### <a name="5-run-the-task"></a>5. Spusťte úlohu.
 

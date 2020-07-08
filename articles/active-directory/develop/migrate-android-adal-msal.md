@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77084049"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Příručka k migraci ADAL do MSAL pro Android
@@ -40,19 +39,19 @@ Podporovaných
 Veřejné rozhraní API MSAL přináší důležité změny, včetně:
 
 - Nový model pro přístup k tokenům:
-  - ADAL poskytuje přístup k tokenům prostřednictvím `AuthenticationContext`, který představuje server. MSAL poskytuje přístup k tokenům prostřednictvím `PublicClientApplication`, který představuje klienta. Vývojáři klientů nepotřebují vytvářet novou `PublicClientApplication` instanci pro všechny autority, se kterými potřebují pracovat. Vyžaduje se `PublicClientApplication` jenom jedna konfigurace.
+  - ADAL poskytuje přístup k tokenům prostřednictvím `AuthenticationContext` , který představuje server. MSAL poskytuje přístup k tokenům prostřednictvím `PublicClientApplication` , který představuje klienta. Vývojáři klientů nepotřebují vytvářet novou `PublicClientApplication` instanci pro všechny autority, se kterými potřebují pracovat. `PublicClientApplication`Vyžaduje se jenom jedna konfigurace.
   - Podpora pro vyžádání přístupových tokenů pomocí oborů Kromě identifikátorů prostředků.
   - Podpora pro přírůstkové vyjádření souhlasu. Vývojáři můžou vyžádat obory, protože uživatel přistupuje k více a více funkcím aplikace, včetně těch, které nejsou zahrnuté při registraci aplikace.
   - Po dobu běhu již nejsou ověřeny autority. Místo toho vývojář deklaruje seznam známých autorit během vývoje.
 - Změny rozhraní API tokenu:
-  - V ADAL `AcquireToken()` nejprve vytvoří tichý požadavek. V takovém případě se to provede interaktivním požadavkem. Výsledkem tohoto chování je, že někteří vývojáři se spoléhají jenom `AcquireToken`na, což by způsobilo, že se uživatel neočekávaně vyzve k zadání přihlašovacích údajů. MSAL vyžaduje, aby vývojáři byli úmyslné, kdy uživatel obdrží výzvu k zadání uživatelského rozhraní.
+  - V ADAL `AcquireToken()` nejprve vytvoří tichý požadavek. V takovém případě se to provede interaktivním požadavkem. Výsledkem tohoto chování je, že někteří vývojáři se spoléhají jenom na `AcquireToken` , což by způsobilo, že se uživatel neočekávaně vyzve k zadání přihlašovacích údajů. MSAL vyžaduje, aby vývojáři byli úmyslné, kdy uživatel obdrží výzvu k zadání uživatelského rozhraní.
     - `AcquireTokenSilent`vždy má za následek tichou žádost, která se buď zdaří, nebo selže.
     - `AcquireToken`vždy má za následek požadavek, který vyzývá uživatele prostřednictvím uživatelského rozhraní.
 - MSAL podporuje přihlášení buď z výchozího prohlížeče, nebo z vloženého webového zobrazení:
   - Ve výchozím nastavení se použije výchozí prohlížeč v zařízení. Díky tomu může MSAL používat stav ověřování (soubory cookie), které už mohou být k dispozici pro jeden nebo více přihlášených účtů. Pokud není k dispozici žádný stav ověřování, ověřování během autorizace prostřednictvím MSAL má za následek vytvoření stavu ověřování (cookies) pro výhody dalších webových aplikací, které budou použity ve stejném prohlížeči.
 - Nový model výjimky:
   - Výjimky jasně definují typ chyby, ke které došlo, a to, co vývojář potřebuje k vyřešení.
-- MSAL podporuje objekty parametrů pro `AcquireToken` volání `AcquireTokenSilent` a.
+- MSAL podporuje objekty parametrů pro `AcquireToken` `AcquireTokenSilent` volání a.
 - MSAL podporuje deklarativní konfiguraci pro:
   - ID klienta, identifikátor URI přesměrování.
   - Vložený a výchozí prohlížeč
@@ -83,10 +82,10 @@ Správci organizace můžou udělit souhlas s oprávněními, které vaše aplik
 
 ### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>Ověřování a vyžádat autorizaci pro všechna oprávnění při prvním použití
 
-Pokud aktuálně používáte ADAL a nepotřebujete používat přírůstkový souhlas, nejjednodušší způsob, jak začít používat MSAL, je vytvořit `acquireToken` požadavek s použitím nového `AcquireTokenParameter` objektu a nastavením hodnoty ID prostředku.
+Pokud aktuálně používáte ADAL a nepotřebujete používat přírůstkový souhlas, nejjednodušší způsob, jak začít používat MSAL, je vytvořit požadavek s `acquireToken` použitím nového `AcquireTokenParameter` objektu a nastavením hodnoty ID prostředku.
 
 > [!CAUTION]
-> Není možné nastavit oba obory a ID prostředku. Pokus o nastavení obou výsledků bude `IllegalArgumentException`.
+> Není možné nastavit oba obory a ID prostředku. Pokus o nastavení obou výsledků bude `IllegalArgumentException` .
 
  Výsledkem bude stejné chování V1, které jste použili. Všechna oprávnění požadovaná v registraci vaší aplikace jsou během první interakce požadována od uživatele.
 
@@ -108,7 +107,7 @@ Objekt Parameters, který slouží k vytvoření požadavku na MSAL, podporuje:
 
 ### <a name="constructing-publicclientapplication"></a>Sestavování PublicClientApplication
 
-Při použití MSAL se vytváří instance `PublicClientApplication`. Tento objekt modeluje identitu vaší aplikace a slouží k provádění požadavků jednomu nebo více autoritám. Pomocí tohoto objektu nakonfigurujete identitu klienta, identifikátor URI pro přesměrování, výchozí autoritu, jestli se má používat prohlížeč zařízení vs. vložené webové zobrazení, úroveň protokolování a další.
+Při použití MSAL se vytváří instance `PublicClientApplication` . Tento objekt modeluje identitu vaší aplikace a slouží k provádění požadavků jednomu nebo více autoritám. Pomocí tohoto objektu nakonfigurujete identitu klienta, identifikátor URI pro přesměrování, výchozí autoritu, jestli se má používat prohlížeč zařízení vs. vložené webové zobrazení, úroveň protokolování a další.
 
 Můžete deklarativně nakonfigurovat tento objekt pomocí formátu JSON, který můžete buď zadat jako soubor, nebo Uložit jako prostředek v rámci APK.
 
@@ -116,7 +115,7 @@ I když tento objekt není typu Singleton, interně používá sdílené `Execut
 
 ### <a name="business-to-business"></a>Firmy do firmy
 
-V ADAL každá organizace, které požadujete přístupové tokeny, vyžaduje samostatnou instanci `AuthenticationContext`. V MSAL už to není potřeba. Můžete zadat autoritu, ze které chcete požádat o token v rámci vaší tiché nebo interaktivní žádosti.
+V ADAL každá organizace, které požadujete přístupové tokeny, vyžaduje samostatnou instanci `AuthenticationContext` . V MSAL už to není potřeba. Můžete zadat autoritu, ze které chcete požádat o token v rámci vaší tiché nebo interaktivní žádosti.
 
 ### <a name="migrate-from-authority-validation-to-known-authorities"></a>Migrace ověření autority na známé úřady
 
@@ -125,7 +124,7 @@ MSAL nemá příznak pro povolení nebo zakázání ověřování autority. Ově
 > [!TIP]
 > Pokud jste uživatelem Azure Business to Consumer (B2C), znamená to, že už nemusíte ověřování autority vypínat. Místo toho Zahrňte všechny podporované zásady Azure AD B2C jako autority v konfiguraci MSAL.
 
-Pokud se pokusíte použít autoritu, která není známá na Microsoftu, a není zahrnutá do vaší konfigurace, zobrazí se `UnknownAuthorityException`.
+Pokud se pokusíte použít autoritu, která není známá na Microsoftu, a není zahrnutá do vaší konfigurace, zobrazí se `UnknownAuthorityException` .
 
 ### <a name="logging"></a>protokolování
 Nyní můžete v rámci konfigurace deklarativně nakonfigurovat protokolování, například takto:
@@ -140,7 +139,7 @@ Nyní můžete v rámci konfigurace deklarativně nakonfigurovat protokolování
 
 ## <a name="migrate-from-userinfo-to-account"></a>Migrace z UserInfo na účet
 
-V ADAL `AuthenticationResult` poskytuje `UserInfo` objekt, který slouží k načtení informací o ověřeném účtu. Pojem "uživatel", který byl určen jako lidský nebo softwarový agent, byl použit způsobem, který bylo obtížné oznámit, že některé aplikace podporují jediného uživatele (ať už jde o lidského nebo softwarový agent) s více účty.
+V ADAL `AuthenticationResult` poskytuje objekt, který `UserInfo` slouží k načtení informací o ověřeném účtu. Pojem "uživatel", který byl určen jako lidský nebo softwarový agent, byl použit způsobem, který bylo obtížné oznámit, že některé aplikace podporují jediného uživatele (ať už jde o lidského nebo softwarový agent) s více účty.
 
 Uvažujte o bankovním účtu. Můžete mít více než jeden účet ve více než jedné finanční instituci. Po otevření účtu jste vy (uživatel) vystavili přihlašovací údaje, jako je například karta ATM & kód PIN, která se používá pro přístup k vašemu zůstatku, fakturaci a tak dále, pro každý účet. Tyto přihlašovací údaje se dají použít jenom na finanční instituci, která je vystavila.
 
@@ -156,7 +155,7 @@ Po úspěšném `acquireToken` volání se zobrazí odkaz na `IAccount` objekt, 
 
 ### <a name="imultitenantaccount"></a>IMultiTenantAccount
 
-Pokud máte aplikaci, která přistupuje k deklaracím účtu ze všech tenantů, ve kterých je účet zastoupený, můžete objekty přetypovat `IAccount` na. `IMultiTenantAccount` Toto rozhraní poskytuje mapu `ITenantProfiles`podle ID tenanta, která umožňuje přístup k deklaracím, které patří k účtu v každém z klientů, od kterých jste si vyžádali token, vzhledem k aktuálnímu účtu.
+Pokud máte aplikaci, která přistupuje k deklaracím účtu ze všech tenantů, ve kterých je účet zastoupený, můžete `IAccount` objekty přetypovat na `IMultiTenantAccount` . Toto rozhraní poskytuje mapu `ITenantProfiles` podle ID tenanta, která umožňuje přístup k deklaracím, které patří k účtu v každém z klientů, od kterých jste si vyžádali token, vzhledem k aktuálnímu účtu.
 
 Deklarace identity v kořenovém adresáři `IAccount` a `IMultiTenantAccount` vždy obsahují deklarace z domovského tenanta. Pokud jste ještě nevytvořili žádost o token v rámci domovského tenanta, tato kolekce bude prázdná.
 
@@ -235,12 +234,12 @@ public interface SilentAuthenticationCallback {
 
 ## <a name="migrate-to-the-new-exceptions"></a>Migrovat na nové výjimky
 
-V ADAL existuje jeden typ výjimky `AuthenticationException`, která obsahuje metodu pro načtení hodnoty `ADALError` výčtu.
+V ADAL existuje jeden typ výjimky, `AuthenticationException` která obsahuje metodu pro načtení `ADALError` hodnoty výčtu.
 V MSAL existuje hierarchie výjimek a každá má vlastní sadu souvisejících specifických kódů chyb.
 
 Seznam výjimek MSAL
 
-|Výjimka  | Popis  |
+|Výjimka  | Description  |
 |---------|---------|
 | `MsalException`     | Výchozí vyzkoušená výjimka vyvolaná nástrojem MSAL.  |
 | `MsalClientException`     | Vyvolána, pokud se jedná o chybu na straně klienta. |

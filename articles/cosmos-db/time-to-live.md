@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77188719"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Hodnota TTL (Time to Live) ve službě Azure Cosmos DB 
@@ -24,7 +23,7 @@ Odstraněním položek, jejichž platnost vypršela, je úloha na pozadí, kter�
 
 Hodnota TTL (Time to Live) je nastavena v sekundách a je interpretována jako rozdíl od doby poslední změny položky. Můžete nastavit hodnotu TTL (Time to Live) pro kontejner nebo položku v rámci kontejneru:
 
-1. **Doba do provozu v kontejneru** (nastavení pomocí `DefaultTimeToLive`):
+1. **Doba do provozu v kontejneru** (nastavení pomocí `DefaultTimeToLive` ):
 
    - Pokud chybí (nebo je nastavené na hodnotu null), položky se automaticky nevyprší.
 
@@ -32,11 +31,11 @@ Hodnota TTL (Time to Live) je nastavena v sekundách a je interpretována jako r
 
    - Pokud je tato hodnota nastavená na nějaké číslo *"n"* , vyprší *"n"* sekund po datu poslední změny.
 
-2. **Doba, po kterou se má položka** (nastavit `ttl`pomocí) na živé:
+2. **Doba, po kterou se má položka** (nastavit pomocí) na živé `ttl` :
 
-   - Tato vlastnost je platná pouze v `DefaultTimeToLive` případě, že je k dispozici a není pro nadřazený kontejner nastavena na hodnotu null.
+   - Tato vlastnost je platná pouze v případě, že `DefaultTimeToLive` je k dispozici a není pro nadřazený kontejner nastavena na hodnotu null.
 
-   - Je-li k dispozici `DefaultTimeToLive` , Přepisuje hodnotu nadřazeného kontejneru.
+   - Je-li k dispozici, Přepisuje `DefaultTimeToLive` hodnotu nadřazeného kontejneru.
 
 ## <a name="time-to-live-configurations"></a>Doba do živých konfigurací
 

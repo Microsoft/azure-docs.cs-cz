@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 353da826b6e339d40a5d85bbf63caac5bf7094f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061349"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Kurz: Konfigurace myPolicies pro Automatické zřizování uživatelů
@@ -56,7 +55,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Před konfigurací myPolicies pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na myPolicies.
 
-1. Kontaktujte svého zástupce **support@mypolicies.com** myPolicies a získejte tajný token potřebný ke konfiguraci zřizování SCIM.
+1. Kontaktujte svého zástupce myPolicies a **support@mypolicies.com** Získejte tajný token potřebný ke konfiguraci zřizování SCIM.
 
 2.  Uložte hodnotu tokenu poskytnutou myPolicies zástupcem. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace myPolicies ve Azure Portal.
 
@@ -91,7 +90,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro myPolicies ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -108,7 +107,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
     ![Karta zřizování](common/provisioning-automatic.png)
 
 5. V části **přihlašovací údaje správce** zadejte `https://<myPoliciesCustomDomain>.mypolicies.com/scim` **adresu URL tenanta** , kde `<myPoliciesCustomDomain>` se nachází vaše myPolicies vlastní doména. Z adresy URL můžete načíst svoji doménu zákazníka myPolicies.
-Příklad: `<demo0-qa>`. mypolicies.com.
+Příklad: `<demo0-qa>` . mypolicies.com.
 
 6. V části **tajný token**zadejte hodnotu tokenu, která byla načtena dříve. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k myPolicies. Pokud se připojení nepovede, ujistěte se, že má váš účet myPolicies oprávnění správce, a zkuste to znovu.
 

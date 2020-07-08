@@ -4,10 +4,9 @@ description: Naučte se připojit svazek emptyDir ke sdílení dat mezi kontejne
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77117752"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Připojení svazku emptyDir v Azure Container Instances
@@ -35,7 +34,7 @@ Maximální velikost svazku *emptyDir* pro Linux je 50 GB.
 
 Pokud chcete připojit svazek emptyDir v instanci kontejneru, můžete nasadit pomocí [šablony Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups), [souboru YAML](container-instances-reference-yaml.md)nebo jiné programové metody pro nasazení skupiny kontejnerů.
 
-Nejprve naplňte `volumes` pole do části skupina `properties` kontejnerů v souboru. Dále pro každý kontejner ve skupině kontejnerů, do kterého chcete připojit svazek *emptyDir* , vyplňte `volumeMounts` pole v `properties` části definice kontejneru.
+Nejprve naplňte `volumes` pole do části Skupina kontejnerů v `properties` souboru. Dále pro každý kontejner ve skupině kontejnerů, do kterého chcete připojit svazek *emptyDir* , vyplňte `volumeMounts` pole v `properties` části definice kontejneru.
 
 Například následující šablona Správce prostředků vytvoří skupinu kontejnerů skládající se ze dvou kontejnerů, z nichž každý je připojen ke svazku *emptyDir* :
 

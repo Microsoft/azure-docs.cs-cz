@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064287"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Kurz: Konfigurace StarLeaf pro Automatické zřizování uživatelů
@@ -54,7 +53,7 @@ Než nakonfigurujete a povolíte automatické zřizování uživatelů, měli by
 
 Před konfigurací StarLeaf pro Automatické zřizování uživatelů pomocí Azure AD budete muset nakonfigurovat zřizování SCIM v StarLeaf:
 
-1. Přihlaste se ke [konzole pro správu StarLeaf](https://portal.starleaf.com/#page=login). Přejděte k **integraci** > **Přidat integraci**.
+1. Přihlaste se ke [konzole pro správu StarLeaf](https://portal.starleaf.com/#page=login). Přejděte k **integraci**  >  **Přidat integraci**.
 
     ![StarLeaf přidat SCIM](media/starleaf-provisioning-tutorial/image00.png)
 
@@ -91,7 +90,7 @@ Pokud chcete nakonfigurovat StarLeaf pro Automatické zřizování uživatelů p
 
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v StarLeaf na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

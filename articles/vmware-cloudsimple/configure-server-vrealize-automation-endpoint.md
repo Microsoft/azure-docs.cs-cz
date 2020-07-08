@@ -9,17 +9,16 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024836"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>Nastavení vCenter v privátním cloudu pro automatizaci VMware vRealize
 
 VMware vCenter Server můžete nastavit na privátním cloudu CloudSimple jako koncový bod pro automatizaci VMware vRealize.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před konfigurací serveru vCenter proveďte tyto úlohy:
 
@@ -38,7 +37,7 @@ Před konfigurací serveru vCenter proveďte tyto úlohy:
 | Prostředek | Přiřazení virtuálního počítače ke fondu zdrojů<br>Migrace vypnutého virtuálního počítače<br>Migrace zapnutá na virtuálním počítači |
 | Inventář virtuálních počítačů |  Vytvořit z existujících<br>Vytvořit nové<br>Přesunout<br>Odebrat | 
 | Interakce virtuálního počítače |  Konfigurace média CD<br>Interakce konzoly<br>Připojení zařízení<br>Vypnutí napájení<br>Zapnout<br>Resetovat<br>Suspend<br>Instalace nástrojů | 
-| Konfigurace virtuálního počítače |  Přidat existující disk<br>Přidat nový disk<br>Přidat nebo odebrat<br>Odebrat disk<br>Upřesnit<br>Změna počtu PROCESORů<br>Změnit prostředek<br>Zvětšit virtuální disk<br>Change Tracking disku<br>Memory (Paměť)<br>Úprava nastavení zařízení<br>přejmenování<br>Nastavit poznámku (verze 5,0 a novější)<br>Nastavení<br>Umístění swapfile |
+| Konfigurace virtuálního počítače |  Přidat existující disk<br>Přidat nový disk<br>Přidat nebo odebrat<br>Odebrat disk<br>Pokročilý<br>Změna počtu PROCESORů<br>Změnit prostředek<br>Zvětšit virtuální disk<br>Change Tracking disku<br>Memory (Paměť)<br>Úprava nastavení zařízení<br>přejmenování<br>Nastavit poznámku (verze 5,0 a novější)<br>Nastavení<br>Umístění swapfile |
 | Zřizování |  Přizpůsobení<br>Klonovat šablonu<br>Klonovat virtuální počítač<br>Nasazení šablony<br>Číst specifikace přizpůsobení |
 | Stav virtuálního počítače | Vytvořit snímek<br>Odebrat snímek<br>Vrátit se ke snímku |
 
@@ -48,14 +47,14 @@ Před konfigurací serveru vCenter proveďte tyto úlohy:
 2. Nasaďte agenta vSphere pro koncový bod služby vRealize Automation.
     1. Přejděte na adresu https://*vra-URL*: 5480/instalační program, kde *vra-URL* je adresa URL, kterou používáte pro přístup k uživatelskému rozhraní správy automatizace vRealize.
     2. Kliknutím na **instalační program IaaS** Stáhněte instalační program.<br>
-    Konvence pojmenování pro instalační soubor je setup_*vra-URL*@5480.exe.
+    Konvence pojmenování pro instalační soubor je setup_*vra-URL* @5480.exe .
     3. Spusťte instalační program. Na obrazovce Vítejte klikněte na **Další**.
     4. Přijměte smlouvu EULA a klikněte na tlačítko **Další**.
     5. Zadejte přihlašovací údaje, klikněte na **přijmout certifikát**a pak klikněte na **Další**.
     ![přihlašovací údaje vRA](media/configure-vra-endpoint-login.png)
     6. Vyberte **vlastní instalace** a **proxy agenti** a klikněte na **Další**.
     ![typ instalace vRA](media/configure-vra-endpoint-install-type.png)
-    7. Zadejte přihlašovací údaje serveru IaaS a klikněte na **Další**. Pokud používáte službu Active Directory, zadejte uživatelské jméno ve formátu **doména \ uživatel** . V opačném **user@domain** případě použijte formát.
+    7. Zadejte přihlašovací údaje serveru IaaS a klikněte na **Další**. Pokud používáte službu Active Directory, zadejte uživatelské jméno ve formátu **doména \ uživatel** . V opačném případě použijte **user@domain** formát.
     ![informace o přihlášení vRA](media/configure-vra-endpoint-account.png)
     8. Jako nastavení proxy zadejte **vSphere** pro **typ agenta**. Zadejte název agenta.
     9. Do polí hostitel **služby správce** a **hostitele webové služby správce modelů** zadejte plně kvalifikovaný název domény IaaS serveru. Kliknutím na **test** otestujte připojení pro každou z hodnot plně kvalifikovaného názvu domény. Pokud se test nezdařil, upravte nastavení DNS tak, aby byl název hostitele serveru IaaS vyřešený.
@@ -69,8 +68,8 @@ Před konfigurací serveru vCenter proveďte tyto úlohy:
 ## <a name="configure-the-vsphere-agent"></a>Konfigurace agenta vSphere
 
 1. Přejít na https://*vra-URL*/vcac a přihlaste se jako **ConfigurationAdmin**.
-2. Vyberte**koncové**body pro**koncové body** >  **infrastruktury** > .
-3. Vyberte **Nový** > **Virtual** > **vSphere**.
+2. Vyberte koncové body pro koncové body **infrastruktury**  >  **Endpoints**  >  **Endpoints**.
+3. Vyberte **Nový**  >  **Virtual**  >  **vSphere**.
 4. Zadejte název koncového bodu vSphere, který jste zadali v předchozím postupu.
 5. V poli **adresa**zadejte adresu URL privátního cloudu vCenter Server ve formátu https://*vCenter – FQDN*/SDK, kde *vCenter-FQDN* je název vCenter serveru.
 6. Zadejte přihlašovací údaje pro uživatele s právy pro správu vRealize Automation IaaS, kterého vám CloudSimple podpora vytvořila.

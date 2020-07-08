@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064117"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Kurz: Konfigurace VELPIC pro Automatické zřizování uživatelů
@@ -71,7 +70,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
     ![Zřizování VELPIC](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta&tajného tokenu** VELPIC. (Tyto hodnoty najdete pod účtem VELPIC: **Správa** > **SCIM****modulu plug-in** > pro**integraci** > )
+5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta&tajného tokenu** VELPIC. (Tyto hodnoty najdete pod účtem VELPIC: **Správa**  >  **Integrace**  >  **Modul plug-in**  >  **SCIM**)
 
     ![Autorizační hodnoty](./media/velpic-provisioning-tutorial/Velpic2.png)
 

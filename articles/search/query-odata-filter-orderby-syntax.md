@@ -20,13 +20,12 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77153872"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData pro `$filter`, `$orderby`a `$select` v Azure kognitivní hledání
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData pro `$filter` , `$orderby` a `$select` v Azure kognitivní hledání
 
 Azure Kognitivní hledání podporuje podmnožinu Syntaxe výrazů OData pro výrazy **$Filter**, **$OrderBy**a **$Select** . Výrazy filtru jsou vyhodnocovány během analýzy dotazů, omezení vyhledávání na konkrétní pole nebo přidání kritérií shody používaných při prohledávání indexů. Výrazy ORDER by se používají jako krok po zpracování v rámci sady výsledků dotazu pro řazení vrácených dokumentů. Výrazy pro výběr určují, která pole dokumentu jsou zahrnutá v sadě výsledků. Syntaxe těchto výrazů je odlišná od syntaxe [jednoduchého](query-simple-syntax.md) nebo [úplného](query-lucene-syntax.md) dotazu, která se používá v parametru **vyhledávání** , i když je v syntaxi pro odkazování polí nějaký překryv.
 
@@ -66,26 +65,26 @@ K dispozici je také diagram interaktivní syntaxe:
 
 Cesta pole se skládá z jednoho nebo více **identifikátorů** oddělených lomítky. Každý identifikátor je posloupnost znaků, které musí začínat písmenem nebo podtržítkem, a obsahovat pouze písmena ASCII, číslice nebo podtržítka. Písmena můžou být velká nebo malá.
 
-Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsahu** v kontextu [výrazu kolekce](search-query-odata-collection-operators.md) (`any` nebo `all`) ve filtru. Proměnná rozsahu je jako proměnná smyčky, která představuje aktuální prvek kolekce. U komplexních kolekcí Tato proměnná představuje objekt, což je důvod, proč můžete použít cesty polí pro odkazování na dílčí pole proměnné. To je obdobou zápisu teček v mnoha programovacích jazycích.
+Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsahu** v kontextu [výrazu kolekce](search-query-odata-collection-operators.md) ( `any` nebo `all` ) ve filtru. Proměnná rozsahu je jako proměnná smyčky, která představuje aktuální prvek kolekce. U komplexních kolekcí Tato proměnná představuje objekt, což je důvod, proč můžete použít cesty polí pro odkazování na dílčí pole proměnné. To je obdobou zápisu teček v mnoha programovacích jazycích.
 
 Příklady cest polí jsou uvedené v následující tabulce:
 
-| Cesta k poli | Popis |
+| Cesta k poli | Description |
 | --- | --- |
 | `HotelName` | Odkazuje na pole nejvyšší úrovně indexu. |
-| `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu. `Address` je typu `Edm.ComplexType` v tomto příkladu |
-| `Rooms/Type` | Odkazuje na `Type` dílčí pole komplexní kolekce pole v indexu. `Rooms` je typu `Collection(Edm.ComplexType)` v tomto příkladu |
-| `Stores/Address/Country` | Odkazuje na `Country` dílčí pole `Address` dílčího pole komplexní kolekce v indexu. `Stores` je typu `Collection(Edm.ComplexType)` a `Address` je v tomto příkladu `Edm.ComplexType` typu |
-| `room/Type` | Odkazuje na `Type` dílčí pole proměnné `room` rozsahu, například ve výrazu filtru.`Rooms/any(room: room/Type eq 'deluxe')` |
-| `store/Address/Country` | Odkazuje na `Country` dílčí pole `Address` dílčího pole proměnné `store` rozsahu, například ve výrazu filtru.`Stores/any(store: store/Address/Country eq 'Canada')` |
+| `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu; `Address` je typu `Edm.ComplexType` v tomto příkladu. |
+| `Rooms/Type` | Odkazuje na `Type` dílčí pole komplexní kolekce pole v indexu; `Rooms` je typu `Collection(Edm.ComplexType)` v tomto příkladu. |
+| `Stores/Address/Country` | Odkazuje na `Country` dílčí pole `Address` v dílčím poli komplexní kolekce v indexu, `Stores` je typu `Collection(Edm.ComplexType)` a `Address` je typu `Edm.ComplexType` v tomto příkladu. |
+| `room/Type` | Odkazuje na `Type` dílčí pole `room` proměnné rozsahu, například ve výrazu filtru.`Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | Odkazuje na `Country` dílčí pole `Address` dílčího pole `store` proměnné rozsahu, například ve výrazu filtru.`Stores/any(store: store/Address/Country eq 'Canada')` |
 
 Význam cesty k poli se liší v závislosti na kontextu. Ve filtrech odkazuje cesta pole na hodnotu *jedné instance* pole v aktuálním dokumentu. V jiných kontextech, jako je například **$OrderBy**, **$Select**nebo v [poli hledání v úplné syntaxi Lucene](query-lucene-syntax.md#bkmk_fields), odkazuje cesta pole na pole samotné. Tento rozdíl má některé důsledky pro použití cest polí ve filtrech.
 
-Vezměte v úvahu cestu `Address/City`k poli. Ve filtru to odkazuje na jedno město pro aktuální dokument, jako je například "San Francisco". Naopak `Rooms/Type` odkazuje na `Type` dílčí pole pro mnoho místností (například "Standard" pro první místnost, "Deluxe" pro druhou místnost atd.). Vzhledem `Rooms/Type` k tomu, že neodkazuje na *jednu instanci* dílčího pole `Type`, nelze ji použít přímo ve filtru. Místo toho byste měli použít [výraz lambda](search-query-odata-collection-operators.md) s proměnnou rozsahu, jako je například:
+Vezměte v úvahu cestu k poli `Address/City` . Ve filtru to odkazuje na jedno město pro aktuální dokument, jako je například "San Francisco". Naopak `Rooms/Type` odkazuje na `Type` dílčí pole pro mnoho místností (například "Standard" pro první místnost, "Deluxe" pro druhou místnost atd.). Vzhledem `Rooms/Type` k tomu, že neodkazuje na *jednu instanci* dílčího pole `Type` , nelze ji použít přímo ve filtru. Místo toho byste měli použít [výraz lambda](search-query-odata-collection-operators.md) s proměnnou rozsahu, jako je například:
 
     Rooms/any(room: room/Type eq 'deluxe')
 
-V tomto příkladu se proměnná `room` rozsahu zobrazuje v cestě k `room/Type` poli. Tímto způsobem `room/Type` odkazuje na typ aktuální místnosti v aktuálním dokumentu. Toto je jediná instance `Type` dílčího pole, takže ji můžete použít přímo ve filtru.
+V tomto příkladu se proměnná rozsahu `room` zobrazuje v cestě k `room/Type` poli. Tímto způsobem `room/Type` odkazuje na typ aktuální místnosti v aktuálním dokumentu. Toto je jediná instance `Type` dílčího pole, takže ji můžete použít přímo ve filtru.
 
 ### <a name="using-field-paths"></a>Použití cest polí
 
@@ -96,10 +95,10 @@ Cesty polí se používají v mnoha parametrech [rozhraní REST API služby Azur
 | [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `suggesters/sourceFields` | Žádná |
 | [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/text/weights` | Lze odkazovat pouze na pole s **možností prohledávání** . |
 | [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/functions/fieldName` | Lze odkazovat pouze na pole, která lze **filtrovat** . |
-| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`Kdy `queryType` je`full` | Lze odkazovat pouze na pole s **možností prohledávání** . |
-| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Lze odkazovat pouze na pole **obličeje** . |
-| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Lze odkazovat pouze na pole s **možností prohledávání** . |
-| [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Lze odkazovat pouze na pole s **možností prohledávání** . |
+| [Vyhledávání](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`Kdy `queryType` je`full` | Lze odkazovat pouze na pole s **možností prohledávání** . |
+| [Vyhledávání](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Lze odkazovat pouze na pole **obličeje** . |
+| [Vyhledávání](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Lze odkazovat pouze na pole s **možností prohledávání** . |
+| [Vyhledávání](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Lze odkazovat pouze na pole s **možností prohledávání** . |
 | [Navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) a automaticky [dokončovat](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Může odkazovat jenom na pole, která jsou součástí modulu pro [návrhy](index-add-suggesters.md) . |
 | [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Návrh](https://docs.microsoft.com/rest/api/searchservice/suggestions)a [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Lze odkazovat pouze na pole, která lze **filtrovat** . |
 | [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) a [navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Lze odkazovat pouze na pole, která lze **Seřadit** . |
@@ -126,7 +125,7 @@ V následující tabulce jsou uvedeny příklady konstant pro každý datový ty
 
 Řetězcové konstanty v OData jsou oddělené jednoduchými uvozovkami. Pokud potřebujete sestavit dotaz s řetězcovou konstantou, která by mohla obsahovat jednoduché uvozovky, můžete vložit vložené uvozovky pomocí zdvojnásobení.
 
-Například fráze s neformátovaným apostrofem, jako je Alice auto, by byla vyjádřena v OData jako řetězcová konstanta `'Alice''s car'`.
+Například fráze s neformátovaným apostrofem, jako je Alice auto, by byla vyjádřena v OData jako řetězcová konstanta `'Alice''s car'` .
 
 > [!IMPORTANT]
 > Při sestavování filtrů programově je důležité pamatovat na řídicí konstanty řetězce, které pocházejí ze vstupu uživatele. Účelem je zmírnit možnost [útoků prostřednictvím injektáže](https://wikipedia.org/wiki/SQL_injection), zejména při použití filtrů k implementaci [oříznutí zabezpečení](search-security-trimming-for-azure-search.md).
@@ -229,7 +228,7 @@ K dispozici je také diagram interaktivní syntaxe:
 > [!NOTE]
 > Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
 
-Parametry **$OrderBy** a **$Select** jsou čárkami oddělený seznam jednodušších výrazů. Parametr **$Filter** je logický výraz, který se skládá z jednodušších dílčích výrazů. Tyto dílčí výrazy jsou kombinovány pomocí logických operátorů [ `and`, `or`jako jsou `not`, a ](search-query-odata-logical-operators.md), operátory porovnání, jako [ `eq`jsou `lt`, `gt`, a tak](search-query-odata-comparison-operators.md)dále, a operátory kolekce, jako jsou [ `any` a `all` ](search-query-odata-collection-operators.md).
+Parametry **$OrderBy** a **$Select** jsou čárkami oddělený seznam jednodušších výrazů. Parametr **$Filter** je logický výraz, který se skládá z jednodušších dílčích výrazů. Tyto dílčí výrazy jsou kombinovány pomocí logických operátorů, jako jsou [ `and` , `or` a `not` ](search-query-odata-logical-operators.md), operátory porovnání, jako [ `eq` jsou,, `lt` `gt` a tak](search-query-odata-comparison-operators.md)dále, a operátory kolekce, jako jsou [ `any` a `all` ](search-query-odata-collection-operators.md).
 
 Parametry **$Filter**, **$OrderBy**a **$Select** jsou podrobněji prozkoumání v následujících článcích:
 

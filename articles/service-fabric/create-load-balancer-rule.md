@@ -4,10 +4,9 @@ description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluste
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025380"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric
@@ -21,7 +20,7 @@ Když nasadíte Cluster Service Fabric do Azure, automaticky se pro vás vytvoř
 
 ## <a name="configure-service-fabric"></a>Konfigurace Service Fabric
 
-Konfigurační soubor **ServiceManifest. XML** aplikace Service Fabric definuje koncové body, které vaše aplikace očekává použít. Po aktualizaci konfiguračního souboru pro definování koncového bodu musí být Nástroj pro vyrovnávání zatížení aktualizovaný, aby vystavil tento port (nebo jiný). Další informace o tom, jak vytvořit koncový bod Service Fabric, najdete v tématu [Nastavení koncového bodu](service-fabric-service-manifest-resources.md).
+Konfigurační soubor **ServiceManifest.xml** aplikace Service Fabric definuje koncové body, které vaše aplikace očekává použít. Po aktualizaci konfiguračního souboru pro definování koncového bodu musí být Nástroj pro vyrovnávání zatížení aktualizovaný, aby vystavil tento port (nebo jiný). Další informace o tom, jak vytvořit koncový bod Service Fabric, najdete v tématu [Nastavení koncového bodu](service-fabric-service-manifest-resources.md).
 
 ## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
@@ -93,7 +92,7 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-V `New-AzLoadBalancerRuleConfig` `-FrontendPort` souvislosti s příkazem představuje port, který nástroj pro vyrovnávání zatížení zveřejňuje pro externí připojení `-BackendPort` , a představuje port, na který aplikace Service Fabric naslouchá.
+V souvislosti s `New-AzLoadBalancerRuleConfig` příkazem představuje port, který nástroj `-FrontendPort` pro vyrovnávání zatížení zveřejňuje pro externí připojení, a `-BackendPort` představuje port, na který aplikace Service Fabric naslouchá.
 
 >[!NOTE]
 >Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí PowerShellu, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí PowerShellu](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).

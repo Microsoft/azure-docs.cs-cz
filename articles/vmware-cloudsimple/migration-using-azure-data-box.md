@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019753"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Migrace dat do řešení Azure VMware pomocí Azure Data Box
@@ -38,7 +37,7 @@ Pro migraci hromadných dat použijte Data Box v následujících scénářích:
 * K migraci dat virtuálního počítače pro nastavení vývojových a testovacích prostředí.
 * K migraci velkého počtu šablon virtuálních počítačů, souborů ISO a disků virtuálních počítačů.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Ověřte požadavky a [data box objednávek](../databox/data-box-deploy-ordered.md) prostřednictvím Azure Portal. Během procesu objednávky musíte vybrat účet úložiště, který povoluje úložiště objektů BLOB. Jakmile obdržíte zařízení Data Box, připojte ho k místní síti a [nastavte zařízení](../databox/data-box-deploy-set-up.md) na IP adresu, která je dosažitelná ze sítě pro správu vSphere.
 
@@ -133,7 +132,7 @@ Virtuální počítač se migruje do úložiště dat NFS z Data Box. Po migraci
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Naklonování virtuálního počítače nebo šablony virtuálního počítače do úložiště dat Data Box
 
-1. Klikněte pravým tlačítkem na virtuální počítač nebo na šablonu virtuálního počítače, kterou chcete klonovat. Vyberte **klonovat** > **klon na virtuálním počítači**.
+1. Klikněte pravým tlačítkem na virtuální počítač nebo na šablonu virtuálního počítače, kterou chcete klonovat. Vyberte **klonovat**  >  **klon na virtuálním počítači**.
 
     ![Klon virtuálního počítače](media/databox-migration-vm-clone.png)
 
@@ -227,12 +226,12 @@ Nejdřív zkopírujte data služby Blob Storage na spravovaný disk na virtuáln
 
 4. Nainstalujte [AzCopy na virtuální počítač se systémem Linux](../storage/common/storage-use-azcopy-v10.md).
 
-5. Stáhněte si data z úložiště objektů BLOB v Azure na spravovaný disk pomocí AzCopy.  Syntaxe příkazu: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`.  Nahraďte `<storage-account-name>` názvem účtu služby Azure Storage a `<container-name>` kontejnerem, který obsahuje data zkopírovaná pomocí data box.
+5. Stáhněte si data z úložiště objektů BLOB v Azure na spravovaný disk pomocí AzCopy.  Syntaxe příkazu: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"` .  Nahraďte `<storage-account-name>` názvem účtu služby Azure Storage a `<container-name>` kontejnerem, který obsahuje data zkopírovaná pomocí data box.
 
 6. Instalace serveru NFS na virtuálním počítači se systémem Linux:
 
-    - Při distribuci Ubuntu/Debian: `sudo apt install nfs-kernel-server`.
-    - Na distribuci Enterprise Linux: `sudo yum install nfs-utils`.
+    - Při distribuci Ubuntu/Debian: `sudo apt install nfs-kernel-server` .
+    - Na distribuci Enterprise Linux: `sudo yum install nfs-utils` .
 
 7. Změňte oprávnění složky na spravovaném disku, kde se zkopírovala data z úložiště objektů BLOB v Azure.  Změňte oprávnění pro všechny složky, které chcete exportovat jako sdílenou složku NFS.
 
@@ -241,7 +240,7 @@ Nejdřív zkopírujte data služby Blob Storage na spravovaný disk na virtuáln
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. Úpravou `/etc/exports` souboru přiřaďte oprávnění pro IP adresy klientů pro přístup ke sdílené složce systému souborů NFS.
+8. Úpravou souboru přiřaďte oprávnění pro IP adresy klientů pro přístup ke sdílené složce systému souborů NFS `/etc/exports` .
 
     ```bash
     sudo vi /etc/exports

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77121714"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
@@ -42,7 +41,7 @@ Další informace najdete na stránce věnované [smlouvě SLA Azure DNS](https:
 
 Doména je jedinečný název v systému DNS (Domain Name System). Příklad: contoso.com.
 
-K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Tyto záznamy můžou zahrnovat mail.contoso.com pro poštovní server a webové\.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
+K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Tyto záznamy můžou zahrnovat mail.contoso.com pro poštovní server a webové \. contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
 
 Název domény je *jenom název*. Zóna DNS je datový prostředek, který obsahuje záznamy DNS pro název domény. Azure DNS můžete použít k hostování zóny DNS a správě záznamů DNS pro doménu v Azure. Poskytuje taky názvové servery DNS pro zodpovězení dotazů DNS z Internetu.
 
@@ -96,7 +95,7 @@ Ano. Azure DNS podporuje sadu rozšířených kódování ASCII pro sady záznam
 
 Jako hodnotu pro záznam TXT můžete zadat například řetězec, který má rozšířený znak ASCII \ 128. Příkladem je "abcd\128efgh." Azure DNS používá hodnotu bajtu tohoto znaku, který je 128 v interní reprezentaci. V době překladu DNS se tato bajtová hodnota vrátí v odpovědi. Všimněte si také, že "ABC" a "\ 097 \ 098 \ 099" jsou zaměnitelné, pokud jde o řešení. 
 
-Pro záznamy TXT dodržujeme pravidla řídicího vzoru souboru zóny [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) . Například `\` nyní ve skutečnosti řídí vše na základě RFC. Pokud zadáte `A\B` jako hodnotu záznamu TXT, bude reprezentována a vyřešena stejně `AB`. Pokud opravdu chcete, aby měl `A\B` záznam TXT na rozlišení, je nutné `\` znovu spustit řídicí znak. Jako příklad zadejte `A\\B`.
+Pro záznamy TXT dodržujeme pravidla řídicího vzoru souboru zóny [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) . Například `\` nyní ve skutečnosti řídí vše na základě RFC. Pokud zadáte `A\B` jako hodnotu záznamu TXT, bude reprezentována a vyřešena stejně `AB` . Pokud opravdu chcete, aby měl záznam TXT `A\B` na rozlišení, je nutné znovu spustit řídicí znak `\` . Jako příklad zadejte `A\\B` .
 
 Tato podpora není aktuálně k dispozici pro záznamy TXT vytvořené z Azure Portal.
 

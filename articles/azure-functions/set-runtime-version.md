@@ -4,10 +4,9 @@ description: Azure Functions podporuje více verzí modulu runtime. Naučte se, 
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77151951"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak cílit na verze modulu runtime Azure Functions
@@ -16,14 +15,14 @@ Aplikace Function App běží na konkrétní verzi Azure Functions runtime. Exis
 
 ## <a name="automatic-and-manual-version-updates"></a>Automatické a ruční aktualizace verze
 
-Azure Functions umožňuje cílit na konkrétní verzi modulu runtime pomocí nastavení `FUNCTIONS_EXTENSION_VERSION` aplikace ve Function App. Aplikace Function App je udržována v zadané hlavní verzi, dokud nebudete explicitně chtít přejít na novou verzi.
+Azure Functions umožňuje cílit na konkrétní verzi modulu runtime pomocí `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace ve Function App. Aplikace Function App je udržována v zadané hlavní verzi, dokud nebudete explicitně chtít přejít na novou verzi.
 
 Pokud zadáte pouze hlavní verzi, aplikace Function App se automaticky aktualizuje na nové podverze modulu runtime, jakmile budou k dispozici. Nové podverze by neměly zavádět podstatné změny. Pokud zadáte vedlejší verzi (například "2.0.12345"), aplikace Function App se přiřadí k dané konkrétní verzi, dokud ji explicitně nezměníte.
 
 > [!NOTE]
-> Pokud připnete ke konkrétní verzi Azure Functions a potom se pokusíte publikovat do Azure pomocí sady Visual Studio, zobrazí se dialogové okno s výzvou k aktualizaci na nejnovější verzi nebo zrušení publikování. Pokud se tomu chcete vyhnout, `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` přidejte do `.csproj` souboru vlastnost.
+> Pokud připnete ke konkrétní verzi Azure Functions a potom se pokusíte publikovat do Azure pomocí sady Visual Studio, zobrazí se dialogové okno s výzvou k aktualizaci na nejnovější verzi nebo zrušení publikování. Pokud se tomu chcete vyhnout, přidejte `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` do `.csproj` souboru vlastnost.
 
-Když je k dispozici veřejně dostupná nová verze, zobrazí se výzva na portálu, která vám umožní přejít až k této verzi. Po přesunu na novou verzi můžete nastavení `FUNCTIONS_EXTENSION_VERSION` aplikace vždy použít k přechodu zpět na předchozí verzi.
+Když je k dispozici veřejně dostupná nová verze, zobrazí se výzva na portálu, která vám umožní přejít až k této verzi. Po přesunu na novou verzi můžete `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace vždy použít k přechodu zpět na předchozí verzi.
 
 V následující tabulce jsou uvedeny `FUNCTIONS_EXTENSION_VERSION` hodnoty pro jednotlivé hlavní verze, které umožňují automatické aktualizace:
 
@@ -51,10 +50,10 @@ Můžete změnit verzi modulu runtime, kterou používá aplikace Function App. 
 
 ### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>Z Azure CLI
 
-Můžete také zobrazit a nastavit v `FUNCTIONS_EXTENSION_VERSION` rozhraní příkazového řádku Azure CLI.
+Můžete také zobrazit a nastavit v rozhraní příkazového `FUNCTIONS_EXTENSION_VERSION` řádku Azure CLI.
 
 >[!NOTE]
->Vzhledem k tomu, že jiná nastavení můžou být ovlivněná verzí modulu runtime, měli byste změnit verzi na portálu. Když změníte běhové verze, portál automaticky provede další potřebné aktualizace, jako je například verze Node. js a zásobník modulu runtime.  
+>Vzhledem k tomu, že jiná nastavení můžou být ovlivněná verzí modulu runtime, měli byste změnit verzi na portálu. Když změníte běhové verze, portál automaticky provede další potřebné aktualizace, jako je Node.js verze a zásobník modulu runtime.  
 
 Pomocí Azure CLI zobrazte aktuální verzi modulu runtime pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) .
 
@@ -63,7 +62,7 @@ az functionapp config appsettings list --name <function_app> \
 --resource-group <my_resource_group>
 ```
 
-V tomto kódu nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte `<my_resource_group>` také názvem skupiny prostředků vaší aplikace Function App. 
+V tomto kódu nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace Function App. 
 
 Zobrazí se `FUNCTIONS_EXTENSION_VERSION` následující výstup, který byl zkrácen pro přehlednost:
 
@@ -90,7 +89,7 @@ Zobrazí se `FUNCTIONS_EXTENSION_VERSION` následující výstup, který byl zkr
 ]
 ```
 
-`FUNCTIONS_EXTENSION_VERSION` Nastavení v aplikaci Function App můžete aktualizovat pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) .
+`FUNCTIONS_EXTENSION_VERSION`Nastavení v aplikaci Function App můžete aktualizovat pomocí příkazu [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) .
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
@@ -98,7 +97,7 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
 
-Nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte `<my_resource_group>` také názvem skupiny prostředků vaší aplikace Function App. Nahraďte `<version>` také platnou verzí modulu runtime 1. x nebo `~2` verze 2. x.
+Nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace Function App. Nahraďte také `<version>` platnou verzí modulu runtime 1. x nebo `~2` verze 2. x.
 
 Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
 

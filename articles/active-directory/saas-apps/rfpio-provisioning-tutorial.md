@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 6ae423305b39c1335b5db1cd893d5f817be1929b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060857"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Kurz: Konfigurace RFPIO pro Automatické zřizování uživatelů
@@ -64,7 +63,7 @@ Před konfigurací RFPIO pro Automatické zřizování uživatelů pomocí Azure
     
     ![Správce RFPIO](media/rfpio-provisioning-tutorial/aadtest.png)
 
-3.  Přejděte na**SCIM** > **zabezpečení** >  **správy uživatelů**.
+3.  Přejděte na SCIM zabezpečení **správy uživatelů**  >  **SECURITY**  >  **SCIM**.
 
     ![RFPIO přidat SCIM](media/rfpio-provisioning-tutorial/scim.png)
 
@@ -107,7 +106,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-rfpio-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro RFPIO ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -123,7 +122,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` **adresu URL tenanta**. Ukázková hodnota je `https://Azure-test1.rfpio.com/rfpserver/scim/v2`. Zadejte hodnotu **tokenu rozhraní API SCIM** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k RFPIO. Pokud se připojení nepovede, ujistěte se, že má váš účet RFPIO oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` **adresu URL tenanta**. Ukázková hodnota je `https://Azure-test1.rfpio.com/rfpserver/scim/v2` . Zadejte hodnotu **tokenu rozhraní API SCIM** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k RFPIO. Pokud se připojení nepovede, ujistěte se, že má váš účet RFPIO oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 

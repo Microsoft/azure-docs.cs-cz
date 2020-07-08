@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77120684"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure Monitor
@@ -17,7 +16,7 @@ V tomto článku se dozvíte, jak nastavit triggery, abyste mohli volat konkrét
 ## <a name="webhooks"></a>Webhooky
 Webhooky umožňují směrovat oznámení o výstrahách Azure do jiných systémů pro následné zpracování nebo vlastní oznámení. Například směrování výstrahy do služeb, které mohou zpracovávat příchozí webový požadavek k odeslání serveru SMS, protokolování chyb, upozornění týmu pomocí služby chat nebo zasílání zpráv atd. Identifikátor URI Webhooku musí být platný koncový bod HTTP nebo HTTPS.
 
-## <a name="email"></a>E-mailu
+## <a name="email"></a>E-mail
 E-mail je možné odeslat do jakékoli platné e-mailové adresy. Budou se informovat i správci a spolusprávci předplatného, kde se pravidlo spouští.
 
 ## <a name="cloud-services-and-app-services"></a>Cloud Services a App Services
@@ -56,7 +55,7 @@ Při použití šablony REST API nebo Správce prostředků zahrňte do [autosca
     ]
 ```
 
-| Pole | Závaznou? | Popis |
+| Pole | Závaznou? | Description |
 | --- | --- | --- |
 | NázevOperace |ano |hodnota musí být Scale (škálovat). |
 | sendToSubscriptionAdministrator |ano |hodnota musí být true nebo false. |
@@ -67,7 +66,7 @@ Při použití šablony REST API nebo Správce prostředků zahrňte do [autosca
 | properties |ano |hodnota musí být prázdná {} nebo může obsahovat páry klíč-hodnota. |
 
 ## <a name="authentication-in-webhooks"></a>Ověřování ve webhookech
-Webhook se může ověřit pomocí ověřování založeného na tokenech, kam uložíte identifikátor URI Webhooku s ID tokenu jako parametr dotazu. Například https:\//mysamplealert/webcallback? tokenu tokenId = sometokenid&someparameter = someValue
+Webhook se může ověřit pomocí ověřování založeného na tokenech, kam uložíte identifikátor URI Webhooku s ID tokenu jako parametr dotazu. Například https: \/ /mysamplealert/webcallback? tokenu tokenId = sometokenid&someparameter = someValue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Schéma datové části Webhooku oznámení automatického škálování
 Když se vygeneruje oznámení automatického škálování, do datové části Webhooku se zahrnou tato metadata:
@@ -99,22 +98,22 @@ Když se vygeneruje oznámení automatického škálování, do datové části 
 ```
 
 
-| Pole | Závaznou? | Popis |
+| Pole | Závaznou? | Description |
 | --- | --- | --- |
 | status |ano |Stav, který indikuje, že se vygenerovala akce automatického škálování. |
 | NázevOperace |ano |U zvýšení instancí se bude "horizontální navýšení kapacity" a snížení počtu instancí bude "škálovat". |
 | kontext |ano |Kontext akce automatického škálování |
 | časové razítko |ano |Časové razítko, kdy se aktivovala akce automatického škálování |
-| id |Ano |ID Správce prostředků nastavení automatického škálování |
-| jméno |Ano |Název nastavení automatického škálování |
-| zobrazí |Ano |Vysvětlení akce, kterou služba automatického škálování trvala, a změny počtu instancí |
-| subscriptionId |Ano |ID předplatného cílového prostředku, který se škáluje |
-| resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který se škáluje |
-| resourceName |Ano |Název cílového prostředku, který se škáluje |
-| resourceType |Ano |Tři podporované hodnoty: Microsoft. classiccompute/DomainNames/sloty/Roles – role cloudových služeb, Microsoft. COMPUTE/virtualmachinescalesets "-Virtual Machine Scale Sets a" Microsoft. Web/serverových farem "-Web App |
-| resourceId |Ano |Správce prostředků ID cílového prostředku, který se škáluje |
-| portalLink |Ano |Azure Portal odkaz na stránku souhrnu cílového prostředku |
-| oldCapacity |Ano |Aktuální (starý) počet instancí, když automatické škálování trvalo akci škálování |
-| newCapacity |Ano |Nový počet instancí, na které se má znovu škálovat prostředek |
-| properties |Ne |Nepovinný parametr. Sada <klíč, hodnota> páry (například slovník <řetězec, řetězec>). Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky můžete zadat klíče a hodnoty, které lze předat pomocí datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky odchozímu volání Webhooku, je použití samotného identifikátoru URI Webhooku (jako parametrů dotazu). |
+| id |Yes |ID Správce prostředků nastavení automatického škálování |
+| name |Yes |Název nastavení automatického škálování |
+| zobrazí |Yes |Vysvětlení akce, kterou služba automatického škálování trvala, a změny počtu instancí |
+| subscriptionId |Yes |ID předplatného cílového prostředku, který se škáluje |
+| resourceGroupName |Yes |Název skupiny prostředků cílového prostředku, který se škáluje |
+| resourceName |Yes |Název cílového prostředku, který se škáluje |
+| resourceType |Yes |Tři podporované hodnoty: Microsoft. classiccompute/DomainNames/sloty/Roles – role cloudových služeb, Microsoft. COMPUTE/virtualmachinescalesets "-Virtual Machine Scale Sets a" Microsoft. Web/serverových farem "-Web App |
+| resourceId |Yes |Správce prostředků ID cílového prostředku, který se škáluje |
+| portalLink |Yes |Azure Portal odkaz na stránku souhrnu cílového prostředku |
+| oldCapacity |Yes |Aktuální (starý) počet instancí, když automatické škálování trvalo akci škálování |
+| newCapacity |Yes |Nový počet instancí, na které se má znovu škálovat prostředek |
+| properties |No |Nepovinný parametr. Sada <klíč, hodnota> páry (například slovník <řetězec, řetězec>). Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky můžete zadat klíče a hodnoty, které lze předat pomocí datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky odchozímu volání Webhooku, je použití samotného identifikátoru URI Webhooku (jako parametrů dotazu). |
 

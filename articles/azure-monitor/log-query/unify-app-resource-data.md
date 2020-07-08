@@ -8,10 +8,9 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77137501"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení více Azure Monitorch prostředků Application Insights 
@@ -24,12 +23,12 @@ Tento příklad ukazuje, jak můžete monitorovat více prostředků Application
 
 Vytvořte funkci pomocí operátoru Union se seznamem aplikací a pak dotaz uložte ve svém pracovním prostoru jako funkci s aliasem *applicationsScoping*. 
 
-Uvedené aplikace můžete kdykoli upravit na portálu tak, že přejdete do Průzkumníku dotazů v pracovním prostoru a vyberete funkci pro úpravy a uložení nebo pomocí rutiny `SavedSearch` PowerShellu. 
+Uvedené aplikace můžete kdykoli upravit na portálu tak, že přejdete do Průzkumníku dotazů v pracovním prostoru a vyberete funkci pro úpravy a uložení nebo pomocí `SavedSearch` rutiny PowerShellu. 
 
 >[!NOTE]
 >Tuto metodu nelze použít s upozorněními protokolu, protože ověření přístupu prostředků pravidla výstrahy, včetně pracovních prostorů a aplikací, se provádí při vytváření výstrahy. Přidání nových prostředků do funkce po vytvoření výstrahy není podporováno. Pokud upřednostňujete použití funkce pro obory prostředků v upozorněních protokolu, je nutné upravit pravidlo výstrahy na portálu nebo pomocí šablony Správce prostředků pro aktualizaci oboru prostředků. Případně můžete do dotazu protokolu výstrahy zahrnout seznam prostředků.
 
-`withsource= SourceApp` Příkaz přidá sloupec do výsledků, který určí aplikaci, která protokol odeslala. Operátor Parse je v tomto příkladu volitelný a používá se k extrahování názvu aplikace z vlastnosti SourceApp. 
+`withsource= SourceApp`Příkaz přidá sloupec do výsledků, který určí aplikaci, která protokol odeslala. Operátor Parse je v tomto příkladu volitelný a používá se k extrahování názvu aplikace z vlastnosti SourceApp. 
 
 ```
 union withsource=SourceApp 
@@ -73,7 +72,7 @@ V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics 
 | AvailabilityMessage | zpráva |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | jméno |
+| AvailabilityTestName | name |
 | AvailabilityTimestamp | časové razítko |
 | Prohlížeč | client_browser |
 | Město | client_city |
@@ -82,32 +81,32 @@ V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics 
 | Země | client_CountryOrRegion | 
 | CustomEventCount | Vlastnost ItemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | jméno | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | Vlastnost ItemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | zpráva | 
-| Typvýjimky | type |
+| Typvýjimky | typ |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | Operační systém | client_OS | 
 | PageViewCount | Vlastnost ItemCount |
 | PageViewDuration | doba trvání | 
-| PageViewName | jméno | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | Vlastnost ItemCount | 
 | RequestDuration | doba trvání | 
 | ID požadavku | id | 
-| Žádost o zadání | jméno | 
+| Žádost o zadání | name | 
 | RequestSuccess | úspěch | 
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
-| zprostředkovatele identity | url |
+| TelemetryTYpe | typ |
+| URL | url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019617"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Připojení z místního prostředí k CloudSimple pomocí ExpressRoute
@@ -21,7 +20,7 @@ Pokud už máte připojení Azure ExpressRoute z externího umístění (třeba 
 
 [![Místní ExpressRoute připojení – Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pro navázání Global Reachho připojení z místního prostředí se vyžaduje blok adres sítě a **/29** .  Adresní prostor/29 se používá pro tranzitní síť mezi okruhy ExpressRoute.  Tranzitní síť by se neměla překrývat s žádnou z vašich virtuálních sítí Azure, místními sítěmi ani CloudSimple privátních cloudových sítí.
 
@@ -61,7 +60,7 @@ K navázání připojení ExpressRoute musíte vytvořit autorizaci na okruhu Ex
     [![Autorizační kopie okruhu ExpressRoute](media/azure-expressroute-transit-authorization-copy.png)](media/azure-expressroute-transit-authorization-copy.png)
 
     > [!IMPORTANT]
-    > **ID prostředku** se musí zkopírovat z uživatelského rozhraní a měl by být ve formátu ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` , když ho poskytnete pro podporu.
+    > **ID prostředku** se musí zkopírovat z uživatelského rozhraní a měl by být ve formátu, ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` když ho poskytnete pro podporu.
 
 6. Zaregistrujte lístek s <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">podporou</a> připojení, které se má vytvořit.
     * Typ problému: **technický**

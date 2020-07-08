@@ -16,10 +16,9 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b8038896a11b65e835ce71f5fc34e85723cc91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060517"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
@@ -96,7 +95,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 10. Zkopírujte token, otevřete okno Azure AD a vložte ho do pole **tajný token** .
 
-11. Pokud je instance Salesforce v cloudu pro státní správu Salesforce, měla by se zadat **Adresa URL tenanta** . V opačném případě je volitelná. Zadejte adresu URL tenanta ve\<formátu "https://your-instance\>. my.Salesforce.com" a nahraďte \<svou instanci\> názvem vaší instance Salesforce.
+11. Pokud je instance Salesforce v cloudu pro státní správu Salesforce, měla by se zadat **Adresa URL tenanta** . V opačném případě je volitelná. Zadejte adresu URL tenanta pomocí formátu "https:// \<your-instance\> . my.Salesforce.com" a nahraďte \<your-instance\> názvem vaší instance Salesforce.
 
 12. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci Salesforce.
 

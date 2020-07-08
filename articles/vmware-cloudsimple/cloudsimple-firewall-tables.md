@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025040"
 ---
 # <a name="firewall-tables-overview"></a>Přehled tabulek brány firewall
@@ -28,12 +27,12 @@ Následující tabulka popisuje parametry v pravidle brány firewall.
 | **Název** | Název, který jedinečně identifikuje pravidlo brány firewall a jeho účel. |
 | **Priorita** | Číslo mezi 100 a 4096 a 100 je nejvyšší prioritou. Pravidla se zpracovávají v pořadí podle priority. Když provoz narazí na pravidlo shodu, zpracování pravidla se zastaví. V důsledku toho nejsou zpracovávána pravidla s nižšími prioritami, která mají stejné atributy jako pravidla s vyššími prioritami.  Dbejte na to, abyste se vyhnuli konfliktům pravidel. |
 | **Sledování stavu** | Sledování může být bezstavové (privátní cloud, Internet nebo VPN) nebo stavová (veřejná IP adresa).  |
-| **Protokol** | Mezi možnosti patří všechny, TCP nebo UDP. Pokud budete vyžadovat protokol ICMP, použijte libovolný. |
+| **Protocol (Protokol)** | Mezi možnosti patří všechny, TCP nebo UDP. Pokud budete vyžadovat protokol ICMP, použijte libovolný. |
 | **Směr** | Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz. |
 | **Akce** | Povolí nebo zakáže typ provozu definovaný v pravidle. |
 | **Zdroj** | IP adresa, blok směrování mezi doménami bez tříd (CIDR) (10.0.0.0/24, například) nebo Any.  Určení rozsahu, značky služby nebo skupiny zabezpečení aplikací vám umožní vytvořit méně pravidel zabezpečení. |
 | **Zdrojový port** | Port, ze kterého pochází síťový provoz.  Můžete zadat jednotlivý port nebo rozsah portů, například 443 nebo 8000-8080. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. |
-| **Tabulka** | IP adresa, blok směrování mezi doménami bez tříd (CIDR) (10.0.0.0/24, například) nebo Any.  Určení rozsahu, značky služby nebo skupiny zabezpečení aplikací vám umožní vytvořit méně pravidel zabezpečení.  |
+| **Cíl** | IP adresa, blok směrování mezi doménami bez tříd (CIDR) (10.0.0.0/24, například) nebo Any.  Určení rozsahu, značky služby nebo skupiny zabezpečení aplikací vám umožní vytvořit méně pravidel zabezpečení.  |
 | **Cílový port** | Port, na který se budou toky provozu v síti.  Můžete zadat jednotlivý port nebo rozsah portů, například 443 nebo 8000-8080. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení.|
 
 ### <a name="stateless"></a>Bezstavová
@@ -53,12 +52,12 @@ Pro tok přenosů v opačném směru můžou být nutná další pravidla.  Pro 
 
 V každé tabulce brány firewall jsou vytvořena následující výchozí pravidla.
 
-|Priorita|Název|Sledování stavu|Směr|Typ provozu|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|Akce|
+|Priorita|Name|Sledování stavu|Směr|Typ provozu|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|Akce|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|povolení – vše pro Internet|Stavové|Odchozí|Veřejná IP adresa nebo internetový provoz|Všechny|Všechny|Všechny|Všechny|Všechny|Povolit|
-|65001|Odepřít – vše z Internetu|Stavové|Příchozí|Veřejná IP adresa nebo internetový provoz|Všechny|Všechny|Všechny|Všechny|Všechny|Odepřít|
-|65002|povolení – vše pro intranet|Bezstavová|Odchozí|Provoz interního cloudu nebo privátního cloudu|Všechny|Všechny|Všechny|Všechny|Všechny|Povolit|
-|65003|povolení – vše z intranetu|Bezstavová|Příchozí|Provoz interního cloudu nebo privátního cloudu|Všechny|Všechny|Všechny|Všechny|Všechny|Povolit|
+|65000|povolení – vše pro Internet|Stavové|Odchozí|Veřejná IP adresa nebo internetový provoz|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
+|65001|Odepřít – vše z Internetu|Stavové|Příchozí|Veřejná IP adresa nebo internetový provoz|Vše|Všechny|Všechny|Všechny|Všechny|Odepřít|
+|65002|povolení – vše pro intranet|Bezstavová|Odchozí|Provoz interního cloudu nebo privátního cloudu|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
+|65003|povolení – vše z intranetu|Bezstavová|Příchozí|Provoz interního cloudu nebo privátního cloudu|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
 
 ## <a name="next-steps"></a>Další kroky
 

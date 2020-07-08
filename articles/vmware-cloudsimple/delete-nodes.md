@@ -9,17 +9,16 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024734"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Odstranění uzlů z řešení Azure VMware podle CloudSimple
 
 Po vytvoření se CloudSimple uzly.  Uzly musí být odstraněny, aby se zastavilo měření uzlů.  Odstraníte uzly, které se nepoužívají z Azure Portal.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Uzel se dá odstranit jenom za následujících podmínek:
 

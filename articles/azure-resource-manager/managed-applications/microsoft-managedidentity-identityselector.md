@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087541"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. ManagedIdentity. IdentitySelector – element uživatelského rozhraní
@@ -69,7 +68,7 @@ Vybrané identity se zobrazí v tabulce. Uživatel může přidat nebo odstranit
 
 ## <a name="remarks"></a>Poznámky
 
-- Pomocí **DefaultValue. systemAssignedIdentity** nastavte počáteční hodnotu pro ovládací prvek možnosti identity přiřazené systémem. Výchozí hodnota je **off**. Jsou povoleny následující hodnoty:
+- K nastavení počáteční hodnoty pro ovládací prvek možnosti identity přiřazené systémem použijte **defaultValue.systemAssignedIdentity** . Výchozí hodnota je **off**. Jsou povoleny následující hodnoty:
   - **Zapnuto** – k prostředku je přiřazená identita přiřazená systémem.
   - **Vypnuto** – identita přiřazená systému není přiřazená k prostředku.
   - **Pouze** – k prostředku je přiřazená identita přiřazená systémem. Uživatelé nemůžou tuto hodnotu během nasazování upravovat.

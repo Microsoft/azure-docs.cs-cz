@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057802"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Kurz: Konfigurace Foodee pro Automatické zřizování uživatelů
@@ -79,7 +78,7 @@ Pokud chcete přidat Foodee z Galerie aplikací Azure AD, udělejte toto:
 
     ![Příkaz Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -100,7 +99,7 @@ V této části nakonfigurujete službu zřizování Azure AD tak, aby vytvořil
 
 Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azure AD pomocí následujícího postupu:
 
-1. V [Azure Portal](https://portal.azure.com)vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V [Azure Portal](https://portal.azure.com)vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -118,7 +117,7 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
 1. V části **přihlašovací údaje správce**postupujte takto:
 
-   a. Do pole **Adresa URL tenanta** zadejte hodnotu **https\/:/concierge.Food.ee/SCIM/v2** , kterou jste získali dříve.
+   a. Do pole **Adresa URL tenanta** zadejte hodnotu **https: \/ /concierge.Food.ee/SCIM/v2** , kterou jste získali dříve.
 
    b. Do pole **token tajného klíče** zadejte hodnotu **tokenu rozhraní API** , kterou jste získali dříve.
    

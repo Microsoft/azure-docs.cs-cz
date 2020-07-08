@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086649"
 ---
 # <a name="persist-state-in-linux"></a>Trvalý stav v systému Linux
@@ -25,7 +24,7 @@ Ve výchozím nastavení jsou uložena pouze metadata a události jsou stále ul
 Tento článek popisuje postup nasazení modulu Event Grid s trvalým nasazením do systému Linux.
 
 > [!NOTE]
->Modul Event Grid se spouští jako uživatel s nízkými oprávněními s identifikátorem `2000` UID a `eventgriduser`názvem.
+>Modul Event Grid se spouští jako uživatel s nízkými oprávněními s identifikátorem UID `2000` a názvem `eventgriduser` .
 
 ## <a name="persistence-via-volume-mount"></a>Stálost prostřednictvím připojení svazku
 
@@ -105,7 +104,7 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
    ```
 
-    Například:
+    Třeba
 
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
@@ -123,7 +122,7 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
     }
     ```
 
-    Například:
+    Třeba
 
     ```json
     {
@@ -170,7 +169,7 @@ Důležité informace o trvalých událostech:
 * Trvalá událost je nakonfigurovaná pro odběr události během vytváření a nedá se změnit po vytvoření odběru události. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr události.
 * Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatou pro všechny systémy zasílání zpráv, ale obecně se ve velkém měřítku stávají pouze znatelné.
 
-Pro povolení trvalosti události v odběru události nastavte `persistencePolicy` na: `true`
+Pro povolení trvalosti události v odběru události nastavte `persistencePolicy` na `true` :
 
  ```json
         {

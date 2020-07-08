@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061271"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro Automatické zřizování uživatelů
@@ -58,7 +57,7 @@ Tato část vás provede připojením služby Azure AD k rozhraní API pro zřiz
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na Pingboard ve službě Azure AD
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory**  >  **podnikové aplikace**  >  **všechny aplikace** .
 
 1. Pokud jste už nakonfigurovali Pingboard pro jednotné přihlašování, vyhledejte vaši instanci Pingboard pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Pingboard** v galerii aplikací. Ve výsledcích hledání vyberte **Pingboard** a přidejte je do seznamu aplikací.
 
@@ -70,11 +69,11 @@ Tato část vás provede připojením služby Azure AD k rozhraní API pro zřiz
 
 1. V části **přihlašovací údaje správce** použijte následující postup:
 
-    a. Do **adresy URL tenanta**zadejte `https://your_domain.pingboard.com/scim/v2`a nahraďte "your_domain" skutečnou doménou.
+    a. Do **adresy URL tenanta**zadejte `https://your_domain.pingboard.com/scim/v2` a nahraďte "your_domain" skutečnou doménou.
 
     b. Přihlaste se k [Pingboard](https://pingboard.com/) pomocí účtu správce.
 
-    c. Vyberte možnost **Doplňky pro** > **integraci** > **Azure Active Directory**.
+    c. Vyberte možnost **Doplňky pro**  >  **integraci**  >  **Azure Active Directory**.
 
     d. Otevřete kartu **Konfigurace** a vyberte **Povolit zřizování uživatelů z Azure**.
 

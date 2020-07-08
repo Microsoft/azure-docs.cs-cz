@@ -9,17 +9,16 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77022660"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>Přístup k portálu pro vCenter privátního cloudu
 
 Svůj privátní cloudový portál vCenter můžete spustit z portálu Azure Portal nebo CloudSimple.  portál vCenter umožňuje správu infrastruktury VMware v privátním cloudu.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Aby bylo možné získat přístup k portálu vCenter, musí být navázáno síťové připojení a musí být povoleno rozlišení názvů DNS.  Síťové připojení k privátnímu cloudu můžete vytvořit pomocí kterékoli z následujících možností.
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024921"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple uzly – přehled
@@ -36,7 +35,7 @@ Zřízené uzly poskytují kapacitu s průběžnými platbami. Zřizování uzl�
 
 Pro zřizování nebo rezervaci jsou k dispozici následující typy uzlů.
 
-| Skladová jednotka (SKU)           | CS28 – uzel                 | CS36 – uzel                 | CS36m – uzel                |
+| SKU           | CS28 – uzel                 | CS36 – uzel                 | CS36m – uzel                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
 | Oblast        | Východní USA Západní USA            | Východní USA Západní USA            | Západní Evropa                 |
 | Procesor           | 2x 2,2 GHz, 28 jader (56 HT) | 2x 2,3 GHz, 36 jader (72 HT) | 2x 2,3 GHz, 36 jader (72 HT) |

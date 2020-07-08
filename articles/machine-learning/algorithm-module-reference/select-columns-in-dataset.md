@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77153770"
 ---
 # <a name="select-columns-in-dataset-module"></a>Výběr sloupců v modulu DataSet
@@ -40,7 +39,7 @@ V modulu je více možností pro výběr sloupců podle názvu:
 
     Pokud jste připojili datovou sadu, která je již naplněna, zobrazí se seznam dostupných sloupců. Pokud se nezobrazí žádné sloupce, může být nutné spustit moduly pro odesílání dat, aby se zobrazil seznam sloupců.
 
-    Chcete-li filtrovat seznam, zadejte do vyhledávacího pole. Pokud například zadáte písmeno `w` do vyhledávacího pole, seznam se vyfiltruje tak, aby zobrazoval názvy sloupců, které obsahují písmeno. `w`
+    Chcete-li filtrovat seznam, zadejte do vyhledávacího pole. Pokud například zadáte písmeno `w` do vyhledávacího pole, seznam se vyfiltruje tak, aby zobrazoval názvy sloupců, které obsahují písmeno `w` .
 
     Vyberte sloupce a kliknutím na tlačítko se šipkou doprava přesuňte vybrané sloupce do seznamu v pravém podokně.
 
@@ -87,7 +86,7 @@ Index sloupce odkazuje na pořadí sloupce v rámci původního objektu DataSet.
 
 + Sloupce se číslují sekvenčně od 1.  
 + Chcete-li získat rozsah sloupců, použijte spojovník. 
-+ Specifikace Open-konec, například `1-` nebo `-3` , nejsou povoleny.
++ Specifikace Open-konec, například `1-` nebo, nejsou `-3` povoleny.
 + Duplicitní hodnoty indexu (nebo názvy sloupců) nejsou povoleny a mohou mít za následek chybu.
 
 Například za předpokladu, že vaše datová sada má alespoň osm sloupců, můžete vložit do kteréhokoli z následujících příkladů, které vrátí více nesouvislých sloupců: 
@@ -96,7 +95,7 @@ Například za předpokladu, že vaše datová sada má alespoň osm sloupců, m
 + `1,3-8`
 + `1,3-6,4` 
 
-poslední příklad nevede k chybě; Vrátí ale jednu instanci sloupce `4`.
+poslední příklad nevede k chybě; Vrátí ale jednu instanci sloupce `4` .
 
 
 

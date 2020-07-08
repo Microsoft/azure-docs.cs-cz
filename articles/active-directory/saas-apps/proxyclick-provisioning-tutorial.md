@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063352"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Kurz: Konfigurace Proxyclick pro Automatické zřizování uživatelů
@@ -84,7 +83,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Proxyclick ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -102,7 +101,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. Pokud chcete načíst **adresu URL tenanta** a **tajný token** účtu Proxyclick, postupujte podle návodu popsaného v kroku 6.
 
-6. Přihlaste se ke [konzole pro správu Proxyclick](https://app.proxyclick.com/login//?destination=%2Fdefault). Přejděte do **Nastavení** > **integrace** > **Procházet Marketplace**.
+6. Přihlaste se ke [konzole pro správu Proxyclick](https://app.proxyclick.com/login//?destination=%2Fdefault). Přejděte do **Nastavení**  >  **integrace**  >  **Procházet Marketplace**.
 
     ![Nastavení Proxyclick](media/proxyclick-provisioning-tutorial/proxyclick09.png)
 
@@ -120,7 +119,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování uživatelů Proxyclick](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    V části **Nastavení** > **integrace**by se teď mělo zobrazit příslušné uživatelské rozhraní konfigurace nastavení. V části Azure AD vyberte **Nastavení** **(zřizování uživatelů)**.
+    V části **Nastavení**integrace by se teď mělo zobrazit příslušné uživatelské rozhraní konfigurace nastavení  >  **Integrations**. V části Azure AD vyberte **Nastavení** **(zřizování uživatelů)**.
 
     ![Proxyclick vytvořit](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
@@ -130,7 +129,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Proxyclick. Pokud se připojení nepovede, ujistěte se, že má váš účet Proxyclick oprávnění správce, a zkuste to znovu.
 
-    ![Podpisový](common/provisioning-testconnection-tenanturltoken.png)
+    ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
 8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 

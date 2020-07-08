@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025057"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Nejčastější dotazy týkající se řešení VMware podle CloudSimple
@@ -33,7 +32,7 @@ CloudSimple je k dispozici v oblastech Východní USA, Západní USA a Západní
 
 **Návody povolit předplatné pro CloudSimple?**
 
-Pokud chcete povolit službu CloudSimple, obraťte [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) se na svého zástupce účet Microsoft. Zadejte ID předplatného v e-mailu, pro který chcete povolit službu CloudSimple.  
+Pokud chcete povolit službu CloudSimple, obraťte se na svého zástupce účet Microsoft [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) . Zadejte ID předplatného v e-mailu, pro který chcete povolit službu CloudSimple.  
 
 **Návody přístup k portálu CloudSimple?**
 
@@ -150,7 +149,7 @@ CloudSimple neprovede upgrady ani aktualizace aplikací nainstalovaných v priv�
 
 **Které služby Azure jsou podporovány?**
 
-CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Příklady obsahují:
+CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Mezi příklady patří:
 
 * **Azure Active Directory** jako zdroj identity pro CloudSimple vCenter.
 * **Úložiště Azure** pro ukládání záloh, obrázků a dalších dat z vašeho privátního cloudu.

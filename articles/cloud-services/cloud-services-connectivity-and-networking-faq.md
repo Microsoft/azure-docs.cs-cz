@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
 ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019396"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítí pro Azure Cloud Services: nejčastější dotazy
@@ -38,7 +37,7 @@ Přidejte do NSG pravidla, která povolují provoz na portech **3389** a **20000
 
 Ne, ne pomocí normálního protokolu "/ICMP" příkazu "test". Protokol ICMP není povolený prostřednictvím nástroje pro vyrovnávání zatížení Azure.
 
-Pokud chcete otestovat připojení, doporučujeme, abyste provedli příkaz testování portu. I když nástroj test. exe používá protokol ICMP, můžete k otestování připojení k určitému portu TCP použít jiné nástroje, například PSPing, nmap a Telnet.
+Pokud chcete otestovat připojení, doporučujeme, abyste provedli příkaz testování portu. I když Ping.exe používá protokol ICMP, můžete k otestování připojení k určitému portu TCP použít jiné nástroje, například PSPing, nmap a Telnet.
 
 Další informace najdete v tématu [použití příkazů k testování připojení virtuálních počítačů Azure místo ICMP](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
 
@@ -65,14 +64,14 @@ Použitý distribuční algoritmus je 5-Tuple (zdrojová IP adresa, zdrojový po
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Jak můžu přesměrovat příchozí provoz na výchozí adresu URL své cloudové služby na vlastní adresu URL?
 
-Modul pro přepis adresy URL služby IIS se dá použít k přesměrování provozu, který se nachází na výchozí adrese URL cloudové služby (například \*. cloudapp.NET), do nějakého vlastního názvu nebo adresy URL. Vzhledem k tomu, že je modul pro přepis adres URL ve výchozím nastavení povolený, a jeho pravidla jsou nakonfigurovaná v souboru Web. config aplikace, je vždycky k dispozici na virtuálním počítači bez ohledu na restartování a obnovení imagí. Další informace najdete v tématech:
+Modul pro přepis adresy URL služby IIS se dá použít k přesměrování provozu, který se nachází na výchozí adrese URL cloudové služby (například \* . cloudapp.NET), do nějakého vlastního názvu nebo adresy URL. Vzhledem k tomu, že je modul pro přepis adres URL ve výchozím nastavení povolený a že jeho pravidla jsou nakonfigurovaná v web.config aplikace, je vždycky dostupné na virtuálním počítači bez ohledu na restartování a obnovení imagí. Další informace najdete v tématech:
 
 - [Vytvořit pravidla pro přepsání pro modul URL pro přepis](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Odebrat výchozí odkaz](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Jak můžu blokovat nebo zakázat příchozí provoz na výchozí adresu URL mé cloudové služby?
 
-Můžete zabránit příchozímu provozu na výchozí adresu URL nebo název vaší cloudové služby (například \*. cloudapp.NET). V části Konfigurace vazeb webu v souboru definice cloudové služby (*.\.csdef) nastavte hlavičku hostitele na vlastní název DNS (například www MyCloudService.com), jak je uvedeno níže:
+Můžete zabránit příchozímu provozu na výchozí adresu URL nebo název vaší cloudové služby (například \* . cloudapp.NET). \.V části Konfigurace vazeb webu v souboru definice cloudové služby (*. csdef) nastavte hlavičku hostitele na vlastní název DNS (například www MyCloudService.com), jak je uvedeno níže:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

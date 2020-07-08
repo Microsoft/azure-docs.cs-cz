@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77020637"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>Konfigurace šifrování síti vSAN pro privátní cloud CloudSimple
@@ -98,7 +97,7 @@ V vCenter přejít na **Cluster > nakonfigurovat** a vyberte **obecnou** možnos
 
 ![Povolení šifrování síti vSAN a konfigurace clusteru služby správy klíčů v vCenter](media/vsan-config02.png)
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 ### <a name="azure"></a>Azure
 

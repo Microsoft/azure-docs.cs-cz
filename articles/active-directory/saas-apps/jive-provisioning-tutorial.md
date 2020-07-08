@@ -16,10 +16,9 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057730"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Kurz: Konfigurace Jive pro Automatické zřizování uživatelů
@@ -80,7 +79,7 @@ V rámci tohoto postupu je potřeba poskytnout token zabezpečení uživatele, k
       
       > [!NOTE]
       > Adresa URL tenanta Jive je adresa URL, kterou vaše organizace používá k přihlášení k Jive.  
-      > Adresa URL má obvykle následující formát: **www.\< Organization\>. Jive.com**.          
+      > Adresa URL má obvykle následující formát: **www. \<organization\> . jive.com**.          
 
 1. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci Jive.
 

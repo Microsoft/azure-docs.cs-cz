@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048896"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty open-source v komunitě
@@ -22,7 +21,7 @@ Tyto open source iniciativy založené na komunitě vytváří a udržují tým 
 
 Následující seznam obsahuje nejoblíbenější Azure Maps open source projektů a ukázek.
 
-| Název projektu | Popis |
+| Název projektu | Description |
 |-|-|
 | [Ukázky kódu Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps v aplikacích založených na webu. |
 | [Ukázky cloudového kódu Azure Maps gov](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps prostřednictvím Azure Government cloudu. |

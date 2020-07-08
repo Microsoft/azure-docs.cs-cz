@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086626"
 ---
 # <a name="persist-state-in-windows"></a>Trvalý stav ve Windows
@@ -37,7 +36,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    Například:
+    Třeba
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -48,7 +47,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    Například:
+    Třeba
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -75,11 +74,11 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     1. Klikněte pravým tlačítkem a pak vyberte **vlastnosti**.
     1. Vyberte **Zabezpečení**.
     1. V části * uživatelské jméno nebo název skupiny vyberte **Upravit**.
-    1. Vyberte **Přidat**, zadejte `Users`, vyberte **název kontroly**a pak vyberte **OK**.
+    1. Vyberte **Přidat**, zadejte `Users` , vyberte **název kontroly**a pak vyberte **OK**.
     1. V části *oprávnění pro uživatele*vyberte **změnit**a vyberte **OK**.
 1. Pomocí **vazeb** připojte tento svazek a znovu nasaďte Event Grid modul z Azure Portal
 
-   Například:
+   Třeba
 
     ```json
         {
@@ -112,10 +111,10 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     ```
 
    >[!IMPORTANT]
-   >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro Event Grid modul ve Windows musí být to **C:\\App\\metadataDb**.
+   >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro Event Grid modul ve Windows musí být to **C: \\ App \\ metadataDb**.
 
 
-    Například:
+    Třeba
 
     ```json
     {
@@ -158,7 +157,7 @@ Místo připojení svazku můžete vytvořit adresář v hostitelském systému 
    mkdir <your-directory-name-here>
    ```
 
-   Například:
+   Třeba
 
    ```sh
    mkdir C:\myhostdir
@@ -176,9 +175,9 @@ Místo připojení svazku můžete vytvořit adresář v hostitelském systému 
     ```
 
     >[!IMPORTANT]
-    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro modul Event Grid ve Windows musí být to **C:\\App\\metadataDb**.
+    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro modul Event Grid ve Windows musí být to **C: \\ App \\ metadataDb**.
 
-    Například:
+    Třeba
 
     ```json
     {
@@ -220,7 +219,7 @@ Důležité informace o trvalých událostech:
 * Trvalá událost je nakonfigurovaná pro odběr události během vytváření a nedá se změnit po vytvoření odběru události. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr události.
 * Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatné pro všechny systémy zasílání zpráv, ale ve velkém měřítku se jenom nejedná o znatelné.
 
-Pro povolení trvalosti události v odběru události nastavte `persistencePolicy` na: `true`
+Pro povolení trvalosti události v odběru události nastavte `persistencePolicy` na `true` :
 
  ```json
         {

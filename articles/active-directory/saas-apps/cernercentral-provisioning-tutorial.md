@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058312"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Kurz: Konfigurace centrálního přivisionu pro Automatické zřizování uživatelů
@@ -85,7 +84,7 @@ Aby bylo možné zřídit uživatelské účty pro společnost "CERN", budete mu
 
    * Produkčníhttps://cernercentral.com/system-accounts/
 
-4. Nakonec potřebujete pro dokončení konfigurace získat ID sféry soupisu uživatelů pro izolovaný prostor a produkční prostředí ve společnosti CERN. Informace o tom, jak to získat, najdete v https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIMtématu:. 
+4. Nakonec potřebujete pro dokončení konfigurace získat ID sféry soupisu uživatelů pro izolovaný prostor a produkční prostředí ve společnosti CERN. Informace o tom, jak to získat, najdete v tématu: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM . 
 
 5. Teď můžete službu Azure AD nakonfigurovat tak, aby zřídila uživatelské účty pro CERN. Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte do části **Azure Active Directory > podnikové aplikace > všechny aplikace** .
 

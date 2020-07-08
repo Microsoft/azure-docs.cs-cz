@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025363"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Správa účtů na řešení Azure VMware pomocí portálu CloudSimple
@@ -35,6 +34,6 @@ Pokud chcete položku odebrat, klikněte na **X**.
 
 ## <a name="cloudsimple-operator-access"></a>Přístup k operátoru CloudSimple
 
-Nastavení přístupu operátora umožňuje CloudSimple pomoci při řešení potíží tím, že se pracovník podpory může přihlásit ke svému portálu CloudSimple.  Toto nastavení je ve výchozím nastavení povolené. Všechny akce prováděné pracovníkem podpory, když se přihlásíte ke svému účtu zákazníka, se zaznamenávají a jsou k dispozici pro vaši kontrolu na stránce**audit** **aktivity** > .
+Nastavení přístupu operátora umožňuje CloudSimple pomoci při řešení potíží tím, že se pracovník podpory může přihlásit ke svému portálu CloudSimple.  Toto nastavení je ve výchozím nastavení povolené. Všechny akce prováděné pracovníkem podpory, když se přihlásíte ke svému účtu zákazníka, se zaznamenávají a jsou k **Activity**dispozici pro vaši kontrolu na  >  stránce**audit** aktivity.
 
 Kliknutím na přepínač **Povolit přístup k operátoru CloudSimple** zapněte nebo vypněte přístup.

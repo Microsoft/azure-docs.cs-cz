@@ -17,10 +17,9 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062737"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zendesk pro Automatické zřizování uživatelů
@@ -83,7 +82,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zendesk ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Zendesk**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Zendesk**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -105,9 +104,9 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
    * Do pole **tajný token** zadejte token tajného kódu, jak je popsáno v kroku 6.
 
-   * V poli **doména** vyplňte subdoménu klienta Zendesk. Například pro účet s adresou URL `https://my-tenant.zendesk.com`klienta je vaše subdoména **můj tenant**.
+   * V poli **doména** vyplňte subdoménu klienta Zendesk. Například pro účet s adresou URL klienta `https://my-tenant.zendesk.com` je vaše subdoména **můj tenant**.
 
-6. Tajný token pro účet Zendesk se nachází v**Nastavení****rozhraní API** > pro **správu** > . Ujistěte se, že je **přístup k tokenu** nastavený na **povoleno**.
+6. Tajný token pro účet Zendesk se nachází v **Admin**  >  **nastavení rozhraní API**pro správu  >  **Settings**. Ujistěte se, že je **přístup k tokenu** nastavený na **povoleno**.
 
     ![Nastavení správce Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 

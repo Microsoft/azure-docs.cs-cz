@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: fbd105ca1623512a3c16f3b609374f5c4055898b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063114"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby WSS (Symantec Web Security Service) pro Automatické zřizování uživatelů
@@ -56,11 +55,11 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Než začnete konfigurovat službu Symantec Web Security Service (WSS) pro Automatické zřizování uživatelů s Azure AD, budete muset povolit zřizování SCIM na službě Symantec Web Security Service (WSS).
 
-1. Přihlaste se ke [konzole pro správu služby zabezpečení webu Symantec](https://portal.threatpulse.com/login.jsp). Přejděte do **Solutions** > **služby**řešení.
+1. Přihlaste se ke [konzole pro správu služby zabezpečení webu Symantec](https://portal.threatpulse.com/login.jsp). Přejděte do **Solutions**  >  **služby**řešení.
 
     ![WSS (Symantec Web Security Service)](media/symantec-web-security-service/service.png)
 
-2. Přejděte k**integraci** >  **údržby** > účtů**Nová integrace**.
+2. Přejděte k **integraci údržby účtů**  >  **Integrations**  >  **Nová integrace**.
 
     ![Symantec Web Security Service (WSS)](media/symantec-web-security-service/acount.png)
 
@@ -103,7 +102,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-symantec-web-security-service-wss-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro službu WSS (Web Security Service) ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

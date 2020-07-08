@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162799"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spuštění Apache Spark z prostředí Spark
@@ -59,7 +58,7 @@ Interaktivní [Apache Spark](https://spark.apache.org/) shell poskytuje prostře
     textFile.filter(textFile.value.contains("apple")).show()
     ```
 
-1. Dotazování na soubor CSV Všimněte si, že následující jazyk `spark-shell` funguje `pyspark`pro a.
+1. Dotazování na soubor CSV Všimněte si, že následující jazyk funguje pro `spark-shell` a `pyspark` .
 
     ```scala
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
@@ -101,17 +100,17 @@ Interaktivní [Apache Spark](https://spark.apache.org/) shell poskytuje prostře
 
 Ve výchozím nastavení platí, že když spustíte prostředí Spark, instance SparkSession a SparkContext se automaticky vytvoří.
 
-Pokud chcete získat přístup k instanci SparkSession `spark`, zadejte. Pokud chcete získat přístup k instanci SparkContext `sc`, zadejte.
+Pokud chcete získat přístup k instanci SparkSession, zadejte `spark` . Pokud chcete získat přístup k instanci SparkContext, zadejte `sc` .
 
 ## <a name="important-shell-parameters"></a>Důležité parametry prostředí
 
-Příkaz Spark Shell (`spark-shell`, nebo `pyspark`) podporuje mnoho parametrů příkazového řádku. Pokud chcete zobrazit úplný seznam parametrů, spusťte prostředí Spark s přepínačem `--help`. Některé z těchto parametrů se můžou vztahovat jenom `spark-submit`na, které prostředí Spark zalomí.
+Příkaz Spark Shell ( `spark-shell` , nebo `pyspark` ) podporuje mnoho parametrů příkazového řádku. Pokud chcete zobrazit úplný seznam parametrů, spusťte prostředí Spark s přepínačem `--help` . Některé z těchto parametrů se můžou vztahovat jenom na `spark-submit` , které prostředí Spark zalomí.
 
 | switch | description | příklad |
 | --- | --- | --- |
-| --hlavní MASTER_URL | Určuje hlavní adresu URL. Ve službě HDInsight je tato hodnota vždy `yarn`. | `--master yarn`|
+| --hlavní MASTER_URL | Určuje hlavní adresu URL. Ve službě HDInsight je tato hodnota vždy `yarn` . | `--master yarn`|
 | --JAR JAR_LIST | Seznam místních jar oddělený čárkami, který se má zahrnout do ovladačů a prováděcích tříd V HDInsight se tento seznam skládá z cest k výchozímu systému souborů ve Azure Storage nebo Data Lake Storage. | `--jars /path/to/examples.jar` |
-| --balíčky MAVEN_COORDS | Čárkami oddělený seznam souřadnic mavenů jar, které se mají zahrnout do ovladače a prováděcích tříd Vyhledá místní úložiště Maven a potom Maven střed a pak všechna další vzdálená úložiště, která jsou `--repositories`určená pomocí. Formát souřadnic je *GroupID*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --balíčky MAVEN_COORDS | Čárkami oddělený seznam souřadnic mavenů jar, které se mají zahrnout do ovladače a prováděcích tříd Vyhledá místní úložiště Maven a potom Maven střed a pak všechna další vzdálená úložiště, která jsou určená pomocí `--repositories` . Formát souřadnic je *GroupID*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --py-seznam souborů | Jenom pro Python se seznam souborů. zip,. vaječný nebo. py oddělený čárkami, které se mají umístit na PYTHONPATH. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Další kroky

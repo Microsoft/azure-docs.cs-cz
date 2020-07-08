@@ -9,15 +9,14 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77135730"
 ---
 # <a name="jar-dependency-management-best-practices"></a>Osvědčené postupy pro správu závislostí JAR
 
-Komponenty nainstalované v clusterech HDInsight mají závislosti na knihovnách třetích stran. V rámci těchto integrovaných komponent jsou obvykle odkazovány konkrétní verze běžných modulů, jako je guava. Když odešlete aplikaci s jejími závislostmi, může dojít ke konfliktu mezi různými verzemi stejného modulu. Pokud verze komponenty, na kterou odkazujete v rámci třídy CLASSPATH, mohou předdefinované komponenty vyvolat výjimky z důvodu nekompatibility verzí. Pokud však integrované komponenty vkládají své závislosti na cestu k cestě, může vaše aplikace vyvolat chyby jako `NoSuchMethod`.
+Komponenty nainstalované v clusterech HDInsight mají závislosti na knihovnách třetích stran. V rámci těchto integrovaných komponent jsou obvykle odkazovány konkrétní verze běžných modulů, jako je guava. Když odešlete aplikaci s jejími závislostmi, může dojít ke konfliktu mezi různými verzemi stejného modulu. Pokud verze komponenty, na kterou odkazujete v rámci třídy CLASSPATH, mohou předdefinované komponenty vyvolat výjimky z důvodu nekompatibility verzí. Pokud však integrované komponenty vkládají své závislosti na cestu k cestě, může vaše aplikace vyvolat chyby jako `NoSuchMethod` .
 
 Chcete-li se vyhnout konfliktu verzí, zvažte vystínování závislostí aplikace.
 
@@ -32,9 +31,9 @@ Uber-JAR je jeden soubor JAR, který obsahuje jar aplikace i jeho závislosti. Z
 ### <a name="shade-package-using-maven"></a>Stínovat balíček pomocí Maven
 Maven může sestavovat aplikace napsané v jazyce Java i v Scala. Maven-odstín – modul plug-in vám umožní snadno vytvořit stínovaný Uber.
 
-Následující příklad ukazuje soubor `pom.xml` , který se aktualizoval pro barevný nádech balíčku pomocí Maven-stínového modulu plug-in.  Oddíl `<relocation>…</relocation>` XML přesune třídy z balíčku `com.google.guava` do balíčku `com.google.shaded.guava` přesunutím odpovídajících položek souboru jar a přepsáním ovlivněného bajtu.
+Následující příklad ukazuje soubor `pom.xml` , který se aktualizoval pro barevný nádech balíčku pomocí Maven-stínového modulu plug-in.  Oddíl XML `<relocation>…</relocation>` přesune třídy z balíčku `com.google.guava` do balíčku `com.google.shaded.guava` přesunutím odpovídajících položek souboru jar a přepsáním ovlivněného bajtu.
 
-Po změně `pom.xml`můžete provést `mvn package` příkaz pro sestavení vybarveného uberového jar.
+Po změně `pom.xml` můžete provést příkaz `mvn package` pro sestavení vybarveného uberového jar.
 
 ```xml
   <build>
@@ -67,7 +66,7 @@ Po změně `pom.xml`můžete provést `mvn package` příkaz pro sestavení vyba
 ### <a name="shade-package-using-sbt"></a>Stínovat balíček pomocí SBT
 SBT je také nástroj sestavení pro Scala a Java. SBT nemá modul plug-in pro stín, jako je Maven-stínový modul plug-in. Můžete upravit `build.sbt` soubor pro barevný nádech balíčků. 
 
-Například pro barevný stín `com.google.guava`můžete do `build.sbt` souboru přidat následující příkaz:
+Například pro barevný stín `com.google.guava` můžete do souboru přidat následující příkaz `build.sbt` :
 
 ```scala
 assemblyShadeRules in assembly := Seq(

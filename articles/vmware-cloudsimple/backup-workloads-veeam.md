@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025125"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B&R
@@ -98,7 +97,7 @@ Proces nasazení se skládá z těchto kroků:
 8. [Konzola Veeam: konfigurace softwaru Veeam Backup pro obnovení &](#veeam-console-install-veeam-backup-and-recovery-software)
 9. [Portál CloudSimple: nastavení přístupu Veeam a oprávnění ke zrušení eskalace](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 Než začnete Veeam nasazení, jsou potřeba následující:
 
@@ -136,7 +135,7 @@ Vytvořte pravidla brány firewall mezi podsítí pro správu a sítí zálohov�
 
 V následující tabulce je uveden seznam portů.
 
-| Ikona | Popis | Ikona | Popis |
+| Ikona | Description | Ikona | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | Záložní server  | vCenter  | PROTOKOL HTTPS/TCP  | 443 |
 | Záložní server <br> *Vyžaduje se pro nasazení součástí Veeam Backup & pro replikaci.* | Záložní proxy server  | TCP/UDP  | 135, 137 až 139 a 445 |
@@ -196,7 +195,7 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
 
 1. Vytvořte účet úložiště pro obecné účely (GPv2) standardního typu a kontejner objektů blob, jak je popsáno v části Microsoft video [Začínáme with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
 2. Vytvořte kontejner úložiště Azure, jak je popsáno v tématu [Vytvoření](https://docs.microsoft.com/rest/api/storageservices/create-container) odkazu na kontejner.
-2. Stáhněte si `azcopy` nástroj příkazového řádku pro Linux od Microsoftu. V prostředí bash v CentOS 7,5 můžete použít následující příkazy.
+2. Stáhněte si `azcopy` Nástroj příkazového řádku pro Linux od Microsoftu. V prostředí bash v CentOS 7,5 můžete použít následující příkazy.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -260,7 +259,7 @@ Vytvořte pravidlo brány firewall pomocí nástroje, aby server Veeam Backup mo
 
 Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [Eskalace](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 ### <a name="cloudsimple-references"></a>Odkazy na CloudSimple
 

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086604"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Kurz: reakce na události Blob Storage v IoT Edge (Preview)
@@ -134,14 +133,14 @@ V této části se dozvíte, jak nasadit modul Blob Storage Azure, který se bud
 
    > [!IMPORTANT]
    > - Blob Storage modul může publikovat události pomocí protokolu HTTPS i HTTP. 
-   > - Pokud jste povolili ověřování na základě klienta pro EventGrid, ujistěte se, že aktualizujete hodnotu EVENTGRID_ENDPOINT tak, aby povolovala https, například `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`:.
-   > - Přidejte také další proměnnou `AllowUnknownCertificateAuthority=true` prostředí do výše uvedeného JSON. Při komunikaci s EventGrid přes HTTPS umožňuje **AllowUnknownCertificateAuthority** modul úložiště důvěřovat certifikátům serveru EventGrid podepsaných svým držitelem.
+   > - Pokud jste povolili ověřování na základě klienta pro EventGrid, ujistěte se, že aktualizujete hodnotu EVENTGRID_ENDPOINT tak, aby povolovala https, například: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` .
+   > - Přidejte také další proměnnou prostředí `AllowUnknownCertificateAuthority=true` do výše uvedeného JSON. Při komunikaci s EventGrid přes HTTPS umožňuje **AllowUnknownCertificateAuthority** modul úložiště důvěřovat certifikátům serveru EventGrid podepsaných svým držitelem.
 
 4. Aktualizujte kód JSON, který jste zkopírovali, pomocí následujících informací:
 
    - Nahraďte `<your storage account name>` názvem, který si můžete pamatovat. Názvy účtů by měly mít délku 3 až 24 znaků a malými písmeny a číslicemi. Žádné mezery.
 
-   - Nahraďte `<your storage account key>` klíčem Base64 64-byte. Klíč můžete vygenerovat pomocí nástrojů, jako je [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Tyto přihlašovací údaje použijete pro přístup k úložišti objektů BLOB z jiných modulů.
+   - Nahraďte `<your storage account key>` klíčem base64 64-byte. Klíč můžete vygenerovat pomocí nástrojů, jako je [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Tyto přihlašovací údaje použijete pro přístup k úložišti objektů BLOB z jiných modulů.
 
    - Nahraďte `<event grid module name>` názvem vašeho modulu Event Grid.
    - Nahraďte `<storage mount>` v závislosti na vašem operačním systému vašeho kontejneru.
@@ -199,7 +198,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
     > - Pokud je v toku HTTPS povolený ověřování klienta prostřednictvím certifikátu, bude požadavek na kudrlinkou:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
 2. Předplatitelé se můžou zaregistrovat pro události publikované v tématu. K přijetí jakékoli události budete muset vytvořit předplatné Event Grid pro téma **MicrosoftStorage** .
-    1. Vytvořte blobsubscription. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+    1. Vytvořte blobsubscription.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
        ```json
         {
@@ -217,7 +216,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
        >[!NOTE]
        > Vlastnost **endpointType** určuje, že předplatitel je **Webhook**.  **EndpointUrl** Určuje adresu URL, na které předplatitel naslouchá pro události. Tato adresa URL odpovídá ukázce funkce Azure, kterou jste nasadili dříve.
 
-    2. Spuštěním následujícího příkazu vytvořte odběr pro téma. Ověřte, že se `200 OK`zobrazí stavový kód HTTP.
+    2. Spuštěním následujícího příkazu vytvořte odběr pro téma. Ověřte, že se zobrazí stavový kód HTTP `200 OK` .
 
        ```sh
        curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
@@ -320,35 +319,35 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
             }
     ```
 
-Blahopřejeme! Dokončili jste tento kurz. Následující části obsahují podrobné informace o vlastnostech události.
+Gratulujeme! Dokončili jste tento kurz. Následující části obsahují podrobné informace o vlastnostech události.
 
 ### <a name="event-properties"></a>Vlastnosti události
 
 Tady je seznam podporovaných vlastností události a jejich typy a popisy. 
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
 | Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data události služby Blob Storage. |
+| data | odkazy objektů | Data události služby Blob Storage. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| rozhraní api | řetězec | Operace, která aktivovala událost. Může to být jedna z následujících hodnot: <ul><li>BlobCreated – povolené hodnoty jsou: `PutBlob` a`PutBlockList`</li><li>BlobDeleted – povolené hodnoty jsou `DeleteBlob` `DeleteAfterUpload` a `AutoDelete`. <p>Událost `DeleteAfterUpload` se generuje, když se automaticky odstraní objekt blob, protože deleteAfterUpload požadovaná vlastnost je nastavená na true. </p><p>`AutoDelete`událost se generuje, když se automaticky odstraní objekt blob, protože vypršela platnost požadované hodnoty vlastnosti deleteAfterMinutes.</p></li></ul>|
+| rozhraní api | řetězec | Operace, která aktivovala událost. Může to být jedna z následujících hodnot: <ul><li>BlobCreated – povolené hodnoty jsou: `PutBlob` a`PutBlockList`</li><li>BlobDeleted – povolené hodnoty jsou `DeleteBlob` `DeleteAfterUpload` a `AutoDelete` . <p>`DeleteAfterUpload`Událost se generuje, když se automaticky odstraní objekt blob, protože deleteAfterUpload požadovaná vlastnost je nastavená na true. </p><p>`AutoDelete`událost se generuje, když se automaticky odstraní objekt blob, protože vypršela platnost požadované hodnoty vlastnosti deleteAfterMinutes.</p></li></ul>|
 | ID žádosti klienta | řetězec | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Podrobnosti najdete v tématu [Formát protokolu](/rest/api/storageservices/storage-analytics-log-format). |
 | Identifikátor | řetězec | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 | značk | řetězec | Hodnota, kterou můžete použít k podmíněnému provádění operací. |
 | Třída | řetězec | Typ obsahu zadaný pro objekt BLOB. |
 | contentLength | celé číslo | Velikost objektu BLOB v bajtech |
 | blobType | řetězec | Typ objektu BLOB Platné hodnoty jsou buď "BlockBlob" nebo "PageBlob". |
-| url | řetězec | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, pak adresa URL má tuto strukturu: * \<název úložiště-účet-název\>. blob.Core.Windows.NET/\<\>/\<kontejner-název souboru\>*. <br>Pokud klient používá REST API Data Lake Storage, pak adresa URL má tuto strukturu: * \<Storage-Account-\>Name.\<DFS.Core.Windows.NET/File\>/\<\>*-název File-Name. |
+| url | řetězec | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, adresa URL má tuto strukturu: * \<storage-account-name\> . blob.Core.Windows.NET/ \<container-name\> / \<file-name\> *. <br>Pokud klient používá REST API Data Lake Storage, adresa URL má tuto strukturu: * \<storage-account-name\> . DFS.Core.Windows.NET/ \<file-system-name\> / \<file-name\> *. |
 
 
 ## <a name="next-steps"></a>Další kroky

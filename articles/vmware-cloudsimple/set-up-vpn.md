@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087126"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu CloudSimple
@@ -37,7 +36,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 1. Spusťte portál CloudSimple a vyberte **síť**.
 2. Vyberte **VPN Gateway**.
 3. V seznamu bran VPN klikněte na bránu VPN typu Point-to-site.
-4. Vyberte **Uživatelé**.
+4. Vyberte možnost **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN** .
 
     ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
@@ -57,7 +56,7 @@ Níže uvedený příklad ukazuje Import připojení pomocí **klienta viskozity
 
 2. V počítači otevřete viskozitu.
 
-3. Klikněte na **+** ikonu a vyberte **importovat připojení** > **ze souboru**.
+3. Klikněte na **+** ikonu a vyberte **importovat připojení**  >  **ze souboru**.
 
     ![Importovat konfiguraci sítě VPN ze souboru](media/import-p2s-vpn-config.png)
 
@@ -79,7 +78,7 @@ Připojení VPN typu Point-to-site řeší názvy DNS prvního privátního clou
 
 1. Spusťte [portál CloudSimple](access-cloudsimple-portal.md).
 
-2. Přejděte na **prostředky** > **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
+2. Přejděte na **prostředky**  >  **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
 
 3. Na stránce **Souhrn** v privátním cloudu zkopírujte IP adresu serveru DNS privátního cloudu v části **základní informace**.
 
@@ -97,7 +96,7 @@ Připojení VPN typu Point-to-site řeší názvy DNS prvního privátního clou
 
     ![Upravit připojení VPN](media/viscosity-edit-connection.png)
 
-7. Klikněte na kartu **sítě** a zadejte IP adresy privátního cloudového serveru DNS oddělené čárkou nebo mezerou a doménou ```cloudsimple.io```jako.  Vyberte **Ignorovat nastavení DNS odesílaná serverem VPN**.
+7. Klikněte na kartu **sítě** a zadejte IP adresy privátního cloudového serveru DNS oddělené čárkou nebo mezerou a doménou jako ```cloudsimple.io``` .  Vyberte **Ignorovat nastavení DNS odesílaná serverem VPN**.
 
     ![Sítě VPN](media/viscosity-edit-connection-networking.png)
 

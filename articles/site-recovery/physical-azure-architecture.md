@@ -4,10 +4,9 @@ description: Tento článek poskytuje přehled komponent a architektury použív
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162833"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii fyzického serveru do Azure
@@ -18,7 +17,7 @@ Tento článek popisuje architekturu a procesy používané při replikaci, pře
 
 Následující tabulka a grafika obsahují podrobný pohled na součásti používané pro replikaci fyzického serveru do Azure.
 
-| **Komponenta** | **Požadavek** | **Zobrazí** |
+| **Komponenta** | **Požadavek** | **Podrobnosti** |
 | --- | --- | --- |
 | **Azure** | Předplatné Azure a síť Azure. | Replikovaná data z místních fyzických počítačů se ukládají ve službě Azure Managed disks. Virtuální počítače Azure se při spuštění převzetí služeb při selhání z místního prostředí do Azure vytvoří s replikovanými daty. Virtuální počítače Azure se připojí k virtuální síti Azure po svém vytvoření. |
 | **Procesový Server** | Instaluje se ve výchozím nastavení společně s konfiguračním serverem. | Funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.<br/><br/> Procesový Server také nainstaluje službu mobility na servery, které chcete replikovat.<br/><br/> Jak vaše nasazení poroste, můžete přidat další samostatné procesové servery, které budou zpracovávat větší objemy replikačních přenosů. |

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: b113cc27195b2ce954d677ab0f1ec83e394946be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060214"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Kurz: Konfigurace SmartFile pro Automatické zřizování uživatelů
@@ -97,7 +96,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-smartfile-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro SmartFile ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -113,7 +112,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5.  V části **přihlašovací údaje správce** zadejte `https://<SmartFile sitename>.smartfile.com/ftp/scim` **adresu URL tenanta**. Příklad by vypadal jako `https://demo1test.smartfile.com/ftp/scim`. Zadejte hodnotu **tokenu nosiče** (ProductKey: ProductPassword), kterou jste získali dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k SmartFile. Pokud se připojení nepovede, ujistěte se, že má váš účet SmartFile oprávnění správce, a zkuste to znovu.
+5.  V části **přihlašovací údaje správce** zadejte `https://<SmartFile sitename>.smartfile.com/ftp/scim` **adresu URL tenanta**. Příklad by vypadal jako `https://demo1test.smartfile.com/ftp/scim` . Zadejte hodnotu **tokenu nosiče** (ProductKey: ProductPassword), kterou jste získali dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k SmartFile. Pokud se připojení nepovede, ujistěte se, že má váš účet SmartFile oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
