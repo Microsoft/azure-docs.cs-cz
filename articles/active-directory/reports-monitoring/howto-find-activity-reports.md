@@ -7,19 +7,19 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608207"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledání sestav aktivit na webu Azure Portal
 
@@ -52,10 +52,10 @@ Pomocí pokročilého filtrování v sestavě audit můžete získat přístup k
 
 Mezi kategorie patří:
 
-- Všechny
+- Vše
 - AdministrativeUnit
 - ApplicationManagement
-- Ověřování
+- Authentication
 - Autorizace
 - Kontakt
 - Zařízení
@@ -63,7 +63,7 @@ Mezi kategorie patří:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
-- Ostatní
+- Jiné
 - Zásada
 - ResourceManagement
 - RoleManagement
@@ -73,7 +73,7 @@ Pomocí filtru rozevíracího seznamu **služby** můžete také filtrovat konkr
 
 Služby zahrnují:
 
-- Všechny
+- Vše
 - Kontroly přístupu
 - Zřizování účtů 
 - Jednotné přihlašování aplikace
@@ -149,7 +149,7 @@ K sestavám zjištěných detekcí rizik můžete získat přístup v části **
 
 Ve stažených protokolech aktivity (auditu nebo přihlášení) se nezobrazují žádné záznamy pro zvolený čas. Proč? 
 
- ![Generování sestav](./media/troubleshoot-missing-data-download/01.png)
+ ![Přehledy](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -165,16 +165,16 @@ Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-repor
 
 Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/01.png)
+ ![Přehledy](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Příčina
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
-|--------|--------|---------------|---------------|
-| Audit adresáře | &nbsp; | 2 minuty | 5 minut |
-| Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
+| Sestava | Latence (P95) | Latence (P99) |
+|--------|---------------|---------------|
+| Audit adresáře | 2 minuty | 5 minut |
+| Aktivita přihlášení | 2 minuty | 5 minut |
 
 #### <a name="resolution"></a>Řešení
 
@@ -186,16 +186,16 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se pro tyto akce zobrazí protokoly přihlášení v okně `Activity logs > Sign-ins`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/02.png)
+ ![Přehledy](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Příčina
 
 Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce jsou uvedené naše latence u protokolů aktivit. 
 
-| Sestava | &nbsp; | Latence (P95) | Latence (P99) |
-|--------|--------|---------------|---------------|
-| Audit adresáře | &nbsp; | 2 minuty | 5 minut |
-| Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
+| Sestava | Latence (P95) | Latence (P99) |
+|--------|---------------|---------------|
+| Audit adresáře | 2 minuty | 5 minut |
+| Aktivita přihlášení | 2 minuty | 5 minut |
 
 #### <a name="resolution"></a>Řešení
 
@@ -207,16 +207,16 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více než 30 dnů. Proč? 
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/03.png)
+ ![Přehledy](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Příčina
 
 V závislosti na vaší licenci akce služby Azure Active Directory ukládají sestavy aktivit na tyto počty dní:
 
-| Sestava           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Audit adresáře  | &nbsp; |   7 dní     | 30 dní             | 30 dní             |
-| Přihlašovací aktivita | &nbsp; | Není k dispozici. K vlastním přihlášením máte přístup po dobu 7 dnů v okně profilu uživatele. | 30 dní | 30 dní             |
+| Sestava           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---
+| Audit adresáře  | 7 dní        | 30 dní             | 30 dní             |
+| Přihlašovací aktivita | Není k dispozici. K vlastním přihlášením máte přístup po dobu 7 dnů v okně profilu uživatele. | 30 dní | 30 dní             |
 
 Další informace najdete v tématu [Zásady uchovávání sestav Azure Active Directory](reference-reports-data-retention.md).  
 

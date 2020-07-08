@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d754b02566c3026b908ab0a3254db3113cd225
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611284"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikace a řešení problémů s přiřazením licencí pro skupinu v Azure Active Directory
 
@@ -120,7 +120,7 @@ Aktualizace přiřazení licence u uživatele způsobí aktivaci výpočtu adres
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException v protokolech auditu
 
 **Problém:** Uživatel má LicenseAssignmentAttributeConcurrencyException pro přiřazení licence v protokolech auditu.
-Když se licencování na základě skupiny pokusí zpracovat souběžné přiřazení licence stejné licence uživateli, tato výjimka se zaznamená na uživatele. K tomu obvykle dochází v případě, že je uživatel členem více skupin se stejnou přiřazenou licencí. Služba AZure AD se znovu pokusí zpracovat uživatelskou licenci a tento problém se vyřeší. Od zákazníka není vyžadována žádná akce k vyřešení tohoto problému.
+Když se licencování na základě skupiny pokusí zpracovat souběžné přiřazení licence stejné licence uživateli, tato výjimka se zaznamená na uživatele. K tomu obvykle dochází v případě, že je uživatel členem více skupin se stejnou přiřazenou licencí. Služba Azure AD se znovu pokusí zpracovat uživatelskou licenci a tento problém se vyřeší. Od zákazníka není vyžadována žádná akce k vyřešení tohoto problému.
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Pro skupinu se přiřadilo víc než jedna licence k produktu.
 

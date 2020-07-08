@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3195f1f409ab5cb87cd0520192a3dd362e188a3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610230"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Škálování Service Fabric samostatných clusterů
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou obsahovat potenciálně tisíce uzlů. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů).  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -28,7 +28,7 @@ Samostatné clustery umožňují nasazení Service Fabric clusteru v místním p
 Odebrání uzlů může iniciovat více upgradů. Některé uzly jsou označeny `IsSeedNode=”true”` značkou a lze je identifikovat pomocí dotazu na manifest clusteru pomocí příkazu [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Odebrání takových uzlů může trvat déle než jiné, protože počáteční uzly se v takových scénářích musí pohybovat. Cluster musí udržovat minimálně tři uzly typu primární uzel.
 
 > [!WARNING]
-> Doporučujeme, abyste u clusteru nesnížili počet uzlů pod [Velikost clusteru úrovně spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) . To bude mít vliv na schopnost Service Fabric systémových služeb se replikovat napříč clusterem a pak bude cluster destabilizovat nebo může zničit.
+> Doporučujeme, abyste u clusteru nesnížili počet uzlů pod [Velikost clusteru úrovně spolehlivosti](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) . To bude mít vliv na schopnost Service Fabric systémových služeb se replikovat napříč clusterem a pak bude cluster destabilizovat nebo může zničit.
 >
 
 Při škálování samostatného clusteru mějte na paměti následující pokyny:

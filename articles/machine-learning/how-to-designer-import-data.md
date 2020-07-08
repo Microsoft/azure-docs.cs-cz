@@ -10,14 +10,14 @@ author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 386da835c239953066bf47ee670f7fb27c7b04f4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610944"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
 
 V tomto článku se dozvíte, jak v Návrháři importovat vlastní data, abyste mohli vytvářet vlastní řešení. Existují dva způsoby, jak můžete importovat data do návrháře: 
 
@@ -74,7 +74,7 @@ Návrhář podporuje tabulkové datové sady vytvořené z následujících zdro
  * Soubory Parquet
  * Dotazy SQL
 
-## <a name="data-types"></a>Datové typy
+## <a name="data-types"></a>Typy dat
 
 Návrhář interně rozpoznává následující typy dat:
 
@@ -89,6 +89,10 @@ Návrhář používá interní datový typ k předávání dat mezi moduly. Data
 ## <a name="data-constraints"></a>Omezení dat
 
 Moduly v návrháři jsou omezeny velikostí cíle výpočtů. U větších datových sad byste měli použít větší Azure Machine Learning výpočetní prostředky. Další informace o Azure Machine Learning COMPUTE najdete v tématu [co jsou výpočetní cíle v Azure Machine Learning?](concept-compute-target.md#azure-machine-learning-compute-managed)
+
+## <a name="access-data-in-a-virtual-network"></a>Přístup k datům ve virtuální síti
+
+Pokud je váš pracovní prostor ve virtuální síti, musíte provést další kroky konfigurace, aby bylo možné vizualizovat data v návrháři. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [izolace sítě během školení & odvození s privátními virtuálními sítěmi](how-to-enable-virtual-network.md#machine-learning-studio).
 
 ## <a name="next-steps"></a>Další kroky
 

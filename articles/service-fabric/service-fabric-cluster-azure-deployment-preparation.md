@@ -3,12 +3,12 @@ title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610587"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
@@ -28,7 +28,7 @@ Důležitým krokem každého produkčního nasazení je plánování kapacity. 
 * Spolehlivost a odolnost clusteru
 
 ### <a name="select-the-initial-number-of-node-types"></a>Vyberte počáteční počet typů uzlů.
-Nejdřív musíte zjistit, k čemu se má vytvářený cluster používat. Jaké druhy aplikací plánujete nasadit do tohoto clusteru? Má vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové? Mají vaše služby (z vaší aplikace) různé požadavky na infrastrukturu, jako je větší nebo vyšší počet cyklů procesoru? Cluster Service Fabric se může skládat z více než jednoho typu uzlu: primární typ uzlu a jeden nebo více typů neprimárních uzlů. Každý typ uzlu je namapován na sadu škálování virtuálního počítače. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. [Vlastnosti uzlu a omezení umístění][placementconstraints] je možné nastavit tak, aby se omezily konkrétní služby na konkrétní typy uzlů.  Další informace najdete v tématu [počet typů uzlů, ve kterých cluster potřebuje začít](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+Nejdřív musíte zjistit, k čemu se má vytvářený cluster používat. Jaké druhy aplikací plánujete nasadit do tohoto clusteru? Má vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové? Mají vaše služby (z vaší aplikace) různé požadavky na infrastrukturu, jako je větší nebo vyšší počet cyklů procesoru? Cluster Service Fabric se může skládat z více než jednoho typu uzlu: primární typ uzlu a jeden nebo více typů neprimárních uzlů. Každý typ uzlu je namapován na sadu škálování virtuálního počítače. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. [Vlastnosti uzlu a omezení umístění][placementconstraints] je možné nastavit tak, aby se omezily konkrétní služby na konkrétní typy uzlů.  Další informace najdete v tématu [Service Fabric plánování kapacity clusteru](service-fabric-cluster-capacity.md).
 
 ### <a name="select-node-properties-for-each-node-type"></a>Vybrat vlastnosti uzlu pro každý typ uzlu
 Typy uzlů definují SKU, číslo a vlastnosti virtuálních počítačů v přidružené sadě škálování.
@@ -37,7 +37,7 @@ Minimální velikost virtuálních počítačů pro každý typ uzlu je určena 
 
 Minimální počet virtuálních počítačů pro typ primárního uzlu závisí na zvolené [úrovni spolehlivosti][reliability] .
 
-Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)a [bezstavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
+Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#stateful-workloads)a [bezstavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#stateless-workloads).
 
 Jakékoli více než minimální počet uzlů by měl být založen na počtu replik aplikace nebo služeb, které chcete spustit v tomto typu uzlu.  [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md) vám pomůže odhadnout prostředky, které potřebujete ke spuštění svých aplikací. Kdykoli můžete cluster škálovat nahoru nebo dolů později, aby se změnila změna aplikační úlohy. 
 
@@ -62,14 +62,14 @@ Dočasné disky s operačním systémem nejsou konkrétní funkcí Service Fabri
     > [!NOTE]
     > Ujistěte se, že jste vybrali velikost virtuálního počítače, která je stejná nebo větší než velikost disku operačního systému samotného virtuálního počítače. v opačném případě může při nasazení Azure dojít k chybě (i v případě, že se původně přijal).
 
-2. Zadejte verzi sady škálování sady virtuálních počítačů (`vmssApiVersion`) `2018-06-01` nebo novější:
+2. Zadejte verzi sady škálování sady virtuálních počítačů ( `vmssApiVersion` ) `2018-06-01` nebo novější:
 
     ```xml
     "variables": {
         "vmssApiVersion": "2018-06-01",
     ```
 
-3. V části sada škálování virtuálního počítače v šabloně nasazení zadejte `Local` možnost pro: `diffDiskSettings`
+3. V části sada škálování virtuálního počítače v šabloně nasazení zadejte `Local` možnost pro `diffDiskSettings` :
 
     ```xml
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -123,5 +123,5 @@ Je vaše aplikace a cluster připravený přijmout provozní provoz? Před nasaz
 * [Vytvoření clusteru Service Fabric se systémem Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster

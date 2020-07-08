@@ -4,21 +4,21 @@ description: Naučte se používat Azure Firewall k ochraně nasazení virtuáln
 author: vhorne
 ms.service: firewall
 services: firewall
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 86b30b644da929f10f5d7c9642d5f89fbd29a7fa
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611131"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Použití Azure Firewall k ochraně nasazení virtuálních ploch Windows
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Ochrana nasazení virtuálních ploch s Windows pomocí Azure Firewallu
 
 Virtuální plocha Windows je služba virtualizace plochy a aplikací, která běží v Azure. Když se koncový uživatel připojí k prostředí virtuálních počítačů s Windows, jejich relace se spustí fondem hostitelů. Fond hostitelů je kolekce virtuálních počítačů Azure, které se jako hostitelé relací registrují na virtuální plochu Windows. Tyto virtuální počítače běží ve vaší virtuální síti a podléhají ovládacím prvkům zabezpečení virtuální sítě. Potřebují odchozí internetový přístup ke službě Virtual Desktop systému Windows, aby fungovaly správně a mohly by pro koncové uživatele vyžadovat odchozí přístup k Internetu. Azure Firewall vám může pomáhat uzamknout prostředí a filtrovat odchozí provoz.
 
-[![Architektura](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png) virtuálních klientů Windows](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
+[![Architektura ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png) virtuálních klientů Windows](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
 
 Postupujte podle pokynů v tomto článku a poskytněte další ochranu fondu hostitelů virtuálních počítačů s Windows pomocí Azure Firewall.
 

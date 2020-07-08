@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: a4cbe49efd605e2104dbbc9f389a85e8fc4c468e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611352"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -27,7 +27,7 @@ Tento článek vám pomůže při řešení potíží při nasazování zaříze
 
 Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF", udělejte toto:
 
-1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
+1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
 2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) s webovým klientem ( *IP adresa hostitele* https://<>/UI).
@@ -98,7 +98,7 @@ Chyba 60028: zjišťování nelze iniciovat z důvodu chyby. Operace se pro zada
 - Pokud dojde k chybě ověřování, přečtěte si pokyny k nápravě a opravte chyby a potom zkuste znovu **spustit možnost Uložit a spustit zjišťování** .
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>Chyba 60025: operace Azure AD selhala 
-Chyba 60025: operace Azure AD se nezdařila. K chybě při vytváření nebo aktualizaci aplikace Azure AD dojde v případě, že se uživatelský účet Azure, který se používá k zahájení zjišťování, liší od účtu použitého k registraci zařízení. Proveďte některou z následujících akcí:
+Chyba 60025: operace Azure AD se nezdařila. K chybě při vytváření nebo aktualizaci aplikace Azure AD dojde v případě, že se uživatelský účet Azure, který se používá k zahájení zjišťování, liší od účtu použitého k registraci zařízení. Proveďte jednu z následujících akcí:
 
 - Ujistěte se, že uživatelský účet, který spouští zjišťování, je stejný jako ten, který se používá k registraci zařízení.
 - Zadejte Azure Active Directory oprávnění k přístupu k aplikacím pro uživatelský účet, pro který se operace zjišťování nedaří.
@@ -144,11 +144,15 @@ Pokud se zjištěné virtuální počítače nezobrazí na portálu nebo pokud j
 
 Pokud virtuální počítače odstraníte a pořád se zobrazí na portálu, počkejte 30 minut. Pokud se pořád zobrazují, aktualizujte je tak, jak je popsáno výše.
 
-## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Chyba: nahraný soubor nemá očekávaný formát.
-Některé nástroje mají místní nastavení, které vytvoří soubor CSV se středníkem jako oddělovačem. Změňte prosím nastavení tak, aby byl oddělovač čárkou.
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nezobrazují se údaje o výkonu pro některé síťové adaptéry na mých fyzických serverech.
 
-## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Naimportoval (a) jsem sdílený svazek clusteru, ale zobrazuje se stav zjišťování probíhá.
-Tento stav se zobrazí, pokud selhalo nahrávání sdíleného svazku clusteru z důvodu chyby ověření. Pokuste se znovu naimportovat sdílený svazek clusteru. Můžete si stáhnout zprávu o chybách předchozího nahrávání a pomocí pokynů k nápravě v souboru tyto chyby opravit. Zprávu o chybách si můžete stáhnout z části Import podrobností na stránce zjistit počítače.
+K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. Kvůli přípravku je propustnost sítě zachycena na zjištěných virtuálních síťových adaptérech.
+
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Chyba: Nahraný soubor není v očekávaném formátu
+Některé nástroje mají místní nastavení, které zajistí vytvoření souboru CSV se středníkem jako oddělovačem. Změňte toto nastavení tak, aby oddělovačem byla čárka.
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Po importu souboru CSV se zobrazuje zpráva Probíhá zjišťování
+Tento stav se zobrazí, pokud selhalo nahrávání sdíleného svazku clusteru z důvodu chyby ověření. Zkuste soubor CSV importovat znovu. Můžete si stáhnout sestavu chyb předchozího nahrávání a podle doporučených pokynů v tomto souboru opravit chyby. Sestavu chyb si můžete stáhnout v části Podrobnosti o importu na stránce Zjistit počítače.
 
 ## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Nevidíte podrobnosti o aplikacích ani po aktualizaci přihlašovacích údajů hostů.
 Zjišťování aplikací se spouští každých 24 hodin. Chcete-li zobrazit podrobnosti okamžitě, proveďte aktualizaci následujícím způsobem. To může trvat několik minut v závislosti na ne. zjištěných virtuálních počítačů.

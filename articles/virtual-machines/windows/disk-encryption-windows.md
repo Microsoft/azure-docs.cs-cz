@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4509c62b15eb06c89fe80555a26773fdd3876e66
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 81ac76ef5eeebd278dc10e03d661bb21469c8f4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790894"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610557"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -134,7 +134,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | vmName | Název virtuálního počítače, pro který se má spustit operace šifrování |
 | keyVaultName | Název trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI.`az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Název skupiny prostředků, která obsahuje Trezor klíčů|
-|  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče ve formátu&lt;https://trezoru klíčů-name&gt;. Vault.Azure.NET/Key/.&lt;&gt; Pokud nechcete používat KEK, nechte toto pole prázdné. |
+|  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče ve formátu https:// &lt; trezoru klíčů-name &gt; . Vault.Azure.NET/Key/ &lt; &gt; . Pokud nechcete používat KEK, nechte toto pole prázdné. |
 | volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | resizeOSDisk | Měl by se změnit velikost oddílu operačního systému tak, aby zabírala plný virtuální pevný disk s operačním systémem, než se rozdělí systémový svazek. |
@@ -217,22 +217,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 
 ## <a name="disable-encryption"></a>Zakázat šifrování
-Šifrování můžete zakázat pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo pomocí Správce prostředků šablony. Zakázání šifrování datových disků u virtuálních počítačů Windows, když byly zašifrovány disky s operačním systémem a datové disky, nefungujte podle očekávání. Místo toho zakažte šifrování na všech discích.
-
-- **Zakázat šifrování disku pomocí Azure PowerShell:** Pokud chcete šifrování zakázat, použijte rutinu [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) . 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' -VolumeType "all"
-     ```
-
-- **Zakázat šifrování pomocí Azure CLI:** Pokud chcete šifrování zakázat, použijte příkaz [AZ VM Encryption Disable](/cli/azure/vm/encryption#az-vm-encryption-disable) . 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
-     ```
-- **Zakázat šifrování pomocí šablony Správce prostředků:** 
-
-    1. Kliknutím na **nasadit do Azure** z části [zakázat šifrování disku při spuštění šablony virtuálního počítače s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) .
-    2. Vyberte předplatné, skupinu prostředků, umístění, virtuální počítač, typ svazku, právní výrazy a smlouvu.
-    3.  Kliknutím na **koupit** zakažte šifrování disku na běžícím virtuálním počítači s Windows. 
+[!INCLUDE [disk-encryption-disable-encryption-powershell](../../../includes/disk-encryption-disable-powershell.md)]
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -248,9 +233,11 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Kontejnery Windows serveru, které vytvářejí dynamické svazky pro každý kontejner.
 - Dočasné disky s operačním systémem.
 - Šifrování sdílených/distribuovaných systémů souborů (ale ne omezené na) DFS, GFS, DRDB a CephFS.
-- Přesunutí šifrovaných virtuálních počítačů do jiného předplatného.
+- Přesunutí šifrovaných virtuálních počítačů do jiného předplatného nebo oblasti.
+- Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
 - Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Virtuální počítače řady Lsv2 (viz: [Lsv2-Series](../lsv2-series.md))
+- Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 
 ## <a name="next-steps"></a>Další kroky
 

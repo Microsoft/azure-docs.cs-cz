@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991258"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608258"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory
 
@@ -81,11 +81,11 @@ Pokud chcete nakonfigurovat adresář pro přístup k rozhraní API pro vytvář
 
     ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a. Do textového pole **název** zadejte `Reporting API application`.
+    a. Do textového pole **název** zadejte `Reporting API application` .
 
     b. V případě **typu podporované účty**vyberte **účty jenom v této organizaci**.
 
-    c. V poli **Adresa URL pro přesměrování** vyberte **webové** textové `https://localhost`pole a zadejte.
+    c. V poli **Adresa URL pro přesměrování** vyberte **webové** textové pole a zadejte `https://localhost` .
 
     d. Vyberte **Zaregistrovat**. 
 
@@ -184,7 +184,7 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro vytv
 
 5. Na stránce **Přidat tajný klíč klienta** přidejte:
 
-    a. Do textového pole **Popis** zadejte `Reporting API`.
+    a. Do textového pole **Popis** zadejte `Reporting API` .
 
     b. Po **vypršení platnosti**vyberte **2 roky**.
 

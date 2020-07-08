@@ -1,17 +1,16 @@
 ---
 title: Zálohování stavu systému Windows do Azure
 description: Naučte se zálohovat stav systému Windows Server nebo počítačů s Windows do Azure.
-ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611437"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Zálohování stavu systému Windows ve Správce prostředků nasazení
+# <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
 
 Tento článek vysvětluje, jak zálohovat stav systému Windows Server do Azure. Slouží k tomu, aby vás provedl základy.
 
@@ -19,49 +18,9 @@ Chcete-li se dozvědět více o Azure Backup, přečtěte si tento [přehled](ba
 
 Pokud předplatné Azure nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/), který vám umožní přístup ke službám Azure.
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-Chcete-li zálohovat stav systému Windows Server, je třeba vytvořit trezor Recovery Services v oblasti, kam chcete data uložit. Musíte také určit způsob replikace úložiště.
-
-### <a name="to-create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
-
-1. Pokud jste to ještě neudělali, přihlaste se na webu [Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
-2. V nabídce centra klikněte na **Všechny služby**, v seznamu prostředků zadejte **Recovery Services** a klikněte na **Trezory služby Recovery Services**.
-
-    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-system-state/open-rs-vault-list.png)
-
-    Pokud předplatné obsahuje trezory služby Recovery Services, jsou tyto trezory uvedené v seznamu.
-3. V nabídce **Trezory Recovery Services** klikněte na **Přidat**.
-
-    ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
-
-    Otevře se okno trezoru Recovery Services s výzvou k vyplnění polí **Název**, **Předplatné**, **Skupina prostředků** a **Oblast**.
-
-    ![Vytvoření trezoru Recovery Services – krok 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
-
-4. Jako **Název** zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný v rámci předplatného Azure. Zadejte název v rozsahu 2 až 50 znaků. Musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
-
-5. V části **Předplatné** z rozevírací nabídky vyberte předplatné Azure. Pokud používáte jenom jedno předplatné, zobrazí se toto předplatné a můžete přejít k dalšímu kroku. Pokud si nejste jisti, jaké předplatné použít, použijte výchozí (nebo navrhované) předplatné. Více možností je dostupných, jen pokud je váš účet organizace přidružený k více předplatným Azure.
-
-6. V části **Skupina prostředků**:
-
-    * vyberte **Vytvořit novou**, pokud chcete vytvořit skupinu prostředků.
-    Nebo
-    * vyberte **Použít existující** a kliknutím na rozevírací nabídku zobrazte seznam dostupných skupin prostředků.
-
-   Kompletní informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md).
-
-7. Klikněte na **Oblast** a vyberte zeměpisnou oblast trezoru. Tato volba určuje geografickou oblast, kam jsou zasílaná vaše zálohovaná data.
-
-8. V dolní části okna trezoru služby Recovery Services klikněte na **Vytvořit**.
-
-    Vytvoření trezoru služby Recovery Services může trvat několik minut. Sledujte oznámení o stavu v pravé horní části portálu. Když je trezor vytvořený, zobrazí se v seznamu trezorů Služeb zotavení. Pokud se trezor nezobrazí ani po několika minutách, klikněte na **Obnovit**.
-
-    ![Kliknutí na tlačítko Obnovit](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
-
-    Jakmile se trezor zobrazí v seznamu trezorů služby Recovery Services, jste připraveni nastavit redundanci úložiště.
-
-### <a name="set-storage-redundancy-for-the-vault"></a>Nastavení redundance úložiště pro trezor
+## <a name="set-storage-redundancy-for-the-vault"></a>Nastavení redundance úložiště pro trezor
 
 Při vytváření trezoru služby Recovery Services se ujistěte, že je redundance úložiště nakonfigurována požadovaným způsobem.
 

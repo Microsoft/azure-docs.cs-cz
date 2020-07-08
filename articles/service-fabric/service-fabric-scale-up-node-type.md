@@ -3,22 +3,19 @@ title: Horizontální navýšení kapacity typu uzlu Azure Service Fabric
 description: Naučte se škálovat Cluster Service Fabric přidáním sady škálování virtuálního počítače.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610689"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Vertikální navýšení kapacity primárního typu uzlu clusteru Service Fabric
 Tento článek popisuje, jak škálovat typ primárního uzlu clusteru Service Fabric pomocí zvýšení prostředků virtuálního počítače. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně. Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru vertikálně (změnit prostředky uzlů) nebo upgradovat operační systém typu virtuálních počítačů typu uzel.  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
 
 > [!WARNING]
-> Nespouštějte změnu primární jednotky SKU virtuálního počítače NodeType, pokud stav clusteru není v pořádku. Pokud stav clusteru není v pořádku, budete cluster dále rozstabilizovat jenom v případě, že se pokusíte změnit SKU virtuálního počítače.
+> Pokud stav clusteru není v pořádku, nepokoušejte se nepokusit o typ primárního uzlu postup horizontálního navýšení kapacity, protože tento cluster bude dál jenom destabilizovat.
 >
-> Nedoporučujeme měnit SKU virtuálního počítače pro typ nebo uzel škály, pokud není spuštěný při použití [odolnosti proti stříbru nebo většímu](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Změna velikosti SKU virtuálního počítače je místní operace infrastruktury, která je destruktivní dat. Bez možnosti zpozdit nebo sledovat tuto změnu je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobovat jiné nepředvídatelné provozní problémy, a to i u bezstavových úloh. To znamená, že primární typ uzlu, na kterém běží stavová služba Service Fabric, nebo jakýkoli typ uzlu, na kterém je spuštěná vaše stavová zátěžová aplikace.
->
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,7 +68,7 @@ $parameterFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.parameters.json"
 > [!NOTE]
 > `certOutputFolder`Před spuštěním příkazu pro nasazení nového clusteru Service Fabric zajistěte, aby umístění existovalo na vašem místním počítači.
 
-Dále otevřete soubor *Deploy-2NodeTypes-2ScaleSets. Parameters. JSON* a upravte hodnoty pro `clusterName` a tak, `dnsName` aby odpovídaly dynamickým hodnotám, které jste nastavili v prostředí PowerShell, a uložte provedené změny.
+Dále otevřete *Deploy-2NodeTypes-2ScaleSets.parameters.jsv* souboru a upravte hodnoty pro `clusterName` a tak, `dnsName` aby odpovídaly dynamickým hodnotám, které jste nastavili v prostředí PowerShell, a uložte provedené změny.
 
 Pak nasaďte testovací Cluster Service Fabric:
 
@@ -159,6 +156,8 @@ Get-ServiceFabricClusterHealth
 ## <a name="migrate-nodes-to-the-new-scale-set"></a>Migrace uzlů do nové sady škálování
 
 Nyní jsme připraveni začít s zakázáním uzlů v původní sadě škálování. Vzhledem k tomu, že tyto uzly jsou zakázané, jsou systémové služby a počáteční uzly migrovány na virtuální počítače nové sady škálování, protože jsou také označeny jako primární typ uzlu.
+
+V případě škálování neprimárních typů uzlů byste v tomto kroku upravili omezení umístění služby tak, aby zahrnovalo novou sadu virtuálních počítačů nebo typ uzlu, a pak omezila starý počet instancí sady škálování virtuálního počítače na hodnotu nula, jeden uzel v čase (aby se zajistilo, že odebrání uzlu nebude mít vliv na spolehlivost clusteru).
 
 ```powershell
 # Disable the nodes in the original scale set.

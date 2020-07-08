@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a672db649323a82c75a7e8c0cd6556eadce8089d
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 27fbc669a81364bcb71160200504d61502169eae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609346"
 ---
 # <a name="ocr-cognitive-skill"></a>Dovednost rozpoznávání OCR
 
-Dovednosti **optického rozpoznávání znaků (OCR)** rozpoznává vytištěný a ručně psaný text v souborech obrázků. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) . Dovednosti v **OCR** se mapují na následující funkce:
+Dovednosti **optického rozpoznávání znaků (OCR)** rozpoznává vytištěný a ručně psaný text v souborech obrázků. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) . Dovednosti v **OCR** se mapují na následující funkce:
 
-+ V angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemštině se používá nové rozhraní API [pro čtení](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) .
-+ Pro všechny ostatní jazyky se používá rozhraní ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md) .
++ Rozhraní API ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) se používá pro jiné jazyky než angličtinu. 
++ V anglickém jazyce se používá nové rozhraní API [pro čtení](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) .
 
 Dovednost **optického rozpoznávání znaků** extrahuje text ze souborů obrázků. Mezi podporované formáty souborů patří:
 
@@ -41,7 +41,7 @@ Dovednost **optického rozpoznávání znaků** extrahuje text ze souborů obrá
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
 | `detectOrientation`   | Umožňuje automatickou detekci orientace obrázku. <br/> Platné hodnoty: true nebo false.|
 | `defaultLanguageCode` | <p>   Kód jazyka vstupního textu Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Čeština) <br/>da (dánština) <br/>NL (holandština) <br/>EN (angličtina) <br/>Fi (Finština)  <br/>FR (francouzština) <br/>  de (němčina) <br/>El (řečtina) <br/> hu (Maďarština) <br/> IT (italština) <br/>  Ja (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   pl (polština) <br/> PT (portugalština) <br/>  ru (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (arabské písmo) <br/> ro (rumunština) <br/> sr-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (slovenština) <br/>  unk (neznámé) <br/><br/> Pokud kód jazyka není zadán nebo je null, jazyk bude nastaven na angličtinu. Pokud je jazyk explicitně nastaven na "unk", jazyk bude automaticky rozpoznán. </p> |
@@ -51,13 +51,13 @@ Dříve existoval parametr s názvem "textExtractionAlgorithm", který určuje, 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                                          |
+| Název vstupu      | Description                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem Azure Blob, pokud ```imageAction``` je nastavena na jinou hodnotu než ```none``` . Další informace najdete v [ukázce](#sample-output) .|
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
-| Název výstupu     | Popis                   |
+| Název výstupu     | Description                   |
 |---------------|-------------------------------|
 | `text`            | Z obrázku byl extrahován prostý text.   |
 | `layoutText`    | Komplexní typ, který popisuje extrahovaný text a umístění, kde byl text nalezen.|

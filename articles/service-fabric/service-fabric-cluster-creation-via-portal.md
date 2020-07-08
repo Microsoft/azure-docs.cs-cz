@@ -3,17 +3,17 @@ title: Vytvoření clusteru služby Service Fabric na webu Azure Portal
 description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v Azure pomocí Azure Portal a Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611148"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [portál Azure](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -30,7 +30,7 @@ Toto je podrobný průvodce, který vás provede kroky nastavení clusteru Servi
 ## <a name="cluster-security"></a>Zabezpečení clusteru 
 Ve službě Service Fabric se k ověřování a šifrování pro zabezpečení různých aspektů clusteru a jeho aplikací využívají certifikáty. Další informace o použití certifikátů ve službě Service Fabric najdete v tématu věnovaném [scénářům zabezpečení clusteru Service Fabric][service-fabric-cluster-security].
 
-Pokud cluster Service Fabric vytváříte poprvé nebo nasazujete cluster pro testovací úlohy, můžete přejít k další části (**vytvořit cluster na webu Azure Portal**) a nechat systém vygenerovat certifikáty potřebné pro clustery, které spouštějí testovací úlohy. Pokud nastavujete cluster pro produkční úlohy, pak pokračujte ve čtení.
+Pokud cluster Service Fabric vytváříte poprvé nebo nasazujete cluster pro testovací úlohy, můžete přejít k další části (**vytvořit cluster v Azure Portal**) a nechat systém vygenerovat certifikáty potřebné pro clustery, které spouštějí testovací úlohy. Pokud nastavujete cluster pro produkční úlohy, pak pokračujte ve čtení.
 
 #### <a name="cluster-and-server-certificate-required"></a>Certifikát clusteru a serveru (povinné)
 Tento certifikát je nutný k zabezpečení clusteru a zabránění neoprávněnému přístupu k němu. Zabezpečení clusteru zajišťuje několik způsobů:
@@ -42,7 +42,7 @@ Aby mohl certifikát plnit tyto účely, musí splňovat následující požadav
 
 * Certifikát musí obsahovat privátní klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, který lze exportovat do souboru. pfx (Personal Information Exchange).
-* **Název subjektu certifikátu se musí shodovat s doménou** používanou pro přístup ke clusteru Service Fabric. Tento postup je nutný k poskytnutí TLS pro koncové body správy HTTPS clusteru a Service Fabric Explorer. Certifikát TLS/SSL nemůžete od certifikační autority (CA) pro `.cloudapp.azure.com` doménu získat. Získejte vlastní název domény pro svůj cluster. Když vyžádáte certifikát od certifikační autority, název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro váš cluster.
+* **Název subjektu certifikátu se musí shodovat s doménou** používanou pro přístup ke clusteru Service Fabric. Tento postup je nutný k poskytnutí TLS pro koncové body správy HTTPS clusteru a Service Fabric Explorer. Certifikát TLS/SSL nemůžete od certifikační autority (CA) pro doménu získat `.cloudapp.azure.com` . Získejte vlastní název domény pro svůj cluster. Když vyžádáte certifikát od certifikační autority, název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro váš cluster.
 
 #### <a name="client-authentication-certificates"></a>Certifikáty pro ověřování klientů
 Další certifikáty klientů ověřují správci pro úlohy správy clusteru. Service Fabric má dvě úrovně přístupu: **správce** a **uživatel s oprávněním jen pro čtení**. Je třeba použít minimálně jeden certifikát pro přístup pro správu. Pro další přístup na úrovni uživatele je třeba zadat samostatný certifikát. Další informace o přístupových rolích najdete v tématu [řízení přístupu na základě rolí pro klienty Service Fabric][service-fabric-cluster-security-roles].
@@ -68,7 +68,7 @@ Vytvoření produkčního clusteru, který splňuje požadavky vaší aplikace, 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Vyhledejte prostředek Service Fabric clusteru.
 
-Přihlaste se k webu [Azure Portal][azure-portal].
+Přihlaste se k [portálu Azure Portal][azure-portal].
 Kliknutím na **vytvořit prostředek** přidejte novou šablonu prostředků. Na **webu Marketplace** vyhledejte šablonu Service Fabric clusteru v rámci **všeho**.
 V seznamu vyberte **Cluster Service Fabric** .
 
@@ -107,7 +107,7 @@ Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních poč�
 2. Minimální **Velikost** virtuálních počítačů pro typ primárního uzlu je řízena **úrovní odolnosti** , kterou zvolíte pro cluster. Výchozí hodnota pro úroveň odolnosti je bronzová. Další informace o odolnosti najdete v tématu [Jak zvolit Service Fabric odolnost clusteru][service-fabric-cluster-durability].
 3. Vyberte **Velikost virtuálního počítače**. Virtuální počítače řady D-Series mají jednotky SSD a jsou velmi doporučené pro stavové aplikace. Nepoužívejte žádné skladové položky virtuálních počítačů, které mají částečné jádra nebo mají méně než 10 GB dostupné kapacity disku. Nápovědu k výběru velikosti virtuálního počítače najdete v [dokumentu aspekty plánování clusteru Service Fabric][service-fabric-cluster-capacity] .
 4.  **Cluster s jedním uzlem a clustery se třemi uzly** jsou určeny pouze pro testovací použití. Nepodporují se pro žádné spuštěné provozní úlohy.
-5. Pro typ uzlu vyberte **počáteční kapacitu sady škálování virtuálního počítače** . Počet virtuálních počítačů v typu uzlu můžete později škálovat nebo rozmístit, ale na primárním typu uzlu je minimum pět pro produkční úlohy. Jiné typy uzlů můžou mít minimálně jeden virtuální počítač. Minimální **počet** virtuálních počítačů pro typ primárního uzlu zařídí **spolehlivost** clusteru.  
+5. Vyberte **počáteční kapacitu sady škálování virtuálního počítače** pro typ uzlu. Počet virtuálních počítačů v typu uzlu můžete později škálovat nebo rozmístit, ale na primárním typu uzlu je minimum pět pro produkční úlohy. Jiné typy uzlů můžou mít minimálně jeden virtuální počítač. Minimální **počet** virtuálních počítačů pro typ primárního uzlu zařídí **spolehlivost** clusteru.  
 6. Nakonfigurujte **vlastní koncové body**. Toto pole umožňuje zadat čárkami oddělený seznam portů, které chcete zpřístupnit prostřednictvím Azure Load Balancer k veřejnému Internetu pro vaše aplikace. Pokud například plánujete nasadit webovou aplikaci do clusteru, zadejte sem "80", čímž povolíte provoz na portu 80 do clusteru. Další informace o koncových bodech najdete v tématu [komunikace s aplikacemi][service-fabric-connect-and-communicate-with-services] .
 7. **Povolte reverzní proxy**.  [Service Fabric reverzní proxy](service-fabric-reverseproxy.md) pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
 8. Zpátky v okně **Konfigurace clusteru** v části **+ Zobrazit volitelná nastavení**nakonfigurujte **diagnostiku**clusteru. Ve výchozím nastavení jsou diagnostika ve vašem clusteru zapnutá, aby pomohla řešit problémy. Pokud chcete zakázat diagnostiku, změňte **stav** přepínač na **vypnuto**. Vypnutí diagnostiky se **nedoporučuje.** Pokud již máte vytvořený projekt Application Insights, přiřaďte jeho klíč, aby se do něj směrovalo trasování aplikace.
@@ -209,7 +209,7 @@ V tomto okamžiku máte zabezpečený cluster s použitím certifikátů pro ov�
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
 [service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
-[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md

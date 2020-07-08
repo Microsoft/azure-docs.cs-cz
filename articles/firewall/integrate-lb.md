@@ -4,15 +4,15 @@ description: Azure Firewall můžete integrovat do virtuální sítě s využit�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78196693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610621"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
 
@@ -22,7 +22,7 @@ Upřednostňovaným návrhem je integrace interního nástroje pro vyrovnáván�
 
 Další informace o Azure Load Balancer najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
-## <a name="public-load-balancer"></a>Veřejný Nástroj pro vyrovnávání zatížení
+## <a name="public-load-balancer"></a>Veřejný nástroj pro vyrovnávání zatížení
 
 Pomocí veřejného nástroje pro vyrovnávání zatížení se nástroj pro vyrovnávání zatížení nasadí s veřejnou IP adresou front-endu.
 

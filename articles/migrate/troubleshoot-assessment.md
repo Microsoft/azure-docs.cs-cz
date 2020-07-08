@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 5323e54a81c7123e3e60f69d05accef9a63c7bc4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611369"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -47,8 +47,14 @@ Virtuální počítač s požadovanými jádry a pamětí se nenašel. | Azure n
 Kvůli vnitřní chybě se nepovedlo určit vhodnost virtuálního počítače. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc disků. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťových adaptérů. | Zkuste vytvořit nové vyhodnocení pro skupinu.
+Nenašla se žádná velikost virtuálního počítače pro rezervované instance nabídky Currency. | Počítač je označený jako nevhodný, protože velikost virtuálního počítače se nenašla pro vybranou kombinaci rezervované instance, nabídky a měny. Upravte vlastnosti posouzení pro výběr platných kombinací a přepočítejte hodnocení. 
+Podmíněně připravené Internet Protocol | Platí jenom pro posouzení řešení Azure VMware (AVS). Služba AVS nepodporuje faktor internetových adres IPv6.Pokud je váš počítač zjištěn s protokolem IPv6, obraťte se na tým služby AVS, kde najdete pokyny k nápravě.
 
-## <a name="linux-vms-are-conditionally-ready"></a>Virtuální počítače se systémem Linux jsou připravené pro přípravu.
+## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Navrhovaný Nástroj pro migraci v hodnocení AVS založeném na importu, který je označený jako neznámý
+
+U počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci v nástroji a hodnocení služby AVS neznámý. Ale u počítačů VMware se doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)
+
+## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Virtuální počítače se systémem Linux jsou podmíněně připravené ve službě Azure VM Assessment
 
 V případě virtuálních počítačů VMware a Hyper-V vyznačuje vyhodnocování serveru Linux virtuální počítače s názvem "podmíněně připravený", a to z důvodu známé mezery v posuzování serveru. 
 
@@ -61,7 +67,7 @@ V případě virtuálních počítačů VMware a Hyper-V vyznačuje vyhodnocová
 Tuto mezeru můžete vyřešit povolením [zjišťování aplikací](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) na virtuálních počítačích VMware. Posouzení serveru používá k dispozici operační systém zjištěný z virtuálního počítače pomocí zadaných přihlašovacích údajů hosta. Tato data operačního systému identifikují správné informace o operačním systému v případě virtuálních počítačů se systémem Windows i Linux.
 
 
-## <a name="azure-skus-bigger-than-on-premises"></a>Skladové jednotky Azure větší než místní
+## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Skladové jednotky Azure větší než místní ve službě Azure VM Assessment
 
 Posouzení serveru Azure Migrate může doporučit skladové položky Azure s více jádry a pamětí než aktuální místní přidělení na základě typu posouzení:
 
@@ -79,7 +85,7 @@ Máme místní virtuální počítač se čtyřmi jádry a 8 GB paměti s 50% vy
 - Pokud je hodnocení založené na výkonu, na základě efektivního využití procesoru a paměti (50% ze 4 jader × 1,3 = 2,6 jader a 50% 8 GB paměti * 1,3 = 5,3-GB paměti), je doporučena SKU nejlevnější virtuálního počítače se čtyřmi jádry (nejbližší podporovaný počet jader) a 8 GB paměti (nejbližší podporovaná velikost paměti).
 - [Přečtěte si další informace](concepts-assessment-calculation.md#types-of-assessments) o velikosti hodnocení.
 
-## <a name="azure-disk-skus-bigger-than-on-premises"></a>Diskové jednotky Azure větší než místní
+## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Diskové jednotky Azure větší než místní ve službě Azure VM Assessment
 
 Posouzení serveru Azure Migrate může doporučit větší disk na základě typu posouzení.
 - Velikost disku v posuzování serveru závisí na dvou vlastnostech posouzení: kritéria změny velikosti a typ úložiště.
@@ -97,16 +103,37 @@ Sestavy posouzení serveru "PercentageOfCoresUtilizedMissing" nebo "PercentageOf
 - Pokud některý z čítačů výkonu chybí, Azure Migrate posouzení serveru se vrátí k přiděleným jádrům a paměti a doporučí odpovídající velikost virtuálního počítače.
 - Pokud chybí všechny čítače výkonu, zajistěte, aby byly splněny požadavky na přístup k portu pro posouzení. Přečtěte si další informace o požadavcích na přístup k portu pro [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) a posouzení [fyzického](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) serveru.
 
-## <a name="is-the-operating-system-license-included"></a>Je zahrnutá licence k operačnímu systému?
+## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Je licence k operačnímu systému zahrnutá v posouzení virtuálního počítače Azure?
 
 Posouzení Azure Migrate serveru v současné době zohledňuje náklady na licenci operačního systému jenom pro počítače s Windows. Náklady na licenci pro počítače se systémem Linux se momentálně nepovažují za.
 
-## <a name="how-does-performance-based-sizing-work"></a>Jak funguje Změna velikosti na základě výkonu?
+## <a name="how-does-performance-based-sizing-work-in-an-azure-vm-assessment"></a>Jak funguje Změna velikosti na základě výkonu v posouzení virtuálních počítačů Azure?
 
 Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. [Přečtěte si, jak](concepts-assessment-calculation.md#calculate-sizing-performance-based) se shromažďují data založená na výkonu.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatnou kombinací rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
-Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Přečtěte si další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
+Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
+
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nezobrazují se údaje o výkonu pro některé síťové adaptéry na mých fyzických serverech.
+
+K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. V důsledku Azure Migrate v současné době zjišťují fyzické i virtuální síťové adaptéry na těchto serverech. Propustnost sítě je zachycena pouze na zjištěných virtuálních síťových adaptérech.
+
+## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>Doporučená skladová položka virtuálního počítače Azure pro můj fyzický server má větší velikost
+
+K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. Na těchto serverech Azure Migrate aktuálně zjišťují fyzické i virtuální síťové adaptéry. Proto ne. zjištěné síťové adaptéry jsou vyšší než skutečné. Protože vyhodnocování serveru vybere virtuální počítač Azure, který podporuje požadovaný počet síťových adaptérů, může to potenciálně způsobit, že dojde k virtuálnímu počítači se stejnou velikostí. [Přečtěte si další](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) informace o dopadu ne. síťových adaptérů při změně velikosti. Jedná se o produktovou mezeru, která se bude řešit dál.
+
+## <a name="readiness-category-not-ready-for-my-physical-server"></a>Kategorie připravenosti "není připravena" pro fyzický server
+
+Kategorie připravenosti v případě fyzického serveru s povolenou virtualizací technologie Hyper-V může být nesprávně označena jako nepřipravená. Na těchto serverech se kvůli přípravku produktu Azure Migrate v současné době zjišťují fyzické i virtuální adaptéry. Proto ne. zjištěné síťové adaptéry jsou vyšší než skutečné. V místním i vyhodnocování na základě výkonu vybírá Server vyhodnocování virtuálního počítače Azure, který podporuje požadovaný počet síťových adaptérů. Pokud je zjištěno, že počet síťových adaptérů bude vyšší než 32, maximální počet. u síťových adaptérů podporovaných na virtuálních počítačích Azure je počítač označený jako "Nepřipraveno".  [Přečtěte si další](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) informace o dopadu ne. Síťových adaptérů pro změnu velikosti.
+
+
+## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Počet zjištěných síťových adaptérů vyšších než skutečný pro fyzické servery
+
+K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. Na těchto serverech Azure Migrate aktuálně zjišťují fyzické i virtuální adaptéry. Proto ne. zjištěné síťové karty jsou vyšší než skutečné.
+
+
+## <a name="low-confidence-rating-on-physical-server-assessments"></a>Hodnocení nízké spolehlivosti při vyhodnocování fyzických serverů
+Hodnocení je přiřazeno na základě dostupnosti datových bodů potřebných k výpočtu posouzení. V případě fyzických serverů, které mají povolenou virtualizaci Hyper-V, existuje známá termínová mezera, která může být nesprávně přiřazena hodnocení fyzického serveru. Na těchto serverech Azure Migrate aktuálně zjišťují fyzické i virtuální adaptéry. Propustnost sítě je zachycena na virtuálních síťových adaptérech zjištěných, ale ne na fyzických síťových adaptérech. Vzhledem k nepřítomnosti datových bodů na fyzických síťových adaptérech může být ovlivněno hodnocení spolehlivosti, což vede k nízkému hodnocení. Jedná se o produktovou mezeru, která se bude řešit dál.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Vizualizace závislostí v Azure Government
 
@@ -159,7 +186,7 @@ V rámci analýzy závislostí bez agenta se názvy procesů zachycují na zákl
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

@@ -11,21 +11,22 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608513"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Plánování a odstraňování potíží se změnami hlavního názvu uživatele v Azure Active Directory
 
 Hlavní název uživatele (UPN) je atribut, který je standardem Internet Communications pro uživatelské účty. Hlavní název uživatele se skládá z předpony hlavního názvu uživatele (UPN) (název uživatelského účtu) a přípony UPN (název domény DNS). Předpona spojuje příponu pomocí symbolu "@". Například, someone@example.com. Hlavní název uživatele (UPN) musí být jedinečný mezi všemi objekty zabezpečení v rámci doménové struktury adresáře. 
 
-> [!NOTE]
-> Pro vývojáře doporučujeme, abyste používali objectID uživatele jako neměnný identifikátor, nikoli hlavní název uživatele (UPN). Pokud vaše aplikace aktuálně používají hlavní název uživatele (UPN), doporučujeme nastavit hlavní název uživatele tak, aby se shodoval s primární e-mailovou adresou uživatele a vylepšili své prostředí.<br> **V hybridním prostředí je důležité, aby byl hlavní název uživatele (UPN) identický v místním adresáři a v Azure Active Directory**.
-
 **V tomto článku se předpokládá, že jako identifikátor uživatele použijete hlavní název uživatele (UPN). Zaměřuje se na plánování pro změny UPN a obnovuje se z problémů, které mohou vzniknout ze změn hlavního názvu uživatele.**
+
+> [!NOTE]
+> Pro vývojáře doporučujeme použít ID objectID uživatele jako neproměnlivý identifikátor, nikoli hlavní název uživatele (UPN) nebo e-mailové adresy, protože jejich hodnoty se můžou změnit.
+
 
 ## <a name="learn-about-upns-and-upn-changes"></a>Další informace o UPN a UPN
 Přihlašovací stránky často vyzvat uživatele k zadání e-mailové adresy, když je požadovaná hodnota ve skutečnosti hlavní název uživatele (UPN). Proto byste měli mít jistotu, že uživatel hlavní název uživatele (UPN) si bude moci kdykoli změnit jeho primární e-mailovou adresu.
@@ -47,10 +48,10 @@ Můžete změnit hlavní název uživatele (UPN) změnou předpony, přípony ne
 * **Změna předpony**.
 
    *  Pokud se například změní jméno osoby, můžete změnit jejich název účtu:  
-BSimon@contoso.com naBJohnson@contoso.com
+BSimon@contoso.comnaBJohnson@contoso.com
 
    * Můžete také změnit firemní standard pro předpony:  
-Bsimon@contoso.com naBritta.Simon@contoso.com
+Bsimon@contoso.comnaBritta.Simon@contoso.com
 
 * **Změna přípony**. <br>
 
@@ -60,7 +61,7 @@ Bsimon@contoso.com naBritta.Simon@contoso.com
      Nebo<br>
     * Britta.Simon@corp.contoso.comschopnBritta.Simon@labs.contoso.com 
 
-Změnit hlavní název uživatele (UPN) při každém aktualizaci primární e-mailové adresy uživatele Bez ohledu na důvod změny e-mailu musí být hlavní název uživatele vždycky aktualizovaný, aby odpovídal.
+Doporučujeme změnit hlavní název uživatele (UPN) při každém aktualizaci primární e-mailové adresy.
 
 Při počáteční synchronizaci z Active Directory do Azure AD zajistěte, aby e-maily uživatelů byly stejné jako názvy UPN.
 
@@ -77,7 +78,7 @@ Například můžete chtít přidat labs.contoso.com a nechat si uživatelské n
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> Pokud se hlavní názvy uživatelů (UPN) v Active Directory a Azure Active Directory neshodují, dojde k problémům. Pokud [měníte příponu ve službě Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), musíte zajistit, aby se [v Azure AD přidala a ověřila](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)odpovídající vlastní název domény. 
+> Pokud [měníte příponu ve službě Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), musíte zajistit, aby se [v Azure AD přidala a ověřila](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)odpovídající vlastní název domény. 
 
 ![Snímek obrazovky ověřených domén](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -115,7 +116,7 @@ V následujících částech jsou uvedené podrobnosti o potenciálních známý
 **Známý problém**<br>
 Změna hlavního názvu uživatele (UPN) může přerušit relaci mezi uživatelem služby Azure AD a profilem uživatele vytvořeným v aplikaci. Pokud aplikace používá [k zřizování pouze v čase](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning), může vytvořit značku nový profil uživatele. Tato akce vyžaduje, aby správce aplikace provedl ruční změny pro opravu tohoto vztahu.
 
-**Odstraníte**<br>
+**Alternativní řešení**<br>
 [Automatizované zřizování uživatelů Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) umožňuje automaticky vytvářet, udržovat a odebírat identity uživatelů v podporovaných cloudových aplikacích. Konfigurace automatického zřizování uživatelů na vašich aplikacích automaticky aktualizuje hlavní názvy uživatelů (UPN) v aplikacích. Otestujte aplikace jako součást progresivního zavedení, abyste ověřili, že tyto změny nejsou ovlivněny pomocí hlavního názvu uživatele (UPN).
 Pokud jste vývojář, zvažte [Přidání podpory SCIM do vaší aplikace](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) , aby bylo možné Automatické zřizování uživatelů z Azure Active Directory. 
 
@@ -130,10 +131,14 @@ Zařízení [připojená k Azure AD](https://docs.microsoft.com/azure/active-dir
 **Známé problémy** <br>
 Uživatelé můžou při ověřování narazit na problémy s jednotným přihlašováním u aplikací, které jsou závislé na službě Azure AD.
 
-**Odstraníte** <br>
+**Rozlišení** <br>
+Problémy uvedené v této části byly opraveny v systému Windows 10 Květen 2020 Update (2004).
+
+**Alternativní řešení** <br>
 Umožněte, aby se změna názvu UPN synchronizoval na Azure AD. Jakmile ověříte, že se nový hlavní název uživatele (UPN) projeví na portálu Azure AD, požádejte uživatele, aby při přihlášení pomocí nového hlavního názvu uživatele vybral dlaždici jiný uživatel. Můžete také ověřit pomocí [prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0). Po přihlášení pomocí nového hlavního názvu uživatele (UPN) se můžou odkazy na starý hlavní název uživatele zobrazovat i v nastavení systému Windows přístup do práce nebo do školy.
 
 ![Snímek obrazovky ověřených domén](./media/howto-troubleshoot-upn-changes/other-user.png)
+
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
 
@@ -149,13 +154,17 @@ Kromě toho se zobrazí následující zpráva s vynucením restartování po je
 
 "Počítač se automaticky restartuje za jednu minutu. Systém Windows narazil na problém a je třeba jej restartovat. Tuto zprávu byste teď měli zavřít a uložit svou práci.
 
-**Odstraníte** 
+**Rozlišení** <br>
+Problémy uvedené v této části byly opraveny v systému Windows 10 Květen 2020 Update (2004).
+
+**Alternativní řešení** 
 
 Zařízení se musí odpojovat z Azure AD a restartovat. Po restartování se zařízení automaticky připojí k Azure AD a uživatel se musí přihlásit pomocí nového hlavního názvu uživatele (UPN), a to tak, že vybere dlaždici jiný uživatel. Pokud chcete odpojte zařízení ze služby Azure AD, spusťte na příkazovém řádku tento příkaz:
 
 **dsregcmd /leave**
 
 Pokud se uživatel používá, bude nutné ho [znovu zaregistrovat](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) pro Windows Hello pro firmy. U zařízení s Windows 7 a 8,1 se tento problém neprojeví po změně hlavního názvu uživatele (UPN).
+
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator známé problémy a alternativní řešení
 
@@ -179,7 +188,7 @@ Aplikace Microsoft Authenticator nabízí možnost vzdáleného ověřování. M
 
 Když změníte hlavní název uživatele (UPN), původní hlavní název uživatele se pořád zobrazuje na uživatelském účtu a oznámení se nemusí přijmout. [Ověřovací kódy](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) fungují i nadále.
 
-**Odstraníte**
+**Alternativní řešení**
 
 Pokud obdržíte oznámení, dejte uživateli pokyn, aby oznámení odkáže, otevřete aplikaci Authenticator, klepněte na možnost kontrolovat oznámení a schvalte výzvu MFA. V tomto případě se hlavní název uživatele zobrazený v účtu aktualizuje. Poznámka: aktualizovaný hlavní název uživatele (UPN) se může zobrazit jako nový účet, protože se používají jiné funkce ověřovatele. Další informace najdete v dalších známých problémech v tomto článku.
 
@@ -198,7 +207,7 @@ Kromě toho umožňuje aplikacím přispívat do pokročilejších funkcí, jako
 **Známé problémy**<br>
 Uživateli se zobrazí další výzvy k interaktivnímu ověřování v nových aplikacích, které používají přihlašování s asistencí pro zprostředkovatele, protože se neshoduje mezi login_hint předanými aplikací a hlavním názvem uživatele uloženým ve službě Broker.
 
-**Odstraníte** <br> Uživatel musí účet ručně odebrat z Microsoft Authenticator a zahájit nové přihlášení z aplikace s asistencí pro zprostředkovatele. Po počátečním ověření se účet automaticky přidá.
+**Alternativní řešení** <br> Uživatel musí účet ručně odebrat z Microsoft Authenticator a zahájit nové přihlášení z aplikace s asistencí pro zprostředkovatele. Po počátečním ověření se účet automaticky přidá.
 
 ### <a name="device-registration"></a>Registrace zařízení
 
@@ -213,7 +222,7 @@ Aplikace Microsoft Authenticator zodpovídá za registraci zařízení do služb
 **Známé problémy**<br>
 Když změníte hlavní název uživatele (UPN), zobrazí se nový účet s novým hlavním názvem uživatele (UPN), který je uvedený v Microsoft Authenticator aplikaci, zatímco účet s původním hlavním názvem uživatele (UPN) je stále uvedený Starý hlavní název uživatele (UPN) se navíc zobrazí v části registrace zařízení v nastavení aplikace. Nedošlo k žádné změně v normálním fungování registrace zařízení nebo v závislých scénářích.
 
-**Odstraníte** <br> Pokud chcete odebrat všechny odkazy na starý hlavní název uživatele (UPN) na Microsoft Authenticator aplikaci, dejte uživateli pokyn, aby ručně odebral staré i nové účty z Microsoft Authenticator, znovu se zaregistrují pro MFA a znovu se připojí k zařízení.
+**Alternativní řešení** <br> Pokud chcete odebrat všechny odkazy na starý hlavní název uživatele (UPN) na Microsoft Authenticator aplikaci, dejte uživateli pokyn, aby ručně odebral staré i nové účty z Microsoft Authenticator, znovu se zaregistrují pro MFA a znovu se připojí k zařízení.
 
 ### <a name="phone-sign-in"></a>Přihlášení telefonem
 
@@ -222,7 +231,7 @@ Přihlášení telefonem umožňuje uživatelům přihlásit se k Azure AD bez h
 **Známé problémy** <br>
 Uživatelé nemůžou používat přihlášení telefonem, protože neobdrží žádná oznámení. Pokud uživatel klepne na kontrolovat oznámení, zobrazí se chyba.
 
-**Odstraníte**<br>
+**Alternativní řešení**<br>
 Uživatel musí vybrat rozevírací nabídku u účtu s povoleným přihlášením k telefonu a vybrat zakázat přihlašování telefonem. V případě potřeby je možné telefonické přihlášení znovu povolit.
 
 ## <a name="security-key-fido2-known-issues-and-workarounds"></a>Bezpečnostní klíč (FIDO2) – známé problémy a jejich řešení
@@ -230,7 +239,7 @@ Uživatel musí vybrat rozevírací nabídku u účtu s povoleným přihlášen�
 **Známé problémy** <br>
 Pokud je u stejného klíče registrováno více uživatelů, zobrazí se na obrazovce pro přihlášení stránka pro výběr účtu, kde se zobrazí starý hlavní název uživatele (UPN). Přihlášení pomocí bezpečnostních klíčů nejsou ovlivněny změnami UPN.  
 
-**Odstraníte**<br>
+**Alternativní řešení**<br>
 Pokud chcete odebrat odkazy na staré hlavní názvy uživatelů (UPN), musí [si uživatel resetovat klíč zabezpečení a znovu ho zaregistrovat](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key#known-issues).
 
 ## <a name="onedrive-known-issues-and-workarounds"></a>Známé problémy a řešení na OneDrivu

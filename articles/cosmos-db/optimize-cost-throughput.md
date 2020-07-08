@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: afbf0bee86a3d600892ed562ee939d48168ddfdc
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85112935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610723"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 
@@ -57,9 +57,9 @@ Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní A
 |----|----|----|
 |SQL API|databáze|Kontejner|
 |Rozhraní API služby Azure Cosmos DB pro MongoDB|databáze|Kolekce|
-|Rozhraní Cassandra API|Prostor klíčů|Table|
+|Rozhraní Cassandra API|Prostor klíčů|Tabulka|
 |Rozhraní Gremlin API|Databázový účet|Graph|
-|Rozhraní Table API|Databázový účet|Table|
+|Rozhraní Table API|Databázový účet|Tabulka|
 
 Díky zajištění propustnosti na různých úrovních můžete optimalizovat náklady na základě charakteristik vašich úloh. Jak bylo zmíněno dříve, můžete programově a kdykoli zvětšit nebo zmenšit zřízenou propustnost pro jednotlivé kontejnery nebo souhrnně napříč sadou kontejnerů. Díky elastickému škálování propustnosti při změnách zatížení platíte jenom za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sada kontejnerů distribuován napříč několika oblastmi, je zaručená propustnost, kterou nakonfigurujete na kontejneru nebo sadě kontejnerů, ve všech oblastech.
 
@@ -155,7 +155,7 @@ Následující kroky vám pomůžou zajistit, aby vaše řešení byla při pou�
 
 1. Pokud jste významně využili zajištěné propustnosti napříč kontejnery a databázemi, měli byste zkontrolovat ru zřízené vs spotřebované ru a vyladit úlohy.  
 
-2. Jednou z metod pro odhad množství rezervované propustnosti, kterou vaše aplikace vyžaduje, je zaznamenat poplatky za RU jednotky žádosti spojené s běžícími typickými operacemi na reprezentativním kontejneru Azure Cosmos nebo databázi, kterou vaše aplikace používá, a pak odhadnout počet operací, které předpokládáte za sekundu. Nezapomeňte měřit a zahrnovat i typické dotazy a jejich využití. Informace o tom, jak odhadnout náklady na dotazy pomocí kódu programu nebo pomocí portálu, najdete v tématu [optimalizace nákladů na dotazy](online-backup-and-restore.md). 
+2. Jednou z metod pro odhad množství rezervované propustnosti, kterou vaše aplikace vyžaduje, je zaznamenat poplatky za RU jednotky žádosti spojené s běžícími typickými operacemi na reprezentativním kontejneru Azure Cosmos nebo databázi, kterou vaše aplikace používá, a pak odhadnout počet operací, které předpokládáte za sekundu. Nezapomeňte měřit a zahrnovat i typické dotazy a jejich využití. Informace o tom, jak odhadnout náklady na dotazy pomocí kódu programu nebo pomocí portálu, najdete v tématu [optimalizace nákladů na dotazy](optimize-cost-queries.md). 
 
 3. Dalším způsobem, jak získat operace a jejich náklady v ru, je povolit protokoly Azure Monitor, což vám poskytne rozpis operace/trvání a poplatků za požadavek. Azure Cosmos DB poskytuje pro každou operaci poplatek za požadavky, takže každý poplatek za operaci lze uložit zpět z odpovědi a pak použít k analýze. 
 

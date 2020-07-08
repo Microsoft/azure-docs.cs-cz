@@ -3,12 +3,12 @@ title: Dotazy týkající se zjišťování, hodnocení a analýzy závislostí 
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: abcc84ae376e165eb0d677694acbd7d42a2efd8c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610298"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -29,10 +29,34 @@ Projděte si podporované oblasti pro [veřejný cloud](migrate-support-matrix.m
 
 Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 1000 fyzických serverů pomocí jediného zařízení. Pokud máte více počítačů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)nebo [škálování posouzení fyzického serveru](scale-physical-assessment.md).
 
+## <a name="how-do-i-choose-the-assessment-type"></a>Návody zvolit typ posouzení?
+
+- **Posouzení virtuálních počítačů Azure** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure. [Další informace](concepts-assessment-calculation.md)
+
+- Posouzení **Řešení Azure VMware (AVS)** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do [Řešení Azure VMware (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction) pomocí tohoto typu posouzení. [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+
+- Společnou skupinu s počítači VMware můžete použít jenom ke spouštění obou typů posouzení. Všimněte si, že pokud spouštíte posouzení služby AVS v Azure Migrate poprvé, je vhodné vytvořit novou skupinu počítačů VMware.
+
+## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Při vytváření posouzení řešení Azure VMware (AVS) nejde zobrazit některé skupiny
+
+- Posouzení pro funkci AVS lze provést u skupin, které mají pouze počítače VMware. Pokud máte v úmyslu provést vyhodnocování služby AVS, odeberte ze skupiny všechny počítače, které nepoužívají VMware.
+- Pokud používáte hodnocení služby AVS v Azure Migrate poprvé, je vhodné vytvořit novou skupinu počítačů VMware.
+
+## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Návody vybrat úroveň FTT-RAID v hodnocení AVS?
+
+Modul úložiště používaný v rozhraní AVS je síti vSAN. zásady úložiště síti vSAN definují požadavky na úložiště pro virtuální počítače. Tyto zásady zaručují potřebnou úroveň služby pro vaše virtuální počítače, protože určují, jak je úložiště přidělené k virtuálnímu počítači. Toto jsou dostupné kombinace FTT-RAID: 
+
+**Neúspěšné tolerování (FTT)** | **Konfigurace RAID** | **Minimální požadovaná hostitelé** | **Aspekt velikosti**
+--- | --- | --- | --- 
+1 | RAID-1 (zrcadlení) | 3 | 100 GB virtuální počítač spotřebuje 200 GB.
+1 | RAID-5 (mazání kódu) | 4 | Virtuální počítač 100 GB spotřebuje 133.33 GB.
+2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač 100 GB spotřebuje 300 GB.
+2 | RAID-6 (mazání kódu) | 6 | 100 GB virtuální počítač spotřebuje 150 GB.
+3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač s 100 GB by spotřebuje 400 GB.
+
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>V Azure Government nevidím některé typy virtuálních počítačů.
 
 Typy virtuálních počítačů podporované pro posouzení a migraci závisí na dostupnosti v umístění Azure Government. Můžete [zkontrolovat a porovnat](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) typy virtuálních počítačů v Azure Government.
-
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Změnila se velikost virtuálního počítače. Můžu znovu spustit posouzení?
 
@@ -47,7 +71,7 @@ Zařízení Azure Migrate průběžně shromažďuje informace o místním prost
 
 Ano, Azure Migrate vyžaduje vCenter Server v prostředí VMware, aby bylo možné provést zjišťování. Azure Migrate nepodporuje zjišťování hostitelů ESXi, které nejsou spravované pomocí vCenter Server.
 
-## <a name="what-are-the-sizing-options"></a>Jaké jsou možnosti změny velikosti?
+## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Jaké jsou možnosti změny velikosti ve vyhodnocování virtuálních počítačů Azure?
 
 Při změně velikosti v místním prostředí Azure Migrate nepovažují údaje o výkonu virtuálních počítačů za účelem posouzení. Azure Migrate vyhodnocuje velikosti virtuálních počítačů na základě místních konfigurací. Při změně velikosti na základě výkonu je velikost založena na datech využití.
 
@@ -59,18 +83,18 @@ Podobně platí, že velikost disků závisí na kritériích velikosti a typu �
 - Pokud jsou kritéria změny velikosti založená na výkonu a typ úložiště je automatický, Azure Migrate při určení typu cílového disku (Standard nebo Premium) převezme hodnoty IOPS a propustnosti disku do účtu.
 - Pokud jsou kritéria změny velikosti v závislosti na výkonu a typ úložiště je Premium, Azure Migrate doporučuje SKU na disku úrovně Premium na základě velikosti místního disku. Stejná logika se aplikuje na velikost disku, pokud je velikost v místním prostředí a typ úložiště je Standard nebo Premium.
 
-## <a name="does-performance-history-and-utilization-affect-sizing"></a>Ovlivňují historii a využití výkonu změny velikosti?
+## <a name="does-performance-history-and-utilization-affect-sizing-in-an-azure-vm-assessment"></a>Má historie a využití výkonu vliv na změnu velikosti v posouzení virtuálních počítačů Azure?
 
-Ano, historie výkonu a využití ovlivňují změnu velikosti v Azure Migrate.
+Ano, historie výkonu a využití ovlivňují změnu velikosti v posouzení virtuálního počítače Azure.
 
 ### <a name="performance-history"></a>Historie výkonu
 
 V případě změny velikosti založené na výkonu Azure Migrate shromažďuje historii výkonu místních počítačů a pak ji používá k doporučení velikosti virtuálního počítače a typu disku v Azure:
 
 1. Zařízení nepřetržitě profiluje místní prostředí za účelem shromažďování dat o využití v reálném čase každých 20 sekund.
-1. Zařízení shrnuje shromážděné 20 vzorků a používá je k vytvoření jednoho datového bodu každých 15 minut.
-1. Pokud chcete vytvořit datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek s 20 sekundami.
-1. Zařízení odešle datový bod do Azure.
+2. Zařízení shrnuje shromážděné 20 vzorků a používá je k vytvoření jednoho datového bodu každých 15 minut.
+3. Pokud chcete vytvořit datový bod, zařízení vybere nejvyšší hodnotu ze všech ukázek s 20 sekundami.
+4. Zařízení odešle datový bod do Azure.
 
 ### <a name="utilization"></a>Využití
 
@@ -80,15 +104,21 @@ Například pokud nastavíte dobu trvání na jeden den a percentil hodnoty na 9
 
 Použití hodnoty 95. percentil zajistí, že se podhodnoty ignorují. Pokud Azure Migrate používá percentil 99, mohou být mimo jiné zahrnuté odlehlé hodnoty. Pokud chcete vybrat špičku v období bez chybějících hodnot, nastavte Azure Migrate, aby se 99 percentil používal.
 
+
 ## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>Jak jsou vyhodnocování na základě importu odlišná od posouzení se zdrojem zjišťování jako zařízením?
 
-Vyhodnocení založená na importech jsou vyhodnocení vytvořená pomocí počítačů, které jsou importovány do Azure Migrate pomocí souboru CSV. Pro import jsou povinná jenom čtyři pole: název serveru, jádra, paměť a operační systém. Všimněte si následujících věcí: 
+Posouzení virtuálních počítačů Azure založené na importech jsou vyhodnocení vytvořená pomocí počítačů, které jsou naimportovány do Azure Migrate pomocí souboru CSV. Pro import jsou povinná jenom čtyři pole: název serveru, jádra, paměť a operační systém. Všimněte si následujících věcí: 
  - Kritéria připravenosti jsou méně přísná v hodnoceních na základě importu u parametru typu spuštění. Pokud typ spuštění není zadaný, předpokládá se, že počítač má typ spouštění BIOS a počítač není označený jako **podmíněně připravený**. V části posouzení se zdrojem zjišťování jako zařízením je připravenost označena jako **podmíněně připravena** , pokud chybí typ spuštění. Tento rozdíl ve výpočtu připravenosti je, protože uživatelé nemusí mít po dokončení vyhodnocení na základě importu k dispozici všechny informace o počítačích v počátečních fázích plánování migrace. 
  - Posouzení importu na základě výkonu používá hodnotu využití poskytovanou uživatelem pro výpočty podle správné velikosti. Vzhledem k tomu, že je hodnota využití poskytovaná uživatelem, jsou možnosti využití **Historie výkonu** a **percentilu** ve vlastnostech posouzení zakázané. Ve vyhodnocování se zdrojem zjišťování jako zařízením je zvolená hodnota percentilu převzata z údajů o výkonu shromážděných zařízením.
 
+## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Proč je navrhovaný Nástroj pro migraci v rámci vyhodnocení pro funkci AVS na základě importu označený jako neznámý?
+
+V případě počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci v posouzení služby AVS známý. U počítačů VMware se ale doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)
+
+
 ## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
 
-Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md).
+Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Analýza závislostí na základě agenta není v Azure Government k dispozici. Můžete použít analýzu závislostí bez agentů.
@@ -102,7 +132,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
 Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)a [Agent závislostí](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
 Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
-Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) pro vizualizaci závislostí. [Přečtěte si další informace](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.

@@ -3,12 +3,12 @@ title: Kontrolní seznam připravenosti na produkci pro Azure Service Fabric
 description: Připravte svou Service Fabricovou aplikaci a produkční clustery podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: e12e07a4446af46bc1979bd8bd4ab3987a3fd8ad
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610026"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
@@ -22,8 +22,8 @@ Je vaše aplikace a cluster připravený přijmout provozní provoz? Spuštění
 1. Pro typ primárního uzlu použijte SKU D2v2 nebo vyšší. Doporučuje se vybrat SKU, která má minimálně 50 GB kapacity pevného disku.
 1. Provozní clustery musí být [zabezpečené](service-fabric-cluster-security.md). Příklad nastavení zabezpečeného clusteru najdete v této [šabloně clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Používejte běžné názvy certifikátů a nepoužívejte certifikáty podepsané svým vlastníkem.
 1. Přidejte [omezení prostředků na kontejnery a služby](service-fabric-resource-governance.md), aby nespotřeboval více než 75% prostředků uzlu. 
-1. Pochopení a nastavení [úrovně trvanlivosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Pro typy uzlů spouštějících stavová zatížení se doporučují stříbrná nebo vyšší úroveň odolnosti. Typ primárního uzlu by měl mít úroveň odolnosti nastavenou na hodnotu stříbrné nebo vyšší.
-1. Pochopení a výběr [úrovně spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu uzlu. Doporučuje se spolehlivost stříbra nebo vyšší.
+1. Pochopení a nastavení [úrovně trvanlivosti](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster). Pro typy uzlů spouštějících stavová zatížení se doporučují stříbrná nebo vyšší úroveň odolnosti. Typ primárního uzlu by měl mít úroveň odolnosti nastavenou na hodnotu stříbrné nebo vyšší.
+1. Pochopení a výběr [úrovně spolehlivosti](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) typu uzlu. Doporučuje se spolehlivost stříbra nebo vyšší.
 1. Zátěžový a škálovatelný test úloh vám umožní identifikovat [požadavky na kapacitu](service-fabric-cluster-capacity.md) clusteru. 
 1. Vaše služby a aplikace jsou monitorovány a protokoly aplikací se generují a ukládají s výstrahami. Podívejte se například [na téma Přidání protokolování do aplikace Service Fabric](service-fabric-how-to-diagnostics-log.md) a [monitorování kontejnerů pomocí protokolů Azure monitor](service-fabric-diagnostics-oms-containers.md).
 1. Cluster se monitoruje pomocí upozorňování (například pomocí [protokolů Azure monitor](service-fabric-diagnostics-event-analysis-oms.md)). 

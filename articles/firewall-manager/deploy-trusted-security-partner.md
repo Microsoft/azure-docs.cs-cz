@@ -4,40 +4,24 @@ description: Naučte se nasadit zprostředkovatele zabezpečení Azure Firewall 
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
-ms.topic: conceptual
-ms.date: 06/15/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 91cf453247bfe4fa689df34bdf6b585ac72686aa
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85509050"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611573"
 ---
-# <a name="deploy-a-security-partner-provider-preview"></a>Nasazení poskytovatele partnera zabezpečení (Preview)
+# <a name="deploy-a-security-partner-provider"></a>Nasazení poskytovatele partnera pro zabezpečení
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+*Poskytovatelé zabezpečení* v nástroji Azure firewall Manager vám umožňují používat vaše dobře známé nabídky zabezpečení jako služby (SECaaS) od jiných výrobců k ochraně internetového přístupu pro vaše uživatele.
 
-*Poskytovatelé zabezpečení* v nástroji Azure firewall Manager vám umožňují používat vaše známé nabídky zabezpečení jako služby (SECaaS) od společnosti Microsoft k ochraně internetového přístupu pro vaše uživatele.
+Další informace o podporovaných scénářích a návodech k osvědčeným postupům najdete v tématu [co jsou poskytovatelé zabezpečení partnerů?](trusted-security-partners.md)
 
-Další informace o podporovaných scénářích a návodech k osvědčeným postupům najdete v tématu [co jsou důvěryhodné bezpečnostní partneři (Preview)?](trusted-security-partners.md).
 
-Podporovaní partneři zabezpečení jsou **ZScaler**, **Check Point**a **iboss** pro tuto verzi Preview. Podporované oblasti jsou WestCentralUS, NorthCentralUS, WestUS, WestUS2 a EastUS.
-
-## <a name="prerequisites"></a>Požadavky
-
-> [!IMPORTANT]
-> Verze Preview Azure Firewall Manageru musí být explicitně povolená pomocí `Register-AzProviderFeature` příkazu PowerShellu.
-
-Z příkazového řádku PowerShellu spusťte následující příkazy:
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-Dokončení registrace funkce trvá až 30 minut. Spusťte následující příkaz, který zkontroluje stav registrace:
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+Integrovaná partneři zabezpečení jako služby (SECaaS) třetích stran jsou teď k dispozici ve všech oblastech veřejného cloudu Azure. Integrace **Zscaler** bude obecně dostupná 3. července 2020. **Kontrolní bod** je podporovaným partnerem SECaaS a bude ve verzi Preview 3. července 2020. integrace **iboss** bude obecně dostupná 31. července 2020.
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>Nasazení poskytovatele zabezpečení třetí strany v novém centru
 
@@ -45,18 +29,21 @@ Tuto část můžete přeskočit, pokud nasazujete poskytovatele třetí strany 
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 2. Do pole **Hledat**zadejte **Správce brány firewall** a vyberte ho v části **služby**.
-3. Přejděte na **Začínáme**. Vyberte **vytvořit zabezpečené virtuální rozbočovač**. 
-4. Zadejte předplatné a skupinu prostředků, vyberte podporovanou oblast a přidejte informace o rozbočovači a virtuální síti WAN. 
-5. **Nasazení služby VPN Gateway** je ve výchozím nastavení povolené. K nasazení důvěryhodného partnera zabezpečení v centru se vyžaduje VPN Gateway. 
-6. Vyberte **Další: Azure firewall**
+3. Přejděte na **Začínáme**. Vyberte **Zobrazit zabezpečená virtuální centra**.
+4. Vyberte **vytvořit nové zabezpečené virtuální rozbočovače**.
+5. Zadejte předplatné a skupinu prostředků, vyberte podporovanou oblast a přidejte informace o rozbočovači a virtuální síti WAN. 
+6. Pokud **chcete povolit poskytovatele zabezpečení, vyberte zahrnout bránu VPN**.
+7. Vyberte **jednotky škálování brány** vhodné pro vaše požadavky.
+8. Vyberte **Další: Azure firewall**
    > [!NOTE]
-   > Důvěryhodní bezpečnostní partneři se připojují k vašemu rozbočovači pomocí VPN Gateway tunely. Pokud VPN Gateway odstraníte, ztratí se připojení k vašim důvěryhodným partnerům zabezpečení.
-7. Pokud chcete nasadit Azure Firewall pro filtrování privátních přenosů spolu s poskytovatelem služeb třetích stran pro filtrování internetového provozu, vyberte zásadu pro Azure Firewall. Podívejte se na [podporované scénáře](trusted-security-partners.md#key-scenarios).
-8. Pokud chcete nasadit pouze poskytovatele zabezpečení třetí strany v centru, vyberte **Azure firewall: povoleno/zakázáno** a nastavte jej na **zakázáno**. 
-9. Vyberte **Další: poskytovatel zabezpečení partnera**.
-10. Vyberte **poskytovatele partnera zabezpečení** a nastavte jej na **povoleno**. Vyberte partnera. 
-11. Vyberte **Další**. 
-12. Zkontrolujte obsah a pak vyberte **vytvořit**.
+   > Poskytovatelé zabezpečení se připojují k vašemu rozbočovači pomocí VPN Gateway tunely. Pokud VPN Gateway odstraníte, ztratí se připojení k vašim poskytovatelům vašeho partnera zabezpečení.
+9. Pokud chcete nasadit Azure Firewall pro filtrování privátních přenosů spolu s poskytovatelem služeb třetích stran pro filtrování internetového provozu, vyberte zásadu pro Azure Firewall. Podívejte se na [podporované scénáře](trusted-security-partners.md#key-scenarios).
+10. Pokud chcete nasadit pouze poskytovatele zabezpečení třetí strany v centru, vyberte **Azure firewall: povoleno/zakázáno** a nastavte jej na **zakázáno**. 
+11. Vyberte **Další: poskytovatel zabezpečení partnera**.
+12. Nastavte **poskytovatele partnera zabezpečení** na **povoleno**. 
+13. Vyberte partnera. 
+14. Vyberte **Další: zkontrolovat + vytvořit**. 
+15. Zkontrolujte obsah a pak vyberte **vytvořit**.
 
 Nasazení brány VPN může trvat déle než 30 minut.
 
@@ -68,8 +55,9 @@ Jakmile se vytvoří centrum a nastaví se partner zabezpečení, pokračujte t�
 
 Můžete také vybrat existující centrum ve virtuální síti WAN a převést ho na *zabezpečené virtuální rozbočovač*.
 
-1. V **Začínáme**vyberte **převést existující centra**.
-2. Vyberte předplatné a existující centrum. Postupujte podle zbývajících kroků a nasaďte poskytovatele třetí strany v novém centru.
+1. V **Začínáme**vyberte **Zobrazit zabezpečená virtuální centra**.
+2. Vyberte **převést existující centra**.
+3. Vyberte předplatné a existující centrum. Postupujte podle zbývajících kroků a nasaďte poskytovatele třetí strany v novém centru.
 
 Pamatujte, že je potřeba nasadit bránu VPN, aby se převedlo existující centrum na zabezpečené centrum s poskytovateli třetích stran.
 
@@ -93,7 +81,8 @@ Pokud chcete nastavit tunely na VPN Gateway svého virtuálního rozbočovače, 
 1. Dokončete nastavení podle pokynů uvedených v partnerovi. Patří sem odeslání informací AAD pro detekci a připojení k centru, aktualizace zásad odchozího přenosu a kontrola stavu připojení a protokolů.
 
    - [Zscaler: nakonfigurujte Microsoft Azure integraci virtuální sítě WAN](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration).
-   - [Check Point: konfigurace Microsoft Azure Integration Virtual WAN](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)
+   - [Check Point (Preview): nakonfigurujte Microsoft Azure integraci virtuální sítě WAN](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm).
+   - [iboss (Preview): nakonfigurujte Microsoft Azure integraci virtuální sítě WAN](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security). 
    
 2. Na portálu Azure Virtual WAN v Azure se můžete podívat na stav vytvoření tunelu. Jakmile se tunely **připojí** na Azure i na portálu pro partnery, pokračujte dalšími kroky nastavení tras pro výběr směrování a virtuální sítě by měly odesílat internetové přenosy partnerovi.
 
@@ -112,7 +101,7 @@ Pokud chcete nastavit tunely na VPN Gateway svého virtuálního rozbočovače, 
 5. Musíte vybrat **zabezpečená připojení** a vybrat připojení, na kterých mají být tyto trasy nastaveny. Označuje, které virtuální sítě/větve můžou zahájit odesílání internetového provozu poskytovateli třetí strany.
 6. V **nastavení směrování**vyberte **zabezpečená připojení** v části internetový provoz a pak vyberte virtuální síť nebo větve (*lokality* ve virtuální síti WAN), které chcete zabezpečit. Vyberte **zabezpečený internetový provoz**.
    ![Zabezpečení internetového provozu](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Přejděte zpět na stránku centra. Stav **důvěryhodného partnera zabezpečení** centra by měl být teď **zabezpečený**.
+7. Přejděte zpět na stránku centra. Stav **poskytovatele partnera zabezpečení** centra by měl být teď **zabezpečený**.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Síťový provoz ve větvi nebo virtuální síti prostřednictvím služby třetí strany
 
@@ -122,4 +111,4 @@ Po dokončení postupu nastavení směrování budou virtuální počítače vir
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: zabezpečení cloudové sítě pomocí nástroje Azure Firewall Manager ve verzi Preview pomocí Azure Portal](secure-cloud-network.md)
+- [Kurz: zabezpečení cloudové sítě pomocí nástroje Azure Firewall Manager pomocí Azure Portal](secure-cloud-network.md)

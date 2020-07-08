@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 4e5969b4c3a42fc8a2c4b1cd537c22a4422ca131
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85268967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610859"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -53,11 +53,11 @@ Běžný scénář pro převzetí subdomény:
 
 
 
-## <a name="the-risks-of-dangling-dns-records"></a>Rizika záznamů DNS dangling
+## <a name="the-risks-of-subdomain-takeover"></a>Rizika převzetí subdomény
 
-Když záznam DNS odkazuje na prostředek, který není k dispozici, měl by být samotný záznam z vaší zóny DNS odebrán. Pokud se neodstranil, jedná se o záznam DNS dangling a bezpečnostní riziko.
+Když záznam DNS odkazuje na prostředek, který není k dispozici, měl by být samotný záznam z vaší zóny DNS odebrán. Pokud se neodstranil, jedná se o záznam DNS dangling a vytvoří možnost převzetí subdomény.
 
-Rizikem organizace je to, že útočníkovi v rámci hrozby umožňuje převzít kontrolu nad přidruženým názvem DNS, aby mohl hostovat škodlivý web nebo službu. Tento škodlivý web v subdoméně organizace může mít za následek:
+Dangling položky DNS umožňují aktérům hrozeb převzít kontrolu nad přidruženým názvem DNS a hostovat škodlivý web nebo službu. Škodlivé stránky a služby v subdoméně organizace můžou mít za následek:
 
 - **Ztráta kontroly nad obsahem subdomény** – negativně stiskněte informace o neschopnosti vaší organizace při zabezpečování obsahu a také o poškození značky a o ztrátách důvěry.
 
@@ -65,7 +65,7 @@ Rizikem organizace je to, že útočníkovi v rámci hrozby umožňuje převzít
 
 - **Podvodné kampaně** – na základě závazného způsobu, které se dají použít v kampaních phishing. To platí pro škodlivé weby a také pro záznamy MX, které by útočníkovi umožnil příjem e-mailů, které jsou adresovány na oprávněnou subdoménu známé značky.
 
-- **Další rizika** – přemostění do jiných klasických útoků, jako jsou XSS, CSRF, CORS a další.
+- **Další rizika** – škodlivé weby je možné využít k eskalaci dalších klasických útoků, jako jsou například XSS, CSRF, CORS a další.
 
 
 
@@ -78,7 +78,7 @@ Níže jsou uvedené preventivní míry, které jsou dnes k dispozici.
 
 ### <a name="use-azure-dns-alias-records"></a>Použití záznamů aliasů Azure DNS
 
-Po pevně uvedeném životním cyklu záznamu DNS k prostředku Azure může funkce [záznamů aliasů](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) Azure DNS zabránit odkazům na dangling. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
+Po pevně uvedeném životním cyklu záznamu DNS k prostředku Azure mohou [záznamy aliasů](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) Azure DNS zabránit odkazům na dangling. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
 
 - Azure Front Door
 - Profily služby Traffic Manager
@@ -95,7 +95,7 @@ Pokud máte prostředky, které je možné chránit před převzetím subdomény
 
 Při vytváření položek DNS pro Azure App Service vytvořte asuid. subdomény Záznam TXT s IDENTIFIKÁTORem ověřování domény Pokud takový záznam TXT existuje, žádné jiné předplatné Azure nedokáže ověřit vlastní doménu, která je přebírat. 
 
-Tyto záznamy nebrání někomu v vytvoření Azure App Service se stejným názvem, jako se nachází v záznamu CNAME, ale nebudou moct přijímat přenosy ani kontrolovat obsah, protože nemohou prokázat vlastnictví názvu domény.
+Tyto záznamy nebrání někomu v vytvoření Azure App Service se stejným názvem, který se nachází v záznamu CNAME. Bez možnosti prokázat vlastnictví názvu domény nemůžou aktéri hrozeb přijímat přenosy ani řídit obsah.
 
 [Přečtěte si další informace](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) o mapování stávajícího vlastního názvu DNS na Azure App Service.
 
@@ -111,7 +111,7 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
 
     - Při vyřazení služby ze seznamu požadovaných kontrol vložte položku "odebrat položku DNS".
 
-    - Pro všechny prostředky, které mají vlastní položku DNS, umístěte [zámky pro odstranění](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) . Tato možnost by měla sloužit jako indikátor, aby bylo mapování nutné odebrat před zrušením zřízení prostředku. Takové míry můžou fungovat jenom v kombinaci s interními vzdělávacími programy.
+    - Pro všechny prostředky, které mají vlastní položku DNS, umístěte [zámky pro odstranění](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) . Zámek proti odstranění slouží jako indikátor, že mapování musí být odebráno před zrušením zřízení prostředku. Takové míry můžou fungovat jenom v kombinaci s interními vzdělávacími programy.
 
 - **Vytvořit procedury pro zjišťování:**
 

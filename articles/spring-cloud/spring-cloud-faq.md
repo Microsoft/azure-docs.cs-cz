@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: e3c38a67b13a6b5c12767d38ecf2297d2417ebdb
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 9cdbe0630060c9155187e1f62aba3d7a40ceae98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610468"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -27,11 +27,11 @@ Služba Azure jaře Cloud vylepšuje prostředí diagnostiky aplikací pro vývo
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Jak zabezpečená je Azure jarní Cloud?
 
-Zabezpečení a ochrana osobních údajů jsou v rámci nejdůležitějších priorit pro zákazníky Azure a Azure pro jarní Cloud. Azure pomáhá zajistit, aby měli přístup k datům, protokolům a konfiguracím aplikace, a to díky bezpečnému šifrování všech těchto dat. Všechny instance služby ve jarním cloudu Azure jsou od sebe vzájemně izolované.
+Zabezpečení a ochrana osobních údajů jsou v rámci nejdůležitějších priorit pro zákazníky Azure a Azure pro jarní Cloud. Azure pomáhá zajistit, aby měli přístup k datům, protokolům a konfiguracím aplikace, a to díky bezpečnému šifrování všech těchto dat. 
 
-Jarní cloud Azure poskytuje kompletní protokol TLS/SSL a správu certifikátů.
-
-Důležité opravy zabezpečení pro OpenJDK a jarní cloudové moduly runtime se v co nejkratší době aplikují na Azure jaře Cloud.
+* Instance služby ve jarním cloudu Azure jsou od sebe vzájemně izolované.
+* Jarní cloud Azure poskytuje kompletní protokol TLS/SSL a správu certifikátů.
+* Důležité opravy zabezpečení pro OpenJDK a jarní cloudové moduly runtime se v co nejkratší době aplikují na Azure jaře Cloud.
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Ve kterých oblastech je k dispozici Azure pružinový Cloud?
 
@@ -42,7 +42,7 @@ Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
 Při vydání verze Preview má Azure jarní Cloud následující známá omezení:
 
 * `spring.application.name`bude přepsáno názvem aplikace, který se používá k vytvoření jednotlivých aplikací.
-* `server.port`v konfiguračním souboru není povolený z úložiště Git. Přidání do konfiguračního souboru bude nejspíš způsobit, že aplikace nebude dostupná z jiných aplikací nebo z Internetu.
+* `server.port`ve výchozím nastavení se jedná o porty 80/443. Pokud použijete jinou hodnotu, bude přepsána na 80/443.
 * Šablony Azure Portal a Azure Resource Manager nepodporují nahrávání balíčků aplikací. Balíčky aplikací můžete nahrát jenom nasazením aplikace přes rozhraní příkazového řádku Azure CLI.
 
 ### <a name="what-pricing-tiers-are-available"></a>Jaké cenové úrovně jsou k dispozici? 
@@ -61,7 +61,7 @@ Nejrychlejší způsob, jak začít s jarním cloudem v Azure, najdete podle pok
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Jaký běhový modul Java podporuje Azure jaře Cloud?
 
-Azure jarní Cloud podporuje jazyky Java 8 a 11.
+Azure jarní Cloud podporuje jazyky Java 8 a 11. Viz [Java Runtime a verze operačních systémů](#java-runtime-and-os-versions)
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Kde můžu zobrazit protokoly a metriky cloudových aplikací pro jaře?
 
@@ -75,7 +75,10 @@ Ano. Další informace najdete v tématu [kurz: použití distribuovaného traso
 
 ### <a name="what-resource-types-does-service-binding-support"></a>Jaké typy prostředků podporuje Service Binding?
 
-V současné době jsou podporovány tři služby: Azure Cosmos DB, Azure Database for MySQL a Azure cache pro Redis.
+V současné době jsou podporovány tři služby:
+* Azure Cosmos DB
+* Azure Database for MySQL
+* Mezipaměť Azure pro Redis.
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Můžu v rámci svých aplikací zobrazit, přidat nebo přesunout trvalé svazky?
 
@@ -83,7 +86,52 @@ Ano.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Po odstranění nebo přesunutí instance služby Azure jaře Cloud Service se její prostředky pro rozšíření odstranily/přesunuly i?
 
-Závisí na logics poskytovatelů prostředků, do kterých patří prostředky rozšíření. Prostředky rozšíření `Microsoft.AppPlatform` instance nepatří do stejného oboru názvů, takže chování se liší podle různých poskytovatelů prostředků. Například operace delete/Move nebude přenesena do prostředků **nastavení diagnostiky** . Pokud se vytvoří nová instance cloudové cloudové služby Azure se stejným ID prostředku jako Odstraněná, nebo pokud se předchozí instance cloudového cloudu Azure přesune zpátky, předchozí zdroje **nastavení diagnostiky** ji dál rozšiřují.
+Závisí na logice poskytovatelů prostředků, které vlastní prostředky rozšíření. Prostředky rozšíření `Microsoft.AppPlatform` instance nepatří do stejného oboru názvů, takže se chování liší podle poskytovatele prostředků. Například operace delete/Move nebude přenesena do prostředků **nastavení diagnostiky** . Pokud se vytvoří nová instance cloudové cloudové služby Azure se stejným ID prostředku jako Odstraněná, nebo pokud se předchozí instance cloudového cloudu Azure přesune zpátky, předchozí zdroje **nastavení diagnostiky** ji dál rozšiřují.
+
+## <a name="java-runtime-and-os-versions"></a>Běhové prostředí Java a verze operačních systémů
+
+### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Které verze Java Runtime jsou podporovány v Azure jaře cloudu?
+
+Azure jarní Cloud podporuje verze Java LTS s nejnovějšími sestaveními. června 2020, Java 8 Build 252 a Java 11 Build 7 se podporují. Přečtěte si téma [instalace JDK pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+
+### <a name="who-built-these-java-runtimes"></a>Kdo tyto moduly Runtime Java vytvořil?
+
+Systémy Azul. Sestavení sady Azul Zulu JDK for Azure – Enterprise Edition je bezplatná multiplatformní distribuce sady OpenJDK pro produkční prostředí pro Azure a Azure Stack s podporou Microsoft a Azul Systems. Obsahuje všechny komponenty pro vytváření a spouštění aplikací Java SE.
+
+### <a name="how-often-will-java-runtimes-get-updated"></a>Jak často se budou běhové moduly Java dostanou aktualizovat?
+
+LTS a MTS JDK Release mají v případě potřeby čtvrtletní aktualizace zabezpečení, opravy chyb a kritické aktualizace a opravy pro vzdálenou správu. Tato podpora zahrnuje i nové porty pro jazyky Java 7 a 8 aktualizací zabezpečení a opravy chyb hlášené v novějších verzích Java, jako je Java 11.
+
+### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Jak dlouho budou podporované verze Java 8 a Java 11 LTS?
+
+Viz [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+
+* Jazyk Java 8 LTS bude podporován do prosince 2030.
+* Java 11 LTS se bude podporovat až do září 2027.
+
+### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Jak můžu stáhnout podporovaný běhový modul Java pro místní vývoj?
+
+Přečtěte si téma [instalace JDK pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+
+### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Jaké jsou zásady vyřazení pro starší běhové moduly Java?
+
+Veřejné oznámení se odešle do 12 měsíců před vyřazením původní verze modulu runtime. Po dobu 12 měsíců budete chtít migrovat na novější verzi.
+
+* Správci předplatného obdrží e-mail s oznámením, že vyřadíme verzi Java.
+* Informace o vyřazení budou zveřejněny v dokumentaci.
+
+### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Jak získám podporu pro problémy na úrovni běhového prostředí Java?
+
+Můžete otevřít lístek podpory s podporou Azure.  Podívejte [se, jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+### <a name="what-is-the-operation-system-to-run-my-apps"></a>K čemu má operační systém běžet moje aplikace?
+
+Použije se nejnovější verze Ubuntu LTS, aktuálně [Ubuntu 20,04 LTS (kontaktní fossa)](https://releases.ubuntu.com/focal/) je výchozí operační systém.
+
+### <a name="how-often-will-os-security-patches-be-applied"></a>Jak často budou opravy zabezpečení operačních systémů aplikovány?
+
+Opravy zabezpečení použitelné pro jarní Cloud v Azure se budou za měsíc nacházet v produkčním prostředí.
+Důležité opravy zabezpečení (CVE skore >= 9) použitelné pro jarní cloudy Azure budou co nejdříve zavedeny.
 
 ## <a name="deployment"></a>Nasazení
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: a6e7e01917ac6499b9836b460077a5513782a4ce
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610842"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -34,7 +34,7 @@ Synchronizace dat používá k synchronizaci dat topologii hvězdicové a Paprsk
 
 - **Databáze centra** musí být Azure SQL Database.
 - **Členské databáze** mohou být buď databáze v Azure SQL Database nebo v instancích SQL Server.
-- **Synchronizovaná databáze** obsahuje metadata a protokol pro synchronizaci dat. Synchronizovaná databáze musí být Azure SQL Database nacházející se ve stejné oblasti jako databáze centra. Synchronizovaná databáze je vytvořená zákazníkem a vlastněné zákazníkem.
+- **Databáze metadat synchronizace** obsahuje metadata a protokol pro synchronizaci dat. Databáze metadat synchronizace musí být Azure SQL Database umístěná ve stejné oblasti jako databáze centra. Databáze metadat synchronizace je vytvořená zákazníkem a vlastníci. Pro každou oblast a předplatné můžete mít jenom jednu databázi s metadaty synchronizace. Databázi metadat synchronizace nelze odstranit ani přejmenovat, pokud existují skupiny synchronizace nebo agenti synchronizace. Společnost Microsoft doporučuje vytvořit novou, prázdnou databázi pro použití jako databázi metadat synchronizace. Synchronizace dat vytvoří tabulky v této databázi a spustí časté úlohy.
 
 > [!NOTE]
 > Pokud používáte místní databázi jako členskou databázi, je nutné [nainstalovat a nakonfigurovat místního agenta synchronizace](sql-data-sync-sql-server-configure.md#add-on-prem).
@@ -155,7 +155,7 @@ Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení an
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Omezení pro služby a dimenze databáze
 
-| **Dimenze**                                                  | **Počtu**              | **Odstraníte**              |
+| **Dimenze**                                                  | **Počtu**              | **Alternativní řešení**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maximální počet skupin synchronizace, ke kterým může patřit žádná databáze.       | 5                      |                             |
 | Maximální počet koncových bodů v jedné skupině synchronizace              | 30                     |                             |
@@ -235,6 +235,10 @@ Ano. Synchronizace dat SQL podporuje kolaci v následujících scénářích:
 ### <a name="is-federation-supported-in-sql-data-sync"></a>Je ve Synchronizace dat SQL podporovaná federace
 
 Kořenová databáze federace se dá ve službě Synchronizace dat SQL použít bez jakýchkoli omezení. Nelze přidat koncový bod federované databáze do aktuální verze Synchronizace dat SQL.
+
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Můžu použít synchronizaci dat pro synchronizaci dat exportovaných z Dynamics 365 pomocí funkce Přineste si vlastní databázi (BYOD)?
+
+Funkce Dynamics 365 Přineste si vlastní databázi umožňuje správcům exportovat datové entity z aplikace do své vlastní Microsoft Azure SQL Database. Synchronizaci dat lze použít k synchronizaci těchto dat do jiných databází, pokud jsou exportována data pomocí **přírůstkového nabízeného oznámení** (úplné nabízené oznámení není podporováno) a **možnost aktivační události v cílové databázi** je nastavena na **hodnotu Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 

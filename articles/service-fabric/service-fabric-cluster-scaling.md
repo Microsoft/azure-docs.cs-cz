@@ -4,12 +4,12 @@ description: Přečtěte si, jak škálovat nebo snížit kapacitu clusterů Azu
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793172"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610196"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Škálování clusterů Azure Service Fabric
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou obsahovat potenciálně tisíce uzlů. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů).  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -28,7 +28,7 @@ Při škálování clusteru Azure mějte na paměti následující pokyny:
 - typy primárních uzlů, na kterých běží produkční úlohy, by měly mít vždycky pět nebo více uzlů.
 - neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů.
 - neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
-- Každý typ uzlu [úrovně trvanlivosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Gold nebo stříbrného by měl mít vždy pět nebo více uzlů.
+- Každý typ uzlu [úrovně trvanlivosti](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Gold nebo stříbrného by měl mít vždy pět nebo více uzlů.
 - Neodstraňujte náhodné instance virtuálních počítačů nebo uzly z typu uzlu, vždy použijte funkci škálování sady virtuálních počítačů s měřítkem. Odstranění náhodných instancí virtuálních počítačů může negativně ovlivnit schopnost systémů správně vyrovnávat zatížení.
 - Pokud používáte pravidla automatického škálování, nastavte pravidla tak, aby se škálování (odebírání instancí virtuálních počítačů) provádělo vždy v jednom uzlu. Horizontální navýšení kapacity více než jedné instance není bezpečné.
 
@@ -46,11 +46,11 @@ Způsob přístupu Service Fabric škálování závisí na vašem scénáři. P
 
 Existují rozhraní API Azure, která aplikacím umožňují programově pracovat se službou Virtual Machine Scale Sets a Service Fabricmi clustery. Pokud existující možnosti automatického škálování nefungují pro váš scénář, tato rozhraní API umožňují implementovat vlastní logiku škálování. 
 
-Jedním z možností implementace této "automatického škálování" na domovské straně je přidání nové bezstavové služby do aplikace Service Fabric pro správu operací škálování. Vytvoření vlastní služby škálování poskytuje nejvyšší úroveň řízení a úprav chování škálování vaší aplikace. To může být užitečné pro scénáře, které vyžadují přesnou kontrolu nad tím, kdy nebo jak se aplikace škáluje. Tento ovládací prvek však přináší kompromisy proti složitosti kódu. Použití tohoto přístupu znamená, že potřebujete vlastní škálování kódu, který není triviální. V rámci `RunAsync` metody služby může sada aktivačních událostí určit, jestli se vyžaduje škálování (včetně parametrů kontroly, jako je maximální velikost clusteru a škálování cooldowns).   
+Jedním z možností implementace této "automatického škálování" na domovské straně je přidání nové bezstavové služby do aplikace Service Fabric pro správu operací škálování. Vytvoření vlastní služby škálování poskytuje nejvyšší úroveň řízení a úprav chování škálování vaší aplikace. To může být užitečné pro scénáře, které vyžadují přesnou kontrolu nad tím, kdy nebo jak se aplikace škáluje. Tento ovládací prvek však přináší kompromisy proti složitosti kódu. Použití tohoto přístupu znamená, že potřebujete vlastní škálování kódu, který není triviální. V rámci metody služby `RunAsync` může sada aktivačních událostí určit, jestli se vyžaduje škálování (včetně parametrů kontroly, jako je maximální velikost clusteru a škálování cooldowns).   
 
 Rozhraní API, které se používá pro interakce sady škálování virtuálních počítačů (obojí pro kontrolu aktuálního počtu instancí virtuálních počítačů a jejich úpravu), je [výpočetní knihovna pro správu služby Azure Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). COMPUTE COMPUTE Library nabízí snadno použitelné rozhraní API pro interakci se sadami škálování virtuálních počítačů.  Pokud chcete komunikovat s Service Fabric samotným clusterem, použijte [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient).
 
-Kód škálování nemusí být spuštěn jako služba v clusteru, aby se mohl škálovat, i když. `IAzure` A `FabricClient` můžou se vzdáleně připojit ke svým přidruženým prostředkům Azure, takže služba škálování může snadno být Konzolová aplikace nebo služba systému Windows spuštěná mimo Service Fabric aplikace.
+Kód škálování nemusí být spuštěn jako služba v clusteru, aby se mohl škálovat, i když. `IAzure`A `FabricClient` můžou se vzdáleně připojit ke svým přidruženým prostředkům Azure, takže služba škálování může snadno být Konzolová aplikace nebo služba systému Windows spuštěná mimo Service Fabric aplikace.
 
 Na základě těchto omezení možná budete chtít [implementovat lépe přizpůsobené modely automatického škálování](service-fabric-cluster-programmatic-scaling.md).
 
@@ -59,14 +59,10 @@ Změní prostředky (CPU, paměť nebo úložiště) uzlů v clusteru.
 - Výhody: architektura softwaru a aplikací zůstává stejná.
 - Nevýhody: omezené škálování, protože existuje omezení, kolik můžete zvýšit množství prostředků na jednotlivých uzlech. Výpadky, protože budete muset přebírat fyzické nebo virtuální počítače offline, aby bylo možné přidat nebo odebrat prostředky.
 
-Služby Virtual Machine Scale Sets jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně.  Škálování typu uzlu nahoru nebo dolů zahrnuje změnu SKU instancí virtuálních počítačů v sadě škálování. 
-
-> [!WARNING]
-> Nedoporučujeme měnit SKU virtuálního počítače pro typ nebo uzel škály, pokud není spuštěný při použití [odolnosti proti stříbru nebo většímu](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Změna velikosti SKU virtuálního počítače je místní operace infrastruktury, která je destruktivní dat. Bez možnosti zpozdit nebo sledovat tuto změnu je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobovat jiné nepředvídatelné provozní problémy, a to i u bezstavových úloh. 
->
+Služby Virtual Machine Scale Sets jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně.  Škálování typu uzlu směrem nahoru nebo dolů zahrnuje přidání nového typu uzlu (s aktualizovanou SKU virtuálního počítače) a odebrání starého typu uzlu.
 
 Při škálování clusteru Azure mějte na paměti následující pokyny:
-- Pokud bude horizontální navýšení kapacity typu primárního uzlu, neměli byste ho nikdy škálovat více než to, co umožňuje [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) .
+- Pokud bude horizontální navýšení kapacity typu primárního uzlu, neměli byste ho nikdy škálovat více než to, co umožňuje [úroveň spolehlivosti](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) .
 
 Proces škálování typu uzlu nahoru nebo dolů se liší v závislosti na tom, zda se jedná o typ, který není primární, nebo primární uzel.
 
@@ -74,9 +70,9 @@ Proces škálování typu uzlu nahoru nebo dolů se liší v závislosti na tom,
 Vytvořte nový typ uzlu s prostředky, které potřebujete.  Aktualizujte omezení umístění spuštěných služeb tak, aby zahrnovala nový typ uzlu.  Postupně (po jednom) snižte počet instancí starého typu instance na hodnotu nula, aby se neovlivnila spolehlivost clusteru.  Služby se postupně migrují na nový typ uzlu, protože starý typ uzlu je vyřazený z provozu.
 
 ### <a name="scaling-the-primary-node-type"></a>Škálování typu primárního uzlu
-Doporučujeme, abyste nezměnili SKU virtuálního počítače typu primárního uzlu. Pokud potřebujete více kapacity clusteru, doporučujeme přidat další instance. 
+Nasaďte nový typ primárního uzlu s aktualizovanou SKU virtuálního počítače a pak v jednom okamžiku zakažte původní instance primárního typu uzlu, aby se systémové služby migrovali do nové sady škálování. Ověřte, že cluster a nové uzly jsou v pořádku, a pak odeberte původní sadu škálování a stav uzlu pro odstraněné uzly.
 
-Pokud to možné není, můžete vytvořit nový cluster a [Obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (Pokud je k dispozici) z původního clusteru. Nemusíte obnovovat žádný stav systémové služby, při nasazení aplikací do nového clusteru se znovu vytvoří. Pokud jste ve svém clusteru právě spustili bezstavové aplikace, pak všechny vaše aplikace nasadíte do nového clusteru, takže nemusíte nic obnovovat. Pokud se rozhodnete přejít na nepodporovanou trasu a chcete změnit SKU virtuálního počítače, proveďte úpravy definice modelu sady škálování virtuálního počítače tak, aby odrážely novou SKLADOVOU položku. Pokud má váš cluster pouze jeden typ uzlu, ujistěte se, že všechny stavové aplikace reagují na všechny [události životního cyklu repliky služby](service-fabric-reliable-services-lifecycle.md) (například replika v sestavení je zablokovaná) včas a že vaše doba nového sestavení repliky služby je kratší než pět minut (pro úroveň odolnosti stříbrného). 
+Pokud to možné není, můžete vytvořit nový cluster a [Obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (Pokud je k dispozici) z původního clusteru. Nemusíte obnovovat žádný stav systémové služby, při nasazení aplikací do nového clusteru se znovu vytvoří. Pokud jste ve svém clusteru právě spustili bezstavové aplikace, pak všechny vaše aplikace nasadíte do nového clusteru, takže nemusíte nic obnovovat.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si o [škálovatelnosti aplikací](service-fabric-concepts-scalability.md).

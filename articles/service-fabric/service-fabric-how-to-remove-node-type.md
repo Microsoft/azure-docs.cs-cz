@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610094"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Postup odebrání typu Service Fabric uzlu
 Tento článek popisuje, jak škálovat cluster Azure Service Fabric odebráním existujícího typu uzlu z clusteru. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně odebráním typu uzlu (sada škálování virtuálního počítače) a všech jeho uzlů.  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -20,7 +20,7 @@ Tento článek popisuje, jak škálovat cluster Azure Service Fabric odebráním
 > Použití tohoto přístupu k odebrání typu uzlu z produkčního clusteru se nedoporučuje používat na častém základě. Jedná se o nebezpečný příkaz, protože odstraňuje prostředek sady škálování virtuálního počítače za typem uzlu. 
 
 ## <a name="durability-characteristics"></a>Charakteristiky odolnosti
-Bezpečnost je při použití Remove-AzServiceFabricNodeType nastavena na vyšší prioritu. Typ uzlu musí být stříbrná nebo zlatá [úroveň odolnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster), protože:
+Bezpečnost je při použití Remove-AzServiceFabricNodeType nastavena na vyšší prioritu. Typ uzlu musí být stříbrná nebo zlatá [úroveň odolnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster), protože:
 - Bronz vám neposkytuje žádné záruky týkající se ukládání informací o stavu.
 - Stříbrná a zlatá odolnost proti změnám v sadě škálování.
 - Gold taky poskytuje kontrolu nad aktualizacemi Azure pod sadou škálování.
@@ -122,7 +122,7 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
     - Vyhledejte šablonu Azure Resource Manager použitou pro nasazení.
     - V části Service Fabric najdete část týkající se typu uzlu.
     - Odeberte oddíl odpovídající typu uzlu.
-    - V případě vysoké a vyšší odolnosti clusterů aktualizujte clusterový prostředek v šabloně a nakonfigurujte zásady stavu tak, aby ignorovaly stav aplikací prostředků infrastruktury `applicationDeltaHealthPolicies` :/systému `properties` přidáním v prostředku clusteru, jak je uvedeno níže. Níže uvedené zásady by měly ignorovat existující chyby, ale nedovolují nové chyby v oblasti stavu. 
+    - V případě vysoké a vyšší odolnosti clusterů aktualizujte clusterový prostředek v šabloně a nakonfigurujte zásady stavu tak, aby ignorovaly stav aplikací prostředků infrastruktury:/systému přidáním `applicationDeltaHealthPolicies` v prostředku clusteru `properties` , jak je uvedeno níže. Níže uvedené zásady by měly ignorovat existující chyby, ale nedovolují nové chyby v oblasti stavu. 
  
  
      ```json
@@ -159,7 +159,7 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
     ```
 
     - Nasaďte upravenou šablonu Azure Resource Manager. * * Tento krok může trvat delší dobu, obvykle až dvě hodiny. Tento upgrade změní nastavení na InfrastructureService, a proto je nutné restartovat uzel. V tomto případě `forceRestart` se ignoruje. 
-    Parametr `upgradeReplicaSetCheckTimeout` určuje maximální dobu, po kterou Service Fabric čeká, až bude oddíl v bezpečném stavu, pokud ještě není v bezpečném stavu. Jakmile kontroly bezpečnosti projde pro všechny oddíly v uzlu, Service Fabric pokračuje s upgradem v tomto uzlu.
+    Parametr `upgradeReplicaSetCheckTimeout` Určuje maximální dobu, po kterou Service Fabric čeká, až bude oddíl v bezpečném stavu, pokud ještě není v bezpečném stavu. Jakmile kontroly bezpečnosti projde pro všechny oddíly v uzlu, Service Fabric pokračuje s upgradem v tomto uzlu.
     Hodnota parametru `upgradeTimeout` může být snížena na 6 hodin, ale v případě maximálního zabezpečení 12 hodin by se měla použít.
 
     Pak ověřte, že:
@@ -175,6 +175,6 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
     - Počkejte na dokončení nasazení.
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [vlastnostech odolnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)clusteru.
+- Přečtěte si další informace o [vlastnostech odolnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)clusteru.
 - Další informace o [typech uzlů a Virtual Machine Scale Sets](service-fabric-cluster-nodetypes.md).
 - Přečtěte si další informace o [Service Fabric škálování clusteru](service-fabric-cluster-scaling.md).

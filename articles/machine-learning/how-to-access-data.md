@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 07d2326d6677ccba93e2d3173bf8abccf309fe70
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609261"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -93,7 +93,7 @@ Po vytvoření úložiště dat se toto ověřování provede jenom u metod, kte
 
 Všechny metody registru jsou ve [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídě a mají formulář `register_azure_*` .
 > [!IMPORTANT]
-> Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření úložiště dat **prostřednictvím sady SDK** .
+> Pokud plánujete vytvořit úložiště dat pro účty úložiště, které jsou ve virtuální síti, přečtěte si část přístup k datům v rámci virtuální sítě.
 
 Můžete najít informace, které potřebujete k naplnění `register_azure_*()` metody v [Azure Portal](https://portal.azure.com).
 
@@ -185,7 +185,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Vytvořte nové úložiště dat v několika krocích v Azure Machine Learning Studiu:
 
 > [!IMPORTANT]
-> Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření úložiště dat [prostřednictvím sady SDK](#python-sdk) . 
+> Pokud je váš účet úložiště dat ve virtuální síti, je potřeba, abyste zajistili, že Studio bude mít přístup k vašim datům. V tématu [izolace sítě & ochrana osobních údajů] (postupy: povolení – virtuální síť. MD # Machine-Learning-Studio) se ujistěte, že se uplatní příslušné kroky konfigurace. 
 
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně v části **Spravovat**vyberte **úložiště** .
@@ -201,7 +201,7 @@ Můžete najít informace, které potřebujete k naplnění formuláře na [Azur
 > [!IMPORTANT]
 > Z bezpečnostních důvodů možná budete muset změnit přístupové klíče pro účet Azure Storage (klíč účtu nebo token SAS). V takovém případě nezapomeňte nové přihlašovací údaje synchronizovat s vaším pracovním prostorem a s připojenými úložišti dat. Přečtěte si, jak synchronizovat aktualizované přihlašovací údaje pomocí [těchto kroků](how-to-change-storage-access-key.md). 
 
-Následující příklad ukazuje, jak formulář vypadá při vytváření úložiště dat objektů BLOB v Azure: 
+Následující příklad ukazuje, jak formulář vypadá při vytváření **úložiště dat objektů BLOB v Azure**: 
     
 ![Formulář pro nové úložiště dat](media/how-to-access-data/new-datastore-form.png)
 
@@ -299,6 +299,11 @@ Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely
 | [Modul Azure IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely pro IoT Edge zařízení. |
 
 V situacích, kdy sada SDK neposkytuje přístup k úložiště dat, může být možné vytvořit vlastní kód pomocí příslušné sady Azure SDK pro přístup k datům. Například [sada SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python) je Klientská knihovna, kterou můžete použít pro přístup k datům uloženým v objektech blob nebo souborech.
+
+
+## <a name="access-data-in-a-virtual-network"></a>Přístup k datům ve virtuální síti
+
+Pokud je vaše úložiště za virtuální sítí, musíte provést další kroky konfigurace pro váš pracovní prostor a úložiště dat pro přístup k datům. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [izolace sítě během školení & odvození s privátními virtuálními sítěmi](how-to-enable-virtual-network.md#use-datastores-and-datasets).
 
 <a name="move"></a>
 
