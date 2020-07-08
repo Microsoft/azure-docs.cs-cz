@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836086"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementace omezující navigace v Azure Kognitivní hledání
@@ -321,7 +320,7 @@ Za určitých okolností možná zjistíte, že počty omezujících vlastností
 
 Počty omezujících podmínek můžou být kvůli architektuře horizontálního dělení nepřesné. Každý index hledání má několik horizontálních oddílů a každá horizontálních oddílů oznamuje hlavní N omezující vlastnosti podle počtu dokumentů, který se pak sloučí do jednoho výsledku. Pokud některé horizontálních oddílů obsahují mnoho hodnot, zatímco jiné mají méně, může se stát, že některé hodnoty omezující vlastnosti ve výsledcích chybí nebo jsou ve výsledku zjištěny.
 
-I když se toto chování může kdykoli změnit, pokud k tomuto chování dojde v dnešní době, můžete ho obejít uměle vynásobením počtu: \< číslo> na velké číslo, abyste vynutili úplné generování sestav každého horizontálních oddílů. Pokud hodnota Count: je větší nebo rovna počtu jedinečných hodnot v poli, jsou zaručeny přesné výsledky. Pokud jsou ale počty dokumentů vysoké, dochází ke snížení výkonu, takže tuto možnost používejte uvážlivě.
+I když se toto chování může kdykoli změnit, pokud k tomuto chování dojde v současné době, můžete ho obejít uměle tím, že vyřadíte počet: \<number> až do velkého čísla vynutili úplné vytváření sestav z jednotlivých horizontálních oddílů. Pokud hodnota Count: je větší nebo rovna počtu jedinečných hodnot v poli, jsou zaručeny přesné výsledky. Pokud jsou ale počty dokumentů vysoké, dochází ke snížení výkonu, takže tuto možnost používejte uvážlivě.
 
 ### <a name="user-interface-tips"></a>Tipy pro uživatelské rozhraní
 **Přidat popisky pro každé pole v navigaci omezujícími vlastnostmi**

@@ -4,10 +4,9 @@ description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83848735"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
@@ -87,15 +86,15 @@ public static class QueueFunctions
 Tato metoda umožňuje povolit a zakázat funkci změnou nastavení aplikace, aniž by bylo nutné znovu kompilovat nebo znovu nasazovat. Změna nastavení aplikace způsobí, že se aplikace Function App restartuje, takže se změna zakázaného stavu rozpozná okamžitě.
 
 > [!IMPORTANT]
-> `Disabled`Atribut je jediným způsobem, jak zakázat funkci knihovny tříd. Vygenerovaný soubor *Function. JSON* pro funkci knihovny tříd není určen k úpravám přímo. Pokud tento soubor upravíte, `disabled` nebude mít cokoli vliv na vlastnost.
+> `Disabled`Atribut je jediným způsobem, jak zakázat funkci knihovny tříd. Vygenerovaná *function.jsv* souboru pro funkci knihovny tříd není určena k přímé úpravě. Pokud tento soubor upravíte, `disabled` nebude mít cokoli vliv na vlastnost.
 >
-> Totéž platí pro přepínač **stavu funkce** na kartě **Spravovat** , protože funguje změnou souboru *Function. JSON* .
+> Totéž platí pro přepínač **stavu funkce** na kartě **Spravovat** , protože funguje změnou *function.jsv* souboru.
 >
 > Všimněte si také, že portál může indikovat, že funkce je zakázaná, když ne.
 
 ### <a name="functions-1x---scripting-languages"></a>Funkce 1. x – skriptovací jazyky
 
-Ve verzi 1. x můžete také použít `disabled` vlastnost souboru *Function. JSON* k oznámení, že modul runtime neaktivuje funkci. Tato metoda funguje pouze pro skriptovací jazyky, jako je skript jazyka C# a JavaScript. `disabled`Vlastnost může být nastavena na `true` nebo na název nastavení aplikace:
+Ve verzi 1. x můžete také použít `disabled` vlastnost *function.jsv* souboru k oznámení, že modul runtime neaktivuje funkci. Tato metoda funguje pouze pro skriptovací jazyky, jako je skript jazyka C# a JavaScript. `disabled`Vlastnost může být nastavena na `true` nebo na název nastavení aplikace:
 
 ```json
 {
@@ -123,7 +122,7 @@ nebo
 V druhém příkladu je funkce zakázána, pokud existuje nastavení aplikace s názvem IS_DISABLED a je nastaveno na `true` nebo 1.
 
 >[!IMPORTANT]  
->Portál teď používá nastavení aplikace k zakázání funkcí v1. x. Když je nastavení aplikace v konfliktu se souborem Function. JSON, může dojít k chybě. Odstraňte `disabled` vlastnost ze souboru Function. JSON, aby nedocházelo k chybám. 
+>Portál teď používá nastavení aplikace k zakázání funkcí v1. x. Když je nastavení aplikace v konfliktu s function.jsv souboru, může dojít k chybě. Vlastnost byste měli odebrat `disabled` z function.jssouboru, aby nedocházelo k chybám. 
 
 
 ## <a name="next-steps"></a>Další kroky

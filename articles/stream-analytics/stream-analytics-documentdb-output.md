@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83848037"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
@@ -105,7 +104,7 @@ Použití Azure Cosmos DB jako výstupu v Stream Analytics generuje následujíc
 
 ![Informační pole pro výstupní datový proud Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Pole           | Popis|
+|Pole           | Description|
 |-------------   | -------------|
 |Alias pro výstup    | Alias pro odkazování na tento výstup v dotazu Stream Analytics.|
 |Předplatné    | Předplatné Azure.|

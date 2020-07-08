@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836001"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
@@ -64,7 +63,7 @@ Pokud otevřete konzolu pro správu služeb (Services. msc), zobrazí se také s
 
 Pokud chcete zjistit, kterou verzi agenta máte, otevřete **Správce úloh**, na kartě **procesy** Najděte **službu Log Analytics agent**, klikněte na ni pravým tlačítkem myši a klikněte na **vlastnosti**. Na kartě **Podrobnosti** vyhledejte verzi souboru, jak je znázorněno níže:
 
-![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![Soubor](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="log-analytics-agent-installation-scenarios"></a>Scénáře instalace agenta Log Analytics
 
@@ -81,7 +80,7 @@ Existují dva scénáře instalace, které mohou při instalaci agenta Log Analy
 
 **Stav monitorování** indikuje důvod, proč se službě Security Center nepodařilo úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování. Seznam hodnot, popisů a postupů řešení pro hodnoty **stavu monitorování** najdete v následující tabulce.
 
-| Stav monitorování | Popis | Postup řešení |
+| Stav monitorování | Description | Postup řešení |
 |---|---|---|
 | Čeká se na instalaci agenta | Instalace agenta Log Analytics stále běží.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
 | Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agent Log Analytics může být nainstalovaný jenom na virtuálním počítači, na kterém běží. | Restartujte virtuální počítač. |
@@ -105,10 +104,10 @@ V následující tabulce najdete přehled prostředků potřebných pro komunika
 
 | Prostředek agenta | Porty | Obejít kontrolu protokolu HTTPS |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Ano |
-| *.oms.opinsights.azure.com | 443 | Ano |
-| *.blob.core.windows.net | 443 | Ano |
-| *.azure-automation.net | 443 | Ano |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Pokud narazíte na problémy s registrací agenta, přečtěte si článek [Řešení potíží s registrací v Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 

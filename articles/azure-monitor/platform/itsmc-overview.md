@@ -7,10 +7,9 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83846524"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
@@ -130,7 +129,7 @@ Použijte následující postup:
 
 6. Z rozevírací nabídky vyberte typ **pracovní položky** .
    Vyberte možnost použít existující šablonu nebo vyplňte pole požadovaná produktem ITSM.
-7. Klikněte na tlačítko **OK**.
+7. Klikněte na **OK**.
 
 Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu akcí, která má akci ITSM. Když se aktivuje výstraha, v nástroji ITSM se vytvoří nebo aktualizuje pracovní položka.
 
@@ -228,7 +227,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Popis
+- Description
 - Počítač
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
@@ -275,7 +274,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  |   Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Popis |
+| Description_s | Description |
 | Počítač  | Položka konfigurace |
 
 

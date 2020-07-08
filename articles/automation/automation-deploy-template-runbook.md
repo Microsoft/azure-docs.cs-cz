@@ -7,10 +7,9 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, Runbook, JSON, Azure Automation
 ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837072"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Nasazení šablony Azure Resource Manager v Runbooku PowerShellu
@@ -84,11 +83,11 @@ V textovém editoru zkopírujte následující text:
 }
 ```
 
-Uložte soubor místně jako **TemplateTest. JSON**.
+Uložte soubor místně jako **TemplateTest.jsna**.
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>Uložit šablonu Správce prostředků v Azure Storage
 
-Nyní používáme PowerShell k vytvoření Azure Storage sdílené složky a nahrání souboru **TemplateTest. JSON** .
+Nyní používáme PowerShell k vytvoření Azure Storage sdílené složky a nahrání **TemplateTest.jsdo** souboru.
 Pokyny k vytvoření sdílené složky a nahrání souboru v Azure Portal najdete v tématu Začínáme [se službou Azure File Storage ve Windows](../storage/files/storage-dotnet-how-to-use-files.md).
 
 Spusťte na svém místním počítači prostředí PowerShell a spuštěním následujících příkazů vytvořte sdílenou složku a nahrajte do této sdílené složky šablonu Správce prostředků.
@@ -114,7 +113,7 @@ Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $t
 
 ## <a name="create-the-powershell-runbook-script"></a>Vytvoření skriptu PowerShellového Runbooku
 
-Nyní vytvoříme skript prostředí PowerShell, který získá soubor **TemplateTest. JSON** z Azure Storage a nasadí šablonu pro vytvoření nového účtu Azure Storage.
+Nyní vytvoříme skript prostředí PowerShell, který získá **TemplateTest.js** ze souboru z Azure Storage a nasadí šablonu pro vytvoření nového účtu Azure Storage.
 
 V textovém editoru vložte následující text:
 
@@ -161,13 +160,13 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ``` 
 
-Uložte soubor místně jako **DeployTemplate. ps1**.
+Uložte soubor místně jako **DeployTemplate.ps1**.
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Import a publikování Runbooku na účet Azure Automation
 
 Nyní používáme PowerShell k importování Runbooku do účtu Azure Automation a potom sadu Runbook publikujete. Informace o importu a publikování Runbooku v Azure Portal najdete v tématu [Správa runbooků v Azure Automation](manage-runbooks.md).
 
-Pokud chcete importovat **DeployTemplate. ps1** do svého účtu Automation jako powershellový Runbook, spusťte následující příkazy PowerShellu:
+Pokud chcete **DeployTemplate.ps1** importovat do svého účtu Automation jako powershellový Runbook, spusťte následující příkazy PowerShellu:
 
 ```powershell
 # MyPath is the path where you saved DeployTemplate.ps1

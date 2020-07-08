@@ -9,13 +9,12 @@ ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836154"
 ---
-# <a name="troubleshoot-azure-data-factory"></a>Řešení potíží s Azure Data Factory
+# <a name="troubleshoot-azure-data-factory"></a>Řešení potíží se službou Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje běžné metody řešení potíží pro aktivity externích řízení v Azure Data Factory.
@@ -442,7 +441,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina**:`Can't launch command, or the program returned an error code.`
 
-- **Doporučení**: Ujistěte se, že spustitelný soubor existuje. Pokud se program spustil, ověřte, že se do účtu úložiště nahrály *STDOUT. txt* a *stderr. txt* . Je dobrým zvykem zahrnout do kódu protokoly pro ladění.
+- **Doporučení**: Ujistěte se, že spustitelný soubor existuje. Pokud se program spustil, ověřte, že se do účtu úložiště nahrály *stdout.txt* a *stderr.txt* . Je dobrým zvykem zahrnout do kódu protokoly pro ladění.
 
 ### <a name="error-code-2501"></a>Kód chyby: 2501
 
@@ -1054,5 +1053,5 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 * [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 * [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-* [Videa Azure](https://azure.microsoft.com/resources/videos/index/)
+* [Videa k Azure](https://azure.microsoft.com/resources/videos/index/)
 * [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

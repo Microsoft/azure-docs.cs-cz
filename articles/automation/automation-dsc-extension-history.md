@@ -10,10 +10,9 @@ ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836919"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Práce s historií verze rozšíření pro konfiguraci požadovaného stavu Azure

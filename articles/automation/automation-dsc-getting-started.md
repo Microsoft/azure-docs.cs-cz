@@ -10,10 +10,9 @@ ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b39fbdf19703d8b4b2f8683577701dcb23900616
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836953"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Začínáme s konfigurací stavu Azure Automation
@@ -59,7 +58,7 @@ Vytvoříte jednoduchou [konfiguraci DSC](/powershell/scripting/dsc/configuratio
         }
     }
     ```
-1. Uložte soubor jako **TestConfig. ps1**.
+1. Uložte soubor jako **TestConfig.ps1**.
 
 Tato konfigurace volá jeden prostředek v bloku každého uzlu, [prostředek WindowsFeature](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource). Tento prostředek zajišťuje buď přítomnost, nebo absenci funkce **webového serveru** .
 
@@ -75,7 +74,7 @@ Potom naimportujete konfiguraci do účtu Automation.
 
    ![Snímek obrazovky s oknem * * import konfigurace * *](./media/automation-dsc-getting-started/AddConfig.png)
 
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 ## <a name="view-a-configuration-in-azure-automation"></a>Zobrazit konfiguraci v Azure Automation
 

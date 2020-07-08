@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836749"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrace z Orchestratoru na Azure Automation (beta verze)
@@ -83,7 +82,7 @@ ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module 
 
 Převaděč Runbooku vytvoří následující soubory protokolu ve stejném umístění jako převedený Runbook.  Pokud již soubory existují, budou přepsány informacemi z posledního převodu.
 
-| File | Obsah |
+| Soubor | Obsah |
 |:--- |:--- |
 | Převaděč Runbooku-průběh. log |Podrobné kroky převodu zahrnující informace pro každou aktivitu byly úspěšně převedeny a upozornění pro každou aktivitu, která není převedena. |
 | Runbook Converter-Summary. log |Souhrn posledního převodu, včetně všech upozornění a následných úkolů, které je třeba provést, například vytvoření proměnné požadované pro převedený Runbook. |

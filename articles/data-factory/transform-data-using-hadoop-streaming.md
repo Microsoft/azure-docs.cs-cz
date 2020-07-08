@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83844605"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
@@ -71,17 +70,17 @@ Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data
 
 | Vlastnost          | Popis                              | Vyžadováno |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | Název aktivity                     | Ano      |
+| name              | Název aktivity                     | Yes      |
 | description       | Text popisující, k čemu se aktivita používá | No       |
-| typ              | Pro aktivitu streamování Hadoop je typ aktivity HDInsightStreaming | Ano      |
-| linkedServiceName | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
-| Mapper            | Určuje název spustitelného souboru mapovače. | Ano      |
-| redukce           | Určuje název spustitelného souboru nástroje pro zmenšení. | Ano      |
+| typ              | Pro aktivitu streamování Hadoop je typ aktivity HDInsightStreaming | Yes      |
+| linkedServiceName | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
+| Mapper            | Určuje název spustitelného souboru mapovače. | Yes      |
+| redukce           | Určuje název spustitelného souboru nástroje pro zmenšení. | Yes      |
 | kombinační          | Určuje název spustitelného souboru kombinované aplikace. | No       |
 | fileLinkedService | Odkaz na propojenou službu Azure Storage, která se používá k uložení programů pro mapování, kombinování a snižování. Tady se podporují jenom propojené služby **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** a **[adls Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | No       |
-| filePath          | Poskytněte pole cesty k programům mapovače, kombinování a snižování, které jsou uložené v Azure Storage, na kterou odkazuje fileLinkedService. V této cestě se rozlišují velká a malá písmena. | Ano      |
-| vstup             | Určuje cestu WASB ke vstupnímu souboru pro mapovač. | Ano      |
-| output            | Určuje cestu WASB k výstupnímu souboru pro tuto redukci. | Ano      |
+| filePath          | Poskytněte pole cesty k programům mapovače, kombinování a snižování, které jsou uložené v Azure Storage, na kterou odkazuje fileLinkedService. V této cestě se rozlišují velká a malá písmena. | Yes      |
+| vstup             | Určuje cestu WASB ke vstupnímu souboru pro mapovač. | Yes      |
+| output            | Určuje cestu WASB k výstupnímu souboru pro tuto redukci. | Yes      |
 | GetDebugInfo –      | Určuje, kdy se soubory protokolu zkopírují do Azure Storage používaného clusterem HDInsight (nebo) zadaným pomocí scriptLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: Žádný. | No       |
 | náhodné         | Určuje pole argumentů pro úlohu Hadoop. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | No       |
 | definuje           | Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu podregistru. | No       | 

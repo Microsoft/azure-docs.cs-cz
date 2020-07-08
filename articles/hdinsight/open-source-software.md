@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: dd32d176b3e8821236f39dd1677d6dbe78b40adb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836069"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Podpora open source softwaru ve službě Azure HDInsight
@@ -23,7 +22,7 @@ Služba Microsoft Azure HDInsight používá prostředí Open Source technologi�
 
 Ve službě HDInsight jsou k dispozici dva typy open source komponent:
 
-### <a name="built-in-components"></a>Předdefinované komponenty
+### <a name="built-in-components"></a>Integrované komponenty
 
 Tyto součásti jsou předem nainstalovány v clusterech HDInsight a poskytují základní funkce clusteru. Do této kategorie patří tyto komponenty:
 
@@ -48,7 +47,7 @@ Jako uživatel clusteru můžete v rámci své úlohy nainstalovat nebo použít
 
 Služba HDInsight nabízí několik způsobů použití vlastních komponent. Stejná úroveň podpory platí bez ohledu na to, jak se součást používá nebo je v clusteru nainstalovaná. Následující tabulka popisuje nejběžnější způsoby použití vlastních komponent v clusterech HDInsight:
 
-|Využití |Popis |
+|Využití |Description |
 |---|---|
 |Odeslání úlohy|Cluster Hadoop nebo jiné typy úloh, které spouštějí nebo používají vlastní komponenty, lze odeslat do clusteru.|
 |Přizpůsobení clusteru|Během vytváření clusteru můžete zadat další nastavení a vlastní součásti, které jsou nainstalované na uzlech clusteru.|

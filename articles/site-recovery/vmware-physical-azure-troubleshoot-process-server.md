@@ -8,10 +8,9 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835797"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
@@ -34,7 +33,7 @@ Pro optimální výkon procesových serverů jsme shromáždili řadu obecných 
 
 **Osvědčené postupy** | **Podrobnosti**
 --- |---
-**Využití** | Ujistěte se, že se konfigurační server/samostatný procesový Server používá pouze k zamýšlenému účelu. Nespouštějte na počítači nic jiného.
+**Použití** | Ujistěte se, že se konfigurační server/samostatný procesový Server používá pouze k zamýšlenému účelu. Nespouštějte na počítači nic jiného.
 **IP adresa** | Ujistěte se, že procesový Server má statickou adresu IPv4 a nemá nakonfigurován překlad adres (NAT).
 **Řízení paměti a využití CPU** |Ponechte využití CPU a paměti pod 70%.
 **Zajistěte volné místo** | Volné místo označuje místo na disku mezipaměti na procesovém serveru. Data replikace se ukládají do mezipaměti, než se nahrají do Azure.<br/><br/> Nechte volné místo nad 25%. Pokud překročíte 20%, replikace se omezí pro replikované počítače, které jsou přidružené k procesu serveru.
@@ -51,7 +50,7 @@ Procesový Server vygeneruje množství upozornění na stav. Tyto výstrahy a d
 
 **Typ upozornění** | **Chyba** | **Řešení potíží**
 --- | --- | --- 
-![V pořádku][green] | Žádné  | Procesový Server je připojený a v pořádku.
+![V pořádku][green] | Žádná  | Procesový Server je připojený a v pořádku.
 ![Upozornění][yellow] | Zadané služby nejsou spuštěny. | 1. Ověřte, zda jsou služby spuštěny.<br/> 2. Pokud služby běží podle očekávání, postupujte podle pokynů níže a odstraňte potíže s [připojením a replikací](#check-connectivity-and-replication).
 ![Upozornění][yellow]  | Využití CPU > 80% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
 ![Kritické][red] |  Využití CPU > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.
@@ -113,7 +112,7 @@ Ověřte, že Site Recovery žádný antivirový software na replikovaném poč�
 3. Ověřte, zda připojení proběhlo úspěšně.
 
 
-**Možnosti připojení** | **Podrobnosti** | **Akce**
+**Připojení** | **Podrobnosti** | **Akce**
 --- | --- | ---
 **Úspěšnou** | Telnet zobrazí prázdnou obrazovku a procesový Server je dostupný. | Není vyžadována žádná další akce.
 **Neúspěšné** | Nemůžete se připojit | Ujistěte se, že na procesovém serveru je povolený příchozí port 9443. Například pokud máte hraniční síť nebo monitorovaná podsíť. Znovu ověřte připojení.
@@ -168,18 +167,18 @@ Ověřte, jestli procesový Server aktivně donáší data do Azure.
 
   1. Na procesovém serveru otevřete Správce úloh (stiskněte kombinaci kláves CTRL + SHIFT + ESC).
   2. Vyberte kartu **výkon** > **otevřít sledování prostředků**.
-  3. Na stránce **Sledování prostředků** vyberte kartu **síť** . V části **procesy s aktivitou sítě**ověřte, zda souboru cbengine. exe aktivně odesílá velké množství dat.
+  3. Na stránce **Sledování prostředků** vyberte kartu **síť** . V části **procesy s aktivitou sítě**ověřte, zda cbengine.exe aktivně odesílá velké množství dat.
 
        ![Svazky v procesech s aktivitou sítě](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
-  Pokud souboru cbengine. exe neposílá velký objem dat, proveďte kroky v následujících částech.
+  Pokud cbengine.exe neposílá velký objem dat, proveďte kroky v následujících částech.
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Krok 9: ověření připojení procesového serveru ke službě Azure Blob Storage
 
-1. V Sledování prostředků vyberte **souboru cbengine. exe**.
+1. V Sledování prostředků vyberte **cbengine.exe**.
 2. V části **připojení TCP**zkontrolujte, jestli je mezi procesovým serverem dosažitelný přístup k úložišti Azure.
 
-  ![Připojení mezi souboru cbengine. exe a adresou URL úložiště objektů BLOB v Azure](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Připojení mezi cbengine.exe a adresou URL úložiště objektů BLOB v Azure](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Kontrolovat služby
 

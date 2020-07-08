@@ -6,17 +6,16 @@ ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836562"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
 Funkce automatizace procesu Azure Automation podporuje několik typů sad Runbook, jak je definováno v následující tabulce. Další informace o prostředí automatizace procesu naleznete v tématu [Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
 
-| Typ | Popis |
+| Typ | Description |
 |:--- |:--- |
 | [Grafický](#graphical-runbooks)|Grafická sada Runbook založená na prostředí Windows PowerShell a vytvořena a upravována zcela v grafickém editoru v Azure Portal. |
 | [Grafický pracovní postup PowerShellu](#graphical-runbooks)|Grafická sada Runbook založená na pracovním postupu prostředí Windows PowerShell a vytvořená a upravená úplně v grafickém editoru v Azure Portal. |
