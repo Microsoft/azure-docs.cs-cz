@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 87f1fcfa08ef2b7d2e4f72588eff8576c5ace146
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254289"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054436"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – navrhování odolných řešení
 
@@ -30,7 +30,6 @@ Kromě základní ochrany DDoS na platformě nabízí [Azure DDoS Protection Sta
 
 ![Role Azure DDoS Protection v ochraně zákazníků a virtuální sítě od útočníka](./media/ddos-best-practices/image1.png)
 
-Doporučení k zabezpečení týkající se této technologie najdete v tématu [základní hodnoty zabezpečení Azure pro DDoS Protection](ddos-protection-security-baseline.md).
 
 ## <a name="fundamental-best-practices"></a>Základní osvědčené postupy
 
@@ -269,7 +268,6 @@ Další informace o této referenční architektuře najdete v tématu věnovan�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Základní hodnoty zabezpečení Azure pro DDoS Protection](ddos-protection-security-baseline.md)
 * [Sdílená odpovědnost v cloudu](shared-responsibility.md)
 * [Stránka Azure DDoS Protection produktu](https://azure.microsoft.com/services/ddos-protection/)
 * [Dokumentace k Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)

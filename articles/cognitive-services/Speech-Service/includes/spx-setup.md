@@ -5,11 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c57187ae15e5f15a601edbc74921b3c879abe715
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b0f70fccf3f7f4a6856ae64d0946c2c473fed93c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800673"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050320"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,6 +27,10 @@ Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoz
 3. Přejít do kořenového adresáře `spx-zips` , který jste extrahovali ze staženého souboru, a extrahovat podadresář, který potřebujete ( `spx-net471` pro .NET Framework 4,7 nebo `spx-netcore-win-x64` pro .NET Core 3,0 na CPU x64).
 
 Na příkazovém řádku změňte adresář na toto umístění a potom zadejte `spx` nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
+
+> [!NOTE]
+> PowerShell při hledání příkazu nekontroluje místní adresář. V prostředí PowerShell změňte adresář na umístění `spx` a zavolejte nástroj zadáním `.\spx` .
+> Pokud přidáte tento adresář do vaší cesty, PowerShell a příkazový řádek Windows se najde `spx` z libovolného adresáře bez zahrnutí `.\` předpony.
 
 #### <a name="linux-install"></a>[Instalace pro Linux](#tab/linuxinstall)
 

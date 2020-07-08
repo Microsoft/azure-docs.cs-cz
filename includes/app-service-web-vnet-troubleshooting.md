@@ -4,25 +4,29 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: 652d42d6e2d9e909c3a03bd82a3a36f91bc73807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419557"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050365"
 ---
-Tato funkce se snadno nastavuje, ale to neznamená, že vaše prostředí bude mít problém zdarma. Pokud narazíte na problémy s přístupem k požadovanému koncovému bodu, můžete použít k otestování připojení z konzoly aplikace některé nástroje. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, navštivte **Nástroj nástroje** > **Kudu**. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu **ladit konzolu** . Pokud se chcete dostat do konzoly hostované pro Azure Portal z vaší aplikace, pokračujte v**konzole** **nástroje** > .
+Tato funkce se snadno nastavuje, ale to neznamená, že vaše prostředí bude mít problém zdarma. Pokud narazíte na problémy s přístupem k požadovanému koncovému bodu, můžete použít k otestování připojení z konzoly aplikace některé nástroje. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, navštivte **Nástroj nástroje**  >  **Kudu**. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu **ladit konzolu** . Pokud se chcete dostat do konzoly hostované pro Azure Portal z vaší aplikace, pokračujte **Tools**v  >  **konzole**nástroje.
 
-#### <a name="tools"></a>Nástroje
-Nástroje **příkazového testu**, **nslookup**a **tracert** nefungují prostřednictvím konzoly z důvodu omezení zabezpečení. K vyplnění void se přidají dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem **nameresolver. exe**. Syntaxe je:
+#### <a name="tools"></a>nástroje
+Nástroje **příkazového testu**, **nslookup**a **tracert** nefungují prostřednictvím konzoly z důvodu omezení zabezpečení. K vyplnění void se přidají dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem **nameresolver.exe**. Syntaxe je:
 
-    nameresolver.exe hostname [optional: DNS Server]
+```console
+nameresolver.exe hostname [optional: DNS Server]
+```
 
 Nameresolver můžete použít ke kontrole názvů hostitelů, na kterých vaše aplikace závisí. Tímto způsobem můžete testovat, jestli máte nějaké nesprávně nakonfigurované služby DNS nebo možná nemáte přístup k vašemu serveru DNS. Server DNS, který vaše aplikace používá, můžete zobrazit v konzole nástroje tak, že prohlížíte proměnné prostředí WEBSITE_DNS_SERVER a WEBSITE_DNS_ALT_SERVER.
 
 K otestování připojení TCP k hostitelskému a kombinaci portů můžete použít další nástroj. Tento nástroj se nazývá **tcpping** a syntaxe je:
 
-    tcpping.exe hostname [optional: port]
+```console
+tcpping.exe hostname [optional: port]
+```
 
 Nástroj **tcpping** vám oznamuje, jestli můžete kontaktovat konkrétního hostitele a port. Může zobrazit úspěch pouze v případě, že aplikace naslouchá na kombinaci hostitelů a portu a má přístup k síti z vaší aplikace na zadaného hostitele a port.
 
@@ -62,7 +66,9 @@ Mezi další kroky ladění patří:
 
 * Připojte se k virtuálnímu počítači ve virtuální síti a pokuste se připojit k hostiteli prostředků: port. K otestování přístupu TCP použijte příkaz PowerShellu **test-NetConnection**. Syntaxe je:
 
-      test-netconnection hostname [optional: -Port]
+```powershell
+test-netconnection hostname [optional: -Port]
+```
 
 * Zaveďte aplikaci na virtuální počítač a otestujte přístup k tomuto hostiteli a portu z konzoly z vaší aplikace pomocí **tcpping**.
 

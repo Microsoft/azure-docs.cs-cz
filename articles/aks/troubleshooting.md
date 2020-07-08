@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125425"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054385"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -31,11 +31,34 @@ Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastave
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co bych měl/a dělat?
 
-Když použijete modul plug-in Azure CNI Network, AKS přidělí IP adresy na základě parametru--Max-lusky na jeden uzel. Velikost podsítě musí být větší než počet uzlů, kolikrát je nastaven maximální počet lusků na uzel. Následující rovnice ho popisuje:
+Tato chyba znamená, že podsíť, která se používá pro cluster, už nemá k dispozici žádné IP adresy v rámci jejího CIDR pro úspěšné přiřazení prostředku. U clusterů Kubenet je požadavek pro každý uzel v clusteru dostatečným místem pro IP adresu. U clusterů Azure CNI je požadavek pro každý uzel a pod v clusteru dostatečným místem pro IP adresu.
+Přečtěte si další informace o [návrhu Azure CNI, abyste přiřadili IP adresy do lusků](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Velikost podsítě > počet uzlů v clusteru (berou v úvahu budoucí požadavky na škálování) * max. lusky na jeden uzel sady.
+Tyto chyby jsou také v [AKS Diagnostics](https://docs.microsoft.com/azure/aks/concepts-diagnostics) , které aktivně povrchují problémy, jako je například nedostatečná velikost podsítě.
 
-Další informace najdete v tématu [plánování adresování IP adres pro váš cluster](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
+V následujících třech případech dojde k chybě nedostatečné velikosti podsítě:
+
+1. Škálování na AKS nebo AKS Nodepool
+   1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of new nodes requested` .
+   1. Pokud používáte Azure CNI, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of nodes requested times (*) the node pool's --max-pod value` .
+
+1. Upgrade AKS nebo upgrade AKS Nodepool
+   1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade` .
+   1. Pokud používáte Azure CNI, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+   
+   Ve výchozím nastavení jsou clustery AKS nastavené na hodnotu maximálního nárůstu (vyrovnávací paměti pro upgrade) jednoho (1), ale toto chování při upgradu se dá přizpůsobit nastavením [maximální hodnoty přetečení fondu uzlů](upgrade-cluster.md#customize-node-surge-upgrade-preview) , která zvýší počet dostupných IP adres potřebných k dokončení upgradu.
+
+1. AKS Create nebo AKS Nodepool Add
+   1. Pokud používáte Kubenet, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of nodes requested for the node pool` .
+   1. Pokud používáte Azure CNI, k tomu dochází, když `number of free IPs in the subnet` je **menší než** `number of nodes requested times (*) the node pool's --max-pod value` .
+
+Následující omezení se dá učinit vytvořením nových podsítí. Kvůli neschopnosti aktualizovat rozsah CIDR existující podsítě se vyžaduje oprávnění k vytvoření nové podsítě.
+
+1. Sestavte novou podsíť s větším rozsahem CIDR postačující pro cíle operace:
+   1. Vytvoří novou podsíť s novým požadovaným rozsahem, který se překrývá.
+   1. Vytvořte novou nodepool na nové podsíti.
+   1. Vyprázdní se z původního nodepoolu umístěného v staré podsíti, která se má nahradit.
+   1. Odstraňte starou podsíť a starou nodepool.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co bych měl/a dělat?
 
@@ -126,6 +149,7 @@ Omezení pojmenování jsou implementovaná platformou Azure i AKS. Pokud název
 * Název skupiny prostředků AKS uzel/*MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky vygenerovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS. Můžete také [přizpůsobit název skupiny prostředků uzlu](cluster-configuration.md#custom-resource-group-name) .
 * *Pole dnsprefix* musí začínat a končit alfanumerickými hodnotami a musí mít 1-54 znaků. Mezi platné znaky patří alfanumerické hodnoty a spojovníky (-). *Pole dnsprefix* nemůže obsahovat speciální znaky, jako je například tečka (.).
 * Názvy fondů uzlů AKS musí mít malými písmeny a musí mít 1-11 znaků pro fondy uzlů Linux a 1-6 znaků pro fondy uzlů Windows. Název musí začínat písmenem a jediným povoleným znakem jsou písmena a číslice.
+* *Uživatelské jméno*správce, které nastavuje uživatelské jméno správce pro uzly Linux, musí začínat písmenem, může obsahovat jenom písmena, číslice, spojovníky a podtržítka a maximální délka 64 znaků.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Při pokusu o vytvoření, aktualizaci, škálování, odstranění nebo upgrade clusteru dochází k chybám. Tato operace není povolená, protože probíhá jiná operace.
 
@@ -193,7 +217,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | – |
+| 1,12 a novější | Není k dispozici |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
@@ -250,7 +274,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.9 nebo novější |
 | 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | – |
+| 1,15 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém a váš uzel obsahuje zastaralý seznam disků, můžete zmírnit odpojením všech neexistujících disků z virtuálního počítače jako hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -269,7 +293,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.10 nebo novější |
 | 1.13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | – |
+| 1,15 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém, a váš uzel je ve stavu selhání, můžete zmírnit ruční aktualizací stavu virtuálního počítače pomocí jedné z následujících akcí:
 
@@ -378,7 +402,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.12 | 1.12.6 nebo novější |
 | 1.13 | 1.13.4 nebo novější |
-| 1,14 a novější | – |
+| 1,14 a novější | Není k dispozici |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 

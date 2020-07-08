@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
+    - name: Spuštění Asistivní čtečky (Android)
+      href: tutorial-android.md
+    - name: Spuštění Asistivní čtečky (iOS)
+      href: tutorial-ios.md
     - name: Spuštění Asistivní čtečky (Python)
       href: tutorial-python.md
     - name: Použití několika prostředků Asistivní čtečky

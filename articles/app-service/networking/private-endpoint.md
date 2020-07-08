@@ -1,20 +1,20 @@
 ---
-title: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
+title: Připojení soukromě k webové aplikaci Azure pomocí privátního koncového bodu
 description: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 462de426a365a2aca4572dae6bff9261e4ee37f7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445470"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054572"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
@@ -70,7 +70,7 @@ Pokud pro webovou aplikaci použijete privátní koncový bod, požadovaná adre
 Ve výchozím nastavení bez privátního koncového bodu je veřejný název vaší webové aplikace kanonický název clusteru.
 Například překlad názvů bude:
 
-|Název |Typ |Hodnota |
+|Name |Typ |Hodnota |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -80,7 +80,7 @@ Například překlad názvů bude:
 Při nasazení privátního koncového bodu aktualizujeme položku DNS tak, aby odkazovala na kanonický název mywebapp.privatelink.azurewebsites.net.
 Například překlad názvů bude:
 
-|Název |Typ |Hodnota |Přeznačit |
+|Name |Typ |Hodnota |Přeznačit |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -91,7 +91,7 @@ Musíte nastavit privátní server DNS nebo privátní zónu Azure DNS, pro test
 Zóna DNS, kterou potřebujete vytvořit, je: **privatelink.azurewebsites.NET**. Zaregistrujte si záznam pro vaši webovou aplikaci pomocí záznamu a a IP adresy privátního koncového bodu.
 Například překlad názvů bude:
 
-|Název |Typ |Hodnota |Přeznačit |
+|Name |Typ |Hodnota |Přeznačit |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|< – tuto položku můžete spravovat v systému DNS, aby odkazovala na IP adresu privátního koncového bodu.|
@@ -103,13 +103,11 @@ Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikac
 
 V případě konzoly Kudu nebo Kudu REST API (například nasazení pomocí samoobslužných agentů Azure DevOps) musíte vytvořit dva záznamy v privátní zóně Azure DNS nebo ve vlastním serveru DNS. 
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 
-> [!TIP]
-> Tyto dva záznamy se vyplní automaticky, pokud máte privátní zónu DNS s názvem privatelink.azurewebsites.net propojenou s virtuální sítí, kde vytvoříte soukromý koncový bod.
 
 
 ## <a name="pricing"></a>Ceny
@@ -126,8 +124,9 @@ Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod
 
 ## <a name="next-steps"></a>Další kroky
 
-Postup nasazení privátního koncového bodu pro webovou aplikaci prostřednictvím portálu najdete v tématu [Jak připojit soukromě k webové aplikaci][howtoguide] .
-
+- Postup nasazení privátního koncového bodu pro webovou aplikaci prostřednictvím portálu najdete v tématu [Jak připojit soukromě k webové aplikaci pomocí portálu][howtoguide1] .
+- Postup nasazení privátního koncového bodu pro webovou aplikaci pomocí rozhraní příkazového řádku Azure najdete v tématu [Jak připojit soukromě k webové aplikaci pomocí Azure CLI][howtoguide2] .
+- Postup nasazení privátního koncového bodu pro webovou aplikaci pomocí prostředí PowerShell najdete v tématu [Postup připojení soukromě k webové aplikaci pomocí prostředí PowerShell][howtoguide3] .
 
 
 
@@ -141,4 +140,6 @@ Postup nasazení privátního koncového bodu pro webovou aplikaci prostřednict
 [dnsvalidation]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain
 [pllimitations]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
+[howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 26456c09975fa49bae17a3cfeef8ecc1ef913815
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315892"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045939"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Základní hodnota zabezpečení Azure pro Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -639,7 +639,7 @@ https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
-**Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na případy, kdy změny probíhají v produkčních instancích databází Azure SQL a dalších důležitých nebo souvisejících prostředcích.
+**Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích Azure SQL Database a dalších důležitých nebo souvisejících prostředcích.
 
 Vytváření upozornění pro události protokolu aktivit Azure:
 
@@ -657,7 +657,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Doprovodné**materiály: povolení pokročilých zabezpečení dat pro Azure SQL Database a použití doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení na serverech.
 
-Jak spustit posuzování ohrožení zabezpečení ve vašich databázích SQL Azure:
+Jak spustit posuzování ohrožení zabezpečení na Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 

@@ -4,12 +4,12 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 8ca054b3a3d5147b7d98a021ce1e26d02d5581b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73832057"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050217"
 ---
 ### <a name="record-names"></a>Názvy záznamů
 
@@ -27,8 +27,10 @@ Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, CAA, CNAME, M
 
 Někdy můžete potřebovat vytvořit víc než jeden záznam DNS s daným názvem a typem. Předpokládejme například, že web „www.contoso.com“ je hostovaný na dvou různých IP adresách. Tento web vyžaduje dva různé záznamy A, jeden pro každou IP adresu. Tady je příklad sady záznamů:
 
-    www.contoso.com.        3600    IN    A    134.170.185.46
-    www.contoso.com.        3600    IN    A    134.170.188.221
+```dns
+www.contoso.com.        3600    IN    A    134.170.185.46
+www.contoso.com.        3600    IN    A    134.170.188.221
+```
 
 Azure DNS spravuje všechny záznamy DNS pomocí *sady záznamů*. Sada záznamů (známá také jako sada *záznamů* „prostředků“) je kolekce záznamů DNS v zóně, které mají stejný název a jsou stejného typu. Většina sad záznamů obsahuje jediný záznam. Příklady jako ten výše, kde sada záznamů obsahuje více než jeden záznam, však nejsou výjimkou.
 

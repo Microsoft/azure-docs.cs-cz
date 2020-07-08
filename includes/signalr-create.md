@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 39bff26baea622e6c0ed524ca68c3c8bae4e770d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba46d4dbe90b696398ed4c78383e127861c1a066
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76021037"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050443"
 ---
 1. Pokud chcete vytvořit prostředek služby signalizace Azure, nejdřív se přihlaste k [Azure Portal](https://portal.azure.com). V levé horní části stránky vyberte **+ vytvořit prostředek**. Do textového pole **Hledat na Marketplace** zadejte **službu Signal**.
 
@@ -21,9 +21,9 @@ ms.locfileid: "76021037"
 
 3. Na stránce Nová nastavení **signálu** přidejte následující nastavení pro nový prostředek signalizace:
 
-    | Název | Doporučená hodnota | Popis |
+    | Name | Doporučená hodnota | Description |
     | ---- | ----------------- | ----------- |
-    | Název prostředku | *testsignalr* | Zadejte jedinečný název prostředku, který se použije pro prostředek služby SignalR. Název musí být řetězec o 1 až 63 znaků a obsahovat jenom číslice, písmena a spojovníky (`-`). Název nesmí začínat ani končit znakem spojovníku a po sobě jdoucí znaky spojovníku nejsou platné.|
+    | Název prostředku | *testsignalr* | Zadejte jedinečný název prostředku, který se použije pro prostředek služby SignalR. Název musí být řetězec o 1 až 63 znaků a obsahovat jenom číslice, písmena a spojovníky ( `-` ). Název nesmí začínat ani končit znakem spojovníku a po sobě jdoucí znaky spojovníku nejsou platné.|
     | Předplatné | Zvolte vaše předplatné. |  Vyberte předplatné Azure, které chcete k otestování služby SignalR použít. Pokud má váš účet jenom jedno předplatné, vybere se automaticky a rozevírací seznam **předplatné** se nezobrazí.|
     | Skupina prostředků | Vytvořte skupinu prostředků s názvem *SignalRTestResources* .| Vyberte nebo vytvořte skupinu prostředků pro prostředek služby SignalR. Tato skupina je užitečná k organizování více prostředků, které můžete chtít odstranit současně odstraněním skupiny prostředků. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../articles/azure-resource-manager/management/overview.md). |
     | Umístění | *USA – východ* | Pomocí **Umístění** určete zeměpisné umístění, ve kterém se prostředek služby SignalR bude hostovat. Pro zajištění nejlepšího výkonu doporučujeme vytvořit prostředek ve stejné oblasti jako ostatní komponenty vaší aplikace. |
@@ -36,4 +36,4 @@ ms.locfileid: "76021037"
 
     Připojovací řetězec bude mít následující formát:
     
-        Endpoint=<service_endpoint>;AccessKey=<access_key>;
+    `Endpoint=<service_endpoint>;AccessKey=<access_key>;`

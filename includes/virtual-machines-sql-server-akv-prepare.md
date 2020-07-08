@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c7d312910c6d38c54b291da34bfb827246c7dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79504341"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050422"
 ---
 ## <a name="prepare-for-akv-integration"></a>Příprava na integraci integrace
 Pokud chcete použít integraci Azure Key Vault ke konfiguraci SQL Server virtuálního počítače, máte několik požadavků: 
@@ -56,9 +56,11 @@ V dalším kroku zaregistrujete aplikaci pomocí AAD. Tím získáte účet inst
 ### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>Vytvoření trezoru klíčů
 Abyste mohli použít Azure Key Vault k ukládání klíčů, které budete používat k šifrování na svém VIRTUÁLNÍm počítači, budete potřebovat přístup k trezoru klíčů. Pokud jste svůj Trezor klíčů ještě nevytvořili, vytvořte ho podle kroků uvedených v článku [Začínáme s Azure Key Vault](../articles/key-vault/key-vault-overview.md) . Před dokončením tohoto postupu je několik informací, které potřebujete ke shromáždění během této nastavení, později, když povolíte Azure Key Vault integraci na svém VIRTUÁLNÍm počítači s SQL.
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```
 
-Když se dostanete k kroku vytvoření trezoru klíčů, poznamenejte si vrácenou vlastnost **vaultUri** , která je adresa URL trezoru klíčů. V příkladu uvedeném v tomto kroku se zobrazuje název trezoru klíčů ContosoKeyVault, takže adresa URL trezoru klíčů by byla https://contosokeyvault.vault.azure.net/.
+Když se dostanete k kroku vytvoření trezoru klíčů, poznamenejte si vrácenou vlastnost **vaultUri** , která je adresa URL trezoru klíčů. V příkladu uvedeném v tomto kroku se zobrazuje název trezoru klíčů ContosoKeyVault, takže adresa URL trezoru klíčů by byla https://contosokeyvault.vault.azure.net/ .
 
 Adresa URL trezoru klíčů se přiřadí později k parametru **$akvURL** ve skriptu PowerShellu, aby se aktivovala Azure Key Vault integrace.
 

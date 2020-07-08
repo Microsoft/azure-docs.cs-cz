@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 189ebcc74461a57a4e91bf50262c377540cf885b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 873f871625b812937d1e6ac360f7e0565121a4eb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367831"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045990"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Vysvětlení a volání přímých metod ze služby IoT Hub
 
@@ -113,7 +113,7 @@ Spusťte upravený příkaz pro vyvolání zadané přímé metody. Úspěšné 
 > Výše uvedený příklad ukazuje vyvolání přímé metody v zařízení.  Pokud chcete vyvolat přímou metodu v modulu IoT Edge, je nutné upravit požadavek adresy URL, jak je uvedeno níže:
 
 ```bash
-https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
 ```
 ### <a name="response"></a>Odpověď
 

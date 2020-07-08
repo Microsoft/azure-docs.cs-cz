@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76715671"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054521"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Spravované aplikace Azure s oznámeními
 
@@ -20,7 +20,7 @@ Oznámení spravované aplikace Azure umožňují vydavatelům automatizovat akc
 Pokud chcete začít přijímat spravované aplikace, aktivujte si veřejný koncový bod HTTPS a určete ho při publikování definice aplikace katalogu služeb nebo nabídky Azure Marketplace.
 
 Tady je doporučený postup pro rychlé zprovoznění:
-1. Aktivujte veřejný koncový bod HTTPS, který zaznamená příchozí požadavky POST a vrátí `200 OK`.
+1. Aktivujte veřejný koncový bod HTTPS, který zaznamená příchozí požadavky POST a vrátí `200 OK` .
 2. Přidejte koncový bod do definice aplikace katalogu služeb nebo nabídky Azure Marketplace, jak je vysvětleno dále v tomto článku.
 3. Vytvořte instanci spravované aplikace, která odkazuje na definici aplikace nebo na nabídku Azure Marketplace.
 4. Ověřte příjem oznámení.
@@ -36,7 +36,7 @@ Informace o tom, jak začít, najdete v tématu [publikování aplikace katalogu
 #### <a name="rest-api"></a>REST API
 
 > [!NOTE]
-> `notificationEndpoints` V současné době můžete ve vlastnostech definice aplikace v nástroji nastavit pouze jeden koncový bod.
+> V současné době můžete ve vlastnostech definice aplikace v nástroji nastavit pouze jeden koncový bod `notificationEndpoints` .
 
 ``` JSON
     {
@@ -61,7 +61,7 @@ Informace o tom, jak začít, najdete v tématu [publikování aplikace katalogu
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Přidat Azure Marketplace oznámení o spravovaných aplikacích
-Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md).
+Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
 
 ![Azure Marketplace oznámení spravované aplikace v Azure Portal](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Aktivační události
@@ -69,12 +69,12 @@ Následující tabulka popisuje všechny možné kombinace EventType a Provision
 
 Typ události | ProvisioningState | Aktivační událost pro oznámení
 ---|---|---
-PUT | Accepted | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (před tím, než se nasazování do spravované skupiny prostředků dokončí).
+PUT | Přijato | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (před tím, než se nasazování do spravované skupiny prostředků dokončí).
 PUT | Úspěch | Úplné zřízení spravované aplikace bylo po vložení úspěšné.
 PUT | Failed | Chyba při zřizování instance aplikace v jakémkoli bodě.
 POUŽITA | Úspěch | Po úspěšné opravě instance spravované aplikace aktualizujte značky, zásady přístupu JIT nebo spravovanou identitu.
-DELETE | Odstraňuje | Jakmile uživatel zahájí odstranění instance spravované aplikace.
-DELETE | Odstranění | Po úplném a úspěšném odstranění spravované aplikace.
+DELETE | odstraňování | Jakmile uživatel zahájí odstranění instance spravované aplikace.
+DELETE | Odstraněné | Po úplném a úspěšném odstranění spravované aplikace.
 DELETE | Failed | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
 ## <a name="notification-schema"></a>Schéma oznámení
 Když nastavíte koncový bod Webhooku pro zpracování oznámení, budete muset analyzovat datovou část, abyste získali důležité vlastnosti, které pak budou fungovat na oznámení. Služba Service Catalog a Azure Marketplace oznámení o spravovaných aplikacích poskytují mnoho stejných vlastností. V tabulce, která následuje za ukázkami, jsou popsaný dva malé rozdíly.
@@ -189,7 +189,7 @@ billingDetails | *Určeno pouze pro Azure Marketplace spravované aplikace.* Úd
 
 ## <a name="endpoint-authentication"></a>Ověřování koncového bodu
 Zabezpečení koncového bodu Webhooku a ověření pravosti oznámení:
-1. Zadejte parametr dotazu pro identifikátor URI Webhooku, například: https\://Your-Endpoint.com? SIG = GUID. U každého oznámení ověřte, zda parametr `sig` dotazu má očekávanou hodnotu. `Guid`
+1. Zadejte parametr dotazu pro identifikátor URI Webhooku, například: https \: //Your-Endpoint.com? SIG = GUID. U každého oznámení ověřte, zda parametr dotazu `sig` má očekávanou hodnotu `Guid` .
 2. Vystavte GET pro instanci spravované aplikace pomocí applicationId. Ověřte, že provisioningState odpovídá provisioningState oznámení, aby se zajistila konzistence.
 
 ## <a name="notification-retries"></a>Opakované pokusy o oznámení

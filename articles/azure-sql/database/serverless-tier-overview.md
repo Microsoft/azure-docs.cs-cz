@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 6/26/2020
-ms.openlocfilehash: 2b5da354e8e8b49e40e7d960e368aad8067de659
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 7/6/2020
+ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506697"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045956"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bez serveru je výpočetní vrstva pro izolovanou databázi SQL Azure, která automaticky škáluje výpočetní výkon na základě požadavků na zatížení a faktur na množství výpočetního využití za sekundu. Výpočetní vrstva bez serveru taky automaticky pozastaví databáze během neaktivních období, kdy se účtují jenom úložiště, a automaticky obnoví databáze při návratu aktivity.
+Bez serveru je výpočetní vrstva pro izolované databáze v Azure SQL Database, která automaticky škáluje výpočetní výkon na základě požadavků na zatížení a faktur na množství výpočetního využití za sekundu. Výpočetní vrstva bez serveru taky automaticky pozastaví databáze během neaktivních období, kdy se účtují jenom úložiště, a automaticky obnoví databáze při návratu aktivity.
 
 ## <a name="serverless-compute-tier"></a>Bezserverová výpočetní úroveň
 
@@ -88,9 +88,9 @@ Paměť pro databáze bez serveru se uvolní častěji než u zřízených výpo
 
 #### <a name="cache-reclamation"></a>Recyklace mezipaměti
 
-Na rozdíl od zřízených výpočetních databází je paměť z mezipaměti SQL uvolněna z databáze bez serveru, když je využití procesoru nebo paměti nízké.
+Na rozdíl od zřízených výpočetních databází je paměť z mezipaměti SQL uvolněna z databáze bez serveru, pokud je nízká úroveň využití procesoru nebo aktivní mezipaměti.  Všimněte si, že pokud je využití procesoru nízké, může využití aktivní mezipaměti zůstat vysoké v závislosti na způsobu použití a zabránit recyklaci paměti.
 
-- Využití mezipaměti je považováno za nízké, pokud celková velikost naposledy použitých položek mezipaměti v časovém intervalu klesne pod prahovou hodnotu.
+- Využití aktivní mezipaměti se považuje za nepatrné, pokud celková velikost naposledy použitých položek mezipaměti klesne pod prahovou hodnotu po určitou dobu.
 - Při aktivaci opětovného získání mezipaměti se cílová velikost mezipaměti zmenší přírůstkově na zlomek její předchozí velikosti a obnovení bude pokračovat pouze v případě, že je využití nízké.
 - Když dojde k recyklování mezipaměti, zásada pro výběr položek mezipaměti k vyřazení je stejná jako zásada výběru pro zřízené výpočetní databáze, pokud je tlak paměti vysoký.
 - Velikost mezipaměti se nikdy nesnižuje pod minimálním limitem paměti definovaným min virtuální jádra, který se dá nakonfigurovat.
@@ -112,7 +112,7 @@ Automatické pauzy se aktivují, pokud jsou splněné všechny následující po
 
 V případě potřeby je k dispozici možnost pro vypnutí autopauzy.
 
-Následující funkce nepodporují autopauzu.  To znamená, že pokud použijete některou z následujících funkcí, zůstane databáze online bez ohledu na dobu nečinnosti databáze:
+Následující funkce nepodporují automatické pozastavení, ale podporují automatické škálování.  To znamená, že pokud použijete některou z následujících funkcí, zůstane databáze online bez ohledu na dobu nečinnosti databáze:
 
 - Geografická replikace (aktivní geografická replikace a skupiny s automatickým převzetím služeb při selhání).
 - Dlouhodobé uchovávání záloh (LTR).
