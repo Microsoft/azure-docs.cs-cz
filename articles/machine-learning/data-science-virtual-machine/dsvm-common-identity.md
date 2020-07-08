@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70208145"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959139"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Nastavení společné identity na Data Science Virtual Machine
 
@@ -41,9 +41,9 @@ Azure služba AD DS usnadňuje správu identit tím, že poskytuje plně spravov
     
    1. V **Uživatelé a skupiny**vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel**.
    
-           The **User** pane opens:
+        Otevře se podokno **uživatel** :
       
-      ![Podokno "uživatel"](./media/add-user.png)
+        ![Podokno "uživatel"](./media/add-user.png)
     
    1. Zadejte podrobnosti o uživateli, například **Jméno** a **Uživatelské jméno**. Část názvu domény uživatelského jména musí být buď počáteční výchozí název domény "[název domény].. Microsoft. com" nebo ověřený nefederovaný [vlastní název domény](../../active-directory/add-custom-domain.md) , například "contoso.com".
     
@@ -70,7 +70,7 @@ Azure služba AD DS usnadňuje správu identit tím, že poskytuje plně spravov
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
 1. Předpokládejme například, že jste připojili sdílenou složku souborů Azure v/data/Workspace.. Teď vytvořte adresáře pro každého uživatele ve sdílené složce:/data/Workspace/user1,/data/Workspace/User2 a tak dále. Vytvořte `notebooks` adresář v pracovním prostoru každého uživatele. 
-1. Vytvořte symbolické odkazy pro `notebooks` v `$HOME/userx/notebooks/remote`.   
+1. Vytvořte symbolické odkazy pro `notebooks` v `$HOME/userx/notebooks/remote` .   
 
 Nyní máte uživatele v instanci služby Active Directory hostované v Azure. Pomocí přihlašovacích údajů služby Active Directory se uživatelé můžou přihlásit k jakýmkoli DSVM (SSH nebo JupyterHub), který je připojený k Azure služba AD DS. Vzhledem k tomu, že se pracovní prostor uživatele nachází ve sdílené složce služby soubory Azure, uživatelé mají přístup ke svým notebookům a jiné práci z libovolného DSVMu, když používají JupyterHub.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891095"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961893"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava chyby nedostatku paměti Apache Hive ve službě Azure HDInsight
 
@@ -50,11 +50,14 @@ Některé drobné odlišnosti tohoto dotazu:
 
 Dotaz na podregistr trval 26 minut, než se dokončí na clusteru HDInsight se 24 uzly a3. Zákazník si všiml následující zprávy upozornění:
 
+```output
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
+```
 
 Pomocí spouštěcího modulu Apache Tez. Stejný dotaz běžel po dobu 15 minut a poté vyvolal následující chybu:
 
+```output
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
         at
@@ -78,6 +81,7 @@ Pomocí spouštěcího modulu Apache Tez. Stejný dotaz běžel po dobu 15 minut
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
+```
 
 Tato chyba zůstane při použití většího virtuálního počítače (například D12).
 
@@ -87,7 +91,7 @@ Naše technické podpory a technické týmy společně nalezly jeden z problém�
 
 "Při každém podregistru. auto. Convert. Join. noconditionaltask = true kontrolujeme noconditionaltask. Size a Pokud součet velikostí tabulek ve spojení map je menší než noconditionaltask. velikost plánu by generovala spojení s mapou, problém s tímto je tím, že výpočet nebere v úvahu režii, kterou zavedla jiná implementace zatřiďovací tabulky, jako výsledky, pokud je součet vstupních velikostí menší než velikost noconditionaltask na dotazech malého okraje, budou mít OOM."
 
-**Podregistr. auto. Convert. Join. noconditionaltask** v souboru Hive-site. XML byl nastaven na **hodnotu true**:
+**Podregistr. auto. Convert. Join. noconditionaltask** v souboru hive-site.xml byl nastaven na **hodnotu true**:
 
 ```xml
 <property>
@@ -112,8 +116,10 @@ Jak ukazuje Blogový příspěvek, definuje následující dvě nastavení pamě
 
 Vzhledem k tomu, že počítač s D12 má 28 GB paměti, rozhodli jste se použít velikost kontejneru 10 GB (10240 MB) a přiřadit 80% k Java. výslovný:
 
-    SET hive.tez.container.size=10240
-    SET hive.tez.java.opts=-Xmx8192m
+```console
+SET hive.tez.container.size=10240
+SET hive.tez.java.opts=-Xmx8192m
+```
 
 S novým nastavením se dotaz úspěšně spustil za méně než 10 minut.
 

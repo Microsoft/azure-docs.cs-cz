@@ -3,12 +3,12 @@ title: Vytvoření fondu se zadanými veřejnými IP adresami
 description: Naučte se, jak vytvořit fond služby Batch, který používá vaše vlastní veřejné IP adresy.
 ms.topic: how-to
 ms.date: 06/16/2020
-ms.openlocfilehash: 9992ae573ea5c9590f15d6cffa11da599026c0a9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 51cb023bf3749233878fa4d544c6fd8ef4703645
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884975"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961553"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Vytvořit fond Azure Batch se zadanými veřejnými IP adresami
 
@@ -16,13 +16,15 @@ Když vytváříte fond Azure Batch, můžete [fond zřídit v podsíti virtuál
 
 Můžete vytvořit seznam statických veřejných IP adres pro použití s virtuálními počítači ve vašem fondu. To vám umožní řídit seznam veřejných IP adres a zajistit, aby se neočekávaně nezměnily. To může být obzvláště užitečné, pokud pracujete se všemi externími službami, jako je třeba databáze, která omezuje přístup k určitým IP adresám.
 
+Pokud chcete získat informace o vytváření fondů bez veřejných IP adres, přečtěte si téma [Vytvoření fondu Azure Batch bez veřejných IP adres](./batch-pool-no-public-ip-address.md).
+
 ## <a name="prerequisites"></a>Požadavky
 
 - **Ověřování**. Aby bylo možné používat veřejnou IP adresu, musí klientské rozhraní API služby Batch používat [ověřování Azure Active Directory (AD)](batch-aad-auth.md).
 
 - **Virtuální síť Azure**. Musíte použít [virtuální síť](batch-virtual-network.md) ze stejného předplatného Azure, ve kterém vytváříte fond a IP adresy. Můžou se použít jenom virtuální sítě založené na Azure Resource Manager. Ujistěte se, že virtuální síť splňuje všechny [Obecné požadavky](batch-virtual-network.md#vnet-requirements).
 
-- **Aspoň jedna veřejná IP adresa Azure**. Pokud chcete vytvořit jednu nebo víc veřejných IP adres, můžete použít [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)nebo [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress). Nezapomeňte postupovat podle níže uvedených požadavků.
+- **Aspoň jedna veřejná IP adresa Azure**. Pokud chcete vytvořit jednu nebo víc veřejných IP adres, můžete použít [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), [rozhraní příkazového řádku Azure (CLI)](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)nebo [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress). Nezapomeňte postupovat podle níže uvedených požadavků.
 
 > [!NOTE]
 > Batch automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje veřejné IP adresy. Pro každý 100 vyhrazené uzly Batch obecně přiděluje jednu skupinu zabezpečení sítě (NSG) a jeden nástroj pro vyrovnávání zatížení. Tyto prostředky jsou omezené kvótou prostředků předplatného. Pokud používáte větší fondy, možná budete muset [požádat o zvýšení kvóty](batch-quota-limit.md#increase-a-quota) na jeden nebo více těchto prostředků.
@@ -43,7 +45,7 @@ Při vytváření veřejných IP adres mějte na paměti následující požadav
 
 ## <a name="create-a-batch-pool-with-public-ip-addresses"></a>Vytvoření fondu Batch s veřejnými IP adresami
 
-Následující příklad ukazuje, jak používat [službu Azure Batch REST API](https://docs.microsoft.com/rest/api/batchservice/pool/add) k vytvoření fondu, který používá veřejné IP adresy.
+Následující příklad ukazuje, jak používat [službu Azure Batch REST API](/rest/api/batchservice/pool/add) k vytvoření fondu, který používá veřejné IP adresy.
 
 ### <a name="batch-service-rest-api"></a>Rozhraní REST API služby Batch
 
@@ -95,3 +97,5 @@ Text požadavku
 
 - Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 - Seznamte se [s vytvářením fondů v podsíti virtuální sítě Azure](batch-virtual-network.md).
+- Přečtěte si o [vytváření Azure Batch fondu bez veřejných IP adres](./batch-pool-no-public-ip-address.md).
+

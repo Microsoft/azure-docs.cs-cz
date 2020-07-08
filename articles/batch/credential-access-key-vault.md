@@ -3,12 +3,12 @@ title: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 description: Naučte se programově přistupovat k přihlašovacím údajům z Key Vault pomocí Azure Batch.
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 3d0b2128bef1434f073700eb83e5935d74d8bb7a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6ea248dd51ae6786b0e987dc31ca83b29277cd16
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725716"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961502"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 
@@ -37,7 +37,7 @@ Dále použijte `makecert` Nástroj k vytvoření souborů certifikátů podepsa
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch vyžaduje `.pfx` soubor. Použijte nástroj [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) k převodu `.cer` `.pvk` souborů a vytvořených pomocí `makecert` do jediného `.pfx` souboru.
+Batch vyžaduje `.pfx` soubor. Použijte nástroj [Pvk2Pfx](/windows-hardware/drivers/devtest/pvk2pfx) k převodu `.cer` `.pvk` souborů a vytvořených pomocí `makecert` do jediného `.pfx` souboru.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po

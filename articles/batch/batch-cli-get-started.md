@@ -4,22 +4,22 @@ description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádk
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: b07045bc0a756c5565356bb0a674188cf84c8785
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780232"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960856"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
 Azure CLI je prostředí příkazového řádku Azure pro správu prostředků Azure. Je možné používat ho v systémech macOS, Linux a Windows. Azure CLI je optimalizované pro správu prostředků Azure z příkazového řádku. Rozhraní příkazového řádku Azure CLI můžete používat ke správě účtů služby Azure Batch a ke správě prostředků, jako jsou fondy, úlohy a úkoly. V rozhraní příkazového řádku Azure CLI můžete používat skripty pro mnoho stejných úkolů, které se provádějí prostřednictvím rozhraní API služby Batch, webu Azure Portal a rutin PowerShellu služby Batch.
 
-Tento článek obsahuje přehled používání rozhraní [Azure CLI verze 2.0](https://docs.microsoft.com/cli/azure) se službou Batch. V článku [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) najdete přehled používání rozhraní příkazového řádku s Azure.
+Tento článek obsahuje přehled používání rozhraní [Azure CLI verze 2.0](/cli/azure) se službou Batch. V článku [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli) najdete přehled používání rozhraní příkazového řádku s Azure.
 
 ## <a name="set-up-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
-Nejnovější verzi Azure CLI můžete spustit ve službě [Azure Cloud Shell](../cloud-shell/overview.md). Pokud chcete nainstalovat Azure CLI místně, postupujte podle kroků uvedených v tématu [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Nejnovější verzi Azure CLI můžete spustit ve službě [Azure Cloud Shell](../cloud-shell/overview.md). Pokud chcete nainstalovat Azure CLI místně, postupujte podle kroků uvedených v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 > [!TIP]
 > Instalaci rozhraní příkazového řádku Azure CLI doporučujeme často aktualizovat, abyste mohli využívat výhody, které vám přinášejí aktualizace a vylepšení služby.
@@ -28,7 +28,7 @@ Nejnovější verzi Azure CLI můžete spustit ve službě [Azure Cloud Shell](.
 
 ## <a name="command-help"></a>Nápověda k příkazům
 
-Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Například:
+Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Příklad:
 
 * Pokud chcete zobrazit nápovědu pro příkaz `az`, zadejte: `az -h`
 * Pokud chcete vypsat seznam všech příkazů Batch v rámci rozhraní příkazového řádku, zadejte: `az batch -h`
@@ -51,10 +51,10 @@ Pokud chcete používat rozhraní příkazového řádku Azure CLI se službou B
 
 Existuje několik různých způsobů přihlášení k Azure, které jsou podrobně popsány v článku [Přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli):
 
-1. [Interaktivní přihlášení](https://docs.microsoft.com/cli/azure/authenticate-azure-cli): Přihlaste se interaktivně, pokud spouštíte příkazy rozhraní příkazového řádku Azure CLI sami z příkazového řádku.
-2. [Přihlaste se pomocí instančního objektu](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Pokud spouštíte příkazy rozhraní příkazového řádku Azure CLI ze skriptu nebo aplikace, přihlaste se pomocí instančního objektu.
+1. [Interaktivní přihlášení](/cli/azure/authenticate-azure-cli): Přihlaste se interaktivně, pokud spouštíte příkazy rozhraní příkazového řádku Azure CLI sami z příkazového řádku.
+2. [Přihlaste se pomocí instančního objektu](/cli/azure/authenticate-azure-cli). Pokud spouštíte příkazy rozhraní příkazového řádku Azure CLI ze skriptu nebo aplikace, přihlaste se pomocí instančního objektu.
 
-Pro účely tohoto článku vám ukážeme, jak se k Azure přihlásit interaktivně. V příkazovém řádku napište [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login):
+Pro účely tohoto článku vám ukážeme, jak se k Azure přihlásit interaktivně. V příkazovém řádku napište [az login](/cli/azure/reference-index#az-login):
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -69,7 +69,7 @@ Příklady uvedené v části Ukázkové skripty prostředí také ukazují, jak
 
 ### <a name="log-in-to-your-batch-account"></a>Přihlášení k účtu Batch
 
-Pokud chcete rozhraní příkazového řádku Azure CLI používat ke správě prostředků služby Batch, jako jsou fondy, úlohy a úkoly, musíte se přihlásit k účtu Batch a provést ověření. Ke službě Batch se přihlásíte pomocí příkazu [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login). 
+Pokud chcete rozhraní příkazového řádku Azure CLI používat ke správě prostředků služby Batch, jako jsou fondy, úlohy a úkoly, musíte se přihlásit k účtu Batch a provést ověření. Ke službě Batch se přihlásíte pomocí příkazu [az batch account login](/cli/azure/batch/account#az-batch-account-login). 
 
 Máte dvě možnosti ověření proti účtu Batch:
 
@@ -81,7 +81,7 @@ Máte dvě možnosti ověření proti účtu Batch:
 
     Výhoda služby Azure AD je, že nabízí řízení přístupu na základě role (RBAC). Při řízení přístupu na základě role (RBAC) závisí přístup uživatelů na jejich přiřazené roli, a ne na tom, jestli mají nebo nemají klíče účtu. Místo správy klíčů účtu můžete spravovat role RBAC a nechat řízení přístupu a ověřování na službě Azure AD.  
 
-     Pokud se chcete přihlásit k účtu Batch pomocí služby Azure AD, použijte volání příkazu [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login): 
+     Pokud se chcete přihlásit k účtu Batch pomocí služby Azure AD, použijte volání příkazu [az batch account login](/cli/azure/batch/account#az-batch-account-login): 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -111,7 +111,7 @@ Viz [příklady skriptu CLI](cli-samples.md) pro službu Batch k provedení bě�
 
 ## <a name="json-files-for-resource-creation"></a>Soubory JSON pro vytváření prostředků
 
-Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Například:
+Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Příklad:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -141,7 +141,7 @@ Při dotazování služby Batch pomocí operace `list` můžete určit klauzuli 
 
 Následující tabulka popisuje klauzule OData podporované službou Batch:
 
-| Klauzule | Popis |
+| Klauzule | Description |
 |---|---|
 | `--select-clause [select-clause]` | Vrátí podmnožinu vlastností pro každou entitu. |
 | `--filter-clause [filter-clause]` | Vrátí pouze ty entity, které odpovídají zadanému výrazu OData. |
@@ -162,10 +162,10 @@ Následující tipy mohou pomoci při řešení potíží s rozhraním příkazo
 
 ## <a name="next-steps"></a>Další kroky
 
-* Viz [dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure).
+* Viz [dokumentace k Azure CLI](/cli/azure).
 * Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 * Přečtěte si o používání šablon Batch k vytváření fondů, úloh a úkolů bez psaní kódu, který se [používá Azure Batch šablon CLI a přenosu souborů](batch-cli-templates.md).
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
-[rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_api]: /rest/api/batchservice/
+[rest_add_pool]: /rest/api/batchservice/pool/add

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69016791"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960363"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store  
 
@@ -66,35 +66,35 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
 1. V nabídce **soubor** klikněte na příkaz **Nový**a potom klikněte na **projekt**.
 1. V dialogovém okně Nový projekt zadejte nebo vyberte následující hodnoty:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     | Skupina šablon |Nainstalované/šablony/Visual C#/Windows Store |
     | Šablona |Prázdná aplikace (XAML) |
-    | Název |SSPlayer |
+    | Name |SSPlayer |
     | Umístění |C:\SSTutorials |
     | Název řešení |SSPlayer |
     | Vytvořit adresář pro řešení |Vyberte |
 
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Přidání odkazu na sadu SDK pro Smooth Streaming klienta
 
 1. Z Průzkumník řešení klikněte pravým tlačítkem na **SSPlayer**a pak klikněte na **Přidat odkaz**.
 1. Zadejte nebo vyberte tyto hodnoty:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     | Referenční skupina |Windows/rozšíření |
-    | Reference |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
+    | Referenční informace |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
 
-1. Klikněte na tlačítko **OK**. 
+1. Klikněte na **OK**. 
 
 Po přidání odkazů musíte vybrat cílovou platformu (x64 nebo x86). Přidání odkazů nebude fungovat pro žádnou konfiguraci platformy CPU.  V Průzkumníku řešení uvidíte u těchto přidaných odkazů žlutou výstražnou značku.
 
 ### <a name="to-design-the-player-user-interface"></a>Postup při návrhu uživatelského rozhraní přehrávače
 
 1. V Průzkumník řešení poklikejte na **MainPage. XAML** a otevře se v zobrazení Návrh.
-2. Vyhledejte ** &lt;mřížku&gt; ** a ** &lt;/Grid&gt; ** označí soubor XAML a vložte následující kód mezi dvě značky:
+2. Vyhledejte ** &lt; mřížku &gt; ** a ** &lt; /Grid &gt; ** označí soubor XAML a vložte následující kód mezi dvě značky:
 
    ```xml
          <Grid.RowDefinitions>
@@ -151,15 +151,24 @@ V tomto souboru XAML jsou k ovládacím prvkům přidruženy některé obslužn�
 
 1. Z Průzkumník řešení klikněte pravým tlačítkem na **MainPage. XAML**a pak klikněte na **Zobrazit kód**.
 2. V horní části souboru přidejte následující příkaz using:
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. Na začátku třídy **MainPage** přidejte následující datový člen:
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. Na konci konstruktoru **MainPage** přidejte následující dva řádky:
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. Na konci třídy **MainPage** vložte následující kód:
    ```csharp
          # region UI Button Click Events
@@ -253,7 +262,7 @@ Tato lekce obsahuje následující postupy:
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
    ```
-4. Uvnitř konstruktoru **MainPage** přidejte za to následující kód **. Inicializovat součásti ();** řádek a řádky registračního kódu napsané v předchozí lekci:
+4. Uvnitř konstruktoru **MainPage** přidejte následující kód za řádek **this.Inikomponenty tialize ();** a řádky registračního kódu napsané v předchozí lekci:
 
    ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
@@ -552,7 +561,7 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
 ### <a name="to-modify-the-xaml-file"></a>Úprava souboru XAML
 
 1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML**a potom klikněte na tlačítko **Návrhář zobrazení**.
-2. Vyhledejte &lt;Grid. RowDefinitions&gt;a upravte RowDefinitions tak, aby vypadaly takto:
+2. Vyhledejte &lt; Grid. RowDefinitions &gt; a upravte RowDefinitions tak, aby vypadaly takto:
 
    ```xml
          <Grid.RowDefinitions>            
@@ -563,7 +572,7 @@ Smooth Streaming může streamovat obsah pomocí zvukového zvuku s více jazyky
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
    ```
-3. Uvnitř značek &lt;/Grid&gt;&lt;&gt; mřížky přidejte následující kód pro definování ovládacího prvku ListBox, aby uživatelé viděli seznam dostupných datových proudů a vybrali streamy:
+3. Uvnitř &lt; &gt; &lt; značek/Grid mřížky &gt; přidejte následující kód pro definování ovládacího prvku ListBox, aby uživatelé viděli seznam dostupných datových proudů a vybrali streamy:
 
    ```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
@@ -830,7 +839,7 @@ Smooth Streaming prezentace může obsahovat více videosouborů zakódovaných 
 ### <a name="to-modify-the-xaml-file"></a>Úprava souboru XAML
 
 1. Z Průzkumník řešení klikněte pravým tlačítkem myši na **MainPage. XAML**a potom klikněte na tlačítko **Návrhář zobrazení**.
-2. Vyhledejte značku &lt;Grid&gt; s názvem **gridStreamAndBitrateSelection**, na konci značky přidejte následující kód:
+2. Vyhledejte &lt; značku Grid &gt; s názvem **gridStreamAndBitrateSelection**, na konci značky přidejte následující kód:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">

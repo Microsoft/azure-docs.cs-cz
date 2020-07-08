@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62d4e26d5a0d3d86cc58421dab4167d5d9d2562d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727239"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961775"
 ---
 # <a name="azure-media-player-full-setup"></a>Kompletní nastavení Azure Media Playeru #
 
@@ -20,20 +20,23 @@ Nastavení Azure Media Player je snadné. Získání základního přehrávání
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Krok 1: zahrnutí souborů JavaScriptu a CSS do hlavičky stránky ##
 
-Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se doporučuje vložit JavaScript před značku `<body>` konce těla místo `<head>`, ale Azure Media Player obsahuje "HTML5 Shiv", který musí být v hlavě pro starší verze IE, aby se jako platný element mohla přicházet k označení videa.
+Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se doporučuje vložit JavaScript před značku konce těla `<body>` místo `<head>` , ale Azure Media Player obsahuje "HTML5 Shiv", který musí být v hlavě pro starší verze IE, aby se jako platný element mohla přicházet k označení videa.
 
 > [!NOTE]
-> Pokud již používáte HTML5 Shiv jako [modernizr](http://modernizr.com/) , můžete Azure Media Player JavaScriptu umístit kamkoli. Ujistěte se však, že vaše verze modernizr zahrnuje Shiv pro video.
+> Pokud již používáte HTML5 Shiv jako [modernizr](https://modernizr.com/) , můžete Azure Media Player JavaScriptu umístit kamkoli. Ujistěte se však, že vaše verze modernizr zahrnuje Shiv pro video.
 
 ### <a name="cdn-version"></a>Verze CDN ###
+
+```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+```
 
 > [!IMPORTANT]
-> Tuto `latest` verzi byste **neměli používat v** produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player. Například Nahraďte parametr `latest` `2.1.1`. Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
+> Tuto verzi **NOT** byste neměli používat `latest` v produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player. Například Nahraďte parametr `latest` `2.1.1` . Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
 
 > [!NOTE]
-> Od `1.2.0` verze už není potřeba, aby zahrnovala umístění pro záložní technické pracovníky (umístění se automaticky vybírá z relativní cesty k souboru azuremediaplayer. min. js). Umístění záložních techniků můžete upravit přidáním následujícího skriptu do `<head>` výše uvedených skriptů.
+> Od `1.2.0` verze už není potřeba, aby zahrnovala umístění pro záložní pracovníky (z relativní cesty azuremediaplayer.min.js souboru se automaticky vybralo umístění). Umístění záložních techniků můžete upravit přidáním následujícího skriptu do `<head>` výše uvedených skriptů.
 
 > [!NOTE]
 > Vzhledem k povaze modulů plug-in Flash a Silverlight by se soubory SWF a XAP měly hostovat v doméně bez citlivých informací nebo dat – to se automaticky stará o Azure CDN hostované verze.
@@ -49,12 +52,12 @@ Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. 
 
 Pomocí Azure Media Player můžete použít značku videa HTML5 pro vložení videa. Azure Media Player pak přečte značku a zpřístupní ji ve všech prohlížečích, nikoli jenom těch, které podporují video HTML5. Kromě základních značek Azure Media Player potřebuje několik dalších částí.
 
-1. `<data-setup>` Atribut na Azure Media Player `<video>` informuje o tom, že se video automaticky nastaví, když je stránka připravená, a z atributu si přečte všechny (ve formátu JSON).
-1. `id` Atribut: by měl být použit a jedinečný pro každé video na stejné stránce.
-1. `class` Atribut obsahuje dvě třídy:
+1. `<data-setup>`Atribut na `<video>` Azure Media Player informuje o tom, že se video automaticky nastaví, když je stránka připravená, a z atributu si přečte všechny (ve formátu JSON).
+1. `id`Atribut: by měl být použit a jedinečný pro každé video na stejné stránce.
+1. `class`Atribut obsahuje dvě třídy:
     - `azuremediaplayer`použije styly, které jsou vyžadovány pro Azure Media Player funkce uživatelského rozhraní.
     - `amp-default-skin`použije výchozí vzhled pro ovládací prvky HTML5.
-1. `<source>` Obsahuje dva povinné atributy.
+1. `<source>`Obsahuje dva povinné atributy.
     - `src`atribut může obsahovat soubor **. ISM/manifest* z Azure Media Services je přidána Azure Media Player automaticky přidá adresy URL pro pomlčky, vyhlazení a HLS do přehrávače.
     - `type`atribut je požadovaný typ MIME datového proudu. Typ MIME přidružený k *". ISM/manifest"* je *"application/vnd. MS-sstr + XML"*
 1. *Volitelný* `<data-setup>` atribut na stránce `<source>` oznamuje Azure Media Player, jestli existují jedinečné zásady doručování pro datový proud z Azure Media Services, včetně, ale ne omezení na typ šifrování (AES nebo PlayReady, Widevine nebo FairPlay) a token.
@@ -70,7 +73,7 @@ Zahrňte nebo vylučte atributy, nastavení, zdroje a stopy přesně tak, jak by
     </video>
 ```
 
-Ve výchozím nastavení se velké tlačítko pro přehrávání nachází v levém horním rohu, takže se nezabývá zajímavou částí plakátu. Pokud budete chtít vycentrovat velké tlačítko pro přehrávání, můžete do svého `amp-big-play-centered` `class` `<video>` prvku přidat další.
+Ve výchozím nastavení se velké tlačítko pro přehrávání nachází v levém horním rohu, takže se nezabývá zajímavou částí plakátu. Pokud budete chtít vycentrovat velké tlačítko pro přehrávání, můžete `amp-big-play-centered` `class` do svého prvku přidat další `<video>` .
 
 ### <a name="alternative-setup-for-dynamically-loaded-html"></a>Alternativní nastavení pro dynamicky načtený kód HTML ###
 

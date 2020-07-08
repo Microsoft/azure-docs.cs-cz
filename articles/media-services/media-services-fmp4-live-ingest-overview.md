@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74888049"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958561"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase 
 
@@ -51,12 +51,12 @@ Následující seznam popisuje speciální definice formátu, které se vztahuj�
 1. Oddíl 3.3.6 v [1] definuje pole s názvem **MovieFragmentRandomAccessBox** (**mfra**), které se dá odeslat na konci živého příjmu za účelem označení konce datového proudu (EOS) kanálu. Vzhledem k logice ingestování Media Services, použití EOS je zastaralé a **mfra** box pro živou příjem dat by se neměl odesílat. V případě odeslání Media Services v tichém režimu ignoruje. Pro obnovení stavu bodu ingest doporučujeme použít [resetování kanálu](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels). Pro ukončení prezentace a streamu doporučujeme také použít [program stop](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) .
 1. Doba trvání fragmentu MP4 by měla být konstantní, aby se snížila velikost manifestů klienta. Konstantní doba trvání fragmentu MP4 také vylepšuje heuristické stahování klientů pomocí značek opakování. Doba trvání může kolísat pro kompenzaci sazeb snímků, které nejsou celé číslo.
 1. Doba trvání fragmentu MP4 by měla být přibližně 2 až 6 sekund.
-1. Časová razítka a indexy pro**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` fragmenty `fragment_index`MP4 (TrackFragmentExtendedHeaderBox a) by měly dorazit ve vzestupném pořadí. I když Media Services je odolný vůči duplicitním fragmentům, má omezená schopnost změnit pořadí fragmentů podle časové osy médií.
+1. Časová razítka a indexy pro fragmenty MP4 (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` a `fragment_index` ) by měly dorazit ve vzestupném pořadí. I když Media Services je odolný vůči duplicitním fragmentům, má omezená schopnost změnit pořadí fragmentů podle časové osy médií.
 
 ## <a name="4-protocol-format--http"></a>4. formát protokolu – HTTP
 ISO fragmentované živé ingestování na bázi MP4 pro Media Services používá standardní dlouhodobou žádost HTTP POST k přenosu kódovaných mediálních dat, která jsou zabalená do služby ve formátu fragmentů MP4. Každý HTTP POST pošle kompletní fragment Bitstream MP4 ("Stream") od začátku do polí záhlaví (**ftyp**, **Live Server manifest**a **Moov** box) a pokračuje se sekvencí fragmentů (pole**Moof** a **mdat** ). Syntaxi URL požadavku HTTP POST najdete v části 9,2 v [1]. Příklad adresy URL příspěvku: 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
 ### <a name="requirements"></a>Požadavky
 Zde jsou uvedené podrobné požadavky:
@@ -66,7 +66,7 @@ Zde jsou uvedené podrobné požadavky:
 1. Kodér musí spustit novou žádost HTTP POST s fragmentovaným datovým proudem MP4. Datová část musí začínat poli záhlaví následovanými fragmenty. Všimněte si, že pole **ftyp**, **živý manifest serveru**a **Moov** (v tomto pořadí) musí být odesílány spolu s každým požadavkem, i když se kodér musí znovu připojit, protože předchozí požadavek byl ukončen před koncem datového proudu. 
 1. Kodér musí pro nahrávání použít kódování blokového přenosu, protože není možné předpovědět celou délku obsahu živé události.
 1. Pokud po odeslání posledního fragmentu dojde k překročení této události, kodér musí řádně ukončit sekvenci zpráv kódování s blokovým přenosem (většina zásobníků klienta protokolu HTTP ho automaticky zpracuje). Kodér musí počkat, až služba vrátí konečný kód odezvy, a pak připojení ukončí. 
-1. Kodér nesmí používat podstatné jméno, `Events()` jak je popsáno v 9,2 v [1] pro živou příjem dat do Media Services.
+1. Kodér nesmí používat `Events()` podstatné jméno, jak je popsáno v 9,2 v [1] pro živou příjem dat do Media Services.
 1. Pokud se požadavek HTTP POST ukončí nebo vyprší s chybou TCP před koncem datového proudu, kodér musí vystavit novou žádost POST pomocí nového připojení a postupovat podle předchozích požadavků. Kromě toho kodér musí znovu odeslat předchozí dva fragmenty MP4 pro každou stopu v datovém proudu a pokračovat bez zavedení nekontinuity na časové ose média. Opakované odeslání posledních dvou fragmentů MP4 pro každou stopu zajistí, že nedojde ke ztrátě dat. Jinými slovy, pokud datový proud obsahuje zvuk i video stop a aktuální požadavek POST se nezdaří, kodér se musí znovu připojit a znovu pošle poslední dva fragmenty zvukové stopy, které byly dříve úspěšně odeslány, a poslední dva fragmenty pro stopu videa, které byly dříve úspěšně odeslány, aby se zajistilo, že nedojde ke ztrátě dat. Kodér musí udržovat "dopředné" fragmenty média, které se znovu odesílají při opětovném připojení.
 
 ## <a name="5-timescale"></a>5. Časová osa
@@ -75,7 +75,7 @@ Zde jsou uvedené podrobné požadavky:
 ## <a name="6-definition-of-stream"></a>6. definice "Stream"
 Stream je základní Jednotková operace v reálném ingestování pro vytváření živých prezentací, zpracování převzetí služeb při selhání streamování a scénářů redundance. Stream je definovaný jako jeden jedinečný, fragmentovaný Bitstream MP4, který může obsahovat jednu stopu nebo několik stop. Celá živá prezentace může obsahovat jeden nebo více datových proudů v závislosti na konfiguraci živých kodérů. Následující příklady ilustrují různé možnosti použití datových proudů k vytvoření úplné živé prezentace.
 
-**Případě** 
+**Příklad:** 
 
 Zákazník chce vytvořit prezentaci živého streamování, která obsahuje následující zvukové a video přenosové rychlosti:
 
@@ -133,7 +133,7 @@ V případě, že dojde k převzetí služeb při selhání kodéru, platí nás
 1. Požadavek POST nového kodéru musí zahrnovat stejná fragmentovaná pole záhlaví MP4 jako neúspěšná instance.
 1. Nový kodér musí být správně synchronizovaný se všemi ostatními běžícími kodéry pro stejnou živou prezentaci pro vygenerování synchronizovaných ukázek zvuku a videa s zarovnanými hranicemi fragmentů.
 1. Nový datový proud musí být sémanticky ekvivalentní předchozímu datovému proudu a zaměnitelné na úrovních hlavičky a fragmentu.
-1. Nový kodér by se měl pokusit minimalizovat ztrátu dat. `fragment_absolute_time` Fragmenty `fragment_index` média a by se měly zvýšit od bodu, ve kterém se kodér naposledy zastavil. `fragment_absolute_time` A `fragment_index` měly by se narůstat průběžně, ale je přípustné, aby v případě potřeby zavedla nekontinuitu. Media Services ignoruje fragmenty, které již byly přijaty a zpracovány, takže je lepší se na straně opětovného odesílání fragmentů, než je zavedení nekontinuity na časové ose médií, poznamenat. 
+1. Nový kodér by se měl pokusit minimalizovat ztrátu dat. `fragment_absolute_time` `fragment_index` Fragmenty média a by se měly zvýšit od bodu, ve kterém se kodér naposledy zastavil. `fragment_absolute_time`A `fragment_index` měly by se narůstat průběžně, ale je přípustné, aby v případě potřeby zavedla nekontinuitu. Media Services ignoruje fragmenty, které již byly přijaty a zpracovány, takže je lepší se na straně opětovného odesílání fragmentů, než je zavedení nekontinuity na časové ose médií, poznamenat. 
 
 ## <a name="9-encoder-redundancy"></a>9. redundance kodéru
 U některých důležitých živých událostí, které vyžadují ještě vyšší dostupnost a kvalitu zkušeností, doporučujeme, abyste k zajištění bezproblémového převzetí služeb při selhání bez ztráty dat použili redundantní kodéry aktivní-aktivní.
@@ -174,7 +174,7 @@ Následující postup je doporučenou implementací pro ingestování zhuštěn�
 
     f. Fragment zhuštěného sledování bude k dispozici klientovi, pokud je pro klienta k dispozici odpovídající nadřazený fragment sledování, který má stejnou nebo větší hodnotu časového razítka. Pokud má například zhuštěný fragment časové razítko t = 1000, je očekáváno, že po zobrazení "videa klienta" (za předpokladu, že název nadřazené stopy je "video") časové razítko fragmentu 1000 nebo mimo něj může stáhnout zhuštěný fragment t = 1000. Všimněte si, že skutečný signál lze použít pro jinou pozici v časové ose prezentace pro svůj vyhrazený účel. V tomto příkladu je možné, že zhuštěná fragment t = 1000 má datovou část XML, která je určena pro vložení reklamy na pozici, která je několik sekund později.
 
-    g. Datová část fragmentů zhuštěného sledování může být v různých formátech (například XML, text nebo binární), v závislosti na scénáři.
+    například Datová část fragmentů zhuštěného sledování může být v různých formátech (například XML, text nebo binární), v závislosti na scénáři.
 
 ### <a name="redundant-audio-track"></a>Redundantní zvuková stopa
 V typickém scénáři adaptivního streamování protokolu HTTP (například Smooth Streaming nebo POMLČKy) je často v celé prezentaci jenom jedna zvuková stopa. Na rozdíl od stop videa, která má u klienta několik úrovní kvality, z důvodu chybových stavů může být zvuková stopa jediným bodem selhání, pokud je porušeno přijímání datového proudu, který obsahuje zvukovou stopu. 

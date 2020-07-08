@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858314"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961536"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Průvodce publikováním pro nabídky virtuálních počítačů
 
@@ -54,7 +54,7 @@ Typ nabídky *virtuálního počítače* použijte, když nasadíte virtuální 
 | Požadavek | Podrobnosti |  
 |:--- |:--- | 
 | Fakturace a měření | Váš virtuální počítač musí podporovat BYOL nebo měsíční fakturaci s průběžnými platbami. |  
-| Virtuální pevný disk kompatibilní s Azure (VHD) | Virtuální počítače musí být postavené na Windows nebo Linux. Další informace o vytvoření virtuálního pevného disku najdete v tématu: <ul> <li>[Distribuce systému Linux schválená v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (pro virtuální pevné disky se systémem Linux).</li> <li>[Vytvořte virtuální pevný disk kompatibilní s Azure](./partner-center-portal/azure-vm-create-offer.md) (pro virtuální pevné disky Windows).</li> </ul> |  
+| Virtuální pevný disk kompatibilní s Azure (VHD) | Virtuální počítače musí být postavené na Windows nebo Linux. Další informace o vytvoření virtuálního pevného disku najdete v tématu: <ul> <li>[Distribuce systému Linux schválená v Azure](../virtual-machines/linux/endorsed-distros.md) (pro virtuální pevné disky se systémem Linux).</li> <li>[Vytvořte virtuální pevný disk kompatibilní s Azure](./partner-center-portal/azure-vm-create-offer.md) (pro virtuální pevné disky Windows).</li> </ul> |  
 
 >[!Note]
 >Výslovný souhlas kanálu partner Cloud Solution Provider (CSP) je nyní k dispozici. Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [poskytovatelé Cloud Solution Provider](./cloud-solution-providers.md).

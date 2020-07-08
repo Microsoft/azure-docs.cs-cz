@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194597"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961791"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR
 
@@ -54,11 +54,11 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 1. Otevřete webový prohlížeč, přejděte na `https://github.com` a přihlaste se k účtu.
 
-2. Pro váš účet přejděte na **Nastavení** > **vývojář nastavení** a v části *aplikace OAuth*klikněte na **zaregistrovat novou aplikaci**nebo **novou aplikaci OAuth** .
+2. Pro váš účet přejděte na **Nastavení**  >  **vývojář nastavení** a v části *aplikace OAuth*klikněte na **zaregistrovat novou aplikaci**nebo **novou aplikaci OAuth** .
 
 3. Pro tuto novou aplikaci OAuth použijte následující nastavení a potom klikněte na **Zaregistrovat aplikaci**:
 
-    | Název nastavení | Navrhovaná hodnota | Popis |
+    | Název nastavení | Navrhovaná hodnota | Description |
     | ------------ | --------------- | ----------- |
     | Název aplikace | *Azure SignalR Chat* | Uživatel GitHubu by měl být schopný rozpoznat a důvěřovat aplikaci, se kterou ověřuje.   |
     | Adresa URL domovské stránky | `http://localhost:5000/home` | |
@@ -67,8 +67,10 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 4. Jakmile je registrace nové aplikace OAuth hotová, přidejte *ID klienta* a *tajný klíč klienta* do nástroje Secret Manager, a to pomocí následujících příkazů. Hodnoty *Your_GitHub_Client_Id* a *Your_GitHub_Client_Secret* nahraďte hodnotami pro vaši aplikaci OAuth.
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>Implementace toku OAuth
 
@@ -76,9 +78,11 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 1. Přidejte odkaz na nejnovější balíčky *Microsoft.AspNetCore.Authentication.Cookies* a *AspNet.Security.OAuth.GitHub* a obnovte všechny balíčky.
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. Otevřete *Startup.cs* a přidejte příkazy `using` pro následující obory názvů:
 
@@ -345,19 +349,25 @@ V této části zapnete reálné ověřování přidáním atributu `Authorize` 
 
 2. Pokud chcete aplikaci sestavit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. Po úspěšném dokončení sestavení spuštěním následujícího příkazu místně spusťte webovou aplikaci:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     Ve výchozím nastavení se tato aplikace bude místně hostovat na portu 5000:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. Spusťte okno prohlížeče a přejděte na adresu `http://localhost:5000`. Kliknutím na odkaz **tady** v horní části se přihlaste s využitím GitHubu.
 
@@ -539,7 +549,7 @@ Pokud chcete nasadit váš kód, spusťte následující příkazy v Git Shellu.
 
 Poslední věcí, která zbývá, je aktualizace nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace** aplikace OAuth GitHubu, aby odkazovaly na novou hostovanou aplikaci.
 
-1. V [https://github.com](https://github.com) prohlížeči otevřete prohlížeč a přejděte na **Nastavení** > vašeho účtu**aplikace OAuth****Nastavení** > pro vývojáře.
+1. [https://github.com](https://github.com)V prohlížeči otevřete prohlížeč a přejděte na nastavení vašeho účtu **Settings**  >  **Developer settings**  >  **aplikace OAuth**nastavení pro vývojáře.
 
 2. Klikněte na vaši ověřovací aplikaci a aktualizujte nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace**, jak je uvedeno dál:
 

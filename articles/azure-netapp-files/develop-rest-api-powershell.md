@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 63fae2144a775629486f32ac721c95e8e29ff18f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483444"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961060"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>Vývoj pro Azure NetApp Files s využitím REST API pomocí PowerShellu
 
@@ -40,15 +40,19 @@ Specifikace REST API pro Azure NetApp Files je publikovaná prostřednictvím [G
 
    2. V Azure CLI zadejte následující příkaz:  
 
-           $RBAC_SP = az ad sp create-for-rbac --name <YOURSPNAMEGOESHERE> | ConvertFrom-Json 
+      ```azurepowershell
+      $RBAC_SP = az ad sp create-for-rbac --name <YOURSPNAMEGOESHERE> | ConvertFrom-Json         
+      ```
 
       Chcete-li zobrazit informace o objektu služby, zadejte `$RBAC_SP` a stiskněte klávesu ENTER.
 
-           appId       : appID displays here
-           displayName : displayName
-           name        : http://SP_Name
-           password    : super secret password
-           tenant      : your tenant shows here
+      ```output
+      appId       : appID displays here
+      displayName : displayName
+      name        : http://SP_Name
+      password    : super secret password
+      tenant      : your tenant shows here
+      ```
         
       Výstup je uložen v objektu proměnné `$RBAC_SP` . Použijeme `$RBAC_SP.appId` `$RBAC_SP.password` hodnoty, a `$RBAC_SP.tenant` .
 
@@ -57,27 +61,33 @@ Specifikace REST API pro Azure NetApp Files je publikovaná prostřednictvím [G
     Příklady v tomto článku používají PowerShell. Můžete také použít různé nástroje API, jako je například [post](https://www.getpostman.com/), [režimu spánku](https://insomnia.rest/)a [privilegovaným přístupem](https://paw.cloud/).  
 
     Pomocí `$RBAC_SP` proměnné se teď získá nosný token. 
-
-        $body = "grant_type=client_credentials&client_id=$($RBAC_SP.appId)&client_secret=$($RBAC_SP.password)&resource=https://management.azure.com/"
-        $BearerToken = Invoke-RestMethod -Method Post -body $body -Uri https://login.microsoftonline.com/$($RBAC_SP.tenant)/oauth2/token
-
+    
+    ```azurepowershell
+    $body = "grant_type=client_credentials&client_id=$($RBAC_SP.appId)&client_secret=$($RBAC_SP.password)&resource=https://management.azure.com/"
+    $BearerToken = Invoke-RestMethod -Method Post -body $body -Uri https://login.microsoftonline.com/$($RBAC_SP.tenant)/oauth2/token
+    ```
     Výstup poskytuje objekt nosných tokenů. Přístupový token můžete zobrazit zadáním příkazu `$BearerToken.access_token` . Vypadá podobně jako v následujícím příkladu:
 
-        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
+    ```output
+    eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
+    ```
 
     Zobrazený token je platný po dobu 3600 sekund. Potom je potřeba požádat o nový token. Token se uloží do proměnné a použije se v dalším kroku.
 
 4. Vytvořte `headers` objekt:
 
-        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-        $headers.Add("Authorization", "Bearer $($BearerToken.access_token)")
-        $headers.Add("Content-Type", "application/json")
+    ```azurepowershell  
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Authorization", "Bearer $($BearerToken.access_token)")
+    $headers.Add("Content-Type", "application/json")
+    ```
 
 5. Odeslat testovací hovor a zahrnout token pro ověření přístupu k REST API:
 
-        $SubId = (Get-AzureRmContext).Subscription.Id 
-        Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SubId/providers/Microsoft.Web/sites?api-version=2019-11-01
-
+    ```azurepowershell
+    $SubId = (Get-AzureRmContext).Subscription.Id 
+    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SubId/providers/Microsoft.Web/sites?api-version=2019-11-01
+    ```
 
 ## <a name="examples-using-the-api"></a>Příklady použití rozhraní API  
 
@@ -88,26 +98,28 @@ Tento článek používá následující adresu URL pro směrný plán požadavk
 Než spustíte následující příklady s vlastními hodnotami, je třeba přiřadit hodnoty proměnných. K proměnným PowerShellu se dostanete tak, že zadáte `$variablename` .
 Proměnné prostředí PowerShell jsou přiřazeny pomocí `$variablename = “value”` .
 
-        $Region = “westus2" 
-        $ResourceGroup = “MYTest-RG-63" 
-        $ANFvnetname = “NetAppFilesVnet-63"
-        $ANFvnetCIDR = “10.63.64.0/18"
-        $ANFsubnet = “NetAppFilesSubnet-63"
-        $ANFsubnetCIDR = “10.63.120.0/28"
-        $ANFsubnetID = “/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.Network/virtualNetworks/$ANFvnetname/subnets/$ANFSubnet"
-        $ANFAccount = “TestoftheAPI"
-        $ANFCapacityPool = “ANFTestPool"
-        $ANFServicelevel = “Standard"
-        $ANFVolume = “ANFTestVolume"
-        $ANFVolumeShareName = “Share-TEST"
-        $ANFVolumesize = 100GB
-        $ANFSnapshot = “ANFTestSnapshot"
+```azurepowershell
+$Region = “westus2" 
+$ResourceGroup = “MYTest-RG-63" 
+$ANFvnetname = “NetAppFilesVnet-63"
+$ANFvnetCIDR = “10.63.64.0/18"
+$ANFsubnet = “NetAppFilesSubnet-63"
+$ANFsubnetCIDR = “10.63.120.0/28"
+$ANFsubnetID = “/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.Network/virtualNetworks/$ANFvnetname/subnets/$ANFSubnet"
+$ANFAccount = “TestoftheAPI"
+$ANFCapacityPool = “ANFTestPool"
+$ANFServicelevel = “Standard"
+$ANFVolume = “ANFTestVolume"
+$ANFVolumeShareName = “Share-TEST"
+$ANFVolumesize = 100GB
+$ANFSnapshot = “ANFTestSnapshot"
+```
 
 ### <a name="put-request-examples"></a>Příklady požadavků PUT
 
 K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, jak ukazuje následující příklad. Tělo žádosti PUT obsahuje data ve formátu JSON pro změny. Musí být součástí příkazu PowerShellu jako text nebo odkazovaný jako soubor. Pokud chcete odkazovat na tělo jako soubor, uložte příklad JSON do souboru a přidejte `-body (Get-Content @<filename>)` ho do příkazu PowerShellu.
 
-
+```azurepowershell
     #create a NetApp account  
     $body = "{ 
         `"name`": `"$ANFAccount`", 
@@ -120,7 +132,9 @@ K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, ja
 
     $api_version = "2020-02-01"
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount`?api-version=$api_version"  
+```
 
+```azurepowershell
     #create a capacity pool  
     $body = "{
       `"location`": `"$Region`",
@@ -131,7 +145,9 @@ K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, ja
     }"
     $api_version = "2020-02-01"
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool`?api-version=$api_version" 
+```
 
+```azurepowershell
     #create a volume  
     $body = "{
         `"name`": `"$ANFVolume`",
@@ -147,7 +163,9 @@ K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, ja
     }"
     $api_version = "2020-02-01"
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool/volumes/$ANFVolume`?api-version=$api_version" 
+```
 
+```azurepowershell
     #create a volume snapshot
     $body = "{
         `"name`": `"$ANFAccount/$ANFCapacityPool/$ANFVolume/$ANFSnapshot`",
@@ -160,11 +178,13 @@ K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, ja
     }"
     $api_version = '2020-02-01'
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool/volumes/$ANFVolume/Snapshots/$ANFSnapshot`?api-version=$api_version"
+```
 
 ### <a name="json-examples"></a>Příklady JSON
 
 Následující příklad ukazuje, jak vytvořit účet NetApp:
 
+```json
     { 
         "name": "MYNETAPPACCOUNT", 
         "type": "Microsoft.NetApp/netAppAccounts", 
@@ -173,9 +193,11 @@ Následující příklad ukazuje, jak vytvořit účet NetApp:
             "name": "MYNETAPPACCOUNT" 
         }
     } 
+```
 
 Následující příklad ukazuje, jak vytvořit fond kapacit: 
 
+```json
     {
         "name": "MYNETAPPACCOUNT/POOLNAME",
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools",
@@ -186,9 +208,11 @@ Následující příklad ukazuje, jak vytvořit fond kapacit:
             "serviceLevel": "Premium"
         }
     }
+```
 
 Následující příklad ukazuje, jak vytvořit nový svazek. (Výchozí protokol pro svazek je NFSV3.) 
 
+```json
     {
         "name": "MYNEWVOLUME",
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes",
@@ -201,9 +225,11 @@ Následující příklad ukazuje, jak vytvořit nový svazek. (Výchozí protoko
             "subnetId": "/subscriptions/$SUBID/resourceGroups/$RESOURCEGROUP/providers/Microsoft.Network/virtualNetworks/VNETGOESHERE/subnets/MYDELEGATEDSUBNET.sn"
         }
     }
+```
 
 Následující příklad ukazuje, jak vytvořit snímek svazku: 
 
+```json
     {
         "name": "apitest2/apiPool01/apiVol01/snap02",
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/Snapshots",
@@ -213,6 +239,7 @@ Následující příklad ukazuje, jak vytvořit snímek svazku:
             "fileSystemId": "0168704a-bbec-da81-2c29-503825fe7420"
         }
     }
+```
 
 > [!NOTE] 
 > Je nutné zadat `fileSystemId` pro vytvoření snímku.  Můžete získat `fileSystemId` hodnotu s požadavkem get na svazek. 
@@ -221,21 +248,30 @@ Následující příklad ukazuje, jak vytvořit snímek svazku:
 
 Pokud prostředek neexistuje, dojde k chybě. Použijete požadavek GET k dotazování objektů Azure NetApp Files v předplatném, jak ukazují následující příklady:
 
-    #get NetApp accounts 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get NetApp accounts 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01 | ConvertTo-Json
+```
 
-    #get capacity pools for NetApp account 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get capacity pools for NetApp account 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools?api-version=2019-11-01 | ConvertTo-Json
+```
 
-    #get volumes in NetApp account & capacity pool 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get volumes in NetApp account & capacity pool 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes?api-version=2019-11-01 | ConvertTo-Json
+```
 
-    #get snapshots for a volume 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes/$ANFVOLUME/snapshots?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get snapshots for a volume 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes/$ANFVOLUME/snapshots?api-version=2019-11-01 | ConvertTo-Json
+```
 
 ### <a name="complete-powershell-scripts"></a>Dokončení skriptů PowerShellu
 V této části se dozvíte o ukázkových skriptech pro PowerShell.
 
+```azurepowershell
     <#
     Disclaimer 
     The sample scripts are not supported under any Microsoft standard support program or service. The sample scripts are provided AS IS without warranty of any kind. Microsoft further disclaims all implied warranties including, without limitation, any implied warranties of merchantability or of fitness for a particular purpose. The entire risk arising out of the use or performance of the sample scripts and documentation remains with you. In no event shall Microsoft, its authors, or anyone else involved in the creation, production, or delivery of the scripts be liable for any damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or other pecuniary loss) arising out of the use of or inability to use the sample scripts or documentation, even if Microsoft has been advised of the possibility of such damages.
@@ -397,6 +433,7 @@ V této části se dozvíte o ukázkových skriptech pro PowerShell.
        sleep 5
        $response = Invoke-RestMethod -Method ‘GET’ -Headers $headers -Uri "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool/volumes/$ANFVolume/Snapshots/$ANFSnapshot`?api-version=$api_version" 
        }  
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: aeb3273622b863f04c73561520efe3be6cc6fec2
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84804925"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961196"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -261,7 +261,7 @@ Pomocí `-Force` parametru můžete soubor odebrat bez výzvy.
 
 ## <a name="manage-access-permissions"></a>Správa přístupových oprávnění
 
-Můžete získat, nastavit a aktualizovat přístupová oprávnění systémů souborů, adresářů a souborů. Tato oprávnění jsou zachycena v seznamech řízení přístupu (ACL).
+Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů. Tato oprávnění jsou zachycena v seznamech řízení přístupu (ACL).
 
 > [!NOTE]
 > Pokud k autorizaci příkazů používáte Azure Active Directory (Azure AD), ujistěte se, že je vašemu objektu zabezpečení přiřazená [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -270,7 +270,7 @@ Můžete získat, nastavit a aktualizovat přístupová oprávnění systémů s
 
 Získat seznam řízení přístupu k adresáři nebo souboru pomocí `Get-AzDataLakeGen2Item` rutiny.
 
-Tento příklad získá seznam řízení přístupu **systému souborů** a pak vytiskne seznam řízení přístupu do konzoly.
+Tento příklad získá seznam řízení přístupu kořenového adresáře **systému souborů** a pak vytiskne seznam řízení přístupu do konzoly.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ V tomto příkladu má vlastnící uživatel oprávnění ke čtení, zápisu a 
 
 Pomocí `set-AzDataLakeGen2ItemAclObject` rutiny vytvořte seznam ACL pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele. Potom pomocí `Update-AzDataLakeGen2Item` rutiny potvrďte seznam řízení přístupu.
 
-Tento příklad nastavuje seznam řízení přístupu v **systému souborů** pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
+Tento příklad nastavuje seznam řízení přístupu v kořenovém adresáři **systému souborů** pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
 
 ```powershell
 $filesystemName = "my-file-system"
