@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045302"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Import nebo export Azure SQL Database, aniž by bylo možné povolit službám Azure přístup k serveru
@@ -71,7 +70,7 @@ Následující kroky ukazují, jak se připojit k virtuálnímu počítači pomo
 
 [Stáhněte a nainstalujte si nejnovější verzi SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download).
 
-Další informace naleznete v tématu [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage).
+Další informace najdete v tématu [SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage).
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Vytvořte pravidlo brány firewall, které umožní virtuálnímu počítači přístup k databázi.
 
@@ -101,7 +100,7 @@ Chcete-li exportovat Azure SQL Database pomocí nástroje příkazového řádku
 
 Pro většinu produkčních prostředí doporučujeme používat nástroj SqlPackage pro škálování a výkon. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Tento příklad ukazuje, jak exportovat databázi pomocí SqlPackage. exe s univerzálním ověřováním služby Active Directory. Nahraďte hodnotami, které jsou specifické pro vaše prostředí.
+Tento příklad ukazuje, jak exportovat databázi pomocí SqlPackage.exe s univerzálním ověřováním služby Active Directory. Nahraďte hodnotami, které jsou specifické pro vaše prostředí.
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"

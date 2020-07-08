@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768130"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
@@ -51,7 +50,7 @@ Následující příklad vytvoří pracovní prostor pomocí šablony z místní
 > [!WARNING]
 > Následující šablona vytvoří pracovní prostor Log Analytics a nakonfiguruje shromažďování dat. To může změnit nastavení fakturace. Přečtěte si téma [Správa využití a nákladů pomocí protokolů Azure monitor](manage-cost-storage.md) , abyste porozuměli fakturaci na data shromážděná v pracovním prostoru Log Analytics a teprve potom je použijete v prostředí Azure.
 
-Pro rezervaci kapacity definujte vybranou rezervaci kapacity pro ingestování dat zadáním SKU `CapacityReservation` a hodnoty v GB pro vlastnost. `capacityReservationLevel` Následující seznam podrobně popisuje podporované hodnoty a chování při jejich konfiguraci.
+Pro rezervaci kapacity definujte vybranou rezervaci kapacity pro ingestování dat zadáním SKU `CapacityReservation` a hodnoty v GB pro vlastnost `capacityReservationLevel` . Následující seznam podrobně popisuje podporované hodnoty a chování při jejich konfiguraci.
 
 - Po nastavení limitu rezervace se nemůžete změnit na jinou skladovou jednotku během 31 dnů.
 
@@ -155,7 +154,7 @@ Pro rezervaci kapacity definujte vybranou rezervaci kapacity pro ingestování d
 
 2. Upravte šablonu tak, aby splňovala vaše požadavky. Místo předání parametrů jako vložené hodnoty zvažte vytvoření [souboru parametrů správce prostředků](../../azure-resource-manager/templates/parameter-files.md) . Informace o podporovaných vlastnostech a hodnotách najdete v referenčních informacích k [šabloně Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) . 
 
-3. Uložte tento soubor jako **deploylaworkspacetemplate. JSON** do místní složky.
+3. Uložte tento soubor jako **deploylaworkspacetemplate.js** do místní složky.
 
 4. Jste připraveni k nasazení této šablony. K vytvoření pracovního prostoru pomocí PowerShellu nebo příkazového řádku zadejte název pracovního prostoru a umístění jako součást příkazu. Název pracovního prostoru musí být globálně jedinečný v rámci všech předplatných Azure.
 

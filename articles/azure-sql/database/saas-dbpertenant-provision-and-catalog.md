@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042810"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Naučte se zřizovat nové klienty a registrovat je v katalogu.
@@ -78,7 +77,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-DbPerTenant](https://github.com/Micros
 
 Aby bylo možné pochopit, jak aplikace Wingtip Tickets implementuje nové zřizování tenanta, přidejte zarážku a Sledujte pracovní postup při zřizování tenanta.
 
-1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ ProvisionAndCatalog \\ _demo-ProvisionAndCatalog. ps1_ a nastavte následující parametry:
+1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ ProvisionAndCatalog \\ _Demo-ProvisionAndCatalog.ps1_ a nastavte následující parametry:
 
    * **$TenantName** = název nového místa (například *Bushwillow Blues*).
    * **$VenueType** = jeden z předdefinovaných typů místa: _blues, ClassicalMusic, roztancoval, jazz, Judo, motorové dostihy, Multipurpose, Opera, rockmusic, fotbal_.
@@ -116,7 +115,7 @@ Tento pracovní postup nemusíte explicitně sledovat. Vysvětluje, jak skript l
 
     Název databáze je sestavený z názvu tenanta, aby bylo jasné, jakému tenantovi příslušný horizontální oddíl patří. Můžete také použít jiné zásady vytváření názvů databází. Šablona Správce prostředků vytvoří databázi tenanta zkopírováním databáze šablony (_baseTenantDB_) na serveru katalogu. Jako alternativu můžete vytvořit databázi a inicializovat ji pomocí importu BacPac. Případně můžete spustit inicializační skript z dobře známého umístění.
 
-    Šablona Správce prostředků je ve složce. ..\Learning Modules\Common\: *tenantdatabasecopytemplate. JSON.*
+    Šablona Správce prostředků je ve složce. ..\Learning Modules\Common\: *tenantdatabasecopytemplate.jsna*
 
 * **Databáze tenanta je dále inicializovaná.** Přidají se název místa (tenant) a typ místa konání. Můžete také provést další inicializaci.
 
@@ -136,7 +135,7 @@ Po dokončení zřizování se spuštění vrátí do původního skriptu *demo-
 
 Toto cvičení zřídí dávku o 17 klientech. Doporučujeme, abyste tuto dávku tenantů zřídili před spuštěním dalších kurzů Wingtip Tickets SaaS Database-per-tenant. Existuje více než jen několik databází, se kterými pracujete.
 
-1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ ProvisionAndCatalog \\ *demo-ProvisionAndCatalog. ps1*. Změňte parametr *$DemoScenario* na 3:
+1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ ProvisionAndCatalog \\ *Demo-ProvisionAndCatalog.ps1*. Změňte parametr *$DemoScenario* na 3:
 
    * **$DemoScenario**  =  **3** *zřiďte dávku tenantů*.
 2. Pokud chcete skript spustit, stiskněte klávesu F5.

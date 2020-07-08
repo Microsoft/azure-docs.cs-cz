@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 65513b3cd5813d7d127ca9cbabdcd038f11beee9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042866"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>Nastavení a použití protokolů Azure Monitor s víceklientské aplikací Azure SQL Database SaaS
@@ -48,7 +47,7 @@ Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Vytváření diagnostických dat výkonu díky simulaci úloh ve vašich klientech 
 
-1. V prostředí PowerShell ISE otevřete *.. \\ WingtipTicketsSaaS-MultiTenantDb – hlavní \\ výukové moduly pro \\ sledování výkonu a správu \\ demo-PerformanceMonitoringAndManagement. ps1*. Nechejte tento skript otevřený, protože během tohoto kurzu budete chtít spustit několik scénářů generování zátěže.
+1. V prostředí PowerShell ISE otevřete *.. \\ WingtipTicketsSaaS-MultiTenantDb – hlavní \\ výukové moduly pro \\ sledování a správu výkonu \\Demo-PerformanceMonitoringAndManagement.ps1*. Nechejte tento skript otevřený, protože během tohoto kurzu budete chtít spustit několik scénářů generování zátěže.
 1. Pokud jste to ještě neudělali, zřiďte dávku tenantů, aby byl kontext monitorování zajímavější. Tento proces trvá několik minut.
 
    a. Nastavte **$DemoScenario = 1**a _zřiďte dávku tenantů_.
@@ -69,7 +68,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-DbPerTenant](https://github.com/Micros
 
 Azure Monitor je samostatná služba, kterou je třeba nakonfigurovat. Protokoly Azure Monitor shromažďují data protokolů, telemetrie a metriky v pracovním prostoru Log Analytics. Stejně jako u jiných prostředků v Azure je třeba vytvořit pracovní prostor Log Analytics. Pracovní prostor není nutné vytvořit ve stejné skupině prostředků jako aplikace, které monitoruje. V takovém případě to často dává co nejužitečnější. V případě aplikace Wingtip Tickets použijte jednu skupinu prostředků, abyste se ujistili, že se pracovní prostor odstraní s aplikací.
 
-1. V prostředí PowerShell ISE otevřete *.. \\ WingtipTicketsSaaS-MultiTenantDb – hlavní \\ výukové moduly pro \\ sledování a správu výkonu \\ Log Analytics \\ demo-LogAnalytics. ps1*.
+1. V prostředí PowerShell ISE otevřete *.. \\ WingtipTicketsSaaS-MultiTenantDb – hlavní \\ výukové moduly pro \\ sledování a správu výkonu \\ Log Analytics \\Demo-LogAnalytics.ps1*.
 1. Pokud chcete skript spustit, stiskněte klávesu F5.
 
 Nyní můžete otevřít protokoly Azure Monitor v Azure Portal. Shromažďování telemetrie v pracovním prostoru Log Analytics a jejich viditelnost trvá několik minut. Čím déle necháte systém shromažďování diagnostických dat, tím zajímavější je prostředí. 

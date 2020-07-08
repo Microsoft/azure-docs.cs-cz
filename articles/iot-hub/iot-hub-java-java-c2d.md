@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e16d0ed264f32746c11d89e88ea1e67f9383b773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732519"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Java)
@@ -114,7 +113,7 @@ V této části vytvoříte konzolovou aplikaci Java, která odesílá zprávy t
 
 2. Na příkazovém řádku přejděte do nové složky Send-C2D-Messages.
 
-3. Pomocí textového editoru otevřete soubor pom. XML ve složce Send-C2D-Messages a přidejte následující závislost na uzel **závislosti** . Přidání závislosti vám umožní komunikovat se službou IoT Hub pomocí balíčku **iothub-Java-Service-Client** ve vaší aplikaci:
+3. Pomocí textového editoru otevřete soubor pom.xml ve složce Send-C2D-Messages a přidejte následující závislost na uzel **závislosti** . Přidání závislosti vám umožní komunikovat se službou IoT Hub pomocí balíčku **iothub-Java-Service-Client** ve vaší aplikaci:
 
     ```xml
     <dependency>

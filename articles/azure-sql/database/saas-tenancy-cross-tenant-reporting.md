@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042117"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Generování sestav mezi klienty pomocí distribuovaných dotazů
@@ -59,7 +58,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-DbPerTenant](https://github.com/Micros
 
 Pokud chcete spouštět dotazy pro zajímavější datovou sadu, vytvořte pomocí generátoru lístků data o prodeji lístku.
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ Operational Analytics pro \\ vytváření sestav ad \\ *demo-AdhocReporting. ps1* a nastavte následující hodnotu:
+1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *Demo-AdhocReporting.ps1* skriptu a nastavení následující hodnoty:
    * **$DemoScenario** = 1, **vykoupit lístky pro události na všech místě**.
 2. Stisknutím klávesy **F5** spusťte skript a vygenerujte prodej lístku. Po spuštění skriptu pokračujte postupem v tomto kurzu. Data lístku se dotazují v části *Run ad hoc distribuované dotazy* , takže počkejte, než se generátor lístků dokončí.
 
@@ -104,7 +103,7 @@ Pokud chcete zjistit, jak přidat *VenueId*, proveďte skript kteréhokoli *z os
 
 Toto cvičení nasadí databázi _adhocreporting_ . Toto je hlavní databáze, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenanta. Databáze je nasazená na stávající Server katalogu, což je server, který se používá pro všechny databáze související se správou v ukázkové aplikaci.
 
-1. v *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ provozní analýzy \\ ad hoc vytváření sestav \\ *demo-AdhocReporting. ps1*. 
+1. v *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ Operational Analytics \\Demo-AdhocReporting.ps1vytváření sestav ad hoc \\ * *. 
 
 1. Nastavte **$DemoScenario = 2**, _Nasaďte databázi ad hoc Reporting_.
 
@@ -191,4 +190,4 @@ Teď Vyzkoušejte [kurz analýzy tenantů](saas-tenancy-tenant-analytics.md) , k
 ## <a name="additional-resources"></a>Další zdroje
 
 * Další [kurzy, které se sestavují na základě aplikace Wingtip Tickets SaaS Database na klienta](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Elastic Query](elastic-query-overview.md)
+* [Elastický dotaz](elastic-query-overview.md)

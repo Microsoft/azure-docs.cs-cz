@@ -5,12 +5,11 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ee602b3aa6c701eb10730f4c5c387175bb070ef3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: f2da9fbb04f9d1fa696250967db404864a3cce82
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921815"
 ---
 # <a name="azure-service-fabric-support-options"></a>Možnosti podpory pro Azure Service Fabric
 
@@ -20,13 +19,13 @@ Pro zajištění vhodné podpory pro Service Fabric clusterů, na kterých běž
 
 Pokud chcete nahlásit problémy v clusteru Service Fabric nasazeném v Azure, otevřete lístek pro podporu [Azure Portal nebo na](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) [portálu podpory Microsoftu](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
-Další informace:
+Přečtěte si další informace:
  
 - [Podpora Microsoftu pro Azure](https://azure.microsoft.com/support/plans/?b=16.44).
 - [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
 
 > [!Note]
-> Clustery běžící na bronzové úrovni spolehlivosti nebo v clusteru s jedním uzlem vám umožní spustit pouze zkušební zatížení. Pokud dochází k problémům s clusterem, který běží v případě bronzové nebo clustery s jedním uzlem, tým podpory společnosti Microsoft vám pomůže při zmírnění tohoto problému, ale neprovede analýzu původní příčiny. Další podrobnosti najdete [v tématu charakteristiky spolehlivosti clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) .
+> Clustery běžící na bronzové úrovni spolehlivosti nebo v clusteru s jedním uzlem vám umožní spustit pouze zkušební zatížení. Pokud dochází k problémům s clusterem, který běží v případě bronzové nebo clustery s jedním uzlem, tým podpory společnosti Microsoft vám pomůže při zmírnění tohoto problému, ale neprovede analýzu původní příčiny. Další podrobnosti najdete [v tématu charakteristiky spolehlivosti clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) .
 >
 > Další informace o tom, co je potřeba pro cluster připravený pro produkční prostředí, najdete v [kontrolním seznamu připravenosti na produkci](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
 
@@ -36,7 +35,7 @@ Další informace:
 
 Pokud chcete nahlásit problémy s nasazeným clusterem Service Fabric místně nebo v jiných cloudech, otevřete lístek pro profesionální podporu na [portálu podpory Microsoftu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-Další informace:
+Přečtěte si další informace:
 
 - [Professional Support od Microsoftu pro místní podporu](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 - [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
@@ -51,7 +50,7 @@ Nahlaste se Service Fabric problémy s Azure [Service-Fabric – problémy v úl
 
 ### <a name="stackoverflow-and-msdn-forums"></a>Fóra StackOverflow a MSDN
 
-[Značka Service Fabric v StackOverflow][stackoverflow] a fórum [Service Fabric na webu MSDN] [MSDN-forum] se nejlépe hodí pro dotazování na to, jak platforma funguje a jak se s ní můžou provádět určité úlohy.
+[Service Fabric značka v StackOverflow][stackoverflow] a [Fórum Service Fabric na webu MSDN][msdn-forum] se nejlépe hodí pro dotazování na to, jak platforma funguje a jak se s ní můžete provádět určité úlohy.
 
 ### <a name="azure-feedback-forum"></a>Fórum pro názory na Azure
 
@@ -72,3 +71,4 @@ Pro tyto verze Preview se nepoužívá žádná možnost placené podpory. Pomoc
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs
 [sample-repos]: https://aka.ms/servicefabricsamples
+[msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

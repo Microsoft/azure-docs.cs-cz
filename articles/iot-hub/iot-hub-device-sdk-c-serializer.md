@@ -10,10 +10,9 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81767025"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Sada SDK pro zařízení Azure IoT pro C – Další informace o serializátoru
@@ -26,13 +25,13 @@ První článek v této sérii představil [Úvod do sady SDK pro zařízení Az
 
 Nakonec článek Přečtěte některá témata, která jsou popsaná v předchozích článcích, jako je zpracování zpráv a vlastností. Jak zjistíme, tyto funkce fungují stejným způsobem jako pomocí knihovny **serializátorů** , stejně jako s knihovnou **IoTHubClient** .
 
-Vše popsané v tomto článku je založené na vzorcích sady SDK **serializátoru** . Pokud chcete postup sledovat, přečtěte si téma **aplikace\_SimpleSample AMQP** a **SimpleSample\_http** , které jsou součástí sady SDK pro zařízení Azure IoT pro jazyk C.
+Vše popsané v tomto článku je založené na vzorcích sady SDK **serializátoru** . Pokud chcete postup sledovat, přečtěte si téma aplikace **SimpleSample \_ AMQP** a **SimpleSample \_ http** , které jsou součástí sady SDK pro zařízení Azure IoT pro jazyk C.
 
 Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/Azure/azure-iot-sdk-c) úložiště GitHub c a zobrazit podrobnosti o rozhraní API v referenčních informacích k [rozhraní API jazyka c](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>Modelovací jazyk
 
-Článek [sada SDK pro zařízení Azure IoT pro jazyk c](iot-hub-device-sdk-c-intro.md) v této sérii představila **sadu SDK pro zařízení Azure IoT pro jazyk c** Modeling v příkladu, který je k dispozici v aplikaci **SimpleSample\_AMQP** :
+Článek [sada SDK pro zařízení Azure IoT pro jazyk c](iot-hub-device-sdk-c-intro.md) v této sérii představila **sadu SDK pro zařízení Azure IoT pro jazyk c** Modeling v příkladu, který je k dispozici v aplikaci **SimpleSample \_ AMQP** :
 
 ```C
 BEGIN_NAMESPACE(WeatherStation);
@@ -48,7 +47,7 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Jak vidíte, modelovací jazyk je založen na makrech jazyka C. Vždy zahájíte definici pomocí **oboru\_názvů Begin** a vždy ukončete **s\_koncovým oborem názvů**. Je běžné pojmenovat obor názvů vaší společnosti nebo, jako v tomto příkladu, projekt, na kterém pracujete.
+Jak vidíte, modelovací jazyk je založen na makrech jazyka C. Vždy zahájíte definici pomocí ** \_ oboru názvů Begin** a vždy ukončete s **koncovým \_ oborem názvů**. Je běžné pojmenovat obor názvů vaší společnosti nebo, jako v tomto příkladu, projekt, na kterém pracujete.
 
 Co se nachází uvnitř oboru názvů, jsou definice modelu. V tomto případě existuje jeden model pro anemometer. Model se pak může pojmenovat cokoli, ale obvykle je tento model pojmenován pro zařízení nebo typ dat, která chcete vyměňovat pomocí IoT Hub.  
 
@@ -65,24 +64,24 @@ To, co se v této ukázce neukazuje, jsou další datové typy, které sada SDK 
 
 V modelech vytvořených pomocí knihovny **serializátoru** jsou podporovány následující datové typy:
 
-| Typ | Popis |
+| Typ | Description |
 | --- | --- |
 | double |číslo s plovoucí desetinnou čárkou typu Double Precision |
 | int |32-bitové celé číslo |
 | float |číslo s plovoucí desetinnou čárkou s jednoduchou přesností |
 | long |dlouhé celé číslo |
-| int8\_t |8bitové celé číslo |
-| Int16\_t |16bitové celé číslo |
-| Int32\_t |32-bitové celé číslo |
-| Int64\_t |64-bitové celé číslo |
+| int8 \_ t |8bitové celé číslo |
+| Int16 \_ t |16bitové celé číslo |
+| Int32 \_ t |32-bitové celé číslo |
+| Int64 \_ t |64-bitové celé číslo |
 | bool |Boolean |
-| znak\_\_PTR pro ASCII |Řetězec ASCII |
-| posun\_data\_a\_času EDM |posun data a času |
-| identifikátor\_GUID modelu EDM |GUID |
-| binární\_soubor EDM |binární |
-| DEKLAROVAT\_strukturu |komplexní datový typ |
+| \_znak \_ PTR pro ASCII |Řetězec ASCII |
+| \_posun data a \_ času \_ EDM |posun data a času |
+| \_identifikátor GUID modelu EDM |Identifikátor GUID |
+| \_binární soubor EDM |binární |
+| DEKLAROVAT \_ strukturu |komplexní datový typ |
 
-Pojďme začít s posledním datovým typem. **Deklarace\_struct** umožňuje definovat komplexní datové typy, které jsou seskupení ostatních primitivních typů. Tato seskupení nám umožňují definovat model, který vypadá takto:
+Pojďme začít s posledním datovým typem. **Deklarace \_ struct** umožňuje definovat komplexní datové typy, které jsou seskupení ostatních primitivních typů. Tato seskupení nám umožňují definovat model, který vypadá takto:
 
 ```C
 DECLARE_STRUCT(TestType,
@@ -169,9 +168,9 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Tato funkce serializovat danou událost dat a pošle ji do IoT Hub pomocí **SendEventAsyncu\_IoTHubClient**. To je stejný kód, který je popsán v předchozích článcích (**SendAsync** zapouzdřuje logiku do pohodlné funkce).
+Tato funkce serializovat danou událost dat a pošle ji do IoT Hub pomocí ** \_ SendEventAsyncu IoTHubClient**. To je stejný kód, který je popsán v předchozích článcích (**SendAsync** zapouzdřuje logiku do pohodlné funkce).
 
-Jedna další pomocná funkce použitá v předchozím kódu je **getdatetimeoffset**. Tato funkce transformuje daný čas na hodnotu typu **datum\_\_a čas posunu datového času\_EDM**:
+Jedna další pomocná funkce použitá v předchozím kódu je **getdatetimeoffset**. Tato funkce transformuje daný čas na hodnotu typu ** \_ Datum a \_ čas \_ posunu datového času EDM**:
 
 ```C
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -234,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Všimněte si, že model obsahuje dvě události dat: **teplotu** a **vlhkost**. Na rozdíl od předchozích příkladů je typ každé události struktura definovaná pomocí příkazu **Declare\_struct**. **TemperatureEvent** zahrnuje měření teploty a časové razítko; **HumidityEvent** obsahuje měření vlhkosti a časové razítko. Tento model nám dává přirozený způsob modelování dat pro výše popsaný scénář. Když pošleme událost do cloudu, pošleme buď jednu teplotu, časové razítko, nebo dvojici vlhkosti nebo časového razítka.
+Všimněte si, že model obsahuje dvě události dat: **teplotu** a **vlhkost**. Na rozdíl od předchozích příkladů je typ každé události struktura definovaná pomocí příkazu **Declare \_ struct**. **TemperatureEvent** zahrnuje měření teploty a časové razítko; **HumidityEvent** obsahuje měření vlhkosti a časové razítko. Tento model nám dává přirozený způsob modelování dat pro výše popsaný scénář. Když pošleme událost do cloudu, pošleme buď jednu teplotu, časové razítko, nebo dvojici vlhkosti nebo časového razítka.
 
 Do cloudu můžeme odeslat událost teploty pomocí kódu, jako je následující:
 
@@ -254,7 +253,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 
 Budeme používat pevně zakódované hodnoty pro teplotu a vlhkost v ukázkovém kódu, ale Představme si, že ve skutečnosti načítáme tyto hodnoty pomocí vzorkování odpovídajících senzorů na termostatu.
 
-Výše uvedený kód používá pomocníka **getdatetimeoffset** , který se dřív představil. Z důvodů, které se stanou jasnými později, tento kód explicitně odděluje úkol serializace a odeslání události. Předchozí kód serializaci událost teploty do vyrovnávací paměti. **Deklarace SendMessage** je pak pomocná funkce (obsažená **v\_SimpleSample AMQP**), která odesílá událost do IoT Hub:
+Výše uvedený kód používá pomocníka **getdatetimeoffset** , který se dřív představil. Z důvodů, které se stanou jasnými později, tento kód explicitně odděluje úkol serializace a odeslání události. Předchozí kód serializaci událost teploty do vyrovnávací paměti. **Deklarace SendMessage** je pak pomocná funkce (obsažená v **SimpleSample \_ AMQP**), která odesílá událost do IoT Hub:
 
 ```C
 static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -300,7 +299,7 @@ Serializovaná forma, která se pošle IoT Hub, se zobrazí takto:
 
 Znovu, toto je očekáváno.
 
-S tímto modelem si můžete představit, jak lze snadno přidat další události. Můžete definovat více struktur pomocí **příkazu\_Declare struct**a zahrnout odpovídající událost do modelu pomocí **s\_daty**.
+S tímto modelem si můžete představit, jak lze snadno přidat další události. Můžete definovat více struktur pomocí příkazu **Declare \_ struct**a zahrnout odpovídající událost do modelu pomocí **s \_ daty**.
 
 Teď model upravíte tak, aby obsahoval stejná data, ale s jinou strukturou.
 
@@ -316,7 +315,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-V tomto případě jsme vyloučili makra **Declare\_struct** a jednoduše definujete položky dat z našeho scénáře pomocí jednoduchých typů z modelovacího jazyka.
+V tomto případě jsme vyloučili makra **Declare \_ struct** a jednoduše definujete položky dat z našeho scénáře pomocí jednoduchých typů z modelovacího jazyka.
 
 Hned za chvíli ignorujte událost **čas** . V takovém případě zde je kód pro vstupní **teplotu**:
 
@@ -436,9 +435,9 @@ Tím se vygeneruje přesně jedna serializovaná událost, jako kdyby jsme defin
 
 Důležité je, že pokud předáte více datových událostí k **serializaci,** předpokládá se, že každá událost je vlastnost v jednom objektu JSON.
 
-Nejlepší přístup závisí na vás a na tom, jak si svůj model myslíte. Pokud odesíláte "události" do cloudu a každá událost obsahuje definovanou sadu vlastností, pak první přístup přináší spoustu smyslů. V takovém případě použijte **deklaraci\_struct** k definování struktury každé události a poté ji zahrňte do svého modelu pomocí makra **\_s daty** . Pak každou událost odešlete jako v prvním příkladu výše. V tomto přístupu byste k **serializátoru**předávali jenom jednu událost dat.
+Nejlepší přístup závisí na vás a na tom, jak si svůj model myslíte. Pokud odesíláte "události" do cloudu a každá událost obsahuje definovanou sadu vlastností, pak první přístup přináší spoustu smyslů. V takovém případě použijte **deklaraci \_ struct** k definování struktury každé události a poté ji zahrňte do svého modelu pomocí makra **s \_ daty** . Pak každou událost odešlete jako v prvním příkladu výše. V tomto přístupu byste k **serializátoru**předávali jenom jednu událost dat.
 
-Pokud si myslíte o modelu v objektově orientovaném způsobem, druhý přístup vám může vyhovovat. V tomto případě prvky definované pomocí **s\_daty** jsou vlastnosti objektu. Dodáte jakoukoli podmnožinu událostí k **serializaci** , kterou chcete, v závislosti na tom, kolik stavu objektu chcete odeslat do cloudu.
+Pokud si myslíte o modelu v objektově orientovaném způsobem, druhý přístup vám může vyhovovat. V tomto případě prvky definované pomocí **s \_ daty** jsou vlastnosti objektu. Dodáte jakoukoli podmnožinu událostí k **serializaci** , kterou chcete, v závislosti na tom, kolik stavu objektu chcete odeslat do cloudu.
 
 Přístup k Nether je správný nebo špatný. Stačí vědět, jak funguje knihovna **serializátorů** , a vyberte přístup k modelování, který nejlépe vyhovuje vašim potřebám.
 
@@ -552,13 +551,13 @@ V knihovně sdílených nástrojů se nachází následující složka:
 azure-c-shared-utility\\macro\_utils\_h\_generator.
 ```
 
-Tato složka obsahuje řešení sady Visual Studio s názvem nástroje pro **makra\_\_h\_generátor. sln**:
+Tato složka obsahuje řešení sady Visual Studio s názvem nástroje pro **makra \_ \_ h \_ generátor. sln**:
 
   ![Snímek obrazovky maco_utils_h_generator řešení sady Visual Studio](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-Program v tomto řešení vygeneruje soubor **.\_h sady maker** . Sada SDK obsahuje výchozí soubor\_util. h. Toto řešení umožňuje upravit některé parametry a pak znovu vytvořit hlavičkový soubor založený na těchto parametrech.
+Program v tomto řešení vygeneruje soubor ** \_ . h sady maker** . \_Sada SDK obsahuje výchozí soubor util. h. Toto řešení umožňuje upravit některé parametry a pak znovu vytvořit hlavičkový soubor založený na těchto parametrech.
 
-Mezi dva klíčové parametry, které se mají zabývat, patří **nArithmetic** a **nMacroParameters**, které jsou definované na těchto dvou řádcích\_, které se našly v utils.TTU makra:
+Mezi dva klíčové parametry, které se mají zabývat, patří **nArithmetic** a **nMacroParameters**, které jsou definované na těchto dvou řádcích, které se našly v \_ utils.TTU makra:
 
 ```C
 <#int nArithmetic=1024;#>
@@ -567,7 +566,7 @@ Mezi dva klíčové parametry, které se mají zabývat, patří **nArithmetic**
 
 Tyto hodnoty jsou výchozí parametry, které jsou součástí sady SDK. Každý parametr má následující význam:
 
-* nMacroParameters – určuje, kolik parametrů můžete mít v jednom DEKLARaci\_definice makra modelu.
+* nMacroParameters – určuje, kolik parametrů můžete mít v jednom DEKLARaci \_ definice makra modelu.
 * nArithmetic – řídí celkový počet členů povolených v modelu.
 
 Důvodem je, že tyto parametry jsou důležité, protože určují, jak velký má váš model. Zvažte například tuto definici modelu:
@@ -578,7 +577,7 @@ WITH_DATA(int, MyData)
 );
 ```
 
-Jak bylo zmíněno dříve, **deklarujete\_model** pouze jako makro jazyka C. Názvy modelu a příkazu **with\_data** (ještě jiné makro) jsou parametry **deklarovaného\_modelu**. **nMacroParameters** definuje počet parametrů, které mohou být zahrnuty **v\_deklaraci modelu**. To umožňuje definovat, kolik datových událostí a deklarací akcí můžete mít. V takovém případě s výchozím limitem 124 to znamená, že můžete definovat model s kombinací informací o akcích 60 a událostech dat. Pokud se pokusíte překročit tento limit, obdržíte chyby kompilátoru, které vypadají podobně jako toto:
+Jak bylo zmíněno dříve, **deklarujete \_ model** pouze jako makro jazyka C. Názvy modelu a příkazu **with \_ data** (ještě jiné makro) jsou parametry **deklarovaného \_ modelu**. **nMacroParameters** definuje počet parametrů, které mohou být zahrnuty v **deklaraci \_ modelu**. To umožňuje definovat, kolik datových událostí a deklarací akcí můžete mít. V takovém případě s výchozím limitem 124 to znamená, že můžete definovat model s kombinací informací o akcích 60 a událostech dat. Pokud se pokusíte překročit tento limit, obdržíte chyby kompilátoru, které vypadají podobně jako toto:
 
   ![Snímek obrazovky s chybami kompilátoru parametrů makra](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
 
@@ -586,15 +585,15 @@ Parametr **nArithmetic** je více o interních pracích jazyka makra, než je va
 
    ![Snímek obrazovky s chybami aritmetického kompilátoru](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
 
-Chcete-\_li změnit tyto parametry, upravte hodnoty v souboru utils.TT makra, znovu zkompilujte sady maker\_rutiny\_h\_generátor. sln a spusťte kompilovaný program. Když to uděláte, vygeneruje se nový\_soubor. h sady maker, který je umístěný v. \\běžný\\adresář Inc.
+Chcete-li změnit tyto parametry, upravte hodnoty v \_ souboru utils.TT makra, znovu zkompilujte sady maker rutiny \_ \_ h \_ generátor. sln a spusťte kompilovaný program. Když to uděláte, vygeneruje se nový \_ soubor. h sady maker, který je umístěný v. \\ běžný \\ adresář Inc.
 
-Aby bylo možné používat novou verzi sady maker\_. h, odeberte balíček NuGet **serializátoru** z vašeho řešení a na jeho místě zahrnuje **serializátor** projektu sady Visual Studio. To umožňuje kódu kompilovat proti zdrojovému kódu knihovny serializátoru. To zahrnuje aktualizované sady maker\_. h. Pokud to chcete provést pro **SimpleSample\_AMQP**, začněte odebráním balíčku NuGet pro knihovnu serializátoru z řešení:
+Aby bylo možné používat novou verzi sady maker \_ . h, odeberte balíček NuGet **serializátoru** z vašeho řešení a na jeho místě zahrnuje **serializátor** projektu sady Visual Studio. To umožňuje kódu kompilovat proti zdrojovému kódu knihovny serializátoru. To zahrnuje aktualizované sady maker \_ . h. Pokud to chcete provést pro **SimpleSample \_ AMQP**, začněte odebráním balíčku NuGet pro knihovnu serializátoru z řešení:
 
    ![Snímek obrazovky odebrání balíčku NuGet pro knihovnu serializátoru](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.png)
 
 Pak tento projekt přidejte do řešení sady Visual Studio:
 
-> . \\\\serializátor\\jazyka c\\Build\\Windows serializátor. vcxproj
+> .\\ serializátor jazyka c \\ \\ Build \\ Windows \\ serializátor. vcxproj
 > 
 > 
 
@@ -602,37 +601,37 @@ Až budete hotovi, vaše řešení by mělo vypadat takto:
 
    ![Snímek obrazovky simplesample_amqp řešení sady Visual Studio](media/iot-hub-device-sdk-c-serializer/05-serializer-project.png)
 
-Nyní když zkompilujete své řešení, aktualizované sady maker\_. h jsou zahrnuty do binárního souboru.
+Nyní když zkompilujete své řešení, aktualizované sady maker \_ . h jsou zahrnuty do binárního souboru.
 
 Všimněte si, že zvětšení těchto hodnot je dostatečně vysoké, může přesáhnout omezení kompilátoru. V tomto okamžiku je **nMacroParameters** hlavním parametrem, se kterým se má zabývat. Specifikace C99 určuje, že v definici makra je povoleno minimálně 127 parametrů. Kompilátor společnosti Microsoft se řídí přesně podle specifikace (a má limit 127), takže nebudete moci zvýšit **nMacroParameters** nad rámec výchozí hodnoty. Další kompilátory vám mohou umožnit (například kompilátor GNU podporuje vyšší limit).
 
 Zatím jsme pokryli všechno, co potřebujete, abyste měli informace o tom, jak psát kód pomocí knihovny **serializátorů** . Než se pustíte do uzavírání, podíváme se na některá témata z předchozích článků, o kterých můžete zajímat.
 
 ## <a name="the-lower-level-apis"></a>Rozhraní API na nižší úrovni
-Ukázková aplikace, na které se tento článek zaměřuje, je **SimpleSample\_AMQP**. Tato ukázka používá rozhraní API vyšší úrovně (**nesouvisející s) k**odesílání událostí a přijímání zpráv. Pokud používáte tato rozhraní API, spouští se vlákno na pozadí, které postará o posílání událostí i přijímání zpráv. Rozhraní API nižší úrovně ale můžete použít k odstranění tohoto vlákna na pozadí a při posílání událostí nebo přijímání zpráv z cloudu přebírat explicitní kontrolu.
+Ukázková aplikace, na které se tento článek zaměřuje, je **SimpleSample \_ AMQP**. Tato ukázka používá rozhraní API vyšší úrovně (**nesouvisející s) k**odesílání událostí a přijímání zpráv. Pokud používáte tato rozhraní API, spouští se vlákno na pozadí, které postará o posílání událostí i přijímání zpráv. Rozhraní API nižší úrovně ale můžete použít k odstranění tohoto vlákna na pozadí a při posílání událostí nebo přijímání zpráv z cloudu přebírat explicitní kontrolu.
 
 Jak je popsáno v [předchozím článku](iot-hub-device-sdk-c-iothubclient.md), existuje sada funkcí, které se skládají z rozhraní API vyšší úrovně:
 
-* IoTHubClient\_CreateFromConnectionString
-* IoTHubClient\_SendEventAsync
-* IoTHubClient\_SetMessageCallback
-* IoTHubClient\_zničit
+* IoTHubClient \_ CreateFromConnectionString
+* IoTHubClient \_ SendEventAsync
+* IoTHubClient \_ SetMessageCallback
+* IoTHubClient \_ zničit
 
-Tato rozhraní API jsou znázorněná v **SimpleSample\_AMQP**.
+Tato rozhraní API jsou znázorněná v **SimpleSample \_ AMQP**.
 
 K dispozici je také podobná sada rozhraní API nižší úrovně.
 
-* IoTHubClient\_vše\_CreateFromConnectionString
-* IoTHubClient\_vše\_SendEventAsync
-* IoTHubClient\_vše\_SetMessageCallback
-* \_IoTHubClientt\_vše zničit
+* IoTHubClient \_ vše \_ CreateFromConnectionString
+* IoTHubClient \_ vše \_ SendEventAsync
+* IoTHubClient \_ vše \_ SetMessageCallback
+* IoTHubClientt \_ vše \_ zničit
 
 Všimněte si, že rozhraní API nižší úrovně fungují přesně stejným způsobem, jak je popsáno v předchozích článcích. První sadu rozhraní API můžete použít, pokud chcete, aby vlákno na pozadí zpracovával odesílající události a přijímalo zprávy. Druhou sadu rozhraní API použijete, pokud chcete při posílání a přijímání dat z IoT Hub explicitní kontrolu. Buď sada rozhraní API funguje stejně dobře s knihovnou **serializátoru** .
 
-Příklad toho, jak se používají rozhraní API nižší úrovně s knihovnou **serializátoru** , najdete v tématu **aplikace\_SimpleSample http** .
+Příklad toho, jak se používají rozhraní API nižší úrovně s knihovnou **serializátoru** , najdete v tématu aplikace **SimpleSample \_ http** .
 
 ## <a name="additional-topics"></a>Další témata
-Několik dalších témat, která se nahrazují, jsou zpracování vlastností, použití alternativních přihlašovacích údajů zařízení a možností konfigurace. Toto jsou všechna témata zahrnutá v [předchozím článku](iot-hub-device-sdk-c-iothubclient.md). Hlavním bodem je, že všechny tyto funkce fungují stejným způsobem s knihovnou **serializátoru** stejně jako s knihovnou **IoTHubClient** . Například pokud chcete připojit vlastnosti k události z modelu, použijte **\_vlastnosti IoTHubMessage** a **map**\_**AddorUpdate**stejným způsobem, jak je popsáno dříve:
+Několik dalších témat, která se nahrazují, jsou zpracování vlastností, použití alternativních přihlašovacích údajů zařízení a možností konfigurace. Toto jsou všechna témata zahrnutá v [předchozím článku](iot-hub-device-sdk-c-iothubclient.md). Hlavním bodem je, že všechny tyto funkce fungují stejným způsobem s knihovnou **serializátoru** stejně jako s knihovnou **IoTHubClient** . Například pokud chcete připojit vlastnosti k události z modelu, použijte ** \_ vlastnosti IoTHubMessage** a **map** \_ **AddorUpdate**stejným způsobem, jak je popsáno dříve:
 
 ```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -642,19 +641,19 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Bez ohledu na to, zda byla událost vygenerována z knihovny **serializátorů** nebo vytvořená ručně pomocí knihovny **IoTHubClient** .
 
-V případě alternativních přihlašovacích údajů ke službě se pomocí **IoTHubClientu\_\_Create** funguje stejně **jako\_IoTHubClient CreateFromConnectionString** pro přidělování **klientských\_\_popisovačů IOTHUB**.
+V případě alternativních přihlašovacích údajů ke službě se pomocí **IoTHubClientu \_ \_ Create** funguje stejně jako **IoTHubClient \_ CreateFromConnectionString** pro přidělování ** \_ klientských \_ popisovačů IOTHUB**.
 
-Nakonec, pokud používáte knihovnu **serializátorů** , můžete nastavit možnosti konfigurace pomocí **IoTHubClient\_\_** s metodou SetOption stejným způsobem jako při použití knihovny **IoTHubClient** .
+Nakonec, pokud používáte knihovnu **serializátorů** , můžete nastavit možnosti konfigurace pomocí IoTHubClient s metodou ** \_ \_ SetOption** stejným způsobem jako při použití knihovny **IoTHubClient** .
 
-Funkce, která je jedinečná pro knihovnu **serializátorů** , jsou inicializační rozhraní API. Předtím, než můžete začít pracovat s knihovnou, je nutné **volat\_inicializaci serializátoru**:
+Funkce, která je jedinečná pro knihovnu **serializátorů** , jsou inicializační rozhraní API. Předtím, než můžete začít pracovat s knihovnou, je nutné **volat \_ inicializaci serializátoru**:
 
 ```C
 serializer_init(NULL);
 ```
 
-To se provádí těsně před voláním **IoTHubClient\_CreateFromConnectionString**.
+To se provádí těsně před voláním **IoTHubClient \_ CreateFromConnectionString**.
 
-Podobně když jste hotovi s knihovnou, poslední volání, které uděláte, je **deinicializace serializátoru\_**:
+Podobně když jste hotovi s knihovnou, poslední volání, které uděláte, je ** \_ deinicializace serializátoru**:
 
 ```C
 serializer_deinit();

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042621"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a katalog nových tenantů v aplikaci SaaS s využitím víceklientské Azure SQL Database horizontálně dělené
@@ -156,7 +155,7 @@ Níže jsou uvedené klíčové prvky pracovního postupu zřizování, který p
 
 Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování tenanta ve sdílené databázi, přidejte zarážku a krok do pracovního postupu:
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1* a nastavte následující parametry:
+1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* a nastavte následující parametry:
    - **$TenantName**  =  **Bushwillow Blues**, název nového místa.
    - **$VenueType**  =  **Blues**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbal (malá písmena, bez mezer).
    - **$DemoScenario**  =  **1**, pokud chcete zřídit tenanta ve sdílené databázi s ostatními klienty.
@@ -196,7 +195,7 @@ Níže jsou uvedené klíčové prvky pracovního postupu, který jste procháze
 
 Nyní projdete procesem skriptu při vytváření tenanta ve vlastní databázi:
 
-1. Pořád v... \\ Výukové moduly \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1* nastavte následující parametry:
+1. Pořád v... \\ Výukové moduly \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* nastavte následující parametry:
    - **$TenantName**  =  **Sequoia fotbal**, název nového místa.
    - **$VenueType**  =  **fotbalový**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbal (malý případ, bez mezer).
    - **$DemoScenario**  =  **2**, pokud chcete zřídit tenanta ve své vlastní databázi.
@@ -213,7 +212,7 @@ Nyní projdete procesem skriptu při vytváření tenanta ve vlastní databázi:
 
 Toto cvičení zřídí dávku o 17 klientech. Než začnete používat jiné kurzy pro lístky Wingtip, doporučujeme zřídit tuto dávku tenantů, aby bylo možné pracovat s více databázemi.
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1* a změňte parametr *$DemoScenario* na 4:
+1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* a změňte parametr *$DemoScenario* na 4:
    - **$DemoScenario**  =  **4**, aby bylo možné zřídit dávku tenantů do sdílené databáze.
 
 2. Stiskněte **F5** a spusťte skript.

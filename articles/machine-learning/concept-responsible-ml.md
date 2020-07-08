@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920357"
 ---
 # <a name="responsible-machine-learning-ml"></a>Zodpovědné Machine Learning (ML)
 
@@ -36,7 +35,7 @@ V případě umělých a autonomních systémů, které se integrují do prostř
 
 ## <a name="interpret-and-explain-model-behavior"></a>Interpretace a vysvětlení chování modelu
 
-Obtížně vysvětlené nebo černé systémy mohou být problematické, protože jsou pro účastníky, jako jsou vývojáři systému, regulačních skupin, uživatelé a tvůrci obchodních rozhodnutí, obtížné pochopit, proč systémy provádějí určitá rozhodnutí. Některé systémy AI jsou vysvětlené než jiné a někdy se jedná o kompromis mezi systémem s vyšší přesností a jedním z nich, který je popsán.
+Obtížně vysvětlené nebo neprůhledné systémy mohou být problematické, protože jsou pro účastníky, jako jsou vývojáři systému, regulačních skupin, uživatelé a tvůrci obchodních rozhodnutí, obtížné porozumět tomu, proč systémy provádějí určitá rozhodnutí. Některé systémy AI jsou vysvětlené než jiné a někdy se jedná o kompromis mezi systémem s vyšší přesností a jedním z nich, který je popsán.
 
 K sestavení interpretované systémy AI použijte [InterpretML](https://github.com/interpretml/interpret), což je open source balíček sestavený Microsoftem. [InterpretML se dají použít v Azure Machine Learning](how-to-machine-learning-interpretability.md) k [interpretaci a vysvětlení modelů strojového učení](how-to-machine-learning-interpretability-aml.md), včetně [automatizovaných modelů strojového učení](how-to-machine-learning-interpretability-automl.md).
 
@@ -68,7 +67,7 @@ Implementace rozdílových privátních systémů je obtížná. [WhiteNoise](ht
 
 Dokumentování správných informací v procesu strojového učení je klíčem k rozhodování o příslušných rozhodnutích v jednotlivých fázích. Datové listy představují způsob, jak zdokumentovat assety strojového učení, které se používají a vytváří v rámci životního cyklu machine learningu.
 
-Modely se obvykle považují za "černé čtverečky" a často jsou k dispozici jen malé informace. Vzhledem k tomu, že systémy strojového učení se stávají větší Pervasive a používají se k rozhodování, je použití datových listů krok k vývoji dalších zodpovědných systémů strojového učení.
+Modely se obvykle považují za "neprůhledná pole" a často jsou k dispozici pouze malé informace. Vzhledem k tomu, že systémy strojového učení se stávají větší Pervasive a používají se k rozhodování, je použití datových listů krok k vývoji dalších zodpovědných systémů strojového učení.
 
 Některé informace o modelu, které byste mohli chtít dokumentovat jako součást datového listu:
 

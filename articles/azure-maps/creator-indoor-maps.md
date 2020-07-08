@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83677809"
 ---
 # <a name="creator-for-indoor-maps"></a>Autor pro mapy vnitřníchy
@@ -95,7 +94,7 @@ Služba Azure Maps [Render v2 – získání rozhraní API dlaždice mapy](https
 
 K datovým sadám se dá zadat dotaz pomocí [rozhraní API služby webové funkce (WFS)](https://docs.microsoft.com/rest/api/maps/wfs). WFS se řídí [funkcemi rozhraní API pro Open Geospatial Consortium](http://docs.opengeospatial.org/DRAFTS/17-069r1.html). Rozhraní WFS API umožňuje dotazovat se na funkce v rámci samotné datové sady. Můžete například použít WFS k vyhledání všech místností pro setkání střední velikosti daného zařízení a úrovně podlahy.
 
-### <a name="indoor-maps-module"></a>Modul mapy vnitřníchy
+### <a name="indoor-maps-module"></a>Modul interiérových map
 
 [Azure Maps webová sada SDK](https://docs.microsoft.com/azure/azure-maps/) obsahuje modul vnitřních map. Tento modul nabízí rozšířené funkce knihovny Azure Maps *ovládací prvek mapa* . Modul mapy Vnitřníchy vykresluje mapy vnitřních vytvořených v tvůrci. Integruje widgety, jako je *Výběr podlaží*, což pomáhá uživatelům vizualizovat různá podlaží.
 

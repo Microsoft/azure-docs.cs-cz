@@ -1,13 +1,12 @@
 ---
-title: Konfigurace přístupu ke veřejnému registru
+title: Konfigurace přístupu k veřejnému registru
 description: Nakonfigurujte pravidla protokolu IP pro povolení přístupu ke službě Azure Container Registry z vybraných veřejných IP adres nebo rozsahů adres.
 ms.topic: article
 ms.date: 05/19/2020
 ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83702082"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurace pravidel sítě veřejných IP adres
@@ -75,7 +74,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Potom vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Pak vyberte **Uložit**.
 
 ![Zakázat veřejný přístup][acr-access-disabled]
 
@@ -98,7 +97,7 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Obnovit veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Potom vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Pak vyberte **Uložit**.
 
 ![Veřejný přístup ze všech sítí][acr-access-all-networks]
 

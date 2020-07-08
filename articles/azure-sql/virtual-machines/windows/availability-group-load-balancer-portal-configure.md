@@ -13,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c527ef9767d7b88e956bb1b3354b3067847857d9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921693"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On SQL Server v Azure Virtual Machines
 
@@ -203,8 +202,10 @@ Otestujte připojení provedením následujících kroků:
 1. Pomocí protokolu RDP (Remote Desktop Protocol) se připojte k SQL Server instanci, která je ve stejné virtuální síti, ale nevlastní repliku. Tento server může být jinou instancí SQL Server v clusteru.
 
 2. K otestování připojení použijte nástroj **Sqlcmd** . Například následující skript vytvoří připojení **Sqlcmd** k primární replice prostřednictvím naslouchacího procesu s ověřováním systému Windows:
-   
-        sqlcmd -S <listenerName> -E
+
+    ```console
+    sqlcmd -S <listenerName> -E
+    ```
 
 Připojení SQLCMD se automaticky připojí k instanci SQL Server, která je hostitelem primární repliky. 
 
@@ -254,7 +255,7 @@ Chcete-li do nástroje pro vyrovnávání zatížení přidat IP adresu pomocí 
     |**Port back-endu** |Použijte stejnou hodnotu jako **port**.
     |**Back-end fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
     |**Sonda stavu** |Vyberte test, který jste vytvořili.
-    |**Trvalost relace** |Žádné
+    |**Trvalost relace** |Žádná
     |**Časový limit nečinnosti (minuty)** |Výchozí (4)
     |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povoleno
 
@@ -303,7 +304,7 @@ Pokud se skupina dostupnosti účastní distribuované skupiny dostupnosti, nás
    |**Port back-endu** | 5022 – použijte stejnou hodnotu jako **port**.
    |**Back-end fond** |Fond, který obsahuje virtuální počítače s instancemi SQL Server. 
    |**Sonda stavu** |Vyberte test, který jste vytvořili.
-   |**Trvalost relace** |Žádné
+   |**Trvalost relace** |Žádná
    |**Časový limit nečinnosti (minuty)** |Výchozí (4)
    |**Plovoucí IP adresa (přímá návrat ze serveru)** | Povoleno
 

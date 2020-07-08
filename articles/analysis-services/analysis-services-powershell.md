@@ -8,10 +8,9 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83697969"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí PowerShellu
@@ -44,7 +43,7 @@ Dokumentace – [Reference k SQLServer](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Podporované rutiny
 
-|Rutina|Popis|
+|Rutina|Description|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do databázové role.| 
 |[Backup – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Zálohuje databázi Analysis Services.|  
@@ -59,7 +58,7 @@ Dokumentace – [Reference k SQLServer](/powershell/module/sqlserver)
 
 ## <a name="related-information"></a>Související informace
 
-* [PowerShell pro SQL Server](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
+* [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
 * [Stáhnout SQL Server modul PowerShellu](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [Stáhnout SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 * [Modul SqlServer v Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/SqlServer)    

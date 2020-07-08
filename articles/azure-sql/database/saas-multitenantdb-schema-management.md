@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b115b410547b37e6cfa369b825c94b6b22436941
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042173"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Správa schématu v SaaS aplikaci, která používá horizontálně dělené víceklientské databáze
@@ -75,10 +74,10 @@ V úložišti [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/Wi
 
 Tento kurz vyžaduje, abyste k vytvoření databáze agenta úloh a agenta úloh použili PowerShell. Podobně jako databáze MSDB, kterou používá Agent SQL, používá Agent úlohy v Azure SQL Database databázi k ukládání definic úloh, stavu úlohy a historie. Po vytvoření agenta úlohy můžete okamžitě vytvořit a monitorovat úlohy.
 
-1. V **prostředí POWERSHELL ISE**otevřete *... \\ Výukové moduly \\ : Správa schématu \\ demo-SchemaManagement. ps1*.
+1. V **prostředí POWERSHELL ISE**otevřete *... \\ \\ \\Demo-SchemaManagement.ps1Správa schématu ve výukových modulech *.
 2. Stisknutím klávesy **F5** spusťte skript.
 
-Skript *demo-SchemaManagement. ps1* volá skript *Deploy-SchemaManagement. ps1* , který vytvoří databázi s názvem _Služba jobagent_ na serveru katalogu. Skript potom vytvoří agenta úloh a předá databázi _Služba jobagent_ jako parametr.
+Skript *Demo-SchemaManagement.ps1* volá skript *Deploy-SchemaManagement.ps1* , aby vytvořil databázi s názvem _Služba jobagent_ na serveru katalogu. Skript potom vytvoří agenta úloh a předá databázi _Služba jobagent_ jako parametr.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Vytvoření úlohy, která u všech tenantů nasadí nová referenční data
 

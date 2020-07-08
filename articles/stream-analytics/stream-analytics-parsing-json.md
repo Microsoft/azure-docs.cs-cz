@@ -7,10 +7,9 @@ ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.openlocfilehash: 8d68c36e7d6603cb8cdc906ad2a0280094e6e0e5
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83698251"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analyzovat data JSON a Avro v Azure Stream Analytics
@@ -297,7 +296,7 @@ Výsledek je následující:
 
 |DeviceId|smKey|smValue|
 |-|-|-|
-|12345|Výrobce|ABC|
+|12345|Manufacturer|ABC|
 |12345|Verze|1.2.45|
 
 Pokud se extrahovaná pole musí zobrazit ve sloupcích, je možné datovou sadu pivotovat pomocí syntaxe [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) kromě operace [Join](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) . Toto spojení bude vyžadovat podmínku [časové hranice](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , která zabrání duplikaci:

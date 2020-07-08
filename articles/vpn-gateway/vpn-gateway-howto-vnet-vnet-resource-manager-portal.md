@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5abf79d23ca2de661383cc002dac9d7f9e4dc5bf
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84985565"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure Portal
@@ -23,7 +22,7 @@ Tento článek vám pomůže propojit virtuální sítě (virtuální sítě) po
 Kroky v tomto článku se týkají modelu nasazení Azure Resource Manager a používají Azure Portal. Tuto konfiguraci můžete vytvořit pomocí jiného nástroje nebo modelu nasazení pomocí možností, které jsou popsány v následujících článcích:
 
 > [!div class="op_single_selector"]
-> * [portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)

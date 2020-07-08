@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987057"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z podregistru pomocí Azure Data Factory 
@@ -50,26 +49,26 @@ Pro propojenou službu podregistru jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **podregistr** . | Ano |
-| host | IP adresa nebo název hostitele serveru pro podregistr, oddělený znakem '; ' pro více hostitelů (pouze v případě, že je povoleno serviceDiscoveryMode).  | Ano |
-| port | Port TCP, který server podregistru používá k naslouchání klientským připojením. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Ano |
-| serverType | Typ serveru podregistru <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
-| thriftTransportProtocol | Transportní protokol, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **http** . | Ne |
-| authenticationType | Metoda ověřování pro přístup k serveru podregistru <br/>Povolené hodnoty jsou: **anonymní**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. Ověřování protokolem Kerberos se teď nepodporuje. | Ano |
-| serviceDiscoveryMode | true pro indikaci použití služby ZooKeeper, NEPRAVDA.  | Ne |
-| zooKeeperNameSpace | Obor názvů na ZooKeeper, do kterého se přidají uzly pro podregistr Server 2  | Ne |
-| useNativeQuery | Určuje, zda ovladač používá nativní dotazy HiveQL, nebo je převede do ekvivalentního formátu v HiveQL.  | Ne |
-| uživatelské jméno | Uživatelské jméno, které používáte pro přístup k serveru podregistru.  | Ne |
-| heslo | Heslo odpovídající uživateli Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| httpPath | Částečná adresa URL odpovídající serveru podregistru.  | Ne |
-| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
-| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost Type musí být nastavená na: **podregistr** . | Yes |
+| host | IP adresa nebo název hostitele serveru pro podregistr, oddělený znakem '; ' pro více hostitelů (pouze v případě, že je povoleno serviceDiscoveryMode).  | Yes |
+| port | Port TCP, který server podregistru používá k naslouchání klientským připojením. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Yes |
+| serverType | Typ serveru podregistru <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | No |
+| thriftTransportProtocol | Transportní protokol, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **http** . | No |
+| authenticationType | Metoda ověřování pro přístup k serveru podregistru <br/>Povolené hodnoty jsou: **anonymní**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. Ověřování protokolem Kerberos se teď nepodporuje. | Yes |
+| serviceDiscoveryMode | true pro indikaci použití služby ZooKeeper, NEPRAVDA.  | No |
+| zooKeeperNameSpace | Obor názvů na ZooKeeper, do kterého se přidají uzly pro podregistr Server 2  | No |
+| useNativeQuery | Určuje, zda ovladač používá nativní dotazy HiveQL, nebo je převede do ekvivalentního formátu v HiveQL.  | No |
+| uživatelské jméno | Uživatelské jméno, které používáte pro přístup k serveru podregistru.  | No |
+| heslo | Heslo odpovídající uživateli Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| httpPath | Částečná adresa URL odpovídající serveru podregistru.  | No |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | No |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | No |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | No |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | No |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -98,7 +97,7 @@ Chcete-li kopírovat data z podregistru, nastavte vlastnost Type datové sady na
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **HiveObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **HiveObject** . | Yes |
 | XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky včetně části schématu Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -130,10 +129,10 @@ Chcete-li kopírovat data z podregistru, nastavte typ zdroje v aktivitě kopíro
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HiveSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HiveSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042166"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a zařazení nových tenantů pomocí aplikace na SaaS vzor pro každého tenanta
@@ -90,7 +89,7 @@ V této úloze se dozvíte, jak zřídit katalog používaný k registraci všec
     ![Nastavení zarážky pro trasování](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
 1. Spusťte skript stisknutím klávesy **F5**.
-1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog. ps1.
+1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog.ps1.
 1.  Sledujte provádění skriptu pomocí možností nabídky ladění, F10 a F11, abyste mohli přenášet nebo nazývat na volané funkce.
     *   Další informace o ladění skriptů PowerShellu najdete v tématu [o práci se skripty PowerShellu a jejich ladění](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
@@ -127,7 +126,7 @@ V této úloze se dozvíte, jak zřídit jednu klientskou aplikaci. V tomto prog
 
 1. Vložte zarážku do skriptu tak, že umístíte kurzor na libovolné místo na řádku 49, který uvádí, `& $PSScriptRoot\New-TenantApp.ps1` a pak stiskněte **F9**.
 1. Spusťte skript stisknutím klávesy **F5**.
-1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog. ps1.
+1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog.ps1.
 1.  Sledujte provádění skriptu pomocí možností nabídky ladění, F10 a F11, abyste mohli přenášet nebo nazývat na volané funkce.
 
 Po zřízení tenanta se otevře web s událostmi nového tenanta.

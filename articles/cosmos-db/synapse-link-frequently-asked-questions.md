@@ -6,16 +6,15 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d16da1588c2fa90c4a40a829ed660fd089ff29ac
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921197"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 
-Odkaz na Azure synapse pro Azure Cosmos DB vytvoří těsnou integraci mezi Azure Cosmos DB a analýzou Azure synapse. Umožňuje zákazníkům provozovat analýzy téměř v reálném čase prostřednictvím jejich provozních dat s plnou izolací výkonu ze svých transakčních úloh a bez kanálu ETL. Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Cosmos DB odkaz na synapse.
+Odkaz na Azure synapse pro Azure Cosmos DB vytvoří těsnou integraci mezi Azure Cosmos DB a analýzou Azure synapse. Umožňuje zákazníkům provozovat analýzy téměř v reálném čase prostřednictvím jejich provozních dat s plnou izolací výkonu ze svých transakčních úloh a bez kanálu ETL. Tento článek odpovídá na nejčastější dotazy k Synapse Linku pro Azure Cosmos DB.
 
 ## <a name="general-faq"></a>Obecné nejčastější dotazy
 
@@ -29,6 +28,9 @@ Při plánování konfigurace účtu Azure Cosmos s více oblastmi s podporou an
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Můžu povolit synapse odkaz jenom na určitou oblast a ne na všechny oblasti v nastavení účtu s více oblastmi?
 Pokud je v rámci verze Preview povolený odkaz synapse pro účet ve více oblastech, vytvoří se analytické úložiště ve všech oblastech. Podkladová data jsou optimalizována pro propustnost a transakční konzistenci v transakčním úložišti.
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Podporuje se zálohování a obnovení pro účty s povoleným odkazem synapse?
+V Preview se pro účty databáze s povoleným odkazem synapse nepodporuje zálohování a obnovování kontejnerů. Pokud máte produkční úlohy, které vyžadují funkci zálohování a obnovení, nedoporučujeme na těchto databázových účtech povolit synapse odkaz. 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Můžu zakázat funkci synapse Link pro svůj účet Azure Cosmos?
 V současné době není možné po povolení funkce Synapse Link na úrovni účtu tuto funkci zakázat.  Pokud chcete funkci vypnout, musíte odstranit a znovu vytvořit nový účet Azure Cosmos.

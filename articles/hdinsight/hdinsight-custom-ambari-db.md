@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: e92b0679111a6d5c6173da04c5061c95956125b8
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322961"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>Nastavení clusterů HDInsight s vlastní Ambari DB

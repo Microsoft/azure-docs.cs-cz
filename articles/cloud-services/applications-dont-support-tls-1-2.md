@@ -13,10 +13,9 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683788"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Řešení potíží s aplikacemi, které nepodporují protokol TLS 1,2
@@ -51,7 +50,7 @@ Na serveru se nachází také omezená sada šifrovacích sad:
 
 ## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Krok 1: Vytvoření skriptu PowerShellu pro povolení TLS 1,0 a TLS 1,1 
 
-Následující kód použijte jako příklad k vytvoření skriptu, který umožňuje použití starších protokolů a šifrovacích sad. Pro účely této dokumentace bude tento skript název: **TLSsettings. ps1**. Uložte tento skript na místní plochu, abyste měli snadný přístup v pozdějších krocích. 
+Následující kód použijte jako příklad k vytvoření skriptu, který umožňuje použití starších protokolů a šifrovacích sad. Pro účely této dokumentace bude tento skript pojmenován: **TLSsettings.ps1**. Uložte tento skript na místní plochu, abyste měli snadný přístup v pozdějších krocích. 
 
 
 ```Powershell
@@ -344,7 +343,7 @@ Tady je příklad, který ukazuje roli pracovního procesu i webovou roli.
 1) V aplikaci Visual Studio klikněte pravým tlačítkem myši na webrole nebo role pracovního procesu
 2) Vyberte **Přidat**
 3) Vybrat **existující položku**
-4) V Průzkumníku souborů přejděte do počítače, kam jste uložili soubory **TLSsettings. ps1** a **RunTLSSettings. cmd.** 
+4) V Průzkumníku souborů přejděte do počítače, kam jste uložili soubory **TLSsettings.ps1** a **RunTLSSettings. cmd.** 
 5) Vyberte dva soubory, které chcete přidat do projektu Cloud Services
 
 ## <a name="step-5-enable-copy-to-output-directory"></a>Krok 5: povolení kopírování do výstupního adresáře
@@ -354,7 +353,7 @@ Chcete-li zajistit, aby se skripty nahrály pomocí každé aktualizace nabízen
 1) V rámci vaší webrole nebo role pracovního procesu klikněte pravým tlačítkem na RunTLSSettings. cmd.
 2) Vybrat **vlastnosti**
 3) Na kartě Vlastnosti změňte u možnosti *Kopírovat do výstupního adresáře* možnost *Kopírovat vždy "*
-4) Opakujte kroky pro **TLSsettings. ps1**
+4) Opakujte kroky pro **TLSsettings.ps1**
 
 ## <a name="step-6-publish--validate"></a>Krok 6: publikování & ověřování
 

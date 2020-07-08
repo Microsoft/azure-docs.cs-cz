@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022210"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
@@ -56,7 +55,7 @@ Seznamte [se s typy prostředků v clusterech Azure HDInsight](hdinsight-virtual
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Můžu do clusteru nainstalovat další součásti?
 
-Yes. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
+Ano. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
 
 - Skripty během nebo po vytvoření. Skripty jsou vyvolány pomocí [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux). Akce skriptu je možnost konfigurace, kterou můžete použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK.
 
@@ -133,7 +132,7 @@ Další informace najdete v následujících dokumentech:
 
 - [Zabezpečení příchozího provozu do clusterů HDInsight ve virtuální síti s privátním koncovým bodem](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
 
-- [IP adresy správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [IP adresy pro správu služby HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Můžu nasadit další virtuální počítač ve stejné podsíti jako cluster HDInsight?
 
@@ -178,7 +177,7 @@ Pokud chcete připojit virtuální počítače k doméně, musíte mít řadič 
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Můžu použít certifikát podepsaný svým držitelem v nastavení zabezpečeného LDAP AAD-DS a zřídit cluster ESP?
 
-Doporučuje se použít certifikát vydaný certifikační autoritou. Použití certifikátu podepsaného svým držitelem je také podporováno v protokolu ESP. Další informace naleznete v tématu:
+Doporučuje se použít certifikát vydaný certifikační autoritou. Použití certifikátu podepsaného svým držitelem je také podporováno v protokolu ESP. Další informace naleznete v tématech:
 
 - [Povolení služby Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -249,20 +248,20 @@ done
 ```
  
 > [!NOTE]
-> Soubory s příponou *. txt* budou mít absolutní cestu k souborům v kontejnerech objektů BLOB.
+> Soubor *filenames.txt* bude mít absolutní cestu k souborům v kontejnerech objektů BLOB.
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Existují nějaké moduly plug-in Ranger pro úložiště?
 
 V současné době neexistuje žádný modul plug-in Ranger pro úložiště objektů BLOB a Azure Data Lake Storage Gen1 ani Gen2. Pro clustery ESP byste měli použít Azure Data Lake Storage. Pomocí nástrojů HDFS můžete ručně nastavit jemně odstupňovaná oprávnění na úrovni systému souborů. Při použití Azure Data Lake Storage se taky v clusterech s protokolem ESP provede některé řízení přístupu k systému souborů pomocí Azure Active Directory na úrovni clusteru. 
 
-Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace naleznete v tématu:
+Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace naleznete v tématech:
 
 - [Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Je možné zvýšit HDFS úložiště v clusteru bez zvýšení velikosti disku pracovních uzlů?
 
-No. Nemůžete zvětšit velikost disku žádného pracovního uzlu. Jediným způsobem, jak velikost disku zvýšit, je odpojit cluster a znovu ho vytvořit s většími pracovními počítači. Nepoužívejte HDFS pro uložení dat služby HDInsight, protože data se odstraní, když cluster odstraníte. Místo toho uložte data v Azure. Škálování clusteru taky může do clusteru HDInsight přidat další kapacitu.
+Ne. Nemůžete zvětšit velikost disku žádného pracovního uzlu. Jediným způsobem, jak velikost disku zvýšit, je odpojit cluster a znovu ho vytvořit s většími pracovními počítači. Nepoužívejte HDFS pro uložení dat služby HDInsight, protože data se odstraní, když cluster odstraníte. Místo toho uložte data v Azure. Škálování clusteru taky může do clusteru HDInsight přidat další kapacitu.
 
 ## <a name="edge-nodes"></a>Hraniční uzly
 

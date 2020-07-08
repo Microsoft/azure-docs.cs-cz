@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392569"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
@@ -647,7 +646,7 @@ Vlastnost a text indikují, které rozhraní API bylo zablokováno. Další krok
 
 - **IStatefulServiceReplica. ChangeRole (P)**: Nejčastějším případem je, že Služba nevrátila úlohu z `RunAsync` .
 
-Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IReplicator** . Například:
+Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IReplicator** . Příklad:
 
 - **IReplicator. CatchupReplicaSet**: Toto upozornění indikuje jednu ze dvou věcí. Neexistují žádné nedostatečné repliky. Pokud se chcete podívat, jestli se jedná o tento případ, podívejte se na stav repliky v oddílu nebo v sestavě stavu System.FM pro zablokované překonfigurování. Nebo repliky nepotvrzující operace. Pomocí rutiny PowerShellu se `Get-ServiceFabricDeployedReplicaDetail` dá určit průběh všech replik. Problém se nachází v replikách, jejichž `LastAppliedReplicationSequenceNumber` hodnota je za hodnotou primární `CommittedSequenceNumber` .
 

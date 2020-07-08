@@ -10,10 +10,9 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733375"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Úlohy plánování a vysílání (.NET)
@@ -78,7 +77,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateDeviceMethods** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. V **nástroji Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
+1. V **nástroji Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
 
     ![Klientská aplikace okna Správce balíčků NuGet](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
@@ -167,7 +166,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
 
 V této části vytvoříte konzolovou aplikaci .NET (pomocí jazyka C#), která používá úlohy pro volání přímé metody **LockDoor** a odeslání požadovaných aktualizací vlastností do více zařízení.
 
-1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
 1. V části **Konfigurovat nový projekt**pojmenujte projekt *ScheduleJob*. V případě **řešení**zvolte možnost **Přidat do řešení**a pak vyberte **vytvořit**.
 
@@ -295,9 +294,9 @@ Nyní jste připraveni aplikaci spustit.
 
 1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
-1. Vyberte **společné vlastnosti** > **spouštěný projekt**a potom vyberte **více projektů po spuštění**.
+1. Vyberte **společné vlastnosti**  >  **spouštěný projekt**a potom vyberte **více projektů po spuštění**.
 
-1. Ujistěte se `SimulateDeviceMethods` , že je na začátku seznamu a následuje `ScheduleJob`. Nastavte obě akce na **Start** a vyberte **OK**.
+1. Ujistěte se, že `SimulateDeviceMethods` je na začátku seznamu a následuje `ScheduleJob` . Nastavte obě akce na **Start** a vyberte **OK**.
 
 1. Spusťte projekty kliknutím na tlačítko **Start** nebo přejděte do nabídky **ladění** a klikněte na tlačítko **Spustit ladění**.
 

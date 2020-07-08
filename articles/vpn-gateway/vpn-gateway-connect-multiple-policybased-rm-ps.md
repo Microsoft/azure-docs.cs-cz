@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
 ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84984614"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení bran Azure VPN k několika místním zařízením VPN založeným na zásadách pomocí PowerShellu
@@ -38,7 +37,7 @@ V současné době podporuje Azure oba režimy bran sítě VPN: brány sítě VP
 
 |                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **SKU brány Azure**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
+| **SKU brány Azure**    | Základní                       | Základní                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **Verze protokolu IKE**          | IKEv1                       | IKEv2                            | IKEv1 a IKEv2                         |
 | **Počet. Připojení S2S** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |

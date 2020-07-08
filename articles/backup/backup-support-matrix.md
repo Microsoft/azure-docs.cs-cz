@@ -4,10 +4,9 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Ba
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84655619"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
@@ -28,7 +27,7 @@ Azure Backup používá k orchestraci a správě záloh Recovery Services trezor
 
 Následující tabulka popisuje funkce trezorů Recovery Services:
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Trezory v předplatném** | V jednom předplatném je až 500 Recovery Services trezory.
 **Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> V jednom trezoru se dají zaregistrovat až 50 serverů MABS.
@@ -54,7 +53,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 ### <a name="azure-vm-limits"></a>Omezení virtuálních počítačů Azure
 
-**Počtu** | **Zobrazí**
+**Počtu** | **Podrobnosti**
 --- | ---
 **Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
@@ -74,7 +73,7 @@ Co je se podporuje, pokud chcete zálohovat virtuální počítače Azure:
 
 Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux:
 
-**Typ zálohování** | **Linux (schváleno Azure)**
+**Typ zálohy** | **Linux (schváleno Azure)**
 --- | ---
 **Přímá záloha místního počítače se systémem Linux** | Není podporováno. Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
 **Použití rozšíření agenta pro zálohování virtuálního počítače Azure se systémem Linux** | Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Obnovení na úrovni souborů.<br/><br/> Obnovte vytvořením virtuálního počítače z bodu obnovení nebo disku.

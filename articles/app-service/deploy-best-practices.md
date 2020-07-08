@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770697"
 ---
 # <a name="deployment-best-practices"></a>Osvědčené postupy nasazení
@@ -119,7 +118,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-V rámci vašeho skriptu se přihlaste pomocí `az login --service-principal`a poskytněte informace o objektu zabezpečení. Pak můžete použít `az webapp config container set` k nastavení názvu kontejneru, značky, adresy URL registru a hesla k registru. Níže najdete několik užitečných odkazů, které vám pomůžou vytvořit kontejner CI.
+V rámci vašeho skriptu se přihlaste pomocí `az login --service-principal` a poskytněte informace o objektu zabezpečení. Pak můžete použít `az webapp config container set` k nastavení názvu kontejneru, značky, adresy URL registru a hesla k registru. Níže najdete několik užitečných odkazů, které vám pomůžou vytvořit kontejner CI.
 
 - [Jak se přihlásit k rozhraní příkazového řádku Azure CLI v kruhu CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
@@ -131,11 +130,11 @@ Použijte Kudu [zipdeploy/](deploy-zip.md) rozhraní API pro nasazení aplikací
 
 ### <a name="node"></a>Node
 
-Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci Node (`npm install`). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení `SCM_DO_BUILD_DURING_DEPLOYMENT`aplikace s hodnotou. `false`
+Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci Node ( `npm install` ). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení aplikace `SCM_DO_BUILD_DURING_DEPLOYMENT` s hodnotou `false` .
 
 ### <a name="net"></a>.NET 
 
-Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci .NET (`dotnet build`). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení `SCM_DO_BUILD_DURING_DEPLOYMENT`aplikace s hodnotou. `false`
+Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci .NET ( `dotnet build` ). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení aplikace `SCM_DO_BUILD_DURING_DEPLOYMENT` s hodnotou `false` .
 
 ## <a name="other-deployment-considerations"></a>Další požadavky na nasazení
 
@@ -156,4 +155,4 @@ Další informace o osvědčených postupech najdete v [App Service Diagnostics]
 - Vyberte dlaždici domovské stránky s **doporučenými postupy** .
 - Pokud chcete zobrazit aktuální stav aplikace v souvislosti s těmito osvědčenými postupy, klikněte na **osvědčené postupy pro dostupnost & výkon** nebo **osvědčené postupy pro optimální konfiguraci** .
 
-Tento odkaz můžete použít také k přímému otevření App Service diagnostiky pro váš prostředek `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`:.
+Tento odkaz můžete použít také k přímému otevření App Service diagnostiky pro váš prostředek: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` .

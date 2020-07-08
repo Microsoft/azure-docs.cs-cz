@@ -15,10 +15,9 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764719"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů
@@ -40,7 +39,7 @@ Chcete-li seskupit konektory, musíte se ujistit, že jste [nainstalovali více 
 
 Pomocí těchto kroků můžete vytvořit tolik skupin konektorů, kolik chcete.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory**  >  **Enterprise applications**  >  **aplikační proxy aplikace**pro podnikové aplikace.
 1. Vyberte možnost **Nová skupina konektorů**. Zobrazí se okno Nová skupina konektoru.
 

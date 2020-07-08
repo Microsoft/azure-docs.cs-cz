@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 5ae9190213f753f8b9440ced52e4d04626af13f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732999"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
@@ -45,21 +44,21 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
 ### <a name="confirm-plug-ins"></a>Potvrdit moduly plug-in
 
-1. Přejít na web **help** > **zatmění na webu...**
+1. Přejít na **Help**  >  **Web Help zatmění na webu...**
 
 1. Vyberte kartu **Nainstalováno**.
 
 1. Měli byste vidět aspoň tyto informace:
-    * > \<Azure Toolkit for Eclipse verze.
-    * > Scala \<verze IDE.
+    * Azure Toolkit for Eclipse \<version> .
+    * Scala IDE \<version> .
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
 1. Spusťte prostředí IDE s zatmění.
 
-1. Přejít do **okna** >  **Zobrazit další zobrazení** > **...**  >  **Přihlásit se..**.
+1. Přejít do **okna**  >   **Zobrazit**  >  **Další zobrazení...**  >  **Přihlásit se..**.
 
-1. V dialogovém okně **Zobrazit zobrazení** přejděte na **Azure** > **Azure Explorer**a pak vyberte **otevřít**.
+1. V dialogovém okně **Zobrazit zobrazení** přejděte na **Azure**  >  **Azure Explorer**a pak vyberte **otevřít**.
 
    ![Zobrazit zobrazení Apache Spark zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
 
@@ -73,7 +72,7 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
    ![Dialogové okno vybrat odběry](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 
-1. V **Azure Exploreru**přejděte do **Azure** >  **HDInsight** , abyste viděli clustery HDInsight Spark v rámci vašeho předplatného.
+1. V **Azure Exploreru**přejděte do **Azure**  >   **HDInsight** , abyste viděli clustery HDInsight Spark v rámci vašeho předplatného.
 
    ![Clustery HDInsight Spark v Azure Explorer3](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer3.png)
 
@@ -83,7 +82,7 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
 ## <a name="link-a-cluster"></a>Propojení clusteru
 
-Běžný cluster můžete propojit pomocí spravovaného uživatelského jména Ambari. Podobně v případě clusteru HDInsight připojeného k doméně můžete propojit s doménou a uživatelským jménem, jako je například `user1@contoso.com`.
+Běžný cluster můžete propojit pomocí spravovaného uživatelského jména Ambari. Podobně v případě clusteru HDInsight připojeného k doméně můžete propojit s doménou a uživatelským jménem, jako je například `user1@contoso.com` .
 
 1. V **Průzkumníku Azure**klikněte pravým tlačítkem na **HDInsight**a vyberte **propojit cluster**.
 
@@ -109,9 +108,9 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>Nastavení projektu Spark Scala pro cluster HDInsight Spark
 
-1. Z pracovního prostoru prostředí IDE pro zatmění vyberte **soubor** > **Nový** > **projekt...**.
+1. Z pracovního prostoru prostředí IDE pro zatmění vyberte **soubor**  >  **Nový**  >  **projekt...**.
 
-1. V průvodci **vytvořením nového projektu** vyberte **HDInsight Project** > **Spark v HDInsight (Scala)**. Pak vyberte **Další**.
+1. V průvodci **vytvořením nového projektu** vyberte **HDInsight Project**  >  **Spark v HDInsight (Scala)**. Pak vyberte **Další**.
 
    ![Výběr projektu Spark na HDInsight (Scala)](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
@@ -126,9 +125,9 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>Vytvoření aplikace v Scala pro cluster HDInsight Spark
 
-1. V **Průzkumníku balíčků**rozbalte projekt, který jste vytvořili dříve. Klikněte pravým tlačítkem na **Src**, vyberte **Nový** > **...**.
+1. V **Průzkumníku balíčků**rozbalte projekt, který jste vytvořili dříve. Klikněte pravým tlačítkem na **Src**, vyberte **Nový**  >  **...**.
 
-1. V dialogovém okně **Vybrat Průvodce** vyberte **Scala průvodci** > **Scala objekt**. Pak vyberte **Další**.
+1. V dialogovém okně **Vybrat Průvodce** vyberte **Scala průvodci**  >  **Scala objekt**. Pak vyberte **Další**.
 
    ![Výběr Průvodce vytvořením objektu Scala](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
 
@@ -218,7 +217,7 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
 1. V Průzkumníku Azure klikněte pravým tlačítkem na název clusteru Spark a pak vyberte **otevřít historii Spark – uživatelské rozhraní**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. Při zřizování clusteru jste tyto služby zadali.
 
-1. Na řídicím panelu serveru historie Sparku použijte název aplikace a vyhledejte aplikaci, kterou jste právě dokončili. V předchozím kódu nastavíte název aplikace pomocí `val conf = new SparkConf().setAppName("MyClusterApp")`. Takže název vaší aplikace Spark byl **MyClusterApp**.
+1. Na řídicím panelu serveru historie Sparku použijte název aplikace a vyhledejte aplikaci, kterou jste právě dokončili. V předchozím kódu nastavíte název aplikace pomocí `val conf = new SparkConf().setAppName("MyClusterApp")` . Takže název vaší aplikace Spark byl **MyClusterApp**.
 
 ### <a name="start-the-apache-ambari-portal"></a>Spustit portál Apache Ambari
 
@@ -240,15 +239,15 @@ Pomocí nástrojů služby HDInsight v Azure Toolkit for Eclipse můžete spouš
 
 ### <a name="prerequisite"></a>Požadavek
 
-Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se vám zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K této výjimce dochází, protože ve Windows chybí **WinUtils. exe** .
+Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se vám zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K této výjimce dochází, protože ve Windows chybí **WinUtils.exe** .
 
-Chcete-li vyřešit tuto chybu, potřebujete [Winutils. exe](https://github.com/steveloughran/winutils) do umístění, jako je **C:\WinUtils\bin**, a poté přidejte proměnnou prostředí **HADOOP_HOME** a nastavte hodnotu proměnné na **C\WinUtils**.
+Chcete-li vyřešit tuto chybu, potřebujete [Winutils.exe](https://github.com/steveloughran/winutils) do umístění, jako je **C:\WinUtils\bin**, a pak přidat proměnnou prostředí **HADOOP_HOME** a nastavit hodnotu proměnné na **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Spuštění místní aplikace Spark Scala
 
 1. Spusťte zatmění a vytvořte projekt. V dialogovém okně **Nový projekt** proveďte následující volby a pak vyberte **Další**.
 
-1. V průvodci **vytvořením nového projektu** vyberte v**ukázce pro místní spuštění HDInsight**možnost **HDInsight Project** > Spark (Scala). Pak vyberte **Další**.
+1. V průvodci **vytvořením nového projektu** vyberte v **HDInsight Project**  >  **ukázce pro místní spuštění HDInsight možnost HDInsight Project Spark (Scala)**. Pak vyberte **Další**.
 
    ![Nový projekt vybere dialog průvodce.](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
@@ -258,7 +257,7 @@ Chcete-li vyřešit tuto chybu, potřebujete [Winutils. exe](https://github.com/
 
    ![Umístění místní aplikace Scala pro LogQuery](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
 
-1. Klikněte pravým tlačítkem na **LogQuery. Scala** a vyberte **Spustit jako** > **1 Scala aplikaci**. Výstup podobný tomuto se zobrazí na kartě **Konzola** :
+1. Klikněte pravým tlačítkem na **LogQuery. Scala** a vyberte **Spustit jako**  >  **1 Scala aplikaci**. Výstup podobný tomuto se zobrazí na kartě **Konzola** :
 
    ![Výsledek místního spuštění aplikace Spark](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 

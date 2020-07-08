@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682712"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce řešením pro prediktivní údržbu v programu Aerospace
@@ -196,7 +195,7 @@ Následující postup vás provede postupem připojení souboru pbix k SQL Datab
      > [!NOTE]
      > Pokud se zobrazí zpráva s upozorněním, klikněte na **Upravit přihlašovací údaje** a ujistěte se, že jsou vaše přihlašovací údaje databáze stejné, jako ty popsané v kroku 1.
      <br/>
-     ![Naplánovat aktualizaci](./media/predictive-maintenance-technical-guide/schedule-refresh.png)
+     ![Naplánování aktualizace](./media/predictive-maintenance-technical-guide/schedule-refresh.png)
      <br/>
    * Rozbalte oddíl **naplánovat aktualizaci** . Zapněte možnost udržovat data v aktuálním stavu.
      <br/>

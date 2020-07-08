@@ -4,13 +4,12 @@ description: V tomto článku se dozvíte, jak můžou zákazníci a výrobci, k
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322738"
 ---
-# <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrace na Azure Event Hubs pro Apache Kafka ekosystémy
+# <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrace na službu Azure Event Hubs pro ekosystémy Apache Kafka
 Azure Event Hubs zpřístupňuje koncový bod Apache Kafka, který umožňuje připojení k Event Hubs pomocí protokolu Kafka. Díky minimálním změnám v existující aplikaci Kafka se můžete připojit k Azure Event Hubs a těžit výhody ekosystému Azure. Event Hubs Kafka Support [Apache Kafka verze 1,0](https://kafka.apache.org/10/documentation.html) a novější.
 
 ## <a name="pre-migration"></a>Před migrací 

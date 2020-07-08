@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920092"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Běžné potíže, které můžou způsobit recyklaci rolí
 Tento článek popisuje některé z běžných příčin problémů při nasazení a poskytuje tipy k odstraňování potíží, které vám pomůžou tyto problémy vyřešit. Označuje, že problém s aplikací existuje, když se instance role nepovede spustit, nebo se zacykluje mezi inicializací, zaneprázdněním a stavem zastavení.
@@ -32,7 +31,7 @@ Pokud role ve vaší aplikaci spoléhá na jakékoli sestavení, které není so
 Před sestavením a zabalením aplikace ověřte následující:
 
 * Pokud používáte sadu Visual Studio, ujistěte se, že je vlastnost **Kopírovat místní** nastavena na **hodnotu true** pro každé odkazované sestavení v projektu, které není součástí sady Azure SDK nebo .NET Framework.
-* Zajistěte, aby soubor Web. config neodkazoval na nepoužívaná sestavení v elementu compilation.
+* Ujistěte se, že web.config soubor neodkazuje na nepoužívaná sestavení v elementu compilation.
 * **Akce sestavení** každého souboru. cshtml je nastavena na **obsah**. Tím se zajistí, že se soubory v balíčku zobrazí správně a povolí se v balíčku zobrazit další odkazované soubory.
 
 ## <a name="assembly-targets-wrong-platform"></a>Sestavení cílí na nesprávnou platformu.
@@ -45,15 +44,17 @@ Všechny výjimky, které jsou vyvolány metodami třídy [RoleEntryPoint] , kte
 Metoda [Run] je určena ke spuštění po neomezenou dobu. Pokud váš kód přepisuje metodu [Run] , mělo by být v režimu spánku po neomezenou dobu. Pokud metoda [Run] vrátí, recykluje roli.
 
 ## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Nesprávné nastavení DiagnosticsConnectionString
-Pokud aplikace používá Azure Diagnostics, musí konfigurační soubor služby určovat nastavení `DiagnosticsConnectionString` konfigurace. Toto nastavení by mělo určovat připojení HTTPS k vašemu účtu úložiště v Azure.
+Pokud aplikace používá Azure Diagnostics, musí konfigurační soubor služby určovat `DiagnosticsConnectionString` nastavení konfigurace. Toto nastavení by mělo určovat připojení HTTPS k vašemu účtu úložiště v Azure.
 
-Abyste měli jistotu, `DiagnosticsConnectionString` že je nastavení správné, než balíček aplikace nasadíte do Azure, ověřte následující:  
+Abyste měli jistotu, že `DiagnosticsConnectionString` je nastavení správné, než balíček aplikace nasadíte do Azure, ověřte následující:  
 
-* `DiagnosticsConnectionString` Nastavení odkazuje na platný účet úložiště v Azure.  
+* `DiagnosticsConnectionString`Nastavení odkazuje na platný účet úložiště v Azure.  
   Ve výchozím nastavení toto nastavení ukazuje na Emulovaný účet úložiště, takže musíte explicitně změnit toto nastavení před nasazením balíčku aplikace. Pokud toto nastavení nezměníte, vyvolá se výjimka, když se instance role pokusí spustit monitor diagnostiky. To může způsobit, že se instance role recykluje po neomezenou dobu.
 * Připojovací řetězec je zadán v následujícím [formátu](../storage/common/storage-configure-connection-string.md). (Protokol musí být zadaný jako HTTPS.) Nahraďte *MyAccountName* názvem vašeho účtu úložiště a *MyAccountKey* pomocí přístupového klíče:    
 
-        DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```console
+DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```
 
   Pokud vyvíjíte aplikaci pomocí nástrojů Azure pro Microsoft Visual Studio, můžete tuto hodnotu nastavit pomocí stránek vlastností.
 
@@ -68,4 +69,4 @@ Podívejte se na další scénáře recyklace rolí na [blogu Kevin Williamson](
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Spouštěl]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[Spustit]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

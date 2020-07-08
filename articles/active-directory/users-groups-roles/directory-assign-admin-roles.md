@@ -14,12 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c477d0d293e896bc92cd3bd6047135a56cb4ad
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
-ms.translationtype: MT
+ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85105979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921761"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -1349,8 +1348,7 @@ Může spravovat komerční nákupy pro firmu, oddělení nebo tým.
 | --- | --- |
 | Microsoft. obchod. fakturace/partneři/čtení | Přečtěte si vlastnost partner pro fakturaci O365. |
 | Microsoft. Commerce. volumeLicenseServiceCenter/allEntities/allTasks | Spravujte všechny aspekty služby Volume Licensing Service Center. |
-| Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
-| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a zobrazování lístků podpory pro Office 365 |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 

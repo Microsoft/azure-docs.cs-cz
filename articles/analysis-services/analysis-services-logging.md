@@ -8,10 +8,9 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701491"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
@@ -90,7 +89,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 3. Klikněte na **Uložit**.
 
-    Pokud se zobrazí chyba oznamující, že se nepovedlo aktualizovat diagnostiku pro \< název pracovního prostoru>. \<ID předplatného předplatného> není zaregistrované pro použití Microsoft. Insights. " pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
+    Pokud se zobrazí chyba s informacemi o tom, že se nepovedlo aktualizovat diagnostiku pro \<workspace name> . Předplatné \<subscription id> není zaregistrované pro používání Microsoft. Insights. pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
 
     Pokud chcete změnit způsob, jakým se protokoly prostředků ukládají do libovolného bodu v budoucnu, můžete se na tuto stránku vrátit a změnit nastavení.
 
@@ -160,7 +159,7 @@ Pokud chcete zobrazit diagnostická data, v Log Analytics pracovním prostoru ot
 
 V Tvůrci dotazů rozbalte položku **LogManagement**  >  **AzureDiagnostics**. AzureDiagnostics zahrnuje události modulu a služby. Všimněte si, že je dotaz vytvořen průběžně. Pole EventClass \_ s obsahuje názvy xEvent, které mohou vypadat dobře, pokud jste použili xEvents pro místní protokolování. Klikněte na **EventClass \_ s** nebo na jeden z názvů událostí a Log Analytics pracovní prostor stále sestavuje dotaz. Nezapomeňte si své dotazy uložit pro pozdější použití.
 
-### <a name="example-queries"></a>Příklady dotazů
+### <a name="example-queries"></a>Ukázky dotazů
 
 #### <a name="example-1"></a>Příklad 1
 

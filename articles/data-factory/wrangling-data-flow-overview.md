@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921526"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat tahání?
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 Organizace musí provést přípravu a tahání dat, aby bylo možné přesně analyzovat složitá data, která se budou dál rozšiřovat každý den. Příprava dat je povinná, aby organizace mohli používat data v různých obchodních procesech a zkrátit čas na hodnotu.
 
@@ -25,6 +25,9 @@ Tahání datové toky v Azure Data Factory umožňují iterativní přípravu da
 Tok dat tahání transformuje M vygenerované online editorem hybridních webových Power Query aplikací do kódu Spark pro provádění škálování cloudu.
 
 Toky dat tahání jsou zvláště užitečné pro inženýry dat nebo "občany pro datové integrátory".
+
+> [!NOTE]
+> Tok dat tahání je aktuálně dostupných ve verzi Public Preview.
 
 ## <a name="use-cases"></a>Případy použití
 

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 53d12510c4960b16d56ee32f07ca96bc398f999a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043153"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro víceklientské aplikace SaaS s využitím geografické replikace databáze
@@ -110,7 +109,7 @@ V této úloze spustíte proces, který synchronizuje konfiguraci serverů, elas
 
 1. V _prostředí POWERSHELL ISE_otevřete soubor Modules\UserConfig.psm1. ..\Learning. Nahraďte `<resourcegroup>` a `<user>` na řádcích 10 a 11 hodnotou použitou při nasazení aplikace.  Uložte soubor.
 
-2. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a nastavování Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 po havárii a nastavte:
+2. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 a nastavte skript pro zotavení po havárii a nastavte:
     * **$DemoScenario = 1**, spustí úlohu na pozadí, která synchronizuje Server tenanta a informace o konfiguraci fondu do katalogu.
 
 3. Stisknutím klávesy **F5** spusťte skript synchronizace. Otevře se nová relace PowerShellu pro synchronizaci konfigurace prostředků tenanta.
@@ -128,7 +127,7 @@ V této úloze spustíte proces, který nasadí duplicitní instanci aplikace a 
 > [!Note]
 > Tento kurz přidává do ukázkové aplikace Wingtip Tickets ochranu geografické replikace. V produkčním scénáři pro aplikaci, která používá geografickou replikaci, se každý tenant zřídí s geograficky replikovanou databází od samého začátku. Viz [Návrh vysoce dostupných služeb pomocí Azure SQL Database](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
-1. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a pro havárii Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 a nastavte následující hodnoty:
+1. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 a nastavte následující hodnoty:
     * **$DemoScenario = 2**, vytvořit prostředí pro obnovení zrcadlové image a replikovat databáze katalogu a tenantů
 
 2. Stisknutím klávesy **F5** spusťte skript. Otevře se nová relace PowerShellu, ve které se vytvoří repliky.
@@ -181,7 +180,7 @@ Skript obnovení provádí následující úlohy:
 
 Nyní si představte, že v oblasti, ve které je aplikace nasazená, existuje výpadek, který spouští skript pro obnovení:
 
-1. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a pro havárii Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 a nastavte následující hodnoty:
+1. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 a nastavte následující hodnoty:
     * **$DemoScenario = 3**, obnovte aplikaci do oblasti obnovení převzetím služeb při selhání do replik.
 
 2. Stisknutím klávesy **F5** spusťte skript.  
@@ -212,7 +211,7 @@ I když je koncový bod aplikace v Traffic Manager zakázán, aplikace není k d
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Zřízení nového tenanta v oblasti obnovení
 I před převzetím služeb při selhání všemi stávajícími databázemi tenantů můžete zřídit nové klienty v oblasti obnovení.  
 
-1. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a selhání skriptu Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 a nastavte následující vlastnost:
+1. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 a nastavte následující vlastnost:
     * **$DemoScenario = 4**, zřízení nového tenanta v oblasti obnovení
 
 2. Stiskněte klávesu **F5** ke spuštění skriptu a zřízení nového tenanta. 
@@ -253,7 +252,7 @@ Po dokončení procesu obnovení jsou aplikace a všichni klienti plně funkčn�
 V této úloze aktualizujete jednu z databází tenantů. 
 
 1. V prohlížeči Najděte seznam událostí pro společnost Contoso a poznamenejte si poslední název události.
-2. V *ISE PowerShellu*ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 nastavte následující hodnotu:
+2. V *ISE PowerShellu*ve skriptu. ..\Learning Modules\Business kontinuita a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 pro zotavení po havárii nastavte následující hodnotu:
     * **$DemoScenario = 5** Odstranění události z tenanta v oblasti obnovení
 3. Stisknutím klávesy **F5** spusťte skript.
 4. Aktualizujte stránku s událostmi ve službě contoso na úrovni: http://events.wingtip-dpt.&lt User &gt; . trafficmanager.NET/contosoconcerthall – nahraďte &lt; uživatele &gt; hodnotou uživatele vašeho nasazení a Všimněte si, že poslední událost byla odstraněna.
@@ -278,7 +277,7 @@ Převzetí služeb při selhání efektivně přesouvá databázi do původní o
 ### <a name="run-the-repatriation-script"></a>Spuštění skriptu pro vrácení
 Nyní si představte, že se výpadek vyřeší a spustí se skript pro vrácení.
 
-1. V *prostředí POWERSHELL ISE*ve skriptu. ..\Learning Modules\Business kontinuita a havárie Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1.
+1. V *prostředí POWERSHELL ISE*ve skriptu. ..\Learning Modules\Business kontinuita a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 pro zotavení po havárii.
 
 2. Ověřte, jestli je proces synchronizace katalogu pořád spuštěný v instanci PowerShellu.  V případě potřeby ho restartujte nastavením:
     * **$DemoScenario = 1**spusťte synchronizaci informací o serveru klienta, fondu a konfiguraci databáze do katalogu

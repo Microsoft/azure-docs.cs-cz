@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768245"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop ve službě Azure HDInsight
@@ -43,7 +42,7 @@ Soubory potřebné pro nasazení této aplikace (Hue):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Šablona Správce prostředků se nachází na adrese [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  Další informace o zápisu této šablony Resource Manageru naleznete v části [MSDN: instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx).
+    Šablona Správce prostředků se nachází na adrese [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue) .  Další informace o zápisu této šablony Resource Manageru naleznete v části [MSDN: instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx).
 
 1. Z rozevíracího seznamu vyberte existující **skupinu prostředků** , která obsahuje váš cluster. Je nutné použít stejnou skupinu prostředků jako cluster.
 
@@ -61,7 +60,7 @@ Stav instalace můžete zobrazit z dlaždice připnuté k řídicímu panelu por
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Šablona Správce prostředků se nachází na adrese [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Další informace o zápisu této šablony Resource Manageru naleznete v části [MSDN: instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx).
+    Šablona Správce prostředků se nachází na adrese [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json) .  Další informace o zápisu této šablony Resource Manageru naleznete v části [MSDN: instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx).
 
 2. Pro vytvoření clusteru a instalaci aplikace Hue postupujte podle pokynů. Další informace o vytváření clusterů HDInsight naleznete v tématu [Vytváření clusterů Hadoop založených na Linuxu v nástroji HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -77,7 +76,7 @@ Pro **odstín**můžete použít následující kroky:
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.
 1. V nabídce **Nastavení** vyberte **aplikace**.
 1. Výběrem možnosti **odstín** ze seznamu zobrazíte vlastnosti.  
@@ -85,7 +84,7 @@ Pro **odstín**můžete použít následující kroky:
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Nahraďte `CLUSTERNAME`a `RESOURCEGROUP` příslušnými hodnotami a potom zadejte následující příkazy:
+Nahraďte `CLUSTERNAME` a `RESOURCEGROUP` příslušnými hodnotami a potom zadejte následující příkazy:
 
 * Zobrazí seznam všech aplikací pro cluster HDInsight.
 
@@ -125,7 +124,7 @@ Pokud se instalace aplikace nezdařila, můžete zobrazit chybové zprávy a inf
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.
 1. V nabídce **Nastavení** vyberte **aplikace**.
 1. Klikněte pravým tlačítkem na aplikaci, kterou chcete odebrat, a pak vyberte **Odstranit**.
@@ -133,7 +132,7 @@ Pokud se instalace aplikace nezdařila, můžete zobrazit chybové zprávy a inf
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Hodnoty `NAME`, `CLUSTERNAME`a `RESOURCEGROUP` nahraďte příslušnými hodnotami a potom zadejte následující příkaz:
+`NAME`Hodnoty, `CLUSTERNAME` a nahraďte `RESOURCEGROUP` příslušnými hodnotami a potom zadejte následující příkaz:
 
 ```azurecli
 az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP

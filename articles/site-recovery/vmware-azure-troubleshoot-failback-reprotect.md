@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309947"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Řešení potíží s navrácením služeb po obnovení z Azure do místního prostředí
@@ -29,7 +28,7 @@ Navrácení služeb po obnovení v podstatě zahrnuje dva hlavní kroky. V prvn�
 - Pokud se nemůžete připojit ke konfiguračnímu serveru z procesového serveru, pomocí programu Telnet ověřte připojení ke konfiguračnímu serveru na portu 443. Můžete se také pokusit testovat konfigurační server z procesového serveru z procesu. Procesový Server by měl mít také prezenční signál, pokud je připojený ke konfiguračnímu serveru.
 - Server s Windows Serverem 2008 R2 SP1, který je chráněný jako fyzický místní server, se nedá vrátit z Azure do místní lokality.
 - Nemůžete navrátit služby po obnovení v následujících případech:
-    - Migrovali jste počítače do Azure. [Přečtěte si další informace](migrate-overview.md#what-do-we-mean-by-migration).
+    - Migrovali jste počítače do Azure. [Další informace](migrate-overview.md#what-do-we-mean-by-migration).
     - Přesunuli jste virtuální počítač do jiné skupiny prostředků.
     - Odstranili jste virtuální počítač Azure.
     - Zakázali jste ochranu virtuálního počítače.

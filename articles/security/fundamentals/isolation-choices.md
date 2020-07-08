@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021870"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
@@ -219,7 +218,7 @@ Azure nabízí pro ochranu dat následující typy šifrování:
 - [Šifrování kabelů](../../storage/blobs/security-recommendations.md), jako je například šifrování SMB 3,0 pro sdílené složky Azure.
 - [Šifrování na straně klienta](../../storage/blobs/security-recommendations.md), aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
 
-#### <a name="encryption-at-rest"></a>Šifrování v klidovém umístění
+#### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
 V případě mnoha organizací je [šifrování dat v klidovém](isolation-choices.md) případě povinný krok k ochraně dat, dodržování předpisů a suverenity dat. Existují tři funkce Azure, které poskytují šifrování dat v klidovém znění:
 
@@ -273,7 +272,7 @@ Logické servery a databáze SQL jsou SQL Database specifických konceptech a js
 
 Servery v SQL Database nejsou fyzické nebo instance virtuálních počítačů, místo toho se jedná o kolekce databází, správu sdílení a zásady zabezpečení, které jsou uložené v, označované jako "logická hlavní" databáze.
 
-![SQL Database](./media/isolation-choices/azure-isolation-fig11.png)
+![Databáze SQL](./media/isolation-choices/azure-isolation-fig11.png)
 
 Mezi logické hlavní databáze patří:
 

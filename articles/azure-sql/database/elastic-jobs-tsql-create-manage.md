@@ -12,10 +12,9 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
 ms.openlocfilehash: c91f96afefe924856b7416844d37c4d7a13c794b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045036"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL)
@@ -1204,7 +1203,7 @@ GO
 
 V [databázi Jobs](job-automation-overview.md#job-database)jsou k dispozici následující zobrazení.
 
-|Zobrazení  |Description  |
+|Zobrazit  |Description  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zobrazuje historii spuštění úlohy.      |
 |[úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
@@ -1342,7 +1341,7 @@ Zobrazí všechny členy všech cílových skupin.
 |**elastic_pool_name**|nvarchar (128)|Název elastického fondu obsažený v cílové skupině. Zadáno pouze v případě, že target_type je ' SqlElasticPool '.|
 |**shard_map_name**|nvarchar (128)|Název map horizontálních oddílů obsažených v cílové skupině. Zadáno pouze v případě, že target_type je ' SqlShardMap '.|
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 - ![Ikona odkazu na téma](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Ikona odkazu na téma") [– konvence syntaxe Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042796"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho tenanta s aplikací SaaS Database na tenanta
@@ -74,7 +73,7 @@ Chcete-li předvést tyto scénáře obnovení, nejprve "omylem" odstraňte udá
 
 ### <a name="accidentally-delete-the-last-event"></a>"Omylem" odstraníte poslední událost
 
-1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ pro provozní kontinuitu a zotavení po havárii \\ RestoreTenant \\ *demo-RestoreTenant. ps1*a nastavte následující hodnotu:
+1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ pro provozní kontinuitu a zotavení po havárii \\ RestoreTenant \\ *Demo-RestoreTenant.ps1*a nastavte následující hodnotu:
 
    * **$DemoScenario**  =  **1**, *odstranit poslední událost (bez prodeje lístku)*.
 2. Stisknutím klávesy F5 spusťte skript a odstraňte poslední událost. Zobrazí se následující potvrzovací zpráva:
@@ -91,10 +90,10 @@ Chcete-li předvést tyto scénáře obnovení, nejprve "omylem" odstraňte udá
 
 Toto cvičení obnoví databázi společnosti Contoso v rámci databáze Contoso v čase před odstraněním události. V tomto scénáři se předpokládá, že chcete zkontrolovat Odstraněná data v paralelní databázi.
 
- Skript *Restore-TenantInParallel. ps1* vytvoří paralelní databázi tenanta nazvanou *ContosoConcertHall \_ Old*s položkou paralelního katalogu. Tento vzor obnovení se nejlépe hodí pro obnovu z menší ztráty dat. Tento model můžete použít také v případě, že potřebujete zkontrolovat data pro účely dodržování předpisů nebo auditování. Je to doporučený postup, pokud používáte [aktivní geografickou replikaci](active-geo-replication-overview.md).
+ Skript *Restore-TenantInParallel.ps1* vytvoří paralelní databázi tenanta s názvem *ContosoConcertHall \_ Old*s položkou paralelního katalogu. Tento vzor obnovení se nejlépe hodí pro obnovu z menší ztráty dat. Tento model můžete použít také v případě, že potřebujete zkontrolovat data pro účely dodržování předpisů nebo auditování. Je to doporučený postup, pokud používáte [aktivní geografickou replikaci](active-geo-replication-overview.md).
 
 1. Dokončete [simulaci oddílu data neúmyslně odstranit klienta](#simulate-a-tenant-accidentally-deleting-data) .
-2. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ pro provozní kontinuitu a zotavení po havárii \\ RestoreTenant \\ _demo-RestoreTenant. ps1_.
+2. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ pro provozní kontinuitu a zotavení po havárii \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_.
 3. Nastavte **$DemoScenario**  =  **2**, *paralelně obnovte tenanta*.
 4. Pokud chcete skript spustit, stiskněte klávesu F5.
 
@@ -114,7 +113,7 @@ Vystavení obnoveného tenanta jako dalšího tenanta s vlastní aplikací pro u
 
 Toto cvičení obnoví tenanta společnosti Contoso v inhalaes do bodu před odstraněním události. Skript *Restore-TenantInPlace* obnoví databázi tenanta do nové databáze a odstraní původní. Tento vzor obnovení se nejlépe hodí pro obnovení ze závažných poškození dat a klient bude muset vyhovět významné ztrátě dat.
 
-1. V prostředí PowerShell ISE otevřete soubor **demo-RestoreTenant. ps1** .
+1. V prostředí PowerShell ISE otevřete soubor **Demo-RestoreTenant.ps1** .
 2. Nastavte **$DemoScenario**  =  **5**a *obnovte klienta na místě*.
 3. Pokud chcete skript spustit, stiskněte klávesu F5.
 

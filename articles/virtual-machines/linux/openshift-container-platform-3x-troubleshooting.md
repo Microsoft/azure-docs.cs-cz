@@ -11,10 +11,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759468"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
@@ -37,9 +36,9 @@ SSH pro hostitele Ansible PlayBook. Pro šablonu OKD (verze 3,9 a starší) pou�
 
 ## <a name="log-files"></a>Soubory protokolů
 
-Soubory protokolu (stderr a STDOUT) pro skripty přípravy hostitele se nacházejí ve `/var/lib/waagent/custom-script/download/0` složce na všech hostitelích. Pokud během přípravy hostitele došlo k chybě, Projděte si tyto soubory protokolů a určete chybu.
+Soubory protokolu (stderr a STDOUT) pro skripty přípravy hostitele se nacházejí ve složce `/var/lib/waagent/custom-script/download/0` na všech hostitelích. Pokud během přípravy hostitele došlo k chybě, Projděte si tyto soubory protokolů a určete chybu.
 
-Pokud se přípravné skripty úspěšně spustily, bude nutné prozkoumat `/var/lib/waagent/custom-script/download/1` soubory protokolu v adresáři PlayBook hostitele Ansible. Pokud k chybě došlo při vlastní instalaci OpenShift, zobrazí se v souboru stdout chyba. Pomocí těchto informací můžete kontaktovat podporu a požádat o další pomoc.
+Pokud se přípravné skripty úspěšně spustily, `/var/lib/waagent/custom-script/download/1` bude nutné prozkoumat soubory protokolu v adresáři PlayBook hostitele Ansible. Pokud k chybě došlo při vlastní instalaci OpenShift, zobrazí se v souboru stdout chyba. Pomocí těchto informací můžete kontaktovat podporu a požádat o další pomoc.
 
 Příklad výstupu
 
@@ -114,5 +113,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 V případě některých chyb můžete k získání dalších informací použít také následující příkazy:
 
-1. > systemctl \<stavové služby
+1. stav systemctl\<service>
 2. journalctl – XE
